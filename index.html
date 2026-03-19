@@ -43,7 +43,7 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
 .search-wrap::before{content:'⌕';position:absolute;left:7px;color:var(--muted);font-size:15px;pointer-events:none}
 
 /* ── LEGEND ── */
-.legend{padding:8px 32px;display:flex;flex-wrap:wrap;gap:6px 16px;border-bottom:1px solid var(--border);background:var(--bg)}
+.legend{display:none}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#1a0e04;cursor:pointer;transition:color .14s;font-family:'Source Serif 4',serif;font-weight:600}
 .legend-item:hover{color:var(--accent)}
 .legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
@@ -459,8 +459,8 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 /* ── SILSILA VIEW ── */
 
 #silsilaScrollNav{
-  height:32px;
-  min-height:32px;
+  height:36px;
+  min-height:36px;
   flex-shrink:0;
   background:var(--surface);
   border-top:2px solid var(--border);
@@ -470,7 +470,8 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   gap:8px;
   position:sticky;
   bottom:0;
-  z-index:10;
+  z-index:50;
+  box-shadow:0 -2px 8px rgba(26,18,8,.08);
 }
 #silsilaScrollTrack{
   flex:1;
@@ -502,10 +503,10 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 #silsilaView{display:none;background:var(--bg);flex-direction:column;height:calc(100vh - 130px);overflow:hidden}
 #silsilaView.active{display:flex}
 .sil-intro{font-size:13px;color:#3a2518;padding:10px 24px 9px;font-family:'Source Serif 4',serif;flex-shrink:0;border-bottom:2px solid var(--border);background:linear-gradient(180deg,#ede4d0 0%,var(--bg) 100%)}
-#silsilaBody{display:flex;flex:1;overflow:hidden;position:relative;min-height:0}
+#silsilaBody{display:flex;flex:1;overflow:hidden;position:relative;min-height:0;overflow-y:auto}
 #silsilaLabels{width:190px;flex-shrink:0;overflow:hidden;background:var(--bg);border-right:1px solid var(--border);position:relative;z-index:2}
 #silsilaLabelsInner{position:absolute;top:0;left:0;width:100%}
-#silsilaScroll{flex:1;overflow-x:auto;overflow-y:hidden;background:#fdf9f4;cursor:grab;scrollbar-width:none;-ms-overflow-style:none}
+#silsilaScroll{flex:1;overflow-x:auto;overflow-y:auto;background:#fdf9f4;cursor:grab;scrollbar-width:none;-ms-overflow-style:none}
 #silsilaScroll:active{cursor:grabbing}
 #silsilaScroll::-webkit-scrollbar{display:none}
 #silsilaView::-webkit-scrollbar{display:none}
@@ -522,7 +523,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 /* ── MAP VIEW ── */
 #mapView{display:none;flex-direction:column;height:700px;min-height:600px}
 #mapView.active{display:flex}
-#mapContainer{flex:1;position:relative;overflow:hidden}
+#mapContainer{flex:1;position:relative;}
 #leafletMap{width:100%;height:100%;min-height:600px;z-index:1}
 .map-arrow{position:absolute;z-index:900;pointer-events:none;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);border:2.5px solid #aaa;border-radius:28px;padding:8px 18px 8px 14px;font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:800;color:#444;box-shadow:0 3px 14px rgba(0,0,0,.25);white-space:nowrap;}
 .map-arrow span{font-size:22px;line-height:1;}
@@ -710,7 +711,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   </div>
 </div>
 <div id="mapView">
-  <div id="mapContainer">
+  <div id="mapContainer" style="position:relative;">
     <div id="leafletMap"></div>
     <div id="mapSliderWrap">
       <div id="mapSliderYear">All Years</div>
@@ -741,10 +742,9 @@ function setView(v) {
   const sl = document.getElementById('silsilaView');
   const mv = document.getElementById('mapView');
   tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
-  // Clear era bands when leaving timeline
   document.querySelectorAll('.era-band').forEach(e=>e.remove());
-  // Show Year button only on timeline; hide + close on other views
   const _btnSlider = document.getElementById('btnSlider');
+  const _btnEras = document.getElementById('btnEras');
   if(v !== 'timeline'){
     if(_btnSlider) _btnSlider.style.display = 'none';
     const _sw = document.getElementById('yearSliderWrap');
@@ -756,6 +756,7 @@ function setView(v) {
   } else {
     if(_btnSlider) _btnSlider.style.display = '';
   }
+  if(_btnEras) _btnEras.style.display = (v==='map') ? 'none' : '';
   if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
   else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
   else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); renderMap(); }
@@ -764,194 +765,6 @@ function setView(v) {
 // ══════════════════════════════════════════════════════════════════════════════
 // SILSILA CHAIN VIEW RENDERER
 // ══════════════════════════════════════════════════════════════════════════════
-function renderSilsila() {
-  const svg = document.getElementById('silsilaSvg');
-  // Cleanup any old tooltip
-  const oldTip = document.getElementById('sil-tip');
-  if(oldTip) oldTip.remove();
-
-  const filtered = getFiltered();
-
-  // Build tradition order by earliest DOB
-  const tradMap = {};
-  filtered.forEach(p => { if(!tradMap[p.tradition]||p.dob<tradMap[p.tradition]) tradMap[p.tradition]=p.dob; });
-  const trads = Object.keys(tradMap).sort((a,b)=>tradMap[a]-tradMap[b]);
-
-  const NODE_R = 8;
-  const SUBROW_GAP = NODE_R * 2.6; // vertical gap between staggered sub-rows
-  const LABEL_H = 14;              // space above node for century label line
-  const MARGIN_T = 50;             // top margin (for year labels)
-  const MARGIN_L = 190;
-  const MARGIN_R = 60;
-  const MIN_Y = 550, MAX_Y = 1950;
-  const W = 3200;
-  const PROX_PX = NODE_R * 3;     // px threshold to trigger stagger
-
-  function xPos(dob){ return MARGIN_L + ((dob - MIN_Y)/(MAX_Y - MIN_Y))*(W - MARGIN_L - MARGIN_R); }
-
-  // ── For each tradition lane, assign sub-rows to avoid overlap ────────────
-  // laneMeta[trad] = { subRowCount, nodes: [{p, subRow}] }
-  const laneMeta = {};
-  trads.forEach(t => { laneMeta[t] = { subRowCount: 1, nodes: [] }; });
-
-  // Sort each tradition's scholars by DOB, then greedily assign sub-rows
-  trads.forEach(trad => {
-    const members = filtered.filter(p => p.tradition === trad).sort((a,b)=>a.dob-b.dob);
-    // Each sub-row tracks the last x used
-    const subRowMaxX = [0];
-    members.forEach(p => {
-      const x = xPos(p.dob);
-      // Find first sub-row where there's enough space
-      let row = subRowMaxX.findIndex(maxX => x - maxX > PROX_PX);
-      if(row === -1){ row = subRowMaxX.length; subRowMaxX.push(0); }
-      subRowMaxX[row] = x + NODE_R;
-      laneMeta[trad].nodes.push({p, subRow: row});
-    });
-    laneMeta[trad].subRowCount = subRowMaxX.length;
-  });
-
-  // ── Compute lane Y offsets based on sub-row counts ────────────────────────
-  const LANE_PAD = 24; // padding above/below nodes within lane
-  const laneY = {}; // top y of each lane
-  let curY = MARGIN_T;
-  trads.forEach(trad => {
-    laneY[trad] = curY;
-    const laneH = laneMeta[trad].subRowCount * SUBROW_GAP + LANE_PAD * 2;
-    laneMeta[trad].laneH = laneH;
-    curY += laneH;
-  });
-  const H = curY + 20;
-
-  // ── Build posMap from lane layout ─────────────────────────────────────────
-  const posMap = {};
-  trads.forEach(trad => {
-    const meta = laneMeta[trad];
-    const laneTop = laneY[trad];
-    meta.nodes.forEach(({p, subRow}) => {
-      const x = xPos(p.dob);
-      const y = laneTop + LANE_PAD + subRow * SUBROW_GAP + NODE_R;
-      posMap[p.famous] = {x, y};
-    });
-  });
-
-  // ── Build edges ───────────────────────────────────────────────────────────
-  const edges = [];
-  filtered.forEach(p => {
-    (p.teachers||[]).forEach(tn => {
-      if(posMap[tn] && posMap[p.famous])
-        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)]});
-    });
-  });
-
-  svg.setAttribute('width', W);
-  svg.setAttribute('height', H);
-  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-
-  let out = '';
-
-  // ── Lane backgrounds (no labels in SVG — labels go in sticky panel) ───────
-  trads.forEach((t, i) => {
-    const y = laneY[t];
-    const h = laneMeta[t].laneH;
-    out += `<rect x="0" y="${y}" width="${W}" height="${h}" fill="${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}" rx="0"/>`;
-  });
-
-  // ── Century grid lines ────────────────────────────────────────────────────
-  for(let yr=600; yr<=1900; yr+=100){
-    const x = xPos(yr);
-    const cent = Math.ceil(yr/100);
-    out += `<line x1="${x}" y1="${MARGIN_T}" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
-    out += `<text x="${x+3}" y="${MARGIN_T-6}" font-size="10" fill="#999" font-family="Source Serif 4,serif">${yr}</text>`;
-  }
-
-  // ── Arrow defs ────────────────────────────────────────────────────────────
-  const arrowColors = [...new Set(edges.map(e=>e.color))];
-  let defs = '<defs>';
-  arrowColors.forEach(col => {
-    const id = col.replace('#','');
-    defs += `<marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${col}" opacity="0.6"/></marker>`;
-  });
-  defs += '</defs>';
-  out = defs + out;
-
-  // ── Edges ─────────────────────────────────────────────────────────────────
-  edges.forEach(e => {
-    const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
-    // Bezier: control points curve right for forward, left for back
-    const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
-    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
-  });
-
-  // ── Nodes ─────────────────────────────────────────────────────────────────
-  filtered.forEach(p => {
-    const pos = posMap[p.famous];
-    if(!pos) return;
-    const col = CC[gc(p.dob)];
-    const hasFree = p.books && p.books.some(b=>b.url);
-    const r = hasFree ? NODE_R : NODE_R - 1;
-    const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
-    const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    // data-title for tooltip
-    out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${col}" tabindex="0">
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="white" stroke-width="2" opacity="1"/>
-      ${hasFree?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.45"/>`: ''}
-    </g>`;
-  });
-
-  svg.innerHTML = out;
-
-  // ── Populate sticky left label panel ──────────────────────────────────────
-  const labelsInner = document.getElementById('silsilaLabelsInner');
-  labelsInner.style.height = H + 'px';
-  labelsInner.innerHTML = '';
-  trads.forEach((t, i) => {
-    const y = laneY[t];
-    const h = laneMeta[t].laneH;
-    const labelColor = CC[gc(tradMap[t])] || '#888';
-    const div = document.createElement('div');
-    div.className = 'sil-label-row';
-    div.style.cssText = `top:${y}px;height:${h}px;background:${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}`;
-    div.innerHTML = `<span class="sil-label-text" style="color:${labelColor}" title="${t}">${t}</span>`;
-    labelsInner.appendChild(div);
-  });
-
-  // ── Sync vertical scroll between scroll pane and label panel ──────────────
-  const scrollEl = document.getElementById('silsilaScroll');
-  // Remove old listener if re-rendering
-  if(scrollEl._syncHandler) scrollEl.removeEventListener('scroll', scrollEl._syncHandler);
-  scrollEl._syncHandler = () => { labelsInner.style.top = (-scrollEl.scrollTop) + 'px'; };
-  scrollEl.addEventListener('scroll', scrollEl._syncHandler);
-
-  // ── Hover tooltip ─────────────────────────────────────────────────────────
-  svg.querySelectorAll('.sil-node').forEach(node => {
-    const col = node.dataset.col;
-    let silTimer = null;
-    node.addEventListener('mouseenter', () => {
-      const fn = node.dataset.famous;
-      clearTimeout(silTimer);
-      silTimer = setTimeout(() => {
-        const person = PEOPLE.find(p => p.famous === fn);
-        if(person){
-          const circ = node.querySelector('circle:last-of-type');
-          const r = circ ? circ.getBoundingClientRect() : node.getBoundingClientRect();
-          openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
-        }
-      }, 160);
-    });
-    node.addEventListener('mouseleave', () => {
-      clearTimeout(silTimer);
-      setTimeout(() => { if(!popup.matches(':hover')) closePopup(); }, 220);
-    });
-    node.addEventListener('click', e => {
-      const person = PEOPLE.find(p => p.famous === node.dataset.famous);
-      if(person){
-        const r = node.getBoundingClientRect();
-        openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
-      }
-    });
-  });
-}
 
 
 const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
@@ -985,10 +798,9 @@ function setView(v) {
   const sl = document.getElementById('silsilaView');
   const mv = document.getElementById('mapView');
   tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
-  // Clear era bands when leaving timeline
   document.querySelectorAll('.era-band').forEach(e=>e.remove());
-  // Show Year button only on timeline; hide + close on other views
   const _btnSlider = document.getElementById('btnSlider');
+  const _btnEras = document.getElementById('btnEras');
   if(v !== 'timeline'){
     if(_btnSlider) _btnSlider.style.display = 'none';
     const _sw = document.getElementById('yearSliderWrap');
@@ -1000,6 +812,7 @@ function setView(v) {
   } else {
     if(_btnSlider) _btnSlider.style.display = '';
   }
+  if(_btnEras) _btnEras.style.display = (v==='map') ? 'none' : '';
   if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
   else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
   else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); renderMap(); }
@@ -1131,7 +944,7 @@ function renderSilsila() {
     const pos = posMap[p.famous];
     if(!pos) return;
     const col = CC[gc(p.dob)];
-    const hasFree = p.books && p.books.some(b=>b.url);
+    const hasFree = p.books && p.books.some(b=>b.url&&b.url.startsWith('http'));
     const r = hasFree ? NODE_R : NODE_R - 1;
     const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
@@ -1328,7 +1141,7 @@ function openPopup(p, color, anchorX, anchorY) {
     html += `<div class="magnum-label" style="color:${color}">✦ Magnum Opus</div>`;
     mag.forEach(b=>{
       html += `<div class="book-item magnum" style="border-color:${color}28">
-        <div>${b.url?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+        <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
         ${b.note?`<div class="book-note">${b.note}</div>`:''}
         ${!b.url&&!b.note?`<div class="no-link">No confirmed free digital edition</div>`:''}
       </div>`;
@@ -1338,7 +1151,7 @@ function openPopup(p, color, anchorX, anchorY) {
     html += `<div class="other-label">Other Works</div>`;
     oth.forEach(b=>{
       html += `<div class="book-item">
-        <div>${b.url?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+        <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
         ${b.note?`<div class="book-note">${b.note}</div>`:''}
       </div>`;
     });
@@ -1477,7 +1290,7 @@ function renderRows(){
 
   filtered.forEach((p,i)=>{
     const color=CC[gc(p.dob)];
-    const hasFreeBook=p.books.some(b=>b.url);
+    const hasFreeBook=p.books.some(b=>b.url&&b.url.startsWith('http'));
 
     const nr=document.createElement('div');nr.className='name-row'+(p.famous==='Prophet Muhammad'?' prophet-row':'');nr.dataset.i=i;
     const shortTitle=p.primaryTitle.split('—')[0].trim();
@@ -1820,7 +1633,7 @@ function _drawEmpires() {
 
 function _makePersonMarker(p) {
   const color = CC[gc(p.dob)];
-  const hasFree = (p.books||[]).some(b=>b.url);
+  const hasFree = (p.books||[]).some(b=>b.url&&b.url.startsWith('http'));
   const name = p.famous.length > 22 ? p.famous.slice(0,20)+'…' : p.famous;
   const icon = L.divIcon({
     html: `<div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));">
