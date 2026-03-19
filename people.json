@@ -247,34 +247,6 @@
     "lng": 31.2357
   },
   {
-    "famous": "Abdullah ibn Masud",
-    "tradition": "Early Ascetics",
-    "type": "Sahaba",
-    "primaryTitle": "First Hafiz of the Quran — Closest to the Prophet",
-    "full": "Abd Allah ibn Masud ibn Ghafil al-Hudhali",
-    "dob": 594,
-    "dod": 653,
-    "dob_s": "c. 594",
-    "dod_s": "653",
-    "city": "Mecca / Kufa, Iraq",
-    "classif": "Companion / Scholar",
-    "lang": "Arabic",
-    "titles": "Hafiz al-Quran · Shaykh al-Kufiyyeen",
-    "school": "The Prophet's personal servant and sandal-bearer; the Prophet said his Quran recitation was the most beautiful; founder of the Kufa school of law",
-    "books": [
-      {
-        "title": "First school of Islamic jurisprudence (Kufa)",
-        "url": ",note:\"Founded the Kufa school which later became the Hanafi tradition",
-        "magnum": true,
-        "note": ""
-      }
-    ],
-    "teachers": [],
-    "source": "",
-    "lat": 32.03,
-    "lng": 44.4
-  },
-  {
     "famous": "Uwais al-Qarani",
     "tradition": "Early Ascetics",
     "type": "Tabi'un",
@@ -301,6 +273,34 @@
     "source": "",
     "lat": 15.55,
     "lng": 42.57
+  },
+  {
+    "famous": "Abdullah ibn Masud",
+    "tradition": "Early Ascetics",
+    "type": "Sahaba",
+    "primaryTitle": "First Hafiz of the Quran — Closest to the Prophet",
+    "full": "Abd Allah ibn Masud ibn Ghafil al-Hudhali",
+    "dob": 594,
+    "dod": 653,
+    "dob_s": "c. 594",
+    "dod_s": "653",
+    "city": "Mecca / Kufa, Iraq",
+    "classif": "Companion / Scholar",
+    "lang": "Arabic",
+    "titles": "Hafiz al-Quran · Shaykh al-Kufiyyeen",
+    "school": "The Prophet's personal servant and sandal-bearer; the Prophet said his Quran recitation was the most beautiful; founder of the Kufa school of law",
+    "books": [
+      {
+        "title": "First school of Islamic jurisprudence (Kufa)",
+        "url": ",note:\"Founded the Kufa school which later became the Hanafi tradition",
+        "magnum": true,
+        "note": ""
+      }
+    ],
+    "teachers": [],
+    "source": "",
+    "lat": 32.03,
+    "lng": 44.4
   },
   {
     "famous": "Ali ibn Abi Talib",
@@ -425,6 +425,66 @@
     "source": "",
     "lat": 24.47,
     "lng": 39.61
+  },
+  {
+    "famous": "Zayd ibn Thabit",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Katib al-Wahy — Chief Scribe of Divine Revelation",
+    "full": "Zayd ibn Thabit al-Ansari al-Khazraji",
+    "dob": 611,
+    "dod": 665,
+    "dob_s": "c. 611",
+    "dod_s": "665",
+    "city": "Medina, Arabia",
+    "classif": "Companion / Scholar",
+    "lang": "Arabic",
+    "titles": "Katib al-Nabi · Master of Quranic Sciences",
+    "school": "Companions of the Prophet — led Quran compilation under Abu Bakr and Uthman",
+    "books": [
+      {
+        "title": "Wikipedia — Zayd ibn Thabit",
+        "url": "https://en.wikipedia.org/wiki/Zayd_ibn_Thabit",
+        "magnum": true,
+        "note": "Prophet's personal secretary; compiled the Quran into a single volume"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Wikidata",
+    "lat": 24.4672,
+    "lng": 39.615
+  },
+  {
+    "famous": "Anas ibn Malik",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Khadim Rasul Allah — Servant of the Prophet",
+    "full": "Anas ibn Malik ibn al-Nadr al-Ansari al-Khazraji",
+    "dob": 611,
+    "dod": 713,
+    "dob_s": "c. 611",
+    "dod_s": "c. 713",
+    "city": "Medina, Arabia",
+    "classif": "Companion / Scholar",
+    "lang": "Arabic",
+    "titles": "Khadim Rasul Allah · Abu Hamza",
+    "school": "Companions of the Prophet — served Prophet for 10 years; major hadith transmitter",
+    "books": [
+      {
+        "title": "Wikipedia — Anas ibn Malik",
+        "url": "https://en.wikipedia.org/wiki/Anas_ibn_Malik",
+        "magnum": true,
+        "note": "Served the Prophet for 10 years; transmitted over 2,000 hadiths; lived ~100 years"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Wikidata",
+    "lat": 24.4672,
+    "lng": 39.615
   },
   {
     "famous": "Aisha bint Abi Bakr",
@@ -572,6 +632,68 @@
     "lng": 47.7804
   },
   {
+    "famous": "Hasan ibn Ali",
+    "tradition": "Early Ascetics",
+    "type": "Scholar",
+    "primaryTitle": "al-Mujtaba — The Chosen One; Second Shia Imam",
+    "full": "Hasan ibn Ali ibn Abi Talib al-Hashimi",
+    "dob": 625,
+    "dod": 669,
+    "dob_s": "625",
+    "dod_s": "669",
+    "city": "Medina, Arabia",
+    "classif": "Scholar / Imam / Caliph",
+    "lang": "Arabic",
+    "titles": "al-Mujtaba · Abu Muhammad · Second Imam",
+    "school": "Prophetic Household (Ahl al-Bayt) — grandson of the Prophet",
+    "books": [
+      {
+        "title": "Wikipedia — Hasan ibn Ali",
+        "url": "https://en.wikipedia.org/wiki/Hasan_ibn_Ali",
+        "magnum": true,
+        "note": "Grandson of Prophet Muhammad; 2nd Imam of Shia; briefly held the caliphate"
+      }
+    ],
+    "teachers": [
+      "Ali ibn Abi Talib",
+      "Prophet Muhammad"
+    ],
+    "source": "Wikidata",
+    "lat": 24.4672,
+    "lng": 39.615
+  },
+  {
+    "famous": "Husayn ibn Ali",
+    "tradition": "Early Ascetics",
+    "type": "Scholar",
+    "primaryTitle": "al-Sayyid al-Shuhada — Master of Martyrs",
+    "full": "Husayn ibn Ali ibn Abi Talib al-Hashimi",
+    "dob": 626,
+    "dod": 680,
+    "dob_s": "626",
+    "dod_s": "680",
+    "city": "Medina / Karbala, Iraq",
+    "classif": "Scholar / Imam / Martyr",
+    "lang": "Arabic",
+    "titles": "Sayyid al-Shuhada · Abu Abdillah · Third Imam of Twelver Shia",
+    "school": "Prophetic Household (Ahl al-Bayt) — grandson of the Prophet",
+    "books": [
+      {
+        "title": "Wikipedia — Husayn ibn Ali",
+        "url": "https://en.wikipedia.org/wiki/Husayn_ibn_Ali",
+        "magnum": true,
+        "note": "Son of Ali ibn Abi Talib; martyred at Karbala 680 CE — founding event of Shia Islam"
+      }
+    ],
+    "teachers": [
+      "Ali ibn Abi Talib",
+      "Prophet Muhammad"
+    ],
+    "source": "Wikidata",
+    "lat": 32.6166,
+    "lng": 44.028
+  },
+  {
     "famous": "Musa ibn Nusayr",
     "tradition": "Early Ascetics",
     "type": "Ruler",
@@ -652,25 +774,33 @@
     "lng": 36.2765
   },
   {
-    "famous": "Abd al-Malik",
-    "tradition": "Early Ascetics",
-    "type": "Ruler",
-    "primaryTitle": "Reformer of the Umayyad State — Arabiser of Administration",
-    "full": "ʿAbd al-Malik ibn Marwān",
+    "famous": "Amra bint Abd al-Rahman",
+    "tradition": "Hadith Sciences",
+    "type": "Scholar",
+    "primaryTitle": "Foremost Female Jurist of Medina",
+    "full": "Amra bint Abd al-Rahman ibn Sa'd ibn Zurayq al-Ansariyya",
     "dob": 646,
-    "dod": 705,
-    "dob_s": "646",
-    "dod_s": "705",
-    "city": "Medina / Damascus",
-    "classif": "Umayyad Caliph / Administrator",
+    "dod": 717,
+    "dob_s": "c. 646",
+    "dod_s": "c. 717",
+    "city": "Medina, Arabia",
+    "classif": "Jurist / Hadith Scholar / Mufti",
     "lang": "Arabic",
-    "titles": "",
-    "school": "",
-    "books": [],
-    "teachers": [],
+    "titles": "Imam al-Nisa fi'l-Hadith · Secretary and Student of Aisha",
+    "school": "Madina School — niece and student of Aisha bint Abi Bakr; Caliph Umar ibn Abd al-Aziz ordered hadiths to be collected on her authority; overruled a judge's ruling on grounds of prophetic law",
+    "books": [
+      {
+        "title": "Hadith transmission — authoritative on Aisha's legal rulings",
+        "url": "https://en.wikipedia.org/wiki/Amrah_bint_Abdul_Rahman",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Aisha bint Abi Bakr"
+    ],
     "source": "Tareekh Yakubi",
-    "lat": 33.5138,
-    "lng": 36.2765
+    "lat": 24.47,
+    "lng": 39.61
   },
   {
     "famous": "Yazid I",
@@ -836,6 +966,34 @@
     "lng": 39.5692
   },
   {
+    "famous": "Nafi' al-Madani",
+    "tradition": "Hadith Sciences",
+    "type": "Scholar",
+    "primaryTitle": "Imam al-Qurra — Master of Quranic Recitation",
+    "full": "Nafi' ibn Abd al-Rahman ibn Abi Nu'aym al-Laythi al-Madani",
+    "dob": 689,
+    "dod": 785,
+    "dob_s": "c. 689",
+    "dod_s": "785",
+    "city": "Medina, Arabia",
+    "classif": "Scholar / Reciter",
+    "lang": "Arabic",
+    "titles": "Imam al-Qurra · One of the Seven Canonical Reciters",
+    "school": "Medinan Quranic School — one of the seven canonical qaris; his riwaya dominates in North and West Africa today",
+    "books": [
+      {
+        "title": "Wikipedia — Nafi' al-Madani",
+        "url": "https://en.wikipedia.org/wiki/Nafi%27_al-Madani",
+        "magnum": true,
+        "note": "His recitation style (riwaya of Warsh and Qalun) remains dominant in North/West Africa"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 24.4672,
+    "lng": 39.615
+  },
+  {
     "famous": "Hisham ibn Abd al-Malik",
     "tradition": "Early Ascetics",
     "type": "Ruler",
@@ -883,6 +1041,62 @@
     "source": "",
     "lat": 21.27,
     "lng": 40.41
+  },
+  {
+    "famous": "Zayd ibn Ali",
+    "tradition": "Islamic Jurisprudence",
+    "type": "Scholar",
+    "primaryTitle": "Imam Zayd — Founder of Zaidi Jurisprudence",
+    "full": "Zayd ibn Ali ibn al-Husayn al-Hashimi",
+    "dob": 695,
+    "dod": 740,
+    "dob_s": "c. 695",
+    "dod_s": "740",
+    "city": "Medina / Kufa, Iraq",
+    "classif": "Imam / Jurist / Martyr",
+    "lang": "Arabic",
+    "titles": "Imam Zayd · Sayyid al-Shuhada",
+    "school": "Zaidi School of Islamic Jurisprudence — founder; great-grandson of the Prophet",
+    "books": [
+      {
+        "title": "Musnad Zayd ibn Ali",
+        "url": "https://en.wikipedia.org/wiki/Zayd_ibn_Ali",
+        "magnum": true,
+        "note": "Founder of Zaidi school; his Musnad is the oldest surviving fiqh collection in Shia Islam"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 32.0,
+    "lng": 44.4
+  },
+  {
+    "famous": "Muhammad bin Qasim",
+    "tradition": "Islamic History",
+    "type": "Warrior",
+    "primaryTitle": "Conqueror of Sindh — First Muslim General in India",
+    "full": "Muhammad ibn al-Qasim ibn Yusuf al-Thaqafi",
+    "dob": 696,
+    "dod": 715,
+    "dob_s": "696",
+    "dod_s": "715",
+    "city": "Ta'if / Sindh, Pakistan",
+    "classif": "General / Governor",
+    "lang": "Arabic",
+    "titles": "Conqueror of Sindh · Umayyad General",
+    "school": "Umayyad Military — nephew of Hajjaj ibn Yusuf",
+    "books": [
+      {
+        "title": "Wikipedia — Muhammad bin Qasim",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_bin_Qasim",
+        "magnum": true,
+        "note": "Conquered Sindh at age 17; extended Islamic rule to the Indian subcontinent"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 25.396,
+    "lng": 68.3578
   },
   {
     "famous": "Imam Abu Hanifa",
@@ -1158,6 +1372,41 @@
     "lng": 44.4009
   },
   {
+    "famous": "Jabir ibn Hayyan",
+    "tradition": "Islamic Sciences",
+    "type": "Scientist",
+    "primaryTitle": "Father of Chemistry — Geber",
+    "full": "Abu Musa Jabir ibn Hayyan al-Azdi al-Kufi al-Sufi",
+    "dob": 721,
+    "dod": 815,
+    "dob_s": "c. 721",
+    "dod_s": "c. 815",
+    "city": "Tus / Kufa, Iraq",
+    "classif": "Scientist / Alchemist / Philosopher",
+    "lang": "Arabic",
+    "titles": "Geber (Latin) · Father of Chemistry · Father of Alchemy",
+    "school": "Alchemical / Scientific School — student of Ja'far al-Sadiq",
+    "books": [
+      {
+        "title": "Kitab al-Kimya (Book of Composition)",
+        "url": "https://archive.org/search?query=Jabir+ibn+Hayyan+chemistry+alchemy",
+        "magnum": true,
+        "note": "Father of chemistry; developed distillation, crystallization, and calcination — over 3,000 works attributed"
+      },
+      {
+        "title": "Wikipedia — Jabir ibn Hayyan",
+        "url": "https://en.wikipedia.org/wiki/Jabir_ibn_Hayyan",
+        "magnum": false
+      }
+    ],
+    "teachers": [
+      "Ja'far al-Sadiq"
+    ],
+    "source": "Wikidata",
+    "lat": 32.532,
+    "lng": 44.422
+  },
+  {
     "famous": "Ibn al-Muqaffa",
     "tradition": "Islamic Philosophy",
     "type": "Scholar",
@@ -1296,6 +1545,34 @@
     "lng": 44.4009
   },
   {
+    "famous": "Hisham I of Córdoba",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Emir Hisham I — Established Maliki School in Al-Andalus",
+    "full": "Hisham ibn Abd al-Rahman al-Dakhil al-Umayyad al-Andalusi",
+    "dob": 757,
+    "dod": 796,
+    "dob_s": "757",
+    "dod_s": "796",
+    "city": "Córdoba, Al-Andalus",
+    "classif": "Emir / Patron of Scholarship",
+    "lang": "Arabic",
+    "titles": "Emir of Córdoba · al-Rida",
+    "school": "Umayyad Emirate of Córdoba — introduced the Maliki school of jurisprudence to Al-Andalus; expanded Córdoba Mosque",
+    "books": [
+      {
+        "title": "Wikipedia — Hisham I of Córdoba",
+        "url": "https://en.wikipedia.org/wiki/Hisham_I_of_C%C3%B3rdoba",
+        "magnum": true,
+        "note": "Introduced Maliki school of jurisprudence to Al-Andalus; expanded the Great Mosque of Córdoba"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 37.8882,
+    "lng": -4.7794
+  },
+  {
     "famous": "Ma'ruf al-Karkhi",
     "tradition": "Early Ascetics",
     "type": "Mystic",
@@ -1413,6 +1690,36 @@
     "source": "",
     "lat": 33.34,
     "lng": 44.4
+  },
+  {
+    "famous": "Ali al-Ridha",
+    "tradition": "Early Ascetics",
+    "type": "Scholar",
+    "primaryTitle": "Imam Ali al-Ridha — Eighth Imam of Twelver Shia",
+    "full": "Ali ibn Musa al-Ridha ibn Ja'far al-Sadiq al-Hashimi al-Madani",
+    "dob": 765,
+    "dod": 818,
+    "dob_s": "c. 765",
+    "dod_s": "818",
+    "city": "Medina / Mashhad, Iran",
+    "classif": "Imam / Scholar / Theologian",
+    "lang": "Arabic",
+    "titles": "al-Ridha (The Acceptable) · Eighth Imam · Gharib al-Ghuraba",
+    "school": "Prophetic Household (Ahl al-Bayt) — eighth Imam of Twelver Shia; designated heir of Caliph al-Mamun; buried in Mashhad",
+    "books": [
+      {
+        "title": "Wikipedia — Ali al-Ridha",
+        "url": "https://en.wikipedia.org/wiki/Ali_al-Ridha",
+        "magnum": true,
+        "note": "Eighth Shia Imam; designated heir of Caliph al-Mamun; his shrine in Mashhad is the largest mosque in the world by capacity"
+      }
+    ],
+    "teachers": [
+      "Ja'far al-Sadiq"
+    ],
+    "source": "Wikidata",
+    "lat": 36.2847,
+    "lng": 59.617
   },
   {
     "famous": "Bishr al-Hafi",
@@ -1615,42 +1922,6 @@
     "lng": 44.4
   },
   {
-    "famous": "Ahmad ibn Hanbal",
-    "tradition": "Hadith Sciences",
-    "type": "Scholar",
-    "primaryTitle": "Imam Ahl al-Sunna — Leader of the Sunni Community",
-    "full": "Ahmad ibn Muhammad ibn Hanbal al-Shaybani",
-    "dob": 780,
-    "dod": 855,
-    "dob_s": "780",
-    "dod_s": "855",
-    "city": "Baghdad, Iraq",
-    "classif": "Jurist / Scholar",
-    "lang": "Arabic",
-    "titles": "Imam Ahl al-Sunna · Imam Ahmad",
-    "school": "Hanbali school founder — memorized a million hadiths; endured torture rather than accept the Mu'tazilite creed; became a symbol of Sunni orthodoxy",
-    "books": [
-      {
-        "title": "Musnad Ahmad",
-        "url": ",note:\"28,000 hadith — the largest personal hadith collection in Islamic history",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Al-Risala al-Mufassala",
-        "url": ",note:\"On the Conditions of Teachers — first Islamic treatise on education",
-        "magnum": true,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Imam al-Shafi'i"
-    ],
-    "source": "",
-    "lat": 33.34,
-    "lng": 44.4
-  },
-  {
     "famous": "Harith al-Muhasibi",
     "tradition": "Baghdad School",
     "type": "Scholar",
@@ -1685,73 +1956,6 @@
     ],
     "source": "",
     "lat": 33.3,
-    "lng": 44.4
-  },
-  {
-    "famous": "Al-Muhasibi (expanded)",
-    "tradition": "Baghdad School",
-    "type": "Scholar",
-    "primaryTitle": "Imam al-Nafs — Master of the Soul",
-    "full": "Abu 'Abd Allah al-Harith ibn Asad al-Muhasibi al-Basri",
-    "dob": 781,
-    "dod": 857,
-    "dob_s": "781",
-    "dod_s": "857",
-    "city": "Basra / Baghdad, Iraq",
-    "classif": "Mystic / Theologian / Psychologist",
-    "lang": "Arabic",
-    "titles": "Imam al-Muhasibin (Master of Self-Examiners) · Ustadh al-Junayd",
-    "school": "Baghdad School — founder of Islamic spiritual psychology; 'al-Muhasibi' means 'the one who examines his soul'; his systematic analysis of inner states (khalawat, muraqaba, tawakkul) created the vocabulary all Sufis use",
-    "books": [
-      {
-        "title": "Ri'aya li-Huquq Allah (Observance of God's Rights)",
-        "url": "https://archive.org/search?query=Muhasibi+Riaya+Huquq+Allah+Sufi+psychology",
-        "magnum": true,
-        "note": "The founding text of Islamic spiritual psychology — the first systematic study of the inner life, predating Western psychology by a thousand years."
-      },
-      {
-        "title": "Al-Wasaya (The Counsels)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "33.3",
-      "44.4"
-    ],
-    "source": "",
-    "lat": 33.3,
-    "lng": 44.4
-  },
-  {
-    "famous": "Al-Muhasibi",
-    "tradition": "Baghdad School",
-    "type": "Mystic",
-    "primaryTitle": "Harith al-Muhasibi — The Self-Examiner",
-    "full": "Al-Harith ibn Asad al-Muhasibi",
-    "dob": 781,
-    "dod": 857,
-    "dob_s": "c. 781",
-    "dod_s": "857",
-    "city": "Basra / Baghdad, Iraq",
-    "classif": "Mystic / Scholar",
-    "lang": "Arabic",
-    "titles": "Al-Muhasibi · Imam al-Tasawwuf",
-    "school": "Baghdad School — father of Islamic psychology; founder of systematic self-examination (muhasaba); teacher of Junayd",
-    "books": [
-      {
-        "title": "Ri'aya li-Huquq Allah",
-        "url": ",note:\"Observance of God's Rights — first systematic work of Islamic spiritual psychology",
-        "magnum": true,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Hasan al-Basri"
-    ],
-    "source": "",
-    "lat": 33.34,
     "lng": 44.4
   },
   {
@@ -1800,6 +2004,39 @@
     "books": [],
     "teachers": [],
     "source": "Tareekh Yakubi",
+    "lat": 33.3406,
+    "lng": 44.4009
+  },
+  {
+    "famous": "Abu Ma'shar al-Balkhi",
+    "tradition": "Islamic Sciences",
+    "type": "Scientist",
+    "primaryTitle": "Albumasar — Greatest Islamic Astrologer",
+    "full": "Ja'far ibn Muhammad Abu Ma'shar al-Balkhi",
+    "dob": 787,
+    "dod": 886,
+    "dob_s": "787",
+    "dod_s": "886",
+    "city": "Balkh / Baghdad, Iraq",
+    "classif": "Astronomer / Astrologer / Mathematician",
+    "lang": "Arabic",
+    "titles": "Albumasar (Latin) · Ja'far ibn Muhammad",
+    "school": "Abbasid Scientific Court — most influential Islamic astrologer; his Latin translations shaped European medieval astronomy",
+    "books": [
+      {
+        "title": "Introductorium in Astronomiam (Introduction to Astronomy)",
+        "url": "https://en.wikipedia.org/wiki/Abu_Ma%27shar_al-Balkhi",
+        "magnum": true,
+        "note": "Translated as 'Albumasar' in Latin; most influential Islamic astrology text in medieval Europe"
+      },
+      {
+        "title": "Wikipedia — Abu Ma'shar al-Balkhi",
+        "url": "https://en.wikipedia.org/wiki/Abu_Ma%27shar_al-Balkhi",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
     "lat": 33.3406,
     "lng": 44.4009
   },
@@ -1854,6 +2091,41 @@
     "source": "",
     "lat": 37.8882,
     "lng": -4.7794
+  },
+  {
+    "famous": "Al-Muzani",
+    "tradition": "Islamic Jurisprudence",
+    "type": "Jurist",
+    "primaryTitle": "Imam al-Muzani — Greatest Student of al-Shafi'i",
+    "full": "Abu Ibrahim Ismail ibn Yahya al-Muzani al-Misri al-Shafi'i",
+    "dob": 791,
+    "dod": 877,
+    "dob_s": "791",
+    "dod_s": "877",
+    "city": "Egypt / Cairo",
+    "classif": "Jurist / Scholar",
+    "lang": "Arabic",
+    "titles": "Imam al-Muzani · Nasir Madhhab al-Shafi'i",
+    "school": "Shafi'i School — al-Shafi'i's most distinguished student; his Mukhtasar is the foundational Shafi'i legal text",
+    "books": [
+      {
+        "title": "Mukhtasar al-Muzani (Compendium of Shafi'i Law)",
+        "url": "https://en.wikipedia.org/wiki/Al-Muzani",
+        "magnum": true,
+        "note": "Standard Shafi'i legal text used in madrasas for centuries — al-Shafi'i said 'al-Muzani is the champion of my school'"
+      },
+      {
+        "title": "Wikipedia — Al-Muzani",
+        "url": "https://en.wikipedia.org/wiki/Al-Muzani",
+        "magnum": false
+      }
+    ],
+    "teachers": [
+      "Imam al-Shafi'i"
+    ],
+    "source": "Wikidata",
+    "lat": 30.0444,
+    "lng": 31.2357
   },
   {
     "famous": "Dhul-Nun al-Misri",
@@ -1964,6 +2236,33 @@
     "source": "",
     "lat": 33.3406,
     "lng": 44.4009
+  },
+  {
+    "famous": "Fatima al-Fihri",
+    "tradition": "Islamic History",
+    "type": "Founder",
+    "primaryTitle": "Umm al-Banin — Founder of Al-Qarawiyyin",
+    "full": "Fatima bint Muhammad al-Fihri al-Qurashiyya",
+    "dob": 800,
+    "dod": 880,
+    "dob_s": "c. 800",
+    "dod_s": "c. 880",
+    "city": "Fez, Morocco",
+    "classif": "Philanthropist / Scholar / Educator",
+    "lang": "Arabic",
+    "titles": "Umm al-Banin (Mother of the Children) · Founder of the World's First University",
+    "school": "Al-Qarawiyyin — Founded 859 CE in Fez; fasted throughout 2-year construction; produced Ibn Rushd, Ibn Khaldun, Maimonides",
+    "books": [
+      {
+        "title": "Foundation of Al-Qarawiyyin (historical records)",
+        "url": "https://www.worldhistory.org/article/2662/fatima-al-fihri-and-al-qarawiyyin-university/",
+        "magnum": true
+      }
+    ],
+    "teachers": [],
+    "source": "",
+    "lat": 34.06,
+    "lng": -4.98
   },
   {
     "famous": "Al-Kindi",
@@ -2110,6 +2409,36 @@
     "lng": 64.4286
   },
   {
+    "famous": "Muhammad al-Jawad",
+    "tradition": "Early Ascetics",
+    "type": "Scholar",
+    "primaryTitle": "Imam al-Jawad — Ninth Imam; Youngest Imam at Age 9",
+    "full": "Muhammad ibn Ali al-Ridha al-Jawad al-Taqi al-Hashimi",
+    "dob": 811,
+    "dod": 835,
+    "dob_s": "811",
+    "dod_s": "835",
+    "city": "Medina / Baghdad",
+    "classif": "Imam / Scholar",
+    "lang": "Arabic",
+    "titles": "al-Jawad (The Generous) · al-Taqi (The God-Fearing) · Ninth Imam",
+    "school": "Prophetic Household (Ahl al-Bayt) — ninth Imam of Twelver Shia; became Imam at age 9; renowned for answers to theological questions",
+    "books": [
+      {
+        "title": "Wikipedia — Muhammad al-Jawad",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_al-Jawad",
+        "magnum": true,
+        "note": "Ninth Shia Imam; became Imam at age 9 — the youngest Imam; renowned for profound theological answers despite his young age"
+      }
+    ],
+    "teachers": [
+      "Ali al-Ridha"
+    ],
+    "source": "Wikidata",
+    "lat": 33.3406,
+    "lng": 44.4009
+  },
+  {
     "famous": "Imam Muslim",
     "tradition": "Hadith Sciences",
     "type": "Scholar",
@@ -2238,37 +2567,6 @@
     "lng": 67.3
   },
   {
-    "famous": "Fatima of Nishapur",
-    "tradition": "Early Ascetics",
-    "type": "Mystic",
-    "primaryTitle": "Malika al-Sufiyya — Queen of the Sufis",
-    "full": "Fatima bint Ahmad al-Naysaburiyya",
-    "dob": 788,
-    "dod": 838,
-    "dob_s": "c. 788",
-    "dod_s": "c. 838",
-    "city": "Nishapur, Khorasan",
-    "classif": "Mystic",
-    "lang": "Arabic / Persian",
-    "titles": "Malika al-Sufiyya · Sayyidat al-Awliya",
-    "school": "Khorasan School — the most celebrated female Sufi of Khorasan; Dhul-Nun al-Misri said she was his spiritual master",
-    "books": [
-      {
-        "title": "No written works — teachings transmitted orally by disciples",
-        "url": null,
-        "magnum": true,
-        "note": "Bayazid al-Bistami called her his spiritual teacher — one of the most remarkable attestations of female authority in Sufi history."
-      }
-    ],
-    "teachers": [
-      "36.2",
-      "58.8"
-    ],
-    "source": "",
-    "lat": 36.2,
-    "lng": 58.8
-  },
-  {
     "famous": "Ibn Khordadbeh",
     "tradition": "Islamic Sciences",
     "type": "Scholar",
@@ -2348,6 +2646,42 @@
     "source": "Tareekh Yakubi",
     "lat": 33.3406,
     "lng": 44.4009
+  },
+  {
+    "famous": "Muslim ibn al-Hajjaj",
+    "tradition": "Hadith Sciences",
+    "type": "Scholar",
+    "primaryTitle": "Sahih Muslim — Second Most Authoritative Hadith Collection",
+    "full": "Abu al-Husayn Muslim ibn al-Hajjaj al-Qushayri al-Naysaburi",
+    "dob": 821,
+    "dod": 875,
+    "dob_s": "821",
+    "dod_s": "875",
+    "city": "Nishapur, Iran",
+    "classif": "Hadith Scholar / Jurist",
+    "lang": "Arabic",
+    "titles": "Imam Muslim · Hafiz al-Hadith",
+    "school": "Khorasan School / Hadith Sciences — studied under Imam Ahmad ibn Hanbal and al-Bukhari",
+    "books": [
+      {
+        "title": "Sahih Muslim (3,033 hadiths — most authentic after Bukhari)",
+        "url": "https://sunnah.com/muslim",
+        "magnum": true,
+        "note": "Sahih Muslim is the second most authoritative hadith collection; studied under Imam Ahmad ibn Hanbal"
+      },
+      {
+        "title": "Wikipedia — Muslim ibn al-Hajjaj",
+        "url": "https://en.wikipedia.org/wiki/Muslim_ibn_al-Hajjaj",
+        "magnum": false
+      }
+    ],
+    "teachers": [
+      "Imam Ahmad ibn Hanbal",
+      "Imam al-Bukhari"
+    ],
+    "source": "Wikidata",
+    "lat": 36.2,
+    "lng": 58.8
   },
   {
     "famous": "Al-Mutawakkil",
@@ -2597,6 +2931,35 @@
     "lng": 44.4
   },
   {
+    "famous": "Al-Tahawi",
+    "tradition": "Islamic Jurisprudence",
+    "type": "Scholar",
+    "primaryTitle": "Imam Ahl al-Sunna — The Creed of the Majority",
+    "full": "Abu Ja'far Ahmad ibn Muhammad al-Azdi al-Tahawi al-Misri",
+    "dob": 843,
+    "dod": 935,
+    "dob_s": "843",
+    "dod_s": "935",
+    "city": "Taha / Cairo, Egypt",
+    "classif": "Jurist / Theologian / Hadith Scholar",
+    "lang": "Arabic",
+    "titles": "Imam al-Tahawi · Faqih of Egypt · Muhadith",
+    "school": "Hanafi School — switched from Shafi'i to Hanafi under his maternal uncle Al-Muzani; his Al-Aqida al-Tahawiyya is the most universally accepted creedal text in Sunni Islam",
+    "books": [
+      {
+        "title": "Al-Aqidah al-Tahawiyyah (The Creed of Imam al-Tahawi)",
+        "url": "https://archive.org/details/TheCreedOfImamAl-tahawi",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Al-Muzani"
+    ],
+    "source": "",
+    "lat": 30.0444,
+    "lng": 31.2357
+  },
+  {
     "famous": "Al-Yaqubi",
     "tradition": "Islamic History",
     "type": "Scholar",
@@ -2821,6 +3184,42 @@
     "lng": 64.4286
   },
   {
+    "famous": "Mansur Al-Hallaj",
+    "tradition": "Baghdad School",
+    "type": "Mystic",
+    "primaryTitle": "Ana al-Haqq — I am the Truth; Martyr of Islamic Mysticism",
+    "full": "Abu al-Mughith al-Husayn ibn Mansur al-Hallaj al-Baydi",
+    "dob": 858,
+    "dod": 922,
+    "dob_s": "858",
+    "dod_s": "922",
+    "city": "Wasit / Baghdad, Iraq",
+    "classif": "Mystic / Poet / Martyr",
+    "lang": "Arabic / Persian",
+    "titles": "al-Hallaj (The Cotton Carder) · Ana al-Haqq · Martyr of Love",
+    "school": "Baghdad Sufi School — student of Junayd; executed for 'Ana al-Haqq' (I am the Truth); most controversial Sufi martyr",
+    "books": [
+      {
+        "title": "Kitab al-Tawasin (Book of the Ta and Sin)",
+        "url": "https://archive.org/search?query=Hallaj+Tawasin+mystical",
+        "magnum": true,
+        "note": "Mystical masterwork; his poetry and 'Ana al-Haqq' transformed Islamic mysticism; executed in 922 CE"
+      },
+      {
+        "title": "Wikipedia — Al-Hallaj",
+        "url": "https://en.wikipedia.org/wiki/Al-Hallaj",
+        "magnum": false
+      }
+    ],
+    "teachers": [
+      "Junayd of Baghdad",
+      "Sahl al-Tustari"
+    ],
+    "source": "Wikidata",
+    "lat": 33.3406,
+    "lng": 44.4009
+  },
+  {
     "famous": "Ibn 'Ata al-Adami",
     "tradition": "Baghdad School",
     "type": "Mystic",
@@ -2907,6 +3306,39 @@
     "source": "Tareekh Yakubi",
     "lat": 35.6892,
     "lng": 51.389
+  },
+  {
+    "famous": "Abu Bakr al-Razi",
+    "tradition": "Islamic Sciences",
+    "type": "Scientist",
+    "primaryTitle": "Rhazes — Greatest Physician of the Medieval World",
+    "full": "Abu Bakr Muhammad ibn Zakariyya al-Razi al-Tabib",
+    "dob": 865,
+    "dod": 925,
+    "dob_s": "865",
+    "dod_s": "925",
+    "city": "Ray / Baghdad, Iraq",
+    "classif": "Physician / Chemist / Philosopher",
+    "lang": "Arabic / Persian",
+    "titles": "Rhazes (Latin) · al-Tabib al-A'zam · First to distinguish smallpox from measles",
+    "school": "Medical / Philosophical School — greatest medieval clinician; his Al-Hawi was the largest medical encyclopedia ever written",
+    "books": [
+      {
+        "title": "Al-Hawi fi al-Tibb (Continens — 25 volumes of medical knowledge)",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi",
+        "magnum": true,
+        "note": "Largest medical encyclopedia ever written; first to describe and differentiate smallpox from measles"
+      },
+      {
+        "title": "Wikipedia — Muhammad ibn Zakariya al-Razi",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 35.5833,
+    "lng": 51.4333
   },
   {
     "famous": "Al-Farabi",
@@ -3228,6 +3660,39 @@
     "lng": 51.6679
   },
   {
+    "famous": "Abd al-Rahman al-Sufi",
+    "tradition": "Islamic Sciences",
+    "type": "Scientist",
+    "primaryTitle": "al-Sufi — Greatest Islamic Astronomer of Fixed Stars",
+    "full": "Abu al-Husayn Abd al-Rahman ibn Umar al-Sufi al-Razi",
+    "dob": 903,
+    "dod": 986,
+    "dob_s": "903",
+    "dod_s": "986",
+    "city": "Ray, Iran / Baghdad",
+    "classif": "Astronomer / Scientist",
+    "lang": "Arabic",
+    "titles": "al-Sufi · Azophi (Latin) · First Observer of Andromeda Galaxy",
+    "school": "Buyid Court Astronomy — court astronomer; greatest Islamic observational astronomer; 1,018 stars catalogued",
+    "books": [
+      {
+        "title": "Kitab Suwar al-Kawakib (Book of Fixed Stars)",
+        "url": "https://en.wikipedia.org/wiki/Abd_al-Rahman_al-Sufi",
+        "magnum": true,
+        "note": "Catalogued 1,018 stars with unprecedented accuracy; first recorded observation of the Andromeda galaxy (called 'Little Cloud')"
+      },
+      {
+        "title": "Wikipedia — Abd al-Rahman al-Sufi",
+        "url": "https://en.wikipedia.org/wiki/Abd_al-Rahman_al-Sufi",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 35.5833,
+    "lng": 51.4333
+  },
+  {
     "famous": "Abu Talib al-Makki",
     "tradition": "Baghdad School",
     "type": "Scholar",
@@ -3470,36 +3935,6 @@
     "source": "",
     "lat": 33.3406,
     "lng": 44.4009
-  },
-  {
-    "famous": "Abu Talib al-Makki",
-    "tradition": "Baghdad School",
-    "type": "Scholar",
-    "primaryTitle": "Imam al-'Ilm al-Batin",
-    "full": "Abu Talib Muhammad ibn 'Ali al-Makki",
-    "dob": 910,
-    "dod": 996,
-    "dob_s": "c. 910",
-    "dod_s": "996",
-    "city": "Mecca / Baghdad",
-    "classif": "Scholar / Mystic",
-    "lang": "Arabic",
-    "titles": "Imam al-'Ilm al-Batin (Imam of Inner Knowledge)",
-    "school": "Baghdad / Meccan School",
-    "books": [
-      {
-        "title": "Qut al-Qulub (Nourishment of Hearts)",
-        "url": "https://archive.org/search?query=Qut%20al-Qulub%20Abu%20Talib%20Makki",
-        "magnum": true,
-        "note": "Major influence on al-Ghazali's Ihya Ulum al-Din."
-      }
-    ],
-    "teachers": [
-      "Sahl al-Tustari"
-    ],
-    "source": "",
-    "lat": 33.3,
-    "lng": 44.4
   },
   {
     "famous": "Ibn al-Nadim",
@@ -4029,6 +4464,39 @@
       "Sheikh Mufid"
     ],
     "source": ""
+  },
+  {
+    "famous": "Sharif Radhi",
+    "tradition": "Early Ascetics",
+    "type": "Scholar",
+    "primaryTitle": "Al-Sharif al-Radhi — Compiler of Nahj al-Balagha",
+    "full": "Muhammad ibn al-Husayn al-Musawi al-Sharif al-Radhi al-Baghdadi",
+    "dob": 970,
+    "dod": 1016,
+    "dob_s": "970",
+    "dod_s": "1016",
+    "city": "Baghdad, Iraq",
+    "classif": "Poet / Scholar / Compiler",
+    "lang": "Arabic",
+    "titles": "Al-Sharif al-Radhi · Dhu al-Hasabayn",
+    "school": "Shia Scholarly Tradition / Baghdad — compiled Nahj al-Balagha, the collected sermons of Ali ibn Abi Talib",
+    "books": [
+      {
+        "title": "Nahj al-Balagha (Peak of Eloquence — collected sermons of Ali ibn Abi Talib)",
+        "url": "https://en.wikipedia.org/wiki/Nahj_al-Balagha",
+        "magnum": true,
+        "note": "Compiled Nahj al-Balagha — masterpiece of Arabic prose; the collected sermons, letters, and sayings of Ali ibn Abi Talib"
+      },
+      {
+        "title": "Wikipedia — Al-Sharif al-Radi",
+        "url": "https://en.wikipedia.org/wiki/Al-Sharif_al-Radi",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 33.3406,
+    "lng": 44.4009
   },
   {
     "famous": "Mahmud of Ghazni",
@@ -4583,6 +5051,72 @@
     "lng": 61.8318
   },
   {
+    "famous": "Mahmud al-Kashgari",
+    "tradition": "Islamic Sciences",
+    "type": "Scholar",
+    "primaryTitle": "Father of Turkic Linguistics — Diwan Lughat al-Turk",
+    "full": "Mahmud ibn al-Husayn ibn Muhammad al-Kashgari",
+    "dob": 1029,
+    "dod": 1101,
+    "dob_s": "c. 1029",
+    "dod_s": "c. 1101",
+    "city": "Kashgar, Central Asia",
+    "classif": "Linguist / Lexicographer",
+    "lang": "Arabic / Turkic",
+    "titles": "al-Kashgari — The Kashgarian",
+    "school": "Turkic Linguistic School — compiled the first comprehensive dictionary of Turkic languages",
+    "books": [
+      {
+        "title": "Diwan Lughat al-Turk (Compendium of Turkic Languages)",
+        "url": "https://en.wikipedia.org/wiki/Diwan_Lughat_al-Turk",
+        "magnum": true,
+        "note": "First comprehensive Turkic language dictionary and encyclopedia — essential source for Turkic history and linguistics"
+      },
+      {
+        "title": "Wikipedia — Mahmud al-Kashgari",
+        "url": "https://en.wikipedia.org/wiki/Mahmud_al-Kashgari",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 39.47,
+    "lng": 75.99
+  },
+  {
+    "famous": "Al-Baghawi",
+    "tradition": "Islamic Jurisprudence",
+    "type": "Scholar",
+    "primaryTitle": "Muhyi al-Sunna — Reviver of the Sunnah",
+    "full": "Abu Muhammad al-Husayn ibn Mas'ud al-Baghawi al-Shafi'i",
+    "dob": 1044,
+    "dod": 1122,
+    "dob_s": "1044",
+    "dod_s": "1122",
+    "city": "Bagh, Khorasan, Iran",
+    "classif": "Jurist / Hadith Scholar / Exegete",
+    "lang": "Arabic",
+    "titles": "Muhyi al-Sunna · Rukn al-Din",
+    "school": "Shafi'i / Khorasan School — leading Shafi'i jurist; his Tafsir is an authoritative Quranic commentary",
+    "books": [
+      {
+        "title": "Masabih al-Sunnah (Lamps of the Sunnah — hadith compilation)",
+        "url": "https://en.wikipedia.org/wiki/Al-Baghawi",
+        "magnum": true,
+        "note": "His Tafsir al-Baghawi and Masabih al-Sunnah are authoritative references in Sunni scholarship"
+      },
+      {
+        "title": "Wikipedia — Al-Baghawi",
+        "url": "https://en.wikipedia.org/wiki/Al-Baghawi",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 34.3,
+    "lng": 62.12
+  },
+  {
     "famous": "Yusuf al-Hamadani",
     "tradition": "Naqshbandiyya",
     "type": "Mystic",
@@ -4946,6 +5480,39 @@
     "lng": -0.8773
   },
   {
+    "famous": "Avempace",
+    "tradition": "Islamic Philosophy",
+    "type": "Philosopher",
+    "primaryTitle": "Ibn Bajja — First Philosopher of the Muslim West",
+    "full": "Abu Bakr Muhammad ibn Yahya ibn al-Sayigh al-Tujini Ibn Bajja al-Andalusi",
+    "dob": 1085,
+    "dod": 1138,
+    "dob_s": "c. 1085",
+    "dod_s": "1138",
+    "city": "Zaragoza / Fez, Al-Andalus",
+    "classif": "Philosopher / Physician / Musician",
+    "lang": "Arabic",
+    "titles": "Avempace (Latin) · Ibn Bajja",
+    "school": "Andalusian Peripatetic School — first major philosopher of Muslim Spain; influenced Ibn Rushd and Latin Scholastics",
+    "books": [
+      {
+        "title": "Tadbir al-Mutawahhid (Governance of the Solitary)",
+        "url": "https://en.wikipedia.org/wiki/Avempace",
+        "magnum": true,
+        "note": "First great philosophical work of Muslim Spain; influenced Ibn Rushd and through him, European Scholasticism"
+      },
+      {
+        "title": "Wikipedia — Avempace",
+        "url": "https://en.wikipedia.org/wiki/Avempace",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.6488,
+    "lng": -0.8891
+  },
+  {
     "famous": "Shuhda al-Katiba",
     "tradition": "Hadith Sciences",
     "type": "Scholar",
@@ -5156,6 +5723,39 @@
     "lng": -4.8
   },
   {
+    "famous": "Ibn Asakir",
+    "tradition": "Islamic History",
+    "type": "Historian",
+    "primaryTitle": "Hafiz al-Sham — Greatest Historian of Damascus",
+    "full": "Abu al-Qasim Ali ibn al-Hasan ibn Hibat Allah Ibn Asakir al-Dimashqi",
+    "dob": 1105,
+    "dod": 1176,
+    "dob_s": "1105",
+    "dod_s": "1176",
+    "city": "Damascus, Syria",
+    "classif": "Historian / Hadith Scholar",
+    "lang": "Arabic",
+    "titles": "Hafiz al-Sham · Muhaqqiq al-Islam",
+    "school": "Shafi'i / Syrian Hadith School — his Tarikh Dimashq is the most comprehensive Islamic biographical dictionary",
+    "books": [
+      {
+        "title": "Tarikh Madinat Dimashq (History of Damascus — 80 volumes)",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Asakir",
+        "magnum": true,
+        "note": "Most comprehensive Islamic biographical dictionary ever compiled — 80 volumes"
+      },
+      {
+        "title": "Wikipedia — Ibn Asakir",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Asakir",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 33.5138,
+    "lng": 36.2765
+  },
+  {
     "famous": "Ibn al-Jawzi",
     "tradition": "Islamic Jurisprudence",
     "type": "Scholar",
@@ -5309,6 +5909,39 @@
     "lng": -4.8
   },
   {
+    "famous": "Abu Madyan",
+    "tradition": "Qadiriyya",
+    "type": "Mystic",
+    "primaryTitle": "Shu'ayb al-Andalusi — Patron Saint of Tlemcen",
+    "full": "Abu Madyan Shu'ayb ibn al-Husayn al-Ansari al-Andalusi",
+    "dob": 1126,
+    "dod": 1198,
+    "dob_s": "c. 1126",
+    "dod_s": "1198",
+    "city": "Seville / Bejaia, Algeria",
+    "classif": "Mystic / Scholar / Founder",
+    "lang": "Arabic",
+    "titles": "Patron Saint of Tlemcen · Teacher of the West",
+    "school": "Qadiriyya / Maghrebi Sufism — teacher of Ibn Arabi's masters; the most important Sufi of the Muslim West",
+    "books": [
+      {
+        "title": "Uns al-Wahid (Intimate Companion of the Solitary)",
+        "url": "https://en.wikipedia.org/wiki/Abu_Madyan",
+        "magnum": true,
+        "note": "The most important Sufi master of the Muslim West; his lineage connects to Ibn Arabi"
+      },
+      {
+        "title": "Wikipedia — Abu Madyan",
+        "url": "https://en.wikipedia.org/wiki/Abu_Madyan",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 35.0,
+    "lng": -1.32
+  },
+  {
     "famous": "Ruzbihan Baqli",
     "tradition": "Khorasan School",
     "type": "Mystic",
@@ -5343,6 +5976,39 @@
     "source": "",
     "lat": 29.6,
     "lng": 52.5
+  },
+  {
+    "famous": "al-Jazari",
+    "tradition": "Islamic Sciences",
+    "type": "Scientist",
+    "primaryTitle": "Father of Robotics and Mechanical Engineering",
+    "full": "Badi al-Zaman Abu al-Izz Ismail ibn al-Razzaz al-Jazari",
+    "dob": 1136,
+    "dod": 1206,
+    "dob_s": "c. 1136",
+    "dod_s": "1206",
+    "city": "Upper Mesopotamia / Diyarbakir, Turkey",
+    "classif": "Engineer / Inventor / Scientist",
+    "lang": "Arabic",
+    "titles": "al-Jazari · Father of Robotics",
+    "school": "Artuqid Court Engineering — chief engineer at the Artuqid court in Diyarbakir",
+    "books": [
+      {
+        "title": "Kitab fi Ma'rifat al-Hiyal al-Handasiyya (Book of Knowledge of Ingenious Mechanical Devices)",
+        "url": "https://archive.org/search?query=al-Jazari+ingenious+mechanical+devices",
+        "magnum": true,
+        "note": "Describes 50 mechanical devices including water clocks, automata, and pumps — the Kitab is the founding text of robotics"
+      },
+      {
+        "title": "Wikipedia — al-Jazari",
+        "url": "https://en.wikipedia.org/wiki/Al-Jazari",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 37.91,
+    "lng": 40.23
   },
   {
     "famous": "Salahuddin Ayyubi",
@@ -5717,36 +6383,6 @@
     "lng": 58.8
   },
   {
-    "famous": "Fakhr al-Din Razi",
-    "tradition": "Islamic Theology",
-    "type": "Scholar",
-    "primaryTitle": "Imam al-Mushakkikin — Imam of the Doubters",
-    "full": "Muhammad ibn Umar ibn al-Husayn al-Razi",
-    "dob": 1149,
-    "dod": 1209,
-    "dob_s": "1149",
-    "dod_s": "1209",
-    "city": "Ray / Herat, Iran",
-    "classif": "Theologian / Philosopher",
-    "lang": "Persian / Arabic",
-    "titles": "Imam al-Mushakkikin · Fakhr al-Din",
-    "school": "Ash'ari school — the most sophisticated medieval Islamic theologian and philosopher; his Tafsir is the most intellectually rigorous",
-    "books": [
-      {
-        "title": "Mafatih al-Ghayb (The Great Tafsir — 32 vols)",
-        "url": "https://archive.org/search?query=Mafatih%20al-Ghayb%20Fakhr%20al-Din%20Razi%20tafsir",
-        "magnum": true,
-        "note": "Most encyclopaedic Quranic commentary ever written — covers theology, philosophy, medicine and natural science."
-      }
-    ],
-    "teachers": [
-      "Imam al-Juwayni"
-    ],
-    "source": "",
-    "lat": 36.2,
-    "lng": 58.8
-  },
-  {
     "famous": "Yahya Suhrawardi (Maqtul)",
     "tradition": "Ishraqiyya",
     "type": "Philosopher",
@@ -5825,34 +6461,6 @@
     "lang": "Arabic",
     "titles": "Qutb al-Wujud (Pole of Being) · Teacher of Abu al-Hasan al-Shadhili · Martyr",
     "school": "Moroccan School / Shadhiliyya Founding — Murdered on his mountain; his student founded the Shadhiliyya",
-    "books": [
-      {
-        "title": "Al-Salat al-Mashishiyya (The Mashishi Prayer)",
-        "url": "https://archive.org/search?query=Salat%20al-Mashishiyya%20Ibn%20Mashish%20prayer",
-        "magnum": true,
-        "note": "One of the most revered Sufi prayers in the world — recited daily by millions in the Shadhili tradition."
-      }
-    ],
-    "teachers": [],
-    "source": "",
-    "lat": 34.9,
-    "lng": -5.3
-  },
-  {
-    "famous": "Ibn Mashish",
-    "tradition": "Shadhiliyya",
-    "type": "Mystic",
-    "primaryTitle": "Pole of the Maghrib — Teacher of Al-Shadhili",
-    "full": "Abd al-Salam ibn Mashish al-Hasani",
-    "dob": 1163,
-    "dod": 1228,
-    "dob_s": "c. 1163",
-    "dod_s": "1228",
-    "city": "Jabal Alam, Morocco",
-    "classif": "Mystic",
-    "lang": "Arabic",
-    "titles": "Qutb al-Maghrib · Shaykh al-Shadhili",
-    "school": "Shadhiliyya — the greatest Moroccan Sufi of his era; spiritual teacher of Abu'l-Hasan al-Shadhili; his famous prayer is recited globally",
     "books": [
       {
         "title": "Al-Salat al-Mashishiyya (The Mashishi Prayer)",
@@ -6084,43 +6692,6 @@
     "lng": 36.7552
   },
   {
-    "famous": "Ibn al-Farid",
-    "tradition": "Akbarian",
-    "type": "Poet",
-    "primaryTitle": "Sultan al-'Ashiqin — Sultan of Lovers",
-    "full": "Abu Hafs Sharaf al-Din 'Umar ibn al-Farid al-Misri",
-    "dob": 1181,
-    "dod": 1234,
-    "dob_s": "1181",
-    "dod_s": "1234",
-    "city": "Cairo, Egypt",
-    "classif": "Poet / Mystic",
-    "lang": "Arabic",
-    "titles": "Sultan al-'Ashiqin (Sultan of Lovers) · Imam of Sufi Poets in Arabic",
-    "school": "Egyptian School / Akbarian / Mystical Arabic Poetry",
-    "books": [
-      {
-        "title": "Nazm al-Suluk (Ta'iyyat al-Kubra — Poem of the Mystical Way)",
-        "url": "https://archive.org/search?query=Nazm%20al-Suluk%20Ibn%20al-Farid%20Arabic%20mystical%20ode",
-        "magnum": true,
-        "note": "Greatest mystical ode in Arabic — 761 verses."
-      },
-      {
-        "title": "Khamriyya (Ode of Wine)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "30.0",
-      "31.2"
-    ],
-    "source": "",
-    "lat": 30.0,
-    "lng": 31.2
-  },
-  {
     "famous": "Umar Ibn al-Farid",
     "tradition": "Persian Poetry",
     "type": "Poet",
@@ -6201,37 +6772,6 @@
     "lng": 46.3
   },
   {
-    "famous": "Shams-i-Tabrizi",
-    "tradition": "Mawlawiyya",
-    "type": "Mystic",
-    "primaryTitle": "Mawlana's Mirror — The Sun of Tabriz",
-    "full": "Shams al-Din Muhammad ibn Ali ibn Malik-dad Tabrizi",
-    "dob": 1185,
-    "dod": 1248,
-    "dob_s": "c. 1185",
-    "dod_s": "c. 1248",
-    "city": "Tabriz / Konya, Anatolia",
-    "classif": "Mystic",
-    "lang": "Persian",
-    "titles": "Shams-i-Tabrizi · Mawlana's Mirror",
-    "school": "Mawlawiyya — the transformative teacher who ignited Rumi's spiritual fire; their union created the Mathnawi and Divan-i Shams",
-    "books": [
-      {
-        "title": "Maqalat-e Shams (Discourses of Shams)",
-        "url": "https://archive.org/search?query=Maqalat-e%20Shams%20Tabrizi%20discourses%20Persian",
-        "magnum": true,
-        "note": "Rumi named his entire Divan after Shams: the Divan-i Shams-i Tabrizi."
-      }
-    ],
-    "teachers": [
-      "38.1",
-      "46.3"
-    ],
-    "source": "",
-    "lat": 38.1,
-    "lng": 46.3
-  },
-  {
     "famous": "Shams Tabrizi",
     "tradition": "Qadiriyya",
     "type": "Mystic",
@@ -6257,6 +6797,39 @@
     "source": "",
     "lat": 37.0667,
     "lng": 35.3333
+  },
+  {
+    "famous": "Sunjata Keïta",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Lion King — Founder of the Mali Empire",
+    "full": "Sundiata Keïta Sogolon Djata Manden Diara",
+    "dob": 1190,
+    "dod": 1255,
+    "dob_s": "c. 1190",
+    "dod_s": "c. 1255",
+    "city": "Niani, Mali Empire (modern Guinea)",
+    "classif": "Emperor / Founder",
+    "lang": "Mande / Arabic",
+    "titles": "Mansa Sogolon Djata · Lion of Mali · Manden Diara",
+    "school": "Mali Imperial Court — defeated Sosso king Sumanguru Kante at Kirina 1235; founded largest West African empire",
+    "books": [
+      {
+        "title": "Epic of Sundiata (oral tradition — The Sundiata Keita Epic)",
+        "url": "https://en.wikipedia.org/wiki/Sundiata_Keita",
+        "magnum": true,
+        "note": "Founded the Mali Empire 1235 CE; the Sundiata Epic is West Africa's greatest oral history"
+      },
+      {
+        "title": "Wikipedia — Sundiata Keita",
+        "url": "https://en.wikipedia.org/wiki/Sundiata_Keita",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 11.8333,
+    "lng": -8.3
   },
   {
     "famous": "Ertugrul Ghazi",
@@ -6339,6 +6912,34 @@
       "Moinuddin Chishti"
     ],
     "source": ""
+  },
+  {
+    "famous": "Muhammad I of Granada",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Ibn al-Ahmar — Founder of Nasrid Dynasty and the Alhambra",
+    "full": "Muhammad ibn Yusuf ibn Nasr ibn al-Ahmar al-Nasri al-Andalusi",
+    "dob": 1194,
+    "dod": 1273,
+    "dob_s": "1194",
+    "dod_s": "1273",
+    "city": "Arjona / Granada, Al-Andalus",
+    "classif": "Emir / Founder / Builder",
+    "lang": "Arabic",
+    "titles": "Ibn al-Ahmar · Muhammad al-Ghalib · No Victor but God",
+    "school": "Nasrid Dynasty — founder; began construction of the Alhambra; adopted the motto 'Wa la ghalib illa Allah' (No victor but God)",
+    "books": [
+      {
+        "title": "Wikipedia — Muhammad I of Granada",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_I_of_Granada",
+        "magnum": true,
+        "note": "Founded the Nasrid dynasty; began the Alhambra palace; his dynasty ruled Granada until the last sultan Boabdil in 1492"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 37.1765,
+    "lng": -3.5882
   },
   {
     "famous": "Abu'l-Hasan al-Shadhili",
@@ -6504,6 +7105,39 @@
     "source": ""
   },
   {
+    "famous": "Zakariya al-Qazwini",
+    "tradition": "Islamic Sciences",
+    "type": "Scholar",
+    "primaryTitle": "Father of Islamic Geography — Aja'ib al-Makhluqat",
+    "full": "Zakariya ibn Muhammad ibn Mahmud al-Qazwini al-Shafi'i",
+    "dob": 1203,
+    "dod": 1283,
+    "dob_s": "1203",
+    "dod_s": "1283",
+    "city": "Qazvin, Iran",
+    "classif": "Geographer / Cosmographer / Scholar",
+    "lang": "Arabic",
+    "titles": "al-Qazwini · Father of Islamic Cosmography",
+    "school": "Ilkhanid Court — most widely read Islamic cosmographer; his encyclopedia was copied and illustrated for centuries",
+    "books": [
+      {
+        "title": "Aja'ib al-Makhluqat wa Ghara'ib al-Mawjudat (Wonders of Creation)",
+        "url": "https://en.wikipedia.org/wiki/Zakariya_al-Qazwini",
+        "magnum": true,
+        "note": "Most widely read Islamic encyclopedia of the medieval world — richly illustrated with cosmography, zoology, and geography"
+      },
+      {
+        "title": "Wikipedia — Zakariya al-Qazwini",
+        "url": "https://en.wikipedia.org/wiki/Zakariya_al-Qazwini",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 36.2688,
+    "lng": 50.0041
+  },
+  {
     "famous": "Jalal ad-Din Rumi",
     "tradition": "Mawlawiyya",
     "type": "Founder",
@@ -6601,6 +7235,39 @@
     "lng": 32.4932
   },
   {
+    "famous": "Ibn Wasil",
+    "tradition": "Islamic History",
+    "type": "Historian",
+    "primaryTitle": "Mufarrij al-Kurub — Primary Historian of the Crusades",
+    "full": "Jamal al-Din Muhammad ibn Salim Ibn Wasil al-Hamawi al-Shafi'i",
+    "dob": 1208,
+    "dod": 1298,
+    "dob_s": "1208",
+    "dod_s": "1298",
+    "city": "Hama, Syria",
+    "classif": "Historian / Diplomat / Scholar",
+    "lang": "Arabic",
+    "titles": "Diplomat to France · Court Historian of Ayyubids and Mamluks",
+    "school": "Ayyubid-Mamluk Court — his Mufarrij al-Kurub is primary Arabic source for Crusader-era history",
+    "books": [
+      {
+        "title": "Mufarrij al-Kurub fi Akhbar Bani Ayyub (Dispeller of Anxieties)",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Wasil",
+        "magnum": true,
+        "note": "Primary Arabic source for Crusader-era history; author was also sent as diplomat to France's King Louis IX"
+      },
+      {
+        "title": "Wikipedia — Ibn Wasil",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Wasil",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 35.1418,
+    "lng": 36.7542
+  },
+  {
     "famous": "Hajji Bektash Veli",
     "tradition": "Qalandari",
     "type": "Founder",
@@ -6696,6 +7363,39 @@
       "Abu'l-Hasan al-Shadhili"
     ],
     "source": ""
+  },
+  {
+    "famous": "Ibn Khallikan",
+    "tradition": "Islamic History",
+    "type": "Historian",
+    "primaryTitle": "Wafayat al-A'yan — Master Biographer of Islam",
+    "full": "Shams al-Din Ahmad ibn Muhammad ibn Abi Bakr Ibn Khallikan al-Barmaki",
+    "dob": 1211,
+    "dod": 1282,
+    "dob_s": "1211",
+    "dod_s": "1282",
+    "city": "Erbil / Cairo / Damascus",
+    "classif": "Historian / Jurist",
+    "lang": "Arabic",
+    "titles": "Qadi al-Qudah of Syria",
+    "school": "Shafi'i School — Chief Judge of Syria; his biographical dictionary set the standard for Islamic biography",
+    "books": [
+      {
+        "title": "Wafayat al-A'yan wa Anba' Abna' al-Zaman (Deaths of Notables)",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Khallikan",
+        "magnum": true,
+        "note": "Greatest medieval Islamic biographical dictionary — 865 detailed entries"
+      },
+      {
+        "title": "Wikipedia — Ibn Khallikan",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Khallikan",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 33.5138,
+    "lng": 36.2765
   },
   {
     "famous": "Al-Shushtari",
@@ -6925,42 +7625,6 @@
       "Jalal ad-Din Rumi"
     ],
     "source": ""
-  },
-  {
-    "famous": "Al-Nawawi",
-    "tradition": "Islamic Jurisprudence",
-    "type": "Scholar",
-    "primaryTitle": "Imam al-Nawawi — The Ascetic Imam of the Shafi'i School",
-    "full": "Abu Zakariyya Muhyi al-Din Yahya ibn Sharaf al-Nawawi al-Dimashqi",
-    "dob": 1233,
-    "dod": 1277,
-    "dob_s": "1233",
-    "dod_s": "1277",
-    "city": "Nawa / Damascus, Syria",
-    "classif": "Jurist / Hadith Scholar / Mystic",
-    "lang": "Arabic",
-    "titles": "Imam al-Nawawi · Muhyi al-Din (Reviver of Religion) · Refused gifts from rulers; lived in extreme asceticism",
-    "school": "Shafi'i / Hadith Sciences — Most important post-classical Shafi'i jurist; died aged 44 having transformed Islamic law",
-    "books": [
-      {
-        "title": "Riyadh al-Salihin (Gardens of the Righteous)",
-        "url": "https://sunnah.com/riyadussalihin",
-        "magnum": true,
-        "note": "Most widely read hadith anthology in the Muslim world — taught in every Islamic school globally."
-      },
-      {
-        "title": "Al-Arba'in al-Nawawiyya (Forty Hadith)",
-        "url": "https://sunnah.com/nawawi40",
-        "magnum": false,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Imam al-Juwayni"
-    ],
-    "source": "",
-    "lat": 32.8,
-    "lng": 36.0
   },
   {
     "famous": "Yahya ibn Sharif al-Nawawi",
@@ -7332,42 +7996,6 @@
     ],
     "teachers": [],
     "source": ""
-  },
-  {
-    "famous": "Ibn Ata Allah al-Iskandari",
-    "tradition": "Shadhiliyya",
-    "type": "Scholar",
-    "primaryTitle": "Third Master of the Shadhili Path",
-    "full": "Taj al-Din Ahmad ibn Muhammad ibn Abd al-Karim ibn Ata Allah al-Iskandari",
-    "dob": 1250,
-    "dod": 1309,
-    "dob_s": "c. 1250",
-    "dod_s": "1309",
-    "city": "Alexandria / Cairo, Egypt",
-    "classif": "Mystic / Scholar",
-    "lang": "Arabic",
-    "titles": "Taj al-Din · Imam al-Tasawwuf",
-    "school": "Shadhiliyya — third master of the Shadhili path; his Hikam are among the most memorized Islamic texts",
-    "books": [
-      {
-        "title": "Al-Hikam al-Ata'iyya (Book of Wisdom — 264 aphorisms)",
-        "url": "https://archive.org/details/TheBookOfWisdomKitabAlHikamOfIbnAtaAllahAlSakandari",
-        "magnum": true,
-        "note": "Most memorised and commented-upon text in Islamic mysticism after the Quran."
-      },
-      {
-        "title": "Miftah al-Falah (Key to Salvation)",
-        "url": "https://archive.org/search?query=Miftah%20al-Falah%20Ibn%20Ata%20Allah%20key%20salvation",
-        "magnum": false,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Abu'l-Hasan al-Shadhili"
-    ],
-    "source": "",
-    "lat": 31.2,
-    "lng": 29.9
   },
   {
     "famous": "Dawud al-Kayseri",
@@ -8025,6 +8653,34 @@
     "lng": 66.9597
   },
   {
+    "famous": "Murad I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Hudavendigar — First Formally Titled Ottoman Sultan",
+    "full": "Murad ibn Orhan ibn Osman al-Uthman al-Ghazi",
+    "dob": 1326,
+    "dod": 1389,
+    "dob_s": "1326",
+    "dod_s": "1389",
+    "city": "Bursa / Adrianople, Ottoman Empire",
+    "classif": "Sultan / Conqueror",
+    "lang": "Ottoman Turkish",
+    "titles": "Hudavendigar (Sovereign Lord) · Ghazi · First to use title Sultan",
+    "school": "Ottoman Dynasty — third Ottoman ruler; first to use the title Sultan; conquered much of the Balkans; killed at Kosovo",
+    "books": [
+      {
+        "title": "Wikipedia — Murad I",
+        "url": "https://en.wikipedia.org/wiki/Murad_I",
+        "magnum": true,
+        "note": "First Ottoman ruler to use the title 'Sultan'; conquered Adrianople, Bulgaria, and Serbia; killed at Kosovo 1389"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 40.1885,
+    "lng": 29.061
+  },
+  {
     "famous": "Al-Subki",
     "tradition": "Islamic Jurisprudence",
     "type": "Scholar",
@@ -8091,48 +8747,6 @@
     "lang": "Arabic",
     "titles": "Father of Sociology · Father of Modern Historiography · Inventor of the science of 'Asabiyyah",
     "school": "Maliki / Independent — Founded the philosophy of history and social science centuries before Hegel or Marx",
-    "books": [
-      {
-        "title": "Muqaddimah (The Introduction to his Universal History)",
-        "url": "https://archive.org/details/muqaddimahibn00khaldun",
-        "magnum": true,
-        "note": "The greatest work of historiography ever written — Arnold Toynbee called it 'the most comprehensive philosophic effort.'"
-      },
-      {
-        "title": "Kitab al-'Ibar (Book of Lessons — Universal History, 7 vols)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Wikipedia — Ibn Khaldun",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Khaldun",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
-    "teachers": [
-      "Al-Masudi"
-    ],
-    "source": "",
-    "lat": 36.8,
-    "lng": 10.2
-  },
-  {
-    "famous": "Ibn Khaldun",
-    "tradition": "Islamic History",
-    "type": "Historian",
-    "primaryTitle": "Waliy al-Din — Father of Sociology",
-    "full": "Abd al-Rahman ibn Muhammad ibn Khaldun",
-    "dob": 1332,
-    "dod": 1406,
-    "dob_s": "1332",
-    "dod_s": "1406",
-    "city": "Tunis / Cairo",
-    "classif": "Historian / Sociologist / Philosopher",
-    "lang": "Arabic",
-    "titles": "Waliy al-Din · Father of Sociology",
-    "school": "Independent — founder of historiography and social sciences; wrote the Muqaddima",
     "books": [
       {
         "title": "Muqaddimah (The Introduction to his Universal History)",
@@ -8229,48 +8843,6 @@
     "lng": 36.3
   },
   {
-    "famous": "Ibn Rajab al-Hanbali",
-    "tradition": "Islamic Jurisprudence",
-    "type": "Scholar",
-    "primaryTitle": "Hafiz of the Levant",
-    "full": "Zayn al-Din Abd al-Rahman ibn Ahmad ibn Rajab al-Hanbali",
-    "dob": 1335,
-    "dod": 1393,
-    "dob_s": "1335",
-    "dod_s": "1393",
-    "city": "Baghdad / Damascus",
-    "classif": "Hadith Scholar / Jurist",
-    "lang": "Arabic",
-    "titles": "Hafiz al-Sham · Shaykh al-Hanbali",
-    "school": "Hanbali school — great hadith master of Syria",
-    "books": [
-      {
-        "title": "Jami' al-Ulum wal-Hikam (Compendium of Sciences and Wisdoms)",
-        "url": "https://archive.org/search?query=Ibn+Rajab+Jami+Ulum+Hikam+Compendium",
-        "magnum": true,
-        "note": "The definitive commentary on the forty hadith of al-Nawawi — standard text in traditional Islamic education worldwide."
-      },
-      {
-        "title": "Lata'if al-Ma'arif (Subtleties of Knowledge)",
-        "url": "https://archive.org/search?query=Ibn+Rajab+Lataif+Maarif",
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Al-Dhail 'ala Tabaqat al-Hanabila",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Ibn al-Qayyim"
-    ],
-    "source": "",
-    "lat": 33.5,
-    "lng": 36.3
-  },
-  {
     "famous": "Timur",
     "tradition": "Islamic History",
     "type": "Ruler",
@@ -8317,6 +8889,35 @@
     "source": "",
     "lat": 36.8347,
     "lng": 54.4436
+  },
+  {
+    "famous": "Fazlallah Astarabadi",
+    "tradition": "Akbarian",
+    "type": "Founder",
+    "primaryTitle": "Shaykh al-Hurufiyya — Founder of Letter Mysticism",
+    "full": "Fażlu l-Lāh Astar-Ābādī al-Ḥurūfī (pen name: Nāimī)",
+    "dob": 1340,
+    "dod": 1394,
+    "dob_s": "c. 1339/40",
+    "dod_s": "1394 (executed)",
+    "city": "Astarabad / Tabriz / Baku / Nakhchivan",
+    "classif": "Mystic / Philosopher / Apocalypticist",
+    "lang": "Persian",
+    "titles": "al-Ḥurūfī · Nāimī · Sayyid Fazlallah",
+    "school": "Hurufiyya — Founder; brought Ibn Arabi's letter mysticism to its apocalyptic extreme; influenced Bektashi order and Imadaddin Nasimi",
+    "books": [
+      {
+        "title": "Javidan-namah (The Eternal Book)",
+        "url": "https://archive.org/search?query=Javidan+namah+Fazlallah+Astarabadi+Hurufi",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Jalal ad-Din Rumi"
+    ],
+    "source": "",
+    "lat": 36.84,
+    "lng": 54.44
   },
   {
     "famous": "Al-Damiri",
@@ -8374,6 +8975,34 @@
     "source": ""
   },
   {
+    "famous": "Bayezid I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Yildirim — The Thunderbolt; Captured by Timur",
+    "full": "Bayezid ibn Murad ibn Orhan al-Uthman al-Ghazi",
+    "dob": 1354,
+    "dod": 1403,
+    "dob_s": "1354",
+    "dod_s": "1403",
+    "city": "Edirne / Bursa, Ottoman Empire",
+    "classif": "Sultan / Conqueror",
+    "lang": "Ottoman Turkish",
+    "titles": "Yildirim (The Thunderbolt) · Ghazi · Captured at Ankara by Timur",
+    "school": "Ottoman Dynasty — nicknamed Thunderbolt for rapid campaigns; besieged Constantinople; defeated and captured by Timur at Ankara 1402",
+    "books": [
+      {
+        "title": "Wikipedia — Bayezid I",
+        "url": "https://en.wikipedia.org/wiki/Bayezid_I",
+        "magnum": true,
+        "note": "Called 'The Thunderbolt' for speed; besieged Constantinople; captured by Timur at the Battle of Ankara 1402"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.6771,
+    "lng": 26.5557
+  },
+  {
     "famous": "Ali ibn Wafa",
     "tradition": "Shadhiliyya",
     "type": "Mystic",
@@ -8427,6 +9056,39 @@
     "source": "",
     "lat": 30.0444,
     "lng": 31.2357
+  },
+  {
+    "famous": "Zheng He",
+    "tradition": "Islamic History",
+    "type": "Scholar",
+    "primaryTitle": "San Bao — Admiral of the Seven Voyages",
+    "full": "Ma He (Zheng He) ibn Muhammad al-Yunani al-Hajji",
+    "dob": 1371,
+    "dod": 1435,
+    "dob_s": "1371",
+    "dod_s": "1435",
+    "city": "Yunnan, China / Indian Ocean",
+    "classif": "Admiral / Explorer / Diplomat",
+    "lang": "Chinese / Arabic",
+    "titles": "San Bao (Three Jewels) · Admiral Zheng · Hajji Mahmud Shams",
+    "school": "Chinese Muslim — eunuch admiral of the Ming Dynasty; his fleet dwarfed any contemporary European navy",
+    "books": [
+      {
+        "title": "Yingya Shenglan (Overall Survey of the Ocean's Shores — by Ma Huan)",
+        "url": "https://en.wikipedia.org/wiki/Zheng_He",
+        "magnum": true,
+        "note": "Led 7 voyages to Southeast Asia, India, Arabia, and East Africa; his fleet had 300 ships and 28,000 sailors"
+      },
+      {
+        "title": "Wikipedia — Zheng He",
+        "url": "https://en.wikipedia.org/wiki/Zheng_He",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 25.04,
+    "lng": 102.7
   },
   {
     "famous": "Ibn Hajar al-Asqalani",
@@ -8512,6 +9174,34 @@
     "source": "",
     "lat": 39.6542,
     "lng": 66.9597
+  },
+  {
+    "famous": "Mehmed I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Kirişçi — Restorer of the Ottoman Empire",
+    "full": "Muhammad ibn Bayezid ibn Murad al-Uthman al-Ghazi",
+    "dob": 1386,
+    "dod": 1421,
+    "dob_s": "1386",
+    "dod_s": "1421",
+    "city": "Bursa, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Kirişçi (Restorer) · Celebi Mehmed · Çelebi",
+    "school": "Ottoman Dynasty — fifth sultan; reunited the empire after its collapse following Timur's defeat; known as the 'Restorer'",
+    "books": [
+      {
+        "title": "Wikipedia — Mehmed I",
+        "url": "https://en.wikipedia.org/wiki/Mehmed_I",
+        "magnum": true,
+        "note": "Reunited the Ottoman Empire after 11 years of civil war following Timur's defeat; known as the Empire's Restorer"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 40.1885,
+    "lng": 29.061
   },
   {
     "famous": "Ulugh Beg",
@@ -8605,6 +9295,35 @@
     "source": ""
   },
   {
+    "famous": "Sunan Ampel",
+    "tradition": "Islamic History",
+    "type": "Founder",
+    "primaryTitle": "Wali Songo — Chief Architect of the Demak Sultanate",
+    "full": "Raden Rahmat (Sunan Ampel al-Jawi)",
+    "dob": 1401,
+    "dod": 1481,
+    "dob_s": "c. 1401",
+    "dod_s": "1481",
+    "city": "Surabaya (Ampel), East Java, Indonesia",
+    "classif": "Scholar / Jurist / Islamiser",
+    "lang": "Javanese / Arabic / Malay",
+    "titles": "Sunan Ampel · Wali Songo · Raden Rahmat · Chief of the Nine Saints",
+    "school": "Wali Songo — chief architect of the Demak Sultanate, the first Islamic kingdom in Java; established the Ampel Mosque in Surabaya which became the centre of Islamic learning in Java; mentor to Sunan Kalijaga and Sunan Gunung Jati",
+    "books": [
+      {
+        "title": "Teachings preserved in Javanese Islamic tradition",
+        "url": "https://archive.org/search?query=Sunan+Ampel+Wali+Songo+Demak+Sultanate+Java",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Ibrahim Zain al-Din al-Samarqandi"
+    ],
+    "source": "",
+    "lat": -7.24,
+    "lng": 112.75
+  },
+  {
     "famous": "Ali Qushji",
     "tradition": "Islamic Sciences",
     "type": "Scientist",
@@ -8630,36 +9349,6 @@
     "source": "",
     "lat": 41.0082,
     "lng": 28.9784
-  },
-  {
-    "famous": "Ubaydullah Ahrar",
-    "tradition": "Naqshbandiyya",
-    "type": "Mystic",
-    "primaryTitle": "Khwaja Ahrar — Most Politically Powerful Naqshbandi",
-    "full": "Khwaja 'Ubayd Allah ibn Mahmud al-Ahrar al-Samarqandi",
-    "dob": 1404,
-    "dod": 1490,
-    "dob_s": "1404",
-    "dod_s": "1490",
-    "city": "Tashkent / Samarkand, Uzbekistan",
-    "classif": "Mystic / Political Advisor",
-    "lang": "Persian",
-    "titles": "Khwaja Ahrar (The Free Master) · De facto ruler of Transoxiana under the Timurids",
-    "school": "Naqshbandiyya — Combined spiritual authority with political power; his intercession saved thousands from execution",
-    "books": [
-      {
-        "title": "Risala-yi Walidiyya (Letter to his Father — metaphysics)",
-        "url": "https://archive.org/search?query=Risala%20Walidiyya%20Ubaydullah%20Ahrar%20Naqshbandi",
-        "magnum": true,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Baha-ud-Din Naqshband"
-    ],
-    "source": "",
-    "lat": 39.7,
-    "lng": 66.9
   },
   {
     "famous": "Muhammad al-Jazuli",
@@ -8714,6 +9403,62 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Murad II",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Ghazi Sultan — Father of Mehmed the Conqueror",
+    "full": "Murad ibn Muhammad ibn Bayezid al-Uthman al-Ghazi",
+    "dob": 1404,
+    "dod": 1451,
+    "dob_s": "1404",
+    "dod_s": "1451",
+    "city": "Amasya / Edirne, Ottoman Empire",
+    "classif": "Sultan / Scholar",
+    "lang": "Ottoman Turkish",
+    "titles": "Murad Khan · Ghazi · Father of Mehmed the Conqueror",
+    "school": "Ottoman Dynasty — sixth sultan; twice abdicated; defeated last major Crusade at Varna 1444; father of Mehmed II",
+    "books": [
+      {
+        "title": "Wikipedia — Murad II",
+        "url": "https://en.wikipedia.org/wiki/Murad_II",
+        "magnum": true,
+        "note": "Defeated the last major Crusade at Varna 1444; abdicated twice; father and patron of Mehmed the Conqueror"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 40.6528,
+    "lng": 35.8331
+  },
+  {
+    "famous": "Skanderbeg",
+    "tradition": "Islamic History",
+    "type": "Warrior",
+    "primaryTitle": "Athleta Christi — Lord of Albania; The Dragon of Albania",
+    "full": "Gjergj Kastrioti Skënderbeu ibn Gjon Kastrioti",
+    "dob": 1405,
+    "dod": 1468,
+    "dob_s": "1405",
+    "dod_s": "1468",
+    "city": "Albania / Ottoman Empire",
+    "classif": "Military Commander / National Hero",
+    "lang": "Albanian / Turkish",
+    "titles": "Iskander Beg · Lord of Albania · Athleta Christi",
+    "school": "Ottoman Court (raised Muslim) → Albanian Resistance (converted to Christianity) — resisted Ottoman expansion for 25 years",
+    "books": [
+      {
+        "title": "Wikipedia — Skanderbeg",
+        "url": "https://en.wikipedia.org/wiki/Skanderbeg",
+        "magnum": true,
+        "note": "Raised Muslim in the Ottoman court; returned to Albania, converted to Christianity, led 25-year resistance against the Ottomans"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.3317,
+    "lng": 19.8317
   },
   {
     "famous": "Khidr Bey",
@@ -8784,38 +9529,32 @@
     "lng": 62.2
   },
   {
-    "famous": "Jami",
-    "tradition": "Persian Poetry",
-    "type": "Poet",
-    "primaryTitle": "Khatam al-Shu'ara — Seal of the Poets",
-    "full": "Nur al-Din Abd al-Rahman ibn Ahmad Jami",
-    "dob": 1414,
-    "dod": 1492,
-    "dob_s": "1414",
-    "dod_s": "1492",
-    "city": "Herat, Afghanistan",
-    "classif": "Poet / Mystic / Scholar",
-    "lang": "Persian",
-    "titles": "Mawlana · Khatam al-Shu'ara",
-    "school": "Naqshbandiyya — the last great classical Persian Sufi poet",
+    "famous": "Qaitbay",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "al-Ashraf Qaitbay — Greatest Builder Among Mamluk Sultans",
+    "full": "al-Ashraf Sayf al-Din Qa'it Bay al-Mahmudi al-Zahiri",
+    "dob": 1416,
+    "dod": 1496,
+    "dob_s": "c. 1416",
+    "dod_s": "1496",
+    "city": "Cairo / Alexandria, Egypt",
+    "classif": "Sultan / Builder",
+    "lang": "Arabic",
+    "titles": "al-Ashraf · Qa'it Bay · Greatest Mamluk Builder",
+    "school": "Mamluk Sultanate — greatest builder among Mamluk sultans; his citadel in Alexandria was built on the site of the ancient Pharos lighthouse",
     "books": [
       {
-        "title": "Haft Awrang (Seven Thrones)",
-        "url": "https://archive.org/details/HaftAwrangJami\",note:\"Seven mystical masnavi poems — masterpiece of Persian Sufi literature",
+        "title": "Wikipedia — Qaitbay",
+        "url": "https://en.wikipedia.org/wiki/Qaitbay",
         "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Nafahat al-Uns",
-        "url": ",note:\"Lives of Sufi saints — major biographical dictionary",
-        "magnum": false,
-        "note": ""
+        "note": "Built his citadel on the site of the ancient Pharos lighthouse; the Fort of Qaitbay still stands in Alexandria today"
       }
     ],
-    "teachers": [
-      "Baha-ud-Din Naqshband"
-    ],
-    "source": ""
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 30.0444,
+    "lng": 31.2357
   },
   {
     "famous": "Al-Sakhawi",
@@ -8989,6 +9728,34 @@
     "source": ""
   },
   {
+    "famous": "Husayn Bayqarah",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Last Great Timurid Sultan — Patron of Herat's Golden Age",
+    "full": "Sultan Husayn ibn Mansur ibn Bayqara al-Timurid al-Harawi",
+    "dob": 1438,
+    "dod": 1506,
+    "dob_s": "1438",
+    "dod_s": "1506",
+    "city": "Herat, Afghanistan",
+    "classif": "Sultan / Patron of Arts",
+    "lang": "Persian / Chagatai",
+    "titles": "Sultan Husayn Mirza · Mir Husayn",
+    "school": "Timurid School — his court in Herat was the cultural capital of the Islamic world; patron of Jami, Nava'i, and Bihzad",
+    "books": [
+      {
+        "title": "Wikipedia — Husayn Bayqarah",
+        "url": "https://en.wikipedia.org/wiki/Husayn_Bayqarah",
+        "magnum": true,
+        "note": "His court in Herat attracted Jami, Nava'i, and Bihzad — the last great Timurid cultural flowering"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 34.3566,
+    "lng": 62.2039
+  },
+  {
     "famous": "Ali Shir Nava'i",
     "tradition": "Yeseviyya",
     "type": "Poet",
@@ -9015,6 +9782,39 @@
       "Jami"
     ],
     "source": ""
+  },
+  {
+    "famous": "Ali-Shir Nava'i",
+    "tradition": "Persian Poetry",
+    "type": "Poet",
+    "primaryTitle": "Sultan of Chagatai Poetry — Father of Uzbek Literature",
+    "full": "Mir Ali-Shir Nava'i Nizam al-Din al-Harawi al-Timurid",
+    "dob": 1441,
+    "dod": 1501,
+    "dob_s": "1441",
+    "dod_s": "1501",
+    "city": "Herat, Afghanistan",
+    "classif": "Poet / Philosopher / Statesman",
+    "lang": "Chagatai Turkic / Persian",
+    "titles": "Nizam al-Din · Father of Uzbek Literature · Sultan al-Shu'ara",
+    "school": "Timurid Herat School — greatest poet of Chagatai Turkic; argued Turkic equal to Persian as literary language",
+    "books": [
+      {
+        "title": "Khamsa (Five Poems — Chagatai Turkic response to Nizami's Khamsa)",
+        "url": "https://en.wikipedia.org/wiki/Ali-Shir_Nava%27i",
+        "magnum": true,
+        "note": "Wrote 30+ works; argued and demonstrated that Turkic was equal to Persian as a literary language"
+      },
+      {
+        "title": "Wikipedia — Ali-Shir Nava'i",
+        "url": "https://en.wikipedia.org/wiki/Ali-Shir_Nava%27i",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 34.3566,
+    "lng": 62.2039
   },
   {
     "famous": "Shaykh Zarruq",
@@ -9081,6 +9881,63 @@
     "lng": 31.2
   },
   {
+    "famous": "Bayezid II",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sufi Sultan — Accepted Jewish Refugees from Spain 1492",
+    "full": "Bayezid ibn Muhammad ibn Murad al-Uthman al-Ghazi",
+    "dob": 1447,
+    "dod": 1512,
+    "dob_s": "1447",
+    "dod_s": "1512",
+    "city": "Didymoteicho / Istanbul, Ottoman Empire",
+    "classif": "Sultan / Scholar / Poet",
+    "lang": "Ottoman Turkish / Persian",
+    "titles": "Sufi Sultan · Veli (The Saint) · Sultan Bayezid Khan II",
+    "school": "Ottoman Dynasty — eighth sultan; accepted 100,000+ Jews expelled from Spain; known for Sufi piety; abdicated to Selim I",
+    "books": [
+      {
+        "title": "Wikipedia — Bayezid II",
+        "url": "https://en.wikipedia.org/wiki/Bayezid_II",
+        "magnum": true,
+        "note": "Accepted over 100,000 Jews expelled from Spain in 1492; mocked Ferdinand of Spain for 'impoverishing himself and enriching' the Ottomans"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.3626,
+    "lng": 26.498
+  },
+  {
+    "famous": "Sunan Gunung Jati",
+    "tradition": "Islamic History",
+    "type": "Founder",
+    "primaryTitle": "Wali Songo — Founder of Cirebon and Banten Sultanates",
+    "full": "Syarif Hidayatullah (Sunan Gunung Jati al-Jawi)",
+    "dob": 1448,
+    "dod": 1568,
+    "dob_s": "c. 1448",
+    "dod_s": "c. 1568",
+    "city": "Cirebon / Banten, West Java, Indonesia",
+    "classif": "Scholar / Ruler / Islamiser",
+    "lang": "Sundanese / Javanese / Arabic",
+    "titles": "Sunan Gunung Jati · Wali Songo · Syarif Hidayatullah",
+    "school": "Wali Songo — founded the Sultanate of Cirebon and Banten; studied in Mecca and Egypt before returning to Islamise West Java; established the political infrastructure of Islamic governance in Sunda",
+    "books": [
+      {
+        "title": "Historical chronicles (Babad Cirebon)",
+        "url": "https://archive.org/search?query=Sunan+Gunung+Jati+Cirebon+Wali+Songo+Indonesia",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Sunan Ampel"
+    ],
+    "source": "",
+    "lat": -6.71,
+    "lng": 108.55
+  },
+  {
     "famous": "Behzad",
     "tradition": "Persian Poetry",
     "type": "Scholar",
@@ -9137,6 +9994,35 @@
     "source": "",
     "lat": 33.5,
     "lng": 36.3
+  },
+  {
+    "famous": "Sunan Kalijaga",
+    "tradition": "Islamic History",
+    "type": "Founder",
+    "primaryTitle": "Wali Songo — Apostle of Java",
+    "full": "Raden Said (Sunan Kalijaga al-Jawi)",
+    "dob": 1460,
+    "dod": 1560,
+    "dob_s": "c. 1460",
+    "dod_s": "c. 1560",
+    "city": "Java, Indonesia",
+    "classif": "Mystic / Preacher / Islamiser",
+    "lang": "Javanese / Malay",
+    "titles": "Sunan Kalijaga · Wali Songo · Apostle of the River",
+    "school": "Wali Songo — used Javanese shadow puppetry (Wayang Kulit) and gamelan music to transmit Islamic ethics; brought Sufism to the Javanese cultural heartland; student of Sunan Bonang",
+    "books": [
+      {
+        "title": "Serat Dewaruci (Javanese mystical poem)",
+        "url": "https://archive.org/search?query=Sunan+Kalijaga+Wali+Songo+Java+Islam",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Sunan Bonang"
+    ],
+    "source": "",
+    "lat": -7.0,
+    "lng": 110.4
   },
   {
     "famous": "Piri Reis",
@@ -9265,6 +10151,34 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Sher Shah Suri",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "The Afghan Lion — Defeated the Mughals",
+    "full": "Farid Khan (Sher Shah) ibn Hasan Khan Suri al-Afghan",
+    "dob": 1486,
+    "dod": 1545,
+    "dob_s": "1486",
+    "dod_s": "1545",
+    "city": "Sasaram / Delhi, India",
+    "classif": "Emperor / Administrator / Reformer",
+    "lang": "Persian / Pashto",
+    "titles": "Sher Shah · Farid Khan · Sher Khan",
+    "school": "Sur Empire — Afghan ruler who defeated Humayun and ruled North India; Grand Trunk Road builder; his admin system adopted by Akbar",
+    "books": [
+      {
+        "title": "Wikipedia — Sher Shah Suri",
+        "url": "https://en.wikipedia.org/wiki/Sher_Shah_Suri",
+        "magnum": true,
+        "note": "Built the Grand Trunk Road from Bengal to Kabul; his administrative reforms were so good Akbar adopted them"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 24.947,
+    "lng": 84.0325
   },
   {
     "famous": "Shah Ismail I",
@@ -9517,6 +10431,34 @@
     "source": ""
   },
   {
+    "famous": "Pargalı Ibrahim Pasha",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Grand Vizier of Suleiman the Magnificent",
+    "full": "Ibrahim Pasha ibn Iskender Pasha al-Makbul al-Pargali",
+    "dob": 1495,
+    "dod": 1536,
+    "dob_s": "1495",
+    "dod_s": "1536",
+    "city": "Parga, Greece / Istanbul",
+    "classif": "Grand Vizier / Administrator",
+    "lang": "Ottoman Turkish / Greek",
+    "titles": "Makbul (Favored) Ibrahim Pasha · Grand Vizier · Pargalı Ibrahim",
+    "school": "Ottoman Imperial Court — closest friend and Grand Vizier of Suleiman; administered the empire's greatest expansion; executed on suspicion of treason",
+    "books": [
+      {
+        "title": "Wikipedia — Pargalı Ibrahim Pasha",
+        "url": "https://en.wikipedia.org/wiki/Parga%C4%B1_Ibrahim_Pasha",
+        "magnum": true,
+        "note": "Grand Vizier and closest confidant of Suleiman the Magnificent; administered Ottoman expansion; strangled on Suleiman's order 1536"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 39.2968,
+    "lng": 20.3901
+  },
+  {
     "famous": "Muhammad Ghaus Gwaliari",
     "tradition": "Suhrawardiyya",
     "type": "Mystic",
@@ -9568,6 +10510,39 @@
     "source": "",
     "lat": 27.1767,
     "lng": 78.0081
+  },
+  {
+    "famous": "Humayun",
+    "tradition": "Mughal",
+    "type": "Ruler",
+    "primaryTitle": "Nasir al-Din Humayun — Second Mughal Emperor",
+    "full": "Nasir al-Din Muhammad Humayun ibn Babur al-Timurid",
+    "dob": 1508,
+    "dod": 1556,
+    "dob_s": "1508",
+    "dod_s": "1556",
+    "city": "Kabul / Delhi, India",
+    "classif": "Emperor / Scholar",
+    "lang": "Persian / Chagatai",
+    "titles": "Nasir al-Din · Humayun (Lucky) · Padshah",
+    "school": "Mughal Empire — son of Babur; lost and regained his empire; his mausoleum is the prototype for the Taj Mahal",
+    "books": [
+      {
+        "title": "Humayunnama (biography by Gulbadan Begum)",
+        "url": "https://en.wikipedia.org/wiki/Humayun",
+        "magnum": true,
+        "note": "His mausoleum in Delhi directly inspired the Taj Mahal; his court brought Persian culture to the Mughals"
+      },
+      {
+        "title": "Wikipedia — Humayun",
+        "url": "https://en.wikipedia.org/wiki/Humayun",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 28.5932,
+    "lng": 77.2507
   },
   {
     "famous": "Sinan Pasha",
@@ -9623,6 +10598,67 @@
       "Mian Mir"
     ],
     "source": ""
+  },
+  {
+    "famous": "Imam Birgivi",
+    "tradition": "Islamic Theology",
+    "type": "Scholar",
+    "primaryTitle": "Birgivi Mehmed Efendi — The Ottoman Reform Scholar",
+    "full": "Muhammad ibn Pir Ali al-Birgivi al-Hanafi al-Rumi",
+    "dob": 1522,
+    "dod": 1573,
+    "dob_s": "1522",
+    "dod_s": "1573",
+    "city": "Balikesir / Birgi, Ottoman Empire",
+    "classif": "Scholar / Jurist / Theologian",
+    "lang": "Arabic / Turkish",
+    "titles": "Birgivi · Birgivî Mehmed Efendi",
+    "school": "Hanafi / Ottoman Theological School — criticized Sufi excesses; his Tariqa al-Muhammadiyya influenced Kadizadeli movement",
+    "books": [
+      {
+        "title": "al-Tariqa al-Muhammadiyya (The Muhammadan Way)",
+        "url": "https://en.wikipedia.org/wiki/Birgivi_Mehmed_Efendi",
+        "magnum": true,
+        "note": "Criticized Sufi practices and Ottoman religious laxity; his works inspired the Kadizadeli reform movement of the 17th century"
+      },
+      {
+        "title": "Wikipedia — Birgivi Mehmed Efendi",
+        "url": "https://en.wikipedia.org/wiki/Birgivi_Mehmed_Efendi",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 39.7667,
+    "lng": 27.9667
+  },
+  {
+    "famous": "Selim II",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sarı Selim — The Blond; Builder of the Selimiye Mosque",
+    "full": "Selim ibn Suleiman ibn Selim al-Uthman al-Ghazi",
+    "dob": 1524,
+    "dod": 1574,
+    "dob_s": "1524",
+    "dod_s": "1574",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan / Patron of Arts",
+    "lang": "Ottoman Turkish / Persian",
+    "titles": "Sarı Selim (The Blond) · Selim the Sot (pejorative)",
+    "school": "Ottoman Dynasty — eleventh sultan; son of Suleiman; conquered Cyprus; commissioned Sinan's Selimiye Mosque",
+    "books": [
+      {
+        "title": "Wikipedia — Selim II",
+        "url": "https://en.wikipedia.org/wiki/Selim_II",
+        "magnum": true,
+        "note": "Son of Suleiman the Magnificent; built the Selimiye Mosque in Edirne, considered Sinan's masterpiece"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Taqi al-Din",
@@ -9819,6 +10855,34 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Murad III",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Ottoman Sultan — Longest Reigning Sultan of the 16th Century",
+    "full": "Murad ibn Selim ibn Suleiman al-Uthman al-Ghazi",
+    "dob": 1546,
+    "dod": 1595,
+    "dob_s": "1546",
+    "dod_s": "1595",
+    "city": "Manisa / Istanbul, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Sultan Murad Khan III",
+    "school": "Ottoman Dynasty — twelfth sultan; longest reigning 16th century sultan; expanded empire eastward into Caucasus",
+    "books": [
+      {
+        "title": "Wikipedia — Murad III",
+        "url": "https://en.wikipedia.org/wiki/Murad_III",
+        "magnum": true,
+        "note": "Longest reigning sultan of the 16th century; greatly expanded the empire eastward into the Caucasus"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 38.6191,
+    "lng": 27.4289
   },
   {
     "famous": "Shaykh Bahai",
@@ -10089,6 +11153,67 @@
     "lng": 51.6679
   },
   {
+    "famous": "Mehmed III",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Ottoman Sultan — Victory at Mezőkeresztes 1596",
+    "full": "Muhammad ibn Murad ibn Selim al-Uthman al-Ghazi",
+    "dob": 1566,
+    "dod": 1603,
+    "dob_s": "1566",
+    "dod_s": "1603",
+    "city": "Manisa / Istanbul, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Sultan Muhammad Khan III",
+    "school": "Ottoman Dynasty — thirteenth sultan; personally commanded at Mezőkeresztes; executed 19 brothers upon accession",
+    "books": [
+      {
+        "title": "Wikipedia — Mehmed III",
+        "url": "https://en.wikipedia.org/wiki/Mehmed_III",
+        "magnum": true,
+        "note": "Personally commanded at Battle of Mezőkeresztes 1596; last Ottoman sultan to personally lead an army into battle"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 38.6191,
+    "lng": 27.4289
+  },
+  {
+    "famous": "Jahangir I",
+    "tradition": "Mughal",
+    "type": "Ruler",
+    "primaryTitle": "Nur al-Din Jahangir — World-Seizer",
+    "full": "Nur al-Din Muhammad Salim Jahangir ibn Akbar al-Timurid",
+    "dob": 1569,
+    "dod": 1627,
+    "dob_s": "1569",
+    "dod_s": "1627",
+    "city": "Fatehpur Sikri / Agra, India",
+    "classif": "Emperor / Naturalist / Patron of Arts",
+    "lang": "Persian",
+    "titles": "Nur al-Din · Jahangir (World-Seizer) · Padshah",
+    "school": "Mughal Empire — fourth emperor; renowned for justice; pioneered Mughal miniature painting; Chain of Justice",
+    "books": [
+      {
+        "title": "Tuzk-i-Jahangiri / Jahangirnama (Memoirs of Jahangir)",
+        "url": "https://en.wikipedia.org/wiki/Jahangir",
+        "magnum": true,
+        "note": "His memoirs are among the most vivid in all of Islamic literature; passionate about natural history and painting"
+      },
+      {
+        "title": "Wikipedia — Jahangir",
+        "url": "https://en.wikipedia.org/wiki/Jahangir",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 27.094,
+    "lng": 77.667
+  },
+  {
     "famous": "Mulla Sadra",
     "tradition": "Islamic Philosophy",
     "type": "Philosopher",
@@ -10119,43 +11244,6 @@
     ],
     "teachers": [
       "Mir Damad"
-    ],
-    "source": "",
-    "lat": 29.6,
-    "lng": 52.5
-  },
-  {
-    "famous": "Mulla Sadra",
-    "tradition": "Islamic Philosophy",
-    "type": "Philosopher",
-    "primaryTitle": "Sadr al-Muta'allihin — Master of Transcendent Wisdom",
-    "full": "Sadr al-Din Muhammad ibn Ibrahim Shirazi",
-    "dob": 1571,
-    "dod": 1640,
-    "dob_s": "1571",
-    "dod_s": "1640",
-    "city": "Shiraz / Isfahan, Iran",
-    "classif": "Philosopher / Mystic",
-    "lang": "Persian / Arabic",
-    "titles": "Sadr al-Muta'allihin · Mulla Sadra",
-    "school": "Transcendent Theosophy (Hikmat al-Muta'aliya) — greatest Safavid philosopher; synthesised Avicenna, Suhrawardi, Ibn Arabi",
-    "books": [
-      {
-        "title": "Al-Asfar al-Arba'a (The Four Journeys of the Intellect — 9 vols)",
-        "url": "https://archive.org/search?query=Al-Asfar%20al-Arba%27a%20Mulla%20Sadra%20four%20journeys%20philosophy",
-        "magnum": true,
-        "note": "The magnum opus of Islamic philosophy — a complete philosophical system integrating reason, mysticism and revelation."
-      },
-      {
-        "title": "Al-Shawahid al-Rububiyya",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      }
-    ],
-    "teachers": [
-      "Mir Damad",
-      "Shaykh Bahai"
     ],
     "source": "",
     "lat": 29.6,
@@ -10236,6 +11324,34 @@
     "source": "",
     "lat": 31.5497,
     "lng": 74.3436
+  },
+  {
+    "famous": "Ahmed I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sultan Ahmed — Builder of the Blue Mosque",
+    "full": "Ahmad ibn Muhammad ibn Murad al-Uthman al-Ghazi",
+    "dob": 1590,
+    "dod": 1617,
+    "dob_s": "1590",
+    "dod_s": "1617",
+    "city": "Manisa / Istanbul, Ottoman Empire",
+    "classif": "Sultan / Poet / Patron",
+    "lang": "Ottoman Turkish / Persian",
+    "titles": "Sultan Ahmad Khan I · Bahti (his pen name)",
+    "school": "Ottoman Dynasty — fourteenth sultan; built Sultan Ahmed Mosque (Blue Mosque); signed Treaty of Zsitvatorok",
+    "books": [
+      {
+        "title": "Wikipedia — Ahmed I",
+        "url": "https://en.wikipedia.org/wiki/Ahmed_I",
+        "magnum": true,
+        "note": "Built the Blue Mosque (Sultan Ahmed Mosque) in Istanbul; signed Treaty of Zsitvatorok — first equal Ottoman-European treaty"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0055,
+    "lng": 28.9768
   },
   {
     "famous": "Shah Jahan",
@@ -10341,6 +11457,34 @@
     "lng": 28.9784
   },
   {
+    "famous": "Osman II",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Genç Osman — Young Osman; First Sultan Killed by Janissaries",
+    "full": "Uthman ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
+    "dob": 1604,
+    "dod": 1622,
+    "dob_s": "1604",
+    "dod_s": "1622",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan / Reformer",
+    "lang": "Ottoman Turkish",
+    "titles": "Genç Osman (Young Osman) · Sultan Uthman II",
+    "school": "Ottoman Dynasty — sixteenth sultan; attempted military reforms; first Ottoman sultan killed by his own Janissaries aged 17",
+    "books": [
+      {
+        "title": "Wikipedia — Osman II",
+        "url": "https://en.wikipedia.org/wiki/Osman_II",
+        "magnum": true,
+        "note": "Attempted military reforms of the Janissaries; assassinated by them aged 17 — first Ottoman sultan killed by his troops"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
+  },
+  {
     "famous": "Katip Celebi",
     "tradition": "Islamic Sciences",
     "type": "Historian",
@@ -10414,6 +11558,34 @@
     "source": ""
   },
   {
+    "famous": "Murad IV",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Ghazi Murad — Recapturer of Baghdad from Safavids",
+    "full": "Murad ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
+    "dob": 1612,
+    "dod": 1640,
+    "dob_s": "1612",
+    "dod_s": "1640",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan / Warrior",
+    "lang": "Ottoman Turkish",
+    "titles": "Ghazi · Sultan Murad Khan IV",
+    "school": "Ottoman Dynasty — seventeenth sultan; personally led armies; recaptured Baghdad from Persia 1638; banned coffee, tobacco, alcohol",
+    "books": [
+      {
+        "title": "Wikipedia — Murad IV",
+        "url": "https://en.wikipedia.org/wiki/Murad_IV",
+        "magnum": true,
+        "note": "Personally led the army that recaptured Baghdad from Safavid Persia in 1638; last great warrior-sultan of the Ottomans"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
+  },
+  {
     "famous": "Dara Shikoh",
     "tradition": "Mughal",
     "type": "Scholar",
@@ -10480,6 +11652,34 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Ibrahim I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Deli Ibrahim — Ibrahim the Mad; 18th Ottoman Sultan",
+    "full": "Ibrahim ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
+    "dob": 1615,
+    "dod": 1648,
+    "dob_s": "1615",
+    "dod_s": "1648",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Deli Ibrahim (Mad Ibrahim) · Sultan Ibrahim Khan I",
+    "school": "Ottoman Dynasty — eighteenth sultan; known as 'Deli Ibrahim'; suffered mental illness; deposed and executed by Janissaries",
+    "books": [
+      {
+        "title": "Wikipedia — Ibrahim of the Ottoman Empire",
+        "url": "https://en.wikipedia.org/wiki/Ibrahim_of_the_Ottoman_Empire",
+        "magnum": true,
+        "note": "Known as 'Deli Ibrahim' (Mad Ibrahim); suffered mental illness; deposed and executed by Janissaries at age 32"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Niyazi-i Misri",
@@ -10661,6 +11861,34 @@
     "source": "",
     "lat": 28.6139,
     "lng": 77.209
+  },
+  {
+    "famous": "Mehmed IV",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Avcı Mehmed — The Hunter; Longest Reigning 17th Century Sultan",
+    "full": "Muhammad ibn Ibrahim ibn Ahmad al-Uthman al-Ghazi",
+    "dob": 1642,
+    "dod": 1693,
+    "dob_s": "1642",
+    "dod_s": "1693",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Avcı Mehmed (The Hunter) · Sultan Muhammad Khan IV",
+    "school": "Ottoman Dynasty — nineteenth sultan; reigned 39 years; second Siege of Vienna 1683 failed — turning point of Ottoman expansion",
+    "books": [
+      {
+        "title": "Wikipedia — Mehmed IV",
+        "url": "https://en.wikipedia.org/wiki/Mehmed_IV",
+        "magnum": true,
+        "note": "Reigned 39 years; the failed second Siege of Vienna 1683 under his reign marked the turning point of Ottoman power in Europe"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Bedil Dehlawi",
@@ -11015,6 +12243,39 @@
     "source": ""
   },
   {
+    "famous": "Muhammad ibn Abd al-Wahhab",
+    "tradition": "Islamic Theology",
+    "type": "Reformer",
+    "primaryTitle": "Mujaddid — Founder of the Wahhabi / Salafi Reform Movement",
+    "full": "Muhammad ibn Abd al-Wahhab ibn Sulayman al-Tamimi al-Najdi",
+    "dob": 1703,
+    "dod": 1792,
+    "dob_s": "1703",
+    "dod_s": "1792",
+    "city": "Uyayna / Diriyah, Arabia",
+    "classif": "Theologian / Reformer",
+    "lang": "Arabic",
+    "titles": "Sheikh al-Islam · Mujaddid · Imam al-Najdi",
+    "school": "Hanbali School / Wahhabi-Salafi Movement — founded with Ibn Saud; reshaped global Sunni Islam; basis of Saudi state",
+    "books": [
+      {
+        "title": "Kitab al-Tawhid (Book of Monotheism)",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Abd_al-Wahhab",
+        "magnum": true,
+        "note": "Allied with Muhammad ibn Saud to found what became Saudi Arabia; his movement reshaped global Sunni Islam"
+      },
+      {
+        "title": "Wikipedia — Muhammad ibn Abd al-Wahhab",
+        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Abd_al-Wahhab",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 25.0664,
+    "lng": 46.316
+  },
+  {
     "famous": "Sauda",
     "tradition": "Persian Poetry",
     "type": "Poet",
@@ -11141,6 +12402,34 @@
     "source": "",
     "lat": 26.8467,
     "lng": 80.9462
+  },
+  {
+    "famous": "Abdul Hamid I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sultan Abdul Hamid I — Lost Crimea to Russia",
+    "full": "Abd al-Hamid ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
+    "dob": 1725,
+    "dod": 1789,
+    "dob_s": "1725",
+    "dod_s": "1789",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan / Reformer",
+    "lang": "Ottoman Turkish",
+    "titles": "Sultan Abd al-Hamid Khan I",
+    "school": "Ottoman Dynasty — twenty-seventh sultan; lost Crimea to Russia in 1783; began military modernization; known for piety",
+    "books": [
+      {
+        "title": "Wikipedia — Abdul Hamid I",
+        "url": "https://en.wikipedia.org/wiki/Abdul_Hamid_I",
+        "magnum": true,
+        "note": "Lost Crimea to Russia in the 1783 Treaty of Küçük Kaynarca — the first major Ottoman territorial loss to a Christian power"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Sidi al-Mukhtar al-Kunti",
@@ -11562,6 +12851,41 @@
     "lng": 77.2
   },
   {
+    "famous": "Muhammadu Bello",
+    "tradition": "Islamic History",
+    "type": "Scholar",
+    "primaryTitle": "Sultan of Sokoto — Son of Usman dan Fodio",
+    "full": "Muhammad Bello ibn Uthman dan Fodio al-Fulani",
+    "dob": 1780,
+    "dod": 1837,
+    "dob_s": "1780",
+    "dod_s": "1837",
+    "city": "Wurno, Sokoto, Nigeria",
+    "classif": "Sultan / Scholar / Historian",
+    "lang": "Arabic / Fulfulde / Hausa",
+    "titles": "Sultan of Sokoto · Amir al-Mu'minin",
+    "school": "Qadiriyya / West African Reform — second Sultan of Sokoto; son of Usman dan Fodio; authored over 60 works on Islamic governance",
+    "books": [
+      {
+        "title": "Infaq al-Maysur (Spending the Available)",
+        "url": "https://en.wikipedia.org/wiki/Muhammadu_Bello",
+        "magnum": true,
+        "note": "Son of Usman dan Fodio; second Sultan of Sokoto; authored over 60 works on Islamic governance and law"
+      },
+      {
+        "title": "Wikipedia — Muhammadu Bello",
+        "url": "https://en.wikipedia.org/wiki/Muhammadu_Bello",
+        "magnum": false
+      }
+    ],
+    "teachers": [
+      "Usman dan Fodio"
+    ],
+    "source": "Wikidata",
+    "lat": 13.2804,
+    "lng": 5.01
+  },
+  {
     "famous": "Al-Bajuri",
     "tradition": "Islamic Theology",
     "type": "Scholar",
@@ -11592,6 +12916,34 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Mahmud II",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Mahmud Khan — Destroyer of the Janissaries; The Reformer Sultan",
+    "full": "Mahmud ibn Abd al-Hamid ibn Ahmad al-Uthman al-Ghazi",
+    "dob": 1785,
+    "dod": 1839,
+    "dob_s": "1785",
+    "dod_s": "1839",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan / Reformer",
+    "lang": "Ottoman Turkish",
+    "titles": "Mahmud Khan II · Ghazi · The Reformer",
+    "school": "Ottoman Dynasty — thirtieth sultan; abolished Janissary corps 1826 (Auspicious Incident); sweeping modernization",
+    "books": [
+      {
+        "title": "Wikipedia — Mahmud II",
+        "url": "https://en.wikipedia.org/wiki/Mahmud_II",
+        "magnum": true,
+        "note": "Abolished the 500-year-old Janissary corps in 1826; initiated the most sweeping Ottoman reforms before Atatürk"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Sayyid Ahmad Barelvi",
@@ -11660,6 +13012,35 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Nana Asma'u",
+    "tradition": "Islamic History",
+    "type": "Scholar",
+    "primaryTitle": "Pioneer of Mass Female Education in West Africa",
+    "full": "Asma'u bint Usman dan Fodio al-Fulani",
+    "dob": 1793,
+    "dod": 1864,
+    "dob_s": "1793",
+    "dod_s": "1864",
+    "city": "Sokoto, Nigeria",
+    "classif": "Scholar / Poet / Educator",
+    "lang": "Arabic / Hausa / Fulfulde",
+    "titles": "Nana Asma'u · Mujaddida · Daughter of the Shehu",
+    "school": "Sokoto Caliphate — daughter of reformer Usman dan Fodio; founded the Yan Taru (The Associates), a network of female teachers travelling across the Caliphate to educate rural women",
+    "books": [
+      {
+        "title": "Collected Poems and Educational Works (Diwan)",
+        "url": "https://archive.org/search?query=Nana+Asma%27u+Sokoto+poetry+education",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Usman dan Fodio"
+    ],
+    "source": "",
+    "lat": 13.0622,
+    "lng": 5.2339
   },
   {
     "famous": "Muhammad al-Futi",
@@ -11873,6 +13254,34 @@
     "lng": 35.5018
   },
   {
+    "famous": "Abdülmecid I",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sultan Abdülmecid — Architect of the Tanzimat Reforms",
+    "full": "Abd al-Majid ibn Mahmud ibn Abd al-Hamid al-Uthman",
+    "dob": 1823,
+    "dod": 1861,
+    "dob_s": "1823",
+    "dod_s": "1861",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan / Reformer",
+    "lang": "Ottoman Turkish",
+    "titles": "Sultan Abd al-Majid Khan I · Reformer",
+    "school": "Ottoman Dynasty — thirty-first sultan; Tanzimat reforms guaranteeing equality regardless of religion; built Dolmabahce Palace",
+    "books": [
+      {
+        "title": "Wikipedia — Abdulmejid I",
+        "url": "https://en.wikipedia.org/wiki/Abdulmejid_I",
+        "magnum": true,
+        "note": "Issued the Tanzimat Hatt-i Sherif and Hatt-i Humayun — guaranteeing equal rights to all Ottoman subjects regardless of religion"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
+  },
+  {
     "famous": "Syed Ahmad Kabir Rifai",
     "tradition": "Suhrawardiyya",
     "type": "Mystic",
@@ -11903,6 +13312,34 @@
     ],
     "teachers": [],
     "source": ""
+  },
+  {
+    "famous": "Abdülaziz",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sultan Abdülaziz — First Ottoman Sultan to Visit Western Europe",
+    "full": "Abd al-Aziz ibn Mahmud ibn Abd al-Hamid al-Uthman",
+    "dob": 1830,
+    "dod": 1876,
+    "dob_s": "1830",
+    "dod_s": "1876",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Sultan Abd al-Aziz Khan · First Sultan to visit Western Europe",
+    "school": "Ottoman Dynasty — thirty-second sultan; first to visit Western Europe; deposed and found dead suspiciously",
+    "books": [
+      {
+        "title": "Wikipedia — Abdulaziz",
+        "url": "https://en.wikipedia.org/wiki/Abdulaziz",
+        "magnum": true,
+        "note": "First Ottoman sultan to officially visit Western Europe; deposed in 1876 and found dead six days later"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Chokan Valikhanov",
@@ -12049,6 +13486,34 @@
     "lng": 28.9784
   },
   {
+    "famous": "Mehmed V",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Reşad — Sultan Who Declared Jihad in World War I",
+    "full": "Muhammad V ibn Abd al-Majid ibn Mahmud al-Uthman",
+    "dob": 1844,
+    "dod": 1918,
+    "dob_s": "1844",
+    "dod_s": "1918",
+    "city": "Istanbul, Ottoman Empire",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Reşad · Sultan Muhammad Khan V",
+    "school": "Ottoman Dynasty — thirty-fifth sultan; declared jihad against Allied powers in WWI; oversaw Arab Revolt; died during war",
+    "books": [
+      {
+        "title": "Wikipedia — Mehmed V",
+        "url": "https://en.wikipedia.org/wiki/Mehmed_V",
+        "magnum": true,
+        "note": "Issued a declaration of jihad against the Allied powers in World War I; oversaw the Arab Revolt against Ottoman rule"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
+  },
+  {
     "famous": "Khawaja Ghulam Farid",
     "tradition": "Sindhi/Punjabi Sufism",
     "type": "Poet",
@@ -12111,6 +13576,34 @@
     "source": "",
     "lat": 30.0444,
     "lng": 31.2357
+  },
+  {
+    "famous": "Hussein bin Ali",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Sharif of Mecca — Launched the Arab Revolt 1916",
+    "full": "al-Husayn ibn Ali al-Hashimi al-Qurashi",
+    "dob": 1853,
+    "dod": 1931,
+    "dob_s": "1853",
+    "dod_s": "1931",
+    "city": "Istanbul / Mecca / Amman",
+    "classif": "King / Sharif / Nationalist Leader",
+    "lang": "Arabic",
+    "titles": "Sharif of Mecca · King of Hejaz · Custodian of the Two Holy Mosques",
+    "school": "Hashemite Sharifs — launched Arab Revolt against Ottomans 1916; father of King Faisal I of Iraq and King Abdullah I of Jordan",
+    "books": [
+      {
+        "title": "Wikipedia — Hussein bin Ali, King of Hejaz",
+        "url": "https://en.wikipedia.org/wiki/Hussein_bin_Ali,_King_of_Hejaz",
+        "magnum": true,
+        "note": "Launched the Arab Revolt against the Ottomans 1916; father of King Faisal I of Iraq and King Abdullah I of Jordan"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 21.3891,
+    "lng": 39.8579
   },
   {
     "famous": "Al-Kawakibi",
@@ -12205,6 +13698,34 @@
     "source": "",
     "lat": 33.6,
     "lng": 73.0
+  },
+  {
+    "famous": "Mehmed VI",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Vahideddin — Last Sultan of the Ottoman Empire",
+    "full": "Muhammad VI ibn Abd al-Majid ibn Mahmud al-Uthman",
+    "dob": 1861,
+    "dod": 1926,
+    "dob_s": "1861",
+    "dod_s": "1926",
+    "city": "Istanbul / San Remo, Italy",
+    "classif": "Sultan",
+    "lang": "Ottoman Turkish",
+    "titles": "Vahideddin · Last Ottoman Sultan · Muhammad Khan VI",
+    "school": "Ottoman Dynasty — thirty-sixth and last sultan; fled Istanbul on British battleship 1922; sultanate abolished by Atatürk",
+    "books": [
+      {
+        "title": "Wikipedia — Mehmed VI",
+        "url": "https://en.wikipedia.org/wiki/Mehmed_VI",
+        "magnum": true,
+        "note": "Last Sultan of the Ottoman Empire; fled Istanbul on a British battleship November 1922; sultanate abolished 3 weeks later"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 41.0082,
+    "lng": 28.9784
   },
   {
     "famous": "Ashraf Ali Thanvi",
@@ -12565,32 +14086,6 @@
     "lng": 74.3436
   },
   {
-    "famous": "Said Nursi",
-    "tradition": "Islamic Theology",
-    "type": "Scholar",
-    "primaryTitle": "Bediuzzaman — Wonder of the Age",
-    "full": "Said ibn Mirza Nursi",
-    "dob": 1878,
-    "dod": 1960,
-    "dob_s": "1878",
-    "dod_s": "1960",
-    "city": "Bitlis / Ankara, Turkey",
-    "classif": "Scholar / Reformer",
-    "lang": "Turkish / Arabic",
-    "titles": "Bediuzzaman · Said Nursi",
-    "school": "Nur movement — wrote Risale-i Nur from prison; founded Turkey's most influential modern Islamic renewal movement",
-    "books": [
-      {
-        "title": "Risale-i Nur (Epistles of Light)",
-        "url": "https://archive.org/details/NursicollectionofEnglish\",note:\"6,000 pages of Quranic commentary written secretly under Kemalist ban",
-        "magnum": true,
-        "note": ""
-      }
-    ],
-    "teachers": [],
-    "source": ""
-  },
-  {
     "famous": "Bediuzzaman Said Nursi",
     "tradition": "Islamic Theology",
     "type": "Scholar",
@@ -12877,6 +14372,39 @@
     "lng": 59.6168
   },
   {
+    "famous": "René Guénon",
+    "tradition": "Islamic Philosophy",
+    "type": "Scholar",
+    "primaryTitle": "Abd al-Wahid Yahya — Founder of the Traditionalist School",
+    "full": "René Jean Marie Joseph Guénon / Abd al-Wahid Yahya al-Shadhili al-Maryami",
+    "dob": 1886,
+    "dod": 1951,
+    "dob_s": "1886",
+    "dod_s": "1951",
+    "city": "Blois, France / Cairo, Egypt",
+    "classif": "Philosopher / Mystic / Author",
+    "lang": "French / Arabic",
+    "titles": "Abd al-Wahid Yahya · Sheikh René Guénon · Father of Perennial Philosophy",
+    "school": "Shadhiliyya / Traditionalist-Perennialist School — converted to Islam; most influential Western Islamic philosopher; influenced Schuon, Nasr, and Coomaraswamy",
+    "books": [
+      {
+        "title": "The Crisis of the Modern World",
+        "url": "https://archive.org/search?query=René+Guénon+Crisis+Modern+World",
+        "magnum": true,
+        "note": "Most influential Traditionalist philosopher; converted to Islam; his works are foundational for Islamic metaphysics in the West"
+      },
+      {
+        "title": "Wikipedia — René Guénon",
+        "url": "https://en.wikipedia.org/wiki/Ren%C3%A9_Gu%C3%A9non",
+        "magnum": false
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 47.5896,
+    "lng": 1.3359
+  },
+  {
     "famous": "Ali Abd al-Raziq",
     "tradition": "Islamic Philosophy",
     "type": "Scholar",
@@ -13025,6 +14553,62 @@
     "source": "",
     "lat": 30.0444,
     "lng": 31.2357
+  },
+  {
+    "famous": "Idris I of Libya",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "King Idris I — First and Last King of Libya",
+    "full": "Muhammad Idris al-Mahdi al-Sanusi ibn Muhammad al-Mahdi",
+    "dob": 1889,
+    "dod": 1983,
+    "dob_s": "1889",
+    "dod_s": "1983",
+    "city": "Jaghbub / Benghazi, Libya",
+    "classif": "King / Religious Leader",
+    "lang": "Arabic",
+    "titles": "King Idris I · Grand Senussi · Amir of Cyrenaica",
+    "school": "Senussi Order — leader of the Senussi Sufi order; first and only King of Libya 1951–1969; deposed by Gaddafi while abroad",
+    "books": [
+      {
+        "title": "Wikipedia — Idris of Libya",
+        "url": "https://en.wikipedia.org/wiki/Idris_of_Libya",
+        "magnum": true,
+        "note": "First and only King of Libya 1951–1969; leader of the Senussi Sufi order; deposed by Gaddafi's coup while in Turkey"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 29.9187,
+    "lng": 21.7846
+  },
+  {
+    "famous": "Amanullah Khan",
+    "tradition": "Islamic History",
+    "type": "Ruler",
+    "primaryTitle": "Father of Afghan Independence — Ghazi Amanullah Khan",
+    "full": "Amanullah Khan ibn Habibullah Khan al-Barakzai al-Durrani",
+    "dob": 1892,
+    "dod": 1960,
+    "dob_s": "1892",
+    "dod_s": "1960",
+    "city": "Paghman / Kabul, Afghanistan",
+    "classif": "King / Reformer / Nationalist",
+    "lang": "Pashto / Dari / French",
+    "titles": "Ghazi (Warrior of Faith) · King Amanullah Khan · Father of Afghan Independence",
+    "school": "Durrani Dynasty — won Afghan independence from Britain 1919; rapid modernization attempts including women's education; abdicated after revolt",
+    "books": [
+      {
+        "title": "Wikipedia — Amanullah Khan",
+        "url": "https://en.wikipedia.org/wiki/Amanullah_Khan",
+        "magnum": true,
+        "note": "Won Afghan independence from Britain in Third Anglo-Afghan War 1919; attempted rapid modernization; forced to abdicate in 1929"
+      }
+    ],
+    "teachers": [],
+    "source": "Wikidata",
+    "lat": 34.5553,
+    "lng": 69.2075
   },
   {
     "famous": "Nima Yooshij",
@@ -13196,6 +14780,35 @@
     "source": "",
     "lat": 36.8065,
     "lng": 10.1815
+  },
+  {
+    "famous": "Malik Bennabi",
+    "tradition": "Islamic Philosophy",
+    "type": "Philosopher",
+    "primaryTitle": "Social Philosopher of the Islamic Renaissance",
+    "full": "Malek (Malik) Bennabi ibn al-Hajj Omar",
+    "dob": 1905,
+    "dod": 1973,
+    "dob_s": "1905",
+    "dod_s": "1973",
+    "city": "Constantine, Algeria / Cairo, Egypt",
+    "classif": "Philosopher / Sociologist / Thinker",
+    "lang": "French / Arabic",
+    "titles": "Most Significant Muslim Social Philosopher since Ibn Khaldun · Theorist of Colonizability",
+    "school": "Algerian School of Islamic Reform — developed the Civilization Equation (Man + Soil + Time); coined 'colonizability' — the internal condition that allows a society to be dominated; influenced by Ibn Khaldun and Ben Badis",
+    "books": [
+      {
+        "title": "Les Conditions de la Renaissance (Conditions for Renaissance)",
+        "url": "https://archive.org/search?query=Malik+Bennabi+Conditions+Renaissance+Islam",
+        "magnum": true
+      }
+    ],
+    "teachers": [
+      "Ben Badis"
+    ],
+    "source": "",
+    "lat": 36.36,
+    "lng": 6.59
   },
   {
     "famous": "Hasan al-Banna",
@@ -13542,33 +15155,6 @@
     "books": [
       {
         "title": "Islam",
-        "url": null,
-        "magnum": true
-      }
-    ],
-    "teachers": [],
-    "source": "",
-    "lat": 41.8781,
-    "lng": -87.6298
-  },
-  {
-    "famous": "Fazlur Rahman",
-    "tradition": "Islamic Philosophy",
-    "type": "Scholar",
-    "primaryTitle": "Major Islamic Modernist Scholar",
-    "full": "Faḍlur Raḥmān",
-    "dob": 1919,
-    "dod": 1988,
-    "dob_s": "1919",
-    "dod_s": "1988",
-    "city": "Hazara District / Lahore / Chicago",
-    "classif": "Islamic Philosopher",
-    "lang": "Urdu / English",
-    "titles": "",
-    "school": "Neo-Modernist Islam",
-    "books": [
-      {
-        "title": "Islam and Modernity",
         "url": null,
         "magnum": true
       }
@@ -14422,2212 +16008,5 @@
     "source": "",
     "lat": 46.2044,
     "lng": 6.1432
-  },
-  {
-    "famous": "Fatima al-Fihri",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Umm al-Banin — Founder of Al-Qarawiyyin",
-    "full": "Fatima bint Muhammad al-Fihri al-Qurashiyya",
-    "dob": 800,
-    "dod": 880,
-    "dob_s": "c. 800",
-    "dod_s": "c. 880",
-    "city": "Fez, Morocco",
-    "classif": "Philanthropist / Scholar / Educator",
-    "lang": "Arabic",
-    "titles": "Umm al-Banin (Mother of the Children) · Founder of the World's First University",
-    "school": "Al-Qarawiyyin — Founded 859 CE in Fez; fasted throughout 2-year construction; produced Ibn Rushd, Ibn Khaldun, Maimonides",
-    "books": [
-      {
-        "title": "Foundation of Al-Qarawiyyin (historical records)",
-        "url": "https://www.worldhistory.org/article/2662/fatima-al-fihri-and-al-qarawiyyin-university/",
-        "magnum": true
-      }
-    ],
-    "teachers": [],
-    "source": "",
-    "lat": 34.06,
-    "lng": -4.98
-  },
-  {
-    "famous": "Al-Tahawi",
-    "tradition": "Islamic Jurisprudence",
-    "type": "Scholar",
-    "primaryTitle": "Imam Ahl al-Sunna — The Creed of the Majority",
-    "full": "Abu Ja'far Ahmad ibn Muhammad al-Azdi al-Tahawi al-Misri",
-    "dob": 843,
-    "dod": 935,
-    "dob_s": "843",
-    "dod_s": "935",
-    "city": "Taha / Cairo, Egypt",
-    "classif": "Jurist / Theologian / Hadith Scholar",
-    "lang": "Arabic",
-    "titles": "Imam al-Tahawi · Faqih of Egypt · Muhadith",
-    "school": "Hanafi School — switched from Shafi'i to Hanafi under his maternal uncle Al-Muzani; his Al-Aqida al-Tahawiyya is the most universally accepted creedal text in Sunni Islam",
-    "books": [
-      {
-        "title": "Al-Aqidah al-Tahawiyyah (The Creed of Imam al-Tahawi)",
-        "url": "https://archive.org/details/TheCreedOfImamAl-tahawi",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Al-Muzani"
-    ],
-    "source": "",
-    "lat": 30.0444,
-    "lng": 31.2357
-  },
-  {
-    "famous": "Amra bint Abd al-Rahman",
-    "tradition": "Hadith Sciences",
-    "type": "Scholar",
-    "primaryTitle": "Foremost Female Jurist of Medina",
-    "full": "Amra bint Abd al-Rahman ibn Sa'd ibn Zurayq al-Ansariyya",
-    "dob": 646,
-    "dod": 717,
-    "dob_s": "c. 646",
-    "dod_s": "c. 717",
-    "city": "Medina, Arabia",
-    "classif": "Jurist / Hadith Scholar / Mufti",
-    "lang": "Arabic",
-    "titles": "Imam al-Nisa fi'l-Hadith · Secretary and Student of Aisha",
-    "school": "Madina School — niece and student of Aisha bint Abi Bakr; Caliph Umar ibn Abd al-Aziz ordered hadiths to be collected on her authority; overruled a judge's ruling on grounds of prophetic law",
-    "books": [
-      {
-        "title": "Hadith transmission — authoritative on Aisha's legal rulings",
-        "url": "https://en.wikipedia.org/wiki/Amrah_bint_Abdul_Rahman",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Aisha bint Abi Bakr"
-    ],
-    "source": "Tareekh Yakubi",
-    "lat": 24.47,
-    "lng": 39.61
-  },
-  {
-    "famous": "Nana Asma'u",
-    "tradition": "Islamic History",
-    "type": "Scholar",
-    "primaryTitle": "Pioneer of Mass Female Education in West Africa",
-    "full": "Asma'u bint Usman dan Fodio al-Fulani",
-    "dob": 1793,
-    "dod": 1864,
-    "dob_s": "1793",
-    "dod_s": "1864",
-    "city": "Sokoto, Nigeria",
-    "classif": "Scholar / Poet / Educator",
-    "lang": "Arabic / Hausa / Fulfulde",
-    "titles": "Nana Asma'u · Mujaddida · Daughter of the Shehu",
-    "school": "Sokoto Caliphate — daughter of reformer Usman dan Fodio; founded the Yan Taru (The Associates), a network of female teachers travelling across the Caliphate to educate rural women",
-    "books": [
-      {
-        "title": "Collected Poems and Educational Works (Diwan)",
-        "url": "https://archive.org/search?query=Nana+Asma%27u+Sokoto+poetry+education",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Usman dan Fodio"
-    ],
-    "source": "",
-    "lat": 13.0622,
-    "lng": 5.2339
-  },
-  {
-    "famous": "Malik Bennabi",
-    "tradition": "Islamic Philosophy",
-    "type": "Philosopher",
-    "primaryTitle": "Social Philosopher of the Islamic Renaissance",
-    "full": "Malek (Malik) Bennabi ibn al-Hajj Omar",
-    "dob": 1905,
-    "dod": 1973,
-    "dob_s": "1905",
-    "dod_s": "1973",
-    "city": "Constantine, Algeria / Cairo, Egypt",
-    "classif": "Philosopher / Sociologist / Thinker",
-    "lang": "French / Arabic",
-    "titles": "Most Significant Muslim Social Philosopher since Ibn Khaldun · Theorist of Colonizability",
-    "school": "Algerian School of Islamic Reform — developed the Civilization Equation (Man + Soil + Time); coined 'colonizability' — the internal condition that allows a society to be dominated; influenced by Ibn Khaldun and Ben Badis",
-    "books": [
-      {
-        "title": "Les Conditions de la Renaissance (Conditions for Renaissance)",
-        "url": "https://archive.org/search?query=Malik+Bennabi+Conditions+Renaissance+Islam",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Ben Badis"
-    ],
-    "source": "",
-    "lat": 36.36,
-    "lng": 6.59
-  },
-  {
-    "famous": "Fazlallah Astarabadi",
-    "tradition": "Akbarian",
-    "type": "Founder",
-    "primaryTitle": "Shaykh al-Hurufiyya — Founder of Letter Mysticism",
-    "full": "Fażlu l-Lāh Astar-Ābādī al-Ḥurūfī (pen name: Nāimī)",
-    "dob": 1340,
-    "dod": 1394,
-    "dob_s": "c. 1339/40",
-    "dod_s": "1394 (executed)",
-    "city": "Astarabad / Tabriz / Baku / Nakhchivan",
-    "classif": "Mystic / Philosopher / Apocalypticist",
-    "lang": "Persian",
-    "titles": "al-Ḥurūfī · Nāimī · Sayyid Fazlallah",
-    "school": "Hurufiyya — Founder; brought Ibn Arabi's letter mysticism to its apocalyptic extreme; influenced Bektashi order and Imadaddin Nasimi",
-    "books": [
-      {
-        "title": "Javidan-namah (The Eternal Book)",
-        "url": "https://archive.org/search?query=Javidan+namah+Fazlallah+Astarabadi+Hurufi",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Jalal ad-Din Rumi"
-    ],
-    "source": "",
-    "lat": 36.84,
-    "lng": 54.44
-  },
-  {
-    "famous": "Sunan Kalijaga",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Wali Songo — Apostle of Java",
-    "full": "Raden Said (Sunan Kalijaga al-Jawi)",
-    "dob": 1460,
-    "dod": 1560,
-    "dob_s": "c. 1460",
-    "dod_s": "c. 1560",
-    "city": "Java, Indonesia",
-    "classif": "Mystic / Preacher / Islamiser",
-    "lang": "Javanese / Malay",
-    "titles": "Sunan Kalijaga · Wali Songo · Apostle of the River",
-    "school": "Wali Songo — used Javanese shadow puppetry (Wayang Kulit) and gamelan music to transmit Islamic ethics; brought Sufism to the Javanese cultural heartland; student of Sunan Bonang",
-    "books": [
-      {
-        "title": "Serat Dewaruci (Javanese mystical poem)",
-        "url": "https://archive.org/search?query=Sunan+Kalijaga+Wali+Songo+Java+Islam",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Sunan Bonang"
-    ],
-    "source": "",
-    "lat": -7.0,
-    "lng": 110.4
-  },
-  {
-    "famous": "Sunan Gunung Jati",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Wali Songo — Founder of Cirebon and Banten Sultanates",
-    "full": "Syarif Hidayatullah (Sunan Gunung Jati al-Jawi)",
-    "dob": 1448,
-    "dod": 1568,
-    "dob_s": "c. 1448",
-    "dod_s": "c. 1568",
-    "city": "Cirebon / Banten, West Java, Indonesia",
-    "classif": "Scholar / Ruler / Islamiser",
-    "lang": "Sundanese / Javanese / Arabic",
-    "titles": "Sunan Gunung Jati · Wali Songo · Syarif Hidayatullah",
-    "school": "Wali Songo — founded the Sultanate of Cirebon and Banten; studied in Mecca and Egypt before returning to Islamise West Java; established the political infrastructure of Islamic governance in Sunda",
-    "books": [
-      {
-        "title": "Historical chronicles (Babad Cirebon)",
-        "url": "https://archive.org/search?query=Sunan+Gunung+Jati+Cirebon+Wali+Songo+Indonesia",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Sunan Ampel"
-    ],
-    "source": "",
-    "lat": -6.71,
-    "lng": 108.55
-  },
-  {
-    "famous": "Sunan Ampel",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Wali Songo — Chief Architect of the Demak Sultanate",
-    "full": "Raden Rahmat (Sunan Ampel al-Jawi)",
-    "dob": 1401,
-    "dod": 1481,
-    "dob_s": "c. 1401",
-    "dod_s": "1481",
-    "city": "Surabaya (Ampel), East Java, Indonesia",
-    "classif": "Scholar / Jurist / Islamiser",
-    "lang": "Javanese / Arabic / Malay",
-    "titles": "Sunan Ampel · Wali Songo · Raden Rahmat · Chief of the Nine Saints",
-    "school": "Wali Songo — chief architect of the Demak Sultanate, the first Islamic kingdom in Java; established the Ampel Mosque in Surabaya which became the centre of Islamic learning in Java; mentor to Sunan Kalijaga and Sunan Gunung Jati",
-    "books": [
-      {
-        "title": "Teachings preserved in Javanese Islamic tradition",
-        "url": "https://archive.org/search?query=Sunan+Ampel+Wali+Songo+Demak+Sultanate+Java",
-        "magnum": true
-      }
-    ],
-    "teachers": [
-      "Ibrahim Zain al-Din al-Samarqandi"
-    ],
-    "source": "",
-    "lat": -7.24,
-    "lng": 112.75
-  },
-  {
-    "famous": "Husayn ibn Ali",
-    "tradition": "Early Ascetics",
-    "type": "Scholar",
-    "primaryTitle": "al-Sayyid al-Shuhada — Master of Martyrs",
-    "full": "Husayn ibn Ali ibn Abi Talib al-Hashimi",
-    "dob": 626,
-    "dod": 680,
-    "dob_s": "626",
-    "dod_s": "680",
-    "city": "Medina / Karbala, Iraq",
-    "classif": "Scholar / Imam / Martyr",
-    "lang": "Arabic",
-    "titles": "Sayyid al-Shuhada · Abu Abdillah · Third Imam of Twelver Shia",
-    "school": "Prophetic Household (Ahl al-Bayt) — grandson of the Prophet",
-    "books": [
-      {
-        "title": "Wikipedia — Husayn ibn Ali",
-        "url": "https://en.wikipedia.org/wiki/Husayn_ibn_Ali",
-        "magnum": true,
-        "note": "Son of Ali ibn Abi Talib; martyred at Karbala 680 CE — founding event of Shia Islam"
-      }
-    ],
-    "teachers": [
-      "Ali ibn Abi Talib",
-      "Prophet Muhammad"
-    ],
-    "source": "Wikidata",
-    "lat": 32.6166,
-    "lng": 44.028
-  },
-  {
-    "famous": "Hasan ibn Ali",
-    "tradition": "Early Ascetics",
-    "type": "Scholar",
-    "primaryTitle": "al-Mujtaba — The Chosen One; Second Shia Imam",
-    "full": "Hasan ibn Ali ibn Abi Talib al-Hashimi",
-    "dob": 625,
-    "dod": 669,
-    "dob_s": "625",
-    "dod_s": "669",
-    "city": "Medina, Arabia",
-    "classif": "Scholar / Imam / Caliph",
-    "lang": "Arabic",
-    "titles": "al-Mujtaba · Abu Muhammad · Second Imam",
-    "school": "Prophetic Household (Ahl al-Bayt) — grandson of the Prophet",
-    "books": [
-      {
-        "title": "Wikipedia — Hasan ibn Ali",
-        "url": "https://en.wikipedia.org/wiki/Hasan_ibn_Ali",
-        "magnum": true,
-        "note": "Grandson of Prophet Muhammad; 2nd Imam of Shia; briefly held the caliphate"
-      }
-    ],
-    "teachers": [
-      "Ali ibn Abi Talib",
-      "Prophet Muhammad"
-    ],
-    "source": "Wikidata",
-    "lat": 24.4672,
-    "lng": 39.615
-  },
-  {
-    "famous": "Zayd ibn Thabit",
-    "tradition": "Hadith Sciences",
-    "type": "Sahaba",
-    "primaryTitle": "Katib al-Wahy — Chief Scribe of Divine Revelation",
-    "full": "Zayd ibn Thabit al-Ansari al-Khazraji",
-    "dob": 611,
-    "dod": 665,
-    "dob_s": "c. 611",
-    "dod_s": "665",
-    "city": "Medina, Arabia",
-    "classif": "Companion / Scholar",
-    "lang": "Arabic",
-    "titles": "Katib al-Nabi · Master of Quranic Sciences",
-    "school": "Companions of the Prophet — led Quran compilation under Abu Bakr and Uthman",
-    "books": [
-      {
-        "title": "Wikipedia — Zayd ibn Thabit",
-        "url": "https://en.wikipedia.org/wiki/Zayd_ibn_Thabit",
-        "magnum": true,
-        "note": "Prophet's personal secretary; compiled the Quran into a single volume"
-      }
-    ],
-    "teachers": [
-      "Prophet Muhammad"
-    ],
-    "source": "Wikidata",
-    "lat": 24.4672,
-    "lng": 39.615
-  },
-  {
-    "famous": "Anas ibn Malik",
-    "tradition": "Hadith Sciences",
-    "type": "Sahaba",
-    "primaryTitle": "Khadim Rasul Allah — Servant of the Prophet",
-    "full": "Anas ibn Malik ibn al-Nadr al-Ansari al-Khazraji",
-    "dob": 611,
-    "dod": 713,
-    "dob_s": "c. 611",
-    "dod_s": "c. 713",
-    "city": "Medina, Arabia",
-    "classif": "Companion / Scholar",
-    "lang": "Arabic",
-    "titles": "Khadim Rasul Allah · Abu Hamza",
-    "school": "Companions of the Prophet — served Prophet for 10 years; major hadith transmitter",
-    "books": [
-      {
-        "title": "Wikipedia — Anas ibn Malik",
-        "url": "https://en.wikipedia.org/wiki/Anas_ibn_Malik",
-        "magnum": true,
-        "note": "Served the Prophet for 10 years; transmitted over 2,000 hadiths; lived ~100 years"
-      }
-    ],
-    "teachers": [
-      "Prophet Muhammad"
-    ],
-    "source": "Wikidata",
-    "lat": 24.4672,
-    "lng": 39.615
-  },
-  {
-    "famous": "Jabir ibn Hayyan",
-    "tradition": "Islamic Sciences",
-    "type": "Scientist",
-    "primaryTitle": "Father of Chemistry — Geber",
-    "full": "Abu Musa Jabir ibn Hayyan al-Azdi al-Kufi al-Sufi",
-    "dob": 721,
-    "dod": 815,
-    "dob_s": "c. 721",
-    "dod_s": "c. 815",
-    "city": "Tus / Kufa, Iraq",
-    "classif": "Scientist / Alchemist / Philosopher",
-    "lang": "Arabic",
-    "titles": "Geber (Latin) · Father of Chemistry · Father of Alchemy",
-    "school": "Alchemical / Scientific School — student of Ja'far al-Sadiq",
-    "books": [
-      {
-        "title": "Kitab al-Kimya (Book of Composition)",
-        "url": "https://archive.org/search?query=Jabir+ibn+Hayyan+chemistry+alchemy",
-        "magnum": true,
-        "note": "Father of chemistry; developed distillation, crystallization, and calcination — over 3,000 works attributed"
-      },
-      {
-        "title": "Wikipedia — Jabir ibn Hayyan",
-        "url": "https://en.wikipedia.org/wiki/Jabir_ibn_Hayyan",
-        "magnum": false
-      }
-    ],
-    "teachers": [
-      "Ja'far al-Sadiq"
-    ],
-    "source": "Wikidata",
-    "lat": 32.532,
-    "lng": 44.422
-  },
-  {
-    "famous": "Muhammad bin Qasim",
-    "tradition": "Islamic History",
-    "type": "Warrior",
-    "primaryTitle": "Conqueror of Sindh — First Muslim General in India",
-    "full": "Muhammad ibn al-Qasim ibn Yusuf al-Thaqafi",
-    "dob": 696,
-    "dod": 715,
-    "dob_s": "696",
-    "dod_s": "715",
-    "city": "Ta'if / Sindh, Pakistan",
-    "classif": "General / Governor",
-    "lang": "Arabic",
-    "titles": "Conqueror of Sindh · Umayyad General",
-    "school": "Umayyad Military — nephew of Hajjaj ibn Yusuf",
-    "books": [
-      {
-        "title": "Wikipedia — Muhammad bin Qasim",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_bin_Qasim",
-        "magnum": true,
-        "note": "Conquered Sindh at age 17; extended Islamic rule to the Indian subcontinent"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 25.396,
-    "lng": 68.3578
-  },
-  {
-    "famous": "Zayd ibn Ali",
-    "tradition": "Islamic Jurisprudence",
-    "type": "Scholar",
-    "primaryTitle": "Imam Zayd — Founder of Zaidi Jurisprudence",
-    "full": "Zayd ibn Ali ibn al-Husayn al-Hashimi",
-    "dob": 695,
-    "dod": 740,
-    "dob_s": "c. 695",
-    "dod_s": "740",
-    "city": "Medina / Kufa, Iraq",
-    "classif": "Imam / Jurist / Martyr",
-    "lang": "Arabic",
-    "titles": "Imam Zayd · Sayyid al-Shuhada",
-    "school": "Zaidi School of Islamic Jurisprudence — founder; great-grandson of the Prophet",
-    "books": [
-      {
-        "title": "Musnad Zayd ibn Ali",
-        "url": "https://en.wikipedia.org/wiki/Zayd_ibn_Ali",
-        "magnum": true,
-        "note": "Founder of Zaidi school; his Musnad is the oldest surviving fiqh collection in Shia Islam"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 32.0,
-    "lng": 44.4
-  },
-  {
-    "famous": "Nafi' al-Madani",
-    "tradition": "Hadith Sciences",
-    "type": "Scholar",
-    "primaryTitle": "Imam al-Qurra — Master of Quranic Recitation",
-    "full": "Nafi' ibn Abd al-Rahman ibn Abi Nu'aym al-Laythi al-Madani",
-    "dob": 689,
-    "dod": 785,
-    "dob_s": "c. 689",
-    "dod_s": "785",
-    "city": "Medina, Arabia",
-    "classif": "Scholar / Reciter",
-    "lang": "Arabic",
-    "titles": "Imam al-Qurra · One of the Seven Canonical Reciters",
-    "school": "Medinan Quranic School — one of the seven canonical qaris; his riwaya dominates in North and West Africa today",
-    "books": [
-      {
-        "title": "Wikipedia — Nafi' al-Madani",
-        "url": "https://en.wikipedia.org/wiki/Nafi%27_al-Madani",
-        "magnum": true,
-        "note": "His recitation style (riwaya of Warsh and Qalun) remains dominant in North/West Africa"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 24.4672,
-    "lng": 39.615
-  },
-  {
-    "famous": "Muslim ibn al-Hajjaj",
-    "tradition": "Hadith Sciences",
-    "type": "Scholar",
-    "primaryTitle": "Sahih Muslim — Second Most Authoritative Hadith Collection",
-    "full": "Abu al-Husayn Muslim ibn al-Hajjaj al-Qushayri al-Naysaburi",
-    "dob": 821,
-    "dod": 875,
-    "dob_s": "821",
-    "dod_s": "875",
-    "city": "Nishapur, Iran",
-    "classif": "Hadith Scholar / Jurist",
-    "lang": "Arabic",
-    "titles": "Imam Muslim · Hafiz al-Hadith",
-    "school": "Khorasan School / Hadith Sciences — studied under Imam Ahmad ibn Hanbal and al-Bukhari",
-    "books": [
-      {
-        "title": "Sahih Muslim (3,033 hadiths — most authentic after Bukhari)",
-        "url": "https://sunnah.com/muslim",
-        "magnum": true,
-        "note": "Sahih Muslim is the second most authoritative hadith collection; studied under Imam Ahmad ibn Hanbal"
-      },
-      {
-        "title": "Wikipedia — Muslim ibn al-Hajjaj",
-        "url": "https://en.wikipedia.org/wiki/Muslim_ibn_al-Hajjaj",
-        "magnum": false
-      }
-    ],
-    "teachers": [
-      "Imam Ahmad ibn Hanbal",
-      "Imam al-Bukhari"
-    ],
-    "source": "Wikidata",
-    "lat": 36.2,
-    "lng": 58.8
-  },
-  {
-    "famous": "Ibn Asakir",
-    "tradition": "Islamic History",
-    "type": "Historian",
-    "primaryTitle": "Hafiz al-Sham — Greatest Historian of Damascus",
-    "full": "Abu al-Qasim Ali ibn al-Hasan ibn Hibat Allah Ibn Asakir al-Dimashqi",
-    "dob": 1105,
-    "dod": 1176,
-    "dob_s": "1105",
-    "dod_s": "1176",
-    "city": "Damascus, Syria",
-    "classif": "Historian / Hadith Scholar",
-    "lang": "Arabic",
-    "titles": "Hafiz al-Sham · Muhaqqiq al-Islam",
-    "school": "Shafi'i / Syrian Hadith School — his Tarikh Dimashq is the most comprehensive Islamic biographical dictionary",
-    "books": [
-      {
-        "title": "Tarikh Madinat Dimashq (History of Damascus — 80 volumes)",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Asakir",
-        "magnum": true,
-        "note": "Most comprehensive Islamic biographical dictionary ever compiled — 80 volumes"
-      },
-      {
-        "title": "Wikipedia — Ibn Asakir",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Asakir",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 33.5138,
-    "lng": 36.2765
-  },
-  {
-    "famous": "Ibn Khallikan",
-    "tradition": "Islamic History",
-    "type": "Historian",
-    "primaryTitle": "Wafayat al-A'yan — Master Biographer of Islam",
-    "full": "Shams al-Din Ahmad ibn Muhammad ibn Abi Bakr Ibn Khallikan al-Barmaki",
-    "dob": 1211,
-    "dod": 1282,
-    "dob_s": "1211",
-    "dod_s": "1282",
-    "city": "Erbil / Cairo / Damascus",
-    "classif": "Historian / Jurist",
-    "lang": "Arabic",
-    "titles": "Qadi al-Qudah of Syria",
-    "school": "Shafi'i School — Chief Judge of Syria; his biographical dictionary set the standard for Islamic biography",
-    "books": [
-      {
-        "title": "Wafayat al-A'yan wa Anba' Abna' al-Zaman (Deaths of Notables)",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Khallikan",
-        "magnum": true,
-        "note": "Greatest medieval Islamic biographical dictionary — 865 detailed entries"
-      },
-      {
-        "title": "Wikipedia — Ibn Khallikan",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Khallikan",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 33.5138,
-    "lng": 36.2765
-  },
-  {
-    "famous": "al-Jazari",
-    "tradition": "Islamic Sciences",
-    "type": "Scientist",
-    "primaryTitle": "Father of Robotics and Mechanical Engineering",
-    "full": "Badi al-Zaman Abu al-Izz Ismail ibn al-Razzaz al-Jazari",
-    "dob": 1136,
-    "dod": 1206,
-    "dob_s": "c. 1136",
-    "dod_s": "1206",
-    "city": "Upper Mesopotamia / Diyarbakir, Turkey",
-    "classif": "Engineer / Inventor / Scientist",
-    "lang": "Arabic",
-    "titles": "al-Jazari · Father of Robotics",
-    "school": "Artuqid Court Engineering — chief engineer at the Artuqid court in Diyarbakir",
-    "books": [
-      {
-        "title": "Kitab fi Ma'rifat al-Hiyal al-Handasiyya (Book of Knowledge of Ingenious Mechanical Devices)",
-        "url": "https://archive.org/search?query=al-Jazari+ingenious+mechanical+devices",
-        "magnum": true,
-        "note": "Describes 50 mechanical devices including water clocks, automata, and pumps — the Kitab is the founding text of robotics"
-      },
-      {
-        "title": "Wikipedia — al-Jazari",
-        "url": "https://en.wikipedia.org/wiki/Al-Jazari",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 37.91,
-    "lng": 40.23
-  },
-  {
-    "famous": "Mahmud al-Kashgari",
-    "tradition": "Islamic Sciences",
-    "type": "Scholar",
-    "primaryTitle": "Father of Turkic Linguistics — Diwan Lughat al-Turk",
-    "full": "Mahmud ibn al-Husayn ibn Muhammad al-Kashgari",
-    "dob": 1029,
-    "dod": 1101,
-    "dob_s": "c. 1029",
-    "dod_s": "c. 1101",
-    "city": "Kashgar, Central Asia",
-    "classif": "Linguist / Lexicographer",
-    "lang": "Arabic / Turkic",
-    "titles": "al-Kashgari — The Kashgarian",
-    "school": "Turkic Linguistic School — compiled the first comprehensive dictionary of Turkic languages",
-    "books": [
-      {
-        "title": "Diwan Lughat al-Turk (Compendium of Turkic Languages)",
-        "url": "https://en.wikipedia.org/wiki/Diwan_Lughat_al-Turk",
-        "magnum": true,
-        "note": "First comprehensive Turkic language dictionary and encyclopedia — essential source for Turkic history and linguistics"
-      },
-      {
-        "title": "Wikipedia — Mahmud al-Kashgari",
-        "url": "https://en.wikipedia.org/wiki/Mahmud_al-Kashgari",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 39.47,
-    "lng": 75.99
-  },
-  {
-    "famous": "Abu Madyan",
-    "tradition": "Qadiriyya",
-    "type": "Mystic",
-    "primaryTitle": "Shu'ayb al-Andalusi — Patron Saint of Tlemcen",
-    "full": "Abu Madyan Shu'ayb ibn al-Husayn al-Ansari al-Andalusi",
-    "dob": 1126,
-    "dod": 1198,
-    "dob_s": "c. 1126",
-    "dod_s": "1198",
-    "city": "Seville / Bejaia, Algeria",
-    "classif": "Mystic / Scholar / Founder",
-    "lang": "Arabic",
-    "titles": "Patron Saint of Tlemcen · Teacher of the West",
-    "school": "Qadiriyya / Maghrebi Sufism — teacher of Ibn Arabi's masters; the most important Sufi of the Muslim West",
-    "books": [
-      {
-        "title": "Uns al-Wahid (Intimate Companion of the Solitary)",
-        "url": "https://en.wikipedia.org/wiki/Abu_Madyan",
-        "magnum": true,
-        "note": "The most important Sufi master of the Muslim West; his lineage connects to Ibn Arabi"
-      },
-      {
-        "title": "Wikipedia — Abu Madyan",
-        "url": "https://en.wikipedia.org/wiki/Abu_Madyan",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 35.0,
-    "lng": -1.32
-  },
-  {
-    "famous": "Abu Ma'shar al-Balkhi",
-    "tradition": "Islamic Sciences",
-    "type": "Scientist",
-    "primaryTitle": "Albumasar — Greatest Islamic Astrologer",
-    "full": "Ja'far ibn Muhammad Abu Ma'shar al-Balkhi",
-    "dob": 787,
-    "dod": 886,
-    "dob_s": "787",
-    "dod_s": "886",
-    "city": "Balkh / Baghdad, Iraq",
-    "classif": "Astronomer / Astrologer / Mathematician",
-    "lang": "Arabic",
-    "titles": "Albumasar (Latin) · Ja'far ibn Muhammad",
-    "school": "Abbasid Scientific Court — most influential Islamic astrologer; his Latin translations shaped European medieval astronomy",
-    "books": [
-      {
-        "title": "Introductorium in Astronomiam (Introduction to Astronomy)",
-        "url": "https://en.wikipedia.org/wiki/Abu_Ma%27shar_al-Balkhi",
-        "magnum": true,
-        "note": "Translated as 'Albumasar' in Latin; most influential Islamic astrology text in medieval Europe"
-      },
-      {
-        "title": "Wikipedia — Abu Ma'shar al-Balkhi",
-        "url": "https://en.wikipedia.org/wiki/Abu_Ma%27shar_al-Balkhi",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 33.3406,
-    "lng": 44.4009
-  },
-  {
-    "famous": "Al-Muzani",
-    "tradition": "Islamic Jurisprudence",
-    "type": "Jurist",
-    "primaryTitle": "Imam al-Muzani — Greatest Student of al-Shafi'i",
-    "full": "Abu Ibrahim Ismail ibn Yahya al-Muzani al-Misri al-Shafi'i",
-    "dob": 791,
-    "dod": 877,
-    "dob_s": "791",
-    "dod_s": "877",
-    "city": "Egypt / Cairo",
-    "classif": "Jurist / Scholar",
-    "lang": "Arabic",
-    "titles": "Imam al-Muzani · Nasir Madhhab al-Shafi'i",
-    "school": "Shafi'i School — al-Shafi'i's most distinguished student; his Mukhtasar is the foundational Shafi'i legal text",
-    "books": [
-      {
-        "title": "Mukhtasar al-Muzani (Compendium of Shafi'i Law)",
-        "url": "https://en.wikipedia.org/wiki/Al-Muzani",
-        "magnum": true,
-        "note": "Standard Shafi'i legal text used in madrasas for centuries — al-Shafi'i said 'al-Muzani is the champion of my school'"
-      },
-      {
-        "title": "Wikipedia — Al-Muzani",
-        "url": "https://en.wikipedia.org/wiki/Al-Muzani",
-        "magnum": false
-      }
-    ],
-    "teachers": [
-      "Imam al-Shafi'i"
-    ],
-    "source": "Wikidata",
-    "lat": 30.0444,
-    "lng": 31.2357
-  },
-  {
-    "famous": "Al-Baghawi",
-    "tradition": "Islamic Jurisprudence",
-    "type": "Scholar",
-    "primaryTitle": "Muhyi al-Sunna — Reviver of the Sunnah",
-    "full": "Abu Muhammad al-Husayn ibn Mas'ud al-Baghawi al-Shafi'i",
-    "dob": 1044,
-    "dod": 1122,
-    "dob_s": "1044",
-    "dod_s": "1122",
-    "city": "Bagh, Khorasan, Iran",
-    "classif": "Jurist / Hadith Scholar / Exegete",
-    "lang": "Arabic",
-    "titles": "Muhyi al-Sunna · Rukn al-Din",
-    "school": "Shafi'i / Khorasan School — leading Shafi'i jurist; his Tafsir is an authoritative Quranic commentary",
-    "books": [
-      {
-        "title": "Masabih al-Sunnah (Lamps of the Sunnah — hadith compilation)",
-        "url": "https://en.wikipedia.org/wiki/Al-Baghawi",
-        "magnum": true,
-        "note": "His Tafsir al-Baghawi and Masabih al-Sunnah are authoritative references in Sunni scholarship"
-      },
-      {
-        "title": "Wikipedia — Al-Baghawi",
-        "url": "https://en.wikipedia.org/wiki/Al-Baghawi",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 34.3,
-    "lng": 62.12
-  },
-  {
-    "famous": "Zakariya al-Qazwini",
-    "tradition": "Islamic Sciences",
-    "type": "Scholar",
-    "primaryTitle": "Father of Islamic Geography — Aja'ib al-Makhluqat",
-    "full": "Zakariya ibn Muhammad ibn Mahmud al-Qazwini al-Shafi'i",
-    "dob": 1203,
-    "dod": 1283,
-    "dob_s": "1203",
-    "dod_s": "1283",
-    "city": "Qazvin, Iran",
-    "classif": "Geographer / Cosmographer / Scholar",
-    "lang": "Arabic",
-    "titles": "al-Qazwini · Father of Islamic Cosmography",
-    "school": "Ilkhanid Court — most widely read Islamic cosmographer; his encyclopedia was copied and illustrated for centuries",
-    "books": [
-      {
-        "title": "Aja'ib al-Makhluqat wa Ghara'ib al-Mawjudat (Wonders of Creation)",
-        "url": "https://en.wikipedia.org/wiki/Zakariya_al-Qazwini",
-        "magnum": true,
-        "note": "Most widely read Islamic encyclopedia of the medieval world — richly illustrated with cosmography, zoology, and geography"
-      },
-      {
-        "title": "Wikipedia — Zakariya al-Qazwini",
-        "url": "https://en.wikipedia.org/wiki/Zakariya_al-Qazwini",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 36.2688,
-    "lng": 50.0041
-  },
-  {
-    "famous": "Ibn Wasil",
-    "tradition": "Islamic History",
-    "type": "Historian",
-    "primaryTitle": "Mufarrij al-Kurub — Primary Historian of the Crusades",
-    "full": "Jamal al-Din Muhammad ibn Salim Ibn Wasil al-Hamawi al-Shafi'i",
-    "dob": 1208,
-    "dod": 1298,
-    "dob_s": "1208",
-    "dod_s": "1298",
-    "city": "Hama, Syria",
-    "classif": "Historian / Diplomat / Scholar",
-    "lang": "Arabic",
-    "titles": "Diplomat to France · Court Historian of Ayyubids and Mamluks",
-    "school": "Ayyubid-Mamluk Court — his Mufarrij al-Kurub is primary Arabic source for Crusader-era history",
-    "books": [
-      {
-        "title": "Mufarrij al-Kurub fi Akhbar Bani Ayyub (Dispeller of Anxieties)",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Wasil",
-        "magnum": true,
-        "note": "Primary Arabic source for Crusader-era history; author was also sent as diplomat to France's King Louis IX"
-      },
-      {
-        "title": "Wikipedia — Ibn Wasil",
-        "url": "https://en.wikipedia.org/wiki/Ibn_Wasil",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 35.1418,
-    "lng": 36.7542
-  },
-  {
-    "famous": "Mansur Al-Hallaj",
-    "tradition": "Baghdad School",
-    "type": "Mystic",
-    "primaryTitle": "Ana al-Haqq — I am the Truth; Martyr of Islamic Mysticism",
-    "full": "Abu al-Mughith al-Husayn ibn Mansur al-Hallaj al-Baydi",
-    "dob": 858,
-    "dod": 922,
-    "dob_s": "858",
-    "dod_s": "922",
-    "city": "Wasit / Baghdad, Iraq",
-    "classif": "Mystic / Poet / Martyr",
-    "lang": "Arabic / Persian",
-    "titles": "al-Hallaj (The Cotton Carder) · Ana al-Haqq · Martyr of Love",
-    "school": "Baghdad Sufi School — student of Junayd; executed for 'Ana al-Haqq' (I am the Truth); most controversial Sufi martyr",
-    "books": [
-      {
-        "title": "Kitab al-Tawasin (Book of the Ta and Sin)",
-        "url": "https://archive.org/search?query=Hallaj+Tawasin+mystical",
-        "magnum": true,
-        "note": "Mystical masterwork; his poetry and 'Ana al-Haqq' transformed Islamic mysticism; executed in 922 CE"
-      },
-      {
-        "title": "Wikipedia — Al-Hallaj",
-        "url": "https://en.wikipedia.org/wiki/Al-Hallaj",
-        "magnum": false
-      }
-    ],
-    "teachers": [
-      "Junayd of Baghdad",
-      "Sahl al-Tustari"
-    ],
-    "source": "Wikidata",
-    "lat": 33.3406,
-    "lng": 44.4009
-  },
-  {
-    "famous": "Abu Bakr al-Razi",
-    "tradition": "Islamic Sciences",
-    "type": "Scientist",
-    "primaryTitle": "Rhazes — Greatest Physician of the Medieval World",
-    "full": "Abu Bakr Muhammad ibn Zakariyya al-Razi al-Tabib",
-    "dob": 865,
-    "dod": 925,
-    "dob_s": "865",
-    "dod_s": "925",
-    "city": "Ray / Baghdad, Iraq",
-    "classif": "Physician / Chemist / Philosopher",
-    "lang": "Arabic / Persian",
-    "titles": "Rhazes (Latin) · al-Tabib al-A'zam · First to distinguish smallpox from measles",
-    "school": "Medical / Philosophical School — greatest medieval clinician; his Al-Hawi was the largest medical encyclopedia ever written",
-    "books": [
-      {
-        "title": "Al-Hawi fi al-Tibb (Continens — 25 volumes of medical knowledge)",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi",
-        "magnum": true,
-        "note": "Largest medical encyclopedia ever written; first to describe and differentiate smallpox from measles"
-      },
-      {
-        "title": "Wikipedia — Muhammad ibn Zakariya al-Razi",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Zakariya_al-Razi",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 35.5833,
-    "lng": 51.4333
-  },
-  {
-    "famous": "Abd al-Rahman al-Sufi",
-    "tradition": "Islamic Sciences",
-    "type": "Scientist",
-    "primaryTitle": "al-Sufi — Greatest Islamic Astronomer of Fixed Stars",
-    "full": "Abu al-Husayn Abd al-Rahman ibn Umar al-Sufi al-Razi",
-    "dob": 903,
-    "dod": 986,
-    "dob_s": "903",
-    "dod_s": "986",
-    "city": "Ray, Iran / Baghdad",
-    "classif": "Astronomer / Scientist",
-    "lang": "Arabic",
-    "titles": "al-Sufi · Azophi (Latin) · First Observer of Andromeda Galaxy",
-    "school": "Buyid Court Astronomy — court astronomer; greatest Islamic observational astronomer; 1,018 stars catalogued",
-    "books": [
-      {
-        "title": "Kitab Suwar al-Kawakib (Book of Fixed Stars)",
-        "url": "https://en.wikipedia.org/wiki/Abd_al-Rahman_al-Sufi",
-        "magnum": true,
-        "note": "Catalogued 1,018 stars with unprecedented accuracy; first recorded observation of the Andromeda galaxy (called 'Little Cloud')"
-      },
-      {
-        "title": "Wikipedia — Abd al-Rahman al-Sufi",
-        "url": "https://en.wikipedia.org/wiki/Abd_al-Rahman_al-Sufi",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 35.5833,
-    "lng": 51.4333
-  },
-  {
-    "famous": "Avempace",
-    "tradition": "Islamic Philosophy",
-    "type": "Philosopher",
-    "primaryTitle": "Ibn Bajja — First Philosopher of the Muslim West",
-    "full": "Abu Bakr Muhammad ibn Yahya ibn al-Sayigh al-Tujini Ibn Bajja al-Andalusi",
-    "dob": 1085,
-    "dod": 1138,
-    "dob_s": "c. 1085",
-    "dod_s": "1138",
-    "city": "Zaragoza / Fez, Al-Andalus",
-    "classif": "Philosopher / Physician / Musician",
-    "lang": "Arabic",
-    "titles": "Avempace (Latin) · Ibn Bajja",
-    "school": "Andalusian Peripatetic School — first major philosopher of Muslim Spain; influenced Ibn Rushd and Latin Scholastics",
-    "books": [
-      {
-        "title": "Tadbir al-Mutawahhid (Governance of the Solitary)",
-        "url": "https://en.wikipedia.org/wiki/Avempace",
-        "magnum": true,
-        "note": "First great philosophical work of Muslim Spain; influenced Ibn Rushd and through him, European Scholasticism"
-      },
-      {
-        "title": "Wikipedia — Avempace",
-        "url": "https://en.wikipedia.org/wiki/Avempace",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.6488,
-    "lng": -0.8891
-  },
-  {
-    "famous": "Ali-Shir Nava'i",
-    "tradition": "Persian Poetry",
-    "type": "Poet",
-    "primaryTitle": "Sultan of Chagatai Poetry — Father of Uzbek Literature",
-    "full": "Mir Ali-Shir Nava'i Nizam al-Din al-Harawi al-Timurid",
-    "dob": 1441,
-    "dod": 1501,
-    "dob_s": "1441",
-    "dod_s": "1501",
-    "city": "Herat, Afghanistan",
-    "classif": "Poet / Philosopher / Statesman",
-    "lang": "Chagatai Turkic / Persian",
-    "titles": "Nizam al-Din · Father of Uzbek Literature · Sultan al-Shu'ara",
-    "school": "Timurid Herat School — greatest poet of Chagatai Turkic; argued Turkic equal to Persian as literary language",
-    "books": [
-      {
-        "title": "Khamsa (Five Poems — Chagatai Turkic response to Nizami's Khamsa)",
-        "url": "https://en.wikipedia.org/wiki/Ali-Shir_Nava%27i",
-        "magnum": true,
-        "note": "Wrote 30+ works; argued and demonstrated that Turkic was equal to Persian as a literary language"
-      },
-      {
-        "title": "Wikipedia — Ali-Shir Nava'i",
-        "url": "https://en.wikipedia.org/wiki/Ali-Shir_Nava%27i",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 34.3566,
-    "lng": 62.2039
-  },
-  {
-    "famous": "Husayn Bayqarah",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Last Great Timurid Sultan — Patron of Herat's Golden Age",
-    "full": "Sultan Husayn ibn Mansur ibn Bayqara al-Timurid al-Harawi",
-    "dob": 1438,
-    "dod": 1506,
-    "dob_s": "1438",
-    "dod_s": "1506",
-    "city": "Herat, Afghanistan",
-    "classif": "Sultan / Patron of Arts",
-    "lang": "Persian / Chagatai",
-    "titles": "Sultan Husayn Mirza · Mir Husayn",
-    "school": "Timurid School — his court in Herat was the cultural capital of the Islamic world; patron of Jami, Nava'i, and Bihzad",
-    "books": [
-      {
-        "title": "Wikipedia — Husayn Bayqarah",
-        "url": "https://en.wikipedia.org/wiki/Husayn_Bayqarah",
-        "magnum": true,
-        "note": "His court in Herat attracted Jami, Nava'i, and Bihzad — the last great Timurid cultural flowering"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 34.3566,
-    "lng": 62.2039
-  },
-  {
-    "famous": "Sunjata Keïta",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Lion King — Founder of the Mali Empire",
-    "full": "Sundiata Keïta Sogolon Djata Manden Diara",
-    "dob": 1190,
-    "dod": 1255,
-    "dob_s": "c. 1190",
-    "dod_s": "c. 1255",
-    "city": "Niani, Mali Empire (modern Guinea)",
-    "classif": "Emperor / Founder",
-    "lang": "Mande / Arabic",
-    "titles": "Mansa Sogolon Djata · Lion of Mali · Manden Diara",
-    "school": "Mali Imperial Court — defeated Sosso king Sumanguru Kante at Kirina 1235; founded largest West African empire",
-    "books": [
-      {
-        "title": "Epic of Sundiata (oral tradition — The Sundiata Keita Epic)",
-        "url": "https://en.wikipedia.org/wiki/Sundiata_Keita",
-        "magnum": true,
-        "note": "Founded the Mali Empire 1235 CE; the Sundiata Epic is West Africa's greatest oral history"
-      },
-      {
-        "title": "Wikipedia — Sundiata Keita",
-        "url": "https://en.wikipedia.org/wiki/Sundiata_Keita",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 11.8333,
-    "lng": -8.3
-  },
-  {
-    "famous": "Zheng He",
-    "tradition": "Islamic History",
-    "type": "Scholar",
-    "primaryTitle": "San Bao — Admiral of the Seven Voyages",
-    "full": "Ma He (Zheng He) ibn Muhammad al-Yunani al-Hajji",
-    "dob": 1371,
-    "dod": 1435,
-    "dob_s": "1371",
-    "dod_s": "1435",
-    "city": "Yunnan, China / Indian Ocean",
-    "classif": "Admiral / Explorer / Diplomat",
-    "lang": "Chinese / Arabic",
-    "titles": "San Bao (Three Jewels) · Admiral Zheng · Hajji Mahmud Shams",
-    "school": "Chinese Muslim — eunuch admiral of the Ming Dynasty; his fleet dwarfed any contemporary European navy",
-    "books": [
-      {
-        "title": "Yingya Shenglan (Overall Survey of the Ocean's Shores — by Ma Huan)",
-        "url": "https://en.wikipedia.org/wiki/Zheng_He",
-        "magnum": true,
-        "note": "Led 7 voyages to Southeast Asia, India, Arabia, and East Africa; his fleet had 300 ships and 28,000 sailors"
-      },
-      {
-        "title": "Wikipedia — Zheng He",
-        "url": "https://en.wikipedia.org/wiki/Zheng_He",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 25.04,
-    "lng": 102.7
-  },
-  {
-    "famous": "Skanderbeg",
-    "tradition": "Islamic History",
-    "type": "Warrior",
-    "primaryTitle": "Athleta Christi — Lord of Albania; The Dragon of Albania",
-    "full": "Gjergj Kastrioti Skënderbeu ibn Gjon Kastrioti",
-    "dob": 1405,
-    "dod": 1468,
-    "dob_s": "1405",
-    "dod_s": "1468",
-    "city": "Albania / Ottoman Empire",
-    "classif": "Military Commander / National Hero",
-    "lang": "Albanian / Turkish",
-    "titles": "Iskander Beg · Lord of Albania · Athleta Christi",
-    "school": "Ottoman Court (raised Muslim) → Albanian Resistance (converted to Christianity) — resisted Ottoman expansion for 25 years",
-    "books": [
-      {
-        "title": "Wikipedia — Skanderbeg",
-        "url": "https://en.wikipedia.org/wiki/Skanderbeg",
-        "magnum": true,
-        "note": "Raised Muslim in the Ottoman court; returned to Albania, converted to Christianity, led 25-year resistance against the Ottomans"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.3317,
-    "lng": 19.8317
-  },
-  {
-    "famous": "Sher Shah Suri",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "The Afghan Lion — Defeated the Mughals",
-    "full": "Farid Khan (Sher Shah) ibn Hasan Khan Suri al-Afghan",
-    "dob": 1486,
-    "dod": 1545,
-    "dob_s": "1486",
-    "dod_s": "1545",
-    "city": "Sasaram / Delhi, India",
-    "classif": "Emperor / Administrator / Reformer",
-    "lang": "Persian / Pashto",
-    "titles": "Sher Shah · Farid Khan · Sher Khan",
-    "school": "Sur Empire — Afghan ruler who defeated Humayun and ruled North India; Grand Trunk Road builder; his admin system adopted by Akbar",
-    "books": [
-      {
-        "title": "Wikipedia — Sher Shah Suri",
-        "url": "https://en.wikipedia.org/wiki/Sher_Shah_Suri",
-        "magnum": true,
-        "note": "Built the Grand Trunk Road from Bengal to Kabul; his administrative reforms were so good Akbar adopted them"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 24.947,
-    "lng": 84.0325
-  },
-  {
-    "famous": "Humayun",
-    "tradition": "Mughal",
-    "type": "Ruler",
-    "primaryTitle": "Nasir al-Din Humayun — Second Mughal Emperor",
-    "full": "Nasir al-Din Muhammad Humayun ibn Babur al-Timurid",
-    "dob": 1508,
-    "dod": 1556,
-    "dob_s": "1508",
-    "dod_s": "1556",
-    "city": "Kabul / Delhi, India",
-    "classif": "Emperor / Scholar",
-    "lang": "Persian / Chagatai",
-    "titles": "Nasir al-Din · Humayun (Lucky) · Padshah",
-    "school": "Mughal Empire — son of Babur; lost and regained his empire; his mausoleum is the prototype for the Taj Mahal",
-    "books": [
-      {
-        "title": "Humayunnama (biography by Gulbadan Begum)",
-        "url": "https://en.wikipedia.org/wiki/Humayun",
-        "magnum": true,
-        "note": "His mausoleum in Delhi directly inspired the Taj Mahal; his court brought Persian culture to the Mughals"
-      },
-      {
-        "title": "Wikipedia — Humayun",
-        "url": "https://en.wikipedia.org/wiki/Humayun",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 28.5932,
-    "lng": 77.2507
-  },
-  {
-    "famous": "Jahangir I",
-    "tradition": "Mughal",
-    "type": "Ruler",
-    "primaryTitle": "Nur al-Din Jahangir — World-Seizer",
-    "full": "Nur al-Din Muhammad Salim Jahangir ibn Akbar al-Timurid",
-    "dob": 1569,
-    "dod": 1627,
-    "dob_s": "1569",
-    "dod_s": "1627",
-    "city": "Fatehpur Sikri / Agra, India",
-    "classif": "Emperor / Naturalist / Patron of Arts",
-    "lang": "Persian",
-    "titles": "Nur al-Din · Jahangir (World-Seizer) · Padshah",
-    "school": "Mughal Empire — fourth emperor; renowned for justice; pioneered Mughal miniature painting; Chain of Justice",
-    "books": [
-      {
-        "title": "Tuzk-i-Jahangiri / Jahangirnama (Memoirs of Jahangir)",
-        "url": "https://en.wikipedia.org/wiki/Jahangir",
-        "magnum": true,
-        "note": "His memoirs are among the most vivid in all of Islamic literature; passionate about natural history and painting"
-      },
-      {
-        "title": "Wikipedia — Jahangir",
-        "url": "https://en.wikipedia.org/wiki/Jahangir",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 27.094,
-    "lng": 77.667
-  },
-  {
-    "famous": "Murad I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Hudavendigar — First Formally Titled Ottoman Sultan",
-    "full": "Murad ibn Orhan ibn Osman al-Uthman al-Ghazi",
-    "dob": 1326,
-    "dod": 1389,
-    "dob_s": "1326",
-    "dod_s": "1389",
-    "city": "Bursa / Adrianople, Ottoman Empire",
-    "classif": "Sultan / Conqueror",
-    "lang": "Ottoman Turkish",
-    "titles": "Hudavendigar (Sovereign Lord) · Ghazi · First to use title Sultan",
-    "school": "Ottoman Dynasty — third Ottoman ruler; first to use the title Sultan; conquered much of the Balkans; killed at Kosovo",
-    "books": [
-      {
-        "title": "Wikipedia — Murad I",
-        "url": "https://en.wikipedia.org/wiki/Murad_I",
-        "magnum": true,
-        "note": "First Ottoman ruler to use the title 'Sultan'; conquered Adrianople, Bulgaria, and Serbia; killed at Kosovo 1389"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 40.1885,
-    "lng": 29.061
-  },
-  {
-    "famous": "Bayezid I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Yildirim — The Thunderbolt; Captured by Timur",
-    "full": "Bayezid ibn Murad ibn Orhan al-Uthman al-Ghazi",
-    "dob": 1354,
-    "dod": 1403,
-    "dob_s": "1354",
-    "dod_s": "1403",
-    "city": "Edirne / Bursa, Ottoman Empire",
-    "classif": "Sultan / Conqueror",
-    "lang": "Ottoman Turkish",
-    "titles": "Yildirim (The Thunderbolt) · Ghazi · Captured at Ankara by Timur",
-    "school": "Ottoman Dynasty — nicknamed Thunderbolt for rapid campaigns; besieged Constantinople; defeated and captured by Timur at Ankara 1402",
-    "books": [
-      {
-        "title": "Wikipedia — Bayezid I",
-        "url": "https://en.wikipedia.org/wiki/Bayezid_I",
-        "magnum": true,
-        "note": "Called 'The Thunderbolt' for speed; besieged Constantinople; captured by Timur at the Battle of Ankara 1402"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.6771,
-    "lng": 26.5557
-  },
-  {
-    "famous": "Mehmed I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Kirişçi — Restorer of the Ottoman Empire",
-    "full": "Muhammad ibn Bayezid ibn Murad al-Uthman al-Ghazi",
-    "dob": 1386,
-    "dod": 1421,
-    "dob_s": "1386",
-    "dod_s": "1421",
-    "city": "Bursa, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Kirişçi (Restorer) · Celebi Mehmed · Çelebi",
-    "school": "Ottoman Dynasty — fifth sultan; reunited the empire after its collapse following Timur's defeat; known as the 'Restorer'",
-    "books": [
-      {
-        "title": "Wikipedia — Mehmed I",
-        "url": "https://en.wikipedia.org/wiki/Mehmed_I",
-        "magnum": true,
-        "note": "Reunited the Ottoman Empire after 11 years of civil war following Timur's defeat; known as the Empire's Restorer"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 40.1885,
-    "lng": 29.061
-  },
-  {
-    "famous": "Murad II",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Ghazi Sultan — Father of Mehmed the Conqueror",
-    "full": "Murad ibn Muhammad ibn Bayezid al-Uthman al-Ghazi",
-    "dob": 1404,
-    "dod": 1451,
-    "dob_s": "1404",
-    "dod_s": "1451",
-    "city": "Amasya / Edirne, Ottoman Empire",
-    "classif": "Sultan / Scholar",
-    "lang": "Ottoman Turkish",
-    "titles": "Murad Khan · Ghazi · Father of Mehmed the Conqueror",
-    "school": "Ottoman Dynasty — sixth sultan; twice abdicated; defeated last major Crusade at Varna 1444; father of Mehmed II",
-    "books": [
-      {
-        "title": "Wikipedia — Murad II",
-        "url": "https://en.wikipedia.org/wiki/Murad_II",
-        "magnum": true,
-        "note": "Defeated the last major Crusade at Varna 1444; abdicated twice; father and patron of Mehmed the Conqueror"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 40.6528,
-    "lng": 35.8331
-  },
-  {
-    "famous": "Selim II",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sarı Selim — The Blond; Builder of the Selimiye Mosque",
-    "full": "Selim ibn Suleiman ibn Selim al-Uthman al-Ghazi",
-    "dob": 1524,
-    "dod": 1574,
-    "dob_s": "1524",
-    "dod_s": "1574",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan / Patron of Arts",
-    "lang": "Ottoman Turkish / Persian",
-    "titles": "Sarı Selim (The Blond) · Selim the Sot (pejorative)",
-    "school": "Ottoman Dynasty — eleventh sultan; son of Suleiman; conquered Cyprus; commissioned Sinan's Selimiye Mosque",
-    "books": [
-      {
-        "title": "Wikipedia — Selim II",
-        "url": "https://en.wikipedia.org/wiki/Selim_II",
-        "magnum": true,
-        "note": "Son of Suleiman the Magnificent; built the Selimiye Mosque in Edirne, considered Sinan's masterpiece"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Murad III",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Ottoman Sultan — Longest Reigning Sultan of the 16th Century",
-    "full": "Murad ibn Selim ibn Suleiman al-Uthman al-Ghazi",
-    "dob": 1546,
-    "dod": 1595,
-    "dob_s": "1546",
-    "dod_s": "1595",
-    "city": "Manisa / Istanbul, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Sultan Murad Khan III",
-    "school": "Ottoman Dynasty — twelfth sultan; longest reigning 16th century sultan; expanded empire eastward into Caucasus",
-    "books": [
-      {
-        "title": "Wikipedia — Murad III",
-        "url": "https://en.wikipedia.org/wiki/Murad_III",
-        "magnum": true,
-        "note": "Longest reigning sultan of the 16th century; greatly expanded the empire eastward into the Caucasus"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 38.6191,
-    "lng": 27.4289
-  },
-  {
-    "famous": "Mehmed III",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Ottoman Sultan — Victory at Mezőkeresztes 1596",
-    "full": "Muhammad ibn Murad ibn Selim al-Uthman al-Ghazi",
-    "dob": 1566,
-    "dod": 1603,
-    "dob_s": "1566",
-    "dod_s": "1603",
-    "city": "Manisa / Istanbul, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Sultan Muhammad Khan III",
-    "school": "Ottoman Dynasty — thirteenth sultan; personally commanded at Mezőkeresztes; executed 19 brothers upon accession",
-    "books": [
-      {
-        "title": "Wikipedia — Mehmed III",
-        "url": "https://en.wikipedia.org/wiki/Mehmed_III",
-        "magnum": true,
-        "note": "Personally commanded at Battle of Mezőkeresztes 1596; last Ottoman sultan to personally lead an army into battle"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 38.6191,
-    "lng": 27.4289
-  },
-  {
-    "famous": "Ahmed I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sultan Ahmed — Builder of the Blue Mosque",
-    "full": "Ahmad ibn Muhammad ibn Murad al-Uthman al-Ghazi",
-    "dob": 1590,
-    "dod": 1617,
-    "dob_s": "1590",
-    "dod_s": "1617",
-    "city": "Manisa / Istanbul, Ottoman Empire",
-    "classif": "Sultan / Poet / Patron",
-    "lang": "Ottoman Turkish / Persian",
-    "titles": "Sultan Ahmad Khan I · Bahti (his pen name)",
-    "school": "Ottoman Dynasty — fourteenth sultan; built Sultan Ahmed Mosque (Blue Mosque); signed Treaty of Zsitvatorok",
-    "books": [
-      {
-        "title": "Wikipedia — Ahmed I",
-        "url": "https://en.wikipedia.org/wiki/Ahmed_I",
-        "magnum": true,
-        "note": "Built the Blue Mosque (Sultan Ahmed Mosque) in Istanbul; signed Treaty of Zsitvatorok — first equal Ottoman-European treaty"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0055,
-    "lng": 28.9768
-  },
-  {
-    "famous": "Osman II",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Genç Osman — Young Osman; First Sultan Killed by Janissaries",
-    "full": "Uthman ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
-    "dob": 1604,
-    "dod": 1622,
-    "dob_s": "1604",
-    "dod_s": "1622",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan / Reformer",
-    "lang": "Ottoman Turkish",
-    "titles": "Genç Osman (Young Osman) · Sultan Uthman II",
-    "school": "Ottoman Dynasty — sixteenth sultan; attempted military reforms; first Ottoman sultan killed by his own Janissaries aged 17",
-    "books": [
-      {
-        "title": "Wikipedia — Osman II",
-        "url": "https://en.wikipedia.org/wiki/Osman_II",
-        "magnum": true,
-        "note": "Attempted military reforms of the Janissaries; assassinated by them aged 17 — first Ottoman sultan killed by his troops"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Murad IV",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Ghazi Murad — Recapturer of Baghdad from Safavids",
-    "full": "Murad ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
-    "dob": 1612,
-    "dod": 1640,
-    "dob_s": "1612",
-    "dod_s": "1640",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan / Warrior",
-    "lang": "Ottoman Turkish",
-    "titles": "Ghazi · Sultan Murad Khan IV",
-    "school": "Ottoman Dynasty — seventeenth sultan; personally led armies; recaptured Baghdad from Persia 1638; banned coffee, tobacco, alcohol",
-    "books": [
-      {
-        "title": "Wikipedia — Murad IV",
-        "url": "https://en.wikipedia.org/wiki/Murad_IV",
-        "magnum": true,
-        "note": "Personally led the army that recaptured Baghdad from Safavid Persia in 1638; last great warrior-sultan of the Ottomans"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Ibrahim I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Deli Ibrahim — Ibrahim the Mad; 18th Ottoman Sultan",
-    "full": "Ibrahim ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
-    "dob": 1615,
-    "dod": 1648,
-    "dob_s": "1615",
-    "dod_s": "1648",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Deli Ibrahim (Mad Ibrahim) · Sultan Ibrahim Khan I",
-    "school": "Ottoman Dynasty — eighteenth sultan; known as 'Deli Ibrahim'; suffered mental illness; deposed and executed by Janissaries",
-    "books": [
-      {
-        "title": "Wikipedia — Ibrahim of the Ottoman Empire",
-        "url": "https://en.wikipedia.org/wiki/Ibrahim_of_the_Ottoman_Empire",
-        "magnum": true,
-        "note": "Known as 'Deli Ibrahim' (Mad Ibrahim); suffered mental illness; deposed and executed by Janissaries at age 32"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Mehmed IV",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Avcı Mehmed — The Hunter; Longest Reigning 17th Century Sultan",
-    "full": "Muhammad ibn Ibrahim ibn Ahmad al-Uthman al-Ghazi",
-    "dob": 1642,
-    "dod": 1693,
-    "dob_s": "1642",
-    "dod_s": "1693",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Avcı Mehmed (The Hunter) · Sultan Muhammad Khan IV",
-    "school": "Ottoman Dynasty — nineteenth sultan; reigned 39 years; second Siege of Vienna 1683 failed — turning point of Ottoman expansion",
-    "books": [
-      {
-        "title": "Wikipedia — Mehmed IV",
-        "url": "https://en.wikipedia.org/wiki/Mehmed_IV",
-        "magnum": true,
-        "note": "Reigned 39 years; the failed second Siege of Vienna 1683 under his reign marked the turning point of Ottoman power in Europe"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Abdul Hamid I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sultan Abdul Hamid I — Lost Crimea to Russia",
-    "full": "Abd al-Hamid ibn Ahmad ibn Muhammad al-Uthman al-Ghazi",
-    "dob": 1725,
-    "dod": 1789,
-    "dob_s": "1725",
-    "dod_s": "1789",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan / Reformer",
-    "lang": "Ottoman Turkish",
-    "titles": "Sultan Abd al-Hamid Khan I",
-    "school": "Ottoman Dynasty — twenty-seventh sultan; lost Crimea to Russia in 1783; began military modernization; known for piety",
-    "books": [
-      {
-        "title": "Wikipedia — Abdul Hamid I",
-        "url": "https://en.wikipedia.org/wiki/Abdul_Hamid_I",
-        "magnum": true,
-        "note": "Lost Crimea to Russia in the 1783 Treaty of Küçük Kaynarca — the first major Ottoman territorial loss to a Christian power"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Abdülmecid I",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sultan Abdülmecid — Architect of the Tanzimat Reforms",
-    "full": "Abd al-Majid ibn Mahmud ibn Abd al-Hamid al-Uthman",
-    "dob": 1823,
-    "dod": 1861,
-    "dob_s": "1823",
-    "dod_s": "1861",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan / Reformer",
-    "lang": "Ottoman Turkish",
-    "titles": "Sultan Abd al-Majid Khan I · Reformer",
-    "school": "Ottoman Dynasty — thirty-first sultan; Tanzimat reforms guaranteeing equality regardless of religion; built Dolmabahce Palace",
-    "books": [
-      {
-        "title": "Wikipedia — Abdulmejid I",
-        "url": "https://en.wikipedia.org/wiki/Abdulmejid_I",
-        "magnum": true,
-        "note": "Issued the Tanzimat Hatt-i Sherif and Hatt-i Humayun — guaranteeing equal rights to all Ottoman subjects regardless of religion"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Abdülaziz",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sultan Abdülaziz — First Ottoman Sultan to Visit Western Europe",
-    "full": "Abd al-Aziz ibn Mahmud ibn Abd al-Hamid al-Uthman",
-    "dob": 1830,
-    "dod": 1876,
-    "dob_s": "1830",
-    "dod_s": "1876",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Sultan Abd al-Aziz Khan · First Sultan to visit Western Europe",
-    "school": "Ottoman Dynasty — thirty-second sultan; first to visit Western Europe; deposed and found dead suspiciously",
-    "books": [
-      {
-        "title": "Wikipedia — Abdulaziz",
-        "url": "https://en.wikipedia.org/wiki/Abdulaziz",
-        "magnum": true,
-        "note": "First Ottoman sultan to officially visit Western Europe; deposed in 1876 and found dead six days later"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Mehmed VI",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Vahideddin — Last Sultan of the Ottoman Empire",
-    "full": "Muhammad VI ibn Abd al-Majid ibn Mahmud al-Uthman",
-    "dob": 1861,
-    "dod": 1926,
-    "dob_s": "1861",
-    "dod_s": "1926",
-    "city": "Istanbul / San Remo, Italy",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Vahideddin · Last Ottoman Sultan · Muhammad Khan VI",
-    "school": "Ottoman Dynasty — thirty-sixth and last sultan; fled Istanbul on British battleship 1922; sultanate abolished by Atatürk",
-    "books": [
-      {
-        "title": "Wikipedia — Mehmed VI",
-        "url": "https://en.wikipedia.org/wiki/Mehmed_VI",
-        "magnum": true,
-        "note": "Last Sultan of the Ottoman Empire; fled Istanbul on a British battleship November 1922; sultanate abolished 3 weeks later"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Mahmud II",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Mahmud Khan — Destroyer of the Janissaries; The Reformer Sultan",
-    "full": "Mahmud ibn Abd al-Hamid ibn Ahmad al-Uthman al-Ghazi",
-    "dob": 1785,
-    "dod": 1839,
-    "dob_s": "1785",
-    "dod_s": "1839",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan / Reformer",
-    "lang": "Ottoman Turkish",
-    "titles": "Mahmud Khan II · Ghazi · The Reformer",
-    "school": "Ottoman Dynasty — thirtieth sultan; abolished Janissary corps 1826 (Auspicious Incident); sweeping modernization",
-    "books": [
-      {
-        "title": "Wikipedia — Mahmud II",
-        "url": "https://en.wikipedia.org/wiki/Mahmud_II",
-        "magnum": true,
-        "note": "Abolished the 500-year-old Janissary corps in 1826; initiated the most sweeping Ottoman reforms before Atatürk"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Mehmed V",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Reşad — Sultan Who Declared Jihad in World War I",
-    "full": "Muhammad V ibn Abd al-Majid ibn Mahmud al-Uthman",
-    "dob": 1844,
-    "dod": 1918,
-    "dob_s": "1844",
-    "dod_s": "1918",
-    "city": "Istanbul, Ottoman Empire",
-    "classif": "Sultan",
-    "lang": "Ottoman Turkish",
-    "titles": "Reşad · Sultan Muhammad Khan V",
-    "school": "Ottoman Dynasty — thirty-fifth sultan; declared jihad against Allied powers in WWI; oversaw Arab Revolt; died during war",
-    "books": [
-      {
-        "title": "Wikipedia — Mehmed V",
-        "url": "https://en.wikipedia.org/wiki/Mehmed_V",
-        "magnum": true,
-        "note": "Issued a declaration of jihad against the Allied powers in World War I; oversaw the Arab Revolt against Ottoman rule"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.0082,
-    "lng": 28.9784
-  },
-  {
-    "famous": "Bayezid II",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sufi Sultan — Accepted Jewish Refugees from Spain 1492",
-    "full": "Bayezid ibn Muhammad ibn Murad al-Uthman al-Ghazi",
-    "dob": 1447,
-    "dod": 1512,
-    "dob_s": "1447",
-    "dod_s": "1512",
-    "city": "Didymoteicho / Istanbul, Ottoman Empire",
-    "classif": "Sultan / Scholar / Poet",
-    "lang": "Ottoman Turkish / Persian",
-    "titles": "Sufi Sultan · Veli (The Saint) · Sultan Bayezid Khan II",
-    "school": "Ottoman Dynasty — eighth sultan; accepted 100,000+ Jews expelled from Spain; known for Sufi piety; abdicated to Selim I",
-    "books": [
-      {
-        "title": "Wikipedia — Bayezid II",
-        "url": "https://en.wikipedia.org/wiki/Bayezid_II",
-        "magnum": true,
-        "note": "Accepted over 100,000 Jews expelled from Spain in 1492; mocked Ferdinand of Spain for 'impoverishing himself and enriching' the Ottomans"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 41.3626,
-    "lng": 26.498
-  },
-  {
-    "famous": "Qaitbay",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "al-Ashraf Qaitbay — Greatest Builder Among Mamluk Sultans",
-    "full": "al-Ashraf Sayf al-Din Qa'it Bay al-Mahmudi al-Zahiri",
-    "dob": 1416,
-    "dod": 1496,
-    "dob_s": "c. 1416",
-    "dod_s": "1496",
-    "city": "Cairo / Alexandria, Egypt",
-    "classif": "Sultan / Builder",
-    "lang": "Arabic",
-    "titles": "al-Ashraf · Qa'it Bay · Greatest Mamluk Builder",
-    "school": "Mamluk Sultanate — greatest builder among Mamluk sultans; his citadel in Alexandria was built on the site of the ancient Pharos lighthouse",
-    "books": [
-      {
-        "title": "Wikipedia — Qaitbay",
-        "url": "https://en.wikipedia.org/wiki/Qaitbay",
-        "magnum": true,
-        "note": "Built his citadel on the site of the ancient Pharos lighthouse; the Fort of Qaitbay still stands in Alexandria today"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 30.0444,
-    "lng": 31.2357
-  },
-  {
-    "famous": "Muhammad ibn Abd al-Wahhab",
-    "tradition": "Islamic Theology",
-    "type": "Reformer",
-    "primaryTitle": "Mujaddid — Founder of the Wahhabi / Salafi Reform Movement",
-    "full": "Muhammad ibn Abd al-Wahhab ibn Sulayman al-Tamimi al-Najdi",
-    "dob": 1703,
-    "dod": 1792,
-    "dob_s": "1703",
-    "dod_s": "1792",
-    "city": "Uyayna / Diriyah, Arabia",
-    "classif": "Theologian / Reformer",
-    "lang": "Arabic",
-    "titles": "Sheikh al-Islam · Mujaddid · Imam al-Najdi",
-    "school": "Hanbali School / Wahhabi-Salafi Movement — founded with Ibn Saud; reshaped global Sunni Islam; basis of Saudi state",
-    "books": [
-      {
-        "title": "Kitab al-Tawhid (Book of Monotheism)",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Abd_al-Wahhab",
-        "magnum": true,
-        "note": "Allied with Muhammad ibn Saud to found what became Saudi Arabia; his movement reshaped global Sunni Islam"
-      },
-      {
-        "title": "Wikipedia — Muhammad ibn Abd al-Wahhab",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_Abd_al-Wahhab",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 25.0664,
-    "lng": 46.316
-  },
-  {
-    "famous": "Muhammadu Bello",
-    "tradition": "Islamic History",
-    "type": "Scholar",
-    "primaryTitle": "Sultan of Sokoto — Son of Usman dan Fodio",
-    "full": "Muhammad Bello ibn Uthman dan Fodio al-Fulani",
-    "dob": 1780,
-    "dod": 1837,
-    "dob_s": "1780",
-    "dod_s": "1837",
-    "city": "Wurno, Sokoto, Nigeria",
-    "classif": "Sultan / Scholar / Historian",
-    "lang": "Arabic / Fulfulde / Hausa",
-    "titles": "Sultan of Sokoto · Amir al-Mu'minin",
-    "school": "Qadiriyya / West African Reform — second Sultan of Sokoto; son of Usman dan Fodio; authored over 60 works on Islamic governance",
-    "books": [
-      {
-        "title": "Infaq al-Maysur (Spending the Available)",
-        "url": "https://en.wikipedia.org/wiki/Muhammadu_Bello",
-        "magnum": true,
-        "note": "Son of Usman dan Fodio; second Sultan of Sokoto; authored over 60 works on Islamic governance and law"
-      },
-      {
-        "title": "Wikipedia — Muhammadu Bello",
-        "url": "https://en.wikipedia.org/wiki/Muhammadu_Bello",
-        "magnum": false
-      }
-    ],
-    "teachers": [
-      "Usman dan Fodio"
-    ],
-    "source": "Wikidata",
-    "lat": 13.2804,
-    "lng": 5.01
-  },
-  {
-    "famous": "Sharif Radhi",
-    "tradition": "Early Ascetics",
-    "type": "Scholar",
-    "primaryTitle": "Al-Sharif al-Radhi — Compiler of Nahj al-Balagha",
-    "full": "Muhammad ibn al-Husayn al-Musawi al-Sharif al-Radhi al-Baghdadi",
-    "dob": 970,
-    "dod": 1016,
-    "dob_s": "970",
-    "dod_s": "1016",
-    "city": "Baghdad, Iraq",
-    "classif": "Poet / Scholar / Compiler",
-    "lang": "Arabic",
-    "titles": "Al-Sharif al-Radhi · Dhu al-Hasabayn",
-    "school": "Shia Scholarly Tradition / Baghdad — compiled Nahj al-Balagha, the collected sermons of Ali ibn Abi Talib",
-    "books": [
-      {
-        "title": "Nahj al-Balagha (Peak of Eloquence — collected sermons of Ali ibn Abi Talib)",
-        "url": "https://en.wikipedia.org/wiki/Nahj_al-Balagha",
-        "magnum": true,
-        "note": "Compiled Nahj al-Balagha — masterpiece of Arabic prose; the collected sermons, letters, and sayings of Ali ibn Abi Talib"
-      },
-      {
-        "title": "Wikipedia — Al-Sharif al-Radi",
-        "url": "https://en.wikipedia.org/wiki/Al-Sharif_al-Radi",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 33.3406,
-    "lng": 44.4009
-  },
-  {
-    "famous": "Ali al-Ridha",
-    "tradition": "Early Ascetics",
-    "type": "Scholar",
-    "primaryTitle": "Imam Ali al-Ridha — Eighth Imam of Twelver Shia",
-    "full": "Ali ibn Musa al-Ridha ibn Ja'far al-Sadiq al-Hashimi al-Madani",
-    "dob": 765,
-    "dod": 818,
-    "dob_s": "c. 765",
-    "dod_s": "818",
-    "city": "Medina / Mashhad, Iran",
-    "classif": "Imam / Scholar / Theologian",
-    "lang": "Arabic",
-    "titles": "al-Ridha (The Acceptable) · Eighth Imam · Gharib al-Ghuraba",
-    "school": "Prophetic Household (Ahl al-Bayt) — eighth Imam of Twelver Shia; designated heir of Caliph al-Mamun; buried in Mashhad",
-    "books": [
-      {
-        "title": "Wikipedia — Ali al-Ridha",
-        "url": "https://en.wikipedia.org/wiki/Ali_al-Ridha",
-        "magnum": true,
-        "note": "Eighth Shia Imam; designated heir of Caliph al-Mamun; his shrine in Mashhad is the largest mosque in the world by capacity"
-      }
-    ],
-    "teachers": [
-      "Ja'far al-Sadiq"
-    ],
-    "source": "Wikidata",
-    "lat": 36.2847,
-    "lng": 59.617
-  },
-  {
-    "famous": "Muhammad al-Jawad",
-    "tradition": "Early Ascetics",
-    "type": "Scholar",
-    "primaryTitle": "Imam al-Jawad — Ninth Imam; Youngest Imam at Age 9",
-    "full": "Muhammad ibn Ali al-Ridha al-Jawad al-Taqi al-Hashimi",
-    "dob": 811,
-    "dod": 835,
-    "dob_s": "811",
-    "dod_s": "835",
-    "city": "Medina / Baghdad",
-    "classif": "Imam / Scholar",
-    "lang": "Arabic",
-    "titles": "al-Jawad (The Generous) · al-Taqi (The God-Fearing) · Ninth Imam",
-    "school": "Prophetic Household (Ahl al-Bayt) — ninth Imam of Twelver Shia; became Imam at age 9; renowned for answers to theological questions",
-    "books": [
-      {
-        "title": "Wikipedia — Muhammad al-Jawad",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_al-Jawad",
-        "magnum": true,
-        "note": "Ninth Shia Imam; became Imam at age 9 — the youngest Imam; renowned for profound theological answers despite his young age"
-      }
-    ],
-    "teachers": [
-      "Ali al-Ridha"
-    ],
-    "source": "Wikidata",
-    "lat": 33.3406,
-    "lng": 44.4009
-  },
-  {
-    "famous": "Hisham I of Córdoba",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Emir Hisham I — Established Maliki School in Al-Andalus",
-    "full": "Hisham ibn Abd al-Rahman al-Dakhil al-Umayyad al-Andalusi",
-    "dob": 757,
-    "dod": 796,
-    "dob_s": "757",
-    "dod_s": "796",
-    "city": "Córdoba, Al-Andalus",
-    "classif": "Emir / Patron of Scholarship",
-    "lang": "Arabic",
-    "titles": "Emir of Córdoba · al-Rida",
-    "school": "Umayyad Emirate of Córdoba — introduced the Maliki school of jurisprudence to Al-Andalus; expanded Córdoba Mosque",
-    "books": [
-      {
-        "title": "Wikipedia — Hisham I of Córdoba",
-        "url": "https://en.wikipedia.org/wiki/Hisham_I_of_C%C3%B3rdoba",
-        "magnum": true,
-        "note": "Introduced Maliki school of jurisprudence to Al-Andalus; expanded the Great Mosque of Córdoba"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 37.8882,
-    "lng": -4.7794
-  },
-  {
-    "famous": "Muhammad I of Granada",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Ibn al-Ahmar — Founder of Nasrid Dynasty and the Alhambra",
-    "full": "Muhammad ibn Yusuf ibn Nasr ibn al-Ahmar al-Nasri al-Andalusi",
-    "dob": 1194,
-    "dod": 1273,
-    "dob_s": "1194",
-    "dod_s": "1273",
-    "city": "Arjona / Granada, Al-Andalus",
-    "classif": "Emir / Founder / Builder",
-    "lang": "Arabic",
-    "titles": "Ibn al-Ahmar · Muhammad al-Ghalib · No Victor but God",
-    "school": "Nasrid Dynasty — founder; began construction of the Alhambra; adopted the motto 'Wa la ghalib illa Allah' (No victor but God)",
-    "books": [
-      {
-        "title": "Wikipedia — Muhammad I of Granada",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_I_of_Granada",
-        "magnum": true,
-        "note": "Founded the Nasrid dynasty; began the Alhambra palace; his dynasty ruled Granada until the last sultan Boabdil in 1492"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 37.1765,
-    "lng": -3.5882
-  },
-  {
-    "famous": "Pargalı Ibrahim Pasha",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Grand Vizier of Suleiman the Magnificent",
-    "full": "Ibrahim Pasha ibn Iskender Pasha al-Makbul al-Pargali",
-    "dob": 1495,
-    "dod": 1536,
-    "dob_s": "1495",
-    "dod_s": "1536",
-    "city": "Parga, Greece / Istanbul",
-    "classif": "Grand Vizier / Administrator",
-    "lang": "Ottoman Turkish / Greek",
-    "titles": "Makbul (Favored) Ibrahim Pasha · Grand Vizier · Pargalı Ibrahim",
-    "school": "Ottoman Imperial Court — closest friend and Grand Vizier of Suleiman; administered the empire's greatest expansion; executed on suspicion of treason",
-    "books": [
-      {
-        "title": "Wikipedia — Pargalı Ibrahim Pasha",
-        "url": "https://en.wikipedia.org/wiki/Parga%C4%B1_Ibrahim_Pasha",
-        "magnum": true,
-        "note": "Grand Vizier and closest confidant of Suleiman the Magnificent; administered Ottoman expansion; strangled on Suleiman's order 1536"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 39.2968,
-    "lng": 20.3901
-  },
-  {
-    "famous": "Imam Birgivi",
-    "tradition": "Islamic Theology",
-    "type": "Scholar",
-    "primaryTitle": "Birgivi Mehmed Efendi — The Ottoman Reform Scholar",
-    "full": "Muhammad ibn Pir Ali al-Birgivi al-Hanafi al-Rumi",
-    "dob": 1522,
-    "dod": 1573,
-    "dob_s": "1522",
-    "dod_s": "1573",
-    "city": "Balikesir / Birgi, Ottoman Empire",
-    "classif": "Scholar / Jurist / Theologian",
-    "lang": "Arabic / Turkish",
-    "titles": "Birgivi · Birgivî Mehmed Efendi",
-    "school": "Hanafi / Ottoman Theological School — criticized Sufi excesses; his Tariqa al-Muhammadiyya influenced Kadizadeli movement",
-    "books": [
-      {
-        "title": "al-Tariqa al-Muhammadiyya (The Muhammadan Way)",
-        "url": "https://en.wikipedia.org/wiki/Birgivi_Mehmed_Efendi",
-        "magnum": true,
-        "note": "Criticized Sufi practices and Ottoman religious laxity; his works inspired the Kadizadeli reform movement of the 17th century"
-      },
-      {
-        "title": "Wikipedia — Birgivi Mehmed Efendi",
-        "url": "https://en.wikipedia.org/wiki/Birgivi_Mehmed_Efendi",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 39.7667,
-    "lng": 27.9667
-  },
-  {
-    "famous": "René Guénon",
-    "tradition": "Islamic Philosophy",
-    "type": "Scholar",
-    "primaryTitle": "Abd al-Wahid Yahya — Founder of the Traditionalist School",
-    "full": "René Jean Marie Joseph Guénon / Abd al-Wahid Yahya al-Shadhili al-Maryami",
-    "dob": 1886,
-    "dod": 1951,
-    "dob_s": "1886",
-    "dod_s": "1951",
-    "city": "Blois, France / Cairo, Egypt",
-    "classif": "Philosopher / Mystic / Author",
-    "lang": "French / Arabic",
-    "titles": "Abd al-Wahid Yahya · Sheikh René Guénon · Father of Perennial Philosophy",
-    "school": "Shadhiliyya / Traditionalist-Perennialist School — converted to Islam; most influential Western Islamic philosopher; influenced Schuon, Nasr, and Coomaraswamy",
-    "books": [
-      {
-        "title": "The Crisis of the Modern World",
-        "url": "https://archive.org/search?query=René+Guénon+Crisis+Modern+World",
-        "magnum": true,
-        "note": "Most influential Traditionalist philosopher; converted to Islam; his works are foundational for Islamic metaphysics in the West"
-      },
-      {
-        "title": "Wikipedia — René Guénon",
-        "url": "https://en.wikipedia.org/wiki/Ren%C3%A9_Gu%C3%A9non",
-        "magnum": false
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 47.5896,
-    "lng": 1.3359
-  },
-  {
-    "famous": "Hussein bin Ali",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Sharif of Mecca — Launched the Arab Revolt 1916",
-    "full": "al-Husayn ibn Ali al-Hashimi al-Qurashi",
-    "dob": 1853,
-    "dod": 1931,
-    "dob_s": "1853",
-    "dod_s": "1931",
-    "city": "Istanbul / Mecca / Amman",
-    "classif": "King / Sharif / Nationalist Leader",
-    "lang": "Arabic",
-    "titles": "Sharif of Mecca · King of Hejaz · Custodian of the Two Holy Mosques",
-    "school": "Hashemite Sharifs — launched Arab Revolt against Ottomans 1916; father of King Faisal I of Iraq and King Abdullah I of Jordan",
-    "books": [
-      {
-        "title": "Wikipedia — Hussein bin Ali, King of Hejaz",
-        "url": "https://en.wikipedia.org/wiki/Hussein_bin_Ali,_King_of_Hejaz",
-        "magnum": true,
-        "note": "Launched the Arab Revolt against the Ottomans 1916; father of King Faisal I of Iraq and King Abdullah I of Jordan"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 21.3891,
-    "lng": 39.8579
-  },
-  {
-    "famous": "Idris I of Libya",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "King Idris I — First and Last King of Libya",
-    "full": "Muhammad Idris al-Mahdi al-Sanusi ibn Muhammad al-Mahdi",
-    "dob": 1889,
-    "dod": 1983,
-    "dob_s": "1889",
-    "dod_s": "1983",
-    "city": "Jaghbub / Benghazi, Libya",
-    "classif": "King / Religious Leader",
-    "lang": "Arabic",
-    "titles": "King Idris I · Grand Senussi · Amir of Cyrenaica",
-    "school": "Senussi Order — leader of the Senussi Sufi order; first and only King of Libya 1951–1969; deposed by Gaddafi while abroad",
-    "books": [
-      {
-        "title": "Wikipedia — Idris of Libya",
-        "url": "https://en.wikipedia.org/wiki/Idris_of_Libya",
-        "magnum": true,
-        "note": "First and only King of Libya 1951–1969; leader of the Senussi Sufi order; deposed by Gaddafi's coup while in Turkey"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 29.9187,
-    "lng": 21.7846
-  },
-  {
-    "famous": "Amanullah Khan",
-    "tradition": "Islamic History",
-    "type": "Ruler",
-    "primaryTitle": "Father of Afghan Independence — Ghazi Amanullah Khan",
-    "full": "Amanullah Khan ibn Habibullah Khan al-Barakzai al-Durrani",
-    "dob": 1892,
-    "dod": 1960,
-    "dob_s": "1892",
-    "dod_s": "1960",
-    "city": "Paghman / Kabul, Afghanistan",
-    "classif": "King / Reformer / Nationalist",
-    "lang": "Pashto / Dari / French",
-    "titles": "Ghazi (Warrior of Faith) · King Amanullah Khan · Father of Afghan Independence",
-    "school": "Durrani Dynasty — won Afghan independence from Britain 1919; rapid modernization attempts including women's education; abdicated after revolt",
-    "books": [
-      {
-        "title": "Wikipedia — Amanullah Khan",
-        "url": "https://en.wikipedia.org/wiki/Amanullah_Khan",
-        "magnum": true,
-        "note": "Won Afghan independence from Britain in Third Anglo-Afghan War 1919; attempted rapid modernization; forced to abdicate in 1929"
-      }
-    ],
-    "teachers": [],
-    "source": "Wikidata",
-    "lat": 34.5553,
-    "lng": 69.2075
   }
 ]
