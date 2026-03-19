@@ -422,7 +422,7 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
 /* ── CHART ── */
 .chart-col{position:relative;width:var(--chart-w);min-width:var(--chart-w);flex-shrink:0}
 .axis-row{height:var(--axis-h);background:var(--surface);border-bottom:none;z-index:5;position:relative;flex:1;min-width:var(--chart-w)}
-.c-marker{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:6px}
+.c-marker{display:none}
 .c-label{font-size:8px;letter-spacing:.1em;color:#2a2010;text-transform:uppercase;font-family:'Source Serif 4',serif;white-space:nowrap;font-weight:600}
 .c-year{font-size:9px;color:#6a5a40;margin-top:1px;font-family:'Source Serif 4',serif;font-weight:500}
 .grid-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(180,168,148,.4)}
@@ -468,11 +468,14 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   align-items:center;
   padding:0 16px 0 198px;
   gap:8px;
-  position:sticky;
+  position:fixed;
   bottom:0;
-  z-index:50;
-  box-shadow:0 -2px 8px rgba(26,18,8,.08);
+  left:0;
+  right:0;
+  z-index:500;
+  box-shadow:0 -2px 8px rgba(26,18,8,.12);
 }
+#silsilaView.active{padding-bottom:36px}
 #silsilaScrollTrack{
   flex:1;
   height:12px;
