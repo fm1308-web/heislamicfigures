@@ -500,13 +500,13 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   white-space:nowrap;
   letter-spacing:.02em;
 }
-#silsilaView{display:none;background:var(--bg);flex-direction:column;min-height:600px;height:auto;overflow:visible}
+#silsilaView{display:none;background:var(--bg);flex-direction:column;height:calc(100vh - 130px);overflow:hidden}
 #silsilaView.active{display:flex}
 .sil-intro{font-size:13px;color:#3a2518;padding:10px 24px 9px;font-family:'Source Serif 4',serif;flex-shrink:0;border-bottom:2px solid var(--border);background:linear-gradient(180deg,#ede4d0 0%,var(--bg) 100%)}
-#silsilaBody{display:flex;flex:1;overflow:hidden;position:relative;min-height:400px}
+#silsilaBody{display:flex;flex:1;overflow-x:hidden;overflow-y:auto;position:relative;min-height:0}
 #silsilaLabels{width:190px;flex-shrink:0;overflow:hidden;background:var(--bg);border-right:1px solid var(--border);position:relative;z-index:2}
 #silsilaLabelsInner{position:absolute;top:0;left:0;width:100%}
-#silsilaScroll{flex:1;overflow-x:auto;overflow-y:visible;background:#fdf9f4;cursor:grab;scrollbar-width:none;-ms-overflow-style:none}
+#silsilaScroll{flex:1;overflow-x:auto;overflow-y:hidden;background:#fdf9f4;cursor:grab;scrollbar-width:none;-ms-overflow-style:none}
 #silsilaScroll:active{cursor:grabbing}
 #silsilaScroll::-webkit-scrollbar{display:none}
 #silsilaView::-webkit-scrollbar{display:none}
@@ -975,10 +975,11 @@ function renderSilsila() {
 
   // ── Sync vertical scroll between scroll pane and label panel ──────────────
   const scrollEl = document.getElementById('silsilaScroll');
-  // Remove old listener if re-rendering
-  if(scrollEl._syncHandler) scrollEl.removeEventListener('scroll', scrollEl._syncHandler);
-  scrollEl._syncHandler = () => { labelsInner.style.top = (-scrollEl.scrollTop) + 'px'; };
-  scrollEl.addEventListener('scroll', scrollEl._syncHandler);
+  const bodyEl   = document.getElementById('silsilaBody');
+  // Vertical scroll is on silsilaBody; horizontal scroll is on silsilaScroll
+  if(bodyEl._syncHandler) bodyEl.removeEventListener('scroll', bodyEl._syncHandler);
+  bodyEl._syncHandler = () => { labelsInner.style.top = (-bodyEl.scrollTop) + 'px'; };
+  bodyEl.addEventListener('scroll', bodyEl._syncHandler);
 
   // ── Hover tooltip ─────────────────────────────────────────────────────────
   svg.querySelectorAll('.sil-node').forEach(node => {
