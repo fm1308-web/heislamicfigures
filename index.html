@@ -768,56 +768,6 @@ function setView(v) {
 // ══════════════════════════════════════════════════════════════════════════════
 
 
-const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
-const CHART_PX=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--chart-w'))||1500;
-function y2px(y){return((y-MIN_YEAR)/SPAN)*CHART_PX;}
-
-let activeCentury='all', activeTrad='all', activeType='all', searchQ='';
-let PEOPLE = [];
-let STUDENTS = {}; // populated by _initApp after data loads
-
-function _initApp() {
-
-  // Build student reverse-lookup
-  STUDENTS = {};
-  PEOPLE.forEach(p => {
-    (p.teachers||[]).forEach(tn => {
-      if(!STUDENTS[tn]) STUDENTS[tn]=[];
-      STUDENTS[tn].push(p.famous);
-    });
-  });
-
-// ══════════════════════════════════════════════════════════════════════════════
-// VIEW TOGGLE
-// ══════════════════════════════════════════════════════════════════════════════
-let VIEW = 'timeline';
-function setView(v) {
-  VIEW = v;
-  const labels = {'timeline':'Timeline','silsila':'Silsila','map':'Map'};
-  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(labels[v]||v)));
-  const tl = document.getElementById('tlOuter');
-  const sl = document.getElementById('silsilaView');
-  const mv = document.getElementById('mapView');
-  tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
-  document.querySelectorAll('.era-band').forEach(e=>e.remove());
-  const _btnSlider = document.getElementById('btnSlider');
-  const _btnEras = document.getElementById('btnEras');
-  if(v !== 'timeline'){
-    if(_btnSlider) _btnSlider.style.display = 'none';
-    const _sw = document.getElementById('yearSliderWrap');
-    if(_sw && _sw.classList.contains('visible')){
-      _sw.classList.remove('visible');
-      document.querySelectorAll('.bar-row, .name-row').forEach(r=>{ r.style.display=''; r.classList.remove('era-dim','era-lit'); });
-    }
-    if(_btnSlider) _btnSlider.classList.remove('active');
-  } else {
-    if(_btnSlider) _btnSlider.style.display = '';
-  }
-  if(_btnEras) _btnEras.style.display = (v==='map'||v==='silsila') ? 'none' : '';
-  if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
-  else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
-  else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); renderMap(); }
-}
 
 // ══════════════════════════════════════════════════════════════════════════════
 // SILSILA CHAIN VIEW RENDERER
@@ -1007,6 +957,58 @@ function renderSilsila() {
     });
   });
 }
+const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
+const CHART_PX=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--chart-w'))||1500;
+function y2px(y){return((y-MIN_YEAR)/SPAN)*CHART_PX;}
+
+let activeCentury='all', activeTrad='all', activeType='all', searchQ='';
+let PEOPLE = [];
+let STUDENTS = {}; // populated by _initApp after data loads
+
+function _initApp() {
+
+  // Build student reverse-lookup
+  STUDENTS = {};
+  PEOPLE.forEach(p => {
+    (p.teachers||[]).forEach(tn => {
+      if(!STUDENTS[tn]) STUDENTS[tn]=[];
+      STUDENTS[tn].push(p.famous);
+    });
+  });
+
+// ══════════════════════════════════════════════════════════════════════════════
+// VIEW TOGGLE
+// ══════════════════════════════════════════════════════════════════════════════
+let VIEW = 'timeline';
+function setView(v) {
+  VIEW = v;
+  const labels = {'timeline':'Timeline','silsila':'Silsila','map':'Map'};
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(labels[v]||v)));
+  const tl = document.getElementById('tlOuter');
+  const sl = document.getElementById('silsilaView');
+  const mv = document.getElementById('mapView');
+  tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
+  document.querySelectorAll('.era-band').forEach(e=>e.remove());
+  const _btnSlider = document.getElementById('btnSlider');
+  const _btnEras = document.getElementById('btnEras');
+  if(v !== 'timeline'){
+    if(_btnSlider) _btnSlider.style.display = 'none';
+    const _sw = document.getElementById('yearSliderWrap');
+    if(_sw && _sw.classList.contains('visible')){
+      _sw.classList.remove('visible');
+      document.querySelectorAll('.bar-row, .name-row').forEach(r=>{ r.style.display=''; r.classList.remove('era-dim','era-lit'); });
+    }
+    if(_btnSlider) _btnSlider.classList.remove('active');
+  } else {
+    if(_btnSlider) _btnSlider.style.display = '';
+  }
+  if(_btnEras) _btnEras.style.display = (v==='map'||v==='silsila') ? 'none' : '';
+  if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
+  else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
+  else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); renderMap(); }
+}
+
+
 
 
 // ── Legend ───────────────────────────────────────────────
