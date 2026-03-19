@@ -1,0 +1,2486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islamic Figures</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #faf6f0;
+  --surface: #f0ead8;
+  --border:  #b8a98a;
+  --text:    #1a1208;
+  --muted:   #5c4f38;
+  --accent:  #6b3a08;
+  --accent2: #8f5210;
+  --name-w:  320px;
+  --row-h:   42px;
+  --axis-h:  44px;
+  --chart-w: 1500px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,html{height:100%;overflow-y:auto}
+body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Source Serif 4',Georgia,serif;min-height:100vh}
+
+/* ── HEADER ── */
+header{padding:14px 28px 12px;border-bottom:2px solid var(--border);background:linear-gradient(180deg,#e8dfc8 0%,var(--bg) 100%)}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,3.2vw,42px);font-weight:700;color:var(--accent);letter-spacing:.02em;line-height:1.15}
+header p{margin-top:5px;font-size:15px;color:var(--muted);font-style:italic;font-weight:500}
+header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Serif 4',serif;letter-spacing:.04em}
+
+/* ── CONTROLS ── */
+.controls{padding:6px 28px 8px;display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--border);background:var(--surface)}
+.filter-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.ctl-label{font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:#1a0e04;font-weight:800;margin-right:3px;font-family:'Source Serif 4',serif;min-width:72px;flex-shrink:0}
+.filter-btn{padding:5px 12px;border-radius:3px;border:1px solid var(--border);background:rgba(255,255,255,.6);color:#1e1206;font-family:'Source Serif 4',serif;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .14s}
+.filter-btn:hover{border-color:var(--accent2);color:var(--accent);background:rgba(107,58,8,.08)}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+.search-wrap{position:relative;display:flex;align-items:center}
+#search{background:rgba(255,255,255,.7);border:1px solid var(--border);color:#1a0e04;font-family:'Source Serif 4',serif;font-size:13px;padding:6px 12px 6px 28px;border-radius:3px;width:200px;outline:none;transition:border-color .14s;font-weight:500}
+#search:focus{border-color:var(--accent2)}
+#search::placeholder{color:var(--muted)}
+.search-wrap::before{content:'⌕';position:absolute;left:7px;color:var(--muted);font-size:15px;pointer-events:none}
+
+/* ── LEGEND ── */
+.legend{padding:8px 32px;display:flex;flex-wrap:wrap;gap:6px 16px;border-bottom:1px solid var(--border);background:var(--bg)}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#1a0e04;cursor:pointer;transition:color .14s;font-family:'Source Serif 4',serif;font-weight:600}
+.legend-item:hover{color:var(--accent)}
+.legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── TIMELINE OUTER ── */
+.tl-outer{display:block;overflow-x:auto;overflow-y:auto;position:relative;max-width:100%;min-height:500px}
+#tlHeaderRow{
+  position:sticky;
+  top:0;
+  z-index:15;
+  display:flex;
+  width:max-content;
+  min-width:calc(var(--name-w) + var(--chart-w));
+  background:var(--surface);
+  border-bottom:2px solid var(--border);
+  box-shadow:0 2px 6px rgba(26,18,8,.08);
+}
+#tlBodyRow{
+  display:flex;
+  width:max-content;
+  min-width:calc(var(--name-w) + var(--chart-w));
+}
+::-webkit-scrollbar{width:6px;height:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#b8a98a;border-radius:4px;min-height:40px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent2)}
+
+/* ── NAME COLUMN ── */
+.name-col{flex-shrink:0;width:var(--name-w);background:var(--surface);border-right:2px solid var(--border);z-index:12;position:sticky;left:0}
+.name-header{height:var(--axis-h);display:flex;align-items:center;padding:0 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:'Source Serif 4',serif;background:var(--surface);flex-shrink:0;width:var(--name-w);border-right:2px solid var(--border);box-sizing:border-box;position:sticky;left:0;z-index:16}
+
+
+.name-row{height:var(--row-h);display:flex;align-items:center;padding:0 12px;border-bottom:1px solid rgba(180,168,148,.5);cursor:pointer;transition:background .12s;position:relative;user-select:none}
+.name-row:hover,.name-row.active-row{background:rgba(122,79,13,.07)}
+.name-row.active-row{border-left:3px solid var(--accent)}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-right:10px;flex-shrink:0}
+.name-text{display:flex;flex-direction:column;overflow:hidden;gap:1px;flex:1;min-width:0}
+.name-famous{font-size:14px;color:#120c04;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;font-family:'Playfair Display',serif;line-height:1.2;transition:color .12s}
+.name-row:hover .name-famous,.name-row.active-row .name-famous{color:var(--accent)}
+.name-title{font-size:11px;color:#3a2518;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic;line-height:1.2}
+
+
+
+/* ── Sticky top bar ── */
+#stickyTop{
+  position:sticky;
+  top:0;
+  z-index:200;
+  background:var(--surface);
+  box-shadow:0 2px 8px rgba(26,18,8,.1);
+  border-bottom:1px solid var(--border);
+}
+
+/* ── Era overlays ── */
+.era-band{position:absolute;top:0;bottom:0;pointer-events:none;z-index:1;opacity:0}
+.era-band.visible{opacity:1;transition:opacity .3s}
+.era-label{position:absolute;top:8px;left:4px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;pointer-events:none;opacity:.85;writing-mode:vertical-rl;transform:rotate(180deg);text-shadow:0 1px 3px rgba(250,246,240,.9)}
+/* ── Year slider ── */
+/* ── Year slider — aligned to chart columns ── */
+#yearSliderWrap{
+  display:none;
+  position:sticky;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  max-width:100%;
+  z-index:190;
+  background:linear-gradient(to right,var(--surface) 0%,rgba(240,230,205,.9) 100%);
+  border-bottom:3px solid var(--accent);
+  overflow:hidden;
+  box-sizing:border-box;
+}
+#yearSliderWrap.visible{display:flex;align-items:stretch}
+/* Name spacer holds the label — same width as name-col */
+#yearSliderNameSpacer{
+  width:var(--name-w);
+  flex-shrink:0;
+  background:var(--surface);
+  border-right:2px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:6px 10px 6px 14px;
+}
+#yearSliderLeft{
+  display:flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:8px;
+  min-width:0;
+  flex-wrap:wrap;
+}
+#yearSliderLabel{
+  font-family:'Playfair Display',serif;
+  font-size:12px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+#yearDisplay{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:.02em;
+  line-height:1;
+  white-space:nowrap;
+}
+#yearSliderClose{
+  background:none;border:none;
+  color:var(--muted);cursor:pointer;
+  font-size:16px;padding:2px 0 2px 6px;
+  flex-shrink:0;opacity:.5;
+}
+#yearSliderClose:hover{opacity:1}
+/* Track area — zero padding so track edge = chart column edge */
+#yearSliderTrackArea{
+  flex:1;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  padding:0;
+  overflow:hidden;
+  position:relative;
+}
+/* Custom track spans exactly the chart area */
+#sliderTrack{
+  position:relative;
+  width:100%;
+  height:6px;
+  background:rgba(107,58,8,.18);
+  border-radius:3px;
+  cursor:pointer;
+  margin:0;
+}
+#sliderFill{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  background:var(--accent);
+  border-radius:3px;
+  pointer-events:none;
+}
+#sliderThumb{
+  position:absolute;
+  top:50%;
+  width:16px;height:16px;
+  margin-top:-8px;
+  margin-left:-8px;
+  background:var(--accent);
+  border:2px solid #fff;
+  border-radius:50%;
+  box-shadow:0 1px 6px rgba(0,0,0,.35);
+  cursor:grab;
+  z-index:10;
+  transition:transform .1s;
+}
+#sliderThumb:hover{transform:scale(1.2);}
+#sliderThumb.dragging{cursor:grabbing;transform:scale(1.15);}
+/* The range input — full width of track area */
+#yearSlider{
+  width:100%;
+  accent-color:var(--accent);
+  cursor:pointer;
+  height:5px;
+  margin:0;
+}
+.era-toggle-btn{font-size:11px;padding:4px 10px;border-radius:3px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;transition:all .12s}
+.era-toggle-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* Slider year contrast */
+.bar-row.era-dim{opacity:.22;filter:grayscale(60%);transition:opacity .18s,filter .18s}
+.bar-row.era-lit{opacity:1;filter:none;transition:opacity .18s,filter .18s}
+.name-row.era-dim{opacity:.28;transition:opacity .18s}
+.name-row.era-lit{opacity:1;transition:opacity .18s}
+
+
+
+
+/* ── Sticky top bar ── */
+#stickyTop{
+  position:sticky;
+  top:0;
+  z-index:200;
+  background:var(--surface);
+  box-shadow:0 2px 8px rgba(26,18,8,.1);
+  border-bottom:1px solid var(--border);
+}
+
+/* ── Era overlays ── */
+.era-band{position:absolute;top:0;bottom:0;pointer-events:none;z-index:1;opacity:0}
+.era-band.visible{opacity:1;transition:opacity .3s}
+.era-label{position:absolute;top:8px;left:4px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;pointer-events:none;opacity:.85;writing-mode:vertical-rl;transform:rotate(180deg);text-shadow:0 1px 3px rgba(250,246,240,.9)}
+/* ── Year slider ── */
+/* ── Year slider — aligned to chart columns ── */
+#yearSliderWrap{
+  display:none;
+  position:sticky;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  max-width:100%;
+  z-index:190;
+  background:linear-gradient(to right,var(--surface) 0%,rgba(240,230,205,.9) 100%);
+  border-bottom:3px solid var(--accent);
+  overflow:hidden;
+  box-sizing:border-box;
+}
+#yearSliderWrap.visible{display:flex;align-items:stretch}
+/* Name spacer holds the label — same width as name-col */
+#yearSliderNameSpacer{
+  width:var(--name-w);
+  flex-shrink:0;
+  background:var(--surface);
+  border-right:2px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:6px 10px 6px 14px;
+}
+#yearSliderLeft{
+  display:flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:8px;
+  min-width:0;
+  flex-wrap:wrap;
+}
+#yearSliderLabel{
+  font-family:'Playfair Display',serif;
+  font-size:12px;
+  font-weight:600;
+  color:var(--muted);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+#yearDisplay{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:.02em;
+  line-height:1;
+  white-space:nowrap;
+}
+#yearSliderClose{
+  background:none;border:none;
+  color:var(--muted);cursor:pointer;
+  font-size:16px;padding:2px 0 2px 6px;
+  flex-shrink:0;opacity:.5;
+}
+#yearSliderClose:hover{opacity:1}
+/* Track area — zero padding so track edge = chart column edge */
+#yearSliderTrackArea{
+  flex:1;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  padding:0;
+  overflow:hidden;
+  position:relative;
+}
+/* Custom track spans exactly the chart area */
+#sliderTrack{
+  position:relative;
+  width:100%;
+  height:6px;
+  background:rgba(107,58,8,.18);
+  border-radius:3px;
+  cursor:pointer;
+  margin:0;
+}
+#sliderFill{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  background:var(--accent);
+  border-radius:3px;
+  pointer-events:none;
+}
+#sliderThumb{
+  position:absolute;
+  top:50%;
+  width:16px;height:16px;
+  margin-top:-8px;
+  margin-left:-8px;
+  background:var(--accent);
+  border:2px solid #fff;
+  border-radius:50%;
+  box-shadow:0 1px 6px rgba(0,0,0,.35);
+  cursor:grab;
+  z-index:10;
+  transition:transform .1s;
+}
+#sliderThumb:hover{transform:scale(1.2);}
+#sliderThumb.dragging{cursor:grabbing;transform:scale(1.15);}
+/* The range input — full width of track area */
+#yearSlider{
+  width:100%;
+  accent-color:var(--accent);
+  cursor:pointer;
+  height:5px;
+  margin:0;
+}
+.era-toggle-btn{font-size:11px;padding:4px 10px;border-radius:3px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;transition:all .12s}
+.era-toggle-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* Slider year contrast */
+.bar-row.era-dim{opacity:.22;filter:grayscale(60%);transition:opacity .18s,filter .18s}
+.bar-row.era-lit{opacity:1;filter:none;transition:opacity .18s,filter .18s}
+.name-row.era-dim{opacity:.28;transition:opacity .18s}
+.name-row.era-lit{opacity:1;transition:opacity .18s}
+
+
+/* ── POPUP CARD ── */
+#popup-card{
+  position:fixed;
+  width:400px;
+  max-width:min(440px, calc(100vw - 40px));
+  max-height:min(82vh, 680px);
+  background:#fdf9f3;
+  border:1.5px solid var(--accent2);
+  border-top:3px solid var(--accent);
+  border-radius:4px;
+  z-index:500;
+  box-shadow:0 8px 40px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  font-family:'Source Serif 4',serif;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .15s ease, transform .15s ease;
+  transform:scale(.97) translateY(4px);
+}
+#popup-card.visible{
+  opacity:1;
+  pointer-events:all;
+  transform:scale(1) translateY(0);
+}
+/* SVG arrow connector */
+#popup-arrow{
+  position:fixed;
+  pointer-events:none;
+  z-index:499;
+  overflow:visible;
+}
+#pc-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;max-height:calc(min(82vh,680px) - 90px)}
+#pc-scroll::-webkit-scrollbar{width:6px}
+#pc-scroll::-webkit-scrollbar-thumb{background:#b8a98a;border-radius:4px;min-height:40px}
+.pc-header{padding:20px 22px 15px;border-bottom:2px solid var(--border);position:sticky;top:0;background:linear-gradient(180deg,#e8dfc8 0%,#fdf9f3 100%);z-index:2;overflow:hidden}
+.pc-close{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;transition:color .12s}
+.pc-close:hover{color:var(--accent)}
+.pc-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#3d1f04;line-height:1.25;padding-right:32px}
+.pc-title{font-size:14.5px;color:#3a2a14;font-style:italic;margin-top:5px;line-height:1.5;font-weight:500}
+.pc-body{padding:16px 22px 24px;overflow:hidden}
+.pc-section{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#5a2a04;font-weight:800;margin-bottom:8px;margin-top:16px;border-bottom:1px solid #d4c4a0;padding-bottom:4px}
+.pc-section:first-child{margin-top:0}
+.pc-row{display:flex;gap:10px;font-size:13.5px;margin-bottom:7px;line-height:1.55}
+.pc-k{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#4a3520;font-weight:700;min-width:62px;padding-top:2px;flex-shrink:0}
+.pc-v{color:#1a0e04;font-size:13.5px;flex:1}
+.pc-all-titles{font-size:13px;color:#3a2518;font-style:italic;line-height:1.8}
+.book-item{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(180,168,148,.5)}
+.book-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.book-item.magnum{background:rgba(122,79,13,.04);border:1px solid rgba(122,79,13,.15);border-radius:3px;padding:10px 11px;margin-bottom:10px}
+.book-title-link{font-size:14px;color:#5a2a04;text-decoration:none;border-bottom:1.5px solid #8f5210;line-height:1.6;display:inline;font-weight:600}
+.book-title-link:hover{color:#3a1f00;border-color:var(--accent)}
+.book-title-plain{font-size:13px;color:var(--text);line-height:1.4}
+.free-badge{display:inline-block;font-size:9px;letter-spacing:.06em;background:rgba(30,140,80,.12);border:1.5px solid rgba(30,140,80,.5);color:#145c2e;border-radius:2px;padding:2px 6px;margin-left:6px;vertical-align:middle;font-family:'Source Serif 4',serif;font-weight:700}
+.book-note{font-size:10.5px;color:#7a6850;font-style:italic;margin-top:4px;line-height:1.5}
+.no-link{font-size:10.5px;color:#aaa090;font-style:italic;margin-top:2px}
+.magnum-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;font-family:'Source Serif 4',serif}
+.other-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#a09080;margin-bottom:7px;margin-top:10px;font-family:'Source Serif 4',serif}
+
+/* ── CHART ── */
+.chart-col{position:relative;width:var(--chart-w);min-width:var(--chart-w);flex-shrink:0}
+.axis-row{height:var(--axis-h);background:var(--surface);border-bottom:none;z-index:5;position:relative;flex:1;min-width:var(--chart-w)}
+.c-marker{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:6px}
+.c-label{font-size:8px;letter-spacing:.1em;color:#2a2010;text-transform:uppercase;font-family:'Source Serif 4',serif;white-space:nowrap;font-weight:600}
+.c-year{font-size:9px;color:#6a5a40;margin-top:1px;font-family:'Source Serif 4',serif;font-weight:500}
+.grid-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(180,168,148,.4)}
+.grid-line.major{background:rgba(160,148,128,.6)}
+.bars-area{position:relative}
+.bar-row{height:var(--row-h);position:relative;border-bottom:1px solid rgba(180,168,148,.3);transition:background .12s;cursor:pointer}
+.bar-row:hover,.bar-row.active-row{background:rgba(122,79,13,.05)}
+.bar{position:absolute;top:50%;transform:translateY(-50%);height:10px;border-radius:2px;min-width:4px;transition:height .13s,filter .13s;cursor:pointer}
+.bar:hover,.bar-row:hover .bar,.bar-row.active-row .bar{height:13px;filter:brightness(.85)}
+.opus-dot{position:absolute;top:50%;right:-7px;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;border:1px solid rgba(0,0,0,.15);cursor:pointer;transition:transform .13s}
+.bar-row:hover .opus-dot,.bar-row.active-row .opus-dot{transform:translateY(-50%) scale(1.4)}
+
+footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color:#6a5a3a;font-family:'Source Serif 4',serif;letter-spacing:.06em;text-align:center;font-weight:500}
+
+
+
+
+/* ── VIEW TOGGLE ── */
+.view-toggle{display:flex;border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.view-btn{padding:6px 14px;border:none;background:transparent;color:#2e1f0a;font-family:'Source Serif 4',serif;font-size:12.5px;cursor:pointer;transition:all .14s;letter-spacing:.04em;font-weight:500}
+.view-btn.active{background:var(--accent);color:#fff}
+.view-btn:hover:not(.active){background:rgba(107,58,8,.07)}
+
+
+
+
+
+/* ── TEACHERS SECTION IN POPUP ── */
+.pc-teachers{margin-top:10px;padding:8px 10px;background:rgba(107,58,8,.04);border-left:2px solid var(--accent);border-radius:0 3px 3px 0}
+.pc-tlabel{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Source Serif 4',serif;margin-bottom:5px}
+.tc-link{display:inline-block;font-size:12.5px;color:#7a3a06;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(107,58,8,.5);margin:2px 4px 2px 0;font-family:'Source Serif 4',serif;transition:color .12s;font-weight:500}
+.tc-link:hover{color:var(--accent)}
+
+/* ── SILSILA VIEW ── */
+
+#silsilaScrollNav{
+  height:32px;
+  min-height:32px;
+  flex-shrink:0;
+  background:var(--surface);
+  border-top:2px solid var(--border);
+  display:flex;
+  align-items:center;
+  padding:0 16px 0 198px;
+  gap:8px;
+  position:sticky;
+  bottom:0;
+  z-index:10;
+}
+#silsilaScrollTrack{
+  flex:1;
+  height:12px;
+  background:rgba(107,58,8,.12);
+  border-radius:6px;
+  position:relative;
+  cursor:pointer;
+  border:1px solid rgba(107,58,8,.18);
+}
+#silsilaScrollThumb{
+  position:absolute;
+  top:0;bottom:0;
+  background:var(--border);
+  border-radius:6px;
+  cursor:grab;
+  opacity:.85;
+  min-width:40px;
+  transition:opacity .15s, background .15s;
+}
+#silsilaScrollThumb:hover{opacity:1;background:var(--accent)}
+#silsilaScrollThumb.dragging{cursor:grabbing;opacity:1;background:var(--accent)}
+#silsilaScrollHint{
+  font-size:11px;
+  color:var(--muted);
+  white-space:nowrap;
+  letter-spacing:.02em;
+}
+#silsilaView{display:none;background:var(--bg);flex-direction:column;height:calc(100vh - 130px);overflow:hidden}
+#silsilaView.active{display:flex}
+.sil-intro{font-size:13px;color:#3a2518;padding:10px 24px 9px;font-family:'Source Serif 4',serif;flex-shrink:0;border-bottom:2px solid var(--border);background:linear-gradient(180deg,#ede4d0 0%,var(--bg) 100%)}
+#silsilaBody{display:flex;flex:1;overflow:hidden;position:relative;min-height:0}
+#silsilaLabels{width:190px;flex-shrink:0;overflow:hidden;background:var(--bg);border-right:1px solid var(--border);position:relative;z-index:2}
+#silsilaLabelsInner{position:absolute;top:0;left:0;width:100%}
+#silsilaScroll{flex:1;overflow-x:auto;overflow-y:hidden;background:#fdf9f4;cursor:grab;scrollbar-width:none;-ms-overflow-style:none}
+#silsilaScroll:active{cursor:grabbing}
+#silsilaScroll::-webkit-scrollbar{display:none}
+#silsilaView::-webkit-scrollbar{display:none}
+#silsilaBody::-webkit-scrollbar{display:none}
+#silsilaSvg{display:block}
+.sil-label-row{position:absolute;left:0;width:100%;display:flex;align-items:center;padding:0 8px;box-sizing:border-box}
+.sil-label-text{font-family:'Source Serif 4',serif;font-size:11px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:176px}
+.sil-node{cursor:pointer}
+.sil-node circle{transition:stroke-width .12s,filter .12s}
+.sil-node:hover circle{stroke-width:3;filter:brightness(1.15)}
+.sil-edge{pointer-events:none}
+
+
+/* ── MAP VIEW ── */
+#mapView{display:none;flex-direction:column;height:700px;min-height:600px}
+#mapView.active{display:flex}
+#mapContainer{flex:1;position:relative;overflow:hidden}
+#leafletMap{width:100%;height:100%;min-height:600px;z-index:1}
+.map-arrow{position:absolute;z-index:900;pointer-events:none;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);border:2.5px solid #aaa;border-radius:28px;padding:8px 18px 8px 14px;font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:800;color:#444;box-shadow:0 3px 14px rgba(0,0,0,.25);white-space:nowrap;}
+.map-arrow span{font-size:22px;line-height:1;}
+#mapSliderWrap{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(15,10,4,.82);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:8px 14px 10px;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:320px;max-width:520px;width:55%;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+#mapSliderYear{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#e8d9b8;letter-spacing:.04em;text-align:center;line-height:1}
+#mapSliderTrack{position:relative;width:100%;height:6px;background:rgba(255,255,255,.2);border-radius:3px;cursor:pointer}
+#mapSliderFill{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:3px;pointer-events:none}
+#mapSliderThumb{position:absolute;top:50%;width:16px;height:16px;margin-top:-8px;margin-left:-8px;background:var(--accent);border:2px solid #fff;border-radius:50%;box-shadow:0 1px 6px rgba(0,0,0,.5);cursor:grab;z-index:2;transition:transform .1s}
+#mapSliderThumb:hover{transform:scale(1.2)}
+#mapSliderThumb.dragging{cursor:grabbing;transform:scale(1.15)}
+#mapSliderReset{position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:13px;line-height:1;padding:2px}
+#mapSliderReset:hover{color:rgba(255,255,255,.9)}
+.leaflet-popup-content-wrapper{border-radius:3px;font-family:'Source Serif 4',serif;font-size:12px}
+
+
+/* ── PANEL POPUP EXTRAS ── */
+#popup-card .pc-header{position:sticky;top:0;z-index:2;flex-shrink:0}
+#popup-card .pc-close{top:14px;right:14px;font-size:18px;color:#7a6040;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .12s}
+#popup-card .pc-close:hover{background:rgba(107,58,8,.12);color:var(--accent)}
+.pc-panel-hint{font-size:11px;color:#7a6040;font-style:italic;text-align:center;padding:8px 0 0;opacity:.7;font-family:'Source Serif 4',serif}
+
+
+/* ── Prophet Muhammad special highlight ── */
+.name-row.prophet-row{background:linear-gradient(90deg,rgba(200,150,0,.14) 0%,transparent 100%)!important;border-left:3px solid #c8900a!important;}
+.name-row.prophet-row .name-famous{color:#c8900a!important;font-size:15px!important;font-weight:800!important;}
+.name-row.prophet-row .dot{width:10px!important;height:10px!important;background:#c8900a!important;box-shadow:0 0 8px #c8900a80!important;}
+.bar-row.prophet-bar .bar{background:linear-gradient(90deg,#e8a800,#c8780a)!important;box-shadow:0 0 8px #e8a80060,0 2px 6px #c8780a40!important;}
+</style>
+</head>
+<body>
+
+<div id="stickyTop">
+<header>
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+    <div>
+      <h1>Islamic Figures</h1>
+      <p>Fourteen centuries of Islamic intellectual tradition — click any name or bar to explore</p>
+      <div class="meta" id="metaLine">506 figures · 555 CE to 2025 CE · ✦ = free book available</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;padding-top:4px">
+      <div class="view-toggle">
+        <button class="era-toggle-btn" id="btnEras" title="Toggle historical era bands">🏛 Eras</button>
+<button class="era-toggle-btn" id="btnSlider" title="Who was alive in a given year?">📅 Year</button>
+<button class="view-btn active" onclick="setView('timeline')">📊 Timeline</button>
+        <button class="view-btn" onclick="setView('silsila')">🔗 Silsila</button>
+        <button class="view-btn" onclick="setView('map')">🗺 Map</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="filter-row">
+    <span class="ctl-label">Century:</span>
+    <button class="filter-btn f-century active" data-filter="all">All</button>
+    <button class="filter-btn f-century" data-filter="7">7th</button>
+    <button class="filter-btn f-century" data-filter="8">8th</button>
+    <button class="filter-btn f-century" data-filter="9">9th</button>
+    <button class="filter-btn f-century" data-filter="10">10th</button>
+    <button class="filter-btn f-century" data-filter="11">11th</button>
+    <button class="filter-btn f-century" data-filter="12">12th</button>
+    <button class="filter-btn f-century" data-filter="13">13th</button>
+    <button class="filter-btn f-century" data-filter="14">14th</button>
+    <button class="filter-btn f-century" data-filter="15">15th</button>
+    <button class="filter-btn f-century" data-filter="16">16th</button>
+    <button class="filter-btn f-century" data-filter="17">17th</button>
+    <button class="filter-btn f-century" data-filter="18">18th</button>
+    <button class="filter-btn f-century" data-filter="19">19th</button>
+    <button class="filter-btn f-century" data-filter="20">20th</button>
+    <div style="flex:1"></div>
+    <div class="search-wrap"><input type="text" id="search" placeholder="Search…"></div>
+  </div>
+  <div class="filter-row">
+    <span class="ctl-label">Tradition:</span>
+    <button class="filter-btn f-trad active" data-trad="all">All</button>
+    <button class="filter-btn f-trad" data-trad="Islamic Philosophy">Islamic Philosophy</button>
+    <button class="filter-btn f-trad" data-trad="Early Ascetics">Early Ascetics</button>
+    <button class="filter-btn f-trad" data-trad="Baghdad School">Baghdad School</button>
+    <button class="filter-btn f-trad" data-trad="Khorasan School">Khorasan School</button>
+    <button class="filter-btn f-trad" data-trad="Qadiriyya">Qadiriyya</button>
+    <button class="filter-btn f-trad" data-trad="Chishti">Chishti</button>
+    <button class="filter-btn f-trad" data-trad="Mawlawiyya">Mawlawiyya</button>
+    <button class="filter-btn f-trad" data-trad="Naqshbandiyya">Naqshbandiyya</button>
+    <button class="filter-btn f-trad" data-trad="Shadhiliyya">Shadhiliyya</button>
+    <button class="filter-btn f-trad" data-trad="Suhrawardiyya">Suhrawardiyya</button>
+    <button class="filter-btn f-trad" data-trad="Kubrawiyya">Kubrawiyya</button>
+    <button class="filter-btn f-trad" data-trad="Akbarian">Akbarian</button>
+    <button class="filter-btn f-trad" data-trad="Ishraqiyya">Ishraqiyya</button>
+    <button class="filter-btn f-trad" data-trad="Yeseviyya">Yeseviyya</button>
+    <button class="filter-btn f-trad" data-trad="Persian Poetry">Persian Poetry</button>
+    <button class="filter-btn f-trad" data-trad="Mughal">Mughal</button>
+    <button class="filter-btn f-trad" data-trad="Islamic Jurisprudence">Jurisprudence</button>
+    <button class="filter-btn f-trad" data-trad="Hadith Sciences">Hadith</button>
+    <button class="filter-btn f-trad" data-trad="Islamic Theology">Theology</button>
+    <button class="filter-btn f-trad" data-trad="Islamic Sciences">Sciences</button>
+    <button class="filter-btn f-trad" data-trad="Islamic History">History</button>
+    <button class="filter-btn f-trad" data-trad="Qalandari">Qalandari</button>
+    <button class="filter-btn f-trad" data-trad="Badawiyya">Badawiyya</button>
+    <button class="filter-btn f-trad" data-trad="Burhaniyya">Burhaniyya</button>
+    <button class="filter-btn f-trad" data-trad="Sindhi/Punjabi Sufism">Sindhi/Punjabi</button>
+    <button class="filter-btn f-trad" data-trad="Nusantara">Nusantara</button>
+  </div>
+  <div class="filter-row">
+    <span class="ctl-label">Type:</span>
+    <button class="filter-btn f-type active" data-type="all">All</button>
+    <button class="filter-btn f-type" data-type="Mystic">Mystic</button>
+    <button class="filter-btn f-type" data-type="Poet">Poet</button>
+    <button class="filter-btn f-type" data-type="Scholar">Scholar</button>
+    <button class="filter-btn f-type" data-type="Philosopher">Philosopher</button>
+    <button class="filter-btn f-type" data-type="Founder">Founder</button>
+    <button class="filter-btn f-type" data-type="Reformer">Reformer</button>
+    <button class="filter-btn f-type" data-type="Ruler">Ruler</button>
+    <button class="filter-btn f-type" data-type="Jurist">Jurist</button>
+    <button class="filter-btn f-type" data-type="Scientist">Scientist</button>
+    <button class="filter-btn f-type" data-type="Historian">Historian</button>
+    <button class="filter-btn f-type" data-type="Caliph">Caliph</button>
+    <button class="filter-btn f-type" data-type="Sahaba">Sahaba</button>
+    <button class="filter-btn f-type" data-type="Tabi'un">Tabi'un</button>
+    <button class="filter-btn f-type" data-type="Warrior">Warrior</button>
+  </div>
+</div></div><!-- /stickyTop -->
+
+<div class="legend" id="legend"></div>
+
+<!-- Popup card -->
+<div id="popup-card">
+  <div class="pc-header">
+    <button class="pc-close" id="pcClose">✕</button>
+    <div id="pc-portrait-wrap" style="float:right;margin:0 0 10px 14px;width:90px;flex-shrink:0;display:block">
+      <img id="pc-portrait" src="" alt="" style="display:none;width:90px;height:112px;object-fit:cover;object-position:top center;border-radius:3px;border:1.5px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.15)"/>
+      <div id="pc-portrait-cap" style="font-size:8px;color:var(--muted);text-align:center;margin-top:3px;font-style:italic;line-height:1.3"></div>
+    </div>
+    <div class="pc-name" id="pcName"></div>
+    <div class="pc-title" id="pcTitle"></div>
+  </div>
+  <div id="pc-scroll"><div class="pc-body" id="pcBody"></div></div>
+</div>
+<svg id="popup-arrow" width="0" height="0"><path id="popup-arrow-path" fill="none" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/></svg>
+
+
+
+<!-- Year Slider Bar — label in left panel, custom track aligned to chart -->
+<div id="yearSliderWrap">
+  <div id="yearSliderNameSpacer">
+    <div id="yearSliderLeft">
+      <span id="yearSliderLabel">WHO WAS ALIVE IN</span>
+      <span id="yearDisplay">900 CE</span>
+    </div>
+    <button id="yearSliderClose" title="Close">✕</button>
+  </div>
+  <div id="yearSliderTrackArea">
+    <!-- hidden range for keyboard/accessibility, but visually hidden -->
+    <input type="range" id="yearSlider" min="540" max="1975" value="900" step="5" style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;">
+    <!-- custom pixel-perfect track -->
+    <div id="sliderTrack">
+      <div id="sliderFill"></div>
+      <div id="sliderThumb" title="Drag to change year"></div>
+    </div>
+  </div>
+</div>
+<div class="tl-outer" id="tlOuter">
+  <div id="tlHeaderRow">
+    <div class="name-header"></div>
+    <div class="axis-row" id="axisRow"></div>
+  </div>
+  <div id="tlBodyRow">
+    <div class="name-col" id="nameCol">
+      <div id="nameRows"></div>
+    </div>
+    <div class="chart-col" id="chartCol">
+      <div class="bars-area" id="barsArea"></div>
+    </div>
+  </div>
+</div>
+
+<div id="silsilaView">
+  <div class="sil-intro">🔍 <strong>Hover</strong> any dot to see the scholar's name · <strong>Click</strong> to open full details · Filter by <em>Tradition</em> to isolate a single silsila chain · Each line shows a teacher → student link</div>
+  <div id="silsilaBody">
+    <div id="silsilaLabels"><div id="silsilaLabelsInner"></div></div>
+    <div id="silsilaScroll"><svg id="silsilaSvg"></svg></div>
+  </div>
+  <div id="silsilaScrollNav">
+    <span id="silsilaScrollHint">◀ scroll ▶</span>
+    <div id="silsilaScrollTrack"><div id="silsilaScrollThumb"></div></div>
+  </div>
+</div>
+<div id="mapView">
+  <div id="mapContainer">
+    <div id="leafletMap"></div>
+    <div id="mapSliderWrap">
+      <div id="mapSliderYear">All Years</div>
+      <div id="mapSliderTrack">
+        <div id="mapSliderFill"></div>
+        <div id="mapSliderThumb"></div>
+      </div>
+      <button id="mapSliderReset" title="Show all years">✕</button>
+    </div>
+  </div>
+</div>
+<footer>ISLAMIC SCHOLARS TIMELINE · LIFESPAN VISUALIZATION · CLICK ANY ROW TO OPEN DETAILS &amp; FREE BOOKS</footer>
+
+<script>
+const CC={7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
+function gc(y){if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
+function gcl(c){const o=c===1?'1st':c===2?'2nd':c===3?'3rd':`${c}th`;return`${o} C.`;}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// VIEW TOGGLE
+// ══════════════════════════════════════════════════════════════════════════════
+let VIEW = 'timeline';
+function setView(v) {
+  VIEW = v;
+  const labels = {'timeline':'Timeline','silsila':'Silsila','map':'Map'};
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(labels[v]||v)));
+  const tl = document.getElementById('tlOuter');
+  const sl = document.getElementById('silsilaView');
+  const mv = document.getElementById('mapView');
+  tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
+  // Clear era bands when leaving timeline
+  document.querySelectorAll('.era-band').forEach(e=>e.remove());
+  // Show Year button only on timeline; hide + close on other views
+  const _btnSlider = document.getElementById('btnSlider');
+  if(v !== 'timeline'){
+    if(_btnSlider) _btnSlider.style.display = 'none';
+    const _sw = document.getElementById('yearSliderWrap');
+    if(_sw && _sw.classList.contains('visible')){
+      _sw.classList.remove('visible');
+      document.querySelectorAll('.bar-row, .name-row').forEach(r=>{ r.style.display=''; r.classList.remove('era-dim','era-lit'); });
+    }
+    if(_btnSlider) _btnSlider.classList.remove('active');
+  } else {
+    if(_btnSlider) _btnSlider.style.display = '';
+  }
+  if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
+  else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
+  else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); renderMap(); }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SILSILA CHAIN VIEW RENDERER
+// ══════════════════════════════════════════════════════════════════════════════
+function renderSilsila() {
+  const svg = document.getElementById('silsilaSvg');
+  // Cleanup any old tooltip
+  const oldTip = document.getElementById('sil-tip');
+  if(oldTip) oldTip.remove();
+
+  const filtered = getFiltered();
+
+  // Build tradition order by earliest DOB
+  const tradMap = {};
+  filtered.forEach(p => { if(!tradMap[p.tradition]||p.dob<tradMap[p.tradition]) tradMap[p.tradition]=p.dob; });
+  const trads = Object.keys(tradMap).sort((a,b)=>tradMap[a]-tradMap[b]);
+
+  const NODE_R = 8;
+  const SUBROW_GAP = NODE_R * 2.6; // vertical gap between staggered sub-rows
+  const LABEL_H = 14;              // space above node for century label line
+  const MARGIN_T = 50;             // top margin (for year labels)
+  const MARGIN_L = 190;
+  const MARGIN_R = 60;
+  const MIN_Y = 550, MAX_Y = 1950;
+  const W = 3200;
+  const PROX_PX = NODE_R * 3;     // px threshold to trigger stagger
+
+  function xPos(dob){ return MARGIN_L + ((dob - MIN_Y)/(MAX_Y - MIN_Y))*(W - MARGIN_L - MARGIN_R); }
+
+  // ── For each tradition lane, assign sub-rows to avoid overlap ────────────
+  // laneMeta[trad] = { subRowCount, nodes: [{p, subRow}] }
+  const laneMeta = {};
+  trads.forEach(t => { laneMeta[t] = { subRowCount: 1, nodes: [] }; });
+
+  // Sort each tradition's scholars by DOB, then greedily assign sub-rows
+  trads.forEach(trad => {
+    const members = filtered.filter(p => p.tradition === trad).sort((a,b)=>a.dob-b.dob);
+    // Each sub-row tracks the last x used
+    const subRowMaxX = [0];
+    members.forEach(p => {
+      const x = xPos(p.dob);
+      // Find first sub-row where there's enough space
+      let row = subRowMaxX.findIndex(maxX => x - maxX > PROX_PX);
+      if(row === -1){ row = subRowMaxX.length; subRowMaxX.push(0); }
+      subRowMaxX[row] = x + NODE_R;
+      laneMeta[trad].nodes.push({p, subRow: row});
+    });
+    laneMeta[trad].subRowCount = subRowMaxX.length;
+  });
+
+  // ── Compute lane Y offsets based on sub-row counts ────────────────────────
+  const LANE_PAD = 24; // padding above/below nodes within lane
+  const laneY = {}; // top y of each lane
+  let curY = MARGIN_T;
+  trads.forEach(trad => {
+    laneY[trad] = curY;
+    const laneH = laneMeta[trad].subRowCount * SUBROW_GAP + LANE_PAD * 2;
+    laneMeta[trad].laneH = laneH;
+    curY += laneH;
+  });
+  const H = curY + 20;
+
+  // ── Build posMap from lane layout ─────────────────────────────────────────
+  const posMap = {};
+  trads.forEach(trad => {
+    const meta = laneMeta[trad];
+    const laneTop = laneY[trad];
+    meta.nodes.forEach(({p, subRow}) => {
+      const x = xPos(p.dob);
+      const y = laneTop + LANE_PAD + subRow * SUBROW_GAP + NODE_R;
+      posMap[p.famous] = {x, y};
+    });
+  });
+
+  // ── Build edges ───────────────────────────────────────────────────────────
+  const edges = [];
+  filtered.forEach(p => {
+    (p.teachers||[]).forEach(tn => {
+      if(posMap[tn] && posMap[p.famous])
+        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)]});
+    });
+  });
+
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  let out = '';
+
+  // ── Lane backgrounds (no labels in SVG — labels go in sticky panel) ───────
+  trads.forEach((t, i) => {
+    const y = laneY[t];
+    const h = laneMeta[t].laneH;
+    out += `<rect x="0" y="${y}" width="${W}" height="${h}" fill="${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}" rx="0"/>`;
+  });
+
+  // ── Century grid lines ────────────────────────────────────────────────────
+  for(let yr=600; yr<=1900; yr+=100){
+    const x = xPos(yr);
+    const cent = Math.ceil(yr/100);
+    out += `<line x1="${x}" y1="${MARGIN_T}" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
+    out += `<text x="${x+3}" y="${MARGIN_T-6}" font-size="10" fill="#999" font-family="Source Serif 4,serif">${yr}</text>`;
+  }
+
+  // ── Arrow defs ────────────────────────────────────────────────────────────
+  const arrowColors = [...new Set(edges.map(e=>e.color))];
+  let defs = '<defs>';
+  arrowColors.forEach(col => {
+    const id = col.replace('#','');
+    defs += `<marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${col}" opacity="0.6"/></marker>`;
+  });
+  defs += '</defs>';
+  out = defs + out;
+
+  // ── Edges ─────────────────────────────────────────────────────────────────
+  edges.forEach(e => {
+    const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
+    // Bezier: control points curve right for forward, left for back
+    const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
+    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
+  });
+
+  // ── Nodes ─────────────────────────────────────────────────────────────────
+  filtered.forEach(p => {
+    const pos = posMap[p.famous];
+    if(!pos) return;
+    const col = CC[gc(p.dob)];
+    const hasFree = p.books && p.books.some(b=>b.url);
+    const r = hasFree ? NODE_R : NODE_R - 1;
+    const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    // data-title for tooltip
+    out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${col}" tabindex="0">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="white" stroke-width="2" opacity="1"/>
+      ${hasFree?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.45"/>`: ''}
+    </g>`;
+  });
+
+  svg.innerHTML = out;
+
+  // ── Populate sticky left label panel ──────────────────────────────────────
+  const labelsInner = document.getElementById('silsilaLabelsInner');
+  labelsInner.style.height = H + 'px';
+  labelsInner.innerHTML = '';
+  trads.forEach((t, i) => {
+    const y = laneY[t];
+    const h = laneMeta[t].laneH;
+    const labelColor = CC[gc(tradMap[t])] || '#888';
+    const div = document.createElement('div');
+    div.className = 'sil-label-row';
+    div.style.cssText = `top:${y}px;height:${h}px;background:${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}`;
+    div.innerHTML = `<span class="sil-label-text" style="color:${labelColor}" title="${t}">${t}</span>`;
+    labelsInner.appendChild(div);
+  });
+
+  // ── Sync vertical scroll between scroll pane and label panel ──────────────
+  const scrollEl = document.getElementById('silsilaScroll');
+  // Remove old listener if re-rendering
+  if(scrollEl._syncHandler) scrollEl.removeEventListener('scroll', scrollEl._syncHandler);
+  scrollEl._syncHandler = () => { labelsInner.style.top = (-scrollEl.scrollTop) + 'px'; };
+  scrollEl.addEventListener('scroll', scrollEl._syncHandler);
+
+  // ── Hover tooltip ─────────────────────────────────────────────────────────
+  svg.querySelectorAll('.sil-node').forEach(node => {
+    const col = node.dataset.col;
+    let silTimer = null;
+    node.addEventListener('mouseenter', () => {
+      const fn = node.dataset.famous;
+      clearTimeout(silTimer);
+      silTimer = setTimeout(() => {
+        const person = PEOPLE.find(p => p.famous === fn);
+        if(person){
+          const circ = node.querySelector('circle:last-of-type');
+          const r = circ ? circ.getBoundingClientRect() : node.getBoundingClientRect();
+          openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
+        }
+      }, 160);
+    });
+    node.addEventListener('mouseleave', () => {
+      clearTimeout(silTimer);
+      setTimeout(() => { if(!popup.matches(':hover')) closePopup(); }, 220);
+    });
+    node.addEventListener('click', e => {
+      const person = PEOPLE.find(p => p.famous === node.dataset.famous);
+      if(person){
+        const r = node.getBoundingClientRect();
+        openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
+      }
+    });
+  });
+}
+
+
+const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
+const CHART_PX=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--chart-w'))||1500;
+function y2px(y){return((y-MIN_YEAR)/SPAN)*CHART_PX;}
+
+let activeCentury='all', activeTrad='all', activeType='all', searchQ='';
+let PEOPLE = [];
+let STUDENTS = {}; // populated by _initApp after data loads
+
+function _initApp() {
+
+  // Build student reverse-lookup
+  STUDENTS = {};
+  PEOPLE.forEach(p => {
+    (p.teachers||[]).forEach(tn => {
+      if(!STUDENTS[tn]) STUDENTS[tn]=[];
+      STUDENTS[tn].push(p.famous);
+    });
+  });
+
+// ══════════════════════════════════════════════════════════════════════════════
+// VIEW TOGGLE
+// ══════════════════════════════════════════════════════════════════════════════
+let VIEW = 'timeline';
+function setView(v) {
+  VIEW = v;
+  const labels = {'timeline':'Timeline','silsila':'Silsila','map':'Map'};
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(labels[v]||v)));
+  const tl = document.getElementById('tlOuter');
+  const sl = document.getElementById('silsilaView');
+  const mv = document.getElementById('mapView');
+  tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
+  // Clear era bands when leaving timeline
+  document.querySelectorAll('.era-band').forEach(e=>e.remove());
+  // Show Year button only on timeline; hide + close on other views
+  const _btnSlider = document.getElementById('btnSlider');
+  if(v !== 'timeline'){
+    if(_btnSlider) _btnSlider.style.display = 'none';
+    const _sw = document.getElementById('yearSliderWrap');
+    if(_sw && _sw.classList.contains('visible')){
+      _sw.classList.remove('visible');
+      document.querySelectorAll('.bar-row, .name-row').forEach(r=>{ r.style.display=''; r.classList.remove('era-dim','era-lit'); });
+    }
+    if(_btnSlider) _btnSlider.classList.remove('active');
+  } else {
+    if(_btnSlider) _btnSlider.style.display = '';
+  }
+  if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
+  else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
+  else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); renderMap(); }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SILSILA CHAIN VIEW RENDERER
+// ══════════════════════════════════════════════════════════════════════════════
+function renderSilsila() {
+  const svg = document.getElementById('silsilaSvg');
+  // Cleanup any old tooltip
+  const oldTip = document.getElementById('sil-tip');
+  if(oldTip) oldTip.remove();
+
+  const filtered = getFiltered();
+
+  // Build tradition order by earliest DOB
+  const tradMap = {};
+  filtered.forEach(p => { if(!tradMap[p.tradition]||p.dob<tradMap[p.tradition]) tradMap[p.tradition]=p.dob; });
+  const trads = Object.keys(tradMap).sort((a,b)=>tradMap[a]-tradMap[b]);
+
+  const NODE_R = 8;
+  const SUBROW_GAP = NODE_R * 2.6; // vertical gap between staggered sub-rows
+  const LABEL_H = 14;              // space above node for century label line
+  const MARGIN_T = 50;             // top margin (for year labels)
+  const MARGIN_L = 190;
+  const MARGIN_R = 60;
+  const MIN_Y = 550, MAX_Y = 1950;
+  const W = 3200;
+  const PROX_PX = NODE_R * 3;     // px threshold to trigger stagger
+
+  function xPos(dob){ return MARGIN_L + ((dob - MIN_Y)/(MAX_Y - MIN_Y))*(W - MARGIN_L - MARGIN_R); }
+
+  // ── For each tradition lane, assign sub-rows to avoid overlap ────────────
+  // laneMeta[trad] = { subRowCount, nodes: [{p, subRow}] }
+  const laneMeta = {};
+  trads.forEach(t => { laneMeta[t] = { subRowCount: 1, nodes: [] }; });
+
+  // Sort each tradition's scholars by DOB, then greedily assign sub-rows
+  trads.forEach(trad => {
+    const members = filtered.filter(p => p.tradition === trad).sort((a,b)=>a.dob-b.dob);
+    // Each sub-row tracks the last x used
+    const subRowMaxX = [0];
+    members.forEach(p => {
+      const x = xPos(p.dob);
+      // Find first sub-row where there's enough space
+      let row = subRowMaxX.findIndex(maxX => x - maxX > PROX_PX);
+      if(row === -1){ row = subRowMaxX.length; subRowMaxX.push(0); }
+      subRowMaxX[row] = x + NODE_R;
+      laneMeta[trad].nodes.push({p, subRow: row});
+    });
+    laneMeta[trad].subRowCount = subRowMaxX.length;
+  });
+
+  // ── Compute lane Y offsets based on sub-row counts ────────────────────────
+  const LANE_PAD = 24; // padding above/below nodes within lane
+  const laneY = {}; // top y of each lane
+  let curY = MARGIN_T;
+  trads.forEach(trad => {
+    laneY[trad] = curY;
+    const laneH = laneMeta[trad].subRowCount * SUBROW_GAP + LANE_PAD * 2;
+    laneMeta[trad].laneH = laneH;
+    curY += laneH;
+  });
+  const H = curY + 20;
+
+  // ── Build posMap from lane layout ─────────────────────────────────────────
+  const posMap = {};
+  trads.forEach(trad => {
+    const meta = laneMeta[trad];
+    const laneTop = laneY[trad];
+    meta.nodes.forEach(({p, subRow}) => {
+      const x = xPos(p.dob);
+      const y = laneTop + LANE_PAD + subRow * SUBROW_GAP + NODE_R;
+      posMap[p.famous] = {x, y};
+    });
+  });
+
+  // ── Build edges ───────────────────────────────────────────────────────────
+  const edges = [];
+  filtered.forEach(p => {
+    (p.teachers||[]).forEach(tn => {
+      if(posMap[tn] && posMap[p.famous])
+        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)]});
+    });
+  });
+
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  let out = '';
+
+  // ── Lane backgrounds (no labels in SVG — labels go in sticky panel) ───────
+  trads.forEach((t, i) => {
+    const y = laneY[t];
+    const h = laneMeta[t].laneH;
+    out += `<rect x="0" y="${y}" width="${W}" height="${h}" fill="${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}" rx="0"/>`;
+  });
+
+  // ── Century grid lines ────────────────────────────────────────────────────
+  for(let yr=600; yr<=1900; yr+=100){
+    const x = xPos(yr);
+    const cent = Math.ceil(yr/100);
+    out += `<line x1="${x}" y1="${MARGIN_T}" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
+    out += `<text x="${x+3}" y="${MARGIN_T-6}" font-size="10" fill="#999" font-family="Source Serif 4,serif">${yr}</text>`;
+  }
+
+  // ── Arrow defs ────────────────────────────────────────────────────────────
+  const arrowColors = [...new Set(edges.map(e=>e.color))];
+  let defs = '<defs>';
+  arrowColors.forEach(col => {
+    const id = col.replace('#','');
+    defs += `<marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${col}" opacity="0.6"/></marker>`;
+  });
+  defs += '</defs>';
+  out = defs + out;
+
+  // ── Edges ─────────────────────────────────────────────────────────────────
+  edges.forEach(e => {
+    const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
+    // Bezier: control points curve right for forward, left for back
+    const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
+    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
+  });
+
+  // ── Nodes ─────────────────────────────────────────────────────────────────
+  filtered.forEach(p => {
+    const pos = posMap[p.famous];
+    if(!pos) return;
+    const col = CC[gc(p.dob)];
+    const hasFree = p.books && p.books.some(b=>b.url);
+    const r = hasFree ? NODE_R : NODE_R - 1;
+    const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    // data-title for tooltip
+    out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${col}" tabindex="0">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="white" stroke-width="2" opacity="1"/>
+      ${hasFree?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.45"/>`: ''}
+    </g>`;
+  });
+
+  svg.innerHTML = out;
+
+  // ── Populate sticky left label panel ──────────────────────────────────────
+  const labelsInner = document.getElementById('silsilaLabelsInner');
+  labelsInner.style.height = H + 'px';
+  labelsInner.innerHTML = '';
+  trads.forEach((t, i) => {
+    const y = laneY[t];
+    const h = laneMeta[t].laneH;
+    const labelColor = CC[gc(tradMap[t])] || '#888';
+    const div = document.createElement('div');
+    div.className = 'sil-label-row';
+    div.style.cssText = `top:${y}px;height:${h}px;background:${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}`;
+    div.innerHTML = `<span class="sil-label-text" style="color:${labelColor}" title="${t}">${t}</span>`;
+    labelsInner.appendChild(div);
+  });
+
+  // ── Sync vertical scroll between scroll pane and label panel ──────────────
+  const scrollEl = document.getElementById('silsilaScroll');
+  // Remove old listener if re-rendering
+  if(scrollEl._syncHandler) scrollEl.removeEventListener('scroll', scrollEl._syncHandler);
+  scrollEl._syncHandler = () => { labelsInner.style.top = (-scrollEl.scrollTop) + 'px'; };
+  scrollEl.addEventListener('scroll', scrollEl._syncHandler);
+
+  // ── Hover tooltip ─────────────────────────────────────────────────────────
+  svg.querySelectorAll('.sil-node').forEach(node => {
+    const col = node.dataset.col;
+    let silTimer = null;
+    node.addEventListener('mouseenter', () => {
+      const fn = node.dataset.famous;
+      clearTimeout(silTimer);
+      silTimer = setTimeout(() => {
+        const person = PEOPLE.find(p => p.famous === fn);
+        if(person){
+          const circ = node.querySelector('circle:last-of-type');
+          const r = circ ? circ.getBoundingClientRect() : node.getBoundingClientRect();
+          openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
+        }
+      }, 160);
+    });
+    node.addEventListener('mouseleave', () => {
+      clearTimeout(silTimer);
+      setTimeout(() => { if(!popup.matches(':hover')) closePopup(); }, 220);
+    });
+    node.addEventListener('click', e => {
+      const person = PEOPLE.find(p => p.famous === node.dataset.famous);
+      if(person){
+        const r = node.getBoundingClientRect();
+        openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
+      }
+    });
+  });
+}
+
+
+// ── Legend ───────────────────────────────────────────────
+const usedC=[...new Set(PEOPLE.map(p=>gc(p.dob)))].sort((a,b)=>a-b);
+const legEl=document.getElementById('legend');
+usedC.forEach(c=>{
+  const d=document.createElement('div');d.className='legend-item';
+  d.innerHTML=`<div class="legend-dot" style="background:${CC[c]}"></div><span>${gcl(c)}</span>`;
+  d.addEventListener('click',()=>{
+    activeCentury=activeCentury===String(c)?'all':String(c);
+    document.querySelectorAll('.f-century').forEach(b=>b.classList.remove('active'));
+    document.querySelector(`.f-century[data-filter="${activeCentury}"]`)?.classList.add('active');
+    renderRows();
+  });
+  legEl.appendChild(d);
+});
+
+// ── Axis ─────────────────────────────────────────────────
+const axisRow=document.getElementById('axisRow');
+const chartCol=document.getElementById('chartCol');
+for(let yr=600;yr<=1950;yr+=100){
+  const px=y2px(yr);
+  const gl=document.createElement('div');gl.className='grid-line major';gl.style.left=px+'px';axisRow.appendChild(gl);
+  const mk=document.createElement('div');mk.className='c-marker';mk.style.left=px+'px';
+  const c=Math.ceil(yr/100);
+  mk.innerHTML=`<span class="c-label" style="color:${CC[c]||'#888'}">${gcl(c)}</span><span class="c-year">${yr}</span>`;
+  axisRow.appendChild(mk);
+}
+for(let yr=550;yr<=1950;yr+=50){
+  if(yr%100===0)continue;
+  const gl=document.createElement('div');gl.className='grid-line';gl.style.left=y2px(yr)+'px';axisRow.appendChild(gl);
+}
+
+  renderRows();
+  // Set tl-outer height dynamically — works inside iframes
+  function _setTlHeight(){
+    const tl = document.getElementById('tlOuter');
+    const sticky = document.getElementById('stickyTop');
+    if(tl && sticky){
+      const used = sticky.offsetHeight + 60; // header + footer
+      tl.style.height = Math.max(500, window.innerHeight - used) + 'px';
+    }
+  }
+  _setTlHeight();
+  window.addEventListener('resize', _setTlHeight);
+}
+
+fetch('people.json')
+  .then(r => {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  })
+  .then(data => {
+    PEOPLE = data;
+    _initApp();
+  })
+  .catch(() => {
+    // file:// fallback — show helpful message
+    const m = document.getElementById('metaLine');
+    if(m) m.innerHTML = '<b style="color:#c04">⚠ Run a local server to load data: open terminal in this folder → <code>python -m http.server 8000</code> → visit <a href="http://localhost:8000">localhost:8000</a></b>';
+  });
+
+// ── Popup logic ──────────────────────────────────────────
+const popup=document.getElementById('popup-card');
+const pcName=document.getElementById('pcName');
+const pcTitle=document.getElementById('pcTitle');
+const pcBody=document.getElementById('pcBody');
+let activeIdx=-1;
+
+function openPopup(p, color, anchorX, anchorY) {
+  pcName.textContent = p.famous;
+  pcTitle.innerHTML = `<span style="color:${color}">${p.primaryTitle}</span>`;
+
+  // Portrait
+  const portraitImg = document.getElementById('pc-portrait');
+  const portraitWrap = document.getElementById('pc-portrait-wrap');
+  const portraitCap  = document.getElementById('pc-portrait-cap');
+  if(portraitImg){
+    portraitImg.src = '';
+    portraitImg.style.display = 'none';
+    portraitWrap.style.display = 'block';
+    portraitCap.textContent = '';
+    if(p.famous !== 'Prophet Muhammad'){
+      fetchPortrait(p.famous, portraitImg, portraitWrap);
+    } else {
+      portraitWrap.style.display = 'none';
+    }
+  }
+
+  const age = p.dod - p.dob;
+  const approx = p.dob_s.includes('c.') || p.dod_s.includes('c.');
+
+  let html = `
+    <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
+      <span style="font-size:10px;padding:2px 8px;border-radius:2px;border:1px solid ${color}66;color:${color};font-family:'Source Serif 4',serif;letter-spacing:.05em">${p.tradition}</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:2px;background:rgba(0,0,0,.05);border:1px solid #c9bfa8;color:#5a4e38;font-family:'Source Serif 4',serif">${p.type}</span>
+    </div>
+    <div class="pc-section">Background</div>
+    <div class="pc-row"><span class="pc-k">Dates</span><span class="pc-v">${p.dob_s} — ${p.dod_s} &nbsp;(${approx?'c. ':''}${age} yrs)</span></div>
+    <div class="pc-row"><span class="pc-k">Region</span><span class="pc-v">${p.city}</span></div>
+    <div class="pc-row"><span class="pc-k">Type</span><span class="pc-v">${p.classif}</span></div>
+    <div class="pc-row"><span class="pc-k">School</span><span class="pc-v">${p.school}</span></div>
+    <div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>
+    ${p.source ? `<div class="pc-row"><span class="pc-k">Source</span><span class="pc-v" style="display:flex;align-items:center;gap:6px"><span style="background:#6b3a0812;border:1px solid #6b3a0840;border-radius:3px;padding:1px 7px;font-size:11px;color:#6b3a08;font-weight:700;letter-spacing:.04em">📖 ${p.source}</span></span></div>` : ''}
+    <div class="pc-section" style="margin-top:12px">Titles &amp; Honorifics</div>
+    <div class="pc-all-titles">${p.titles}</div>
+    <div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>
+  `;
+
+  const teacherList = (p.teachers||[]).filter(tn => PEOPLE.find(x=>x.famous===tn));
+  const studentList = (STUDENTS[p.famous]||[]).filter(sn => PEOPLE.find(x=>x.famous===sn));
+  if(teacherList.length){
+    html += `<div class="pc-teachers"><div class="pc-tlabel">⬆ Taught by</div>`;
+    teacherList.forEach(tn => {
+      html += `<span class="tc-link" onclick="jumpToScholar('${tn.replace(/'/g,"\\'")}'">${tn}</span>`;
+    });
+    html += `</div>`;
+  }
+  if(studentList.length){
+    html += `<div class="pc-teachers" style="margin-top:6px"><div class="pc-tlabel">⬇ Students</div>`;
+    studentList.forEach(sn => {
+      html += `<span class="tc-link" onclick="jumpToScholar('${sn.replace(/'/g,"\\'")}'">${sn}</span>`;
+    });
+    html += `</div>`;
+  }
+
+  const mag = p.books.filter(b=>b.magnum);
+  const oth = p.books.filter(b=>!b.magnum);
+  if(mag.length){
+    html += `<div class="magnum-label" style="color:${color}">✦ Magnum Opus</div>`;
+    mag.forEach(b=>{
+      html += `<div class="book-item magnum" style="border-color:${color}28">
+        <div>${b.url?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+        ${b.note?`<div class="book-note">${b.note}</div>`:''}
+        ${!b.url&&!b.note?`<div class="no-link">No confirmed free digital edition</div>`:''}
+      </div>`;
+    });
+  }
+  if(oth.length){
+    html += `<div class="other-label">Other Works</div>`;
+    oth.forEach(b=>{
+      html += `<div class="book-item">
+        <div>${b.url?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+        ${b.note?`<div class="book-note">${b.note}</div>`:''}
+      </div>`;
+    });
+  }
+
+  pcBody.innerHTML = html;
+  const scrollEl = document.getElementById('pc-scroll');
+  if(scrollEl) scrollEl.scrollTop = 0;
+
+  // ── Smart position: right of bars, never over name column ───────────────
+  const PW = 400, GAP = 16;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  // Name column is sticky-left; popup must never overlap it
+  const NAME_W = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--name-w')) || 320;
+  const POPUP_MIN_LEFT = NAME_W + 8;
+
+  popup.style.left = '0'; popup.style.top = '0';
+  popup.style.display = 'flex';
+  popup.classList.add('visible');
+
+  requestAnimationFrame(() => {
+    const ph = Math.min(popup.offsetHeight, 680);
+    let left, top;
+
+    // ── HORIZONTAL: always right of name column, prefer right of the bar ──
+    // Find the right edge of the active bar
+    const activeBarEl = document.querySelector('.bar-row.active-row .bar');
+    let barRightPx = anchorX + GAP;
+    if(activeBarEl){
+      const br = activeBarEl.getBoundingClientRect();
+      barRightPx = br.right + GAP;
+    }
+
+    if(barRightPx + PW + 8 <= vw){
+      // Plenty of empty space to the right of the bar — use it
+      left = barRightPx;
+    } else if(POPUP_MIN_LEFT + PW + 8 <= vw){
+      // Not enough space after bar; pin to right edge of viewport
+      left = vw - PW - 8;
+    } else {
+      // Very narrow viewport — start just after name column
+      left = POPUP_MIN_LEFT;
+    }
+
+    // Hard clamp: never overlap name column, never overflow right
+    left = Math.max(POPUP_MIN_LEFT, Math.min(left, vw - PW - 8));
+
+    // ── VERTICAL: align with clicked row, clamp to viewport ──────────────
+    top = anchorY - 40;
+    top = Math.max(8, Math.min(top, vh - ph - 8));
+
+    popup.style.left = left + 'px';
+    popup.style.top  = top  + 'px';
+
+    // ── Arrow: curved dashed line from popup edge toward anchor ──────────
+    const arrowEl   = document.getElementById('popup-arrow');
+    const arrowPath = document.getElementById('popup-arrow-path');
+    if(arrowEl && arrowPath){
+      // Draw from whichever popup edge is closest to the anchor
+      const ex = (anchorX <= left + PW / 2) ? left : left + PW;
+      const ey = Math.max(top + 20, Math.min(anchorY, top + ph - 20));
+      const cx1 = ex + (anchorX - ex) * 0.35;
+      const cy1 = ey;
+      const cx2 = ex + (anchorX - ex) * 0.70;
+      const cy2 = anchorY;
+      arrowPath.setAttribute('d', `M${ex},${ey} C${cx1},${cy1} ${cx2},${cy2} ${anchorX},${anchorY}`);
+      arrowPath.setAttribute('stroke', color);
+      arrowEl.style.display = 'block';
+      const pad = 8;
+      const x0 = Math.min(ex, anchorX) - pad;
+      const y0 = Math.min(ey, anchorY) - pad;
+      const x1 = Math.max(ex, anchorX) + pad;
+      const y1 = Math.max(ey, anchorY) + pad;
+      arrowEl.style.left = x0 + 'px';
+      arrowEl.style.top  = y0 + 'px';
+      arrowEl.setAttribute('width',  (x1 - x0) + 'px');
+      arrowEl.setAttribute('height', (y1 - y0) + 'px');
+      arrowEl.setAttribute('viewBox', `${x0} ${y0} ${x1-x0} ${y1-y0}`);
+    }
+  });
+}
+
+function closePopup(){
+  popup.classList.remove('visible');
+  const arrowEl = document.getElementById('popup-arrow');
+  if(arrowEl) arrowEl.style.display = 'none';
+  document.querySelectorAll('.name-row.active-row,.bar-row.active-row').forEach(el=>el.classList.remove('active-row'));
+  activeIdx=-1;
+}
+
+document.getElementById('pcClose').addEventListener('click',e=>{e.stopPropagation();closePopup();});
+popup.addEventListener('mouseleave', () => {
+  setTimeout(() => {
+    // Only close if no active hover target still highlighted
+    if(activeIdx >= 0){
+      const rows = document.querySelectorAll('.name-row.active-row');
+      if(!rows.length) closePopup();
+    }
+  }, 250);
+});;
+document.addEventListener('click',e=>{
+  if(!popup.contains(e.target)&&!e.target.closest('.name-row')&&!e.target.closest('.bar-row')&&!e.target.closest('.sil-node')&&!e.target.closest('.leaflet-interactive')){closePopup();}
+});
+
+// ── Render rows ──────────────────────────────────────────
+const nameRowsEl=document.getElementById('nameRows');
+const barsAreaEl=document.getElementById('barsArea');
+
+function addGrids(){
+  for(let yr=600;yr<=1950;yr+=100){const gl=document.createElement('div');gl.className='grid-line major';gl.style.cssText=`left:${y2px(yr)}px;top:0;bottom:0`;barsAreaEl.appendChild(gl);}
+  for(let yr=550;yr<=1950;yr+=50){if(yr%100===0)continue;const gl=document.createElement('div');gl.className='grid-line';gl.style.cssText=`left:${y2px(yr)}px;top:0;bottom:0`;barsAreaEl.appendChild(gl);}
+}
+
+function getFiltered(){
+  return PEOPLE.filter(p=>{
+    const cm=activeCentury==='all'||gc(p.dob)===parseInt(activeCentury);
+    const tm=activeTrad==='all'||p.tradition===activeTrad;
+    const ym=activeType==='all'||p.type===activeType;
+    const sm=!searchQ||p.famous.toLowerCase().includes(searchQ)||p.full.toLowerCase().includes(searchQ)||p.tradition.toLowerCase().includes(searchQ)||p.type.toLowerCase().includes(searchQ)||p.primaryTitle.toLowerCase().includes(searchQ);
+    return cm&&tm&&ym&&sm;
+  });
+}
+
+function renderRows(){
+  // Redraw era overlays after DOM update
+  setTimeout(drawEras, 0);
+  nameRowsEl.innerHTML='';barsAreaEl.innerHTML='';
+  // Axis-row is now in the sticky #tlHeaderRow — no spacer needed here
+  addGrids();
+  closePopup();
+  const filtered=getFiltered();
+
+  // Show count
+  const metaEl = document.getElementById('metaLine');
+  if(metaEl) metaEl.textContent = `${filtered.length} of ${PEOPLE.length} figures · 555 CE to 2025 CE · ✦ = free book available`;
+
+  filtered.forEach((p,i)=>{
+    const color=CC[gc(p.dob)];
+    const hasFreeBook=p.books.some(b=>b.url);
+
+    const nr=document.createElement('div');nr.className='name-row'+(p.famous==='Prophet Muhammad'?' prophet-row':'');nr.dataset.i=i;
+    const shortTitle=p.primaryTitle.split('—')[0].trim();
+    nr.innerHTML=`<div class="dot" style="background:${color}"></div><div class="name-text"><div class="name-famous">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
+    nameRowsEl.appendChild(nr);
+
+    const br=document.createElement('div');br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'');br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
+    const left=y2px(p.dob);
+    const width=Math.max(y2px(p.dod)-y2px(p.dob),5);
+
+    const bar=document.createElement('div');
+    bar.className='bar';
+    bar.style.cssText=`left:${left}px;width:${width}px;background:linear-gradient(90deg,${color}e0,${color}60);box-shadow:0 1px 4px ${color}40;`;
+
+    if(hasFreeBook){
+      const od=document.createElement('div');
+      od.className='opus-dot';
+      od.style.cssText=`background:${color};box-shadow:0 0 4px ${color}80;`;
+      od.title='Free book available';
+      bar.appendChild(od);
+    }
+
+    br.appendChild(bar);barsAreaEl.appendChild(br);
+
+    let hoverTimer = null;
+
+    function showOnHover(e){
+      clearTimeout(hoverTimer);
+      if(activeIdx === i) return;
+      hoverTimer = setTimeout(()=>{
+        document.querySelectorAll('.name-row.active-row,.bar-row.active-row').forEach(el=>el.classList.remove('active-row'));
+        nr.classList.add('active-row'); br.classList.add('active-row');
+        activeIdx = i;
+        const rect = br.getBoundingClientRect();
+        // Anchor at the centre of the bar row horizontally
+        openPopup(p, color, rect.left + Math.min(80, rect.width * 0.3 + 20), rect.top + rect.height/2);
+      }, 120);
+    }
+
+    function hideOnLeave(e){
+      clearTimeout(hoverTimer);
+      // Only close if mouse left both the row AND the popup
+      hoverTimer = setTimeout(()=>{
+        if(!popup.matches(':hover') && activeIdx===i){
+          closePopup();
+        }
+      }, 200);
+    }
+
+    nr.addEventListener('mouseenter', showOnHover);
+    br.addEventListener('mouseenter', showOnHover);
+    nr.addEventListener('mouseleave', hideOnLeave);
+    br.addEventListener('mouseleave', hideOnLeave);
+    nr.addEventListener('click', e=>{ e.stopPropagation(); if(activeIdx===i){closePopup();}else{showOnHover(e);} });
+    br.addEventListener('click', e=>{ e.stopPropagation(); if(activeIdx===i){closePopup();}else{showOnHover(e);} });
+    nr.addEventListener('mouseenter',()=>{nr.style.background='rgba(122,79,13,.06)';br.style.background='rgba(122,79,13,.04)';});
+    nr.addEventListener('mouseleave',()=>{if(activeIdx!==i){nr.style.background='';br.style.background='';}});
+    br.addEventListener('mouseenter',()=>{nr.style.background='rgba(122,79,13,.06)';br.style.background='rgba(122,79,13,.04)';});
+    br.addEventListener('mouseleave',()=>{if(activeIdx!==i){nr.style.background='';br.style.background='';}});
+  });
+}
+
+// ── Filter wiring ────────────────────────────────────────
+function applyFilters(){
+  if(VIEW==='silsila') renderSilsila();
+  else if(VIEW==='map') renderMap();
+  else renderRows();
+}
+document.querySelectorAll('.f-century').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeCentury=btn.dataset.filter;
+    document.querySelectorAll('.f-century').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+document.querySelectorAll('.f-trad').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeTrad=btn.dataset.trad;
+    document.querySelectorAll('.f-trad').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+document.querySelectorAll('.f-type').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeType=btn.dataset.type;
+    document.querySelectorAll('.f-type').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+document.getElementById('search').addEventListener('input',e=>{searchQ=e.target.value.toLowerCase().trim();applyFilters();});
+
+// Jump to and open a scholar from teacher/student links
+function jumpToScholar(famousName){
+  closePopup();
+  if(VIEW==='silsila'){
+    const person = PEOPLE.find(p=>p.famous===famousName);
+    if(person){ const c=CC[gc(person.dob)]; openPopup(person,c,null,true); }
+    return;
+  }
+  // Reset filters and search to show the scholar
+  activeCentury='all'; activeTrad='all'; activeType='all'; searchQ='';
+  document.querySelectorAll('.f-century,.f-trad,.f-type').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.f-century[data-filter="all"]')?.classList.add('active');
+  document.querySelector('.f-trad[data-trad="all"]')?.classList.add('active');
+  document.querySelector('.f-type[data-type="all"]')?.classList.add('active');
+  document.getElementById('search').value='';
+  renderRows();
+  setTimeout(()=>{
+    const filtered=getFiltered();
+    const idx=filtered.findIndex(p=>p.famous===famousName);
+    if(idx>=0){
+      const nr=document.querySelectorAll('.name-row')[idx];
+      if(nr){ nr.scrollIntoView({behavior:'smooth',block:'center'}); nr.click(); }
+    }
+  }, 100);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCHOLAR COORDINATES  [lat, lng]
+// ════════════════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════════════════
+// HISTORICAL ERA OVERLAY DATA — each century has named regions with distinct per-empire colors
+// ════════════════════════════════════════════════════════════════════════════
+const ERA_OVERLAYS = {
+  7:{ sub:"Four Rightly-Guided Caliphs rule from Medina; rapid expansion into Persia, Syria, Egypt",
+    regions:[
+      { name:"Rashidun Caliphate", color:"#e85c0d",
+        poly:[[[15,33],[30,33],[33,38],[37,36],[37,44],[30,50],[22,56],[12,50],[12,42],[15,33]]]},
+      { name:"Early Umayyad Expansion (Levant / Egypt)", color:"#f0b429",
+        poly:[[[22,25],[32,25],[32,36],[22,36],[22,25]]]}
+    ]},
+  8:{ sub:"Largest contiguous empire to that point — from Spain to the Indus River",
+    regions:[
+      { name:"Umayyad Caliphate (Core — Arabia to Iran)", color:"#e85c0d",
+        poly:[[[15,33],[30,33],[33,38],[37,36],[38,48],[38,62],[42,65],[38,72],[30,68],[22,60],[12,50],[12,42],[15,33]]]},
+      { name:"Umayyad North Africa", color:"#f0b429",
+        poly:[[[22,10],[37,10],[37,35],[22,35],[22,10]]]},
+      { name:"Umayyad Iberia (al-Andalus)", color:"#c0392b",
+        poly:[[[36,-9],[44,-9],[44,4],[36,4],[36,-9]]]},
+      { name:"Umayyad Maghreb", color:"#d4781a",
+        poly:[[[20,-6],[37,-6],[37,10],[20,10],[20,-6]]]}
+    ]},
+  9:{ sub:"House of Wisdom translates Greek science; poetry, philosophy and mathematics flourish",
+    regions:[
+      { name:"Abbasid Caliphate (Core)", color:"#d4a017",
+        poly:[[[15,33],[30,33],[33,38],[37,36],[38,50],[42,63],[40,72],[35,75],[30,68],[22,60],[12,50],[12,42],[15,33]]]},
+      { name:"Abbasid North Africa / Aghlabids", color:"#b07d12",
+        poly:[[[22,15],[37,15],[37,35],[22,35],[22,15]]]}
+    ]},
+  10:{ sub:"Baghdad caliphs become figureheads; rival dynasties control regions",
+    regions:[
+      { name:"Abbasid / Buyid (Iraq & Iran)", color:"#d4a017",
+        poly:[[[30,44],[38,44],[42,64],[38,72],[30,68],[25,56],[30,44]]]},
+      { name:"Samanid Empire (Khorasan)", color:"#1a7a4a",
+        poly:[[[36,56],[44,56],[44,72],[36,72],[36,56]]]},
+      { name:"Fatimid Caliphate (Egypt / North Africa)", color:"#16a085",
+        poly:[[[22,25],[32,25],[36,38],[22,38],[22,25]]]},
+      { name:"Hamdanids / Levant", color:"#2e6da4",
+        poly:[[[15,33],[30,33],[33,38],[30,50],[12,50],[12,42],[15,33]]]}
+    ]},
+  11:{ sub:"Seljuks revive Sunni orthodoxy under nominal Abbasid caliphate; Crusades begin 1096",
+    regions:[
+      { name:"Seljuk Empire", color:"#1a5276",
+        poly:[[[36,26],[42,26],[42,52],[36,60],[30,56],[32,38],[36,26]]]},
+      { name:"Fatimid Caliphate", color:"#16a085",
+        poly:[[[22,25],[36,25],[36,38],[22,38],[22,25]]]},
+      { name:"Ghaznavid Sultanate", color:"#1e8449",
+        poly:[[[28,62],[36,62],[36,76],[24,76],[24,66],[28,62]]]}
+    ]},
+  12:{ sub:"Saladin retakes Jerusalem 1187; Almohads hold Spain and Morocco; Seljuk fragments",
+    regions:[
+      { name:"Almohad Caliphate (Iberia & Maghreb)", color:"#b7770d",
+        poly:[[[20,-18],[37,-6],[37,14],[20,14],[20,-18]],[[36,-9],[44,-9],[44,4],[36,4],[36,-9]]]},
+      { name:"Ayyubid Sultanate (Saladin)", color:"#c0392b",
+        poly:[[[22,25],[36,38],[36,44],[22,44],[22,25]]]},
+      { name:"Seljuk Remnants / Crusader States", color:"#6c757d",
+        poly:[[[36,28],[42,28],[42,42],[36,42],[36,28]]]}
+    ]},
+  13:{ sub:"Mongols destroy Baghdad 1258 — end of Abbasid caliphate; Mamluks stop Mongols at Ain Jalut",
+    regions:[
+      { name:"Mongol Ilkhanate", color:"#2e4057",
+        poly:[[[30,44],[44,44],[44,80],[35,80],[30,68],[25,56],[30,44]]]},
+      { name:"Mamluk Sultanate (Egypt & Levant)", color:"#c0392b",
+        poly:[[[22,25],[36,38],[36,44],[22,44],[22,25]]]},
+      { name:"Delhi Sultanate", color:"#1e8449",
+        poly:[[[8,68],[34,68],[34,88],[8,88],[8,68]]]}
+    ]},
+  14:{ sub:"Ottomans expand into Balkans; Timur (Tamerlane) sacks Delhi 1398 and Damascus 1401",
+    regions:[
+      { name:"Ottoman Empire (Early)", color:"#c0392b",
+        poly:[[[36,24],[46,24],[46,42],[36,42],[36,24]]]},
+      { name:"Mamluk Sultanate", color:"#d35400",
+        poly:[[[22,25],[36,38],[36,50],[22,50],[22,25]]]},
+      { name:"Delhi Sultanate", color:"#1e8449",
+        poly:[[[10,68],[32,68],[32,85],[10,85],[10,68]]]},
+      { name:"Timurid Empire", color:"#884ea0",
+        poly:[[[30,48],[42,48],[42,68],[30,68],[26,58],[30,48]]]}
+    ]},
+  15:{ sub:"Ottomans take Constantinople 1453; Timurid Samarkand is cultural capital of Islam",
+    regions:[
+      { name:"Ottoman Empire", color:"#c0392b",
+        poly:[[[34,15],[48,15],[48,42],[34,42],[34,15]]]},
+      { name:"Mamluk Sultanate", color:"#d35400",
+        poly:[[[20,25],[36,38],[36,50],[20,50],[20,25]]]},
+      { name:"Timurid Empire (Samarkand)", color:"#884ea0",
+        poly:[[[30,52],[42,52],[42,72],[30,72],[26,60],[30,52]]]},
+      { name:"Delhi Sultanate / Lodi", color:"#1e8449",
+        poly:[[[10,68],[30,68],[30,85],[10,85],[10,68]]]}
+    ]},
+  16:{ sub:"Islam's three greatest empires at simultaneous peaks; Mughal Akbar rules most of India",
+    regions:[
+      { name:"Ottoman Empire", color:"#c0392b",
+        poly:[[[20,20],[50,20],[50,48],[36,48],[33,38],[20,35],[20,20]],[[20,-6],[37,-6],[37,20],[20,20],[20,-6]]]},
+      { name:"Safavid Empire", color:"#117a65",
+        poly:[[[29,44],[38,44],[38,64],[29,64],[25,58],[29,44]]]},
+      { name:"Mughal Empire", color:"#6c3483",
+        poly:[[[8,62],[35,62],[35,88],[8,88],[8,62]]]}
+    ]},
+  17:{ sub:"Mughal Empire at greatest extent; Ottoman siege of Vienna 1683; Safavid Isfahan magnificent",
+    regions:[
+      { name:"Ottoman Empire (at peak)", color:"#c0392b",
+        poly:[[[20,20],[50,20],[50,48],[36,48],[33,38],[20,35],[20,20]],[[20,-6],[37,-6],[37,20],[20,20],[20,-6]]]},
+      { name:"Safavid Empire", color:"#117a65",
+        poly:[[[29,44],[38,44],[38,64],[29,64],[25,58],[29,44]]]},
+      { name:"Mughal Empire (at peak)", color:"#6c3483",
+        poly:[[[8,62],[35,62],[35,90],[8,90],[8,62]]]}
+    ]},
+  18:{ sub:"Three empires weaken; European East India Companies expand; Wahhabism emerges in Arabia",
+    regions:[
+      { name:"Ottoman Empire (declining)", color:"#c0392b",
+        poly:[[[34,26],[48,26],[48,42],[34,42],[34,26]]]},
+      { name:"Mughal Empire (declining)", color:"#6c3483",
+        poly:[[[15,68],[30,68],[30,85],[15,85],[15,68]]]},
+      { name:"Safavid / Qajar Persia", color:"#117a65",
+        poly:[[[28,58],[38,58],[38,74],[28,74],[28,58]]]},
+      { name:"Durrani / Afghan Empire", color:"#d4a017",
+        poly:[[[20,25],[36,42],[36,50],[20,50],[20,25]]]},
+      { name:"Wahhabi / Saudi Emirate", color:"#b07d12",
+        poly:[[[15,35],[28,35],[28,58],[15,50],[12,43],[15,35]]]}
+    ]},
+  19:{ sub:"Most Islamic lands under European control; Islamic reform movements emerge in response",
+    regions:[
+      { name:"Ottoman Empire (Tanzimat)", color:"#c0392b",
+        poly:[[[34,26],[46,26],[46,42],[34,42],[34,26]]]},
+      { name:"British India (Islamic reform heartland)", color:"#1a5276",
+        poly:[[[10,68],[32,68],[32,85],[10,85],[10,68]]]},
+      { name:"Qajar Persia", color:"#117a65",
+        poly:[[[28,56],[36,56],[36,72],[28,72],[28,56]]]},
+      { name:"French Algeria / North Africa", color:"#5d6d7e",
+        poly:[[[20,25],[36,38],[36,42],[20,42],[20,25]]]}
+    ]},
+  20:{ sub:"Islamic lands regain independence; postcolonial Islam seeks synthesis of tradition and modernity",
+    regions:[]}
+};
+
+// ════════════════════════════════════════════════════════════════════════════
+// MAP VIEW — EMPIRE OVERLAYS
+// ════════════════════════════════════════════════════════════════════════════
+const MAP_EMPIRES = [
+  // ── ANCIENT NEAR EAST ──
+  { name:"Sumerian City-States",      years:"2900–2350 BCE", color:"#a07840", start:-2900, end:-2350, poly:[[34,43],[34,48],[30,48],[30,43]] },
+  { name:"Babylonian Empire",         years:"1895–539 BCE",  color:"#c8a020", start:-1895, end:-539,  poly:[[35,39],[35,49],[29,49],[29,39]] },
+  { name:"Assyrian Empire",           years:"1365–609 BCE",  color:"#a04820", start:-1365, end:-609,  poly:[[38,38],[38,48],[33,48],[33,38]] },
+  { name:"Achaemenid Persian Empire", years:"550–330 BCE",   color:"#c8780a", start:-550,  end:-330,  poly:[[42,44],[42,74],[24,74],[24,44]] },
+  // ── ANCIENT EGYPT ──
+  { name:"Egyptian Old Kingdom",      years:"2686–2181 BCE", color:"#e0b000", start:-2686, end:-2181, poly:[[32,24],[32,36],[20,36],[20,24]] },
+  { name:"Egyptian New Kingdom",      years:"1550–1070 BCE", color:"#f0c000", start:-1550, end:-1070, poly:[[34,24],[34,38],[16,38],[16,24]] },
+  { name:"Ptolemaic Egypt",           years:"305–30 BCE",    color:"#c89800", start:-305,  end:-30,   poly:[[32,24],[32,36],[22,36],[22,24]] },
+  // ── ANCIENT MEDITERRANEAN ──
+  { name:"Greek City-States",         years:"800–338 BCE",   color:"#2050c0", start:-800,  end:-338,  poly:[[42,19],[42,30],[34,30],[34,19]] },
+  { name:"Roman Republic",            years:"509–27 BCE",    color:"#900000", start:-509,  end:-27,   poly:[[48,-9],[48,30],[32,30],[32,-9]] },
+  { name:"Roman Empire",              years:"27 BCE–476 CE", color:"#8b0000", start:-27,   end:476,   poly:[[56,-9],[56,44],[20,44],[20,-9]] },
+  { name:"Byzantine Empire",          years:"330–1453 CE",   color:"#6a0572", start:330,   end:1453,  poly:[[48,18],[48,42],[28,42],[28,18]] },
+  // ── SASSANID / PRE-ISLAMIC PERSIA ──
+  { name:"Sassanid Persian Empire",   years:"224–651 CE",    color:"#c87020", start:224,   end:651,   poly:[[42,40],[42,72],[22,72],[22,40]] },
+  // ── ISLAMIC CALIPHATES ──
+  { name:"Rashidun Caliphate",        years:"632–661 CE",    color:"#8f5210", start:632,   end:661,   poly:[[40,30],[40,60],[14,60],[14,30]] },
+  { name:"Umayyad Caliphate",         years:"661–750 CE",    color:"#6b3a08", start:661,   end:750,   poly:[[44,-9],[44,74],[14,74],[14,-9]] },
+  { name:"Abbasid Caliphate",         years:"750–1258 CE",   color:"#2a6a20", start:750,   end:1258,  poly:[[42,36],[42,76],[14,76],[14,36]] },
+  { name:"Fatimid Caliphate",         years:"909–1171 CE",   color:"#208090", start:909,   end:1171,  poly:[[38,18],[38,40],[22,40],[22,18]] },
+  { name:"Buyid Dynasty",             years:"934–1055 CE",   color:"#7a4a00", start:934,   end:1055,  poly:[[38,44],[38,60],[26,60],[26,44]] },
+  { name:"Seljuk Empire",             years:"1037–1194 CE",  color:"#b06010", start:1037,  end:1194,  poly:[[44,32],[44,72],[28,72],[28,32]] },
+  { name:"Ayyubid Sultanate",         years:"1171–1341 CE",  color:"#c07000", start:1171,  end:1341,  poly:[[40,28],[40,44],[18,44],[18,28]] },
+  { name:"Mamluk Sultanate",          years:"1250–1517 CE",  color:"#a05000", start:1250,  end:1517,  poly:[[36,24],[36,40],[20,40],[20,24]] },
+  { name:"Mongol Empire / Ilkhanate", years:"1206–1368 CE",  color:"#5a7a00", start:1206,  end:1368,  poly:[[56,26],[56,134],[28,134],[28,26]] },
+  { name:"Timurid Empire",            years:"1370–1507 CE",  color:"#d08040", start:1370,  end:1507,  poly:[[42,48],[42,80],[28,80],[28,48]] },
+  { name:"Safavid Empire",            years:"1501–1736 CE",  color:"#117a65", start:1501,  end:1736,  poly:[[40,44],[40,64],[26,64],[26,44]] },
+  { name:"Ottoman Empire",            years:"1299–1922 CE",  color:"#1a2880", start:1299,  end:1922,  poly:[[48,22],[48,60],[22,60],[22,22]] },
+  { name:"Mughal Empire",             years:"1526–1857 CE",  color:"#006858", start:1526,  end:1857,  poly:[[38,60],[38,96],[8,96],[8,60]] },
+  { name:"Delhi Sultanate",           years:"1206–1526 CE",  color:"#009898", start:1206,  end:1526,  poly:[[36,66],[36,92],[14,92],[14,66]] },
+  { name:"Mali Empire",               years:"1235–1600 CE",  color:"#7030a0", start:1235,  end:1600,  poly:[[20,-16],[20,6],[8,6],[8,-16]] },
+  { name:"Sokoto Caliphate",          years:"1804–1903 CE",  color:"#4a2080", start:1804,  end:1903,  poly:[[16,-4],[16,16],[8,16],[8,-4]] },
+];
+
+const MAP_MIN_YEAR = 550;
+const MAP_MAX_YEAR = 2025;
+function fmtYear(y){ return y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`; }
+
+let empireOverlays = [];
+let leafletMap = null, eraLayer = null, markerLayer = null;
+let mapSliderYear = null;
+
+function _drawEmpires() {
+  if (!leafletMap) return;
+  empireOverlays.forEach(l => leafletMap.removeLayer(l));
+  empireOverlays = [];
+  MAP_EMPIRES.forEach(em => {
+    if (mapSliderYear !== null) {
+      if (em.start > mapSliderYear || em.end < mapSliderYear) return;
+    } else {
+      if (activeCentury !== 'all') {
+        const c = parseInt(activeCentury);
+        const cs = (c-1)*100, ce = c*100;
+        if (em.end < cs || em.start > ce) return;
+      }
+    }
+    const poly = L.polygon(em.poly, {
+      color: em.color, weight: 1.5, fillColor: em.color,
+      fillOpacity: 0.12, opacity: 0.5, dashArray: '4,4'
+    });
+    poly.addTo(leafletMap);
+    empireOverlays.push(poly);
+    const cLat = em.poly.reduce((s,p)=>s+p[0],0)/em.poly.length;
+    const cLng = em.poly.reduce((s,p)=>s+p[1],0)/em.poly.length;
+    const label = L.marker([cLat, cLng], {
+      icon: L.divIcon({
+        html: `<div style="color:${em.color};font-family:'Playfair Display',Georgia,serif;font-size:14px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:.04em;line-height:1.3;pointer-events:none;background:rgba(255,255,255,.75);padding:3px 9px 2px;border-radius:4px;border-left:3px solid ${em.color};box-shadow:0 1px 6px rgba(0,0,0,.18);">${em.name}<br><span style="font-size:10px;font-weight:500;font-style:italic;opacity:.85;">${em.years}</span></div>`,
+        className:'', iconSize:[210,40], iconAnchor:[105,20]
+      }),
+      interactive:false, keyboard:false
+    });
+    label.addTo(leafletMap);
+    empireOverlays.push(label);
+  });
+}
+
+function _makePersonMarker(p) {
+  const color = CC[gc(p.dob)];
+  const hasFree = (p.books||[]).some(b=>b.url);
+  const name = p.famous.length > 22 ? p.famous.slice(0,20)+'…' : p.famous;
+  const icon = L.divIcon({
+    html: `<div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));">
+      <div style="width:9px;height:9px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 0 0 1px ${color};flex-shrink:0;"></div>
+      <div style="margin-top:2px;font-family:'Playfair Display',Georgia,serif;font-size:11px;font-weight:800;color:${color};white-space:nowrap;background:rgba(255,255,255,.92);padding:2px 5px 1px;border-radius:3px;line-height:1.3;pointer-events:none;border-bottom:2px solid ${color};letter-spacing:.01em;">${hasFree?'✦ ':''}${name}</div>
+    </div>`,
+    className:'', iconSize:[160,34], iconAnchor:[80,9]
+  });
+  const marker = L.marker([p.lat, p.lng], { icon });
+  marker.on('mouseover', e => { setTimeout(()=>openPopup(p,color,e.originalEvent.clientX,e.originalEvent.clientY),150); });
+  marker.on('mouseout', ()=>{ setTimeout(()=>{ if(!popup.matches(':hover')) closePopup(); },220); });
+  marker.on('click', e=>openPopup(p,color,e.originalEvent.clientX,e.originalEvent.clientY));
+  return marker;
+}
+
+function _updateOffScreenArrows() {
+  if (!leafletMap) return;
+  const mapEl = document.getElementById('leafletMap');
+  mapEl.querySelectorAll('.map-arrow').forEach(e=>e.remove());
+  const bounds = leafletMap.getBounds();
+  const all = (mapSliderYear !== null)
+    ? getFiltered().filter(p=>p.lat&&p.lng&&p.dob<=mapSliderYear&&p.dod>=mapSliderYear)
+    : getFiltered().filter(p=>p.lat&&p.lng);
+  const dirs = {N:0,NE:0,E:0,SE:0,S:0,SW:0,W:0,NW:0};
+  const colorDir = {N:{},NE:{},E:{},SE:{},S:{},SW:{},W:{},NW:{}};
+  all.forEach(p => {
+    const inLat = p.lat>=bounds.getSouth()&&p.lat<=bounds.getNorth();
+    const inLng = p.lng>=bounds.getWest()&&p.lng<=bounds.getEast();
+    if (inLat&&inLng) return;
+    const dLat = p.lat-(bounds.getSouth()+bounds.getNorth())/2;
+    const dLng = p.lng-(bounds.getWest()+bounds.getEast())/2;
+    const angle = Math.atan2(dLng,dLat)*180/Math.PI;
+    let dir;
+    if      (angle>157.5||angle<=-157.5) dir='S';
+    else if (angle>-157.5&&angle<=-112.5) dir='SW';
+    else if (angle>-112.5&&angle<=-67.5)  dir='W';
+    else if (angle>-67.5&&angle<=-22.5)   dir='NW';
+    else if (angle>-22.5&&angle<=22.5)    dir='N';
+    else if (angle>22.5&&angle<=67.5)     dir='NE';
+    else if (angle>67.5&&angle<=112.5)    dir='E';
+    else                                   dir='SE';
+    dirs[dir]++;
+    const col = CC[gc(p.dob)];
+    colorDir[dir][col] = (colorDir[dir][col]||0)+1;
+  });
+  const arrowChar={N:'↑',NE:'↗',E:'→',SE:'↘',S:'↓',SW:'↙',W:'←',NW:'↖'};
+  const pos={
+    N:'top:8px;left:50%;transform:translateX(-50%)',
+    NE:'top:8px;right:8px',
+    E:'top:50%;right:8px;transform:translateY(-50%)',
+    SE:'bottom:58px;right:8px',
+    S:'bottom:58px;left:50%;transform:translateX(-50%)',
+    SW:'bottom:58px;left:8px',
+    W:'top:50%;left:8px;transform:translateY(-50%)',
+    NW:'top:8px;left:8px'
+  };
+  Object.entries(dirs).forEach(([dir,count])=>{
+    if (count===0) return;
+    const topCol = Object.entries(colorDir[dir]).sort((a,b)=>b[1]-a[1])[0]?.[0] || '#666';
+    const el = document.createElement('div');
+    el.className='map-arrow';
+    el.style.cssText=pos[dir]+`;border-color:${topCol};color:${topCol};`;
+    el.innerHTML=`<span>${arrowChar[dir]}</span>${count}`;
+    mapEl.appendChild(el);
+  });
+}
+
+function _applyMapYear(yr) {
+  mapSliderYear = yr;
+  const yearEl = document.getElementById('mapSliderYear');
+  if (yr===null) {
+    yearEl.textContent='All Years';
+    document.getElementById('mapSliderFill').style.width='0%';
+    document.getElementById('mapSliderThumb').style.left='0%';
+    if (leafletMap) { _drawEmpires(); if(markerLayer){leafletMap.removeLayer(markerLayer);markerLayer=null;} const f=getFiltered().filter(p=>p.lat&&p.lng); markerLayer=L.layerGroup(f.map(_makePersonMarker)).addTo(leafletMap); setTimeout(_updateOffScreenArrows,200); }
+    return;
+  }
+  yearEl.textContent = fmtYear(yr);
+  const pct = ((yr-MAP_MIN_YEAR)/(MAP_MAX_YEAR-MAP_MIN_YEAR))*100;
+  document.getElementById('mapSliderFill').style.width=pct+'%';
+  document.getElementById('mapSliderThumb').style.left=pct+'%';
+  if (!leafletMap||!markerLayer) return;
+  leafletMap.removeLayer(markerLayer); markerLayer=null;
+  const alive = getFiltered().filter(p=>p.lat&&p.lng&&p.dob<=yr&&p.dod>=yr);
+  markerLayer = L.layerGroup(alive.map(_makePersonMarker)).addTo(leafletMap);
+  _drawEmpires();
+  setTimeout(_updateOffScreenArrows,200);
+}
+
+(function(){
+  const track=document.getElementById('mapSliderTrack');
+  const thumb=document.getElementById('mapSliderThumb');
+  const reset=document.getElementById('mapSliderReset');
+  if(!track||!thumb) return;
+  function pxToYear(px,w){ return Math.round((MAP_MIN_YEAR+Math.max(0,Math.min(1,px/w))*(MAP_MAX_YEAR-MAP_MIN_YEAR))/5)*5; }
+  let dragging=false;
+  thumb.addEventListener('mousedown',e=>{dragging=true;thumb.classList.add('dragging');e.preventDefault();});
+  track.addEventListener('click',e=>{ const r=track.getBoundingClientRect(); _applyMapYear(pxToYear(e.clientX-r.left,r.width)); });
+  document.addEventListener('mousemove',e=>{ if(!dragging||VIEW!=='map') return; const r=track.getBoundingClientRect(); _applyMapYear(pxToYear(e.clientX-r.left,r.width)); });
+  document.addEventListener('mouseup',()=>{dragging=false;thumb.classList.remove('dragging');});
+  reset.addEventListener('click',()=>_applyMapYear(null));
+  thumb.addEventListener('touchstart',e=>{dragging=true;e.preventDefault();},{passive:false});
+  document.addEventListener('touchmove',e=>{ if(!dragging||VIEW!=='map') return; const r=track.getBoundingClientRect(); _applyMapYear(pxToYear(e.touches[0].clientX-r.left,r.width)); },{passive:false});
+  document.addEventListener('touchend',()=>{dragging=false;});
+})();
+
+function renderMap() {
+  if (typeof L === 'undefined') {
+    if (!document.getElementById('leaflet-css')) {
+      const lnk = document.createElement('link');
+      lnk.id = 'leaflet-css';
+      lnk.rel = 'stylesheet';
+      lnk.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+      document.head.appendChild(lnk);
+    }
+    // Inject Leaflet JS, then render
+    const scr = document.createElement('script');
+    scr.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    scr.onload = () => _doRenderMap();
+    scr.onerror = () => {
+      // fallback to unpkg
+      const scr2 = document.createElement('script');
+      scr2.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      scr2.onload = () => _doRenderMap();
+      scr2.onerror = () => {
+        document.getElementById('leafletMap').innerHTML =
+          '<div style="padding:40px;text-align:center;font-family:serif;color:#5c4f38;font-size:14px">⚠ Map requires an internet connection to load.<br>Please connect and try again.</div>';
+      };
+      document.head.appendChild(scr2);
+    };
+    document.head.appendChild(scr);
+    document.getElementById('leafletMap').innerHTML =
+      '<div style="padding:40px;text-align:center;font-family:serif;color:#5c4f38;font-size:14px">Loading map…</div>';
+    return;
+  }
+  _doRenderMap();
+}
+
+function _doRenderMap() {
+  if (!leafletMap) {
+    leafletMap = L.map('leafletMap', {
+      center: [30, 45], zoom: 3, zoomControl: true, minZoom: 2, maxZoom: 10,
+      maxBounds: [[-85,-180],[85,180]], maxBoundsViscosity: 1.0
+    });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+      subdomains:'abcd', attribution:'© CartoDB', maxZoom:19
+    }).addTo(leafletMap);
+    fetch('https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson')
+      .then(r=>r.json())
+      .then(geo=>{
+        if (!leafletMap) return;
+        L.geoJSON(geo, {
+          style:{color:'#b8afa0',weight:0.9,fillOpacity:0,opacity:1}
+        }).addTo(leafletMap);
+      }).catch(()=>{});
+  }
+  if (eraLayer) { leafletMap.removeLayer(eraLayer); eraLayer=null; }
+  _drawEmpires();
+  if (markerLayer) { leafletMap.removeLayer(markerLayer); markerLayer=null; }
+  const filtered = getFiltered().filter(p=>p.lat&&p.lng);
+  markerLayer = L.layerGroup(filtered.map(_makePersonMarker)).addTo(leafletMap);
+  if (filtered.length>0) {
+    const bounds = L.latLngBounds(filtered.map(p=>[p.lat,p.lng]));
+    leafletMap.fitBounds(bounds.pad(0.15));
+  }
+  setTimeout(()=>{ if(leafletMap) leafletMap.invalidateSize(); },300);
+  setTimeout(()=>{ if(leafletMap){ leafletMap.invalidateSize(); _updateOffScreenArrows(); } },800);
+  if (!leafletMap._arrowsBound) {
+    leafletMap.on('moveend zoomend', _updateOffScreenArrows);
+    leafletMap._arrowsBound = true;
+  }
+}
+
+// ── Wikipedia portraits via MediaWiki API (origin=* enables file:// CORS) ────
+// Maps scholar famous name → Wikipedia article title
+const WIKI_TITLES = {
+  "Hasan al-Basri":          "Hasan_of_Basra",
+  "Rabia al-Basri":          "Rabia_al-Adawiyya",
+  "Ibrahim ibn Adham":       "Ibrahim_ibn_Adham",
+  "Junayd of Baghdad":       "Junayd_al-Baghdadi",
+  "Al-Hallaj":               "Al-Hallaj",
+  "Bayazid Bistami":         "Bayazid_Bastami",
+  "Al-Kindi":                "Al-Kindi",
+  "Al-Razi (Rhazes)":        "Muhammad_ibn_Zakariya_al-Razi",
+  "Al-Farabi":               "Al-Farabi",
+  "Al-Ash'ari":              "Al-Ashari",
+  "Al-Khwarizmi":            "Muhammad_ibn_Musa_al-Khwarizmi",
+  "Al-Masudi":               "Al-Masudi",
+  "Al-Tabari":               "Al-Tabari",
+  "Imam Abu Hanifa":         "Abu_Hanifa",
+  "Imam Malik ibn Anas":     "Malik_ibn_Anas",
+  "Imam al-Shafi'i":         "Al-Shafi%27i",
+  "Imam Ahmad ibn Hanbal":   "Ahmad_ibn_Hanbal",
+  "Imam al-Bukhari":         "Muhammad_al-Bukhari",
+  "Imam Muslim":             "Muslim_ibn_al-Hajjaj",
+  "Ibn Sina":                "Avicenna",
+  "Al-Biruni":               "Al-Biruni",
+  "Al-Ghazali":              "Al-Ghazali",
+  "Ahmad Ghazali":           "Ahmad_Ghazali",
+  "Al-Qushayri":             "Al-Qushayri",
+  "Ibn Hazm":                "Ibn_Hazm",
+  "Nasir Khusraw":           "Nasir_Khusraw",
+  "Abdul Qadir al-Jilani":   "Abdul_Qadir_Gilani",
+  "Khwaja Abdullah Ansari":  "Abdullah_Ansari",
+  "Ali al-Hujwiri":          "Ali_Hujwiri",
+  "Umar Khayyam":            "Omar_Khayyam",
+  "Al-Idrisi":               "Muhammad_al-Idrisi",
+  "Farid ud-Din Attar":      "Attar_of_Nishapur",
+  "Ibn Tufayl":              "Ibn_Tufayl",
+  "Ibn Rushd":               "Averroes",
+  "Fakhr al-Din Razi":       "Fakhr_al-Din_al-Razi",
+  "Ibn Arabi":               "Ibn_Arabi",
+  "Yahya Suhrawardi (Maqtul)": "Shahab_al-Din_Suhrawardi",
+  "Saadi Shirazi":           "Saadi_Shirazi",
+  "Jalal ad-Din Rumi":       "Rumi",
+  "Najm al-Din Kubra":       "Najm_al-Din_Kubra",
+  "Moinuddin Chishti":       "Moinuddin_Chishti",
+  "Ibn Arabi":               "Ibn_Arabi",
+  "Nizami Ganjavi":          "Nizami_Ganjavi",
+  "Fariduddin Ganjshakar":   "Baba_Farid",
+  "Mahmud Shabistari":       "Mahmud_Shabistari",
+  "Ibn Taymiyya":            "Ibn_Taymiyya",
+  "Umar Ibn al-Farid":       "Ibn_al-Farid",
+  "Ibn Khaldun":             "Ibn_Khaldun",
+  "Abu'l-Hasan al-Shadhili": "Abu_al-Hasan_al-Shadhili",
+  "Nizamuddin Auliya":       "Nizamuddin_Auliya",
+  "Amir Khusrow":            "Amir_Khusrau",
+  "Makhdum Jahaniyan":       "Jahaniyan_Jahangasht",
+  "Nasir al-Din Chiragh-i-Delhi": "Nasiruddin_Chiragh_Dehlavi",
+  "Gesu Daraz":              "Gesu_Daraz",
+  "Hafez":                   "Hafez",
+  "Nasir al-Din al-Tusi":    "Nasir_al-Din_al-Tusi",
+  "Baha-ud-din Zakariya":    "Bahauddin_Zakariya",
+  "Qutbuddin Bakhtiar Kaki": "Qutbuddin_Bakhtiyar_Kaki",
+  "Shah Rukn-e-Alam":        "Shah_Rukn-e-Alam",
+  "Mulla Sadra":             "Mulla_Sadra",
+  "Ruzbihan Baqli":          "Ruzbihan_Baqli",
+  "Ibn al-Haytham":          "Ibn_al-Haytham",
+  "Al-Nawawi":               "Al-Nawawi",
+  "Ibn Hajar al-Asqalani":   "Ibn_Hajar_al-Asqalani",
+  "Al-Suyuti":               "Al-Suyuti",
+  "Al-Dhahabi":              "Al-Dhahabi",
+  "Ibn al-Qayyim":           "Ibn_Qayyim_al-Jawziyya",
+  "Fakhr al-Din Iraqi":      "Fakhruddin_Iraqi",
+  "Ibn Ata Allah al-Iskandari": "Ibn_Ata_Allah_al-Iskandari",
+  "Lal Shahbaz Qalandar":    "Lal_Shahbaz_Qalandar",
+  "Baha-ud-Din Naqshband":   "Baha-ud-Din_Naqshband",
+  "Yunus Emre":              "Yunus_Emre",
+  "Shihab al-Din al-Suhrawardi": "Shihab_al-Din_al-Suhrawardi",
+  "Ahmad Sirhindi":          "Ahmad_Sirhindi",
+  "Mian Mir":                "Mian_Mir",
+  "Sultan Bahu":             "Sultan_Bahu",
+  "Bedil Dehlawi":           "Bedil",
+  "Shah Abdul Latif Bhittai":"Shah_Abdul_Latif_Bhittai",
+  "Bulleh Shah":             "Bulleh_Shah",
+  "Shah Waliullah":          "Shah_Waliullah_Dehlawi",
+  "Khwaja Mir Dard":         "Mir_Dard",
+  "Waris Shah":              "Waris_Shah",
+  "Abu Bakr al-Siddiq":      "Abu_Bakr",
+  "Umar ibn al-Khattab":     "Umar",
+  "Uthman ibn Affan":        "Uthman_ibn_Affan",
+  "Ali ibn Abi Talib":       "Ali_ibn_Abi_Talib",
+  "Bilal ibn Rabah":         "Bilal_ibn_Rabah",
+  "Salman al-Farisi":        "Salman_the_Persian",
+  "Abu Hurairah":            "Abu_Hurairah",
+  "Abdullah ibn Abbas":      "Ibn_Abbas",
+  "Uwais al-Qarani":         "Uwais_al-Qarani",
+  "Ja'far al-Sadiq":         "Ja%27far_al-Sadiq",
+  "Muadh ibn Jabal":         "Mu%27adh_ibn_Jabal",
+  "Abdullah ibn Masud":      "Abd_Allah_ibn_Masud",
+  "Jabir ibn Abd Allah":     "Jabir_ibn_Abd_Allah",
+  "Khalid ibn al-Walid":    "Khalid_ibn_al-Walid",
+  "Tariq ibn Ziyad":        "Tariq_ibn_Ziyad",
+  "Harun al-Rashid":        "Harun_al-Rashid",
+  "Ma'mun al-Rashid":       "Al-Ma%27mun",
+  "Mahmud of Ghazni":       "Mahmud_of_Ghazni",
+  "Salahuddin Ayyubi":      "Saladin",
+  "Ertugrul Ghazi":         "Ertugrul",
+  "Osman I":                "Osman_I",
+  "Suleiman the Magnificent": "Suleiman_the_Magnificent",
+  "Mehmed II":              "Mehmed_II",
+  "Babur":                  "Babur",
+  "Nizam al-Mulk":          "Nizam_al-Mulk",
+  "Nur al-Din Zangi":       "Nur_ad-Din_Zangi",
+  "Tipu Sultan":            "Tipu_Sultan",
+  "Muhammad ibn al-Qasim":  "Muhammad_bin_Qasim",
+  "Muhammad Ali of Egypt":  "Muhammad_Ali_of_Egypt",
+  "Mirza Mazhar Jan-e-Janan":"Mirza_Mazhar_Jan-i-Janaan",
+  "Ahmad al-Alawi":          "Ahmad_ibn_Mustafa_al-%27Alawi",
+  "Sidi Ahmad ibn Idris":    "Ahmad_ibn_Idris_al-Fasi",
+  "Khalid al-Baghdadi":      "Khalid_al-Baghdadi",
+  "Sayyid Ahmad Barelvi":    "Sayyid_Ahmad_Barelvi",
+  "Shah Ismail Shaheed":     "Shah_Ismail_Shaheed",
+  "Usman dan Fodio":         "Usman_dan_Fodio",
+  "Abd al-Qadir al-Jaza'iri":"Abd_al-Qadir_al-Jaza%27iri",
+  "Akbar the Great":         "Akbar",
+  "Dara Shikoh":             "Dara_Shikoh",
+  "Allama Iqbal":            "Muhammad_Iqbal",
+  "Mirza Ghalib":            "Mirza_Ghalib",
+  "Ahmad Raza Khan Barelvi": "Ahmed_Raza_Khan_Barelvi",
+  "Ashraf Ali Thanvi":       "Ashraf_Ali_Thanwi",
+  "Inayat Khan":             "Inayat_Khan",
+  "Meher Ali Shah":          "Meher_Ali_Shah",
+  "Haji Imdadullah Muhajir Makki": "Haji_Imdadullah",
+  "Khawaja Ghulam Farid":    "Khwaja_Ghulam_Farid",
+};
+
+// Cache: famousName → img URL string, or 'none'
+const _imgCache = {};
+
+function fetchPortrait(famousName, imgEl, wrapEl) {
+  if(famousName === 'Prophet Muhammad'){ wrapEl.style.display='none'; return; }
+  const title = WIKI_TITLES[famousName];
+  if(!title){ wrapEl.style.display='none'; return; }
+
+  // Show loading state
+  wrapEl.style.display = 'block';
+  imgEl.style.display  = 'none';
+
+  // Return cached result immediately
+  if(_imgCache[famousName]){
+    if(_imgCache[famousName] === 'none'){ wrapEl.style.display='none'; return; }
+    imgEl.src = _imgCache[famousName];
+    imgEl.style.display = 'block';
+    const cap = wrapEl.querySelector('#pc-portrait-cap');
+    if(cap) cap.textContent = 'via Wikipedia';
+    return;
+  }
+
+  // Wikipedia MediaWiki API — origin=* header makes this work from file://
+  const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=240&origin=*`;
+
+  fetch(apiUrl)
+    .then(r => r.json())
+    .then(data => {
+      const pages = data?.query?.pages || {};
+      const page  = Object.values(pages)[0];
+      const src   = page?.thumbnail?.source;
+      if(src){
+        _imgCache[famousName] = src;
+        imgEl.src = src;
+        imgEl.style.display = 'block';
+        const cap = wrapEl.querySelector('#pc-portrait-cap');
+        if(cap) cap.textContent = 'via Wikipedia';
+      } else {
+        _imgCache[famousName] = 'none';
+        wrapEl.style.display = 'none';
+      }
+    })
+    .catch(() => {
+      _imgCache[famousName] = 'none';
+      wrapEl.style.display = 'none';
+    });
+}
+
+// ── Historical Era definitions ────────────────────────────────────────────
+const ERAS = [
+  // Non-overlapping base eras (alternating subtle shades)
+  { name:"Rightly-Guided",start:632,  end:661,  color:"rgba(192,74,8,.10)",   label:"Rightly-Guided Caliphs" },
+  { name:"Umayyad",       start:661,  end:750,  color:"rgba(160,100,0,.08)",  label:"Umayyad" },
+  { name:"Abbasid",       start:750,  end:1258, color:"rgba(0,100,80,.06)",   label:"Abbasid Caliphate" },
+  { name:"Crusades",      start:1095, end:1291, color:"rgba(160,16,48,.07)",  label:"Crusades" },
+  { name:"Mongol",        start:1206, end:1368, color:"rgba(140,90,0,.09)",   label:"Mongol Devastation" },
+  { name:"Timurid",       start:1370, end:1507, color:"rgba(0,80,140,.07)",   label:"Timurid Renaissance" },
+  { name:"Ottoman",       start:1299, end:1922, color:"rgba(24,60,160,.05)",  label:"Ottoman Era" },
+  { name:"Safavid",       start:1501, end:1736, color:"rgba(140,16,48,.06)",  label:"Safavid" },
+  { name:"Mughal",        start:1526, end:1857, color:"rgba(0,110,60,.06)",   label:"Mughal Empire" },
+  { name:"Colonial",      start:1750, end:1930, color:"rgba(50,50,50,.06)",   label:"Colonial Era" },
+];
+
+let erasVisible = false;
+
+function drawEras(){
+  // Remove old
+  document.querySelectorAll('.era-band').forEach(e=>e.remove());
+  if(!erasVisible) return;
+  if(typeof VIEW !== 'undefined' && VIEW !== 'timeline') return; // only on timeline
+  const ba = document.getElementById('barsArea');
+  if(!ba) return;
+  ERAS.forEach(era=>{
+    const x1 = y2px(Math.max(era.start, MIN_YEAR));
+    const x2 = y2px(Math.min(era.end,   MAX_YEAR));
+    if(x2 <= x1) return;
+    const band = document.createElement('div');
+    band.className = 'era-band visible';
+    band.style.cssText = `left:${x1}px;width:${x2-x1}px;background:${era.color}`;
+    const lbl = document.createElement('div');
+    lbl.className = 'era-label';
+    lbl.textContent = era.name;
+    lbl.style.cssText = `left:3px;top:6px;color:${era.color.replace(/[\d\.]+\)$/,'1)')}`;
+    band.appendChild(lbl);
+    ba.insertBefore(band, ba.firstChild);
+  });
+}
+
+document.getElementById('btnEras').addEventListener('click', ()=>{
+  erasVisible = !erasVisible;
+  document.getElementById('btnEras').classList.toggle('active', erasVisible);
+  drawEras();
+});
+
+// ── Year slider ────────────────────────────────────────────────────────────
+const sliderWrap   = document.getElementById('yearSliderWrap');
+const sliderEl     = document.getElementById('yearSlider');
+const yearDisplay  = document.getElementById('yearDisplay');
+let sliderActive   = false;
+
+function applySlider(yr){
+  yearDisplay.textContent = yr + ' CE';
+  const rows = document.querySelectorAll('.bar-row');
+  rows.forEach(row=>{
+    const dob = parseInt(row.dataset.dob||0);
+    const dod = parseInt(row.dataset.dod||9999);
+    const alive = (dob <= yr && dod >= yr);
+    row.style.display = alive ? '' : 'none';
+    row.classList.toggle('era-lit', alive);
+    row.classList.remove('era-dim');
+    const nr = document.querySelector(`.name-row[data-i="${row.dataset.i}"]`);
+    if(nr){
+      nr.style.display = alive ? '' : 'none';
+      nr.classList.toggle('era-lit', alive);
+      nr.classList.remove('era-dim');
+    }
+  });
+  // Find the earliest DOB of alive scholars to auto-scroll to that century
+  let minAliveDob = null;
+  document.querySelectorAll('.bar-row').forEach(row=>{
+    const dob = parseInt(row.dataset.dob||0);
+    const dod = parseInt(row.dataset.dod||9999);
+    if(dob <= yr && dod >= yr){
+      if(minAliveDob === null || dob < minAliveDob) minAliveDob = dob;
+    }
+  });
+
+  // Hide/show century axis markers: hide centuries where no scholar is alive
+  const aliveYears = new Set();
+  document.querySelectorAll('.bar-row').forEach(row=>{
+    const dob = parseInt(row.dataset.dob||0);
+    const dod = parseInt(row.dataset.dod||9999);
+    if(dob <= yr && dod >= yr){
+      // Mark all centuries this alive scholar spans
+      for(let c = Math.floor(dob/100)*100; c <= Math.min(dod, yr); c+=100) aliveYears.add(c);
+    }
+  });
+
+  document.querySelectorAll('.c-marker').forEach(m => {
+    const markerYr = parseInt(m.querySelector('.c-year')?.textContent) || 0;
+    const isAlive  = aliveYears.has(markerYr) || aliveYears.has(markerYr - 100);
+    // Hide markers for centuries entirely before the earliest alive scholar,
+    // fade markers where no one is currently alive
+    if(minAliveDob !== null && markerYr < Math.floor(minAliveDob/100)*100){
+      m.style.opacity = '0';
+      m.style.pointerEvents = 'none';
+    } else {
+      const diff = yr - markerYr;
+      const opacity = diff > 200 ? Math.max(0.15, 1 - (diff - 200) / 600) : 1;
+      m.style.opacity = opacity;
+      m.style.pointerEvents = '';
+    }
+    m.style.transition = 'opacity 0.4s';
+  });
+
+  // Auto-scroll tlOuter to start from first alive century (if nothing is manually scrolling)
+  if(minAliveDob !== null){
+    const tlOuter = document.getElementById('tlOuter');
+    if(tlOuter && !tlOuter._userScrolling){
+      const targetPx = Math.max(0, y2px(Math.floor(minAliveDob/100)*100) - 20);
+      // Only scroll if we'd move significantly (avoids fighting user scroll)
+      if(Math.abs(tlOuter.scrollLeft - targetPx) > 100){
+        tlOuter.scrollLeft = targetPx;
+      }
+    }
+  }
+
+}
+
+function clearSlider(){
+  // Restore all hidden rows
+  document.querySelectorAll('.bar-row, .name-row').forEach(r=>{
+    r.style.display='';
+    r.classList.remove('era-dim','era-lit');
+  });
+  document.querySelectorAll('.bar-row,.name-row').forEach(r=>{
+    r.classList.remove('era-dim','era-lit');
+  });
+  
+}
+
+// Custom slider drag logic
+(function(){
+  const track = document.getElementById('sliderTrack');
+  const thumb = document.getElementById('sliderThumb');
+  const fill  = document.getElementById('sliderFill');
+  if(!track || !thumb) return;
+
+  function pxToYear(px, trackW){
+    const ratio = Math.max(0, Math.min(1, px / trackW));
+    return Math.round((MIN_YEAR + ratio * (MAX_YEAR - MIN_YEAR)) / 5) * 5;
+  }
+  function yearToPct(yr){
+    return ((yr - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * 100;
+  }
+  function updateVisuals(yr){
+    const pct = yearToPct(yr);
+    thumb.style.left = pct + '%';
+    fill.style.width  = pct + '%';
+    sliderEl.value = yr;
+    applySlider(yr);
+  }
+
+  // Init position
+  updateVisuals(parseInt(sliderEl.value)||900);
+
+  let dragging = false;
+  function startDrag(e){
+    dragging = true;
+    thumb.classList.add('dragging');
+    e.preventDefault();
+    moveDrag(e);
+  }
+  function moveDrag(e){
+    if(!dragging) return;
+    const rect = track.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const px = clientX - rect.left;
+    const yr = pxToYear(px, rect.width);
+    updateVisuals(yr);
+  }
+  function endDrag(){
+    dragging = false;
+    thumb.classList.remove('dragging');
+  }
+  thumb.addEventListener('mousedown',  startDrag);
+  thumb.addEventListener('touchstart', startDrag, {passive:false});
+  track.addEventListener('click', e=>{
+    const rect = track.getBoundingClientRect();
+    const yr = pxToYear(e.clientX - rect.left, rect.width);
+    updateVisuals(yr);
+  });
+  document.addEventListener('mousemove', moveDrag);
+  document.addEventListener('touchmove', moveDrag, {passive:false});
+  document.addEventListener('mouseup',   endDrag);
+  document.addEventListener('touchend',  endDrag);
+  // Keyboard support
+  thumb.setAttribute('tabindex','0');
+  thumb.addEventListener('keydown', e=>{
+    let yr = parseInt(sliderEl.value)||900;
+    if(e.key==='ArrowRight'||e.key==='ArrowUp')   yr = Math.min(MAX_YEAR, yr+5);
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown')   yr = Math.max(MIN_YEAR, yr-5);
+    if(e.key==='PageUp')   yr = Math.min(MAX_YEAR, yr+50);
+    if(e.key==='PageDown') yr = Math.max(MIN_YEAR, yr-50);
+    updateVisuals(yr);
+  });
+
+  // Re-init when slider becomes visible (sizes may change)
+  const _obs = new MutationObserver(()=>{
+    if(sliderWrap.classList.contains('visible')){
+      updateVisuals(parseInt(sliderEl.value)||900);
+    }
+  });
+  _obs.observe(sliderWrap, {attributes:true, attributeFilter:['class']});
+})();
+
+
+document.getElementById('btnSlider').addEventListener('click',()=>{
+  sliderActive = !sliderActive;
+  document.getElementById('btnSlider').classList.toggle('active', sliderActive);
+  sliderWrap.classList.toggle('visible', sliderActive);
+  if(sliderActive){ applySlider(parseInt(sliderEl.value)); }
+  else { clearSlider(); }
+});
+
+document.getElementById('yearSliderClose').addEventListener('click',()=>{
+  sliderActive = false;
+  document.getElementById('btnSlider').classList.remove('active');
+  sliderWrap.classList.remove('visible');
+  clearSlider();
+});
+
+// Set sticky offset for yearSliderWrap based on stickyTop height
+function updateStickyOffset(){
+  const st = document.getElementById('stickyTop');
+  const sw = document.getElementById('yearSliderWrap');
+  if(st && sw){
+    sw.style.top = st.offsetHeight + 'px';
+  }
+}
+// ── Silsila scroll navigator ──────────────────────────────────
+(function(){
+  function initScrollNav(){
+    const scrollEl = document.getElementById('silsilaScroll');
+    const track    = document.getElementById('silsilaScrollTrack');
+    const thumb    = document.getElementById('silsilaScrollThumb');
+    if(!scrollEl||!track||!thumb) return;
+
+    function updateThumb(){
+      const svgEl = document.getElementById('silsilaSvg');
+      const totalW = svgEl ? svgEl.getBoundingClientRect().width || 3200 : 3200;
+      const viewW  = scrollEl.clientWidth;
+      const scrollW = scrollEl.scrollWidth;
+      if(scrollW <= viewW){ thumb.style.display='none'; return; }
+      thumb.style.display = 'block';
+      const thumbPct = viewW / scrollW;
+      const thumbLeft = (scrollEl.scrollLeft / scrollW) * 100;
+      thumb.style.width = (thumbPct * 100) + '%';
+      thumb.style.left  = thumbLeft + '%';
+    }
+
+    scrollEl.addEventListener('scroll', updateThumb);
+    window.addEventListener('resize', updateThumb);
+
+    // Click on track to jump
+    track.addEventListener('click', e=>{
+      const rect = track.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      scrollEl.scrollLeft = ratio * scrollEl.scrollWidth;
+    });
+
+    // Drag thumb
+    let dragging=false, startX=0, startScroll=0;
+    thumb.addEventListener('mousedown', e=>{
+      dragging=true; thumb.classList.add('dragging');
+      startX=e.clientX; startScroll=scrollEl.scrollLeft; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e=>{
+      if(!dragging) return;
+      const rect=track.getBoundingClientRect();
+      const dx = (e.clientX - startX) / rect.width * scrollEl.scrollWidth;
+      scrollEl.scrollLeft = Math.max(0, startScroll + dx);
+    });
+    document.addEventListener('mouseup', ()=>{ dragging=false; thumb.classList.remove('dragging'); });
+
+    setTimeout(updateThumb, 100);
+  }
+
+  // Re-init whenever silsila becomes active
+  const _mo = new MutationObserver(muts=>{
+    muts.forEach(m=>{
+      if(m.target.id==='silsilaView' && m.target.classList.contains('active')){
+        setTimeout(initScrollNav, 50);
+      }
+    });
+  });
+  const sv = document.getElementById('silsilaView');
+  if(sv) _mo.observe(sv, {attributes:true, attributeFilter:['class']});
+  initScrollNav();
+})();
+
+updateStickyOffset();
+const _ro = new ResizeObserver(updateStickyOffset);
+_ro.observe(document.getElementById('stickyTop'));
+_initApp();
+</script>
+<script>
+function _sendHeight(){
+  window.parent.postMessage({type:'resize',height:document.body.scrollHeight},'*');
+}
+window.addEventListener('load',_sendHeight);
+window.addEventListener('resize',_sendHeight);
+new MutationObserver(_sendHeight).observe(document.body,{childList:true,subtree:true});
+</script>
+</body>
+</html>
