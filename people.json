@@ -55,7 +55,7 @@
   {
     "famous": "Prophet Muhammad",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Khatam al-Anbiya — Seal of Prophets",
     "full": "Muhammad ibn 'Abd Allah al-Hashimi al-Qurashi",
     "dob": 570,
@@ -82,9 +82,7 @@
       }
     ],
     "teachers": [
-      "Abdullah ibn Abd al-Muttalib",
-      "21.4",
-      "39.8"
+      "Abdullah ibn Abd al-Muttalib"
     ],
     "source": "",
     "lat": 21.4,
@@ -13036,7 +13034,7 @@
   {
     "famous": "Adam",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Abu al-Bashar — Father of Humanity",
     "full": "Ādam, Abu al-Bashar",
     "dob": -4000,
@@ -13070,7 +13068,7 @@
   {
     "famous": "Idris",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Al-Nabi al-Maktub — The Learned Prophet",
     "full": "Idrīs ibn Yard ibn Mahlā'īl",
     "dob": -3500,
@@ -13096,7 +13094,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Yared ibn Mahlail"
+    ],
     "source": "Wikipedia",
     "lat": 30.04,
     "lng": 31.24
@@ -13104,7 +13104,7 @@
   {
     "famous": "Nuh",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Shaykh al-Anbiya — Elder of the Prophets",
     "full": "Nūḥ ibn Lamak ibn Mattushalakh",
     "dob": -3000,
@@ -13130,7 +13130,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Lamak ibn Mattushalakh"
+    ],
     "source": "Wikipedia",
     "lat": 39.7,
     "lng": 44.3
@@ -13138,7 +13140,7 @@
   {
     "famous": "Hud",
     "tradition": "Islamic History",
-    "type": "Reformer",
+    "type": "Prophet",
     "primaryTitle": "Prophet of the 'Ad — Messenger to Ancient Arabia",
     "full": "Hūd ibn Shalikh ibn Arfakhshadh",
     "dob": -2500,
@@ -13172,7 +13174,7 @@
   {
     "famous": "Salih",
     "tradition": "Islamic History",
-    "type": "Reformer",
+    "type": "Prophet",
     "primaryTitle": "Prophet of Thamud — Messenger of the Rock-Hewn City",
     "full": "Ṣāliḥ ibn 'Ubayd ibn Māshij",
     "dob": -2200,
@@ -13206,7 +13208,7 @@
   {
     "famous": "Ibrahim",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Khalil Allah — Friend of God, Father of Prophets",
     "full": "Ibrāhīm ibn Āzar (Tārikh)",
     "dob": -1900,
@@ -13232,7 +13234,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Azar ibn Nahur"
+    ],
     "source": "Wikipedia",
     "lat": 30.96,
     "lng": 46.1
@@ -13240,7 +13244,7 @@
   {
     "famous": "Lut",
     "tradition": "Islamic History",
-    "type": "Reformer",
+    "type": "Prophet",
     "primaryTitle": "Prophet of Sodom — Messenger to the Cities of the Plain",
     "full": "Lūṭ ibn Hārān ibn Tārikh",
     "dob": -1900,
@@ -13276,7 +13280,7 @@
   {
     "famous": "Ismail",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Dhabih Allah — The Sacrifice of God, Father of the Arabs",
     "full": "Ismā'īl ibn Ibrāhīm ibn Āzar",
     "dob": -1850,
@@ -13312,7 +13316,7 @@
   {
     "famous": "Ishaq",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Prophet of the Israelites — Second Son of Ibrahim",
     "full": "Isḥāq ibn Ibrāhīm ibn Āzar",
     "dob": -1800,
@@ -13348,7 +13352,7 @@
   {
     "famous": "Yaqub",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Isra'il — Father of the Twelve Tribes",
     "full": "Ya'qūb ibn Isḥāq ibn Ibrāhīm",
     "dob": -1750,
@@ -13384,7 +13388,7 @@
   {
     "famous": "Yusuf",
     "tradition": "Islamic History",
-    "type": "Ruler",
+    "type": "Prophet",
     "primaryTitle": "Ahsan al-Qasas — The Most Beautiful of Stories",
     "full": "Yūsuf ibn Ya'qūb ibn Isḥāq ibn Ibrāhīm",
     "dob": -1700,
@@ -13420,7 +13424,7 @@
   {
     "famous": "Shu'ayb",
     "tradition": "Islamic History",
-    "type": "Reformer",
+    "type": "Prophet",
     "primaryTitle": "Khatib al-Anbiya — The Eloquent of the Prophets",
     "full": "Shu'ayb ibn Mikāyil ibn Yashjur",
     "dob": -1600,
@@ -13454,7 +13458,7 @@
   {
     "famous": "Ayyub",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Sabir — The Patient, Model of Endurance",
     "full": "Ayyūb ibn Maws ibn Rā'il ibn 'Isāw",
     "dob": -1600,
@@ -13488,7 +13492,7 @@
   {
     "famous": "Musa",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Kalim Allah — He Who Spoke Directly with God",
     "full": "Mūsā ibn 'Imrān",
     "dob": -1393,
@@ -13528,7 +13532,7 @@
   {
     "famous": "Harun",
     "tradition": "Islamic History",
-    "type": "Scholar",
+    "type": "Prophet",
     "primaryTitle": "Wazir Musa — Minister and Brother of Moses",
     "full": "Hārūn ibn 'Imrān",
     "dob": -1395,
@@ -13564,7 +13568,7 @@
   {
     "famous": "Dhul-Kifl",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Man of the Pledge — Patient and Righteous Prophet",
     "full": "Dhū al-Kifl",
     "dob": -1400,
@@ -13598,7 +13602,7 @@
   {
     "famous": "Dawud",
     "tradition": "Islamic History",
-    "type": "Ruler",
+    "type": "Prophet",
     "primaryTitle": "Khalifa of God on Earth — Prophet-King and Psalmist",
     "full": "Dāwūd ibn Ayshu (Jesse)",
     "dob": -1040,
@@ -13632,7 +13636,7 @@
   {
     "famous": "Sulayman",
     "tradition": "Islamic History",
-    "type": "Ruler",
+    "type": "Prophet",
     "primaryTitle": "Malik al-Anbiya — The King of the Prophets",
     "full": "Sulaymān ibn Dāwūd",
     "dob": -1000,
@@ -13668,7 +13672,7 @@
   {
     "famous": "Ilyas",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Prophet of Carmel — Reformer Against Idol Worship",
     "full": "Ilyās ibn Yasīn ibn Fanhas ibn al-'Ayzār ibn Hārūn",
     "dob": -900,
@@ -13702,7 +13706,7 @@
   {
     "famous": "Al-Yasa'",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Successor of Ilyas — The Chosen Prophet",
     "full": "Al-Yasa' ibn Akhtub ibn al-'Ajuz",
     "dob": -870,
@@ -13738,7 +13742,7 @@
   {
     "famous": "Yunus",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Dhul-Nun — The Man of the Whale",
     "full": "Yūnus ibn Mattā",
     "dob": -800,
@@ -13778,7 +13782,7 @@
   {
     "famous": "Zakariyya",
     "tradition": "Islamic History",
-    "type": "Scholar",
+    "type": "Prophet",
     "primaryTitle": "Guardian of Maryam — Prophet of the Temple",
     "full": "Zakariyyā ibn Ādān ibn Mashlam",
     "dob": -100,
@@ -13812,7 +13816,7 @@
   {
     "famous": "Yahya",
     "tradition": "Islamic History",
-    "type": "Mystic",
+    "type": "Prophet",
     "primaryTitle": "Sayyid al-Siddiqin — The Chaste, Compassionate Prophet",
     "full": "Yaḥyā ibn Zakariyyā",
     "dob": -5,
@@ -13848,7 +13852,7 @@
   {
     "famous": "Isa",
     "tradition": "Islamic History",
-    "type": "Founder",
+    "type": "Prophet",
     "primaryTitle": "Ruh Allah — Spirit of God, Word of God, Prophet of the Injil",
     "full": "ʿĪsā ibn Maryam al-Masīḥ",
     "dob": -4,
@@ -13960,6 +13964,7 @@
       }
     ],
     "teachers": [
+      "Shith ibn Adam",
       "Adam"
     ],
     "source": "Tarikh al-Tabari",
@@ -13996,6 +14001,7 @@
       }
     ],
     "teachers": [
+      "Anush ibn Shith",
       "Adam"
     ],
     "source": "Tarikh al-Tabari",
@@ -14032,6 +14038,7 @@
       }
     ],
     "teachers": [
+      "Qaynan ibn Anush",
       "Adam"
     ],
     "source": "Tarikh al-Tabari",
@@ -14068,6 +14075,7 @@
       }
     ],
     "teachers": [
+      "Mahlail ibn Qaynan",
       "Adam"
     ],
     "source": "Tarikh al-Tabari",
@@ -14140,6 +14148,7 @@
       }
     ],
     "teachers": [
+      "Mattushalakh ibn Idris",
       "Idris"
     ],
     "source": "Tarikh al-Tabari",
@@ -14218,6 +14227,7 @@
       }
     ],
     "teachers": [
+      "Sam ibn Nuh",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14254,6 +14264,7 @@
       }
     ],
     "teachers": [
+      "Arfakhshadh ibn Sam",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14290,6 +14301,7 @@
       }
     ],
     "teachers": [
+      "Shalikh ibn Arfakhshadh",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14326,6 +14338,7 @@
       }
     ],
     "teachers": [
+      "Abir ibn Shalikh",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14362,6 +14375,7 @@
       }
     ],
     "teachers": [
+      "Faligh ibn Abir",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14398,6 +14412,7 @@
       }
     ],
     "teachers": [
+      "Ra'u ibn Faligh",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14434,6 +14449,7 @@
       }
     ],
     "teachers": [
+      "Sarugh ibn Ra'u",
       "Nuh"
     ],
     "source": "Tarikh al-Tabari",
@@ -14475,7 +14491,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Nahur ibn Sarugh"
+    ],
     "source": "Quran / Tarikh al-Tabari",
     "lat": 30.96,
     "lng": 46.1
@@ -14618,6 +14636,7 @@
       }
     ],
     "teachers": [
+      "Ma'add ibn Adnan",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14654,6 +14673,7 @@
       }
     ],
     "teachers": [
+      "Nizar ibn Ma'add",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14690,6 +14710,7 @@
       }
     ],
     "teachers": [
+      "Mudar ibn Nizar",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14726,6 +14747,7 @@
       }
     ],
     "teachers": [
+      "Ilyas ibn Mudar",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14762,6 +14784,7 @@
       }
     ],
     "teachers": [
+      "Mudrika ibn Ilyas",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14798,6 +14821,7 @@
       }
     ],
     "teachers": [
+      "Khuzayma ibn Mudrika",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14834,6 +14858,7 @@
       }
     ],
     "teachers": [
+      "Kinana ibn Khuzayma",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14870,6 +14895,7 @@
       }
     ],
     "teachers": [
+      "al-Nadr ibn Kinana",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14942,6 +14968,7 @@
       }
     ],
     "teachers": [
+      "Fihr ibn Malik",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -14978,6 +15005,7 @@
       }
     ],
     "teachers": [
+      "Ghalib ibn Fihr",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -15014,6 +15042,7 @@
       }
     ],
     "teachers": [
+      "Lu'ayy ibn Ghalib",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -15050,6 +15079,7 @@
       }
     ],
     "teachers": [
+      "Ka'b ibn Lu'ayy",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -15086,6 +15116,7 @@
       }
     ],
     "teachers": [
+      "Murra ibn Ka'b",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -15121,7 +15152,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Kilab ibn Murra"
+    ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
     "lat": 21.42,
     "lng": 39.83
@@ -15156,6 +15189,7 @@
       }
     ],
     "teachers": [
+      "Qusayy ibn Kilab",
       "Adnan"
     ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
@@ -15197,7 +15231,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Abd Manaf ibn Qusayy"
+    ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
     "lat": 21.42,
     "lng": 39.83
@@ -15231,7 +15267,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Hashim ibn Abd Manaf"
+    ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
     "lat": 21.42,
     "lng": 39.83
@@ -15271,7 +15309,9 @@
         "note": ""
       }
     ],
-    "teachers": [],
+    "teachers": [
+      "Abd al-Muttalib ibn Hashim"
+    ],
     "source": "Ibn Ishaq / Tarikh al-Tabari",
     "lat": 21.42,
     "lng": 39.83
