@@ -17,7 +17,7 @@
   --name-w:  320px;
   --row-h:   42px;
   --axis-h:  44px;
-  --chart-w: 1820px;
+  --chart-w: 1640px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,html{height:100%;overflow-y:auto}
@@ -110,7 +110,7 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
   left:0;
   right:0;
   width:100%;
-  max-width:100%;
+  max-width:100vw;
   z-index:190;
   background:linear-gradient(to right,var(--surface) 0%,rgba(240,230,205,.9) 100%);
   border-bottom:3px solid var(--accent);
@@ -247,7 +247,7 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
   left:0;
   right:0;
   width:100%;
-  max-width:100%;
+  max-width:100vw;
   z-index:190;
   background:linear-gradient(to right,var(--surface) 0%,rgba(240,230,205,.9) 100%);
   border-bottom:3px solid var(--accent);
@@ -435,6 +435,12 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
 .opus-dot{position:absolute;top:50%;right:-7px;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;border:1px solid rgba(0,0,0,.15);cursor:pointer;transition:transform .13s}
 .bar-row:hover .opus-dot,.bar-row.active-row .opus-dot{transform:translateY(-50%) scale(1.4)}
 
+/* ── Pre-Islamic Era Zone ── */
+.preis-zone-bg{position:absolute;left:0;top:0;bottom:0;width:140px;background:rgba(200,160,60,.07);border-right:2px dashed rgba(180,148,80,.45);pointer-events:none;z-index:0;}
+.preis-axis-zone{position:absolute;left:0;top:0;height:100%;width:140px;background:rgba(200,160,60,.10);border-right:2px dashed rgba(180,148,80,.5);display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.preis-axis-label{font-size:7px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8f5210;white-space:nowrap;}
+.bar-row.preis-row .bar{width:10px!important;height:10px!important;border-radius:50%!important;top:50%!important;transform:translateY(-50%)!important;left:65px!important;box-shadow:0 0 7px rgba(200,144,10,.55)!important;}
+
 footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color:#6a5a3a;font-family:'Source Serif 4',serif;letter-spacing:.06em;text-align:center;font-weight:500}
 
 
@@ -547,11 +553,6 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 .pc-panel-hint{font-size:11px;color:#7a6040;font-style:italic;text-align:center;padding:8px 0 0;opacity:.7;font-family:'Source Serif 4',serif}
 
 
-/* ── PRE-ISLAMIC ZONE ── */
-.pre-zone-divider{position:absolute;top:0;bottom:0;left:320px;width:0;border-left:2px dashed rgba(123,63,0,.4);pointer-events:none;z-index:4;}
-.pre-zone-lbl{position:absolute;top:50%;left:4px;transform:translateY(-50%);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7B3F00;font-family:'Source Serif 4',serif;font-weight:700;pointer-events:none;white-space:nowrap;}
-.genea-row{opacity:.7;}
-
 /* ── Prophet Muhammad special highlight ── */
 .name-row.prophet-row{background:linear-gradient(90deg,rgba(200,150,0,.14) 0%,transparent 100%)!important;border-left:3px solid #c8900a!important;}
 .name-row.prophet-row .name-famous{color:#c8900a!important;font-size:15px!important;font-weight:800!important;}
@@ -585,7 +586,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   <div class="filter-row">
     <span class="ctl-label">Century:</span>
     <button class="filter-btn f-century active" data-filter="all">All</button>
-    <button class="filter-btn f-century" data-filter="pre">Pre-Islam</button>
+    <button class="filter-btn f-century" data-filter="pre-islam">Pre-Islam</button>
     <button class="filter-btn f-century" data-filter="7">7th</button>
     <button class="filter-btn f-century" data-filter="8">8th</button>
     <button class="filter-btn f-century" data-filter="9">9th</button>
@@ -733,8 +734,8 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 <footer>ISLAMIC SCHOLARS TIMELINE · LIFESPAN VISUALIZATION · CLICK ANY ROW TO OPEN DETAILS &amp; FREE BOOKS</footer>
 
 <script>
-const CC={pre:'#7B3F00',7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
-function gc(y){if(y<570)return 'pre';if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
+const CC={7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
+function gc(y){if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
 function gcl(c){const o=c===1?'1st':c===2?'2nd':c===3?'3rd':`${c}th`;return`${o} C.`;}
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -775,10 +776,26 @@ function setView(v) {
 
 
 
+
+// ── Prophets' Lineage chain (Adam → Muhammad) ──────────────────────────────
+const LINEAGE_CHAIN = [
+  'Adam','Shith ibn Adam','Anush ibn Shith','Qaynan ibn Anush','Mahlail ibn Qaynan',
+  'Yared ibn Mahlail','Idris','Mattushalakh ibn Idris','Lamak ibn Mattushalakh','Nuh',
+  'Sam ibn Nuh','Arfakhshadh ibn Sam','Shalikh ibn Arfakhshadh','Abir ibn Shalikh',
+  "Faligh ibn Abir","Ra'u ibn Faligh","Sarugh ibn Ra'u",'Nahur ibn Sarugh',
+  'Azar ibn Nahur','Ibrahim','Ismail','Nabit ibn Ismail','Adnan',
+  "Ma'add ibn Adnan","Nizar ibn Ma'add",'Mudar ibn Nizar','Ilyas ibn Mudar',
+  'Mudrika ibn Ilyas','Khuzayma ibn Mudrika','Kinana ibn Khuzayma',
+  'al-Nadr ibn Kinana','Malik ibn al-Nadr','Fihr ibn Malik','Ghalib ibn Fihr',
+  "Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murra ibn Ka'b",'Kilab ibn Murra',
+  'Qusayy ibn Kilab','Abd Manaf ibn Qusayy','Hashim ibn Abd Manaf',
+  'Abd al-Muttalib ibn Hashim','Abdullah ibn Abd al-Muttalib','Prophet Muhammad'
+];
+const GOLD = '#c8900a';
+const GOLD_LIGHT = '#e8b420';
 // ══════════════════════════════════════════════════════════════════════════════
 // SILSILA CHAIN VIEW RENDERER
 // ══════════════════════════════════════════════════════════════════════════════
-const LINEAGE_SET=new Set(["Adam","Shith ibn Adam","Anush ibn Shith","Qaynan ibn Anush","Mahlail ibn Qaynan","Yared ibn Mahlail","Idris","Mattushalakh ibn Idris","Lamak ibn Mattushalakh","Nuh","Sam ibn Nuh","Arfakhshadh ibn Sam","Shalikh ibn Arfakhshadh","Abir ibn Shalikh","Faligh ibn Abir","Ra'u ibn Faligh","Sarugh ibn Ra'u","Nahur ibn Sarugh","Azar ibn Nahur","Ibrahim","Ismail","Nabit ibn Ismail","Adnan","Ma'add ibn Adnan","Nizar ibn Ma'add","Mudar ibn Nizar","Ilyas ibn Mudar","Mudrika ibn Ilyas","Khuzayma ibn Mudrika","Kinana ibn Khuzayma","al-Nadr ibn Kinana","Malik ibn al-Nadr","Fihr ibn Malik","Ghalib ibn Fihr","Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murra ibn Ka'b","Kilab ibn Murra","Qusayy ibn Kilab","Abd Manaf ibn Qusayy","Hashim ibn Abd Manaf","Abd al-Muttalib ibn Hashim","Abdullah ibn Abd al-Muttalib","Prophet Muhammad"]);
 function renderSilsila() {
   const svg = document.getElementById('silsilaSvg');
   // Cleanup any old tooltip
@@ -786,6 +803,9 @@ function renderSilsila() {
   if(oldTip) oldTip.remove();
 
   const filtered = getFiltered();
+
+  // ── Build Prophets' Lineage lane data ───────────────────────────────────
+  const lineageMembers = LINEAGE_CHAIN.map(name => PEOPLE.find(p => p.famous === name)).filter(Boolean);
 
   // Build tradition order by earliest DOB
   const tradMap = {};
@@ -795,24 +815,19 @@ function renderSilsila() {
   const NODE_R = 8;
   const SUBROW_GAP = NODE_R * 2.6; // vertical gap between staggered sub-rows
   const LABEL_H = 14;              // space above node for century label line
-  const MARGIN_T = 50;             // top margin (for year labels)
+  const MARGIN_T = 16;             // top margin for lineage lane (no year labels here)
   const MARGIN_L = 190;
   const MARGIN_R = 60;
-  const _hasPreSil = filtered.some(p=>p.dob<570);
-  const MIN_Y = _hasPreSil ? -5000 : 550, MAX_Y = 1950;
-  const W = _hasPreSil ? 4200 : 3200;
+  const MIN_Y = 550, MAX_Y = 1950;
+  const W = 3200;
   const PROX_PX = NODE_R * 3;     // px threshold to trigger stagger
 
-  function xPos(dob){
-    if(_hasPreSil&&dob<570){
-      const _pl=filtered.filter(p=>p.dob<570).sort((a,b)=>a.dob-b.dob);
-      const _i=_pl.findIndex(p=>p.dob===dob);
-      return MARGIN_L+(_pl.length>1?(_i/(_pl.length-1))*360:180);
-    }
-    const _base=_hasPreSil?MARGIN_L+400:MARGIN_L;
-    const _span=MAX_Y-(_hasPreSil?570:MIN_Y);
-    return _base+((dob-(_hasPreSil?570:MIN_Y))/_span)*(W-_base-MARGIN_R);
-  }
+  function xPos(dob){ return MARGIN_L + ((dob - MIN_Y)/(MAX_Y - MIN_Y))*(W - MARGIN_L - MARGIN_R); }
+
+  // Lineage uses sequential x-positioning (equal spacing) since dates span millennia
+  const LIN_MARGIN_L = 40, LIN_MARGIN_R = 40;
+  const LIN_Y_CENTER = NODE_R + 6;
+  function linX(idx){ return LIN_MARGIN_L + idx * ((W - LIN_MARGIN_L - LIN_MARGIN_R) / Math.max(lineageMembers.length - 1, 1)); }
 
   // ── For each tradition lane, assign sub-rows to avoid overlap ────────────
   // laneMeta[trad] = { subRowCount, nodes: [{p, subRow}] }
@@ -838,7 +853,10 @@ function renderSilsila() {
   // ── Compute lane Y offsets based on sub-row counts ────────────────────────
   const LANE_PAD = 24; // padding above/below nodes within lane
   const laneY = {}; // top y of each lane
-  let curY = MARGIN_T;
+  // Prophets' Lineage lane is always first
+  const LIN_LANE_H = NODE_R * 2 + LIN_Y_CENTER * 2 + LANE_PAD;
+  const LIN_LANE_Y = MARGIN_T;
+  let curY = MARGIN_T + LIN_LANE_H;
   trads.forEach(trad => {
     laneY[trad] = curY;
     const laneH = laneMeta[trad].subRowCount * SUBROW_GAP + LANE_PAD * 2;
@@ -863,10 +881,8 @@ function renderSilsila() {
   const edges = [];
   filtered.forEach(p => {
     (p.teachers||[]).forEach(tn => {
-      if(posMap[tn] && posMap[p.famous]){
-        const isLin=LINEAGE_SET.has(p.famous)&&LINEAGE_SET.has(tn);
-        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)], isLin});
-      }
+      if(posMap[tn] && posMap[p.famous])
+        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)]});
     });
   });
 
@@ -877,18 +893,54 @@ function renderSilsila() {
   let out = '';
 
   // ── Lane backgrounds (no labels in SVG — labels go in sticky panel) ───────
+  // Prophets' Lineage lane background (gold-tinted)
+  out += `<rect x="0" y="${LIN_LANE_Y}" width="${W}" height="${LIN_LANE_H}" fill="rgba(220,170,40,0.07)" rx="0"/>`;
+  out += `<line x1="0" y1="${LIN_LANE_Y+LIN_LANE_H}" x2="${W}" y2="${LIN_LANE_Y+LIN_LANE_H}" stroke="rgba(200,160,40,.3)" stroke-width="1"/>`;
   trads.forEach((t, i) => {
     const y = laneY[t];
     const h = laneMeta[t].laneH;
     out += `<rect x="0" y="${y}" width="${W}" height="${h}" fill="${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}" rx="0"/>`;
   });
 
-  // ── Century grid lines ────────────────────────────────────────────────────
+  // ── Lineage lane: sequential dots + gold connection lines ─────────────────
+  const linPosMap = {};
+  lineageMembers.forEach((p, idx) => {
+    const x = linX(idx);
+    const y = LIN_LANE_Y + LANE_PAD + LIN_Y_CENTER;
+    linPosMap[p.famous] = {x, y};
+  });
+  // Gold connection lines (sequential)
+  lineageMembers.forEach((p, idx) => {
+    if(idx === 0) return;
+    const from = linPosMap[lineageMembers[idx-1].famous];
+    const to   = linPosMap[p.famous];
+    if(!from||!to) return;
+    out += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${GOLD}" stroke-width="2" opacity="0.7" marker-end="url(#arr-gold)"/>`;
+  });
+  // Lineage nodes
+  const quranicProphetSet = new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl','Musa','Harun','Dawud','Sulayman','Ilyas',"Al-Yasa'",'Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
+  lineageMembers.forEach((p, idx) => {
+    const pos = linPosMap[p.famous];
+    if(!pos) return;
+    const isProphet = quranicProphetSet.has(p.famous);
+    const r = isProphet ? NODE_R + 2 : NODE_R - 1;
+    const fill = isProphet ? GOLD : GOLD_LIGHT;
+    const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${GOLD}" tabindex="0">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${fill}" stroke="${isProphet?'white':'rgba(255,255,255,.5)'}" stroke-width="${isProphet?2:1}" opacity="1"/>
+      ${isProphet?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.3"/>`: ''}
+    </g>`;
+  });
+
+  // ── Century grid lines (below lineage lane only) ─────────────────────────
+  const TRAD_START_Y = LIN_LANE_Y + LIN_LANE_H;
   for(let yr=600; yr<=1900; yr+=100){
     const x = xPos(yr);
     const cent = Math.ceil(yr/100);
-    out += `<line x1="${x}" y1="${MARGIN_T}" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
-    out += `<text x="${x+3}" y="${MARGIN_T-6}" font-size="10" fill="#999" font-family="Source Serif 4,serif">${yr}</text>`;
+    out += `<line x1="${x}" y1="${TRAD_START_Y}" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
+    out += `<text x="${x+3}" y="${TRAD_START_Y-6}" font-size="10" fill="#999" font-family="Source Serif 4,serif">${yr}</text>`;
   }
 
   // ── Arrow defs ────────────────────────────────────────────────────────────
@@ -898,21 +950,16 @@ function renderSilsila() {
     const id = col.replace('#','');
     defs += `<marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${col}" opacity="0.6"/></marker>`;
   });
-  defs += `<marker id="arr-gold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#c8900a" opacity="0.95"/></marker>`;
+  defs += `<marker id="arr-gold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${GOLD}" opacity="0.85"/></marker>`;
   defs += '</defs>';
   out = defs + out;
 
-  // Non-lineage edges first (underneath)
-  edges.filter(e=>!e.isLin).forEach(e => {
+  // ── Edges ─────────────────────────────────────────────────────────────────
+  edges.forEach(e => {
     const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
+    // Bezier: control points curve right for forward, left for back
     const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
-    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="#a09070" stroke-width="1" fill="none" opacity="0.22" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
-  });
-  // Gold lineage edges on top
-  edges.filter(e=>e.isLin).forEach(e => {
-    const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
-    const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
-    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="#c8900a" stroke-width="2.2" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`;
+    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
   });
 
   // ── Nodes ─────────────────────────────────────────────────────────────────
@@ -925,13 +972,9 @@ function renderSilsila() {
     const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     // data-title for tooltip
-    const _isLin = LINEAGE_SET.has(p.famous);
-    const _nFill = _isLin ? '#e8a820' : col;
-    const _nStroke = _isLin ? '#c8900a' : 'white';
-    const _nSW = _isLin ? 2.5 : 2;
     out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${col}" tabindex="0">
       <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${_nFill}" stroke="${_nStroke}" stroke-width="${_nSW}" opacity="1"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="white" stroke-width="2" opacity="1"/>
       ${hasFree?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.45"/>`: ''}
     </g>`;
   });
@@ -942,6 +985,12 @@ function renderSilsila() {
   const labelsInner = document.getElementById('silsilaLabelsInner');
   labelsInner.style.height = H + 'px';
   labelsInner.innerHTML = '';
+  // Prophets' Lineage label (first)
+  const linLabelDiv = document.createElement('div');
+  linLabelDiv.className = 'sil-label-row';
+  linLabelDiv.style.cssText = `top:${LIN_LANE_Y}px;height:${LIN_LANE_H}px;background:rgba(220,170,40,0.09)`;
+  linLabelDiv.innerHTML = `<span class="sil-label-text" style="color:${GOLD};font-weight:700" title="Prophets Lineage (Adam to Muhammad)">⭕ Prophets' Lineage</span>`;
+  labelsInner.appendChild(linLabelDiv);
   trads.forEach((t, i) => {
     const y = laneY[t];
     const h = laneMeta[t].laneH;
@@ -986,10 +1035,10 @@ function renderSilsila() {
     });
   });
 }
+const PRE_ZONE_W=140;
 const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
 const CHART_PX=1500;
-const PRE_ZONE_PX=320;
-function y2px(y){if(y<570)return PRE_ZONE_PX/2;return PRE_ZONE_PX+((y-MIN_YEAR)/SPAN)*CHART_PX;}
+function y2px(y){return PRE_ZONE_W+((y-MIN_YEAR)/SPAN)*CHART_PX;}
 
 let activeCentury='all', activeTrad='all', activeType='all', searchQ='';
 let PEOPLE = [];
@@ -1059,6 +1108,8 @@ usedC.forEach(c=>{
 // ── Axis ─────────────────────────────────────────────────
 const axisRow=document.getElementById('axisRow');
 const chartCol=document.getElementById('chartCol');
+// Pre-Islamic axis zone label
+(()=>{const pza=document.createElement('div');pza.className='preis-axis-zone';pza.innerHTML='<span class="preis-axis-label">Pre-Islamic Era</span>';axisRow.appendChild(pza);})();
 for(let yr=600;yr<=1950;yr+=100){
   const px=y2px(yr);
   const gl=document.createElement('div');gl.className='grid-line major';gl.style.left=px+'px';axisRow.appendChild(gl);
@@ -1291,22 +1342,18 @@ const nameRowsEl=document.getElementById('nameRows');
 const barsAreaEl=document.getElementById('barsArea');
 
 function addGrids(){
+  // Pre-Islamic zone background
+  const pzb=document.createElement('div');pzb.className='preis-zone-bg';barsAreaEl.appendChild(pzb);
   for(let yr=600;yr<=1950;yr+=100){const gl=document.createElement('div');gl.className='grid-line major';gl.style.cssText=`left:${y2px(yr)}px;top:0;bottom:0`;barsAreaEl.appendChild(gl);}
   for(let yr=550;yr<=1950;yr+=50){if(yr%100===0)continue;const gl=document.createElement('div');gl.className='grid-line';gl.style.cssText=`left:${y2px(yr)}px;top:0;bottom:0`;barsAreaEl.appendChild(gl);}
 }
 
 function getFiltered(){
   return PEOPLE.filter(p=>{
-    let cm;
-    if(activeCentury==='all') cm=true;
-    else if(activeCentury==='pre') cm=p.dob<570;
-    else cm=p.dob>=570&&gc(p.dob)===parseInt(activeCentury);
+    const cm=activeCentury==='all'||(activeCentury==='pre-islam'?p.dob<570:gc(p.dob)===parseInt(activeCentury));
     const tm=activeTrad==='all'||p.tradition===activeTrad;
-    let ym;
-    if(activeType==='all') ym=true;
-    else if(activeType==='Prophet') ym=(p.classif||'').indexOf('Prophet')>=0||(p.classif||'').indexOf('Patriarch')>=0||p.classif==='Genealogical Link';
-    else ym=p.type===activeType;
-    const sm=!searchQ||p.famous.toLowerCase().indexOf(searchQ)>=0||p.full.toLowerCase().indexOf(searchQ)>=0||p.tradition.toLowerCase().indexOf(searchQ)>=0||p.type.toLowerCase().indexOf(searchQ)>=0||(p.primaryTitle||'').toLowerCase().indexOf(searchQ)>=0;
+    const ym=activeType==='all'||p.type===activeType;
+    const sm=!searchQ||p.famous.toLowerCase().includes(searchQ)||p.full.toLowerCase().includes(searchQ)||p.tradition.toLowerCase().includes(searchQ)||p.type.toLowerCase().includes(searchQ)||p.primaryTitle.toLowerCase().includes(searchQ);
     return cm&&tm&&ym&&sm;
   });
 }
@@ -1318,51 +1365,35 @@ function renderRows(){
   // Axis-row is now in the sticky #tlHeaderRow — no spacer needed here
   addGrids();
   closePopup();
-
-  // Sort: pre-Islamic (dob<570) first by dob asc, then CE figures
-  const _raw=getFiltered();
-  const _pre=_raw.filter(p=>p.dob<570).sort((a,b)=>a.dob-b.dob);
-  const _ce=_raw.filter(p=>p.dob>=570);
-  const filtered=[..._pre,..._ce];
-  const _preN=_pre.length;
+  const filtered=getFiltered().sort((a,b)=>a.dob-b.dob);
 
   // Show count
   const metaEl = document.getElementById('metaLine');
   if(metaEl) metaEl.textContent = `${filtered.length} of ${PEOPLE.length} figures · Pre-Islamic Era to 2025 CE · ✦ = free book available`;
 
-  // Add pre-zone divider to bars area
-  const _axDiv=document.getElementById('axisRow');
-  if(_axDiv){
-    _axDiv.querySelectorAll('.pre-zone-divider,.pre-zone-lbl').forEach(e=>e.remove());
-    const _d=document.createElement('div');_d.className='pre-zone-divider';_axDiv.appendChild(_d);
-    const _l=document.createElement('div');_l.className='pre-zone-lbl';_l.textContent='Pre-Islamic Era';_axDiv.appendChild(_l);
-  }
-
   filtered.forEach((p,i)=>{
     const color=CC[gc(p.dob)];
     const hasFreeBook=p.books.some(b=>b.url&&b.url.startsWith('http'));
-    const isPre=p.dob<570;
-    const isGenea=p.classif==='Genealogical Link';
 
-    const nr=document.createElement('div');
-    nr.className='name-row'+(p.famous==='Prophet Muhammad'?' prophet-row':isGenea?' genea-row':'');
-    nr.dataset.i=i;
-    const shortTitle=(p.primaryTitle||'').split('—')[0].trim();
-    nr.innerHTML=`<div class="dot" style="background:${color}${isGenea?';opacity:.4':''}"></div><div class="name-text"><div class="name-famous" style="${isGenea?'font-style:italic;opacity:.75':''}">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
+    const nr=document.createElement('div');nr.className='name-row'+(p.famous==='Prophet Muhammad'?' prophet-row':'');nr.dataset.i=i;
+    const shortTitle=p.primaryTitle.split('—')[0].trim();
+    nr.innerHTML=`<div class="dot" style="background:${color}"></div><div class="name-text"><div class="name-famous">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
     nameRowsEl.appendChild(nr);
 
-    const br=document.createElement('div');
-    br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'');
-    br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
+    const isPreIslamic = p.dob < 570;
+    const br=document.createElement('div');br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'')+(isPreIslamic?' preis-row':'');br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
 
-    if(isPre){
-      // Sequential dot in pre-zone
-      const _idx=_pre.indexOf(p);
-      const _xPx=_preN>1?10+(_idx/(_preN-1))*(PRE_ZONE_PX-20):PRE_ZONE_PX/2;
-      const _r=isGenea?5:9;
+    if(isPreIslamic){
+      // Pre-Islamic: dot at fixed position in pre-Islamic zone
       const dot=document.createElement('div');
-      dot.style.cssText=`position:absolute;top:50%;left:${_xPx}px;transform:translate(-50%,-50%);width:${_r*2}px;height:${_r*2}px;border-radius:50%;background:${color};box-shadow:0 0 5px ${color}80;opacity:${isGenea?0.55:1};cursor:pointer;pointer-events:all;`;
+      dot.className='bar';
+      const prophetTypes=new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl','Musa','Harun','Dawud','Sulayman','Ilyas',"Al-Yasa'",'Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
+      const isProphet=prophetTypes.has(p.famous);
+      const dotColor=isProphet?'#c8900a':color;
+      const dotSize=isProphet?11:8;
+      dot.style.cssText=`left:${65-dotSize/2}px;width:${dotSize}px;height:${dotSize}px;border-radius:50%;top:50%;transform:translateY(-50%);background:${dotColor};box-shadow:0 0 ${isProphet?8:4}px ${dotColor}${isProphet?'99':'66'};border:${isProphet?'2px solid rgba(255,255,255,.6)':'none'};`;
       br.appendChild(dot);
+      barsAreaEl.appendChild(br);
     } else {
       const left=y2px(p.dob);
       const width=Math.max(y2px(p.dod)-y2px(p.dob),5);
@@ -1376,9 +1407,8 @@ function renderRows(){
         od.title='Free book available';
         bar.appendChild(od);
       }
-      br.appendChild(bar);
+      br.appendChild(bar);barsAreaEl.appendChild(br);
     }
-    barsAreaEl.appendChild(br);
 
     let hoverTimer = null;
 
@@ -1390,12 +1420,14 @@ function renderRows(){
         nr.classList.add('active-row'); br.classList.add('active-row');
         activeIdx = i;
         const rect = br.getBoundingClientRect();
+        // Anchor at the centre of the bar row horizontally
         openPopup(p, color, rect.left + Math.min(80, rect.width * 0.3 + 20), rect.top + rect.height/2);
       }, 120);
     }
 
     function hideOnLeave(e){
       clearTimeout(hoverTimer);
+      // Only close if mouse left both the row AND the popup
       hoverTimer = setTimeout(()=>{
         if(!popup.matches(':hover') && activeIdx===i){
           closePopup();
@@ -1407,8 +1439,8 @@ function renderRows(){
     br.addEventListener('mouseenter', showOnHover);
     nr.addEventListener('mouseleave', hideOnLeave);
     br.addEventListener('mouseleave', hideOnLeave);
-    nr.addEventListener('click', e=>{e.stopPropagation();if(activeIdx===i){closePopup();}else{showOnHover(e);}});
-    br.addEventListener('click', e=>{e.stopPropagation();if(activeIdx===i){closePopup();}else{showOnHover(e);}});
+    nr.addEventListener('click', e=>{ e.stopPropagation(); if(activeIdx===i){closePopup();}else{showOnHover(e);} });
+    br.addEventListener('click', e=>{ e.stopPropagation(); if(activeIdx===i){closePopup();}else{showOnHover(e);} });
     nr.addEventListener('mouseenter',()=>{nr.style.background='rgba(122,79,13,.06)';br.style.background='rgba(122,79,13,.04)';});
     nr.addEventListener('mouseleave',()=>{if(activeIdx!==i){nr.style.background='';br.style.background='';}});
     br.addEventListener('mouseenter',()=>{nr.style.background='rgba(122,79,13,.06)';br.style.background='rgba(122,79,13,.04)';});
@@ -1668,7 +1700,7 @@ function _drawEmpires() {
     if (mapSliderYear !== null) {
       if (em.start > mapSliderYear || em.end < mapSliderYear) return;
     } else {
-      if (activeCentury !== 'all' && activeCentury !== 'pre') {
+      if (activeCentury !== 'all') {
         const c = parseInt(activeCentury);
         const cs = (c-1)*100, ce = c*100;
         if (em.end < cs || em.start > ce) return;
@@ -1718,7 +1750,7 @@ function _updateOffScreenArrows() {
   mapEl.querySelectorAll('.map-arrow').forEach(e=>e.remove());
   const bounds = leafletMap.getBounds();
   const all = (mapSliderYear !== null)
-    ? getFiltered().filter(p=>p.lat&&p.lng&&(p.dob<570||(p.dob<=mapSliderYear&&p.dod>=mapSliderYear)))
+    ? getFiltered().filter(p=>p.lat&&p.lng&&p.dob<=mapSliderYear&&p.dod>=mapSliderYear)
     : getFiltered().filter(p=>p.lat&&p.lng);
   const dirs = {N:0,NE:0,E:0,SE:0,S:0,SW:0,W:0,NW:0};
   const colorDir = {N:{},NE:{},E:{},SE:{},S:{},SW:{},W:{},NW:{}};
@@ -1780,7 +1812,7 @@ function _applyMapYear(yr) {
   document.getElementById('mapSliderThumb').style.left=pct+'%';
   if (!leafletMap||!markerLayer) return;
   leafletMap.removeLayer(markerLayer); markerLayer=null;
-  const alive = getFiltered().filter(p=>p.lat&&p.lng&&(p.dob<570||(p.dob<=yr&&p.dod>=yr)));
+  const alive = getFiltered().filter(p=>p.lat&&p.lng&&p.dob<=yr&&p.dod>=yr);
   markerLayer = L.layerGroup(alive.map(_makePersonMarker)).addTo(leafletMap);
   _drawEmpires();
   setTimeout(_updateOffScreenArrows,200);
@@ -2110,7 +2142,7 @@ function applySlider(yr){
   rows.forEach(row=>{
     const dob = parseInt(row.dataset.dob||0);
     const dod = parseInt(row.dataset.dod||9999);
-    const alive = (dob < 570) || (dob <= yr && dod >= yr);
+    const alive = (dob < 570 && yr < 570) || (dob <= yr && dod >= yr);
     row.style.display = alive ? '' : 'none';
     row.classList.toggle('era-lit', alive);
     row.classList.remove('era-dim');
