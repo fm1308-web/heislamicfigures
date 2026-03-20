@@ -17,7 +17,7 @@
   --name-w:  320px;
   --row-h:   42px;
   --axis-h:  44px;
-  --chart-w: 1500px;
+  --chart-w: 1820px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,html{height:100%;overflow-y:auto}
@@ -547,6 +547,11 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 .pc-panel-hint{font-size:11px;color:#7a6040;font-style:italic;text-align:center;padding:8px 0 0;opacity:.7;font-family:'Source Serif 4',serif}
 
 
+/* ── PRE-ISLAMIC ZONE ── */
+.pre-zone-divider{position:absolute;top:0;bottom:0;left:320px;width:0;border-left:2px dashed rgba(123,63,0,.4);pointer-events:none;z-index:4;}
+.pre-zone-lbl{position:absolute;top:50%;left:4px;transform:translateY(-50%);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7B3F00;font-family:'Source Serif 4',serif;font-weight:700;pointer-events:none;white-space:nowrap;}
+.genea-row{opacity:.7;}
+
 /* ── Prophet Muhammad special highlight ── */
 .name-row.prophet-row{background:linear-gradient(90deg,rgba(200,150,0,.14) 0%,transparent 100%)!important;border-left:3px solid #c8900a!important;}
 .name-row.prophet-row .name-famous{color:#c8900a!important;font-size:15px!important;font-weight:800!important;}
@@ -580,6 +585,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   <div class="filter-row">
     <span class="ctl-label">Century:</span>
     <button class="filter-btn f-century active" data-filter="all">All</button>
+    <button class="filter-btn f-century" data-filter="pre">Pre-Islam</button>
     <button class="filter-btn f-century" data-filter="7">7th</button>
     <button class="filter-btn f-century" data-filter="8">8th</button>
     <button class="filter-btn f-century" data-filter="9">9th</button>
@@ -629,6 +635,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
   <div class="filter-row">
     <span class="ctl-label">Type:</span>
     <button class="filter-btn f-type active" data-type="all">All</button>
+    <button class="filter-btn f-type" data-type="Prophet">Prophet</button>
     <button class="filter-btn f-type" data-type="Mystic">Mystic</button>
     <button class="filter-btn f-type" data-type="Poet">Poet</button>
     <button class="filter-btn f-type" data-type="Scholar">Scholar</button>
@@ -726,8 +733,8 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 <footer>ISLAMIC SCHOLARS TIMELINE · LIFESPAN VISUALIZATION · CLICK ANY ROW TO OPEN DETAILS &amp; FREE BOOKS</footer>
 
 <script>
-const CC={7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
-function gc(y){if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
+const CC={pre:'#7B3F00',7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
+function gc(y){if(y<570)return 'pre';if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
 function gcl(c){const o=c===1?'1st':c===2?'2nd':c===3?'3rd':`${c}th`;return`${o} C.`;}
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -771,6 +778,7 @@ function setView(v) {
 // ══════════════════════════════════════════════════════════════════════════════
 // SILSILA CHAIN VIEW RENDERER
 // ══════════════════════════════════════════════════════════════════════════════
+const LINEAGE_SET=new Set(["Adam","Shith ibn Adam","Anush ibn Shith","Qaynan ibn Anush","Mahlail ibn Qaynan","Yared ibn Mahlail","Idris","Mattushalakh ibn Idris","Lamak ibn Mattushalakh","Nuh","Sam ibn Nuh","Arfakhshadh ibn Sam","Shalikh ibn Arfakhshadh","Abir ibn Shalikh","Faligh ibn Abir","Ra'u ibn Faligh","Sarugh ibn Ra'u","Nahur ibn Sarugh","Azar ibn Nahur","Ibrahim","Ismail","Nabit ibn Ismail","Adnan","Ma'add ibn Adnan","Nizar ibn Ma'add","Mudar ibn Nizar","Ilyas ibn Mudar","Mudrika ibn Ilyas","Khuzayma ibn Mudrika","Kinana ibn Khuzayma","al-Nadr ibn Kinana","Malik ibn al-Nadr","Fihr ibn Malik","Ghalib ibn Fihr","Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murra ibn Ka'b","Kilab ibn Murra","Qusayy ibn Kilab","Abd Manaf ibn Qusayy","Hashim ibn Abd Manaf","Abd al-Muttalib ibn Hashim","Abdullah ibn Abd al-Muttalib","Prophet Muhammad"]);
 function renderSilsila() {
   const svg = document.getElementById('silsilaSvg');
   // Cleanup any old tooltip
@@ -790,11 +798,21 @@ function renderSilsila() {
   const MARGIN_T = 50;             // top margin (for year labels)
   const MARGIN_L = 190;
   const MARGIN_R = 60;
-  const MIN_Y = 550, MAX_Y = 1950;
-  const W = 3200;
+  const _hasPreSil = filtered.some(p=>p.dob<570);
+  const MIN_Y = _hasPreSil ? -5000 : 550, MAX_Y = 1950;
+  const W = _hasPreSil ? 4200 : 3200;
   const PROX_PX = NODE_R * 3;     // px threshold to trigger stagger
 
-  function xPos(dob){ return MARGIN_L + ((dob - MIN_Y)/(MAX_Y - MIN_Y))*(W - MARGIN_L - MARGIN_R); }
+  function xPos(dob){
+    if(_hasPreSil&&dob<570){
+      const _pl=filtered.filter(p=>p.dob<570).sort((a,b)=>a.dob-b.dob);
+      const _i=_pl.findIndex(p=>p.dob===dob);
+      return MARGIN_L+(_pl.length>1?(_i/(_pl.length-1))*360:180);
+    }
+    const _base=_hasPreSil?MARGIN_L+400:MARGIN_L;
+    const _span=MAX_Y-(_hasPreSil?570:MIN_Y);
+    return _base+((dob-(_hasPreSil?570:MIN_Y))/_span)*(W-_base-MARGIN_R);
+  }
 
   // ── For each tradition lane, assign sub-rows to avoid overlap ────────────
   // laneMeta[trad] = { subRowCount, nodes: [{p, subRow}] }
@@ -845,8 +863,10 @@ function renderSilsila() {
   const edges = [];
   filtered.forEach(p => {
     (p.teachers||[]).forEach(tn => {
-      if(posMap[tn] && posMap[p.famous])
-        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)]});
+      if(posMap[tn] && posMap[p.famous]){
+        const isLin=LINEAGE_SET.has(p.famous)&&LINEAGE_SET.has(tn);
+        edges.push({from: posMap[tn], to: posMap[p.famous], color: CC[gc(p.dob)], isLin});
+      }
     });
   });
 
@@ -878,15 +898,21 @@ function renderSilsila() {
     const id = col.replace('#','');
     defs += `<marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${col}" opacity="0.6"/></marker>`;
   });
+  defs += `<marker id="arr-gold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#c8900a" opacity="0.95"/></marker>`;
   defs += '</defs>';
   out = defs + out;
 
-  // ── Edges ─────────────────────────────────────────────────────────────────
-  edges.forEach(e => {
+  // Non-lineage edges first (underneath)
+  edges.filter(e=>!e.isLin).forEach(e => {
     const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
-    // Bezier: control points curve right for forward, left for back
     const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
-    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
+    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="#a09070" stroke-width="1" fill="none" opacity="0.22" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
+  });
+  // Gold lineage edges on top
+  edges.filter(e=>e.isLin).forEach(e => {
+    const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
+    const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
+    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="#c8900a" stroke-width="2.2" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`;
   });
 
   // ── Nodes ─────────────────────────────────────────────────────────────────
@@ -899,9 +925,13 @@ function renderSilsila() {
     const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     // data-title for tooltip
+    const _isLin = LINEAGE_SET.has(p.famous);
+    const _nFill = _isLin ? '#e8a820' : col;
+    const _nStroke = _isLin ? '#c8900a' : 'white';
+    const _nSW = _isLin ? 2.5 : 2;
     out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${col}" tabindex="0">
       <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="white" stroke-width="2" opacity="1"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${_nFill}" stroke="${_nStroke}" stroke-width="${_nSW}" opacity="1"/>
       ${hasFree?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.45"/>`: ''}
     </g>`;
   });
@@ -957,8 +987,9 @@ function renderSilsila() {
   });
 }
 const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
-const CHART_PX=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--chart-w'))||1500;
-function y2px(y){return((y-MIN_YEAR)/SPAN)*CHART_PX;}
+const CHART_PX=1500;
+const PRE_ZONE_PX=320;
+function y2px(y){if(y<570)return PRE_ZONE_PX/2;return PRE_ZONE_PX+((y-MIN_YEAR)/SPAN)*CHART_PX;}
 
 let activeCentury='all', activeTrad='all', activeType='all', searchQ='';
 let PEOPLE = [];
@@ -1266,10 +1297,16 @@ function addGrids(){
 
 function getFiltered(){
   return PEOPLE.filter(p=>{
-    const cm=activeCentury==='all'||gc(p.dob)===parseInt(activeCentury);
+    let cm;
+    if(activeCentury==='all') cm=true;
+    else if(activeCentury==='pre') cm=p.dob<570;
+    else cm=p.dob>=570&&gc(p.dob)===parseInt(activeCentury);
     const tm=activeTrad==='all'||p.tradition===activeTrad;
-    const ym=activeType==='all'||p.type===activeType;
-    const sm=!searchQ||p.famous.toLowerCase().includes(searchQ)||p.full.toLowerCase().includes(searchQ)||p.tradition.toLowerCase().includes(searchQ)||p.type.toLowerCase().includes(searchQ)||p.primaryTitle.toLowerCase().includes(searchQ);
+    let ym;
+    if(activeType==='all') ym=true;
+    else if(activeType==='Prophet') ym=(p.classif||'').indexOf('Prophet')>=0||(p.classif||'').indexOf('Patriarch')>=0||p.classif==='Genealogical Link';
+    else ym=p.type===activeType;
+    const sm=!searchQ||p.famous.toLowerCase().indexOf(searchQ)>=0||p.full.toLowerCase().indexOf(searchQ)>=0||p.tradition.toLowerCase().indexOf(searchQ)>=0||p.type.toLowerCase().indexOf(searchQ)>=0||(p.primaryTitle||'').toLowerCase().indexOf(searchQ)>=0;
     return cm&&tm&&ym&&sm;
   });
 }
@@ -1281,38 +1318,67 @@ function renderRows(){
   // Axis-row is now in the sticky #tlHeaderRow — no spacer needed here
   addGrids();
   closePopup();
-  const filtered=getFiltered();
+
+  // Sort: pre-Islamic (dob<570) first by dob asc, then CE figures
+  const _raw=getFiltered();
+  const _pre=_raw.filter(p=>p.dob<570).sort((a,b)=>a.dob-b.dob);
+  const _ce=_raw.filter(p=>p.dob>=570);
+  const filtered=[..._pre,..._ce];
+  const _preN=_pre.length;
 
   // Show count
   const metaEl = document.getElementById('metaLine');
-  if(metaEl) metaEl.textContent = `${filtered.length} of ${PEOPLE.length} figures · 555 CE to 2025 CE · ✦ = free book available`;
+  if(metaEl) metaEl.textContent = `${filtered.length} of ${PEOPLE.length} figures · Pre-Islamic Era to 2025 CE · ✦ = free book available`;
+
+  // Add pre-zone divider to bars area
+  const _axDiv=document.getElementById('axisRow');
+  if(_axDiv){
+    _axDiv.querySelectorAll('.pre-zone-divider,.pre-zone-lbl').forEach(e=>e.remove());
+    const _d=document.createElement('div');_d.className='pre-zone-divider';_axDiv.appendChild(_d);
+    const _l=document.createElement('div');_l.className='pre-zone-lbl';_l.textContent='Pre-Islamic Era';_axDiv.appendChild(_l);
+  }
 
   filtered.forEach((p,i)=>{
     const color=CC[gc(p.dob)];
     const hasFreeBook=p.books.some(b=>b.url&&b.url.startsWith('http'));
+    const isPre=p.dob<570;
+    const isGenea=p.classif==='Genealogical Link';
 
-    const nr=document.createElement('div');nr.className='name-row'+(p.famous==='Prophet Muhammad'?' prophet-row':'');nr.dataset.i=i;
-    const shortTitle=p.primaryTitle.split('—')[0].trim();
-    nr.innerHTML=`<div class="dot" style="background:${color}"></div><div class="name-text"><div class="name-famous">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
+    const nr=document.createElement('div');
+    nr.className='name-row'+(p.famous==='Prophet Muhammad'?' prophet-row':isGenea?' genea-row':'');
+    nr.dataset.i=i;
+    const shortTitle=(p.primaryTitle||'').split('—')[0].trim();
+    nr.innerHTML=`<div class="dot" style="background:${color}${isGenea?';opacity:.4':''}"></div><div class="name-text"><div class="name-famous" style="${isGenea?'font-style:italic;opacity:.75':''}">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
     nameRowsEl.appendChild(nr);
 
-    const br=document.createElement('div');br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'');br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
-    const left=y2px(p.dob);
-    const width=Math.max(y2px(p.dod)-y2px(p.dob),5);
+    const br=document.createElement('div');
+    br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'');
+    br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
 
-    const bar=document.createElement('div');
-    bar.className='bar';
-    bar.style.cssText=`left:${left}px;width:${width}px;background:linear-gradient(90deg,${color}e0,${color}60);box-shadow:0 1px 4px ${color}40;`;
-
-    if(hasFreeBook){
-      const od=document.createElement('div');
-      od.className='opus-dot';
-      od.style.cssText=`background:${color};box-shadow:0 0 4px ${color}80;`;
-      od.title='Free book available';
-      bar.appendChild(od);
+    if(isPre){
+      // Sequential dot in pre-zone
+      const _idx=_pre.indexOf(p);
+      const _xPx=_preN>1?10+(_idx/(_preN-1))*(PRE_ZONE_PX-20):PRE_ZONE_PX/2;
+      const _r=isGenea?5:9;
+      const dot=document.createElement('div');
+      dot.style.cssText=`position:absolute;top:50%;left:${_xPx}px;transform:translate(-50%,-50%);width:${_r*2}px;height:${_r*2}px;border-radius:50%;background:${color};box-shadow:0 0 5px ${color}80;opacity:${isGenea?0.55:1};cursor:pointer;pointer-events:all;`;
+      br.appendChild(dot);
+    } else {
+      const left=y2px(p.dob);
+      const width=Math.max(y2px(p.dod)-y2px(p.dob),5);
+      const bar=document.createElement('div');
+      bar.className='bar';
+      bar.style.cssText=`left:${left}px;width:${width}px;background:linear-gradient(90deg,${color}e0,${color}60);box-shadow:0 1px 4px ${color}40;`;
+      if(hasFreeBook){
+        const od=document.createElement('div');
+        od.className='opus-dot';
+        od.style.cssText=`background:${color};box-shadow:0 0 4px ${color}80;`;
+        od.title='Free book available';
+        bar.appendChild(od);
+      }
+      br.appendChild(bar);
     }
-
-    br.appendChild(bar);barsAreaEl.appendChild(br);
+    barsAreaEl.appendChild(br);
 
     let hoverTimer = null;
 
@@ -1324,14 +1390,12 @@ function renderRows(){
         nr.classList.add('active-row'); br.classList.add('active-row');
         activeIdx = i;
         const rect = br.getBoundingClientRect();
-        // Anchor at the centre of the bar row horizontally
         openPopup(p, color, rect.left + Math.min(80, rect.width * 0.3 + 20), rect.top + rect.height/2);
       }, 120);
     }
 
     function hideOnLeave(e){
       clearTimeout(hoverTimer);
-      // Only close if mouse left both the row AND the popup
       hoverTimer = setTimeout(()=>{
         if(!popup.matches(':hover') && activeIdx===i){
           closePopup();
@@ -1343,8 +1407,8 @@ function renderRows(){
     br.addEventListener('mouseenter', showOnHover);
     nr.addEventListener('mouseleave', hideOnLeave);
     br.addEventListener('mouseleave', hideOnLeave);
-    nr.addEventListener('click', e=>{ e.stopPropagation(); if(activeIdx===i){closePopup();}else{showOnHover(e);} });
-    br.addEventListener('click', e=>{ e.stopPropagation(); if(activeIdx===i){closePopup();}else{showOnHover(e);} });
+    nr.addEventListener('click', e=>{e.stopPropagation();if(activeIdx===i){closePopup();}else{showOnHover(e);}});
+    br.addEventListener('click', e=>{e.stopPropagation();if(activeIdx===i){closePopup();}else{showOnHover(e);}});
     nr.addEventListener('mouseenter',()=>{nr.style.background='rgba(122,79,13,.06)';br.style.background='rgba(122,79,13,.04)';});
     nr.addEventListener('mouseleave',()=>{if(activeIdx!==i){nr.style.background='';br.style.background='';}});
     br.addEventListener('mouseenter',()=>{nr.style.background='rgba(122,79,13,.06)';br.style.background='rgba(122,79,13,.04)';});
@@ -1604,7 +1668,7 @@ function _drawEmpires() {
     if (mapSliderYear !== null) {
       if (em.start > mapSliderYear || em.end < mapSliderYear) return;
     } else {
-      if (activeCentury !== 'all') {
+      if (activeCentury !== 'all' && activeCentury !== 'pre') {
         const c = parseInt(activeCentury);
         const cs = (c-1)*100, ce = c*100;
         if (em.end < cs || em.start > ce) return;
@@ -1654,7 +1718,7 @@ function _updateOffScreenArrows() {
   mapEl.querySelectorAll('.map-arrow').forEach(e=>e.remove());
   const bounds = leafletMap.getBounds();
   const all = (mapSliderYear !== null)
-    ? getFiltered().filter(p=>p.lat&&p.lng&&p.dob<=mapSliderYear&&p.dod>=mapSliderYear)
+    ? getFiltered().filter(p=>p.lat&&p.lng&&(p.dob<570||(p.dob<=mapSliderYear&&p.dod>=mapSliderYear)))
     : getFiltered().filter(p=>p.lat&&p.lng);
   const dirs = {N:0,NE:0,E:0,SE:0,S:0,SW:0,W:0,NW:0};
   const colorDir = {N:{},NE:{},E:{},SE:{},S:{},SW:{},W:{},NW:{}};
@@ -1716,7 +1780,7 @@ function _applyMapYear(yr) {
   document.getElementById('mapSliderThumb').style.left=pct+'%';
   if (!leafletMap||!markerLayer) return;
   leafletMap.removeLayer(markerLayer); markerLayer=null;
-  const alive = getFiltered().filter(p=>p.lat&&p.lng&&p.dob<=yr&&p.dod>=yr);
+  const alive = getFiltered().filter(p=>p.lat&&p.lng&&(p.dob<570||(p.dob<=yr&&p.dod>=yr)));
   markerLayer = L.layerGroup(alive.map(_makePersonMarker)).addTo(leafletMap);
   _drawEmpires();
   setTimeout(_updateOffScreenArrows,200);
@@ -2046,7 +2110,7 @@ function applySlider(yr){
   rows.forEach(row=>{
     const dob = parseInt(row.dataset.dob||0);
     const dod = parseInt(row.dataset.dod||9999);
-    const alive = (dob <= yr && dod >= yr);
+    const alive = (dob < 570) || (dob <= yr && dod >= yr);
     row.style.display = alive ? '' : 'none';
     row.classList.toggle('era-lit', alive);
     row.classList.remove('era-dim');
