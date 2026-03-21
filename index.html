@@ -422,9 +422,11 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
 /* ── CHART ── */
 .chart-col{position:relative;width:var(--chart-w);min-width:var(--chart-w);flex-shrink:0}
 .axis-row{height:var(--axis-h);background:var(--surface);border-bottom:none;z-index:5;position:relative;flex:1;min-width:var(--chart-w)}
-.c-marker{display:none}
-.c-label{font-size:8px;letter-spacing:.1em;color:#2a2010;text-transform:uppercase;font-family:'Source Serif 4',serif;white-space:nowrap;font-weight:600}
-.c-year{font-size:9px;color:#6a5a40;margin-top:1px;font-family:'Source Serif 4',serif;font-weight:500}
+.c-marker{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:5px;pointer-events:none;z-index:3}
+.c-label{font-size:9px;letter-spacing:.1em;color:#2a2010;text-transform:uppercase;font-family:'Source Serif 4',serif;white-space:nowrap;font-weight:700}
+.c-year{font-size:9px;color:#6a5a40;font-family:'Source Serif 4',serif;font-weight:500}
+.cent-band{position:absolute;top:0;bottom:0;pointer-events:none;z-index:0;opacity:.045;}
+.cent-band.active-band{opacity:.13;}
 .grid-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(180,168,148,.4)}
 .grid-line.major{background:rgba(160,148,128,.6)}
 .bars-area{position:relative}
@@ -588,6 +590,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
     <span class="ctl-label">Century:</span>
     <button class="filter-btn f-century active" data-filter="all">All</button>
     <button class="filter-btn f-century" data-filter="pre-islam">Pre-Islam</button>
+    <button class="filter-btn f-century" data-filter="6">6th</button>
     <button class="filter-btn f-century" data-filter="7">7th</button>
     <button class="filter-btn f-century" data-filter="8">8th</button>
     <button class="filter-btn f-century" data-filter="9">9th</button>
@@ -710,6 +713,14 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 
 <div id="silsilaView">
   <div class="sil-intro">🔍 <strong>Hover</strong> any dot to see the scholar's name · <strong>Click</strong> to open full details · Filter by <em>Tradition</em> to isolate a single silsila chain · Each line shows a teacher → student link</div>
+  <!-- Prophets' Lineage banner — full width, not scrollable -->
+  <div id="lineageBanner" style="background:#0f0a04;width:100%;position:relative;overflow:hidden;flex-shrink:0;">
+    <div id="lineageBannerLeft" style="position:absolute;top:0;left:0;width:190px;height:100%;background:rgba(15,10,4,.95);border-right:1px solid rgba(200,160,40,.2);display:flex;flex-direction:column;justify-content:center;padding:0 10px;z-index:2;box-sizing:border-box;">
+      <span style="color:#c8900a;font-weight:700;font-size:12px;font-family:'Source Serif 4',serif;">⭕ Prophets' Lineage</span>
+      <span style="font-size:9px;color:#e8b420;opacity:.65;font-family:'Source Serif 4',serif;margin-top:4px;">ADAM → MUḤAMMAD ﷺ</span>
+    </div>
+    <svg id="lineageSvg" style="display:block;margin-left:190px;" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
   <div id="silsilaBody">
     <div id="silsilaLabels"><div id="silsilaLabelsInner"></div></div>
     <div id="silsilaScroll"><svg id="silsilaSvg"></svg></div>
@@ -799,50 +810,131 @@ const GOLD_LIGHT = '#e8b420';
 // ══════════════════════════════════════════════════════════════════════════════
 function renderSilsila() {
   const svg = document.getElementById('silsilaSvg');
-  // Cleanup any old tooltip
+  const linSvg = document.getElementById('lineageSvg');
+  const banner = document.getElementById('lineageBanner');
   const oldTip = document.getElementById('sil-tip');
   if(oldTip) oldTip.remove();
 
   const filtered = getFiltered();
-
-  // ── Build Prophets' Lineage lane data ───────────────────────────────────
   const lineageMembers = LINEAGE_CHAIN.map(name => PEOPLE.find(p => p.famous === name)).filter(Boolean);
+  const lineageSet = new Set(LINEAGE_CHAIN);
 
-  // Build tradition order by earliest DOB
+  const quranicProphetSet = new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl','Musa','Harun','Dawud','Sulayman','Ilyas',"Al-Yasa'",'Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
+
+  // ── 1. LINEAGE BANNER SVG (full-width, viewBox-scaled) ───────────────────
+  // Logical canvas dimensions — these scale to fill the banner
+  const BW = 1200, BH = 250;
+  const U_LEFT_X = 50, U_RIGHT_X = BW - 50;
+  const U_TOP_Y  = 52, U_BOT_Y  = BH - 52;
+  const U_BEND   = 80;
+  const NR = 10; // node radius in logical units
+
+  const n_lin = Math.max(lineageMembers.length - 1, 1);
+  const half_lin = Math.floor(n_lin / 2);
+
+  function uPos(idx) {
+    if (idx <= half_lin) {
+      const t = idx / half_lin;
+      return { x: U_LEFT_X + t * (U_RIGHT_X - U_LEFT_X), y: U_TOP_Y };
+    } else {
+      const t = (idx - half_lin) / (n_lin - half_lin);
+      return { x: U_RIGHT_X - t * (U_RIGHT_X - U_LEFT_X), y: U_BOT_Y };
+    }
+  }
+
+  const linPosMap = {};
+  lineageMembers.forEach((p, idx) => { linPosMap[p.famous] = uPos(idx); });
+
+  let linOut = '<defs><marker id="arr-gold-lin" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="' + GOLD + '" opacity="0.85"/></marker></defs>';
+
+  // Starfield
+  const seeds=[0.13,0.72,0.41,0.58,0.29,0.87,0.06,0.64,0.35,0.92,0.17,0.50,0.76,0.22,0.45,0.81,0.09,0.67,0.38,0.55,0.14,0.83,0.28,0.61,0.95,0.03,0.70,0.44,0.18,0.77,0.33,0.60,0.90,0.07,0.52,0.25,0.79,0.48,0.15,0.68,0.31,0.86,0.12,0.57,0.73,0.40,0.96,0.23,0.62,0.04,0.85,0.37,0.10,0.53,0.78,0.20,0.65,0.88,0.42,0.05,0.70,0.30,0.94,0.16,0.47,0.82,0.26,0.59,0.11,0.69,0.34,0.91,0.24,0.75,0.49,0.08,0.56,0.21,0.84,0.01];
+  seeds.forEach((sx,i)=>{
+    const px=(sx*BW).toFixed(1), py=(2+seeds[(i+13)%80]*(BH-4)).toFixed(1);
+    const sr=seeds[(i+31)%80]<0.12?1.8:0.8;
+    const op=(0.08+seeds[(i+47)%80]*0.22).toFixed(2);
+    linOut+=`<circle cx="${px}" cy="${py}" r="${sr}" fill="white" opacity="${op}"/>`;
+  });
+
+  // U track
+  const uTrack=`M${U_LEFT_X},${U_TOP_Y} H${U_RIGHT_X} C${U_RIGHT_X+U_BEND},${U_TOP_Y} ${U_RIGHT_X+U_BEND},${U_BOT_Y} ${U_RIGHT_X},${U_BOT_Y} H${U_LEFT_X}`;
+  linOut+=`<path d="${uTrack}" stroke="${GOLD}" stroke-width="14" fill="none" opacity="0.08" stroke-linecap="round"/>`;
+  linOut+=`<path d="${uTrack}" stroke="${GOLD}" stroke-width="3" fill="none" opacity="0.72" stroke-linecap="round"/>`;
+
+  // Labels
+  lineageMembers.forEach((p, idx) => {
+    const pos = linPosMap[p.famous];
+    if(!pos) return;
+    const isProphet = quranicProphetSet.has(p.famous);
+    if(!isProphet) return;
+    const isLast = idx === lineageMembers.length - 1;
+    const isTop  = idx <= half_lin;
+    const nameEnc = p.famous === 'Prophet Muhammad' ? 'Prophet Muhammad ﷺ' : p.famous.replace(/&/g,'&amp;');
+    if(isLast){
+      linOut+=`<text x="${pos.x+4}" y="${pos.y-16}" text-anchor="start" font-size="13" font-weight="700" fill="${GOLD}" font-family="Source Serif 4,serif" opacity="0.97">${nameEnc}</text>`;
+    } else {
+      const yOff = isTop ? -15 : 20;
+      linOut+=`<text x="${pos.x}" y="${pos.y+yOff}" text-anchor="middle" font-size="11" font-weight="600" fill="${GOLD_LIGHT}" font-family="Source Serif 4,serif" opacity="0.90">${nameEnc}</text>`;
+    }
+  });
+
+  // ADAM label
+  linOut+=`<text x="${U_LEFT_X+4}" y="${U_TOP_Y-16}" text-anchor="start" font-size="11" font-weight="700" letter-spacing="0.06em" fill="${GOLD}" font-family="Source Serif 4,serif" opacity="0.65">ADAM</text>`;
+
+  // Nodes
+  lineageMembers.forEach((p, idx) => {
+    const pos = linPosMap[p.famous];
+    if(!pos) return;
+    const isProphet = quranicProphetSet.has(p.famous);
+    const isLast = idx === lineageMembers.length - 1;
+    const r = isLast ? NR+6 : isProphet ? NR+2 : NR-3;
+    const fill = isProphet ? GOLD : '#6a4a18';
+    const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    if(isLast){
+      linOut+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r+12}" fill="${GOLD}" opacity="0.10"/>`;
+      linOut+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r+6}" fill="${GOLD}" opacity="0.16"/>`;
+    }
+    linOut+=`<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${GOLD}" tabindex="0">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r+6}" fill="transparent"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${fill}" stroke="${isProphet?GOLD_LIGHT:'rgba(180,140,40,.35)'}" stroke-width="${isLast?3:isProphet?2:1}" opacity="1"/>
+      ${isProphet?`<circle cx="${pos.x}" cy="${pos.y}" r="${Math.max(3,r-4)}" fill="white" opacity="0.22"/>`: ''}
+    </g>`;
+  });
+
+  // Set banner SVG viewBox and size
+  const bannerEl = document.getElementById('lineageBanner');
+  const bannerW = Math.max(200, (bannerEl ? bannerEl.offsetWidth : 800) - 190);
+  linSvg.setAttribute('viewBox', `0 0 ${BW} ${BH}`);
+  linSvg.setAttribute('width', bannerW);
+  linSvg.setAttribute('height', BH);
+  linSvg.style.height = BH + 'px';
+  if(bannerEl) bannerEl.style.height = BH + 'px';
+  linSvg.innerHTML = linOut;
+
+  // ── 2. MAIN SVG: tradition lanes only (no lineage) ────────────────────────
   const tradMap = {};
   filtered.forEach(p => { if(!tradMap[p.tradition]||p.dob<tradMap[p.tradition]) tradMap[p.tradition]=p.dob; });
   const trads = Object.keys(tradMap).sort((a,b)=>tradMap[a]-tradMap[b]);
 
   const NODE_R = 8;
-  const SUBROW_GAP = NODE_R * 2.6; // vertical gap between staggered sub-rows
-  const LABEL_H = 14;              // space above node for century label line
-  const MARGIN_T = 16;             // top margin for lineage lane (no year labels here)
+  const SUBROW_GAP = NODE_R * 2.6;
   const MARGIN_L = 190;
   const MARGIN_R = 60;
   const MIN_Y = 550, MAX_Y = 1950;
   const W = 3200;
-  const PROX_PX = NODE_R * 3;     // px threshold to trigger stagger
+  const PROX_PX = NODE_R * 3;
+  const LANE_PAD = 24;
 
   function xPos(dob){ return MARGIN_L + ((dob - MIN_Y)/(MAX_Y - MIN_Y))*(W - MARGIN_L - MARGIN_R); }
 
-  // Lineage uses sequential x-positioning (equal spacing) since dates span millennia
-  const LIN_MARGIN_L = 40, LIN_MARGIN_R = 40;
-  const LIN_Y_CENTER = NODE_R + 6;
-  function linX(idx){ return LIN_MARGIN_L + idx * ((W - LIN_MARGIN_L - LIN_MARGIN_R) / Math.max(lineageMembers.length - 1, 1)); }
-
-  // ── For each tradition lane, assign sub-rows to avoid overlap ────────────
-  // laneMeta[trad] = { subRowCount, nodes: [{p, subRow}] }
   const laneMeta = {};
   trads.forEach(t => { laneMeta[t] = { subRowCount: 1, nodes: [] }; });
-
-  // Sort each tradition's scholars by DOB, then greedily assign sub-rows
   trads.forEach(trad => {
     const members = filtered.filter(p => p.tradition === trad).sort((a,b)=>a.dob-b.dob);
-    // Each sub-row tracks the last x used
     const subRowMaxX = [0];
     members.forEach(p => {
       const x = xPos(p.dob);
-      // Find first sub-row where there's enough space
       let row = subRowMaxX.findIndex(maxX => x - maxX > PROX_PX);
       if(row === -1){ row = subRowMaxX.length; subRowMaxX.push(0); }
       subRowMaxX[row] = x + NODE_R;
@@ -851,13 +943,8 @@ function renderSilsila() {
     laneMeta[trad].subRowCount = subRowMaxX.length;
   });
 
-  // ── Compute lane Y offsets based on sub-row counts ────────────────────────
-  const LANE_PAD = 24; // padding above/below nodes within lane
-  const laneY = {}; // top y of each lane
-  // Prophets' Lineage lane is always first
-  const LIN_LANE_H = NODE_R * 2 + LIN_Y_CENTER * 2 + LANE_PAD;
-  const LIN_LANE_Y = MARGIN_T;
-  let curY = MARGIN_T + LIN_LANE_H;
+  const laneY = {};
+  let curY = 0;
   trads.forEach(trad => {
     laneY[trad] = curY;
     const laneH = laneMeta[trad].subRowCount * SUBROW_GAP + LANE_PAD * 2;
@@ -866,19 +953,15 @@ function renderSilsila() {
   });
   const H = curY + 20;
 
-  // ── Build posMap from lane layout ─────────────────────────────────────────
   const posMap = {};
   trads.forEach(trad => {
     const meta = laneMeta[trad];
     const laneTop = laneY[trad];
     meta.nodes.forEach(({p, subRow}) => {
-      const x = xPos(p.dob);
-      const y = laneTop + LANE_PAD + subRow * SUBROW_GAP + NODE_R;
-      posMap[p.famous] = {x, y};
+      posMap[p.famous] = { x: xPos(p.dob), y: laneTop + LANE_PAD + subRow * SUBROW_GAP + NODE_R };
     });
   });
 
-  // ── Build edges ───────────────────────────────────────────────────────────
   const edges = [];
   filtered.forEach(p => {
     (p.teachers||[]).forEach(tn => {
@@ -893,108 +976,65 @@ function renderSilsila() {
 
   let out = '';
 
-  // ── Lane backgrounds (no labels in SVG — labels go in sticky panel) ───────
-  // Prophets' Lineage lane background (gold-tinted)
-  out += `<rect x="0" y="${LIN_LANE_Y}" width="${W}" height="${LIN_LANE_H}" fill="rgba(220,170,40,0.07)" rx="0"/>`;
-  out += `<line x1="0" y1="${LIN_LANE_Y+LIN_LANE_H}" x2="${W}" y2="${LIN_LANE_Y+LIN_LANE_H}" stroke="rgba(200,160,40,.3)" stroke-width="1"/>`;
+  // Lane backgrounds
   trads.forEach((t, i) => {
-    const y = laneY[t];
-    const h = laneMeta[t].laneH;
+    const y = laneY[t], h = laneMeta[t].laneH;
     out += `<rect x="0" y="${y}" width="${W}" height="${h}" fill="${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}" rx="0"/>`;
   });
 
-  // ── Lineage lane: sequential dots + gold connection lines ─────────────────
-  const linPosMap = {};
-  lineageMembers.forEach((p, idx) => {
-    const x = linX(idx);
-    const y = LIN_LANE_Y + LANE_PAD + LIN_Y_CENTER;
-    linPosMap[p.famous] = {x, y};
-  });
-  // Gold connection lines (sequential)
-  lineageMembers.forEach((p, idx) => {
-    if(idx === 0) return;
-    const from = linPosMap[lineageMembers[idx-1].famous];
-    const to   = linPosMap[p.famous];
-    if(!from||!to) return;
-    out += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${GOLD}" stroke-width="2" opacity="0.7" marker-end="url(#arr-gold)"/>`;
-  });
-  // Lineage nodes
-  const quranicProphetSet = new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl','Musa','Harun','Dawud','Sulayman','Ilyas',"Al-Yasa'",'Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
-  lineageMembers.forEach((p, idx) => {
-    const pos = linPosMap[p.famous];
-    if(!pos) return;
-    const isProphet = quranicProphetSet.has(p.famous);
-    const r = isProphet ? NODE_R + 2 : NODE_R - 1;
-    const fill = isProphet ? GOLD : GOLD_LIGHT;
-    const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
-    const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${GOLD}" tabindex="0">
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${fill}" stroke="${isProphet?'white':'rgba(255,255,255,.5)'}" stroke-width="${isProphet?2:1}" opacity="1"/>
-      ${isProphet?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.3"/>`: ''}
-    </g>`;
-  });
-
-  // ── Century grid lines (below lineage lane only) ─────────────────────────
-  const TRAD_START_Y = LIN_LANE_Y + LIN_LANE_H;
+  // Century grid lines
   for(let yr=600; yr<=1900; yr+=100){
-    const x = xPos(yr);
-    const cent = Math.ceil(yr/100);
-    out += `<line x1="${x}" y1="${TRAD_START_Y}" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
-    out += `<text x="${x+3}" y="${TRAD_START_Y-6}" font-size="10" fill="#999" font-family="Source Serif 4,serif">${yr}</text>`;
+    const x = xPos(yr), cent = Math.ceil(yr/100);
+    out += `<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="${CC[cent]||'#ccc'}" stroke-width="0.7" opacity="0.35"/>`;
+    out += `<text x="${x+3}" y="12" font-size="10" fill="#bbb" font-family="Source Serif 4,serif">${yr}</text>`;
   }
 
-  // ── Arrow defs ────────────────────────────────────────────────────────────
+  // Arrow defs
   const arrowColors = [...new Set(edges.map(e=>e.color))];
   let defs = '<defs>';
   arrowColors.forEach(col => {
     const id = col.replace('#','');
     defs += `<marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${col}" opacity="0.6"/></marker>`;
   });
-  defs += `<marker id="arr-gold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="${GOLD}" opacity="0.85"/></marker>`;
   defs += '</defs>';
   out = defs + out;
 
-  // ── Edges ─────────────────────────────────────────────────────────────────
+  // Edges
   edges.forEach(e => {
     const {x:x1,y:y1}=e.from, {x:x2,y:y2}=e.to;
-    // Bezier: control points curve right for forward, left for back
-    const dx = x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
-    out += `<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
+    const dx=x2-x1, cx1=x1+dx*0.4, cx2=x2-dx*0.4;
+    out+=`<path class="sil-edge" d="M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}" stroke="${e.color}" stroke-width="1.4" fill="none" opacity="0.4" marker-end="url(#arr-${e.color.replace('#','')})"/>`;
   });
 
-  // ── Nodes ─────────────────────────────────────────────────────────────────
+  // Nodes — Prophet Muhammad gets gold glow to match lineage banner
   filtered.forEach(p => {
     const pos = posMap[p.famous];
     if(!pos) return;
-    const col = CC[gc(p.dob)];
+    const isProphetMuhammad = p.famous === 'Prophet Muhammad';
+    const col = isProphetMuhammad ? GOLD : CC[gc(p.dob)];
     const hasFree = p.books && p.books.some(b=>b.url&&b.url.startsWith('http'));
-    const r = hasFree ? NODE_R : NODE_R - 1;
+    const r = isProphetMuhammad ? NODE_R+4 : hasFree ? NODE_R : NODE_R - 1;
     const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    // data-title for tooltip
+    if(isProphetMuhammad){
+      out+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r+10}" fill="${GOLD}" opacity="0.12"/>`;
+      out+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r+5}" fill="${GOLD}" opacity="0.18"/>`;
+    }
     out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${col}" tabindex="0">
       <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="white" stroke-width="2" opacity="1"/>
-      ${hasFree?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.45"/>`: ''}
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col}" stroke="${isProphetMuhammad?GOLD_LIGHT:'white'}" stroke-width="${isProphetMuhammad?2.5:2}" opacity="1"/>
+      ${(hasFree||isProphetMuhammad)?`<circle cx="${pos.x}" cy="${pos.y}" r="${Math.max(2,r-3)}" fill="white" opacity="0.4"/>`: ''}
     </g>`;
   });
 
   svg.innerHTML = out;
 
-  // ── Populate sticky left label panel ──────────────────────────────────────
+  // ── Left label panel (tradition lanes only) ───────────────────────────────
   const labelsInner = document.getElementById('silsilaLabelsInner');
   labelsInner.style.height = H + 'px';
   labelsInner.innerHTML = '';
-  // Prophets' Lineage label (first)
-  const linLabelDiv = document.createElement('div');
-  linLabelDiv.className = 'sil-label-row';
-  linLabelDiv.style.cssText = `top:${LIN_LANE_Y}px;height:${LIN_LANE_H}px;background:rgba(220,170,40,0.09)`;
-  linLabelDiv.innerHTML = `<span class="sil-label-text" style="color:${GOLD};font-weight:700" title="Prophets Lineage (Adam to Muhammad)">⭕ Prophets' Lineage</span>`;
-  labelsInner.appendChild(linLabelDiv);
   trads.forEach((t, i) => {
-    const y = laneY[t];
-    const h = laneMeta[t].laneH;
+    const y = laneY[t], h = laneMeta[t].laneH;
     const labelColor = CC[gc(tradMap[t])] || '#888';
     const div = document.createElement('div');
     div.className = 'sil-label-row';
@@ -1003,38 +1043,38 @@ function renderSilsila() {
     labelsInner.appendChild(div);
   });
 
-  // ── Sync vertical scroll between scroll pane and label panel ──────────────
-  const scrollEl = document.getElementById('silsilaScroll');
-  // Vertical scroll via page, horizontal via silsilaScroll — no sync needed
-
-  // ── Hover tooltip ─────────────────────────────────────────────────────────
-  svg.querySelectorAll('.sil-node').forEach(node => {
-    const col = node.dataset.col;
-    let silTimer = null;
-    node.addEventListener('mouseenter', () => {
-      const fn = node.dataset.famous;
-      clearTimeout(silTimer);
-      silTimer = setTimeout(() => {
-        const person = PEOPLE.find(p => p.famous === fn);
+  // ── Hover/click for BOTH SVGs ─────────────────────────────────────────────
+  function attachSilsilaEvents(svgEl) {
+    svgEl.querySelectorAll('.sil-node').forEach(node => {
+      const col = node.dataset.col;
+      let silTimer = null;
+      node.addEventListener('mouseenter', () => {
+        const fn = node.dataset.famous;
+        clearTimeout(silTimer);
+        silTimer = setTimeout(() => {
+          const person = PEOPLE.find(p => p.famous === fn);
+          if(person){
+            const circ = node.querySelector('circle:last-of-type');
+            const r = circ ? circ.getBoundingClientRect() : node.getBoundingClientRect();
+            openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
+          }
+        }, 160);
+      });
+      node.addEventListener('mouseleave', () => {
+        clearTimeout(silTimer);
+        setTimeout(() => { if(!popup.matches(':hover')) closePopup(); }, 220);
+      });
+      node.addEventListener('click', () => {
+        const person = PEOPLE.find(p => p.famous === node.dataset.famous);
         if(person){
-          const circ = node.querySelector('circle:last-of-type');
-          const r = circ ? circ.getBoundingClientRect() : node.getBoundingClientRect();
+          const r = node.getBoundingClientRect();
           openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
         }
-      }, 160);
+      });
     });
-    node.addEventListener('mouseleave', () => {
-      clearTimeout(silTimer);
-      setTimeout(() => { if(!popup.matches(':hover')) closePopup(); }, 220);
-    });
-    node.addEventListener('click', e => {
-      const person = PEOPLE.find(p => p.famous === node.dataset.famous);
-      if(person){
-        const r = node.getBoundingClientRect();
-        openPopup(person, col, r.left + r.width/2, r.top + r.height/2);
-      }
-    });
-  });
+  }
+  attachSilsilaEvents(svg);
+  attachSilsilaEvents(linSvg);
 }
 const PRE_ZONE_W=140;
 const MIN_YEAR=540,MAX_YEAR=1975,SPAN=MAX_YEAR-MIN_YEAR;
@@ -1044,6 +1084,36 @@ function y2px(y){return PRE_ZONE_W+((y-MIN_YEAR)/SPAN)*CHART_PX;}
 let activeCentury='all', activeTrad='all', activeType='all', searchQ='';
 let PEOPLE = [];
 let STUDENTS = {}; // populated by _initApp after data loads
+
+// ── Axis — must be global so renderRows() can call it after _initApp exits ──
+const axisRow=document.getElementById('axisRow');
+const chartCol=document.getElementById('chartCol');
+function renderAxis(){
+  axisRow.innerHTML='';
+  const _showPZ=activeCentury==='all'||activeCentury==='pre-islam'||activeCentury==='6';
+  if(_showPZ){const pza=document.createElement('div');pza.className='preis-axis-zone';pza.innerHTML='<span class="preis-axis-label">Pre-Islamic Era</span>';axisRow.appendChild(pza);}
+  const CENT_NAMES={7:'7th C.',8:'8th C.',9:'9th C.',10:'10th C.',11:'11th C.',12:'12th C.',13:'13th C.',14:'14th C.',15:'15th C.',16:'16th C.',17:'17th C.',18:'18th C.',19:'19th C.',20:'20th C.'};
+  for(let yr=600;yr<=1900;yr+=100){
+    const c=Math.ceil(yr/100);
+    const xL=y2px(yr), xR=y2px(Math.min(yr+100,1950));
+    // Alternating band tint in axis header
+    const band=document.createElement('div');
+    band.style.cssText=`position:absolute;left:${xL}px;width:${xR-xL}px;top:0;bottom:0;background:${CC[c]||'#888'};opacity:${c%2===0?0.07:0.04};pointer-events:none;`;
+    axisRow.appendChild(band);
+    // Century label
+    const mk=document.createElement('div');mk.className='c-marker';mk.style.cssText=`left:${xL+5}px;`;
+    mk.innerHTML=`<span class="c-label" style="color:${CC[c]||'#888'}">${CENT_NAMES[c]||''}</span><span class="c-year">${yr}</span>`;
+    axisRow.appendChild(mk);
+  }
+  // Grid lines
+  for(let yr=600;yr<=1950;yr+=100){
+    const gl=document.createElement('div');gl.className='grid-line major';gl.style.left=y2px(yr)+'px';axisRow.appendChild(gl);
+  }
+  for(let yr=550;yr<=1950;yr+=50){
+    if(yr%100===0)continue;
+    const gl=document.createElement('div');gl.className='grid-line';gl.style.left=y2px(yr)+'px';axisRow.appendChild(gl);
+  }
+}
 
 function _initApp() {
 
@@ -1055,41 +1125,6 @@ function _initApp() {
       STUDENTS[tn].push(p.famous);
     });
   });
-
-// ══════════════════════════════════════════════════════════════════════════════
-// VIEW TOGGLE
-// ══════════════════════════════════════════════════════════════════════════════
-let VIEW = 'timeline';
-function setView(v) {
-  VIEW = v;
-  const labels = {'timeline':'Timeline','silsila':'Silsila','map':'Map'};
-  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(labels[v]||v)));
-  const tl = document.getElementById('tlOuter');
-  const sl = document.getElementById('silsilaView');
-  const mv = document.getElementById('mapView');
-  tl.style.display='none'; sl.classList.remove('active'); mv.style.display='none'; mv.classList.remove('active');
-  document.querySelectorAll('.era-band').forEach(e=>e.remove());
-  const _btnSlider = document.getElementById('btnSlider');
-  const _btnEras = document.getElementById('btnEras');
-  if(v !== 'timeline'){
-    if(_btnSlider) _btnSlider.style.display = 'none';
-    const _sw = document.getElementById('yearSliderWrap');
-    if(_sw && _sw.classList.contains('visible')){
-      _sw.classList.remove('visible');
-      document.querySelectorAll('.bar-row, .name-row').forEach(r=>{ r.style.display=''; r.classList.remove('era-dim','era-lit'); });
-    }
-    if(_btnSlider) _btnSlider.classList.remove('active');
-  } else {
-    if(_btnSlider) _btnSlider.style.display = '';
-  }
-  if(_btnEras) _btnEras.style.display = (v==='map'||v==='silsila') ? 'none' : '';
-  if(v==='timeline'){ tl.style.display=''; renderRows(); if(erasVisible) drawEras(); }
-  else if(v==='silsila'){ sl.classList.add('active'); renderSilsila(); }
-  else if(v==='map'){ mv.style.display='flex'; mv.classList.add('active'); _setMapHeight(); renderMap(); }
-}
-
-
-
 
 // ── Legend ───────────────────────────────────────────────
 const usedC=[...new Set(PEOPLE.map(p=>gc(p.dob)))].sort((a,b)=>a-b);
@@ -1106,23 +1141,7 @@ usedC.forEach(c=>{
   legEl.appendChild(d);
 });
 
-// ── Axis ─────────────────────────────────────────────────
-const axisRow=document.getElementById('axisRow');
-const chartCol=document.getElementById('chartCol');
-// Pre-Islamic axis zone label
-(()=>{const pza=document.createElement('div');pza.className='preis-axis-zone';pza.innerHTML='<span class="preis-axis-label">Pre-Islamic Era</span>';axisRow.appendChild(pza);})();
-for(let yr=600;yr<=1950;yr+=100){
-  const px=y2px(yr);
-  const gl=document.createElement('div');gl.className='grid-line major';gl.style.left=px+'px';axisRow.appendChild(gl);
-  const mk=document.createElement('div');mk.className='c-marker';mk.style.left=px+'px';
-  const c=Math.ceil(yr/100);
-  mk.innerHTML=`<span class="c-label" style="color:${CC[c]||'#888'}">${gcl(c)}</span><span class="c-year">${yr}</span>`;
-  axisRow.appendChild(mk);
-}
-for(let yr=550;yr<=1950;yr+=50){
-  if(yr%100===0)continue;
-  const gl=document.createElement('div');gl.className='grid-line';gl.style.left=y2px(yr)+'px';axisRow.appendChild(gl);
-}
+renderAxis();
 
   renderRows();
   // Set tl-outer height dynamically — works inside iframes
@@ -1151,6 +1170,8 @@ function _setMapHeight(){
   }
 }
 window.addEventListener('resize', _setMapHeight);
+// Re-render lineage banner on resize so it stays full-width
+window.addEventListener('resize', ()=>{ if(VIEW==='silsila') renderSilsila(); });
 
 
 fetch('people.json')
@@ -1174,9 +1195,6 @@ const pcName=document.getElementById('pcName');
 const pcTitle=document.getElementById('pcTitle');
 const pcBody=document.getElementById('pcBody');
 let activeIdx=-1;
-
-// Prophets from Adam to Dhul-Kifl — shown without Language / Works sections
-const EARLY_PROPHETS = new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl']);
 
 function openPopup(p, color, anchorX, anchorY) {
   pcName.textContent = p.famous;
@@ -1211,11 +1229,11 @@ function openPopup(p, color, anchorX, anchorY) {
     <div class="pc-row"><span class="pc-k">Region</span><span class="pc-v">${p.city}</span></div>
     <div class="pc-row"><span class="pc-k">Type</span><span class="pc-v">${p.classif}</span></div>
     <div class="pc-row"><span class="pc-k">School</span><span class="pc-v">${p.school}</span></div>
-    ${!EARLY_PROPHETS.has(p.famous) ? `<div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>` : ''}
+    <div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>
     ${p.source ? `<div class="pc-row"><span class="pc-k">Source</span><span class="pc-v" style="display:flex;align-items:center;gap:6px"><span style="background:#6b3a0812;border:1px solid #6b3a0840;border-radius:3px;padding:1px 7px;font-size:11px;color:#6b3a08;font-weight:700;letter-spacing:.04em">📖 ${p.source}</span></span></div>` : ''}
     <div class="pc-section" style="margin-top:12px">Titles &amp; Honorifics</div>
     <div class="pc-all-titles">${p.titles}</div>
-    ${!EARLY_PROPHETS.has(p.famous) ? `<div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>` : ''}
+    <div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>
   `;
 
   const teacherList = (p.teachers||[]).filter(tn => PEOPLE.find(x=>x.famous===tn));
@@ -1235,28 +1253,26 @@ function openPopup(p, color, anchorX, anchorY) {
     html += `</div>`;
   }
 
-  if(!EARLY_PROPHETS.has(p.famous)){
-    const mag = p.books.filter(b=>b.magnum);
-    const oth = p.books.filter(b=>!b.magnum);
-    if(mag.length){
-      html += `<div class="magnum-label" style="color:${color}">✦ Magnum Opus</div>`;
-      mag.forEach(b=>{
-        html += `<div class="book-item magnum" style="border-color:${color}28">
-          <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
-          ${b.note?`<div class="book-note">${b.note}</div>`:''}
-          ${!b.url&&!b.note?`<div class="no-link">No confirmed free digital edition</div>`:''}
-        </div>`;
-      });
-    }
-    if(oth.length){
-      html += `<div class="other-label">Other Works</div>`;
-      oth.forEach(b=>{
-        html += `<div class="book-item">
-          <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
-          ${b.note?`<div class="book-note">${b.note}</div>`:''}
-        </div>`;
-      });
-    }
+  const mag = p.books.filter(b=>b.magnum);
+  const oth = p.books.filter(b=>!b.magnum);
+  if(mag.length){
+    html += `<div class="magnum-label" style="color:${color}">✦ Magnum Opus</div>`;
+    mag.forEach(b=>{
+      html += `<div class="book-item magnum" style="border-color:${color}28">
+        <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+        ${b.note?`<div class="book-note">${b.note}</div>`:''}
+        ${!b.url&&!b.note?`<div class="no-link">No confirmed free digital edition</div>`:''}
+      </div>`;
+    });
+  }
+  if(oth.length){
+    html += `<div class="other-label">Other Works</div>`;
+    oth.forEach(b=>{
+      html += `<div class="book-item">
+        <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+        ${b.note?`<div class="book-note">${b.note}</div>`:''}
+      </div>`;
+    });
   }
 
   pcBody.innerHTML = html;
@@ -1363,15 +1379,26 @@ const nameRowsEl=document.getElementById('nameRows');
 const barsAreaEl=document.getElementById('barsArea');
 
 function addGrids(){
-  // Pre-Islamic zone background
-  const pzb=document.createElement('div');pzb.className='preis-zone-bg';barsAreaEl.appendChild(pzb);
+  const _showPZ=activeCentury==='all'||activeCentury==='pre-islam'||activeCentury==='6';
+  if(_showPZ){const pzb=document.createElement('div');pzb.className='preis-zone-bg';barsAreaEl.appendChild(pzb);}
+  // Century bands behind bars
+  for(let yr=600;yr<=1900;yr+=100){
+    const c=Math.ceil(yr/100);
+    const xL=y2px(yr), xR=y2px(Math.min(yr+100,1950));
+    const b=document.createElement('div');
+    const isActive=activeCentury===String(c);
+    b.className='cent-band'+(isActive?' active-band':'');
+    b.style.cssText=`left:${xL}px;width:${xR-xL}px;background:${CC[c]||'#888'};`;
+    barsAreaEl.appendChild(b);
+  }
   for(let yr=600;yr<=1950;yr+=100){const gl=document.createElement('div');gl.className='grid-line major';gl.style.cssText=`left:${y2px(yr)}px;top:0;bottom:0`;barsAreaEl.appendChild(gl);}
   for(let yr=550;yr<=1950;yr+=50){if(yr%100===0)continue;const gl=document.createElement('div');gl.className='grid-line';gl.style.cssText=`left:${y2px(yr)}px;top:0;bottom:0`;barsAreaEl.appendChild(gl);}
 }
 
 function getFiltered(){
   return PEOPLE.filter(p=>{
-    const cm=activeCentury==='all'||(activeCentury==='pre-islam'?p.dob<570:gc(p.dob)===parseInt(activeCentury));
+    const _c=parseInt(activeCentury);
+    const cm=activeCentury==='all'||(activeCentury==='pre-islam'?p.dob<570:activeCentury==='6'?(p.dob>=500&&p.dob<600):(p.dob>=(_c-1)*100&&p.dob<_c*100));
     const tm=activeTrad==='all'||p.tradition===activeTrad;
     const ym=activeType==='all'||p.type===activeType;
     const sm=!searchQ||p.famous.toLowerCase().includes(searchQ)||p.full.toLowerCase().includes(searchQ)||p.tradition.toLowerCase().includes(searchQ)||p.type.toLowerCase().includes(searchQ)||p.primaryTitle.toLowerCase().includes(searchQ);
@@ -1383,7 +1410,7 @@ function renderRows(){
   // Redraw era overlays after DOM update
   setTimeout(drawEras, 0);
   nameRowsEl.innerHTML='';barsAreaEl.innerHTML='';
-  // Axis-row is now in the sticky #tlHeaderRow — no spacer needed here
+  renderAxis();
   addGrids();
   closePopup();
   const _raw = getFiltered();
@@ -1403,9 +1430,9 @@ function renderRows(){
     return best + 0.5; // slot after their chain contemporary
   }
   const filtered = _raw.sort((a,b)=>{
-    if(a.dob < 570 && b.dob < 570) return _preIslamicSortKey(a) - _preIslamicSortKey(b);
-    if(a.dob < 570) return -1;
-    if(b.dob < 570) return 1;
+    if(a.dob < 400 && b.dob < 400) return _preIslamicSortKey(a) - _preIslamicSortKey(b);
+    if(a.dob < 400) return -1;
+    if(b.dob < 400) return 1;
     return a.dob - b.dob;
   });
 
@@ -1422,7 +1449,7 @@ function renderRows(){
     nr.innerHTML=`<div class="dot" style="background:${color}"></div><div class="name-text"><div class="name-famous">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
     nameRowsEl.appendChild(nr);
 
-    const isPreIslamic = p.dob < 570;
+    const isPreIslamic = p.dob < 400;
     const br=document.createElement('div');br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'')+(isPreIslamic?' preis-row':'');br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
 
     if(isPreIslamic){
@@ -1505,7 +1532,7 @@ function renderRows(){
     const QPROPHETS=new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl','Musa','Harun','Dawud','Sulayman','Ilyas',"Al-Yasa'",'Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
     const DOT_X=65;
     filtered.forEach(p=>{
-      if(p.dob>=570) return; // only pre-Islamic
+      if(p.dob>=400) return; // only pre-Islamic
       const childRow=rowMap[p.famous];
       (p.teachers||[]).forEach(tn=>{
         if(rowMap[tn]===undefined) return;
@@ -1540,6 +1567,15 @@ document.querySelectorAll('.f-century').forEach(btn=>{
     document.querySelectorAll('.f-century').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     applyFilters();
+    // Auto-scroll timeline to that century's column
+    if(VIEW==='timeline' && activeCentury!=='all' && activeCentury!=='pre-islam'){
+      const c=parseInt(activeCentury);
+      if(!isNaN(c)){
+        const targetX = y2px(c*100) - 80;
+        const tlOuter = document.getElementById('tlOuter');
+        if(tlOuter) setTimeout(()=>{ tlOuter.scrollLeft = Math.max(0,targetX); }, 80);
+      }
+    }
   });
 });
 document.querySelectorAll('.f-trad').forEach(btn=>{
@@ -2460,7 +2496,6 @@ function updateStickyOffset(){
 updateStickyOffset();
 const _ro = new ResizeObserver(updateStickyOffset);
 _ro.observe(document.getElementById('stickyTop'));
-_initApp();
 </script>
 <script>
 function _sendHeight(){
