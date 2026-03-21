@@ -5477,7 +5477,8 @@
       }
     ],
     "teachers": [
-      "Uthman Harwani"
+      "Uthman Harwani",
+      "Abu Ishaq Shami"
     ],
     "source": "",
     "lat": 26.4499,
@@ -5538,7 +5539,8 @@
       }
     ],
     "teachers": [
-      "Abu al-Najib al-Suhrawardi"
+      "Abu al-Najib al-Suhrawardi",
+      "Abu Najib Suhrawardi"
     ],
     "source": "",
     "lat": 33.3,
@@ -6272,7 +6274,8 @@
       }
     ],
     "teachers": [
-      "Ibn Mashish"
+      "Ibn Mashish",
+      "Abd al-Salam ibn Mashish"
     ],
     "source": "",
     "lat": 34.0,
@@ -9926,7 +9929,8 @@
       }
     ],
     "teachers": [
-      "Ubaydullah Ahrar"
+      "Ubaydullah Ahrar",
+      "Khwaja Ahrar"
     ],
     "source": "",
     "lat": 28.6,
@@ -9956,7 +9960,8 @@
       }
     ],
     "teachers": [
-      "Baha-ud-Din Naqshband"
+      "Baha-ud-Din Naqshband",
+      "Khwaja Baqi Billah"
     ],
     "source": "",
     "lat": 30.6,
@@ -15359,5 +15364,504 @@
     "source": "Ibn Ishaq / Tarikh al-Tabari",
     "lat": 21.42,
     "lng": 39.83
+  },
+  {
+    "famous": "Abu Yusuf",
+    "full": "Yaʿqūb ibn Ibrāhīm al-Anṣārī, Abū Yūsuf",
+    "type": "Jurist",
+    "tradition": "Islamic Jurisprudence",
+    "primaryTitle": "Qāḍī al-Quḍāt — First Chief Judge of the Abbasid Caliphate",
+    "dob": 731,
+    "dod": 798,
+    "dob_s": "731",
+    "dod_s": "798",
+    "city": "Kufa / Baghdad",
+    "classif": "Hanafi jurist and first Chief Qadi",
+    "school": "Primary student of Imam Abu Hanifa who codified Hanafi administrative and constitutional law; appointed first Chief Judge (Qadi al-Quzat) of the Abbasid Caliphate by Harun al-Rashid; his Kitab al-Kharaj is the foundational text of Islamic fiscal and land law",
+    "lang": "Arabic",
+    "titles": "Qadi al-Quzat · Imam al-Hanafiyya fi zamanhi",
+    "teachers": [
+      "Imam Abu Hanifa"
+    ],
+    "source": "Tarikh al-Tabari",
+    "lat": 33.3,
+    "lng": 44.4,
+    "books": [
+      {
+        "title": "Kitab al-Kharaj",
+        "url": "https://archive.org/search?query=kitab+al-kharaj+abu+yusuf",
+        "magnum": true,
+        "note": "Foundational text of Islamic fiscal and land law, written for Harun al-Rashid"
+      }
+    ]
+  },
+  {
+    "famous": "Muhammad al-Shaybani",
+    "full": "Muḥammad ibn al-Ḥasan al-Shaybānī",
+    "type": "Jurist",
+    "tradition": "Islamic Jurisprudence",
+    "primaryTitle": "Shaybani — Systematiser of Hanafi Law and Father of Islamic International Law",
+    "dob": 749,
+    "dod": 805,
+    "dob_s": "749",
+    "dod_s": "805",
+    "city": "Wasit / Baghdad",
+    "classif": "Hanafi jurist and legal theorist",
+    "school": "Student of both Abu Hanifa and Imam Malik; systematised the Hanafi legal corpus into the authoritative Zahir al-Riwaya (Six Books); his Siyar al-Kabir is the earliest and most comprehensive treatise on Islamic international law governing relations between Muslim and non-Muslim states",
+    "lang": "Arabic",
+    "titles": "Shaykh al-Islam · Imam al-Iraq",
+    "teachers": [
+      "Imam Abu Hanifa",
+      "Imam Malik ibn Anas"
+    ],
+    "source": "Tarikh al-Tabari",
+    "lat": 33.3,
+    "lng": 44.4,
+    "books": [
+      {
+        "title": "Al-Siyar al-Kabir",
+        "url": "",
+        "magnum": true,
+        "note": "Earliest comprehensive treatise on Islamic international law"
+      },
+      {
+        "title": "Al-Jami al-Saghir",
+        "url": "",
+        "magnum": false,
+        "note": "Part of the canonical Zahir al-Riwaya — six books systematising Hanafi law"
+      }
+    ]
+  },
+  {
+    "famous": "Ibn al-Qasim",
+    "full": "ʿAbd al-Raḥmān ibn al-Qāsim al-ʿUtaqī",
+    "type": "Jurist",
+    "tradition": "Islamic Jurisprudence",
+    "primaryTitle": "Primary Transmitter of the Maliki School in Egypt",
+    "dob": 745,
+    "dod": 806,
+    "dob_s": "745",
+    "dod_s": "806",
+    "city": "Egypt / Medina",
+    "classif": "Maliki jurist and hadith transmitter",
+    "school": "The most authoritative student of Imam Malik; his Al-Mudawwana (compiled by Sahnun from his transmissions) became the foundational text of Maliki law; spent 20 years in Imam Malik's circle and transmitted the vast majority of the Muwatta rulings that formed the Maliki school in Egypt and North Africa",
+    "lang": "Arabic",
+    "titles": "Thiqat al-Fuqaha · Imam Ahl Misr",
+    "teachers": [
+      "Imam Malik ibn Anas"
+    ],
+    "source": "Tarikh al-Tabari",
+    "lat": 30.0,
+    "lng": 31.2,
+    "books": [
+      {
+        "title": "Al-Mudawwana al-Kubra (via Sahnun)",
+        "url": "",
+        "magnum": true,
+        "note": "Foundational Maliki legal compendium compiled from Ibn al-Qasim's transmissions of Imam Malik's opinions"
+      }
+    ]
+  },
+  {
+    "famous": "Sahnun",
+    "full": "ʿAbd al-Salām ibn Saʿīd al-Tanūkhī, Saḥnūn",
+    "type": "Jurist",
+    "tradition": "Islamic Jurisprudence",
+    "primaryTitle": "Compiler of Al-Mudawwana — The Constitution of Maliki Law",
+    "dob": 776,
+    "dod": 854,
+    "dob_s": "776",
+    "dod_s": "854",
+    "city": "Kairouan, Tunisia",
+    "classif": "Maliki jurist and judge",
+    "school": "Compiled Al-Mudawwana al-Kubra from Ibn al-Qasim's transmissions of Imam Malik — the text that defined Maliki jurisprudence for North Africa, Spain, and West Africa for a millennium; served as Chief Judge (Qadi) of Kairouan and established it as a centre of Maliki learning, directly influencing the Timbuktu tradition",
+    "lang": "Arabic",
+    "titles": "Qadi al-Qudat · Imam al-Maghrib",
+    "teachers": [
+      "Ibn al-Qasim"
+    ],
+    "source": "Tarikh al-Tabari",
+    "lat": 35.7,
+    "lng": 10.1,
+    "books": [
+      {
+        "title": "Al-Mudawwana al-Kubra",
+        "url": "https://archive.org/search?query=al-mudawwana+sahnun",
+        "magnum": true,
+        "note": "The canonical compendium of Maliki law — basis for legal practice across North and West Africa"
+      }
+    ]
+  },
+  {
+    "famous": "Abu al-Hasan Kharaqani",
+    "full": "Abū al-Ḥasan ʿAlī ibn Aḥmad al-Kharaqānī",
+    "type": "Mystic",
+    "tradition": "Naqshbandiyya",
+    "primaryTitle": "Sultan al-Arifin of Khorasan — Bridge of the Naqshbandi Chain",
+    "dob": 963,
+    "dod": 1033,
+    "dob_s": "963",
+    "dod_s": "1033",
+    "city": "Kharaqan, Khorasan",
+    "classif": "Sufi master of the Khorasani school",
+    "school": "Critical link in the Naqshbandi silsila between Bayazid Bistami and Yusuf Hamadani; known for his doctrine of universal spiritual hospitality — the inscription above his hospice door read: 'Whoever enters this house, give them bread; ask not about their faith'; his sayings were compiled in Nūr al-ʿUlūm and deeply influenced Rumi and other Persian mystics",
+    "lang": "Persian",
+    "titles": "Sultan al-Arifin · Qutb al-Aqtab",
+    "teachers": [
+      "Bayazid Bistami"
+    ],
+    "source": "Wikipedia",
+    "lat": 36.0,
+    "lng": 55.0,
+    "books": [
+      {
+        "title": "Nur al-Ulum (Sayings of Kharaqani)",
+        "url": "",
+        "magnum": true,
+        "note": "Compiled teachings emphasising love, service, and universal hospitality"
+      }
+    ]
+  },
+  {
+    "famous": "Yusuf Hamadani",
+    "full": "Abū Yaʿqūb Yūsuf al-Hamadānī",
+    "type": "Mystic",
+    "tradition": "Naqshbandiyya",
+    "primaryTitle": "Qutb al-Aqtab — Axis of the Naqshbandi and Yesevi Chains",
+    "dob": 1048,
+    "dod": 1140,
+    "dob_s": "1048",
+    "dod_s": "1140",
+    "city": "Hamadan / Merv, Central Asia",
+    "classif": "Central Asian Sufi master",
+    "school": "Pivotal figure linking the Khorasani Sufi tradition to both the Naqshbandiyya and Yeseviyya orders; both Abdul Khaliq Ghujdawani (founder of the Khwajagan, direct precursor to Naqshbandiyya) and Ahmad Yesevi (founder of Yeseviyya) were his students; his school in Merv was a major centre of Islamic learning in Central Asia",
+    "lang": "Persian / Arabic",
+    "titles": "Qutb al-Aqtab · Ghawth al-Anam",
+    "teachers": [
+      "Abu al-Hasan Kharaqani"
+    ],
+    "source": "Wikipedia",
+    "lat": 37.6,
+    "lng": 61.8,
+    "books": [
+      {
+        "title": "Rutbat al-Hayat",
+        "url": "",
+        "magnum": true,
+        "note": "Stages of spiritual life — key text of early Khwajagan tradition"
+      }
+    ]
+  },
+  {
+    "famous": "Khwaja Ahrar",
+    "full": "Khwāja ʿUbaydullāh Aḥrār al-Samarqandī",
+    "type": "Mystic",
+    "tradition": "Naqshbandiyya",
+    "primaryTitle": "The Free — Most Powerful Naqshbandi Master of the Timurid Age",
+    "dob": 1404,
+    "dod": 1490,
+    "dob_s": "1404",
+    "dod_s": "1490",
+    "city": "Samarkand / Tashkent",
+    "classif": "Naqshbandi Sufi master and political authority",
+    "school": "The most politically influential Naqshbandi master; effectively the power behind the Timurid throne in Central Asia; his vast landholdings and network of followers made the Naqshbandiyya the dominant spiritual force from Transoxiana to Herat; his Faqarat is a key text of Naqshbandi spiritual practice; direct link between Baha-ud-Din Naqshband and Ahmad Sirhindi in the silsila",
+    "lang": "Persian / Chagatai Turkish",
+    "titles": "Hazrat Ahrar · Khwaja Kalan",
+    "teachers": [
+      "Baha-ud-Din Naqshband"
+    ],
+    "source": "Wikipedia",
+    "lat": 39.7,
+    "lng": 66.9,
+    "books": [
+      {
+        "title": "Faqarat",
+        "url": "",
+        "magnum": true,
+        "note": "Aphorisms on spiritual stations — core Naqshbandi contemplative text"
+      }
+    ]
+  },
+  {
+    "famous": "Shah Ghulam Ali Dehlavi",
+    "full": "Shāh Ghulām ʿAlī al-Dihlawī",
+    "type": "Mystic",
+    "tradition": "Naqshbandiyya",
+    "primaryTitle": "Mujaddid of Indian Naqshbandiyya in the 19th Century",
+    "dob": 1743,
+    "dod": 1824,
+    "dob_s": "1743",
+    "dod_s": "1824",
+    "city": "Delhi",
+    "classif": "Naqshbandi-Mujaddidi Sufi master",
+    "school": "The primary successor of Mirza Mazhar Jan-e-Janan and one of the most influential Naqshbandi masters of 19th-century India; his Maqamat-i-Mazhari documents his teacher's spiritual stations; under his guidance the Delhi khanqah became the main centre transmitting the Mujaddidi branch of Naqshbandiyya; trained hundreds of khalifas who spread the order across India, the Arab world, and Southeast Asia",
+    "lang": "Persian / Urdu",
+    "titles": "Ghawth al-Saqalayn · Qutb al-Aqtab",
+    "teachers": [
+      "Mirza Mazhar Jan-e-Janan"
+    ],
+    "source": "Wikipedia",
+    "lat": 28.6,
+    "lng": 77.2,
+    "books": [
+      {
+        "title": "Maqamat-i-Mazhari",
+        "url": "",
+        "magnum": true,
+        "note": "Biography and spiritual stations of Mirza Mazhar Jan-e-Janan — key Mujaddidi text"
+      }
+    ]
+  },
+  {
+    "famous": "Abd al-Salam ibn Mashish",
+    "full": "ʿAbd al-Salām ibn Mashīsh al-ʿĀlamī al-Ḥasanī",
+    "type": "Mystic",
+    "tradition": "Shadhiliyya",
+    "primaryTitle": "Qutb al-Wujud — Teacher of Abu'l-Hasan al-Shadhili",
+    "dob": 1163,
+    "dod": 1227,
+    "dob_s": "c. 1163",
+    "dod_s": "1227",
+    "city": "Jabal al-Alam, Morocco",
+    "classif": "Moroccan Sufi saint and pole of the age",
+    "school": "The spiritual master of Abu'l-Hasan al-Shadhili and thus the grandfather-figure of the entire Shadhiliyya order; his Salat al-Mashishiyya (Prayer of Ibn Mashish) is one of the most widely recited devotional prayers in the Islamic world, used daily by Shadhili followers across five continents; a descendant of the Prophet through Idris I of Morocco",
+    "lang": "Arabic",
+    "titles": "Qutb al-Wujud · Shaykh al-Islam al-Maghrib",
+    "teachers": [
+      "Hasan al-Basri"
+    ],
+    "source": "Wikipedia",
+    "lat": 35.1,
+    "lng": -5.4,
+    "books": [
+      {
+        "title": "Al-Salat al-Mashishiyya",
+        "url": "https://archive.org/search?query=salat+mashishiyya",
+        "magnum": true,
+        "note": "The most celebrated Shadhili devotional prayer, recited globally"
+      }
+    ]
+  },
+  {
+    "famous": "Ahmad ibn Idris",
+    "full": "Aḥmad ibn Idrīs al-Fāsī al-Ḥasanī",
+    "type": "Mystic",
+    "tradition": "Shadhiliyya",
+    "primaryTitle": "Founder of the Idrisiyya — Architect of 19th-Century African Sufi Revival",
+    "dob": 1760,
+    "dod": 1837,
+    "dob_s": "1760",
+    "dod_s": "1837",
+    "city": "Fez / Mecca / Yemen",
+    "classif": "Moroccan-Arabian Sufi master and reformer",
+    "school": "Influential reformist Sufi master whose students founded several major African orders; emphasised direct attachment to the Prophet (al-Tariqa al-Muhammadiyya) over affiliation to any particular silsila; his students founded the Sanusiyya (Muhammad al-Sanusi), the Khatmiyya (Muhammad Uthman al-Mirghani), and the Rashidiyya orders, reshaping Islam across Sudan, Libya, Somalia, and West Africa",
+    "lang": "Arabic",
+    "titles": "Kutb al-Arifin · Imam al-Tariqa al-Muhammadiyya",
+    "teachers": [
+      "Ibn Ata Allah al-Iskandari"
+    ],
+    "source": "Wikipedia",
+    "lat": 15.4,
+    "lng": 43.1,
+    "books": [
+      {
+        "title": "Iqaz al-Himam",
+        "url": "",
+        "magnum": true,
+        "note": "Awakening of Spiritual Aspirations — core text of the Muhammadan path"
+      }
+    ]
+  },
+  {
+    "famous": "Muhammad al-Sanusi",
+    "full": "Muḥammad ibn ʿAlī al-Sanūsī al-Khattābī al-Ḥasanī",
+    "type": "Mystic",
+    "tradition": "Shadhiliyya",
+    "primaryTitle": "Founder of the Sanusiyya — Builder of the Libyan Islamic State",
+    "dob": 1787,
+    "dod": 1859,
+    "dob_s": "1787",
+    "dod_s": "1859",
+    "city": "Algeria / Mecca / Cyrenaica",
+    "classif": "Algerian-Libyan Sufi reformer and founder",
+    "school": "Founded the Sanusiyya order in Cyrenaica (Libya) in 1837, establishing a network of zawiya lodges across the Sahara that served simultaneously as mosques, schools, law courts, and trading posts; his movement provided the organisational basis for Libyan resistance to Italian colonisation and later the Libyan state; combined Shadhili spirituality with Hanbali-influenced reform theology",
+    "lang": "Arabic",
+    "titles": "Al-Sayyid al-Mahdi · Imam al-Sanusiyya",
+    "teachers": [
+      "Ahmad ibn Idris"
+    ],
+    "source": "Wikipedia",
+    "lat": 27.0,
+    "lng": 14.0,
+    "books": [
+      {
+        "title": "Al-Salsabil al-Muin",
+        "url": "",
+        "magnum": true,
+        "note": "Foundational Sanusiyya Sufi manual outlining the path and litanies"
+      },
+      {
+        "title": "Al-Iqaz al-Wasnani",
+        "url": "",
+        "magnum": false,
+        "note": "On the origins and principles of the Muhammadan path"
+      }
+    ]
+  },
+  {
+    "famous": "Ahmad Zarruq",
+    "full": "Aḥmad ibn Aḥmad al-Burnusī al-Fāsī, Zarrūq",
+    "type": "Scholar",
+    "tradition": "Shadhiliyya",
+    "primaryTitle": "Muhtasib al-Awliya — The Jurist of the Saints",
+    "dob": 1442,
+    "dod": 1493,
+    "dob_s": "1442",
+    "dod_s": "1493",
+    "city": "Fez / Cairo / Tripoli",
+    "classif": "Maliki jurist and Shadhili Sufi reformer",
+    "school": "The great reconciler of Maliki jurisprudence and Shadhili mysticism; his Qawaid al-Tasawwuf (Principles of Sufism) established rational-legal criteria for evaluating Sufi practice, making it one of the first systematic methodologies for Sufi criticism; his commentaries on Al-Hikam of Ibn Ata Allah remain standard texts in Shadhili circles; founded the Zarruqiyya sub-branch in North Africa",
+    "lang": "Arabic",
+    "titles": "Muhtasib al-Awliya · Imam Ahl al-Tasawwuf fi Zamanihi",
+    "teachers": [
+      "Ibn Ata Allah al-Iskandari"
+    ],
+    "source": "Wikipedia",
+    "lat": 32.9,
+    "lng": 13.2,
+    "books": [
+      {
+        "title": "Qawaid al-Tasawwuf",
+        "url": "https://archive.org/search?query=zarruq+qawaid+tasawwuf",
+        "magnum": true,
+        "note": "Principles of Sufism — the most rational-legal framework for evaluating mystical practice"
+      },
+      {
+        "title": "Sharh al-Hikam (Commentary on Ibn Ata Allah)",
+        "url": "",
+        "magnum": false,
+        "note": "Standard commentary on the Hikam of Ibn Ata Allah"
+      }
+    ]
+  },
+  {
+    "famous": "Abu Najib Suhrawardi",
+    "full": "Ḍiyāʾ al-Dīn Abū Najīb al-Suhrawardī",
+    "type": "Mystic",
+    "tradition": "Suhrawardiyya",
+    "primaryTitle": "Founder of the Suhrawardi Path — Uncle and Teacher of Shihab al-Din",
+    "dob": 1097,
+    "dod": 1168,
+    "dob_s": "1097",
+    "dod_s": "1168",
+    "city": "Baghdad",
+    "classif": "Sufi master and founder of the Suhrawardi school",
+    "school": "The actual founder of the Suhrawardi Sufi school — his nephew Shihab al-Din al-Suhrawardi is more famous, but Abu Najib established the foundational framework; his Adab al-Muridin (Etiquette of the Seekers) was the first systematic manual for Sufi conduct and became the blueprint for subsequent Sufi orders; key link between the Baghdad Junayd school and the institutionalised Suhrawardiyya",
+    "lang": "Arabic",
+    "titles": "Shaykh al-Shuyukh · Imam al-Tasawwuf",
+    "teachers": [
+      "Junayd of Baghdad"
+    ],
+    "source": "Wikipedia",
+    "lat": 33.3,
+    "lng": 44.4,
+    "books": [
+      {
+        "title": "Adab al-Muridin",
+        "url": "https://archive.org/search?query=adab+muridin+suhrawardi",
+        "magnum": true,
+        "note": "First systematic manual of Sufi conduct — blueprint for all subsequent Sufi orders"
+      }
+    ]
+  },
+  {
+    "famous": "Jalal al-Din Tabrizi",
+    "full": "Jalāl al-Dīn Muḥammad al-Tabrīzī",
+    "type": "Mystic",
+    "tradition": "Suhrawardiyya",
+    "primaryTitle": "Qutb al-Aqtab of Bengal — Pioneer of Islam in Eastern India",
+    "dob": 1196,
+    "dod": 1244,
+    "dob_s": "c. 1196",
+    "dod_s": "c. 1244",
+    "city": "Tabriz / Bengal, India",
+    "classif": "Suhrawardi Sufi pioneer in Bengal",
+    "school": "One of the earliest Sufi missionaries in Bengal; established the Suhrawardiyya presence in eastern India decades before the Chishti order arrived; his khanqah at Pandua (near modern Malda) became the first major centre of Islamic learning in Bengal; credited with mass conversions through spiritual charisma; his tomb remains a major pilgrimage site",
+    "lang": "Arabic / Persian",
+    "titles": "Qutb al-Aqtab · Makhdoom of Bengal",
+    "teachers": [
+      "Shihab al-Din al-Suhrawardi"
+    ],
+    "source": "Wikipedia",
+    "lat": 25.0,
+    "lng": 88.1,
+    "books": [
+      {
+        "title": "Maktubat (Letters)",
+        "url": "",
+        "magnum": true,
+        "note": "Spiritual letters to disciples — primary record of Suhrawardi teaching in Bengal"
+      }
+    ]
+  },
+  {
+    "famous": "Abu Ishaq Shami",
+    "full": "Abū Isḥāq Ibrāhīm ibn Shāhryār al-Kāzarūnī, al-Shāmī",
+    "type": "Mystic",
+    "tradition": "Chishti",
+    "primaryTitle": "Syrian Mystic — Key Bridge in the Chishti Silsila",
+    "dob": 869,
+    "dod": 940,
+    "dob_s": "c. 869",
+    "dod_s": "c. 940",
+    "city": "Syria / Chisht, Afghanistan",
+    "classif": "Early Chishti master and silsila bridge",
+    "school": "The critical link between Ibrahim ibn Adham's ascetic tradition and the formal Chishti order; brought the Sufi path from Syria to Chisht (in modern Afghanistan) and trained Abu Ahmad Chishti, who gave the order its name; his transmission created the lineage through which Moinuddin Chishti would eventually take the path to India — making him the grandfather of the entire Indian Chishti tradition",
+    "lang": "Arabic / Persian",
+    "titles": "Shaykh al-Mashaikh · Qutb al-Chisht",
+    "teachers": [
+      "Ibrahim ibn Adham"
+    ],
+    "source": "Wikipedia",
+    "lat": 34.4,
+    "lng": 65.4,
+    "books": [
+      {
+        "title": "Transmitted teachings (oral tradition)",
+        "url": "",
+        "magnum": false,
+        "note": "No written works attributed; transmission was oral through the Chishti silsila"
+      }
+    ]
+  },
+  {
+    "famous": "Alauddin Sabir Kaliyari",
+    "full": "ʿAlāʾ al-Dīn ʿAlī Aḥmad Ṣābir al-Kālyārī",
+    "type": "Mystic",
+    "tradition": "Chishti",
+    "primaryTitle": "Founder of the Chishti-Sabiri Branch — The Jalali Saint of Kalyar",
+    "dob": 1196,
+    "dod": 1291,
+    "dob_s": "c. 1196",
+    "dod_s": "1291",
+    "city": "Kalyar, Uttarakhand, India",
+    "classif": "Chishti-Sabiri Sufi founder",
+    "school": "Cousin and principal khalifa of Baba Farid; founded the Sabiri branch of the Chishti order, known for its intense austerity and Jalali temperament contrasting with the Nizami branch's accessibility; his shrine at Kalyar Sharif near Roorkee remains one of the most visited Sufi shrines in India; his spiritual lineage continued through figures like Ashraf Jahangir Semnani",
+    "lang": "Persian / Hindi",
+    "titles": "Sabir · Qutb al-Hind · Aashiq-e-Ilahi",
+    "teachers": [
+      "Fariduddin Ganjshakar"
+    ],
+    "source": "Wikipedia",
+    "lat": 29.9,
+    "lng": 77.9,
+    "books": [
+      {
+        "title": "Maktubat and Malfuzat (collected sayings)",
+        "url": "",
+        "magnum": true,
+        "note": "Collected spiritual sayings and letters preserved in the Sabiri tradition"
+      }
+    ]
   }
 ]
