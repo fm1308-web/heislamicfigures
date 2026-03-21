@@ -1175,6 +1175,9 @@ const pcTitle=document.getElementById('pcTitle');
 const pcBody=document.getElementById('pcBody');
 let activeIdx=-1;
 
+// Prophets from Adam to Dhul-Kifl — shown without Language / Works sections
+const EARLY_PROPHETS = new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl']);
+
 function openPopup(p, color, anchorX, anchorY) {
   pcName.textContent = p.famous;
   pcTitle.innerHTML = `<span style="color:${color}">${p.primaryTitle}</span>`;
@@ -1208,11 +1211,11 @@ function openPopup(p, color, anchorX, anchorY) {
     <div class="pc-row"><span class="pc-k">Region</span><span class="pc-v">${p.city}</span></div>
     <div class="pc-row"><span class="pc-k">Type</span><span class="pc-v">${p.classif}</span></div>
     <div class="pc-row"><span class="pc-k">School</span><span class="pc-v">${p.school}</span></div>
-    <div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>
+    ${!EARLY_PROPHETS.has(p.famous) ? `<div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>` : ''}
     ${p.source ? `<div class="pc-row"><span class="pc-k">Source</span><span class="pc-v" style="display:flex;align-items:center;gap:6px"><span style="background:#6b3a0812;border:1px solid #6b3a0840;border-radius:3px;padding:1px 7px;font-size:11px;color:#6b3a08;font-weight:700;letter-spacing:.04em">📖 ${p.source}</span></span></div>` : ''}
     <div class="pc-section" style="margin-top:12px">Titles &amp; Honorifics</div>
     <div class="pc-all-titles">${p.titles}</div>
-    <div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>
+    ${!EARLY_PROPHETS.has(p.famous) ? `<div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>` : ''}
   `;
 
   const teacherList = (p.teachers||[]).filter(tn => PEOPLE.find(x=>x.famous===tn));
@@ -1232,26 +1235,28 @@ function openPopup(p, color, anchorX, anchorY) {
     html += `</div>`;
   }
 
-  const mag = p.books.filter(b=>b.magnum);
-  const oth = p.books.filter(b=>!b.magnum);
-  if(mag.length){
-    html += `<div class="magnum-label" style="color:${color}">✦ Magnum Opus</div>`;
-    mag.forEach(b=>{
-      html += `<div class="book-item magnum" style="border-color:${color}28">
-        <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
-        ${b.note?`<div class="book-note">${b.note}</div>`:''}
-        ${!b.url&&!b.note?`<div class="no-link">No confirmed free digital edition</div>`:''}
-      </div>`;
-    });
-  }
-  if(oth.length){
-    html += `<div class="other-label">Other Works</div>`;
-    oth.forEach(b=>{
-      html += `<div class="book-item">
-        <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
-        ${b.note?`<div class="book-note">${b.note}</div>`:''}
-      </div>`;
-    });
+  if(!EARLY_PROPHETS.has(p.famous)){
+    const mag = p.books.filter(b=>b.magnum);
+    const oth = p.books.filter(b=>!b.magnum);
+    if(mag.length){
+      html += `<div class="magnum-label" style="color:${color}">✦ Magnum Opus</div>`;
+      mag.forEach(b=>{
+        html += `<div class="book-item magnum" style="border-color:${color}28">
+          <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+          ${b.note?`<div class="book-note">${b.note}</div>`:''}
+          ${!b.url&&!b.note?`<div class="no-link">No confirmed free digital edition</div>`:''}
+        </div>`;
+      });
+    }
+    if(oth.length){
+      html += `<div class="other-label">Other Works</div>`;
+      oth.forEach(b=>{
+        html += `<div class="book-item">
+          <div>${(b.url&&b.url.startsWith('http'))?`<a class="book-title-link" href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`:`<span class="book-title-plain">${b.title}</span>`}${b.url?`<span class="free-badge">FREE</span>`:''}</div>
+          ${b.note?`<div class="book-note">${b.note}</div>`:''}
+        </div>`;
+      });
+    }
   }
 
   pcBody.innerHTML = html;
