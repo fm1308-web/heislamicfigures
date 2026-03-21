@@ -451,7 +451,7 @@
     "teachers": [
       "Prophet Muhammad"
     ],
-    "source": "Wikidata",
+    "source": "Tarikh al-Tabari / Sirat Ibn Hisham",
     "lat": 24.4672,
     "lng": 39.615
   },
@@ -481,7 +481,7 @@
     "teachers": [
       "Prophet Muhammad"
     ],
-    "source": "Wikidata",
+    "source": "Tarikh al-Tabari / Sirat Ibn Hisham",
     "lat": 24.4672,
     "lng": 39.615
   },
@@ -636,7 +636,7 @@
       "Ali ibn Abi Talib",
       "Prophet Muhammad"
     ],
-    "source": "Wikidata",
+    "source": "Tarikh al-Tabari / Sirat Ibn Hisham",
     "lat": 24.4672,
     "lng": 39.615
   },
@@ -667,7 +667,7 @@
       "Ali ibn Abi Talib",
       "Prophet Muhammad"
     ],
-    "source": "Wikidata",
+    "source": "Tarikh al-Tabari / Sirat Ibn Hisham",
     "lat": 32.6166,
     "lng": 44.028
   },
@@ -925,7 +925,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikidata",
+    "source": "Tarikh al-Tabari / Sirat Ibn Hisham",
     "lat": 24.4672,
     "lng": 39.615
   },
@@ -1015,7 +1015,8 @@
       }
     ],
     "teachers": [
-      "Ja'far al-Sadiq"
+      "Ja'far al-Sadiq",
+      "Hasan al-Basri"
     ],
     "source": "",
     "lat": 33.3,
@@ -1102,7 +1103,8 @@
       }
     ],
     "teachers": [
-      "Ja'far al-Sadiq"
+      "Ja'far al-Sadiq",
+      "Nafi' al-Madani"
     ],
     "source": "",
     "lat": 24.5,
@@ -4123,7 +4125,7 @@
       {
         "title": "Kitab al-Hind (Book of India — Indica)",
         "url": "https://archive.org/details/alberunisindia01biruuoft",
-        "magnum": true,
+        "magnum": false,
         "note": "First systematic comparative study of a non-Islamic civilization — unparalleled cross-cultural scholarship."
       },
       {
@@ -4137,6 +4139,12 @@
         "url": "https://en.wikipedia.org/wiki/Al-Biruni",
         "magnum": false,
         "note": "Wikipedia article"
+      },
+      {
+        "title": "Kitab al-Hind (Alberuni's India)",
+        "url": "https://archive.org/details/alberunisindia01biru",
+        "magnum": true,
+        "note": "Comprehensive study of Indian science, philosophy and culture"
       }
     ],
     "teachers": [
@@ -4729,7 +4737,7 @@
       {
         "title": "Ihya Ulum al-Din (Revival of the Religious Sciences)",
         "url": "https://archive.org/details/IhyaUlumAlDinVol1",
-        "magnum": true,
+        "magnum": false,
         "note": "Described as 'If all Islamic books were destroyed, the Ihya alone would suffice.' 4 volumes."
       },
       {
@@ -4749,6 +4757,18 @@
         "url": "https://en.wikipedia.org/wiki/Al-Ghazali",
         "magnum": false,
         "note": "Wikipedia article"
+      },
+      {
+        "title": "Ihya Ulum al-Din (English)",
+        "url": "https://archive.org/details/IhyaUlumAlDinVol3",
+        "magnum": true,
+        "note": "Revival of the Religious Sciences — cornerstone of Islamic spirituality"
+      },
+      {
+        "title": "Deliverance from Error",
+        "url": "https://ghazali.org/books/md-eng.pdf",
+        "magnum": false,
+        "note": "Al-Munqidh min al-Dalal — spiritual autobiography"
       }
     ],
     "teachers": [
@@ -5268,7 +5288,7 @@
       {
         "title": "Tahafut al-Tahafut (The Incoherence of the Incoherence)",
         "url": "https://archive.org/search?query=Incoherence%20Incoherence%20Averroes%20Ibn%20Rushd",
-        "magnum": true,
+        "magnum": false,
         "note": "Systematic refutation of al-Ghazali's attack on philosophy; the greatest medieval philosophical debate."
       },
       {
@@ -5282,6 +5302,12 @@
         "url": "https://archive.org/search?query=Decisive%20Treatise%20Ibn%20Rushd%20Averroes",
         "magnum": false,
         "note": ""
+      },
+      {
+        "title": "Tahafut al-Tahafut (English)",
+        "url": "https://archive.org/details/averroestahafuta0000ibnr",
+        "magnum": true,
+        "note": "Incoherence of the Incoherence — defence of philosophy against Al-Ghazali"
       }
     ],
     "teachers": [
@@ -6534,7 +6560,7 @@
       {
         "title": "Gulistan (The Rose Garden — prose and verse)",
         "url": "https://archive.org/details/GulestanSaadi",
-        "magnum": true,
+        "magnum": false,
         "note": "Most widely read Persian prose work in history — stories, aphorisms and moral teaching."
       },
       {
@@ -6542,6 +6568,12 @@
         "url": "https://archive.org/search?query=Bustan%20Saadi%20orchard%20Persian%20poetry",
         "magnum": false,
         "note": ""
+      },
+      {
+        "title": "Gulistan (Rose Garden)",
+        "url": "https://archive.org/details/gulistanrosegard00sadi",
+        "magnum": true,
+        "note": "Classic of ethical wisdom and Persian prose"
       }
     ],
     "teachers": [
@@ -7704,8 +7736,14 @@
       {
         "title": "Divan-i Hafez (~500 ghazals)",
         "url": "https://archive.org/search?query=Divan%20Hafez%20Shirazi%20ghazals%20Persian%20English%20translation",
-        "magnum": true,
+        "magnum": false,
         "note": "Used for divination throughout the Persian world. Goethe called it 'the greatest lyric poetry ever written.'"
+      },
+      {
+        "title": "Divan of Hafez (Gertrude Bell translation)",
+        "url": "https://archive.org/details/poemsfromdivanof00hafiia",
+        "magnum": true,
+        "note": "Master ghazals — the supreme voice of Persian mystical poetry"
       }
     ],
     "teachers": [
@@ -7881,7 +7919,7 @@
       {
         "title": "Muqaddimah (The Introduction to his Universal History)",
         "url": "https://archive.org/details/muqaddimahibn00khaldun",
-        "magnum": true,
+        "magnum": false,
         "note": "The greatest work of historiography ever written — Arnold Toynbee called it 'the most comprehensive philosophic effort.'"
       },
       {
@@ -7895,6 +7933,12 @@
         "url": "https://en.wikipedia.org/wiki/Ibn_Khaldun",
         "magnum": false,
         "note": "Wikipedia article"
+      },
+      {
+        "title": "Muqaddimah (English)",
+        "url": "https://archive.org/details/muqaddimahintrod0000ibnk",
+        "magnum": true,
+        "note": "Introduction to History — first empirical philosophy of history"
       }
     ],
     "teachers": [
@@ -13050,7 +13094,7 @@
       {
         "title": "Qisas al-Anbiya (Ibn Kathir)",
         "url": "https://archive.org/search?query=Qisas+al-Anbiya+Ibn+Kathir",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary source for Adam's story in Islamic tradition"
       },
       {
@@ -13061,7 +13105,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 33.34,
     "lng": 44.4
   },
@@ -13090,14 +13134,14 @@
       {
         "title": "Qisas al-Anbiya (Ibn Kathir)",
         "url": "https://archive.org/search?query=Qisas+al-Anbiya+Ibn+Kathir",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
     "teachers": [
       "Yared ibn Mahlail"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 30.04,
     "lng": 31.24
   },
@@ -13120,7 +13164,7 @@
       {
         "title": "Quran — Sura Nuh (71)",
         "url": "https://quran.com/71",
-        "magnum": true,
+        "magnum": false,
         "note": "The full sura dedicated to Nuh's mission"
       },
       {
@@ -13133,7 +13177,7 @@
     "teachers": [
       "Lamak ibn Mattushalakh"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 39.7,
     "lng": 44.3
   },
@@ -13156,7 +13200,7 @@
       {
         "title": "Quran — Sura Hud (11)",
         "url": "https://quran.com/11",
-        "magnum": true,
+        "magnum": false,
         "note": "Contains the full account of Hud and the 'Ad"
       },
       {
@@ -13167,7 +13211,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 15.35,
     "lng": 44.21
   },
@@ -13190,7 +13234,7 @@
       {
         "title": "Quran — Sura al-A'raf (7:73–79)",
         "url": "https://quran.com/7/73",
-        "magnum": true,
+        "magnum": false,
         "note": "The story of Salih and Thamud"
       },
       {
@@ -13201,7 +13245,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 26.78,
     "lng": 37.98
   },
@@ -13224,7 +13268,7 @@
       {
         "title": "Quran — Sura Ibrahim (14)",
         "url": "https://quran.com/14",
-        "magnum": true,
+        "magnum": false,
         "note": "The sura named for Ibrahim, containing his supplications"
       },
       {
@@ -13237,7 +13281,7 @@
     "teachers": [
       "Azar ibn Nahur"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 30.96,
     "lng": 46.1
   },
@@ -13260,7 +13304,7 @@
       {
         "title": "Quran — Sura Hud (11:77–83)",
         "url": "https://quran.com/11/77",
-        "magnum": true,
+        "magnum": false,
         "note": "The full account of Lut and the destruction of his people"
       },
       {
@@ -13273,7 +13317,7 @@
     "teachers": [
       "Ibrahim"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.5,
     "lng": 35.5
   },
@@ -13296,7 +13340,7 @@
       {
         "title": "Quran — Sura al-Saffat (37:101–113)",
         "url": "https://quran.com/37/101",
-        "magnum": true,
+        "magnum": false,
         "note": "The account of the sacrifice of Ismail"
       },
       {
@@ -13309,7 +13353,7 @@
     "teachers": [
       "Ibrahim"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 21.42,
     "lng": 39.83
   },
@@ -13338,14 +13382,14 @@
       {
         "title": "Qisas al-Anbiya (Ibn Kathir)",
         "url": "https://archive.org/search?query=Qisas+al-Anbiya+Ibn+Kathir",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
     "teachers": [
       "Ibrahim"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.53,
     "lng": 35.1
   },
@@ -13368,7 +13412,7 @@
       {
         "title": "Quran — Sura Yusuf (12)",
         "url": "https://quran.com/12",
-        "magnum": true,
+        "magnum": false,
         "note": "Yaqub features prominently in the story of his son Yusuf"
       },
       {
@@ -13381,7 +13425,7 @@
     "teachers": [
       "Ishaq"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.53,
     "lng": 35.1
   },
@@ -13404,7 +13448,7 @@
       {
         "title": "Quran — Sura Yusuf (12)",
         "url": "https://quran.com/12",
-        "magnum": true,
+        "magnum": false,
         "note": "The only Quranic sura dedicated entirely to one prophet's story"
       },
       {
@@ -13417,7 +13461,7 @@
     "teachers": [
       "Yaqub"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 30.04,
     "lng": 31.24
   },
@@ -13440,7 +13484,7 @@
       {
         "title": "Quran — Sura al-A'raf (7:85–93)",
         "url": "https://quran.com/7/85",
-        "magnum": true,
+        "magnum": false,
         "note": "The mission of Shu'ayb to the people of Midian"
       },
       {
@@ -13451,7 +13495,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 28.37,
     "lng": 34.8
   },
@@ -13474,7 +13518,7 @@
       {
         "title": "Quran — Sura al-Anbiya (21:83–84)",
         "url": "https://quran.com/21/83",
-        "magnum": true,
+        "magnum": false,
         "note": "Ayyub's supplication and restoration"
       },
       {
@@ -13485,7 +13529,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 32.6,
     "lng": 36.1
   },
@@ -13508,7 +13552,7 @@
       {
         "title": "Quran — Sura Ta-Ha (20)",
         "url": "https://quran.com/20",
-        "magnum": true,
+        "magnum": false,
         "note": "A complete retelling of Musa's mission"
       },
       {
@@ -13525,7 +13569,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 28.5,
     "lng": 33.8
   },
@@ -13548,7 +13592,7 @@
       {
         "title": "Quran — Sura Ta-Ha (20:29–36)",
         "url": "https://quran.com/20/29",
-        "magnum": true,
+        "magnum": false,
         "note": "Musa's prayer to God to appoint Harun as his helper"
       },
       {
@@ -13561,7 +13605,7 @@
     "teachers": [
       "Musa"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 29.5,
     "lng": 34.5
   },
@@ -13584,7 +13628,7 @@
       {
         "title": "Quran — Sura al-Anbiya (21:85–86)",
         "url": "https://quran.com/21/85",
-        "magnum": true,
+        "magnum": false,
         "note": "Brief Quranic mention of Dhul-Kifl among the patient"
       },
       {
@@ -13595,7 +13639,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 32.56,
     "lng": 44.42
   },
@@ -13618,7 +13662,7 @@
       {
         "title": "Quran — Sura Saba' (34:10–11)",
         "url": "https://quran.com/34/10",
-        "magnum": true,
+        "magnum": false,
         "note": "God's gifts to Dawud: softening iron and the glorification of mountains"
       },
       {
@@ -13629,7 +13673,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.78,
     "lng": 35.24
   },
@@ -13652,7 +13696,7 @@
       {
         "title": "Quran — Sura al-Naml (27:15–44)",
         "url": "https://quran.com/27/15",
-        "magnum": true,
+        "magnum": false,
         "note": "The story of Sulayman, the hoopoe, and the Queen of Sheba"
       },
       {
@@ -13665,7 +13709,7 @@
     "teachers": [
       "Dawud"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.78,
     "lng": 35.24
   },
@@ -13688,7 +13732,7 @@
       {
         "title": "Quran — Sura al-Saffat (37:123–132)",
         "url": "https://quran.com/37/123",
-        "magnum": true,
+        "magnum": false,
         "note": "The Quranic account of Ilyas among the messengers"
       },
       {
@@ -13699,7 +13743,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 32.73,
     "lng": 35.06
   },
@@ -13722,7 +13766,7 @@
       {
         "title": "Quran — Sura al-An'am (6:86)",
         "url": "https://quran.com/6/86",
-        "magnum": true,
+        "magnum": false,
         "note": "Al-Yasa' listed among the prophets guided by God"
       },
       {
@@ -13735,7 +13779,7 @@
     "teachers": [
       "Ilyas"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 32.3,
     "lng": 35.2
   },
@@ -13758,7 +13802,7 @@
       {
         "title": "Quran — Sura Yunus (10)",
         "url": "https://quran.com/10",
-        "magnum": true,
+        "magnum": false,
         "note": "The sura named for Yunus"
       },
       {
@@ -13775,7 +13819,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 36.33,
     "lng": 43.12
   },
@@ -13798,7 +13842,7 @@
       {
         "title": "Quran — Sura Maryam (19:2–11)",
         "url": "https://quran.com/19/2",
-        "magnum": true,
+        "magnum": false,
         "note": "The prayer of Zakariyya and the announcement of Yahya"
       },
       {
@@ -13809,7 +13853,7 @@
       }
     ],
     "teachers": [],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.78,
     "lng": 35.24
   },
@@ -13832,7 +13876,7 @@
       {
         "title": "Quran — Sura Maryam (19:12–15)",
         "url": "https://quran.com/19/12",
-        "magnum": true,
+        "magnum": false,
         "note": "God's gifts to Yahya: wisdom, compassion, and purity"
       },
       {
@@ -13845,7 +13889,7 @@
     "teachers": [
       "Zakariyya"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 31.84,
     "lng": 35.55
   },
@@ -13868,7 +13912,7 @@
       {
         "title": "Quran — Sura Maryam (19:16–40)",
         "url": "https://quran.com/19/16",
-        "magnum": true,
+        "magnum": false,
         "note": "The birth of Isa and his first miracle of speaking as an infant"
       },
       {
@@ -13888,7 +13932,7 @@
       "Zakariyya",
       "Yahya"
     ],
-    "source": "Wikipedia",
+    "source": "Quran / Tarikh al-Tabari",
     "lat": 32.7,
     "lng": 35.3
   },
@@ -13911,7 +13955,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       },
       {
@@ -13953,7 +13997,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -13990,7 +14034,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14027,7 +14071,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14064,7 +14108,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14101,7 +14145,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14137,7 +14181,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14174,7 +14218,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       },
       {
@@ -14216,7 +14260,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14253,7 +14297,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14290,7 +14334,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14327,7 +14371,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14364,7 +14408,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14401,7 +14445,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14438,7 +14482,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14475,13 +14519,13 @@
       {
         "title": "Quran — Sura al-An'am (6:74)",
         "url": "https://quran.com/6/74",
-        "magnum": true,
+        "magnum": false,
         "note": "Ibrahim's address to his father Azar about idol worship"
       },
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       },
       {
@@ -14517,7 +14561,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14559,7 +14603,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
@@ -14589,7 +14633,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14625,7 +14669,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14662,7 +14706,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14699,7 +14743,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14736,7 +14780,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14773,7 +14817,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14810,7 +14854,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14847,7 +14891,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14884,7 +14928,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14927,7 +14971,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
@@ -14957,7 +15001,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -14994,7 +15038,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -15031,7 +15075,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -15068,7 +15112,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -15105,7 +15149,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -15142,13 +15186,13 @@
       {
         "title": "Sirat Rasul Allah (Ibn Ishaq / Ibn Hisham)",
         "url": "https://archive.org/search?query=Sirat+Ibn+Hisham",
-        "magnum": true,
+        "magnum": false,
         "note": "Account of Qusayy's conquest of Mecca and establishment of Quraysh rule"
       },
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
@@ -15178,7 +15222,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Primary Islamic source for pre-Islamic genealogical chains"
       },
       {
@@ -15215,7 +15259,7 @@
       {
         "title": "Quran — Sura Quraysh (106)",
         "url": "https://quran.com/106",
-        "magnum": true,
+        "magnum": false,
         "note": "The winter and summer caravans established by Hashim ibn Abd Manaf"
       },
       {
@@ -15227,7 +15271,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
@@ -15257,7 +15301,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": "Account of Abd al-Muttalib, the Zamzam well, and the Year of the Elephant"
       },
       {
@@ -15305,7 +15349,7 @@
       {
         "title": "Tarikh al-Tabari",
         "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": true,
+        "magnum": false,
         "note": ""
       }
     ],
