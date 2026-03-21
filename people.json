@@ -23032,5 +23032,922 @@
     "source": "",
     "lat": 51.5074,
     "lng": -0.1278
+  },
+  {
+    "famous": "Fatimah al-Zahra",
+    "tradition": "Islamic History",
+    "type": "Sahaba",
+    "primaryTitle": "al-Zahrāʾ — The Radiant One",
+    "full": "Fāṭimah bint Muḥammad ibn ʿAbdillāh al-Hāshimiyya",
+    "dob": 605,
+    "dod": 632,
+    "dob_s": "disputed",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Ahl al-Bayt",
+    "lang": "Arabic",
+    "titles": "al-Zahrāʾ (The Radiant) · al-Baṭūl (The Pure) · Umm Abīhā (Mother of Her Father) · Sayyidat Nisāʾ al-ʿĀlamīn (Lady of the Women of the Worlds) · al-Ṣiddīqa",
+    "school": "Youngest daughter of the Prophet Muhammad and Khadijah bint Khuwaylid; wife of Ali ibn Abi Talib and mother of Hasan, Husayn, Zaynab and Umm Kulthum — the sole surviving line through which the Prophet's descendants continue to this day. The Prophet declared her the Sayyidat Nisāʾ al-Janna (foremost woman of Paradise) and rose to greet her whenever she entered a room. She died only six months after her father in 632 CE, still mourning his loss, and was the first of his family to follow him in death.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary classical biography with chains of transmission on her life and death"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 2)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Detailed biographical entry in the canonical dictionary of noble figures"
+      },
+      {
+        "title": "Fatimah al-Zahra — World History Encyclopedia",
+        "url": "https://www.worldhistory.org/Fatimah_bint_Muhammad/",
+        "magnum": false,
+        "note": "Modern scholarly overview of her life and significance"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Khadijah bint Khuwaylid",
+      "Ali ibn Abi Talib"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · al-Ṭabarī — Tārīkh al-Rusul wa-l-Mulūk",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Umm Salamah",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Umm al-Muʾminīn — Mother of the Believers",
+    "full": "Hind bint Abi Umayyah ibn al-Mughīra al-Makhzūmiyya",
+    "dob": 580,
+    "dod": 681,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Umm al-Muʾminīn",
+    "lang": "Arabic",
+    "titles": "Umm al-Muʾminīn · Zād al-Rākib (for her father's epithet: Provider of the Traveller) · Akhbar al-Umahāt (Most Knowledgeable of the Mothers)",
+    "school": "Sixth wife of the Prophet Muhammad and the last of the Mothers of the Believers to pass away; she narrated 378 hadiths — the second-highest tally among the Prophet's wives after Aisha. Among the earliest Muslims to migrate to Abyssinia, she endured the forced separation of her husband and infant son during the Hijra. Her counsel at the Treaty of Hudaybiyya, advising the Prophet to lead by example rather than speaking to the companions, averted a potential crisis. The verse of purification (33:33) was revealed in her house.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Contains her detailed biography and list of hadith transmissions"
+      },
+      {
+        "title": "Musnad Umm Salamah — Hadith collection",
+        "url": "https://sunnah.com/search?q=Umm+Salama",
+        "magnum": true,
+        "note": "Compiled collection of her 378 narrations accessible via Sunnah.com"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 2)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Biographical entry with full chain of transmission details"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Abu Salamah ibn Abd al-Asad"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Ḥajar — al-Iṣāba",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Hafsa bint Umar",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Umm al-Muʾminīn — Custodian of the Quran",
+    "full": "Ḥafṣah bint ʿUmar ibn al-Khaṭṭāb al-ʿAdawiyya al-Qurashiyya",
+    "dob": 605,
+    "dod": 665,
+    "dob_s": "approximate",
+    "dod_s": "certain",
+    "city": "Medina",
+    "classif": "Companion / Umm al-Muʾminīn",
+    "lang": "Arabic",
+    "titles": "Umm al-Muʾminīn · Ḥāfiẓat al-Muṣḥaf (Guardian of the Quran Manuscript) · Ṣawwāma Qawwāma (Devoted to Fasting and Prayer)",
+    "school": "Fourth wife of the Prophet Muhammad and daughter of the second Caliph Umar ibn al-Khattab; entrusted by Abu Bakr with the first written compilation of the Quran after the Battle of Yamama, which remained in her home as the master manuscript. Uthman later used her copy as the reference for his standardised Quran. The angel Jibrīl described her to the Prophet as a woman of prayer and fasting who would be his wife in Paradise. She narrated 60 hadiths, with six appearing in both Bukhari and Muslim.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary source for her biography and the Quranic manuscript preservation narrative"
+      },
+      {
+        "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri",
+        "url": "https://sunnah.com/bukhari",
+        "magnum": false,
+        "note": "Contains her narrations including the famous account of the Quranic compilation"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 2)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Detailed account of her life and scholarship"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Umar ibn al-Khattab"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Bukhāri — Ṣaḥīḥ · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Umm Habibah",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Umm al-Muʾminīn — Married from Across the Sea",
+    "full": "Ramlah bint Abi Sufyān Ṣakhr ibn Ḥarb al-Umawiyya al-Qurashiyya",
+    "dob": 589,
+    "dod": 665,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Umm al-Muʾminīn",
+    "lang": "Arabic",
+    "titles": "Umm Ḥabībah · Umm al-Muʾminīn · Bint Sayyid al-Quraysh (Daughter of the Quraysh Chief)",
+    "school": "Among the earliest converts to Islam despite her father Abu Sufyan being the foremost enemy of the Prophet; she migrated to Abyssinia where her husband Ubaydullah ibn Jahsh apostatised. The Negus of Abyssinia conducted her marriage to the Prophet on his behalf as a unique proxy ceremony across the sea. Her steadfast faith in isolation — divorced and abroad — is celebrated as a model of conviction. She narrated 65 hadiths and is ranked third in knowledge among the Mothers of the Believers.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Detailed account of her migration, marriage in Abyssinia, and hadith transmissions"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 2)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Biographical entry with notes on her narrations"
+      },
+      {
+        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
+        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
+        "magnum": false,
+        "note": "Standard reference entry among the companions"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Ḥajar — al-Iṣāba",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Asma bint Abi Bakr",
+    "tradition": "Islamic History",
+    "type": "Sahaba",
+    "primaryTitle": "Dhāt al-Niṭāqayn — She of the Two Belts",
+    "full": "Asmāʾ bint Abi Bakr ibn Abi Quḥāfa al-Qurashiyya al-Taymiyya",
+    "dob": 595,
+    "dod": 693,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Mecca",
+    "classif": "Companion / Ṣaḥābiyya",
+    "lang": "Arabic",
+    "titles": "Dhāt al-Niṭāqayn (She of the Two Belts) · Last of the Muhājirūn · Mother of Caliph ʿAbdullāh ibn al-Zubayr",
+    "school": "Elder half-sister of Aisha and daughter of Abu Bakr; she earned her celebrated title by tearing her belt in two to secure provisions for the Prophet and her father hiding in Cave Thawr before the Hijra — doing so while seven months pregnant. One of the first 17-18 Muslims, she defied Abu Jahl's intimidation at her doorstep and later famously exhorted her son Abdullah ibn al-Zubayr to die with honour rather than surrender to al-Hajjaj. She died in 73 AH aged approximately 100, the last surviving Muhājir. Narrated 58 hadiths.",
+    "books": [
+      {
+        "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri (Kitab al-Manaqib)",
+        "url": "https://sunnah.com/bukhari:3916",
+        "magnum": false,
+        "note": "Contains the famous 'Two Belts' hadith and key narrations from Asma"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Full biographical entry with hadith transmissions"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 2)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Detailed account including her final years and confrontation with al-Hajjaj"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Abu Bakr al-Siddiq",
+      "Aisha bint Abi Bakr",
+      "Zubayr ibn al-Awwam"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Kathīr — al-Bidāya wa-l-Nihāya",
+    "lat": 21.39,
+    "lng": 39.86
+  },
+  {
+    "famous": "Asma bint Umays",
+    "tradition": "Islamic History",
+    "type": "Sahaba",
+    "primaryTitle": "Dhāt al-Hijratayn — Woman of Two Migrations",
+    "full": "Asmāʾ bint ʿUmays ibn Maʿad al-Khathʿamiyya",
+    "dob": 599,
+    "dod": 661,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Ṣaḥābiyya",
+    "lang": "Arabic",
+    "titles": "Dhāt al-Hijratayn (Woman of Two Migrations) · al-Akhawāt al-Muʾmināt (The Believing Sisters — with Maymunah and Umm al-Faḍl)",
+    "school": "Among the earliest converts to Islam, Asma migrated twice — to Abyssinia with her first husband Jafar ibn Abi Talib, then to Medina. After Jafar's martyrdom at the Battle of Muta (629 CE) she successively married Abu Bakr al-Siddiq and later Ali ibn Abi Talib, making her the sole woman in Islamic history to have been wife to three of the four Rightly Guided Caliphs' closest circle. She was the confidante of Fatimah al-Zahra, washed her body at death per her final wishes, and was present at the most pivotal moments of the Prophetic era.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Most detailed classical biographical source on her three marriages and narrations"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 2)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Key biographical entry with analysis of her historical significance"
+      },
+      {
+        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
+        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
+        "magnum": false,
+        "note": "Standard companions reference entry for Asma bint Umays"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Jafar ibn Abi Talib",
+      "Ali ibn Abi Talib",
+      "Abu Bakr al-Siddiq"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Ḥajar — al-Iṣāba",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Umm Atiyya al-Ansariyyah",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Nusaybah bint al-Ḥārith — Authority on the Funeral Bath",
+    "full": "Nusaybah bint al-Ḥārith al-Anṣāriyya al-Khazrajiyya",
+    "dob": 600,
+    "dod": 680,
+    "dob_s": "unknown",
+    "dod_s": "approximate",
+    "city": "Basra",
+    "classif": "Companion / Ṣaḥābiyya",
+    "lang": "Arabic",
+    "titles": "Umm ʿAṭiyya · Nusaybah bint al-Ḥārith",
+    "school": "Anṣārī female companion who accompanied the Prophet on seven military campaigns, nursing the wounded and preparing food. The Prophet personally instructed her in the ritual washing of Zaynab bint Muhammad's body, and her transmission of this procedure became the definitive juristic source across all schools of Islamic law for the funeral bath of women. Al-Ṭabarānī preserved 85 of her traditions; six appear in both Bukhari and Muslim. She later taught in Basra, where Ali ibn Abi Talib visited her.",
+    "books": [
+      {
+        "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri",
+        "url": "https://sunnah.com/search?q=Umm+Atiyya",
+        "magnum": false,
+        "note": "Contains her pivotal hadiths on the funeral bath, Eid prayer attendance, and mourning"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary biographical source with full chain of transmitters from her"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 3)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Classified among the foremost female scholars with a detailed entry"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Umar ibn al-Khattab"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn ʿAbd al-Barr — al-Istīʿāb",
+    "lat": 30.5,
+    "lng": 47.78
+  },
+  {
+    "famous": "Asma bint Yazid",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Khaṭībat al-Nisāʾ — Orator of the Women",
+    "full": "Asmāʾ bint Yazīd ibn al-Sakan al-Anṣāriyya al-Awsiyya",
+    "dob": 599,
+    "dod": 688,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Damascus",
+    "classif": "Companion / Ṣaḥābiyya",
+    "lang": "Arabic",
+    "titles": "Khaṭībat al-Nisāʾ (Orator of the Women) · Safīrat al-Nisāʾ (Spokesperson of the Women)",
+    "school": "The most eloquent female companion of the Prophet; she famously approached the Prophet as delegate for all Muslim women to raise the question of spiritual equality and reward between men and women — a speech the Prophet praised as surpassing anything he had heard from a woman. She narrated 81 hadiths — the highest count among Anṣārī women. She accompanied the Conquest of Mecca and at the Battle of al-Yarmuk (636 CE) fought with a tent pole, reportedly killing nine Byzantine soldiers. She died in Damascus after a long life of teaching.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary classical source for her life, eloquence, and hadith corpus"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Biographical entry describing her as one of the foremost female companions"
+      },
+      {
+        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
+        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
+        "magnum": false,
+        "note": "Standard reference with detail on her 81 narrations and their classification"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Ḥajar — al-Iṣāba",
+    "lat": 33.51,
+    "lng": 36.29
+  },
+  {
+    "famous": "Ayyub al-Sakhtiyani",
+    "tradition": "Hadith Sciences",
+    "type": "Tabi'un",
+    "primaryTitle": "Abū Bakr al-Baṣrī — Imām of the Hadith Scholars of Basra",
+    "full": "Ayyūb ibn Abi Tamīma Kaysān al-Sakhtiyānī al-Baṣrī",
+    "dob": 687,
+    "dod": 748,
+    "dob_s": "approximate",
+    "dod_s": "certain",
+    "city": "Basra",
+    "classif": "Tābiʿī / Hadith Scholar",
+    "lang": "Arabic",
+    "titles": "Abū Bakr al-Baṣrī · Sayyid Aḥdāth al-Baṣra (Master of the Youth of Basra — per Hasan al-Basri) · Imām Ahl al-Baṣra",
+    "school": "One of the foremost authorities among the Tābiʿīn and a towering pillar of Sunni hadith scholarship; Sufyan ibn ʿUyayna said he met 86 Tabi'in but none was like Ayyub. He studied under al-Hasan al-Basri, Nafī Mawlā Ibn ʿUmar, and Muhammad ibn Sirin, and was himself a teacher of Shuʿba ibn al-Ḥajjāj, Sufyan al-Thawri, and Ḥammād ibn Zayd. A resolute defender of Sunnah doctrine against early Muʿtazilite theology, he died in Basra during the great plague of 131 AH.",
+    "books": [
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 6)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Detailed biographical and scholarly entry on Ayyub al-Sakhtiyani"
+      },
+      {
+        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
+        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
+        "magnum": false,
+        "note": "Definitive rijal reference with his teachers, students, and critical assessment"
+      },
+      {
+        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
+        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
+        "magnum": false,
+        "note": "Key hadith-science reference for his classification and reliability"
+      }
+    ],
+    "teachers": [
+      "al-Hasan al-Basri",
+      "Nafi Mawla ibn Umar",
+      "Muhammad ibn Sirin",
+      "Qatada ibn Diama"
+    ],
+    "source": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Ḥajar — Tahdhīb al-Tahdhīb · al-Mizzī — Tahdhīb al-Kamāl",
+    "lat": 30.5,
+    "lng": 47.78
+  },
+  {
+    "famous": "Hafsa bint Sirin",
+    "tradition": "Hadith Sciences",
+    "type": "Tabi'un",
+    "primaryTitle": "Umm Hudhayl — Pioneer of Female Asceticism in Islam",
+    "full": "Ḥafṣah bint Sīrīn al-Baṣriyya, Mawlāt Anas ibn Mālik",
+    "dob": 651,
+    "dod": 719,
+    "dob_s": "certain",
+    "dod_s": "approximate",
+    "city": "Basra",
+    "classif": "Tābiʿīyah / Jurist and Ascetic",
+    "lang": "Arabic",
+    "titles": "Umm Hudhayl · Iyas ibn Muʿāwiya's verdict: 'I have met no one I prefer over her'",
+    "school": "8th-century jurist, ascetic, and Qurʾānic scholar from Basra; she memorised the entire Quran by age twelve and mastered all modes of recitation. Her brother Muhammad ibn Sirin — himself one of the greatest Tabi'un scholars — deferred to her on questions of Qurʾānic recitation. The judge Iyas ibn Muʿāwiya, asked to compare her to Hasan al-Basri and her own brother Muhammad, answered 'I do not prefer anyone over her.' Called a 'pioneer of female asceticism in Islam' by later scholars. Narrated 17 hadiths primarily from Anas ibn Malik and Umm Atiyya.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 7)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Biographical details on her piety, scholarship, and family connections"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Key scholarly assessment of her rank among the Tabi'un"
+      },
+      {
+        "title": "Muḥammad ibn al-Ḥusayn al-Sulamī — Dhikr al-Niswā al-Mutaʿabbidāt",
+        "url": "https://archive.org/search?query=Dhikr+Niswa+Mutaabbidat+Sulami",
+        "magnum": false,
+        "note": "Dedicated chapter on her as a pioneer of female Islamic asceticism"
+      }
+    ],
+    "teachers": [
+      "Anas ibn Malik",
+      "Umm Atiyya al-Ansariyyah",
+      "Abu al-Aliya",
+      "Rabi ibn Ziyad"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · al-Mizzī — Tahdhīb al-Kamāl",
+    "lat": 30.5,
+    "lng": 47.78
+  },
+  {
+    "famous": "Amrah bint Abd al-Rahman",
+    "tradition": "Hadith Sciences",
+    "type": "Tabi'un",
+    "primaryTitle": "Baḥr al-ʿIlm — The Ocean of Knowledge",
+    "full": "ʿAmrah bint ʿAbd al-Raḥmān ibn Saʿd ibn Zurāra al-Anṣāriyya al-Najjāriyya al-Madaniyya",
+    "dob": 645,
+    "dod": 717,
+    "dob_s": "approximate",
+    "dod_s": "certain",
+    "city": "Medina",
+    "classif": "Tābiʿīyah / Jurist and Hadith Scholar",
+    "lang": "Arabic",
+    "titles": "Baḥr al-ʿIlm (Ocean of Knowledge — per Ibn Shihāb al-Zuhrī) · Kātibat ʿĀʾisha (Secretary of Aisha)",
+    "school": "The foremost transmitter of Aisha's prophetic traditions; raised in Aisha's household after her father's death, she absorbed the complete corpus of Aisha's hadith knowledge. Al-Zuhrī called her 'an inexhaustible ocean' after his first visit; Caliph Umar ibn Abd al-Aziz ordered the official recording of her narrations alone. Her juridical rulings overrode male judges in Medina — as in the famous case of the Christian thief whose hand she prevented from being cut — accepted without challenge by the sitting judge. Imam Sufyan ibn ʿUyayna ranked her alongside al-Qasim ibn Muhammad and Urwah ibn al-Zubayr as the three most authoritative transmitters of Aisha's hadiths.",
+    "books": [
+      {
+        "title": "Imam Mālik — al-Muwaṭṭaʾ",
+        "url": "https://sunnah.com/malik",
+        "magnum": false,
+        "note": "Contains the famous khulʿ case and other key rulings traced through Amrah"
+      },
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Detailed biographical entry with scholarly evaluations of her reliability"
+      },
+      {
+        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
+        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
+        "magnum": false,
+        "note": "Full rijal assessment confirming her authority as a hadith transmitter"
+      }
+    ],
+    "teachers": [
+      "Aisha bint Abi Bakr",
+      "Umm Salamah",
+      "Umm Habibah",
+      "Rafi ibn Khadij"
+    ],
+    "source": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · Ibn Ḥajar — Tahdhīb al-Tahdhīb · Imām Mālik — al-Muwaṭṭaʾ",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Zaynab bint Abi Salamah",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Step-Daughter of the Prophet — Born in Abyssinia",
+    "full": "Zaynab bint ʿAbdullāh ibn ʿAbd al-Asad al-Makhzūmiyya (born Barra; renamed Zaynab by the Prophet)",
+    "dob": 617,
+    "dod": 692,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Step-Daughter of the Prophet",
+    "lang": "Arabic",
+    "titles": "Zaynab (renamed by the Prophet from Barra) · Rabībat Rasūlillāh (Step-Daughter of the Messenger)",
+    "school": "Born in Abyssinia during the first Muslim migration, step-daughter of the Prophet through his marriage to her mother Umm Salamah. The Prophet renamed her Zaynab and raised her in his household with great affection — reportedly splashing blessed water on her face in play, a gesture said to have preserved her youthful appearance into old age. She transmitted hadith from Umm Salamah, Aisha, Zaynab bint Jahsh, and Umm Habibah, forming a rare first-hand bridge to the inner household of the Prophet. Eight of her traditions are preserved by al-Ṭabarānī.",
+    "books": [
+      {
+        "title": "al-Ṭabarānī — al-Muʿjam al-Kabīr",
+        "url": "https://archive.org/search?query=Mujam+al-Kabir+Tabarani",
+        "magnum": false,
+        "note": "Preserves eight of her traditions with chains of transmission"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary biographical source on her birth, naming, and transmissions"
+      },
+      {
+        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
+        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
+        "magnum": false,
+        "note": "Key companions reference confirming her status and death year"
+      }
+    ],
+    "teachers": [
+      "Umm Salamah",
+      "Aisha bint Abi Bakr",
+      "Zaynab bint Jahsh",
+      "Umm Habibah"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn ʿAbd al-Barr — al-Istīʿāb · al-Ṭabarānī — al-Muʿjam al-Kabīr",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Aisha bint Talha",
+    "tradition": "Islamic History",
+    "type": "Tabi'un",
+    "primaryTitle": "Niece of Aisha bint Abi Bakr",
+    "full": "ʿĀʾisha bint Ṭalḥa ibn ʿUbaydillāh al-Taymiyya al-Qurashiyya",
+    "dob": 645,
+    "dod": 724,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Tābiʿīyah / Narrator",
+    "lang": "Arabic",
+    "titles": "Bint Ṭalḥa · Bint al-Ṣaḥābi al-Shahīd (Daughter of the Martyred Companion)",
+    "school": "Daughter of Talha ibn Ubaydillah — one of the Ten Companions Promised Paradise — and niece of Aisha bint Abi Bakr through her mother Umm Kulthum bint Abi Bakr. She grew up in close contact with her famous aunt and became a significant transmitter of Aisha's hadith corpus. Her name appears as a key node in the isnad network linking the household of the first Caliph Abu Bakr to the second and third hadith generations. She is cited as a narrator by major successors including Muawiya ibn Ishaq and Ibn Abi Najih.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Biographical entry on the daughters of the companions"
+      },
+      {
+        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
+        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
+        "magnum": false,
+        "note": "Rijal reference confirming her as a reliable female narrator"
+      },
+      {
+        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
+        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
+        "magnum": false,
+        "note": "Assessment of her place in the hadith transmission chain"
+      }
+    ],
+    "teachers": [
+      "Aisha bint Abi Bakr",
+      "Urwah ibn al-Zubayr"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · al-Mizzī — Tahdhīb al-Kamāl · Ibn Ḥajar — Tahdhīb al-Tahdhīb",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Safiyya bint Shayba",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "Narrator from the Mothers of the Believers",
+    "full": "Ṣafiyya bint Shayba ibn ʿUthmān ibn Abi Ṭalḥa al-ʿAbdariyya al-Qurashiyya",
+    "dob": 620,
+    "dod": 703,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Mecca",
+    "classif": "Companion / Ṣaḥābiyya",
+    "lang": "Arabic",
+    "titles": "Ṣafiyya bint Shayba · min Ahl Makkah (Meccan Companion)",
+    "school": "Female companion from the Custodians of the Kaaba (Banu Shayba) who narrated traditions directly from several of the Prophet's wives, forming a critical link in the hadith transmission network radiating from the Mothers of the Believers. Narrated from Aisha, Umm Salamah, Umm Habibah and Maymunah, as well as from the companion Asma bint Abi Bakr. Her son Abd al-Hamid ibn Jubayr and grandson Umayyah ibn Safwan were themselves transmitters who carried her traditions to the second generation.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary biographical source for her entries among the female companions"
+      },
+      {
+        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
+        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
+        "magnum": false,
+        "note": "Standard companions reference with her classification and narrations"
+      },
+      {
+        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
+        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
+        "magnum": false,
+        "note": "Rijal assessment confirming her reliability as a narrator"
+      }
+    ],
+    "teachers": [
+      "Aisha bint Abi Bakr",
+      "Umm Salamah",
+      "Umm Habibah",
+      "Asma bint Abi Bakr"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn Ḥajar — al-Iṣāba · al-Mizzī — Tahdhīb al-Kamāl",
+    "lat": 21.39,
+    "lng": 39.86
+  },
+  {
+    "famous": "Abu Salamah ibn Abd al-Rahman",
+    "tradition": "Hadith Sciences",
+    "type": "Tabi'un",
+    "primaryTitle": "One of the Seven Jurists of Medina",
+    "full": "Abu Salamah ʿAbdullāh ibn ʿAbd al-Raḥmān ibn ʿAwf al-Qurashi al-Zuhrī al-Madanī",
+    "dob": 635,
+    "dod": 712,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Tābiʿī / Jurist",
+    "lang": "Arabic",
+    "titles": "Aḥad al-Fuqahāʾ al-Sabʿa (One of the Seven Jurists of Medina) · Abū Salamah",
+    "school": "Son of Abd al-Rahman ibn Awf — one of the Ten Companions Promised Paradise — and a leading Medinan jurist counted among the Seven Jurists of Medina (al-Fuqahāʾ al-Sabʿa) whose legal opinions formed the foundation of Medinan and Maliki jurisprudence. He transmitted extensively from Aisha, Umm Salamah, Abu Hurayrah, and other companions, and was himself a teacher of Ibn Shihab al-Zuhri, Yahya ibn Said al-Ansari, and Muhammad ibn Ibrahim al-Taymi.",
+    "books": [
+      {
+        "title": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ (Vol. 4)",
+        "url": "https://archive.org/search?query=Siyar+Alam+al-Nubala+Dhahabi",
+        "magnum": false,
+        "note": "Detailed entry on his juristic career and standing among the Seven Jurists"
+      },
+      {
+        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
+        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
+        "magnum": false,
+        "note": "Comprehensive rijal entry listing his teachers, students, and reliability"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 5)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary biographical source for the second generation Medinan scholars"
+      }
+    ],
+    "teachers": [
+      "Aisha bint Abi Bakr",
+      "Umm Salamah",
+      "Abu Hurayrah",
+      "Fatimah bint Qays"
+    ],
+    "source": "al-Dhahabī — Siyar Aʿlām al-Nubalāʾ · al-Mizzī — Tahdhīb al-Kamāl · Ibn Saʿd — Ṭabaqāt al-Kubrā",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Fatima bint al-Munthir",
+    "tradition": "Hadith Sciences",
+    "type": "Tabi'un",
+    "primaryTitle": "Great-Niece of Aisha — Wife of Hisham ibn Urwah",
+    "full": "Fāṭima bint al-Munthir ibn al-Zubayr ibn al-ʿAwwām al-Qurashiyya al-Asadiyya",
+    "dob": 660,
+    "dod": 733,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Tābiʿīyah / Narrator",
+    "lang": "Arabic",
+    "titles": "Zawjat Hishām ibn ʿUrwa (Wife of Hisham ibn Urwah)",
+    "school": "Granddaughter of Asma bint Abi Bakr and great-niece of Aisha bint Abi Bakr; married to the prominent hadith scholar Hisham ibn Urwah ibn al-Zubayr (her cousin). She transmitted traditions from her grandmother Asma bint Abi Bakr, forming a key isnad link connecting the household of Abu Bakr to the third hadith generation through the prominent Zubayr family of Medina. Her narrations appear in the major hadith collections transmitted by her husband Hisham.",
+    "books": [
+      {
+        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
+        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
+        "magnum": false,
+        "note": "Rijal entry identifying her place in the isnad chains through Hisham ibn Urwah"
+      },
+      {
+        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
+        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
+        "magnum": false,
+        "note": "Scholarly classification and assessment of her narrations"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Biographical notes on the women of the Zubayr family lineage"
+      }
+    ],
+    "teachers": [
+      "Asma bint Abi Bakr",
+      "Hisham ibn Urwah"
+    ],
+    "source": "al-Mizzī — Tahdhīb al-Kamāl · Ibn Ḥajar — Tahdhīb al-Tahdhīb · Ibn Saʿd — Ṭabaqāt al-Kubrā",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Habiba bint Sahl",
+    "tradition": "Islamic History",
+    "type": "Sahaba",
+    "primaryTitle": "Anṣārī Companion — First Khulʿ Case in Islam",
+    "full": "Ḥabība bint Sahl ibn Thaʿlaba al-Anṣāriyya al-Khazrajiyya al-Madaniyya",
+    "dob": 600,
+    "dod": 650,
+    "dob_s": "unknown",
+    "dod_s": "unknown",
+    "city": "Medina",
+    "classif": "Companion / Anṣāriyya",
+    "lang": "Arabic",
+    "titles": "Ḥabībat Rasūlillāh (from her proximity to the Prophet's household) · Ṣāḥibat Awwal Khulʿ (Subject of the First Khulʿ Case)",
+    "school": "Anṣārī female companion of the Prophet from Medina whose case with Thabit ibn Qays became one of the earliest and most cited precedents in Islamic jurisprudence for the khulʿ — the wife-initiated dissolution of marriage by returning the mahr. She came to the Prophet at dawn to request separation, a case recorded in canonical hadith collections. Her narrative contributed directly to the formation of Islamic family law on women's right to seek divorce.",
+    "books": [
+      {
+        "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri (Kitab al-Talaq)",
+        "url": "https://sunnah.com/search?q=Habiba+bint+Sahl+khul",
+        "magnum": false,
+        "note": "Contains the canonical account of her khulʿ case"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary biographical source for female companions of the Ansar"
+      },
+      {
+        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
+        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
+        "magnum": false,
+        "note": "Companion reference classifying her and documenting her traditions"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn ʿAbd al-Barr — al-Istīʿāb · Ibn Ḥajar — al-Iṣāba",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Umm Hisham bint Haritha",
+    "tradition": "Hadith Sciences",
+    "type": "Sahaba",
+    "primaryTitle": "She Who Memorised Sūrah Qāf from the Prophet",
+    "full": "Umm Hishām bint Ḥāritha ibn al-Nuʿmān al-Anṣāriyya al-Khazrajiyya al-Madaniyya",
+    "dob": 605,
+    "dod": 670,
+    "dob_s": "unknown",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Anṣāriyya",
+    "lang": "Arabic",
+    "titles": "Bāyiʿat al-Shajara (She Who Pledged at the Tree) · Ḥāfizat Sūrat Qāf",
+    "school": "Anṣārī female companion who participated in Bayʿat al-Riḍwān — the Pledge of the Tree at Hudaybiyya praised by a Qurʾānic verse (48:18). She memorised Sūrah Qāf directly from the Prophet Muhammad's repeated recitation of it during his Friday khutba sermons; her account of this is preserved in Ṣaḥīḥ Muslim and became the canonical transmission of that sūrah's oral tradition. A close neighbour of the Prophet, she and Amrah bint Abd al-Rahman both transmitted from her half-sister.",
+    "books": [
+      {
+        "title": "Muslim — Ṣaḥīḥ Muslim (Kitab al-Jumua)",
+        "url": "https://sunnah.com/muslim:873",
+        "magnum": false,
+        "note": "Contains her famous account of memorising Sūrat Qāf from the Prophet's Friday sermons"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Biographical entry among the Anṣārī female companions"
+      },
+      {
+        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
+        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
+        "magnum": false,
+        "note": "Standard companions reference with classification and traditions"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Muslim — Ṣaḥīḥ Muslim · Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn ʿAbd al-Barr — al-Istīʿāb",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Umm Mubashshir al-Ansariyyah",
+    "tradition": "Islamic History",
+    "type": "Sahaba",
+    "primaryTitle": "Anṣārī Companion — Witness to Prophetic Traditions",
+    "full": "Umm Mubashshir al-Anṣāriyya al-Khazrajiyya al-Madaniyya",
+    "dob": 600,
+    "dod": 655,
+    "dob_s": "unknown",
+    "dod_s": "unknown",
+    "city": "Medina",
+    "classif": "Companion / Anṣāriyya",
+    "lang": "Arabic",
+    "titles": "Umm Mubashshir · min Anṣār al-Nabī (Of the Supporters of the Prophet)",
+    "school": "Anṣārī female companion from Medina who transmitted traditions directly from the Prophet Muhammad, preserved in the major hadith collections. She is recorded in the biographical dictionaries as a reliable transmitter among the women of the Ansar, and her narrations — including an account of a conversation with the Prophet at Khaybar about the Muslim dead — are cited in the canonical collections. Her son Mubashshir ibn Zayd was also a transmitter of hadith.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Primary source for female Anṣārī companions including Umm Mubashshir"
+      },
+      {
+        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
+        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
+        "magnum": false,
+        "note": "Classifies her among the female companions and records her narrations"
+      },
+      {
+        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
+        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
+        "magnum": false,
+        "note": "Definitive companion reference with her full entry and traditions"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn ʿAbd al-Barr — al-Istīʿāb · Ibn Ḥajar — al-Iṣāba",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "Safiyya bint Abi Ubayd",
+    "tradition": "Islamic History",
+    "type": "Tabi'un",
+    "primaryTitle": "Wife of ʿAbdullāh ibn ʿUmar — Key Narrator of the Umar Household",
+    "full": "Ṣafiyya bint Abi ʿUbayd ibn Masʿūd al-Thaqafiyya al-Madaniyya",
+    "dob": 632,
+    "dod": 690,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Tābiʿīyah / Narrator",
+    "lang": "Arabic",
+    "titles": "Zawjat Ibn ʿUmar (Wife of Ibn Umar) · Bint Abi ʿUbayd al-Thaqafī",
+    "school": "Wife of the famous companion Abdullah ibn Umar ibn al-Khattab; through her marriage she was positioned at the nexus of hadith transmission connecting the household of Umar ibn al-Khattab to the second generation. She transmitted from Abdullah ibn Umar, Aisha bint Abi Bakr, and Hafsa bint Umar (her sister-in-law), and her narrations appear in the major collections. Her family's lineage from the Thaqif tribe and her husband's eminent status as one of the most prolific hadith narrators gave her traditions particular weight.",
+    "books": [
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Biographical details on the wives and daughters in the Umar ibn al-Khattab household chain"
+      },
+      {
+        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
+        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
+        "magnum": false,
+        "note": "Reference entry confirming her marriage to Abdullah ibn Umar and her narrations"
+      },
+      {
+        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
+        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
+        "magnum": false,
+        "note": "Rijal assessment of her reliability as a hadith transmitter"
+      }
+    ],
+    "teachers": [
+      "Abdullah ibn Umar",
+      "Aisha bint Abi Bakr",
+      "Hafsa bint Umar"
+    ],
+    "source": "Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn ʿAbd al-Barr — al-Istīʿāb · al-Mizzī — Tahdhīb al-Kamāl",
+    "lat": 24.47,
+    "lng": 39.61
+  },
+  {
+    "famous": "as-Saib ibn Yazid",
+    "tradition": "Islamic History",
+    "type": "Sahaba",
+    "primaryTitle": "The Child Who Made Hajj with the Prophet",
+    "full": "al-Sāʾib ibn Yazīd ibn Saʿīd ibn Thumāma al-Kindī al-Azdī al-Madanī",
+    "dob": 619,
+    "dod": 695,
+    "dob_s": "approximate",
+    "dod_s": "approximate",
+    "city": "Medina",
+    "classif": "Companion / Min Ṣighār al-Ṣaḥāba (Child Companion)",
+    "lang": "Arabic",
+    "titles": "al-Sāʾib · Min Ṣighār al-Ṣaḥāba (Among the Young Companions)",
+    "school": "A child companion who performed the Farewell Pilgrimage with the Prophet Muhammad at the age of seven, an event he recorded in the canonical hadith of al-Bukhari (no. 1858) — 'I was taken to perform Hajj with the Messenger of Allah when I was seven years old.' As a child companion (min ṣighār al-ṣaḥāba) he lived long enough to transmit traditions to the Tabi'un and became a treasured living link to the Prophetic era; he also served as a market overseer (ṣāḥib al-sūq) in Medina under Umar ibn al-Khattab.",
+    "books": [
+      {
+        "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri (Kitab al-Hajj, Hadith 1858)",
+        "url": "https://sunnah.com/bukhari:1858",
+        "magnum": false,
+        "note": "The canonical hadith in which he recounts performing Hajj with the Prophet at age seven"
+      },
+      {
+        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 5)",
+        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
+        "magnum": false,
+        "note": "Biography among the younger companions and his role in Medinan administration"
+      },
+      {
+        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
+        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
+        "magnum": false,
+        "note": "Standard companions reference with his full name, family, and narrations"
+      }
+    ],
+    "teachers": [
+      "Prophet Muhammad",
+      "Umar ibn al-Khattab",
+      "Uthman ibn Affan"
+    ],
+    "source": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri · Ibn Saʿd — Ṭabaqāt al-Kubrā · Ibn ʿAbd al-Barr — al-Istīʿāb",
+    "lat": 24.47,
+    "lng": 39.61
   }
 ]
