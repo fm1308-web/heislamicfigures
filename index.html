@@ -51,11 +51,16 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 ::-webkit-scrollbar-thumb:hover{background:var(--border2)}
 
 /* ══════════════ HEADER ══════════════ */
+/* ── Fixed top bar: header + controls always visible ── */
+#topBar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+}
 #appHeader{
   text-align:center;padding:14px 20px 10px;
   background:linear-gradient(180deg,var(--surface2) 0%,var(--bg) 100%);
   border-bottom:2px solid var(--border);
 }
+
 #appHeader h1{
   font-family:'Cinzel',serif;font-size:clamp(24px,3.8vw,52px);font-weight:900;
   color:var(--accent);letter-spacing:.14em;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.4);
@@ -69,7 +74,7 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 
 /* ══════════════ STICKY CONTROLS (only year slider + tabs + search) ══════════════ */
 #controls{
-  position:sticky;top:0;z-index:200;
+  position:relative;z-index:200;
   background:var(--surface);border-bottom:2px solid var(--border);
   box-shadow:0 3px 14px rgba(0,0,0,.3);
 }
@@ -597,7 +602,7 @@ footer{
 </head>
 <body>
 
-<div id="appHeader">
+<div id="topBar"><div id="appHeader">
   <h1>ISLAMIC FIGURES</h1>
   <div id="metaLine">Loading…</div>
   <div id="aiDisclosure">AI-generated · content may contain errors · verify independently</div>
@@ -629,7 +634,7 @@ footer{
       <button class="view-tab" onclick="setView('map')">MAP</button>
     </div>
   </div>
-</div>
+</div></div><!-- /#topBar -->
 
 <div id="mainShell">
 
@@ -860,10 +865,12 @@ async function boot(){
 }
 
 function setHeight(){
-  const hdr=document.getElementById('appHeader').offsetHeight;
-  const ctrl=document.getElementById('controls').offsetHeight;
+  const topBar=document.getElementById('topBar');
+  const barH=topBar?topBar.offsetHeight:0;
   const foot=document.querySelector('footer').offsetHeight;
-  document.getElementById('mainShell').style.height=`calc(100vh - ${hdr+ctrl+foot}px)`;
+  const ms=document.getElementById('mainShell');
+  ms.style.marginTop=barH+'px';
+  ms.style.height=`calc(100vh - ${barH+foot}px)`;
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -2219,7 +2226,8 @@ const MAP_EMPIRES=[
 ];
 
 function _setMapHeight(){
-  const hdr=document.getElementById('appHeader').offsetHeight;
+  const topBar=document.getElementById('topBar');
+  const hdr=topBar?topBar.offsetHeight:(document.getElementById('appHeader').offsetHeight+document.getElementById('controls').offsetHeight);
   const ctrl=document.getElementById('controls').offsetHeight;
   const foot=document.querySelector('footer').offsetHeight;
   const h=Math.max(300, window.innerHeight - hdr - ctrl - foot);
