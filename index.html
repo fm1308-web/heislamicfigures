@@ -1552,11 +1552,19 @@ function renderSilsila(){
   const LANE_PAD=14;       // padding top+bottom inside each lane
   const MIN_LH=52;         // minimum lane height
   const LH_LIN=148;        // lineage lane fixed height
+  const GRID_MAX_ROWS=22;  // lanes exceeding this use 2D grid layout
+  const GRID_COLS=16;      // columns in grid layout
+  const GRID_CELL_H=20;    // row height in grid
+  const GRID_CELL_W=Math.round(TW/GRID_COLS); // cell width
 
-  // X mapping: pre-Islamic compressed; main era linear
+  // X mapping: pre-Islamic compressed; 600-800 CE expanded 2x; 800+ linear
+  // This gives the Sahaba era (600-700 CE) much more horizontal room
+  const EARLY_W = 1100; // px for 600-800 CE (was ~456 before)
+  const LATE_W  = MAIN_W - EARLY_W; // px for 800-2000 CE
   const x2px=dob=>{
     if(dob<600) return Math.max(4, Math.min(PRE_W-8, (dob+4200)/4800*(PRE_W-8)));
-    return PRE_W+Math.min(1,(dob-600)/1400)*MAIN_W;
+    if(dob<=800) return PRE_W + ((dob-600)/200)*EARLY_W;
+    return PRE_W + EARLY_W + Math.min(1,(dob-800)/1200)*LATE_W;
   };
 
   // ── Build grps (lane index → people array) ─────────────────
@@ -1565,6 +1573,7 @@ function renderSilsila(){
 
   // ── First pass: measure sub-rows per lane ─────────────────
   const subRowCounts={}; // li → number of sub-rows needed
+  const isGridLane={};   // li → true if using 2D grid layout
   Object.keys(grps).forEach(liS=>{
     const li=+liS; if(li===0) return;
     const lx=[];
@@ -1577,10 +1586,18 @@ function renderSilsila(){
       if(b>maxRow) maxRow=b;
     });
     subRowCounts[li]=maxRow+1;
+    isGridLane[li]=subRowCounts[li]>GRID_MAX_ROWS;
   });
 
   // Lane height based on sub-rows needed
-  function laneH(li){ return Math.max(MIN_LH, subRowCounts[li]*ROW_H + LANE_PAD*2); }
+  function laneH(li){
+    if(isGridLane[li]){
+      const n=(grps[li]||[]).length;
+      const rows=Math.ceil(n/GRID_COLS);
+      return rows*GRID_CELL_H + LANE_PAD*2 + 8;
+    }
+    return Math.max(MIN_LH, subRowCounts[li]*ROW_H + LANE_PAD*2);
+  }
   function subRowY(li, subRow){
     const usable=laneH(li)-LANE_PAD*2;
     return LANE_PAD + (subRow+0.5)*(usable/Math.max(1,subRowCounts[li]));
@@ -1618,15 +1635,28 @@ function renderSilsila(){
   // ── Assign tradition node positions ───────────────────────
   Object.keys(grps).forEach(liS=>{
     const li=+liS; if(li===0) return;
-    const lx=[];
-    grps[li].slice().sort((a,b)=>a.dob-b.dob).forEach(p=>{
-      const x=x2px(p.dob);
-      let b=lx.findIndex(mx=>x-mx>=NODE_DIAM);
-      if(b===-1){b=lx.length; lx.push(-9999);}
-      lx[b]=x+NR;
-      const col=TRAD_COLORS[LANES[li]]||'#888';
-      SL_NM[p.famous]={x, y:laneStartY[li]+subRowY(li,b), li, col};
-    });
+    const col=TRAD_COLORS[LANES[li]]||'#888';
+    const sorted=grps[li].slice().sort((a,b)=>a.dob-b.dob);
+    if(isGridLane[li]){
+      // 2D grid layout: sort by dob, place left→right top→bottom
+      sorted.forEach((p,idx)=>{
+        const col2=idx===0?col:col; // keep same col
+        const gridCol=idx%GRID_COLS;
+        const gridRow=Math.floor(idx/GRID_COLS);
+        const x=GRID_CELL_W*(gridCol+0.5);
+        const y=laneStartY[li]+LANE_PAD+gridRow*GRID_CELL_H+GRID_CELL_H*0.5;
+        SL_NM[p.famous]={x, y, li, col, _grid:true};
+      });
+    } else {
+      const lx=[];
+      sorted.forEach(p=>{
+        const x=x2px(p.dob);
+        let b=lx.findIndex(mx=>x-mx>=NODE_DIAM);
+        if(b===-1){b=lx.length; lx.push(-9999);}
+        lx[b]=x+NR;
+        SL_NM[p.famous]={x, y:laneStartY[li]+subRowY(li,b), li, col};
+      });
+    }
   });
   PEOPLE.forEach(p=>{
     (p.teachers||[]).forEach(t=>{(SL_STUDENTS[t]=SL_STUDENTS[t]||[]).push(p.famous);});
