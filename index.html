@@ -422,7 +422,7 @@ header .meta{margin-top:3px;font-size:13px;color:#3a2a14;font-family:'Source Ser
 /* ── CHART ── */
 .chart-col{position:relative;width:var(--chart-w);min-width:var(--chart-w);flex-shrink:0}
 .axis-row{height:var(--axis-h);background:var(--surface);border-bottom:none;z-index:5;position:relative;flex:1;min-width:var(--chart-w)}
-.c-marker{display:none}
+.c-marker{display:flex;flex-direction:column;align-items:flex-start;position:absolute;top:0;padding-top:4px;padding-left:3px;pointer-events:none}
 .c-label{font-size:8px;letter-spacing:.1em;color:#2a2010;text-transform:uppercase;font-family:'Source Serif 4',serif;white-space:nowrap;font-weight:600}
 .c-year{font-size:9px;color:#6a5a40;margin-top:1px;font-family:'Source Serif 4',serif;font-weight:500}
 .grid-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(180,168,148,.4)}
@@ -588,6 +588,7 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
     <span class="ctl-label">Century:</span>
     <button class="filter-btn f-century active" data-filter="all">All</button>
     <button class="filter-btn f-century" data-filter="pre-islam">Pre-Islam</button>
+    <button class="filter-btn f-century" data-filter="6">6th</button>
     <button class="filter-btn f-century" data-filter="7">7th</button>
     <button class="filter-btn f-century" data-filter="8">8th</button>
     <button class="filter-btn f-century" data-filter="9">9th</button>
@@ -735,8 +736,8 @@ footer{padding:14px 32px;border-top:1px solid var(--border);font-size:11px;color
 <footer>ISLAMIC SCHOLARS TIMELINE · LIFESPAN VISUALIZATION · CLICK ANY ROW TO OPEN DETAILS &amp; FREE BOOKS</footer>
 
 <script>
-const CC={7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
-function gc(y){if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
+const CC={6:'#d4600a',7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#006898',12:'#1848a0',13:'#4030a8',14:'#7020a0',15:'#a00070',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
+function gc(y){if(y<600)return 6;if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;}
 function gcl(c){const o=c===1?'1st':c===2?'2nd':c===3?'3rd':`${c}th`;return`${o} C.`;}
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -854,8 +855,8 @@ function renderSilsila() {
   // ── Compute lane Y offsets based on sub-row counts ────────────────────────
   const LANE_PAD = 24; // padding above/below nodes within lane
   const laneY = {}; // top y of each lane
-  // Prophets' Lineage lane is always first
-  const LIN_LANE_H = NODE_R * 2 + LIN_Y_CENTER * 2 + LANE_PAD;
+  // Prophets' Lineage lane is always first — tall enough for two rows
+  const LIN_LANE_H = NODE_R * 2 + LIN_Y_CENTER * 2 + LANE_PAD + 36; // extra 36 for second row
   const LIN_LANE_Y = MARGIN_T;
   let curY = MARGIN_T + LIN_LANE_H;
   trads.forEach(trad => {
@@ -894,44 +895,82 @@ function renderSilsila() {
   let out = '';
 
   // ── Lane backgrounds (no labels in SVG — labels go in sticky panel) ───────
-  // Prophets' Lineage lane background (gold-tinted)
-  out += `<rect x="0" y="${LIN_LANE_Y}" width="${W}" height="${LIN_LANE_H}" fill="rgba(220,170,40,0.07)" rx="0"/>`;
-  out += `<line x1="0" y1="${LIN_LANE_Y+LIN_LANE_H}" x2="${W}" y2="${LIN_LANE_Y+LIN_LANE_H}" stroke="rgba(200,160,40,.3)" stroke-width="1"/>`;
+  // Prophets' Lineage lane background (dark)
+  out += `<rect x="0" y="${LIN_LANE_Y}" width="${W}" height="${LIN_LANE_H}" fill="rgba(18,10,2,0.90)" rx="0"/>`;
+  out += `<line x1="0" y1="${LIN_LANE_Y+LIN_LANE_H}" x2="${W}" y2="${LIN_LANE_Y+LIN_LANE_H}" stroke="${GOLD}" stroke-width="1.5" opacity="0.5"/>`;
   trads.forEach((t, i) => {
     const y = laneY[t];
     const h = laneMeta[t].laneH;
     out += `<rect x="0" y="${y}" width="${W}" height="${h}" fill="${i%2===0?'rgba(250,246,240,1)':'rgba(240,234,218,0.55)'}" rx="0"/>`;
   });
 
-  // ── Lineage lane: sequential dots + gold connection lines ─────────────────
+  // ── Lineage lane: U-SHAPE — top row goes Adam→right, curves, bottom row returns →Muhammad ─
+  // Split lineage at midpoint
+  const MID = Math.ceil(lineageMembers.length / 2);
+  const topRow = lineageMembers.slice(0, MID);       // Adam → midpoint ancestor
+  const botRow = lineageMembers.slice(MID); // mid-ancestor (rightmost near curve) → Prophet Muhammad (leftmost)
+
+  const LIN_ROW_GAP = 28; // vertical gap between top and bottom track
+  const LIN_TOP_Y = LIN_LANE_Y + LANE_PAD + NODE_R;
+  const LIN_BOT_Y = LIN_TOP_Y + LIN_ROW_GAP + NODE_R * 2;
+  const LIN_TOTAL_H = LIN_BOT_Y + NODE_R + LANE_PAD;
+
+  // x positions: top row spreads from left to ~half way (so curve fits in view), bottom returns left to Prophet Muhammad
+  const LIN_X_LEFT  = LIN_MARGIN_L + 20;
+  const LIN_X_RIGHT = Math.round(W * 0.52);
+  function linTopX(idx){ return LIN_X_LEFT + idx * ((LIN_X_RIGHT - LIN_X_LEFT) / Math.max(topRow.length - 1, 1)); }
+  // Bottom row: idx 0 = rightmost (near curve), last idx = leftmost (Prophet Muhammad)
+  function linBotX(idx){ return LIN_X_RIGHT - 40 - idx * ((LIN_X_RIGHT - LIN_X_LEFT - 40) / Math.max(botRow.length - 1, 1)); }
+
   const linPosMap = {};
-  lineageMembers.forEach((p, idx) => {
-    const x = linX(idx);
-    const y = LIN_LANE_Y + LANE_PAD + LIN_Y_CENTER;
-    linPosMap[p.famous] = {x, y};
-  });
-  // Gold connection lines (sequential)
-  lineageMembers.forEach((p, idx) => {
-    if(idx === 0) return;
-    const from = linPosMap[lineageMembers[idx-1].famous];
-    const to   = linPosMap[p.famous];
-    if(!from||!to) return;
-    out += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${GOLD}" stroke-width="2" opacity="0.7" marker-end="url(#arr-gold)"/>`;
-  });
-  // Lineage nodes
+  topRow.forEach((p, idx) => { linPosMap[p.famous] = {x: linTopX(idx), y: LIN_TOP_Y}; });
+  botRow.forEach((p, idx) => { linPosMap[p.famous] = {x: linBotX(idx), y: LIN_BOT_Y}; });
+
+  // Draw top row connecting lines (left to right)
+  for(let i=1; i<topRow.length; i++){
+    const from = linPosMap[topRow[i-1].famous];
+    const to   = linPosMap[topRow[i].famous];
+    out += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${GOLD}" stroke-width="2" opacity="0.75"/>`;
+  }
+  // Draw the curved U-turn at the right end connecting last top → first bot
+  const lastTop = linPosMap[topRow[topRow.length-1].famous];
+  const firstBot = linPosMap[botRow[0].famous];
+  const curveR = (LIN_BOT_Y - LIN_TOP_Y) / 2;
+  out += `<path d="M${lastTop.x},${lastTop.y} Q${LIN_X_RIGHT+curveR},${LIN_TOP_Y} ${LIN_X_RIGHT+curveR},${LIN_TOP_Y+curveR} Q${LIN_X_RIGHT+curveR},${LIN_BOT_Y} ${firstBot.x},${firstBot.y}" stroke="${GOLD}" stroke-width="2.5" fill="none" opacity="0.85"/>`;
+  // Draw bottom row connecting lines (right to left, i.e. increasing idx = moving left)
+  for(let i=1; i<botRow.length; i++){
+    const from = linPosMap[botRow[i-1].famous];
+    const to   = linPosMap[botRow[i].famous];
+    out += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" stroke="${GOLD}" stroke-width="2" opacity="0.75"/>`;
+  }
+  // Arrow on last segment of bottom row pointing to Prophet Muhammad
+  const secLast = botRow[botRow.length-2];
+  const last    = botRow[botRow.length-1];
+  if(secLast && last){
+    const f=linPosMap[secLast.famous], t=linPosMap[last.famous];
+    out += `<line x1="${f.x}" y1="${f.y}" x2="${t.x}" y2="${t.y}" stroke="${GOLD}" stroke-width="2.5" opacity="0.9" marker-end="url(#arr-gold)"/>`;
+  }
+
+  // Lineage nodes (both rows) + name labels for key prophets
   const quranicProphetSet = new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Dhul-Kifl','Musa','Harun','Dawud','Sulayman','Ilyas',"Al-Yasa'",'Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
+  const labeledProphets = new Set(['Adam','Idris','Nuh','Ibrahim','Ismail','Prophet Muhammad']);
   lineageMembers.forEach((p, idx) => {
     const pos = linPosMap[p.famous];
     if(!pos) return;
     const isProphet = quranicProphetSet.has(p.famous);
-    const r = isProphet ? NODE_R + 2 : NODE_R - 1;
+    const isMuhammad = p.famous === 'Prophet Muhammad';
+    const r = isMuhammad ? NODE_R + 5 : (isProphet ? NODE_R + 2 : NODE_R - 1);
     const fill = isProphet ? GOLD : GOLD_LIGHT;
     const enc = p.famous.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     const titleEnc = (p.primaryTitle||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    const isTopRow = pos.y === LIN_TOP_Y;
+    const labelY = isTopRow ? pos.y - r - 5 : pos.y + r + 13;
+    const shortName = isMuhammad ? 'Prophet Muhammad ☆' : p.famous.split(' ')[0];
     out += `<g class="sil-node" data-famous="${enc}" data-title="${titleEnc}" data-col="${GOLD}" tabindex="0">
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r+4}" fill="transparent"/>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${fill}" stroke="${isProphet?'white':'rgba(255,255,255,.5)'}" stroke-width="${isProphet?2:1}" opacity="1"/>
-      ${isProphet?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.3"/>`: ''}
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r+5}" fill="transparent"/>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${fill}" stroke="${isProphet?'white':'rgba(255,255,255,.4)'}" stroke-width="${isMuhammad?3:(isProphet?2:1)}" opacity="1"/>
+      ${isProphet?`<circle cx="${pos.x}" cy="${pos.y}" r="${r-3}" fill="white" opacity="0.25"/>`: ''}
+      ${labeledProphets.has(p.famous)?`<text x="${pos.x}" y="${labelY}" text-anchor="middle" font-size="${isMuhammad?11:10}" font-family="Playfair Display,serif" fill="${GOLD}" font-weight="700" opacity="0.9">${shortName}</text>`:''}
     </g>`;
   });
 
@@ -989,7 +1028,7 @@ function renderSilsila() {
   // Prophets' Lineage label (first)
   const linLabelDiv = document.createElement('div');
   linLabelDiv.className = 'sil-label-row';
-  linLabelDiv.style.cssText = `top:${LIN_LANE_Y}px;height:${LIN_LANE_H}px;background:rgba(220,170,40,0.09)`;
+  linLabelDiv.style.cssText = `top:${LIN_LANE_Y}px;height:${LIN_LANE_H}px;background:rgba(18,10,2,0.90)`;
   linLabelDiv.innerHTML = `<span class="sil-label-text" style="color:${GOLD};font-weight:700" title="Prophets Lineage (Adam to Muhammad)">⭕ Prophets' Lineage</span>`;
   labelsInner.appendChild(linLabelDiv);
   trads.forEach((t, i) => {
@@ -1208,11 +1247,11 @@ function openPopup(p, color, anchorX, anchorY) {
     <div class="pc-row"><span class="pc-k">Region</span><span class="pc-v">${p.city}</span></div>
     <div class="pc-row"><span class="pc-k">Type</span><span class="pc-v">${p.classif}</span></div>
     <div class="pc-row"><span class="pc-k">School</span><span class="pc-v">${p.school}</span></div>
-    ${!(p.type==='Prophet'&&p.dob<=-1400)?`<div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>`:''}
+    ${!(p.dob<570)?`<div class="pc-row"><span class="pc-k">Language</span><span class="pc-v">${p.lang}</span></div>`:''}
     ${p.source ? `<div class="pc-row"><span class="pc-k">Source</span><span class="pc-v" style="display:flex;align-items:center;gap:6px"><span style="background:#6b3a0812;border:1px solid #6b3a0840;border-radius:3px;padding:1px 7px;font-size:11px;color:#6b3a08;font-weight:700;letter-spacing:.04em">📖 ${p.source}</span></span></div>` : ''}
     <div class="pc-section" style="margin-top:12px">Titles &amp; Honorifics</div>
     <div class="pc-all-titles">${p.titles}</div>
-    ${!(p.type==='Prophet'&&p.dob<=-1400)?`<div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>`:''}
+    ${!(p.dob<570)?`<div class="pc-section" style="margin-top:12px">Works &amp; Free Links</div>`:''}
   `;
 
   const teacherList = (p.teachers||[]).filter(tn => PEOPLE.find(x=>x.famous===tn));
@@ -1232,7 +1271,7 @@ function openPopup(p, color, anchorX, anchorY) {
     html += `</div>`;
   }
 
-  const isEarlyProphet = p.type==='Prophet' && p.dob<=-1400;
+  const isEarlyProphet = p.dob<570;
   const mag = p.books.filter(b=>b.magnum);
   const oth = p.books.filter(b=>!b.magnum);
   if(!isEarlyProphet){
@@ -1369,7 +1408,8 @@ function addGrids(){
 
 function getFiltered(){
   return PEOPLE.filter(p=>{
-    const cm=activeCentury==='all'||(activeCentury==='pre-islam'?p.dob<570:gc(p.dob)===parseInt(activeCentury));
+    const _ac=parseInt(activeCentury);
+    const cm=activeCentury==='all'||(activeCentury==='pre-islam'?p.dob<570:(gc(p.dob)===_ac&&p.dob>=(_ac-1)*100));
     const tm=activeTrad==='all'||p.tradition===activeTrad;
     const ym=activeType==='all'||p.type===activeType;
     const sm=!searchQ||p.famous.toLowerCase().includes(searchQ)||p.full.toLowerCase().includes(searchQ)||p.tradition.toLowerCase().includes(searchQ)||p.type.toLowerCase().includes(searchQ)||p.primaryTitle.toLowerCase().includes(searchQ);
@@ -1401,9 +1441,9 @@ function renderRows(){
     return best + 0.5; // slot after their chain contemporary
   }
   const filtered = _raw.sort((a,b)=>{
-    if(a.dob < 570 && b.dob < 570) return _preIslamicSortKey(a) - _preIslamicSortKey(b);
-    if(a.dob < 570) return -1;
-    if(b.dob < 570) return 1;
+    if(a.dob < 500 && b.dob < 500) return _preIslamicSortKey(a) - _preIslamicSortKey(b);
+    if(a.dob < 500) return -1;
+    if(b.dob < 500) return 1;
     return a.dob - b.dob;
   });
 
@@ -1420,7 +1460,7 @@ function renderRows(){
     nr.innerHTML=`<div class="dot" style="background:${color}"></div><div class="name-text"><div class="name-famous">${p.famous}</div><div class="name-title">${shortTitle}</div></div>`;
     nameRowsEl.appendChild(nr);
 
-    const isPreIslamic = p.dob < 570;
+    const isPreIslamic = p.dob < 500;
     const br=document.createElement('div');br.className='bar-row'+(p.famous==='Prophet Muhammad'?' prophet-bar':'')+(isPreIslamic?' preis-row':'');br.dataset.i=i;br.dataset.dob=p.dob;br.dataset.dod=p.dod;
 
     if(isPreIslamic){
@@ -1538,6 +1578,17 @@ document.querySelectorAll('.f-century').forEach(btn=>{
     document.querySelectorAll('.f-century').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     applyFilters();
+    // Auto-scroll timeline to the selected century
+    if(VIEW==='timeline' && activeCentury!=='all' && activeCentury!=='pre-islam'){
+      const c=parseInt(activeCentury);
+      const yr=(c-1)*100; // start year of century e.g. 6th = 500
+      const px=y2px(yr);
+      const tlOuter=document.getElementById('tlOuter');
+      if(tlOuter) setTimeout(()=>{ tlOuter.scrollLeft=Math.max(0,px-60); },80);
+    } else if(VIEW==='timeline' && activeCentury==='pre-islam'){
+      const tlOuter=document.getElementById('tlOuter');
+      if(tlOuter) setTimeout(()=>{ tlOuter.scrollLeft=0; },80);
+    }
   });
 });
 document.querySelectorAll('.f-trad').forEach(btn=>{
