@@ -44,6 +44,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;font-size:15px;overflow:hidden}
+a{color:#c89040;text-decoration:none}
+a:hover{text-decoration:underline}
 
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:rgba(0,0,0,.2)}
@@ -451,6 +453,8 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .sl-node.sl-selected{stroke-width:3.5px !important;opacity:1 !important;
   filter:drop-shadow(0 0 6px rgba(232,200,120,.8)) !important}
 .sl-edge{pointer-events:none;transition:opacity .08s}
+.sl-chain-edge{animation:sl-edge-in .28s ease-out both}
+@keyframes sl-edge-in{from{opacity:0}to{opacity:0.75}}
 .sl-node.sl-dim{opacity:0.04 !important}
 .sl-edge.sl-lit{opacity:0.9 !important;stroke-width:2.2px !important}
 .sl-edge.sl-dim{opacity:0.015 !important}
@@ -963,6 +967,7 @@ const PROPHET_CHAIN = new Set(['Adam','Idris','Nuh','Ibrahim','Ismail','Prophet 
 // Silsila global state — built once by renderSilsila()
 let SL_NM={};       // name → {x, y, li, col}
 let SL_STUDENTS={}; // name → [student famous names]
+let SL_EDGES=[];    // [{from, to, col, d}] — stored as data, rendered on demand
 let SL_HOVERED=null;// currently hovered person name (for hover-dim logic)
 
 function getFiltered(){
@@ -1333,7 +1338,7 @@ function renderInfo(p){
       <div class="i-books">${p.books.map(b=>`
         <div class="i-book">
           <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
-          <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
+          <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
           ${b.magnum?` <span style="color:var(--ip-acc);font-size:10px">✦</span>`:''}
           ${b.note?`<div class="i-bnote">${esc(b.note)}</div>`:''}</div>
         </div>`).join('')}
@@ -1615,7 +1620,7 @@ function renderSilsila(){
   const SVG_H=curY+PB;
 
   // ── U-shape positions for lineage ─────────────────────────
-  SL_NM={}; SL_STUDENTS={};
+  SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
   const linMembers=LINEAGE_CHAIN.map(n=>PEOPLE.find(p=>p.famous===n)).filter(Boolean);
   const MID=Math.ceil(linMembers.length/2);
   const topRow=linMembers.slice(0,MID);
@@ -1707,12 +1712,10 @@ function renderSilsila(){
   for(let yr=600;yr<=2000;yr+=100){
     const x=x2px(yr).toFixed(1), c=gc(yr);
     P.push(`<line x1="${x}" y1="0" x2="${x}" y2="${SVG_H}" stroke="rgba(255,255,255,0.05)" stroke-width="1" />`);
-    P.push(`<text x="${(+x+4).toFixed(1)}" y="16" font-family="Cinzel,serif" font-size="8" fill="rgba(240,237,226,0.18)">${centLabel(c)}C</text>`);
-    if(yr===700||yr===1000||yr===1200||yr===1500||yr===1800){
-      P.push(`<text x="${(+x+4).toFixed(1)}" y="27" font-family="Cinzel,serif" font-size="7" fill="rgba(240,237,226,0.1)">${yr} CE</text>`);
-    }
+    // Century labels removed — chronology is approximate
   }
 
+  // ── Build edge DATA (no SVG rendered yet — injected on click) ────────────
   PEOPLE.forEach(p=>{
     if(!p.teachers?.length) return;
     const to=SL_NM[p.famous]; if(!to) return;
@@ -1721,14 +1724,24 @@ function renderSilsila(){
       const dx=to.x-fr.x;
       const st=Math.min(Math.abs(dx)*.42,110)+18;
       const d=`M${fr.x.toFixed(1)},${fr.y.toFixed(1)} C${(fr.x+st).toFixed(1)},${fr.y.toFixed(1)} ${(to.x-st).toFixed(1)},${to.y.toFixed(1)} ${to.x.toFixed(1)},${to.y.toFixed(1)}`;
-      P.push(`<path class="sl-edge" data-from="${esc(tn)}" data-to="${esc(p.famous)}" d="${d}" stroke="${fr.col}" stroke-width="1.1" fill="none" opacity="0.26" />`);
+      SL_EDGES.push({from:tn, to:p.famous, col:fr.col, d});
     });
   });
 
-  // ── Tradition nodes ───────────────────────────────────────
+  // Nodes that have at least one valid connection in the dataset
+  const SL_CONNECTED=new Set();
+  SL_EDGES.forEach(e=>{SL_CONNECTED.add(e.from);SL_CONNECTED.add(e.to);});
+  // Lineage members are always shown
+  linMembers.forEach(p=>SL_CONNECTED.add(p.famous));
+
+  // ── Empty group for on-demand chain edges ─────────────────────────────────
+  P.push(`<g id="sl-active-edges"></g>`);
+
+  // ── Tradition nodes (connected only) ─────────────────────────────────────
   PEOPLE.forEach(p=>{
     if(isLineageMember(p)) return;
     const nd=SL_NM[p.famous]; if(!nd) return;
+    if(!SL_CONNECTED.has(p.famous)) return; // skip unconnected dots
     const hasFree=p.books&&p.books.some(b=>b.url&&b.url.startsWith('http'));
     const r=hasFree?NR:NR-1;
     P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity=".78" stroke="${nd.col}" stroke-width="1.4" stroke-opacity=".9"/>`);
@@ -1887,7 +1900,7 @@ function renderSilsila(){
 
   const svg=document.getElementById('silsilaSVG');
 
-  // Hover dim/lit
+  // Hover dim/lit — nodes only (edges are rendered on-demand on click)
   function silsilaHoverOn(name){
     if(SL_HOVERED===name) return;
     SL_HOVERED=name;
@@ -1897,17 +1910,11 @@ function renderSilsila(){
     svg.querySelectorAll('.sl-node').forEach(n=>{
       n.classList.toggle('sl-dim',!connected.has(n.dataset.name));
     });
-    svg.querySelectorAll('.sl-edge').forEach(ed=>{
-      const isLit=(ed.dataset.from===name&&students.has(ed.dataset.to))||(ed.dataset.to===name&&teachers.has(ed.dataset.from));
-      ed.classList.toggle('sl-lit',isLit);
-      ed.classList.toggle('sl-dim',!isLit);
-    });
   }
   function silsilaHoverOff(){
     if(!SL_HOVERED) return;
     SL_HOVERED=null;
     svg.querySelectorAll('.sl-node').forEach(n=>n.classList.remove('sl-dim'));
-    svg.querySelectorAll('.sl-edge').forEach(ed=>ed.classList.remove('sl-lit','sl-dim'));
   }
 
   svg.addEventListener('mouseover',e=>{
@@ -1935,6 +1942,37 @@ function renderSilsila(){
     if(!ttPinned) tt.style.display='none';
   });
 
+  // ── Full chain traversal (ancestors + descendants) ────────────────────────
+  function getDirectChain(name){
+    // Only the clicked person + their immediate teachers + their immediate students
+    // No recursive traversal — avoids drawing the entire connected graph
+    const p=PEOPLE.find(pp=>pp.famous===name);
+    const teachers=new Set(p?.teachers||[]);
+    const students=new Set(SL_STUDENTS[name]||[]);
+    return {self:name, teachers, students, all:new Set([name,...teachers,...students])};
+  }
+
+  function renderChainEdges(name){
+    const {teachers, students, all}=getDirectChain(name);
+    const grp=svg.querySelector('#sl-active-edges'); if(!grp) return;
+    // Only edges where this person is one endpoint
+    const paths=SL_EDGES
+      .filter(e=>(e.to===name && teachers.has(e.from)) || (e.from===name && students.has(e.to)))
+      .map(e=>`<path class="sl-edge sl-chain-edge" data-from="${esc(e.from)}" data-to="${esc(e.to)}" d="${e.d}" stroke="${e.col}" stroke-width="1.8" fill="none" opacity="0.82"/>`)
+      .join('\n');
+    grp.innerHTML=paths;
+    // Dim everyone not directly connected to this person
+    svg.querySelectorAll('.sl-node').forEach(n=>{
+      n.style.opacity=all.has(n.dataset.name)?'1':'0.06';
+    });
+  }
+
+  function clearChainEdges(){
+    const grp=svg.querySelector('#sl-active-edges'); if(!grp) return;
+    grp.innerHTML='';
+    svg.querySelectorAll('.sl-node').forEach(n=>{n.style.opacity='';});
+  }
+
   // ── Node click → pin tooltip + open detail card ────────────
   svg.addEventListener('click',e=>{
     const nd=e.target.closest('.sl-node'); if(!nd) return;
@@ -1942,6 +1980,8 @@ function renderSilsila(){
     activePerson=p;
     svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
     nd.classList.add('sl-selected');
+    // Render full ancestor+descendant chain edges
+    renderChainEdges(p.famous);
     // Sync lane highlight
     const inner2=document.getElementById('silsilaLanesInner');
     if(inner2){
@@ -1965,6 +2005,8 @@ function renderSilsila(){
   document.addEventListener('click', function slOutsideClick(e){
     if(ttPinned && !e.target.closest('#sl-tt') && !e.target.closest('.sl-node') && !e.target.closest('#silsilaCard')){
       unpinTooltip();
+      clearChainEdges();
+      svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
     }
   });
 
@@ -1990,18 +2032,12 @@ function updateSilsilaHighlight(){
     }
     nd.style.opacity=String(op);
   });
-  svg.querySelectorAll('.sl-edge').forEach(ed=>{
-    const show=!hasF||(fs.has(ed.dataset.from)&&fs.has(ed.dataset.to));
-    let op=show?0.26:0.018;
-    // Year: dim edges where either endpoint isn't alive
-    if(op>0.1 && activeYear!==null){
-      const pF=PEOPLE.find(pp=>pp.famous===ed.dataset.from);
-      const pT=PEOPLE.find(pp=>pp.famous===ed.dataset.to);
-      const alive=p=>{if(!p)return false;const d=p.dod!==undefined&&p.dod!==null?p.dod:p.dob+60;return p.dob<=activeYear&&d>=activeYear;};
-      if(!alive(pF)||!alive(pT)) op=0.02;
-    }
-    ed.style.opacity=String(op);
-  });
+  // Edges are rendered on-demand on click; clear any active chain when filters change
+  const grp=svg.querySelector('#sl-active-edges');
+  if(grp && grp.children.length){
+    grp.innerHTML='';
+    svg.querySelectorAll('.sl-node').forEach(n=>{n.style.opacity='';});
+  }
 
   const inner=document.getElementById('silsilaLanesInner');
   if(!inner) return;
@@ -2093,7 +2129,7 @@ function openSilsilaCard(p, cx, cy){
     html+=`<div class="sc-sec">WORKS & SOURCES</div>`;
     p.books.forEach(b=>{
       html+=`<div class="sc-book">
-        ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:13px">${esc(b.title)}</span>`}
+        ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:13px">${esc(b.title)}</span>`}
         ${b.magnum?` <span style="color:var(--accent);font-size:10px">✦</span>`:''}
         ${b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note)}</div>`:''}
       </div>`;
