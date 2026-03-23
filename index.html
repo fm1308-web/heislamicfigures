@@ -965,10 +965,12 @@ function onSearch(){searchQ=document.getElementById('search').value.trim();apply
 const PROPHET_CHAIN = new Set(['Adam','Idris','Nuh','Ibrahim','Ismail','Prophet Muhammad']);
 
 // Silsila global state — built once by renderSilsila()
-let SL_NM={};       // name → {x, y, li, col}
-let SL_STUDENTS={}; // name → [student famous names]
-let SL_EDGES=[];    // [{from, to, col, d}] — stored as data, rendered on demand
-let SL_HOVERED=null;// currently hovered person name (for hover-dim logic)
+let SL_NM={};        // name → {x, y, li, col}
+let SL_STUDENTS={};  // name → [student famous names]
+let SL_EDGES=[];     // [{from, to, col, d}] — stored as data, rendered on demand
+let SL_HOVERED=null; // currently hovered person name (for hover-dim logic)
+let SL_ALL_LANES=[];  // full tradition lane list, built once from PEOPLE
+let SL_LANES_KEY='';  // fingerprint of currently-rendered lanes — drives re-render on filter change
 
 function getFiltered(){
   return PEOPLE.filter(p=>{
@@ -1530,11 +1532,9 @@ function isLineageMember(p){
   return p.type==='Genealogy' || PROPHET_CHAIN.has(p.famous);
 }
 
-function renderSilsila(){
-  if(!PEOPLE.length)return;
-  if(document.getElementById('silsilaSVG')){updateSilsilaHighlight();return;}
-
-  // ── Lane list ─────────────────────────────────────────────
+// ── Build the full (unfiltered) lane list once from PEOPLE ──────────────────
+function _buildSLAllLanes(){
+  if(SL_ALL_LANES.length) return;
   const PL='Prophetic Lineage';
   const tradSet=[...new Set(PEOPLE.map(p=>p.tradition).filter(Boolean))];
   const tradEarly={};
@@ -1542,11 +1542,54 @@ function renderSilsila(){
     const mb=PEOPLE.filter(p=>p.tradition===t&&!isLineageMember(p));
     tradEarly[t]=mb.length?Math.min(...mb.map(p=>p.dob)):9999;
   });
-  const LANES=[PL,...[...tradSet].sort((a,b)=>tradEarly[a]-tradEarly[b])];
+  SL_ALL_LANES=[PL,...[...tradSet].sort((a,b)=>tradEarly[a]-tradEarly[b])];
+}
+
+// ── Return only the lanes that should be VISIBLE under the current filter ───
+// Lineage (index 0) is always included. Tradition lanes are included only when
+// they contain at least one person matching the active type/tradition filters.
+function _getActiveSLLanes(){
+  _buildSLAllLanes();
+  if(selTypes.size===0&&selTrads.size===0) return [...SL_ALL_LANES];
+  const activeTrads=new Set();
+  PEOPLE.forEach(p=>{
+    if(isLineageMember(p)) return; // lineage is always present
+    // Apply type filter
+    if(selTypes.size>0){
+      const passType=selTypes.has(p.type);
+      const passTags=(p.tags||[]).some(t=>selTypes.has(t));
+      if(!passType&&!passTags) return;
+    }
+    // Apply tradition filter
+    if(selTrads.size>0&&!selTrads.has(p.tradition)) return;
+    if(p.tradition) activeTrads.add(p.tradition);
+  });
+  return SL_ALL_LANES.filter((lane,li)=>li===0||activeTrads.has(lane));
+}
+
+function renderSilsila(){
+  if(!PEOPLE.length)return;
+
+  const PL='Prophetic Lineage';
+  // Determine which lanes the current filter requires
+  const LANES=_getActiveSLLanes();
+  const newKey=LANES.join('\x00');
+
+  if(document.getElementById('silsilaSVG')){
+    if(newKey===SL_LANES_KEY){updateSilsilaHighlight();return;}
+    // Lanes changed (filter applied/cleared) — clear SVG and rebuild
+    document.getElementById('silsilaMain').innerHTML='';
+    document.getElementById('silsilaLanesInner').innerHTML='';
+    SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
+  }
+  SL_LANES_KEY=newKey;
+
+  // getLI: returns lane index within the current (filtered) LANES array.
+  // Returns -1 for people whose tradition is not in the active lane set.
   const getLI=p=>{
     if(isLineageMember(p)) return 0;
     const idx=LANES.indexOf(p.tradition||'');
-    return idx>=1?idx:LANES.length-1;
+    return idx>=1?idx:-1; // -1 = not in any active lane → skip
   };
 
   // ── Geometry ──────────────────────────────────────────────
@@ -1572,9 +1615,9 @@ function renderSilsila(){
     return PRE_W + EARLY_W + Math.min(1,(dob-800)/1200)*LATE_W;
   };
 
-  // ── Build grps (lane index → people array) ─────────────────
+  // ── Build grps (lane index → people array) — skip hidden lanes (li = -1) ──
   const grps={};
-  PEOPLE.forEach(p=>{const li=getLI(p);(grps[li]=grps[li]||[]).push(p);});
+  PEOPLE.forEach(p=>{const li=getLI(p);if(li>=0)(grps[li]=grps[li]||[]).push(p);});
 
   // ── First pass: measure sub-rows per lane ─────────────────
   const subRowCounts={}; // li → number of sub-rows needed
@@ -1816,19 +1859,27 @@ function renderSilsila(){
   });
   inner.innerHTML=lh;
 
-  // ── Scroll sync (vertical) ────────────────────────────────
-  mainDiv.addEventListener('scroll',()=>{
-    inner.style.transform=`translateY(-${mainDiv.scrollTop}px)`;
-  },{passive:true});
+  // ── Scroll sync (vertical) — attach only once ────────────
+  if(!mainDiv._slScrollBound){
+    mainDiv._slScrollBound=true;
+    mainDiv.addEventListener('scroll',()=>{
+      const _inn=document.getElementById('silsilaLanesInner');
+      if(_inn) _inn.style.transform=`translateY(-${mainDiv.scrollTop}px)`;
+    },{passive:true});
+  }
 
-  // ── Lane label click → filter by tradition ────────────────
-  inner.addEventListener('click',e=>{
-    const lbl=e.target.closest('.sl-lane-label'); if(!lbl) return;
-    const t=lbl.dataset.lane; if(t===PL) return;
-    if(selTrads.size===1&&selTrads.has(t)) selTrads.clear();
-    else { selTrads.clear(); selTrads.add(t); }
-    syncDD('trad'); syncSLDD('trad'); applyFilterAndFocus();
-  });
+  // ── Lane label click → filter by tradition — attach only once ──
+  const lanesWrap=document.getElementById('silsilaLanes');
+  if(!lanesWrap._slBound){
+    lanesWrap._slBound=true;
+    lanesWrap.addEventListener('click',e=>{
+      const lbl=e.target.closest('.sl-lane-label'); if(!lbl) return;
+      const t=lbl.dataset.lane; if(t==='Prophetic Lineage') return;
+      if(selTrads.size===1&&selTrads.has(t)) selTrads.clear();
+      else { selTrads.clear(); selTrads.add(t); }
+      syncDD('trad'); syncSLDD('trad'); applyFilterAndFocus();
+    });
+  }
 
   // ── Hover tooltip ─────────────────────────────────────────
   let tt=document.getElementById('sl-tt');
@@ -2001,14 +2052,22 @@ function renderSilsila(){
     });
   }
 
-  // Close pinned tooltip when clicking outside both SVG and tooltip
-  document.addEventListener('click', function slOutsideClick(e){
-    if(ttPinned && !e.target.closest('#sl-tt') && !e.target.closest('.sl-node') && !e.target.closest('#silsilaCard')){
-      unpinTooltip();
-      clearChainEdges();
-      svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
-    }
-  });
+  // Close pinned tooltip when clicking outside — attach only once
+  if(!window._slOutsideClickBound){
+    window._slOutsideClickBound=true;
+    document.addEventListener('click',e=>{
+      const _svg=document.getElementById('silsilaSVG'); if(!_svg) return;
+      const _tt=document.getElementById('sl-tt');
+      const _pinned=_tt&&_tt.style.pointerEvents==='all';
+      if(!_pinned) return;
+      if(e.target.closest('#sl-tt')||e.target.closest('.sl-node')||e.target.closest('#silsilaCard')) return;
+      if(_tt){_tt.style.pointerEvents='none';_tt.style.display='none';}
+      const _grp=_svg.querySelector('#sl-active-edges');
+      if(_grp) _grp.innerHTML='';
+      _svg.querySelectorAll('.sl-node').forEach(n=>{n.style.opacity='';});
+      _svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
+    });
+  }
 
   updateSilsilaHighlight();
 }
@@ -2016,6 +2075,15 @@ function renderSilsila(){
 
 function updateSilsilaHighlight(){
   const svg=document.getElementById('silsilaSVG'); if(!svg) return;
+
+  // If the filter has changed which lanes should be visible, rebuild the SVG
+  // so that only Lineage + selected lane(s) are shown and layout is compact.
+  const newKey=_getActiveSLLanes().join('\x00');
+  if(newKey!==SL_LANES_KEY){
+    renderSilsila(); // rebuilds with correct filtered lanes
+    return;
+  }
+
   const fs=new Set(getFiltered().map(p=>p.famous));
   const hasF=selTypes.size>0||selTrads.size>0||searchQ;
 
@@ -2038,14 +2106,6 @@ function updateSilsilaHighlight(){
     grp.innerHTML='';
     svg.querySelectorAll('.sl-node').forEach(n=>{n.style.opacity='';});
   }
-
-  const inner=document.getElementById('silsilaLanesInner');
-  if(!inner) return;
-  const al=new Set(getFiltered().map(p=>isLineageMember(p)?'Prophetic Lineage':p.tradition||''));
-  inner.querySelectorAll('.sl-lane-label').forEach(lbl=>{
-    const hasData=!hasF||al.has(lbl.dataset.lane);
-    lbl.style.display=hasData?'':'none';
-  });
 
   // Sync silsila filter dropdowns UI
   syncSLDD('type'); syncSLDD('trad');
