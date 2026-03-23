@@ -1780,14 +1780,21 @@ function renderSilsila(){
   // ── Empty group for on-demand chain edges ─────────────────────────────────
   P.push(`<g id="sl-active-edges"></g>`);
 
-  // ── Tradition nodes (connected only) ─────────────────────────────────────
+  // ── Tradition nodes ───────────────────────────────────────────────────────
+  // Unfiltered: only show nodes with documented connections (reduces clutter).
+  // Filtered: show ALL nodes in selected lanes — nothing should be empty.
+  // Nodes without connections render at lower opacity to distinguish them.
+  const hasActiveFilter=selTypes.size>0||selTrads.size>0;
   PEOPLE.forEach(p=>{
     if(isLineageMember(p)) return;
     const nd=SL_NM[p.famous]; if(!nd) return;
-    if(!SL_CONNECTED.has(p.famous)) return; // skip unconnected dots
+    const connected=SL_CONNECTED.has(p.famous);
+    if(!hasActiveFilter&&!connected) return;
     const hasFree=p.books&&p.books.some(b=>b.url&&b.url.startsWith('http'));
     const r=hasFree?NR:NR-1;
-    P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity=".78" stroke="${nd.col}" stroke-width="1.4" stroke-opacity=".9"/>`);
+    const fop=connected?.78:.42;
+    const sop=connected?.9:.50;
+    P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity="${fop}" stroke="${nd.col}" stroke-width="${connected?1.4:1}" stroke-opacity="${sop}"/>`);
   });
 
   // ── Cover rect: blank lineage lane left of Adam (hides any edge bleed) ──────
