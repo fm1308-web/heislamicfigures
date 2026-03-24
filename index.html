@@ -161,18 +161,14 @@ a:hover{text-decoration:underline}
   overflow:hidden;
 }
 
-/* ── Column headers (sticky at top of left panel) ── */
+/* ── Column headers (fixed top bar row, aligned with century columns) ── */
 #colHeaders{
-  display:flex !important;flex-shrink:0;
+  display:flex;flex-shrink:0;position:relative;
   background:var(--lp-surf);border-bottom:1px solid var(--lp-brd);
-  height:42px !important;
+  height:var(--axis-h);
+  margin-left:var(--col1-w);width:var(--col2-w);
 }
-.ch-name{
-  width:var(--col1-w);flex-shrink:0;
-  padding:0 12px;display:flex;align-items:center;
-  font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.14em;color:var(--lp-muted);
-  border-right:1.5px solid var(--lp-brd);
-}
+.ch-name{display:none}
 .ch-cents{display:flex;flex:1}
 .ch-cent{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
@@ -638,24 +634,23 @@ footer{
       <button class="view-tab" onclick="setView('map')">MAP</button>
     </div>
   </div>
-</div></div><!-- /#topBar -->
+</div>
+<div id="colHeaders">
+  <div class="ch-name">NAMES</div>
+  <div class="ch-cents">
+    <div class="ch-cent" id="ch0"><span id="ch0t">8TH C.</span><span class="cy-lbl" id="ch0y">700–800</span></div>
+    <div class="ch-cent hi" id="ch1"><span id="ch1t">9TH C.</span><span class="cy-lbl" id="ch1y">800–900</span></div>
+    <div class="ch-cent" id="ch2"><span id="ch2t">10TH C.</span><span class="cy-lbl" id="ch2y">900–1000</span></div>
+  </div>
+</div>
+</div><!-- /#topBar -->
 
 <div id="mainShell">
 
   <!-- LEFT PANEL -->
   <div id="leftPanel">
 
-    <!-- Row 1: column headers -->
-    <div id="colHeaders">
-      <div class="ch-name">NAMES</div>
-      <div class="ch-cents">
-        <div class="ch-cent" id="ch0"><span id="ch0t">8TH C.</span><span class="cy-lbl" id="ch0y">700–800</span></div>
-        <div class="ch-cent hi" id="ch1"><span id="ch1t">9TH C.</span><span class="cy-lbl" id="ch1y">800–900</span></div>
-        <div class="ch-cent" id="ch2"><span id="ch2t">10TH C.</span><span class="cy-lbl" id="ch2y">900–1000</span></div>
-      </div>
-    </div>
-
-    <!-- Row 2: filter bar — dropdowns under names, summary in century zone -->
+    <!-- Row 1: filter bar — dropdowns under names, summary in century zone -->
     <div id="filterBar">
       <!-- Dropdowns sit under the names column -->
       <div id="filterBarLeft">
@@ -1298,8 +1293,7 @@ function setView(v){
   document.querySelectorAll('.view-tab').forEach(t=>
     t.classList.toggle('active',t.textContent.trim().toLowerCase()===v.toLowerCase()));
   document.getElementById('leftPanel').style.display=v==='timeline'?'flex':'none';
-  if(v==='timeline'){ document.getElementById('colHeaders').style.display='flex'; updateCentHeaders(); updateCentScrollbar(); }
-  console.log('colHeaders display:', document.getElementById('colHeaders').style.display, 'leftPanel display:', document.getElementById('leftPanel').style.display);
+  document.getElementById('colHeaders').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
   if(v==='map'||v==='silsila'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
