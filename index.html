@@ -780,7 +780,7 @@ footer{
 
   <!-- INFO PANEL -->
   <div id="infoPanel">
-    <div id="infoHdr">INFORMATION</div>
+    <div id="infoHdr">INFORMATION<button onclick="activePerson=null;showEmptyInfo()" style="margin-left:auto;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:0 2px">✕</button></div>
     <div id="infoFilterSpacer">SELECT A FIGURE FROM THE LIST</div>
     <div id="infoScroll">
       <div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>
@@ -1578,14 +1578,14 @@ function focusPersonInTimeline(name){
   // 2. Switch to timeline view
   setView('timeline');
 
-  // 3. Centre the century columns on the person's birth century
+  // 3. Render rows first so they exist in the DOM
+  renderAll();
+
+  // 4. Centre the century columns on the person's birth century
   const cent=p.dob<600?6:Math.ceil(p.dob/100);
   const idx=ALL_CENTS.indexOf(cent);
   if(idx!==-1){centIdx=Math.max(idx,1); setCW();}
   updateCentHeaders(); updateCentScrollbar();
-
-  // 4. Re-render so the row exists in the DOM
-  renderAll();
 
   // 5. Select and scroll to the row
   setTimeout(()=>{
