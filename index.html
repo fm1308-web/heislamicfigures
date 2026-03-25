@@ -1524,7 +1524,8 @@ function renderInfo(p){
       <div class="i-teachers">
         ${p.relations.map(r=>{
           const inData=PEOPLE.find(pp=>pp.famous===r.person);
-          const lbl=esc(r.person)+(r.relation?' <span style="color:var(--ip-muted);font-size:10px">('+esc(r.relation)+')</span>':'');
+          const tag=r.relation?'<span style="color:var(--ip-muted);font-size:10px;text-transform:capitalize">'+esc(r.relation)+'</span> ':'';
+          const lbl=tag+esc(r.person);
           return inData
             ?`<span class="i-teacher" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')">${lbl}</span>`
             :`<span class="i-teacher" style="cursor:default">${lbl}</span>`;
