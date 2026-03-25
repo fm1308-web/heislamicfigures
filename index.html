@@ -617,10 +617,10 @@ footer{
     <div id="aiDisclosure">AI-generated · content may contain errors · verify independently</div>
   </div>
   <div id="appHeaderRight">
-    <div id="statFigures">1,702 Figures</div>
-    <div>3 Books &amp; Series</div>
+    <div id="statFigures">… Figures</div>
+    <div id="statBooks">… Free Books</div>
     <div>Updated: March 2026</div>
-    <div id="statRelations">630 Relations</div>
+    <div id="statRelations">… Relations</div>
   </div>
 </div>
 
@@ -918,9 +918,21 @@ async function boot(){
     const mn=Math.min(...his.map(p=>p.dob));
     const mx=Math.max(...PEOPLE.map(p=>(p.dod||p.dob)).filter(y=>y<2100));
     document.getElementById('metaLine').textContent=
-      `${PEOPLE.length} figures · ${Math.round(mn)} CE to ${Math.round(mx)} CE · ✦ = free book available · ⚠ = dates assumed for visual`;
+      `${Math.round(mn)} CE to ${Math.round(mx)} CE · ✦ = free book available · ⚠ = dates assumed for visual`;
     document.getElementById('statFigures').textContent=PEOPLE.length.toLocaleString()+' Figures';
-    document.getElementById('statRelations').textContent=PEOPLE.reduce((s,p)=>s+(p.relations?.length||0),0).toLocaleString()+' Relations';
+    const relCount=PEOPLE.reduce((s,p)=>s+(p.teachers?.length||0)+(p.relations?.length||0),0);
+    document.getElementById('statRelations').textContent=relCount.toLocaleString()+' Relations';
+
+    // Count free books across all detail chunks (background)
+    const CHUNKS=['hadith','lineage','philosophy','poets','rulers','sahaba','sahabiyya','scholars','sciences','sufis-early','sufis-orders','tabiun'];
+    let _freeBookCount=0;
+    const el=document.getElementById('statBooks');
+    Promise.all(CHUNKS.map(c=>_loadChunk(c))).then(arrs=>{
+      arrs.forEach(arr=>arr.forEach(rec=>{
+        if(rec.books) rec.books.forEach(b=>{ if(b.url) _freeBookCount++; });
+      }));
+      el.textContent=_freeBookCount.toLocaleString()+' Free Books';
+    });
   }
 
   // Sort types and traditions by the earliest DOB of any person in that group
@@ -1490,13 +1502,14 @@ function renderInfo(p){
 
   let booksHtml='';
   if(p.books?.length){
+    const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
     booksHtml=`<div class="i-sec"><div class="i-sl">Works &amp; Sources</div>
-      <div class="i-books">${p.books.map(b=>`
+      <div class="i-books">${sortedBooks.map(b=>`
         <div class="i-book">
           <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
           <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
           ${b.magnum?` <span style="color:var(--ip-acc);font-size:10px">✦</span>`:''}
-          ${b.note?`<div class="i-bnote">${esc(b.note)}</div>`:''}</div>
+          ${b.note?`<div class="i-bnote">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">quran.com</a>')}</div>`:''}</div>
         </div>`).join('')}
       </div></div>`;
   }
@@ -2365,12 +2378,13 @@ function openSilsilaCard(p, cx, cy){
     </div>`;
   }
   if(p.books?.length){
+    const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
     html+=`<div class="sc-sec">WORKS & SOURCES</div>`;
-    p.books.forEach(b=>{
+    sortedBooks.forEach(b=>{
       html+=`<div class="sc-book">
         ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:13px">${esc(b.title)}</span>`}
         ${b.magnum?` <span style="color:var(--accent);font-size:10px">✦</span>`:''}
-        ${b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note)}</div>`:''}
+        ${b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">quran.com</a>')}</div>`:''}
       </div>`;
     });
   }
@@ -2780,12 +2794,13 @@ function _openMapCard(p, cx, cy){
     <div style="display:flex;flex-wrap:wrap;gap:5px">${studentsOf.map(s=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,168,74,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">▶ ${esc(s.famous)}</span>`).join('')}</div>`;
   }
   if(p.books?.length){
+    const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
     html+=`<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">WORKS & SOURCES<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>`;
-    p.books.forEach(b=>{
+    sortedBooks.forEach(b=>{
       html+=`<div style="margin-bottom:7px;font-size:13px;color:var(--ip-text)">`+
         (b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`)+
         (b.magnum?` <span style="color:var(--accent);font-size:10px">✦</span>`:'')+
-        (b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note)}</div>`:'')+
+        (b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">quran.com</a>')}</div>`:'')+
         `</div>`;
     });
   }
