@@ -1501,7 +1501,7 @@ function renderInfo(p){
       </div></div>`;
   }
   let teachHtml='';
-  if(p.teachers?.length){
+  if(p.famous!=='Prophet Muhammad'&&p.teachers?.length){
     teachHtml=`<div class="i-sec"><div class="i-sl">Teachers</div>
       <div class="i-teachers">
         ${p.teachers.map(t=>`<span class="i-teacher" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(t)}</span>`).join('')}
@@ -1511,7 +1511,7 @@ function renderInfo(p){
   // Students (people who list this figure as a teacher)
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
   let studHtml='';
-  if(studentsOf.length){
+  if(p.famous!=='Prophet Muhammad'&&studentsOf.length){
     studHtml=`<div class="i-sec"><div class="i-sl">Students (${studentsOf.length})</div>
       <div class="i-teachers">
         ${studentsOf.map(s=>`<span class="i-student" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(s.famous)}</span>`).join('')}
