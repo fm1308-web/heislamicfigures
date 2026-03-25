@@ -58,9 +58,17 @@ a:hover{text-decoration:underline}
   position:fixed;top:0;left:0;right:0;z-index:300;
 }
 #appHeader{
-  text-align:center;padding:14px 20px 10px;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:14px 20px 10px;
   background:linear-gradient(180deg,var(--surface2) 0%,var(--bg) 100%);
   border-bottom:2px solid var(--border);
+}
+#appHeaderLeft{text-align:left}
+#appHeaderRight{text-align:right;flex-shrink:0;padding-top:2px}
+#appHeaderRight div{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.07em;color:var(--muted);line-height:1.7}
+@media(max-width:600px){
+  #appHeader{flex-direction:column;align-items:flex-start}
+  #appHeaderRight{text-align:left;margin-top:6px}
 }
 
 #appHeader h1{
@@ -603,9 +611,17 @@ footer{
 <body>
 
 <div id="topBar"><div id="appHeader">
-  <h1>ISLAMIC FIGURES</h1>
-  <div id="metaLine">Loading…</div>
-  <div id="aiDisclosure">AI-generated · content may contain errors · verify independently</div>
+  <div id="appHeaderLeft">
+    <h1>ISLAMIC FIGURES</h1>
+    <div id="metaLine">Loading…</div>
+    <div id="aiDisclosure">AI-generated · content may contain errors · verify independently</div>
+  </div>
+  <div id="appHeaderRight">
+    <div id="statFigures">1,702 Figures</div>
+    <div>3 Books &amp; Series</div>
+    <div>Updated: March 2026</div>
+    <div id="statRelations">630 Relations</div>
+  </div>
 </div>
 
 <!-- Controls: only year slider + search + tabs -->
@@ -903,6 +919,8 @@ async function boot(){
     const mx=Math.max(...PEOPLE.map(p=>(p.dod||p.dob)).filter(y=>y<2100));
     document.getElementById('metaLine').textContent=
       `${PEOPLE.length} figures · ${Math.round(mn)} CE to ${Math.round(mx)} CE · ✦ = free book available · ⚠ = dates assumed for visual`;
+    document.getElementById('statFigures').textContent=PEOPLE.length.toLocaleString()+' Figures';
+    document.getElementById('statRelations').textContent=PEOPLE.reduce((s,p)=>s+(p.relations?.length||0),0).toLocaleString()+' Relations';
   }
 
   // Sort types and traditions by the earliest DOB of any person in that group
