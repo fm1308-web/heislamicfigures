@@ -855,16 +855,18 @@ async function _loadChunk(chunk){
 
 async function _ensureDetails(p){
   if(p._detailLoaded) return p;
-  const chunk=getChunkName(p);
-  const arr=await _loadChunk(chunk);
-  const det=arr.find(d=>d.famous===p.famous);
-  if(det){
-    if(det.school) p.school=det.school;
-    if(det.books)  p.books=det.books;
-    if(det.parents)  p.parents=det.parents;
-    if(det.children) p.children=det.children;
-    if(det.spouses)  p.spouses=det.spouses;
-  }
+  try{
+    const chunk=getChunkName(p);
+    const arr=await _loadChunk(chunk);
+    const det=arr.find(d=>d.famous===p.famous);
+    if(det){
+      if(det.school) p.school=det.school;
+      if(det.books)  p.books=det.books;
+      if(det.parents)  p.parents=det.parents;
+      if(det.children) p.children=det.children;
+      if(det.spouses)  p.spouses=det.spouses;
+    }
+  }catch(e){/* detail chunk unavailable — render with core data */}
   p._detailLoaded=true;
   return p;
 }
@@ -1458,8 +1460,12 @@ function renderInfo(p){
 
   let booksHtml='';
   if(p.books?.length){
+    const booksOrdered=p.famous==='Prophet Muhammad'?[...p.books].sort((a,b)=>{
+      const rank=t=>/quran/i.test(t.title)?0:/hadith/i.test(t.title)?1:2;
+      return rank(a)-rank(b);
+    }):p.books;
     booksHtml=`<div class="i-sec"><div class="i-sl">Works &amp; Sources</div>
-      <div class="i-books">${p.books.map(b=>`
+      <div class="i-books">${booksOrdered.map(b=>`
         <div class="i-book">
           <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
           <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
@@ -1469,7 +1475,7 @@ function renderInfo(p){
       </div></div>`;
   }
   let teachHtml='';
-  if(p.teachers?.length){
+  if(p.teachers?.length && p.famous!=='Prophet Muhammad'){
     teachHtml=`<div class="i-sec"><div class="i-sl">Teachers</div>
       <div class="i-teachers">
         ${p.teachers.map(t=>`<span class="i-teacher" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(t)}</span>`).join('')}
@@ -1479,7 +1485,7 @@ function renderInfo(p){
   // Students (people who list this figure as a teacher)
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
   let studHtml='';
-  if(studentsOf.length){
+  if(studentsOf.length && p.famous!=='Prophet Muhammad'){
     studHtml=`<div class="i-sec"><div class="i-sl">Students (${studentsOf.length})</div>
       <div class="i-teachers">
         ${studentsOf.map(s=>`<span class="i-student" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(s.famous)}</span>`).join('')}
@@ -1499,8 +1505,8 @@ function renderInfo(p){
     ${p.tags&&p.tags.length?`<div style="margin-bottom:10px;display:flex;flex-wrap:wrap;gap:5px">${p.tags.map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div>`:''}
     <div class="i-tags">
       <span class="i-tag hi">${esc(p.type||'')}</span>
-      <span class="i-tag hi">${esc(p.tradition||'')}</span>
-      ${p.classif?`<span class="i-tag">${esc(p.classif)}</span>`:''}
+      ${p.famous!=='Prophet Muhammad'?`<span class="i-tag hi">${esc(p.tradition||'')}</span>`:''}
+      ${p.classif&&p.famous!=='Prophet Muhammad'?`<span class="i-tag">${esc(p.classif)}</span>`:''}
       ${p.city?`<span class="i-tag">📍 ${esc(p.city)}</span>`:''}
       ${p.lang?`<span class="i-tag">🌐 ${esc(p.lang)}</span>`:''}
     </div>
@@ -1510,7 +1516,7 @@ function renderInfo(p){
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(160,130,60,.08);border:1px dashed rgba(200,168,80,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
-    ${p.school?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.school}</p></div>`:''}
+    ${(p.famous==='Prophet Muhammad'?'The Last Prophet':p.school)?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.famous==='Prophet Muhammad'?'The Last Prophet':p.school}</p></div>`:''}
     ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><p>${esc(p.titles)}</p></div>`:''}
     ${quranHtml}${teachHtml}${studHtml}${booksHtml}
     ${p.source?`<div class="i-source">Sources: ${esc(p.source)}</div>`:''}
