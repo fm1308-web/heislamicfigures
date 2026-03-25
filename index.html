@@ -844,11 +844,18 @@ async function _loadChunk(chunk){
   if(_detailCache[chunk]) return _detailCache[chunk];
   if(_detailLoading[chunk]) return _detailLoading[chunk];
   _detailLoading[chunk]=(async()=>{
-    const r=await fetch(`data/islamic/details/${chunk}.json`);
-    const arr=await r.json();
-    _detailCache[chunk]=arr;
-    delete _detailLoading[chunk];
-    return arr;
+    try{
+      const r=await fetch(`data/islamic/details/${chunk}.json`);
+      if(!r.ok) throw new Error(r.status);
+      const arr=await r.json();
+      _detailCache[chunk]=arr;
+      delete _detailLoading[chunk];
+      return arr;
+    }catch(_){
+      _detailCache[chunk]=[];
+      delete _detailLoading[chunk];
+      return [];
+    }
   })();
   return _detailLoading[chunk];
 }
@@ -1436,18 +1443,25 @@ function renderInfo(p){
   document.getElementById('infoFilterSpacer').textContent=
     `${centLabel(gc(p.dob)).toUpperCase()} CENTURY · ${p.tradition||''} · ${p.type||''}`;
 
-  // Quran references section — reads from quranRef object in people.json
+  // Quran references section
   let quranHtml='';
   if(p.quranRef){
     const qr=p.quranRef;
-    quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
-      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
-        <span style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
-        <span style="font-size:11px;color:var(--ip-muted)">mentioned in the Quran</span>
-        <a href="${esc(qr.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none;font-size:12px;font-weight:600">First verse: ${esc(qr.firstVerse)} ↗</a>
-      </div>
-      <div style="font-size:11.5px;color:var(--ip-muted);font-style:italic">${esc(qr.epithet)}</div>
-    </div>`;
+    if(typeof qr==='object'&&qr.count!=null){
+      quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
+          <span style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
+          <span style="font-size:11px;color:var(--ip-muted)">mentioned in the Quran</span>
+          <a href="${esc(qr.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none;font-size:12px;font-weight:600">First verse: ${esc(qr.firstVerse)} ↗</a>
+        </div>
+        <div style="font-size:11.5px;color:var(--ip-muted);font-style:italic">${esc(qr.epithet)}</div>
+      </div>`;
+    } else {
+      quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
+        <div style="font-size:13px;color:var(--ip-text);line-height:1.7">
+          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em">VERSES: </span>${esc(String(qr))}
+        </div></div>`;
+    }
   } else if(p.quran_refs){
     const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none;font-size:12px"> — Open in Quran.com 🌐</a>`:'';
     quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
@@ -1486,6 +1500,20 @@ function renderInfo(p){
       </div></div>`;
   }
 
+  let relHtml='';
+  if(p.relations?.length){
+    relHtml=`<div class="i-sec"><div class="i-sl">Relations</div>
+      <div class="i-teachers">
+        ${p.relations.map(r=>{
+          const inData=PEOPLE.find(pp=>pp.famous===r.person);
+          const lbl=esc(r.person)+(r.relation?' <span style="color:var(--ip-muted);font-size:10px">('+esc(r.relation)+')</span>':'');
+          return inData
+            ?`<span class="i-teacher" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')">${lbl}</span>`
+            :`<span class="i-teacher" style="cursor:default">${lbl}</span>`;
+        }).join('')}
+      </div></div>`;
+  }
+
   // Locate-in-silsila button (only when silsila view active and node exists)
   const locateBtn=VIEW==='silsila'&&SL_NM[p.famous]
     ?`<button class="sl-locate-btn" onclick="silsilaLocate('${p.famous.replace(/'/g,"\\'")}')">`+
@@ -1510,10 +1538,23 @@ function renderInfo(p){
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(160,130,60,.08);border:1px dashed rgba(200,168,80,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
-    ${p.school?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.school}</p></div>`:''}
-    ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><p>${esc(p.titles)}</p></div>`:''}
-    ${quranHtml}${teachHtml}${studHtml}${booksHtml}
-    ${p.source?`<div class="i-source">Sources: ${esc(p.source)}</div>`:''}
+    ${(p.famous==='Prophet Muhammad'?'The Last Prophet':p.school)?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.famous==='Prophet Muhammad'?'The Last Prophet':p.school}</p></div>`:''}
+    ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
+    ${quranHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
+    ${p.source?`<div class="i-source">Sources: ${(()=>{
+      const s=p.source;
+      if(/^https?:\/\//.test(s)){
+        try{
+          const u=new URL(s);
+          const host=u.hostname.replace(/^www\./,'');
+          const site=host.includes('wikipedia')?'Wikipedia':host.charAt(0).toUpperCase()+host.slice(1);
+          const path=decodeURIComponent(u.pathname.split('/').pop()||'').replace(/_/g,' ');
+          const label=path?site+' — '+path+' ↗':site+' ↗';
+          return '<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">'+esc(label)+'</a>';
+        }catch(_){return esc(s);}
+      }
+      return esc(s);
+    })()}</div>`:''}
   `;
 }
 
