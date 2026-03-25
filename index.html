@@ -1565,9 +1565,15 @@ function renderInfo(p){
         try{
           const u=new URL(s);
           const host=u.hostname.replace(/^www\./,'');
-          const site=host.includes('wikipedia')?'Wikipedia':host.charAt(0).toUpperCase()+host.slice(1);
-          const path=decodeURIComponent(u.pathname.split('/').pop()||'').replace(/_/g,' ');
-          const label=path?site+' — '+path+' ↗':site+' ↗';
+          let label;
+          if(host.includes('wikipedia')){
+            const name=decodeURIComponent(u.pathname.split('/').pop()||'').replace(/_/g,' ');
+            label=name?'Wikipedia — '+name+' ↗':'Wikipedia ↗';
+          } else if(host.includes('sunnah.com')){
+            label='Sunnah.com ↗';
+          } else {
+            label=host+' ↗';
+          }
           return '<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">'+esc(label)+'</a>';
         }catch(_){return esc(s);}
       }
