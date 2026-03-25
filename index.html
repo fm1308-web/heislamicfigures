@@ -63,8 +63,8 @@ a:hover{text-decoration:underline}
   background:linear-gradient(180deg,var(--surface2) 0%,var(--bg) 100%);
   border-bottom:2px solid var(--border);
 }
-#appHeaderLeft{text-align:left}
-#appHeaderRight{text-align:right;flex-shrink:0;padding-top:2px}
+#appHeaderLeft{text-align:left;flex:1;min-width:0}
+#appHeaderRight{text-align:right;flex-shrink:0;padding-top:2px;padding-left:20px}
 #appHeaderRight div{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.07em;color:var(--muted);line-height:1.7}
 @media(max-width:600px){
   #appHeader{flex-direction:column;align-items:flex-start}
