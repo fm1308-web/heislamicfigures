@@ -48,7 +48,7 @@
   --col2-w:     430px;
   --row-h:      44px;
   --axis-h:     42px;
-  --fbar-h:     34px;  /* filter bar height */
+  --fbar-h:     42px;  /* filter bar height — matches axis-h */
   --sbar-h:     22px;  /* scrollbar strip height */
 }
 
@@ -219,26 +219,26 @@ a:hover{text-decoration:underline}
   background:var(--lp-bg);
   border-bottom:1px solid var(--lp-brd);
 }
-/* Left: name-col width — contains the dropdowns */
 #filterBarLeft{
   width:var(--col1-w);flex-shrink:0;
   border-right:1.5px solid var(--lp-brd);
-  display:flex;align-items:center;gap:5px;padding:0 7px;overflow:visible;position:relative;
+  display:flex;align-items:center;gap:4px;padding:0 5px;overflow:visible;position:relative;
 }
 /* Right: century columns — shows active filter summary */
 #filterBarCtrls{
-  flex:1;display:flex;align-items:center;gap:6px;padding:0 10px;overflow:hidden;
+  flex:1;display:flex;align-items:center;gap:0;padding:0;overflow:hidden;
 }
+#colHeaders{display:none !important}
 
 /* ── Dropdown ── */
 .dd-wrap{position:relative;flex-shrink:0}
 .dd-btn{
-  display:flex;align-items:center;gap:6px;padding:4px 10px;
+  display:flex;align-items:center;gap:6px;padding:3px 7px;
   background:rgba(255,255,255,.06);
   border:1.5px solid var(--lp-brd);
   border-radius:3px;
   color:var(--text2);
-  font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.1em;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;
   cursor:pointer;transition:all .12s;white-space:nowrap;
   min-width:90px;justify-content:space-between;
   position:relative;
@@ -638,10 +638,33 @@ a:hover{text-decoration:underline}
 .sc-tl-btn:hover{background:rgba(232,200,120,.14);border-color:rgba(232,200,120,.6)}
 
 /* ══════════════ MAP VIEW ══════════════ */
-#mapView{display:none;flex:1;flex-direction:column;overflow:hidden;background:var(--bg);position:relative}
-#mapView.active{display:flex}
-#mapContainer{flex:1;position:relative;overflow:hidden}
+#mapView{display:none;flex-direction:column;overflow:hidden;background:var(--bg);position:relative}
+#mapView.active{display:flex;flex:1}
+#mapToolbar{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 10px;flex-shrink:0;
+  background:var(--lp-bg);
+  border-bottom:1px solid var(--lp-brd);
+  height:34px;
+}
+#mapContainer{flex:1;position:relative;overflow:hidden;min-height:0}
 #leafletMap{width:100%;height:100%;z-index:1;min-height:300px}
+/* ── Map marker hover labels ── */
+.map-marker-wrap{display:flex;flex-direction:column;align-items:center;cursor:pointer;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55))}
+.map-marker-dot{border-radius:50%;flex-shrink:0;transition:transform .15s}
+.map-marker-label{
+  margin-top:3px;font-family:'Cinzel',Georgia,serif;letter-spacing:.02em;
+  white-space:nowrap;background:rgba(14,10,4,.9);padding:2px 7px;border-radius:3px;
+  line-height:1.35;pointer-events:none;border-left:2px solid;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);box-shadow:0 2px 8px rgba(0,0,0,.5);
+  color:rgba(240,237,226,.93);
+}
+.prophet-marker-label{
+  color:#e8c050 !important;
+  text-shadow:0 0 12px rgba(232,192,80,.5),0 1px 3px rgba(0,0,0,.9);
+  font-size:13px !important;font-weight:900 !important;
+}
+
 .map-legend{position:absolute;bottom:24px;right:12px;z-index:900;font-family:'Cinzel',Georgia,serif;}
 #mapLegendToggle{display:flex;align-items:center;gap:6px;background:rgba(10,8,3,.88);border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:4px;cursor:pointer;width:100%;transition:background .15s;}
 #mapLegendToggle:hover{background:rgba(232,200,120,.12)}
@@ -747,14 +770,6 @@ footer{
     </div>
   </div>
 </div>
-<div id="colHeaders">
-  <div class="ch-name">NAMES</div>
-  <div class="ch-cents">
-    <div class="ch-cent" id="ch0"><span id="ch0t">8TH C.</span><span class="cy-lbl" id="ch0y">700–800</span></div>
-    <div class="ch-cent hi" id="ch1"><span id="ch1t">9TH C.</span><span class="cy-lbl" id="ch1y">800–900</span></div>
-    <div class="ch-cent" id="ch2"><span id="ch2t">10TH C.</span><span class="cy-lbl" id="ch2y">900–1000</span></div>
-  </div>
-</div>
 </div><!-- /#topBar -->
 
 <div id="mainShell">
@@ -762,11 +777,9 @@ footer{
   <!-- LEFT PANEL -->
   <div id="leftPanel">
 
-    <!-- Row 1: filter bar — dropdowns under names, summary in century zone -->
+    <!-- Filter bar — timeline view -->
     <div id="filterBar">
-      <!-- Dropdowns sit under the names column -->
       <div id="filterBarLeft">
-        <!-- TYPE dropdown -->
         <div class="dd-wrap">
           <button class="dd-btn" id="typeBtn" onclick="toggleDD('type')">
             <span>TYPE</span>
@@ -782,8 +795,6 @@ footer{
             </div>
           </div>
         </div>
-
-        <!-- TRADITION dropdown -->
         <div class="dd-wrap">
           <button class="dd-btn" id="tradBtn" onclick="toggleDD('trad')">
             <span>TRADITION</span>
@@ -799,19 +810,20 @@ footer{
             </div>
           </div>
         </div>
-
-        <!-- SAVED filter -->
         <button class="dd-btn" id="favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
-
-      </div><!-- /filterBarLeft -->
-      <!-- Active filter summary appears across the full century zone -->
+      </div>
       <div id="filterBarCtrls">
-        <span id="filterSummary"></span>
-        <button id="filterClearAll" onclick="clearAllFilters()">CLEAR ALL ✕</button>
+        <div class="ch-cents" style="display:flex;flex:1;height:100%">
+          <div class="ch-cent" id="ch0"><span id="ch0t">8TH C.</span><span class="cy-lbl" id="ch0y">700–800</span></div>
+          <div class="ch-cent hi" id="ch1"><span id="ch1t">9TH C.</span><span class="cy-lbl" id="ch1y">800–900</span></div>
+          <div class="ch-cent" id="ch2"><span id="ch2t">10TH C.</span><span class="cy-lbl" id="ch2y">900–1000</span></div>
+        </div>
+        <span id="filterSummary" style="display:none"></span>
+        <button id="filterClearAll" onclick="clearAllFilters()" style="display:none">CLEAR ALL ✕</button>
       </div>
     </div>
 
-    <!-- Row 3: scrollable rows (names + bars) -->
+    <!-- Scrollable rows (names + bars) -->
     <div id="rowsScroll"></div>
 
     <!-- Row 4: century scrollbar AT BOTTOM -->
@@ -858,6 +870,7 @@ footer{
             </div>
           </div>
         </div>
+        <button class="sl-dd-btn" id="sl-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
         <span id="sl-filterSummary"></span>
         <button id="sl-clearAll" onclick="clearAllFilters()">CLEAR ALL ✕</button>
       </div>
@@ -883,6 +896,22 @@ footer{
 
   <!-- MAP VIEW -->
   <div id="mapView">
+    <div id="mapToolbar">
+      <div class="sl-dd-wrap">
+        <button class="sl-dd-btn" id="map-typeBtn" onclick="toggleSLDD('type')">
+          <span id="map-typeLbl">TYPE</span>
+          <span class="dd-caret">▾</span>
+        </button>
+      </div>
+      <div class="sl-dd-wrap">
+        <button class="sl-dd-btn" id="map-tradBtn" onclick="toggleSLDD('trad')">
+          <span id="map-tradLbl">TRADITION</span>
+          <span class="dd-caret">▾</span>
+        </button>
+      </div>
+      <button class="sl-dd-btn" id="map-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()"
+        style="border-color:var(--gold);color:var(--gold)">★ SAVED</button>
+    </div>
     <div id="mapContainer">
       <div id="leafletMap"></div>
     </div>
@@ -986,21 +1015,26 @@ APP.safeInit('Favorites', function() {
 });
 
 function _updateFavFilterBtn() {
-  var btn = document.getElementById('favFilterBtn');
-  if (!btn || !APP.Favorites) return;
+  if (!APP.Favorites) return;
   var n = APP.Favorites.count();
-  btn.innerHTML = '★ SAVED' + (n > 0
+  var html = '★ SAVED' + (n > 0
     ? ' <span style="color:#D4AF37;font-size:9px">(' + n + ')</span>'
     : '');
+  ['favFilterBtn','sl-favFilterBtn','map-favFilterBtn'].forEach(function(id){
+    var btn = document.getElementById(id);
+    if(btn) btn.innerHTML = html;
+  });
 }
 
 function toggleFavFilter() {
   APP.filterFavsOnly = !APP.filterFavsOnly;
-  var btn = document.getElementById('favFilterBtn');
-  if (btn) {
-    btn.classList.toggle('filtered', APP.filterFavsOnly);
-  }
+  ['favFilterBtn','sl-favFilterBtn','map-favFilterBtn'].forEach(function(id){
+    var btn = document.getElementById(id);
+    if(btn) btn.classList.toggle('filtered', APP.filterFavsOnly);
+  });
   applyFilterAndFocus();
+  if(VIEW==='map') _renderMarkers();
+  if(VIEW==='silsila') renderSilsila();
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1579,7 +1613,7 @@ function setView(v){
   document.querySelectorAll('.view-tab').forEach(t=>
     t.classList.toggle('active',t.textContent.trim().toLowerCase()===v.toLowerCase()));
   document.getElementById('leftPanel').style.display=v==='timeline'?'flex':'none';
-  document.getElementById('colHeaders').style.display=v==='timeline'?'flex':'none';
+  document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
   if(v==='map'||v==='silsila'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
@@ -2856,17 +2890,9 @@ const MAP_EMPIRES=[
 ];
 
 function _setMapHeight(){
-  const topBar=document.getElementById('topBar');
-  const hdr=topBar?topBar.offsetHeight:(document.getElementById('appHeader').offsetHeight+document.getElementById('controls').offsetHeight);
-  const ctrl=document.getElementById('controls').offsetHeight;
-  const foot=document.querySelector('footer').offsetHeight;
-  const h=Math.max(300, window.innerHeight - hdr - ctrl - foot);
-  const mv=document.getElementById('mapView');
-  const mc=document.getElementById('mapContainer');
+  const c=document.getElementById('mapContainer');
   const lm=document.getElementById('leafletMap');
-  if(mv) mv.style.height=h+'px';
-  if(mc) mc.style.height=h+'px';
-  if(lm) lm.style.height=h+'px';
+  if(c&&lm) lm.style.height=c.offsetHeight+'px';
   if(_lMap) _lMap.invalidateSize();
 }
 
@@ -2892,6 +2918,10 @@ function _getMapFiltered(){
     if(_mapYear!==null){
       const dod=p.dod!==undefined&&p.dod!==null?p.dod:p.dob+60;
       if(p.dob>_mapYear||dod<_mapYear) return false;
+    }
+    /* Saved figures filter */
+    if(APP.filterFavsOnly && APP.Favorites){
+      if(!APP.Favorites.has(p.famous)) return false;
     }
     return true;
   });
@@ -2959,32 +2989,66 @@ const MAP_LEGEND=[
   {label:'Poet',              color:'#e07090'},
 ];
 
-function _makeMarker(p){
+function _makeMarker(p, showLabel=false){
   const col=_markerTypeColor(p);
   const hasFree=(p.books||[]).some(b=>b.url&&b.url.startsWith('http'));
   const name=p.famous.length>22?p.famous.slice(0,20)+'…':p.famous;
   const isProphet=(p.type==='Prophet'||p.type==='Genealogy'||p.type==='Founder');
+  const isTheProphet=(p.famous==='Prophet Muhammad');
   const dotSz=isProphet?14:9;
   const dotBorder=isProphet?'2.5px solid rgba(255,220,80,.55)':'2px solid rgba(30,20,8,.9)';
   const dotGlow=isProphet?`0 0 0 2px ${col}55,0 0 8px ${col}88`:`0 0 0 1px ${col}`;
   const anchor=Math.round(dotSz/2);
-  const icon=L.divIcon({
-    html:`<div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));">
-      <div style="width:${dotSz}px;height:${dotSz}px;border-radius:50%;background:${col};border:${dotBorder};box-shadow:${dotGlow};flex-shrink:0;"></div>
-      <div style="margin-top:2px;font-family:'Cinzel',Georgia,serif;font-size:10.5px;font-weight:700;color:rgba(240,237,226,0.93);white-space:nowrap;background:rgba(14,10,4,.82);padding:2px 6px 2px;border-radius:3px;line-height:1.35;pointer-events:none;border-left:2px solid ${col};letter-spacing:.02em;text-shadow:0 1px 3px rgba(0,0,0,.9);">${hasFree?'✦ ':''}${name}</div>
+  const labelSize=isProphet?'12.5px':'10.5px';
+  const labelColor=isProphet?'#e8c050':'rgba(240,237,226,0.93)';
+  const labelVisible=(isTheProphet||showLabel)?'flex':'none';
+  const icon = L.divIcon({
+    html: `<div class="map-marker-wrap">
+      <div class="map-marker-dot" style="
+        width:${dotSz}px;height:${dotSz}px;
+        background:${col};border:${dotBorder};box-shadow:${dotGlow};">
+      </div>
+      <div class="map-marker-label${isTheProphet?' prophet-marker-label':''}" style="
+        display:${labelVisible};
+        border-left-color:${col};
+        font-size:${labelSize};
+        font-weight:${isProphet?900:700};
+        color:${labelColor};">
+          ${hasFree?'✦ ':''}${name}
+      </div>
     </div>`,
-    className:'',iconSize:[160,34],iconAnchor:[80,anchor]
+    className: '',
+    iconSize: [160, 40],
+    iconAnchor: [isTheProphet ? 80 : anchor, anchor]
   });
-  const m=L.marker([p.lat,p.lng],{icon});
+  const _lat=p._renderLat!=null?p._renderLat:p.lat;
+  const _lng=p._renderLng!=null?p._renderLng:p.lng;
+  const m=L.marker([_lat,_lng],{icon, zIndexOffset: isTheProphet ? 9999 : 0});
   // First hover: show small tooltip
   m.on('mouseover',e=>{
+    const el=m.getElement()||(e&&e.originalEvent&&e.originalEvent.target
+      ?e.originalEvent.target.closest('.map-marker-wrap'):null);
+    if(el){
+      const lbl=el.querySelector('.map-marker-label');
+      const dot=el.querySelector('.map-marker-dot');
+      if(lbl&&!isTheProphet) lbl.style.display='flex';
+      if(dot) dot.style.transform='scale(1.5)';
+    }
     if(_mapTTPinned) return;
     _showMapHoverTT(p, e.originalEvent.clientX, e.originalEvent.clientY);
   });
   m.on('mousemove',e=>{
     if(!_mapTTPinned) _posMapTT(e.originalEvent.clientX, e.originalEvent.clientY);
   });
-  m.on('mouseout',()=>{
+  m.on('mouseout',e=>{
+    const el=m.getElement()||(e&&e.originalEvent&&e.originalEvent.target
+      ?e.originalEvent.target.closest('.map-marker-wrap'):null);
+    if(el){
+      const lbl=el.querySelector('.map-marker-label');
+      const dot=el.querySelector('.map-marker-dot');
+      if(lbl&&!isTheProphet) lbl.style.display='none';
+      if(dot) dot.style.transform='';
+    }
     if(!_mapTTPinned) _hideMapTT();
   });
   // First click: pin tooltip; second click (already pinned on same person): open card
@@ -3180,7 +3244,29 @@ function _renderMarkers(){
   if(!_lMap) return;
   if(_mrkLayer){_lMap.removeLayer(_mrkLayer);_mrkLayer=null;}
   const pts=_getMapFiltered();
-  _mrkLayer=L.layerGroup(pts.map(_makeMarker)).addTo(_lMap);
+  // Spread figures that share the same coordinates
+  const _coordGroups={};
+  pts.forEach(p=>{
+    const key=p.lat.toFixed(2)+','+p.lng.toFixed(2);
+    if(!_coordGroups[key]) _coordGroups[key]=[];
+    _coordGroups[key].push(p.famous);
+  });
+  pts.forEach(p=>{
+    const key=p.lat.toFixed(2)+','+p.lng.toFixed(2);
+    const grp=_coordGroups[key];
+    const idx=grp.indexOf(p.famous);
+    if(grp.length>1){
+      const ang=(idx/grp.length)*2*Math.PI;
+      const r=0.18;
+      p._renderLat=p.lat+Math.cos(ang)*r;
+      p._renderLng=p.lng+Math.sin(ang)*r;
+    } else {
+      p._renderLat=p.lat;
+      p._renderLng=p.lng;
+    }
+  });
+  const _showLbls=_mapYear!==null;
+  _mrkLayer=L.layerGroup(pts.map(p=>_makeMarker(p,_showLbls))).addTo(_lMap);
   _updateArrows();
 }
 
