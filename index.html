@@ -1165,6 +1165,7 @@ async function _ensureDetails(p){
     if(det.parents)  p.parents=det.parents;
     if(det.children) p.children=det.children;
     if(det.spouses)  p.spouses=det.spouses;
+    if(det.quotes) p.quotes=det.quotes;
   }
   p._detailLoaded=true;
   return p;
@@ -1869,6 +1870,28 @@ function renderInfo(p){
     + 'transition:color 0.15s,transform 0.15s;">'
     + (_isFav ? '★' : '☆') + '</button>';
 
+  let quotesHtml = '';
+  if (p.quotes && p.quotes.length) {
+    const qItems = p.quotes.map(q =>
+      '<blockquote style="margin:0 0 10px 0;padding:10px 14px;' +
+      'border-left:3px solid var(--ip-acc);' +
+      'background:rgba(212,168,74,0.05);' +
+      'font-family:\'Source Sans 3\',sans-serif;font-size:13px;' +
+      'font-style:normal;color:var(--ip-text);line-height:1.65;">' +
+      esc(q) + '</blockquote>'
+    ).join('');
+    quotesHtml =
+      '<div style="margin-top:18px;padding-top:14px;' +
+      'border-top:1px solid var(--ip-brd);">' +
+      '<div style="font-family:\'Cinzel\',serif;font-size:8px;' +
+      'letter-spacing:.14em;color:var(--ip-muted);display:flex;' +
+      'align-items:center;gap:6px;margin-bottom:10px;">' +
+      'IN THEIR OWN WORDS' +
+      '<span style="flex:1;height:1px;background:var(--ip-brd);' +
+      'display:inline-block;"></span></div>' +
+      qItems + '</div>';
+  }
+
   const contemp = _getContemporaries(p);
   const hasContemp = contemp.west.length ||
     contemp.islamic.length || contemp.east.length;
@@ -1954,6 +1977,7 @@ function renderInfo(p){
     ${(p.famous==='Prophet Muhammad'?'The Last Prophet':p.school)?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.famous==='Prophet Muhammad'?'The Last Prophet':p.school}</p></div>`:''}
     ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
     ${quranHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
+    ${quotesHtml}
     ${contempHtml}
     <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--ip-brd);display:flex;gap:8px;flex-wrap:wrap;">
       <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}" target="_blank" rel="noopener"
