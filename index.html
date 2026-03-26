@@ -441,6 +441,37 @@ a:hover{text-decoration:underline}
 .i-teacher{padding:3px 10px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s}
 .i-teacher:hover{border-color:rgba(212,168,74,.5);color:var(--ip-acc)}
 
+/* ── Relation chips ── */
+.i-rel-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px 4px 8px;border-radius:3px;
+  border:1px solid var(--ip-brd);background:var(--ip-surf);
+  font-size:12px;color:var(--ip-text);line-height:1.3;
+  transition:border-color .15s,background .15s,color .15s;
+}
+.i-rel-chip.clickable{cursor:pointer}
+.i-rel-chip.clickable:hover{
+  border-color:rgba(212,168,74,0.5);background:rgba(212,168,74,0.08);color:var(--ip-acc);
+}
+.i-rel-type{
+  font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.08em;
+  text-transform:capitalize;color:var(--ip-muted);flex-shrink:0;
+}
+.i-rel-chip.clickable:hover .i-rel-type{color:rgba(212,168,74,0.65)}
+/* Colour-code by relation type */
+.i-rel-chip[data-rel="wife"] .i-rel-type,
+.i-rel-chip[data-rel="husband"] .i-rel-type    {color:#c084fc}
+.i-rel-chip[data-rel="son"] .i-rel-type,
+.i-rel-chip[data-rel="daughter"] .i-rel-type,
+.i-rel-chip[data-rel="child"] .i-rel-type      {color:#67e8f9}
+.i-rel-chip[data-rel="father"] .i-rel-type,
+.i-rel-chip[data-rel="mother"] .i-rel-type,
+.i-rel-chip[data-rel="parent"] .i-rel-type     {color:#86efac}
+.i-rel-chip[data-rel="brother"] .i-rel-type,
+.i-rel-chip[data-rel="sister"] .i-rel-type,
+.i-rel-chip[data-rel="sibling"] .i-rel-type    {color:#fcd34d}
+.i-rel-chip[data-rel="cousin"] .i-rel-type     {color:#fb923c}
+
 /* Globe icon on external links */
 .i-book a::after,.i-teacher-link::after{
   content:' 🌐';font-size:9px;opacity:.55;
@@ -611,6 +642,15 @@ a:hover{text-decoration:underline}
 #mapView.active{display:flex}
 #mapContainer{flex:1;position:relative;overflow:hidden}
 #leafletMap{width:100%;height:100%;z-index:1;min-height:300px}
+.map-legend{position:absolute;bottom:24px;right:12px;z-index:900;font-family:'Cinzel',Georgia,serif;}
+#mapLegendToggle{display:flex;align-items:center;gap:6px;background:rgba(10,8,3,.88);border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:4px;cursor:pointer;width:100%;transition:background .15s;}
+#mapLegendToggle:hover{background:rgba(232,200,120,.12)}
+#mapLegendBody{background:rgba(10,8,3,.9);border:1px solid rgba(232,200,120,.25);border-top:none;border-radius:0 0 4px 4px;padding:0 10px;overflow:hidden;max-height:0;transition:max-height .25s ease,padding .25s ease;}
+#mapLegendBody.open{max-height:220px;padding:8px 10px 6px}
+#mapLegendItems{display:flex;flex-direction:column;gap:5px}
+.map-legend-row{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.map-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.map-legend-txt{font-size:9.5px;color:rgba(240,237,226,.8);letter-spacing:.04em}
 
 /* ── Off-screen directional arrows ── */
 .map-arrow{
@@ -846,6 +886,14 @@ footer{
     <div id="mapContainer">
       <div id="leafletMap"></div>
     </div>
+    <div id="mapLegend" class="map-legend">
+      <button id="mapLegendToggle" onclick="toggleMapLegend()" title="Toggle legend">
+        <span id="mapLegendIcon">◈</span> <span id="mapLegendLabel">LEGEND</span>
+      </button>
+      <div id="mapLegendBody">
+        <div id="mapLegendItems"></div>
+      </div>
+    </div>
   </div>
 
   <!-- INFO PANEL -->
@@ -953,6 +1001,51 @@ function toggleFavFilter() {
     btn.classList.toggle('filtered', APP.filterFavsOnly);
   }
   applyFilterAndFocus();
+}
+
+// ═══════════════════════════════════════════════════════════
+// WIKIPEDIA IMAGE SUPPORT
+// ═══════════════════════════════════════════════════════════
+/* Figures who must NEVER show an image */
+const NO_IMAGE_FIGURES = new Set([
+  'Prophet Muhammad', 'Ibrahim', 'Musa', 'Isa', 'Dawud', 'Sulayman',
+  'Yusuf', 'Yaqub', 'Ishaq', 'Ismail', 'Nuh', 'Adam', 'Idris',
+  'Hud', 'Salih', 'Lut', 'Shuayb', 'Yunus', 'Ayyub', 'Ilyas',
+  'Al-Yasa', 'Dhul-Kifl', 'Harun', 'Zakariyya', 'Yahya',
+  'Fatimah al-Zahra', 'Aisha bint Abi Bakr', 'Khadijah bint Khuwaylid',
+  'Khadija bint Khuwaylid', 'Ali ibn Abi Talib', 'Hasan ibn Ali',
+  'Husayn ibn Ali'
+]);
+
+function canShowImage(person) {
+  if (!person) return false;
+  if (person.type === 'Prophet') return false;
+  if (person.type === 'Founder') return false;
+  if (NO_IMAGE_FIGURES.has(person.famous)) return false;
+  if (!person.source || !person.source.includes('wikipedia.org')) return false;
+  return true;
+}
+
+function fetchWikiImage(wikiUrl, imgEl, captionEl) {
+  try {
+    var url = new URL(wikiUrl);
+    var title = decodeURIComponent(url.pathname.replace('/wiki/', ''));
+    if (!title) return;
+    var apiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
+      + encodeURIComponent(title);
+    fetch(apiUrl, { headers: { 'Accept': 'application/json' } })
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data) return;
+        var thumb = data.thumbnail || data.originalimage;
+        if (thumb && thumb.source) {
+          imgEl.src = thumb.source;
+          imgEl.style.display = 'block';
+          if (captionEl) captionEl.style.display = 'block';
+        }
+      })
+      .catch(function() {});
+  } catch(e) {}
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1690,14 +1783,16 @@ function renderInfo(p){
   let relHtml='';
   if(p.relations?.length){
     relHtml=`<div class="i-sec"><div class="i-sl">Relations</div>
-      <div class="i-teachers">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
         ${p.relations.map(r=>{
           const inData=PEOPLE.find(pp=>pp.famous===r.person);
-          const tag=r.relation?'<span style="color:var(--ip-muted);font-size:10px;text-transform:capitalize">'+esc(r.relation)+'</span> ':'';
-          const lbl=tag+esc(r.person);
-          return inData
-            ?`<span class="i-teacher" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')">${lbl}</span>`
-            :`<span class="i-teacher" style="cursor:default">${lbl}</span>`;
+          const relLabel=`<span class="i-rel-type">${esc(r.relation)}</span>`;
+          const name=esc(r.person);
+          if(inData){
+            return `<span class="i-rel-chip clickable" data-rel="${esc(r.relation)}" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')" title="Go to ${esc(r.person)}">${relLabel} ${name}</span>`;
+          } else {
+            return `<span class="i-rel-chip" data-rel="${esc(r.relation)}">${relLabel} ${name}</span>`;
+          }
         }).join('')}
       </div></div>`;
   }
@@ -1719,6 +1814,13 @@ function renderInfo(p){
   document.getElementById('infoScroll').innerHTML=`
     ${locateBtn}
     ${_starHTML}
+    ${canShowImage(p) ? `
+    <div id="wikiImgWrap" style="float:right;margin:0 0 12px 14px;max-width:120px;text-align:center">
+      <img id="wikiImg" style="display:none;width:100%;max-width:120px;border-radius:4px;border:1px solid var(--ip-brd);object-fit:cover"
+        alt="${esc(p.famous)}"
+        onerror="this.style.display='none';document.getElementById('wikiImgCaption').style.display='none';" />
+      <div id="wikiImgCaption" style="display:none;font-size:9px;color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:4px">via Wikipedia</div>
+    </div>` : ''}
     <div class="i-name">${esc(p.famous)}</div>
     ${p.full&&p.full!==p.famous?`<div class="i-full">${esc(p.full)}</div>`:''}
     <div class="i-primary">${esc(p.primaryTitle||'')}</div>
@@ -1761,6 +1863,13 @@ function renderInfo(p){
     })()}</div>`:''}
   `;
 
+  // Fetch Wikipedia image if eligible
+  if (canShowImage(p)) {
+    var imgEl = document.getElementById('wikiImg');
+    var capEl = document.getElementById('wikiImgCaption');
+    if (imgEl) fetchWikiImage(p.source, imgEl, capEl);
+  }
+
   // Wire star button click handler
   (function() {
     var btn = document.getElementById('favToggleBtn');
@@ -1799,10 +1908,13 @@ function jumpTo(name){
     }
     return;
   }
-  // Timeline mode
-  const filtered=getFiltered();
-  let idx=filtered.findIndex(p=>p.famous===name);
-  if(idx===-1){const p=PEOPLE.find(pp=>pp.famous===name);if(p){renderInfoWithDetails(p);return;}return;}
+  // Timeline mode — use _lastSortedPeople (matches display order)
+  let idx=_lastSortedPeople.findIndex(p=>p.famous===name);
+  if(idx===-1){
+    const p=PEOPLE.find(pp=>pp.famous===name);
+    if(p) renderInfoWithDetails(p);
+    return;
+  }
   const rows=document.querySelectorAll('.tl-row');
   const target=[...rows].find(r=>parseInt(r.dataset.idx)===idx);
   if(target)target.scrollIntoView({block:'center',behavior:'smooth'});
@@ -2535,6 +2647,13 @@ function openSilsilaCard(p, cx, cy){
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
 
   let html=`
+    ${canShowImage(p) ? `
+    <div id="scWikiImgWrap" style="float:right;margin:0 0 10px 12px;max-width:90px;text-align:center">
+      <img id="scWikiImg" style="display:none;width:100%;max-width:90px;border-radius:4px;border:1px solid var(--ip-brd);object-fit:cover"
+        alt="${esc(p.famous)}"
+        onerror="this.style.display='none';document.getElementById('scWikiImgCaption').style.display='none';" />
+      <div id="scWikiImgCaption" style="display:none;font-size:8px;color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:3px">via Wikipedia</div>
+    </div>` : ''}
     <div class="sc-tags">
       <span class="sc-tag hi">${esc(p.type||'')}</span>
       <span class="sc-tag hi">${esc(p.tradition||'')}</span>
@@ -2577,6 +2696,13 @@ function openSilsilaCard(p, cx, cy){
 
   document.getElementById('scCardBody').innerHTML=html;
   document.getElementById('scCardScroll').scrollTop=0;
+
+  // Fetch Wikipedia image for silsila card
+  if (canShowImage(p)) {
+    var scImgEl = document.getElementById('scWikiImg');
+    var scCapEl = document.getElementById('scWikiImgCaption');
+    if (scImgEl) fetchWikiImage(p.source, scImgEl, scCapEl);
+  }
 
   // Position near click but keep in viewport
   card.style.display='flex';
@@ -2808,16 +2934,46 @@ function _drawEmpires(){
   }
 }
 
+function _markerTypeColor(p){
+  const t=p.type||'';
+  if(t==='Prophet'||t==='Genealogy'||t==='Founder') return '#e8c050';
+  if(t==='Sahaba')    return '#d4784a';
+  if(t==='Sahabiyya') return '#d4784a';
+  if(t==="Tabi'un")   return '#c08850';
+  if(t==='Mystic')    return '#a855f7';
+  if(t==='Ruler'||t==='Caliph'||t==='Warrior') return '#e05040';
+  if(t==='Scientist') return '#38bdf8';
+  if(t==='Philosopher') return '#38bdf8';
+  if(t==='Poet')      return '#e07090';
+  return '#2ecc9b';
+}
+
+const MAP_LEGEND=[
+  {label:'Prophet / Lineage', color:'#e8c050'},
+  {label:'Companions',        color:'#d4784a'},
+  {label:'Followers',         color:'#c08850'},
+  {label:'Mystic / Sufi',     color:'#a855f7'},
+  {label:'Scholar / Jurist',  color:'#2ecc9b'},
+  {label:'Ruler / Caliph',    color:'#e05040'},
+  {label:'Scientist / Philosopher', color:'#38bdf8'},
+  {label:'Poet',              color:'#e07090'},
+];
+
 function _makeMarker(p){
-  const col=p.type==='Genealogy'?'#c8a84a':(CC[gc(p.dob)]||'#888');
+  const col=_markerTypeColor(p);
   const hasFree=(p.books||[]).some(b=>b.url&&b.url.startsWith('http'));
   const name=p.famous.length>22?p.famous.slice(0,20)+'…':p.famous;
+  const isProphet=(p.type==='Prophet'||p.type==='Genealogy'||p.type==='Founder');
+  const dotSz=isProphet?14:9;
+  const dotBorder=isProphet?'2.5px solid rgba(255,220,80,.55)':'2px solid rgba(30,20,8,.9)';
+  const dotGlow=isProphet?`0 0 0 2px ${col}55,0 0 8px ${col}88`:`0 0 0 1px ${col}`;
+  const anchor=Math.round(dotSz/2);
   const icon=L.divIcon({
     html:`<div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));">
-      <div style="width:9px;height:9px;border-radius:50%;background:${col};border:2px solid rgba(30,20,8,.9);box-shadow:0 0 0 1px ${col};flex-shrink:0;"></div>
+      <div style="width:${dotSz}px;height:${dotSz}px;border-radius:50%;background:${col};border:${dotBorder};box-shadow:${dotGlow};flex-shrink:0;"></div>
       <div style="margin-top:2px;font-family:'Cinzel',Georgia,serif;font-size:10.5px;font-weight:700;color:rgba(240,237,226,0.93);white-space:nowrap;background:rgba(14,10,4,.82);padding:2px 6px 2px;border-radius:3px;line-height:1.35;pointer-events:none;border-left:2px solid ${col};letter-spacing:.02em;text-shadow:0 1px 3px rgba(0,0,0,.9);">${hasFree?'✦ ':''}${name}</div>
     </div>`,
-    className:'',iconSize:[160,34],iconAnchor:[80,9]
+    className:'',iconSize:[160,34],iconAnchor:[80,anchor]
   });
   const m=L.marker([p.lat,p.lng],{icon});
   // First hover: show small tooltip
@@ -2859,7 +3015,7 @@ function _ensureMapTT(){
   document.body.appendChild(_mapTT);
 }
 function _mapTTContent(p, pinned){
-  const col=p.type==='Genealogy'?'#c8a84a':(CC[gc(p.dob)]||'#888');
+  const col=_markerTypeColor(p);
   const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
   const nT=(p.teachers||[]).length, nS=(PEOPLE.filter(s=>s.teachers?.includes(p.famous))).length;
   const hint=pinned?`<span style="font-size:8px;opacity:.5;margin-left:5px">→ CLICK AGAIN FOR FULL INFO</span>`:'';
@@ -3079,6 +3235,26 @@ function _applyMapYear(yr){
   _mapYear=yr;
   _drawEmpires();
   _renderMarkers();
+}
+
+function _initMapLegend(){
+  const items=document.getElementById('mapLegendItems');
+  if(!items||items.children.length) return;
+  items.innerHTML=MAP_LEGEND.map(e=>
+    `<div class="map-legend-row">
+      <div class="map-legend-dot" style="background:${e.color};box-shadow:0 0 0 1px ${e.color}55"></div>
+      <div class="map-legend-txt">${e.label}</div>
+    </div>`
+  ).join('');
+}
+
+function toggleMapLegend(){
+  const body=document.getElementById('mapLegendBody');
+  const label=document.getElementById('mapLegendLabel');
+  if(!body) return;
+  _initMapLegend();
+  const open=body.classList.toggle('open');
+  label.textContent=open?'CLOSE':'LEGEND';
 }
 
 function renderMap(){
