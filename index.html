@@ -4,34 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Islamic Figures</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
+@layer reset, base, layout, components, utilities, states;
+
 :root {
-  /* ── Shared olive/green palette ── */
-  --bg:         #3a4a34;
-  --surface:    #455440;
-  --surface2:   #4f5e49;
-  --border:     #6a7a62;
-  --border2:    #7a8a70;
-  --text:       #f0ede2;
-  --text2:      #d8d4c4;
-  --muted:      #9aaa8a;
-  --accent:     #e8c878;
-  --accent2:    #d4a84a;
-  --gold:       #e0b840;
-  /* ── Left panel (names + bars) — same dark as info panel ── */
-  --lp-bg:      #2a3626;
-  --lp-surf:    #33402e;
-  --lp-brd:     #4a5a44;
-  --lp-muted:   #7a9070;
-  /* ── Info panel ── */
-  --ip-bg:      #2a3626;
-  --ip-surf:    #33402e;
-  --ip-brd:     #4a5a44;
-  --ip-text:    #f0ede2;
-  --ip-muted:   #8a9e7e;
-  --ip-acc:     #e8c878;
+  /* ── Core Dark Islamic Palette (softened) ── */
+  --bg:         #0F1724;
+  --surface:    #162030;
+  --surface2:   #1E2D42;
+  --border:     rgba(212,168,74,0.18);
+  --border2:    rgba(212,168,74,0.32);
+
+  /* ── Accent & Text ── */
+  --accent:     #D4AF37;
+  --accent2:    #B8952A;
+  --gold:       #E8C878;
+  --text:       #E8E4D8;
+  --text2:      #B8B4A8;
+  --muted:      rgba(245,240,232,0.45);
+
+  /* ── Semantic ── */
+  --emerald:    #50C878;
+  --lapis:      #1E3A5F;
+
+  /* ── Left panel ── */
+  --lp-bg:      #0C1520;
+  --lp-surf:    #162030;
+  --lp-brd:     rgba(212,168,74,0.15);
+  --lp-muted:   rgba(245,240,232,0.38);
+
+  /* ── Info / biography panel ── */
+  --ip-bg:      #0C1520;
+  --ip-surf:    #162030;
+  --ip-brd:     rgba(212,168,74,0.15);
+  --ip-text:    #E8E4D8;
+  --ip-muted:   rgba(245,240,232,0.45);
+  --ip-acc:     #D4AF37;
+
   /* ── Dimensions ── */
   --col1-w:     270px;
   --col2-w:     430px;
@@ -41,9 +52,23 @@
   --sbar-h:     22px;  /* scrollbar strip height */
 }
 
+/* ── Typography upgrades ── */
+#appHeader h1 {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-weight: 900;
+  color: var(--gold);
+  text-shadow: 0 2px 24px rgba(212,168,74,0.35);
+}
+#infoPanel, .sc-desc, .i-sec {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;font-size:15px;overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Lato','Crimson Pro',Georgia,serif;font-size:15px;overflow:hidden}
 a{color:#c89040;text-decoration:none}
 a:hover{text-decoration:underline}
 
@@ -245,7 +270,8 @@ a:hover{text-decoration:underline}
 .dd-panel{
   display:none;position:absolute;top:calc(100% + 4px);left:0;
   min-width:210px;max-width:300px;max-height:280px;overflow-y:auto;
-  background:var(--lp-surf);border:1.5px solid var(--border2);border-radius:4px;
+  background:rgba(13,18,32,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(212,168,74,0.2);border-radius:4px;
   box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:800;padding:5px 0;
 }
 .dd-panel.open{display:block}
@@ -351,7 +377,10 @@ a:hover{text-decoration:underline}
 #centLabelRight{font-family:'Cinzel',serif;font-size:7.5px;color:var(--lp-muted);white-space:nowrap;padding-right:4px;letter-spacing:.04em;flex-shrink:0}
 
 /* ══════════════ INFO PANEL ══════════════ */
-#infoPanel{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--ip-bg);overflow:hidden}
+#infoPanel{flex:1;min-width:0;display:flex;flex-direction:column;background:rgba(13,18,32,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-left:1px solid rgba(212,168,74,0.2);box-shadow:-8px 0 32px rgba(0,0,0,0.5);overflow:hidden}
+@supports not (backdrop-filter: blur(1px)) {
+  #infoPanel { background: #0D1220; }
+}
 #infoHdr{
   height:var(--axis-h);display:flex;align-items:center;padding:0 18px;
   background:var(--ip-surf);border-bottom:1px solid var(--ip-brd);flex-shrink:0;
@@ -508,7 +537,8 @@ a:hover{text-decoration:underline}
 .sl-dd-panel{
   display:none;position:absolute;top:calc(100% + 4px);left:0;
   min-width:200px;max-height:260px;overflow-y:auto;
-  background:var(--lp-surf);border:1.5px solid var(--border2);border-radius:4px;
+  background:rgba(13,18,32,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(212,168,74,0.2);border-radius:4px;
   box-shadow:0 8px 32px rgba(0,0,0,.6);z-index:800;padding:5px 0;
 }
 .sl-dd-panel.open{display:block}
@@ -605,6 +635,32 @@ footer{
   padding:8px 20px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.14em;
   color:var(--muted);border-top:1px solid var(--border);text-align:center;
   background:var(--surface);flex-shrink:0;
+}
+/* ── Micro-animations ── */
+@media (prefers-reduced-motion: no-preference) {
+  .sc-card, .dd-item {
+    transition: transform 0.2s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.2s ease,
+                border-color 0.15s ease;
+  }
+  .sc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border-color: rgba(212,168,74,0.4);
+  }
+  .view-tab {
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  @keyframes panelSlideIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
 </head>
@@ -703,6 +759,9 @@ footer{
             </div>
           </div>
         </div>
+
+        <!-- SAVED filter -->
+        <button class="dd-btn" id="favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
 
       </div><!-- /filterBarLeft -->
       <!-- Active filter summary appears across the full century zone -->
@@ -804,6 +863,98 @@ footer{
 <footer>ISLAMIC FIGURES · FOURTEEN CENTURIES OF INTELLECTUAL TRADITION · CLICK ANY ROW TO EXPLORE</footer>
 
 <script>
+/* ── APP Namespace ── */
+var APP = window.APP || {};
+APP.Features = {
+  SMART_FILTERING: true,
+  SEARCH: true,
+  FAVORITES: false,
+  SHUFFLE: false,
+  LINEAGE_NAV: false,
+  ANIMATIONS: true,
+  isEnabled: function(key) {
+    try {
+      var p = new URLSearchParams(window.location.search).get('features');
+      if (p) return p.split(',').includes(key);
+    } catch(e) {}
+    return !!APP.Features[key];
+  }
+};
+APP.safeInit = function(name, fn) {
+  try { fn(); console.log('[APP] ' + name + ' ✓'); }
+  catch(e) { console.warn('[APP] ' + name + ' failed — continuing', e); }
+};
+window.onerror = function(msg, src, line) {
+  console.warn('[APP Error]', msg, 'line', line);
+  return false;
+};
+
+// ═══════════════════════════════════════════════════════════
+// FAVORITES MODULE
+// ═══════════════════════════════════════════════════════════
+APP.filterFavsOnly = false;
+
+APP.safeInit('Favorites', function() {
+  var STORE_KEY = 'islamic_app_favorites_v1';
+  var _storage = (function() {
+    try {
+      localStorage.setItem('__test__', '1');
+      localStorage.removeItem('__test__');
+      return localStorage;
+    } catch(e) {
+      var _mem = {};
+      return {
+        getItem:    function(k)    { return _mem[k] || null; },
+        setItem:    function(k, v) { _mem[k] = v; },
+        removeItem: function(k)    { delete _mem[k]; }
+      };
+    }
+  })();
+
+  function _load() {
+    try { return new Set(JSON.parse(_storage.getItem(STORE_KEY) || '[]')); }
+    catch(e) { return new Set(); }
+  }
+  function _save(set) {
+    try { _storage.setItem(STORE_KEY, JSON.stringify([...set])); }
+    catch(e) { console.warn('[APP] Favorites save failed', e); }
+  }
+
+  var _favs = _load();
+
+  APP.Favorites = {
+    has:    function(name) { return _favs.has(name); },
+    toggle: function(name) {
+      if (_favs.has(name)) _favs.delete(name);
+      else _favs.add(name);
+      _save(_favs);
+      return _favs.has(name);
+    },
+    list:   function() { return [..._favs]; },
+    count:  function() { return _favs.size; }
+  };
+
+  console.log('[APP] Favorites loaded:', _favs.size, 'saved');
+});
+
+function _updateFavFilterBtn() {
+  var btn = document.getElementById('favFilterBtn');
+  if (!btn || !APP.Favorites) return;
+  var n = APP.Favorites.count();
+  btn.innerHTML = '★ SAVED' + (n > 0
+    ? ' <span style="color:#D4AF37;font-size:9px">(' + n + ')</span>'
+    : '');
+}
+
+function toggleFavFilter() {
+  APP.filterFavsOnly = !APP.filterFavsOnly;
+  var btn = document.getElementById('favFilterBtn');
+  if (btn) {
+    btn.classList.toggle('filtered', APP.filterFavsOnly);
+  }
+  applyFilterAndFocus();
+}
+
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
@@ -970,6 +1121,7 @@ async function boot(){
   updateCentHeaders();
   updateCentScrollbar();
   renderAll();
+  _updateFavFilterBtn();
   // If silsila tab was already active (e.g. URL hash loaded) trigger render now
   if(VIEW==='silsila') renderSilsila();
 }
@@ -1115,6 +1267,10 @@ function getFiltered(){
       const q=searchQ.toLowerCase();
       const hay=[p.famous,p.full,p.primaryTitle,p.city,p.classif,p.tradition,p.type,...(p.tags||[])].join(' ').toLowerCase();
       if(!hay.includes(q))return false;
+    }
+    /* Saved figures filter */
+    if(APP.filterFavsOnly && APP.Favorites){
+      if(!APP.Favorites.has(p.famous)) return false;
     }
     return true;
   });
@@ -1551,8 +1707,18 @@ function renderInfo(p){
     ?`<button class="sl-locate-btn" onclick="silsilaLocate('${p.famous.replace(/'/g,"\\'")}')">`+
       `<span class="slb-icon">◎</span>LOCATE IN CHAIN</button>`:'';
 
+  var _isFav = APP.Favorites ? APP.Favorites.has(p.famous) : false;
+  var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" '
+    + 'title="' + (_isFav ? 'Remove from saved' : 'Save figure') + '" '
+    + 'style="background:none;border:none;cursor:pointer;font-size:22px;'
+    + 'color:' + (_isFav ? '#D4AF37' : 'rgba(245,240,232,0.25)') + ';'
+    + 'float:right;margin-left:10px;padding:2px;line-height:1;'
+    + 'transition:color 0.15s,transform 0.15s;">'
+    + (_isFav ? '★' : '☆') + '</button>';
+
   document.getElementById('infoScroll').innerHTML=`
     ${locateBtn}
+    ${_starHTML}
     <div class="i-name">${esc(p.famous)}</div>
     ${p.full&&p.full!==p.famous?`<div class="i-full">${esc(p.full)}</div>`:''}
     <div class="i-primary">${esc(p.primaryTitle||'')}</div>
@@ -1594,6 +1760,23 @@ function renderInfo(p){
       return esc(s);
     })()}</div>`:''}
   `;
+
+  // Wire star button click handler
+  (function() {
+    var btn = document.getElementById('favToggleBtn');
+    if (!btn || !APP.Favorites) return;
+    btn.addEventListener('click', function() {
+      var name = this.dataset.name;
+      var nowFav = APP.Favorites.toggle(name);
+      this.textContent   = nowFav ? '★' : '☆';
+      this.style.color   = nowFav ? '#D4AF37' : 'rgba(245,240,232,0.25)';
+      this.title         = nowFav ? 'Remove from saved' : 'Save figure';
+      this.style.transform = 'scale(1.5)';
+      var self = this;
+      setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
+      _updateFavFilterBtn();
+    });
+  })();
 }
 
 function jumpTo(name){
@@ -2926,9 +3109,9 @@ function _doRenderMap(){
     });
 
     // 1) Base — no labels
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png',{
       subdomains:'abcd',
-      attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CartoDB</a>',
+      attribution:'© <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom:19
     }).addTo(_lMap);
 
