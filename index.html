@@ -1744,6 +1744,8 @@ async function selectStudyTab(tab){
             const wrap=document.createElement('div');
             wrap.style.cssText='position:relative;margin-bottom:32px';
             const f=document.createElement('iframe');
+            f.setAttribute('allowfullscreen','');
+            f.setAttribute('webkitallowfullscreen','');
             f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px';
             wrap.appendChild(f);
             const fsBtn=document.createElement('button');
@@ -1751,9 +1753,9 @@ async function selectStudyTab(tab){
             fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:18px;padding:4px 8px;cursor:pointer';
             fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(232,200,120,0.15)';fsBtn.style.borderColor='var(--accent)'};
             fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)'};
-            fsBtn.onclick=function(){if(f.requestFullscreen)f.requestFullscreen();else if(f.webkitRequestFullscreen)f.webkitRequestFullscreen();else if(f.mozRequestFullScreen)f.mozRequestFullScreen()};
+            fsBtn.onclick=function(){var el=wrap;if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();else if(el.mozRequestFullScreen)el.mozRequestFullScreen()};
             wrap.appendChild(fsBtn);
-            document.addEventListener('fullscreenchange',function onFsc(){if(document.fullscreenElement===f){f.style.width='100vw';f.style.height='100vh'}else{f.style.width='100%';f.style.height='600px'}});
+            document.addEventListener('fullscreenchange',function(){if(document.fullscreenElement===wrap){f.style.width='100vw';f.style.height='100vh';wrap.style.background='#000'}else{f.style.width='100%';f.style.height='600px';wrap.style.background=''}});
             body.appendChild(wrap);
             f.src=base+encodeURIComponent(b.file)+bust;
           });
