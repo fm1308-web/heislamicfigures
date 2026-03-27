@@ -640,6 +640,34 @@ a:hover{text-decoration:underline}
 /* ══════════════ MAP VIEW ══════════════ */
 #mapView{display:none;flex-direction:column;overflow:hidden;background:var(--bg);position:relative}
 #mapView.active{display:flex;flex:1}
+
+/* ══════════════ STUDY ROOM VIEW ══════════════ */
+#studyRoomView{display:none;flex:1;overflow:hidden;background:var(--bg)}
+#studyRoomView.active{display:flex}
+#sr-left{width:220px;min-width:220px;border-right:1px solid var(--border);overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px}
+#sr-right{flex:1;overflow-y:auto;padding:24px 28px}
+.sr-card{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;border:1.5px solid transparent;background:rgba(232,200,120,.04);cursor:pointer;transition:border-color .15s,background .15s}
+.sr-card:hover{background:rgba(232,200,120,.08)}
+.sr-card.sel{border-color:var(--accent);background:rgba(232,200,120,.1)}
+.sr-avatar{width:40px;height:40px;border-radius:50%;background:#1a1a2e;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--accent);flex-shrink:0;border:1px solid rgba(232,200,120,.25)}
+.sr-card-info{display:flex;flex-direction:column}
+.sr-card-name{font-family:'Cinzel',serif;font-size:11.5px;font-weight:600;color:var(--text);letter-spacing:.03em}
+.sr-card-date{font-size:9.5px;color:var(--muted);margin-top:1px}
+#sr-heading{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:.04em}
+#sr-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.sr-tab{padding:7px 14px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.08em;color:var(--muted);background:rgba(232,200,120,.05);border:1px solid rgba(232,200,120,.18);border-radius:4px;cursor:pointer;transition:all .12s}
+.sr-tab:hover{color:var(--text);background:rgba(232,200,120,.1)}
+.sr-tab.active{color:var(--accent);background:rgba(232,200,120,.12);border-color:var(--accent)}
+#sr-body{font-style:italic;color:rgba(200,168,74,.7);font-size:13px;line-height:1.6;padding:16px 18px;border:1px solid rgba(232,200,120,.18);border-radius:6px;min-height:400px;background:rgba(232,200,120,.02)}
+#sr-empty{display:flex;align-items:center;justify-content:center;height:100%;font-family:'Cinzel',serif;font-size:12px;color:var(--muted);letter-spacing:.08em;opacity:.6}
+.sr-study-badge{font-size:1.1em;color:#c9a84c;cursor:pointer;margin-left:5px;opacity:.85;transition:opacity .12s}
+.sr-study-badge:hover{opacity:1}
+@media(max-width:700px){
+  #studyRoomView.active{flex-direction:column}
+  #sr-left{width:100%;min-width:0;flex-direction:row;overflow-x:auto;overflow-y:hidden;border-right:none;border-bottom:1px solid var(--border);padding:8px;gap:8px;flex-shrink:0}
+  .sr-card{min-width:160px;flex-shrink:0}
+  #sr-right{padding:16px}
+}
 #mapToolbar{
   display:flex;align-items:center;gap:6px;
   padding:5px 10px;flex-shrink:0;
@@ -767,6 +795,7 @@ footer{
       <button class="view-tab active" onclick="setView('timeline')">TIMELINE</button>
       <button class="view-tab" onclick="setView('silsila')">SILSILA</button>
       <button class="view-tab" onclick="setView('map')">MAP</button>
+      <button class="view-tab" onclick="setView('studyroom')">STUDY</button>
     </div>
   </div>
 </div>
@@ -921,6 +950,33 @@ footer{
       </button>
       <div id="mapLegendBody">
         <div id="mapLegendItems"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDY ROOM VIEW -->
+  <div id="studyRoomView">
+    <div id="sr-left">
+      <div class="sr-card" data-scholar="al-hallaj" onclick="selectStudyScholar('al-hallaj')">
+        <div class="sr-avatar">AH</div>
+        <div class="sr-card-info"><div class="sr-card-name">Al-Hallaj</div><div class="sr-card-date">d. 922 CE</div></div>
+      </div>
+      <div class="sr-card" data-scholar="ibn-arabi" onclick="selectStudyScholar('ibn-arabi')">
+        <div class="sr-avatar">IA</div>
+        <div class="sr-card-info"><div class="sr-card-name">Ibn Arabi</div><div class="sr-card-date">d. 1240 CE</div></div>
+      </div>
+    </div>
+    <div id="sr-right">
+      <div id="sr-empty">Select a scholar to begin</div>
+      <div id="sr-content" style="display:none">
+        <div id="sr-heading"></div>
+        <div id="sr-tabs">
+          <button class="sr-tab active" data-tab="slides" onclick="selectStudyTab('slides')">&#128214; SLIDES</button>
+          <button class="sr-tab" data-tab="quiz" onclick="selectStudyTab('quiz')">&#10067; QUIZ</button>
+          <button class="sr-tab" data-tab="summary" onclick="selectStudyTab('summary')">&#128196; SUMMARY</button>
+          <button class="sr-tab" data-tab="quotes" onclick="selectStudyTab('quotes')">&#128172; QUOTES</button>
+        </div>
+        <div id="sr-body"></div>
       </div>
     </div>
   </div>
@@ -1196,8 +1252,8 @@ async function boot(){
   if(his.length){
     const mn=Math.min(...his.map(p=>p.dob));
     const mx=Math.max(...PEOPLE.map(p=>(p.dod||p.dob)).filter(y=>y<2100));
-    document.getElementById('metaLine').textContent=
-      `${Math.round(mn)} CE to ${Math.round(mx)} CE · ✦ = free book available · ⚠ = dates assumed for visual`;
+    document.getElementById('metaLine').innerHTML=
+      `${Math.round(mn)} CE to ${Math.round(mx)} CE · ✦ = free book available · △ = dates assumed for visual · <span style="color:#c9a84c">✦</span> = STUDY SPACE`;
     document.getElementById('statFigures').textContent=PEOPLE.length.toLocaleString()+' Figures';
     const relCount=PEOPLE.reduce((s,p)=>s+(p.teachers?.length||0)+(p.relations?.length||0),0);
     document.getElementById('statRelations').textContent=relCount.toLocaleString()+' Relations';
@@ -1614,22 +1670,93 @@ function setView(v){
   _syncSliderUI();
 
   VIEW=v;
-  document.querySelectorAll('.view-tab').forEach(t=>
-    t.classList.toggle('active',t.textContent.trim().toLowerCase()===v.toLowerCase()));
+  document.querySelectorAll('.view-tab').forEach(t=>{
+    const txt=t.textContent.trim().toLowerCase().replace(/\s+/g,'');
+    t.classList.toggle('active',txt===v.toLowerCase().replace(/\s+/g,''));
+  });
   document.getElementById('leftPanel').style.display=v==='timeline'?'flex':'none';
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
-  if(v==='map'||v==='silsila'){
+  if(v==='map'||v==='silsila'||v==='studyroom'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
   } else {
     ip.style.display=''; ip.style.flex=''; ip.style.minWidth='';
   }
   document.getElementById('silsilaView').classList.toggle('active',v==='silsila');
   document.getElementById('mapView').classList.toggle('active',v==='map');
+  document.getElementById('studyRoomView').classList.toggle('active',v==='studyroom');
+  if(v==='studyroom'){
+    document.getElementById('leftPanel').style.display='none';
+    document.getElementById('filterBar').style.display='none';
+  }
   if(v!=='map'){ _unpinMapTT(); _closeMapCard(); }
   if(v==='silsila') renderSilsila();
   if(v==='map'){ _setMapHeight(); renderMap(); }
 }
+
+// ═══════════════════════════════════════════════════════════
+// STUDY ROOM
+// ═══════════════════════════════════════════════════════════
+const _SR_SCHOLARS={
+  'al-hallaj':{name:'Al-Hallaj',died:'922 CE',famous:'Al-Hallaj'},
+  'ibn-arabi':{name:'Ibn Arabi',died:'1240 CE',famous:'Ibn Arabi'}
+};
+let _srActive=null;
+let _srTab='slides';
+function selectStudyScholar(slug){
+  _srActive=slug;
+  document.querySelectorAll('.sr-card').forEach(c=>c.classList.toggle('sel',c.dataset.scholar===slug));
+  const s=_SR_SCHOLARS[slug];
+  document.getElementById('sr-empty').style.display='none';
+  document.getElementById('sr-content').style.display='';
+  document.getElementById('sr-heading').textContent=s.name;
+  selectStudyTab('slides');
+}
+async function selectStudyTab(tab){
+  _srTab=tab;
+  document.querySelectorAll('.sr-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  const slug=_srActive||'al-hallaj';
+  const body=document.getElementById('sr-body');
+  const placeholder='<em>Content coming soon \u2014 drop files into data/islamic/studyroom/'+slug+'/ to activate.</em>';
+  if(tab==='slides'){
+    const slidesUrl='data/islamic/studyroom/'+slug+'/slides/slides.html';
+    try{
+      const res=await fetch(slidesUrl,{method:'HEAD'});
+      if(res.ok){
+        body.style.padding='0';
+        body.innerHTML='<iframe src="'+slidesUrl+'" style="width:100%;height:100%;min-height:500px;border:none;display:block;border-radius:5px"></iframe>';
+        return;
+      }
+    }catch(e){}
+    body.style.padding='';
+  }
+  if(tab==='quotes'){
+    const s=_SR_SCHOLARS[slug];
+    const p=PEOPLE.find(x=>x.famous===s.famous);
+    if(p){
+      await _ensureDetails(p);
+      if(p.quotes&&p.quotes.length){
+        body.innerHTML=p.quotes.map(q=>
+          '<blockquote style="margin:0 0 14px 0;padding:10px 14px;'+
+          'border-left:3px solid var(--accent);'+
+          'background:rgba(212,168,74,0.05);'+
+          "font-family:'Source Sans 3',sans-serif;font-size:13px;"+
+          'font-style:normal;color:var(--text);line-height:1.65;">'+
+          esc(q)+
+          '<div style="font-size:10px;font-style:italic;color:rgba(200,168,74,.45);margin-top:6px">Source: to be linked \u2014 coming soon</div>'+
+          '</blockquote>'
+        ).join('');
+        return;
+      }
+    }
+  }
+  body.innerHTML=placeholder;
+}
+function openStudyRoom(slug){
+  setView('studyroom');
+  selectStudyScholar(slug);
+}
+const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Ibn Arabi']);
 
 // ═══════════════════════════════════════════════════════════
 // RENDER
@@ -1717,7 +1844,7 @@ function renderRows(filtered){
       <div class="tc-name">
         <div class="tc-dot" style="background:${col};width:${p.dob<0?3:p.dob<600?5:7}px;height:${p.dob<0?3:p.dob<600?5:7}px;opacity:${p.dob<0?0.45:p.dob<600?0.7:1}${isProphet?';box-shadow:0 0 5px '+col+'90':''}"></div>
         <div class="tc-texts">
-          <div class="tc-famous">${esc(p.famous)}</div>
+          <div class="tc-famous"${_SR_BADGE_NAMES.has(p.famous)?' style="color:#c9a84c"':''}>${esc(p.famous)}${_SR_BADGE_NAMES.has(p.famous)?`<span class="sr-study-badge" onclick="event.stopPropagation();openStudyRoom('${p.famous==='Al-Hallaj'?'al-hallaj':'ibn-arabi'}')" title="Available in Study Space">✦</span>`:''}</div>
           <div class="tc-sub">${esc(p.primaryTitle||p.classif||'')}</div>
         </div>
       </div>
