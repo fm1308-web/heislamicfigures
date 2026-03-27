@@ -1345,20 +1345,23 @@ function onSearch(){searchQ=document.getElementById('search').value.trim();apply
 // ═══════════════════════════════════════════════════════════
 // FILTER
 // ═══════════════════════════════════════════════════════════
-// Full Adam→Muhammad prophetic lineage chain (44 members).
+// Full Adam→Muhammad prophetic lineage chain (50 members).
+// Verified against lineage_adam_to_muhammad_FINAL.xlsx — 27 Mar 2026.
 // Used by isLineageMember() for Silsila lane assignment and type filtering.
 const LINEAGE_CHAIN=[
-  'Adam','Shith ibn Adam','Anush ibn Shith','Qaynan ibn Anush','Mahlail ibn Qaynan',
+  'Adam','Shith ibn Adam','Yanash','Qaynan ibn Anush','Mahlail ibn Qaynan',
   'Yared ibn Mahlail','Idris','Mattushalakh ibn Idris','Lamak ibn Mattushalakh','Nuh',
   'Sam ibn Nuh','Arfakhshadh ibn Sam','Shalikh ibn Arfakhshadh','Abir ibn Shalikh',
   "Faligh ibn Abir","Ra'u ibn Faligh","Sarugh ibn Ra'u",'Nahur ibn Sarugh',
-  'Azar ibn Nahur','Ibrahim','Ismail','Nabit ibn Ismail','Adnan',
-  "Ma'add ibn Adnan","Nizar ibn Ma'add",'Mudar ibn Nizar','Ilyas ibn Mudar',
-  'Mudrika ibn Ilyas','Khuzayma ibn Mudrika','Kinana ibn Khuzayma',
+  'Azar ibn Nahur','Ibrahim','Ismail','Nabit ibn Ismail',
+  'Yashjub ibn Nabit',"Ya'rub ibn Yashjub","Tayrah ibn Ya'rub",'Nahur ibn Tayrah',
+  'Muqawwam ibn Nahur','Udd ibn Muqawwam',
+  'Adnan',"Ma'ad ibn Adnan","Nizar ibn Ma'ad",'Mudar ibn Nizar','Ilyas ibn Mudar',
+  'Mudrikah ibn Ilyas','Khuzayma ibn Mudrikah','Kinana ibn Khuzayma',
   'al-Nadr ibn Kinana','Malik ibn al-Nadr','Fihr ibn Malik','Ghalib ibn Fihr',
-  "Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murra ibn Ka'b",'Kilab ibn Murra',
+  "Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murrah ibn Ka'b",'Kilab ibn Murrah',
   'Qusayy ibn Kilab','Abd Manaf ibn Qusayy','Hashim ibn Abd Manaf',
-  'Abd al-Muttalib ibn Hashim','Abdullah ibn Abd al-Muttalib','Prophet Muhammad'
+  'Abd al-Muttalib ibn Hashim','Abd Allah ibn Abd al-Muttalib','Prophet Muhammad'
 ];
 const PROPHET_CHAIN = new Set(LINEAGE_CHAIN);
 
@@ -1773,10 +1776,21 @@ function _getContemporaries(p) {
   return results;
 }
 
+function _isAssumedDate(p){
+  if(p.famous==='Prophet Muhammad')return false;
+  if(p._dobFromDod)return true;
+  const s=((p.dob_s||'')+(p.dod_s||'')).toLowerCase();
+  if(/legendary|assumed|estimated|c\./.test(s))return true;
+  if((p.type==='Founder'||p.type==='Prophet')&&p.dob<500)return true;
+  return false;
+}
+const _assumedBadge='<span style="font-size:9px;color:rgba(200,168,74,0.55);cursor:help;margin-left:3px" title="Date estimated for visual placement — not historically confirmed">△</span>';
+
 function renderInfo(p){
   const col = p.type==='Genealogy' ? '#c8a84a' : (CC[gc(p.dob)]||'#888');
   const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
   const dod_s=p.dod?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
+  const _ab=_isAssumedDate(p)?_assumedBadge:'';
 
   document.getElementById('infoFilterSpacer').textContent=
     `${centLabel(gc(p.dob)).toUpperCase()} CENTURY · ${p.tradition||''} · ${p.type||''}`;
@@ -1969,8 +1983,8 @@ function renderInfo(p){
       ${p.lang?`<span class="i-tag">🌐 ${esc(p.lang)}</span>`:''}
     </div>
     <div class="i-dates">
-      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${p.dob_s?`<span class="ds">${esc(p.dob_s)}</span>`:''}</div>
-      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${p.dod_s?`<span class="ds">${esc(p.dod_s)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds">${esc(p.dob_s)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds">${esc(p.dod_s)}</span>`:''}</div>
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(160,130,60,.08);border:1px dashed rgba(200,168,80,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}

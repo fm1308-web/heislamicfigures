@@ -22,7 +22,8 @@
         "person": "Shith ibn Adam",
         "relation": "child"
       }
-    ]
+    ],
+    "quranRef": "Al-Baqarah 2:31, Al-A'raf 7:11, Al-Hijr 15:28"
   },
   {
     "famous": "Shith ibn Adam",
@@ -106,7 +107,8 @@
     "lng": 44.4,
     "teachers": [
       "Anush ibn Shith",
-      "Adam"
+      "Adam",
+      "Yanash"
     ],
     "relations": [
       {
@@ -185,7 +187,7 @@
     "tradition": "Islamic History",
     "type": "Prophet",
     "primaryTitle": "Al-Nabi al-Maktub — The Learned Prophet",
-    "dob": -3500,
+    "dob": -3000,
     "dod": -3200,
     "dob_s": "legendary",
     "dod_s": "legendary",
@@ -212,7 +214,8 @@
         "person": "Sidi Ahmad ibn Idris",
         "relation": "child"
       }
-    ]
+    ],
+    "quranRef": "Al-Anbiya 21:85, Maryam 19:56"
   },
   {
     "famous": "Mattushalakh ibn Idris",
@@ -287,7 +290,7 @@
     "tradition": "Islamic History",
     "type": "Prophet",
     "primaryTitle": "Shaykh al-Anbiya — Elder of the Prophets",
-    "dob": -3000,
+    "dob": -2500,
     "dod": -2050,
     "dob_s": "legendary",
     "dod_s": "legendary",
@@ -306,7 +309,8 @@
         "person": "Sam ibn Nuh",
         "relation": "child"
       }
-    ]
+    ],
+    "quranRef": "Hud 11:25, Al-Anbiya 21:76, Nuh 71:1"
   },
   {
     "famous": "Sam ibn Nuh",
@@ -588,7 +592,7 @@
     "tradition": "Islamic History",
     "type": "Prophet",
     "primaryTitle": "Khalil Allah — Friend of God, Father of Prophets",
-    "dob": -1900,
+    "dob": -1700,
     "dod": -1725,
     "dob_s": "c. 1900 BCE",
     "dod_s": "c. 1725 BCE",
@@ -612,7 +616,8 @@
         "person": "Ismail",
         "relation": "son"
       }
-    ]
+    ],
+    "quranRef": "Al-Baqarah 2:124, Ibrahim 14:35, Al-Anbiya 21:51"
   },
   {
     "famous": "Ismail",
@@ -620,7 +625,7 @@
     "tradition": "Islamic History",
     "type": "Prophet",
     "primaryTitle": "Dhabih Allah — The Sacrifice of God, Father of the Arabs",
-    "dob": -1850,
+    "dob": -1650,
     "dod": -1713,
     "dob_s": "c. 1850 BCE",
     "dod_s": "c. 1713 BCE",
@@ -647,7 +652,8 @@
         "person": "Ishaq",
         "relation": "half-brother"
       }
-    ]
+    ],
+    "quranRef": "Al-Baqarah 2:127, Maryam 19:54"
   },
   {
     "famous": "Nabit ibn Ismail",
@@ -655,7 +661,7 @@
     "tradition": "Islamic History",
     "type": "Founder",
     "primaryTitle": "Ancestor of Prophet Muhammad",
-    "dob": -1700,
+    "dob": -1600,
     "dod": -1600,
     "dob_s": "legendary",
     "dod_s": "legendary",
@@ -694,7 +700,8 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Nabit ibn Ismail"
+      "Nabit ibn Ismail",
+      "Udd ibn Muqawwam"
     ],
     "relations": [
       {
@@ -704,8 +711,8 @@
     ]
   },
   {
-    "famous": "Ma'add ibn Adnan",
-    "full": "Ma'add ibn 'Adnān",
+    "famous": "Ma'ad ibn Adnan",
+    "full": "Ma'ad ibn Adnan",
     "tradition": "Islamic History",
     "type": "Founder",
     "primaryTitle": "Ancestor of Prophet Muhammad",
@@ -735,7 +742,7 @@
     ]
   },
   {
-    "famous": "Nizar ibn Ma'add",
+    "famous": "Nizar ibn Ma'ad",
     "full": "Nizār ibn Ma'add",
     "tradition": "Islamic History",
     "type": "Founder",
@@ -752,8 +759,7 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Ma'add ibn Adnan",
-      "Adnan"
+      "Ma'ad ibn Adnan"
     ],
     "relations": [
       {
@@ -784,8 +790,7 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Nizar ibn Ma'add",
-      "Adnan"
+      "Nizar ibn Ma'ad"
     ],
     "relations": [
       {
@@ -859,8 +864,8 @@
     ]
   },
   {
-    "famous": "Khuzayma ibn Mudrika",
-    "full": "Khuzayma ibn Mudrika",
+    "famous": "Khuzayma ibn Mudrikah",
+    "full": "Khuzayma ibn Mudrikah",
     "tradition": "Islamic History",
     "type": "Founder",
     "primaryTitle": "Ancestor of Prophet Muhammad",
@@ -876,8 +881,7 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Mudrika ibn Ilyas",
-      "Adnan"
+      "Mudrikah ibn Ilyas"
     ],
     "relations": [
       {
@@ -904,8 +908,7 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Khuzayma ibn Mudrika",
-      "Adnan"
+      "Khuzayma ibn Mudrikah"
     ],
     "relations": [
       {
@@ -1146,7 +1149,7 @@
     ]
   },
   {
-    "famous": "Kilab ibn Murra",
+    "famous": "Kilab ibn Murrah",
     "full": "Kilāb ibn Murra",
     "tradition": "Islamic History",
     "type": "Founder",
@@ -1163,8 +1166,7 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Murra ibn Ka'b",
-      "Adnan"
+      "Murrah ibn Ka'b"
     ],
     "relations": [
       {
@@ -1181,7 +1183,7 @@
     "famous": "Qusayy ibn Kilab",
     "full": "Qusayy ibn Kilāb ibn Murra al-Qurashī",
     "tradition": "Islamic History",
-    "type": "Ruler",
+    "type": "Founder",
     "primaryTitle": "Reunifier of the Quraysh — Founder of Meccan Governance",
     "dob": 400,
     "dod": 480,
@@ -1195,7 +1197,7 @@
     "lat": 21.42,
     "lng": 39.83,
     "teachers": [
-      "Kilab ibn Murra"
+      "Kilab ibn Murrah"
     ],
     "relations": [
       {
@@ -1275,7 +1277,7 @@
     "famous": "Abd al-Muttalib ibn Hashim",
     "full": "Shayba ibn Hāshim, known as 'Abd al-Muṭṭalib al-Hāshimī",
     "tradition": "Islamic History",
-    "type": "Ruler",
+    "type": "Founder",
     "primaryTitle": "Grandfather of the Prophet — Keeper of the Zamzam Well",
     "dob": 497,
     "dod": 578,
@@ -1387,7 +1389,8 @@
     "lat": 15.35,
     "lng": 44.21,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "quranRef": "Hud 11:50, Al-A'raf 7:65"
   },
   {
     "famous": "Salih",
@@ -1407,7 +1410,8 @@
     "lat": 26.78,
     "lng": 37.98,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "quranRef": "Hud 11:61, Al-A'raf 7:73, Al-Naml 27:45"
   },
   {
     "famous": "Lut",
@@ -1429,7 +1433,8 @@
     "teachers": [
       "Ibrahim"
     ],
-    "relations": []
+    "relations": [],
+    "quranRef": "Hud 11:77, Al-Anbiya 21:74, Al-Ankabut 29:26"
   },
   {
     "famous": "Ishaq",
@@ -1472,7 +1477,8 @@
         "person": "Yaqub",
         "relation": "son"
       }
-    ]
+    ],
+    "quranRef": "Hud 11:71, Al-Anbiya 21:72"
   },
   {
     "famous": "Yaqub",
@@ -1503,7 +1509,8 @@
         "person": "Yusuf",
         "relation": "son"
       }
-    ]
+    ],
+    "quranRef": "Hud 11:71, Yusuf 12:6, Al-Anbiya 21:72"
   },
   {
     "famous": "Yusuf",
@@ -1534,7 +1541,8 @@
         "person": "Yaqub",
         "relation": "father"
       }
-    ]
+    ],
+    "quranRef": "Yusuf 12:4 (entire surah dedicated to Yusuf)"
   },
   {
     "famous": "Shu'ayb",
@@ -1574,7 +1582,8 @@
     "lat": 32.6,
     "lng": 36.1,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "quranRef": "Al-Anbiya 21:83, Sad 38:41"
   },
   {
     "famous": "Dhul-Kifl",
@@ -1594,7 +1603,8 @@
     "lat": 32.56,
     "lng": 44.42,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "quranRef": "Al-Anbiya 21:85, Sad 38:48"
   },
   {
     "famous": "Harun",
@@ -1622,7 +1632,8 @@
         "person": "Musa",
         "relation": "sibling"
       }
-    ]
+    ],
+    "quranRef": "Al-A'raf 7:122, Ta-Ha 20:30, Al-Anbiya 21:48"
   },
   {
     "famous": "Musa",
@@ -1648,7 +1659,8 @@
         "person": "Harun",
         "relation": "brother"
       }
-    ]
+    ],
+    "quranRef": "Al-Baqarah 2:51, Ta-Ha 20:9, Al-Qasas 28:3"
   },
   {
     "famous": "Dawud",
@@ -1673,7 +1685,8 @@
         "person": "Sulayman",
         "relation": "son"
       }
-    ]
+    ],
+    "quranRef": "Al-Baqarah 2:251, Al-Anbiya 21:78, Sad 38:17"
   },
   {
     "famous": "Sulayman",
@@ -1700,7 +1713,8 @@
         "person": "Dawud",
         "relation": "father"
       }
-    ]
+    ],
+    "quranRef": "Al-Baqarah 2:102, Al-Anbiya 21:81, Al-Naml 27:15"
   },
   {
     "famous": "Ilyas",
@@ -1725,7 +1739,8 @@
         "person": "Mudrika ibn Ilyas",
         "relation": "child"
       }
-    ]
+    ],
+    "quranRef": "Al-An'am 6:85, Al-Saffat 37:123"
   },
   {
     "famous": "Al-Yasa'",
@@ -1747,7 +1762,8 @@
     "teachers": [
       "Ilyas"
     ],
-    "relations": []
+    "relations": [],
+    "quranRef": "Al-An'am 6:86, Sad 38:48"
   },
   {
     "famous": "Yunus",
@@ -1767,7 +1783,8 @@
     "lat": 36.33,
     "lng": 43.12,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "quranRef": "Al-Anbiya 21:87, Al-Saffat 37:139, Al-Qalam 68:48"
   },
   {
     "famous": "Zakariyya",
@@ -1820,7 +1837,8 @@
         "person": "Zakariyya",
         "relation": "father"
       }
-    ]
+    ],
+    "quranRef": "Maryam 19:7, Al-Anbiya 21:90"
   },
   {
     "famous": "Isa",
@@ -1843,7 +1861,8 @@
       "Zakariyya",
       "Yahya"
     ],
-    "relations": []
+    "relations": [],
+    "quranRef": "Al-Baqarah 2:87, Maryam 19:16, Al-Maida 5:110"
   },
   {
     "famous": "Abd Allah ibn Salam",
@@ -2002,11 +2021,12 @@
     "classif": "Prophet / Archetypal Guide",
     "lang": "Arabic",
     "titles": "Khatam al-Anbiya · al-Mustafa · al-Amin · Rahmatan lil-'Alamin",
-    "source": "",
+    "source": "Quran",
     "lat": 21.4,
     "lng": 39.8,
     "teachers": [
-      "Abdullah ibn Abd al-Muttalib"
+      "Abdullah ibn Abd al-Muttalib",
+      "Abd Allah ibn Abd al-Muttalib"
     ],
     "birth_date_hijri": 53,
     "death_date_hijri": 11,
@@ -2104,7 +2124,8 @@
         "person": "Zaynab bint Khuzayma",
         "relation": "wife"
       }
-    ]
+    ],
+    "quranRef": "Al-Ahzab 33:40, Al-Fath 48:29"
   },
   {
     "famous": "Abu Lubaba ibn Abd al-Mundhir",
@@ -41710,6 +41731,157 @@
         "person": "Ja'far al-Sadiq",
         "relation": "son"
       }
+    ]
+  },
+  {
+    "famous": "Yanash",
+    "full": "Yanash ibn Shith",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -3800,
+    "dod": -3700,
+    "lat": 33.3,
+    "lng": 44.4,
+    "city": "Mesopotamia",
+    "source": "Tareekh al-Ya'qubi",
+    "teachers": [
+      "Shith ibn Adam"
+    ]
+  },
+  {
+    "famous": "Yashjub ibn Nabit",
+    "full": "Yashjub ibn Nabit",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -1560,
+    "dod": -1680,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Mecca",
+    "source": "Sirah Ibn Ishaq",
+    "teachers": [
+      "Nabit ibn Ismail"
+    ]
+  },
+  {
+    "famous": "Ya'rub ibn Yashjub",
+    "full": "Ya'rub ibn Yashjub",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -1520,
+    "dod": -1630,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Arabia",
+    "source": "Sirah Ibn Ishaq",
+    "teachers": [
+      "Yashjub ibn Nabit"
+    ]
+  },
+  {
+    "famous": "Tayrah ibn Ya'rub",
+    "full": "Tayrah ibn Ya'rub",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -1480,
+    "dod": -1580,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Arabia",
+    "source": "Sirah Ibn Ishaq",
+    "teachers": [
+      "Ya'rub ibn Yashjub"
+    ]
+  },
+  {
+    "famous": "Nahur ibn Tayrah",
+    "full": "Nahur ibn Tayrah",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -1440,
+    "dod": -1530,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Arabia",
+    "source": "Sirah Ibn Ishaq",
+    "teachers": [
+      "Tayrah ibn Ya'rub"
+    ]
+  },
+  {
+    "famous": "Muqawwam ibn Nahur",
+    "full": "Muqawwam ibn Nahur",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -1400,
+    "dod": -1480,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Arabia",
+    "source": "Sirah Ibn Ishaq",
+    "teachers": [
+      "Nahur ibn Tayrah"
+    ]
+  },
+  {
+    "famous": "Udd ibn Muqawwam",
+    "full": "Udd ibn Muqawwam",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": -1360,
+    "dod": -1430,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Arabia",
+    "source": "Sirah Ibn Ishaq",
+    "teachers": [
+      "Muqawwam ibn Nahur"
+    ]
+  },
+  {
+    "famous": "Murrah ibn Ka'b",
+    "full": "Murrah ibn Ka'b",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": 255,
+    "dod": -340,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Mecca",
+    "source": "Tareekh al-Ya'qubi",
+    "teachers": [
+      "Ka'b ibn Lu'ayy"
+    ]
+  },
+  {
+    "famous": "Abd Allah ibn Abd al-Muttalib",
+    "full": "Abd Allah ibn Abd al-Muttalib",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": 545,
+    "dod": 570,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Mecca",
+    "source": "Tareekh al-Ya'qubi",
+    "teachers": [
+      "Abd al-Muttalib ibn Hashim"
+    ],
+    "primaryTitle": "Father of Prophet Muhammad"
+  },
+  {
+    "famous": "Mudrikah ibn Ilyas",
+    "full": "Mudrikah ibn Ilyas",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": 25,
+    "dod": 80,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Arabia",
+    "source": "Tareekh al-Ya'qubi",
+    "teachers": [
+      "Ilyas ibn Mudar"
     ]
   }
 ]
