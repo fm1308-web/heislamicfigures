@@ -519,7 +519,7 @@ a:hover{text-decoration:underline}
 .sl-edge{pointer-events:none;transition:opacity .08s}
 .sl-chain-edge{animation:sl-edge-in .28s ease-out both}
 @keyframes sl-edge-in{from{opacity:0}to{opacity:0.75}}
-.sl-node.sl-dim{opacity:0.04 !important}
+.sl-node.sl-dim{opacity:0.1 !important}
 .sl-edge.sl-lit{opacity:0.9 !important;stroke-width:2.2px !important}
 .sl-edge.sl-dim{opacity:0.015 !important}
 
@@ -899,7 +899,7 @@ footer{
         <span id="sl-filterSummary"></span>
         <button id="sl-clearAll" onclick="clearAllFilters()">CLEAR ALL ✕</button>
       </div>
-      <div id="silsilaTopRight">Hover to preview · Click node for details · Drag to scroll</div>
+      <div id="silsilaTopRight">Click node to highlight · Click again for details</div>
     </div>
     <!-- ── Main content area ── -->
     <div id="silsilaBody" style="display:flex;flex:1;overflow:hidden">
@@ -1741,9 +1741,20 @@ async function selectStudyTab(tab){
             t.style.cssText="font-family:'Cinzel',serif;font-size:1em;font-weight:700;color:#c9a84c;letter-spacing:.06em;margin-bottom:10px";
             t.textContent=b.title;
             body.appendChild(t);
+            const wrap=document.createElement('div');
+            wrap.style.cssText='position:relative;margin-bottom:32px';
             const f=document.createElement('iframe');
-            f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px;margin-bottom:32px';
-            body.appendChild(f);
+            f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px';
+            wrap.appendChild(f);
+            const fsBtn=document.createElement('button');
+            fsBtn.textContent='\u26F6';
+            fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:18px;padding:4px 8px;cursor:pointer';
+            fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(232,200,120,0.15)';fsBtn.style.borderColor='var(--accent)'};
+            fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)'};
+            fsBtn.onclick=function(){if(f.requestFullscreen)f.requestFullscreen();else if(f.webkitRequestFullscreen)f.webkitRequestFullscreen();else if(f.mozRequestFullScreen)f.mozRequestFullScreen()};
+            wrap.appendChild(fsBtn);
+            document.addEventListener('fullscreenchange',function onFsc(){if(document.fullscreenElement===f){f.style.width='100vw';f.style.height='100vh'}else{f.style.width='100%';f.style.height='600px'}});
+            body.appendChild(wrap);
             f.src=base+encodeURIComponent(b.file)+bust;
           });
           return;
@@ -2806,48 +2817,7 @@ function renderSilsila(){
   }
 
   const svg=document.getElementById('silsilaSVG');
-
-  // Hover dim/lit — nodes only (edges are rendered on-demand on click)
-  function silsilaHoverOn(name){
-    if(SL_HOVERED===name) return;
-    SL_HOVERED=name;
-    const teachers=new Set((PEOPLE.find(p=>p.famous===name)?.teachers)||[]);
-    const students=new Set(SL_STUDENTS[name]||[]);
-    const connected=new Set([name,...teachers,...students]);
-    svg.querySelectorAll('.sl-node').forEach(n=>{
-      n.classList.toggle('sl-dim',!connected.has(n.dataset.name));
-    });
-  }
-  function silsilaHoverOff(){
-    if(!SL_HOVERED) return;
-    SL_HOVERED=null;
-    svg.querySelectorAll('.sl-node').forEach(n=>n.classList.remove('sl-dim'));
-  }
-
-  svg.addEventListener('mouseover',e=>{
-    const nd=e.target.closest('.sl-node'); if(!nd) return;
-    silsilaHoverOn(nd.dataset.name);
-    if(!ttPinned){
-      const p=PEOPLE.find(pp=>pp.famous===nd.dataset.name);
-      if(p) showHoverTooltip(p, 0, 0);
-    }
-  });
-  svg.addEventListener('mousemove',e=>{
-    if(tt.style.display==='block' && !ttPinned){
-      tt.style.left=Math.min(e.clientX+16,window.innerWidth-248)+'px';
-      tt.style.top=Math.min(e.clientY-10,window.innerHeight-110)+'px';
-    }
-  });
-  svg.addEventListener('mouseout',e=>{
-    if(!e.relatedTarget?.closest('.sl-node') && !e.relatedTarget?.closest('#sl-tt')){
-      silsilaHoverOff();
-      if(!ttPinned) tt.style.display='none';
-    }
-  });
-  svg.addEventListener('mouseleave',()=>{
-    silsilaHoverOff();
-    if(!ttPinned) tt.style.display='none';
-  });
+  let _silsilaHighlighted=null; // tracks first-click highlighted node
 
   // ── Full chain traversal (ancestors + descendants) ────────────────────────
   function getDirectChain(name){
@@ -2875,15 +2845,60 @@ function renderSilsila(){
     grp.innerHTML='';
   }
 
-  // ── Node click → open detail card directly ────────────
+  // ── Helper: clear all highlights ────────────
+  function _silsilaClearHighlight(){
+    _silsilaHighlighted=null;
+    clearChainEdges();
+    svg.querySelectorAll('.sl-node').forEach(n=>n.classList.remove('sl-dim','sl-selected'));
+    if(tt){tt.style.display='none';tt.style.pointerEvents='none';}
+    ttPinned=false;
+  }
+
+  // ── Node click → two-stage interaction ────────────
   svg.addEventListener('click',e=>{
     const nd=e.target.closest('.sl-node'); if(!nd) return;
-    const p=PEOPLE.find(pp=>pp.famous===nd.dataset.name); if(!p) return;
+    const name=nd.dataset.name;
+    const p=PEOPLE.find(pp=>pp.famous===name); if(!p) return;
     activePerson=p;
+
+    if(_silsilaHighlighted===name){
+      // SECOND CLICK — show popup with TIMELINE button
+      const col=SL_NM[p.famous]?.col||'#888';
+      const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
+      const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
+      tt.innerHTML=
+        `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px">${esc(p.famous)}</div>`+
+        `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
+        `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+        (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
+          (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'')+
+        `<button id="sl-tt-timeline-btn" style="background:var(--accent);color:var(--bg);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;padding:4px 12px;border:none;border-radius:2px;cursor:pointer;margin-top:6px;display:block">TIMELINE</button>`;
+      tt.style.pointerEvents='all';
+      tt.style.display='block';
+      ttPinned=true;
+      const tw=240, th=90;
+      let lx=e.clientX+16, ly=e.clientY-10;
+      if(lx+tw>window.innerWidth-8) lx=e.clientX-tw-16;
+      if(ly+th>window.innerHeight-8) ly=window.innerHeight-th-8;
+      if(ly<8) ly=8;
+      tt.style.left=lx+'px'; tt.style.top=ly+'px';
+      const tlBtn=tt.querySelector('#sl-tt-timeline-btn');
+      if(tlBtn) tlBtn.onclick=ev=>{ev.stopPropagation();unpinTooltip();closeSilsilaCard();focusPersonInTimeline(name);};
+      tt.onclick=ev=>ev.stopPropagation();
+      return;
+    }
+
+    // FIRST CLICK — highlight connections, dim others
+    _silsilaHighlighted=name;
     svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
     nd.classList.add('sl-selected');
-    // Show chain edges (no dimming)
     renderChainEdges(p.famous);
+    const teachers=new Set(p.teachers||[]);
+    const students=new Set(SL_STUDENTS[name]||[]);
+    const connected=new Set([name,...teachers,...students]);
+    svg.querySelectorAll('.sl-node').forEach(n=>{
+      n.classList.toggle('sl-dim',!connected.has(n.dataset.name));
+    });
     // Sync lane highlight
     const inner2=document.getElementById('silsilaLanesInner');
     if(inner2){
@@ -2891,10 +2906,9 @@ function renderSilsila(){
       const tl=isLineageMember(p)?PL:(getIHSubLane(p)||p.tradition||'');
       inner2.querySelectorAll('.sl-lane-label').forEach(l=>{if(l.dataset.lane===tl)l.classList.add('sl-lane-sel');});
     }
-    // Hide hover tooltip, open card directly
+    // Hide any tooltip
     if(tt){tt.style.display='none';tt.style.pointerEvents='none';}
     ttPinned=false;
-    openSilsilaCardWithDetails(p, e.clientX+16, e.clientY);
   });
 
   if(activePerson){
@@ -2903,15 +2917,13 @@ function renderSilsila(){
     });
   }
 
-  // Clear selection when clicking outside — attach only once
+  // Clear selection when clicking empty space — attach only once
   if(!window._slOutsideClickBound){
     window._slOutsideClickBound=true;
     document.addEventListener('click',e=>{
       const _svg=document.getElementById('silsilaSVG'); if(!_svg) return;
-      if(e.target.closest('.sl-node')||e.target.closest('#silsilaCard')) return;
-      const _grp=_svg.querySelector('#sl-active-edges');
-      if(_grp) _grp.innerHTML='';
-      _svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
+      if(e.target.closest('.sl-node')||e.target.closest('#silsilaCard')||e.target.closest('#sl-tt')) return;
+      _silsilaClearHighlight();
     });
   }
 
