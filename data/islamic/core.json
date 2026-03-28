@@ -290,10 +290,7 @@
     "source": "",
     "lat": 36.7,
     "lng": 3.2,
-    "teachers": [
-      "36.7",
-      "3.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -2738,8 +2735,8 @@
     "lang": "Persian",
     "titles": "Sultan al-Arifin · Qutb al-Aqtab",
     "source": "Wikipedia",
-    "lat": 36.0,
-    "lng": 55.0,
+    "lat": 36,
+    "lng": 55,
     "teachers": [
       "Bayazid Bistami"
     ],
@@ -3022,8 +3019,8 @@
     "lang": "Arabic",
     "titles": "Imam al-Sunan · One of the Six Masters of Hadith (Kutub al-Sitta)",
     "source": "https://en.wikipedia.org/wiki/Sunan_Abi_Dawud",
-    "lat": 31.0,
-    "lng": 62.0,
+    "lat": 31,
+    "lng": 62,
     "teachers": [
       "Imam Ahmad ibn Hanbal"
     ],
@@ -3542,7 +3539,7 @@
     "lang": "Arabic",
     "titles": "Patron Saint of Tlemcen · Teacher of the West",
     "source": "Wikidata",
-    "lat": 35.0,
+    "lat": 35,
     "lng": -1.32,
     "teachers": [],
     "relations": []
@@ -3836,11 +3833,8 @@
     "titles": "Pir-i Khorasan (Elder of Khorasan) · First Sufi poet to compose Persian ruba'iyat (quatrains)",
     "source": "",
     "lat": 37.6,
-    "lng": 59.0,
-    "teachers": [
-      "37.6",
-      "59.0"
-    ],
+    "lng": 59,
+    "teachers": [],
     "relations": []
   },
   {
@@ -4339,8 +4333,8 @@
     "lang": "Arabic",
     "titles": "Qutb al-Aqtab (Pole of Poles) · Imam al-Shadhiliyya · Ghawth al-Zaman",
     "source": "",
-    "lat": 34.0,
-    "lng": -5.0,
+    "lat": 34,
+    "lng": -5,
     "teachers": [
       "Ibn Mashish",
       "Abd al-Salam ibn Mashish"
@@ -4641,10 +4635,7 @@
     "source": "",
     "lat": 35.7,
     "lng": -0.7,
-    "teachers": [
-      "35.7",
-      "-0.7"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -4664,11 +4655,8 @@
     "titles": "Sayyid al-Badawi (The Nomadic Master) · Patron Saint of Egypt · Wali of the Nile Delta",
     "source": "",
     "lat": 30.8,
-    "lng": 31.0,
-    "teachers": [
-      "30.8",
-      "31.0"
-    ],
+    "lng": 31,
+    "teachers": [],
     "relations": []
   },
   {
@@ -4847,7 +4835,10 @@
       "Baha-ud-Din Naqshband",
       "Khwaja Baqi Billah"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0191",
@@ -5003,10 +4994,7 @@
     "source": "",
     "lat": 33.5,
     "lng": 36.3,
-    "teachers": [
-      "33.5",
-      "36.3"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -5218,11 +5206,8 @@
     "titles": "Akbar-e-Azam (The Great) · Shahanshah-e-Hind · Jalaluddin",
     "source": "",
     "lat": 27.2,
-    "lng": 78.0,
-    "teachers": [
-      "27.2",
-      "78.0"
-    ],
+    "lng": 78,
+    "teachers": [],
     "relations": [
       {
         "person": "Humayun",
@@ -5354,11 +5339,11 @@
     "source": "https://en.wikipedia.org/wiki/Abu_al-Hasan_al-Ash'ari",
     "lat": 30.5,
     "lng": 47.8,
-    "teachers": [
-      "30.5",
-      "47.8"
-    ],
-    "relations": []
+    "teachers": [],
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0210",
@@ -5544,7 +5529,10 @@
     "lat": 33.3406,
     "lng": 44.4009,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0218",
@@ -6068,6 +6056,9 @@
         "person": "Ahmad Ghazali",
         "relation": "brother"
       }
+    ],
+    "tags": [
+      "Mujaddid"
     ]
   },
   {
@@ -6743,10 +6734,7 @@
     "source": "https://en.wikipedia.org/wiki/Muhammad_al-Idrisi",
     "lat": 35.9,
     "lng": -5.3,
-    "teachers": [
-      "35.9",
-      "-5.3"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -6917,10 +6905,7 @@
     "source": "https://en.wikipedia.org/wiki/Al-Khwarizmi",
     "lat": 33.3,
     "lng": 44.4,
-    "teachers": [
-      "33.3",
-      "44.4"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -7072,7 +7057,7 @@
     "lang": "Arabic",
     "titles": "Herodotus of the Arabs · First Arab encyclopaedist",
     "source": "https://en.wikipedia.org/wiki/Al-Masudi",
-    "lat": 30.0,
+    "lat": 30,
     "lng": 31.2,
     "teachers": [
       "Al-Tabari"
@@ -7918,8 +7903,8 @@
     "lang": "Arabic",
     "titles": "al-Qadi Iyad (The Judge Iyad) · Imam al-Maghrib · Qadi of Ceuta",
     "source": "https://en.wikipedia.org/wiki/Qadi_Iyad",
-    "lat": 34.0,
-    "lng": -5.0,
+    "lat": 34,
+    "lng": -5,
     "teachers": [
       "Imam Malik ibn Anas"
     ],
@@ -7964,10 +7949,7 @@
     "source": "https://en.wikipedia.org/wiki/Al-Qushayri",
     "lat": 36.2,
     "lng": 58.8,
-    "teachers": [
-      "36.2",
-      "58.8"
-    ],
+    "teachers": [],
     "death_reason": "Natural",
     "places_of_stay": [
       "Hijaz",
@@ -8074,10 +8056,7 @@
     "source": "https://en.wikipedia.org/wiki/Abu_Bakr_al-Razi",
     "lat": 35.6,
     "lng": 51.5,
-    "teachers": [
-      "35.6",
-      "51.5"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -8560,10 +8539,7 @@
     "source": "https://en.wikipedia.org/wiki/Al-Sulami",
     "lat": 36.2,
     "lng": 58.8,
-    "teachers": [
-      "36.2",
-      "58.8"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -8651,14 +8627,17 @@
     "lang": "Arabic",
     "titles": "Jalal al-Din · Mujaddid of the 9th century AH · Wrote over 600 works across all Islamic sciences",
     "source": "",
-    "lat": 30.0,
+    "lat": 30,
     "lng": 31.2,
     "teachers": [
       "Siraj al-Din al-Bulqini",
       "Jalal al-Din al-Mahalli",
       "Sharaf al-Din al-Munawi"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0345",
@@ -9113,10 +9092,7 @@
     "source": "https://en.wikipedia.org/wiki/Ali_al-Hujwiri",
     "lat": 31.5,
     "lng": 74.3,
-    "teachers": [
-      "31.5",
-      "74.3"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -12878,10 +12854,7 @@
     "source": "https://en.wikipedia.org/wiki/Baba_Kuhi_of_Shiraz",
     "lat": 29.6,
     "lng": 52.5,
-    "teachers": [
-      "29.6",
-      "52.5"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -13461,10 +13434,7 @@
     "source": "",
     "lat": 28.6,
     "lng": 77.2,
-    "teachers": [
-      "28.6",
-      "77.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -14585,7 +14555,10 @@
     "teachers": [
       "Imam al-Juwayni"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0576",
@@ -15180,10 +15153,7 @@
     "source": "https://en.wikipedia.org/wiki/Fatima_Masumeh_Shrine",
     "lat": 36.2,
     "lng": 58.8,
-    "teachers": [
-      "36.2",
-      "58.8"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -16405,10 +16375,7 @@
     "source": "https://en.wikipedia.org/wiki/Al-Hakim_al-Tirmidhi",
     "lat": 37.2,
     "lng": 67.3,
-    "teachers": [
-      "37.2",
-      "67.3"
-    ],
+    "teachers": [],
     "relations": [
       {
         "person": "Khawlah bint Hakim",
@@ -18205,10 +18172,7 @@
     "source": "",
     "lat": 33.3,
     "lng": 44.4,
-    "teachers": [
-      "33.3",
-      "44.4"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -18256,6 +18220,9 @@
         "person": "Abd al-Wahhab al-Sha'rani",
         "relation": "father"
       }
+    ],
+    "tags": [
+      "Mujaddid"
     ]
   },
   {
@@ -18360,10 +18327,7 @@
     "source": "https://en.wikipedia.org/wiki/Ibn_al-Haytham",
     "lat": 30.0444,
     "lng": 31.2357,
-    "teachers": [
-      "30.5",
-      "47.8"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -18468,7 +18432,7 @@
     "lang": "Arabic",
     "titles": "Thiqat al-Fuqaha · Imam Ahl Misr",
     "source": "Tarikh al-Tabari",
-    "lat": 30.0,
+    "lat": 30,
     "lng": 31.2,
     "teachers": [
       "Imam Malik ibn Anas"
@@ -18653,8 +18617,8 @@
     "lang": "Arabic",
     "titles": "Shams al-Din · Visited 44 modern countries · Travelled ~120,000 km over 29 years",
     "source": "https://en.wikipedia.org/wiki/Ibn_Battuta",
-    "lat": 34.0,
-    "lng": -5.0,
+    "lat": 34,
+    "lng": -5,
     "teachers": [
       "Al-Nawawi"
     ],
@@ -18676,7 +18640,7 @@
     "lang": "Arabic",
     "titles": "Amir al-Mu'minin fi'l-Hadith · Hafiz al-Dunya · Chief Judge of Egypt (4 terms)",
     "source": "https://en.wikipedia.org/wiki/Ibn_Hajar_al-Asqalani",
-    "lat": 30.0,
+    "lat": 30,
     "lng": 31.2,
     "teachers": [
       "Al-Bulqini",
@@ -18684,7 +18648,10 @@
       "Zaynab bint al-Kamal",
       "Al-Dhahabi"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0736",
@@ -18725,10 +18692,7 @@
     "source": "https://en.wikipedia.org/wiki/Ibn_Hazm",
     "lat": 37.9,
     "lng": -4.8,
-    "teachers": [
-      "37.9",
-      "-4.8"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -18868,10 +18832,7 @@
     "source": "https://en.wikipedia.org/wiki/Ibn_Khafif",
     "lat": 29.6,
     "lng": 52.5,
-    "teachers": [
-      "29.6",
-      "52.5"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -19191,7 +19152,10 @@
     "teachers": [
       "Ibn Qudama al-Maqdisi"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0756",
@@ -19368,10 +19332,7 @@
     "source": "",
     "lat": 31.1,
     "lng": 30.6,
-    "teachers": [
-      "31.1",
-      "30.6"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -19679,7 +19640,10 @@
       "Syria",
       "Hijaz"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0774",
@@ -19753,7 +19717,7 @@
     "lang": "Arabic",
     "titles": "Nasir al-Sunna (Defender of the Sunnah) · Mujaddid of the 2nd Century AH · Imam al-Fuqaha",
     "source": "https://en.wikipedia.org/wiki/Al-Shafi'i",
-    "lat": 30.0,
+    "lat": 30,
     "lng": 31.2,
     "teachers": [
       "Imam Malik ibn Anas",
@@ -19769,7 +19733,10 @@
       "Baghdad",
       "Egypt"
     ],
-    "relations": []
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0777",
@@ -19919,10 +19886,7 @@
     "source": "",
     "lat": 28.6,
     "lng": 77.2,
-    "teachers": [
-      "28.6",
-      "77.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -20793,7 +20757,7 @@
     "lang": "Arabic / Persian",
     "titles": "Qutb al-Aqtab · Makhdoom of Bengal",
     "source": "Wikipedia",
-    "lat": 25.0,
+    "lat": 25,
     "lng": 88.1,
     "teachers": [
       "Shihab al-Din al-Suhrawardi"
@@ -22042,11 +22006,11 @@
     "source": "",
     "lat": 35.6,
     "lng": 45.4,
-    "teachers": [
-      "35.6",
-      "45.4"
-    ],
-    "relations": []
+    "teachers": [],
+    "relations": [],
+    "tags": [
+      "Mujaddid"
+    ]
   },
   {
     "slug": "F0865",
@@ -22547,10 +22511,7 @@
     "source": "",
     "lat": 28.5,
     "lng": 70.9,
-    "teachers": [
-      "28.5",
-      "70.9"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -23405,10 +23366,7 @@
     "source": "",
     "lat": 28.6,
     "lng": 77.2,
-    "teachers": [
-      "28.6",
-      "77.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -24601,10 +24559,7 @@
     "source": "",
     "lat": 38.1,
     "lng": 46.3,
-    "teachers": [
-      "38.1",
-      "46.3"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -25469,11 +25424,8 @@
     "titles": "Sarkar Golra (Master of Golra) · Qutb al-Aqtab of Punjab",
     "source": "",
     "lat": 33.6,
-    "lng": 73.0,
-    "teachers": [
-      "33.6",
-      "73.0"
-    ],
+    "lng": 73,
+    "teachers": [],
     "relations": []
   },
   {
@@ -25705,10 +25657,7 @@
     "source": "",
     "lat": 28.6,
     "lng": 77.2,
-    "teachers": [
-      "28.6",
-      "77.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -26548,8 +26497,8 @@
     "lang": "Arabic",
     "titles": "Al-Sayyid al-Mahdi · Imam al-Sanusiyya",
     "source": "Wikipedia",
-    "lat": 27.0,
-    "lng": 14.0,
+    "lat": 27,
+    "lng": 14,
     "teachers": [
       "Ahmad ibn Idris"
     ],
@@ -28055,10 +28004,7 @@
     "source": "https://en.wikipedia.org/wiki/Nasir_al-Din_al-Tusi",
     "lat": 36.8,
     "lng": 54.7,
-    "teachers": [
-      "36.8",
-      "54.7"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -28312,10 +28258,7 @@
     "source": "https://en.wikipedia.org/wiki/Nizami_Ganjavi",
     "lat": 40.4,
     "lng": 49.9,
-    "teachers": [
-      "40.4",
-      "49.9"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -31000,10 +30943,7 @@
     "source": "https://en.wikipedia.org/wiki/Saadi_Shirazi",
     "lat": 29.6,
     "lng": 52.5,
-    "teachers": [
-      "29.6",
-      "52.5"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -31376,10 +31316,7 @@
     "source": "https://en.wikipedia.org/wiki/Sahl_al-Tustari",
     "lat": 31.5,
     "lng": 49.1,
-    "teachers": [
-      "31.5",
-      "49.1"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -32248,10 +32185,7 @@
     "source": "",
     "lat": 33.5,
     "lng": 68.4,
-    "teachers": [
-      "33.5",
-      "68.4"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -32740,10 +32674,7 @@
     "source": "",
     "lat": 26.4,
     "lng": 67.9,
-    "teachers": [
-      "26.4",
-      "67.9"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -32764,10 +32695,7 @@
     "source": "",
     "lat": 28.6,
     "lng": 77.2,
-    "teachers": [
-      "28.6",
-      "77.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -32941,6 +32869,9 @@
         "person": "Shah Abdul Aziz Dehlawi",
         "relation": "son"
       }
+    ],
+    "tags": [
+      "Mujaddid"
     ]
   },
   {
@@ -33018,10 +32949,7 @@
     "source": "",
     "lat": 38.1,
     "lng": 46.3,
-    "teachers": [
-      "38.1",
-      "46.3"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -33397,12 +33325,9 @@
     "lang": "Arabic",
     "titles": "Qutb al-'Asr · Father of Salafi-Sufism",
     "source": "",
-    "lat": 34.0,
-    "lng": -5.0,
-    "teachers": [
-      "34.0",
-      "-5.0"
-    ],
+    "lat": 34,
+    "lng": -5,
+    "teachers": [],
     "relations": [
       {
         "person": "Idris",
@@ -34293,7 +34218,7 @@
     "titles": "Sultan al-Arifin of Punjab · Author of 140 Persian books · His Punjabi kafis still sung daily",
     "source": "",
     "lat": 31.2,
-    "lng": 72.0,
+    "lng": 72,
     "teachers": [
       "Abdul Qadir al-Jilani"
     ],
@@ -34470,7 +34395,7 @@
     "lang": "Javanese / Malay",
     "titles": "Sunan Kalijaga · Wali Songo · Apostle of the River",
     "source": "",
-    "lat": -7.0,
+    "lat": -7,
     "lng": 110.4,
     "teachers": [
       "Sunan Bonang"
@@ -36421,6 +36346,9 @@
         "person": "Abd al-Malik ibn Marwan",
         "relation": "uncle/aunt"
       }
+    ],
+    "tags": [
+      "Mujaddid"
     ]
   },
   {
@@ -36439,12 +36367,9 @@
     "lang": "Arabic",
     "titles": "Sultan al-'Ashiqin (Sultan of Lovers) · Mawla al-'Arifin",
     "source": "https://en.wikipedia.org/wiki/Ibn_al-Farid",
-    "lat": 30.0,
+    "lat": 30,
     "lng": 31.2,
-    "teachers": [
-      "30.0",
-      "31.2"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -41204,10 +41129,7 @@
     "source": "",
     "lat": 13.5,
     "lng": 5.3,
-    "teachers": [
-      "13.5",
-      "5.3"
-    ],
+    "teachers": [],
     "relations": [
       {
         "person": "Nana Asma'u",
@@ -41217,6 +41139,9 @@
         "person": "Muhammadu Bello",
         "relation": "son"
       }
+    ],
+    "tags": [
+      "Mujaddid"
     ]
   },
   {
@@ -41768,10 +41693,7 @@
     "source": "",
     "lat": 31.2,
     "lng": 73.9,
-    "teachers": [
-      "31.2",
-      "73.9"
-    ],
+    "teachers": [],
     "relations": []
   },
   {
@@ -42422,12 +42344,9 @@
     "lang": "Old Turkish",
     "titles": "Hak Ashigi (Lover of God) · Father of Turkish Folk Mysticism",
     "source": "https://en.wikipedia.org/wiki/Yunus_Emre",
-    "lat": 39.0,
-    "lng": 31.0,
-    "teachers": [
-      "39.0",
-      "31.0"
-    ],
+    "lat": 39,
+    "lng": 31,
+    "teachers": [],
     "relations": []
   },
   {
@@ -42547,7 +42466,7 @@
     "titles": "Amir al-Muslimin",
     "source": "https://en.wikipedia.org/wiki/Yusuf_ibn_Tashfin",
     "lat": 31.63,
-    "lng": -8.0,
+    "lng": -8,
     "teachers": [
       "Ibn Yasin",
       "Abu Imran al-Fasi"
@@ -42817,7 +42736,7 @@
     "lang": "Arabic",
     "titles": "Imam Zayd · Sayyid al-Shuhada",
     "source": "Wikidata",
-    "lat": 32.0,
+    "lat": 32,
     "lng": 44.4,
     "teachers": [],
     "tags": [
@@ -42875,7 +42794,7 @@
     "lang": "Arabic",
     "titles": "Zayd al-Hubb (the Beloved) · Abu Usama · Formerly known as Zayd ibn Muhammad (before the verse abrogating adoption)",
     "source": "https://en.wikipedia.org/wiki/Zayd_ibn_Haritha_al-Kalbi",
-    "lat": 31.0,
+    "lat": 31,
     "lng": 35.7,
     "teachers": [
       "Prophet Muhammad"
@@ -43595,5 +43514,77 @@
         "relation": "child"
       }
     ]
+  },
+  {
+    "slug": "F1713",
+    "famous": "Ibn Surayj",
+    "full": "Abu al-Abbas Ahmad ibn Umar ibn Surayj al-Baghdadi",
+    "type": "Scholar",
+    "tradition": "Islamic Jurisprudence",
+    "dob": 863,
+    "dod": 918,
+    "lat": 33.3,
+    "lng": 44.4,
+    "city": "Baghdad, Iraq",
+    "teachers": [],
+    "tags": [
+      "Mujaddid"
+    ],
+    "titles": "al-Shafi'i al-Saghir — The Second Shafi'i",
+    "primaryTitle": "al-Shafi'i al-Saghir — The Second Shafi'i"
+  },
+  {
+    "slug": "F1714",
+    "famous": "Ibn Daqiq al-'Id",
+    "full": "Taqi al-Din Abu al-Fath Muhammad ibn Ali ibn Daqiq al-'Id",
+    "type": "Scholar",
+    "tradition": "Islamic Jurisprudence",
+    "dob": 1228,
+    "dod": 1302,
+    "lat": 30.05,
+    "lng": 31.25,
+    "city": "Cairo, Egypt",
+    "teachers": [],
+    "tags": [
+      "Mujaddid"
+    ],
+    "titles": "Taqi al-Din — Chief Judge of Egypt",
+    "primaryTitle": "Taqi al-Din — Master of Legal Hadith"
+  },
+  {
+    "slug": "F1715",
+    "famous": "Abu Hamid al-Isfarayini",
+    "full": "Abu Hamid Ahmad ibn Muhammad al-Isfarayini",
+    "type": "Scholar",
+    "tradition": "Islamic Jurisprudence",
+    "dob": 955,
+    "dod": 1016,
+    "lat": 33.3,
+    "lng": 44.4,
+    "city": "Baghdad, Iraq",
+    "teachers": [],
+    "tags": [
+      "Mujaddid"
+    ],
+    "titles": "Shaykh of the Shafi'is in Baghdad",
+    "primaryTitle": "Shaykh al-Shafi'iyya — Head of the Shafi'is in Baghdad"
+  },
+  {
+    "slug": "F1716",
+    "famous": "Sahl al-Su'luki",
+    "full": "Abu al-Tayyib Sahl ibn Muhammad al-Su'luki al-Nisaburi",
+    "type": "Scholar",
+    "tradition": "Islamic Jurisprudence",
+    "dob": 940,
+    "dod": 999,
+    "lat": 36.21,
+    "lng": 58.8,
+    "city": "Nishapur, Iran",
+    "teachers": [],
+    "tags": [
+      "Mujaddid"
+    ],
+    "titles": "Mufti of Nishapur",
+    "primaryTitle": "Mufti of Nishapur — Co-Mujaddid of the 4th Century"
   }
 ]
