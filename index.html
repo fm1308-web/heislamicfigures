@@ -927,12 +927,22 @@ footer{
           <span id="map-typeLbl">TYPE</span>
           <span class="dd-caret">▾</span>
         </button>
+        <div class="sl-dd-panel" id="map-typePanel">
+          <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('type')">
+            <div class="sl-dd-ck" id="map-typeAllCk">✓</div><span>All Types</span>
+          </div>
+        </div>
       </div>
       <div class="sl-dd-wrap">
         <button class="sl-dd-btn" id="map-tradBtn" onclick="toggleSLDD('trad')">
           <span id="map-tradLbl">TRADITION</span>
           <span class="dd-caret">▾</span>
         </button>
+        <div class="sl-dd-panel" id="map-tradPanel">
+          <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('trad')">
+            <div class="sl-dd-ck" id="map-tradAllCk">✓</div><span>All Traditions</span>
+          </div>
+        </div>
       </div>
       <button class="sl-dd-btn" id="map-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()"
         style="border-color:var(--gold);color:var(--gold)">★ SAVED</button>
@@ -953,19 +963,19 @@ footer{
   <!-- STUDY ROOM VIEW -->
   <div id="studyRoomView">
     <div id="sr-left">
-      <div class="sr-card" data-slug="al-hallaj" onclick="selectStudyScholar('al-hallaj')">
+      <div class="sr-card" data-slug="F0241" onclick="selectStudyScholar('F0241')">
         <div class="sr-card-name">Al-Hallaj</div><div class="sr-card-date">d. 922 CE</div>
       </div>
-      <div class="sr-card" data-slug="ibn-arabi" onclick="selectStudyScholar('ibn-arabi')">
+      <div class="sr-card" data-slug="F0728" onclick="selectStudyScholar('F0728')">
         <div class="sr-card-name">Ibn Arabi</div><div class="sr-card-date">d. 1240 CE</div>
       </div>
-      <div class="sr-card" data-slug="al-qushayri" onclick="selectStudyScholar('al-qushayri')">
+      <div class="sr-card" data-slug="F0316" onclick="selectStudyScholar('F0316')">
         <div class="sr-card-name">Al-Qushayri</div><div class="sr-card-date">d. 1072 CE</div>
       </div>
-      <div class="sr-card" data-slug="al-ghazali" onclick="selectStudyScholar('al-ghazali')">
+      <div class="sr-card" data-slug="F0238" onclick="selectStudyScholar('F0238')">
         <div class="sr-card-name">Al-Ghazali</div><div class="sr-card-date">d. 1111 CE</div>
       </div>
-      <div class="sr-card" data-slug="umar-ibn-al-farid" onclick="selectStudyScholar('umar-ibn-al-farid')">
+      <div class="sr-card" data-slug="F1432" onclick="selectStudyScholar('F1432')">
         <div class="sr-card-name">Umar Ibn al-Farid</div><div class="sr-card-date">d. 1235 CE</div>
       </div>
     </div>
@@ -1248,6 +1258,9 @@ async function boot(){
   try{const r=await fetch('data/islamic/core.json');PEOPLE=await r.json();}
   catch(e){try{const r=await fetch('./data/islamic/core.json');PEOPLE=await r.json();}catch(_){PEOPLE=[];}}
 
+  try{const r=await fetch('data/islamic/name_variants.json');window._NAME_VARIANTS=await r.json();}
+  catch(e){window._NAME_VARIANTS={};}
+
   const his=PEOPLE.filter(p=>p.dob>=550);
   if(his.length){
     const mn=Math.min(...his.map(p=>p.dob));
@@ -1452,7 +1465,8 @@ function getFiltered(){
     if(selTrads.size>0&&!selTrads.has(p.tradition))return false;
     if(searchQ){
       const q=searchQ.toLowerCase();
-      const hay=[p.famous,p.full,p.primaryTitle,p.city,p.classif,p.tradition,p.type,...(p.tags||[])].join(' ').toLowerCase();
+      const vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
+      const hay=[p.famous,p.full,p.primaryTitle,p.city,p.classif,p.tradition,p.type,...(p.tags||[]),...vars].join(' ').toLowerCase();
       if(!hay.includes(q))return false;
     }
     /* Saved figures filter */
@@ -1698,11 +1712,11 @@ function setView(v){
 // STUDY ROOM
 // ═══════════════════════════════════════════════════════════
 const _SR_SCHOLARS={
-  'al-hallaj':       {name:'Al-Hallaj',          death:'d. 922 CE'},
-  'ibn-arabi':       {name:'Ibn Arabi',           death:'d. 1240 CE'},
-  'al-qushayri':     {name:'Al-Qushayri',         death:'d. 1072 CE'},
-  'al-ghazali':      {name:'Al-Ghazali',          death:'d. 1111 CE'},
-  'umar-ibn-al-farid':{name:'Umar Ibn al-Farid',  death:'d. 1235 CE'}
+  'F0241': {name:'Al-Hallaj',          death:'d. 922 CE'},
+  'F0728': {name:'Ibn Arabi',           death:'d. 1240 CE'},
+  'F0316': {name:'Al-Qushayri',         death:'d. 1072 CE'},
+  'F0238': {name:'Al-Ghazali',          death:'d. 1111 CE'},
+  'F1432': {name:'Umar Ibn al-Farid',  death:'d. 1235 CE'}
 };
 let _srActive=null;
 let _srTab=null;
@@ -1725,15 +1739,15 @@ async function selectStudyTab(tab){
   if(!slug) return;
   const body=document.getElementById('sr-body');
   body.innerHTML='';
-  const placeholder='<em style="color:rgba(200,168,74,.7)">Content coming soon \u2014 drop files into data/islamic/studyroom/'+slug+'/ to activate.</em>';
+  const placeholder='<em style="color:rgba(200,168,74,.7)">Content coming soon \u2014 drop files to activate.</em>';
 
   if(tab==='slides'){
     try{
-      const res=await fetch('data/islamic/studyroom/'+slug+'/slides/manifest.json?v='+Date.now());
+      const res=await fetch('data/islamic/studyroom/slides/'+slug+'-manifest.json?v='+Date.now());
       if(res.ok){
         const books=await res.json();
         if(books.length){
-          const base='data/islamic/studyroom/'+slug+'/slides/';
+          const base='data/islamic/studyroom/slides/';
           const bust='?v='+Date.now();
           books.forEach(function(b,i){
             if(i>0){const hr=document.createElement('div');hr.style.cssText='border-top:1px solid rgba(201,168,76,.25);margin:24px 0';body.appendChild(hr);}
@@ -1781,11 +1795,11 @@ async function selectStudyTab(tab){
 
   if(tab==='summary'){
     try{
-      const res=await fetch('data/islamic/studyroom/'+slug+'/summary/manifest.json?v='+Date.now());
+      const res=await fetch('data/islamic/studyroom/summary/'+slug+'-manifest.json?v='+Date.now());
       if(res.ok){
         const items=await res.json();
         if(items.length){
-          const base='data/islamic/studyroom/'+slug+'/summary/';
+          const base='data/islamic/studyroom/summary/';
           const bust='?v='+Date.now();
           items.forEach(function(b,i){
             if(i>0){const hr=document.createElement('div');hr.style.cssText='border-top:1px solid rgba(201,168,76,.25);margin:24px 0';body.appendChild(hr);}
@@ -1807,8 +1821,7 @@ async function selectStudyTab(tab){
   }
 
   if(tab==='quotes'){
-    const s=_SR_SCHOLARS[slug];
-    const p=PEOPLE.find(function(x){return x.famous===s.name});
+    const p=PEOPLE.find(function(x){return x.slug===slug});
     if(p){
       await _ensureDetails(p);
       if(p.quotes&&p.quotes.length){
@@ -1842,7 +1855,7 @@ function openStudyRoom(slug){
   selectStudyScholar(slug);
 }
 const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid']);
-const _SR_SLUG_MAP={'Al-Hallaj':'al-hallaj','Ibn Arabi':'ibn-arabi','Al-Qushayri':'al-qushayri','Al-Ghazali':'al-ghazali','Umar Ibn al-Farid':'umar-ibn-al-farid'};
+const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432'};
 
 // ═══════════════════════════════════════════════════════════
 // RENDER
@@ -3126,20 +3139,23 @@ document.addEventListener('click',e=>{
 // SILSILA FILTER DROPDOWNS (in top bar)
 // ═══════════════════════════════════════════════════════════
 function buildSLDD(kind, values){
-  const panel=document.getElementById(kind==='type'?'sl-typePanel':'sl-tradPanel');
-  if(!panel) return;
-  values.forEach(v=>{
-    const el=document.createElement('div');
-    el.className='sl-dd-item'; el.dataset.val=v;
-    el.innerHTML=`<div class="sl-dd-ck"></div><span>${v}</span>`;
-    el.onclick=()=>slDDToggle(kind,v);
-    panel.appendChild(el);
+  ['sl','map'].forEach(prefix=>{
+    const panel=document.getElementById(prefix+'-'+(kind==='type'?'typePanel':'tradPanel'));
+    if(!panel) return;
+    values.forEach(v=>{
+      const el=document.createElement('div');
+      el.className='sl-dd-item'; el.dataset.val=v;
+      el.innerHTML=`<div class="sl-dd-ck"></div><span>${v}</span>`;
+      el.onclick=()=>slDDToggle(kind,v);
+      panel.appendChild(el);
+    });
   });
 }
 
 function toggleSLDD(kind){
-  const panel=document.getElementById(kind==='type'?'sl-typePanel':'sl-tradPanel');
-  const btn=document.getElementById(kind==='type'?'sl-typeBtn':'sl-tradBtn');
+  const prefix=VIEW==='map'?'map':'sl';
+  const panel=document.getElementById(prefix+'-'+(kind==='type'?'typePanel':'tradPanel'));
+  const btn=document.getElementById(prefix+'-'+(kind==='type'?'typeBtn':'tradBtn'));
   if(!panel||!btn) return;
   const wasOpen=panel.classList.contains('open');
   // Close all SL dropdowns and main dropdowns
@@ -3164,24 +3180,31 @@ function slDDToggle(kind,v){
 
 function syncSLDD(kind){
   const sel=kind==='type'?selTypes:selTrads;
-  const panel=document.getElementById(kind==='type'?'sl-typePanel':'sl-tradPanel');
-  const btn=document.getElementById(kind==='type'?'sl-typeBtn':'sl-tradBtn');
-  const lbl=document.getElementById(kind==='type'?'sl-typeLbl':'sl-tradLbl');
-  const allCk=document.getElementById(kind==='type'?'sl-typeAllCk':'sl-tradAllCk');
-  if(!panel) return;
+  const panelId=kind==='type'?'typePanel':'tradPanel';
+  const btnId=kind==='type'?'typeBtn':'tradBtn';
+  const lblId=kind==='type'?'typeLbl':'tradLbl';
+  const allCkId=kind==='type'?'typeAllCk':'tradAllCk';
 
-  panel.querySelectorAll('.sl-dd-item:not(.sl-dd-all)').forEach(item=>{
-    const on=sel.has(item.dataset.val);
-    item.classList.toggle('selected',on);
-    item.querySelector('.sl-dd-ck').textContent=on?'✓':'';
+  ['sl','map'].forEach(prefix=>{
+    const panel=document.getElementById(prefix+'-'+panelId);
+    const btn=document.getElementById(prefix+'-'+btnId);
+    const lbl=document.getElementById(prefix+'-'+lblId);
+    const allCk=document.getElementById(prefix+'-'+allCkId);
+    if(!panel) return;
+
+    panel.querySelectorAll('.sl-dd-item:not(.sl-dd-all)').forEach(item=>{
+      const on=sel.has(item.dataset.val);
+      item.classList.toggle('selected',on);
+      item.querySelector('.sl-dd-ck').textContent=on?'✓':'';
+    });
+    if(allCk) allCk.textContent=sel.size===0?'✓':'';
+    if(btn) btn.classList.toggle('filtered',sel.size>0);
+    if(lbl){
+      if(sel.size===1) lbl.textContent=[...sel][0].length>14?[...sel][0].slice(0,12)+'…':[...sel][0];
+      else if(sel.size>1) lbl.textContent=(kind==='type'?'TYPE':'TRADITION')+` (${sel.size})`;
+      else lbl.textContent=kind==='type'?'TYPE':'TRADITION';
+    }
   });
-  if(allCk) allCk.textContent=sel.size===0?'✓':'';
-  if(btn) btn.classList.toggle('filtered',sel.size>0);
-  if(lbl){
-    if(sel.size===1) lbl.textContent=[...sel][0].length>14?[...sel][0].slice(0,12)+'…':[...sel][0];
-    else if(sel.size>1) lbl.textContent=(kind==='type'?'TYPE':'TRADITION')+` (${sel.size})`;
-    else lbl.textContent=kind==='type'?'TYPE':'TRADITION';
-  }
 
   // Update summary
   const parts=[];
