@@ -1753,9 +1753,21 @@ async function selectStudyTab(tab){
             fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:18px;padding:4px 8px;cursor:pointer';
             fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(232,200,120,0.15)';fsBtn.style.borderColor='var(--accent)'};
             fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)'};
-            fsBtn.onclick=function(){var el=wrap;if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();else if(el.mozRequestFullScreen)el.mozRequestFullScreen()};
+            fsBtn.onclick=function(){
+              if(wrap.dataset.expanded==='1'){
+                wrap.style.cssText='position:relative;margin-bottom:32px';
+                f.style.width='100%';f.style.height='600px';
+                fsBtn.textContent='\u26F6';
+                wrap.dataset.expanded='0';
+              }else{
+                wrap.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:#000;margin:0';
+                f.style.width='100%';f.style.height='100%';
+                fsBtn.textContent='\u2716';
+                wrap.dataset.expanded='1';
+              }
+            };
             wrap.appendChild(fsBtn);
-            document.addEventListener('fullscreenchange',function(){if(document.fullscreenElement===wrap){f.style.width='100vw';f.style.height='100vh';wrap.style.background='#000'}else{f.style.width='100%';f.style.height='600px';wrap.style.background=''}});
+            document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&wrap.dataset.expanded==='1')fsBtn.click();});
             body.appendChild(wrap);
             f.src=base+encodeURIComponent(b.file)+bust;
           });
