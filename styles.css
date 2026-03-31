@@ -945,19 +945,27 @@ footer{
 .ev-scroll::-webkit-scrollbar-thumb{background:rgba(212,168,74,0.2);border-radius:3px}
 .ev-scroll::-webkit-scrollbar-track{background:transparent}
 
-/* ── 3-column table ── */
-.ev-table{
-  width:100%;border-collapse:collapse;table-layout:fixed;
+/* ── 4-column CSS grid ── */
+.ev-grid{
+  display:grid;
+  grid-template-columns:10% 10% 40% 40%;
+  gap:0;
 }
-.ev-row{border-bottom:1px solid rgba(255,255,255,0.04);}
-.ev-row.ev-row-hidden td{opacity:0;transform:translateY(12px);transition:none;}
-.ev-row.ev-row-reveal td{opacity:1;transform:translateY(0);transition:opacity .35s ease, transform .35s ease;}
+.ev-row{
+  display:contents;
+}
+.ev-row > div{
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  padding:12px 10px;
+}
+.ev-row.ev-row-hidden > div{opacity:0;transform:translateY(12px);transition:none;}
+.ev-row.ev-row-reveal > div{opacity:1;transform:translateY(0);transition:opacity .35s ease, transform .35s ease;}
 
-/* COL 1 — Year (12%) */
+/* COL 1 — Year */
 .ev-col-year{
-  width:12%;vertical-align:top;text-align:right;
-  padding:14px 14px 14px 8px;
+  text-align:right;padding-right:14px;
   border-right:2px solid rgba(212,168,74,0.25);
+  align-self:start;
 }
 .ev-yr-num{
   font-family:'Cinzel',serif;font-size:20px;font-weight:700;
@@ -968,10 +976,10 @@ footer{
   margin-top:2px;
 }
 
-/* COL 2 — Category pill (16%) */
+/* COL 2 — Category pill */
 .ev-col-cat{
-  width:16%;vertical-align:middle;text-align:center;
-  padding:14px 8px;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding-top:14px;
 }
 .ev-cat-pill{
   display:inline-block;padding:3px 12px;border-radius:10px;
@@ -979,10 +987,8 @@ footer{
   color:#fff;text-transform:uppercase;white-space:nowrap;
 }
 
-/* COL 3 — Content card (72%) */
-.ev-col-content{
-  width:72%;vertical-align:top;padding:8px 12px 8px 8px;
-}
+/* COL 3 — The Story */
+.ev-col-story{padding:8px 12px;}
 
 /* Card */
 .ev-card{
@@ -991,23 +997,33 @@ footer{
   opacity:0;transform:translateY(16px);
   transition:opacity .35s ease, transform .35s ease;
 }
-.ev-card.ev-card-visible{
-  opacity:1;transform:translateY(0);
-}
+.ev-card.ev-card-visible{opacity:1;transform:translateY(0);}
 
 .ev-card-title{
   font-size:15px;font-weight:700;color:var(--text);
-  line-height:1.35;margin-bottom:3px;
+  line-height:1.35;margin-bottom:4px;
 }
 .ev-card-desc{
-  font-size:13px;color:var(--text2);line-height:1.5;
-  margin-bottom:6px;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-  overflow:hidden;text-overflow:ellipsis;
+  font-size:13px;color:var(--text2);line-height:1.55;
+  margin-bottom:8px;
 }
 
-/* Figure chips */
-.ev-card-figures{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
+/* Quran reference */
+.ev-quran-ref{
+  font-size:12.5px;font-style:italic;color:var(--gold);
+  border-left:2px solid var(--gold);padding-left:10px;
+  margin:8px 0;line-height:1.5;
+}
+
+/* Outcome */
+.ev-outcome{
+  font-size:12px;color:var(--gold);margin:6px 0;
+  font-weight:600;line-height:1.4;
+}
+
+/* Figure chips + roles */
+.ev-card-figures{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.ev-fig-wrap{display:flex;flex-direction:column;gap:1px;}
 .ev-fig-chip{
   display:inline-flex;align-items:center;
   padding:3px 10px;border-radius:3px;
@@ -1019,4 +1035,50 @@ footer{
   border-color:rgba(212,168,74,0.5);
   background:rgba(212,168,74,0.08);
   color:var(--ip-acc);
+}
+.ev-fig-role{
+  font-size:9.5px;font-style:italic;color:var(--muted);
+  padding-left:4px;line-height:1.3;
+}
+
+/* Sources */
+.ev-sources{
+  font-size:10.5px;color:var(--muted);margin-top:8px;
+  font-style:italic;line-height:1.4;
+}
+
+/* Tags */
+.ev-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.ev-tag{
+  display:inline-block;padding:1px 8px;border-radius:8px;
+  font-size:9px;letter-spacing:0.04em;
+  background:rgba(255,255,255,0.06);color:var(--muted);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+/* COL 4 — The Visual */
+.ev-col-visual{
+  display:flex;flex-direction:column;align-items:center;
+  padding:12px 10px;gap:4px;
+}
+.ev-map-thumb{
+  position:relative;width:100%;max-width:220px;
+  aspect-ratio:1;border-radius:6px;overflow:hidden;
+  border:1px solid var(--border);background:var(--surface);
+}
+.ev-map-img{width:100%;height:100%;object-fit:cover;opacity:0.7;}
+.ev-map-pin{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:18px;color:var(--gold);text-shadow:0 0 6px rgba(0,0,0,0.8);
+}
+.ev-map-place{
+  font-family:'Cinzel',serif;font-size:11px;font-weight:600;
+  color:var(--text);text-align:center;
+}
+.ev-map-modern{
+  font-size:10px;color:var(--muted);text-align:center;
+}
+.ev-map-empty{
+  width:100%;max-width:220px;aspect-ratio:1;border-radius:6px;
+  background:var(--surface);border:1px solid var(--border);
 }
