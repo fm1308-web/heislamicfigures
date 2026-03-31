@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════
 // EVENTS VIEW — 4-column grid with enriched data + images
-// Uses #hdrRow3 in the fixed top bar for century pills + animate
+// Uses #hdrRow3 in the fixed top bar for year range filter + animate
 // ═══════════════════════════════════════════════════════════
 (function(){
 'use strict';
@@ -9,8 +9,9 @@ var _inited = false;
 var _animRunning = false;
 var _animTimer = null;
 var _animIdx = 0;
-var _activeCentury = 0;
 var _hdrRow3Original = null;
+var _startYear = 500;
+var _endYear = 1500;
 
 var CAT_COLORS = {
   'Politics':'#4a90d9','War':'#e74c3c','Theology':'#d4a84a',
@@ -29,16 +30,8 @@ var ERA_BANDS = [
   {name:'Contemporary',      start:1950,  end:2025}
 ];
 
-var CENTURIES = [
-  {label:'6th',start:500,end:600},{label:'7th',start:600,end:700},
-  {label:'8th',start:700,end:800},{label:'9th',start:800,end:900},
-  {label:'10th',start:900,end:1000},{label:'11th',start:1000,end:1100},
-  {label:'12th',start:1100,end:1200},{label:'13th',start:1200,end:1300},
-  {label:'14th',start:1300,end:1400},{label:'15th',start:1400,end:1500},
-  {label:'16th',start:1500,end:1600},{label:'17th',start:1600,end:1700},
-  {label:'18th',start:1700,end:1800},{label:'19th',start:1800,end:1900},
-  {label:'20th',start:1900,end:2000},{label:'21st',start:2000,end:2100}
-];
+var YEAR_STEPS_FROM = [500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450];
+var YEAR_STEPS_TO = [550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500];
 
 var SPEED_OPTIONS = [
   {label:'Fast',ms:800},{label:'Normal',ms:2000},
@@ -54,6 +47,13 @@ function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace
 function escAttr(s){return esc(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
 function figName(f){return typeof f==='string'?f:(f&&f.name?f.name:'');}
 function figRole(f){return(typeof f==='object'&&f&&f.role)?f.role:'';}
+
+// Compute max year in data, rounded up to nearest 50
+function _maxYear(data){
+  var mx=0;
+  data.forEach(function(e){if(e.year>mx)mx=e.year;});
+  return Math.ceil(mx/50)*50;
+}
 
 // ── hdrRow3 repurposing ──
 var _origSetView = window.setView;
@@ -75,8 +75,28 @@ window.setView = function(v){
 
 function _buildHeaderHTML(){
   var data=window.eventsData||[];
-  var avail=_availCenturies(data);
+
   var h='';
+  // LEFT: year range dropdowns
+  h+='<span class="ev-filter-label">EVENTS FROM</span>';
+  h+='<select class="ev-speed-select" id="evStartYear" onchange="window._evFilterChanged()">';
+  YEAR_STEPS_FROM.forEach(function(y){
+    var sel=(y===_startYear)?' selected':'';
+    h+='<option value="'+y+'"'+sel+'>'+y+'</option>';
+  });
+  h+='</select>';
+  h+='<span class="ev-filter-label">TO</span>';
+  h+='<select class="ev-speed-select" id="evEndYear" onchange="window._evFilterChanged()">';
+  YEAR_STEPS_TO.forEach(function(y){
+    var sel=(y===_endYear)?' selected':'';
+    h+='<option value="'+y+'"'+sel+'>'+y+'</option>';
+  });
+  h+='</select>';
+  // Count
+  var count=data.filter(function(e){return e.year>=_startYear&&e.year<=_endYear;}).length;
+  h+='<span class="ev-filter-count" id="evFilterCount">showing '+count+' events</span>';
+
+  // RIGHT: speed + animate
   h+='<select class="ev-speed-select" id="evSpeedSelect" style="margin-left:auto">';
   SPEED_OPTIONS.forEach(function(o){
     var sel=o.label==='Normal'?' selected':'';
@@ -87,13 +107,20 @@ function _buildHeaderHTML(){
   return h;
 }
 
-function _availCenturies(data){
-  var has={};
-  data.forEach(function(e){has[Math.floor(e.year/100)]=true;});
-  var a=[];
-  CENTURIES.forEach(function(c,i){if(has[Math.floor(c.start/100)])a.push(i);});
-  return a;
-}
+// ── Filter changed ──
+window._evFilterChanged=function(){
+  var s=document.getElementById('evStartYear');
+  var e=document.getElementById('evEndYear');
+  if(s) _startYear=parseInt(s.value)||500;
+  if(e) _endYear=parseInt(e.value)||999;
+  if(_startYear>_endYear) _endYear=_startYear;
+  _renderRange(window.eventsData,_startYear,_endYear);
+  // Update count
+  var data=window.eventsData||[];
+  var count=data.filter(function(ev){return ev.year>=_startYear&&ev.year<=_endYear;}).length;
+  var el=document.getElementById('evFilterCount');
+  if(el) el.textContent='showing '+count+' events';
+};
 
 // ── INIT ──
 function initEvents(){
@@ -103,10 +130,24 @@ function initEvents(){
   if(!data||!data.length){ct.innerHTML='<div style="padding:40px;color:var(--muted)">No events data loaded.</div>';return;}
   if(_inited) return;
   _inited=true;
-  var avail=_availCenturies(data);
-  _activeCentury=avail.length?avail[0]:0;
+  _startYear=500;
+  _endYear=1500;
   ct.innerHTML='<div class="ev-scroll" id="evScroll"></div>';
-  _renderCentury(data,_activeCentury);
+  // Ensure Leaflet is loaded for mini maps
+  if(typeof L==='undefined'){
+    var scr=document.createElement('script');
+    scr.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    scr.onload=function(){_renderRange(data,_startYear,_endYear);};
+    scr.onerror=function(){
+      var s2=document.createElement('script');
+      s2.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      s2.onload=function(){_renderRange(data,_startYear,_endYear);};
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(scr);
+  } else {
+    _renderRange(data,_startYear,_endYear);
+  }
 }
 
 // ── BUILD ONE EVENT ROW ──
@@ -132,7 +173,6 @@ function _buildRow(ev,showYear,spanCount){
   if(ev.description) h+='<div class="ev-card-desc">'+esc(ev.description)+'</div>';
   if(ev.quranRef) h+='<div class="ev-quran-ref">'+esc(ev.quranRef)+'</div>';
 
-  // Figures
   var figs=ev.figures||[];
   if(figs.length){
     h+='<div class="ev-card-figures">';
@@ -147,14 +187,10 @@ function _buildRow(ev,showYear,spanCount){
     h+='</div>';
   }
 
-  // Sources
   var src=ev.sources||[];
   if(src.length) h+='<div class="ev-sources">'+src.map(function(s){return esc(s);}).join(' \u00b7 ')+'</div>';
-
-  // Outcome
   if(ev.outcome) h+='<div class="ev-outcome">'+esc(ev.outcome)+'</div>';
 
-  // Tags
   var tags=ev.tags||[];
   if(tags.length){
     h+='<div class="ev-tags">';
@@ -168,38 +204,37 @@ function _buildRow(ev,showYear,spanCount){
   h+='<div class="ev-col-visual">';
   var vis=ev.visual||{};
   var loc=ev.location||{};
+  var caption=vis.caption||loc.place||'';
+  var modern=vis.modern||loc.modern||'';
+  var evId=(ev.id||'ev'+ev.year).replace(/[^a-zA-Z0-9_-]/g,'');
 
-  if(vis.url){
-    // Real Wikimedia image
+  if(vis.type==='portrait'&&vis.url){
+    // Portrait: Wikipedia image with fallback to mini map
     h+='<div class="ev-vis-frame">';
-    h+='<img class="ev-vis-img" src="'+escAttr(vis.url)+'" alt="'+escAttr(vis.caption||ev.title)+'" loading="lazy" onerror="this.style.display=\'none\'">';
-    if(vis.caption){
-      h+='<div class="ev-vis-caption-bar"><span class="ev-vis-caption">'+esc(vis.caption)+'</span></div>';
-    }
+    h+='<img class="ev-vis-img ev-vis-portrait" src="'+vis.url.replace(/"/g,'&quot;')+'" alt="" loading="lazy"';
+    h+=' data-lat="'+(loc.lat||0)+'" data-lng="'+(loc.lng||0)+'"';
+    h+=' onerror="this.onerror=null;this.style.display=\'none\';window._evInitMiniMap(\'evMiniMap_'+evId+'\','+(loc.lat||0)+','+(loc.lng||0)+',8)"';
+    h+='>';
+    h+='<div id="evMiniMap_'+evId+'" class="ev-mini-map" style="display:none"></div>';
     h+='</div>';
-    if(vis.credit) h+='<div class="ev-vis-credit">'+esc(vis.credit)+'</div>';
-  } else if(loc.lat&&loc.lng){
-    // Fallback: static OpenStreetMap
-    var mapUrl='https://staticmap.openstreetmap.de/staticmap.php?center='+loc.lat+','+loc.lng+'&zoom=8&size=400x250&maptype=mapnik&markers='+loc.lat+','+loc.lng+',ol-marker';
-    h+='<div class="ev-vis-frame">';
-    h+='<img class="ev-vis-img" src="'+escAttr(mapUrl)+'" alt="'+escAttr(loc.place||'')+'" loading="lazy">';
-    h+='</div>';
-    if(loc.place) h+='<div class="ev-map-place">'+esc(loc.place)+'</div>';
-    if(loc.modern&&loc.modern!==loc.place) h+='<div class="ev-map-modern">'+esc(loc.modern)+'</div>';
   } else {
-    h+='<div class="ev-vis-empty"></div>';
+    // Map types (map/osm/era_map): render as Leaflet mini map
+    h+='<div class="ev-vis-frame">';
+    h+='<div id="evMiniMap_'+evId+'" class="ev-mini-map" data-lat="'+(loc.lat||0)+'" data-lng="'+(loc.lng||0)+'" data-zoom="'+(vis.zoom||8)+'"></div>';
+    h+='</div>';
   }
+  if(caption) h+='<div class="ev-map-place">'+esc(caption)+'</div>';
+  if(modern) h+='<div class="ev-map-modern">'+esc(modern)+'</div>';
   h+='</div>';
 
   h+='</div>'; // /ev-row
   return h;
 }
 
-// ── RENDER CENTURY ──
-function _renderCentury(data,centIdx){
+// ── RENDER BY YEAR RANGE ──
+function _renderRange(data,startYr,endYr){
   _evStopAnimate();
-  var c=CENTURIES[centIdx];
-  var filtered=data.filter(function(e){return e.year>=c.start&&e.year<c.end;});
+  var filtered=data.filter(function(e){return e.year>=startYr&&e.year<=endYr;});
   filtered.sort(function(a,b){return a.year-b.year||(a.id||'').localeCompare(b.id||'');});
 
   var yearCounts={};
@@ -218,7 +253,6 @@ function _renderCentury(data,centIdx){
   scrollEl.innerHTML=html;
   scrollEl.scrollTop=0;
 
-  // Card reveal on scroll
   var cards=scrollEl.querySelectorAll('.ev-card');
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(en){
@@ -227,19 +261,56 @@ function _renderCentury(data,centIdx){
   },{root:scrollEl,threshold:0.1});
   cards.forEach(function(c){obs.observe(c);});
 
-  // Update pills
-  document.querySelectorAll('.ev-cent-pill').forEach(function(p){
-    var ci=p.dataset.cent;
-    if(ci!==undefined){
-      p.classList.toggle('ev-cent-active',parseInt(ci)===centIdx);
-      p.classList.toggle('ev-cent-avail',parseInt(ci)!==centIdx);
-    }
-  });
+  // Initialize mini Leaflet maps (lazy — only when scrolled into view)
+  _initMiniMaps(scrollEl);
 }
 
-window._evSelectCentury=function(idx){
-  _activeCentury=idx;
-  _renderCentury(window.eventsData,idx);
+// ── MINI LEAFLET MAPS ──
+var _miniMaps={};
+
+function _initMiniMaps(scrollEl){
+  // Clean up previous maps
+  Object.keys(_miniMaps).forEach(function(k){
+    try{_miniMaps[k].remove();}catch(e){}
+  });
+  _miniMaps={};
+
+  var divs=scrollEl.querySelectorAll('.ev-mini-map[data-lat]');
+  if(!divs.length||typeof L==='undefined') return;
+
+  var mapObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var el=en.target;
+        mapObs.unobserve(el);
+        var lat=parseFloat(el.dataset.lat)||0;
+        var lng=parseFloat(el.dataset.lng)||0;
+        var zoom=parseInt(el.dataset.zoom)||8;
+        if(!lat&&!lng) return;
+        el.style.display='block';
+        var m=L.map(el.id,{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,touchZoom:false,boxZoom:false,keyboard:false});
+        m.setView([lat,lng],zoom);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(m);
+        L.marker([lat,lng]).addTo(m);
+        _miniMaps[el.id]=m;
+        setTimeout(function(){m.invalidateSize();},100);
+      }
+    });
+  },{root:scrollEl,threshold:0.05});
+  divs.forEach(function(d){mapObs.observe(d);});
+}
+
+// Fallback: init a mini map when portrait image fails
+window._evInitMiniMap=function(divId,lat,lng,zoom){
+  var el=document.getElementById(divId);
+  if(!el||typeof L==='undefined') return;
+  el.style.display='block';
+  var m=L.map(divId,{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,touchZoom:false,boxZoom:false,keyboard:false});
+  m.setView([lat,lng],zoom||8);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(m);
+  L.marker([lat,lng]).addTo(m);
+  _miniMaps[divId]=m;
+  setTimeout(function(){m.invalidateSize();},100);
 };
 
 // ── ANIMATE ──
@@ -264,7 +335,6 @@ function _animNext(rows){
   if(!_animRunning) return;
   if(_animIdx>=rows.length){_evStopAnimate();return;}
   var row=rows[_animIdx];
-  // Scroll: find the story column (has a box, unlike display:contents row)
   var target=row.querySelector('.ev-col-story');
   var scrollEl=document.getElementById('evScroll');
   if(target&&scrollEl){
