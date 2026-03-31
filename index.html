@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islamic Figures</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="topBar">
+<!-- ROW 1 - Title + Stats -->
+<div id="hdrRow1">
+  <div id="hdrRow1Left">
+    <h1>ISLAMIC FIGURES</h1>
+    <div id="metaLine">550 - 2025 CE &middot; free book &middot; = dates assumed &middot; study space &middot; AI-generated &middot; independently verify</div>
+  </div>
+  <div id="hdrRow1Right">
+    <div id="hdrStatsLine1"><span id="statFigures">1,716 Figures</span> &middot; <span id="statBooks">2,904 Free Books</span></div>
+    <div id="hdrStatsLine2"><span id="statRelations">2,164 Relations</span> &middot; 2026 Mar</div>
+  </div>
+</div>
+
+<!-- ROW 2 - Tabs + Search -->
+<div id="hdrRow2">
+  <div id="viewTabs">
+    <button class="view-tab active" onclick="setView('timeline')">TIMELINE</button>
+    <button class="view-tab" onclick="setView('silsila')">SILSILA</button>
+    <button class="view-tab" onclick="setView('map')">MAP</button>
+    <button class="view-tab" onclick="setView('studyroom')">STUDY</button>
+    <button class="view-tab" onclick="setView('eras')">ERAS</button>
+    <button class="view-tab" onclick="setView('events')">EVENTS</button>
+  </div>
+  <div id="searchWrap">
+    <input id="search" type="text" placeholder="Search figures..." oninput="onSearch()">
+  </div>
+</div>
+
+<!-- ROW 3 - Slider -->
+<div id="hdrRow3">
+  <span id="yearQuestion">WHO WAS ALIVE IN</span>
+  <span class="hdr-range-cap">500</span>
+  <div id="sliderOuter">
+    <input id="sliderInput" type="range" min="500" max="2000" value="800" step="5">
+    <div id="sliderTrack">
+      <div id="sliderFill"></div>
+      <div id="sliderThumb" tabindex="0"></div>
+    </div>
+  </div>
+  <span id="yearDisplay">&mdash;</span>
+  <span class="hdr-range-cap">2000</span>
+  <button id="yearClearBtn" onclick="clearYear()">&times;</button>
+  <button id="erasAnimateBtn" class="dd-btn" onclick="toggleErasAnimate()" style="display:none">▶ ANIMATE</button>
+</div>
+
+<!-- ROW 4 - Filters -->
+<div id="hdrRow4">
+  <div class="dd-wrap">
+    <button class="dd-btn" id="typeBtn" onclick="toggleDD('type')">
+      <span>TYPE</span>
+      <div style="display:flex;align-items:center;gap:4px">
+        <span class="dd-dot" id="typeDot"></span>
+        <span class="dd-count" id="typeCount"></span>
+        <span class="dd-caret">▾</span>
+      </div>
+    </button>
+    <div class="dd-panel" id="typePanel">
+      <div class="dd-item dd-all" onclick="ddClearAll('type')">
+        <div class="dd-checkbox" id="typeAllCk">✓</div><span>All Types</span>
+      </div>
+    </div>
+  </div>
+  <div class="dd-wrap">
+    <button class="dd-btn" id="tradBtn" onclick="toggleDD('trad')">
+      <span>TRADITION</span>
+      <div style="display:flex;align-items:center;gap:4px">
+        <span class="dd-dot" id="tradDot"></span>
+        <span class="dd-count" id="tradCount"></span>
+        <span class="dd-caret">▾</span>
+      </div>
+    </button>
+    <div class="dd-panel" id="tradPanel">
+      <div class="dd-item dd-all" onclick="ddClearAll('trad')">
+        <div class="dd-checkbox" id="tradAllCk">✓</div><span>All Traditions</span>
+      </div>
+    </div>
+  </div>
+  <button class="dd-btn" id="favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
+</div>
+</div><!-- /#topBar -->
+
+<div id="mainShell">
+
+  <!-- LEFT PANEL -->
+  <div id="leftPanel">
+
+    <!-- Filter bar kept as hidden container for JS compat -->
+    <div id="filterBar" style="display:none">
+      <div id="filterBarLeft"></div>
+      <div id="filterBarCtrls">
+        <div class="ch-cents" style="display:flex;flex:1;height:100%">
+          <div class="ch-cent" id="ch0"><span id="ch0t">8TH C.</span><span class="cy-lbl" id="ch0y">700–800</span></div>
+          <div class="ch-cent hi" id="ch1"><span id="ch1t">9TH C.</span><span class="cy-lbl" id="ch1y">800–900</span></div>
+          <div class="ch-cent" id="ch2"><span id="ch2t">10TH C.</span><span class="cy-lbl" id="ch2y">900–1000</span></div>
+        </div>
+        <span id="filterSummary" style="display:none"></span>
+        <button id="filterClearAll" onclick="clearAllFilters()" style="display:none">CLEAR ALL ✕</button>
+      </div>
+    </div>
+
+    <!-- Scrollable rows (names + bars) -->
+    <div id="rowsScroll"></div>
+
+    <!-- Row 4: century scrollbar AT BOTTOM -->
+    <div id="centScrollStrip">
+      <div id="centScrollNameSpacer">CENTURY</div>
+      <span id="centLabelLeft">6th</span>
+      <div id="centScrollTrackWrap">
+        <div id="centScrollTrack">
+          <div id="centScrollFill"></div>
+          <div id="centScrollThumb" tabindex="0"></div>
+        </div>
+      </div>
+      <span id="centLabelRight">20th</span>
+    </div>
+
+  </div><!-- /leftPanel -->
+
+  <!-- SILSILA VIEW -->
+  <div id="silsilaView">
+    <!-- ── Top filter bar (only visible in Silsila) ── -->
+    <div id="silsilaTop">
+      <div id="silsilaTopLeft">
+        <!-- TYPE dropdown -->
+        <div class="sl-dd-wrap">
+          <button class="sl-dd-btn" id="sl-typeBtn" onclick="toggleSLDD('type')">
+            <span id="sl-typeLbl">TYPE</span>
+            <span class="dd-caret">▾</span>
+          </button>
+          <div class="sl-dd-panel" id="sl-typePanel">
+            <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('type')">
+              <div class="sl-dd-ck" id="sl-typeAllCk">✓</div><span>All Types</span>
+            </div>
+          </div>
+        </div>
+        <!-- TRADITION dropdown -->
+        <div class="sl-dd-wrap">
+          <button class="sl-dd-btn" id="sl-tradBtn" onclick="toggleSLDD('trad')">
+            <span id="sl-tradLbl">TRADITION</span>
+            <span class="dd-caret">▾</span>
+          </button>
+          <div class="sl-dd-panel" id="sl-tradPanel">
+            <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('trad')">
+              <div class="sl-dd-ck" id="sl-tradAllCk">✓</div><span>All Traditions</span>
+            </div>
+          </div>
+        </div>
+        <button class="sl-dd-btn" id="sl-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
+        <span id="sl-filterSummary"></span>
+        <button id="sl-clearAll" onclick="clearAllFilters()">CLEAR ALL ✕</button>
+      </div>
+      <div id="silsilaTopRight">Click node to highlight · Click again for details</div>
+    </div>
+    <!-- ── Main content area ── -->
+    <div id="silsilaBody" style="display:flex;flex:1;overflow:hidden">
+      <div id="silsilaLanes"><div id="silsilaLanesInner"></div></div>
+      <div id="silsilaMain"></div>
+    </div>
+  </div>
+
+  <!-- Silsila click detail card -->
+  <div id="silsilaCard">
+    <div id="scCardHdr">
+      <button id="scCardClose" onclick="closeSilsilaCard()">✕</button>
+      <div id="scCardName" title="Click to view in Timeline"></div>
+      <div id="scCardNameHint">click name to open in timeline →</div>
+      <div id="scCardSub"></div>
+    </div>
+    <div id="scCardScroll"><div id="scCardBody"></div></div>
+  </div>
+
+  <!-- MAP VIEW -->
+  <div id="mapView">
+    <div id="mapToolbar">
+      <div class="sl-dd-wrap">
+        <button class="sl-dd-btn" id="map-typeBtn" onclick="toggleSLDD('type')">
+          <span id="map-typeLbl">TYPE</span>
+          <span class="dd-caret">▾</span>
+        </button>
+        <div class="sl-dd-panel" id="map-typePanel">
+          <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('type')">
+            <div class="sl-dd-ck" id="map-typeAllCk">✓</div><span>All Types</span>
+          </div>
+        </div>
+      </div>
+      <div class="sl-dd-wrap">
+        <button class="sl-dd-btn" id="map-tradBtn" onclick="toggleSLDD('trad')">
+          <span id="map-tradLbl">TRADITION</span>
+          <span class="dd-caret">▾</span>
+        </button>
+        <div class="sl-dd-panel" id="map-tradPanel">
+          <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('trad')">
+            <div class="sl-dd-ck" id="map-tradAllCk">✓</div><span>All Traditions</span>
+          </div>
+        </div>
+      </div>
+      <button class="sl-dd-btn" id="map-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()"
+        style="border-color:var(--gold);color:var(--gold)">★ SAVED</button>
+    </div>
+    <div id="mapContainer">
+      <div id="leafletMap"></div>
+    </div>
+    <div id="mapLegend" class="map-legend">
+      <button id="mapLegendToggle" onclick="toggleMapLegend()" title="Toggle legend">
+        <span id="mapLegendIcon">◈</span> <span id="mapLegendLabel">LEGEND</span>
+      </button>
+      <div id="mapLegendBody">
+        <div id="mapLegendItems"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDY ROOM VIEW -->
+  <div id="studyRoomView">
+    <div id="sr-left"></div>
+    <div id="sr-right">
+      <div id="sr-heading"></div>
+      <div>
+        <button class="sr-tab active" data-tab="slides" onclick="selectStudyTab('slides')">&#128214; SLIDES</button>
+        <button class="sr-tab" data-tab="summary" onclick="selectStudyTab('summary')">&#128196; SUMMARY</button>
+        <button class="sr-tab" data-tab="quotes" onclick="selectStudyTab('quotes')">&#128172; QUOTES</button>
+      </div>
+      <div id="sr-body"></div>
+    </div>
+  </div>
+
+  <!-- ERAS VIEW -->
+  <div id="eras-view" style="display:none"></div>
+
+  <!-- EVENTS VIEW -->
+  <div id="events-view" style="display:none"></div>
+
+  <!-- INFO PANEL -->
+  <div id="infoPanel">
+    <div id="infoHdr">INFORMATION<button onclick="activePerson=null;showEmptyInfo()" style="margin-left:auto;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:0 2px">✕</button></div>
+    <div id="infoFilterSpacer">SELECT A FIGURE FROM THE LIST</div>
+    <div id="infoScroll">
+      <div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>
+    </div>
+    <div id="infoScrollFoot"></div>
+  </div>
+
+</div><!-- /mainShell -->
+
+<footer>ISLAMIC FIGURES · FOURTEEN CENTURIES OF INTELLECTUAL TRADITION · CLICK ANY ROW TO EXPLORE</footer>
+
+<script src="app.js"></script>
+<script src="study.js"></script>
+<script src="silsila.js"></script>
+<script src="map.js"></script>
+<script src="chatbot.js"></script>
+<script src="eras.js"></script>
+<script src="events.js"></script>
+<script>
+boot();
+</script>
+<script>
+function _h(){try{window.parent.postMessage({type:'resize',height:document.body.scrollHeight},'*');}catch(e){}}
+window.addEventListener('load',_h); window.addEventListener('resize',_h);
+new MutationObserver(_h).observe(document.body,{childList:true,subtree:true});
+</script>
+</body>
+</html>
