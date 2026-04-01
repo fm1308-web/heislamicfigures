@@ -1129,24 +1129,37 @@
   },
   {
     "famous": "Prophet Muhammad",
-    "school": "Prophetic Foundation — Source of All Sufi Chains",
+    "school": "Muhammad ibn Abdullah ibn Abd al-Muttalib (570–632 CE) is the final Prophet and Messenger of God in Islam, sent as a mercy to all the worlds (Quran 21:107). Born in Mecca in the Year of the Elephant, orphaned by age six, he was raised by his grandfather Abd al-Muttalib and then his uncle Abu Talib.\n\nKnown from youth as al-Amin (the Trustworthy) and al-Sadiq (the Truthful), he worked as a merchant before receiving the first revelation from God through the Angel Jibril in the Cave of Hira at age 40. The first word revealed was ‘Iqra’ (Read) — the opening of Surah al-Alaq.\n\nFor thirteen years he preached in Mecca, enduring persecution, boycott, and the loss of his beloved wife Khadijah and uncle Abu Talib in the Year of Sorrow. The Hijra (migration) to Madinah in 622 CE marks the start of the Islamic calendar.\n\nIn Madinah he established the first Islamic state, authored the Constitution of Madinah — one of history’s earliest written constitutions — and led the Muslim community through the battles of Badr, Uhud, and the Trench. The Treaty of Hudaybiyyah and the peaceful conquest of Mecca in 630 CE demonstrated his statesmanship.\n\nHis Farewell Sermon at Arafat in 632 CE, delivered to over 100,000 people, proclaimed the equality of all humans, the sanctity of life and property, and the completion of God’s message. He passed away in Madinah shortly after, in the arms of his wife Aisha, and is buried in the Prophet’s Mosque.\n\nHe left behind the Quran — God’s final revelation — and the Sunnah, his lived example preserved in the hadith literature. Every Muslim scholarly tradition traces its authority back to him. He is the most consequential figure in the history of Islamic civilisation.",
     "books": [
       {
-        "title": "The Quran (Divine Revelation, not personally authored)",
-        "url": null,
-        "magnum": true,
-        "note": "Not a personal work. Free translations at quran.com"
+        "title": "Sahih al-Bukhari",
+        "url": "https://sunnah.com/bukhari",
+        "note": "Most authenticated hadith collection — read online at Sunnah.com",
+        "magnum": false
       },
       {
-        "title": "Hadith Collections (Transmitted sayings)",
-        "url": "https://sunnah.com",
-        "magnum": false,
-        "note": ""
+        "title": "Sahih Muslim",
+        "url": "https://sunnah.com/muslim",
+        "note": "Second most authenticated hadith collection — read online at Sunnah.com",
+        "magnum": false
       }
     ],
     "parents": "'Abdullah ibn 'Abd al-Muttalib / Amina bint Wahb b 'Abd Munaf bin Zuhrah",
     "children": "al-Qasim bin Muhammad , Zaynab bint Muhammad , Ruqayyah bint Muhammad , Umm Kulthum bint Muhammad , Fatima bint Muhammad , 'Abdullah bin Muhammad , Ibrahim bin Muhammad",
-    "spouses": "Khadijah , Sawda bint Zam'a , 'Aisha bint Abi Bakr , Hafsa bint Umar , Zaynab bint Khazeemah , Umm Salamah , Zaynab bint Jahsh , Juwayriya bint al-Harith , Umm Habibah bint Abi Sufyan , Safiyya bint Huyayy , Maymuna bint al-Harith , Maria al-Qibtiyya"
+    "spouses": "Khadijah , Sawda bint Zam'a , 'Aisha bint Abi Bakr , Hafsa bint Umar , Zaynab bint Khazeemah , Umm Salamah , Zaynab bint Jahsh , Juwayriya bint al-Harith , Umm Habibah bint Abi Sufyan , Safiyya bint Huyayy , Maymuna bint al-Harith , Maria al-Qibtiyya",
+    "quotes": [
+      "The best of you are those who are best to their families.",
+      "Seek knowledge even unto China.",
+      "God does not look at your forms and possessions, but He looks at your hearts and your deeds.",
+      "The strong person is not the one who can wrestle someone else down. The strong person is the one who can control himself when he is angry.",
+      "None of you truly believes until he wishes for his brother what he wishes for himself.",
+      "Make things easy, do not make them difficult. Give glad tidings, do not drive people away.",
+      "The ink of the scholar is holier than the blood of the martyr.",
+      "Whoever is not merciful to others will not be treated mercifully.",
+      "A white person has no superiority over a black person, nor a black person over a white — except by piety and good action.",
+      "Leave that which makes you doubt for that which does not make you doubt."
+    ],
+    "quranDetail": "Mentioned by name: Ali Imran 3:144, Al-Ahzab 33:40, Muhammad 47:2, Al-Fath 48:29. Called Ahmad: As-Saff 61:6. Key verses about him: Al-Anbiya 21:107 (mercy to the worlds), Al-Qalam 68:4 (exalted character), Al-Ahzab 33:21 (beautiful example), Al-Fath 48:29 (those with him), At-Tawbah 9:128 (concerned for believers), Al-Duha 93:1-11 (God’s comfort), Al-Inshirah 94:1-8 (expansion of the heart), Al-Kawthar 108:1-3 (abundance), An-Najm 53:1-18 (the Night Journey). Entire surahs addressed to him include Al-Muzzammil (73), Al-Muddaththir (74), and Surah Muhammad (47)."
   },
   {
     "famous": "Fatima al-Fihri",
@@ -1174,16 +1187,6 @@
         "url": "https://archive.org/search?query=Al-Ghunya%20li-Talibi%20Tariq%20Abd%20al-Qadir%20Jilani",
         "magnum": false,
         "note": ""
-      },
-      {
-        "title": "Futuh al-Ghayb (Revelations of the Unseen)",
-        "url": "https://archive.org/details/futuhalghayb00jila",
-        "note": "62 discourses on Sufi spiritual discipline — English"
-      },
-      {
-        "title": "The Secret of Secrets (Sir al-Asrar)",
-        "url": "https://archive.org/details/secretofsecrets00jila",
-        "note": "Sufi sermons and spiritual guidance — English"
       }
     ],
     "quotes": [
@@ -1207,14 +1210,6 @@
   {
     "famous": "Ahmad al-Rifai",
     "school": "Rifaiyya Order — founder of the oldest surviving Sufi order; called the 'Sultan of the Sufi Orders'",
-    "books": [
-      {
-        "title": "Al-Hikam al-Rifaiyya",
-        "url": ",note:\"Collected wisdom and teachings of the Rifai path",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "The greatest act of worship is to see your own faults before you see the faults of others.",
       "Love is not a feeling — it is a state of being in which the self disappears.",
@@ -1226,20 +1221,6 @@
   {
     "famous": "Moinuddin Chishti",
     "school": "Chishti Order — Founder in Indian Subcontinent",
-    "books": [
-      {
-        "title": "Anees ul-Arwah (Companion of Souls)",
-        "url": null,
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Dalil al-'Arifin",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      }
-    ],
     "quotes": [
       "Develop the river-like generosity, the sun-like affection, and the earth-like hospitality.",
       "The greatest form of worship is to make a broken heart happy.",
@@ -1284,12 +1265,6 @@
         "url": "https://archive.org/search?query=Hizb%20al-Bahr%20Shadhili%20litany%20sea%20prayer",
         "magnum": true,
         "note": "One of the most recited prayers in the Islamic world; said to have been dictated by the Prophet in vision."
-      },
-      {
-        "title": "Hizb al-Kabir (The Great Litany)",
-        "url": null,
-        "magnum": false,
-        "note": ""
       }
     ],
     "quotes": [
@@ -1302,26 +1277,12 @@
   },
   {
     "famous": "Ahmad al-Badawi",
-    "school": "Badawiyya Order — Founder. The most popular Egyptian saint; his mawlid in Tanta is the largest religious festival in Egypt",
-    "books": [
-      {
-        "title": "Oral teachings (no extant text)",
-        "url": null,
-        "magnum": true,
-        "note": "His annual mawlid in Tanta attracts millions; the Badawiyya is one of the four major Egyptian Sufi orders."
-      }
-    ]
+    "school": "Badawiyya Order — Founder. The most popular Egyptian saint; his mawlid in Tanta is the largest religious festival in Egypt"
   },
   {
     "famous": "Jalal ad-Din Rumi",
     "school": "Mawlawiyya Order — Founder / Konya School",
     "books": [
-      {
-        "title": "Masnavi-ye Manavi (Spiritual Couplets) — ~25,000 verses",
-        "url": "https://www.sacred-texts.com/isl/masnavi/index.htm",
-        "magnum": true,
-        "note": "Jami called it 'The Quran in the Persian language.' Greatest mystical epic in any language."
-      },
       {
         "title": "Divan-i Shams-i Tabrizi",
         "url": "https://archive.org/search?query=Divan-i%20Shams%20Rumi%20Nicholson%20translation",
@@ -1349,14 +1310,6 @@
   {
     "famous": "Hajji Bektash Veli",
     "school": "Bektashi Order — founded the Alevi-Bektashi tradition; patron of the Janissaries",
-    "books": [
-      {
-        "title": "Makalat",
-        "url": ",note:\"Core text of Bektashi philosophy",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "The greatest pilgrimage is the journey into one’s own heart.",
       "Do not hurt even if you are hurt — a hand that strikes cannot also build.",
@@ -1366,14 +1319,6 @@
   {
     "famous": "Sultan Walad",
     "school": "Mawlawiyya — Rumi's son who organised the Mawlawi order after his father's death; wrote the first biography of Rumi",
-    "books": [
-      {
-        "title": "Ibtidaname",
-        "url": ",note:\"First biography of Rumi — essential source on the Mawlawi tradition's founding",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "The path of love is not a path of ease — it is the path of the moth toward the flame.",
       "What the teacher gives the student is not knowledge — it is the capacity to know.",
@@ -1382,27 +1327,11 @@
   },
   {
     "famous": "Ibrahim al-Dusuqi",
-    "school": "Burhaniyya Order — Founder. One of the four poles of Egyptian Sufism. The order spread to Sudan and North Africa.",
-    "books": [
-      {
-        "title": "Oral teachings and prayers",
-        "url": null,
-        "magnum": true,
-        "note": "The Burhaniyya-Muhammadiyya order headquartered in Egypt has spread across North Africa and Sudan."
-      }
-    ]
+    "school": "Burhaniyya Order — Founder. One of the four poles of Egyptian Sufism. The order spread to Sudan and North Africa."
   },
   {
     "famous": "Baha-ud-Din Naqshband",
     "school": "Naqshbandiyya Order — Founder",
-    "books": [
-      {
-        "title": "The Eleven Principles of the Naqshbandiyya (oral — no extant book)",
-        "url": null,
-        "magnum": true,
-        "note": "His teachings were transmitted orally; the Eleven Principles are his core legacy."
-      }
-    ],
     "quotes": [
       "Our way is the way of companionship — and the good lies in the gathering.",
       "The heart must be with God at every moment — and the hands engaged in the work of the world.",
@@ -1414,14 +1343,6 @@
   {
     "famous": "Shah Ni'matullah Wali",
     "school": "Ni'matullahi order founder — founded a major Sufi order that survives today in Iran and South Asia",
-    "books": [
-      {
-        "title": "Diwan of Shah Ni'matullah",
-        "url": ",note:\"Mystical poetry including famous prophecies",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "Love is not a station you arrive at — it is the path itself.",
       "The heart that is full of God has no room for fear.",
@@ -1444,21 +1365,7 @@
   },
   {
     "famous": "Wali Songo",
-    "school": "Javanese Sufism — the nine saints who peacefully Islamized Java through culture, music (gamelan) and mysticism in the 15th century",
-    "books": [
-      {
-        "title": "Suluk literature",
-        "url": ",note:\"Mystical poetry and teachings attributed to the Nine Saints",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Al-Irshad",
-        "url": ",note:\"Major work on the lives of the Twelve Imams",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Javanese Sufism — the nine saints who peacefully Islamized Java through culture, music (gamelan) and mysticism in the 15th century"
   },
   {
     "famous": "Sunan Ampel",
@@ -1495,27 +1402,11 @@
   },
   {
     "famous": "Aziz Mahmud Hudayi",
-    "school": "Celvetiyye Order founder — founded a major Ottoman Sufi order; teacher of Sultan Ahmed I; buried in Üsküdar",
-    "books": [
-      {
-        "title": "Waqi'at-i Mahmud Hudayi",
-        "url": ",note:\"Spiritual diary and mystical autobiography",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Celvetiyye Order founder — founded a major Ottoman Sufi order; teacher of Sultan Ahmed I; buried in Üsküdar"
   },
   {
     "famous": "Ahmad al-Tijani",
-    "school": "Tijaniyya Order founder — the most widespread Sufi order in sub-Saharan Africa today; claimed direct vision of the Prophet",
-    "books": [
-      {
-        "title": "Jawahir al-Ma'ani",
-        "url": ",note:\"Foundational text of the Tijaniyya compiled by his disciple Ali Harazim",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Tijaniyya Order founder — the most widespread Sufi order in sub-Saharan Africa today; claimed direct vision of the Prophet"
   },
   {
     "famous": "Sidi Ahmad ibn Idris",
@@ -1526,50 +1417,16 @@
         "url": "https://archive.org/search?query=Ahmad+ibn+Idris+Salat+Fatih+prayer+Sufi",
         "magnum": true,
         "note": "The Salat al-Fatih became one of the most widely recited prayers in Sufi Africa — attributed by his disciples to divine inspiration."
-      },
-      {
-        "title": "Al-'Iqd al-Nafis (The Precious Necklace)",
-        "url": null,
-        "magnum": false,
-        "note": ""
       }
     ]
   },
   {
     "famous": "Muhammad ibn Ali al-Sanusi",
-    "school": "Sanusiyya Order — founded in Libya; led the resistance against Italian colonialism; deeply influenced modern Libya",
-    "books": [
-      {
-        "title": "Bughyat al-Maqasid",
-        "url": ",note:\"Summary of Islamic spiritual path — core Sanusiyya text",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Asrar al-Arifin",
-        "url": ",note:\"First major work of Islamic mysticism in the Malay language",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Sanusiyya Order — founded in Libya; led the resistance against Italian colonialism; deeply influenced modern Libya"
   },
   {
     "famous": "Ahmad al-Alawi",
-    "school": "Shadhiliyya-'Alawiyya Order — Founder",
-    "books": [
-      {
-        "title": "Al-Minah al-Quddusiyya (Sacred Gifts)",
-        "url": null,
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Diwan al-'Alawi",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      }
-    ]
+    "school": "Shadhiliyya-'Alawiyya Order — Founder"
   },
   {
     "famous": "Inayat Khan",

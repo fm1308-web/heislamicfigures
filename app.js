@@ -225,6 +225,7 @@ async function _ensureDetails(p){
     if(det.children) p.children=det.children;
     if(det.spouses)  p.spouses=det.spouses;
     if(det.quotes) p.quotes=det.quotes;
+    if(det.quranDetail) p.quranDetail=det.quranDetail;
   }
   p._detailLoaded=true;
   return p;
@@ -674,7 +675,7 @@ function setView(v){
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   document.getElementById('hdrRow4').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
-  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'){
+  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='one'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
   } else {
     ip.style.display=''; ip.style.flex=''; ip.style.minWidth='';
@@ -684,10 +685,11 @@ function setView(v){
   document.getElementById('studyRoomView').classList.toggle('active',v==='studyroom');
   document.getElementById('eras-view').style.display=v==='eras'?'flex':'none';
   document.getElementById('events-view').style.display=v==='events'?'flex':'none';
+  document.getElementById('one-view').style.display=v==='one'?'flex':'none';
   // Hide slider row in study view, show in all others
   const r3=document.getElementById('hdrRow3');
-  if(r3) r3.style.display=v==='studyroom'?'none':'flex';
-  if(v==='studyroom'||v==='eras'||v==='events'){
+  if(r3) r3.style.display=(v==='studyroom'||v==='one')?'none':'flex';
+  if(v==='studyroom'||v==='eras'||v==='events'||v==='one'){
     document.getElementById('leftPanel').style.display='none';
     document.getElementById('filterBar').style.display='none';
   }
@@ -698,6 +700,7 @@ function setView(v){
   if(v==='map'){ _setMapHeight(); renderMap(); }
   if(v==='eras'&&typeof initEras==='function') initEras();
   if(v==='events'&&typeof initEvents==='function') initEvents();
+  if(v==='one'&&typeof initOne==='function') initOne();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
 }
 
@@ -1119,7 +1122,7 @@ function renderInfo(p){
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(160,130,60,.08);border:1px dashed rgba(200,168,80,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
-    ${(p.famous==='Prophet Muhammad'?'The Last Prophet':p.school)?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.famous==='Prophet Muhammad'?'The Last Prophet':p.school}</p></div>`:''}
+    ${(p.famous==='Prophet Muhammad'?(p.school||'The Last Prophet'):p.school)?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.famous==='Prophet Muhammad'?(p.school||'The Last Prophet'):p.school}</p></div>`:''}
     ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
     ${quranHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
     ${quotesHtml}

@@ -11,7 +11,7 @@ var _animTimer = null;
 var _animIdx = 0;
 var _hdrRow3Original = null;
 var _startYear = 500;
-var _endYear = 1500;
+var _endYear = 2025;
 
 var CAT_COLORS = {
   'Politics':'#4a90d9','War':'#e74c3c','Theology':'#d4a84a',
@@ -30,8 +30,8 @@ var ERA_BANDS = [
   {name:'Contemporary',      start:1950,  end:2025}
 ];
 
-var YEAR_STEPS_FROM = [500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450];
-var YEAR_STEPS_TO = [550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500];
+var YEAR_STEPS_FROM = [500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500,1550,1600,1650,1700,1750,1800,1850,1900,1950,2000];
+var YEAR_STEPS_TO = [550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500,1550,1600,1650,1700,1750,1800,1850,1900,1950,2000,2025];
 
 var SPEED_OPTIONS = [
   {label:'Fast',ms:800},{label:'Normal',ms:2000},
@@ -186,6 +186,7 @@ function _buildHeaderHTML(){
   // Count
   var count=data.filter(function(e){return e.year>=_startYear&&e.year<=_endYear;}).length;
   h+='<span class="ev-filter-count" id="evFilterCount">showing '+count+' events</span>';
+  h+='<span class="ev-filter-count" style="opacity:.5;margin-left:6px">16 centuries \u00B7 500\u20132025 CE</span>';
 
   // RIGHT: speed + animate
   h+='<select class="ev-speed-select" id="evSpeedSelect" style="margin-left:auto">';
@@ -225,7 +226,7 @@ function initEvents(){
   _css.textContent='.ev-tag-link{border-color:rgba(201,168,76,.35)!important;color:rgba(201,168,76,.8)!important;cursor:pointer}.ev-tag-link:hover{background:rgba(201,168,76,.15);color:#c9a84c!important}.ev-tag-filter{cursor:pointer}.ev-tag-filter:hover{background:rgba(255,255,255,.1)}.ev-filter-banner{padding:8px 16px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:6px;color:#c9a84c;font-size:13px;margin:0 0 8px;display:flex;align-items:center;gap:12px}.ev-filter-clear{cursor:pointer;opacity:.6;padding:2px 8px}.ev-filter-clear:hover{opacity:1}';
   document.head.appendChild(_css);
   _startYear=500;
-  _endYear=1500;
+  _endYear=2025;
   ct.innerHTML='<div class="ev-scroll" id="evScroll"></div>';
   _renderRange(data,_startYear,_endYear);
 }

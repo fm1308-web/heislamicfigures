@@ -1,30 +1,11 @@
 [
   {
     "famous": "Rudaki",
-    "school": "Samanid Court, Bukhara",
-    "books": [
-      {
-        "title": "Diwan (collected poems)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Samanid Court, Bukhara"
   },
   {
     "famous": "Al-Mutanabbi",
     "school": "Hamdanid Court, Aleppo",
-    "books": [
-      {
-        "title": "Diwan al-Mutanabbi",
-        "url": null,
-        "magnum": true
-      },
-      {
-        "title": "Poems of al-Mutanabbi (selected Diwan)",
-        "url": "https://archive.org/details/poemsofmutanabbg00muta",
-        "note": "Selected English translation of the great Arab poet"
-      }
-    ],
     "quotes": [
       "I am known to the night, to the horse, to the desert; known to the sword, to the spear, to paper and pen.",
       "I am known to the night and to the horse and to the desert; known to the sword, the lance, the parchment and the pen.",
@@ -35,26 +16,11 @@
   },
   {
     "famous": "Firdowsi",
-    "school": "Samanid / Ghaznavid Court",
-    "books": [
-      {
-        "title": "Shahnameh (Book of Kings)",
-        "url": "https://archive.org/details/shahnameh-firdausi",
-        "magnum": true
-      }
-    ]
+    "school": "Samanid / Ghaznavid Court"
   },
   {
     "famous": "Baba Kuhi of Shiraz",
-    "school": "Baba Kuhi of Shiraz (948–1037) was a Persian Sufi poet and mystic revered as the patron saint of Shiraz. His tomb on a hilltop overlooking the city has been a site of pilgrimage for nearly a thousand years. He was a contemporary of the great Sufi Abu Sa'id ibn Abi'l-Khayr and is said to have met him during his travels in Khorasan. His Persian poetry, collected in a small diwan, expresses the ecstatic union of the lover with the divine Beloved in language that anticipates the great Persian Sufi poets who followed. His most famous line — 'In the market, in the cloister, only God I saw' — captures the essence of the Sufi doctrine of wahdat al-shuhud (unity of witness). He spent long years in ascetic retreat on the mountain above Shiraz before his death at a great age.",
-    "books": [
-      {
-        "title": "Diwan-i Baba Kuhi",
-        "url": null,
-        "magnum": true,
-        "note": "Persian verse collection; no confirmed free digital edition."
-      }
-    ]
+    "school": "Baba Kuhi of Shiraz (948–1037) was a Persian Sufi poet and mystic revered as the patron saint of Shiraz. His tomb on a hilltop overlooking the city has been a site of pilgrimage for nearly a thousand years. He was a contemporary of the great Sufi Abu Sa'id ibn Abi'l-Khayr and is said to have met him during his travels in Khorasan. His Persian poetry, collected in a small diwan, expresses the ecstatic union of the lover with the divine Beloved in language that anticipates the great Persian Sufi poets who followed. His most famous line — 'In the market, in the cloister, only God I saw' — captures the essence of the Sufi doctrine of wahdat al-shuhud (unity of witness). He spent long years in ascetic retreat on the mountain above Shiraz before his death at a great age."
   },
   {
     "famous": "Abu Sa'id Abu al-Khayr",
@@ -71,14 +37,6 @@
   {
     "famous": "Sharif al-Radi",
     "school": "Twelver Shia — greatest Shia poet; compiled Nahj al-Balagha, the collected sermons of Imam Ali",
-    "books": [
-      {
-        "title": "Nahj al-Balagha",
-        "url": "https://archive.org/details/NahjAlBalagha\",note:\"Sermons, letters and sayings of Imam Ali — the most important Shia text after the Quran",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "Poetry is the highest form of the Arabic language — it is where it reaches its limit.",
       "The noble man carries his grief without display — he weeps in private and smiles in public.",
@@ -92,11 +50,6 @@
     "famous": "Omar Khayyam",
     "school": "An eleventh- and twelfth-century Persian polymath from Nishapur, he made lasting contributions to mathematics, astronomy, and philosophy, though he is best known in the West for the Rubaiyat, a collection of quatrains popularised by Edward FitzGerald's nineteenth-century English translation. In mathematics, he developed a geometric method for solving cubic equations and contributed to the reform of the Persian calendar, producing one of the most accurate calendars in history. His philosophical poetry explores themes of mortality, fate, and the pursuit of earthly pleasures with characteristic wit and scepticism.",
     "books": [
-      {
-        "title": "Rubaiyat (Quatrains)",
-        "url": "https://archive.org/details/rubaiyatofomarka00khayyam",
-        "magnum": true
-      },
       {
         "title": "The Rubaiyat of Omar Khayyam (FitzGerald translation)",
         "url": "https://www.gutenberg.org/ebooks/246",
@@ -118,11 +71,6 @@
         "url": "https://archive.org/search?query=Hadiqa%20al-Haqiqa%20Sanai%20Ghazna%20walled%20garden%20truth",
         "magnum": true,
         "note": "First great Persian Sufi masnavi — the direct model for Rumi's Masnavi."
-      },
-      {
-        "title": "The Walled Garden of Truth (Hadiqat al-Haqiqa)",
-        "url": "https://archive.org/details/walledgardentrue00sana",
-        "note": "First major Persian Sufi didactic poem — English"
       }
     ],
     "quotes": [
@@ -145,11 +93,6 @@
         "url": "https://archive.org/search?query=Nizami%20Ganjavi%20Khamsa%20five%20treasuries%20Persian",
         "magnum": true,
         "note": "Greatest romantic epic in Persian — imitated by Amir Khusrow, Jami and hundreds of others across five centuries."
-      },
-      {
-        "title": "Layla and Majnun",
-        "url": "https://archive.org/details/laylamajnun00niza",
-        "note": "Persian epic of tragic love — English translation"
       }
     ],
     "quotes": [
@@ -171,22 +114,6 @@
         "url": "https://archive.org/search?query=Tazkirat%20al-Awliya%20Attar%20biographies%20saints",
         "magnum": false,
         "note": ""
-      },
-      {
-        "title": "Ilahi-Nama (Book of God)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Conference of the Birds (Mantiq al-Tayr)",
-        "url": "https://archive.org/details/conferenceofbird00atta",
-        "note": "Masterpiece of Persian Sufi poetry — English"
-      },
-      {
-        "title": "Muslim Saints and Mystics (Tazkirat al-Awliya)",
-        "url": "https://archive.org/details/muslimsaintsmyst00atta",
-        "note": "Biographies of 72 Sufi saints — English"
       }
     ],
     "quotes": [
@@ -215,23 +142,6 @@
         "url": "https://archive.org/search?query=Ibn+Farid+Khamriyya+Wine+Ode+Arabic",
         "magnum": false,
         "note": ""
-      },
-      {
-        "title": "Tafsir Ibn Kathir",
-        "url": "https://archive.org/details/TafsirIbnKathir\",note:\"The most widely used classical Quranic commentary in the world",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Al-Bidaya wa'l-Nihaya",
-        "url": ",note:\"Major Islamic history encyclopedia",
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "The Poem of the Way (Nazm al-Suluk)",
-        "url": "https://archive.org/details/sufiversesufiway00ibna",
-        "note": "Greatest Arabic Sufi poem — English"
       }
     ],
     "quotes": [
@@ -247,12 +157,6 @@
     "school": "Shirazi School / Persian Classical Poetry — His poem on human brotherhood is inscribed at the UN Human Rights Council",
     "books": [
       {
-        "title": "Gulistan (The Rose Garden — prose and verse)",
-        "url": "https://archive.org/details/GulestanSaadi",
-        "magnum": false,
-        "note": "Most widely read Persian prose work in history — stories, aphorisms and moral teaching."
-      },
-      {
         "title": "Bustan (The Orchard — verse)",
         "url": "https://archive.org/search?query=Bustan%20Saadi%20orchard%20Persian%20poetry",
         "magnum": false,
@@ -263,11 +167,6 @@
         "url": "https://archive.org/details/gulistanrosegard00sadi",
         "magnum": true,
         "note": "Classic of ethical wisdom and Persian prose"
-      },
-      {
-        "title": "The Gulistan (Rose Garden)",
-        "url": "https://archive.org/details/gulistan00sadi",
-        "note": "Persian classic of prose-poetry and moral wisdom — English"
       },
       {
         "title": "The Bustan (Fruit Orchard)",
@@ -284,25 +183,6 @@
   {
     "famous": "Al-Busiri",
     "school": "Shadhiliyya — Egyptian poet who wrote the Burda; the most recited poem in Islamic history; said to have been healed of paralysis through the Prophet",
-    "books": [
-      {
-        "title": "Qasidat al-Burda (The Poem of the Mantle)",
-        "url": "https://archive.org/details/QasidatAlBurda\",note:\"The most recited poem in Islamic history — memorized and sung across the Muslim world for 750 years",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Ri'aya li-Huquq Allah",
-        "url": ",note:\"Observance of God's Rights — first systematic work of Islamic spiritual psychology",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Qasida al-Burda (Poem of the Mantle)",
-        "url": "https://archive.org/details/qasidaburda00busi",
-        "note": "Famous Arabic praise poem — English translation"
-      }
-    ],
     "quotes": [
       "You are the sun and the other prophets are the stars — their light is hidden when yours appears.",
       "My soul has become attached to the hope of your intercession — and hope does not disappoint the one who truly hopes."
@@ -310,15 +190,7 @@
   },
   {
     "famous": "Al-Shushtari",
-    "school": "Shadhiliyya — Andalusian poet who popularised Sufi poetry in colloquial Arabic; bridge between Ibn Sab'in and al-Shadhili",
-    "books": [
-      {
-        "title": "Diwan al-Shushtari",
-        "url": ",note:\"Colloquial Arabic mystical poetry — beloved across North Africa",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Shadhiliyya — Andalusian poet who popularised Sufi poetry in colloquial Arabic; bridge between Ibn Sab'in and al-Shadhili"
   },
   {
     "famous": "Fakhr al-Din Iraqi",
@@ -329,12 +201,6 @@
         "url": "https://archive.org/search?query=Lama%27at%20Fakhruddin%20Iraqi%20divine%20flashes",
         "magnum": true,
         "note": "28 prose-poems on divine love written after attending Ibn Arabi's lectures."
-      },
-      {
-        "title": "Diwan-i Iraqi",
-        "url": null,
-        "magnum": false,
-        "note": ""
       },
       {
         "title": "Divine Flashes (Lama'at)",
@@ -352,11 +218,6 @@
         "url": "https://archive.org/search?query=Yunus%20Emre%20Divan%20Turkish%20mystical%20poetry",
         "magnum": true,
         "note": "First great mystical poetry in Turkish vernacular; still sung in Turkey today."
-      },
-      {
-        "title": "The Drop That Became the Sea: Lyric Poems",
-        "url": "https://archive.org/details/dropthatbecamese00yunus",
-        "note": "Turkish Sufi folk poetry — English translation"
       }
     ],
     "quotes": [
@@ -403,11 +264,6 @@
         "url": "https://archive.org/search?query=Gulshan-i%20Raz%20Shabistari%20rose%20garden%20mystery",
         "magnum": true,
         "note": "Masterpiece written in 2 nights — 1,000 couplets answering 17 questions on mystical experience."
-      },
-      {
-        "title": "Gulshan-i-Raz (The Mystic Rose Garden)",
-        "url": "https://archive.org/details/mysticrosegarden00shab",
-        "note": "Persian Sufi poem in question-and-answer format — English"
       }
     ]
   },
@@ -420,17 +276,6 @@
         "url": "https://archive.org/search?query=Divan%20Hafez%20Shirazi%20ghazals%20Persian%20English%20translation",
         "magnum": false,
         "note": "Used for divination throughout the Persian world. Goethe called it 'the greatest lyric poetry ever written.'"
-      },
-      {
-        "title": "Divan of Hafez (Gertrude Bell translation)",
-        "url": "https://archive.org/details/poemsfromdivanof00hafiia",
-        "magnum": true,
-        "note": "Master ghazals — the supreme voice of Persian mystical poetry"
-      },
-      {
-        "title": "The Divan of Hafiz (Wilberforce Clarke translation)",
-        "url": "https://archive.org/details/divanofhafiz00hafiiala",
-        "note": "Complete English translation of the Divan"
       }
     ],
     "quotes": [
@@ -441,15 +286,7 @@
   },
   {
     "famous": "Kaygusuz Abdal",
-    "school": "Bektashi — greatest poet of the Alevi-Bektashi tradition; radical humanist Sufi",
-    "books": [
-      {
-        "title": "Diwan-i Kaygusuz",
-        "url": ",note:\"Irreverent mystical poetry — cornerstone of Turkish Alevi literature",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Bektashi — greatest poet of the Alevi-Bektashi tradition; radical humanist Sufi"
   },
   {
     "famous": "Abd al-Rahman Jami",
@@ -460,23 +297,6 @@
         "url": "https://archive.org/search?query=Haft%20Awrang%20Jami%20seven%20thrones%20Persian%20Sufi",
         "magnum": true,
         "note": "Crown of Persian Sufi narrative poetry; includes Yusuf u Zulaykha and Salaman u Absal."
-      },
-      {
-        "title": "Nafahat al-Uns (Breaths of Intimacy — Sufi biographies)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Lawa'ih (Effulgences)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Yusuf and Zulaikha",
-        "url": "https://archive.org/details/yusufzulaikha00jami",
-        "note": "Persian Sufi epic retelling the Quranic story of Joseph — English"
       }
     ],
     "quotes": [
@@ -491,14 +311,6 @@
   {
     "famous": "Ali Shir Nava'i",
     "school": "Timurid literary culture — the greatest Chagatai Turkic poet; companion of Jami; founded Turkic as a literary language",
-    "books": [
-      {
-        "title": "Khamsa (Five Epics)",
-        "url": ",note:\"Five narrative poems rivaling Nizami's Khamsa — foundational work of Turkic literature",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "The Turkic tongue is no less noble than Arabic or Persian — God speaks to every people in their own language.",
       "The poet who writes only for kings has sold his gift to the lowest buyer.",
@@ -510,27 +322,11 @@
   },
   {
     "famous": "Pir Sultan Abdal",
-    "school": "Alevi-Bektashi — the greatest folk-Sufi poet of Anatolia; executed for leading a rebellion; revered as a martyr",
-    "books": [
-      {
-        "title": "Diwan of Pir Sultan Abdal",
-        "url": ",note:\"Cornerstone of Alevi oral poetry tradition",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Alevi-Bektashi — the greatest folk-Sufi poet of Anatolia; executed for leading a rebellion; revered as a martyr"
   },
   {
     "famous": "Fuzuli",
     "school": "Ottoman-Azeri poetry — greatest Azerbaijani and one of the greatest Ottoman poets; wrote in Turkish, Persian and Arabic",
-    "books": [
-      {
-        "title": "Leyla ve Mecnun",
-        "url": ",note:\"The definitive Turkish retelling of the mystical love story",
-        "magnum": true,
-        "note": ""
-      }
-    ],
     "quotes": [
       "I sought a remedy for the pain of love and found that love itself is the remedy.",
       "The lover does not complain of suffering — he complains only when love is absent.",
@@ -542,60 +338,23 @@
   },
   {
     "famous": "Baki",
-    "school": "Mahmud Abd al-Baqi (1526–1600), known as Baki, was the greatest Ottoman divan poet and held the title Sultan üş-Şuara (Sultan of Poets). Born in Istanbul to a modest family, he was apprenticed to a saddler before his poetic talent was discovered by patrons who supported his education. He mastered the Persian-influenced ghazal form in Ottoman Turkish and brought it to its highest perfection, combining technical mastery with emotional depth. His elegy (mersiye) on the death of Sultan Suleiman the Magnificent is considered the finest poem in Ottoman literature. He served as a judge and professor while producing a relatively small but exquisite body of work — his Divan contains around 500 ghazals. Baki's poetry defined the golden age of Ottoman classical literature.",
-    "books": [
-      {
-        "title": "Diwan-i Baki",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Mahmud Abd al-Baqi (1526–1600), known as Baki, was the greatest Ottoman divan poet and held the title Sultan üş-Şuara (Sultan of Poets). Born in Istanbul to a modest family, he was apprenticed to a saddler before his poetic talent was discovered by patrons who supported his education. He mastered the Persian-influenced ghazal form in Ottoman Turkish and brought it to its highest perfection, combining technical mastery with emotional depth. His elegy (mersiye) on the death of Sultan Suleiman the Magnificent is considered the finest poem in Ottoman literature. He served as a judge and professor while producing a relatively small but exquisite body of work — his Divan contains around 500 ghazals. Baki's poetry defined the golden age of Ottoman classical literature."
   },
   {
     "famous": "Faizi",
-    "school": "Abu al-Faiz ibn Mubarak (1547–1595), known as Faizi, was the poet laureate of the Mughal Emperor Akbar and one of the 'Nine Jewels' (Navaratnas) of Akbar's court. He was the elder brother of Abu'l-Fazl ibn Mubarak, Akbar's chief minister and chronicler. Born in Agra, he became the leading Persian poet in India and tutored Akbar's sons. His most ambitious work was Nal Daman, a Persian retelling of the Sanskrit Nala and Damayanti story, composed entirely without dotted letters — a tour de force of constrained writing. He also translated mathematical and scientific texts from Sanskrit into Persian for Akbar's program of cultural synthesis. His early death at 48 was mourned by the entire Mughal court.",
-    "books": [
-      {
-        "title": "Nal-o-Daman",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Abu al-Faiz ibn Mubarak (1547–1595), known as Faizi, was the poet laureate of the Mughal Emperor Akbar and one of the 'Nine Jewels' (Navaratnas) of Akbar's court. He was the elder brother of Abu'l-Fazl ibn Mubarak, Akbar's chief minister and chronicler. Born in Agra, he became the leading Persian poet in India and tutored Akbar's sons. His most ambitious work was Nal Daman, a Persian retelling of the Sanskrit Nala and Damayanti story, composed entirely without dotted letters — a tour de force of constrained writing. He also translated mathematical and scientific texts from Sanskrit into Persian for Akbar's program of cultural synthesis. His early death at 48 was mourned by the entire Mughal court."
   },
   {
     "famous": "Hamza Fansuri",
-    "school": "Wujudiyya Sufism — the first major Malay-language Sufi poet; brought Sufi metaphysics (Ibn Arabi) to Southeast Asia",
-    "books": [
-      {
-        "title": "Asrar al-Arifin",
-        "url": ",note:\"First major work of Islamic mysticism in the Malay language",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Wujudiyya Sufism — the first major Malay-language Sufi poet; brought Sufi metaphysics (Ibn Arabi) to Southeast Asia"
   },
   {
     "famous": "Nef'i",
-    "school": "Ömer Nef'i (1572–1635) was the greatest Ottoman qasida (panegyric) poet and one of the most feared satirists in Ottoman literary history. Born in Hasankale near Erzurum, he came to Istanbul and won fame for his dazzling praise poems to sultans and viziers — and notoriety for his savage satirical attacks on those he despised. His collection Siham-ı Kaza (Arrows of Destiny) is a masterpiece of Ottoman satirical verse that earned him powerful enemies. His qasidas to Sultan Murad IV are considered the pinnacle of the Ottoman panegyric tradition, combining hyperbolic praise with genuine poetic grandeur. His satires eventually proved fatal: Grand Vizier Bayram Pasha had him strangled with a bowstring in 1635. He remains the supreme example of how Ottoman poetry could be both a path to power and a death sentence.",
-    "books": [
-      {
-        "title": "Siham-i Kaza (Arrows of Fate — satires)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Ömer Nef'i (1572–1635) was the greatest Ottoman qasida (panegyric) poet and one of the most feared satirists in Ottoman literary history. Born in Hasankale near Erzurum, he came to Istanbul and won fame for his dazzling praise poems to sultans and viziers — and notoriety for his savage satirical attacks on those he despised. His collection Siham-ı Kaza (Arrows of Destiny) is a masterpiece of Ottoman satirical verse that earned him powerful enemies. His qasidas to Sultan Murad IV are considered the pinnacle of the Ottoman panegyric tradition, combining hyperbolic praise with genuine poetic grandeur. His satires eventually proved fatal: Grand Vizier Bayram Pasha had him strangled with a bowstring in 1635. He remains the supreme example of how Ottoman poetry could be both a path to power and a death sentence."
   },
   {
     "famous": "Niyazi-i Misri",
-    "school": "Khalwatiyya — greatest Ottoman Turkish Sufi poet; exiled twice for controversial teachings",
-    "books": [
-      {
-        "title": "Diwan-i Niyazi",
-        "url": ",note:\"The most beloved Ottoman Turkish mystical poetry collection",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Khalwatiyya — greatest Ottoman Turkish Sufi poet; exiled twice for controversial teachings"
   },
   {
     "famous": "Sultan Bahu",
@@ -608,12 +367,6 @@
         "note": "Sung at Sufi shrines across Pakistan every Thursday night."
       },
       {
-        "title": "Nur al-Huda (The Light of Guidance — Persian)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
         "title": "Wikipedia — Sultan Bahu",
         "url": "https://en.wikipedia.org/wiki/Sultan_Bahu",
         "magnum": false,
@@ -623,14 +376,7 @@
   },
   {
     "famous": "Zeb-un-Nissa",
-    "school": "A seventeenth-century Mughal princess and poet, she was the eldest daughter of Emperor Aurangzeb and a renowned patron of literature and the arts. She composed Persian poetry under the pen name Makhfi (Hidden One), producing a diwan noted for its Sufi themes and lyrical beauty. Despite her father's austere religious policies, she maintained a vibrant literary circle and supported scholars and poets at her court.",
-    "books": [
-      {
-        "title": "Diwan-i Makhfi",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "A seventeenth-century Mughal princess and poet, she was the eldest daughter of Emperor Aurangzeb and a renowned patron of literature and the arts. She composed Persian poetry under the pen name Makhfi (Hidden One), producing a diwan noted for its Sufi themes and lyrical beauty. Despite her father's austere religious policies, she maintained a vibrant literary circle and supported scholars and poets at her court."
   },
   {
     "famous": "Bedil Dehlawi",
@@ -646,14 +392,7 @@
   },
   {
     "famous": "Wali Gujarati",
-    "school": "An eighteenth-century Urdu poet from Ahmedabad, Gujarat, he is regarded as one of the pioneers of Urdu ghazal poetry and helped establish Urdu as a serious literary language in the Deccan and northern India. His diwan (collected poetry) demonstrates a refined sensibility that blended Persian poetic conventions with the vernacular traditions of Gujarat. He is often credited with elevating the Urdu ghazal from a regional folk form to a sophisticated literary genre.",
-    "books": [
-      {
-        "title": "Diwan-i Wali",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "An eighteenth-century Urdu poet from Ahmedabad, Gujarat, he is regarded as one of the pioneers of Urdu ghazal poetry and helped establish Urdu as a serious literary language in the Deccan and northern India. His diwan (collected poetry) demonstrates a refined sensibility that blended Persian poetic conventions with the vernacular traditions of Gujarat. He is often credited with elevating the Urdu ghazal from a regional folk form to a sophisticated literary genre."
   },
   {
     "famous": "Bulleh Shah",
@@ -674,14 +413,7 @@
   },
   {
     "famous": "Nedim",
-    "school": "Ottoman Divan Poetry / Tulip Era",
-    "books": [
-      {
-        "title": "Diwan-i Nedim",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Ottoman Divan Poetry / Tulip Era"
   },
   {
     "famous": "Shah Abdul Latif Bhittai",
@@ -692,11 +424,6 @@
         "url": "https://archive.org/search?query=Shah%20jo%20Risalo%20Shah%20Abdul%20Latif%20Bhittai%20Sindhi",
         "magnum": true,
         "note": "The greatest literary work in Sindhi — 30 sur (musical chapters) using folk stories as spiritual allegories."
-      },
-      {
-        "title": "Shah Jo Risalo (The Message of Shah)",
-        "url": "https://archive.org/details/shahjorisalo00shah",
-        "note": "The greatest Sindhi literary work; Sufi poetry"
       }
     ],
     "quotes": [
@@ -710,14 +437,7 @@
   },
   {
     "famous": "Sauda",
-    "school": "Mirza Muhammad Rafi Sauda (1713–1781) was the greatest satirical poet in Urdu literary history and one of the founding figures of classical Urdu poetry. Born in Delhi to a distinguished family, he lived through the catastrophic decline of the Mughal Empire and the sack of Delhi by Nadir Shah and later by Ahmad Shah Abdali. His satirical qasidas and hajviyas savaged the corruption, pretension, and collapse of the Mughal elite with a ferocity unmatched in Urdu literature. He later moved to the court of Awadh in Lucknow, where he continued writing under the patronage of Shuja ud-Dawla. He also composed formal odes and ghazals in the Delhi style. Together with his contemporary Mir Taqi Mir, Sauda established Urdu as a major literary language.",
-    "books": [
-      {
-        "title": "Diwan-i Sauda",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Mirza Muhammad Rafi Sauda (1713–1781) was the greatest satirical poet in Urdu literary history and one of the founding figures of classical Urdu poetry. Born in Delhi to a distinguished family, he lived through the catastrophic decline of the Mughal Empire and the sack of Delhi by Nadir Shah and later by Ahmad Shah Abdali. His satirical qasidas and hajviyas savaged the corruption, pretension, and collapse of the Mughal elite with a ferocity unmatched in Urdu literature. He later moved to the court of Awadh in Lucknow, where he continued writing under the patronage of Shuja ud-Dawla. He also composed formal odes and ghazals in the Delhi style. Together with his contemporary Mir Taqi Mir, Sauda established Urdu as a major literary language."
   },
   {
     "famous": "Khwaja Mir Dard",
@@ -728,18 +448,6 @@
         "url": "https://archive.org/search?query=Mir+Dard+Diwan+Urdu+poetry+Delhi+Sufi",
         "magnum": true,
         "note": "One of the four founding pillars of Urdu poetry (alongside Mir, Sauda, Dard) — his ghazals weave Naqshbandiyya theology into sublime verse."
-      },
-      {
-        "title": "'Ilm al-Kitab (Science of the Book)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Chahar Risala (Four Treatises on Sufism)",
-        "url": null,
-        "magnum": false,
-        "note": ""
       }
     ]
   },
@@ -763,13 +471,6 @@
   {
     "famous": "Mir Taqi Mir",
     "school": "Delhi and Lucknow Urdu School",
-    "books": [
-      {
-        "title": "Kulliyat-i Mir (Collected Works)",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "Ask me not what the heart is — for even I do not fully know.",
       "In the court of love, reason has no rank.",
@@ -778,14 +479,7 @@
   },
   {
     "famous": "Galib Dede",
-    "school": "Mevlevi (Mawlawi) Order",
-    "books": [
-      {
-        "title": "Husn u Ask (Beauty and Love)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Mevlevi (Mawlawi) Order"
   },
   {
     "famous": "Mirza Ghalib",
@@ -796,17 +490,6 @@
         "url": "https://archive.org/search?query=Diwan-e-Ghalib%20Urdu%20ghazals%20Mirza%20Ghalib",
         "magnum": true,
         "note": "Most widely quoted Urdu poetry ever written — a complete philosophical world-view in compressed verse."
-      },
-      {
-        "title": "Dastambu (Persian memoir of 1857 Uprising)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Divan-e-Ghalib (selected poems)",
-        "url": "https://archive.org/details/divaneghalib00ghal",
-        "note": "Great Mughal-era Urdu poet's collected verse — English/Urdu"
       }
     ],
     "quotes": [
@@ -824,36 +507,16 @@
         "url": "https://archive.org/search?query=Khawaja+Ghulam+Farid+Diwan+Saraiki+Kafi",
         "magnum": true,
         "note": "The complete Kafian — 272 poems of spiritual longing in Saraiki; considered the Quran of Saraiki literary culture."
-      },
-      {
-        "title": "Maqabis al-Majalis (Spiritual Discourses)",
-        "url": null,
-        "magnum": false,
-        "note": ""
       }
     ]
   },
   {
     "famous": "Mohammad-Taqi Bahar",
-    "school": "Persian Constitutional Poetry",
-    "books": [
-      {
-        "title": "Diwan-i Bahar",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Persian Constitutional Poetry"
   },
   {
     "famous": "Parvin E'tesami",
-    "school": "Classical Persian Poetry",
-    "books": [
-      {
-        "title": "Diwan-i Parvin E'tesami",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Classical Persian Poetry"
   },
   {
     "famous": "Neyzen Tevfik",
@@ -926,14 +589,7 @@
   },
   {
     "famous": "Mahmoud Darwish",
-    "school": "Mahmoud Darwish was the most celebrated Arab poet of the late twentieth century and the literary voice of the Palestinian experience. His poetry evolved from early resistance verse to profound meditations on exile, memory, and love. His works such as 'Memory for Forgetfulness' and 'Mural' are considered masterpieces of modern Arabic literature.",
-    "books": [
-      {
-        "title": "Memory for Forgetfulness",
-        "url": "https://archive.org/details/memoryforforgetf00darw",
-        "note": "Prose account of the 1982 Beirut siege — English"
-      }
-    ]
+    "school": "Mahmoud Darwish was the most celebrated Arab poet of the late twentieth century and the literary voice of the Palestinian experience. His poetry evolved from early resistance verse to profound meditations on exile, memory, and love. His works such as 'Memory for Forgetfulness' and 'Mural' are considered masterpieces of modern Arabic literature."
   },
   {
     "famous": "Mehmet Akif Ersoy",

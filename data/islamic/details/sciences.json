@@ -13,11 +13,6 @@
         "title": "Wikipedia — Jabir ibn Hayyan",
         "url": "https://en.wikipedia.org/wiki/Jabir_ibn_Hayyan",
         "magnum": false
-      },
-      {
-        "title": "The Works of Geber (Latin translations)",
-        "url": "https://archive.org/details/worksofgeber00jabi",
-        "note": "Medieval Latin translations of alchemical works"
       }
     ],
     "quotes": [
@@ -28,25 +23,6 @@
   {
     "famous": "Al-Khwarizmi",
     "school": "House of Wisdom, Baghdad — Founded algebra as a mathematical discipline",
-    "books": [
-      {
-        "title": "Al-Kitab al-Mukhtasar fi Hisab al-Jabr wal-Muqabala (Book of Algebra)",
-        "url": "https://archive.org/details/algebrawitharith00khuwuoft",
-        "magnum": true,
-        "note": "'Algebra' comes directly from 'al-jabr' in this title. The word 'algorithm' derives from his Latinised name."
-      },
-      {
-        "title": "Kitab Surat al-Ard (Book of the Form of the Earth)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Algebra (Kitab al-Mukhtasar fi Hisab al-Jabr)",
-        "url": "https://archive.org/details/algebraalkhwariz00khuwa",
-        "note": "The book that named algebra — English translation"
-      }
-    ],
     "quotes": [
       "I have composed this work on calculation by completion and reduction, confining it to what is easiest and most useful — such as men constantly require in cases of inheritance, legacies, and trade.",
       "The numbers required in calculation are of three kinds: roots, squares, and simple numbers."
@@ -72,13 +48,6 @@
   {
     "famous": "Al-Farghani",
     "school": "House of Wisdom, Baghdad",
-    "books": [
-      {
-        "title": "Compendium of Astronomy (Jawami Ilm al-Nujum)",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "The science of the stars is among the most noble — for it concerns itself with the greatest of God's creations.",
       "The circumference of the earth, when measured, reveals the precision of its Creator."
@@ -86,47 +55,19 @@
   },
   {
     "famous": "Banu Musa",
-    "school": "House of Wisdom, Baghdad",
-    "books": [
-      {
-        "title": "Book of Ingenious Devices (Kitab al-Hiyal)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "House of Wisdom, Baghdad"
   },
   {
     "famous": "Hunayn ibn Ishaq",
-    "school": "House of Wisdom, Baghdad",
-    "books": [
-      {
-        "title": "Isagoge (translation)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "House of Wisdom, Baghdad"
   },
   {
     "famous": "Qusta ibn Luqa",
-    "school": "House of Wisdom, Baghdad",
-    "books": [
-      {
-        "title": "On the Difference between the Spirit and the Soul",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "House of Wisdom, Baghdad"
   },
   {
     "famous": "Thabit ibn Qurra",
-    "school": "House of Wisdom, Baghdad",
-    "books": [
-      {
-        "title": "On the Sector Figure",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "House of Wisdom, Baghdad"
   },
   {
     "famous": "Al-Razi (Rhazes)",
@@ -137,12 +78,6 @@
         "url": "https://archive.org/search?query=Al-Hawi%20al-Kabir%20Rhazes%20Razi%20comprehensive%20medicine",
         "magnum": true,
         "note": "Largest medical encyclopaedia ever compiled — used in European medical schools for centuries."
-      },
-      {
-        "title": "Kitab al-Jadari wal-Hasba (Smallpox and Measles)",
-        "url": null,
-        "magnum": false,
-        "note": "First accurate clinical distinction between smallpox and measles in medical history."
       }
     ],
     "quotes": [
@@ -159,11 +94,6 @@
     "school": "A ninth- and tenth-century astronomer and mathematician from Harran, he refined Ptolemy's astronomical observations with unprecedented accuracy, determining the length of the solar year to within two minutes of the modern value. His Kitab al-Zij (Astronomical Tables) corrected several of Ptolemy's calculations and introduced the use of trigonometric functions into astronomy. His work was translated into Latin and profoundly influenced medieval European astronomers including Copernicus.",
     "books": [
       {
-        "title": "Zij al-Sabi (Astronomical Tables)",
-        "url": null,
-        "magnum": true
-      },
-      {
         "title": "Wikipedia — Al-Battani",
         "url": "https://en.wikipedia.org/wiki/Al-Battani",
         "magnum": false,
@@ -177,30 +107,11 @@
   },
   {
     "famous": "Al-Sufi",
-    "school": "Abd al-Rahman al-Sufi (903–986), known in the Latin West as Azophi, was one of the most important astronomers in Islamic history. Based in Isfahan and later at the Buyid court in Shiraz, his masterwork Kitab Suwar al-Kawakib al-Thabita (Book of Fixed Stars) revised and updated Ptolemy's star catalogue with original observations, correcting star positions and magnitudes and adding Arabic star names that are still used today (such as Aldebaran, Altair, and Fomalhaut). He was the first astronomer in recorded history to describe the Andromeda Galaxy, which he called 'a small cloud,' and the first to observe the Large Magellanic Cloud. His star charts combined scientific precision with artistic beauty and were copied for centuries across the Islamic world and medieval Europe.",
-    "books": [
-      {
-        "title": "Book of Fixed Stars (Kitab Suwar al-Kawakib)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Abd al-Rahman al-Sufi (903–986), known in the Latin West as Azophi, was one of the most important astronomers in Islamic history. Based in Isfahan and later at the Buyid court in Shiraz, his masterwork Kitab Suwar al-Kawakib al-Thabita (Book of Fixed Stars) revised and updated Ptolemy's star catalogue with original observations, correcting star positions and magnitudes and adding Arabic star names that are still used today (such as Aldebaran, Altair, and Fomalhaut). He was the first astronomer in recorded history to describe the Andromeda Galaxy, which he called 'a small cloud,' and the first to observe the Large Magellanic Cloud. His star charts combined scientific precision with artistic beauty and were copied for centuries across the Islamic world and medieval Europe."
   },
   {
     "famous": "Al-Zahrawi",
     "school": "A tenth-century Andalusian physician and surgeon from Cordoba, he authored Kitab al-Tasrif (The Method of Medicine), a thirty-volume medical encyclopaedia that became the standard surgical reference in both the Islamic world and medieval Europe. The surgical volume described over two hundred instruments, many of which he designed himself, and covered procedures from cauterisation to cataract surgery. He is widely regarded as the father of modern surgery.",
-    "books": [
-      {
-        "title": "Al-Tasrif (On Surgery and Instruments)",
-        "url": "https://archive.org/details/al-tasrif",
-        "magnum": true
-      },
-      {
-        "title": "Albucasis on Surgery and Instruments",
-        "url": "https://archive.org/details/albucasisonsurge00zahrala",
-        "note": "Revolutionary illustrated surgical manual — English"
-      }
-    ],
     "quotes": [
       "The root and foundation of medicine is compassion for the patient — the physician who lacks it should not be trusted.",
       "I have explained the art of surgery in detail never before attempted by any physician before me."
@@ -211,21 +122,10 @@
     "school": "Cairo — Founded empirical optics and the experimental method; influenced Roger Bacon, Kepler and Newton",
     "books": [
       {
-        "title": "Kitab al-Manazir (Book of Optics — 7 vols)",
-        "url": "https://archive.org/details/bub_gb_KBVPAAAAYAAJ",
-        "magnum": true,
-        "note": "Founded the science of optics; proved that light enters the eye (not emanates from it). Directly influenced European Renaissance science."
-      },
-      {
         "title": "Wikipedia — Ibn al-Haytham",
         "url": "https://en.wikipedia.org/wiki/Ibn_al-Haytham",
         "magnum": false,
         "note": "Wikipedia article"
-      },
-      {
-        "title": "Book of Optics (Kitab al-Manazir)",
-        "url": "https://archive.org/details/ibnal-haythamsop00ibna",
-        "note": "Foundational work on optics and vision — English"
       }
     ],
     "quotes": [
@@ -241,38 +141,15 @@
     "school": "Ghaznavid Court / Universal Scholarship — wrote 146 works across 11 disciplines",
     "books": [
       {
-        "title": "Kitab al-Hind (Book of India — Indica)",
-        "url": "https://archive.org/details/alberunisindia01biruuoft",
-        "magnum": false,
-        "note": "First systematic comparative study of a non-Islamic civilization — unparalleled cross-cultural scholarship."
-      },
-      {
-        "title": "Al-Qanun al-Mas'udi (astronomical tables)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
         "title": "Wikipedia — Al-Biruni",
         "url": "https://en.wikipedia.org/wiki/Al-Biruni",
         "magnum": false,
         "note": "Wikipedia article"
       },
       {
-        "title": "Kitab al-Hind (Alberuni's India)",
-        "url": "https://archive.org/details/alberunisindia01biru",
-        "magnum": true,
-        "note": "Comprehensive study of Indian science, philosophy and culture"
-      },
-      {
         "title": "Alberuni's India (Kitab al-Hind)",
         "url": "https://archive.org/details/alberunisindiaac01biru",
         "note": "Classic study of Indian civilization — English"
-      },
-      {
-        "title": "Book of Instruction in Astrology",
-        "url": "https://archive.org/details/bookofinstruction00biru",
-        "note": "Mathematical and astronomical manual — English"
       }
     ],
     "quotes": [
@@ -284,13 +161,6 @@
   {
     "famous": "Al-Zarqali",
     "school": "An eleventh-century Andalusian astronomer and instrument maker from Toledo, he developed the universal astrolabe (the Saphaea), which could be used at any latitude, a significant advance over earlier designs. He compiled the Toledan Tables, the most accurate astronomical tables of his era, which were used across Europe for over two centuries. His observations of the motion of the solar apogee were the first to demonstrate that it moves slowly relative to the fixed stars.",
-    "books": [
-      {
-        "title": "Toledan Tables",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "I corrected Ptolemy not out of disrespect — but because the observations demanded it.",
       "The Toledo Tables are my gift to every navigator who will come after me.",
@@ -300,13 +170,6 @@
   {
     "famous": "Ibn Zuhr",
     "school": "A twelfth-century Andalusian physician from Seville, he came from a distinguished family of physicians and is known for his clinical text al-Taysir fi al-Mudawat wa-l-Tadbir (The Facilitation of Treatment). He was among the first physicians to describe conditions such as pericarditis and mediastinal tumours, and he advocated for experimental methods in medicine. His close collaboration with the philosopher Ibn Rushd (Averroes) produced complementary works on medical theory and practice.",
-    "books": [
-      {
-        "title": "Kitab al-Taysir fi al-Mudawat wa al-Tadbir",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "The physician who treats himself has a fool for a patient.",
       "Clinical observation is the only trustworthy foundation for the art of medicine.",
@@ -328,11 +191,6 @@
         "title": "Wikipedia — al-Jazari",
         "url": "https://en.wikipedia.org/wiki/Al-Jazari",
         "magnum": false
-      },
-      {
-        "title": "Book of Knowledge of Ingenious Mechanical Devices",
-        "url": "https://archive.org/details/bookofknowledgeo00jaza",
-        "note": "Landmark medieval engineering manual — English"
       }
     ],
     "quotes": [
@@ -344,13 +202,6 @@
   {
     "famous": "Ibn al-Baitar",
     "school": "A thirteenth-century Andalusian botanist and pharmacologist from Malaga, he authored Kitab al-Jami (The Comprehensive Book on Simple Drugs), the largest and most comprehensive botanical and pharmaceutical encyclopaedia of the medieval period. The work catalogued over 1,400 plants, drugs, and foods, drawing on personal fieldwork conducted across North Africa and the eastern Mediterranean. His systematic approach to botanical classification and drug testing represented a major advance in pharmacological science.",
-    "books": [
-      {
-        "title": "Kitab al-Jami li-Mufradat al-Adwiya wa al-Aghdhiya",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "God has placed in every plant a remedy — the physician’s task is to find it.",
       "I have travelled every land not for adventure but for knowledge of what grows in it.",
@@ -372,17 +223,6 @@
         "url": "https://archive.org/search?query=Nasirean+Ethics+Tusi+Akhlaq",
         "magnum": false,
         "note": ""
-      },
-      {
-        "title": "Tajrid al-'Aqaid (Exposition of Beliefs)",
-        "url": null,
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Memoir on Astronomy (al-Tadhkira fi Ilm al-Hay'a)",
-        "url": "https://archive.org/details/memoironastronomy00tusi",
-        "note": "Influential astronomical treatise — English"
       }
     ],
     "quotes": [
@@ -393,13 +233,6 @@
   {
     "famous": "Ibn al-Nafis",
     "school": "A thirteenth-century Syrian physician and polymath based in Cairo, he is best known for his discovery of pulmonary circulation, describing how blood passes from the right to the left ventricle of the heart via the lungs, three centuries before William Harvey. He detailed this finding in his Sharh Tashrih al-Qanun (Commentary on the Anatomy of the Canon), challenging Galen's long-accepted model of the cardiovascular system. He was also a prolific author on jurisprudence, theology, and philosophy.",
-    "books": [
-      {
-        "title": "Commentary on Ibn Sina's Anatomy",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "The blood must have a means of passage to the left cavity — and that passage is through the lung.",
       "I have not omitted anything that might benefit the student of medicine, nor added anything that could mislead him."
@@ -407,37 +240,15 @@
   },
   {
     "famous": "Qutb al-Din Shirazi",
-    "school": "Maragha school — student of Nasir al-Din al-Tusi; explained the rainbow; major work on optics, astronomy and medicine",
-    "books": [
-      {
-        "title": "Nihayat al-Idrak",
-        "url": ",note:\"Major work on astronomy — first correct explanation of the rainbow",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Maragha school — student of Nasir al-Din al-Tusi; explained the rainbow; major work on optics, astronomy and medicine"
   },
   {
     "famous": "Ibn al-Banna al-Marrakushi",
-    "school": "A thirteenth- and fourteenth-century Moroccan mathematician and astronomer from Marrakesh, he authored numerous works on arithmetic, algebra, and astronomy. His Talkhis A'mal al-Hisab (Summary of Arithmetic Operations) introduced innovative methods for calculation and became a standard mathematical textbook across North Africa. He also contributed to the development of algebraic notation and compiled astronomical tables used in the western Islamic world.",
-    "books": [
-      {
-        "title": "Talkhis Amal al-Hisab (Summary of Arithmetic)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "A thirteenth- and fourteenth-century Moroccan mathematician and astronomer from Marrakesh, he authored numerous works on arithmetic, algebra, and astronomy. His Talkhis A'mal al-Hisab (Summary of Arithmetic Operations) introduced innovative methods for calculation and became a standard mathematical textbook across North Africa. He also contributed to the development of algebraic notation and compiled astronomical tables used in the western Islamic world."
   },
   {
     "famous": "Kamal al-Din al-Farisi",
     "school": "Kamal al-Din Hasan ibn Ali al-Farisi (1267–1318) was a Persian mathematician and physicist who produced the first correct scientific explanation of the rainbow. Working in Tabriz under the patronage of the Ilkhanid court, he was a student of the great astronomer Qutb al-Din al-Shirazi. His masterwork Tanqih al-Manazir (Revision of Optics) was a commentary on Ibn al-Haytham's Kitab al-Manazir that went far beyond the original. Using a glass sphere filled with water to model a raindrop, al-Farisi demonstrated that a rainbow is produced by two refractions and one internal reflection of sunlight inside raindrops — the same explanation accepted by modern physics. He also contributed to number theory, producing an original proof related to amicable numbers.",
-    "books": [
-      {
-        "title": "Tanqih al-Manazir (Revision of Optics)",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "Light bends when it enters water — and in that bending is the secret of the rainbow.",
       "I confirmed Ibn al-Haytham’s optics by experiment — confirmation is the honour due to good science.",
@@ -446,25 +257,11 @@
   },
   {
     "famous": "Al-Kashi",
-    "school": "Samarkand Observatory (Ulugh Beg)",
-    "books": [
-      {
-        "title": "Miftah al-Hisab (Calculator's Key)",
-        "url": null,
-        "magnum": true
-      }
-    ]
+    "school": "Samarkand Observatory (Ulugh Beg)"
   },
   {
     "famous": "Ali Qushji",
     "school": "Samarkand Observatory",
-    "books": [
-      {
-        "title": "Sharh al-Tajrid (Commentary on Tusi)",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "The astronomer who does not question his own measurements has stopped being an astronomer.",
       "Mathematics is the language in which God wrote the motion of the stars."
@@ -473,13 +270,6 @@
   {
     "famous": "Piri Reis",
     "school": "Ahmad ibn al-Hajj Muhiddin Piri, known as Piri Reis (1465–1553), was an Ottoman admiral and cartographer who created some of the most remarkable maps of the Age of Exploration. Born in Gallipoli, he sailed with his uncle Kemal Reis on naval campaigns across the Mediterranean before rising to command Ottoman fleets in the Red Sea and Indian Ocean. His surviving 1513 world map, drawn on gazelle skin, is one of the earliest maps to show the Americas and is notable for its accuracy in depicting the South American coastline — drawn partly from a lost map attributed to Columbus. His Kitab-i Bahriye (Book of Navigation) is a masterpiece of Ottoman maritime cartography containing detailed charts of the Mediterranean with sailing instructions and coastal descriptions. He was executed in 1553 after a failed naval campaign in the Persian Gulf.",
-    "books": [
-      {
-        "title": "Kitab-i Bahriyye (Book of Navigation)",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "The sea gives generously to those who respect her — and takes everything from those who do not.",
       "Every map is a theory of the world — draw it well.",
@@ -489,13 +279,6 @@
   {
     "famous": "Taqi al-Din",
     "school": "Taqi al-Din Muhammad ibn Ma'ruf al-Shami al-Asadi (1526–1585) was an Ottoman polymath — astronomer, engineer, clockmaker, and mathematician — who built the great Istanbul Observatory in 1577. Born in Damascus, he studied in Cairo before being appointed chief astronomer (müneccimbaşı) by Sultan Murad III. His observatory, equipped with instruments rivalling those of his contemporary Tycho Brahe, produced astronomical tables of remarkable accuracy. He also invented a steam turbine (described in his al-Turuq al-Saniyya) and designed mechanical clocks of unprecedented precision. His work on optics built on Ibn al-Haytham. The observatory was demolished in 1580 after a political backlash linked to superstitious fears — a catastrophic loss for Ottoman science. Despite this, Taqi al-Din's surviving manuscripts reveal a scientist of the first rank.",
-    "books": [
-      {
-        "title": "Sidret al-Muntaha al-Afkar (Observational Tables)",
-        "url": null,
-        "magnum": true
-      }
-    ],
     "quotes": [
       "The observatory is not a place of arrogance — it is a place of submission to what the heavens reveal.",
       "Every star that is measured glorifies God in the language of mathematics.",
@@ -504,33 +287,11 @@
   },
   {
     "famous": "Shaykh Bahai",
-    "school": "Safavid scholarship — polymath genius of architecture, mathematics, astronomy, poetry and fiqh",
-    "books": [
-      {
-        "title": "Kashkul (The Begging Bowl)",
-        "url": ",note:\"Encyclopedic anthology of science, literature and mysticism",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Safavid scholarship — polymath genius of architecture, mathematics, astronomy, poetry and fiqh"
   },
   {
     "famous": "Gelenbevi Ismail Efendi",
-    "school": "Ottoman mathematics — the most accomplished Ottoman mathematician; introduced modern European mathematics to the Ottoman system",
-    "books": [
-      {
-        "title": "Hisab al-Sittini",
-        "url": ",note:\"Mathematics — reformed Ottoman mathematical education",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Maktubat-i Mazhari",
-        "url": ",note:\"Letters — one of the most read Naqshbandi spiritual letter collections in South Asia",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "school": "Ottoman mathematics — the most accomplished Ottoman mathematician; introduced modern European mathematics to the Ottoman system"
   },
   {
     "famous": "Abdus Salam",
