@@ -48,6 +48,95 @@ function escAttr(s){return esc(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
 function figName(f){return typeof f==='string'?f:(f&&f.name?f.name:'');}
 function figRole(f){return(typeof f==='object'&&f&&f.role)?f.role:'';}
 
+// ── Navigate to figure in Timeline ──
+function _evGoToFigure(name){
+  if(!name) return;
+  var p = typeof PEOPLE!=='undefined' && PEOPLE.find(function(x){return x.famous===name;});
+  var mid = null;
+  if(p){
+    var dob=p.dob, dod=p.dod;
+    mid = (dob&&dod) ? Math.round((dob+dod)/2) : (dob||dod||null);
+  }
+
+  // Set century columns to center on this figure's lifetime
+  if(mid && typeof ALL_CENTS!=='undefined'){
+    var cent = Math.floor(mid/100)+1;
+    var idx = ALL_CENTS.indexOf(cent);
+    if(idx===-1){
+      idx=0;
+      for(var i=1;i<ALL_CENTS.length;i++){
+        if(Math.abs(ALL_CENTS[i]-cent)<Math.abs(ALL_CENTS[idx]-cent)) idx=i;
+      }
+    }
+    centIdx = idx;
+    if(typeof setCW==='function') setCW();
+    if(typeof updateCentHeaders==='function') updateCentHeaders();
+    if(typeof updateCentScrollbar==='function') updateCentScrollbar();
+  }
+
+  // Set year slider
+  if(mid){
+    var sl=document.getElementById('sliderInput');
+    if(sl){
+      var v=Math.max(+sl.min,Math.min(+sl.max,mid));
+      sl.value=v;
+      sl.dispatchEvent(new Event('input',{bubbles:true}));
+    }
+  }
+
+  // Switch to timeline and jump
+  if(typeof setView==='function') setView('timeline');
+  setTimeout(function(){
+    // Re-apply century after setView (which calls renderAll)
+    if(mid && typeof ALL_CENTS!=='undefined'){
+      var cent2=Math.floor(mid/100)+1;
+      var idx2=ALL_CENTS.indexOf(cent2);
+      if(idx2===-1){idx2=0;for(var i=1;i<ALL_CENTS.length;i++){if(Math.abs(ALL_CENTS[i]-cent2)<Math.abs(ALL_CENTS[idx2]-cent2))idx2=i;}}
+      centIdx=idx2;
+      if(typeof setCW==='function') setCW();
+      if(typeof updateCentHeaders==='function') updateCentHeaders();
+      if(typeof updateCentScrollbar==='function') updateCentScrollbar();
+      if(typeof renderAll==='function') renderAll();
+    }
+    if(typeof jumpTo==='function') jumpTo(name);
+    var fb=document.getElementById('filterBar');
+    if(fb) fb.style.display='flex';
+  },250);
+}
+window._evGoToFigure=_evGoToFigure;
+
+// ── Filter events by tag ──
+function _evFilterByTag(tag){
+  var data=window.eventsData||[];
+  var filtered=data.filter(function(e){
+    return e.year>=_startYear&&e.year<=_endYear&&(e.tags||[]).indexOf(tag)!==-1;
+  });
+  var scrollEl=document.getElementById('evScroll');
+  if(!scrollEl) return;
+  var yearCounts={};
+  filtered.forEach(function(e){yearCounts[e.year]=(yearCounts[e.year]||0)+1;});
+  var html='<div class="ev-filter-banner">Showing: <strong>'+esc(tag)+'</strong> ('+filtered.length+') <span class="ev-filter-clear" onclick="window._evClearTagFilter()">\u2715 Clear</span></div>';
+  html+='<div class="ev-grid">';
+  var lastYear=null;
+  filtered.forEach(function(ev){
+    var showYear=(ev.year!==lastYear);
+    html+=_buildRow(ev,showYear,showYear?yearCounts[ev.year]:0);
+    lastYear=ev.year;
+  });
+  html+='</div>';
+  scrollEl.innerHTML=html;
+  scrollEl.scrollTop=0;
+}
+window._evFilterByTag=_evFilterByTag;
+
+window._evClearTagFilter=function(){
+  _renderRange(window.eventsData,_startYear,_endYear);
+  var el=document.getElementById('evFilterCount');
+  var data=window.eventsData||[];
+  var count=data.filter(function(ev){return ev.year>=_startYear&&ev.year<=_endYear;}).length;
+  if(el) el.textContent='showing '+count+' events';
+};
+
 // Compute max year in data, rounded up to nearest 50
 function _maxYear(data){
   var mx=0;
@@ -132,6 +221,9 @@ function initEvents(){
   if(!data||!data.length){ct.innerHTML='<div style="padding:40px;color:var(--muted)">No events data loaded.</div>';return;}
   if(_inited) return;
   _inited=true;
+  var _css=document.createElement('style');
+  _css.textContent='.ev-tag-link{border-color:rgba(201,168,76,.35)!important;color:rgba(201,168,76,.8)!important;cursor:pointer}.ev-tag-link:hover{background:rgba(201,168,76,.15);color:#c9a84c!important}.ev-tag-filter{cursor:pointer}.ev-tag-filter:hover{background:rgba(255,255,255,.1)}.ev-filter-banner{padding:8px 16px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:6px;color:#c9a84c;font-size:13px;margin:0 0 8px;display:flex;align-items:center;gap:12px}.ev-filter-clear{cursor:pointer;opacity:.6;padding:2px 8px}.ev-filter-clear:hover{opacity:1}';
+  document.head.appendChild(_css);
   _startYear=500;
   _endYear=1500;
   ct.innerHTML='<div class="ev-scroll" id="evScroll"></div>';
@@ -168,7 +260,7 @@ function _buildRow(ev,showYear,spanCount){
       var nm=figName(f),rl=figRole(f);
       if(!nm) return;
       h+='<div class="ev-fig-wrap">';
-      h+='<span class="ev-fig-chip" onclick="if(typeof jumpTo===\'function\')jumpTo(\''+escAttr(nm)+'\')">'+esc(nm)+'</span>';
+      h+='<span class="ev-fig-chip" onclick="window._evGoToFigure(\''+escAttr(nm)+'\')">'+esc(nm)+'</span>';
       if(rl) h+='<span class="ev-fig-role">'+esc(rl)+'</span>';
       h+='</div>';
     });
@@ -182,7 +274,14 @@ function _buildRow(ev,showYear,spanCount){
   var tags=ev.tags||[];
   if(tags.length){
     h+='<div class="ev-tags">';
-    tags.forEach(function(t){h+='<span class="ev-tag">'+esc(t)+'</span>';});
+    tags.forEach(function(t){
+      var isFig=typeof PEOPLE!=='undefined'&&PEOPLE.some(function(p){return p.famous===t;});
+      if(isFig){
+        h+='<span class="ev-tag ev-tag-link" onclick="window._evGoToFigure(\''+escAttr(t)+'\')" title="View in Timeline">'+esc(t)+'</span>';
+      } else {
+        h+='<span class="ev-tag ev-tag-filter" onclick="window._evFilterByTag(\''+escAttr(t)+'\')" title="Filter by tag">'+esc(t)+'</span>';
+      }
+    });
     h+='</div>';
   }
 
