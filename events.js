@@ -59,8 +59,10 @@ function _maxYear(data){
 var _origSetView = window.setView;
 window.setView = function(v){
   var r3=document.getElementById('hdrRow3');
-  if(window.VIEW==='events'&&v!=='events'&&r3&&_hdrRow3Original!==null){
-    r3.innerHTML=_hdrRow3Original;
+  if(_hdrRow3Original!==null&&v!=='events'){
+    if(r3){
+      r3.innerHTML=_hdrRow3Original;
+    }
     _hdrRow3Original=null;
     _evStopAnimate();
   }
@@ -133,21 +135,7 @@ function initEvents(){
   _startYear=500;
   _endYear=1500;
   ct.innerHTML='<div class="ev-scroll" id="evScroll"></div>';
-  // Ensure Leaflet is loaded for mini maps
-  if(typeof L==='undefined'){
-    var scr=document.createElement('script');
-    scr.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
-    scr.onload=function(){_renderRange(data,_startYear,_endYear);};
-    scr.onerror=function(){
-      var s2=document.createElement('script');
-      s2.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      s2.onload=function(){_renderRange(data,_startYear,_endYear);};
-      document.head.appendChild(s2);
-    };
-    document.head.appendChild(scr);
-  } else {
-    _renderRange(data,_startYear,_endYear);
-  }
+  _renderRange(data,_startYear,_endYear);
 }
 
 // ── BUILD ONE EVENT ROW ──
@@ -200,31 +188,20 @@ function _buildRow(ev,showYear,spanCount){
 
   h+='</div></div>'; // /ev-card /ev-col-story
 
-  // COL 4 — The Visual
+  // COL 4 — OSM iframe embed
   h+='<div class="ev-col-visual">';
-  var vis=ev.visual||{};
   var loc=ev.location||{};
-  var caption=vis.caption||loc.place||'';
-  var modern=vis.modern||loc.modern||'';
-  var evId=(ev.id||'ev'+ev.year).replace(/[^a-zA-Z0-9_-]/g,'');
+  var place=loc.place||'';
+  var modern=loc.modern||'';
+  var lat=loc.lat||0;
+  var lng=loc.lng||0;
 
-  if(vis.type==='portrait'&&vis.url){
-    // Portrait: Wikipedia image with fallback to mini map
-    h+='<div class="ev-vis-frame">';
-    h+='<img class="ev-vis-img ev-vis-portrait" src="'+vis.url.replace(/"/g,'&quot;')+'" alt="" loading="lazy"';
-    h+=' data-lat="'+(loc.lat||0)+'" data-lng="'+(loc.lng||0)+'"';
-    h+=' onerror="this.onerror=null;this.style.display=\'none\';window._evInitMiniMap(\'evMiniMap_'+evId+'\','+(loc.lat||0)+','+(loc.lng||0)+',8)"';
-    h+='>';
-    h+='<div id="evMiniMap_'+evId+'" class="ev-mini-map" style="display:none"></div>';
-    h+='</div>';
-  } else {
-    // Map types (map/osm/era_map): render as Leaflet mini map
-    h+='<div class="ev-vis-frame">';
-    h+='<div id="evMiniMap_'+evId+'" class="ev-mini-map" data-lat="'+(loc.lat||0)+'" data-lng="'+(loc.lng||0)+'" data-zoom="'+(vis.zoom||8)+'"></div>';
-    h+='</div>';
+  if(lat||lng){
+    var bbox=(lng-1)+','+(lat-1)+','+(lng+1)+','+(lat+1);
+    h+='<iframe src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+lat+','+lng+'" style="width:100%;height:220px;border:none;border-radius:6px" loading="lazy"></iframe>';
   }
-  if(caption) h+='<div class="ev-map-place">'+esc(caption)+'</div>';
-  if(modern) h+='<div class="ev-map-modern">'+esc(modern)+'</div>';
+  if(place) h+='<div style="font-size:12px;font-weight:600;color:#c9a84c;letter-spacing:0.1em;text-transform:uppercase;text-align:center;margin-top:6px">'+esc(place)+'</div>';
+  if(modern) h+='<div style="font-size:10px;color:#666;text-align:center">'+esc(modern)+'</div>';
   h+='</div>';
 
   h+='</div>'; // /ev-row
@@ -234,6 +211,7 @@ function _buildRow(ev,showYear,spanCount){
 // ── RENDER BY YEAR RANGE ──
 function _renderRange(data,startYr,endYr){
   _evStopAnimate();
+
   var filtered=data.filter(function(e){return e.year>=startYr&&e.year<=endYr;});
   filtered.sort(function(a,b){return a.year-b.year||(a.id||'').localeCompare(b.id||'');});
 
@@ -253,65 +231,15 @@ function _renderRange(data,startYr,endYr){
   scrollEl.innerHTML=html;
   scrollEl.scrollTop=0;
 
+  // Card fade-in observer
   var cards=scrollEl.querySelectorAll('.ev-card');
-  var obs=new IntersectionObserver(function(entries){
+  var cardObs=new IntersectionObserver(function(entries){
     entries.forEach(function(en){
-      if(en.isIntersecting){en.target.classList.add('ev-card-visible');obs.unobserve(en.target);}
+      if(en.isIntersecting){en.target.classList.add('ev-card-visible');cardObs.unobserve(en.target);}
     });
   },{root:scrollEl,threshold:0.1});
-  cards.forEach(function(c){obs.observe(c);});
-
-  // Initialize mini Leaflet maps (lazy — only when scrolled into view)
-  _initMiniMaps(scrollEl);
+  cards.forEach(function(c){cardObs.observe(c);});
 }
-
-// ── MINI LEAFLET MAPS ──
-var _miniMaps={};
-
-function _initMiniMaps(scrollEl){
-  // Clean up previous maps
-  Object.keys(_miniMaps).forEach(function(k){
-    try{_miniMaps[k].remove();}catch(e){}
-  });
-  _miniMaps={};
-
-  var divs=scrollEl.querySelectorAll('.ev-mini-map[data-lat]');
-  if(!divs.length||typeof L==='undefined') return;
-
-  var mapObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){
-        var el=en.target;
-        mapObs.unobserve(el);
-        var lat=parseFloat(el.dataset.lat)||0;
-        var lng=parseFloat(el.dataset.lng)||0;
-        var zoom=parseInt(el.dataset.zoom)||8;
-        if(!lat&&!lng) return;
-        el.style.display='block';
-        var m=L.map(el.id,{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,touchZoom:false,boxZoom:false,keyboard:false});
-        m.setView([lat,lng],zoom);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(m);
-        L.marker([lat,lng]).addTo(m);
-        _miniMaps[el.id]=m;
-        setTimeout(function(){m.invalidateSize();},100);
-      }
-    });
-  },{root:scrollEl,threshold:0.05});
-  divs.forEach(function(d){mapObs.observe(d);});
-}
-
-// Fallback: init a mini map when portrait image fails
-window._evInitMiniMap=function(divId,lat,lng,zoom){
-  var el=document.getElementById(divId);
-  if(!el||typeof L==='undefined') return;
-  el.style.display='block';
-  var m=L.map(divId,{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,touchZoom:false,boxZoom:false,keyboard:false});
-  m.setView([lat,lng],zoom||8);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(m);
-  L.marker([lat,lng]).addTo(m);
-  _miniMaps[divId]=m;
-  setTimeout(function(){m.invalidateSize();},100);
-};
 
 // ── ANIMATE ──
 window._evToggleAnimate=function(){

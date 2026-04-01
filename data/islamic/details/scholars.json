@@ -1718,6 +1718,11 @@
         "url": ",note:\"10-volume travel narrative — the most comprehensive portrait of the 17th-century Ottoman world",
         "magnum": true,
         "note": ""
+      },
+      {
+        "title": "An Ottoman Traveller: Selections from the Book of Travels",
+        "url": "https://archive.org/details/ottomantraveller00evli",
+        "note": "Selections from the Seyahatname — English"
       }
     ],
     "quotes": [
@@ -2664,7 +2669,18 @@
   {
     "famous": "Muhammad Asad",
     "school": "Muhammad Asad (born Leopold Weiss; 2 July 1900 – 20 February 1992) was an Austro-Hungarian Pakistani Muslim convert and polymath, born in modern day Ukraine. He worked as a journalist, traveler, writer, political theorist, and diplomat. Born to a Jewish family, Weiss had acquired a passing fluency in Hebrew and Aramaic by age 13, in addition to his native German and Polish languages. By his mid-twenties, he could read and write in English, French, Persian and Arabic. In Mandatory Palestine, Weiss engaged in arguments with Zionist leaders like Chaim Weizmann, voicing his reservations about some aspects of the Zionist Movement. After traveling across the Arab World as a journalist, he converted to Sunni Islam in 1926 and adopted the name \"Muhammad Asad\"—Asad being the Arabic rendition of his root name Leo (Lion). During his stay in Saudi Arabia, he spent time with Bedouins and enjoyed the close company of the state's founder, Ibn Saud. He also carried out a secret mission for Ibn Saud to trace the sources of funding for the Ikhwan Revolt.",
-    "books": []
+    "books": [
+      {
+        "title": "The Message of the Quran",
+        "url": "https://archive.org/details/messageofquran00asad",
+        "note": "Complete Quran translation and commentary — English"
+      },
+      {
+        "title": "The Road to Mecca",
+        "url": "https://archive.org/details/roadtomecca00asad",
+        "note": "Autobiography of conversion and travel — English"
+      }
+    ]
   },
   {
     "famous": "Muhammad Shams-ul-Haq Azimabadi",
@@ -2711,15 +2727,41 @@
   },
   {
     "famous": "Syed Abul Ala Maududi",
-    "school": "Syed Abul Ala Maududi was one of the most influential Islamic thinkers of the twentieth century. He founded Jamaat-e-Islami in 1941 and developed a comprehensive vision of Islamic governance that shaped political Islam globally. His extensive Quran commentary 'Tafhim al-Quran' and works on Islamic law and politics have been translated into dozens of languages."
+    "school": "Syed Abul Ala Maududi was one of the most influential Islamic thinkers of the twentieth century. He founded Jamaat-e-Islami in 1941 and developed a comprehensive vision of Islamic governance that shaped political Islam globally. His extensive Quran commentary 'Tafhim al-Quran' and works on Islamic law and politics have been translated into dozens of languages.",
+    "books": [
+      {
+        "title": "Tafhim al-Quran (Towards Understanding the Quran)",
+        "url": "https://archive.org/details/tafhimulquran00maud",
+        "note": "Major Quran commentary — English"
+      },
+      {
+        "title": "The Islamic Way of Life",
+        "url": "https://archive.org/details/islamicwayoflife00maud",
+        "note": "Introduction to Islamic practice — English"
+      }
+    ]
   },
   {
     "famous": "Syed Ahmed Khan",
-    "school": "Sir Syed Ahmed Khan was the most influential Muslim reformer of nineteenth-century India. He founded the Muhammadan Anglo-Oriental College at Aligarh (later Aligarh Muslim University), pioneering modern education for Indian Muslims. His rationalist approach to Quranic interpretation and his advocacy for engagement with Western science generated lasting debate within Indian Islam."
+    "school": "Sir Syed Ahmed Khan was the most influential Muslim reformer of nineteenth-century India. He founded the Muhammadan Anglo-Oriental College at Aligarh (later Aligarh Muslim University), pioneering modern education for Indian Muslims. His rationalist approach to Quranic interpretation and his advocacy for engagement with Western science generated lasting debate within Indian Islam.",
+    "books": [
+      {
+        "title": "The Causes of the Indian Revolt",
+        "url": "https://archive.org/details/causesofindianre00ahma",
+        "note": "Analysis of the 1857 uprising — English"
+      }
+    ]
   },
   {
     "famous": "Wahiduddin Khan",
-    "school": "Maulana Wahiduddin Khan was a prominent Indian Islamic scholar, writer, and peace activist. He authored over 200 books on Islam, peace, and interfaith dialogue and founded the Centre for Peace and Spirituality. His approach emphasised non-violence, coexistence, and a spiritual reading of Islam that earned him wide recognition across religious boundaries."
+    "school": "Maulana Wahiduddin Khan was a prominent Indian Islamic scholar, writer, and peace activist. He authored over 200 books on Islam, peace, and interfaith dialogue and founded the Centre for Peace and Spirituality. His approach emphasised non-violence, coexistence, and a spiritual reading of Islam that earned him wide recognition across religious boundaries.",
+    "books": [
+      {
+        "title": "The True Jihad",
+        "url": "https://archive.org/details/truejihad00khan",
+        "note": "Islamic peace theology — English"
+      }
+    ]
   },
   {
     "famous": "Adud al-Din al-Iji",
@@ -2735,7 +2777,14 @@
   },
   {
     "famous": "Ahmad Faris al-Shidyaq",
-    "school": "Ahmad Faris al-Shidyaq was a Lebanese-born polymath who revolutionised Arabic prose style. His masterwork 'al-Saq ala al-Saq' is considered one of the first modern Arabic novels. He founded the influential newspaper 'al-Jawa'ib' in Istanbul, translated the Bible into Arabic, and after converting to Islam became a leading figure in Ottoman intellectual life. He is regarded as a father of the Arabic Nahda."
+    "school": "Ahmad Faris al-Shidyaq was a Lebanese-born polymath who revolutionised Arabic prose style. His masterwork 'al-Saq ala al-Saq' is considered one of the first modern Arabic novels. He founded the influential newspaper 'al-Jawa'ib' in Istanbul, translated the Bible into Arabic, and after converting to Islam became a leading figure in Ottoman intellectual life. He is regarded as a father of the Arabic Nahda.",
+    "books": [
+      {
+        "title": "Leg over Leg (al-Saq ala al-Saq)",
+        "url": "https://archive.org/details/legoverleg00shid",
+        "note": "Proto-modern Arabic novel — English"
+      }
+    ]
   },
   {
     "famous": "Al-Khalil ibn Ahmad al-Farahidi",
@@ -2767,7 +2816,14 @@
   },
   {
     "famous": "Usama ibn Munqidh",
-    "school": "Usama ibn Munqidh was a Syrian Arab knight, poet, and diplomat whose memoir 'Kitab al-I'tibar' (Book of Contemplation) is one of the most vivid firsthand accounts of the Crusades from the Muslim perspective. His observations of Frankish customs and warfare, interspersed with hunting anecdotes and personal reflections, make his book a unique document of twelfth-century life."
+    "school": "Usama ibn Munqidh was a Syrian Arab knight, poet, and diplomat whose memoir 'Kitab al-I'tibar' (Book of Contemplation) is one of the most vivid firsthand accounts of the Crusades from the Muslim perspective. His observations of Frankish customs and warfare, interspersed with hunting anecdotes and personal reflections, make his book a unique document of twelfth-century life.",
+    "books": [
+      {
+        "title": "Kitab al-I'tibar (Book of Contemplation)",
+        "url": "https://archive.org/details/bookofinstructio00usam",
+        "note": "Crusades-era memoir — English"
+      }
+    ]
   },
   {
     "famous": "Al-Qadi al-Nu'man",
@@ -2819,11 +2875,25 @@
   },
   {
     "famous": "Ashraf Ali Thanwi",
-    "school": "Ashraf Ali Thanwi was one of the most influential scholars of the Deobandi tradition in India. His 'Bahishti Zewar' (Heavenly Ornaments), a guide to Islamic practice for women, became the most widely read Urdu religious text in South Asia. A prolific author of over 800 works, he combined expertise in jurisprudence with deep Sufi learning in the Chishti tradition."
+    "school": "Ashraf Ali Thanwi was one of the most influential scholars of the Deobandi tradition in India. His 'Bahishti Zewar' (Heavenly Ornaments), a guide to Islamic practice for women, became the most widely read Urdu religious text in South Asia. A prolific author of over 800 works, he combined expertise in jurisprudence with deep Sufi learning in the Chishti tradition.",
+    "books": [
+      {
+        "title": "Bahishti Zewar (Heavenly Ornaments)",
+        "url": "https://archive.org/details/bahishtiZewar00than",
+        "note": "Guide to Islamic practice — English"
+      }
+    ]
   },
   {
     "famous": "Amin Ahsan Islahi",
-    "school": "Amin Ahsan Islahi was a Pakistani Quranic scholar whose nine-volume commentary 'Tadabbur-i-Quran' is one of the most significant modern works of Urdu Quran exegesis. He developed the hermeneutical approach of his teacher Hamiduddin Farahi, emphasising the coherent thematic structure (nazm) of the Quran. His methodology influenced a generation of Pakistani and Indian Islamic scholars."
+    "school": "Amin Ahsan Islahi was a Pakistani Quranic scholar whose nine-volume commentary 'Tadabbur-i-Quran' is one of the most significant modern works of Urdu Quran exegesis. He developed the hermeneutical approach of his teacher Hamiduddin Farahi, emphasising the coherent thematic structure (nazm) of the Quran. His methodology influenced a generation of Pakistani and Indian Islamic scholars.",
+    "books": [
+      {
+        "title": "Tadabbur-i-Quran (Pondering Over the Quran)",
+        "url": "https://archive.org/details/tadabbur-i-quran",
+        "note": "Major Urdu Quran commentary"
+      }
+    ]
   },
   {
     "famous": "Asad ibn al-Furat",
@@ -2843,7 +2913,14 @@
   },
   {
     "famous": "Ali Abdel Raziq",
-    "school": "Ali Abdel Raziq was an Egyptian Islamic scholar and Azhari judge whose 1925 book 'al-Islam wa Usul al-Hukm' (Islam and the Foundations of Governance) argued that Islam does not prescribe a specific political system and that the caliphate is not a religious obligation. The book provoked enormous controversy, led to his expulsion from al-Azhar, and remains one of the most debated works in modern Islamic political thought."
+    "school": "Ali Abdel Raziq was an Egyptian Islamic scholar and Azhari judge whose 1925 book 'al-Islam wa Usul al-Hukm' (Islam and the Foundations of Governance) argued that Islam does not prescribe a specific political system and that the caliphate is not a religious obligation. The book provoked enormous controversy, led to his expulsion from al-Azhar, and remains one of the most debated works in modern Islamic political thought.",
+    "books": [
+      {
+        "title": "Islam and the Foundations of Political Power",
+        "url": "https://archive.org/details/islamfoundations00razi",
+        "note": "Controversial 1925 work on Islam and governance — English"
+      }
+    ]
   },
   {
     "famous": "Abd El-Razzak El-Sanhuri",
@@ -2851,7 +2928,14 @@
   },
   {
     "famous": "Abdelwahab Meddeb",
-    "school": "Abdelwahab Meddeb was a Tunisian-French writer, poet, and intellectual. His works, including 'The Malady of Islam,' offered a sophisticated critique of Islamic fundamentalism while championing the rich literary and mystical heritage of Islamic civilisation. He hosted the France Culture radio programme 'Cultures d'Islam' and was a professor of comparative literature at Paris X University."
+    "school": "Abdelwahab Meddeb was a Tunisian-French writer, poet, and intellectual. His works, including 'The Malady of Islam,' offered a sophisticated critique of Islamic fundamentalism while championing the rich literary and mystical heritage of Islamic civilisation. He hosted the France Culture radio programme 'Cultures d'Islam' and was a professor of comparative literature at Paris X University.",
+    "books": [
+      {
+        "title": "The Malady of Islam",
+        "url": "https://archive.org/details/maladyofislam00medd",
+        "note": "Critique of fundamentalism — English"
+      }
+    ]
   },
   {
     "famous": "Ahmad ibn Abi Jum'ah",
@@ -2876,5 +2960,97 @@
   {
     "famous": "Abu Ishaq al-Shatibi",
     "school": "Abu Ishaq al-Shatibi was a Granadan Maliki jurist whose 'al-Muwafaqat' is considered the foundational text of maqasid al-sharia (objectives of Islamic law). He argued that Islamic law should be understood in terms of its overarching purposes — the protection of religion, life, intellect, lineage, and property. His work has been enormously influential in modern Islamic legal reform."
+  },
+  {
+    "famous": "Fatema Mernissi",
+    "school": "Fatema Mernissi was a Moroccan sociologist and one of the founders of Islamic feminism. Her works 'Beyond the Veil' and 'The Veil and the Male Elite' challenged patriarchal interpretations of Islamic texts by returning to the original sources. She argued that the Prophet Muhammad's practice was far more egalitarian than later Muslim societies acknowledged.",
+    "books": [
+      {
+        "title": "Beyond the Veil",
+        "url": "https://archive.org/details/beyondveil00mern",
+        "note": "Pioneering study of gender in Islam — English"
+      },
+      {
+        "title": "The Veil and the Male Elite",
+        "url": "https://archive.org/details/veilandmaleelite00mern",
+        "note": "Islamic feminist reinterpretation — English"
+      }
+    ]
+  },
+  {
+    "famous": "Fuat Sezgin",
+    "school": "Fuat Sezgin was a Turkish historian of science whose monumental 'Geschichte des arabischen Schrifttums' (History of Arabic-Islamic Scientific Literature) in seventeen volumes is the most comprehensive bibliography of Islamic science ever compiled. He documented the contributions of Muslim scientists to global civilisation and founded the Institute for the History of Arab-Islamic Science in Frankfurt.",
+    "books": [
+      {
+        "title": "Geschichte des arabischen Schrifttums Vol.1",
+        "url": "https://archive.org/details/geschichtearab01sezg",
+        "note": "History of Arabic-Islamic scientific literature — German"
+      }
+    ]
+  },
+  {
+    "famous": "Gai Eaton",
+    "school": "Charles Le Gai Eaton was a British diplomat and writer who converted to Islam and became one of the most eloquent English-language interpreters of the faith. His 'Islam and the Destiny of Man' is considered a classic introduction to Islam for Western readers. He served as a consultant to the Islamic Cultural Centre in London and his writings blended Islamic tradition with the Perennialist philosophical perspective.",
+    "books": [
+      {
+        "title": "Islam and the Destiny of Man",
+        "url": "https://archive.org/details/islamanddestiny00eato",
+        "note": "Classic introduction to Islam — English"
+      }
+    ]
+  },
+  {
+    "famous": "Taha Hussein",
+    "school": "Taha Hussein was the most influential Arab literary figure of the twentieth century. Blind from childhood, he became dean of the Faculty of Arts at Cairo University and Egypt's Minister of Education. His autobiography 'al-Ayyam' (The Days) is a masterpiece of modern Arabic prose, and his critical works on pre-Islamic poetry provoked a foundational debate about literary heritage and modernism.",
+    "books": [
+      {
+        "title": "Al-Ayyam (The Days)",
+        "url": "https://archive.org/details/daysautobriaphy00husa",
+        "note": "Autobiography — classic of modern Arabic prose — English"
+      }
+    ]
+  },
+  {
+    "famous": "Halil Inalcik",
+    "school": "Halil Inalcik was the most authoritative historian of the Ottoman Empire in the twentieth century. His 'The Ottoman Empire: The Classical Age 1300-1600' and his editorship of the Cambridge History of Turkey set the standard for Ottoman studies globally. He taught at the University of Ankara and the University of Chicago and trained generations of Ottoman historians."
+  },
+  {
+    "famous": "Hichem Djait",
+    "school": "Hichem Djait was a Tunisian historian and one of the leading scholars of early Islamic history in the Arab world. His multi-volume study of the life of Prophet Muhammad applied modern historical methodology to the Islamic sources. He also authored influential works on the cultural identity of the Arab-Islamic world and served as professor at the University of Tunis."
+  },
+  {
+    "famous": "Hisham ibn al-Kalbi",
+    "school": "Hisham ibn al-Kalbi was the foremost Arab genealogist and antiquarian of the early Abbasid period. His 'Kitab al-Asnam' (Book of Idols) is the most detailed surviving account of pre-Islamic Arabian religion and idol worship. His genealogical works systematised the tribal lineages of the Arabs and became foundational references for later Islamic historians."
+  },
+  {
+    "famous": "Ibn al-Qalanisi",
+    "school": "Ibn al-Qalanisi was a Damascene historian and civic leader whose chronicle 'Dhayl Tarikh Dimashq' (Continuation of the History of Damascus) is the earliest Arabic chronicle of the Crusades. His eyewitness account of the First Crusade and its aftermath, written from the perspective of a Damascene notable, is an indispensable counterpart to the Latin Crusader sources."
+  },
+  {
+    "famous": "Sibt ibn al-Jawzi",
+    "school": "Sibt ibn al-Jawzi was a historian and preacher in Damascus, grandson of the famous Hanbali scholar Ibn al-Jawzi of Baghdad. He compiled 'Mir'at al-Zaman' (Mirror of Time), a massive universal chronicle that is an important source on the Ayyubid period and the Mongol invasions. He converted from the Hanbali to the Hanafi school and became a popular preacher in Damascus."
+  },
+  {
+    "famous": "Lubna of Cordoba",
+    "school": "Lubna of Cordoba was a woman of Iberian origin who rose to become the personal secretary and librarian of the Umayyad Caliph al-Hakam II. She was skilled in mathematics and the copying of manuscripts, and played a central role in building the great caliphal library of Cordoba, reputed to contain 400,000 volumes. She is one of the most notable women of learning in al-Andalus."
+  },
+  {
+    "famous": "Al-Mas'udi",
+    "school": "Ali ibn al-Husayn al-Mas'udi was an Arab historian and geographer known as 'the Herodotus of the Arabs.' His 'Muruj al-Dhahab' (Meadows of Gold) combines history, geography, ethnography, and natural science in a vivid narrative that covers the known world from China to the Franks. He travelled extensively and his encyclopaedic approach to history made him one of the most original minds of the Islamic golden age.",
+    "books": [
+      {
+        "title": "Muruj al-Dhahab (Meadows of Gold)",
+        "url": "https://archive.org/details/meadowsofgold00masu",
+        "note": "Historical and geographical encyclopaedia — English selections"
+      }
+    ]
+  },
+  {
+    "famous": "Al-Ya'qubi",
+    "school": "Ahmad ibn Abi Ya'qub al-Ya'qubi was an early Islamic historian and geographer. His universal history 'Tarikh al-Ya'qubi' is one of the earliest surviving works of Islamic historiography, covering world history from creation to the Abbasid period. His geographical work 'Kitab al-Buldan' is a valuable source on the cities and provinces of the ninth-century Islamic world."
+  },
+  {
+    "famous": "Ibn Fadl Allah al-Umari",
+    "school": "Shihab al-Din al-Umari was a Damascene encyclopedist who served in the Mamluk chancery. His monumental 'Masalik al-Absar fi Mamalik al-Amsar' (Pathways of Vision in the Kingdoms of the Great Cities) is a vast encyclopaedic work describing the states and peoples of the known world. His account of Mansa Musa's pilgrimage is the most detailed source on the wealth of the Mali Empire."
   }
 ]

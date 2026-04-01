@@ -919,8 +919,8 @@ const _assumedBadge='<span style="font-size:9px;color:rgba(200,168,74,0.55);curs
 
 function renderInfo(p){
   const col = p.type==='Genealogy' ? '#c8a84a' : (CC[gc(p.dob)]||'#888');
-  const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
-  const dod_s=p.dod?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
+  const dob_s=p.dob!=null?(p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`):'Unknown';
+  const dod_s=p.dod!=null?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
 
   document.getElementById('infoFilterSpacer').textContent=
@@ -1114,8 +1114,8 @@ function renderInfo(p){
       ${p.lang?`<span class="i-tag">🌐 ${esc(p.lang)}</span>`:''}
     </div>
     <div class="i-dates">
-      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds">${esc(p.dob_s)}</span>`:''}</div>
-      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds">${esc(p.dod_s)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds"${String(p.dob_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dob_s)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds"${String(p.dod_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dod_s)}</span>`:''}</div>
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(160,130,60,.08);border:1px dashed rgba(200,168,80,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
