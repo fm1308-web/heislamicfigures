@@ -675,7 +675,7 @@ function setView(v){
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   document.getElementById('hdrRow4').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
-  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='one'){
+  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='talk'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
   } else {
     ip.style.display=''; ip.style.flex=''; ip.style.minWidth='';
@@ -686,10 +686,11 @@ function setView(v){
   document.getElementById('eras-view').style.display=v==='eras'?'flex':'none';
   document.getElementById('events-view').style.display=v==='events'?'flex':'none';
   document.getElementById('one-view').style.display=v==='one'?'flex':'none';
+  document.getElementById('talk-view').style.display=v==='talk'?'flex':'none';
   // Hide slider row in study view, show in all others
   const r3=document.getElementById('hdrRow3');
-  if(r3) r3.style.display=(v==='studyroom'||v==='one')?'none':'flex';
-  if(v==='studyroom'||v==='eras'||v==='events'||v==='one'){
+  if(r3) r3.style.display=(v==='studyroom'||v==='one'||v==='talk')?'none':'flex';
+  if(v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='talk'){
     document.getElementById('leftPanel').style.display='none';
     document.getElementById('filterBar').style.display='none';
   }
@@ -701,6 +702,7 @@ function setView(v){
   if(v==='eras'&&typeof initEras==='function') initEras();
   if(v==='events'&&typeof initEvents==='function') initEvents();
   if(v==='one'&&typeof initOne==='function') initOne();
+  if(v==='talk'&&typeof initTalk==='function') initTalk();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
 }
 

@@ -797,14 +797,14 @@ window._oneToggleFav=function(btn){
     _origSetViewOne(v);
     var ov=document.getElementById('one-view');
     if(ov) ov.style.display=v==='one'?'flex':'none';
-    if(v==='one'){
+    if(v==='one'||v==='talk'){
       var r3=document.getElementById('hdrRow3');
       if(r3) r3.style.display='none';
       var r4=document.getElementById('hdrRow4');
       if(r4) r4.style.display='none';
       document.getElementById('leftPanel').style.display='none';
       document.getElementById('infoPanel').style.display='none';
-      initOne();
+      if(v==='one') initOne();
     }
   };
 })();
