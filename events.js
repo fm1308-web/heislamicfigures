@@ -204,7 +204,7 @@ window._evFilterChanged=function(){
   var s=document.getElementById('evStartYear');
   var e=document.getElementById('evEndYear');
   if(s) _startYear=parseInt(s.value)||500;
-  if(e) _endYear=parseInt(e.value)||999;
+  if(e) _endYear=parseInt(e.value)||2025;
   if(_startYear>_endYear) _endYear=_startYear;
   _renderRange(window.eventsData,_startYear,_endYear);
   // Update count
