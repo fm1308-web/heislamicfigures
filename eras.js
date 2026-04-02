@@ -267,12 +267,11 @@ function initEras(){
 
     var path = document.createElementNS(NS, 'path');
     path.setAttribute('d', d);
-    path.setAttribute('fill', ld.color);
-    path.setAttribute('fill-opacity', '0.10');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('fill-opacity', '0');
     path.setAttribute('stroke', ld.color);
-    path.setAttribute('stroke-opacity', '0.4');
-    path.setAttribute('stroke-width', '1.5');
-    if(isType) path.setAttribute('stroke-dasharray', '4,3');
+    path.setAttribute('stroke-opacity', '0.5');
+    path.setAttribute('stroke-width', '2.5');
     g.appendChild(path);
 
     var dot1 = document.createElementNS(NS, 'circle');
@@ -299,13 +298,13 @@ function initEras(){
 
     g.addEventListener('mouseenter', function(){
       if(_selectedTag) return;
-      path.setAttribute('fill-opacity', '0.25');
-      path.setAttribute('stroke-opacity', '0.8');
+      path.setAttribute('fill-opacity', '0');
+      path.setAttribute('stroke-opacity', '0.9');
     });
     g.addEventListener('mouseleave', function(){
       if(_selectedTag) return;
-      path.setAttribute('fill-opacity', '0.10');
-      path.setAttribute('stroke-opacity', '0.4');
+      path.setAttribute('fill-opacity', '0');
+      path.setAttribute('stroke-opacity', '0.5');
     });
     g.addEventListener('click', function(e){
       e.stopPropagation();
@@ -429,7 +428,9 @@ function initEras(){
     _scrollEl.scrollTop = targetY - offset;
   }
 
-  window._onSliderYear = function(yr){ syncErasToSlider(yr); };
+  window._onSliderYear = function(yr){
+    if(typeof VIEW!=='undefined' && VIEW==='eras') syncErasToSlider(yr);
+  };
 
   // Init from current slider state
   syncErasToSlider(typeof activeYear !== 'undefined' ? activeYear : null);
@@ -443,6 +444,7 @@ function _onScroll(){
 }
 
 function _selectTag(tagKey, fromDropdown){
+  if(_animRunning) _stopAnim();
   if(_selectedTag === tagKey && !fromDropdown){ _deselectAll(); return; }
   _selectedTag = tagKey;
 
@@ -453,14 +455,14 @@ function _selectTag(tagKey, fromDropdown){
     if(le.key === tagKey){
       le.group.classList.remove('eras-leaf-faded');
       le.group.classList.add('eras-leaf-active');
-      le.path.setAttribute('fill-opacity', '0.30');
+      le.path.setAttribute('fill-opacity', '0');
       le.path.setAttribute('stroke-opacity', '1.0');
       le.extLabel.style.display = '';
     } else {
       le.group.classList.remove('eras-leaf-active');
       le.group.classList.add('eras-leaf-faded');
-      le.path.setAttribute('fill-opacity', '0.03');
-      le.path.setAttribute('stroke-opacity', '0.05');
+      le.path.setAttribute('fill-opacity', '0');
+      le.path.setAttribute('stroke-opacity', '0.08');
       le.extLabel.style.display = 'none';
     }
   });
@@ -482,8 +484,8 @@ function _deselectAll(){
   _leafEls.forEach(function(le){
     le.group.classList.remove('eras-leaf-faded');
     le.group.classList.remove('eras-leaf-active');
-    le.path.setAttribute('fill-opacity', '0.10');
-    le.path.setAttribute('stroke-opacity', '0.4');
+    le.path.setAttribute('fill-opacity', '0');
+    le.path.setAttribute('stroke-opacity', '0.5');
     le.extLabel.style.display = '';
   });
   if(_nameListEl) _nameListEl.innerHTML = '';
@@ -518,56 +520,49 @@ function _buildNameList(people, color){
 
 var _origSetView = window.setView;
 window.setView = function(v){
+  // Stop any running animation when leaving a view
+  if(_animRunning) _stopAnim();
+  if(typeof _mapAnimStop === 'function') _mapAnimStop();
   _origSetView(v);
   var r3 = document.getElementById('hdrRow3');
   if(r3) r3.style.display = v === 'studyroom' ? 'none' : 'flex';
   var ab = document.getElementById('erasAnimateBtn');
   if(ab) ab.style.display = v === 'eras' ? '' : 'none';
+  var as = document.getElementById('erasAnimSpeed');
+  if(as) as.style.display = v === 'eras' ? '' : 'none';
 };
 
 // ── ERAS Animate ──
-var _animRaf = null;
-var _animStart = null;
+var _animTimer = null;
 var _animRunning = false;
-var ANIM_FROM = 500, ANIM_TO = 2000, ANIM_DUR = 120000;
+var ANIM_FROM = 500, ANIM_TO = 2000, ANIM_STEP = 10;
 
 window.toggleErasAnimate = function(){
   if(_animRunning){ _stopAnim(); return; }
+  var yr = (typeof activeYear !== 'undefined' && activeYear != null) ? activeYear : ANIM_FROM;
+  if(yr >= ANIM_TO) yr = ANIM_FROM;
   _animRunning = true;
   var btn = document.getElementById('erasAnimateBtn');
-  if(btn) btn.textContent = '\u25A0 STOP';
-  _animStart = performance.now();
-  _animRaf = requestAnimationFrame(_animStep);
+  if(btn) btn.textContent = '\u275A\u275A PAUSE';
+  _animNextStep(yr);
 };
 
-function _animStep(ts){
+function _animNextStep(yr){
   if(!_animRunning) return;
-  var elapsed = ts - _animStart;
-  var t = Math.min(elapsed / ANIM_DUR, 1);
-  var yr = Math.round(ANIM_FROM + t * (ANIM_TO - ANIM_FROM));
-  yr = Math.round(yr / 5) * 5; // snap to step of 5
-  // Drive the slider — reuse the same path as manual drag
-  var thumb = document.getElementById('sliderThumb');
-  var fill = document.getElementById('sliderFill');
-  var pct = ((yr - MIN_YR) / (MAX_YR - MIN_YR)) * 100;
-  if(thumb) thumb.style.left = pct + '%';
-  if(fill) fill.style.width = pct + '%';
-  window.activeYear = yr;
-  window._viewYears = window._viewYears || {};
-  window._viewYears[window.VIEW] = yr;
-  document.getElementById('yearDisplay').textContent = yr + ' CE';
-  var cb = document.getElementById('yearClearBtn'); if(cb) cb.classList.add('active');
-  if(typeof _onSliderYear === 'function') _onSliderYear(yr);
-  if(t >= 1){ _stopAnim(); return; }
-  _animRaf = requestAnimationFrame(_animStep);
+  if(yr > ANIM_TO){ _stopAnim(); return; }
+  if(typeof _setSliderYear === 'function') _setSliderYear(yr);
+  var sel = document.getElementById('erasAnimSpeed');
+  var ms = sel ? parseInt(sel.value) || 1000 : 1000;
+  _animTimer = setTimeout(function(){ _animNextStep(yr + ANIM_STEP); }, ms);
 }
 
 function _stopAnim(){
   _animRunning = false;
-  if(_animRaf){ cancelAnimationFrame(_animRaf); _animRaf = null; }
+  if(_animTimer){ clearTimeout(_animTimer); _animTimer = null; }
   var btn = document.getElementById('erasAnimateBtn');
   if(btn) btn.textContent = '\u25B6 ANIMATE';
 }
+window._erasAnimStop = _stopAnim;
 
 window.initEras = initEras;
 })();

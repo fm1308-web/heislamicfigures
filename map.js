@@ -553,3 +553,35 @@ function _doRenderMap(){
   setTimeout(()=>{if(_lMap)_lMap.invalidateSize();},300);
 }
 
+// ═══════════════════════════════════════════════════════════
+// MAP ANIMATE
+// ═══════════════════════════════════════════════════════════
+let _mapAnimTimer=null, _mapAnimRunning=false;
+
+function _mapAnimToggle(){
+  if(_mapAnimRunning){_mapAnimStop();return;}
+  if(typeof _setSliderYear!=='function') return;
+  let yr=activeYear||500;
+  if(yr>=2000) yr=500;
+  _mapAnimRunning=true;
+  const btn=document.getElementById('mapAnimBtn');
+  if(btn) btn.textContent='\u275A\u275A PAUSE';
+  _mapAnimStep(yr);
+}
+
+function _mapAnimStep(yr){
+  if(!_mapAnimRunning) return;
+  if(yr>2000){_mapAnimStop();return;}
+  _setSliderYear(yr);
+  const sel=document.getElementById('mapAnimSpeed');
+  const ms=sel?parseInt(sel.value)||500:500;
+  _mapAnimTimer=setTimeout(function(){_mapAnimStep(yr+10);},ms);
+}
+
+function _mapAnimStop(){
+  _mapAnimRunning=false;
+  if(_mapAnimTimer){clearTimeout(_mapAnimTimer);_mapAnimTimer=null;}
+  const btn=document.getElementById('mapAnimBtn');
+  if(btn) btn.textContent='\u25B6 ANIMATE';
+}
+

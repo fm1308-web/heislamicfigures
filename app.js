@@ -162,6 +162,27 @@ let PEOPLE=[],VIEW='timeline',activeYear=null,activePerson=null;
 let _viewYears={timeline:null,silsila:null,map:null};
 let selTypes=new Set(),selTrads=new Set(),searchQ='';
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
+
+// ── Figure history stack (in-app back navigation) ──
+var _figureHistory=[];
+var _figureHistoryMax=20;
+function pushFigureHistory(name){
+  if(_figureHistory.length&&_figureHistory[_figureHistory.length-1]===name) return;
+  _figureHistory.push(name);
+  if(_figureHistory.length>_figureHistoryMax) _figureHistory.shift();
+  _updateBackBtn();
+}
+function popFigureHistory(){
+  if(_figureHistory.length<2) return null;
+  _figureHistory.pop();
+  var prev=_figureHistory[_figureHistory.length-1];
+  _updateBackBtn();
+  return prev;
+}
+function _updateBackBtn(){
+  var btn=document.getElementById('figureBackBtn');
+  if(btn) btn.style.display=_figureHistory.length>1?'inline-flex':'none';
+}
 let CW=[0,6,7]; // Default: PRE-ISLAMIC | 6TH C. | 7TH C.
 let centIdx=1; // Index of 6 in ALL_CENTS=[0,6,7,...]
 
@@ -235,6 +256,7 @@ async function _ensureDetails(p){
 async function renderInfoWithDetails(p){
   await _ensureDetails(p);
   renderInfo(p);
+  pushFigureHistory(p.famous);
 }
 async function openSilsilaCardWithDetails(p,cx,cy){
   await _ensureDetails(p);
@@ -318,7 +340,47 @@ async function boot(){
   _updateFavFilterBtn();
   // If silsila tab was already active (e.g. URL hash loaded) trigger render now
   if(VIEW==='silsila') renderSilsila();
+
+  // ── Browser history: set initial state ──
+  history.replaceState({view:VIEW},'','#'+VIEW);
+  var _bootHash=location.hash.replace('#','');
+  if(_bootHash&&_bootHash!==VIEW){
+    var _bhParts=_bootHash.split('/');
+    var _bhView=_bhParts[0];
+    setView(_bhView);
+    if(_bhView==='talk'&&_bhParts[1]&&typeof window._talkSelectScholar==='function'){
+      setTimeout(function(){window._talkSelectScholar(_bhParts[1]);},100);
+    }
+    if(_bhView==='one'&&_bhParts[1]&&typeof window._oneClickName==='function'){
+      setTimeout(function(){window._oneClickName(decodeURIComponent(_bhParts[1]));},100);
+    }
+  }
 }
+
+// ── Browser history: handle Back/Forward ──
+window.addEventListener('popstate',function(e){
+  window._popstateInProgress=true;
+  var state=e.state;
+  if(state&&state.view){
+    setView(state.view);
+    if(state.scholar&&typeof window._talkSelectScholar==='function'){
+      window._talkSelectScholar(state.scholar);
+    }
+    if(state.view==='talk'&&!state.scholar&&typeof window._talkBack==='function'){
+      window._talkBack();
+    }
+    if(state.figure){
+      var idx=_lastSortedPeople.findIndex(function(p){return p.famous===state.figure;});
+      if(idx>=0) selectRow(idx);
+      if(state.view==='one'&&typeof window._oneClickName==='function'){
+        window._oneClickName(state.figure);
+      }
+    }
+  } else {
+    setView('timeline');
+  }
+  window._popstateInProgress=false;
+});
 
 function setHeight(){
   const topBar=document.getElementById('topBar');
@@ -599,9 +661,11 @@ function initSlider(){
     updateCentHeaders(); updateCentScrollbar();
     renderAll();
   }
+  window._setSliderYear=setYear;
 
   let dragging=false;
   function doMove(e){
+    if(typeof _mapAnimStop==='function') _mapAnimStop();
     const r=track.getBoundingClientRect();
     const x=e.touches?e.touches[0].clientX:e.clientX;
     setYear(px2yr(x-r.left,r.width));
@@ -704,6 +768,10 @@ function setView(v){
   if(v==='one'&&typeof initOne==='function') initOne();
   if(v==='talk'&&typeof initTalk==='function') initTalk();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
+  // Push browser history on view change
+  if(!window._popstateInProgress){
+    history.pushState({view:v},'','#'+v);
+  }
 }
 
 // ═══════════════════════════════════════════════════════════

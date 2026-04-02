@@ -265,7 +265,7 @@ function renderSilsila(){
   });
 
   // ── Century grid lines + labels ────────────────────────────
-  P.push(`<line x1="${PRE_W}" y1="0" x2="${PRE_W}" y2="${SVG_H}" stroke="rgba(232,200,120,0.16)" stroke-width="1.5" stroke-dasharray="6,4" />`);
+  P.push(`<line x1="${PRE_W}" y1="0" x2="${PRE_W}" y2="${SVG_H}" stroke="rgba(232,200,120,0.16)" stroke-width="1.5" />`);
   P.push(`<text x="${(PRE_W/2).toFixed(1)}" y="22" font-family="Cinzel,serif" font-size="9" text-anchor="middle" fill="rgba(240,237,226,0.2)" letter-spacing="1.5">PRE-ISLAMIC</text>`);
   for(let yr=600;yr<=2000;yr+=100){
     const x=x2px(yr).toFixed(1), c=gc(yr);
@@ -304,7 +304,7 @@ function renderSilsila(){
     P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity="0.85" stroke="${nd.col}" stroke-width="1.4" stroke-opacity="0.9"/>`);
     // Always-visible short name label
     const _sn=p.famous.length>14?p.famous.slice(0,13)+'…':p.famous;
-    P.push(`<text x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.7" pointer-events="none">${esc(_sn)}</text>`);
+    P.push(`<text x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
   });
 
   // ── Cover rect: blank lineage lane left of Adam (hides any edge bleed) ──────
@@ -420,9 +420,9 @@ function renderSilsila(){
     const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
-      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px;cursor:pointer;border-bottom:1px dashed rgba(232,200,120,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:8px;opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
-      `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-      `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(232,200,120,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:8px;opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
+      `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:${col};font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
+      `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
       (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
         (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
     tt.style.pointerEvents='all';
@@ -456,8 +456,8 @@ function renderSilsila(){
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
       `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:12.5px">${esc(p.famous)}</div>`+
-      `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-      `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+      `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:${col};font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
+      `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
       (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
         (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
     tt.style.pointerEvents='none';
@@ -677,8 +677,8 @@ function openSilsilaCard(p, cx, cy){
       <div id="scWikiImgCaption" style="display:none;font-size:8px;color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:3px">via Wikipedia</div>
     </div>` : ''}
     <div class="sc-tags">
-      <span class="sc-tag hi">${esc(p.type||'')}</span>
-      <span class="sc-tag hi">${esc(p.tradition||'')}</span>
+      <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(p.type||'')}</span>
+      <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(p.tradition||'')}</span>
       ${p.city?`<span class="sc-tag">📍 ${esc(p.city)}</span>`:''}
     </div>
     <div class="sc-dates">

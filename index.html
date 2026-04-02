@@ -15,11 +15,11 @@
 <div id="hdrRow1">
   <div id="hdrRow1Left">
     <h1>ISLAMIC FIGURES</h1>
-    <div id="metaLine">550 - 2025 CE &middot; free book &middot; = dates assumed &middot; study space &middot; AI-generated &middot; independently verify</div>
+    <div id="metaLine">550 - 2025 CE &middot; free book &middot; △ dates assumed &middot; 📖 study space &middot; AI-generated &middot; independently verify</div>
   </div>
   <div id="hdrRow1Right">
-    <div id="hdrStatsLine1"><span id="statFigures">1,716 Figures</span> &middot; <span id="statBooks">2,904 Free Books</span></div>
-    <div id="hdrStatsLine2"><span id="statRelations">2,164 Relations</span> &middot; 2026 Mar</div>
+    <div id="hdrStatsLine1"><span id="statFigures">1,970 Figures</span> &middot; <span id="statBooks">1,671 Free Books</span></div>
+    <div id="hdrStatsLine2"><span id="statRelations">2,242 Relations</span> &middot; 2026 APR</div>
   </div>
 </div>
 
@@ -54,7 +54,12 @@
   <span id="yearDisplay">&mdash;</span>
   <span class="hdr-range-cap">2000</span>
   <button id="yearClearBtn" onclick="clearYear()">&times;</button>
-  <button id="erasAnimateBtn" class="dd-btn" onclick="toggleErasAnimate()" style="display:none">▶ ANIMATE</button>
+  <select id="erasAnimSpeed" class="map-anim-speed" style="display:none">
+    <option value="2000">1x</option>
+    <option value="1000" selected>2x</option>
+    <option value="500">4x</option>
+  </select>
+  <button id="erasAnimateBtn" class="map-anim-btn" onclick="toggleErasAnimate()" style="display:none">▶ ANIMATE</button>
 </div>
 
 <!-- ROW 4 - Filters -->
@@ -210,6 +215,14 @@
       </div>
       <button class="sl-dd-btn" id="map-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()"
         style="border-color:var(--gold);color:var(--gold)">★ SAVED</button>
+      <div class="map-anim-group">
+        <select class="map-anim-speed" id="mapAnimSpeed">
+          <option value="1000">1x</option>
+          <option value="500" selected>2x</option>
+          <option value="250">4x</option>
+        </select>
+        <button class="map-anim-btn" id="mapAnimBtn" onclick="_mapAnimToggle()">▶ ANIMATE</button>
+      </div>
     </div>
     <div id="mapContainer">
       <div id="leafletMap"></div>
@@ -252,7 +265,7 @@
 
   <!-- INFO PANEL -->
   <div id="infoPanel">
-    <div id="infoHdr">INFORMATION<button onclick="activePerson=null;showEmptyInfo()" style="margin-left:auto;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:0 2px">✕</button></div>
+    <div id="infoHdr"><button id="figureBackBtn" onclick="var prev=popFigureHistory();if(prev)jumpTo(prev);" style="display:none;align-items:center;background:none;border:1px solid var(--border2);color:var(--accent);font-size:11px;cursor:pointer;padding:2px 8px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:8px" title="Previous figure">&#8592; Back</button>INFORMATION<button onclick="activePerson=null;showEmptyInfo()" style="margin-left:auto;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:0 2px">✕</button></div>
     <div id="infoFilterSpacer">SELECT A FIGURE FROM THE LIST</div>
     <div id="infoScroll">
       <div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>

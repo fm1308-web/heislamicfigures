@@ -230,12 +230,18 @@ window._talkSelectScholar = function(id){
   _activeScholar = scholar;
   var ct = document.getElementById('talk-view');
   if(ct) _renderChat(ct, scholar);
+  if(!window._popstateInProgress){
+    history.pushState({view:'talk',scholar:id},'','#talk/'+id);
+  }
 };
 
 window._talkBack = function(){
   _activeScholar = null;
   var ct = document.getElementById('talk-view');
   if(ct) _renderSelection(ct);
+  if(!window._popstateInProgress){
+    history.pushState({view:'talk'},'','#talk');
+  }
 };
 
 })();

@@ -11,22 +11,6 @@ const _SYSTEM_PROMPT = 'You are a scholarly assistant for Islamic history and in
 /* ── Inject CSS ── */
 const _chatCSS = document.createElement('style');
 _chatCSS.textContent = `
-/* Chat FAB */
-#scholarFab{
-  position:fixed;bottom:24px;right:24px;z-index:2500;
-  width:56px;height:56px;border-radius:50%;border:2px solid var(--border2);
-  background:linear-gradient(135deg,#c89040,#D4AF37);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(200,144,64,.45);transition:transform .2s,box-shadow .2s;
-}
-#scholarFab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,144,64,.6);}
-#scholarFab svg{width:28px;height:28px;fill:#0F1724;}
-#scholarFab.pulse{animation:scholarPulse 1.2s ease-in-out 3;}
-@keyframes scholarPulse{
-  0%,100%{box-shadow:0 4px 20px rgba(200,144,64,.45)}
-  50%{box-shadow:0 4px 32px rgba(200,144,64,.85)}
-}
-
 /* Chat Panel */
 #scholarPanel{
   position:fixed;bottom:24px;right:24px;z-index:2600;
@@ -146,15 +130,6 @@ _chatCSS.textContent = `
 document.head.appendChild(_chatCSS);
 
 /* ── Build DOM ── */
-// FAB
-const fab = document.createElement('div');
-fab.id = 'scholarFab';
-fab.className = 'pulse';
-fab.title = 'Ask Me \u2014 AI Scholar Assistant';
-fab.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.58 2 10c0 2.34 1.2 4.44 3.11 5.9L4 20l4.35-2.17C9.5 18.27 10.72 18.5 12 18.5c5.52 0 10-3.58 10-8S17.52 2 12 2zm0 14.5c-1.1 0-2.15-.2-3.11-.56l-.62-.25-2.72 1.36.74-2.73-.46-.38C4.3 12.73 3.5 11.43 3.5 10c0-3.58 3.81-6.5 8.5-6.5s8.5 2.92 8.5 6.5-3.81 6.5-8.5 6.5z"/><path d="M7.5 9.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm4.5 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm4.5 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/></svg>';
-document.body.appendChild(fab);
-setTimeout(()=>fab.classList.remove('pulse'),3600);
-
 // Panel
 const panel = document.createElement('div');
 panel.id = 'scholarPanel';
@@ -192,23 +167,7 @@ const settingsP = document.getElementById('schSettings');
 const keyInput  = document.getElementById('schApiKeyInput');
 
 /* ── Open / Close ── */
-fab.addEventListener('click',()=>{
-  panel.classList.add('open'); fab.style.display='none'; input.focus();
-  // Show onboarding if no messages yet and no working key
-  if(msgBox.children.length===0 && _activeKey()==='YOUR_KEY_HERE' && !_hasCustomKey()){
-    const w=document.createElement('div');
-    w.className='sch-msg ai';
-    w.innerHTML='Welcome to <strong>Ask Me</strong> \u2014 your AI-powered Islamic history assistant.<br><br>'+
-      'To start exploring 1,712 Islamic scholars through conversation, you need a Claude API key.<br><br>'+
-      '1. Visit <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color:#D4AF37;">console.anthropic.com</a><br>'+
-      '2. Create an account and add credit ($5 minimum)<br>'+
-      '3. Generate an API key<br>'+
-      '4. Tap the \u2699 icon above and paste your key<br><br>'+
-      'Then ask me anything \u2014 \u201CWho were Al-Ghazali\u2019s teachers?\u201D or \u201CCompare Ibn Arabi and Al-Hallaj\u201D';
-    msgBox.appendChild(w);
-  }
-});
-document.getElementById('schCloseBtn').addEventListener('click',()=>{ panel.classList.remove('open'); fab.style.display='flex'; });
+document.getElementById('schCloseBtn').addEventListener('click',()=>{ panel.classList.remove('open'); });
 document.getElementById('schClearBtn').addEventListener('click',()=>{ msgBox.innerHTML=''; });
 document.getElementById('schSettingsBtn').addEventListener('click',()=>{
   settingsP.classList.toggle('open');
@@ -339,7 +298,7 @@ function _addAIMsg(text){
     a.addEventListener('click',()=>{
       const name=a.getAttribute('data-famous');
       if(typeof focusPersonInTimeline==='function') focusPersonInTimeline(name);
-      panel.classList.remove('open'); fab.style.display='flex';
+      panel.classList.remove('open');
     });
   });
   msgBox.appendChild(div);

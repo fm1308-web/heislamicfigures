@@ -1,7 +1,10 @@
 [
   {
     "famous": "Abu Ishaq Shami",
-    "school": "The critical link between Ibrahim ibn Adham's ascetic tradition and the formal Chishti order; brought the Sufi path from Syria to Chisht (in modern Afghanistan) and trained Abu Ahmad Chishti, who gave the order its name; his transmission created the lineage through which Moinuddin Chishti would eventually take the path to India — making him the grandfather of the entire Indian Chishti tradition"
+    "school": "The critical link between Ibrahim ibn Adham's ascetic tradition and the formal Chishti order; brought the Sufi path from Syria to Chisht (in modern Afghanistan) and trained Abu Ahmad Chishti, who gave the order its name; his transmission created the lineage through which Moinuddin Chishti would eventually take the path to India — making him the grandfather of the entire Indian Chishti tradition",
+    "teachers": [
+      "Dinawari"
+    ]
   },
   {
     "famous": "Abu al-Hasan Kharaqani",
@@ -9,7 +12,10 @@
   },
   {
     "famous": "Yusuf al-Hamadani",
-    "school": "Khorasan / Naqshbandi Lineage — Bridge figure between the Baghdad school and the Naqshbandiyya and Yeseviyya"
+    "school": "Khorasan / Naqshbandi Lineage — Bridge figure between the Baghdad school and the Naqshbandiyya and Yeseviyya",
+    "teachers": [
+      "Abu Ali al-Farmadi"
+    ]
   },
   {
     "famous": "Yusuf Hamadani",
@@ -25,6 +31,9 @@
         "magnum": true,
         "note": "First systematic manual of Sufi conduct — blueprint for all subsequent Sufi orders"
       }
+    ],
+    "teachers": [
+      "Ahmad al-Ghazali"
     ]
   },
   {
@@ -75,6 +84,9 @@
         "magnum": true,
         "note": "The most celebrated Shadhili devotional prayer, recited globally"
       }
+    ],
+    "teachers": [
+      "Abu Madyan"
     ]
   },
   {
@@ -83,7 +95,10 @@
   },
   {
     "famous": "Baha-ud-din Zakariya",
-    "school": "Suhrawardiyya Order — South Asian Founder"
+    "school": "Suhrawardiyya Order — South Asian Founder",
+    "teachers": [
+      "Abu Hafs Umar al-Suhrawardi"
+    ]
   },
   {
     "famous": "Qutbuddin Bakhtiar Kaki",
@@ -95,6 +110,9 @@
       "The heart that loves God has no room for pride.",
       "Service to the poor is service to God — there is no shorter path.",
       "The disciple who serves his master has already begun to serve God."
+    ],
+    "teachers": [
+      "Moinuddin Chishti"
     ]
   },
   {
@@ -119,6 +137,9 @@
       "Pride is the veil between the servant and God — lower it and the light enters.",
       "The dervish who needs nothing is richer than the king who has everything.",
       "Whoever serves the creation has served the Creator."
+    ],
+    "teachers": [
+      "Qutbuddin Bakhtiar Kaki"
     ]
   },
   {
@@ -136,6 +157,9 @@
       "Past and future veil God from our sight — burn both of them with fire.",
       "The message behind the words is what transforms — not the words themselves.",
       "Whoever sees only himself in the mirror has not yet learned to look."
+    ],
+    "teachers": [
+      "Baba Kamal al-Din Jumdi"
     ]
   },
   {
@@ -156,7 +180,10 @@
   },
   {
     "famous": "Abu al-Abbas al-Mursi",
-    "school": "Shadhiliyya Order (Alexandria) — Direct student and successor of Abu al-Hasan al-Shadhili"
+    "school": "Shadhiliyya Order (Alexandria) — Direct student and successor of Abu al-Hasan al-Shadhili",
+    "teachers": [
+      "Abu'l-Hasan al-Shadhili"
+    ]
   },
   {
     "famous": "Nizamuddin Auliya",
@@ -167,6 +194,10 @@
         "url": "https://archive.org/search?query=Fawa%27id%20al-Fu%27ad%20Nizamuddin%20Auliya%20morals%20heart",
         "magnum": true,
         "note": "First malfuzat (recorded spiritual conversations) in Persian literature."
+      },
+      {
+        "title": "Morals for the Heart (Fawa'id al-Fu'ad)",
+        "url": "https://archive.org/details/morals-for-the-heart"
       }
     ],
     "quotes": [
@@ -178,6 +209,9 @@
       "The heart is the throne of God — do not let anyone other than God sit upon it.",
       "Humility is the crown of the saints — whoever wears it has already arrived.",
       "Serve all people regardless of their faith — God’s mercy is wider than any religion."
+    ],
+    "teachers": [
+      "Fariduddin Ganjshakar"
     ]
   },
   {
@@ -202,7 +236,10 @@
   },
   {
     "famous": "Amir Kulal",
-    "school": "Naqshbandiyya — The critical teacher who transmitted the tradition directly to the order's founder"
+    "school": "Naqshbandiyya — The critical teacher who transmitted the tradition directly to the order's founder",
+    "teachers": [
+      "Muhammad Baba Sammasi"
+    ]
   },
   {
     "famous": "Mir Sayyid Ali Hamadani",

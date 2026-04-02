@@ -335,6 +335,9 @@ window._oneClickName=function(name){
   _closeLetterDD();
   _syncUI();
   _renderMain();
+  if(!window._popstateInProgress&&_selected.length===1){
+    history.pushState({view:'one',figure:name},'','#one/'+encodeURIComponent(name));
+  }
 };
 
 /* ═══════════════════════════════════════════════════════════
@@ -388,6 +391,21 @@ async function _renderPerson(p,container){
   var imgId='one-img-'+Math.random().toString(36).substr(2,8);
 
   var h='';
+
+  /* ── PREV / NEXT NAV ── */
+  if(_selected.length===1){
+    var _fp=_getFilteredPeople();
+    var _ci=_fp.findIndex(function(x){return x.famous===p.famous;});
+    var _prevN=_ci>0?_fp[_ci-1].famous:null;
+    var _nextN=_ci>=0&&_ci<_fp.length-1?_fp[_ci+1].famous:null;
+    h+='<div class="one-nav-bar">';
+    if(_prevN) h+='<span class="one-nav-arrow" onclick="window._oneClickName(\''+_safe(_prevN)+'\')">\u2190 '+_e(_prevN)+'</span>';
+    else h+='<span class="one-nav-arrow disabled"></span>';
+    h+='<span class="one-nav-pos">'+(_ci+1)+' / '+_fp.length+'</span>';
+    if(_nextN) h+='<span class="one-nav-arrow" onclick="window._oneClickName(\''+_safe(_nextN)+'\')">' +_e(_nextN)+' \u2192</span>';
+    else h+='<span class="one-nav-arrow disabled"></span>';
+    h+='</div>';
+  }
 
   /* ── HERO ── */
   h+='<div class="one-hero">';
