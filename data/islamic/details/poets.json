@@ -16,7 +16,13 @@
   },
   {
     "famous": "Firdowsi",
-    "school": "Abu al-Qasim Firdowsi (940–1020) spent over thirty years composing the Shahnameh (Book of Kings), the Persian national epic spanning 50,000 couplets. Writing for the Ghaznavid court, he preserved pre-Islamic Persian mythology and history in verse, effectively reviving the Persian language and cultural identity after the Arab conquest."
+    "school": "Abu al-Qasim Firdowsi (940–1020) spent over thirty years composing the Shahnameh (Book of Kings), the Persian national epic spanning 50,000 couplets. Writing for the Ghaznavid court, he preserved pre-Islamic Persian mythology and history in verse, effectively reviving the Persian language and cultural identity after the Arab conquest.",
+    "books": [
+      {
+        "title": "The Shah Nameh (Book of Kings)",
+        "url": "https://archive.org/details/shahnameh00firduoft"
+      }
+    ]
   },
   {
     "famous": "Baba Kuhi of Shiraz",
@@ -58,6 +64,10 @@
       {
         "title": "Rubaiyat (multiple translations)",
         "url": "https://sacred-texts.com/isl/khayyam.txt"
+      },
+      {
+        "title": "Rubaiyat (illustrated edition)",
+        "url": "https://archive.org/details/rubaaborubaiyat00omar"
       }
     ],
     "quotes": [
@@ -101,6 +111,14 @@
         "url": "https://archive.org/search?query=Nizami%20Ganjavi%20Khamsa%20five%20treasuries%20Persian",
         "magnum": true,
         "note": "Greatest romantic epic in Persian — imitated by Amir Khusrow, Jami and hundreds of others across five centuries."
+      },
+      {
+        "title": "Layla and Majnun",
+        "url": "https://archive.org/details/laylimajnunlover00niza"
+      },
+      {
+        "title": "Sikandar Nama (Book of Alexander)",
+        "url": "https://archive.org/details/sikandernameebar00niza"
       }
     ],
     "quotes": [
@@ -440,6 +458,10 @@
         "url": "https://archive.org/search?query=Bulleh%20Shah%20kafian%20Punjabi%20Sufi%20poetry",
         "magnum": true,
         "note": "Most beloved Punjabi Sufi poetry — popularised globally by Nusrat Fateh Ali Khan. 'Bullah Ki Jaana Mein Kaun' is iconic."
+      },
+      {
+        "title": "Bulleh Shah: Sufi Lyrics (Panjabi)",
+        "url": "https://www.rekhta.org/poets/bulleh-shah/couplets"
       }
     ],
     "quotes": [
@@ -527,6 +549,10 @@
         "url": "https://archive.org/search?query=Diwan-e-Ghalib%20Urdu%20ghazals%20Mirza%20Ghalib",
         "magnum": true,
         "note": "Most widely quoted Urdu poetry ever written — a complete philosophical world-view in compressed verse."
+      },
+      {
+        "title": "Diwan-e-Ghalib (Complete)",
+        "url": "https://www.rekhta.org/poets/mirza-ghalib/ghazals"
       }
     ],
     "quotes": [

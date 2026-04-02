@@ -614,7 +614,7 @@ async function _renderPerson(p,container){
     var srH='<div class="one-study-cards">'+
       '<div class="one-study-card" onclick="openStudyRoom(\''+_e(slug)+'\');">\uD83D\uDCD6 Slides</div>'+
       '<div class="one-study-card" onclick="openStudyRoom(\''+_e(slug)+'\');setTimeout(function(){selectStudyTab(\'summary\');},100);">\uD83D\uDCC4 Summary</div>'+
-      '<div class="one-study-card" onclick="openStudyRoom(\''+_e(slug)+'\');setTimeout(function(){selectStudyTab(\'quotes\');},100);">\uD83D\uDCAC Quotes</div>'+
+      '<div class="one-study-card" onclick="openStudyRoom(\''+_e(slug)+'\');setTimeout(function(){selectStudyTab(\'video\');},100);">\uD83C\uDFA5 Video</div>'+
     '</div>';
     h+=_sec('\uD83D\uDCD6','Study Room',0,srH,false);
   }

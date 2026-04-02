@@ -19,12 +19,12 @@
   },
   {
     "famous": "Zayd ibn Ali",
-    "school": "Zaidi School of Islamic Jurisprudence — founder; great-grandson of the Prophet",
+    "school": "Zayd ibn Ali ibn Husayn (695–740), great-grandson of the Prophet and founder of the Zaidi school of Shia Islam. He led a revolt against the Umayyads and was killed in battle. The Zaidi tradition became the state religion of Yemen for over a thousand years.",
     "books": []
   },
   {
     "famous": "Imam Abu Hanifa",
-    "school": "Hanafi School — Founder. Largest madhab in the world (~45% of Muslims).",
+    "school": "Abu Hanifa al-Nu'man ibn Thabit (699–767), founder of the Hanafi school, the largest school of Islamic jurisprudence followed by approximately 45% of the world's Muslims. A merchant by trade and a tabi'i, he pioneered the use of analogical reasoning (qiyas) and juristic preference (istihsan) in Islamic law.",
     "books": [
       {
         "title": "Kitab al-Athar (The Book of Narrations)",
@@ -62,7 +62,7 @@
   },
   {
     "famous": "Imam Malik ibn Anas",
-    "school": "Maliki School — Founder. Dominant in North Africa, West Africa, and Andalusia.",
+    "school": "Malik ibn Anas (711–795), founder of the Maliki school of jurisprudence, spent his entire life in Madinah where he compiled the Muwatta, the earliest surviving collection of hadith and legal rulings. He incorporated the living practice of Madinah as a source of law.",
     "books": [
       {
         "title": "Al-Muwatta (The Well-Trodden Path)",
@@ -159,7 +159,7 @@
   },
   {
     "famous": "Imam al-Shafi'i",
-    "school": "Shafi'i School — Founder. Dominant in SE Asia, East Africa, and the Levant.",
+    "school": "Muhammad ibn Idris al-Shafi'i (767–820), founder of the Shafi'i school of jurisprudence and the first to systematise Islamic legal theory in his Risala. He synthesised the approaches of the Hanafi rationalists and the Maliki traditionalists, establishing the Quran, Sunnah, consensus, and analogy as the four sources of law.",
     "books": [
       {
         "title": "Al-Risala (The Letter — founding text of Islamic legal theory)",
@@ -172,6 +172,10 @@
         "url": "https://archive.org/search?query=Kitab%20al-Umm%20Imam%20Shafi%27i",
         "magnum": false,
         "note": ""
+      },
+      {
+        "title": "Al-Risala (Treatise on Islamic Jurisprudence)",
+        "url": "https://archive.org/details/IslamicJurisprudenceShafiiRisala"
       }
     ],
     "parents": "ldris bin al-'Abbas b. 'Uthman",
@@ -193,6 +197,12 @@
     "school": "Abu Uthman Amr ibn Bahr al-Jahiz (776–868) was the towering polymath of Abbasid-era Arabic letters — essayist, zoologist, satirist, and theologian — widely regarded as the father of Arabic prose literature. Born in Basra to a family of modest means (possibly of East African descent), he studied under the greatest scholars of Basra and Baghdad and became the leading intellectual of the Mu'tazili school. His Kitab al-Hayawan (Book of Animals) is a seven-volume masterwork blending zoology with theology, philosophy, and Arabic literary culture. His Kitab al-Bukhala (Book of Misers) remains a classic of Arabic comic prose. Al-Jahiz wrote over 200 works on topics from rhetoric and politics to theology and natural science. His vivid, witty, digressive prose style permanently shaped the Arabic essay tradition.",
     "quotes": [
       "Whoever knows himself knows his Lord."
+    ],
+    "books": [
+      {
+        "title": "The Book of Misers (Kitab al-Bukhala)",
+        "url": "https://archive.org/details/bookofmisers0000jahi"
+      }
     ]
   },
   {
@@ -220,6 +230,10 @@
       {
         "title": "Musnad Ahmad",
         "url": "https://sunnah.com/ahmad"
+      },
+      {
+        "title": "Kitab al-Zuhd (Book of Asceticism)",
+        "url": "https://archive.org/details/KitabAzZuhd-EnglishTranslation"
       }
     ],
     "parents": "Muhammad Ibn Hanbal / Saffiyah bint Maimoonah bint 'Abdul Malik",
@@ -269,6 +283,10 @@
         "url": "https://archive.org/search?query=Tafsir%20Tabari%20Jami%20al-Bayan",
         "magnum": false,
         "note": ""
+      },
+      {
+        "title": "The History of al-Tabari (SUNY translation)",
+        "url": "https://archive.org/details/HistoryOfAlTabari"
       }
     ],
     "quotes": [
@@ -319,7 +337,7 @@
   },
   {
     "famous": "Al-Ash'ari",
-    "school": "Ash'ari School — Founder. The dominant theological school of Sunni Islam worldwide.",
+    "school": "Abu al-Hasan al-Ash'ari (874–936), founder of the Ash'ari school of theology, the dominant theological tradition in Sunni Islam. Originally a Mu'tazili rationalist, he famously broke with his teachers and developed a middle path using rational argument to defend orthodox beliefs.",
     "books": [
       {
         "title": "Al-Ibana 'an Usul al-Diyana",
@@ -352,7 +370,7 @@
   },
   {
     "famous": "Al-Masudi",
-    "school": "Mu'tazili / Universal Scholarship — First to integrate geography, natural history and world history",
+    "school": "Abu al-Hasan al-Mas'udi (896–956), the 'Herodotus of the Arabs,' was the first historian to combine geography, natural history, and world history into a single narrative. His Muruj al-Dhahab covers civilisations from China to the Franks.",
     "books": [
       {
         "title": "Muruj al-Dhahab (Meadows of Gold — encyclopaedic world history)",
@@ -380,7 +398,7 @@
   },
   {
     "famous": "Al-Qabisi",
-    "school": "Maliki school — leading Maliki jurist of North Africa; wrote the first treatise on Islamic education",
+    "school": "Abu al-Hasan al-Qabisi (936–1012), the leading Maliki jurist and educator of Qayrawan, Tunisia. His al-Risala al-Mufassala is the earliest surviving Islamic treatise devoted entirely to educational theory.",
     "quotes": [
       "The child who is not taught the Quran has been deprived of the greatest gift.",
       "Education is not the filling of a vessel — it is the lighting of a fire.",
@@ -422,17 +440,27 @@
       "Justice is the foundation of sovereignty — the ruler who abandons it has abandoned the purpose of his rule.",
       "Leadership is established to protect the faith and manage worldly affairs.",
       "Justice is the foundation of sovereignty — the ruler who abandons it has abandoned his purpose."
+    ],
+    "books": [
+      {
+        "title": "Al-Ahkam al-Sultaniyyah (The Laws of Islamic Governance)",
+        "url": "https://archive.org/details/al-ahkam-as-sultaniyyah"
+      }
     ]
   },
   {
     "famous": "Ibn Hazm",
-    "school": "Zahiri School — Leader. His literalism opposed both Ash'ari theology and analogical jurisprudence.",
+    "school": "Abu Muhammad Ali ibn Hazm (994–1064), the leading figure of the Zahiri school. His Tawq al-Hamama (Ring of the Dove) is a classic treatise on love, while his al-Fisal is the first systematic comparative study of world religions.",
     "books": [
       {
         "title": "Tawq al-Hamama (The Ring of the Dove — on love)",
         "url": "https://archive.org/search?query=Tawq%20al-Hamama%20Ibn%20Hazm%20ring%20dove%20love",
         "magnum": true,
         "note": "Most beautiful Arabic treatise on love — a medieval masterpiece of philosophy, poetry and autobiography."
+      },
+      {
+        "title": "The Ring of the Dove (Tawq al-Hamama)",
+        "url": "https://archive.org/details/ringofthedovetre00ibnh"
       }
     ],
     "quotes": [
@@ -455,7 +483,7 @@
   },
   {
     "famous": "Imam al-Juwayni",
-    "school": "Ash'ari / Shafi'i — Greatest theologian before al-Ghazali; taught in Mecca and Medina for years",
+    "school": "Abu al-Ma'ali al-Juwayni (1028–1085), known as 'Imam al-Haramayn,' the greatest Ash'ari theologian before al-Ghazali and al-Ghazali's primary teacher at the Nizamiyya madrasa in Nishapur.",
     "books": [
       {
         "title": "Al-Irshad (The Guide — Ash'ari theology)",
@@ -489,7 +517,7 @@
   },
   {
     "famous": "Al-Qadi Iyad",
-    "school": "Maliki — Most celebrated Maliki scholar of medieval al-Andalus and the Maghrib",
+    "school": "Qadi Iyad ibn Musa al-Yahsubi (1083–1149), the most celebrated Maliki scholar of medieval al-Andalus and the Maghreb. His al-Shifa bi-Ta'rif Huquq al-Mustafa became the most widely read work on the Prophet's character.",
     "books": [
       {
         "title": "Al-Shifa bi-Ta'rif Huquq al-Mustafa (The Cure — on the Rights of the Prophet)",
@@ -533,7 +561,7 @@
   },
   {
     "famous": "Ibn al-Jawzi",
-    "school": "Hanbali — Greatest medieval Islamic preacher; his sermons in Baghdad drew crowds of 100,000",
+    "school": "Abu al-Faraj Ibn al-Jawzi (1116–1201), the greatest Hanbali preacher of medieval Baghdad whose sermons reportedly drew crowds of over 100,000. He wrote over 700 works spanning tafsir, hadith, history, and biography.",
     "books": [
       {
         "title": "Talbis Iblis (The Devil's Deception — critique of Sufi excess)",
@@ -557,6 +585,12 @@
       "I warn you against shedding blood without justice — blood that is shed never sleeps.",
       "It is not the walls of Jerusalem that make it holy — it is the hearts of those who love it.",
       "The greatest victory I seek is not conquest of lands but conquest of my own self."
+    ],
+    "books": [
+      {
+        "title": "The Life of Saladin (Beha ed-Din)",
+        "url": "https://archive.org/details/lifeofsaladin00behauoft"
+      }
     ]
   },
   {
@@ -623,7 +657,7 @@
   },
   {
     "famous": "Ibn Wasil",
-    "school": "Ayyubid-Mamluk Court — his Mufarrij al-Kurub is primary Arabic source for Crusader-era history",
+    "school": "Jamal al-Din Ibn Wasil (1208–1298), Ayyubid-era historian whose Mufarrij al-Kurub is the most important Arabic primary source for the Crusader period from the Muslim perspective.",
     "books": []
   },
   {
@@ -667,7 +701,7 @@
   },
   {
     "famous": "Allama Hilli",
-    "school": "Twelver Shia jurisprudence — the most prolific medieval Shia scholar"
+    "school": "Hasan ibn Yusuf ibn al-Mutahhar al-Hilli (1250–1325), the most prolific and influential Twelver Shia scholar of the medieval period. He wrote over 500 works on jurisprudence, theology, and philosophy. He secured the conversion of the Mongol Ilkhan Oljaitu to Shia Islam."
   },
   {
     "famous": "Dawud al-Kayseri",
@@ -686,6 +720,14 @@
       {
         "title": "Kitab al-Iman (Book of Faith)",
         "url": "https://archive.org/details/KitabAlImanBookOfFaith"
+      },
+      {
+        "title": "Al-Uboodiyah (Being a True Slave of Allah)",
+        "url": "https://archive.org/details/al-uboodiyahBeingATrueSlaveOfAllahswt--"
+      },
+      {
+        "title": "Ibn Taymiyyah Expounds on Islam",
+        "url": "https://archive.org/details/IbnTaymiyyahExpoundsOnIslam-Alhamdulillah-library.blogspot.in.pdf"
       }
     ],
     "quotes": [
@@ -707,13 +749,29 @@
   },
   {
     "famous": "Ibn al-Qayyim",
-    "school": "Hanbali / Salafi — Uniquely combined reform theology with profound spiritual psychology",
+    "school": "Shams al-Din Ibn Qayyim al-Jawziyya (1292–1350), the most distinguished student of Ibn Taymiyyah. His works uniquely combine rigorous legal scholarship with profound spiritual psychology — his Madarij al-Salikin maps the stations of the spiritual path.",
     "books": [
       {
         "title": "Madarij al-Salikin (Stations of the Wayfarers — 3 vols)",
         "url": "https://archive.org/search?query=Madarij%20al-Salikin%20Ibn%20Qayyim%20al-Jawziyya",
         "magnum": true,
         "note": "A Hanbali engagement with classical Sufi tradition — the most profound medieval Islamic psychology."
+      },
+      {
+        "title": "Al-Fawaid: A Collection of Wise Sayings",
+        "url": "https://archive.org/details/al-fawaid_202007"
+      },
+      {
+        "title": "Inner Dimensions of the Prayer",
+        "url": "https://archive.org/details/InnerDimensionsOfThePrayer"
+      },
+      {
+        "title": "Kitab al-Ruh (Book of the Soul)",
+        "url": "https://archive.org/details/kitab-ar-ruh-by-imam-ibn-qayyim-translation-by-muhammad-husnain"
+      },
+      {
+        "title": "Paragons of the Quran",
+        "url": "https://archive.org/details/paragons-of-the-quran-by-ibn-qayyim-al-jawziyyah"
       }
     ],
     "quotes": [
@@ -739,12 +797,16 @@
   },
   {
     "famous": "Ibn Battuta",
-    "school": "Maliki / Universal Travel — More than three times the distance of Marco Polo over the same era",
+    "school": "Shams al-Din Abu Abdullah Muhammad ibn Battuta (1304–1368), the greatest traveller of the pre-modern world. Over 29 years he covered approximately 120,000 kilometres — three times the distance of Marco Polo.",
     "books": [
       {
         "title": "The Travels of Ibn Battuta (4 vols)",
         "url": "https://archive.org/details/travels-of-ibn-battuta",
         "note": "Complete Gibb English translation of the Rihla"
+      },
+      {
+        "title": "The Travels of Ibn Battuta (Gibb translation)",
+        "url": "https://archive.org/details/travelsofibnbatt0000ibnb"
       }
     ],
     "quotes": [
@@ -765,7 +827,7 @@
   },
   {
     "famous": "Al-Subki",
-    "school": "Shafi'i school — major scholar of 14th century Damascus",
+    "school": "Taj al-Din al-Subki (1327–1370), one of the most eminent Shafi'i scholars of 14th-century Damascus. His Tabaqat al-Shafi'iyya al-Kubra is the definitive biographical dictionary of the Shafi'i school.",
     "quotes": [
       "Consensus is a proof — but only when it is truly established, not merely claimed.",
       "The scholar who clings to his own school against clear evidence has made his school his god.",
@@ -865,7 +927,7 @@
   },
   {
     "famous": "Al-Wansharisi",
-    "school": "Maliki school — compiled the largest collection of Islamic legal opinions from North Africa",
+    "school": "Ahmad al-Wansharisi (1430–1508), the leading Maliki jurist of late medieval North Africa. His al-Mi'yar al-Mu'rib is the largest surviving collection of North African and Andalusian Islamic legal opinions, running to twelve volumes.",
     "quotes": [
       "The scholar who gives a ruling without full knowledge has betrayed his community.",
       "Silence in matters of law is sometimes more pious than speaking.",
@@ -885,7 +947,7 @@
   },
   {
     "famous": "Zenbilli Ali Efendi",
-    "school": "Hanafi school — served as Shaykh al-Islam for 25 years; known for challenging sultans"
+    "school": "Zenbilli Ali Cemali Efendi (1440–1526), Ottoman Shaykh al-Islam who served under three sultans for 25 years. Famous for lowering a basket (zenbil) from his window so people could submit questions anonymously."
   },
   {
     "famous": "Shaykh Zarruq",
@@ -938,7 +1000,7 @@
   },
   {
     "famous": "Ebussuud Efendi",
-    "school": "Hanafi school — Shaykh al-Islam of Suleiman the Magnificent; unified Ottoman state and Islamic law"
+    "school": "Ebussuud Mehmed Efendi (1490–1574), Shaykh al-Islam under Suleiman the Magnificent for nearly 30 years, who achieved the harmonisation of Ottoman state law with Islamic jurisprudence."
   },
   {
     "famous": "Imam Birgivi",
@@ -982,7 +1044,7 @@
   },
   {
     "famous": "Mulla Muhsin Fayd Kashani",
-    "school": "Safavid school — student of Mulla Sadra; wrote the major Shia hadith commentary; mystic and poet"
+    "school": "Mulla Muhsin Fayd Kashani (1598–1680), a leading Safavid-era scholar, student and son-in-law of Mulla Sadra. He wrote the al-Wafi hadith commentary and al-Safi Quran commentary."
   },
   {
     "famous": "Nuruddin al-Raniri",
@@ -1109,6 +1171,12 @@
       "A government of injustice is more destructive to a country than sixty years of tyranny by enemies.",
       "Teaching one man to read is more valuable than fighting a hundred battles.",
       "The scholar who is silent in the face of injustice is a dumb devil."
+    ],
+    "books": [
+      {
+        "title": "Bayan Wujub al-Hijra",
+        "url": "https://archive.org/details/BayanWujubAlHijra"
+      }
     ]
   },
   {
@@ -1191,6 +1259,12 @@
       "I went to the West and saw Islam without Muslims — I came back to the East and saw Muslims without Islam.",
       "The greatest obstacle to Islamic reform is the confusion between the religion and the culture.",
       "Reason is not the enemy of revelation — it is its companion."
+    ],
+    "books": [
+      {
+        "title": "The Theology of Unity (Risalat al-Tawhid)",
+        "url": "https://archive.org/details/theologyofunity00muha"
+      }
     ]
   },
   {
@@ -1288,7 +1362,7 @@
   },
   {
     "famous": "Hasan al-Banna",
-    "school": "Muslim Brotherhood founder — pioneered Islamic social reform movements in the modern world",
+    "school": "Hasan al-Banna (1906–1949), Egyptian teacher who founded the Muslim Brotherhood in 1928, the most influential Islamic social and political movement of the 20th century. He was assassinated by Egyptian government agents.",
     "quotes": [
       "God is our objective, the Prophet is our leader, the Quran is our constitution, jihad is our way, and death for the sake of God is our highest aspiration.",
       "The Muslim who does not work for the revival of his religion has not understood his religion.",
@@ -1296,6 +1370,12 @@
       "The Muslim who does not work for the revival of his religion has not understood his religion.",
       "Reform begins with the self — then the family, then the community, then the nation.",
       "Every Muslim is responsible for the state of his community — neutrality is not an option."
+    ],
+    "books": [
+      {
+        "title": "To What Do We Invite Humanity?",
+        "url": "https://archive.org/details/HasanAlBannaToWhatDoWeInviteHumanity"
+      }
     ]
   },
   {
@@ -1305,6 +1385,16 @@
       "The Quran is not a book of theology alone — it is a programme for the transformation of reality.",
       "Ignorance is not simply a lack of knowledge — it is the state of a society that has rejected God’s sovereignty.",
       "The Muslim who is content with injustice has not understood his faith."
+    ],
+    "books": [
+      {
+        "title": "Milestones (Ma'alim fi al-Tariq)",
+        "url": "https://archive.org/details/SaijidQutubMilestones"
+      },
+      {
+        "title": "In the Shade of the Quran (selections)",
+        "url": "https://archive.org/details/InTheShadeOfTheQuran"
+      }
     ]
   },
   {

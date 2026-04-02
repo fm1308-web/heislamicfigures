@@ -1,7 +1,7 @@
 [
   {
     "famous": "Jabir ibn Hayyan",
-    "school": "Alchemical / Scientific School — student of Ja'far al-Sadiq",
+    "school": "Abu Musa Jabir ibn Hayyan (c. 721–815), known in Europe as Geber, is considered the father of Islamic alchemy and early chemistry. A student of Imam Ja'far al-Sadiq, he introduced systematic experimental methods.",
     "books": [
       {
         "title": "Kitab al-Kimya (Book of Composition)",
@@ -17,7 +17,7 @@
   },
   {
     "famous": "Al-Khwarizmi",
-    "school": "House of Wisdom, Baghdad — Founded algebra as a mathematical discipline",
+    "school": "Abu Ja'far Muhammad ibn Musa al-Khwarizmi (c. 780–850), who founded algebra as a discipline. His Kitab al-Jabr gave algebra its name, and his work on Indian numerals introduced the decimal system to Europe. The word 'algorithm' derives from his name.",
     "quotes": [
       "I have composed this work on calculation by completion and reduction, confining it to what is easiest and most useful — such as men constantly require in cases of inheritance, legacies, and trade.",
       "The numbers required in calculation are of three kinds: roots, squares, and simple numbers."
@@ -54,7 +54,7 @@
   },
   {
     "famous": "Al-Razi (Rhazes)",
-    "school": "Islamic Medicine, Baghdad — Founded empirical clinical medicine through patient observation",
+    "school": "Abu Bakr Muhammad ibn Zakariya al-Razi (854–925), known as Rhazes, the greatest clinician of the medieval Islamic world. His al-Hawi compiled the entire medical knowledge of Greek, Indian, and Islamic traditions. He first distinguished between smallpox and measles.",
     "books": [
       {
         "title": "Al-Hawi al-Kabir (The Comprehensive Book of Medicine — 25 vols)",
@@ -107,12 +107,16 @@
   },
   {
     "famous": "Al-Biruni",
-    "school": "Ghaznavid Court / Universal Scholarship — wrote 146 works across 11 disciplines",
+    "school": "Abu Rayhan al-Biruni (973–1048), a polymath who wrote 146 works. His Kitab al-Hind is the first systematic study of Indian civilisation by an outsider. He calculated the earth's radius to within 16 km of the modern value.",
     "books": [
       {
         "title": "Alberuni's India (Kitab al-Hind)",
         "url": "https://archive.org/details/alberunisindiaac01biru",
         "note": "Classic study of Indian civilization — English"
+      },
+      {
+        "title": "The Chronology of Ancient Nations",
+        "url": "https://archive.org/details/chronologyofanci00biru"
       }
     ],
     "quotes": [
@@ -142,7 +146,7 @@
   },
   {
     "famous": "al-Jazari",
-    "school": "Artuqid Court Engineering — chief engineer at the Artuqid court in Diyarbakir",
+    "school": "Badi' al-Zaman al-Jazari (1136–1206), chief engineer at the Artuqid court who wrote the Book of Knowledge of Ingenious Mechanical Devices, describing 50 mechanisms including programmable automata and the earliest known crankshaft.",
     "books": [
       {
         "title": "Kitab fi Ma'rifat al-Hiyal al-Handasiyya (Book of Knowledge of Ingenious Mechanical Devices)",
@@ -245,7 +249,7 @@
   },
   {
     "famous": "Shaykh Bahai",
-    "school": "Safavid scholarship — polymath genius of architecture, mathematics, astronomy, poetry and fiqh"
+    "school": "Baha al-Din al-Amili, known as Shaykh Bahai (1547–1621), the most versatile scholar of the Safavid era — simultaneously a leading jurist, mathematician, astronomer, architect, and poet. He designed Isfahan's Masjid-i Shah."
   },
   {
     "famous": "Gelenbevi Ismail Efendi",

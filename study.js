@@ -158,30 +158,33 @@ async function selectStudyTab(tab){
     return;
   }
 
-  if(tab==='quotes'){
-    const p=PEOPLE.find(function(x){return x.slug===slug});
-    if(p){
-      await _ensureDetails(p);
-      if(p.quotes&&p.quotes.length){
-        body.innerHTML=p.quotes.map(function(q){
-          return '<blockquote style="margin:0 0 14px 0;padding:10px 14px;'+
-            'border-left:3px solid var(--accent);'+
-            'background:rgba(212,168,74,0.05);'+
-            "font-family:'Source Sans 3',sans-serif;font-size:13px;"+
-            'font-style:normal;color:var(--text);line-height:1.65;">'+
-            esc(q)+
-            '<div style="font-size:10px;font-style:italic;color:rgba(200,168,74,.45);margin-top:6px">Source: to be linked \u2014 coming soon</div>'+
-            '</blockquote>';
-        }).join('');
-        return;
+  if(tab==='video'){
+    try{
+      const res=await fetch('data/islamic/studyroom/video/'+slug+'-manifest.json?v='+Date.now());
+      if(res.ok){
+        const items=await res.json();
+        if(items.length){
+          items.forEach(function(v,i){
+            if(i>0){const hr=document.createElement('div');hr.style.cssText='border-top:1px solid rgba(201,168,76,.25);margin:24px 0';body.appendChild(hr);}
+            const t=document.createElement('div');
+            t.style.cssText="font-family:'Cinzel',serif;font-size:1em;font-weight:700;color:#c9a84c;letter-spacing:.06em;margin-bottom:10px";
+            t.textContent=v.title;
+            body.appendChild(t);
+            const wrap=document.createElement('div');
+            wrap.style.cssText='position:relative;margin-bottom:32px';
+            const f=document.createElement('iframe');
+            f.setAttribute('allowfullscreen','');
+            f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            f.style.cssText='width:100%;height:400px;border:none;display:block;border-radius:5px';
+            f.src=v.url;
+            wrap.appendChild(f);
+            body.appendChild(wrap);
+          });
+          return;
+        }
       }
-    }
+    }catch(e){}
     body.innerHTML=placeholder;
-    return;
-  }
-
-  if(tab==='quiz'){
-    body.innerHTML='<em style="color:rgba(200,168,74,.7)">Quiz coming soon</em>';
     return;
   }
 

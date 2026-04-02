@@ -1,7 +1,7 @@
 [
   {
     "famous": "Al-Kindi",
-    "school": "House of Wisdom, Baghdad — First to systematically introduce Greek philosophy into the Islamic world",
+    "school": "Abu Yusuf al-Kindi (c. 801–873), the 'Philosopher of the Arabs,' was the first major Islamic philosopher and a key figure at the Abbasid House of Wisdom. He systematically introduced Greek philosophy to the Islamic world, wrote over 260 works on mathematics, optics, medicine, and metaphysics, and argued that philosophy and revelation were complementary paths to truth.",
     "books": [
       {
         "title": "Fi al-Falsafa al-Ula (On First Philosophy)",
@@ -20,7 +20,7 @@
   },
   {
     "famous": "Al-Farabi",
-    "school": "Islamic Peripatetic Philosophy (Falsafa) — Founder",
+    "school": "Abu Nasr al-Farabi (c. 872–950), known as the 'Second Teacher' after Aristotle, was the founder of Islamic political philosophy. Working in Baghdad and Aleppo, he synthesised Aristotelian logic with Islamic theology and wrote al-Madina al-Fadila (The Virtuous City), envisioning the ideal state governed by philosopher-kings. He also made major contributions to music theory.",
     "books": [
       {
         "title": "Al-Madina al-Fadila (The Virtuous City)",
@@ -72,7 +72,7 @@
   },
   {
     "famous": "Ibn Sina",
-    "school": "Islamic Peripatetic / Avicennian Philosophy — crossover with Sufism via Visionary Recitals",
+    "school": "Abu Ali Ibn Sina (980–1037), known in Europe as Avicenna, was a Persian polymath whose Canon of Medicine served as the standard medical textbook in both the Islamic world and Europe for over 500 years. His Kitab al-Shifa (Book of Healing) is a vast philosophical encyclopedia. A child prodigy who mastered the Quran by age ten, he served as physician and vizier to multiple rulers.",
     "books": [
       {
         "title": "Al-Qanun fi al-Tibb (The Canon of Medicine)",
@@ -135,7 +135,7 @@
   },
   {
     "famous": "Ibn Tufayl",
-    "school": "Andalusian Philosophy — Introduced Ibn Rushd to the caliph; his novel shaped European philosophy",
+    "school": "Andalusian philosopher and physician (c. 1105–1185) who served as court physician to the Almohad caliphs and introduced Ibn Rushd to the caliph. His philosophical novel Hayy ibn Yaqzan (Alive, Son of Awake) tells of a child raised alone on an island who discovers truth through reason alone — a work that influenced Defoe's Robinson Crusoe and Enlightenment thought.",
     "books": [
       {
         "title": "Hayy ibn Yaqzan (Alive, Son of Awake)",
@@ -157,7 +157,7 @@
   },
   {
     "famous": "Ibn Rushd",
-    "school": "Islamic Peripatetic Philosophy — Aristotelian School; in direct debate with al-Ghazali",
+    "school": "Abu al-Walid Ibn Rushd (1126–1198), known in Europe as Averroes, was the most important Aristotelian philosopher of the Islamic world. Serving as chief judge of Cordoba and court physician to the Almohad caliphs, he wrote definitive commentaries on virtually all of Aristotle's works. His Tahafut al-Tahafut defended philosophy against al-Ghazali's critique and profoundly influenced medieval European scholasticism.",
     "books": [
       {
         "title": "Tahafut al-Tahafut (The Incoherence of the Incoherence)",
@@ -199,13 +199,17 @@
   },
   {
     "famous": "Yahya Suhrawardi (Maqtul)",
-    "school": "Ishraqiyya (Illuminationist) School — Founder. Executed by Saladin's court 1191.",
+    "school": "Shihab al-Din Yahya Suhrawardi (1154–1191), founder of the Illuminationist (Ishraqi) school of philosophy, synthesised Zoroastrian light symbolism with Islamic Neoplatonism and Peripatetic philosophy. His Hikmat al-Ishraq (Philosophy of Illumination) proposed light as the fundamental reality. Executed at age 36 by order of Saladin's son in Aleppo, he is known as al-Maqtul (the Slain).",
     "books": [
       {
         "title": "Hikmat al-Ishraq (Philosophy of Illumination)",
         "url": "https://archive.org/search?query=Hikmat%20al-Ishraq%20Suhrawardi%20Maqtul%20illumination%20philosophy",
         "magnum": true,
         "note": "Founded the Illuminationist school of Islamic philosophy."
+      },
+      {
+        "title": "The Philosophy of Illumination",
+        "url": "https://archive.org/details/ThePhilosophyOfIllumination"
       }
     ],
     "quotes": [
@@ -216,7 +220,7 @@
   },
   {
     "famous": "Ibn Arabi",
-    "school": "Akbarian School / Wahdat al-Wujud (Unity of Being) — Founder",
+    "school": "Muhyi al-Din Ibn Arabi (1165–1240), the 'Greatest Master' (al-Shaykh al-Akbar), was an Andalusian-born mystic and philosopher whose doctrine of Wahdat al-Wujud (Unity of Being) became the most influential metaphysical system in Sufism. His encyclopedic Futuhat al-Makkiyya spans 560 chapters, while his Fusus al-Hikam distils prophetic wisdom into 27 chapters. He settled in Damascus, where his tomb remains a pilgrimage site.",
     "books": [
       {
         "title": "Fusus al-Hikam (Bezels of Wisdom)",
@@ -239,6 +243,14 @@
       {
         "title": "Tarjuman al-Ashwaq (Nicholson translation)",
         "url": "https://sacred-texts.com/isl/taa/index.htm"
+      },
+      {
+        "title": "The Bezels of Wisdom (Fusus al-Hikam)",
+        "url": "https://archive.org/details/bezelswisdom00ibna"
+      },
+      {
+        "title": "The Tarjuman al-Ashwaq",
+        "url": "https://archive.org/details/tarjumanalashwaq00ibna"
       }
     ],
     "quotes": [
@@ -251,11 +263,11 @@
   },
   {
     "famous": "Ibn Sab'in",
-    "school": "Andalusian mystical philosophy — correspondent of Frederick II; controversial unitive mystic"
+    "school": "Andalusian mystical philosopher (1217–1269) who developed a radical doctrine of absolute unity, going beyond even Ibn Arabi in asserting the oneness of all existence. He famously corresponded with the Holy Roman Emperor Frederick II on philosophical questions. Accused of heresy, he fled across North Africa and eventually died in Mecca, reportedly by suicide."
   },
   {
     "famous": "Mir Damad",
-    "school": "Isfahan School — teacher of Mulla Sadra; pioneer of the school of Isfahan Illuminationist philosophy"
+    "school": "Muhammad Baqir Astarabadi, known as Mir Damad (d. 1631), was the founder of the Isfahan School of philosophy and teacher of Mulla Sadra. He developed a distinctive metaphysics of time and originated the concept of huduth dahri (perpetual origination). He was also a poet, calligrapher, and one of the most powerful intellectual figures of the Safavid era."
   },
   {
     "famous": "Mulla Sadra",
@@ -266,6 +278,10 @@
         "url": "https://archive.org/search?query=Al-Asfar%20al-Arba%27a%20Mulla%20Sadra%20four%20journeys%20philosophy",
         "magnum": true,
         "note": "The magnum opus of Islamic philosophy — a complete philosophical system integrating reason, mysticism and revelation."
+      },
+      {
+        "title": "The Elixir of the Gnostics",
+        "url": "https://archive.org/details/TheElixirOfTheGnostics"
       }
     ],
     "quotes": [
@@ -290,6 +306,16 @@
       "The self is a flame — it must be fed with love, and its heat is action.",
       "Do not be satisfied with the world as it is — the world was made to be remade.",
       "Raise yourself to such a height that God Himself asks you: What do you desire?"
+    ],
+    "books": [
+      {
+        "title": "The Secrets of the Self (Asrar-i-Khudi)",
+        "url": "https://archive.org/details/secretsofselfiqu00iqbauoft"
+      },
+      {
+        "title": "The Reconstruction of Religious Thought in Islam",
+        "url": "https://archive.org/details/reconstructionof00iqba"
+      }
     ]
   },
   {
@@ -397,6 +423,12 @@
     "quotes": [
       "I do not follow any theologian blindly — I follow evidence wherever it leads.",
       "The truth does not become false because the majority abandon it, nor false become true because the majority follow it."
+    ],
+    "books": [
+      {
+        "title": "Al-Ibana an Usul al-Diyana",
+        "url": "https://archive.org/details/al-ibana"
+      }
     ]
   },
   {

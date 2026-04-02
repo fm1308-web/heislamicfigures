@@ -88,7 +88,7 @@
   },
   {
     "famous": "Imam al-Bukhari",
-    "school": "Khorasan / Hadith Sciences — The gold standard of hadith authentication",
+    "school": "Muhammad ibn Ismail al-Bukhari (810–870), compiler of Sahih al-Bukhari, universally regarded as the most authentic book after the Quran. From 600,000 hadiths he heard, he selected 7,275 (2,602 without repetition) applying the strictest verification criteria ever devised. Born in Bukhara, he travelled for sixteen years across the Islamic world collecting hadiths from over 1,000 scholars.",
     "books": [
       {
         "title": "Sahih al-Bukhari (The Authentic Collection)",
@@ -127,7 +127,7 @@
   },
   {
     "famous": "Abu Dawud",
-    "school": "Basran / Hadith Sciences — Focus on legal narrations",
+    "school": "Abu Dawud al-Sijistani (817–889), compiler of the Sunan Abu Dawud, the third of the six canonical hadith collections. He collected 500,000 hadiths and selected 4,800 for his Sunan, focusing specifically on hadith relevant to Islamic law and jurisprudence. Based in Basra, he was a student of Ahmad ibn Hanbal.",
     "books": [
       {
         "title": "Sunan Abu Dawud",
@@ -153,7 +153,7 @@
   },
   {
     "famous": "Muslim ibn al-Hajjaj",
-    "school": "Khorasan School / Hadith Sciences — studied under Imam Ahmad ibn Hanbal and al-Bukhari",
+    "school": "Muslim ibn al-Hajjaj al-Naysaburi (815–875) compiled Sahih Muslim, the second most authoritative hadith collection in Sunni Islam. He studied under al-Bukhari and Ahmad ibn Hanbal, and selected approximately 4,000 hadiths from 300,000 he collected.",
     "books": [
       {
         "title": "Sahih Muslim (3,033 hadiths — most authentic after Bukhari)",
@@ -197,7 +197,7 @@
   },
   {
     "famous": "Ibn Majah",
-    "school": "Khorasan / Hadith Sciences — Sixth and final of the six canonical hadith collections",
+    "school": "Abu Abdullah Muhammad ibn Majah (824–887), compiler of the Sunan Ibn Majah, the sixth and final of the six canonical hadith collections of Sunni Islam. Born in Qazvin, he travelled across Iraq, the Hijaz, Egypt, and Syria collecting hadiths. His Sunan contains over 4,000 hadiths, including some unique narrations not found in the other five collections.",
     "books": [
       {
         "title": "Sunan Ibn Majah",
@@ -215,7 +215,7 @@
   },
   {
     "famous": "Al-Nasa'i",
-    "school": "Khorasan / Egypt — Hadith Sciences; known for strictest authentication criteria",
+    "school": "Ahmad ibn Shu'ayb al-Nasa'i (829–915), compiler of the Sunan al-Nasa'i, one of the six canonical hadith collections. He was known for applying the strictest authentication criteria among the six compilers, making his collection particularly valued for its rigour. Born in Nasa, Khorasan.",
     "books": [
       {
         "title": "Al-Sunan al-Kubra / Al-Mujtaba",
@@ -264,6 +264,14 @@
       {
         "title": "Forty Hadith of Imam Nawawi",
         "url": "https://sunnah.com/nawawi40"
+      },
+      {
+        "title": "Forty Hadith of al-Nawawi (English)",
+        "url": "https://archive.org/details/forty-nawawi-en"
+      },
+      {
+        "title": "Commentary on the Forty Hadith",
+        "url": "https://archive.org/details/CommentaryOnTheFortyHadithOfAlNawawi"
       }
     ]
   },
@@ -295,7 +303,7 @@
   },
   {
     "famous": "Ibn Kathir",
-    "school": "Shafi'i school — student of Ibn Taymiyya; wrote the definitive classical tafsir",
+    "school": "Ismail ibn Umar ibn Kathir (1300–1373), Shafi'i scholar and student of Ibn Taymiyyah, who wrote the most widely used classical Quran commentary (Tafsir Ibn Kathir), interpreting the Quran primarily through hadith. His al-Bidaya wa al-Nihaya is a monumental history from creation to his own time. Based in Damascus.",
     "books": [],
     "quotes": [
       "Do not be deceived by the length of time — for every moment brings you closer to your end.",
@@ -322,7 +330,7 @@
   },
   {
     "famous": "Al-Sakhawi",
-    "school": "Shafi'i school — major biographer and hadith master of the 15th century",
+    "school": "Shams al-Din al-Sakhawi (1428–1497), a leading Shafi'i hadith master and biographer based in Cairo. A student of Ibn Hajar al-Asqalani, he wrote al-Daw' al-Lami', a biographical dictionary of over 11,000 figures from the 15th century — the most comprehensive such work of its era.",
     "quotes": [
       "Biography is the most honest form of history — it pins events to persons and persons to deeds.",
       "The scholar who does not acknowledge his sources has stolen what is not his.",
