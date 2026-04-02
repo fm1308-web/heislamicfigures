@@ -83,14 +83,7 @@
   {
     "famous": "Mujahid ibn Jabr",
     "school": "The greatest exegete (mufassir) of the Tabi'un; read the entire Quran to Ibn Abbas thirty times, stopping at every verse to ask for its meaning — his tafsir represents the earliest authoritative interpretation; al-Shafi'i said: 'Whoever wants tafsir should go to Mujahid'; his exegesis is the primary source for all later commentators",
-    "books": [
-      {
-        "title": "Tafsir Mujahid ibn Jabr",
-        "url": "https://archive.org/search?query=tafsir+mujahid+ibn+jabr",
-        "magnum": true,
-        "note": "Earliest surviving systematic Quranic commentary"
-      }
-    ],
+    "books": [],
     "parents": "Qays bin 'Abdullah bin Malik",
     "quotes": [
       "I read the Quran to Ibn Abbas three times from beginning to end — stopping at every verse to ask what it meant.",
@@ -135,14 +128,7 @@
   {
     "famous": "Ibn Sirin",
     "school": "The foremost Islamic scholar of dream interpretation — his manual (Tafsir al-Ahlam) remains the most influential in the Islamic world; also a major hadith transmitter and jurist; freed slave of Anas ibn Malik; his piety was legendary — when he laughed by day he wept at night",
-    "books": [
-      {
-        "title": "Muntakhab al-Kalam fi Tafsir al-Ahlam (Dream Interpretation)",
-        "url": "https://archive.org/search?query=ibn+sirin+dream+interpretation",
-        "magnum": true,
-        "note": "The most referenced Islamic work on dream interpretation"
-      }
-    ],
+    "books": [],
     "parents": "Sirin / Safiyya (client of Abu Bakr)",
     "quotes": [
       "This knowledge is the religion — so be careful from whom you take your religion.",
@@ -238,6 +224,20 @@
       "Tell the truth even if it is against you.",
       "He who has no intelligence has no manners; he who has no determination has no magnanimity; he who has no piety has no religion.",
       "The generous person eats the food of others so they may eat his — the miser does not eat the food of others and they do not eat his."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Muhammad al-Baqir"
+      },
+      {
+        "relation": "Son",
+        "person": "Musa al-Kadhim"
+      },
+      {
+        "relation": "Son",
+        "person": "Ismail ibn Jafar"
+      }
     ]
   },
   {
@@ -247,14 +247,7 @@
   {
     "famous": "Sahl al-Tustari",
     "school": "Persian mystic and Quran commentator (818–896) from Tustar in Khuzestan. His tafsir is one of the earliest surviving Sufi commentaries on the Quran. He developed the concept of the ‘light of Muhammad’ (nur Muhammadi) and the ‘covenant of the atoms’ — ideas that deeply influenced later Sufi theology. His students founded the Salimiyya school in Basra.",
-    "books": [
-      {
-        "title": "Tafsir al-Tustari (Quranic Exegesis)",
-        "url": "https://archive.org/search?query=Tafsir%20al-Tustari%20Sahl%20ibn%20Abdallah%20Quranic",
-        "magnum": true,
-        "note": ""
-      }
-    ],
+    "books": [],
     "quotes": [
       "The world is ignorance and association with God is knowledge — the heart of the believer moves between these two.",
       "Hold fast to three things: eating only what is lawful, fulfilling every obligation, and never abandoning the remembrance of God."
@@ -266,38 +259,12 @@
   {
     "famous": "Ayyub al-Sakhtiyani",
     "school": "One of the foremost authorities among the Tābiʿīn and a towering pillar of Sunni hadith scholarship; Sufyan ibn ʿUyayna said he met 86 Tabi'in but none was like Ayyub. He studied under al-Hasan al-Basri, Nafī Mawlā Ibn ʿUmar, and Muhammad ibn Sirin, and was himself a teacher of Shuʿba ibn al-Ḥajjāj, Sufyan al-Thawri, and Ḥammād ibn Zayd. A resolute defender of Sunnah doctrine against early Muʿtazilite theology, he died in Basra during the great plague of 131 AH.",
-    "books": [
-      {
-        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
-        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
-        "magnum": false,
-        "note": "Definitive rijal reference with his teachers, students, and critical assessment"
-      },
-      {
-        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
-        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
-        "magnum": false,
-        "note": "Key hadith-science reference for his classification and reliability"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Hafsa bint Sirin",
     "school": "8th-century jurist, ascetic, and Qurʾānic scholar from Basra; she memorised the entire Quran by age twelve and mastered all modes of recitation. Her brother Muhammad ibn Sirin — himself one of the greatest Tabi'un scholars — deferred to her on questions of Qurʾānic recitation. The judge Iyas ibn Muʿāwiya, asked to compare her to Hasan al-Basri and her own brother Muhammad, answered 'I do not prefer anyone over her.' Called a 'pioneer of female asceticism in Islam' by later scholars. Narrated 17 hadiths primarily from Anas ibn Malik and Umm Atiyya.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 7)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Biographical details on her piety, scholarship, and family connections"
-      },
-      {
-        "title": "Muḥammad ibn al-Ḥusayn al-Sulamī — Dhikr al-Niswā al-Mutaʿabbidāt",
-        "url": "https://archive.org/search?query=Dhikr+Niswa+Mutaabbidat+Sulami",
-        "magnum": false,
-        "note": "Dedicated chapter on her as a pioneer of female Islamic asceticism"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Amrah bint Abd al-Rahman",
@@ -308,104 +275,28 @@
         "url": "https://sunnah.com/malik",
         "magnum": false,
         "note": "Contains the famous khulʿ case and other key rulings traced through Amrah"
-      },
-      {
-        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
-        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
-        "magnum": false,
-        "note": "Full rijal assessment confirming her authority as a hadith transmitter"
       }
     ]
   },
   {
     "famous": "Aisha bint Talha",
     "school": "Daughter of Talha ibn Ubaydillah — one of the Ten Companions Promised Paradise — and niece of Aisha bint Abi Bakr through her mother Umm Kulthum bint Abi Bakr. She grew up in close contact with her famous aunt and became a significant transmitter of Aisha's hadith corpus. Her name appears as a key node in the isnad network linking the household of the first Caliph Abu Bakr to the second and third hadith generations. She is cited as a narrator by major successors including Muawiya ibn Ishaq and Ibn Abi Najih.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Biographical entry on the daughters of the companions"
-      },
-      {
-        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
-        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
-        "magnum": false,
-        "note": "Rijal reference confirming her as a reliable female narrator"
-      },
-      {
-        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
-        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
-        "magnum": false,
-        "note": "Assessment of her place in the hadith transmission chain"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Abu Salamah ibn Abd al-Rahman",
     "school": "Son of Abd al-Rahman ibn Awf — one of the Ten Companions Promised Paradise — and a leading Medinan jurist counted among the Seven Jurists of Medina (al-Fuqahāʾ al-Sabʿa) whose legal opinions formed the foundation of Medinan and Maliki jurisprudence. He transmitted extensively from Aisha, Umm Salamah, Abu Hurayrah, and other companions, and was himself a teacher of Ibn Shihab al-Zuhri, Yahya ibn Said al-Ansari, and Muhammad ibn Ibrahim al-Taymi.",
-    "books": [
-      {
-        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
-        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
-        "magnum": false,
-        "note": "Comprehensive rijal entry listing his teachers, students, and reliability"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 5)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary biographical source for the second generation Medinan scholars"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Fatima bint al-Munthir",
     "school": "Granddaughter of Asma bint Abi Bakr and great-niece of Aisha bint Abi Bakr; married to the prominent hadith scholar Hisham ibn Urwah ibn al-Zubayr (her cousin). She transmitted traditions from her grandmother Asma bint Abi Bakr, forming a key isnad link connecting the household of Abu Bakr to the third hadith generation through the prominent Zubayr family of Medina. Her narrations appear in the major hadith collections transmitted by her husband Hisham.",
-    "books": [
-      {
-        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
-        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
-        "magnum": false,
-        "note": "Rijal entry identifying her place in the isnad chains through Hisham ibn Urwah"
-      },
-      {
-        "title": "Ibn Ḥajar — Tahdhīb al-Tahdhīb",
-        "url": "https://archive.org/search?query=Tahdhib+al-Tahdhib+Ibn+Hajar",
-        "magnum": false,
-        "note": "Scholarly classification and assessment of her narrations"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Biographical notes on the women of the Zubayr family lineage"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Safiyya bint Abi Ubayd",
     "school": "Wife of the famous companion Abdullah ibn Umar ibn al-Khattab; through her marriage she was positioned at the nexus of hadith transmission connecting the household of Umar ibn al-Khattab to the second generation. She transmitted from Abdullah ibn Umar, Aisha bint Abi Bakr, and Hafsa bint Umar (her sister-in-law), and her narrations appear in the major collections. Her family's lineage from the Thaqif tribe and her husband's eminent status as one of the most prolific hadith narrators gave her traditions particular weight.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Biographical details on the wives and daughters in the Umar ibn al-Khattab household chain"
-      },
-      {
-        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
-        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
-        "magnum": false,
-        "note": "Reference entry confirming her marriage to Abdullah ibn Umar and her narrations"
-      },
-      {
-        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
-        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
-        "magnum": false,
-        "note": "Rijal assessment of her reliability as a hadith transmitter"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Ali ibn al-Husayn",
@@ -425,6 +316,16 @@
       "Our follower is not one who merely speaks our words — he is one who acts on them.",
       "Knowledge is the companion of the believer — patience is his minister — forbearance is his father.",
       "Whoever his tongue does not guard, his religion is not safe."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Ali ibn Husayn Zayn al-Abidin"
+      },
+      {
+        "relation": "Son",
+        "person": "Jafar al-Sadiq"
+      }
     ]
   }
 ]

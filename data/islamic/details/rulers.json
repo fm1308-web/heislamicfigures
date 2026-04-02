@@ -2,14 +2,7 @@
   {
     "famous": "Qusayy ibn Kilab",
     "school": "First historically well-attested ancestor of Muhammad. He seized control of Mecca from the Khuza'a tribe and united the Quraysh clans under his leadership. He built the Dar al-Nadwa (the council house of Mecca), established the custodianship of the Ka'ba in Quraysh, and created the civic offices of Mecca that endured until the Islamic era. Ibn Ishaq calls him the first great leader of the Quraysh.",
-    "books": [
-      {
-        "title": "Sirat Rasul Allah (Ibn Ishaq / Ibn Hisham)",
-        "url": "https://archive.org/search?query=Sirat+Ibn+Hisham",
-        "magnum": false,
-        "note": "Account of Qusayy's conquest of Mecca and establishment of Quraysh rule"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Abd al-Muttalib ibn Hashim",
@@ -25,6 +18,20 @@
     "quotes": [
       "Do not consider any act of kindness insignificant — even greeting your brother with a cheerful face.",
       "Without knowledge, action is useless; and knowledge without action is futile."
+    ],
+    "relations": [
+      {
+        "relation": "Daughter",
+        "person": "Aisha bint Abi Bakr"
+      },
+      {
+        "relation": "Daughter",
+        "person": "Asma bint Abi Bakr"
+      },
+      {
+        "relation": "Son-in-law",
+        "person": "Prophet Muhammad"
+      }
     ]
   },
   {
@@ -36,6 +43,20 @@
     "quotes": [
       "If our hearts were truly pure, we would never have our fill of the words of God.",
       "Do not be deceived by the good deeds of a man until you have observed what he does in moments of anger."
+    ],
+    "relations": [
+      {
+        "relation": "Wife",
+        "person": "Ruqayyah bint Muhammad"
+      },
+      {
+        "relation": "Wife",
+        "person": "Umm Kulthum bint Muhammad"
+      },
+      {
+        "relation": "Father-in-law",
+        "person": "Prophet Muhammad"
+      }
     ]
   },
   {
@@ -49,6 +70,20 @@
       "Learn Arabic, for it strengthens the mind and increases one's noble character.",
       "The one who is most deserving of respect is the one who does not seek it.",
       "Do not let your happiness depend on something you may lose."
+    ],
+    "relations": [
+      {
+        "relation": "Daughter",
+        "person": "Hafsa bint Umar"
+      },
+      {
+        "relation": "Son-in-law",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Son",
+        "person": "Abdullah ibn Umar"
+      }
     ]
   },
   {
@@ -62,6 +97,32 @@
       "Speak to people according to their level of understanding — do you want God and His Prophet to be denied?",
       "The tongue is a beast — if you let it loose, it will devour you.",
       "Two things define you: your patience when you have nothing, and your attitude when you have everything."
+    ],
+    "relations": [
+      {
+        "relation": "Wife",
+        "person": "Fatimah al-Zahra"
+      },
+      {
+        "relation": "Son",
+        "person": "Hasan ibn Ali"
+      },
+      {
+        "relation": "Son",
+        "person": "Husayn ibn Ali"
+      },
+      {
+        "relation": "Daughter",
+        "person": "Zaynab bint Ali"
+      },
+      {
+        "relation": "Father-in-law",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Brother",
+        "person": "Jafar ibn Abi Talib"
+      }
     ]
   },
   {
@@ -119,13 +180,7 @@
   {
     "famous": "Al-Mansur",
     "school": "The second Abbasid caliph ruled from 754 to 775 CE and is regarded as the true founder of the Abbasid dynasty's administrative apparatus. He established Baghdad in 762 CE as the new capital, designing it as a round city that became the intellectual and commercial centre of the Islamic world. His reign laid the institutional foundations that enabled the Abbasid golden age under his successors.",
-    "books": [
-      {
-        "title": "Founding of Baghdad — historical records",
-        "url": "https://archive.org/search?query=Mansur+Abbasid+Baghdad",
-        "magnum": true
-      }
-    ],
+    "books": [],
     "quotes": [
       "Four things sustain a kingdom: a scholar who acts on his knowledge, a judge who does not fear blame, a treasurer who is honest, and an advisor who does not flatter.",
       "I built Baghdad in the shape of a circle so that I would be at the centre of the world."

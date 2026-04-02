@@ -2,13 +2,7 @@
   {
     "famous": "Khadija bint Khuwaylid",
     "school": "A wealthy and respected Meccan merchant, she was the first wife of the Prophet Muhammad and the first person to accept Islam. She employed Muhammad as a trade agent before proposing marriage, and their union lasted twenty-five years until her death in 619 CE. Her emotional, spiritual, and financial support was crucial during the earliest and most difficult years of the Prophet's mission, and she is revered in Islamic tradition as one of the greatest women in history.",
-    "books": [
-      {
-        "title": "Khadijah bint Khuwaylid (Safi-ur-Rahman al-Mubarakpuri)",
-        "url": "https://archive.org/search?query=Khadijah+bint+Khuwaylid+biography",
-        "magnum": true
-      }
-    ],
+    "books": [],
     "parents": "Khawaylid bin Asad / Fatima bint Za'idah of B.'Amir b. Lu'ayy",
     "children": "Hind bin Abi Halah , Halah bin Abi Halah , al-Harith bin Abi Halah , Tahir bin Abi Halah , Hindah, al-Qasim bin Muhammad , Zaynab bint Muhammad , Ruqayyah bint Muhammad , Umm Kulthum bint Muhammad , Fatima bint Muhammad , 'Abdullah bin Muhammad",
     "spouses": "Abu Halah-Malik bin al-Nabash al-Tamimi, Atique bin Aith, Prophet Muhammad(saw)"
@@ -22,6 +16,12 @@
     "quotes": [
       "There is no night during which a bride is prepared for her groom that is dearer to me than a night during which I prepare for battle at dawn.",
       "I have fought in so many battles seeking martyrdom that there is no span of my body left without a scar — yet here I am, dying in my bed like an old camel."
+    ],
+    "relations": [
+      {
+        "relation": "Brother",
+        "person": "Hisham ibn al-Walid"
+      }
     ]
   },
   {
@@ -42,7 +42,33 @@
     "books": [],
     "parents": "Ali ibn Abi Talib / Fatima bint Muhammad",
     "children": "al-Hasan bin al-Hasan bin 'Ali , Qasim, Fatimah, Zayd bin al-Hasan bin 'Ali , 'Abdullah, Talha, Umm al-Hasan (Maymunah), Umm al-Husan",
-    "spouses": "Umm Is'haq, Hafsa bint 'Abd al-Rahman"
+    "spouses": "Umm Is'haq, Hafsa bint 'Abd al-Rahman",
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Ali ibn Abi Talib"
+      },
+      {
+        "relation": "Mother",
+        "person": "Fatimah al-Zahra"
+      },
+      {
+        "relation": "Brother",
+        "person": "Husayn ibn Ali"
+      },
+      {
+        "relation": "Grandfather",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Grandmother",
+        "person": "Khadijah bint Khuwaylid"
+      },
+      {
+        "relation": "Sister",
+        "person": "Zaynab bint Ali"
+      }
+    ]
   },
   {
     "famous": "Husayn ibn Ali",
@@ -50,7 +76,37 @@
     "books": [],
     "parents": "Ali ibn Abi Talib / Fatima bint Muhammad",
     "children": "'Ali bin al-Husain bin 'Ali , 'Ali al-Akbar, 'Ali al-Asghar, Sakina bint al-Husain bin 'Ali , Fatima bint al-Husain bin 'Ali",
-    "spouses": "Shahrbanu bint Yazdgerd III, Umm Rubab, Umm Layla, Umm Is'haq bint Talha"
+    "spouses": "Shahrbanu bint Yazdgerd III, Umm Rubab, Umm Layla, Umm Is'haq bint Talha",
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Ali ibn Abi Talib"
+      },
+      {
+        "relation": "Mother",
+        "person": "Fatimah al-Zahra"
+      },
+      {
+        "relation": "Brother",
+        "person": "Hasan ibn Ali"
+      },
+      {
+        "relation": "Grandfather",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Grandmother",
+        "person": "Khadijah bint Khuwaylid"
+      },
+      {
+        "relation": "Sister",
+        "person": "Zaynab bint Ali"
+      },
+      {
+        "relation": "Daughter",
+        "person": "Sukayna bint al-Husayn"
+      }
+    ]
   },
   {
     "famous": "Rabia al-Basri",
@@ -129,7 +185,8 @@
       "The love of God cannot enter a heart in which love of this world resides.",
       "Seize goodness for yourself before it is seized from you.",
       "I am amazed at one who knows that death is true, how he can still laugh."
-    ]
+    ],
+    "dod": 815
   },
   {
     "famous": "Ali al-Ridha",
@@ -156,14 +213,7 @@
   {
     "famous": "Harith al-Muhasibi",
     "school": "Baghdadi theologian and mystic (781–857) who founded the discipline of systematic self-examination (muhasaba) — a rigorous accounting of the soul’s states and intentions. His Kitab al-Ri’aya (Book of Observance) profoundly influenced al-Ghazali’s later work. He combined Mu’tazili-trained rationalism with deep Sufi introspection.",
-    "books": [
-      {
-        "title": "Al-Ri'aya li-huquq Allah (Observance of God's Rights)",
-        "url": "https://archive.org/search?query=Al-Ri%27aya%20Muhasibi%20Sufi%20ethics",
-        "magnum": true,
-        "note": "The first systematic manual of Sufi ethics."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Examine your soul before you are examined.",
       "Examine your own soul before you examine others — for the one who does not know himself cannot guide anyone else.",
@@ -230,14 +280,7 @@
   {
     "famous": "Hakim al-Tirmidhi",
     "school": "Khorasani scholar and mystic (c. 820–910) who wrote the first systematic theory of sainthood (walaya) in Islam. His Seal of the Saints influenced Ibn Arabi centuries later. Not to be confused with the hadith collector al-Tirmidhi, he combined hadith scholarship with deep mystical insight.",
-    "books": [
-      {
-        "title": "Khatm al-Awliya (The Seal of Saints)",
-        "url": "https://archive.org/search?query=Khatm%20al-Awliya%20Hakim%20al-Tirmidhi%20seal%20saints",
-        "magnum": true,
-        "note": "First systematic theology of Islamic sainthood."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The soul that submits to God has no need to submit to other than God.",
       "Prophethood is the gate; sainthood is the city behind it.",
@@ -247,14 +290,7 @@
   {
     "famous": "Junayd of Baghdad",
     "school": "The ‘Master of the Masters’ of Sufism (c. 830–910) who established the ‘sober’ school of Baghdad mysticism, emphasising that the mystic must return to everyday life after the experience of union with God. Nearly every major Sufi order traces its spiritual chain through Junayd. He insisted that Sufism must remain grounded in the Quran and Sunnah.",
-    "books": [
-      {
-        "title": "Rasa'il (Letters on the mystical path)",
-        "url": "https://archive.org/search?query=Junayd%20Baghdad%20Rasail%20letters%20mystical%20path",
-        "magnum": true,
-        "note": "Foundational letters defining sober Sufi doctrine; the template for all later Sufi epistles."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Sufism is that God makes you die to yourself and live in Him.",
       "Our knowledge is bound by the Book and the Sunnah. Whoever has not memorised the Quran and studied hadith is not fit to speak on this path.",
@@ -280,18 +316,6 @@
     "famous": "Al-Hallaj",
     "school": "Mansur al-Hallaj (858–922), Persian mystic executed in Baghdad for declaring ‘Ana al-Haqq’ (I am the Truth). His public proclamation of mystical union with God scandalized the authorities. After years of imprisonment, he was tortured and crucified. His martyrdom became the most debated event in Sufi history — condemned by some scholars, revered by others as the supreme testimony of divine love.",
     "books": [
-      {
-        "title": "Kitab al-Tawasin (The Book of the Letter T)",
-        "url": "https://archive.org/search?query=Kitab%20al-Tawasin%20Hallaj%20mystical",
-        "magnum": true,
-        "note": "Mystic masterwork written before his execution."
-      },
-      {
-        "title": "Diwan al-Hallaj (Collected Poems)",
-        "url": "https://archive.org/search?query=Diwan%20Hallaj%20poetry%20Arabic%20mystical",
-        "magnum": false,
-        "note": ""
-      },
       {
         "title": "The Mystics of Islam (chapter on al-Hallaj)",
         "url": "https://sacred-texts.com/isl/moi/moi.htm"
@@ -329,14 +353,7 @@
   {
     "famous": "Abu Talib al-Makki",
     "school": "Baghdad School — wrote the foundational manual of Islamic spiritual practice that Al-Ghazali used as a model for the Ihya",
-    "books": [
-      {
-        "title": "Qut al-Qulub (Nourishment of Hearts)",
-        "url": "https://archive.org/search?query=Qut%20al-Qulub%20Abu%20Talib%20Makki",
-        "magnum": true,
-        "note": "Major influence on al-Ghazali's Ihya Ulum al-Din."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The heart is the seat of knowledge, and the tongue is its interpreter.",
       "The heart is the throne of God on earth — do not allow anything other than God to sit upon it.",
@@ -346,14 +363,7 @@
   {
     "famous": "Abu Nasr al-Sarraj",
     "school": "Khorasani Sufi scholar (d. 988) who wrote the Kitab al-Luma’ (Book of Flashes), the first comprehensive encyclopedia of Sufism. The work systematically categorised Sufi terminology, practices, states, and stations, providing a scholarly framework that later writers like al-Qushayri and al-Hujwiri built upon.",
-    "books": [
-      {
-        "title": "Kitab al-Luma' fi'l-Tasawwuf (Book of Flashes in Sufism)",
-        "url": "https://archive.org/search?query=Kitab%20al-Luma%20Sarraj%20Sufism%20oldest%20manual",
-        "magnum": true,
-        "note": "Oldest surviving systematic manual of Sufism."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Al-Sulami of Nishapur",
@@ -368,14 +378,7 @@
   {
     "famous": "Abu Bakr al-Kalabadhi",
     "school": "Hanafi scholar and Sufi from Bukhara (d. 990 or 995) who wrote al-Ta’arruf, one of the earliest systematic introductions to Sufism. His work aimed to reconcile Sufi practice with orthodox Sunni theology, demonstrating that the great Sufis were faithful Muslims. The book became a key reference for understanding classical Sufi doctrine.",
-    "books": [
-      {
-        "title": "Kitab al-Ta'arruf (Introduction to Sufism)",
-        "url": "https://archive.org/search?query=Kitab%20al-Ta%27arruf%20Kalabadhi%20Sufism%20introduction",
-        "magnum": true,
-        "note": ""
-      }
-    ],
+    "books": [],
     "quotes": [
       "The Sufi sees nothing but God in all things."
     ]
@@ -385,10 +388,8 @@
     "school": "Khorasani scholar and mystic (986–1072) whose Risala (Epistle on Sufism) became the most widely studied Sufi textbook in the Islamic world. He combined rigorous Ash’ari theology with Sufi practice, insisting that authentic mysticism must be rooted in orthodox belief. He studied under al-Daqqaq and was a contemporary of al-Hujwiri.",
     "books": [
       {
-        "title": "Lata'if al-Isharat (Subtleties of Indications)",
-        "url": "https://archive.org/search?query=Lataif%20al-Isharat%20Qushayri%20subtleties%20Quran",
-        "magnum": false,
-        "note": ""
+        "title": "Epistle on Sufism (al-Risala al-Qushayriyya)",
+        "url": "https://archive.org/details/QushayriRisala"
       }
     ],
     "quotes": [
@@ -405,14 +406,7 @@
   {
     "famous": "Khwaja Abdullah Ansari",
     "school": "Hanbali scholar and Persian Sufi poet of Herat (1006–1089) who combined strict adherence to the Hanbali school with ecstatic Persian mystical poetry. His Munajat (Intimate Invocations) and Manazil al-Sa’irin (Stations of the Wayfarers) are classics. Despite persecution for his theological views, he became the most beloved saint of Herat.",
-    "books": [
-      {
-        "title": "Munajat Nameh (Book of Intimate Prayers)",
-        "url": "https://archive.org/search?query=Munajat%20Nameh%20Khwaja%20Abdullah%20Ansari%20prayers",
-        "magnum": true,
-        "note": "Most beloved collection of Persian Sufi prayers — still memorised and recited widely."
-      }
-    ],
+    "books": [],
     "quotes": [
       "O God, I am not worthy of Paradise — but Paradise is not worthy of me either, for what I seek is You.",
       "The heart that seeks other than God is like a bird that has lost its nest — it flutters everywhere and rests nowhere.",
@@ -450,18 +444,6 @@
         "url": "https://archive.org/details/IhyaUlumAlDinVol1",
         "magnum": false,
         "note": "Described as 'If all Islamic books were destroyed, the Ihya alone would suffice.' 4 volumes."
-      },
-      {
-        "title": "Al-Munqidh min al-Dalal (Deliverance from Error)",
-        "url": "https://archive.org/search?query=Deliverance%20from%20Error%20Ghazali%20English",
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Kimiya-yi Sa'adat (Alchemy of Happiness)",
-        "url": "https://archive.org/search?query=Kimiya%20al-Saadat%20Alchemy%20Happiness%20Ghazali",
-        "magnum": false,
-        "note": ""
       },
       {
         "title": "Ihya Ulum al-Din (English)",
@@ -505,34 +487,32 @@
     ],
     "teachers": [
       "Imam al-Juwayni"
+    ],
+    "relations": [
+      {
+        "relation": "Brother",
+        "person": "Ahmad Ghazali"
+      }
     ]
   },
   {
     "famous": "Ahmad Ghazali",
     "school": "Persian mystic and preacher (c. 1061–1123), younger brother of the great al-Ghazali. While his brother systematised theology, Ahmad became one of the most passionate exponents of divine love mysticism. His Sawanih (Intuitions of the Lovers) is a foundational text on love in Sufi literature and influenced Rumi and the Persian poetic tradition.",
-    "books": [
-      {
-        "title": "Sawaneh (Inspirations from the World of Pure Spirits)",
-        "url": "https://archive.org/search?query=Sawaneh%20Ahmad%20Ghazali%20inspirations%20love%20mysticism",
-        "magnum": true,
-        "note": "First systematic treatise on love mysticism in Persian literature."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Love is the essence of all spiritual states."
+    ],
+    "relations": [
+      {
+        "relation": "Brother",
+        "person": "Al-Ghazali"
+      }
     ]
   },
   {
     "famous": "Ruzbihan Baqli",
     "school": "Shirazi School — Defended al-Hallaj; master of mystical Quranic commentary; wrote 5,000 visionary experiences",
-    "books": [
-      {
-        "title": "Abhar al-'Ashiqin (Jasmine of the Lovers)",
-        "url": "https://archive.org/search?query=Abhar%20al-Ashiqin%20Ruzbihan%20Baqli%20jasmine%20lovers",
-        "magnum": true,
-        "note": "Masterpiece of Persian prose on divine love."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Baha ud-Din Walad",
@@ -541,26 +521,12 @@
   {
     "famous": "Shah Ismail Shaheed",
     "school": "Waliullahi School — grandson of Shah Waliullah, co-founder of the Tariqa-i-Muhammadiyya with Sayyid Ahmad Barelvi; his Taqwiyat al-Iman became the founding text of Indian Islamic reformism and is still hotly debated",
-    "books": [
-      {
-        "title": "Taqwiyat al-Iman (Strengthening of Faith)",
-        "url": "https://archive.org/search?query=Shah+Ismail+Shaheed+Taqwiyat+Iman",
-        "magnum": true,
-        "note": "The most controversial and influential Islamic reform tract of 19th-century India — condemned by Barelvis, praised by Deobandis."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Sayyid Ahmad Barelvi",
     "school": "Tariqa-i-Muhammadiyya — student of Shah Abdul Aziz Dehlawi; led the first organised Islamic reform movement in South Asia combining Naqshbandiyya spirituality with active political resistance against Sikh rule; martyred at Balakot 1831",
-    "books": [
-      {
-        "title": "Sirat al-Mustaqim (The Straight Path)",
-        "url": "https://archive.org/search?query=Sayyid+Ahmad+Barelvi+Sirat+Mustaqim+reformist",
-        "magnum": true,
-        "note": "Written with Shah Ismail Shaheed — the manifesto of the Tariqa-i-Muhammadiyya reform movement, still influential in South Asian Islam."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "'A'isha al-Ba'uniyya",

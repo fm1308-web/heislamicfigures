@@ -2,14 +2,7 @@
   {
     "famous": "Al-Kindi",
     "school": "Abu Yusuf al-Kindi (c. 801–873), the 'Philosopher of the Arabs,' was the first major Islamic philosopher and a key figure at the Abbasid House of Wisdom. He systematically introduced Greek philosophy to the Islamic world, wrote over 260 works on mathematics, optics, medicine, and metaphysics, and argued that philosophy and revelation were complementary paths to truth.",
-    "books": [
-      {
-        "title": "Fi al-Falsafa al-Ula (On First Philosophy)",
-        "url": "https://archive.org/search?query=Al-Kindi%20First%20Philosophy%20fi%20al-Falsafa",
-        "magnum": true,
-        "note": "First systematic philosophical treatise in Arabic — the founding document of Islamic philosophy."
-      }
-    ],
+    "books": [],
     "quotes": [
       "We should not be ashamed to acknowledge truth from whatever source it comes to us.",
       "We should not be ashamed of appreciating the truth and of acquiring it wherever it comes from, even from races distant and nations different from us.",
@@ -22,12 +15,6 @@
     "famous": "Al-Farabi",
     "school": "Abu Nasr al-Farabi (c. 872–950), known as the 'Second Teacher' after Aristotle, was the founder of Islamic political philosophy. Working in Baghdad and Aleppo, he synthesised Aristotelian logic with Islamic theology and wrote al-Madina al-Fadila (The Virtuous City), envisioning the ideal state governed by philosopher-kings. He also made major contributions to music theory.",
     "books": [
-      {
-        "title": "Al-Madina al-Fadila (The Virtuous City)",
-        "url": "https://archive.org/search?query=Al-Farabi%20Virtuous%20City%20Madina%20Fadila",
-        "magnum": true,
-        "note": "Islamic political philosophy's founding text — the ideal Islamic city-state modelled on Plato's Republic."
-      },
       {
         "title": "Al-Farabi on the Perfect State (Mabadi')",
         "url": "https://archive.org/details/al-farabi-on-the-perfect-state"
@@ -81,18 +68,6 @@
         "note": "Medical encyclopedia used in European universities until the 17th century — the most influential medical text ever written."
       },
       {
-        "title": "Kitab al-Shifa (The Book of Healing) — 18 vols",
-        "url": "https://archive.org/search?query=Kitab%20al%20Shifa%20Ibn%20Sina%20Book%20Healing",
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Hayy ibn Yaqzan (Living Son of the Awake — Mystical Recital)",
-        "url": "https://archive.org/search?query=Hayy%20ibn%20Yaqzan%20Ibn%20Sina%20mystical%20recital",
-        "magnum": false,
-        "note": "His mystical writing — influenced Sufis and later Islamic philosophers."
-      },
-      {
         "title": "The Canon of Medicine (al-Qanun fi al-Tibb)",
         "url": "https://archive.org/details/CanonOfMedicine",
         "note": "Landmark medical encyclopedia — English"
@@ -111,14 +86,7 @@
   {
     "famous": "Nasir Khusraw",
     "school": "Ismaili Philosophy / Fatimid Cairo — Converted to Ismaili Islam after a dream; became chief Ismaili missionary in Khorasan",
-    "books": [
-      {
-        "title": "Safarnama (Book of Travels)",
-        "url": "https://archive.org/search?query=Safarnama%20Nasir%20Khusraw%20travels%20Persian",
-        "magnum": true,
-        "note": "Most important Persian travel memoir of the medieval period — describes Fatimid Cairo and Jerusalem."
-      }
-    ],
+    "books": [],
     "quotes": [
       "I travel not to see the world but to find what the world has to say about God.",
       "The philosopher who does not act on his philosophy is a lamp that gives no warmth.",
@@ -138,12 +106,6 @@
     "school": "Andalusian philosopher and physician (c. 1105–1185) who served as court physician to the Almohad caliphs and introduced Ibn Rushd to the caliph. His philosophical novel Hayy ibn Yaqzan (Alive, Son of Awake) tells of a child raised alone on an island who discovers truth through reason alone — a work that influenced Defoe's Robinson Crusoe and Enlightenment thought.",
     "books": [
       {
-        "title": "Hayy ibn Yaqzan (Alive, Son of Awake)",
-        "url": "https://archive.org/search?query=Hayy%20ibn%20Yaqzan%20Ibn%20Tufayl%20philosophical%20novel",
-        "magnum": true,
-        "note": "First philosophical novel in world literature — a child raised alone on a desert island discovers God through reason alone. Influenced Locke and Defoe's Robinson Crusoe."
-      },
-      {
         "title": "The Improvement of Human Reason (Hayy ibn Yaqdhan)",
         "url": "https://www.gutenberg.org/ebooks/16831"
       }
@@ -159,24 +121,6 @@
     "famous": "Ibn Rushd",
     "school": "Abu al-Walid Ibn Rushd (1126–1198), known in Europe as Averroes, was the most important Aristotelian philosopher of the Islamic world. Serving as chief judge of Cordoba and court physician to the Almohad caliphs, he wrote definitive commentaries on virtually all of Aristotle's works. His Tahafut al-Tahafut defended philosophy against al-Ghazali's critique and profoundly influenced medieval European scholasticism.",
     "books": [
-      {
-        "title": "Tahafut al-Tahafut (The Incoherence of the Incoherence)",
-        "url": "https://archive.org/search?query=Incoherence%20Incoherence%20Averroes%20Ibn%20Rushd",
-        "magnum": false,
-        "note": "Systematic refutation of al-Ghazali's attack on philosophy; the greatest medieval philosophical debate."
-      },
-      {
-        "title": "Commentaries on Aristotle (Great, Middle & Short)",
-        "url": "https://archive.org/search?query=Averroes%20Commentary%20Aristotle",
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Fasl al-Maqal (The Decisive Treatise)",
-        "url": "https://archive.org/search?query=Decisive%20Treatise%20Ibn%20Rushd%20Averroes",
-        "magnum": false,
-        "note": ""
-      },
       {
         "title": "Tahafut al-Tahafut (Incoherence of the Incoherence)",
         "url": "https://archive.org/details/TahafutAlTahafut"
@@ -202,14 +146,12 @@
     "school": "Shihab al-Din Yahya Suhrawardi (1154–1191), founder of the Illuminationist (Ishraqi) school of philosophy, synthesised Zoroastrian light symbolism with Islamic Neoplatonism and Peripatetic philosophy. His Hikmat al-Ishraq (Philosophy of Illumination) proposed light as the fundamental reality. Executed at age 36 by order of Saladin's son in Aleppo, he is known as al-Maqtul (the Slain).",
     "books": [
       {
-        "title": "Hikmat al-Ishraq (Philosophy of Illumination)",
-        "url": "https://archive.org/search?query=Hikmat%20al-Ishraq%20Suhrawardi%20Maqtul%20illumination%20philosophy",
-        "magnum": true,
-        "note": "Founded the Illuminationist school of Islamic philosophy."
-      },
-      {
         "title": "The Philosophy of Illumination",
         "url": "https://archive.org/details/ThePhilosophyOfIllumination"
+      },
+      {
+        "title": "The Shape of Light (Hayakal al-Nur)",
+        "url": "https://archive.org/details/suhrawardi-the-shape-of-light"
       }
     ],
     "quotes": [
@@ -222,24 +164,6 @@
     "famous": "Ibn Arabi",
     "school": "Muhyi al-Din Ibn Arabi (1165–1240), the 'Greatest Master' (al-Shaykh al-Akbar), was an Andalusian-born mystic and philosopher whose doctrine of Wahdat al-Wujud (Unity of Being) became the most influential metaphysical system in Sufism. His encyclopedic Futuhat al-Makkiyya spans 560 chapters, while his Fusus al-Hikam distils prophetic wisdom into 27 chapters. He settled in Damascus, where his tomb remains a pilgrimage site.",
     "books": [
-      {
-        "title": "Fusus al-Hikam (Bezels of Wisdom)",
-        "url": "https://archive.org/search?query=Fusus%20al-Hikam%20Ibn%20Arabi",
-        "magnum": true,
-        "note": "Summit of Islamic metaphysics. ~560 books written as commentaries on it."
-      },
-      {
-        "title": "Al-Futuhat al-Makkiyya (Meccan Revelations) — 37 vols",
-        "url": "https://archive.org/search?query=Futuhat%20Makkiyya%20Ibn%20Arabi%20English",
-        "magnum": false,
-        "note": ""
-      },
-      {
-        "title": "Tarjuman al-Ashwaq (Interpreter of Desires)",
-        "url": "https://archive.org/search?query=Tarjuman%20al%20Ashwaq%20Ibn%20Arabi%20Nicholson",
-        "magnum": false,
-        "note": ""
-      },
       {
         "title": "Tarjuman al-Ashwaq (Nicholson translation)",
         "url": "https://sacred-texts.com/isl/taa/index.htm"
@@ -273,12 +197,6 @@
     "famous": "Mulla Sadra",
     "school": "Muta'aliya (Transcendent) Philosophy — Synthesised Ibn Sina, Suhrawardi and Ibn Arabi into the most comprehensive Islamic philosophy",
     "books": [
-      {
-        "title": "Al-Asfar al-Arba'a (The Four Journeys of the Intellect — 9 vols)",
-        "url": "https://archive.org/search?query=Al-Asfar%20al-Arba%27a%20Mulla%20Sadra%20four%20journeys%20philosophy",
-        "magnum": true,
-        "note": "The magnum opus of Islamic philosophy — a complete philosophical system integrating reason, mysticism and revelation."
-      },
       {
         "title": "The Elixir of the Gnostics",
         "url": "https://archive.org/details/TheElixirOfTheGnostics"
@@ -325,13 +243,7 @@
   {
     "famous": "Malik Bennabi",
     "school": "Algerian School of Islamic Reform — developed the Civilization Equation (Man + Soil + Time); coined 'colonizability' — the internal condition that allows a society to be dominated; influenced by Ibn Khaldun and Ben Badis",
-    "books": [
-      {
-        "title": "Les Conditions de la Renaissance (Conditions for Renaissance)",
-        "url": "https://archive.org/search?query=Malik+Bennabi+Conditions+Renaissance+Islam",
-        "magnum": true
-      }
-    ],
+    "books": [],
     "quotes": [
       "Colonisability precedes colonisation — the problem is not the coloniser but what made colonisation possible.",
       "Civilisation is not a product — it is a process. It requires soil, time, and human effort.",

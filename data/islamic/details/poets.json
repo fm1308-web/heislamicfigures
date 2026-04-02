@@ -31,14 +31,7 @@
   {
     "famous": "Abu Sa'id Abu al-Khayr",
     "school": "Persian Sufi master and poet (967–1049) from Khorasan who pioneered ecstatic Sufi gatherings with music and poetry (sama’). He was among the first to compose Persian rubai’at (quatrains) on mystical themes. His rule for communal Sufi life became a model for later Sufi lodges across the Islamic world.",
-    "books": [
-      {
-        "title": "Ruba'iyyat (Persian Quatrains — attributed)",
-        "url": "https://archive.org/search?query=Abu%20Said%20Abu%20al-Khayr%20Persian%20quatrains%20ruba%27iyat",
-        "magnum": true,
-        "note": "First major Persian Sufi poet; his quatrains anticipate Omar Khayyam's style."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Sharif al-Radi",
@@ -81,12 +74,6 @@
     "school": "Persian Sufi poet (1080–1131) from the Ghaznavid court who pioneered the use of the mathnawi form for mystical-didactic poetry. His Hadiqat al-Haqiqa (Garden of Truth) was the first great Persian mystical epic, directly inspiring Attar and Rumi. Rumi called Sanai and Attar his two ‘soul-parents.’",
     "books": [
       {
-        "title": "Hadiqat al-Haqiqa (The Walled Garden of Truth)",
-        "url": "https://archive.org/search?query=Hadiqa%20al-Haqiqa%20Sanai%20Ghazna%20walled%20garden%20truth",
-        "magnum": true,
-        "note": "First great Persian Sufi masnavi — the direct model for Rumi's Masnavi."
-      },
-      {
         "title": "The Enclosed Garden of the Truth (Hadiqat al-Haqiqa)",
         "url": "https://archive.org/details/firstbookofhadi00sanauoft"
       }
@@ -106,12 +93,6 @@
     "famous": "Nizami Ganjavi",
     "school": "Azerbaijani-Persian Poetry — His Khamsa became the model for Persian romantic epic poetry across the Muslim world",
     "books": [
-      {
-        "title": "Khamsa (Five Treasuries — Layla & Majnun, Khusrow & Shirin, Iskandar-Nama...)",
-        "url": "https://archive.org/search?query=Nizami%20Ganjavi%20Khamsa%20five%20treasuries%20Persian",
-        "magnum": true,
-        "note": "Greatest romantic epic in Persian — imitated by Amir Khusrow, Jami and hundreds of others across five centuries."
-      },
       {
         "title": "Layla and Majnun",
         "url": "https://archive.org/details/laylimajnunlover00niza"
@@ -136,12 +117,6 @@
         "note": "One of the greatest allegories in world literature — the soul's journey to God through the 7 valleys."
       },
       {
-        "title": "Tazkirat al-Awliya (Biographies of Saints)",
-        "url": "https://archive.org/search?query=Tazkirat%20al-Awliya%20Attar%20biographies%20saints",
-        "magnum": false,
-        "note": ""
-      },
-      {
         "title": "The Conference of the Birds (Mantiq al-Tayr)",
         "url": "https://archive.org/details/birdparliament00atauoft"
       },
@@ -164,20 +139,7 @@
   {
     "famous": "Umar Ibn al-Farid",
     "school": "Arabic Sufi poetry — the greatest Arabic mystical poet; lived between Cairo and Mecca, his Qasida al-Khamriyya (Wine Ode) and Nazm al-Suluk (Poem of the Way) are the supreme achievements of Arabic Sufi literature",
-    "books": [
-      {
-        "title": "Ta'iyyat al-Kubra / Nazm al-Suluk (The Great Poem of the Way)",
-        "url": "https://archive.org/search?query=Ibn+al+Farid+Nazm+Suluk+Arabic+Sufi",
-        "magnum": true,
-        "note": "761 verses of the mystical journey — the longest and most complex poem in Arabic literature after Mutanabbi."
-      },
-      {
-        "title": "Khamriyya (The Wine Ode)",
-        "url": "https://archive.org/search?query=Ibn+Farid+Khamriyya+Wine+Ode+Arabic",
-        "magnum": false,
-        "note": ""
-      }
-    ],
+    "books": [],
     "quotes": [
       "In my intoxication I do not know whether it is you in me or I in you.",
       "Before the creation of the vine, I was drunk on a wine that was never pressed.",
@@ -190,12 +152,6 @@
     "famous": "Saadi Shirazi",
     "school": "Shirazi School / Persian Classical Poetry — His poem on human brotherhood is inscribed at the UN Human Rights Council",
     "books": [
-      {
-        "title": "Bustan (The Orchard — verse)",
-        "url": "https://archive.org/search?query=Bustan%20Saadi%20orchard%20Persian%20poetry",
-        "magnum": false,
-        "note": ""
-      },
       {
         "title": "Gulistan (Rose Garden)",
         "url": "https://archive.org/details/gulistanrosegard00sadi",
@@ -239,12 +195,6 @@
     "school": "Persian Sufi poet (1213–1289) who studied under both Suhrawardi masters and the circle of Ibn Arabi in Damascus. His Lama’at (Divine Flashes) merges the philosophical mysticism of Ibn Arabi with Persian lyrical beauty. He was a bridge between Andalusian theoretical Sufism and the Persian poetic tradition.",
     "books": [
       {
-        "title": "Lama'at (Divine Flashes)",
-        "url": "https://archive.org/search?query=Lama%27at%20Fakhruddin%20Iraqi%20divine%20flashes",
-        "magnum": true,
-        "note": "28 prose-poems on divine love written after attending Ibn Arabi's lectures."
-      },
-      {
         "title": "Divine Flashes (Lama'at)",
         "url": "https://archive.org/details/divineflashes00iraq",
         "note": "Sufi love poetry influenced by Ibn Arabi — English"
@@ -254,14 +204,7 @@
   {
     "famous": "Yunus Emre",
     "school": "Anatolian Turkish Sufi poet (c. 1238–1320) who wrote in simple, vernacular Turkish rather than the courtly Persian or Arabic of his era. His poems of divine love, unity, and compassion laid the foundation for Turkish literary and spiritual identity. He is arguably the most beloved poet in Turkish culture.",
-    "books": [
-      {
-        "title": "Divan (Collected Poems in Old Turkish)",
-        "url": "https://archive.org/search?query=Yunus%20Emre%20Divan%20Turkish%20mystical%20poetry",
-        "magnum": true,
-        "note": "First great mystical poetry in Turkish vernacular; still sung in Turkey today."
-      }
-    ],
+    "books": [],
     "quotes": [
       "I am not here to be an enemy to anyone — to me the whole world is one.",
       "The one who has not tasted love does not know what the soul is.",
@@ -275,18 +218,6 @@
     "famous": "Amir Khusrow",
     "school": "Chishti Order / Mughal Pre-history — Spiritual disciple of Nizamuddin Auliya; credited with inventing the tabla and developing qawwali",
     "books": [
-      {
-        "title": "Khamsa-i Khusraw (Five Masnavis)",
-        "url": "https://archive.org/search?query=Amir%20Khusrow%20Khamsa%20Persian%20masnavis",
-        "magnum": true,
-        "note": "Indian response to Nizami's Khamsa — established the Persian literary tradition in India."
-      },
-      {
-        "title": "Diwan (Persian and proto-Urdu verse)",
-        "url": "https://archive.org/search?query=Amir%20Khusrow%20Diwan%20Persian%20Urdu%20poetry",
-        "magnum": false,
-        "note": ""
-      },
       {
         "title": "Selected Poetry (Rekhta.org)",
         "url": "https://www.rekhta.org/poets/amir-khusrau/couplets"
@@ -307,25 +238,12 @@
   {
     "famous": "Mahmud Shabistari",
     "school": "Persian Sufi poet (1288–1340) whose Gulshan-i Raz (Rose Garden of Mystery) is one of the most widely read works of Persian mystical verse. Written as a response to fifteen questions about the nature of reality, it expounds the doctrine of wahdat al-wujud (Unity of Being) in accessible poetic form.",
-    "books": [
-      {
-        "title": "Gulshan-i Raz (Rose Garden of Mystery)",
-        "url": "https://archive.org/search?query=Gulshan-i%20Raz%20Shabistari%20rose%20garden%20mystery",
-        "magnum": true,
-        "note": "Masterpiece written in 2 nights — 1,000 couplets answering 17 questions on mystical experience."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Hafez",
     "school": "Khwaja Shams-ud-Din Muhammad Hafez-i Shirazi (1315–1390) is the supreme master of the Persian ghazal and the most beloved poet in the Persian-speaking world. His Divan, used for bibliomancy across Iran, combines profoundly ambiguous mystical symbolism with exquisite lyrical beauty. Goethe called him an equal, and his tomb in Shiraz remains a pilgrimage site.",
     "books": [
-      {
-        "title": "Divan-i Hafez (~500 ghazals)",
-        "url": "https://archive.org/search?query=Divan%20Hafez%20Shirazi%20ghazals%20Persian%20English%20translation",
-        "magnum": false,
-        "note": "Used for divination throughout the Persian world. Goethe called it 'the greatest lyric poetry ever written.'"
-      },
       {
         "title": "The Divan of Hafiz",
         "url": "https://archive.org/details/divanofhafiz00hafi"
@@ -345,12 +263,6 @@
     "famous": "Abd al-Rahman Jami",
     "school": "Last great classical Persian Sufi poet (1414–1492) who was also a Naqshbandi shaykh and scholar based in Herat. His Haft Awrang (Seven Thrones) and Baharistan are masterworks of Persian literature. He wrote over forty books spanning poetry, theology, and Sufi philosophy, and was a key commentator on the works of Ibn Arabi.",
     "books": [
-      {
-        "title": "Haft Awrang (Seven Thrones — 7 masnavis)",
-        "url": "https://archive.org/search?query=Haft%20Awrang%20Jami%20seven%20thrones%20Persian%20Sufi",
-        "magnum": true,
-        "note": "Crown of Persian Sufi narrative poetry; includes Yusuf u Zulaykha and Salaman u Absal."
-      },
       {
         "title": "Lawa'ih (Flashes of Light)",
         "url": "https://archive.org/details/lawaihofmulanur00jamiuoft"
@@ -420,14 +332,7 @@
   {
     "famous": "Sultan Bahu",
     "school": "Qadiriyya (Punjab) — Most prolific Punjabi Sufi poet and one of the most prolific Sufi writers in any language",
-    "books": [
-      {
-        "title": "Abyat-i Bahu (Punjabi Kafis — mystical songs)",
-        "url": "https://archive.org/search?query=Sultan%20Bahu%20Abyat%20Punjabi%20Sufi%20poetry%20kafian",
-        "magnum": true,
-        "note": "Sung at Sufi shrines across Pakistan every Thursday night."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Zeb-un-Nissa",
@@ -436,14 +341,7 @@
   {
     "famous": "Bedil Dehlawi",
     "school": "Mughal / Sabk-i Hindi Persian Poetry — Most quoted Persian poet in Afghanistan; Iqbal studied him deeply",
-    "books": [
-      {
-        "title": "Kulliyyat-i Bedil (Complete Works — 4 vols of Persian verse)",
-        "url": "https://archive.org/search?query=Kulliyat%20Bedil%20Dehlawi%20Persian%20poetry",
-        "magnum": true,
-        "note": "Deeply philosophical Sufi verse; the most quoted Persian poet in Afghanistan and Central Asia after Rumi."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Wali Gujarati",
@@ -453,12 +351,6 @@
     "famous": "Bulleh Shah",
     "school": "Qadiriyya (Punjab) — His poetry questions religious identity and celebrates divine love; globally popularised by Nusrat Fateh Ali Khan",
     "books": [
-      {
-        "title": "Kafian-i Bulleh Shah (Punjabi Kafis — mystical songs)",
-        "url": "https://archive.org/search?query=Bulleh%20Shah%20kafian%20Punjabi%20Sufi%20poetry",
-        "magnum": true,
-        "note": "Most beloved Punjabi Sufi poetry — popularised globally by Nusrat Fateh Ali Khan. 'Bullah Ki Jaana Mein Kaun' is iconic."
-      },
       {
         "title": "Bulleh Shah: Sufi Lyrics (Panjabi)",
         "url": "https://www.rekhta.org/poets/bulleh-shah/couplets"
@@ -477,14 +369,7 @@
   {
     "famous": "Shah Abdul Latif Bhittai",
     "school": "Sindhi Sufism — His shrine in Bhit Shah is Pakistan's most important Sindhi cultural site; founded the raag tradition of Sindhi sacred music",
-    "books": [
-      {
-        "title": "Shah jo Risalo (The Message of the Shah — Sindhi verse)",
-        "url": "https://archive.org/search?query=Shah%20jo%20Risalo%20Shah%20Abdul%20Latif%20Bhittai%20Sindhi",
-        "magnum": true,
-        "note": "The greatest literary work in Sindhi — 30 sur (musical chapters) using folk stories as spiritual allegories."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Love is the only religion — and God is the only beloved.",
       "The river of love has no shore — whoever enters it forgets the bank.",
@@ -501,26 +386,12 @@
   {
     "famous": "Khwaja Mir Dard",
     "school": "Naqshbandiyya — his father founded the Silsila Muhammadiyya; Mir Dard was simultaneously the greatest Urdu poet of 18th-century Delhi and a serious Sufi sheikh, uniquely bridging classical Persian literary tradition and vernacular Urdu mysticism",
-    "books": [
-      {
-        "title": "Diwan-i Dard (Collected Urdu Poetry)",
-        "url": "https://archive.org/search?query=Mir+Dard+Diwan+Urdu+poetry+Delhi+Sufi",
-        "magnum": true,
-        "note": "One of the four founding pillars of Urdu poetry (alongside Mir, Sauda, Dard) — his ghazals weave Naqshbandiyya theology into sublime verse."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Waris Shah",
     "school": "Qadiriyya / Punjabi Sufi Poetry — Heer Ranjha is the Sufi-metaphysical love epic that defines Punjabi cultural identity",
-    "books": [
-      {
-        "title": "Heer Ranjha (Punjabi epic — the Romeo and Juliet of Punjab)",
-        "url": "https://archive.org/search?query=Heer%20Waris%20Shah%20Punjabi%20romantic%20epic",
-        "magnum": true,
-        "note": "Most beloved text of Punjabi literature — a Sufi allegory of the soul's love for God as a tragic love story."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Love is not taught in schools — it is learned through suffering.",
       "The lover asks nothing of the beloved but presence.",
@@ -545,12 +416,6 @@
     "school": "Mughal / Urdu Classical Poetry — Witnessed British destruction of Delhi in 1857; his ghazals define classical Urdu literature",
     "books": [
       {
-        "title": "Diwan-i Ghalib (Collected Urdu Ghazals)",
-        "url": "https://archive.org/search?query=Diwan-e-Ghalib%20Urdu%20ghazals%20Mirza%20Ghalib",
-        "magnum": true,
-        "note": "Most widely quoted Urdu poetry ever written — a complete philosophical world-view in compressed verse."
-      },
-      {
         "title": "Diwan-e-Ghalib (Complete)",
         "url": "https://www.rekhta.org/poets/mirza-ghalib/ghazals"
       }
@@ -564,14 +429,7 @@
   {
     "famous": "Khawaja Ghulam Farid",
     "school": "Chishti Nizami — the greatest Saraiki Sufi poet; his kafi poetry of separation (wichora) and longing gives voice to the desert landscape of Cholistan; Farid Mela is one of Pakistan's largest cultural festivals",
-    "books": [
-      {
-        "title": "Diwan-i Farid (Kafian — Saraiki Poetry)",
-        "url": "https://archive.org/search?query=Khawaja+Ghulam+Farid+Diwan+Saraiki+Kafi",
-        "magnum": true,
-        "note": "The complete Kafian — 272 poems of spiritual longing in Saraiki; considered the Quran of Saraiki literary culture."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Mohammad-Taqi Bahar",

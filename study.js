@@ -10,7 +10,8 @@ const _SR_SCHOLARS={
   'F0751': {name:'Ibn Rushd',              death:'d. 1198 CE', dod:1198},
   'F1432': {name:'Umar Ibn al-Farid',     death:'d. 1235 CE', dod:1235},
   'F0728': {name:'Ibn Arabi',              death:'d. 1240 CE', dod:1240},
-  'F0755': {name:'Ibn Taymiyya',           death:'d. 1328 CE', dod:1328}
+  'F0755': {name:'Ibn Taymiyya',           death:'d. 1328 CE', dod:1328},
+  'F0727': {name:'Ibn al-Qayyim',          death:'d. 1350 CE', dod:1350}
 };
 let _srActive=null;
 let _srTab=null;
@@ -195,8 +196,8 @@ function openStudyRoom(slug){
   setView('studyroom');
   selectStudyScholar(slug);
 }
-const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Abdul Qadir al-Jilani','Ibn Taymiyya']);
-const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Abdul Qadir al-Jilani':'F0031','Ibn Taymiyya':'F0755'};
+const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Abdul Qadir al-Jilani','Ibn Taymiyya','Ibn al-Qayyim']);
+const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Abdul Qadir al-Jilani':'F0031','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727'};
 
 // Build sidebar immediately so it's ready when study view is shown
 if(document.readyState==='loading'){

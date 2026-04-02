@@ -20,19 +20,22 @@
   {
     "famous": "Zayd ibn Ali",
     "school": "Zayd ibn Ali ibn Husayn (695–740), great-grandson of the Prophet and founder of the Zaidi school of Shia Islam. He led a revolt against the Umayyads and was killed in battle. The Zaidi tradition became the state religion of Yemen for over a thousand years.",
-    "books": []
+    "books": [],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Ali ibn Husayn Zayn al-Abidin"
+      },
+      {
+        "relation": "Grandfather",
+        "person": "Husayn ibn Ali"
+      }
+    ]
   },
   {
     "famous": "Imam Abu Hanifa",
     "school": "Abu Hanifa al-Nu'man ibn Thabit (699–767), founder of the Hanafi school, the largest school of Islamic jurisprudence followed by approximately 45% of the world's Muslims. A merchant by trade and a tabi'i, he pioneered the use of analogical reasoning (qiyas) and juristic preference (istihsan) in Islamic law.",
-    "books": [
-      {
-        "title": "Kitab al-Athar (The Book of Narrations)",
-        "url": "https://archive.org/search?query=Kitab%20al-Athar%20Abu%20Hanifa",
-        "magnum": true,
-        "note": "Oldest surviving fiqh work by a named author."
-      }
-    ],
+    "books": [],
     "parents": "Thabit bin Zuta",
     "children": "Hammad",
     "quotes": [
@@ -122,14 +125,7 @@
   {
     "famous": "Abu Yusuf",
     "school": "Primary student of Imam Abu Hanifa who codified Hanafi administrative and constitutional law; appointed first Chief Judge (Qadi al-Quzat) of the Abbasid Caliphate by Harun al-Rashid; his Kitab al-Kharaj is the foundational text of Islamic fiscal and land law",
-    "books": [
-      {
-        "title": "Kitab al-Kharaj",
-        "url": "https://archive.org/search?query=kitab+al-kharaj+abu+yusuf",
-        "magnum": true,
-        "note": "Foundational text of Islamic fiscal and land law, written for Harun al-Rashid"
-      }
-    ],
+    "books": [],
     "quotes": [
       "The ruler has no right to the people’s wealth except what the law specifies — and the law is God’s, not the ruler’s.",
       "Taxation without justice is confiscation.",
@@ -161,18 +157,6 @@
     "famous": "Imam al-Shafi'i",
     "school": "Muhammad ibn Idris al-Shafi'i (767–820), founder of the Shafi'i school of jurisprudence and the first to systematise Islamic legal theory in his Risala. He synthesised the approaches of the Hanafi rationalists and the Maliki traditionalists, establishing the Quran, Sunnah, consensus, and analogy as the four sources of law.",
     "books": [
-      {
-        "title": "Al-Risala (The Letter — founding text of Islamic legal theory)",
-        "url": "https://archive.org/search?query=Al-Risala%20Imam%20Shafi%27i%20Islamic%20legal%20theory",
-        "magnum": true,
-        "note": "Founded the science of Usul al-Fiqh (principles of Islamic jurisprudence)."
-      },
-      {
-        "title": "Kitab al-Umm (The Mother Book — comprehensive fiqh, 8 vols)",
-        "url": "https://archive.org/search?query=Kitab%20al-Umm%20Imam%20Shafi%27i",
-        "magnum": false,
-        "note": ""
-      },
       {
         "title": "Al-Risala (Treatise on Islamic Jurisprudence)",
         "url": "https://archive.org/details/IslamicJurisprudenceShafiiRisala"
@@ -208,25 +192,12 @@
   {
     "famous": "Sahnun",
     "school": "Compiled Al-Mudawwana al-Kubra from Ibn al-Qasim's transmissions of Imam Malik — the text that defined Maliki jurisprudence for North Africa, Spain, and West Africa for a millennium; served as Chief Judge (Qadi) of Kairouan and established it as a centre of Maliki learning, directly influencing the Timbuktu tradition",
-    "books": [
-      {
-        "title": "Al-Mudawwana al-Kubra",
-        "url": "https://archive.org/search?query=al-mudawwana+sahnun",
-        "magnum": true,
-        "note": "The canonical compendium of Maliki law — basis for legal practice across North and West Africa"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Imam Ahmad ibn Hanbal",
     "school": "Hanbali School — Founder. Dominant in Arabian Peninsula. Symbol of Sunni orthodoxy against state theology.",
     "books": [
-      {
-        "title": "Musnad Ahmad (~30,000 hadith — largest single collection)",
-        "url": "https://archive.org/search?query=Musnad%20Ahmad%20ibn%20Hanbal",
-        "magnum": true,
-        "note": "Largest single hadith collection by one scholar."
-      },
       {
         "title": "Musnad Ahmad",
         "url": "https://sunnah.com/ahmad"
@@ -273,18 +244,6 @@
     "school": "Baghdadi / Independent Jariri school — Founded the science of historical narrative (isnad-based history)",
     "books": [
       {
-        "title": "Tarikh al-Umam wal-Muluk (History of Prophets and Kings — 40 vols)",
-        "url": "https://archive.org/search?query=Tabari%20History%20of%20Prophets%20and%20Kings%20translation",
-        "magnum": true,
-        "note": "Most comprehensive early history of the Islamic world — the foundational source for all Islamic history."
-      },
-      {
-        "title": "Jami al-Bayan fi Tafsir al-Quran (The Great Tafsir — 30 vols)",
-        "url": "https://archive.org/search?query=Tafsir%20Tabari%20Jami%20al-Bayan",
-        "magnum": false,
-        "note": ""
-      },
-      {
         "title": "The History of al-Tabari (SUNY translation)",
         "url": "https://archive.org/details/HistoryOfAlTabari"
       }
@@ -307,14 +266,7 @@
   {
     "famous": "Al-Yaqubi",
     "school": "A ninth-century historian and geographer of Abbasid Baghdad, he authored Tarikh al-Yaqubi (History of al-Yaqubi), a universal history from creation to his own time, and Kitab al-Buldan (Book of Countries). His historical work is notable for its attention to non-Arab and pre-Islamic civilisations, reflecting his broad intellectual curiosity. He travelled widely across the Islamic world and his geographical writings draw on firsthand observation.",
-    "books": [
-      {
-        "title": "Tarikh al-Yaqubi (History of al-Yaqubi)",
-        "url": "https://archive.org/search?query=Tarikh+al-Yaqubi",
-        "magnum": true,
-        "note": "9th-century universal history — the source of our early Islamic data extraction project."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Al-Istakhri",
@@ -323,14 +275,7 @@
   {
     "famous": "Al-Maturidi",
     "school": "Maturidi School of Kalam — Founder. Paired with Ash'ari as the two pillars of Sunni theology. Dominant among Hanafi Muslims.",
-    "books": [
-      {
-        "title": "Kitab al-Tawhid (Book of Divine Unity)",
-        "url": "https://archive.org/search?query=Kitab%20al-Tawhid%20Maturidi",
-        "magnum": true,
-        "note": "The foundational text of Maturidi theology."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Reason and revelation are complementary — neither contradicts the other when properly understood."
     ]
@@ -338,20 +283,7 @@
   {
     "famous": "Al-Ash'ari",
     "school": "Abu al-Hasan al-Ash'ari (874–936), founder of the Ash'ari school of theology, the dominant theological tradition in Sunni Islam. Originally a Mu'tazili rationalist, he famously broke with his teachers and developed a middle path using rational argument to defend orthodox beliefs.",
-    "books": [
-      {
-        "title": "Al-Ibana 'an Usul al-Diyana",
-        "url": "https://archive.org/search?query=Al-Ibana%20Ash%27ari%20Usul%20al-Diyana",
-        "magnum": true,
-        "note": ""
-      },
-      {
-        "title": "Maqalat al-Islamiyyin (Survey of Islamic Theological Positions)",
-        "url": "https://archive.org/search?query=Maqalat%20al-Islamiyyin%20Ash%27ari%20Islamic%20sects",
-        "magnum": false,
-        "note": ""
-      }
-    ],
+    "books": [],
     "quotes": [
       "We affirm what God has affirmed for Himself, and deny what He has denied, without asking how.",
       "I hold what the pious ancestors held — but I defend it with the tools of reason.",
@@ -371,14 +303,7 @@
   {
     "famous": "Al-Masudi",
     "school": "Abu al-Hasan al-Mas'udi (896–956), the 'Herodotus of the Arabs,' was the first historian to combine geography, natural history, and world history into a single narrative. His Muruj al-Dhahab covers civilisations from China to the Franks.",
-    "books": [
-      {
-        "title": "Muruj al-Dhahab (Meadows of Gold — encyclopaedic world history)",
-        "url": "https://archive.org/search?query=Masudi%20Meadows%20of%20Gold%20Muruj%20al-Dhahab",
-        "magnum": true,
-        "note": "Combines world history, natural history, philosophy and geography — the Islamic world's first great encyclopaedic history."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The wise man is he who knows himself."
     ]
@@ -453,12 +378,6 @@
     "school": "Abu Muhammad Ali ibn Hazm (994–1064), the leading figure of the Zahiri school. His Tawq al-Hamama (Ring of the Dove) is a classic treatise on love, while his al-Fisal is the first systematic comparative study of world religions.",
     "books": [
       {
-        "title": "Tawq al-Hamama (The Ring of the Dove — on love)",
-        "url": "https://archive.org/search?query=Tawq%20al-Hamama%20Ibn%20Hazm%20ring%20dove%20love",
-        "magnum": true,
-        "note": "Most beautiful Arabic treatise on love — a medieval masterpiece of philosophy, poetry and autobiography."
-      },
-      {
         "title": "The Ring of the Dove (Tawq al-Hamama)",
         "url": "https://archive.org/details/ringofthedovetre00ibnh"
       }
@@ -484,14 +403,7 @@
   {
     "famous": "Imam al-Juwayni",
     "school": "Abu al-Ma'ali al-Juwayni (1028–1085), known as 'Imam al-Haramayn,' the greatest Ash'ari theologian before al-Ghazali and al-Ghazali's primary teacher at the Nizamiyya madrasa in Nishapur.",
-    "books": [
-      {
-        "title": "Al-Irshad (The Guide — Ash'ari theology)",
-        "url": "https://archive.org/search?query=Al-Irshad%20Imam%20al-Haramayn%20Juwayni%20Ashari%20theology",
-        "magnum": true,
-        "note": ""
-      }
-    ],
+    "books": [],
     "quotes": [
       "The purpose of theology is to know God as He truly is.",
       "Knowledge is not the abundance of narrations — knowledge is a light that God places in the heart.",
@@ -518,14 +430,7 @@
   {
     "famous": "Al-Qadi Iyad",
     "school": "Qadi Iyad ibn Musa al-Yahsubi (1083–1149), the most celebrated Maliki scholar of medieval al-Andalus and the Maghreb. His al-Shifa bi-Ta'rif Huquq al-Mustafa became the most widely read work on the Prophet's character.",
-    "books": [
-      {
-        "title": "Al-Shifa bi-Ta'rif Huquq al-Mustafa (The Cure — on the Rights of the Prophet)",
-        "url": "https://archive.org/search?query=Al-Shifa%20Qadi%20Iyad%20rights%20Prophet%20Muhammad",
-        "magnum": true,
-        "note": "Most beloved book about Prophet Muhammad ever written — still read daily across the Muslim world."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Love of the Prophet is an obligation — whoever loves him will strive to follow his example in all things.",
       "The greatest honour bestowed upon this nation is the character of its Prophet."
@@ -534,14 +439,7 @@
   {
     "famous": "Al-Idrisi",
     "school": "Islamic Geography — served the Norman King Roger II of Sicily, producing the Tabula Rogeriana, the most accurate world map of the medieval era; it remained unsurpassed for three centuries",
-    "books": [
-      {
-        "title": "Nuzhat al-Mushtaq fi Ikhtiraq al-Afaq (The Book of Roger)",
-        "url": "https://archive.org/search?query=Al-Idrisi+Nuzhat+Mushtaq+Tabula+Rogeriana",
-        "magnum": true,
-        "note": "The Book of Roger (1154) — the most detailed world geography of the medieval age, with a map showing south at the top."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The earth is round like a sphere, and the waters cling to it naturally.",
       "I have verified all I have written through my own travels and through the testimonies of those whose reliability I have confirmed.",
@@ -564,10 +462,8 @@
     "school": "Abu al-Faraj Ibn al-Jawzi (1116–1201), the greatest Hanbali preacher of medieval Baghdad whose sermons reportedly drew crowds of over 100,000. He wrote over 700 works spanning tafsir, hadith, history, and biography.",
     "books": [
       {
-        "title": "Talbis Iblis (The Devil's Deception — critique of Sufi excess)",
-        "url": "https://archive.org/search?query=Talbis%20Iblis%20Ibn%20al-Jawzi%20Devil%20Deception",
-        "magnum": true,
-        "note": "Famous Hanbali critique of esoteric Sufi practices — one of the most debated books in Islamic history."
+        "title": "Talbis Iblis (Devil's Deceptions)",
+        "url": "https://archive.org/details/TalbisIblis-DevilsDeceptions"
       }
     ],
     "quotes": [
@@ -611,14 +507,7 @@
   {
     "famous": "Fakhr al-Din Razi",
     "school": "Ash'ari / Avicennian Theology — greatest medieval Islamic encyclopaedist; debated across Central Asia",
-    "books": [
-      {
-        "title": "Mafatih al-Ghayb (The Great Tafsir — 32 vols)",
-        "url": "https://archive.org/search?query=Mafatih%20al-Ghayb%20Fakhr%20al-Din%20Razi%20tafsir",
-        "magnum": true,
-        "note": "Most encyclopaedic Quranic commentary ever written — covers theology, philosophy, medicine and natural science."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The greater the difficulty, the more glory in surmounting it.",
       "The end result of human intellect is bewilderment — and the end result of bewilderment is silence.",
@@ -653,7 +542,8 @@
     "quotes": [
       "The master who cannot see God in everything has not yet begun to see God.",
       "The path of knowledge and the path of love are not two paths — they are one path seen from two angles."
-    ]
+    ],
+    "dod": 1274
   },
   {
     "famous": "Ibn Wasil",
@@ -682,12 +572,6 @@
     "school": "Shadhili Sufi master and scholar (d. 1309) based in Cairo who wrote the Kitab al-Hikam (Book of Aphorisms), one of the most widely read texts in the entire Sufi tradition. His pithy, paradoxical wisdom sayings are memorised across the Muslim world. He also wrote the first biography of the Shadhili order’s founders.",
     "books": [
       {
-        "title": "Miftah al-Falah (Key to Salvation)",
-        "url": "https://archive.org/search?query=Miftah%20al-Falah%20Ibn%20Ata%20Allah%20key%20salvation",
-        "magnum": false,
-        "note": ""
-      },
-      {
         "title": "The Book of Wisdom (Hikam)",
         "url": "https://archive.org/details/ibn-ata-allah-al-iskandari-the-book-of-wisdom"
       }
@@ -705,18 +589,13 @@
   },
   {
     "famous": "Dawud al-Kayseri",
-    "school": "Ottoman scholar (d. 1350) who was the first Shaykh al-Islam appointed by Sultan Orhan, making him the highest religious authority of the early Ottoman state. He was a master of Ibn Arabi’s philosophy and wrote key commentaries on the Fusus al-Hikam, thereby introducing Akbarian thought into the Ottoman intellectual tradition."
+    "school": "Ottoman scholar (d. 1350) who was the first Shaykh al-Islam appointed by Sultan Orhan, making him the highest religious authority of the early Ottoman state. He was a master of Ibn Arabi’s philosophy and wrote key commentaries on the Fusus al-Hikam, thereby introducing Akbarian thought into the Ottoman intellectual tradition.",
+    "dod": 1350
   },
   {
     "famous": "Ibn Taymiyya",
     "school": "Hanbali / Reformist — Condemned many Sufi practices; most influential and most controversial Islamic reformer of the medieval period",
     "books": [
-      {
-        "title": "Majmu' al-Fatawa (Collected Legal Opinions — 37 vols)",
-        "url": "https://archive.org/search?query=Majmu%20al-Fatawa%20Ibn%20Taymiyya",
-        "magnum": true,
-        "note": "Most comprehensive collection of Islamic legal opinions by any single scholar."
-      },
       {
         "title": "Kitab al-Iman (Book of Faith)",
         "url": "https://archive.org/details/KitabAlImanBookOfFaith"
@@ -751,12 +630,6 @@
     "famous": "Ibn al-Qayyim",
     "school": "Shams al-Din Ibn Qayyim al-Jawziyya (1292–1350), the most distinguished student of Ibn Taymiyyah. His works uniquely combine rigorous legal scholarship with profound spiritual psychology — his Madarij al-Salikin maps the stations of the spiritual path.",
     "books": [
-      {
-        "title": "Madarij al-Salikin (Stations of the Wayfarers — 3 vols)",
-        "url": "https://archive.org/search?query=Madarij%20al-Salikin%20Ibn%20Qayyim%20al-Jawziyya",
-        "magnum": true,
-        "note": "A Hanbali engagement with classical Sufi tradition — the most profound medieval Islamic psychology."
-      },
       {
         "title": "Al-Fawaid: A Collection of Wise Sayings",
         "url": "https://archive.org/details/al-fawaid_202007"
@@ -869,20 +742,7 @@
   {
     "famous": "Ibn Rajab al-Hanbali",
     "school": "Hanbali School / Student of Ibn Qayyim — the final link in the great chain Ibn Taymiyya → Ibn Qayyim → Ibn Rajab; his biographical dictionary preserved the Hanbali intellectual tradition",
-    "books": [
-      {
-        "title": "Jami' al-Ulum wal-Hikam (Compendium of Sciences and Wisdoms)",
-        "url": "https://archive.org/search?query=Ibn+Rajab+Jami+Ulum+Hikam+Compendium",
-        "magnum": true,
-        "note": "The definitive commentary on the forty hadith of al-Nawawi — standard text in traditional Islamic education worldwide."
-      },
-      {
-        "title": "Lata'if al-Ma'arif (Subtleties of Knowledge)",
-        "url": "https://archive.org/search?query=Ibn+Rajab+Lataif+Maarif",
-        "magnum": false,
-        "note": ""
-      }
-    ],
+    "books": [],
     "quotes": [
       "The sign that God loves His servant is that He keeps the servant’s heart occupied with Him.",
       "The happiest person is one who earns God’s pleasure even when it displeases people.",
@@ -923,7 +783,8 @@
   },
   {
     "famous": "Khidr Bey",
-    "school": "Ottoman scholar (d. 1459) who was appointed the first chief judge (qadi) of Constantinople after its conquest by Mehmed II in 1453. He helped establish the educational and legal institutions of the newly Ottoman capital, founding madrasas and organising the judiciary. He had been the sultan’s personal tutor."
+    "school": "Ottoman scholar (d. 1459) who was appointed the first chief judge (qadi) of Constantinople after its conquest by Mehmed II in 1453. He helped establish the educational and legal institutions of the newly Ottoman capital, founding madrasas and organising the judiciary. He had been the sultan’s personal tutor.",
+    "dod": 1459
   },
   {
     "famous": "Al-Wansharisi",
@@ -956,26 +817,12 @@
   {
     "famous": "Ahmad Zarruq",
     "school": "The great reconciler of Maliki jurisprudence and Shadhili mysticism; his Qawaid al-Tasawwuf (Principles of Sufism) established rational-legal criteria for evaluating Sufi practice, making it one of the first systematic methodologies for Sufi criticism; his commentaries on Al-Hikam of Ibn Ata Allah remain standard texts in Shadhili circles; founded the Zarruqiyya sub-branch in North Africa",
-    "books": [
-      {
-        "title": "Qawaid al-Tasawwuf",
-        "url": "https://archive.org/search?query=zarruq+qawaid+tasawwuf",
-        "magnum": true,
-        "note": "Principles of Sufism — the most rational-legal framework for evaluating mystical practice"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Al-Suyuti",
     "school": "Shafi'i / Egyptian — The last truly encyclopaedic Muslim scholar of the classical age; memorised 200,000 hadiths",
-    "books": [
-      {
-        "title": "Al-Itqan fi 'Ulum al-Quran (Mastery of the Quranic Sciences)",
-        "url": "https://archive.org/search?query=Al-Itqan%20fi%20Ulum%20al-Quran%20Suyuti%20Quranic%20sciences",
-        "magnum": true,
-        "note": "Definitive reference on the sciences of the Quran — Quranic recitation, interpretation, language."
-      }
-    ],
+    "books": [],
     "quotes": [
       "A scholar's ink is more sacred than a martyr's blood.",
       "I have authored over five hundred works — and I would have authored more were it not that life is short.",
@@ -1022,14 +869,7 @@
   {
     "famous": "Ahmad Sirhindi",
     "school": "Indian Naqshbandi scholar (1564–1624) known as the Mujaddid (Renewer) of the Second Millennium. He opposed Emperor Akbar’s syncretic Din-i Ilahi and championed strict adherence to the Sharia within Sufi practice. His letters (Maktubat) are foundational texts of the Naqshbandiyya-Mujaddidiyya sub-order that spread across the Muslim world.",
-    "books": [
-      {
-        "title": "Maktubat-i Imam Rabbani (Letters — 536 letters, 3 vols)",
-        "url": "https://archive.org/search?query=Maktubat%20Imam%20Rabbani%20Ahmad%20Sirhindi%20letters",
-        "magnum": true,
-        "note": "Most influential Sufi epistle collection in South Asian Islam; shaped Islamic revival worldwide."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The purpose of the mystic path is not to lose yourself in God — it is to return to yourself, purified.",
       "Sharia without tariqa is hypocrisy; tariqa without sharia is heresy.",
@@ -1071,18 +911,15 @@
   {
     "famous": "Dara Shikoh",
     "school": "Mughal prince and scholar (1615–1659), eldest son of Shah Jahan, who sought to find common ground between Islam and Hinduism. His Majma ul-Bahrayn (Meeting of Two Oceans) compared Sufi and Vedantic concepts. A devoted Qadiri Sufi, he translated the Upanishads into Persian. He was executed by his brother Aurangzeb after a succession war.",
-    "books": [
+    "books": [],
+    "relations": [
       {
-        "title": "Majma-ul-Bahrain (Confluence of Two Oceans)",
-        "url": "https://archive.org/search?query=Majma%20ul-Bahrain%20Dara%20Shikoh%20confluence%20two%20oceans",
-        "magnum": true,
-        "note": "Groundbreaking attempt to unite Islamic mysticism and Hindu Advaita Vedanta."
+        "relation": "Father",
+        "person": "Shah Jahan"
       },
       {
-        "title": "Sirr-i-Akbar (Persian translation of 52 Upanishads)",
-        "url": "https://archive.org/search?query=Sirr-i-Akbar%20Dara%20Shikoh%20Upanishads%20Persian",
-        "magnum": false,
-        "note": ""
+        "relation": "Brother",
+        "person": "Aurangzeb"
       }
     ]
   },
@@ -1101,14 +938,7 @@
   {
     "famous": "Shah Waliullah",
     "school": "Indian Islamic scholar and reformer (1703–1762) who sought to revive Islamic thought by returning to the Quran and hadith while embracing the insights of Sufism. Based in Delhi, he translated the Quran into Persian, bridged the Hanafi and Shafi’i schools, and influenced virtually every subsequent reform movement in South Asia.",
-    "books": [
-      {
-        "title": "Hujjat Allah al-Baligha (The Conclusive Argument from God)",
-        "url": "https://archive.org/search?query=Hujjat%20Allah%20Baligha%20Shah%20Waliullah%20Dehlawi",
-        "magnum": true,
-        "note": "Most systematic attempt to provide rational foundations for Islamic law and Sufism."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The reform of any nation begins with the reform of its scholars.",
       "The purpose of religion is not merely to govern actions — it is to transform the inner state from which all actions flow.",
@@ -1142,14 +972,7 @@
   {
     "famous": "Shah Ghulam Ali",
     "school": "Naqshbandiyya Mujaddidiyya — student of Mirza Mazhar Jan-e-Janan; his khanqah at Dargah Shah Ghulam Ali in Delhi became the spiritual capital of the Naqshbandiyya for a century; through Khalid al-Baghdadi he transformed the entire Ottoman-Arab Sufi world",
-    "books": [
-      {
-        "title": "Maktubat-i Shah Ghulam Ali (Letters on Sufi Practice)",
-        "url": "https://archive.org/search?query=Shah+Ghulam+Ali+Maktubat+Naqshbandi+Delhi",
-        "magnum": true,
-        "note": "His letters, like Ahmad Sirhindi's, became the guidebook for Naqshbandi practice across two continents."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Shah Abdul Aziz Dehlawi",
@@ -1182,14 +1005,7 @@
   {
     "famous": "Khalid al-Baghdadi",
     "school": "Naqshbandiyya Khalidiyya — trained by Shah Ghulam Ali in Delhi, then spread the Naqshbandiyya into Ottoman Anatolia, the Balkans, and the Caucasus with unprecedented speed; today most Naqshbandis in the Middle East trace their lineage through him",
-    "books": [
-      {
-        "title": "Diwan-i Khalid (Collected Poetry)",
-        "url": "https://archive.org/search?query=Khalid+al-Baghdadi+Diwan+Kurdish+Naqshbandi",
-        "magnum": true,
-        "note": "Kurdish and Arabic poetry expressing the theology of the Naqshbandiyya; still sung in Kurdish tekkes."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Muhammadu Bello",
@@ -1208,13 +1024,7 @@
   {
     "famous": "Nana Asma'u",
     "school": "Sokoto Caliphate — daughter of reformer Usman dan Fodio; founded the Yan Taru (The Associates), a network of female teachers travelling across the Caliphate to educate rural women",
-    "books": [
-      {
-        "title": "Collected Poems and Educational Works (Diwan)",
-        "url": "https://archive.org/search?query=Nana+Asma%27u+Sokoto+poetry+education",
-        "magnum": true
-      }
-    ],
+    "books": [],
     "quotes": [
       "Education is not a privilege for the few — it is a duty upon every Muslim, man and woman.",
       "The woman who teaches her sisters raises the whole community.",
@@ -1274,14 +1084,7 @@
   {
     "famous": "Ahmad Raza Khan Barelvi",
     "school": "Qadiriyya / Hanafi / Barelvi — Founded the Barelvi movement emphasising love of the Prophet; ~300 million followers worldwide",
-    "books": [
-      {
-        "title": "Fatawa Ridawiyya (Legal Opinions — 30 vols)",
-        "url": "https://archive.org/search?query=Fatawa%20Ridawiyya%20Ahmad%20Raza%20Khan%20Barelvi",
-        "magnum": true,
-        "note": "Most comprehensive collection of South Asian Islamic legal opinions."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Ashraf Ali Thanvi",
@@ -1444,7 +1247,13 @@
   },
   {
     "famous": "Malcolm X",
-    "school": "African-American Muslim leader (1925–1965) who evolved from spokesman for the Nation of Islam to orthodox Sunni Islam after his 1964 Hajj, where the racial equality he witnessed transformed his worldview. His autobiography, co-written with Alex Haley, became one of the most influential books of the 20th century. He was assassinated in New York."
+    "school": "African-American Muslim leader (1925–1965) who evolved from spokesman for the Nation of Islam to orthodox Sunni Islam after his 1964 Hajj, where the racial equality he witnessed transformed his worldview. His autobiography, co-written with Alex Haley, became one of the most influential books of the 20th century. He was assassinated in New York.",
+    "books": [
+      {
+        "title": "The Autobiography of Malcolm X",
+        "url": "https://archive.org/details/autobiographyofm0000xmal"
+      }
+    ]
   },
   {
     "famous": "Yusuf al-Qaradawi",

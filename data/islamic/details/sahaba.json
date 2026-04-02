@@ -279,6 +279,16 @@
     "quotes": [
       "Fight for the truth, even if you must fight alone.",
       "I never set out for a battle except that I felt the ground shake beneath me from eagerness."
+    ],
+    "relations": [
+      {
+        "relation": "Wife",
+        "person": "Asma bint Abi Bakr"
+      },
+      {
+        "relation": "Son",
+        "person": "Abdullah ibn al-Zubayr"
+      }
     ]
   },
   {
@@ -473,6 +483,20 @@
       "The people most severely tested are the prophets, then those nearest to them, then those nearest to them.",
       "Whoever tells you that the Prophet concealed part of what was revealed to him is a liar.",
       "Strange is the case of a believer — there is good for him in everything."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Abu Bakr al-Siddiq"
+      },
+      {
+        "relation": "Husband",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Sister",
+        "person": "Asma bint Abi Bakr"
+      }
     ]
   },
   {
@@ -506,6 +530,16 @@
       "Take knowledge wherever it comes from — but do not accept the actions of men as religion until you see them in the Quran or Sunnah.",
       "The most beloved of deeds to God is the one that is consistent, even if it is small.",
       "If you want God to give you what you ask, ask often — God loves the persistent caller."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Abbas ibn Abd al-Muttalib"
+      },
+      {
+        "relation": "Uncle",
+        "person": "Prophet Muhammad"
+      }
     ]
   },
   {
@@ -534,12 +568,6 @@
     "school": "Youngest daughter of the Prophet Muhammad and Khadijah bint Khuwaylid; wife of Ali ibn Abi Talib and mother of Hasan, Husayn, Zaynab and Umm Kulthum — the sole surviving line through which the Prophet's descendants continue to this day. The Prophet declared her the Sayyidat Nisāʾ al-Janna (foremost woman of Paradise) and rose to greet her whenever she entered a room. She died only six months after her father in 632 CE, still mourning his loss, and was the first of his family to follow him in death.",
     "books": [
       {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary classical biography with chains of transmission on her life and death"
-      },
-      {
         "title": "Fatimah al-Zahra — World History Encyclopedia",
         "url": "https://www.worldhistory.org/Fatimah_bint_Muhammad/",
         "magnum": false,
@@ -549,18 +577,42 @@
     "quotes": [
       "One who worships God sincerely — God will fulfil his needs and relieve his poverty from a source he could never expect.",
       "The best things for women are that they should not see men and men should not see them."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Mother",
+        "person": "Khadijah bint Khuwaylid"
+      },
+      {
+        "relation": "Husband",
+        "person": "Ali ibn Abi Talib"
+      },
+      {
+        "relation": "Son",
+        "person": "Hasan ibn Ali"
+      },
+      {
+        "relation": "Son",
+        "person": "Husayn ibn Ali"
+      },
+      {
+        "relation": "Daughter",
+        "person": "Zaynab bint Ali"
+      },
+      {
+        "relation": "Sister",
+        "person": "Zaynab bint Muhammad"
+      }
     ]
   },
   {
     "famous": "Umm Salamah",
     "school": "Sixth wife of the Prophet Muhammad and the last of the Mothers of the Believers to pass away; she narrated 378 hadiths — the second-highest tally among the Prophet's wives after Aisha. Among the earliest Muslims to migrate to Abyssinia, she endured the forced separation of her husband and infant son during the Hijra. Her counsel at the Treaty of Hudaybiyya, advising the Prophet to lead by example rather than speaking to the companions, averted a potential crisis. The verse of purification (33:33) was revealed in her house.",
     "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Contains her detailed biography and list of hadith transmissions"
-      },
       {
         "title": "Musnad Umm Salamah — Hadith collection",
         "url": "https://sunnah.com/search?q=Umm+Salama",
@@ -572,18 +624,18 @@
       "O Messenger of God, why are men mentioned in the Quran and we are not?",
       "Whoever grieves for the world will find the world is not worth his grief.",
       "The believer’s patience in trial is itself a form of worship."
+    ],
+    "relations": [
+      {
+        "relation": "Husband",
+        "person": "Prophet Muhammad"
+      }
     ]
   },
   {
     "famous": "Hafsa bint Umar",
     "school": "Fourth wife of the Prophet Muhammad and daughter of the second Caliph Umar ibn al-Khattab; entrusted by Abu Bakr with the first written compilation of the Quran after the Battle of Yamama, which remained in her home as the master manuscript. Uthman later used her copy as the reference for his standardised Quran. The angel Jibrīl described her to the Prophet as a woman of prayer and fasting who would be his wife in Paradise. She narrated 60 hadiths, with six appearing in both Bukhari and Muslim.",
     "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary source for her biography and the Quranic manuscript preservation narrative"
-      },
       {
         "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri",
         "url": "https://sunnah.com/bukhari",
@@ -594,28 +646,39 @@
     "quotes": [
       "I was entrusted with the written pages of the Quran — and there was no honour greater than guarding the words of God.",
       "The Prophet taught me to seek refuge in God from the punishment of the grave."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Umar ibn al-Khattab"
+      },
+      {
+        "relation": "Husband",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Brother",
+        "person": "Abdullah ibn Umar"
+      }
     ]
   },
   {
     "famous": "Umm Habibah",
     "school": "Among the earliest converts to Islam despite her father Abu Sufyan being the foremost enemy of the Prophet; she migrated to Abyssinia where her husband Ubaydullah ibn Jahsh apostatised. The Negus of Abyssinia conducted her marriage to the Prophet on his behalf as a unique proxy ceremony across the sea. Her steadfast faith in isolation — divorced and abroad — is celebrated as a model of conviction. She narrated 65 hadiths and is ranked third in knowledge among the Mothers of the Believers.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Detailed account of her migration, marriage in Abyssinia, and hadith transmissions"
-      },
-      {
-        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
-        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
-        "magnum": false,
-        "note": "Standard reference entry among the companions"
-      }
-    ],
+    "books": [],
     "quotes": [
       "I chose the Messenger of God over my own father — for the truth is dearer to me than blood.",
       "A woman who prays her five prayers and guards her chastity will enter Paradise from whichever gate she wishes."
+    ],
+    "relations": [
+      {
+        "relation": "Husband",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Father",
+        "person": "Abu Sufyan ibn Harb"
+      }
     ]
   },
   {
@@ -627,40 +690,49 @@
         "url": "https://sunnah.com/bukhari:3916",
         "magnum": false,
         "note": "Contains the famous 'Two Belts' hadith and key narrations from Asma"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Full biographical entry with hadith transmissions"
       }
     ],
     "quotes": [
       "Spend and do not count — for God does not count what He gives you.",
       "The one who fears people more than God has made people his god.",
       "I would rather face hardship with honour than comfort with humiliation."
+    ],
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Abu Bakr al-Siddiq"
+      },
+      {
+        "relation": "Sister",
+        "person": "Aisha bint Abi Bakr"
+      },
+      {
+        "relation": "Husband",
+        "person": "Zubayr ibn al-Awwam"
+      },
+      {
+        "relation": "Son",
+        "person": "Abdullah ibn al-Zubayr"
+      }
     ]
   },
   {
     "famous": "Asma bint Umays",
     "school": "Among the earliest converts to Islam, Asma migrated twice — to Abyssinia with her first husband Jafar ibn Abi Talib, then to Medina. After Jafar's martyrdom at the Battle of Muta (629 CE) she successively married Abu Bakr al-Siddiq and later Ali ibn Abi Talib, making her the sole woman in Islamic history to have been wife to three of the four Rightly Guided Caliphs' closest circle. She was the confidante of Fatimah al-Zahra, washed her body at death per her final wishes, and was present at the most pivotal moments of the Prophetic era.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Most detailed classical biographical source on her three marriages and narrations"
-      },
-      {
-        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
-        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
-        "magnum": false,
-        "note": "Standard companions reference entry for Asma bint Umays"
-      }
-    ],
+    "books": [],
     "quotes": [
       "We migrated twice — first to Abyssinia and then to Madinah — and we never complained, for the reward of God was greater than any hardship.",
       "I lost my husband in the way of God — and God replaced him with one who was even dearer to me."
+    ],
+    "relations": [
+      {
+        "relation": "Husband",
+        "person": "Jafar ibn Abi Talib"
+      },
+      {
+        "relation": "Husband",
+        "person": "Abu Bakr al-Siddiq"
+      }
     ]
   },
   {
@@ -672,80 +744,23 @@
         "url": "https://sunnah.com/search?q=Umm+Atiyya",
         "magnum": false,
         "note": "Contains her pivotal hadiths on the funeral bath, Eid prayer attendance, and mourning"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary biographical source with full chain of transmitters from her"
       }
     ]
   },
   {
     "famous": "Asma bint Yazid",
     "school": "The most eloquent female companion of the Prophet; she famously approached the Prophet as delegate for all Muslim women to raise the question of spiritual equality and reward between men and women — a speech the Prophet praised as surpassing anything he had heard from a woman. She narrated 81 hadiths — the highest count among Anṣārī women. She accompanied the Conquest of Mecca and at the Battle of al-Yarmuk (636 CE) fought with a tent pole, reportedly killing nine Byzantine soldiers. She died in Damascus after a long life of teaching.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary classical source for her life, eloquence, and hadith corpus"
-      },
-      {
-        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
-        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
-        "magnum": false,
-        "note": "Standard reference with detail on her 81 narrations and their classification"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Zaynab bint Abi Salamah",
     "school": "Born in Abyssinia during the first Muslim migration, step-daughter of the Prophet through his marriage to her mother Umm Salamah. The Prophet renamed her Zaynab and raised her in his household with great affection — reportedly splashing blessed water on her face in play, a gesture said to have preserved her youthful appearance into old age. She transmitted hadith from Umm Salamah, Aisha, Zaynab bint Jahsh, and Umm Habibah, forming a rare first-hand bridge to the inner household of the Prophet. Eight of her traditions are preserved by al-Ṭabarānī.",
-    "books": [
-      {
-        "title": "al-Ṭabarānī — al-Muʿjam al-Kabīr",
-        "url": "https://archive.org/search?query=Mujam+al-Kabir+Tabarani",
-        "magnum": false,
-        "note": "Preserves eight of her traditions with chains of transmission"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary biographical source on her birth, naming, and transmissions"
-      },
-      {
-        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
-        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
-        "magnum": false,
-        "note": "Key companions reference confirming her status and death year"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Safiyya bint Shayba",
     "school": "Female companion from the Custodians of the Kaaba (Banu Shayba) who narrated traditions directly from several of the Prophet's wives, forming a critical link in the hadith transmission network radiating from the Mothers of the Believers. Narrated from Aisha, Umm Salamah, Umm Habibah and Maymunah, as well as from the companion Asma bint Abi Bakr. Her son Abd al-Hamid ibn Jubayr and grandson Umayyah ibn Safwan were themselves transmitters who carried her traditions to the second generation.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary biographical source for her entries among the female companions"
-      },
-      {
-        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
-        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
-        "magnum": false,
-        "note": "Standard companions reference with her classification and narrations"
-      },
-      {
-        "title": "al-Mizzī — Tahdhīb al-Kamāl fī Asmāʾ al-Rijāl",
-        "url": "https://archive.org/search?query=Tahdhib+al-Kamal+Mizzi",
-        "magnum": false,
-        "note": "Rijal assessment confirming her reliability as a narrator"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Habiba bint Sahl",
@@ -756,18 +771,6 @@
         "url": "https://sunnah.com/search?q=Habiba+bint+Sahl+khul",
         "magnum": false,
         "note": "Contains the canonical account of her khulʿ case"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary biographical source for female companions of the Ansar"
-      },
-      {
-        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
-        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
-        "magnum": false,
-        "note": "Companion reference classifying her and documenting her traditions"
       }
     ]
   },
@@ -780,44 +783,13 @@
         "url": "https://sunnah.com/muslim:873",
         "magnum": false,
         "note": "Contains her famous account of memorising Sūrat Qāf from the Prophet's Friday sermons"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Biographical entry among the Anṣārī female companions"
-      },
-      {
-        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
-        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
-        "magnum": false,
-        "note": "Standard companions reference with classification and traditions"
       }
     ]
   },
   {
     "famous": "Umm Mubashshir al-Ansariyyah",
     "school": "Anṣārī female companion from Medina who transmitted traditions directly from the Prophet Muhammad, preserved in the major hadith collections. She is recorded in the biographical dictionaries as a reliable transmitter among the women of the Ansar, and her narrations — including an account of a conversation with the Prophet at Khaybar about the Muslim dead — are cited in the canonical collections. Her son Mubashshir ibn Zayd was also a transmitter of hadith.",
-    "books": [
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 8)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Primary source for female Anṣārī companions including Umm Mubashshir"
-      },
-      {
-        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
-        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
-        "magnum": false,
-        "note": "Classifies her among the female companions and records her narrations"
-      },
-      {
-        "title": "Ibn Ḥajar — al-Iṣāba fī Tamyīz al-Ṣaḥāba",
-        "url": "https://archive.org/search?query=al-Isaba+Ibn+Hajar",
-        "magnum": false,
-        "note": "Definitive companion reference with her full entry and traditions"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "as-Saib ibn Yazid",
@@ -828,18 +800,6 @@
         "url": "https://sunnah.com/bukhari:1858",
         "magnum": false,
         "note": "The canonical hadith in which he recounts performing Hajj with the Prophet at age seven"
-      },
-      {
-        "title": "Ibn Saʿd — al-Ṭabaqāt al-Kubrā (Vol. 5)",
-        "url": "https://archive.org/search?query=Tabaqat+al-Kubra+Ibn+Sad",
-        "magnum": false,
-        "note": "Biography among the younger companions and his role in Medinan administration"
-      },
-      {
-        "title": "Ibn ʿAbd al-Barr — al-Istīʿāb fī Maʿrifat al-Aṣḥāb",
-        "url": "https://archive.org/search?query=Istiab+Ibn+Abd+al-Barr",
-        "magnum": false,
-        "note": "Standard companions reference with his full name, family, and narrations"
       }
     ]
   },
@@ -850,6 +810,20 @@
     "quotes": [
       "By God, He will never humiliate you — for you keep family ties, bear the burdens of others, give to the poor, and honour your guests.",
       "You speak the truth, keep to the right path, and are always first to do good."
+    ],
+    "relations": [
+      {
+        "relation": "Husband",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Daughter",
+        "person": "Fatimah al-Zahra"
+      },
+      {
+        "relation": "Daughter",
+        "person": "Zaynab bint Muhammad"
+      }
     ]
   },
   {
@@ -859,6 +833,16 @@
     "quotes": [
       "By God, I will not eat until you take your foot off the neck of my nephew.",
       "I bear witness that Muhammad speaks the truth — and I will defend him with my life."
+    ],
+    "relations": [
+      {
+        "relation": "Nephew",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Brother",
+        "person": "Abbas ibn Abd al-Muttalib"
+      }
     ]
   },
   {
@@ -868,6 +852,12 @@
     "quotes": [
       "I would not choose my own father and mother over Muhammad — he is my father and my mother.",
       "The Prophet freed me, but it was Islam that truly set me free."
+    ],
+    "relations": [
+      {
+        "relation": "Son",
+        "person": "Usama ibn Zayd"
+      }
     ]
   },
   {
@@ -877,6 +867,20 @@
     "quotes": [
       "O King, we were a people of ignorance — we worshipped idols, ate dead animals, committed sins, severed family ties, and the strong among us exploited the weak. Then God sent us a Messenger from among ourselves.",
       "He commanded us to speak the truth, to fulfil our trusts, to be kind to our relatives, and to stop shedding blood."
+    ],
+    "relations": [
+      {
+        "relation": "Brother",
+        "person": "Ali ibn Abi Talib"
+      },
+      {
+        "relation": "Cousin",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Wife",
+        "person": "Asma bint Umays"
+      }
     ]
   },
   {
@@ -2693,6 +2697,20 @@
     "quotes": [
       "A man who has no shame has no faith.",
       "I never abandoned the Messenger of God in any hardship — and I was the one who held his stirrup at Hunayn."
+    ],
+    "relations": [
+      {
+        "relation": "Nephew",
+        "person": "Prophet Muhammad"
+      },
+      {
+        "relation": "Son",
+        "person": "Abdullah ibn Abbas"
+      },
+      {
+        "relation": "Brother",
+        "person": "Hamza ibn Abd al-Muttalib"
+      }
     ]
   },
   {

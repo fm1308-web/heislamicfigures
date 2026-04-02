@@ -24,21 +24,15 @@
   {
     "famous": "Abu Najib Suhrawardi",
     "school": "The actual founder of the Suhrawardi Sufi school — his nephew Shihab al-Din al-Suhrawardi is more famous, but Abu Najib established the foundational framework; his Adab al-Muridin (Etiquette of the Seekers) was the first systematic manual for Sufi conduct and became the blueprint for subsequent Sufi orders; key link between the Baghdad Junayd school and the institutionalised Suhrawardiyya",
-    "books": [
-      {
-        "title": "Adab al-Muridin",
-        "url": "https://archive.org/search?query=adab+muridin+suhrawardi",
-        "magnum": true,
-        "note": "First systematic manual of Sufi conduct — blueprint for all subsequent Sufi orders"
-      }
-    ],
+    "books": [],
     "teachers": [
       "Ahmad al-Ghazali"
     ]
   },
   {
     "famous": "Abdul Khaliq Ghujdawani",
-    "school": "Abdul Khaliq Ghujdawani (d. 1179), who formulated the eight foundational principles of the Naqshbandi path, including silent dhikr and 'awareness in every breath.' He established the Khwajagan lineage."
+    "school": "Abdul Khaliq Ghujdawani (d. 1179), who formulated the eight foundational principles of the Naqshbandi path, including silent dhikr and 'awareness in every breath.' He established the Khwajagan lineage.",
+    "dod": 1179
   },
   {
     "famous": "Abu Madyan",
@@ -48,31 +42,18 @@
       "Whoever truly seeks God finds that God was seeking him first.",
       "The veil between you and God is not God — it is yourself.",
       "Contentment is a treasure that never runs out."
-    ]
+    ],
+    "dod": 1198
   },
   {
     "famous": "Ibn Mashish",
     "school": "Moroccan School / Shadhiliyya Founding — Murdered on his mountain; his student founded the Shadhiliyya",
-    "books": [
-      {
-        "title": "Al-Salat al-Mashishiyya (The Mashishi Prayer)",
-        "url": "https://archive.org/search?query=Salat%20al-Mashishiyya%20Ibn%20Mashish%20prayer",
-        "magnum": true,
-        "note": "One of the most revered Sufi prayers in the world — recited daily by millions in the Shadhili tradition."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Abd al-Salam ibn Mashish",
     "school": "The spiritual master of Abu'l-Hasan al-Shadhili and thus the grandfather-figure of the entire Shadhiliyya order; his Salat al-Mashishiyya (Prayer of Ibn Mashish) is one of the most widely recited devotional prayers in the Islamic world, used daily by Shadhili followers across five continents; a descendant of the Prophet through Idris I of Morocco",
-    "books": [
-      {
-        "title": "Al-Salat al-Mashishiyya",
-        "url": "https://archive.org/search?query=salat+mashishiyya",
-        "magnum": true,
-        "note": "The most celebrated Shadhili devotional prayer, recited globally"
-      }
-    ],
+    "books": [],
     "teachers": [
       "Abu Madyan"
     ]
@@ -105,7 +86,8 @@
   },
   {
     "famous": "Lal Shahbaz Qalandar",
-    "school": "Syed Muhammad Usman Marwandi, known as Lal Shahbaz Qalandar (1177–1274), a Sufi saint of Sehwan, Sindh, whose shrine is one of the most visited in Pakistan. The ecstatic dhammal dance there is iconic."
+    "school": "Syed Muhammad Usman Marwandi, known as Lal Shahbaz Qalandar (1177–1274), a Sufi saint of Sehwan, Sindh, whose shrine is one of the most visited in Pakistan. The ecstatic dhammal dance there is iconic.",
+    "dod": 1274
   },
   {
     "famous": "Fariduddin Ganjshakar",
@@ -133,14 +115,7 @@
   {
     "famous": "Shams-i-Tabrizi",
     "school": "Shams al-Din Muhammad of Tabriz (c. 1185–1248), the wandering dervish whose encounter with Rumi in Konya in 1244 triggered the most famous spiritual transformation in Islamic history. His provocative teaching shattered Rumi's scholarly composure and ignited the ecstatic poetry of the Divan-i Shams. He disappeared mysteriously.",
-    "books": [
-      {
-        "title": "Maqalat-e Shams (Discourses of Shams)",
-        "url": "https://archive.org/search?query=Maqalat-e%20Shams%20Tabrizi%20discourses%20Persian",
-        "magnum": true,
-        "note": "Rumi named his entire Divan after Shams: the Divan-i Shams-i Tabrizi."
-      }
-    ],
+    "books": [],
     "quotes": [
       "Past and future veil God from our sight — burn both of them with fire.",
       "The message behind the words is what transforms — not the words themselves.",
@@ -152,7 +127,8 @@
   },
   {
     "famous": "Hamid al-Din Nagori",
-    "school": "Hamid al-Din Nagori (d. 1276), third-generation Chishti master based in Nagaur, Rajasthan. Famous for extreme asceticism, refusal of royal patronage, and strict vegetarianism — unusual among Sufis."
+    "school": "Hamid al-Din Nagori (d. 1276), third-generation Chishti master based in Nagaur, Rajasthan. Famous for extreme asceticism, refusal of royal patronage, and strict vegetarianism — unusual among Sufis.",
+    "dod": 1276
   },
   {
     "famous": "Qazi Hamiduddin Nagori",
@@ -171,18 +147,13 @@
     "school": "Abu al-Abbas Ahmad al-Mursi (1219–1287), the direct student and successor of Abu al-Hasan al-Shadhili as head of the Shadhiliyya order. His mosque in Alexandria remains one of the city's most important landmarks.",
     "teachers": [
       "Abu'l-Hasan al-Shadhili"
-    ]
+    ],
+    "dod": 1287
   },
   {
     "famous": "Nizamuddin Auliya",
     "school": "Greatest Chishti saint of Delhi (1238–1325) whose spiritual influence shaped the culture and politics of the Delhi Sultanate. Teacher of the poet Amir Khusrow, he emphasised love, compassion, and service to all regardless of religion. His shrine in Delhi is one of the most visited in the Islamic world.",
     "books": [
-      {
-        "title": "Fawa'id al-Fu'ad (Morals for the Heart)",
-        "url": "https://archive.org/search?query=Fawa%27id%20al-Fu%27ad%20Nizamuddin%20Auliya%20morals%20heart",
-        "magnum": true,
-        "note": "First malfuzat (recorded spiritual conversations) in Persian literature."
-      },
       {
         "title": "Morals for the Heart (Fawa'id al-Fu'ad)",
         "url": "https://archive.org/details/morals-for-the-heart"
@@ -209,14 +180,7 @@
   {
     "famous": "Nasiruddin Chiragh Dehlawi",
     "school": "Chishti Order (Delhi) — Student and successor of Nizamuddin Auliya; his death marked the end of the Delhi Chishti golden age",
-    "books": [
-      {
-        "title": "Khair al-Majalis (The Best of Gatherings — malfuzat)",
-        "url": "https://archive.org/search?query=Khair%20al-Majalis%20Nasiruddin%20Chiragh%20Dehlawi",
-        "magnum": true,
-        "note": ""
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Makhdum Jahaniyan",
@@ -227,7 +191,8 @@
     "school": "Amir Kulal (1278–1370), the pivotal teacher who transmitted the Khwajagan tradition directly to Baha al-Din Naqshband. A potter by trade in Bukhara, he combined craft labour with spiritual practice.",
     "teachers": [
       "Muhammad Baba Sammasi"
-    ]
+    ],
+    "dod": 1370
   },
   {
     "famous": "Mir Sayyid Ali Hamadani",
@@ -259,7 +224,8 @@
   },
   {
     "famous": "Bali Efendi",
-    "school": "Bali Efendi of Sofia (d. 1553), the most important Naqshbandi shaykh in Ottoman Balkan history. He was the spiritual teacher of Grand Vizier Sokollu Mehmed Pasha and spread the Naqshbandiyya into Southeastern Europe."
+    "school": "Bali Efendi of Sofia (d. 1553), the most important Naqshbandi shaykh in Ottoman Balkan history. He was the spiritual teacher of Grand Vizier Sokollu Mehmed Pasha and spread the Naqshbandiyya into Southeastern Europe.",
+    "dod": 1553
   },
   {
     "famous": "Abd al-Wahhab al-Sha'rani",
@@ -279,11 +245,19 @@
   },
   {
     "famous": "Bibi Jamal Khatun",
-    "school": "Bibi Jamal Khatun (d. c. 1647), daughter of the great Qadiri saint Mian Mir of Lahore and one of the most celebrated female Sufis of Mughal India. Her shrine in Lahore is visited by both men and women."
+    "school": "Bibi Jamal Khatun (d. c. 1647), daughter of the great Qadiri saint Mian Mir of Lahore and one of the most celebrated female Sufis of Mughal India. Her shrine in Lahore is visited by both men and women.",
+    "dod": 1647,
+    "relations": [
+      {
+        "relation": "Father",
+        "person": "Mian Mir"
+      }
+    ]
   },
   {
     "famous": "Abdal Khan Sarwari",
-    "school": "Abdal Khan Sarwari (d. c. 1610), a major Qadiri Sufi saint of Lahore whose shrine at Shah Jamal remains one of the most visited in the Punjab. The weekly dhammal gatherings at his shrine continue to this day."
+    "school": "Abdal Khan Sarwari (d. c. 1610), a major Qadiri Sufi saint of Lahore whose shrine at Shah Jamal remains one of the most visited in the Punjab. The weekly dhammal gatherings at his shrine continue to this day.",
+    "dod": 1610
   },
   {
     "famous": "Mian Mir",
@@ -326,14 +300,7 @@
   {
     "famous": "Abd al-Qadir al-Jaza'iri",
     "school": "Algerian national hero, Qadiri Sufi master, and scholar (1808–1883) who led armed resistance against the French conquest of Algeria for fifteen years. After defeat and exile, he settled in Damascus where he saved thousands of Christians during the 1860 massacres. He was also a devoted student of Ibn Arabi’s philosophy.",
-    "books": [
-      {
-        "title": "Kitab al-Mawaqif (Book of Stoppings — 372 stations)",
-        "url": "https://archive.org/search?query=Kitab%20al-Mawaqif%20Abd%20al-Qadir%20Jaza%27iri",
-        "magnum": true,
-        "note": "Written in exile in Damascus; one of the greatest mystical texts of the 19th century."
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Haji Imdadullah Muhajir Makki",
@@ -345,7 +312,8 @@
   },
   {
     "famous": "Meher Ali Shah",
-    "school": "Qadiri and Chishti Sufi saint of Golra Sharif, near Islamabad (1859–1937). He was known for his scholarship, his defence of the Prophet’s honour, and his interfaith debates. His shrine remains one of the most visited in Pakistan, and he is revered for his miracles and his mastery of Persian and Arabic poetry."
+    "school": "Qadiri and Chishti Sufi saint of Golra Sharif, near Islamabad (1859–1937). He was known for his scholarship, his defence of the Prophet’s honour, and his interfaith debates. His shrine remains one of the most visited in Pakistan, and he is revered for his miracles and his mastery of Persian and Arabic poetry.",
+    "dod": 1937
   },
   {
     "famous": "Frithjof Schuon",
