@@ -8,11 +8,6 @@
         "url": "https://archive.org/search?query=Jabir+ibn+Hayyan+chemistry+alchemy",
         "magnum": true,
         "note": "Father of chemistry; developed distillation, crystallization, and calcination — over 3,000 works attributed"
-      },
-      {
-        "title": "Wikipedia — Jabir ibn Hayyan",
-        "url": "https://en.wikipedia.org/wiki/Jabir_ibn_Hayyan",
-        "magnum": false
       }
     ],
     "quotes": [
@@ -31,23 +26,11 @@
   {
     "famous": "Abu Ma'shar al-Balkhi",
     "school": "Abbasid Scientific Court — most influential Islamic astrologer; his Latin translations shaped European medieval astronomy",
-    "books": [
-      {
-        "title": "Introductorium in Astronomiam (Introduction to Astronomy)",
-        "url": "https://en.wikipedia.org/wiki/Abu_Ma%27shar_al-Balkhi",
-        "magnum": true,
-        "note": "Translated as 'Albumasar' in Latin; most influential Islamic astrology text in medieval Europe"
-      },
-      {
-        "title": "Wikipedia — Abu Ma'shar al-Balkhi",
-        "url": "https://en.wikipedia.org/wiki/Abu_Ma%27shar_al-Balkhi",
-        "magnum": false
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Al-Farghani",
-    "school": "House of Wisdom, Baghdad",
+    "school": "Abbasid astronomer (c. 805–870) who worked at the House of Wisdom in Baghdad. His Elements of Astronomy became the most widely read astronomical textbook in both the Islamic world and medieval Europe, where it was translated into Latin by John of Seville. Dante’s cosmology in the Divine Comedy draws directly from Al-Farghani’s work.",
     "quotes": [
       "The science of the stars is among the most noble — for it concerns itself with the greatest of God's creations.",
       "The circumference of the earth, when measured, reveals the precision of its Creator."
@@ -55,19 +38,19 @@
   },
   {
     "famous": "Banu Musa",
-    "school": "House of Wisdom, Baghdad"
+    "school": "Three brothers — Muhammad, Ahmad, and al-Hasan ibn Musa (9th century) — who worked at the House of Wisdom in Baghdad. They patronised translators, funded scientific expeditions, and wrote the Book of Ingenious Devices describing over 100 mechanical inventions including automatic fountains, self-trimming lamps, and programmable musical machines."
   },
   {
     "famous": "Hunayn ibn Ishaq",
-    "school": "House of Wisdom, Baghdad"
+    "school": "Nestorian Christian physician and translator (809–873) who led the translation movement at the House of Wisdom in Baghdad. He and his school translated virtually the entire Greek medical and scientific corpus into Arabic, including Galen, Hippocrates, and Plato. Without his work, much of ancient Greek knowledge would have been lost to history."
   },
   {
     "famous": "Qusta ibn Luqa",
-    "school": "House of Wisdom, Baghdad"
+    "school": "Melkite Christian physician, translator, and polymath (820–912) who worked at the House of Wisdom in Baghdad. He translated Greek scientific and philosophical texts into Arabic and wrote original works on optics, astronomy, and medicine. His treatise on the distinction between spirit and soul influenced both Islamic and Latin scholastic philosophy."
   },
   {
     "famous": "Thabit ibn Qurra",
-    "school": "House of Wisdom, Baghdad"
+    "school": "Sabian mathematician, astronomer, and physician (826–901) who worked at the House of Wisdom in Baghdad. He translated and improved upon Euclid, Archimedes, and Apollonius, and made original contributions to number theory and the calculation of the volume of paraboloids. He founded a dynasty of scholars that served the Abbasid caliphs for generations."
   },
   {
     "famous": "Al-Razi (Rhazes)",
@@ -92,14 +75,7 @@
   {
     "famous": "Al-Battani",
     "school": "A ninth- and tenth-century astronomer and mathematician from Harran, he refined Ptolemy's astronomical observations with unprecedented accuracy, determining the length of the solar year to within two minutes of the modern value. His Kitab al-Zij (Astronomical Tables) corrected several of Ptolemy's calculations and introduced the use of trigonometric functions into astronomy. His work was translated into Latin and profoundly influenced medieval European astronomers including Copernicus.",
-    "books": [
-      {
-        "title": "Wikipedia — Al-Battani",
-        "url": "https://en.wikipedia.org/wiki/Al-Battani",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "The motions of the heavens are governed by laws as fixed as the laws of arithmetic.",
       "Observation corrects theory — and theory without observation is merely poetry."
@@ -120,14 +96,7 @@
   {
     "famous": "Ibn al-Haytham",
     "school": "Cairo — Founded empirical optics and the experimental method; influenced Roger Bacon, Kepler and Newton",
-    "books": [
-      {
-        "title": "Wikipedia — Ibn al-Haytham",
-        "url": "https://en.wikipedia.org/wiki/Ibn_al-Haytham",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "The duty of the man who investigates the writings of scientists is to make himself an enemy of all that he reads.",
       "The duty of the man who investigates the writings of scientists, if learning the truth is his goal, is to make himself an enemy of all that he reads.",
@@ -140,12 +109,6 @@
     "famous": "Al-Biruni",
     "school": "Ghaznavid Court / Universal Scholarship — wrote 146 works across 11 disciplines",
     "books": [
-      {
-        "title": "Wikipedia — Al-Biruni",
-        "url": "https://en.wikipedia.org/wiki/Al-Biruni",
-        "magnum": false,
-        "note": "Wikipedia article"
-      },
       {
         "title": "Alberuni's India (Kitab al-Hind)",
         "url": "https://archive.org/details/alberunisindiaac01biru",
@@ -186,11 +149,6 @@
         "url": "https://archive.org/search?query=al-Jazari+ingenious+mechanical+devices",
         "magnum": true,
         "note": "Describes 50 mechanical devices including water clocks, automata, and pumps — the Kitab is the founding text of robotics"
-      },
-      {
-        "title": "Wikipedia — al-Jazari",
-        "url": "https://en.wikipedia.org/wiki/Al-Jazari",
-        "magnum": false
       }
     ],
     "quotes": [
@@ -257,11 +215,11 @@
   },
   {
     "famous": "Al-Kashi",
-    "school": "Samarkand Observatory (Ulugh Beg)"
+    "school": "Persian mathematician and astronomer (c. 1380–1429) who worked at Ulugh Beg’s observatory in Samarkand. He calculated pi to sixteen decimal places — a record that stood for over 150 years — and developed methods for extracting roots of arbitrary degree. His Key of Arithmetic became a standard reference across the Islamic world."
   },
   {
     "famous": "Ali Qushji",
-    "school": "Samarkand Observatory",
+    "school": "Ottoman-Timurid astronomer and mathematician (1403–1474) who worked at the Samarkand Observatory under Ulugh Beg before moving to Constantinople at the invitation of Mehmed the Conqueror. He challenged Ptolemaic astronomy and argued that the earth’s rotation could not be disproved by physics alone — a remarkable pre-Copernican insight.",
     "quotes": [
       "The astronomer who does not question his own measurements has stopped being an astronomer.",
       "Mathematics is the language in which God wrote the motion of the stars."
@@ -300,7 +258,11 @@
   },
   {
     "famous": "Abbas ibn Firnas",
-    "school": "Abbas ibn Firnas was an Andalusian polymath, inventor, and poet at the court of the Umayyad emirate of Cordoba. He is best known for his attempt at heavier-than-air flight using a wing apparatus, predating modern aviation by a millennium. He also developed a process for manufacturing colourless glass, constructed a planetarium, and devised a water clock."
+    "school": "Abbas ibn Firnas was an Andalusian polymath, inventor, and poet at the court of the Umayyad emirate of Cordoba. He is best known for his attempt at heavier-than-air flight using a wing apparatus, predating modern aviation by a millennium. He also developed a process for manufacturing colourless glass, constructed a planetarium, and devised a water clock.",
+    "quotes": [
+      "If the birds can master the air, then so can man — it requires only courage and ingenuity.",
+      "The laws of nature are the laws of God written in a language the patient observer can learn to read."
+    ]
   },
   {
     "famous": "Abd al-Rahman al-Sufi",

@@ -90,11 +90,23 @@ function _getFilteredPeople(){
     var q=_oneSearch.toLowerCase();
     arr=arr.filter(function(p){
       var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
-      var hay=[p.famous,p.full,p.primaryTitle,p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
+      var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
       return hay.indexOf(q)!==-1;
     });
   }
-  arr.sort(function(a,b){ return (a.famous||'').localeCompare(b.famous||''); });
+  arr.sort(function(a,b){
+    // Always sort Prophet Muhammad first when search matches muhammad/prophet variants
+    if(_oneSearch){
+      var q=_oneSearch.toLowerCase();
+      var muhTerms=['muhammad','mohammed','mohamed','muhammed','mohamad','mohammad','prophet','nabi','rasul','mustafa'];
+      var isMuhQ=muhTerms.some(function(t){ return q.indexOf(t)!==-1 || t.indexOf(q)!==-1; });
+      if(isMuhQ){
+        if(a.slug==='F1132') return -1;
+        if(b.slug==='F1132') return 1;
+      }
+    }
+    return (a.famous||'').localeCompare(b.famous||'');
+  });
   return arr;
 }
 
@@ -188,6 +200,11 @@ function _renderAlpha(){
     var l=(p.famous||'A')[0].toUpperCase();
     if(!groups[l]) groups[l]=[];
     groups[l].push(p);
+    // Dual-list Prophet Muhammad under M as well as P
+    if(p.slug==='F1132' && l!=='M'){
+      if(!groups['M']) groups['M']=[];
+      groups['M'].unshift(p); // first in M
+    }
   });
 
   var row=document.getElementById('one-alpha-row');
@@ -223,6 +240,14 @@ function _showLetterDD(letter){
   document.querySelectorAll('.one-letter.active').forEach(function(l){ l.classList.remove('active'); });
 
   var people=_cachedFiltered.filter(function(p){ return (p.famous||'A')[0].toUpperCase()===letter; });
+  // Dual-list Prophet Muhammad under M
+  if(letter==='M'){
+    var hasProphet=people.some(function(p){ return p.slug==='F1132'; });
+    if(!hasProphet){
+      var pm=_cachedFiltered.filter(function(p){ return p.slug==='F1132'; })[0];
+      if(pm) people.unshift(pm); // first in M list
+    }
+  }
   if(!people.length) return;
 
   // Find the wrap element
@@ -413,7 +438,6 @@ async function _renderPerson(p,container){
     h+='<img id="'+imgId+'" class="one-hero-img" style="display:none" alt="'+_e(p.famous)+'" onerror="this.style.display=\'none\'">';
   }
   h+='<div class="one-hero-text">';
-  h+='<div class="one-slug">'+_e(p.slug||'')+'</div>';
   h+='<div class="one-famous" style="color:'+col+'">'+_e(p.famous);
   h+=' <button class="one-fav-btn" data-name="'+_e(p.famous)+'" onclick="window._oneToggleFav(this)" style="color:'+(isFav?'#D4AF37':'rgba(245,240,232,0.25)')+'">'+( isFav?'\u2605':'\u2606')+'</button>';
   h+='</div>';

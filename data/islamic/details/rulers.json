@@ -8,32 +8,13 @@
         "url": "https://archive.org/search?query=Sirat+Ibn+Hisham",
         "magnum": false,
         "note": "Account of Qusayy's conquest of Mecca and establishment of Quraysh rule"
-      },
-      {
-        "title": "Tarikh al-Tabari",
-        "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": false,
-        "note": ""
       }
     ]
   },
   {
     "famous": "Abd al-Muttalib ibn Hashim",
     "school": "Grandfather and guardian of Prophet Muhammad. He rediscovered and redug the Zamzam well after receiving a divine dream directing him to its location. He raised Muhammad after the deaths of his father Abdullah and mother Amina. He led the Quraysh during Abraha's invasion — the Year of the Elephant (570 CE) in which the Ka'ba was miraculously protected. He died when Muhammad was approximately eight years old.",
-    "books": [
-      {
-        "title": "Tarikh al-Tabari",
-        "url": "https://archive.org/search?query=Tarikh+al-Tabari+English",
-        "magnum": false,
-        "note": "Account of Abd al-Muttalib, the Zamzam well, and the Year of the Elephant"
-      },
-      {
-        "title": "Sirat Ibn Hisham",
-        "url": "https://archive.org/search?query=Sirat+Ibn+Hisham",
-        "magnum": false,
-        "note": ""
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Abu Bakr al-Siddiq",
@@ -86,40 +67,24 @@
   {
     "famous": "Mu'awiya I",
     "school": "The founder and first caliph of the Umayyad dynasty, he ruled from 661 to 680 CE after a prolonged political struggle with Ali ibn Abi Talib following the assassination of Uthman. A skilled administrator and diplomat, he had previously served as governor of Syria for twenty years under the Rashidun caliphs. He transformed the caliphate into a hereditary monarchy by securing the succession of his son Yazid, a move that remained deeply controversial. His reign established Damascus as the capital and laid the administrative foundations that enabled the rapid expansion of the Umayyad state.",
-    "books": [
-      {
-        "title": "Wikipedia — Mu'awiya I",
-        "url": "https://en.wikipedia.org/wiki/Mu%27awiya_I",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Muawiya ibn Abi Sufyan",
     "school": "Companion who served as secretary of revelation; governor of Syria for 20 years under Umar and Uthman; founded the Umayyad caliphate after the civil war; transformed the caliphate into a hereditary monarchy; opened new frontiers of Islamic expansion; his administration built the first Arab navy",
-    "books": [
-      {
-        "title": "Wikipedia — Muawiya I",
-        "url": "https://en.wikipedia.org/wiki/Muawiyah_I",
-        "magnum": false,
-        "note": ""
-      }
-    ],
+    "books": [],
     "parents": "Abu Sufyan ibn Harb / Hind bint 'Utba b. Rabi'a b. 'Abd Shams",
-    "children": "Yazid bin Mu'awiya"
+    "children": "Yazid bin Mu'awiya",
+    "quotes": [
+      "I do not place my sword where my tongue suffices, and I do not place my tongue where patience suffices.",
+      "I will not come between people and their tongues, so long as they do not come between us and our authority.",
+      "If there were a single hair connecting me to my people, I would not let it break."
+    ]
   },
   {
     "famous": "Abd al-Malik ibn Marwan",
     "school": "The fifth Umayyad caliph ruled from 685 to 705 CE and is credited with consolidating Umayyad authority after the Second Fitna. He introduced Arabic as the official administrative language of the caliphate and reformed the coinage system, replacing Byzantine and Sassanid coins with purely Islamic currency. His reign saw the construction of the Dome of the Rock in Jerusalem, one of the earliest masterpieces of Islamic architecture.",
-    "books": [
-      {
-        "title": "Wikipedia — Abd al-Malik ibn Marwan",
-        "url": "https://en.wikipedia.org/wiki/Abd_al-Malik_ibn_Marwan",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Yazid I",
@@ -134,7 +99,11 @@
   {
     "famous": "Al-Walid I",
     "school": "The sixth Umayyad caliph ruled from 705 to 715 CE, a period often regarded as the zenith of Umayyad power and territorial expansion. Under his reign, Muslim armies conquered the Iberian Peninsula, Sindh, and Transoxiana, bringing the caliphate to its greatest geographic extent. He commissioned the construction of the Great Mosque of Damascus and expanded the Prophet's Mosque in Medina, leaving a lasting architectural legacy.",
-    "books": []
+    "books": [],
+    "quotes": [
+      "I built the Great Mosque of Damascus to be a monument that would last until the Day of Judgment.",
+      "A caliph’s legacy is measured not by his conquests but by what he leaves for his people."
+    ]
   },
   {
     "famous": "Umar ibn Abd al-Aziz",
@@ -155,12 +124,6 @@
         "title": "Founding of Baghdad — historical records",
         "url": "https://archive.org/search?query=Mansur+Abbasid+Baghdad",
         "magnum": true
-      },
-      {
-        "title": "Wikipedia — Al-Mansur",
-        "url": "https://en.wikipedia.org/wiki/Al-Mansur",
-        "magnum": false,
-        "note": "Wikipedia article"
       }
     ],
     "quotes": [
@@ -171,26 +134,12 @@
   {
     "famous": "Hisham I of Córdoba",
     "school": "Umayyad Emirate of Córdoba — introduced the Maliki school of jurisprudence to Al-Andalus; expanded Córdoba Mosque",
-    "books": [
-      {
-        "title": "Wikipedia — Hisham I of Córdoba",
-        "url": "https://en.wikipedia.org/wiki/Hisham_I_of_C%C3%B3rdoba",
-        "magnum": true,
-        "note": "Introduced Maliki school of jurisprudence to Al-Andalus; expanded the Great Mosque of Córdoba"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Harun al-Rashid",
     "school": "Abbasid Caliph — ruled at the peak of the Islamic Golden Age; contemporary of Charlemagne; the protagonist of A Thousand and One Nights; patron of science, poetry and music",
-    "books": [
-      {
-        "title": "Wikipedia — Harun al-Rashid",
-        "url": "https://en.wikipedia.org/wiki/Harun_al-Rashid",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "The caliphate is not a robe you wear — it is a burden you carry.",
       "Knowledge is the life of the mind, and the light of every era.",
@@ -222,14 +171,7 @@
   {
     "famous": "Jawhar al-Siqilli",
     "school": "A military commander of Sicilian origin who served the Fatimid dynasty, he led the conquest of Egypt in 969 CE and founded the city of Cairo as the new Fatimid capital. He established Al-Azhar Mosque, which later became one of the most prestigious centres of Islamic learning in the world. His administrative and military achievements were foundational to Fatimid power in North Africa and the eastern Mediterranean.",
-    "books": [
-      {
-        "title": "Wikipedia — Jawhar al-Siqilli",
-        "url": "https://en.wikipedia.org/wiki/Jawhar_(general)",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Sayf al-Dawla",
@@ -252,12 +194,20 @@
   },
   {
     "famous": "Nizam al-Mulk",
-    "school": "Seljuk Vizier — the greatest medieval Islamic administrator; founded the Nizamiyya universities (where Al-Ghazali taught); author of the Siyasatnama"
+    "school": "Seljuk Vizier — the greatest medieval Islamic administrator; founded the Nizamiyya universities (where Al-Ghazali taught); author of the Siyasatnama",
+    "quotes": [
+      "A kingdom can endure with unbelief, but it cannot endure with injustice.",
+      "The stability of the state rests on the quality of its servants — choose them for merit, not for favour."
+    ]
   },
   {
     "famous": "Alp Arslan",
     "school": "The second sultan of the Great Seljuk Empire ruled from 1063 to 1072 CE and dramatically altered the geopolitical landscape of the medieval Middle East. His decisive victory over the Byzantine Emperor Romanos IV at the Battle of Manzikert in 1071 opened Anatolia to Turkic settlement and ultimately led to the foundation of the Sultanate of Rum. He was known for his military prowess and his reliance on the brilliant vizier Nizam al-Mulk.",
-    "books": []
+    "books": [],
+    "quotes": [
+      "If I am victorious, it is by the will of God — if I fall, let my son be your sultan.",
+      "I fought at Manzikert with my shroud tied to my horse — for I was prepared to meet God."
+    ]
   },
   {
     "famous": "Hasan-i Sabbah",
@@ -275,31 +225,12 @@
   {
     "famous": "Sunjata Keïta",
     "school": "Mali Imperial Court — defeated Sosso king Sumanguru Kante at Kirina 1235; founded largest West African empire",
-    "books": [
-      {
-        "title": "Epic of Sundiata (oral tradition — The Sundiata Keita Epic)",
-        "url": "https://en.wikipedia.org/wiki/Sundiata_Keita",
-        "magnum": true,
-        "note": "Founded the Mali Empire 1235 CE; the Sundiata Epic is West Africa's greatest oral history"
-      },
-      {
-        "title": "Wikipedia — Sundiata Keita",
-        "url": "https://en.wikipedia.org/wiki/Sundiata_Keita",
-        "magnum": false
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Muhammad I of Granada",
     "school": "Nasrid Dynasty — founder; began construction of the Alhambra; adopted the motto 'Wa la ghalib illa Allah' (No victor but God)",
-    "books": [
-      {
-        "title": "Wikipedia — Muhammad I of Granada",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_I_of_Granada",
-        "magnum": true,
-        "note": "Founded the Nasrid dynasty; began the Alhambra palace; his dynasty ruled Granada until the last sultan Boabdil in 1492"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Baybars",
@@ -313,14 +244,7 @@
   {
     "famous": "Osman I",
     "school": "Ottoman Empire founder — established the Ottoman state in 1299; his dream of a spreading tree is the founding myth of the Ottomans",
-    "books": [
-      {
-        "title": "Wikipedia — Osman I",
-        "url": "https://en.wikipedia.org/wiki/Osman_I",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Timur",
@@ -338,51 +262,27 @@
   },
   {
     "famous": "Ulugh Beg",
-    "school": "Samarkand Observatory",
-    "books": [
-      {
-        "title": "Wikipedia — Ulugh Beg",
-        "url": "https://en.wikipedia.org/wiki/Ulugh_Beg",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
+    "school": "Timurid sultan and astronomer-king (1394–1449) who built the great observatory at Samarkand, producing the most accurate star catalogue of the pre-telescopic age. His Zij-i Sultani mapped over 1,000 stars with unprecedented precision. Murdered by his own son, his legacy endures in the astronomical tables that European scientists relied on for two centuries.",
+    "books": [],
+    "quotes": [
+      "Religions disperse like mist — kingdoms perish — but the works of the scholar remain for all time.",
+      "The astronomer who does not observe the sky with his own eyes trusts in shadows."
     ]
   },
   {
     "famous": "Murad II",
     "school": "Ottoman Dynasty — sixth sultan; twice abdicated; defeated last major Crusade at Varna 1444; father of Mehmed II",
-    "books": [
-      {
-        "title": "Wikipedia — Murad II",
-        "url": "https://en.wikipedia.org/wiki/Murad_II",
-        "magnum": true,
-        "note": "Defeated the last major Crusade at Varna 1444; abdicated twice; father and patron of Mehmed the Conqueror"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Qaitbay",
     "school": "Mamluk Sultanate — greatest builder among Mamluk sultans; his citadel in Alexandria was built on the site of the ancient Pharos lighthouse",
-    "books": [
-      {
-        "title": "Wikipedia — Qaitbay",
-        "url": "https://en.wikipedia.org/wiki/Qaitbay",
-        "magnum": true,
-        "note": "Built his citadel on the site of the ancient Pharos lighthouse; the Fort of Qaitbay still stands in Alexandria today"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Mehmed II",
     "school": "Ottoman Sultan — conquered Constantinople in 1453 ending the Byzantine Empire; spoke 6 languages; patron of scholars from across the world; quoted the hadith 'What a fine commander will conquer Constantinople'",
-    "books": [
-      {
-        "title": "Wikipedia — Mehmed II",
-        "url": "https://en.wikipedia.org/wiki/Mehmed_II",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "A ruler without learned men is like a man without a soul.",
       "I have now decided to transfer the Roman Empire from Constantinople to Istanbul."
@@ -391,26 +291,12 @@
   {
     "famous": "Husayn Bayqarah",
     "school": "Timurid School — his court in Herat was the cultural capital of the Islamic world; patron of Jami, Nava'i, and Bihzad",
-    "books": [
-      {
-        "title": "Wikipedia — Husayn Bayqarah",
-        "url": "https://en.wikipedia.org/wiki/Husayn_Bayqarah",
-        "magnum": true,
-        "note": "His court in Herat attracted Jami, Nava'i, and Bihzad — the last great Timurid cultural flowering"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Bayezid II",
     "school": "Ottoman Dynasty — eighth sultan; accepted 100,000+ Jews expelled from Spain; known for Sufi piety; abdicated to Selim I",
-    "books": [
-      {
-        "title": "Wikipedia — Bayezid II",
-        "url": "https://en.wikipedia.org/wiki/Bayezid_II",
-        "magnum": true,
-        "note": "Accepted over 100,000 Jews expelled from Spain in 1492; mocked Ferdinand of Spain for 'impoverishing himself and enriching' the Ottomans"
-      }
-    ],
+    "books": [],
     "quotes": [
       "The scholar is more precious to the state than the soldier — the soldier protects the body of the empire, the scholar protects its soul.",
       "Open your ports — for the one who flees persecution carries knowledge with him.",
@@ -420,14 +306,7 @@
   {
     "famous": "Selim I",
     "school": "The ninth Ottoman sultan, he reigned from 1512 to 1520 and dramatically expanded the empire's eastern and southern frontiers. His decisive victory over the Safavids at the Battle of Chaldiran in 1514 secured eastern Anatolia, and his subsequent conquest of the Mamluk Sultanate in 1516-1517 brought Egypt, Syria, and the Hejaz under Ottoman control. With the acquisition of the holy cities of Mecca and Medina, the Ottoman sultans assumed the role of protectors of the Two Holy Mosques and claimed leadership of the broader Sunni Muslim world.",
-    "books": [
-      {
-        "title": "Wikipedia — Selim I",
-        "url": "https://en.wikipedia.org/wiki/Selim_I",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "I prefer the company of scholars to the company of kings.",
       "The greatest victory is the one that requires no sword.",
@@ -451,14 +330,7 @@
   {
     "famous": "Sher Shah Suri",
     "school": "Sur Empire — Afghan ruler who defeated Humayun and ruled North India; Grand Trunk Road builder; his admin system adopted by Akbar",
-    "books": [
-      {
-        "title": "Wikipedia — Sher Shah Suri",
-        "url": "https://en.wikipedia.org/wiki/Sher_Shah_Suri",
-        "magnum": true,
-        "note": "Built the Grand Trunk Road from Bengal to Kabul; his administrative reforms were so good Akbar adopted them"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Shah Ismail I",
@@ -468,14 +340,7 @@
   {
     "famous": "Suleiman the Magnificent",
     "school": "Ottoman Sultan — longest-reigning Ottoman sultan (46 years); expanded the empire to its greatest extent; commissioned Sinan to build Suleymaniye Mosque; patron of law, art and poetry",
-    "books": [
-      {
-        "title": "Wikipedia — Suleiman the Magnificent",
-        "url": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "The people think of wealth and power as the greatest fate — but in this world a spell of health is the best state.",
       "My horse is my witness: I have ruled an empire, and yet I have not found a single day of true contentment."
@@ -484,19 +349,7 @@
   {
     "famous": "Humayun",
     "school": "Mughal Empire — son of Babur; lost and regained his empire; his mausoleum is the prototype for the Taj Mahal",
-    "books": [
-      {
-        "title": "Humayunnama (biography by Gulbadan Begum)",
-        "url": "https://en.wikipedia.org/wiki/Humayun",
-        "magnum": true,
-        "note": "His mausoleum in Delhi directly inspired the Taj Mahal; his court brought Persian culture to the Mughals"
-      },
-      {
-        "title": "Wikipedia — Humayun",
-        "url": "https://en.wikipedia.org/wiki/Humayun",
-        "magnum": false
-      }
-    ],
+    "books": [],
     "quotes": [
       "The man who falls and rises is greater than the man who never falls.",
       "Learning is the only kingdom that cannot be taken by force.",
@@ -514,19 +367,7 @@
   {
     "famous": "Jahangir I",
     "school": "Mughal Empire — fourth emperor; renowned for justice; pioneered Mughal miniature painting; Chain of Justice",
-    "books": [
-      {
-        "title": "Tuzk-i-Jahangiri / Jahangirnama (Memoirs of Jahangir)",
-        "url": "https://en.wikipedia.org/wiki/Jahangir",
-        "magnum": true,
-        "note": "His memoirs are among the most vivid in all of Islamic literature; passionate about natural history and painting"
-      },
-      {
-        "title": "Wikipedia — Jahangir",
-        "url": "https://en.wikipedia.org/wiki/Jahangir",
-        "magnum": false
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Shah Abbas I",
@@ -541,50 +382,22 @@
   {
     "famous": "Nur Jahan",
     "school": "A seventeenth-century Mughal empress, she was the wife of Emperor Jahangir and one of the most powerful women in Mughal history. Born Mehr-un-Nissa to a Persian immigrant family, she effectively co-ruled the empire during her husband's later years, issuing imperial orders, minting coins in her own name, and commanding influence over court appointments. She was also a patron of architecture, gardens, and trade, and her political acumen shaped Mughal court politics for over a decade.",
-    "books": [
-      {
-        "title": "Wikipedia — Nur Jahan",
-        "url": "https://en.wikipedia.org/wiki/Nur_Jahan",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Ahmed I",
     "school": "Ottoman Dynasty — fourteenth sultan; built Sultan Ahmed Mosque (Blue Mosque); signed Treaty of Zsitvatorok",
-    "books": [
-      {
-        "title": "Wikipedia — Ahmed I",
-        "url": "https://en.wikipedia.org/wiki/Ahmed_I",
-        "magnum": true,
-        "note": "Built the Blue Mosque (Sultan Ahmed Mosque) in Istanbul; signed Treaty of Zsitvatorok — first equal Ottoman-European treaty"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Shah Jahan",
     "school": "The fifth Mughal emperor ruled from 1628 to 1658 and presided over what is often considered the golden age of Mughal architecture. He commissioned the Taj Mahal in memory of his wife Mumtaz Mahal, along with the Red Fort and Jama Masjid in Delhi. His later years were overshadowed by a war of succession among his sons, and he was deposed and imprisoned by his son Aurangzeb until his death in 1666.",
-    "books": [
-      {
-        "title": "Wikipedia — Shah Jahan",
-        "url": "https://en.wikipedia.org/wiki/Shah_Jahan",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Aurangzeb",
     "school": "The sixth Mughal emperor ruled from 1658 to 1707 CE, presiding over the empire at its greatest territorial extent while also sowing the seeds of its eventual decline. A devout Muslim who compiled the Fatawa-e-Alamgiri, a comprehensive compendium of Hanafi jurisprudence, he expanded the empire deep into the Deccan through decades of costly military campaigns. His reign remains deeply contested: praised by some for his personal piety and legal scholarship, and criticised by others for policies that alienated Hindu subjects and strained the empire's administrative cohesion.",
-    "books": [
-      {
-        "title": "Wikipedia — Aurangzeb",
-        "url": "https://en.wikipedia.org/wiki/Aurangzeb",
-        "magnum": false,
-        "note": "Wikipedia article"
-      }
-    ],
+    "books": [],
     "quotes": [
       "I came alone into this world and I leave alone — yet I did not realise until now how alone I truly am.",
       "I have sinned terribly — I do not know what punishment awaits me."
@@ -603,27 +416,20 @@
   {
     "famous": "Idris I of Libya",
     "school": "Senussi Order — leader of the Senussi Sufi order; first and only King of Libya 1951–1969; deposed by Gaddafi while abroad",
-    "books": [
-      {
-        "title": "Wikipedia — Idris of Libya",
-        "url": "https://en.wikipedia.org/wiki/Idris_of_Libya",
-        "magnum": true,
-        "note": "First and only King of Libya 1951–1969; leader of the Senussi Sufi order; deposed by Gaddafi's coup while in Turkey"
-      }
-    ]
+    "books": []
   },
   {
     "famous": "Ayatollah Khomeini",
-    "school": "Wilayat al-Faqih (Guardianship of the Jurist)"
+    "school": "Founder of the Islamic Republic of Iran (1902–1989) and leader of the 1979 revolution that overthrew the Shah. A senior Twelver Shia cleric and marja, he developed the theory of Wilayat al-Faqih (Guardianship of the Jurist), making the supreme religious scholar the head of state. His revolution reshaped Middle Eastern politics and Shia political thought worldwide."
   },
   {
     "famous": "Abdurrahman Wahid",
-    "school": "Nahdlatul Ulama / Indonesian Traditionalist Islam",
+    "school": "First democratically elected president of Indonesia (1999–2001) and longtime chairman of Nahdlatul Ulama, the world’s largest Islamic organization with over 40 million members. Known as ‘Gus Dur,’ he championed religious pluralism, interfaith dialogue, and democracy within an Islamic framework. A scholar of both classical Arabic texts and Western philosophy.",
     "books": []
   },
   {
     "famous": "Mohammad Khatami",
-    "school": "Iranian Reform Movement"
+    "school": "President of Iran (1997–2005) who championed the ‘Dialogue Among Civilizations’ at the United Nations. A Shia cleric trained in philosophy, he pushed for press freedom, civil society, and rule of law within the Islamic Republic. His reformist agenda inspired a generation of Iranian intellectuals, though it was ultimately constrained by conservative opposition."
   },
   {
     "famous": "Arwa al-Sulayhi",

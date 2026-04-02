@@ -526,7 +526,7 @@ function getFiltered(){
     if(searchQ){
       const q=searchQ.toLowerCase();
       const vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
-      const hay=[p.famous,p.full,p.primaryTitle,p.city,p.classif,p.tradition,p.type,...(p.tags||[]),...vars].join(' ').toLowerCase();
+      const hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type,...(p.tags||[]),...vars].join(' ').toLowerCase();
       if(!hay.includes(q))return false;
     }
     /* Saved figures filter */

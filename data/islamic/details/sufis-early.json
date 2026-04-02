@@ -30,41 +30,31 @@
     "books": [],
     "parents": "As-Samit b. Qays b. Asram / Qurratu'l-'Ayn bint 'Ubada bin Nadla",
     "children": "al-Walid bin 'Ubada bin As-Samit , Muhammad bin al-Walid bin ''Aabadh",
-    "spouses": "Jamila bint Abi Sa'sa'a , Umm Haram bint Milhan"
+    "spouses": "Jamila bint Abi Sa'sa'a , Umm Haram bint Milhan",
+    "quotes": [
+      "I have never seen anyone more shrewd in governance than Muawiyah, nor anyone more devoted in prayer than Abu Bakr.",
+      "The world is sweet and green, and God has made you stewards in it to see how you act."
+    ]
   },
   {
     "famous": "Hasan ibn Ali",
-    "school": "Prophetic Household (Ahl al-Bayt) — grandson of the Prophet",
-    "books": [
-      {
-        "title": "Wikipedia — Hasan ibn Ali",
-        "url": "https://en.wikipedia.org/wiki/Hasan_ibn_Ali",
-        "magnum": true,
-        "note": "Grandson of Prophet Muhammad; 2nd Imam of Shia; briefly held the caliphate"
-      }
-    ],
+    "school": "Elder grandson of Prophet Muhammad (624–670) and fifth caliph of Islam. He abdicated the caliphate in favour of Muawiyah to prevent further bloodshed among Muslims, fulfilling the Prophet’s prediction that ‘this son of mine is a master, and God will make peace between two great groups of Muslims through him.’ Revered by both Sunni and Shia traditions.",
+    "books": [],
     "parents": "Ali ibn Abi Talib / Fatima bint Muhammad",
     "children": "al-Hasan bin al-Hasan bin 'Ali , Qasim, Fatimah, Zayd bin al-Hasan bin 'Ali , 'Abdullah, Talha, Umm al-Hasan (Maymunah), Umm al-Husan",
     "spouses": "Umm Is'haq, Hafsa bint 'Abd al-Rahman"
   },
   {
     "famous": "Husayn ibn Ali",
-    "school": "Prophetic Household (Ahl al-Bayt) — grandson of the Prophet",
-    "books": [
-      {
-        "title": "Wikipedia — Husayn ibn Ali",
-        "url": "https://en.wikipedia.org/wiki/Husayn_ibn_Ali",
-        "magnum": true,
-        "note": "Son of Ali ibn Abi Talib; martyred at Karbala 680 CE — founding event of Shia Islam"
-      }
-    ],
+    "school": "Younger grandson of Prophet Muhammad (626–680) who refused to pledge allegiance to Yazid ibn Muawiyah and was martyred at the Battle of Karbala with 72 companions. His sacrifice became the defining event of Shia Islam and a universal symbol of resistance against tyranny. The annual commemoration of Ashura is observed by Muslims worldwide.",
+    "books": [],
     "parents": "Ali ibn Abi Talib / Fatima bint Muhammad",
     "children": "'Ali bin al-Husain bin 'Ali , 'Ali al-Akbar, 'Ali al-Asghar, Sakina bint al-Husain bin 'Ali , Fatima bint al-Husain bin 'Ali",
     "spouses": "Shahrbanu bint Yazdgerd III, Umm Rubab, Umm Layla, Umm Is'haq bint Talha"
   },
   {
     "famous": "Rabia al-Basri",
-    "school": "School of Divine Love",
+    "school": "Pioneering female mystic of Basra (c. 717–801) who transformed Islamic spirituality by introducing the concept of selfless divine love — worshipping God neither out of fear of Hell nor hope of Paradise, but purely for His sake. Born into slavery and freed for her piety, she rejected all offers of marriage, declaring her heart belonged only to God.",
     "quotes": [
       "O God, if I worship You in fear of Hell, burn me in Hell. If I worship You in hope of Paradise, exclude me. But if I worship You for Your own sake, do not withhold Your everlasting beauty.",
       "O Allah, if I worship You for fear of Hell, burn me in Hell; if I worship You in hope of Paradise, exclude me from Paradise. But if I worship You for Your own sake, do not withhold from me Your Eternal Beauty.",
@@ -93,11 +83,11 @@
   },
   {
     "famous": "Abd al-Wahid ibn Zayd",
-    "school": "Basran School — Founded the first known Sufi ribat (retreat house) at 'Abbadan on the Persian Gulf"
+    "school": "Basran ascetic and mystic (d. 793) who founded the first known Sufi ribat (retreat house) at Abbadan on the Persian Gulf. A student of Hasan al-Basri, he organised communal spiritual retreats that became the model for later Sufi lodges across the Islamic world. He is a crucial link between the Basran ascetic tradition and organised Sufism."
   },
   {
     "famous": "Abu Sulayman al-Darani",
-    "school": "Syrian School / Ascetic-Gnostic",
+    "school": "Syrian mystic and ascetic (c. 755–830) who was among the earliest Sufis to articulate the concept of spiritual knowledge (ma’rifa) as distinct from scholarly knowledge. Based near Damascus, he taught that true knowledge comes through purification of the heart. He deeply influenced the later Khorasani and Baghdadi Sufi schools.",
     "quotes": [
       "Every moment you spend without the remembrance of God is a loss for which there is no compensation.",
       "Whoever truly fears God, his heart becomes tender and his tongue becomes truthful.",
@@ -106,7 +96,7 @@
   },
   {
     "famous": "Ibrahim ibn Adham",
-    "school": "Khorasani Ascetic School",
+    "school": "Prince of Balkh (c. 718–782) who renounced his kingdom for the ascetic life — the Islamic parallel to the Buddha’s renunciation. According to tradition, a divine voice told him while hunting that he was not created for such pursuits. He became a wandering ascetic, working as a harvester and night-watchman, and is revered as a model of worldly renunciation.",
     "quotes": [
       "I learned true reliance on God from a monk in the desert who had nothing — and smiled.",
       "Whoever is at peace with himself is at peace with God.",
@@ -119,7 +109,7 @@
   },
   {
     "famous": "Fudayl ibn Iyad",
-    "school": "Khorasani-Meccan Ascetic School",
+    "school": "Former highway robber turned ascetic saint (c. 725–803) who repented after hearing a Quranic recitation while planning a robbery. He settled in Mecca, where he became one of the most revered early Sufis. Both Imam Ahmad ibn Hanbal and al-Shafi’i sought his company. He famously said that seeing a scholar love the world disgusted him.",
     "quotes": [
       "Abandon the love of leadership, and you will become a leader.",
       "God created this world as a prison for the believer and a paradise for the disbeliever — so what kind of paradise is it that you are weeping over?",
@@ -134,7 +124,7 @@
   },
   {
     "famous": "Ma'ruf al-Karkhi",
-    "school": "Baghdadi Ascetic School — Teacher of Sari al-Saqati; his tomb in Karkh still visited",
+    "school": "Baghdadi saint (d. 815) of probable Mandaean or Christian origin who converted to Islam and became one of the most revered early Sufis. He was the teacher of Sari al-Saqati, who in turn taught Junayd — making Ma’ruf a crucial link in the chain that would define classical Sufism. His tomb in the Karkh district of Baghdad remains a pilgrimage site.",
     "quotes": [
       "The love of God cannot enter a heart in which love of this world resides.",
       "Seize goodness for yourself before it is seized from you.",
@@ -144,14 +134,7 @@
   {
     "famous": "Ali al-Ridha",
     "school": "Prophetic Household (Ahl al-Bayt) — eighth Imam of Twelver Shia; designated heir of Caliph al-Mamun; buried in Mashhad",
-    "books": [
-      {
-        "title": "Wikipedia — Ali al-Ridha",
-        "url": "https://en.wikipedia.org/wiki/Ali_al-Ridha",
-        "magnum": true,
-        "note": "Eighth Shia Imam; designated heir of Caliph al-Mamun; his shrine in Mashhad is the largest mosque in the world by capacity"
-      }
-    ],
+    "books": [],
     "quotes": [
       "Faith is knowing with the heart, confessing with the tongue, and acting with the limbs.",
       "The best of people is he who is most beneficial to people.",
@@ -163,7 +146,7 @@
   },
   {
     "famous": "Bishr al-Hafi",
-    "school": "Baghdadi Ascetic School",
+    "school": "Baghdadi ascetic and mystic (c. 767–841) known as ‘al-Hafi’ (the Barefoot) because he refused to wear shoes, saying he would not tread on God’s earth with arrogance. A former dissolute who repented after finding a piece of paper bearing the name of God, he became one of the most revered figures of early Muslim piety.",
     "quotes": [
       "The first degree of scrupulousness is to leave everything doubtful; the highest degree is to leave everything that is not for God.",
       "I have never seen anyone who truly knew God and yet was not humble before His creation.",
@@ -172,7 +155,7 @@
   },
   {
     "famous": "Harith al-Muhasibi",
-    "school": "Baghdad School / Sober Sufism",
+    "school": "Baghdadi theologian and mystic (781–857) who founded the discipline of systematic self-examination (muhasaba) — a rigorous accounting of the soul’s states and intentions. His Kitab al-Ri’aya (Book of Observance) profoundly influenced al-Ghazali’s later work. He combined Mu’tazili-trained rationalism with deep Sufi introspection.",
     "books": [
       {
         "title": "Al-Ri'aya li-huquq Allah (Observance of God's Rights)",
@@ -193,7 +176,7 @@
   },
   {
     "famous": "Dhul-Nun al-Misri",
-    "school": "Egyptian School / early formulator of Ma'rifa",
+    "school": "Egyptian mystic and alchemist (c. 796–859) considered the first to formulate the Sufi concept of ma’rifa (gnosis) — direct experiential knowledge of God as distinct from scholarly learning. He was also interested in ancient Egyptian hieroglyphics and alchemy. Accused of heresy, he was summoned to Baghdad but acquitted by the caliph.",
     "quotes": [
       "I never knew God as He should be known until I looked at the face of a sleeping man and was awed by the power that could stop him or wake him.",
       "Three signs mark the knower of God: his light does not extinguish his reverence, he accepts no inner knowledge that contradicts the outer law, and worldly abundance does not tempt him to transgression.",
@@ -204,7 +187,7 @@
   },
   {
     "famous": "Sari al-Saqati",
-    "school": "Baghdad School / Early Systematic Sufism",
+    "school": "Baghdadi mystic (c. 765–867) regarded as the first Sufi to systematically discuss the spiritual states (ahwal) and stations (maqamat). He was the uncle and teacher of Junayd of Baghdad, thereby linking the earliest Baghdadi ascetics to the classical Sufi tradition. He spent decades in devoted worship and was famous for his extreme scrupulousness.",
     "quotes": [
       "Whoever claims to have reached God through ease — his claim is false.",
       "The heart that is sound fears every passing moment that it might have displeased God.",
@@ -217,7 +200,7 @@
   },
   {
     "famous": "Abu Yazid al-Bistami",
-    "school": "Khorasan School / Intoxicated (Sukri) Sufism",
+    "school": "Persian mystic (c. 804–874) who pioneered the ‘intoxicated’ (sukri) school of Sufism, speaking of annihilation of the self (fana) in God. His ecstatic utterances (shathiyat), such as ‘Glory be to me! How great is my majesty!’ shocked the orthodox but became foundational to later mystical theology. He never wrote; his sayings were preserved by disciples.",
     "quotes": [
       "Thirty years the divine reality was my mirror — now I am the mirror of the divine reality.",
       "I went from God to God, until they cried from me in me: O thou I.",
@@ -237,14 +220,7 @@
   {
     "famous": "Muhammad al-Jawad",
     "school": "Prophetic Household (Ahl al-Bayt) — ninth Imam of Twelver Shia; became Imam at age 9; renowned for answers to theological questions",
-    "books": [
-      {
-        "title": "Wikipedia — Muhammad al-Jawad",
-        "url": "https://en.wikipedia.org/wiki/Muhammad_al-Jawad",
-        "magnum": true,
-        "note": "Ninth Shia Imam; became Imam at age 9 — the youngest Imam; renowned for profound theological answers despite his young age"
-      }
-    ],
+    "books": [],
     "quotes": [
       "Trust in God is the strongest fortress.",
       "Whoever controls his anger, God will cover his faults.",
@@ -253,7 +229,7 @@
   },
   {
     "famous": "Hakim al-Tirmidhi",
-    "school": "Khorasan School / Early Theorist of Sainthood",
+    "school": "Khorasani scholar and mystic (c. 820–910) who wrote the first systematic theory of sainthood (walaya) in Islam. His Seal of the Saints influenced Ibn Arabi centuries later. Not to be confused with the hadith collector al-Tirmidhi, he combined hadith scholarship with deep mystical insight.",
     "books": [
       {
         "title": "Khatm al-Awliya (The Seal of Saints)",
@@ -270,7 +246,7 @@
   },
   {
     "famous": "Junayd of Baghdad",
-    "school": "Baghdad School / Junaydiyya — Sober Sufism",
+    "school": "The ‘Master of the Masters’ of Sufism (c. 830–910) who established the ‘sober’ school of Baghdad mysticism, emphasising that the mystic must return to everyday life after the experience of union with God. Nearly every major Sufi order traces its spiritual chain through Junayd. He insisted that Sufism must remain grounded in the Quran and Sunnah.",
     "books": [
       {
         "title": "Rasa'il (Letters on the mystical path)",
@@ -298,11 +274,11 @@
   },
   {
     "famous": "Abu al-Husayn al-Nuri",
-    "school": "Baghdad School / Mysticism of Love"
+    "school": "Baghdadi mystic (c. 840–907) who was a close companion of Junayd and al-Hallaj. When Sufis were arrested in Baghdad and sentenced to death, al-Nuri stepped forward and offered to be executed first, saying he wished to give his companions one more moment of life. The judge was so moved that he released them all."
   },
   {
     "famous": "Al-Hallaj",
-    "school": "Baghdad School — Executed for declaring 'I am the Truth'",
+    "school": "Mansur al-Hallaj (858–922), Persian mystic executed in Baghdad for declaring ‘Ana al-Haqq’ (I am the Truth). His public proclamation of mystical union with God scandalized the authorities. After years of imprisonment, he was tortured and crucified. His martyrdom became the most debated event in Sufi history — condemned by some scholars, revered by others as the supreme testimony of divine love.",
     "books": [
       {
         "title": "Kitab al-Tawasin (The Book of the Letter T)",
@@ -337,7 +313,7 @@
   },
   {
     "famous": "Abu Bakr al-Shibli",
-    "school": "Baghdad School / Hallajiyya"
+    "school": "Baghdadi Sufi and companion of al-Hallaj (861–946) who served as a government official before abandoning worldly life for the mystical path. Known for his ecstatic utterances and unconventional behaviour, he was repeatedly confined for madness. He is one of the most frequently quoted Sufis in classical mystical literature."
   },
   {
     "famous": "Ibn Khafif",
@@ -345,7 +321,7 @@
   },
   {
     "famous": "Al-Sarraj al-Tusi",
-    "school": "Khorasan School — wrote the Kitab al-Luma', the first comprehensive encyclopedia of Sufism",
+    "school": "Khorasani Sufi scholar (d. 988) whose Kitab al-Luma’ (Book of Flashes) was the first comprehensive encyclopedia of Sufism. It catalogued the states, stations, terminology, and practices of the mystics with scholarly precision, becoming the foundational reference that al-Qushayri, al-Hujwiri, and later Sufi writers built upon.",
     "quotes": [
       "The speech of the mystics is the subtlest and most difficult of all speech."
     ]
@@ -369,7 +345,7 @@
   },
   {
     "famous": "Abu Nasr al-Sarraj",
-    "school": "Khorasan School / Historical-Scholarly Sufism",
+    "school": "Khorasani Sufi scholar (d. 988) who wrote the Kitab al-Luma’ (Book of Flashes), the first comprehensive encyclopedia of Sufism. The work systematically categorised Sufi terminology, practices, states, and stations, providing a scholarly framework that later writers like al-Qushayri and al-Hujwiri built upon.",
     "books": [
       {
         "title": "Kitab al-Luma' fi'l-Tasawwuf (Book of Flashes in Sufism)",
@@ -382,14 +358,7 @@
   {
     "famous": "Al-Sulami of Nishapur",
     "school": "Khorasan School — the great compiler of early Sufi biography and Quranic commentary; his Tabaqat al-Sufiyya was translated into Persian by Khwaja Abdullah Ansari and became the main source for all later Sufi biographical dictionaries",
-    "books": [
-      {
-        "title": "Tabaqat al-Sufiyya (Generations of the Sufis)",
-        "url": "https://archive.org/search?query=Sulami+Tabaqat+Sufiyya+Generations+Sufis",
-        "magnum": true,
-        "note": "The earliest and most authoritative biographical dictionary of Sufi masters — the source from which all later dictionaries drew."
-      }
-    ],
+    "books": [],
     "quotes": [
       "The Sufi is the son of the present moment.",
       "The Sufi is not the one who wears the cloak — the Sufi is the one whose heart is free of everything other than God.",
@@ -398,7 +367,7 @@
   },
   {
     "famous": "Abu Bakr al-Kalabadhi",
-    "school": "Bukhari / Transoxianian School",
+    "school": "Hanafi scholar and Sufi from Bukhara (d. 990 or 995) who wrote al-Ta’arruf, one of the earliest systematic introductions to Sufism. His work aimed to reconcile Sufi practice with orthodox Sunni theology, demonstrating that the great Sufis were faithful Muslims. The book became a key reference for understanding classical Sufi doctrine.",
     "books": [
       {
         "title": "Kitab al-Ta'arruf (Introduction to Sufism)",
@@ -413,7 +382,7 @@
   },
   {
     "famous": "Al-Qushayri",
-    "school": "Khorasan School / Orthodox-Sufi Synthesis",
+    "school": "Khorasani scholar and mystic (986–1072) whose Risala (Epistle on Sufism) became the most widely studied Sufi textbook in the Islamic world. He combined rigorous Ash’ari theology with Sufi practice, insisting that authentic mysticism must be rooted in orthodox belief. He studied under al-Daqqaq and was a contemporary of al-Hujwiri.",
     "books": [
       {
         "title": "Lata'if al-Isharat (Subtleties of Indications)",
@@ -435,19 +404,13 @@
   },
   {
     "famous": "Khwaja Abdullah Ansari",
-    "school": "Khorasan / Hanbali-Sufi School — Combined strict Hanbali theology with Persian Sufi poetry",
+    "school": "Hanbali scholar and Persian Sufi poet of Herat (1006–1089) who combined strict adherence to the Hanbali school with ecstatic Persian mystical poetry. His Munajat (Intimate Invocations) and Manazil al-Sa’irin (Stations of the Wayfarers) are classics. Despite persecution for his theological views, he became the most beloved saint of Herat.",
     "books": [
       {
         "title": "Munajat Nameh (Book of Intimate Prayers)",
         "url": "https://archive.org/search?query=Munajat%20Nameh%20Khwaja%20Abdullah%20Ansari%20prayers",
         "magnum": true,
         "note": "Most beloved collection of Persian Sufi prayers — still memorised and recited widely."
-      },
-      {
-        "title": "Wikipedia — Khwaja Abdullah Ansari",
-        "url": "https://en.wikipedia.org/wiki/Abdullah_Ansari",
-        "magnum": false,
-        "note": "Wikipedia article"
       }
     ],
     "quotes": [
@@ -459,7 +422,7 @@
   },
   {
     "famous": "Ali al-Hujwiri",
-    "school": "Ghaznavid / Lahori School / Chishti lineage",
+    "school": "Persian Sufi scholar (c. 1009–1072) who settled in Lahore, where he is revered as ‘Data Ganj Bakhsh’ (Bestower of Treasures). His Kashf al-Mahjub is the oldest Persian treatise on Sufism and remains one of the most widely read. His shrine in Lahore is among the most visited in South Asia.",
     "books": [
       {
         "title": "Kashf al-Mahjub (Unveiling of the Hidden)",
@@ -480,7 +443,7 @@
   },
   {
     "famous": "Al-Ghazali",
-    "school": "Baghdad / Khorasan — Integrative Sober Sufism & Kalam",
+    "school": "Abu Hamid al-Ghazali (1058–1111) was a Persian theologian, jurist, philosopher, and mystic whose Ihya Ulum al-Din (Revival of the Religious Sciences) is considered the most important Islamic book after the Quran and hadith collections. He reconciled Sunni orthodoxy with Sufism, critiqued philosophy in his Tahafut al-Falasifa, and transformed Islamic intellectual life. Called ‘Hujjat al-Islam’ (Proof of Islam), he remains the most influential Muslim thinker after the Prophet.",
     "books": [
       {
         "title": "Ihya Ulum al-Din (Revival of the Religious Sciences)",
@@ -499,12 +462,6 @@
         "url": "https://archive.org/search?query=Kimiya%20al-Saadat%20Alchemy%20Happiness%20Ghazali",
         "magnum": false,
         "note": ""
-      },
-      {
-        "title": "Wikipedia — Al-Ghazali",
-        "url": "https://en.wikipedia.org/wiki/Al-Ghazali",
-        "magnum": false,
-        "note": "Wikipedia article"
       },
       {
         "title": "Ihya Ulum al-Din (English)",
@@ -544,7 +501,7 @@
   },
   {
     "famous": "Ahmad Ghazali",
-    "school": "Khorasan School / Love Mysticism",
+    "school": "Persian mystic and preacher (c. 1061–1123), younger brother of the great al-Ghazali. While his brother systematised theology, Ahmad became one of the most passionate exponents of divine love mysticism. His Sawanih (Intuitions of the Lovers) is a foundational text on love in Sufi literature and influenced Rumi and the Persian poetic tradition.",
     "books": [
       {
         "title": "Sawaneh (Inspirations from the World of Pure Spirits)",
