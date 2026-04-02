@@ -14,182 +14,274 @@ const _SR_SCHOLARS={
   'F0727': {name:'Ibn al-Qayyim',          death:'d. 1350 CE', dod:1350}
 };
 let _srActive=null;
-let _srTab=null;
+let _srOpenScholar=null;
+let _srBookData={}; // slug -> [{book_id, title, types: {slides:entry, summary:entry, video:entry}}]
+
+async function _fetchScholarBooks(slug){
+  if(_srBookData[slug]) return _srBookData[slug];
+  const books={};
+  const cats=['slides','summary','video'];
+  for(const cat of cats){
+    try{
+      const res=await fetch('data/islamic/studyroom/'+cat+'/'+slug+'-manifest.json?v='+Date.now());
+      if(!res.ok) continue;
+      const items=await res.json();
+      items.forEach(function(item){
+        const bid=item.book_id||'unknown';
+        if(!books[bid]) books[bid]={book_id:bid, title:item.title||bid, types:{}};
+        books[bid].types[cat]=item;
+      });
+    }catch(e){}
+  }
+  const arr=Object.values(books);
+  _srBookData[slug]=arr;
+  return arr;
+}
 
 function _buildStudySidebar(){
   const panel=document.getElementById('sr-left');
   if(!panel) return;
   panel.innerHTML='';
-  const sorted=Object.keys(_SR_SCHOLARS).sort((a,b)=>_SR_SCHOLARS[a].dod-_SR_SCHOLARS[b].dod);
+  const sorted=Object.keys(_SR_SCHOLARS).sort(function(a,b){return _SR_SCHOLARS[a].dod-_SR_SCHOLARS[b].dod;});
   const showFavsOnly=APP.filterFavsOnly&&APP.Favorites;
-  sorted.forEach(slug=>{
+  sorted.forEach(function(slug){
     const s=_SR_SCHOLARS[slug];
     if(showFavsOnly&&!APP.Favorites.has(s.name)) return;
-    const card=document.createElement('div');
-    card.className='sr-card'+(slug===_srActive?' sel':'');
+
+    // Scholar card
+    var card=document.createElement('div');
+    card.className='sr-card';
     card.dataset.slug=slug;
-    card.onclick=function(){selectStudyScholar(slug);};
-    const nameDiv=document.createElement('div');
+
+    var nameDiv=document.createElement('div');
     nameDiv.className='sr-card-name';
     nameDiv.textContent=s.name;
-    const dateDiv=document.createElement('div');
+
+    var dateDiv=document.createElement('div');
     dateDiv.className='sr-card-date';
     dateDiv.textContent=s.death;
-    const star=document.createElement('span');
+
+    var star=document.createElement('span');
     star.className='sr-card-fav';
-    const isFav=APP.Favorites&&APP.Favorites.has(s.name);
+    var isFav=APP.Favorites&&APP.Favorites.has(s.name);
     star.textContent=isFav?'\u2605':'\u2606';
     if(isFav) star.classList.add('active');
     star.onclick=function(e){
       e.stopPropagation();
       if(!APP.Favorites) return;
-      const nowFav=APP.Favorites.toggle(s.name);
+      var nowFav=APP.Favorites.toggle(s.name);
       star.textContent=nowFav?'\u2605':'\u2606';
       star.classList.toggle('active',nowFav);
       _updateFavFilterBtn();
       if(APP.filterFavsOnly) _buildStudySidebar();
     };
+
+    // Chevron
+    var chevron=document.createElement('span');
+    chevron.className='sr-card-chevron';
+    chevron.textContent='\u25B8';
+
+    card.appendChild(chevron);
     card.appendChild(nameDiv);
     card.appendChild(dateDiv);
     card.appendChild(star);
+
+    // Book dropdown container (hidden by default)
+    var dropdown=document.createElement('div');
+    dropdown.className='sr-book-dropdown';
+    dropdown.dataset.slug=slug;
+
+    card.onclick=function(e){
+      if(e.target.closest('.sr-card-fav')) return;
+      _toggleScholarDropdown(slug, dropdown, card, chevron);
+    };
+
     panel.appendChild(card);
+    panel.appendChild(dropdown);
   });
 }
 
+async function _toggleScholarDropdown(slug, dropdown, card, chevron){
+  // If already open, close it
+  if(_srOpenScholar===slug){
+    dropdown.classList.remove('open');
+    card.classList.remove('sel');
+    chevron.textContent='\u25B8';
+    _srOpenScholar=null;
+    return;
+  }
+  // Close any previously open
+  document.querySelectorAll('.sr-book-dropdown.open').forEach(function(d){d.classList.remove('open');});
+  document.querySelectorAll('.sr-card.sel').forEach(function(c){c.classList.remove('sel');});
+  document.querySelectorAll('.sr-card-chevron').forEach(function(ch){ch.textContent='\u25B8';});
+
+  card.classList.add('sel');
+  chevron.textContent='\u25BE';
+  _srOpenScholar=slug;
+  _srActive=slug;
+
+  // Update heading
+  var s=_SR_SCHOLARS[slug];
+  document.getElementById('sr-heading').textContent=s?s.name:slug;
+
+  // Fetch book data
+  dropdown.innerHTML='<div class="sr-book-loading">Loading\u2026</div>';
+  dropdown.classList.add('open');
+
+  var books=await _fetchScholarBooks(slug);
+  dropdown.innerHTML='';
+
+  if(!books.length){
+    dropdown.innerHTML='<div class="sr-book-empty">No content yet</div>';
+    return;
+  }
+
+  books.forEach(function(book){
+    var bookEl=document.createElement('div');
+    bookEl.className='sr-book-item';
+
+    var titleEl=document.createElement('div');
+    titleEl.className='sr-book-title';
+    titleEl.textContent=book.title;
+    bookEl.appendChild(titleEl);
+
+    var btns=document.createElement('div');
+    btns.className='sr-book-btns';
+
+    if(book.types.slides){
+      var sb=document.createElement('button');
+      sb.className='sr-tab sr-book-tab';
+      sb.textContent='\uD83D\uDCD6 Slides';
+      sb.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'slides',book);_highlightBtn(btns,sb);};
+      btns.appendChild(sb);
+    }
+    if(book.types.summary){
+      var ub=document.createElement('button');
+      ub.className='sr-tab sr-book-tab';
+      ub.textContent='\uD83D\uDCC4 Summary';
+      ub.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'summary',book);_highlightBtn(btns,ub);};
+      btns.appendChild(ub);
+    }
+    if(book.types.video){
+      var vb=document.createElement('button');
+      vb.className='sr-tab sr-book-tab';
+      vb.textContent='\uD83C\uDFA5 Video';
+      vb.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'video',book);_highlightBtn(btns,vb);};
+      btns.appendChild(vb);
+    }
+
+    bookEl.appendChild(btns);
+    dropdown.appendChild(bookEl);
+  });
+
+  // Auto-load first book's first available type
+  if(books.length){
+    var first=books[0];
+    var type=first.types.slides?'slides':first.types.summary?'summary':first.types.video?'video':null;
+    if(type){
+      _loadBookContent(slug,type,first);
+      // Highlight the button
+      var firstBtn=dropdown.querySelector('.sr-book-tab');
+      if(firstBtn) firstBtn.classList.add('active');
+    }
+  }
+}
+
+function _highlightBtn(container, btn){
+  // Clear all active tabs across entire sidebar
+  document.querySelectorAll('.sr-book-tab.active').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+
+function _loadBookContent(slug, type, book){
+  var body=document.getElementById('sr-body');
+  body.querySelectorAll('iframe').forEach(function(f){f.src='about:blank';});
+  body.innerHTML='';
+
+  // Update heading to show book title
+  var s=_SR_SCHOLARS[slug];
+  document.getElementById('sr-heading').innerHTML=
+    '<span style="opacity:0.5;font-size:14px">'+(s?s.name:'')+'</span><br>'+
+    '<span>'+_esc(book.title)+'</span>';
+
+  var entry=book.types[type];
+  if(!entry) return;
+
+  if(type==='slides'){
+    var base='data/islamic/studyroom/slides/';
+    var bust='?v='+Date.now();
+    var wrap=document.createElement('div');
+    wrap.style.cssText='position:relative;margin-bottom:32px';
+    var f=document.createElement('iframe');
+    f.setAttribute('allowfullscreen','');
+    f.setAttribute('webkitallowfullscreen','');
+    f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px';
+    wrap.appendChild(f);
+    var fsBtn=document.createElement('button');
+    fsBtn.textContent='\u26F6';
+    fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:18px;padding:4px 8px;cursor:pointer';
+    fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(232,200,120,0.15)';fsBtn.style.borderColor='var(--accent)';};
+    fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)';};
+    fsBtn.onclick=function(){
+      if(wrap.dataset.expanded==='1'){
+        wrap.style.cssText='position:relative;margin-bottom:32px';
+        f.style.width='100%';f.style.height='600px';
+        fsBtn.textContent='\u26F6';wrap.dataset.expanded='0';
+      }else{
+        wrap.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:#000;margin:0';
+        f.style.width='100%';f.style.height='100%';
+        fsBtn.textContent='\u2716';wrap.dataset.expanded='1';
+      }
+    };
+    wrap.appendChild(fsBtn);
+    document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&wrap.dataset.expanded==='1')fsBtn.click();});
+    body.appendChild(wrap);
+    f.src=base+encodeURIComponent(entry.file)+bust;
+  }
+
+  if(type==='summary'){
+    var base='data/islamic/studyroom/summary/';
+    var bust='?v='+Date.now();
+    var f=document.createElement('iframe');
+    f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px;margin-bottom:32px';
+    body.appendChild(f);
+    f.src=base+encodeURIComponent(entry.file)+bust;
+  }
+
+  if(type==='video'){
+    var wrap=document.createElement('div');
+    wrap.style.cssText='position:relative;margin-bottom:32px';
+    var f=document.createElement('iframe');
+    f.setAttribute('allowfullscreen','');
+    f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    f.style.cssText='width:100%;height:400px;border:none;display:block;border-radius:5px';
+    f.src=entry.url;
+    wrap.appendChild(f);
+    body.appendChild(wrap);
+  }
+}
+
+function _esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
 function selectStudyScholar(slug){
   _srActive=slug;
-  // Ensure sidebar is populated
-  const panel=document.getElementById('sr-left');
+  var panel=document.getElementById('sr-left');
   if(panel&&!panel.children.length) _buildStudySidebar();
-  document.querySelectorAll('.sr-card').forEach(c=>c.classList.toggle('sel',c.dataset.slug===slug));
-  const s=_SR_SCHOLARS[slug];
-  document.getElementById('sr-heading').textContent=s?s.name:slug;
-  _srTab=null;
-  const body=document.getElementById('sr-body');
-  body.querySelectorAll('iframe').forEach(f=>{f.src='about:blank'});
-  body.innerHTML='';
-  selectStudyTab('slides');
+  // Find and click the scholar card to open dropdown
+  var card=panel.querySelector('.sr-card[data-slug="'+slug+'"]');
+  if(card) card.click();
 }
 
 async function selectStudyTab(tab){
-  _srTab=tab;
-  document.querySelectorAll('.sr-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
-  const slug=_srActive;
-  if(!slug) return;
-  const body=document.getElementById('sr-body');
-  body.innerHTML='';
-  const placeholder='<em style="color:rgba(200,168,74,.7)">Content coming soon \u2014 drop files to activate.</em>';
-
-  if(tab==='slides'){
-    try{
-      const res=await fetch('data/islamic/studyroom/slides/'+slug+'-manifest.json?v='+Date.now());
-      if(res.ok){
-        const books=await res.json();
-        if(books.length){
-          const base='data/islamic/studyroom/slides/';
-          const bust='?v='+Date.now();
-          books.forEach(function(b,i){
-            if(i>0){const hr=document.createElement('div');hr.style.cssText='border-top:1px solid rgba(201,168,76,.25);margin:24px 0';body.appendChild(hr);}
-            const t=document.createElement('div');
-            t.style.cssText="font-family:'Cinzel',serif;font-size:1em;font-weight:700;color:#c9a84c;letter-spacing:.06em;margin-bottom:10px";
-            t.textContent=b.title;
-            body.appendChild(t);
-            const wrap=document.createElement('div');
-            wrap.style.cssText='position:relative;margin-bottom:32px';
-            const f=document.createElement('iframe');
-            f.setAttribute('allowfullscreen','');
-            f.setAttribute('webkitallowfullscreen','');
-            f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px';
-            wrap.appendChild(f);
-            const fsBtn=document.createElement('button');
-            fsBtn.textContent='\u26F6';
-            fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:18px;padding:4px 8px;cursor:pointer';
-            fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(232,200,120,0.15)';fsBtn.style.borderColor='var(--accent)'};
-            fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)'};
-            fsBtn.onclick=function(){
-              if(wrap.dataset.expanded==='1'){
-                wrap.style.cssText='position:relative;margin-bottom:32px';
-                f.style.width='100%';f.style.height='600px';
-                fsBtn.textContent='\u26F6';
-                wrap.dataset.expanded='0';
-              }else{
-                wrap.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:#000;margin:0';
-                f.style.width='100%';f.style.height='100%';
-                fsBtn.textContent='\u2716';
-                wrap.dataset.expanded='1';
-              }
-            };
-            wrap.appendChild(fsBtn);
-            document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&wrap.dataset.expanded==='1')fsBtn.click();});
-            body.appendChild(wrap);
-            f.src=base+encodeURIComponent(b.file)+bust;
-          });
-          return;
-        }
-      }
-    }catch(e){}
-    body.innerHTML=placeholder;
-    return;
+  // Legacy compatibility: if called with just a tab name, load first book of that type
+  if(!_srActive) return;
+  var books=await _fetchScholarBooks(_srActive);
+  for(var i=0;i<books.length;i++){
+    if(books[i].types[tab]){
+      _loadBookContent(_srActive,tab,books[i]);
+      return;
+    }
   }
-
-  if(tab==='summary'){
-    try{
-      const res=await fetch('data/islamic/studyroom/summary/'+slug+'-manifest.json?v='+Date.now());
-      if(res.ok){
-        const items=await res.json();
-        if(items.length){
-          const base='data/islamic/studyroom/summary/';
-          const bust='?v='+Date.now();
-          items.forEach(function(b,i){
-            if(i>0){const hr=document.createElement('div');hr.style.cssText='border-top:1px solid rgba(201,168,76,.25);margin:24px 0';body.appendChild(hr);}
-            const t=document.createElement('div');
-            t.style.cssText="font-family:'Cinzel',serif;font-size:1em;font-weight:700;color:#c9a84c;letter-spacing:.06em;margin-bottom:10px";
-            t.textContent=b.title;
-            body.appendChild(t);
-            const f=document.createElement('iframe');
-            f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px;margin-bottom:32px';
-            body.appendChild(f);
-            f.src=base+encodeURIComponent(b.file)+bust;
-          });
-          return;
-        }
-      }
-    }catch(e){}
-    body.innerHTML=placeholder;
-    return;
-  }
-
-  if(tab==='video'){
-    try{
-      const res=await fetch('data/islamic/studyroom/video/'+slug+'-manifest.json?v='+Date.now());
-      if(res.ok){
-        const items=await res.json();
-        if(items.length){
-          items.forEach(function(v,i){
-            if(i>0){const hr=document.createElement('div');hr.style.cssText='border-top:1px solid rgba(201,168,76,.25);margin:24px 0';body.appendChild(hr);}
-            const t=document.createElement('div');
-            t.style.cssText="font-family:'Cinzel',serif;font-size:1em;font-weight:700;color:#c9a84c;letter-spacing:.06em;margin-bottom:10px";
-            t.textContent=v.title;
-            body.appendChild(t);
-            const wrap=document.createElement('div');
-            wrap.style.cssText='position:relative;margin-bottom:32px';
-            const f=document.createElement('iframe');
-            f.setAttribute('allowfullscreen','');
-            f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-            f.style.cssText='width:100%;height:400px;border:none;display:block;border-radius:5px';
-            f.src=v.url;
-            wrap.appendChild(f);
-            body.appendChild(wrap);
-          });
-          return;
-        }
-      }
-    }catch(e){}
-    body.innerHTML=placeholder;
-    return;
-  }
-
-  body.innerHTML=placeholder;
 }
 
 function openStudyRoom(slug){

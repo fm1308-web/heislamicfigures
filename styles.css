@@ -618,7 +618,8 @@ a:hover{text-decoration:underline}
 #studyRoomView.active{display:grid;grid-template-columns:220px 1fr}
 #sr-left{background:var(--bg);border-right:1px solid var(--border);overflow-y:auto;padding:12px}
 #sr-right{padding:24px 28px;overflow-y:auto}
-.sr-card{padding:10px 12px;border-radius:6px;cursor:pointer;margin-bottom:8px;border:1.5px solid transparent;background:rgba(232,200,120,.04);transition:border-color .15s,background .15s;position:relative}
+.sr-card{padding:10px 12px;padding-left:24px;border-radius:6px;cursor:pointer;margin-bottom:0;border:1.5px solid transparent;background:rgba(232,200,120,.04);transition:border-color .15s,background .15s;position:relative}
+.sr-card-chevron{position:absolute;left:8px;top:12px;font-size:10px;color:var(--muted);transition:transform .15s}
 .sr-card-fav{position:absolute;top:10px;right:10px;font-size:14px;color:var(--muted);cursor:pointer;transition:color .12s}
 .sr-card-fav.active{color:var(--accent)}
 .sr-card-fav:hover{color:var(--accent)}
@@ -626,7 +627,15 @@ a:hover{text-decoration:underline}
 .sr-card.sel{border-color:var(--accent);background:rgba(232,200,120,.1)}
 .sr-card-name{font-family:'Cinzel',serif;font-size:11.5px;font-weight:600;color:var(--accent);letter-spacing:.03em}
 .sr-card-date{font-size:9.5px;color:var(--muted);margin-top:2px}
-#sr-heading{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:.04em}
+/* Book dropdown */
+.sr-book-dropdown{max-height:0;overflow:hidden;transition:max-height .25s ease;margin-bottom:8px}
+.sr-book-dropdown.open{max-height:600px}
+.sr-book-item{padding:6px 8px 8px 20px;border-left:2px solid rgba(232,200,120,.15);margin-left:12px;margin-bottom:4px}
+.sr-book-title{font-family:'Crimson Pro','Lato',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:5px;line-height:1.4}
+.sr-book-btns{display:flex;flex-wrap:wrap;gap:4px}
+.sr-book-tab{padding:4px 10px;font-size:8.5px}
+.sr-book-loading,.sr-book-empty{font-size:10px;color:var(--muted);padding:8px 20px;font-style:italic}
+#sr-heading{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:.04em;line-height:1.4}
 .sr-tab{padding:7px 14px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.08em;color:var(--muted);background:rgba(232,200,120,.05);border:1px solid rgba(232,200,120,.18);border-radius:4px;cursor:pointer;transition:all .12s;margin-right:6px;margin-bottom:6px}
 .sr-tab:hover{color:var(--text);background:rgba(232,200,120,.1)}
 .sr-tab.active{color:var(--accent);background:rgba(232,200,120,.12);border-color:var(--accent)}
