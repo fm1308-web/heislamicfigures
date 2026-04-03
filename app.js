@@ -851,7 +851,7 @@ function renderRows(filtered){
     const era=_getEra(p.dob);
 
     // Genealogy chain gets a distinct gold colour regardless of century
-    const col = p.type==='Genealogy' ? '#c8a84a' : (CC[gc(p.dob)]||'#888');
+    const col = p.type==='Genealogy' ? '#D4AF37' : (CC[gc(p.dob)]||'#A0AEC0');
     const isSel=activePerson&&activePerson.famous===p.famous;
     const isProphet=p.famous==='Prophet Muhammad';
 
@@ -905,7 +905,7 @@ function renderRows(filtered){
       <div class="tc-name">
         <div class="tc-dot" style="background:${col};width:${p.dob<0?3:p.dob<600?5:7}px;height:${p.dob<0?3:p.dob<600?5:7}px;opacity:${p.dob<0?0.45:p.dob<600?0.7:1}${isProphet?';box-shadow:0 0 5px '+col+'90':''}"></div>
         <div class="tc-texts">
-          <div class="tc-famous"${_SR_BADGE_NAMES.has(p.famous)?' style="color:#c9a84c"':''}>${esc(p.famous)}${_SR_BADGE_NAMES.has(p.famous)?`<span class="sr-study-badge" onclick="event.stopPropagation();openStudyRoom('${_SR_SLUG_MAP[p.famous]}')" title="Available in Study Space">✦</span>`:''}</div>
+          <div class="tc-famous"${_SR_BADGE_NAMES.has(p.famous)?' style="color:#D4AF37"':''}>${esc(p.famous)}${_SR_BADGE_NAMES.has(p.famous)?`<span class="sr-study-badge" onclick="event.stopPropagation();openStudyRoom('${_SR_SLUG_MAP[p.famous]}')" title="Available in Study Space">✦</span>`:''}</div>
           <div class="tc-sub">${esc(p.primaryTitle||p.classif||'')}</div>
         </div>
       </div>
@@ -988,10 +988,10 @@ function _isAssumedDate(p){
   if((p.type==='Founder'||p.type==='Prophet')&&p.dob<500)return true;
   return false;
 }
-const _assumedBadge='<span style="font-size:9px;color:rgba(200,168,74,0.55);cursor:help;margin-left:3px" title="Date estimated for visual placement — not historically confirmed">△</span>';
+const _assumedBadge='<span style="font-size:9px;color:rgba(212,175,55,.55);cursor:help;margin-left:3px" title="Date estimated for visual placement — not historically confirmed">△</span>';
 
 function renderInfo(p){
-  const col = p.type==='Genealogy' ? '#c8a84a' : (CC[gc(p.dob)]||'#888');
+  const col = p.type==='Genealogy' ? '#D4AF37' : (CC[gc(p.dob)]||'#A0AEC0');
   const dob_s=p.dob!=null?(p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`):'Unknown';
   const dod_s=p.dod!=null?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
@@ -1008,7 +1008,7 @@ function renderInfo(p){
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
           <span style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
           <span style="font-size:11px;color:var(--ip-muted)">mentioned in the Quran</span>
-          <a href="${esc(qr.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none;font-size:12px;font-weight:600">First verse: ${esc(qr.firstVerse)} ↗</a>
+          <a href="${esc(qr.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:12px;font-weight:600">First verse: ${esc(qr.firstVerse)} ↗</a>
         </div>
         <div style="font-size:11.5px;color:var(--ip-muted);font-style:italic">${esc(qr.epithet)}</div>
       </div>`;
@@ -1019,7 +1019,7 @@ function renderInfo(p){
         </div></div>`;
     }
   } else if(p.quran_refs){
-    const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none;font-size:12px"> — Open in Quran.com 🌐</a>`:'';
+    const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:12px"> — Open in Quran.com 🌐</a>`:'';
     quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
       <div style="font-size:13px;color:var(--ip-text);line-height:1.7">
         <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em">VERSES: </span>${esc(p.quran_refs)}${qlink}
@@ -1033,9 +1033,9 @@ function renderInfo(p){
       <div class="i-books">${sortedBooks.map(b=>`
         <div class="i-book">
           <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
-          <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
+          <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
           ${b.magnum?` <span style="color:var(--ip-acc);font-size:10px">✦</span>`:''}
-          ${b.note?`<div class="i-bnote">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">quran.com</a>')}</div>`:''}</div>
+          ${b.note?`<div class="i-bnote">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:''}</div>
         </div>`).join('')}
       </div></div>`;
   }
@@ -1083,7 +1083,7 @@ function renderInfo(p){
   var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" '
     + 'title="' + (_isFav ? 'Remove from saved' : 'Save figure') + '" '
     + 'style="background:none;border:none;cursor:pointer;font-size:22px;'
-    + 'color:' + (_isFav ? '#D4AF37' : 'rgba(245,240,232,0.25)') + ';'
+    + 'color:' + (_isFav ? '#D4AF37' : 'rgba(160,174,192,0.25)') + ';'
     + 'float:right;margin-left:10px;padding:2px;line-height:1;'
     + 'transition:color 0.15s,transform 0.15s;">'
     + (_isFav ? '★' : '☆') + '</button>';
@@ -1093,7 +1093,7 @@ function renderInfo(p){
     const qItems = p.quotes.map(q =>
       '<blockquote style="margin:0 0 10px 0;padding:10px 14px;' +
       'border-left:3px solid var(--ip-acc);' +
-      'background:rgba(212,168,74,0.05);' +
+      'background:rgba(212,175,55,.05);' +
       'font-family:\'Source Sans 3\',sans-serif;font-size:13px;' +
       'font-style:normal;color:var(--ip-text);line-height:1.65;">' +
       esc(q) + '</blockquote>'
@@ -1135,7 +1135,7 @@ function renderInfo(p){
       return '<span style="' + chipStyle(qcol) + '" ' +
         'onclick="selectPerson(\'' + safe + '\')" ' +
         'onmouseenter="this.style.color=\'var(--ip-acc)\';' +
-        'this.style.borderColor=\'rgba(212,168,74,.4)\'" ' +
+        'this.style.borderColor=\'rgba(212,175,55,.4)\'" ' +
         'onmouseleave="this.style.color=\'var(--ip-text)\';' +
         'this.style.borderColor=\'var(--ip-brd)\'">' +
         esc(q.famous) + '</span>';
@@ -1191,7 +1191,7 @@ function renderInfo(p){
       <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds"${String(p.dod_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dod_s)}</span>`:''}</div>
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
-    ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(160,130,60,.08);border:1px dashed rgba(200,168,80,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
+    ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
     ${(p.famous==='Prophet Muhammad'?(p.school||'The Last Prophet'):p.school)?`<div class="i-sec"><div class="i-sl">Biography</div><p>${p.famous==='Prophet Muhammad'?(p.school||'The Last Prophet'):p.school}</p></div>`:''}
     ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
     ${quranHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
@@ -1204,7 +1204,7 @@ function renderInfo(p){
         font-family:'Cinzel',serif;font-size:8px;letter-spacing:.12em;
         color:var(--ip-muted);text-decoration:none;
         transition:color .15s,border-color .15s;"
-        onmouseenter="this.style.color='var(--ip-acc)';this.style.borderColor='rgba(212,168,74,.4)'"
+        onmouseenter="this.style.color='var(--ip-acc)';this.style.borderColor='rgba(212,175,55,.4)'"
         onmouseleave="this.style.color='var(--ip-muted)';this.style.borderColor='var(--ip-brd)'">
         <span style="font-size:11px;">𝒮</span> SCHOLARSHIP
       </a>
@@ -1224,7 +1224,7 @@ function renderInfo(p){
           } else {
             label=host+' ↗';
           }
-          return '<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">'+esc(label)+'</a>';
+          return '<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">'+esc(label)+'</a>';
         }catch(_){return esc(s);}
       }
       return esc(s);
@@ -1246,7 +1246,7 @@ function renderInfo(p){
       var name = this.dataset.name;
       var nowFav = APP.Favorites.toggle(name);
       this.textContent   = nowFav ? '★' : '☆';
-      this.style.color   = nowFav ? '#D4AF37' : 'rgba(245,240,232,0.25)';
+      this.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
       this.title         = nowFav ? 'Remove from saved' : 'Save figure';
       this.style.transform = 'scale(1.5)';
       var self = this;

@@ -14,7 +14,7 @@ var _startYear = 500;
 var _endYear = 2025;
 
 var CAT_COLORS = {
-  'Politics':'#4a90d9','War':'#e74c3c','Theology':'#d4a84a',
+  'Politics':'#4a90d9','War':'#e74c3c','Theology':'#D4AF37',
   'Science':'#2db5a0','Trade':'#2ecc71','Art':'#9b59b6',
   'Sufism':'#e67e22'
 };
@@ -34,8 +34,8 @@ var YEAR_STEPS_FROM = [500,550,600,650,700,750,800,850,900,950,1000,1050,1100,11
 var YEAR_STEPS_TO = [550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500,1550,1600,1650,1700,1750,1800,1850,1900,1950,2000,2025];
 
 var SPEED_OPTIONS = [
-  {label:'Fast',ms:800},{label:'Normal',ms:2000},
-  {label:'Slow',ms:4000},{label:'Cinematic',ms:8000}
+  {label:'1x',ms:2000},{label:'2x',ms:1000},
+  {label:'4x',ms:500}
 ];
 
 function getEra(yr){
@@ -191,7 +191,7 @@ function _buildHeaderHTML(){
   // RIGHT: speed + animate
   h+='<select class="ev-speed-select" id="evSpeedSelect" style="margin-left:auto">';
   SPEED_OPTIONS.forEach(function(o){
-    var sel=o.label==='Normal'?' selected':'';
+    var sel=o.label==='2x'?' selected':'';
     h+='<option value="'+o.ms+'"'+sel+'>'+o.label+' ('+o.ms/1000+'s)</option>';
   });
   h+='</select>';
@@ -223,7 +223,7 @@ function initEvents(){
   if(_inited) return;
   _inited=true;
   var _css=document.createElement('style');
-  _css.textContent='.ev-tag-link{border-color:rgba(201,168,76,.35)!important;color:rgba(201,168,76,.8)!important;cursor:pointer}.ev-tag-link:hover{background:rgba(201,168,76,.15);color:#c9a84c!important}.ev-tag-filter{cursor:pointer}.ev-tag-filter:hover{background:rgba(255,255,255,.1)}.ev-filter-banner{padding:8px 16px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:6px;color:#c9a84c;font-size:13px;margin:0 0 8px;display:flex;align-items:center;gap:12px}.ev-filter-clear{cursor:pointer;opacity:.6;padding:2px 8px}.ev-filter-clear:hover{opacity:1}';
+  _css.textContent='.ev-tag-link{border-color:#2D3748!important;color:#D4AF37!important;cursor:pointer}.ev-tag-link:hover{background:rgba(212,175,55,.15);color:#D4AF37!important}.ev-tag-filter{cursor:pointer}.ev-tag-filter:hover{background:rgba(212,175,55,.08)}.ev-filter-banner{padding:8px 16px;background:rgba(212,175,55,.08);border:1px solid #2D3748;border-radius:6px;color:#D4AF37;font-size:13px;margin:0 0 8px;display:flex;align-items:center;gap:12px}.ev-filter-clear{cursor:pointer;opacity:.6;padding:2px 8px}.ev-filter-clear:hover{opacity:1}';
   document.head.appendChild(_css);
   _startYear=500;
   _endYear=2025;
@@ -233,7 +233,7 @@ function initEvents(){
 
 // ── BUILD ONE EVENT ROW ──
 function _buildRow(ev,showYear,spanCount){
-  var catColor=CAT_COLORS[ev.category]||'#888';
+  var catColor=CAT_COLORS[ev.category]||'#A0AEC0';
   var h='<div class="ev-row" data-year="'+ev.year+'">';
 
   // COL 1 — Year
@@ -300,8 +300,8 @@ function _buildRow(ev,showYear,spanCount){
     var bbox=(lng-1)+','+(lat-1)+','+(lng+1)+','+(lat+1);
     h+='<iframe src="https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&amp;layer=mapnik&amp;marker='+lat+','+lng+'" style="width:100%;height:220px;border:none;border-radius:6px" loading="lazy"></iframe>';
   }
-  if(place) h+='<div style="font-size:12px;font-weight:600;color:#c9a84c;letter-spacing:0.1em;text-transform:uppercase;text-align:center;margin-top:6px">'+esc(place)+'</div>';
-  if(modern) h+='<div style="font-size:10px;color:#666;text-align:center">'+esc(modern)+'</div>';
+  if(place) h+='<div style="font-size:12px;font-weight:600;color:#D4AF37;letter-spacing:0.1em;text-transform:uppercase;text-align:center;margin-top:6px">'+esc(place)+'</div>';
+  if(modern) h+='<div style="font-size:10px;color:#A0AEC0;text-align:center">'+esc(modern)+'</div>';
   h+='</div>';
 
   h+='</div>'; // /ev-row

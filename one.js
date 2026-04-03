@@ -35,7 +35,7 @@ function _e(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(
 function _typeColor(p){
   if(typeof _markerTypeColor==='function') return _markerTypeColor(p);
   var t=p.type||'';
-  if(t==='Prophet'||t==='Genealogy'||t==='Founder') return '#e8c050';
+  if(t==='Prophet'||t==='Genealogy'||t==='Founder') return '#D4AF37';
   if(t==='Sahaba'||t==='Sahabiyya') return '#d4784a';
   if(t==="Tabi'un") return '#c08850';
   if(t==='Mystic') return '#a855f7';
@@ -439,7 +439,7 @@ async function _renderPerson(p,container){
   }
   h+='<div class="one-hero-text">';
   h+='<div class="one-famous" style="color:'+col+'">'+_e(p.famous);
-  h+=' <button class="one-fav-btn" data-name="'+_e(p.famous)+'" onclick="window._oneToggleFav(this)" style="color:'+(isFav?'#D4AF37':'rgba(245,240,232,0.25)')+'">'+( isFav?'\u2605':'\u2606')+'</button>';
+  h+=' <button class="one-fav-btn" data-name="'+_e(p.famous)+'" onclick="window._oneToggleFav(this)" style="color:'+(isFav?'#D4AF37':'rgba(160,174,192,0.25)')+'">'+( isFav?'\u2605':'\u2606')+'</button>';
   h+='</div>';
   if(p.full&&p.full!==p.famous) h+='<div class="one-full">'+_e(p.full)+'</div>';
   if(p.primaryTitle) h+='<div class="one-primary">'+_e(p.primaryTitle)+'</div>';
@@ -823,7 +823,7 @@ window._oneToggleFav=function(btn){
   var name=btn.dataset.name;
   var nowFav=APP.Favorites.toggle(name);
   btn.textContent=nowFav?'\u2605':'\u2606';
-  btn.style.color=nowFav?'#D4AF37':'rgba(245,240,232,0.25)';
+  btn.style.color=nowFav?'#D4AF37':'rgba(160,174,192,0.25)';
   if(typeof _updateFavFilterBtn==='function') _updateFavFilterBtn();
 };
 

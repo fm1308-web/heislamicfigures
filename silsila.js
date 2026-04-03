@@ -3,10 +3,10 @@
 // ═══════════════════════════════════════════════════════════
 
 const TRAD_COLORS={
-  'Prophetic Lineage':'#e8c878',
+  'Prophetic Lineage':'#D4AF37',
   'Islamic History':  '#d4784a',
   'Early Ascetics':   '#88c878',
-  'Hadith Sciences':  '#c8a050',
+  'Hadith Sciences':  '#D4AF37',
   'Islamic Sciences': '#40b0c0',
   'Islamic Jurisprudence':'#7ab870',
   'Islamic Philosophy':'#d07060',
@@ -18,9 +18,9 @@ const TRAD_COLORS={
   'Shadhiliyya':      '#e09840',
   'Chishti':          '#e06870',
   'Suhrawardiyya':    '#a860d0',
-  'Persian Poetry':   '#d8a040',
+  'Persian Poetry':   '#D4AF37',
   'Mawlawiyya':       '#f070a8',
-  'Akbarian':         '#f0d060',
+  'Akbarian':         '#D4AF37',
   'Kubrawiyya':       '#50d8b0',
   'Mughal':           '#c09840',
   'Yeseviyya':        '#70c880',
@@ -30,7 +30,7 @@ const TRAD_COLORS={
   'Ishraqiyya':       '#f8c8a0',
   'Sindhi/Punjabi Sufism':'#e07060',
   // ── Islamic History sub-lane colours ──
-  'Prophets':             '#e8a040',
+  'Prophets':             '#D4AF37',
   'Companions':           '#d4784a',
   'Companions (Women)':   '#d06878',
   'Followers':            '#c08850',
@@ -205,11 +205,11 @@ function renderSilsila(){
   const LIN_X_L=60, LIN_X_R=Math.round(TW*0.50);
   topRow.forEach((p,i)=>{
     const x=LIN_X_L + i*(LIN_X_R-LIN_X_L)/Math.max(topRow.length-1,1);
-    SL_NM[p.famous]={x, y:LIN_Y_TOP, li:0, col:'#e8c878'};
+    SL_NM[p.famous]={x, y:LIN_Y_TOP, li:0, col:'#D4AF37'};
   });
   botRow.forEach((p,i)=>{
     const x=LIN_X_R - i*(LIN_X_R-LIN_X_L)/Math.max(botRow.length-1,1);
-    SL_NM[p.famous]={x, y:LIN_Y_BOT, li:0, col:'#e8c878'};
+    SL_NM[p.famous]={x, y:LIN_Y_BOT, li:0, col:'#D4AF37'};
   });
 
   // ── Assign tradition node positions (left-aligned grid) ───
@@ -218,7 +218,7 @@ function renderSilsila(){
     const tradCol=TRAD_COLORS[LANES[li]];
     const sorted=grps[li].slice().sort((a,b)=>a.dob-b.dob);
     sorted.forEach((p,idx)=>{
-      const col=tradCol||CC[gc(p.dob)]||'#c8a84a';
+      const col=tradCol||CC[gc(p.dob)]||'#D4AF37';
       const gridCol=idx%GRID_COLS;
       const gridRow=Math.floor(idx/GRID_COLS);
       const x=8+gridCol*GRID_CELL_W+NR;
@@ -244,32 +244,32 @@ function renderSilsila(){
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
     <marker id="arr-gold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,0 L0,7 L7,3.5 z" fill="#e8c878" opacity="0.8"/>
+      <path d="M0,0 L0,7 L7,3.5 z" fill="#D4AF37" opacity="0.8"/>
     </marker>
   </defs>`);
 
   // ── Lane background bands ──────────────────────────────────
   // Lineage lane (dark, taller)
-  P.push(`<rect x="0" y="${PT}" width="${TW}" height="${LH_LIN}" fill="rgba(18,10,2,0.82)" />`);
-  P.push(`<rect x="0" y="${PT}" width="5" height="${LH_LIN}" fill="#e8c878" opacity="0.7" />`);
-  P.push(`<line x1="0" y1="${PT+LH_LIN}" x2="${TW}" y2="${PT+LH_LIN}" stroke="rgba(232,200,120,0.35)" stroke-width="1.5"/>`);
+  P.push(`<rect x="0" y="${PT}" width="${TW}" height="${LH_LIN}" fill="#222D3A" />`);
+  P.push(`<rect x="0" y="${PT}" width="5" height="${LH_LIN}" fill="#D4AF37" opacity="0.7" />`);
+  P.push(`<line x1="0" y1="${PT+LH_LIN}" x2="${TW}" y2="${PT+LH_LIN}" stroke="rgba(212,175,55,0.35)" stroke-width="1.5"/>`);
 
   // Tradition lanes (auto-height)
   LANES.forEach((lane,li)=>{
     if(li===0) return;
     const y=laneStartY[li], h=laneH(li);
-    const col=TRAD_COLORS[lane]||(grps[li]&&grps[li][0]?CC[gc(grps[li][0].dob)]:'#c8a84a')||'#c8a84a';
+    const col=TRAD_COLORS[lane]||(grps[li]&&grps[li][0]?CC[gc(grps[li][0].dob)]:'#D4AF37')||'#D4AF37';
     P.push(`<rect x="0" y="${y}" width="${TW}" height="${h}" fill="${li%2===1?'rgba(0,0,0,0.11)':'rgba(0,0,0,0.04)'}" />`);
     P.push(`<rect x="0" y="${y}" width="2" height="${h}" fill="${col}" opacity="0.45" />`);
-    P.push(`<line x1="0" y1="${y+h}" x2="${TW}" y2="${y+h}" stroke="rgba(74,90,68,0.28)" stroke-width="1" />`);
+    P.push(`<line x1="0" y1="${y+h}" x2="${TW}" y2="${y+h}" stroke="rgba(45,55,72,.28)" stroke-width="1" />`);
   });
 
   // ── Century grid lines + labels ────────────────────────────
-  P.push(`<line x1="${PRE_W}" y1="0" x2="${PRE_W}" y2="${SVG_H}" stroke="rgba(232,200,120,0.16)" stroke-width="1.5" />`);
-  P.push(`<text x="${(PRE_W/2).toFixed(1)}" y="22" font-family="Cinzel,serif" font-size="9" text-anchor="middle" fill="rgba(240,237,226,0.2)" letter-spacing="1.5">PRE-ISLAMIC</text>`);
+  P.push(`<line x1="${PRE_W}" y1="0" x2="${PRE_W}" y2="${SVG_H}" stroke="rgba(212,175,55,0.16)" stroke-width="1.5" />`);
+  P.push(`<text x="${(PRE_W/2).toFixed(1)}" y="22" font-family="Cinzel,serif" font-size="9" text-anchor="middle" fill="#A0AEC0" letter-spacing="1.5">PRE-ISLAMIC</text>`);
   for(let yr=600;yr<=2000;yr+=100){
     const x=x2px(yr).toFixed(1), c=gc(yr);
-    P.push(`<line x1="${x}" y1="0" x2="${x}" y2="${SVG_H}" stroke="rgba(255,255,255,0.05)" stroke-width="1" />`);
+    P.push(`<line x1="${x}" y1="0" x2="${x}" y2="${SVG_H}" stroke="rgba(212,175,55,.04)" stroke-width="1" />`);
     // Century labels removed — chronology is approximate
   }
 
@@ -308,8 +308,8 @@ function renderSilsila(){
   });
 
   // ── Cover rect: blank lineage lane left of Adam (hides any edge bleed) ──────
-  P.push(`<rect x="0" y="${PT}" width="${LIN_X_L - 11}" height="${LH_LIN}" fill="rgba(18,10,2,0.82)"/>`);
-  P.push(`<rect x="0" y="${PT}" width="5" height="${LH_LIN}" fill="#e8c878" opacity="0.7"/>`);
+  P.push(`<rect x="0" y="${PT}" width="${LIN_X_L - 11}" height="${LH_LIN}" fill="#222D3A"/>`);
+  P.push(`<rect x="0" y="${PT}" width="5" height="${LH_LIN}" fill="#D4AF37" opacity="0.7"/>`);
 
   // ── U-SHAPE: Single continuous unbroken path, always on top ──────────────────
   {
@@ -327,7 +327,7 @@ function renderSilsila(){
       d+=` Q${cxBulge},${LIN_Y_BOT} ${bPts[0].x.toFixed(1)},${LIN_Y_BOT}`;
       // Bottom row going left back to Muhammad
       for(let i=1;i<bPts.length;i++) d+=` L${bPts[i].x.toFixed(1)},${LIN_Y_BOT}`;
-      P.push(`<path d="${d}" stroke="#e8c878" stroke-width="2.5" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`);
+      P.push(`<path d="${d}" stroke="#D4AF37" stroke-width="2.5" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`);
     }
   }
 
@@ -344,12 +344,12 @@ function renderSilsila(){
     const shortName=isPM?'Prophet Muhammad ☆':p.famous.split(' ')[0];
     const labelY=isTop?nd.y-r-6:nd.y+r+13;
     if(isPM){
-      P.push(`<circle cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="20" fill="none" stroke="#e8c878" stroke-width="1.1"><animate attributeName="r" values="18;30;18" dur="3.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="3.8s" repeatCount="indefinite"/></circle>`);
+      P.push(`<circle cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="20" fill="none" stroke="#D4AF37" stroke-width="1.1"><animate attributeName="r" values="18;30;18" dur="3.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="3.8s" repeatCount="indefinite"/></circle>`);
     }
     const flt=isPM?'filter="url(#slg)"':isQ?'filter="url(#slg2)"':'';
-    P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#e8c878" fill-opacity="${isPM?.95:isQ?.85:.65}" stroke="#e8c878" stroke-width="${isPM?2.5:isQ?1.8:1.1}" stroke-opacity=".8" ${flt}/>`);
+    P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#D4AF37" fill-opacity="${isPM?.95:isQ?.85:.65}" stroke="#D4AF37" stroke-width="${isPM?2.5:isQ?1.8:1.1}" stroke-opacity=".8" ${flt}/>`);
     if(labelSet.has(p.famous)){
-      P.push(`<text x="${nd.x.toFixed(1)}" y="${labelY}" text-anchor="middle" font-size="${isPM?11:9}" font-family="Cinzel,serif" fill="#e8c878" font-weight="700" opacity="0.9" pointer-events="none">${shortName}</text>`);
+      P.push(`<text x="${nd.x.toFixed(1)}" y="${labelY}" text-anchor="middle" font-size="${isPM?11:9}" font-family="Cinzel,serif" fill="#D4AF37" font-weight="700" opacity="0.9" pointer-events="none">${shortName}</text>`);
     }
   });
   // ── Inject SVG ────────────────────────────────────────────
@@ -358,16 +358,16 @@ function renderSilsila(){
 
   // ── Lane labels sidebar ────────────────────────────────────
   const inner=document.getElementById('silsilaLanesInner');
-  let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.12em;color:rgba(240,237,226,0.16)">TRADITION / CHAIN</div>`;
+  let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
   // Lineage row
-  lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:rgba(18,10,2,0.82)">
-    <span class="sl-lane-dot" style="background:#e8c878;box-shadow:0 0 6px rgba(232,200,120,.6)"></span>
-    <span class="sl-lane-name" style="color:#e8c878">⭕ Prophets' Lineage</span>
+  lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A">
+    <span class="sl-lane-dot" style="background:#D4AF37;box-shadow:0 0 6px rgba(212,175,55,.6)"></span>
+    <span class="sl-lane-name" style="color:#D4AF37">⭕ Prophets' Lineage</span>
     <span class="sl-lane-count">${linMembers.length}</span>
   </div>`;
   LANES.forEach((lane,li)=>{
     if(li===0) return;
-    const col=TRAD_COLORS[lane]||(grps[li]&&grps[li][0]?CC[gc(grps[li][0].dob)]:'#c8a84a')||'#c8a84a';
+    const col=TRAD_COLORS[lane]||(grps[li]&&grps[li][0]?CC[gc(grps[li][0].dob)]:'#D4AF37')||'#D4AF37';
     const count=(grps[li]||[]).length;
     lh+=`<div class="sl-lane-label" data-lane="${esc(lane)}" style="height:${laneH(li)}px">
       <span class="sl-lane-dot" style="background:${col};box-shadow:0 0 5px ${col}55"></span>
@@ -416,14 +416,14 @@ function renderSilsila(){
   let ttPinned=false; // true when tooltip is pinned by click
 
   function pinTooltip(p, x, y){
-    const col=SL_NM[p.famous]?.col||'#888';
+    const col=SL_NM[p.famous]?.col||'#A0AEC0';
     const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
-      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(232,200,120,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:8px;opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
+      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:8px;opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
       `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:${col};font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
       `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
+      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
         (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
     tt.style.pointerEvents='all';
     tt.style.cursor='default';
@@ -451,14 +451,14 @@ function renderSilsila(){
 
   function showHoverTooltip(p, x, y){
     if(ttPinned) return; // don't overwrite pinned tooltip
-    const col=SL_NM[p.famous]?.col||'#888';
+    const col=SL_NM[p.famous]?.col||'#A0AEC0';
     const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
       `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:12.5px">${esc(p.famous)}</div>`+
       `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:${col};font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
       `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
+      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
         (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
     tt.style.pointerEvents='none';
     tt.style.display='block';
@@ -517,14 +517,14 @@ function renderSilsila(){
 
     if(_silsilaHighlighted===name){
       // SECOND CLICK — show popup with TIMELINE button
-      const col=SL_NM[p.famous]?.col||'#888';
+      const col=SL_NM[p.famous]?.col||'#A0AEC0';
       const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
       const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
       tt.innerHTML=
         `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px">${esc(p.famous)}</div>`+
         `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
         `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-        (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
+        (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
           (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'')+
         `<button id="sl-tt-timeline-btn" style="background:var(--accent);color:var(--bg);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;padding:4px 12px;border:none;border-radius:2px;cursor:pointer;margin-top:6px;display:block">TIMELINE</button>`;
       tt.style.pointerEvents='all';
@@ -659,7 +659,7 @@ function silsilaLocate(name){
 function openSilsilaCard(p, cx, cy){
   const card=document.getElementById('silsilaCard');
   if(!card) return;
-  const col=isLineageMember(p)?'#e8c878':(TRAD_COLORS[p.tradition]||'#888');
+  const col=isLineageMember(p)?'#D4AF37':(TRAD_COLORS[p.tradition]||'#A0AEC0');
   document.getElementById('scCardName').textContent=p.famous;
   document.getElementById('scCardName').style.color=col;
   document.getElementById('scCardSub').textContent=p.primaryTitle||p.tradition||'';
@@ -706,9 +706,9 @@ function openSilsilaCard(p, cx, cy){
     html+=`<div class="sc-sec">WORKS & SOURCES</div>`;
     sortedBooks.forEach(b=>{
       html+=`<div class="sc-book">
-        ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:13px">${esc(b.title)}</span>`}
+        ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:13px">${esc(b.title)}</span>`}
         ${b.magnum?` <span style="color:var(--accent);font-size:10px">✦</span>`:''}
-        ${b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">quran.com</a>')}</div>`:''}
+        ${b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:''}
       </div>`;
     });
   }

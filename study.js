@@ -151,6 +151,7 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
     if(book.types.slides){
       var sb=document.createElement('button');
       sb.className='sr-tab sr-book-tab';
+      sb.setAttribute('data-type','slides');
       sb.textContent='\uD83D\uDCD6 Slides';
       sb.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'slides',book);_highlightBtn(btns,sb);};
       btns.appendChild(sb);
@@ -158,6 +159,7 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
     if(book.types.summary){
       var ub=document.createElement('button');
       ub.className='sr-tab sr-book-tab';
+      ub.setAttribute('data-type','summary');
       ub.textContent='\uD83D\uDCC4 Summary';
       ub.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'summary',book);_highlightBtn(btns,ub);};
       btns.appendChild(ub);
@@ -165,6 +167,7 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
     if(book.types.video){
       var vb=document.createElement('button');
       vb.className='sr-tab sr-book-tab';
+      vb.setAttribute('data-type','video');
       vb.textContent='\uD83C\uDFA5 Video';
       vb.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'video',book);_highlightBtn(btns,vb);};
       btns.appendChild(vb);
@@ -220,7 +223,7 @@ function _loadBookContent(slug, type, book){
     var fsBtn=document.createElement('button');
     fsBtn.textContent='\u26F6';
     fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:18px;padding:4px 8px;cursor:pointer';
-    fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(232,200,120,0.15)';fsBtn.style.borderColor='var(--accent)';};
+    fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(212,175,55,.15)';fsBtn.style.borderColor='var(--accent)';};
     fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)';};
     fsBtn.onclick=function(){
       if(wrap.dataset.expanded==='1'){

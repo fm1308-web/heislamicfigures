@@ -111,7 +111,7 @@ function _drawEmpires(){
 
 function _markerTypeColor(p){
   const t=p.type||'';
-  if(t==='Prophet'||t==='Genealogy'||t==='Founder') return '#e8c050';
+  if(t==='Prophet'||t==='Genealogy'||t==='Founder') return '#D4AF37';
   if(t==='Sahaba')    return '#d4784a';
   if(t==='Sahabiyya') return '#d4784a';
   if(t==="Tabi'un")   return '#c08850';
@@ -124,7 +124,7 @@ function _markerTypeColor(p){
 }
 
 const MAP_LEGEND=[
-  {label:'Prophet / Lineage', color:'#e8c050'},
+  {label:'Prophet / Lineage', color:'#D4AF37'},
   {label:'Companions',        color:'#d4784a'},
   {label:'Followers',         color:'#c08850'},
   {label:'Mystic / Sufi',     color:'#a855f7'},
@@ -145,7 +145,7 @@ function _makeMarker(p, showLabel=false){
   const dotGlow=isProphet?`0 0 0 2px ${col}55,0 0 8px ${col}88`:`0 0 0 1px ${col}`;
   const anchor=Math.round(dotSz/2);
   const labelSize=isProphet?'12.5px':'10.5px';
-  const labelColor=isProphet?'#e8c050':'rgba(240,237,226,0.93)';
+  const labelColor=isProphet?'#D4AF37':'#FFFFFF';
   const labelVisible=(isTheProphet||showLabel)?'flex':'none';
   const icon = L.divIcon({
     html: `<div class="map-marker-wrap">
@@ -231,7 +231,7 @@ function _mapTTContent(p, pinned){
   return `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px">${esc(p.famous)}${hint}</div>`+
     `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
     `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-    (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(232,200,120,.55);margin-top:3px">`+
+    (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
       (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
 }
 function _posMapTT(x, y){
@@ -298,7 +298,7 @@ function _ensureMapCard(){
     </div>
     <div id="mcScroll" style="flex:1;overflow-y:auto;padding:14px 16px 18px">
       <div id="mcBody"></div>
-      <button id="mcTimelineBtn" style="display:flex;align-items:center;justify-content:center;gap:5px;width:100%;margin-top:12px;padding:6px 14px;border-radius:3px;cursor:pointer;background:rgba(232,200,120,.07);border:1px solid rgba(232,200,120,.3);color:var(--accent);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;transition:background .12s,border-color .12s" onmouseenter="this.style.background='rgba(232,200,120,.14)'" onmouseleave="this.style.background='rgba(232,200,120,.07)'">
+      <button id="mcTimelineBtn" style="display:flex;align-items:center;justify-content:center;gap:5px;width:100%;margin-top:12px;padding:6px 14px;border-radius:3px;cursor:pointer;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.3);color:var(--accent);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;transition:background .12s,border-color .12s" onmouseenter="this.style.background='rgba(212,175,55,.14)'" onmouseleave="this.style.background='rgba(212,175,55,.07)'">
         ↗ OPEN IN TIMELINE
       </button>
     </div>`;
@@ -310,7 +310,7 @@ function _ensureMapCard(){
 
 function _openMapCard(p, cx, cy){
   _ensureMapCard();
-  const col=p.type==='Genealogy'?'#c8a84a':(CC[gc(p.dob)]||'#888');
+  const col=p.type==='Genealogy'?'#D4AF37':(CC[gc(p.dob)]||'#A0AEC0');
   document.getElementById('mcName').textContent=p.famous;
   document.getElementById('mcName').style.color=col;
   document.getElementById('mcSub').textContent=p.primaryTitle||p.tradition||'';
@@ -334,21 +334,21 @@ function _openMapCard(p, cx, cy){
     const known=p.teachers.filter(t=>PEOPLE.find(pp=>pp.famous===t));
     if(known.length){
       html+=`<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">TEACHERS<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px">${known.map(t=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${t.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,168,74,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">⟵ ${esc(t)}</span>`).join('')}</div>`;
+      <div style="display:flex;flex-wrap:wrap;gap:5px">${known.map(t=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${t.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">⟵ ${esc(t)}</span>`).join('')}</div>`;
     }
   }
   if(studentsOf.length){
     html+=`<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">STUDENTS (${studentsOf.length})<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>
-    <div style="display:flex;flex-wrap:wrap;gap:5px">${studentsOf.map(s=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,168,74,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">▶ ${esc(s.famous)}</span>`).join('')}</div>`;
+    <div style="display:flex;flex-wrap:wrap;gap:5px">${studentsOf.map(s=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">▶ ${esc(s.famous)}</span>`).join('')}</div>`;
   }
   if(p.books?.length){
     const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
     html+=`<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">WORKS & SOURCES<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>`;
     sortedBooks.forEach(b=>{
       html+=`<div style="margin-bottom:7px;font-size:13px;color:var(--ip-text)">`+
-        (b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`)+
+        (b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`)+
         (b.magnum?` <span style="color:var(--accent);font-size:10px">✦</span>`:'')+
-        (b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#c89040;text-decoration:none">quran.com</a>')}</div>`:'')+
+        (b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:'')+
         `</div>`;
     });
   }
@@ -440,7 +440,7 @@ function _updateArrows(){
     else if(ang>67.5&&ang<=112.5)d='E';
     else d='SE';
     dirs[d]++;
-    const col=p.type==='Genealogy'?'#c8a84a':(CC[gc(p.dob)]||'#888');
+    const col=p.type==='Genealogy'?'#D4AF37':(CC[gc(p.dob)]||'#A0AEC0');
     colDir[d][col]=(colDir[d][col]||0)+1;
   });
   const ac={N:'↑',NE:'↗',E:'→',SE:'↘',S:'↓',SW:'↙',W:'←',NW:'↖'};
@@ -453,7 +453,7 @@ function _updateArrows(){
   };
   Object.entries(dirs).forEach(([d,n])=>{
     if(!n) return;
-    const topCol=Object.entries(colDir[d]).sort((a,b)=>b[1]-a[1])[0]?.[0]||'#888';
+    const topCol=Object.entries(colDir[d]).sort((a,b)=>b[1]-a[1])[0]?.[0]||'#A0AEC0';
     const el=document.createElement('div');
     el.className='map-arrow';
     el.style.cssText=pos[d]+`;border-color:${topCol};color:${topCol};`;
@@ -501,7 +501,7 @@ function renderMap(){
     };
     document.head.appendChild(scr);
     document.getElementById('leafletMap').innerHTML=
-      '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-family:Cinzel,serif;font-size:12px;color:#9aaa8a;letter-spacing:.1em">LOADING MAP…</div>';
+      '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-family:Cinzel,serif;font-size:12px;color:#A0AEC0;letter-spacing:.1em">LOADING MAP…</div>';
     return;
   }
   _doRenderMap();

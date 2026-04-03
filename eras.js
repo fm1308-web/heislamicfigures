@@ -29,7 +29,7 @@ function _erasDod(p){ return (p.dod != null && p.dod > 0) ? p.dod : p.dob + 70; 
 var SKIP_TRADITIONS = {'Islamic History':true};
 
 var TYPE_COLORS = {
-  'Prophet':'#c9a84c','Founder':'#b8860b','Sahaba':'#e74c3c','Sahabiyya':'#ff6b6b',
+  'Prophet':'#D4AF37','Founder':'#b8860b','Sahaba':'#e74c3c','Sahabiyya':'#ff6b6b',
   "Tabi'un":'#e67e22','Scholar':'#3498db','Mystic':'#2ECC71','Ruler':'#9b59b6',
   'Poet':'#e91e90','Philosopher':'#1abc9c','Scientist':'#00bcd4','Historian':'#8d6e63',
   'Reformer':'#ff9800','Jurist':'#5c6bc0','Caliph':'#ab47bc','Warrior':'#ef5350'
@@ -42,7 +42,7 @@ var TRAD_COLORS = {
   'Shadhiliyya':'#26a69a','Qadiriyya':'#42a5f5','Chishti':'#ffa726','Suhrawardiyya':'#d4e157',
   'Mawlawiyya':'#ec407a','Qalandari':'#8d6e63','Yeseviyya':'#78909c','Kubrawiyya':'#5c6bc0',
   'Badawiyya':'#c0ca33','Burhaniyya':'#29b6f6','Akbarian':'#ab47bc','Ishraqiyya':'#ffca28',
-  'Mughal':'#ef6c00','Sindhi/Punjabi Sufism':'#00897b','Genealogy':'#c8a84a'
+  'Mughal':'#ef6c00','Sindhi/Punjabi Sufism':'#00897b','Genealogy':'#D4AF37'
 };
 
 var ERA_BANDS = [
@@ -106,13 +106,13 @@ function initEras(){
   var adamLabel = document.createElement('div');
   adamLabel.className = 'eras-perm-label eras-perm-prominent';
   adamLabel.style.top = (adamY + 16) + 'px';
-  adamLabel.style.color = '#f0d060';
+  adamLabel.style.color = '#D4AF37';
   adamLabel.textContent = 'Adam';
   _leftPanel.appendChild(adamLabel);
   var adamYrLabel = document.createElement('div');
   adamYrLabel.className = 'eras-stem-yr-label';
   adamYrLabel.style.top = (adamY - 6) + 'px';
-  adamYrLabel.style.color = 'rgba(240,208,96,0.8)';
+  adamYrLabel.style.color = 'rgba(212,175,55,.8)';
   adamYrLabel.textContent = '0';
   _leftPanel.appendChild(adamYrLabel);
 
@@ -125,13 +125,13 @@ function initEras(){
   var muhLabel = document.createElement('div');
   muhLabel.className = 'eras-perm-label eras-perm-prominent';
   muhLabel.style.top = muhY + 'px';
-  muhLabel.style.color = '#f0d060';
+  muhLabel.style.color = '#D4AF37';
   muhLabel.textContent = 'Muhammad \uFDFA';
   _leftPanel.appendChild(muhLabel);
   var muhYrLabel = document.createElement('div');
   muhYrLabel.className = 'eras-stem-yr-label';
   muhYrLabel.style.top = (muhY - 6) + 'px';
-  muhYrLabel.style.color = 'rgba(240,208,96,0.8)';
+  muhYrLabel.style.color = 'rgba(212,175,55,.8)';
   muhYrLabel.textContent = '570 CE';
   _leftPanel.appendChild(muhYrLabel);
 
@@ -187,7 +187,7 @@ function initEras(){
       if(d > lastDod) lastDod = d;
     });
     if(people.length > maxCount) maxCount = people.length;
-    var color = tag.field === 'type' ? (TYPE_COLORS[tag.key]||'#888') : (TRAD_COLORS[tag.key]||'#888');
+    var color = tag.field === 'type' ? (TYPE_COLORS[tag.key]||'#A0AEC0') : (TRAD_COLORS[tag.key]||'#A0AEC0');
     leafData.push({key:tag.key, field:tag.field, color:color, people:people, count:people.length, firstDob:firstDob, lastDod:lastDod});
   });
 
@@ -508,7 +508,7 @@ function _buildNameList(people, color){
     el.style.top = y + 'px';
     el.innerHTML =
       '<span class="eras-name-dot" style="background:' + color + '"></span>' +
-      '<span class="eras-name-text" style="color:#ffffff">' + esc(p.famous) + '</span>' +
+      '<span class="eras-name-text" style="color:#FFFFFF">' + esc(p.famous) + '</span>' +
       '<span class="eras-name-yr" style="color:rgba(255,255,255,0.6)">' + fmtYr(p.dob) + '</span>';
     el.addEventListener('click', function(e){
       e.stopPropagation();

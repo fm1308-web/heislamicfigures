@@ -51,7 +51,7 @@ _chatCSS.textContent = `
   font-size:13.5px;line-height:1.65;word-wrap:break-word;
 }
 .sch-msg.user{
-  align-self:flex-end;background:#c89040;color:#0F1724;
+  align-self:flex-end;background:#D4AF37;color:#1B2631;
   border-bottom-right-radius:4px;font-weight:400;
 }
 .sch-msg.ai{
@@ -92,7 +92,7 @@ _chatCSS.textContent = `
 .sch-inputarea input::placeholder{color:var(--muted);}
 #scholarSendBtn{
   padding:8px 14px;border-radius:8px;border:none;
-  background:#c89040;color:#0F1724;font-weight:700;font-size:13px;
+  background:#D4AF37;color:#1B2631;font-weight:700;font-size:13px;
   cursor:pointer;font-family:inherit;transition:background .2s;
 }
 #scholarSendBtn:hover{background:var(--gold);}
