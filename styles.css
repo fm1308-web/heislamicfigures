@@ -839,7 +839,7 @@ footer{
 }
 /* Era text labels (right panel only, no background) */
 #eras-view .eras-era-band-text{
-  position:absolute;right:20px;transform:translateY(-50%);
+  position:absolute;right:20px;
   text-align:right;pointer-events:none;z-index:1;
 }
 #eras-view .eras-era-band-name{
@@ -850,6 +850,9 @@ footer{
 #eras-view .eras-era-band-dates{
   font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.08em;line-height:1.4;
   color:#A0AEC0;
+}
+#eras-view .eras-era-glow{
+  position:absolute;left:0;right:0;pointer-events:none;z-index:0;
 }
 #eras-view .eras-era-boundary{
   position:absolute;left:0;right:0;height:0;

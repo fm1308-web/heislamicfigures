@@ -46,14 +46,14 @@ var TRAD_COLORS = {
 };
 
 var ERA_BANDS = [
-  {name:'Prophetic Era',     start:-4000, end:632,  dates:'Before 632 CE'},
-  {name:'Rashidun',          start:632,   end:661,  dates:'632\u2013661 CE'},
-  {name:'Umayyad',           start:661,   end:750,  dates:'661\u2013750 CE'},
-  {name:'Abbasid Golden Age',start:750,   end:1258, dates:'750\u20131258 CE'},
-  {name:'Post-Mongol',       start:1258,  end:1500, dates:'1258\u20131500 CE'},
-  {name:'Gunpowder Empires', start:1500,  end:1800, dates:'1500\u20131800 CE'},
-  {name:'Colonial & Reform', start:1800,  end:1950, dates:'1800\u20131950 CE'},
-  {name:'Contemporary',      start:1950,  end:2025, dates:'1950\u2013Present'}
+  {name:'Prophetic Era',     start:-4000, end:632,  dates:'Before 632 CE',  glow:'210,170,50'},
+  {name:'Rashidun',          start:632,   end:661,  dates:'632\u2013661 CE', glow:'60,160,90'},
+  {name:'Umayyad',           start:661,   end:750,  dates:'661\u2013750 CE', glow:'50,180,180'},
+  {name:'Abbasid Golden Age',start:750,   end:1258, dates:'750\u20131258 CE',glow:'70,130,210'},
+  {name:'Post-Mongol',       start:1258,  end:1500, dates:'1258\u20131500 CE',glow:'180,60,60'},
+  {name:'Gunpowder Empires', start:1500,  end:1800, dates:'1500\u20131800 CE',glow:'50,140,90'},
+  {name:'Colonial & Reform', start:1800,  end:1950, dates:'1800\u20131950 CE',glow:'200,150,60'},
+  {name:'Contemporary',      start:1950,  end:2025, dates:'1950\u2013Present',glow:'80,160,200'}
 ];
 
 var _inited = false;
@@ -135,17 +135,26 @@ function initEras(){
   muhYrLabel.textContent = '570 CE';
   _leftPanel.appendChild(muhYrLabel);
 
-  // ── Era labels + boundary lines (RIGHT panel only, no background fills) ──
+  // ── Era labels + boundary lines + gradient shading (RIGHT panel only) ──
   var _eraBandEls = [];
   ERA_BANDS.forEach(function(era){
     var y1 = yearToY(era.start);
     var y2 = yearToY(era.end);
-    var midY = (y1 + y2) / 2;
 
-    // Era name + dates label positioned in right panel
+    // Gradient shading — subtle colored glow on the right edge
+    if(era.glow){
+      var gDiv = document.createElement('div');
+      gDiv.className = 'eras-era-glow';
+      gDiv.style.top = y1 + 'px';
+      gDiv.style.height = (y2 - y1) + 'px';
+      gDiv.style.background = 'linear-gradient(to left, rgba(' + era.glow + ',0.10) 0%, rgba(' + era.glow + ',0.04) 50%, transparent 85%)';
+      rightPanel.appendChild(gDiv);
+    }
+
+    // Era name + dates label — top-aligned at era start
     var label = document.createElement('div');
     label.className = 'eras-era-band-text';
-    label.style.top = midY + 'px';
+    label.style.top = (y1 + 12) + 'px';
     label.innerHTML =
       '<div class="eras-era-band-name">' + esc(era.name) + '</div>' +
       (era.dates ? '<div class="eras-era-band-dates">' + esc(era.dates) + '</div>' : '');
