@@ -3,11 +3,15 @@
 // ═══════════════════════════════════════════════════════════
 const _SR_SCHOLARS={
   'F0241': {name:'Al-Hallaj',              death:'d. 922 CE',  dod:922},
+  'F0229': {name:'Al-Farabi',              death:'d. 950 CE',  dod:950},
+  'F0222': {name:'Al-Biruni',              death:'d. 1048 CE', dod:1048},
   'F0316': {name:'Al-Qushayri',            death:'d. 1072 CE', dod:1072},
+  'F0363': {name:'Ali al-Hujwiri',         death:'d. 1072 CE', dod:1072},
   'F0238': {name:'Al-Ghazali',             death:'d. 1111 CE', dod:1111},
   'F0031': {name:'Abdul Qadir al-Jilani',  death:'d. 1166 CE', dod:1166},
   'F0756': {name:'Ibn Tufayl',             death:'d. 1185 CE', dod:1185},
   'F0751': {name:'Ibn Rushd',              death:'d. 1198 CE', dod:1198},
+  'F0580': {name:'Farid ud-Din Attar',     death:'d. 1221 CE', dod:1221},
   'F1432': {name:'Umar Ibn al-Farid',     death:'d. 1235 CE', dod:1235},
   'F0728': {name:'Ibn Arabi',              death:'d. 1240 CE', dod:1240},
   'F0755': {name:'Ibn Taymiyya',           death:'d. 1328 CE', dod:1328},
@@ -291,8 +295,8 @@ function openStudyRoom(slug){
   setView('studyroom');
   selectStudyScholar(slug);
 }
-const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Abdul Qadir al-Jilani','Ibn Taymiyya','Ibn al-Qayyim']);
-const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Abdul Qadir al-Jilani':'F0031','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727'};
+const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Al-Biruni','Ali al-Hujwiri','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Farid ud-Din Attar','Abdul Qadir al-Jilani','Ibn Taymiyya','Ibn al-Qayyim']);
+const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727'};
 
 // Build sidebar immediately so it's ready when study view is shown
 if(document.readyState==='loading'){
