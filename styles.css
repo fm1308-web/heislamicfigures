@@ -304,6 +304,8 @@ a:hover{text-decoration:underline}
 .tc-famous{font-size:13.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;transition:color .1s}
 .tl-row:hover .tc-famous,.tl-row.sel .tc-famous{color:var(--accent)}
 .tl-row.prophet-row .tc-famous{color:var(--accent)!important;font-size:14px!important}
+.tl-wiki-link{font-size:9px;color:rgba(212,175,55,.45);text-decoration:none;margin-left:3px;vertical-align:super;font-weight:700;display:inline-block;line-height:1;transition:color .15s}
+.tl-wiki-link:hover{color:rgba(212,175,55,1)}
 .tc-sub{font-size:10.5px;color:var(--lp-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic;line-height:1.2}
 
 /* Century cells */
@@ -385,6 +387,11 @@ a:hover{text-decoration:underline}
 .i-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px}
 .i-tag{padding:3px 9px;border-radius:2px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.07em;border:1px solid var(--ip-brd);color:var(--ip-muted);background:var(--ip-surf)}
 .i-tag.hi{border-color:#2D3748;color:var(--ip-acc);background:rgba(212,175,55,.07)}
+.info-wd-occupations{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.info-wd-occupations:empty{display:none}
+.info-wd-occ{padding:2px 8px;border-radius:10px;font-size:9px;letter-spacing:.03em;border:1px solid var(--ip-brd);color:var(--ip-muted);background:rgba(255,255,255,.04)}
+.info-follow-link,.one-follow-link{display:inline-block;margin:8px 0 4px;padding:5px 12px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;color:#D4AF37;border:1px solid rgba(212,175,55,.35);border-radius:3px;background:rgba(212,175,55,.07);text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s}
+.info-follow-link:hover,.one-follow-link:hover{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.6)}
 /* ── Special honour badge ── */
 .i-badge{
   display:inline-flex;align-items:center;gap:5px;
@@ -491,7 +498,8 @@ a:hover{text-decoration:underline}
 .sl-edge{pointer-events:none;transition:opacity .08s}
 .sl-chain-edge{animation:sl-edge-in .28s ease-out both}
 @keyframes sl-edge-in{from{opacity:0}to{opacity:0.75}}
-.sl-node.sl-dim{opacity:0.1 !important}
+.sl-node.sl-dim{opacity:0.1 !important;transition:opacity .25s ease}
+.sl-node-text.sl-dim{opacity:0.1 !important;transition:opacity .25s ease}
 .sl-edge.sl-lit{opacity:0.9 !important;stroke-width:2.2px !important}
 .sl-edge.sl-dim{opacity:0.015 !important}
 
@@ -596,6 +604,11 @@ a:hover{text-decoration:underline}
 .sc-link-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
 .sc-link{padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:12px;color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s}
 .sc-link:hover{border-color:#D4AF37;color:var(--accent)}
+.sl-wd-occupations{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.sl-wd-occupations:empty{display:none}
+.sl-wd-occ{padding:2px 8px;border-radius:10px;font-size:9px;letter-spacing:.03em;border:1px solid var(--ip-brd);color:var(--ip-muted);background:rgba(255,255,255,.04)}
+.sl-wiki-link{display:block;margin-top:8px;padding-top:8px;border-top:1px solid var(--ip-brd);font-family:'Cinzel',serif;font-size:11px;color:rgba(212,175,55,.6);text-decoration:none;letter-spacing:.04em;transition:color .15s}
+.sl-wiki-link:hover{color:rgba(212,175,55,1);text-decoration:underline}
 /* ── Card name as clickable timeline link ── */
 #scCardName{cursor:pointer;transition:opacity .12s}
 #scCardName:hover{opacity:.75}
@@ -718,6 +731,11 @@ a:hover{text-decoration:underline}
   color:var(--text2);box-shadow:0 3px 12px rgba(0,0,0,.4);white-space:nowrap;
 }
 .map-arrow span{font-size:18px;line-height:1}
+.map-wiki-link{display:inline-block;margin-top:6px;font-family:'Cinzel',serif;font-size:11px;color:rgba(212,175,55,.6);text-decoration:none;letter-spacing:.04em;transition:color .15s}
+.map-wiki-link:hover{color:rgba(212,175,55,1);text-decoration:underline}
+.map-wd-occupations{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.map-wd-occupations:empty{display:none}
+.map-wd-occ{padding:2px 8px;border-radius:10px;font-size:9px;letter-spacing:.03em;border:1px solid var(--ip-brd);color:var(--ip-muted);background:rgba(255,255,255,.04)}
 
 /* Leaflet overrides to match theme */
 .leaflet-popup-content-wrapper{background:var(--ip-bg);color:var(--text);border-radius:4px;border:1.5px solid var(--border2);font-family:'Crimson Pro',serif}
@@ -906,6 +924,9 @@ footer{
   font-size:10px;color:#A0AEC0;margin-left:auto;flex-shrink:0;padding-right:4px;
   font-weight:400;
 }
+
+.eras-wiki-link{font-size:9px;color:rgba(212,175,55,.45);text-decoration:none;margin-left:3px;vertical-align:super;font-weight:700;display:inline-block;line-height:1;transition:color .15s}
+.eras-wiki-link:hover{color:rgba(212,175,55,1)}
 
 /* ══════════════ ERA BADGES (timeline) ══════════════ */
 .tl-row{position:relative}
@@ -1417,6 +1438,8 @@ footer{
 .one-quran-sub{font-size:11px;color:var(--muted);margin-bottom:4px}
 .one-quran-link{color:#D4AF37;font-size:12px;font-weight:600;text-decoration:none}
 .one-quran-link:hover{text-decoration:underline}
+.one-quran-verse{color:#D4AF37;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.one-quran-verse:hover{color:#e8c84a}
 .one-quran-epithet{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:4px}
 .one-quran-detail{font-size:11.5px;color:var(--muted);line-height:1.7;margin-top:10px}
 
@@ -1650,6 +1673,20 @@ footer{
   .talk-steps{grid-template-columns:1fr;gap:16px}
 }
 
+/* ── ONE VIEW: Wikidata enrichment ── */
+#one-portrait{float:right;margin:0 0 8px 12px}
+#one-portrait:empty{display:none}
+.one-wd-portrait{max-width:140px;border-radius:6px;border:1px solid var(--border);display:block}
+#one-occupations{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px}
+#one-occupations:empty{display:none}
+.one-wd-occ{font-size:10px;color:var(--text2);background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;padding:2px 8px;white-space:nowrap}
+#one-wikilinks{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0 4px;margin-top:6px;border-top:1px solid rgba(212,175,55,.06)}
+#one-wikilinks:empty{display:none}
+.one-wd-wikilink-label{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.one-wd-wikilink{font-size:11px;color:var(--text2);text-decoration:none;padding:2px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;transition:color .15s,border-color .15s}
+.one-wd-wikilink:hover{color:var(--gold);border-color:var(--gold)}
+body.view-one #searchWrap{display:none}
+
 /* ═══════════════════════════════════════════════════════════
    FOLLOW VIEW
    ═══════════════════════════════════════════════════════════ */
@@ -1767,6 +1804,8 @@ footer{
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 #fw-add-search {
+  position: sticky;
+  top: 0;
   width: 100%;
   box-sizing: border-box;
   padding: 6px 8px;
@@ -1777,6 +1816,7 @@ footer{
   border: none;
   border-bottom: 1px solid var(--border);
   outline: none;
+  z-index: 1;
 }
 #fw-add-search::placeholder { color: var(--muted); }
 .fw-dd-row {

@@ -25,6 +25,10 @@ function yToYear(y){
 function fmtYr(y){ return y<=0 ? Math.abs(Math.round(y))+' BCE' : Math.round(y)+' CE'; }
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function _erasDod(p){ return (p.dod != null && p.dod > 0) ? p.dod : p.dob + 70; }
+function _erasWikiLink(p){
+  if(!window._wikidata||!p.slug||!window._wikidata[p.slug]||!window._wikidata[p.slug].wikipedia||!window._wikidata[p.slug].wikipedia.en) return '';
+  return '<a class="eras-wiki-link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open in Wikipedia">W</a>';
+}
 
 var SKIP_TRADITIONS = {'Islamic History':true};
 
@@ -361,7 +365,7 @@ function initEras(){
       el.className = 'eras-name-entry';
       el.style.top = nextY + 'px';
       el.style.color = TYPE_COLORS[p.type] || '#aaa';
-      el.textContent = p.famous;
+      el.innerHTML = esc(p.famous) + _erasWikiLink(p);
       el.addEventListener('click', function(e){
         e.stopPropagation();
         if(typeof jumpTo === 'function') jumpTo(p.famous);
@@ -517,7 +521,7 @@ function _buildNameList(people, color){
     el.style.top = y + 'px';
     el.innerHTML =
       '<span class="eras-name-dot" style="background:' + color + '"></span>' +
-      '<span class="eras-name-text" style="color:#FFFFFF">' + esc(p.famous) + '</span>' +
+      '<span class="eras-name-text" style="color:#FFFFFF">' + esc(p.famous) + _erasWikiLink(p) + '</span>' +
       '<span class="eras-name-yr" style="color:rgba(255,255,255,0.6)">' + fmtYr(p.dob) + '</span>';
     el.addEventListener('click', function(e){
       e.stopPropagation();

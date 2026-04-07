@@ -139,8 +139,8 @@ function renderSilsila(){
   const LANE_PAD=4;        // padding top+bottom inside each lane
   const MIN_LH=24;         // minimum lane height
   const LH_LIN=148;        // lineage lane fixed height
-  const GRID_CELL_W=130;   // tight cell width for left-aligned packing
-  const GRID_COLS=Math.floor(TW/GRID_CELL_W); // columns per row
+  const GRID_COLS=5;        // max 5 figures per row
+  const GRID_CELL_W=160;    // fixed cell width, figures cluster left
   const GRID_CELL_H=16;    // row height in grid
 
   // X mapping: pre-Islamic compressed; 600-800 CE expanded 2x; 800+ linear
@@ -157,9 +157,9 @@ function renderSilsila(){
   const grps={};
   PEOPLE.forEach(p=>{const li=getLI(p);if(li>=0)(grps[li]=grps[li]||[]).push(p);});
 
-  // When type/search filters are active, restrict non-lineage grps to only matching people
-  // so that ONLY filtered dots appear in the SVG (year filter dims via opacity separately)
-  const _hasTypeSearch=selTypes.size>0||selTrads.size>0||searchQ;
+  // When type/tradition filters are active, restrict non-lineage grps to only matching people
+  // Search queries use dimming instead of removing nodes (handled by silsilaSearch)
+  const _hasTypeSearch=selTypes.size>0||selTrads.size>0;
   if(_hasTypeSearch){
     const _fSet=new Set(getFiltered().map(p=>p.famous));
     Object.keys(grps).forEach(liS=>{
@@ -304,7 +304,7 @@ function renderSilsila(){
     P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity="0.85" stroke="${nd.col}" stroke-width="1.4" stroke-opacity="0.9"/>`);
     // Always-visible short name label
     const _sn=p.famous.length>14?p.famous.slice(0,13)+'…':p.famous;
-    P.push(`<text x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
+    P.push(`<text class="sl-node-text" data-name="${esc(p.famous)}" x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
   });
 
   // ── Cover rect: blank lineage lane left of Adam (hides any edge bleed) ──────
@@ -503,7 +503,7 @@ function renderSilsila(){
   function _silsilaClearHighlight(){
     _silsilaHighlighted=null;
     clearChainEdges();
-    svg.querySelectorAll('.sl-node').forEach(n=>n.classList.remove('sl-dim','sl-selected'));
+    svg.querySelectorAll('.sl-node,.sl-node-text').forEach(n=>n.classList.remove('sl-dim','sl-selected'));
     if(tt){tt.style.display='none';tt.style.pointerEvents='none';}
     ttPinned=false;
   }
@@ -550,7 +550,7 @@ function renderSilsila(){
     const teachers=new Set(p.teachers||[]);
     const students=new Set(SL_STUDENTS[name]||[]);
     const connected=new Set([name,...teachers,...students]);
-    svg.querySelectorAll('.sl-node').forEach(n=>{
+    svg.querySelectorAll('.sl-node,.sl-node-text').forEach(n=>{
       n.classList.toggle('sl-dim',!connected.has(n.dataset.name));
     });
     // Sync lane highlight
@@ -618,6 +618,11 @@ function updateSilsilaHighlight(){
 
   // Sync silsila filter dropdowns UI
   syncSLDD('type'); syncSLDD('trad');
+
+  // Apply search dimming if a query is active
+  if(typeof searchQ!=='undefined'&&searchQ){
+    silsilaSearch(searchQ);
+  }
 }
 
 // Scroll the SVG to centre on a named figure, then briefly pulse it
@@ -681,6 +686,7 @@ function openSilsilaCard(p, cx, cy){
       <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(p.tradition||'')}</span>
       ${p.city?`<span class="sc-tag">📍 ${esc(p.city)}</span>`:''}
     </div>
+    ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="sl-wd-occupations">'+chips.map(l=>'<span class="sl-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
     <div class="sc-dates">
       <div class="sc-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span></div>
       <div class="sc-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span></div>
@@ -714,6 +720,10 @@ function openSilsilaCard(p, cx, cy){
   }
   if(p.source){
     html+=`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:12px;padding-top:8px;border-top:1px solid var(--ip-brd)">Sources: ${esc(p.source)}</div>`;
+  }
+
+  if(window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en){
+    html+=`<a class="sl-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Wikipedia ↗</a>`;
   }
 
   document.getElementById('scCardBody').innerHTML=html;
@@ -850,3 +860,67 @@ document.addEventListener('click',e=>{
     document.querySelectorAll('.sl-dd-btn.open').forEach(b=>b.classList.remove('open'));
   }
 });
+
+// ═══════════════════════════════════════════════════════════
+// SILSILA SEARCH — dim non-matching figures via sl-dim
+// ═══════════════════════════════════════════════════════════
+var _slSearchActive=false;
+
+function silsilaSearch(query){
+  var svg=document.getElementById('silsilaSVG'); if(!svg) return;
+  var q=(query||'').trim().toLowerCase();
+
+  // Clear all existing dim/selected from both click-chain and search
+  svg.querySelectorAll('.sl-node,.sl-node-text').forEach(function(n){
+    n.classList.remove('sl-dim','sl-selected');
+  });
+  var grp=svg.querySelector('#sl-active-edges'); if(grp) grp.innerHTML='';
+
+  if(!q){ _slSearchActive=false; return; }
+  _slSearchActive=true;
+
+  var firstMatch=null;
+  svg.querySelectorAll('.sl-node').forEach(function(nd){
+    var name=nd.dataset.name;
+    var p=PEOPLE.find(function(pp){return pp.famous===name;});
+    if(!p) return;
+    var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
+    var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
+    var match=hay.indexOf(q)!==-1;
+    nd.classList.toggle('sl-dim',!match);
+    if(!firstMatch&&match) firstMatch=nd;
+  });
+  // Also dim text labels
+  svg.querySelectorAll('.sl-node-text').forEach(function(nd){
+    var name=nd.dataset.name;
+    var p=PEOPLE.find(function(pp){return pp.famous===name;});
+    if(!p) return;
+    var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
+    var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
+    nd.classList.toggle('sl-dim',hay.indexOf(q)===-1);
+  });
+
+  // Scroll to first match
+  if(firstMatch){
+    var mainDiv=document.getElementById('silsilaMain');
+    if(mainDiv){
+      var nd=SL_NM[firstMatch.dataset.name];
+      if(nd){
+        var vw=mainDiv.clientWidth, vh=mainDiv.clientHeight;
+        mainDiv.scrollTo({left:Math.max(0,nd.x-vw/2), top:Math.max(0,nd.y-vh/2), behavior:'smooth'});
+      }
+    }
+  }
+}
+window.silsilaSearch=silsilaSearch;
+
+// Hook into the global search input for silsila view
+(function(){
+  var searchEl=document.getElementById('search');
+  if(!searchEl) return;
+  searchEl.addEventListener('input',function(){
+    if(typeof VIEW!=='undefined'&&VIEW==='silsila'){
+      silsilaSearch(searchEl.value);
+    }
+  });
+})();

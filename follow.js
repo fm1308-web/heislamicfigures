@@ -46,6 +46,16 @@ var _FW_GRADE_COLORS = {'A':'#4a7c59','B':'#4a6d8c','C':'#b08030','D':'#707070'}
 // ═══════════════════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════════════════
+function _fwBirthYear(file) {
+  var fig = _fwFigures[file];
+  if (!fig || !fig.lifespan) return 9999;
+  var ls = fig.lifespan;
+  if (typeof ls === 'object' && ls.birth != null) return ls.birth;
+  if (typeof ls === 'string') { var n = parseInt(ls, 10); if (!isNaN(n)) return n; }
+  if (fig.journey && fig.journey.length) return fig.journey[0].year || 9999;
+  return 9999;
+}
+
 function _fwCatColor(cat) {
   if (!_FW_CAT_COLORS[cat]) {
     _FW_CAT_COLORS[cat] = _FW_CAT_PALETTE[_fwCatPalIdx % _FW_CAT_PALETTE.length];
@@ -277,7 +287,15 @@ function _fwBuildAddPanel() {
   };
   panel.appendChild(search);
 
-  _fwIndex.forEach(function(item) {
+  // Sort index chronologically by birth year (earliest first), tiebreak alphabetical
+  var sorted = _fwIndex.slice().sort(function(a, b){
+    var da = _fwBirthYear(a.file);
+    var db = _fwBirthYear(b.file);
+    if(da !== db) return da - db;
+    return a.name.localeCompare(b.name);
+  });
+
+  sorted.forEach(function(item) {
     var conf = _fwConfCache[item.file];
     var col = _fwFigColor(item.file);
 
@@ -322,7 +340,13 @@ function _fwToggleDD(ev) {
   if (!panel) return;
   _fwDDOpen = !_fwDDOpen;
   panel.style.display = _fwDDOpen ? 'block' : 'none';
-  if (_fwDDOpen) _fwUpdateDDChecks();
+  if (_fwDDOpen) {
+    var search = document.getElementById('fw-add-search');
+    if (search) { search.value = ''; }
+    var rows = panel.querySelectorAll('.fw-dd-row');
+    rows.forEach(function(r) { r.style.display = ''; });
+    _fwUpdateDDChecks();
+  }
 }
 
 function _fwCloseDD() {
@@ -956,3 +980,83 @@ function _fwCleanup() {
   _fwPause();
   document.body.classList.remove('fw-active');
 }
+
+// ═══════════════════════════════════════════════════════════
+// PRELOAD JOURNEY INDEX + GLOBAL EXPOSE
+// ═══════════════════════════════════════════════════════════
+window._journeyFigures = null; // Set of F-code slugs
+
+// Hardcoded fallback for journey names that don't match core.json famous exactly
+var _FW_NAME_MAP = {
+  'Abd al-Qadir al-Jilani':'Abdul Qadir al-Jilani',
+  'Abu Bakr as-Siddiq':'Abu Bakr al-Siddiq',
+  'Abu Dawud al-Sijistani':'Abu Dawud',
+  'Abu Hanifa':'Imam Abu Hanifa',
+  'Bayazid Bistami':'Abu Yazid al-Bistami',
+  'Junayd al-Baghdadi':'Junayd of Baghdad',
+  'Rabia al-Adawiyya':'Rabia al-Basri'
+};
+
+function _fwResolveName(journeyName){
+  if(typeof PEOPLE==='undefined') return null;
+  // Exact match
+  var p = PEOPLE.find(function(pp){ return pp.famous===journeyName; });
+  if(p) return p;
+  // Hardcoded fallback
+  var mapped = _FW_NAME_MAP[journeyName];
+  if(mapped){ p = PEOPLE.find(function(pp){ return pp.famous===mapped; }); if(p) return p; }
+  // Core famous is substring of journey name (handles parentheticals like "Al-Zahrawi (Abulcasis)")
+  var matches = PEOPLE.filter(function(pp){ return pp.famous && pp.famous.length>3 && journeyName.indexOf(pp.famous)!==-1; });
+  if(matches.length===1) return matches[0];
+  return null;
+}
+
+window._preloadJourneyIndex = function(){
+  if(window._journeyFigures) return Promise.resolve(window._journeyFigures);
+  return fetch('data/islamic/journeys/index.json')
+    .then(function(r){ return r.json(); })
+    .then(function(arr){
+      _fwIndex = arr;
+      var set = new Set();
+      arr.forEach(function(item){
+        var p = _fwResolveName(item.name);
+        if(p && p.slug) set.add(p.slug);
+      });
+      window._journeyFigures = set;
+      // Update header stat
+      var el = document.getElementById('statFollowLives');
+      if(el) el.textContent = 'Follow ' + set.size + ' Lives';
+      return set;
+    })
+    .catch(function(){ window._journeyFigures = new Set(); return window._journeyFigures; });
+};
+
+window._followShowFigure = function(slug){
+  if(!slug) return;
+  // Find the journey file for this slug
+  var file = null;
+  if(typeof PEOPLE!=='undefined'){
+    var p = PEOPLE.find(function(pp){ return pp.slug===slug; });
+    if(p){
+      for(var i=0; i<_fwIndex.length; i++){
+        // Check direct name match or resolved match
+        var resolved = _fwResolveName(_fwIndex[i].name);
+        if(resolved && resolved.slug===slug){ file=_fwIndex[i].file; break; }
+      }
+    }
+  }
+  if(!file) return;
+  // Switch to follow view
+  if(typeof setView==='function') setView('follow');
+  // Wait for follow to init, then select the figure
+  _fwLoadAll(function(){
+    _fwSelected = {};
+    _fwSelected[file] = true;
+    _fwUpdateDDChecks();
+    _fwUpdateFollowingList();
+    _fwPause();
+    _fwYear = null;
+    _fwYearIdx = -1;
+    _fwRebuild();
+  });
+};

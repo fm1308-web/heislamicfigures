@@ -332,6 +332,10 @@ async function boot(){
     }
   });
 
+  try{if(window._ensureWikidata) await window._ensureWikidata();}catch(e){}
+  try{if(window._preloadJourneyIndex) await window._preloadJourneyIndex();}catch(e){}
+  try{var _flEl=document.getElementById('statFollowLives');if(_flEl&&window._journeyFigures)_flEl.textContent='Follow '+window._journeyFigures.size+' Lives';}catch(e){}
+
   initSlider();
   initCentScrollbar();
   updateCentHeaders();
@@ -918,7 +922,7 @@ function renderRows(filtered){
       <div class="tc-name">
         <div class="tc-dot" style="background:${col};width:${p.dob<0?3:p.dob<600?5:7}px;height:${p.dob<0?3:p.dob<600?5:7}px;opacity:${p.dob<0?0.45:p.dob<600?0.7:1}${isProphet?';box-shadow:0 0 5px '+col+'90':''}"></div>
         <div class="tc-texts">
-          <div class="tc-famous"${_SR_BADGE_NAMES.has(p.famous)?' style="color:#D4AF37"':''}>${esc(p.famous)}${_SR_BADGE_NAMES.has(p.famous)?`<span class="sr-study-badge" onclick="event.stopPropagation();openStudyRoom('${_SR_SLUG_MAP[p.famous]}')" title="Available in Study Space">✦</span>`:''}</div>
+          <div class="tc-famous"${_SR_BADGE_NAMES.has(p.famous)?' style="color:#D4AF37"':''}>${esc(p.famous)}${_SR_BADGE_NAMES.has(p.famous)?`<span class="sr-study-badge" onclick="event.stopPropagation();openStudyRoom('${_SR_SLUG_MAP[p.famous]}')" title="Available in Study Space">✦</span>`:''}${window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en?`<a class="tl-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" title="Open in Wikipedia" onclick="event.stopPropagation()">W</a>`:''}</div>
           <div class="tc-sub">${esc(p.primaryTitle||p.classif||'')}</div>
         </div>
       </div>
@@ -1199,6 +1203,8 @@ function renderInfo(p){
       ${p.city?`<span class="i-tag">📍 ${esc(p.city)}</span>`:''}
       ${p.lang?`<span class="i-tag">🌐 ${esc(p.lang)}</span>`:''}
     </div>
+    ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="info-wd-occupations">'+chips.map(l=>'<span class="info-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
+    ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; Follow their life on the map</a>`:''}
     <div class="i-dates">
       <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds"${String(p.dob_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dob_s)}</span>`:''}</div>
       <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds"${String(p.dod_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dod_s)}</span>`:''}</div>

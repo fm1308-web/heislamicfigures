@@ -330,6 +330,7 @@ function _openMapCard(p, cx, cy){
     <span style="padding:2px 8px;border-radius:2px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.06em;border:1px solid var(--ip-brd);color:var(--ip-muted)">${esc(p.tradition||'')}</span>
     ${p.city?`<span style="padding:2px 8px;border-radius:2px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.06em;border:1px solid var(--ip-brd);color:var(--ip-muted)">📍 ${esc(p.city)}</span>`:''}
   </div>
+  ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="map-wd-occupations">'+chips.map(l=>'<span class="map-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
   <div style="display:flex;gap:14px;margin-bottom:10px">
     <div><span style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.1em;color:var(--ip-muted);display:block">BORN</span><span style="font-size:14px;font-weight:500;color:${col}">${dob_s}</span></div>
     <div><span style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.1em;color:var(--ip-muted);display:block">DIED</span><span style="font-size:14px;font-weight:500;color:${col}">${dod_s}</span></div>
@@ -357,6 +358,10 @@ function _openMapCard(p, cx, cy){
         (b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:'')+
         `</div>`;
     });
+  }
+
+  if(window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en){
+    html+=`<a class="map-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Wikipedia ↗</a>`;
   }
 
   document.getElementById('mcBody').innerHTML=html;

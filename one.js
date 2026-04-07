@@ -8,6 +8,25 @@
 var _inited = false;
 var _selected = [];
 var _addMode = false;   // "+" button toggled: next click adds to selection
+
+/* ── Wikidata cache ── */
+var _wikidata = null;    // keyed by F-code (e.g. "F0006")
+var _wdLoading = false;
+var _WD_OCC_LABELS = {"Q215536":"Merchant","Q372436":"Statesperson","Q82955":"Politician","Q132050":"Governor","Q65997":"Caliph","Q49757":"Poet","Q4991371":"Soldier","Q42759":"Mujahid","Q901":"Scientist","Q1397808":"Resistance fighter","Q36180":"Writer","Q189459":"Ulema","Q1172458":"Muhaddith","Q16031530":"Music theorist","Q4964182":"Philosopher","Q1234713":"Theologian","Q2369218":"Murshid","Q201788":"Historian","Q1999841":"Islamic jurist","Q12912932":"Mufassir","Q12859263":"Orator","Q17638669":"Rawi","Q42603":"Priest","Q188711":"Companion","Q1402561":"Military leader","Q185992":"Mufti","Q1622272":"University teacher","Q2892720":"Sufi","Q2304859":"Sovereign","Q193391":"Diplomat","Q217029":"Qadi","Q13570226":"Literary historian","Q1930187":"Journalist","Q432386":"Preacher","Q6673651":"Literary scholar","Q639669":"Musician","Q779458":"Ascetic","Q12328016":"Mystic","Q20826540":"Scholar","Q11063":"Astronomer","Q170790":"Mathematician","Q155647":"Astrologer","Q3595924":"Qari","Q16012028":"Legal scholar","Q185166":"Sheikh","Q974144":"Educator","Q37226":"Teacher","Q673566":"Mujtahid","Q15995642":"Religious leader","Q4231368":"Wali","Q125482":"Imam","Q18814623":"Autobiographer","Q12307965":"Debater","Q1097498":"Ruler","Q116":"Monarch","Q47064":"Military personnel","Q916292":"Scribe","Q12270170":"Mutakallim","Q901402":"Geographer","Q2374149":"Botanist","Q593644":"Chemist","Q270141":"Polymath","Q1734662":"Cartographer","Q333634":"Translator","Q4773904":"Anthropologist","Q169470":"Physicist","Q14467526":"Linguist","Q18524037":"Indologist","Q105186":"Pharmacist","Q10527030":"Humanist","Q18805":"Naturalist","Q350979":"Zoologist","Q124634459":"Journal editor","Q15991187":"Grammarian","Q1350189":"Egyptologist","Q12356615":"Traveler","Q864503":"Biologist","Q205375":"Inventor","Q81096":"Engineer","Q3109488":"Gnomonist","Q39631":"Physician","Q16390131":"Cryptologist","Q2306091":"Sociologist","Q1238570":"Political scientist","Q16533":"Judge","Q864380":"Biographer","Q10873124":"Chess player","Q2627699":"Chess composer","Q774306":"Surgeon","Q10872101":"Anatomist","Q2700922":"Clockmaker","Q185351":"Jurist","Q40348":"Lawyer","Q11774202":"Essayist","Q11499147":"Political activist","Q3155377":"Islamicist","Q19641":"Marji","Q4853732":"Children's writer","Q12087689":"Wali","Q3133901":"Herbalist","Q2632248":"Akhoond","Q2259532":"Cleric","Q36834":"Composer","Q7311283":"Religious","Q599151":"Official","Q20474860":"Divan poet","Q11545923":"Military commander","Q482980":"Author","Q119982309":"Islamic revisionist","Q1028181":"Painter","Q998628":"Illuminator","Q3303330":"Calligrapher","Q12059906":"Herder","Q220098":"Warlord","Q1278335":"Instrumentalist","Q42857":"Prophet","Q168827":"Prophet of Islam","Q3621491":"Archaeologist","Q11900058":"Explorer","Q15472169":"Patron of the arts","Q620573":"Arabist","Q8359428":"Social activist","Q58968":"Intellectual","Q6051619":"Opinion journalist","Q2911636":"Islamic leader","Q822146":"Lyricist","Q3400985":"Academic","Q1714828":"Hunter","Q967769":"Dai","Q2114605":"Pharmacologist","Q137733929":"Arithmetician","Q998550":"Bookseller","Q10429346":"Bibliographer","Q21185790":"Exegete","Q188094":"Economist","Q3813950":"Katib","Q5403434":"Ethicist","Q109920757":"Dream interpreter","Q137351830":"Islamic theologian","Q842811":"Dietitian","Q1349880":"Thaumaturge","Q15954519":"Alchemist","Q189290":"Military officer","Q43845":"Businessperson","Q29051324":"Wholesale merchant","Q1250916":"Warrior","Q132851":"Admiral","Q201559":"Privateer","Q10729326":"Pirate","Q14972848":"Lexicographer","Q16880249":"Dialectologist","Q12097":"King","Q1476215":"Human rights defender","Q107637527":"Muslim minister","Q182436":"Librarian","Q47740":"Muslim","Q205766":"Ummah","Q2624172":"Sage","Q12144794":"Prose writer","Q18663593":"Seerah writer","Q1759959":"Color guard","Q3282637":"Film producer","Q2526255":"Film director","Q15958642":"Political writer","Q184299":"Shah","Q11573099":"Royalty","Q214917":"Playwright","Q4479442":"Founder","Q42973":"Architect","Q2248623":"Scholar","Q24885626":"Thinker","Q175240":"Vizier","Q719039":"Queen consort","Q1162909":"Power behind the throne","Q177220":"Singer","Q877558":"Consignor","Q28692502":"Women's rights activist","Q763779":"Reformer","Q662729":"Public figure","Q124985058":"Reformer","Q11085831":"Interpreter","Q16743941":"Metaphysician","Q1731155":"Orientalist","Q6090396":"Quranic exegete","Q21512362":"Jihadist","Q102083":"Knight","Q15980158":"Non-fiction writer","Q3242115":"Revolutionary","Q48352":"Head of state","Q1251441":"Leader","Q4175034":"Legislator","Q30242234":"Freedom fighter","Q38126150":"Housewife","Q110007257":"Livestock worker","Q188830":"Wife","Q186360":"Nurse","Q254651":"Navigator","Q179294":"Eunuch","Q33999":"Actor","Q131524":"Entrepreneur","Q932945":"Khatib","Q3745071":"Science writer","Q7492880":"Shaykh","Q6625963":"Novelist","Q4263842":"Literary critic","Q28389":"Screenwriter","Q219477":"Missionary","Q14565331":"Logician","Q4594605":"Magistrate","Q4504549":"Religious figure","Q2732142":"Statistician","Q3362826":"Papermaker","Q24262584":"Bible translator","Q6430706":"Critic","Q80687":"Secretary"};
+var _WD_PORTRAIT_BLOCKED_SLUGS = {'F1132':1,'F0114':1,'F1433':1,'F1629':1,'F0366':1,'F0863':1,'F0199':1,'F0599':1,'F0667':1,'F0708':1};
+var _WD_BLOCKED_TYPES = {'Prophet':1,'Sahaba':1,'Sahabiyya':1};
+
+function _ensureWikidata(){
+  if(_wikidata) return Promise.resolve(_wikidata);
+  if(_wdLoading) return _wdLoading;
+  _wdLoading=fetch('data/islamic/wikidata.json').then(function(r){return r.json();}).then(function(d){
+    _wikidata=d; window._wikidata=d; return d;
+  }).catch(function(){ _wikidata={}; return {}; });
+  return _wdLoading;
+}
+window._ensureWikidata=_ensureWikidata;
+window._WD_OCC_LABELS=_WD_OCC_LABELS;
+
 var _oneSearch = '';
 var _oneTypes = new Set();
 var _oneTrads = new Set();
@@ -413,7 +432,6 @@ async function _renderPerson(p,container){
   var age=(p.dob!=null&&p.dod!=null)?(p.dod-p.dob):null;
   var cent=p.dob!=null?_centStr(Math.ceil(p.dob/100)):'';
   var isFav=APP.Favorites?APP.Favorites.has(p.famous):false;
-  var imgId='one-img-'+Math.random().toString(36).substr(2,8);
 
   var h='';
 
@@ -434,9 +452,7 @@ async function _renderPerson(p,container){
 
   /* ── HERO ── */
   h+='<div class="one-hero">';
-  if(canShowImage(p)){
-    h+='<img id="'+imgId+'" class="one-hero-img" style="display:none" alt="'+_e(p.famous)+'" onerror="this.style.display=\'none\'">';
-  }
+  h+='<div id="one-portrait"></div>';
   h+='<div class="one-hero-text">';
   h+='<div class="one-famous" style="color:'+col+'">'+_e(p.famous);
   h+=' <button class="one-fav-btn" data-name="'+_e(p.famous)+'" onclick="window._oneToggleFav(this)" style="color:'+(isFav?'#D4AF37':'rgba(160,174,192,0.25)')+'">'+( isFav?'\u2605':'\u2606')+'</button>';
@@ -452,6 +468,10 @@ async function _renderPerson(p,container){
   if(p.classif) h+='<span class="one-tag">'+_e(p.classif)+'</span>';
   if(p.tags&&p.tags.length) p.tags.forEach(function(t){ h+='<span class="one-tag gold">'+_e(t)+'</span>'; });
   h+='</div>';
+  h+='<div id="one-occupations"></div>';
+  if(window._journeyFigures&&window._journeyFigures.has(p.slug)){
+    h+='<a class="one-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure(\''+_safe(p.slug)+'\');return false;">&#9654; Follow their life on the map</a>';
+  }
   // Dates
   h+='<div class="one-dates">';
   h+='<span class="one-date"><span class="one-dl">BORN</span><span class="one-dv" style="color:'+col+'">'+dob_s+'</span></span>';
@@ -477,6 +497,22 @@ async function _renderPerson(p,container){
         qh+='<div class="one-quran-sub">mentioned in the Quran</div>';
         if(qr.firstVerse) qh+='<a href="'+_e(qr.url||'')+'" target="_blank" rel="noopener" class="one-quran-link">First verse: '+_e(qr.firstVerse)+' \u2197</a>';
         if(qr.epithet) qh+='<div class="one-quran-epithet">'+_e(qr.epithet)+'</div>';
+      } else if(p.type==='Prophet'){
+        var raw=String(qr);
+        var re=/([A-Z][A-Za-z'\-\s]+?)\s+(\d+):(\d+)/g;
+        var parts=[];var m;var lastIdx=0;
+        while((m=re.exec(raw))!==null){
+          if(m.index>lastIdx) parts.push({text:raw.slice(lastIdx,m.index)});
+          parts.push({surah:m[1].trim(),ch:m[2],vs:m[3]});
+          lastIdx=re.lastIndex;
+        }
+        if(lastIdx<raw.length) parts.push({text:raw.slice(lastIdx)});
+        var inner='';
+        parts.forEach(function(pt){
+          if(pt.surah) inner+='<a href="https://quran.com/'+pt.ch+'/'+pt.vs+'" target="_blank" rel="noopener" class="one-quran-verse">'+_e(pt.surah)+' '+pt.ch+':'+pt.vs+'</a>';
+          else inner+=_e(pt.text);
+        });
+        qh+='<div>'+inner+'</div>';
       } else {
         qh+='<div>'+_e(String(qr))+'</div>';
       }
@@ -643,14 +679,74 @@ async function _renderPerson(p,container){
   vH+='</tbody></table>';
   h+=_sec('\uD83D\uDD24','Name Variants & Data',0,vH,false);
 
+  h+='<div id="one-wikilinks"></div>';
+
   /* ── Set HTML ── */
   container.innerHTML=h;
 
-  /* ── Fetch wiki image ── */
-  if(canShowImage(p)){
-    var imgEl=document.getElementById(imgId);
-    if(imgEl) fetchWikiImage(p.source,imgEl,null);
-  }
+  /* ── Wikidata enrichment ── */
+  _ensureWikidata().then(function(wd){
+    if(!wd||!p.slug) return;
+    var entry=wd[p.slug];
+    if(!entry) return;
+
+    /* a) Portrait — only if image field exists AND not blocked */
+    if(entry.image && !_WD_BLOCKED_TYPES[p.type] && !_WD_PORTRAIT_BLOCKED_SLUGS[p.slug]){
+      var portraitDiv=container.querySelector('#one-portrait');
+      if(portraitDiv){
+        var img=document.createElement('img');
+        img.className='one-wd-portrait';
+        img.alt=p.famous;
+        img.src=entry.image;
+        img.onerror=function(){ this.style.display='none'; };
+        portraitDiv.appendChild(img);
+      }
+    }
+
+    /* b) Occupation chips */
+    if(entry.occupations&&entry.occupations.length){
+      var occDiv=container.querySelector('#one-occupations');
+      if(occDiv){
+        var shown=entry.occupations.slice(0,5);
+        shown.forEach(function(qid){
+          var label=_WD_OCC_LABELS[qid]||null;
+          if(!label) return;
+          var chip=document.createElement('span');
+          chip.className='one-wd-occ';
+          chip.textContent=label;
+          occDiv.appendChild(chip);
+        });
+      }
+    }
+
+    /* c) Wikipedia language links */
+    if(entry.wikipedia){
+      var langs=[['en','EN'],['ar','AR'],['fa','FA'],['ur','UR'],['tr','TR']];
+      var wlDiv=container.querySelector('#one-wikilinks');
+      if(wlDiv){
+        var any=false;
+        langs.forEach(function(pair){
+          var code=pair[0], lbl=pair[1];
+          var article=entry.wikipedia[code];
+          if(!article) return;
+          any=true;
+          var a=document.createElement('a');
+          a.className='one-wd-wikilink';
+          a.href='https://'+code+'.wikipedia.org/wiki/'+encodeURIComponent(article.replace(/ /g,'_'));
+          a.target='_blank';
+          a.rel='noopener';
+          a.textContent=lbl;
+          wlDiv.appendChild(a);
+        });
+        if(any){
+          var label=document.createElement('span');
+          label.className='one-wd-wikilink-label';
+          label.textContent='Wikipedia:';
+          wlDiv.insertBefore(label,wlDiv.firstChild);
+        }
+      }
+    }
+  });
 }
 
 /* ── Collapsible section helper ── */
@@ -839,6 +935,7 @@ window._oneToggleFav=function(btn){
     _origSetViewOne(v);
     var ov=document.getElementById('one-view');
     if(ov) ov.style.display=v==='one'?'flex':'none';
+    document.body.classList.toggle('view-one',v==='one');
     if(v==='one'||v==='talk'){
       var r3=document.getElementById('hdrRow3');
       if(r3) r3.style.display='none';
