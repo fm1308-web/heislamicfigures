@@ -1,0 +1,152 @@
+{
+  "person": "Ali al-Hujwiri (Data Ganj Bakhsh)",
+  "slug": "F0363",
+  "lifespan": "1009-1072",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Abu'l-Hasan Ali ibn Uthman al-Jullabi al-Hujwiri is the author of the famous Persian Sufi treatise Kashf al-Mahjub (The Unveiling of the Veiled), the earliest comprehensive Sufi handbook in Persian, which contains substantial autobiographical material. From it we know roughly the order of his travels through the eastern Islamic world before he settled in Lahore. The major dates are loose: born in Hujwir near Ghazna around 1009, travelled extensively through Khurasan, Iraq, Syria, and Transoxiana, settled in Lahore, and died there around 1072. Specific months and days are not preserved."
+  },
+  "sources": [
+    "Al-Hujwiri, Kashf al-Mahjub (translated by R.A. Nicholson)",
+    "R.A. Nicholson, introduction to Kashf al-Mahjub (1911)",
+    "Annemarie Schimmel, Mystical Dimensions of Islam (1975)",
+    "Encyclopaedia Iranica, 'Hojviri'"
+  ],
+  "journey": [
+    {
+      "year": 1009,
+      "age": 0,
+      "precision": "year",
+      "location": "Hujwir, near Ghazna",
+      "lat": 33.5500,
+      "lng": 68.4167,
+      "event": "Born around 1009 in the village of Hujwir, near Ghazna in modern Afghanistan. His other nisba al-Jullabi may refer to another nearby village. He is from a Sayyid family, claiming descent from Ali ibn Abi Talib through al-Hasan.",
+      "category": "birth",
+      "source": "Al-Hujwiri, Kashf al-Mahjub (Nicholson intro)"
+    },
+    {
+      "year": 1025,
+      "age": 16,
+      "precision": "period",
+      "location": "Ghazna",
+      "lat": 33.5450,
+      "lng": 68.4174,
+      "event": "Grows up under the rule of the Ghaznavid sultan Mahmud, who has made Ghazna the most powerful city of the Islamic east. Receives a thorough education in the religious sciences and the developing Sufi tradition.",
+      "category": "childhood",
+      "source": "Encyclopaedia Iranica"
+    },
+    {
+      "year": 1030,
+      "age": 21,
+      "precision": "period",
+      "location": "Khurasan",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Around the age of 20 begins the long travels through the Islamic world that will take up most of his life. Visits the Sufi masters of Khurasan, including Abu'l-Qasim Gurgani, his principal master, in Tus.",
+      "category": "travel",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1035,
+      "age": 26,
+      "precision": "period",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Studies in Nishapur, then one of the major centres of Sufi learning, with the masters of the school of Abu Sa'id ibn Abi'l-Khayr. Encounters in Khurasan the lineage of teaching that goes back through al-Junayd to the early masters.",
+      "category": "travel",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1040,
+      "age": 31,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Travels west to Baghdad, then still the formal capital of the Abbasid caliphate but already declining. Meets Sufi masters there and visits the tombs of the early figures - al-Junayd, al-Sari al-Saqati, and others - which is a recurring practice in his travels.",
+      "category": "travel",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1045,
+      "age": 36,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Travels onward to Syria, visits Damascus and the holy sites of Bayt al-Maqdis (Jerusalem), and meets local Sufi masters. Also visits Egypt.",
+      "category": "travel",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1050,
+      "age": 41,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj, perhaps more than once, and spends time among the Sufis of the Hijaz. Tells in Kashf al-Mahjub the famous story of how he was once stripped of all his belongings and clothes by bandits during his travels and arrived at a city wearing only a tattered cloak.",
+      "category": "pilgrimage",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1055,
+      "age": 46,
+      "precision": "period",
+      "location": "Bukhara",
+      "lat": 39.7747,
+      "lng": 64.4286,
+      "event": "Continues his travels into Transoxiana - Bukhara, Samarkand, and the towns of the upper Oxus. Visits the tombs and surviving disciples of the great Khurasanian Sufis.",
+      "category": "travel",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1060,
+      "age": 51,
+      "precision": "year",
+      "location": "Lahore",
+      "lat": 31.5497,
+      "lng": 74.3436,
+      "event": "Sometime around 1060, on the orders of his master Abu'l-Qasim Gurgani (according to later tradition), settles in Lahore in the Punjab, then under Ghaznavid rule. Lahore is at this time a frontier city of Islam, with a still-largely Hindu population. Al-Hujwiri's mission is to teach Sufism in this new territory.",
+      "category": "migration",
+      "source": "Kashf al-Mahjub; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1065,
+      "age": 56,
+      "precision": "period",
+      "location": "Lahore",
+      "lat": 31.5497,
+      "lng": 74.3436,
+      "event": "In Lahore composes Kashf al-Mahjub (The Unveiling of the Veiled), the earliest comprehensive treatise on Sufism in the Persian language. The book sets out the doctrines and practices of the Sufi schools, the lives of the early masters, and the technical terminology of the path. It will become the foundational text of Persianate Sufism.",
+      "category": "civic",
+      "source": "Kashf al-Mahjub"
+    },
+    {
+      "year": 1068,
+      "age": 59,
+      "precision": "period",
+      "location": "Lahore",
+      "lat": 31.5497,
+      "lng": 74.3436,
+      "event": "Builds up a circle of disciples in Lahore. Through his teaching, the city becomes an early Islamic spiritual centre in the subcontinent. Local tradition holds that many Hindus and others embraced Islam through his influence and example. He is later called Data Ganj Bakhsh - 'the giver of treasures'.",
+      "category": "civic",
+      "source": "Encyclopaedia Iranica; Schimmel"
+    },
+    {
+      "year": 1072,
+      "age": 63,
+      "precision": "year",
+      "location": "Lahore",
+      "lat": 31.5497,
+      "lng": 74.3436,
+      "event": "Dies in Lahore around 1072 (465 AH). Is buried in the city; his shrine, the Data Darbar, becomes one of the most visited Sufi shrines in the Indian subcontinent and remains a major centre of devotion to this day. The shrine has been rebuilt several times; the current complex is one of the largest Sufi shrines in South Asia.",
+      "category": "death",
+      "source": "Encyclopaedia Iranica"
+    }
+  ]
+}

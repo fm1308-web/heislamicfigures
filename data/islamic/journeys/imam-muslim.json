@@ -1,0 +1,133 @@
+{
+  "person": "Imam Muslim",
+  "slug": "F0779",
+  "lifespan": {
+    "birth": 815,
+    "death": 875
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Imam Muslim ibn al-Hajjaj al-Naysaburi is the compiler of the second of the two Sahih collections that ground Sunni hadith literature. The early sources (Hakim al-Naysaburi, Dhahabi) record his Nishapuri origins, his travels across the central Islamic lands, his close association with Bukhari, and his death in Nishapur. Specific years for his earliest travels are reconstructed."
+  },
+  "sources": [
+    "Al-Hakim al-Naysaburi, Tarikh Naysabur",
+    "Al-Dhahabi, Siyar A'lam al-Nubala",
+    "Al-Nawawi, Sharh Sahih Muslim (introduction)",
+    "Jonathan Brown, The Canonization of al-Bukhari and Muslim (2007)"
+  ],
+  "journey": [
+    {
+      "year": 815,
+      "age": 0,
+      "precision": "year",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Born in Nishapur in Khurasan in 206 AH into a family of the Arab tribe of Qushayr. His father al-Hajjaj is a respected man and gives him an early religious education.",
+      "category": "birth",
+      "source": "Hakim Naysaburi; Dhahabi"
+    },
+    {
+      "year": 827,
+      "age": 12,
+      "precision": "year",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Begins formal hadith studies in Nishapur with the local masters at the age of about twelve, an early start that he later attributes to his father's encouragement.",
+      "category": "childhood",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 835,
+      "age": 20,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj as a young man and studies with the Meccan hadith masters. After the pilgrimage he begins his own systematic rihla in search of hadith.",
+      "category": "pilgrimage",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 840,
+      "age": 25,
+      "precision": "period",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Travels through the major centres of Iraq — Kufa, Basra, and Baghdad — collecting from the leading hadith scholars and verifying chains.",
+      "category": "travel",
+      "source": "Hakim Naysaburi"
+    },
+    {
+      "year": 845,
+      "age": 30,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Continues his rihla through Syria, gathering material in Damascus, Hims, Caesarea, and the towns of the Syrian coast.",
+      "category": "travel",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 850,
+      "age": 35,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Travels to Egypt to collect hadith from the Egyptian masters, including the leading Maliki teachers who had studied with the pupils of Imam Malik in Medina.",
+      "category": "travel",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 855,
+      "age": 40,
+      "precision": "year",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Returns to Nishapur and meets Bukhari, who has begun lecturing in the city. Muslim attaches himself to Bukhari as a student and admirer, kissing the older master's forehead and saying: 'Let me kiss your feet, master of masters and physician of hadith.'",
+      "category": "spiritual",
+      "source": "Dhahabi; Brown (2007)"
+    },
+    {
+      "year": 864,
+      "age": 49,
+      "precision": "year",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "When the Nishapuri controversy erupts and al-Dhuhli denounces Bukhari, Muslim — almost alone — refuses to abandon Bukhari and returns Dhuhli's hadith books to him as a public break with his former teacher. The act ends his standing with the Nishapuri establishment but cements his loyalty to Bukhari.",
+      "category": "rejection",
+      "source": "Dhahabi; Hakim Naysaburi"
+    },
+    {
+      "year": 868,
+      "age": 53,
+      "precision": "period",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Composes his own Al-Jami al-Sahih, drawing from his vast notes after years of travel. Unlike Bukhari, he organises the chapters strictly by topic and gives all the variant chains for each hadith — features that later commentators will praise.",
+      "category": "spiritual",
+      "source": "Nawawi"
+    },
+    {
+      "year": 875,
+      "age": 60,
+      "precision": "year",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Dies in Nishapur in Rajab 261 AH (May 875) and is buried in the Nasrabad quarter of the city. The Sahih Muslim becomes, alongside Sahih al-Bukhari, the most authoritative hadith collection in Sunni Islam, and the two together are known as the Sahihayn.",
+      "category": "death",
+      "source": "Dhahabi; Hakim Naysaburi"
+    }
+  ]
+}

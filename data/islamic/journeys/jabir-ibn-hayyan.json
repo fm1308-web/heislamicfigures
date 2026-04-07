@@ -1,0 +1,111 @@
+{
+  "person": "Jabir ibn Hayyan",
+  "slug": "F0809",
+  "lifespan": {
+    "birth": 721,
+    "death": 815
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "D",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Jabir ibn Hayyan — the Latin Geber — is a half-historical figure. Around 3,000 alchemical and philosophical works circulated under his name in medieval times, but Paul Kraus's landmark 1942 study showed that most of them were composed by later (probably 9th–10th century) Isma'ili authors. A historical Jabir of Kufa, alchemist and client of the Barmakid family under Harun al-Rashid, almost certainly existed, but his concrete biography is largely lost. Treat all dates here as approximate placeholders organised around what the tradition itself claims."
+  },
+  "sources": [
+    "Ibn al-Nadim, Kitab al-Fihrist",
+    "Paul Kraus, Jabir ibn Hayyan: contribution a l'histoire des idees scientifiques dans l'Islam (1942–43)",
+    "Syed Nomanul Haq, Names, Natures and Things (1994)",
+    "Lawrence Principe, The Secrets of Alchemy (2013)"
+  ],
+  "journey": [
+    {
+      "year": 721,
+      "age": 0,
+      "precision": "decade",
+      "location": "Tus",
+      "lat": 36.4844,
+      "lng": 59.5253,
+      "event": "Born around this time, traditionally in Tus in Khurasan, into a family of South Arabian (Azd) descent. His father Hayyan is a druggist and a partisan of the Abbasid revolutionary movement against the Umayyads.",
+      "category": "birth",
+      "source": "Ibn al-Nadim; tradition"
+    },
+    {
+      "year": 730,
+      "age": 9,
+      "precision": "decade",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "His father is sent on Abbasid missionary work to Khurasan, captured by the Umayyads, and executed. The young Jabir is raised among his Arabian relatives, possibly in Yemen or Kufa, where he learns Arabic and the religious sciences.",
+      "category": "loss",
+      "source": "Tradition; Kraus (1942)"
+    },
+    {
+      "year": 750,
+      "age": 29,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "The Abbasid revolution succeeds. The new dynasty rewards the families of those who died for the cause; Jabir is now a free man in a Kufa that has just become one of the most important cities of the new caliphate.",
+      "category": "civic",
+      "source": "Tradition"
+    },
+    {
+      "year": 765,
+      "age": 44,
+      "precision": "decade",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "According to the alchemical Corpus, Jabir becomes a disciple of the sixth Shi'i imam Ja'far al-Sadiq in Medina or Kufa, and learns the secrets of alchemy from him. Modern scholarship treats this as a literary attribution typical of later Shi'i alchemical writing.",
+      "category": "spiritual",
+      "source": "Jabirian Corpus; Kraus (1942)"
+    },
+    {
+      "year": 780,
+      "age": 59,
+      "precision": "decade",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Operates an alchemical laboratory in Kufa. Centuries later, when an old house in the Damascus Gate quarter is being demolished, workers reportedly find a stone mortar and a heap of gold — the remains, locals say, of Jabir's workshop.",
+      "category": "civic",
+      "source": "Ibn al-Nadim Fihrist"
+    },
+    {
+      "year": 790,
+      "age": 69,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Comes to Baghdad under the patronage of the powerful Barmakid vizierial family, especially Ja'far ibn Yahya al-Barmaki, the close companion of Caliph Harun al-Rashid. The Barmakids support his alchemical and pharmacological work.",
+      "category": "civic",
+      "source": "Ibn al-Nadim"
+    },
+    {
+      "year": 803,
+      "age": 82,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Caliph Harun al-Rashid suddenly destroys the Barmakids in January, executing Ja'far and imprisoning the rest of the family. Jabir loses his patrons and reportedly retreats to Kufa to live in seclusion.",
+      "category": "crisis",
+      "source": "Tabari; Ibn al-Nadim"
+    },
+    {
+      "year": 815,
+      "age": 94,
+      "precision": "decade",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Dies in Kufa around this time. The vast Jabirian Corpus that bears his name — covering practical chemistry (acids, distillation, crystallisation), the theory of elemental balances, alchemical numerology, and Neoplatonic cosmology — is largely the work of later authors writing under his prestige.",
+      "category": "death",
+      "source": "Ibn al-Nadim; Kraus (1942)"
+    }
+  ]
+}

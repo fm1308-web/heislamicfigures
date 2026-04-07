@@ -1755,16 +1755,30 @@ footer{
 #fw-add-btn:hover { border-color: var(--gold); color: var(--text); }
 #fw-add-panel {
   position: absolute;
-  left: 12px; right: 12px;
+  left: 0;
   top: 100%;
+  width: 320px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px;
-  max-height: 240px;
+  max-height: 340px;
   overflow-y: auto;
   z-index: 100;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
+#fw-add-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+}
+#fw-add-search::placeholder { color: var(--muted); }
 .fw-dd-row {
   display: flex;
   align-items: center;
@@ -2096,4 +2110,7 @@ body.fw-active #hdrRow3 * {
   overflow: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+body.fw-active #searchWrap {
+  display: none !important;
 }

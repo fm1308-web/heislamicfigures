@@ -1,0 +1,143 @@
+{
+  "person": "Abu Dawud al-Sijistani",
+  "slug": "F0117",
+  "lifespan": "817-889",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "low",
+    "disclosure": "Abu Dawud Sulayman ibn al-Ash'ath al-Sijistani is well documented in classical biographical literature (Ibn Hibban, Ibn Khallikan, al-Khatib al-Baghdadi) but most events are dated only by year. His extensive travels in pursuit of hadith took him through Iraq, Syria, Egypt, Khurasan, and the Arabian Peninsula. The major fixed dates are his birth in Sijistan in 817, his stay in Basra under the patronage of the caliph al-Muwaffaq, the compilation of his Sunan, and his death in Basra in 889."
+  },
+  "sources": [
+    "Ibn Khallikan, Wafayat al-A'yan",
+    "Al-Khatib al-Baghdadi, Tarikh Baghdad",
+    "Al-Dhahabi, Siyar A'lam al-Nubala",
+    "Encyclopaedia of Islam, 2nd ed., 'Abu Dawud al-Sijistani'"
+  ],
+  "journey": [
+    {
+      "year": 817,
+      "age": 0,
+      "precision": "year",
+      "location": "Sijistan",
+      "lat": 31.0,
+      "lng": 61.5,
+      "event": "Born in 817 (202 AH) in Sijistan, an arid province on what is now the border between eastern Iran and southern Afghanistan. His family is of Arab origin from the tribe of Azd.",
+      "category": "birth",
+      "source": "Al-Dhahabi, Siyar"
+    },
+    {
+      "year": 835,
+      "age": 18,
+      "precision": "period",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Around the age of 18 begins the rihla fi talab al-ilm, the journey in search of knowledge. Travels first to Khurasan, studying hadith with the leading masters of Nishapur, Marw, and Herat.",
+      "category": "travel",
+      "source": "Al-Dhahabi, Siyar; Ibn Khallikan"
+    },
+    {
+      "year": 838,
+      "age": 21,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Arrives in Baghdad and studies with Ahmad ibn Hanbal, whom he considers his most important teacher. Ibn Hanbal in turn praises Abu Dawud as one of the great hadith memorisers of the age.",
+      "category": "travel",
+      "source": "Al-Khatib al-Baghdadi"
+    },
+    {
+      "year": 842,
+      "age": 25,
+      "precision": "period",
+      "location": "Kufa",
+      "lat": 32.0386,
+      "lng": 44.4006,
+      "event": "Continues his travels through Iraq, studying with hadith scholars in Kufa, Basra, and Wasit. Spends extended periods in each city collecting and verifying hadith.",
+      "category": "travel",
+      "source": "Al-Dhahabi, Siyar"
+    },
+    {
+      "year": 845,
+      "age": 28,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Travels to Syria and studies in Damascus, Hims, and the Syrian frontier towns. Then continues to Egypt, where he studies with the Egyptian hadith scholars in Fustat.",
+      "category": "travel",
+      "source": "Al-Dhahabi, Siyar"
+    },
+    {
+      "year": 850,
+      "age": 33,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Travels to the Hijaz, performs hajj, and studies with the hadith scholars of Mecca and Medina. By the end of his travels he has heard hadith from over 300 teachers across the central Islamic lands.",
+      "category": "pilgrimage",
+      "source": "Al-Dhahabi, Siyar"
+    },
+    {
+      "year": 855,
+      "age": 38,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Is in Baghdad in 855 when his teacher Ahmad ibn Hanbal dies. Mourns his teacher deeply. The two men shared similar methodological commitments and a serious, ascetic personality.",
+      "category": "loss",
+      "source": "Al-Khatib al-Baghdadi"
+    },
+    {
+      "year": 870,
+      "age": 53,
+      "precision": "period",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "Around 870 is invited by Abu Ahmad al-Muwaffaq, brother of the caliph al-Mu'tamid and effective ruler of the Abbasid empire, to settle in Basra in order to attract students back to the city, which had been ravaged by the Zanj rebellion. Abu Dawud accepts and makes Basra his home for the rest of his life.",
+      "category": "civic",
+      "source": "Al-Khatib al-Baghdadi; Ibn Khallikan"
+    },
+    {
+      "year": 875,
+      "age": 58,
+      "precision": "period",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "In Basra completes his Sunan, a systematically organised collection of about 4,800 hadith concerning legal matters (ahkam), selected from a total of about 500,000 he had heard. The Sunan becomes one of the six canonical hadith collections of Sunni Islam and is regarded by many as second in authority only to the two Sahihs of al-Bukhari and Muslim.",
+      "category": "civic",
+      "source": "Ibn Khallikan, Wafayat; Encyclopaedia of Islam"
+    },
+    {
+      "year": 880,
+      "age": 63,
+      "precision": "period",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "Teaches the Sunan to a circle of students in Basra, including his son Abu Bakr ibn Abi Dawud (who becomes a famous hadith scholar in his own right), al-Tirmidhi, al-Nasa'i, and others. Submits the work to his teacher Ahmad ibn Hanbal's school for approval.",
+      "category": "civic",
+      "source": "Al-Dhahabi, Siyar"
+    },
+    {
+      "day": 16,
+      "month": 2,
+      "year": 889,
+      "age": 71,
+      "precision": "day",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "Dies in Basra on 16 Shawwal 275 AH (16 February 889), aged about 72. Is buried near the tomb of Sufyan al-Thawri in Basra. His Sunan is preserved by his students and circulates widely; today it is one of the four Sunan collections that, together with the two Sahihs, form the core of Sunni hadith literature.",
+      "category": "death",
+      "source": "Ibn Khallikan, Wafayat; Al-Dhahabi"
+    }
+  ]
+}

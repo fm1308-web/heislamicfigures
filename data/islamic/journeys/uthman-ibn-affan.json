@@ -6,41 +6,37 @@
     "death": 656
   },
   "schema_version": 1,
-  "confidence": {
-    "grade": "B",
-    "density": "medium",
-    "precision": "medium",
-    "disclosure": "Uthman's movements are well documented for the Hijra, the battles with the Prophet, and the final siege of his house in 656. His two migrations to Abyssinia are attested but the exact dates and duration are less certain. His 12-year caliphate was mostly stationary in Medina, so the journey map is sparse by design rather than by lack of sources — he genuinely didn't travel much. The politics of his assassination remain contested between Sunni and Shi'a sources."
-  },
+  "schema_notes": "Third Rashidun caliph. Early convert from the Umayyad clan. Twice migrated to Abyssinia with his wife Ruqayya (the Prophet's daughter). As caliph, stayed almost entirely in Medina; his most consequential act was standardising the Quran into the codex used ever since.",
   "sources": [
+    "Ibn Ishaq, Sirat Rasul Allah (Guillaume tr.)",
     "Al-Tabari, Tarikh al-Rusul wa al-Muluk",
     "Ibn Sa'd, Kitab al-Tabaqat al-Kabir",
-    "Sahih al-Bukhari",
-    "Ibn Ishaq, Sirat Rasul Allah"
+    "Al-Baladhuri, Futuh al-Buldan",
+    "Wilferd Madelung, The Succession to Muhammad"
   ],
   "journey": [
     {
       "year": 576,
       "age": 0,
       "precision": "year",
-      "location": "Ta'if",
-      "lat": 21.2703,
-      "lng": 40.4158,
-      "event": "Born into the Banu Umayya clan of Quraysh in Ta'if, one of the wealthiest and most influential families of the Hijaz. His father Affan ibn Abi al-As was a prosperous merchant who died while Uthman was still young.",
-      "category": "birth",
-      "source": "Ibn Sa'd; Al-Tabari"
-    },
-    {
-      "year": 576,
-      "age": 0,
-      "precision": "period",
-      "period_end": 610,
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Grew up in Mecca as a wealthy Umayyad merchant, inheriting his father's trade connections and becoming one of the richest men in the city. He was known for his modesty, generosity, and refined character even before Islam.",
-      "category": "childhood",
-      "source": "Ibn Sa'd; Al-Tabari"
+      "event": "Born to the Banu Umayya clan of Quraysh, one of the wealthiest families of Mecca. His father Affan was a prominent merchant.",
+      "category": "birth",
+      "source": "Ibn Sa'd; Tabari"
+    },
+    {
+      "year": 600,
+      "age": 24,
+      "precision": "period",
+      "period_end": 611,
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Became a successful cloth merchant like his father. Known for gentleness, modesty, and generosity.",
+      "category": "civic",
+      "source": "Ibn Sa'd"
     },
     {
       "year": 611,
@@ -49,40 +45,29 @@
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Accepted Islam at the invitation of Abu Bakr, becoming one of the earliest converts to the new faith. His conversion enraged his Umayyad kinsmen, particularly his uncle al-Hakam ibn Abi al-As, who attempted to dissuade him by force.",
+      "event": "Among the very earliest converts to Islam, brought in by Abu Bakr. Soon after, married the Prophet's daughter Ruqayya.",
       "category": "conversion",
       "source": "Ibn Ishaq; Ibn Sa'd"
-    },
-    {
-      "year": 612,
-      "age": 36,
-      "precision": "year",
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Married Ruqayyah, daughter of the Prophet Muhammad, strengthening the bond between the Umayyad convert and the nascent Muslim community. The couple would later be among the first to emigrate for the sake of their faith.",
-      "category": "marriage",
-      "source": "Ibn Sa'd; Al-Tabari"
     },
     {
       "year": 615,
       "age": 39,
       "precision": "year",
-      "location": "Aksum, Abyssinia",
-      "lat": 14.1210,
-      "lng": 38.7469,
-      "event": "Led the first migration to Abyssinia with his wife Ruqayyah, seeking refuge under the Christian Negus from intensifying Qurayshi persecution. The Prophet reportedly said that Uthman was the first man to emigrate with his family since the Prophet Lot.",
-      "category": "migration",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
-    },
-    {
-      "year": 616,
-      "age": 40,
-      "precision": "year",
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Returned from Abyssinia to Mecca after hearing false reports that the Quraysh had accepted Islam. Upon arrival, he found the persecution unchanged and conditions worsening for the Muslim community.",
+      "event": "Faced severe persecution from his own Umayyad kin. The Prophet instructed the persecuted Muslims to migrate to Abyssinia under the Christian Negus.",
+      "category": "persecution",
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 615,
+      "age": 39,
+      "precision": "year",
+      "location": "Abyssinia (Aksum)",
+      "lat": 14.13,
+      "lng": 38.72,
+      "event": "First migration to Abyssinia with his wife Ruqayya — among the very first group of emigrants. The Prophet said of him, 'Uthman is the first to emigrate with his family since Lot'.",
       "category": "migration",
       "source": "Ibn Ishaq"
     },
@@ -90,47 +75,35 @@
       "year": 616,
       "age": 40,
       "precision": "year",
-      "location": "Aksum, Abyssinia",
-      "lat": 14.1210,
-      "lng": 38.7469,
-      "event": "Undertook a second migration to Abyssinia as Qurayshi persecution resumed with greater intensity. He remained in the Negus's kingdom for several years, making him one of the Muslims who spent the longest time in exile.",
-      "category": "migration",
-      "source": "Ibn Ishaq; Ibn Sa'd"
-    },
-    {
-      "year": 619,
-      "age": 43,
-      "precision": "year",
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Returned from Abyssinia to Mecca during the broader return of the emigrants, arriving to find the Muslim community enduring the harsh Quraysh-imposed boycott of the Banu Hashim. The boycott's end and the deaths of Khadijah and Abu Talib soon reshaped the political landscape.",
+      "event": "Returned briefly to Mecca on false news that the Quraysh had accepted Islam.",
+      "category": "travel",
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 616,
+      "age": 40,
+      "precision": "period",
+      "period_end": 620,
+      "location": "Abyssinia (Aksum)",
+      "lat": 14.13,
+      "lng": 38.72,
+      "event": "Migrated to Abyssinia a second time as persecution resumed. Remained there until the general return.",
       "category": "migration",
-      "source": "Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 622,
-      "month": 9,
       "age": 46,
-      "precision": "month",
+      "precision": "year",
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Made the Hijra from Mecca to Medina with his wife Ruqayyah, joining the growing Muslim community in Yathrib. He was paired in brotherhood with Aws ibn Thabit of the Ansar and quickly established himself as a key financial supporter of the new community.",
+      "event": "Made the Hijra to Medina with Ruqayya.",
       "category": "migration",
-      "source": "Ibn Ishaq; Ibn Sa'd"
-    },
-    {
-      "year": 624,
-      "month": 3,
-      "age": 48,
-      "precision": "month",
-      "location": "Medina",
-      "lat": 24.4686,
-      "lng": 39.6142,
-      "event": "While the Muslims fought at Badr, Uthman remained in Medina at the Prophet's command to nurse his gravely ill wife Ruqayyah. She died the very day the victorious Muslims returned from the battle, and the Prophet assigned Uthman a full share of the spoils as though he had fought.",
-      "category": "loss",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 624,
@@ -139,33 +112,56 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Married Umm Kulthum, another daughter of the Prophet Muhammad, after Ruqayyah's death. This second prophetic marriage earned him the honorific Dhu al-Nurayn, 'Possessor of the Two Lights,' a distinction unique among the companions.",
+      "event": "Did not participate in the Battle of Badr: Ruqayya was gravely ill in Medina and the Prophet ordered him to stay and care for her. She died the day the Muslims returned victorious from Badr. The Prophet assigned him a share of the spoils as if he had fought.",
+      "category": "loss",
+      "source": "Ibn Ishaq; Bukhari"
+    },
+    {
+      "year": 624,
+      "age": 48,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Married another daughter of the Prophet, Umm Kulthum, after Ruqayya's death — earning his title Dhu al-Nurayn, 'Possessor of the Two Lights'.",
       "category": "marriage",
-      "source": "Ibn Sa'd; Al-Tabari"
+      "source": "Ibn Sa'd"
+    },
+    {
+      "year": 625,
+      "month": 3,
+      "age": 49,
+      "precision": "month",
+      "location": "Mount Uhud (north of Medina)",
+      "lat": 24.5039,
+      "lng": 39.6122,
+      "event": "Present at Uhud.",
+      "category": "battle",
+      "source": "Ibn Ishaq"
     },
     {
       "year": 627,
       "month": 3,
       "age": 51,
       "precision": "month",
-      "location": "Medina Trench",
-      "lat": 24.4836,
-      "lng": 39.6097,
-      "event": "Fought in the Battle of the Trench alongside the Muslim defenders as a coalition of Quraysh, Ghatafan, and other tribes besieged Medina. The defensive ditch strategy devised by Salman al-Farisi succeeded in repelling the confederate forces after a grueling siege.",
+      "location": "Medina (north trench)",
+      "lat": 24.475,
+      "lng": 39.61,
+      "event": "Fought at the Battle of the Trench.",
       "category": "battle",
-      "source": "Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 628,
       "month": 3,
       "age": 52,
       "precision": "month",
-      "location": "Hudaybiyyah",
-      "lat": 21.4417,
-      "lng": 39.6083,
-      "event": "Sent by the Prophet as his personal envoy into Mecca to negotiate with the Quraysh, chosen for his Umayyad kinship ties that offered him some protection. When false rumors spread that the Quraysh had killed him, the Prophet called for the Pledge of the Tree, in which the companions swore to fight to avenge Uthman.",
-      "category": "treaty",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Sent by the Prophet from Hudaybiyyah into Mecca as his envoy to the Quraysh because of his Umayyad connections. Rumours of his death in Mecca triggered the Pledge of the Tree (Bay'at al-Ridwan) in which the Muslims swore to fight to avenge him.",
+      "category": "diplomacy",
+      "source": "Ibn Ishaq; Bukhari"
     },
     {
       "year": 630,
@@ -175,21 +171,57 @@
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Participated in the bloodless conquest of Mecca as the Prophet's army of ten thousand entered the city and cleansed the Ka'ba of its idols. For Uthman, this marked his first return to his hometown as a free Muslim after years of exile and persecution.",
+      "event": "Participated in the conquest of Mecca.",
       "category": "conquest",
-      "source": "Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 630,
+      "month": 2,
+      "age": 54,
+      "precision": "month",
+      "location": "Hunayn valley",
+      "lat": 21.45,
+      "lng": 40.3,
+      "event": "Fought at Hunayn.",
+      "category": "battle",
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 630,
+      "month": 10,
+      "age": 54,
+      "precision": "month",
+      "location": "Tabuk",
+      "lat": 28.3998,
+      "lng": 36.57,
+      "event": "Financed one third of the Tabuk expedition personally — 900 camels, 100 horses, and a large sum of gold. The Prophet said that day, 'Nothing Uthman does after this day will harm him'.",
+      "category": "expedition",
+      "source": "Tirmidhi; Ibn Ishaq"
     },
     {
       "year": 632,
       "month": 3,
       "age": 56,
       "precision": "month",
-      "location": "Arafat",
-      "lat": 21.3547,
-      "lng": 39.9842,
-      "event": "Present at the Farewell Pilgrimage with the Prophet Muhammad, standing on the plain of Arafat as the Prophet delivered his final sermon to over a hundred thousand Muslims. This was the last major gathering before the Prophet's death three months later.",
+      "location": "Plain of Arafat",
+      "lat": 21.355,
+      "lng": 39.9839,
+      "event": "Present at the Farewell Pilgrimage.",
       "category": "pilgrimage",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 632,
+      "age": 56,
+      "precision": "period",
+      "period_end": 644,
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Senior companion and advisor during the caliphates of Abu Bakr and Umar.",
+      "category": "civic",
+      "source": "Tabari"
     },
     {
       "year": 644,
@@ -199,9 +231,21 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Elected third caliph by the six-man shura council appointed by the dying Umar ibn al-Khattab. Abd al-Rahman ibn Awf consulted the people of Medina for three days before offering the caliphate to Uthman, who accepted the condition of ruling by the Quran, the Sunnah, and the precedents of the first two caliphs.",
-      "category": "succession",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "event": "Chosen as the third caliph by the six-man shura Umar had appointed from his deathbed. Abd al-Rahman ibn Awf offered the caliphate first to Ali and then to Uthman; Uthman accepted the conditions.",
+      "category": "accession",
+      "source": "Tabari"
+    },
+    {
+      "year": 644,
+      "age": 68,
+      "precision": "period",
+      "period_end": 656,
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Ruled almost entirely from Medina. The conquests continued under his direction: the fleet victory at the Battle of the Masts (655) against Byzantium, campaigns across North Africa, and the consolidation of Persia.",
+      "category": "civic",
+      "source": "Tabari; Baladhuri"
     },
     {
       "year": 650,
@@ -210,55 +254,21 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Commissioned the compilation of a standard Quran codex under Zayd ibn Thabit to resolve growing disputes over variant readings in the expanding provinces. Copies of the Uthmanic codex were sent to the major garrison cities and all divergent manuscripts were ordered destroyed, establishing the textual basis of every Quran in use to this day.",
-      "category": "administration",
-      "source": "Sahih al-Bukhari; Al-Tabari"
-    },
-    {
-      "year": 649,
-      "age": 73,
-      "precision": "year",
-      "location": "Medina",
-      "lat": 24.4686,
-      "lng": 39.6142,
-      "event": "Ordered the expansion and renovation of the Prophet's Mosque in Medina, replacing the original mud-brick and palm-trunk structure with carved stone walls, a teak-wood ceiling, and expanded courtyards. This was the first major architectural upgrade to al-Masjid al-Nabawi since its founding.",
+      "event": "Ordered the standardisation of the Quran. Regional variations in recitation were threatening the community's unity; he had an authoritative codex compiled under Zayd ibn Thabit and sent copies to the main garrison cities, ordering all other copies burned. The Uthmanic codex became the textual basis of every Quran ever since.",
       "category": "civic",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "source": "Bukhari; Tabari"
     },
     {
-      "year": 644,
-      "age": 68,
+      "year": 655,
+      "age": 79,
       "precision": "period",
-      "period_end": 650,
+      "period_end": 656,
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Appointed governors across the rapidly expanding caliphate, favoring experienced administrators including several Umayyad kinsmen such as Mu'awiya in Syria and Abdullah ibn Abi Sarh in Egypt. These appointments secured administrative continuity but later drew accusations of nepotism.",
-      "category": "administration",
-      "source": "Al-Tabari; Ibn Sa'd"
-    },
-    {
-      "year": 654,
-      "age": 78,
-      "precision": "year",
-      "location": "Medina",
-      "lat": 24.4686,
-      "lng": 39.6142,
-      "event": "Growing unrest emerged from the provincial garrisons of Kufa, Basra, and Egypt, fueled by accusations of nepotism in gubernatorial appointments and perceived departures from the practices of Umar. Delegations of complainants began arriving in Medina to air grievances directly to the caliph.",
-      "category": "civic",
-      "source": "Al-Tabari; Ibn Sa'd"
-    },
-    {
-      "year": 656,
-      "month": 4,
-      "age": 80,
-      "precision": "month",
-      "location": "Medina",
-      "lat": 24.4686,
-      "lng": 39.6142,
-      "event": "Armed rebels from Egypt and Kufa arrived in Medina demanding Uthman's abdication, accusing him of deviating from the Sunnah and favoring his Umayyad relatives. Though senior companions attempted mediation, negotiations broke down after a forged letter allegedly ordering the execution of the Egyptian delegation was intercepted.",
-      "category": "siege",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "event": "The last years of his caliphate were troubled by complaints from the provincial garrisons — particularly Kufa, Basra, and Egypt — over the appointment of Umayyad kinsmen as governors. Rebels gathered in Medina demanding his abdication.",
+      "category": "crisis",
+      "source": "Tabari"
     },
     {
       "year": 656,
@@ -266,24 +276,11 @@
       "age": 80,
       "precision": "month",
       "location": "Medina",
-      "lat": 24.4670,
-      "lng": 39.6130,
-      "event": "The rebels besieged Uthman's house for approximately forty days, cutting off his water supply and preventing food deliveries. Despite offers of armed defense from companions like Ali, Zubayr, and Hasan ibn Ali, Uthman refused to allow Muslim blood to be shed on his account.",
-      "category": "siege",
-      "source": "Al-Tabari; Ibn Sa'd"
-    },
-    {
-      "year": 656,
-      "month": 6,
-      "day": 17,
-      "age": 80,
-      "precision": "day",
-      "location": "Medina",
-      "lat": 24.4670,
-      "lng": 39.6130,
-      "event": "Assassinated by rebels who stormed his house while he sat reading the Quran, his blood reportedly falling on the open mushaf. His wife Na'ila tried to shield him and lost several fingers to a sword blow. His death on 18 Dhul Hijjah 35 AH shattered the unity of the early Muslim community and ignited the First Fitna.",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Besieged in his own house in Medina by rebels from Egypt and Iraq. Refused to abdicate or to allow defenders to shed blood on his behalf. Killed on 17 June 656 while reading the Quran; drops of his blood are said to have fallen on the verse 'God will suffice you against them' (2:137). Buried quietly in Medina. His death opened the First Fitna.",
       "category": "death",
-      "source": "Al-Tabari; Ibn Sa'd; Sahih al-Bukhari"
+      "source": "Tabari; Ibn Sa'd"
     }
   ]
 }

@@ -216,10 +216,11 @@ function _fwBuildDOM(container) {
 // LOAD ALL DATA
 // ═══════════════════════════════════════════════════════════
 function _fwLoadAll(cb) {
-  if (_fwIndex.length > 0 && Object.keys(_fwFigures).length > 0) { cb(); return; }
-  fetch('data/islamic/journeys/index.json')
+  if (_fwIndex.length > 0 && Object.keys(_fwFigures).length === _fwIndex.length) { cb(); return; }
+  fetch('data/islamic/journeys/index.json?v=' + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(arr) {
+      console.log('[FOLLOW] index.json loaded:', arr.length, 'figures');
       _fwIndex = arr;
       var pending = arr.length;
       if (pending === 0) { cb(); return; }
@@ -256,7 +257,25 @@ function _fwBuildLeftRail() {
 function _fwBuildAddPanel() {
   var panel = document.getElementById('fw-add-panel');
   if (!panel) return;
+  console.log('[FOLLOW] Building add-panel with', _fwIndex.length, 'figures');
   panel.innerHTML = '';
+
+  // Search input
+  var search = document.createElement('input');
+  search.type = 'text';
+  search.id = 'fw-add-search';
+  search.placeholder = 'Search figures...';
+  search.onclick = function(ev) { ev.stopPropagation(); };
+  search.oninput = function() {
+    var q = search.value.toLowerCase();
+    var rows = panel.querySelectorAll('.fw-dd-row');
+    rows.forEach(function(row) {
+      var name = row.querySelector('.fw-dd-name');
+      var match = !q || (name && name.textContent.toLowerCase().indexOf(q) !== -1);
+      row.style.display = match ? '' : 'none';
+    });
+  };
+  panel.appendChild(search);
 
   _fwIndex.forEach(function(item) {
     var conf = _fwConfCache[item.file];

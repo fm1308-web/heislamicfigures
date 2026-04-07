@@ -1,0 +1,142 @@
+{
+  "person": "Ahmad Sirhindi",
+  "slug": "F0190",
+  "lifespan": "1564-1624",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Shaykh Ahmad Sirhindi, known as Mujaddid Alf Thani ('Renewer of the Second Millennium'), is documented in his own voluminous Maktubat (Collected Letters), in the hagiography Hadarat al-Quds by his disciple Badr al-Din Sirhindi, and in Mughal court chronicles. His birth in Sirhind, his education, his initiation into the Naqshbandi order under Khwaja Baqi Billah in Delhi, his imprisonment by Emperor Jahangir at Gwalior Fort, and his death at Sirhind are all firmly established by year. Some dates rest on a single hagiographical source."
+  },
+  "sources": [
+    "Ahmad Sirhindi, Maktubat",
+    "Badr al-Din Sirhindi, Hadarat al-Quds",
+    "Jahangir, Tuzuk-i Jahangiri",
+    "Yohanan Friedmann, Shaykh Ahmad Sirhindi (1971)",
+    "Encyclopaedia of Islam, 2nd edition, 'Sirhindi'"
+  ],
+  "journey": [
+    {
+      "year": 1564,
+      "age": 0,
+      "precision": "year",
+      "location": "Sirhind",
+      "lat": 30.6438,
+      "lng": 76.3814,
+      "event": "Born on 14 Shawwal 971 AH (26 May 1564) in Sirhind in the Punjab, then a flourishing town on the imperial road between Delhi and Lahore. His father Shaykh Abd al-Ahad is a respected Sufi of the Chishti and Qadiri orders, and the family traces descent from Caliph Umar.",
+      "category": "birth",
+      "source": "Hadarat al-Quds; Friedmann"
+    },
+    {
+      "year": 1574,
+      "age": 10,
+      "precision": "period",
+      "location": "Sirhind",
+      "lat": 30.6438,
+      "lng": 76.3814,
+      "event": "Receives his first education from his father, memorising the Quran and beginning the study of Arabic, hadith, and the rational sciences. Shows exceptional intellectual gifts from an early age and is said to have memorised many of the standard texts before his teens.",
+      "category": "childhood",
+      "source": "Hadarat al-Quds"
+    },
+    {
+      "year": 1582,
+      "age": 18,
+      "precision": "period",
+      "location": "Sialkot",
+      "lat": 32.4945,
+      "lng": 74.5229,
+      "event": "Travels to Sialkot to study advanced rational sciences (logic, philosophy, kalam) with the eminent scholar Mawlana Kamal al-Din Kashmiri. Also studies hadith with Shaykh Yaqub Sarfi Kashmiri. Becomes known as a brilliant young scholar of the manqulat and maqulat (transmitted and rational sciences).",
+      "category": "travel",
+      "source": "Hadarat al-Quds; Friedmann"
+    },
+    {
+      "year": 1585,
+      "age": 21,
+      "precision": "year",
+      "location": "Agra",
+      "lat": 27.1767,
+      "lng": 78.0081,
+      "event": "Around 1585 visits the Mughal court at Agra, then under Emperor Akbar. Briefly attached to Akbar's court historians and assists Abu al-Fazl and Faizi with their literary projects, but grows uneasy with the religious eclecticism of the court and the new Din-i Ilahi promoted by Akbar.",
+      "category": "civic",
+      "source": "Friedmann"
+    },
+    {
+      "year": 1599,
+      "age": 35,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "Travels to Delhi and meets the Naqshbandi master Khwaja Baqi Billah, who has recently come from Central Asia bringing the Naqshbandi-Mujaddidi line to India. After a brief but intense period of training, receives the khilafat (succession-licence) from Baqi Billah and is sent back to Sirhind to spread the order.",
+      "category": "conversion",
+      "source": "Maktubat; Hadarat al-Quds"
+    },
+    {
+      "year": 1603,
+      "age": 39,
+      "precision": "year",
+      "location": "Sirhind",
+      "lat": 30.6438,
+      "lng": 76.3814,
+      "event": "Establishes his khanqah at Sirhind. After Khwaja Baqi Billah dies in 1603, becomes the leading Naqshbandi master in India. Begins to attract many disciples, including Mughal nobles and ulama. Composes the Maktubat - a series of letters to his disciples laying out his understanding of the Sufi path - which becomes one of the most influential texts of later Indian Sufism.",
+      "category": "civic",
+      "source": "Maktubat"
+    },
+    {
+      "year": 1610,
+      "age": 46,
+      "precision": "period",
+      "location": "Sirhind",
+      "lat": 30.6438,
+      "lng": 76.3814,
+      "event": "Articulates his distinctive doctrine of wahdat al-shuhud ('unity of witnessing') as a corrective to the wahdat al-wujud ('unity of being') associated with Ibn Arabi, arguing that the apparent identity of God and creation in mystical experience is a subjective state not an ontological reality. The doctrine becomes a major theme of Indian Sufi debate for centuries afterward.",
+      "category": "spiritual",
+      "source": "Maktubat; Friedmann"
+    },
+    {
+      "year": 1619,
+      "age": 55,
+      "precision": "year",
+      "location": "Gwalior",
+      "lat": 26.2183,
+      "lng": 78.1828,
+      "event": "Summoned to court by Emperor Jahangir, who is suspicious of his growing influence and offended by reports of his claims to spiritual authority. After an audience at which Sirhindi refuses to perform the customary prostration (sijda) before the emperor, is imprisoned in the great fortress of Gwalior. Spends about a year there, during which he is said to convert many of the prison's inmates and guards to a more rigorous Islamic practice.",
+      "category": "persecution",
+      "source": "Tuzuk-i Jahangiri; Hadarat al-Quds"
+    },
+    {
+      "year": 1620,
+      "age": 56,
+      "precision": "year",
+      "location": "Agra",
+      "lat": 27.1767,
+      "lng": 78.0081,
+      "event": "Released from Gwalior in 1620 and brought to the imperial camp. Reconciled with Jahangir, who keeps him at court for some time as an honoured guest. Some sources claim that the emperor becomes a disciple, though this is contested by modern historians.",
+      "category": "civic",
+      "source": "Tuzuk-i Jahangiri; Friedmann"
+    },
+    {
+      "year": 1623,
+      "age": 59,
+      "precision": "year",
+      "location": "Sirhind",
+      "lat": 30.6438,
+      "lng": 76.3814,
+      "event": "Returns finally to Sirhind. Spends his last years instructing his sons - especially Khwaja Muhammad Masum - and his closest disciples, who will carry the Naqshbandi-Mujaddidi line across India, Central Asia, and the Ottoman lands.",
+      "category": "civic",
+      "source": "Hadarat al-Quds"
+    },
+    {
+      "year": 1624,
+      "age": 60,
+      "precision": "year",
+      "location": "Sirhind",
+      "lat": 30.6438,
+      "lng": 76.3814,
+      "event": "Dies in Sirhind on 28 Safar 1034 AH (10 December 1624), aged 60. Buried at Sirhind, where his tomb (Rauza Sharif) becomes one of the most important Sufi shrines in South Asia, visited especially by Naqshbandi pilgrims from Central Asia and Turkey. His doctrine of religious renewal and his writings make him one of the most influential figures in the history of Indian Islam.",
+      "category": "death",
+      "source": "Hadarat al-Quds; Friedmann"
+    }
+  ]
+}

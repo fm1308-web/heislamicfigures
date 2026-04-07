@@ -1,0 +1,155 @@
+{
+  "person": "Imam al-Bukhari",
+  "slug": "F0774",
+  "lifespan": {
+    "birth": 810,
+    "death": 870
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "medium",
+    "disclosure": "Al-Bukhari's life is one of the best documented of any 9th-century scholar because his Sahih became the most authoritative book in Sunni Islam after the Quran and his biography was carefully recorded by his pupils. Dhahabi's Siyar gives us his birth in Bukhara, his early loss of his father, his hajj at sixteen, his vast travels in search of hadith from Khurasan to Egypt, and his exile and death near Samarkand. Travel dates are sometimes only year-precise."
+  },
+  "sources": [
+    "Al-Dhahabi, Siyar A'lam al-Nubala",
+    "Al-Khatib al-Baghdadi, Tarikh Baghdad",
+    "Ibn Hajar al-Asqalani, Hady al-Sari (introduction to Fath al-Bari)",
+    "Scott Lucas, Constructive Critics, Hadith Literature, and the Articulation of Sunni Islam (2004)"
+  ],
+  "journey": [
+    {
+      "year": 810,
+      "age": 0,
+      "precision": "year",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "Born in Bukhara on 13 Shawwal 194 AH (July 810). His full name is Muhammad ibn Isma'il al-Bukhari. His father Isma'il, a respected hadith scholar, dies while Muhammad is a small child.",
+      "category": "birth",
+      "source": "Dhahabi; Ibn Hajar"
+    },
+    {
+      "year": 815,
+      "age": 5,
+      "precision": "year",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "His father's death leaves Bukhari and his brother in the care of their pious mother, who oversees his early education. He loses his eyesight as a small child; his mother prays for him constantly until — by tradition — she sees the prophet Ibrahim in a dream telling her that God has restored her son's sight.",
+      "category": "loss",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 820,
+      "age": 10,
+      "precision": "year",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "Begins memorising hadith at the age of ten. His prodigious memory becomes legendary in childhood — he is said to have corrected his teacher in a public lesson at the age of eleven and to have memorised more than 70,000 hadith with their full chains by the age of sixteen.",
+      "category": "childhood",
+      "source": "Dhahabi; Ibn Hajar"
+    },
+    {
+      "year": 826,
+      "age": 16,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Travels with his mother and brother on the hajj. After the pilgrimage his mother and brother return to Bukhara but Bukhari stays behind in Mecca to study with the hadith masters of the Hijaz.",
+      "category": "pilgrimage",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 830,
+      "age": 20,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Moves to Medina, where he begins composing his early historical works on hadith transmitters — the Tarikh al-Kabir and Tarikh al-Saghir — by moonlight at the Prophet's grave.",
+      "category": "spiritual",
+      "source": "Ibn Hajar"
+    },
+    {
+      "year": 835,
+      "age": 25,
+      "precision": "period",
+      "location": "Basra",
+      "lat": 30.5085,
+      "lng": 47.7804,
+      "event": "Begins his great rihla (hadith-gathering journey) through the Islamic world. He travels to Basra, Kufa, Baghdad, Damascus, Aleppo, Hims, Caesarea, Egypt, and back across Iraq and Persia, collecting hadith from more than a thousand teachers.",
+      "category": "travel",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 840,
+      "age": 30,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Spends extended periods in Baghdad, where his arrival is awaited as an event. The Baghdadi hadith scholars test him by deliberately mixing up the chains of a hundred hadith and reciting them — Bukhari listens, then restores every one of them to its correct chain. The story makes his name across the empire.",
+      "category": "spiritual",
+      "source": "Khatib al-Baghdadi; Dhahabi"
+    },
+    {
+      "year": 850,
+      "age": 40,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Begins composing his Al-Jami al-Sahih in Mecca, where he prays for guidance at the multazam. He continues working on the book for sixteen years, reportedly performing two rak'ats of prayer before including any hadith. He sifts roughly 600,000 hadith down to about 7,400 (around 2,600 unique).",
+      "category": "spiritual",
+      "source": "Dhahabi; Ibn Hajar"
+    },
+    {
+      "year": 860,
+      "age": 50,
+      "precision": "period",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "Settles for some years in Nishapur, the great Khurasani capital, and lectures to enthusiastic crowds. His pupil Muslim ibn al-Hajjaj is among the foremost devotees and will go on to compile the second of the two Sahihs.",
+      "category": "spiritual",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 864,
+      "age": 54,
+      "precision": "year",
+      "location": "Nishapur",
+      "lat": 36.2133,
+      "lng": 58.7958,
+      "event": "A doctrinal controversy breaks out over the nature of the recitation of the Quran. The leading Nishapuri scholar Muhammad al-Dhuhli accuses Bukhari of holding the heretical view that 'the recitation is created'. Bukhari refuses to retract and his lectures are boycotted; he leaves Nishapur for Bukhara.",
+      "category": "persecution",
+      "source": "Dhahabi; Ibn Hajar"
+    },
+    {
+      "year": 868,
+      "age": 58,
+      "precision": "year",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "Returns to Bukhara to a hero's welcome. But the local Tahirid governor, Khalid ibn Ahmad, asks him to come to the palace to give private lessons to the governor's children. Bukhari refuses, insisting that knowledge must come to the mosque. The angry governor banishes him from the city.",
+      "category": "rejection",
+      "source": "Dhahabi"
+    },
+    {
+      "year": 870,
+      "age": 60,
+      "precision": "year",
+      "location": "Khartank",
+      "lat": 39.71,
+      "lng": 66.95,
+      "event": "Takes refuge in the small village of Khartank near Samarkand, at the home of relatives. He dies there on the night of Eid al-Fitr, 1 Shawwal 256 AH (31 August 870). He is buried at Khartank; his shrine, much enlarged by later Soviet and post-Soviet renovations, remains a major pilgrimage site outside Samarkand.",
+      "category": "death",
+      "source": "Dhahabi; Ibn Hajar"
+    }
+  ]
+}

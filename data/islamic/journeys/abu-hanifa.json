@@ -1,0 +1,144 @@
+{
+  "person": "Abu Hanifa",
+  "slug": "F0772",
+  "lifespan": {
+    "birth": 699,
+    "death": 767
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Abu Hanifa, founder of the Hanafi school, lived almost his whole life in Kufa as a silk merchant and teacher. The early Hanafi biographers (Saymari, Sayrafi, and later Ibn Khallikan and Khatib al-Baghdadi) preserve his life in some detail, though Khatib al-Baghdadi is hostile. The major events — his Persian client origin, his refusal of judicial office under both Umayyads and Abbasids, his imprisonment, his death in Baghdad in 767 — are firm."
+  },
+  "sources": [
+    "Al-Khatib al-Baghdadi, Tarikh Baghdad (11th c.)",
+    "Al-Saymari, Akhbar Abi Hanifa wa Ashabihi",
+    "Wael Hallaq, The Origins and Evolution of Islamic Law (2005)",
+    "Christopher Melchert, The Formation of the Sunni Schools of Law (1997)"
+  ],
+  "journey": [
+    {
+      "year": 699,
+      "age": 0,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Born in Kufa in 80 AH. His full name is Nu'man ibn Thabit. His grandfather, according to most accounts, was a Persian from Kabul or Anbar who was taken captive in the early conquests and freed; the family are mawali (non-Arab clients) of the Arab tribe of Taym Allah ibn Tha'laba.",
+      "category": "birth",
+      "source": "Khatib al-Baghdadi"
+    },
+    {
+      "year": 715,
+      "age": 16,
+      "precision": "decade",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Inherits or sets up his father's silk-weaving and silk-trading business in the Kufa bazaar. He will run this business for the rest of his life and never accept payment for his teaching.",
+      "category": "civic",
+      "source": "Khatib al-Baghdadi"
+    },
+    {
+      "year": 722,
+      "age": 23,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Becomes the disciple of Hammad ibn Abi Sulayman, the leading jurist of Kufa, after a chance meeting with the great theologian al-Sha'bi who advises him to seek knowledge. He studies with Hammad for eighteen years.",
+      "category": "spiritual",
+      "source": "Khatib al-Baghdadi; Saymari"
+    },
+    {
+      "year": 730,
+      "age": 31,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj for the first time. He will return to Mecca many times in his life and there meets the great hadith scholars of the Hijaz, including Ata ibn Abi Rabah and the descendants of the Prophet's family.",
+      "category": "pilgrimage",
+      "source": "Saymari"
+    },
+    {
+      "year": 740,
+      "age": 41,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "Hammad dies. Abu Hanifa, by acclamation of the other students, succeeds him as the chief jurist of Kufa. His distinctive method — case-by-case reasoning (ra'y) and analogy (qiyas) applied to a base of hadith and Companion practice — takes shape.",
+      "category": "loss",
+      "source": "Khatib al-Baghdadi"
+    },
+    {
+      "year": 748,
+      "age": 49,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "The Umayyad governor of Iraq, Yazid ibn Umar ibn Hubayra, summons Abu Hanifa and orders him to accept the office of qadi (judge) of Kufa. Abu Hanifa refuses. The governor has him beaten and imprisoned. He is released only after promising the governor he will think the matter over.",
+      "category": "persecution",
+      "source": "Khatib al-Baghdadi"
+    },
+    {
+      "year": 750,
+      "age": 51,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "The Abbasid revolution overthrows the Umayyads. Abu Hanifa initially has hopes for the new dynasty but his hopes are disappointed when the new caliph al-Mansur turns increasingly autocratic.",
+      "category": "civic",
+      "source": "Khatib al-Baghdadi"
+    },
+    {
+      "year": 760,
+      "age": 61,
+      "precision": "period",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "His teaching circle in the Kufa mosque is at its peak. His most important pupils — Abu Yusuf (later chief judge of the empire) and Muhammad al-Shaybani — gather his oral teachings and shape them into the body of Hanafi law that will spread across the eastern Islamic world.",
+      "category": "spiritual",
+      "source": "Saymari; Melchert (1997)"
+    },
+    {
+      "year": 762,
+      "age": 63,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0289,
+      "lng": 44.4039,
+      "event": "When the Alid Ibrahim ibn Abdallah revolts against the Abbasid caliph al-Mansur, Abu Hanifa privately supports the rebellion and issues opinions that hinder the recruitment of soldiers against him. The caliph remembers.",
+      "category": "crisis",
+      "source": "Khatib al-Baghdadi"
+    },
+    {
+      "year": 763,
+      "age": 64,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Caliph al-Mansur summons Abu Hanifa to the new capital Baghdad and orders him to take the post of qadi al-qudat (chief judge) of the empire. Abu Hanifa refuses, saying he is not fit for the office and that if he accepted he would have to lie. The caliph, enraged, has him imprisoned.",
+      "category": "persecution",
+      "source": "Khatib al-Baghdadi; Saymari"
+    },
+    {
+      "year": 767,
+      "age": 68,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Dies in prison in Baghdad in 150 AH, possibly from poisoning on the caliph's order. He is buried in the Khayzuran cemetery on the east bank of the Tigris. His shrine — al-A'zam ('the Greatest') — gives the surrounding district of Baghdad its modern name. The Hanafi school becomes the official rite of the Abbasids, the Ottomans, and the Mughals, and remains the most widely followed Sunni school in the world.",
+      "category": "death",
+      "source": "Khatib al-Baghdadi"
+    }
+  ]
+}

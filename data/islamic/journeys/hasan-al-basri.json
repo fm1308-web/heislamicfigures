@@ -1,0 +1,34 @@
+{
+  "person": "Hasan al-Basri",
+  "slug": "F0666",
+  "lifespan": {"birth": 642, "death": 728},
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Hasan al-Basri's geographic life is small. He was born in Medina, his family moved to Basra during his childhood, and Basra was his home for the rest of his eighty-six years. Apart from short periods of service or fighting on the eastern frontier and a stint in Khurasan, he stayed put. The hagiographical tradition around him is enormous (Ibn Sa'd, Ibn al-Jawzi, Attar) but it focuses on his sayings and his asceticism, not on dates of movement. As a result this file is sparse — perhaps fifteen entries — and most are at year-precision or period-precision. The grade is C because density is low, not because the dates are wrong."
+  },
+  "sources": [
+    "Ibn Sa'd, Kitab al-Tabaqat al-Kubra (vol. 7)",
+    "Abu Nu'aym al-Isfahani, Hilyat al-Awliya (vol. 2)",
+    "Ibn al-Jawzi, Adab al-Hasan al-Basri",
+    "Hans Heinrich Schaeder, 'Hasan al-Basri' in Encyclopaedia of Islam",
+    "Suleiman Ali Mourad, Early Islam between Myth and History (2006)"
+  ],
+  "journey": [
+    {"year": 642, "age": 0, "precision": "year", "location": "Medina", "lat": 24.4672, "lng": 39.6111, "event": "Born in Medina in 642 (21 AH), two years before the assassination of Caliph Umar. His father Yasar is a freed slave from Maysan in southern Iraq, captured during the early conquests; his mother Khayra is said to have been a servant in the household of the Prophet's wife Umm Salama, who reputedly nursed the infant Hasan when his mother was away.", "category": "birth", "source": "Ibn Sa'd; Abu Nu'aym"},
+    {"year": 645, "age": 3, "precision": "year", "location": "Wadi al-Qura", "lat": 26.5667, "lng": 37.9333, "event": "Spends his earliest years in Wadi al-Qura, north of Medina, where his family is part of the Muslim community in the Hijaz.", "category": "childhood", "source": "Ibn Sa'd"},
+    {"year": 657, "age": 15, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Family moves to Basra, the new garrison city in southern Iraq founded by Caliph Umar twenty years earlier. Basra becomes Hasan's home for the rest of his life and the city most associated with his name.", "category": "migration", "source": "Ibn Sa'd; Mourad"},
+    {"year": 663, "age": 21, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Studies with the surviving companions of the Prophet who have settled in Basra and Kufa. He claims to have heard hadith from Anas ibn Malik, Abu Bakra, Imran ibn Husayn, and others.", "category": "spiritual", "source": "Ibn Sa'd; Hilyat al-Awliya"},
+    {"year": 670, "age": 28, "precision": "year", "location": "Kabul", "lat": 34.5553, "lng": 69.2075, "event": "Serves with the Muslim armies on the eastern frontier in Khurasan and as far as Kabul, taking part in the campaigns of expansion under the early Umayyads. He later draws on this military experience in his sermons against worldliness.", "category": "expedition", "source": "Ibn Sa'd; Schaeder"},
+    {"year": 680, "age": 38, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "By his late thirties, he has emerged as the most respected scholar and preacher of Basra. The year of Karbala — the killing of the Prophet's grandson Husayn — is also the year his public preaching takes on its great moral seriousness.", "category": "spiritual", "source": "Mourad; Ibn al-Jawzi"},
+    {"year": 685, "age": 43, "precision": "period", "period_end": 705, "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Becomes the central figure in the religious and intellectual life of Basra. His circle in the great mosque of Basra is attended by the future founders of theological schools — including Wasil ibn Ata, who will break from him to found the Mu'tazila. His sermons on death, accountability and the love of God set the tone for nascent Islamic mysticism.", "category": "spiritual", "source": "Ibn Sa'd; Hilyat al-Awliya"},
+    {"year": 695, "age": 53, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "His relationship with the Umayyad governor of Iraq, the brutal al-Hajjaj ibn Yusuf, is famously fraught. Hasan publicly criticises al-Hajjaj's tyranny and high taxes; al-Hajjaj for years tries to silence him without quite daring to kill him. Hasan reportedly spends periods in hiding when the governor's mood turns dangerous.", "category": "crisis", "source": "Ibn Sa'd; Mourad"},
+    {"year": 705, "age": 63, "precision": "period", "period_end": 717, "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Continues teaching from the Basra mosque under the caliphates of al-Walid and Sulayman. His circle now includes most of the great names of the next generation — including Malik ibn Dinar, Ayyub al-Sakhtiyani, and Wasil ibn Ata.", "category": "spiritual", "source": "Hilyat al-Awliya"},
+    {"year": 717, "age": 75, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Caliph Umar ibn Abd al-Aziz comes to power and writes to Hasan in Basra asking for advice on governing justly. Hasan replies with letters that survive — the first prose works on political ethics in Islam, urging the caliph to remember death and be just to the weak.", "category": "diplomacy", "source": "Ibn Abd al-Hakam; Mourad"},
+    {"year": 720, "age": 78, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Briefly appointed qadi (judge) of Basra by the new caliph Yazid II — but resigns the post after a short time, considering judicial office too dangerous to his soul.", "category": "civic", "source": "Ibn Sa'd"},
+    {"year": 725, "age": 83, "precision": "period", "period_end": 728, "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Final years of teaching in Basra. His sermons grow shorter and more urgent as his strength fails. He is reported to weep often when speaking of the next world.", "category": "spiritual", "source": "Hilyat al-Awliya; Ibn al-Jawzi"},
+    {"year": 728, "age": 86, "precision": "year", "location": "Basra", "lat": 30.5085, "lng": 47.7804, "event": "Dies in Basra in October 728 (110 AH) aged eighty-six. The funeral is so vast that the entire population of Basra reportedly attends — and for the first time in living memory, no congregational afternoon prayer is held in the Basra mosque, because every man in the city is at the burial.", "category": "death", "source": "Ibn Sa'd; Hilyat al-Awliya"}
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "person": "Ibn Hazm",
+  "slug": "F0737",
+  "lifespan": "994-1064",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Abu Muhammad Ali ibn Hazm of Cordoba is unusually well documented because he wrote autobiographical passages in his works, particularly in the famous Tawq al-Hamama (The Ring of the Dove). His personal experience of the fall of the Umayyads, his repeated political ups and downs, and his eventual exile to the Sierra Morena estate of Manta Lisham are described in his own words. The major dates are reasonably firm by year. The journey is concentrated in Cordoba, Almeria, Valencia, Jativa, and Manta Lisham, all in southern Spain."
+  },
+  "sources": [
+    "Ibn Hazm, Tawq al-Hamama (The Ring of the Dove)",
+    "Ibn Hazm, al-Fisal fi'l-Milal wa'l-Ahwa wa'l-Nihal",
+    "Ibn Bashkuwal, al-Sila",
+    "Roger Arnaldez, Ibn Hazm de Cordoue",
+    "Encyclopaedia of Islam, 2nd ed., 'Ibn Hazm'"
+  ],
+  "journey": [
+    {
+      "day": 7,
+      "month": 11,
+      "year": 994,
+      "age": 0,
+      "precision": "day",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "Born in Cordoba on 30 Ramadan 384 AH (7 November 994), in the household of his father Ahmad, a senior official in the Umayyad government under the chamberlain al-Mansur ibn Abi Amir. Grows up in the great palace city at the height of its power.",
+      "category": "birth",
+      "source": "Ibn Hazm, Tawq al-Hamama"
+    },
+    {
+      "year": 1000,
+      "age": 6,
+      "precision": "period",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "Spends his early childhood in the harem section of the family palace, raised among the women of the household. He later credits this experience with giving him an unusually intimate understanding of women's psychology, which becomes one of the themes of Tawq al-Hamama.",
+      "category": "childhood",
+      "source": "Ibn Hazm, Tawq al-Hamama"
+    },
+    {
+      "year": 1009,
+      "age": 14,
+      "precision": "year",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "In 1009 the fitna (civil war) breaks out in al-Andalus. Berber troops sack Madinat al-Zahra and the suburbs of Cordoba; many Umayyad palaces are looted and burned. The family of Ibn Hazm loses much of its property and influence.",
+      "category": "loss",
+      "source": "Ibn Hazm, Tawq al-Hamama"
+    },
+    {
+      "year": 1012,
+      "age": 18,
+      "precision": "year",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "His father Ahmad dies in 1012, at the height of the chaos. The young Ibn Hazm is left as the head of a household whose fortunes are bound to the failing Umayyad cause. He begins his lifelong commitment to the literal religious tradition (Zahirism) and to a learned vocation.",
+      "category": "loss",
+      "source": "Tawq al-Hamama; Ibn Bashkuwal"
+    },
+    {
+      "year": 1013,
+      "age": 19,
+      "precision": "year",
+      "location": "Almeria",
+      "lat": 36.8410,
+      "lng": -2.4670,
+      "event": "In 1013, after the second Berber sack of Cordoba, the family flees the city. Ibn Hazm goes to Almeria on the southeastern Mediterranean coast, then under the rule of an Umayyad ally. He lives there for several years, in love (so he tells us in Tawq al-Hamama) with a slave girl of his household.",
+      "category": "migration",
+      "source": "Ibn Hazm, Tawq al-Hamama"
+    },
+    {
+      "year": 1016,
+      "age": 22,
+      "precision": "year",
+      "location": "Hisn al-Qasr",
+      "lat": 36.7,
+      "lng": -2.3,
+      "event": "When the political winds in Almeria turn against the Umayyads, is briefly imprisoned and then expelled. Takes refuge in the small fortress of Hisn al-Qasr in the territory of Aznalcázar.",
+      "category": "loss",
+      "source": "Tawq al-Hamama"
+    },
+    {
+      "year": 1018,
+      "age": 24,
+      "precision": "year",
+      "location": "Valencia",
+      "lat": 39.4699,
+      "lng": -0.3763,
+      "event": "Reaches Valencia, where the rump Umayyad pretender Abd al-Rahman IV al-Murtada has set up his court. Joins his service as a vizier and fights at the Battle of Granada in 1018, where Abd al-Rahman is killed. Ibn Hazm is captured but soon released.",
+      "category": "battle",
+      "source": "Ibn Bashkuwal, al-Sila"
+    },
+    {
+      "year": 1019,
+      "age": 25,
+      "precision": "year",
+      "location": "Jativa",
+      "lat": 38.9911,
+      "lng": -0.5181,
+      "event": "Around 1019 settles in Jativa (Xativa), south of Valencia. Here, in his late twenties, composes the famous Tawq al-Hamama fi'l-Ulfa wa'l-Ullaf (The Ring of the Dove on Love and Lovers), a treatise on love that interweaves theory with autobiographical anecdotes from his Cordoba and Almeria years.",
+      "category": "civic",
+      "source": "Ibn Hazm, Tawq al-Hamama (introduction)"
+    },
+    {
+      "year": 1023,
+      "age": 29,
+      "precision": "year",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "When Abd al-Rahman V al-Mustazhir is briefly proclaimed Umayyad caliph in Cordoba in 1023, Ibn Hazm returns to the city and is appointed his vizier. The reign lasts only weeks before al-Mustazhir is murdered. Ibn Hazm is again imprisoned, and on release withdraws from politics permanently.",
+      "category": "civic",
+      "source": "Ibn Bashkuwal; Encyclopaedia of Islam"
+    },
+    {
+      "year": 1030,
+      "age": 36,
+      "precision": "period",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "From the early 1030s devotes himself entirely to scholarship. Publicly adopts the Zahiri (literalist) school of jurisprudence and becomes its most famous defender. Engages in fierce written and oral disputes with the Maliki establishment that dominates Andalusian religious life.",
+      "category": "civic",
+      "source": "Encyclopaedia of Islam"
+    },
+    {
+      "year": 1040,
+      "age": 46,
+      "precision": "period",
+      "location": "Cordoba",
+      "lat": 37.8882,
+      "lng": -4.7794,
+      "event": "Composes his great work of comparative religion al-Fisal fi'l-Milal wa'l-Ahwa wa'l-Nihal (The Decisive Word on Religious Communities, Sects and Doctrines), one of the earliest systematic studies of comparative religion in any language. Discusses Judaism, Christianity, Zoroastrianism, and the various Muslim sects.",
+      "category": "civic",
+      "source": "Ibn Hazm, al-Fisal"
+    },
+    {
+      "year": 1050,
+      "age": 56,
+      "precision": "year",
+      "location": "Seville",
+      "lat": 37.3886,
+      "lng": -5.9823,
+      "event": "His sharp polemics against the Maliki jurists and his Zahiri positions make him many enemies among the religious establishment. The Abbadid ruler of Seville, al-Mu'tadid, orders Ibn Hazm's books burned in public in the marketplace of Seville. Ibn Hazm responds with characteristic defiance.",
+      "category": "persecution",
+      "source": "Ibn Bashkuwal; Encyclopaedia of Islam"
+    },
+    {
+      "year": 1055,
+      "age": 61,
+      "precision": "period",
+      "location": "Manta Lisham",
+      "lat": 37.5,
+      "lng": -5.0,
+      "event": "Withdraws to his family's ancestral estate at Manta Lisham (modern Casa Blanca, near Niebla in the province of Huelva), in the western Sierra Morena. Lives the rest of his life there in semi-retirement, writing, teaching a small circle of students, and tending the property.",
+      "category": "civic",
+      "source": "Ibn Bashkuwal, al-Sila"
+    },
+    {
+      "day": 15,
+      "month": 8,
+      "year": 1064,
+      "age": 70,
+      "precision": "day",
+      "location": "Manta Lisham",
+      "lat": 37.5,
+      "lng": -5.0,
+      "event": "Dies at Manta Lisham on 28 Sha'ban 456 AH (15 August 1064), aged about 71. He leaves behind, by the testimony of his son al-Fadl, about 400 works on jurisprudence, theology, history, ethics, and love - of which only a small fraction (perhaps 40 works) survives. He is the most prolific Andalusian author of his age.",
+      "category": "death",
+      "source": "Ibn Bashkuwal; Encyclopaedia of Islam"
+    }
+  ]
+}

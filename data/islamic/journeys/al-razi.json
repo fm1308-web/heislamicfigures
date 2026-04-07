@@ -1,0 +1,155 @@
+{
+  "person": "Al-Razi (Rhazes)",
+  "slug": "F0320",
+  "lifespan": {
+    "birth": 854,
+    "death": 925
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Al-Razi's life is documented by the medical biographer Ibn Abi Usaybi'a and by the philosopher al-Biruni, who compiled a famous catalogue of his ~184 works. Birth and death years are well attested; the chronology of his hospital appointments in Rayy and Baghdad is reasonably secure but not always month-precise. The story of his blindness late in life comes from multiple early sources but the exact year is debated."
+  },
+  "sources": [
+    "Ibn Abi Usaybi'a, Uyun al-Anba",
+    "Al-Biruni, Risala fi Fihrist Kutub al-Razi",
+    "Lenn E. Goodman, 'Al-Razi' in Encyclopedia of Islam (2nd ed.)",
+    "Peter Adamson, Philosophy in the Islamic World (2016)"
+  ],
+  "journey": [
+    {
+      "year": 854,
+      "age": 0,
+      "precision": "year",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Born in the city of Rayy (just south of modern Tehran), then a major Persian centre under Abbasid rule. His full name is Abu Bakr Muhammad ibn Zakariya al-Razi.",
+      "category": "birth",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 870,
+      "age": 16,
+      "precision": "period",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Studies music, alchemy, and philosophy as a young man. According to later traditions he is a competent lute player and may have made his living briefly as a money-changer before turning to medicine.",
+      "category": "childhood",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 884,
+      "age": 30,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Travels to Baghdad to study medicine, possibly under a pupil of Hunayn ibn Ishaq. He observes patients in the new Baghdad bimaristan (hospital) and begins his clinical practice.",
+      "category": "travel",
+      "source": "Goodman EI2"
+    },
+    {
+      "year": 890,
+      "age": 36,
+      "precision": "period",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Returns to Rayy and is appointed director of its hospital by the local ruler, the Samanid governor Mansur ibn Ishaq, to whom he later dedicates his Kitab al-Mansuri (Liber Almansoris in Latin).",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 895,
+      "age": 41,
+      "precision": "period",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Conducts his famous experiment to choose a site for a new hospital: he hangs strips of meat in different quarters of the city and observes which rot most slowly, then builds the hospital where the air proves cleanest.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 902,
+      "age": 48,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Called back to Baghdad by the caliph al-Muktafi to direct the great Mu'tadidi hospital, the leading medical centre of the Abbasid empire. He combines administration with teaching and writing.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a; Goodman EI2"
+    },
+    {
+      "year": 905,
+      "age": 51,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Composes his treatise Kitab al-Jadari wa'l-Hasba (On Smallpox and Measles), the first clinical distinction between the two diseases — a landmark in the history of infectious-disease medicine.",
+      "category": "spiritual",
+      "source": "Goodman EI2"
+    },
+    {
+      "year": 908,
+      "age": 54,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Caliph al-Muktafi dies and is succeeded by al-Muqtadir. Al-Razi continues at the hospital but his court patronage becomes less stable.",
+      "category": "loss",
+      "source": "Tabari"
+    },
+    {
+      "year": 912,
+      "age": 58,
+      "precision": "period",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Returns to Rayy and works for the Buyid prince. He begins assembling the vast medical encyclopaedia that will be published posthumously by his students as Kitab al-Hawi (the Continens of medieval Latin Europe), running to more than twenty volumes.",
+      "category": "spiritual",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 918,
+      "age": 64,
+      "precision": "period",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Writes his philosophical works, including the controversial Doubts about Galen, in which he challenges the authority of the great Greek physician — and, more controversially, his treatises on metaphysics that argue against revealed religion and prophecy.",
+      "category": "spiritual",
+      "source": "Adamson (2016)"
+    },
+    {
+      "year": 922,
+      "age": 68,
+      "precision": "period",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Goes blind in his last years, reportedly from cataracts. According to one tradition he refuses surgery, saying he has seen enough of the world; according to another the cure is offered too late.",
+      "category": "loss",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 925,
+      "age": 71,
+      "precision": "year",
+      "location": "Rayy",
+      "lat": 35.5928,
+      "lng": 51.4344,
+      "event": "Dies in Rayy and is buried there. His Hawi is later assembled by his students from his case-notes and drafts, and through its 13th-century Latin translation becomes a standard medical text in European universities for four hundred years.",
+      "category": "death",
+      "source": "Ibn Abi Usaybi'a; al-Biruni"
+    }
+  ]
+}

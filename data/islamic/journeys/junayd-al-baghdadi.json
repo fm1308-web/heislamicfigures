@@ -1,0 +1,122 @@
+{
+  "person": "Junayd al-Baghdadi",
+  "slug": "F0830",
+  "lifespan": {
+    "birth": 830,
+    "death": 910
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Junayd is the central figure of the 'sober' school of early Sufism and the master through whom most later Sufi orders trace their spiritual chain. His life is recorded by the early Sufi biographers Sulami (Tabaqat al-Sufiyya), Qushayri, and Hujwiri. The general arc — silk-merchant background, training under his uncle Sari al-Saqati, jurist by day and Sufi by night, master of the Baghdad school — is firm. Specific years are reconstructed."
+  },
+  "sources": [
+    "Abu Abd al-Rahman al-Sulami, Tabaqat al-Sufiyya (c. 1000)",
+    "Abu'l-Qasim al-Qushayri, Risala (1045)",
+    "Hujwiri, Kashf al-Mahjub (c. 1075)",
+    "Ali Hassan Abdel-Kader, The Life, Personality and Writings of Al-Junayd (1962)"
+  ],
+  "journey": [
+    {
+      "year": 830,
+      "age": 0,
+      "precision": "decade",
+      "location": "Nahavand",
+      "lat": 34.19,
+      "lng": 48.37,
+      "event": "Born around this time to a Persian family from Nahavand in western Iran. His father trades in glass, and the family moves to Baghdad while Junayd is still a young child.",
+      "category": "birth",
+      "source": "Sulami; Hujwiri"
+    },
+    {
+      "year": 837,
+      "age": 7,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Already living in Baghdad. According to Sulami, his maternal uncle Sari al-Saqati — one of the foremost ascetics of the city — takes the boy on his knee and asks him 'What is gratitude?', and the seven-year-old Junayd answers: 'That you should not use the blessings of God for the purpose of disobeying Him.'",
+      "category": "childhood",
+      "source": "Sulami"
+    },
+    {
+      "year": 850,
+      "age": 20,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Studies Shafi'i jurisprudence with the great judge Abu Thawr in Baghdad. He becomes a competent jurist and could have followed a legal career, but his uncle's mystical influence has already taken hold.",
+      "category": "spiritual",
+      "source": "Sulami; Hujwiri"
+    },
+    {
+      "year": 855,
+      "age": 25,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Begins serious training under Sari al-Saqati. By day Junayd works in the bazaar selling glass and damask silk; by night he prays and meets with the small Sufi circle gathered around his uncle.",
+      "category": "spiritual",
+      "source": "Sulami"
+    },
+    {
+      "year": 867,
+      "age": 37,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Sari al-Saqati dies. Junayd succeeds him as the leading Sufi teacher of Baghdad and head of what later tradition calls the 'school of Junayd' — emphasising sobriety (sahw), the fulfilment of religious law, and the return from mystical states to everyday service.",
+      "category": "loss",
+      "source": "Sulami; Qushayri"
+    },
+    {
+      "year": 880,
+      "age": 50,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Holds his teaching circle in his shop and at his house. His students include nearly all the great Sufis of the next generation — Abu Bakr al-Shibli, al-Jurayri, and the controversial al-Hallaj. He famously distrusts public preaching and prefers small, disciplined gatherings.",
+      "category": "civic",
+      "source": "Sulami; Qushayri"
+    },
+    {
+      "year": 890,
+      "age": 60,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Develops his doctrine of fana (the passing away of the self in God) and baqa (the abiding in God after the return to ordinary consciousness). He insists, against more enthusiastic Sufis, that the highest mystic must remain fully responsible to the religious law.",
+      "category": "spiritual",
+      "source": "Abdel-Kader (1962)"
+    },
+    {
+      "year": 900,
+      "age": 70,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Quietly distances himself from his pupil al-Hallaj, whose ecstatic and public utterances ('I am the Truth') break the disciplined sobriety that Junayd has tried to teach. The break presages al-Hallaj's later trial and execution under the Abbasid state.",
+      "category": "rejection",
+      "source": "Sulami; Massignon, Passion of al-Hallaj"
+    },
+    {
+      "year": 910,
+      "age": 80,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Dies in Baghdad. His tomb in the Shunizi cemetery on the west bank of the Tigris becomes a place of visitation for centuries; nearly every Sufi tariqa later traces its chain of initiation through him back to the Prophet.",
+      "category": "death",
+      "source": "Sulami; Hujwiri"
+    }
+  ]
+}

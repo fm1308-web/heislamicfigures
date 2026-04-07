@@ -1,20 +1,18 @@
 {
   "person": "Umar ibn al-Khattab",
   "slug": "F1433",
-  "lifespan": { "birth": 584, "death": 644 },
-  "schema_version": 1,
-  "confidence": {
-    "grade": "A",
-    "density": "high",
-    "precision": "high",
-    "disclosure": "Umar's caliphate (634-644) is one of the best-documented periods of early Islamic history. His single major journey — north to Jabiya and Jerusalem in 637 — is attested in both Muslim and Christian sources. His administrative life in Medina is well recorded. The main uncertainty is his pre-conversion period in Mecca, where traditional reports of his hostility to Islam may have been embellished by later writers to dramatise his conversion."
+  "lifespan": {
+    "birth": 584,
+    "death": 644
   },
+  "schema_version": 1,
+  "schema_notes": "Second Rashidun caliph. Converted in 616 as a committed opponent of Islam; his conversion marked a turning point for the Meccan community. As caliph he oversaw the great conquests — but personally left Arabia only once, travelling north to receive the surrender of Jerusalem in 637.",
   "sources": [
-    "Ibn Ishaq, Sirat Rasul Allah",
+    "Ibn Ishaq, Sirat Rasul Allah (Guillaume tr.)",
     "Al-Tabari, Tarikh al-Rusul wa al-Muluk",
-    "Sahih al-Bukhari",
-    "Sahih Muslim",
-    "Ibn Sa'd, Kitab al-Tabaqat al-Kabir"
+    "Ibn Sa'd, Kitab al-Tabaqat al-Kabir",
+    "Al-Baladhuri, Futuh al-Buldan",
+    "Wilferd Madelung, The Succession to Muhammad"
   ],
   "journey": [
     {
@@ -24,21 +22,21 @@
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Born in Mecca into the Banu Adi clan of the Quraysh tribe, about thirteen years after the Prophet Muhammad. His father al-Khattab ibn Nufayl was known for his harsh temperament and insisted on a strict upbringing.",
+      "event": "Born in Mecca to the Banu Adi clan of Quraysh. His father al-Khattab was known for severity. Umar learned to read — rare among the Quraysh — and became a trader and a powerful wrestler.",
       "category": "birth",
-      "source": "Ibn Sa'd; Al-Tabari"
+      "source": "Ibn Sa'd; Tabari"
     },
     {
-      "year": 584,
-      "age": 0,
+      "year": 610,
+      "age": 26,
       "precision": "period",
-      "period_end": 610,
+      "period_end": 616,
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Grew up in Mecca learning to read and write — a rare skill among the Quraysh — and became a capable merchant and renowned wrestler. He was also known as an arbitrator of disputes among the clans of Mecca before the rise of Islam.",
-      "category": "childhood",
-      "source": "Ibn Sa'd; Al-Tabari"
+      "event": "During the first years of Islam he was one of its fiercest opponents in Mecca. Traditions describe him seeking to kill the Prophet.",
+      "category": "persecution",
+      "source": "Ibn Ishaq"
     },
     {
       "year": 616,
@@ -47,31 +45,9 @@
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Converted to Islam after a period of fierce hostility toward the Muslim community. According to tradition, he set out intending to kill the Prophet but was moved to tears upon hearing verses of Surah Ta-Ha recited at his sister Fatimah's house, and immediately went to the Prophet to declare his faith.",
+      "event": "Converted to Islam in Mecca. The traditional account has him setting out to kill the Prophet, then discovering his own sister and her husband reading the Quran, and being overcome. His conversion emboldened the small Muslim community to pray openly at the Kaaba for the first time.",
       "category": "conversion",
       "source": "Ibn Ishaq; Ibn Sa'd"
-    },
-    {
-      "year": 616,
-      "age": 32,
-      "precision": "year",
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Immediately after converting, Umar insisted on praying openly at the Kaaba, emboldening the Muslim community which had been worshipping in secret. His physical strength and tribal standing gave the small community a new sense of protection in Mecca.",
-      "category": "preaching",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
-    },
-    {
-      "year": 617,
-      "age": 33,
-      "precision": "year",
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Endured persecution from the Quraysh after his conversion, including hostility from members of his own Banu Adi clan. Despite his formidable reputation, he was no longer afforded the full protection of his kinsmen and faced social isolation.",
-      "category": "persecution",
-      "source": "Ibn Sa'd; Al-Tabari"
     },
     {
       "year": 622,
@@ -81,69 +57,68 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Emigrated from Mecca to Medina as part of the Hijra, reportedly one of the few Muslims who migrated openly rather than in secret. According to tradition, he announced his departure at the Kaaba and challenged anyone to stop him, and none dared.",
+      "event": "Made the Hijra to Medina. Tradition says that, unlike others who migrated secretly, he walked openly around the Kaaba before leaving and challenged any Quraysh who wished to stop him.",
       "category": "migration",
-      "source": "Ibn Ishaq; Ibn Sa'd"
+      "source": "Ibn Sa'd"
     },
     {
       "year": 624,
       "month": 3,
       "age": 40,
       "precision": "month",
-      "location": "Badr",
+      "location": "Wells of Badr",
       "lat": 23.7833,
       "lng": 38.7833,
-      "event": "Fought at the Battle of Badr, the first major military engagement between the Muslims and the Quraysh of Mecca. The Muslim force of roughly 313 men defeated a Quraysh army nearly three times their number, a victory seen as divine vindication of the new community.",
+      "event": "Fought at Badr. His maternal uncle al-As ibn Hisham was killed in the battle.",
       "category": "battle",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 625,
       "month": 3,
       "age": 41,
       "precision": "month",
-      "location": "Uhud",
-      "lat": 24.5065,
-      "lng": 39.6119,
-      "event": "Fought at the Battle of Uhud where the Muslims suffered a setback after archers abandoned their positions. Umar stood firm around the Prophet when many fled, receiving wounds in the fighting and helping to rally the remaining defenders on the mountainside.",
+      "location": "Mount Uhud (north of Medina)",
+      "lat": 24.5039,
+      "lng": 39.6122,
+      "event": "Fought at Uhud.",
       "category": "battle",
-      "source": "Ibn Ishaq; Sahih Muslim"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 627,
       "month": 3,
       "age": 43,
       "precision": "month",
-      "location": "Medina (Trench)",
-      "lat": 24.4836,
-      "lng": 39.6097,
-      "event": "Participated in the Battle of the Trench, where a confederation of Quraysh and allied tribes besieged Medina. Umar helped dig the defensive trench around the city on the advice of Salman al-Farisi and took part in the weeks-long standoff until the coalition withdrew.",
+      "location": "Medina (north trench)",
+      "lat": 24.475,
+      "lng": 39.61,
+      "event": "Fought at the Battle of the Trench.",
       "category": "battle",
-      "source": "Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 628,
       "month": 3,
       "age": 44,
       "precision": "month",
-      "location": "Hudaybiyyah",
-      "lat": 21.4417,
-      "lng": 39.6083,
-      "event": "Present at the Treaty of Hudaybiyyah, where the Prophet negotiated a ten-year truce with the Quraysh. Umar initially opposed the terms as humiliating to the Muslims and confronted Abu Bakr about them, though he later acknowledged the wisdom of the agreement.",
+      "location": "Hudaybiyyah (near Mecca)",
+      "lat": 21.4894,
+      "lng": 39.68,
+      "event": "At Hudaybiyyah he initially objected strongly to the treaty's terms, which he felt were humiliating. The Prophet calmed him; Umar later said he gave charity and freed slaves in expiation for his argumentativeness that day.",
       "category": "treaty",
-      "source": "Sahih al-Bukhari; Ibn Ishaq"
+      "source": "Ibn Ishaq; Bukhari"
     },
     {
       "year": 628,
-      "month": 5,
       "age": 44,
-      "precision": "month",
+      "precision": "year",
       "location": "Khaybar",
-      "lat": 25.6989,
-      "lng": 39.2928,
-      "event": "Participated in the conquest of the fortified Jewish settlement of Khaybar, north of Medina. The campaign secured the northern approaches to Medina and established a model for the treatment of conquered agricultural communities through revenue-sharing arrangements.",
-      "category": "conquest",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "lat": 25.6981,
+      "lng": 39.2925,
+      "event": "Present at the conquest of Khaybar.",
+      "category": "battle",
+      "source": "Ibn Ishaq"
     },
     {
       "year": 630,
@@ -153,21 +128,21 @@
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Entered Mecca with the Prophet during the peaceful conquest of the city, which fell with minimal bloodshed after the Quraysh broke the Treaty of Hudaybiyyah. The idols around the Kaaba were destroyed and a general amnesty was declared for the people of Mecca.",
+      "event": "Entered Mecca with the Prophet at the conquest.",
       "category": "conquest",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 630,
-      "month": 1,
+      "month": 2,
       "age": 46,
       "precision": "month",
-      "location": "Hunayn",
-      "lat": 21.4500,
-      "lng": 40.1000,
-      "event": "Fought at the Battle of Hunayn shortly after the conquest of Mecca, where a large Muslim force was ambushed by the Hawazin tribe in a narrow valley. After initial confusion and retreat, the Muslims rallied around the Prophet and won a decisive victory.",
+      "location": "Hunayn valley",
+      "lat": 21.45,
+      "lng": 40.3,
+      "event": "Fought at Hunayn.",
       "category": "battle",
-      "source": "Ibn Ishaq; Sahih Muslim"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 630,
@@ -175,23 +150,47 @@
       "age": 46,
       "precision": "month",
       "location": "Tabuk",
-      "lat": 28.3838,
-      "lng": 36.5550,
-      "event": "Marched with the Prophet on the expedition to Tabuk near the Byzantine frontier, the largest and most distant campaign of the Prophet's lifetime. Though no major battle occurred, the expedition demonstrated Muslim military reach to the northern Arabian borders and secured the submission of several border communities.",
+      "lat": 28.3998,
+      "lng": 36.57,
+      "event": "Accompanied the Prophet on the Tabuk expedition. Gave half of his wealth to fund the campaign — Abu Bakr famously gave all of his.",
       "category": "expedition",
-      "source": "Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 632,
       "month": 3,
       "age": 48,
       "precision": "month",
-      "location": "Arafat",
-      "lat": 21.3547,
-      "lng": 39.9842,
-      "event": "Accompanied the Prophet on the Farewell Pilgrimage, the only Hajj the Prophet performed. At the plain of Arafat, the Prophet delivered his famous sermon establishing principles of equality, justice, and the sanctity of life that would guide the community after his death.",
+      "location": "Plain of Arafat",
+      "lat": 21.355,
+      "lng": 39.9839,
+      "event": "Present at the Farewell Pilgrimage.",
       "category": "pilgrimage",
-      "source": "Sahih Muslim; Ibn Ishaq"
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 632,
+      "month": 6,
+      "age": 48,
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "At the Saqifa of Banu Sa'ida, after the Prophet's death, he personally gave the first public pledge of allegiance to Abu Bakr — a decisive intervention that established the first caliphate.",
+      "category": "civic",
+      "source": "Tabari"
+    },
+    {
+      "year": 632,
+      "age": 48,
+      "precision": "period",
+      "period_end": 634,
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Chief advisor and judge under Abu Bakr. Urged him to compile the Quran into a single mushaf after the Battle of Yamama.",
+      "category": "civic",
+      "source": "Bukhari"
     },
     {
       "year": 634,
@@ -201,111 +200,115 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Became the second Rashidun caliph following the death of Abu Bakr, who had nominated him as successor on his deathbed. Umar took the title Amir al-Mu'minin (Commander of the Faithful), the first ruler in Islam to bear that title, and immediately began organizing the rapidly expanding state.",
-      "category": "succession",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "event": "Became the second caliph on the death of Abu Bakr. Took the new title Amir al-Mu'minin, Commander of the Faithful.",
+      "category": "accession",
+      "source": "Tabari"
     },
     {
       "year": 634,
       "age": 50,
-      "precision": "year",
+      "precision": "period",
+      "period_end": 637,
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Ordered the continuation and expansion of military campaigns into Syria and Iraq, dispatching commanders including Abu Ubayda ibn al-Jarrah and Khalid ibn al-Walid. His strategic direction from Medina coordinated multiple fronts against the Byzantine and Sasanian empires simultaneously.",
-      "category": "administration",
-      "source": "Al-Tabari; Al-Baladhuri"
-    },
-    {
-      "year": 636,
-      "month": 8,
-      "age": 52,
-      "precision": "month",
-      "location": "Yarmouk",
-      "lat": 32.80,
-      "lng": 35.95,
-      "event": "Directed the decisive Battle of Yarmouk from Medina, where Muslim forces under Abu Ubayda and Khalid ibn al-Walid routed the Byzantine army near the Yarmouk River. This victory effectively ended Byzantine control of the Levant and opened the way for the Muslim conquest of Syria and Palestine.",
-      "category": "battle",
-      "source": "Al-Tabari; Al-Baladhuri"
+      "event": "From Medina directed the conquests of Syria and Iraq. Battle of Qadisiyya (636) broke Sasanian Persia; Battle of Yarmuk (636) broke Byzantine Syria. He himself stayed in Medina, walking the streets at night to inspect the welfare of the city's poor.",
+      "category": "civic",
+      "source": "Tabari; Baladhuri"
     },
     {
       "year": 637,
+      "month": 4,
       "age": 53,
-      "precision": "year",
-      "location": "Jabiya, Golan",
-      "lat": 32.85,
-      "lng": 35.88,
-      "event": "Travelled north from Medina to Jabiya in the Golan Heights, his only major journey outside the Hijaz as caliph. He received the formal surrender of the Damascus region and met with his commanders to organize the administration of the newly conquered Syrian territories.",
+      "precision": "month",
+      "location": "Jabiya (Golan Heights)",
+      "lat": 32.8069,
+      "lng": 35.9667,
+      "event": "Set out from Medina for the only major journey of his caliphate, travelling north to receive the surrender of Jerusalem in person as the Patriarch Sophronius had demanded. Arrived first at Jabiya in the Golan, where Abu Ubayda, Khalid ibn al-Walid, and Yazid ibn Abi Sufyan met him with an escort.",
       "category": "travel",
-      "source": "Al-Tabari; Al-Baladhuri"
+      "source": "Tabari; Baladhuri"
     },
     {
       "year": 637,
+      "month": 4,
       "age": 53,
-      "precision": "year",
+      "precision": "month",
       "location": "Jerusalem",
-      "lat": 31.7781,
+      "lat": 31.7784,
       "lng": 35.2354,
-      "event": "Received the keys of Jerusalem from Patriarch Sophronius and issued the Covenant of Umar, guaranteeing the safety of the city's Christian inhabitants, their churches, and their property. He prayed at the Temple Mount and ordered the clearing of the site, which had been used as a rubbish dump under Byzantine rule.",
-      "category": "conquest",
-      "source": "Al-Tabari; Theophanes the Confessor"
+      "event": "Entered Jerusalem dressed in simple robes, on foot beside his servant who was riding the camel. Received the formal surrender of the city from Sophronius. Composed the Covenant of Umar guaranteeing Christian religious freedom and places of worship. Declined the Patriarch's invitation to pray in the Church of the Holy Sepulchre, fearing it would later be converted into a mosque. Stayed ten days.",
+      "category": "civic",
+      "source": "Tabari; Baladhuri"
+    },
+    {
+      "year": 637,
+      "month": 5,
+      "age": 53,
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Returned to Medina from Jerusalem.",
+      "category": "travel",
+      "source": "Tabari"
+    },
+    {
+      "year": 638,
+      "month": 6,
+      "age": 54,
+      "precision": "month",
+      "location": "Sargh (Syrian frontier)",
+      "lat": 30.3,
+      "lng": 35.7,
+      "event": "Set out for Syria but halted at Sargh near the frontier on news of the Plague of Amwas devastating the Muslim armies and civilians in Syria. After consultation he turned back rather than enter a plague zone — his famous ruling that 'we flee from the decree of God to the decree of God'.",
+      "category": "travel",
+      "source": "Bukhari; Tabari"
     },
     {
       "year": 638,
       "age": 54,
       "precision": "year",
-      "location": "Kufa",
-      "lat": 32.0297,
-      "lng": 44.4019,
-      "event": "Founded Kufa as a garrison city (misr) in Iraq to house Muslim soldiers and serve as a base for further campaigns eastward. The city was strategically placed near the ruins of the Sasanian capital at Ctesiphon and would grow into one of the most important centres of Islamic learning and politics.",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Back in Medina. The plague killed several senior companions in Syria including the commander Abu Ubayda ibn al-Jarrah.",
       "category": "civic",
-      "source": "Al-Tabari; Al-Baladhuri"
-    },
-    {
-      "year": 638,
-      "age": 54,
-      "precision": "year",
-      "location": "Basra",
-      "lat": 30.5085,
-      "lng": 47.7834,
-      "event": "Founded Basra as a second garrison city in southern Iraq, positioned to control the head of the Persian Gulf and the routes into the Iranian plateau. Along with Kufa, Basra became a key node in the administrative and military infrastructure of the expanding caliphate.",
-      "category": "civic",
-      "source": "Al-Tabari; Al-Baladhuri"
+      "source": "Tabari"
     },
     {
       "year": 639,
       "age": 55,
-      "precision": "year",
+      "precision": "period",
+      "period_end": 644,
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Established the Islamic Hijri calendar, designating the Prophet's emigration from Mecca to Medina in 622 CE as Year One. The decision was taken in consultation with Ali ibn Abi Talib and other senior companions to standardize dating across the growing empire's correspondence and records.",
-      "category": "administration",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "event": "Continued to govern from Medina. Instituted the Islamic Hijri calendar, dating it from the Prophet's migration. Established the diwan — a system of stipends for Muslims based on precedence in Islam. Expanded the Prophet's Mosque.",
+      "category": "civic",
+      "source": "Tabari; Baladhuri"
     },
     {
-      "year": 641,
-      "age": 57,
+      "year": 642,
+      "age": 58,
       "precision": "year",
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Directed the conquest of Egypt from Medina, dispatching Amr ibn al-As with a small force that eventually took the Byzantine fortress of Babylon and then Alexandria. The fall of Egypt gave the caliphate control of the Mediterranean's richest grain-producing province and opened the path to North Africa.",
-      "category": "expedition",
-      "source": "Al-Tabari; Al-Baladhuri"
+      "event": "Directed the Battle of Nahavand, called the 'Victory of Victories' — the final collapse of Sasanian organised resistance. The conquest of Egypt under Amr ibn al-As was completed in these years.",
+      "category": "civic",
+      "source": "Tabari; Baladhuri"
     },
     {
       "year": 644,
       "month": 11,
-      "day": 3,
       "age": 60,
-      "precision": "day",
-      "location": "Medina (Prophet's Mosque)",
-      "lat": 24.4672,
-      "lng": 39.6115,
-      "event": "Assassinated by Abu Lu'lu'a Firuz, a Persian slave of al-Mughira ibn Shu'ba, who stabbed him six times with a double-bladed dagger while he led the Fajr prayer. Umar died three days later and was buried beside the Prophet Muhammad and Abu Bakr in the chamber of Aisha.",
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Stabbed at dawn while leading prayers at the Prophet's Mosque by Abu Lu'lu'a, a Persian Christian slave nursing a grievance. Lingered three days before dying. Buried beside the Prophet and Abu Bakr. Nominated a council of six to choose his successor.",
       "category": "death",
-      "source": "Sahih al-Bukhari; Al-Tabari"
+      "source": "Tabari; Bukhari"
     }
   ]
 }

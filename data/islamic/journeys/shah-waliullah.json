@@ -1,0 +1,166 @@
+{
+  "person": "Shah Waliullah",
+  "slug": "F1293",
+  "lifespan": "1703-1762",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "low",
+    "disclosure": "Qutb al-Din Ahmad ibn Abd al-Rahim, known as Shah Waliullah of Delhi, is the most influential Indian Islamic scholar of the 18th century and the intellectual father of much of modern South Asian Islamic thought. He is well documented through his own autobiographical writings (Anfas al-Arifin and Fuyud al-Haramayn), the biographical works of his sons and disciples, and the extensive scholarly literature that has grown up around his legacy. The major events - his birth in Phulat, education in Delhi, hajj of 1731-1732, return to Delhi, his major works, and his death - are firm by year. His political correspondence with Ahmad Shah Abdali is preserved in his letters."
+  },
+  "sources": [
+    "Shah Waliullah, Anfas al-Arifin",
+    "Shah Waliullah, Hujjat Allah al-Baligha",
+    "J.M.S. Baljon, Religion and Thought of Shah Wali Allah Dihlawi (1986)",
+    "Marcia Hermansen, The Conclusive Argument from God",
+    "Encyclopaedia of Islam, 2nd ed., 'Shah Wali Allah'"
+  ],
+  "journey": [
+    {
+      "day": 21,
+      "month": 2,
+      "year": 1703,
+      "age": 0,
+      "precision": "day",
+      "location": "Phulat",
+      "lat": 29.4500,
+      "lng": 77.5500,
+      "event": "Born on 21 February 1703 (4 Shawwal 1114 AH) in Phulat, a small town in Muzaffarnagar district near Delhi. His father Shah Abd al-Rahim is a respected scholar and Sufi shaykh who teaches at the Madrasa-yi Rahimiyya in Delhi, an institution he himself founded.",
+      "category": "birth",
+      "source": "Anfas al-Arifin"
+    },
+    {
+      "year": 1707,
+      "age": 4,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "His earliest years coincide with the death of the emperor Aurangzeb (March 1707) and the beginning of the rapid decline of the Mughal empire. Shah Waliullah's whole life will be lived against the backdrop of Mughal collapse, regional fragmentation, and the rise of new powers (Marathas, Sikhs, Afghans, ultimately the British).",
+      "category": "childhood",
+      "source": "Anfas al-Arifin"
+    },
+    {
+      "year": 1715,
+      "age": 12,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "By the age of 12 has memorised the Quran and is studying advanced texts in Arabic grammar, jurisprudence, theology, and the religious sciences with his father at the Madrasa-yi Rahimiyya. By 15 he has completed the standard madrasa curriculum (the Dars-i Nizami) and has received ijaza (license) to teach.",
+      "category": "civic",
+      "source": "Anfas al-Arifin"
+    },
+    {
+      "year": 1719,
+      "age": 16,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "In 1719, at the age of 16, marries. In the same year takes the bay'a (oath of allegiance) from his father at the Naqshbandi-Mujaddidi Sufi order, the order founded by Ahmad Sirhindi a century earlier.",
+      "category": "marriage",
+      "source": "Anfas al-Arifin"
+    },
+    {
+      "year": 1719,
+      "age": 16,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "In 1719 his father Shah Abd al-Rahim dies. Shah Waliullah, then sixteen, takes over the teaching at the Madrasa-yi Rahimiyya. For the next dozen years he teaches in Delhi, building his reputation as a scholar and Sufi.",
+      "category": "loss",
+      "source": "Anfas al-Arifin"
+    },
+    {
+      "year": 1731,
+      "age": 28,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "In 1731 sets out for the hajj. Travels to Surat by land and then by ship across the Arabian Sea. Performs the hajj at Mecca and stays for fourteen months in the Hijaz, dividing his time between Mecca and Medina. Studies hadith with the leading Hijazi scholars of the day, especially Shaykh Abu Tahir al-Madani in Medina, who gives him the chains of transmission for all six canonical hadith collections.",
+      "category": "pilgrimage",
+      "source": "Anfas al-Arifin; Fuyud al-Haramayn"
+    },
+    {
+      "year": 1732,
+      "age": 29,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "During his stay in Medina experiences a series of mystical visions, which he records in his Fuyud al-Haramayn (Outpourings of the Two Sanctuaries). These visions become the basis of his later theological and political writings. He receives, he says, a divine commission to undertake a comprehensive renewal of Islamic learning in India.",
+      "category": "spiritual",
+      "source": "Fuyud al-Haramayn"
+    },
+    {
+      "year": 1733,
+      "age": 30,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "Returns to Delhi in late 1732 or early 1733 after the hajj. Resumes his teaching at the Madrasa-yi Rahimiyya with greatly expanded ambition: to integrate the various Islamic disciplines (especially hadith and jurisprudence) and the various schools of thought into a coherent synthesis, and to renew Indian Islam through a return to the Quran and Sunnah.",
+      "category": "civic",
+      "source": "Anfas al-Arifin"
+    },
+    {
+      "year": 1738,
+      "age": 35,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "In March 1739 the Persian conqueror Nadir Shah Afshar sacks Delhi after defeating the Mughal emperor Muhammad Shah at the Battle of Karnal. Tens of thousands of Delhi's inhabitants are massacred and the city is plundered. Shah Waliullah witnesses the catastrophe and becomes increasingly convinced that political action, in addition to scholarly reform, is necessary to save Indian Islam.",
+      "category": "crisis",
+      "source": "Anfas al-Arifin; Indian chronicles"
+    },
+    {
+      "year": 1745,
+      "age": 42,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "Around the mid-1740s composes his great work Hujjat Allah al-Baligha (The Conclusive Argument from God), a comprehensive treatise on the rationale of Islamic law and ethics that synthesises hadith scholarship, jurisprudence, theology, and Sufi metaphysics. It is regarded as his masterpiece and one of the most important works of Indian Islamic thought.",
+      "category": "civic",
+      "source": "Hujjat Allah al-Baligha; Hermansen"
+    },
+    {
+      "year": 1750,
+      "age": 47,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "In the late 1740s and 1750s also produces the first Persian translations of the Quran (Fath al-Rahman, completed in 1738), against the strong opposition of more conservative scholars who hold that the Quran should not be translated. The work is intended to make the Quran directly accessible to the Persian-speaking elite of India who do not know Arabic.",
+      "category": "civic",
+      "source": "Encyclopaedia of Islam"
+    },
+    {
+      "year": 1761,
+      "age": 58,
+      "precision": "year",
+      "location": "Panipat",
+      "lat": 29.3909,
+      "lng": 76.9635,
+      "event": "Around 1759-1760 writes letters to the Afghan ruler Ahmad Shah Abdali, urging him to invade India and protect the Muslims from the rising Maratha power. On 14 January 1761 Ahmad Shah Abdali defeats the Maratha army at the Third Battle of Panipat - one of the bloodiest battles of 18th-century India. The victory, however, does not produce the lasting Muslim political revival Shah Waliullah hoped for; Ahmad Shah Abdali withdraws to Afghanistan and the Mughal empire continues to decay.",
+      "category": "battle",
+      "source": "Letters of Shah Waliullah; Indian chronicles"
+    },
+    {
+      "year": 1762,
+      "age": 59,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "Dies in Delhi on 20 August 1762 (29 Muharram 1176 AH), aged 59. He is buried in the Mahdiyan cemetery in old Delhi. His four sons - Shah Abd al-Aziz, Shah Rafi al-Din, Shah Abd al-Qadir, and Shah Abd al-Ghani - all become important scholars in their own right and continue his work at the Madrasa-yi Rahimiyya. Through his sons, his disciples, and the institutions that grow out of his school, Shah Waliullah's influence on South Asian Islam is incalculable; nearly every major Indian Muslim movement of the 19th and 20th centuries (Deobandi, Barelwi, Ahl-i Hadith, the Aligarh movement, even some currents in the Pakistan movement) traces some of its roots back to him.",
+      "category": "death",
+      "source": "Anfas al-Arifin (continuations); Encyclopaedia of Islam"
+    }
+  ]
+}

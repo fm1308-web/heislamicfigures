@@ -1,0 +1,155 @@
+{
+  "person": "Ali ibn al-Husayn Zayn al-Abidin",
+  "slug": "F0367",
+  "lifespan": "659-713",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Ali ibn al-Husayn, called Zayn al-Abidin ('Ornament of the Worshippers') and al-Sajjad ('the Constantly Prostrate'), the only adult son of al-Husayn to survive Karbala, is documented in early Shia and Sunni biographical works (Ibn Sa'd's Tabaqat, al-Mufid's Irshad, al-Tabari's Tarikh, al-Dhahabi's Siyar). His birth in Medina, his survival of Karbala because of illness, his later quietist life as imam of the Husaynid line in Medina, and his death in Medina in 713 are firmly attested. The exact date of his birth varies in the sources between 658 and 660; the date of his death is given as 25 Muharram 95 AH."
+  },
+  "sources": [
+    "Ibn Sa'd, Kitab al-Tabaqat al-Kubra",
+    "al-Mufid, Kitab al-Irshad",
+    "al-Tabari, Tarikh al-Rusul wa al-Muluk",
+    "al-Dhahabi, Siyar A'lam al-Nubala",
+    "Ali ibn al-Husayn (attr.), al-Sahifa al-Sajjadiyya"
+  ],
+  "journey": [
+    {
+      "year": 659,
+      "age": 0,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Born in Medina around 659 (38 AH), the son of al-Husayn ibn Ali (grandson of the Prophet) and, according to tradition, of Shahrbanu, a daughter of the last Sasanian emperor Yazdegerd III taken captive in the Muslim conquest of Persia. The Persian descent attributed to him later becomes a powerful symbol in Iranian Shia piety.",
+      "category": "birth",
+      "source": "al-Mufid; Ibn Sa'd"
+    },
+    {
+      "year": 670,
+      "age": 11,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Reared in Medina in the household of his father al-Husayn after the death of his uncle al-Hasan in 670. Receives the standard religious education of an Alid prince, with particular attention to the Quran, hadith, and the family traditions of the Prophet.",
+      "category": "childhood",
+      "source": "al-Mufid"
+    },
+    {
+      "year": 680,
+      "age": 21,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "In Rajab 60 AH (April 680), when his father al-Husayn refuses to give allegiance to the new Umayyad caliph Yazid I and decides to leave Medina for Mecca, Ali accompanies the family group as a young man.",
+      "category": "migration",
+      "source": "al-Tabari"
+    },
+    {
+      "day": 10,
+      "month": 10,
+      "year": 680,
+      "age": 21,
+      "precision": "day",
+      "location": "Karbala",
+      "lat": 32.6160,
+      "lng": 44.0244,
+      "event": "On 10 Muharram 61 AH (10 October 680) is present at Karbala when his father al-Husayn and almost all the male members of the family are killed by the Umayyad army of Umar ibn Sa'd. Ali himself, gravely ill with a fever, is bedridden in the camp and is spared by the soldiers when they find him too sick to fight. He is the only adult male of al-Husayn's line to survive the massacre.",
+      "category": "loss",
+      "source": "al-Tabari; al-Mufid"
+    },
+    {
+      "year": 680,
+      "age": 21,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0386,
+      "lng": 44.4017,
+      "event": "Taken with the surviving women and children of the family to Kufa, the seat of the Umayyad governor Ubayd Allah ibn Ziyad, who orders the captives sent on to Damascus. According to tradition Ubayd Allah considers having him executed as well but is dissuaded by the protests of his aunt Zaynab bint Ali.",
+      "category": "persecution",
+      "source": "al-Tabari"
+    },
+    {
+      "year": 681,
+      "age": 22,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Brought as a captive to the court of Caliph Yazid in Damascus together with the women of the household. The captives are eventually treated with respect (Yazid having reportedly disavowed the killings) and after some months are sent back to Medina. Ali settles there permanently and never again leaves the Hijaz for political reasons.",
+      "category": "persecution",
+      "source": "al-Tabari; al-Mufid"
+    },
+    {
+      "year": 683,
+      "age": 24,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Returns to Medina after the captivity in Damascus and assumes the spiritual leadership of the Husaynid line as imam. From this point forward adopts a strictly quietist policy, refusing to associate himself with any of the rebellions against Umayyad rule that erupt over the next thirty years - the Mukhtar revolt in Kufa (685-687), the Ibn al-Zubayr caliphate (683-692), or the rising of Zayd ibn Ali (his own grandson, much later).",
+      "category": "accession",
+      "source": "al-Mufid; al-Dhahabi"
+    },
+    {
+      "year": 683,
+      "age": 24,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Becomes famous in Medina for his extraordinary devotional life: long night vigils, hundreds of daily prostrations (whence his epithet al-Sajjad), weeping over his father's death, manumitting slaves, and quietly providing food to the poor of Medina at night so that they do not know the source of their relief. The hagiographical tradition presents him as a model of Islamic piety transcending sectarian boundaries; he is respected by Sunni and Shia traditionists alike.",
+      "category": "spiritual",
+      "source": "al-Dhahabi; Ibn Sa'd"
+    },
+    {
+      "year": 690,
+      "age": 31,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Composes the prayers and supplications later collected as al-Sahifa al-Sajjadiyya ('The Scroll of al-Sajjad'), a collection of more than fifty intimate devotional prayers covering every aspect of the spiritual life. The Sahifa becomes one of the central texts of Shia devotional literature, sometimes called the 'Psalter of the House of the Prophet'.",
+      "category": "spiritual",
+      "source": "al-Sahifa al-Sajjadiyya"
+    },
+    {
+      "year": 692,
+      "age": 33,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj many times in his life - sources record at least twenty pilgrimages on foot from Medina to Mecca. According to tradition, when al-Farazdaq the poet recites verses praising him at the Kaaba, he is briefly arrested by the Umayyad caliph Hisham, foreshadowing the later use of poetry as a vehicle of Alid loyalty.",
+      "category": "pilgrimage",
+      "source": "al-Mufid"
+    },
+    {
+      "year": 700,
+      "age": 41,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Trains his son Muhammad al-Baqir as his successor, transmitting to him the corpus of teachings of Ali, al-Hasan, and al-Husayn. Under his leadership the Husaynid line consolidates as a recognised circle of religious scholarship in Medina, distinct from the Hasanid branch and from the political Alid movements in Iraq.",
+      "category": "civic",
+      "source": "al-Mufid; al-Kafi"
+    },
+    {
+      "year": 713,
+      "age": 54,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Dies in Medina around 25 Muharram 95 AH (October 713), aged about 54 (some sources give 56 or 58). Shia tradition holds that he was poisoned on the orders of the Umayyad caliph al-Walid I, but the early Sunni sources record only that he died of natural causes. Buried in al-Baqi cemetery in Medina, in the same plot as his uncle al-Hasan ibn Ali, where his grave remains a place of pilgrimage. Succeeded by his son Muhammad al-Baqir as fifth imam of the Twelver line.",
+      "category": "death",
+      "source": "al-Mufid; al-Tabari; al-Dhahabi"
+    }
+  ]
+}

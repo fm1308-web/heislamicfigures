@@ -1,0 +1,197 @@
+{
+  "person": "Babur",
+  "slug": "F0506",
+  "lifespan": "1483-1530",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Zahir al-Din Muhammad Babur, the founder of the Mughal Empire in India, is uniquely well documented because he wrote his own autobiography, the Baburnama, in Chaghatay Turkish - one of the great autobiographies of world literature. The Baburnama records the events of his life, often by year and frequently by day, in extraordinary detail: his accession at age 11, his repeated capture and loss of Samarkand, his conquest of Kabul in 1504, his defeat of Ibrahim Lodi at Panipat in 1526, and his death in Agra in 1530. The dates in this journey are taken directly from his own narrative."
+  },
+  "sources": [
+    "Babur, Baburnama (translated by Wheeler Thackston, 1996)",
+    "Mirza Muhammad Haydar Dughlat, Tarikh-i Rashidi",
+    "Stephen Frederic Dale, The Garden of the Eight Paradises (2004)",
+    "Encyclopaedia of Islam, 2nd ed., 'Babur'"
+  ],
+  "journey": [
+    {
+      "day": 14,
+      "month": 2,
+      "year": 1483,
+      "age": 0,
+      "precision": "day",
+      "location": "Andijan",
+      "lat": 40.7821,
+      "lng": 72.3442,
+      "event": "Born on 14 February 1483 (6 Muharram 888 AH) in Andijan in the Fergana Valley (modern eastern Uzbekistan), the eldest son of Umar Shaykh Mirza, ruler of Fergana. On his father's side a fifth-generation descendant of Timur (Tamerlane); on his mother's side a fourteenth-generation descendant of Genghis Khan.",
+      "category": "birth",
+      "source": "Baburnama, opening section"
+    },
+    {
+      "day": 9,
+      "month": 6,
+      "year": 1494,
+      "age": 11,
+      "precision": "day",
+      "location": "Akhsi",
+      "lat": 40.7400,
+      "lng": 71.4400,
+      "event": "On 9 June 1494 (5 Ramadan 899 AH) his father Umar Shaykh Mirza dies at Akhsi when his palace dovecote, built on the edge of a ravine, collapses and tumbles into the gorge below. The eleven-year-old Babur becomes ruler of Fergana that same day, immediately surrounded by hostile uncles and rebellious nobles.",
+      "category": "accession",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1497,
+      "age": 14,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "In November 1497, after a long siege, the fourteen-year-old Babur takes Samarkand for the first time. He has dreamed of Samarkand all his childhood as the city of his ancestor Timur. He holds it for only about 100 days before being driven out by rebels in Fergana, losing both Samarkand and his hereditary kingdom in a single year.",
+      "category": "conquest",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1500,
+      "age": 17,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "In November 1500 retakes Samarkand from the new Uzbek ruler Muhammad Shaybani Khan, in a daring night raid with about 240 men. But again loses it within a few months: defeated in the Battle of Sar-i Pul in April 1501, he is forced to flee with a handful of followers and spends the next several years as a wandering prince.",
+      "category": "battle",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1503,
+      "age": 20,
+      "precision": "year",
+      "location": "Tashkent",
+      "lat": 41.2995,
+      "lng": 69.2401,
+      "event": "Wanders through the mountains of Tashkent and the upper Syr Darya, dependent on the charity of his uncle Mahmud Khan and other Mongol relatives. The years 1501-1504 are the lowest point of his fortunes. In the Baburnama he describes his hardships and his shame with characteristic frankness.",
+      "category": "loss",
+      "source": "Baburnama"
+    },
+    {
+      "month": 10,
+      "year": 1504,
+      "age": 21,
+      "precision": "month",
+      "location": "Kabul",
+      "lat": 34.5553,
+      "lng": 69.2075,
+      "event": "In October 1504, with about 200-300 followers, Babur crosses the Hindu Kush and takes Kabul, then a small kingdom under a usurper. The conquest is decisive: from this base he will never lose his throne again. Kabul becomes his capital for the next twenty years and the city he loves above all others.",
+      "category": "conquest",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1507,
+      "age": 24,
+      "precision": "year",
+      "location": "Kabul",
+      "lat": 34.5553,
+      "lng": 69.2075,
+      "event": "In 1507 takes the title of Padshah - emperor - the first Timurid prince to do so. Up to now the Timurids had used Mirza or Sultan; this title elevates Babur to a new level of formal sovereignty.",
+      "category": "civic",
+      "source": "Baburnama; Dale"
+    },
+    {
+      "year": 1511,
+      "age": 28,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "After the Safavid Shah Isma'il I defeats and kills the Uzbek Muhammad Shaybani Khan at Merv in December 1510, Babur takes the opportunity to reconquer Samarkand for the third time, in October 1511, with Safavid help. But because he is now formally allied with the Shia Safavids and reads the khutba in their name, his Sunni subjects turn against him; he is driven out by the Uzbeks in 1512 and never returns to Transoxiana again.",
+      "category": "conquest",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1519,
+      "age": 36,
+      "precision": "year",
+      "location": "Bajaur",
+      "lat": 34.6800,
+      "lng": 71.5500,
+      "event": "From 1519 begins a series of probing expeditions into the northwestern frontier of India, raiding the Yusufzai Pashtuns and the Bajaur region. These expeditions teach him the geography, the politics, and the wealth of the subcontinent. The Baburnama describes the Indian flora and fauna with the curiosity of a naturalist.",
+      "category": "expedition",
+      "source": "Baburnama"
+    },
+    {
+      "day": 21,
+      "month": 4,
+      "year": 1526,
+      "age": 43,
+      "precision": "day",
+      "location": "Panipat",
+      "lat": 29.3909,
+      "lng": 76.9635,
+      "event": "On 21 April 1526 (8 Rajab 932 AH), at the First Battle of Panipat north of Delhi, Babur with about 12,000 men defeats the Lodi sultan of Delhi, Ibrahim Lodi, who fields an army of about 100,000 with elephants. Babur deploys his men behind a barricade of wagons (the Ottoman tabur cengi formation) and uses field artillery and matchlock muskets - revolutionary in India - to break the Lodi charge. Ibrahim Lodi is killed in the battle. Babur enters Delhi unopposed.",
+      "category": "battle",
+      "source": "Baburnama"
+    },
+    {
+      "month": 5,
+      "year": 1526,
+      "age": 43,
+      "precision": "month",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.2090,
+      "event": "Enters Delhi in late April 1526. The khutba is read in his name as Padshah of Hindustan. Within days he advances to Agra, where the Lodi treasury and the famous Koh-i-Noor diamond fall into his hands. The Mughal Empire of India is founded.",
+      "category": "conquest",
+      "source": "Baburnama"
+    },
+    {
+      "day": 16,
+      "month": 3,
+      "year": 1527,
+      "age": 44,
+      "precision": "day",
+      "location": "Khanwa",
+      "lat": 27.0833,
+      "lng": 77.4500,
+      "event": "On 16 March 1527 fights the Battle of Khanwa near Fatehpur Sikri against the Rajput confederacy of Rana Sanga of Mewar, the most powerful Hindu ruler of north India. Outnumbered and facing a serious challenge to his new rule, Babur publicly renounces wine the night before the battle, smashes his cups, and rallies his men in a famous speech recorded in the Baburnama. The Mughals win decisively, securing Babur's hold on the Indo-Gangetic plain.",
+      "category": "battle",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1528,
+      "age": 45,
+      "precision": "year",
+      "location": "Agra",
+      "lat": 27.1767,
+      "lng": 78.0081,
+      "event": "Settles into Agra and devotes himself to laying out gardens (charbaghs) - the Persian-style four-quartered garden that becomes the signature of Mughal architecture. The Baburnama from this period is filled with affectionate descriptions of Indian fruits, monkeys, peacocks, and flowers, alongside complaints about the heat and dust.",
+      "category": "civic",
+      "source": "Baburnama"
+    },
+    {
+      "year": 1529,
+      "age": 46,
+      "precision": "year",
+      "location": "Ghaghara",
+      "lat": 26.0,
+      "lng": 84.0,
+      "event": "In May 1529 fights his last great battle at the Ghaghara River in eastern India against an Afghan-Bengali coalition under the Lodi remnants and the Sultan of Bengal. The victory consolidates Mughal control over the Ganges plain as far east as Bihar.",
+      "category": "battle",
+      "source": "Baburnama"
+    },
+    {
+      "day": 26,
+      "month": 12,
+      "year": 1530,
+      "age": 47,
+      "precision": "day",
+      "location": "Agra",
+      "lat": 27.1767,
+      "lng": 78.0081,
+      "event": "Dies in Agra on 26 December 1530 (5 Jumada I 937 AH), aged 47. According to a famous tradition, when his eldest son Humayun fell ill earlier that year, Babur walked three times around his sickbed praying to God to take his own life in exchange. Humayun recovered, Babur sickened, and died. By his own request his body is later moved to Kabul, the city he loved most, and buried in a hilltop garden (Bagh-e Babur) overlooking the city, where his tomb still stands. The empire he founded will rule most of the Indian subcontinent for the next two centuries.",
+      "category": "death",
+      "source": "Gulbadan Begum, Humayunnama; Baburnama (final entries)"
+    }
+  ]
+}

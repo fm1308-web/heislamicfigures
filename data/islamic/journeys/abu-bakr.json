@@ -1,21 +1,18 @@
 {
-  "person": "Abu Bakr al-Siddiq",
+  "person": "Abu Bakr as-Siddiq",
   "slug": "F0114",
-  "lifespan": { "birth": 573, "death": 634 },
-  "schema_version": 1,
-  "confidence": {
-    "grade": "A",
-    "density": "high",
-    "precision": "high",
-    "disclosure": "Abu Bakr is documented in the same sources as the Prophet for all the years he spent at his side. His caliphate years (632-634), though brief, are unusually well attested because al-Tabari treats the Ridda Wars in detail \u2014 including the two campaigns Abu Bakr personally led at Dhu Qissa and Abraq. His pre-Islamic decades rely on traditional reports of his standing as a Meccan merchant."
+  "lifespan": {
+    "birth": 573,
+    "death": 634
   },
+  "schema_version": 1,
+  "schema_notes": "First Rashidun caliph. Closest companion of the Prophet, his father-in-law. Journey follows him from pre-Islamic Meccan merchant through Hijra, battles, the crisis after the Prophet's death, and the Ridda Wars (some of which he led in person).",
   "sources": [
-    "Ibn Ishaq, Sirat Rasul Allah",
+    "Ibn Ishaq, Sirat Rasul Allah (Guillaume tr.)",
     "Al-Tabari, Tarikh al-Rusul wa al-Muluk",
-    "Sahih al-Bukhari",
-    "Sahih Muslim",
     "Ibn Sa'd, Kitab al-Tabaqat al-Kabir",
-    "Ibn Hisham, Al-Sirah al-Nabawiyyah"
+    "Al-Baladhuri, Futuh al-Buldan",
+    "Wilferd Madelung, The Succession to Muhammad"
   ],
   "journey": [
     {
@@ -25,242 +22,222 @@
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Born in Mecca into the Banu Taym clan of the Quraysh tribe, approximately two years after the Year of the Elephant. His father was Uthman ibn Amir (Abu Quhafa) and his mother Salma bint Sakhr (Umm al-Khayr). He was given the name Abd al-Ka'ba at birth, later changed to Abdullah.",
+      "event": "Born in Mecca to the Banu Taym clan of Quraysh. His father was Abu Quhafa. Grew up to become a successful cloth merchant.",
       "category": "birth",
-      "source": "Ibn Sa'd; Ibn Ishaq"
+      "source": "Ibn Sa'd; Tabari"
     },
     {
-      "year": 590,
-      "age": 17,
+      "year": 595,
+      "age": 22,
       "precision": "period",
       "period_end": 610,
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Established himself as a prosperous cloth merchant in Mecca, accumulating a fortune reported at 40,000 dirhams. He was known for his integrity, generosity, and deep knowledge of Quraysh genealogy, which made him one of the most respected notables of the city.",
-      "category": "trade",
-      "source": "Ibn Sa'd; Ibn Ishaq"
-    },
-    {
-      "year": 595,
-      "age": 22,
-      "precision": "year",
-      "location": "Bosra (Syria)",
-      "lat": 32.52,
-      "lng": 36.48,
-      "event": "Travelled north to Bosra in the Syrian Hauran on a trading caravan, a major entrepot for Arabian merchants dealing in cloth, leather, and perfumes. These journeys to Byzantine Syria gave him exposure to diverse cultures and Christian communities along the caravan routes.",
-      "category": "trade",
-      "source": "Ibn Sa'd; Al-Tabari"
-    },
-    {
-      "year": 600,
-      "age": 27,
-      "precision": "year",
-      "location": "Sana'a (Yemen)",
-      "lat": 15.3694,
-      "lng": 44.191,
-      "event": "Undertook a trading journey south to Yemen, where Meccan merchants exchanged goods with the markets of Sana'a. Ibn Sa'd records that Abu Bakr conducted multiple commercial ventures to both Yemen and Syria, reinforcing his reputation as one of Mecca's leading traders.",
-      "category": "trade",
-      "source": "Ibn Sa'd"
-    },
-    {
-      "year": 610,
-      "age": 37,
-      "precision": "year",
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Accepted Islam immediately upon hearing the Prophet's message, becoming the first free adult male to embrace the new faith. His instant belief without hesitation earned him the title al-Siddiq (the Truthful). The Prophet himself said, 'I never invited anyone to Islam who did not show some reluctance — except Abu Bakr.'",
-      "category": "conversion",
-      "source": "Ibn Ishaq; Sahih al-Bukhari; Ibn Hisham"
-    },
-    {
-      "year": 610,
-      "age": 37,
-      "precision": "period",
-      "period_end": 613,
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Used his social standing and wide network among the Quraysh to bring several prominent figures to Islam, including Uthman ibn Affan, al-Zubayr ibn al-Awwam, Abd al-Rahman ibn Awf, Sa'd ibn Abi Waqqas, and Talhah ibn Ubaydullah — five of the ten promised Paradise. His personal credibility was instrumental in the earliest growth of the Muslim community.",
-      "category": "preaching",
-      "source": "Ibn Ishaq; Ibn Sa'd"
-    },
-    {
-      "year": 615,
-      "age": 42,
-      "precision": "year",
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Severely beaten by Utba ibn Rabi'ah and other Quraysh opponents after publicly defending the Prophet near the Ka'ba. He was struck so viciously in the face that his nose bled profusely and he had to be carried home unconscious by members of Banu Taym. His family feared for his life for several days.",
-      "category": "persecution",
-      "source": "Ibn Ishaq; Ibn Hisham"
-    },
-    {
-      "year": 615,
-      "age": 42,
-      "precision": "year",
-      "location": "Mecca",
-      "lat": 21.4225,
-      "lng": 39.8262,
-      "event": "Purchased and freed Bilal ibn Rabah, an Abyssinian slave who was being tortured by his master Umayyah ibn Khalaf for embracing Islam. Abu Bakr spent a large sum from his personal wealth to manumit Bilal and several other enslaved Muslims, including Amir ibn Fuhayra and Umm Ubays.",
+      "event": "Became a respected Meccan merchant known for integrity. A close friend of Muhammad years before the revelation; the two were nearly the same age.",
       "category": "civic",
-      "source": "Ibn Ishaq; Sahih al-Bukhari; Ibn Hisham"
+      "source": "Ibn Ishaq"
     },
     {
-      "year": 616,
-      "age": 43,
+      "year": 610,
+      "age": 37,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Accepted Islam within days of the first revelation. Tradition names him the first free adult male to believe. His wealth and standing brought many early converts — Uthman, Zubayr, Abd al-Rahman ibn Awf, Sa'd ibn Abi Waqqas — into Islam through him.",
+      "category": "conversion",
+      "source": "Ibn Ishaq; Tabari"
+    },
+    {
+      "year": 613,
+      "age": 40,
       "precision": "period",
-      "period_end": 619,
-      "location": "Shi'b Abi Talib, Mecca",
-      "lat": 21.428,
-      "lng": 39.823,
-      "event": "Endured the three-year boycott imposed by the Quraysh against Banu Hashim and Banu al-Muttalib, during which the clans were confined to a narrow valley and cut off from trade and marriage. Although Abu Bakr belonged to Banu Taym, he chose to share the hardship, smuggling food and supplies to the besieged Muslims.",
-      "category": "persecution",
-      "source": "Ibn Ishaq; Ibn Hisham; Al-Tabari"
+      "period_end": 622,
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "During the years of Meccan persecution, used his wealth to buy and free enslaved Muslims, including Bilal ibn Rabah. Suffered public beatings himself for defending the Prophet.",
+      "category": "preaching",
+      "source": "Ibn Ishaq"
     },
     {
-      "year": 619,
-      "age": 46,
+      "year": 620,
+      "age": 47,
       "precision": "year",
-      "location": "Ta'if",
-      "lat": 21.2703,
-      "lng": 40.4158,
-      "event": "Accompanied the Prophet on his journey to Ta'if to seek support from the Thaqif tribe after the deaths of Khadijah and Abu Talib. The people of Ta'if rejected the message and pelted the Prophet with stones. Abu Bakr stayed at his side throughout the ordeal and tended to his injuries on the return to Mecca.",
-      "category": "travel",
-      "source": "Ibn Ishaq; Ibn Hisham"
-    },
-    {
-      "year": 621,
-      "age": 48,
-      "precision": "year",
-      "location": "Mina",
-      "lat": 21.4133,
-      "lng": 39.8933,
-      "event": "Helped facilitate the Pledges of Aqaba, in which delegations from the Aws and Khazraj tribes of Yathrib (Medina) secretly met the Prophet at Mina during the pilgrimage season and pledged their allegiance. These pledges laid the political groundwork for the Hijra by guaranteeing the Muslims a safe haven.",
-      "category": "pledge",
-      "source": "Ibn Ishaq; Ibn Hisham"
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Publicly affirmed the Prophet's account of the Isra and Mi'raj without hesitation, earning the title As-Siddiq, 'the Truthful One' — the name history would remember him by.",
+      "category": "spiritual",
+      "source": "Ibn Ishaq"
     },
     {
       "year": 622,
       "month": 9,
-      "age": 49,
+      "age": 52,
       "precision": "month",
-      "location": "Cave of Thawr",
-      "lat": 21.3767,
-      "lng": 39.8486,
-      "event": "Departed Mecca with the Prophet on the Hijra, hiding for three days in the Cave of Thawr on Mount Thawr south of Mecca while Quraysh search parties scoured the area. The Quran references this moment: 'When they were in the cave, he said to his companion, Do not grieve; indeed Allah is with us' (9:40). Abu Bakr's daughter Asma brought them provisions each night.",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Chosen by the Prophet to be his sole companion on the Hijra. Slipped out of Mecca with him by night as Quraysh assassins closed in.",
       "category": "migration",
-      "source": "Sahih al-Bukhari; Quran 9:40; Ibn Ishaq"
+      "source": "Ibn Ishaq; Bukhari"
     },
     {
       "year": 622,
       "month": 9,
-      "age": 49,
+      "age": 52,
       "precision": "month",
-      "location": "Quba",
+      "location": "Cave of Thawr (south of Mecca)",
+      "lat": 21.3744,
+      "lng": 39.8597,
+      "event": "Hid three nights with the Prophet in the Cave of Thawr south of Mecca while search parties passed by the mouth. Moments the Quran would later recall: 'the second of two, when they were in the cave'.",
+      "category": "migration",
+      "source": "Bukhari; Quran 9:40"
+    },
+    {
+      "year": 622,
+      "month": 9,
+      "age": 52,
+      "precision": "month",
+      "location": "Quba (outskirts of Medina)",
       "lat": 24.4392,
       "lng": 39.6172,
-      "event": "Arrived at Quba on the outskirts of Yathrib after a journey of roughly eight days via the coastal route to avoid Quraysh pursuers. The Prophet and Abu Bakr stayed at Quba for several days, during which the Mosque of Quba — the first mosque in Islam — was established.",
+      "event": "Arrived with the Prophet at Quba on the outskirts of Yathrib after an eight-day desert journey.",
       "category": "migration",
-      "source": "Ibn Ishaq; Sahih al-Bukhari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 622,
       "month": 9,
-      "age": 49,
+      "age": 52,
       "precision": "month",
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Settled in the al-Sunh quarter of Medina among the Banu al-Harith ibn al-Khazraj. He established himself as one of the Prophet's closest advisors, participating in the drafting of the Constitution of Medina that regulated relations between the Muhajirun, Ansar, and Jewish tribes of the city.",
+      "event": "Entered Medina and settled in the new Muslim community. Gave his daughter A'isha in marriage to the Prophet.",
       "category": "migration",
-      "source": "Ibn Ishaq; Ibn Hisham"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 624,
       "month": 3,
-      "age": 51,
+      "age": 54,
       "precision": "month",
-      "location": "Badr",
+      "location": "Wells of Badr",
       "lat": 23.7833,
       "lng": 38.7833,
-      "event": "Fought at the Battle of Badr, the first major military engagement between the Muslims and the Quraysh. Abu Bakr served in the Prophet's personal guard at the command post, and his son Abd al-Rahman fought on the opposing Quraysh side. The Muslim victory against a numerically superior force established the community's military credibility.",
+      "event": "Fought at the Battle of Badr as one of the Prophet's closest lieutenants. His own son Abd al-Rahman fought on the Quraysh side that day.",
       "category": "battle",
-      "source": "Ibn Ishaq; Sahih al-Bukhari; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 625,
       "month": 3,
-      "age": 52,
+      "age": 55,
       "precision": "month",
-      "location": "Uhud",
-      "lat": 24.5065,
-      "lng": 39.6119,
-      "event": "Fought at the Battle of Uhud, where the Muslim forces initially gained the upper hand but suffered a reversal when archers abandoned their position. Abu Bakr was among the small group of companions who stood firm around the wounded Prophet when the Quraysh cavalry counter-attacked, shielding him from further harm.",
+      "location": "Mount Uhud (north of Medina)",
+      "lat": 24.5039,
+      "lng": 39.6122,
+      "event": "Present at Uhud. Stood firm with the small group who rallied around the wounded Prophet when the line broke.",
       "category": "battle",
-      "source": "Ibn Ishaq; Ibn Hisham; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 627,
       "month": 3,
-      "age": 54,
+      "age": 57,
       "precision": "month",
-      "location": "Medina (Trench)",
-      "lat": 24.4836,
-      "lng": 39.6097,
-      "event": "Participated in the Battle of the Trench (al-Khandaq), where a coalition of Quraysh, Ghatafan, and other tribes besieged Medina. Abu Bakr commanded a section of the trench defence on the northern perimeter. The siege lasted nearly a month before the coalition forces withdrew, broken by storms and the defection of their allies.",
+      "location": "Medina (north trench)",
+      "lat": 24.475,
+      "lng": 39.61,
+      "event": "Fought at the Battle of the Trench during the month-long siege of Medina by the Confederates.",
       "category": "battle",
-      "source": "Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 628,
       "month": 3,
-      "age": 55,
+      "age": 58,
       "precision": "month",
-      "location": "Hudaybiyyah",
-      "lat": 21.4417,
-      "lng": 39.6083,
-      "event": "Present at the Treaty of Hudaybiyyah, where the Prophet negotiated a ten-year truce with the Quraysh. When some companions objected to the apparently unfavorable terms, Abu Bakr urged them to trust the Prophet's judgement, telling Umar, 'Hold fast to his stirrup, for by Allah he is right.'",
+      "location": "Hudaybiyyah (near Mecca)",
+      "lat": 21.4894,
+      "lng": 39.68,
+      "event": "Accompanied the Prophet on the pilgrimage attempt halted at Hudaybiyyah. Among the very first to give the Pledge of the Tree (Bay'at al-Ridwan).",
       "category": "treaty",
-      "source": "Sahih al-Bukhari; Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq; Bukhari"
     },
     {
       "year": 630,
       "month": 1,
-      "age": 57,
+      "age": 60,
       "precision": "month",
       "location": "Mecca",
       "lat": 21.4225,
       "lng": 39.8262,
-      "event": "Entered Mecca with the Muslim army during the Conquest of Mecca (Fath Makkah), in which the city was taken almost without bloodshed. Abu Bakr brought his elderly father Abu Quhafa, who was nearly blind, before the Prophet to formally declare his acceptance of Islam. The Prophet gently told Abu Bakr he should have let the old man stay home.",
+      "event": "Entered Mecca with the Prophet at the bloodless conquest. His aged father Abu Quhafa accepted Islam on the same day.",
       "category": "conquest",
-      "source": "Sahih Muslim; Ibn Ishaq; Al-Tabari"
+      "source": "Ibn Ishaq; Tabari"
     },
     {
       "year": 630,
-      "month": 1,
-      "age": 57,
+      "month": 2,
+      "age": 60,
       "precision": "month",
-      "location": "Hunayn",
+      "location": "Hunayn valley",
       "lat": 21.45,
-      "lng": 40.1,
-      "event": "Fought at the Battle of Hunayn against the Hawazin and Thaqif confederacy shortly after the Conquest of Mecca. When an ambush in the narrow valley caused the Muslim vanguard to scatter, Abu Bakr was among those who remained with the Prophet until reinforcements rallied and turned the battle into a decisive victory.",
+      "lng": 40.3,
+      "event": "Fought at Hunayn. Famously said, as the huge Muslim army marched out, 'We shall not this day be worsted by reason of the smallness of our numbers' — a remark the Quran is said to have reproved.",
       "category": "battle",
-      "source": "Ibn Ishaq; Al-Tabari; Sahih Muslim"
+      "source": "Ibn Ishaq; Quran 9:25"
+    },
+    {
+      "year": 630,
+      "month": 2,
+      "age": 60,
+      "precision": "month",
+      "location": "Ta'if",
+      "lat": 21.2703,
+      "lng": 40.4158,
+      "event": "Present at the siege of Ta'if.",
+      "category": "siege",
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 630,
+      "month": 10,
+      "age": 60,
+      "precision": "month",
+      "location": "Tabuk",
+      "lat": 28.3998,
+      "lng": 36.57,
+      "event": "Accompanied the Prophet on the Tabuk expedition, the last of the Prophet's campaigns. Gave all his wealth to finance the army, keeping nothing back.",
+      "category": "expedition",
+      "source": "Ibn Ishaq"
+    },
+    {
+      "year": 631,
+      "age": 58,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Led the Hajj of the year 9 AH on the Prophet's behalf — the first Islamic Hajj. Ali caught up with him on the route carrying the newly-revealed Surah al-Tawbah to proclaim.",
+      "category": "pilgrimage",
+      "source": "Ibn Ishaq; Tabari"
     },
     {
       "year": 632,
       "month": 3,
       "age": 59,
       "precision": "month",
-      "location": "Arafat",
-      "lat": 21.3547,
-      "lng": 39.9842,
-      "event": "Accompanied the Prophet on the Farewell Pilgrimage (Hajjat al-Wada'), the only Hajj the Prophet performed after the conquest of Mecca. Standing at Arafat, the Prophet delivered his final sermon to over 100,000 pilgrims. Abu Bakr had led the Hajj the previous year (631) as the Prophet's appointed representative.",
+      "location": "Plain of Arafat",
+      "lat": 21.355,
+      "lng": 39.9839,
+      "event": "Performed the Farewell Pilgrimage at the Prophet's side.",
       "category": "pilgrimage",
-      "source": "Sahih al-Bukhari; Sahih Muslim; Ibn Ishaq"
+      "source": "Ibn Ishaq"
     },
     {
       "year": 632,
@@ -270,31 +247,44 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Elected as the first caliph (Khalifat Rasul Allah) at the Saqifah of Banu Sa'ida, a covered meeting place in Medina, on the day of the Prophet's death. After intense deliberation between the Muhajirun and Ansar, Umar ibn al-Khattab pledged allegiance to Abu Bakr, and the assembly followed. He addressed the Muslims: 'If I do well, help me; if I do wrong, set me right.'",
-      "category": "succession",
-      "source": "Sahih al-Bukhari; Al-Tabari; Ibn Sa'd"
+      "event": "Led the prayers in Medina during the Prophet's final illness. On the Prophet's death, after the meeting at the Saqifa of Banu Sa'ida, was acknowledged as the first caliph — the Successor to the Messenger of God.",
+      "category": "accession",
+      "source": "Ibn Ishaq; Tabari"
     },
     {
       "year": 632,
+      "month": 8,
       "age": 59,
-      "precision": "year",
-      "location": "Dhu Qissa",
+      "precision": "month",
+      "location": "Dhu Qissa (east of Medina)",
       "lat": 24.55,
-      "lng": 39.85,
-      "event": "Personally led the Muslim army to Dhu Qissa, east of Medina, to confront the apostate forces of Kharijah ibn Hisn al-Fazari and Tulayha's advance guard during the Ridda Wars. Despite counsel from companions to remain in Medina, Abu Bakr insisted on commanding the first counter-attack himself, driving the rebels back from the approaches to the capital.",
+      "lng": 39.95,
+      "event": "Personally marched from Medina to confront the Ridda (apostasy) rebels at Dhu Qissa, about 24 miles east of the city. Defeated the rebels on 1 August 632 and captured the position.",
       "category": "battle",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "source": "Tabari; Waqidi"
+    },
+    {
+      "year": 632,
+      "month": 8,
+      "age": 59,
+      "precision": "month",
+      "location": "Abraq (northeast of Medina)",
+      "lat": 24.8,
+      "lng": 40.15,
+      "event": "Moved the army on to Abraq (some 72 miles northeast of Medina) where the retreating tribes had gathered. Defeated them there, then returned to Medina to direct the broader Ridda campaign through eleven commanders sent across Arabia.",
+      "category": "battle",
+      "source": "Tabari; Waqidi"
     },
     {
       "year": 632,
       "age": 59,
       "precision": "year",
-      "location": "Abraq al-Rabadha",
-      "lat": 24.68,
-      "lng": 40.2,
-      "event": "Led a second expedition to Abraq al-Rabadha, pursuing the retreating rebel forces deeper into the Najd. After securing this position, he entrusted further operations to his generals — most notably Khalid ibn al-Walid — and returned to Medina to coordinate the broader campaign against apostasy across Arabia.",
-      "category": "battle",
-      "source": "Al-Tabari"
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Directed the Ridda Wars from Medina: Khalid ibn al-Walid to Yamama against Musaylima, others to Oman, Bahrain, Yemen, Hadramaut. Within one year the Arabian peninsula was reunified.",
+      "category": "civic",
+      "source": "Tabari"
     },
     {
       "year": 633,
@@ -303,9 +293,20 @@
       "location": "Medina",
       "lat": 24.4686,
       "lng": 39.6142,
-      "event": "Dispatched multiple armies to conquer the frontiers of the Byzantine and Sasanian empires, ordering Khalid ibn al-Walid to Iraq and Amr ibn al-As, Yazid ibn Abi Sufyan, Shurahbil ibn Hasana, and Abu Ubayda ibn al-Jarrah to Syria. These campaigns marked the beginning of the great Arab conquests that would reshape the map of the ancient world.",
-      "category": "expedition",
-      "source": "Al-Tabari; Ibn Sa'd"
+      "event": "Ordered the compilation of the Quran into a single mushaf after the Battle of Yamama killed many of the memorisers. The task was given to Zayd ibn Thabit.",
+      "category": "civic",
+      "source": "Bukhari"
+    },
+    {
+      "year": 633,
+      "age": 60,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Launched the northern campaigns: Khalid ibn al-Walid sent into Iraq, and forces dispatched against Byzantine Syria. He himself remained in Medina.",
+      "category": "civic",
+      "source": "Tabari; Baladhuri"
     },
     {
       "year": 634,
@@ -313,11 +314,11 @@
       "age": 61,
       "precision": "month",
       "location": "Medina",
-      "lat": 24.4672,
-      "lng": 39.6115,
-      "event": "Died in Medina on 22 Jumada al-Thani 13 AH after a brief illness of approximately fifteen days. He nominated Umar ibn al-Khattab as his successor after consulting senior companions. He was buried beside the Prophet in the chamber of Aisha, his daughter, in what is now part of the Prophet's Mosque (al-Masjid al-Nabawi).",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Fell ill in Medina. Before dying, nominated Umar ibn al-Khattab as his successor to avoid a second succession crisis. Died on 22 or 23 August 634 (22 Jumada al-Thani 13 AH) after a caliphate of just over two years. Buried beside the Prophet in A'isha's chamber.",
       "category": "death",
-      "source": "Al-Tabari; Sahih al-Bukhari; Ibn Sa'd"
+      "source": "Tabari; Ibn Sa'd"
     }
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "person": "Al-Biruni",
+  "slug": "F0222",
+  "lifespan": {"birth": 973, "death": 1048},
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "medium",
+    "disclosure": "Al-Biruni gives us his own dates implicitly through his astronomical observations: he records the latitude of his birthplace Kath in 990, lunar eclipses from Jurjan in 1003, from his homeland in 1004, from Jurjaniyya in 1016, and from Ghazna in 1019 and 1020 — each entry effectively a postcard with a date and a location. Year-precision is therefore reliable across his life. Months are usually unknown except where an eclipse pins them. The 1017 transition (Mahmud of Ghazna's annexation of Khwarazm) is well attested but the exact arrival date in Ghazna is not given. His Indian travels accompanying Mahmud's campaigns happened between roughly 1017 and 1030 but the chronology of which campaign he joined when is debated. Year of death is given as either 1048 or 1050."
+  },
+  "sources": [
+    "Al-Biruni, Tahdid Nihayat al-Amakin (his own observations and dated entries)",
+    "Al-Biruni, Kitab al-Hind",
+    "Yaqut al-Hamawi, Mu'jam al-Udaba",
+    "C. Edmund Bosworth, 'Al-Biruni' in Encyclopaedia Iranica",
+    "George Saliba, Islamic Science and the Making of the European Renaissance (2007)"
+  ],
+  "journey": [
+    {"year": 973, "month": 9, "day": 4, "age": 0, "precision": "day", "location": "Kath", "lat": 41.7497, "lng": 60.2167, "event": "Born on 4 September 973 in the outer district (biruni) of Kath, capital of the Afrighid dynasty of Khwarazm — hence the name al-Biruni, 'the outsider'. His mother tongue is Khwarazmian, an Iranian language now extinct.", "category": "birth", "source": "Al-Biruni's own dating"},
+    {"year": 985, "age": 12, "precision": "year", "location": "Kath", "lat": 41.7497, "lng": 60.2167, "event": "Begins serious study of mathematics and astronomy under Abu Nasr Mansur ibn Iraq, a member of the ruling Khwarazm-Shah dynasty who becomes both his teacher and lifelong collaborator.", "category": "childhood", "source": "Bosworth"},
+    {"year": 990, "age": 17, "precision": "year", "location": "Kath", "lat": 41.7497, "lng": 60.2167, "event": "At seventeen, computes the latitude of Kath by observing the maximum altitude of the sun. Already engaged in serious original scientific work.", "category": "spiritual", "source": "Al-Biruni's own dating"},
+    {"year": 995, "age": 22, "precision": "year", "location": "Kath", "lat": 41.7497, "lng": 60.2167, "event": "The Afrighid dynasty he had served is overthrown by the rival Ma'munid dynasty of Jurjaniyya. Having been close to the defeated Afrighids, al-Biruni judges it prudent to leave his homeland in search of patronage elsewhere.", "category": "crisis", "source": "Bosworth"},
+    {"year": 998, "age": 25, "precision": "year", "location": "Bukhara", "lat": 39.7747, "lng": 64.4286, "event": "Spends time in Bukhara under the late Samanid ruler Mansur II ibn Nuh. Begins his philosophical correspondence with Ibn Sina, with whom he debates Aristotelian physics in a series of sharp letters that survive.", "category": "spiritual", "source": "Bosworth"},
+    {"year": 1000, "age": 27, "precision": "year", "location": "Jurjan", "lat": 36.8456, "lng": 54.4356, "event": "Settles in Jurjan, near the Caspian Sea, under the patronage of the Ziyarid ruler Qabus ibn Wushmagir. Dedicates to Qabus his book al-Athar al-Baqiya (The Chronology of Ancient Nations), a comparative study of every calendar system he could find.", "category": "civic", "source": "Bosworth; Britannica"},
+    {"year": 1003, "month": 2, "day": 19, "age": 29, "precision": "day", "location": "Jurjan", "lat": 36.8456, "lng": 54.4356, "event": "Observes a lunar eclipse from Jurjan on 19 February 1003 — one of the dated entries that fix the chronology of his life.", "category": "spiritual", "source": "Al-Biruni's own observation log"},
+    {"year": 1004, "month": 6, "day": 4, "age": 30, "precision": "day", "location": "Jurjaniyya", "lat": 42.3417, "lng": 59.1500, "event": "Returns to his homeland; observes a lunar eclipse from Jurjaniyya (Gurganj) on 4 June 1004. Now serves at the Ma'munid court of Khwarazm under Abu'l-Abbas Ma'mun.", "category": "civic", "source": "Al-Biruni's own observation log"},
+    {"year": 1016, "month": 6, "day": 7, "age": 43, "precision": "day", "location": "Jurjaniyya", "lat": 42.3417, "lng": 59.1500, "event": "Builds an instrument at Jurjaniyya for observing solar meridian transits. Between 7 June and 7 December 1016 he makes fifteen observations with it, working alongside his old teacher Abu Nasr Mansur, who is also at the Ma'munid court.", "category": "spiritual", "source": "Al-Biruni's own observation log"},
+    {"year": 1017, "age": 44, "precision": "year", "location": "Ghazna", "lat": 33.5444, "lng": 68.4181, "event": "Mahmud of Ghazna invades and annexes Khwarazm. Most scholars at the Ma'munid court are taken to Ghazna; Ibn Sina escapes west, but al-Biruni does not. He is brought to Ghazna effectively as a captive of state and made court astrologer — a role he openly ridiculed.", "category": "migration", "source": "Bosworth; Wikipedia"},
+    {"year": 1019, "month": 9, "day": 17, "age": 46, "precision": "day", "location": "Ghazna", "lat": 33.5444, "lng": 68.4181, "event": "Observes a lunar eclipse from Ghazna on 17 September 1019 and gives the precise altitudes of various well-known stars at first contact, fixing his presence in Ghazna in this period.", "category": "spiritual", "source": "Al-Biruni's own observation log"},
+    {"year": 1022, "age": 49, "precision": "period", "period_end": 1030, "location": "Multan", "lat": 30.1575, "lng": 71.5249, "event": "Brought to the Indus Valley as Mahmud's personal astrologer. Over the following years travels independently in Sindh and Punjab — Multan, Lahore, and other cities — meeting Brahmin scholars, learning Sanskrit, and translating Hindu astronomical and yogic works.", "category": "travel", "source": "Kitab al-Hind; Wikipedia"},
+    {"year": 1024, "age": 51, "precision": "year", "location": "Ghazna", "lat": 33.5444, "lng": 68.4181, "event": "Returns to Ghazna with a comprehensive personal library on India. Begins composing his great ethnographic work Tahqiq ma li-l-Hind, known simply as Kitab al-Hind, a study unprecedented in its sympathetic and rigorous treatment of Indian religion and science.", "category": "spiritual", "source": "Kitab al-Hind"},
+    {"year": 1030, "age": 57, "precision": "year", "location": "Ghazna", "lat": 33.5444, "lng": 68.4181, "event": "Completes Kitab al-Hind. Mahmud of Ghazna dies; al-Biruni dedicates his major astronomical work Al-Qanun al-Mas'udi to Mahmud's son and successor Mas'ud.", "category": "spiritual", "source": "Bosworth"},
+    {"year": 1035, "age": 62, "precision": "year", "location": "Ghazna", "lat": 33.5444, "lng": 68.4181, "event": "Continues prolific work under Mas'ud and later Mawdud — writing on pharmacology, mineralogy (Kitab al-Jamahir), and a treatise on gems. By his own count he has written 113 books by this stage of his life.", "category": "spiritual", "source": "Bosworth"},
+    {"year": 1048, "age": 75, "precision": "year", "location": "Ghazna", "lat": 33.5444, "lng": 68.4181, "event": "Dies in Ghazna around 1048, probably aged 75. His tomb is in Ghazni in modern Afghanistan; the town of his birth in Khwarazm is now named Beruniy in his honour.", "category": "death", "source": "Bosworth; Yaqut"}
+  ]
+}

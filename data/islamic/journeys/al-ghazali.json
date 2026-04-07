@@ -1,0 +1,40 @@
+{
+  "person": "Al-Ghazali",
+  "slug": "F0238",
+  "lifespan": {"birth": 1058, "death": 1111},
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Al-Ghazali wrote his own spiritual autobiography, Al-Munqidh min al-Dalal (Deliverance from Error), which gives us his crisis of 1095 and the years of travel that followed in his own words. Key dates — his appointment to the Nizamiyya in Baghdad (1091), his departure in November 1095, his return to teaching in Nishapur (1106), and his death in Tus (December 1111) — are well attested across early biographers like Ibn Asakir and Subki, and confirmed by modern scholarship. The years between 1095 and 1106 have less month-level precision because Ghazali himself moved often and quietly; the locations (Damascus, Jerusalem, Hebron, Mecca, Medina, Tus) are certain but the exact transitions are sometimes a year off between sources."
+  },
+  "sources": [
+    "Al-Ghazali, Al-Munqidh min al-Dalal (Deliverance from Error)",
+    "Ibn Asakir, Tabyin Kadhib al-Muftari",
+    "Al-Subki, Tabaqat al-Shafi'iyya al-Kubra",
+    "Frank Griffel, Al-Ghazali's Philosophical Theology (2009)",
+    "Kenneth Garden, The First Islamic Reviver (2014)"
+  ],
+  "journey": [
+    {"year": 1058, "age": 0, "precision": "year", "location": "Tus", "lat": 36.4844, "lng": 59.5253, "event": "Born in Tabaran, a town in the district of Tus in Khurasan, into a family of modest means. His father, a wool spinner, dies while Ghazali and his brother Ahmad are still young.", "category": "birth", "source": "Ibn Asakir; Subki"},
+    {"year": 1070, "age": 12, "precision": "year", "location": "Tus", "lat": 36.4844, "lng": 59.5253, "event": "Begins his study of fiqh as a child under the local teacher Ahmad al-Radhakani in his hometown.", "category": "childhood", "source": "Ibn Asakir"},
+    {"year": 1074, "age": 16, "precision": "year", "location": "Gurgan", "lat": 36.8456, "lng": 54.4356, "event": "Travels to Gurgan, near the Caspian Sea, to study with Abu Nasr al-Isma'ili. On the return journey his caravan is robbed; he begs the bandits for his notebooks alone, and the leader's mocking reply — that knowledge kept only in notes is no real knowledge — makes him resolve to memorise everything he studies.", "category": "travel", "source": "Subki; Munqidh tradition"},
+    {"year": 1077, "age": 19, "precision": "year", "location": "Nishapur", "lat": 36.2133, "lng": 58.7958, "event": "Enters the Nizamiyya madrasa of Nishapur to study under the great Ash'ari theologian al-Juwayni, known as Imam al-Haramayn. Stays for roughly eight years, mastering jurisprudence, theology, logic and philosophy.", "category": "spiritual", "source": "Ibn Asakir; Subki"},
+    {"year": 1085, "age": 27, "precision": "year", "location": "Nishapur", "lat": 36.2133, "lng": 58.7958, "event": "His teacher al-Juwayni dies. Ghazali leaves Nishapur and joins the camp of the Seljuk vizier Nizam al-Mulk, the most powerful man in the empire, who keeps a circle of scholars around him.", "category": "loss", "source": "Subki; Britannica"},
+    {"year": 1091, "age": 33, "precision": "year", "location": "Baghdad", "lat": 33.3152, "lng": 44.3661, "event": "Appointed by Nizam al-Mulk to the chair of the Nizamiyya in Baghdad — the most prestigious teaching post in the Sunni world. Lectures to over 300 students and rises to a rank above princes and viziers.", "category": "civic", "source": "Ibn Asakir; Britannica"},
+    {"year": 1095, "month": 7, "age": 37, "precision": "month", "location": "Baghdad", "lat": 33.3152, "lng": 44.3661, "event": "Falls into a profound spiritual crisis. For six months he can barely speak, eat, or teach. Physicians declare his condition untreatable, recognising it as rooted in the soul, not the body.", "category": "crisis", "source": "Munqidh"},
+    {"year": 1095, "month": 11, "age": 37, "precision": "month", "location": "Baghdad", "lat": 33.3152, "lng": 44.3661, "event": "Abandons his career under the pretext of going on pilgrimage. Provides for his family, gives away his wealth, and sets out from Baghdad in November dressed as a poor Sufi. His brother Ahmad takes over his teaching post.", "category": "migration", "source": "Munqidh; Ibn Kathir"},
+    {"year": 1096, "age": 38, "precision": "year", "location": "Damascus", "lat": 33.5138, "lng": 36.2765, "event": "Arrives in Damascus and lives in seclusion. Climbs the western minaret of the Umayyad Mosque each day to remain in solitary remembrance and meditation, sometimes sweeping the mosque floor as a beggar for his keep.", "category": "spiritual", "source": "Munqidh; Musharraf Hussain"},
+    {"year": 1096, "age": 38, "precision": "year", "location": "Jerusalem", "lat": 31.7781, "lng": 35.2358, "event": "Travels south to Jerusalem and spends time at the Dome of the Rock, where he begins composing his masterwork Ihya Ulum al-Din (The Revival of the Religious Sciences).", "category": "spiritual", "source": "Munqidh; Ibn Asakir"},
+    {"year": 1096, "age": 38, "precision": "year", "location": "Hebron", "lat": 31.5326, "lng": 35.0998, "event": "Visits the tomb of the Prophet Ibrahim in Hebron. There he makes three personal pledges: never to accept money from a ruler, never to attend the court of any sultan, and never to engage in disputation for its own sake.", "category": "pledge", "source": "Munqidh"},
+    {"year": 1096, "month": 11, "age": 38, "precision": "month", "location": "Mecca", "lat": 21.4225, "lng": 39.8262, "event": "Performs the pilgrimage to Mecca that had been the original pretext for his departure from Baghdad.", "category": "pilgrimage", "source": "Britannica; Ibn Asakir"},
+    {"year": 1097, "age": 39, "precision": "year", "location": "Medina", "lat": 24.4672, "lng": 39.6111, "event": "Visits the Prophet's mosque in Medina, then turns north for the long journey back through Damascus and Baghdad toward his homeland.", "category": "pilgrimage", "source": "Ibn Asakir"},
+    {"year": 1099, "age": 41, "precision": "year", "location": "Tus", "lat": 36.4844, "lng": 59.5253, "event": "Returns home to Tus after nearly four years away. Founds a small private khanqah and madrasa where he lives a virtually monastic communal life with a circle of Sufi disciples.", "category": "spiritual", "source": "Britannica; Encyclopedia.com"},
+    {"year": 1102, "age": 44, "precision": "period", "period_end": 1106, "location": "Tus", "lat": 36.4844, "lng": 59.5253, "event": "Years of seclusion, writing and disciplined inner work. Completes the Ihya Ulum al-Din and writes his autobiography Al-Munqidh min al-Dalal, looking back on his crisis and its meaning.", "category": "spiritual", "source": "Munqidh; Griffel"},
+    {"year": 1106, "month": 7, "age": 48, "precision": "month", "location": "Nishapur", "lat": 36.2133, "lng": 58.7958, "event": "After eleven years away from public teaching, returns to the Nizamiyya of Nishapur at the urging of Fakhr al-Mulk, vizier of the Seljuk ruler. Justifies the return as a duty of renewal at the dawn of the sixth Islamic century, believing he is the mujaddid of the age.", "category": "civic", "source": "Munqidh; Subki"},
+    {"year": 1109, "age": 51, "precision": "year", "location": "Nishapur", "lat": 36.2133, "lng": 58.7958, "event": "Faces controversy at the Nishapur Nizamiyya over accusations that the Ihya shows the influence of philosophy. Summoned to defend himself before the Seljuk governor Sanjar in his court, where he is acquitted and his teaching is supported.", "category": "crisis", "source": "Garden 2014; Subki"},
+    {"year": 1110, "age": 52, "precision": "year", "location": "Tus", "lat": 36.4844, "lng": 59.5253, "event": "Returns to Tus from Nishapur, his health failing.", "category": "travel", "source": "Encyclopedia.com"},
+    {"year": 1111, "month": 12, "day": 19, "age": 53, "precision": "day", "location": "Tus", "lat": 36.4844, "lng": 59.5253, "event": "Dies in Tus on 19 December 1111 (14 Jumada II 505 AH). Buried at the Haruniyeh shrine in Tabaran. Honoured as Hujjat al-Islam, the Proof of Islam.", "category": "death", "source": "Ibn Asakir; Subki"}
+  ]
+}

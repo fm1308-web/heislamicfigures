@@ -1,0 +1,163 @@
+{
+  "person": "Saadi Shirazi",
+  "slug": "F1217",
+  "lifespan": "1210-1291",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "low",
+    "disclosure": "Saadi (Abu Muhammad Musharrif al-Din ibn Muslih al-Shirazi) is one of the most beloved Persian poets, and unusually for a medieval poet his life is partly autobiographical: the prefaces and many anecdotes in his Bustan (1257) and Gulistan (1258) describe his travels, his teachers, his captivity in the crusader states, and other events. The dates are loose by year and the historical reliability of the personal anecdotes is debated by modern scholars (some are clearly literary), but the broad outlines are clear: Shiraz, Baghdad, the Hijaz, Syria, perhaps further east, then a final return to Shiraz. The dates of the two great works and the year of his death are firm."
+  },
+  "sources": [
+    "Saadi, Bustan (The Orchard)",
+    "Saadi, Gulistan (The Rose Garden)",
+    "G.M. Wickens, introduction to The Bustan of Sa'di",
+    "Encyclopaedia Iranica, 'Sa'di'"
+  ],
+  "journey": [
+    {
+      "year": 1210,
+      "age": 0,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Born around 1210 in Shiraz in the province of Fars in southern Iran. His family is of religious learning - his father is a low-ranking official at the court of the Salghurid Atabeg of Fars. Loses his father when he is still a young child.",
+      "category": "birth",
+      "source": "Bustan, autobiographical references"
+    },
+    {
+      "year": 1218,
+      "age": 8,
+      "precision": "period",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Receives his early education in Shiraz under the patronage of his maternal uncle. Shiraz is one of the few major cities in the Persian east to escape the worst of the Mongol invasions of the 1220s, thanks to the diplomacy of the Salghurid rulers, who submit early.",
+      "category": "childhood",
+      "source": "Bustan, autobiographical passages"
+    },
+    {
+      "year": 1226,
+      "age": 16,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Around 1226 leaves Shiraz for Baghdad to continue his studies. Enrols at the famous Nizamiyya madrasa, founded by Nizam al-Mulk in the 11th century, then still one of the leading institutions of Sunni learning in the Islamic east.",
+      "category": "travel",
+      "source": "Bustan, autobiographical passages"
+    },
+    {
+      "year": 1230,
+      "age": 20,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Studies the religious sciences, Arabic and Persian literature at the Nizamiyya. According to his own account, his most important spiritual teacher in Baghdad is the great Sufi Shihab al-Din Suhrawardi, the founder of the Suhrawardi order. Receives a thorough grounding in classical Sufism.",
+      "category": "civic",
+      "source": "Bustan, autobiographical passages"
+    },
+    {
+      "year": 1235,
+      "age": 25,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj to Mecca, the first of fourteen pilgrimages he claims to have made over his lifetime - some on foot. The Hijaz becomes a recurring stop in his travels.",
+      "category": "pilgrimage",
+      "source": "Gulistan, anecdotes"
+    },
+    {
+      "year": 1240,
+      "age": 30,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Travels widely through Syria - Damascus, Baalbek, the upper Orontes - and through Anatolia and Iraq. The historical chaos of the period (the Mongol pressure from the east, the crusader presence in the Levant, internal Ayyubid politics) is the backdrop to many of his anecdotes.",
+      "category": "travel",
+      "source": "Gulistan, anecdotes"
+    },
+    {
+      "year": 1245,
+      "age": 35,
+      "precision": "period",
+      "location": "Tripoli (Lebanon)",
+      "lat": 34.4332,
+      "lng": 35.8442,
+      "event": "According to a famous anecdote in the Gulistan, is captured by the crusaders near Tripoli in Lebanon and forced to dig trenches in the citadel of Tripoli alongside Jewish slaves. A wealthy man of Aleppo, an old friend, recognises him and ransoms him for ten dinars, then marries him to his daughter with a dowry of 100 dinars. The marriage is unhappy and he soon leaves.",
+      "category": "persecution",
+      "source": "Gulistan, anecdote 31 of chapter 2"
+    },
+    {
+      "year": 1250,
+      "age": 40,
+      "precision": "period",
+      "location": "Tabriz",
+      "lat": 38.0667,
+      "lng": 46.3000,
+      "event": "Returns east through Anatolia and into Persian territory under Mongol Ilkhanid rule. Visits the major cities of the new Mongol order. According to some of his own anecdotes also travels as far east as Sind and Hindustan, though the historicity of the Indian travels is doubted.",
+      "category": "travel",
+      "source": "Gulistan, anecdotes"
+    },
+    {
+      "year": 1257,
+      "age": 47,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Around 1256-1257 returns permanently to his native Shiraz, after some 30 years of travels. Settles under the patronage of the Atabeg Sa'd ibn Abu Bakr (from whom, according to some accounts, he takes his pen name Sa'di). Devotes the rest of his life to writing.",
+      "category": "civic",
+      "source": "Bustan, dedication"
+    },
+    {
+      "year": 1257,
+      "age": 47,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Completes the Bustan (The Orchard) in 1257 (655 AH). It is a long mathnawi in ten chapters on subjects of practical wisdom and ethics: justice, beneficence, love, humility, repentance. The verse is among the most polished in Persian literature.",
+      "category": "civic",
+      "source": "Saadi, Bustan"
+    },
+    {
+      "year": 1258,
+      "age": 48,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "In 1258 (the year of the Mongol sack of Baghdad) completes the Gulistan (The Rose Garden), his most famous work. It is a collection of stories and aphorisms in Persian prose interspersed with verse, divided into eight chapters on the conduct of kings, the morals of dervishes, contentment, the advantages of silence, love, decrepitude, education, and rules for conduct. The Gulistan becomes the most widely read book of Persian prose for the next six centuries.",
+      "category": "civic",
+      "source": "Saadi, Gulistan"
+    },
+    {
+      "year": 1270,
+      "age": 60,
+      "precision": "period",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Lives in Shiraz under the protection of successive rulers, surviving the political turbulence of the late Salghurid period. Writes ghazals and qasidas in addition to longer works, builds up a circle of disciples, and is consulted on poetry, ethics, and statecraft.",
+      "category": "civic",
+      "source": "Encyclopaedia Iranica"
+    },
+    {
+      "year": 1291,
+      "age": 81,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Dies in Shiraz around 1291 (or possibly 1292), aged about 81. Is buried in the northeastern part of the city in a small garden near a stream that he had loved during his lifetime. The present mausoleum, the Saadiyeh, was built in the 1950s to replace earlier shrines on the same spot. His tomb is one of the great literary pilgrimage sites of Iran.",
+      "category": "death",
+      "source": "Encyclopaedia Iranica"
+    }
+  ]
+}

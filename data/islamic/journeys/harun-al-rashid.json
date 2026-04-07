@@ -1,0 +1,166 @@
+{
+  "person": "Harun al-Rashid",
+  "slug": "F0664",
+  "lifespan": "763-809",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Harun al-Rashid is one of the best documented caliphs of the Abbasid era, both in Arabic chronicles (al-Tabari, al-Ya'qubi, al-Mas'udi) and in Byzantine and Frankish sources. The major events of his life - his birth, his accession in 786, his pilgrimages, his campaigns against Byzantium, the fall of the Barmakids in 803, and his death at Tus in 809 - are firmly placed by year, and several have specific months or even days. Despite his association with the Thousand and One Nights, Harun's reign was a serious period of imperial consolidation and decline."
+  },
+  "sources": [
+    "Al-Tabari, Tarikh al-Rusul wa al-Muluk",
+    "Al-Mas'udi, Muruj al-Dhahab",
+    "Al-Ya'qubi, Tarikh",
+    "Hugh Kennedy, When Baghdad Ruled the Muslim World (2004)",
+    "Encyclopaedia of Islam, 2nd ed., 'Harun al-Rashid'"
+  ],
+  "journey": [
+    {
+      "year": 763,
+      "age": 0,
+      "precision": "year",
+      "location": "Rayy",
+      "lat": 35.5933,
+      "lng": 51.4326,
+      "event": "Born in 763 (or 766 by some accounts) at Rayy in northern Iran (close to modern Tehran), where his father al-Mahdi is then governor of the eastern provinces for the second Abbasid caliph al-Mansur. His mother is Khayzuran, a former Yemeni slave who will become one of the most powerful women in Abbasid politics.",
+      "category": "birth",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 775,
+      "age": 12,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "When his father al-Mahdi succeeds al-Mansur as caliph in 775, the family moves to the new capital Baghdad. Harun is raised at court, educated by Yahya ibn Khalid the Barmakid, who becomes his lifelong tutor and chief minister.",
+      "category": "childhood",
+      "source": "Al-Tabari; Kennedy, When Baghdad Ruled"
+    },
+    {
+      "year": 780,
+      "age": 17,
+      "precision": "year",
+      "location": "Anatolia",
+      "lat": 38.0,
+      "lng": 36.0,
+      "event": "In 780 leads (nominally) his first campaign against the Byzantines in Anatolia, with the experienced general al-Rabi' ibn Yunus as his real commander. Penetrates as far as Samalu in Cappadocia.",
+      "category": "battle",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 782,
+      "age": 19,
+      "precision": "year",
+      "location": "Bosphorus",
+      "lat": 41.0082,
+      "lng": 28.9784,
+      "event": "In 782 leads a much larger campaign that reaches the Asian shore of the Bosphorus opposite Constantinople. The empress Irene sues for peace and agrees to pay an enormous annual tribute. The success earns Harun the regnal title al-Rashid (the rightly guided) and the formal designation as second heir to the caliphate.",
+      "category": "battle",
+      "source": "Al-Tabari, Tarikh; Theophanes"
+    },
+    {
+      "year": 786,
+      "age": 23,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "On the night of 14 September 786, his older brother al-Hadi dies suddenly (his mother Khayzuran is widely suspected of having him smothered). Harun is acclaimed caliph in Baghdad on the same night, the fifth Abbasid ruler. He is 23 years old. Yahya the Barmakid becomes his all-powerful vizier.",
+      "category": "accession",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 791,
+      "age": 28,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Reigns from Baghdad as the de facto ruler of the largest empire on earth, stretching from the Atlantic to the Indus. The Barmakids manage day-to-day government with great efficiency. The court becomes a centre of poetry, music, scholarship, and luxury. Around this period the caliph performs nine major pilgrimages to Mecca, often on foot.",
+      "category": "civic",
+      "source": "Al-Mas'udi, Muruj"
+    },
+    {
+      "year": 797,
+      "age": 34,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs another of his many pilgrimages to Mecca. He is the only Abbasid caliph to make the hajj on foot. His wife Zubayda accompanies him on several of these and uses her own fortune to build wells and rest houses along the route from Iraq to Mecca, the famous Darb Zubayda.",
+      "category": "pilgrimage",
+      "source": "Al-Ya'qubi, Tarikh"
+    },
+    {
+      "year": 798,
+      "age": 35,
+      "precision": "year",
+      "location": "Aachen / Baghdad",
+      "lat": 50.7753,
+      "lng": 6.0839,
+      "event": "Diplomatic exchanges with Charlemagne of the Franks. Harun reportedly sends Charlemagne an elephant called Abul-Abbas, an elaborate water clock, and other gifts. The two empires share a common interest in containing Byzantium. This is the only documented direct contact between the Abbasid caliphate and the early medieval West.",
+      "category": "diplomacy",
+      "source": "Einhard, Vita Karoli; Al-Ya'qubi"
+    },
+    {
+      "year": 802,
+      "age": 39,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "On pilgrimage to Mecca in 802, Harun makes his two sons, al-Amin (by his Arab wife Zubayda) and al-Ma'mun (by a Persian concubine), swear in the Ka'ba to respect a complex succession arrangement: al-Amin will succeed as caliph in Baghdad, while al-Ma'mun will rule the eastern provinces from Merv with formal autonomy. The arrangement is written down and hung inside the Ka'ba.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 803,
+      "age": 40,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "In January 803, Harun suddenly destroys the Barmakid family. His foster brother and Yahya's son Ja'far is executed in the night, his body crucified on the bridges of Baghdad. Yahya and his other son al-Fadl are imprisoned and die in confinement. The reasons for the fall of the Barmakids remain debated; the loss of their administrative skill weakens the caliphate.",
+      "category": "crisis",
+      "source": "Al-Tabari, Tarikh; Al-Mas'udi"
+    },
+    {
+      "year": 806,
+      "age": 43,
+      "precision": "year",
+      "location": "Heraclea, Anatolia",
+      "lat": 37.5,
+      "lng": 34.0,
+      "event": "In summer 806, leads in person a massive campaign of about 135,000 men against the Byzantines under Nikephoros I, who has stopped paying the tribute owed since 782. Captures the strategic city of Heraclea and forces Nikephoros to resume tribute payments.",
+      "category": "battle",
+      "source": "Al-Tabari, Tarikh; Theophanes"
+    },
+    {
+      "year": 808,
+      "age": 45,
+      "precision": "year",
+      "location": "Khurasan",
+      "lat": 36.32,
+      "lng": 59.12,
+      "event": "In 808, leaves Baghdad for the eastern province of Khurasan, where the governor Rafi' ibn al-Layth has rebelled. Harun is already ill but insists on leading the campaign in person. Travels east via Hamadan and Nishapur towards the rebellion's base at Samarqand.",
+      "category": "expedition",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "day": 24,
+      "month": 3,
+      "year": 809,
+      "age": 45,
+      "precision": "day",
+      "location": "Tus",
+      "lat": 36.4934,
+      "lng": 59.5126,
+      "event": "On 24 March 809 (3 Jumada II 193 AH), dies at Tus (near modern Mashhad in eastern Iran), his illness having grown worse on the journey east. He is buried in a garden in Tus; the spot will later become part of the great Imam Reza shrine complex when the eighth Shia imam dies near the same place. Within four years of his death, his sons al-Amin and al-Ma'mun fight a devastating civil war that tears the empire apart.",
+      "category": "death",
+      "source": "Al-Tabari, Tarikh"
+    }
+  ]
+}

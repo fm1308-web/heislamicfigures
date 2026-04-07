@@ -1,0 +1,155 @@
+{
+  "person": "Ibn al-Haytham",
+  "slug": "F0721",
+  "lifespan": {
+    "birth": 965,
+    "death": 1040
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Ibn al-Haytham left a partial autobiography (recorded by Ibn Abi Usaybi'a) and a list of his own works. His birth in Basra, his disastrous Nile project under the Fatimid caliph al-Hakim, his subsequent feigned madness, and his quiet later years near the Azhar mosque in Cairo are all attested. Death year (around 1040) is firm; the years of his pre-Egypt career in Iraq are reconstructed."
+  },
+  "sources": [
+    "Ibn Abi Usaybi'a, Uyun al-Anba",
+    "A.I. Sabra, The Optics of Ibn al-Haytham (1989)",
+    "Roshdi Rashed, Geometry and Dioptrics in Classical Islam (2005)",
+    "MacTutor — Ibn al-Haytham"
+  ],
+  "journey": [
+    {
+      "year": 965,
+      "age": 0,
+      "precision": "year",
+      "location": "Basra",
+      "lat": 30.5085,
+      "lng": 47.7804,
+      "event": "Born in Basra, then under the rule of the Buyid dynasty. His full name is Abu Ali al-Hasan ibn al-Hasan ibn al-Haytham; in Latin Europe he becomes known as Alhazen.",
+      "category": "birth",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 985,
+      "age": 20,
+      "precision": "decade",
+      "location": "Basra",
+      "lat": 30.5085,
+      "lng": 47.7804,
+      "event": "Educated in Basra in the religious sciences but increasingly drawn to mathematics, astronomy, and physics. He grows dissatisfied with the contradictions among theological schools and resolves, as he later writes, to seek truth through demonstration.",
+      "category": "childhood",
+      "source": "Ibn Abi Usaybi'a (autobiographical fragment)"
+    },
+    {
+      "year": 995,
+      "age": 30,
+      "precision": "decade",
+      "location": "Basra",
+      "lat": 30.5085,
+      "lng": 47.7804,
+      "event": "Holds a minor administrative post in Basra but devotes most of his time to scientific writing. He composes commentaries on Euclid and Ptolemy and develops his early ideas on optics.",
+      "category": "civic",
+      "source": "Sabra (1989)"
+    },
+    {
+      "year": 1010,
+      "age": 45,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Summoned to Cairo by the Fatimid caliph al-Hakim bi-Amr Allah, who has heard that Ibn al-Haytham has claimed he can regulate the flooding of the Nile by engineering. The caliph welcomes him with full honours.",
+      "category": "travel",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1011,
+      "age": 46,
+      "precision": "year",
+      "location": "Aswan",
+      "lat": 24.0889,
+      "lng": 32.8998,
+      "event": "Travels south up the Nile with a team of engineers to Aswan, intending to build a dam at the cataracts. On seeing the existing pre-Islamic ruins and the scale of the river he realises the project is impossible.",
+      "category": "expedition",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1012,
+      "age": 47,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Returns to Cairo to face the volatile and dangerous caliph. Fearing execution if he confesses failure, he feigns madness — and the caliph orders him confined to his house under guard.",
+      "category": "crisis",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1015,
+      "age": 50,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Spends years under house arrest, during which — according to legend — he conducts the experiments with light, pinholes, and dark chambers that lay the foundation of his Kitab al-Manazir (Book of Optics).",
+      "category": "persecution",
+      "source": "Ibn Abi Usaybi'a; Sabra (1989)"
+    },
+    {
+      "year": 1021,
+      "age": 56,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Caliph al-Hakim disappears in mysterious circumstances on a night ride into the Muqattam hills. With al-Hakim gone, Ibn al-Haytham can drop the pretence of madness and resume an open scholarly life.",
+      "category": "loss",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1025,
+      "age": 60,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Settles near the Azhar mosque in the heart of Fatimid Cairo. He earns a modest living by copying manuscripts (Euclid's Elements, Ptolemy's Almagest) and by tutoring students who come to him for mathematics and astronomy.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1028,
+      "age": 63,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Completes the Kitab al-Manazir, his seven-book treatise on optics. It rejects the ancient Greek 'extramission' theory of vision (the eye sends out rays) and establishes the modern view that vision is light reflected from objects entering the eye, supported by careful experiments.",
+      "category": "spiritual",
+      "source": "Sabra (1989); Rashed (2005)"
+    },
+    {
+      "year": 1035,
+      "age": 70,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Continues writing on astronomy, geometry and number theory. His Doubts on Ptolemy criticises inconsistencies in the Almagest and influences later astronomers from al-Tusi to Copernicus.",
+      "category": "spiritual",
+      "source": "Rashed (2005)"
+    },
+    {
+      "year": 1040,
+      "age": 75,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Dies in Cairo and is buried there. His Kitab al-Manazir is translated into Latin around 1200 as De Aspectibus and becomes the foundational optical text for Roger Bacon, Witelo, Kepler, and the entire European tradition of geometric optics.",
+      "category": "death",
+      "source": "Ibn Abi Usaybi'a"
+    }
+  ]
+}

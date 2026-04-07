@@ -1,7 +1,354 @@
 [
-  { "file": "prophet-muhammad.json", "name": "Prophet Muhammad" },
-  { "file": "abu-bakr.json", "name": "Abu Bakr al-Siddiq" },
-  { "file": "umar-ibn-al-khattab.json", "name": "Umar ibn al-Khattab" },
-  { "file": "uthman-ibn-affan.json", "name": "Uthman ibn Affan" },
-  { "file": "ali-ibn-abi-talib.json", "name": "Ali ibn Abi Talib" }
+  {
+    "file": "prophet-muhammad.json",
+    "name": "Prophet Muhammad"
+  },
+  {
+    "file": "abd-al-qadir-jilani.json",
+    "name": "Abd al-Qadir al-Jilani"
+  },
+  {
+    "file": "jami.json",
+    "name": "Abd al-Rahman Jami"
+  },
+  {
+    "file": "abu-bakr.json",
+    "name": "Abu Bakr as-Siddiq"
+  },
+  {
+    "file": "abu-dawud.json",
+    "name": "Abu Dawud al-Sijistani"
+  },
+  {
+    "file": "abu-hanifa.json",
+    "name": "Abu Hanifa"
+  },
+  {
+    "file": "ahmad-sirhindi.json",
+    "name": "Ahmad Sirhindi"
+  },
+  {
+    "file": "aisha-bint-abi-bakr.json",
+    "name": "Aisha bint Abi Bakr"
+  },
+  {
+    "file": "akbar.json",
+    "name": "Akbar the Great"
+  },
+  {
+    "file": "al-battani.json",
+    "name": "Al-Battani"
+  },
+  {
+    "file": "al-biruni.json",
+    "name": "Al-Biruni"
+  },
+  {
+    "file": "al-farabi.json",
+    "name": "Al-Farabi"
+  },
+  {
+    "file": "al-ghazali.json",
+    "name": "Al-Ghazali"
+  },
+  {
+    "file": "al-hallaj.json",
+    "name": "Al-Hallaj"
+  },
+  {
+    "file": "al-idrisi.json",
+    "name": "Al-Idrisi"
+  },
+  {
+    "file": "al-khwarizmi.json",
+    "name": "Al-Khwarizmi"
+  },
+  {
+    "file": "al-kindi.json",
+    "name": "Al-Kindi"
+  },
+  {
+    "file": "al-razi.json",
+    "name": "Al-Razi (Rhazes)"
+  },
+  {
+    "file": "al-tabari.json",
+    "name": "Al-Tabari"
+  },
+  {
+    "file": "al-zahrawi.json",
+    "name": "Al-Zahrawi (Abulcasis)"
+  },
+  {
+    "file": "ali-al-hujwiri.json",
+    "name": "Ali al-Hujwiri (Data Ganj Bakhsh)"
+  },
+  {
+    "file": "ali-al-ridha.json",
+    "name": "Ali al-Ridha"
+  },
+  {
+    "file": "ali-ibn-abi-talib.json",
+    "name": "Ali ibn Abi Talib"
+  },
+  {
+    "file": "zayn-al-abidin.json",
+    "name": "Ali ibn al-Husayn Zayn al-Abidin"
+  },
+  {
+    "file": "iqbal.json",
+    "name": "Allama Iqbal"
+  },
+  {
+    "file": "aurangzeb.json",
+    "name": "Aurangzeb"
+  },
+  {
+    "file": "babur.json",
+    "name": "Babur"
+  },
+  {
+    "file": "bahauddin-naqshband.json",
+    "name": "Baha-ud-Din Naqshband"
+  },
+  {
+    "file": "bayazid-bistami.json",
+    "name": "Bayazid Bistami"
+  },
+  {
+    "file": "baybars.json",
+    "name": "Baybars"
+  },
+  {
+    "file": "said-nursi.json",
+    "name": "Bediuzzaman Said Nursi"
+  },
+  {
+    "file": "dara-shikoh.json",
+    "name": "Dara Shikoh"
+  },
+  {
+    "file": "dhul-nun-al-misri.json",
+    "name": "Dhul-Nun al-Misri"
+  },
+  {
+    "file": "attar.json",
+    "name": "Farid ud-Din Attar"
+  },
+  {
+    "file": "fatimah-al-zahra.json",
+    "name": "Fatimah al-Zahra"
+  },
+  {
+    "file": "hafez.json",
+    "name": "Hafez of Shiraz"
+  },
+  {
+    "file": "harun-al-rashid.json",
+    "name": "Harun al-Rashid"
+  },
+  {
+    "file": "hasan-al-basri.json",
+    "name": "Hasan al-Basri"
+  },
+  {
+    "file": "hasan-ibn-ali.json",
+    "name": "Hasan ibn Ali"
+  },
+  {
+    "file": "husayn-ibn-ali.json",
+    "name": "Husayn ibn Ali"
+  },
+  {
+    "file": "ibn-arabi.json",
+    "name": "Ibn Arabi"
+  },
+  {
+    "file": "ibn-battuta.json",
+    "name": "Ibn Battuta"
+  },
+  {
+    "file": "ibn-hazm.json",
+    "name": "Ibn Hazm"
+  },
+  {
+    "file": "ibn-jubayr.json",
+    "name": "Ibn Jubayr"
+  },
+  {
+    "file": "ibn-khaldun.json",
+    "name": "Ibn Khaldun"
+  },
+  {
+    "file": "ibn-rushd.json",
+    "name": "Ibn Rushd"
+  },
+  {
+    "file": "ibn-sina.json",
+    "name": "Ibn Sina"
+  },
+  {
+    "file": "ibn-taymiyya.json",
+    "name": "Ibn Taymiyya"
+  },
+  {
+    "file": "ibn-tufayl.json",
+    "name": "Ibn Tufayl"
+  },
+  {
+    "file": "ibn-al-haytham.json",
+    "name": "Ibn al-Haytham"
+  },
+  {
+    "file": "ibn-al-nafis.json",
+    "name": "Ibn al-Nafis"
+  },
+  {
+    "file": "ibrahim-ibn-adham.json",
+    "name": "Ibrahim ibn Adham"
+  },
+  {
+    "file": "ahmad-ibn-hanbal.json",
+    "name": "Imam Ahmad ibn Hanbal"
+  },
+  {
+    "file": "imam-malik.json",
+    "name": "Imam Malik ibn Anas"
+  },
+  {
+    "file": "imam-muslim.json",
+    "name": "Imam Muslim"
+  },
+  {
+    "file": "al-bukhari.json",
+    "name": "Imam al-Bukhari"
+  },
+  {
+    "file": "al-shafii.json",
+    "name": "Imam al-Shafi'i"
+  },
+  {
+    "file": "jafar-al-sadiq.json",
+    "name": "Ja'far al-Sadiq"
+  },
+  {
+    "file": "jabir-ibn-hayyan.json",
+    "name": "Jabir ibn Hayyan"
+  },
+  {
+    "file": "rumi.json",
+    "name": "Jalal ad-Din Rumi"
+  },
+  {
+    "file": "jamal-al-din-al-afghani.json",
+    "name": "Jamal al-Din al-Afghani"
+  },
+  {
+    "file": "junayd-al-baghdadi.json",
+    "name": "Junayd al-Baghdadi"
+  },
+  {
+    "file": "khadija-bint-khuwaylid.json",
+    "name": "Khadija bint Khuwaylid"
+  },
+  {
+    "file": "mehmed-ii.json",
+    "name": "Mehmed II the Conqueror"
+  },
+  {
+    "file": "mimar-sinan.json",
+    "name": "Mimar Sinan"
+  },
+  {
+    "file": "moinuddin-chishti.json",
+    "name": "Moinuddin Chishti"
+  },
+  {
+    "file": "muawiya.json",
+    "name": "Muawiya ibn Abi Sufyan"
+  },
+  {
+    "file": "muhammad-abduh.json",
+    "name": "Muhammad Abduh"
+  },
+  {
+    "file": "muhammad-al-baqir.json",
+    "name": "Muhammad al-Baqir"
+  },
+  {
+    "file": "mulla-sadra.json",
+    "name": "Mulla Sadra"
+  },
+  {
+    "file": "nasir-al-din-al-tusi.json",
+    "name": "Nasir al-Din al-Tusi"
+  },
+  {
+    "file": "nizami-ganjavi.json",
+    "name": "Nizami Ganjavi"
+  },
+  {
+    "file": "nizamuddin-auliya.json",
+    "name": "Nizamuddin Auliya"
+  },
+  {
+    "file": "omar-khayyam.json",
+    "name": "Omar Khayyam"
+  },
+  {
+    "file": "rabia-al-adawiyya.json",
+    "name": "Rabia al-Adawiyya"
+  },
+  {
+    "file": "saadi-shirazi.json",
+    "name": "Saadi Shirazi"
+  },
+  {
+    "file": "saladin.json",
+    "name": "Salahuddin Ayyubi"
+  },
+  {
+    "file": "shah-jahan.json",
+    "name": "Shah Jahan"
+  },
+  {
+    "file": "shah-waliullah.json",
+    "name": "Shah Waliullah"
+  },
+  {
+    "file": "suleiman.json",
+    "name": "Suleiman the Magnificent"
+  },
+  {
+    "file": "tariq-ibn-ziyad.json",
+    "name": "Tariq ibn Ziyad"
+  },
+  {
+    "file": "tipu-sultan.json",
+    "name": "Tipu Sultan"
+  },
+  {
+    "file": "ulugh-beg.json",
+    "name": "Ulugh Beg"
+  },
+  {
+    "file": "umar-ibn-abd-al-aziz.json",
+    "name": "Umar ibn Abd al-Aziz"
+  },
+  {
+    "file": "umar-ibn-al-khattab.json",
+    "name": "Umar ibn al-Khattab"
+  },
+  {
+    "file": "usman-dan-fodio.json",
+    "name": "Usman dan Fodio"
+  },
+  {
+    "file": "uthman-ibn-affan.json",
+    "name": "Uthman ibn Affan"
+  },
+  {
+    "file": "yunus-emre.json",
+    "name": "Yunus Emre"
+  }
 ]

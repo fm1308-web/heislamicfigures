@@ -1,0 +1,120 @@
+{
+  "person": "Ibrahim ibn Adham",
+  "slug": "F0765",
+  "lifespan": "730-777",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Ibrahim ibn Adham is one of the most famous figures of the early Sufi tradition, known as the 'prince who renounced his throne'. The historical core of his life - his Arab ancestry, his renunciation, his settling in Syria, his ascetic life, and his death (probably in a naval expedition against the Byzantines) - is preserved by Ibn Sa'd, al-Sulami, and Abu Nu'aym al-Isfahani. But the details have been deeply overlaid with hagiographical legend, particularly the famous story of the angel writing his name in the book of those who love God. Most events can only be dated approximately."
+  },
+  "sources": [
+    "Abu Nu'aym al-Isfahani, Hilyat al-Awliya",
+    "Al-Sulami, Tabaqat al-Sufiyya",
+    "Ibn Sa'd, Kitab al-Tabaqat (Damascus addendum)",
+    "Russell Jones, introduction to Ibrahim ibn Adham (translations)",
+    "Encyclopaedia of Islam, 2nd ed., 'Ibrahim b. Adham'"
+  ],
+  "journey": [
+    {
+      "year": 730,
+      "age": 0,
+      "precision": "year",
+      "location": "Balkh",
+      "lat": 36.7581,
+      "lng": 66.8975,
+      "event": "Born around 730 in Balkh in Khurasan (in what is now northern Afghanistan), into a wealthy Arab family of the tribe of Tamim. Some sources call him 'a son of the kings of Khurasan' and report that his father was a prince or local ruler.",
+      "category": "birth",
+      "source": "Abu Nu'aym, Hilyat al-Awliya"
+    },
+    {
+      "year": 745,
+      "age": 15,
+      "precision": "period",
+      "location": "Balkh",
+      "lat": 36.7581,
+      "lng": 66.8975,
+      "event": "Grows up in luxury in Balkh, a wealthy oasis city on the silk road. As a young man fond of hunting and a comfortable life. The famous renunciation stories are set during this Balkh period.",
+      "category": "childhood",
+      "source": "Abu Nu'aym, Hilyat"
+    },
+    {
+      "year": 750,
+      "age": 20,
+      "precision": "period",
+      "location": "Balkh",
+      "lat": 36.7581,
+      "lng": 66.8975,
+      "event": "Undergoes a dramatic conversion to the ascetic life. The most famous story has him pursuing a deer that turns and asks him: 'Were you created for this?' Another version has him hearing an unseen voice while sitting on his throne, asking what he is doing there. He renounces his wealth, leaves his family, and sets out on the path of asceticism.",
+      "category": "conversion",
+      "source": "Abu Nu'aym, Hilyat; Al-Sulami, Tabaqat"
+    },
+    {
+      "year": 755,
+      "age": 25,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Travels south to Mecca, performs pilgrimage, and stays in the holy city for some years living in voluntary poverty. Studies briefly with leading scholars of the Hijaz, including (according to later sources) the imam al-Awza'i.",
+      "category": "pilgrimage",
+      "source": "Abu Nu'aym; Al-Sulami"
+    },
+    {
+      "year": 760,
+      "age": 30,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Settles in Syria, eventually making Damascus his base. Refuses to accept any income or charity, and earns his living by his own labour - reaping fields, guarding orchards, and grinding flour. Becomes the model of the working ascetic in early Sufi literature.",
+      "category": "spiritual",
+      "source": "Abu Nu'aym, Hilyat al-Awliya"
+    },
+    {
+      "year": 765,
+      "age": 35,
+      "precision": "period",
+      "location": "Antakya",
+      "lat": 36.2,
+      "lng": 36.16,
+      "event": "Often resides on the Syrian-Byzantine frontier (the thughur), based in Antioch and the towns of the upper Orontes. Joins the seasonal raids against the Byzantines as a volunteer fighter (mujahid). The combination of asceticism (zuhd) and frontier warfare (jihad) is characteristic of the early Syrian school of Sufism.",
+      "category": "civic",
+      "source": "Abu Nu'aym; Encyclopaedia of Islam"
+    },
+    {
+      "year": 770,
+      "age": 40,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Builds up a circle of disciples in Syria, including the Sufi Shaqiq al-Balkhi (also from Khurasan) and others. His sayings are widely transmitted. Many of them concern the danger of wealth and the freedom of voluntary poverty: 'There is no greater wealth than to need nothing.'",
+      "category": "civic",
+      "source": "Al-Sulami, Tabaqat al-Sufiyya"
+    },
+    {
+      "year": 775,
+      "age": 45,
+      "precision": "period",
+      "location": "Mediterranean coast",
+      "lat": 35.5,
+      "lng": 35.8,
+      "event": "Joins one of the regular naval expeditions against the Byzantines that the Abbasid government dispatches each year from the Syrian coast. The exact date and place of his death in such an expedition is variously reported.",
+      "category": "expedition",
+      "source": "Abu Nu'aym, Hilyat"
+    },
+    {
+      "year": 777,
+      "age": 47,
+      "precision": "year",
+      "location": "Byzantine coast",
+      "lat": 36.0,
+      "lng": 36.0,
+      "event": "Dies around 777 (161 AH), most likely on or after a naval expedition against the Byzantines. The exact place is given variously as Sukin, an island off the Syrian coast, or one of the coastal cities of Cilicia. His tomb (or a tomb attributed to him) is in the city of Jableh on the Syrian coast and remains a place of pilgrimage to this day.",
+      "category": "death",
+      "source": "Abu Nu'aym; Encyclopaedia of Islam"
+    }
+  ]
+}

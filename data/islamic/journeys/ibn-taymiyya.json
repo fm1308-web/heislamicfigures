@@ -1,0 +1,200 @@
+{
+  "person": "Ibn Taymiyya",
+  "slug": "F0755",
+  "lifespan": {
+    "birth": 1263,
+    "death": 1328
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Ibn Taymiyya is one of the best documented scholars of medieval Islam. His pupil Ibn Abd al-Hadi wrote a detailed biography (Al-'Uqud al-Durriyya), Ibn Kathir (also a pupil) records the major events year by year in Al-Bidaya wa'l-Nihaya, and the chronicles of Mamluk Cairo and Damascus follow his trials and imprisonments closely. Most major dates are firm — including his birth, his fight against the Mongols at Shaqhab, his various imprisonments, and his death in the Damascus citadel."
+  },
+  "sources": [
+    "Ibn Abd al-Hadi, Al-'Uqud al-Durriyya min Manaqib Shaykh al-Islam Ibn Taymiyya",
+    "Ibn Kathir, Al-Bidaya wa'l-Nihaya",
+    "Ibn Rajab, Dhayl Tabaqat al-Hanabila",
+    "Yahya Michot, Muslims under Non-Muslim Rule (2006)",
+    "Caterina Bori and Livnat Holtzman (eds.), A Scholar in the Shadow (2010)"
+  ],
+  "journey": [
+    {
+      "year": 1263,
+      "age": 0,
+      "precision": "year",
+      "location": "Harran",
+      "lat": 36.86,
+      "lng": 39.03,
+      "event": "Born in Harran in northern Mesopotamia on 10 Rabi' al-Awwal 661 AH (January 1263). His full name is Taqi al-Din Ahmad ibn Abd al-Halim ibn Abd al-Salam ibn Taymiyya. He comes from a famous Hanbali scholarly family.",
+      "category": "birth",
+      "source": "Ibn Abd al-Hadi; Ibn Kathir"
+    },
+    {
+      "year": 1268,
+      "age": 5,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "His family flees Harran ahead of the advancing Mongol armies and reaches Damascus after a difficult journey, the children carried on a cart pulled by hand when the family runs out of beasts. They settle in the Mamluk capital of Damascus.",
+      "category": "migration",
+      "source": "Ibn Abd al-Hadi"
+    },
+    {
+      "year": 1275,
+      "age": 12,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Educated in Damascus by his father, the Hanbali jurist and head of the Sukkariyya madrasa, and by the leading Damascene scholars. He memorises the Quran, masters Hanbali law, and develops his prodigious memory.",
+      "category": "childhood",
+      "source": "Ibn Abd al-Hadi"
+    },
+    {
+      "year": 1284,
+      "age": 21,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "His father dies. Ibn Taymiyya, just twenty-one, succeeds him as professor at the Sukkariyya and as the leading Hanbali jurist of Damascus. He begins to attract students and to issue his own fatwas.",
+      "category": "loss",
+      "source": "Ibn Abd al-Hadi"
+    },
+    {
+      "year": 1293,
+      "age": 30,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Issues his first major political fatwa. A Christian named Assaf is accused of insulting the Prophet; Ibn Taymiyya leads the campaign for his execution and writes Al-Sarim al-Maslul, his treatise on the obligation to kill anyone who insults the Prophet. The Mamluk authorities are uneasy and briefly imprison him.",
+      "category": "crisis",
+      "source": "Ibn Kathir"
+    },
+    {
+      "year": 1300,
+      "age": 37,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "The Mongol Ilkhan Ghazan invades Syria. Ibn Taymiyya joins the Mamluk resistance. After the Mamluk defeat at Wadi al-Khaznadar in December 1299, he travels to Cairo to plead for the sultan to send a relief army to defend Damascus.",
+      "category": "crisis",
+      "source": "Ibn Kathir; Michot (2006)"
+    },
+    {
+      "year": 1303,
+      "age": 40,
+      "precision": "year",
+      "location": "Shaqhab",
+      "lat": 33.32,
+      "lng": 36.3,
+      "event": "Personally takes part in the Mamluk victory over the Mongols at the battle of Shaqhab (south of Damascus) in April 1303. He issues fatwas declaring jihad against the Ilkhanate Mongols obligatory despite their nominal Islam, on the grounds that they continue to follow the Yasa law of Genghis Khan rather than the Shari'a.",
+      "category": "battle",
+      "source": "Ibn Kathir; Michot (2006)"
+    },
+    {
+      "year": 1306,
+      "age": 43,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Summoned to Cairo to answer charges of anthropomorphism brought by his theological opponents (the Ash'aris, supported by the Sufi orders he had attacked). He is interrogated, debated, and imprisoned in the citadel of Cairo.",
+      "category": "persecution",
+      "source": "Ibn Kathir; Ibn Abd al-Hadi"
+    },
+    {
+      "year": 1307,
+      "age": 44,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Spends about eighteen months in the Cairo citadel. He is briefly released in 1307, briefly re-arrested over a dispute about Sufism with the followers of Ibn Arabi and Ibn al-Farid, and held under various conditions for several more years.",
+      "category": "persecution",
+      "source": "Ibn Kathir"
+    },
+    {
+      "year": 1309,
+      "age": 46,
+      "precision": "year",
+      "location": "Alexandria",
+      "lat": 31.2001,
+      "lng": 29.9187,
+      "event": "Exiled by Sultan Baybars al-Jashnakir to Alexandria, where he is held in a comfortable form of confinement and continues to teach a circle of students.",
+      "category": "persecution",
+      "source": "Ibn Kathir"
+    },
+    {
+      "year": 1310,
+      "age": 47,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Sultan al-Nasir Muhammad returns to power, releases Ibn Taymiyya, and invites him back to Cairo with full honours. Ibn Taymiyya stays in Cairo for several more years, teaching publicly.",
+      "category": "civic",
+      "source": "Ibn Kathir"
+    },
+    {
+      "year": 1313,
+      "age": 50,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Returns to Damascus, where he resumes his teaching at the Hanbali madrasas. The next decade is one of intense literary production: his great refutations of Greek logic, of Christianity, of Shi'i theology, and of philosophical Sufism.",
+      "category": "spiritual",
+      "source": "Ibn Abd al-Hadi"
+    },
+    {
+      "year": 1318,
+      "age": 55,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Issues controversial fatwas restricting the practice of triple divorce in a single sitting, contrary to the dominant Mamluk legal practice. The fatwas earn him fresh enemies among the judiciary and lead to renewed proceedings against him.",
+      "category": "crisis",
+      "source": "Ibn Kathir"
+    },
+    {
+      "year": 1320,
+      "age": 57,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Imprisoned in the Damascus citadel for several months over the divorce fatwas, then released. He returns to teaching but his enemies wait for the next opening.",
+      "category": "persecution",
+      "source": "Ibn Kathir"
+    },
+    {
+      "year": 1326,
+      "age": 63,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Issues a fatwa restricting the practice of visiting the tombs of saints and the Prophet's grave. His opponents secure a sultanic decree imprisoning him in the Damascus citadel, this time for good. His writing materials are eventually confiscated.",
+      "category": "persecution",
+      "source": "Ibn Kathir; Ibn Abd al-Hadi"
+    },
+    {
+      "year": 1328,
+      "age": 65,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Dies in the citadel of Damascus on the night of 20 Dhu'l-Qa'da 728 AH (26 September 1328). His funeral draws a vast crowd — the chroniclers estimate hundreds of thousands — and he is buried in the Sufi cemetery outside Bab al-Saghir. His writings will be largely forgotten for four centuries before being rediscovered by 18th-century reformers and becoming foundational for modern Salafi thought.",
+      "category": "death",
+      "source": "Ibn Kathir; Ibn Abd al-Hadi"
+    }
+  ]
+}

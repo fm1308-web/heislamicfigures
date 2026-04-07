@@ -1,0 +1,130 @@
+{
+  "person": "Nizami Ganjavi",
+  "slug": "F1114",
+  "lifespan": "1141-1209",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Nizami Ganjavi is the great Persian romantic poet, but the historical record about his personal life is unusually thin. Almost everything we know is reconstructed from autobiographical hints in the prefaces and dedications of his five great romances (the Khamsa). The famous fact that he never left his native Ganja is a defining feature of his life - the journey is therefore stationary, and the dates of his marriage, the birth of his son Muhammad, and the deaths of his three wives are reconstructed from internal references in the poems."
+  },
+  "sources": [
+    "Nizami, Khamsa (the five great mathnawis)",
+    "Dawlatshah Samarqandi, Tadhkirat al-Shu'ara",
+    "Julie Scott Meisami, introduction to Haft Paykar (Oxford, 1995)",
+    "Encyclopaedia Iranica, 'Nezami Ganjavi'"
+  ],
+  "journey": [
+    {
+      "year": 1141,
+      "age": 0,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Born around 1141 in Ganja, a wealthy Persianate city in what is now Azerbaijan. His father Yusuf is from Qom in central Iran (or Tafrish, near Qom), and his mother Ra'isa is of Kurdish origin. Nizami loses both parents while still a child.",
+      "category": "birth",
+      "source": "Khamsa, autobiographical references; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1150,
+      "age": 9,
+      "precision": "period",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Loses his father Yusuf as a child and is raised by his maternal uncle Khwaja Umar. Receives an excellent classical education in Arabic and Persian literature, the Quran, philosophy, astronomy, and mathematics.",
+      "category": "loss",
+      "source": "Khamsa, autobiographical passages"
+    },
+    {
+      "year": 1170,
+      "age": 29,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Around 1170 marries Afaq, a Kipchak Turkish slave girl who has been sent to him as a gift by the Atabeg of Darband. He celebrates their love in some of the most affectionate verses in his poetry. From this marriage is born his only child, his son Muhammad, around 1174.",
+      "category": "marriage",
+      "source": "Khamsa, autobiographical passages"
+    },
+    {
+      "year": 1175,
+      "age": 34,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Composes his first major mathnawi, Makhzan al-Asrar (The Treasury of Mysteries), a didactic poem on ethical and mystical themes. Dedicates it to a local ruler. With this work he establishes his reputation as a poet.",
+      "category": "civic",
+      "source": "Nizami, Makhzan al-Asrar"
+    },
+    {
+      "year": 1180,
+      "age": 39,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Around 1180 his beloved wife Afaq dies. Nizami is devastated and mourns her in moving verses. He will marry twice more, but both these later wives also die before him, each loss marking him deeply.",
+      "category": "loss",
+      "source": "Khamsa, autobiographical passages"
+    },
+    {
+      "year": 1188,
+      "age": 47,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Completes Khusraw and Shirin, his second great mathnawi, the romance of the Sasanian king Khusraw Parviz and the Armenian princess Shirin. The poem is dedicated to the Seljuk sultan Tughril III and the Atabeg of Azerbaijan. It is the first of his great love romances.",
+      "category": "civic",
+      "source": "Nizami, Khusraw and Shirin"
+    },
+    {
+      "year": 1192,
+      "age": 51,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "In 1192 composes Layla and Majnun, his version of the famous Arab story of the mad lover Qays who roams the desert pining for his beloved Layla. It will become the most influential telling of the story in the Persianate world. Nizami refers to the death of his son Muhammad's mother (his second wife) in the poem.",
+      "category": "civic",
+      "source": "Nizami, Layla and Majnun"
+    },
+    {
+      "year": 1197,
+      "age": 56,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Completes the Haft Paykar (The Seven Beauties), a richly philosophical romance about the Sasanian king Bahram Gur, who visits seven pavilions on seven days, each presided over by a princess from one of the seven climes. Each princess tells him a tale. The poem is one of the great achievements of Persian narrative poetry.",
+      "category": "civic",
+      "source": "Nizami, Haft Paykar"
+    },
+    {
+      "year": 1202,
+      "age": 61,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Composes his last great work, the Iskandarnama (Book of Alexander), in two parts: the Sharafnama (about Alexander's conquests) and the Iqbalnama (about Alexander as philosopher and prophet). The poem reimagines Alexander the Great as a prophetic figure who unites east and west.",
+      "category": "civic",
+      "source": "Nizami, Iskandarnama"
+    },
+    {
+      "year": 1209,
+      "age": 68,
+      "precision": "year",
+      "location": "Ganja",
+      "lat": 40.6828,
+      "lng": 46.3606,
+      "event": "Dies in his native Ganja around 1209 (605 AH), aged about 68. He has spent essentially his entire life in this one city. His tomb in Ganja becomes a place of literary pilgrimage; the present monumental mausoleum, built in 1947, replaces older shrines that stood on the same spot for centuries. The five mathnawis collectively known as the Khamsa (Quintet) become one of the most influential bodies of poetry in the Persianate world.",
+      "category": "death",
+      "source": "Encyclopaedia Iranica"
+    }
+  ]
+}

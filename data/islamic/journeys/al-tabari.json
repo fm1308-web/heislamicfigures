@@ -1,0 +1,155 @@
+{
+  "person": "Al-Tabari",
+  "slug": "F0345",
+  "lifespan": "839-923",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Muhammad ibn Jarir al-Tabari, the great historian and exegete, is well documented in classical Arabic biographical literature, especially by Yaqut al-Hamawi in his Mu'jam al-Udaba. His travels in pursuit of hadith are recorded in some detail. The major dates - his birth in Amol, his journey through the Islamic east, his settling in Baghdad, the composition of his Tafsir and Tarikh, and his death in Baghdad in 923 - are firm by year. Specific months are sometimes preserved (notably for his death)."
+  },
+  "sources": [
+    "Yaqut al-Hamawi, Mu'jam al-Udaba",
+    "Ibn al-Nadim, al-Fihrist",
+    "Al-Khatib al-Baghdadi, Tarikh Baghdad",
+    "Franz Rosenthal, introduction to The History of al-Tabari (SUNY)",
+    "Encyclopaedia of Islam, 2nd ed., 'al-Tabari'"
+  ],
+  "journey": [
+    {
+      "year": 839,
+      "age": 0,
+      "precision": "year",
+      "location": "Amol",
+      "lat": 36.4694,
+      "lng": 52.3506,
+      "event": "Born in Amol in Tabaristan (the southern coastal region of the Caspian Sea, in modern Iran), in 839 (224 AH). His father is a relatively well-off landowner who can afford to send his son a regular stipend for his studies abroad.",
+      "category": "birth",
+      "source": "Yaqut al-Hamawi, Mu'jam al-Udaba"
+    },
+    {
+      "year": 846,
+      "age": 7,
+      "precision": "period",
+      "location": "Amol",
+      "lat": 36.4694,
+      "lng": 52.3506,
+      "event": "By his own account, memorises the Quran by the age of seven, leads prayer at eight, and begins recording hadith at nine. His father has an inspirational dream that sets him on the path of religious learning.",
+      "category": "childhood",
+      "source": "Yaqut, Mu'jam al-Udaba"
+    },
+    {
+      "year": 851,
+      "age": 12,
+      "precision": "year",
+      "location": "Rayy",
+      "lat": 35.5933,
+      "lng": 51.4326,
+      "event": "Around the age of twelve leaves Amol for Rayy in northern Iran, where he studies hadith and history with the local scholars for several years. Is particularly influenced by Muhammad ibn Humayd al-Razi.",
+      "category": "travel",
+      "source": "Yaqut, Mu'jam al-Udaba"
+    },
+    {
+      "year": 855,
+      "age": 16,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Travels to Baghdad to study with Ahmad ibn Hanbal, but arrives just after Ibn Hanbal's death in 855. Stays in Baghdad for several years studying with other scholars of the Hanbali and Shafi'i circles.",
+      "category": "travel",
+      "source": "Al-Khatib al-Baghdadi, Tarikh Baghdad"
+    },
+    {
+      "year": 858,
+      "age": 19,
+      "precision": "year",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "Around 858 travels to Basra in southern Iraq, then on to Wasit and Kufa. Studies hadith with the leading scholars of these cities. The travel-for-knowledge (rihla fi talab al-ilm) of his early life eventually covers most of the central Islamic lands.",
+      "category": "travel",
+      "source": "Yaqut, Mu'jam al-Udaba"
+    },
+    {
+      "year": 860,
+      "age": 21,
+      "precision": "year",
+      "location": "Fustat",
+      "lat": 30.0078,
+      "lng": 31.2331,
+      "event": "Travels south to Egypt and settles for a time in Fustat (Old Cairo), where he studies with the leading Maliki and Shafi'i scholars of the city. Later returns through Syria, where he studies with scholars in Damascus and Beirut.",
+      "category": "travel",
+      "source": "Yaqut, Mu'jam al-Udaba; Al-Khatib"
+    },
+    {
+      "year": 870,
+      "age": 31,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Around 870 settles permanently in Baghdad, the centre of the Islamic world. Lives modestly on the income from his father's estate in Tabaristan and devotes himself entirely to scholarship. Refuses official positions and gifts from the caliphal court.",
+      "category": "civic",
+      "source": "Yaqut, Mu'jam al-Udaba; Al-Khatib"
+    },
+    {
+      "year": 880,
+      "age": 41,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Begins his great works in Baghdad. Initially a follower of the Shafi'i school, he later founds his own short-lived madhhab, the Jariri school, with its own system of legal reasoning. Teaches a wide circle of students in his house.",
+      "category": "civic",
+      "source": "Yaqut; Ibn al-Nadim, Fihrist"
+    },
+    {
+      "year": 890,
+      "age": 51,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Composes his great Quranic exegesis, Jami' al-Bayan fi Tafsir al-Quran, the first systematic verse-by-verse commentary that draws together all the earlier exegetical traditions. It will become the foundation of all later Sunni tafsir.",
+      "category": "civic",
+      "source": "Yaqut; Rosenthal, introduction"
+    },
+    {
+      "year": 905,
+      "age": 66,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Composes his even more famous Tarikh al-Rusul wa al-Muluk (History of the Prophets and Kings), a universal chronicle that begins with creation and ends in his own time (around 915). The work runs to about 8,400 pages in the modern Brill edition and is the most important single source for the first three centuries of Islamic history.",
+      "category": "civic",
+      "source": "Rosenthal; Encyclopaedia of Islam"
+    },
+    {
+      "year": 915,
+      "age": 76,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "In his final years suffers harassment from Hanbali partisans in Baghdad, who object to his refusal to count Ahmad ibn Hanbal as a jurist and to some of his theological positions. They throw stones at his house and force him to remain mostly indoors. He continues to teach a circle of students in private.",
+      "category": "persecution",
+      "source": "Yaqut; Al-Khatib"
+    },
+    {
+      "day": 17,
+      "month": 2,
+      "year": 923,
+      "age": 84,
+      "precision": "day",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Dies in Baghdad on 17 February 923 (27 Shawwal 310 AH), at about 84 years of age. He has never married and leaves no children. His Hanbali enemies prevent a public funeral; he is buried at night in his own house. His Tarikh and Tafsir survive him as monuments of Islamic learning.",
+      "category": "death",
+      "source": "Yaqut, Mu'jam al-Udaba; Al-Khatib"
+    }
+  ]
+}

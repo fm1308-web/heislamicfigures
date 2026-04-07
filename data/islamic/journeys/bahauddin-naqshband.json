@@ -1,0 +1,133 @@
+{
+  "person": "Baha-ud-Din Naqshband",
+  "slug": "F0509",
+  "lifespan": {
+    "birth": 1318,
+    "death": 1389
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Baha-ud-Din Naqshband, the eponym of the Naqshbandi order, lived almost his entire life within walking distance of Bukhara. His biography is preserved in the early Naqshbandi works of Salah al-Din ibn al-Mubarak (Anis al-Talibin) and the later Rashahat 'Ayn al-Hayat of Fakhr al-Din Kashifi. The lifespan and the major teachers are firmly attested; many specific dates are reconstructed from these later sources."
+  },
+  "sources": [
+    "Salah al-Din ibn al-Mubarak, Anis al-Talibin wa Uddat al-Salikin (14th c.)",
+    "Fakhr al-Din 'Ali Safi Kashifi, Rashahat 'Ayn al-Hayat (1503)",
+    "Hamid Algar, 'Naqshbandi order' in EI2",
+    "Itzchak Weismann, The Naqshbandiyya: Orthodoxy and Activism in a Worldwide Sufi Tradition (2007)"
+  ],
+  "journey": [
+    {
+      "year": 1318,
+      "age": 0,
+      "precision": "year",
+      "location": "Qasr-i Hinduvan",
+      "lat": 39.77,
+      "lng": 64.42,
+      "event": "Born in the village of Qasr-i Hinduvan (later renamed Qasr-i 'Arifan, 'the Castle of the Knowers') a few kilometres from Bukhara in Muharram 718 AH. His father is a craftsman and his grandfather has Sufi connections.",
+      "category": "birth",
+      "source": "Anis al-Talibin"
+    },
+    {
+      "year": 1336,
+      "age": 18,
+      "precision": "year",
+      "location": "Sammas",
+      "lat": 39.78,
+      "lng": 64.5,
+      "event": "Becomes the disciple of Baba Muhammad Sammasi, the leading Khwajagani Sufi master of the Bukhara region, who had recognised the boy on a visit years earlier and predicted his spiritual rank.",
+      "category": "spiritual",
+      "source": "Rashahat"
+    },
+    {
+      "year": 1340,
+      "age": 22,
+      "precision": "year",
+      "location": "Qasr-i Hinduvan",
+      "lat": 39.77,
+      "lng": 64.42,
+      "event": "Sammasi dies and entrusts Baha-ud-Din to his successor Sayyid Amir Kulal of Sokhar, who becomes his second master. Naqshband studies with Amir Kulal for several years.",
+      "category": "loss",
+      "source": "Anis al-Talibin"
+    },
+    {
+      "year": 1345,
+      "age": 27,
+      "precision": "period",
+      "location": "Qasr-i Hinduvan",
+      "lat": 39.77,
+      "lng": 64.42,
+      "event": "Receives, according to the Naqshbandi tradition, the Uwaysi initiation — a non-physical transmission across centuries — from the long-dead Khwaja Abd al-Khaliq Ghijduwani, founder of the Khwajagan tradition. This vision becomes the doctrinal foundation of the silent dhikr that distinguishes the Naqshbandiyya.",
+      "category": "spiritual",
+      "source": "Rashahat; Algar EI2"
+    },
+    {
+      "year": 1352,
+      "age": 34,
+      "precision": "period",
+      "location": "Nasaf",
+      "lat": 38.86,
+      "lng": 65.78,
+      "event": "Travels to Nasaf (Qarshi) to receive further training from the Yasawi shaikhs of Turkic Sufism, who teach him the vocal dhikr. He learns both methods but adopts the silent (khafi) dhikr as his own — the practice that gives the order its discipline.",
+      "category": "travel",
+      "source": "Rashahat"
+    },
+    {
+      "year": 1360,
+      "age": 42,
+      "precision": "period",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "Returns to live near Bukhara permanently. He works as a farmer, refuses court patronage, eats only what his own labour produces, and teaches a small but disciplined circle of disciples in Persian and Turkic.",
+      "category": "civic",
+      "source": "Anis al-Talibin"
+    },
+    {
+      "year": 1370,
+      "age": 52,
+      "precision": "period",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "Timur (Tamerlane) takes Bukhara as he begins building his vast Central Asian empire. Naqshband refuses to serve at his court but the Timurid dynasty will become the order's most important long-term patron.",
+      "category": "civic",
+      "source": "Algar EI2"
+    },
+    {
+      "year": 1380,
+      "age": 62,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj for the first time according to one tradition (sources differ on whether he made the pilgrimage twice or once). On his return he visits Herat and other Khurasani centres.",
+      "category": "pilgrimage",
+      "source": "Rashahat"
+    },
+    {
+      "year": 1385,
+      "age": 67,
+      "precision": "period",
+      "location": "Qasr-i 'Arifan",
+      "lat": 39.77,
+      "lng": 64.42,
+      "event": "His teaching circle has grown into a major spiritual community. The order's eight doctrinal principles ('the words of Khwaja Abd al-Khaliq', expanded by Naqshband) become the rule: silent dhikr, sobriety, integration into ordinary worldly life, and 'solitude in the crowd' (khalwat dar anjuman).",
+      "category": "spiritual",
+      "source": "Rashahat"
+    },
+    {
+      "year": 1389,
+      "age": 71,
+      "precision": "year",
+      "location": "Qasr-i 'Arifan",
+      "lat": 39.77,
+      "lng": 64.42,
+      "event": "Dies on 3 Rabi' al-Awwal 791 AH (March 1389) in his village outside Bukhara. He is buried there. The shrine becomes one of the great pilgrimage sites of Central Asia, and the Naqshbandi order spreads from Bukhara to become, by the 19th century, the most widespread Sufi tariqa in the Islamic world from Indonesia to Bosnia.",
+      "category": "death",
+      "source": "Anis al-Talibin; Algar EI2"
+    }
+  ]
+}

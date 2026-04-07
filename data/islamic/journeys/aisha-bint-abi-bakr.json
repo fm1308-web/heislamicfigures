@@ -1,0 +1,164 @@
+{
+  "person": "Aisha bint Abi Bakr",
+  "slug": "F0199",
+  "lifespan": "613-678",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Aisha is one of the most cited narrators of hadith in Sunni Islam, and her life is well documented in early sira and tabaqat literature. Major events such as her marriage, the migration to Medina, the slander incident (al-Ifk), the death of the Prophet, and her involvement in the Battle of the Camel are firmly placed by year and location. Specific months and days are usually not preserved. Her birth year is reconstructed from her age at marriage and at death."
+  },
+  "sources": [
+    "Ibn Ishaq, Sirat Rasul Allah",
+    "Ibn Sa'd, Kitab al-Tabaqat al-Kabir, vol. 8",
+    "Sahih al-Bukhari and Sahih Muslim (numerous narrations from Aisha)",
+    "Al-Tabari, Tarikh al-Rusul wa al-Muluk",
+    "Al-Dhahabi, Siyar A'lam al-Nubala"
+  ],
+  "journey": [
+    {
+      "year": 613,
+      "age": 0,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Born in Mecca to Abu Bakr al-Siddiq (the closest companion of Muhammad) and Umm Ruman. Both her parents are early converts to Islam, so she is born into a Muslim household.",
+      "category": "birth",
+      "source": "Ibn Sa'd, Tabaqat 8"
+    },
+    {
+      "year": 622,
+      "age": 9,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "After her father Abu Bakr accompanies the Prophet on the Hijra to Medina, the rest of the family follows. Aisha makes the journey from Mecca to Medina with her mother and sister Asma.",
+      "category": "migration",
+      "source": "Ibn Ishaq, Sira"
+    },
+    {
+      "year": 623,
+      "age": 9,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Marriage to the Prophet Muhammad is consummated in Medina, in the first or second year after the Hijra. She had been betrothed to him in Mecca some time after Khadija's death. She moves into a small chamber adjoining the Prophet's mosque.",
+      "category": "marriage",
+      "source": "Sahih al-Bukhari; Ibn Sa'd"
+    },
+    {
+      "year": 627,
+      "age": 14,
+      "precision": "year",
+      "location": "Banu Mustaliq area / Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "On the way back from the expedition against Banu Mustaliq, Aisha is accidentally left behind when the army moves at night. She is brought back to Medina by a young companion, Safwan ibn al-Mu'attal. Hypocrites in Medina spread slander against her (the incident of al-Ifk). After about a month of distress she is publicly exonerated by Quranic revelation (Surah al-Nur 24:11-20).",
+      "category": "persecution",
+      "source": "Sahih al-Bukhari, Tafsir; Ibn Ishaq"
+    },
+    {
+      "year": 632,
+      "age": 18,
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "In June 632 (Rabi' al-Awwal 11 AH), the Prophet Muhammad falls ill in her chamber. He dies in her arms, with his head resting on her chest. He is buried in the floor of her room, where his tomb remains today inside the Prophet's Mosque.",
+      "category": "death",
+      "source": "Sahih al-Bukhari, Maghazi; Ibn Sa'd"
+    },
+    {
+      "year": 634,
+      "age": 21,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Her father Abu Bakr, the first caliph, dies after a brief illness. She continues to live in her chamber in the mosque and becomes one of the leading authorities consulted by the caliphs Umar and later Uthman on matters of religion, law, and the conduct of the Prophet.",
+      "category": "loss",
+      "source": "Ibn Sa'd, Tabaqat 3"
+    },
+    {
+      "year": 644,
+      "age": 31,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Caliph Umar is assassinated. Aisha continues to teach hadith and Quranic interpretation in her chamber, and is consulted by the leading companions on matters of fiqh. She becomes one of the most prolific narrators of hadith, with over 2,000 traditions attributed to her in the canonical collections.",
+      "category": "civic",
+      "source": "Sahih al-Bukhari; Sahih Muslim"
+    },
+    {
+      "year": 656,
+      "age": 43,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "When the third caliph Uthman is murdered by rebels in Medina, Aisha is on pilgrimage in Mecca. On hearing the news she protests the killing and calls for the killers to be brought to justice. She joins forces with the companions Talha and al-Zubayr.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 656,
+      "age": 43,
+      "precision": "year",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "Travels to Basra in southern Iraq with Talha, al-Zubayr, and a force of supporters, demanding justice for Uthman's murder. The new caliph Ali ibn Abi Talib marches from Medina to confront them.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 656,
+      "age": 43,
+      "precision": "month",
+      "location": "outside Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "In December 656 (Jumada al-Akhira 36 AH), the Battle of the Camel is fought outside Basra. Aisha watches from a litter (hawdaj) on top of a camel, which gives the battle its name. Talha and al-Zubayr are killed; her side is defeated. Ali treats her with respect, has her camel released only after the fighting stops, and arranges her safe escort.",
+      "category": "battle",
+      "source": "Al-Tabari, Tarikh; Ibn al-Athir"
+    },
+    {
+      "year": 657,
+      "age": 44,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Ali sends her back to Medina under the escort of her brother Muhammad ibn Abi Bakr. She returns to her chamber and withdraws from active politics. For the rest of her life she devotes herself to teaching hadith, fiqh, and the conduct of the Prophet to a circle of students of both sexes.",
+      "category": "civic",
+      "source": "Al-Tabari; Ibn Sa'd"
+    },
+    {
+      "year": 661,
+      "age": 48,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "After the assassination of Ali in 661 and the establishment of Umayyad rule under Mu'awiya in Damascus, she remains in Medina as one of the most senior surviving authorities on the Prophet's life. Her students include Urwa ibn al-Zubayr (her nephew) and many of the leading scholars of the next generation.",
+      "category": "civic",
+      "source": "Ibn Sa'd, Tabaqat 8"
+    },
+    {
+      "year": 678,
+      "age": 65,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Dies in Medina in 678 (58 AH), aged about 65. By her own request she is buried in the Baqi cemetery rather than next to the Prophet. The funeral prayer is led by Abu Hurayra. She is remembered as Umm al-Mu'minin (Mother of the Believers), and as one of the four greatest narrators of hadith.",
+      "category": "death",
+      "source": "Ibn Sa'd; Al-Dhahabi, Siyar"
+    }
+  ]
+}

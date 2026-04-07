@@ -1,0 +1,197 @@
+{
+  "person": "Muhammad Abduh",
+  "slug": "F1037",
+  "lifespan": "1849-1905",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Muhammad Abduh, the most influential Egyptian Muslim reformer of the late nineteenth century, is well documented through his own writings, the biography by his disciple Rashid Rida (Tarikh al-Ustadh al-Imam), and contemporary press, court, and consular records. His birth in the Nile Delta, his studies at al-Azhar, his association with Jamal al-Din al-Afghani, his exile after the Urabi Revolt of 1882, his years in Beirut and Paris, his return to Egypt, his appointment as Mufti, and his death at Alexandria in 1905 are all firmly established."
+  },
+  "sources": [
+    "Rashid Rida, Tarikh al-Ustadh al-Imam al-Shaykh Muhammad Abduh",
+    "Muhammad Abduh, Risalat al-Tawhid",
+    "Albert Hourani, Arabic Thought in the Liberal Age 1798-1939",
+    "Mark Sedgwick, Muhammad Abduh (2010)",
+    "Encyclopaedia of Islam, 3rd edition, 'Abduh, Muhammad'"
+  ],
+  "journey": [
+    {
+      "year": 1849,
+      "age": 0,
+      "precision": "year",
+      "location": "Mahallat Nasr",
+      "lat": 30.9667,
+      "lng": 31.1667,
+      "event": "Born in 1849 in the village of Mahallat Nasr in the Nile Delta province of Buhayra (or, by some accounts, in nearby Shubrakhit), to a family of modest peasant origins. His father is of Turkish and his mother of Arab descent.",
+      "category": "birth",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1862,
+      "age": 13,
+      "precision": "year",
+      "location": "Tanta",
+      "lat": 30.7865,
+      "lng": 31.0004,
+      "event": "Sent at about age 13 to study at the Ahmadi mosque-school in Tanta, the second great religious centre of Egypt. Memorises the Quran but finds the teaching method - rote learning of obscure texts and commentaries - so dispiriting that he runs away to a relative's village.",
+      "category": "childhood",
+      "source": "Rashid Rida; Hourani"
+    },
+    {
+      "year": 1865,
+      "age": 16,
+      "precision": "year",
+      "location": "Mahallat Nasr",
+      "lat": 30.9667,
+      "lng": 31.1667,
+      "event": "Returns home determined never to study again and is married off by his father at age sixteen. Shortly after the wedding, however, encounters his great-uncle Shaykh Darwish, a Sufi of the Shadhili-Madani order, who reawakens his love of learning and convinces him to return to Tanta.",
+      "category": "marriage",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1866,
+      "age": 17,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Enrols at the great mosque-university of al-Azhar in Cairo. Studies the traditional curriculum of grammar, jurisprudence, theology, and logic, but is impatient with the dry methods of his teachers and supplements them with private reading in philosophy, mathematics, and modern science.",
+      "category": "civic",
+      "source": "Rashid Rida; Hourani"
+    },
+    {
+      "year": 1872,
+      "age": 23,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Meets the Persian activist-philosopher Jamal al-Din al-Afghani, newly arrived in Cairo, and becomes his closest disciple. Through Afghani is introduced to the ideas of European philosophy, modern political thought, and Pan-Islamic activism. The encounter is the decisive intellectual turning-point of his life.",
+      "category": "spiritual",
+      "source": "Rashid Rida; Hourani"
+    },
+    {
+      "year": 1877,
+      "age": 28,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Receives the alimiyya degree from al-Azhar in 1877 and begins teaching there and at the new state school Dar al-Ulum. Lectures on theology, logic, and Arabic literature. Already known as a controversial reformer who urges his students to think critically and to read modern European authors.",
+      "category": "civic",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1880,
+      "age": 31,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Appointed editor of the official gazette al-Waqai al-Misriyya. Uses the post to introduce social and political commentary and to publish articles on educational, legal, and administrative reform. The paper becomes the leading vehicle of reformist opinion in Egypt.",
+      "category": "civic",
+      "source": "Rashid Rida; Hourani"
+    },
+    {
+      "year": 1882,
+      "age": 33,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Becomes involved in the nationalist movement of Colonel Ahmad Urabi against the European-controlled khedivial government. After the British occupation of Egypt in September 1882, is arrested and tried for his role in the revolt. Sentenced to three years' exile.",
+      "category": "persecution",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1883,
+      "age": 34,
+      "precision": "year",
+      "location": "Beirut",
+      "lat": 33.8938,
+      "lng": 35.5018,
+      "event": "Settles first in Beirut where he teaches at the Sultaniyya school and writes for the Arabic press. The years in Beirut are intellectually formative, exposing him to a more diverse intellectual environment than Cairo and bringing him into contact with Christian Arab thinkers and the Nahda (Arab cultural awakening).",
+      "category": "persecution",
+      "source": "Rashid Rida; Hourani"
+    },
+    {
+      "year": 1884,
+      "age": 35,
+      "precision": "year",
+      "location": "Paris",
+      "lat": 48.8566,
+      "lng": 2.3522,
+      "event": "In 1884 joins Afghani in Paris where they together publish the militant Pan-Islamic Arabic newspaper al-Urwa al-Wuthqa ('The Firmest Bond'). The paper, smuggled into Muslim countries, calls for resistance to European imperialism and the regeneration of the Islamic world. It is suppressed by the British after only eighteen issues but has enormous influence.",
+      "category": "civic",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1885,
+      "age": 36,
+      "precision": "year",
+      "location": "Beirut",
+      "lat": 33.8938,
+      "lng": 35.5018,
+      "event": "Returns to Beirut and resumes teaching. Composes his most important theological work, Risalat al-Tawhid (Treatise on Divine Unity), which presents a rationalist reformulation of Islamic theology emphasising the compatibility of reason and revelation. The work becomes the basic text of Islamic modernism.",
+      "category": "civic",
+      "source": "Risalat al-Tawhid"
+    },
+    {
+      "year": 1888,
+      "age": 39,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Pardoned by the new Khedive Tawfiq and allowed to return to Egypt, but is barred from teaching. Appointed instead as a judge in the native (national) courts. Spends the next decade as a judge, gaining a reputation for integrity and for his careful application of Islamic and modern legal principles.",
+      "category": "civic",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1899,
+      "age": 50,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Appointed Mufti of Egypt - the highest religious official in the country - by Khedive Abbas II. Holds the post until his death. Issues many famous fatwas attempting to reconcile Islamic law with modern conditions, including rulings on banking interest, women's clothing, and the eating of meat slaughtered by Christians.",
+      "category": "civic",
+      "source": "Rashid Rida; Hourani"
+    },
+    {
+      "year": 1900,
+      "age": 51,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Begins delivering at al-Azhar his famous Quranic exegesis lectures, later edited and published by his disciple Rashid Rida as Tafsir al-Manar. The work, though left incomplete at his death, becomes the most influential modernist tafsir of the twentieth century, read across the Sunni world.",
+      "category": "civic",
+      "source": "Tafsir al-Manar; Hourani"
+    },
+    {
+      "year": 1903,
+      "age": 54,
+      "precision": "year",
+      "location": "Algiers",
+      "lat": 36.7372,
+      "lng": 3.0867,
+      "event": "Travels to Algeria and Tunisia to investigate the condition of Muslims under French rule. The trip - and an earlier visit to Sicily and Switzerland - reinforces his conviction that the regeneration of Muslim societies requires both internal religious reform and resistance to European cultural domination.",
+      "category": "travel",
+      "source": "Rashid Rida"
+    },
+    {
+      "year": 1905,
+      "age": 56,
+      "precision": "year",
+      "location": "Alexandria",
+      "lat": 31.2001,
+      "lng": 29.9187,
+      "event": "Dies of cancer in Alexandria on 11 July 1905, aged 56. The funeral in Cairo is attended by enormous crowds. Buried in the al-Afifi cemetery. His ideas - on the compatibility of Islam with reason, on educational reform, on the moral renewal of Muslim societies - shape Islamic thought across the twentieth century from Indonesia to Morocco, transmitted especially through his disciples Rashid Rida, Qasim Amin, and Saad Zaghlul.",
+      "category": "death",
+      "source": "Rashid Rida; Hourani"
+    }
+  ]
+}

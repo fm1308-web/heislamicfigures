@@ -1,0 +1,133 @@
+{
+  "person": "Imam Malik ibn Anas",
+  "slug": "F0778",
+  "lifespan": {
+    "birth": 711,
+    "death": 795
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Imam Malik almost never left Medina, so his journey is almost entirely a single city across more than seventy years. The early biographical sources (Qadi Iyad's Tartib al-Madarik, Dhahabi's Siyar) preserve a rich record of his teaching, his confrontation with the Abbasid governor, his composition of the Muwatta, and his death. Specific years for his early studies are reconstructed; the major events of his middle and late life are firm."
+  },
+  "sources": [
+    "Qadi Iyad, Tartib al-Madarik (12th c.)",
+    "Al-Dhahabi, Siyar A'lam al-Nubala",
+    "Yasin Dutton, The Origins of Islamic Law: The Qur'an, the Muwatta and Madinan Amal (1999)",
+    "Jonathan Brockopp, Early Maliki Law (2000)"
+  ],
+  "journey": [
+    {
+      "year": 711,
+      "age": 0,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Born in Medina in 93 AH into a family of Yemeni Asbahi origin. His grandfather Malik ibn Abi 'Amir was a prominent Tabi'i (one of the Successors) and a transmitter of hadith from Umar and Uthman.",
+      "category": "birth",
+      "source": "Qadi Iyad"
+    },
+    {
+      "year": 720,
+      "age": 9,
+      "precision": "decade",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Begins memorising the Quran and attending the study circles of Medina. His mother, observing his interest, dresses him in a turban as a child and sends him to learn good manners before he learns hadith.",
+      "category": "childhood",
+      "source": "Qadi Iyad"
+    },
+    {
+      "year": 725,
+      "age": 14,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Begins serious study with the great Tabi'in jurists of Medina, especially Rabi'a al-Ra'y, Nafi (the freedman of Ibn Umar), and Ibn Hurmuz, with whom he reportedly spends many years.",
+      "category": "spiritual",
+      "source": "Qadi Iyad; Dhahabi"
+    },
+    {
+      "year": 740,
+      "age": 29,
+      "precision": "decade",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Begins teaching in his own house in Medina. He uses the prayer-mat of the Prophet's mosque as his teaching seat — out of reverence he refuses to ride an animal in Medina, considering its soil too sacred to be trodden by his mount.",
+      "category": "civic",
+      "source": "Qadi Iyad"
+    },
+    {
+      "year": 762,
+      "age": 51,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Caliph Abu Ja'far al-Mansur asks Malik to compile a book of authoritative law that the entire empire can follow. Malik begins work on the Kitab al-Muwatta ('the Smoothed Path'), the first systematic book of Islamic law.",
+      "category": "civic",
+      "source": "Qadi Iyad; Dutton (1999)"
+    },
+    {
+      "year": 763,
+      "age": 52,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "The Alid uprising of Muhammad al-Nafs al-Zakiyya breaks out in Medina against Abbasid rule. Malik issues a fatwa that forced oaths of allegiance to the Abbasids are not binding, implicitly justifying the revolt. The governor of Medina, Ja'far ibn Sulayman, has him whipped publicly. The flogging dislocates his shoulder.",
+      "category": "persecution",
+      "source": "Qadi Iyad; Dhahabi"
+    },
+    {
+      "year": 770,
+      "age": 59,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Recovers from the flogging and his standing rises rather than falls — the public sees the wounds as a badge of integrity. The Abbasid caliphate, embarrassed, restores his honour and the governor is recalled.",
+      "category": "civic",
+      "source": "Qadi Iyad"
+    },
+    {
+      "year": 780,
+      "age": 69,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Continues to teach in Medina to disciples who come from across the empire, including the young Muhammad ibn Idris al-Shafi'i, who studies with Malik for several years. The Maliki school is taking shape in his lifetime, especially in Egypt and the Maghrib.",
+      "category": "spiritual",
+      "source": "Qadi Iyad; Dhahabi"
+    },
+    {
+      "year": 786,
+      "age": 75,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Caliph Harun al-Rashid visits Medina on his way to or from the hajj and wishes to attend Malik's lessons. Malik refuses to come to him, saying that knowledge is sought, not summoned. The caliph and his sons sit on the floor of Malik's house with the other students.",
+      "category": "civic",
+      "source": "Qadi Iyad"
+    },
+    {
+      "year": 795,
+      "age": 84,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4686,
+      "lng": 39.6142,
+      "event": "Dies in Medina on 14 Rabi' al-Awwal 179 AH and is buried in al-Baqi cemetery. The Muwatta survives in several recensions and the Maliki school spreads from Medina across Egypt, North Africa, and Muslim Spain, where it remains the dominant rite until today.",
+      "category": "death",
+      "source": "Qadi Iyad; Dhahabi"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "person": "Ibn al-Nafis",
+  "slug": "F0725",
+  "lifespan": "1213-1288",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Ala al-Din Abu'l-Hasan Ali ibn Abi'l-Hazm al-Qarashi al-Dimashqi al-Misri, known as Ibn al-Nafis, is famous as the first scientist to correctly describe the pulmonary circulation of the blood, three centuries before William Harvey. The biographical details about him are sparse - the main source is his contemporary Ibn Abi Usaybi'a's 'Uyun al-Anba - and most events of his life are not preserved with specific dates. The basic outline is clear: born and educated in Damascus, moved to Cairo, served as principal physician of the Mansuri hospital, died in Cairo in 1288."
+  },
+  "sources": [
+    "Ibn Abi Usaybi'a, 'Uyun al-Anba fi Tabaqat al-Atibba",
+    "Albert Z. Iskandar, Ibn al-Nafis (Encyclopedia of the History of Science, 1997)",
+    "Ibn al-Nafis, Sharh Tashrih al-Qanun li Ibn Sina",
+    "Encyclopaedia of Islam, 2nd ed., 'Ibn al-Nafis'"
+  ],
+  "journey": [
+    {
+      "year": 1213,
+      "age": 0,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Born around 1213 in Damascus (or in a village near Damascus called Qaresh, in the modern province of Homs) under Ayyubid rule. His name al-Qarashi may refer to his birthplace.",
+      "category": "birth",
+      "source": "Ibn Abi Usaybi'a, 'Uyun al-Anba"
+    },
+    {
+      "year": 1230,
+      "age": 17,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Studies medicine in Damascus, then one of the great medical centres of the Islamic world, at the famous Bimaristan al-Nuri (the hospital founded by Nur al-Din Zangi in the 12th century). His teacher in medicine is Muhadhdhab al-Din al-Dakhwar, who teaches a generation of leading physicians.",
+      "category": "childhood",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1235,
+      "age": 22,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Studies the religious sciences in addition to medicine. Becomes a learned jurist of the Shafi'i school as well as a physician, and writes works on hadith and theology in addition to his medical writings. The combination of religious learning and medical science is typical of his generation in Damascus.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1240,
+      "age": 27,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Around 1240 moves from Damascus to Cairo (al-Qahira), the capital of the Ayyubid (later Mamluk) realm. The political and intellectual centre of the Muslim Mediterranean is now in Cairo, and many of the leading scholars of Damascus migrate there during the 13th century.",
+      "category": "migration",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1245,
+      "age": 32,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Joins the staff of the Nasiri hospital (al-Bimaristan al-Nasiri) in Cairo. Builds up a large medical practice and a reputation as one of the leading physicians of the city. Begins his commentary on the Anatomy section of Avicenna's Canon of Medicine.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 1255,
+      "age": 42,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "In his Sharh Tashrih al-Qanun (Commentary on the Anatomy of Avicenna's Canon), he describes the pulmonary circulation: 'When the blood in the right cavity of the heart has become thin, it must be transferred into the left cavity... but there is no passage between these two cavities. Rather, the thick blood... flows in the pulmonary artery to the lung... where it mixes with the air... and then flows in the pulmonary vein to reach the left of the two cavities of the heart.' This is the first known correct description of the pulmonary circulation in any language.",
+      "category": "civic",
+      "source": "Ibn al-Nafis, Sharh Tashrih al-Qanun"
+    },
+    {
+      "year": 1260,
+      "age": 47,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Lives through the early years of Mamluk rule in Egypt. In 1260 the Mamluk army under Qutuz and Baybars wins the Battle of Ayn Jalut against the Mongols, the first decisive Muslim victory over the Mongols and the event that saves Egypt and Syria from the fate of Iraq. Cairo emerges as the new centre of Sunni learning.",
+      "category": "civic",
+      "source": "Encyclopaedia of Islam"
+    },
+    {
+      "year": 1284,
+      "age": 71,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "When the Mamluk sultan Qalawun completes the magnificent Mansuri hospital in central Cairo in 1284 (the largest and most advanced hospital of its age, with separate wards for fevers, ophthalmology, surgery, and mental illness), Ibn al-Nafis is appointed its chief physician (ra'is al-atibba) and head of the medical school attached to it.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a; Encyclopaedia of Islam"
+    },
+    {
+      "year": 1287,
+      "age": 74,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "In his last years donates his house, his books, and his library to the Mansuri hospital and its school, an act of waqf (charitable endowment) typical of the great scholars of Mamluk Egypt. He never marries.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "day": 17,
+      "month": 12,
+      "year": 1288,
+      "age": 75,
+      "precision": "day",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Dies in Cairo on 21 Dhu al-Qa'da 687 AH (17 December 1288), aged about 75. He is buried in Cairo. His description of the pulmonary circulation is forgotten in the Latin West and remains unknown until the manuscript is rediscovered in Berlin in 1924. Today he is recognised as the discoverer of the pulmonary circulation, three centuries before Servetus and Harvey.",
+      "category": "death",
+      "source": "Ibn Abi Usaybi'a; Encyclopaedia of Islam"
+    }
+  ]
+}

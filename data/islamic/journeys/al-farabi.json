@@ -1,0 +1,122 @@
+{
+  "person": "Al-Farabi",
+  "slug": "F0229",
+  "lifespan": {
+    "birth": 872,
+    "death": 950
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Al-Farabi — the 'Second Teacher' after Aristotle — left almost no autobiographical traces. The medieval biographers (Ibn Abi Usaybi'a, Ibn Khallikan) report his Turkic origins in Farab, his studies in Baghdad with Christian Aristotelians, his move to Aleppo under the Hamdanid Sayf al-Dawla, and his death in Damascus, but specific years are reconstructed from cross-references rather than firsthand documents. The story of his unconventional lifestyle and Sufi tendencies in Damascus belongs to legend more than to verified history."
+  },
+  "sources": [
+    "Ibn Abi Usaybi'a, Uyun al-Anba",
+    "Ibn Khallikan, Wafayat al-A'yan",
+    "Dimitri Gutas, 'Al-Farabi' in Encyclopaedia Iranica",
+    "Stanford Encyclopedia of Philosophy — al-Farabi"
+  ],
+  "journey": [
+    {
+      "year": 872,
+      "age": 0,
+      "precision": "decade",
+      "location": "Farab",
+      "lat": 42.55,
+      "lng": 68.3,
+      "event": "Born around this date in Farab (modern Otrar, southern Kazakhstan), a Turkic frontier town on the middle Syr Darya. His father is reportedly a military officer of Turkic or Persian background.",
+      "category": "birth",
+      "source": "Ibn Abi Usaybi'a; Ibn Khallikan"
+    },
+    {
+      "year": 900,
+      "age": 28,
+      "precision": "decade",
+      "location": "Bukhara",
+      "lat": 39.7681,
+      "lng": 64.4556,
+      "event": "Begins his higher education in the Persian intellectual centres of Khurasan and Transoxiana before travelling west.",
+      "category": "travel",
+      "source": "Inferred from itinerary"
+    },
+    {
+      "year": 905,
+      "age": 33,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Arrives in Baghdad and joins the philosophical school descended from the Christian Aristotelian Yuhanna ibn Haylan. He immerses himself in the Greek logical and metaphysical curriculum — the Organon, Plato's Republic and Laws, Aristotle's Metaphysics and Ethics.",
+      "category": "travel",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 920,
+      "age": 48,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Becomes the leading Aristotelian of his generation in Baghdad, writing systematic commentaries on Aristotle's logic and original works on political philosophy modelled on Plato's Republic.",
+      "category": "spiritual",
+      "source": "Gutas EIr"
+    },
+    {
+      "year": 932,
+      "age": 60,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Composes his most famous work, Mabadi Ara Ahl al-Madina al-Fadila (The Principles of the Opinions of the People of the Virtuous City), a synthesis of Aristotelian metaphysics, Neoplatonic emanation, and Platonic political theory under the Caliphate.",
+      "category": "spiritual",
+      "source": "Stanford SEP; Gutas EIr"
+    },
+    {
+      "year": 942,
+      "age": 70,
+      "precision": "year",
+      "location": "Aleppo",
+      "lat": 36.2021,
+      "lng": 37.1343,
+      "event": "Leaves troubled Baghdad for the court of the Hamdanid prince Sayf al-Dawla in Aleppo, who is gathering scholars and poets at his northern Syrian capital. Al-Farabi is received with great honour.",
+      "category": "travel",
+      "source": "Ibn Khallikan"
+    },
+    {
+      "year": 945,
+      "age": 73,
+      "precision": "year",
+      "location": "Aleppo",
+      "lat": 36.2021,
+      "lng": 37.1343,
+      "event": "Lives at Sayf al-Dawla's court, where he reportedly dresses in Sufi robes and refuses payment beyond a small daily stipend. He composes his treatise on music, the Kitab al-Musiqa al-Kabir, considered the most important work on music theory in Arabic.",
+      "category": "civic",
+      "source": "Ibn Abi Usaybi'a"
+    },
+    {
+      "year": 949,
+      "age": 77,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Travels south with Sayf al-Dawla on a campaign against Byzantine and rebellious forces. He visits Damascus and stays in the city for some time.",
+      "category": "travel",
+      "source": "Ibn Khallikan"
+    },
+    {
+      "year": 950,
+      "age": 78,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Dies in Damascus in December (Rajab 339 AH). According to one tradition he is killed by highwaymen on the road outside the city; according to another he dies peacefully in old age. He is buried in Damascus, and Sayf al-Dawla himself reportedly leads the funeral prayer.",
+      "category": "death",
+      "source": "Ibn Abi Usaybi'a; Ibn Khallikan"
+    }
+  ]
+}

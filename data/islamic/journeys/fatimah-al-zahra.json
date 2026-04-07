@@ -1,0 +1,153 @@
+{
+  "person": "Fatimah al-Zahra",
+  "slug": "F0599",
+  "lifespan": "605-632",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Fatimah is one of the most revered women in Islam, but the details of her life are sparsely documented and the few firm dates concern her marriage, the births of her children, and her death six months after the Prophet. Sunni and Shia sources differ on some details, especially around the dispute over the Fadak inheritance and the circumstances of her death. Her birth year is reconstructed (commonly given as 605 CE in Sunni sources and 612 CE in Shia sources) and almost no specific months or days survive for events in her life apart from her marriage and her death."
+  },
+  "sources": [
+    "Ibn Ishaq, Sirat Rasul Allah",
+    "Ibn Sa'd, Kitab al-Tabaqat al-Kabir, vol. 8",
+    "Sahih al-Bukhari and Sahih Muslim",
+    "Al-Tabari, Tarikh al-Rusul wa al-Muluk",
+    "Al-Mufid, Kitab al-Irshad (Shia source)"
+  ],
+  "journey": [
+    {
+      "year": 605,
+      "age": 0,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Born in Mecca to Muhammad ibn Abdullah and Khadija bint Khuwaylid. She is the youngest of their daughters (some sources) or one of the four daughters who survive infancy. The year 605 is the common Sunni reconstruction; Shia sources place her birth in 612, after the start of revelation.",
+      "category": "birth",
+      "source": "Ibn Sa'd, Tabaqat 8"
+    },
+    {
+      "year": 615,
+      "age": 10,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Grows up during the early years of persecution in Mecca. Witnesses the abuse heaped on her father by the Quraysh, including the famous incident in which she removes the entrails of a slaughtered camel that some Qurayshites had thrown on his back while he prayed at the Ka'ba.",
+      "category": "persecution",
+      "source": "Sahih al-Bukhari, Manaqib"
+    },
+    {
+      "year": 619,
+      "age": 14,
+      "precision": "year",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Her mother Khadija dies in the Year of Sorrow, leaving her the principal woman of the Prophet's household. Tradition gives her the title Umm Abiha (Mother of her Father) for the care she shows her father after her mother's death.",
+      "category": "loss",
+      "source": "Ibn Ishaq, Sira"
+    },
+    {
+      "year": 622,
+      "age": 17,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Migrates from Mecca to Medina with the rest of the Prophet's household, after her father has already made the Hijra. She joins him in the simple house adjoining the new mosque.",
+      "category": "migration",
+      "source": "Ibn Ishaq, Sira"
+    },
+    {
+      "year": 624,
+      "age": 19,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Marries her father's cousin Ali ibn Abi Talib in Medina, in the second year after the Hijra, shortly after the Battle of Badr. The dowry is modest: Ali sells his shield to provide it. They live in a small house near the Prophet's mosque.",
+      "category": "marriage",
+      "source": "Ibn Sa'd, Tabaqat 8"
+    },
+    {
+      "year": 625,
+      "age": 20,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Bears her first son Hasan ibn Ali in Medina, in the year after the Battle of Uhud. The Prophet himself names the child and recites the call to prayer in his ear. Hasan will later be called the master of the youths of paradise.",
+      "category": "marriage",
+      "source": "Ibn Sa'd, Tabaqat 6"
+    },
+    {
+      "year": 626,
+      "age": 21,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Bears her second son Husayn ibn Ali. He is born about a year after Hasan. The Prophet shows great affection to both grandsons, and is reported to have called them his two sweet basils.",
+      "category": "marriage",
+      "source": "Ibn Sa'd; Sahih al-Bukhari"
+    },
+    {
+      "year": 627,
+      "age": 22,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Bears her daughter Zaynab bint Ali in Medina. She also bears Umm Kulthum, and according to some accounts a son named Muhsin who dies in infancy or is miscarried. She lives in great simplicity, grinding flour and drawing water with her own hands.",
+      "category": "marriage",
+      "source": "Ibn Sa'd, Tabaqat 8"
+    },
+    {
+      "year": 630,
+      "age": 25,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Witnesses the conquest of Mecca and the consolidation of Islam in Arabia. The Prophet calls her, along with her husband Ali, her two sons Hasan and Husayn, under his cloak and recites the verse of purification (Surah al-Ahzab 33:33), the famous incident known as Hadith al-Kisa.",
+      "category": "spiritual",
+      "source": "Sahih Muslim, Fada'il al-Sahaba"
+    },
+    {
+      "year": 632,
+      "age": 27,
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "In June 632 (Rabi' al-Awwal 11 AH), her father the Prophet Muhammad dies in Medina. According to a famous hadith, he whispers something to her that first makes her cry and then makes her smile: that she will be the first of his household to follow him.",
+      "category": "loss",
+      "source": "Sahih al-Bukhari, Maghazi"
+    },
+    {
+      "year": 632,
+      "age": 27,
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "After her father's death, contests with the new caliph Abu Bakr the inheritance of the lands of Fadak and the share owed to the Prophet's family. Abu Bakr cites a hadith that prophets do not leave inheritance. The dispute leaves her grieved and she withdraws from public life.",
+      "category": "loss",
+      "source": "Sahih al-Bukhari, Khums; Al-Mufid, Irshad"
+    },
+    {
+      "year": 632,
+      "age": 27,
+      "precision": "month",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Dies in Medina about six months after her father, in November 632 (Ramadan 11 AH). She is the first member of the Prophet's family to follow him, as he had foretold. She is buried at night, by her own request, in the Baqi cemetery in Medina; the exact location of her grave is not certain. She is about 27 years old.",
+      "category": "death",
+      "source": "Sahih al-Bukhari, Maghazi; Ibn Sa'd"
+    }
+  ]
+}

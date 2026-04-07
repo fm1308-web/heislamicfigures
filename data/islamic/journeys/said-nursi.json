@@ -1,0 +1,223 @@
+{
+  "person": "Bediuzzaman Said Nursi",
+  "slug": "F0530",
+  "lifespan": "1878-1960",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Bediuzzaman ('Wonder of the Age') Said Nursi, the founder of the Nur movement and one of the most influential Turkish Muslim thinkers of the 20th century, is exceptionally well documented through his own autobiographical writings (the Tarihce-i Hayat compiled by his disciples), the letters and treatises that make up his Risale-i Nur, contemporary Ottoman and Turkish state records, and the official archives of the many trials he underwent. The major events of his life - from his birth in eastern Anatolia, his time in Istanbul, his service in World War I, his trials and imprisonments under the Turkish Republic, and his death in Urfa - are firm by year and almost all by day."
+  },
+  "sources": [
+    "Said Nursi, Tarihce-i Hayat (Biography)",
+    "Said Nursi, Risale-i Nur Külliyati",
+    "Sukran Vahide, Islam in Modern Turkey: An Intellectual Biography of Bediuzzaman Said Nursi (2005)",
+    "Sahin Filiz and Mahmud Erol Kilic, Said Nursi (Encyclopedia of Islam)",
+    "Encyclopaedia of Islam, 3rd ed., 'Said Nursi'"
+  ],
+  "journey": [
+    {
+      "year": 1878,
+      "age": 0,
+      "precision": "year",
+      "location": "Nurs",
+      "lat": 38.5500,
+      "lng": 42.3000,
+      "event": "Born in 1878 in the village of Nurs in the Bitlis province of eastern Anatolia (modern Turkey), into a Kurdish family of modest means. His father Mirza is a peasant farmer known for his piety. The village name Nurs ('lights') will give him the name Nursi by which he becomes known.",
+      "category": "birth",
+      "source": "Vahide; Tarihce-i Hayat"
+    },
+    {
+      "year": 1888,
+      "age": 9,
+      "precision": "period",
+      "location": "Bitlis region",
+      "lat": 38.4017,
+      "lng": 42.1083,
+      "event": "Begins his religious education in the traditional madrasas of eastern Anatolia. Studies the standard curriculum of Arabic grammar, logic, jurisprudence, theology, and Quranic sciences. Demonstrates an extraordinary memory: by his teens, according to his disciples, he has memorised about 90 books of the standard madrasa curriculum.",
+      "category": "childhood",
+      "source": "Tarihce-i Hayat"
+    },
+    {
+      "year": 1894,
+      "age": 16,
+      "precision": "year",
+      "location": "Siirt",
+      "lat": 37.9250,
+      "lng": 41.9500,
+      "event": "Around 1894 (when he is about sixteen) impresses the senior scholars of Siirt by defeating them in formal disputation in just three months of study. They give him the title Bediuzzaman ('the Wonder of the Age'), which he keeps for the rest of his life. He develops a project: to make the modern sciences accessible to traditional madrasa students, and the Islamic sciences accessible to graduates of modern schools.",
+      "category": "civic",
+      "source": "Tarihce-i Hayat; Vahide"
+    },
+    {
+      "year": 1907,
+      "age": 29,
+      "precision": "year",
+      "location": "Istanbul",
+      "lat": 41.0082,
+      "lng": 28.9784,
+      "event": "In late 1907 travels to Istanbul to petition Sultan Abdulhamid II for the establishment of a university (Medresetü'z-Zehra) in eastern Anatolia that would integrate the religious sciences with the modern sciences. Stays at the Sekerci Han in Istanbul. The petition is rejected and he is briefly committed to a mental hospital - a recurring tactic of the Hamidian regime against troublesome petitioners.",
+      "category": "travel",
+      "source": "Vahide; Tarihce-i Hayat"
+    },
+    {
+      "day": 23,
+      "month": 7,
+      "year": 1908,
+      "age": 30,
+      "precision": "day",
+      "location": "Istanbul",
+      "lat": 41.0082,
+      "lng": 28.9784,
+      "event": "On 23 July 1908 the Young Turk Revolution restores the Ottoman constitution. Said Nursi welcomes the revolution and gives a famous speech in Istanbul on the meaning of constitutionalism in the light of Islam. He becomes for a time a public figure of the new constitutional era.",
+      "category": "civic",
+      "source": "Vahide"
+    },
+    {
+      "year": 1909,
+      "age": 31,
+      "precision": "year",
+      "location": "Istanbul",
+      "lat": 41.0082,
+      "lng": 28.9784,
+      "event": "In April 1909, in the wake of the abortive '31 March Incident' (a counter-revolution against the Young Turks), Said Nursi is arrested and tried by a military court for inflammatory preaching. He is acquitted and immediately leaves Istanbul, riding in his Kurdish robes through the city in a famous gesture of defiance.",
+      "category": "persecution",
+      "source": "Vahide"
+    },
+    {
+      "year": 1911,
+      "age": 33,
+      "precision": "year",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "In 1911 visits Damascus and delivers the famous Hutbe-i Samiye (Damascus Sermon) at the Umayyad Mosque before an audience of 10,000, including 100 senior ulama. The sermon - on the six diseases of the Islamic world (despair, untruthfulness, enmity, ignorance of brotherhood, despotism, egotism) and their remedies - becomes one of his foundational texts.",
+      "category": "sermon",
+      "source": "Said Nursi, Hutbe-i Samiye"
+    },
+    {
+      "year": 1914,
+      "age": 36,
+      "precision": "year",
+      "location": "Van",
+      "lat": 38.4942,
+      "lng": 43.3800,
+      "event": "When World War I breaks out and the Ottoman Empire enters on the side of Germany in November 1914, Said Nursi forms a regiment of his religious students from the eastern provinces and joins the Caucasus campaign as a volunteer. He fights on the Russian front against the Russian and Armenian forces.",
+      "category": "battle",
+      "source": "Vahide"
+    },
+    {
+      "year": 1916,
+      "age": 38,
+      "precision": "year",
+      "location": "Bitlis",
+      "lat": 38.4017,
+      "lng": 42.1083,
+      "event": "In March 1916, during the Russian advance, is wounded and captured at Bitlis by Russian forces. Sent first to Tiflis (Tbilisi), then to Kosturma (Kostroma) on the Volga, where he is held as a prisoner of war for over two years.",
+      "category": "loss",
+      "source": "Vahide; Tarihce-i Hayat"
+    },
+    {
+      "year": 1918,
+      "age": 40,
+      "precision": "year",
+      "location": "Istanbul",
+      "lat": 41.0082,
+      "lng": 28.9784,
+      "event": "In June 1918 escapes from Russian captivity (taking advantage of the chaos following the Bolshevik Revolution) and returns through Warsaw, Vienna, and Sofia to Istanbul. Becomes a member of the Dar al-Hikmat al-Islamiyya, an Ottoman religious advisory body, and continues his religious writings and his calls for Islamic renewal.",
+      "category": "civic",
+      "source": "Vahide"
+    },
+    {
+      "year": 1922,
+      "age": 44,
+      "precision": "year",
+      "location": "Ankara",
+      "lat": 39.9334,
+      "lng": 32.8597,
+      "event": "In November 1922 is invited to Ankara by Mustafa Kemal (later Atatürk) and the leaders of the Turkish national movement, who hope to enlist the famous scholar in support of their cause. Said Nursi addresses the new Grand National Assembly. But after a series of confrontations with Mustafa Kemal over religious questions, he becomes disillusioned and withdraws from political life.",
+      "category": "diplomacy",
+      "source": "Tarihce-i Hayat; Vahide"
+    },
+    {
+      "year": 1925,
+      "age": 47,
+      "precision": "year",
+      "location": "Burdur",
+      "lat": 37.7203,
+      "lng": 30.2908,
+      "event": "After the Sheikh Said rebellion in eastern Anatolia in February 1925 (in which he played no part), the Turkish Republic exiles him from his native region. He is sent to internal exile, first to Burdur in southwestern Anatolia and then in 1926 to the small village of Barla in the mountains of Isparta province. He will remain in internal exile, under various forms of restriction, for almost the rest of his life.",
+      "category": "persecution",
+      "source": "Vahide"
+    },
+    {
+      "year": 1926,
+      "age": 48,
+      "precision": "year",
+      "location": "Barla",
+      "lat": 37.6833,
+      "lng": 30.8500,
+      "event": "Settles in the remote village of Barla in 1926. In this enforced isolation, in a small wooden house under a great plane tree (the Cinar of Barla), he composes most of the great body of works that will become the Risale-i Nur (Treatises of Light). The Risale-i Nur is hand-copied and circulated in secret by his disciples across Anatolia.",
+      "category": "spiritual",
+      "source": "Risale-i Nur; Vahide"
+    },
+    {
+      "year": 1935,
+      "age": 57,
+      "precision": "year",
+      "location": "Eskisehir",
+      "lat": 39.7767,
+      "lng": 30.5206,
+      "event": "In 1935 is arrested with about 120 of his followers and tried at Eskisehir for organising a religious order in defiance of the Republic's secularist laws. He is sentenced to eleven months in prison. The first of many imprisonments and trials.",
+      "category": "persecution",
+      "source": "Vahide; Tarihce-i Hayat"
+    },
+    {
+      "year": 1944,
+      "age": 66,
+      "precision": "year",
+      "location": "Denizli",
+      "lat": 37.7765,
+      "lng": 29.0864,
+      "event": "Tried at Denizli in 1943-1944 with another 126 disciples on similar charges. Acquitted in June 1944 - a major turning point, as the verdict gives a measure of legal recognition to the Risale-i Nur as a permissible religious work.",
+      "category": "persecution",
+      "source": "Vahide"
+    },
+    {
+      "year": 1948,
+      "age": 70,
+      "precision": "year",
+      "location": "Afyon",
+      "lat": 38.7507,
+      "lng": 30.5566,
+      "event": "Tried again at Afyonkarahisar in 1948. Spends 20 months in prison there - despite his age and ill health. Conditions are harsh; on one occasion he is poisoned (he survives). Throughout these imprisonments he refuses to renounce his work and continues to write.",
+      "category": "persecution",
+      "source": "Vahide"
+    },
+    {
+      "year": 1950,
+      "age": 72,
+      "precision": "year",
+      "location": "Ankara",
+      "lat": 39.9334,
+      "lng": 32.8597,
+      "event": "After the Democratic Party victory of May 1950 ends the single-party rule of the Republican People's Party, the religious atmosphere of Turkey eases significantly. Said Nursi, in his old age, gains a wider hearing. The Risale-i Nur begins to be printed in Latin script for the first time and circulates openly.",
+      "category": "civic",
+      "source": "Vahide"
+    },
+    {
+      "day": 23,
+      "month": 3,
+      "year": 1960,
+      "age": 82,
+      "precision": "day",
+      "location": "Urfa",
+      "lat": 37.1591,
+      "lng": 38.7969,
+      "event": "Dies in a hotel room in Urfa (Sanliurfa) in southeastern Turkey on 23 March 1960, aged 82. He had travelled there a few days before, against medical advice, to visit the city associated with the prophet Abraham. He is buried in Urfa. After the military coup of 27 May 1960, the new junta, fearing his tomb as a centre of pilgrimage, has his body secretly disinterred and reburied at an unknown location in southwestern Anatolia. His Nur movement nevertheless continues to grow and is today one of the largest Islamic movements in Turkey and beyond.",
+      "category": "death",
+      "source": "Vahide; Tarihce-i Hayat"
+    }
+  ]
+}
