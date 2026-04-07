@@ -345,18 +345,23 @@ async function boot(){
   // If silsila tab was already active (e.g. URL hash loaded) trigger render now
   if(VIEW==='silsila') renderSilsila();
 
-  // ── Browser history: set initial state ──
-  history.replaceState({view:VIEW},'','#'+VIEW);
-  var _bootHash=location.hash.replace('#','');
-  if(_bootHash&&_bootHash!==VIEW){
-    var _bhParts=_bootHash.split('/');
-    var _bhView=_bhParts[0];
-    setView(_bhView);
-    if(_bhView==='talk'&&_bhParts[1]&&typeof window._talkSelectScholar==='function'){
-      setTimeout(function(){window._talkSelectScholar(_bhParts[1]);},100);
-    }
-    if(_bhView==='one'&&_bhParts[1]&&typeof window._oneClickName==='function'){
-      setTimeout(function(){window._oneClickName(decodeURIComponent(_bhParts[1]));},100);
+  // ── URL share restore (takes priority over hash) ──
+  if(window.location.search&&typeof window._shareRestoreFromURL==='function'){
+    window._shareRestoreFromURL();
+  } else {
+    // ── Browser history: set initial state ──
+    history.replaceState({view:VIEW},'','#'+VIEW);
+    var _bootHash=location.hash.replace('#','');
+    if(_bootHash&&_bootHash!==VIEW){
+      var _bhParts=_bootHash.split('/');
+      var _bhView=_bhParts[0];
+      setView(_bhView);
+      if(_bhView==='talk'&&_bhParts[1]&&typeof window._talkSelectScholar==='function'){
+        setTimeout(function(){window._talkSelectScholar(_bhParts[1]);},100);
+      }
+      if(_bhView==='one'&&_bhParts[1]&&typeof window._oneClickName==='function'){
+        setTimeout(function(){window._oneClickName(decodeURIComponent(_bhParts[1]));},100);
+      }
     }
   }
 }
@@ -1262,15 +1267,17 @@ function renderInfo(p){
     var btn = document.getElementById('favToggleBtn');
     if (!btn || !APP.Favorites) return;
     btn.addEventListener('click', function() {
-      var name = this.dataset.name;
-      var nowFav = APP.Favorites.toggle(name);
-      this.textContent   = nowFav ? '★' : '☆';
-      this.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
-      this.title         = nowFav ? 'Remove from saved' : 'Save figure';
-      this.style.transform = 'scale(1.5)';
       var self = this;
-      setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
-      _updateFavFilterBtn();
+      requireTester('save', function() {
+        var name = self.dataset.name;
+        var nowFav = APP.Favorites.toggle(name);
+        self.textContent   = nowFav ? '★' : '☆';
+        self.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
+        self.title         = nowFav ? 'Remove from saved' : 'Save figure';
+        self.style.transform = 'scale(1.5)';
+        setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
+        _updateFavFilterBtn();
+      });
     });
   })();
 }

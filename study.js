@@ -73,11 +73,13 @@ function _buildStudySidebar(){
     star.onclick=function(e){
       e.stopPropagation();
       if(!APP.Favorites) return;
-      var nowFav=APP.Favorites.toggle(s.name);
-      star.textContent=nowFav?'\u2605':'\u2606';
-      star.classList.toggle('active',nowFav);
-      _updateFavFilterBtn();
-      if(APP.filterFavsOnly) _buildStudySidebar();
+      requireTester('save', function(){
+        var nowFav=APP.Favorites.toggle(s.name);
+        star.textContent=nowFav?'\u2605':'\u2606';
+        star.classList.toggle('active',nowFav);
+        _updateFavFilterBtn();
+        if(APP.filterFavsOnly) _buildStudySidebar();
+      });
     };
 
     // Chevron

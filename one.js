@@ -914,13 +914,17 @@ window._oneClearAll=function(){
   _renderMain();
 };
 
+window._oneGetSelected=function(){ return _selected.slice(); };
+
 window._oneToggleFav=function(btn){
   if(!APP.Favorites) return;
-  var name=btn.dataset.name;
-  var nowFav=APP.Favorites.toggle(name);
-  btn.textContent=nowFav?'\u2605':'\u2606';
-  btn.style.color=nowFav?'#D4AF37':'rgba(160,174,192,0.25)';
-  if(typeof _updateFavFilterBtn==='function') _updateFavFilterBtn();
+  requireTester('save', function(){
+    var name=btn.dataset.name;
+    var nowFav=APP.Favorites.toggle(name);
+    btn.textContent=nowFav?'\u2605':'\u2606';
+    btn.style.color=nowFav?'#D4AF37':'rgba(160,174,192,0.25)';
+    if(typeof _updateFavFilterBtn==='function') _updateFavFilterBtn();
+  });
 };
 
 })();

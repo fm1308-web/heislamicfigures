@@ -1013,6 +1013,15 @@ function _fwResolveName(journeyName){
   return null;
 }
 
+window._fwGetSelectedSlug = function(){
+  var files = _fwSelectedFiles();
+  if(!files.length) return null;
+  var fig = _fwFigures[files[0]];
+  if(!fig) return null;
+  var p = _fwResolveName(fig.name || _fwIndex.find(function(i){return i.file===files[0];})?.name);
+  return p ? p.slug : null;
+};
+
 window._preloadJourneyIndex = function(){
   if(window._journeyFigures) return Promise.resolve(window._journeyFigures);
   return fetch('data/islamic/journeys/index.json')
