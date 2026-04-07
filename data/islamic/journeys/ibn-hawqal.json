@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "person": "Ibn Hawqal",
+  "slug": "F0736",
+  "lifespan": "0920-0988 CE",
+  "confidence": {
+    "grade": "B",
+    "density": "dense",
+    "precision": "year",
+    "disclosure": "Itinerary is reconstructed from Ibn Hawqal's own Surat al-Ard / Kitab al-Masalik wa-l-Mamalik. He recorded only his departure date (15 May 943, from Baghdad) precisely; the dates for individual stops are inferred from internal references in the text and from André Miquel's chronological reconstruction. He almost certainly visited the cities listed below, but whether he actually reached the southern Sahara below Awdaghust or only relayed merchant testimony is debated, so I have included only Sijilmasa and omitted the deeper Sahel."
+  },
+  "sources": [
+    "Ibn Hawqal, Kitab Surat al-Ard (977)",
+    "J.H. Kramers and G. Wiet (trans.), Ibn Hauqal: Configuration de la terre (1964)",
+    "André Miquel, La géographie humaine du monde musulman jusqu'au milieu du 11e siècle, vol. 1 (1967)"
+  ],
+  "journey": [
+    {"year": 920, "location": "Nusaybin, Turkey", "lat": 37.0667, "lng": 41.2167, "event": "Born in Nisibis in upper Mesopotamia (modern Nusaybin) into a merchant family.", "category": "birth", "precision": "period", "source": "Miquel 1967"},
+    {"year": 943, "location": "Baghdad, Iraq", "lat": 33.3152, "lng": 44.3661, "event": "Set out from Baghdad on 15 May 943 (7 Ramadan 331 AH), beginning thirty years of travels.", "category": "other", "precision": "day", "source": "Surat al-Ard"},
+    {"year": 944, "location": "Mosul, Iraq", "lat": 36.3450, "lng": 43.1450, "event": "Crossed northern Mesopotamia and recorded Mosul in his section on al-Jazira.", "category": "other", "precision": "period", "source": "Surat al-Ard"},
+    {"year": 945, "location": "Cairo, Egypt", "lat": 30.0444, "lng": 31.2357, "event": "Visited Egypt during the late Ikhshidid period, several decades before the Fatimid conquest.", "category": "other", "precision": "period", "source": "Kramers and Wiet 1964"},
+    {"year": 947, "location": "Qayrawan, Tunisia", "lat": 35.6781, "lng": 10.0962, "event": "Reached the Aghlabid-Fatimid capital of Ifriqiya, beginning his documented North African circuit.", "category": "other", "precision": "year", "source": "Miquel 1967"},
+    {"year": 948, "location": "Sijilmasa, Morocco", "lat": 31.2856, "lng": -4.2939, "event": "Visited the great Saharan caravan terminus that linked the Maghrib to the gold trade of West Africa.", "category": "trade", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 948, "location": "Fez, Morocco", "lat": 34.0181, "lng": -5.0078, "event": "Recorded Fez under the late Idrisids before it passed to the Umayyads of Cordoba.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 948, "location": "Tangier, Morocco", "lat": 35.7595, "lng": -5.8340, "event": "Reached the Strait of Gibraltar before crossing to al-Andalus.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 948, "location": "Cordoba, Spain", "lat": 37.8882, "lng": -4.7794, "event": "Visited the Umayyad capital of al-Andalus, leaving an admiring account of its size and prosperity, while noting the Umayyads' military vulnerability.", "category": "other", "precision": "year", "source": "Kramers and Wiet 1964"},
+    {"year": 951, "location": "Palermo, Sicily, Italy", "lat": 38.1157, "lng": 13.3613, "event": "Visited Kalbid Sicily, leaving the most detailed surviving Arabic description of Muslim Palermo.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 955, "location": "Dvin, Armenia", "lat": 40.0136, "lng": 44.5770, "event": "Reached Armenia, recording the local languages and Christian populations.", "category": "other", "precision": "year", "source": "Miquel 1967"},
+    {"year": 955, "location": "Tbilisi, Georgia", "lat": 41.7151, "lng": 44.8271, "event": "Travelled through the Caucasus, where he claimed to have heard 360 languages spoken.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 956, "location": "Aleppo, Syria", "lat": 36.2021, "lng": 37.1343, "event": "Returned south through Hamdanid Syria, recording Aleppo and Antioch.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 958, "location": "Tabriz, Iran", "lat": 38.0962, "lng": 46.2738, "event": "Travelled across Azerbaijan during a period of Buyid-Hamdanid border conflict.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 960, "location": "Isfahan, Iran", "lat": 32.6539, "lng": 51.6660, "event": "Recorded Buyid Isfahan in his section on Fars and the Jibal.", "category": "other", "precision": "period", "source": "Surat al-Ard"},
+    {"year": 961, "location": "Shiraz, Iran", "lat": 29.5918, "lng": 52.5837, "event": "Visited the Buyid capital of Fars under Adud al-Dawla.", "category": "other", "precision": "period", "source": "Surat al-Ard"},
+    {"year": 962, "location": "Siraf, Iran", "lat": 27.6694, "lng": 52.3417, "event": "Stopped at the great Persian Gulf port of Siraf, hub of the Indian Ocean trade.", "category": "trade", "precision": "period", "source": "Surat al-Ard"},
+    {"year": 964, "location": "Multan, Pakistan", "lat": 30.1575, "lng": 71.5249, "event": "Reached the Indus valley, recording Multan and giving one of the earliest Muslim geographical descriptions of Sind.", "category": "other", "precision": "period", "source": "Kramers and Wiet 1964"},
+    {"year": 966, "location": "Bukhara, Uzbekistan", "lat": 39.7747, "lng": 64.4286, "event": "Visited the Samanid capital of Transoxiana.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 966, "location": "Samarkand, Uzbekistan", "lat": 39.6270, "lng": 66.9750, "event": "Recorded Samarkand and its famous gardens trimmed in the shape of animals.", "category": "other", "precision": "year", "source": "Kramers and Wiet 1964"},
+    {"year": 967, "location": "Kunya-Urgench, Turkmenistan", "lat": 42.3414, "lng": 59.1497, "event": "Visited the Khwarazmian capital before turning toward the Caspian.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 968, "location": "Itil (Astrakhan area), Russia", "lat": 46.3479, "lng": 48.0336, "event": "Recorded the Khazar capital on the Volga shortly before its destruction by Sviatoslav of Kiev.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 969, "location": "Baghdad, Iraq", "lat": 33.3152, "lng": 44.3661, "event": "Returned to Baghdad after his eastern circuit.", "category": "other", "precision": "year", "source": "Miquel 1967"},
+    {"year": 973, "location": "Palermo, Sicily, Italy", "lat": 38.1157, "lng": 13.3613, "event": "Returned to Sicily for a second visit, where he wrote his famous (and polemical) account of Palermo.", "category": "other", "precision": "year", "source": "Kramers and Wiet 1964"},
+    {"year": 977, "location": "Baghdad, Iraq", "lat": 33.3152, "lng": 44.3661, "event": "Completed Kitab Surat al-Ard, drawing on Istakhri's earlier work and his own thirty years of travel.", "category": "other", "precision": "year", "source": "Surat al-Ard"},
+    {"year": 988, "location": "Baghdad, Iraq", "lat": 33.3152, "lng": 44.3661, "event": "Last attested writing dates from after 978; place and exact year of death unknown, conventionally placed around 988 in or near Baghdad.", "category": "death", "precision": "period", "source": "Miquel 1967"}
+  ]
+}

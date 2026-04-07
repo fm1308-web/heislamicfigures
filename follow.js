@@ -994,7 +994,9 @@ var _FW_NAME_MAP = {
   'Abu Hanifa':'Imam Abu Hanifa',
   'Bayazid Bistami':'Abu Yazid al-Bistami',
   'Junayd al-Baghdadi':'Junayd of Baghdad',
-  'Rabia al-Adawiyya':'Rabia al-Basri'
+  'Rabia al-Adawiyya':'Rabia al-Basri',
+  'Evliya \u00C7elebi':'Evliya Celebi',
+  'Hayreddin Barbarossa':'Khayr al-Din Barbarossa'
 };
 
 function _fwResolveName(journeyName){
