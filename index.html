@@ -6,6 +6,7 @@
 <title>Gold Ark</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,6 +35,7 @@
     <button class="view-tab" onclick="setView('eras')">ERAS</button>
     <button class="view-tab" onclick="setView('events')">EVENTS</button>
     <button class="view-tab" onclick="setView('one')">ONE</button>
+    <button class="view-tab" onclick="setView('follow')">FOLLOW</button>
     <button class="view-tab" onclick="setView('talk')">TALK</button>
   </div>
   <div id="searchWrap">
@@ -56,9 +58,9 @@
   <span class="hdr-range-cap">2000</span>
   <button id="yearClearBtn" onclick="clearYear()">&times;</button>
   <select id="erasAnimSpeed" class="map-anim-speed" style="display:none">
-    <option value="2000">1x</option>
-    <option value="1000" selected>2x</option>
-    <option value="500">4x</option>
+    <option value="2400">Slow</option>
+    <option value="1200" selected>Medium</option>
+    <option value="500">Fast</option>
   </select>
   <button id="erasAnimateBtn" class="map-anim-btn" onclick="toggleErasAnimate()" style="display:none">▶ ANIMATE</button>
 </div>
@@ -218,9 +220,9 @@
         style="border-color:var(--gold);color:var(--gold)">★ SAVED</button>
       <div class="map-anim-group">
         <select class="map-anim-speed" id="mapAnimSpeed">
-          <option value="1000">1x</option>
-          <option value="500" selected>2x</option>
-          <option value="250">4x</option>
+          <option value="2400">Slow</option>
+          <option value="1200" selected>Medium</option>
+          <option value="500">Fast</option>
         </select>
         <button class="map-anim-btn" id="mapAnimBtn" onclick="_mapAnimToggle()">▶ ANIMATE</button>
       </div>
@@ -256,6 +258,9 @@
   <!-- ONE VIEW -->
   <div id="one-view" style="display:none"></div>
 
+  <!-- FOLLOW VIEW -->
+  <div id="follow-view" style="display:none"></div>
+
   <!-- TALK VIEW -->
   <div id="talk-view" style="display:none"></div>
 
@@ -281,6 +286,7 @@
 <script src="eras.js"></script>
 <script src="events.js"></script>
 <script src="one.js"></script>
+<script src="follow.js"></script>
 <script src="talk.js"></script>
 <script>
 boot();

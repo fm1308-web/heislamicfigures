@@ -34,8 +34,8 @@ var YEAR_STEPS_FROM = [500,550,600,650,700,750,800,850,900,950,1000,1050,1100,11
 var YEAR_STEPS_TO = [550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500,1550,1600,1650,1700,1750,1800,1850,1900,1950,2000,2025];
 
 var SPEED_OPTIONS = [
-  {label:'1x',ms:2000},{label:'2x',ms:1000},
-  {label:'4x',ms:500}
+  {label:'Slow',ms:2400},{label:'Medium',ms:1200},
+  {label:'Fast',ms:500}
 ];
 
 function getEra(yr){
@@ -191,7 +191,7 @@ function _buildHeaderHTML(){
   // RIGHT: speed + animate
   h+='<select class="ev-speed-select" id="evSpeedSelect" style="margin-left:auto">';
   SPEED_OPTIONS.forEach(function(o){
-    var sel=o.label==='2x'?' selected':'';
+    var sel=o.label==='Medium'?' selected':'';
     h+='<option value="'+o.ms+'"'+sel+'>'+o.label+' ('+o.ms/1000+'s)</option>';
   });
   h+='</select>';
@@ -376,9 +376,9 @@ function _animNext(rows){
     var card=row.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
   },200);
   _animIdx++;
-  var speed=2000;
+  var speed=1200;
   var sel=document.getElementById('evSpeedSelect');
-  if(sel) speed=parseInt(sel.value)||2000;
+  if(sel) speed=parseInt(sel.value)||1200;
   _animTimer=setTimeout(function(){_animNext(rows);},speed);
 }
 

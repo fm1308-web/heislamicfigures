@@ -72,35 +72,41 @@ function _getMapFiltered(){
   });
 }
 
-function _drawEmpires(){
-  if(!_lMap) return;
-  if(_empLayer){_lMap.removeLayer(_empLayer);_empLayer=null;}
-  _empLayer=L.layerGroup();
+// Shared helper: draw empire overlays on any Leaflet map for a given year
+// Returns the L.layerGroup so caller can track/remove it
+function _drawEmpiresOnMap(map, year, existingLayer) {
+  if (!map) return null;
+  if (existingLayer) { map.removeLayer(existingLayer); }
+  var layer = L.layerGroup();
 
-  MAP_EMPIRES.forEach(em=>{
-    // Year filter: only show empires active at current slider year
-    if(_mapYear!==null){
-      if(em.start>_mapYear||em.end<_mapYear) return;
+  MAP_EMPIRES.forEach(function(em) {
+    if (year !== null) {
+      if (em.start > year || em.end < year) return;
     }
-    const poly=L.polygon(em.poly,{
-      color:em.color,weight:1.5,fillColor:em.color,
-      fillOpacity:0.13,opacity:0.55,dashArray:'5,4'
+    var poly = L.polygon(em.poly, {
+      color: em.color, weight: 1.5, fillColor: em.color,
+      fillOpacity: 0.13, opacity: 0.55, dashArray: '5,4'
     });
-    _empLayer.addLayer(poly);
-    // Empire name label
-    const cLat=em.poly.reduce((s,p)=>s+p[0],0)/em.poly.length;
-    const cLng=em.poly.reduce((s,p)=>s+p[1],0)/em.poly.length;
-    const lbl=L.marker([cLat,cLng],{
-      icon:L.divIcon({
-        html:`<div style="color:${em.color};font-family:'Cinzel',Georgia,serif;font-size:12px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:.04em;line-height:1.3;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.7),0 0 8px rgba(0,0,0,.5);">${em.name}<br><span style="font-size:9px;font-weight:500;font-style:italic;opacity:.9;">${em.years}</span></div>`,
-        className:'',iconSize:[210,38],iconAnchor:[105,19]
+    layer.addLayer(poly);
+    var cLat = em.poly.reduce(function(s, p) { return s + p[0]; }, 0) / em.poly.length;
+    var cLng = em.poly.reduce(function(s, p) { return s + p[1]; }, 0) / em.poly.length;
+    var lbl = L.marker([cLat, cLng], {
+      icon: L.divIcon({
+        html: '<div style="color:' + em.color + ';font-family:\'Cinzel\',Georgia,serif;font-size:12px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:.04em;line-height:1.3;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.7),0 0 8px rgba(0,0,0,.5);">' + em.name + '<br><span style="font-size:9px;font-weight:500;font-style:italic;opacity:.9;">' + em.years + '</span></div>',
+        className: '', iconSize: [210, 38], iconAnchor: [105, 19]
       }),
-      interactive:false,keyboard:false
+      interactive: false, keyboard: false
     });
-    _empLayer.addLayer(lbl);
+    layer.addLayer(lbl);
   });
 
-  _empLayer.addTo(_lMap);
+  layer.addTo(map);
+  return layer;
+}
+
+function _drawEmpires(){
+  if(!_lMap) return;
+  _empLayer=_drawEmpiresOnMap(_lMap, _mapYear, _empLayer);
 
   // Always keep label tile on top after re-drawing empires
   if(_labTile){
@@ -574,7 +580,7 @@ function _mapAnimStep(yr){
   if(yr>2000){_mapAnimStop();return;}
   _setSliderYear(yr);
   const sel=document.getElementById('mapAnimSpeed');
-  const ms=sel?parseInt(sel.value)||500:500;
+  const ms=sel?parseInt(sel.value)||1200:1200;
   _mapAnimTimer=setTimeout(function(){_mapAnimStep(yr+10);},ms);
 }
 

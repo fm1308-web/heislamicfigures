@@ -561,7 +561,7 @@ function _animNextStep(yr){
   if(yr > ANIM_TO){ _stopAnim(); return; }
   if(typeof _setSliderYear === 'function') _setSliderYear(yr);
   var sel = document.getElementById('erasAnimSpeed');
-  var ms = sel ? parseInt(sel.value) || 1000 : 1000;
+  var ms = sel ? parseInt(sel.value) || 1200 : 1200;
   _animTimer = setTimeout(function(){ _animNextStep(yr + ANIM_STEP); }, ms);
 }
 

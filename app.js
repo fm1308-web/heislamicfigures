@@ -739,7 +739,7 @@ function setView(v){
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   document.getElementById('hdrRow4').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
-  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='talk'){
+  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='follow'||v==='talk'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
   } else {
     ip.style.display=''; ip.style.flex=''; ip.style.minWidth='';
@@ -750,11 +750,14 @@ function setView(v){
   document.getElementById('eras-view').style.display=v==='eras'?'flex':'none';
   document.getElementById('events-view').style.display=v==='events'?'flex':'none';
   document.getElementById('one-view').style.display=v==='one'?'flex':'none';
+  var _fvEl=document.getElementById('follow-view');
+  _fvEl.style.display=v==='follow'?'flex':'none';
+  if(v==='follow') _fvEl.style.flexDirection='column';
   document.getElementById('talk-view').style.display=v==='talk'?'flex':'none';
   // Hide slider row in study view, show in all others
   const r3=document.getElementById('hdrRow3');
-  if(r3) r3.style.display=(v==='studyroom'||v==='one'||v==='talk')?'none':'flex';
-  if(v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='talk'){
+  if(r3) r3.style.display=(v==='studyroom'||v==='one'||v==='follow'||v==='talk')?'none':'flex';
+  if(v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='follow'||v==='talk'){
     document.getElementById('leftPanel').style.display='none';
     document.getElementById('filterBar').style.display='none';
   }
@@ -766,8 +769,18 @@ function setView(v){
   if(v==='eras'&&typeof initEras==='function') initEras();
   if(v==='events'&&typeof initEvents==='function') initEvents();
   if(v==='one'&&typeof initOne==='function') initOne();
+  if(v==='follow'&&typeof initFollow==='function') initFollow();
+  if(v!=='follow'&&typeof _fwCleanup==='function') _fwCleanup();
   if(v==='talk'&&typeof initTalk==='function') initTalk();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
+  // Final override: guarantee hdrRow3 hidden on follow, restored otherwise
+  if (v === 'follow') {
+    var _r3 = document.getElementById('hdrRow3');
+    if (_r3) _r3.style.setProperty('display', 'none', 'important');
+  } else {
+    var _r3 = document.getElementById('hdrRow3');
+    if (_r3) _r3.style.removeProperty('display');
+  }
   // Push browser history on view change
   if(!window._popstateInProgress){
     history.pushState({view:v},'','#'+v);
