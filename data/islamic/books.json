@@ -1,0 +1,3047 @@
+{
+  "generated_at": "2026-04-08T06:02:12.970154Z",
+  "topline": {
+    "total": 160,
+    "free": 160
+  },
+  "books": [
+    {
+      "id": "F1132-B01",
+      "slug": "F1132",
+      "title": "The Qur'an",
+      "author_hidden": true,
+      "year": 610,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation",
+        "source of everything"
+      ],
+      "tags": [
+        "source of everything"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": ""
+    },
+    {
+      "id": "F0012-B01",
+      "slug": "F0012",
+      "title": "Lawa'ih (Flashes of Light)",
+      "author_name": "Abd al-Rahman Jami",
+      "author_tradition": "Naqshbandiyya",
+      "author_type": "Poet",
+      "year": 1492,
+      "year_source": "author_dod",
+      "topics": [
+        "Naqshbandiyya",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/lawaihofmulanur00jamiuoft",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0012-B02",
+      "slug": "F0012",
+      "title": "Yusuf and Zulaykha",
+      "author_name": "Abd al-Rahman Jami",
+      "author_tradition": "Naqshbandiyya",
+      "author_type": "Poet",
+      "year": 1492,
+      "year_source": "author_dod",
+      "topics": [
+        "Naqshbandiyya",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/yusufzulaikha00jamiuoft",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0031-B01",
+      "slug": "F0031",
+      "title": "Futuh al-Ghaib (Revelations of the Unseen)",
+      "author_name": "Abdul Qadir al-Jilani",
+      "author_tradition": "Qadiriyya",
+      "author_type": "Founder",
+      "year": 1166,
+      "year_source": "author_dod",
+      "topics": [
+        "Qadiriyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/FutuhAlGhaib",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0031-B02",
+      "slug": "F0031",
+      "title": "The Secret of Secrets (Sirr al-Asrar)",
+      "author_name": "Abdul Qadir al-Jilani",
+      "author_tradition": "Qadiriyya",
+      "author_type": "Founder",
+      "year": 1166,
+      "year_source": "author_dod",
+      "topics": [
+        "Qadiriyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/isbn_9780946621507",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0079-B01",
+      "slug": "F0079",
+      "title": "Quran — Sura al-Duha (93:6)",
+      "author_name": "Abdullah ibn Abd al-Muttalib",
+      "author_tradition": "Islamic History",
+      "author_type": "Founder",
+      "year": 570,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/93/6",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0117-B01",
+      "slug": "F0117",
+      "title": "Sunan Abu Dawud",
+      "author_name": "Abu Dawud",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 889,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/abudawud",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0167-B01",
+      "slug": "F0167",
+      "title": "Memorial of the Saints (Attar) - chapter on Bayazid",
+      "author_name": "Abu Yazid al-Bistami",
+      "author_tradition": "Khorasan School",
+      "author_type": "Mystic",
+      "year": 874,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Mystic"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muslimsaintsandm00atauoft",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0172-B01",
+      "slug": "F0172",
+      "title": "Quran — Sura al-Baqara (2:30–39)",
+      "author_name": "Adam",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -3040,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/2/30",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0222-B01",
+      "slug": "F0222",
+      "title": "Alberuni's India (Kitab al-Hind)",
+      "author_name": "Al-Biruni",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scientist",
+      "year": 1048,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Sciences",
+        "Scientist"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/alberunisindiaac01biru",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0222-B02",
+      "slug": "F0222",
+      "title": "The Chronology of Ancient Nations",
+      "author_name": "Al-Biruni",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scientist",
+      "year": 1048,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Sciences",
+        "Scientist"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/chronologyofanci00biru",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0229-B01",
+      "slug": "F0229",
+      "title": "Al-Farabi on the Perfect State (Mabadi')",
+      "author_name": "Al-Farabi",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 950,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/al-farabi-perfect-state-walzer-selections",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B01",
+      "slug": "F0238",
+      "title": "Ihya Ulum al-Din (English)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/IhyaUlumAlDinVol3",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B01",
+      "slug": "F0238",
+      "title": "Ihya Ulum al-Din (Revival of Religious Sciences)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/IhyaUlumAl-dinByImamGhazali",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B01",
+      "slug": "F0238",
+      "title": "Ihya Ulum al-Din (Revival of the Religious Sciences)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/IhyaUlumAlDinVol1",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B02",
+      "slug": "F0238",
+      "title": "Some Religious and Moral Teachings of Al-Ghazzali",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.gutenberg.org/ebooks/73140",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B03",
+      "slug": "F0238",
+      "title": "The Alchemy of Happiness",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sacred-texts.com/isl/tah/index.htm",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B03",
+      "slug": "F0238",
+      "title": "The Alchemy of Happiness (Kimiya-yi Sa'adat)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/alchemyofhappin00ghazgoog",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B04",
+      "slug": "F0238",
+      "title": "The Beginning of Guidance (Bidayat al-Hidaya)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/al-ghazali-beginning-of-guidance",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B05",
+      "slug": "F0238",
+      "title": "The Confessions of Al-Ghazali",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/confessionsofal00ghazuoft",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B06",
+      "slug": "F0238",
+      "title": "The Mishkat al-Anwar (Niche of Lights)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://sacred-texts.com/isl/mishkat/index.htm",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0238-B07",
+      "slug": "F0238",
+      "title": "The Incoherence of the Philosophers (Tahafut al-Falasifa)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/the-incoherence-of-the-philosophers-2nd-edition-brigham-young-university-islamic",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0241-B01",
+      "slug": "F0241",
+      "title": "The Mystics of Islam (chapter on al-Hallaj)",
+      "author_name": "Al-Hallaj",
+      "author_tradition": "Baghdad School",
+      "author_type": "Mystic",
+      "year": 922,
+      "year_source": "author_dod",
+      "topics": [
+        "Baghdad School",
+        "Mystic"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://sacred-texts.com/isl/moi/moi.htm",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0241-B02",
+      "slug": "F0241",
+      "title": "The Tawasin",
+      "author_name": "Al-Hallaj",
+      "author_tradition": "Baghdad School",
+      "author_type": "Mystic",
+      "year": 922,
+      "year_source": "author_dod",
+      "topics": [
+        "Baghdad School",
+        "Mystic"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://www.holybooks.com/wp-content/uploads/The-Tawasin-of-Mansur-Al-Hallaj.pdf",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0267-B01",
+      "slug": "F0267",
+      "title": "The Book of Misers (Kitab al-Bukhala)",
+      "author_name": "Al-Jahiz",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Scholar",
+      "year": 868,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/bookofmisers0000jahi",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0282-B01",
+      "slug": "F0282",
+      "title": "Al-Ahkam al-Sultaniyyah (The Laws of Islamic Governance)",
+      "author_name": "Al-Mawardi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1058,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/al-ahkam-as-sultaniyyah",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0300-B01",
+      "slug": "F0300",
+      "title": "Al-Sunan al-Kubra / Al-Mujtaba",
+      "author_name": "Al-Nasa'i",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 915,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/nasai",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0316-B01",
+      "slug": "F0316",
+      "title": "Epistle on Sufism (al-Risala al-Qushayriyya)",
+      "author_name": "Al-Qushayri",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1072,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/QushayriRisala",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0345-B01",
+      "slug": "F0345",
+      "title": "The History of al-Tabari (SUNY translation)",
+      "author_name": "Al-Tabari",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 923,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/HistoryOfAlTabari",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0357-B01",
+      "slug": "F0357",
+      "title": "Quran — Sura al-An'am (6:86)",
+      "author_name": "Al-Yasa'",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -800,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/6/86",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0363-B01",
+      "slug": "F0363",
+      "title": "Kashf al-Mahjub (Unveiling of the Hidden)",
+      "author_name": "Ali al-Hujwiri",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1072,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://www.gutenberg.org/files/64786/64786-h/64786-h.htm",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0370-B01",
+      "slug": "F0370",
+      "title": "Hajj: Reflections on Its Rituals",
+      "author_name": "Ali Shariati",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Scholar",
+      "year": 1977,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/hajjreflectionso00shar",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0373-B01",
+      "slug": "F0373",
+      "title": "The Reconstruction of Religious Thought in Islam",
+      "author_name": "Allama Iqbal",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1938,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/reconstructionof00iqba",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0373-B02",
+      "slug": "F0373",
+      "title": "The Secrets of the Self (Asrar-i-Khudi)",
+      "author_name": "Allama Iqbal",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1938,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/secretsofselfiqu00iqbauoft",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0383-B01",
+      "slug": "F0383",
+      "title": "Selected Poetry (Rekhta.org)",
+      "author_name": "Amir Khusrow",
+      "author_tradition": "Chishti",
+      "author_type": "Poet",
+      "year": 1325,
+      "year_source": "author_dod",
+      "topics": [
+        "Chishti",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.rekhta.org/poets/amir-khusrau/couplets",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0436-B01",
+      "slug": "F0436",
+      "title": "Imam Mālik — al-Muwaṭṭaʾ",
+      "author_name": "Amrah bint Abd al-Rahman",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Tabi'un",
+      "year": 717,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Tabi'un"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/malik",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0463-B01",
+      "slug": "F0463",
+      "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri (Kitab al-Hajj; Hadith 1858)",
+      "author_name": "as-Saib ibn Yazid",
+      "author_tradition": "Islamic History",
+      "author_type": "Sahaba",
+      "year": 695,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/bukhari:1858",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0472-B01",
+      "slug": "F0472",
+      "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri (Kitab al-Manaqib)",
+      "author_name": "Asma bint Abi Bakr",
+      "author_tradition": "Islamic History",
+      "author_type": "Sahaba",
+      "year": 693,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/bukhari:3916",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0500-B01",
+      "slug": "F0500",
+      "title": "Quran — Sura al-Anbiya (21:83–84)",
+      "author_name": "Ayyub",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1500,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/21/83",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0503-B01",
+      "slug": "F0503",
+      "title": "Quran — Sura al-An'am (6:74)",
+      "author_name": "Azar ibn Nahur",
+      "author_tradition": "Islamic History",
+      "author_type": "Founder",
+      "year": -1720,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/6/74",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0540-B01",
+      "slug": "F0540",
+      "title": "Bulleh Shah: Sufi Lyrics (Panjabi)",
+      "author_name": "Bulleh Shah",
+      "author_tradition": "Qadiriyya",
+      "author_type": "Poet",
+      "year": 1757,
+      "year_source": "author_dod",
+      "topics": [
+        "Qadiriyya",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.rekhta.org/poets/bulleh-shah/couplets",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0552-B01",
+      "slug": "F0552",
+      "title": "Quran — Sura Saba' (34:10–11)",
+      "author_name": "Dawud",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -970,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/34/10",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0559-B01",
+      "slug": "F0559",
+      "title": "Quran — Sura al-Anbiya (21:85–86)",
+      "author_name": "Dhul-Kifl",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1300,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/21/85",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0574-B01",
+      "slug": "F0574",
+      "title": "Divine Flashes (Lama'at)",
+      "author_name": "Fakhr al-Din Iraqi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Poet",
+      "year": 1289,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/divineflashes00iraq",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0580-B01",
+      "slug": "F0580",
+      "title": "Mantiq al-Tayr (Conference of the Birds)",
+      "author_name": "Farid ud-Din Attar",
+      "author_tradition": "Khorasan School",
+      "author_type": "Poet",
+      "year": 1221,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://traditionalhikma.com/wp-content/uploads/2015/06/Conference-of-the-Birds-by-Faridudin-Attar.pdf",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0580-B01",
+      "slug": "F0580",
+      "title": "The Conference of the Birds (Mantiq al-Tayr)",
+      "author_name": "Farid ud-Din Attar",
+      "author_tradition": "Khorasan School",
+      "author_type": "Poet",
+      "year": 1221,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/birdparliament00atauoft",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0580-B02",
+      "slug": "F0580",
+      "title": "Tadhkirat al-Awliya (Memorial of the Saints)",
+      "author_name": "Farid ud-Din Attar",
+      "author_tradition": "Khorasan School",
+      "author_type": "Poet",
+      "year": 1221,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muslimsaintsandm00atauoft",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0581-B01",
+      "slug": "F0581",
+      "title": "Shaloks of Baba Farid (Punjabi verses)",
+      "author_name": "Fariduddin Ganjshakar",
+      "author_tradition": "Chishti",
+      "author_type": "Mystic",
+      "year": 1266,
+      "year_source": "author_dod",
+      "topics": [
+        "Chishti",
+        "Mystic"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.srigranth.org/servlet/gurbani.gurbani?Action=MoreDetails&ID=488130",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0582-B01",
+      "slug": "F0582",
+      "title": "Foundation of Al-Qarawiyyin (historical records)",
+      "author_name": "Fatima al-Fihri",
+      "author_tradition": "Islamic History",
+      "author_type": "Founder",
+      "year": 880,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.worldhistory.org/article/2662/fatima-al-fihri-and-al-qarawiyyin-university/",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0599-B01",
+      "slug": "F0599",
+      "title": "Fatimah al-Zahra — World History Encyclopedia",
+      "author_name": "Fatimah al-Zahra",
+      "author_tradition": "Islamic History",
+      "author_type": "Sahaba",
+      "year": 632,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.worldhistory.org/Fatimah_bint_Muhammad/",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0605-B01",
+      "slug": "F0605",
+      "title": "The Shah Nameh (Book of Kings)",
+      "author_name": "Firdowsi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1020,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/shahnameh00firduoft",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0635-B01",
+      "slug": "F0635",
+      "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri (Kitab al-Talaq)",
+      "author_name": "Habiba bint Sahl",
+      "author_tradition": "Islamic History",
+      "author_type": "Sahaba",
+      "year": 650,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/search?q=Habiba+bint+Sahl+khul",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0640-B01",
+      "slug": "F0640",
+      "title": "The Divan of Hafiz",
+      "author_name": "Hafez",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1390,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/divanofhafiz00hafi",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0643-B01",
+      "slug": "F0643",
+      "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri",
+      "author_name": "Hafsa bint Umar",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 665,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/bukhari",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0663-B01",
+      "slug": "F0663",
+      "title": "Quran — Sura Ta-Ha (20:29–36)",
+      "author_name": "Harun",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1275,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/20/29",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0665-B01",
+      "slug": "F0665",
+      "title": "To What Do We Invite Humanity?",
+      "author_name": "Hasan al-Banna",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Reformer",
+      "year": 1949,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/HasanAlBannaToWhatDoWeInviteHumanity",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0671-B01",
+      "slug": "F0671",
+      "title": "Quran — Sura Quraysh (106)",
+      "author_name": "Hashim ibn Abd Manaf",
+      "author_tradition": "Islamic History",
+      "author_type": "Founder",
+      "year": 497,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/106",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0699-B01",
+      "slug": "F0699",
+      "title": "Quran — Sura Hud (11)",
+      "author_name": "Hud",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -2400,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/11",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0722-B01",
+      "slug": "F0722",
+      "title": "Talbis Iblis (Devil's Deceptions)",
+      "author_name": "Ibn al-Jawzi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1201,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/TalbisIblis-DevilsDeceptions",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0727-B01",
+      "slug": "F0727",
+      "title": "Al-Fawaid: A Collection of Wise Sayings",
+      "author_name": "Ibn al-Qayyim",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1350,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/al-fawaid_202007",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0727-B02",
+      "slug": "F0727",
+      "title": "Inner Dimensions of the Prayer",
+      "author_name": "Ibn al-Qayyim",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1350,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/InnerDimensionsOfThePrayer",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0727-B03",
+      "slug": "F0727",
+      "title": "Kitab al-Ruh (Book of the Soul)",
+      "author_name": "Ibn al-Qayyim",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1350,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/kitab-ar-ruh-by-imam-ibn-qayyim-translation-by-muhammad-husnain",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0727-B04",
+      "slug": "F0727",
+      "title": "Paragons of the Quran",
+      "author_name": "Ibn al-Qayyim",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1350,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/paragons-of-the-quran-by-ibn-qayyim-al-jawziyyah",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0728-B01",
+      "slug": "F0728",
+      "title": "Tarjuman al-Ashwaq (Nicholson translation)",
+      "author_name": "Ibn Arabi",
+      "author_tradition": "Akbarian",
+      "author_type": "Philosopher",
+      "year": 1240,
+      "year_source": "author_dod",
+      "topics": [
+        "Akbarian",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://sacred-texts.com/isl/taa/index.htm",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0728-B01",
+      "slug": "F0728",
+      "title": "The Tarjuman al-Ashwaq",
+      "author_name": "Ibn Arabi",
+      "author_tradition": "Akbarian",
+      "author_type": "Philosopher",
+      "year": 1240,
+      "year_source": "author_dod",
+      "topics": [
+        "Akbarian",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/tarjumanalashwaq00ibna",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0728-B02",
+      "slug": "F0728",
+      "title": "The Bezels of Wisdom (Fusus al-Hikam)",
+      "author_name": "Ibn Arabi",
+      "author_tradition": "Akbarian",
+      "author_type": "Philosopher",
+      "year": 1240,
+      "year_source": "author_dod",
+      "topics": [
+        "Akbarian",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/bezelswisdom00ibna",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0728-B03",
+      "slug": "F0728",
+      "title": "The Meccan Revelations",
+      "author_name": "Ibn Arabi",
+      "author_tradition": "Akbarian",
+      "author_type": "Philosopher",
+      "year": 1240,
+      "year_source": "author_dod",
+      "topics": [
+        "Akbarian",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/the-meccan-revelations/The%20Meccan%20Revelations%20I-of-II/",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0728-B04",
+      "slug": "F0728",
+      "title": "The Alchemy of Human Happiness",
+      "author_name": "Ibn Arabi",
+      "author_tradition": "Akbarian",
+      "author_type": "Philosopher",
+      "year": 1240,
+      "year_source": "author_dod",
+      "topics": [
+        "Akbarian",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://sufi.co.za/wp-content/uploads/2021/06/The-Alchemy-of-Human-Happiness-by-Ibn-al-Arabi-trans.-Stephen-Hirtenstein.pdf",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0730-B01",
+      "slug": "F0730",
+      "title": "The Book of Wisdom (Hikam)",
+      "author_name": "Ibn Ata Allah al-Iskandari",
+      "author_tradition": "Shadhiliyya",
+      "author_type": "Scholar",
+      "year": 1309,
+      "year_source": "author_dod",
+      "topics": [
+        "Shadhiliyya",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/ibn-ata-allah-al-iskandari-the-book-of-wisdom",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0734-B01",
+      "slug": "F0734",
+      "title": "The Travels of Ibn Battuta (4 vols)",
+      "author_name": "Ibn Battuta",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1368,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/travels-of-ibn-battuta",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0734-B01",
+      "slug": "F0734",
+      "title": "The Travels of Ibn Battuta (Gibb translation)",
+      "author_name": "Ibn Battuta",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1368,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/travelsofibnbatt0000ibnb",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0737-B01",
+      "slug": "F0737",
+      "title": "The Ring of the Dove (Tawq al-Hamama)",
+      "author_name": "Ibn Hazm",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1064,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/ringofthedovetre00ibnh",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0743-B01",
+      "slug": "F0743",
+      "title": "Al-Muqaddimah (Arabic)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/almuqaddimah00ibnk",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0743-B01",
+      "slug": "F0743",
+      "title": "Muqaddimah (English)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muqaddimahintrod0000ibnk",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0743-B01",
+      "slug": "F0743",
+      "title": "The Muqaddimah (English)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muqaddimahintrod0000ibnk",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0743-B01",
+      "slug": "F0743",
+      "title": "The Muqaddimah (Rosenthal translation)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muabornsociolog00ibngoog",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0746-B01",
+      "slug": "F0746",
+      "title": "Sunan Ibn Majah",
+      "author_name": "Ibn Majah",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 887,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/ibnmajah",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0751-B01",
+      "slug": "F0751",
+      "title": "Tahafut al-Tahafut (Incoherence of the Incoherence)",
+      "author_name": "Ibn Rushd",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1198,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/TahafutAlTahafut",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0751-B02",
+      "slug": "F0751",
+      "title": "The Decisive Treatise (Fasl al-Maqal)",
+      "author_name": "Ibn Rushd",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1198,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/averroesdecisivetreatise",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0753-B01",
+      "slug": "F0753",
+      "title": "Al-Qanun fi al-Tibb (The Canon of Medicine)",
+      "author_name": "Ibn Sina",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1037,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/AvicennaCanonOfMedicine",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0753-B01",
+      "slug": "F0753",
+      "title": "The Canon of Medicine (al-Qanun fi al-Tibb)",
+      "author_name": "Ibn Sina",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1037,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/CanonOfMedicine",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0753-B01",
+      "slug": "F0753",
+      "title": "The Canon of Medicine (selections)",
+      "author_name": "Ibn Sina",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1037,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/canonofmedicine00avic",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0755-B01",
+      "slug": "F0755",
+      "title": "Al-Uboodiyah (Being a True Slave of Allah)",
+      "author_name": "Ibn Taymiyya",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Reformer",
+      "year": 1328,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/al-uboodiyahBeingATrueSlaveOfAllahswt--",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0755-B02",
+      "slug": "F0755",
+      "title": "Ibn Taymiyyah Expounds on Islam",
+      "author_name": "Ibn Taymiyya",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Reformer",
+      "year": 1328,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/IbnTaymiyyahExpoundsOnIslam-Alhamdulillah-library.blogspot.in.pdf",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0755-B03",
+      "slug": "F0755",
+      "title": "Kitab al-Iman (Book of Faith)",
+      "author_name": "Ibn Taymiyya",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Reformer",
+      "year": 1328,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/KitabAlImanBookOfFaith",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0755-B04",
+      "slug": "F0755",
+      "title": "The Madinan Way",
+      "author_name": "Ibn Taymiyya",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Reformer",
+      "year": 1328,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/madinanwaysoundn0000ibnt",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0756-B01",
+      "slug": "F0756",
+      "title": "The Improvement of Human Reason (Hayy ibn Yaqdhan)",
+      "author_name": "Ibn Tufayl",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1185,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://www.gutenberg.org/ebooks/16831",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0761-B01",
+      "slug": "F0761",
+      "title": "Quran — Sura Ibrahim (14)",
+      "author_name": "Ibrahim",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1725,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/14",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0767-B01",
+      "slug": "F0767",
+      "title": "Quran — Sura Maryam (19:56–57)",
+      "author_name": "Idris",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -3200,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/19/56",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0770-B01",
+      "slug": "F0770",
+      "title": "Quran — Sura al-Saffat (37:123–132)",
+      "author_name": "Ilyas",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -850,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/37/123",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0773-B01",
+      "slug": "F0773",
+      "title": "Kitab al-Zuhd (Book of Asceticism)",
+      "author_name": "Imam Ahmad ibn Hanbal",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Jurist",
+      "year": 855,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Jurist"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/KitabAzZuhd-EnglishTranslation",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0773-B02",
+      "slug": "F0773",
+      "title": "Musnad Ahmad",
+      "author_name": "Imam Ahmad ibn Hanbal",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Jurist",
+      "year": 855,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Jurist"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/ahmad",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0774-B01",
+      "slug": "F0774",
+      "title": "Sahih al-Bukhari (The Authentic Collection)",
+      "author_name": "Imam al-Bukhari",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 870,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/bukhari",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0776-B01",
+      "slug": "F0776",
+      "title": "Al-Risala (Treatise on Islamic Jurisprudence)",
+      "author_name": "Imam al-Shafi'i",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Jurist",
+      "year": 820,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Jurist"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/IslamicJurisprudenceShafiiRisala",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0778-B01",
+      "slug": "F0778",
+      "title": "Al-Muwatta (The Well-Trodden Path)",
+      "author_name": "Imam Malik ibn Anas",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Jurist",
+      "year": 795,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Jurist"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/malik",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0779-B01",
+      "slug": "F0779",
+      "title": "Sahih Muslim (The Authentic Collection)",
+      "author_name": "Imam Muslim",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 875,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/muslim",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0786-B01",
+      "slug": "F0786",
+      "title": "Quran — Sura Al 'Imran (3:45–55)",
+      "author_name": "Isa",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": 33,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/3/45",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0786-B02",
+      "slug": "F0786",
+      "title": "Quran — Sura Maryam (19:16–40)",
+      "author_name": "Isa",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": 33,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/19/16",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0788-B01",
+      "slug": "F0788",
+      "title": "Quran — Sura al-Anbiya (21:72)",
+      "author_name": "Ishaq",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1620,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/21/72",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0790-B01",
+      "slug": "F0790",
+      "title": "Quran — Sura al-Saffat (37:101–113)",
+      "author_name": "Ismail",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1713,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/37/101",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0814-B01",
+      "slug": "F0814",
+      "title": "Masnavi (full Persian & English bilingual)",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/MasnaviByRumiEnglishTranslation",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B01",
+      "slug": "F0814",
+      "title": "Masnavi I Ma'navi (Nicholson translation)",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/masikimanaviofrumi01jala",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B01",
+      "slug": "F0814",
+      "title": "Masnavi-i Ma'navi (English selections)",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/masnaviofjalal00jala",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B01",
+      "slug": "F0814",
+      "title": "The Mathnawi (Nicholson translation)",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/in.ernet.dli.2015.151299",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B01",
+      "slug": "F0814",
+      "title": "The Mesnevi (Masnavi)",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.gutenberg.org/ebooks/61724",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B02",
+      "slug": "F0814",
+      "title": "Selected Poems from the Divan-e Shams-e Tabrizi",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/selectedpoemsfro00jala",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B02",
+      "slug": "F0814",
+      "title": "Selected Poems from the Divan-i Shams",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/selectedpoemsfr00rumigoog",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0814-B03",
+      "slug": "F0814",
+      "title": "The Persian Mystics: Jalalu'd-din Rumi",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.gutenberg.org/ebooks/45159",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0944-B01",
+      "slug": "F0944",
+      "title": "Quran — Sura Hud (11:77–83)",
+      "author_name": "Lut",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1820,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/11/77",
+      "priority": "LOW"
+    },
+    {
+      "id": "F0969-B01",
+      "slug": "F0969",
+      "title": "The Autobiography of Malcolm X",
+      "author_name": "Malcolm X",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1965,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/autobiographyofm0000xmal",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F0986-B01",
+      "slug": "F0986",
+      "title": "A Sufi Saint of the Twentieth Century: Shaikh Ahmad al-Alawi",
+      "author_name": "Martin Lings",
+      "author_tradition": "Shadhiliyya",
+      "author_type": "Scholar",
+      "year": 2005,
+      "year_source": "author_dod",
+      "topics": [
+        "Shadhiliyya",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/sufisaintoftwent00ling",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1009-B01",
+      "slug": "F1009",
+      "title": "Diwan-e-Ghalib (Complete)",
+      "author_name": "Mirza Ghalib",
+      "author_tradition": "Mughal",
+      "author_type": "Poet",
+      "year": 1869,
+      "year_source": "author_dod",
+      "topics": [
+        "Mughal",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.rekhta.org/poets/mirza-ghalib/ghazals",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1016-B01",
+      "slug": "F1016",
+      "title": "The Mystics of Islam (Nicholson) - on Chishti tradition",
+      "author_name": "Moinuddin Chishti",
+      "author_tradition": "Chishti",
+      "author_type": "Founder",
+      "year": 1230,
+      "year_source": "author_dod",
+      "topics": [
+        "Chishti",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sacred-texts.com/isl/moi/moi.htm",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1037-B01",
+      "slug": "F1037",
+      "title": "The Theology of Unity (Risalat al-Tawhid)",
+      "author_name": "Muhammad Abduh",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1905,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/theologyofunity00muha",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1044-B01",
+      "slug": "F1044",
+      "title": "Jami al-Tirmidhi (Al-Sunan)",
+      "author_name": "Muhammad al-Tirmidhi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 892,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/tirmidhi",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1069-B01",
+      "slug": "F1069",
+      "title": "The Elixir of the Gnostics",
+      "author_name": "Mulla Sadra",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1640,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/TheElixirOfTheGnostics",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1076-B01",
+      "slug": "F1076",
+      "title": "Quran — Sura Ta-Ha (20)",
+      "author_name": "Musa",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/20",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1076-B02",
+      "slug": "F1076",
+      "title": "Quran — Sura al-Qasas (28)",
+      "author_name": "Musa",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/28",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1080-B01",
+      "slug": "F1080",
+      "title": "Sahih Muslim (3,033 hadiths — most authentic after Bukhari)",
+      "author_name": "Muslim ibn al-Hajjaj",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 875,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/muslim",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1113-B01",
+      "slug": "F1113",
+      "title": "Siyasatnama (Book of Government)",
+      "author_name": "Nizam al-Mulk",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Ruler",
+      "year": 1092,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Sciences",
+        "Ruler"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/bookofgovernment00niza",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1114-B01",
+      "slug": "F1114",
+      "title": "Layla and Majnun",
+      "author_name": "Nizami Ganjavi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1209,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/laylimajnunlover00niza",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1114-B02",
+      "slug": "F1114",
+      "title": "Sikandar Nama (Book of Alexander)",
+      "author_name": "Nizami Ganjavi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1209,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/sikandernameebar00niza",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1115-B01",
+      "slug": "F1115",
+      "title": "Morals for the Heart (Fawa'id al-Fu'ad)",
+      "author_name": "Nizamuddin Auliya",
+      "author_tradition": "Chishti",
+      "author_type": "Mystic",
+      "year": 1325,
+      "year_source": "author_dod",
+      "topics": [
+        "Chishti",
+        "Mystic"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/morals-for-the-heart",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1118-B01",
+      "slug": "F1118",
+      "title": "Quran — Sura Nuh (71)",
+      "author_name": "Nuh",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -2050,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/71",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1127-B01",
+      "slug": "F1127",
+      "title": "Rubaiyat (illustrated edition)",
+      "author_name": "Omar Khayyam",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1131,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/rubaaborubaiyat00omar",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1127-B01",
+      "slug": "F1127",
+      "title": "Rubaiyat (multiple translations)",
+      "author_name": "Omar Khayyam",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1131,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sacred-texts.com/isl/khayyam.txt",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1127-B01",
+      "slug": "F1127",
+      "title": "The Rubaiyat of Omar Khayyam (FitzGerald translation)",
+      "author_name": "Omar Khayyam",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1131,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.gutenberg.org/ebooks/246",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1132-B02",
+      "slug": "F1132",
+      "title": "Sahih al-Bukhari",
+      "author_name": "Prophet Muhammad",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": 632,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/bukhari",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1168-B01",
+      "slug": "F1168",
+      "title": "Rabia the Mystic (Margaret Smith)",
+      "author_name": "Rabia al-Basri",
+      "author_tradition": "",
+      "author_type": "Mystic",
+      "year": 801,
+      "year_source": "author_dod",
+      "topics": [
+        "Mystic"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/rabiamysticother00smit",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1217-B01",
+      "slug": "F1217",
+      "title": "Gulistan (Rose Garden)",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/gulistanrosegard00sadi",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1217-B01",
+      "slug": "F1217",
+      "title": "The Gulistan (Rose Garden)",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.gutenberg.org/ebooks/49148",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1217-B02",
+      "slug": "F1217",
+      "title": "The Bustan (Fruit Orchard)",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/bustan00sadi",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1217-B02",
+      "slug": "F1217",
+      "title": "The Bustan (Orchard)",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/bustanorsaadi00sadiiala",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1240-B01",
+      "slug": "F1240",
+      "title": "The Life of Saladin (Beha ed-Din)",
+      "author_name": "Salahuddin Ayyubi",
+      "author_tradition": "Islamic History",
+      "author_type": "Warrior",
+      "year": 1193,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Warrior"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/lifeofsaladin00behauoft",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1249-B01",
+      "slug": "F1249",
+      "title": "Quran — Sura al-A'raf (7:73–79)",
+      "author_name": "Salih",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -2100,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/7/73",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1266-B01",
+      "slug": "F1266",
+      "title": "The Enclosed Garden of the Truth (Hadiqat al-Haqiqa)",
+      "author_name": "Sana'i of Ghazna",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1131,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/firstbookofhadi00sanauoft",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1279-B01",
+      "slug": "F1279",
+      "title": "In the Shade of the Quran (selections)",
+      "author_name": "Sayyid Qutb",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1966,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/InTheShadeOfTheQuran",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1279-B02",
+      "slug": "F1279",
+      "title": "Milestones (Ma'alim fi al-Tariq)",
+      "author_name": "Sayyid Qutb",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1966,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/SaijidQutubMilestones",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1305-B01",
+      "slug": "F1305",
+      "title": "Quran — Sura al-A'raf (7:85–93)",
+      "author_name": "Shu'ayb",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1500,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/7/85",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1342-B01",
+      "slug": "F1342",
+      "title": "Quran — Sura al-Naml (27:15–44)",
+      "author_name": "Sulayman",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -931,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/27/15",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1432-B01",
+      "slug": "F1432",
+      "title": "The Wine Song",
+      "author_name": "Umar Ibn al-Farid",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1235,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://traditionalhikma.com/wp-content/uploads/2015/03/The-Wine-Song-of-Ibn-Farid.pdf",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1498-B01",
+      "slug": "F1498",
+      "title": "al-Bukhāri — Ṣaḥīḥ al-Bukhāri",
+      "author_name": "Umm Atiyya al-Ansariyyah",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 680,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/search?q=Umm+Atiyya",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1522-B01",
+      "slug": "F1522",
+      "title": "Muslim — Ṣaḥīḥ Muslim (Kitab al-Jumua)",
+      "author_name": "Umm Hisham bint Haritha",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 670,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/muslim:873",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1568-B01",
+      "slug": "F1568",
+      "title": "Musnad Umm Salamah — Hadith collection",
+      "author_name": "Umm Salamah",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 681,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/search?q=Umm+Salama",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1618-B01",
+      "slug": "F1618",
+      "title": "Bayan Wujub al-Hijra",
+      "author_name": "Usman dan Fodio",
+      "author_tradition": "Qadiriyya",
+      "author_type": "Reformer",
+      "year": 1817,
+      "year_source": "author_dod",
+      "topics": [
+        "Qadiriyya",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/BayanWujubAlHijra",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1645-B01",
+      "slug": "F1645",
+      "title": "Quran — Sura Maryam (19:12–15)",
+      "author_name": "Yahya",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": 30,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/19/12",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1648-B01",
+      "slug": "F1648",
+      "title": "Commentary on the Forty Hadith",
+      "author_name": "Yahya ibn Sharif al-Nawawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1277,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/CommentaryOnTheFortyHadithOfAlNawawi",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1648-B01",
+      "slug": "F1648",
+      "title": "Forty Hadith of Imam Nawawi",
+      "author_name": "Yahya ibn Sharif al-Nawawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1277,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/nawawi40",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1648-B01",
+      "slug": "F1648",
+      "title": "Forty Hadith of al-Nawawi (English)",
+      "author_name": "Yahya ibn Sharif al-Nawawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1277,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/forty-nawawi-en",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1648-B02",
+      "slug": "F1648",
+      "title": "Riyad al-Salihin (Gardens of the Righteous)",
+      "author_name": "Yahya ibn Sharif al-Nawawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1277,
+      "year_source": "author_dod",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://sunnah.com/riyadussalihin",
+      "priority": "HIGH"
+    },
+    {
+      "id": "F1649-B01",
+      "slug": "F1649",
+      "title": "The Philosophy of Illumination",
+      "author_name": "Yahya Suhrawardi (Maqtul)",
+      "author_tradition": "Ishraqiyya",
+      "author_type": "Philosopher",
+      "year": 1191,
+      "year_source": "author_dod",
+      "topics": [
+        "Ishraqiyya",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/ThePhilosophyOfIllumination",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1649-B02",
+      "slug": "F1649",
+      "title": "The Shape of Light (Hayakal al-Nur)",
+      "author_name": "Yahya Suhrawardi (Maqtul)",
+      "author_tradition": "Ishraqiyya",
+      "author_type": "Philosopher",
+      "year": 1191,
+      "year_source": "author_dod",
+      "topics": [
+        "Ishraqiyya",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/suhrawardi-the-shape-of-light",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1651-B01",
+      "slug": "F1651",
+      "title": "Quran — Sura Yusuf (12)",
+      "author_name": "Yaqub",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1600,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/12",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1666-B01",
+      "slug": "F1666",
+      "title": "Quran — Sura Yunus (10)",
+      "author_name": "Yunus",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -750,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/10",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1666-B02",
+      "slug": "F1666",
+      "title": "Quran — Sura al-Anbiya (21:87–88)",
+      "author_name": "Yunus",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -750,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/21/87",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1668-B01",
+      "slug": "F1668",
+      "title": "Quran — Sura Yusuf (12)",
+      "author_name": "Yusuf",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": -1590,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/12",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1675-B01",
+      "slug": "F1675",
+      "title": "Quran — Sura Maryam (19:2–11)",
+      "author_name": "Zakariyya",
+      "author_tradition": "Islamic History",
+      "author_type": "Prophet",
+      "year": 30,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Prophet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://quran.com/19/2",
+      "priority": "LOW"
+    },
+    {
+      "id": "F1762-B01",
+      "slug": "F1762",
+      "title": "Al-Ibana an Usul al-Diyana",
+      "author_name": "Abu al-Hasan al-Ash'ari",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 935,
+      "year_source": "author_dod",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/al-ibana",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F1810-B01",
+      "slug": "F1810",
+      "title": "The Road to Mecca",
+      "author_name": "Muhammad Asad",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1992,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/roadtomecca00asad",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "F0280-B01",
+      "slug": "F0280",
+      "title": "Muruj al-Dhahab (Meadows of Gold)",
+      "author_name": "Al-Masudi",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 956,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/meadowsofgold00masu",
+      "priority": "MEDIUM"
+    }
+  ]
+}
