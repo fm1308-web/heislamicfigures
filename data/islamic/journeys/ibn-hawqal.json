@@ -2,7 +2,7 @@
   "schema_version": 1,
   "person": "Ibn Hawqal",
   "slug": "F0736",
-  "lifespan": "943-988 CE",
+  "lifespan": "0920-0988 CE",
   "confidence": {
     "grade": "B",
     "density": "dense",
@@ -15,6 +15,7 @@
     "André Miquel, La géographie humaine du monde musulman jusqu'au milieu du 11e siècle, vol. 1 (1967)"
   ],
   "journey": [
+    {"year": 920, "location": "Nusaybin, Turkey", "lat": 37.0667, "lng": 41.2167, "event": "Born in Nisibis in upper Mesopotamia (modern Nusaybin) into a merchant family.", "category": "birth", "precision": "period", "source": "Miquel 1967"},
     {"year": 943, "location": "Baghdad, Iraq", "lat": 33.3152, "lng": 44.3661, "event": "Set out from Baghdad on 15 May 943 (7 Ramadan 331 AH), beginning thirty years of travels.", "category": "other", "precision": "day", "source": "Surat al-Ard"},
     {"year": 944, "location": "Mosul, Iraq", "lat": 36.3450, "lng": 43.1450, "event": "Crossed northern Mesopotamia and recorded Mosul in his section on al-Jazira.", "category": "other", "precision": "period", "source": "Surat al-Ard"},
     {"year": 945, "location": "Cairo, Egypt", "lat": 30.0444, "lng": 31.2357, "event": "Visited Egypt during the late Ikhshidid period, several decades before the Fatimid conquest.", "category": "other", "precision": "period", "source": "Kramers and Wiet 1964"},

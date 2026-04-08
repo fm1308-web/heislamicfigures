@@ -479,6 +479,17 @@ function syncDD(kind){
     dot.style.display='none';
   }
 
+  // Inline × clear button
+  var oldX=btn.querySelector('.dd-clear-x');
+  if(oldX) oldX.remove();
+  if(sel.size>0){
+    var xEl=document.createElement('span');
+    xEl.className='dd-clear-x';
+    xEl.textContent='\u00D7';
+    xEl.onclick=function(e){e.stopPropagation();ddClearAll(kind);applyFilterAndFocus();};
+    btn.appendChild(xEl);
+  }
+
   // Update summary label
   updateFilterSummary();
 }

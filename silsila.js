@@ -866,6 +866,18 @@ function syncSLDD(kind){
       else if(sel.size>1) lbl.textContent=(kind==='type'?'TYPE':'TRADITION')+` (${sel.size})`;
       else lbl.textContent=kind==='type'?'TYPE':'TRADITION';
     }
+    // Inline × clear button
+    if(btn){
+      var oldX=btn.querySelector('.dd-clear-x');
+      if(oldX) oldX.remove();
+      if(sel.size>0){
+        var xEl=document.createElement('span');
+        xEl.className='dd-clear-x';
+        xEl.textContent='\u00D7';
+        xEl.onclick=function(e){e.stopPropagation();slDDClearAll(kind);};
+        btn.appendChild(xEl);
+      }
+    }
   });
 
   // Update summary

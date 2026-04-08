@@ -64,6 +64,8 @@ var _inited = false;
 var _scrollEl = null;
 var _yearBadge = null;
 var _selectedTag = null;
+var _erasSelTypes = new Set();
+var _erasSelTrads = new Set();
 var _leafEls = [];
 var _nameListEl = null;
 var _leftPanel = null;
@@ -79,7 +81,7 @@ function initEras(){
   if(!root) return;
 
   root.innerHTML =
-    '<div class="eras-toolbar"><select class="eras-dropdown"><option value="">— Select a tag —</option></select></div>' +
+    '<div class="eras-toolbar" id="eras-toolbar"></div>' +
     '<div class="eras-scroll">' +
       '<div class="eras-canvas">' +
         '<div class="eras-left-panel"><div class="eras-namelist"></div></div>' +
@@ -92,7 +94,7 @@ function initEras(){
   _yearBadge = root.querySelector('.eras-year-badge');
   _nameListEl = root.querySelector('.eras-namelist');
   _leftPanel = root.querySelector('.eras-left-panel');
-  _dropdown = root.querySelector('.eras-dropdown');
+  _dropdown = null; // replaced by multi-select panels
   var rightPanel = root.querySelector('.eras-right-panel');
   var canvas = root.querySelector('.eras-canvas');
 
@@ -204,26 +206,18 @@ function initEras(){
     leafData.push({key:tag.key, field:tag.field, color:color, people:people, count:people.length, firstDob:firstDob, lastDod:lastDod});
   });
 
-  // ── Populate dropdown ──
-  var typeKeys = [], tradKeys = [];
+  // ── Populate multi-select filter panels ──
+  var typeItems = [], tradItems = [];
   leafData.forEach(function(ld){
-    if(ld.field === 'type') typeKeys.push(ld.key);
-    else tradKeys.push(ld.key);
+    var item = {name:ld.key, count:ld.count};
+    if(ld.field === 'type') typeItems.push(item);
+    else tradItems.push(item);
   });
-  var typesGroup = document.createElement('optgroup');
-  typesGroup.label = 'TYPES';
-  typeKeys.sort().forEach(function(k){ var o = document.createElement('option'); o.value = k; o.textContent = k; typesGroup.appendChild(o); });
-  _dropdown.appendChild(typesGroup);
-  var tradsGroup = document.createElement('optgroup');
-  tradsGroup.label = 'TRADITIONS';
-  tradKeys.sort().forEach(function(k){ var o = document.createElement('option'); o.value = k; o.textContent = k; tradsGroup.appendChild(o); });
-  _dropdown.appendChild(tradsGroup);
+  typeItems.sort(function(a,b){ return a.name.localeCompare(b.name); });
+  tradItems.sort(function(a,b){ return a.name.localeCompare(b.name); });
 
-  _dropdown.addEventListener('change', function(){
-    var val = _dropdown.value;
-    if(!val){ _deselectAll(); return; }
-    _selectTag(val, true);
-  });
+  var toolbar = document.getElementById('eras-toolbar');
+  if(toolbar) _erasBuildToolbar(toolbar, typeItems, tradItems);
 
   // ── Build SVG ──
   var svg = document.createElementNS(NS, 'svg');
@@ -328,7 +322,7 @@ function initEras(){
   });
 
   _scrollEl.addEventListener('click', function(e){
-    if(!e.target.closest('.eras-leaf') && !e.target.closest('.eras-name-entry') && !e.target.closest('.eras-dropdown')){
+    if(!e.target.closest('.eras-leaf') && !e.target.closest('.eras-name-entry') && !e.target.closest('.eras-dropdown') && !e.target.closest('.bv-dd-wrap') && !e.target.closest('.bv-clear-all')){
       _deselectAll();
     }
   });
@@ -458,18 +452,37 @@ function _onScroll(){
 
 function _selectTag(tagKey, fromDropdown){
   if(_animRunning) _stopAnim();
-  if(_selectedTag === tagKey && !fromDropdown){ _deselectAll(); return; }
+  // Legacy single-click on a leaf: toggle that one tag
+  if(!fromDropdown){
+    if(_selectedTag === tagKey){ _deselectAll(); return; }
+    _erasSelTypes.clear(); _erasSelTrads.clear();
+    var le = _leafEls.find(function(l){ return l.key === tagKey; });
+    if(le){
+      if(le.field === 'type') _erasSelTypes.add(tagKey);
+      else _erasSelTrads.add(tagKey);
+    }
+  }
   _selectedTag = tagKey;
+  _erasApplyFilter();
+  _erasSyncBtnLabels();
+  _erasRebuildPanels();
+}
 
-  // Sync dropdown
-  if(_dropdown && !fromDropdown) _dropdown.value = tagKey;
+function _erasApplyFilter(){
+  var hasType = _erasSelTypes.size > 0;
+  var hasTrad = _erasSelTrads.size > 0;
+  var hasAny = hasType || hasTrad;
 
   _leafEls.forEach(function(le){
-    if(le.key === tagKey){
+    var typeMatch = !hasType || (le.field === 'type' && _erasSelTypes.has(le.key));
+    var tradMatch = !hasTrad || (le.field === 'trad' && _erasSelTrads.has(le.key));
+    // A leaf is visible if it matches the active filters (AND across type/trad)
+    var visible = !hasAny || (le.field === 'type' ? typeMatch : tradMatch);
+    if(visible){
       le.group.classList.remove('eras-leaf-faded');
       le.group.classList.add('eras-leaf-active');
       le.path.setAttribute('fill-opacity', '0');
-      le.path.setAttribute('stroke-opacity', '1.0');
+      le.path.setAttribute('stroke-opacity', hasAny ? '1.0' : '0.5');
       le.extLabel.style.display = '';
     } else {
       le.group.classList.remove('eras-leaf-active');
@@ -480,30 +493,154 @@ function _selectTag(tagKey, fromDropdown){
     }
   });
 
-  var entry = _leafEls.find(function(le){ return le.key === tagKey; });
-  if(entry){
-    if(_nameListEl) _buildNameList(entry.people, entry.color);
-    // Auto-scroll to center the leaf
-    if(fromDropdown && _scrollEl){
-      var targetY = entry.midY - _scrollEl.clientHeight / 2;
-      _scrollEl.scrollTo({top: Math.max(0, targetY), behavior:'smooth'});
+  // Build name list from all matching leaves
+  if(_nameListEl){
+    if(!hasAny){
+      _nameListEl.innerHTML = '';
+      if(typeof activeYear !== 'undefined' && activeYear != null && typeof _buildAllNames === 'function') _buildAllNames(activeYear);
+    } else {
+      var allPeople = [], color = '#D4AF37';
+      _leafEls.forEach(function(le){
+        var typeMatch = !hasType || (le.field === 'type' && _erasSelTypes.has(le.key));
+        var tradMatch = !hasTrad || (le.field === 'trad' && _erasSelTrads.has(le.key));
+        if(le.field === 'type' ? typeMatch : tradMatch){
+          allPeople = allPeople.concat(le.people);
+          color = le.color;
+        }
+      });
+      // Deduplicate by slug
+      var seen = {};
+      allPeople = allPeople.filter(function(p){ if(seen[p.slug]) return false; seen[p.slug]=true; return true; });
+      _buildNameList(allPeople, color);
     }
   }
+
+  _erasSyncClearBtn();
 }
 
 function _deselectAll(){
   _selectedTag = null;
-  if(_dropdown) _dropdown.value = '';
-  _leafEls.forEach(function(le){
-    le.group.classList.remove('eras-leaf-faded');
-    le.group.classList.remove('eras-leaf-active');
-    le.path.setAttribute('fill-opacity', '0');
-    le.path.setAttribute('stroke-opacity', '0.5');
-    le.extLabel.style.display = '';
+  _erasSelTypes.clear();
+  _erasSelTrads.clear();
+  _erasApplyFilter();
+  _erasSyncBtnLabels();
+  _erasRebuildPanels();
+}
+
+// ── Multi-select toolbar builder ──
+var _erasTypeItems = [];
+var _erasTradItems = [];
+
+function _erasBuildToolbar(toolbar, typeItems, tradItems){
+  _erasTypeItems = typeItems;
+  _erasTradItems = tradItems;
+  var h = '';
+  h += '<div class="bv-dd-wrap"><button class="bv-dd-btn" id="eras-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  h += '<div class="bv-dd-panel" id="eras-type-panel"><input class="bv-dd-search" id="eras-type-search" placeholder="search types\u2026"><div class="bv-dd-scroll" id="eras-type-scroll"></div></div></div>';
+  h += '<div class="bv-dd-wrap"><button class="bv-dd-btn" id="eras-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  h += '<div class="bv-dd-panel" id="eras-trad-panel"><input class="bv-dd-search" id="eras-trad-search" placeholder="search traditions\u2026"><div class="bv-dd-scroll" id="eras-trad-scroll"></div></div></div>';
+  h += '<button class="bv-clear-all" id="eras-clear-all" title="Clear all filters" style="opacity:.4">\u00D7</button>';
+  toolbar.innerHTML = h + toolbar.innerHTML;
+
+  _erasRebuildPanels();
+
+  // Wire dropdown open/close
+  var pairs = [
+    {btn:'eras-type-btn',panel:'eras-type-panel',search:'eras-type-search'},
+    {btn:'eras-trad-btn',panel:'eras-trad-panel',search:'eras-trad-search'}
+  ];
+  pairs.forEach(function(dd){
+    var btn = document.getElementById(dd.btn);
+    var panel = document.getElementById(dd.panel);
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      pairs.forEach(function(o){ if(o.panel !== dd.panel) document.getElementById(o.panel).classList.remove('open'); });
+      panel.classList.toggle('open');
+      if(panel.classList.contains('open')){
+        var si = document.getElementById(dd.search);
+        if(si) si.focus();
+      }
+    });
+    document.getElementById(dd.search).addEventListener('input', function(){ _erasRebuildPanels(); });
   });
-  if(_nameListEl) _nameListEl.innerHTML = '';
-  // If slider is active, rebuild filtered names list
-  if(typeof activeYear !== 'undefined' && activeYear != null && typeof _buildAllNames === 'function') _buildAllNames(activeYear);
+  document.addEventListener('click', function(e){
+    pairs.forEach(function(dd){
+      var panel = document.getElementById(dd.panel);
+      var btn = document.getElementById(dd.btn);
+      if(panel && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) panel.classList.remove('open');
+    });
+  });
+  document.getElementById('eras-clear-all').addEventListener('click', function(e){
+    e.stopPropagation();
+    _deselectAll();
+  });
+}
+
+function _erasRebuildPanels(){
+  _erasBuildCheckPanel('eras-type-scroll','eras-type-search',_erasSelTypes,_erasTypeItems,function(){
+    _erasSyncBtnLabels();
+    _erasApplyFilter();
+    _erasRebuildPanels();
+  });
+  _erasBuildCheckPanel('eras-trad-scroll','eras-trad-search',_erasSelTrads,_erasTradItems,function(){
+    _erasSyncBtnLabels();
+    _erasApplyFilter();
+    _erasRebuildPanels();
+  });
+  _erasSyncBtnLabels();
+}
+
+function _erasBuildCheckPanel(scrollId, searchId, filterSet, items, onchange){
+  var scroll = document.getElementById(scrollId);
+  if(!scroll) return;
+  var si = document.getElementById(searchId);
+  var q = (si && si.value || '').toLowerCase().trim();
+  var n = filterSet.size;
+  var toggleLabel = n > 0 ? 'Deselect all' : 'Select all';
+  var html = '<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="eras-dd-toggle-all" style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
+  var filtered = items.filter(function(t){ return !q || t.name.toLowerCase().indexOf(q) > -1; });
+  filtered.forEach(function(t){
+    var on = filterSet.has(t.name);
+    html += '<div class="bv-ck-row'+(on?' checked':'')+'" data-val="'+t.name+'"><span class="bv-ck'+(on?' on':'')+'"></span><span class="bv-ck-label">'+t.name+'</span><span class="bv-ck-count">('+t.count+')</span></div>';
+  });
+  scroll.innerHTML = html;
+  scroll.querySelectorAll('.bv-ck-row').forEach(function(el){
+    el.addEventListener('click', function(){
+      var v = this.getAttribute('data-val');
+      if(filterSet.has(v)) filterSet.delete(v); else filterSet.add(v);
+      onchange();
+    });
+  });
+  scroll.querySelectorAll('.eras-dd-toggle-all').forEach(function(el){
+    el.addEventListener('click', function(){
+      if(filterSet.size > 0) filterSet.clear();
+      else items.forEach(function(t){ filterSet.add(t.name); });
+      onchange();
+    });
+  });
+}
+
+function _erasSyncBtnLabels(){
+  _erasSyncOneBtn('eras-type-btn', _erasSelTypes, '\u2014 SELECT A TYPE \u2014', 'types');
+  _erasSyncOneBtn('eras-trad-btn', _erasSelTrads, '\u2014 SELECT A TRADITION \u2014', 'traditions');
+}
+
+function _erasSyncOneBtn(btnId, filterSet, defaultLabel, noun){
+  var btn = document.getElementById(btnId);
+  if(!btn) return;
+  var n = filterSet.size;
+  var txt = defaultLabel;
+  if(n === 1) txt = [...filterSet][0];
+  else if(n > 1) txt = n + ' ' + noun + ' selected';
+  btn.innerHTML = txt + '  <span style="opacity:.6">\u25BE</span>';
+}
+
+function _erasSyncClearBtn(){
+  var btn = document.getElementById('eras-clear-all');
+  if(!btn) return;
+  var active = _erasSelTypes.size > 0 || _erasSelTrads.size > 0;
+  btn.style.opacity = active ? '1' : '.4';
+  btn.style.borderColor = active ? 'var(--gold,#D4AF37)' : 'var(--border2,#2D3748)';
 }
 
 function _buildNameList(people, color){

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "person": "Alp Arslan",
+  "slug": "F0374",
+  "lifespan": "1029-1072 CE",
+  "confidence": {
+    "grade": "A",
+    "density": "moderate",
+    "precision": "year",
+    "disclosure": "Reconstructed from Ibn al-Athir's al-Kamil fi al-Tarikh, al-Bundari's Zubdat al-Nusra (an abridgement of the contemporary Seljuk history of al-Imad al-Isfahani), Matthew of Edessa, and the Byzantine historian Michael Attaleiates. The Ani siege (1064), Manzikert (August 1071), and the death near Termez (November 1072) are all securely dated. Intermediate marches between these major campaigns are compressed where chronicle detail is thin."
+  },
+  "sources": [
+    "Ibn al-Athir, al-Kamil fi al-Tarikh (c. 1231)",
+    "Al-Bundari, Zubdat al-Nusra wa Nukhbat al-Usra (c. 1226)",
+    "Matthew of Edessa, Chronicle (c. 1136)",
+    "Michael Attaleiates, History (c. 1080)",
+    "Carole Hillenbrand, Turkish Myth and Muslim Symbol: The Battle of Manzikert (2007)"
+  ],
+  "journey": [
+    {"year": 1029, "location": "Khurasan, Iran", "lat": 36.2133, "lng": 58.7958, "event": "Born into the Seljuk ruling family, son of Chaghri Beg and nephew of Tughril Beg.", "category": "birth", "precision": "year", "source": "Ibn al-Athir"},
+    {"year": 1060, "location": "Merv, Turkmenistan", "lat": 37.6594, "lng": 62.1939, "event": "Served as his father Chaghri Beg's governor in Khurasan with his base at Merv.", "category": "other", "precision": "year", "source": "Ibn al-Athir"},
+    {"year": 1063, "location": "Ray, Iran", "lat": 35.5933, "lng": 51.4344, "event": "Proclaimed Great Sultan of the Seljuk Empire at Ray after defeating his cousin Kutalmish.", "category": "coronation", "precision": "year", "source": "al-Bundari"},
+    {"year": 1064, "location": "Nakhchivan, Azerbaijan", "lat": 39.2089, "lng": 45.4122, "event": "Crossed the Araxes river at Nakhchivan at the start of his first great western campaign.", "category": "campaign", "precision": "year", "source": "Matthew of Edessa"},
+    {"year": 1064, "location": "Marand, Iran", "lat": 38.4333, "lng": 45.7667, "event": "Passed through Marand in Azerbaijan on the march to the Caucasus.", "category": "campaign", "precision": "year", "source": "al-Bundari"},
+    {"year": 1064, "location": "Ani, Armenia/Turkey", "lat": 40.5067, "lng": 43.5733, "event": "Captured and sacked the Armenian Bagratid capital of Ani in August 1064 after a 25-day siege.", "category": "battle", "precision": "month", "source": "Matthew of Edessa"},
+    {"year": 1064, "location": "Kars, Turkey", "lat": 40.6013, "lng": 43.0975, "event": "Accepted the submission of the Armenian kingdom of Kars after the fall of Ani.", "category": "campaign", "precision": "year", "source": "Matthew of Edessa"},
+    {"year": 1066, "location": "Aleppo, Syria", "lat": 36.2021, "lng": 37.1343, "event": "Marched south through the Jazira and accepted the nominal submission of the Mirdasid ruler of Aleppo.", "category": "campaign", "precision": "year", "source": "Ibn al-Athir"},
+    {"year": 1067, "location": "Jand, Kazakhstan", "lat": 44.7500, "lng": 65.5000, "event": "Led a campaign across the Oxus to Jand on the Syr Darya to visit the tomb of his Seljuk ancestor.", "category": "campaign", "precision": "year", "source": "Ibn al-Athir"},
+    {"year": 1069, "location": "Mangyshlak, Kazakhstan", "lat": 43.6500, "lng": 51.1500, "event": "Campaigned against the rebellious Turkmen chieftains on the Mangyshlak peninsula.", "category": "campaign", "precision": "year", "source": "al-Bundari"},
+    {"year": 1070, "location": "Aleppo, Syria", "lat": 36.2021, "lng": 37.1343, "event": "Returned to Syria and besieged Aleppo before hearing of the Byzantine advance and turning north.", "category": "campaign", "precision": "year", "source": "Ibn al-Athir"},
+    {"year": 1071, "location": "Edessa (Urfa), Turkey", "lat": 37.1671, "lng": 38.7955, "event": "Marched through the Jazira past Edessa en route to meet the Byzantine emperor Romanos IV.", "category": "campaign", "precision": "month", "source": "Matthew of Edessa"},
+    {"year": 1071, "location": "Akhlat, Turkey", "lat": 38.7464, "lng": 42.4811, "event": "Concentrated his forces at Akhlat on Lake Van in August 1071 in preparation for the battle.", "category": "campaign", "precision": "month", "source": "Ibn al-Athir"},
+    {"year": 1071, "location": "Manzikert, Turkey", "lat": 39.1458, "lng": 41.9433, "event": "Defeated and captured the Byzantine emperor Romanos IV Diogenes at the Battle of Manzikert on 26 August 1071, opening Anatolia to Turkish settlement.", "category": "battle", "precision": "day", "source": "Michael Attaleiates"},
+    {"year": 1072, "location": "Isfahan, Iran", "lat": 32.6539, "lng": 51.6660, "event": "Returned east to his capital at Isfahan and prepared a new campaign across the Oxus.", "category": "capital", "precision": "year", "source": "al-Bundari"},
+    {"year": 1072, "location": "Amu Darya crossing, Turkmenistan", "lat": 37.2333, "lng": 67.2167, "event": "Crossed the Oxus with a large army at the start of the planned campaign against the Qarakhanids.", "category": "campaign", "precision": "month", "source": "Ibn al-Athir"},
+    {"year": 1072, "location": "Barzam, Uzbekistan", "lat": 37.2167, "lng": 67.2833, "event": "Stabbed by a captive fortress commander named Yusuf al-Kharazmi at Barzam near the Oxus.", "category": "other", "precision": "month", "source": "Ibn al-Athir"},
+    {"year": 1072, "location": "Termez, Uzbekistan", "lat": 37.2242, "lng": 67.2783, "event": "Died of his wounds near Termez on 25 November 1072 and was buried in Merv.", "category": "death", "precision": "day", "source": "Ibn al-Athir"}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "person": "Khalid ibn al-Walid",
+  "slug": "F0870",
+  "lifespan": "0592-0642 CE",
+  "confidence": {
+    "grade": "B",
+    "density": "moderate",
+    "precision": "year",
+    "disclosure": "Route reconstructed from al-Tabari's annalistic history, al-Baladhuri's Futuh al-Buldan, and al-Waqidi's Futuh al-Sham. The early Ridda Wars stops and the famous desert march from Iraq to Syria (634) are well attested in multiple chronicles, but month-level dating is uncertain for most stops and the exact route of the desert crossing is debated. Battle locations and major cities are secure; intermediate desert stations are omitted where not firmly attested."
+  },
+  "sources": [
+    "Al-Tabari, Tarikh al-Rusul wa al-Muluk (c. 915)",
+    "Al-Baladhuri, Futuh al-Buldan (c. 860)",
+    "Al-Waqidi, Futuh al-Sham (attributed, c. 9th century)",
+    "Fred Donner, The Early Islamic Conquests (1981)"
+  ],
+  "journey": [
+    {"year": 592, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "Born in Mecca into the Banu Makhzum clan of Quraysh around 592 CE.", "category": "birth", "precision": "period", "source": "al-Tabari"},
+    {"year": 625, "location": "Mount Uhud, Saudi Arabia", "lat": 24.5081, "lng": 39.6175, "event": "Commanded the Meccan cavalry whose flanking charge turned the Battle of Uhud against the Muslims.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 629, "location": "Medina, Saudi Arabia", "lat": 24.4686, "lng": 39.6142, "event": "Converted to Islam and joined the Prophet Muhammad in Medina.", "category": "other", "precision": "year", "source": "al-Tabari"},
+    {"year": 629, "location": "Mu'tah, Jordan", "lat": 31.0833, "lng": 35.7000, "event": "Assumed command after the deaths of the three appointed leaders and extricated the Muslim force from a Byzantine-Ghassanid army.", "category": "battle", "precision": "year", "source": "al-Waqidi"},
+    {"year": 630, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "Led one of the columns into Mecca during its conquest by the Prophet Muhammad.", "category": "campaign", "precision": "year", "source": "al-Tabari"},
+    {"year": 632, "location": "Najd, Saudi Arabia", "lat": 25.0000, "lng": 45.0000, "event": "Appointed by Abu Bakr to lead the main army against the apostate tribes at the outbreak of the Ridda Wars.", "category": "campaign", "precision": "year", "source": "al-Tabari"},
+    {"year": 632, "location": "Buzakha, Saudi Arabia", "lat": 26.3000, "lng": 43.5000, "event": "Defeated the prophetic claimant Tulayha of the Banu Asad at the Battle of Buzakha.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 633, "location": "Yamama, Saudi Arabia", "lat": 24.2000, "lng": 47.3000, "event": "Destroyed the army of the rival prophet Musaylimah at the Battle of Yamama, ending the Ridda Wars in central Arabia.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 633, "location": "Kazima, Kuwait", "lat": 29.3500, "lng": 47.9000, "event": "Crossed into Sasanian Iraq and defeated a Persian force at the Battle of Chains (Dhat al-Salasil).", "category": "battle", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 633, "location": "Ullais, Iraq", "lat": 31.7500, "lng": 44.5000, "event": "Defeated a combined Arab-Persian force at the Battle of Ullais on the lower Euphrates.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 633, "location": "Hira, Iraq", "lat": 31.8833, "lng": 44.4500, "event": "Captured the Lakhmid capital of Hira after the Persian garrison withdrew.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 633, "location": "Anbar, Iraq", "lat": 33.3700, "lng": 43.7200, "event": "Captured the fortified city of Anbar on the Euphrates.", "category": "campaign", "precision": "year", "source": "al-Tabari"},
+    {"year": 634, "location": "Ayn al-Tamr, Iraq", "lat": 32.5500, "lng": 43.4800, "event": "Took the oasis of Ayn al-Tamr west of the Euphrates.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 634, "location": "Dumat al-Jandal, Saudi Arabia", "lat": 29.8117, "lng": 39.8658, "event": "Marched south to relieve Iyad ibn Ghanm and captured the oasis of Dumat al-Jandal.", "category": "campaign", "precision": "year", "source": "al-Tabari"},
+    {"year": 634, "location": "Quraqir, Syria", "lat": 33.5000, "lng": 39.5000, "event": "Set out on the famous six-day waterless desert march from Iraq to the Syrian frontier.", "category": "campaign", "precision": "month", "source": "al-Tabari"},
+    {"year": 634, "location": "Suwa, Syria", "lat": 33.6000, "lng": 37.3000, "event": "Emerged from the desert crossing at the oasis of Suwa in the Palmyrene region.", "category": "campaign", "precision": "month", "source": "al-Waqidi"},
+    {"year": 634, "location": "Bosra, Syria", "lat": 32.5181, "lng": 36.4814, "event": "Joined the Muslim armies operating in the Hauran and took the city of Bosra.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 634, "location": "Ajnadayn, Palestine", "lat": 31.7000, "lng": 34.9500, "event": "Won the decisive Battle of Ajnadayn against the Byzantine field army in Palestine.", "category": "battle", "precision": "month", "source": "al-Tabari"},
+    {"year": 635, "location": "Fahl (Pella), Jordan", "lat": 32.4500, "lng": 35.6167, "event": "Defeated Byzantine forces at the Battle of Fahl near the Jordan valley.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 635, "location": "Damascus, Syria", "lat": 33.5138, "lng": 36.2765, "event": "Took part in the six-month siege and capture of Damascus in September 635.", "category": "campaign", "precision": "month", "source": "al-Tabari"},
+    {"year": 636, "location": "Emesa (Homs), Syria", "lat": 34.7333, "lng": 36.7233, "event": "Operated around Homs as the Byzantines regrouped under Heraclius.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 636, "location": "Yarmuk River, Syria", "lat": 32.7167, "lng": 35.9000, "event": "Commanded the Muslim army to a decisive victory over the Byzantines at the Battle of Yarmuk, breaking Byzantine power in Syria.", "category": "battle", "precision": "month", "source": "al-Tabari"},
+    {"year": 637, "location": "Qinnasrin, Syria", "lat": 35.9333, "lng": 37.0500, "event": "Campaigned in northern Syria and took Qinnasrin after Yarmuk.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 638, "location": "Aleppo, Syria", "lat": 36.2021, "lng": 37.1343, "event": "Participated in the capture of Aleppo in northern Syria.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 638, "location": "Homs, Syria", "lat": 34.7333, "lng": 36.7233, "event": "Dismissed from command by Caliph Umar around this time; retired to Homs.", "category": "other", "precision": "year", "source": "al-Tabari"},
+    {"year": 642, "location": "Homs, Syria", "lat": 34.7333, "lng": 36.7233, "event": "Died in Homs around 642 CE; his tomb remains there to this day.", "category": "death", "precision": "year", "source": "al-Tabari"}
+  ]
+}

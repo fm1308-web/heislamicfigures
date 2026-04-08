@@ -185,6 +185,7 @@ function _buildHeaderHTML(){
   h+='</select>';
   // Count
   var count=data.filter(function(e){return e.year>=_startYear&&e.year<=_endYear;}).length;
+  h+='<span class="dd-clear-x" id="evYearClearX" onclick="window._evResetYears()" title="Reset year range" style="font-size:16px;margin:0 4px;display:none">\u00D7</span>';
   h+='<span class="ev-filter-count" id="evFilterCount">showing '+count+' events</span>';
   h+='<span class="ev-filter-count" style="opacity:.5;margin-left:6px">16 centuries \u00B7 500\u20132025 CE</span>';
 
@@ -212,6 +213,18 @@ window._evFilterChanged=function(){
   var count=data.filter(function(ev){return ev.year>=_startYear&&ev.year<=_endYear;}).length;
   var el=document.getElementById('evFilterCount');
   if(el) el.textContent='showing '+count+' events';
+  // Show/hide year reset ×
+  var xBtn=document.getElementById('evYearClearX');
+  if(xBtn) xBtn.style.display=(_startYear!==500||_endYear!==2025)?'inline-block':'none';
+};
+
+window._evResetYears=function(){
+  _startYear=500; _endYear=2025;
+  var s=document.getElementById('evStartYear');
+  var e=document.getElementById('evEndYear');
+  if(s) s.value='500';
+  if(e) e.value='2025';
+  window._evFilterChanged();
 };
 
 // ── INIT ──

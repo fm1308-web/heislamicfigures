@@ -2,7 +2,7 @@
   "schema_version": 1,
   "person": "Al-Muqaddasi (Shams al-Din al-Maqdisi)",
   "slug": "F0292",
-  "lifespan": "945-991 CE",
+  "lifespan": "945-1000 CE",
   "confidence": {
     "grade": "B",
     "density": "moderate",
@@ -34,6 +34,7 @@
     {"year": 984, "location": "Nishapur, Iran", "lat": 36.2133, "lng": 58.7958, "event": "Travelled through Khurasan, recording Nishapur in detail.", "category": "other", "precision": "year", "source": "Collins 1994"},
     {"year": 984, "location": "Bukhara, Uzbekistan", "lat": 39.7747, "lng": 64.4286, "event": "Reached Samanid Bukhara on his Khurasan-Transoxiana circuit.", "category": "other", "precision": "year", "source": "Ahsan al-Taqasim"},
     {"year": 984, "location": "Samarkand, Uzbekistan", "lat": 39.6270, "lng": 66.9750, "event": "Visited Samarkand, completing his survey of Transoxiana.", "category": "other", "precision": "year", "source": "Ahsan al-Taqasim"},
-    {"year": 985, "location": "Shiraz, Iran", "lat": 29.5918, "lng": 52.5837, "event": "Settled in Shiraz, where he composed Ahsan al-Taqasim and recorded his famous exchange with Persian stonecutters.", "category": "other", "precision": "year", "source": "Ahsan al-Taqasim"}
+    {"year": 985, "location": "Shiraz, Iran", "lat": 29.5918, "lng": 52.5837, "event": "Settled in Shiraz, where he composed Ahsan al-Taqasim and recorded his famous exchange with Persian stonecutters.", "category": "other", "precision": "year", "source": "Ahsan al-Taqasim"},
+    {"year": 1000, "location": "Jerusalem, Israel/Palestine", "lat": 31.7683, "lng": 35.2137, "event": "Believed to have died around the year 1000; place of death not securely recorded but most likely his native Jerusalem.", "category": "death", "precision": "period", "source": "Collins 1994"}
   ]
 }

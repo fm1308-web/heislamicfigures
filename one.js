@@ -315,6 +315,13 @@ function _showLetterDD(letter){
 
 /* ── Sync filter button indicators ── */
 function _syncFilterBtns(){
+  var clearFns={
+    oneEraBtn:window._oneClearEras,
+    oneCentBtn:window._oneClearCents,
+    oneCityBtn:window._oneClearCities,
+    oneTypeBtn:window._oneClearTypes,
+    oneTradBtn:window._oneClearTrads
+  };
   var map=[
     {btnId:'oneEraBtn',set:_oneEras},
     {btnId:'oneCentBtn',set:_oneCents},
@@ -334,6 +341,16 @@ function _syncFilterBtns(){
     } else {
       btn.classList.remove('filtered');
       if(textEl) textEl.textContent=label;
+    }
+    // Inline × clear button
+    var oldX=btn.querySelector('.dd-clear-x');
+    if(oldX) oldX.remove();
+    if(n>0){
+      var xEl=document.createElement('span');
+      xEl.className='dd-clear-x';
+      xEl.textContent='\u00D7';
+      xEl.onclick=function(e){e.stopPropagation();if(clearFns[m.btnId]) clearFns[m.btnId]();};
+      btn.appendChild(xEl);
     }
   });
 }

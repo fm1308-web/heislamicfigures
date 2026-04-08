@@ -9,7 +9,7 @@ const _BV_STEM_X = 600;
 
 let _BOOKS_DATA = null;
 let _booksInited = false;
-let _booksFilter = { tag:null, author:null, search:'' };
+let _booksFilter = { source:new Set(), theme:new Set(), author:new Set(), search:'' };
 let _booksAnim = { playing:false, timer:null };
 
 const _BV_TYPE_COLORS = {
@@ -87,27 +87,13 @@ function _booksInjectStyles(){
   const css = `
   #books-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
   #bv-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
-  .bv-dd-wrap{position:relative}
-  .bv-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
-  .bv-dd-btn:hover{border-color:var(--gold,#D4AF37)}
-  .bv-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
-  .bv-dd-panel.open{display:flex}
-  .bv-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:12px;border-radius:2px;outline:none}
-  .bv-dd-search:focus{border-color:var(--gold,#D4AF37)}
-  .bv-dd-scroll{flex:1;overflow-y:auto;padding:4px 0 10px}
-  .bv-dd-section-hdr{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;color:var(--muted,#6B7B8C);padding:8px 14px 4px;text-transform:uppercase;font-weight:700}
-  .bv-dd-item{font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text1,#E4E4E7);padding:6px 20px;cursor:pointer}
-  .bv-dd-item.cinzel{font-family:'Cinzel',serif;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
-  .bv-dd-item:hover{background:rgba(212,175,55,.12);color:var(--gold,#D4AF37)}
-  .bv-dd-item.sel{color:var(--gold,#D4AF37);background:rgba(212,175,55,.1)}
-  .bv-dd-clear{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold,#D4AF37);padding:9px 14px;border-bottom:1px solid var(--border2,#2D3748);cursor:pointer;text-transform:uppercase;text-align:center}
-  .bv-dd-clear:hover{background:rgba(212,175,55,.1)}
   #bv-anim-wrap{margin-left:auto;display:flex;align-items:center;gap:8px}
   #bv-anim-year{font-family:'Cinzel',serif;font-size:11px;color:var(--gold,#D4AF37);letter-spacing:.05em;min-width:80px;text-align:center;opacity:0;transition:opacity .3s}
   #bv-anim-year.live{opacity:1}
   #bv-anim-speed{background:#1a2330;border:1px solid var(--border2,#2D3748);color:var(--text1,#E4E4E7);font-family:'Source Sans 3',sans-serif;font-size:11px;padding:6px 8px;border-radius:2px;cursor:pointer}
   #bv-anim-btn{background:none;border:1px solid var(--gold,#D4AF37);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:7px 14px;cursor:pointer;border-radius:2px}
   #bv-anim-btn:hover{background:rgba(212,175,55,.1)}
+  .bv-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6)}
   #bv-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
   #bv-canvas{position:relative;width:100%;min-width:1200px}
   #bv-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em}
@@ -128,6 +114,7 @@ function _booksInjectStyles(){
   svg.bv-leaves{position:absolute;top:0;left:0;width:100%;z-index:2;overflow:visible}
   svg.bv-leaves g.bv-leaf{cursor:pointer;pointer-events:all}
   .bv-leaf-label{position:absolute;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.06em;pointer-events:none;white-space:nowrap;text-transform:uppercase;text-shadow:0 0 4px #000;z-index:3}
+  .bv-pinned-scripture{padding:8px 16px 7px;border-bottom:1px solid rgba(212,175,55,.4);margin-bottom:4px}
   `;
   const s=document.createElement('style');
   s.id='booksViewStyles';
@@ -135,34 +122,48 @@ function _booksInjectStyles(){
   document.head.appendChild(s);
 }
 
-function _booksCollectTags(){
+function _booksCollectSources(){
   const books = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
-  const types = new Set();
-  const trads = new Set();
-  books.forEach(b=>{
-    if(b.author_type) types.add(b.author_type);
-    if(b.author_tradition) trads.add(b.author_tradition);
-  });
-  return { types:[...types].sort(), trads:[...trads].sort() };
+  const counts = {};
+  books.forEach(b=>{ (b.topics||[]).forEach(t=>{ if(t) counts[t]=(counts[t]||0)+1; }); });
+  return Object.keys(counts).sort().map(k=>({name:k, count:counts[k]}));
+}
+
+function _booksCollectThemes(){
+  const books = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
+  const counts = {};
+  books.forEach(b=>{ (b.themes||[]).forEach(t=>{ if(t) counts[t]=(counts[t]||0)+1; }); });
+  return Object.keys(counts).sort().map(k=>({name:k, count:counts[k]}));
 }
 
 function _booksCollectAuthors(){
   const books = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
-  const set = new Set();
-  books.forEach(b=>{ if(b.author_name && !b.author_hidden) set.add(b.author_name); });
-  return [...set].sort();
+  const counts = {};
+  books.forEach(b=>{ if(b.author_name && !b.author_hidden) counts[b.author_name]=(counts[b.author_name]||0)+1; });
+  return Object.keys(counts).sort().map(k=>({name:k, count:counts[k]}));
 }
 
 function _booksFiltered(){
   const all = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
   const q = (_booksFilter.search||'').toLowerCase().trim();
-  const tag = _booksFilter.tag;
-  const author = _booksFilter.author;
+  const src = _booksFilter.source;
+  const thm = _booksFilter.theme;
+  const aut = _booksFilter.author;
   let out = all.filter(b=>{
-    if(tag && b.author_type!==tag && b.author_tradition!==tag) return false;
-    if(author && b.author_name!==author) return false;
+    if(src.size){
+      let srcMatch = false;
+      if(src.has('__scripture__') && (b.is_scripture===true || (b.tags||[]).includes('scripture'))) srcMatch = true;
+      if(!srcMatch){ for(const s of src){ if(s!=='__scripture__' && (b.topics||[]).includes(s)){ srcMatch=true; break; } } }
+      if(!srcMatch) return false;
+    }
+    if(thm.size){
+      let thmMatch = false;
+      for(const t of thm){ if((b.themes||[]).includes(t)){ thmMatch=true; break; } }
+      if(!thmMatch) return false;
+    }
+    if(aut.size && !aut.has(b.author_name)) return false;
     if(q){
-      const hay = ((b.title||'')+' '+(b.author_name||'')+' '+(b.revealed_to||'')+' '+((b.topics||[]).join(' '))).toLowerCase();
+      const hay = ((b.title||'')+' '+(b.author_name||'')+' '+(b.revealed_to||'')+' '+((b.topics||[]).join(' '))+' '+((b.themes||[]).join(' '))).toLowerCase();
       if(hay.indexOf(q)===-1) return false;
     }
     return true;
@@ -176,6 +177,7 @@ function _booksFiltered(){
 }
 
 function _booksBuildCanvas(){
+  _booksSyncClearBtn();
   const canvas = document.getElementById('bv-canvas');
   if(!canvas) return;
   const books = _booksFiltered();
@@ -228,273 +230,235 @@ function _booksBuildCanvas(){
     });
   });
 
-  _booksRenderLeaves(books, rowMap, totalH);
+  _booksRenderErasStyle(books, rowMap, totalH);
 }
 
-function _booksRenderLeaves(books, rowMap, totalH){
-  const canvas = document.getElementById('bv-canvas');
+function _bvGetTradColor(b){
+  var trad = b.author_tradition || '';
+  var type = b.author_type || '';
+  if(trad && typeof TRAD_COLORS !== 'undefined' && TRAD_COLORS[trad]) return TRAD_COLORS[trad];
+  if(trad && _BV_TRAD_COLORS[trad]) return _BV_TRAD_COLORS[trad];
+  if(type && _BV_TYPE_COLORS[type]) return _BV_TYPE_COLORS[type];
+  if(b.is_scripture) return '#D4AF37';
+  return 'rgba(212,175,55,0.4)';
+}
+
+// ── ERAS-style canvas renderer for BOOKS ──
+// Uses the exact same leaf path formula, stroke style, label positioning as eras.js
+function _booksRenderErasStyle(books, rowMap, totalH){
+  var canvas = document.getElementById('bv-canvas');
   if(!canvas) return;
+  var NS = 'http://www.w3.org/2000/svg';
 
-  const byTag = {};
-  books.forEach(b=>{
-    const addTo = (key, field)=>{
-      if(!key) return;
-      if(!byTag[key]) byTag[key] = {key, field, books:[], color:(field==='type'?_BV_TYPE_COLORS[key]:_BV_TRAD_COLORS[key])||'#A0AEC0'};
-      byTag[key].books.push(b);
-    };
-    if(b.author_type) addTo(b.author_type,'type');
-    if(b.author_tradition) addTo(b.author_tradition,'trad');
+  // ── Group books into tradition leaves (same as ERAS groups figures) ──
+  var byTag = {};
+  books.forEach(function(b){
+    if(b.author_tradition){
+      var k = b.author_tradition;
+      if(!byTag[k]) byTag[k] = {key:k, field:'trad', books:[], color:_bvGetTradColor(b)};
+      byTag[k].books.push(b);
+    }
+    if(b.author_type){
+      var k2 = b.author_type;
+      if(!byTag[k2]) byTag[k2] = {key:k2, field:'type', books:[], color:_bvGetTradColor(b)};
+      byTag[k2].books.push(b);
+    }
   });
-  const leaves = Object.values(byTag).filter(t=>t.books.length>0);
-  if(!leaves.length) return;
-
-  leaves.forEach(t=>{
-    const ys = t.books.map(b=>rowMap[b.id].midY);
-    t.y1 = Math.min(...ys);
-    t.y2 = Math.max(...ys);
+  var leaves = Object.values(byTag).filter(function(t){ return t.books.length > 0; });
+  leaves.forEach(function(t){
+    var ys = t.books.map(function(b){ return rowMap[b.id].midY; });
+    t.y1 = Math.min.apply(null, ys);
+    t.y2 = Math.max.apply(null, ys);
     t.count = t.books.length;
   });
-  leaves.sort((a,b)=>a.y1 - b.y1);
+  leaves.sort(function(a,b){ return a.y1 - b.y1; });
+  var maxCount = Math.max.apply(null, leaves.map(function(l){ return l.count; }));
 
-  _BV_ERA_BANDS.forEach(era=>{
-    const y1e = _booksYearToY(era.start, books, rowMap);
-    const y2e = _booksYearToY(era.end,   books, rowMap);
+  // ── Era bands (same as eras.js) ──
+  _BV_ERA_BANDS.forEach(function(era){
+    var y1e = _booksYearToY(era.start, books, rowMap);
+    var y2e = _booksYearToY(era.end, books, rowMap);
     if(y2e - y1e < 6) return;
-    const band = document.createElement('div');
-    band.style.cssText = 'position:absolute;top:'+y1e+'px;height:'+(y2e-y1e)+'px;left:'+(_BV_STEM_X+18)+'px;right:0;background:linear-gradient(to left, rgba('+era.glow+',0.13) 0%, rgba('+era.glow+',0.05) 55%, transparent 95%);pointer-events:none;z-index:1';
-    canvas.appendChild(band);
-    const label = document.createElement('div');
-    label.style.cssText = 'position:absolute;top:'+(y1e+10)+'px;right:24px;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.14em;color:rgba('+era.glow+',0.85);text-transform:uppercase;pointer-events:none;z-index:1;text-align:right;font-weight:700';
-    label.innerHTML = era.name + '<div style="font-size:9px;opacity:.6;margin-top:2px;font-weight:400">'+era.dates+'</div>';
+    var gDiv = document.createElement('div');
+    gDiv.style.cssText = 'position:absolute;top:'+y1e+'px;height:'+(y2e-y1e)+'px;left:'+(_BV_STEM_X+18)+'px;right:0;background:linear-gradient(to left, rgba('+era.glow+',0.10) 0%, rgba('+era.glow+',0.04) 50%, transparent 85%);pointer-events:none;z-index:1';
+    canvas.appendChild(gDiv);
+    var label = document.createElement('div');
+    label.style.cssText = 'position:absolute;top:'+(y1e+12)+'px;right:24px;font-family:\'Cinzel\',serif;text-align:right;pointer-events:none;z-index:1';
+    label.innerHTML = '<div style="font-size:11px;letter-spacing:.14em;color:rgba('+era.glow+',0.85);text-transform:uppercase;font-weight:700">'+era.name+'</div>'
+      + '<div style="font-size:9px;opacity:.6;margin-top:2px;font-weight:400;color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
     canvas.appendChild(label);
   });
 
-  const canvasW = canvas.clientWidth || 1600;
-  const rightW = Math.max(900, canvasW - _BV_STEM_X - 80);
-  const PEAK_X = rightW * 0.72;
-  const LABEL_X = PEAK_X + 14;
-  const LABEL_H = 22;
-  const TOP_OFFSET = 18;
+  // ── Stem (vertical line at _BV_STEM_X — same role as eras-stem) ──
+  // Already rendered in HTML as #bv-stem
 
-  const NS='http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(NS,'svg');
-  svg.setAttribute('class','bv-leaves');
-  svg.style.position = 'absolute';
-  svg.style.top = '0';
-  svg.style.left = (_BV_STEM_X) + 'px';
-  svg.style.width = rightW + 'px';
-  svg.style.pointerEvents = 'none';
+  // ── SVG leaves — EXACT SAME formula as eras.js lines 262-293 ──
+  var svg = document.createElementNS(NS, 'svg');
+  svg.style.cssText = 'position:absolute;top:0;left:'+_BV_STEM_X+'px;overflow:visible;pointer-events:none;z-index:2';
+  var rightW = Math.max(400, (canvas.clientWidth||1400) - _BV_STEM_X - 80);
+  svg.setAttribute('width', rightW);
   svg.setAttribute('height', totalH);
 
-  const records = [];
+  var maxLeafW = rightW * 0.6;
+  var MIN_LEAF_W = 30;
+  var totalLeaves = leaves.length;
 
-  leaves.forEach((ld, idx)=>{
-    let y1 = ld.y1;
-    let y2 = ld.y2;
-    if(y2 - y1 < 20) y2 = y1 + 20;
-    const stemX = 1;
-    const labelNaturalY = y1 + TOP_OFFSET;
+  leaves.forEach(function(ld, idx){
+    var y1 = ld.y1;
+    var y2 = ld.y2;
+    if(y2 - y1 < 10) y2 = y1 + 10;
+    var leafW = Math.max(MIN_LEAF_W, (ld.count / maxCount) * maxLeafW);
+    var xOffset = 15 + (idx / totalLeaves) * (rightW * 0.30);
+    var midY = (y1 + y2) / 2;
+    var peakX = xOffset + leafW;
+    var stemX = 1;
 
-    // Upside-down leaf: fat top near y1, tapered tip at y2
-    // Top arc sweeps out to PEAK_X near y1, then tapers down to stemX at y2
-    const d = 'M ' + stemX + ' ' + y1.toFixed(1) +
-              ' C ' + (stemX + PEAK_X*0.35).toFixed(1) + ' ' + (y1 - 6).toFixed(1) +
-              ', ' + PEAK_X.toFixed(1) + ' ' + y1.toFixed(1) +
-              ', ' + PEAK_X.toFixed(1) + ' ' + labelNaturalY.toFixed(1) +
-              ' C ' + PEAK_X.toFixed(1) + ' ' + (y1 + (y2-y1)*0.55).toFixed(1) +
-              ', ' + (stemX + PEAK_X*0.25).toFixed(1) + ' ' + (y2 - 4).toFixed(1) +
-              ', ' + stemX + ' ' + y2.toFixed(1) + ' Z';
+    // Exact ERAS path formula
+    var cp1y = y1 + (midY - y1) * 0.3;
+    var cp2y = y1 + (midY - y1) * 0.7;
+    var cp3y = midY + (y2 - midY) * 0.3;
+    var cp4y = midY + (y2 - midY) * 0.7;
+    var d = 'M ' + stemX + ' ' + y1.toFixed(1) +
+            ' C ' + (stemX + leafW * 0.1).toFixed(1) + ' ' + cp1y.toFixed(1) +
+            ', ' + peakX.toFixed(1) + ' ' + cp2y.toFixed(1) +
+            ', ' + peakX.toFixed(1) + ' ' + midY.toFixed(1) +
+            ' C ' + peakX.toFixed(1) + ' ' + cp3y.toFixed(1) +
+            ', ' + (stemX + leafW * 0.1).toFixed(1) + ' ' + cp4y.toFixed(1) +
+            ', ' + stemX + ' ' + y2.toFixed(1) + ' Z';
 
-    const g = document.createElementNS(NS,'g');
-    g.setAttribute('class','bv-leaf');
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'bv-leaf');
     g.setAttribute('data-tag', ld.key);
     g.style.cursor = 'pointer';
     g.style.pointerEvents = 'auto';
-    const path = document.createElementNS(NS,'path');
+
+    // Exact ERAS stroke style
+    var path = document.createElementNS(NS, 'path');
     path.setAttribute('d', d);
-    path.setAttribute('fill', ld.color);
-    path.setAttribute('fill-opacity', '0.06');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('fill-opacity', '0');
     path.setAttribute('stroke', ld.color);
-    path.setAttribute('stroke-opacity','0.65');
-    path.setAttribute('stroke-width','2');
+    path.setAttribute('stroke-opacity', '0.5');
+    path.setAttribute('stroke-width', '2.5');
     g.appendChild(path);
 
-    const dot1 = document.createElementNS(NS,'circle');
+    // Dots at y1 and y2 (exact ERAS style — r=2)
+    var dot1 = document.createElementNS(NS, 'circle');
     dot1.setAttribute('cx', stemX); dot1.setAttribute('cy', y1);
-    dot1.setAttribute('r', 3); dot1.setAttribute('fill', ld.color);
+    dot1.setAttribute('r', 2); dot1.setAttribute('fill', ld.color);
+    dot1.style.pointerEvents = 'none';
     g.appendChild(dot1);
-    const dot2 = document.createElementNS(NS,'circle');
+    var dot2 = document.createElementNS(NS, 'circle');
     dot2.setAttribute('cx', stemX); dot2.setAttribute('cy', y2);
     dot2.setAttribute('r', 2); dot2.setAttribute('fill', ld.color);
-    dot2.setAttribute('fill-opacity', '0.7');
+    dot2.style.pointerEvents = 'none';
     g.appendChild(dot2);
-
     svg.appendChild(g);
 
-    records.push({ ld, g, path, labelNaturalY, y1, targetY: labelNaturalY });
-  });
+    // Label outside leaf — exact ERAS positioning (peakX + 6, midY)
+    var labelLeft = Math.max(peakX + 6, MIN_LEAF_W + xOffset + 6);
+    var extLabel = document.createElement('div');
+    extLabel.className = 'bv-leaf-label';
+    extLabel.setAttribute('data-tag', ld.key);
+    extLabel.style.cssText = 'position:absolute;top:'+midY+'px;left:'+(_BV_STEM_X + labelLeft)+'px;transform:translateY(-50%);white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+ld.color+';text-shadow:0 0 4px #000';
+    extLabel.textContent = ld.key + ' (' + ld.count + ')';
+    canvas.appendChild(extLabel);
 
-  // ── De-collide labels: push overlapping ones down, preserving order by y1 ──
-  records.sort((a,b)=>a.labelNaturalY - b.labelNaturalY);
-  let lastBottom = -Infinity;
-  records.forEach(r=>{
-    if(r.targetY < lastBottom + LABEL_H){
-      r.targetY = lastBottom + LABEL_H;
-    }
-    lastBottom = r.targetY;
-  });
-
-  // ── Paint labels + optional dashed connector from leaf tip to displaced label ──
-  records.forEach(r=>{
-    const ld = r.ld;
-
-    if(Math.abs(r.targetY - r.labelNaturalY) > 2){
-      const line = document.createElementNS(NS,'line');
-      line.setAttribute('x1', PEAK_X);
-      line.setAttribute('y1', r.labelNaturalY);
-      line.setAttribute('x2', PEAK_X + 10);
-      line.setAttribute('y2', r.targetY);
-      line.setAttribute('stroke', ld.color);
-      line.setAttribute('stroke-opacity', '0.5');
-      line.setAttribute('stroke-width', '1');
-      line.setAttribute('stroke-dasharray', '2,3');
-      svg.appendChild(line);
-    }
-
-    const label = document.createElement('div');
-    label.className = 'bv-leaf-label';
-    label.setAttribute('data-tag', ld.key);
-    label.style.position = 'absolute';
-    label.style.left = (_BV_STEM_X + LABEL_X) + 'px';
-    label.style.top = r.targetY + 'px';
-    label.style.transform = 'translateY(-50%)';
-    label.style.color = ld.color;
-    label.style.whiteSpace = 'nowrap';
-    label.style.cursor = 'pointer';
-    label.style.fontFamily = "'Cinzel', serif";
-    label.style.fontSize = '12px';
-    label.style.fontWeight = '700';
-    label.style.letterSpacing = '0.08em';
-    label.style.textTransform = 'uppercase';
-    label.style.pointerEvents = 'auto';
-    label.textContent = ld.key + ' (' + ld.count + ')';
-    canvas.appendChild(label);
-
-    const clickHandler = function(e){
+    // Click → filter by this source
+    var clickHandler = function(e){
       e.stopPropagation();
-      _booksFilter.tag = ld.key;
-      _booksSetTagBtnLabel(ld.key);
-      _booksBuildCanvas();
-      _booksAnimStop();
+      _booksFilter.source.clear(); _booksFilter.source.add(ld.key);
+      _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'\u2014 SELECT A SOURCE \u2014','sources');
+      _booksBuildCanvas(); _booksAnimStop();
     };
-    r.g.addEventListener('click', clickHandler);
-    label.addEventListener('click', clickHandler);
-    r.g.addEventListener('mouseenter', function(){
-      if(_booksFilter.tag) return;
-      r.path.setAttribute('stroke-opacity','1');
-      r.path.setAttribute('stroke-width','3');
-      r.path.setAttribute('fill-opacity','0.18');
+    g.addEventListener('click', clickHandler);
+    extLabel.addEventListener('click', clickHandler);
+
+    // Hover — exact ERAS behavior
+    g.addEventListener('mouseenter', function(){
+      if(_booksFilter.source.size) return;
+      path.setAttribute('stroke-opacity', '0.9');
     });
-    r.g.addEventListener('mouseleave', function(){
-      if(_booksFilter.tag) return;
-      r.path.setAttribute('stroke-opacity','0.65');
-      r.path.setAttribute('stroke-width','2');
-      r.path.setAttribute('fill-opacity','0.06');
+    g.addEventListener('mouseleave', function(){
+      if(_booksFilter.source.size) return;
+      path.setAttribute('stroke-opacity', '0.5');
     });
   });
 
   canvas.appendChild(svg);
 }
 
-function _booksSetTagBtnLabel(label){
-  const btn = document.getElementById('bv-tag-btn');
+// ── Multi-select checkbox helpers ──
+function _bvCk(on){ return '<span class="bv-ck'+(on?' on':'')+'"></span>'; }
+
+function _bvSyncBtnLabel(btnId, filterSet, defaultLabel, singularNoun){
+  const btn=document.getElementById(btnId);
   if(!btn) return;
-  btn.innerHTML = _booksEscape(label)+'  <span style="opacity:.6">▾</span>';
-}
-function _booksSetAuthorBtnLabel(label){
-  const btn = document.getElementById('bv-author-btn');
-  if(!btn) return;
-  btn.innerHTML = _booksEscape(label)+'  <span style="opacity:.6">▾</span>';
+  const n=filterSet.size;
+  let txt=defaultLabel;
+  if(n===1) txt=[...filterSet][0];
+  else if(n>1) txt=n+' '+singularNoun+' selected';
+  btn.innerHTML=_booksEscape(txt)+'  <span style="opacity:.6">\u25BE</span>';
 }
 
-function _booksBuildTagPanel(){
-  const scroll = document.getElementById('bv-tag-scroll');
+function _bvBuildPanel(scrollId, searchId, filterSet, items, pinnedRow, onchange){
+  const scroll=document.getElementById(scrollId);
   if(!scroll) return;
-  const tags = _booksCollectTags();
-  const si = document.getElementById('bv-tag-search');
-  const q = (si && si.value || '').toLowerCase().trim();
-  const matches = arr=>arr.filter(t=>!q || t.toLowerCase().indexOf(q)>-1);
-  let html='';
-  html+='<div class="bv-dd-clear" data-clear="1">— CLEAR TAG FILTER —</div>';
-  const tm=matches(tags.types), trm=matches(tags.trads);
-  if(tm.length){
-    html+='<div class="bv-dd-section-hdr">TYPES</div>';
-    tm.forEach(t=>{
-      const sel=(_booksFilter.tag===t)?' sel':'';
-      html+='<div class="bv-dd-item cinzel'+sel+'" data-tag="'+_booksEscape(t)+'">'+_booksEscape(t)+'</div>';
-    });
+  const si=document.getElementById(searchId);
+  const q=(si&&si.value||'').toLowerCase().trim();
+  const n=filterSet.size;
+  const toggleLabel=n>0?'Deselect all':'Select all';
+  let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="bv-dd-toggle-all" style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
+  if(pinnedRow){
+    const on=filterSet.has(pinnedRow.value);
+    html+='<div class="bv-ck-row bv-pinned-scripture'+(on?' checked':'')+'" data-val="'+_booksEscape(pinnedRow.value)+'">'+_bvCk(on)+'<span class="bv-ck-label" style="color:var(--gold,#D4AF37);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em">'+_booksEscape(pinnedRow.label)+'</span></div>';
   }
-  if(trm.length){
-    html+='<div class="bv-dd-section-hdr">TRADITIONS</div>';
-    trm.forEach(t=>{
-      const sel=(_booksFilter.tag===t)?' sel':'';
-      html+='<div class="bv-dd-item cinzel'+sel+'" data-tag="'+_booksEscape(t)+'">'+_booksEscape(t)+'</div>';
-    });
-  }
+  const filtered=items.filter(t=>!q||t.name.toLowerCase().indexOf(q)>-1);
+  filtered.forEach(t=>{
+    const on=filterSet.has(t.name);
+    html+='<div class="bv-ck-row'+(on?' checked':'')+'" data-val="'+_booksEscape(t.name)+'">'+_bvCk(on)+'<span class="bv-ck-label">'+_booksEscape(t.name)+'</span><span class="bv-ck-count">('+t.count+')</span></div>';
+  });
   scroll.innerHTML=html;
-  scroll.querySelectorAll('.bv-dd-item').forEach(el=>{
+  scroll.querySelectorAll('.bv-ck-row').forEach(el=>{
     el.addEventListener('click',function(){
-      _booksFilter.tag=this.getAttribute('data-tag');
-      _booksSetTagBtnLabel(_booksFilter.tag);
-      document.getElementById('bv-tag-panel').classList.remove('open');
-      _booksBuildCanvas();
-      _booksAnimStop();
+      const v=this.getAttribute('data-val');
+      if(filterSet.has(v)) filterSet.delete(v); else filterSet.add(v);
+      onchange();
     });
   });
-  scroll.querySelectorAll('[data-clear]').forEach(el=>{
+  scroll.querySelectorAll('.bv-dd-toggle-all').forEach(el=>{
     el.addEventListener('click',function(){
-      _booksFilter.tag=null;
-      _booksSetTagBtnLabel('— SELECT A TAG —');
-      document.getElementById('bv-tag-panel').classList.remove('open');
-      _booksBuildCanvas();
-      _booksAnimStop();
+      if(filterSet.size>0){ filterSet.clear(); }
+      else {
+        if(pinnedRow) filterSet.add(pinnedRow.value);
+        items.forEach(t=>filterSet.add(t.name));
+      }
+      onchange();
     });
   });
 }
 
+function _booksBuildSourcePanel(){
+  _bvBuildPanel('bv-source-scroll','bv-source-search',_booksFilter.source,_booksCollectSources(),
+    {value:'__scripture__',label:'Scripture'},
+    function(){ _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'\u2014 SELECT A SOURCE \u2014','sources'); _booksBuildSourcePanel(); _booksBuildCanvas(); _booksAnimStop(); });
+}
+function _booksBuildThemePanel(){
+  _bvBuildPanel('bv-theme-scroll','bv-theme-search',_booksFilter.theme,_booksCollectThemes(),
+    null,
+    function(){ _bvSyncBtnLabel('bv-theme-btn',_booksFilter.theme,'\u2014 SELECT A THEME \u2014','themes'); _booksBuildThemePanel(); _booksBuildCanvas(); _booksAnimStop(); });
+}
 function _booksBuildAuthorPanel(){
-  const scroll = document.getElementById('bv-author-scroll');
-  if(!scroll) return;
-  const authors = _booksCollectAuthors();
-  const si = document.getElementById('bv-author-search');
-  const q = (si && si.value || '').toLowerCase().trim();
-  const matches = authors.filter(t=>!q || t.toLowerCase().indexOf(q)>-1);
-  let html='';
-  html+='<div class="bv-dd-clear" data-clear="1">— CLEAR AUTHOR FILTER —</div>';
-  html+='<div class="bv-dd-section-hdr">AUTHORS ('+matches.length+')</div>';
-  matches.forEach(a=>{
-    const sel=(_booksFilter.author===a)?' sel':'';
-    html+='<div class="bv-dd-item'+sel+'" data-author="'+_booksEscape(a)+'">'+_booksEscape(a)+'</div>';
-  });
-  scroll.innerHTML=html;
-  scroll.querySelectorAll('[data-author]').forEach(el=>{
-    el.addEventListener('click',function(){
-      _booksFilter.author=this.getAttribute('data-author');
-      _booksSetAuthorBtnLabel(_booksFilter.author);
-      document.getElementById('bv-author-panel').classList.remove('open');
-      _booksBuildCanvas();
-      _booksAnimStop();
-    });
-  });
-  scroll.querySelectorAll('[data-clear]').forEach(el=>{
-    el.addEventListener('click',function(){
-      _booksFilter.author=null;
-      _booksSetAuthorBtnLabel('— SELECT AN AUTHOR —');
-      document.getElementById('bv-author-panel').classList.remove('open');
-      _booksBuildCanvas();
-      _booksAnimStop();
-    });
-  });
+  _bvBuildPanel('bv-author-scroll','bv-author-search',_booksFilter.author,_booksCollectAuthors(),
+    null,
+    function(){ _bvSyncBtnLabel('bv-author-btn',_booksFilter.author,'\u2014 SELECT AN AUTHOR \u2014','authors'); _booksBuildAuthorPanel(); _booksBuildCanvas(); _booksAnimStop(); });
+}
+
+function _booksSyncClearBtn(){
+  const btn=document.getElementById('bv-clear-all');
+  if(!btn) return;
+  const hasFilter=_booksFilter.source.size||_booksFilter.theme.size||_booksFilter.author.size||_booksFilter.search;
+  btn.classList.toggle('active',!!hasFilter);
 }
 
 function _booksAnimStop(){
@@ -579,19 +543,27 @@ async function initBooks(){
   html+='<div style="display:flex;flex-direction:column;line-height:1.1"><span style="font-size:18px;font-weight:700;color:#4FD1C5">'+_tl.free+'</span><span style="font-size:9px;opacity:.65;text-transform:uppercase">Free Reads</span></div>';
   html+='</div>';
   html+='<div class="bv-dd-wrap">';
-  html+='<button class="bv-dd-btn" id="bv-tag-btn">— SELECT A TAG —  <span style="opacity:.6">▾</span></button>';
-  html+='<div class="bv-dd-panel" id="bv-tag-panel">';
-  html+='<input class="bv-dd-search" id="bv-tag-search" placeholder="search tags…">';
-  html+='<div class="bv-dd-scroll" id="bv-tag-scroll"></div>';
+  html+='<button class="bv-dd-btn" id="bv-source-btn">\u2014 SELECT A SOURCE \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  html+='<div class="bv-dd-panel" id="bv-source-panel">';
+  html+='<input class="bv-dd-search" id="bv-source-search" placeholder="search sources\u2026">';
+  html+='<div class="bv-dd-scroll" id="bv-source-scroll"></div>';
   html+='</div>';
   html+='</div>';
   html+='<div class="bv-dd-wrap">';
-  html+='<button class="bv-dd-btn" id="bv-author-btn">— SELECT AN AUTHOR —  <span style="opacity:.6">▾</span></button>';
+  html+='<button class="bv-dd-btn" id="bv-theme-btn">\u2014 SELECT A THEME \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  html+='<div class="bv-dd-panel" id="bv-theme-panel">';
+  html+='<input class="bv-dd-search" id="bv-theme-search" placeholder="search themes\u2026">';
+  html+='<div class="bv-dd-scroll" id="bv-theme-scroll"></div>';
+  html+='</div>';
+  html+='</div>';
+  html+='<div class="bv-dd-wrap">';
+  html+='<button class="bv-dd-btn" id="bv-author-btn">\u2014 SELECT AN AUTHOR \u2014  <span style="opacity:.6">\u25BE</span></button>';
   html+='<div class="bv-dd-panel" id="bv-author-panel">';
-  html+='<input class="bv-dd-search" id="bv-author-search" placeholder="search authors…">';
+  html+='<input class="bv-dd-search" id="bv-author-search" placeholder="search authors\u2026">';
   html+='<div class="bv-dd-scroll" id="bv-author-scroll"></div>';
   html+='</div>';
   html+='</div>';
+  html+='<button class="bv-clear-all" id="bv-clear-all" title="Clear all filters">\u00D7</button>';
   html+='<div id="bv-anim-wrap">';
   html+='<span id="bv-anim-year">—</span>';
   html+='<select id="bv-anim-speed"><option value="2400">Slow</option><option value="1200" selected>Medium</option><option value="500">Fast</option></select>';
@@ -601,46 +573,55 @@ async function initBooks(){
   html+='<div id="bv-scroll"><div id="bv-canvas"></div></div>';
   view.innerHTML=html;
 
-  if(_booksFilter.tag) _booksSetTagBtnLabel(_booksFilter.tag);
-  if(_booksFilter.author) _booksSetAuthorBtnLabel(_booksFilter.author);
-  _booksBuildTagPanel();
+  _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'\u2014 SELECT A SOURCE \u2014','sources');
+  _bvSyncBtnLabel('bv-theme-btn',_booksFilter.theme,'\u2014 SELECT A THEME \u2014','themes');
+  _bvSyncBtnLabel('bv-author-btn',_booksFilter.author,'\u2014 SELECT AN AUTHOR \u2014','authors');
+  _booksBuildSourcePanel();
+  _booksBuildThemePanel();
   _booksBuildAuthorPanel();
   _booksBuildCanvas();
 
-  const tagBtn=document.getElementById('bv-tag-btn');
-  const tagPanel=document.getElementById('bv-tag-panel');
-  tagBtn.addEventListener('click',function(e){
-    e.stopPropagation();
-    tagPanel.classList.toggle('open');
-    const other=document.getElementById('bv-author-panel');
-    if(other) other.classList.remove('open');
-    if(tagPanel.classList.contains('open')){
-      const s=document.getElementById('bv-tag-search');
-      if(s) s.focus();
-    }
-  });
-  const aBtn=document.getElementById('bv-author-btn');
-  const aPanel=document.getElementById('bv-author-panel');
-  aBtn.addEventListener('click',function(e){
-    e.stopPropagation();
-    aPanel.classList.toggle('open');
-    const other=document.getElementById('bv-tag-panel');
-    if(other) other.classList.remove('open');
-    if(aPanel.classList.contains('open')){
-      const s=document.getElementById('bv-author-search');
-      if(s) s.focus();
-    }
+  // Wire all 3 dropdowns with mutual-close logic
+  const _ddPairs = [
+    {btn:'bv-source-btn', panel:'bv-source-panel', search:'bv-source-search', build:_booksBuildSourcePanel},
+    {btn:'bv-theme-btn', panel:'bv-theme-panel', search:'bv-theme-search', build:_booksBuildThemePanel},
+    {btn:'bv-author-btn', panel:'bv-author-panel', search:'bv-author-search', build:_booksBuildAuthorPanel}
+  ];
+  _ddPairs.forEach(dd=>{
+    const btn=document.getElementById(dd.btn);
+    const panel=document.getElementById(dd.panel);
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      _ddPairs.forEach(o=>{ if(o.panel!==dd.panel) document.getElementById(o.panel).classList.remove('open'); });
+      panel.classList.toggle('open');
+      if(panel.classList.contains('open')){
+        const s=document.getElementById(dd.search);
+        if(s) s.focus();
+      }
+    });
+    document.getElementById(dd.search).addEventListener('input',dd.build);
   });
   document.addEventListener('click',function(e){
-    if(tagPanel && !tagPanel.contains(e.target) && e.target!==tagBtn) tagPanel.classList.remove('open');
-    if(aPanel && !aPanel.contains(e.target) && e.target!==aBtn) aPanel.classList.remove('open');
+    _ddPairs.forEach(dd=>{
+      const panel=document.getElementById(dd.panel);
+      const btn=document.getElementById(dd.btn);
+      if(panel && !panel.contains(e.target) && e.target!==btn) panel.classList.remove('open');
+    });
   });
-  document.getElementById('bv-tag-search').addEventListener('input',_booksBuildTagPanel);
-  document.getElementById('bv-author-search').addEventListener('input',_booksBuildAuthorPanel);
   document.getElementById('bv-anim-btn').addEventListener('click',_booksAnimToggle);
+  document.getElementById('bv-clear-all').addEventListener('click',function(){
+    _booksFilter.source.clear(); _booksFilter.theme.clear(); _booksFilter.author.clear(); _booksFilter.search='';
+    _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'\u2014 SELECT A SOURCE \u2014','sources');
+    _bvSyncBtnLabel('bv-theme-btn',_booksFilter.theme,'\u2014 SELECT A THEME \u2014','themes');
+    _bvSyncBtnLabel('bv-author-btn',_booksFilter.author,'\u2014 SELECT AN AUTHOR \u2014','authors');
+    _booksBuildSourcePanel(); _booksBuildThemePanel(); _booksBuildAuthorPanel();
+    var sb=document.getElementById('search'); if(sb) sb.value='';
+    _booksBuildCanvas(); _booksAnimStop(); _booksSyncClearBtn();
+  });
 
   _booksUpdateTopbar();
   _booksUpdateSearchBox(true);
+  _booksSyncClearBtn();
   _booksInited=true;
 }
 
