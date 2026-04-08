@@ -245,10 +245,35 @@ function _fwLoadAll(cb) {
             _fwConfCache[item.file] = data.confidence || null;
           })
           .catch(function(e) { console.warn('[FOLLOW] Load failed:', item.file, e); })
-          .then(function() { pending--; if (pending === 0) cb(); });
+          .then(function() { pending--; if (pending === 0) { _fwExposeCache(); cb(); } });
       });
     })
     .catch(function() { _fwIndex = []; cb(); });
+}
+
+// ── Expose journey cache for MAP view ──
+function _fwExposeCache(){
+  window._journeyCache = _fwFigures;
+  // Build slug -> filename reverse map
+  var _slugToFile = {};
+  _fwIndex.forEach(function(item){
+    var d = _fwFigures[item.file];
+    if(d && d.slug) _slugToFile[d.slug] = item.file;
+  });
+  window._getJourneyLocation = function(slug, year){
+    var file = _slugToFile[slug];
+    if(!file) return null;
+    var d = _fwFigures[file];
+    if(!d || !d.journey || !d.journey.length) return null;
+    var j = d.journey;
+    if(year < j[0].year) return {lat: j[0].lat, lng: j[0].lng};
+    var best = j[0];
+    for(var i = 1; i < j.length; i++){
+      if(j[i].year <= year) best = j[i];
+      else break;
+    }
+    return (best.lat != null && best.lng != null) ? {lat: best.lat, lng: best.lng} : null;
+  };
 }
 
 function _fwAssignColors() {

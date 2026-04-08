@@ -2206,3 +2206,10 @@ body.snapshot-mode .leaflet-control-container{
 body.snapshot-mode{overflow:hidden}
 body.snapshot-mode *::-webkit-scrollbar{display:none}
 body.snapshot-mode *{scrollbar-width:none}
+.dd-search,.sl-dd-search{
+  display:block;width:calc(100% - 16px);margin:4px 8px 6px;padding:5px 8px;
+  background:rgba(0,0,0,.3);border:1px solid var(--border2);border-radius:3px;
+  color:var(--text);font-size:12px;font-family:inherit;outline:none;
+}
+.dd-search:focus,.sl-dd-search:focus{border-color:var(--accent)}
+.dd-search::placeholder,.sl-dd-search::placeholder{color:var(--text2);opacity:.6}

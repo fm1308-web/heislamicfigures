@@ -364,6 +364,12 @@ async function boot(){
       }
     }
   }
+
+  // ── Run validators (non-blocking, logs only) ──
+  try{
+    var vk=Object.keys(window._validators||{});
+    vk.forEach(function(k){try{window._validators[k]();}catch(e){console.warn('[validator:'+k+'] error',e);}});
+  }catch(e){}
 }
 
 // ── Browser history: handle Back/Forward ──
@@ -406,6 +412,15 @@ const _resizeShell=setHeight;
 // ═══════════════════════════════════════════════════════════
 function buildDD(kind,values){
   const panel=document.getElementById(kind==='type'?'typePanel':'tradPanel');
+  const si=document.createElement('input');
+  si.type='text';si.className='dd-search';si.placeholder='Search...';
+  si.oninput=function(){
+    const q=si.value.toLowerCase();
+    panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){
+      el.style.display=el.innerText.toLowerCase().includes(q)?'':'none';
+    });
+  };
+  panel.appendChild(si);
   values.forEach(v=>{
     const el=document.createElement('div');
     el.className='dd-item'; el.dataset.val=v;
@@ -419,7 +434,11 @@ function toggleDD(kind){
   const wasOpen=panel.classList.contains('open');
   document.querySelectorAll('.dd-panel.open').forEach(p=>p.classList.remove('open'));
   document.querySelectorAll('.dd-btn.open').forEach(b=>b.classList.remove('open'));
-  if(!wasOpen){panel.classList.add('open');btn.classList.add('open');}
+  if(!wasOpen){
+    panel.classList.add('open');btn.classList.add('open');
+    var si=panel.querySelector('.dd-search');
+    if(si){si.value='';si.dispatchEvent(new Event('input'));si.focus();}
+  }
 }
 function ddClearAll(kind){
   const sel=kind==='type'?selTypes:selTrads;

@@ -35,6 +35,18 @@ const TRAD_COLORS={
   'Companions (Women)':   '#d06878',
   'Followers':            '#c08850',
   'Caliphs & Rulers':     '#b85840',
+  'Tijaniyya':        '#4a90e2',
+  'Bektashiyya':      '#e8b04a',
+  "Ni'matullahi":     '#9b59b6',
+  'Nizari Ismaili':   '#c0392b',
+  'Tayyibi Ismaili':  '#e67e22',
+  'Zaydi':            '#27ae60',
+  'Ibadi':            '#16a085',
+  'Sanusiyya':        '#d35400',
+  'Sudanese Mahdiyya':'#8e44ad',
+  'Ahmadiyya':        '#2980b9',
+  'Deobandi':         '#7f8c8d',
+  'Almohad':          '#c0392b',
 };
 
 // ── Islamic-History sub-lane machinery ──────────────────────────────────────
@@ -779,6 +791,15 @@ function buildSLDD(kind, values){
   ['sl','map'].forEach(prefix=>{
     const panel=document.getElementById(prefix+'-'+(kind==='type'?'typePanel':'tradPanel'));
     if(!panel) return;
+    const si=document.createElement('input');
+    si.type='text';si.className='sl-dd-search';si.placeholder='Search...';
+    si.oninput=function(){
+      const q=si.value.toLowerCase();
+      panel.querySelectorAll('.sl-dd-item:not(.sl-dd-all)').forEach(function(el){
+        el.style.display=el.innerText.toLowerCase().includes(q)?'':'none';
+      });
+    };
+    panel.appendChild(si);
     values.forEach(v=>{
       const el=document.createElement('div');
       el.className='sl-dd-item'; el.dataset.val=v;
@@ -800,7 +821,11 @@ function toggleSLDD(kind){
   document.querySelectorAll('.sl-dd-btn.open').forEach(b=>b.classList.remove('open'));
   document.querySelectorAll('.dd-panel.open').forEach(p=>p.classList.remove('open'));
   document.querySelectorAll('.dd-btn.open').forEach(b=>b.classList.remove('open'));
-  if(!wasOpen){panel.classList.add('open');btn.classList.add('open');}
+  if(!wasOpen){
+    panel.classList.add('open');btn.classList.add('open');
+    var si=panel.querySelector('.sl-dd-search');
+    if(si){si.value='';si.dispatchEvent(new Event('input'));si.focus();}
+  }
 }
 
 function slDDClearAll(kind){

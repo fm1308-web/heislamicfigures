@@ -172,8 +172,13 @@ function _makeMarker(p, showLabel=false){
     iconSize: [160, 40],
     iconAnchor: [isTheProphet ? 80 : anchor, anchor]
   });
-  const _lat=p._renderLat!=null?p._renderLat:p.lat;
-  const _lng=p._renderLng!=null?p._renderLng:p.lng;
+  // Journey-aware pin: use FOLLOW data if available
+  var _jLoc=null;
+  if(window._getJourneyLocation&&p.slug&&_mapYear!=null){
+    _jLoc=window._getJourneyLocation(p.slug,_mapYear);
+  }
+  const _lat=_jLoc?_jLoc.lat:(p._renderLat!=null?p._renderLat:p.lat);
+  const _lng=_jLoc?_jLoc.lng:(p._renderLng!=null?p._renderLng:p.lng);
   const m=L.marker([_lat,_lng],{icon, zIndexOffset: isTheProphet ? 9999 : 0});
   // First hover: show small tooltip
   m.on('mouseover',e=>{

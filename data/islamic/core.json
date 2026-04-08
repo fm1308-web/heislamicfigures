@@ -872,7 +872,12 @@
     "tags": [
       "Ahl al-Bayt (claimed)"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Abd al-Razzaq ibn Abd al-Qadir al-Jilani",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0032",
@@ -2643,7 +2648,16 @@
     "teachers": [
       "Abu'l-Hasan al-Shadhili"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Abu'l-Hasan al-Shadhili",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Ibn Ata Allah al-Iskandari",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0103",
@@ -4339,7 +4353,12 @@
       "Ibn Mashish",
       "Abd al-Salam ibn Mashish"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Abu al-Abbas al-Mursi",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0171",
@@ -4636,7 +4655,16 @@
     "lat": 35.7,
     "lng": -0.7,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Muhammad al-Buzidi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Adda Bentounes",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0183",
@@ -4684,7 +4712,7 @@
     "slug": "F0185",
     "famous": "Ahmad al-Tijani",
     "full": "Abu al-Abbas Ahmad ibn Muhammad al-Tijani",
-    "tradition": "Shadhiliyya",
+    "tradition": "Tijaniyya",
     "type": "Founder",
     "primaryTitle": "Khatam al-Awliya — Seal of the Saints",
     "dob": 1737,
@@ -4699,7 +4727,12 @@
     "lat": 33.8,
     "lng": 2.3,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Muhammad al-Ghali (primary successor)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0186",
@@ -4787,6 +4820,14 @@
       {
         "person": "Sidi Ahmad ibn Idris",
         "relation": "sibling"
+      },
+      {
+        "person": "Various Moroccan and Hijazi teachers",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Muhammad al-Sanusi",
+        "relation": "silsila after"
       }
     ]
   },
@@ -4835,7 +4876,16 @@
       "Baha-ud-Din Naqshband",
       "Khwaja Baqi Billah"
     ],
-    "relations": [],
+    "relations": [
+      {
+        "person": "Khwaja Baqi Billah",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Muhammad Ma'sum Sirhindi",
+        "relation": "silsila after"
+      }
+    ],
     "tags": [
       "Mujaddid"
     ]
@@ -12930,7 +12980,12 @@
     "teachers": [
       "Amir Kulal"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Ala al-Din al-Attar",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0510",
@@ -12953,7 +13008,16 @@
     "teachers": [
       "Shihab al-Din al-Suhrawardi"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Shihab al-Din al-Suhrawardi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Sadr al-Din Arif",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0511",
@@ -14701,7 +14765,16 @@
     "teachers": [
       "Qutbuddin Bakhtiar Kaki"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Qutbuddin Bakhtiar Kaki",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Nizamuddin Auliya",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0582",
@@ -15588,7 +15661,16 @@
     "teachers": [
       "Nasiruddin Chiragh Dehlawi"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Nasiruddin Chiragh Dehlawi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Various Gulbarga successors",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0618",
@@ -16319,7 +16401,7 @@
     "slug": "F0645",
     "famous": "Hajji Bektash Veli",
     "full": "Hajji Bektash Wali",
-    "tradition": "Qalandari",
+    "tradition": "Bektashiyya",
     "type": "Founder",
     "primaryTitle": "Sultan al-Awliya of Anatolia",
     "dob": 1209,
@@ -16334,7 +16416,12 @@
     "lat": 38.9597,
     "lng": 34.5225,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Balim Sultan (Second Pir)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0646",
@@ -16947,7 +17034,7 @@
     "slug": "F0668",
     "famous": "Hasan-i Sabbah",
     "full": "Ḥasan ibn ʿAlī ibn Muḥammad ibn Jaʿfar ibn al-Ḥusayn al-Ṣabbāḥ",
-    "tradition": "Islamic Theology",
+    "tradition": "Nizari Ismaili",
     "type": "Ruler",
     "primaryTitle": "Old Man of the Mountain — Founder of the Nizari Ismaili State",
     "dob": 1050,
@@ -16962,7 +17049,12 @@
     "lat": 36.4641,
     "lng": 50.3896,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Kiya Buzurg-Ummid",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0669",
@@ -18515,7 +18607,16 @@
     "teachers": [
       "Abu'l-Hasan al-Shadhili"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Abu al-Abbas al-Mursi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Various Shadhili branches",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0731",
@@ -19172,7 +19273,7 @@
     "slug": "F0757",
     "famous": "Ibn Tumart",
     "full": "Muhammad ibn Tumart al-Barghatawi al-Sus",
-    "tradition": "Islamic Theology",
+    "tradition": "Almohad",
     "type": "Reformer",
     "primaryTitle": "Al-Mahdi — The Almohad Prophet",
     "dob": 1080,
@@ -19187,7 +19288,12 @@
     "lat": 30.42,
     "lng": -9.58,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Abd al-Mu'min ibn Ali (1st Almohad Caliph)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0758",
@@ -20717,6 +20823,10 @@
       {
         "person": "Sultan Walad",
         "relation": "son"
+      },
+      {
+        "person": "Husameddin Chelebi",
+        "relation": "silsila after"
       }
     ]
   },
@@ -21988,7 +22098,16 @@
     "lat": 35.6,
     "lng": 45.4,
     "teachers": [],
-    "relations": [],
+    "relations": [
+      {
+        "person": "Shah Ghulam Ali",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Sheikh Uthman Siraj al-Din I",
+        "relation": "silsila after"
+      }
+    ],
     "tags": [
       "Mujaddid"
     ]
@@ -23303,7 +23422,16 @@
     "teachers": [
       "Baha-ud-Din Naqshband"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Ya'qub al-Charkhi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Muhammad Zahid",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0917",
@@ -23327,7 +23455,16 @@
       "Ubaydullah Ahrar",
       "Khwaja Ahrar"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Muhammad Khwajagi Amkanagi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Ahmad Sirhindi",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F0918",
@@ -25576,7 +25713,16 @@
     "lat": 34.751,
     "lng": 48.515,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Students of Ala al-Dawla Simnani",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Khwaja Ishaq Khatlani",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1007",
@@ -25662,7 +25808,16 @@
     "teachers": [
       "Ahmad Sirhindi"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Sayyid Nur Muhammad Badayuni",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Shah Ghulam Ali",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1011",
@@ -25794,7 +25949,16 @@
       "Uthman Harwani",
       "Abu Ishaq Shami"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Usman Harooni",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Qutbuddin Bakhtiar Kaki",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1017",
@@ -26467,7 +26631,7 @@
     "slug": "F1042",
     "famous": "Muhammad al-Sanusi",
     "full": "Muḥammad ibn ʿAlī al-Sanūsī al-Khattābī al-Ḥasanī",
-    "tradition": "Shadhiliyya",
+    "tradition": "Sanusiyya",
     "type": "Mystic",
     "primaryTitle": "Founder of the Sanusiyya — Builder of the Libyan Islamic State",
     "dob": 1787,
@@ -26484,7 +26648,16 @@
     "teachers": [
       "Ahmad ibn Idris"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Ahmad ibn Idris",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Muhammad al-Mahdi al-Sanusi (2nd Grand Master)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1043",
@@ -26726,29 +26899,6 @@
     "relations": []
   },
   {
-    "slug": "F1053",
-    "famous": "Muhammad ibn Ali al-Sanusi",
-    "full": "Muhammad ibn Ali ibn Muhammad al-Sanusi",
-    "tradition": "Naqshbandiyya",
-    "type": "Founder",
-    "primaryTitle": "Al-Imam al-Akbar — The Grand Imam",
-    "dob": 1787,
-    "dod": 1859,
-    "dob_s": "1787",
-    "dod_s": "1859",
-    "city": "Mostaganem, Algeria / Libya",
-    "classif": "Scholar / Founder",
-    "lang": "Arabic",
-    "titles": "Al-Imam al-Akbar · Sidi Muhammad Ali",
-    "source": "",
-    "lat": 32.9018,
-    "lng": 13.1806,
-    "teachers": [
-      "Sidi Ahmad ibn Idris"
-    ],
-    "relations": []
-  },
-  {
     "slug": "F1054",
     "famous": "Muhammad ibn Maslama",
     "full": "Muhammad ibn Maslama ibn Khalid al-Ansari al-Awsi al-Harithiyyi",
@@ -26851,6 +27001,14 @@
       {
         "person": "Nana Asma'u",
         "relation": "sibling"
+      },
+      {
+        "person": "Usman dan Fodio",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Abu Bakr Atiku",
+        "relation": "silsila after"
       }
     ]
   },
@@ -27916,7 +28074,12 @@
     "teachers": [
       "Ismail al-Qasri"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Najm al-Din Razi",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1101",
@@ -28041,7 +28204,16 @@
     "teachers": [
       "Nizamuddin Auliya"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Nizamuddin Auliya",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Gesu Daraz",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1106",
@@ -29582,7 +29754,16 @@
     "teachers": [
       "Moinuddin Chishti"
     ],
-    "relations": []
+    "relations": [
+      {
+        "person": "Moinuddin Chishti",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Fariduddin Ganjshakar",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1164",
@@ -32693,7 +32874,16 @@
     "lat": 28.6,
     "lng": 77.2,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Mirza Mazhar Jan-e-Janan",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Khalid al-Baghdadi",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1287",
@@ -32800,7 +32990,7 @@
     "slug": "F1291",
     "famous": "Shah Ni'matullah Wali",
     "full": "Nur al-Din Shah Ni'matullah ibn Abdullah Wali",
-    "tradition": "Naqshbandiyya",
+    "tradition": "Ni'matullahi",
     "type": "Founder",
     "primaryTitle": "Sultan al-Awliya — King of the Saints",
     "dob": 1330,
@@ -32815,7 +33005,12 @@
     "lat": 30.2839,
     "lng": 57.0834,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Khalil Allah (son and successor)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1292",
@@ -33106,6 +33301,10 @@
       {
         "person": "Abu Najib Suhrawardi",
         "relation": "uncle/aunt"
+      },
+      {
+        "person": "Baha-ud-din Zakariya",
+        "relation": "silsila after"
       }
     ]
   },
@@ -33364,7 +33563,16 @@
     "lat": 16.7666,
     "lng": -3.0026,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "Kunta family lineage via Sidi Ahmad al-Bakka'i",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Ahmad al-Bakka'i al-Kunti",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1314",
@@ -34247,6 +34455,14 @@
       {
         "person": "Jalal ad-Din Rumi",
         "relation": "father"
+      },
+      {
+        "person": "Husameddin Chelebi",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Ulu Arif Chelebi",
+        "relation": "silsila after"
       }
     ]
   },
@@ -35794,7 +36010,12 @@
     "lat": 35.5047,
     "lng": 11.0622,
     "teachers": [],
-    "relations": []
+    "relations": [
+      {
+        "person": "al-Qa'im bi-Amr Allah (2nd Fatimid)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1409",
@@ -41138,6 +41359,10 @@
       {
         "person": "Muhammadu Bello",
         "relation": "son"
+      },
+      {
+        "person": "Muhammadu Bello",
+        "relation": "silsila after"
       }
     ],
     "tags": [
@@ -42728,7 +42953,7 @@
     "slug": "F1683",
     "famous": "Zayd ibn Ali",
     "full": "Zayd ibn Ali ibn al-Husayn al-Hashimi",
-    "tradition": "Islamic Jurisprudence",
+    "tradition": "Zaydi",
     "type": "Scholar",
     "primaryTitle": "Imam Zayd — Founder of Zaidi Jurisprudence",
     "dob": 695,
@@ -42750,6 +42975,14 @@
       {
         "person": "Ali ibn al-Husayn",
         "relation": "father"
+      },
+      {
+        "person": "Yahya ibn Zayd",
+        "relation": "silsila after"
+      },
+      {
+        "person": "al-Hadi ila'l-Haqq Yahya (founder Yemeni Zaydi line)",
+        "relation": "silsila after"
       }
     ]
   },
@@ -45390,7 +45623,17 @@
     "teachers": [],
     "students": [],
     "tags": [],
-    "primaryTitle": "Shadhiliyya Mystic of Beni Zarwal"
+    "primaryTitle": "Shadhiliyya Mystic of Beni Zarwal",
+    "relations": [
+      {
+        "person": "Ali al-Jamal",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Muhammad al-Buzidi",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1815",
@@ -45465,7 +45708,17 @@
     ],
     "students": [],
     "tags": [],
-    "primaryTitle": "Kubrawiyya Mystic of Ray"
+    "primaryTitle": "Kubrawiyya Mystic of Ray",
+    "relations": [
+      {
+        "person": "Najm al-Din Kubra",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Ala al-Dawla Simnani",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "slug": "F1819",
@@ -45795,7 +46048,18 @@
     "lat": 40.63,
     "lng": 48.64,
     "lang": "Arabic",
-    "primaryTitle": "Founder of the Khalwatiyya Sufi order"
+    "primaryTitle": "Founder of the Khalwatiyya Sufi order",
+    "slug": "F1829",
+    "relations": [
+      {
+        "person": "Umar al-Khalwati (founder)",
+        "relation": "silsila before"
+      },
+      {
+        "person": "Mustafa al-Bakri",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "famous": "Zaki Naguib Mahmoud",
@@ -46542,7 +46806,7 @@
     "famous": "Arwa al-Sulayhi",
     "full": "Arwa al-Sulayhi",
     "type": "Ruler",
-    "tradition": "Ismaili Thought",
+    "tradition": "Tayyibi Ismaili",
     "dob": 1048,
     "dod": 1138,
     "dob_s": "1048 CE",
@@ -46551,7 +46815,14 @@
     "lat": 13.97,
     "lng": 44.17,
     "lang": "Arabic",
-    "primaryTitle": "Longest-reigning queen of Yemen and Ismaili patron"
+    "primaryTitle": "Longest-reigning queen of Yemen and Ismaili patron",
+    "slug": "F1830",
+    "relations": [
+      {
+        "person": "Syedna Zoeb bin Moosa (1st Da'i al-Mutlaq)",
+        "relation": "silsila after"
+      }
+    ]
   },
   {
     "famous": "Ibn Saud",
@@ -47825,5 +48096,181 @@
     "lng": 62.16,
     "lang": "Arabic",
     "primaryTitle": "Author of al-Ansab, the great dictionary of Arabic genealogical surnames"
+  },
+  {
+    "slug": "F1831",
+    "famous": "Jabir ibn Zayd",
+    "full": "Jabir ibn Zayd al-Azdi al-Basri",
+    "tradition": "Ibadi",
+    "type": "Tabi'un",
+    "primaryTitle": "Theological founder of the Ibadi school",
+    "dob": 642,
+    "dod": 711,
+    "dob_s": "c. 642 CE",
+    "dod_s": "c. 711 CE — Basra",
+    "city": "Basra, Iraq",
+    "classif": "Tabi'un, founder of the Ibadi school of Islamic jurisprudence and theology",
+    "lang": "Arabic",
+    "titles": "Imam of the Ibadis",
+    "source": "https://en.wikipedia.org/wiki/Jabir_ibn_Zayd",
+    "lat": 30.5085,
+    "lng": 47.7804,
+    "teachers": [
+      "Abdullah ibn Abbas",
+      "Aisha bint Abi Bakr"
+    ],
+    "_dobFromDod": false,
+    "relations": [
+      {
+        "person": "Abu Ubaidah Muslim ibn Abi Karima",
+        "relation": "silsila after"
+      }
+    ]
+  },
+  {
+    "slug": "F1832",
+    "famous": "Abu al-Abbas al-Saffah",
+    "full": "Abd Allah ibn Muhammad al-Saffah",
+    "tradition": "Islamic History",
+    "type": "Caliph",
+    "primaryTitle": "1st Abbasid Caliph, founder of the Abbasid Caliphate",
+    "dob": 722,
+    "dod": 754,
+    "dob_s": "c. 722 CE",
+    "dod_s": "754 CE — al-Anbar, Iraq",
+    "city": "Kufa / al-Anbar, Iraq",
+    "classif": "Founder of the Abbasid Caliphate, 1st Abbasid Caliph (r. 750-754)",
+    "lang": "Arabic",
+    "titles": "al-Saffah, Caliph",
+    "source": "https://en.wikipedia.org/wiki/As-Saffah",
+    "lat": 32.032,
+    "lng": 44.4039,
+    "teachers": [],
+    "_dobFromDod": false,
+    "relations": [
+      {
+        "person": "Al-Mansur",
+        "relation": "silsila after"
+      }
+    ]
+  },
+  {
+    "slug": "F1833",
+    "famous": "al-Mustansir II (Cairo)",
+    "full": "Ahmad ibn Muhammad al-Zahir al-Mustansir bi'llah",
+    "tradition": "Islamic History",
+    "type": "Caliph",
+    "primaryTitle": "1st Cairo Shadow Abbasid Caliph",
+    "dob": 1200,
+    "dod": 1261,
+    "dob_s": "c. 1200 CE (estimated)",
+    "dod_s": "1261 CE — killed in battle, Iraq",
+    "city": "Cairo, Egypt",
+    "classif": "1st Cairo Shadow Abbasid Caliph, installed by Baybars in 1261",
+    "lang": "Arabic",
+    "titles": "Caliph",
+    "source": "https://en.wikipedia.org/wiki/Al-Mustansir_II",
+    "lat": 30.0444,
+    "lng": 31.2357,
+    "teachers": [],
+    "_dobFromDod": true,
+    "relations": [
+      {
+        "person": "al-Musta'sim (last Baghdad Abbasid)",
+        "relation": "silsila before"
+      },
+      {
+        "person": "al-Hakim bi-Amr Allah I (2nd Cairo Abbasid)",
+        "relation": "silsila after"
+      }
+    ]
+  },
+  {
+    "slug": "F1834",
+    "famous": "Muhammad Ahmad (the Mahdi)",
+    "full": "Muhammad Ahmad ibn as-Sayyid Abd Allah",
+    "tradition": "Sudanese Mahdiyya",
+    "type": "Founder",
+    "primaryTitle": "Founder of the Sudanese Mahdiyya movement",
+    "dob": 1844,
+    "dod": 1885,
+    "dob_s": "12 August 1844 CE — Labab Island, Dongola, Sudan",
+    "dod_s": "22 June 1885 CE — Omdurman, Sudan",
+    "city": "Omdurman, Sudan",
+    "classif": "Self-proclaimed Mahdi, founder of the Mahdist State of Sudan (1881-1885)",
+    "lang": "Arabic",
+    "titles": "The Mahdi of Sudan",
+    "source": "https://en.wikipedia.org/wiki/Muhammad_Ahmad",
+    "lat": 15.6444,
+    "lng": 32.4779,
+    "teachers": [],
+    "_dobFromDod": false,
+    "relations": [
+      {
+        "person": "Abdallahi ibn Muhammad (the Khalifa)",
+        "relation": "silsila after"
+      }
+    ]
+  },
+  {
+    "slug": "F1835",
+    "famous": "Mirza Ghulam Ahmad",
+    "full": "Mirza Ghulam Ahmad Qadiani",
+    "tradition": "Ahmadiyya",
+    "type": "Founder",
+    "primaryTitle": "Founder of the Ahmadiyya movement",
+    "dob": 1835,
+    "dod": 1908,
+    "dob_s": "13 February 1835 CE — Qadian, Punjab, India",
+    "dod_s": "26 May 1908 CE — Lahore, Punjab",
+    "city": "Qadian, Punjab, India",
+    "classif": "Founder of the Ahmadiyya movement (1889); claimed to be the Promised Messiah and Mahdi",
+    "lang": "Urdu / Arabic / Persian",
+    "titles": "Founder of the Ahmadiyya Muslim Community",
+    "source": "https://en.wikipedia.org/wiki/Mirza_Ghulam_Ahmad",
+    "lat": 31.822,
+    "lng": 75.3787,
+    "teachers": [],
+    "_dobFromDod": false,
+    "relations": [
+      {
+        "person": "Hakeem Noor-ud-Din (1st Caliph of Ahmadiyya)",
+        "relation": "silsila after"
+      }
+    ]
+  },
+  {
+    "slug": "F1836",
+    "famous": "Muhammad Qasim Nanautavi",
+    "full": "Muhammad Qasim ibn Asad Ali al-Nanautawi",
+    "tradition": "Deobandi",
+    "type": "Founder",
+    "primaryTitle": "Co-founder of Darul Uloom Deoband",
+    "dob": 1833,
+    "dod": 1880,
+    "dob_s": "1833 CE — Nanauta, Saharanpur, India",
+    "dod_s": "15 April 1880 CE — Deoband, India",
+    "city": "Deoband, India",
+    "classif": "Co-founder of Darul Uloom Deoband (1866); leading scholar of Deobandi movement",
+    "lang": "Urdu / Arabic / Persian",
+    "titles": "Hujjat al-Islam",
+    "source": "https://en.wikipedia.org/wiki/Muhammad_Qasim_Nanautawi",
+    "lat": 29.6903,
+    "lng": 77.6746,
+    "teachers": [
+      "Mamluk Ali Nanautawi",
+      "Imdadullah Muhajir Makki"
+    ],
+    "_dobFromDod": false,
+    "relations": [
+      {
+        "person": "Rashid Ahmad Gangohi (co-founder Deoband)",
+        "relation": "silsila after"
+      },
+      {
+        "person": "Mahmud Hasan Deobandi (Shaykh al-Hind)",
+        "relation": "silsila after"
+      }
+    ]
   }
 ]
