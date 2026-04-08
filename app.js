@@ -219,7 +219,7 @@ async function _loadChunk(chunk){
   if(_detailLoading[chunk]) return _detailLoading[chunk];
   _detailLoading[chunk]=(async()=>{
     try{
-      const r=await fetch(`data/islamic/details/${chunk}.json`);
+      const r=await fetch(`data/islamic/details/${chunk}.json?v=${Date.now()}`);
       if(!r.ok) throw new Error(r.status);
       const arr=await r.json();
       _detailCache[chunk]=arr;
