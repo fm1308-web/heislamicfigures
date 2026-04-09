@@ -305,15 +305,19 @@ async function boot(){
     const relCount=PEOPLE.reduce((s,p)=>s+(p.teachers?.length||0)+(p.relations?.length||0),0);
     try{document.getElementById('hdrStatRelations').textContent=relCount.toLocaleString();}catch(e){}
 
-    // Count free books across all detail chunks (background)
-    const CHUNKS=['hadith','lineage','philosophy','poets','rulers','sahaba','sahabiyya','scholars','sciences','sufis-early','sufis-orders','tabiun'];
-    let _freeBookCount=0;
-    Promise.all(CHUNKS.map(c=>_loadChunk(c))).then(arrs=>{
-      arrs.forEach(arr=>arr.forEach(rec=>{
-        if(rec.books) rec.books.forEach(b=>{ if(b.url) _freeBookCount++; });
-      }));
-      try{document.getElementById('hdrStatBooks').textContent=_freeBookCount.toLocaleString();}catch(e){}
-    });
+    // Count books from books.json (total + free reads)
+    fetch('data/islamic/books.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
+      if(!window._BOOKS_DATA) window._BOOKS_DATA=d;
+      var books=(d&&d.books)||[];
+      try{document.getElementById('hdrStatBooks').textContent=books.length.toLocaleString();}catch(e){}
+      var freeCount=books.filter(function(b){return b.url&&b.url.length>0;}).length;
+      try{document.getElementById('hdrStatFreeReads').textContent=freeCount.toLocaleString();}catch(e){}
+    }).catch(function(){});
+
+    // Study writers count
+    try{
+      if(typeof _SR_SCHOLARS!=='undefined') document.getElementById('hdrStatStudyWriters').textContent=Object.keys(_SR_SCHOLARS).length.toLocaleString();
+    }catch(e){}
   }
 
   // Sort types and traditions by the earliest DOB of any person in that group
@@ -350,7 +354,7 @@ async function boot(){
 
   try{if(window._ensureWikidata) await window._ensureWikidata();}catch(e){}
   try{if(window._preloadJourneyIndex) await window._preloadJourneyIndex();}catch(e){}
-  try{var _flEl=document.getElementById('hdrStatLives');if(_flEl&&window._journeyFigures)_flEl.textContent=window._journeyFigures.size.toLocaleString();}catch(e){}
+  try{var _flEl=document.getElementById('hdrStatLives');if(_flEl&&window._journeyIndexCount)_flEl.textContent=window._journeyIndexCount.toLocaleString();}catch(e){}
 
   initSlider();
   initCentScrollbar();

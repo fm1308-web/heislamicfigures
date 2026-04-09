@@ -79,11 +79,9 @@ a:hover{text-decoration:underline}
 #hdrRow1Center{justify-self:center;text-align:center;padding:0 20px}
 #hdrRow1Center h1{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:#D4AF37;letter-spacing:.06em;line-height:1;margin:0;white-space:nowrap}
 #hdrRow1Disclosures{justify-self:end;text-align:right}
-#hdrStatsLine1,#hdrStatsLine2,#hdrStatsLine3,
-.hdr-disclosure-line{font-family:'Cinzel',serif;font-size:12px;font-weight:400;color:#C9D2DE;letter-spacing:.04em;line-height:1.5}
+.hdr-info-line{font-family:'Cinzel',serif;font-size:12px;font-weight:400;color:#C9D2DE;letter-spacing:.04em;line-height:1.6}
 .hdr-disclosure-line{font-style:italic;color:#7A8599}
 .hdr-stat-num{color:#D4AF37}
-#hdrStatsLine3{color:#7A8599}
 
 /* ── Tile Nav ── */
 #hdrTileNav{

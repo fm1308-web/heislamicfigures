@@ -1054,7 +1054,7 @@ window._fwGetSelectedSlug = function(){
 
 window._preloadJourneyIndex = function(){
   if(window._journeyFigures) return Promise.resolve(window._journeyFigures);
-  return fetch('data/islamic/journeys/index.json')
+  return fetch('data/islamic/journeys/index.json?v='+Date.now())
     .then(function(r){ return r.json(); })
     .then(function(arr){
       _fwIndex = arr;
@@ -1064,9 +1064,10 @@ window._preloadJourneyIndex = function(){
         if(p && p.slug) set.add(p.slug);
       });
       window._journeyFigures = set;
+      window._journeyIndexCount = arr.length;
       // Update header stat
       var el = document.getElementById('hdrStatLives');
-      if(el) el.textContent = set.size.toLocaleString();
+      if(el) el.textContent = arr.length.toLocaleString();
       return set;
     })
     .catch(function(){ window._journeyFigures = new Set(); return window._journeyFigures; });
@@ -1109,7 +1110,16 @@ window._followShowFigure = function(slug){
   window.setView=function(v){
     _origSV(v);
     if(v==='follow'){
-      if(typeof _showViewDesc==='function') _showViewDesc('Follow a figure through their life');
+      if(typeof _showViewDesc==='function'){
+        var n=window._journeyIndexCount||0;
+        if(n>0){
+          _showViewDesc('');
+          var el=document.getElementById('viewDescInline');
+          if(el) el.innerHTML='Follow <span class="hdr-stat-num">'+n.toLocaleString()+'</span> figures through their life journey';
+        } else {
+          _showViewDesc('Follow figures through their life journey');
+        }
+      }
     }
   };
 })();
