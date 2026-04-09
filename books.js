@@ -8,9 +8,11 @@ const _BV_LEFT_W = 540;
 const _BV_STEM_X = 600;
 
 let _BOOKS_DATA = null;
+var _ANCIENT_DATA = null;
+var _ancientOn = false;
 let _booksInited = false;
 let _booksFilter = { source:new Set(), theme:new Set(), author:new Set(), search:'' };
-let _booksAnim = { playing:false, timer:null };
+let _booksAnim = { mode:'stopped', timer:null, idx:0, rows:null, speedMs:1200, tick:null };
 
 const _BV_TYPE_COLORS = {
   'Prophet':'#D4AF37','Founder':'#b8860b','Sahaba':'#e74c3c','Sahabiyya':'#ff6b6b',
@@ -70,6 +72,19 @@ async function _loadBooksData(){
   }
 }
 
+async function _loadAncientData(){
+  if(_ANCIENT_DATA) return _ANCIENT_DATA;
+  try{
+    const res = await fetch('data/islamic/ancient_books.json?v='+Date.now());
+    _ANCIENT_DATA = await res.json();
+    return _ANCIENT_DATA;
+  }catch(e){
+    console.error('ancient_books.json load failed',e);
+    _ANCIENT_DATA = {topline:{total:0,free:0},books:[]};
+    return _ANCIENT_DATA;
+  }
+}
+
 function _booksEscape(s){
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
@@ -87,12 +102,7 @@ function _booksInjectStyles(){
   const css = `
   #books-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
   #bv-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
-  #bv-anim-wrap{margin-left:auto;display:flex;align-items:center;gap:8px}
-  #bv-anim-year{font-family:'Cinzel',serif;font-size:11px;color:var(--gold,#D4AF37);letter-spacing:.05em;min-width:80px;text-align:center;opacity:0;transition:opacity .3s}
-  #bv-anim-year.live{opacity:1}
-  #bv-anim-speed{background:#1a2330;border:1px solid var(--border2,#2D3748);color:var(--text1,#E4E4E7);font-family:'Source Sans 3',sans-serif;font-size:11px;padding:6px 8px;border-radius:2px;cursor:pointer}
-  #bv-anim-btn{background:none;border:1px solid var(--gold,#D4AF37);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:7px 14px;cursor:pointer;border-radius:2px}
-  #bv-anim-btn:hover{background:rgba(212,175,55,.1)}
+  #bv-anim-mount{margin-left:auto;display:flex;align-items:center;gap:10px}
   .bv-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6)}
   #bv-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
   #bv-canvas{position:relative;width:100%;min-width:1200px}
@@ -113,7 +123,7 @@ function _booksInjectStyles(){
   .bv-row.is-scripture .bv-row-meta{color:rgba(212,175,55,.62);font-style:italic}
   svg.bv-leaves{position:absolute;top:0;left:0;width:100%;z-index:2;overflow:visible}
   svg.bv-leaves g.bv-leaf{cursor:pointer;pointer-events:all}
-  .bv-leaf-label{position:absolute;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.06em;pointer-events:none;white-space:nowrap;text-transform:uppercase;text-shadow:0 0 4px #000;z-index:3}
+  .bv-leaf-label{position:absolute;white-space:nowrap;z-index:4}
   .bv-pinned-scripture{padding:8px 16px 7px;border-bottom:1px solid rgba(212,175,55,.4);margin-bottom:4px}
   `;
   const s=document.createElement('style');
@@ -180,42 +190,69 @@ function _booksBuildCanvas(){
   _booksSyncClearBtn();
   const canvas = document.getElementById('bv-canvas');
   if(!canvas) return;
-  const books = _booksFiltered();
-  if(!books.length){
+  const islamicBooks = _booksFiltered();
+  // Merge ancient books when toggle is on
+  var merged = [];
+  islamicBooks.forEach(function(b){ merged.push({book:b, ancient:false}); });
+  if(_ancientOn && _ANCIENT_DATA && _ANCIENT_DATA.books){
+    _ANCIENT_DATA.books.forEach(function(b){ merged.push({book:b, ancient:true}); });
+  }
+  merged.sort(function(a,b){
+    var ay=a.book.year==null?99999:a.book.year;
+    var by=b.book.year==null?99999:b.book.year;
+    return ay-by;
+  });
+  if(!merged.length){
     canvas.style.height='200px';
     canvas.innerHTML='<div id="bv-empty">NO BOOKS MATCH YOUR FILTERS</div>';
     return;
   }
-  const totalH = _BV_TOP_PAD + books.length * _BV_ROW_H + _BV_BOT_PAD;
+  const totalH = _BV_TOP_PAD + merged.length * _BV_ROW_H + _BV_BOT_PAD;
   canvas.style.height = totalH + 'px';
 
   const rowMap = {};
   let html = '';
   html += '<div id="bv-stem" style="top:'+(_BV_TOP_PAD-10)+'px;height:'+(totalH - _BV_TOP_PAD - _BV_BOT_PAD + 20)+'px"></div>';
 
-  books.forEach((b, idx)=>{
+  merged.forEach(function(entry, idx){
+    var b = entry.book;
+    var isAnc = entry.ancient;
     const y = _BV_TOP_PAD + idx * _BV_ROW_H;
     const midY = y + _BV_ROW_H/2;
     rowMap[b.id] = { y:y, midY:midY, book:b };
 
-    const isScripture = b.is_scripture===true;
-    let metaTxt='';
-    if(isScripture && b.revealed_to) metaTxt='revealed to '+_booksEscape(b.revealed_to);
-    else if(!b.author_hidden) metaTxt=_booksEscape(b.author_name||'');
-    let badgeHtml='';
-    if(b.is_free && b.url) badgeHtml+='<a class="bv-read-btn" href="'+_booksEscape(b.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">READ</a>';
-    if(b.has_study) badgeHtml+='<span class="bv-study-badge">STUDY</span>';
-    const meta = metaTxt+badgeHtml;
-    const nameAttr=_booksEscape(b.author_name||'');
-    const idAttr=_booksEscape(b.id||'');
-    const yearTxt=_booksFmtYear(b.year);
+    if(isAnc){
+      // Ancient book row — muted grey styling
+      var ancMeta = _booksEscape(b.region||'') + ' \u00B7 ' + _booksEscape(b.genre||'');
+      var ancBadge = '';
+      if(b.url) ancBadge = '<a class="bv-read-btn" href="'+_booksEscape(b.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="border-color:#6B7280;color:#A0AEC0;background:rgba(107,114,128,.10)">READ</a>';
+      var yearTxt = _booksFmtYear(b.year);
+      html += '<div class="bv-row bv-row-ancient" data-id="'+_booksEscape(b.id)+'" data-name="" data-year="'+(b.year==null?'':b.year)+'" style="top:'+y+'px;height:'+_BV_ROW_H+'px;width:'+(_BV_LEFT_W-140)+'px">';
+      html += '<div class="bv-row-main"><div class="bv-row-title" style="color:#8B9AAF">'+_booksEscape(b.title)+'</div>';
+      html += '<div class="bv-row-meta" style="color:#6B7280">'+ancMeta+ancBadge+'</div>';
+      html += '</div></div>';
+      html += '<div class="bv-year-chip" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px;background:#2D3748;border-color:#4A5568;color:#A0AEC0">'+yearTxt+'</div>';
+    } else {
+      // Islamic book row — original styling
+      const isScripture = b.is_scripture===true;
+      let metaTxt='';
+      if(isScripture && b.revealed_to) metaTxt='revealed to '+_booksEscape(b.revealed_to);
+      else if(!b.author_hidden) metaTxt=_booksEscape(b.author_name||'');
+      let badgeHtml='';
+      if(b.is_free && b.url) badgeHtml+='<a class="bv-read-btn" href="'+_booksEscape(b.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">READ</a>';
+      if(b.has_study) badgeHtml+='<span class="bv-study-badge">STUDY</span>';
+      const meta = metaTxt+badgeHtml;
+      const nameAttr=_booksEscape(b.author_name||'');
+      const idAttr=_booksEscape(b.id||'');
+      const yearTxt=_booksFmtYear(b.year);
 
-    html += '<div class="bv-row'+(isScripture?' is-scripture':'')+'" data-id="'+idAttr+'" data-name="'+nameAttr+'" data-year="'+(b.year==null?'':b.year)+'" style="top:'+y+'px;height:'+_BV_ROW_H+'px">';
-    html += '<div class="bv-row-main"><div class="bv-row-title">'+_booksEscape(b.title)+'</div>';
-    if(meta) html += '<div class="bv-row-meta">'+meta+'</div>';
-    html += '</div></div>';
+      html += '<div class="bv-row'+(isScripture?' is-scripture':'')+'" data-id="'+idAttr+'" data-name="'+nameAttr+'" data-year="'+(b.year==null?'':b.year)+'" style="top:'+y+'px;height:'+_BV_ROW_H+'px">';
+      html += '<div class="bv-row-main"><div class="bv-row-title">'+_booksEscape(b.title)+'</div>';
+      if(meta) html += '<div class="bv-row-meta">'+meta+'</div>';
+      html += '</div></div>';
 
-    html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
+      html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
+    }
   });
 
   canvas.innerHTML = html;
@@ -223,6 +260,7 @@ function _booksBuildCanvas(){
   canvas.querySelectorAll('.bv-row').forEach(row=>{
     row.addEventListener('click',function(e){
       if(e.target.closest('.bv-read-btn')) return;
+      if(row.classList.contains('bv-row-ancient')) return; // ancients don't jump to timeline
       const name=row.getAttribute('data-name');
       if(!name) return;
       setView('timeline');
@@ -230,7 +268,9 @@ function _booksBuildCanvas(){
     });
   });
 
-  _booksRenderErasStyle(books, rowMap, totalH);
+  // Only pass Islamic books for leaf rendering
+  var islamicOnly = merged.filter(function(e){ return !e.ancient; }).map(function(e){ return e.book; });
+  _booksRenderErasStyle(islamicOnly, rowMap, totalH);
 }
 
 function _bvGetTradColor(b){
@@ -355,14 +395,9 @@ function _booksRenderErasStyle(books, rowMap, totalH){
     g.appendChild(dot2);
     svg.appendChild(g);
 
-    // Label outside leaf — exact ERAS positioning (peakX + 6, midY)
-    var labelLeft = Math.max(peakX + 6, MIN_LEAF_W + xOffset + 6);
-    var extLabel = document.createElement('div');
-    extLabel.className = 'bv-leaf-label';
-    extLabel.setAttribute('data-tag', ld.key);
-    extLabel.style.cssText = 'position:absolute;top:'+midY+'px;left:'+(_BV_STEM_X + labelLeft)+'px;transform:translateY(-50%);white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+ld.color+';text-shadow:0 0 4px #000';
-    extLabel.textContent = ld.key + ' (' + ld.count + ')';
-    canvas.appendChild(extLabel);
+    // Store leaf info for label pass
+    ld._y1 = y1;
+    ld._stemX = stemX;
 
     // Click → filter by this source
     var clickHandler = function(e){
@@ -372,7 +407,6 @@ function _booksRenderErasStyle(books, rowMap, totalH){
       _booksBuildCanvas(); _booksAnimStop();
     };
     g.addEventListener('click', clickHandler);
-    extLabel.addEventListener('click', clickHandler);
 
     // Hover — exact ERAS behavior
     g.addEventListener('mouseenter', function(){
@@ -386,6 +420,64 @@ function _booksRenderErasStyle(books, rowMap, totalH){
   });
 
   canvas.appendChild(svg);
+
+  // ── Leaf labels — always visible, stacked to avoid overlap ──
+  var LABEL_H = 22;
+  var LABEL_LEFT = _BV_STEM_X + 90;
+  var labelInfos = [];
+  leaves.forEach(function(ld){
+    var naturalY = ld._y1 + 6;
+    labelInfos.push({key:ld.key, count:ld.count, color:ld.color, naturalY:naturalY, anchorY:ld._y1, resolvedY:naturalY});
+  });
+  // Sort by natural Y ascending
+  labelInfos.sort(function(a,b){ return a.naturalY - b.naturalY; });
+  // Stack: push down if overlapping previous
+  var lastBottom = -Infinity;
+  labelInfos.forEach(function(li){
+    if(li.resolvedY < lastBottom + 2) li.resolvedY = lastBottom + 2;
+    lastBottom = li.resolvedY + LABEL_H;
+  });
+  // Render labels + connector lines
+  labelInfos.forEach(function(li){
+    // Dashed connector from stem dot at y1 to label left edge
+    var connY = li.anchorY;
+    var connDiv = document.createElement('div');
+    connDiv.style.cssText = 'position:absolute;top:'+connY+'px;left:'+(_BV_STEM_X+2)+'px;width:'+(LABEL_LEFT - _BV_STEM_X - 2)+'px;height:0;border-top:1px dashed rgba('+_bvColorToRgb(li.color)+',0.35);pointer-events:none;z-index:3';
+    // If label was pushed down, draw an L-shaped connector
+    if(Math.abs(li.resolvedY - connY) > 2){
+      // Horizontal part at anchor Y, then vertical drop rendered as label's left border effect
+      var vertDiv = document.createElement('div');
+      vertDiv.style.cssText = 'position:absolute;top:'+Math.min(connY, li.resolvedY + LABEL_H/2)+'px;left:'+(LABEL_LEFT - 1)+'px;width:0;height:'+Math.abs(li.resolvedY + LABEL_H/2 - connY)+'px;border-left:1px dashed rgba('+_bvColorToRgb(li.color)+',0.35);pointer-events:none;z-index:3';
+      canvas.appendChild(vertDiv);
+    }
+    canvas.appendChild(connDiv);
+
+    var extLabel = document.createElement('div');
+    extLabel.className = 'bv-leaf-label';
+    extLabel.setAttribute('data-tag', li.key);
+    extLabel.style.cssText = 'position:absolute;top:'+li.resolvedY+'px;left:'+LABEL_LEFT+'px;white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+li.color+';background:rgba(14,22,33,0.85);padding:2px 8px;border-radius:2px;border:1px solid rgba('+_bvColorToRgb(li.color)+',0.4);z-index:4';
+    extLabel.textContent = li.key + ' (' + li.count + ')';
+    extLabel.addEventListener('click', function(e){
+      e.stopPropagation();
+      _booksFilter.source.clear(); _booksFilter.source.add(li.key);
+      _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'\u2014 SELECT A SOURCE \u2014','sources');
+      _booksBuildCanvas(); _booksAnimStop();
+    });
+    canvas.appendChild(extLabel);
+  });
+}
+
+// Helper: convert hex/rgb color string to "r,g,b" for rgba()
+function _bvColorToRgb(c){
+  if(!c) return '160,174,192';
+  if(c.charAt(0)==='#'){
+    var hex = c.slice(1);
+    if(hex.length===3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    return parseInt(hex.substr(0,2),16)+','+parseInt(hex.substr(2,2),16)+','+parseInt(hex.substr(4,2),16);
+  }
+  var m = c.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+  if(m) return m[1]+','+m[2]+','+m[3];
+  return '160,174,192';
 }
 
 // ── Multi-select checkbox helpers ──
@@ -461,44 +553,62 @@ function _booksSyncClearBtn(){
   btn.classList.toggle('active',!!hasFilter);
 }
 
-function _booksAnimStop(){
-  _booksAnim.playing=false;
-  if(_booksAnim.timer){clearInterval(_booksAnim.timer);_booksAnim.timer=null;}
-  const b=document.getElementById('bv-anim-btn');
-  if(b) b.textContent='▶ ANIMATE';
-  const y=document.getElementById('bv-anim-year');
-  if(y) y.classList.remove('live');
-  document.querySelectorAll('.bv-row.hi').forEach(r=>r.classList.remove('hi'));
-}
-function _booksAnimStart(){
-  const canvas = document.getElementById('bv-canvas');
-  const scroll = document.getElementById('bv-scroll');
+var _booksAnimCtl = null;
+
+function _booksAnimPlay(){
+  var canvas = document.getElementById('bv-canvas');
+  var scroll = document.getElementById('bv-scroll');
   if(!canvas || !scroll) return;
-  const rows = [...canvas.querySelectorAll('.bv-row')].filter(r=>r.getAttribute('data-year')!=='');
+  if(_booksAnim.mode === 'paused' && _booksAnim.rows){
+    // Resume from current idx
+    _booksAnim.mode = 'playing';
+    var yEl = document.getElementById('bv-anim-year');
+    if(yEl) yEl.style.opacity = '1';
+    _booksAnim.timer = setInterval(_booksAnim.tick, _booksAnim.speedMs);
+    return;
+  }
+  // Fresh start
+  var rows = [].slice.call(canvas.querySelectorAll('.bv-row')).filter(function(r){ return r.getAttribute('data-year') !== ''; });
   if(!rows.length) return;
-  _booksAnim.playing=true;
-  let idx=0;
-  const speed = parseInt((document.getElementById('bv-anim-speed')||{}).value||'1200',10);
-  const btn = document.getElementById('bv-anim-btn');
-  if(btn) btn.textContent='⏸ PAUSE';
-  const yEl = document.getElementById('bv-anim-year');
-  if(yEl) yEl.classList.add('live');
-  const tick=()=>{
-    rows.forEach(r=>r.classList.remove('hi'));
-    const row = rows[idx];
-    if(!row){_booksAnimStop();return;}
+  _booksAnim.mode = 'playing';
+  _booksAnim.idx = 0;
+  _booksAnim.rows = rows;
+  _booksAnim.speedMs = _booksAnimCtl ? _booksAnimCtl.getSpeedMs() : 1200;
+  var yEl = document.getElementById('bv-anim-year');
+  if(yEl) yEl.style.opacity = '1';
+  _booksAnim.tick = function(){
+    _booksAnim.rows.forEach(function(r){ r.classList.remove('hi'); });
+    var row = _booksAnim.rows[_booksAnim.idx];
+    if(!row){ _booksAnimStop(); return; }
     row.classList.add('hi');
-    const rowTop = parseFloat(row.style.top) || 0;
+    var rowTop = parseFloat(row.style.top) || 0;
     scroll.scrollTo({top: rowTop - scroll.clientHeight/3, behavior:'smooth'});
-    const yr=row.getAttribute('data-year');
-    if(yEl) yEl.textContent=_booksFmtYear(yr===''?null:parseInt(yr,10));
-    idx++;
-    if(idx>=rows.length){setTimeout(_booksAnimStop,speed);}
+    var yr = row.getAttribute('data-year');
+    var yEl2 = document.getElementById('bv-anim-year');
+    if(yEl2) yEl2.textContent = _booksFmtYear(yr === '' ? null : parseInt(yr,10));
+    _booksAnim.idx++;
+    if(_booksAnim.idx >= _booksAnim.rows.length){ setTimeout(_booksAnimStop, _booksAnim.speedMs); }
   };
-  tick();
-  _booksAnim.timer=setInterval(tick,speed);
+  _booksAnim.tick();
+  _booksAnim.timer = setInterval(_booksAnim.tick, _booksAnim.speedMs);
 }
-function _booksAnimToggle(){ if(_booksAnim.playing) _booksAnimStop(); else _booksAnimStart(); }
+
+function _booksAnimPause(){
+  _booksAnim.mode = 'paused';
+  if(_booksAnim.timer){ clearInterval(_booksAnim.timer); _booksAnim.timer = null; }
+}
+
+function _booksAnimStop(){
+  _booksAnim.mode = 'stopped';
+  if(_booksAnim.timer){ clearInterval(_booksAnim.timer); _booksAnim.timer = null; }
+  _booksAnim.idx = 0;
+  _booksAnim.rows = null;
+  _booksAnim.tick = null;
+  var yEl = document.getElementById('bv-anim-year');
+  if(yEl){ yEl.style.opacity = '0'; yEl.textContent = '\u2014'; }
+  document.querySelectorAll('.bv-row.hi').forEach(function(r){ r.classList.remove('hi'); });
+  if(_booksAnimCtl) _booksAnimCtl.forceStop();
+}
 
 function _booksUpdateTopbar(){
   const line1=document.getElementById('hdrStatsLine1');
@@ -564,12 +674,10 @@ async function initBooks(){
   html+='</div>';
   html+='</div>';
   html+='<button class="bv-clear-all" id="bv-clear-all" title="Clear all filters">\u00D7</button>';
-  html+='<div id="bv-anim-wrap">';
-  html+='<span id="bv-anim-year">—</span>';
-  html+='<select id="bv-anim-speed"><option value="2400">Slow</option><option value="1200" selected>Medium</option><option value="500">Fast</option></select>';
-  html+='<button id="bv-anim-btn">▶ ANIMATE</button>';
+  html+='<button id="bv-ancient-toggle" style="background:transparent;border:1px solid #4A5568;color:#6B7280;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.04em;padding:4px 10px;cursor:pointer;border-radius:2px">+ ANCIENT</button>';
+  html+='<div id="bv-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"><span id="bv-anim-year" style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--gold,#D4AF37);letter-spacing:.05em;min-width:70px;text-align:right;opacity:0;transition:opacity .3s">\u2014</span></div>';
   html+='</div>';
-  html+='</div>';
+  html+='<div id="bv-ancient-banner" style="display:none;padding:8px 16px;background:rgba(139,115,85,0.08);border-bottom:1px solid #4A5568;font-size:12px;color:#A0AEC0;font-style:italic;font-family:\'Inter\',\'Source Sans 3\',system-ui,sans-serif">Ancient texts (pre-610 CE) \u2014 research add-on, not part of the Islamic corpus. 100 books, 85 with free links.</div>';
   html+='<div id="bv-scroll"><div id="bv-canvas"></div></div>';
   view.innerHTML=html;
 
@@ -608,7 +716,34 @@ async function initBooks(){
       if(panel && !panel.contains(e.target) && e.target!==btn) panel.classList.remove('open');
     });
   });
-  document.getElementById('bv-anim-btn').addEventListener('click',_booksAnimToggle);
+  _booksAnimCtl = window.AnimControls.create({
+    mountEl: document.getElementById('bv-anim-mount'),
+    idPrefix: 'bv',
+    initialSpeed: '1x',
+    onPlay: _booksAnimPlay,
+    onPause: _booksAnimPause,
+    onStop: _booksAnimStop,
+    onSpeedChange: function(ms){ _booksAnim.speedMs = ms; if(_booksAnim.timer){ clearInterval(_booksAnim.timer); _booksAnim.timer = setInterval(_booksAnim.tick, ms); } }
+  });
+  document.getElementById('bv-ancient-toggle').addEventListener('click',async function(){
+    _ancientOn=!_ancientOn;
+    var btn=document.getElementById('bv-ancient-toggle');
+    var banner=document.getElementById('bv-ancient-banner');
+    if(_ancientOn){
+      if(!_ANCIENT_DATA) await _loadAncientData();
+      btn.textContent='\u2713 ANCIENT';
+      btn.style.borderColor='#8B7355';
+      btn.style.color='#C9A876';
+      if(banner) banner.style.display='block';
+    } else {
+      btn.textContent='+ ANCIENT';
+      btn.style.borderColor='#4A5568';
+      btn.style.color='#6B7280';
+      if(banner) banner.style.display='none';
+    }
+    _booksBuildCanvas();
+    _booksAnimStop();
+  });
   document.getElementById('bv-clear-all').addEventListener('click',function(){
     _booksFilter.source.clear(); _booksFilter.theme.clear(); _booksFilter.author.clear(); _booksFilter.search='';
     _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'\u2014 SELECT A SOURCE \u2014','sources');

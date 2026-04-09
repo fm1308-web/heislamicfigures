@@ -13,15 +13,17 @@ var BREAK_YR = 570;
 var PRE_RANGE = BREAK_YR - (-4000);
 var POST_RANGE = 2025 - BREAK_YR;
 
-function yearToY(yr){
+var _origYearToY = function(yr){
   if(yr <= BREAK_YR) return TOP_PAD + ((yr + 4000) / PRE_RANGE) * PRE_PX;
   return TOP_PAD + PRE_PX + ((yr - BREAK_YR) / POST_RANGE) * POST_PX;
-}
-function yToYear(y){
+};
+var _origYToYear = function(y){
   var y2 = y - TOP_PAD;
   if(y2 <= PRE_PX) return (y2 / PRE_PX) * PRE_RANGE - 4000;
   return BREAK_YR + ((y2 - PRE_PX) / POST_PX) * POST_RANGE;
-}
+};
+var yearToY = _origYearToY;
+var yToYear = _origYToYear;
 function fmtYr(y){ return y<=0 ? Math.abs(Math.round(y))+' BCE' : Math.round(y)+' CE'; }
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function _erasDod(p){ return (p.dod != null && p.dod > 0) ? p.dod : p.dob + 70; }
@@ -71,6 +73,12 @@ var _nameListEl = null;
 var _leftPanel = null;
 var _dropdown = null;
 var _buildAllNames = null;
+var _activeTotalH = TOTAL_H;
+var _eraBandEls = [];
+var _erasMarkers = [];
+var _erasSvgEl = null;
+var _erasCanvasEl = null;
+var _erasRightPanel = null;
 
 function initEras(){
   if(_inited) return;
@@ -97,6 +105,8 @@ function initEras(){
   _dropdown = null; // replaced by multi-select panels
   var rightPanel = root.querySelector('.eras-right-panel');
   var canvas = root.querySelector('.eras-canvas');
+  _erasRightPanel = rightPanel;
+  _erasCanvasEl = canvas;
 
   // ── Stem line ──
   var stem = document.createElement('div');
@@ -121,6 +131,7 @@ function initEras(){
   adamYrLabel.style.color = 'rgba(212,175,55,.8)';
   adamYrLabel.textContent = '0';
   _leftPanel.appendChild(adamYrLabel);
+  _erasMarkers.push({year:-4000, isAdam:true, dotEl:adamDot, labelEl:adamLabel, yrLabelEl:adamYrLabel});
 
   // ── Muhammad marker ──
   var muhY = yearToY(570);
@@ -140,16 +151,18 @@ function initEras(){
   muhYrLabel.style.color = 'rgba(212,175,55,.8)';
   muhYrLabel.textContent = '570 CE';
   _leftPanel.appendChild(muhYrLabel);
+  _erasMarkers.push({year:570, isAdam:false, dotEl:muhDot, labelEl:muhLabel, yrLabelEl:muhYrLabel});
 
   // ── Era labels + boundary lines + gradient shading (RIGHT panel only) ──
-  var _eraBandEls = [];
+  _eraBandEls = [];
   ERA_BANDS.forEach(function(era){
     var y1 = yearToY(era.start);
     var y2 = yearToY(era.end);
 
     // Gradient shading — subtle colored glow on the right edge
+    var gDiv = null;
     if(era.glow){
-      var gDiv = document.createElement('div');
+      gDiv = document.createElement('div');
       gDiv.className = 'eras-era-glow';
       gDiv.style.top = y1 + 'px';
       gDiv.style.height = (y2 - y1) + 'px';
@@ -172,7 +185,7 @@ function initEras(){
     line.style.top = y1 + 'px';
     rightPanel.appendChild(line);
 
-    _eraBandEls.push({start:era.start, end:era.end, label:label, line:line});
+    _eraBandEls.push({start:era.start, end:era.end, label:label, line:line, glowEl:gDiv});
   });
 
   // ── Build leaf tags dynamically ──
@@ -225,6 +238,7 @@ function initEras(){
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', TOTAL_H);
   rightPanel.appendChild(svg);
+  _erasSvgEl = svg;
 
   var rightW = rightPanel.offsetWidth || 600;
   var maxLeafW = rightW * 0.6;
@@ -318,7 +332,7 @@ function initEras(){
       _selectTag(ld.key, false);
     });
 
-    _leafEls.push({key:ld.key, group:g, path:path, people:ld.people, color:ld.color, count:ld.count, extLabel:extLabel, midY:midY, clipRect:clipRect, y1:y1});
+    _leafEls.push({key:ld.key, field:ld.field, group:g, path:path, people:ld.people, color:ld.color, count:ld.count, extLabel:extLabel, midY:midY, clipRect:clipRect, y1:y1, firstDob:ld.firstDob, lastDod:ld.lastDod, leafW:leafW, peakX:peakX, dot1:dot1, dot2:dot2});
   });
 
   _scrollEl.addEventListener('click', function(e){
@@ -375,7 +389,7 @@ function initEras(){
       _leafEls.forEach(function(le){
         le.extLabel.style.display = '';
         le.group.style.display = '';
-        le.clipRect.setAttribute('height', TOTAL_H.toString());
+        le.clipRect.setAttribute('height', _activeTotalH.toString());
         le.clipRect.setAttribute('y', '0');
       });
       _eraBandEls.forEach(function(eb){
@@ -451,7 +465,7 @@ function _onScroll(){
 }
 
 function _selectTag(tagKey, fromDropdown){
-  if(_animRunning) _stopAnim();
+  if(_erasAnimMode !== 'stopped') _erasAnimStopFull();
   // Legacy single-click on a leaf: toggle that one tag
   if(!fromDropdown){
     if(_selectedTag === tagKey){ _deselectAll(); return; }
@@ -468,16 +482,95 @@ function _selectTag(tagKey, fromDropdown){
   _erasRebuildPanels();
 }
 
+function _erasRelayout(){
+  // Resize SVG and canvas
+  if(_erasSvgEl) _erasSvgEl.setAttribute('height', _activeTotalH);
+  if(_erasCanvasEl) _erasCanvasEl.style.minHeight = _activeTotalH + 'px';
+
+  // Reposition era bands — hide if fully outside compressed canvas
+  _eraBandEls.forEach(function(eb){
+    var y1 = yearToY(eb.start);
+    var y2 = yearToY(eb.end);
+    var bandFullyOutside = (y2 < 0) || (y1 > _activeTotalH);
+    if(bandFullyOutside){
+      if(eb.glowEl) eb.glowEl.style.display = 'none';
+      eb.label.style.display = 'none';
+      eb.line.style.display = 'none';
+      return;
+    }
+    var cy1 = Math.max(0, y1);
+    var cy2 = Math.min(_activeTotalH, y2);
+    if(eb.glowEl){
+      eb.glowEl.style.display = '';
+      eb.glowEl.style.top = cy1 + 'px';
+      eb.glowEl.style.height = (cy2 - cy1) + 'px';
+    }
+    eb.label.style.display = '';
+    eb.label.style.top = (cy1 + 12) + 'px';
+    eb.line.style.display = '';
+    eb.line.style.top = cy1 + 'px';
+  });
+
+  // Reposition markers (Adam, Muhammad) — hide if outside compressed canvas
+  _erasMarkers.forEach(function(m){
+    var y = yearToY(m.year);
+    var outside = (y < 0) || (y > _activeTotalH);
+    if(outside){
+      m.dotEl.style.display = 'none';
+      m.labelEl.style.display = 'none';
+      m.yrLabelEl.style.display = 'none';
+      return;
+    }
+    m.dotEl.style.display = '';
+    m.labelEl.style.display = '';
+    m.yrLabelEl.style.display = '';
+    m.dotEl.style.top = (y - 6.5) + 'px';
+    m.labelEl.style.top = (m.isAdam ? y + 16 : y) + 'px';
+    m.yrLabelEl.style.top = (y - 6) + 'px';
+  });
+
+  // Reposition leaf SVG paths, dots, labels
+  _leafEls.forEach(function(le){
+    var y1 = yearToY(le.firstDob);
+    var y2 = yearToY(le.lastDod);
+    if(y2 - y1 < 10) y2 = y1 + 10;
+    var midY = (y1 + y2) / 2;
+    var stemX = 1;
+    var cp1y = y1 + (midY - y1) * 0.3;
+    var cp2y = y1 + (midY - y1) * 0.7;
+    var cp3y = midY + (y2 - midY) * 0.3;
+    var cp4y = midY + (y2 - midY) * 0.7;
+    var d = 'M ' + stemX + ' ' + y1.toFixed(1) +
+            ' C ' + (stemX + le.leafW * 0.1).toFixed(1) + ' ' + cp1y.toFixed(1) +
+            ', ' + le.peakX.toFixed(1) + ' ' + cp2y.toFixed(1) +
+            ', ' + le.peakX.toFixed(1) + ' ' + midY.toFixed(1) +
+            ' C ' + le.peakX.toFixed(1) + ' ' + cp3y.toFixed(1) +
+            ', ' + (stemX + le.leafW * 0.1).toFixed(1) + ' ' + cp4y.toFixed(1) +
+            ', ' + stemX + ' ' + y2.toFixed(1) + ' Z';
+    le.path.setAttribute('d', d);
+    le.dot1.setAttribute('cy', y1);
+    le.dot2.setAttribute('cy', y2);
+    le.extLabel.style.top = midY + 'px';
+    le.y1 = y1;
+    le.midY = midY;
+    le.clipRect.setAttribute('y', '0');
+    le.clipRect.setAttribute('height', _activeTotalH.toString());
+  });
+}
+
 function _erasApplyFilter(){
   var hasType = _erasSelTypes.size > 0;
   var hasTrad = _erasSelTrads.size > 0;
   var hasAny = hasType || hasTrad;
 
   _leafEls.forEach(function(le){
-    var typeMatch = !hasType || (le.field === 'type' && _erasSelTypes.has(le.key));
-    var tradMatch = !hasTrad || (le.field === 'trad' && _erasSelTrads.has(le.key));
-    // A leaf is visible if it matches the active filters (AND across type/trad)
-    var visible = !hasAny || (le.field === 'type' ? typeMatch : tradMatch);
+    var visible;
+    if(!hasAny){
+      visible = true;
+    } else {
+      visible = (le.field === 'type' && _erasSelTypes.has(le.key)) ||
+                (le.field === 'tradition' && _erasSelTrads.has(le.key));
+    }
     if(visible){
       le.group.classList.remove('eras-leaf-faded');
       le.group.classList.add('eras-leaf-active');
@@ -493,7 +586,40 @@ function _erasApplyFilter(){
     }
   });
 
-  // Build name list from all matching leaves
+  // Canvas compression — shrink to filtered year range
+  if(hasAny){
+    var filteredPeople = [];
+    _leafEls.forEach(function(le){
+      var vis = (le.field === 'type' && _erasSelTypes.has(le.key)) ||
+                (le.field === 'tradition' && _erasSelTrads.has(le.key));
+      if(vis) filteredPeople = filteredPeople.concat(le.people);
+    });
+    if(filteredPeople.length){
+      var minYr = Infinity, maxYr = -Infinity;
+      filteredPeople.forEach(function(p){
+        if(p.dob < minYr) minYr = p.dob;
+        var d = _erasDod(p);
+        if(d > maxYr) maxYr = d;
+      });
+      var pad = Math.max(50, (maxYr - minYr) * 0.1);
+      minYr -= pad; maxYr += pad;
+      var span = maxYr - minYr;
+      var targetH = Math.max(600, Math.min(1100, (window.innerHeight || 900) - 220));
+      var newH = targetH;
+      var usable = newH - TOP_PAD - 80;
+      yearToY = function(yr){ return TOP_PAD + ((yr - minYr) / span) * usable; };
+      yToYear = function(y){ return minYr + ((y - TOP_PAD) / usable) * span; };
+      _activeTotalH = newH;
+      _erasRelayout();
+    }
+  } else {
+    yearToY = _origYearToY;
+    yToYear = _origYToYear;
+    _activeTotalH = TOTAL_H;
+    _erasRelayout();
+  }
+
+  // Build name list from all matching leaves (AFTER compression so yearToY is final)
   if(_nameListEl){
     if(!hasAny){
       _nameListEl.innerHTML = '';
@@ -501,9 +627,9 @@ function _erasApplyFilter(){
     } else {
       var allPeople = [], color = '#D4AF37';
       _leafEls.forEach(function(le){
-        var typeMatch = !hasType || (le.field === 'type' && _erasSelTypes.has(le.key));
-        var tradMatch = !hasTrad || (le.field === 'trad' && _erasSelTrads.has(le.key));
-        if(le.field === 'type' ? typeMatch : tradMatch){
+        var visible = (le.field === 'type' && _erasSelTypes.has(le.key)) ||
+                      (le.field === 'tradition' && _erasSelTrads.has(le.key));
+        if(visible){
           allPeople = allPeople.concat(le.people);
           color = le.color;
         }
@@ -540,7 +666,22 @@ function _erasBuildToolbar(toolbar, typeItems, tradItems){
   h += '<div class="bv-dd-wrap"><button class="bv-dd-btn" id="eras-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
   h += '<div class="bv-dd-panel" id="eras-trad-panel"><input class="bv-dd-search" id="eras-trad-search" placeholder="search traditions\u2026"><div class="bv-dd-scroll" id="eras-trad-scroll"></div></div></div>';
   h += '<button class="bv-clear-all" id="eras-clear-all" title="Clear all filters" style="opacity:.4">\u00D7</button>';
+  h += '<div id="eras-anim-mount" style="margin-left:auto;display:flex;align-items:center"></div>';
   toolbar.innerHTML = h + toolbar.innerHTML;
+
+  // Mount AnimControls pill
+  var erasMount = document.getElementById('eras-anim-mount');
+  if(erasMount && window.AnimControls){
+    _erasAnimCtl = window.AnimControls.create({
+      mountEl: erasMount,
+      idPrefix: 'eras',
+      initialSpeed: '1x',
+      onPlay: _erasAnimPlay,
+      onPause: _erasAnimPause,
+      onStop: _erasAnimStopFull,
+      onSpeedChange: function(ms){ _erasAnimSpeedMs = ms; }
+    });
+  }
 
   _erasRebuildPanels();
 
@@ -671,48 +812,60 @@ function _buildNameList(people, color){
 var _origSetView = window.setView;
 window.setView = function(v){
   // Stop any running animation when leaving a view
-  if(_animRunning) _stopAnim();
+  _erasAnimStopFull();
   if(typeof _mapAnimStop === 'function') _mapAnimStop();
   _origSetView(v);
   var r3 = document.getElementById('hdrRow3');
   if(r3) r3.style.display = v === 'studyroom' ? 'none' : 'flex';
+  // Hide old hdrRow3 anim elements (now replaced by pill in eras-toolbar)
   var ab = document.getElementById('erasAnimateBtn');
-  if(ab) ab.style.display = v === 'eras' ? '' : 'none';
+  if(ab) ab.style.display = 'none';
   var as = document.getElementById('erasAnimSpeed');
-  if(as) as.style.display = v === 'eras' ? '' : 'none';
+  if(as) as.style.display = 'none';
 };
 
-// ── ERAS Animate ──
-var _animTimer = null;
-var _animRunning = false;
+// ── ERAS Animate (pause-aware) ──
+var _erasAnimTimer = null;
+var _erasAnimMode = 'stopped';
+var _erasAnimYr = 500;
+var _erasAnimSpeedMs = 1200;
+var _erasAnimCtl = null;
 var ANIM_FROM = 500, ANIM_TO = 2000, ANIM_STEP = 10;
 
-window.toggleErasAnimate = function(){
-  if(_animRunning){ _stopAnim(); return; }
-  var yr = (typeof activeYear !== 'undefined' && activeYear != null) ? activeYear : ANIM_FROM;
-  if(yr >= ANIM_TO) yr = ANIM_FROM;
-  _animRunning = true;
-  var btn = document.getElementById('erasAnimateBtn');
-  if(btn) btn.textContent = '\u275A\u275A PAUSE';
-  _animNextStep(yr);
-};
-
-function _animNextStep(yr){
-  if(!_animRunning) return;
-  if(yr > ANIM_TO){ _stopAnim(); return; }
-  if(typeof _setSliderYear === 'function') _setSliderYear(yr);
-  var sel = document.getElementById('erasAnimSpeed');
-  var ms = sel ? parseInt(sel.value) || 1200 : 1200;
-  _animTimer = setTimeout(function(){ _animNextStep(yr + ANIM_STEP); }, ms);
+function _erasAnimPlay(){
+  if(_erasAnimMode === 'stopped'){
+    var yr = (typeof activeYear !== 'undefined' && activeYear != null) ? activeYear : ANIM_FROM;
+    if(yr >= ANIM_TO) yr = ANIM_FROM;
+    _erasAnimYr = yr;
+  }
+  _erasAnimMode = 'playing';
+  _erasAnimSpeedMs = _erasAnimCtl ? _erasAnimCtl.getSpeedMs() : 1200;
+  _erasAnimNextStep();
 }
 
-function _stopAnim(){
-  _animRunning = false;
-  if(_animTimer){ clearTimeout(_animTimer); _animTimer = null; }
-  var btn = document.getElementById('erasAnimateBtn');
-  if(btn) btn.textContent = '\u25B6 ANIMATE';
+function _erasAnimPause(){
+  _erasAnimMode = 'paused';
+  if(_erasAnimTimer){ clearTimeout(_erasAnimTimer); _erasAnimTimer = null; }
 }
-window._erasAnimStop = _stopAnim;
+
+function _erasAnimStopFull(){
+  _erasAnimMode = 'stopped';
+  if(_erasAnimTimer){ clearTimeout(_erasAnimTimer); _erasAnimTimer = null; }
+  _erasAnimYr = ANIM_FROM;
+  if(_erasAnimCtl) _erasAnimCtl.forceStop();
+}
+
+function _erasAnimNextStep(){
+  if(_erasAnimMode !== 'playing') return;
+  if(_erasAnimYr > ANIM_TO){ _erasAnimStopFull(); return; }
+  if(typeof _setSliderYear === 'function') _setSliderYear(_erasAnimYr);
+  var yr = _erasAnimYr;
+  _erasAnimYr += ANIM_STEP;
+  _erasAnimTimer = setTimeout(_erasAnimNextStep, _erasAnimSpeedMs);
+}
+
+window._erasAnimStop = _erasAnimStopFull;
+window.toggleErasAnimate = function(){}; // stub for old onclick in index.html
 
 window.initEras = initEras;
 })();

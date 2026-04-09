@@ -24,6 +24,8 @@ var _fwEmpLayer = null;         // empire overlay layer group
 var _fwPlaying = false;
 var _fwTimer = null;
 var _fwSpeed = 1200;
+var _fwAnimCtl = null;
+var _fwTickFn = null;
 
 var _fwDDOpen = false;          // add-figures dropdown open?
 
@@ -141,6 +143,14 @@ function initFollow() {
   if (!_fwInited) {
     _fwBuildDOM(container);
     _fwInited = true;
+    var fwMount = document.getElementById('fw-anim-mount');
+    if(fwMount && window.AnimControls){
+      _fwAnimCtl = window.AnimControls.create({
+        mountEl: fwMount, idPrefix: 'fw', initialSpeed: '1x',
+        onPlay: _fwAnimPlay, onPause: _fwAnimPause, onStop: _fwAnimStopFull,
+        onSpeedChange: function(ms){ _fwSpeed = ms; if(_fwPlaying){ clearInterval(_fwTimer); _fwTimer = setInterval(_fwTickFn, _fwSpeed); } }
+      });
+    }
     window.addEventListener('resize', function() {
       if (VIEW === 'follow' && _fwMap) _fwMap.invalidateSize();
     });
@@ -172,7 +182,6 @@ function initFollow() {
 function _fwBuildDOM(container) {
   container.innerHTML =
     '<div id="fw-topbar">' +
-      '<button id="fw-play-btn" onclick="_fwTogglePlay()" title="Play / Pause">\u25B6</button>' +
       '<div id="fw-scrubber">' +
         '<div id="fw-scrubber-track">' +
           '<div id="fw-scrubber-fill"></div>' +
@@ -185,13 +194,7 @@ function _fwBuildDOM(container) {
           '<span id="fw-scrub-end"></span>' +
         '</div>' +
       '</div>' +
-      '<div id="fw-speed-wrap">' +
-        '<select id="fw-speed-sel" onchange="_fwSetSpeed(this.value)">' +
-          '<option value="2400">Slow</option>' +
-          '<option value="1200" selected>Medium</option>' +
-          '<option value="500">Fast</option>' +
-        '</select>' +
-      '</div>' +
+      '<div id="fw-anim-mount" style="display:flex;align-items:center;margin-left:auto"></div>' +
     '</div>' +
     '<div id="fw-body">' +
       '<div id="fw-left-rail">' +
@@ -399,7 +402,7 @@ function _fwToggleSelection(file) {
   }
   _fwUpdateDDChecks();
   _fwUpdateFollowingList();
-  _fwPause();
+  _fwAnimStopFull();
   _fwYear = null;
   _fwYearIdx = -1;
   _fwRebuild();
@@ -947,17 +950,12 @@ function _fwGoToYear(year) {
 // ═══════════════════════════════════════════════════════════
 // ANIMATION
 // ═══════════════════════════════════════════════════════════
-function _fwTogglePlay() {
-  if (_fwPlaying) _fwPause(); else _fwPlay();
-}
-
-function _fwPlay() {
+function _fwAnimPlay() {
   if (_fwAllYears.length === 0) return;
-  _fwPlaying = true;
-  var btn = document.getElementById('fw-play-btn');
-  if (btn) { btn.textContent = '\u275A\u275A'; btn.title = 'Pause'; }
+  _fwSpeed = _fwAnimCtl ? _fwAnimCtl.getSpeedMs() : 1200;
 
-  if (_fwYearIdx < 0 || _fwYearIdx >= _fwAllYears.length - 1) {
+  if (!_fwTickFn || _fwYearIdx < 0 || _fwYearIdx >= _fwAllYears.length - 1) {
+    // Fresh start — reset markers
     _fwYearIdx = -1;
     _fwYear = null;
     _fwSelectedFiles().forEach(function(file) {
@@ -969,40 +967,47 @@ function _fwPlay() {
       });
     });
   }
+  // else: resume from current _fwYearIdx
 
-  _fwTimer = setInterval(function() {
+  _fwPlaying = true;
+  _fwTickFn = function() {
     var next = _fwYearIdx + 1;
-    if (next >= _fwAllYears.length) { _fwPause(); return; }
+    if (next >= _fwAllYears.length) { _fwAnimStopFull(); return; }
     _fwYearIdx = next;
     _fwGoToYear(_fwAllYears[next]);
-  }, _fwSpeed);
+  };
+  _fwTimer = setInterval(_fwTickFn, _fwSpeed);
 }
 
-function _fwPause() {
+function _fwAnimPause() {
   _fwPlaying = false;
   if (_fwTimer) { clearInterval(_fwTimer); _fwTimer = null; }
-  var btn = document.getElementById('fw-play-btn');
-  if (btn) { btn.textContent = '\u25B6'; btn.title = 'Play'; }
 }
 
-function _fwSetSpeed(val) {
-  _fwSpeed = parseInt(val, 10);
-  if (_fwPlaying) {
-    clearInterval(_fwTimer);
-    _fwTimer = setInterval(function() {
-      var next = _fwYearIdx + 1;
-      if (next >= _fwAllYears.length) { _fwPause(); return; }
-      _fwYearIdx = next;
-      _fwGoToYear(_fwAllYears[next]);
-    }, _fwSpeed);
-  }
+function _fwAnimStopFull() {
+  _fwPlaying = false;
+  if (_fwTimer) { clearInterval(_fwTimer); _fwTimer = null; }
+  _fwYearIdx = -1;
+  _fwYear = null;
+  _fwTickFn = null;
+  if (_fwAnimCtl) _fwAnimCtl.forceStop();
+  // Reveal all markers for selected figures
+  _fwSelectedFiles().forEach(function(file) {
+    (_fwMarkers[file] || []).forEach(function(m) {
+      if (!m._fwVisible) { m.addTo(_fwMap); m._fwVisible = true; }
+    });
+    (_fwLines[file] || []).forEach(function(l) {
+      if (!l._fwVisible) { l.addTo(_fwMap); l._fwVisible = true; }
+    });
+  });
+  _fwUpdateScrubberUI();
 }
 
 // ═══════════════════════════════════════════════════════════
 // CLEANUP
 // ═══════════════════════════════════════════════════════════
 function _fwCleanup() {
-  _fwPause();
+  _fwAnimStopFull();
   document.body.classList.remove('fw-active');
 }
 
@@ -1090,7 +1095,7 @@ window._followShowFigure = function(slug){
     _fwSelected[file] = true;
     _fwUpdateDDChecks();
     _fwUpdateFollowingList();
-    _fwPause();
+    _fwAnimStopFull();
     _fwYear = null;
     _fwYearIdx = -1;
     _fwRebuild();

@@ -2244,3 +2244,11 @@ body.snapshot-mode *{scrollbar-width:none}
 .bv-ck-count{font-size:10px;color:var(--muted,#6B7B8C);flex-shrink:0}
 .bv-clear-all{width:28px;height:28px;background:transparent;border:1px solid var(--border2,#2D3748);border-radius:2px;color:var(--gold,#D4AF37);font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;flex-shrink:0;transition:opacity .15s,border-color .15s}
 .bv-clear-all:hover{border-color:var(--gold,#D4AF37);opacity:1}
+
+/* ── Shared Anim Pill ── */
+.anim-pill{display:inline-flex;align-items:center;gap:0;background:#0E1621;border:1px solid #2D3748;border-radius:20px;padding:3px 4px;font-family:'Cinzel',serif}
+.anim-pill .anim-btn{background:transparent;border:none;color:#D4AF37;width:28px;height:24px;cursor:pointer;font-size:11px;line-height:1;padding:0;display:flex;align-items:center;justify-content:center;border-radius:14px;transition:background .15s}
+.anim-pill .anim-btn:hover:not(:disabled){background:rgba(212,175,55,0.12)}
+.anim-pill .anim-btn:disabled{color:#4A5568;cursor:default}
+.anim-pill .anim-speed{background:transparent;border:none;color:#A0AEC0;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.04em;padding:0 6px;cursor:pointer;outline:none;border-left:1px solid #2D3748;height:22px;margin-left:2px}
+.anim-pill .anim-speed option{background:#0E1621;color:#E4E4E7}

@@ -600,6 +600,7 @@ function applyFilterAndFocus(){
   renderAll(filtered);
   if(VIEW==='silsila') updateSilsilaHighlight();
   if(VIEW==='map') _renderMarkers();
+  if(VIEW==='events' && typeof window._eventsApplySearch === 'function') window._eventsApplySearch();
 }
 
 function setCW(){

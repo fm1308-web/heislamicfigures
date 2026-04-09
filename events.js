@@ -6,9 +6,12 @@
 'use strict';
 
 var _inited = false;
-var _animRunning = false;
-var _animTimer = null;
-var _animIdx = 0;
+var _evAnimMode = 'stopped';
+var _evAnimTimer = null;
+var _evAnimIdx = 0;
+var _evAnimRows = null;
+var _evAnimSpeedMs = 1200;
+var _evAnimCtl = null;
 var _hdrRow3Original = null;
 var _startYear = 500;
 var _endYear = 2025;
@@ -154,12 +157,32 @@ window.setView = function(v){
     }
     _hdrRow3Original=null;
     _evStopAnimate();
+    // Restore search placeholder
+    var box=document.getElementById('search');
+    if(box&&box.dataset.evOrigPh){
+      box.setAttribute('placeholder',box.dataset.evOrigPh);
+      delete box.dataset.evOrigPh;
+    }
   }
   _origSetView(v);
   if(v==='events'&&r3){
     if(_hdrRow3Original===null) _hdrRow3Original=r3.innerHTML;
     r3.innerHTML=_buildHeaderHTML();
     r3.style.display='flex';
+    // Update search placeholder
+    var box=document.getElementById('search');
+    if(box){
+      if(!box.dataset.evOrigPh) box.dataset.evOrigPh=box.getAttribute('placeholder')||'';
+      box.setAttribute('placeholder','Search events\u2026');
+    }
+    var evMount=document.getElementById('ev-anim-mount');
+    if(evMount&&window.AnimControls){
+      _evAnimCtl=window.AnimControls.create({
+        mountEl:evMount, idPrefix:'ev', initialSpeed:'1x',
+        onPlay:_evAnimPlay, onPause:_evAnimPause, onStop:_evStopAnimate,
+        onSpeedChange:function(ms){ _evAnimSpeedMs=ms; }
+      });
+    }
   }
   if(r3&&v==='studyroom') r3.style.display='none';
 };
@@ -189,14 +212,8 @@ function _buildHeaderHTML(){
   h+='<span class="ev-filter-count" id="evFilterCount">showing '+count+' events</span>';
   h+='<span class="ev-filter-count" style="opacity:.5;margin-left:6px">16 centuries \u00B7 500\u20132025 CE</span>';
 
-  // RIGHT: speed + animate
-  h+='<select class="ev-speed-select" id="evSpeedSelect" style="margin-left:auto">';
-  SPEED_OPTIONS.forEach(function(o){
-    var sel=o.label==='Medium'?' selected':'';
-    h+='<option value="'+o.ms+'"'+sel+'>'+o.label+' ('+o.ms/1000+'s)</option>';
-  });
-  h+='</select>';
-  h+='<button class="ev-animate-btn" id="evAnimateBtn" onclick="window._evToggleAnimate()">\u25B6 ANIMATE</button>';
+  // RIGHT: anim pill mount
+  h+='<div id="ev-anim-mount" style="margin-left:auto;display:flex;align-items:center"></div>';
   return h;
 }
 
@@ -326,6 +343,22 @@ function _renderRange(data,startYr,endYr){
   _evStopAnimate();
 
   var filtered=data.filter(function(e){return e.year>=startYr&&e.year<=endYr;});
+  var q = (typeof searchQ !== 'undefined' && searchQ) ? searchQ.toLowerCase().trim() : '';
+  if(q){
+    filtered = filtered.filter(function(e){
+      var hay = [
+        e.title || '',
+        e.description || '',
+        e.outcome || '',
+        (e.tags || []).join(' '),
+        (e.sources || []).join(' '),
+        (e.figures || []).map(function(f){ return typeof f === 'string' ? f : (f && f.name) || ''; }).join(' '),
+        (e.location && e.location.place) || '',
+        (e.location && e.location.modern) || ''
+      ].join(' ').toLowerCase();
+      return hay.indexOf(q) > -1;
+    });
+  }
   filtered.sort(function(a,b){return a.year-b.year||(a.id||'').localeCompare(b.id||'');});
 
   var yearCounts={};
@@ -354,28 +387,46 @@ function _renderRange(data,startYr,endYr){
   cards.forEach(function(c){cardObs.observe(c);});
 }
 
-// ── ANIMATE ──
-window._evToggleAnimate=function(){
-  if(_animRunning){_evStopAnimate();return;}
+window._eventsApplySearch = function(){
+  var data = window.eventsData;
+  if(!data || !data.length) return;
+  _renderRange(data, _startYear, _endYear);
+};
+
+// ── ANIMATE (pause-aware) ──
+function _evAnimPlay(){
   var scrollEl=document.getElementById('evScroll');
   if(!scrollEl) return;
+  if(_evAnimMode==='paused'&&_evAnimRows){
+    // Resume from current idx
+    _evAnimMode='playing';
+    _evAnimSpeedMs=_evAnimCtl?_evAnimCtl.getSpeedMs():1200;
+    _evAnimScheduleNext();
+    return;
+  }
+  // Fresh start
   var rows=scrollEl.querySelectorAll('.ev-row');
   if(!rows.length) return;
+  _evAnimRows=rows;
   rows.forEach(function(r){
     r.classList.add('ev-row-hidden');r.classList.remove('ev-row-reveal');
     var card=r.querySelector('.ev-card');if(card)card.classList.remove('ev-card-visible');
   });
   scrollEl.scrollTop=0;
-  _animRunning=true;_animIdx=0;
-  var btn=document.getElementById('evAnimateBtn');
-  if(btn)btn.textContent='\u25A0 STOP';
-  _animNext(rows);
-};
+  _evAnimMode='playing';_evAnimIdx=0;
+  _evAnimSpeedMs=_evAnimCtl?_evAnimCtl.getSpeedMs():1200;
+  _evAnimScheduleNext();
+}
 
-function _animNext(rows){
-  if(!_animRunning) return;
-  if(_animIdx>=rows.length){_evStopAnimate();return;}
-  var row=rows[_animIdx];
+function _evAnimPause(){
+  _evAnimMode='paused';
+  if(_evAnimTimer){clearTimeout(_evAnimTimer);_evAnimTimer=null;}
+}
+
+function _evAnimScheduleNext(){
+  if(_evAnimMode!=='playing') return;
+  if(_evAnimIdx>=_evAnimRows.length){_evStopAnimate();return;}
+  var row=_evAnimRows[_evAnimIdx];
   var target=row.querySelector('.ev-col-story');
   var scrollEl=document.getElementById('evScroll');
   if(target&&scrollEl){
@@ -384,22 +435,19 @@ function _animNext(rows){
     scrollEl.scrollTo({top:Math.max(0,center),behavior:'smooth'});
   }
   setTimeout(function(){
-    if(!_animRunning) return;
+    if(_evAnimMode!=='playing') return;
     row.classList.remove('ev-row-hidden');row.classList.add('ev-row-reveal');
     var card=row.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
   },200);
-  _animIdx++;
-  var speed=1200;
-  var sel=document.getElementById('evSpeedSelect');
-  if(sel) speed=parseInt(sel.value)||1200;
-  _animTimer=setTimeout(function(){_animNext(rows);},speed);
+  _evAnimIdx++;
+  _evAnimTimer=setTimeout(_evAnimScheduleNext,_evAnimSpeedMs);
 }
 
 function _evStopAnimate(){
-  _animRunning=false;
-  if(_animTimer){clearTimeout(_animTimer);_animTimer=null;}
-  var btn=document.getElementById('evAnimateBtn');
-  if(btn) btn.textContent='\u25B6 ANIMATE';
+  _evAnimMode='stopped';
+  if(_evAnimTimer){clearTimeout(_evAnimTimer);_evAnimTimer=null;}
+  _evAnimIdx=0;_evAnimRows=null;
+  if(_evAnimCtl) _evAnimCtl.forceStop();
   var scrollEl=document.getElementById('evScroll');
   if(scrollEl){
     scrollEl.querySelectorAll('.ev-row').forEach(function(r){

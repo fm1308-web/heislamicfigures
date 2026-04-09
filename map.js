@@ -567,37 +567,62 @@ function _doRenderMap(){
     try{_lMap.fitBounds(L.latLngBounds(pts.map(p=>[p.lat,p.lng])).pad(0.1));}catch(e){}
   }
   setTimeout(()=>{if(_lMap)_lMap.invalidateSize();},300);
+
+  // Mount AnimControls pill (once)
+  if(!_mapAnimCtl){
+    // Hide old controls
+    var oldGroup=document.querySelector('.map-anim-group');
+    if(oldGroup) oldGroup.style.display='none';
+    // Create mount div in toolbar
+    var toolbar=document.getElementById('mapToolbar');
+    if(toolbar&&window.AnimControls){
+      var mount=document.createElement('div');
+      mount.id='map-anim-mount';
+      mount.style.cssText='margin-left:auto;display:flex;align-items:center';
+      toolbar.appendChild(mount);
+      _mapAnimCtl=window.AnimControls.create({
+        mountEl:mount, idPrefix:'map', initialSpeed:'1x',
+        onPlay:_mapAnimPlay, onPause:_mapAnimPause, onStop:_mapAnimStop,
+        onSpeedChange:function(ms){ _mapAnimSpeedMs=ms; }
+      });
+    }
+  }
 }
 
 // ═══════════════════════════════════════════════════════════
 // MAP ANIMATE
 // ═══════════════════════════════════════════════════════════
-let _mapAnimTimer=null, _mapAnimRunning=false;
+let _mapAnimTimer=null, _mapAnimMode='stopped', _mapAnimYr=500, _mapAnimSpeedMs=1200, _mapAnimCtl=null;
 
-function _mapAnimToggle(){
-  if(_mapAnimRunning){_mapAnimStop();return;}
+function _mapAnimPlay(){
   if(typeof _setSliderYear!=='function') return;
-  let yr=activeYear||500;
-  if(yr>=2000) yr=500;
-  _mapAnimRunning=true;
-  const btn=document.getElementById('mapAnimBtn');
-  if(btn) btn.textContent='\u275A\u275A PAUSE';
-  _mapAnimStep(yr);
+  if(_mapAnimMode==='stopped'){
+    let yr=activeYear||500;
+    if(yr>=2000) yr=500;
+    _mapAnimYr=yr;
+  }
+  _mapAnimMode='playing';
+  _mapAnimSpeedMs=_mapAnimCtl?_mapAnimCtl.getSpeedMs():1200;
+  _mapAnimNextStep();
 }
 
-function _mapAnimStep(yr){
-  if(!_mapAnimRunning) return;
-  if(yr>2000){_mapAnimStop();return;}
-  _setSliderYear(yr);
-  const sel=document.getElementById('mapAnimSpeed');
-  const ms=sel?parseInt(sel.value)||1200:1200;
-  _mapAnimTimer=setTimeout(function(){_mapAnimStep(yr+10);},ms);
+function _mapAnimPause(){
+  _mapAnimMode='paused';
+  if(_mapAnimTimer){clearTimeout(_mapAnimTimer);_mapAnimTimer=null;}
+}
+
+function _mapAnimNextStep(){
+  if(_mapAnimMode!=='playing') return;
+  if(_mapAnimYr>2000){_mapAnimStop();return;}
+  _setSliderYear(_mapAnimYr);
+  _mapAnimYr+=10;
+  _mapAnimTimer=setTimeout(_mapAnimNextStep,_mapAnimSpeedMs);
 }
 
 function _mapAnimStop(){
-  _mapAnimRunning=false;
+  _mapAnimMode='stopped';
   if(_mapAnimTimer){clearTimeout(_mapAnimTimer);_mapAnimTimer=null;}
-  const btn=document.getElementById('mapAnimBtn');
-  if(btn) btn.textContent='\u25B6 ANIMATE';
+  _mapAnimYr=500;
+  if(_mapAnimCtl) _mapAnimCtl.forceStop();
 }
 

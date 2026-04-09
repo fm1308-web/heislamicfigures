@@ -115,13 +115,20 @@ function _getActiveSLLanes(){
   return SL_ALL_LANES.filter((lane,li)=>li===0||activeLanes.has(lane));
 }
 
+function _slIsAlive(p, yr){
+  if(yr === null || yr === undefined) return true;
+  var dod = (p.dod !== undefined && p.dod !== null) ? p.dod : p.dob + 60;
+  return p.dob <= yr && dod >= yr;
+}
+
 function renderSilsila(){
   if(!PEOPLE.length)return;
 
   const PL='Prophetic Lineage';
   // Determine which lanes the current filter requires
   const LANES=_getActiveSLLanes();
-  const newKey=LANES.join('\x00');
+  const _slYr = (typeof activeYear !== 'undefined' && activeYear !== null) ? activeYear : null;
+  const newKey=LANES.join('\x00') + '|' + (_slYr !== null ? _slYr : 'all');
 
   if(document.getElementById('silsilaSVG')){
     if(newKey===SL_LANES_KEY){updateSilsilaHighlight();return;}
@@ -167,7 +174,10 @@ function renderSilsila(){
 
   // ── Build grps (lane index → people array) — skip hidden lanes (li = -1) ──
   const grps={};
-  PEOPLE.forEach(p=>{const li=getLI(p);if(li>=0)(grps[li]=grps[li]||[]).push(p);});
+  PEOPLE.forEach(p=>{
+    if(_slYr !== null && !_slIsAlive(p, _slYr)) return;
+    const li=getLI(p);if(li>=0)(grps[li]=grps[li]||[]).push(p);
+  });
 
   // When type/tradition filters are active, restrict non-lineage grps to only matching people
   // Search queries use dimming instead of removing nodes (handled by silsilaSearch)
@@ -600,9 +610,9 @@ function renderSilsila(){
 function updateSilsilaHighlight(){
   const svg=document.getElementById('silsilaSVG'); if(!svg) return;
 
-  // If the filter has changed which lanes should be visible, rebuild the SVG
-  // so that only Lineage + selected lane(s) are shown and layout is compact.
-  const newKey=_getActiveSLLanes().join('\x00');
+  // If the filter or year has changed, rebuild the SVG for compact layout.
+  const _slYr2 = (typeof activeYear !== 'undefined' && activeYear !== null) ? activeYear : null;
+  const newKey=_getActiveSLLanes().join('\x00') + '|' + (_slYr2 !== null ? _slYr2 : 'all');
   if(newKey!==SL_LANES_KEY){
     renderSilsila(); // rebuilds with correct filtered lanes
     return;
