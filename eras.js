@@ -868,4 +868,16 @@ window._erasAnimStop = _erasAnimStopFull;
 window.toggleErasAnimate = function(){}; // stub for old onclick in index.html
 
 window.initEras = initEras;
+
+window._captureState_eras=function(){
+  var scroll=document.querySelector('.eras-scroll');
+  return{types:Array.from(_erasSelTypes),trads:Array.from(_erasSelTrads),scrollY:scroll?scroll.scrollTop:0};
+};
+window._restoreState_eras=function(s){
+  if(!s) return;
+  _erasSelTypes=new Set(s.types||[]);_erasSelTrads=new Set(s.trads||[]);
+  _erasApplyFilter();_erasSyncBtnLabels();_erasRebuildPanels();
+  if(s.scrollY){var scroll=document.querySelector('.eras-scroll');if(scroll) scroll.scrollTop=s.scrollY;}
+};
+
 })();

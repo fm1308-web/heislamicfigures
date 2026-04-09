@@ -460,4 +460,14 @@ function _evStopAnimate(){
 }
 
 window.initEvents=initEvents;
+
+window._captureState_events=function(){
+  var scroll=document.getElementById('evScroll');
+  return{search:typeof searchQ!=='undefined'?searchQ:'',scrollY:scroll?scroll.scrollTop:0};
+};
+window._restoreState_events=function(s){
+  if(!s) return;
+  if(s.scrollY){var scroll=document.getElementById('evScroll');if(scroll) scroll.scrollTop=s.scrollY;}
+};
+
 })();

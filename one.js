@@ -193,6 +193,19 @@ function initOne(){
 }
 window.initOne=initOne;
 
+window._captureState_one=function(){
+  var scroll=document.getElementById('one-main');
+  var slug=_selected&&_selected.length?_selected[0].slug:null;
+  return{figSlug:slug,scrollY:scroll?scroll.scrollTop:0};
+};
+window._restoreState_one=function(s){
+  if(!s||!s.figSlug) return;
+  if(typeof PEOPLE!=='undefined'){
+    var p=PEOPLE.find(function(pp){return pp.slug===s.figSlug;});
+    if(p) setTimeout(function(){window._oneClickName(p.famous);if(s.scrollY){var sc=document.getElementById('one-main');if(sc) sc.scrollTop=s.scrollY;}},100);
+  }
+};
+
 /* ── dropdown builder helper ── */
 function _ddWrap(panelId,label,itemsHtml,clearFn,btnId){
   return '<div class="one-dd-wrap">'+

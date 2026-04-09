@@ -792,6 +792,23 @@ async function initBooks(){
   };
 })();
 
+window._captureState_books=function(){
+  var scroll=document.getElementById('bv-scroll');
+  return{
+    source:Array.from(_booksFilter.source),theme:Array.from(_booksFilter.theme),
+    author:Array.from(_booksFilter.author),search:_booksFilter.search,
+    ancient:_ancientOn,scrollY:scroll?scroll.scrollTop:0
+  };
+};
+window._restoreState_books=function(s){
+  if(!s) return;
+  _booksFilter.source=new Set(s.source||[]);_booksFilter.theme=new Set(s.theme||[]);
+  _booksFilter.author=new Set(s.author||[]);_booksFilter.search=s.search||'';
+  if(s.ancient!==undefined) _ancientOn=s.ancient;
+  _booksBuildCanvas();
+  if(s.scrollY){var scroll=document.getElementById('bv-scroll');if(scroll) scroll.scrollTop=s.scrollY;}
+};
+
 (function(){
   if(typeof window.setView!=='function') return;
   const _origSetView=window.setView;

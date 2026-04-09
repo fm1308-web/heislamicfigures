@@ -163,6 +163,18 @@ let _viewYears={timeline:null,silsila:null,map:null};
 let selTypes=new Set(),selTrads=new Set(),searchQ='';
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
 
+window._captureState_timeline=function(){
+  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear};
+};
+window._restoreState_timeline=function(s){
+  if(!s) return;
+  selTypes=new Set(s.types||[]);selTrads=new Set(s.trads||[]);
+  searchQ=s.search||'';
+  var box=document.getElementById('search');if(box) box.value=searchQ;
+  if(s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
+  syncDD('type');syncDD('trad');applyFilterAndFocus();
+};
+
 // ── Figure history stack (in-app back navigation) ──
 var _figureHistory=[];
 var _figureHistoryMax=20;
@@ -318,6 +330,7 @@ async function boot(){
     try{
       if(typeof _SR_SCHOLARS!=='undefined') document.getElementById('hdrStatStudyWriters').textContent=Object.keys(_SR_SCHOLARS).length.toLocaleString();
     }catch(e){}
+
   }
 
   // Sort types and traditions by the earliest DOB of any person in that group
@@ -786,6 +799,8 @@ function _syncSliderUI(){
 }
 
 function setView(v){
+  // Push to in-app nav history
+  if(typeof window._navPush==='function') window._navPush(v);
   // Save current view's year, restore new view's year
   _viewYears[VIEW]=activeYear;
   activeYear=_viewYears[v]!=null?_viewYears[v]:null;
@@ -801,7 +816,7 @@ function setView(v){
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   document.getElementById('hdrRow4').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
-  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='follow'||v==='talk'){
+  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
   } else {
     ip.style.display=''; ip.style.flex=''; ip.style.minWidth='';
@@ -811,6 +826,8 @@ function setView(v){
   document.getElementById('studyRoomView').classList.toggle('active',v==='studyroom');
   document.getElementById('eras-view').style.display=v==='eras'?'flex':'none';
   document.getElementById('events-view').style.display=v==='events'?'flex':'none';
+  var _tkEl=document.getElementById('think-view');
+  if(_tkEl) _tkEl.style.display=v==='think'?'flex':'none';
   document.getElementById('one-view').style.display=v==='one'?'flex':'none';
   var _fvEl=document.getElementById('follow-view');
   _fvEl.style.display=v==='follow'?'flex':'none';
@@ -819,7 +836,7 @@ function setView(v){
   // Show year controls only on views that use the slider
   const yc=document.getElementById('hdrYearControls');
   if(yc) yc.style.display=(v==='timeline'||v==='silsila'||v==='map'||v==='eras')?'flex':'none';
-  if(v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='follow'||v==='talk'){
+  if(v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'){
     document.getElementById('leftPanel').style.display='none';
     document.getElementById('filterBar').style.display='none';
   }

@@ -971,3 +971,14 @@ window.silsilaSearch=silsilaSearch;
     }
   });
 })();
+
+
+window._captureState_silsila=function(){
+  var m=document.getElementById('silsilaMain');
+  return{scrollY:m?m.scrollTop:0,year:typeof activeYear!=='undefined'?activeYear:null};
+};
+window._restoreState_silsila=function(s){
+  if(!s) return;
+  if(s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
+  if(s.scrollY){var m=document.getElementById('silsilaMain');if(m) m.scrollTop=s.scrollY;}
+};

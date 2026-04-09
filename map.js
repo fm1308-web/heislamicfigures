@@ -626,3 +626,8 @@ function _mapAnimStop(){
   if(_mapAnimCtl) _mapAnimCtl.forceStop();
 }
 
+window._captureState_map=function(){return{year:typeof activeYear!=='undefined'?activeYear:null};};
+window._restoreState_map=function(s){
+  if(s&&s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
+};
+

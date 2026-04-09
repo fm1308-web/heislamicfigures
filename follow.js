@@ -1011,6 +1011,17 @@ function _fwCleanup() {
   document.body.classList.remove('fw-active');
 }
 
+window._captureState_follow=function(){
+  var files=Object.keys(_fwSelected).filter(function(f){return _fwSelected[f];});
+  return{selected:files,yearIdx:_fwYearIdx};
+};
+window._restoreState_follow=function(s){
+  if(!s||!s.selected) return;
+  _fwSelected={};
+  s.selected.forEach(function(f){_fwSelected[f]=true;});
+  if(typeof _fwRebuild==='function') _fwRebuild();
+};
+
 // ═══════════════════════════════════════════════════════════
 // PRELOAD JOURNEY INDEX + GLOBAL EXPOSE
 // ═══════════════════════════════════════════════════════════

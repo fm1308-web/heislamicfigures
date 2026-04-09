@@ -85,10 +85,21 @@ a:hover{text-decoration:underline}
 
 /* ── Tile Nav ── */
 #hdrTileNav{
-  display:grid;grid-template-columns:repeat(10,1fr);gap:4px;
+  display:flex;gap:4px;
   padding:4px;background:#0E1621;
   border-bottom:1px solid #2D3748;
 }
+#hdrTileNav .hdr-tile{flex:1}
+/* Nav back/forward buttons */
+.nav-btn{
+  flex-shrink:0;width:28px;height:auto;
+  background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.25);border-radius:3px;
+  color:#C9D2DE;font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;padding:0;
+}
+.nav-btn:hover:not(:disabled){border-color:#D4AF37;color:#D4AF37;background:rgba(212,175,55,0.15)}
+.nav-btn:disabled{opacity:0.3;cursor:default}
 .hdr-tile{
   padding:10px 4px;text-align:center;
   font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;
@@ -109,6 +120,7 @@ a:hover{text-decoration:underline}
 .hdr-tile-follow{background:#2f3a2a;border-top-color:#6a8a4a}
 .hdr-tile-talk{background:#352a3a;border-top-color:#5a4a8a}
 .hdr-tile-books{background:#3a352a;border-top-color:#D4AF37}
+.hdr-tile-think{background:#2f2a3a;border-top-color:#6a5a8a}
 
 /* ── ROW 2: Slider + Search ── */
 #hdrRow2{
@@ -2272,3 +2284,45 @@ body.snapshot-mode *{scrollbar-width:none}
 .anim-pill .anim-btn:disabled{color:#4A5568;cursor:default}
 .anim-pill .anim-speed{background:transparent;border:none;color:#A0AEC0;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.04em;padding:0 6px;cursor:pointer;outline:none;border-left:1px solid #2D3748;height:22px;margin-left:2px}
 .anim-pill .anim-speed option{background:#0E1621;color:#E4E4E7}
+
+/* ── THINK View ── */
+#think-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
+#think-toolbar{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
+#think-definition{padding:4px 16px 6px;font-size:12px;color:#A0AEC0;font-style:italic;border-bottom:1px solid rgba(45,55,72,0.5)}
+#think-legend{display:flex;gap:14px;padding:4px 16px;border-bottom:1px solid rgba(45,55,72,0.5);flex-wrap:wrap}
+.think-legend-item{display:flex;align-items:center;gap:4px;font-size:10px;font-family:'Cinzel',serif;color:#A0AEC0;letter-spacing:.06em}
+.think-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+#think-canvas-wrap{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
+#think-canvas{position:relative;width:100%}
+.think-empty{display:flex;align-items:center;justify-content:center;min-height:300px;font-family:'Cinzel',serif;font-size:13px;color:#6B7280;letter-spacing:.1em}
+/* Thin gold ruler line — muted, functional */
+.tk-stem{position:absolute;left:500px;width:1px;background:rgba(212,175,55,0.4);pointer-events:none;z-index:1}
+/* Year labels — plain muted text at event positions only */
+.tk-yr-mark{position:absolute;left:480px;transform:translateY(-50%);width:20px;text-align:right;font-family:'Source Sans 3',sans-serif;font-size:9px;color:rgba(212,175,55,0.4);pointer-events:none;white-space:nowrap}
+/* Figure rows (LEFT of stem) — BOOKS bv-row style */
+.tk-fig-row{position:absolute;left:0;width:446px;padding:6px 20px;cursor:pointer;transition:background .12s;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;z-index:4;text-align:right}
+.tk-fig-row:hover{background:rgba(212,175,55,.06)}
+.tk-fig-main{text-align:right}
+.tk-fig-title{font-family:'Crimson Pro','Lato',serif;font-size:14px;color:#E4E4E7;line-height:1.28}
+.tk-fig-title:hover{color:#D4AF37}
+.tk-fig-meta{font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em}
+/* Fixed-position role dot at known X for curve anchoring */
+.tk-role-dot{position:absolute;left:452px;width:8px;height:8px;border-radius:2px;transform:translateY(-50%);z-index:5;pointer-events:none}
+/* Dashed connector name→stem */
+.tk-dash-left{position:absolute;left:460px;width:40px;height:0;border-top:1px dashed rgba(212,175,55,.25);transform:translateY(-0.5px);pointer-events:none;z-index:3}
+/* Book rows (RIGHT of stem) */
+.tk-book-row{position:absolute;left:544px;right:20px;padding:6px 12px;display:flex;align-items:center;gap:6px;z-index:4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tk-book-link{font-family:'Crimson Pro','Lato',serif;font-size:13px;color:#4FD1C5;text-decoration:none;cursor:pointer}
+.tk-book-link:hover{text-decoration:underline;color:#D4AF37}
+.tk-no-yr{color:#6B7280;font-size:10px}
+/* Dashed connector stem→book */
+.tk-dash-right{position:absolute;left:505px;width:39px;height:0;border-top:1px dashed rgba(79,209,197,.25);transform:translateY(-0.5px);pointer-events:none;z-index:3}
+/* Role tag pop-outs (BOOKS leaf-label style) */
+.tk-role-tag{position:absolute;left:548px;transform:translateY(-50%);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;background:rgba(14,22,33,.85);border:1px solid;border-radius:2px;z-index:6;pointer-events:none;white-space:nowrap}
+/* Relation SVG */
+.tk-rel-svg{position:absolute;top:0;left:0;pointer-events:none;z-index:0;overflow:hidden}
+/* Tooltip */
+.think-tooltip{position:fixed;padding:10px 14px;background:rgba(14,22,33,0.95);border:1px solid #D4AF37;border-radius:4px;font-size:12px;color:#E4E4E7;pointer-events:none;z-index:200;max-width:320px;font-family:'Source Sans 3',sans-serif;line-height:1.5}
+.think-tooltip .tt-name{font-family:'Cinzel',serif;font-weight:700;color:#D4AF37;font-size:13px}
+.think-tooltip .tt-role{font-size:11px;text-transform:capitalize;margin-top:2px}
+.think-tooltip .tt-evidence{font-size:11px;color:#A0AEC0;margin-top:4px;font-style:italic}
