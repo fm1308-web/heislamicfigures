@@ -280,89 +280,84 @@ function _dialInit(){
   var dialOffset=0;
   var NS='http://www.w3.org/2000/svg';
 
-  var TILE_TINTS=['#1F2937','#243042','#1A2435','#222C3D','#1D2738'];
-
   function build(){
     var svg=document.getElementById('dialSvg');
     if(!svg) return;
     svg.innerHTML='';
-    svg.setAttribute('viewBox','0 0 800 220');
+    svg.setAttribute('viewBox','0 0 800 280');
     svg.setAttribute('preserveAspectRatio','xMidYMid meet');
 
     var cx=400,cy=110;
     var rOuterX=380,rOuterY=100,rInnerX=200,rInnerY=50;
 
-    // Variable-width segments proportional to label length
-    var weights=VIEWS.map(function(v){return Math.max(6,v.label.length);});
-    var totalWeight=weights.reduce(function(a,b){return a+b;},0);
+    // Outer orbit track
+    var track=document.createElementNS(NS,'ellipse');
+    track.setAttribute('cx',cx2);track.setAttribute('cy',cy2);
+    track.setAttribute('rx',rxO);track.setAttribute('ry',ryO);
+    track.setAttribute('fill','none');track.setAttribute('stroke','#D4AF37');
+    track.setAttribute('stroke-width','1.4');track.setAttribute('stroke-opacity','0.9');
+    track.setAttribute('filter','url(#dialGlow)');
+    svg.appendChild(track);
 
-    var slotAngles=[];
-    var running=0;
+    // Dots, labels, hitboxes
     for(var s=0;s<N;s++){
-      var w=weights[(s+dialOffset)%N];
-      slotAngles.push({start:running,span:(w/totalWeight)*360});
-      running+=(w/totalWeight)*360;
-    }
-    var slot0Center=slotAngles[0].start+slotAngles[0].span/2;
-    var shift=90-slot0Center;
+      var viewIdx=(s+dialOffset)%N;
+      var ang=slotDeg(s);
+      var pt=ptOn(rxO,ryO,ang);
+      var isActive=(s===0);
 
-    function ept(rx,ry,deg){var rad=deg*Math.PI/180;return[cx+rx*Math.cos(rad),cy+ry*Math.sin(rad)];}
+      // Wedge hitbox inner-to-outer
+      var hS=ang-step2/2,hE=ang+step2/2;
+      var hos=ptOn(rxO,ryO,hS),hoe=ptOn(rxO,ryO,hE);
+      var his=ptOn(rxI,ryI,hS),hie=ptOn(rxI,ryI,hE);
+      var hit=document.createElementNS(NS,'path');
+      hit.setAttribute('d','M '+hos.x+' '+hos.y+' A '+rxO+' '+ryO+' 0 0 1 '+hoe.x+' '+hoe.y+' L '+hie.x+' '+hie.y+' A '+rxI+' '+ryI+' 0 0 0 '+his.x+' '+his.y+' Z');
+      hit.setAttribute('fill','transparent');hit.style.cursor='pointer';
+      hit.addEventListener('click',(function(idx){return function(){activate(idx);};})(viewIdx));
+      svg.appendChild(hit);
 
-    for(var s2=0;s2<N;s2++){
-      var viewIdx=(s2+dialOffset)%N;
-      var startDeg=slotAngles[s2].start+shift;
-      var endDeg=startDeg+slotAngles[s2].span;
-      var centerDeg=startDeg+slotAngles[s2].span/2;
+      // Dot
+      var dot=document.createElementNS(NS,'circle');
+      dot.setAttribute('cx',pt.x);dot.setAttribute('cy',pt.y);
+      dot.setAttribute('r',isActive?5:3.5);dot.setAttribute('fill','#FFE380');
+      dot.setAttribute('filter','url(#dialGlow)');dot.style.pointerEvents='none';
+      svg.appendChild(dot);
 
-      var p1o=ept(rOuterX,rOuterY,startDeg),p2o=ept(rOuterX,rOuterY,endDeg);
-      var p1i=ept(rInnerX,rInnerY,endDeg),p2i=ept(rInnerX,rInnerY,startDeg);
-      var la=(slotAngles[s2].span>180)?1:0;
-      var d='M '+p1o[0]+' '+p1o[1]+
-            ' A '+rOuterX+' '+rOuterY+' 0 '+la+' 1 '+p2o[0]+' '+p2o[1]+
-            ' L '+p1i[0]+' '+p1i[1]+
-            ' A '+rInnerX+' '+rInnerY+' 0 '+la+' 0 '+p2i[0]+' '+p2i[1]+' Z';
-
-      var isActive=(s2===0);
-      var tint=TILE_TINTS[viewIdx%TILE_TINTS.length];
-      var path=document.createElementNS(NS,'path');
-      path.setAttribute('d',d);
-      path.setAttribute('fill',isActive?'#D4AF37':tint);
-      path.setAttribute('stroke','#0E1621');
-      path.setAttribute('stroke-width',isActive?'2':'1');
-      path.setAttribute('class','dial-segment');
-      path.dataset.viewKey=VIEWS[viewIdx].key;
-      path.addEventListener('click',(function(idx){return function(){activate(idx);};})(viewIdx));
-      svg.appendChild(path);
-
-      var rLabelX=(rOuterX+rInnerX)/2,rLabelY=(rOuterY+rInnerY)/2;
-      var lp=ept(rLabelX,rLabelY,centerDeg);
+      // Label — inward from track, angle-aware inset
+      var n=outN(ang);
+      var verticalness=Math.abs(n.y);
+      var labelInset=22+verticalness*14;
+      var lx=pt.x-n.x*labelInset,ly=pt.y-n.y*labelInset;
+      var rot=tangDeg(ang);
+      if(rot>90)rot-=180;if(rot<-90)rot+=180;
       var text=document.createElementNS(NS,'text');
-      text.setAttribute('x',lp[0]);
-      text.setAttribute('y',lp[1]+4);
-      text.setAttribute('text-anchor','middle');
+      text.setAttribute('x',lx.toFixed(1));text.setAttribute('y',ly.toFixed(1));
+      text.setAttribute('text-anchor','middle');text.setAttribute('dominant-baseline','middle');
+      text.setAttribute('transform','rotate('+rot.toFixed(1)+' '+lx.toFixed(1)+' '+ly.toFixed(1)+')');
       text.setAttribute('class','dial-label'+(isActive?' active':''));
-      text.textContent=VIEWS[viewIdx].label;
+      text.textContent=VIEWS[viewIdx].label;text.style.pointerEvents='none';
       svg.appendChild(text);
     }
 
     // Inner ellipse
     var disc=document.createElementNS(NS,'ellipse');
-    disc.setAttribute('cx',cx);disc.setAttribute('cy',cy);
-    disc.setAttribute('rx',rInnerX);disc.setAttribute('ry',rInnerY);
-    disc.setAttribute('class','dial-inner-disc');
+    disc.setAttribute('cx',cx2);disc.setAttribute('cy',cy2);
+    disc.setAttribute('rx',rxI);disc.setAttribute('ry',ryI);
+    disc.setAttribute('fill','#1A2332');disc.setAttribute('stroke','#D4AF37');
+    disc.setAttribute('stroke-opacity','0.4');disc.setAttribute('stroke-width','1');
     svg.appendChild(disc);
 
     // Boat icon
     var boat=document.createElementNS(NS,'g');
-    boat.setAttribute('transform','translate('+cx+','+(cy-12)+')');
-    boat.innerHTML='<path d="M -28 6 Q 0 16 28 6 L 25 14 Q 0 22 -25 14 Z" fill="none" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round"/>'+
-      '<line x1="0" y1="-14" x2="0" y2="6" stroke="#D4AF37" stroke-width="1.4"/>'+
-      '<path d="M 0 -12 L 14 -4 L 0 -4 Z" fill="#D4AF37" stroke="none"/>';
+    boat.setAttribute('transform','translate('+cx2+','+(cy2-9)+')');
+    boat.innerHTML='<path d="M -24 0 Q 0 9 24 0 L 21 7 Q 0 14 -21 7 Z" fill="none" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>'+
+      '<line x1="0" y1="-16" x2="0" y2="0" stroke="#D4AF37" stroke-width="1.3"/>'+
+      '<path d="M 0 -14 L 13 -6 L 0 -6 Z" fill="#D4AF37" stroke="none"/>';
     svg.appendChild(boat);
 
     // GOLD ARK wordmark
     var wm=document.createElementNS(NS,'text');
-    wm.setAttribute('x',cx);wm.setAttribute('y',cy+22);
+    wm.setAttribute('x',cx2);wm.setAttribute('y',cy2+20);
     wm.setAttribute('class','dial-logo-text');
     wm.textContent='GOLD ARK';
     svg.appendChild(wm);

@@ -306,3 +306,15 @@ if(document.readyState==='loading'){
 } else {
   _buildStudySidebar();
 }
+
+// Show tagline when entering study view
+(function(){
+  var _origSV=window.setView;
+  if(!_origSV) return;
+  window.setView=function(v){
+    _origSV(v);
+    if(v==='studyroom'){
+      if(typeof _showViewDesc==='function') _showViewDesc('Click on scholars on the left');
+    }
+  };
+})();

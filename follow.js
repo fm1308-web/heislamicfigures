@@ -1101,3 +1101,15 @@ window._followShowFigure = function(slug){
     _fwRebuild();
   });
 };
+
+// Show tagline when entering follow view
+(function(){
+  var _origSV=window.setView;
+  if(!_origSV) return;
+  window.setView=function(v){
+    _origSV(v);
+    if(v==='follow'){
+      if(typeof _showViewDesc==='function') _showViewDesc('Follow a figure through their life');
+    }
+  };
+})();

@@ -157,6 +157,7 @@ window.setView = function(v){
     }
     _hdrRow3Original=null;
     _evStopAnimate();
+    if(typeof _hideViewDesc==='function') _hideViewDesc();
     // Restore search placeholder
     var box=document.getElementById('search');
     if(box&&box.dataset.evOrigPh){
@@ -183,6 +184,7 @@ window.setView = function(v){
         onSpeedChange:function(ms){ _evAnimSpeedMs=ms; }
       });
     }
+    if(typeof _showViewDesc==='function') _showViewDesc('Important historical events');
   }
   if(r3&&v==='studyroom') r3.style.display='none';
 };

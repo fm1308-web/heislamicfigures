@@ -245,3 +245,15 @@ window._talkBack = function(){
 };
 
 })();
+
+// Show tagline when entering talk view
+(function(){
+  var _origSV=window.setView;
+  if(!_origSV) return;
+  window.setView=function(v){
+    _origSV(v);
+    if(v==='talk'){
+      if(typeof _showViewDesc==='function') _showViewDesc('Talk to a scholar (coming soon)');
+    }
+  };
+})();

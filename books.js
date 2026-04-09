@@ -85,6 +85,33 @@ async function _loadAncientData(){
   }
 }
 
+function _showViewDesc(txt){
+  var el=document.getElementById('viewDescInline');
+  if(!el){
+    var row=document.getElementById('hdrRow2');
+    if(!row) return;
+    el=document.createElement('span');
+    el.id='viewDescInline';
+    var sw=document.getElementById('searchWrap');
+    row.insertBefore(el,sw);
+  }
+  el.textContent=txt;
+  el.style.display='inline-block';
+}
+function _hideViewDesc(){
+  var el=document.getElementById('viewDescInline');
+  if(el) el.style.display='none';
+}
+// Auto-hide tagline on every view switch; specific views re-show in their own handlers
+(function(){
+  var _origSV2=window.setView;
+  if(!_origSV2) return;
+  window.setView=function(v){
+    _hideViewDesc();
+    _origSV2(v);
+  };
+})();
+
 function _booksEscape(s){
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
@@ -794,6 +821,7 @@ async function initBooks(){
       bv.style.display='flex';
       bv.style.flexDirection='column';
       initBooks();
+      _showViewDesc('Explore free books');
       if(typeof _resizeShell==='function') setTimeout(_resizeShell, 20);
     } else {
       bv.style.display='none';
