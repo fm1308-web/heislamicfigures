@@ -611,15 +611,18 @@ function _booksAnimStop(){
 }
 
 function _booksUpdateTopbar(){
-  const line1=document.getElementById('hdrStatsLine1');
-  if(!line1) return;
+  var sf=document.getElementById('statFigures');
+  var sb=document.getElementById('statBooks');
+  if(!sf||!sb) return;
   if(typeof VIEW!=='undefined' && VIEW==='books' && _BOOKS_DATA && _BOOKS_DATA.topline){
-    if(!line1.dataset.origHtml) line1.dataset.origHtml=line1.innerHTML;
-    const t=_BOOKS_DATA.topline;
-    line1.innerHTML='<span style="color:var(--gold,#D4AF37);font-weight:600">'+t.total+' Books listed</span> &middot; '+t.free+' free reads &middot; click READ to open &middot; click title for author';
-  } else if(line1.dataset.origHtml){
-    line1.innerHTML=line1.dataset.origHtml;
-    delete line1.dataset.origHtml;
+    if(!sf.dataset.origText) sf.dataset.origText=sf.textContent;
+    if(!sb.dataset.origText) sb.dataset.origText=sb.textContent;
+    var t=_BOOKS_DATA.topline;
+    sf.textContent=t.total+' Books listed';
+    sb.textContent=t.free+' free reads';
+  } else {
+    if(sf.dataset.origText){ sf.textContent=sf.dataset.origText; delete sf.dataset.origText; }
+    if(sb.dataset.origText){ sb.textContent=sb.dataset.origText; delete sb.dataset.origText; }
   }
 }
 

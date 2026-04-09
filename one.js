@@ -571,6 +571,7 @@ async function _renderPerson(p,container){
       });
       tsH+='</div>';
     }
+    tsH+='<div class="one-section-jump"><a href="#silsila" onclick="event.preventDefault();setView(\'silsila\');setTimeout(function(){if(typeof silsilaLocate===\'function\')silsilaLocate(\''+_safe(p.famous)+'\');},300);return false;">View in SILSILA \u2192</a></div>';
     h+=_sec('\uD83D\uDD17','Teachers & Students',teachers.length+studentsOf.length,tsH,false);
   }
 
@@ -606,6 +607,33 @@ async function _renderPerson(p,container){
     h+=_sec('\uD83D\uDCDA','Works & Free Books',p.books.length,bkH,false);
   }
 
+  /* ── SECTION 6b: BOOKS FROM CATALOG (books.json) ── */
+  var _catBooks=[];
+  if(window._BOOKS_DATA&&window._BOOKS_DATA.books&&p.slug){
+    _catBooks=window._BOOKS_DATA.books.filter(function(b){return b.slug===p.slug;});
+  }
+  if(!window._BOOKS_DATA&&p.slug){
+    fetch('data/islamic/books.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
+      window._BOOKS_DATA=d;if(typeof _renderMain==='function')_renderMain();
+    }).catch(function(){});
+  }
+  if(_catBooks.length){
+    var cbH='<div class="one-catalog-list">';
+    _catBooks.forEach(function(b){
+      cbH+='<div class="one-catalog-row">';
+      cbH+='<div class="one-catalog-title">'+_e(b.title)+'</div>';
+      var cmeta=[];
+      if(b.year!=null) cmeta.push(b.year<0?Math.abs(b.year)+' BCE':b.year+' CE');
+      if(b.topics&&b.topics.length) cmeta.push(b.topics.slice(0,3).join(' \u00B7 '));
+      if(cmeta.length) cbH+='<div class="one-catalog-meta">'+_e(cmeta.join(' \u2014 '))+'</div>';
+      if(b.url) cbH+='<a class="one-catalog-link" href="'+_e(b.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">READ \u2197</a>';
+      cbH+='</div>';
+    });
+    cbH+='</div>';
+    cbH+='<div class="one-section-jump"><a href="#books" onclick="event.preventDefault();setView(\'books\');return false;">View in BOOKS \u2192</a></div>';
+    h+=_sec('\uD83D\uDCD6','Books in Catalog',_catBooks.length,cbH,false);
+  }
+
   /* ── SECTION 7: HISTORICAL EVENTS ── */
   var events=(window.eventsData||[]).filter(function(ev){
     if(!ev.figures) return false;
@@ -628,7 +656,24 @@ async function _renderPerson(p,container){
         (ev.description?'<div class="one-ev-desc">'+_e(ev.description)+'</div>':'')+
       '</div>';
     }).join('');
+    evH+='<div class="one-section-jump"><a href="#events" onclick="event.preventDefault();setView(\'events\');return false;">View in EVENTS \u2192</a></div>';
     h+=_sec('\u23F3','Historical Events',events.length,evH,false);
+  }
+
+  /* ── SECTION 7b: LIFE JOURNEY ── */
+  var _hasJourney=false;
+  if(p.slug&&window._journeyFigures&&window._journeyFigures.has(p.slug)) _hasJourney=true;
+  if(!window._journeyFigures&&p.slug){
+    if(typeof window._preloadJourneyIndex==='function'){
+      window._preloadJourneyIndex().then(function(){if(typeof _renderMain==='function')_renderMain();});
+    }
+  }
+  if(_hasJourney){
+    var jH='<div class="one-journey-card">';
+    jH+='<div class="one-journey-text">This figure has a researched life journey with mapped locations and chronological events.</div>';
+    jH+='<a class="one-journey-btn" href="#follow" onclick="event.preventDefault();if(typeof window._followShowFigure===\'function\')window._followShowFigure(\''+_safe(p.slug)+'\');return false;">\u25B6 FOLLOW THEIR LIFE</a>';
+    jH+='</div>';
+    h+=_sec('\uD83D\uDDFA\uFE0F','Life Journey',0,jH,false);
   }
 
   /* ── SECTION 8: CONTEMPORARIES ── */
@@ -658,6 +703,7 @@ async function _renderPerson(p,container){
     mH+='<iframe class="one-map-iframe" src="https://www.openstreetmap.org/export/embed.html?bbox='+
       (p.lng-2)+','+(p.lat-2)+','+(p.lng+2)+','+(p.lat+2)+
       '&layer=mapnik&marker='+p.lat+','+p.lng+'" loading="lazy"></iframe>';
+    mH+='<div class="one-section-jump"><a href="#map" onclick="event.preventDefault();setView(\'map\');return false;">View in MAP \u2192</a></div>';
     h+=_sec('\uD83D\uDCCD','Map & Place',0,mH,false);
   }
 

@@ -268,6 +268,142 @@ async function showMapCardWithDetails(p,cx,cy){
 }
 
 // ═══════════════════════════════════════════════════════════
+// DIAL NAV
+// ═══════════════════════════════════════════════════════════
+function _dialInit(){
+  var VIEWS=[
+    {key:'timeline',label:'TIMELINE'},{key:'silsila',label:'SILSILA'},{key:'map',label:'MAP'},
+    {key:'studyroom',label:'STUDY'},{key:'eras',label:'ERAS'},{key:'events',label:'EVENTS'},
+    {key:'one',label:'ONE'},{key:'follow',label:'FOLLOW'},{key:'talk',label:'TALK'},{key:'books',label:'BOOKS'}
+  ];
+  var N=VIEWS.length;
+  var dialOffset=0;
+  var NS='http://www.w3.org/2000/svg';
+
+  var TILE_TINTS=['#1F2937','#243042','#1A2435','#222C3D','#1D2738'];
+
+  function build(){
+    var svg=document.getElementById('dialSvg');
+    if(!svg) return;
+    svg.innerHTML='';
+    svg.setAttribute('viewBox','0 0 800 220');
+    svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+
+    var cx=400,cy=110;
+    var rOuterX=380,rOuterY=100,rInnerX=200,rInnerY=50;
+
+    // Variable-width segments proportional to label length
+    var weights=VIEWS.map(function(v){return Math.max(6,v.label.length);});
+    var totalWeight=weights.reduce(function(a,b){return a+b;},0);
+
+    var slotAngles=[];
+    var running=0;
+    for(var s=0;s<N;s++){
+      var w=weights[(s+dialOffset)%N];
+      slotAngles.push({start:running,span:(w/totalWeight)*360});
+      running+=(w/totalWeight)*360;
+    }
+    var slot0Center=slotAngles[0].start+slotAngles[0].span/2;
+    var shift=90-slot0Center;
+
+    function ept(rx,ry,deg){var rad=deg*Math.PI/180;return[cx+rx*Math.cos(rad),cy+ry*Math.sin(rad)];}
+
+    for(var s2=0;s2<N;s2++){
+      var viewIdx=(s2+dialOffset)%N;
+      var startDeg=slotAngles[s2].start+shift;
+      var endDeg=startDeg+slotAngles[s2].span;
+      var centerDeg=startDeg+slotAngles[s2].span/2;
+
+      var p1o=ept(rOuterX,rOuterY,startDeg),p2o=ept(rOuterX,rOuterY,endDeg);
+      var p1i=ept(rInnerX,rInnerY,endDeg),p2i=ept(rInnerX,rInnerY,startDeg);
+      var la=(slotAngles[s2].span>180)?1:0;
+      var d='M '+p1o[0]+' '+p1o[1]+
+            ' A '+rOuterX+' '+rOuterY+' 0 '+la+' 1 '+p2o[0]+' '+p2o[1]+
+            ' L '+p1i[0]+' '+p1i[1]+
+            ' A '+rInnerX+' '+rInnerY+' 0 '+la+' 0 '+p2i[0]+' '+p2i[1]+' Z';
+
+      var isActive=(s2===0);
+      var tint=TILE_TINTS[viewIdx%TILE_TINTS.length];
+      var path=document.createElementNS(NS,'path');
+      path.setAttribute('d',d);
+      path.setAttribute('fill',isActive?'#D4AF37':tint);
+      path.setAttribute('stroke','#0E1621');
+      path.setAttribute('stroke-width',isActive?'2':'1');
+      path.setAttribute('class','dial-segment');
+      path.dataset.viewKey=VIEWS[viewIdx].key;
+      path.addEventListener('click',(function(idx){return function(){activate(idx);};})(viewIdx));
+      svg.appendChild(path);
+
+      var rLabelX=(rOuterX+rInnerX)/2,rLabelY=(rOuterY+rInnerY)/2;
+      var lp=ept(rLabelX,rLabelY,centerDeg);
+      var text=document.createElementNS(NS,'text');
+      text.setAttribute('x',lp[0]);
+      text.setAttribute('y',lp[1]+4);
+      text.setAttribute('text-anchor','middle');
+      text.setAttribute('class','dial-label'+(isActive?' active':''));
+      text.textContent=VIEWS[viewIdx].label;
+      svg.appendChild(text);
+    }
+
+    // Inner ellipse
+    var disc=document.createElementNS(NS,'ellipse');
+    disc.setAttribute('cx',cx);disc.setAttribute('cy',cy);
+    disc.setAttribute('rx',rInnerX);disc.setAttribute('ry',rInnerY);
+    disc.setAttribute('class','dial-inner-disc');
+    svg.appendChild(disc);
+
+    // Boat icon
+    var boat=document.createElementNS(NS,'g');
+    boat.setAttribute('transform','translate('+cx+','+(cy-12)+')');
+    boat.innerHTML='<path d="M -28 6 Q 0 16 28 6 L 25 14 Q 0 22 -25 14 Z" fill="none" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round"/>'+
+      '<line x1="0" y1="-14" x2="0" y2="6" stroke="#D4AF37" stroke-width="1.4"/>'+
+      '<path d="M 0 -12 L 14 -4 L 0 -4 Z" fill="#D4AF37" stroke="none"/>';
+    svg.appendChild(boat);
+
+    // GOLD ARK wordmark
+    var wm=document.createElementNS(NS,'text');
+    wm.setAttribute('x',cx);wm.setAttribute('y',cy+22);
+    wm.setAttribute('class','dial-logo-text');
+    wm.textContent='GOLD ARK';
+    svg.appendChild(wm);
+  }
+
+  function activate(viewIndex){
+    dialOffset=viewIndex;
+    build();
+    setView(VIEWS[viewIndex].key);
+  }
+
+  window._dialSyncToView=function(viewKey){
+    var idx=VIEWS.findIndex(function(v){return v.key===viewKey;});
+    if(idx>=0&&idx!==dialOffset){dialOffset=idx;build();}
+  };
+
+  // Scroll arrows flanking the dial
+  var center=document.getElementById('hdrDialCenter');
+  ['dialArrowL','dialArrowR'].forEach(function(id){var el=document.getElementById(id);if(el&&el.parentElement!==center)el.remove();});
+  if(center&&!document.getElementById('dialArrowL')){
+    center.style.position='relative';
+    var aL=document.createElement('button');
+    aL.id='dialArrowL';aL.className='dial-arrow dial-arrow-left';
+    aL.setAttribute('aria-label','Previous view');
+    aL.innerHTML='<svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 10,16 20,26"/><polyline points="26,6 16,16 26,26"/></svg>';
+    aL.addEventListener('click',function(){activate((dialOffset-1+N)%N);});
+    center.appendChild(aL);
+    var aR=document.createElement('button');
+    aR.id='dialArrowR';aR.className='dial-arrow dial-arrow-right';
+    aR.setAttribute('aria-label','Next view');
+    aR.innerHTML='<svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,6 22,16 12,26"/><polyline points="6,6 16,16 6,26"/></svg>';
+    aR.addEventListener('click',function(){activate((dialOffset+1)%N);});
+    center.appendChild(aR);
+  }
+
+  build();
+  var cur=(typeof VIEW!=='undefined')?VIEW:'timeline';
+  window._dialSyncToView(cur);
+}
+
+// ═══════════════════════════════════════════════════════════
 // BOOT
 // ═══════════════════════════════════════════════════════════
 async function boot(){
@@ -341,6 +477,8 @@ async function boot(){
   updateCentHeaders();
   updateCentScrollbar();
   renderAll();
+
+  _dialInit();
   _updateFavFilterBtn();
   // If silsila tab was already active (e.g. URL hash loaded) trigger render now
   if(VIEW==='silsila') renderSilsila();
@@ -794,9 +932,9 @@ function setView(v){
   _fvEl.style.display=v==='follow'?'flex':'none';
   if(v==='follow') _fvEl.style.flexDirection='column';
   document.getElementById('talk-view').style.display=v==='talk'?'flex':'none';
-  // Hide slider row in study view, show in all others
-  const r3=document.getElementById('hdrRow3');
-  if(r3) r3.style.display=(v==='studyroom'||v==='one'||v==='follow'||v==='talk')?'none':'flex';
+  // Show year controls only on views that use the slider
+  const yc=document.getElementById('hdrYearControls');
+  if(yc) yc.style.display=(v==='timeline'||v==='silsila'||v==='map'||v==='eras')?'flex':'none';
   if(v==='studyroom'||v==='eras'||v==='events'||v==='one'||v==='follow'||v==='talk'){
     document.getElementById('leftPanel').style.display='none';
     document.getElementById('filterBar').style.display='none';
@@ -813,18 +951,11 @@ function setView(v){
   if(v!=='follow'&&typeof _fwCleanup==='function') _fwCleanup();
   if(v==='talk'&&typeof initTalk==='function') initTalk();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
-  // Final override: guarantee hdrRow3 hidden on follow, restored otherwise
-  if (v === 'follow') {
-    var _r3 = document.getElementById('hdrRow3');
-    if (_r3) _r3.style.setProperty('display', 'none', 'important');
-  } else {
-    var _r3 = document.getElementById('hdrRow3');
-    if (_r3) _r3.style.removeProperty('display');
-  }
   // Push browser history on view change
   if(!window._popstateInProgress){
     history.pushState({view:v},'','#'+v);
   }
+  if(typeof window._dialSyncToView==='function') window._dialSyncToView(v);
 }
 
 // ═══════════════════════════════════════════════════════════
