@@ -287,8 +287,41 @@ function _dialInit(){
     svg.setAttribute('viewBox','0 0 800 280');
     svg.setAttribute('preserveAspectRatio','xMidYMid meet');
 
-    var cx=400,cy=110;
-    var rOuterX=380,rOuterY=100,rInnerX=200,rInnerY=50;
+    var defs=document.createElementNS(NS,'defs');
+    defs.innerHTML=
+      '<filter id="dialGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
+      '<radialGradient id="dialActiveFan" cx="50%" cy="100%" r="90%"><stop offset="0%" stop-color="#FFE380" stop-opacity="0.95"/><stop offset="60%" stop-color="#D4AF37" stop-opacity="0.6"/><stop offset="100%" stop-color="#D4AF37" stop-opacity="0.2"/></radialGradient>';
+    svg.appendChild(defs);
+
+    var cx2=400,cy2=140;
+    var rxO=320,ryO=100,rxI=125,ryI=38;
+    var step2=360/N;
+
+    function slotDeg(s){return 90+s*step2;}
+    function ptOn(rx,ry,deg){var rad=deg*Math.PI/180;return{x:cx2+rx*Math.cos(rad),y:cy2+ry*Math.sin(rad)};}
+    function tangDeg(deg){var rad=deg*Math.PI/180;return Math.atan2(ryO*Math.cos(rad),-rxO*Math.sin(rad))*180/Math.PI;}
+    function outN(deg){var rad=deg*Math.PI/180;var nx=Math.cos(rad)/rxO;var ny=Math.sin(rad)/ryO;var len=Math.sqrt(nx*nx+ny*ny);return{x:nx/len,y:ny/len};}
+
+    // Active wedge — annulus sector for slot 0
+    var aS0=slotDeg(0)-step2/2,aE0=slotDeg(0)+step2/2;
+    var os0=ptOn(rxO,ryO,aS0),oe0=ptOn(rxO,ryO,aE0);
+    var is0=ptOn(rxI,ryI,aS0),ie0=ptOn(rxI,ryI,aE0);
+    var wedge=document.createElementNS(NS,'path');
+    wedge.setAttribute('d','M '+os0.x+' '+os0.y+' A '+rxO+' '+ryO+' 0 0 1 '+oe0.x+' '+oe0.y+' L '+ie0.x+' '+ie0.y+' A '+rxI+' '+ryI+' 0 0 0 '+is0.x+' '+is0.y+' Z');
+    wedge.setAttribute('fill','url(#dialActiveFan)');
+    svg.appendChild(wedge);
+
+    // Spokes between inner and outer for inactive slot boundaries
+    for(var sp=0;sp<N;sp++){
+      if(sp===0) continue;
+      var sDeg=slotDeg(sp)-step2/2;
+      var sO=ptOn(rxO,ryO,sDeg),sI=ptOn(rxI,ryI,sDeg);
+      var ln=document.createElementNS(NS,'line');
+      ln.setAttribute('x1',sI.x);ln.setAttribute('y1',sI.y);
+      ln.setAttribute('x2',sO.x);ln.setAttribute('y2',sO.y);
+      ln.setAttribute('stroke','#D4AF37');ln.setAttribute('stroke-opacity','0.3');ln.setAttribute('stroke-width','0.8');
+      svg.appendChild(ln);
+    }
 
     // Outer orbit track
     var track=document.createElementNS(NS,'ellipse');
