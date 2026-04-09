@@ -1065,8 +1065,8 @@ window._preloadJourneyIndex = function(){
       });
       window._journeyFigures = set;
       // Update header stat
-      var el = document.getElementById('statFollowLives');
-      if(el) el.textContent = 'Follow ' + set.size + ' Lives';
+      var el = document.getElementById('hdrStatLives');
+      if(el) el.textContent = set.size.toLocaleString();
       return set;
     })
     .catch(function(){ window._journeyFigures = new Set(); return window._journeyFigures; });

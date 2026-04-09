@@ -638,18 +638,22 @@ function _booksAnimStop(){
 }
 
 function _booksUpdateTopbar(){
+  var sfn=document.getElementById('hdrStatFigures');
+  var sbn=document.getElementById('hdrStatBooks');
   var sf=document.getElementById('statFigures');
   var sb=document.getElementById('statBooks');
-  if(!sf||!sb) return;
+  if(!sf||!sb||!sfn||!sbn) return;
   if(typeof VIEW!=='undefined' && VIEW==='books' && _BOOKS_DATA && _BOOKS_DATA.topline){
-    if(!sf.dataset.origText) sf.dataset.origText=sf.textContent;
-    if(!sb.dataset.origText) sb.dataset.origText=sb.textContent;
+    if(!sf.dataset.origLabel) sf.dataset.origLabel=sf.lastChild.textContent;
+    if(!sb.dataset.origLabel) sb.dataset.origLabel=sb.lastChild.textContent;
     var t=_BOOKS_DATA.topline;
-    sf.textContent=t.total+' Books listed';
-    sb.textContent=t.free+' free reads';
+    sfn.textContent=t.total.toLocaleString();
+    sf.lastChild.textContent=' Books listed';
+    sbn.textContent=t.free.toLocaleString();
+    sb.lastChild.textContent=' free reads';
   } else {
-    if(sf.dataset.origText){ sf.textContent=sf.dataset.origText; delete sf.dataset.origText; }
-    if(sb.dataset.origText){ sb.textContent=sb.dataset.origText; delete sb.dataset.origText; }
+    if(sf.dataset.origLabel){ sf.lastChild.textContent=sf.dataset.origLabel; delete sf.dataset.origLabel; }
+    if(sb.dataset.origLabel){ sb.lastChild.textContent=sb.dataset.origLabel; delete sb.dataset.origLabel; }
   }
 }
 

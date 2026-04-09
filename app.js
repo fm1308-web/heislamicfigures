@@ -268,168 +268,21 @@ async function showMapCardWithDetails(p,cx,cy){
 }
 
 // ═══════════════════════════════════════════════════════════
-// DIAL NAV
+// TILE NAV
 // ═══════════════════════════════════════════════════════════
-function _dialInit(){
-  var VIEWS=[
-    {key:'timeline',label:'TIMELINE'},{key:'silsila',label:'SILSILA'},{key:'map',label:'MAP'},
-    {key:'studyroom',label:'STUDY'},{key:'eras',label:'ERAS'},{key:'events',label:'EVENTS'},
-    {key:'one',label:'ONE'},{key:'follow',label:'FOLLOW'},{key:'talk',label:'TALK'},{key:'books',label:'BOOKS'}
-  ];
-  var N=VIEWS.length;
-  var dialOffset=0;
-  var NS='http://www.w3.org/2000/svg';
-
-  function build(){
-    var svg=document.getElementById('dialSvg');
-    if(!svg) return;
-    svg.innerHTML='';
-    svg.setAttribute('viewBox','0 0 800 280');
-    svg.setAttribute('preserveAspectRatio','xMidYMid meet');
-
-    var defs=document.createElementNS(NS,'defs');
-    defs.innerHTML=
-      '<filter id="dialGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'+
-      '<radialGradient id="dialActiveFan" cx="50%" cy="100%" r="90%"><stop offset="0%" stop-color="#FFE380" stop-opacity="0.95"/><stop offset="60%" stop-color="#D4AF37" stop-opacity="0.6"/><stop offset="100%" stop-color="#D4AF37" stop-opacity="0.2"/></radialGradient>';
-    svg.appendChild(defs);
-
-    var cx2=400,cy2=140;
-    var rxO=320,ryO=100,rxI=125,ryI=38;
-    var step2=360/N;
-
-    function slotDeg(s){return 90+s*step2;}
-    function ptOn(rx,ry,deg){var rad=deg*Math.PI/180;return{x:cx2+rx*Math.cos(rad),y:cy2+ry*Math.sin(rad)};}
-    function tangDeg(deg){var rad=deg*Math.PI/180;return Math.atan2(ryO*Math.cos(rad),-rxO*Math.sin(rad))*180/Math.PI;}
-    function outN(deg){var rad=deg*Math.PI/180;var nx=Math.cos(rad)/rxO;var ny=Math.sin(rad)/ryO;var len=Math.sqrt(nx*nx+ny*ny);return{x:nx/len,y:ny/len};}
-
-    // Active wedge — annulus sector for slot 0
-    var aS0=slotDeg(0)-step2/2,aE0=slotDeg(0)+step2/2;
-    var os0=ptOn(rxO,ryO,aS0),oe0=ptOn(rxO,ryO,aE0);
-    var is0=ptOn(rxI,ryI,aS0),ie0=ptOn(rxI,ryI,aE0);
-    var wedge=document.createElementNS(NS,'path');
-    wedge.setAttribute('d','M '+os0.x+' '+os0.y+' A '+rxO+' '+ryO+' 0 0 1 '+oe0.x+' '+oe0.y+' L '+ie0.x+' '+ie0.y+' A '+rxI+' '+ryI+' 0 0 0 '+is0.x+' '+is0.y+' Z');
-    wedge.setAttribute('fill','url(#dialActiveFan)');
-    svg.appendChild(wedge);
-
-    // Spokes between inner and outer for inactive slot boundaries
-    for(var sp=0;sp<N;sp++){
-      if(sp===0) continue;
-      var sDeg=slotDeg(sp)-step2/2;
-      var sO=ptOn(rxO,ryO,sDeg),sI=ptOn(rxI,ryI,sDeg);
-      var ln=document.createElementNS(NS,'line');
-      ln.setAttribute('x1',sI.x);ln.setAttribute('y1',sI.y);
-      ln.setAttribute('x2',sO.x);ln.setAttribute('y2',sO.y);
-      ln.setAttribute('stroke','#D4AF37');ln.setAttribute('stroke-opacity','0.3');ln.setAttribute('stroke-width','0.8');
-      svg.appendChild(ln);
-    }
-
-    // Outer orbit track
-    var track=document.createElementNS(NS,'ellipse');
-    track.setAttribute('cx',cx2);track.setAttribute('cy',cy2);
-    track.setAttribute('rx',rxO);track.setAttribute('ry',ryO);
-    track.setAttribute('fill','none');track.setAttribute('stroke','#D4AF37');
-    track.setAttribute('stroke-width','1.4');track.setAttribute('stroke-opacity','0.9');
-    track.setAttribute('filter','url(#dialGlow)');
-    svg.appendChild(track);
-
-    // Dots, labels, hitboxes
-    for(var s=0;s<N;s++){
-      var viewIdx=(s+dialOffset)%N;
-      var ang=slotDeg(s);
-      var pt=ptOn(rxO,ryO,ang);
-      var isActive=(s===0);
-
-      // Wedge hitbox inner-to-outer
-      var hS=ang-step2/2,hE=ang+step2/2;
-      var hos=ptOn(rxO,ryO,hS),hoe=ptOn(rxO,ryO,hE);
-      var his=ptOn(rxI,ryI,hS),hie=ptOn(rxI,ryI,hE);
-      var hit=document.createElementNS(NS,'path');
-      hit.setAttribute('d','M '+hos.x+' '+hos.y+' A '+rxO+' '+ryO+' 0 0 1 '+hoe.x+' '+hoe.y+' L '+hie.x+' '+hie.y+' A '+rxI+' '+ryI+' 0 0 0 '+his.x+' '+his.y+' Z');
-      hit.setAttribute('fill','transparent');hit.style.cursor='pointer';
-      hit.addEventListener('click',(function(idx){return function(){activate(idx);};})(viewIdx));
-      svg.appendChild(hit);
-
-      // Dot
-      var dot=document.createElementNS(NS,'circle');
-      dot.setAttribute('cx',pt.x);dot.setAttribute('cy',pt.y);
-      dot.setAttribute('r',isActive?5:3.5);dot.setAttribute('fill','#FFE380');
-      dot.setAttribute('filter','url(#dialGlow)');dot.style.pointerEvents='none';
-      svg.appendChild(dot);
-
-      // Label — inward from track, angle-aware inset
-      var n=outN(ang);
-      var verticalness=Math.abs(n.y);
-      var labelInset=22+verticalness*14;
-      var lx=pt.x-n.x*labelInset,ly=pt.y-n.y*labelInset;
-      var rot=tangDeg(ang);
-      if(rot>90)rot-=180;if(rot<-90)rot+=180;
-      var text=document.createElementNS(NS,'text');
-      text.setAttribute('x',lx.toFixed(1));text.setAttribute('y',ly.toFixed(1));
-      text.setAttribute('text-anchor','middle');text.setAttribute('dominant-baseline','middle');
-      text.setAttribute('transform','rotate('+rot.toFixed(1)+' '+lx.toFixed(1)+' '+ly.toFixed(1)+')');
-      text.setAttribute('class','dial-label'+(isActive?' active':''));
-      text.textContent=VIEWS[viewIdx].label;text.style.pointerEvents='none';
-      svg.appendChild(text);
-    }
-
-    // Inner ellipse
-    var disc=document.createElementNS(NS,'ellipse');
-    disc.setAttribute('cx',cx2);disc.setAttribute('cy',cy2);
-    disc.setAttribute('rx',rxI);disc.setAttribute('ry',ryI);
-    disc.setAttribute('fill','#1A2332');disc.setAttribute('stroke','#D4AF37');
-    disc.setAttribute('stroke-opacity','0.4');disc.setAttribute('stroke-width','1');
-    svg.appendChild(disc);
-
-    // Boat icon
-    var boat=document.createElementNS(NS,'g');
-    boat.setAttribute('transform','translate('+cx2+','+(cy2-9)+')');
-    boat.innerHTML='<path d="M -24 0 Q 0 9 24 0 L 21 7 Q 0 14 -21 7 Z" fill="none" stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>'+
-      '<line x1="0" y1="-16" x2="0" y2="0" stroke="#D4AF37" stroke-width="1.3"/>'+
-      '<path d="M 0 -14 L 13 -6 L 0 -6 Z" fill="#D4AF37" stroke="none"/>';
-    svg.appendChild(boat);
-
-    // GOLD ARK wordmark
-    var wm=document.createElementNS(NS,'text');
-    wm.setAttribute('x',cx2);wm.setAttribute('y',cy2+20);
-    wm.setAttribute('class','dial-logo-text');
-    wm.textContent='GOLD ARK';
-    svg.appendChild(wm);
-  }
-
-  function activate(viewIndex){
-    dialOffset=viewIndex;
-    build();
-    setView(VIEWS[viewIndex].key);
-  }
-
-  window._dialSyncToView=function(viewKey){
-    var idx=VIEWS.findIndex(function(v){return v.key===viewKey;});
-    if(idx>=0&&idx!==dialOffset){dialOffset=idx;build();}
-  };
-
-  // Scroll arrows flanking the dial
-  var center=document.getElementById('hdrDialCenter');
-  ['dialArrowL','dialArrowR'].forEach(function(id){var el=document.getElementById(id);if(el&&el.parentElement!==center)el.remove();});
-  if(center&&!document.getElementById('dialArrowL')){
-    center.style.position='relative';
-    var aL=document.createElement('button');
-    aL.id='dialArrowL';aL.className='dial-arrow dial-arrow-left';
-    aL.setAttribute('aria-label','Previous view');
-    aL.innerHTML='<svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 10,16 20,26"/><polyline points="26,6 16,16 26,26"/></svg>';
-    aL.addEventListener('click',function(){activate((dialOffset-1+N)%N);});
-    center.appendChild(aL);
-    var aR=document.createElement('button');
-    aR.id='dialArrowR';aR.className='dial-arrow dial-arrow-right';
-    aR.setAttribute('aria-label','Next view');
-    aR.innerHTML='<svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,6 22,16 12,26"/><polyline points="6,6 16,16 6,26"/></svg>';
-    aR.addEventListener('click',function(){activate((dialOffset+1)%N);});
-    center.appendChild(aR);
-  }
-
-  build();
-  var cur=(typeof VIEW!=='undefined')?VIEW:'timeline';
-  window._dialSyncToView(cur);
+function _tileNavInit(){
+  document.querySelectorAll('.hdr-tile').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      setView(btn.dataset.view);
+    });
+  });
 }
+function _tileNavSync(v){
+  document.querySelectorAll('.hdr-tile').forEach(function(btn){
+    btn.classList.toggle('active',btn.dataset.view===v);
+  });
+}
+
 
 // ═══════════════════════════════════════════════════════════
 // BOOT
@@ -448,19 +301,18 @@ async function boot(){
   if(his.length){
     const mn=Math.min(...his.map(p=>p.dob));
     const mx=Math.max(...PEOPLE.map(p=>(p.dod||p.dob)).filter(y=>y<2100));
-    document.getElementById('statFigures').textContent=PEOPLE.length.toLocaleString()+' Figures';
+    try{document.getElementById('hdrStatFigures').textContent=PEOPLE.length.toLocaleString();}catch(e){}
     const relCount=PEOPLE.reduce((s,p)=>s+(p.teachers?.length||0)+(p.relations?.length||0),0);
-    document.getElementById('statRelations').textContent=relCount.toLocaleString()+' Relations';
+    try{document.getElementById('hdrStatRelations').textContent=relCount.toLocaleString();}catch(e){}
 
     // Count free books across all detail chunks (background)
     const CHUNKS=['hadith','lineage','philosophy','poets','rulers','sahaba','sahabiyya','scholars','sciences','sufis-early','sufis-orders','tabiun'];
     let _freeBookCount=0;
-    const el=document.getElementById('statBooks');
     Promise.all(CHUNKS.map(c=>_loadChunk(c))).then(arrs=>{
       arrs.forEach(arr=>arr.forEach(rec=>{
         if(rec.books) rec.books.forEach(b=>{ if(b.url) _freeBookCount++; });
       }));
-      el.textContent=_freeBookCount.toLocaleString()+' Free Books';
+      try{document.getElementById('hdrStatBooks').textContent=_freeBookCount.toLocaleString();}catch(e){}
     });
   }
 
@@ -498,7 +350,7 @@ async function boot(){
 
   try{if(window._ensureWikidata) await window._ensureWikidata();}catch(e){}
   try{if(window._preloadJourneyIndex) await window._preloadJourneyIndex();}catch(e){}
-  try{var _flEl=document.getElementById('statFollowLives');if(_flEl&&window._journeyFigures)_flEl.textContent='Follow '+window._journeyFigures.size+' Lives';}catch(e){}
+  try{var _flEl=document.getElementById('hdrStatLives');if(_flEl&&window._journeyFigures)_flEl.textContent=window._journeyFigures.size.toLocaleString();}catch(e){}
 
   initSlider();
   initCentScrollbar();
@@ -506,7 +358,7 @@ async function boot(){
   updateCentScrollbar();
   renderAll();
 
-  _dialInit();
+  _tileNavInit();
   _updateFavFilterBtn();
   // If silsila tab was already active (e.g. URL hash loaded) trigger render now
   if(VIEW==='silsila') renderSilsila();
@@ -983,7 +835,7 @@ function setView(v){
   if(!window._popstateInProgress){
     history.pushState({view:v},'','#'+v);
   }
-  if(typeof window._dialSyncToView==='function') window._dialSyncToView(v);
+  _tileNavSync(v);
 }
 
 // ═══════════════════════════════════════════════════════════

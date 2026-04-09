@@ -12,24 +12,37 @@
 <body>
 
 <div id="topBar">
-<!-- DIAL HEADER -->
-<div id="hdrDial">
-  <div id="hdrDialLeft">
+<!-- ROW 1 - Stats + Disclosures -->
+<div id="hdrRow1">
+  <div id="hdrRow1Left">
     <!-- #hdrRow1Right kept so share.js _injectButtons() can find it -->
     <div id="hdrRow1Right">
-      <div id="hdrStatsLine1"><span id="statFigures">1,976 Figures</span> &middot; <span id="statBooks">161 Free Books</span></div>
-      <div id="hdrStatsLine2"><span id="statRelations">2,318 Relations</span> &middot; <span id="statFollowLives">Follow 109 Lives</span></div>
+      <div id="hdrStatsLine1"><span id="statFigures"><span class="hdr-stat-num" id="hdrStatFigures"></span> Figures</span> &middot; <span id="statBooks"><span class="hdr-stat-num" id="hdrStatBooks"></span> Free Books</span></div>
+      <div id="hdrStatsLine2"><span id="statRelations"><span class="hdr-stat-num" id="hdrStatRelations"></span> Relations</span> &middot; <span id="statFollowLives">Follow <span class="hdr-stat-num" id="hdrStatLives"></span> Lives</span></div>
       <div id="hdrStatsLine3">2026 APR</div>
     </div>
   </div>
-  <div id="hdrDialCenter">
-    <svg id="dialSvg" viewBox="0 0 360 360"></svg>
+  <div id="hdrRow1Center">
+    <h1 id="hdrLogo">GOLD ARK<svg width="68" height="26" viewBox="0 0 68 26" fill="none" style="display:inline-block;vertical-align:middle;margin-left:12px;"><path d="M4 12 Q2 14 2 17 L6 20 Q20 23 40 23 Q56 23 62 20 L66 15 Q66 12 64 10" stroke="#D4AF37" stroke-width="1.4" fill="none"/><path d="M4 12 Q3 10 4 7" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><path d="M64 10 Q65 8 64 5" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="12" x2="64" y2="10" stroke="#D4AF37" stroke-width="0.6" opacity="0.3"/><line x1="34" y1="3" x2="34" y2="13" stroke="#D4AF37" stroke-width="1.2"/><path d="M34 3 L46 9 L34 7.5 Z" fill="rgba(212,175,55,0.25)" stroke="#D4AF37" stroke-width="0.7"/></svg></h1>
   </div>
-  <div id="hdrDialRight">
+  <div id="hdrRow1Disclosures">
     <div class="hdr-disclosure-line">Pre 500 CE dates legendary</div>
     <div class="hdr-disclosure-line">AI-generated</div>
     <div class="hdr-disclosure-line">Independently verify</div>
   </div>
+</div>
+<!-- ROW 1b - Tile Nav -->
+<div id="hdrTileNav">
+  <button class="hdr-tile hdr-tile-timeline active" data-view="timeline">TIMELINE</button>
+  <button class="hdr-tile hdr-tile-silsila" data-view="silsila">SILSILA</button>
+  <button class="hdr-tile hdr-tile-map" data-view="map">MAP</button>
+  <button class="hdr-tile hdr-tile-study" data-view="studyroom">STUDY</button>
+  <button class="hdr-tile hdr-tile-eras" data-view="eras">ERAS</button>
+  <button class="hdr-tile hdr-tile-events" data-view="events">EVENTS</button>
+  <button class="hdr-tile hdr-tile-one" data-view="one">ONE</button>
+  <button class="hdr-tile hdr-tile-follow" data-view="follow">FOLLOW</button>
+  <button class="hdr-tile hdr-tile-talk" data-view="talk">TALK</button>
+  <button class="hdr-tile hdr-tile-books" data-view="books">BOOKS</button>
 </div>
 <!-- SEARCH + SLIDER ROW -->
 <div id="hdrRow2">
