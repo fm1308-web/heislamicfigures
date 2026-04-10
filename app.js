@@ -97,6 +97,60 @@ function toggleFavFilter() {
 }
 
 // ═══════════════════════════════════════════════════════════
+// UNIVERSAL BADGE SYSTEM (S W F B T)
+// ═══════════════════════════════════════════════════════════
+const _TALK_NAMES=new Set(['Al-Ghazali','Ibn Arabi','Jalal al-Din Rumi','Ibn Khaldun']);
+const _TALK_IDS={'Al-Ghazali':'ghazali','Ibn Arabi':'ibn-arabi','Jalal al-Din Rumi':'rumi','Ibn Khaldun':'ibn-khaldun'};
+var _freeBkSlugs=null;
+function _getFreeBkSlugs(){
+  if(_freeBkSlugs) return _freeBkSlugs;
+  _freeBkSlugs=new Set();
+  var bd=window._BOOKS_DATA;
+  if(bd&&bd.books) bd.books.forEach(function(b){if(b.is_free&&b.url) _freeBkSlugs.add(b.slug);});
+  return _freeBkSlugs;
+}
+function getFigureBadges(slug,famous){
+  var badges=[];
+  if(typeof _SR_SLUG_MAP!=='undefined'&&_SR_SLUG_MAP[famous]) badges.push('S');
+  if(window._wikidata&&window._wikidata[slug]&&window._wikidata[slug].wikipedia&&window._wikidata[slug].wikipedia.en) badges.push('W');
+  if(window._journeyFigures&&window._journeyFigures.has(slug)) badges.push('F');
+  if(_getFreeBkSlugs().has(slug)) badges.push('B');
+  if(_TALK_NAMES.has(famous)) badges.push('T');
+  return badges;
+}
+function _renderBadgesHtml(slug,famous,context){
+  var badges=getFigureBadges(slug,famous);
+  if(!badges.length) return '';
+  var cls=context==='one'?'one-badge':'tl-badge';
+  var html='';
+  badges.forEach(function(b){
+    if(b==='S'){
+      var sSlug=_SR_SLUG_MAP[famous];
+      html+='<span class="'+cls+'" onclick="event.stopPropagation();openStudyRoom(\''+sSlug+'\')" title="Study Room">S</span>';
+    } else if(b==='W'){
+      var wd=window._wikidata[slug].wikipedia.en;
+      html+='<a class="'+cls+'" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(wd.replace(/ /g,'_'))+'" target="_blank" rel="noopener" title="Wikipedia" onclick="event.stopPropagation()">W</a>';
+    } else if(b==='F'){
+      html+='<span class="'+cls+'" onclick="event.stopPropagation();window._followShowFigure(\''+slug+'\')" title="Follow Journey">F</span>';
+    } else if(b==='B'){
+      html+='<span class="'+cls+'" onclick="event.stopPropagation();window._badgeOpenBooks(\''+famous.replace(/'/g,"\\'")+'\',\''+slug+'\')" title="Free Books">B</span>';
+    } else if(b==='T'){
+      var tid=_TALK_IDS[famous]||'';
+      html+='<span class="'+cls+'" onclick="event.stopPropagation();setView(\'talk\');setTimeout(function(){window._talkSelectScholar(\''+tid+'\')},100)" title="Talk">T</span>';
+    }
+  });
+  return html;
+}
+window._badgeOpenBooks=function(famous,slug){
+  if(typeof _booksFilter!=='undefined'){
+    _booksFilter.author.clear();
+    _booksFilter.author.add(famous);
+  }
+  setView('books');
+};
+window._badgeInvalidateBooks=function(){_freeBkSlugs=null;};
+
+// ═══════════════════════════════════════════════════════════
 // WIKIPEDIA IMAGE SUPPORT
 // ═══════════════════════════════════════════════════════════
 /* Figures who must NEVER show an image */
@@ -160,7 +214,7 @@ function centLabel(c){return c===1?'1st':c===2?'2nd':c===3?'3rd':`${c}th`}
 // ═══════════════════════════════════════════════════════════
 let PEOPLE=[],VIEW='timeline',activeYear=null,activePerson=null;
 let _viewYears={timeline:null,silsila:null,map:null};
-let selTypes=new Set(),selTrads=new Set(),searchQ='';
+let selTypes=new Set(),selTrads=new Set(),searchQ='',selBadge='';
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
 
 window._captureState_timeline=function(){
@@ -320,6 +374,7 @@ async function boot(){
     // Count books from books.json (total + free reads)
     fetch('data/islamic/books.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
       if(!window._BOOKS_DATA) window._BOOKS_DATA=d;
+      if(typeof window._badgeInvalidateBooks==='function') window._badgeInvalidateBooks();
       var books=(d&&d.books)||[];
       try{document.getElementById('hdrStatBooks').textContent=books.length.toLocaleString();}catch(e){}
       var freeCount=books.filter(function(b){return b.url&&b.url.length>0;}).length;
@@ -464,8 +519,11 @@ function buildDD(kind,values){
   });
 }
 function toggleDD(kind){
-  const panel=document.getElementById(kind==='type'?'typePanel':'tradPanel');
-  const btn=document.getElementById(kind==='type'?'typeBtn':'tradBtn');
+  var panelId=kind==='type'?'typePanel':kind==='trad'?'tradPanel':kind==='badge'?'badgePanel':null;
+  var btnId=kind==='type'?'typeBtn':kind==='trad'?'tradBtn':kind==='badge'?'badgeBtn':null;
+  if(!panelId) return;
+  const panel=document.getElementById(panelId);
+  const btn=document.getElementById(btnId);
   const wasOpen=panel.classList.contains('open');
   document.querySelectorAll('.dd-panel.open').forEach(p=>p.classList.remove('open'));
   document.querySelectorAll('.dd-btn.open').forEach(b=>b.classList.remove('open'));
@@ -485,9 +543,45 @@ function ddToggle(kind,v){
   syncDD(kind); applyFilterAndFocus();
 }
 function clearAllFilters(){
-  selTypes.clear(); selTrads.clear();
-  syncDD('type'); syncDD('trad');
+  selTypes.clear(); selTrads.clear(); selBadge='';
+  syncDD('type'); syncDD('trad'); _syncBadgeDD();
   applyFilterAndFocus();
+}
+function _badgeSelect(val){
+  selBadge=val;
+  _syncBadgeDD();
+  applyFilterAndFocus();
+  document.querySelectorAll('.dd-panel.open').forEach(function(p){p.classList.remove('open');});
+  document.querySelectorAll('.dd-btn.open').forEach(function(b){b.classList.remove('open');});
+}
+function _syncBadgeDD(){
+  var btn=document.getElementById('badgeBtn');
+  var panel=document.getElementById('badgePanel');
+  if(!btn||!panel) return;
+  panel.querySelectorAll('.dd-item').forEach(function(item){
+    item.classList.toggle('selected',item.dataset.val===selBadge);
+    var ck=item.querySelector('.dd-checkbox');
+    if(ck) ck.textContent=item.dataset.val===selBadge?'✓':'';
+  });
+  var labelSpan=btn.querySelector('span');
+  if(selBadge){
+    var labels={'S':'Study','W':'Wiki','F':'Follow','B':'Books','T':'Talk'};
+    if(labelSpan) labelSpan.textContent=labels[selBadge]||'HAS';
+    btn.classList.add('filtered');
+    var oldX=btn.querySelector('.dd-clear-x');
+    if(oldX) oldX.remove();
+    var xEl=document.createElement('span');
+    xEl.className='dd-clear-x';
+    xEl.textContent='\u00D7';
+    xEl.onclick=function(e){e.stopPropagation();_badgeSelect('');};
+    btn.appendChild(xEl);
+  } else {
+    if(labelSpan) labelSpan.textContent='HAS';
+    btn.classList.remove('filtered');
+    var oldX2=btn.querySelector('.dd-clear-x');
+    if(oldX2) oldX2.remove();
+  }
+  updateFilterSummary();
 }
 function syncDD(kind){
   const sel=kind==='type'?selTypes:selTrads;
@@ -532,6 +626,7 @@ function updateFilterSummary(){
   const parts=[];
   if(selTypes.size>0) parts.push([...selTypes].join(', '));
   if(selTrads.size>0) parts.push([...selTrads].join(', '));
+  if(selBadge) parts.push('Has: '+{S:'Study',W:'Wiki',F:'Follow',B:'Books',T:'Talk'}[selBadge]);
   const sumEl=document.getElementById('filterSummary');
   const clrEl=document.getElementById('filterClearAll');
   if(parts.length>0){
@@ -606,6 +701,11 @@ function getFiltered(){
     /* Saved figures filter */
     if(APP.filterFavsOnly && APP.Favorites){
       if(!APP.Favorites.has(p.famous)) return false;
+    }
+    /* Badge filter */
+    if(selBadge){
+      var badges=getFigureBadges(p.slug,p.famous);
+      if(badges.indexOf(selBadge)===-1) return false;
     }
     return true;
   });
@@ -990,7 +1090,7 @@ function renderRows(filtered){
       <div class="tc-name">
         <div class="tc-dot" style="background:${col};width:${p.dob<0?3:p.dob<600?5:7}px;height:${p.dob<0?3:p.dob<600?5:7}px;opacity:${p.dob<0?0.45:p.dob<600?0.7:1}${isProphet?';box-shadow:0 0 5px '+col+'90':''}"></div>
         <div class="tc-texts">
-          <div class="tc-famous"${_SR_BADGE_NAMES.has(p.famous)?' style="color:#D4AF37"':''}>${esc(p.famous)}${_SR_BADGE_NAMES.has(p.famous)?`<span class="sr-study-badge" onclick="event.stopPropagation();openStudyRoom('${_SR_SLUG_MAP[p.famous]}')" title="Available in Study Space">✦</span>`:''}${window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en?`<a class="tl-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" title="Open in Wikipedia" onclick="event.stopPropagation()">W</a>`:''}</div>
+          <div class="tc-famous">${esc(p.famous)}${_renderBadgesHtml(p.slug,p.famous,'tl')}</div>
           <div class="tc-sub">${esc(p.primaryTitle||p.classif||'')}</div>
         </div>
       </div>

@@ -693,26 +693,80 @@ function _fwBuildMarkers() {
     var markers = [];
     var lines = [];
 
+    var _birthSvg = '<svg viewBox="0 0 56 56" width="56" height="56"><defs><filter id="bs" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.6"/></filter></defs><path d="M28 8 L32.5 21 L46 21 L35 30 L39 43 L28 35 L17 43 L21 30 L10 21 L23.5 21 Z" fill="rgba(0,0,0,0.25)" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" filter="url(#bs)"/></svg>';
+    var _burialSvg = '<svg viewBox="0 0 56 56" width="56" height="56"><defs><filter id="bd" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.6"/></filter></defs><path d="M16 46 L16 24 Q16 14 28 14 Q40 14 40 24 L40 46 Z" fill="rgba(0,0,0,0.25)" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" filter="url(#bd)"/><rect x="13" y="43" width="30" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="3"/></svg>';
+    var _lastIdx = fig.journey.length - 1;
+
+    // Collect birth + burial coords for dot suppression
+    var _birthLat = fig.journey[0] ? fig.journey[0].lat : null;
+    var _birthLng = fig.journey[0] ? fig.journey[0].lng : null;
+    var _burialLat = (_lastIdx > 0 && fig.journey[_lastIdx]) ? fig.journey[_lastIdx].lat : null;
+    var _burialLng = (_lastIdx > 0 && fig.journey[_lastIdx]) ? fig.journey[_lastIdx].lng : null;
+    var _TOL = 0.01;
+
     fig.journey.forEach(function(entry, i) {
-      var catCol = _fwCatColor(entry.category);
-      var isPeriod = entry.precision === 'period';
-      var radius = isPeriod ? 14 : entry.precision === 'day' ? 7 :
-                   entry.precision === 'month' ? 6 : 5;
+      var m;
+      var isFirst = (i === 0);
+      var isLast = (i === _lastIdx && _lastIdx > 0);
 
-      var m = L.circleMarker([entry.lat, entry.lng], {
-        radius: radius,
-        fillColor: figCol,
-        color: catCol,
-        weight: 2,
-        fillOpacity: 0.85,
-        opacity: isPeriod ? 0.5 : 1
-      });
+      if (isFirst) {
+        m = L.marker([entry.lat, entry.lng], {
+          icon: L.divIcon({
+            className: 'fw-birth-icon',
+            html: '<span style="color:' + figCol + ';display:block">' + _birthSvg + '</span>',
+            iconSize: [56, 56],
+            iconAnchor: [28, 28]
+          }),
+          zIndexOffset: 1000
+        });
+        m._fwPinned = true;
+        m.bindTooltip(
+          '<b style="color:' + figCol + '">' + fig.person + '</b><br>' +
+          'Born ' + (entry.year || '') + ' \u2014 ' + (entry.location || ''),
+          { direction: 'top', offset: [0, -26], className: 'fw-tooltip' }
+        );
+      } else if (isLast) {
+        var verb = entry.category === 'burial' ? 'Buried' : 'Died';
+        m = L.marker([entry.lat, entry.lng], {
+          icon: L.divIcon({
+            className: 'fw-burial-icon',
+            html: '<span style="color:' + figCol + ';display:block">' + _burialSvg + '</span>',
+            iconSize: [56, 56],
+            iconAnchor: [28, 28]
+          }),
+          zIndexOffset: 1000
+        });
+        m._fwPinned = true;
+        m.bindTooltip(
+          '<b style="color:' + figCol + '">' + fig.person + '</b><br>' +
+          verb + ' ' + (entry.year || '') + ' \u2014 ' + (entry.location || ''),
+          { direction: 'top', offset: [0, -26], className: 'fw-tooltip' }
+        );
+      } else {
+        // Suppress journey dots that overlap birth or burial coordinates
+        var _skipDot = false;
+        if (_birthLat !== null && Math.abs(entry.lat - _birthLat) < _TOL && Math.abs(entry.lng - _birthLng) < _TOL) _skipDot = true;
+        if (_burialLat !== null && Math.abs(entry.lat - _burialLat) < _TOL && Math.abs(entry.lng - _burialLng) < _TOL) _skipDot = true;
 
-      m.bindTooltip(
-        '<b style="color:' + figCol + '">' + fig.person + '</b><br>' +
-        entry.location + '<br>' + _fwFmtDate(entry),
-        { direction: 'top', offset: [0, -8], className: 'fw-tooltip' }
-      );
+        var catCol = _fwCatColor(entry.category);
+        var isPeriod = entry.precision === 'period';
+        var radius = isPeriod ? 14 : entry.precision === 'day' ? 7 :
+                     entry.precision === 'month' ? 6 : 5;
+        m = L.circleMarker([entry.lat, entry.lng], {
+          radius: _skipDot ? 0 : radius,
+          fillColor: figCol,
+          color: catCol,
+          weight: _skipDot ? 0 : 2,
+          fillOpacity: _skipDot ? 0 : 0.85,
+          opacity: _skipDot ? 0 : (isPeriod ? 0.5 : 1)
+        });
+        if (_skipDot) m._fwSuppressed = true;
+        m.bindTooltip(
+          '<b style="color:' + figCol + '">' + fig.person + '</b><br>' +
+          entry.location + '<br>' + _fwFmtDate(entry),
+          { direction: 'top', offset: [0, -8], className: 'fw-tooltip' }
+        );
+      }
 
       m.on('click', function() {
         _fwGoToYear(entry.year);
@@ -745,7 +799,7 @@ function _fwShowAll() {
     var lines = _fwLines[file] || [];
     markers.forEach(function(m) {
       if (!m._fwVisible) { m.addTo(_fwMap); m._fwVisible = true; }
-      m.setStyle({ fillOpacity: 0.4, opacity: 0.4, weight: 1.5 });
+      if (m.setStyle && !m._fwSuppressed) m.setStyle({ fillOpacity: 0.4, opacity: 0.4, weight: 1.5 });
     });
     lines.forEach(function(l) {
       if (!l._fwVisible) { l.addTo(_fwMap); l._fwVisible = true; }
@@ -779,14 +833,16 @@ function _fwUpdateMapForYear(year) {
       if (entry.year <= year) {
         if (!m._fwVisible) { m.addTo(_fwMap); m._fwVisible = true; }
         lastIdx = i;
-        m.setStyle({
-          fillColor: figCol, color: catCol,
-          fillOpacity: 0.5, opacity: 0.7, weight: 1.5
-        });
-        m.setRadius(isPeriod ? 12 : entry.precision === 'day' ? 6 :
-                    entry.precision === 'month' ? 5 : 4);
+        if (m.setStyle && !m._fwSuppressed) {
+          m.setStyle({
+            fillColor: figCol, color: catCol,
+            fillOpacity: 0.5, opacity: 0.7, weight: 1.5
+          });
+          m.setRadius(isPeriod ? 12 : entry.precision === 'day' ? 6 :
+                      entry.precision === 'month' ? 5 : 4);
+        }
       } else {
-        if (m._fwVisible) { _fwMap.removeLayer(m); m._fwVisible = false; }
+        if (m._fwVisible && !m._fwPinned) { _fwMap.removeLayer(m); m._fwVisible = false; }
       }
     });
 
@@ -797,22 +853,27 @@ function _fwUpdateMapForYear(year) {
       var isPeriod = entry.precision === 'period';
       var isExact = entry.year === year;
 
-      if (isExact) {
-        m.setStyle({
-          fillColor: figCol, color: '#FFFFFF',
-          fillOpacity: 1, opacity: 1, weight: 3
-        });
-        m.setRadius(isPeriod ? 16 : 9);
-      } else {
-        m.setStyle({
-          fillColor: figCol, color: catCol,
-          fillOpacity: 0.35, opacity: 0.5, weight: 2
-        });
-        m.setRadius(isPeriod ? 14 : 7);
+      if (m.setStyle && !m._fwSuppressed) {
+        if (isExact) {
+          m.setStyle({
+            fillColor: figCol, color: '#FFFFFF',
+            fillOpacity: 1, opacity: 1, weight: 3
+          });
+          m.setRadius(isPeriod ? 16 : 9);
+        } else {
+          m.setStyle({
+            fillColor: figCol, color: catCol,
+            fillOpacity: 0.35, opacity: 0.5, weight: 2
+          });
+          m.setRadius(isPeriod ? 14 : 7);
+        }
       }
       m.bringToFront();
       activePts.push([entry.lat, entry.lng]);
     }
+
+    // Re-raise pinned birth/burial markers above journey dots
+    markers.forEach(function(pm){ if(pm._fwPinned && pm._fwVisible && pm.setZIndexOffset) pm.setZIndexOffset(1000); });
 
     lines.forEach(function(l, i) {
       if (i + 1 <= lastIdx) {

@@ -335,8 +335,13 @@ a:hover{text-decoration:underline}
 .tc-famous{font-size:13.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;transition:color .1s}
 .tl-row:hover .tc-famous,.tl-row.sel .tc-famous{color:var(--accent)}
 .tl-row.prophet-row .tc-famous{color:var(--accent)!important;font-size:14px!important}
+.tl-badge{font-size:9px;color:rgba(212,175,55,.45);text-decoration:none;margin-left:3px;vertical-align:super;font-weight:700;display:inline-block;line-height:1;transition:color .15s;cursor:pointer}
+.tl-badge:hover{color:rgba(212,175,55,1)}
 .tl-wiki-link{font-size:9px;color:rgba(212,175,55,.45);text-decoration:none;margin-left:3px;vertical-align:super;font-weight:700;display:inline-block;line-height:1;transition:color .15s}
 .tl-wiki-link:hover{color:rgba(212,175,55,1)}
+.one-badges{display:inline;margin-left:6px}
+.one-badge{font-size:10px;color:rgba(212,175,55,.5);text-decoration:none;margin-left:4px;font-weight:700;cursor:pointer;transition:color .15s}
+.one-badge:hover{color:rgba(212,175,55,1)}
 .tc-sub{font-size:10.5px;color:var(--lp-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic;line-height:1.2}
 
 /* Century cells */
@@ -2179,6 +2184,7 @@ body.view-one #searchWrap{display:none}
   box-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
 }
 .fw-tooltip .leaflet-tooltip-arrow { display: none; }
+.fw-birth-icon,.fw-burial-icon{background:none!important;border:none!important}
 
 body.fw-active #hdrYearControls,
 body.fw-active #hdrYearControls * {

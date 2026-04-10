@@ -103,6 +103,22 @@
       </div>
     </div>
   </div>
+  <div class="dd-wrap">
+    <button class="dd-btn" id="badgeBtn" onclick="toggleDD('badge')">
+      <span>HAS</span>
+      <div style="display:flex;align-items:center;gap:4px">
+        <span class="dd-caret">▾</span>
+      </div>
+    </button>
+    <div class="dd-panel" id="badgePanel">
+      <div class="dd-item" data-val="" onclick="_badgeSelect('')"><div class="dd-checkbox">✓</div><span>All</span></div>
+      <div class="dd-item" data-val="S" onclick="_badgeSelect('S')"><div class="dd-checkbox"></div><span>Study Room</span></div>
+      <div class="dd-item" data-val="W" onclick="_badgeSelect('W')"><div class="dd-checkbox"></div><span>Wikipedia</span></div>
+      <div class="dd-item" data-val="F" onclick="_badgeSelect('F')"><div class="dd-checkbox"></div><span>Follow Journey</span></div>
+      <div class="dd-item" data-val="B" onclick="_badgeSelect('B')"><div class="dd-checkbox"></div><span>Free Books</span></div>
+      <div class="dd-item" data-val="T" onclick="_badgeSelect('T')"><div class="dd-checkbox"></div><span>Talk</span></div>
+    </div>
+  </div>
   <button class="dd-btn" id="favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
 </div>
 </div><!-- /#topBar -->

@@ -19,7 +19,7 @@ var _WD_BLOCKED_TYPES = {'Prophet':1,'Sahaba':1,'Sahabiyya':1};
 function _ensureWikidata(){
   if(_wikidata) return Promise.resolve(_wikidata);
   if(_wdLoading) return _wdLoading;
-  _wdLoading=fetch('data/islamic/wikidata.json').then(function(r){return r.json();}).then(function(d){
+  _wdLoading=fetch('data/islamic/wikidata.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
     _wikidata=d; window._wikidata=d; return d;
   }).catch(function(){ _wikidata={}; return {}; });
   return _wdLoading;
@@ -486,6 +486,7 @@ async function _renderPerson(p,container){
   h+='<div class="one-hero-text">';
   h+='<div class="one-famous" style="color:'+col+'">'+_e(p.famous);
   h+=' <button class="one-fav-btn" data-name="'+_e(p.famous)+'" onclick="window._oneToggleFav(this)" style="color:'+(isFav?'#D4AF37':'rgba(160,174,192,0.25)')+'">'+( isFav?'\u2605':'\u2606')+'</button>';
+  if(typeof _renderBadgesHtml==='function') h+=('<span class="one-badges">'+_renderBadgesHtml(p.slug,p.famous,'one')+'</span>');
   h+='</div>';
   if(p.full&&p.full!==p.famous) h+='<div class="one-full">'+_e(p.full)+'</div>';
   if(p.primaryTitle) h+='<div class="one-primary">'+_e(p.primaryTitle)+'</div>';
