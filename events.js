@@ -395,18 +395,31 @@ window._eventsApplySearch = function(){
   _renderRange(data, _startYear, _endYear);
 };
 
-// ── ANIMATE (pause-aware) ──
+// ── ANIMATE — curfew-based (matches THINK global standard) ──
+var _evCurfewY=0,_evCurfewMaxY=0;
+
 function _evAnimPlay(){
   var scrollEl=document.getElementById('evScroll');
   if(!scrollEl) return;
+
+  // Ensure curfew line exists
+  var cursor=document.getElementById('ev-curfew');
+  if(!cursor){
+    cursor=document.createElement('div');cursor.id='ev-curfew';cursor.className='ev-curfew-line';
+    cursor.innerHTML='<span id="ev-curfew-year" class="ev-curfew-year"></span>';
+    cursor.style.display='none';
+    scrollEl.style.position='relative';
+    scrollEl.appendChild(cursor);
+  }
+
   if(_evAnimMode==='paused'&&_evAnimRows){
-    // Resume from current idx
     _evAnimMode='playing';
+    cursor.style.display='';
     _evAnimSpeedMs=_evAnimCtl?_evAnimCtl.getSpeedMs():1200;
-    _evAnimScheduleNext();
+    _evAnimTimer=setInterval(_evAnimTick,_evAnimSpeedMs);
     return;
   }
-  // Fresh start
+  // Fresh start — hide all rows
   var rows=scrollEl.querySelectorAll('.ev-row');
   if(!rows.length) return;
   _evAnimRows=rows;
@@ -415,40 +428,53 @@ function _evAnimPlay(){
     var card=r.querySelector('.ev-card');if(card)card.classList.remove('ev-card-visible');
   });
   scrollEl.scrollTop=0;
-  _evAnimMode='playing';_evAnimIdx=0;
+  _evAnimMode='playing';
+  _evCurfewY=0;
+  _evCurfewMaxY=scrollEl.scrollHeight;
   _evAnimSpeedMs=_evAnimCtl?_evAnimCtl.getSpeedMs():1200;
-  _evAnimScheduleNext();
+  cursor.style.display='';cursor.style.top='0px';
+  _evAnimTimer=setInterval(_evAnimTick,_evAnimSpeedMs);
 }
+
+function _evAnimTick(){
+  if(_evAnimMode!=='playing') return;
+  var scrollEl=document.getElementById('evScroll');
+  var cursor=document.getElementById('ev-curfew');
+  if(!scrollEl) return;
+  _evCurfewY+=8;
+  if(_evCurfewY>_evCurfewMaxY){_evStopAnimate();return;}
+  if(cursor) cursor.style.top=_evCurfewY+'px';
+  // Reveal rows whose top <= curfewY
+  var revealedYr=null;
+  if(_evAnimRows) _evAnimRows.forEach(function(r){
+    if(!r.classList.contains('ev-row-hidden')) return;
+    // For display:contents rows, use first child's offsetTop
+    var firstChild=r.querySelector('div');
+    var rowTop=firstChild?firstChild.offsetTop-scrollEl.offsetTop:0;
+    if(rowTop<=_evCurfewY){
+      r.classList.remove('ev-row-hidden');r.classList.add('ev-row-reveal');
+      var card=r.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
+      revealedYr=parseInt(r.getAttribute('data-year'),10);
+    }
+  });
+  // Year label
+  if(revealedYr) _evLastRevealedYr=revealedYr;
+  var yrEl=document.getElementById('ev-curfew-year');
+  if(yrEl&&_evLastRevealedYr) yrEl.innerHTML=_evLastRevealedYr+'<span class="year-era">CE</span>';
+  // Scroll to follow
+  scrollEl.scrollTop=Math.max(0,_evCurfewY-scrollEl.clientHeight/2);
+}
+var _evLastRevealedYr=null;
 
 function _evAnimPause(){
   _evAnimMode='paused';
-  if(_evAnimTimer){clearTimeout(_evAnimTimer);_evAnimTimer=null;}
-}
-
-function _evAnimScheduleNext(){
-  if(_evAnimMode!=='playing') return;
-  if(_evAnimIdx>=_evAnimRows.length){_evStopAnimate();return;}
-  var row=_evAnimRows[_evAnimIdx];
-  var target=row.querySelector('.ev-col-story');
-  var scrollEl=document.getElementById('evScroll');
-  if(target&&scrollEl){
-    var top=target.offsetTop-scrollEl.offsetTop;
-    var center=top-(scrollEl.clientHeight/2)+(target.offsetHeight/2);
-    scrollEl.scrollTo({top:Math.max(0,center),behavior:'smooth'});
-  }
-  setTimeout(function(){
-    if(_evAnimMode!=='playing') return;
-    row.classList.remove('ev-row-hidden');row.classList.add('ev-row-reveal');
-    var card=row.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
-  },200);
-  _evAnimIdx++;
-  _evAnimTimer=setTimeout(_evAnimScheduleNext,_evAnimSpeedMs);
+  if(_evAnimTimer){clearInterval(_evAnimTimer);_evAnimTimer=null;}
 }
 
 function _evStopAnimate(){
   _evAnimMode='stopped';
-  if(_evAnimTimer){clearTimeout(_evAnimTimer);_evAnimTimer=null;}
-  _evAnimIdx=0;_evAnimRows=null;
+  if(_evAnimTimer){clearInterval(_evAnimTimer);_evAnimTimer=null;}
+  _evAnimRows=null;_evLastRevealedYr=null;
   if(_evAnimCtl) _evAnimCtl.forceStop();
   var scrollEl=document.getElementById('evScroll');
   if(scrollEl){
@@ -457,6 +483,8 @@ function _evStopAnimate(){
       var card=r.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
     });
   }
+  var cursor=document.getElementById('ev-curfew');
+  if(cursor) cursor.style.display='none';
 }
 
 window.initEvents=initEvents;

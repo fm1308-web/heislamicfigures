@@ -128,8 +128,8 @@ function initEras(){
   var adamYrLabel = document.createElement('div');
   adamYrLabel.className = 'eras-stem-yr-label';
   adamYrLabel.style.top = (adamY - 6) + 'px';
-  adamYrLabel.style.color = 'rgba(212,175,55,.8)';
-  adamYrLabel.textContent = '0';
+  adamYrLabel.style.color = '#6B7280';
+  adamYrLabel.innerHTML = '0<span class="year-era">CE</span>';
   _leftPanel.appendChild(adamYrLabel);
   _erasMarkers.push({year:-4000, isAdam:true, dotEl:adamDot, labelEl:adamLabel, yrLabelEl:adamYrLabel});
 
@@ -148,8 +148,8 @@ function initEras(){
   var muhYrLabel = document.createElement('div');
   muhYrLabel.className = 'eras-stem-yr-label';
   muhYrLabel.style.top = (muhY - 6) + 'px';
-  muhYrLabel.style.color = 'rgba(212,175,55,.8)';
-  muhYrLabel.textContent = '570 CE';
+  muhYrLabel.style.color = '#6B7280';
+  muhYrLabel.innerHTML = '570<span class="year-era">CE</span>';
   _leftPanel.appendChild(muhYrLabel);
   _erasMarkers.push({year:570, isAdam:false, dotEl:muhDot, labelEl:muhLabel, yrLabelEl:muhYrLabel});
 
@@ -824,44 +824,137 @@ window.setView = function(v){
   if(as) as.style.display = 'none';
 };
 
-// ── ERAS Animate (pause-aware) ──
+// ── ERAS Animate — curfew-based (global standard) ──
 var _erasAnimTimer = null;
 var _erasAnimMode = 'stopped';
-var _erasAnimYr = 500;
 var _erasAnimSpeedMs = 1200;
 var _erasAnimCtl = null;
-var ANIM_FROM = 500, ANIM_TO = 2000, ANIM_STEP = 10;
+var _erasCurfewY = 0;
 
 function _erasAnimPlay(){
-  if(_erasAnimMode === 'stopped'){
-    var yr = (typeof activeYear !== 'undefined' && activeYear != null) ? activeYear : ANIM_FROM;
-    if(yr >= ANIM_TO) yr = ANIM_FROM;
-    _erasAnimYr = yr;
+  var rp = _erasRightPanel;
+  if(!rp) return;
+
+  // Ensure curfew line exists
+  var cursor = document.getElementById('eras-curfew');
+  if(!cursor){
+    cursor = document.createElement('div');
+    cursor.id = 'eras-curfew';
+    cursor.className = 'eras-curfew-line';
+    cursor.innerHTML = '<span id="eras-curfew-year" class="eras-curfew-year"></span>';
+    cursor.style.display = 'none';
+    rp.appendChild(cursor);
   }
+
+  if(_erasAnimMode === 'paused'){
+    _erasAnimMode = 'playing';
+    cursor.style.display = '';
+    _erasAnimTimer = setInterval(_erasAnimTick, _erasAnimSpeedMs);
+    return;
+  }
+
+  // Fresh start — hide everything except .eras-stem
   _erasAnimMode = 'playing';
+  _erasCurfewY = TOP_PAD;
   _erasAnimSpeedMs = _erasAnimCtl ? _erasAnimCtl.getSpeedMs() : 1200;
-  _erasAnimNextStep();
+
+  // Hide HTML elements in right panel (bands, labels, markers, leaf labels)
+  rp.querySelectorAll('.eras-era-glow,.eras-era-band-text,.eras-era-boundary,.eras-stem-marker,.eras-leaf-ext-label,.eras-slider-dot').forEach(function(el){
+    el.classList.add('eras-hidden-by-curfew');
+  });
+  // Hide HTML elements in left panel (name labels, year labels)
+  if(_leftPanel) _leftPanel.querySelectorAll('.eras-perm-label,.eras-stem-yr-label').forEach(function(el){
+    el.classList.add('eras-hidden-by-curfew');
+  });
+  // Hide name list entries
+  if(_nameListEl) _nameListEl.querySelectorAll('.eras-name-entry').forEach(function(el){
+    el.classList.add('eras-hidden-by-curfew');
+  });
+  // Hide SVG leaf groups
+  if(_erasSvgEl){
+    _erasSvgEl.querySelectorAll('.eras-leaf').forEach(function(g){
+      g.setAttribute('opacity','0');
+    });
+  }
+
+  cursor.style.display = '';
+  cursor.style.top = _erasCurfewY + 'px';
+
+  // Scroll to top
+  if(_scrollEl) _scrollEl.scrollTop = Math.max(0, _erasCurfewY - 200);
+
+  _erasAnimTimer = setInterval(_erasAnimTick, _erasAnimSpeedMs);
+}
+
+function _erasAnimTick(){
+  if(_erasAnimMode !== 'playing') return;
+  var rp = _erasRightPanel;
+  if(!rp) return;
+  _erasCurfewY += 6;
+  if(_erasCurfewY > TOTAL_H){ _erasAnimStopFull(); return; }
+  var cursor = document.getElementById('eras-curfew');
+  if(cursor) cursor.style.top = _erasCurfewY + 'px';
+
+  // Reveal HTML elements by their top
+  rp.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){
+    var t = parseFloat(el.style.top);
+    if(!isNaN(t) && t <= _erasCurfewY) el.classList.remove('eras-hidden-by-curfew');
+  });
+  // Reveal left panel elements
+  if(_leftPanel) _leftPanel.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){
+    var t = parseFloat(el.style.top);
+    if(!isNaN(t) && t <= _erasCurfewY) el.classList.remove('eras-hidden-by-curfew');
+  });
+  // Reveal name list entries
+  if(_nameListEl) _nameListEl.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){
+    var t = parseFloat(el.style.top);
+    if(!isNaN(t) && t <= _erasCurfewY) el.classList.remove('eras-hidden-by-curfew');
+  });
+  // Reveal SVG leaf groups by their bottom Y
+  if(_erasSvgEl){
+    _erasSvgEl.querySelectorAll('.eras-leaf[opacity="0"]').forEach(function(g){
+      try{
+        var bb = g.getBBox();
+        var bottomY = bb.y + bb.height;
+        if(bottomY <= _erasCurfewY) g.removeAttribute('opacity');
+      }catch(e){}
+    });
+  }
+
+  // Year label on curfew line
+  var yr = yToYear(_erasCurfewY);
+  var yrEl = document.getElementById('eras-curfew-year');
+  if(yrEl){
+    var rounded = Math.round(yr);
+    yrEl.innerHTML = rounded <= 0
+      ? Math.abs(rounded) + '<span class="year-era">BCE</span>'
+      : rounded + '<span class="year-era">CE</span>';
+  }
+
+  // Scroll to follow curfew
+  if(_scrollEl) _scrollEl.scrollTop = Math.max(0, _erasCurfewY - _scrollEl.clientHeight / 2);
 }
 
 function _erasAnimPause(){
   _erasAnimMode = 'paused';
-  if(_erasAnimTimer){ clearTimeout(_erasAnimTimer); _erasAnimTimer = null; }
+  if(_erasAnimTimer){ clearInterval(_erasAnimTimer); _erasAnimTimer = null; }
 }
 
 function _erasAnimStopFull(){
   _erasAnimMode = 'stopped';
-  if(_erasAnimTimer){ clearTimeout(_erasAnimTimer); _erasAnimTimer = null; }
-  _erasAnimYr = ANIM_FROM;
+  if(_erasAnimTimer){ clearInterval(_erasAnimTimer); _erasAnimTimer = null; }
   if(_erasAnimCtl) _erasAnimCtl.forceStop();
-}
 
-function _erasAnimNextStep(){
-  if(_erasAnimMode !== 'playing') return;
-  if(_erasAnimYr > ANIM_TO){ _erasAnimStopFull(); return; }
-  if(typeof _setSliderYear === 'function') _setSliderYear(_erasAnimYr);
-  var yr = _erasAnimYr;
-  _erasAnimYr += ANIM_STEP;
-  _erasAnimTimer = setTimeout(_erasAnimNextStep, _erasAnimSpeedMs);
+  // Reveal all HTML elements
+  var rp = _erasRightPanel;
+  if(rp) rp.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){ el.classList.remove('eras-hidden-by-curfew'); });
+  if(_leftPanel) _leftPanel.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){ el.classList.remove('eras-hidden-by-curfew'); });
+  if(_nameListEl) _nameListEl.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){ el.classList.remove('eras-hidden-by-curfew'); });
+  // Reveal all SVG leaves
+  if(_erasSvgEl) _erasSvgEl.querySelectorAll('.eras-leaf[opacity="0"]').forEach(function(g){ g.removeAttribute('opacity'); });
+  // Hide curfew line
+  var cursor = document.getElementById('eras-curfew');
+  if(cursor) cursor.style.display = 'none';
 }
 
 window._erasAnimStop = _erasAnimStopFull;

@@ -40,6 +40,7 @@ const _BV_ERA_BANDS = [
   {name:'Colonial & Reform', start:1800,  end:1950, dates:'1800\u20131950 CE', glow:'200,150,60'},
   {name:'Contemporary',      start:1950,  end:2025, dates:'1950\u2013Present', glow:'80,160,200'}
 ];
+window._BV_ERA_BANDS = _BV_ERA_BANDS;
 
 function _booksYearToY(yr, books, rowMap){
   const withYear = books.filter(b=>b.year!=null);
@@ -119,8 +120,8 @@ function _booksFmtYear(y){
   if(y==null||y==='') return '—';
   const n = typeof y==='number' ? y : parseInt(y,10);
   if(isNaN(n)) return '—';
-  if(n<0) return Math.abs(n)+' BCE';
-  return n+' CE';
+  if(n<0) return Math.abs(n)+'<span class="year-era">BCE</span>';
+  return n+'<span class="year-era">CE</span>';
 }
 
 function _booksInjectStyles(){
@@ -132,7 +133,7 @@ function _booksInjectStyles(){
   #bv-anim-mount{margin-left:auto;display:flex;align-items:center;gap:10px}
   .bv-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6)}
   #bv-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
-  #bv-canvas{position:relative;width:100%;min-width:1200px}
+  #bv-canvas{position:relative;width:100%}
   #bv-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em}
   #bv-stem{position:absolute;left:${_BV_STEM_X - 2}px;width:5px;background:var(--gold,#D4AF37);box-shadow:0 0 18px rgba(212,175,55,.55);pointer-events:none;z-index:1}
   .bv-row{position:absolute;left:0;width:${_BV_LEFT_W}px;padding:8px 20px 8px 20px;cursor:pointer;transition:background .12s;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;z-index:4}
@@ -144,7 +145,8 @@ function _booksInjectStyles(){
   .bv-read-btn{display:inline-block;margin-left:6px;padding:2px 8px;background:rgba(56,189,248,.14);border:1px solid #38bdf8;border-radius:2px;font-size:9px;color:#38bdf8;letter-spacing:.08em;text-decoration:none;font-family:'Cinzel',serif;font-weight:600;vertical-align:middle}
   .bv-read-btn:hover{background:rgba(56,189,248,.3);color:#fff}
   .bv-study-badge{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid rgba(212,175,55,.5);border-radius:2px;font-size:9px;color:var(--gold,#D4AF37);letter-spacing:.08em;font-family:'Cinzel',serif;vertical-align:middle}
-  .bv-year-chip{position:absolute;transform:translateY(-50%);width:72px;text-align:center;font-family:'Cinzel',serif;font-size:10px;color:var(--gold,#D4AF37);background:var(--bg0,#0E1621);border:1px solid rgba(212,175,55,.5);border-radius:2px;padding:3px 4px;letter-spacing:.04em;z-index:5;white-space:nowrap;box-shadow:0 0 6px rgba(14,22,33,.9);pointer-events:none}
+  .bv-year-chip{position:absolute;transform:translateY(-50%);width:72px;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;background:var(--bg0,#0E1621);border:1px solid rgba(107,114,128,.35);border-radius:2px;padding:3px 4px;letter-spacing:.02em;z-index:5;white-space:nowrap;box-shadow:0 0 6px rgba(14,22,33,.9);pointer-events:none}
+  .bv-year-chip.year-multi{color:#D4AF37;border-color:rgba(212,175,55,.5)}
   .bv-year-chip.scripture{border-color:var(--gold,#D4AF37);background:#1a1610}
   .bv-row.is-scripture .bv-row-title{color:var(--gold,#D4AF37);font-weight:600;letter-spacing:.01em}
   .bv-row.is-scripture .bv-row-meta{color:rgba(212,175,55,.62);font-style:italic}
@@ -238,6 +240,9 @@ function _booksBuildCanvas(){
   canvas.style.height = totalH + 'px';
 
   const rowMap = {};
+  // Count books per year for multi-event highlighting
+  const _yrCount = {};
+  merged.forEach(function(entry){ var yr=entry.book.year; if(yr!=null) _yrCount[yr]=(_yrCount[yr]||0)+1; });
   let html = '';
   html += '<div id="bv-stem" style="top:'+(_BV_TOP_PAD-10)+'px;height:'+(totalH - _BV_TOP_PAD - _BV_BOT_PAD + 20)+'px"></div>';
 
@@ -258,7 +263,8 @@ function _booksBuildCanvas(){
       html += '<div class="bv-row-main"><div class="bv-row-title" style="color:#8B9AAF">'+_booksEscape(b.title)+'</div>';
       html += '<div class="bv-row-meta" style="color:#6B7280">'+ancMeta+ancBadge+'</div>';
       html += '</div></div>';
-      html += '<div class="bv-year-chip" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px;background:#2D3748;border-color:#4A5568;color:#A0AEC0">'+yearTxt+'</div>';
+      var ancMulti = b.year!=null&&_yrCount[b.year]>1?' year-multi':'';
+      html += '<div class="bv-year-chip'+ancMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px">'+yearTxt+'</div>';
     } else {
       // Islamic book row — original styling
       const isScripture = b.is_scripture===true;
@@ -278,7 +284,8 @@ function _booksBuildCanvas(){
       if(meta) html += '<div class="bv-row-meta">'+meta+'</div>';
       html += '</div></div>';
 
-      html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
+      var bkMulti = b.year!=null&&_yrCount[b.year]>1?' year-multi':'';
+      html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+bkMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
     }
   });
 
@@ -341,18 +348,20 @@ function _booksRenderErasStyle(books, rowMap, totalH){
   leaves.sort(function(a,b){ return a.y1 - b.y1; });
   var maxCount = Math.max.apply(null, leaves.map(function(l){ return l.count; }));
 
-  // ── Era bands (same as eras.js) ──
+  // ── Era bands — matches ERAS view approach (left:0 right:0 anchoring) ──
   _BV_ERA_BANDS.forEach(function(era){
     var y1e = _booksYearToY(era.start, books, rowMap);
     var y2e = _booksYearToY(era.end, books, rowMap);
     if(y2e - y1e < 6) return;
     var gDiv = document.createElement('div');
-    gDiv.style.cssText = 'position:absolute;top:'+y1e+'px;height:'+(y2e-y1e)+'px;left:'+(_BV_STEM_X+18)+'px;right:0;background:linear-gradient(to left, rgba('+era.glow+',0.10) 0%, rgba('+era.glow+',0.04) 50%, transparent 85%);pointer-events:none;z-index:1';
+    gDiv.className = 'bv-era-band';
+    gDiv.style.cssText = 'top:'+y1e+'px;height:'+(y2e-y1e)+'px;background:linear-gradient(to left, rgba('+era.glow+',0.10) 0%, rgba('+era.glow+',0.04) 50%, transparent 85%)';
     canvas.appendChild(gDiv);
     var label = document.createElement('div');
-    label.style.cssText = 'position:absolute;top:'+(y1e+12)+'px;right:24px;font-family:\'Cinzel\',serif;text-align:right;pointer-events:none;z-index:1';
-    label.innerHTML = '<div style="font-size:11px;letter-spacing:.14em;color:rgba('+era.glow+',0.85);text-transform:uppercase;font-weight:700">'+era.name+'</div>'
-      + '<div style="font-size:9px;opacity:.6;margin-top:2px;font-weight:400;color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
+    label.className = 'bv-era-label';
+    label.style.top = (y1e+12)+'px';
+    label.innerHTML = '<div class="bv-era-label-name" style="color:rgba('+era.glow+',0.85)">'+era.name+'</div>'
+      + '<div class="bv-era-label-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
     canvas.appendChild(label);
   });
 
@@ -582,42 +591,94 @@ function _booksSyncClearBtn(){
 
 var _booksAnimCtl = null;
 
+function _bvCurfewYToYear(cursorY, canvas){
+  var rows=[].slice.call(canvas.querySelectorAll('.bv-row'));
+  for(var i=rows.length-1;i>=0;i--){
+    var t=parseFloat(rows[i].style.top)||0;
+    if(cursorY>=t){var yr=rows[i].getAttribute('data-year');if(yr!=='') return parseInt(yr,10);}
+  }
+  return null;
+}
+
 function _booksAnimPlay(){
   var canvas = document.getElementById('bv-canvas');
   var scroll = document.getElementById('bv-scroll');
   if(!canvas || !scroll) return;
-  if(_booksAnim.mode === 'paused' && _booksAnim.rows){
-    // Resume from current idx
+
+  // Ensure curfew line exists
+  var cursor=document.getElementById('bv-curfew');
+  if(!cursor){
+    cursor=document.createElement('div');cursor.id='bv-curfew';cursor.className='bv-curfew-line';
+    cursor.innerHTML='<span id="bv-curfew-year" class="bv-curfew-year"></span>';
+    cursor.style.display='none';
+    canvas.appendChild(cursor);
+  }
+
+  if(_booksAnim.mode === 'paused'){
     _booksAnim.mode = 'playing';
-    var yEl = document.getElementById('bv-anim-year');
-    if(yEl) yEl.style.opacity = '1';
+    cursor.style.display='';
     _booksAnim.timer = setInterval(_booksAnim.tick, _booksAnim.speedMs);
     return;
   }
-  // Fresh start
-  var rows = [].slice.call(canvas.querySelectorAll('.bv-row')).filter(function(r){ return r.getAttribute('data-year') !== ''; });
-  if(!rows.length) return;
+  // Fresh start — hide everything
   _booksAnim.mode = 'playing';
-  _booksAnim.idx = 0;
-  _booksAnim.rows = rows;
+  _booksAnim.cursorY = _BV_TOP_PAD;
   _booksAnim.speedMs = _booksAnimCtl ? _booksAnimCtl.getSpeedMs() : 1200;
-  var yEl = document.getElementById('bv-anim-year');
-  if(yEl) yEl.style.opacity = '1';
-  _booksAnim.tick = function(){
-    _booksAnim.rows.forEach(function(r){ r.classList.remove('hi'); });
-    var row = _booksAnim.rows[_booksAnim.idx];
-    if(!row){ _booksAnimStop(); return; }
-    row.classList.add('hi');
-    var rowTop = parseFloat(row.style.top) || 0;
-    scroll.scrollTo({top: rowTop - scroll.clientHeight/3, behavior:'smooth'});
-    var yr = row.getAttribute('data-year');
-    var yEl2 = document.getElementById('bv-anim-year');
-    if(yEl2) yEl2.textContent = _booksFmtYear(yr === '' ? null : parseInt(yr,10));
-    _booksAnim.idx++;
-    if(_booksAnim.idx >= _booksAnim.rows.length){ setTimeout(_booksAnimStop, _booksAnim.speedMs); }
+  // Hide HTML elements
+  canvas.querySelectorAll('.bv-row,.bv-year-chip,.bv-era-band,.bv-era-label,.bv-leaf-label').forEach(function(el){el.classList.add('bv-hidden-by-curfew');});
+  // Hide SVG elements (leaves, dots, connectors)
+  canvas.querySelectorAll('svg').forEach(function(sv){
+    [].slice.call(sv.children).forEach(function(ch){
+      if(ch.tagName==='defs') return;
+      var orig=ch.getAttribute('opacity');
+      if(orig&&orig!=='0') ch.setAttribute('data-orig-opacity',orig);
+      ch.setAttribute('opacity','0');
+    });
+  });
+  cursor.style.display='';cursor.style.top=_booksAnim.cursorY+'px';
+  var totalH=parseFloat(canvas.style.height)||2000;
+  _booksAnim.maxY=totalH;
+
+  var STEP=4;
+  _booksAnim.tick=function(){
+    if(_booksAnim.mode!=='playing') return;
+    _booksAnim.cursorY+=STEP;
+    if(_booksAnim.cursorY>_booksAnim.maxY){_booksAnimStop();return;}
+    cursor.style.top=_booksAnim.cursorY+'px';
+    // Reveal HTML elements
+    canvas.querySelectorAll('.bv-hidden-by-curfew').forEach(function(el){
+      var t=parseFloat(el.style.top);
+      if(!isNaN(t)&&t<=_booksAnim.cursorY) el.classList.remove('bv-hidden-by-curfew');
+    });
+    // Reveal SVG children by bottom Y
+    canvas.querySelectorAll('svg').forEach(function(sv){
+      [].slice.call(sv.children).forEach(function(ch){
+        if(ch.getAttribute('opacity')!=='0') return;
+        var bot=_bvSvgBottomY(ch);
+        if(bot!==null&&bot<=_booksAnim.cursorY){
+          var orig=ch.getAttribute('data-orig-opacity');
+          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
+        }
+      });
+    });
+    // Year label
+    var yr=_bvCurfewYToYear(_booksAnim.cursorY,canvas);
+    var yrEl=document.getElementById('bv-curfew-year');
+    if(yrEl) yrEl.innerHTML=yr!=null?_booksFmtYear(yr):'';
+    // Scroll
+    scroll.scrollTo({top:Math.max(0,_booksAnim.cursorY-scroll.clientHeight/2),behavior:'auto'});
   };
   _booksAnim.tick();
   _booksAnim.timer = setInterval(_booksAnim.tick, _booksAnim.speedMs);
+}
+
+function _bvSvgBottomY(el){
+  var tag=el.tagName.toLowerCase();
+  if(tag==='path'){var b=el.getBBox();return b.y+b.height;}
+  if(tag==='line'){var y1=parseFloat(el.getAttribute('y1')),y2=parseFloat(el.getAttribute('y2'));return Math.max(y1||0,y2||0);}
+  if(tag==='circle') return parseFloat(el.getAttribute('cy'))||0;
+  if(tag==='g'){var gb=el.getBBox();return gb.y+gb.height;}
+  return null;
 }
 
 function _booksAnimPause(){
@@ -628,11 +689,21 @@ function _booksAnimPause(){
 function _booksAnimStop(){
   _booksAnim.mode = 'stopped';
   if(_booksAnim.timer){ clearInterval(_booksAnim.timer); _booksAnim.timer = null; }
-  _booksAnim.idx = 0;
-  _booksAnim.rows = null;
   _booksAnim.tick = null;
-  var yEl = document.getElementById('bv-anim-year');
-  if(yEl){ yEl.style.opacity = '0'; yEl.textContent = '\u2014'; }
+  var canvas=document.getElementById('bv-canvas');
+  if(canvas){
+    canvas.querySelectorAll('.bv-hidden-by-curfew').forEach(function(el){el.classList.remove('bv-hidden-by-curfew');});
+    canvas.querySelectorAll('svg').forEach(function(sv){
+      [].slice.call(sv.children).forEach(function(ch){
+        if(ch.getAttribute('opacity')==='0'){
+          var orig=ch.getAttribute('data-orig-opacity');
+          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
+        }
+      });
+    });
+  }
+  var cursor=document.getElementById('bv-curfew');
+  if(cursor) cursor.style.display='none';
   document.querySelectorAll('.bv-row.hi').forEach(function(r){ r.classList.remove('hi'); });
   if(_booksAnimCtl) _booksAnimCtl.forceStop();
 }

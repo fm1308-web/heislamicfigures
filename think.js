@@ -6,7 +6,8 @@
 
 var _data=null,_booksData=null,_inited=false,_selConceptSlug=null,_tooltip=null;
 var _thinkAnimCtl=null,_thinkAnim={mode:'stopped',timer:null,cursorY:0,maxY:0,speedMs:1200,tick:null};
-var ROLE_COLORS={originator:'#EF9F27',developer:'#1D9E75',critic:'#D85A30',reviver:'#7F77DD',synthesizer:'#16A39C',transmitter:'#999999'};
+var ROLE_COLORS={originator:'#2ECC71',developer:'#3B82F6',critic:'#E24B4A',reviver:'#F59E0B',synthesizer:'#14B8A6',transmitter:'#38BDF8'};
+function _hexToRgba(hex,a){var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return 'rgba('+r+','+g+','+b+','+a+')';}
 var CATEGORIES=['theology','philosophy','law','mysticism','science','politics','language'];
 function _esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
@@ -157,12 +158,17 @@ function _renderCanvas(){
   var figYMap={};
   events.forEach(function(ev){if(ev.type==='fig') figYMap[ev.f.slug]={y:ev.y,f:ev.f};});
 
-  // Role tags
-  var roleTags={};
-  figs.forEach(function(f){
-    var role=(f.role||'transmitter').toLowerCase();
-    if(!roleTags[role]) roleTags[role]={role:role,count:0,y:figYMap[f.slug]?figYMap[f.slug].y:0};
-    roleTags[role].count++;
+  // Build role band spans — consecutive runs of the same role
+  var roleBands=[];
+  var figEvents=events.filter(function(ev){return ev.type==='fig';});
+  figEvents.forEach(function(ev){
+    var role=(ev.f.role||'transmitter').toLowerCase();
+    var last=roleBands.length?roleBands[roleBands.length-1]:null;
+    if(last&&last.role===role){
+      last.endY=ev.y+ROW_H;last.count++;
+    } else {
+      roleBands.push({role:role,startY:ev.y,endY:ev.y+ROW_H,count:1});
+    }
   });
 
   var html='';
@@ -170,14 +176,22 @@ function _renderCanvas(){
   // Thin gold line (school ruler — no glow)
   html+='<div class="tk-stem" style="top:'+(PAD-10)+'px;height:'+(totalH-PAD*2+20)+'px"></div>';
 
-  // Year labels — only where an event sits, plain muted text
-  var lastYrY=-999;
+  // Year labels — only for years that have a connected author or book, deduplicated
+  var _connectedYrs={};
   events.forEach(function(ev){
-    var midY=ev.y+ROW_H/2;
-    if(midY-lastYrY<ROW_H) return;
-    var yrTxt=ev.yr<0?Math.abs(ev.yr)+' BCE':String(ev.yr);
-    html+='<div class="tk-yr-mark tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px">'+yrTxt+'</div>';
-    lastYrY=midY;
+    var yr=ev.yr;
+    if(!_connectedYrs[yr]) _connectedYrs[yr]={count:0,midY:ev.y+ROW_H/2};
+    _connectedYrs[yr].count++;
+  });
+  var shownYrs={};
+  Object.keys(_connectedYrs).forEach(function(yr){
+    if(shownYrs[yr]) return;
+    shownYrs[yr]=true;
+    var info=_connectedYrs[yr];
+    var n=Number(yr);
+    var yrTxt=n<0?Math.abs(n)+'<span class="year-era">BCE</span>':n+'<span class="year-era">CE</span>';
+    var multi=info.count>1?' year-multi':'';
+    html+='<div class="tk-yr-mark tk-anim-el'+multi+'" data-y="'+info.midY+'" style="top:'+info.midY+'px">'+yrTxt+'</div>';
   });
 
   // Figure rows (LEFT of line)
@@ -194,26 +208,75 @@ function _renderCanvas(){
     if(dates) html+='<div class="tk-fig-meta">'+dates+'</div>';
     html+='</div></div>';
     // Fixed-position role dot at DOT_X
-    html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:'+color+'"></div>';
-    html+='<div class="tk-dash-left tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px"></div>';
+    html+='<div class="tk-role-dot tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px;background:'+color+'"></div>';
+    html+='<div class="tk-dash-left tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px"></div>';
   });
 
-  // Book rows (RIGHT of line)
-  events.forEach(function(ev){
-    if(ev.type!=='book') return;
+  // Book rows (RIGHT of line) — compact spacing, grouped for fan-out
+  var BOOK_ROW_H=22;
+  var _booksByAuthor={};
+  var bookEvents=events.filter(function(ev){return ev.type==='book';});
+  var bkYPos=PAD;
+  bookEvents.forEach(function(ev){
     var b=ev.b;
-    var midY=ev.y+ROW_H/2;
+    var bkY=bkYPos;
+    var midY=bkY+BOOK_ROW_H/2;
+    bkYPos+=BOOK_ROW_H;
     var marker=b.hasYear?'':'<span class="tk-no-yr">?</span> ';
-    html+='<div class="tk-book-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
-    html+=marker+'<a class="tk-book-link" href="#books" onclick="event.preventDefault();setView(\'books\');return false;">'+_esc(b.book.title)+'</a>';
+    html+='<div class="tk-book-row tk-anim-el" data-author="'+_esc(b.authorSlug)+'" data-y="'+midY+'" style="top:'+bkY+'px;height:'+BOOK_ROW_H+'px">';
+    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" onclick="event.preventDefault();setView(\'books\');return false;">'+_esc(b.book.title)+'</a>';
     html+='</div>';
-    html+='<div class="tk-dash-right tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px"></div>';
+    if(!_booksByAuthor[b.authorSlug]) _booksByAuthor[b.authorSlug]=[];
+    _booksByAuthor[b.authorSlug].push(midY);
   });
 
-  // Role tag pop-outs
-  Object.keys(roleTags).forEach(function(role){
-    var t=roleTags[role];var color=ROLE_COLORS[role]||'#999';var midY=t.y+ROW_H/2;
-    html+='<div class="tk-role-tag tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;border-color:'+color+';color:'+color+'">'+role.toUpperCase()+' ('+t.count+')</div>';
+  // LEFT background bands — role spans behind author column
+  roleBands.forEach(function(band){
+    var color=ROLE_COLORS[band.role]||'#999';
+    var h2=band.endY-band.startY;
+    html+='<div class="tk-role-band tk-anim-el" data-y="'+band.startY+'" style="top:'+band.startY+'px;height:'+h2+'px;background:linear-gradient(to right,rgba(0,0,0,0) 0%,'+_hexToRgba(color,0.08)+' 20%,'+_hexToRgba(color,0.06)+' 80%,transparent 100%);border-left:3px solid '+_hexToRgba(color,0.5)+'">';
+    html+='<span class="tk-role-band-label" style="color:'+_hexToRgba(color,0.85)+'">'+band.role.toUpperCase()+'</span>';
+    html+='</div>';
+  });
+
+  // RIGHT background bands — era bands behind books column (reuses _BV_ERA_BANDS from books.js)
+  var tkEraBands=window._BV_ERA_BANDS||[];
+  if(tkEraBands.length&&figEvents.length){
+    var firstYr=figEvents[0].yr,lastYr=figEvents[figEvents.length-1].yr;
+    // Map year to Y using event positions
+    function _tkYrToY(yr){
+      if(yr<=firstYr) return figEvents[0].y;
+      if(yr>=lastYr) return figEvents[figEvents.length-1].y+ROW_H;
+      for(var i=1;i<events.length;i++){
+        if(events[i].yr>=yr){
+          var prev=events[i-1],cur=events[i];
+          if(cur.yr===prev.yr) return cur.y;
+          var ratio=(yr-prev.yr)/(cur.yr-prev.yr);
+          return prev.y+ratio*(cur.y-prev.y);
+        }
+      }
+      return events[events.length-1].y+ROW_H;
+    }
+    tkEraBands.forEach(function(era){
+      if(era.end<=firstYr||era.start>=lastYr) return;
+      var ey1=_tkYrToY(Math.max(era.start,firstYr));
+      var ey2=_tkYrToY(Math.min(era.end,lastYr));
+      if(ey2-ey1<6) return;
+      html+='<div class="tk-era-band tk-anim-el" data-y="'+ey1+'" style="top:'+ey1+'px;height:'+(ey2-ey1)+'px;background:linear-gradient(to right,transparent 15%,rgba('+era.glow+',0.04) 50%,rgba('+era.glow+',0.10) 100%)">';
+      html+='<span class="tk-era-band-label" style="color:rgba('+era.glow+',0.85)">'+_esc(era.name)+'</span>';
+      html+='<span class="tk-era-band-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</span>';
+      html+='</div>';
+    });
+  }
+
+  // Book connectors built post-render (see below) so we can measure icon positions
+  var _fanAuthorData=[];
+  Object.keys(_booksByAuthor).forEach(function(slug){
+    var bookYs=_booksByAuthor[slug];
+    var fig=figYMap[slug];
+    if(!fig) return;
+    var role=(fig.f.role||'transmitter').toLowerCase();
+    _fanAuthorData.push({slug:slug,hitY:fig.y+ROW_H/2,color:ROLE_COLORS[role]||'#999',bookYs:bookYs});
   });
 
   // Relation curves — overlay SVG, does NOT affect layout flow
@@ -222,7 +285,7 @@ function _renderCanvas(){
   // Cap at 20 relations to prevent visual chaos
   var DOT_CENTER_X=456;
   var maxRels=20;
-  var svgPaths='';
+  var svgDefs='',svgPaths='';
   var sortedRels=rels.slice().sort(function(a,b){
     var da=figYMap[a.from]&&figYMap[a.to]?Math.abs(figYMap[a.to].y-figYMap[a.from].y):0;
     var db=figYMap[b.from]&&figYMap[b.to]?Math.abs(figYMap[b.to].y-figYMap[b.from].y):0;
@@ -247,31 +310,142 @@ function _renderCanvas(){
     else if(rtype==='UNCLE'||rtype==='NEPHEW'||rtype==='COUSIN') dashAttr=' stroke-dasharray="2,3"';
     else if(rtype!=='TEACHER'&&rtype!=='STUDENT') dashAttr=' opacity="0.18"';
 
-    svgPaths+='<path d="M '+DOT_CENTER_X+' '+y1+' C '+arcX+' '+y1+' '+arcX+' '+y2+' '+DOT_CENTER_X+' '+y2+'" fill="none" stroke="rgba(139,149,165,0.3)" stroke-width="1.2"'+dashAttr+'/>';
+    // Role-color tinting
+    var roleFrom=(a.f.role||'transmitter').toLowerCase();
+    var roleTo=(b.f.role||'transmitter').toLowerCase();
+    var colorFrom=ROLE_COLORS[roleFrom]||'#999';
+    var colorTo=ROLE_COLORS[roleTo]||'#999';
+    var strokeAttr;
+    if(roleFrom===roleTo){
+      strokeAttr='stroke="'+colorFrom+'" stroke-opacity="0.3"';
+    } else {
+      var gradId='tk-rg-'+ri;
+      var topY=Math.min(y1,y2),botY=Math.max(y1,y2);
+      var topColor=y1<y2?colorFrom:colorTo;
+      var botColor=y1<y2?colorTo:colorFrom;
+      svgDefs+='<linearGradient id="'+gradId+'" x1="0" y1="'+topY+'" x2="0" y2="'+botY+'" gradientUnits="userSpaceOnUse">';
+      svgDefs+='<stop offset="0%" stop-color="'+topColor+'" stop-opacity="0.3"/>';
+      svgDefs+='<stop offset="100%" stop-color="'+botColor+'" stop-opacity="0.3"/>';
+      svgDefs+='</linearGradient>';
+      strokeAttr='stroke="url(#'+gradId+')"';
+    }
+
+    var curveBottomY=Math.max(y1,y2);
+    svgPaths+='<path data-curfew-y="'+curveBottomY+'" d="M '+DOT_CENTER_X+' '+y1+' C '+arcX+' '+y1+' '+arcX+' '+y2+' '+DOT_CENTER_X+' '+y2+'" fill="none" '+strokeAttr+' stroke-width="1.2"'+dashAttr+'/>';
     // Inline pill label at curve apex
     var label=rtype;
     var lw=label.length*5+14;
-    svgPaths+='<rect x="'+(arcX-lw/2)+'" y="'+(midRelY-7)+'" width="'+lw+'" height="14" rx="7" fill="rgba(14,22,33,0.9)" stroke="rgba(139,149,165,0.2)" stroke-width="0.5"/>';
-    svgPaths+='<text x="'+arcX+'" y="'+(midRelY+3)+'" text-anchor="middle" fill="#7A8599" font-family="Source Sans 3,sans-serif" font-size="7" letter-spacing=".04em">'+_esc(label)+'</text>';
+    svgPaths+='<rect data-curfew-y="'+curveBottomY+'" x="'+(arcX-lw/2)+'" y="'+(midRelY-7)+'" width="'+lw+'" height="14" rx="7" fill="rgba(14,22,33,0.9)" stroke="rgba(139,149,165,0.2)" stroke-width="0.5"/>';
+    svgPaths+='<text data-curfew-y="'+curveBottomY+'" x="'+arcX+'" y="'+(midRelY+3)+'" text-anchor="middle" fill="#7A8599" font-family="Source Sans 3,sans-serif" font-size="7" letter-spacing=".04em">'+_esc(label)+'</text>';
   });
   // SVG overlay: absolute, does NOT affect layout. Width matches name column only.
-  if(svgPaths) html+='<svg class="tk-rel-svg" style="width:'+STEM_X+'px;height:'+totalH+'px">'+svgPaths+'</svg>';
+  if(svgPaths||svgDefs) html+='<svg class="tk-rel-svg" style="width:'+STEM_X+'px;height:'+totalH+'px">'+(svgDefs?'<defs>'+svgDefs+'</defs>':'')+svgPaths+'</svg>';
 
-  // Anim cursor line (hidden until playing)
-  html+='<div id="think-cursor" style="position:absolute;left:460px;width:80px;height:2px;background:rgba(212,175,55,0.7);box-shadow:0 0 8px rgba(212,175,55,0.5);z-index:10;display:none;pointer-events:none;top:'+PAD+'px"></div>';
+  // Curfew line — full-width, hidden until animate plays, year label rides on right end
+  html+='<div id="think-cursor" class="tk-curfew-line" style="display:none;top:'+PAD+'px"><span id="tkAnimateYear" class="tk-curfew-year"></span></div>';
+
+  // Store Y-to-year mapping for animate year label
+  _thinkAnim._events=events;
+  _thinkAnim._PAD=PAD;
+  _thinkAnim._ROW_H=ROW_H;
 
   canvas.style.height=totalH+'px';
   canvas.innerHTML=html;
   _thinkAnim.maxY=totalH;
 
-  // Wire click only (no hover tooltip)
+  // Build book connector SVG post-render, measuring actual icon positions
+  if(_fanAuthorData.length){
+    var canvasRect=canvas.getBoundingClientRect();
+    var STEM_RIGHT=STEM_X+6;
+    var icons=canvas.querySelectorAll('.tk-book-row .tk-book-icon');
+    var iconLeftByY={};
+    icons.forEach(function(ic){
+      var icRect=ic.getBoundingClientRect();
+      var row=ic.closest('.tk-book-row');
+      if(!row) return;
+      var rowTop=parseFloat(row.style.top)||0;
+      var rowH=parseFloat(row.style.height)||22;
+      var midY=rowTop+rowH/2;
+      iconLeftByY[Math.round(midY)]=icRect.left-canvasRect.left;
+    });
+    var fanSvg='';
+    _fanAuthorData.forEach(function(ad){
+      ad.bookYs.forEach(function(bkY){
+        var iconX=iconLeftByY[Math.round(bkY)];
+        if(iconX==null) iconX=556; // fallback
+        var lineBottomY=Math.max(ad.hitY,bkY);
+        fanSvg+='<line data-author="'+ad.slug+'" data-curfew-y="'+lineBottomY+'" x1="'+STEM_RIGHT+'" y1="'+ad.hitY+'" x2="'+iconX+'" y2="'+bkY+'" stroke="'+ad.color+'" stroke-width="1"/>';
+      });
+    });
+    if(fanSvg){
+      var svgEl=document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svgEl.setAttribute('style','position:absolute;top:0;left:0;width:100%;height:'+totalH+'px;pointer-events:none;z-index:3;overflow:visible');
+      svgEl.innerHTML=fanSvg;
+      canvas.appendChild(svgEl);
+    }
+  }
+
+  // Author click-to-highlight
+  var _selAuthor=null;
+  function _clearHighlight(){
+    _selAuthor=null;
+    canvas.querySelectorAll('.tk-dimmed').forEach(function(el){el.classList.remove('tk-dimmed');});
+    canvas.querySelectorAll('.tk-author-selected').forEach(function(el){el.classList.remove('tk-author-selected');});
+    // Un-dim SVG connector lines
+    canvas.querySelectorAll('line[data-author]').forEach(function(ln){ln.style.opacity='';});
+  }
+  function _highlightAuthor(slug){
+    if(_selAuthor===slug){_clearHighlight();return;}
+    _selAuthor=slug;
+    // Author rows, dots, dash-left
+    canvas.querySelectorAll('.tk-fig-row').forEach(function(el){
+      if(el.dataset.slug===slug){el.classList.remove('tk-dimmed');el.classList.add('tk-author-selected');}
+      else{el.classList.add('tk-dimmed');el.classList.remove('tk-author-selected');}
+    });
+    canvas.querySelectorAll('.tk-role-dot').forEach(function(el){
+      el.classList.toggle('tk-dimmed',el.dataset.slug!==slug);
+    });
+    canvas.querySelectorAll('.tk-dash-left').forEach(function(el){
+      el.classList.toggle('tk-dimmed',el.dataset.slug!==slug);
+    });
+    // Book rows
+    canvas.querySelectorAll('.tk-book-row').forEach(function(el){
+      el.classList.toggle('tk-dimmed',el.dataset.author!==slug);
+    });
+    // SVG connector lines
+    canvas.querySelectorAll('line[data-author]').forEach(function(ln){
+      ln.style.opacity=ln.getAttribute('data-author')===slug?'':'0.2';
+    });
+  }
   canvas.querySelectorAll('.tk-fig-row').forEach(function(el){
-    var slug=el.dataset.slug;
-    el.addEventListener('click',function(){
-      if(typeof PEOPLE!=='undefined'){var p=PEOPLE.find(function(pp){return pp.slug===slug;});
-        if(p&&typeof jumpTo==='function') jumpTo(p.famous);}
+    el.addEventListener('click',function(e){
+      e.stopPropagation();
+      _highlightAuthor(el.dataset.slug);
     });
   });
+  // Click empty space to clear
+  canvas.addEventListener('click',function(e){
+    if(!e.target.closest('.tk-fig-row')&&!e.target.closest('.tk-book-row')){
+      _clearHighlight();
+    }
+  });
+}
+
+// ── Y-to-year conversion for animate label ──
+function _tkYToYear(cursorY){
+  var evts=_thinkAnim._events;
+  if(!evts||!evts.length) return null;
+  var PAD=_thinkAnim._PAD||30,ROW_H=_thinkAnim._ROW_H||44;
+  for(var i=evts.length-1;i>=0;i--){
+    if(cursorY>=evts[i].y+ROW_H/2) return evts[i].yr;
+  }
+  return evts[0].yr;
+}
+function _tkUpdateYearLabel(yr){
+  var el=document.getElementById('tkAnimateYear');
+  if(!el) return;
+  if(yr==null){el.innerHTML='';return;}
+  el.innerHTML=yr<0?Math.abs(yr)+'<span class="year-era">BCE</span>':yr+'<span class="year-era">CE</span>';
 }
 
 // ── Anim functions ──
@@ -282,36 +456,51 @@ function _thinkAnimPlay(){
   var cursor=document.getElementById('think-cursor');
 
   if(_thinkAnim.mode==='paused'){
-    // Resume from current position
     _thinkAnim.mode='playing';
     if(cursor) cursor.style.display='';
     _thinkAnim.timer=setInterval(_thinkAnim.tick,_thinkAnim.speedMs);
     return;
   }
 
-  // Fresh start — hide all animatable elements
+  // Fresh start — hide ALL HTML elements and ALL SVG children
   _thinkAnim.mode='playing';
-  _thinkAnim.cursorY=20;
+  _thinkAnim.cursorY=_thinkAnim._PAD||20;
   _thinkAnim.speedMs=_thinkAnimCtl?_thinkAnimCtl.getSpeedMs():1200;
-  canvas.querySelectorAll('.tk-anim-el').forEach(function(el){el.style.opacity='0.08';});
-  var relSvg=canvas.querySelector('.tk-rel-svg');
-  if(relSvg) relSvg.style.opacity='0';
-  if(cursor){cursor.style.display='';cursor.style.top='20px';}
+  // Hide HTML elements via class
+  canvas.querySelectorAll('.tk-anim-el').forEach(function(el){el.classList.add('tk-hidden-by-curfew');});
+  // Hide every individual SVG child element (lines, paths, rects, text, circles)
+  canvas.querySelectorAll('svg [data-curfew-y]').forEach(function(el){
+    var orig=el.getAttribute('opacity');
+    if(orig!==null&&orig!=='0') el.setAttribute('data-orig-opacity',orig);
+    el.setAttribute('opacity','0');
+  });
+  if(cursor){cursor.style.display='';cursor.style.top=_thinkAnim.cursorY+'px';}
 
-  var STEP=4; // px per tick
+  var STEP=4;
   _thinkAnim.tick=function(){
     if(_thinkAnim.mode!=='playing') return;
     _thinkAnim.cursorY+=STEP;
     if(_thinkAnim.cursorY>_thinkAnim.maxY){_thinkAnimStop();return;}
     if(cursor) cursor.style.top=_thinkAnim.cursorY+'px';
-    // Reveal elements whose data-y <= cursorY
-    canvas.querySelectorAll('.tk-anim-el').forEach(function(el){
+    // Reveal HTML elements whose data-y <= cursorY
+    canvas.querySelectorAll('.tk-hidden-by-curfew').forEach(function(el){
       var ey=parseFloat(el.dataset.y);
-      if(ey<=_thinkAnim.cursorY) el.style.opacity='';
+      if(!isNaN(ey)&&ey<=_thinkAnim.cursorY) el.classList.remove('tk-hidden-by-curfew');
     });
-    // Show relation SVG once enough figures revealed
-    if(relSvg&&_thinkAnim.cursorY>100) relSvg.style.opacity='';
-    // Scroll to follow cursor
+    // Reveal individual SVG children whose data-curfew-y <= cursorY
+    canvas.querySelectorAll('svg [data-curfew-y]').forEach(function(el){
+      if(el.getAttribute('opacity')==='0'){
+        var cy=parseFloat(el.getAttribute('data-curfew-y'));
+        if(!isNaN(cy)&&cy<=_thinkAnim.cursorY){
+          var orig=el.getAttribute('data-orig-opacity');
+          if(orig) el.setAttribute('opacity',orig);
+          else el.removeAttribute('opacity');
+        }
+      }
+    });
+    // Update running year label
+    _tkUpdateYearLabel(_tkYToYear(_thinkAnim.cursorY));
+    // Scroll to follow curfew
     var wrap=document.getElementById('think-canvas-wrap');
     if(wrap) wrap.scrollTop=Math.max(0,_thinkAnim.cursorY-wrap.clientHeight/2);
   };
@@ -327,13 +516,22 @@ function _thinkAnimStop(){
   _thinkAnim.mode='stopped';
   if(_thinkAnim.timer){clearInterval(_thinkAnim.timer);_thinkAnim.timer=null;}
   if(_thinkAnimCtl) _thinkAnimCtl.forceStop();
-  // Show all elements
   var canvas=document.getElementById('think-canvas');
-  if(canvas) canvas.querySelectorAll('.tk-anim-el').forEach(function(el){el.style.opacity='';});
-  var relSvg=canvas&&canvas.querySelector('.tk-rel-svg');
-  if(relSvg) relSvg.style.opacity='';
+  if(canvas){
+    // Reveal all HTML elements
+    canvas.querySelectorAll('.tk-hidden-by-curfew').forEach(function(el){el.classList.remove('tk-hidden-by-curfew');});
+    // Reveal all SVG children — restore original opacity
+    canvas.querySelectorAll('svg [data-curfew-y]').forEach(function(el){
+      if(el.getAttribute('opacity')==='0'){
+        var orig=el.getAttribute('data-orig-opacity');
+        if(orig) el.setAttribute('opacity',orig);
+        else el.removeAttribute('opacity');
+      }
+    });
+  }
   var cursor=document.getElementById('think-cursor');
   if(cursor) cursor.style.display='none';
+  _tkUpdateYearLabel(null);
 }
 
 function _showTooltip(e,f){
