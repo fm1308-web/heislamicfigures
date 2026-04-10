@@ -212,16 +212,26 @@ function _renderCanvas(){
     html+='<div class="tk-dash-left tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px"></div>';
   });
 
-  // Book rows (RIGHT of line) — compact spacing, grouped for fan-out
+  // Book rows (RIGHT of line) — downward-only from author, grouped for fan-out
   var BOOK_ROW_H=22;
   var _booksByAuthor={};
   var bookEvents=events.filter(function(ev){return ev.type==='book';});
+  // Sort: author DOB asc, book year asc, title asc (stable tiebreaker)
+  bookEvents.sort(function(a,b){
+    var fA=figYMap[a.b.authorSlug],fB=figYMap[b.b.authorSlug];
+    var dobA=fA?fA.f.dob:0,dobB=fB?fB.f.dob:0;
+    if(dobA!==dobB) return dobA-dobB;
+    if(a.b.yr!==b.b.yr) return a.b.yr-b.b.yr;
+    return (a.b.book.title||'').localeCompare(b.b.book.title||'');
+  });
   var bkYPos=PAD;
   bookEvents.forEach(function(ev){
     var b=ev.b;
-    var bkY=bkYPos;
+    var authorEntry=figYMap[b.authorSlug];
+    var authorRowY=authorEntry?authorEntry.y:PAD;
+    var bkY=Math.max(authorRowY,bkYPos);
     var midY=bkY+BOOK_ROW_H/2;
-    bkYPos+=BOOK_ROW_H;
+    bkYPos=bkY+BOOK_ROW_H;
     var marker=b.hasYear?'':'<span class="tk-no-yr">?</span> ';
     html+='<div class="tk-book-row tk-anim-el" data-author="'+_esc(b.authorSlug)+'" data-y="'+midY+'" style="top:'+bkY+'px;height:'+BOOK_ROW_H+'px">';
     html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" onclick="event.preventDefault();setView(\'books\');return false;">'+_esc(b.book.title)+'</a>';
@@ -229,6 +239,8 @@ function _renderCanvas(){
     if(!_booksByAuthor[b.authorSlug]) _booksByAuthor[b.authorSlug]=[];
     _booksByAuthor[b.authorSlug].push(midY);
   });
+  // Extend canvas height if book column overflows figure column
+  totalH=Math.max(totalH,bkYPos+PAD);
 
   // LEFT background bands — role spans behind author column
   roleBands.forEach(function(band){
