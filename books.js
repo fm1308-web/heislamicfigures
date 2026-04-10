@@ -145,9 +145,9 @@ function _booksInjectStyles(){
   .bv-read-btn{display:inline-block;margin-left:6px;padding:2px 8px;background:rgba(56,189,248,.14);border:1px solid #38bdf8;border-radius:2px;font-size:9px;color:#38bdf8;letter-spacing:.08em;text-decoration:none;font-family:'Cinzel',serif;font-weight:600;vertical-align:middle}
   .bv-read-btn:hover{background:rgba(56,189,248,.3);color:#fff}
   .bv-study-badge{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid rgba(212,175,55,.5);border-radius:2px;font-size:9px;color:var(--gold,#D4AF37);letter-spacing:.08em;font-family:'Cinzel',serif;vertical-align:middle}
-  .bv-year-chip{position:absolute;transform:translateY(-50%);width:72px;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;background:var(--bg0,#0E1621);border:1px solid rgba(107,114,128,.35);border-radius:2px;padding:3px 4px;letter-spacing:.02em;z-index:5;white-space:nowrap;box-shadow:0 0 6px rgba(14,22,33,.9);pointer-events:none}
-  .bv-year-chip.year-multi{color:#D4AF37;border-color:rgba(212,175,55,.5)}
-  .bv-year-chip.scripture{border-color:var(--gold,#D4AF37);background:#1a1610}
+  .bv-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
+  .bv-year-chip.year-multi{color:#D4AF37}
+  .bv-year-chip.scripture{color:#D4AF37;font-weight:600;text-shadow:0 0 4px rgba(212,175,55,.4)}
   .bv-row.is-scripture .bv-row-title{color:var(--gold,#D4AF37);font-weight:600;letter-spacing:.01em}
   .bv-row.is-scripture .bv-row-meta{color:rgba(212,175,55,.62);font-style:italic}
   svg.bv-leaves{position:absolute;top:0;left:0;width:100%;z-index:2;overflow:visible}
