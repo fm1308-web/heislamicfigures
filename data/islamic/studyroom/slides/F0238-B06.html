@@ -4,50 +4,11 @@
 <meta charset="utf-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #1a1a2e;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  #canvas-container {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding: 12px 12px 0 12px;
-  }
-  canvas {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-  }
-  #controls {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 10px 12px;
-    color: #c9a84c;
-    font-size: 14px;
-    flex-shrink: 0;
-    width: 100%;
-    justify-content: center;
-  }
-  button {
-    background: #c9a84c;
-    color: #1a1a2e;
-    border: none;
-    padding: 8px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-    border-radius: 2px;
-  }
+  body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; height: 100vh; overflow: hidden; }
+  #canvas-container { flex: 1; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; padding: 12px 12px 0 12px; }
+  canvas { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+  #controls { display: flex; align-items: center; gap: 16px; padding: 10px 12px; color: #c9a84c; font-size: 14px; flex-shrink: 0; width: 100%; justify-content: center; }
+  button { background: #c9a84c; color: #1a1a2e; border: none; padding: 8px 20px; cursor: pointer; font-weight: bold; font-size: 13px; border-radius: 2px; }
   button:disabled { opacity: 0.3; cursor: default; }
   #page-info { min-width: 80px; text-align: center; }
 </style>
@@ -61,18 +22,15 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   let pdfDoc = null, currentPage = 1;
   const canvas = document.getElementById('slide-canvas');
   const ctx = canvas.getContext('2d');
-
   pdfjsLib.getDocument('F0238-B06.pdf').promise.then(doc => {
     pdfDoc = doc;
     document.getElementById('page-info').textContent = `1 / ${doc.numPages}`;
     renderPage(1);
   });
-
   function renderPage(num) {
     pdfDoc.getPage(num).then(page => {
       const container = document.getElementById('canvas-container');
@@ -84,21 +42,18 @@
       canvas.width = vp.width;
       canvas.height = vp.height;
       page.render({ canvasContext: ctx, viewport: vp }).promise.then(() => {
-        document.getElementById('page-info').textContent =
-          `${num} / ${pdfDoc.numPages}`;
+        document.getElementById('page-info').textContent = `${num} / ${pdfDoc.numPages}`;
         document.getElementById('prev-btn').disabled = (num <= 1);
         document.getElementById('next-btn').disabled = (num >= pdfDoc.numPages);
       });
     });
   }
-
   function changePage(delta) {
     const next = currentPage + delta;
     if (next < 1 || next > pdfDoc.numPages) return;
     currentPage = next;
     renderPage(currentPage);
   }
-
   window.addEventListener('message', e => {
     if (e.data === 'next') changePage(1);
     if (e.data === 'prev') changePage(-1);
