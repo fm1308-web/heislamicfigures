@@ -2305,6 +2305,7 @@ body.snapshot-mode *{scrollbar-width:none}
 #think-legend{display:flex;gap:14px;padding:4px 16px;border-bottom:1px solid rgba(45,55,72,0.5);flex-wrap:wrap}
 .think-legend-item{display:flex;align-items:center;gap:4px;font-size:10px;font-family:'Cinzel',serif;color:#A0AEC0;letter-spacing:.06em}
 .think-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.think-legend-sep{display:inline-block;width:1px;height:12px;background:#ccc;margin:0 8px;vertical-align:middle}
 #think-canvas-wrap{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
 #think-canvas{position:relative;width:100%}
 .think-empty{display:flex;align-items:center;justify-content:center;min-height:300px;font-family:'Cinzel',serif;font-size:13px;color:#6B7280;letter-spacing:.1em}
