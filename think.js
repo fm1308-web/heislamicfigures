@@ -328,7 +328,10 @@ function _renderCanvas(){
     var midY=bkY+BOOK_ROW_H/2;
     var marker=b.hasYear?'':'<span class="tk-no-yr">?</span> ';
     html+='<div class="tk-book-row tk-anim-el" data-author="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+bkY+'px;height:'+BOOK_ROW_H+'px;align-items:center">';
-    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" onclick="event.preventDefault();setView(\'books\');return false;">'+_esc(b.title)+'</a>';
+    var _bid=_esc(b.id||'');
+    var _bookFull=(_booksData&&_booksData.books)?_booksData.books.find(function(x){return x.id===b.id;}):null;
+    var _readBtn=(_bookFull&&_bookFull.is_free&&_bookFull.url)?'<a class="tk-book-read" href="'+_esc(_bookFull.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">READ</a>':'';
+    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" data-book-id="'+_bid+'" onclick="event.preventDefault();setView(\'books\');setTimeout(function(){if(window._scrollToBookId)window._scrollToBookId(\''+_bid+'\');},350);return false;">'+_esc(b.title)+'</a>'+_readBtn;
     html+='</div>';
   });
 

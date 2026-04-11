@@ -908,4 +908,17 @@ window._restoreState_books=function(s){
       if(typeof _resizeShell==='function') setTimeout(_resizeShell, 20);
     }
   };
+
+  window._scrollToBookId=function(bookId){
+    function tryScroll(){
+      var row=document.querySelector('.bv-row[data-id="'+bookId+'"]');
+      if(!row) return false;
+      row.scrollIntoView({behavior:'smooth',block:'center'});
+      row.classList.add('bv-row-flash');
+      setTimeout(function(){row.classList.remove('bv-row-flash');},1800);
+      return true;
+    }
+    if(!tryScroll()) setTimeout(tryScroll,400);
+    setTimeout(tryScroll,900);
+  };
 })();
