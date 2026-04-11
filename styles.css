@@ -131,7 +131,9 @@ a:hover{text-decoration:underline}
 }
 #viewDescInline{font-family:'Lato','Source Sans 3',sans-serif;font-size:12px;font-style:italic;color:var(--muted,#687B8C);margin-right:12px;white-space:nowrap}
 #hdrYearControls{
+  position:relative;
   flex:1;min-width:0;display:flex;align-items:center;gap:10px;
+  padding-bottom:14px;
   font-family:'Cinzel',serif;font-size:11px;color:#A0AEC0;letter-spacing:.05em;
 }
 #hdrYearControls #yearQuestion{flex-shrink:0;white-space:nowrap}
@@ -154,7 +156,7 @@ a:hover{text-decoration:underline}
 /* hdrRow3 is now an empty mount point for events.js toolbar injection */
 #hdrRow3{display:none;align-items:center;gap:10px;padding:7px 20px;background:rgba(212,175,55,.03);border-bottom:1px solid #2D3748}
 #hdrRow3:empty{display:none!important}
-#yearQuestion{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.1em;color:var(--muted);white-space:nowrap;flex-shrink:0}
+#yearQuestion{font-family:'Cinzel',serif;font-size:15px;font-weight:600;letter-spacing:.08em;color:#D4AF37;white-space:nowrap;flex-shrink:0}
 .hdr-range-cap{font-family:'Cinzel',serif;font-size:9px;color:var(--muted);white-space:nowrap;flex-shrink:0}
 #yearDisplay{
   font-family:'Cinzel',serif;font-size:20px;font-weight:700;
@@ -171,6 +173,9 @@ a:hover{text-decoration:underline}
 #sliderThumb:hover{transform:scale(1.25)}
 #sliderThumb.dragging{cursor:grabbing;transform:scale(1.1)}
 #sliderInput{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+#yrPrecisionPill{display:inline-block;margin-left:10px;padding:2px 8px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;color:#d4af37;border:1px solid rgba(212,175,55,0.5);border-radius:10px;background:rgba(212,175,55,0.08);opacity:0;transition:opacity 150ms ease;vertical-align:middle}
+#yrPrecisionPill.show{opacity:0.9}
+#yrShiftHint{position:absolute;left:0;bottom:0;margin:0;font-size:9px;letter-spacing:0.5px;color:rgba(255,255,255,0.55);font-style:italic;white-space:nowrap;pointer-events:none}
 #yearClearBtn{
   background:none;border:none;cursor:pointer;font-size:15px;color:var(--muted);
   padding:2px 6px;opacity:0;pointer-events:none;transition:opacity .12s,color .12s;flex-shrink:0;
@@ -2367,3 +2372,6 @@ body.snapshot-mode *{scrollbar-width:none}
 .think-tooltip .tt-name{font-family:'Cinzel',serif;font-weight:700;color:#D4AF37;font-size:13px}
 .think-tooltip .tt-role{font-size:11px;text-transform:capitalize;margin-top:2px}
 .think-tooltip .tt-evidence{font-size:11px;color:#A0AEC0;margin-top:4px;font-style:italic}
+.bv-row-flash{box-shadow:0 0 0 2px #d4af37,0 0 18px rgba(212,175,55,0.6);transition:box-shadow 200ms ease}
+.tk-book-read{display:inline-block;margin-left:8px;padding:1px 7px;font-size:9px;font-family:'Cinzel',serif;letter-spacing:0.5px;color:#4FD1C5;border:1px solid rgba(79,209,197,0.5);border-radius:8px;background:rgba(79,209,197,0.08);text-decoration:none;vertical-align:middle}
+.tk-book-read:hover{background:rgba(79,209,197,0.18)}

@@ -810,6 +810,24 @@ function updateCentScrollbar(){
 }
 
 // ═══════════════════════════════════════════════════════════
+// YEAR SLIDER — Shift precision helper (universal)
+// Hold Shift → slider steps at fineStep; release → coarseStep.
+// Works for native <input type="range"> year sliders.
+// The main custom slider wires its own shift handling in initSlider().
+// ═══════════════════════════════════════════════════════════
+window._enableShiftPrecision=function(sliderEl,coarseStep,fineStep){
+  if(!sliderEl) return;
+  sliderEl.step=coarseStep;
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Shift') sliderEl.step=fineStep;
+  });
+  document.addEventListener('keyup',function(e){
+    if(e.key==='Shift') sliderEl.step=coarseStep;
+  });
+  window.addEventListener('blur',function(){sliderEl.step=coarseStep;});
+};
+
+// ═══════════════════════════════════════════════════════════
 // YEAR SLIDER
 // ═══════════════════════════════════════════════════════════
 function initSlider(){
@@ -818,7 +836,11 @@ function initSlider(){
   const fill=document.getElementById('sliderFill');
 
   function yr2pct(yr){return((yr-MIN_YR)/(MAX_YR-MIN_YR))*100;}
-  function px2yr(px,w){return Math.round((MIN_YR+Math.max(0,Math.min(1,px/w))*(MAX_YR-MIN_YR))/5)*5;}
+  function px2yr(px,w){
+    var step=window._yrSliderShift?1:5;
+    var raw=MIN_YR+Math.max(0,Math.min(1,px/w))*(MAX_YR-MIN_YR);
+    return Math.round(raw/step)*step;
+  }
 
   function setYear(yr){
     const pct=yr2pct(yr);
@@ -854,12 +876,28 @@ function initSlider(){
   document.addEventListener('touchend',()=>{dragging=false;thumb.classList.remove('dragging');});
   thumb.addEventListener('keydown',e=>{
     let yr=activeYear||800;
-    if(e.key==='ArrowRight'||e.key==='ArrowUp')yr=Math.min(MAX_YR,yr+5);
-    if(e.key==='ArrowLeft'||e.key==='ArrowDown')yr=Math.max(MIN_YR,yr-5);
+    var step=e.shiftKey?1:5;
+    if(e.key==='ArrowRight'||e.key==='ArrowUp')yr=Math.min(MAX_YR,yr+step);
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown')yr=Math.max(MIN_YR,yr-step);
     if(e.key==='PageUp')yr=Math.min(MAX_YR,yr+100);
     if(e.key==='PageDown')yr=Math.max(MIN_YR,yr-100);
     setYear(yr);
   });
+
+  // Shift precision: 5yr default → 1yr while Shift held (drag + arrow keys)
+  window._yrSliderShift=false;
+  var pill=document.getElementById('yrPrecisionPill');
+  var nativeSl=document.getElementById('sliderInput');
+  function setShift(on){
+    if(window._yrSliderShift===on) return;
+    window._yrSliderShift=on;
+    if(nativeSl) nativeSl.step=on?1:5;
+    if(pill) pill.classList.toggle('show',on);
+    // Mid-drag toggles take effect on next mousemove automatically.
+  }
+  document.addEventListener('keydown',function(e){if(e.key==='Shift')setShift(true);});
+  document.addEventListener('keyup',function(e){if(e.key==='Shift')setShift(false);});
+  window.addEventListener('blur',function(){setShift(false);});
   // Slider starts at left edge — inactive until user clicks YEAR FILTER
   thumb.style.left='0%'; fill.style.width='0%';
 }
