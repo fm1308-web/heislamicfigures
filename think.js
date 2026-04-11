@@ -24,13 +24,14 @@ async function _loadData(){
     var oldData=await ro.json();
     (oldData.concepts||[]).forEach(function(c){oldDataIdx[c.slug]=c.figures||[];});
   }catch(e){/* optional fallback data, silent if missing */}
-  _data=_thinkTransform(raw,rolesIdx||{},oldDataIdx);
+  // Load books.json BEFORE transform so transform can resolve year_display per book id.
   if(!_booksData){
     try{
       if(window._BOOKS_DATA) _booksData=window._BOOKS_DATA;
       else{var r2=await fetch('data/islamic/books.json?v='+Date.now());_booksData=await r2.json();window._BOOKS_DATA=_booksData;}
     }catch(e){_booksData={books:[]};}
   }
+  _data=_thinkTransform(raw,rolesIdx||{},oldDataIdx);
 }
 
 // Transform think_books.json (+ think.json.old bookless authors) into merged row list.
@@ -41,6 +42,11 @@ function _thinkTransform(raw,rolesIdx,oldDataIdx){
   var missingRoles=[];
   var missingYear=[];
   var missingRolesOld=[];
+  // Lookup: book_id -> year_display (from books.json, already clamped to author lifespan).
+  var _ydById={};
+  if(_booksData&&_booksData.books){
+    _booksData.books.forEach(function(x){if(x&&x.id&&x.year_display!=null)_ydById[x.id]=x.year_display;});
+  }
   (raw.concepts||[]).forEach(function(c){
     var figs=[];
     var authorsWithBooks=new Set();
@@ -51,7 +57,9 @@ function _thinkTransform(raw,rolesIdx,oldDataIdx){
       authorsWithBooks.add(sl);
       var role=(rolesIdx[c.slug]&&rolesIdx[c.slug][sl])||'transmitter';
       if(!(rolesIdx[c.slug]&&rolesIdx[c.slug][sl])) missingRoles.push(c.slug+'/'+sl);
-      var by=b.year;
+      var _rawYr=b.year;
+      var _yd=(b.book_id&&_ydById[b.book_id]!=null)?_ydById[b.book_id]:null;
+      var by=(_yd!=null?_yd:_rawYr);
       var hasYear=(by!=null);
       if(!hasYear){
         by=(b.author_dob!=null?b.author_dob+30:600);

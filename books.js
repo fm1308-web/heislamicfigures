@@ -7,6 +7,8 @@ const _BV_BOT_PAD = 80;
 const _BV_LEFT_W = 540;
 const _BV_STEM_X = 600;
 
+function _bYr(b){return b.year_display!=null?b.year_display:b.year;}
+
 let _BOOKS_DATA = null;
 var _ANCIENT_DATA = null;
 var _ancientOn = false;
@@ -43,17 +45,17 @@ const _BV_ERA_BANDS = [
 window._BV_ERA_BANDS = _BV_ERA_BANDS;
 
 function _booksYearToY(yr, books, rowMap){
-  const withYear = books.filter(b=>b.year!=null);
+  const withYear = books.filter(b=>_bYr(b)!=null);
   if(!withYear.length) return _BV_TOP_PAD;
   const first = withYear[0], last = withYear[withYear.length-1];
-  if(yr <= first.year) return rowMap[first.id].midY;
-  if(yr >= last.year) return rowMap[last.id].midY;
+  if(yr <= _bYr(first)) return rowMap[first.id].midY;
+  if(yr >= _bYr(last)) return rowMap[last.id].midY;
   for(let i=1; i<withYear.length; i++){
-    if(withYear[i].year >= yr){
+    if(_bYr(withYear[i]) >= yr){
       const prev = withYear[i-1];
       const curr = withYear[i];
-      if(curr.year===prev.year) return rowMap[curr.id].midY;
-      const ratio = (yr - prev.year) / (curr.year - prev.year);
+      if(_bYr(curr)===_bYr(prev)) return rowMap[curr.id].midY;
+      const ratio = (yr - _bYr(prev)) / (_bYr(curr) - _bYr(prev));
       return rowMap[prev.id].midY + ratio*(rowMap[curr.id].midY - rowMap[prev.id].midY);
     }
   }
@@ -208,8 +210,8 @@ function _booksFiltered(){
     return true;
   });
   out.sort((a,b)=>{
-    const ay=a.year==null?99999:a.year;
-    const by=b.year==null?99999:b.year;
+    const ay=_bYr(a)==null?99999:_bYr(a);
+    const by=_bYr(b)==null?99999:_bYr(b);
     return ay-by;
   });
   return out;
@@ -227,8 +229,8 @@ function _booksBuildCanvas(){
     _ANCIENT_DATA.books.forEach(function(b){ merged.push({book:b, ancient:true}); });
   }
   merged.sort(function(a,b){
-    var ay=a.book.year==null?99999:a.book.year;
-    var by=b.book.year==null?99999:b.book.year;
+    var ay=_bYr(a.book)==null?99999:_bYr(a.book);
+    var by=_bYr(b.book)==null?99999:_bYr(b.book);
     return ay-by;
   });
   if(!merged.length){
@@ -242,7 +244,7 @@ function _booksBuildCanvas(){
   const rowMap = {};
   // Count books per year for multi-event highlighting
   const _yrCount = {};
-  merged.forEach(function(entry){ var yr=entry.book.year; if(yr!=null) _yrCount[yr]=(_yrCount[yr]||0)+1; });
+  merged.forEach(function(entry){ var yr=_bYr(entry.book); if(yr!=null) _yrCount[yr]=(_yrCount[yr]||0)+1; });
   let html = '';
   html += '<div id="bv-stem" style="top:'+(_BV_TOP_PAD-10)+'px;height:'+(totalH - _BV_TOP_PAD - _BV_BOT_PAD + 20)+'px"></div>';
 
@@ -263,7 +265,7 @@ function _booksBuildCanvas(){
       html += '<div class="bv-row-main"><div class="bv-row-title" style="color:#8B9AAF">'+_booksEscape(b.title)+'</div>';
       html += '<div class="bv-row-meta" style="color:#6B7280">'+ancMeta+ancBadge+'</div>';
       html += '</div></div>';
-      var ancMulti = b.year!=null&&_yrCount[b.year]>1?' year-multi':'';
+      var ancMulti = _bYr(b)!=null&&_yrCount[_bYr(b)]>1?' year-multi':'';
       html += '<div class="bv-year-chip'+ancMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px">'+yearTxt+'</div>';
     } else {
       // Islamic book row — original styling
@@ -277,14 +279,15 @@ function _booksBuildCanvas(){
       const meta = metaTxt+badgeHtml;
       const nameAttr=_booksEscape(b.author_name||'');
       const idAttr=_booksEscape(b.id||'');
-      const yearTxt=_booksFmtYear(b.year);
+      const yearTxt=_booksFmtYear(_bYr(b));
+      const _titleAttr=(b.year!=null&&b.year!==_bYr(b)?' title="Published '+b.year+'"':'');
 
-      html += '<div class="bv-row'+(isScripture?' is-scripture':'')+'" data-id="'+idAttr+'" data-name="'+nameAttr+'" data-year="'+(b.year==null?'':b.year)+'" style="top:'+y+'px;height:'+_BV_ROW_H+'px">';
+      html += '<div class="bv-row'+(isScripture?' is-scripture':'')+'" data-id="'+idAttr+'" data-name="'+nameAttr+'" data-year="'+(_bYr(b)==null?'':_bYr(b))+'"'+_titleAttr+' style="top:'+y+'px;height:'+_BV_ROW_H+'px">';
       html += '<div class="bv-row-main"><div class="bv-row-title">'+_booksEscape(b.title)+'</div>';
       if(meta) html += '<div class="bv-row-meta">'+meta+'</div>';
       html += '</div></div>';
 
-      var bkMulti = b.year!=null&&_yrCount[b.year]>1?' year-multi':'';
+      var bkMulti = _bYr(b)!=null&&_yrCount[_bYr(b)]>1?' year-multi':'';
       html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+bkMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
     }
   });
