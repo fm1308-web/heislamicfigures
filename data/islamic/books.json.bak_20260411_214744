@@ -6,6 +6,158 @@
   },
   "books": [
     {
+      "id": "F0767-B01",
+      "slug": "F0767",
+      "title": "Scrolls of Idris (Suhuf-i-Idris)",
+      "author_hidden": true,
+      "revealed_to": "Idris",
+      "year": -3000,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -3000
+    },
+    {
+      "id": "F0761-B01",
+      "slug": "F0761",
+      "title": "Scrolls of Ibrahim (Suhuf Ibrahim)",
+      "author_hidden": true,
+      "revealed_to": "Ibrahim",
+      "year": -1800,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -1800
+    },
+    {
+      "id": "F1076-B01",
+      "slug": "F1076",
+      "title": "Torah (Tawrat)",
+      "author_hidden": true,
+      "revealed_to": "Musa",
+      "year": -1300,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -1300
+    },
+    {
+      "id": "F0552-B01",
+      "slug": "F0552",
+      "title": "Psalms (Zabur)",
+      "author_hidden": true,
+      "revealed_to": "Dawud",
+      "year": -1000,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -1000
+    },
+    {
+      "id": "F0786-B01",
+      "slug": "F0786",
+      "title": "Gospel (Injil)",
+      "author_hidden": true,
+      "revealed_to": "Isa",
+      "year": 30,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": 30
+    },
+    {
+      "id": "F1132-B01",
+      "slug": "F1132",
+      "title": "The Qur'an",
+      "author_hidden": true,
+      "revealed_to": "Prophet Muhammad",
+      "year": 610,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Revelation and prophecy",
+        "Quranic narrative",
+        "Divine unity (tawhid)",
+        "Eschatology (akhira)"
+      ],
+      "year_display": 610
+    },
+    {
       "id": "F0012-B01",
       "slug": "F0012",
       "title": "Lawa'ih (Flashes of Light)",
@@ -146,9 +298,7 @@
         "Substantive law (fiqh)",
         "Ritual worship (ibadat)"
       ],
-      "year_display": 889,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sunan_abu_dawud.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 889
     },
     {
       "id": "F0167-B01",
@@ -2097,9 +2247,7 @@
         "Prophetic biography (sira)",
         "Companions' lives (sahaba)"
       ],
-      "year_display": 870,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sahih_bukhari.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 870
     },
     {
       "id": "F0776-B01",
@@ -2184,9 +2332,7 @@
         "Ritual worship (ibadat)",
         "Substantive law (fiqh)"
       ],
-      "year_display": 875,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sahih_muslim.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 875
     },
     {
       "id": "F0814-B01",
@@ -3192,9 +3338,7 @@
         "Vices and virtues",
         "Adab (refined conduct)"
       ],
-      "year_display": 1277,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/40_hadith_nawawi.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1277
     },
     {
       "id": "F1648-B81",
@@ -3221,9 +3365,7 @@
         "Vices and virtues",
         "Adab (refined conduct)"
       ],
-      "year_display": 1277,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/40_hadith_nawawi.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1277
     },
     {
       "id": "F1648-B02",
@@ -9186,7 +9328,7 @@
         "Islamic Philosophy",
         "Scholar"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -9197,9 +9339,7 @@
         "Political philosophy (virtuous city)",
         "Imamate doctrine"
       ],
-      "year_display": 1972,
-      "free_url": "https://islamicbulletin.org/en/ebooks/new_muslim/the_true_religion_of_god.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1972
     },
     {
       "id": "F0371-B50",
@@ -10036,7 +10176,7 @@
         "Islamic Theology",
         "Ruler"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -10050,9 +10190,7 @@
         "Esoteric interpretation (ta'wil)",
         "Political theory"
       ],
-      "year_display": 1940,
-      "free_url": "https://www.kalamullah.com/40-hadith-nawawi.html",
-      "free_source": "kalamullah"
+      "year_display": 1940
     },
     {
       "id": "F0495-B53",
@@ -10966,7 +11104,7 @@
         "Shadhiliyya",
         "Mystic"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -10980,9 +11118,7 @@
         "Metaphysics of being",
         "Revelation and prophecy"
       ],
-      "year_display": 1961,
-      "free_url": "https://islamicbulletin.org/en/ebooks/new_muslim/understanding_islam.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1961
     },
     {
       "id": "F0613-B50",
@@ -13552,7 +13688,7 @@
       "topics": [
         "biography"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -13563,9 +13699,7 @@
         "Revelation and prophecy",
         "Quranic narrative"
       ],
-      "year_display": 833,
-      "free_url": "https://islamicbulletin.org/en/ebooks/prophet/sirat_Ibn_Hisham.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 833
     },
     {
       "id": "F0738-B52",
@@ -16777,7 +16911,7 @@
       "topics": [
         "non-fiction"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -16787,9 +16921,7 @@
         "Companions' lives (sahaba)",
         "Revelation and prophecy"
       ],
-      "year_display": 1983,
-      "free_url": "https://islamicbulletin.org/en/ebooks/prophet/the_life_of_prophet_muhammad.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1983
     },
     {
       "id": "F0986-B51",
@@ -23334,7 +23466,7 @@
       "topics": [
         "religious text"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -23346,9 +23478,7 @@
         "Prophetic biography (sira)",
         "Companions' lives (sahaba)"
       ],
-      "year_display": 1992,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sahih_bukhari.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1992
     },
     {
       "id": "F1810-B55",
@@ -23939,7 +24069,7 @@
         "Hadith Sciences",
         "Scholar"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -23952,9 +24082,7 @@
         "Quranic exegesis (tafsir)",
         "Universal history"
       ],
-      "year_display": 1373,
-      "free_url": "https://islamicbulletin.org/en/ebooks/prophet/stories_of_the_prophets.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1373
     },
     {
       "id": "F0741-B55",
@@ -30533,6 +30661,149 @@
         "adab"
       ],
       "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1387MuhammadFaridAbuHadid.KhusrawWaShirin.Hindawi026915292-ara1",
+      "free_source": "openiti"
+    },
+    {
+      "id": "F1132-B90",
+      "slug": "F1132",
+      "title": "Lex Mahumet pseudoprophete",
+      "title_ar": "القوانين المحمدية الزائفة",
+      "year": 1142,
+      "wikidata_id": "Q3237327",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "Latin Quran translation",
+        "early interfaith history",
+        "European perception Islam"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 627,
+      "concept_tags": [
+        "ijaz-al-quran",
+        "nubuwwa",
+        "tawhid",
+        "kalam-allah"
+      ]
+    },
+    {
+      "id": "F1132-B91",
+      "slug": "F1132",
+      "title": "Itikaf",
+      "title_ar": "اعتكاف",
+      "year": 631,
+      "wikidata_id": "Q3241108",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "spiritual retreat",
+        "prophetic practice",
+        "seclusion for God",
+        "Ramadan devotion"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 631,
+      "concept_tags": [
+        "ihsan",
+        "dhikr",
+        "khalwa",
+        "hukm-shari",
+        "sahar"
+      ]
+    },
+    {
+      "id": "F1132-B92",
+      "slug": "F1132",
+      "title": "Tarawih",
+      "title_ar": "صلاة التراويح",
+      "year": 631,
+      "wikidata_id": "Q693604",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "night prayers",
+        "Ramadan traditions",
+        "congregational worship",
+        "prophetic practice"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 631,
+      "concept_tags": [
+        "hukm-shari",
+        "dhikr",
+        "iman-amal"
+      ]
+    },
+    {
+      "id": "F1132-B93",
+      "slug": "F1132",
+      "title": "Sunnah",
+      "title_ar": "السنة النبوية",
+      "year": null,
+      "wikidata_id": "Q234764",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "prophetic example",
+        "way of Prophet",
+        "foundation of practice"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": null,
+      "concept_tags": [
+        "khabar-wahid",
+        "adab",
+        "hukm-shari",
+        "nubuwwa"
+      ]
+    },
+    {
+      "id": "F1132-B94",
+      "slug": "F1132",
+      "title": "The Four Books",
+      "title_ar": "الكتب الأربعة",
+      "year": null,
+      "wikidata_id": "Q1758719",
+      "is_free": true,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "divine revelations",
+        "history of scriptures",
+        "prophetic legacy"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": null,
+      "concept_tags": [
+        "nubuwwa",
+        "kalam-allah",
+        "shar-man-qablana"
+      ],
+      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1450MultipleAuthors.KutubArbaca.PV2024060601-ara1",
       "free_source": "openiti"
     },
     {

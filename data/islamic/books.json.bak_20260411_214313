@@ -6,6 +6,158 @@
   },
   "books": [
     {
+      "id": "F0767-B01",
+      "slug": "F0767",
+      "title": "Scrolls of Idris (Suhuf-i-Idris)",
+      "author_hidden": true,
+      "revealed_to": "Idris",
+      "year": -3000,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -3000
+    },
+    {
+      "id": "F0761-B01",
+      "slug": "F0761",
+      "title": "Scrolls of Ibrahim (Suhuf Ibrahim)",
+      "author_hidden": true,
+      "revealed_to": "Ibrahim",
+      "year": -1800,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -1800
+    },
+    {
+      "id": "F1076-B01",
+      "slug": "F1076",
+      "title": "Torah (Tawrat)",
+      "author_hidden": true,
+      "revealed_to": "Musa",
+      "year": -1300,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -1300
+    },
+    {
+      "id": "F0552-B01",
+      "slug": "F0552",
+      "title": "Psalms (Zabur)",
+      "author_hidden": true,
+      "revealed_to": "Dawud",
+      "year": -1000,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": -1000
+    },
+    {
+      "id": "F0786-B01",
+      "slug": "F0786",
+      "title": "Gospel (Injil)",
+      "author_hidden": true,
+      "revealed_to": "Isa",
+      "year": 30,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Divine scripture (pre-Quranic)",
+        "Revelation and prophecy"
+      ],
+      "year_display": 30
+    },
+    {
+      "id": "F1132-B01",
+      "slug": "F1132",
+      "title": "The Qur'an",
+      "author_hidden": true,
+      "revealed_to": "Prophet Muhammad",
+      "year": 610,
+      "year_source": "revelation",
+      "topics": [
+        "Revelation"
+      ],
+      "tags": [
+        "scripture"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "",
+      "is_scripture": true,
+      "themes": [
+        "Revelation and prophecy",
+        "Quranic narrative",
+        "Divine unity (tawhid)",
+        "Eschatology (akhira)"
+      ],
+      "year_display": 610
+    },
+    {
       "id": "F0012-B01",
       "slug": "F0012",
       "title": "Lawa'ih (Flashes of Light)",
@@ -146,9 +298,7 @@
         "Substantive law (fiqh)",
         "Ritual worship (ibadat)"
       ],
-      "year_display": 889,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sunan_abu_dawud.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 889
     },
     {
       "id": "F0167-B01",
@@ -2097,9 +2247,7 @@
         "Prophetic biography (sira)",
         "Companions' lives (sahaba)"
       ],
-      "year_display": 870,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sahih_bukhari.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 870
     },
     {
       "id": "F0776-B01",
@@ -2184,9 +2332,7 @@
         "Ritual worship (ibadat)",
         "Substantive law (fiqh)"
       ],
-      "year_display": 875,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sahih_muslim.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 875
     },
     {
       "id": "F0814-B01",
@@ -3192,9 +3338,7 @@
         "Vices and virtues",
         "Adab (refined conduct)"
       ],
-      "year_display": 1277,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/40_hadith_nawawi.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1277
     },
     {
       "id": "F1648-B81",
@@ -3221,9 +3365,7 @@
         "Vices and virtues",
         "Adab (refined conduct)"
       ],
-      "year_display": 1277,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/40_hadith_nawawi.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1277
     },
     {
       "id": "F1648-B02",
@@ -9186,7 +9328,7 @@
         "Islamic Philosophy",
         "Scholar"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -9197,9 +9339,7 @@
         "Political philosophy (virtuous city)",
         "Imamate doctrine"
       ],
-      "year_display": 1972,
-      "free_url": "https://islamicbulletin.org/en/ebooks/new_muslim/the_true_religion_of_god.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1972
     },
     {
       "id": "F0371-B50",
@@ -10036,7 +10176,7 @@
         "Islamic Theology",
         "Ruler"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -10050,9 +10190,7 @@
         "Esoteric interpretation (ta'wil)",
         "Political theory"
       ],
-      "year_display": 1940,
-      "free_url": "https://www.kalamullah.com/40-hadith-nawawi.html",
-      "free_source": "kalamullah"
+      "year_display": 1940
     },
     {
       "id": "F0495-B53",
@@ -10966,7 +11104,7 @@
         "Shadhiliyya",
         "Mystic"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -10980,9 +11118,7 @@
         "Metaphysics of being",
         "Revelation and prophecy"
       ],
-      "year_display": 1961,
-      "free_url": "https://islamicbulletin.org/en/ebooks/new_muslim/understanding_islam.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1961
     },
     {
       "id": "F0613-B50",
@@ -13552,7 +13688,7 @@
       "topics": [
         "biography"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -13563,9 +13699,7 @@
         "Revelation and prophecy",
         "Quranic narrative"
       ],
-      "year_display": 833,
-      "free_url": "https://islamicbulletin.org/en/ebooks/prophet/sirat_Ibn_Hisham.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 833
     },
     {
       "id": "F0738-B52",
@@ -16777,7 +16911,7 @@
       "topics": [
         "non-fiction"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -16787,9 +16921,7 @@
         "Companions' lives (sahaba)",
         "Revelation and prophecy"
       ],
-      "year_display": 1983,
-      "free_url": "https://islamicbulletin.org/en/ebooks/prophet/the_life_of_prophet_muhammad.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1983
     },
     {
       "id": "F0986-B51",
@@ -23334,7 +23466,7 @@
       "topics": [
         "religious text"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -23346,9 +23478,7 @@
         "Prophetic biography (sira)",
         "Companions' lives (sahaba)"
       ],
-      "year_display": 1992,
-      "free_url": "https://islamicbulletin.org/en/ebooks/resources/sahih_bukhari.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1992
     },
     {
       "id": "F1810-B55",
@@ -23939,7 +24069,7 @@
         "Hadith Sciences",
         "Scholar"
       ],
-      "is_free": true,
+      "is_free": false,
       "harvested": true,
       "has_study": false,
       "url": "",
@@ -23952,9 +24082,7 @@
         "Quranic exegesis (tafsir)",
         "Universal history"
       ],
-      "year_display": 1373,
-      "free_url": "https://islamicbulletin.org/en/ebooks/prophet/stories_of_the_prophets.pdf",
-      "free_source": "islamicbulletin"
+      "year_display": 1373
     },
     {
       "id": "F0741-B55",
@@ -24220,7 +24348,7 @@
       "title_ar": "الكاشف في معرفة من له رواية في الكتب الستة (دار القبلة للثقافة الإسلامية، 1413هـ)",
       "year": 1992,
       "wikidata_id": "Q124614689",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24239,9 +24367,7 @@
         "mutawatir",
         "taqlid",
         "ijma"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.Kashif.JK000111-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B91",
@@ -24250,7 +24376,7 @@
       "title_ar": "تذكرة الحفاظ",
       "year": null,
       "wikidata_id": "Q19471562",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24269,9 +24395,7 @@
         "khabar-wahid",
         "adab",
         "suhba"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0507IbnQaysarani.TadhkiratHuffaz.Shamela0001578-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B92",
@@ -24310,7 +24434,7 @@
       "title_ar": "المنتقى من منهاج الاعتدال",
       "year": null,
       "wikidata_id": "Q19456022",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24331,9 +24455,7 @@
         "fitna",
         "khilafa",
         "nubuwwa"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.MuntaqaMinMinhajIctidal.JK001173-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B94",
@@ -24370,7 +24492,7 @@
       "title_ar": "المقتنى في سرد الكنى",
       "year": null,
       "wikidata_id": "Q125914652",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24389,9 +24511,7 @@
         "lugha",
         "khabar-wahid",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.Muqtana.JK001489-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B96",
@@ -24428,7 +24548,7 @@
       "title_ar": "ترجمة شيخ الإسلام ابن تيمية",
       "year": null,
       "wikidata_id": "Q19471656",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24448,9 +24568,7 @@
         "jihad-political",
         "tafkir-aqli",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.MinTurathShaykh.Shamela0013088-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B98",
@@ -24459,7 +24577,7 @@
       "title_ar": "ملخص تذكرة الحفاظ",
       "year": null,
       "wikidata_id": "Q19484686",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24477,9 +24595,7 @@
       "concept_tags": [
         "khabar-wahid",
         "mutawatir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.TadhkiratHuffaz.JK000532-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B99",
@@ -24488,7 +24604,7 @@
       "title_ar": "إثبات الشفاعة (دار أضواء السلف، 1420هـ)",
       "year": 2000,
       "wikidata_id": "Q116878022",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24508,9 +24624,7 @@
         "mead-jismani",
         "wad-wa-waid",
         "iman-amal"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.IthbatShafaca.Shamela0026890-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B100",
@@ -24576,7 +24690,7 @@
       "title_ar": "أخبار الدجال (دار الصحابة للتراث، 1413هـ)",
       "year": 1993,
       "wikidata_id": "Q124615796",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24597,9 +24711,7 @@
         "mead-jismani",
         "wad-wa-waid",
         "fitna"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0600CabdGhaniMaqdisi.AkhbarDajjal.Shamela0001441-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B103",
@@ -24608,7 +24720,7 @@
       "title_ar": "معرفة القراء الكبار على الطبقات والأعصار",
       "year": null,
       "wikidata_id": "Q113565532",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24629,9 +24741,7 @@
         "makharij",
         "sifat-al-huruf",
         "ishtiqaq"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.MacrifaQurraKibar.JK000443-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B104",
@@ -24727,7 +24837,7 @@
       "title_ar": "المستملح من كتاب التكملة",
       "year": null,
       "wikidata_id": "Q56326817",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24745,9 +24855,7 @@
       "concept_tags": [
         "lugha",
         "shawahid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.Mustamlah.ShamAY0034658-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B108",
@@ -24784,7 +24892,7 @@
       "title_ar": "العبر في خبر من غبر (دائرة المطبوعات والنشر، 1960)",
       "year": 1960,
       "wikidata_id": "Q126902356",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24802,9 +24910,7 @@
       "concept_tags": [
         "khilafa",
         "fitna"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.CibarFiKhabar.JK004500-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B110",
@@ -24813,7 +24919,7 @@
       "title_ar": "المعين في طبقات المحدثين",
       "year": null,
       "wikidata_id": "Q135524167",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24831,9 +24937,7 @@
       "concept_tags": [
         "khabar-wahid",
         "mutawatir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.MucinFiTabaqatMuhaddithin.JK000658-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B111",
@@ -24842,7 +24946,7 @@
       "title_ar": "سير أعلام النبلاء (دار الحديث - القاهرة، 2006)",
       "year": 2006,
       "wikidata_id": "Q120648548",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24863,9 +24967,7 @@
         "zuhd",
         "ihsan",
         "ulama-state"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.SiyarAclamNubala.JK000151-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B112",
@@ -24902,7 +25004,7 @@
       "title_ar": "تلخيص المستدرك",
       "year": null,
       "wikidata_id": "Q19485521",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24920,9 +25022,7 @@
       "concept_tags": [
         "khabar-wahid",
         "takfir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0405HakimNaysaburi.Mustadrak.Shia001750Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B114",
@@ -24931,7 +25031,7 @@
       "title_ar": "دول الإسلام",
       "year": 1999,
       "wikidata_id": "Q134430797",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -24951,9 +25051,7 @@
         "sultanate",
         "taghallub",
         "fitna"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0709IbnTiqtaqa.FakhriFiAdab.Shamela0012400-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0227-B115",
@@ -24989,7 +25087,7 @@
       "title_ar": "الوسيط في المذهب",
       "year": null,
       "wikidata_id": "Q16121084",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25010,9 +25108,7 @@
         "ikhtilaf",
         "hukm-shari",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0505Ghazali.Wasit.JK000309-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0238-B91",
@@ -25021,7 +25117,7 @@
       "title_ar": "منهاج العابدين",
       "year": null,
       "wikidata_id": "Q12245808",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25042,9 +25138,7 @@
         "sabr",
         "shukr",
         "tawakkul"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0505Ghazali.MinhajCabidin.Kraken220414225509-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0238-B92",
@@ -25083,7 +25177,7 @@
       "title_ar": "كتاب في أحكام النساء والمولودين",
       "year": 1692,
       "wikidata_id": "Q126927997",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25103,9 +25197,7 @@
         "talaq",
         "mahr",
         "hukm-shari"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0413ShaykhMufid.AhkamNisa.Shia000005-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0238-B94",
@@ -25114,7 +25206,7 @@
       "title_ar": "مشكاة الأنوار",
       "year": null,
       "wikidata_id": "Q12243191",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25135,9 +25227,7 @@
         "batin-zahir",
         "tawil",
         "tasawwuf"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0505Ghazali.MishkatAnwar.JK009401-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0238-B95",
@@ -25146,7 +25236,7 @@
       "title_ar": "إحياء علوم الدين (دار المعرفة)",
       "year": null,
       "wikidata_id": "Q121009858",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25167,9 +25257,7 @@
         "muraqaba",
         "zuhd",
         "tasawwuf"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0505Ghazali.IhyaCulumDin.JK000001-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0238-B96",
@@ -25206,7 +25294,7 @@
       "title_ar": "المحاسن والأضداد",
       "year": null,
       "wikidata_id": "Q12192410",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25227,9 +25315,7 @@
         "balagha",
         "addad",
         "lugha"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0255Jahiz.MahasinWaAddad.JK009364-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0274-B90",
@@ -25266,7 +25352,7 @@
       "title_ar": "الضوء اللامع لأهل القرن التاسع (دار الجيل)",
       "year": 1992,
       "wikidata_id": "Q126364807",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25284,9 +25370,7 @@
         "adab",
         "silsila",
         "khabar-wahid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0902Sakhawi.DawLamic.JK003608-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B90",
@@ -25324,7 +25408,7 @@
       "title_ar": "إتمام الدراية لقراء النقاية",
       "year": null,
       "wikidata_id": "Q19443244",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25342,9 +25426,7 @@
         "classification-sciences",
         "usul-al-fiqh",
         "tafsir-lughawi"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.ItmamDiraya.JK001046-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B92",
@@ -25353,7 +25435,7 @@
       "title_ar": "الروض الأنيق في فضل الصديق",
       "year": null,
       "wikidata_id": "Q12187914",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25372,9 +25454,7 @@
         "suhba",
         "imama-sunni",
         "adl-political"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.RawdAniqFiFadlSiddiq.JK010194-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B93",
@@ -25412,7 +25492,7 @@
       "title_ar": "الأشباه والنظائر في النحو",
       "year": null,
       "wikidata_id": "Q19452212",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25430,9 +25510,7 @@
         "nahw",
         "sama-qiyas",
         "asl-far"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0771TajDinSubki.AshbahWaNazair.Shamela0008634-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B95",
@@ -25441,7 +25519,7 @@
       "title_ar": "تدريب الراوي",
       "year": null,
       "wikidata_id": "Q19471502",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25459,9 +25537,7 @@
         "khabar-wahid",
         "mutawatir",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.TadribRawi.JK000138-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B96",
@@ -25525,7 +25601,7 @@
       "title_ar": "طبقات الحفاظ",
       "year": null,
       "wikidata_id": "Q19417387",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25543,9 +25619,7 @@
         "khabar-wahid",
         "adab",
         "silsila"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0748Dhahabi.ManzumatTabaqatHuffaz.ShamAY0034579-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B99",
@@ -25581,7 +25655,7 @@
       "title_ar": "الإتقان في علوم القرآن",
       "year": null,
       "wikidata_id": "Q16117637",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25600,9 +25674,7 @@
         "qiraat",
         "naskh",
         "tajwid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0817MajdDinFiruzabadi.TanwirMiqbas.Tafsir02010-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B101",
@@ -25828,7 +25900,7 @@
       "title_ar": "تدريب الراوي في شرح تقريب النواوي (مكتبة الكوثر، 1995)",
       "year": 1995,
       "wikidata_id": "Q126127776",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25846,9 +25918,7 @@
         "khabar-wahid",
         "mutawatir",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.TadribRawi.JK000138-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B110",
@@ -25857,7 +25927,7 @@
       "title_ar": "لباب النقول في أسباب النزول (الكتاب العربي، 2006)",
       "year": 2006,
       "wikidata_id": "Q116996141",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25875,9 +25945,7 @@
         "tafsir-lughawi",
         "khabar-wahid",
         "asl-far"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.LubabNuqul.JK000436-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B111",
@@ -25886,7 +25954,7 @@
       "title_ar": "بغية الوعاة في طبقات اللغويين والنحاة",
       "year": null,
       "wikidata_id": "Q115824964",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25906,9 +25974,7 @@
         "lugha",
         "adab",
         "silsila"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.BughyatWucat.JK009145-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B112",
@@ -25971,7 +26037,7 @@
       "title_ar": "المهذب فيما وقع في القرآن من المعرب (اللجنة المشتركة لنشر التراث الإسلامي)",
       "year": null,
       "wikidata_id": "Q125916031",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -25988,9 +26054,7 @@
       "concept_tags": [
         "lugha",
         "gharib-al-quran"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0481IbnBarrajTarabulusi.Muhadhdhib.Shia000043Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B115",
@@ -25999,7 +26063,7 @@
       "title_ar": "أسرار ترتيب القرآن (دار الفضيلة، 2002م)",
       "year": 2002,
       "wikidata_id": "Q115731931",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26017,9 +26081,7 @@
         "ijaz-al-quran-linguistic",
         "nazm",
         "bayan"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0817MajdDinFiruzabadi.TanwirMiqbas.Tafsir02010-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B116",
@@ -26082,7 +26144,7 @@
       "title_ar": "الإتقان في علوم القرآن (مجمع الملك فهد، 2011م)",
       "year": 2011,
       "wikidata_id": "Q115728454",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26101,9 +26163,7 @@
         "qiraat",
         "naskh",
         "tajwid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0817MajdDinFiruzabadi.TanwirMiqbas.Tafsir02010-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B119",
@@ -26112,7 +26172,7 @@
       "title_ar": "ميزان المعدلة في شأن البسملة (البشائر الإسلامية، 2010)",
       "year": 2010,
       "wikidata_id": "Q125738619",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26131,9 +26191,7 @@
         "ikhtilaf",
         "fard-wajib",
         "qiraat"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.MizanMacdala.ShamAY0034341-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B120",
@@ -26278,7 +26336,7 @@
       "title_ar": "بغية الوعاة في طبقات اللغويين والنحاة (المكتبة العصرية)",
       "year": null,
       "wikidata_id": "Q116998587",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26297,9 +26355,7 @@
         "sarf",
         "lugha",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0911Suyuti.BughyatWucat.JK009145-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0344-B126",
@@ -26474,7 +26530,7 @@
       "title_ar": "كتاب الاقتراح في علم أصول النحو وجدله",
       "year": 1600,
       "wikidata_id": "Q126928659",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26492,9 +26548,7 @@
         "nahw",
         "sama-qiyas",
         "illa-nahwiyya"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0316IbnSarrajNahwi.UsulFiNahw.JK001130-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0370-B90",
@@ -26942,7 +26996,7 @@
       "title_ar": "تلبيس إبليس (دار الفكر)",
       "year": 2001,
       "wikidata_id": "Q137775266",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26960,9 +27014,7 @@
         "tasawwuf",
         "irja",
         "tashbih"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0597IbnJawzi.TalbisIblis.JK000072-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0722-B95",
@@ -26971,7 +27023,7 @@
       "title_ar": "تقويم اللسان",
       "year": null,
       "wikidata_id": "Q136804749",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -26990,9 +27042,7 @@
         "fasaha",
         "lugha",
         "nahw"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0577IbnHishamLakhmi.Madkhal.Sham19Y0148096-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0722-B96",
@@ -27001,7 +27051,7 @@
       "title_ar": "نواسخ القرآن",
       "year": null,
       "wikidata_id": "Q12249059",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27019,9 +27069,7 @@
         "naskh",
         "tafsir-lughawi",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0597IbnJawzi.NawasikhQuran.JK000441-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0722-B97",
@@ -27030,7 +27078,7 @@
       "title_ar": "الضعفاء والمتروكين",
       "year": null,
       "wikidata_id": "Q22685856",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27047,9 +27095,7 @@
       "concept_tags": [
         "khabar-wahid",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0303Nasai.AshabAbiHanifa.JK000510BK4-ara2",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0722-B98",
@@ -27141,7 +27187,7 @@
       "title_ar": "دفع شبه التشبيه بأكف التنزيه",
       "year": null,
       "wikidata_id": "Q22688036",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27160,9 +27206,7 @@
         "tashbih",
         "divine-attributes",
         "tafwid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0597IbnJawzi.DafcShubahTashbih.JK001469-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0727-B90",
@@ -27198,7 +27242,7 @@
       "title_ar": "الطب النبوي",
       "year": null,
       "wikidata_id": "Q29514003",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27217,9 +27261,7 @@
         "humoral-theory",
         "nubuwwa",
         "ihsan"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0430AbuNucaymIsbahani.TibbNabawi.Shamela0026429-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0727-B92",
@@ -27255,7 +27297,7 @@
       "title_ar": "تحفة المودود بأحكام المولود",
       "year": 1350,
       "wikidata_id": "Q126928149",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27273,9 +27315,7 @@
         "hukm-shari",
         "nikah",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0751IbnQayyimJawziyya.TuhfatMawdud.JK000095-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0727-B94",
@@ -27284,7 +27324,7 @@
       "title_ar": "مدارج السالكين بين منازل إياك نعبد وإياك نستعين",
       "year": null,
       "wikidata_id": "Q19470629",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27304,9 +27344,7 @@
         "ihsan",
         "tawba",
         "mahabba"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0751IbnQayyimJawziyya.MadarijSalikin.JK000081-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0727-B95",
@@ -27315,7 +27353,7 @@
       "title_ar": "الطرق الحكمية",
       "year": null,
       "wikidata_id": "Q19454498",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -27334,9 +27372,7 @@
         "qada",
         "adl-political",
         "maqasid-al-shariah"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0751IbnQayyimJawziyya.TuruqHukmiyya.JK000104-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0727-B96",
@@ -28169,7 +28205,7 @@
       "title_ar": "الدرر الكامنة في أعيان المائة الثامنة (دائرة المعارف العثمانية، 1392 هـ)",
       "year": 1972,
       "wikidata_id": "Q116944989",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28187,9 +28223,7 @@
       "concept_tags": [
         "adab",
         "silsila"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0220AbuJacfarIskafi.NaqdCuthmaniyya.Shia003459BK2-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B92",
@@ -28227,7 +28261,7 @@
       "title_ar": "نزهة النظر شرح نخبة الفكر",
       "year": null,
       "wikidata_id": "Q20424605",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28246,9 +28280,7 @@
         "khabar-wahid",
         "mutawatir",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0852IbnHajarCasqalani.NukhbatFikar.Shia002248-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B94",
@@ -28257,7 +28289,7 @@
       "title_ar": "تعجيل المنفعة بزوائد رجال الأئمة الأربعة (دار البشائر الإسلامية)",
       "year": 1996,
       "wikidata_id": "Q121433226",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28277,9 +28309,7 @@
         "silsila",
         "ikhtilaf",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0852IbnHajarCasqalani.TacjilManfaca.JK000536-ara2",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B95",
@@ -28288,7 +28318,7 @@
       "title_ar": "تعجيل المنفعة بزوائد رجال الأئمة الأربعة",
       "year": 1763,
       "wikidata_id": "Q19484839",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28308,9 +28338,7 @@
         "silsila",
         "ikhtilaf",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0852IbnHajarCasqalani.TacjilManfaca.JK000536-ara2",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B96",
@@ -28319,7 +28347,7 @@
       "title_ar": "النكت على كتاب ابن الصلاح",
       "year": null,
       "wikidata_id": "Q136669499",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28338,9 +28366,7 @@
         "khabar-wahid",
         "mutawatir",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0586IbnMuhammadAbuNasrCattabi.SharhNukat.JK000285-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B97",
@@ -28349,7 +28375,7 @@
       "title_ar": "هدي الساري: مقدمة فتح الباري بشرح صحيح البخاري (مطبعة الملك فهد الوطنية، 2001)",
       "year": 2001,
       "wikidata_id": "Q126908391",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28369,9 +28395,7 @@
         "usul-al-fiqh",
         "ijaz-al-quran",
         "qiraat"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0256Bukhari.Sahih.Shia001715Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B98",
@@ -28380,7 +28404,7 @@
       "title_ar": "المجمع المؤسس للمعجم المفهرس (دار المعرفة، 1994م)",
       "year": 1994,
       "wikidata_id": "Q118220660",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28399,9 +28423,7 @@
         "silsila",
         "ijaza-sufiyya",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0852IbnHajarCasqalani.MajmacMuassis.Sham19Y0020861-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B99",
@@ -28410,7 +28432,7 @@
       "title_ar": "فتح الباري بشرح صحيح البخاري (دار المعرفة للطباعة والنشر، 1379هـ)",
       "year": 1959,
       "wikidata_id": "Q116945634",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28431,9 +28453,7 @@
         "divine-attributes",
         "usul-al-fiqh",
         "lugha"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0256Bukhari.Sahih.Shia001715Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0735-B100",
@@ -28559,7 +28579,7 @@
       "title_ar": "تفسير القرآن العظيم (الفاروق الحديثة، 2000)",
       "year": 2000,
       "wikidata_id": "Q110231210",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28579,9 +28599,7 @@
         "naskh",
         "tafsir-lughawi",
         "ijaz-al-quran"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0211CabdRazzaqSancani.Tafsir.Shia002465Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0749-B90",
@@ -28590,7 +28608,7 @@
       "title_ar": "المغني لابن قدامة (مكتبة القاهرة، 1389هـ)",
       "year": 1969,
       "wikidata_id": "Q121076394",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28611,9 +28629,7 @@
         "ijtihad",
         "fard-wajib",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0620IbnQudamaMaqdisi.Mughni.Shamela0008463-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0749-B91",
@@ -28710,7 +28726,7 @@
       "title_ar": "بداية المجتهد ونهاية المقتصد (دار الحديث، 2004)",
       "year": 2004,
       "wikidata_id": "Q120514205",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28731,9 +28747,7 @@
         "hukm-shari",
         "illa",
         "qiyas"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0595IbnRushdHafid.BidayatMujtahid.JK000222-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B90",
@@ -28742,7 +28756,7 @@
       "title_ar": "القصيدة التائية في القدر (دار ابن خزيمة، 1424هـ)",
       "year": 2003,
       "wikidata_id": "Q115911171",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28763,9 +28777,7 @@
         "sababiyya",
         "ikhtiyar",
         "lutf"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.QasidaTaiyyaFiQadar.Shamela0000792-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B91",
@@ -28834,7 +28846,7 @@
       "title_ar": "جامع الرسائل (دار العطاء، 1422هـ)",
       "year": 2001,
       "wikidata_id": "Q115910952",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28855,9 +28867,7 @@
         "ijtihad",
         "fitna",
         "takfir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.JamicRasail.JK000377-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B94",
@@ -28896,7 +28906,7 @@
       "title_ar": "المستدرك على مجموع فتاوى شيخ الإسلام (1418هـ)",
       "year": 1997,
       "wikidata_id": "Q115910754",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -28917,9 +28927,7 @@
         "ijtihad",
         "fitna",
         "takfir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0405HakimNaysaburi.Mustadrak.Shia001750Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B96",
@@ -28987,7 +28995,7 @@
       "title_ar": "شرح العقيدة الأصفهانية (المكتبة العصرية، 1425هـ)",
       "year": 2004,
       "wikidata_id": "Q115911456",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29008,9 +29016,7 @@
         "kalam-allah",
         "qadar",
         "tafkir-aqli"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0524IbnTumart.Caqida.ALCorpus00028-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B99",
@@ -29019,7 +29025,7 @@
       "title_ar": "العبودية (المكتب الإسلامي، 1426هـ)",
       "year": 2005,
       "wikidata_id": "Q115910683",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29040,9 +29046,7 @@
         "mahabba",
         "taklif",
         "fitra"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.Cubudiyya.Shamela0022647-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B100",
@@ -29167,7 +29171,7 @@
       "title_ar": "الفتوى الحموية الكبرى (دار الصميعي، 1425هـ)",
       "year": 2004,
       "wikidata_id": "Q115910713",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29188,9 +29192,7 @@
         "tanzih",
         "istiwa",
         "tawhid-al-asma-wa-sifat"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.HamawiyyaKubra.Shamela0018381-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B105",
@@ -29199,7 +29201,7 @@
       "title_ar": "بيان تلبيس الجهمية في تأسيس بدعهم الكلامية (مجمع الملك فهد لطباعة المصحف الشريف، 1426هـ)",
       "year": 2005,
       "wikidata_id": "Q115910774",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29220,9 +29222,7 @@
         "tanzih",
         "tatil",
         "jihat-allah"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.BayanTalbisJahmiyya.JK000382-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B106",
@@ -29291,7 +29291,7 @@
       "title_ar": "شرح حديث النزول (المكتب الإسلامي، 1397هـ)",
       "year": 1977,
       "wikidata_id": "Q115910958",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29312,9 +29312,7 @@
         "jihat-allah",
         "bila-kayf",
         "tanzih"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.SharhHadithNuzul.Shamela0011258-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B109",
@@ -29323,7 +29321,7 @@
       "title_ar": "القواعد النورانية الفقهية (دار ابن الجوزي، 1422هـ)",
       "year": 2001,
       "wikidata_id": "Q115910705",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29343,9 +29341,7 @@
         "usul-al-fiqh",
         "hukm-shari",
         "ijtihad"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.QawacidNuraniyya.ShamAY0034365-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B110",
@@ -29498,7 +29494,7 @@
       "title_ar": "أحاديث القصاص (المكتب الإسلامي، 1408هـ)",
       "year": 1988,
       "wikidata_id": "Q115798081",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29517,9 +29513,7 @@
         "khabar-wahid",
         "adab",
         "takfir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.AhadithQussas.JK005009-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B116",
@@ -29528,7 +29522,7 @@
       "title_ar": "الفتوى الحموية",
       "year": null,
       "wikidata_id": "Q35583900",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29549,9 +29543,7 @@
         "tanzih",
         "istiwa",
         "tawhid-al-asma-wa-sifat"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.HamawiyyaKubra.Shamela0018381-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B117",
@@ -29589,7 +29581,7 @@
       "title_ar": "الرد على الأخنائي قاضي المالكية (المكتبة العصرية، 1423هـ)",
       "year": 2002,
       "wikidata_id": "Q115799280",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29609,9 +29601,7 @@
         "tawassul",
         "shafaa",
         "tawhid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.RaddCalaAkhnai.Shamela0037816-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B119",
@@ -29798,7 +29788,7 @@
       "title_ar": "العقيدة الواسطية",
       "year": null,
       "wikidata_id": "Q12190350",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29819,9 +29809,7 @@
         "tawhid-al-asma-wa-sifat",
         "istiwa",
         "iman-amal"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0524IbnTumart.Caqida.ALCorpus00028-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B126",
@@ -29860,7 +29848,7 @@
       "title_ar": "مجموع الفتاوى (مجمع الملك فهد، 2004)",
       "year": 2004,
       "wikidata_id": "Q115683684",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29881,9 +29869,7 @@
         "tasawwuf",
         "ijtihad",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.MajmucFatawa.Shamela0007289-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B128",
@@ -29892,7 +29878,7 @@
       "title_ar": "السياسة الشرعية في إصلاح الراعي والرعية",
       "year": null,
       "wikidata_id": "Q19454101",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29913,9 +29899,7 @@
         "hisba-political",
         "amr-bil-maruf-political",
         "khilafa"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.SiyasaSharciyya.JK000008-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B129",
@@ -29924,7 +29908,7 @@
       "title_ar": "الاستغاثة في الرد على البكري (مكتبة دار المنهاج، 1426هـ)",
       "year": 2005,
       "wikidata_id": "Q115800449",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29944,9 +29928,7 @@
         "tawassul",
         "shafaa",
         "takfir"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0352IbnAhmadKufi.Istighatha.Shia003684Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B130",
@@ -29955,7 +29937,7 @@
       "title_ar": "أمراض القلب وشفاؤها (المطبعة السلفية، 1399هـ)",
       "year": 1979,
       "wikidata_id": "Q115798096",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -29976,9 +29958,7 @@
         "ihsan",
         "mujahada",
         "tawba"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.AmradQulub.Shamela0001512-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B131",
@@ -30047,7 +30027,7 @@
       "title_ar": "الأربعون التيمية (مؤسسة الريان، 1418هـ)",
       "year": 1997,
       "wikidata_id": "Q115800086",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30065,9 +30045,7 @@
         "khabar-wahid",
         "adab",
         "iman-amal"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0242IbnAslamTusi.Arbacun.Shamela0010620-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B134",
@@ -30076,7 +30054,7 @@
       "title_ar": "الرد على من قال بفناء الجنة والنار",
       "year": null,
       "wikidata_id": "Q35583937",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30096,9 +30074,7 @@
         "wad-wa-waid",
         "mead-jismani",
         "adl"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.RaddCalaManQalaBiFanaJanna.Shamela0002908-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B135",
@@ -30107,7 +30083,7 @@
       "title_ar": "درء تعارض العقل والنقل",
       "year": null,
       "wikidata_id": "Q12211525",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30128,9 +30104,7 @@
         "burhan",
         "falsafa-shariah",
         "tahafut"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.DarTacarud.JK000362-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B136",
@@ -30166,7 +30140,7 @@
       "title_ar": "الصارم المسلول على شاتم الرسول (الحرس الوطني السعودي)",
       "year": null,
       "wikidata_id": "Q115910450",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30187,9 +30161,7 @@
         "takfir",
         "tazir",
         "adl-political"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.SarimMaslul.JK000370-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B138",
@@ -30198,7 +30170,7 @@
       "title_ar": "التحفة العراقية في الأعمال القلبية (المطبعة السلفية، 1399هـ)",
       "year": 1979,
       "wikidata_id": "Q115800521",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30219,9 +30191,7 @@
         "mahabba",
         "khawf-raja",
         "tawakkul"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.TuhfaCiraqiyya.JK000075-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B139",
@@ -30260,7 +30230,7 @@
       "title_ar": "اقتضاء الصراط المستقيم (دار عالم الكتب، 1999)",
       "year": 1999,
       "wikidata_id": "Q115284371",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30281,9 +30251,7 @@
         "adab",
         "fitra",
         "umma"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0877CaliNabatiCamili.SiratMustaqim.Shia001392Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B141",
@@ -30292,7 +30260,7 @@
       "title_ar": "الكلم الطيب",
       "year": null,
       "wikidata_id": "Q19455235",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30312,9 +30280,7 @@
         "ihsan",
         "adab",
         "mahabba"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.KalimTayyib.JK001440-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B142",
@@ -30323,7 +30289,7 @@
       "title_ar": "التسعينية (مكتبة المعارف - الرياض، 1420هـ)",
       "year": 1999,
       "wikidata_id": "Q115800771",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30344,9 +30310,7 @@
         "tawil",
         "khalq-al-quran",
         "tafkir-aqli"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0276IbnQutaybaDinawari.Macarif.JK001136-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0755-B143",
@@ -30355,7 +30319,7 @@
       "title_ar": "الصارم المسلول على شاتم الرسول",
       "year": 1294,
       "wikidata_id": "Q19454354",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30376,9 +30340,7 @@
         "takfir",
         "tazir",
         "adl-political"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0728IbnTaymiyya.SarimMaslul.JK000370-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0774-B90",
@@ -30387,7 +30349,7 @@
       "title_ar": "صحيح البخاري (دار ابن كثير، 2002)",
       "year": 2002,
       "wikidata_id": "Q124381788",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30408,9 +30370,7 @@
         "hukm-shari",
         "iman-amal",
         "shafaa"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0256Bukhari.Sahih.Shia001715Vols-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0774-B91",
@@ -30419,7 +30379,7 @@
       "title_ar": "التاريخ الكبير- البخاري (الناشر المتميز، 2019)",
       "year": 2019,
       "wikidata_id": "Q116752829",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30439,9 +30399,7 @@
         "khabar-wahid",
         "adab",
         "lugha"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0256Bukhari.TarikhKabir.JK000133-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F0774-B92",
@@ -30450,7 +30408,7 @@
       "title_ar": "التاريخ الكبير- البخاري (دائرة المعارف العثمانية، 1959)",
       "year": 1959,
       "wikidata_id": "Q121085465",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30470,9 +30428,7 @@
         "khabar-wahid",
         "adab",
         "lugha"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0220AbuJacfarIskafi.NaqdCuthmaniyya.Shia003459BK2-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1114-B90",
@@ -30511,7 +30467,7 @@
       "title_ar": "خسرو وشيرين",
       "year": 1175,
       "wikidata_id": "Q61076",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30531,9 +30487,148 @@
         "ishq",
         "mahabba",
         "adab"
+      ]
+    },
+    {
+      "id": "F1132-B90",
+      "slug": "F1132",
+      "title": "Lex Mahumet pseudoprophete",
+      "title_ar": "القوانين المحمدية الزائفة",
+      "year": 1142,
+      "wikidata_id": "Q3237327",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "Latin Quran translation",
+        "early interfaith history",
+        "European perception Islam"
       ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1387MuhammadFaridAbuHadid.KhusrawWaShirin.Hindawi026915292-ara1",
-      "free_source": "openiti"
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 627,
+      "concept_tags": [
+        "ijaz-al-quran",
+        "nubuwwa",
+        "tawhid",
+        "kalam-allah"
+      ]
+    },
+    {
+      "id": "F1132-B91",
+      "slug": "F1132",
+      "title": "Itikaf",
+      "title_ar": "اعتكاف",
+      "year": 631,
+      "wikidata_id": "Q3241108",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "spiritual retreat",
+        "prophetic practice",
+        "seclusion for God",
+        "Ramadan devotion"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 631,
+      "concept_tags": [
+        "ihsan",
+        "dhikr",
+        "khalwa",
+        "hukm-shari",
+        "sahar"
+      ]
+    },
+    {
+      "id": "F1132-B92",
+      "slug": "F1132",
+      "title": "Tarawih",
+      "title_ar": "صلاة التراويح",
+      "year": 631,
+      "wikidata_id": "Q693604",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "night prayers",
+        "Ramadan traditions",
+        "congregational worship",
+        "prophetic practice"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 631,
+      "concept_tags": [
+        "hukm-shari",
+        "dhikr",
+        "iman-amal"
+      ]
+    },
+    {
+      "id": "F1132-B93",
+      "slug": "F1132",
+      "title": "Sunnah",
+      "title_ar": "السنة النبوية",
+      "year": null,
+      "wikidata_id": "Q234764",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "prophetic example",
+        "way of Prophet",
+        "foundation of practice"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": null,
+      "concept_tags": [
+        "khabar-wahid",
+        "adab",
+        "hukm-shari",
+        "nubuwwa"
+      ]
+    },
+    {
+      "id": "F1132-B94",
+      "slug": "F1132",
+      "title": "The Four Books",
+      "title_ar": "الكتب الأربعة",
+      "year": null,
+      "wikidata_id": "Q1758719",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "divine revelations",
+        "history of scriptures",
+        "prophetic legacy"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": null,
+      "concept_tags": [
+        "nubuwwa",
+        "kalam-allah",
+        "shar-man-qablana"
+      ]
     },
     {
       "id": "F1279-B90",
@@ -30656,7 +30751,7 @@
       "title_ar": "التعريف بشكسبير",
       "year": 2019,
       "wikidata_id": "Q135405099",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30674,9 +30769,7 @@
         "poetics-shir",
         "adab",
         "balagha"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.Shakespeare.Hindawi080382405-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B92",
@@ -30711,7 +30804,7 @@
       "title_ar": "عقائد المفكرين",
       "year": 2019,
       "wikidata_id": "Q135403535",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30729,9 +30822,7 @@
         "tafkir-aqli",
         "burhan",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.CaqaidMufakkirin.Hindawi073140837-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B94",
@@ -30740,7 +30831,7 @@
       "title_ar": "دراسات في المذاهب الأدبية والاجتماعية",
       "year": 2018,
       "wikidata_id": "Q135403540",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30757,9 +30848,7 @@
       "concept_tags": [
         "adab",
         "siyasa-madaniyya"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.DirasatFiMadhahibAdabiyyaWaIjtimaciyya.Hindawi080940683-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B95",
@@ -30768,7 +30857,7 @@
       "title_ar": "رجال عرفتهم",
       "year": 2018,
       "wikidata_id": "Q135403539",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30784,9 +30873,7 @@
       "year_display": 1959,
       "concept_tags": [
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.RijalCaraftuhum.Hindawi095950851-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B96",
@@ -30795,7 +30882,7 @@
       "title_ar": "الاسلام والحضارة الانسانية",
       "year": 2019,
       "wikidata_id": "Q135405101",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30813,9 +30900,7 @@
         "umma",
         "adl-political",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.IslamWaHadaraInsaniyya.Hindawi013920718-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B97",
@@ -30824,7 +30909,7 @@
       "title_ar": "حقائق الإسلام وأباطيل خصومه",
       "year": 2018,
       "wikidata_id": "Q135405089",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30842,9 +30927,7 @@
         "tafkir-aqli",
         "nubuwwa",
         "adl"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.HaqaiqIslam.Hindawi013082050-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B98",
@@ -30853,7 +30936,7 @@
       "title_ar": "الإنسان في القرآن",
       "year": 2018,
       "wikidata_id": "Q135405100",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30872,9 +30955,7 @@
         "fitra",
         "taklif",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0817MajdDinFiruzabadi.TanwirMiqbas.Tafsir02010-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B99",
@@ -30935,7 +31016,7 @@
       "title_ar": "عالم السدود والقيود (وكالة الصحافة العربية، 2019)",
       "year": 2019,
       "wikidata_id": "Q135403538",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30951,9 +31032,7 @@
       "year_display": 1959,
       "concept_tags": [
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.CalamSududWaQuyud.Hindawi041639790-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B102",
@@ -30962,7 +31041,7 @@
       "title_ar": "هدية الكروان: مجموعة شعرية",
       "year": 2019,
       "wikidata_id": "Q135403527",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -30980,9 +31059,7 @@
         "poetics-shir",
         "adab",
         "balagha"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.HadiyyatKarawan.Hindawi038624195-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B103",
@@ -31016,7 +31093,7 @@
       "title_ar": "مجمع الأحياء",
       "year": 2018,
       "wikidata_id": "Q135403530",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31033,9 +31110,7 @@
       "concept_tags": [
         "adab",
         "siyasa-madaniyya"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.MajmacAhya.Hindawi062413524-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B106",
@@ -31096,7 +31171,7 @@
       "title_ar": "الفلسفة القرآنية",
       "year": 2019,
       "wikidata_id": "Q135405095",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31114,9 +31189,7 @@
         "tafkir-aqli",
         "burhan",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0817MajdDinFiruzabadi.TanwirMiqbas.Tafsir02010-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B109",
@@ -31229,7 +31302,7 @@
       "title_ar": "أفيون الشعوب (وكالة الصحافة العربية، 2018)",
       "year": 2018,
       "wikidata_id": "Q135405102",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31247,9 +31320,7 @@
         "adl-political",
         "hakimiyya",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.AfyunShucub.Hindawi093626303-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B118",
@@ -31392,7 +31463,7 @@
       "title_ar": "المرأة في القرآن",
       "year": 2018,
       "wikidata_id": "Q135405093",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31410,9 +31481,7 @@
         "nikah",
         "hukm-shari",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0817MajdDinFiruzabadi.TanwirMiqbas.Tafsir02010-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1748-B126",
@@ -31500,7 +31569,7 @@
       "title_ar": "حياة المسيح",
       "year": 2018,
       "wikidata_id": "Q135403542",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31518,9 +31587,7 @@
         "nubuwwa",
         "shar-man-qablana",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/1383CabbasMahmudCaqqad.HayatMasih.Hindawi052082590-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1764-B90",
@@ -31637,7 +31704,7 @@
       "title_ar": "تقويم اللسان",
       "year": null,
       "wikidata_id": "Q136804749",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31656,9 +31723,7 @@
         "fasaha",
         "lugha",
         "nahw"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0577IbnHishamLakhmi.Madkhal.Sham19Y0148096-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1764-B95",
@@ -31667,7 +31732,7 @@
       "title_ar": "نواسخ القرآن",
       "year": null,
       "wikidata_id": "Q12249059",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31685,9 +31750,7 @@
         "naskh",
         "tafsir-lughawi",
         "usul-al-fiqh"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0597IbnJawzi.NawasikhQuran.JK000441-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1764-B96",
@@ -31696,7 +31759,7 @@
       "title_ar": "الضعفاء والمتروكين",
       "year": null,
       "wikidata_id": "Q22685856",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31713,9 +31776,7 @@
       "concept_tags": [
         "khabar-wahid",
         "adab"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0303Nasai.AshabAbiHanifa.JK000510BK4-ara2",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1764-B97",
@@ -31751,7 +31812,7 @@
       "title_ar": "تلبيس إبليس (دار الفكر)",
       "year": 2001,
       "wikidata_id": "Q137775266",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31769,9 +31830,7 @@
         "tasawwuf",
         "irja",
         "tashbih"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0597IbnJawzi.TalbisIblis.JK000072-ara1",
-      "free_source": "openiti"
+      ]
     },
     {
       "id": "F1764-B99",
@@ -31836,7 +31895,7 @@
       "title_ar": "دفع شبه التشبيه بأكف التنزيه",
       "year": null,
       "wikidata_id": "Q22688036",
-      "is_free": true,
+      "is_free": false,
       "url": "",
       "harvested": true,
       "is_scripture": false,
@@ -31855,9 +31914,7 @@
         "tashbih",
         "divine-attributes",
         "tafwid"
-      ],
-      "free_url": "https://github.com/OpenITI/RELEASE/tree/master/data/0597IbnJawzi.DafcShubahTashbih.JK001469-ara1",
-      "free_source": "openiti"
+      ]
     }
   ],
   "themes_summary": {

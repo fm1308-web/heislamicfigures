@@ -360,6 +360,9 @@ async function boot(){
   try{const r=await fetch('data/islamic/name_variants.json');window._NAME_VARIANTS=await r.json();}
   catch(e){window._NAME_VARIANTS={};}
 
+  try{const r=await fetch('data/islamic/figure_sources.json');window._FIGURE_SOURCES=await r.json();}
+  catch(e){try{const r=await fetch('./data/islamic/figure_sources.json');window._FIGURE_SOURCES=await r.json();}catch(_){window._FIGURE_SOURCES={};}}
+
   try{const r=await fetch('data/islamic/events/master.json');window.eventsData=await r.json();}
   catch(e){window.eventsData=[];}
 
@@ -377,7 +380,7 @@ async function boot(){
       if(typeof window._badgeInvalidateBooks==='function') window._badgeInvalidateBooks();
       var books=(d&&d.books)||[];
       try{document.getElementById('hdrStatBooks').textContent=books.length.toLocaleString();}catch(e){}
-      var freeCount=books.filter(function(b){return b.url&&b.url.length>0;}).length;
+      var freeCount=books.filter(function(b){return b.is_free===true;}).length;
       try{document.getElementById('hdrStatFreeReads').textContent=freeCount.toLocaleString();}catch(e){}
     }).catch(function(){});
 
@@ -1261,6 +1264,20 @@ function renderInfo(p){
           ${b.note?`<div class="i-bnote">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:''}</div>
         </div>`).join('')}
       </div></div>`;
+  }
+  {
+    const isProphet=p.type==='Prophet'||p.category==='Prophet'||p.famous==='Prophet Muhammad';
+    const refs=window._FIGURE_SOURCES?.[p.slug]?.scripture_or_refs;
+    if(isProphet&&refs?.length){
+      booksHtml+=`<div class="i-sec"><div class="i-sl">Scripture &amp; Sources</div>
+        <div class="i-books">${refs.map(ref=>`
+          <div class="i-book">
+            <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
+            <div><span>${esc(ref.title)}</span>
+            ${ref.note?`<div class="i-bnote">${esc(ref.note)}</div>`:''}</div>
+          </div>`).join('')}
+        </div></div>`;
+    }
   }
   let teachHtml='';
   if(p.famous!=='Prophet Muhammad'&&p.teachers?.length){
