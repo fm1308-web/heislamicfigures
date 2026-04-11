@@ -15,7 +15,7 @@ async function _loadData(){
   if(_data) return;
   // Load think_books.json (book-level) + think_roles.json (role lookup) + think.json.old (bookless-author source)
   var raw=null,rolesIdx=null,oldDataIdx={};
-  try{var r=await fetch('data/islamic/think_books.json?v='+Date.now());raw=await r.json();}
+  try{var r=await fetch('data/islamic/think.json?v='+Date.now());raw=await r.json();}
   catch(e){_data={concepts:[],stats:{}};return;}
   try{var rr=await fetch('data/islamic/think_roles.json?v='+Date.now());rolesIdx=await rr.json();}
   catch(e){rolesIdx={};}

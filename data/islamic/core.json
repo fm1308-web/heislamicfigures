@@ -44950,26 +44950,6 @@
     "primaryTitle": "Philosopher of Qom"
   },
   {
-    "slug": "F1786",
-    "famous": "Ibn al-Rawandi",
-    "full": "scholar, theologian and philosopher",
-    "type": "Philosopher",
-    "tradition": "atheist",
-    "dob": 815,
-    "dod": 911,
-    "city": "Kashan",
-    "coordinates": {
-      "lat": 33.988055555556,
-      "lng": 51.4425
-    },
-    "teachers": [
-      "Muhammad al Warraq"
-    ],
-    "students": [],
-    "tags": [],
-    "primaryTitle": "Ibn al-Rawandi (Arabic: ابن الراوندي"
-  },
-  {
     "slug": "F1787",
     "famous": "Ibn al-Sīd al-Baṭalyawsī",
     "full": "Andalusian grammarian and philosopher",
@@ -45137,26 +45117,6 @@
     "students": [],
     "tags": [],
     "primaryTitle": "Philosopher of Delhi"
-  },
-  {
-    "slug": "F1796",
-    "famous": "Khwaja Shamsuddin Azeemi",
-    "full": "Pakistani scholar",
-    "type": "Philosopher",
-    "tradition": "Azeemia",
-    "dob": 1927,
-    "dod": 2025,
-    "city": "Saharanpur",
-    "coordinates": {
-      "lat": 29.964,
-      "lng": 77.546
-    },
-    "teachers": [
-      "Qalandar Baba Auliya"
-    ],
-    "students": [],
-    "tags": [],
-    "primaryTitle": "Azeemia Philosopher of Saharanpur"
   },
   {
     "slug": "F1797",
@@ -45782,7 +45742,8 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Major Ash'ari theologian and author of Abkar al-Afkar"
+    "primaryTitle": "Major Ash'ari theologian and author of Abkar al-Afkar",
+    "slug": "F1953"
   },
   {
     "famous": "Sayyid Ali Hamadani",
@@ -45797,7 +45758,8 @@
     "lat": 34.8,
     "lng": 48.51,
     "lang": "Persian",
-    "primaryTitle": "Kubrawiyya Sufi master who spread Islam in Kashmir"
+    "primaryTitle": "Kubrawiyya Sufi master who spread Islam in Kashmir",
+    "slug": "F1954"
   },
   {
     "famous": "Shibli Nomani",
@@ -45812,7 +45774,8 @@
     "lat": 26.07,
     "lng": 83.19,
     "lang": "Urdu",
-    "primaryTitle": "Indian Islamic historian and biographer of the Prophet"
+    "primaryTitle": "Indian Islamic historian and biographer of the Prophet",
+    "slug": "F1958"
   },
   {
     "famous": "Siraj al-Din al-Urmawi",
@@ -45827,7 +45790,8 @@
     "lat": 37.55,
     "lng": 45.08,
     "lang": "Arabic",
-    "primaryTitle": "Persian logician and author of Maṭaliʿ al-Anwar"
+    "primaryTitle": "Persian logician and author of Maṭaliʿ al-Anwar",
+    "slug": "F1961"
   },
   {
     "famous": "Syed Abul Ala Maududi",
@@ -45842,7 +45806,8 @@
     "lat": 31.55,
     "lng": 74.35,
     "lang": "Urdu",
-    "primaryTitle": "Founder of Jamaat-e-Islami and major Islamic political theorist"
+    "primaryTitle": "Founder of Jamaat-e-Islami and major Islamic political theorist",
+    "slug": "F1963"
   },
   {
     "famous": "Syed Ahmed Khan",
@@ -45857,7 +45822,8 @@
     "lat": 28.61,
     "lng": 77.23,
     "lang": "Urdu",
-    "primaryTitle": "Indian Muslim reformer and founder of Aligarh Muslim University"
+    "primaryTitle": "Indian Muslim reformer and founder of Aligarh Muslim University",
+    "slug": "F1964"
   },
   {
     "famous": "Syed Muhammad Naquib al-Attas",
@@ -45872,7 +45838,8 @@
     "lat": 3.14,
     "lng": 101.69,
     "lang": "Malay",
-    "primaryTitle": "Malaysian philosopher who developed the concept of Islamization of Knowledge"
+    "primaryTitle": "Malaysian philosopher who developed the concept of Islamization of Knowledge",
+    "slug": "F1965"
   },
   {
     "famous": "Usman Harooni",
@@ -45887,7 +45854,8 @@
     "lat": 36.21,
     "lng": 58.8,
     "lang": "Persian",
-    "primaryTitle": "Chishti Sufi master and teacher of Moinuddin Chishti"
+    "primaryTitle": "Chishti Sufi master and teacher of Moinuddin Chishti",
+    "slug": "F1969"
   },
   {
     "famous": "Wahiduddin Khan",
@@ -45902,7 +45870,8 @@
     "lat": 28.61,
     "lng": 77.23,
     "lang": "Urdu",
-    "primaryTitle": "Indian Islamic scholar and peace activist"
+    "primaryTitle": "Indian Islamic scholar and peace activist",
+    "slug": "F1970"
   },
   {
     "famous": "Yahya al-Shirvani",
@@ -45943,7 +45912,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Egyptian logical positivist philosopher"
+    "primaryTitle": "Egyptian logical positivist philosopher",
+    "slug": "F1974"
   },
   {
     "famous": "Adud al-Din al-Iji",
@@ -45958,7 +45928,8 @@
     "lat": 28.97,
     "lng": 53.36,
     "lang": "Arabic",
-    "primaryTitle": "Major Ash'ari theologian and author of al-Mawaqif"
+    "primaryTitle": "Major Ash'ari theologian and author of al-Mawaqif",
+    "slug": "F1877"
   },
   {
     "famous": "Abd al-Razzaq al-Qashani",
@@ -45976,7 +45947,8 @@
     "primaryTitle": "Sufi commentator and expositor of Ibn Arabi's thought",
     "teachers": [
       "Ibn Arabi"
-    ]
+    ],
+    "slug": "F1078"
   },
   {
     "famous": "Abdul Rahim Khan-I-Khana",
@@ -45991,7 +45963,8 @@
     "lat": 28.59,
     "lng": 77.25,
     "lang": "Hindi",
-    "primaryTitle": "Mughal court poet and military commander"
+    "primaryTitle": "Mughal court poet and military commander",
+    "slug": "F1852"
   },
   {
     "famous": "Abdul-Qadir Bedil",
@@ -46006,7 +45979,8 @@
     "lat": 28.61,
     "lng": 77.23,
     "lang": "Persian",
-    "primaryTitle": "Greatest Indo-Persian poet and philosopher of the Indian style"
+    "primaryTitle": "Greatest Indo-Persian poet and philosopher of the Indian style",
+    "slug": "F1853"
   },
   {
     "famous": "Abu Nuwas",
@@ -46021,7 +45995,8 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Greatest bacchic poet of classical Arabic literature"
+    "primaryTitle": "Greatest bacchic poet of classical Arabic literature",
+    "slug": "F1867"
   },
   {
     "famous": "Abu Tammam",
@@ -46036,7 +46011,8 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Abbasid poet and compiler of the Hamasa anthology"
+    "primaryTitle": "Abbasid poet and compiler of the Hamasa anthology",
+    "slug": "F1870"
   },
   {
     "famous": "Abu al-Aswad al-Du'ali",
@@ -46054,7 +46030,8 @@
     "primaryTitle": "Founder of Arabic grammar and inventor of diacritical marks",
     "teachers": [
       "Ali ibn Abi Talib"
-    ]
+    ],
+    "slug": "F1857"
   },
   {
     "famous": "Al-Hariri of Basra",
@@ -46069,7 +46046,8 @@
     "lat": 30.51,
     "lng": 47.81,
     "lang": "Arabic",
-    "primaryTitle": "Author of the Maqamat, masterpiece of Arabic prose literature"
+    "primaryTitle": "Author of the Maqamat, masterpiece of Arabic prose literature",
+    "slug": "F1888"
   },
   {
     "famous": "Abu'l-Fazl ibn Mubarak",
@@ -46084,7 +46062,8 @@
     "lat": 27.18,
     "lng": 78.02,
     "lang": "Persian",
-    "primaryTitle": "Akbar's chief chronicler and author of Akbarnama"
+    "primaryTitle": "Akbar's chief chronicler and author of Akbarnama",
+    "slug": "F1873"
   },
   {
     "famous": "Abu-l-Atahiya",
@@ -46099,7 +46078,8 @@
     "lat": 32.03,
     "lng": 44.4,
     "lang": "Arabic",
-    "primaryTitle": "Pioneer of ascetic poetry (zuhdiyyat) in Arabic literature"
+    "primaryTitle": "Pioneer of ascetic poetry (zuhdiyyat) in Arabic literature",
+    "slug": "F1874"
   },
   {
     "famous": "Abu Sa'id Abu'l-Khayr",
@@ -46114,7 +46094,8 @@
     "lat": 36.21,
     "lng": 58.8,
     "lang": "Persian",
-    "primaryTitle": "Early Persian Sufi master and pioneer of the mystical quatrain"
+    "primaryTitle": "Early Persian Sufi master and pioneer of the mystical quatrain",
+    "slug": "F1868"
   },
   {
     "famous": "Ahmad Faris al-Shidyaq",
@@ -46129,7 +46110,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Arabic",
-    "primaryTitle": "Pioneer of modern Arabic prose and journalism"
+    "primaryTitle": "Pioneer of modern Arabic prose and journalism",
+    "slug": "F1881"
   },
   {
     "famous": "Al-Farazdaq",
@@ -46144,7 +46126,8 @@
     "lat": 30.51,
     "lng": 47.81,
     "lang": "Arabic",
-    "primaryTitle": "Major Umayyad poet famous for his rivalry with Jarir"
+    "primaryTitle": "Major Umayyad poet famous for his rivalry with Jarir",
+    "slug": "F1887"
   },
   {
     "famous": "Al-Khalil ibn Ahmad al-Farahidi",
@@ -46159,7 +46142,8 @@
     "lat": 30.51,
     "lng": 47.81,
     "lang": "Arabic",
-    "primaryTitle": "Inventor of Arabic prosody and compiler of first Arabic dictionary"
+    "primaryTitle": "Inventor of Arabic prosody and compiler of first Arabic dictionary",
+    "slug": "F1890"
   },
   {
     "famous": "Al-Nuwayri",
@@ -46174,7 +46158,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Mamluk encyclopedist and author of Nihayat al-Arab"
+    "primaryTitle": "Mamluk encyclopedist and author of Nihayat al-Arab",
+    "slug": "F1892"
   },
   {
     "famous": "Anvari",
@@ -46189,7 +46174,8 @@
     "lat": 36.76,
     "lng": 66.9,
     "lang": "Persian",
-    "primaryTitle": "Master of the Persian panegyric qasida"
+    "primaryTitle": "Master of the Persian panegyric qasida",
+    "slug": "F1900"
   },
   {
     "famous": "Ata-Malik Juvayni",
@@ -46204,7 +46190,8 @@
     "lat": 38.07,
     "lng": 46.3,
     "lang": "Persian",
-    "primaryTitle": "Persian historian and author of the History of the World-Conqueror"
+    "primaryTitle": "Persian historian and author of the History of the World-Conqueror",
+    "slug": "F1905"
   },
   {
     "famous": "Baba Farid",
@@ -46219,7 +46206,8 @@
     "lat": 30.34,
     "lng": 73.39,
     "lang": "Punjabi",
-    "primaryTitle": "Chishti Sufi saint and father of Punjabi poetry"
+    "primaryTitle": "Chishti Sufi saint and father of Punjabi poetry",
+    "slug": "F1908"
   },
   {
     "famous": "Abu Firas al-Hamdani",
@@ -46234,7 +46222,8 @@
     "lat": 36.34,
     "lng": 43.14,
     "lang": "Arabic",
-    "primaryTitle": "Hamdanid prince-poet and author of the Rumiyyat prison poems"
+    "primaryTitle": "Hamdanid prince-poet and author of the Rumiyyat prison poems",
+    "slug": "F1861"
   },
   {
     "famous": "Fakhruddin Gurgani",
@@ -46249,7 +46238,8 @@
     "lat": 36.84,
     "lng": 54.44,
     "lang": "Persian",
-    "primaryTitle": "Author of Vis and Ramin, earliest Persian romance epic"
+    "primaryTitle": "Author of Vis and Ramin, earliest Persian romance epic",
+    "slug": "F1913"
   },
   {
     "famous": "Farrokhi Sistani",
@@ -46264,7 +46254,8 @@
     "lat": 33.55,
     "lng": 68.42,
     "lang": "Persian",
-    "primaryTitle": "Court poet of the Ghaznavids and master of the qasida"
+    "primaryTitle": "Court poet of the Ghaznavids and master of the qasida",
+    "slug": "F1914"
   },
   {
     "famous": "Hamdallah Mustawfi",
@@ -46279,7 +46270,8 @@
     "lat": 36.27,
     "lng": 50,
     "lang": "Persian",
-    "primaryTitle": "Persian historian and geographer of the Ilkhanid period"
+    "primaryTitle": "Persian historian and geographer of the Ilkhanid period",
+    "slug": "F1921"
   },
   {
     "famous": "Hazin Lahiji",
@@ -46294,7 +46286,8 @@
     "lat": 32.65,
     "lng": 51.68,
     "lang": "Persian",
-    "primaryTitle": "Persian poet who migrated to India after the fall of the Safavids"
+    "primaryTitle": "Persian poet who migrated to India after the fall of the Safavids",
+    "slug": "F1922"
   },
   {
     "famous": "Ibn Duraid",
@@ -46309,7 +46302,8 @@
     "lat": 30.51,
     "lng": 47.81,
     "lang": "Arabic",
-    "primaryTitle": "Arab lexicographer and author of Kitab al-Jamhara"
+    "primaryTitle": "Arab lexicographer and author of Kitab al-Jamhara",
+    "slug": "F1929"
   },
   {
     "famous": "Ibn al-Rumi",
@@ -46324,7 +46318,8 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Major Abbasid poet known for descriptive and philosophical verse"
+    "primaryTitle": "Major Abbasid poet known for descriptive and philosophical verse",
+    "slug": "F1927"
   },
   {
     "famous": "Jarir ibn Atiyah",
@@ -46339,7 +46334,8 @@
     "lat": 30.51,
     "lng": 47.81,
     "lang": "Arabic",
-    "primaryTitle": "Major Umayyad poet and rival of al-Farazdaq"
+    "primaryTitle": "Major Umayyad poet and rival of al-Farazdaq",
+    "slug": "F1937"
   },
   {
     "famous": "Jahanara Begum",
@@ -46354,7 +46350,8 @@
     "lat": 28.61,
     "lng": 77.23,
     "lang": "Persian",
-    "primaryTitle": "Mughal princess and Qadiri Sufi author"
+    "primaryTitle": "Mughal princess and Qadiri Sufi author",
+    "slug": "F1936"
   },
   {
     "famous": "Ka'b ibn Zuhayr",
@@ -46369,7 +46366,8 @@
     "lat": 24.47,
     "lng": 39.61,
     "lang": "Arabic",
-    "primaryTitle": "Companion of the Prophet and author of the Qasidat al-Burda"
+    "primaryTitle": "Companion of the Prophet and author of the Qasidat al-Burda",
+    "slug": "F1938"
   },
   {
     "famous": "Kemalpaşazade",
@@ -46384,7 +46382,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Ottoman Shaykh al-Islam, historian, and polymath"
+    "primaryTitle": "Ottoman Shaykh al-Islam, historian, and polymath",
+    "slug": "F1939"
   },
   {
     "famous": "Khwaja Ghulam Farid",
@@ -46399,7 +46398,8 @@
     "lat": 28.59,
     "lng": 70.2,
     "lang": "Punjabi",
-    "primaryTitle": "Greatest Saraiki Sufi poet"
+    "primaryTitle": "Greatest Saraiki Sufi poet",
+    "slug": "F1940"
   },
   {
     "famous": "Magtymguly Pyragy",
@@ -46414,7 +46414,8 @@
     "lat": 37.5,
     "lng": 56.5,
     "lang": "Turkmen",
-    "primaryTitle": "National poet of Turkmenistan and Turkmen Sufi verse master"
+    "primaryTitle": "National poet of Turkmenistan and Turkmen Sufi verse master",
+    "slug": "F1943"
   },
   {
     "famous": "Mahmoud Darwish",
@@ -46429,7 +46430,8 @@
     "lat": 32.79,
     "lng": 34.99,
     "lang": "Arabic",
-    "primaryTitle": "Foremost Palestinian poet and voice of Palestinian identity"
+    "primaryTitle": "Foremost Palestinian poet and voice of Palestinian identity",
+    "slug": "F1944"
   },
   {
     "famous": "Mahmud Hudayi",
@@ -46444,7 +46446,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Ottoman Khalwati Sufi master and spiritual advisor to sultans"
+    "primaryTitle": "Ottoman Khalwati Sufi master and spiritual advisor to sultans",
+    "slug": "F1945"
   },
   {
     "famous": "Mehmet Akif Ersoy",
@@ -46459,7 +46462,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Author of the Turkish national anthem and Islamic modernist poet"
+    "primaryTitle": "Author of the Turkish national anthem and Islamic modernist poet",
+    "slug": "F1946"
   },
   {
     "famous": "Nizar Qabbani",
@@ -46474,7 +46478,8 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Most widely read modern Arab poet and champion of women's liberation"
+    "primaryTitle": "Most widely read modern Arab poet and champion of women's liberation",
+    "slug": "F1951"
   },
   {
     "famous": "Nazim Hikmet",
@@ -46489,7 +46494,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Revolutionary Turkish poet and pioneer of free verse in Turkish"
+    "primaryTitle": "Revolutionary Turkish poet and pioneer of free verse in Turkish",
+    "slug": "F1950"
   },
   {
     "famous": "Rahman Baba",
@@ -46504,7 +46510,8 @@
     "lat": 34.01,
     "lng": 71.58,
     "lang": "Pashto",
-    "primaryTitle": "Greatest Pashto Sufi poet"
+    "primaryTitle": "Greatest Pashto Sufi poet",
+    "slug": "F1952"
   },
   {
     "famous": "Sharif al-Murtada",
@@ -46519,7 +46526,8 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Major Shia theologian and literary scholar of Baghdad"
+    "primaryTitle": "Major Shia theologian and literary scholar of Baghdad",
+    "slug": "F1956"
   },
   {
     "famous": "Sheikh Ahmadou Bamba",
@@ -46550,7 +46558,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Last great Ottoman divan poet and Mevlevi Sufi"
+    "primaryTitle": "Last great Ottoman divan poet and Mevlevi Sufi",
+    "slug": "F1957"
   },
   {
     "famous": "Suleyman Celebi",
@@ -46565,7 +46574,8 @@
     "lat": 40.19,
     "lng": 29.06,
     "lang": "Turkish",
-    "primaryTitle": "Author of the Mevlid, the most beloved Turkish devotional poem"
+    "primaryTitle": "Author of the Mevlid, the most beloved Turkish devotional poem",
+    "slug": "F1962"
   },
   {
     "famous": "Usama ibn Munqidh",
@@ -46580,7 +46590,8 @@
     "lat": 35.26,
     "lng": 36.58,
     "lang": "Arabic",
-    "primaryTitle": "Crusader-era memoirist and author of Kitab al-I'tibar"
+    "primaryTitle": "Crusader-era memoirist and author of Kitab al-I'tibar",
+    "slug": "F1968"
   },
   {
     "famous": "Wallada bint al-Mustakfi",
@@ -46595,7 +46606,8 @@
     "lat": 37.88,
     "lng": -4.77,
     "lang": "Arabic",
-    "primaryTitle": "Andalusian princess-poet and literary salon hostess"
+    "primaryTitle": "Andalusian princess-poet and literary salon hostess",
+    "slug": "F1971"
   },
   {
     "famous": "Yahya Kemal Beyatli",
@@ -46610,7 +46622,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Major Turkish poet who bridged Ottoman and Republican literary traditions"
+    "primaryTitle": "Major Turkish poet who bridged Ottoman and Republican literary traditions",
+    "slug": "F1972"
   },
   {
     "famous": "Al-Qadi al-Nu'man",
@@ -46625,7 +46638,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Chief jurist of the Fatimid Caliphate and founder of Ismaili law"
+    "primaryTitle": "Chief jurist of the Fatimid Caliphate and founder of Ismaili law",
+    "slug": "F1893"
   },
   {
     "famous": "Asik Veysel",
@@ -46640,7 +46654,8 @@
     "lat": 39.75,
     "lng": 37.02,
     "lang": "Turkish",
-    "primaryTitle": "Beloved Turkish folk poet and ashik troubadour"
+    "primaryTitle": "Beloved Turkish folk poet and ashik troubadour",
+    "slug": "F1903"
   },
   {
     "famous": "Ibrahim Muteferrika",
@@ -46655,7 +46670,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Founder of the first Muslim-world printing press"
+    "primaryTitle": "Founder of the first Muslim-world printing press",
+    "slug": "F1934"
   },
   {
     "famous": "Arwa al-Sulayhi",
@@ -46692,7 +46708,8 @@
     "lat": 24.69,
     "lng": 46.72,
     "lang": "Arabic",
-    "primaryTitle": "Founder and first king of Saudi Arabia"
+    "primaryTitle": "Founder and first king of Saudi Arabia",
+    "slug": "F1931"
   },
   {
     "famous": "Idris ibn Abdallah",
@@ -46707,7 +46724,8 @@
     "lat": 34.04,
     "lng": -5,
     "lang": "Arabic",
-    "primaryTitle": "Founder of the Idrisid dynasty, first Islamic state in Morocco"
+    "primaryTitle": "Founder of the Idrisid dynasty, first Islamic state in Morocco",
+    "slug": "F1935"
   },
   {
     "famous": "Muhammad of Ghor",
@@ -46722,7 +46740,8 @@
     "lat": 33.55,
     "lng": 68.42,
     "lang": "Persian",
-    "primaryTitle": "Ghurid sultan who established Muslim rule in northern India"
+    "primaryTitle": "Ghurid sultan who established Muslim rule in northern India",
+    "slug": "F1947"
   },
   {
     "famous": "Murad I",
@@ -46737,7 +46756,8 @@
     "lat": 40.19,
     "lng": 29.06,
     "lang": "Turkish",
-    "primaryTitle": "Ottoman sultan who established the empire in the Balkans"
+    "primaryTitle": "Ottoman sultan who established the empire in the Balkans",
+    "slug": "F1948"
   },
   {
     "famous": "Qalawun",
@@ -46768,7 +46788,8 @@
     "lat": 26.85,
     "lng": 80.95,
     "lang": "Arabic",
-    "primaryTitle": "Indian Hanafi jurist and hadith critic"
+    "primaryTitle": "Indian Hanafi jurist and hadith critic",
+    "slug": "F0845"
   },
   {
     "famous": "Abd al-Razzaq Samarqandi",
@@ -46783,7 +46804,8 @@
     "lat": 34.34,
     "lng": 62.2,
     "lang": "Persian",
-    "primaryTitle": "Timurid historian, diplomat, and author of Matla al-Sa'dayn"
+    "primaryTitle": "Timurid historian, diplomat, and author of Matla al-Sa'dayn",
+    "slug": "F1671"
   },
   {
     "famous": "Abdolkarim Haeri Yazdi",
@@ -46798,7 +46820,8 @@
     "lat": 34.64,
     "lng": 50.88,
     "lang": "Persian",
-    "primaryTitle": "Founder of the Qom seminary (hawza) and reviver of Shia scholarship"
+    "primaryTitle": "Founder of the Qom seminary (hawza) and reviver of Shia scholarship",
+    "slug": "F1851"
   },
   {
     "famous": "Abdullah ibn Mubarak",
@@ -46817,7 +46840,8 @@
     "teachers": [
       "Imam Abu Hanifa",
       "Imam Malik ibn Anas"
-    ]
+    ],
+    "slug": "F1855"
   },
   {
     "famous": "Abu Nu'aym al-Isfahani",
@@ -46832,7 +46856,8 @@
     "lat": 32.65,
     "lng": 51.68,
     "lang": "Arabic",
-    "primaryTitle": "Author of Hilyat al-Awliya, major biographical dictionary of saints"
+    "primaryTitle": "Author of Hilyat al-Awliya, major biographical dictionary of saints",
+    "slug": "F1866"
   },
   {
     "famous": "Al-Khatib al-Baghdadi",
@@ -46863,7 +46888,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Egyptian historian who chronicled Napoleon's invasion and Muhammad Ali's rise"
+    "primaryTitle": "Egyptian historian who chronicled Napoleon's invasion and Muhammad Ali's rise",
+    "slug": "F1889"
   },
   {
     "famous": "Abu Bakr ibn al-Arabi",
@@ -46881,7 +46907,8 @@
     "primaryTitle": "Leading Andalusian Maliki jurist and student of al-Ghazali",
     "teachers": [
       "Al-Ghazali"
-    ]
+    ],
+    "slug": "F1860"
   },
   {
     "famous": "Abu Hafs al-Nasafi",
@@ -46896,7 +46923,8 @@
     "lat": 39.65,
     "lng": 66.96,
     "lang": "Arabic",
-    "primaryTitle": "Central Asian Hanafi jurist and creed author"
+    "primaryTitle": "Central Asian Hanafi jurist and creed author",
+    "slug": "F1862"
   },
   {
     "famous": "Abul Hasan Ali Hasani Nadwi",
@@ -46911,7 +46939,8 @@
     "lat": 26.85,
     "lng": 80.95,
     "lang": "Arabic",
-    "primaryTitle": "Indian Islamic scholar and author of Madha Khasira al-Alam"
+    "primaryTitle": "Indian Islamic scholar and author of Madha Khasira al-Alam",
+    "slug": "F1876"
   },
   {
     "famous": "Ahmad Amin",
@@ -46926,7 +46955,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Egyptian historian and author of the Fajr/Duha/Zuhr al-Islam trilogy"
+    "primaryTitle": "Egyptian historian and author of the Fajr/Duha/Zuhr al-Islam trilogy",
+    "slug": "F1880"
   },
   {
     "famous": "Ahmad ibn Fadlan",
@@ -46957,7 +46987,8 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Historian and biographer of Timur (Tamerlane)"
+    "primaryTitle": "Historian and biographer of Timur (Tamerlane)",
+    "slug": "F1883"
   },
   {
     "famous": "Ahmed al-Tijani",
@@ -46972,7 +47003,8 @@
     "lat": 34.04,
     "lng": -5,
     "lang": "Arabic",
-    "primaryTitle": "Founder of the Tijaniyya Sufi order"
+    "primaryTitle": "Founder of the Tijaniyya Sufi order",
+    "slug": "F1885"
   },
   {
     "famous": "Ahmed ar-Rifa'i",
@@ -46987,7 +47019,8 @@
     "lat": 30.51,
     "lng": 47.81,
     "lang": "Arabic",
-    "primaryTitle": "Founder of the Rifa'iyya Sufi order"
+    "primaryTitle": "Founder of the Rifa'iyya Sufi order",
+    "slug": "F1886"
   },
   {
     "famous": "Ashraf Ali Thanwi",
@@ -47005,7 +47038,8 @@
     "primaryTitle": "Leading Deobandi scholar and author of Bahishti Zewar",
     "teachers": [
       "Haji Imdadullah Muhajir Makki"
-    ]
+    ],
+    "slug": "F1902"
   },
   {
     "famous": "Amin Ahsan Islahi",
@@ -47020,7 +47054,8 @@
     "lat": 31.55,
     "lng": 74.35,
     "lang": "Urdu",
-    "primaryTitle": "Pakistani Quran commentator and student of Hamiduddin Farahi"
+    "primaryTitle": "Pakistani Quran commentator and student of Hamiduddin Farahi",
+    "slug": "F1899"
   },
   {
     "famous": "Asad ibn al-Furat",
@@ -47038,7 +47073,8 @@
     "primaryTitle": "Maliki jurist who led the Muslim conquest of Sicily",
     "teachers": [
       "Imam Malik ibn Anas"
-    ]
+    ],
+    "slug": "F1901"
   },
   {
     "famous": "Azad Bilgrami",
@@ -47053,7 +47089,8 @@
     "lat": 27,
     "lng": 80.03,
     "lang": "Arabic",
-    "primaryTitle": "Indian polymath and scholar of Arabic, Persian, and Urdu literature"
+    "primaryTitle": "Indian polymath and scholar of Arabic, Persian, and Urdu literature",
+    "slug": "F1906"
   },
   {
     "famous": "Azyumardi Azra",
@@ -47068,7 +47105,8 @@
     "lat": -6.21,
     "lng": 106.85,
     "lang": "Indonesian",
-    "primaryTitle": "Leading Indonesian Islamic scholar and historian of Southeast Asian Islam"
+    "primaryTitle": "Leading Indonesian Islamic scholar and historian of Southeast Asian Islam",
+    "slug": "F1907"
   },
   {
     "famous": "Baha al-Din ibn Shaddad",
@@ -47083,7 +47121,8 @@
     "lat": 36.2,
     "lng": 37.15,
     "lang": "Arabic",
-    "primaryTitle": "Biographer of Saladin and qadi of Aleppo"
+    "primaryTitle": "Biographer of Saladin and qadi of Aleppo",
+    "slug": "F1909"
   },
   {
     "famous": "Beket Ata",
@@ -47098,7 +47137,8 @@
     "lat": 43.35,
     "lng": 52.06,
     "lang": "Kazakh",
-    "primaryTitle": "Kazakh Sufi saint and scholar of the Mangystau region"
+    "primaryTitle": "Kazakh Sufi saint and scholar of the Mangystau region",
+    "slug": "F1910"
   },
   {
     "famous": "Ali Abdel Raziq",
@@ -47113,7 +47153,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Egyptian scholar who argued Islam does not prescribe a political system"
+    "primaryTitle": "Egyptian scholar who argued Islam does not prescribe a political system",
+    "slug": "F1897"
   },
   {
     "famous": "Abd El-Razzak El-Sanhuri",
@@ -47128,7 +47169,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Father of modern Arab civil law who synthesised Islamic and Western jurisprudence"
+    "primaryTitle": "Father of modern Arab civil law who synthesised Islamic and Western jurisprudence",
+    "slug": "F1717"
   },
   {
     "famous": "Abdelwahab Meddeb",
@@ -47143,7 +47185,8 @@
     "lat": 48.86,
     "lng": 2.35,
     "lang": "French",
-    "primaryTitle": "Tunisian-French writer and critic of Islamic fundamentalism"
+    "primaryTitle": "Tunisian-French writer and critic of Islamic fundamentalism",
+    "slug": "F1729"
   },
   {
     "famous": "Ahmad ibn Abi Jum'ah",
@@ -47158,7 +47201,8 @@
     "lat": 35.7,
     "lng": -0.63,
     "lang": "Arabic",
-    "primaryTitle": "Maliki jurist who issued the Oran fatwa for crypto-Muslims in Spain"
+    "primaryTitle": "Maliki jurist who issued the Oran fatwa for crypto-Muslims in Spain",
+    "slug": "F1882"
   },
   {
     "famous": "Abdullah ibn Salam",
@@ -47173,7 +47217,8 @@
     "lat": 24.47,
     "lng": 39.61,
     "lang": "Arabic",
-    "primaryTitle": "Jewish rabbi who converted to Islam and became a companion of the Prophet"
+    "primaryTitle": "Jewish rabbi who converted to Islam and became a companion of the Prophet",
+    "slug": "F1856"
   },
   {
     "famous": "Asikpasazade",
@@ -47188,7 +47233,8 @@
     "lat": 40.65,
     "lng": 35.83,
     "lang": "Turkish",
-    "primaryTitle": "Early Ottoman chronicler and dervish historian"
+    "primaryTitle": "Early Ottoman chronicler and dervish historian",
+    "slug": "F1904"
   },
   {
     "famous": "Chiragh Ali",
@@ -47206,7 +47252,8 @@
     "primaryTitle": "Indian Muslim modernist and associate of Sir Syed Ahmad Khan",
     "teachers": [
       "Syed Ahmed Khan"
-    ]
+    ],
+    "slug": "F1911"
   },
   {
     "famous": "Musa al-Sadr",
@@ -47221,7 +47268,8 @@
     "lat": 33.89,
     "lng": 35.5,
     "lang": "Arabic",
-    "primaryTitle": "Iranian-Lebanese Shia cleric who mobilised the Lebanese Shia community"
+    "primaryTitle": "Iranian-Lebanese Shia cleric who mobilised the Lebanese Shia community",
+    "slug": "F1949"
   },
   {
     "famous": "Al-Qastallani",
@@ -47236,7 +47284,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Author of Irshad al-Sari, the major commentary on Sahih al-Bukhari"
+    "primaryTitle": "Author of Irshad al-Sari, the major commentary on Sahih al-Bukhari",
+    "slug": "F1894"
   },
   {
     "famous": "Abdulbaki Golpinarli",
@@ -47251,7 +47300,8 @@
     "lat": 41.01,
     "lng": 28.98,
     "lang": "Turkish",
-    "primaryTitle": "Leading Turkish scholar of Sufism and Mevlevi literature"
+    "primaryTitle": "Leading Turkish scholar of Sufism and Mevlevi literature",
+    "slug": "F1854"
   },
   {
     "famous": "Abu Ishaq al-Shatibi",
@@ -47282,7 +47332,8 @@
     "lat": 37.21,
     "lng": 50,
     "lang": "Persian",
-    "primaryTitle": "Founder of the Zahediyya Sufi order and spiritual grandfather of the Safavids"
+    "primaryTitle": "Founder of the Zahediyya Sufi order and spiritual grandfather of the Safavids",
+    "slug": "F1973"
   },
   {
     "famous": "Abbas ibn Firnas",
@@ -47297,13 +47348,14 @@
     "lat": 37.88,
     "lng": -4.77,
     "lang": "Arabic",
-    "primaryTitle": "Andalusian polymath and aviation pioneer"
+    "primaryTitle": "Andalusian polymath and aviation pioneer",
+    "slug": "F0444"
   },
   {
     "famous": "Abd al-Rahman al-Sufi",
     "full": "Abd al-Rahman al-Sufi",
     "type": "Scientist",
-    "tradition": "Astronomy",
+    "tradition": "Islamic Sciences",
     "dob": 903,
     "dod": 986,
     "dob_s": "903 CE",
@@ -47312,13 +47364,14 @@
     "lat": 32.65,
     "lng": 51.68,
     "lang": "Persian",
-    "primaryTitle": "Persian astronomer who catalogued the stars and discovered the Andromeda Galaxy"
+    "primaryTitle": "Persian astronomer who catalogued the stars and discovered the Andromeda Galaxy",
+    "slug": "F1053"
   },
   {
     "famous": "Abu al-Wafa Buzjani",
     "full": "Abu al-Wafa Buzjani",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 940,
     "dod": 998,
     "dob_s": "940 CE",
@@ -47327,13 +47380,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Persian mathematician who advanced trigonometry and introduced the tangent function"
+    "primaryTitle": "Persian mathematician who advanced trigonometry and introduced the tangent function",
+    "slug": "F1859"
   },
   {
     "famous": "Abu Zayd al-Balkhi",
     "full": "Abu Zayd al-Balkhi",
     "type": "Scientist",
-    "tradition": "Geography",
+    "tradition": "Islamic Sciences",
     "dob": 850,
     "dod": 934,
     "dob_s": "850 CE",
@@ -47345,13 +47399,14 @@
     "primaryTitle": "Persian polymath and pioneer of mental health geography",
     "teachers": [
       "Al-Kindi"
-    ]
+    ],
+    "slug": "F1871"
   },
   {
     "famous": "Abu Sahl al-Quhi",
     "full": "Abu Sahl al-Quhi",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 940,
     "dod": 1000,
     "dob_s": "940 CE",
@@ -47360,13 +47415,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Persian mathematician who advanced conic sections and mathematical centres of gravity"
+    "primaryTitle": "Persian mathematician who advanced conic sections and mathematical centres of gravity",
+    "slug": "F1869"
   },
   {
     "famous": "Abu-Mahmud Khojandi",
     "full": "Abu-Mahmud Khojandi",
     "type": "Scientist",
-    "tradition": "Astronomy",
+    "tradition": "Islamic Sciences",
     "dob": 940,
     "dod": 1000,
     "dob_s": "940 CE",
@@ -47375,13 +47431,14 @@
     "lat": 40.28,
     "lng": 69.63,
     "lang": "Persian",
-    "primaryTitle": "Persian astronomer who built the great mural sextant of Rayy"
+    "primaryTitle": "Persian astronomer who built the great mural sextant of Rayy",
+    "slug": "F1875"
   },
   {
     "famous": "Abu Nasr Mansur",
     "full": "Abu Nasr Mansur",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 960,
     "dod": 1036,
     "dob_s": "960 CE",
@@ -47390,13 +47447,14 @@
     "lat": 42.3,
     "lng": 59.15,
     "lang": "Arabic",
-    "primaryTitle": "Persian mathematician and collaborator of al-Biruni"
+    "primaryTitle": "Persian mathematician and collaborator of al-Biruni",
+    "slug": "F1865"
   },
   {
     "famous": "Abu Mansur al-Baghdadi",
     "full": "Abu Mansur al-Baghdadi",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 961,
     "dod": 1037,
     "dob_s": "961 CE",
@@ -47405,13 +47463,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Arab mathematician and theologian who contributed to number theory"
+    "primaryTitle": "Arab mathematician and theologian who contributed to number theory",
+    "slug": "F1864"
   },
   {
     "famous": "Abd al-Latif al-Baghdadi",
     "full": "Abd al-Latif al-Baghdadi",
     "type": "Scientist",
-    "tradition": "Medicine",
+    "tradition": "Islamic Sciences",
     "dob": 1162,
     "dod": 1231,
     "dob_s": "1162 CE",
@@ -47420,7 +47479,8 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Physician and polymath who wrote a pioneering account of Egypt"
+    "primaryTitle": "Physician and polymath who wrote a pioneering account of Egypt",
+    "slug": "F0863"
   },
   {
     "famous": "Abu'l-Barakat al-Baghdadi",
@@ -47435,13 +47495,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Philosopher and physicist who challenged Aristotelian mechanics"
+    "primaryTitle": "Philosopher and physicist who challenged Aristotelian mechanics",
+    "slug": "F1872"
   },
   {
     "famous": "Abu Kamil",
     "full": "Abu Kamil",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 850,
     "dod": 930,
     "dob_s": "850 CE",
@@ -47453,13 +47514,14 @@
     "primaryTitle": "Egyptian mathematician who advanced al-Khwarizmi's algebra",
     "teachers": [
       "Al-Khwarizmi"
-    ]
+    ],
+    "slug": "F1863"
   },
   {
     "famous": "Dinawari",
     "full": "Dinawari",
     "type": "Scientist",
-    "tradition": "Botany",
+    "tradition": "Islamic Sciences",
     "dob": 828,
     "dod": 895,
     "dob_s": "828 CE",
@@ -47468,13 +47530,14 @@
     "lat": 34.58,
     "lng": 47.43,
     "lang": "Arabic",
-    "primaryTitle": "Persian polymath and father of Arabic botany"
+    "primaryTitle": "Persian polymath and father of Arabic botany",
+    "slug": "F1912"
   },
   {
     "famous": "Ahmad al-Qalqashandi",
     "full": "Ahmad al-Qalqashandi",
     "type": "Scientist",
-    "tradition": "Administration",
+    "tradition": "Islamic Sciences",
     "dob": 1355,
     "dod": 1418,
     "dob_s": "1355 CE",
@@ -47483,13 +47546,14 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Mamluk encyclopedist and author of Subh al-A'sha on chancery practice"
+    "primaryTitle": "Mamluk encyclopedist and author of Subh al-A'sha on chancery practice",
+    "slug": "F1879"
   },
   {
     "famous": "Al-Khazini",
     "full": "Al-Khazini",
     "type": "Scientist",
-    "tradition": "Physics",
+    "tradition": "Islamic Sciences",
     "dob": 1077,
     "dod": 1155,
     "dob_s": "1077 CE",
@@ -47498,7 +47562,8 @@
     "lat": 37.66,
     "lng": 62.16,
     "lang": "Arabic",
-    "primaryTitle": "Physicist who wrote the Book of the Balance of Wisdom on mechanics and hydrostatics"
+    "primaryTitle": "Physicist who wrote the Book of the Balance of Wisdom on mechanics and hydrostatics",
+    "slug": "F1891"
   },
   {
     "famous": "Abu al-Salt",
@@ -47513,13 +47578,14 @@
     "lat": 38.84,
     "lng": 0.11,
     "lang": "Arabic",
-    "primaryTitle": "Andalusian polymath and author of works on medicine, astronomy and music"
+    "primaryTitle": "Andalusian polymath and author of works on medicine, astronomy and music",
+    "slug": "F1858"
   },
   {
     "famous": "Ahmad ibn Yusuf",
     "full": "Ahmad ibn Yusuf",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 835,
     "dod": 912,
     "dob_s": "835 CE",
@@ -47528,13 +47594,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Arab mathematician who wrote on ratios and proportions"
+    "primaryTitle": "Arab mathematician who wrote on ratios and proportions",
+    "slug": "F1884"
   },
   {
     "famous": "Habash al-Hasib al-Marwazi",
     "full": "Habash al-Hasib al-Marwazi",
     "type": "Scientist",
-    "tradition": "Astronomy",
+    "tradition": "Islamic Sciences",
     "dob": 766,
     "dod": 870,
     "dob_s": "766 CE",
@@ -47543,13 +47610,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Astronomer who compiled influential zij tables and introduced trigonometric functions"
+    "primaryTitle": "Astronomer who compiled influential zij tables and introduced trigonometric functions",
+    "slug": "F1918"
   },
   {
     "famous": "Ibn Yunus",
     "full": "Ibn Yunus",
     "type": "Scientist",
-    "tradition": "Astronomy",
+    "tradition": "Islamic Sciences",
     "dob": 950,
     "dod": 1009,
     "dob_s": "950 CE",
@@ -47558,13 +47626,14 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Egyptian astronomer who compiled the great Hakimi Zij"
+    "primaryTitle": "Egyptian astronomer who compiled the great Hakimi Zij",
+    "slug": "F1932"
   },
   {
     "famous": "Ibn al-Shatir",
     "full": "Ibn al-Shatir",
     "type": "Scientist",
-    "tradition": "Astronomy",
+    "tradition": "Islamic Sciences",
     "dob": 1304,
     "dod": 1375,
     "dob_s": "1304 CE",
@@ -47573,13 +47642,14 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Damascene astronomer whose planetary models anticipated Copernicus"
+    "primaryTitle": "Damascene astronomer whose planetary models anticipated Copernicus",
+    "slug": "F1928"
   },
   {
     "famous": "Ibrahim ibn Sinan",
     "full": "Ibrahim ibn Sinan",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 908,
     "dod": 946,
     "dob_s": "908 CE",
@@ -47588,13 +47658,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Mathematician who advanced the geometry of conic sections and sundials"
+    "primaryTitle": "Mathematician who advanced the geometry of conic sections and sundials",
+    "slug": "F1933"
   },
   {
     "famous": "Kushyar Gilani",
     "full": "Kushyar Gilani",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 971,
     "dod": 1029,
     "dob_s": "971 CE",
@@ -47603,7 +47674,8 @@
     "lat": 37.28,
     "lng": 49.59,
     "lang": "Persian",
-    "primaryTitle": "Persian mathematician and astronomer who influenced al-Biruni"
+    "primaryTitle": "Persian mathematician and astronomer who influenced al-Biruni",
+    "slug": "F1941"
   },
   {
     "famous": "Taqi al-Din ibn Ma'ruf",
@@ -47618,13 +47690,14 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Ottoman polymath who built the Istanbul observatory and pioneered mechanical clocks"
+    "primaryTitle": "Ottoman polymath who built the Istanbul observatory and pioneered mechanical clocks",
+    "slug": "F1967"
   },
   {
     "famous": "Sharaf al-Zaman al-Marwazi",
     "full": "Sharaf al-Zaman al-Marwazi",
     "type": "Scientist",
-    "tradition": "Medicine",
+    "tradition": "Islamic Sciences",
     "dob": 1056,
     "dod": 1125,
     "dob_s": "1056 CE",
@@ -47633,28 +47706,14 @@
     "lat": 37.66,
     "lng": 62.16,
     "lang": "Persian",
-    "primaryTitle": "Persian physician and zoologist who authored the Nature of Animals"
-  },
-  {
-    "famous": "Fatema Mernissi",
-    "full": "Fatema Mernissi",
-    "type": "Scholar",
-    "tradition": "Islamic Feminism",
-    "dob": 1940,
-    "dod": 2015,
-    "dob_s": "1940 CE",
-    "dod_s": "2015 CE",
-    "city": "Fez",
-    "lat": 34.04,
-    "lng": -5,
-    "lang": "Arabic",
-    "primaryTitle": "Moroccan sociologist and pioneer of Islamic feminism"
+    "primaryTitle": "Persian physician and zoologist who authored the Nature of Animals",
+    "slug": "F1955"
   },
   {
     "famous": "Fuat Sezgin",
     "full": "Fuat Sezgin",
     "type": "Scholar",
-    "tradition": "History of Science",
+    "tradition": "Islamic Sciences",
     "dob": 1924,
     "dod": 2018,
     "dob_s": "1924 CE",
@@ -47663,22 +47722,8 @@
     "lat": 50.11,
     "lng": 8.68,
     "lang": "German",
-    "primaryTitle": "Turkish historian of Islamic science and author of Geschichte des arabischen Schrifttums"
-  },
-  {
-    "famous": "Gai Eaton",
-    "full": "Gai Eaton",
-    "type": "Scholar",
-    "tradition": "Perennialism",
-    "dob": 1921,
-    "dod": 2010,
-    "dob_s": "1921 CE",
-    "dod_s": "2010 CE",
-    "city": "London",
-    "lat": 51.51,
-    "lng": -0.13,
-    "lang": "English",
-    "primaryTitle": "British convert to Islam and author of Islam and the Destiny of Man"
+    "primaryTitle": "Turkish historian of Islamic science and author of Geschichte des arabischen Schrifttums",
+    "slug": "F1916"
   },
   {
     "famous": "Taha Hussein",
@@ -47693,7 +47738,8 @@
     "lat": 30.04,
     "lng": 31.24,
     "lang": "Arabic",
-    "primaryTitle": "Dean of Arabic literature and pioneer of modern Arabic literary criticism"
+    "primaryTitle": "Dean of Arabic literature and pioneer of modern Arabic literary criticism",
+    "slug": "F1966"
   },
   {
     "famous": "Halil Inalcik",
@@ -47708,7 +47754,8 @@
     "lat": 39.93,
     "lng": 32.85,
     "lang": "Turkish",
-    "primaryTitle": "Foremost historian of the Ottoman Empire"
+    "primaryTitle": "Foremost historian of the Ottoman Empire",
+    "slug": "F1919"
   },
   {
     "famous": "Hichem Djait",
@@ -47723,7 +47770,8 @@
     "lat": 36.8,
     "lng": 10.18,
     "lang": "French",
-    "primaryTitle": "Tunisian historian of early Islam and Arab-Islamic civilisation"
+    "primaryTitle": "Tunisian historian of early Islam and Arab-Islamic civilisation",
+    "slug": "F1923"
   },
   {
     "famous": "Hisham ibn al-Kalbi",
@@ -47738,7 +47786,8 @@
     "lat": 32.03,
     "lng": 44.4,
     "lang": "Arabic",
-    "primaryTitle": "Arab genealogist and historian of pre-Islamic Arabia"
+    "primaryTitle": "Arab genealogist and historian of pre-Islamic Arabia",
+    "slug": "F1924"
   },
   {
     "famous": "Ibn al-Qalanisi",
@@ -47753,7 +47802,8 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Damascene chronicler of the First Crusade"
+    "primaryTitle": "Damascene chronicler of the First Crusade",
+    "slug": "F1926"
   },
   {
     "famous": "Sibt ibn al-Jawzi",
@@ -47771,7 +47821,8 @@
     "primaryTitle": "Grandson of Ibn al-Jawzi and Hanafi historian of Damascus",
     "teachers": [
       "Ibn al-Jawzi"
-    ]
+    ],
+    "slug": "F1959"
   },
   {
     "famous": "Lubna of Cordoba",
@@ -47786,13 +47837,14 @@
     "lat": 37.88,
     "lng": -4.77,
     "lang": "Arabic",
-    "primaryTitle": "Mathematician, scribe, and librarian of the Cordoban caliphal court"
+    "primaryTitle": "Mathematician, scribe, and librarian of the Cordoban caliphal court",
+    "slug": "F1942"
   },
   {
     "famous": "Ahmad al-Farghani",
     "full": "Ahmad al-Farghani",
     "type": "Scientist",
-    "tradition": "Astronomy",
+    "tradition": "Islamic Sciences",
     "dob": 800,
     "dod": 870,
     "dob_s": "800 CE",
@@ -47801,13 +47853,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Astronomer whose elements of astronomy influenced Dante and Columbus"
+    "primaryTitle": "Astronomer whose elements of astronomy influenced Dante and Columbus",
+    "slug": "F1878"
   },
   {
     "famous": "Ibn al-Jazzar",
     "full": "Ibn al-Jazzar",
     "type": "Scientist",
-    "tradition": "Medicine",
+    "tradition": "Islamic Sciences",
     "dob": 895,
     "dod": 979,
     "dob_s": "895 CE",
@@ -47816,13 +47869,14 @@
     "lat": 35.68,
     "lng": 10.1,
     "lang": "Arabic",
-    "primaryTitle": "Tunisian physician whose Viaticum became a standard European medical text"
+    "primaryTitle": "Tunisian physician whose Viaticum became a standard European medical text",
+    "slug": "F1925"
   },
   {
     "famous": "Ali ibn Isa al-Kahhal",
     "full": "Ali ibn Isa al-Kahhal",
     "type": "Scientist",
-    "tradition": "Medicine",
+    "tradition": "Islamic Sciences",
     "dob": 940,
     "dod": 1010,
     "dob_s": "940 CE",
@@ -47831,13 +47885,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Greatest ophthalmologist of the medieval Islamic world"
+    "primaryTitle": "Greatest ophthalmologist of the medieval Islamic world",
+    "slug": "F1898"
   },
   {
     "famous": "Haly Abbas",
     "full": "Haly Abbas",
     "type": "Scientist",
-    "tradition": "Medicine",
+    "tradition": "Islamic Sciences",
     "dob": 930,
     "dod": 994,
     "dob_s": "930 CE",
@@ -47846,13 +47901,14 @@
     "lat": 29.61,
     "lng": 52.54,
     "lang": "Persian",
-    "primaryTitle": "Persian physician and author of the Complete Book of Medical Art"
+    "primaryTitle": "Persian physician and author of the Complete Book of Medical Art",
+    "slug": "F1920"
   },
   {
     "famous": "Al-Samawal al-Maghribi",
     "full": "Al-Samawal al-Maghribi",
     "type": "Scientist",
-    "tradition": "Mathematics",
+    "tradition": "Islamic Sciences",
     "dob": 1130,
     "dod": 1180,
     "dob_s": "1130 CE",
@@ -47861,13 +47917,14 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Jewish-born mathematician who advanced algebra before converting to Islam"
+    "primaryTitle": "Jewish-born mathematician who advanced algebra before converting to Islam",
+    "slug": "F1896"
   },
   {
     "famous": "Sinan ibn Thabit",
     "full": "Sinan ibn Thabit",
     "type": "Scientist",
-    "tradition": "Medicine",
+    "tradition": "Islamic Sciences",
     "dob": 880,
     "dod": 943,
     "dob_s": "880 CE",
@@ -47876,7 +47933,8 @@
     "lat": 33.31,
     "lng": 44.37,
     "lang": "Arabic",
-    "primaryTitle": "Physician who organised the first system of public hospitals in Baghdad"
+    "primaryTitle": "Physician who organised the first system of public hospitals in Baghdad",
+    "slug": "F1960"
   },
   {
     "famous": "Ibn Fadl Allah al-Umari",
@@ -47891,7 +47949,8 @@
     "lat": 33.51,
     "lng": 36.29,
     "lang": "Arabic",
-    "primaryTitle": "Mamluk encyclopedist and author of Masalik al-Absar on the peoples of the world"
+    "primaryTitle": "Mamluk encyclopedist and author of Masalik al-Absar on the peoples of the world",
+    "slug": "F1930"
   },
   {
     "famous": "Al-Sam'ani",
@@ -47906,7 +47965,8 @@
     "lat": 37.66,
     "lng": 62.16,
     "lang": "Arabic",
-    "primaryTitle": "Author of al-Ansab, the great dictionary of Arabic genealogical surnames"
+    "primaryTitle": "Author of al-Ansab, the great dictionary of Arabic genealogical surnames",
+    "slug": "F1895"
   },
   {
     "slug": "F1831",
@@ -48112,7 +48172,7 @@
     "famous": "Abu Dulaf al-Khazraji",
     "full": "Abu Dulaf al-Khazraji",
     "type": "Traveler",
-    "tradition": "Islamic Geography",
+    "tradition": "Islamic Sciences",
     "dob": 900,
     "dod": 1000,
     "dob_s": "~900 CE",
@@ -48160,7 +48220,7 @@
     "famous": "Ibn Rustah",
     "full": "Ahmad ibn Rustah",
     "type": "Scholar",
-    "tradition": "Islamic Geography",
+    "tradition": "Islamic Sciences",
     "dob": 860,
     "dod": 930,
     "dob_s": "~860 CE",
@@ -48176,7 +48236,7 @@
     "famous": "Leo Africanus",
     "full": "al-Hasan ibn Muhammad al-Wazzan al-Fasi",
     "type": "Traveler",
-    "tradition": "Islamic Geography",
+    "tradition": "Islamic Sciences",
     "dob": 1494,
     "dod": 1554,
     "dob_s": "~1494 CE",
