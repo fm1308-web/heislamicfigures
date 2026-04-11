@@ -30,7 +30,7 @@ const TRAD_COLORS={
   'Ishraqiyya':       '#f8c8a0',
   'Sindhi/Punjabi Sufism':'#e07060',
   // ── Islamic History sub-lane colours ──
-  'Prophets':             '#D4AF37',
+  'Quranic Prophets':     '#D4AF37',
   'Companions':           '#d4784a',
   'Companions (Women)':   '#d06878',
   'Followers':            '#c08850',
@@ -50,8 +50,8 @@ const TRAD_COLORS={
 };
 
 // ── Islamic-History sub-lane machinery ──────────────────────────────────────
-const IH_SUBLANE_ORDER=['Prophets','Companions','Companions (Women)','Followers','Caliphs & Rulers','Islamic History'];
-const IH_TYPE_MAP={'Prophet':'Prophets','Sahaba':'Companions','Sahabiyya':'Companions (Women)',"Tabi'un":'Followers','Caliph':'Caliphs & Rulers','Ruler':'Caliphs & Rulers','Warrior':'Caliphs & Rulers'};
+const IH_SUBLANE_ORDER=['Quranic Prophets','Companions','Companions (Women)','Followers','Caliphs & Rulers','Islamic History'];
+const IH_TYPE_MAP={'Prophet':'Quranic Prophets','Sahaba':'Companions','Sahabiyya':'Companions (Women)',"Tabi'un":'Followers','Caliph':'Caliphs & Rulers','Ruler':'Caliphs & Rulers','Warrior':'Caliphs & Rulers'};
 function getIHSubLane(p){
   if(p.tradition!=='Islamic History') return null;
   return IH_TYPE_MAP[p.type]||'Islamic History';
@@ -157,10 +157,11 @@ function renderSilsila(){
   const ROW_H=13;          // px per sub-row (compact)
   const LANE_PAD=4;        // padding top+bottom inside each lane
   const MIN_LH=24;         // minimum lane height
-  const LH_LIN=148;        // lineage lane fixed height
   const GRID_COLS=5;        // max 5 figures per row
   const GRID_CELL_W=160;    // fixed cell width, figures cluster left
   const GRID_CELL_H=16;    // row height in grid
+  const LIN_CELL_H=38;     // lineage row height (dot + label)
+  const LIN_PAD=6;          // lineage band top/bottom padding
 
   // X mapping: pre-Islamic compressed; 600-800 CE expanded 2x; 800+ linear
   // This gives the Sahaba era (600-700 CE) much more horizontal room
@@ -205,6 +206,12 @@ function renderSilsila(){
     return Math.max(MIN_LH, rows*GRID_CELL_H + LANE_PAD*2);
   }
 
+  // ── Lineage members + dynamic height ─────────────────────
+  SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
+  const linMembers=LINEAGE_CHAIN.map(n=>PEOPLE.find(p=>p.famous===n)).filter(Boolean);
+  const LIN_ROWS=Math.ceil(linMembers.length/GRID_COLS);
+  const LH_LIN=LIN_ROWS*LIN_CELL_H+LIN_PAD*2;
+
   // ── Cumulative Y offsets ───────────────────────────────────
   const TRAD_OFFSET=PT+LH_LIN;
   const laneStartY={};
@@ -216,22 +223,15 @@ function renderSilsila(){
   });
   const SVG_H=curY+PB;
 
-  // ── U-shape positions for lineage ─────────────────────────
-  SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
-  const linMembers=LINEAGE_CHAIN.map(n=>PEOPLE.find(p=>p.famous===n)).filter(Boolean);
-  const MID=Math.ceil(linMembers.length/2);
-  const topRow=linMembers.slice(0,MID);
-  const botRow=linMembers.slice(MID);
-  const LIN_Y_TOP = PT + Math.round(LH_LIN*0.28);
-  const LIN_Y_BOT = PT + Math.round(LH_LIN*0.72);
-  const LIN_X_L=60, LIN_X_R=Math.round(TW*0.50);
-  topRow.forEach((p,i)=>{
-    const x=LIN_X_L + i*(LIN_X_R-LIN_X_L)/Math.max(topRow.length-1,1);
-    SL_NM[p.famous]={x, y:LIN_Y_TOP, li:0, col:'#D4AF37'};
-  });
-  botRow.forEach((p,i)=>{
-    const x=LIN_X_R - i*(LIN_X_R-LIN_X_L)/Math.max(botRow.length-1,1);
-    SL_NM[p.famous]={x, y:LIN_Y_BOT, li:0, col:'#D4AF37'};
+  // ── Boustrophedon grid positions for lineage (snake: even rows L→R, odd R→L) ──
+  const qProphets=new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Musa','Harun','Dawud','Sulayman','Ilyas','Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
+  linMembers.forEach((p,idx)=>{
+    const posInRow=idx%GRID_COLS;
+    const gr=Math.floor(idx/GRID_COLS);
+    const visualCol=(gr%2===1)?(GRID_COLS-1-posInRow):posInRow;
+    const x=8+visualCol*GRID_CELL_W+GRID_CELL_W*0.5;
+    const y=PT+LIN_PAD+gr*LIN_CELL_H+14;
+    SL_NM[p.famous]={x, y, li:0, col:'#D4AF37'};
   });
 
   // ── Assign tradition node positions (left-aligned grid) ───
@@ -329,51 +329,72 @@ function renderSilsila(){
     P.push(`<text class="sl-node-text" data-name="${esc(p.famous)}" x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
   });
 
-  // ── Cover rect: blank lineage lane left of Adam (hides any edge bleed) ──────
-  P.push(`<rect x="0" y="${PT}" width="${LIN_X_L - 11}" height="${LH_LIN}" fill="#222D3A"/>`);
-  P.push(`<rect x="0" y="${PT}" width="5" height="${LH_LIN}" fill="#D4AF37" opacity="0.7"/>`);
-
-  // ── U-SHAPE: Single continuous unbroken path, always on top ──────────────────
+  // ── Boustrophedon chain connector for lineage ──────────────────────────────
   {
-    const tPts=topRow.map(p=>SL_NM[p.famous]).filter(Boolean);
-    const bPts=botRow.map(p=>SL_NM[p.famous]).filter(Boolean);
-    if(tPts.length>0 && bPts.length>0){
-      const curveR=(LIN_Y_BOT-LIN_Y_TOP)/2;
-      const cxBulge=LIN_X_R+curveR+14;
-      const LIN_Y_MID=(LIN_Y_TOP+LIN_Y_BOT)/2;
-      // Single path: Adam → top row → U-curve → bottom row → Muhammad
-      let d=`M${tPts[0].x.toFixed(1)},${LIN_Y_TOP}`;
-      for(let i=1;i<tPts.length;i++) d+=` L${tPts[i].x.toFixed(1)},${LIN_Y_TOP}`;
-      // Smooth U-curve at the right using two quadratic beziers
-      d+=` Q${cxBulge},${LIN_Y_TOP} ${cxBulge},${LIN_Y_MID.toFixed(1)}`;
-      d+=` Q${cxBulge},${LIN_Y_BOT} ${bPts[0].x.toFixed(1)},${LIN_Y_BOT}`;
-      // Bottom row going left back to Muhammad
-      for(let i=1;i<bPts.length;i++) d+=` L${bPts[i].x.toFixed(1)},${LIN_Y_BOT}`;
-      P.push(`<path d="${d}" stroke="#D4AF37" stroke-width="2.5" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`);
+    // Draw row-by-row horizontal segments following the snake direction
+    for(let r=0;r<LIN_ROWS;r++){
+      const start=r*GRID_COLS;
+      const end=Math.min(start+GRID_COLS, linMembers.length);
+      // Collect dots in VISUAL order (already boustrophedon-positioned)
+      const pts=[];
+      for(let i=start;i<end;i++){
+        const nd=SL_NM[linMembers[i].famous];
+        if(nd) pts.push(nd);
+      }
+      if(pts.length>1){
+        let d=`M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`;
+        for(let i=1;i<pts.length;i++) d+=` L${pts[i].x.toFixed(1)},${pts[i].y.toFixed(1)}`;
+        P.push(`<path d="${d}" stroke="#D4AF37" stroke-width="2" fill="none" opacity="0.7"/>`);
+      }
+      // U-turn connector to next row (boundary dots are vertically aligned)
+      if(r<LIN_ROWS-1){
+        const tailNd=SL_NM[linMembers[end-1].famous];   // last in this row
+        const headNd=SL_NM[linMembers[end].famous];      // first in next row
+        if(tailNd&&headNd){
+          // Bulge outward: right side for even rows, left side for odd rows
+          const bulge=(r%2===0)?28:-28;
+          const bx=tailNd.x+bulge;
+          const my=(tailNd.y+headNd.y)/2;
+          P.push(`<path d="M${tailNd.x.toFixed(1)},${tailNd.y.toFixed(1)} C${bx.toFixed(1)},${tailNd.y.toFixed(1)} ${bx.toFixed(1)},${headNd.y.toFixed(1)} ${headNd.x.toFixed(1)},${headNd.y.toFixed(1)}" stroke="#D4AF37" stroke-width="1.6" fill="none" opacity="0.55"/>`);
+        }
+      }
+    }
+    // Arrow at Prophet Muhammad (last member — leftmost on last row)
+    const lastNd=SL_NM[linMembers[linMembers.length-1].famous];
+    if(lastNd){
+      P.push(`<path d="M${(lastNd.x-6).toFixed(1)},${lastNd.y.toFixed(1)} L${(lastNd.x-14).toFixed(1)},${lastNd.y.toFixed(1)}" stroke="#D4AF37" stroke-width="2.5" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`);
     }
   }
 
-  // ── Lineage nodes (rendered last — always on top of U-shape and edges) ───────
-  const qProphets=new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Musa','Harun','Dawud','Sulayman','Ilyas','Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
-  const labelSet=new Set(['Adam','Idris','Nuh','Ibrahim','Ismail','Prophet Muhammad']);
-
-  linMembers.forEach(p=>{
-    const nd=SL_NM[p.famous]; if(!nd) return;
-    const isPM=p.famous==='Prophet Muhammad';
-    const isQ=qProphets.has(p.famous);
-    const r=isPM?13:isQ?9:6;
-    const isTop=nd.y===LIN_Y_TOP;
-    const shortName=isPM?'Prophet Muhammad ☆':p.famous.split(' ')[0];
-    const labelY=isTop?nd.y-r-6:nd.y+r+13;
-    if(isPM){
-      P.push(`<circle cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="20" fill="none" stroke="#D4AF37" stroke-width="1.1"><animate attributeName="r" values="18;30;18" dur="3.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="3.8s" repeatCount="indefinite"/></circle>`);
-    }
-    const flt=isPM?'filter="url(#slg)"':isQ?'filter="url(#slg2)"':'';
-    P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#D4AF37" fill-opacity="${isPM?.95:isQ?.85:.65}" stroke="#D4AF37" stroke-width="${isPM?2.5:isQ?1.8:1.1}" stroke-opacity=".8" ${flt}/>`);
-    if(labelSet.has(p.famous)){
-      P.push(`<text x="${nd.x.toFixed(1)}" y="${labelY}" text-anchor="middle" font-size="${isPM?11:9}" font-family="Cinzel,serif" fill="#D4AF37" font-weight="700" opacity="0.9" pointer-events="none">${shortName}</text>`);
-    }
-  });
+  // ── Lineage nodes + labels (all names shown, font-size 11 matches tradition rows) ──
+  {
+    const bigSet=new Set(['Adam','Idris','Nuh','Ibrahim','Ismail','Prophet Muhammad']);
+    linMembers.forEach(p=>{
+      const nd=SL_NM[p.famous]; if(!nd) return;
+      const isPM=p.famous==='Prophet Muhammad';
+      const isQ=qProphets.has(p.famous);
+      const isBig=bigSet.has(p.famous);
+      const r=isPM?10:isBig?7:isQ?6:4;
+      if(isPM){
+        P.push(`<circle cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="16" fill="none" stroke="#D4AF37" stroke-width="1.1"><animate attributeName="r" values="14;24;14" dur="3.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="3.8s" repeatCount="indefinite"/></circle>`);
+      }
+      const flt=isPM?'filter="url(#slg)"':isQ?'filter="url(#slg2)"':'';
+      P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#D4AF37" fill-opacity="${isPM?.95:isQ?.85:.6}" stroke="#D4AF37" stroke-width="${isPM?2.5:isQ?1.6:1}" stroke-opacity=".8" ${flt}/>`);
+      // Label — font-size 11 for all, matching tradition row labels
+      const labelY=nd.y+r+11;
+      let shortName;
+      if(isPM) shortName='Prophet Muhammad ☆';
+      else if(isBig) shortName=p.famous.split(' ')[0];
+      else{
+        const parts=p.famous.split(' ');
+        const cutIdx=parts.findIndex((w,i)=>i>0&&(w==='ibn'||w==='bin'||w==='bint'));
+        shortName=(cutIdx>0?parts.slice(0,cutIdx):parts.slice(0,2)).join(' ');
+        if(shortName.length>14) shortName=shortName.slice(0,13)+'…';
+      }
+      const fw=isBig?'700':'500';
+      P.push(`<text x="${nd.x.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle" font-size="11" font-family="Cinzel,serif" fill="#D4AF37" font-weight="${fw}" fill-opacity="0.85" pointer-events="none">${esc(shortName)}</text>`);
+    });
+  }
   // ── Inject SVG ────────────────────────────────────────────
   const mainDiv=document.getElementById('silsilaMain');
   mainDiv.innerHTML=`<svg id="silsilaSVG" xmlns="http://www.w3.org/2000/svg" width="${TW}" height="${SVG_H}" style="display:block;min-width:${TW}px">${P.join('\n')}</svg>`;

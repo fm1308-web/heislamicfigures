@@ -2335,7 +2335,7 @@ body.snapshot-mode *{scrollbar-width:none}
 .tk-book-link:hover{text-decoration:underline;color:#D4AF37}
 .tk-no-yr{color:#6B7280;font-size:10px}
 /* LEFT role background bands (behind author column) */
-.tk-role-band{position:absolute;left:0;right:0;pointer-events:none;z-index:0;display:flex;align-items:flex-start;box-sizing:border-box;padding:6px 0 0 0}
+.tk-role-band{position:absolute;left:0;width:500px;pointer-events:none;z-index:0;display:flex;align-items:flex-start;box-sizing:border-box;padding:6px 0 0 0}
 .tk-role-band-label{font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-left:20px}
 /* RIGHT era background bands (behind books column) */
 .tk-era-band{position:absolute;left:506px;right:0;pointer-events:none;z-index:0;display:flex;flex-direction:column;align-items:flex-end;box-sizing:border-box;padding:8px 24px 0 0}

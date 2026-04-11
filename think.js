@@ -13,14 +13,109 @@ function _esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replac
 
 async function _loadData(){
   if(_data) return;
-  try{var r=await fetch('data/islamic/think.json?v='+Date.now());_data=await r.json();}
-  catch(e){_data={concepts:[],stats:{}};}
+  // Load think_books.json (book-level) + think_roles.json (role lookup) + think.json.old (bookless-author source)
+  var raw=null,rolesIdx=null,oldDataIdx={};
+  try{var r=await fetch('data/islamic/think_books.json?v='+Date.now());raw=await r.json();}
+  catch(e){_data={concepts:[],stats:{}};return;}
+  try{var rr=await fetch('data/islamic/think_roles.json?v='+Date.now());rolesIdx=await rr.json();}
+  catch(e){rolesIdx={};}
+  try{
+    var ro=await fetch('data/islamic/think.json.old?v='+Date.now());
+    var oldData=await ro.json();
+    (oldData.concepts||[]).forEach(function(c){oldDataIdx[c.slug]=c.figures||[];});
+  }catch(e){/* optional fallback data, silent if missing */}
+  _data=_thinkTransform(raw,rolesIdx||{},oldDataIdx);
   if(!_booksData){
     try{
       if(window._BOOKS_DATA) _booksData=window._BOOKS_DATA;
       else{var r2=await fetch('data/islamic/books.json?v='+Date.now());_booksData=await r2.json();window._BOOKS_DATA=_booksData;}
     }catch(e){_booksData={books:[]};}
   }
+}
+
+// Transform think_books.json (+ think.json.old bookless authors) into merged row list.
+// Each "figure" entry is either a BOOK ROW (has _book) or an AUTHOR-ONLY ROW (_bookless:true, no _book).
+function _thinkTransform(raw,rolesIdx,oldDataIdx){
+  oldDataIdx=oldDataIdx||{};
+  var out={stats:{},concepts:[]};
+  var missingRoles=[];
+  var missingYear=[];
+  var missingRolesOld=[];
+  (raw.concepts||[]).forEach(function(c){
+    var figs=[];
+    var authorsWithBooks=new Set();
+    // Book rows — one per book
+    (c.books||[]).forEach(function(b){
+      var sl=b.author_slug||'';
+      if(!sl) return;
+      authorsWithBooks.add(sl);
+      var role=(rolesIdx[c.slug]&&rolesIdx[c.slug][sl])||'transmitter';
+      if(!(rolesIdx[c.slug]&&rolesIdx[c.slug][sl])) missingRoles.push(c.slug+'/'+sl);
+      var by=b.year;
+      var hasYear=(by!=null);
+      if(!hasYear){
+        by=(b.author_dob!=null?b.author_dob+30:600);
+        missingYear.push(c.slug+'/'+b.title);
+      }
+      figs.push({
+        slug:sl,
+        name:b.author_name||sl,
+        role:role,
+        dob:(b.author_dob!=null)?b.author_dob:null,
+        dod:(b.author_dod!=null)?b.author_dod:null,
+        tradition:b.author_tradition||'',
+        type:b.author_type||'',
+        _book:{
+          id:b.book_id||'',
+          title:b.title||'',
+          year:by,
+          hasYear:hasYear
+        }
+      });
+    });
+    // Author-only rows — bookless authors from think.json.old
+    var oldFigs=oldDataIdx[c.slug]||[];
+    oldFigs.forEach(function(of){
+      if(!of.slug||authorsWithBooks.has(of.slug)) return;
+      // Role: prefer think_roles.json, fall back to old figure's role, then transmitter
+      var role=(rolesIdx[c.slug]&&rolesIdx[c.slug][of.slug])||of.role||'transmitter';
+      if(!(rolesIdx[c.slug]&&rolesIdx[c.slug][of.slug])) missingRolesOld.push(c.slug+'/'+of.slug);
+      figs.push({
+        slug:of.slug,
+        name:of.name||of.slug,
+        role:(role||'transmitter').toLowerCase(),
+        dob:(of.dob!=null)?of.dob:null,
+        dod:(of.dod!=null)?of.dod:null,
+        tradition:of.tradition||'',
+        type:of.type||'',
+        _bookless:true
+        // no _book field — render will skip the right-side book row for this entry
+      });
+    });
+    out.concepts.push({
+      slug:c.slug,
+      name:c.name,
+      category:c.category,
+      definition:c.definition,
+      era_start:c.era_start,
+      era_end:c.era_end,
+      contested:c.contested,
+      figure_count:figs.length,
+      figures:figs
+    });
+  });
+  var s=raw.stats||{};
+  out.stats={
+    concepts_with_figures:s.concepts_with_books||0,
+    figures_tagged:s.books_tagged||0,
+    total_assignments:s.total_assignments||0,
+    books_tagged:s.books_tagged||0,
+    concepts_with_books:s.concepts_with_books||0
+  };
+  if(missingRoles.length) console.warn('[THINK] '+missingRoles.length+' book-author pairs missing role — defaulted. First 5:',missingRoles.slice(0,5));
+  if(missingYear.length) console.warn('[THINK] '+missingYear.length+' books missing year — fell back. First 5:',missingYear.slice(0,5));
+  if(missingRolesOld.length) console.warn('[THINK] '+missingRolesOld.length+' bookless authors from think.json.old missing from think_roles.json — used old-file role or transmitter. First 5:',missingRolesOld.slice(0,5));
+  return out;
 }
 
 function _syncConceptBtn(){
@@ -131,32 +226,38 @@ function _renderCanvas(){
     return;
   }
   if(defEl){defEl.textContent=concept.definition||'';defEl.style.display=concept.definition?'':'none';}
-  var figs=(concept.figures||[]).slice().sort(function(a,b){return(a.dob||0)-(b.dob||0);});
-  if(statsEl) statsEl.textContent=_esc(concept.name)+' \u2014 '+figs.length+' figures';
-
-  var allBooks=[];
-  var slugSet=new Set(),figBySlug={};
-  figs.forEach(function(f){slugSet.add(f.slug);figBySlug[f.slug]=f;
-    _booksForSlug(f.slug).forEach(function(b){
-      allBooks.push({book:b,yr:b.year!=null?b.year:(f.dod||f.dob+70),hasYear:b.year!=null,authorSlug:f.slug});
-    });
+  // Each figure is one row: BOOK ROW (has _book) or AUTHOR-ONLY ROW (_bookless:true).
+  // Sort by row year: book.year for book rows, author.dob for bookless rows.
+  var figs=(concept.figures||[]).slice().sort(function(a,b){
+    var ya=a._book?a._book.year:(a.dob||9999);
+    var yb=b._book?b._book.year:(b.dob||9999);
+    if(ya!==yb) return ya-yb;
+    if((a.dob||9999)!==(b.dob||9999)) return(a.dob||9999)-(b.dob||9999);
+    return(a.name||'').localeCompare(b.name||'');
   });
-  allBooks.sort(function(a,b){return a.yr-b.yr;});
+  if(statsEl) statsEl.textContent=_esc(concept.name)+' \u2014 '+figs.length+' books';
+
+  var slugSet=new Set();
+  figs.forEach(function(f){slugSet.add(f.slug);});
   var rels=_findRelations(slugSet);
 
-  // Merge events, sort, assign Y with min gap (density-adaptive)
+  // One event per row. Year = book year for book rows, author dob for bookless rows.
   var events=[];
-  figs.forEach(function(f,i){events.push({type:'fig',yr:f.dob||600,f:f,idx:i});});
-  allBooks.forEach(function(b,i){events.push({type:'book',yr:b.yr,b:b,idx:i});});
-  events.sort(function(a,b){return a.yr-b.yr||(a.type==='fig'?-1:1);});
+  figs.forEach(function(f,i){
+    var yr=f._book?f._book.year:(f.dob||600);
+    events.push({type:'fig',yr:yr,f:f,idx:i});
+  });
 
   var ROW_H=44,PAD=30,STEM_X=500,DOT_X=16,LEFT_W=STEM_X-40;
   var yPos=PAD;
   events.forEach(function(ev){ev.y=yPos;yPos+=ROW_H;});
   var totalH=yPos+PAD;
 
+  // figYMap: first occurrence per author slug (for relation curve anchors)
   var figYMap={};
-  events.forEach(function(ev){if(ev.type==='fig') figYMap[ev.f.slug]={y:ev.y,f:ev.f};});
+  events.forEach(function(ev){
+    if(ev.type==='fig'&&!figYMap[ev.f.slug]) figYMap[ev.f.slug]={y:ev.y,f:ev.f};
+  });
 
   // Build role band spans — consecutive runs of the same role
   var roleBands=[];
@@ -202,45 +303,30 @@ function _renderCanvas(){
     var color=ROLE_COLORS[role]||'#999';
     var dates='';if(f.dob)dates+=f.dob;if(f.dod)dates+='\u2013'+f.dod;if(dates)dates+=' CE';
     var midY=ev.y+ROW_H/2;
+    var booklessStyle=f._bookless?';opacity:0.75':'';
 
-    html+='<div class="tk-fig-row tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
+    html+='<div class="tk-fig-row tk-anim-el'+(f._bookless?' tk-fig-bookless':'')+'" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px'+booklessStyle+'">';
     html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(f.name)+'</div>';
     if(dates) html+='<div class="tk-fig-meta">'+dates+'</div>';
     html+='</div></div>';
     // Fixed-position role dot at DOT_X
-    html+='<div class="tk-role-dot tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px;background:'+color+'"></div>';
-    html+='<div class="tk-dash-left tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px"></div>';
+    html+='<div class="tk-role-dot tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px;background:'+color+(f._bookless?';opacity:0.75':'')+'"></div>';
+    html+='<div class="tk-dash-left tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px'+(f._bookless?';opacity:0.75':'')+'"></div>';
   });
 
-  // Book rows (RIGHT of line) — downward-only from author, grouped for fan-out
-  var BOOK_ROW_H=22;
-  var _booksByAuthor={};
-  var bookEvents=events.filter(function(ev){return ev.type==='book';});
-  // Sort: author DOB asc, book year asc, title asc (stable tiebreaker)
-  bookEvents.sort(function(a,b){
-    var fA=figYMap[a.b.authorSlug],fB=figYMap[b.b.authorSlug];
-    var dobA=fA?fA.f.dob:0,dobB=fB?fB.f.dob:0;
-    if(dobA!==dobB) return dobA-dobB;
-    if(a.b.yr!==b.b.yr) return a.b.yr-b.b.yr;
-    return (a.b.book.title||'').localeCompare(b.b.book.title||'');
-  });
-  var bkYPos=PAD;
-  bookEvents.forEach(function(ev){
-    var b=ev.b;
-    var authorEntry=figYMap[b.authorSlug];
-    var authorRowY=authorEntry?authorEntry.y:PAD;
-    var bkY=Math.max(authorRowY,bkYPos);
+  // Book rows (RIGHT of line) — one per figure row, aligned at the SAME Y
+  var BOOK_ROW_H=ROW_H;
+  events.forEach(function(ev){
+    if(ev.type!=='fig') return;
+    var f=ev.f, b=f._book;
+    if(!b) return;
+    var bkY=ev.y+(ROW_H-BOOK_ROW_H)/2;
     var midY=bkY+BOOK_ROW_H/2;
-    bkYPos=bkY+BOOK_ROW_H;
     var marker=b.hasYear?'':'<span class="tk-no-yr">?</span> ';
-    html+='<div class="tk-book-row tk-anim-el" data-author="'+_esc(b.authorSlug)+'" data-y="'+midY+'" style="top:'+bkY+'px;height:'+BOOK_ROW_H+'px">';
-    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" onclick="event.preventDefault();setView(\'books\');return false;">'+_esc(b.book.title)+'</a>';
+    html+='<div class="tk-book-row tk-anim-el" data-author="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+bkY+'px;height:'+BOOK_ROW_H+'px;align-items:center">';
+    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" onclick="event.preventDefault();setView(\'books\');return false;">'+_esc(b.title)+'</a>';
     html+='</div>';
-    if(!_booksByAuthor[b.authorSlug]) _booksByAuthor[b.authorSlug]=[];
-    _booksByAuthor[b.authorSlug].push(midY);
   });
-  // Extend canvas height if book column overflows figure column
-  totalH=Math.max(totalH,bkYPos+PAD);
 
   // LEFT background bands — role spans behind author column
   roleBands.forEach(function(band){
@@ -280,16 +366,6 @@ function _renderCanvas(){
       html+='</div>';
     });
   }
-
-  // Book connectors built post-render (see below) so we can measure icon positions
-  var _fanAuthorData=[];
-  Object.keys(_booksByAuthor).forEach(function(slug){
-    var bookYs=_booksByAuthor[slug];
-    var fig=figYMap[slug];
-    if(!fig) return;
-    var role=(fig.f.role||'transmitter').toLowerCase();
-    _fanAuthorData.push({slug:slug,hitY:fig.y+ROW_H/2,color:ROLE_COLORS[role]||'#999',bookYs:bookYs});
-  });
 
   // Relation curves — overlay SVG, does NOT affect layout flow
   // Endpoints at role-dot center (fixed at DOT_CENTER_X=456)
@@ -364,38 +440,6 @@ function _renderCanvas(){
   canvas.style.height=totalH+'px';
   canvas.innerHTML=html;
   _thinkAnim.maxY=totalH;
-
-  // Build book connector SVG post-render, measuring actual icon positions
-  if(_fanAuthorData.length){
-    var canvasRect=canvas.getBoundingClientRect();
-    var STEM_RIGHT=STEM_X+6;
-    var icons=canvas.querySelectorAll('.tk-book-row .tk-book-icon');
-    var iconLeftByY={};
-    icons.forEach(function(ic){
-      var icRect=ic.getBoundingClientRect();
-      var row=ic.closest('.tk-book-row');
-      if(!row) return;
-      var rowTop=parseFloat(row.style.top)||0;
-      var rowH=parseFloat(row.style.height)||22;
-      var midY=rowTop+rowH/2;
-      iconLeftByY[Math.round(midY)]=icRect.left-canvasRect.left;
-    });
-    var fanSvg='';
-    _fanAuthorData.forEach(function(ad){
-      ad.bookYs.forEach(function(bkY){
-        var iconX=iconLeftByY[Math.round(bkY)];
-        if(iconX==null) iconX=556; // fallback
-        var lineBottomY=Math.max(ad.hitY,bkY);
-        fanSvg+='<line data-author="'+ad.slug+'" data-curfew-y="'+lineBottomY+'" x1="'+STEM_RIGHT+'" y1="'+ad.hitY+'" x2="'+iconX+'" y2="'+bkY+'" stroke="'+ad.color+'" stroke-width="1"/>';
-      });
-    });
-    if(fanSvg){
-      var svgEl=document.createElementNS('http://www.w3.org/2000/svg','svg');
-      svgEl.setAttribute('style','position:absolute;top:0;left:0;width:100%;height:'+totalH+'px;pointer-events:none;z-index:3;overflow:visible');
-      svgEl.innerHTML=fanSvg;
-      canvas.appendChild(svgEl);
-    }
-  }
 
   // Author click-to-highlight
   var _selAuthor=null;
