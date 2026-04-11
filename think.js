@@ -5,7 +5,7 @@
 'use strict';
 
 var _data=null,_booksData=null,_inited=false,_selConceptSlug=null,_tooltip=null;
-var _thinkAnimCtl=null,_thinkAnim={mode:'stopped',timer:null,cursorY:0,maxY:0,speedMs:1200,tick:null};
+var _thinkAnimCtl=null,_thinkAnim={mode:'stopped',timer:null,cursorY:0,maxY:0,speedMs:600,tick:null};
 var ROLE_COLORS={originator:'#2ECC71',developer:'#3B82F6',critic:'#E24B4A',reviver:'#F59E0B',synthesizer:'#14B8A6',transmitter:'#38BDF8'};
 function _hexToRgba(hex,a){var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return 'rgba('+r+','+g+','+b+','+a+')';}
 var CATEGORIES=['theology','philosophy','law','mysticism','science','politics','language'];
@@ -197,7 +197,7 @@ function _buildShell(view){
     _thinkAnimCtl=window.AnimControls.create({
       mountEl:animMount,idPrefix:'think',initialSpeed:'1x',
       onPlay:_thinkAnimPlay,onPause:_thinkAnimPause,onStop:_thinkAnimStop,
-      onSpeedChange:function(ms){_thinkAnim.speedMs=ms;if(_thinkAnim.timer){clearInterval(_thinkAnim.timer);_thinkAnim.timer=setInterval(_thinkAnim.tick,_thinkAnim.speedMs);}}
+      onSpeedChange:function(ms){_thinkAnim.speedMs=Math.max(30,Math.round(ms/2));if(_thinkAnim.timer){clearInterval(_thinkAnim.timer);_thinkAnim.timer=setInterval(_thinkAnim.tick,_thinkAnim.speedMs);}}
     });
   }
 
@@ -536,7 +536,7 @@ function _thinkAnimPlay(){
   // Fresh start — hide ALL HTML elements and ALL SVG children
   _thinkAnim.mode='playing';
   _thinkAnim.cursorY=_thinkAnim._PAD||20;
-  _thinkAnim.speedMs=_thinkAnimCtl?_thinkAnimCtl.getSpeedMs():1200;
+  _thinkAnim.speedMs=_thinkAnimCtl?Math.max(30,Math.round(_thinkAnimCtl.getSpeedMs()/2)):600;
   // Hide HTML elements via class
   canvas.querySelectorAll('.tk-anim-el').forEach(function(el){el.classList.add('tk-hidden-by-curfew');});
   // Hide every individual SVG child element (lines, paths, rects, text, circles)

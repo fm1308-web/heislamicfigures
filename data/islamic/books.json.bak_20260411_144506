@@ -437,7 +437,7 @@
       "year_display": 1111
     },
     {
-      "id": "F0238-B80",
+      "id": "F0238-B01",
       "slug": "F0238",
       "title": "Ihya Ulum al-Din (Revival of Religious Sciences)",
       "author_name": "Al-Ghazali",
@@ -453,6 +453,38 @@
       "harvested": false,
       "has_study": true,
       "url": "https://archive.org/details/IhyaUlumAl-dinByImamGhazali",
+      "priority": "HIGH",
+      "themes": [
+        "Heart and soul purification",
+        "Purification of the soul (tazkiya)",
+        "Vices and virtues",
+        "Ritual worship (ibadat)",
+        "Sufi path (tariqa)",
+        "Spiritual stations and states",
+        "Repentance (tawba)",
+        "Sincerity (ikhlas)",
+        "Worldly detachment",
+        "Ash'arite theology"
+      ],
+      "year_display": 1111
+    },
+    {
+      "id": "F0238-B01",
+      "slug": "F0238",
+      "title": "Ihya Ulum al-Din (Revival of the Religious Sciences)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": true,
+      "url": "https://archive.org/details/IhyaUlumAlDinVol1",
       "priority": "HIGH",
       "themes": [
         "Heart and soul purification",
@@ -527,6 +559,36 @@
         "Spiritual stations and states"
       ],
       "year_display": 1106
+    },
+    {
+      "id": "F0238-B03",
+      "slug": "F0238",
+      "title": "The Alchemy of Happiness (Kimiya-yi Sa'adat)",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/alchemyofhappin00ghazgoog",
+      "priority": "HIGH",
+      "themes": [
+        "Heart and soul purification",
+        "Vices and virtues",
+        "Ethics and virtue",
+        "Sufi path (tariqa)",
+        "Purification of the soul (tazkiya)",
+        "Worldly detachment",
+        "Sincerity (ikhlas)",
+        "Spiritual stations and states"
+      ],
+      "year_display": 1111
     },
     {
       "id": "F0238-B04",
@@ -644,8 +706,7 @@
         "Existence and essence",
         "Soul and intellect",
         "Atomism and occasionalism",
-        "Ash'arite theology",
-        "Divine attributes"
+        "Ash'arite theology"
       ],
       "year_display": 1111
     },
@@ -1150,7 +1211,7 @@
       "year_display": 1221
     },
     {
-      "id": "F0580-B80",
+      "id": "F0580-B01",
       "slug": "F0580",
       "title": "The Conference of the Birds (Mantiq al-Tayr)",
       "author_name": "Farid ud-Din Attar",
@@ -1174,8 +1235,7 @@
         "Love mysticism",
         "Gnosis (ma'rifa)",
         "Spiritual poetry",
-        "Heart and soul purification",
-        "Sainthood (walaya)"
+        "Heart and soul purification"
       ],
       "year_display": 1221
     },
@@ -1408,8 +1468,7 @@
         "Heart and soul purification",
         "Ash'arite theology",
         "Hadith criticism",
-        "Sincerity (ikhlas)",
-        "Legal theory (usul al-fiqh)"
+        "Sincerity (ikhlas)"
       ],
       "year_display": 1201
     },
@@ -1553,7 +1612,7 @@
       "year_display": 1240
     },
     {
-      "id": "F0728-B80",
+      "id": "F0728-B01",
       "slug": "F0728",
       "title": "The Tarjuman al-Ashwaq",
       "author_name": "Ibn Arabi",
@@ -1730,7 +1789,7 @@
       "year_display": 1368
     },
     {
-      "id": "F0734-B80",
+      "id": "F0734-B01",
       "slug": "F0734",
       "title": "The Travels of Ibn Battuta (Gibb translation)",
       "author_name": "Ibn Battuta",
@@ -1809,13 +1868,12 @@
         "Geography and cosmography",
         "Dynastic chronicle",
         "Arabic grammar",
-        "Aristotelian logic",
-        "Rhetoric and eloquence (balagha)"
+        "Aristotelian logic"
       ],
       "year_display": 1406
     },
     {
-      "id": "F0743-B80",
+      "id": "F0743-B01",
       "slug": "F0743",
       "title": "Muqaddimah (English)",
       "author_name": "Ibn Khaldun",
@@ -1831,6 +1889,66 @@
       "harvested": false,
       "has_study": false,
       "url": "https://archive.org/details/muqaddimahintrod0000ibnk",
+      "priority": "HIGH",
+      "themes": [
+        "Universal history",
+        "Political theory",
+        "Governance and administration",
+        "Economic and fiscal thought",
+        "Geography and cosmography",
+        "Dynastic chronicle",
+        "Arabic grammar",
+        "Aristotelian logic"
+      ],
+      "year_display": 1406
+    },
+    {
+      "id": "F0743-B01",
+      "slug": "F0743",
+      "title": "The Muqaddimah (English)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muqaddimahintrod0000ibnk",
+      "priority": "HIGH",
+      "themes": [
+        "Universal history",
+        "Political theory",
+        "Governance and administration",
+        "Economic and fiscal thought",
+        "Geography and cosmography",
+        "Dynastic chronicle",
+        "Arabic grammar",
+        "Aristotelian logic"
+      ],
+      "year_display": 1406
+    },
+    {
+      "id": "F0743-B01",
+      "slug": "F0743",
+      "title": "The Muqaddimah (Rosenthal translation)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/muabornsociolog00ibngoog",
       "priority": "HIGH",
       "themes": [
         "Universal history",
@@ -1959,7 +2077,7 @@
       "year_display": 1037
     },
     {
-      "id": "F0753-B80",
+      "id": "F0753-B01",
       "slug": "F0753",
       "title": "The Canon of Medicine (al-Qanun fi al-Tibb)",
       "author_name": "Ibn Sina",
@@ -1969,13 +2087,39 @@
       "year_source": "author_dod",
       "topics": [
         "Islamic Philosophy",
-        "Philosopher",
-        "non-fiction literature"
+        "Philosopher"
       ],
       "is_free": true,
       "harvested": false,
       "has_study": false,
       "url": "https://archive.org/details/CanonOfMedicine",
+      "priority": "HIGH",
+      "themes": [
+        "Medicine and healing",
+        "Pharmacology",
+        "Peripatetic philosophy",
+        "Soul and intellect",
+        "Aristotelian logic"
+      ],
+      "year_display": 1037
+    },
+    {
+      "id": "F0753-B01",
+      "slug": "F0753",
+      "title": "The Canon of Medicine (selections)",
+      "author_name": "Ibn Sina",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1037,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/canonofmedicine00avic",
       "priority": "HIGH",
       "themes": [
         "Medicine and healing",
@@ -2238,8 +2382,7 @@
         "Hadith criticism",
         "Quranic exegesis (tafsir)",
         "Abrogation (naskh)",
-        "Substantive law (fiqh)",
-        "Quranic sciences (ulum al-Quran)"
+        "Substantive law (fiqh)"
       ],
       "year_display": 820
     },
@@ -2329,7 +2472,7 @@
       "year_display": 1273
     },
     {
-      "id": "F0814-B80",
+      "id": "F0814-B01",
       "slug": "F0814",
       "title": "Masnavi I Ma'navi (Nicholson translation)",
       "author_name": "Jalal ad-Din Rumi",
@@ -2359,7 +2502,37 @@
       "year_display": 1273
     },
     {
-      "id": "F0814-B82",
+      "id": "F0814-B01",
+      "slug": "F0814",
+      "title": "Masnavi-i Ma'navi (English selections)",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1273,
+      "year_source": "author_dod",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/masnaviofjalal00jala",
+      "priority": "HIGH",
+      "themes": [
+        "Spiritual poetry",
+        "Love mysticism",
+        "Intoxicated mysticism",
+        "Annihilation (fana) and subsistence (baqa)",
+        "Gnosis (ma'rifa)",
+        "Unity of being (wahdat al-wujud)",
+        "Spiritual stations and states",
+        "Master-disciple relationship"
+      ],
+      "year_display": 1273
+    },
+    {
+      "id": "F0814-B01",
       "slug": "F0814",
       "title": "The Mathnawi (Nicholson translation)",
       "author_name": "Jalal ad-Din Rumi",
@@ -2389,7 +2562,7 @@
       "year_display": 1273
     },
     {
-      "id": "F0814-B83",
+      "id": "F0814-B01",
       "slug": "F0814",
       "title": "The Mesnevi (Masnavi)",
       "author_name": "Jalal ad-Din Rumi",
@@ -2414,8 +2587,7 @@
         "Gnosis (ma'rifa)",
         "Unity of being (wahdat al-wujud)",
         "Spiritual stations and states",
-        "Master-disciple relationship",
-        "Heart and soul purification"
+        "Master-disciple relationship"
       ],
       "year_display": 1273
     },
@@ -2448,7 +2620,7 @@
       "year_display": 1273
     },
     {
-      "id": "F0814-B84",
+      "id": "F0814-B02",
       "slug": "F0814",
       "title": "Selected Poems from the Divan-i Shams",
       "author_name": "Jalal ad-Din Rumi",
@@ -2564,8 +2736,7 @@
       "year_source": "author_dod",
       "topics": [
         "Mughal",
-        "Poet",
-        "poetry"
+        "Poet"
       ],
       "is_free": true,
       "harvested": false,
@@ -2744,8 +2915,7 @@
         "Governance and administration",
         "Caliphate and imamate",
         "Ethics and virtue",
-        "Adab (refined conduct)",
-        "Economic and fiscal thought"
+        "Adab (refined conduct)"
       ],
       "year_display": 1092
     },
@@ -2859,7 +3029,7 @@
       "year_display": 1131
     },
     {
-      "id": "F1127-B80",
+      "id": "F1127-B01",
       "slug": "F1127",
       "title": "Rubaiyat (multiple translations)",
       "author_name": "Omar Khayyam",
@@ -2886,7 +3056,7 @@
       "year_display": 1131
     },
     {
-      "id": "F1127-B81",
+      "id": "F1127-B01",
       "slug": "F1127",
       "title": "The Rubaiyat of Omar Khayyam (FitzGerald translation)",
       "author_name": "Omar Khayyam",
@@ -2969,6 +3139,34 @@
       "year_display": 1291
     },
     {
+      "id": "F1217-B01",
+      "slug": "F1217",
+      "title": "The Gulistan (Rose Garden)",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://www.gutenberg.org/ebooks/49148",
+      "priority": "HIGH",
+      "themes": [
+        "Adab (refined conduct)",
+        "Vices and virtues",
+        "Spiritual poetry",
+        "Prose adab (literary culture)",
+        "Ethics and virtue",
+        "Worldly detachment"
+      ],
+      "year_display": 1291
+    },
+    {
       "id": "F1217-B02",
       "slug": "F1217",
       "title": "The Bustan (Fruit Orchard)",
@@ -2985,6 +3183,35 @@
       "harvested": false,
       "has_study": false,
       "url": "https://archive.org/details/bustan00sadi",
+      "priority": "HIGH",
+      "themes": [
+        "Spiritual poetry",
+        "Adab (refined conduct)",
+        "Vices and virtues",
+        "Ethics and virtue",
+        "Asceticism and renunciation (zuhd)",
+        "Purification of the soul (tazkiya)",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 1291
+    },
+    {
+      "id": "F1217-B02",
+      "slug": "F1217",
+      "title": "The Bustan (Orchard)",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": true,
+      "harvested": false,
+      "has_study": false,
+      "url": "https://archive.org/details/bustanorsaadi00sadiiala",
       "priority": "HIGH",
       "themes": [
         "Spiritual poetry",
@@ -3266,7 +3493,7 @@
       "year_display": 1277
     },
     {
-      "id": "F1648-B80",
+      "id": "F1648-B01",
       "slug": "F1648",
       "title": "Forty Hadith of Imam Nawawi",
       "author_name": "Yahya ibn Sharif al-Nawawi",
@@ -3293,7 +3520,7 @@
       "year_display": 1277
     },
     {
-      "id": "F1648-B81",
+      "id": "F1648-B01",
       "slug": "F1648",
       "title": "Forty Hadith of al-Nawawi (English)",
       "author_name": "Yahya ibn Sharif al-Nawawi",
@@ -4239,6 +4466,33 @@
       "year_display": 889
     },
     {
+      "id": "F0117-B51",
+      "slug": "F0117",
+      "title": "Sunan Abī Dāwūd (al-Risālah al-ʻĀlamīyah, 2009)",
+      "author_name": "Abu Dawud",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 2009,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Hadith criticism",
+        "Isnad methodology",
+        "Substantive law (fiqh)",
+        "Ritual worship (ibadat)"
+      ],
+      "year_display": 884
+    },
+    {
       "id": "F0117-B52",
       "slug": "F0117",
       "title": "al-Marasil",
@@ -4855,6 +5109,31 @@
         "Vices and virtues"
       ],
       "year_display": 1122
+    },
+    {
+      "id": "F0213-B55",
+      "slug": "F0213",
+      "title": "Maṣābīḥ al-Sunnah (Dār al-Maʻrifah, 1407h)",
+      "author_name": "Al-Baghawi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1987,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Ritual worship (ibadat)",
+        "Substantive law (fiqh)"
+      ],
+      "year_display": 1117
     },
     {
       "id": "F0215-B50",
@@ -5568,8 +5847,7 @@
       "year_source": "publication_date",
       "topics": [
         "Islamic Sciences",
-        "Scholar",
-        "non-fiction"
+        "Scholar"
       ],
       "is_free": false,
       "harvested": true,
@@ -5584,6 +5862,27 @@
         "Prose adab (literary culture)"
       ],
       "year_display": 1371
+    },
+    {
+      "id": "F0226-B51",
+      "slug": "F0226",
+      "title": "al-Najm al-wahhāj fī sharḥ al-Minhāj (Dār al-Minhāj, 1425h)",
+      "author_name": "Al-Damiri",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 2004,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [],
+      "year_display": 1400
     },
     {
       "id": "F0226-B52",
@@ -5631,10 +5930,54 @@
         "Poetics",
         "Rhetoric and eloquence (balagha)",
         "Prose adab (literary culture)",
-        "Arabic lexicography",
-        "Spiritual poetry"
+        "Arabic lexicography"
       ],
       "year_display": 1405
+    },
+    {
+      "id": "F0226-B54",
+      "slug": "F0226",
+      "title": "Sharḥ Lāmīyat al-ʻAjam (1429H)",
+      "author_name": "Al-Damiri",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 2008,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Spiritual poetry",
+        "Rhetoric and eloquence (balagha)",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 1400
+    },
+    {
+      "id": "F0226-B55",
+      "slug": "F0226",
+      "title": "Ḥayāt Al-Ḥayawān Al-Kubrā (Dar Al-Kotob Al-Ilmiyah, 2nd ed)",
+      "author_name": "Al-Damiri",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 2003,
+      "year_source": "publication_date",
+      "topics": [
+        "non-fiction"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [],
+      "year_display": 1400
     },
     {
       "id": "F0227-B50",
@@ -5847,6 +6190,37 @@
       "year_display": 1348
     },
     {
+      "id": "F0238-B50",
+      "slug": "F0238",
+      "title": "The Incoherence of the Philosophers",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1095,
+      "year_source": "publication_date",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Ash'arite theology",
+        "Peripatetic philosophy",
+        "Neoplatonism and emanation",
+        "Aristotelian logic",
+        "Metaphysics of being",
+        "Cosmology and spheres",
+        "Soul and intellect",
+        "Existence and essence",
+        "Divine attributes"
+      ],
+      "year_display": 1095
+    },
+    {
       "id": "F0238-B52",
       "slug": "F0238",
       "title": "The Revival of the Religious Sciences",
@@ -6013,6 +6387,36 @@
       "year_display": 1111
     },
     {
+      "id": "F0238-B65",
+      "slug": "F0238",
+      "title": "The Beginning of Guidance",
+      "author_name": "Al-Ghazali",
+      "author_tradition": "Khorasan School",
+      "author_type": "Scholar",
+      "year": 1111,
+      "year_source": "author_dod",
+      "topics": [
+        "Khorasan School",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Heart and soul purification",
+        "Purification of the soul (tazkiya)",
+        "Vices and virtues",
+        "Adab (refined conduct)",
+        "Ritual worship (ibadat)",
+        "Repentance (tawba)",
+        "Sincerity (ikhlas)",
+        "Worldly detachment"
+      ],
+      "year_display": 1111
+    },
+    {
       "id": "F0241-B75",
       "slug": "F0241",
       "title": "Al-Talbiyah",
@@ -6064,6 +6468,31 @@
         "Arabic lexicography"
       ],
       "year_display": 945
+    },
+    {
+      "id": "F0242-B52",
+      "slug": "F0242",
+      "title": "Ṣifat Jazīrat al-ʻArab (Maṭbaʻat Brīl, 1884)",
+      "author_name": "Al-Hamdani",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 1884,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Geography and cosmography",
+        "Dynastic chronicle",
+        "Travel and exploration (rihla)"
+      ],
+      "year_display": 940
     },
     {
       "id": "F0242-B53",
@@ -6259,6 +6688,56 @@
         "Geometry"
       ],
       "year_display": 1206
+    },
+    {
+      "id": "F0268-B52",
+      "slug": "F0268",
+      "title": "The book of knowledge of ingenious mechanical devices (1989)",
+      "author_name": "al-Jazari",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scientist",
+      "year": 1989,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scientist"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Optics and natural philosophy",
+        "Mathematics and arithmetic",
+        "Geometry"
+      ],
+      "year_display": 1201
+    },
+    {
+      "id": "F0268-B53",
+      "slug": "F0268",
+      "title": "The book of knowledge of ingenious mechanical devices (1974)",
+      "author_name": "al-Jazari",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scientist",
+      "year": 1974,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scientist"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Optics and natural philosophy",
+        "Mathematics and arithmetic",
+        "Geometry"
+      ],
+      "year_display": 1201
     },
     {
       "id": "F0268-B55",
@@ -6924,7 +7403,32 @@
         "Universal history",
         "Geography and cosmography",
         "Dynastic chronicle",
-        "Prose adab (literary culture)",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 951
+    },
+    {
+      "id": "F0280-B53",
+      "slug": "F0280",
+      "title": "Murūj al-dhahab wa-maʻādin al-jawhar (Vol. IV, 1st edition, Al-Maktabah Al-ʿAṣriyyah)",
+      "author_name": "Al-Masudi",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 2005,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Dynastic chronicle",
+        "Geography and cosmography",
         "Travel and exploration (rihla)",
         "Biographical dictionary (tabaqat)"
       ],
@@ -7121,6 +7625,85 @@
       "year_display": 1058
     },
     {
+      "id": "F0282-B56",
+      "slug": "F0282",
+      "title": "Aʻlām al-Nubūwah (Dār al-Kutub al-ʿilmīya)",
+      "author_name": "Al-Mawardi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1986,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Revelation and prophecy",
+        "Prophetic biography (sira)",
+        "Divine unity (tawhid)",
+        "Ash'arite theology"
+      ],
+      "year_display": 1053
+    },
+    {
+      "id": "F0282-B57",
+      "slug": "F0282",
+      "title": "Adab al-Dunyā wa-al-dīn (Dār Maktabat al-ḥayāh, 1986)",
+      "author_name": "Al-Mawardi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1986,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Political theory",
+        "Governance and administration",
+        "Ethics and virtue",
+        "Adab (refined conduct)",
+        "Vices and virtues"
+      ],
+      "year_display": 1053
+    },
+    {
+      "id": "F0282-B58",
+      "slug": "F0282",
+      "title": "Adab al-Wazīr (Maktabat al-Khānjī, 1348h)",
+      "author_name": "Al-Mawardi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1929,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Political theory",
+        "Governance and administration",
+        "Adab (refined conduct)",
+        "Ethics and virtue"
+      ],
+      "year_display": 1053
+    },
+    {
       "id": "F0282-B59",
       "slug": "F0282",
       "title": "Al-Aḥkām Al-Sulṭānīyah (Dar Al-Kotob Al-Ilmiyah)",
@@ -7170,6 +7753,54 @@
         "Travel and exploration (rihla)"
       ],
       "year_display": 985
+    },
+    {
+      "id": "F0292-B51",
+      "slug": "F0292",
+      "title": "Aḥsan al-taqāsīm fī maʻrifat al-aqālīm (Dār Brīl lil-Nashr, 1906)",
+      "author_name": "Al-Muqaddasi",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 1906,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Geography and cosmography",
+        "Travel and exploration (rihla)"
+      ],
+      "year_display": 986
+    },
+    {
+      "id": "F0292-B52",
+      "slug": "F0292",
+      "title": "Aḥsan al-taqāsīm fī maʻrifat al-aqālīm (Dār Ṣādir, 1991)",
+      "author_name": "Al-Muqaddasi",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 991,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Geography and cosmography",
+        "Travel and exploration (rihla)"
+      ],
+      "year_display": 991
     },
     {
       "id": "F0292-B53",
@@ -7470,8 +8101,7 @@
         "Hadith criticism",
         "Isnad methodology",
         "Substantive law (fiqh)",
-        "Legal theory (usul al-fiqh)",
-        "Hadith compilation"
+        "Legal theory (usul al-fiqh)"
       ],
       "year_display": 1144
     },
@@ -7549,6 +8179,33 @@
         "Hadith compilation",
         "Substantive law (fiqh)",
         "Legal theory (usul al-fiqh)"
+      ],
+      "year_display": 1144
+    },
+    {
+      "id": "F0314-B58",
+      "slug": "F0314",
+      "title": "Ikmāl al-Muʻallim bi-fawāʼid Muslim (Dār al-Wafāʼ, 1419H)",
+      "author_name": "Al-Qadi Iyad",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1998,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith criticism",
+        "Isnad methodology",
+        "Hadith compilation",
+        "Legal theory (usul al-fiqh)",
+        "Substantive law (fiqh)"
       ],
       "year_display": 1144
     },
@@ -7757,6 +8414,29 @@
       "year_display": 1363
     },
     {
+      "id": "F0327-B53",
+      "slug": "F0327",
+      "title": "Aʻyān al-ʻaṣr wa-aʻwān al-Naṣr (Dār al-Fikr, 1418h)",
+      "author_name": "Al-Safadi",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 1998,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)"
+      ],
+      "year_display": 1358
+    },
+    {
       "id": "F0327-B58",
       "slug": "F0327",
       "title": "Nakṯh al-Himyān fī Nukat al-ʿUmyān",
@@ -7782,6 +8462,29 @@
       "year_display": 1363
     },
     {
+      "id": "F0327-B59",
+      "slug": "F0327",
+      "title": "Nakṯh al-Himyān fī Nukat al-ʿUmyān (Dār al-Kutub al-ʿIlmiyya, 2007)",
+      "author_name": "Al-Safadi",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 2007,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)"
+      ],
+      "year_display": 1358
+    },
+    {
       "id": "F0327-B60",
       "slug": "F0327",
       "title": "al-Ghayth al-musajjam fī sharḥ Lāmīyat al-ʻAjam",
@@ -7804,10 +8507,36 @@
         "Rhetoric and eloquence (balagha)",
         "Prose adab (literary culture)",
         "Arabic grammar",
-        "Biographical dictionary (tabaqat)",
-        "Arabic lexicography"
+        "Biographical dictionary (tabaqat)"
       ],
       "year_display": 1363
+    },
+    {
+      "id": "F0327-B61",
+      "slug": "F0327",
+      "title": "al-Ghayth al-musajjam fī sharḥ Lāmīyat al-ʻAjam (Dar Al-Kotob Al-Ilmiyah)",
+      "author_name": "Al-Safadi",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 2016,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Poetics",
+        "Rhetoric and eloquence (balagha)",
+        "Arabic lexicography",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 1358
     },
     {
       "id": "F0330-B50",
@@ -7886,6 +8615,31 @@
       "year_display": 1497
     },
     {
+      "id": "F0330-B57",
+      "slug": "F0330",
+      "title": "al-Sirr al-maktūm fī al-firaq bayna al-mālayn al-Maḥmūd wa-al-madhmūm (Dār al-Imām Muslim, 1440 H)",
+      "author_name": "Al-Sakhawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 2018,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith criticism",
+        "Isnad methodology",
+        "Biographical dictionary (tabaqat)"
+      ],
+      "year_display": 1492
+    },
+    {
       "id": "F0330-B58",
       "slug": "F0330",
       "title": "al-Jawāhir wa-al-durar fī tarjamat Shaykh al-Islām Ibn Ḥajar",
@@ -7911,6 +8665,31 @@
       "year_display": 1497
     },
     {
+      "id": "F0330-B59",
+      "slug": "F0330",
+      "title": "al-Jawāhir wa-al-durar fī tarjamat Shaykh al-Islām Ibn Ḥajar (Dār Ibn Ḥazm, 1419H)",
+      "author_name": "Al-Sakhawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1999,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Hadith criticism",
+        "Isnad methodology"
+      ],
+      "year_display": 1492
+    },
+    {
       "id": "F0330-B60",
       "slug": "F0330",
       "title": "al-Ḍawʼ al-lāmiʻ li-ahl al-qarn al-tāsiʻ (Dār Maktabat al-ḥayāh)",
@@ -7921,8 +8700,7 @@
       "year_source": "author_dod",
       "topics": [
         "Hadith Sciences",
-        "Scholar",
-        "non-fiction"
+        "Scholar"
       ],
       "is_free": false,
       "harvested": true,
@@ -7932,10 +8710,33 @@
       "themes": [
         "Biographical dictionary (tabaqat)",
         "Hadith compilation",
+        "Hadith criticism"
+      ],
+      "year_display": 1497
+    },
+    {
+      "id": "F0330-B61",
+      "slug": "F0330",
+      "title": "Al-Ḍaw’ Al-Lāmiʻ Li-Ahl Al-Qarn Al-Tāsiʻ (Dār Al-Jīl)",
+      "author_name": "Al-Sakhawi",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1992,
+      "year_source": "publication_date",
+      "topics": [
+        "non-fiction"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
         "Hadith criticism",
         "Isnad methodology"
       ],
-      "year_display": 1497
+      "year_display": 1492
     },
     {
       "id": "F0333-B50",
@@ -8065,11 +8866,35 @@
       "themes": [
         "Dynastic chronicle",
         "Caliphate and imamate",
-        "Political theory",
+        "Political theory"
+      ],
+      "year_display": 946
+    },
+    {
+      "id": "F0341-B52",
+      "slug": "F0341",
+      "title": "Akhbār al-Rāḍī bi-Allāh wa-al-Mutaqqī Allāh (1935)",
+      "author_name": "Al-Suli",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 1935,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Dynastic chronicle",
+        "Caliphate and imamate",
         "Biographical dictionary (tabaqat)",
         "Governance and administration"
       ],
-      "year_display": 946
+      "year_display": 941
     },
     {
       "id": "F0344-B50",
@@ -8376,6 +9201,61 @@
       "year_display": 918
     },
     {
+      "id": "F0345-B57",
+      "slug": "F0345",
+      "title": "Tārīkh Al-Rusul Wa-Al-Mulūk (Dār al-Maʻārif, 1387 H. Vol. 9)",
+      "author_name": "Al-Tabari",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1967,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Dynastic chronicle",
+        "Prophetic biography (sira)",
+        "Companions' lives (sahaba)"
+      ],
+      "year_display": 918
+    },
+    {
+      "id": "F0345-B59",
+      "slug": "F0345",
+      "title": "Jāmiʻ al-Bayān ʻan Taʼwīl āy al-Qurʼān (Dār al-Tarbiyah wa-al-Turāth)",
+      "author_name": "Al-Tabari",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 2010,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Quranic exegesis (tafsir)",
+        "Esoteric interpretation (ta'wil)",
+        "Quranic sciences (ulum al-Quran)",
+        "Hadith compilation",
+        "Isnad methodology",
+        "Quranic narrative",
+        "Abrogation (naskh)"
+      ],
+      "year_display": 918
+    },
+    {
       "id": "F0346-B50",
       "slug": "F0346",
       "title": "Sharh al-'Aqa'id al-Nasafiyya",
@@ -8612,10 +9492,34 @@
       "themes": [
         "Adab (refined conduct)",
         "Vices and virtues",
-        "Sufi path (tariqa)",
-        "Prose adab (literary culture)"
+        "Sufi path (tariqa)"
       ],
       "year_display": 1691
+    },
+    {
+      "id": "F0358-B51",
+      "slug": "F0358",
+      "title": "Zahr alʼkm fī al-amthāl wa-al-Ḥikam (Dār al-Thaqāfah, 1401h)",
+      "author_name": "Al-Yusi",
+      "author_tradition": "Shadhiliyya",
+      "author_type": "Scholar",
+      "year": 1981,
+      "year_source": "publication_date",
+      "topics": [
+        "Shadhiliyya",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Adab (refined conduct)",
+        "Vices and virtues",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 1686
     },
     {
       "id": "F0359-B50",
@@ -10600,6 +11504,36 @@
       "year_display": 655
     },
     {
+      "id": "F0580-B50",
+      "slug": "F0580",
+      "title": "The Conference of the Birds",
+      "author_name": "Farid ud-Din Attar",
+      "author_tradition": "Khorasan School",
+      "author_type": "Poet",
+      "year": 1177,
+      "year_source": "publication_date",
+      "topics": [
+        "Khorasan School",
+        "Poet"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Sufi path (tariqa)",
+        "Annihilation (fana) and subsistence (baqa)",
+        "Spiritual stations and states",
+        "Love mysticism",
+        "Gnosis (ma'rifa)",
+        "Spiritual poetry",
+        "Heart and soul purification",
+        "Sainthood (walaya)"
+      ],
+      "year_display": 1177
+    },
+    {
       "id": "F0580-B51",
       "slug": "F0580",
       "title": "Mokhtar-nameh",
@@ -11590,9 +12524,7 @@
       "year": 1231,
       "year_source": "publication_date",
       "topics": [
-        "universal history (genre)",
-        "Islamic History",
-        "Scholar"
+        "universal history (genre)"
       ],
       "is_free": false,
       "harvested": true,
@@ -11603,8 +12535,7 @@
         "Universal history",
         "Dynastic chronicle",
         "Prophetic biography (sira)",
-        "Companions' lives (sahaba)",
-        "Biographical dictionary (tabaqat)"
+        "Companions' lives (sahaba)"
       ],
       "year_display": 1231
     },
@@ -11659,6 +12590,33 @@
       "year_display": 1228
     },
     {
+      "id": "F0718-B53",
+      "slug": "F0718",
+      "title": "al-Kāmil fī al-tārīkh (al-Kitāb al-ʻArabī, 1999)",
+      "author_name": "Ibn al-Athir",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 1997,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Dynastic chronicle",
+        "Biographical dictionary (tabaqat)",
+        "Prophetic biography (sira)",
+        "Companions' lives (sahaba)"
+      ],
+      "year_display": 1228
+    },
+    {
       "id": "F0718-B55",
       "slug": "F0718",
       "title": "The Complete History (Dār Al-Kitāb Al-Aʿrabī, 7th Vol. 1997)",
@@ -11680,7 +12638,31 @@
         "Universal history",
         "Dynastic chronicle",
         "Prophetic biography (sira)",
-        "Companions' lives (sahaba)",
+        "Companions' lives (sahaba)"
+      ],
+      "year_display": 1228
+    },
+    {
+      "id": "F0718-B56",
+      "slug": "F0718",
+      "title": "The Complete History (Dār Al-Kitāb Al-Aʿrabī, 6th Vol. 1997)",
+      "author_name": "Ibn al-Athir",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 1997,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Dynastic chronicle",
         "Biographical dictionary (tabaqat)"
       ],
       "year_display": 1228
@@ -11707,6 +12689,32 @@
         "Companions' lives (sahaba)",
         "Biographical dictionary (tabaqat)",
         "Hadith compilation"
+      ],
+      "year_display": 1228
+    },
+    {
+      "id": "F0718-B58",
+      "slug": "F0718",
+      "title": "The Complete History (Dār Al-Kitāb Al-Aʿrabī, 8th Vol. 1997)",
+      "author_name": "Ibn al-Athir",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 1997,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Dynastic chronicle",
+        "Prophetic biography (sira)",
+        "Companions' lives (sahaba)"
       ],
       "year_display": 1228
     },
@@ -11956,6 +12964,35 @@
         "Companions' lives (sahaba)",
         "Prophetic biography (sira)",
         "Hadith compilation"
+      ],
+      "year_display": 1201
+    },
+    {
+      "id": "F0722-B60",
+      "slug": "F0722",
+      "title": "Talbis Iblis",
+      "author_name": "Ibn al-Jawzi",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1201,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Vices and virtues",
+        "Purification of the soul (tazkiya)",
+        "Repentance (tawba)",
+        "Heart and soul purification",
+        "Ash'arite theology",
+        "Legal theory (usul al-fiqh)",
+        "Sincerity (ikhlas)"
       ],
       "year_display": 1201
     },
@@ -12615,10 +13652,88 @@
         "Hadith compilation",
         "Companions' lives (sahaba)",
         "Prophetic biography (sira)",
+        "Isnad methodology"
+      ],
+      "year_display": 1176
+    },
+    {
+      "id": "F0729-B56",
+      "slug": "F0729",
+      "title": "Tārīkh Madīnat Dimashq (Majmaʻ Dimashq, Vol. 38)",
+      "author_name": "Ibn Asakir",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1987,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Hadith compilation",
+        "Companions' lives (sahaba)",
         "Isnad methodology",
         "Dynastic chronicle"
       ],
-      "year_display": 1176
+      "year_display": 1171
+    },
+    {
+      "id": "F0729-B57",
+      "slug": "F0729",
+      "title": "Tārīkh Madīnat Dimashq (Majmaʻ Dimashq, Vol. 42)",
+      "author_name": "Ibn Asakir",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1992,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Hadith compilation",
+        "Companions' lives (sahaba)"
+      ],
+      "year_display": 1171
+    },
+    {
+      "id": "F0729-B58",
+      "slug": "F0729",
+      "title": "Tārīkh Madīnat Dimashq (Majmaʻ Dimashq, Vol. 45)",
+      "author_name": "Ibn Asakir",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1996,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Hadith compilation",
+        "Companions' lives (sahaba)",
+        "Isnad methodology",
+        "Dynastic chronicle"
+      ],
+      "year_display": 1171
     },
     {
       "id": "F0730-B51",
@@ -12990,7 +14105,30 @@
       "year_source": "publication_date",
       "topics": [
         "Islamic History",
-        "Historian",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Travel and exploration (rihla)",
+        "Geography and cosmography",
+        "Universal history"
+      ],
+      "year_display": 1363
+    },
+    {
+      "id": "F0734-B52",
+      "slug": "F0734",
+      "title": "Riḥlat ibn Baṭṭūṭah (Academy of the Kingdom of Morocco, Vol. 2)",
+      "author_name": "Ibn Battuta",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1997,
+      "year_source": "publication_date",
+      "topics": [
         "travel book"
       ],
       "is_free": false,
@@ -13001,7 +14139,6 @@
       "themes": [
         "Travel and exploration (rihla)",
         "Geography and cosmography",
-        "Universal history",
         "Biographical dictionary (tabaqat)"
       ],
       "year_display": 1363
@@ -13237,6 +14374,30 @@
       "year_display": 977
     },
     {
+      "id": "F0736-B51",
+      "slug": "F0736",
+      "title": "Ṣūrat al-’Arḍ (Maktabat Al-Ḥayāh, 1992)",
+      "author_name": "Ibn Hawqal",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scholar",
+      "year": 1992,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Geography and cosmography",
+        "Travel and exploration (rihla)"
+      ],
+      "year_display": 983
+    },
+    {
       "id": "F0736-B52",
       "slug": "F0736",
       "title": "Ṣūrat al-arḍ (Dār Ṣādir lil-Nashr, 1938)",
@@ -13254,11 +14415,34 @@
       "has_study": false,
       "url": "",
       "priority": "LOW",
-      "themes": [
-        "Geography and cosmography",
-        "Travel and exploration (rihla)"
-      ],
+      "themes": [],
       "year_display": 983
+    },
+    {
+      "id": "F0737-B50",
+      "slug": "F0737",
+      "title": "The Ring of the Dove",
+      "author_name": "Ibn Hazm",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1022,
+      "year_source": "inception",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Love mysticism",
+        "Lyric poetry (ghazal)",
+        "Adab (refined conduct)",
+        "Ethics and virtue"
+      ],
+      "year_display": 1022
     },
     {
       "id": "F0737-B51",
@@ -13366,6 +14550,31 @@
         "Quranic exegesis (tafsir)"
       ],
       "year_display": 1064
+    },
+    {
+      "id": "F0737-B57",
+      "slug": "F0737",
+      "title": "Jamharat ansāb al-ʻArab (Dār al-Maʻārif al-Qāhirah, 2010)",
+      "author_name": "Ibn Hazm",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 2010,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Companions' lives (sahaba)",
+        "Universal history"
+      ],
+      "year_display": 1059
     },
     {
       "id": "F0737-B58",
@@ -13582,6 +14791,36 @@
       "year_display": 1406
     },
     {
+      "id": "F0743-B51",
+      "slug": "F0743",
+      "title": "Muqaddimah",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1406,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Political theory",
+        "Universal history",
+        "Governance and administration",
+        "Economic and fiscal thought",
+        "Geography and cosmography",
+        "Arabic grammar",
+        "Rhetoric and eloquence (balagha)",
+        "Dynastic chronicle"
+      ],
+      "year_display": 1406
+    },
+    {
       "id": "F0743-B52",
       "slug": "F0743",
       "title": "Lubābu l-Muhassal",
@@ -13607,6 +14846,33 @@
         "Existence and essence"
       ],
       "year_display": 1351
+    },
+    {
+      "id": "F0743-B54",
+      "slug": "F0743",
+      "title": "Book of Lessons (Dār al-Fikr, 2001)",
+      "author_name": "Ibn Khaldun",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 2001,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Political theory",
+        "Governance and administration",
+        "Economic and fiscal thought",
+        "Dynastic chronicle"
+      ],
+      "year_display": 1401
     },
     {
       "id": "F0743-B55",
@@ -13743,6 +15009,52 @@
       "year_display": 1282
     },
     {
+      "id": "F0744-B51",
+      "slug": "F0744",
+      "title": "Wafayāt al-aʻyān wa-anbāʼ abnāʼ al-zamān (Dār Ṣādir's editon)",
+      "author_name": "Ibn Khallikan",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1978,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)"
+      ],
+      "year_display": 1277
+    },
+    {
+      "id": "F0744-B52",
+      "slug": "F0744",
+      "title": "Wafayāt al-aʻyān wa-anbāʼ abnāʼ al-zamān (Dār Ṣādir's editon, Vol. I)",
+      "author_name": "Ibn Khallikan",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1978,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)"
+      ],
+      "year_display": 1277
+    },
+    {
       "id": "F0744-B53",
       "slug": "F0744",
       "title": "Wafayāt al-aʻyān wa-anbāʼ abnāʼ al-zamān (Dār Ṣādir's editon, Vol. V)",
@@ -13750,6 +15062,29 @@
       "author_tradition": "Islamic History",
       "author_type": "Historian",
       "year": 1977,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)"
+      ],
+      "year_display": 1277
+    },
+    {
+      "id": "F0744-B54",
+      "slug": "F0744",
+      "title": "Wafayāt al-aʻyān wa-anbāʼ abnāʼ al-zamān (Dār Ṣādir's editon, Vol. VI)",
+      "author_name": "Ibn Khallikan",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1978,
       "year_source": "publication_date",
       "topics": [
         "Islamic History",
@@ -14172,6 +15507,27 @@
       "year_display": 1393
     },
     {
+      "id": "F0750-B55",
+      "slug": "F0750",
+      "title": "al-Dhayl ʻalá Ṭabaqāt al-Ḥanābilah (Maktabat al-ʻUbaykān, 1425h)",
+      "author_name": "Ibn Rajab al-Hanbali",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 2005,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [],
+      "year_display": 1388
+    },
+    {
       "id": "F0750-B56",
       "slug": "F0750",
       "title": "Jāmiʻ al-ʻUlūm wa-al-Ḥikam fī sharḥ khamsīn ḥadīthan min Jawāmiʻ al-Kalim (Muʼassasat al-Risālah, 1417h)",
@@ -14533,6 +15889,32 @@
       "year_display": 1265
     },
     {
+      "id": "F0753-B50",
+      "slug": "F0753",
+      "title": "Canon of Medicine",
+      "author_name": "Ibn Sina",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1025,
+      "year_source": "publication_date",
+      "topics": [
+        "non-fiction literature"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Medicine and healing",
+        "Pharmacology",
+        "Peripatetic philosophy",
+        "Soul and intellect",
+        "Aristotelian logic"
+      ],
+      "year_display": 1025
+    },
+    {
       "id": "F0753-B51",
       "slug": "F0753",
       "title": "The Book of Healing",
@@ -14865,11 +16247,36 @@
         "Metaphysics of being",
         "Legal theory (usul al-fiqh)",
         "Ash'arite theology",
+        "Divine attributes"
+      ],
+      "year_display": 1328
+    },
+    {
+      "id": "F0755-B58",
+      "slug": "F0755",
+      "title": "Naqḍ al-manṭiq (Maṭbaʻat al-Sunnah al-Muḥammadīyah, 1370h)",
+      "author_name": "Ibn Taymiyya",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Reformer",
+      "year": 1951,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Theology",
+        "Reformer"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Aristotelian logic",
+        "Peripatetic philosophy",
         "Divine attributes",
         "Divine unity (tawhid)",
         "Reformist and revivalist thought"
       ],
-      "year_display": 1328
+      "year_display": 1323
     },
     {
       "id": "F0755-B59",
@@ -15149,9 +16556,7 @@
       "themes": [
         "Dynastic chronicle",
         "Political theory",
-        "Governance and administration",
-        "Universal history",
-        "Biographical dictionary (tabaqat)"
+        "Governance and administration"
       ],
       "year_display": 1298
     },
@@ -15178,6 +16583,31 @@
         "Universal history",
         "Political theory",
         "Governance and administration"
+      ],
+      "year_display": 1293
+    },
+    {
+      "id": "F0759-B52",
+      "slug": "F0759",
+      "title": "Mufarrij al-kurub fi akhbar Bani Ayyub (1957)",
+      "author_name": "Ibn Wasil",
+      "author_tradition": "Islamic History",
+      "author_type": "Historian",
+      "year": 1957,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic History",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Dynastic chronicle",
+        "Universal history",
+        "Biographical dictionary (tabaqat)"
       ],
       "year_display": 1293
     },
@@ -15309,6 +16739,35 @@
         "Eschatology (akhira)"
       ],
       "year_display": 767
+    },
+    {
+      "id": "F0774-B50",
+      "slug": "F0774",
+      "title": "Sahih al-Bukhari",
+      "author_name": "Imam al-Bukhari",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 900,
+      "year_source": "inception",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Isnad methodology",
+        "Hadith criticism",
+        "Ritual worship (ibadat)",
+        "Substantive law (fiqh)",
+        "Prophetic biography (sira)",
+        "Companions' lives (sahaba)"
+      ],
+      "year_display": 865
     },
     {
       "id": "F0774-B51",
@@ -15485,6 +16944,35 @@
       "year_display": 865
     },
     {
+      "id": "F0776-B50",
+      "slug": "F0776",
+      "title": "Al-Risala",
+      "author_name": "Imam al-Shafi'i",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Jurist",
+      "year": 820,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Jurist"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Legal theory (usul al-fiqh)",
+        "Analogical reasoning (qiyas)",
+        "Consensus (ijma)",
+        "Hadith criticism",
+        "Quranic sciences (ulum al-Quran)",
+        "Abrogation (naskh)",
+        "Substantive law (fiqh)"
+      ],
+      "year_display": 820
+    },
+    {
       "id": "F0776-B51",
       "slug": "F0776",
       "title": "Kitab al-Umm",
@@ -15629,9 +17117,7 @@
       "year": 795,
       "year_source": "author_dod",
       "topics": [
-        "list of hadith books",
-        "Islamic Jurisprudence",
-        "Jurist"
+        "list of hadith books"
       ],
       "is_free": false,
       "harvested": true,
@@ -15644,10 +17130,37 @@
         "Substantive law (fiqh)",
         "Ritual worship (ibadat)",
         "Transactions and contracts (muamalat)",
-        "Family and marriage law",
-        "Legal theory (usul al-fiqh)"
+        "Family and marriage law"
       ],
       "year_display": 795
+    },
+    {
+      "id": "F0778-B51",
+      "slug": "F0778",
+      "title": "al-Muwaṭṭaʼ (Dār al-Shaʻb, 1371h)",
+      "author_name": "Imam Malik ibn Anas",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Jurist",
+      "year": 1951,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Jurist"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Substantive law (fiqh)",
+        "Legal theory (usul al-fiqh)",
+        "Ritual worship (ibadat)",
+        "Transactions and contracts (muamalat)",
+        "Family and marriage law"
+      ],
+      "year_display": 790
     },
     {
       "id": "F0779-B50",
@@ -15677,6 +17190,56 @@
       "year_display": 870
     },
     {
+      "id": "F0779-B51",
+      "slug": "F0779",
+      "title": "Ṣaḥīḥ Muslim (Maṭbaʻat ʻĪsá al-Bābī al-Ḥalabī wa-shurakāʼih, 1374h)",
+      "author_name": "Imam Muslim",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1955,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Isnad methodology",
+        "Hadith criticism"
+      ],
+      "year_display": 870
+    },
+    {
+      "id": "F0779-B52",
+      "slug": "F0779",
+      "title": "Ṣaḥīḥ Muslim (Dār al-Ṭibāʻah al-ʻĀmirah, 1334h)",
+      "author_name": "Imam Muslim",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1916,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Isnad methodology",
+        "Hadith criticism"
+      ],
+      "year_display": 870
+    },
+    {
       "id": "F0779-B53",
       "slug": "F0779",
       "title": "Almnfrdāt wālwḥdān",
@@ -15694,12 +17257,33 @@
       "has_study": false,
       "url": "",
       "priority": "LOW",
+      "themes": [],
+      "year_display": 875
+    },
+    {
+      "id": "F0779-B54",
+      "slug": "F0779",
+      "title": "Almnfrdāt wālwḥdān (Dār al-Kutub al-ʻIlmīyah, 1408h)",
+      "author_name": "Imam Muslim",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1988,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
       "themes": [
         "Hadith compilation",
         "Isnad methodology",
         "Hadith criticism"
       ],
-      "year_display": 875
+      "year_display": 870
     },
     {
       "id": "F0791-B50",
@@ -16280,6 +17864,36 @@
       "year_display": 1273
     },
     {
+      "id": "F0814-B57",
+      "slug": "F0814",
+      "title": "The Mesnevi",
+      "author_name": "Jalal ad-Din Rumi",
+      "author_tradition": "Mawlawiyya",
+      "author_type": "Founder",
+      "year": 1881,
+      "year_source": "publication_date",
+      "topics": [
+        "Mawlawiyya",
+        "Founder"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Intoxicated mysticism",
+        "Love mysticism",
+        "Spiritual poetry",
+        "Annihilation (fana) and subsistence (baqa)",
+        "Unity of being (wahdat al-wujud)",
+        "Gnosis (ma'rifa)",
+        "Spiritual stations and states",
+        "Heart and soul purification"
+      ],
+      "year_display": 1268
+    },
+    {
       "id": "F0814-B58",
       "slug": "F0814",
       "title": "Rumi ghazal 163",
@@ -16317,8 +17931,7 @@
       "year_source": "author_dod",
       "topics": [
         "Islamic History",
-        "Scholar",
-        "non-fiction"
+        "Scholar"
       ],
       "is_free": false,
       "harvested": true,
@@ -16329,10 +17942,34 @@
         "Universal history",
         "Dynastic chronicle",
         "Islamic modernism",
-        "Reformist and revivalist thought",
-        "Political theory"
+        "Reformist and revivalist thought"
       ],
       "year_display": 1897
+    },
+    {
+      "id": "F0816-B51",
+      "slug": "F0816",
+      "title": "Kitāb Tatimmat Al-Bayān Fī Tārīkh Al-Afghān (Hindawi Foundation, 2015)",
+      "author_name": "Jamal al-Din al-Afghani",
+      "author_tradition": "Islamic History",
+      "author_type": "Scholar",
+      "year": 2015,
+      "year_source": "publication_date",
+      "topics": [
+        "non-fiction"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Islamic modernism",
+        "Reformist and revivalist thought",
+        "Universal history",
+        "Political theory"
+      ],
+      "year_display": 1892
     },
     {
       "id": "F0816-B52",
@@ -16382,10 +18019,7 @@
         "Biographical dictionary (tabaqat)",
         "Universal history",
         "Arabic lexicography",
-        "Geography and cosmography",
-        "Quranic sciences (ulum al-Quran)",
-        "Hadith compilation",
-        "Legal theory (usul al-fiqh)"
+        "Geography and cosmography"
       ],
       "year_display": 1633
     },
@@ -16410,6 +18044,59 @@
         "Universal history",
         "Biographical dictionary (tabaqat)",
         "Geography and cosmography"
+      ],
+      "year_display": 1652
+    },
+    {
+      "id": "F0855-B53",
+      "slug": "F0855",
+      "title": "Kashf al-ẓunūn ʻan asāmī al-Kutub wa-al-Funūn (Dār Iḥyāʼ al-Turāth al-ʻArabī, 1941m)",
+      "author_name": "Katip Celebi",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Historian",
+      "year": 1941,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Universal history",
+        "Arabic lexicography"
+      ],
+      "year_display": 1652
+    },
+    {
+      "id": "F0855-B54",
+      "slug": "F0855",
+      "title": "Kashf al-ẓunūn ʻan asāmī al-Kutub wa-al-Funūn (Muʼassasat al-Furqān lil-Turāth al-Islāmī, 1443h)",
+      "author_name": "Katip Celebi",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Historian",
+      "year": 2021,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Historian"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Biographical dictionary (tabaqat)",
+        "Universal history",
+        "Arabic lexicography",
+        "Quranic sciences (ulum al-Quran)",
+        "Hadith compilation",
+        "Legal theory (usul al-fiqh)"
       ],
       "year_display": 1652
     },
@@ -16762,6 +18449,30 @@
       "year_display": 1497
     },
     {
+      "id": "F1009-B50",
+      "slug": "F1009",
+      "title": "Diwan-e-Ghalib",
+      "author_name": "Mirza Ghalib",
+      "author_tradition": "Mughal",
+      "author_type": "Poet",
+      "year": 1869,
+      "year_source": "author_dod",
+      "topics": [
+        "poetry"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Lyric poetry (ghazal)",
+        "Spiritual poetry",
+        "Love mysticism"
+      ],
+      "year_display": 1869
+    },
+    {
       "id": "F1011-B50",
       "slug": "F1011",
       "title": "Tajārib Al-Umam Wa-Taʻāqub Al-Himam",
@@ -16784,11 +18495,88 @@
         "Political philosophy (virtuous city)",
         "Ethics and virtue",
         "Dynastic chronicle",
-        "Political theory",
-        "Peripatetic philosophy",
-        "Prose adab (literary culture)"
+        "Political theory"
       ],
       "year_display": 1030
+    },
+    {
+      "id": "F1011-B51",
+      "slug": "F1011",
+      "title": "Tajārib Al-Umam Wa-Taʻāqub Al-Himam (Dar Shrous, 2001)",
+      "author_name": "Miskawayh",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 2000,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Political philosophy (virtuous city)",
+        "Ethics and virtue",
+        "Dynastic chronicle"
+      ],
+      "year_display": 1025
+    },
+    {
+      "id": "F1011-B52",
+      "slug": "F1011",
+      "title": "Tajārib Al-Umam Wa-Taʻāqub Al-Himam (Dar Shrous, Vol. V. 2000)",
+      "author_name": "Miskawayh",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 2000,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Ethics and virtue",
+        "Political philosophy (virtuous city)",
+        "Peripatetic philosophy"
+      ],
+      "year_display": 1025
+    },
+    {
+      "id": "F1011-B53",
+      "slug": "F1011",
+      "title": "Tajārib Al-Umam Wa-Taʻāqub Al-Himam (Dar Shrous, Vol. VI. 2000)",
+      "author_name": "Miskawayh",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 2000,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Ethics and virtue",
+        "Political philosophy (virtuous city)",
+        "Dynastic chronicle",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 1025
     },
     {
       "id": "F1014-B50",
@@ -17196,6 +18984,56 @@
       "year_display": 870
     },
     {
+      "id": "F1080-B51",
+      "slug": "F1080",
+      "title": "Ṣaḥīḥ Muslim (Maṭbaʻat ʻĪsá al-Bābī al-Ḥalabī wa-shurakāʼih, 1374h)",
+      "author_name": "Muslim ibn al-Hajjaj",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1955,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Hadith criticism",
+        "Isnad methodology"
+      ],
+      "year_display": 870
+    },
+    {
+      "id": "F1080-B52",
+      "slug": "F1080",
+      "title": "Ṣaḥīḥ Muslim (Dār al-Ṭibāʻah al-ʻĀmirah, 1334h)",
+      "author_name": "Muslim ibn al-Hajjaj",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1916,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Isnad methodology",
+        "Hadith criticism"
+      ],
+      "year_display": 870
+    },
+    {
       "id": "F1080-B53",
       "slug": "F1080",
       "title": "Almnfrdāt wālwḥdān",
@@ -17219,6 +19057,31 @@
         "Hadith criticism"
       ],
       "year_display": 875
+    },
+    {
+      "id": "F1080-B54",
+      "slug": "F1080",
+      "title": "Almnfrdāt wālwḥdān (Dār al-Kutub al-ʻIlmīyah, 1408h)",
+      "author_name": "Muslim ibn al-Hajjaj",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1988,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Hadith compilation",
+        "Isnad methodology",
+        "Hadith criticism"
+      ],
+      "year_display": 870
     },
     {
       "id": "F1101-B50",
@@ -17758,6 +19621,33 @@
         "Islamic modernism"
       ],
       "year_display": 2010
+    },
+    {
+      "id": "F1113-B50",
+      "slug": "F1113",
+      "title": "Siyasatnama",
+      "author_name": "Nizam al-Mulk",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Ruler",
+      "year": 1092,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Ruler"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Political theory",
+        "Governance and administration",
+        "Economic and fiscal thought",
+        "Adab (refined conduct)",
+        "Caliphate and imamate"
+      ],
+      "year_display": 1092
     },
     {
       "id": "F1114-B51",
@@ -18673,6 +20563,33 @@
       "year_display": 1951
     },
     {
+      "id": "F1217-B50",
+      "slug": "F1217",
+      "title": "Gulistan",
+      "author_name": "Saadi Shirazi",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1291,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Adab (refined conduct)",
+        "Vices and virtues",
+        "Spiritual poetry",
+        "Prose adab (literary culture)",
+        "Ethics and virtue"
+      ],
+      "year_display": 1291
+    },
+    {
       "id": "F1217-B51",
       "slug": "F1217",
       "title": "Bostan",
@@ -18915,6 +20832,33 @@
         "Governance and administration"
       ],
       "year_display": 1966
+    },
+    {
+      "id": "F1279-B51",
+      "slug": "F1279",
+      "title": "Milestones",
+      "author_name": "Sayyid Qutb",
+      "author_tradition": "Islamic Theology",
+      "author_type": "Scholar",
+      "year": 1964,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Theology",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Divine unity (tawhid)",
+        "Political theory",
+        "Governance and administration",
+        "Reformist and revivalist thought",
+        "Quranic exegesis (tafsir)"
+      ],
+      "year_display": 1964
     },
     {
       "id": "F1279-B52",
@@ -19495,6 +21439,34 @@
         "Reformist and revivalist thought"
       ],
       "year_display": 1762
+    },
+    {
+      "id": "F1293-B54",
+      "slug": "F1293",
+      "title": "al-Inṣāf fī bayān asbāb al-Ikhtilāf (Dār al-Nafāʼis lil-Ṭibāʻah wa-al-Nashr wa-al-Tawzīʻ, 1404h)",
+      "author_name": "Shah Waliullah",
+      "author_tradition": "Naqshbandiyya",
+      "author_type": "Reformer",
+      "year": 1984,
+      "year_source": "publication_date",
+      "topics": [
+        "Naqshbandiyya",
+        "Reformer"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Legal theory (usul al-fiqh)",
+        "Substantive law (fiqh)",
+        "Consensus (ijma)",
+        "Analogical reasoning (qiyas)",
+        "Hadith criticism",
+        "Reformist and revivalist thought"
+      ],
+      "year_display": 1757
     },
     {
       "id": "F1293-B55",
@@ -20405,6 +22377,77 @@
       "year_display": 660
     },
     {
+      "id": "F1686-B52",
+      "slug": "F1686",
+      "title": "Koran Sharif (Part 2)",
+      "author_name": "Zayd ibn Thabit",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 1884,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Quranic sciences (ulum al-Quran)",
+        "Companions' lives (sahaba)",
+        "Revelation and prophecy"
+      ],
+      "year_display": 660
+    },
+    {
+      "id": "F1686-B53",
+      "slug": "F1686",
+      "title": "Koran Sharif (Part 3)",
+      "author_name": "Zayd ibn Thabit",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 1885,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Quranic sciences (ulum al-Quran)",
+        "Companions' lives (sahaba)",
+        "Revelation and prophecy"
+      ],
+      "year_display": 660
+    },
+    {
+      "id": "F1686-B54",
+      "slug": "F1686",
+      "title": "Kor-an (Volume 3)",
+      "author_name": "Zayd ibn Thabit",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Sahaba",
+      "year": 1925,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Sahaba"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [],
+      "year_display": 660
+    },
+    {
       "id": "F1686-B55",
       "slug": "F1686",
       "title": "Kor-an (Voluem 2)",
@@ -20542,6 +22585,32 @@
         "Ritual worship (ibadat)"
       ],
       "year_display": 1302
+    },
+    {
+      "id": "F1714-B53",
+      "slug": "F1714",
+      "title": "Iḥkām al-Iḥkām sharḥ ʻUmdat al-aḥkām (ʻĀlam al-Kutub, 1407h)",
+      "author_name": "Ibn Daqiq al-'Id",
+      "author_tradition": "Islamic Jurisprudence",
+      "author_type": "Scholar",
+      "year": 1987,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Jurisprudence",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Legal theory (usul al-fiqh)",
+        "Substantive law (fiqh)",
+        "Hadith criticism",
+        "Ritual worship (ibadat)"
+      ],
+      "year_display": 1297
     },
     {
       "id": "F1721-B51",
@@ -20813,6 +22882,30 @@
         "Vices and virtues"
       ],
       "year_display": 1964
+    },
+    {
+      "id": "F1748-B105",
+      "slug": "F1748",
+      "title": "ʻAbqarīyat Khālid (Dar al-Hilal, 1952)",
+      "author_name": "Abbas el-Akkad",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 1952,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Prophetic biography (sira)",
+        "Companions' lives (sahaba)",
+        "Islamic modernism"
+      ],
+      "year_display": 1952
     },
     {
       "id": "F1748-B113",
@@ -21184,8 +23277,7 @@
       "year": 1072,
       "year_source": "author_dod",
       "topics": [
-        "tafsir",
-        "Philosopher"
+        "tafsir"
       ],
       "is_free": false,
       "harvested": true,
@@ -21228,6 +23320,33 @@
         "Remembrance (dhikr)"
       ],
       "year_display": 1072
+    },
+    {
+      "id": "F1751-B53",
+      "slug": "F1751",
+      "title": "Tafsīr al-Qushayrī (Dār al-Kutub al-ʻIlmīyah, 1428h)",
+      "author_name": "Abd al-Karīm ibn Hawāzin Qushayri",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 2007,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Quranic exegesis (tafsir)",
+        "Esoteric interpretation (ta'wil)",
+        "Sufi path (tariqa)",
+        "Spiritual stations and states",
+        "Gnosis (ma'rifa)",
+        "Heart and soul purification"
+      ],
+      "year_display": 1067
     },
     {
       "id": "F1753-B50",
@@ -21833,10 +23952,81 @@
         "Soul and intellect",
         "Ethics and virtue",
         "Arabic grammar",
-        "Rhetoric and eloquence (balagha)",
-        "Adab (refined conduct)"
+        "Rhetoric and eloquence (balagha)"
       ],
       "year_display": 1023
+    },
+    {
+      "id": "F1765-B55",
+      "slug": "F1765",
+      "title": "Al-Imtāʻ Wa-al-muʼānasah (Lajnat al-Taʼlīf wa-al-Tarjamah wa-al-Nashr)",
+      "author_name": "Abū Hayyān al-Tawhīdī",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 1939,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [],
+      "year_display": 1018
+    },
+    {
+      "id": "F1765-B56",
+      "slug": "F1765",
+      "title": "Al-Imtāʻ Wa-al-muʼānasah (Lajnat al-Taʼlīf wa-al-Tarjamah wa-al-Nashr, Vol. I)",
+      "author_name": "Abū Hayyān al-Tawhīdī",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 1939,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Prose adab (literary culture)",
+        "Peripatetic philosophy",
+        "Soul and intellect",
+        "Ethics and virtue",
+        "Adab (refined conduct)"
+      ],
+      "year_display": 1018
+    },
+    {
+      "id": "F1765-B57",
+      "slug": "F1765",
+      "title": "Al-Imtāʻ Wa-al-muʼānasah (Lajnat al-Taʼlīf wa-al-Tarjamah wa-al-Nashr, Vol. II)",
+      "author_name": "Abū Hayyān al-Tawhīdī",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 1942,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Prose adab (literary culture)",
+        "Peripatetic philosophy",
+        "Soul and intellect",
+        "Ethics and virtue",
+        "Adab (refined conduct)"
+      ],
+      "year_display": 1018
     },
     {
       "id": "F1769-B50",
@@ -21953,6 +24143,35 @@
         "Aristotelian logic"
       ],
       "year_display": 1153
+    },
+    {
+      "id": "F1772-B52",
+      "slug": "F1772",
+      "title": "al-Milal wa-al-niḥal (Muʼassasat al-Ḥalabī wa-Shurakāh, 1387h)",
+      "author_name": "Al-Shahrastani",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 1968,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Mu'tazilite rationalism",
+        "Ash'arite theology",
+        "Imamate doctrine",
+        "Twelver Shi'ism",
+        "Ismaili thought and cosmology",
+        "Peripatetic philosophy",
+        "Free will and predestination",
+        "Divine attributes"
+      ],
+      "year_display": 1148
     },
     {
       "id": "F1774-B50",
@@ -22101,6 +24320,33 @@
         "Adab (refined conduct)"
       ],
       "year_display": 1144
+    },
+    {
+      "id": "F1774-B56",
+      "slug": "F1774",
+      "title": "al-Kashshāf ʻan ḥaqāʼiq ghawāmiḍ al-tanzīl wa-ʻuyūn al-aqāwīl fī Wujūh al-taʼwīl (Dār al-Rayyān lil-Turāth, 1407h)",
+      "author_name": "Al-Zamakhshari",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 1987,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Quranic exegesis (tafsir)",
+        "Esoteric interpretation (ta'wil)",
+        "Quranic sciences (ulum al-Quran)",
+        "Mu'tazilite rationalism",
+        "Rhetoric and eloquence (balagha)",
+        "Arabic grammar"
+      ],
+      "year_display": 1139
     },
     {
       "id": "F1774-B57",
@@ -22622,11 +24868,35 @@
         "Poetics",
         "Arabic grammar",
         "Arabic lexicography",
-        "Prose adab (literary culture)",
-        "Rhetoric and eloquence (balagha)",
-        "Lyric poetry (ghazal)"
+        "Prose adab (literary culture)"
       ],
       "year_display": 1127
+    },
+    {
+      "id": "F1787-B51",
+      "slug": "F1787",
+      "title": "Sharḥ al-Mukhtār min Luzūmiyyāt Abī al-ʿAlāʾ al-Maʿarrī (Dar Al-Kotob Al-Ilmiyah)",
+      "author_name": "Ibn al-Sīd al-Baṭalyawsī",
+      "author_tradition": "",
+      "author_type": "Philosopher",
+      "year": 2013,
+      "year_source": "publication_date",
+      "topics": [
+        "Philosopher"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Poetics",
+        "Arabic grammar",
+        "Rhetoric and eloquence (balagha)",
+        "Lyric poetry (ghazal)",
+        "Prose adab (literary culture)"
+      ],
+      "year_display": 1122
     },
     {
       "id": "F1790-B50",
@@ -23384,6 +25654,32 @@
       "year_display": 868
     },
     {
+      "id": "F0267-B54",
+      "slug": "F0267",
+      "title": "The Book of eloquence and demonstration (Helal, 2002)",
+      "author_name": "Al-Jahiz",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Scholar",
+      "year": 2002,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Philosophy",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Rhetoric and eloquence (balagha)",
+        "Mu'tazilite rationalism",
+        "Prose adab (literary culture)",
+        "Adab (refined conduct)"
+      ],
+      "year_display": 863
+    },
+    {
       "id": "F0267-B55",
       "slug": "F0267",
       "title": "al-Ḥayawān (Dār al-Kutub al-ʻIlmīyah, 1424h)",
@@ -23555,6 +25851,34 @@
         "Hadith compilation",
         "Isnad methodology",
         "Hadith criticism"
+      ],
+      "year_display": 1368
+    },
+    {
+      "id": "F0741-B53",
+      "slug": "F0741",
+      "title": "Al-Bidaya wa'l-Nihaya (Dar Ehia Al-Tourath,1988)",
+      "author_name": "Ibn Kathir",
+      "author_tradition": "Hadith Sciences",
+      "author_type": "Scholar",
+      "year": 1988,
+      "year_source": "publication_date",
+      "topics": [
+        "Hadith Sciences",
+        "Scholar"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Universal history",
+        "Prophetic biography (sira)",
+        "Companions' lives (sahaba)",
+        "Hadith compilation",
+        "Eschatology (akhira)",
+        "Dynastic chronicle"
       ],
       "year_display": 1368
     },
