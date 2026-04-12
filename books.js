@@ -300,16 +300,6 @@ function _booksBuildCanvas(){
 
   canvas.innerHTML = html;
 
-  var ancNote = document.getElementById('bv-ancient-note');
-  if(ancNote) ancNote.remove();
-  if(_ancientOn){
-    var noteEl = document.createElement('div');
-    noteEl.id = 'bv-ancient-note';
-    noteEl.style.cssText = 'font-family:\'Cinzel\',serif;color:#8B9AAF;font-size:11px;letter-spacing:.08em;text-align:center;padding:8px 16px;font-style:normal';
-    noteEl.textContent = '100 Ancient Texts \u2014 Reference add-on only. Not necessarily part of the Monotheistic Corpus.';
-    canvas.parentNode.insertBefore(noteEl, canvas);
-  }
-
   canvas.querySelectorAll('.bv-row').forEach(row=>{
     row.addEventListener('click',function(e){
       if(e.target.closest('.bv-read-btn')) return;
@@ -785,7 +775,7 @@ async function initBooks(){
   html+='<button id="bv-ancient-toggle" style="background:transparent;border:1px solid #4A5568;color:#6B7280;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.04em;padding:4px 10px;cursor:pointer;border-radius:2px">+ ANCIENT</button>';
   html+='<div id="bv-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"><span id="bv-anim-year" style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--gold,#D4AF37);letter-spacing:.05em;min-width:70px;text-align:right;opacity:0;transition:opacity .3s">\u2014</span></div>';
   html+='</div>';
-  html+='<div id="bv-ancient-banner" style="display:none;padding:8px 16px;background:rgba(139,115,85,0.08);border-bottom:1px solid #4A5568;font-size:12px;color:#A0AEC0;font-style:italic;font-family:\'Inter\',\'Source Sans 3\',system-ui,sans-serif">Ancient texts (pre-610 CE) \u2014 research add-on, not part of the Islamic corpus. 100 books, 85 with free links.</div>';
+  html+='<div id="bv-ancient-banner" style="display:none;padding:8px 16px;background:rgba(139,115,85,0.08);border-bottom:1px solid #4A5568;font-size:12px;color:#A0AEC0;font-style:italic;font-family:\'Inter\',\'Source Sans 3\',system-ui,sans-serif">100 Ancient Texts \u2014 Reference add-on only. Not necessarily part of the Monotheistic Corpus.</div>';
   html+='<div id="bv-scroll"><div id="bv-canvas"></div></div>';
   view.innerHTML=html;
 
