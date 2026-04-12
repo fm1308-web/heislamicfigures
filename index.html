@@ -26,7 +26,6 @@
     <h1 id="hdrLogo">GOLD ARK<svg width="68" height="26" viewBox="0 0 68 26" fill="none" style="display:inline-block;vertical-align:middle;margin-left:12px;"><path d="M4 12 Q2 14 2 17 L6 20 Q20 23 40 23 Q56 23 62 20 L66 15 Q66 12 64 10" stroke="#D4AF37" stroke-width="1.4" fill="none"/><path d="M4 12 Q3 10 4 7" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><path d="M64 10 Q65 8 64 5" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="12" x2="64" y2="10" stroke="#D4AF37" stroke-width="0.6" opacity="0.3"/><line x1="34" y1="3" x2="34" y2="13" stroke="#D4AF37" stroke-width="1.2"/><path d="M34 3 L46 9 L34 7.5 Z" fill="rgba(212,175,55,0.25)" stroke="#D4AF37" stroke-width="0.7"/></svg></h1>
   </div>
   <div id="hdrRow1Disclosures">
-    <div class="hdr-info-line hdr-disclosure-line">Pre 500 CE dates legendary</div>
     <div class="hdr-info-line hdr-disclosure-line">AI-generated</div>
     <div class="hdr-info-line hdr-disclosure-line">Independently verify</div>
     <div class="hdr-info-line hdr-disclosure-line">Updated Apr 2026</div>
@@ -52,8 +51,8 @@
 <div id="hdrRow2">
   <div id="hdrYearControls">
     <span id="yearQuestion">WHO WAS ALIVE IN</span>
-    <span id="yrShiftHint">hold &#8679; for 1yr</span>
-    <span class="hdr-range-cap">500</span>
+    <span id="yrShiftHint" class="hdr-range-cap">hold &#8679; for 1yr</span>
+    <span class="hdr-range-cap">START</span>
     <div id="sliderOuter">
       <input id="sliderInput" type="range" min="500" max="2000" value="800" step="5">
       <div id="sliderTrack">
@@ -63,11 +62,11 @@
     </div>
     <span id="yearDisplay">&mdash;</span>
     <span id="yrPrecisionPill">1 YR</span>
-    <span class="hdr-range-cap">2000</span>
     <button id="yearClearBtn" onclick="clearYear()">&times;</button>
   </div>
-  <div id="searchWrap">
-    <input id="search" type="text" placeholder="Search figures..." oninput="onSearch()">
+  <div id="searchWrap" style="position:relative">
+    <input id="search" type="text" placeholder="Search figures..." oninput="onSearch();_toggleSearchClear()">
+    <button id="searchClearBtn" type="button" onclick="_clearSearchBox()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:1px solid var(--muted);color:var(--muted);width:22px;height:22px;font-size:14px;line-height:1;border-radius:3px;cursor:pointer;align-items:center;justify-content:center;padding:0;visibility:hidden;display:flex">×</button>
   </div>
 </div>
 <!-- Empty mount for events.js toolbar injection -->

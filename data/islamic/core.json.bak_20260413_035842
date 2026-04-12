@@ -482,6 +482,23 @@
     "relations": []
   },
   {
+    "slug": "F0017",
+    "famous": "Abd Allah ibn Abd al-Muttalib",
+    "full": "Abd Allah ibn Abd al-Muttalib",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": 545,
+    "dod": 570,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Mecca",
+    "source": "Tareekh al-Ya'qubi",
+    "teachers": [
+      "Abd al-Muttalib ibn Hashim"
+    ],
+    "primaryTitle": "Father of Prophet Muhammad"
+  },
+  {
     "slug": "F0018",
     "famous": "Abd Allah ibn al-Mubarak",
     "full": "Abd Allah ibn al-Mubarak ibn Wadih al-Hanzali al-Marwazi",
@@ -28951,30 +28968,6 @@
       {
         "person": "Zaynab bint Khuzayma",
         "relation": "wife"
-      },
-      {
-        "person": "Aminah bint Wahb",
-        "relation": "mother"
-      },
-      {
-        "person": "Wahb ibn Abd Manaf",
-        "relation": "maternal grandfather"
-      },
-      {
-        "person": "Abu Talib ibn Abd al-Muttalib",
-        "relation": "uncle"
-      },
-      {
-        "person": "Fatimah bint Asad",
-        "relation": "aunt"
-      },
-      {
-        "person": "Halimah bint Abi Dhuayb",
-        "relation": "foster mother"
-      },
-      {
-        "person": "Thuwaybah",
-        "relation": "foster mother"
       }
     ],
     "quranRef": {
@@ -48557,222 +48550,5 @@
     "lang": "Arabic",
     "primaryTitle": "Hadhrami navigator who wrote comprehensive guides to Indian Ocean sailing",
     "slug": "F1850"
-  },
-  {
-    "slug": "F1975",
-    "famous": "Aminah bint Wahb",
-    "full": "Aminah bint Wahb ibn Abd Manaf al-Zuhriyyah",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Mother of the Prophet",
-    "dob": 549,
-    "dod": 577,
-    "dob_s": "c.549",
-    "dod_s": "577",
-    "city": "Mecca / al-Abwa",
-    "classif": "Mother of Prophet Muhammad",
-    "lang": "Arabic",
-    "titles": "Umm al-Nabi (Mother of the Prophet)",
-    "source": "https://en.wikipedia.org/wiki/Amina_bint_Wahb",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Wahb ibn Abd Manaf",
-        "relation": "father"
-      },
-      {
-        "person": "Abdullah ibn Abd al-Muttalib",
-        "relation": "husband"
-      },
-      {
-        "person": "Prophet Muhammad",
-        "relation": "son"
-      }
-    ],
-    "tags": [
-      "Quraysh",
-      "Banu Zuhra"
-    ],
-    "bio": "Mother of Prophet Muhammad; married Abdullah ibn Abd al-Muttalib. Widowed while pregnant. Died at al-Abwa aged ~28 while returning from Yathrib with 6-year-old Muhammad."
-  },
-  {
-    "slug": "F1976",
-    "famous": "Abu Talib ibn Abd al-Muttalib",
-    "full": "Abu Talib ibn Abd al-Muttalib al-Hashimi",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Uncle and Guardian of the Prophet",
-    "dob": 535,
-    "dod": 619,
-    "dob_s": "c.535",
-    "dod_s": "619",
-    "city": "Mecca",
-    "classif": "Uncle of Prophet Muhammad, chief of Banu Hashim",
-    "lang": "Arabic",
-    "titles": "Shaykh al-Batha · Protector of the Prophet",
-    "source": "https://en.wikipedia.org/wiki/Abu_Talib_ibn_Abd_al-Muttalib",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Abd al-Muttalib ibn Hashim",
-        "relation": "father"
-      },
-      {
-        "person": "Fatimah bint Asad",
-        "relation": "wife"
-      },
-      {
-        "person": "Ali ibn Abi Talib",
-        "relation": "son"
-      },
-      {
-        "person": "Jafar ibn Abi Talib",
-        "relation": "son"
-      },
-      {
-        "person": "Prophet Muhammad",
-        "relation": "nephew"
-      }
-    ],
-    "tags": [
-      "Quraysh",
-      "Banu Hashim"
-    ],
-    "bio": "Uncle of Prophet Muhammad; raised him after the deaths of Aminah and Abd al-Muttalib. Chief of Banu Hashim. Died 619 CE (Year of Sorrow)."
-  },
-  {
-    "slug": "F1977",
-    "famous": "Fatimah bint Asad",
-    "full": "Fatimah bint Asad ibn Hashim",
-    "tradition": "Islamic History",
-    "type": "Sahabiyya",
-    "primaryTitle": "Aunt who raised the Prophet",
-    "dob": 555,
-    "dod": 626,
-    "dob_s": "c.555",
-    "dod_s": "626",
-    "city": "Mecca / Medina",
-    "classif": "Wife of Abu Talib; mother of Ali ibn Abi Talib",
-    "lang": "Arabic",
-    "titles": "Umm Ali",
-    "source": "https://en.wikipedia.org/wiki/Fatimah_bint_Asad",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Abu Talib ibn Abd al-Muttalib",
-        "relation": "husband"
-      },
-      {
-        "person": "Ali ibn Abi Talib",
-        "relation": "son"
-      },
-      {
-        "person": "Jafar ibn Abi Talib",
-        "relation": "son"
-      }
-    ],
-    "tags": [
-      "Banu Hashim"
-    ],
-    "bio": "Wife of Abu Talib and mother of Ali ibn Abi Talib. Raised Prophet Muhammad alongside her own children after Aminah's death. Died in Medina 626 CE."
-  },
-  {
-    "slug": "F1978",
-    "famous": "Halimah bint Abi Dhuayb",
-    "full": "Halimah bint Abi Dhuayb al-Sa'diyyah",
-    "tradition": "Islamic History",
-    "type": "Sahabiyya",
-    "primaryTitle": "Wet Nurse of the Prophet",
-    "dob": 540,
-    "dod": 630,
-    "dob_s": "c.540",
-    "dod_s": "c.630",
-    "city": "Banu Sa'd / Mecca",
-    "classif": "Bedouin wet nurse of the Prophet",
-    "lang": "Arabic",
-    "titles": "Halimah al-Sa'diyyah",
-    "source": "https://en.wikipedia.org/wiki/Halimah_bint_Abi_Dhuayb",
-    "lat": 21.42,
-    "lng": 39.82,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Prophet Muhammad",
-        "relation": "foster mother"
-      }
-    ],
-    "tags": [
-      "Banu Sa'd"
-    ],
-    "bio": "Bedouin wet nurse from Banu Sa'd ibn Bakr who nursed Prophet Muhammad in infancy. Later embraced Islam."
-  },
-  {
-    "slug": "F1979",
-    "famous": "Thuwaybah",
-    "full": "Thuwaybah, freedwoman of Abu Lahab",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "First Wet Nurse of the Prophet",
-    "dob": 540,
-    "dod": 615,
-    "dob_s": "c.540",
-    "dod_s": "c.615",
-    "city": "Mecca",
-    "classif": "Freedwoman of Abu Lahab; first nurse of Prophet",
-    "lang": "Arabic",
-    "titles": "",
-    "source": "https://en.wikipedia.org/wiki/Thuwaybah",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Prophet Muhammad",
-        "relation": "foster mother"
-      }
-    ],
-    "tags": [],
-    "bio": "Freedwoman of Abu Lahab; nursed Prophet Muhammad briefly before Halimah. Also nursed Hamza, making them milk-brothers."
-  },
-  {
-    "slug": "F1980",
-    "famous": "Wahb ibn Abd Manaf",
-    "full": "Wahb ibn Abd Manaf ibn Zuhra al-Zuhri",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Maternal Grandfather of the Prophet",
-    "dob": 520,
-    "dod": 565,
-    "dob_s": "c.520",
-    "dod_s": "c.565",
-    "city": "Mecca",
-    "classif": "Chief of Banu Zuhra; father of Aminah",
-    "lang": "Arabic",
-    "titles": "Sayyid Banu Zuhra",
-    "source": "https://en.wikipedia.org/wiki/Wahb_ibn_Abd_Manaf",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Aminah bint Wahb",
-        "relation": "daughter"
-      },
-      {
-        "person": "Prophet Muhammad",
-        "relation": "grandson"
-      }
-    ],
-    "tags": [
-      "Quraysh",
-      "Banu Zuhra"
-    ],
-    "bio": "Chief of Banu Zuhra clan of Quraysh; father of Aminah, maternal grandfather of Prophet Muhammad."
   }
 ]

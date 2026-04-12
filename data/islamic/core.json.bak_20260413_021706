@@ -482,6 +482,23 @@
     "relations": []
   },
   {
+    "slug": "F0017",
+    "famous": "Abd Allah ibn Abd al-Muttalib",
+    "full": "Abd Allah ibn Abd al-Muttalib",
+    "type": "Founder",
+    "tradition": "Islamic History",
+    "dob": 545,
+    "dod": 570,
+    "lat": 21.4,
+    "lng": 39.8,
+    "city": "Mecca",
+    "source": "Tareekh al-Ya'qubi",
+    "teachers": [
+      "Abd al-Muttalib ibn Hashim"
+    ],
+    "primaryTitle": "Father of Prophet Muhammad"
+  },
+  {
     "slug": "F0018",
     "famous": "Abd Allah ibn al-Mubarak",
     "full": "Abd Allah ibn al-Mubarak ibn Wadih al-Hanzali al-Marwazi",
@@ -4398,12 +4415,7 @@
         "relation": "child"
       }
     ],
-    "quranRef": "Al-Baqarah 2:31, Al-A'raf 7:11, Al-Hijr 15:28",
-    "dob_academic": -10000,
-    "dod_academic": -9900,
-    "era_label": "Neolithic / Symbolic First Human",
-    "dating_source": "Wikipedia 'Adam in Islam'; Qisas al-Anbiya (Ibn Kathir); anchored to Neolithic threshold",
-    "dating_note": "Mythic/symbolic; no archaeological dating possible. Anchored to early Holocene as representative of anatomically-modern human emergence in tradition."
+    "quranRef": "Al-Baqarah 2:31, Al-A'raf 7:11, Al-Hijr 15:28"
   },
   {
     "slug": "F0173",
@@ -9007,12 +9019,7 @@
       "Ilyas"
     ],
     "relations": [],
-    "quranRef": "Al-An'am 6:86, Sad 38:48",
-    "dob_academic": -870,
-    "dod_academic": -800,
-    "era_label": "Iron Age II",
-    "dating_source": "2 Kings 2-13",
-    "dating_note": "Al-Yasa'/Elisha, successor to Ilyas."
+    "quranRef": "Al-An'am 6:86, Sad 38:48"
   },
   {
     "slug": "F0358",
@@ -12755,12 +12762,7 @@
     "lng": 36.1,
     "teachers": [],
     "relations": [],
-    "quranRef": "Al-Anbiya 21:83, Sad 38:41",
-    "dob_academic": -1800,
-    "dod_academic": -1700,
-    "era_label": "Middle Bronze Age (Uz/Edom)",
-    "dating_source": "Book of Job; Islamic tradition places Ayyub among descendants of Ishaq",
-    "dating_note": "Ayyub/Job; dating uncertain, tradition varies widely."
+    "quranRef": "Al-Anbiya 21:83, Sad 38:41"
   },
   {
     "slug": "F0501",
@@ -12847,12 +12849,7 @@
         "person": "Nahur ibn Sarugh",
         "relation": "father"
       }
-    ],
-    "dob_academic": -1850,
-    "dod_academic": -1800,
-    "era_label": "Middle Bronze Age",
-    "dating_source": "Genesis 11:27; Ibn Kathir",
-    "dating_note": "Terah/Azar, father of Ibrahim."
+    ]
   },
   {
     "slug": "F0504",
@@ -14056,12 +14053,7 @@
         "relation": "son"
       }
     ],
-    "quranRef": "Al-Baqarah 2:251, Al-Anbiya 21:78, Sad 38:17",
-    "dob_academic": -1010,
-    "dod_academic": -970,
-    "era_label": "Iron Age IIA",
-    "dating_source": "Tel Dan Stele (1993 discovery) confirms 'House of David'; Finkelstein",
-    "dating_note": "Dawud/David; now archaeologically attested via Tel Dan."
+    "quranRef": "Al-Baqarah 2:251, Al-Anbiya 21:78, Sad 38:17"
   },
   {
     "slug": "F0553",
@@ -14225,12 +14217,7 @@
     "lng": 44.42,
     "teachers": [],
     "relations": [],
-    "quranRef": "Al-Anbiya 21:85, Sad 38:48",
-    "dob_academic": -600,
-    "dod_academic": -540,
-    "era_label": "Neo-Babylonian",
-    "dating_source": "Ibn Kathir; often identified with Ezekiel in Islamic tradition",
-    "dating_note": "Dhul-Kifl; identity debated, Ezekiel identification places him in Babylonian exile."
+    "quranRef": "Al-Anbiya 21:85, Sad 38:48"
   },
   {
     "slug": "F0560",
@@ -16925,12 +16912,7 @@
         "relation": "sibling"
       }
     ],
-    "quranRef": "Al-A'raf 7:122, Ta-Ha 20:30, Al-Anbiya 21:48",
-    "dob_academic": -1300,
-    "dod_academic": -1200,
-    "era_label": "Late Bronze Age",
-    "dating_source": "Merneptah Stele (1208 BCE); Exodus dating consensus",
-    "dating_note": "Harun/Aaron, brother of Musa."
+    "quranRef": "Al-A'raf 7:122, Ta-Ha 20:30, Al-Anbiya 21:48"
   },
   {
     "slug": "F0664",
@@ -17839,12 +17821,7 @@
     "lng": 44.21,
     "teachers": [],
     "relations": [],
-    "quranRef": "Hud 11:50, Al-A'raf 7:65",
-    "dob_academic": -2200,
-    "dod_academic": -2100,
-    "era_label": "Bronze Age South Arabia",
-    "dating_source": "Qur'an 7:65-72; archaeology of Ubar/Iram (Shisr site, Oman)",
-    "dating_note": "People of ʿĀd linked archaeologically to Bronze Age southern Arabian civilizations."
+    "quranRef": "Hud 11:50, Al-A'raf 7:65"
   },
   {
     "slug": "F0700",
@@ -19432,12 +19409,7 @@
         "relation": "son"
       }
     ],
-    "quranRef": "Al-Baqarah 2:124, Ibrahim 14:35, Al-Anbiya 21:51",
-    "dob_academic": -1800,
-    "dod_academic": -1700,
-    "era_label": "Middle Bronze Age",
-    "dating_source": "Albright school; Kitchen 'On the Reliability of the OT'",
-    "dating_note": "Ibrahim/Abraham placed in Middle Bronze by Albright, revised to ~1800-1700 BCE by later consensus."
+    "quranRef": "Al-Baqarah 2:124, Ibrahim 14:35, Al-Anbiya 21:51"
   },
   {
     "slug": "F0762",
@@ -19586,12 +19558,7 @@
         "relation": "child"
       }
     ],
-    "quranRef": "Al-Anbiya 21:85, Maryam 19:56",
-    "dob_academic": -3100,
-    "dod_academic": -3000,
-    "era_label": "Early Dynastic Egypt",
-    "dating_source": "Ibn Kathir; Fusus al-Hikam (Ibn Arabi); identified with Enoch / Hermes Trismegistus in Islamic tradition",
-    "dating_note": "Idris traditionally linked to early Egyptian civilization / Hermetic tradition."
+    "quranRef": "Al-Anbiya 21:85, Maryam 19:56"
   },
   {
     "slug": "F0768",
@@ -19677,12 +19644,7 @@
         "relation": "child"
       }
     ],
-    "quranRef": "Al-An'am 6:85, Al-Saffat 37:123",
-    "dob_academic": -900,
-    "dod_academic": -850,
-    "era_label": "Iron Age IIA",
-    "dating_source": "1 Kings 17-19; Omride dynasty context",
-    "dating_note": "Ilyas/Elijah."
+    "quranRef": "Al-An'am 6:85, Al-Saffat 37:123"
   },
   {
     "slug": "F0771",
@@ -20119,12 +20081,7 @@
       "Yahya"
     ],
     "relations": [],
-    "quranRef": "Al-Baqarah 2:87, Maryam 19:16, Al-Maida 5:110",
-    "dob_academic": -4,
-    "dod_academic": 33,
-    "era_label": "Herodian Judea / Early Roman",
-    "dating_source": "Gospels; Tacitus 'Annals' 15.44; Josephus",
-    "dating_note": "Isa/Jesus; historically attested figure."
+    "quranRef": "Al-Baqarah 2:87, Maryam 19:16, Al-Maida 5:110"
   },
   {
     "slug": "F0787",
@@ -20193,12 +20150,7 @@
         "relation": "son"
       }
     ],
-    "quranRef": "Hud 11:71, Al-Anbiya 21:72",
-    "dob_academic": -1750,
-    "dod_academic": -1650,
-    "era_label": "Middle Bronze Age",
-    "dating_source": "Genesis 21; same era as Ibrahim",
-    "dating_note": "Ishaq, younger son of Ibrahim."
+    "quranRef": "Hud 11:71, Al-Anbiya 21:72"
   },
   {
     "slug": "F0789",
@@ -20259,12 +20211,7 @@
         "relation": "half-brother"
       }
     ],
-    "quranRef": "Al-Baqarah 2:127, Maryam 19:54",
-    "dob_academic": -1780,
-    "dod_academic": -1680,
-    "era_label": "Middle Bronze Age",
-    "dating_source": "Genesis 16,21; Ibn Kathir; contemporary of Ibrahim",
-    "dating_note": "Ismail, elder son of Ibrahim."
+    "quranRef": "Al-Baqarah 2:127, Maryam 19:54"
   },
   {
     "slug": "F0791",
@@ -24158,12 +24105,7 @@
       "Ibrahim"
     ],
     "relations": [],
-    "quranRef": "Hud 11:77, Al-Anbiya 21:74, Al-Ankabut 29:26",
-    "dob_academic": -1900,
-    "dod_academic": -1850,
-    "era_label": "Middle Bronze Age",
-    "dating_source": "Genesis 19; Bible Unearthed (Finkelstein); contemporary of Ibrahim",
-    "dating_note": "Lot/Lut, nephew of Abraham; same era."
+    "quranRef": "Hud 11:77, Al-Anbiya 21:74, Al-Ankabut 29:26"
   },
   {
     "slug": "F0945",
@@ -27511,12 +27453,7 @@
         "relation": "brother"
       }
     ],
-    "quranRef": "Al-Baqarah 2:51, Ta-Ha 20:9, Al-Qasas 28:3",
-    "dob_academic": -1300,
-    "dod_academic": -1200,
-    "era_label": "Late Bronze Age",
-    "dating_source": "Merneptah Stele; Ramesside Egypt; Kitchen",
-    "dating_note": "Musa/Moses; Late Bronze Exodus dating (~1250 BCE most common)."
+    "quranRef": "Al-Baqarah 2:51, Ta-Ha 20:9, Al-Qasas 28:3"
   },
   {
     "slug": "F1077",
@@ -28533,12 +28470,7 @@
         "relation": "child"
       }
     ],
-    "quranRef": "Hud 11:25, Al-Anbiya 21:76, Nuh 71:1",
-    "dob_academic": -2900,
-    "dod_academic": -2800,
-    "era_label": "Early Bronze Age / Mesopotamian Flood Horizon",
-    "dating_source": "Woolley's Ur flood layer (c.2900 BCE); Finkelstein & Silberman",
-    "dating_note": "Nuh/Noah traditionally linked to Mesopotamian flood narratives; Woolley dated a major Ur flood deposit to ~2900 BCE."
+    "quranRef": "Hud 11:25, Al-Anbiya 21:76, Nuh 71:1"
   },
   {
     "slug": "F1119",
@@ -28951,30 +28883,6 @@
       {
         "person": "Zaynab bint Khuzayma",
         "relation": "wife"
-      },
-      {
-        "person": "Aminah bint Wahb",
-        "relation": "mother"
-      },
-      {
-        "person": "Wahb ibn Abd Manaf",
-        "relation": "maternal grandfather"
-      },
-      {
-        "person": "Abu Talib ibn Abd al-Muttalib",
-        "relation": "uncle"
-      },
-      {
-        "person": "Fatimah bint Asad",
-        "relation": "aunt"
-      },
-      {
-        "person": "Halimah bint Abi Dhuayb",
-        "relation": "foster mother"
-      },
-      {
-        "person": "Thuwaybah",
-        "relation": "foster mother"
       }
     ],
     "quranRef": {
@@ -28987,12 +28895,7 @@
       "Seal of the Prophets",
       "Quraysh"
     ],
-    "dateNote": "Born in the Year of the Elephant (Aam al-Fil). Dates follow the Islamic historical tradition.",
-    "dob_academic": 570,
-    "dod_academic": 632,
-    "era_label": "Late Antiquity / 7th Century Arabia",
-    "dating_source": "Ibn Ishaq Sirat Rasul Allah (via Ibn Hisham); al-Tabari 'History'; multiple contemporary and near-contemporary attestations",
-    "dating_note": "Fully historical. Born in Mecca 570 CE (Year of the Elephant); died in Medina 8 June 632 CE. Dates firmly established in Islamic and non-Islamic sources."
+    "dateNote": "Born in the Year of the Elephant (Aam al-Fil). Dates follow the Islamic historical tradition."
   },
   {
     "slug": "F1133",
@@ -31980,12 +31883,7 @@
     "lng": 37.98,
     "teachers": [],
     "relations": [],
-    "quranRef": "Hud 11:61, Al-A'raf 7:73, Al-Naml 27:45",
-    "dob_academic": -1800,
-    "dod_academic": -1750,
-    "era_label": "Middle Bronze NW Arabia",
-    "dating_source": "Qur'an 7:73-79; Mada'in Salih (Hegra) site context",
-    "dating_note": "People of Thamud; Hegra inhabited long before Nabataeans."
+    "quranRef": "Hud 11:61, Al-A'raf 7:73, Al-Naml 27:45"
   },
   {
     "slug": "F1250",
@@ -33389,12 +33287,7 @@
         "person": "Adam",
         "relation": "father"
       }
-    ],
-    "dob_academic": -9900,
-    "dod_academic": -9000,
-    "era_label": "Neolithic / Symbolic",
-    "dating_source": "Ibn Kathir Qisas al-Anbiya; Genesis 5 tradition",
-    "dating_note": "Legendary son of Adam; no historical dating. Placed immediately after Adam in tradition."
+    ]
   },
   {
     "slug": "F1305",
@@ -33416,12 +33309,7 @@
     "lng": 34.8,
     "teachers": [],
     "relations": [],
-    "quranRef": "Al-A'raf 7:85, Hud 11:84, Al-Shu'ara 26:177",
-    "dob_academic": -1300,
-    "dod_academic": -1250,
-    "era_label": "Late Bronze NW Arabia / Midian",
-    "dating_source": "Qur'an 7:85-93; Midianite archaeology (Qurayyah ware ~1300 BCE)",
-    "dating_note": "Shu'ayb/Jethro linked to Midianites; contemporary with Musa's Midian years."
+    "quranRef": "Al-A'raf 7:85, Hud 11:84, Al-Shu'ara 26:177"
   },
   {
     "slug": "F1306",
@@ -34409,12 +34297,7 @@
         "relation": "father"
       }
     ],
-    "quranRef": "Al-Baqarah 2:102, Al-Anbiya 21:81, Al-Naml 27:15",
-    "dob_academic": -970,
-    "dod_academic": -931,
-    "era_label": "Iron Age IIA",
-    "dating_source": "1 Kings; Egyptian Shoshenq I campaign (~925 BCE) as fixed point",
-    "dating_note": "Sulayman/Solomon."
+    "quranRef": "Al-Baqarah 2:102, Al-Anbiya 21:81, Al-Naml 27:15"
   },
   {
     "slug": "F1343",
@@ -42104,12 +41987,7 @@
         "relation": "father"
       }
     ],
-    "quranRef": "Maryam 19:7, Al-Anbiya 21:90",
-    "dob_academic": -4,
-    "dod_academic": 30,
-    "era_label": "Herodian Judea",
-    "dating_source": "Luke 1-3; Josephus 'Antiquities' 18.5.2",
-    "dating_note": "Yahya/John the Baptist; Josephus confirms execution."
+    "quranRef": "Maryam 19:7, Al-Anbiya 21:90"
   },
   {
     "slug": "F1646",
@@ -42261,12 +42139,7 @@
         "relation": "son"
       }
     ],
-    "quranRef": "Hud 11:71, Yusuf 12:6, Al-Anbiya 21:72",
-    "dob_academic": -1700,
-    "dod_academic": -1600,
-    "era_label": "Middle Bronze Age",
-    "dating_source": "Genesis 25-49",
-    "dating_note": "Yaqub/Jacob, son of Ishaq."
+    "quranRef": "Hud 11:71, Yusuf 12:6, Al-Anbiya 21:72"
   },
   {
     "slug": "F1652",
@@ -42630,12 +42503,7 @@
     "lng": 43.12,
     "teachers": [],
     "relations": [],
-    "quranRef": "Al-Anbiya 21:87, Al-Saffat 37:139, Al-Qalam 68:48",
-    "dob_academic": -785,
-    "dod_academic": -760,
-    "era_label": "Neo-Assyrian Period",
-    "dating_source": "Book of Jonah; Assyrian records for Nineveh",
-    "dating_note": "Yunus/Jonah; linked to Nineveh under Jeroboam II."
+    "quranRef": "Al-Anbiya 21:87, Al-Saffat 37:139, Al-Qalam 68:48"
   },
   {
     "slug": "F1667",
@@ -42689,12 +42557,7 @@
         "relation": "father"
       }
     ],
-    "quranRef": "Yusuf 12:4 (entire surah dedicated to Yusuf)",
-    "dob_academic": -1700,
-    "dod_academic": -1600,
-    "era_label": "Hyksos-era Egypt",
-    "dating_source": "Kitchen 'Reliability of OT'; Hyksos period Egypt (~1650-1550 BCE)",
-    "dating_note": "Yusuf/Joseph traditionally linked to Semitic Hyksos rule in Egypt."
+    "quranRef": "Yusuf 12:4 (entire surah dedicated to Yusuf)"
   },
   {
     "slug": "F1669",
@@ -42835,12 +42698,7 @@
         "relation": "son"
       }
     ],
-    "quranRef": "Ali Imran 3:37, Maryam 19:2, Al-Anbiya 21:89",
-    "dob_academic": -50,
-    "dod_academic": 20,
-    "era_label": "Late Second Temple / Herodian",
-    "dating_source": "Luke 1; Josephus",
-    "dating_note": "Zakariyya/Zechariah, father of Yahya."
+    "quranRef": "Ali Imran 3:37, Maryam 19:2, Al-Anbiya 21:89"
   },
   {
     "slug": "F1676",
@@ -48557,222 +48415,5 @@
     "lang": "Arabic",
     "primaryTitle": "Hadhrami navigator who wrote comprehensive guides to Indian Ocean sailing",
     "slug": "F1850"
-  },
-  {
-    "slug": "F1975",
-    "famous": "Aminah bint Wahb",
-    "full": "Aminah bint Wahb ibn Abd Manaf al-Zuhriyyah",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Mother of the Prophet",
-    "dob": 549,
-    "dod": 577,
-    "dob_s": "c.549",
-    "dod_s": "577",
-    "city": "Mecca / al-Abwa",
-    "classif": "Mother of Prophet Muhammad",
-    "lang": "Arabic",
-    "titles": "Umm al-Nabi (Mother of the Prophet)",
-    "source": "https://en.wikipedia.org/wiki/Amina_bint_Wahb",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Wahb ibn Abd Manaf",
-        "relation": "father"
-      },
-      {
-        "person": "Abdullah ibn Abd al-Muttalib",
-        "relation": "husband"
-      },
-      {
-        "person": "Prophet Muhammad",
-        "relation": "son"
-      }
-    ],
-    "tags": [
-      "Quraysh",
-      "Banu Zuhra"
-    ],
-    "bio": "Mother of Prophet Muhammad; married Abdullah ibn Abd al-Muttalib. Widowed while pregnant. Died at al-Abwa aged ~28 while returning from Yathrib with 6-year-old Muhammad."
-  },
-  {
-    "slug": "F1976",
-    "famous": "Abu Talib ibn Abd al-Muttalib",
-    "full": "Abu Talib ibn Abd al-Muttalib al-Hashimi",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Uncle and Guardian of the Prophet",
-    "dob": 535,
-    "dod": 619,
-    "dob_s": "c.535",
-    "dod_s": "619",
-    "city": "Mecca",
-    "classif": "Uncle of Prophet Muhammad, chief of Banu Hashim",
-    "lang": "Arabic",
-    "titles": "Shaykh al-Batha · Protector of the Prophet",
-    "source": "https://en.wikipedia.org/wiki/Abu_Talib_ibn_Abd_al-Muttalib",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Abd al-Muttalib ibn Hashim",
-        "relation": "father"
-      },
-      {
-        "person": "Fatimah bint Asad",
-        "relation": "wife"
-      },
-      {
-        "person": "Ali ibn Abi Talib",
-        "relation": "son"
-      },
-      {
-        "person": "Jafar ibn Abi Talib",
-        "relation": "son"
-      },
-      {
-        "person": "Prophet Muhammad",
-        "relation": "nephew"
-      }
-    ],
-    "tags": [
-      "Quraysh",
-      "Banu Hashim"
-    ],
-    "bio": "Uncle of Prophet Muhammad; raised him after the deaths of Aminah and Abd al-Muttalib. Chief of Banu Hashim. Died 619 CE (Year of Sorrow)."
-  },
-  {
-    "slug": "F1977",
-    "famous": "Fatimah bint Asad",
-    "full": "Fatimah bint Asad ibn Hashim",
-    "tradition": "Islamic History",
-    "type": "Sahabiyya",
-    "primaryTitle": "Aunt who raised the Prophet",
-    "dob": 555,
-    "dod": 626,
-    "dob_s": "c.555",
-    "dod_s": "626",
-    "city": "Mecca / Medina",
-    "classif": "Wife of Abu Talib; mother of Ali ibn Abi Talib",
-    "lang": "Arabic",
-    "titles": "Umm Ali",
-    "source": "https://en.wikipedia.org/wiki/Fatimah_bint_Asad",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Abu Talib ibn Abd al-Muttalib",
-        "relation": "husband"
-      },
-      {
-        "person": "Ali ibn Abi Talib",
-        "relation": "son"
-      },
-      {
-        "person": "Jafar ibn Abi Talib",
-        "relation": "son"
-      }
-    ],
-    "tags": [
-      "Banu Hashim"
-    ],
-    "bio": "Wife of Abu Talib and mother of Ali ibn Abi Talib. Raised Prophet Muhammad alongside her own children after Aminah's death. Died in Medina 626 CE."
-  },
-  {
-    "slug": "F1978",
-    "famous": "Halimah bint Abi Dhuayb",
-    "full": "Halimah bint Abi Dhuayb al-Sa'diyyah",
-    "tradition": "Islamic History",
-    "type": "Sahabiyya",
-    "primaryTitle": "Wet Nurse of the Prophet",
-    "dob": 540,
-    "dod": 630,
-    "dob_s": "c.540",
-    "dod_s": "c.630",
-    "city": "Banu Sa'd / Mecca",
-    "classif": "Bedouin wet nurse of the Prophet",
-    "lang": "Arabic",
-    "titles": "Halimah al-Sa'diyyah",
-    "source": "https://en.wikipedia.org/wiki/Halimah_bint_Abi_Dhuayb",
-    "lat": 21.42,
-    "lng": 39.82,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Prophet Muhammad",
-        "relation": "foster mother"
-      }
-    ],
-    "tags": [
-      "Banu Sa'd"
-    ],
-    "bio": "Bedouin wet nurse from Banu Sa'd ibn Bakr who nursed Prophet Muhammad in infancy. Later embraced Islam."
-  },
-  {
-    "slug": "F1979",
-    "famous": "Thuwaybah",
-    "full": "Thuwaybah, freedwoman of Abu Lahab",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "First Wet Nurse of the Prophet",
-    "dob": 540,
-    "dod": 615,
-    "dob_s": "c.540",
-    "dod_s": "c.615",
-    "city": "Mecca",
-    "classif": "Freedwoman of Abu Lahab; first nurse of Prophet",
-    "lang": "Arabic",
-    "titles": "",
-    "source": "https://en.wikipedia.org/wiki/Thuwaybah",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Prophet Muhammad",
-        "relation": "foster mother"
-      }
-    ],
-    "tags": [],
-    "bio": "Freedwoman of Abu Lahab; nursed Prophet Muhammad briefly before Halimah. Also nursed Hamza, making them milk-brothers."
-  },
-  {
-    "slug": "F1980",
-    "famous": "Wahb ibn Abd Manaf",
-    "full": "Wahb ibn Abd Manaf ibn Zuhra al-Zuhri",
-    "tradition": "Islamic History",
-    "type": "Founder",
-    "primaryTitle": "Maternal Grandfather of the Prophet",
-    "dob": 520,
-    "dod": 565,
-    "dob_s": "c.520",
-    "dod_s": "c.565",
-    "city": "Mecca",
-    "classif": "Chief of Banu Zuhra; father of Aminah",
-    "lang": "Arabic",
-    "titles": "Sayyid Banu Zuhra",
-    "source": "https://en.wikipedia.org/wiki/Wahb_ibn_Abd_Manaf",
-    "lat": 21.4225,
-    "lng": 39.8262,
-    "teachers": [],
-    "relations": [
-      {
-        "person": "Aminah bint Wahb",
-        "relation": "daughter"
-      },
-      {
-        "person": "Prophet Muhammad",
-        "relation": "grandson"
-      }
-    ],
-    "tags": [
-      "Quraysh",
-      "Banu Zuhra"
-    ],
-    "bio": "Chief of Banu Zuhra clan of Quraysh; father of Aminah, maternal grandfather of Prophet Muhammad."
   }
 ]

@@ -67,6 +67,8 @@ function isLineageMember(p){
   return p.type==='Genealogy' || PROPHET_CHAIN.has(p.famous);
 }
 
+let SL_LIN_OPEN=false;
+
 // ── Build the full (unfiltered) lane list once from PEOPLE ──────────────────
 function _buildSLAllLanes(){
   if(SL_ALL_LANES.length) return;
@@ -150,6 +152,8 @@ function renderSilsila(){
     return idx>=1?idx:-1;
   };
 
+  const _SL_ACTIVE = (typeof activeYear!=='undefined' && activeYear!==null);
+
   // ── Geometry ──────────────────────────────────────────────
   const PRE_W=320, MAIN_W=3200, TW=PRE_W+MAIN_W;
   const NR=6, PT=12, PB=10;
@@ -175,9 +179,13 @@ function renderSilsila(){
 
   // ── Build grps (lane index → people array) — skip hidden lanes (li = -1) ──
   const grps={};
+  const _slActiveG = (typeof activeYear!=='undefined' && activeYear!==null);
   PEOPLE.forEach(p=>{
     if(_slYr !== null && !_slIsAlive(p, _slYr)) return;
-    const li=getLI(p);if(li>=0)(grps[li]=grps[li]||[]).push(p);
+    const li=getLI(p);
+    if(li<0) return;
+    if(li===0 && _slActiveG && !SL_LIN_OPEN && p.famous!=='Prophet Muhammad') return;
+    (grps[li]=grps[li]||[]).push(p);
   });
 
   // When type/tradition filters are active, restrict non-lineage grps to only matching people
@@ -202,13 +210,18 @@ function renderSilsila(){
   // Lane height based on grid rows needed
   function laneH(li){
     const n=(grps[li]||[]).length;
+    if(_SL_ACTIVE && n===0) return 0;
     const rows=Math.ceil(n/GRID_COLS);
     return Math.max(MIN_LH, rows*GRID_CELL_H + LANE_PAD*2);
   }
 
   // ── Lineage members + dynamic height ─────────────────────
   SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
-  const linMembers=LINEAGE_CHAIN.map(n=>PEOPLE.find(p=>p.famous===n)).filter(Boolean);
+  let linMembers=LINEAGE_CHAIN.map(n=>PEOPLE.find(p=>p.famous===n)).filter(Boolean);
+  const _slActive = (typeof activeYear!=='undefined' && activeYear!==null);
+  if(_slActive && !SL_LIN_OPEN){
+    linMembers=linMembers.filter(p=>p.famous==='Prophet Muhammad');
+  }
   const LIN_ROWS=Math.ceil(linMembers.length/GRID_COLS);
   const LH_LIN=LIN_ROWS*LIN_CELL_H+LIN_PAD*2;
 
@@ -288,7 +301,9 @@ function renderSilsila(){
 
   // ── Century grid lines + labels ────────────────────────────
   P.push(`<line x1="${PRE_W}" y1="0" x2="${PRE_W}" y2="${SVG_H}" stroke="rgba(212,175,55,0.16)" stroke-width="1.5" />`);
-  P.push(`<text x="${(PRE_W/2).toFixed(1)}" y="22" font-family="Cinzel,serif" font-size="9" text-anchor="middle" fill="#A0AEC0" letter-spacing="1.5">PRE-ISLAMIC</text>`);
+  if(!(_SL_ACTIVE && activeYear>500)){
+    P.push(`<text x="${(PRE_W/2).toFixed(1)}" y="22" font-family="Cinzel,serif" font-size="9" text-anchor="middle" fill="#A0AEC0" letter-spacing="1.5">PRE-ISLAMIC</text>`);
+  }
   for(let yr=600;yr<=2000;yr+=100){
     const x=x2px(yr).toFixed(1), c=gc(yr);
     P.push(`<line x1="${x}" y1="0" x2="${x}" y2="${SVG_H}" stroke="rgba(212,175,55,.04)" stroke-width="1" />`);
@@ -375,11 +390,18 @@ function renderSilsila(){
       const isQ=qProphets.has(p.famous);
       const isBig=bigSet.has(p.famous);
       const r=isPM?10:isBig?7:isQ?6:4;
-      if(isPM){
+      const _pmHide = isPM && _slActive && activeYear>632;
+      const _pmStar = isPM && _slActive && activeYear<570;
+      if(_pmHide) return;
+      if(isPM && !_pmStar){
         P.push(`<circle cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="16" fill="none" stroke="#D4AF37" stroke-width="1.1"><animate attributeName="r" values="14;24;14" dur="3.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0;0.5" dur="3.8s" repeatCount="indefinite"/></circle>`);
       }
       const flt=isPM?'filter="url(#slg)"':isQ?'filter="url(#slg2)"':'';
-      P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#D4AF37" fill-opacity="${isPM?.95:isQ?.85:.6}" stroke="#D4AF37" stroke-width="${isPM?2.5:isQ?1.6:1}" stroke-opacity=".8" ${flt}/>`);
+      if(_pmStar){
+        P.push(`<text class="sl-node sl-lin-node" data-name="${esc(p.famous)}" x="${nd.x.toFixed(1)}" y="${(nd.y+7).toFixed(1)}" text-anchor="middle" font-size="26" fill="none" stroke="#D4AF37" stroke-width="1.2" style="cursor:pointer">☆</text>`);
+      } else {
+        P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#D4AF37" fill-opacity="${isPM?.95:isQ?.85:.6}" stroke="#D4AF37" stroke-width="${isPM?2.5:isQ?1.6:1}" stroke-opacity=".8" ${flt}/>`);
+      }
       // Label — font-size 11 for all, matching tradition row labels
       const labelY=nd.y+r+11;
       let shortName;
@@ -403,20 +425,29 @@ function renderSilsila(){
   const inner=document.getElementById('silsilaLanesInner');
   let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
   // Lineage row
-  lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A">
-    <span class="sl-lane-dot" style="background:#D4AF37;box-shadow:0 0 6px rgba(212,175,55,.6)"></span>
-    <span class="sl-lane-name" style="color:#D4AF37">⭕ Prophets' Lineage</span>
-    <span class="sl-lane-count">${linMembers.length}</span>
-  </div>`;
+  if(!_SL_ACTIVE){
+    lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A">
+      <span class="sl-lane-dot" style="background:#D4AF37;box-shadow:0 0 6px rgba(212,175,55,.6)"></span>
+      <span class="sl-lane-name" style="color:#D4AF37">${SL_LIN_OPEN?'◉':'⭕'} Prophets' Lineage</span>
+      <span class="sl-lane-count">${linMembers.length}</span>
+    </div>`;
+  } else {
+    lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A"></div>`;
+  }
   LANES.forEach((lane,li)=>{
     if(li===0) return;
     const col=TRAD_COLORS[lane]||(grps[li]&&grps[li][0]?CC[gc(grps[li][0].dob)]:'#D4AF37')||'#D4AF37';
     const count=(grps[li]||[]).length;
-    lh+=`<div class="sl-lane-label" data-lane="${esc(lane)}" style="height:${laneH(li)}px">
-      <span class="sl-lane-dot" style="background:${col};box-shadow:0 0 5px ${col}55"></span>
-      <span class="sl-lane-name" style="color:${col}">${esc(lane)}</span>
-      <span class="sl-lane-count">${count}</span>
-    </div>`;
+    const hideLbl = _SL_ACTIVE && (lane==='Prophets' || lane==='Quranic Prophets' || count===0);
+    if(hideLbl){
+      lh+=`<div class="sl-lane-label" data-lane="${esc(lane)}" style="height:${laneH(li)}px;visibility:hidden"></div>`;
+    } else {
+      lh+=`<div class="sl-lane-label" data-lane="${esc(lane)}" style="height:${laneH(li)}px">
+        <span class="sl-lane-dot" style="background:${col};box-shadow:0 0 5px ${col}55"></span>
+        <span class="sl-lane-name" style="color:${col}">${esc(lane)}</span>
+        <span class="sl-lane-count">${count}</span>
+      </div>`;
+    }
   });
   inner.innerHTML=lh;
 
@@ -435,7 +466,15 @@ function renderSilsila(){
     lanesWrap._slBound=true;
     lanesWrap.addEventListener('click',e=>{
       const lbl=e.target.closest('.sl-lane-label'); if(!lbl) return;
-      const t=lbl.dataset.lane; if(t==='Prophetic Lineage') return;
+      const t=lbl.dataset.lane;
+      if(t==='Prophetic Lineage'){
+        SL_LIN_OPEN=!SL_LIN_OPEN;
+        SL_LANES_KEY='';
+        document.getElementById('silsilaMain').innerHTML='';
+        document.getElementById('silsilaLanesInner').innerHTML='';
+        renderSilsila();
+        return;
+      }
       // IH sub-lanes filter by 'Islamic History' tradition
       const isIHSub=IH_SUBLANE_ORDER.includes(t);
       const tradKey=isIHSub?'Islamic History':t;

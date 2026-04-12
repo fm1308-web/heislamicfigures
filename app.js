@@ -642,6 +642,20 @@ function updateFilterSummary(){
   }
 }
 function onSearch(){searchQ=document.getElementById('search').value.trim();applyFilterAndFocus();}
+function _toggleSearchClear(){
+  var i=document.getElementById('search');
+  var b=document.getElementById('searchClearBtn');
+  if(!i||!b) return;
+  b.style.visibility = i.value.length>0 ? 'visible' : 'hidden';
+}
+function _clearSearchBox(){
+  var i=document.getElementById('search');
+  if(!i) return;
+  i.value='';
+  onSearch();
+  _toggleSearchClear();
+  i.focus();
+}
 
 // ═══════════════════════════════════════════════════════════
 // FILTER
@@ -848,6 +862,7 @@ function initSlider(){
   function setYear(yr){
     const pct=yr2pct(yr);
     thumb.style.left=pct+'%'; fill.style.width=pct+'%';
+    const _trk=document.getElementById('sliderTrack'); if(_trk) _trk.classList.remove('sl-inactive');
     activeYear=yr;
     _viewYears[VIEW]=yr;
     if(VIEW==='map'&&typeof _applyMapYear==='function') _applyMapYear(yr);
@@ -903,6 +918,7 @@ function initSlider(){
   window.addEventListener('blur',function(){setShift(false);});
   // Slider starts at left edge — inactive until user clicks YEAR FILTER
   thumb.style.left='0%'; fill.style.width='0%';
+  track.classList.add('sl-inactive');
 }
 
 function toggleYearSlider(){
@@ -916,6 +932,7 @@ function clearYear(){
   if(typeof _onSliderYear==='function') _onSliderYear(null);
   document.getElementById('yearDisplay').textContent='\u2014';
   const cb=document.getElementById('yearClearBtn'); if(cb) cb.classList.remove('active');
+  const _trk2=document.getElementById('sliderTrack'); if(_trk2) _trk2.classList.add('sl-inactive');
   updateCentHeaders(); updateCentScrollbar();
   renderAll();
 }
@@ -926,16 +943,19 @@ function clearYear(){
 function _syncSliderUI(){
   const thumb=document.getElementById('sliderThumb');
   const fill=document.getElementById('sliderFill');
+  const track=document.getElementById('sliderTrack');
   const cb=document.getElementById('yearClearBtn');
   if(activeYear!==null){
     const pct=((activeYear-MIN_YR)/(MAX_YR-MIN_YR))*100;
     thumb.style.left=pct+'%'; fill.style.width=pct+'%';
     document.getElementById('yearDisplay').textContent=activeYear+' CE';
     if(cb) cb.classList.add('active');
+    if(track) track.classList.remove('sl-inactive');
   } else {
     thumb.style.left='0%'; fill.style.width='0%';
     document.getElementById('yearDisplay').textContent='\u2014';
     if(cb) cb.classList.remove('active');
+    if(track) track.classList.add('sl-inactive');
   }
 }
 
@@ -1218,8 +1238,10 @@ const _assumedBadge='<span style="font-size:9px;color:rgba(212,175,55,.55);curso
 
 function renderInfo(p){
   const col = p.type==='Genealogy' ? '#D4AF37' : (CC[gc(p.dob)]||'#A0AEC0');
-  const dob_s=p.dob!=null?(p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`):'Unknown';
-  const dod_s=p.dod!=null?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
+  const _dobMain = p.dob_academic!=null ? p.dob_academic : p.dob;
+  const _dodMain = p.dod_academic!=null ? p.dod_academic : p.dod;
+  const dob_s=_dobMain!=null?(_dobMain<0?`${Math.abs(_dobMain)} BCE`:`${_dobMain} CE`):'Unknown';
+  const dod_s=_dodMain!=null?(_dodMain<0?`${Math.abs(_dodMain)} BCE`:`${_dodMain} CE`):'Unknown';
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
 
   document.getElementById('infoFilterSpacer').textContent=
@@ -1427,8 +1449,8 @@ function renderInfo(p){
     ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="info-wd-occupations">'+chips.map(l=>'<span class="info-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
     ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; Follow their life on the map</a>`:''}
     <div class="i-dates">
-      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds"${String(p.dob_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dob_s)}</span>`:''}</div>
-      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds"${String(p.dod_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dod_s)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds"${String(p.dob_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dob_s)}</span>`:''}${p.dating_source?`<span class="ds" style="font-style:italic;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds"${String(p.dod_s).startsWith('~')?' style="font-style:italic"':''}>${esc(p.dod_s)}</span>`:''}${p.dating_source?`<span class="ds" style="font-style:italic;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;font-size:10.5px;color:var(--ip-muted);font-style:italic;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}

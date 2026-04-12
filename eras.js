@@ -25,6 +25,7 @@ var _origYToYear = function(y){
 var yearToY = _origYearToY;
 var yToYear = _origYToYear;
 function fmtYr(y){ return y<=0 ? Math.abs(Math.round(y))+' BCE' : Math.round(y)+' CE'; }
+function _erasDob(p){ return (p && p.dob_academic!=null) ? p.dob_academic : (p ? p.dob : null); }
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function _erasDod(p){ return (p.dod != null && p.dod > 0) ? p.dod : p.dob + 70; }
 function _erasWikiLink(p){
@@ -114,43 +115,29 @@ function initEras(){
   rightPanel.appendChild(stem);
 
   // ── Adam marker ──
-  var adamY = yearToY(-4000);
+  var _adamP = PEOPLE.find(function(p){ return p.famous==='Adam'; });
+  var _adamDob = _adamP ? (_adamP.dob_academic!=null ? _adamP.dob_academic : (_adamP.dob!=null ? _adamP.dob : -4000)) : -4000;
+  var adamY = yearToY(_adamDob);
   var adamDot = document.createElement('div');
   adamDot.className = 'eras-stem-marker eras-sm-lg';
+  adamDot.id = 'eras-adam-dot';
   adamDot.style.top = (adamY - 6.5) + 'px';
   rightPanel.appendChild(adamDot);
   var adamLabel = document.createElement('div');
-  adamLabel.className = 'eras-perm-label eras-perm-prominent';
-  adamLabel.style.top = (adamY + 16) + 'px';
-  adamLabel.style.color = '#D4AF37';
-  adamLabel.textContent = 'Adam';
-  _leftPanel.appendChild(adamLabel);
   var adamYrLabel = document.createElement('div');
-  adamYrLabel.className = 'eras-stem-yr-label';
-  adamYrLabel.style.top = (adamY - 6) + 'px';
-  adamYrLabel.style.color = '#6B7280';
-  adamYrLabel.innerHTML = '0<span class="year-era">CE</span>';
-  _leftPanel.appendChild(adamYrLabel);
   _erasMarkers.push({year:-4000, isAdam:true, dotEl:adamDot, labelEl:adamLabel, yrLabelEl:adamYrLabel});
 
   // ── Muhammad marker ──
-  var muhY = yearToY(570);
+  var _muhP = PEOPLE.find(function(p){ return p.famous==='Prophet Muhammad'; });
+  var _muhDob = _muhP ? (_muhP.dob_academic!=null ? _muhP.dob_academic : (_muhP.dob!=null ? _muhP.dob : 570)) : 570;
+  var muhY = yearToY(_muhDob);
   var muhDot = document.createElement('div');
   muhDot.className = 'eras-stem-marker eras-sm-lg';
+  muhDot.id = 'eras-muh-dot';
   muhDot.style.top = (muhY - 6.5) + 'px';
   rightPanel.appendChild(muhDot);
   var muhLabel = document.createElement('div');
-  muhLabel.className = 'eras-perm-label eras-perm-prominent';
-  muhLabel.style.top = muhY + 'px';
-  muhLabel.style.color = '#D4AF37';
-  muhLabel.textContent = 'Muhammad \uFDFA';
-  _leftPanel.appendChild(muhLabel);
   var muhYrLabel = document.createElement('div');
-  muhYrLabel.className = 'eras-stem-yr-label';
-  muhYrLabel.style.top = (muhY - 6) + 'px';
-  muhYrLabel.style.color = '#6B7280';
-  muhYrLabel.innerHTML = '570<span class="year-era">CE</span>';
-  _leftPanel.appendChild(muhYrLabel);
   _erasMarkers.push({year:570, isAdam:false, dotEl:muhDot, labelEl:muhLabel, yrLabelEl:muhYrLabel});
 
   // ── Era labels + boundary lines + gradient shading (RIGHT panel only) ──
@@ -170,10 +157,14 @@ function initEras(){
       rightPanel.appendChild(gDiv);
     }
 
-    // Era name + dates label — top-aligned at era start
+    // Era name + dates label — top-aligned at era start (except Prophetic Era → pin to Muhammad dot)
     var label = document.createElement('div');
     label.className = 'eras-era-band-text';
-    label.style.top = (y1 + 12) + 'px';
+    if(era.name === 'Prophetic Era' && typeof muhY !== 'undefined'){
+      label.style.top = (muhY - 20) + 'px';
+    } else {
+      label.style.top = (y1 + 12) + 'px';
+    }
     label.innerHTML =
       '<div class="eras-era-band-name">' + esc(era.name) + '</div>' +
       (era.dates ? '<div class="eras-era-band-dates">' + esc(era.dates) + '</div>' : '');
@@ -207,12 +198,13 @@ function initEras(){
   allTags.forEach(function(tag){
     var people = PEOPLE.filter(function(p){ return p[tag.field] === tag.key; });
     if(!people.length) return;
-    people.sort(function(a,b){ return a.dob - b.dob; });
+    people.sort(function(a,b){ return _erasDob(a) - _erasDob(b); });
     var firstDob = Infinity, lastDod = -Infinity;
     people.forEach(function(p){
-      if(p.dob < firstDob) firstDob = p.dob;
-      var d = (p.dod != null && p.dod > 0) ? p.dod : p.dob + 70;
-      if(d > lastDod) lastDod = d;
+      var _d = _erasDob(p);
+      if(_d!=null && _d < firstDob) firstDob = _d;
+      var _dd = (p.dod_academic!=null) ? p.dod_academic : ((p.dod != null && p.dod > 0) ? p.dod : (_d!=null ? _d + 70 : null));
+      if(_dd!=null && _dd > lastDod) lastDod = _dd;
     });
     if(people.length > maxCount) maxCount = people.length;
     var color = tag.field === 'type' ? (TYPE_COLORS[tag.key]||'#A0AEC0') : (TRAD_COLORS[tag.key]||'#A0AEC0');
@@ -222,12 +214,12 @@ function initEras(){
   // ── Populate multi-select filter panels ──
   var typeItems = [], tradItems = [];
   leafData.forEach(function(ld){
-    var item = {name:ld.key, count:ld.count};
+    var item = {name:ld.key, count:ld.count, firstDob:ld.firstDob};
     if(ld.field === 'type') typeItems.push(item);
     else tradItems.push(item);
   });
-  typeItems.sort(function(a,b){ return a.name.localeCompare(b.name); });
-  tradItems.sort(function(a,b){ return a.name.localeCompare(b.name); });
+  typeItems.sort(function(a,b){ return a.firstDob - b.firstDob; });
+  tradItems.sort(function(a,b){ return a.firstDob - b.firstDob; });
 
   var toolbar = document.getElementById('eras-toolbar');
   if(toolbar) _erasBuildToolbar(toolbar, typeItems, tradItems);
@@ -787,26 +779,88 @@ function _erasSyncClearBtn(){
 function _buildNameList(people, color){
   if(!_nameListEl) return;
   _nameListEl.innerHTML = '';
-  var sorted = people.slice().sort(function(a,b){ return a.dob - b.dob; });
+  var sorted = people.slice().sort(function(a,b){
+    var da = (a.dob_academic!=null)?a.dob_academic:a.dob;
+    var db = (b.dob_academic!=null)?b.dob_academic:b.dob;
+    return da - db;
+  });
   var ROW_H = 26;
+  var TOP_OFFSET = 18;
+
+  var allProphets = sorted.length>0 && sorted.every(function(p){ return p.type==='Prophet'; });
+
+  var adamDotEl = document.getElementById('eras-adam-dot');
+  var muhDotEl  = document.getElementById('eras-muh-dot');
+  var muhLblEl  = document.querySelector('.eras-perm-label.eras-perm-prominent');
+
   var lastBottom = -Infinity;
-  sorted.forEach(function(p){
-    var idealY = yearToY(p.dob);
-    var y = Math.max(idealY, lastBottom + ROW_H);
-    lastBottom = y;
+  var lastY = 0;
+  sorted.forEach(function(p, i){
+    var y;
+    if(allProphets){
+      y = TOP_OFFSET + i * ROW_H;
+    } else {
+      var idealY = yearToY((p.dob_academic!=null)?p.dob_academic:p.dob);
+      y = Math.max(idealY, lastBottom + ROW_H);
+      lastBottom = y;
+    }
+    lastY = y;
+    var dobShown = (p.dob_academic!=null) ? p.dob_academic : p.dob;
     var el = document.createElement('div');
     el.className = 'eras-name-entry';
     el.style.top = y + 'px';
     el.innerHTML =
       '<span class="eras-name-dot" style="background:' + color + '"></span>' +
-      '<span class="eras-name-text" style="color:#FFFFFF">' + esc(p.famous) + _erasWikiLink(p) + '</span>' +
-      '<span class="eras-name-yr" style="color:rgba(255,255,255,0.6)">' + fmtYr(p.dob) + '</span>';
+      '<span class="eras-name-text" style="color:' + (color==='#D4AF37'||color==='#b8860b'?'#D4AF37':'#FFFFFF') + '">' + esc(p.famous) + _erasWikiLink(p) + '</span>' +
+      '<span class="eras-name-yr" style="color:rgba(212,175,55,0.8)">' + fmtYr(dobShown) + '</span>';
     el.addEventListener('click', function(e){
       e.stopPropagation();
       if(typeof jumpTo === 'function') jumpTo(p.famous);
     });
     _nameListEl.appendChild(el);
   });
+
+  // Find or create a DOD label for Muhammad (632)
+  var muhDodLbl = document.getElementById('eras-muh-dod-lbl');
+  if(allProphets){
+    // Adam dot at FIRST row
+    if(adamDotEl){
+      adamDotEl.style.display = '';
+      adamDotEl.style.top = (TOP_OFFSET - 6.5) + 'px';
+    }
+    // Muhammad dot at LAST row
+    if(muhDotEl){
+      muhDotEl.style.display = '';
+      muhDotEl.style.top = (lastY - 6.5) + 'px';
+    }
+    if(muhLblEl) muhLblEl.style.display = 'none';
+    // 632 DOD label next to Muhammad dot
+    if(!muhDodLbl){
+      muhDodLbl = document.createElement('div');
+      muhDodLbl.id = 'eras-muh-dod-lbl';
+      muhDodLbl.style.cssText = 'position:absolute;font-family:Cinzel,serif;font-size:11px;color:#D4AF37;letter-spacing:.08em;pointer-events:none;z-index:10';
+      if(_leftPanel) _leftPanel.appendChild(muhDodLbl);
+    }
+    muhDodLbl.textContent = '632 CE';
+    muhDodLbl.style.top = (lastY + 18) + 'px';
+    muhDodLbl.style.right = '12px';
+    muhDodLbl.style.display = '';
+  } else {
+    var _adP = PEOPLE.find(function(pp){ return pp.famous==='Adam'; });
+    var _adDob = _adP ? (_adP.dob_academic!=null ? _adP.dob_academic : (_adP.dob!=null ? _adP.dob : -4000)) : -4000;
+    var _mhP = PEOPLE.find(function(pp){ return pp.famous==='Prophet Muhammad'; });
+    var _mhDob = _mhP ? (_mhP.dob_academic!=null ? _mhP.dob_academic : (_mhP.dob!=null ? _mhP.dob : 570)) : 570;
+    if(adamDotEl){
+      adamDotEl.style.display = '';
+      adamDotEl.style.top = (yearToY(_adDob) - 6.5) + 'px';
+    }
+    if(muhDotEl){
+      muhDotEl.style.display = '';
+      muhDotEl.style.top = (yearToY(_mhDob) - 6.5) + 'px';
+    }
+    if(muhLblEl) muhLblEl.style.display = '';
+    if(muhDodLbl) muhDodLbl.style.display = 'none';
+  }
 }
 
 var _origSetView = window.setView;

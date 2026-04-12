@@ -172,13 +172,24 @@ a:hover{text-decoration:underline}
 }
 #sliderThumb:hover{transform:scale(1.25)}
 #sliderThumb.dragging{cursor:grabbing;transform:scale(1.1)}
+#sliderTrack.sl-inactive{background:rgba(160,174,192,.18)}
+#sliderTrack.sl-inactive #sliderFill{background:#4A5568}
+#sliderTrack.sl-inactive #sliderThumb{background:#6B7280;border-color:#2D3748;box-shadow:none}
 #sliderInput{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
 #yrPrecisionPill{display:inline-block;margin-left:10px;padding:2px 8px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;color:#d4af37;border:1px solid rgba(212,175,55,0.5);border-radius:10px;background:rgba(212,175,55,0.08);opacity:0;transition:opacity 150ms ease;vertical-align:middle}
 #yrPrecisionPill.show{opacity:0.9}
 #yrShiftHint{position:absolute;left:0;bottom:0;margin:0;font-size:9px;letter-spacing:0.5px;color:rgba(255,255,255,0.55);font-style:italic;white-space:nowrap;pointer-events:none}
 #yearClearBtn{
-  background:none;border:none;cursor:pointer;font-size:15px;color:var(--muted);
-  padding:2px 6px;opacity:0;pointer-events:none;transition:opacity .12s,color .12s;flex-shrink:0;
+  background:transparent;
+  border:1px solid var(--muted);
+  color:var(--muted);
+  width:22px;height:22px;
+  font-size:16px;line-height:1;
+  border-radius:3px;
+  cursor:pointer;
+  opacity:.4;pointer-events:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:opacity .15s,color .15s,border-color .15s;
 }
 #yearClearBtn.active{opacity:.7;pointer-events:all}
 #yearClearBtn:hover{opacity:1;color:var(--accent)}
