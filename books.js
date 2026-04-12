@@ -262,11 +262,17 @@ function _booksBuildCanvas(){
       if(b.url) ancBadge = '<a class="bv-read-btn" href="'+_booksEscape(b.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="border-color:#6B7280;color:#A0AEC0;background:rgba(107,114,128,.10)">READ</a>';
       var yearTxt = _booksFmtYear(b.year);
       html += '<div class="bv-row bv-row-ancient" data-id="'+_booksEscape(b.id)+'" data-name="" data-year="'+(b.year==null?'':b.year)+'" style="top:'+y+'px;height:'+_BV_ROW_H+'px;width:'+(_BV_LEFT_W-140)+'px">';
-      html += '<div class="bv-row-main"><div class="bv-row-title" style="color:#8B9AAF">'+_booksEscape(b.title)+'</div>';
+      html += '<div class="bv-row-main"><div class="bv-row-title" style="color:#8B9AAF;font-size:18px;font-weight:500">'+_booksEscape(b.title)+'</div>';
       html += '<div class="bv-row-meta" style="color:#6B7280">'+ancMeta+ancBadge+'</div>';
       html += '</div></div>';
       var ancMulti = _bYr(b)!=null&&_yrCount[_bYr(b)]>1?' year-multi':'';
-      html += '<div class="bv-year-chip'+ancMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px">'+yearTxt+'</div>';
+      html += '<div class="bv-year-chip'+ancMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px;color:#B8C2CC">'+yearTxt+'</div>';
+      var ancDesc = _booksEscape(b.note||'');
+      var ancFact = _booksEscape(b.fact||'');
+      html += '<div class="bv-row-ancient-right" style="position:absolute;top:'+y+'px;height:'+_BV_ROW_H+'px;left:'+(_BV_STEM_X+90)+'px;right:20px;display:flex;flex-direction:column;justify-content:center;pointer-events:none;z-index:5">'
+            + '<div style="color:#8B9AAF;font-size:18px;font-weight:500;line-height:1.2">'+ancDesc+'</div>'
+            + '<div style="color:#6B7280;font-size:11px;font-style:italic;line-height:1.2;margin-top:3px">'+ancFact+'</div>'
+            + '</div>';
     } else {
       // Islamic book row — original styling
       const isScripture = b.is_scripture===true;
@@ -293,6 +299,16 @@ function _booksBuildCanvas(){
   });
 
   canvas.innerHTML = html;
+
+  var ancNote = document.getElementById('bv-ancient-note');
+  if(ancNote) ancNote.remove();
+  if(_ancientOn){
+    var noteEl = document.createElement('div');
+    noteEl.id = 'bv-ancient-note';
+    noteEl.style.cssText = 'font-family:\'Cinzel\',serif;color:#8B9AAF;font-size:11px;letter-spacing:.08em;text-align:center;padding:8px 16px;font-style:normal';
+    noteEl.textContent = '100 Ancient Texts \u2014 Reference add-on only. Not necessarily part of the Monotheistic Corpus.';
+    canvas.parentNode.insertBefore(noteEl, canvas);
+  }
 
   canvas.querySelectorAll('.bv-row').forEach(row=>{
     row.addEventListener('click',function(e){

@@ -1531,7 +1531,15 @@ function jumpTo(name){
   }
   const rows=document.querySelectorAll('.tl-row');
   const target=[...rows].find(r=>parseInt(r.dataset.idx)===idx);
-  if(target)target.scrollIntoView({block:'center',behavior:'smooth'});
+  if(target){
+    var _sc=document.getElementById('rowsScroll');
+    if(_sc){
+      var _tr=target.getBoundingClientRect(),_cr=_sc.getBoundingClientRect();
+      _sc.scrollTop+=(_tr.top-_cr.top)-(_cr.height/2)+(_tr.height/2);
+    }else{
+      target.scrollIntoView({block:'center',behavior:'smooth'});
+    }
+  }
   selectRow(idx);
 }
 // Switches to Timeline, centres the century columns on the person, scrolls the row into view,
@@ -1582,7 +1590,15 @@ function focusPersonInTimeline(name){
         r.classList.remove('sel');
       }
     });
-    if(target) target.scrollIntoView({block:'center',behavior:'smooth'});
+    if(target){
+      var _sc=document.getElementById('rowsScroll');
+      if(_sc){
+        var _tr=target.getBoundingClientRect(),_cr=_sc.getBoundingClientRect();
+        _sc.scrollTop+=(_tr.top-_cr.top)-(_cr.height/2)+(_tr.height/2);
+      }else{
+        target.scrollIntoView({block:'center',behavior:'smooth'});
+      }
+    }
   }, 60);
 }
 

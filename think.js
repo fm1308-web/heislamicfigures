@@ -176,10 +176,6 @@ function _buildShell(view){
   Object.keys(ROLE_COLORS).forEach(function(role){
     h+='<span class="think-legend-item"><span class="think-legend-dot" style="background:'+ROLE_COLORS[role]+'"></span>'+role.charAt(0).toUpperCase()+role.slice(1)+'</span>';
   });
-  h+='<span class="think-legend-sep"></span>';
-  h+='<span class="think-legend-item"><span class="think-legend-dot" style="background:#111;opacity:1"></span>High</span>';
-  h+='<span class="think-legend-item"><span class="think-legend-dot" style="background:#111;opacity:0.6"></span>Medium</span>';
-  h+='<span class="think-legend-item"><span class="think-legend-dot" style="background:#111;opacity:0.3"></span>Low</span>';
   h+='</div>';
   h+='<div id="think-definition" style="display:none"></div>';
   h+='<div id="think-canvas-wrap"><div id="think-canvas"></div></div>';
