@@ -1253,7 +1253,7 @@ function renderInfo(p){
   }
 
   let booksHtml='';
-  if(p.books?.length){
+  if(p.books?.length && p.type!=='Prophet'){
     const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
     booksHtml=`<div class="i-sec"><div class="i-sl">Works &amp; Sources</div>
       <div class="i-books">${sortedBooks.map(b=>`
@@ -1265,19 +1265,17 @@ function renderInfo(p){
         </div>`).join('')}
       </div></div>`;
   }
-  {
-    const isProphet=p.type==='Prophet'||p.category==='Prophet'||p.famous==='Prophet Muhammad';
-    const refs=window._FIGURE_SOURCES?.[p.slug]?.scripture_or_refs;
-    if(isProphet&&refs?.length){
-      booksHtml+=`<div class="i-sec"><div class="i-sl">Scripture &amp; Sources</div>
-        <div class="i-books">${refs.map(ref=>`
-          <div class="i-book">
-            <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
-            <div><span>${esc(ref.title)}</span>
-            ${ref.note?`<div class="i-bnote">${esc(ref.note)}</div>`:''}</div>
-          </div>`).join('')}
-        </div></div>`;
-    }
+  // Scripture section for prophets (from figure_sources.json)
+  const _fSrc=window._FIGURE_SOURCES&&window._FIGURE_SOURCES[p.slug];
+  if(_fSrc&&_fSrc.scripture_or_refs&&_fSrc.scripture_or_refs.length){
+    booksHtml+=`<div class="i-sec"><div class="i-sl">Scripture</div>
+      <div class="i-books">${_fSrc.scripture_or_refs.map(ref=>`
+        <div class="i-book">
+          <span style="color:${col};font-size:11px;flex-shrink:0">▸</span>
+          <div><span>${esc(ref.title)}</span>
+          ${ref.revealed_to?`<div class="i-bnote">Revealed to ${esc(ref.revealed_to)}</div>`:''}</div>
+        </div>`).join('')}
+      </div></div>`;
   }
   let teachHtml='';
   if(p.famous!=='Prophet Muhammad'&&p.teachers?.length){
