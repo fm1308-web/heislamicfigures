@@ -406,6 +406,10 @@ async function boot(){
   // Place Ashra Mubashshara right after Sahaba (they are Sahaba/Caliphs)
   const sahabaIdx = types.indexOf('Sahaba');
   const insertAt = sahabaIdx >= 0 ? sahabaIdx + 1 : types.length;
+  // Inject Prophetic Lineage as the 2nd type (right after Prophet)
+  const _plIdx = types.indexOf('Prophet');
+  if(!types.includes('Prophetic Lineage')) types.splice(_plIdx >= 0 ? _plIdx + 1 : 1, 0, 'Prophetic Lineage');
+
   types.splice(insertAt, 0, 'Ashra Mubashshara');
   // Inject Mujaddid tag-based virtual type (renewers of the faith)
   if(!types.includes('Mujaddid')) types.push('Mujaddid');
@@ -699,7 +703,7 @@ function getFiltered(){
   return PEOPLE.filter(p=>{
     if(selTypes.size>0){
       const passType = selTypes.has(p.type);
-      const passChainProphet = selTypes.has('Genealogy') && PROPHET_CHAIN.has(p.famous);
+      const passChainProphet = (selTypes.has('Genealogy') || selTypes.has('Prophetic Lineage')) && PROPHET_CHAIN.has(p.famous);
       // Tag-based type filters (e.g. Ashra Mubashshara stored in p.tags)
       const passTags = (p.tags||[]).some(t=>selTypes.has(t));
       // IH sub-lane virtual type filters (e.g. "Prophets" matches type=Prophet)

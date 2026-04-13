@@ -48,7 +48,7 @@ function _getMapFiltered(){
     if(!p.lat||!p.lng) return false;
     if(selTypes.size>0){
       const passType=selTypes.has(p.type);
-      const passChain=selTypes.has('Genealogy')&&PROPHET_CHAIN.has(p.famous);
+      const passChain=(selTypes.has('Genealogy')||selTypes.has('Prophetic Lineage'))&&PROPHET_CHAIN.has(p.famous);
       const passTags=(p.tags||[]).some(t=>selTypes.has(t));
       const passIHSub=[...selTypes].some(st=>_IH_SUBLANE_REV[st]&&_IH_SUBLANE_REV[st].has(p.type));
       const passAshra=(selTypes.has('Ashra Mubashshara')||selTypes.has('Companions'))&&ASHRA_MUBASHSHARA.has(p.famous);

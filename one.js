@@ -737,6 +737,9 @@ async function _renderPerson(p,container){
   if(p.source&&/^https?:\/\//.test(p.source)){
     plH+='<a href="'+_e(p.source)+'" target="_blank" rel="noopener" class="one-ext-link">Wikipedia \u2197</a>';
   }
+  if(p.archive_org_url&&/^https?:\/\//.test(p.archive_org_url)){
+    plH+='<a href="'+_e(p.archive_org_url)+'" target="_blank" rel="noopener" class="one-ext-link">Browse on Archive.org \u2197</a>';
+  }
   plH+='<a href="https://scholar.google.com/scholar?q='+encodeURIComponent(p.famous)+'" target="_blank" rel="noopener" class="one-ext-link">\uD835\uDCAE Google Scholar</a>';
   plH+='<span class="one-ext-link" onclick="focusPersonInTimeline(\''+_safe(p.famous)+'\')">VIEW IN TIMELINE \u2192</span>';
   plH+='</div>';

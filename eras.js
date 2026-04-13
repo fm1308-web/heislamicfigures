@@ -101,6 +101,7 @@ function initEras(){
 
   _scrollEl = root.querySelector('.eras-scroll');
   _yearBadge = root.querySelector('.eras-year-badge');
+  if(_yearBadge) _yearBadge.style.display = 'none';
   _nameListEl = root.querySelector('.eras-namelist');
   _leftPanel = root.querySelector('.eras-left-panel');
   _dropdown = null; // replaced by multi-select panels
@@ -124,7 +125,15 @@ function initEras(){
   adamDot.style.top = (adamY - 6.5) + 'px';
   rightPanel.appendChild(adamDot);
   var adamLabel = document.createElement('div');
+  adamLabel.className = 'eras-perm-label eras-perm-prominent';
+  adamLabel.style.top = (adamY - 8) + 'px';
+  adamLabel.style.color = '#D4AF37';
+  adamLabel.textContent = 'Adam';
+  _leftPanel.appendChild(adamLabel);
   var adamYrLabel = document.createElement('div');
+  adamYrLabel.className = 'eras-stem-yr-label';
+  adamYrLabel.style.display = 'none';
+  _leftPanel.appendChild(adamYrLabel);
   _erasMarkers.push({year:-4000, isAdam:true, dotEl:adamDot, labelEl:adamLabel, yrLabelEl:adamYrLabel});
 
   // ── Muhammad marker ──
@@ -137,12 +146,22 @@ function initEras(){
   muhDot.style.top = (muhY - 6.5) + 'px';
   rightPanel.appendChild(muhDot);
   var muhLabel = document.createElement('div');
+  muhLabel.className = 'eras-perm-label eras-perm-prominent';
+  muhLabel.style.top = (muhY - 8) + 'px';
+  muhLabel.style.color = '#D4AF37';
+  muhLabel.textContent = 'Prophet Muhammad';
+  _leftPanel.appendChild(muhLabel);
   var muhYrLabel = document.createElement('div');
+  muhYrLabel.className = 'eras-stem-yr-label';
+  muhYrLabel.style.display = 'none';
+  _leftPanel.appendChild(muhYrLabel);
   _erasMarkers.push({year:570, isAdam:false, dotEl:muhDot, labelEl:muhLabel, yrLabelEl:muhYrLabel});
 
   // ── Era labels + boundary lines + gradient shading (RIGHT panel only) ──
-  _eraBandEls = [];
+  var _eraBandEls = [];
+  var _prophetFilterActive = (_dropdown && _dropdown.value === 'Prophet');
   ERA_BANDS.forEach(function(era){
+    if(_prophetFilterActive && era.name === 'Prophetic Era') return;  // drawn later from dot positions
     var y1 = yearToY(era.start);
     var y2 = yearToY(era.end);
 
@@ -151,6 +170,7 @@ function initEras(){
     if(era.glow){
       gDiv = document.createElement('div');
       gDiv.className = 'eras-era-glow';
+      gDiv.dataset.eraname = era.name;
       gDiv.style.top = y1 + 'px';
       gDiv.style.height = (y2 - y1) + 'px';
       gDiv.style.background = 'linear-gradient(to left, rgba(' + era.glow + ',0.10) 0%, rgba(' + era.glow + ',0.04) 50%, transparent 85%)';
@@ -211,6 +231,14 @@ function initEras(){
     leafData.push({key:tag.key, field:tag.field, color:color, people:people, count:people.length, firstDob:firstDob, lastDod:lastDod});
   });
 
+  // Clamp Prophet leaf: never extend above Adam dot or below Muhammad dot
+  leafData.forEach(function(ld){
+    if(ld.key === 'Prophet' && ld.field === 'type'){
+      ld.firstDob = _adamDob;
+      ld.lastDod  = _muhDob;
+    }
+  });
+
   // ── Populate multi-select filter panels ──
   var typeItems = [], tradItems = [];
   leafData.forEach(function(ld){
@@ -220,6 +248,13 @@ function initEras(){
   });
   typeItems.sort(function(a,b){ return a.firstDob - b.firstDob; });
   tradItems.sort(function(a,b){ return a.firstDob - b.firstDob; });
+
+  // Inject virtual "Prophetic Lineage" as 2nd type in dropdown (no SVG leaf — name list only)
+  if(typeof PROPHET_CHAIN !== 'undefined' && !typeItems.some(function(t){ return t.name === 'Prophetic Lineage'; })){
+    var _prIdx = -1;
+    for(var _ti = 0; _ti < typeItems.length; _ti++){ if(typeItems[_ti].name === 'Prophet'){ _prIdx = _ti; break; } }
+    typeItems.splice(_prIdx >= 0 ? _prIdx + 1 : 1, 0, {name: 'Prophetic Lineage', count: PROPHET_CHAIN.size, firstDob: _adamDob});
+  }
 
   var toolbar = document.getElementById('eras-toolbar');
   if(toolbar) _erasBuildToolbar(toolbar, typeItems, tradItems);
@@ -421,12 +456,20 @@ function initEras(){
     if(yr == null){
       cursorOverlay.style.display = 'none';
       sliderDot.style.display = 'none';
+      if(_yearBadge) _yearBadge.style.display = 'none';
       // Revert names to default (tag-selected or empty)
       if(!_selectedTag && _nameListEl) _nameListEl.innerHTML = '';
       _filterLeafLabels(null);
       return;
     }
     cursorOverlay.style.display = '';
+    if(_yearBadge) _yearBadge.style.display = '';
+    if(yr < 500){
+      cursorOverlay.style.display = 'none';
+      if(_yearBadge) _yearBadge.style.display = 'none';
+      sliderDot.style.display = 'none';
+      return;
+    }
     cursorLabel.textContent = yr + ' CE';
     // Position dot on stem at correct year
     var targetY = yearToY(yr);
@@ -447,6 +490,38 @@ function initEras(){
 
   // Init from current slider state
   syncErasToSlider(typeof activeYear !== 'undefined' ? activeYear : null);
+
+  // Clamp Prophet leaf so it starts at Adam dot and ends at Muhammad dot (rule: nothing above Adam or below Muhammad)
+  var _prLeaf = null;
+  for(var _k = 0; _k < _leafEls.length; _k++){
+    if(_leafEls[_k].key === 'Prophet' && _leafEls[_k].field === 'type'){ _prLeaf = _leafEls[_k]; break; }
+  }
+  if(_prLeaf && _prLeaf.path){
+    _prLeaf.firstDob = _adamDob;
+    _prLeaf.lastDod  = _muhDob;
+    var _ly1 = yearToY(_adamDob);
+    var _ly2 = yearToY(_muhDob);
+    if(_ly2 - _ly1 < 10) _ly2 = _ly1 + 10;
+    var _lmid = (_ly1 + _ly2) / 2;
+    var _stemX = 1;
+    var _cp1y = _ly1 + (_lmid - _ly1) * 0.3;
+    var _cp2y = _ly1 + (_lmid - _ly1) * 0.7;
+    var _cp3y = _lmid + (_ly2 - _lmid) * 0.3;
+    var _cp4y = _lmid + (_ly2 - _lmid) * 0.7;
+    var _d = 'M ' + _stemX + ' ' + _ly1.toFixed(1) +
+             ' C ' + (_stemX + _prLeaf.leafW * 0.1).toFixed(1) + ' ' + _cp1y.toFixed(1) +
+             ', ' + _prLeaf.peakX.toFixed(1) + ' ' + _cp2y.toFixed(1) +
+             ', ' + _prLeaf.peakX.toFixed(1) + ' ' + _lmid.toFixed(1) +
+             ' C ' + _prLeaf.peakX.toFixed(1) + ' ' + _cp3y.toFixed(1) +
+             ', ' + (_stemX + _prLeaf.leafW * 0.1).toFixed(1) + ' ' + _cp4y.toFixed(1) +
+             ', ' + _stemX + ' ' + _ly2.toFixed(1) + ' Z';
+    _prLeaf.path.setAttribute('d', _d);
+    if(_prLeaf.dot1) _prLeaf.dot1.setAttribute('cy', _ly1);
+    if(_prLeaf.dot2) _prLeaf.dot2.setAttribute('cy', _ly2);
+    _prLeaf.y1 = _ly1;
+    _prLeaf.midY = _lmid;
+    if(_prLeaf.extLabel) _prLeaf.extLabel.style.top = _lmid + 'px';
+  }
 
   console.log('[ERAS] Leaves created: ' + leafData.length);
 }
@@ -521,8 +596,9 @@ function _erasRelayout(){
     m.yrLabelEl.style.top = (y - 6) + 'px';
   });
 
-  // Reposition leaf SVG paths, dots, labels
+  // Reposition leaf SVG paths, dots, labels — skip active leaves (they're drawn with row-based geometry elsewhere)
   _leafEls.forEach(function(le){
+    if(le.group && le.group.classList.contains('eras-leaf-active')) return;
     var y1 = yearToY(le.firstDob);
     var y2 = yearToY(le.lastDod);
     if(y2 - y1 < 10) y2 = y1 + 10;
@@ -551,9 +627,19 @@ function _erasRelayout(){
 }
 
 function _erasApplyFilter(){
+  // Purge any prior leaf-diagnostic markers (DoB/DoD labels)
+  if(_leftPanel) _leftPanel.querySelectorAll('.eras-leaf-diag').forEach(function(n){ n.remove(); });
+
   var hasType = _erasSelTypes.size > 0;
   var hasTrad = _erasSelTrads.size > 0;
   var hasAny = hasType || hasTrad;
+
+  // Hide permanent gold Adam/Muhammad labels when any filter is active
+  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
+    _erasMarkers.forEach(function(m){
+      if(m && m.labelEl) m.labelEl.style.display = hasAny ? 'none' : '';
+    });
+  }
 
   _leafEls.forEach(function(le){
     var visible;
@@ -573,43 +659,16 @@ function _erasApplyFilter(){
       le.group.classList.remove('eras-leaf-active');
       le.group.classList.add('eras-leaf-faded');
       le.path.setAttribute('fill-opacity', '0');
-      le.path.setAttribute('stroke-opacity', '0.08');
+      le.path.setAttribute('stroke-opacity', '0');
       le.extLabel.style.display = 'none';
     }
   });
 
-  // Canvas compression — shrink to filtered year range
-  if(hasAny){
-    var filteredPeople = [];
-    _leafEls.forEach(function(le){
-      var vis = (le.field === 'type' && _erasSelTypes.has(le.key)) ||
-                (le.field === 'tradition' && _erasSelTrads.has(le.key));
-      if(vis) filteredPeople = filteredPeople.concat(le.people);
-    });
-    if(filteredPeople.length){
-      var minYr = Infinity, maxYr = -Infinity;
-      filteredPeople.forEach(function(p){
-        if(p.dob < minYr) minYr = p.dob;
-        var d = _erasDod(p);
-        if(d > maxYr) maxYr = d;
-      });
-      var pad = Math.max(50, (maxYr - minYr) * 0.1);
-      minYr -= pad; maxYr += pad;
-      var span = maxYr - minYr;
-      var targetH = Math.max(600, Math.min(1100, (window.innerHeight || 900) - 220));
-      var newH = targetH;
-      var usable = newH - TOP_PAD - 80;
-      yearToY = function(yr){ return TOP_PAD + ((yr - minYr) / span) * usable; };
-      yToYear = function(y){ return minYr + ((y - TOP_PAD) / usable) * span; };
-      _activeTotalH = newH;
-      _erasRelayout();
-    }
-  } else {
-    yearToY = _origYearToY;
-    yToYear = _origYToYear;
-    _activeTotalH = TOTAL_H;
-    _erasRelayout();
-  }
+  // No compression. Original yearToY always.
+  yearToY = _origYearToY;
+  yToYear = _origYToYear;
+  _activeTotalH = TOTAL_H;
+  _erasRelayout();
 
   // Build name list from all matching leaves (AFTER compression so yearToY is final)
   if(_nameListEl){
@@ -626,10 +685,92 @@ function _erasApplyFilter(){
           color = le.color;
         }
       });
+      // Virtual Prophetic Lineage: add chain members to the name list
+      if(typeof PROPHET_CHAIN !== 'undefined' && _erasSelTypes.has('Prophetic Lineage')){
+        var _plN = PEOPLE.filter(function(p){ return PROPHET_CHAIN.has(p.famous); });
+        allPeople = allPeople.concat(_plN);
+        color = '#D4AF37';
+      }
       // Deduplicate by slug
       var seen = {};
       allPeople = allPeople.filter(function(p){ if(seen[p.slug]) return false; seen[p.slug]=true; return true; });
       _buildNameList(allPeople, color);
+
+      // ── Leaf rebuild: float the leaf next to the stem ──
+      // Rule: leaf does NOT touch the stem. It sits as a floating arc aligned with the row list.
+      //   Top Y    = first row's Y
+      //   Bottom Y = last row's Y
+      //   Left edge starts ~30px to the right of the stem.
+      var _rows = _nameListEl ? _nameListEl.querySelectorAll('.eras-name-entry') : [];
+      if(_rows.length >= 2){
+        var _firstRowY = _rows[0].offsetTop + _rows[0].offsetHeight / 2;
+        var _lastRowY  = _rows[_rows.length - 1].offsetTop + _rows[_rows.length - 1].offsetHeight / 2;
+        var _hardBottom = _lastRowY + 80;
+
+        // Cap canvas to hard bottom (shrink OR grow as needed)
+        _activeTotalH = _hardBottom;
+        if(_erasSvgEl) _erasSvgEl.setAttribute('height', _activeTotalH);
+        if(_erasCanvasEl) _erasCanvasEl.style.minHeight = _activeTotalH + 'px';
+        _leafEls.forEach(function(le){
+          if(le.clipRect) le.clipRect.setAttribute('height', _activeTotalH.toString());
+        });
+
+        // Hide era bands/glows/boundaries below the hard bottom
+        var _rp0 = _erasRightPanel || (_nameListEl ? _nameListEl.closest('.eras-canvas').querySelector('.eras-right-panel') : null);
+        var _canvas0 = _nameListEl ? _nameListEl.closest('.eras-canvas') : null;
+        if(_rp0){
+          _rp0.querySelectorAll('.eras-era-glow, .eras-era-band-text, .eras-era-boundary').forEach(function(el){
+            var t = parseFloat(el.style.top);
+            if(!isNaN(t) && t > _hardBottom - 10) el.style.display = 'none';
+            else el.style.display = '';
+          });
+        }
+        // Hard bottom strip spans the whole canvas (both columns)
+        if(_canvas0){
+          var _bb = _canvas0.querySelector('.eras-hard-bottom');
+          if(!_bb){
+            _bb = document.createElement('div');
+            _bb.className = 'eras-hard-bottom';
+            _canvas0.appendChild(_bb);
+          }
+          _bb.style.cssText = 'position:absolute;left:0;right:0;top:' + _hardBottom + 'px;height:40px;background:url(assets/crowd-end.png) repeat-x center/auto 100%;opacity:0.55;z-index:5;pointer-events:none;';
+        }
+
+        var _rowByName = {};
+        for(var _r = 0; _r < _rows.length; _r++){
+          var _fn = _rows[_r].dataset.famous;
+          if(_fn) _rowByName[_fn] = _rows[_r];
+        }
+
+        var _activeLeaves = _leafEls.filter(function(le){ return le.group && le.group.classList.contains('eras-leaf-active'); });
+        _activeLeaves.forEach(function(_le){
+          if(!_le.people || _le.people.length < 1) return;
+          var _sortedP = _le.people.slice().sort(function(a,b){ return _erasDob(a) - _erasDob(b); });
+          var _firstRow = _rowByName[_sortedP[0].famous];
+          var _lastRow  = _rowByName[_sortedP[_sortedP.length - 1].famous];
+          if(!_firstRow || !_lastRow) return;
+          var _ly1 = _firstRow.offsetTop + _firstRow.offsetHeight / 2;
+          var _ly2 = _lastRow.offsetTop  + _lastRow.offsetHeight  / 2;
+          if(_ly2 - _ly1 < 10) _ly2 = _ly1 + 10;
+          var _lmid = (_ly1 + _ly2) / 2;
+          var _stemX = 30; // float 30px right of the stem — no contact
+          var _cp1y = _ly1 + (_lmid - _ly1) * 0.3;
+          var _cp2y = _ly1 + (_lmid - _ly1) * 0.7;
+          var _cp3y = _lmid + (_ly2 - _lmid) * 0.3;
+          var _cp4y = _lmid + (_ly2 - _lmid) * 0.7;
+          var _d = 'M ' + _stemX + ' ' + _ly1.toFixed(1) +
+                   ' C ' + (_stemX + _le.leafW * 0.1).toFixed(1) + ' ' + _cp1y.toFixed(1) +
+                   ', ' + _le.peakX.toFixed(1) + ' ' + _cp2y.toFixed(1) +
+                   ', ' + _le.peakX.toFixed(1) + ' ' + _lmid.toFixed(1) +
+                   ' C ' + _le.peakX.toFixed(1) + ' ' + _cp3y.toFixed(1) +
+                   ', ' + (_stemX + _le.leafW * 0.1).toFixed(1) + ' ' + _cp4y.toFixed(1) +
+                   ', ' + _stemX + ' ' + _ly2.toFixed(1);
+          _le.path.setAttribute('d', _d);
+          if(_le.dot1){ _le.dot1.setAttribute('cy', _ly1); _le.dot1.setAttribute('cx', _stemX); }
+          if(_le.dot2){ _le.dot2.setAttribute('cy', _ly2); _le.dot2.setAttribute('cx', _stemX); }
+          if(_le.extLabel) _le.extLabel.style.top = _lmid + 'px';
+        });
+      }
     }
   }
 
@@ -638,11 +779,69 @@ function _erasApplyFilter(){
 
 function _deselectAll(){
   _selectedTag = null;
+
+  // No filter active → restore the permanent gold Adam/Muhammad markers (dot + name + year)
+  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
+    _erasMarkers.forEach(function(m){
+      if(!m) return;
+      if(m.labelEl) m.labelEl.style.display = '';
+      if(m.dotEl) m.dotEl.style.display = '';
+      if(m.yrLabelEl) m.yrLabelEl.style.display = '';
+    });
+  }
+
   _erasSelTypes.clear();
   _erasSelTrads.clear();
   _erasApplyFilter();
   _erasSyncBtnLabels();
   _erasRebuildPanels();
+  if(_nameListEl) _nameListEl.innerHTML = '';
+
+  // Restore full canvas height, era bands, remove hard bottom
+  _activeTotalH = TOTAL_H;
+  if(_erasSvgEl) _erasSvgEl.setAttribute('height', _activeTotalH);
+  if(_erasCanvasEl) _erasCanvasEl.style.minHeight = _activeTotalH + 'px';
+  _leafEls.forEach(function(le){
+    if(le.clipRect) le.clipRect.setAttribute('height', _activeTotalH.toString());
+  });
+  var _rp1 = _erasRightPanel || (_nameListEl ? _nameListEl.closest('.eras-canvas').querySelector('.eras-right-panel') : null);
+  var _canvas1 = _nameListEl ? _nameListEl.closest('.eras-canvas') : null;
+  if(_rp1){
+    _rp1.querySelectorAll('.eras-era-glow, .eras-era-band-text, .eras-era-boundary').forEach(function(el){ el.style.display = ''; });
+  }
+  if(_canvas1){
+    var _bb1 = _canvas1.querySelector('.eras-hard-bottom');
+    if(_bb1) _bb1.remove();
+  }
+
+  var _canvas = _nameListEl ? _nameListEl.closest('.eras-canvas') : null;
+  if(_canvas){
+    _canvas.classList.remove('eras-prophet-mode');
+    _canvas.style.minHeight = '';
+  }
+  var _rp = _canvas ? _canvas.querySelector('.eras-right-panel') : null;
+  if(_rp) _rp.querySelectorAll('.eras-prophet-overlay').forEach(function(n){ n.remove(); });
+  if(_leftPanel) _leftPanel.querySelectorAll('.eras-prophet-overlay').forEach(function(n){ n.remove(); });
+
+  // Restore Muhammad year label text
+  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
+    _erasMarkers.forEach(function(m){
+      if(m && !m.isAdam && m.yrLabelEl) m.yrLabelEl.textContent = '570 CE';
+    });
+  }
+
+  // Restore Prophetic Era band to original year-based position
+  if(_rp && typeof _origYearToY === 'function' && typeof ERA_BANDS !== 'undefined' && ERA_BANDS.length){
+    var pe = ERA_BANDS[0];
+    var py1 = _origYearToY(pe.start);
+    var py2 = _origYearToY(pe.end);
+    var _glow = _rp.querySelector('.eras-era-glow');
+    var _bandLabel = _rp.querySelector('.eras-era-band-text');
+    var _bandLine = _rp.querySelector('.eras-era-boundary');
+    if(_glow){ _glow.style.top = py1 + 'px'; _glow.style.height = (py2 - py1) + 'px'; }
+    if(_bandLabel){ _bandLabel.style.top = (py1 + 12) + 'px'; }
+    if(_bandLine){ _bandLine.style.top = py1 + 'px'; }
+  }
 }
 
 // ── Multi-select toolbar builder ──
@@ -779,88 +978,183 @@ function _erasSyncClearBtn(){
 function _buildNameList(people, color){
   if(!_nameListEl) return;
   _nameListEl.innerHTML = '';
-  var sorted = people.slice().sort(function(a,b){
-    var da = (a.dob_academic!=null)?a.dob_academic:a.dob;
-    var db = (b.dob_academic!=null)?b.dob_academic:b.dob;
-    return da - db;
-  });
+
+  // Any filter active → hide the permanent gold Adam/Muhammad markers entirely (dot + name label + year label)
+  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
+    _erasMarkers.forEach(function(m){
+      if(!m) return;
+      if(m.labelEl) m.labelEl.style.display = 'none';
+      if(m.dotEl) m.dotEl.style.display = 'none';
+      if(m.yrLabelEl) m.yrLabelEl.style.display = 'none';
+    });
+  }
+
+  var canvasEl = _nameListEl.closest('.eras-canvas');
+  var rightPanel = canvasEl ? canvasEl.querySelector('.eras-right-panel') : null;
+
+  // Wipe any leftover prophet-mode remnants from prior sessions
+  if(canvasEl) canvasEl.classList.remove('eras-prophet-mode');
+  if(rightPanel) rightPanel.querySelectorAll('.eras-prophet-overlay').forEach(function(n){ n.remove(); });
+  if(_leftPanel) _leftPanel.querySelectorAll('.eras-prophet-overlay').forEach(function(n){ n.remove(); });
+
+  var isProphet = !!(people && people.length) && people.every(function(p){ return p.type === 'Prophet'; });
+
+  var sorted = people.slice().sort(function(a,b){ return a.dob - b.dob; });
   var ROW_H = 26;
-  var TOP_OFFSET = 18;
 
-  var allProphets = sorted.length>0 && sorted.every(function(p){ return p.type==='Prophet'; });
+  if(isProphet){
+    var TOP_OFFSET = 60;
+    var BOTTOM_PAD = 80;
+    var neededH = TOP_OFFSET + sorted.length * ROW_H + BOTTOM_PAD;
+    if(canvasEl) canvasEl.style.minHeight = neededH + 'px';
 
-  var adamDotEl = document.getElementById('eras-adam-dot');
-  var muhDotEl  = document.getElementById('eras-muh-dot');
-  var muhLblEl  = document.querySelector('.eras-perm-label.eras-perm-prominent');
+    sorted.forEach(function(p, i){
+      var y = TOP_OFFSET + i * ROW_H;
+      var el = document.createElement('div');
+      el.className = 'eras-name-entry';
+      el.style.top = y + 'px';
+      el.style.justifyContent = 'center';
+      el.style.textAlign = 'center';
+      el.dataset.famous = p.famous;
+      el.innerHTML = '<span class="eras-name-text" style="color:#FFFFFF;">' + esc(p.famous) + _erasWikiLink(p) + '</span>';
+      el.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(typeof jumpTo === 'function') jumpTo(p.famous);
+      });
+      _nameListEl.appendChild(el);
+    });
 
-  var lastBottom = -Infinity;
-  var lastY = 0;
-  sorted.forEach(function(p, i){
-    var y;
-    if(allProphets){
-      y = TOP_OFFSET + i * ROW_H;
-    } else {
-      var idealY = yearToY((p.dob_academic!=null)?p.dob_academic:p.dob);
-      y = Math.max(idealY, lastBottom + ROW_H);
-      lastBottom = y;
+    // Single render pass — align original year-based elements to row positions
+    var rows = _nameListEl.querySelectorAll('.eras-name-entry');
+    if(rows.length){
+      var firstRow = rows[0];
+      var lastRow  = rows[rows.length - 1];
+      var adamY = firstRow.offsetTop + (firstRow.offsetHeight / 2);
+      var muhY  = lastRow.offsetTop  + (lastRow.offsetHeight  / 2);
+
+      // Clamp Prophet leaf shape so nothing extends above Adam dot or below Muhammad dot
+      if(typeof _leafEls !== 'undefined' && _leafEls.length){
+        var _prLeaf = null;
+        for(var _k = 0; _k < _leafEls.length; _k++){
+          if(_leafEls[_k].key === 'Prophet' && _leafEls[_k].field === 'type'){ _prLeaf = _leafEls[_k]; break; }
+        }
+        if(_prLeaf && _prLeaf.path){
+          var _ly1 = adamY, _ly2 = muhY;
+          if(_ly2 - _ly1 < 10) _ly2 = _ly1 + 10;
+          var _lmid = (_ly1 + _ly2) / 2;
+          var _stemX = 1;
+          var _cp1y = _ly1 + (_lmid - _ly1) * 0.3;
+          var _cp2y = _ly1 + (_lmid - _ly1) * 0.7;
+          var _cp3y = _lmid + (_ly2 - _lmid) * 0.3;
+          var _cp4y = _lmid + (_ly2 - _lmid) * 0.7;
+          var _d = 'M ' + _stemX + ' ' + _ly1.toFixed(1) +
+                   ' C ' + (_stemX + _prLeaf.leafW * 0.1).toFixed(1) + ' ' + _cp1y.toFixed(1) +
+                   ', ' + _prLeaf.peakX.toFixed(1) + ' ' + _cp2y.toFixed(1) +
+                   ', ' + _prLeaf.peakX.toFixed(1) + ' ' + _lmid.toFixed(1) +
+                   ' C ' + _prLeaf.peakX.toFixed(1) + ' ' + _cp3y.toFixed(1) +
+                   ', ' + (_stemX + _prLeaf.leafW * 0.1).toFixed(1) + ' ' + _cp4y.toFixed(1) +
+                   ', ' + _stemX + ' ' + _ly2.toFixed(1) + ' Z';
+          _prLeaf.path.setAttribute('d', _d);
+          if(_prLeaf.dot1) _prLeaf.dot1.setAttribute('cy', _ly1);
+          if(_prLeaf.dot2) _prLeaf.dot2.setAttribute('cy', _ly2);
+          if(_prLeaf.extLabel) _prLeaf.extLabel.style.top = _lmid + 'px';
+        }
+      }
+
+      // Move the existing Adam / Muhammad markers to the row Y values
+      if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
+        _erasMarkers.forEach(function(m){
+          if(!m || !m.dotEl) return;
+          var y = m.isAdam ? adamY : muhY;
+          m.dotEl.style.display = '';
+          m.dotEl.style.top = (y - 6.5) + 'px';
+          if(m.labelEl){
+            m.labelEl.style.top = (m.isAdam ? y + 16 : y) + 'px';
+          }
+          if(m.yrLabelEl){
+            m.yrLabelEl.style.display = '';
+            if(m.isAdam){
+              m.yrLabelEl.style.top = (y - 6) + 'px';
+            } else {
+              // Muhammad: show "632 CE" one row below his name, in the year column
+              m.yrLabelEl.textContent = '632 CE';
+              m.yrLabelEl.style.top = (y + ROW_H - 6) + 'px';
+            }
+          }
+        });
+      }
+
+      // Reposition the Prophetic Era band (first one — glow, label, boundary line)
+      if(rightPanel){
+        var glow = rightPanel.querySelector('.eras-era-glow');
+        var bandLabel = rightPanel.querySelector('.eras-era-band-text');
+        var bandLine = rightPanel.querySelector('.eras-era-boundary');
+        if(glow){
+          glow.style.display = '';
+          glow.style.top = adamY + 'px';
+          glow.style.height = (muhY - adamY) + 'px';
+        }
+        if(bandLabel){
+          bandLabel.style.display = '';
+          bandLabel.style.top = (adamY + 12) + 'px';
+        }
+        if(bandLine){
+          bandLine.style.display = '';
+          bandLine.style.top = adamY + 'px';
+        }
+      }
     }
-    lastY = y;
-    var dobShown = (p.dob_academic!=null) ? p.dob_academic : p.dob;
+    return;
+  }
+
+  // ── Non-Prophet: restore anything Prophet mode may have mutated ──
+  if(canvasEl) canvasEl.style.minHeight = '';
+
+  // Restore Muhammad year label text
+  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
+    _erasMarkers.forEach(function(m){
+      if(m && !m.isAdam && m.yrLabelEl) m.yrLabelEl.textContent = '570 CE';
+    });
+  }
+
+  // Restore Prophetic Era band to original year-based position
+  if(rightPanel && typeof _origYearToY === 'function' && typeof ERA_BANDS !== 'undefined' && ERA_BANDS.length){
+    var pe = ERA_BANDS[0];
+    var py1 = _origYearToY(pe.start);
+    var py2 = _origYearToY(pe.end);
+    var _glow = rightPanel.querySelector('.eras-era-glow');
+    var _bandLabel = rightPanel.querySelector('.eras-era-band-text');
+    var _bandLine = rightPanel.querySelector('.eras-era-boundary');
+    if(_glow){ _glow.style.top = py1 + 'px'; _glow.style.height = (py2 - py1) + 'px'; }
+    if(_bandLabel){ _bandLabel.style.top = (py1 + 12) + 'px'; }
+    if(_bandLine){ _bandLine.style.top = py1 + 'px'; }
+  }
+
+  // Rows: year-based Y with 26px min gap (readable, no overlap).
+  var lastBottom = -Infinity;
+  sorted.forEach(function(p){
+    var idealY = yearToY(p.dob);
+    var y = Math.max(idealY, lastBottom + ROW_H);
+    lastBottom = y;
     var el = document.createElement('div');
     el.className = 'eras-name-entry';
     el.style.top = y + 'px';
+    el.style.display = 'block';
+    el.style.textAlign = 'center';
+    el.style.fontSize = '15px';
+    el.style.paddingRight = '0';
+    el.style.paddingLeft = '0';
+    el.dataset.famous = p.famous;
     el.innerHTML =
-      '<span class="eras-name-dot" style="background:' + color + '"></span>' +
-      '<span class="eras-name-text" style="color:' + (color==='#D4AF37'||color==='#b8860b'?'#D4AF37':'#FFFFFF') + '">' + esc(p.famous) + _erasWikiLink(p) + '</span>' +
-      '<span class="eras-name-yr" style="color:rgba(212,175,55,0.8)">' + fmtYr(dobShown) + '</span>';
+      '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + color + ';margin-right:10px;vertical-align:middle;"></span>' +
+      '<span class="eras-name-text" style="color:#FFFFFF;vertical-align:middle;">' + esc(p.famous) + _erasWikiLink(p) + '</span>' +
+      '<span class="eras-name-yr" style="color:rgba(255,255,255,0.6);margin-left:14px;font-size:13px;vertical-align:middle;">' + fmtYr(p.dob) + '</span>';
     el.addEventListener('click', function(e){
       e.stopPropagation();
       if(typeof jumpTo === 'function') jumpTo(p.famous);
     });
     _nameListEl.appendChild(el);
   });
-
-  // Find or create a DOD label for Muhammad (632)
-  var muhDodLbl = document.getElementById('eras-muh-dod-lbl');
-  if(allProphets){
-    // Adam dot at FIRST row
-    if(adamDotEl){
-      adamDotEl.style.display = '';
-      adamDotEl.style.top = (TOP_OFFSET - 6.5) + 'px';
-    }
-    // Muhammad dot at LAST row
-    if(muhDotEl){
-      muhDotEl.style.display = '';
-      muhDotEl.style.top = (lastY - 6.5) + 'px';
-    }
-    if(muhLblEl) muhLblEl.style.display = 'none';
-    // 632 DOD label next to Muhammad dot
-    if(!muhDodLbl){
-      muhDodLbl = document.createElement('div');
-      muhDodLbl.id = 'eras-muh-dod-lbl';
-      muhDodLbl.style.cssText = 'position:absolute;font-family:Cinzel,serif;font-size:11px;color:#D4AF37;letter-spacing:.08em;pointer-events:none;z-index:10';
-      if(_leftPanel) _leftPanel.appendChild(muhDodLbl);
-    }
-    muhDodLbl.textContent = '632 CE';
-    muhDodLbl.style.top = (lastY + 18) + 'px';
-    muhDodLbl.style.right = '12px';
-    muhDodLbl.style.display = '';
-  } else {
-    var _adP = PEOPLE.find(function(pp){ return pp.famous==='Adam'; });
-    var _adDob = _adP ? (_adP.dob_academic!=null ? _adP.dob_academic : (_adP.dob!=null ? _adP.dob : -4000)) : -4000;
-    var _mhP = PEOPLE.find(function(pp){ return pp.famous==='Prophet Muhammad'; });
-    var _mhDob = _mhP ? (_mhP.dob_academic!=null ? _mhP.dob_academic : (_mhP.dob!=null ? _mhP.dob : 570)) : 570;
-    if(adamDotEl){
-      adamDotEl.style.display = '';
-      adamDotEl.style.top = (yearToY(_adDob) - 6.5) + 'px';
-    }
-    if(muhDotEl){
-      muhDotEl.style.display = '';
-      muhDotEl.style.top = (yearToY(_mhDob) - 6.5) + 'px';
-    }
-    if(muhLblEl) muhLblEl.style.display = '';
-    if(muhDodLbl) muhDodLbl.style.display = 'none';
-  }
 }
 
 var _origSetView = window.setView;
@@ -909,7 +1203,7 @@ function _erasAnimPlay(){
 
   // Fresh start — hide everything except .eras-stem
   _erasAnimMode = 'playing';
-  _erasCurfewY = TOP_PAD;
+  _erasCurfewY = (typeof yearToY === 'function') ? yearToY(500) : TOP_PAD;
   _erasAnimSpeedMs = _erasAnimCtl ? _erasAnimCtl.getSpeedMs() : 1200;
 
   // Hide HTML elements in right panel (bands, labels, markers, leaf labels)
