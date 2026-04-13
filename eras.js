@@ -1010,9 +1010,11 @@ function _buildNameList(people, color, field){
   _nameListEl.innerHTML = '';
   var sorted = people.slice().sort(function(a,b){ return a.dob - b.dob; });
   var ROW_H = 26;
-  var START_Y = 8;
-  sorted.forEach(function(p, idx){
-    var y = START_Y + idx * ROW_H;
+  var lastBottom = -Infinity;
+  sorted.forEach(function(p){
+    var idealY = yearToY(p.dob);
+    var y = Math.max(idealY, lastBottom + ROW_H);
+    lastBottom = y;
     var perColor = color;
     if(field === 'tradition' && p.tradition && TRAD_COLORS[p.tradition]) perColor = TRAD_COLORS[p.tradition];
     else if(field === 'type' && p.type && TYPE_COLORS[p.type]) perColor = TYPE_COLORS[p.type];

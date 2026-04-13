@@ -981,7 +981,7 @@ function setView(v){
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   document.getElementById('hdrRow4').style.display=v==='timeline'?'flex':'none';
   const ip=document.getElementById('infoPanel');
-  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'){
+  if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'||v==='monastic'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';
   } else {
     ip.style.display=''; ip.style.flex=''; ip.style.minWidth='';
@@ -998,10 +998,12 @@ function setView(v){
   _fvEl.style.display=v==='follow'?'flex':'none';
   if(v==='follow') _fvEl.style.flexDirection='column';
   document.getElementById('talk-view').style.display=v==='talk'?'flex':'none';
+  var _monEl=document.getElementById('monastic-view');
+  if(_monEl) _monEl.style.display=v==='monastic'?'flex':'none';
   // Show year controls only on views that use the slider
   const yc=document.getElementById('hdrYearControls');
   if(yc) yc.style.display=(v==='timeline'||v==='silsila'||v==='map'||v==='eras')?'flex':'none';
-  if(v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'){
+  if(v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'||v==='monastic'){
     document.getElementById('leftPanel').style.display='none';
     document.getElementById('filterBar').style.display='none';
   }
@@ -1016,6 +1018,7 @@ function setView(v){
   if(v==='follow'&&typeof initFollow==='function') initFollow();
   if(v!=='follow'&&typeof _fwCleanup==='function') _fwCleanup();
   if(v==='talk'&&typeof initTalk==='function') initTalk();
+  if(v==='monastic'&&window.Monastic&&typeof window.Monastic.init==='function') window.Monastic.init();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
   // Push browser history on view change
   if(!window._popstateInProgress){
