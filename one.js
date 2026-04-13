@@ -512,6 +512,21 @@ async function _renderPerson(p,container){
   h+='</div>';
   h+='</div></div>'; // hero-text, hero
 
+  /* ── Hadith Narrations (shown only for narrators) ── */
+  if(p.hadith_narrations_count && p.hadith_narrations_count > 0){
+    var _hnCount = p.hadith_narrations_count.toLocaleString();
+    var _hnColls = p.hadith_source_collections || [];
+    var _hnJoined = '';
+    if(_hnColls.length === 1) _hnJoined = _e(_hnColls[0]);
+    else if(_hnColls.length === 2) _hnJoined = _e(_hnColls[0]) + ' and ' + _e(_hnColls[1]);
+    else if(_hnColls.length > 2) _hnJoined = _hnColls.slice(0,-1).map(_e).join(', ') + ', and ' + _e(_hnColls[_hnColls.length-1]);
+    h+='<div class="one-hadith-block" style="margin:10px 0;padding:10px 12px;background:rgba(212,175,55,0.06);border-left:2px solid rgba(212,175,55,0.4);border-radius:2px;">';
+    h+='<div style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.85);margin-bottom:4px">Hadith Narrations</div>';
+    h+='<div style="font-size:13px;color:#E5E7EB;line-height:1.4">Narrator of <strong>'+_hnCount+'</strong> hadiths across '+_hnJoined+'</div>';
+    h+='<div style="font-size:10px;color:#6B7280;margin-top:6px;font-style:italic">Source: sahih-explorer dataset (see /about for full attribution)</div>';
+    h+='</div>';
+  }
+
   /* ── SECTION 1: BIOGRAPHY ── */
   var bio=(p.famous==='Prophet Muhammad')?(p.school||'The Last Prophet'):p.school;
   if(bio){

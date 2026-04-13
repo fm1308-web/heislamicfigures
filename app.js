@@ -1595,7 +1595,7 @@ function focusPersonInTimeline(name){
   // 3. Centre the century columns on the person's birth century
   const cent=p.dob<600?6:Math.ceil(p.dob/100);
   const idx=ALL_CENTS.indexOf(cent);
-  if(idx!==-1){centIdx=Math.max(idx,1); setCW();}
+  if(idx!==-1){centIdx=Math.max(idx-2,0); setCW();}
   updateCentHeaders(); updateCentScrollbar();
 
   // 4. Re-render so the row exists in the DOM
