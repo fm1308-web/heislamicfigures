@@ -2387,3 +2387,11 @@ body.snapshot-mode *{scrollbar-width:none}
 .bv-row-flash{box-shadow:0 0 0 2px #d4af37,0 0 18px rgba(212,175,55,0.6);transition:box-shadow 200ms ease}
 .tk-book-read{display:inline-block;margin-left:8px;padding:1px 7px;font-size:9px;font-family:'Cinzel',serif;letter-spacing:0.5px;color:#4FD1C5;border:1px solid rgba(79,209,197,0.5);border-radius:8px;background:rgba(79,209,197,0.08);text-decoration:none;vertical-align:middle}
 .tk-book-read:hover{background:rgba(79,209,197,0.18)}
+
+/* ── FOCUS PULSE for Timeline row when opened from another view ── */
+@keyframes tl-focus-pulse {
+  0%   { box-shadow: inset 3px 0 0 var(--accent), 0 0 0 0 rgba(212,175,55,0.55); background: rgba(212,175,55,0.22); }
+  60%  { box-shadow: inset 3px 0 0 var(--accent), 0 0 0 8px rgba(212,175,55,0);   background: rgba(212,175,55,0.14); }
+  100% { box-shadow: inset 3px 0 0 var(--accent), 0 0 0 0 rgba(212,175,55,0);     background: rgba(212,175,55,0.09); }
+}
+.tl-row.focus-pulse { animation: tl-focus-pulse 1.5s ease-out 1; }

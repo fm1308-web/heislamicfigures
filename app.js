@@ -964,6 +964,7 @@ function _syncSliderUI(){
 }
 
 function setView(v){
+  if(typeof Monastic === 'object' && Monastic && typeof Monastic.onLeave === 'function') Monastic.onLeave();
   // Push to in-app nav history
   if(typeof window._navPush==='function') window._navPush(v);
   // Save current view's year, restore new view's year
@@ -1019,6 +1020,7 @@ function setView(v){
   if(v!=='follow'&&typeof _fwCleanup==='function') _fwCleanup();
   if(v==='talk'&&typeof initTalk==='function') initTalk();
   if(v==='monastic'&&window.Monastic&&typeof window.Monastic.init==='function') window.Monastic.init();
+  if(v === 'monastic' && typeof Monastic === 'object' && Monastic && typeof Monastic.onEnter === 'function') Monastic.onEnter();
   if(v==='studyroom'&&typeof _buildStudySidebar==='function') _buildStudySidebar();
   // Push browser history on view change
   if(!window._popstateInProgress){
@@ -1576,14 +1578,10 @@ function jumpTo(name){
 function focusPersonInTimeline(name){
   const p=PEOPLE.find(pp=>pp.famous===name); if(!p) return;
 
-  // 1. Clear any year-filter so the person is always visible
-  //    (keep activeYear so the top slider doesn't jump, but ensure person passes filter)
-  //    We do NOT clear — we just make sure the person is visible by temporarily lifting filter.
-  //    If the person wouldn't appear under the current year filter, lift the filter for this jump.
+  // Lift year filter if the person wouldn't be visible under it
   if(activeYear!==null){
     const dod=p.dod!==undefined&&p.dod!==null?p.dod:p.dob+60;
     if(p.dob>activeYear||dod<activeYear){
-      // Lift year filter so the person is visible
       activeYear=null;
       _viewYears[VIEW]=null;
       if(VIEW==='map'&&typeof _applyMapYear==='function') _applyMapYear(null);
@@ -1592,42 +1590,41 @@ function focusPersonInTimeline(name){
     }
   }
 
-  // 2. Switch to timeline view
   setView('timeline');
 
-  // 3. Centre the century columns on the person's birth century
-  const cent=p.dob<600?6:Math.ceil(p.dob/100);
-  const idx=ALL_CENTS.indexOf(cent);
-  if(idx!==-1){centIdx=Math.max(idx-2,0); setCW();}
-  updateCentHeaders(); updateCentScrollbar();
+  // Horizontal: centre on midpoint of lifespan, not just birth century
+  const deathYr = (p.dod!=null) ? p.dod : (p.dob!=null ? p.dob+60 : null);
+  if(p.dob!=null){
+    const mid = (deathYr!=null) ? Math.floor((p.dob+deathYr)/2) : p.dob;
+    const cent = mid<600 ? 6 : Math.ceil(mid/100);
+    const idx = ALL_CENTS.indexOf(cent);
+    if(idx!==-1){ centIdx = Math.max(idx,1); setCW(); }
+    updateCentHeaders(); updateCentScrollbar();
+  }
 
-  // 4. Re-render so the row exists in the DOM
   renderAll();
 
-  // 5. Select and scroll to the row
-  setTimeout(()=>{
+  // Wait for layout, then select + centre + pulse
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{
     activePerson=p;
     renderInfoWithDetails(p);
-    // Find row by name (more reliable than index after filter/sort changes)
     const rows=document.querySelectorAll('.tl-row');
     let target=null;
     rows.forEach(r=>{
       const nm=r.querySelector('.tc-famous');
-      if(nm&&nm.textContent.trim()===name){
+      if(nm && nm.textContent.trim().indexOf(name)===0){
         r.classList.add('sel'); target=r;
       } else {
         r.classList.remove('sel');
       }
     });
     if(target){
-      var _sc=document.getElementById('rowsScroll');
-      if(_sc){
-        var _tr=target.getBoundingClientRect(),_cr=_sc.getBoundingClientRect();
-        _sc.scrollTop+=(_tr.top-_cr.top)-(_cr.height/2)+(_tr.height/2);
-      }else{
-        target.scrollIntoView({block:'center',behavior:'smooth'});
-      }
+      target.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+      target.classList.remove('focus-pulse');
+      void target.offsetWidth;            // force reflow so animation restarts
+      target.classList.add('focus-pulse');
+      setTimeout(()=>{ target.classList.remove('focus-pulse'); }, 1600);
     }
-  }, 60);
+  });});
 }
 
