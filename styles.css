@@ -2395,3 +2395,57 @@ body.snapshot-mode *{scrollbar-width:none}
   100% { box-shadow: inset 3px 0 0 var(--accent), 0 0 0 0 rgba(212,175,55,0);     background: rgba(212,175,55,0.09); }
 }
 .tl-row.focus-pulse { animation: tl-focus-pulse 1.5s ease-out 1; }
+
+/* Monastic glossary tooltips */
+.mon-gloss {
+  position: relative;
+  border-bottom: 1px dotted rgba(212,175,55,0.5);
+  cursor: help;
+  outline: none;
+}
+.mon-gloss-pop {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  z-index: 9999;
+  width: 240px;
+  padding: 8px 10px;
+  background: #0E1621;
+  border: 1px solid rgba(212,175,55,0.5);
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  font-size: 11px;
+  line-height: 1.45;
+  color: #E5E7EB;
+  font-weight: normal;
+  white-space: normal;
+  pointer-events: none;
+}
+.mon-gloss:hover .mon-gloss-pop,
+.mon-gloss:focus .mon-gloss-pop { display: block; }
+.mon-gloss-def { display: block; color: #E5E7EB; }
+.mon-gloss-src {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.75);
+  font-family: 'Cinzel', serif;
+}
+
+/* Monastic view — locked full width, never collapses */
+#monastic-view {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+#monastic-view > *,
+#mon-filters,
+#mon-timeline-band,
+#mon-results {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}

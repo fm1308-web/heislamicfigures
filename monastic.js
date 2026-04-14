@@ -11,10 +11,10 @@ var COLLECTIONS = [
 ];
 
 var MON_PERIODS = [
-  {id:'early_makkan', label:'Early Makkan',  years:'610\u2013622 CE', span:12, color:'#8B6F47'},
-  {id:'madinan',      label:'Madinan',       years:'622\u2013632 CE', span:10, color:'#D4AF37'},
-  {id:'post_prophet', label:'Post-Prophet',  years:'632\u2013661 CE', span:29, color:'#6B8E6B'},
-  {id:'successor',    label:'Successor Era', years:'661\u2013700 CE', span:39, color:'#5C7A8C'}
+  {id:'early_makkan', label:'Early Makkan',  years:'610\u2013622 CE', span:12, color:'#8B6F47', rgb:'139,111,71'},
+  {id:'madinan',      label:'Madinan',       years:'622\u2013632 CE', span:10, color:'#D4AF37', rgb:'212,175,55'},
+  {id:'post_prophet', label:'Post-Prophet',  years:'632\u2013661 CE', span:29, color:'#6B8E6B', rgb:'107,142,107'},
+  {id:'successor',    label:'Successor Era', years:'661\u2013700 CE', span:39, color:'#5C7A8C', rgb:'92,122,140'}
 ];
 
 var CONF_STYLES = {
@@ -29,6 +29,7 @@ var _cache = {};
 var MAX_ROWS = 500;
 
 var _resultsEl, _loadingEl, _countEl, _bandEl;
+var _periodTotals = null;
 var _narratorIndex = [];
 var _topicList = null;
 var _clickBound = false;
@@ -42,6 +43,42 @@ var _monSel = {
 };
 var _monDDBound = false;
 var _monSearchBoxPrev = null;
+var MON_GLOSSARY = {
+  'thiqah':           {def:'Trustworthy. Highest reliability rating for a narrator.', src:'Classical rijal'},
+  'thiqah thiqah':    {def:'Doubly trustworthy. Emphatic reliability; used for the most reliable narrators.', src:'Classical rijal'},
+  'sadooq':           {def:'Truthful. Reliable but a step below thiqah; may make minor errors.', src:'Classical rijal'},
+  'hasan al-hadith':  {def:'Good in hadith. Narrations are acceptable but not top-tier.', src:'Classical rijal'},
+  'saduq hasan':      {def:'Truthful and good. Acceptable reliability.', src:'Classical rijal'},
+  'maqbul':           {def:'Acceptable. Reliable when corroborated by others.', src:'Classical rijal'},
+  'layyin':           {def:'Soft. Mild weakness in memory or precision.', src:'Classical rijal'},
+  'daif':             {def:'Weak. Narration falls below the threshold of acceptance.', src:'Classical rijal'},
+  "da'if":            {def:'Weak. Narration falls below the threshold of acceptance.', src:'Classical rijal'},
+  'matruk':           {def:'Abandoned. Narrator discarded due to serious defects.', src:'Classical rijal'},
+  'kadhdhab':         {def:'Liar. Accused of fabricating hadith.', src:'Classical rijal'},
+  'majhool':          {def:'Unknown. Identity or reliability not established.', src:'Classical rijal'},
+  'unknown-majhool':  {def:'Unknown. Narrator whose identity or character is unclear.', src:'Classical rijal'},
+  'companion':        {def:'Sahabi. Met the Prophet as a Muslim and died believing.', src:'Hadith sciences'},
+  "tabi'i":           {def:'Follower. Met a Companion; second generation.', src:'Hadith sciences'},
+  "taba' tabi'i":     {def:'Successor of the Follower. Third generation.', src:'Hadith sciences'}
+};
+
+function _glossKey(s){
+  if(!s) return null;
+  var k = String(s).toLowerCase().replace(/\s*\(\d+(st|nd|rd|th)\s*gen\)\s*$/, '').trim();
+  return MON_GLOSSARY[k] ? k : null;
+}
+
+function _glossWrap(label){
+  var k = _glossKey(label);
+  if(!k) return esc(label);
+  var g = MON_GLOSSARY[k];
+  return '<span class="mon-gloss" tabindex="0">' + esc(label) +
+         '<span class="mon-gloss-pop"><span class="mon-gloss-def">' + esc(g.def) + '</span>' +
+         '<span class="mon-gloss-src">' + esc(g.src) + '</span></span></span>';
+}
+
+var _wizardState = null;
+var _wizardAllHadith = null;
 
 function esc(s){
   var d = document.createElement('div');
@@ -210,7 +247,8 @@ function _narratorBlock(h){
     var isComp = (i === 0);
     var grade = isTerm ? 'Companion' : _gradeShort(nr.grade);
     var dy = (nr.death_year != null && nr.death_year !== '') ? ' \u00B7 d. ' + String(nr.death_year) : '';
-    var relHtml = nr.reliability_grade ? ' <span style="color:rgba(212,175,55,0.8)">\u00B7 ' + esc(String(nr.reliability_grade)) + '</span>' : '';
+    var gradeHtml = _glossWrap(grade) + esc(dy);
+    var relHtml = nr.reliability_grade ? ' <span style="color:rgba(212,175,55,0.8)">\u00B7 ' + _glossWrap(String(nr.reliability_grade)) + '</span>' : '';
     var tail = isTerm
       ? '<div style="color:rgba(212,175,55,0.65);font-size:10px;font-style:italic;margin-top:2px">\u2191 heard from the Prophet</div>'
       : (isComp ? '<div style="color:rgba(160,174,192,0.6);font-size:10px;font-style:italic;margin-top:2px">(compiler\'s direct source)</div>' : '');
@@ -218,7 +256,7 @@ function _narratorBlock(h){
               '<span style="color:rgba(212,175,55,0.7);font-size:11px;min-width:18px">' + pos + '.</span>' +
               '<div style="flex:1">' +
                 '<div style="color:#E5E7EB;font-size:12px">' + esc(nm) + '</div>' +
-                '<div style="color:rgba(160,174,192,0.7);font-size:10px;margin-top:2px">' + esc(grade + dy) + relHtml + '</div>' +
+                '<div style="color:rgba(160,174,192,0.7);font-size:10px;margin-top:2px">' + gradeHtml + relHtml + '</div>' +
                 tail +
               '</div>' +
             '</div>';
@@ -264,23 +302,57 @@ function _buildBand(){
   if(!_bandEl) return;
   var html = '';
   MON_PERIODS.forEach(function(p, i){
-    var br = (i < MON_PERIODS.length - 1) ? 'border-right:1px solid rgba(0,0,0,0.25);' : '';
-    html += '<div class="mon-period-seg" data-period="' + p.id + '" style="' +
-      'flex:' + p.span + ';background:' + p.color + ';opacity:0.3;' +
+    var br = (i < MON_PERIODS.length - 1) ? 'border-right:1px solid rgba(0,0,0,0.35);' : '';
+    html += '<div class="mon-period-seg" data-period="' + p.id + '" data-rgb="' + p.rgb + '" style="' +
+      'position:relative;flex:' + p.span + ';background:rgba(' + p.rgb + ',0.55);' +
       'display:flex;align-items:center;justify-content:center;' +
-      'font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;' +
-      'color:#D4AF37;transition:opacity .2s;' + br + '">' + esc(p.label) + '</div>';
+      'font-family:\'Cinzel\',serif;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;' +
+      'color:#FFFFFF;text-shadow:0 1px 2px rgba(0,0,0,0.85),0 0 3px rgba(0,0,0,0.6);' +
+      'transition:background .2s;' + br + '">' +
+      '<span>' + esc(p.label) + '</span>' +
+      '<span class="mon-period-count" data-period="' + p.id + '" style="' +
+        'position:absolute;right:6px;bottom:2px;' +
+        'font-family:\'Lato\',sans-serif;font-size:9px;font-weight:400;letter-spacing:.04em;text-transform:none;' +
+        'color:rgba(255,255,255,0.55);text-shadow:0 1px 2px rgba(0,0,0,0.7);' +
+        '"></span>' +
+      '</div>';
   });
-  _bandEl.style.cssText = 'display:flex;width:100%;height:28px;margin:12px 0 8px;border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)';
+  _bandEl.style.cssText = 'display:flex;width:100%;height:34px;margin:12px 0 8px;border-radius:3px;overflow:hidden;border:1px solid rgba(255,255,255,0.12)';
   _bandEl.innerHTML = html;
+  _paintBandCounts();
+}
+
+function _paintBandCounts(){
+  if(!_bandEl || !_periodTotals) return;
+  _bandEl.querySelectorAll('.mon-period-count').forEach(function(el){
+    var n = _periodTotals[el.dataset.period] || 0;
+    el.textContent = n ? n.toLocaleString() : '';
+  });
+}
+
+function _computePeriodTotals(){
+  if(_periodTotals) { _paintBandCounts(); return; }
+  fetchAll().then(function(all){
+    var out = {};
+    MON_PERIODS.forEach(function(p){ out[p.id] = 0; });
+    all.forEach(function(h){ if(out[h.period] != null) out[h.period]++; });
+    _periodTotals = out;
+    _paintBandCounts();
+  });
 }
 
 function _syncBand(){
   if(!_bandEl) return;
   var sel = _monSel.period;
   _bandEl.querySelectorAll('.mon-period-seg').forEach(function(seg){
-    if(!sel || sel.size === 0) seg.style.opacity = '0.3';
-    else seg.style.opacity = sel.has(seg.dataset.period) ? '1' : '0.1';
+    var rgb = seg.dataset.rgb;
+    if(!sel || sel.size === 0){
+      seg.style.background = 'rgba(' + rgb + ',0.55)';
+    } else if(sel.has(seg.dataset.period)){
+      seg.style.background = 'rgba(' + rgb + ',0.95)';
+    } else {
+      seg.style.background = 'rgba(' + rgb + ',0.18)';
+    }
   });
 }
 
@@ -426,7 +498,7 @@ function _renderRows(filtered, colKey){
       '<div style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
       topicHtml + periodHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
-      '<div style="font-size:13px;color:#E5E7EB;line-height:1.5">' + esc(truncate(text, 400)) + _datingLine(h) + '</div>';
+      '<div style="font-size:13px;color:#E5E7EB;line-height:1.5">' + esc(text) + _datingLine(h) + '</div>';
     frag.appendChild(row);
   }
 
@@ -593,6 +665,7 @@ function init(){
 
   _buildBand();
   _syncBand();
+  _computePeriodTotals();
 
   var methBtn = document.getElementById('mon-methodology-btn');
   if(methBtn) methBtn.addEventListener('click', _openMethodology);
@@ -645,13 +718,368 @@ function init(){
     _monSearchBoxPrev = _monSearchBox.style.display || '';
   }
 
-  _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:13px">Select a filter to browse hadiths.</div>';
+  _resultsEl.innerHTML = '';
+}
+
+var _WIZARD_STEPS_ALL = [
+  { key:'topic',      label:'Topic',    prompt:'Which topic interests you?' },
+  { key:'period',     label:'Period',   prompt:'From which period?' },
+  { key:'narrator',   label:'Narrator', prompt:'Narrated by whom?' },
+  { key:'collection', label:'Book',     prompt:'From which collection?' }
+];
+
+function _wizardStepsFrom(startKey){
+  var keys = ['topic','period','narrator','collection'];
+  var i = keys.indexOf(startKey);
+  if(i < 0) i = 0;
+  var order = keys.slice(i).concat(keys.slice(0, i));
+  return order.map(function(k){
+    for(var j = 0; j < _WIZARD_STEPS_ALL.length; j++){
+      if(_WIZARD_STEPS_ALL[j].key === k) return _WIZARD_STEPS_ALL[j];
+    }
+  });
+}
+
+function _wizardOptionsFor(stepKey){
+  if(stepKey === 'topic'){
+    return (_topicList || []).map(function(t){ return { value: t, label: t }; });
+  }
+  if(stepKey === 'period'){
+    return MON_PERIODS.map(function(p){ return { value: p.id, label: p.label + ' (' + p.years + ')' }; });
+  }
+  if(stepKey === 'narrator'){
+    return (_narratorIndex || []).slice(0, 150).map(function(n){
+      return { value: n.name, label: n.name };
+    });
+  }
+  if(stepKey === 'collection'){
+    return COLLECTIONS.map(function(c){ return { value: c.key, label: c.label }; });
+  }
+  return [];
+}
+
+function _wizardApplyPicksExcept(excludeKey){
+  if(!_wizardAllHadith) return null;
+  var picks = _wizardState.picks;
+  var list = _wizardAllHadith;
+  if(excludeKey !== 'collection' && picks.collection.length){
+    list = list.filter(function(h){ return picks.collection.indexOf(h._colKey) !== -1; });
+  }
+  if(excludeKey !== 'period' && picks.period.length){
+    list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; });
+  }
+  if(excludeKey !== 'topic' && picks.topic.length){
+    list = list.filter(function(h){ return picks.topic.indexOf(h.topic) !== -1; });
+  }
+  if(excludeKey !== 'narrator' && picks.narrator.length){
+    var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
+    list = list.filter(function(h){
+      var n = (getNarrator(h) || '').toLowerCase();
+      for(var i=0;i<qs.length;i++){ if(n.indexOf(qs[i]) !== -1) return true; }
+      return false;
+    });
+  }
+  return list;
+}
+
+function _wizardCountForValue(stepKey, value){
+  var base = _wizardApplyPicksExcept(stepKey);
+  if(!base) return 0;
+  if(stepKey === 'collection') return base.filter(function(h){ return h._colKey === value; }).length;
+  if(stepKey === 'period')     return base.filter(function(h){ return h.period === value; }).length;
+  if(stepKey === 'topic')      return base.filter(function(h){ return h.topic === value; }).length;
+  if(stepKey === 'narrator'){
+    var q = String(value).toLowerCase();
+    return base.filter(function(h){
+      var n = (getNarrator(h) || '').toLowerCase();
+      return n.indexOf(q) !== -1;
+    }).length;
+  }
+  return 0;
+}
+
+function _wizardCount(){
+  if(!_wizardAllHadith) return null;
+  var picks = _wizardState.picks;
+  var list = _wizardAllHadith;
+  if(picks.collection.length){ list = list.filter(function(h){ return picks.collection.indexOf(h._colKey) !== -1; }); }
+  if(picks.period.length){     list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; }); }
+  if(picks.topic.length){      list = list.filter(function(h){ return picks.topic.indexOf(h.topic) !== -1; }); }
+  if(picks.narrator.length){
+    var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
+    list = list.filter(function(h){
+      var n = (getNarrator(h) || '').toLowerCase();
+      for(var i=0;i<qs.length;i++){ if(n.indexOf(qs[i]) !== -1) return true; }
+      return false;
+    });
+  }
+  return list.length;
+}
+
+function _wizardOpen(){
+  var prior = document.getElementById('mon-wizard'); if(prior) prior.remove();
+
+  _wizardState = {
+    step: -1,
+    picks: { topic:[], period:[], narrator:[], collection:[] },
+    steps: _wizardStepsFrom('topic')
+  };
+
+  var overlay = document.createElement('div');
+  overlay.id = 'mon-wizard';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;font-family:\'Lato\',sans-serif';
+  overlay.innerHTML =
+    '<div id="mon-wizard-card" style="background:#1A2332;border:1px solid rgba(212,175,55,0.4);border-radius:6px;width:520px;max-width:92vw;max-height:86vh;display:flex;flex-direction:column;color:#E5E7EB;box-shadow:0 12px 40px rgba(0,0,0,0.6)">' +
+      '<div style="padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between">' +
+        '<div style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.12em;color:#D4AF37;text-transform:uppercase">Guided Search</div>' +
+        '<div id="mon-wizard-close" style="cursor:pointer;color:#9CA3AF;font-size:20px;line-height:1;padding:0 6px">\u00D7</div>' +
+      '</div>' +
+      '<div id="mon-wizard-body" style="padding:18px;overflow-y:auto;flex:1"></div>' +
+      '<div style="padding:12px 18px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">' +
+        '<div id="mon-wizard-count" style="flex:1;min-width:0"></div>' +
+        '<div style="display:flex;gap:8px">' +
+          '<button id="mon-wizard-back" style="padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-size:12px;cursor:pointer">Back</button>' +
+          '<button id="mon-wizard-next" style="padding:6px 14px;background:rgba(212,175,55,0.18);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#D4AF37;font-size:12px;cursor:pointer;font-weight:600">Next \u25B8</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  document.getElementById('mon-wizard-close').onclick = _wizardClose;
+  overlay.addEventListener('click', function(ev){ if(ev.target === overlay) _wizardClose(); });
+  document.getElementById('mon-wizard-back').onclick = function(){
+    if(_wizardState.step > 0){ _wizardState.step--; _wizardRender(); }
+    else if(_wizardState.step === 0){ _wizardState.step = -1; _wizardRender(); }
+  };
+  document.getElementById('mon-wizard-next').onclick = function(){
+    if(_wizardState.step < _wizardState.steps.length - 1){ _wizardState.step++; _wizardRender(); }
+    else { _wizardApply(); }
+  };
+  document.addEventListener('keydown', _wizardKey);
+
+  var prep = Promise.resolve();
+  if(!_topicList){
+    prep = prep.then(function(){ return fetchCollection('bukhari').then(function(data){
+      var set = {}; data.forEach(function(h){ if(h.topic) set[h.topic] = true; });
+      _topicList = Object.keys(set).sort();
+    }); });
+  }
+  prep.then(function(){
+    if(!_wizardAllHadith){
+      return fetchAll().then(function(all){ _wizardAllHadith = all; });
+    }
+  }).then(function(){
+    _wizardRender();
+  });
+
+  document.getElementById('mon-wizard-body').innerHTML = '<div style="text-align:center;padding:40px;color:rgba(160,174,192,0.7);font-size:13px">Loading\u2026</div>';
+  document.getElementById('mon-wizard-count').textContent = '';
+}
+
+function _wizardKey(ev){ if(ev.key === 'Escape') _wizardClose(); }
+
+function _wizardClose(){
+  var el = document.getElementById('mon-wizard'); if(el) el.remove();
+  document.removeEventListener('keydown', _wizardKey);
+  _wizardState = null;
+}
+
+function _wizardCollectionLabel(key){
+  for(var i = 0; i < COLLECTIONS.length; i++){
+    if(COLLECTIONS[i].key === key) return COLLECTIONS[i].label;
+  }
+  return key;
+}
+
+function _wizardPeriodLabel(id){
+  var pi = _monPeriodInfo(id);
+  return pi ? pi.label : id;
+}
+
+function _wizardBreadcrumb(){
+  if(!_wizardState) return '';
+  var p = _wizardState.picks;
+  var parts = [];
+
+  if(p.narrator.length) parts.push('<span style="color:rgba(160,174,192,0.7)">Narrated by</span> <span style="color:#D4AF37">' + p.narrator.map(esc).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                  parts.push('<span style="color:rgba(160,174,192,0.5)">Any narrator</span>');
+
+  if(p.topic.length)    parts.push('<span style="color:rgba(160,174,192,0.7)">on</span> <span style="color:#D4AF37">' + p.topic.map(esc).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                  parts.push('<span style="color:rgba(160,174,192,0.5)">any topic</span>');
+
+  if(p.period.length)   parts.push('<span style="color:rgba(160,174,192,0.7)">from</span> <span style="color:#D4AF37">' + p.period.map(function(x){ return esc(_wizardPeriodLabel(x)); }).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                  parts.push('<span style="color:rgba(160,174,192,0.5)">any period</span>');
+
+  if(p.collection.length) parts.push('<span style="color:rgba(160,174,192,0.7)">in</span> <span style="color:#D4AF37">' + p.collection.map(function(x){ return esc(_wizardCollectionLabel(x)); }).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                    parts.push('<span style="color:rgba(160,174,192,0.5)">any book</span>');
+
+  return parts.join(' <span style="color:rgba(255,255,255,0.2)">\u00B7</span> ');
+}
+
+function _wizardPeriodBreakdown(){
+  var base = _wizardApplyPicksExcept('period');
+  if(!base) return null;
+  var out = {};
+  MON_PERIODS.forEach(function(p){ out[p.id] = 0; });
+  base.forEach(function(h){ if(out[h.period] != null) out[h.period]++; });
+  return out;
+}
+
+function _wizardRender(){
+  if(!_wizardState) return;
+  var body = document.getElementById('mon-wizard-body');
+  var backBtn = document.getElementById('mon-wizard-back');
+  var nextBtn = document.getElementById('mon-wizard-next');
+  var countEl = document.getElementById('mon-wizard-count');
+
+  if(_wizardState.step === -1){
+    var startOpts = [
+      { key:'topic',      label:'Topic',    desc:'Start by subject matter (e.g. Marriage, Hajj, Jihad)' },
+      { key:'period',     label:'Period',   desc:'Start by era (e.g. Madinan, Post-Prophet)' },
+      { key:'narrator',   label:'Narrator', desc:'Start by companion (e.g. Abu Hurairah, \'Aisha)' },
+      { key:'collection', label:'Book',     desc:'Start by collection (e.g. Bukhari, Muslim)' }
+    ];
+
+    var html = '';
+    html += '<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Begin</div>';
+    html += '<div style="font-size:15px;color:#E5E7EB;margin-bottom:14px">Where do you want to begin?</div>';
+    html += '<div style="display:flex;flex-direction:column;gap:8px">';
+    startOpts.forEach(function(o){
+      html += '<div class="mon-wiz-start" data-key="' + o.key + '" style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:3px;cursor:pointer;background:transparent;transition:background .15s,border-color .15s">' +
+        '<div style="font-size:14px;color:#E5E7EB;font-weight:600;margin-bottom:3px">' + esc(o.label) + '</div>' +
+        '<div style="font-size:11px;color:rgba(160,174,192,0.8)">' + esc(o.desc) + '</div>' +
+        '</div>';
+    });
+    html += '</div>';
+    body.innerHTML = html;
+
+    body.querySelectorAll('.mon-wiz-start').forEach(function(el){
+      el.onmouseenter = function(){ el.style.background='rgba(212,175,55,0.08)'; el.style.borderColor='rgba(212,175,55,0.4)'; };
+      el.onmouseleave = function(){ el.style.background='transparent'; el.style.borderColor='rgba(255,255,255,0.12)'; };
+      el.onclick = function(){
+        var k = el.getAttribute('data-key');
+        _wizardState.steps = _wizardStepsFrom(k);
+        _wizardState.step = 0;
+        _wizardRender();
+      };
+    });
+
+    backBtn.disabled = true;
+    backBtn.style.opacity = '0.3';
+    backBtn.style.cursor = 'not-allowed';
+    nextBtn.style.display = 'none';
+    countEl.innerHTML = _wizardAllHadith
+      ? '<div style="font-family:\'Cinzel\',serif;font-size:16px;color:#D4AF37;letter-spacing:.08em">TOTAL ' + _wizardAllHadith.length.toLocaleString() + '</div>'
+      : 'Loading\u2026';
+    return;
+  }
+
+  nextBtn.style.display = '';
+  var stepDef = _wizardState.steps[_wizardState.step];
+  var opts = _wizardOptionsFor(stepDef.key);
+  var currentArr = _wizardState.picks[stepDef.key];
+
+  var baseList = _wizardApplyPicksExcept(stepDef.key);
+  var anyTotal = baseList ? baseList.length : null;
+
+  var optsWithCounts = opts.map(function(o){
+    return { value: o.value, label: o.label, n: _wizardCountForValue(stepDef.key, o.value) };
+  });
+  optsWithCounts = optsWithCounts.filter(function(o){ return o.n > 0; });
+  optsWithCounts.sort(function(a,b){ return b.n - a.n; });
+
+  var html = '';
+  html += '<div style="font-size:12px;line-height:1.55;margin-bottom:14px;padding:10px 12px;background:rgba(212,175,55,0.04);border-left:2px solid rgba(212,175,55,0.4);border-radius:2px">' + _wizardBreadcrumb() + '</div>';
+  html += '<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Step ' + (_wizardState.step + 1) + ' of ' + _wizardState.steps.length + ' \u00B7 ' + stepDef.label + '</div>';
+  html += '<div style="font-size:15px;color:#E5E7EB;margin-bottom:14px">' + esc(stepDef.prompt) + '</div>';
+  html += '<div style="display:flex;flex-direction:column;gap:6px">';
+
+  var anySelected = (currentArr.length === 0);
+  var anyCountStr = (anyTotal === null) ? '\u2026' : anyTotal.toLocaleString();
+  html += '<div class="mon-wiz-opt" data-val="__any__" style="padding:8px 12px;border:1px solid ' + (anySelected ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)') + ';border-radius:3px;cursor:pointer;background:' + (anySelected ? 'rgba(212,175,55,0.10)' : 'transparent') + ';font-size:13px;color:' + (anySelected ? '#D4AF37' : '#E5E7EB') + ';font-style:italic;display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+    '<span>Any (skip this filter)</span>' +
+    '<span style="font-style:normal;font-size:11px;color:rgba(160,174,192,0.85);white-space:nowrap">' + anyCountStr + '</span>' +
+    '</div>';
+
+  optsWithCounts.forEach(function(o){
+    var on = (currentArr.indexOf(o.value) !== -1);
+    var borderCol = on ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)';
+    var bg        = on ? 'rgba(212,175,55,0.10)' : 'transparent';
+    var textCol   = on ? '#D4AF37' : '#E5E7EB';
+    html += '<div class="mon-wiz-opt" data-val="' + esc(o.value) + '" style="padding:8px 12px;border:1px solid ' + borderCol + ';border-radius:3px;cursor:pointer;background:' + bg + ';font-size:13px;color:' + textCol + ';display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+      '<span>' + esc(o.label) + '</span>' +
+      '<span style="font-size:12px;font-weight:600;color:' + (on ? '#D4AF37' : '#E5E7EB') + ';white-space:nowrap">' + o.n.toLocaleString() + '</span>' +
+      '</div>';
+  });
+  if(optsWithCounts.length === 0){
+    html += '<div style="padding:16px;text-align:center;color:rgba(160,174,192,0.7);font-size:12px;font-style:italic">No ' + esc(stepDef.label.toLowerCase()) + ' has any match. Use "Any" to skip, or Back to change a prior pick.</div>';
+  }
+  html += '</div>';
+
+  body.innerHTML = html;
+
+  body.querySelectorAll('.mon-wiz-opt').forEach(function(el){
+    el.onclick = function(){
+      var v = el.getAttribute('data-val');
+      var arr = _wizardState.picks[stepDef.key];
+      if(v === '__any__'){
+        _wizardState.picks[stepDef.key] = [];
+      } else {
+        var idx = arr.indexOf(v);
+        if(idx === -1) arr.push(v); else arr.splice(idx, 1);
+      }
+      _wizardRender();
+    };
+  });
+
+  backBtn.disabled = false;
+  backBtn.style.opacity = '1';
+  backBtn.style.cursor = 'pointer';
+  var isLast = _wizardState.step === _wizardState.steps.length - 1;
+  nextBtn.textContent = isLast ? 'Show me \u25B8' : 'Next \u25B8';
+
+  var n = _wizardCount();
+  var totalStr = (n === null) ? '\u2026' : n.toLocaleString();
+  var breakdown = _wizardPeriodBreakdown();
+  var breakdownHtml = '';
+  if(breakdown){
+    var parts = MON_PERIODS.map(function(p){
+      return '<span style="color:' + p.color + '">' + p.label.toUpperCase() + '</span> <span style="color:#E5E7EB;font-weight:600">' + (breakdown[p.id] || 0).toLocaleString() + '</span>';
+    });
+    breakdownHtml = '<div style="font-size:10px;letter-spacing:.05em;color:rgba(160,174,192,0.85);margin-top:4px;display:flex;flex-wrap:wrap;gap:10px">' + parts.join('<span style="color:rgba(255,255,255,0.25)">\u00B7</span>') + '</div>';
+  }
+  countEl.innerHTML =
+    '<div style="font-family:\'Cinzel\',serif;font-size:18px;color:#D4AF37;letter-spacing:.1em;font-weight:600">TOTAL ' + totalStr + '</div>' +
+    breakdownHtml;
+}
+
+function _wizardApply(){
+  if(!_wizardState) return;
+  var picks = _wizardState.picks;
+
+  _monSel.topic.clear();
+  _monSel.period.clear();
+  _monSel.narrator.clear();
+  _monSel.collection.clear();
+  picks.topic.forEach(function(v){ _monSel.topic.add(v); });
+  picks.period.forEach(function(v){ _monSel.period.add(v); });
+  picks.narrator.forEach(function(v){ _monSel.narrator.add(v); });
+  picks.collection.forEach(function(v){ _monSel.collection.add(v); });
+
+  _monSyncDD('topic');
+  _monSyncDD('period');
+  _monSyncDD('narrator');
+  _monSyncDD('collection');
+
+  _wizardClose();
+  _applyAllFilters();
 }
 
 return {
   init: init,
   toggleDD: _monToggleDD,
   ddClearAll: _monDDClearAll,
+  openWizard: _wizardOpen,
   onEnter: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
     if(box){ if(_monSearchBoxPrev === null) _monSearchBoxPrev = box.style.display || ''; box.style.display = 'none'; }
