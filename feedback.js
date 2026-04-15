@@ -32,6 +32,9 @@ function openFeedbackModal(){
       '<label class="gafb-label">Where in the app? <span class="gafb-opt">(optional)</span></label>' +
       '<input type="text" id="gafbLocation" class="gafb-input" placeholder="View name, figure name\u2026">' +
 
+      '<label class="gafb-label">Attach screenshot <span class="gafb-opt">(optional)</span></label>' +
+      '<input type="file" id="gafbFile" class="gafb-input gafb-file" accept="image/png,image/jpeg" multiple>' +
+
       '<p id="gafbError" class="gafb-error"></p>' +
       '<div class="gafb-btns">' +
         '<button id="gafbCancel" class="gafb-btn gafb-cancel">Cancel</button>' +
@@ -43,6 +46,7 @@ function openFeedbackModal(){
   var catEl    = document.getElementById('gafbCategory');
   var msgEl    = document.getElementById('gafbMessage');
   var locEl    = document.getElementById('gafbLocation');
+  var fileEl   = document.getElementById('gafbFile');
   var errorEl  = document.getElementById('gafbError');
   var submitBtn= document.getElementById('gafbSubmit');
 
@@ -58,23 +62,34 @@ function openFeedbackModal(){
 
     if(!cat){ errorEl.textContent='Please select a category.'; return; }
     if(msg.length<10){ errorEl.textContent='Message must be at least 10 characters.'; return; }
+
+    var files = fileEl && fileEl.files ? Array.prototype.slice.call(fileEl.files) : [];
+    var MAX_FILES = 10, MAX_PER = 25*1024*1024, MAX_TOTAL = 100*1024*1024;
+    if(files.length > MAX_FILES){ errorEl.textContent='Max 10 screenshots allowed.'; return; }
+    var total = 0;
+    for(var i=0;i<files.length;i++){
+      if(files[i].size > MAX_PER){ errorEl.textContent='Each screenshot must be under 25 MB.'; return; }
+      total += files[i].size;
+    }
+    if(total > MAX_TOTAL){ errorEl.textContent='Total attachments must be under 100 MB.'; return; }
+
     errorEl.textContent='';
     submitBtn.disabled=true;
     submitBtn.textContent='Sending\u2026';
 
-    var payload={
-      email: localStorage.getItem('goldArkTester')||'',
-      category: cat,
-      message: msg,
-      location: loc,
-      view: window.VIEW||'',
-      userAgent: navigator.userAgent
-    };
+    var form = new FormData();
+    form.append('email', localStorage.getItem('goldArkTester')||'');
+    form.append('category', cat);
+    form.append('message', msg);
+    form.append('location', loc);
+    form.append('view', window.VIEW||'');
+    form.append('userAgent', navigator.userAgent);
+    files.forEach(function(f){ form.append('attachment', f, f.name); });
 
     fetch('https://formspree.io/f/mdapbjpp',{
       method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)
+      headers:{'Accept':'application/json'},
+      body: form
     })
     .then(function(r){ if(!r.ok) throw new Error('Server returned '+r.status); return r.json(); })
     .then(function(){

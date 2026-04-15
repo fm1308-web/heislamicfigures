@@ -236,7 +236,8 @@ function _ensureMapTT(){
 }
 function _mapTTContent(p, pinned){
   const col=_markerTypeColor(p);
-  const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
+  const _rd=(p.dob_academic!=null)?p.dob_academic:null;
+  const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
   const nT=(p.teachers||[]).length, nS=(PEOPLE.filter(s=>s.teachers?.includes(p.famous))).length;
   const hint=pinned?`<span style="font-size:8px;opacity:.5;margin-left:5px">→ CLICK AGAIN FOR FULL INFO</span>`:'';
   return `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px">${esc(p.famous)}${hint}</div>`+
@@ -326,8 +327,10 @@ function _openMapCard(p, cx, cy){
   document.getElementById('mcName').style.color=col;
   document.getElementById('mcSub').textContent=p.primaryTitle||p.tradition||'';
 
-  const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
-  const dod_s=p.dod?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
+  const _rDob=(p.dob_academic!=null)?p.dob_academic:null;
+  const _rDod=(p.dod_academic!=null)?p.dod_academic:null;
+  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'\u2014');
+  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'\u2014');
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
 
   let html=`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">

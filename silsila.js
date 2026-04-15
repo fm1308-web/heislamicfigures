@@ -499,7 +499,8 @@ function renderSilsila(){
 
   function pinTooltip(p, x, y){
     const col=SL_NM[p.famous]?.col||'#A0AEC0';
-    const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
+    const _rd=(p.dob_academic!=null)?p.dob_academic:null;
+    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
       `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:8px;opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
@@ -534,7 +535,8 @@ function renderSilsila(){
   function showHoverTooltip(p, x, y){
     if(ttPinned) return; // don't overwrite pinned tooltip
     const col=SL_NM[p.famous]?.col||'#A0AEC0';
-    const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
+    const _rd=(p.dob_academic!=null)?p.dob_academic:null;
+    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
       `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:12.5px">${esc(p.famous)}</div>`+
@@ -600,7 +602,8 @@ function renderSilsila(){
     if(_silsilaHighlighted===name){
       // SECOND CLICK — show popup with TIMELINE button
       const col=SL_NM[p.famous]?.col||'#A0AEC0';
-      const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
+      const _rd=(p.dob_academic!=null)?p.dob_academic:null;
+      const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
       const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
       tt.innerHTML=
         `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px">${esc(p.famous)}</div>`+
@@ -751,8 +754,10 @@ function openSilsilaCard(p, cx, cy){
   document.getElementById('scCardName').style.color=col;
   document.getElementById('scCardSub').textContent=p.primaryTitle||p.tradition||'';
 
-  const dob_s=p.dob<0?`${Math.abs(p.dob)} BCE`:`${p.dob} CE`;
-  const dod_s=p.dod?(p.dod<0?`${Math.abs(p.dod)} BCE`:`${p.dod} CE`):'Unknown';
+  const _rDob=(p.dob_academic!=null)?p.dob_academic:null;
+  const _rDod=(p.dod_academic!=null)?p.dod_academic:null;
+  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'\u2014');
+  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'\u2014');
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
 
   let html=`

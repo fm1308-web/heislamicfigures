@@ -294,7 +294,10 @@ function _booksBuildCanvas(){
       html += '</div></div>';
 
       var bkMulti = _bYr(b)!=null&&_yrCount[_bYr(b)]>1?' year-multi':'';
-      html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+bkMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
+      var showYear = entry.ancient || (_bYr(b) > 610);
+      if(showYear){
+        html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+bkMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
+      }
     }
   });
 

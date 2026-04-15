@@ -457,10 +457,12 @@ async function _renderPerson(p,container){
   if(typeof _ensureDetails==='function') await _ensureDetails(p);
 
   var col=_typeColor(p);
-  var dob_s=p.dob!=null?(p.dob<0?Math.abs(p.dob)+' BCE':p.dob+' CE'):'Unknown';
-  var dod_s=p.dod!=null?(p.dod<0?Math.abs(p.dod)+' BCE':p.dod+' CE'):'Unknown';
-  var age=(p.dob!=null&&p.dod!=null)?(p.dod-p.dob):null;
-  var cent=p.dob!=null?_centStr(Math.ceil(p.dob/100)):'';
+  var _realDob = (p.dob_academic!=null) ? p.dob_academic : null;
+  var _realDod = (p.dod_academic!=null) ? p.dod_academic : null;
+  var dob_s = (_realDob!=null) ? (_realDob<0?Math.abs(_realDob)+' BCE':_realDob+' CE') : (p.dob_s || '\u2014');
+  var dod_s = (_realDod!=null) ? (_realDod<0?Math.abs(_realDod)+' BCE':_realDod+' CE') : (p.dod_s || '\u2014');
+  var age = (_realDob!=null && _realDod!=null) ? (_realDod - _realDob) : null;
+  var cent = (_realDob!=null) ? _centStr(Math.ceil(_realDob/100)) : (p.dob!=null ? _centStr(Math.ceil(p.dob/100)) : '');
   var isFav=APP.Favorites?APP.Favorites.has(p.famous):false;
 
   var h='';

@@ -2449,3 +2449,36 @@ body.snapshot-mode *{scrollbar-width:none}
   width: 100% !important;
   box-sizing: border-box !important;
 }
+
+/* Hide main Monastic period band when density view is active */
+body.mon-drill-on #mon-timeline-band,
+body.mon-drill-on #mon-filters { display: none !important; }
+
+/* Drill Inline Hadith Panel */
+#mon-drill-inline-panel { display: none; flex: 1; min-width: 0; padding: 0 12px 16px 24px; box-sizing: border-box; }
+.mon-drill-inline-back-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 14px; margin-bottom: 12px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.6); border-radius: 3px; color: #D4AF37; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.mon-drill-inline-back-btn:hover { background: rgba(212,175,55,0.25); }
+.mon-drill-inline-header { margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.12); }
+.mon-drill-inline-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.mon-drill-inline-row-hdr { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(160,174,192,0.7); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+.mon-drill-inline-col-a { min-width: 0; }
+.mon-drill-inline-col-b { min-width: 0; }
+
+/* Drill Compact Tile Row */
+.mon-drill-compact-row { display: flex; gap: 10px; align-items: stretch; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(212,175,55,0.12); flex-wrap: wrap; }
+.mon-drill-compact-tile { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 3px; min-width: 140px; padding: 8px 14px 8px 14px; background: transparent; border: 3px solid #D4AF37; border-radius: 3px; }
+.mon-drill-compact-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: rgba(160,174,192,0.8); }
+.mon-drill-compact-value { font-family: 'Lato', sans-serif; font-size: 13px; color: #FFFFFF; font-weight: 600; }
+.mon-drill-compact-count .mon-drill-compact-value { font-family: 'Cinzel', serif; font-size: 16px; color: #D4AF37; }
+.mon-drill-compact-x { position: absolute; top: 2px; right: 4px; width: 18px; height: 18px; background: transparent; border: none; color: rgba(229,231,235,0.55); font-size: 11px; cursor: pointer; padding: 0; line-height: 1; }
+.mon-drill-compact-x:hover { color: #D4AF37; }
+
+.mon-drill-col0-scrolling::-webkit-scrollbar { display: none; width: 0; }
+
+.mon-drill-src-field { display: flex; flex-direction: column; gap: 1px; margin-bottom: 6px; }
+.mon-drill-src-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: rgba(160,174,192,0.7); }
+.mon-drill-src-val { font-family: 'Lato', sans-serif; font-size: 12px; color: #E5E7EB; font-weight: 600; }
+
+@keyframes tl-jump-pulse { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.9); } 100% { box-shadow: 0 0 0 20px rgba(212,175,55,0); } }
+.tl-jump-pulse { animation: tl-jump-pulse 1.5s ease-out; }
+

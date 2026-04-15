@@ -1562,11 +1562,34 @@ function jumpTo(name){
   }
   const rows=document.querySelectorAll('.tl-row');
   const target=[...rows].find(r=>parseInt(r.dataset.idx)===idx);
-  if(target){
+  const _person = _lastSortedPeople[idx];
+  const _preIslamic = _person && _person.dob != null && _person.dob < 570;
+  if(target && !_preIslamic){
     var _sc=document.getElementById('rowsScroll');
     if(_sc){
       var _tr=target.getBoundingClientRect(),_cr=_sc.getBoundingClientRect();
-      _sc.scrollTop+=(_tr.top-_cr.top)-(_cr.height/2)+(_tr.height/2);
+      _sc.scrollTo({top: _sc.scrollTop+(_tr.top-_cr.top)-(_cr.height/2)+(_tr.height/2), behavior:'smooth'});
+      // Horizontal centering on birth century band
+      if(_person.dob != null){
+        var _cent = _person.dob<600 ? 6 : Math.ceil(_person.dob/100);
+        var _band = _sc.querySelector('[data-cent="'+_cent+'"]') || document.querySelector('[data-cent="'+_cent+'"]');
+        if(_band){
+          var _br = _band.getBoundingClientRect();
+          _sc.scrollTo({left: _sc.scrollLeft+(_br.left-_cr.left)-(_cr.width/2)+(_br.width/2), behavior:'smooth'});
+        }
+      }
+    }else{
+      target.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+    }
+    target.classList.remove('tl-jump-pulse');
+    void target.offsetWidth;
+    target.classList.add('tl-jump-pulse');
+    setTimeout(function(){ target.classList.remove('tl-jump-pulse'); }, 1500);
+  } else if(target){
+    var _sc2=document.getElementById('rowsScroll');
+    if(_sc2){
+      var _tr2=target.getBoundingClientRect(),_cr2=_sc2.getBoundingClientRect();
+      _sc2.scrollTop+=(_tr2.top-_cr2.top)-(_cr2.height/2)+(_tr2.height/2);
     }else{
       target.scrollIntoView({block:'center',behavior:'smooth'});
     }
