@@ -1,1364 +1,631 @@
 // ═══════════════════════════════════════════════════════════
-// ERAS VIEW — Vertical stem with leaf shapes for all types & traditions
+// ERAS VIEW — Direct clone of Books view (rewrite #5 final)
+// Apr 16 2026
 // ═══════════════════════════════════════════════════════════
 (function(){
 'use strict';
 
-var TOTAL_H = 8060; // 60 top pad + 400 pre + 7600 post
-var NS = 'http://www.w3.org/2000/svg';
-var TOP_PAD = 60;
-var PRE_PX = 400;
-var POST_PX = 7600;
-var BREAK_YR = 570;
-var PRE_START = -10000;
-var PRE_RANGE = BREAK_YR - PRE_START;
-var POST_RANGE = 2025 - BREAK_YR;
-var ADAM_YR = -10000;
-var EARLY_YR = -3500;
-var ADAM_PX = 60;
-var GAP_PX = 80;
+const _EV_ROW_H   = 32;
+const _EV_TOP_PAD = 40;
+const _EV_BOT_PAD = 80;
+const _EV_LEFT_W  = 340;
+const _EV_STEM_X  = 400;
 
-var _origYearToY = function(yr){
-  if(yr < PRE_START) yr = PRE_START;
-  if(yr <= ADAM_YR) return TOP_PAD;
-  if(yr <= EARLY_YR){
-    var t = (yr - ADAM_YR) / (EARLY_YR - ADAM_YR);
-    return TOP_PAD + ADAM_PX + t * GAP_PX;
-  }
-  if(yr <= BREAK_YR){
-    var pre2Start = TOP_PAD + ADAM_PX + GAP_PX;
-    var pre2Px = PRE_PX - ADAM_PX - GAP_PX;
-    var t2 = (yr - EARLY_YR) / (BREAK_YR - EARLY_YR);
-    return pre2Start + t2 * pre2Px;
-  }
-  return TOP_PAD + PRE_PX + ((yr - BREAK_YR) / POST_RANGE) * POST_PX;
-};
-var _origYToYear = function(y){
-  var y2 = y - TOP_PAD;
-  if(y2 <= ADAM_PX) return ADAM_YR;
-  if(y2 <= ADAM_PX + GAP_PX){
-    var t = (y2 - ADAM_PX) / GAP_PX;
-    return ADAM_YR + t * (EARLY_YR - ADAM_YR);
-  }
-  if(y2 <= PRE_PX){
-    var pre2Px = PRE_PX - ADAM_PX - GAP_PX;
-    var t2 = (y2 - ADAM_PX - GAP_PX) / pre2Px;
-    return EARLY_YR + t2 * (BREAK_YR - EARLY_YR);
-  }
-  return BREAK_YR + ((y2 - PRE_PX) / POST_PX) * POST_RANGE;
-};
-var yearToY = _origYearToY;
-var yToYear = _origYToYear;
-function fmtYr(y){ return y<=0 ? Math.abs(Math.round(y))+' BCE' : Math.round(y)+' CE'; }
-function _erasDob(p){ return (p && p.dob_academic!=null) ? p.dob_academic : (p ? p.dob : null); }
-function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function _erasDod(p){ return (p.dod != null && p.dod > 0) ? p.dod : p.dob + 70; }
-function _erasWikiLink(p){
-  if(!window._wikidata||!p.slug||!window._wikidata[p.slug]||!window._wikidata[p.slug].wikipedia||!window._wikidata[p.slug].wikipedia.en) return '';
-  return '<a class="eras-wiki-link" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open in Wikipedia">W</a>';
-}
+let _EV_FILTER = { types:new Set(), trads:new Set(), search:'' };
+let _EV_ANIM   = { mode:'stopped', timer:null, cursorY:0, maxY:0, speedMs:1200, tick:null };
+let _EV_INITED = false;
+let _EV_ANIM_CTL = null;
 
-var SKIP_TRADITIONS = {'Islamic History':true};
-
-var TYPE_COLORS = {
+const _EV_TYPE_COLORS = {
   'Prophet':'#D4AF37','Founder':'#b8860b','Sahaba':'#e74c3c','Sahabiyya':'#ff6b6b',
   "Tabi'un":'#e67e22','Scholar':'#3498db','Mystic':'#2ECC71','Ruler':'#9b59b6',
   'Poet':'#e91e90','Philosopher':'#1abc9c','Scientist':'#00bcd4','Historian':'#8d6e63',
-  'Reformer':'#ff9800','Jurist':'#5c6bc0','Caliph':'#ab47bc','Warrior':'#ef5350'
+  'Reformer':'#ff9800','Jurist':'#5c6bc0','Caliph':'#ab47bc','Warrior':'#ef5350',
+  'Prophetic Lineage':'rgba(212,175,55,0.55)'
 };
-var TRAD_COLORS = {
+const _EV_TRAD_COLORS = {
   'Hadith Sciences':'#4fc3f7','Early Ascetics':'#66bb6a',
   'Islamic Jurisprudence':'#7986cb','Islamic Philosophy':'#4db6ac','Islamic Sciences':'#4dd0e1',
   'Islamic Theology':'#9575cd','Islamic Literature':'#f06292','Persian Poetry':'#ce93d8',
   'Khorasan School':'#a1887f','Baghdad School':'#90a4ae','Naqshbandiyya':'#7e57c2',
   'Shadhiliyya':'#26a69a','Qadiriyya':'#42a5f5','Chishti':'#ffa726','Suhrawardiyya':'#d4e157',
   'Mawlawiyya':'#ec407a','Qalandari':'#8d6e63','Yeseviyya':'#78909c','Kubrawiyya':'#5c6bc0',
-  'Badawiyya':'#c0ca33','Burhaniyya':'#29b6f6','Akbarian':'#ab47bc','Ishraqiyya':'#ffca28',
-  'Mughal':'#ef6c00','Sindhi/Punjabi Sufism':'#00897b','Genealogy':'#D4AF37'
+  'Akbarian':'#ab47bc','Ishraqiyya':'#ffca28','Mughal':'#ef6c00','Genealogy':'#D4AF37'
 };
-
-var ERA_BANDS = [
-  {name:'Prophetic Era',     start:-10000, end:632, dates:'Before 632 CE',  glow:'210,170,50'},
-  {name:'Rashidun',          start:632,   end:661,  dates:'632\u2013661 CE', glow:'60,160,90'},
-  {name:'Umayyad',           start:661,   end:750,  dates:'661\u2013750 CE', glow:'50,180,180'},
-  {name:'Abbasid Golden Age',start:750,   end:1258, dates:'750\u20131258 CE',glow:'70,130,210'},
+const _EV_SKIP_TRADS = {'Islamic History':true};
+const _EV_ERA_BANDS = [
+  {name:'Prophetic Era',     start:-10000,end:632,  dates:'Before 632 CE',    glow:'210,170,50'},
+  {name:'Rashidun',          start:632,   end:661,  dates:'632\u2013661 CE',  glow:'60,160,90'},
+  {name:'Umayyad',           start:661,   end:750,  dates:'661\u2013750 CE',  glow:'50,180,180'},
+  {name:'Abbasid Golden Age',start:750,   end:1258, dates:'750\u20131258 CE', glow:'70,130,210'},
   {name:'Post-Mongol',       start:1258,  end:1500, dates:'1258\u20131500 CE',glow:'180,60,60'},
   {name:'Gunpowder Empires', start:1500,  end:1800, dates:'1500\u20131800 CE',glow:'50,140,90'},
   {name:'Colonial & Reform', start:1800,  end:1950, dates:'1800\u20131950 CE',glow:'200,150,60'},
   {name:'Contemporary',      start:1950,  end:2025, dates:'1950\u2013Present',glow:'80,160,200'}
 ];
 
-var _inited = false;
-var _scrollEl = null;
-var _yearBadge = null;
-var _selectedTag = null;
-var _erasSelTypes = new Set();
-var _erasSelTrads = new Set();
-var _leafEls = [];
-var _nameListEl = null;
-var _leftPanel = null;
-var _dropdown = null;
-var _buildAllNames = null;
-var _activeTotalH = TOTAL_H;
-var _eraBandEls = [];
-var _erasMarkers = [];
-var _erasSvgEl = null;
-var _erasCanvasEl = null;
-var _erasRightPanel = null;
-
-function initEras(){
-  if(_inited) return;
-  if(typeof PEOPLE==='undefined'||!PEOPLE.length) return;
-  _inited = true;
-
-  var root = document.getElementById('eras-view');
-  if(!root) return;
-
-  root.innerHTML =
-    '<div class="eras-toolbar" id="eras-toolbar"></div>' +
-    '<div class="eras-scroll">' +
-      '<div class="eras-canvas">' +
-        '<div class="eras-left-panel"><div class="eras-namelist"></div></div>' +
-        '<div class="eras-right-panel"></div>' +
-      '</div>' +
-    '</div>' +
-    '<div class="eras-year-badge"></div>';
-
-  _scrollEl = root.querySelector('.eras-scroll');
-  _yearBadge = root.querySelector('.eras-year-badge');
-  if(_yearBadge) _yearBadge.style.display = 'none';
-  _nameListEl = root.querySelector('.eras-namelist');
-  _leftPanel = root.querySelector('.eras-left-panel');
-  _dropdown = null; // replaced by multi-select panels
-  var rightPanel = root.querySelector('.eras-right-panel');
-  var canvas = root.querySelector('.eras-canvas');
-  _erasRightPanel = rightPanel;
-  _erasCanvasEl = canvas;
-
-  // ── Adam marker ──
-  var _adamP = PEOPLE.find(function(p){ return p.famous==='Adam'; });
-  var _adamDob = _adamP ? (_adamP.dob_academic!=null ? _adamP.dob_academic : (_adamP.dob!=null ? _adamP.dob : -10000)) : -10000;
-  var adamY = yearToY(_adamDob);
-  var adamDot = document.createElement('div');
-  adamDot.className = 'eras-stem-marker eras-sm-lg';
-  adamDot.id = 'eras-adam-dot';
-  adamDot.style.top = (adamY - 6.5) + 'px';
-  rightPanel.appendChild(adamDot);
-  var adamLabel = document.createElement('div');
-  adamLabel.className = 'eras-perm-label eras-perm-prominent';
-  adamLabel.style.top = (adamY - 8) + 'px';
-  adamLabel.style.color = '#D4AF37';
-  adamLabel.textContent = 'Adam';
-  _leftPanel.appendChild(adamLabel);
-  var adamYrLabel = document.createElement('div');
-  adamYrLabel.className = 'eras-stem-yr-label';
-  adamYrLabel.style.display = 'none';
-  _leftPanel.appendChild(adamYrLabel);
-  _erasMarkers.push({year:_adamDob, isAdam:true, dotEl:adamDot, labelEl:adamLabel, yrLabelEl:adamYrLabel});
-
-  // ── Muhammad marker ──
-  var _muhP = PEOPLE.find(function(p){ return p.famous==='Prophet Muhammad'; });
-  var _muhDob = _muhP ? (_muhP.dob!=null ? _muhP.dob : 570) : 570;
-  var muhY = yearToY(_muhDob);
-  var muhDot = document.createElement('div');
-  muhDot.className = 'eras-stem-marker eras-sm-lg';
-  muhDot.id = 'eras-muh-dot';
-  muhDot.style.top = (muhY - 6.5) + 'px';
-  rightPanel.appendChild(muhDot);
-  var muhLabel = document.createElement('div');
-  muhLabel.className = 'eras-perm-label eras-perm-prominent';
-  muhLabel.style.top = (muhY - 8) + 'px';
-  muhLabel.style.color = '#D4AF37';
-  muhLabel.textContent = 'Prophet Muhammad';
-  _leftPanel.appendChild(muhLabel);
-  var muhYrLabel = document.createElement('div');
-  muhYrLabel.className = 'eras-stem-yr-label';
-  muhYrLabel.style.display = 'none';
-  _leftPanel.appendChild(muhYrLabel);
-  _erasMarkers.push({year:570, isAdam:false, dotEl:muhDot, labelEl:muhLabel, yrLabelEl:muhYrLabel});
-
-  // ── Stem line (clamped between Adam and Muhammad dots) ──
-  var stem = document.createElement('div');
-  stem.className = 'eras-stem';
-  rightPanel.appendChild(stem);
-
-  // ── Era labels + boundary lines + gradient shading (RIGHT panel only) ──
-  var _eraBandEls = [];
-  var _prophetFilterActive = (_dropdown && _dropdown.value === 'Prophet');
-  ERA_BANDS.forEach(function(era){
-    if(_prophetFilterActive && era.name === 'Prophetic Era') return;  // drawn later from dot positions
-    var y1 = yearToY(era.start);
-    var y2 = yearToY(era.end);
-
-    // Gradient shading — subtle colored glow on the right edge
-    var gDiv = null;
-    if(era.glow){
-      gDiv = document.createElement('div');
-      gDiv.className = 'eras-era-glow';
-      gDiv.dataset.eraname = era.name;
-      gDiv.style.top = y1 + 'px';
-      gDiv.style.height = (y2 - y1) + 'px';
-      gDiv.style.background = 'linear-gradient(to left, rgba(' + era.glow + ',0.10) 0%, rgba(' + era.glow + ',0.04) 50%, transparent 85%)';
-      rightPanel.appendChild(gDiv);
-    }
-
-    // Era name + dates label — top-aligned at era start (except Prophetic Era → pin to Muhammad dot)
-    var label = document.createElement('div');
-    label.className = 'eras-era-band-text';
-    if(era.name === 'Prophetic Era' && typeof muhY !== 'undefined'){
-      label.style.top = (muhY - 20) + 'px';
-    } else {
-      label.style.top = (y1 + 12) + 'px';
-    }
-    label.innerHTML =
-      '<div class="eras-era-band-name">' + esc(era.name) + '</div>' +
-      (era.dates ? '<div class="eras-era-band-dates">' + esc(era.dates) + '</div>' : '');
-    rightPanel.appendChild(label);
-
-    // Boundary line at top of era (right panel only)
-    var line = document.createElement('div');
-    line.className = 'eras-era-boundary';
-    line.style.top = y1 + 'px';
-    rightPanel.appendChild(line);
-
-    _eraBandEls.push({start:era.start, end:era.end, label:label, line:line, glowEl:gDiv});
-  });
-
-  // ── Build leaf tags dynamically ──
-  var typeCounts = {}, tradCounts = {};
-  PEOPLE.forEach(function(p){
-    if(p.type) typeCounts[p.type] = (typeCounts[p.type]||0) + 1;
-    if(p.tradition) tradCounts[p.tradition] = (tradCounts[p.tradition]||0) + 1;
-  });
-
-  var allTags = [];
-  Object.keys(typeCounts).sort().forEach(function(k){ allTags.push({key:k, field:'type'}); });
-  Object.keys(tradCounts).sort().forEach(function(k){
-    if(SKIP_TRADITIONS[k]) return;
-    allTags.push({key:k, field:'tradition'});
-  });
-
-  var leafData = [];
-  var maxCount = 0;
-  allTags.forEach(function(tag){
-    var people = PEOPLE.filter(function(p){ return p[tag.field] === tag.key; });
-    if(!people.length) return;
-    people.sort(function(a,b){ return _erasDob(a) - _erasDob(b); });
-    var firstDob = Infinity, lastDod = -Infinity;
-    people.forEach(function(p){
-      var _d = _erasDob(p);
-      if(_d!=null && _d < firstDob) firstDob = _d;
-      var _dd = (p.dod != null && p.dod > 0) ? p.dod : (_d!=null ? _d + 70 : null);
-      if(_dd!=null && _dd > lastDod) lastDod = _dd;
-    });
-    if(people.length > maxCount) maxCount = people.length;
-    var color = tag.field === 'type' ? (TYPE_COLORS[tag.key]||'#A0AEC0') : (TRAD_COLORS[tag.key]||'#A0AEC0');
-    leafData.push({key:tag.key, field:tag.field, color:color, people:people, count:people.length, firstDob:firstDob, lastDod:lastDod});
-  });
-
-  // Clamp Prophet leaf: never extend above Adam dot or below Muhammad dot
-  leafData.forEach(function(ld){
-    if(ld.key === 'Prophet' && ld.field === 'type'){
-      ld.firstDob = _adamDob;
-      ld.lastDod  = _muhDob;
-    }
-  });
-
-  // ── Populate multi-select filter panels ──
-  var typeItems = [], tradItems = [];
-  leafData.forEach(function(ld){
-    var item = {name:ld.key, count:ld.count, firstDob:ld.firstDob};
-    if(ld.field === 'type') typeItems.push(item);
-    else tradItems.push(item);
-  });
-  typeItems.sort(function(a,b){ return a.firstDob - b.firstDob; });
-  tradItems.sort(function(a,b){ return a.firstDob - b.firstDob; });
-
-  // Inject virtual "Prophetic Lineage" as 2nd type in dropdown (no SVG leaf — name list only)
-  if(typeof PROPHET_CHAIN !== 'undefined' && !typeItems.some(function(t){ return t.name === 'Prophetic Lineage'; })){
-    var _prIdx = -1;
-    for(var _ti = 0; _ti < typeItems.length; _ti++){ if(typeItems[_ti].name === 'Prophet'){ _prIdx = _ti; break; } }
-    typeItems.splice(_prIdx >= 0 ? _prIdx + 1 : 1, 0, {name: 'Prophetic Lineage', count: PROPHET_CHAIN.size, firstDob: _adamDob});
+function _evEsc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function _evFmtYear(y){
+  if(y==null||y==='') return '\u2014';
+  const n = typeof y==='number' ? y : parseInt(y,10);
+  if(isNaN(n)) return '\u2014';
+  if(n<0) return Math.abs(n)+'<span class="year-era">BCE</span>';
+  return n+'<span class="year-era">CE</span>';
+}
+function _evDob(p){ return (p && p.dob_academic!=null) ? p.dob_academic : (p ? p.dob : null); }
+function _evWiki(p){
+  if(!window._wikidata||!p.slug||!window._wikidata[p.slug]||!window._wikidata[p.slug].wikipedia||!window._wikidata[p.slug].wikipedia.en) return '';
+  return ' <a class="ev-wiki" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Wikipedia">W</a>';
+}
+function _evNameColor(p){
+  if(p.type==='Prophet') return '#D4AF37';
+  if(typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.has(p.famous)) return 'rgba(212,175,55,0.65)';
+  if(p.type && _EV_TYPE_COLORS[p.type]) return _EV_TYPE_COLORS[p.type];
+  if(p.tradition && !_EV_SKIP_TRADS[p.tradition] && _EV_TRAD_COLORS[p.tradition]) return _EV_TRAD_COLORS[p.tradition];
+  return '#A0AEC0';
+}
+function _evColorToRgb(c){
+  if(!c) return '160,174,192';
+  if(c.charAt(0)==='#'){
+    var hex=c.slice(1); if(hex.length===3) hex=hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    return parseInt(hex.substr(0,2),16)+','+parseInt(hex.substr(2,2),16)+','+parseInt(hex.substr(4,2),16);
   }
-
-  var toolbar = document.getElementById('eras-toolbar');
-  if(toolbar) _erasBuildToolbar(toolbar, typeItems, tradItems);
-
-  // ── Build SVG ──
-  var svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('class', 'eras-svg');
-  svg.setAttribute('width', '100%');
-  svg.setAttribute('height', TOTAL_H);
-  rightPanel.appendChild(svg);
-  _erasSvgEl = svg;
-
-  var rightW = rightPanel.offsetWidth || 600;
-  var maxLeafW = rightW * 0.6;
-  var MIN_LEAF_W = 30;
-  _leafEls = [];
-  var totalLeaves = leafData.length;
-
-  leafData.forEach(function(ld, idx){
-    var y1 = yearToY(ld.firstDob);
-    var y2 = yearToY(ld.lastDod);
-    if(y2 - y1 < 10) y2 = y1 + 10;
-    var leafW = Math.max(MIN_LEAF_W, (ld.count / maxCount) * maxLeafW);
-    var xOffset = 15 + (idx / totalLeaves) * (rightW * 0.30);
-    var midY = (y1 + y2) / 2;
-    var peakX = xOffset + leafW;
-    var isType = ld.field === 'type';
-
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'eras-leaf');
-    g.dataset.tag = ld.key;
-
-    // ClipPath for dynamic year clipping
-    var clipId = 'eras-clip-' + idx;
-    var clipEl = document.createElementNS(NS, 'clipPath');
-    clipEl.setAttribute('id', clipId);
-    var clipRect = document.createElementNS(NS, 'rect');
-    clipRect.setAttribute('x', '-10');
-    clipRect.setAttribute('y', '0');
-    clipRect.setAttribute('width', (rightW + 20).toString());
-    clipRect.setAttribute('height', TOTAL_H.toString());
-    clipEl.appendChild(clipRect);
-    svg.appendChild(clipEl);
-    g.setAttribute('clip-path', 'url(#' + clipId + ')');
-
-    var stemX = 1;
-    var cp1y = y1 + (midY - y1) * 0.3;
-    var cp2y = y1 + (midY - y1) * 0.7;
-    var cp3y = midY + (y2 - midY) * 0.3;
-    var cp4y = midY + (y2 - midY) * 0.7;
-    var d = 'M ' + stemX + ' ' + y1.toFixed(1) +
-            ' C ' + (stemX + leafW * 0.1).toFixed(1) + ' ' + cp1y.toFixed(1) +
-            ', ' + peakX.toFixed(1) + ' ' + cp2y.toFixed(1) +
-            ', ' + peakX.toFixed(1) + ' ' + midY.toFixed(1) +
-            ' C ' + peakX.toFixed(1) + ' ' + cp3y.toFixed(1) +
-            ', ' + (stemX + leafW * 0.1).toFixed(1) + ' ' + cp4y.toFixed(1) +
-            ', ' + stemX + ' ' + y2.toFixed(1) + ' Z';
-
-    var path = document.createElementNS(NS, 'path');
-    path.setAttribute('d', d);
-    path.setAttribute('fill', 'none');
-    path.setAttribute('fill-opacity', '0');
-    path.setAttribute('stroke', ld.color);
-    path.setAttribute('stroke-opacity', '0.5');
-    path.setAttribute('stroke-width', '2.5');
-    g.appendChild(path);
-
-    var dot1 = document.createElementNS(NS, 'circle');
-    dot1.setAttribute('cx', stemX); dot1.setAttribute('cy', y1);
-    dot1.setAttribute('r', 2); dot1.setAttribute('fill', ld.color);
-    dot1.style.pointerEvents = 'none';
-    g.appendChild(dot1);
-    var dot2 = document.createElementNS(NS, 'circle');
-    dot2.setAttribute('cx', stemX); dot2.setAttribute('cy', y2);
-    dot2.setAttribute('r', 2); dot2.setAttribute('fill', ld.color);
-    dot2.style.pointerEvents = 'none';
-    g.appendChild(dot2);
-    svg.appendChild(g);
-
-    // White label outside leaf
-    var labelLeft = Math.max(peakX + 6, MIN_LEAF_W + xOffset + 6);
-    var extLabel = document.createElement('div');
-    extLabel.className = 'eras-leaf-ext-label';
-    extLabel.style.top = midY + 'px';
-    extLabel.style.left = labelLeft + 'px';
-    extLabel.textContent = ld.key;
-    extLabel.dataset.tag = ld.key;
-    rightPanel.appendChild(extLabel);
-
-    g.addEventListener('mouseenter', function(){
-      if(_selectedTag) return;
-      path.setAttribute('fill-opacity', '0');
-      path.setAttribute('stroke-opacity', '0.9');
-    });
-    g.addEventListener('mouseleave', function(){
-      if(_selectedTag) return;
-      path.setAttribute('fill-opacity', '0');
-      path.setAttribute('stroke-opacity', '0.5');
-    });
-    g.addEventListener('click', function(e){
-      e.stopPropagation();
-      _selectTag(ld.key, false);
-    });
-
-    _leafEls.push({key:ld.key, field:ld.field, group:g, path:path, people:ld.people, color:ld.color, count:ld.count, extLabel:extLabel, midY:midY, clipRect:clipRect, y1:y1, firstDob:ld.firstDob, lastDod:ld.lastDod, leafW:leafW, peakX:peakX, dot1:dot1, dot2:dot2});
-  });
-
-  _scrollEl.addEventListener('click', function(e){
-    if(!e.target.closest('.eras-leaf') && !e.target.closest('.eras-name-entry') && !e.target.closest('.eras-dropdown') && !e.target.closest('.bv-dd-wrap') && !e.target.closest('.bv-clear-all')){
-      _deselectAll();
-    }
-  });
-
-  _scrollEl.addEventListener('scroll', _onScroll);
-  _onScroll();
-  _scrollEl.scrollTop = Math.max(0, yearToY(500) - 200);
-
-  // ── Fixed horizontal marker line (on #eras-view, NOT inside scroll) ──
-  var cursorOverlay = document.createElement('div');
-  cursorOverlay.className = 'eras-cursor-overlay';
-  cursorOverlay.innerHTML = '<div class="eras-cursor-line"></div><div class="eras-cursor-label"></div>';
-  root.appendChild(cursorOverlay);
-  var cursorLabel = cursorOverlay.querySelector('.eras-cursor-label');
-
-  // ── Slider dot on the vertical stem (moves with scroll inside canvas) ──
-  var sliderDot = document.createElement('div');
-  sliderDot.className = 'eras-stem-marker eras-slider-dot';
-  rightPanel.appendChild(sliderDot);
-
-  _buildAllNames = function(yr){
-    if(!_nameListEl) return;
-    _nameListEl.innerHTML = '';
-    var alive = PEOPLE.filter(function(p){
-      return p.dob <= yr && _erasDod(p) >= yr;
-    });
-    // Sort by dob descending — most recently born at top (just below the line)
-    var sorted = alive.sort(function(a,b){ return b.dob - a.dob; });
-    var lineY = yearToY(yr);
-    var ROW_H = 26;
-    var nextY = lineY + 4; // start just below the fixed line position
-    sorted.forEach(function(p){
-      var el = document.createElement('div');
-      el.className = 'eras-name-entry';
-      el.style.top = nextY + 'px';
-      el.style.color = TYPE_COLORS[p.type] || '#aaa';
-      el.innerHTML = esc(p.famous) + _erasWikiLink(p);
-      el.addEventListener('click', function(e){
-        e.stopPropagation();
-        if(typeof focusPersonInTimeline === 'function') focusPersonInTimeline(p.famous); else if(typeof jumpTo === 'function') jumpTo(p.famous);
-      });
-      _nameListEl.appendChild(el);
-      nextY += ROW_H;
-    });
-  };
-
-  function _filterLeafLabels(yr){
-    if(!yr){
-      // Show all labels, curves, and era bands; reset clips
-      _leafEls.forEach(function(le){
-        le.extLabel.style.display = '';
-        le.group.style.display = '';
-        le.clipRect.setAttribute('height', _activeTotalH.toString());
-        le.clipRect.setAttribute('y', '0');
-      });
-      _eraBandEls.forEach(function(eb){
-        eb.label.style.display = '';
-        eb.line.style.display = '';
-      });
-      return;
-    }
-    // Filter leaf/tag labels and curves by alive figures
-    _leafEls.forEach(function(le){
-      var aliveMembers = le.people.filter(function(p){
-        return p.dob <= yr && _erasDod(p) >= yr;
-      });
-      if(!aliveMembers.length){
-        le.extLabel.style.display = 'none';
-        le.group.style.display = 'none';
-        return;
-      }
-      le.extLabel.style.display = '';
-      le.group.style.display = '';
-      // Clip curve: show from group start down to Y of last alive member's dod
-      var maxDod = -Infinity;
-      aliveMembers.forEach(function(p){ var d = _erasDod(p); if(d > maxDod) maxDod = d; });
-      var clipBottom = yearToY(maxDod);
-      le.clipRect.setAttribute('y', (le.y1 - 5).toString());
-      le.clipRect.setAttribute('height', (clipBottom - le.y1 + 10).toString());
-    });
-    // Filter era band labels — visible only if slider year falls within the era
-    _eraBandEls.forEach(function(eb){
-      var visible = eb.start <= yr && eb.end >= yr;
-      eb.label.style.display = visible ? '' : 'none';
-      eb.line.style.display = visible ? '' : 'none';
-    });
-  }
-
-  function syncErasToSlider(yr){
-    if(yr == null){
-      cursorOverlay.style.display = 'none';
-      sliderDot.style.display = 'none';
-      if(_yearBadge) _yearBadge.style.display = 'none';
-      // Revert names to default (tag-selected or empty)
-      if(!_selectedTag && _nameListEl) _nameListEl.innerHTML = '';
-      _filterLeafLabels(null);
-      return;
-    }
-    cursorOverlay.style.display = '';
-    if(_yearBadge) _yearBadge.style.display = '';
-    if(yr < 500){
-      cursorOverlay.style.display = 'none';
-      if(_yearBadge) _yearBadge.style.display = 'none';
-      sliderDot.style.display = 'none';
-      return;
-    }
-    cursorLabel.textContent = yr + ' CE';
-    // Position dot on stem at correct year
-    var targetY = yearToY(yr);
-    sliderDot.style.display = '';
-    sliderDot.style.top = (targetY - 7) + 'px';
-    // Show alive figures when slider is active (and no tag selected)
-    if(!_selectedTag) _buildAllNames(yr);
-    // Filter leaf/tag labels by alive figures
-    _filterLeafLabels(yr);
-    // Scroll chart so selected year aligns with fixed line (1/3 from top)
-    var offset = _scrollEl.clientHeight / 3;
-    _scrollEl.scrollTop = targetY - offset;
-  }
-
-  window._onSliderYear = function(yr){
-    if(typeof VIEW!=='undefined' && VIEW==='eras') syncErasToSlider(yr);
-  };
-
-  // Init from current slider state
-  syncErasToSlider(typeof activeYear !== 'undefined' ? activeYear : null);
-
-  // Clamp Prophet leaf so it starts at Adam dot and ends at Muhammad dot (rule: nothing above Adam or below Muhammad)
-  var _prLeaf = null;
-  for(var _k = 0; _k < _leafEls.length; _k++){
-    if(_leafEls[_k].key === 'Prophet' && _leafEls[_k].field === 'type'){ _prLeaf = _leafEls[_k]; break; }
-  }
-  if(_prLeaf && _prLeaf.path){
-    _prLeaf.firstDob = _adamDob;
-    _prLeaf.lastDod  = _muhDob;
-    var _ly1 = yearToY(_adamDob);
-    var _ly2 = yearToY(_muhDob);
-    if(_ly2 - _ly1 < 10) _ly2 = _ly1 + 10;
-    var _lmid = (_ly1 + _ly2) / 2;
-    var _stemX = 1;
-    var _cp1y = _ly1 + (_lmid - _ly1) * 0.3;
-    var _cp2y = _ly1 + (_lmid - _ly1) * 0.7;
-    var _cp3y = _lmid + (_ly2 - _lmid) * 0.3;
-    var _cp4y = _lmid + (_ly2 - _lmid) * 0.7;
-    var _d = 'M ' + _stemX + ' ' + _ly1.toFixed(1) +
-             ' C ' + (_stemX + _prLeaf.leafW * 0.1).toFixed(1) + ' ' + _cp1y.toFixed(1) +
-             ', ' + _prLeaf.peakX.toFixed(1) + ' ' + _cp2y.toFixed(1) +
-             ', ' + _prLeaf.peakX.toFixed(1) + ' ' + _lmid.toFixed(1) +
-             ' C ' + _prLeaf.peakX.toFixed(1) + ' ' + _cp3y.toFixed(1) +
-             ', ' + (_stemX + _prLeaf.leafW * 0.1).toFixed(1) + ' ' + _cp4y.toFixed(1) +
-             ', ' + _stemX + ' ' + _ly2.toFixed(1) + ' Z';
-    _prLeaf.path.setAttribute('d', _d);
-    if(_prLeaf.dot1) _prLeaf.dot1.setAttribute('cy', _ly1);
-    if(_prLeaf.dot2) _prLeaf.dot2.setAttribute('cy', _ly2);
-    _prLeaf.y1 = _ly1;
-    _prLeaf.midY = _lmid;
-    if(_prLeaf.extLabel) _prLeaf.extLabel.style.top = _lmid + 'px';
-  }
-
-  console.log('[ERAS] Leaves created: ' + leafData.length);
+  var m=c.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+  if(m) return m[1]+','+m[2]+','+m[3];
+  return '160,174,192';
 }
 
-function _onScroll(){
-  if(!_scrollEl || !_yearBadge) return;
-  _yearBadge.textContent = fmtYr(yToYear(_scrollEl.scrollTop + _scrollEl.clientHeight / 2));
+function _evYearToY(yr, people, rowMap){
+  const withY = people.filter(p=>_evDob(p)!=null);
+  if(!withY.length) return _EV_TOP_PAD;
+  const first=withY[0], last=withY[withY.length-1];
+  const fd=_evDob(first), ld=_evDob(last);
+  if(yr<=fd) return rowMap[first.slug].midY;
+  if(yr>=ld) return rowMap[last.slug].midY;
+  for(let i=1;i<withY.length;i++){
+    const d=_evDob(withY[i]);
+    if(d>=yr){
+      const prev=withY[i-1], pd=_evDob(prev);
+      if(d===pd) return rowMap[withY[i].slug].midY;
+      const r=(yr-pd)/(d-pd);
+      return rowMap[prev.slug].midY + r*(rowMap[withY[i].slug].midY - rowMap[prev.slug].midY);
+    }
+  }
+  return rowMap[last.slug].midY;
 }
 
-function _selectTag(tagKey, fromDropdown){
-  if(_erasAnimMode !== 'stopped') _erasAnimStopFull();
-  // Legacy single-click on a leaf: toggle that one tag
-  if(!fromDropdown){
-    if(_selectedTag === tagKey){ _deselectAll(); return; }
-    _erasSelTypes.clear(); _erasSelTrads.clear();
-    var le = _leafEls.find(function(l){ return l.key === tagKey; });
-    if(le){
-      if(le.field === 'type') _erasSelTypes.add(tagKey);
-      else _erasSelTrads.add(tagKey);
-    }
-  }
-  _selectedTag = tagKey;
-  _erasApplyFilter();
-  _erasSyncBtnLabels();
-  _erasRebuildPanels();
+function _evInjectStyles(){
+  const old=document.getElementById('erasViewStyles');
+  if(old) old.remove();
+  const css = `
+  #eras-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
+  #ev-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
+  .ev-dd-wrap{position:relative}
+  .ev-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
+  .ev-dd-btn:hover{border-color:var(--gold,#D4AF37)}
+  .ev-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+  .ev-dd-panel.open{display:flex}
+  .ev-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:12px;border-radius:2px;outline:none}
+  .ev-dd-search:focus{border-color:var(--gold,#D4AF37)}
+  .ev-dd-scroll{flex:1;overflow-y:auto;padding:4px 0 10px}
+  .ev-ck-row{display:flex;align-items:center;gap:10px;padding:6px 14px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text1,#E4E4E7)}
+  .ev-ck-row:hover{background:rgba(212,175,55,.08)}
+  .ev-ck-row.checked{background:rgba(212,175,55,.06);color:var(--gold,#D4AF37)}
+  .ev-ck{width:12px;height:12px;border:1px solid var(--border2,#2D3748);border-radius:2px;flex-shrink:0}
+  .ev-ck.on{background:var(--gold,#D4AF37);border-color:var(--gold,#D4AF37);box-shadow:inset 0 0 0 2px #0E1621}
+  .ev-ck-label{flex:1}
+  .ev-ck-count{font-size:10px;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif}
+  .ev-clear-all{background:none;border:1px solid var(--border2,#2D3748);color:var(--muted,#6B7B8C);width:32px;height:32px;cursor:pointer;border-radius:2px;font-size:14px;opacity:.4}
+  .ev-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6);color:var(--gold,#D4AF37)}
+  #ev-anim-mount{margin-left:auto;display:flex;align-items:center;gap:10px}
+  #ev-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
+  #ev-canvas{position:relative;width:100%}
+  #ev-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em}
+  #ev-stem{position:absolute;left:${_EV_STEM_X - 2}px;width:5px;background:var(--gold,#D4AF37);box-shadow:0 0 18px rgba(212,175,55,.55);pointer-events:none;z-index:1}
+  .ev-row{position:absolute;left:0;width:${_EV_LEFT_W}px;padding:4px 20px;cursor:pointer;transition:background .12s;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;z-index:4}
+  .ev-row:hover{background:rgba(212,175,55,.06)}
+  .ev-row.hi{background:rgba(212,175,55,.16);box-shadow:inset 3px 0 0 var(--gold,#D4AF37)}
+  .ev-row-main{text-align:right}
+  .ev-row-title{font-family:'Source Sans 3',sans-serif;font-size:13px;line-height:1.2}
+  .ev-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:10px;font-family:'Cinzel',serif}
+  .ev-wiki:hover{color:var(--gold,#D4AF37)}
+  .ev-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
+  svg.ev-leaves{position:absolute;top:0;overflow:visible;pointer-events:none;z-index:2}
+  svg.ev-leaves g.ev-leaf{cursor:pointer;pointer-events:all}
+  .ev-leaf-label{position:absolute;white-space:nowrap;z-index:4}
+  .ev-era-band{position:absolute;left:${_EV_STEM_X+18}px;right:0;pointer-events:none;z-index:1}
+  .ev-era-label{position:absolute;right:24px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;pointer-events:none;z-index:1;text-align:right;font-weight:700;text-transform:uppercase}
+  .ev-era-label-name{font-weight:700}
+  .ev-era-label-dates{font-size:9px;opacity:.6;margin-top:2px;font-weight:400;letter-spacing:.08em}
+  .ev-curfew-line{position:absolute;left:0;right:0;height:1px;background:rgba(212,175,55,0.4);pointer-events:none;z-index:10}
+  .ev-curfew-year{position:absolute;right:40px;top:-10px;font-family:'Cinzel',serif;font-size:12px;color:var(--gold,#D4AF37);background:#0E1621;padding:2px 8px;border:1px solid rgba(212,175,55,.5);border-radius:2px}
+  .ev-hidden-by-curfew{visibility:hidden}
+  `;
+  const s=document.createElement('style');
+  s.id='erasViewStyles'; s.textContent=css;
+  document.head.appendChild(s);
 }
 
-function _erasRelayout(){
-  // Resize SVG and canvas
-  if(_erasSvgEl) _erasSvgEl.setAttribute('height', _activeTotalH);
-  if(_erasCanvasEl) _erasCanvasEl.style.minHeight = _activeTotalH + 'px';
-
-  // Reposition era bands — hide if fully outside compressed canvas
-  _eraBandEls.forEach(function(eb){
-    var y1 = yearToY(eb.start);
-    var y2 = yearToY(eb.end);
-    var bandFullyOutside = (y2 < 0) || (y1 > _activeTotalH);
-    if(bandFullyOutside){
-      if(eb.glowEl) eb.glowEl.style.display = 'none';
-      eb.label.style.display = 'none';
-      eb.line.style.display = 'none';
-      return;
-    }
-    var cy1 = Math.max(0, y1);
-    var cy2 = Math.min(_activeTotalH, y2);
-    if(eb.glowEl){
-      eb.glowEl.style.display = '';
-      eb.glowEl.style.top = cy1 + 'px';
-      eb.glowEl.style.height = (cy2 - cy1) + 'px';
-    }
-    eb.label.style.display = '';
-    eb.label.style.top = (cy1 + 12) + 'px';
-    eb.line.style.display = '';
-    eb.line.style.top = cy1 + 'px';
+function _evCollectTypes(){
+  const counts={};
+  (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{ if(p.type) counts[p.type]=(counts[p.type]||0)+1; });
+  const out=Object.keys(counts).sort().map(k=>({name:k,count:counts[k]}));
+  if(typeof PROPHET_CHAIN!=='undefined' && !out.some(t=>t.name==='Prophetic Lineage')){
+    const pi=out.findIndex(t=>t.name==='Prophet');
+    out.splice(pi>=0?pi+1:0,0,{name:'Prophetic Lineage',count:PROPHET_CHAIN.size});
+  }
+  return out;
+}
+function _evCollectTrads(){
+  const counts={};
+  (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{
+    if(p.tradition && !_EV_SKIP_TRADS[p.tradition]) counts[p.tradition]=(counts[p.tradition]||0)+1;
   });
-
-  // Reposition markers (Adam, Muhammad) — hide if outside compressed canvas
-  _erasMarkers.forEach(function(m){
-    var y = yearToY(m.year);
-    var outside = (y < 0) || (y > _activeTotalH);
-    if(outside){
-      m.dotEl.style.display = 'none';
-      m.labelEl.style.display = 'none';
-      m.yrLabelEl.style.display = 'none';
-      return;
-    }
-    m.dotEl.style.display = '';
-    m.labelEl.style.display = '';
-    m.yrLabelEl.style.display = 'none';
-    m.dotEl.style.top = (y - 6.5) + 'px';
-    m.labelEl.style.top = (m.isAdam ? y + 16 : y) + 'px';
-    m.yrLabelEl.style.top = (y - 6) + 'px';
-  });
-
-  // Reposition leaf SVG paths, dots, labels — skip active leaves (they're drawn with row-based geometry elsewhere)
-  _leafEls.forEach(function(le){
-    if(le.group && le.group.classList.contains('eras-leaf-active')) return;
-    var y1 = yearToY(le.firstDob);
-    var y2 = yearToY(le.lastDod);
-    if(y2 - y1 < 10) y2 = y1 + 10;
-    var midY = (y1 + y2) / 2;
-    var stemX = 1;
-    var cp1y = y1 + (midY - y1) * 0.3;
-    var cp2y = y1 + (midY - y1) * 0.7;
-    var cp3y = midY + (y2 - midY) * 0.3;
-    var cp4y = midY + (y2 - midY) * 0.7;
-    var d = 'M ' + stemX + ' ' + y1.toFixed(1) +
-            ' C ' + (stemX + le.leafW * 0.1).toFixed(1) + ' ' + cp1y.toFixed(1) +
-            ', ' + le.peakX.toFixed(1) + ' ' + cp2y.toFixed(1) +
-            ', ' + le.peakX.toFixed(1) + ' ' + midY.toFixed(1) +
-            ' C ' + le.peakX.toFixed(1) + ' ' + cp3y.toFixed(1) +
-            ', ' + (stemX + le.leafW * 0.1).toFixed(1) + ' ' + cp4y.toFixed(1) +
-            ', ' + stemX + ' ' + y2.toFixed(1) + ' Z';
-    le.path.setAttribute('d', d);
-    le.dot1.setAttribute('cy', y1);
-    le.dot2.setAttribute('cy', y2);
-    le.extLabel.style.top = midY + 'px';
-    le.y1 = y1;
-    le.midY = midY;
-    le.clipRect.setAttribute('y', '0');
-    le.clipRect.setAttribute('height', _activeTotalH.toString());
-  });
+  return Object.keys(counts).sort().map(k=>({name:k,count:counts[k]}));
 }
 
-function _erasApplyFilter(){
-  // Purge any prior leaf-diagnostic markers (DoB/DoD labels)
-  if(_leftPanel) _leftPanel.querySelectorAll('.eras-leaf-diag').forEach(function(n){ n.remove(); });
-
-  var hasType = _erasSelTypes.size > 0;
-  var hasTrad = _erasSelTrads.size > 0;
-  var hasAny = hasType || hasTrad;
-
-  // Hide permanent gold Adam/Muhammad labels when any filter is active
-  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
-    _erasMarkers.forEach(function(m){
-      if(m && m.labelEl) m.labelEl.style.display = hasAny ? 'none' : '';
-    });
-  }
-
-  _leafEls.forEach(function(le){
-    var visible;
-    if(!hasAny){
-      visible = true;
-    } else {
-      visible = (le.field === 'type' && _erasSelTypes.has(le.key)) ||
-                (le.field === 'tradition' && _erasSelTrads.has(le.key));
+function _evFiltered(){
+  const all=(typeof PEOPLE!=='undefined')?PEOPLE:[];
+  const q=(_EV_FILTER.search||'').toLowerCase().trim();
+  const ts=_EV_FILTER.types, tr=_EV_FILTER.trads;
+  let out=all.filter(p=>{
+    if(ts.size){
+      let match=false;
+      if(ts.has('Prophetic Lineage') && typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.has(p.famous)) match=true;
+      if(!match){ for(const t of ts){ if(t!=='Prophetic Lineage' && p.type===t){ match=true; break; } } }
+      if(!match) return false;
     }
-    if(visible){
-      le.group.classList.remove('eras-leaf-faded');
-      le.group.classList.add('eras-leaf-active');
-      le.path.setAttribute('fill-opacity', '0');
-      le.path.setAttribute('stroke-opacity', hasAny ? '1.0' : '0.5');
-      le.extLabel.style.display = '';
-    } else {
-      le.group.classList.remove('eras-leaf-active');
-      le.group.classList.add('eras-leaf-faded');
-      le.path.setAttribute('fill-opacity', '0');
-      le.path.setAttribute('stroke-opacity', '0');
-      le.extLabel.style.display = 'none';
+    if(tr.size && !tr.has(p.tradition)) return false;
+    if(q){
+      const hay=((p.famous||'')+' '+(p.type||'')+' '+(p.tradition||'')).toLowerCase();
+      if(hay.indexOf(q)===-1) return false;
     }
+    return true;
   });
-
-  // No compression. Original yearToY always.
-  yearToY = _origYearToY;
-  yToYear = _origYToYear;
-  _activeTotalH = TOTAL_H;
-  _erasRelayout();
-
-  // Build name list from all matching leaves (AFTER compression so yearToY is final)
-  if(_nameListEl){
-    if(!hasAny){
-      _nameListEl.innerHTML = '';
-      if(typeof activeYear !== 'undefined' && activeYear != null && typeof _buildAllNames === 'function') _buildAllNames(activeYear);
-    } else {
-      var allPeople = [], color = '#D4AF37';
-      _leafEls.forEach(function(le){
-        var visible = (le.field === 'type' && _erasSelTypes.has(le.key)) ||
-                      (le.field === 'tradition' && _erasSelTrads.has(le.key));
-        if(visible){
-          allPeople = allPeople.concat(le.people);
-          color = le.color;
-        }
-      });
-      // Virtual Prophetic Lineage: add chain members to the name list
-      if(typeof PROPHET_CHAIN !== 'undefined' && _erasSelTypes.has('Prophetic Lineage')){
-        var _plN = PEOPLE.filter(function(p){ return PROPHET_CHAIN.has(p.famous); });
-        allPeople = allPeople.concat(_plN);
-        color = '#D4AF37';
-      }
-      // Deduplicate by slug
-      var seen = {};
-      allPeople = allPeople.filter(function(p){ if(seen[p.slug]) return false; seen[p.slug]=true; return true; });
-      var _filterField = hasType ? 'type' : (hasTrad ? 'tradition' : null);
-      _buildNameList(allPeople, color, _filterField);
-
-      // ── Leaf rebuild: float the leaf next to the stem ──
-      // Rule: leaf does NOT touch the stem. It sits as a floating arc aligned with the row list.
-      //   Top Y    = first row's Y
-      //   Bottom Y = last row's Y
-      //   Left edge starts ~30px to the right of the stem.
-      var _rows = _nameListEl ? _nameListEl.querySelectorAll('.eras-name-entry') : [];
-      if(_rows.length >= 2){
-        var _firstRowY = _rows[0].offsetTop + _rows[0].offsetHeight / 2;
-        var _lastRowY  = _rows[_rows.length - 1].offsetTop + _rows[_rows.length - 1].offsetHeight / 2;
-        var _hardBottom = _lastRowY + 80;
-
-        // Cap canvas to hard bottom (shrink OR grow as needed)
-        _activeTotalH = _hardBottom;
-        if(_erasSvgEl) _erasSvgEl.setAttribute('height', _activeTotalH);
-        if(_erasCanvasEl) _erasCanvasEl.style.minHeight = _activeTotalH + 'px';
-        _leafEls.forEach(function(le){
-          if(le.clipRect) le.clipRect.setAttribute('height', _activeTotalH.toString());
-        });
-
-        // Hide era bands/glows/boundaries below the hard bottom
-        var _rp0 = _erasRightPanel || (_nameListEl ? _nameListEl.closest('.eras-canvas').querySelector('.eras-right-panel') : null);
-        var _canvas0 = _nameListEl ? _nameListEl.closest('.eras-canvas') : null;
-        if(_rp0){
-          _rp0.querySelectorAll('.eras-era-glow, .eras-era-band-text, .eras-era-boundary').forEach(function(el){
-            var t = parseFloat(el.style.top);
-            if(!isNaN(t) && t > _hardBottom - 10) el.style.display = 'none';
-            else el.style.display = '';
-          });
-        }
-        // Hard bottom strip spans the whole canvas (both columns)
-        if(_canvas0){
-          var _bb = _canvas0.querySelector('.eras-hard-bottom');
-          if(!_bb){
-            _bb = document.createElement('div');
-            _bb.className = 'eras-hard-bottom';
-            _canvas0.appendChild(_bb);
-          }
-          _bb.style.cssText = 'position:absolute;left:0;right:0;top:' + _hardBottom + 'px;height:40px;background:url(assets/crowd-end.png) repeat-x center/auto 100%;opacity:0.55;z-index:5;pointer-events:none;';
-        }
-
-        var _rowByName = {};
-        for(var _r = 0; _r < _rows.length; _r++){
-          var _fn = _rows[_r].dataset.famous;
-          if(_fn) _rowByName[_fn] = _rows[_r];
-        }
-
-        var _activeLeaves = _leafEls.filter(function(le){ return le.group && le.group.classList.contains('eras-leaf-active'); });
-        _activeLeaves.forEach(function(_le){
-          if(!_le.people || _le.people.length < 1) return;
-          var _sortedP = _le.people.slice().sort(function(a,b){ return _erasDob(a) - _erasDob(b); });
-          var _firstRow = _rowByName[_sortedP[0].famous];
-          var _lastRow  = _rowByName[_sortedP[_sortedP.length - 1].famous];
-          if(!_firstRow || !_lastRow) return;
-          var _ly1 = _firstRow.offsetTop + _firstRow.offsetHeight / 2;
-          var _ly2 = _lastRow.offsetTop  + _lastRow.offsetHeight  / 2;
-          if(_ly2 - _ly1 < 10) _ly2 = _ly1 + 10;
-          var _lmid = (_ly1 + _ly2) / 2;
-          var _stemX = 30; // float 30px right of the stem — no contact
-          var _cp1y = _ly1 + (_lmid - _ly1) * 0.3;
-          var _cp2y = _ly1 + (_lmid - _ly1) * 0.7;
-          var _cp3y = _lmid + (_ly2 - _lmid) * 0.3;
-          var _cp4y = _lmid + (_ly2 - _lmid) * 0.7;
-          var _d = 'M ' + _stemX + ' ' + _ly1.toFixed(1) +
-                   ' C ' + (_stemX + _le.leafW * 0.1).toFixed(1) + ' ' + _cp1y.toFixed(1) +
-                   ', ' + _le.peakX.toFixed(1) + ' ' + _cp2y.toFixed(1) +
-                   ', ' + _le.peakX.toFixed(1) + ' ' + _lmid.toFixed(1) +
-                   ' C ' + _le.peakX.toFixed(1) + ' ' + _cp3y.toFixed(1) +
-                   ', ' + (_stemX + _le.leafW * 0.1).toFixed(1) + ' ' + _cp4y.toFixed(1) +
-                   ', ' + _stemX + ' ' + _ly2.toFixed(1);
-          _le.path.setAttribute('d', _d);
-          if(_le.dot1){ _le.dot1.setAttribute('cy', _ly1); _le.dot1.setAttribute('cx', _stemX); }
-          if(_le.dot2){ _le.dot2.setAttribute('cy', _ly2); _le.dot2.setAttribute('cx', _stemX); }
-          if(_le.extLabel) _le.extLabel.style.top = _lmid + 'px';
-        });
-      }
-    }
-  }
-
-  _erasSyncClearBtn();
+  out.sort((a,b)=>{
+    const ay=_evDob(a), by=_evDob(b);
+    return (ay==null?99999:ay) - (by==null?99999:by);
+  });
+  return out;
 }
 
-function _deselectAll(){
-  _selectedTag = null;
-
-  // No filter active → restore the permanent gold Adam/Muhammad markers (dot + name + year)
-  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
-    _erasMarkers.forEach(function(m){
-      if(!m) return;
-      if(m.labelEl) m.labelEl.style.display = '';
-      if(m.dotEl) m.dotEl.style.display = '';
-      if(m.yrLabelEl) m.yrLabelEl.style.display = 'none';
-    });
-  }
-
-  _erasSelTypes.clear();
-  _erasSelTrads.clear();
-  _erasApplyFilter();
-  _erasSyncBtnLabels();
-  _erasRebuildPanels();
-  (function(){
-    var _glows  = document.querySelectorAll('#eras-view .eras-era-glow');
-    var _labels = document.querySelectorAll('#eras-view .eras-era-band-text');
-    var _lines  = document.querySelectorAll('#eras-view .eras-era-boundary');
-    ERA_BANDS.forEach(function(era, i){
-      var y1 = yearToY(era.start);
-      var y2 = yearToY(era.end);
-      if(_glows[i]){
-        _glows[i].style.top = y1 + 'px';
-        _glows[i].style.height = (y2 - y1) + 'px';
-      }
-      if(_labels[i]) _labels[i].style.top = (y1 + 12) + 'px';
-      if(_lines[i])  _lines[i].style.top  = y1 + 'px';
-    });
-    var _canvasEl = document.querySelector('#eras-view .eras-canvas');
-    var _svgEl    = document.querySelector('#eras-view .eras-canvas svg');
-    var _stemEl   = document.querySelector('#eras-view .eras-stem');
-    var _rightEl  = document.querySelector('#eras-view .eras-right-panel');
-    if(_canvasEl){
-      _canvasEl.style.height = '';
-      _canvasEl.style.minHeight = '';
-      _canvasEl.style.overflow = '';
-    }
-    if(_rightEl) _rightEl.style.height = '';
-    if(_svgEl)   _svgEl.setAttribute('height', TOTAL_H);
-    if(_stemEl)  _stemEl.style.height = '';
-    document.querySelectorAll('#eras-view .eras-era-glow, #eras-view .eras-era-band-text, #eras-view .eras-era-boundary').forEach(function(el){ el.style.display = ''; });
-  })();
-
-  if(_nameListEl) _nameListEl.innerHTML = '';
-
-  // Restore full canvas height, era bands, remove hard bottom
-  _activeTotalH = TOTAL_H;
-  if(_erasSvgEl) _erasSvgEl.setAttribute('height', _activeTotalH);
-  if(_erasCanvasEl) _erasCanvasEl.style.minHeight = _activeTotalH + 'px';
-  _leafEls.forEach(function(le){
-    if(le.clipRect) le.clipRect.setAttribute('height', _activeTotalH.toString());
-  });
-  var _rp1 = _erasRightPanel || (_nameListEl ? _nameListEl.closest('.eras-canvas').querySelector('.eras-right-panel') : null);
-  var _canvas1 = _nameListEl ? _nameListEl.closest('.eras-canvas') : null;
-  if(_rp1){
-    _rp1.querySelectorAll('.eras-era-glow, .eras-era-band-text, .eras-era-boundary').forEach(function(el){ el.style.display = ''; });
-  }
-  if(_canvas1){
-    var _bb1 = _canvas1.querySelector('.eras-hard-bottom');
-    if(_bb1) _bb1.remove();
-  }
-
-  var _canvas = _nameListEl ? _nameListEl.closest('.eras-canvas') : null;
-  if(_canvas){
-    _canvas.classList.remove('eras-prophet-mode');
-    _canvas.style.minHeight = '';
-  }
-  var _rp = _canvas ? _canvas.querySelector('.eras-right-panel') : null;
-  if(_rp) _rp.querySelectorAll('.eras-prophet-overlay').forEach(function(n){ n.remove(); });
-  if(_leftPanel) _leftPanel.querySelectorAll('.eras-prophet-overlay').forEach(function(n){ n.remove(); });
-
-  // Muhammad year label permanently hidden
-  if(typeof _erasMarkers !== 'undefined' && _erasMarkers.length){
-    _erasMarkers.forEach(function(m){
-      if(m && m.yrLabelEl){ m.yrLabelEl.textContent = ''; m.yrLabelEl.style.display = 'none'; }
-    });
-  }
-
-  // Restore Prophetic Era band to original year-based position
-  if(_rp && typeof _origYearToY === 'function' && typeof ERA_BANDS !== 'undefined' && ERA_BANDS.length){
-    var pe = ERA_BANDS[0];
-    var py1 = _origYearToY(pe.start);
-    var py2 = _origYearToY(pe.end);
-    var _glow = _rp.querySelector('.eras-era-glow');
-    var _bandLabel = _rp.querySelector('.eras-era-band-text');
-    var _bandLine = _rp.querySelector('.eras-era-boundary');
-    if(_glow){ _glow.style.top = py1 + 'px'; _glow.style.height = (py2 - py1) + 'px'; }
-    if(_bandLabel){ _bandLabel.style.top = (py1 + 12) + 'px'; }
-    if(_bandLine){ _bandLine.style.top = py1 + 'px'; }
-  }
-}
-
-// ── Multi-select toolbar builder ──
-var _erasTypeItems = [];
-var _erasTradItems = [];
-
-function _erasBuildToolbar(toolbar, typeItems, tradItems){
-  _erasTypeItems = typeItems;
-  _erasTradItems = tradItems;
-  var h = '';
-  h += '<div class="bv-dd-wrap"><button class="bv-dd-btn" id="eras-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
-  h += '<div class="bv-dd-panel" id="eras-type-panel"><input class="bv-dd-search" id="eras-type-search" placeholder="search types\u2026"><div class="bv-dd-scroll" id="eras-type-scroll"></div></div></div>';
-  h += '<div class="bv-dd-wrap"><button class="bv-dd-btn" id="eras-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
-  h += '<div class="bv-dd-panel" id="eras-trad-panel"><input class="bv-dd-search" id="eras-trad-search" placeholder="search traditions\u2026"><div class="bv-dd-scroll" id="eras-trad-scroll"></div></div></div>';
-  h += '<button class="bv-clear-all" id="eras-clear-all" title="Clear all filters" style="opacity:.4">\u00D7</button>';
-  h += '<div id="eras-anim-mount" style="margin-left:auto;display:flex;align-items:center"></div>';
-  toolbar.innerHTML = h + toolbar.innerHTML;
-
-  // Mount AnimControls pill
-  var erasMount = document.getElementById('eras-anim-mount');
-  if(erasMount && window.AnimControls){
-    _erasAnimCtl = window.AnimControls.create({
-      mountEl: erasMount,
-      idPrefix: 'eras',
-      initialSpeed: '1x',
-      onPlay: _erasAnimPlay,
-      onPause: _erasAnimPause,
-      onStop: _erasAnimStopFull,
-      onSpeedChange: function(ms){ _erasAnimSpeedMs = ms; }
-    });
-  }
-
-  _erasRebuildPanels();
-
-  // Wire dropdown open/close
-  var pairs = [
-    {btn:'eras-type-btn',panel:'eras-type-panel',search:'eras-type-search'},
-    {btn:'eras-trad-btn',panel:'eras-trad-panel',search:'eras-trad-search'}
-  ];
-  pairs.forEach(function(dd){
-    var btn = document.getElementById(dd.btn);
-    var panel = document.getElementById(dd.panel);
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      pairs.forEach(function(o){ if(o.panel !== dd.panel) document.getElementById(o.panel).classList.remove('open'); });
-      panel.classList.toggle('open');
-      if(panel.classList.contains('open')){
-        var si = document.getElementById(dd.search);
-        if(si) si.focus();
-      }
-    });
-    document.getElementById(dd.search).addEventListener('input', function(){ _erasRebuildPanels(); });
-  });
-  document.addEventListener('click', function(e){
-    pairs.forEach(function(dd){
-      var panel = document.getElementById(dd.panel);
-      var btn = document.getElementById(dd.btn);
-      if(panel && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) panel.classList.remove('open');
-    });
-  });
-  document.getElementById('eras-clear-all').addEventListener('click', function(e){
-    e.stopPropagation();
-    _deselectAll();
-  });
-}
-
-function _erasRebuildPanels(){
-  _erasBuildCheckPanel('eras-type-scroll','eras-type-search',_erasSelTypes,_erasTypeItems,function(){
-    _erasSyncBtnLabels();
-    _erasApplyFilter();
-    _erasRebuildPanels();
-  });
-  _erasBuildCheckPanel('eras-trad-scroll','eras-trad-search',_erasSelTrads,_erasTradItems,function(){
-    _erasSyncBtnLabels();
-    _erasApplyFilter();
-    _erasRebuildPanels();
-  });
-  _erasSyncBtnLabels();
-}
-
-function _erasBuildCheckPanel(scrollId, searchId, filterSet, items, onchange){
-  var scroll = document.getElementById(scrollId);
-  if(!scroll) return;
-  var si = document.getElementById(searchId);
-  var q = (si && si.value || '').toLowerCase().trim();
-  var n = filterSet.size;
-  var toggleLabel = n > 0 ? 'Deselect all' : 'Select all';
-  var html = '<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="eras-dd-toggle-all" style="font-family:\'Cinzel\',serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
-  var filtered = items.filter(function(t){ return !q || t.name.toLowerCase().indexOf(q) > -1; });
-  filtered.forEach(function(t){
-    var on = filterSet.has(t.name);
-    html += '<div class="bv-ck-row'+(on?' checked':'')+'" data-val="'+t.name+'"><span class="bv-ck'+(on?' on':'')+'"></span><span class="bv-ck-label">'+t.name+'</span><span class="bv-ck-count">('+t.count+')</span></div>';
-  });
-  scroll.innerHTML = html;
-  scroll.querySelectorAll('.bv-ck-row').forEach(function(el){
-    el.addEventListener('click', function(){
-      var v = this.getAttribute('data-val');
-      if(filterSet.has(v)) filterSet.delete(v); else filterSet.add(v);
-      onchange();
-    });
-  });
-  scroll.querySelectorAll('.eras-dd-toggle-all').forEach(function(el){
-    el.addEventListener('click', function(){
-      if(filterSet.size > 0) filterSet.clear();
-      else items.forEach(function(t){ filterSet.add(t.name); });
-      onchange();
-    });
-  });
-}
-
-function _erasSyncBtnLabels(){
-  _erasSyncOneBtn('eras-type-btn', _erasSelTypes, '\u2014 SELECT A TYPE \u2014', 'types');
-  _erasSyncOneBtn('eras-trad-btn', _erasSelTrads, '\u2014 SELECT A TRADITION \u2014', 'traditions');
-}
-
-function _erasSyncOneBtn(btnId, filterSet, defaultLabel, noun){
-  var btn = document.getElementById(btnId);
-  if(!btn) return;
-  var n = filterSet.size;
-  var txt = defaultLabel;
-  if(n === 1) txt = [...filterSet][0];
-  else if(n > 1) txt = n + ' ' + noun + ' selected';
-  btn.innerHTML = txt + '  <span style="opacity:.6">\u25BE</span>';
-}
-
-function _erasSyncClearBtn(){
-  var btn = document.getElementById('eras-clear-all');
-  if(!btn) return;
-  var active = _erasSelTypes.size > 0 || _erasSelTrads.size > 0;
-  btn.style.opacity = active ? '1' : '.4';
-  btn.style.borderColor = active ? 'var(--gold,#D4AF37)' : 'var(--border2,#2D3748)';
-}
-
-function _buildNameList(people, color, field){
-  if(!_nameListEl) return;
-  _nameListEl.innerHTML = '';
-  var sorted = people.slice().sort(function(a,b){ return (_erasDob(a)||0) - (_erasDob(b)||0); });
-  var ROW_H = 26;
-  var lastBottom = -Infinity;
-  sorted.forEach(function(p){
-    var _py = _erasDob(p);
-    var idealY = yearToY(_py != null ? _py : p.dob);
-    var y = Math.max(idealY, lastBottom + ROW_H);
-    lastBottom = y;
-    var perColor = color;
-    if(field === 'tradition' && p.tradition && TRAD_COLORS[p.tradition]) perColor = TRAD_COLORS[p.tradition];
-    else if(field === 'type' && p.type && TYPE_COLORS[p.type]) perColor = TYPE_COLORS[p.type];
-    else if(p.tradition && TRAD_COLORS[p.tradition]) perColor = TRAD_COLORS[p.tradition];
-    else if(p.type && TYPE_COLORS[p.type]) perColor = TYPE_COLORS[p.type];
-    var el = document.createElement('div');
-    el.className = 'eras-name-entry';
-    el.style.top = y + 'px';
-    el.innerHTML =
-      '<span class="eras-name-dot" style="background:' + perColor + '"></span>' +
-      '<span class="eras-name-text" style="color:#FFFFFF">' + esc(p.famous) + _erasWikiLink(p) + '</span>' +
-      '<span class="eras-name-yr" style="color:rgba(255,255,255,0.6)">' + (_py != null ? fmtYr(_py) : (p.dob_s || '\u2014')) + '</span>';
-    el.addEventListener('click', function(e){
-      e.stopPropagation();
-      if(typeof focusPersonInTimeline === 'function') focusPersonInTimeline(p.famous); else if(typeof jumpTo === 'function') jumpTo(p.famous);
-    });
-    _nameListEl.appendChild(el);
-  });
-
-  // Stretch era bands to match the visible row range
-  var _entries = _nameListEl.querySelectorAll('.eras-name-entry');
-  if(_entries.length >= 2){
-    var _firstEl = _entries[0];
-    var _lastEl  = _entries[_entries.length - 1];
-    var _firstY  = parseFloat(_firstEl.style.top) + _firstEl.offsetHeight / 2;
-    var _lastY   = parseFloat(_lastEl.style.top)  + _lastEl.offsetHeight  / 2;
-    var _firstYr = _erasDob(sorted[0]) != null ? _erasDob(sorted[0]) : sorted[0].dob;
-    var _lastYr  = _erasDob(sorted[sorted.length - 1]) != null ? _erasDob(sorted[sorted.length - 1]) : sorted[sorted.length - 1].dob;
-    var _pxPerYr = (_lastYr !== _firstYr) ? (_lastY - _firstY) / (_lastYr - _firstYr) : 0;
-    var _yrToRowY = function(yr){ return _firstY + (yr - _firstYr) * _pxPerYr; };
-
-    // Reposition Adam + Muhammad markers and labels to match stretched mapping
-    var _adamMarker = null, _muhMarker = null;
-    if(typeof _erasMarkers !== 'undefined' && _erasMarkers && _erasMarkers.length){
-      _erasMarkers.forEach(function(m){
-        var newY = _yrToRowY(m.year);
-        if(m.dotEl)   m.dotEl.style.top   = (newY - 6.5) + 'px';
-        if(m.labelEl) m.labelEl.style.top = (newY - 8) + 'px';
-        if(m.isAdam) _adamMarker = newY; else _muhMarker = newY;
-      });
-    }
-
-    // Reshape leaf SVG paths to span Adam → Muhammad when filter is ON
-    if(_adamMarker != null && _muhMarker != null && typeof _leafEls !== 'undefined' && _leafEls && _leafEls.length){
-      var _newY1 = _adamMarker;
-      var _newY2 = _muhMarker;
-      _leafEls.forEach(function(le){
-        if(!le || !le.path) return;
-        var stemX = 1;
-        var leafW = le.leafW || 60;
-        var peakX = le.peakX || (stemX + leafW);
-        var midY  = (_newY1 + _newY2) / 2;
-        var cp1y = _newY1 + (midY - _newY1) * 0.3;
-        var cp2y = _newY1 + (midY - _newY1) * 0.7;
-        var cp3y = midY + (_newY2 - midY) * 0.3;
-        var cp4y = midY + (_newY2 - midY) * 0.7;
-        var d = 'M ' + stemX + ' ' + _newY1.toFixed(1) +
-                ' C ' + (stemX + leafW * 0.1).toFixed(1) + ' ' + cp1y.toFixed(1) +
-                ', ' + peakX.toFixed(1) + ' ' + cp2y.toFixed(1) +
-                ', ' + peakX.toFixed(1) + ' ' + midY.toFixed(1) +
-                ' C ' + peakX.toFixed(1) + ' ' + cp3y.toFixed(1) +
-                ', ' + (stemX + leafW * 0.1).toFixed(1) + ' ' + cp4y.toFixed(1) +
-                ', ' + stemX + ' ' + _newY2.toFixed(1) + ' Z';
-        le.path.setAttribute('d', d);
-        if(le.dot1){ le.dot1.setAttribute('cy', _newY1); }
-        if(le.dot2){ le.dot2.setAttribute('cy', _newY2); }
-        if(le.extLabel){ le.extLabel.style.top = midY + 'px'; }
-      });
-    }
-    var _ddEl = document.querySelector('#eras-view select') || document.querySelector('.eras-dd-type');
-    var _ddVal = _ddEl ? _ddEl.value : '';
-    var _filterActive = !!(_ddVal && _ddVal !== '' && _ddVal !== '__none__' && _ddVal.toLowerCase().indexOf('select') === -1);
-    if(typeof _erasMarkers !== 'undefined' && _erasMarkers && _erasMarkers.length){
-      _erasMarkers.forEach(function(m){
-        if(m.labelEl) m.labelEl.style.display = _filterActive ? 'none' : '';
-      });
-    }
-    var _stem = document.querySelector('#eras-view .eras-stem');
-    if(_stem && _adamMarker != null && _muhMarker != null){
-      if(_filterActive){
-        _stem.style.position = 'absolute';
-        _stem.style.top = (_adamMarker - 8) + 'px';
-        _stem.style.height = (_muhMarker - _adamMarker + 16) + 'px';
-      } else {
-        _stem.style.position = '';
-        _stem.style.top = '';
-        _stem.style.height = '';
-      }
-    }
-
-    // Reposition all leaf SVGs to match stretched mapping
-    if(typeof _leafEls !== 'undefined' && _leafEls && _leafEls.length){
-      _leafEls.forEach(function(leaf){
-        if(!leaf || !leaf.el) return;
-        var topY = _yrToRowY(leaf.firstDob != null ? leaf.firstDob : _firstYr);
-        var botY = _yrToRowY(leaf.lastDod  != null ? leaf.lastDod  : _lastYr);
-        leaf.el.style.top = topY + 'px';
-        leaf.el.style.height = Math.max(2, botY - topY) + 'px';
-      });
-    }
-
-    var _glows  = document.querySelectorAll('#eras-view .eras-era-glow');
-    var _labels = document.querySelectorAll('#eras-view .eras-era-band-text');
-    var _lines  = document.querySelectorAll('#eras-view .eras-era-boundary');
-    ERA_BANDS.forEach(function(era, i){
-      var y1 = _yrToRowY(era.start);
-      var y2 = _yrToRowY(era.end);
-      if(_glows[i]){
-        _glows[i].style.top = y1 + 'px';
-        _glows[i].style.height = Math.max(0, y2 - y1) + 'px';
-      }
-      if(_labels[i]) _labels[i].style.top = (y1 + 12) + 'px';
-      if(_lines[i])  _lines[i].style.top  = y1 + 'px';
-    });
-  }
-
-  // Cap canvas height — min 60% of viewport, else last row + pad
-  var _canvasEl = document.querySelector('#eras-view .eras-canvas');
-  var _svgEl    = document.querySelector('#eras-view .eras-canvas svg');
-  var _stemEl   = document.querySelector('#eras-view .eras-stem');
-  var _rightEl  = document.querySelector('#eras-view .eras-right-panel');
-  if(_entries.length >= 1 && _canvasEl){
-    var _lastEntry = _entries[_entries.length - 1];
-    var _contentH = parseFloat(_lastEntry.style.top) + _lastEntry.offsetHeight + 80;
-    var _minH = window.innerHeight * 0.60;
-    var _capH = Math.max(_contentH, _minH);
-    _canvasEl.style.height = _capH + 'px';
-    _canvasEl.style.minHeight = _capH + 'px';
-    _canvasEl.style.overflow = 'hidden';
-    if(_rightEl) _rightEl.style.height = _capH + 'px';
-    if(_svgEl) _svgEl.setAttribute('height', _capH);
-    if(_stemEl && !_filterActive) _stemEl.style.height = _capH + 'px';
-  }
-
-  if(_entries.length < 2){
-    document.querySelectorAll('#eras-view .eras-era-glow, #eras-view .eras-era-band-text, #eras-view .eras-era-boundary').forEach(function(el){ el.style.display = 'none'; });
-  } else {
-    document.querySelectorAll('#eras-view .eras-era-glow, #eras-view .eras-era-band-text, #eras-view .eras-era-boundary').forEach(function(el){ el.style.display = ''; });
-  }
-
-  setTimeout(function(){
-    var _lbls = Array.prototype.slice.call(document.querySelectorAll('#eras-view .eras-era-band-text'));
-    _lbls.forEach(function(el){ el.style.display = ''; });
-    _lbls.sort(function(a,b){ return parseFloat(a.style.top||'0') - parseFloat(b.style.top||'0'); });
-    var _canvasH = _canvasEl ? parseFloat(_canvasEl.style.height||'0') : Infinity;
-    var _LBL_H = 50;
-    var _lastShownTop = -9999;
-    _lbls.forEach(function(el){
-      var t = parseFloat(el.style.top||'0');
-      if(t < 0 || t + _LBL_H > _canvasH - 4){ el.style.display = 'none'; return; }
-      if(t - _lastShownTop < _LBL_H){ el.style.display = 'none'; return; }
-      _lastShownTop = t;
-    });
-  }, 0);
-}
-
-var _origSetView = window.setView;
-window.setView = function(v){
-  // Stop any running animation when leaving a view
-  _erasAnimStopFull();
-  if(typeof _mapAnimStop === 'function') _mapAnimStop();
-  _origSetView(v);
-  var r3 = document.getElementById('hdrRow3');
-  if(r3) r3.style.display = v === 'studyroom' ? 'none' : 'flex';
-  // Hide old hdrRow3 anim elements (now replaced by pill in eras-toolbar)
-  var ab = document.getElementById('erasAnimateBtn');
-  if(ab) ab.style.display = 'none';
-  var as = document.getElementById('erasAnimSpeed');
-  if(as) as.style.display = 'none';
-};
-
-// ── ERAS Animate — curfew-based (global standard) ──
-var _erasAnimTimer = null;
-var _erasAnimMode = 'stopped';
-var _erasAnimSpeedMs = 1200;
-var _erasAnimCtl = null;
-var _erasCurfewY = 0;
-
-function _erasAnimPlay(){
-  var rp = _erasRightPanel;
-  if(!rp) return;
-
-  // Ensure curfew line exists
-  var cursor = document.getElementById('eras-curfew');
-  if(!cursor){
-    cursor = document.createElement('div');
-    cursor.id = 'eras-curfew';
-    cursor.className = 'eras-curfew-line';
-    cursor.innerHTML = '<span id="eras-curfew-year" class="eras-curfew-year"></span>';
-    cursor.style.display = 'none';
-    rp.appendChild(cursor);
-  }
-
-  if(_erasAnimMode === 'paused'){
-    _erasAnimMode = 'playing';
-    cursor.style.display = '';
-    _erasAnimTimer = setInterval(_erasAnimTick, _erasAnimSpeedMs);
+function _evBuildCanvas(){
+  _evSyncClearBtn();
+  const canvas=document.getElementById('ev-canvas');
+  if(!canvas) return;
+  const people=_evFiltered();
+  if(!people.length){
+    canvas.style.height='200px';
+    canvas.innerHTML='<div id="ev-empty">NO FIGURES MATCH YOUR FILTERS</div>';
     return;
   }
+  const totalH=_EV_TOP_PAD + people.length*_EV_ROW_H + _EV_BOT_PAD;
+  canvas.style.height=totalH+'px';
+  const rowMap={};
+  let html='';
+  html+='<div id="ev-stem" style="top:'+(_EV_TOP_PAD-10)+'px;height:'+(totalH - _EV_TOP_PAD - _EV_BOT_PAD + 20)+'px"></div>';
 
-  // Fresh start — hide everything except .eras-stem
-  _erasAnimMode = 'playing';
-  _erasCurfewY = (typeof yearToY === 'function') ? yearToY(500) : TOP_PAD;
-  _erasAnimSpeedMs = _erasAnimCtl ? _erasAnimCtl.getSpeedMs() : 1200;
+  people.forEach((p,idx)=>{
+    const y=_EV_TOP_PAD+idx*_EV_ROW_H;
+    const midY=y+_EV_ROW_H/2;
+    rowMap[p.slug]={y:y,midY:midY,person:p};
+    const dob=_evDob(p);
+    const nameCol=_evNameColor(p);
+    const yrTxt=_evFmtYear(dob);
 
-  // Hide HTML elements in right panel (bands, labels, markers, leaf labels)
-  rp.querySelectorAll('.eras-era-glow,.eras-era-band-text,.eras-era-boundary,.eras-stem-marker,.eras-leaf-ext-label,.eras-slider-dot').forEach(function(el){
-    el.classList.add('eras-hidden-by-curfew');
+    html+='<div class="ev-row" data-slug="'+_evEsc(p.slug)+'" data-name="'+_evEsc(p.famous)+'" data-year="'+(dob==null?'':dob)+'" style="top:'+y+'px;height:'+_EV_ROW_H+'px">';
+    html+='<div class="ev-row-main"><div class="ev-row-title" style="color:'+nameCol+'">'+_evEsc(p.famous)+_evWiki(p)+'</div></div>';
+    html+='</div>';
+    html+='<div class="ev-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px">'+yrTxt+'</div>';
   });
-  // Hide HTML elements in left panel (name labels, year labels)
-  if(_leftPanel) _leftPanel.querySelectorAll('.eras-perm-label,.eras-stem-yr-label').forEach(function(el){
-    el.classList.add('eras-hidden-by-curfew');
+  canvas.innerHTML=html;
+
+  canvas.querySelectorAll('.ev-row').forEach(row=>{
+    row.addEventListener('click',function(e){
+      if(e.target.closest('.ev-wiki')) return;
+      const name=row.getAttribute('data-name');
+      if(!name) return;
+      if(typeof setView==='function') setView('timeline');
+      setTimeout(()=>{ if(typeof jumpTo==='function') jumpTo(name); },50);
+    });
   });
-  // Hide name list entries
-  if(_nameListEl) _nameListEl.querySelectorAll('.eras-name-entry').forEach(function(el){
-    el.classList.add('eras-hidden-by-curfew');
+
+  _evRenderLeaves(people, rowMap, totalH);
+}
+
+function _evRenderLeaves(people, rowMap, totalH){
+  const canvas=document.getElementById('ev-canvas');
+  if(!canvas) return;
+  const NS='http://www.w3.org/2000/svg';
+
+  // Group into leaves by type + tradition + virtual Prophetic Lineage
+  const byTag={};
+  people.forEach(p=>{
+    if(p.type){
+      if(!byTag[p.type]) byTag[p.type]={key:p.type,field:'type',people:[],color:_EV_TYPE_COLORS[p.type]||'#A0AEC0'};
+      byTag[p.type].people.push(p);
+    }
+    if(p.tradition && !_EV_SKIP_TRADS[p.tradition]){
+      if(!byTag[p.tradition]) byTag[p.tradition]={key:p.tradition,field:'trad',people:[],color:_EV_TRAD_COLORS[p.tradition]||'#A0AEC0'};
+      byTag[p.tradition].people.push(p);
+    }
   });
-  // Hide SVG leaf groups
-  if(_erasSvgEl){
-    _erasSvgEl.querySelectorAll('.eras-leaf').forEach(function(g){
-      g.setAttribute('opacity','0');
+  if(typeof PROPHET_CHAIN!=='undefined'){
+    const chain=people.filter(p=>PROPHET_CHAIN.has(p.famous));
+    if(chain.length) byTag['Prophetic Lineage']={key:'Prophetic Lineage',field:'type',people:chain,color:'rgba(212,175,55,0.55)'};
+  }
+  const leaves=Object.values(byTag).filter(t=>t.people.length>0);
+  if(!leaves.length) return;
+
+  leaves.forEach(t=>{
+    const ys=t.people.map(p=>rowMap[p.slug].midY);
+    t.y1=Math.min.apply(null,ys); t.y2=Math.max.apply(null,ys);
+    t.count=t.people.length;
+  });
+  leaves.sort((a,b)=>a.y1-b.y1);
+  const maxCount=Math.max.apply(null,leaves.map(l=>l.count));
+
+  // Era bands — row-based yearToY
+  _EV_ERA_BANDS.forEach(era=>{
+    const y1e=_evYearToY(era.start,people,rowMap);
+    const y2e=_evYearToY(era.end,people,rowMap);
+    if(y2e-y1e<6) return;
+    const gDiv=document.createElement('div');
+    gDiv.className='ev-era-band';
+    gDiv.style.cssText='top:'+y1e+'px;height:'+(y2e-y1e)+'px;background:linear-gradient(to left, rgba('+era.glow+',0.10) 0%, rgba('+era.glow+',0.04) 50%, transparent 85%)';
+    canvas.appendChild(gDiv);
+    const label=document.createElement('div');
+    label.className='ev-era-label';
+    label.style.top=(y1e+12)+'px';
+    label.innerHTML='<div class="ev-era-label-name" style="color:rgba('+era.glow+',0.85)">'+era.name+'</div><div class="ev-era-label-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
+    canvas.appendChild(label);
+  });
+
+  // SVG leaves — EXACT books.js formula
+  const svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','ev-leaves');
+  svg.style.left=_EV_STEM_X+'px';
+  const rightW=Math.max(400,(canvas.clientWidth||1400)-_EV_STEM_X-80);
+  svg.setAttribute('width',rightW);
+  svg.setAttribute('height',totalH);
+
+  const maxLeafW=rightW*0.6;
+  const MIN_LEAF_W=30;
+  const totalLeaves=leaves.length;
+
+  leaves.forEach((ld,idx)=>{
+    let y1=ld.y1, y2=ld.y2;
+    if(y2-y1<10) y2=y1+10;
+    const leafW=Math.max(MIN_LEAF_W,(ld.count/maxCount)*maxLeafW);
+    const xOffset=15+(idx/totalLeaves)*(rightW*0.30);
+    const midY=(y1+y2)/2;
+    const peakX=xOffset+leafW;
+    const stemX=1;
+
+    const cp1y=y1+(midY-y1)*0.3;
+    const cp2y=y1+(midY-y1)*0.7;
+    const cp3y=midY+(y2-midY)*0.3;
+    const cp4y=midY+(y2-midY)*0.7;
+    const d='M '+stemX+' '+y1.toFixed(1)+
+      ' C '+(stemX+leafW*0.1).toFixed(1)+' '+cp1y.toFixed(1)+
+      ', '+peakX.toFixed(1)+' '+cp2y.toFixed(1)+
+      ', '+peakX.toFixed(1)+' '+midY.toFixed(1)+
+      ' C '+peakX.toFixed(1)+' '+cp3y.toFixed(1)+
+      ', '+(stemX+leafW*0.1).toFixed(1)+' '+cp4y.toFixed(1)+
+      ', '+stemX+' '+y2.toFixed(1)+' Z';
+
+    const g=document.createElementNS(NS,'g');
+    g.setAttribute('class','ev-leaf'); g.setAttribute('data-tag',ld.key);
+    g.style.cursor='pointer'; g.style.pointerEvents='auto';
+    const path=document.createElementNS(NS,'path');
+    path.setAttribute('d',d); path.setAttribute('fill','none'); path.setAttribute('fill-opacity','0');
+    path.setAttribute('stroke',ld.color); path.setAttribute('stroke-opacity','0.5'); path.setAttribute('stroke-width','2.5');
+    g.appendChild(path);
+    const dot1=document.createElementNS(NS,'circle');
+    dot1.setAttribute('cx',stemX); dot1.setAttribute('cy',y1); dot1.setAttribute('r',2); dot1.setAttribute('fill',ld.color);
+    dot1.style.pointerEvents='none'; g.appendChild(dot1);
+    const dot2=document.createElementNS(NS,'circle');
+    dot2.setAttribute('cx',stemX); dot2.setAttribute('cy',y2); dot2.setAttribute('r',2); dot2.setAttribute('fill',ld.color);
+    dot2.style.pointerEvents='none'; g.appendChild(dot2);
+    svg.appendChild(g);
+
+    ld._y1=y1; ld._stemX=stemX;
+
+    const clickH=function(e){
+      e.stopPropagation();
+      if(ld.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(ld.key); }
+      else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(ld.key); }
+      _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+      _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+      _evBuildCanvas(); _evAnimStop();
+    };
+    g.addEventListener('click',clickH);
+    g.addEventListener('mouseenter',function(){ if(_EV_FILTER.types.size||_EV_FILTER.trads.size) return; path.setAttribute('stroke-opacity','0.9'); });
+    g.addEventListener('mouseleave',function(){ if(_EV_FILTER.types.size||_EV_FILTER.trads.size) return; path.setAttribute('stroke-opacity','0.5'); });
+  });
+
+  canvas.appendChild(svg);
+
+  // Leaf labels — at STEM_X + 90 with dashed connectors (EXACT books.js approach)
+  const LABEL_H=22;
+  const LABEL_LEFT=_EV_STEM_X+90;
+  const labelInfos=[];
+  leaves.forEach(ld=>{
+    const naturalY=ld._y1+6;
+    labelInfos.push({key:ld.key,count:ld.count,color:ld.color,field:ld.field,naturalY:naturalY,anchorY:ld._y1,resolvedY:naturalY});
+  });
+  labelInfos.sort((a,b)=>a.naturalY-b.naturalY);
+  let lastBottom=-Infinity;
+  labelInfos.forEach(li=>{
+    if(li.resolvedY<lastBottom+2) li.resolvedY=lastBottom+2;
+    lastBottom=li.resolvedY+LABEL_H;
+  });
+  labelInfos.forEach(li=>{
+    const connY=li.anchorY;
+    const connDiv=document.createElement('div');
+    connDiv.style.cssText='position:absolute;top:'+connY+'px;left:'+(_EV_STEM_X+2)+'px;width:'+(LABEL_LEFT-_EV_STEM_X-2)+'px;height:0;border-top:1px dashed rgba('+_evColorToRgb(li.color)+',0.35);pointer-events:none;z-index:3';
+    if(Math.abs(li.resolvedY-connY)>2){
+      const vertDiv=document.createElement('div');
+      vertDiv.style.cssText='position:absolute;top:'+Math.min(connY,li.resolvedY+LABEL_H/2)+'px;left:'+(LABEL_LEFT-1)+'px;width:0;height:'+Math.abs(li.resolvedY+LABEL_H/2-connY)+'px;border-left:1px dashed rgba('+_evColorToRgb(li.color)+',0.35);pointer-events:none;z-index:3';
+      canvas.appendChild(vertDiv);
+    }
+    canvas.appendChild(connDiv);
+    const extLabel=document.createElement('div');
+    extLabel.className='ev-leaf-label';
+    extLabel.setAttribute('data-tag',li.key);
+    extLabel.style.cssText='position:absolute;top:'+li.resolvedY+'px;left:'+LABEL_LEFT+'px;white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+li.color+';background:rgba(14,22,33,0.85);padding:2px 8px;border-radius:2px;border:1px solid rgba('+_evColorToRgb(li.color)+',0.4);z-index:4';
+    extLabel.textContent=li.key+' ('+li.count+')';
+    extLabel.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(li.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(li.key); }
+      else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(li.key); }
+      _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+      _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+      _evBuildCanvas(); _evAnimStop();
+    });
+    canvas.appendChild(extLabel);
+  });
+}
+
+// ── Multi-select dropdown panels ──
+function _evCk(on){ return '<span class="ev-ck'+(on?' on':'')+'"></span>'; }
+function _evSyncBtnLabel(btnId,filterSet,defaultLabel,noun){
+  const btn=document.getElementById(btnId); if(!btn) return;
+  const n=filterSet.size; let txt=defaultLabel;
+  if(n===1) txt=[...filterSet][0]; else if(n>1) txt=n+' '+noun+' selected';
+  btn.innerHTML=_evEsc(txt)+'  <span style="opacity:.6">\u25BE</span>';
+}
+function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
+  const scroll=document.getElementById(scrollId); if(!scroll) return;
+  const si=document.getElementById(searchId);
+  const q=(si&&si.value||'').toLowerCase().trim();
+  const toggleLabel=filterSet.size>0?'Deselect all':'Select all';
+  let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="ev-dd-toggle-all" style="font-family:Cinzel,serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
+  const filtered=items.filter(t=>!q||t.name.toLowerCase().indexOf(q)>-1);
+  filtered.forEach(t=>{
+    const on=filterSet.has(t.name);
+    html+='<div class="ev-ck-row'+(on?' checked':'')+'" data-val="'+_evEsc(t.name)+'">'+_evCk(on)+'<span class="ev-ck-label">'+_evEsc(t.name)+'</span><span class="ev-ck-count">('+t.count+')</span></div>';
+  });
+  scroll.innerHTML=html;
+  scroll.querySelectorAll('.ev-ck-row').forEach(el=>{
+    el.addEventListener('click',function(){ const v=this.getAttribute('data-val'); if(filterSet.has(v)) filterSet.delete(v); else filterSet.add(v); onchange(); });
+  });
+  scroll.querySelectorAll('.ev-dd-toggle-all').forEach(el=>{
+    el.addEventListener('click',function(){ if(filterSet.size>0) filterSet.clear(); else items.forEach(t=>filterSet.add(t.name)); onchange(); });
+  });
+}
+function _evBuildTypePanel(){
+  _evBuildPanel('ev-type-scroll','ev-type-search',_EV_FILTER.types,_evCollectTypes(),function(){
+    _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+    _evBuildTypePanel(); _evBuildCanvas(); _evAnimStop();
+  });
+}
+function _evBuildTradPanel(){
+  _evBuildPanel('ev-trad-scroll','ev-trad-search',_EV_FILTER.trads,_evCollectTrads(),function(){
+    _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+    _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
+  });
+}
+function _evSyncClearBtn(){
+  const btn=document.getElementById('ev-clear-all'); if(!btn) return;
+  const has=_EV_FILTER.types.size||_EV_FILTER.trads.size||_EV_FILTER.search;
+  btn.classList.toggle('active',!!has);
+}
+
+// ── Animation (curfew sweep, matches books.js) ──
+function _evCurfewYToYear(cursorY,canvas){
+  const rows=[].slice.call(canvas.querySelectorAll('.ev-row'));
+  for(let i=rows.length-1;i>=0;i--){
+    const t=parseFloat(rows[i].style.top)||0;
+    if(cursorY>=t){ const yr=rows[i].getAttribute('data-year'); if(yr!=='') return parseInt(yr,10); }
+  }
+  return null;
+}
+function _evSvgBottomY(el){
+  const tag=el.tagName.toLowerCase();
+  if(tag==='path'){ const b=el.getBBox(); return b.y+b.height; }
+  if(tag==='line'){ const y1=parseFloat(el.getAttribute('y1')),y2=parseFloat(el.getAttribute('y2')); return Math.max(y1||0,y2||0); }
+  if(tag==='circle') return parseFloat(el.getAttribute('cy'))||0;
+  if(tag==='g'){ const gb=el.getBBox(); return gb.y+gb.height; }
+  return null;
+}
+function _evAnimPlay(){
+  const canvas=document.getElementById('ev-canvas');
+  const scroll=document.getElementById('ev-scroll');
+  if(!canvas||!scroll) return;
+  let cursor=document.getElementById('ev-curfew');
+  if(!cursor){
+    cursor=document.createElement('div'); cursor.id='ev-curfew'; cursor.className='ev-curfew-line';
+    cursor.innerHTML='<span id="ev-curfew-year" class="ev-curfew-year"></span>';
+    cursor.style.display='none'; canvas.appendChild(cursor);
+  }
+  if(_EV_ANIM.mode==='paused'){
+    _EV_ANIM.mode='playing'; cursor.style.display='';
+    _EV_ANIM.timer=setInterval(_EV_ANIM.tick,_EV_ANIM.speedMs); return;
+  }
+  _EV_ANIM.mode='playing';
+  _EV_ANIM.cursorY=_EV_TOP_PAD;
+  _EV_ANIM.speedMs=_EV_ANIM_CTL?_EV_ANIM_CTL.getSpeedMs():1200;
+  canvas.querySelectorAll('.ev-row,.ev-year-chip,.ev-era-band,.ev-era-label,.ev-leaf-label').forEach(el=>el.classList.add('ev-hidden-by-curfew'));
+  canvas.querySelectorAll('svg').forEach(sv=>{
+    [].slice.call(sv.children).forEach(ch=>{
+      if(ch.tagName==='defs') return;
+      const orig=ch.getAttribute('opacity');
+      if(orig&&orig!=='0') ch.setAttribute('data-orig-opacity',orig);
+      ch.setAttribute('opacity','0');
+    });
+  });
+  cursor.style.display=''; cursor.style.top=_EV_ANIM.cursorY+'px';
+  _EV_ANIM.maxY=parseFloat(canvas.style.height)||2000;
+  const STEP=4;
+  _EV_ANIM.tick=function(){
+    if(_EV_ANIM.mode!=='playing') return;
+    _EV_ANIM.cursorY+=STEP;
+    if(_EV_ANIM.cursorY>_EV_ANIM.maxY){ _evAnimStop(); return; }
+    cursor.style.top=_EV_ANIM.cursorY+'px';
+    canvas.querySelectorAll('.ev-hidden-by-curfew').forEach(el=>{
+      const t=parseFloat(el.style.top);
+      if(!isNaN(t)&&t<=_EV_ANIM.cursorY) el.classList.remove('ev-hidden-by-curfew');
+    });
+    canvas.querySelectorAll('svg').forEach(sv=>{
+      [].slice.call(sv.children).forEach(ch=>{
+        if(ch.getAttribute('opacity')!=='0') return;
+        const bot=_evSvgBottomY(ch);
+        if(bot!==null&&bot<=_EV_ANIM.cursorY){
+          const orig=ch.getAttribute('data-orig-opacity');
+          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
+        }
+      });
+    });
+    const yr=_evCurfewYToYear(_EV_ANIM.cursorY,canvas);
+    const yrEl=document.getElementById('ev-curfew-year');
+    if(yrEl) yrEl.innerHTML=yr!=null?_evFmtYear(yr):'';
+    scroll.scrollTo({top:Math.max(0,_EV_ANIM.cursorY-scroll.clientHeight/2),behavior:'auto'});
+  };
+  _EV_ANIM.tick();
+  _EV_ANIM.timer=setInterval(_EV_ANIM.tick,_EV_ANIM.speedMs);
+}
+function _evAnimPause(){
+  _EV_ANIM.mode='paused';
+  if(_EV_ANIM.timer){ clearInterval(_EV_ANIM.timer); _EV_ANIM.timer=null; }
+}
+function _evAnimStop(){
+  _EV_ANIM.mode='stopped';
+  if(_EV_ANIM.timer){ clearInterval(_EV_ANIM.timer); _EV_ANIM.timer=null; }
+  _EV_ANIM.tick=null;
+  const canvas=document.getElementById('ev-canvas');
+  if(canvas){
+    canvas.querySelectorAll('.ev-hidden-by-curfew').forEach(el=>el.classList.remove('ev-hidden-by-curfew'));
+    canvas.querySelectorAll('svg').forEach(sv=>{
+      [].slice.call(sv.children).forEach(ch=>{
+        if(ch.getAttribute('opacity')==='0'){
+          const orig=ch.getAttribute('data-orig-opacity');
+          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
+        }
+      });
+    });
+  }
+  const cursor=document.getElementById('ev-curfew'); if(cursor) cursor.style.display='none';
+  if(_EV_ANIM_CTL) _EV_ANIM_CTL.forceStop();
+}
+
+function initEras(){
+  _evInjectStyles();
+  const view=document.getElementById('eras-view'); if(!view) return;
+  view.style.flexDirection='column';
+
+  let html='';
+  html+='<div id="ev-toolbar">';
+  html+='<div class="ev-dd-wrap"><button class="ev-dd-btn" id="ev-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  html+='<div class="ev-dd-panel" id="ev-type-panel"><input class="ev-dd-search" id="ev-type-search" placeholder="search types\u2026"><div class="ev-dd-scroll" id="ev-type-scroll"></div></div></div>';
+  html+='<div class="ev-dd-wrap"><button class="ev-dd-btn" id="ev-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  html+='<div class="ev-dd-panel" id="ev-trad-panel"><input class="ev-dd-search" id="ev-trad-search" placeholder="search traditions\u2026"><div class="ev-dd-scroll" id="ev-trad-scroll"></div></div></div>';
+  html+='<button class="ev-clear-all" id="ev-clear-all" title="Clear all filters">\u00D7</button>';
+  html+='<div id="ev-anim-mount"></div>';
+  html+='</div>';
+  html+='<div id="ev-scroll"><div id="ev-canvas"></div></div>';
+  view.innerHTML=html;
+
+  _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas();
+
+  const pairs=[
+    {btn:'ev-type-btn',panel:'ev-type-panel',search:'ev-type-search',build:_evBuildTypePanel},
+    {btn:'ev-trad-btn',panel:'ev-trad-panel',search:'ev-trad-search',build:_evBuildTradPanel}
+  ];
+  pairs.forEach(dd=>{
+    const btn=document.getElementById(dd.btn),panel=document.getElementById(dd.panel);
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      pairs.forEach(o=>{ if(o.panel!==dd.panel) document.getElementById(o.panel).classList.remove('open'); });
+      panel.classList.toggle('open');
+      if(panel.classList.contains('open')){ const s=document.getElementById(dd.search); if(s) s.focus(); }
+    });
+    document.getElementById(dd.search).addEventListener('input',dd.build);
+  });
+  document.addEventListener('click',function(e){
+    pairs.forEach(dd=>{
+      const p=document.getElementById(dd.panel),b=document.getElementById(dd.btn);
+      if(p&&!p.contains(e.target)&&e.target!==b&&!b.contains(e.target)) p.classList.remove('open');
+    });
+  });
+  document.getElementById('ev-clear-all').addEventListener('click',function(e){
+    e.stopPropagation();
+    _EV_FILTER.types.clear(); _EV_FILTER.trads.clear(); _EV_FILTER.search='';
+    _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+    _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+    _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
+  });
+
+  const mount=document.getElementById('ev-anim-mount');
+  if(mount && window.AnimControls){
+    _EV_ANIM_CTL=window.AnimControls.create({
+      mountEl:mount, idPrefix:'ev', initialSpeed:'1x',
+      onPlay:_evAnimPlay, onPause:_evAnimPause, onStop:_evAnimStop,
+      onSpeedChange:function(ms){ _EV_ANIM.speedMs=ms; }
     });
   }
 
-  cursor.style.display = '';
-  cursor.style.top = _erasCurfewY + 'px';
-
-  // Scroll to top
-  if(_scrollEl) _scrollEl.scrollTop = Math.max(0, _erasCurfewY - 200);
-
-  _erasAnimTimer = setInterval(_erasAnimTick, _erasAnimSpeedMs);
+  _EV_INITED=true;
 }
 
-function _erasAnimTick(){
-  if(_erasAnimMode !== 'playing') return;
-  var rp = _erasRightPanel;
-  if(!rp) return;
-  _erasCurfewY += 6;
-  if(_erasCurfewY > TOTAL_H){ _erasAnimStopFull(); return; }
-  var cursor = document.getElementById('eras-curfew');
-  if(cursor) cursor.style.top = _erasCurfewY + 'px';
+(function(){
+  const _origOnSearch=window.onSearch;
+  window.onSearch=function(){
+    if(typeof VIEW!=='undefined' && VIEW==='eras'){
+      const box=document.getElementById('search');
+      _EV_FILTER.search=box?box.value:'';
+      _evBuildCanvas(); _evAnimStop(); return;
+    }
+    if(typeof _origOnSearch==='function') _origOnSearch();
+  };
+})();
 
-  // Reveal HTML elements by their top
-  rp.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){
-    var t = parseFloat(el.style.top);
-    if(!isNaN(t) && t <= _erasCurfewY) el.classList.remove('eras-hidden-by-curfew');
-  });
-  // Reveal left panel elements
-  if(_leftPanel) _leftPanel.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){
-    var t = parseFloat(el.style.top);
-    if(!isNaN(t) && t <= _erasCurfewY) el.classList.remove('eras-hidden-by-curfew');
-  });
-  // Reveal name list entries
-  if(_nameListEl) _nameListEl.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){
-    var t = parseFloat(el.style.top);
-    if(!isNaN(t) && t <= _erasCurfewY) el.classList.remove('eras-hidden-by-curfew');
-  });
-  // Reveal SVG leaf groups by their bottom Y
-  if(_erasSvgEl){
-    _erasSvgEl.querySelectorAll('.eras-leaf[opacity="0"]').forEach(function(g){
-      try{
-        var bb = g.getBBox();
-        var bottomY = bb.y + bb.height;
-        if(bottomY <= _erasCurfewY) g.removeAttribute('opacity');
-      }catch(e){}
-    });
-  }
+(function(){
+  if(typeof window.setView!=='function') return;
+  const _origSetView=window.setView;
+  window.setView=function(v){
+    _origSetView(v);
+    const ev=document.getElementById('eras-view'); if(!ev) return;
+    if(v==='eras'){ ev.style.display='flex'; ev.style.flexDirection='column'; if(!_EV_INITED) initEras(); }
+    else { _evAnimStop(); }
+  };
+})();
 
-  // Year label on curfew line
-  var yr = yToYear(_erasCurfewY);
-  var yrEl = document.getElementById('eras-curfew-year');
-  if(yrEl){
-    var rounded = Math.round(yr);
-    yrEl.innerHTML = rounded <= 0
-      ? Math.abs(rounded) + '<span class="year-era">BCE</span>'
-      : rounded + '<span class="year-era">CE</span>';
-  }
-
-  // Scroll to follow curfew
-  if(_scrollEl) _scrollEl.scrollTop = Math.max(0, _erasCurfewY - _scrollEl.clientHeight / 2);
-}
-
-function _erasAnimPause(){
-  _erasAnimMode = 'paused';
-  if(_erasAnimTimer){ clearInterval(_erasAnimTimer); _erasAnimTimer = null; }
-}
-
-function _erasAnimStopFull(){
-  _erasAnimMode = 'stopped';
-  if(_erasAnimTimer){ clearInterval(_erasAnimTimer); _erasAnimTimer = null; }
-  if(_erasAnimCtl) _erasAnimCtl.forceStop();
-
-  // Reveal all HTML elements
-  var rp = _erasRightPanel;
-  if(rp) rp.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){ el.classList.remove('eras-hidden-by-curfew'); });
-  if(_leftPanel) _leftPanel.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){ el.classList.remove('eras-hidden-by-curfew'); });
-  if(_nameListEl) _nameListEl.querySelectorAll('.eras-hidden-by-curfew').forEach(function(el){ el.classList.remove('eras-hidden-by-curfew'); });
-  // Reveal all SVG leaves
-  if(_erasSvgEl) _erasSvgEl.querySelectorAll('.eras-leaf[opacity="0"]').forEach(function(g){ g.removeAttribute('opacity'); });
-  // Hide curfew line
-  var cursor = document.getElementById('eras-curfew');
-  if(cursor) cursor.style.display = 'none';
-}
-
-window._erasAnimStop = _erasAnimStopFull;
-window.toggleErasAnimate = function(){}; // stub for old onclick in index.html
-
-window.initEras = initEras;
+window.initEras=initEras;
+window._erasAnimStop=_evAnimStop;
+window.toggleErasAnimate=function(){};
 
 window._captureState_eras=function(){
-  var scroll=document.querySelector('.eras-scroll');
-  return{types:Array.from(_erasSelTypes),trads:Array.from(_erasSelTrads),scrollY:scroll?scroll.scrollTop:0};
+  const s=document.getElementById('ev-scroll');
+  return { types:Array.from(_EV_FILTER.types), trads:Array.from(_EV_FILTER.trads), search:_EV_FILTER.search, scrollY:s?s.scrollTop:0 };
 };
 window._restoreState_eras=function(s){
   if(!s) return;
-  _erasSelTypes=new Set(s.types||[]);_erasSelTrads=new Set(s.trads||[]);
-  _erasApplyFilter();_erasSyncBtnLabels();_erasRebuildPanels();
-  if(s.scrollY){var scroll=document.querySelector('.eras-scroll');if(scroll) scroll.scrollTop=s.scrollY;}
+  _EV_FILTER.types=new Set(s.types||[]); _EV_FILTER.trads=new Set(s.trads||[]); _EV_FILTER.search=s.search||'';
+  _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+  _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+  _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas();
+  if(s.scrollY){ const sc=document.getElementById('ev-scroll'); if(sc) sc.scrollTop=s.scrollY; }
 };
 
 })();
