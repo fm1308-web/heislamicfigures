@@ -197,7 +197,9 @@
         "person": "Safiyya bint Abd al-Muttalib",
         "relation": "sibling"
       }
-    ]
+    ],
+    "dob_academic": 566,
+    "dod_academic": 653
   },
   {
     "slug": "F0007",
@@ -284,7 +286,9 @@
         "person": "Hashim ibn Abd Manaf",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 497,
+    "dod_academic": 578
   },
   {
     "slug": "F0009",
@@ -821,7 +825,9 @@
         "person": "Qusayy ibn Kilab",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 430,
+    "dod_academic": 510
   },
   {
     "slug": "F0027",
@@ -941,7 +947,9 @@
         "person": "Abd al-Razzaq ibn Abd al-Qadir al-Jilani",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1077,
+    "dod_academic": 1166
   },
   {
     "slug": "F0032",
@@ -2302,7 +2310,9 @@
         "person": "Safiyya bint Abd al-Muttalib",
         "relation": "sibling"
       }
-    ]
+    ],
+    "dob_academic": 545,
+    "dod_academic": 570
   },
   {
     "slug": "F0080",
@@ -2424,7 +2434,9 @@
       "Prophet Muhammad"
     ],
     "_dobFromDod": false,
-    "relations": []
+    "relations": [],
+    "dob_academic": 598,
+    "dod_academic": 600
   },
   {
     "slug": "F0084",
@@ -2754,7 +2766,9 @@
         "person": "Shalikh ibn Arfakhshadh",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -2490,
+    "dod_academic": -2090
   },
   {
     "slug": "F0097",
@@ -4757,7 +4771,9 @@
         "person": "Abu al-Abbas al-Mursi",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1196,
+    "dod_academic": 1258
   },
   {
     "slug": "F0171",
@@ -4966,7 +4982,9 @@
         "person": "Ma'add ibn Adnan",
         "relation": "child"
       }
-    ]
+    ],
+    "dob_academic": -100,
+    "dod_academic": -30
   },
   {
     "slug": "F0179",
@@ -5068,7 +5086,9 @@
         "person": "Adda Bentounes",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1869,
+    "dod_academic": 1934
   },
   {
     "slug": "F0183",
@@ -5089,7 +5109,9 @@
     "lat": 30.8,
     "lng": 31,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1199,
+    "dod_academic": 1276
   },
   {
     "slug": "F0184",
@@ -5110,7 +5132,9 @@
     "lat": 32.5,
     "lng": 46.2,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1119,
+    "dod_academic": 1182
   },
   {
     "slug": "F0185",
@@ -5136,7 +5160,9 @@
         "person": "Muhammad al-Ghali (primary successor)",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1737,
+    "dod_academic": 1815
   },
   {
     "slug": "F0186",
@@ -5380,7 +5406,9 @@
     "teachers": [
       "Yusuf al-Hamadani"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1093,
+    "dod_academic": 1166
   },
   {
     "slug": "F0195",
@@ -8004,7 +8032,9 @@
         "person": "Kinana ibn Khuzayma",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 105,
+    "dod_academic": 175
   },
   {
     "slug": "F0298",
@@ -11925,7 +11955,9 @@
         "person": "Shith ibn Adam",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -9025,
+    "dod_academic": -8075
   },
   {
     "slug": "F0448",
@@ -12149,7 +12181,9 @@
         "person": "Shalikh ibn Arfakhshadh",
         "relation": "child"
       }
-    ]
+    ],
+    "dob_academic": -2750,
+    "dod_academic": -2350
   },
   {
     "slug": "F0455",
@@ -13529,7 +13563,9 @@
     "lat": 41.0082,
     "lng": 28.9784,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1541,
+    "dod_academic": 1628
   },
   {
     "slug": "F0505",
@@ -13651,7 +13687,9 @@
         "person": "Ala al-Din al-Attar",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1318,
+    "dod_academic": 1389
   },
   {
     "slug": "F0510",
@@ -15348,7 +15386,9 @@
         "person": "Abir ibn Shalikh",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -2360,
+    "dod_academic": -1960
   },
   {
     "slug": "F0577",
@@ -15511,7 +15551,9 @@
     "lat": 34.06,
     "lng": -4.98,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 800,
+    "dod_academic": 880
   },
   {
     "slug": "F0583",
@@ -15998,7 +16040,9 @@
     "teachers": [
       "Jalal ad-Din Rumi"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1340,
+    "dod_academic": 1394
   },
   {
     "slug": "F0601",
@@ -16068,7 +16112,9 @@
         "person": "Ghalib ibn Fihr",
         "relation": "child"
       }
-    ]
+    ],
+    "dob_academic": 155,
+    "dod_academic": 230
   },
   {
     "slug": "F0604",
@@ -16433,7 +16479,9 @@
         "person": "Fihr ibn Malik",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 180,
+    "dod_academic": 255
   },
   {
     "slug": "F0619",
@@ -17170,7 +17218,9 @@
         "person": "Balim Sultan (Second Pir)",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1209,
+    "dod_academic": 1271
   },
   {
     "slug": "F0646",
@@ -17907,7 +17957,9 @@
         "person": "Abd Manaf ibn Qusayy",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 464,
+    "dod_academic": 497
   },
   {
     "slug": "F0672",
@@ -20253,7 +20305,9 @@
     "lat": 31.1,
     "lng": 30.6,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1255,
+    "dod_academic": 1296
   },
   {
     "slug": "F0763",
@@ -20361,7 +20415,9 @@
     "teachers": [
       "Prophet Muhammad"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 630,
+    "dod_academic": 631
   },
   {
     "slug": "F0767",
@@ -20399,8 +20455,8 @@
       }
     ],
     "quranRef": "Al-Anbiya 21:85, Maryam 19:56",
-    "dob_academic": -3100,
-    "dod_academic": -3000,
+    "dob_academic": -5525,
+    "dod_academic": -4575,
     "era_label": "Early Dynastic Egypt",
     "dating_source": "Ibn Kathir; Fusus al-Hikam (Ibn Arabi); identified with Enoch / Hermes Trismegistus in Islamic tradition",
     "dating_note": "Idris traditionally linked to early Egyptian civilization / Hermetic tradition."
@@ -20523,7 +20579,9 @@
         "person": "Mudar ibn Nizar",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 0,
+    "dod_academic": 65
   },
   {
     "slug": "F0772",
@@ -20864,7 +20922,9 @@
     "lat": 28.6,
     "lng": 77.2,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1882,
+    "dod_academic": 1927
   },
   {
     "slug": "F0783",
@@ -21765,7 +21825,9 @@
         "relation": "silsila after"
       }
     ],
-    "ganjoor_url": "https://ganjoor.net/molavi/"
+    "ganjoor_url": "https://ganjoor.net/molavi/",
+    "dob_academic": 1207,
+    "dod_academic": 1273
   },
   {
     "slug": "F0815",
@@ -22358,7 +22420,9 @@
         "person": "Lu'ayy ibn Ghalib",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 230,
+    "dod_academic": 310
   },
   {
     "slug": "F0838",
@@ -23005,7 +23069,9 @@
     "quranRef": "Q33:28-34 (Wives of the Prophet)",
     "tags": [
       "Ahl al-Bayt"
-    ]
+    ],
+    "dob_academic": 555,
+    "dod_academic": 619
   },
   {
     "slug": "F0864",
@@ -24315,7 +24381,9 @@
         "person": "Mudrika ibn Ilyas",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 50,
+    "dod_academic": 115
   },
   {
     "slug": "F0914",
@@ -24501,7 +24569,9 @@
         "person": "Murra ibn Ka'b",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 285,
+    "dod_academic": 360
   },
   {
     "slug": "F0921",
@@ -24529,7 +24599,9 @@
         "person": "al-Nadr ibn Kinana",
         "relation": "child"
       }
-    ]
+    ],
+    "dob_academic": 75,
+    "dod_academic": 145
   },
   {
     "slug": "F0922",
@@ -24581,7 +24653,9 @@
         "person": "Mattushalakh ibn Idris",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -3775,
+    "dod_academic": -2825
   },
   {
     "slug": "F0924",
@@ -24931,7 +25005,9 @@
         "person": "Ghalib ibn Fihr",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 205,
+    "dod_academic": 280
   },
   {
     "slug": "F0938",
@@ -25141,7 +25217,9 @@
         "person": "Adnan",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -75,
+    "dod_academic": -10
   },
   {
     "slug": "F0946",
@@ -25562,7 +25640,9 @@
         "person": "Qaynan ibn Anush",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -7275,
+    "dod_academic": -6325
   },
   {
     "slug": "F0962",
@@ -25980,7 +26060,9 @@
         "person": "al-Rubbayi' bint al-Nadr",
         "relation": "sibling"
       }
-    ]
+    ],
+    "dob_academic": 130,
+    "dod_academic": 200
   },
   {
     "slug": "F0979",
@@ -26453,7 +26535,9 @@
         "person": "Sidi Ahmad ibn Idris",
         "relation": "sibling"
       }
-    ]
+    ],
+    "dob_academic": -4650,
+    "dod_academic": -3700
   },
   {
     "slug": "F0996",
@@ -26976,7 +27060,9 @@
         "person": "Qutbuddin Bakhtiar Kaki",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1141,
+    "dod_academic": 1230
   },
   {
     "slug": "F1017",
@@ -27476,7 +27562,9 @@
         "person": "Nizar ibn Ma'add",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -25,
+    "dod_academic": 40
   },
   {
     "slug": "F1034",
@@ -27533,7 +27621,9 @@
         "person": "Ilyas",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 25,
+    "dod_academic": 90
   },
   {
     "slug": "F1036",
@@ -27550,7 +27640,9 @@
     "teachers": [
       "Ilyas ibn Mudar"
     ],
-    "primaryTitle": "Islamic History Founder of Arabia"
+    "primaryTitle": "Islamic History Founder of Arabia",
+    "dob_academic": 25,
+    "dod_academic": 80
   },
   {
     "slug": "F1037",
@@ -28409,7 +28501,9 @@
     "teachers": [
       "Nahur ibn Tayrah"
     ],
-    "primaryTitle": "Islamic History Founder of Arabia"
+    "primaryTitle": "Islamic History Founder of Arabia",
+    "dob_academic": -690,
+    "dod_academic": -390
   },
   {
     "slug": "F1071",
@@ -28464,7 +28558,9 @@
         "person": "Kilab ibn Murra",
         "relation": "child"
       }
-    ]
+    ],
+    "dob_academic": 260,
+    "dod_academic": 335
   },
   {
     "slug": "F1073",
@@ -28481,7 +28577,9 @@
     "teachers": [
       "Ka'b ibn Lu'ayy"
     ],
-    "primaryTitle": "Islamic History Founder of Mecca"
+    "primaryTitle": "Islamic History Founder of Mecca",
+    "dob_academic": 255,
+    "dod_academic": 330
   },
   {
     "slug": "F1074",
@@ -28915,7 +29013,9 @@
         "person": "Ismail",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -1690,
+    "dod_academic": -1390
   },
   {
     "slug": "F1092",
@@ -29100,7 +29200,9 @@
         "person": "Sarugh ibn Ra'u",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -1970,
+    "dod_academic": -1570
   },
   {
     "slug": "F1099",
@@ -29117,7 +29219,9 @@
     "teachers": [
       "Tayrah ibn Ya'rub"
     ],
-    "primaryTitle": "Islamic History Founder of Arabia"
+    "primaryTitle": "Islamic History Founder of Arabia",
+    "dob_academic": -890,
+    "dod_academic": -590
   },
   {
     "slug": "F1100",
@@ -29145,7 +29249,9 @@
         "person": "Najm al-Din Razi",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1145,
+    "dod_academic": 1221
   },
   {
     "slug": "F1101",
@@ -29541,7 +29647,9 @@
         "person": "Ma'add ibn Adnan",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -50,
+    "dod_academic": 15
   },
   {
     "slug": "F1117",
@@ -30291,7 +30399,9 @@
         "person": "Anush ibn Shith",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -8150,
+    "dod_academic": -7200
   },
   {
     "slug": "F1142",
@@ -30749,7 +30859,9 @@
         "person": "Kilab ibn Murra",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": 400,
+    "dod_academic": 480
   },
   {
     "slug": "F1159",
@@ -30911,7 +31023,9 @@
         "person": "Faligh ibn Abir",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -2230,
+    "dod_academic": -1830
   },
   {
     "slug": "F1165",
@@ -31600,7 +31714,9 @@
         "person": "Prophet Muhammad",
         "relation": "parent"
       }
-    ]
+    ],
+    "dob_academic": 598,
+    "dod_academic": 624
   },
   {
     "slug": "F1193",
@@ -33542,7 +33658,9 @@
         "person": "Nuh",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -2880,
+    "dod_academic": -2280
   },
   {
     "slug": "F1265",
@@ -33685,7 +33803,9 @@
         "person": "Ra'u ibn Faligh",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -2100,
+    "dod_academic": -1700
   },
   {
     "slug": "F1270",
@@ -34247,7 +34367,9 @@
         "person": "Khalil Allah (son and successor)",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1330,
+    "dod_academic": 1431
   },
   {
     "slug": "F1292",
@@ -34334,7 +34456,9 @@
         "person": "Arfakhshadh ibn Sam",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -2620,
+    "dod_academic": -2220
   },
   {
     "slug": "F1295",
@@ -34544,7 +34668,9 @@
         "person": "Baha-ud-din Zakariya",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1145,
+    "dod_academic": 1234
   },
   {
     "slug": "F1304",
@@ -34794,7 +34920,9 @@
         "person": "Sidi Ahmad ibn Idris",
         "relation": "sibling"
       }
-    ]
+    ],
+    "dob_academic": 1760,
+    "dod_academic": 1837
   },
   {
     "slug": "F1313",
@@ -35747,7 +35875,9 @@
         "person": "Ulu Arif Chelebi",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1226,
+    "dod_academic": 1312
   },
   {
     "slug": "F1347",
@@ -35851,7 +35981,9 @@
     "teachers": [
       "Ibrahim Zain al-Din al-Samarqandi"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1401,
+    "dod_academic": 1481
   },
   {
     "slug": "F1351",
@@ -35874,7 +36006,9 @@
     "teachers": [
       "Sunan Ampel"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1448,
+    "dod_academic": 1568
   },
   {
     "slug": "F1352",
@@ -35897,7 +36031,9 @@
     "teachers": [
       "Sunan Bonang"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1460,
+    "dod_academic": 1560
   },
   {
     "slug": "F1353",
@@ -36458,7 +36594,9 @@
     "teachers": [
       "Ya'rub ibn Yashjub"
     ],
-    "primaryTitle": "Islamic History Founder of Arabia"
+    "primaryTitle": "Islamic History Founder of Arabia",
+    "dob_academic": -1090,
+    "dod_academic": -790
   },
   {
     "slug": "F1374",
@@ -37512,7 +37650,9 @@
     "teachers": [
       "Muqawwam ibn Nahur"
     ],
-    "primaryTitle": "Islamic History Founder of Arabia"
+    "primaryTitle": "Islamic History Founder of Arabia",
+    "dob_academic": -490,
+    "dod_academic": -90
   },
   {
     "slug": "F1415",
@@ -40737,7 +40877,9 @@
         "person": "Ali ibn Abi Talib",
         "relation": "parent"
       }
-    ]
+    ],
+    "dob_academic": 594,
+    "dod_academic": 631
   },
   {
     "slug": "F1538",
@@ -40770,7 +40912,9 @@
         "person": "Prophet Muhammad",
         "relation": "parent"
       }
-    ]
+    ],
+    "dob_academic": 594,
+    "dod_academic": 631
   },
   {
     "slug": "F1539",
@@ -43424,7 +43568,9 @@
     "lat": -7.2575,
     "lng": 112.7521,
     "teachers": [],
-    "relations": []
+    "relations": [],
+    "dob_academic": 1400,
+    "dod_academic": 1530
   },
   {
     "slug": "F1639",
@@ -43573,7 +43719,9 @@
     "teachers": [
       "Yashjub ibn Nabit"
     ],
-    "primaryTitle": "Islamic History Founder of Arabia"
+    "primaryTitle": "Islamic History Founder of Arabia",
+    "dob_academic": -1290,
+    "dod_academic": -990
   },
   {
     "slug": "F1645",
@@ -43736,7 +43884,9 @@
     "teachers": [
       "Shith ibn Adam"
     ],
-    "primaryTitle": "Islamic History Founder of Mesopotamia"
+    "primaryTitle": "Islamic History Founder of Mesopotamia",
+    "dob_academic": -3800,
+    "dod_academic": -3700
   },
   {
     "slug": "F1651",
@@ -43824,7 +43974,9 @@
         "person": "Mahlail ibn Qaynan",
         "relation": "father"
       }
-    ]
+    ],
+    "dob_academic": -6400,
+    "dod_academic": -5450
   },
   {
     "slug": "F1654",
@@ -43841,7 +43993,9 @@
     "teachers": [
       "Nabit ibn Ismail"
     ],
-    "primaryTitle": "Islamic History Founder of Mecca"
+    "primaryTitle": "Islamic History Founder of Mecca",
+    "dob_academic": -1490,
+    "dod_academic": -1190
   },
   {
     "slug": "F1655",
@@ -44207,8 +44361,8 @@
       }
     ],
     "quranRef": "Yusuf 12:4 (entire surah dedicated to Yusuf)",
-    "dob_academic": -1700,
-    "dod_academic": -1600,
+    "dob_academic": -1650,
+    "dod_academic": -1540,
     "era_label": "Hyksos-era Egypt",
     "dating_source": "Kitchen 'Reliability of OT'; Hyksos period Egypt (~1650-1550 BCE)",
     "dating_note": "Yusuf/Joseph traditionally linked to Semitic Hyksos rule in Egypt."
@@ -44650,7 +44804,9 @@
       "Prophet Muhammad"
     ],
     "quranRef": "Q33:37 — Only companion mentioned by name in the Quran",
-    "relations": []
+    "relations": [],
+    "dob_academic": 581,
+    "dod_academic": 629
   },
   {
     "slug": "F1686",
@@ -44719,7 +44875,9 @@
       "Zaynab bint Jahsh",
       "Umm Habibah"
     ],
-    "relations": []
+    "relations": [],
+    "dob_academic": 617,
+    "dod_academic": 692
   },
   {
     "slug": "F1688",
@@ -44830,7 +44988,9 @@
         "person": "Ali ibn Abi Talib",
         "relation": "parent"
       }
-    ]
+    ],
+    "dob_academic": 597,
+    "dod_academic": 682
   },
   {
     "slug": "F1692",
@@ -44972,7 +45132,9 @@
         "person": "Prophet Muhammad",
         "relation": "parent"
       }
-    ]
+    ],
+    "dob_academic": 596,
+    "dod_academic": 629
   },
   {
     "slug": "F1697",
@@ -49926,7 +50088,9 @@
         "person": "Abdallahi ibn Muhammad (the Khalifa)",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1844,
+    "dod_academic": 1885
   },
   {
     "slug": "F1835",
@@ -49953,7 +50117,9 @@
         "person": "Hakeem Noor-ud-Din (1st Caliph of Ahmadiyya)",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1835,
+    "dod_academic": 1908
   },
   {
     "slug": "F1836",
@@ -49987,7 +50153,9 @@
         "person": "Mahmud Hasan Deobandi (Shaykh al-Hind)",
         "relation": "silsila after"
       }
-    ]
+    ],
+    "dob_academic": 1833,
+    "dod_academic": 1880
   },
   {
     "slug": "F1837",
@@ -50178,7 +50346,9 @@
       "Quraysh",
       "Banu Zuhra"
     ],
-    "bio": "Mother of Prophet Muhammad; married Abdullah ibn Abd al-Muttalib. Widowed while pregnant. Died at al-Abwa aged ~28 while returning from Yathrib with 6-year-old Muhammad."
+    "bio": "Mother of Prophet Muhammad; married Abdullah ibn Abd al-Muttalib. Widowed while pregnant. Died at al-Abwa aged ~28 while returning from Yathrib with 6-year-old Muhammad.",
+    "dob_academic": 549,
+    "dod_academic": 577
   },
   {
     "slug": "F1976",
@@ -50225,7 +50395,9 @@
       "Quraysh",
       "Banu Hashim"
     ],
-    "bio": "Uncle of Prophet Muhammad; raised him after the deaths of Aminah and Abd al-Muttalib. Chief of Banu Hashim. Died 619 CE (Year of Sorrow)."
+    "bio": "Uncle of Prophet Muhammad; raised him after the deaths of Aminah and Abd al-Muttalib. Chief of Banu Hashim. Died 619 CE (Year of Sorrow).",
+    "dob_academic": 535,
+    "dod_academic": 619
   },
   {
     "slug": "F1977",
@@ -50293,7 +50465,9 @@
     "tags": [
       "Banu Sa'd"
     ],
-    "bio": "Bedouin wet nurse from Banu Sa'd ibn Bakr who nursed Prophet Muhammad in infancy. Later embraced Islam."
+    "bio": "Bedouin wet nurse from Banu Sa'd ibn Bakr who nursed Prophet Muhammad in infancy. Later embraced Islam.",
+    "dob_academic": 540,
+    "dod_academic": 630
   },
   {
     "slug": "F1979",
@@ -50321,7 +50495,9 @@
       }
     ],
     "tags": [],
-    "bio": "Freedwoman of Abu Lahab; nursed Prophet Muhammad briefly before Halimah. Also nursed Hamza, making them milk-brothers."
+    "bio": "Freedwoman of Abu Lahab; nursed Prophet Muhammad briefly before Halimah. Also nursed Hamza, making them milk-brothers.",
+    "dob_academic": 540,
+    "dod_academic": 615
   },
   {
     "slug": "F1980",
@@ -50356,6 +50532,8 @@
       "Quraysh",
       "Banu Zuhra"
     ],
-    "bio": "Chief of Banu Zuhra clan of Quraysh; father of Aminah, maternal grandfather of Prophet Muhammad."
+    "bio": "Chief of Banu Zuhra clan of Quraysh; father of Aminah, maternal grandfather of Prophet Muhammad.",
+    "dob_academic": 520,
+    "dod_academic": 565
   }
 ]
