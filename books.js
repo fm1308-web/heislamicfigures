@@ -113,7 +113,36 @@ function _hideViewDesc(){
     _hideViewDesc();
     _origSV2(v);
   };
+
 })();
+
+function _showBooksMethodology(){
+  if(document.getElementById('bv-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='bv-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="bv-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">A visual timeline of books by Islamic authors, drawn as leaf shapes positioned at their year of composition or publication. Books with free online links are highlighted in teal \u2014 click to read them. Filter by theme, source, or author to explore specific subjects. The gold count shows total books; the teal count shows free reads available.</p>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'
+    +'<div style="font-size:13px;line-height:1.7">'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E6B450;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold badge</span><span style="color:#A0AEC0">Total number of books matching your current filters</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4FD1C5;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Teal badge</span><span style="color:#A0AEC0">Number of those books with free legal online links</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf shape</span><span style="color:#A0AEC0">One book, positioned at its composition year on the timeline</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4FD1C5;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Free read</span><span style="color:#A0AEC0">A link to a legally available translation on Archive.org, Project Gutenberg, or an academic repository</span></div>'
+    +'</div>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Book metadata is compiled from Wikidata, Archive.org, and manual research. Publication years for medieval texts are approximate \u2014 many were composed over years or decades. Free links point to legally available English translations with full bibliographic attribution.</p>'
+    +'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('bv-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}
 
 function _booksEscape(s){
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -749,6 +778,10 @@ async function initBooks(){
 
   let html='';
   const _tl = (_BOOKS_DATA && _BOOKS_DATA.topline) || {total:0, free:0};
+  html+='<div id="bv-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
+  html+='<button id="bv-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  html+='<div id="bv-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"><span id="bv-anim-year" style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--gold,#D4AF37);letter-spacing:.05em;min-width:70px;text-align:right;opacity:0;transition:opacity .3s">\u2014</span></div>';
+  html+='</div>';
   html+='<div id="bv-toolbar">';
   html+='<div id="bv-count-badge" style="display:flex;align-items:center;gap:14px;padding:0 14px 0 2px;margin-right:6px;border-right:1px solid var(--border2,#2D3748);font-family:\'Cinzel\',serif;letter-spacing:.06em">';
   html+='<div style="display:flex;flex-direction:column;line-height:1.1"><span style="font-size:18px;font-weight:700;color:#E6B450">'+_tl.total+'</span><span style="font-size:9px;opacity:.65;text-transform:uppercase">Books</span></div>';
@@ -777,7 +810,6 @@ async function initBooks(){
   html+='</div>';
   html+='<button class="bv-clear-all" id="bv-clear-all" title="Clear all filters">\u00D7</button>';
   html+='<button id="bv-ancient-toggle" style="background:transparent;border:1px solid #4A5568;color:#6B7280;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.04em;padding:4px 10px;cursor:pointer;border-radius:2px">+ ANCIENT</button>';
-  html+='<div id="bv-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"><span id="bv-anim-year" style="font-family:\'Cinzel\',serif;font-size:11px;color:var(--gold,#D4AF37);letter-spacing:.05em;min-width:70px;text-align:right;opacity:0;transition:opacity .3s">\u2014</span></div>';
   html+='</div>';
   html+='<div id="bv-ancient-banner" style="display:none;padding:8px 16px;background:rgba(139,115,85,0.08);border-bottom:1px solid #4A5568;font-size:12px;color:#A0AEC0;font-style:italic;font-family:\'Inter\',\'Source Sans 3\',system-ui,sans-serif">100 Ancient Texts \u2014 Reference add-on only. Not necessarily part of the Monotheistic Corpus.</div>';
   html+='<div id="bv-scroll"><div id="bv-canvas"></div></div>';
@@ -827,6 +859,8 @@ async function initBooks(){
     onStop: _booksAnimStop,
     onSpeedChange: function(ms){ _booksAnim.speedMs = ms; if(_booksAnim.timer){ clearInterval(_booksAnim.timer); _booksAnim.timer = setInterval(_booksAnim.tick, ms); } }
   });
+  var _bvHowBtn=document.getElementById('bv-how-btn');
+  if(_bvHowBtn) _bvHowBtn.addEventListener('click',function(e){e.stopPropagation();_showBooksMethodology();});
   document.getElementById('bv-ancient-toggle').addEventListener('click',async function(){
     _ancientOn=!_ancientOn;
     var btn=document.getElementById('bv-ancient-toggle');
@@ -874,7 +908,36 @@ async function initBooks(){
     }
     if(typeof _origOnSearch==='function') _origOnSearch();
   };
+
 })();
+
+function _showBooksMethodology(){
+  if(document.getElementById('bv-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='bv-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="bv-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">A visual timeline of books by Islamic authors, drawn as leaf shapes positioned at their year of composition or publication. Books with free online links are highlighted in teal \u2014 click to read them. Filter by theme, source, or author to explore specific subjects. The gold count shows total books; the teal count shows free reads available.</p>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'
+    +'<div style="font-size:13px;line-height:1.7">'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E6B450;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold badge</span><span style="color:#A0AEC0">Total number of books matching your current filters</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4FD1C5;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Teal badge</span><span style="color:#A0AEC0">Number of those books with free legal online links</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf shape</span><span style="color:#A0AEC0">One book, positioned at its composition year on the timeline</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4FD1C5;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Free read</span><span style="color:#A0AEC0">A link to a legally available translation on Archive.org, Project Gutenberg, or an academic repository</span></div>'
+    +'</div>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Book metadata is compiled from Wikidata, Archive.org, and manual research. Publication years for medieval texts are approximate \u2014 many were composed over years or decades. Free links point to legally available English translations with full bibliographic attribution.</p>'
+    +'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('bv-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}
 
 window._captureState_books=function(){
   var scroll=document.getElementById('bv-scroll');
@@ -934,4 +997,33 @@ window._restoreState_books=function(s){
     if(!tryScroll()) setTimeout(tryScroll,400);
     setTimeout(tryScroll,900);
   };
+
 })();
+
+function _showBooksMethodology(){
+  if(document.getElementById('bv-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='bv-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="bv-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">A visual timeline of books by Islamic authors, drawn as leaf shapes positioned at their year of composition or publication. Books with free online links are highlighted in teal \u2014 click to read them. Filter by theme, source, or author to explore specific subjects. The gold count shows total books; the teal count shows free reads available.</p>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'
+    +'<div style="font-size:13px;line-height:1.7">'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E6B450;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold badge</span><span style="color:#A0AEC0">Total number of books matching your current filters</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4FD1C5;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Teal badge</span><span style="color:#A0AEC0">Number of those books with free legal online links</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf shape</span><span style="color:#A0AEC0">One book, positioned at its composition year on the timeline</span></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4FD1C5;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Free read</span><span style="color:#A0AEC0">A link to a legally available translation on Archive.org, Project Gutenberg, or an academic repository</span></div>'
+    +'</div>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Book metadata is compiled from Wikidata, Archive.org, and manual research. Publication years for medieval texts are approximate \u2014 many were composed over years or decades. Free links point to legally available English translations with full bibliographic attribution.</p>'
+    +'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('bv-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}

@@ -422,6 +422,22 @@ function renderSilsila(){
   mainDiv.innerHTML=`<svg id="silsilaSVG" xmlns="http://www.w3.org/2000/svg" width="${TW}" height="${SVG_H}" style="display:block;min-width:${TW}px">${P.join('\n')}</svg>`;
 
   // ── Lane labels sidebar ────────────────────────────────────
+  // Inject L1 once
+  if(!document.getElementById('sl-how-btn')){
+    var _slBody=document.getElementById('silsilaBody');
+    if(_slBody){
+      var _slL1=document.createElement('div');
+      _slL1.style.cssText='display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5);';
+      var _slHowBtn=document.createElement('button');
+      _slHowBtn.id='sl-how-btn'; _slHowBtn.textContent='How This Works';
+      _slHowBtn.style.cssText='height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em';
+      _slHowBtn.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};
+      _slHowBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
+      _slHowBtn.onclick=function(e){e.stopPropagation();_showSilsilaMethodology();};
+      _slL1.appendChild(_slHowBtn);
+      _slBody.parentNode.insertBefore(_slL1,_slBody);
+    }
+  }
   const inner=document.getElementById('silsilaLanesInner');
   let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
   // Lineage row
@@ -1047,3 +1063,20 @@ window._restoreState_silsila=function(s){
   if(s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
   if(s.scrollY){var m=document.getElementById('silsilaMain');if(m) m.scrollTop=s.scrollY;}
 };
+
+function _showSilsilaMethodology(){
+  if(document.getElementById('sl-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='sl-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="sl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">Chains of knowledge transmission \u2014 who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.</p>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:13px;line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Silsila</span><span style="color:#A0AEC0">Arabic for \u201Cchain\u201D \u2014 unbroken teacher-to-student transmission</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Tradition color</span><span style="color:#A0AEC0">Each tradition (Sunni, Shia, Sufi, etc.) has its own color</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Line</span><span style="color:#A0AEC0">A documented teacher \u2192 student relationship</span></div></div>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Teacher\u2013student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.</p>'+'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('sl-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}

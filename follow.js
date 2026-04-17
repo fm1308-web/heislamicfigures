@@ -151,6 +151,8 @@ function initFollow() {
         onSpeedChange: function(ms){ _fwSpeed = ms; if(_fwPlaying){ clearInterval(_fwTimer); _fwTimer = setInterval(_fwTickFn, _fwSpeed); } }
       });
     }
+    var _fwHowBtn=document.getElementById('fw-how-btn');
+    if(_fwHowBtn) _fwHowBtn.addEventListener('click',function(e){e.stopPropagation();_showFollowMethodology();});
     window.addEventListener('resize', function() {
       if (VIEW === 'follow' && _fwMap) _fwMap.invalidateSize();
     });
@@ -182,6 +184,10 @@ function initFollow() {
 function _fwBuildDOM(container) {
   container.innerHTML =
     '<div id="fw-topbar">' +
+      '<div id="fw-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">' +
+        '<button id="fw-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>' +
+        '<div id="fw-anim-mount" style="margin-left:auto;display:flex;align-items:center"></div>' +
+      '</div>' +
       '<div id="fw-scrubber">' +
         '<div id="fw-scrubber-track">' +
           '<div id="fw-scrubber-fill"></div>' +
@@ -194,7 +200,6 @@ function _fwBuildDOM(container) {
           '<span id="fw-scrub-end"></span>' +
         '</div>' +
       '</div>' +
-      '<div id="fw-anim-mount" style="display:flex;align-items:center;margin-left:auto"></div>' +
     '</div>' +
     '<div id="fw-body">' +
       '<div id="fw-left-rail">' +
@@ -1195,3 +1200,20 @@ window._followShowFigure = function(slug){
     }
   };
 })();
+
+function _showFollowMethodology(){
+  if(document.getElementById('fw-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='fw-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="fw-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">An animated map tracing a historical figure\u2019s life journey. Events appear chronologically in the side feed, synchronized with the map. Empire overlays show political control. Use play/pause and speed control.</p>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:13px;line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Journey point</span><span style="color:#A0AEC0">A documented place the figure visited</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4a7c59;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade A</span><span style="color:#A0AEC0">Highly confident date</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4a6d8c;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade B</span><span style="color:#A0AEC0">Mostly confident</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#b08030;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade C</span><span style="color:#A0AEC0">Some uncertainty</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#707070;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade D</span><span style="color:#A0AEC0">Weak / traditional</span></div></div>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Journey data manually researched with GPS coordinates and source citations. Routes between points are illustrative. Empire borders simplified.</p>'+'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('fw-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}

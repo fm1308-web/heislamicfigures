@@ -549,13 +549,17 @@ function initEras(){
   view.style.flexDirection='column';
 
   let html='';
+  html+='<div id="ev-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
+  html+='<button id="ev-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  html+='<div id="ev-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
+  html+='</div>';
   html+='<div id="ev-toolbar">';
   html+='<div class="ev-dd-wrap"><button class="ev-dd-btn" id="ev-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
   html+='<div class="ev-dd-panel" id="ev-type-panel"><input class="ev-dd-search" id="ev-type-search" placeholder="search types\u2026"><div class="ev-dd-scroll" id="ev-type-scroll"></div></div></div>';
   html+='<div class="ev-dd-wrap"><button class="ev-dd-btn" id="ev-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
   html+='<div class="ev-dd-panel" id="ev-trad-panel"><input class="ev-dd-search" id="ev-trad-search" placeholder="search traditions\u2026"><div class="ev-dd-scroll" id="ev-trad-scroll"></div></div></div>';
   html+='<button class="ev-clear-all" id="ev-clear-all" title="Clear all filters">\u00D7</button>';
-  html+='<div id="ev-anim-mount"></div>';
+  
   html+='</div>';
   html+='<div id="ev-scroll"><div id="ev-canvas"></div></div>';
   view.innerHTML=html;
@@ -589,6 +593,8 @@ function initEras(){
     _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
     _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
+  var _evHowBtn=document.getElementById('ev-how-btn');
+  if(_evHowBtn) _evHowBtn.addEventListener('click',function(e){e.stopPropagation();_showErasMethodology();});
 
   const mount=document.getElementById('ev-anim-mount');
   if(mount && window.AnimControls){
@@ -642,4 +648,21 @@ window._restoreState_eras=function(s){
   if(s.scrollY){ const sc=document.getElementById('ev-scroll'); if(sc) sc.scrollTop=s.scrollY; }
 };
 
+
+function _showErasMethodology(){
+  if(document.getElementById('eras-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='eras-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">A vertical timeline where each figure appears as a leaf shape spanning their lifespan. The top is birth, the bottom is death. The central stem represents the flow of time. Filter by type and tradition to see how groups overlapped across centuries.</p>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:13px;line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold leaf</span><span style="color:#A0AEC0">A prophet</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf</span><span style="color:#A0AEC0">One figure\u2019s lifespan</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#777;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Stem</span><span style="color:#A0AEC0">Central timeline \u2014 CE left, Hijri right</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#555;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Animate</span><span style="color:#A0AEC0">Sweeping cursor revealing figures decade by decade</span></div></div>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Birth and death dates from classical Islamic biographical sources, cross-referenced with Wikipedia. Dates for early figures are estimates. The \u2248 symbol marks approximate dates.</p>'+'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('eras-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}
 })();

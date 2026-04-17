@@ -77,12 +77,11 @@ function _getMapFiltered(){
 function _drawEmpiresOnMap(map, year, existingLayer) {
   if (!map) return null;
   if (existingLayer) { map.removeLayer(existingLayer); }
+  if (year === null) return null;
   var layer = L.layerGroup();
 
   MAP_EMPIRES.forEach(function(em) {
-    if (year !== null) {
-      if (em.start > year || em.end < year) return;
-    }
+    if (em.start > year || em.end < year) return;
     var poly = L.polygon(em.poly, {
       color: em.color, weight: 1.5, fillColor: em.color,
       fillOpacity: 0.13, opacity: 0.55, dashArray: '5,4'
@@ -92,8 +91,8 @@ function _drawEmpiresOnMap(map, year, existingLayer) {
     var cLng = em.poly.reduce(function(s, p) { return s + p[1]; }, 0) / em.poly.length;
     var lbl = L.marker([cLat, cLng], {
       icon: L.divIcon({
-        html: '<div style="color:' + em.color + ';font-family:\'Cinzel\',Georgia,serif;font-size:12px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:.04em;line-height:1.3;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.7),0 0 8px rgba(0,0,0,.5);">' + em.name + '<br><span style="font-size:9px;font-weight:500;font-style:italic;opacity:.9;">' + em.years + '</span></div>',
-        className: '', iconSize: [210, 38], iconAnchor: [105, 19]
+        html: '<div style="color:' + em.color + ';font-family:\'Cinzel\',Georgia,serif;font-size:16px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:.06em;line-height:1.3;pointer-events:none;text-shadow:0 0 12px ' + em.color + ',0 0 24px ' + em.color + ',0 1px 4px rgba(0,0,0,.9),0 0 40px rgba(0,0,0,.6);">' + em.name + '<br><span style="font-size:11px;font-weight:600;opacity:.9;">' + em.years + '</span></div>',
+        className: '', iconSize: [280, 44], iconAnchor: [140, 22]
       }),
       interactive: false, keyboard: false
     });
@@ -634,3 +633,19 @@ window._restoreState_map=function(s){
   if(s&&s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
 };
 
+function _showMapMethodology(){
+  if(document.getElementById('map-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='map-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="map-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">An interactive world map showing where historical figures lived and worked. Markers cluster when zoomed out \u2014 click to expand. The map reveals the geographic spread of Islamic civilisation.</p>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:13px;line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Marker</span><span style="color:#A0AEC0">A single figure at their primary known location</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#5B8DEF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Cluster</span><span style="color:#A0AEC0">A group of figures in the same area</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#A0AEC0;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Primary location</span><span style="color:#A0AEC0">The city most associated with a figure</span></div></div>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">GPS coordinates from Wikipedia, OpenStreetMap, and manual research. Most are city-level, not building-level. Historical place names mapped to modern equivalents.</p>'+'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('map-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}
