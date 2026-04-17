@@ -2331,6 +2331,13 @@ body.snapshot-mode *{scrollbar-width:none}
 /* Year labels — plain muted text at event positions only */
 .tk-yr-mark{position:absolute;left:470px;transform:translateY(-50%);width:30px;text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;pointer-events:none;white-space:nowrap}
 .tk-yr-mark.year-multi{color:#D4AF37}
+.tk-hij-mark{position:absolute;left:510px;transform:translateY(-50%);width:60px;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#8B7A3E;pointer-events:none;white-space:nowrap}
+.tk-hij-mark.year-multi{color:#D4AF37}
+.tk-ruler-toggle{position:absolute;left:478px;width:50px;display:flex;align-items:center;justify-content:center;gap:4px;z-index:5}
+.tk-ruler-btn{font-size:10px;color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
+.tk-ruler-btn.on{color:#D4AF37;border-color:#D4AF37}
+.tk-ruler-btn:hover{color:#D4AF37}
+.tk-ruler-sep{color:#444;font-size:10px;pointer-events:none}
 /* Global year-label helpers */
 .year-era{font-size:0.75em;color:rgba(107,114,128,.6);margin-left:2px}
 .year-multi{color:#D4AF37}

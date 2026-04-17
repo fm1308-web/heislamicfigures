@@ -118,6 +118,8 @@ function _hideViewDesc(){
 function _booksEscape(s){
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
+var _bvShowCE=true,_bvShowHijri=true;
+function _bvCeToHijri(ce){return Math.round((ce-622)*33/32);}
 function _booksFmtYear(y){
   if(y==null||y==='') return '—';
   const n = typeof y==='number' ? y : parseInt(y,10);
@@ -150,6 +152,12 @@ function _booksInjectStyles(){
   .bv-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
   .bv-year-chip.year-multi{color:#D4AF37}
   .bv-year-chip.scripture{color:#D4AF37;font-weight:600;text-shadow:0 0 4px rgba(212,175,55,.4)}
+  .bv-hij-chip{position:absolute;transform:translateY(-50%);text-align:left;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#8B7A3E;z-index:5;white-space:nowrap;pointer-events:none}
+  .bv-ruler-toggle{position:absolute;display:flex;align-items:center;gap:4px;z-index:5}
+  .bv-ruler-btn{font-size:10px;color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
+  .bv-ruler-btn.on{color:#D4AF37;border-color:#D4AF37}
+  .bv-ruler-btn:hover{color:#D4AF37}
+  .bv-ruler-sep{color:#444;font-size:10px;pointer-events:none}
   .bv-row.is-scripture .bv-row-title{color:var(--gold,#D4AF37);font-weight:600;letter-spacing:.01em}
   .bv-row.is-scripture .bv-row-meta{color:rgba(212,175,55,.62);font-style:italic}
   svg.bv-leaves{position:absolute;top:0;left:0;width:100%;z-index:2;overflow:visible}
@@ -165,23 +173,23 @@ function _booksInjectStyles(){
 
 function _booksCollectSources(){
   const books = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
-  const counts = {};
-  books.forEach(b=>{ (b.topics||[]).forEach(t=>{ if(t) counts[t]=(counts[t]||0)+1; }); });
-  return Object.keys(counts).sort().map(k=>({name:k, count:counts[k]}));
+  const counts = {}, earliest = {};
+  books.forEach(b=>{ (b.topics||[]).forEach(t=>{ if(t){ counts[t]=(counts[t]||0)+1; var y=_bYr(b); if(y!=null&&(earliest[t]==null||y<earliest[t])) earliest[t]=y; }}); });
+  return Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999})).sort((a,b)=>a._earliest-b._earliest);
 }
 
 function _booksCollectThemes(){
   const books = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
-  const counts = {};
-  books.forEach(b=>{ (b.themes||[]).forEach(t=>{ if(t) counts[t]=(counts[t]||0)+1; }); });
-  return Object.keys(counts).sort().map(k=>({name:k, count:counts[k]}));
+  const counts = {}, earliest = {};
+  books.forEach(b=>{ (b.themes||[]).forEach(t=>{ if(t){ counts[t]=(counts[t]||0)+1; var y=_bYr(b); if(y!=null&&(earliest[t]==null||y<earliest[t])) earliest[t]=y; }}); });
+  return Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999})).sort((a,b)=>a._earliest-b._earliest);
 }
 
 function _booksCollectAuthors(){
   const books = (_BOOKS_DATA && _BOOKS_DATA.books) || [];
-  const counts = {};
-  books.forEach(b=>{ if(b.author_name && !b.author_hidden) counts[b.author_name]=(counts[b.author_name]||0)+1; });
-  return Object.keys(counts).sort().map(k=>({name:k, count:counts[k]}));
+  const counts = {}, earliest = {};
+  books.forEach(b=>{ if(b.author_name && !b.author_hidden){ counts[b.author_name]=(counts[b.author_name]||0)+1; var y=_bYr(b); if(y!=null&&(earliest[b.author_name]==null||y<earliest[b.author_name])) earliest[b.author_name]=y; }});
+  return Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999})).sort((a,b)=>a._earliest-b._earliest);
 }
 
 function _booksFiltered(){
@@ -247,6 +255,11 @@ function _booksBuildCanvas(){
   merged.forEach(function(entry){ var yr=_bYr(entry.book); if(yr!=null) _yrCount[yr]=(_yrCount[yr]||0)+1; });
   let html = '';
   html += '<div id="bv-stem" style="top:'+(_BV_TOP_PAD-10)+'px;height:'+(totalH - _BV_TOP_PAD - _BV_BOT_PAD + 20)+'px"></div>';
+  html += '<div class="bv-ruler-toggle" style="top:'+(_BV_TOP_PAD-28)+'px;left:'+(_BV_STEM_X-22)+'px">';
+  html += '<span class="bv-ruler-btn'+(_bvShowCE?' on':'')+'" data-ruler="ce">CE</span>';
+  html += '<span class="bv-ruler-sep">\u2502</span>';
+  html += '<span class="bv-ruler-btn'+(_bvShowHijri?' on':'')+'" data-ruler="hij">\u0647\u0640</span>';
+  html += '</div>';
 
   merged.forEach(function(entry, idx){
     var b = entry.book;
@@ -266,7 +279,10 @@ function _booksBuildCanvas(){
       html += '<div class="bv-row-meta" style="color:#6B7280">'+ancMeta+ancBadge+'</div>';
       html += '</div></div>';
       var ancMulti = _bYr(b)!=null&&_yrCount[_bYr(b)]>1?' year-multi':'';
-      html += '<div class="bv-year-chip'+ancMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px;color:#B8C2CC">'+yearTxt+'</div>';
+      html += '<div class="bv-year-chip'+ancMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36-140)+'px;color:#B8C2CC;'+(_bvShowCE?'':'display:none')+'">'+yearTxt+'</div>';
+      var _aHij=_bvCeToHijri(b.year||0);
+      var _aHijLabel=_aHij<0?Math.abs(_aHij)+'<span class="year-era">\u0642.\u0647\u0640</span>':_aHij+'<span class="year-era">\u0647\u0640</span>';
+      html += '<div class="bv-hij-chip" style="top:'+midY+'px;left:'+(_BV_STEM_X+10)+'px;'+(_bvShowHijri?'':'display:none')+'">'+_aHijLabel+'</div>';
       var ancDesc = _booksEscape(b.note||'');
       var ancFact = _booksEscape(b.fact||'');
       html += '<div class="bv-row-ancient-right" style="position:absolute;top:'+y+'px;height:'+_BV_ROW_H+'px;left:'+(_BV_STEM_X+90)+'px;right:20px;display:flex;flex-direction:column;justify-content:center;pointer-events:none;z-index:5">'
@@ -296,7 +312,10 @@ function _booksBuildCanvas(){
       var bkMulti = _bYr(b)!=null&&_yrCount[_bYr(b)]>1?' year-multi':'';
       var showYear = entry.ancient || (_bYr(b) > 610);
       if(showYear){
-        html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+bkMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px">'+yearTxt+'</div>';
+        html += '<div class="bv-year-chip'+(isScripture?' scripture':'')+bkMulti+'" style="top:'+midY+'px;left:'+(_BV_STEM_X-36)+'px;'+(_bvShowCE?'':'display:none')+'">'+yearTxt+'</div>';
+        var _bHij=_bvCeToHijri(_bYr(b)||0);
+        var _bHijLabel=_bHij<0?Math.abs(_bHij)+'<span class="year-era">\u0642.\u0647\u0640</span>':_bHij+'<span class="year-era">\u0647\u0640</span>';
+        html += '<div class="bv-hij-chip" style="top:'+midY+'px;left:'+(_BV_STEM_X+10)+'px;'+(_bvShowHijri?'':'display:none')+'">'+_bHijLabel+'</div>';
       }
     }
   });
@@ -311,6 +330,15 @@ function _booksBuildCanvas(){
       if(!name) return;
       setView('timeline');
       setTimeout(()=>{if(typeof jumpTo==='function') jumpTo(name);},50);
+    });
+  });
+  // Ruler toggle wiring
+  canvas.querySelectorAll('.bv-ruler-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var which=this.getAttribute('data-ruler');
+      if(which==='ce'){_bvShowCE=!_bvShowCE;this.classList.toggle('on',_bvShowCE);canvas.querySelectorAll('.bv-year-chip').forEach(function(m){m.style.display=_bvShowCE?'':'none';});}
+      if(which==='hij'){_bvShowHijri=!_bvShowHijri;this.classList.toggle('on',_bvShowHijri);canvas.querySelectorAll('.bv-hij-chip').forEach(function(m){m.style.display=_bvShowHijri?'':'none';});}
     });
   });
 
@@ -625,6 +653,12 @@ function _booksAnimPlay(){
     cursor.style.display='none';
     canvas.appendChild(cursor);
   }
+  var blackout=document.getElementById('bv-blackout');
+  if(!blackout){
+    blackout=document.createElement('div');blackout.id='bv-blackout';
+    blackout.style.cssText='display:none;position:absolute;left:0;right:0;background:#000;z-index:8;pointer-events:none';
+    canvas.appendChild(blackout);
+  }
 
   if(_booksAnim.mode === 'paused'){
     _booksAnim.mode = 'playing';
@@ -636,48 +670,22 @@ function _booksAnimPlay(){
   _booksAnim.mode = 'playing';
   _booksAnim.cursorY = _BV_TOP_PAD;
   _booksAnim.speedMs = _booksAnimCtl ? _booksAnimCtl.getSpeedMs() : 1200;
-  // Hide HTML elements
-  canvas.querySelectorAll('.bv-row,.bv-year-chip,.bv-era-band,.bv-era-label,.bv-leaf-label').forEach(function(el){el.classList.add('bv-hidden-by-curfew');});
-  // Hide SVG elements (leaves, dots, connectors)
-  canvas.querySelectorAll('svg').forEach(function(sv){
-    [].slice.call(sv.children).forEach(function(ch){
-      if(ch.tagName==='defs') return;
-      var orig=ch.getAttribute('opacity');
-      if(orig&&orig!=='0') ch.setAttribute('data-orig-opacity',orig);
-      ch.setAttribute('opacity','0');
-    });
-  });
-  cursor.style.display='';cursor.style.top=_booksAnim.cursorY+'px';
   var totalH=parseFloat(canvas.style.height)||2000;
   _booksAnim.maxY=totalH;
+  if(blackout){blackout.style.display='';blackout.style.top='0px';blackout.style.height=totalH+'px';}
+  cursor.style.display='';cursor.style.top=_booksAnim.cursorY+'px';
 
   var STEP=4;
   _booksAnim.tick=function(){
     if(_booksAnim.mode!=='playing') return;
     _booksAnim.cursorY+=STEP;
-    if(_booksAnim.cursorY>_booksAnim.maxY){_booksAnimStop();return;}
+    if(_booksAnim.cursorY>_booksAnim.maxY*0.8){_booksAnimStop();return;}
     cursor.style.top=_booksAnim.cursorY+'px';
-    // Reveal HTML elements
-    canvas.querySelectorAll('.bv-hidden-by-curfew').forEach(function(el){
-      var t=parseFloat(el.style.top);
-      if(!isNaN(t)&&t<=_booksAnim.cursorY) el.classList.remove('bv-hidden-by-curfew');
-    });
-    // Reveal SVG children by bottom Y
-    canvas.querySelectorAll('svg').forEach(function(sv){
-      [].slice.call(sv.children).forEach(function(ch){
-        if(ch.getAttribute('opacity')!=='0') return;
-        var bot=_bvSvgBottomY(ch);
-        if(bot!==null&&bot<=_booksAnim.cursorY){
-          var orig=ch.getAttribute('data-orig-opacity');
-          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
-        }
-      });
-    });
-    // Year label
+    var bo=document.getElementById('bv-blackout');
+    if(bo){bo.style.top=(_booksAnim.cursorY+1)+'px';bo.style.height=(_booksAnim.maxY-_booksAnim.cursorY)+'px';}
     var yr=_bvCurfewYToYear(_booksAnim.cursorY,canvas);
     var yrEl=document.getElementById('bv-curfew-year');
     if(yrEl) yrEl.innerHTML=yr!=null?_booksFmtYear(yr):'';
-    // Scroll
     scroll.scrollTo({top:Math.max(0,_booksAnim.cursorY-scroll.clientHeight/2),behavior:'auto'});
   };
   _booksAnim.tick();
@@ -704,15 +712,8 @@ function _booksAnimStop(){
   _booksAnim.tick = null;
   var canvas=document.getElementById('bv-canvas');
   if(canvas){
-    canvas.querySelectorAll('.bv-hidden-by-curfew').forEach(function(el){el.classList.remove('bv-hidden-by-curfew');});
-    canvas.querySelectorAll('svg').forEach(function(sv){
-      [].slice.call(sv.children).forEach(function(ch){
-        if(ch.getAttribute('opacity')==='0'){
-          var orig=ch.getAttribute('data-orig-opacity');
-          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
-        }
-      });
-    });
+    var bo=document.getElementById('bv-blackout');
+    if(bo) bo.style.display='none';
   }
   var cursor=document.getElementById('bv-curfew');
   if(cursor) cursor.style.display='none';

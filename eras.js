@@ -45,6 +45,8 @@ const _EV_ERA_BANDS = [
 ];
 
 function _evEsc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+var _evShowCE=true,_evShowHijri=true;
+function _evCeToHijri(ce){return Math.round((ce-622)*33/32);}
 function _evFmtYear(y){
   if(y==null||y==='') return '\u2014';
   const n = typeof y==='number' ? y : parseInt(y,10);
@@ -130,6 +132,12 @@ function _evInjectStyles(){
   .ev-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:10px;font-family:'Cinzel',serif}
   .ev-wiki:hover{color:var(--gold,#D4AF37)}
   .ev-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
+  .ev-hij-chip{position:absolute;transform:translateY(-50%);text-align:left;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#8B7A3E;z-index:5;white-space:nowrap;pointer-events:none}
+  .ev-ruler-toggle{position:absolute;display:flex;align-items:center;gap:4px;z-index:5}
+  .ev-ruler-btn{font-size:10px;color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
+  .ev-ruler-btn.on{color:#D4AF37;border-color:#D4AF37}
+  .ev-ruler-btn:hover{color:#D4AF37}
+  .ev-ruler-sep{color:#444;font-size:10px;pointer-events:none}
   svg.ev-leaves{position:absolute;top:0;overflow:visible;pointer-events:none;z-index:2}
   svg.ev-leaves g.ev-leaf{cursor:pointer;pointer-events:all}
   .ev-leaf-label{position:absolute;white-space:nowrap;z-index:4}
@@ -148,20 +156,29 @@ function _evInjectStyles(){
 
 function _evCollectTypes(){
   const counts={};
-  (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{ if(p.type) counts[p.type]=(counts[p.type]||0)+1; });
-  const out=Object.keys(counts).sort().map(k=>({name:k,count:counts[k]}));
+  const earliest={};
+  (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{
+    if(!p.type) return;
+    counts[p.type]=(counts[p.type]||0)+1;
+    var d=_evDob(p); if(d!=null&&(earliest[p.type]==null||d<earliest[p.type])) earliest[p.type]=d;
+  });
+  const out=Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999}));
+  out.sort((a,b)=>a._earliest-b._earliest);
   if(typeof PROPHET_CHAIN!=='undefined' && !out.some(t=>t.name==='Prophetic Lineage')){
     const pi=out.findIndex(t=>t.name==='Prophet');
-    out.splice(pi>=0?pi+1:0,0,{name:'Prophetic Lineage',count:PROPHET_CHAIN.size});
+    out.splice(pi>=0?pi+1:0,0,{name:'Prophetic Lineage',count:PROPHET_CHAIN.size,_earliest:-4000});
   }
   return out;
 }
 function _evCollectTrads(){
   const counts={};
+  const earliest={};
   (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{
-    if(p.tradition && !_EV_SKIP_TRADS[p.tradition]) counts[p.tradition]=(counts[p.tradition]||0)+1;
+    if(!p.tradition || _EV_SKIP_TRADS[p.tradition]) return;
+    counts[p.tradition]=(counts[p.tradition]||0)+1;
+    var d=_evDob(p); if(d!=null&&(earliest[p.tradition]==null||d<earliest[p.tradition])) earliest[p.tradition]=d;
   });
-  return Object.keys(counts).sort().map(k=>({name:k,count:counts[k]}));
+  return Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999})).sort((a,b)=>a._earliest-b._earliest);
 }
 
 function _evFiltered(){
@@ -216,8 +233,17 @@ function _evBuildCanvas(){
     html+='<div class="ev-row" data-slug="'+_evEsc(p.slug)+'" data-name="'+_evEsc(p.famous)+'" data-year="'+(dob==null?'':dob)+'" style="top:'+y+'px;height:'+_EV_ROW_H+'px">';
     html+='<div class="ev-row-main"><div class="ev-row-title" style="color:'+nameCol+'">'+_evEsc(p.famous)+_evWiki(p)+'</div></div>';
     html+='</div>';
-    html+='<div class="ev-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px">'+yrTxt+'</div>';
+    html+='<div class="ev-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px;'+(_evShowCE?'':'display:none')+'">'+yrTxt+'</div>';
+    var _hij=_evCeToHijri(dob);
+    var _hijLabel=_hij<0?Math.abs(_hij)+'<span class="year-era">\u0642.\u0647\u0640</span>':_hij+'<span class="year-era">\u0647\u0640</span>';
+    html+='<div class="ev-hij-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X+10)+'px;'+(_evShowHijri?'':'display:none')+'">'+_hijLabel+'</div>';
   });
+  // Dual ruler toggle at top of stem
+  html+='<div class="ev-ruler-toggle" style="top:'+(_EV_TOP_PAD-28)+'px;left:'+(_EV_STEM_X-22)+'px">';
+  html+='<span class="ev-ruler-btn'+(_evShowCE?' on':'')+'" data-ruler="ce">CE</span>';
+  html+='<span class="ev-ruler-sep">\u2502</span>';
+  html+='<span class="ev-ruler-btn'+(_evShowHijri?' on':'')+'" data-ruler="hij">\u0647\u0640</span>';
+  html+='</div>';
   canvas.innerHTML=html;
 
   canvas.querySelectorAll('.ev-row').forEach(row=>{
@@ -227,6 +253,15 @@ function _evBuildCanvas(){
       if(!name) return;
       if(typeof setView==='function') setView('timeline');
       setTimeout(()=>{ if(typeof jumpTo==='function') jumpTo(name); },50);
+    });
+  });
+  // Ruler toggle wiring
+  canvas.querySelectorAll('.ev-ruler-btn').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var which=this.getAttribute('data-ruler');
+      if(which==='ce'){_evShowCE=!_evShowCE;this.classList.toggle('on',_evShowCE);canvas.querySelectorAll('.ev-year-chip').forEach(m=>{m.style.display=_evShowCE?'':'none';});}
+      if(which==='hij'){_evShowHijri=!_evShowHijri;this.classList.toggle('on',_evShowHijri);canvas.querySelectorAll('.ev-hij-chip').forEach(m=>{m.style.display=_evShowHijri?'':'none';});}
     });
   });
 
@@ -459,6 +494,12 @@ function _evAnimPlay(){
     cursor.innerHTML='<span id="ev-curfew-year" class="ev-curfew-year"></span>';
     cursor.style.display='none'; canvas.appendChild(cursor);
   }
+  var blackout=document.getElementById('ev-blackout');
+  if(!blackout){
+    blackout=document.createElement('div'); blackout.id='ev-blackout';
+    blackout.style.cssText='display:none;position:absolute;left:0;right:0;background:#000;z-index:8;pointer-events:none';
+    canvas.appendChild(blackout);
+  }
   if(_EV_ANIM.mode==='paused'){
     _EV_ANIM.mode='playing'; cursor.style.display='';
     _EV_ANIM.timer=setInterval(_EV_ANIM.tick,_EV_ANIM.speedMs); return;
@@ -466,37 +507,17 @@ function _evAnimPlay(){
   _EV_ANIM.mode='playing';
   _EV_ANIM.cursorY=_EV_TOP_PAD;
   _EV_ANIM.speedMs=_EV_ANIM_CTL?_EV_ANIM_CTL.getSpeedMs():1200;
-  canvas.querySelectorAll('.ev-row,.ev-year-chip,.ev-era-band,.ev-era-label,.ev-leaf-label').forEach(el=>el.classList.add('ev-hidden-by-curfew'));
-  canvas.querySelectorAll('svg').forEach(sv=>{
-    [].slice.call(sv.children).forEach(ch=>{
-      if(ch.tagName==='defs') return;
-      const orig=ch.getAttribute('opacity');
-      if(orig&&orig!=='0') ch.setAttribute('data-orig-opacity',orig);
-      ch.setAttribute('opacity','0');
-    });
-  });
+  if(blackout){blackout.style.display='';blackout.style.top='0px';blackout.style.height=(_EV_ANIM.maxY||2000)+'px';}
   cursor.style.display=''; cursor.style.top=_EV_ANIM.cursorY+'px';
   _EV_ANIM.maxY=parseFloat(canvas.style.height)||2000;
   const STEP=4;
   _EV_ANIM.tick=function(){
     if(_EV_ANIM.mode!=='playing') return;
     _EV_ANIM.cursorY+=STEP;
-    if(_EV_ANIM.cursorY>_EV_ANIM.maxY){ _evAnimStop(); return; }
+    if(_EV_ANIM.cursorY>_EV_ANIM.maxY*0.8){ _evAnimStop(); return; }
     cursor.style.top=_EV_ANIM.cursorY+'px';
-    canvas.querySelectorAll('.ev-hidden-by-curfew').forEach(el=>{
-      const t=parseFloat(el.style.top);
-      if(!isNaN(t)&&t<=_EV_ANIM.cursorY) el.classList.remove('ev-hidden-by-curfew');
-    });
-    canvas.querySelectorAll('svg').forEach(sv=>{
-      [].slice.call(sv.children).forEach(ch=>{
-        if(ch.getAttribute('opacity')!=='0') return;
-        const bot=_evSvgBottomY(ch);
-        if(bot!==null&&bot<=_EV_ANIM.cursorY){
-          const orig=ch.getAttribute('data-orig-opacity');
-          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
-        }
-      });
-    });
+    var bo=document.getElementById('ev-blackout');
+    if(bo){bo.style.top=(_EV_ANIM.cursorY+1)+'px';bo.style.height=(_EV_ANIM.maxY-_EV_ANIM.cursorY)+'px';}
     const yr=_evCurfewYToYear(_EV_ANIM.cursorY,canvas);
     const yrEl=document.getElementById('ev-curfew-year');
     if(yrEl) yrEl.innerHTML=yr!=null?_evFmtYear(yr):'';
@@ -515,15 +536,8 @@ function _evAnimStop(){
   _EV_ANIM.tick=null;
   const canvas=document.getElementById('ev-canvas');
   if(canvas){
-    canvas.querySelectorAll('.ev-hidden-by-curfew').forEach(el=>el.classList.remove('ev-hidden-by-curfew'));
-    canvas.querySelectorAll('svg').forEach(sv=>{
-      [].slice.call(sv.children).forEach(ch=>{
-        if(ch.getAttribute('opacity')==='0'){
-          const orig=ch.getAttribute('data-orig-opacity');
-          if(orig) ch.setAttribute('opacity',orig); else ch.removeAttribute('opacity');
-        }
-      });
-    });
+    var bo=document.getElementById('ev-blackout');
+    if(bo) bo.style.display='none';
   }
   const cursor=document.getElementById('ev-curfew'); if(cursor) cursor.style.display='none';
   if(_EV_ANIM_CTL) _EV_ANIM_CTL.forceStop();

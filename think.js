@@ -8,7 +8,11 @@ var _data=null,_booksData=null,_inited=false,_selConceptSlugs=new Set(),_tooltip
 var _thinkAnimCtl=null,_thinkAnim={mode:'stopped',timer:null,cursorY:0,maxY:0,speedMs:600,tick:null};
 var ROLE_COLORS={originator:'#2ECC71',developer:'#3B82F6',critic:'#E24B4A',reviver:'#F59E0B',synthesizer:'#14B8A6',transmitter:'#38BDF8'};
 function _hexToRgba(hex,a){var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return 'rgba('+r+','+g+','+b+','+a+')';}
+var _showCE=true,_showHijri=true;
+function _ceToHijri(ce){return Math.round((ce-622)*33/32);}
 var CATEGORIES=['theology','philosophy','law','mysticism','science','politics','language'];
+var CAT_TAG_COLORS={theology:'#D4AF37',philosophy:'#38BDF8',law:'#2ECC71',mysticism:'#A78BFA',science:'#14B8A6',politics:'#F59E0B',language:'#F472B6'};
+var _TAG_PALETTE=['#D4AF37','#38BDF8','#2ECC71','#E24B4A','#F59E0B','#A78BFA','#14B8A6','#F472B6','#FB923C','#6EE7B7'];
 function _esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 /* ── i18n helpers ── */
@@ -190,7 +194,8 @@ function _buildConceptPanel(){
     if(q&&c.name.toLowerCase().indexOf(q)===-1) return;
     var cat=c.category||'other';if(!grouped[cat]) grouped[cat]=[];grouped[cat].push(c);
   });
-  var html='';
+  var toggleLabel=_selConceptSlugs.size>0?'Deselect all':'Select all';
+  var html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="tk-dd-toggle-all" style="font-family:Cinzel,serif;font-size:10px;color:#D4AF37;cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
   var dir=_tkDir(),font=_tkFont();
   CATEGORIES.forEach(function(cat){
     if(!grouped[cat]||!grouped[cat].length) return;
@@ -211,6 +216,17 @@ function _buildConceptPanel(){
       _syncConceptBtn();_buildConceptPanel();_renderCanvas();
     });
   });
+  scroll.querySelectorAll('.tk-dd-toggle-all').forEach(function(el){
+    el.addEventListener('click',function(){
+      if(_thinkAnim.mode!=='stopped') _thinkAnimStop();
+      if(_selConceptSlugs.size>0){
+        _selConceptSlugs.clear();
+      } else {
+        (_data.concepts||[]).forEach(function(c){if(c.figure_count>0) _selConceptSlugs.add(c.slug);});
+      }
+      _syncConceptBtn();_buildConceptPanel();_renderCanvas();
+    });
+  });
 }
 
 function _buildShell(view){
@@ -226,6 +242,7 @@ function _buildShell(view){
   h+='<div class="bv-dd-panel" id="think-concept-panel"><input class="bv-dd-search" id="think-concept-search" placeholder="search concepts\u2026"><div class="bv-dd-scroll" id="think-concept-scroll"></div></div></div>';
   h+='<button class="bv-clear-all" id="think-clear-all" title="Clear" style="opacity:.4">\u00D7</button>';
   h+='<div id="think-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"><span id="think-stats" style="font-family:\'Cinzel\',serif;font-size:11px;color:#A0AEC0;letter-spacing:.06em">'+(s.concepts_with_figures||0)+' concepts / '+(s.figures_tagged||0)+' tagged</span></div>';
+  h+='<button id="think-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;margin-left:12px;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
   h+='<div id="think-lang-bar" style="display:flex;align-items:center;gap:6px;margin-left:16px">';
   h+='<button class="tk-lang-btn" data-lang="ar" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:13px;cursor:pointer;transition:.2s">\u0639\u0631\u0628\u064A\u0629</button>';
   h+='<button class="tk-lang-btn" data-lang="ur" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:13px;cursor:pointer;transition:.2s">\u0627\u0631\u062F\u0648</button>';
@@ -286,6 +303,9 @@ function _buildShell(view){
     });
   }
 
+  var howBtn=document.getElementById('think-how-btn');
+  if(howBtn) howBtn.addEventListener('click',function(e){e.stopPropagation();_showThinkMethodology();});
+
   if(typeof _showViewDesc==='function') _showViewDesc('Select a thought to find all related figures and the roles they played');
   _renderCanvas();
 }
@@ -312,6 +332,32 @@ function _findRelations(slugSet){
   return lines;
 }
 
+function _showThinkMethodology(){
+  if(document.getElementById('think-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='think-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var roles={originator:['#2ECC71','Originated or founded the concept'],developer:['#3B82F6','Expanded, refined, or systematized the concept'],critic:['#E24B4A','Challenged, opposed, or refuted the concept'],reviver:['#F59E0B','Revived or renewed interest in the concept'],synthesizer:['#14B8A6','Combined elements from multiple traditions'],transmitter:['#38BDF8','Passed on the concept through teaching or writing']};
+  var rb='';
+  Object.keys(roles).forEach(function(r){
+    rb+='<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+roles[r][0]+';flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">'+r.charAt(0).toUpperCase()+r.slice(1)+'</span><span style="color:#A0AEC0">'+roles[r][1]+'</span></div>';
+  });
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="think-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">Each concept shows every historical figure who engaged with that idea, plotted on a timeline by their lifespan. Figures are color-coded by the role they played \u2014 whether they originated, developed, criticized, revived, synthesized, or transmitted the concept. Select multiple concepts to see overlapping figures across intellectual traditions.</p>'
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Role Definitions</h3>'
+    +rb
+    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">AI-Generated Content</h3>'
+    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0">Concept-to-figure tagging was generated by AI based on book metadata (titles, themes, author, tradition, dates). Tags represent likely intellectual engagement, not verified scholarly consensus. Always cross-reference with primary sources.</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('think-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+}
+
 function _renderCanvas(){
   var canvas=document.getElementById('think-canvas'),defEl=document.getElementById('think-definition'),statsEl=document.getElementById('think-stats');
   if(!canvas) return;
@@ -327,7 +373,16 @@ function _renderCanvas(){
   // Each figure is one row: BOOK ROW (has _book) or AUTHOR-ONLY ROW (_bookless:true).
   // Sort by row year: book.year for book rows, author.dob for bookless rows.
   var _allFigs=[];
-  selConcepts.forEach(function(sc){(sc.figures||[]).forEach(function(f){_allFigs.push(f);});});
+  var _multiConcept=selConcepts.length>1;
+  var _ciForColor=0;
+  selConcepts.forEach(function(sc){
+    var _cc=_TAG_PALETTE[_ciForColor%_TAG_PALETTE.length];
+    (sc.figures||[]).forEach(function(f){
+      var fc=_multiConcept?Object.assign({},f,{_cColor:_cc,_cSlug:sc.slug}):f;
+      _allFigs.push(fc);
+    });
+    _ciForColor++;
+  });
   var figs=_allFigs.sort(function(a,b){
     var ya=a._book?a._book.year:(a.dob||9999);
     var yb=b._book?b._book.year:(b.dob||9999);
@@ -335,8 +390,8 @@ function _renderCanvas(){
     if((a.dob||9999)!==(b.dob||9999)) return(a.dob||9999)-(b.dob||9999);
     return(a.name||'').localeCompare(b.name||'');
   });
-  var _statsLabel=selConcepts.length===1?_tkName(concept):selConcepts.map(function(sc){return _tkName(sc);}).join(' + ');
-  if(statsEl) statsEl.textContent=_statsLabel+' \u2014 '+_tkNum(figs.length)+' '+_tkUI('BOOKS');
+  var _statsLabel=selConcepts.length===1?_tkName(concept)+' \u2014 '+_tkNum(figs.length)+' '+_tkUI('BOOKS'):_tkNum(selConcepts.length)+' '+_tkUI('concepts')+' \u2014 '+_tkNum(figs.length)+' '+_tkUI('BOOKS');
+  if(statsEl) statsEl.textContent=_statsLabel;
 
   var slugSet=new Set();
   figs.forEach(function(f){slugSet.add(f.slug);});
@@ -393,8 +448,18 @@ function _renderCanvas(){
     var n=Number(yr);
     var yrTxt=n<0?_tkNum(Math.abs(n))+'<span class="year-era">'+_tkUI('BCE')+'</span>':_tkNum(n)+'<span class="year-era">'+_tkUI('CE')+'</span>';
     var multi=info.count>1?' year-multi':'';
-    html+='<div class="tk-yr-mark tk-anim-el'+multi+'" data-y="'+info.midY+'" style="top:'+info.midY+'px">'+yrTxt+'</div>';
+    html+='<div class="tk-yr-mark tk-anim-el'+multi+'" data-y="'+info.midY+'" style="top:'+info.midY+'px;'+(_showCE?'':'display:none')+'">'+yrTxt+'</div>';
+    var hij=_ceToHijri(n);
+    var hijLabel=hij<0?_tkNum(Math.abs(hij))+'<span class="year-era">\u0642.\u0647\u0640</span>':_tkNum(hij)+'<span class="year-era">\u0647\u0640</span>';
+    html+='<div class="tk-hij-mark tk-anim-el'+multi+'" data-y="'+info.midY+'" style="top:'+info.midY+'px;'+(_showHijri?'':'display:none')+'">'+hijLabel+'</div>';
   });
+
+  // Dual ruler toggle at top of stem
+  html+='<div class="tk-ruler-toggle" style="top:'+(PAD-28)+'px">';
+  html+='<span class="tk-ruler-btn'+ (_showCE?' on':'')+'" data-ruler="ce">CE</span>';
+  html+='<span class="tk-ruler-sep">\u2502</span>';
+  html+='<span class="tk-ruler-btn'+ (_showHijri?' on':'')+'" data-ruler="hij">\u0647\u0640</span>';
+  html+='</div>';
 
   // Figure rows (LEFT of line)
   events.forEach(function(ev){
@@ -409,7 +474,8 @@ function _renderCanvas(){
     html+='<div class="tk-fig-row tk-anim-el'+(f._bookless?' tk-fig-bookless':'')+'" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px'+booklessStyle+'">';
     var _figLabel=_tkFigName(f);
     var _figIsRtl=(_thinkLang!=='en'&&_figLabel!==f.name);
-    html+='<div class="tk-fig-main"><div class="tk-fig-title" dir="'+(_figIsRtl?'rtl':'ltr')+'"'+(_figIsRtl?' style="font-family:'+_tkFontBody()+'"':'')+'>'+_esc(_figLabel)+'</div>';
+    var _nameStyle=(_figIsRtl?'font-family:'+_tkFontBody()+';':'')+(f._cColor?'color:'+f._cColor:'');
+    html+='<div class="tk-fig-main"><div class="tk-fig-title" dir="'+(_figIsRtl?'rtl':'ltr')+'"'+(_nameStyle?' style="'+_nameStyle+'"':'')+'>'+_esc(_figLabel)+'</div>';
     if(dates) html+='<div class="tk-fig-meta">'+dates+'</div>';
     html+='</div></div>';
     // Fixed-position role dot at DOT_X
@@ -433,7 +499,8 @@ function _renderCanvas(){
     var _bTitle=_tkBookTitle(b);
     var _bDir=(_thinkLang!=='en'&&_bTitle!==b.title)?_tkDir():'ltr';
     var _bFont=(_thinkLang!=='en'&&_bTitle!==b.title)?_tkFontBody():'';
-    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" data-book-id="'+_bid+'" dir="'+_bDir+'"'+(_bFont?' style="font-family:'+_bFont+'"':'')+' onclick="event.preventDefault();setView(\'books\');setTimeout(function(){if(window._scrollToBookId)window._scrollToBookId(\''+_bid+'\');},350);return false;">'+_esc(_bTitle)+'</a>'+_readBtn;
+    var _bStyle=(_bFont?'font-family:'+_bFont+';':'')+(f._cColor?'color:'+f._cColor:'');
+    html+=marker+'<span class="tk-book-icon">\uD83D\uDCD6</span><a class="tk-book-link" href="#books" data-book-id="'+_bid+'" dir="'+_bDir+'"'+(_bStyle?' style="'+_bStyle+'"':'')+' onclick="event.preventDefault();setView(\'books\');setTimeout(function(){if(window._scrollToBookId)window._scrollToBookId(\''+_bid+'\');},350);return false;">'+_esc(_bTitle)+'</a>'+_readBtn;
     html+='</div>';
   });
 
@@ -505,6 +572,67 @@ function _renderCanvas(){
     });
   }
 
+  // ── Concept tagline bands — thin SVG leaf strokes showing each concept's span ──
+  if(selConcepts.length>=1){
+    var _ctSvgNS='http://www.w3.org/2000/svg';
+    var _ctSvg=document.createElementNS(_ctSvgNS,'svg');
+    _ctSvg.setAttribute('class','tk-concept-tags');
+    _ctSvg.style.cssText='position:absolute;top:0;left:'+(STEM_X+6)+'px;width:600px;height:'+totalH+'px;pointer-events:none;z-index:0;opacity:0.7';
+    var _ctIdx=0;
+    selConcepts.forEach(function(sc){
+      var figSlugs=new Set();(sc.figures||[]).forEach(function(f){figSlugs.add(f.slug);});
+      var minY=Infinity,maxY=-Infinity;
+      events.forEach(function(ev){
+        if(ev.type==='fig'&&figSlugs.has(ev.f.slug)){
+          if(ev.y<minY) minY=ev.y;
+          if(ev.y+ROW_H>maxY) maxY=ev.y+ROW_H;
+        }
+      });
+      if(minY===Infinity) return;
+      var color=_TAG_PALETTE[_ctIdx%_TAG_PALETTE.length];
+      var xOff=50+(_ctIdx*34);
+      var y1=minY-6,y2=maxY+6;
+      if(y2-y1<30) y2=y1+30;
+      var midY=(y1+y2)/2;
+      var peakX=xOff+40;
+      // Leaf stroke path — wider body
+      var d='M 0 '+y1.toFixed(1)+' C '+(peakX*0.4).toFixed(1)+' '+(y1+(midY-y1)*0.2).toFixed(1)+', '+peakX.toFixed(1)+' '+(y1+(midY-y1)*0.5).toFixed(1)+', '+peakX.toFixed(1)+' '+midY.toFixed(1)+' C '+peakX.toFixed(1)+' '+(midY+(y2-midY)*0.5).toFixed(1)+', '+(peakX*0.4).toFixed(1)+' '+(midY+(y2-midY)*0.8).toFixed(1)+', 0 '+y2.toFixed(1);
+      var path=document.createElementNS(_ctSvgNS,'path');
+      path.setAttribute('d',d);path.setAttribute('fill','none');
+      path.setAttribute('stroke',color);path.setAttribute('stroke-opacity','0.45');path.setAttribute('stroke-width','2.5');
+      _ctSvg.appendChild(path);
+      // Dots at endpoints
+      var d1=document.createElementNS(_ctSvgNS,'circle');
+      d1.setAttribute('cx','0');d1.setAttribute('cy',y1);d1.setAttribute('r','3');d1.setAttribute('fill',color);d1.setAttribute('fill-opacity','0.7');
+      _ctSvg.appendChild(d1);
+      var d2=document.createElementNS(_ctSvgNS,'circle');
+      d2.setAttribute('cx','0');d2.setAttribute('cy',y2);d2.setAttribute('r','3');d2.setAttribute('fill',color);d2.setAttribute('fill-opacity','0.7');
+      _ctSvg.appendChild(d2);
+      // Label at start point — dashed connector to leaf
+      var lblX=peakX+8;
+      var lblY=y1+3;
+      var conn=document.createElementNS(_ctSvgNS,'line');
+      conn.setAttribute('x1','4');conn.setAttribute('y1',y1);
+      conn.setAttribute('x2',lblX-2);conn.setAttribute('y2',lblY);
+      conn.setAttribute('stroke',color);conn.setAttribute('stroke-opacity','0.3');
+      conn.setAttribute('stroke-width','1');conn.setAttribute('stroke-dasharray','3,3');
+      _ctSvg.appendChild(conn);
+      var lbl=document.createElementNS(_ctSvgNS,'text');
+      lbl.setAttribute('x',lblX.toFixed(1));lbl.setAttribute('y',lblY.toFixed(1));
+      lbl.setAttribute('fill',color);lbl.setAttribute('fill-opacity','0.8');
+      lbl.setAttribute('font-family','Cinzel,serif');lbl.setAttribute('font-size','10');
+      lbl.setAttribute('letter-spacing','.06em');lbl.setAttribute('font-weight','600');
+      lbl.textContent=(_thinkLang!=='en'?_tkName(sc):sc.name).toUpperCase();
+      _ctSvg.appendChild(lbl);
+      _ctIdx++;
+    });
+    html+=''; // taglines are appended as DOM after innerHTML set
+    // Store reference to append after innerHTML
+    window._tkPendingTagSvg=_ctSvg;
+  } else {
+    window._tkPendingTagSvg=null;
+  }
+
   // Relation curves — overlay SVG, does NOT affect layout flow
   // Endpoints at role-dot center (fixed at DOT_CENTER_X=456)
   // Curves bulge left into the name column's empty space (max to ~100px from left edge)
@@ -569,6 +697,7 @@ function _renderCanvas(){
 
   // Curfew line — full-width, hidden until animate plays, year label rides on right end
   html+='<div id="think-cursor" class="tk-curfew-line" style="display:none;top:'+PAD+'px"><span id="tkAnimateYear" class="tk-curfew-year"></span></div>';
+  html+='<div id="think-blackout" style="display:none;position:absolute;left:0;right:0;background:#000;z-index:8;pointer-events:none"></div>';
 
   // Store Y-to-year mapping for animate year label
   _thinkAnim._events=events;
@@ -577,7 +706,19 @@ function _renderCanvas(){
 
   canvas.style.height=totalH+'px';
   canvas.innerHTML=html;
+  // Append concept tag SVG (created before innerHTML wipe)
+  if(window._tkPendingTagSvg){canvas.appendChild(window._tkPendingTagSvg);window._tkPendingTagSvg=null;}
   _thinkAnim.maxY=totalH;
+
+  // Ruler toggle wiring
+  canvas.querySelectorAll('.tk-ruler-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var which=this.getAttribute('data-ruler');
+      if(which==='ce'){_showCE=!_showCE;this.classList.toggle('on',_showCE);canvas.querySelectorAll('.tk-yr-mark').forEach(function(m){m.style.display=_showCE?'':'none';});}
+      if(which==='hij'){_showHijri=!_showHijri;this.classList.toggle('on',_showHijri);canvas.querySelectorAll('.tk-hij-mark').forEach(function(m){m.style.display=_showHijri?'':'none';});}
+    });
+  });
 
   // Author click-to-highlight
   var _selAuthor=null;
@@ -639,7 +780,9 @@ function _tkUpdateYearLabel(yr){
   var el=document.getElementById('tkAnimateYear');
   if(!el) return;
   if(yr==null){el.innerHTML='';return;}
-  el.innerHTML=yr<0?_tkNum(Math.abs(yr))+'<span class="year-era">BCE</span>':_tkNum(yr)+'<span class="year-era">CE</span>';
+  var ceTxt=yr<0?_tkNum(Math.abs(yr))+'<span class="year-era">BCE</span>':_tkNum(yr)+'<span class="year-era">CE</span>';
+  var hijTxt='';var hij=_ceToHijri(yr);if(hij!==null&&_showHijri) hijTxt=' <span style="opacity:.5">/</span> '+_tkNum(hij)+'<span class="year-era">\u0647\u0640</span>';
+  el.innerHTML=(_showCE?ceTxt:'')+hijTxt;
 }
 
 // ── Anim functions ──
@@ -656,45 +799,23 @@ function _thinkAnimPlay(){
     return;
   }
 
-  // Fresh start — hide ALL HTML elements and ALL SVG children
+  // Fresh start — blackout covers everything below cursor
   _thinkAnim.mode='playing';
   _thinkAnim.cursorY=_thinkAnim._PAD||20;
   _thinkAnim.speedMs=_thinkAnimCtl?Math.max(30,Math.round(_thinkAnimCtl.getSpeedMs()/2)):600;
-  // Hide HTML elements via class
-  canvas.querySelectorAll('.tk-anim-el').forEach(function(el){el.classList.add('tk-hidden-by-curfew');});
-  // Hide every individual SVG child element (lines, paths, rects, text, circles)
-  canvas.querySelectorAll('svg [data-curfew-y]').forEach(function(el){
-    var orig=el.getAttribute('opacity');
-    if(orig!==null&&orig!=='0') el.setAttribute('data-orig-opacity',orig);
-    el.setAttribute('opacity','0');
-  });
+  var blackout=document.getElementById('think-blackout');
+  if(blackout){blackout.style.display='';blackout.style.top='0px';blackout.style.height=_thinkAnim.maxY+'px';}
   if(cursor){cursor.style.display='';cursor.style.top=_thinkAnim.cursorY+'px';}
 
   var STEP=4;
   _thinkAnim.tick=function(){
     if(_thinkAnim.mode!=='playing') return;
     _thinkAnim.cursorY+=STEP;
-    if(_thinkAnim.cursorY>_thinkAnim.maxY){_thinkAnimStop();return;}
+    if(_thinkAnim.cursorY>_thinkAnim.maxY*0.8){_thinkAnimStop();return;}
     if(cursor) cursor.style.top=_thinkAnim.cursorY+'px';
-    // Reveal HTML elements whose data-y <= cursorY
-    canvas.querySelectorAll('.tk-hidden-by-curfew').forEach(function(el){
-      var ey=parseFloat(el.dataset.y);
-      if(!isNaN(ey)&&ey<=_thinkAnim.cursorY) el.classList.remove('tk-hidden-by-curfew');
-    });
-    // Reveal individual SVG children whose data-curfew-y <= cursorY
-    canvas.querySelectorAll('svg [data-curfew-y]').forEach(function(el){
-      if(el.getAttribute('opacity')==='0'){
-        var cy=parseFloat(el.getAttribute('data-curfew-y'));
-        if(!isNaN(cy)&&cy<=_thinkAnim.cursorY){
-          var orig=el.getAttribute('data-orig-opacity');
-          if(orig) el.setAttribute('opacity',orig);
-          else el.removeAttribute('opacity');
-        }
-      }
-    });
-    // Update running year label
+    var blackout=document.getElementById('think-blackout');
+    if(blackout){blackout.style.top=(_thinkAnim.cursorY+1)+'px';blackout.style.height=(_thinkAnim.maxY-_thinkAnim.cursorY)+'px';}
     _tkUpdateYearLabel(_tkYToYear(_thinkAnim.cursorY));
-    // Scroll to follow curfew
     var wrap=document.getElementById('think-canvas-wrap');
     if(wrap) wrap.scrollTop=Math.max(0,_thinkAnim.cursorY-wrap.clientHeight/2);
   };
@@ -712,16 +833,8 @@ function _thinkAnimStop(){
   if(_thinkAnimCtl) _thinkAnimCtl.forceStop();
   var canvas=document.getElementById('think-canvas');
   if(canvas){
-    // Reveal all HTML elements
-    canvas.querySelectorAll('.tk-hidden-by-curfew').forEach(function(el){el.classList.remove('tk-hidden-by-curfew');});
-    // Reveal all SVG children — restore original opacity
-    canvas.querySelectorAll('svg [data-curfew-y]').forEach(function(el){
-      if(el.getAttribute('opacity')==='0'){
-        var orig=el.getAttribute('data-orig-opacity');
-        if(orig) el.setAttribute('opacity',orig);
-        else el.removeAttribute('opacity');
-      }
-    });
+    var blackout=document.getElementById('think-blackout');
+    if(blackout) blackout.style.display='none';
   }
   var cursor=document.getElementById('think-cursor');
   if(cursor) cursor.style.display='none';

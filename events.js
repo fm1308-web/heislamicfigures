@@ -411,6 +411,12 @@ function _evAnimPlay(){
     scrollEl.style.position='relative';
     scrollEl.appendChild(cursor);
   }
+  var blackout=document.getElementById('ev-blackout');
+  if(!blackout){
+    blackout=document.createElement('div');blackout.id='ev-blackout';
+    blackout.style.cssText='display:none;position:absolute;left:0;right:0;background:#000;z-index:8;pointer-events:none';
+    scrollEl.appendChild(blackout);
+  }
 
   if(_evAnimMode==='paused'&&_evAnimRows){
     _evAnimMode='playing';
@@ -419,19 +425,14 @@ function _evAnimPlay(){
     _evAnimTimer=setInterval(_evAnimTick,_evAnimSpeedMs);
     return;
   }
-  // Fresh start — hide all rows
-  var rows=scrollEl.querySelectorAll('.ev-row');
-  if(!rows.length) return;
-  _evAnimRows=rows;
-  rows.forEach(function(r){
-    r.classList.add('ev-row-hidden');r.classList.remove('ev-row-reveal');
-    var card=r.querySelector('.ev-card');if(card)card.classList.remove('ev-card-visible');
-  });
+  _evAnimRows=scrollEl.querySelectorAll('.ev-row');
+  if(!_evAnimRows.length) return;
   scrollEl.scrollTop=0;
   _evAnimMode='playing';
   _evCurfewY=0;
   _evCurfewMaxY=scrollEl.scrollHeight;
   _evAnimSpeedMs=_evAnimCtl?_evAnimCtl.getSpeedMs():1200;
+  if(blackout){blackout.style.display='';blackout.style.top='0px';blackout.style.height=_evCurfewMaxY+'px';}
   cursor.style.display='';cursor.style.top='0px';
   _evAnimTimer=setInterval(_evAnimTick,_evAnimSpeedMs);
 }
@@ -442,26 +443,22 @@ function _evAnimTick(){
   var cursor=document.getElementById('ev-curfew');
   if(!scrollEl) return;
   _evCurfewY+=8;
-  if(_evCurfewY>_evCurfewMaxY){_evStopAnimate();return;}
+  if(_evCurfewY>_evCurfewMaxY*0.8){_evStopAnimate();return;}
   if(cursor) cursor.style.top=_evCurfewY+'px';
-  // Reveal rows whose top <= curfewY
+  var bo=document.getElementById('ev-blackout');
+  if(bo){bo.style.top=(_evCurfewY+1)+'px';bo.style.height=(_evCurfewMaxY-_evCurfewY)+'px';}
+  // Year label from revealed rows
   var revealedYr=null;
   if(_evAnimRows) _evAnimRows.forEach(function(r){
-    if(!r.classList.contains('ev-row-hidden')) return;
-    // For display:contents rows, use first child's offsetTop
     var firstChild=r.querySelector('div');
     var rowTop=firstChild?firstChild.offsetTop-scrollEl.offsetTop:0;
     if(rowTop<=_evCurfewY){
-      r.classList.remove('ev-row-hidden');r.classList.add('ev-row-reveal');
-      var card=r.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
       revealedYr=parseInt(r.getAttribute('data-year'),10);
     }
   });
-  // Year label
   if(revealedYr) _evLastRevealedYr=revealedYr;
   var yrEl=document.getElementById('ev-curfew-year');
   if(yrEl&&_evLastRevealedYr) yrEl.innerHTML=_evLastRevealedYr+'<span class="year-era">CE</span>';
-  // Scroll to follow
   scrollEl.scrollTop=Math.max(0,_evCurfewY-scrollEl.clientHeight/2);
 }
 var _evLastRevealedYr=null;
@@ -478,6 +475,8 @@ function _evStopAnimate(){
   if(_evAnimCtl) _evAnimCtl.forceStop();
   var scrollEl=document.getElementById('evScroll');
   if(scrollEl){
+    var bo=document.getElementById('ev-blackout');
+    if(bo) bo.style.display='none';
     scrollEl.querySelectorAll('.ev-row').forEach(function(r){
       r.classList.remove('ev-row-hidden');r.classList.add('ev-row-reveal');
       var card=r.querySelector('.ev-card');if(card)card.classList.add('ev-card-visible');
