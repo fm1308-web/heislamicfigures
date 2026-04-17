@@ -15,6 +15,26 @@ APP.Features = {
     return !!APP.Features[key];
   }
 };
+
+/* ── Language toggle for multilingual names ── */
+APP._lang = 'en';
+APP._RTL_LANGS = new Set(['ar', 'fa', 'ur', 'ps', 'sd', 'ckb']);
+APP._LANG_LABELS = {
+  en: 'English', ar: 'العربية', fa: 'فارسی', tr: 'Türkçe',
+  ur: 'اردو', ms: 'Bahasa Melayu', id: 'Bahasa Indonesia',
+  fr: 'Français', de: 'Deutsch', es: 'Español',
+  hi: 'हिन्दी', bn: 'বাংলা', zh: '中文', ja: '日本語',
+  ko: '한국어', ru: 'Русский', sw: 'Kiswahili',
+  ha: 'Hausa', ta: 'தமிழ்', tt: 'Татарча'
+};
+APP.getDisplayName = function(p) {
+  if (!p) return '';
+  if (APP._lang === 'en') return p.famous || '';
+  if (p.names_i18n && p.names_i18n[APP._lang]) return p.names_i18n[APP._lang];
+  return p.famous || '';
+};
+APP.isRTL = function() { return APP._RTL_LANGS.has(APP._lang); };
+
 APP.safeInit = function(name, fn) {
   try { fn(); console.log('[APP] ' + name + ' ✓'); }
   catch(e) { console.warn('[APP] ' + name + ' failed — continuing', e); }
@@ -1444,7 +1464,7 @@ function renderInfo(p){
         onerror="this.style.display='none';document.getElementById('wikiImgCaption').style.display='none';" />
       <div id="wikiImgCaption" style="display:none;font-size:9px;color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:4px">via Wikipedia</div>
     </div>` : ''}
-    <div class="i-name">${esc(p.famous)}</div>
+    <div class="i-name">${esc(p.famous)}${p.names_i18n?'<span class="i18n-trigger" id="i18nTrigger" title="View name in other languages" style="display:inline-block;margin-left:8px;font-size:11px;color:var(--ip-muted);cursor:pointer;vertical-align:middle;opacity:.5;transition:opacity .15s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.5">🌐</span>':''}</div>
     ${p.full&&p.full!==p.famous?`<div class="i-full">${esc(p.full)}</div>`:''}
     <div class="i-primary">${esc(p.primaryTitle||'')}</div>
     ${p.tags&&p.tags.length?`<div style="margin-bottom:10px;display:flex;flex-wrap:wrap;gap:5px">${p.tags.map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div>`:''}
@@ -1525,6 +1545,41 @@ function renderInfo(p){
         setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
         _updateFavFilterBtn();
       });
+    });
+  })();
+
+  // Wire i18n hover popup
+  (function() {
+    var trigger = document.getElementById('i18nTrigger');
+    if (!trigger || !activePerson || !activePerson.names_i18n) return;
+    var names = activePerson.names_i18n;
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var existing = document.getElementById('i18nPopup');
+      if (existing) { existing.remove(); return; }
+      var langs = Object.keys(names).filter(function(k) { return names[k] && APP._LANG_LABELS[k]; });
+      if (!langs.length) return;
+      var rows = langs.map(function(lang) {
+        var isRtl = APP._RTL_LANGS.has(lang);
+        return '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--ip-brd)">' +
+          '<span style="font-size:10px;color:var(--ip-muted);min-width:70px">' + APP._LANG_LABELS[lang] + '</span>' +
+          '<span style="font-size:13px;color:var(--ip-text);font-family:\'Source Sans 3\',sans-serif;text-align:right"' +
+          (isRtl ? ' dir="rtl"' : '') + '>' + names[lang] + '</span></div>';
+      }).join('');
+      var popup = document.createElement('div');
+      popup.id = 'i18nPopup';
+      popup.innerHTML =
+        '<div style="font-family:\'Cinzel\',serif;font-size:8px;letter-spacing:.12em;color:var(--ip-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px">NAME IN OTHER LANGUAGES<span style="flex:1;height:1px;background:var(--ip-brd)"></span><span style="cursor:pointer;font-size:14px;color:var(--ip-muted)" onclick="document.getElementById(\'i18nPopup\').remove()">×</span></div>' + rows;
+      popup.style.cssText = 'position:absolute;top:' + (trigger.getBoundingClientRect().bottom - trigger.closest('#infoScroll').getBoundingClientRect().top + 8) + 'px;left:10px;right:10px;background:var(--ip-bg);border:1px solid var(--ip-brd);border-radius:4px;padding:10px 14px;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,.3)';
+      trigger.closest('#infoScroll').style.position = 'relative';
+      trigger.closest('#infoScroll').appendChild(popup);
+      function closeOnOutside(ev) {
+        if (!popup.contains(ev.target) && ev.target !== trigger) {
+          popup.remove();
+          document.removeEventListener('click', closeOnOutside);
+        }
+      }
+      setTimeout(function() { document.addEventListener('click', closeOnOutside); }, 10);
     });
   })();
 }
