@@ -1,1006 +1,2406 @@
 {
-"version": 1,
-"generated": "2026-04-09",
-"concepts": [
-{
-"slug": "tawhid",
-"name": "Tawhid (divine unity)",
-"category": "theology",
-"definition": "The oneness of God and what that unity rules out about His nature and acts.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Wasil ibn Ata", "Al-Ash'ari", "Al-Maturidi", "Al-Ghazali", "Ibn Taymiyya"],
-"related": ["sifat-allah", "tanzih", "tashbih"]
-},
-{
-"slug": "qadar",
-"name": "Qadar (divine decree)",
-"category": "theology",
-"definition": "Whether human actions are predetermined by God or freely chosen.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Hasan al-Basri", "Wasil ibn Ata", "Al-Ash'ari", "Al-Maturidi", "Ibn Taymiyya"],
-"related": ["kasb", "jabr", "iman"]
-},
-{
-"slug": "kasb",
-"name": "Kasb (acquisition of acts)",
-"category": "theology",
-"definition": "Ash'ari doctrine that humans acquire acts God creates, reconciling omnipotence with human responsibility.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Ash'ari", "Al-Baqillani", "Al-Juwayni", "Al-Ghazali", "Fakhr al-Din al-Razi"],
-"related": ["qadar", "jabr", "sifat-allah"]
-},
-{
-"slug": "jabr",
-"name": "Jabr (divine compulsion)",
-"category": "theology",
-"definition": "The view that humans are wholly compelled in their actions and have no real agency.",
-"era_start": 8,
-"era_end": 15,
-"key_figures_hint": ["Jahm ibn Safwan", "Dirar ibn Amr", "Jabriyya school", "critiqued by Mu'tazila", "critiqued by Ash'aris"],
-"related": ["qadar", "kasb", "fitra"]
-},
-{
-"slug": "sifat-allah",
-"name": "Sifat Allah (divine attributes)",
-"category": "theology",
-"definition": "Whether God's attributes like knowledge and speech are real, metaphorical, or identical to His essence.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Jahm ibn Safwan", "Ibn Kullab", "Al-Ash'ari", "Fakhr al-Din al-Razi", "Ibn Taymiyya"],
-"related": ["tawhid", "tanzih", "tashbih"]
-},
-{
-"slug": "khalq-al-quran",
-"name": "Khalq al-Qur'an (createdness of the Qur'an)",
-"category": "theology",
-"definition": "Whether the Qur'an is God's uncreated eternal speech or a thing created in time.",
-"era_start": 8,
-"era_end": 14,
-"key_figures_hint": ["Jahm ibn Safwan", "Bishr al-Marisi", "Ahmad ibn Hanbal", "Caliph al-Ma'mun", "Al-Ash'ari"],
-"related": ["sifat-allah", "tawhid", "tanzih"]
-},
-{
-"slug": "ruyat-allah",
-"name": "Ru'yat Allah (beatific vision)",
-"category": "theology",
-"definition": "Whether believers will literally see God with their eyes in the afterlife.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Mu'tazila", "Al-Ash'ari", "Al-Maturidi", "Ibn Taymiyya", "Shia theologians"],
-"related": ["sifat-allah", "tanzih", "tashbih"]
-},
-{
-"slug": "takfir",
-"name": "Takfir (declaring unbelief)",
-"category": "theology",
-"definition": "The conditions under which a professing Muslim can be declared an unbeliever.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Khawarij", "Murji'a", "Al-Ghazali", "Ibn Taymiyya", "modern revivalists"],
-"related": ["iman", "al-manzila-bayn-al-manzilatayn", "siyasa-shariyya"]
-},
-{
-"slug": "al-manzila-bayn-al-manzilatayn",
-"name": "Al-Manzila bayn al-Manzilatayn (intermediate position)",
-"category": "theology",
-"definition": "Mu'tazili doctrine that a grave sinner is neither a believer nor an unbeliever.",
-"era_start": 8,
-"era_end": 12,
-"key_figures_hint": ["Wasil ibn Ata", "Amr ibn Ubayd", "Abu al-Hudhayl al-Allaf", "Al-Nazzam", "Al-Jahiz"],
-"related": ["iman", "takfir", "qadar"]
-},
-{
-"slug": "husn-wa-qubh",
-"name": "Husn wa Qubh (rational good and evil)",
-"category": "theology",
-"definition": "Whether moral value is known by unaided reason or only by revealed command.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Mu'tazila", "Al-Ash'ari", "Al-Maturidi", "Shia theologians", "Ibn Taymiyya"],
-"related": ["maqasid-al-shariah", "qadar", "maslaha"]
-},
-{
-"slug": "tanzih",
-"name": "Tanzih (divine transcendence)",
-"category": "theology",
-"definition": "Negating any resemblance between God and creation and stripping anthropomorphic language of literal force.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Mu'tazila", "Al-Ash'ari", "Ibn Arabi", "Ibn Taymiyya", "Shia kalam"],
-"related": ["tashbih", "tawhid", "sifat-allah"]
-},
-{
-"slug": "tashbih",
-"name": "Tashbih (likening God to creation)",
-"category": "theology",
-"definition": "Ascribing creaturely features to God, and how to read scriptural language that seems to.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Muqatil ibn Sulayman", "Hashwiyya", "Ibn Arabi", "Ibn Taymiyya", "Mu'tazili critics"],
-"related": ["tanzih", "sifat-allah", "tawil"]
-},
-{
-"slug": "shafaa",
-"name": "Shafa'a (intercession)",
-"category": "theology",
-"definition": "Whether prophets and saints can intercede for sinners on the Day of Judgment.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Sunni mainstream", "Mu'tazila (restricted)", "Shia (Imams)", "Ibn Taymiyya", "Wahhabi critics"],
-"related": ["wilaya", "nubuwwa", "tawhid"]
-},
-{
-"slug": "fitra",
-"name": "Fitra (innate disposition)",
-"category": "theology",
-"definition": "The natural God-given orientation every human is born with toward truth.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Ibn Taymiyya", "Al-Ghazali", "Ibn Qayyim al-Jawziyya", "Muhammad Iqbal", "Seyyed Hossein Nasr"],
-"related": ["nubuwwa", "husn-wa-qubh", "tawhid"]
-},
-{
-"slug": "iman",
-"name": "Iman (definition of faith)",
-"category": "theology",
-"definition": "Whether faith is inward assent, verbal profession, works, or all three combined.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Murji'a", "Khawarij", "Al-Bukhari", "Ash'aris", "Ibn Taymiyya"],
-"related": ["takfir", "al-manzila-bayn-al-manzilatayn", "fitra"]
-},
-{
-"slug": "barzakh",
-"name": "Barzakh (the interworld)",
-"category": "theology",
-"definition": "The state of souls between death and resurrection, later also used in Sufi cosmology.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Ghazali", "Ibn Arabi", "Mulla Sadra", "Shia eschatologists", "Al-Qurtubi"],
-"related": ["alam-al-mithal", "nafs", "shafaa"]
-},
-{
-"slug": "nubuwwa",
-"name": "Nubuwwa (prophethood)",
-"category": "theology",
-"definition": "The nature, necessity, and proofs of prophecy and the knowledge prophets receive.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Farabi", "Ibn Sina", "Al-Maturidi", "Fakhr al-Din al-Razi", "Shia theologians"],
-"related": ["ismah", "fitra", "ijaz-al-quran"]
-},
-{
-"slug": "ismah",
-"name": "Isma (infallibility)",
-"category": "theology",
-"definition": "Doctrine that prophets, and for Shia the Imams, are preserved from sin and major error.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Shaykh al-Mufid", "Al-Tusi (Muhammad)", "Al-Hilli", "Sunni debate on scope", "Mulla Sadra"],
-"related": ["nubuwwa", "imama", "ghayba"]
-},
-{
-"slug": "ghayba",
-"name": "Ghayba (occultation of the Imam)",
-"category": "theology",
-"definition": "Shia doctrine that the Twelfth Imam is alive but hidden until the end of time.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Nu'mani", "Ibn Babawayh al-Saduq", "Al-Shaykh al-Mufid", "Al-Tusi", "Ayatollah Khomeini"],
-"related": ["imama", "ismah", "wilayat-al-faqih"]
-},
-{
-"slug": "bada",
-"name": "Bada (divine alteration)",
-"category": "theology",
-"definition": "Shia doctrine that God may manifest a new decree as His ongoing will unfolds.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Imam Ja'far al-Sadiq (attributed)", "Al-Saduq", "Al-Shaykh al-Mufid", "Shia Imami kalam", "Sunni critics"],
-"related": ["qadar", "imama", "nass"]
-},
-{
-"slug": "wujud-mahiyya",
-"name": "Wujud and Mahiyya (existence and essence)",
-"category": "philosophy",
-"definition": "Whether existence is really distinct from essence in created things, and what that implies for God.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Farabi", "Ibn Sina", "Al-Suhrawardi", "Mulla Sadra", "Tabatabai"],
-"related": ["wajib-mumkin", "asalat-al-wujud", "wahdat-al-wujud"]
-},
-{
-"slug": "wajib-mumkin",
-"name": "Wajib and Mumkin (necessary and contingent being)",
-"category": "philosophy",
-"definition": "Dividing all that exists into what must exist in itself and what might or might not.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Ibn Sina", "Al-Ghazali (adopting)", "Fakhr al-Din al-Razi", "Nasir al-Din al-Tusi", "Mulla Sadra"],
-"related": ["wujud-mahiyya", "fayd", "tawhid"]
-},
-{
-"slug": "fayd",
-"name": "Fayd (emanation)",
-"category": "philosophy",
-"definition": "Neoplatonic scheme in which being flows from God through a hierarchy of intellects.",
-"era_start": 10,
-"era_end": 17,
-"key_figures_hint": ["Al-Farabi", "Ibn Sina", "Al-Suhrawardi", "critiqued by al-Ghazali", "critiqued by Ibn Taymiyya"],
-"related": ["al-aql-al-faal", "qidam-al-alam", "wajib-mumkin"]
-},
-{
-"slug": "al-aql-al-faal",
-"name": "Al-Aql al-Fa'al (Active Intellect)",
-"category": "philosophy",
-"definition": "The cosmic intellect that actualizes human thought and grants prophetic knowledge.",
-"era_start": 10,
-"era_end": 17,
-"key_figures_hint": ["Al-Kindi", "Al-Farabi", "Ibn Sina", "Ibn Bajja", "Ibn Rushd"],
-"related": ["fayd", "nafs-natiqa", "nubuwwa"]
-},
-{
-"slug": "qidam-al-alam",
-"name": "Qidam al-Alam (eternity of the world)",
-"category": "philosophy",
-"definition": "Whether the universe had a beginning in time or is co-eternal with God.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Kindi (against)", "Al-Farabi", "Ibn Sina (for)", "Al-Ghazali (against)", "Ibn Rushd"],
-"related": ["tahafut", "fayd", "wajib-mumkin"]
-},
-{
-"slug": "nafs-natiqa",
-"name": "Nafs Natiqa (the rational soul)",
-"category": "philosophy",
-"definition": "The immaterial human soul in Avicennan philosophy, its faculties and survival after death.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Kindi", "Ibn Sina", "Ibn Rushd", "Nasir al-Din al-Tusi", "Mulla Sadra"],
-"related": ["al-aql-al-faal", "harakat-jawhariyya", "saada"]
-},
-{
-"slug": "asalat-al-wujud",
-"name": "Asalat al-Wujud (primacy of existence)",
-"category": "philosophy",
-"definition": "Mulla Sadra's thesis that existence is the fundamental reality and essence is derivative.",
-"era_start": 17,
-"era_end": 21,
-"key_figures_hint": ["Mulla Sadra", "Hadi Sabzawari", "Tabatabai", "Ayatollah Khomeini", "Mesbah Yazdi"],
-"related": ["wujud-mahiyya", "harakat-jawhariyya", "wahdat-al-wujud"]
-},
-{
-"slug": "harakat-jawhariyya",
-"name": "Harakat Jawhariyya (substantial motion)",
-"category": "philosophy",
-"definition": "Mulla Sadra's doctrine that substances themselves undergo continuous renewal and change.",
-"era_start": 17,
-"era_end": 21,
-"key_figures_hint": ["Mulla Sadra", "Sabzawari", "Tabatabai", "Mutahhari", "contemporary Iranian philosophers"],
-"related": ["asalat-al-wujud", "nafs-natiqa", "qidam-al-alam"]
-},
-{
-"slug": "ishraq",
-"name": "Ishraq (illuminationism)",
-"category": "philosophy",
-"definition": "Suhrawardi's philosophy of light as fundamental reality and knowledge as presence.",
-"era_start": 12,
-"era_end": 21,
-"key_figures_hint": ["Al-Suhrawardi", "Shahrazuri", "Qutb al-Din al-Shirazi", "Mulla Sadra", "Henry Corbin (modern)"],
-"related": ["alam-al-mithal", "fayd", "asalat-al-wujud"]
-},
-{
-"slug": "mantiq",
-"name": "Mantiq (logic)",
-"category": "philosophy",
-"definition": "The Aristotelian syllogistic apparatus naturalized into Islamic scholarly curricula.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Farabi", "Ibn Sina", "Al-Ghazali", "Fakhr al-Din al-Razi", "Ibn Taymiyya (critic)"],
-"related": ["burhan", "tahafut", "al-aql-al-faal"]
-},
-{
-"slug": "madina-fadila",
-"name": "Al-Madina al-Fadila (the virtuous city)",
-"category": "philosophy",
-"definition": "Al-Farabi's ideal political community guided by a philosopher-prophet ruler.",
-"era_start": 10,
-"era_end": 14,
-"key_figures_hint": ["Al-Farabi", "Ibn Bajja", "Ibn Tufayl", "Ibn Rushd", "Nasir al-Din al-Tusi"],
-"related": ["nubuwwa", "saada", "siyasa-shariyya"]
-},
-{
-"slug": "saada",
-"name": "Sa'ada (philosophical happiness)",
-"category": "philosophy",
-"definition": "The ultimate end of human life conceived as intellectual and moral perfection.",
-"era_start": 9,
-"era_end": 17,
-"key_figures_hint": ["Al-Kindi", "Al-Farabi", "Ibn Miskawayh", "Nasir al-Din al-Tusi", "Ibn Sina"],
-"related": ["madina-fadila", "nafs-natiqa", "al-aql-al-faal"]
-},
-{
-"slug": "tahafut",
-"name": "Tahafut (incoherence debate)",
-"category": "philosophy",
-"definition": "Al-Ghazali's critique of the philosophers and Ibn Rushd's reply on key metaphysical questions.",
-"era_start": 11,
-"era_end": 21,
-"key_figures_hint": ["Al-Ghazali", "Ibn Rushd", "Fakhr al-Din al-Razi", "Ibn Taymiyya", "Khojazada"],
-"related": ["qidam-al-alam", "fayd", "nafs-natiqa"]
-},
-{
-"slug": "alam-al-mithal",
-"name": "Alam al-Mithal (the imaginal world)",
-"category": "philosophy",
-"definition": "An intermediate realm of subsisting forms between the material and purely intellectual.",
-"era_start": 12,
-"era_end": 21,
-"key_figures_hint": ["Al-Suhrawardi", "Ibn Arabi", "Qutb al-Din al-Shirazi", "Mulla Sadra", "Henry Corbin"],
-"related": ["ishraq", "barzakh", "tajalli"]
-},
-{
-"slug": "burhan",
-"name": "Burhan (demonstration)",
-"category": "philosophy",
-"definition": "Aristotelian demonstrative proof held up as the highest form of scientific knowledge.",
-"era_start": 10,
-"era_end": 17,
-"key_figures_hint": ["Al-Farabi", "Ibn Sina", "Ibn Rushd", "Nasir al-Din al-Tusi", "Al-Katibi"],
-"related": ["mantiq", "tahafut", "al-aql-al-faal"]
-},
-{
-"slug": "ijtihad",
-"name": "Ijtihad (independent legal reasoning)",
-"category": "law",
-"definition": "The effort of a qualified jurist to derive rulings directly from the primary sources.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Shafi'i", "Al-Ghazali", "Ibn Taymiyya", "Shah Waliullah", "Al-Shawkani"],
-"related": ["taqlid", "qiyas", "maqasid-al-shariah"]
-},
-{
-"slug": "taqlid",
-"name": "Taqlid (following a qualified authority)",
-"category": "law",
-"definition": "Accepting a jurist's rulings without personally deriving them from the evidence.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Hanafi mainstream", "Maliki mainstream", "Ibn Taymiyya (critic)", "Shah Waliullah", "Al-Shawkani (critic)"],
-"related": ["ijtihad", "marjaiyya", "ijma"]
-},
-{
-"slug": "ijma",
-"name": "Ijma (scholarly consensus)",
-"category": "law",
-"definition": "The agreement of qualified scholars treated as a binding source of law.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Shafi'i", "Al-Ghazali", "Al-Amidi", "Ibn Hazm (narrow view)", "Shia usulis"],
-"related": ["ijtihad", "qiyas", "taqlid"]
-},
-{
-"slug": "qiyas",
-"name": "Qiyas (analogical reasoning)",
-"category": "law",
-"definition": "Extending a textual ruling to a new case sharing its effective cause.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Shafi'i", "Hanafis", "Al-Ghazali", "Ibn Hazm (rejected)", "Al-Amidi"],
-"related": ["ijtihad", "ijma", "istihsan"]
-},
-{
-"slug": "istihsan",
-"name": "Istihsan (juristic preference)",
-"category": "law",
-"definition": "Setting aside strict analogy for a stronger contextual consideration of fairness or benefit.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Abu Hanifa", "Al-Shaybani", "Al-Shafi'i (critic)", "Hanafi jurists", "Maliki jurists"],
-"related": ["qiyas", "maslaha", "urf"]
-},
-{
-"slug": "maslaha",
-"name": "Maslaha (public welfare)",
-"category": "law",
-"definition": "Using the common good as a criterion for legal rulings where texts are silent.",
-"era_start": 11,
-"era_end": 21,
-"key_figures_hint": ["Al-Juwayni", "Al-Ghazali", "Al-Tufi", "Al-Shatibi", "Rashid Rida"],
-"related": ["maqasid-al-shariah", "istihsan", "sadd-al-dharai"]
-},
-{
-"slug": "maqasid-al-shariah",
-"name": "Maqasid al-Shari'a (higher objectives of the law)",
-"category": "law",
-"definition": "Reading shariah through its overarching aims such as protecting life, religion, and reason.",
-"era_start": 11,
-"era_end": 21,
-"key_figures_hint": ["Al-Juwayni", "Al-Ghazali", "Al-Shatibi", "Ibn Ashur", "Yusuf al-Qaradawi"],
-"related": ["maslaha", "ijtihad", "husn-wa-qubh"]
-},
-{
-"slug": "urf",
-"name": "Urf (custom as a legal source)",
-"category": "law",
-"definition": "Local custom as a secondary source shaping how rulings apply in practice.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Hanafi jurists", "Maliki jurists", "Ibn Abidin", "Ottoman qadis", "Al-Qarafi"],
-"related": ["istihsan", "maslaha", "siyasa-shariyya"]
-},
-{
-"slug": "sadd-al-dharai",
-"name": "Sadd al-Dhara'i (blocking the means)",
-"category": "law",
-"definition": "Prohibiting otherwise lawful acts because they predictably lead to forbidden outcomes.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Maliki jurists", "Hanbali jurists", "Al-Qarafi", "Ibn Taymiyya", "Ibn al-Qayyim"],
-"related": ["maslaha", "maqasid-al-shariah", "ijtihad"]
-},
-{
-"slug": "naskh",
-"name": "Naskh (abrogation)",
-"category": "law",
-"definition": "Later revelation cancelling or modifying an earlier ruling in the Qur'an or Sunnah.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Shafi'i", "Al-Nahhas", "Hibatullah ibn Salama", "Al-Suyuti", "modern reformist critics"],
-"related": ["tafsir-bil-mathur", "asbab-al-nuzul", "ijtihad"]
-},
-{
-"slug": "ikhtilaf",
-"name": "Ikhtilaf (juristic disagreement)",
-"category": "law",
-"definition": "The legitimate diversity of rulings among qualified scholars and the schools of law.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Tabari", "Ibn Rushd (the grandson)", "Ibn Qudama", "Shah Waliullah", "Ibn Abd al-Barr"],
-"related": ["ijtihad", "taqlid", "ijma"]
-},
-{
-"slug": "hiyal",
-"name": "Hiyal (legal stratagems)",
-"category": "law",
-"definition": "Devices that formally comply with the law while evading its underlying intent.",
-"era_start": 9,
-"era_end": 18,
-"key_figures_hint": ["Hanafi jurists (defending)", "Al-Khassaf", "Al-Shatibi (attacking)", "Ibn Taymiyya (attacking)", "Ibn al-Qayyim"],
-"related": ["maqasid-al-shariah", "maslaha", "ijtihad"]
-},
-{
-"slug": "ahkam",
-"name": "Al-Ahkam al-Khamsa (the five legal values)",
-"category": "law",
-"definition": "Classifying acts as obligatory, recommended, neutral, disliked, or forbidden.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Shafi'i", "Al-Ghazali", "Al-Amidi", "Hanafi-Shafi'i usul tradition", "Al-Shatibi"],
-"related": ["qiyas", "ijtihad", "maqasid-al-shariah"]
-},
-{
-"slug": "istishab",
-"name": "Istishab (presumption of continuity)",
-"category": "law",
-"definition": "Assuming a known state of affairs remains in force until evidence changes it.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Shafi'i jurists", "Al-Ghazali", "Al-Shatibi", "Shia usulis", "Muhammad Baqir al-Sadr"],
-"related": ["ijtihad", "ijma", "qiyas"]
-},
-{
-"slug": "marjaiyya",
-"name": "Marja'iyya (source of emulation)",
-"category": "law",
-"definition": "Shia institution by which lay believers follow the rulings of a senior living jurist.",
-"era_start": 19,
-"era_end": 21,
-"key_figures_hint": ["Murtaza al-Ansari", "Akhund Khorasani", "Abu al-Qasim al-Khu'i", "Ali al-Sistani", "Ayatollah Khomeini"],
-"related": ["taqlid", "ijtihad", "wilayat-al-faqih"]
-},
-{
-"slug": "fana",
-"name": "Fana (annihilation of the self)",
-"category": "mysticism",
-"definition": "Passing away of the ego's awareness in contemplation of God.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Abu Yazid al-Bistami", "Al-Junayd", "Al-Hallaj", "Ibn Arabi", "Rumi"],
-"related": ["baqa", "wahdat-al-wujud", "shath"]
-},
-{
-"slug": "baqa",
-"name": "Baqa (subsistence in God)",
-"category": "mysticism",
-"definition": "The sober return after annihilation, living in God after dying to the self.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Junayd", "Al-Qushayri", "Ibn Arabi", "Naqshbandi masters", "Al-Ansari al-Harawi"],
-"related": ["fana", "marifa", "insan-kamil"]
-},
-{
-"slug": "wahdat-al-wujud",
-"name": "Wahdat al-Wujud (unity of being)",
-"category": "mysticism",
-"definition": "Ibn Arabi's doctrine that all existence is one reality manifesting as many.",
-"era_start": 13,
-"era_end": 21,
-"key_figures_hint": ["Ibn Arabi", "Sadr al-Din al-Qunawi", "Abd al-Karim al-Jili", "Mulla Sadra", "Ibn Taymiyya (critic)"],
-"related": ["wahdat-al-shuhud", "tajalli", "asalat-al-wujud"]
-},
-{
-"slug": "wahdat-al-shuhud",
-"name": "Wahdat al-Shuhud (unity of witnessing)",
-"category": "mysticism",
-"definition": "Sirhindi's alternative that oneness is in the mystic's vision, not in reality itself.",
-"era_start": 17,
-"era_end": 21,
-"key_figures_hint": ["Ahmad Sirhindi", "Shah Waliullah", "Naqshbandi-Mujaddidi order", "Khwaja Mir Dard", "Mazhar Jan-i Janan"],
-"related": ["wahdat-al-wujud", "fana", "tajalli"]
-},
-{
-"slug": "tariqa",
-"name": "Tariqa (Sufi path and order)",
-"category": "mysticism",
-"definition": "The structured spiritual path and the institutional orders that transmit it.",
-"era_start": 12,
-"era_end": 21,
-"key_figures_hint": ["Al-Qushayri", "Abd al-Qadir al-Jilani", "Abu al-Hasan al-Shadhili", "Baha al-Din Naqshband", "Ahmad al-Rifa'i"],
-"related": ["dhikr", "maqamat", "wilaya"]
-},
-{
-"slug": "dhikr",
-"name": "Dhikr (remembrance of God)",
-"category": "mysticism",
-"definition": "Rhythmic invocation of God's names as the central Sufi practice.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Junayd", "Al-Ghazali", "Shadhili masters", "Naqshbandi masters", "Ahmad al-Tijani"],
-"related": ["tariqa", "muraqaba", "maqamat"]
-},
-{
-"slug": "sama",
-"name": "Sama (spiritual audition)",
-"category": "mysticism",
-"definition": "Controversial practice of listening to music and poetry to induce spiritual states.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Ghazali", "Ahmad Ghazali", "Rumi and the Mevlevis", "Chishti masters", "Ibn Taymiyya (critic)"],
-"related": ["ahwal", "mahabba", "tariqa"]
-},
-{
-"slug": "maqamat",
-"name": "Maqamat (stations on the path)",
-"category": "mysticism",
-"definition": "Progressive moral and spiritual levels attained by the seeker's own effort.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Sarraj", "Al-Qushayri", "Al-Ansari al-Harawi", "Ibn Arabi", "Al-Kalabadhi"],
-"related": ["ahwal", "marifa", "muraqaba"]
-},
-{
-"slug": "ahwal",
-"name": "Ahwal (spiritual states)",
-"category": "mysticism",
-"definition": "Transient God-given conditions experienced on the path, distinct from earned stations.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Sarraj", "Al-Qushayri", "Al-Hujwiri", "Ibn Arabi", "Al-Ghazali"],
-"related": ["maqamat", "mahabba", "fana"]
-},
-{
-"slug": "mahabba",
-"name": "Mahabba (divine love)",
-"category": "mysticism",
-"definition": "Love of God as the axis of the mystical life, both human ascent and divine self-giving.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Rabia al-Adawiyya", "Al-Ghazali", "Ahmad Ghazali", "Ibn Arabi", "Rumi"],
-"related": ["marifa", "fana", "ahwal"]
-},
-{
-"slug": "marifa",
-"name": "Ma'rifa (gnosis)",
-"category": "mysticism",
-"definition": "Direct tasting knowledge of God beyond discursive reasoning.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Dhu'l-Nun al-Misri", "Al-Junayd", "Al-Ghazali", "Ibn Arabi", "Shia gnostic tradition"],
-"related": ["mahabba", "fana", "tajalli"]
-},
-{
-"slug": "wilaya",
-"name": "Wilaya (sainthood and friendship with God)",
-"category": "mysticism",
-"definition": "The station of God's friends and the hierarchy of saints, distinct from prophethood.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Hakim al-Tirmidhi", "Ibn Arabi", "Shia tradition of the Imams", "Abd al-Qadir al-Jilani", "Naqshbandi masters"],
-"related": ["qutb", "insan-kamil", "ismah"]
-},
-{
-"slug": "qutb",
-"name": "Qutb (the spiritual pole)",
-"category": "mysticism",
-"definition": "The supreme saint of each era around whom the spiritual hierarchy turns.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Hakim al-Tirmidhi", "Ibn Arabi", "Abd al-Karim al-Jili", "North African Shadhiliyya", "Ahmad al-Tijani"],
-"related": ["wilaya", "insan-kamil", "tajalli"]
-},
-{
-"slug": "insan-kamil",
-"name": "Al-Insan al-Kamil (the Perfect Human)",
-"category": "mysticism",
-"definition": "The cosmic archetype of humanity as complete mirror of the divine names.",
-"era_start": 13,
-"era_end": 21,
-"key_figures_hint": ["Ibn Arabi", "Abd al-Karim al-Jili", "Rumi", "Mulla Sadra", "Aziz Nasafi"],
-"related": ["wahdat-al-wujud", "wilaya", "tajalli"]
-},
-{
-"slug": "tajalli",
-"name": "Tajalli (divine self-disclosure)",
-"category": "mysticism",
-"definition": "God's manifesting of Himself through created forms and inner unveilings.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Junayd", "Ibn Arabi", "Abd al-Karim al-Jili", "Mulla Sadra", "Qunawi"],
-"related": ["wahdat-al-wujud", "alam-al-mithal", "marifa"]
-},
-{
-"slug": "futuwwa",
-"name": "Futuwwa (spiritual chivalry)",
-"category": "mysticism",
-"definition": "A code of generous self-sacrificing virtue linked to craft guilds and Sufi brotherhoods.",
-"era_start": 9,
-"era_end": 18,
-"key_figures_hint": ["Al-Sulami", "Ibn al-Mi'mar", "Caliph al-Nasir li-Din Allah", "Anatolian akhi brotherhoods", "Ibn Arabi"],
-"related": ["tariqa", "maqamat", "wilaya"]
-},
-{
-"slug": "hulul",
-"name": "Hulul (indwelling)",
-"category": "mysticism",
-"definition": "The contested idea that the divine inhabits a human, as charged against al-Hallaj.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Hallaj (attributed)", "Junaydi critics", "Ibn Arabi (distinguishing)", "Ibn Taymiyya (critic)", "Sunni mainstream"],
-"related": ["fana", "wahdat-al-wujud", "shath"]
-},
-{
-"slug": "shath",
-"name": "Shath (ecstatic utterance)",
-"category": "mysticism",
-"definition": "Paradoxical, seemingly blasphemous sayings uttered in states of mystical intoxication.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Abu Yazid al-Bistami", "Al-Hallaj", "Ruzbihan Baqli", "Ibn Arabi", "Rumi"],
-"related": ["fana", "hulul", "ahwal"]
-},
-{
-"slug": "muraqaba",
-"name": "Muraqaba (vigilant watchfulness)",
-"category": "mysticism",
-"definition": "The contemplative practice of monitoring the heart under God's unceasing gaze.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Muhasibi", "Al-Qushayri", "Al-Ghazali", "Naqshbandi masters", "Ahmad Sirhindi"],
-"related": ["dhikr", "maqamat", "nafs"]
-},
-{
-"slug": "nafs",
-"name": "Nafs (the lower self)",
-"category": "mysticism",
-"definition": "The ego-soul whose lower impulses the seeker must discipline and transform.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Muhasibi", "Al-Ghazali", "Rumi", "Naqshbandi masters", "Ahmad Sirhindi"],
-"related": ["muraqaba", "fana", "maqamat"]
-},
-{
-"slug": "ilm-al-haya",
-"name": "Ilm al-Hay'a (mathematical cosmography)",
-"category": "science",
-"definition": "The science of the heavenly spheres, combining observation with geometric modeling.",
-"era_start": 9,
-"era_end": 17,
-"key_figures_hint": ["Al-Battani", "Al-Biruni", "Nasir al-Din al-Tusi", "Ibn al-Shatir", "Ulugh Beg"],
-"related": ["zij", "handasa", "hisab"]
-},
-{
-"slug": "zij",
-"name": "Zij (astronomical handbook)",
-"category": "science",
-"definition": "Tables of planetary positions, star coordinates, and calendrical data for practical use.",
-"era_start": 9,
-"era_end": 18,
-"key_figures_hint": ["Al-Khwarizmi", "Al-Battani", "Al-Biruni", "Nasir al-Din al-Tusi", "Ulugh Beg"],
-"related": ["ilm-al-haya", "hisab", "handasa"]
-},
-{
-"slug": "tashrih",
-"name": "Tashrih (anatomy)",
-"category": "science",
-"definition": "The study of the body's structure, where Arabic-writing physicians extended and corrected Galen.",
-"era_start": 10,
-"era_end": 17,
-"key_figures_hint": ["Al-Razi (Abu Bakr)", "Ibn Sina", "Ibn Zuhr", "Ibn al-Nafis", "Mansur ibn Ilyas"],
-"related": ["akhlat", "mizaj", "tajriba"]
-},
-{
-"slug": "kimiya",
-"name": "Kimiya (alchemy)",
-"category": "science",
-"definition": "The tradition of transforming substances, searching for the elixir, and laboratory technique.",
-"era_start": 8,
-"era_end": 17,
-"key_figures_hint": ["Jabir ibn Hayyan", "Abu Bakr al-Razi", "Al-Jildaki", "Al-Tughra'i", "Ibn Umail"],
-"related": ["tajriba", "mizaj", "tashrih"]
-},
-{
-"slug": "al-jabr",
-"name": "Al-Jabr (algebra)",
-"category": "science",
-"definition": "The systematic manipulation of unknowns as equations, from al-Khwarizmi onward.",
-"era_start": 9,
-"era_end": 15,
-"key_figures_hint": ["Al-Khwarizmi", "Abu Kamil", "Al-Karaji", "Omar Khayyam", "Sharaf al-Din al-Tusi"],
-"related": ["hisab", "handasa", "zij"]
-},
-{
-"slug": "ilm-al-manazir",
-"name": "Ilm al-Manazir (optics)",
-"category": "science",
-"definition": "The geometrical and experimental science of vision and light.",
-"era_start": 9,
-"era_end": 15,
-"key_figures_hint": ["Al-Kindi", "Ibn Sahl", "Ibn al-Haytham", "Kamal al-Din al-Farisi", "Qutb al-Din al-Shirazi"],
-"related": ["tajriba", "handasa", "ilm-al-haya"]
-},
-{
-"slug": "akhlat",
-"name": "Akhlat (humoral theory)",
-"category": "science",
-"definition": "Galenic doctrine of four bodily humors whose balance defines health.",
-"era_start": 9,
-"era_end": 18,
-"key_figures_hint": ["Al-Razi", "Ibn Sina", "Ibn al-Nafis", "Al-Majusi", "Ottoman physicians"],
-"related": ["mizaj", "tashrih", "adwa"]
-},
-{
-"slug": "adwa",
-"name": "Adwa (contagion debate)",
-"category": "science",
-"definition": "Whether diseases transmit person to person, debated against a prophetic saying denying contagion.",
-"era_start": 9,
-"era_end": 19,
-"key_figures_hint": ["Ibn Sina (transmission)", "Al-Qurtubi", "Ibn al-Khatib (plague treatise)", "Ibn al-Nafis", "Ibn Khatima"],
-"related": ["akhlat", "mizaj", "tashrih"]
-},
-{
-"slug": "mizaj",
-"name": "Mizaj (temperament or complexion)",
-"category": "science",
-"definition": "The balance of qualities defining an individual's physical and moral constitution.",
-"era_start": 9,
-"era_end": 19,
-"key_figures_hint": ["Al-Razi", "Ibn Sina", "Al-Majusi", "Abd al-Latif al-Baghdadi", "Ottoman medical writers"],
-"related": ["akhlat", "tashrih", "adwa"]
-},
-{
-"slug": "hisab",
-"name": "Hisab (arithmetic and reckoning)",
-"category": "science",
-"definition": "Calculation for commerce, inheritance, astronomy, and timekeeping.",
-"era_start": 8,
-"era_end": 18,
-"key_figures_hint": ["Al-Khwarizmi", "Abu al-Wafa al-Buzjani", "Al-Uqlidisi", "Al-Kashi", "Ibn al-Banna"],
-"related": ["al-jabr", "zij", "handasa"]
-},
-{
-"slug": "tajriba",
-"name": "Tajriba (experiment and tested experience)",
-"category": "science",
-"definition": "Deliberately controlled trial as a source of knowledge in medicine and optics.",
-"era_start": 10,
-"era_end": 15,
-"key_figures_hint": ["Al-Razi", "Ibn al-Haytham", "Al-Biruni", "Ibn Zuhr", "Kamal al-Din al-Farisi"],
-"related": ["ilm-al-manazir", "kimiya", "tashrih"]
-},
-{
-"slug": "handasa",
-"name": "Handasa (geometry)",
-"category": "science",
-"definition": "Euclidean geometry extended by Arabic-writing mathematicians, feeding astronomy and optics.",
-"era_start": 9,
-"era_end": 17,
-"key_figures_hint": ["Thabit ibn Qurra", "The Banu Musa", "Omar Khayyam", "Nasir al-Din al-Tusi", "Al-Kashi"],
-"related": ["al-jabr", "ilm-al-manazir", "zij"]
-},
-{
-"slug": "khilafa",
-"name": "Khilafa (caliphate)",
-"category": "politics",
-"definition": "The office of successor to the Prophet as political and religious head of the community.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Al-Mawardi", "Al-Juwayni", "Ibn Taymiyya", "Ibn Khaldun", "Rashid Rida"],
-"related": ["bayah", "shura", "siyasa-shariyya"]
-},
-{
-"slug": "imama",
-"name": "Imama (Shia imamate)",
-"category": "politics",
-"definition": "Shia doctrine that leadership of the community belongs to designated infallible Imams.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Shaykh al-Mufid", "Al-Tusi (Muhammad)", "Al-Hilli", "Mulla Sadra", "Ayatollah Khomeini"],
-"related": ["ismah", "nass", "ghayba"]
-},
-{
-"slug": "wilayat-al-faqih",
-"name": "Wilayat al-Faqih (guardianship of the jurist)",
-"category": "politics",
-"definition": "Doctrine that in the hidden Imam's absence the senior jurist holds political authority.",
-"era_start": 19,
-"era_end": 21,
-"key_figures_hint": ["Mulla Ahmad Naraqi", "Ayatollah Khomeini", "Hossein-Ali Montazeri", "Ali Khamenei", "contemporary Iranian jurists"],
-"related": ["imama", "ghayba", "marjaiyya"]
-},
-{
-"slug": "bayah",
-"name": "Bay'a (oath of allegiance)",
-"category": "politics",
-"definition": "The formal pledge by which rulers are recognized as legitimate.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Al-Mawardi", "Al-Juwayni", "Ibn Taymiyya", "Ibn Khaldun", "modern constitutionalists"],
-"related": ["khilafa", "shura", "siyasa-shariyya"]
-},
-{
-"slug": "shura",
-"name": "Shura (consultation)",
-"category": "politics",
-"definition": "The duty of rulers to consult, invoked to ground both pre-modern and modern political claims.",
-"era_start": 7,
-"era_end": 21,
-"key_figures_hint": ["Al-Mawardi", "Fakhr al-Din al-Razi", "Muhammad Abduh", "Rashid Rida", "contemporary Islamists"],
-"related": ["khilafa", "bayah", "maqasid-al-shariah"]
-},
-{
-"slug": "siyasa-shariyya",
-"name": "Siyasa Shar'iyya (shariah-oriented governance)",
-"category": "politics",
-"definition": "Discretionary rulership aimed at realizing the law's purposes beyond its textual rulings.",
-"era_start": 13,
-"era_end": 21,
-"key_figures_hint": ["Ibn Taymiyya", "Ibn al-Qayyim", "Al-Mawardi (precursor)", "Ottoman jurists", "modern Islamists"],
-"related": ["maqasid-al-shariah", "maslaha", "khilafa"]
-},
-{
-"slug": "taqiyya",
-"name": "Taqiyya (precautionary concealment)",
-"category": "politics",
-"definition": "Shia-associated permission to conceal one's belief under threat of harm.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Imam Ja'far al-Sadiq (attributed)", "Al-Shaykh al-Mufid", "Al-Tusi", "Shia Imami tradition", "Sunni parallels in extremis"],
-"related": ["imama", "ghayba", "ismah"]
-},
-{
-"slug": "nass",
-"name": "Nass (explicit designation of the Imam)",
-"category": "politics",
-"definition": "Shia doctrine that each Imam is explicitly designated by his predecessor.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Kulayni", "Ibn Babawayh al-Saduq", "Al-Shaykh al-Mufid", "Al-Hilli", "Imami kalam tradition"],
-"related": ["imama", "ismah", "ghayba"]
-},
-{
-"slug": "tafsir-bil-mathur",
-"name": "Tafsir bi al-Ma'thur (exegesis by transmitted reports)",
-"category": "language",
-"definition": "Explaining the Qur'an mainly through prophetic reports and early authorities.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Tabari", "Ibn Kathir", "Al-Suyuti", "Ibn Abi Hatim", "Salafi commentators"],
-"related": ["asbab-al-nuzul", "tafsir-bil-ray", "ilm-al-rijal"]
-},
-{
-"slug": "tafsir-bil-ray",
-"name": "Tafsir bi al-Ra'y (exegesis by reasoned opinion)",
-"category": "language",
-"definition": "Explaining the Qur'an through reasoned reflection, contested when unmoored from tradition.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Zamakhshari", "Fakhr al-Din al-Razi", "Al-Baydawi", "Muhammad Abduh", "Rashid Rida"],
-"related": ["tafsir-bil-mathur", "tawil", "majaz"]
-},
-{
-"slug": "tawil",
-"name": "Ta'wil (allegorical interpretation)",
-"category": "language",
-"definition": "Reading beyond the apparent sense, especially for theologically ambiguous verses.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Mu'tazila", "Shia exegetes", "Ibn Arabi", "Al-Ghazali", "Ibn Taymiyya (critic)"],
-"related": ["muhkam-mutashabih", "majaz", "tafsir-bil-ray"]
-},
-{
-"slug": "ijaz-al-quran",
-"name": "I'jaz al-Qur'an (inimitability of the Qur'an)",
-"category": "language",
-"definition": "The Qur'an's linguistic and rhetorical uniqueness as proof of its divine origin.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Rummani", "Al-Khattabi", "Al-Baqillani", "Abd al-Qahir al-Jurjani", "modern apologists"],
-"related": ["balagha", "nubuwwa", "muhkam-mutashabih"]
-},
-{
-"slug": "asbab-al-nuzul",
-"name": "Asbab al-Nuzul (occasions of revelation)",
-"category": "language",
-"definition": "Historical circumstances behind specific Qur'anic passages, used to interpret them.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Wahidi", "Al-Suyuti", "Ibn Hajar al-Asqalani", "modern historicizing readers", "Fazlur Rahman"],
-"related": ["tafsir-bil-mathur", "naskh", "ilm-al-rijal"]
-},
-{
-"slug": "muhkam-mutashabih",
-"name": "Muhkam and Mutashabih (clear and ambiguous verses)",
-"category": "language",
-"definition": "The Qur'an's own distinction between unambiguous rulings and ambiguous passages.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Al-Tabari", "Fakhr al-Din al-Razi", "Ibn Taymiyya", "Shia exegetes", "Al-Zarkashi"],
-"related": ["tawil", "tafsir-bil-mathur", "ijaz-al-quran"]
-},
-{
-"slug": "qiraat",
-"name": "Qira'at (canonical Qur'anic readings)",
-"category": "language",
-"definition": "The canonized variant readings of the Qur'anic text transmitted from early reciters.",
-"era_start": 8,
-"era_end": 21,
-"key_figures_hint": ["Ibn Mujahid", "Al-Dani", "Al-Shatibi (Qasim)", "Ibn al-Jazari", "modern reciter lineages"],
-"related": ["tafsir-bil-mathur", "balagha", "muhkam-mutashabih"]
-},
-{
-"slug": "majaz",
-"name": "Majaz (figurative language)",
-"category": "language",
-"definition": "Whether and how non-literal speech operates in the Qur'an and prophetic reports.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Al-Jahiz", "Abd al-Qahir al-Jurjani", "Al-Zamakhshari", "Al-Sakkaki", "Ibn Taymiyya (narrow view)"],
-"related": ["balagha", "tawil", "tafsir-bil-ray"]
-},
-{
-"slug": "balagha",
-"name": "Balagha (Arabic rhetoric)",
-"category": "language",
-"definition": "The science of Arabic eloquence developed to explain the Qur'an's literary force.",
-"era_start": 10,
-"era_end": 21,
-"key_figures_hint": ["Al-Jahiz", "Al-Rummani", "Abd al-Qahir al-Jurjani", "Al-Sakkaki", "Al-Qazwini (al-Khatib)"],
-"related": ["ijaz-al-quran", "majaz", "qiraat"]
-},
-{
-"slug": "ilm-al-rijal",
-"name": "Ilm al-Rijal (biographical hadith evaluation)",
-"category": "language",
-"definition": "Assessing hadith transmitters' reliability to grade reports as sound, weak, or fabricated.",
-"era_start": 9,
-"era_end": 21,
-"key_figures_hint": ["Yahya ibn Ma'in", "Al-Bukhari", "Al-Dhahabi", "Ibn Hajar al-Asqalani", "Shia rijal tradition"],
-"related": ["tafsir-bil-mathur", "asbab-al-nuzul", "ijma"]
-}
-]
+  "version": 1,
+  "generated": "2026-04-09",
+  "concepts": [
+    {
+      "slug": "tawhid",
+      "name": "Tawhid (divine unity)",
+      "category": "theology",
+      "definition": "The oneness of God and what that unity rules out about His nature and acts.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Wasil ibn Ata",
+        "Al-Ash'ari",
+        "Al-Maturidi",
+        "Al-Ghazali",
+        "Ibn Taymiyya"
+      ],
+      "related": [
+        "sifat-allah",
+        "tanzih",
+        "tashbih"
+      ],
+      "name_ar": "التوحيد",
+      "name_ur": "توحید",
+      "definition_ar": "وحدانية الله وما تنفيه عن ذاته وأفعاله",
+      "definition_ur": "اللہ کی وحدانیت اور اس کی ذات و صفات سے متعلق عقیدہ"
+    },
+    {
+      "slug": "qadar",
+      "name": "Qadar (divine decree)",
+      "category": "theology",
+      "definition": "Whether human actions are predetermined by God or freely chosen.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Hasan al-Basri",
+        "Wasil ibn Ata",
+        "Al-Ash'ari",
+        "Al-Maturidi",
+        "Ibn Taymiyya"
+      ],
+      "related": [
+        "kasb",
+        "jabr",
+        "iman"
+      ],
+      "name_ar": "القدر",
+      "name_ur": "تقدیر",
+      "definition_ar": "هل أفعال الإنسان مقدّرة من الله أم مختارة بإرادته",
+      "definition_ur": "کیا انسانی اعمال اللہ کی تقدیر سے ہیں یا اختیاری"
+    },
+    {
+      "slug": "kasb",
+      "name": "Kasb (acquisition of acts)",
+      "category": "theology",
+      "definition": "Ash'ari doctrine that humans acquire acts God creates, reconciling omnipotence with human responsibility.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Ash'ari",
+        "Al-Baqillani",
+        "Al-Juwayni",
+        "Al-Ghazali",
+        "Fakhr al-Din al-Razi"
+      ],
+      "related": [
+        "qadar",
+        "jabr",
+        "sifat-allah"
+      ],
+      "name_ar": "الكسب",
+      "name_ur": "کسب",
+      "definition_ar": "عقيدة الأشاعرة بأن العبد يكتسب الفعل الذي يخلقه الله",
+      "definition_ur": "اشعری عقیدہ کہ بندہ اللہ کے تخلیق کردہ فعل کو کسب کرتا ہے"
+    },
+    {
+      "slug": "jabr",
+      "name": "Jabr (divine compulsion)",
+      "category": "theology",
+      "definition": "The view that humans are wholly compelled in their actions and have no real agency.",
+      "era_start": 8,
+      "era_end": 15,
+      "key_figures_hint": [
+        "Jahm ibn Safwan",
+        "Dirar ibn Amr",
+        "Jabriyya school",
+        "critiqued by Mu'tazila",
+        "critiqued by Ash'aris"
+      ],
+      "related": [
+        "qadar",
+        "kasb",
+        "fitra"
+      ],
+      "name_ar": "الجبر",
+      "name_ur": "جبر",
+      "definition_ar": "القول بأن الإنسان مجبور في أفعاله لا اختيار له",
+      "definition_ur": "یہ نظریہ کہ انسان اپنے افعال میں مجبور ہے"
+    },
+    {
+      "slug": "sifat-allah",
+      "name": "Sifat Allah (divine attributes)",
+      "category": "theology",
+      "definition": "Whether God's attributes like knowledge and speech are real, metaphorical, or identical to His essence.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Jahm ibn Safwan",
+        "Ibn Kullab",
+        "Al-Ash'ari",
+        "Fakhr al-Din al-Razi",
+        "Ibn Taymiyya"
+      ],
+      "related": [
+        "tawhid",
+        "tanzih",
+        "tashbih"
+      ],
+      "name_ar": "صفات الله",
+      "name_ur": "صفاتِ الٰہی",
+      "definition_ar": "هل صفات الله كالعلم والكلام حقيقية أم مجازية أم عين ذاته",
+      "definition_ur": "کیا اللہ کی صفات جیسے علم اور کلام حقیقی ہیں یا عینِ ذات"
+    },
+    {
+      "slug": "khalq-al-quran",
+      "name": "Khalq al-Qur'an (createdness of the Qur'an)",
+      "category": "theology",
+      "definition": "Whether the Qur'an is God's uncreated eternal speech or a thing created in time.",
+      "era_start": 8,
+      "era_end": 14,
+      "key_figures_hint": [
+        "Jahm ibn Safwan",
+        "Bishr al-Marisi",
+        "Ahmad ibn Hanbal",
+        "Caliph al-Ma'mun",
+        "Al-Ash'ari"
+      ],
+      "related": [
+        "sifat-allah",
+        "tawhid",
+        "tanzih"
+      ],
+      "name_ar": "خلق القرآن",
+      "name_ur": "خلقِ قرآن",
+      "definition_ar": "هل القرآن كلام الله القديم غير المخلوق أم مخلوق في الزمن",
+      "definition_ur": "کیا قرآن اللہ کا غیر مخلوق کلام ہے یا مخلوق"
+    },
+    {
+      "slug": "ruyat-allah",
+      "name": "Ru'yat Allah (beatific vision)",
+      "category": "theology",
+      "definition": "Whether believers will literally see God with their eyes in the afterlife.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mu'tazila",
+        "Al-Ash'ari",
+        "Al-Maturidi",
+        "Ibn Taymiyya",
+        "Shia theologians"
+      ],
+      "related": [
+        "sifat-allah",
+        "tanzih",
+        "tashbih"
+      ],
+      "name_ar": "رؤية الله",
+      "name_ur": "رؤیتِ الٰہی",
+      "definition_ar": "هل يرى المؤمنون الله بأعينهم في الآخرة",
+      "definition_ur": "کیا مومنین آخرت میں اللہ کو اپنی آنکھوں سے دیکھیں گے"
+    },
+    {
+      "slug": "takfir",
+      "name": "Takfir (declaring unbelief)",
+      "category": "theology",
+      "definition": "The conditions under which a professing Muslim can be declared an unbeliever.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Khawarij",
+        "Murji'a",
+        "Al-Ghazali",
+        "Ibn Taymiyya",
+        "modern revivalists"
+      ],
+      "related": [
+        "iman",
+        "al-manzila-bayn-al-manzilatayn",
+        "siyasa-shariyya"
+      ],
+      "name_ar": "التكفير",
+      "name_ur": "تکفیر",
+      "definition_ar": "شروط الحكم على المسلم بالكفر",
+      "definition_ur": "کسی مسلمان کو کافر قرار دینے کی شرائط"
+    },
+    {
+      "slug": "al-manzila-bayn-al-manzilatayn",
+      "name": "Al-Manzila bayn al-Manzilatayn (intermediate position)",
+      "category": "theology",
+      "definition": "Mu'tazili doctrine that a grave sinner is neither a believer nor an unbeliever.",
+      "era_start": 8,
+      "era_end": 12,
+      "key_figures_hint": [
+        "Wasil ibn Ata",
+        "Amr ibn Ubayd",
+        "Abu al-Hudhayl al-Allaf",
+        "Al-Nazzam",
+        "Al-Jahiz"
+      ],
+      "related": [
+        "iman",
+        "takfir",
+        "qadar"
+      ],
+      "name_ar": "المنزلة بين المنزلتين",
+      "name_ur": "المنزلۃ بین المنزلتین",
+      "definition_ar": "عقيدة المعتزلة بأن مرتكب الكبيرة ليس مؤمناً ولا كافراً",
+      "definition_ur": "معتزلی عقیدہ کہ کبیرہ گناہ کا مرتکب نہ مومن ہے نہ کافر"
+    },
+    {
+      "slug": "husn-wa-qubh",
+      "name": "Husn wa Qubh (rational good and evil)",
+      "category": "theology",
+      "definition": "Whether moral value is known by unaided reason or only by revealed command.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mu'tazila",
+        "Al-Ash'ari",
+        "Al-Maturidi",
+        "Shia theologians",
+        "Ibn Taymiyya"
+      ],
+      "related": [
+        "maqasid-al-shariah",
+        "qadar",
+        "maslaha"
+      ],
+      "name_ar": "الحسن والقبح",
+      "name_ur": "حسن و قبح",
+      "definition_ar": "هل يُعرف الخير والشر بالعقل المجرد أم بالوحي فقط",
+      "definition_ur": "کیا اچھائی اور برائی عقل سے معلوم ہوتی ہے یا صرف وحی سے"
+    },
+    {
+      "slug": "tanzih",
+      "name": "Tanzih (divine transcendence)",
+      "category": "theology",
+      "definition": "Negating any resemblance between God and creation and stripping anthropomorphic language of literal force.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mu'tazila",
+        "Al-Ash'ari",
+        "Ibn Arabi",
+        "Ibn Taymiyya",
+        "Shia kalam"
+      ],
+      "related": [
+        "tashbih",
+        "tawhid",
+        "sifat-allah"
+      ],
+      "name_ar": "التنزيه",
+      "name_ur": "تنزیہ",
+      "definition_ar": "نفي أي مشابهة بين الله والمخلوقات",
+      "definition_ur": "اللہ اور مخلوقات کے درمیان کسی بھی مشابہت کی نفی"
+    },
+    {
+      "slug": "tashbih",
+      "name": "Tashbih (likening God to creation)",
+      "category": "theology",
+      "definition": "Ascribing creaturely features to God, and how to read scriptural language that seems to.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Muqatil ibn Sulayman",
+        "Hashwiyya",
+        "Ibn Arabi",
+        "Ibn Taymiyya",
+        "Mu'tazili critics"
+      ],
+      "related": [
+        "tanzih",
+        "sifat-allah",
+        "tawil"
+      ],
+      "name_ar": "التشبيه",
+      "name_ur": "تشبیہ",
+      "definition_ar": "نسبة صفات المخلوقات إلى الله وكيفية فهم النصوص الموهمة لذلك",
+      "definition_ur": "اللہ کو مخلوقات سے مشابہ قرار دینا اور ایسی نصوص کی تفسیر"
+    },
+    {
+      "slug": "shafaa",
+      "name": "Shafa'a (intercession)",
+      "category": "theology",
+      "definition": "Whether prophets and saints can intercede for sinners on the Day of Judgment.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Sunni mainstream",
+        "Mu'tazila (restricted)",
+        "Shia (Imams)",
+        "Ibn Taymiyya",
+        "Wahhabi critics"
+      ],
+      "related": [
+        "wilaya",
+        "nubuwwa",
+        "tawhid"
+      ],
+      "name_ar": "الشفاعة",
+      "name_ur": "شفاعت",
+      "definition_ar": "هل يشفع الأنبياء والأولياء للمذنبين يوم القيامة",
+      "definition_ur": "کیا انبیاء اور اولیاء قیامت کے دن گناہگاروں کی شفاعت کریں گے"
+    },
+    {
+      "slug": "fitra",
+      "name": "Fitra (innate disposition)",
+      "category": "theology",
+      "definition": "The natural God-given orientation every human is born with toward truth.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ibn Taymiyya",
+        "Al-Ghazali",
+        "Ibn Qayyim al-Jawziyya",
+        "Muhammad Iqbal",
+        "Seyyed Hossein Nasr"
+      ],
+      "related": [
+        "nubuwwa",
+        "husn-wa-qubh",
+        "tawhid"
+      ],
+      "name_ar": "الفطرة",
+      "name_ur": "فطرت",
+      "definition_ar": "الاستعداد الفطري الذي يولد عليه كل إنسان نحو الحق",
+      "definition_ur": "ہر انسان کی پیدائشی فطری رجحان حق کی طرف"
+    },
+    {
+      "slug": "iman",
+      "name": "Iman (definition of faith)",
+      "category": "theology",
+      "definition": "Whether faith is inward assent, verbal profession, works, or all three combined.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Murji'a",
+        "Khawarij",
+        "Al-Bukhari",
+        "Ash'aris",
+        "Ibn Taymiyya"
+      ],
+      "related": [
+        "takfir",
+        "al-manzila-bayn-al-manzilatayn",
+        "fitra"
+      ],
+      "name_ar": "الإيمان",
+      "name_ur": "ایمان",
+      "definition_ar": "هل الإيمان تصديق بالقلب أم إقرار باللسان أم عمل أم جميعها",
+      "definition_ur": "کیا ایمان دل کی تصدیق ہے یا زبان کا اقرار یا عمل یا سب"
+    },
+    {
+      "slug": "barzakh",
+      "name": "Barzakh (the interworld)",
+      "category": "theology",
+      "definition": "The state of souls between death and resurrection, later also used in Sufi cosmology.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Ghazali",
+        "Ibn Arabi",
+        "Mulla Sadra",
+        "Shia eschatologists",
+        "Al-Qurtubi"
+      ],
+      "related": [
+        "alam-al-mithal",
+        "nafs",
+        "shafaa"
+      ],
+      "name_ar": "البرزخ",
+      "name_ur": "برزخ",
+      "definition_ar": "حال الأرواح بين الموت والبعث وفي الكونيات الصوفية",
+      "definition_ur": "موت اور قیامت کے درمیان ارواح کی حالت"
+    },
+    {
+      "slug": "nubuwwa",
+      "name": "Nubuwwa (prophethood)",
+      "category": "theology",
+      "definition": "The nature, necessity, and proofs of prophecy and the knowledge prophets receive.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Farabi",
+        "Ibn Sina",
+        "Al-Maturidi",
+        "Fakhr al-Din al-Razi",
+        "Shia theologians"
+      ],
+      "related": [
+        "ismah",
+        "fitra",
+        "ijaz-al-quran"
+      ],
+      "name_ar": "النبوة",
+      "name_ur": "نبوت",
+      "definition_ar": "طبيعة النبوة وضرورتها وأدلتها والعلم الذي يتلقاه الأنبياء",
+      "definition_ur": "نبوت کی حقیقت، ضرورت اور اس کے دلائل"
+    },
+    {
+      "slug": "ismah",
+      "name": "Isma (infallibility)",
+      "category": "theology",
+      "definition": "Doctrine that prophets, and for Shia the Imams, are preserved from sin and major error.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shaykh al-Mufid",
+        "Al-Tusi (Muhammad)",
+        "Al-Hilli",
+        "Sunni debate on scope",
+        "Mulla Sadra"
+      ],
+      "related": [
+        "nubuwwa",
+        "imama",
+        "ghayba"
+      ],
+      "name_ar": "العصمة",
+      "name_ur": "عصمت",
+      "definition_ar": "عقيدة حفظ الأنبياء والأئمة عند الشيعة من الذنوب والخطأ",
+      "definition_ur": "انبیاء اور شیعہ کے نزدیک ائمہ کا گناہ اور غلطی سے محفوظ ہونا"
+    },
+    {
+      "slug": "ghayba",
+      "name": "Ghayba (occultation of the Imam)",
+      "category": "theology",
+      "definition": "Shia doctrine that the Twelfth Imam is alive but hidden until the end of time.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Nu'mani",
+        "Ibn Babawayh al-Saduq",
+        "Al-Shaykh al-Mufid",
+        "Al-Tusi",
+        "Ayatollah Khomeini"
+      ],
+      "related": [
+        "imama",
+        "ismah",
+        "wilayat-al-faqih"
+      ],
+      "name_ar": "الغيبة",
+      "name_ur": "غیبت",
+      "definition_ar": "عقيدة الشيعة بأن الإمام الثاني عشر حيّ مختفٍ إلى آخر الزمان",
+      "definition_ur": "شیعہ عقیدہ کہ بارہواں امام زندہ مگر پوشیدہ ہیں"
+    },
+    {
+      "slug": "bada",
+      "name": "Bada (divine alteration)",
+      "category": "theology",
+      "definition": "Shia doctrine that God may manifest a new decree as His ongoing will unfolds.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Imam Ja'far al-Sadiq (attributed)",
+        "Al-Saduq",
+        "Al-Shaykh al-Mufid",
+        "Shia Imami kalam",
+        "Sunni critics"
+      ],
+      "related": [
+        "qadar",
+        "imama",
+        "nass"
+      ],
+      "name_ar": "البداء",
+      "name_ur": "بداء",
+      "definition_ar": "عقيدة شيعية بأن الله قد يُظهر حكماً جديداً بمشيئته المستمرة",
+      "definition_ur": "شیعہ عقیدہ کہ اللہ اپنی جاری مشیت سے نیا حکم ظاہر کر سکتا ہے"
+    },
+    {
+      "slug": "wujud-mahiyya",
+      "name": "Wujud and Mahiyya (existence and essence)",
+      "category": "philosophy",
+      "definition": "Whether existence is really distinct from essence in created things, and what that implies for God.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Farabi",
+        "Ibn Sina",
+        "Al-Suhrawardi",
+        "Mulla Sadra",
+        "Tabatabai"
+      ],
+      "related": [
+        "wajib-mumkin",
+        "asalat-al-wujud",
+        "wahdat-al-wujud"
+      ],
+      "name_ar": "الوجود والماهية",
+      "name_ur": "وجود اور ماہیت",
+      "definition_ar": "هل الوجود مغاير حقاً للماهية في الممكنات وما يترتب على ذلك في حق الله",
+      "definition_ur": "کیا ممکنات میں وجود ماہیت سے حقیقتاً الگ ہے"
+    },
+    {
+      "slug": "wajib-mumkin",
+      "name": "Wajib and Mumkin (necessary and contingent being)",
+      "category": "philosophy",
+      "definition": "Dividing all that exists into what must exist in itself and what might or might not.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ibn Sina",
+        "Al-Ghazali (adopting)",
+        "Fakhr al-Din al-Razi",
+        "Nasir al-Din al-Tusi",
+        "Mulla Sadra"
+      ],
+      "related": [
+        "wujud-mahiyya",
+        "fayd",
+        "tawhid"
+      ],
+      "name_ar": "الواجب والممكن",
+      "name_ur": "واجب اور ممکن",
+      "definition_ar": "تقسيم الموجودات إلى ما يجب وجوده بذاته وما يجوز وجوده وعدمه",
+      "definition_ur": "موجودات کی تقسیم واجب الوجود اور ممکن الوجود میں"
+    },
+    {
+      "slug": "fayd",
+      "name": "Fayd (emanation)",
+      "category": "philosophy",
+      "definition": "Neoplatonic scheme in which being flows from God through a hierarchy of intellects.",
+      "era_start": 10,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Al-Farabi",
+        "Ibn Sina",
+        "Al-Suhrawardi",
+        "critiqued by al-Ghazali",
+        "critiqued by Ibn Taymiyya"
+      ],
+      "related": [
+        "al-aql-al-faal",
+        "qidam-al-alam",
+        "wajib-mumkin"
+      ],
+      "name_ar": "الفيض",
+      "name_ur": "فیض",
+      "definition_ar": "النظرية الأفلاطونية الجديدة في صدور الوجود عن الله عبر سلسلة العقول",
+      "definition_ur": "نوافلاطونی نظریہ کہ وجود اللہ سے عقول کے سلسلے سے صادر ہوتا ہے"
+    },
+    {
+      "slug": "al-aql-al-faal",
+      "name": "Al-Aql al-Fa'al (Active Intellect)",
+      "category": "philosophy",
+      "definition": "The cosmic intellect that actualizes human thought and grants prophetic knowledge.",
+      "era_start": 10,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Al-Kindi",
+        "Al-Farabi",
+        "Ibn Sina",
+        "Ibn Bajja",
+        "Ibn Rushd"
+      ],
+      "related": [
+        "fayd",
+        "nafs-natiqa",
+        "nubuwwa"
+      ],
+      "name_ar": "العقل الفعّال",
+      "name_ur": "عقلِ فعّال",
+      "definition_ar": "العقل الكوني الذي يُفعّل الفكر الإنساني ويمنح المعرفة النبوية",
+      "definition_ur": "وہ کونیاتی عقل جو انسانی فکر کو فعال کرتی ہے"
+    },
+    {
+      "slug": "qidam-al-alam",
+      "name": "Qidam al-Alam (eternity of the world)",
+      "category": "philosophy",
+      "definition": "Whether the universe had a beginning in time or is co-eternal with God.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Kindi (against)",
+        "Al-Farabi",
+        "Ibn Sina (for)",
+        "Al-Ghazali (against)",
+        "Ibn Rushd"
+      ],
+      "related": [
+        "tahafut",
+        "fayd",
+        "wajib-mumkin"
+      ],
+      "name_ar": "قِدم العالم",
+      "name_ur": "قدمِ عالم",
+      "definition_ar": "هل للكون بداية زمنية أم هو أزلي مع الله",
+      "definition_ur": "کیا کائنات کی زمانی ابتداء ہے یا وہ اللہ کے ساتھ ازلی ہے"
+    },
+    {
+      "slug": "nafs-natiqa",
+      "name": "Nafs Natiqa (the rational soul)",
+      "category": "philosophy",
+      "definition": "The immaterial human soul in Avicennan philosophy, its faculties and survival after death.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Kindi",
+        "Ibn Sina",
+        "Ibn Rushd",
+        "Nasir al-Din al-Tusi",
+        "Mulla Sadra"
+      ],
+      "related": [
+        "al-aql-al-faal",
+        "harakat-jawhariyya",
+        "saada"
+      ],
+      "name_ar": "النفس الناطقة",
+      "name_ur": "نفسِ ناطقہ",
+      "definition_ar": "النفس الإنسانية المجردة في الفلسفة الابن سينوية وقواها وبقاؤها بعد الموت",
+      "definition_ur": "ابن سینا کی فلسفے میں مجرد انسانی روح اور اس کی قوتیں"
+    },
+    {
+      "slug": "asalat-al-wujud",
+      "name": "Asalat al-Wujud (primacy of existence)",
+      "category": "philosophy",
+      "definition": "Mulla Sadra's thesis that existence is the fundamental reality and essence is derivative.",
+      "era_start": 17,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mulla Sadra",
+        "Hadi Sabzawari",
+        "Tabatabai",
+        "Ayatollah Khomeini",
+        "Mesbah Yazdi"
+      ],
+      "related": [
+        "wujud-mahiyya",
+        "harakat-jawhariyya",
+        "wahdat-al-wujud"
+      ],
+      "name_ar": "أصالة الوجود",
+      "name_ur": "اصالتِ وجود",
+      "definition_ar": "نظرية ملا صدرا بأن الوجود هو الحقيقة الأساسية والماهية تابعة له",
+      "definition_ur": "ملا صدرا کا نظریہ کہ وجود بنیادی حقیقت ہے اور ماہیت تابع ہے"
+    },
+    {
+      "slug": "harakat-jawhariyya",
+      "name": "Harakat Jawhariyya (substantial motion)",
+      "category": "philosophy",
+      "definition": "Mulla Sadra's doctrine that substances themselves undergo continuous renewal and change.",
+      "era_start": 17,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mulla Sadra",
+        "Sabzawari",
+        "Tabatabai",
+        "Mutahhari",
+        "contemporary Iranian philosophers"
+      ],
+      "related": [
+        "asalat-al-wujud",
+        "nafs-natiqa",
+        "qidam-al-alam"
+      ],
+      "name_ar": "الحركة الجوهرية",
+      "name_ur": "حرکتِ جوہری",
+      "definition_ar": "نظرية ملا صدرا بأن الجواهر نفسها تتجدد وتتغير باستمرار",
+      "definition_ur": "ملا صدرا کا نظریہ کہ جواہر خود مسلسل تجدید اور تغیر سے گزرتے ہیں"
+    },
+    {
+      "slug": "ishraq",
+      "name": "Ishraq (illuminationism)",
+      "category": "philosophy",
+      "definition": "Suhrawardi's philosophy of light as fundamental reality and knowledge as presence.",
+      "era_start": 12,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Suhrawardi",
+        "Shahrazuri",
+        "Qutb al-Din al-Shirazi",
+        "Mulla Sadra",
+        "Henry Corbin (modern)"
+      ],
+      "related": [
+        "alam-al-mithal",
+        "fayd",
+        "asalat-al-wujud"
+      ],
+      "name_ar": "الإشراق",
+      "name_ur": "اشراق",
+      "definition_ar": "فلسفة السهروردي في النور كحقيقة أساسية والمعرفة كحضور",
+      "definition_ur": "سہروردی کا فلسفہ نور بطور بنیادی حقیقت اور معرفت بطور حضور"
+    },
+    {
+      "slug": "mantiq",
+      "name": "Mantiq (logic)",
+      "category": "philosophy",
+      "definition": "The Aristotelian syllogistic apparatus naturalized into Islamic scholarly curricula.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Farabi",
+        "Ibn Sina",
+        "Al-Ghazali",
+        "Fakhr al-Din al-Razi",
+        "Ibn Taymiyya (critic)"
+      ],
+      "related": [
+        "burhan",
+        "tahafut",
+        "al-aql-al-faal"
+      ],
+      "name_ar": "المنطق",
+      "name_ur": "منطق",
+      "definition_ar": "الجهاز القياسي الأرسطي الذي تبنّته المناهج العلمية الإسلامية",
+      "definition_ur": "ارسطو کی قیاسی منطق جو اسلامی علمی نصاب میں شامل ہوئی"
+    },
+    {
+      "slug": "madina-fadila",
+      "name": "Al-Madina al-Fadila (the virtuous city)",
+      "category": "philosophy",
+      "definition": "Al-Farabi's ideal political community guided by a philosopher-prophet ruler.",
+      "era_start": 10,
+      "era_end": 14,
+      "key_figures_hint": [
+        "Al-Farabi",
+        "Ibn Bajja",
+        "Ibn Tufayl",
+        "Ibn Rushd",
+        "Nasir al-Din al-Tusi"
+      ],
+      "related": [
+        "nubuwwa",
+        "saada",
+        "siyasa-shariyya"
+      ],
+      "name_ar": "المدينة الفاضلة",
+      "name_ur": "مدینۂ فاضلہ",
+      "definition_ar": "المجتمع السياسي المثالي عند الفارابي بقيادة حاكم فيلسوف نبي",
+      "definition_ur": "فارابی کی مثالی سیاسی جماعت جس کی قیادت فلسفی نبی حکمران کرے"
+    },
+    {
+      "slug": "saada",
+      "name": "Sa'ada (philosophical happiness)",
+      "category": "philosophy",
+      "definition": "The ultimate end of human life conceived as intellectual and moral perfection.",
+      "era_start": 9,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Al-Kindi",
+        "Al-Farabi",
+        "Ibn Miskawayh",
+        "Nasir al-Din al-Tusi",
+        "Ibn Sina"
+      ],
+      "related": [
+        "madina-fadila",
+        "nafs-natiqa",
+        "al-aql-al-faal"
+      ],
+      "name_ar": "السعادة",
+      "name_ur": "سعادت",
+      "definition_ar": "الغاية القصوى للحياة الإنسانية بوصفها كمالاً عقلياً وأخلاقياً",
+      "definition_ur": "انسانی زندگی کا حتمی مقصد بطور عقلی اور اخلاقی کمال"
+    },
+    {
+      "slug": "tahafut",
+      "name": "Tahafut (incoherence debate)",
+      "category": "philosophy",
+      "definition": "Al-Ghazali's critique of the philosophers and Ibn Rushd's reply on key metaphysical questions.",
+      "era_start": 11,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Ghazali",
+        "Ibn Rushd",
+        "Fakhr al-Din al-Razi",
+        "Ibn Taymiyya",
+        "Khojazada"
+      ],
+      "related": [
+        "qidam-al-alam",
+        "fayd",
+        "nafs-natiqa"
+      ],
+      "name_ar": "التهافت",
+      "name_ur": "تہافت",
+      "definition_ar": "نقد الغزالي للفلاسفة وردّ ابن رشد في مسائل ما بعد الطبيعة",
+      "definition_ur": "غزالی کی فلاسفہ پر تنقید اور ابن رشد کا جواب"
+    },
+    {
+      "slug": "alam-al-mithal",
+      "name": "Alam al-Mithal (the imaginal world)",
+      "category": "philosophy",
+      "definition": "An intermediate realm of subsisting forms between the material and purely intellectual.",
+      "era_start": 12,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Suhrawardi",
+        "Ibn Arabi",
+        "Qutb al-Din al-Shirazi",
+        "Mulla Sadra",
+        "Henry Corbin"
+      ],
+      "related": [
+        "ishraq",
+        "barzakh",
+        "tajalli"
+      ],
+      "name_ar": "عالم المثال",
+      "name_ur": "عالمِ مثال",
+      "definition_ar": "عالم وسيط من الصور القائمة بين المادي والعقلي المحض",
+      "definition_ur": "مادی اور محض عقلی کے درمیان ایک وسطی عالم"
+    },
+    {
+      "slug": "burhan",
+      "name": "Burhan (demonstration)",
+      "category": "philosophy",
+      "definition": "Aristotelian demonstrative proof held up as the highest form of scientific knowledge.",
+      "era_start": 10,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Al-Farabi",
+        "Ibn Sina",
+        "Ibn Rushd",
+        "Nasir al-Din al-Tusi",
+        "Al-Katibi"
+      ],
+      "related": [
+        "mantiq",
+        "tahafut",
+        "al-aql-al-faal"
+      ],
+      "name_ar": "البرهان",
+      "name_ur": "برہان",
+      "definition_ar": "الدليل البرهاني الأرسطي بوصفه أعلى صور المعرفة العلمية",
+      "definition_ur": "ارسطو کی یقینی دلیل بطور اعلیٰ ترین علمی معرفت"
+    },
+    {
+      "slug": "ijtihad",
+      "name": "Ijtihad (independent legal reasoning)",
+      "category": "law",
+      "definition": "The effort of a qualified jurist to derive rulings directly from the primary sources.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shafi'i",
+        "Al-Ghazali",
+        "Ibn Taymiyya",
+        "Shah Waliullah",
+        "Al-Shawkani"
+      ],
+      "related": [
+        "taqlid",
+        "qiyas",
+        "maqasid-al-shariah"
+      ],
+      "name_ar": "الاجتهاد",
+      "name_ur": "اجتہاد",
+      "definition_ar": "جهد المجتهد المؤهل لاستنباط الأحكام مباشرة من الأدلة الأصلية",
+      "definition_ur": "اہل فقیہ کی براہ راست اصل مصادر سے احکام اخذ کرنے کی کوشش"
+    },
+    {
+      "slug": "taqlid",
+      "name": "Taqlid (following a qualified authority)",
+      "category": "law",
+      "definition": "Accepting a jurist's rulings without personally deriving them from the evidence.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Hanafi mainstream",
+        "Maliki mainstream",
+        "Ibn Taymiyya (critic)",
+        "Shah Waliullah",
+        "Al-Shawkani (critic)"
+      ],
+      "related": [
+        "ijtihad",
+        "marjaiyya",
+        "ijma"
+      ],
+      "name_ar": "التقليد",
+      "name_ur": "تقلید",
+      "definition_ar": "قبول أحكام الفقيه دون مطالبة بمعرفة دليلها",
+      "definition_ur": "فقیہ کے احکام کو بغیر دلیل جانے قبول کرنا"
+    },
+    {
+      "slug": "ijma",
+      "name": "Ijma (scholarly consensus)",
+      "category": "law",
+      "definition": "The agreement of qualified scholars treated as a binding source of law.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shafi'i",
+        "Al-Ghazali",
+        "Al-Amidi",
+        "Ibn Hazm (narrow view)",
+        "Shia usulis"
+      ],
+      "related": [
+        "ijtihad",
+        "qiyas",
+        "taqlid"
+      ],
+      "name_ar": "الإجماع",
+      "name_ur": "اجماع",
+      "definition_ar": "اتفاق العلماء المؤهلين المعتبر مصدراً ملزماً من مصادر الشريعة",
+      "definition_ur": "اہل علماء کا اتفاق جو شریعت کا ایک لازمی ماخذ ہے"
+    },
+    {
+      "slug": "qiyas",
+      "name": "Qiyas (analogical reasoning)",
+      "category": "law",
+      "definition": "Extending a textual ruling to a new case sharing its effective cause.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shafi'i",
+        "Hanafis",
+        "Al-Ghazali",
+        "Ibn Hazm (rejected)",
+        "Al-Amidi"
+      ],
+      "related": [
+        "ijtihad",
+        "ijma",
+        "istihsan"
+      ],
+      "name_ar": "القياس",
+      "name_ur": "قیاس",
+      "definition_ar": "تعدية حكم نص إلى واقعة جديدة تشترك معه في العلة",
+      "definition_ur": "نص کے حکم کو نئے مسئلے پر علت مشترک کی بنا پر لاگو کرنا"
+    },
+    {
+      "slug": "istihsan",
+      "name": "Istihsan (juristic preference)",
+      "category": "law",
+      "definition": "Setting aside strict analogy for a stronger contextual consideration of fairness or benefit.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Abu Hanifa",
+        "Al-Shaybani",
+        "Al-Shafi'i (critic)",
+        "Hanafi jurists",
+        "Maliki jurists"
+      ],
+      "related": [
+        "qiyas",
+        "maslaha",
+        "urf"
+      ],
+      "name_ar": "الاستحسان",
+      "name_ur": "استحسان",
+      "definition_ar": "العدول عن القياس الصارم لاعتبار أقوى من العدل أو المصلحة",
+      "definition_ur": "سخت قیاس سے ہٹ کر انصاف یا مصلحت کی بنا پر فیصلہ"
+    },
+    {
+      "slug": "maslaha",
+      "name": "Maslaha (public welfare)",
+      "category": "law",
+      "definition": "Using the common good as a criterion for legal rulings where texts are silent.",
+      "era_start": 11,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Juwayni",
+        "Al-Ghazali",
+        "Al-Tufi",
+        "Al-Shatibi",
+        "Rashid Rida"
+      ],
+      "related": [
+        "maqasid-al-shariah",
+        "istihsan",
+        "sadd-al-dharai"
+      ],
+      "name_ar": "المصلحة",
+      "name_ur": "مصلحت",
+      "definition_ar": "اعتبار المنفعة العامة معياراً للأحكام حيث تسكت النصوص",
+      "definition_ur": "عوامی بھلائی کو معیار بنانا جہاں نصوص خاموش ہوں"
+    },
+    {
+      "slug": "maqasid-al-shariah",
+      "name": "Maqasid al-Shari'a (higher objectives of the law)",
+      "category": "law",
+      "definition": "Reading shariah through its overarching aims such as protecting life, religion, and reason.",
+      "era_start": 11,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Juwayni",
+        "Al-Ghazali",
+        "Al-Shatibi",
+        "Ibn Ashur",
+        "Yusuf al-Qaradawi"
+      ],
+      "related": [
+        "maslaha",
+        "ijtihad",
+        "husn-wa-qubh"
+      ],
+      "name_ar": "مقاصد الشريعة",
+      "name_ur": "مقاصدِ شریعہ",
+      "definition_ar": "قراءة الشريعة من خلال غاياتها العليا كحفظ النفس والدين والعقل",
+      "definition_ur": "شریعت کو اس کے اعلیٰ مقاصد جیسے حفظِ نفس، دین اور عقل سے سمجھنا"
+    },
+    {
+      "slug": "urf",
+      "name": "Urf (custom as a legal source)",
+      "category": "law",
+      "definition": "Local custom as a secondary source shaping how rulings apply in practice.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Hanafi jurists",
+        "Maliki jurists",
+        "Ibn Abidin",
+        "Ottoman qadis",
+        "Al-Qarafi"
+      ],
+      "related": [
+        "istihsan",
+        "maslaha",
+        "siyasa-shariyya"
+      ],
+      "name_ar": "العُرف",
+      "name_ur": "عرف",
+      "definition_ar": "العادة المحلية بوصفها مصدراً ثانوياً يشكّل تطبيق الأحكام",
+      "definition_ur": "مقامی رواج بطور ثانوی ماخذ جو احکام کے اطلاق کو متعین کرے"
+    },
+    {
+      "slug": "sadd-al-dharai",
+      "name": "Sadd al-Dhara'i (blocking the means)",
+      "category": "law",
+      "definition": "Prohibiting otherwise lawful acts because they predictably lead to forbidden outcomes.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Maliki jurists",
+        "Hanbali jurists",
+        "Al-Qarafi",
+        "Ibn Taymiyya",
+        "Ibn al-Qayyim"
+      ],
+      "related": [
+        "maslaha",
+        "maqasid-al-shariah",
+        "ijtihad"
+      ],
+      "name_ar": "سد الذرائع",
+      "name_ur": "سدِّ ذرائع",
+      "definition_ar": "منع أفعال مباحة في الأصل لأنها تؤدي إلى محرّمات",
+      "definition_ur": "جائز افعال کی ممانعت جب وہ حرام نتائج کا ذریعہ بنیں"
+    },
+    {
+      "slug": "naskh",
+      "name": "Naskh (abrogation)",
+      "category": "law",
+      "definition": "Later revelation cancelling or modifying an earlier ruling in the Qur'an or Sunnah.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shafi'i",
+        "Al-Nahhas",
+        "Hibatullah ibn Salama",
+        "Al-Suyuti",
+        "modern reformist critics"
+      ],
+      "related": [
+        "tafsir-bil-mathur",
+        "asbab-al-nuzul",
+        "ijtihad"
+      ],
+      "name_ar": "النسخ",
+      "name_ur": "نسخ",
+      "definition_ar": "إلغاء الوحي اللاحق لحكم سابق في القرآن أو السنة",
+      "definition_ur": "بعد کی وحی کا پہلے حکم کو منسوخ کرنا"
+    },
+    {
+      "slug": "ikhtilaf",
+      "name": "Ikhtilaf (juristic disagreement)",
+      "category": "law",
+      "definition": "The legitimate diversity of rulings among qualified scholars and the schools of law.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Tabari",
+        "Ibn Rushd (the grandson)",
+        "Ibn Qudama",
+        "Shah Waliullah",
+        "Ibn Abd al-Barr"
+      ],
+      "related": [
+        "ijtihad",
+        "taqlid",
+        "ijma"
+      ],
+      "name_ar": "الاختلاف",
+      "name_ur": "اختلاف",
+      "definition_ar": "تنوع الأحكام المشروع بين العلماء المؤهلين والمذاهب الفقهية",
+      "definition_ur": "اہل علماء اور فقہی مذاہب کے درمیان احکام کا جائز تنوع"
+    },
+    {
+      "slug": "hiyal",
+      "name": "Hiyal (legal stratagems)",
+      "category": "law",
+      "definition": "Devices that formally comply with the law while evading its underlying intent.",
+      "era_start": 9,
+      "era_end": 18,
+      "key_figures_hint": [
+        "Hanafi jurists (defending)",
+        "Al-Khassaf",
+        "Al-Shatibi (attacking)",
+        "Ibn Taymiyya (attacking)",
+        "Ibn al-Qayyim"
+      ],
+      "related": [
+        "maqasid-al-shariah",
+        "maslaha",
+        "ijtihad"
+      ],
+      "name_ar": "الحِيَل",
+      "name_ur": "حیل",
+      "definition_ar": "أساليب تتوافق ظاهرياً مع الشرع لكنها تتحايل على مقصده",
+      "definition_ur": "ایسے طریقے جو ظاہراً شرعی ہوں مگر شریعت کے مقصد سے بچیں"
+    },
+    {
+      "slug": "ahkam",
+      "name": "Al-Ahkam al-Khamsa (the five legal values)",
+      "category": "law",
+      "definition": "Classifying acts as obligatory, recommended, neutral, disliked, or forbidden.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shafi'i",
+        "Al-Ghazali",
+        "Al-Amidi",
+        "Hanafi-Shafi'i usul tradition",
+        "Al-Shatibi"
+      ],
+      "related": [
+        "qiyas",
+        "ijtihad",
+        "maqasid-al-shariah"
+      ],
+      "name_ar": "الأحكام الخمسة",
+      "name_ur": "احکامِ خمسہ",
+      "definition_ar": "تصنيف الأفعال إلى واجب ومندوب ومباح ومكروه وحرام",
+      "definition_ur": "افعال کی تقسیم واجب، مندوب، مباح، مکروہ اور حرام میں"
+    },
+    {
+      "slug": "istishab",
+      "name": "Istishab (presumption of continuity)",
+      "category": "law",
+      "definition": "Assuming a known state of affairs remains in force until evidence changes it.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Shafi'i jurists",
+        "Al-Ghazali",
+        "Al-Shatibi",
+        "Shia usulis",
+        "Muhammad Baqir al-Sadr"
+      ],
+      "related": [
+        "ijtihad",
+        "ijma",
+        "qiyas"
+      ],
+      "name_ar": "الاستصحاب",
+      "name_ur": "استصحاب",
+      "definition_ar": "افتراض استمرار الحالة المعلومة حتى يثبت تغيّرها",
+      "definition_ur": "معلوم حالت کے جاری رہنے کا فرض جب تک تبدیلی ثابت نہ ہو"
+    },
+    {
+      "slug": "marjaiyya",
+      "name": "Marja'iyya (source of emulation)",
+      "category": "law",
+      "definition": "Shia institution by which lay believers follow the rulings of a senior living jurist.",
+      "era_start": 19,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Murtaza al-Ansari",
+        "Akhund Khorasani",
+        "Abu al-Qasim al-Khu'i",
+        "Ali al-Sistani",
+        "Ayatollah Khomeini"
+      ],
+      "related": [
+        "taqlid",
+        "ijtihad",
+        "wilayat-al-faqih"
+      ],
+      "name_ar": "المرجعية",
+      "name_ur": "مرجعیت",
+      "definition_ar": "مؤسسة شيعية يتبع فيها العوام أحكام مرجع التقليد الحي",
+      "definition_ur": "شیعہ ادارہ جس میں عوام مرجعِ تقلید کے احکام کی پیروی کرتے ہیں"
+    },
+    {
+      "slug": "fana",
+      "name": "Fana (annihilation of the self)",
+      "category": "mysticism",
+      "definition": "Passing away of the ego's awareness in contemplation of God.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Abu Yazid al-Bistami",
+        "Al-Junayd",
+        "Al-Hallaj",
+        "Ibn Arabi",
+        "Rumi"
+      ],
+      "related": [
+        "baqa",
+        "wahdat-al-wujud",
+        "shath"
+      ],
+      "name_ar": "الفناء",
+      "name_ur": "فنا",
+      "definition_ar": "فناء وعي الأنا في مشاهدة الله",
+      "definition_ur": "خودی کا فنا ہونا اللہ کے مشاہدے میں"
+    },
+    {
+      "slug": "baqa",
+      "name": "Baqa (subsistence in God)",
+      "category": "mysticism",
+      "definition": "The sober return after annihilation, living in God after dying to the self.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Junayd",
+        "Al-Qushayri",
+        "Ibn Arabi",
+        "Naqshbandi masters",
+        "Al-Ansari al-Harawi"
+      ],
+      "related": [
+        "fana",
+        "marifa",
+        "insan-kamil"
+      ],
+      "name_ar": "البقاء",
+      "name_ur": "بقا",
+      "definition_ar": "العودة الواعية بعد الفناء والحياة في الله بعد الموت عن الذات",
+      "definition_ur": "فنا کے بعد ہوشیار واپسی اور خودی سے مرنے کے بعد اللہ میں زندگی"
+    },
+    {
+      "slug": "wahdat-al-wujud",
+      "name": "Wahdat al-Wujud (unity of being)",
+      "category": "mysticism",
+      "definition": "Ibn Arabi's doctrine that all existence is one reality manifesting as many.",
+      "era_start": 13,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ibn Arabi",
+        "Sadr al-Din al-Qunawi",
+        "Abd al-Karim al-Jili",
+        "Mulla Sadra",
+        "Ibn Taymiyya (critic)"
+      ],
+      "related": [
+        "wahdat-al-shuhud",
+        "tajalli",
+        "asalat-al-wujud"
+      ],
+      "name_ar": "وحدة الوجود",
+      "name_ur": "وحدت الوجود",
+      "definition_ar": "عقيدة ابن عربي بأن الوجود كله حقيقة واحدة تتجلى في كثرة",
+      "definition_ur": "ابن عربی کا نظریہ کہ تمام وجود ایک حقیقت ہے جو کثرت میں ظاہر ہوتی ہے"
+    },
+    {
+      "slug": "wahdat-al-shuhud",
+      "name": "Wahdat al-Shuhud (unity of witnessing)",
+      "category": "mysticism",
+      "definition": "Sirhindi's alternative that oneness is in the mystic's vision, not in reality itself.",
+      "era_start": 17,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ahmad Sirhindi",
+        "Shah Waliullah",
+        "Naqshbandi-Mujaddidi order",
+        "Khwaja Mir Dard",
+        "Mazhar Jan-i Janan"
+      ],
+      "related": [
+        "wahdat-al-wujud",
+        "fana",
+        "tajalli"
+      ],
+      "name_ar": "وحدة الشهود",
+      "name_ur": "وحدت الشہود",
+      "definition_ar": "بديل السرهندي بأن الوحدة في رؤية العارف لا في الواقع نفسه",
+      "definition_ur": "سرہندی کا متبادل کہ وحدت عارف کی نظر میں ہے حقیقت میں نہیں"
+    },
+    {
+      "slug": "tariqa",
+      "name": "Tariqa (Sufi path and order)",
+      "category": "mysticism",
+      "definition": "The structured spiritual path and the institutional orders that transmit it.",
+      "era_start": 12,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Qushayri",
+        "Abd al-Qadir al-Jilani",
+        "Abu al-Hasan al-Shadhili",
+        "Baha al-Din Naqshband",
+        "Ahmad al-Rifa'i"
+      ],
+      "related": [
+        "dhikr",
+        "maqamat",
+        "wilaya"
+      ],
+      "name_ar": "الطريقة",
+      "name_ur": "طریقت",
+      "definition_ar": "المسار الروحي المنظّم والطرق الصوفية المؤسسية التي تنقله",
+      "definition_ur": "منظم روحانی راستہ اور اسے منتقل کرنے والے صوفی سلسلے"
+    },
+    {
+      "slug": "dhikr",
+      "name": "Dhikr (remembrance of God)",
+      "category": "mysticism",
+      "definition": "Rhythmic invocation of God's names as the central Sufi practice.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Junayd",
+        "Al-Ghazali",
+        "Shadhili masters",
+        "Naqshbandi masters",
+        "Ahmad al-Tijani"
+      ],
+      "related": [
+        "tariqa",
+        "muraqaba",
+        "maqamat"
+      ],
+      "name_ar": "الذكر",
+      "name_ur": "ذکر",
+      "definition_ar": "ترديد أسماء الله الإيقاعي بوصفه الممارسة الصوفية المركزية",
+      "definition_ur": "اللہ کے ناموں کا تسلسل سے ورد بطور مرکزی صوفی عمل"
+    },
+    {
+      "slug": "sama",
+      "name": "Sama (spiritual audition)",
+      "category": "mysticism",
+      "definition": "Controversial practice of listening to music and poetry to induce spiritual states.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Ghazali",
+        "Ahmad Ghazali",
+        "Rumi and the Mevlevis",
+        "Chishti masters",
+        "Ibn Taymiyya (critic)"
+      ],
+      "related": [
+        "ahwal",
+        "mahabba",
+        "tariqa"
+      ],
+      "name_ar": "السماع",
+      "name_ur": "سماع",
+      "definition_ar": "ممارسة مثيرة للجدل تقوم على سماع الموسيقى والشعر لإثارة أحوال روحية",
+      "definition_ur": "موسیقی اور شاعری سنکر روحانی کیفیات حاصل کرنے کا متنازع عمل"
+    },
+    {
+      "slug": "maqamat",
+      "name": "Maqamat (stations on the path)",
+      "category": "mysticism",
+      "definition": "Progressive moral and spiritual levels attained by the seeker's own effort.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Sarraj",
+        "Al-Qushayri",
+        "Al-Ansari al-Harawi",
+        "Ibn Arabi",
+        "Al-Kalabadhi"
+      ],
+      "related": [
+        "ahwal",
+        "marifa",
+        "muraqaba"
+      ],
+      "name_ar": "المقامات",
+      "name_ur": "مقامات",
+      "definition_ar": "مراتب أخلاقية وروحية يبلغها السالك بجهده الخاص",
+      "definition_ur": "اخلاقی اور روحانی منازل جو سالک اپنی محنت سے حاصل کرے"
+    },
+    {
+      "slug": "ahwal",
+      "name": "Ahwal (spiritual states)",
+      "category": "mysticism",
+      "definition": "Transient God-given conditions experienced on the path, distinct from earned stations.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Sarraj",
+        "Al-Qushayri",
+        "Al-Hujwiri",
+        "Ibn Arabi",
+        "Al-Ghazali"
+      ],
+      "related": [
+        "maqamat",
+        "mahabba",
+        "fana"
+      ],
+      "name_ar": "الأحوال",
+      "name_ur": "احوال",
+      "definition_ar": "حالات روحية عابرة يهبها الله في الطريق تختلف عن المقامات المكتسبة",
+      "definition_ur": "اللہ کی عطا کردہ عارضی روحانی کیفیات جو مکتسب مقامات سے مختلف ہیں"
+    },
+    {
+      "slug": "mahabba",
+      "name": "Mahabba (divine love)",
+      "category": "mysticism",
+      "definition": "Love of God as the axis of the mystical life, both human ascent and divine self-giving.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Rabia al-Adawiyya",
+        "Al-Ghazali",
+        "Ahmad Ghazali",
+        "Ibn Arabi",
+        "Rumi"
+      ],
+      "related": [
+        "marifa",
+        "fana",
+        "ahwal"
+      ],
+      "name_ar": "المحبة",
+      "name_ur": "محبت",
+      "definition_ar": "محبة الله بوصفها محور الحياة الصوفية صعوداً إنسانياً وعطاءً إلهياً",
+      "definition_ur": "اللہ کی محبت بطور صوفی زندگی کا محور"
+    },
+    {
+      "slug": "marifa",
+      "name": "Ma'rifa (gnosis)",
+      "category": "mysticism",
+      "definition": "Direct tasting knowledge of God beyond discursive reasoning.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Dhu'l-Nun al-Misri",
+        "Al-Junayd",
+        "Al-Ghazali",
+        "Ibn Arabi",
+        "Shia gnostic tradition"
+      ],
+      "related": [
+        "mahabba",
+        "fana",
+        "tajalli"
+      ],
+      "name_ar": "المعرفة",
+      "name_ur": "معرفت",
+      "definition_ar": "المعرفة الذوقية المباشرة لله فوق الاستدلال العقلي",
+      "definition_ur": "اللہ کی براہ راست ذوقی معرفت جو عقلی استدلال سے بالاتر ہے"
+    },
+    {
+      "slug": "wilaya",
+      "name": "Wilaya (sainthood and friendship with God)",
+      "category": "mysticism",
+      "definition": "The station of God's friends and the hierarchy of saints, distinct from prophethood.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Hakim al-Tirmidhi",
+        "Ibn Arabi",
+        "Shia tradition of the Imams",
+        "Abd al-Qadir al-Jilani",
+        "Naqshbandi masters"
+      ],
+      "related": [
+        "qutb",
+        "insan-kamil",
+        "ismah"
+      ],
+      "name_ar": "الولاية",
+      "name_ur": "ولایت",
+      "definition_ar": "مقام أولياء الله وتراتب الأولياء المتميز عن النبوة",
+      "definition_ur": "اللہ کے اولیاء کا مقام اور ان کا درجہ بندی کا نظام"
+    },
+    {
+      "slug": "qutb",
+      "name": "Qutb (the spiritual pole)",
+      "category": "mysticism",
+      "definition": "The supreme saint of each era around whom the spiritual hierarchy turns.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Hakim al-Tirmidhi",
+        "Ibn Arabi",
+        "Abd al-Karim al-Jili",
+        "North African Shadhiliyya",
+        "Ahmad al-Tijani"
+      ],
+      "related": [
+        "wilaya",
+        "insan-kamil",
+        "tajalli"
+      ],
+      "name_ar": "القطب",
+      "name_ur": "قطب",
+      "definition_ar": "أعلى ولي في كل عصر يدور حوله التدبير الروحي",
+      "definition_ur": "ہر دور کا اعلیٰ ترین ولی جس کے گرد روحانی نظام گھومتا ہے"
+    },
+    {
+      "slug": "insan-kamil",
+      "name": "Al-Insan al-Kamil (the Perfect Human)",
+      "category": "mysticism",
+      "definition": "The cosmic archetype of humanity as complete mirror of the divine names.",
+      "era_start": 13,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ibn Arabi",
+        "Abd al-Karim al-Jili",
+        "Rumi",
+        "Mulla Sadra",
+        "Aziz Nasafi"
+      ],
+      "related": [
+        "wahdat-al-wujud",
+        "wilaya",
+        "tajalli"
+      ],
+      "name_ar": "الإنسان الكامل",
+      "name_ur": "انسانِ کامل",
+      "definition_ar": "النموذج الكوني للإنسانية بوصفه مرآة كاملة للأسماء الإلهية",
+      "definition_ur": "انسانیت کا کونیاتی نمونہ بطور اسمائے الٰہی کا مکمل آئینہ"
+    },
+    {
+      "slug": "tajalli",
+      "name": "Tajalli (divine self-disclosure)",
+      "category": "mysticism",
+      "definition": "God's manifesting of Himself through created forms and inner unveilings.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Junayd",
+        "Ibn Arabi",
+        "Abd al-Karim al-Jili",
+        "Mulla Sadra",
+        "Qunawi"
+      ],
+      "related": [
+        "wahdat-al-wujud",
+        "alam-al-mithal",
+        "marifa"
+      ],
+      "name_ar": "التجلي",
+      "name_ur": "تجلّی",
+      "definition_ar": "تجلي الله في الصور المخلوقة والمكاشفات الباطنية",
+      "definition_ur": "اللہ کا مخلوقات اور باطنی کشف میں ظاہر ہونا"
+    },
+    {
+      "slug": "futuwwa",
+      "name": "Futuwwa (spiritual chivalry)",
+      "category": "mysticism",
+      "definition": "A code of generous self-sacrificing virtue linked to craft guilds and Sufi brotherhoods.",
+      "era_start": 9,
+      "era_end": 18,
+      "key_figures_hint": [
+        "Al-Sulami",
+        "Ibn al-Mi'mar",
+        "Caliph al-Nasir li-Din Allah",
+        "Anatolian akhi brotherhoods",
+        "Ibn Arabi"
+      ],
+      "related": [
+        "tariqa",
+        "maqamat",
+        "wilaya"
+      ],
+      "name_ar": "الفتوة",
+      "name_ur": "فتوت",
+      "definition_ar": "ميثاق الفضيلة والإيثار المرتبط بطوائف الحرف والأخوّات الصوفية",
+      "definition_ur": "ایثار اور فضیلت کا ضابطہ جو پیشہ ور گروہوں اور صوفی اخوت سے منسلک ہے"
+    },
+    {
+      "slug": "hulul",
+      "name": "Hulul (indwelling)",
+      "category": "mysticism",
+      "definition": "The contested idea that the divine inhabits a human, as charged against al-Hallaj.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Hallaj (attributed)",
+        "Junaydi critics",
+        "Ibn Arabi (distinguishing)",
+        "Ibn Taymiyya (critic)",
+        "Sunni mainstream"
+      ],
+      "related": [
+        "fana",
+        "wahdat-al-wujud",
+        "shath"
+      ],
+      "name_ar": "الحلول",
+      "name_ur": "حلول",
+      "definition_ar": "الفكرة المثيرة للجدل بأن الذات الإلهية تحلّ في إنسان كما نُسب للحلاج",
+      "definition_ur": "متنازع نظریہ کہ ذاتِ الٰہی انسان میں حلول کرتی ہے جیسا حلاج سے منسوب ہے"
+    },
+    {
+      "slug": "shath",
+      "name": "Shath (ecstatic utterance)",
+      "category": "mysticism",
+      "definition": "Paradoxical, seemingly blasphemous sayings uttered in states of mystical intoxication.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Abu Yazid al-Bistami",
+        "Al-Hallaj",
+        "Ruzbihan Baqli",
+        "Ibn Arabi",
+        "Rumi"
+      ],
+      "related": [
+        "fana",
+        "hulul",
+        "ahwal"
+      ],
+      "name_ar": "الشطح",
+      "name_ur": "شطح",
+      "definition_ar": "أقوال متناقضة ظاهرها كفر تصدر في حالات السُكر الروحي",
+      "definition_ur": "روحانی سکر کی حالت میں صادر ہونے والے ظاہراً متناقض اقوال"
+    },
+    {
+      "slug": "muraqaba",
+      "name": "Muraqaba (vigilant watchfulness)",
+      "category": "mysticism",
+      "definition": "The contemplative practice of monitoring the heart under God's unceasing gaze.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Muhasibi",
+        "Al-Qushayri",
+        "Al-Ghazali",
+        "Naqshbandi masters",
+        "Ahmad Sirhindi"
+      ],
+      "related": [
+        "dhikr",
+        "maqamat",
+        "nafs"
+      ],
+      "name_ar": "المراقبة",
+      "name_ur": "مراقبہ",
+      "definition_ar": "ممارسة تأملية لمراقبة القلب تحت نظر الله الدائم",
+      "definition_ur": "اللہ کی مسلسل نگاہ میں دل کی نگرانی کا تأملی عمل"
+    },
+    {
+      "slug": "nafs",
+      "name": "Nafs (the lower self)",
+      "category": "mysticism",
+      "definition": "The ego-soul whose lower impulses the seeker must discipline and transform.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Muhasibi",
+        "Al-Ghazali",
+        "Rumi",
+        "Naqshbandi masters",
+        "Ahmad Sirhindi"
+      ],
+      "related": [
+        "muraqaba",
+        "fana",
+        "maqamat"
+      ],
+      "name_ar": "النفس",
+      "name_ur": "نفس",
+      "definition_ar": "النفس الأمّارة التي يجب على السالك تهذيبها وتحويلها",
+      "definition_ur": "نفسِ امارہ جسے سالک کو تزکیہ اور تبدیل کرنا ہوتا ہے"
+    },
+    {
+      "slug": "ilm-al-haya",
+      "name": "Ilm al-Hay'a (mathematical cosmography)",
+      "category": "science",
+      "definition": "The science of the heavenly spheres, combining observation with geometric modeling.",
+      "era_start": 9,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Al-Battani",
+        "Al-Biruni",
+        "Nasir al-Din al-Tusi",
+        "Ibn al-Shatir",
+        "Ulugh Beg"
+      ],
+      "related": [
+        "zij",
+        "handasa",
+        "hisab"
+      ],
+      "name_ar": "علم الهيئة",
+      "name_ur": "علمِ ہیئت",
+      "definition_ar": "علم الأفلاك الجامع بين الرصد والنمذجة الهندسية",
+      "definition_ur": "افلاکیات کا علم جو مشاہدے اور ہندسی نمونوں کو جوڑتا ہے"
+    },
+    {
+      "slug": "zij",
+      "name": "Zij (astronomical handbook)",
+      "category": "science",
+      "definition": "Tables of planetary positions, star coordinates, and calendrical data for practical use.",
+      "era_start": 9,
+      "era_end": 18,
+      "key_figures_hint": [
+        "Al-Khwarizmi",
+        "Al-Battani",
+        "Al-Biruni",
+        "Nasir al-Din al-Tusi",
+        "Ulugh Beg"
+      ],
+      "related": [
+        "ilm-al-haya",
+        "hisab",
+        "handasa"
+      ],
+      "name_ar": "الزيج",
+      "name_ur": "زیج",
+      "definition_ar": "جداول مواقع الكواكب وإحداثيات النجوم والبيانات التقويمية",
+      "definition_ur": "سیاروں کی پوزیشنز، ستاروں کے مختصات اور تقویمی اعداد و شمار کی جدولیں"
+    },
+    {
+      "slug": "tashrih",
+      "name": "Tashrih (anatomy)",
+      "category": "science",
+      "definition": "The study of the body's structure, where Arabic-writing physicians extended and corrected Galen.",
+      "era_start": 10,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Al-Razi (Abu Bakr)",
+        "Ibn Sina",
+        "Ibn Zuhr",
+        "Ibn al-Nafis",
+        "Mansur ibn Ilyas"
+      ],
+      "related": [
+        "akhlat",
+        "mizaj",
+        "tajriba"
+      ],
+      "name_ar": "التشريح",
+      "name_ur": "تشریح",
+      "definition_ar": "دراسة بنية الجسم حيث طوّر الأطباء العرب علم جالينوس وصحّحوه",
+      "definition_ur": "جسم کی ساخت کا مطالعہ جس میں عرب اطباء نے جالینوس کو آگے بڑھایا"
+    },
+    {
+      "slug": "kimiya",
+      "name": "Kimiya (alchemy)",
+      "category": "science",
+      "definition": "The tradition of transforming substances, searching for the elixir, and laboratory technique.",
+      "era_start": 8,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Jabir ibn Hayyan",
+        "Abu Bakr al-Razi",
+        "Al-Jildaki",
+        "Al-Tughra'i",
+        "Ibn Umail"
+      ],
+      "related": [
+        "tajriba",
+        "mizaj",
+        "tashrih"
+      ],
+      "name_ar": "الكيمياء",
+      "name_ur": "کیمیا",
+      "definition_ar": "تقليد تحويل المواد والبحث عن الإكسير والتقنية المخبرية",
+      "definition_ur": "مادوں کی تبدیلی، اکسیر کی تلاش اور تجربہ گاہی تکنیک کی روایت"
+    },
+    {
+      "slug": "al-jabr",
+      "name": "Al-Jabr (algebra)",
+      "category": "science",
+      "definition": "The systematic manipulation of unknowns as equations, from al-Khwarizmi onward.",
+      "era_start": 9,
+      "era_end": 15,
+      "key_figures_hint": [
+        "Al-Khwarizmi",
+        "Abu Kamil",
+        "Al-Karaji",
+        "Omar Khayyam",
+        "Sharaf al-Din al-Tusi"
+      ],
+      "related": [
+        "hisab",
+        "handasa",
+        "zij"
+      ],
+      "name_ar": "الجبر",
+      "name_ur": "الجبر",
+      "definition_ar": "المعالجة المنهجية للمجهولات كمعادلات من الخوارزمي فصاعداً",
+      "definition_ur": "خوارزمی سے شروع ہونے والا مجہولات کو مساوات کے طور پر حل کرنے کا منظم طریقہ"
+    },
+    {
+      "slug": "ilm-al-manazir",
+      "name": "Ilm al-Manazir (optics)",
+      "category": "science",
+      "definition": "The geometrical and experimental science of vision and light.",
+      "era_start": 9,
+      "era_end": 15,
+      "key_figures_hint": [
+        "Al-Kindi",
+        "Ibn Sahl",
+        "Ibn al-Haytham",
+        "Kamal al-Din al-Farisi",
+        "Qutb al-Din al-Shirazi"
+      ],
+      "related": [
+        "tajriba",
+        "handasa",
+        "ilm-al-haya"
+      ],
+      "name_ar": "علم المناظر",
+      "name_ur": "علمِ مناظر",
+      "definition_ar": "العلم الهندسي والتجريبي للبصر والضوء",
+      "definition_ur": "بصر اور روشنی کا ہندسی اور تجرباتی علم"
+    },
+    {
+      "slug": "akhlat",
+      "name": "Akhlat (humoral theory)",
+      "category": "science",
+      "definition": "Galenic doctrine of four bodily humors whose balance defines health.",
+      "era_start": 9,
+      "era_end": 18,
+      "key_figures_hint": [
+        "Al-Razi",
+        "Ibn Sina",
+        "Ibn al-Nafis",
+        "Al-Majusi",
+        "Ottoman physicians"
+      ],
+      "related": [
+        "mizaj",
+        "tashrih",
+        "adwa"
+      ],
+      "name_ar": "الأخلاط",
+      "name_ur": "اخلاط",
+      "definition_ar": "نظرية جالينوس في الأخلاط الأربعة التي يحدد توازنها الصحة",
+      "definition_ur": "جالینوس کا نظریہ چار مزاجوں کا جن کے توازن سے صحت متعین ہوتی ہے"
+    },
+    {
+      "slug": "adwa",
+      "name": "Adwa (contagion debate)",
+      "category": "science",
+      "definition": "Whether diseases transmit person to person, debated against a prophetic saying denying contagion.",
+      "era_start": 9,
+      "era_end": 19,
+      "key_figures_hint": [
+        "Ibn Sina (transmission)",
+        "Al-Qurtubi",
+        "Ibn al-Khatib (plague treatise)",
+        "Ibn al-Nafis",
+        "Ibn Khatima"
+      ],
+      "related": [
+        "akhlat",
+        "mizaj",
+        "tashrih"
+      ],
+      "name_ar": "العدوى",
+      "name_ur": "عدویٰ",
+      "definition_ar": "هل تنتقل الأمراض بين الأشخاص في ضوء حديث نبوي ينفي العدوى",
+      "definition_ur": "کیا بیماریاں لوگوں میں منتقل ہوتی ہیں حدیث نبوی کی روشنی میں"
+    },
+    {
+      "slug": "mizaj",
+      "name": "Mizaj (temperament or complexion)",
+      "category": "science",
+      "definition": "The balance of qualities defining an individual's physical and moral constitution.",
+      "era_start": 9,
+      "era_end": 19,
+      "key_figures_hint": [
+        "Al-Razi",
+        "Ibn Sina",
+        "Al-Majusi",
+        "Abd al-Latif al-Baghdadi",
+        "Ottoman medical writers"
+      ],
+      "related": [
+        "akhlat",
+        "tashrih",
+        "adwa"
+      ],
+      "name_ar": "المزاج",
+      "name_ur": "مزاج",
+      "definition_ar": "توازن الكيفيات المحدد للبنية الجسدية والأخلاقية للفرد",
+      "definition_ur": "کیفیات کا توازن جو فرد کی جسمانی اور اخلاقی ساخت متعین کرتا ہے"
+    },
+    {
+      "slug": "hisab",
+      "name": "Hisab (arithmetic and reckoning)",
+      "category": "science",
+      "definition": "Calculation for commerce, inheritance, astronomy, and timekeeping.",
+      "era_start": 8,
+      "era_end": 18,
+      "key_figures_hint": [
+        "Al-Khwarizmi",
+        "Abu al-Wafa al-Buzjani",
+        "Al-Uqlidisi",
+        "Al-Kashi",
+        "Ibn al-Banna"
+      ],
+      "related": [
+        "al-jabr",
+        "zij",
+        "handasa"
+      ],
+      "name_ar": "الحساب",
+      "name_ur": "حساب",
+      "definition_ar": "الحساب للتجارة والمواريث والفلك والتوقيت",
+      "definition_ur": "تجارت، وراثت، فلکیات اور وقت کے لیے حساب"
+    },
+    {
+      "slug": "tajriba",
+      "name": "Tajriba (experiment and tested experience)",
+      "category": "science",
+      "definition": "Deliberately controlled trial as a source of knowledge in medicine and optics.",
+      "era_start": 10,
+      "era_end": 15,
+      "key_figures_hint": [
+        "Al-Razi",
+        "Ibn al-Haytham",
+        "Al-Biruni",
+        "Ibn Zuhr",
+        "Kamal al-Din al-Farisi"
+      ],
+      "related": [
+        "ilm-al-manazir",
+        "kimiya",
+        "tashrih"
+      ],
+      "name_ar": "التجربة",
+      "name_ur": "تجربہ",
+      "definition_ar": "الاختبار المضبوط المقصود مصدراً للمعرفة في الطب والبصريات",
+      "definition_ur": "طب اور بصریات میں معرفت کے ماخذ کے طور پر جان بوجھ کر کیا گیا منضبط تجربہ"
+    },
+    {
+      "slug": "handasa",
+      "name": "Handasa (geometry)",
+      "category": "science",
+      "definition": "Euclidean geometry extended by Arabic-writing mathematicians, feeding astronomy and optics.",
+      "era_start": 9,
+      "era_end": 17,
+      "key_figures_hint": [
+        "Thabit ibn Qurra",
+        "The Banu Musa",
+        "Omar Khayyam",
+        "Nasir al-Din al-Tusi",
+        "Al-Kashi"
+      ],
+      "related": [
+        "al-jabr",
+        "ilm-al-manazir",
+        "zij"
+      ],
+      "name_ar": "الهندسة",
+      "name_ur": "ہندسہ",
+      "definition_ar": "الهندسة الإقليدية التي طوّرها الرياضيون العرب لخدمة الفلك والبصريات",
+      "definition_ur": "اقلیدسی ہندسہ جسے عرب ریاضی دانوں نے فلکیات اور بصریات کے لیے ترقی دی"
+    },
+    {
+      "slug": "khilafa",
+      "name": "Khilafa (caliphate)",
+      "category": "politics",
+      "definition": "The office of successor to the Prophet as political and religious head of the community.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Mawardi",
+        "Al-Juwayni",
+        "Ibn Taymiyya",
+        "Ibn Khaldun",
+        "Rashid Rida"
+      ],
+      "related": [
+        "bayah",
+        "shura",
+        "siyasa-shariyya"
+      ],
+      "name_ar": "الخلافة",
+      "name_ur": "خلافت",
+      "definition_ar": "منصب خليفة النبي بوصفه رئيساً سياسياً ودينياً للأمة",
+      "definition_ur": "نبی کے جانشین کا منصب بطور امت کا سیاسی اور دینی سربراہ"
+    },
+    {
+      "slug": "imama",
+      "name": "Imama (Shia imamate)",
+      "category": "politics",
+      "definition": "Shia doctrine that leadership of the community belongs to designated infallible Imams.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Shaykh al-Mufid",
+        "Al-Tusi (Muhammad)",
+        "Al-Hilli",
+        "Mulla Sadra",
+        "Ayatollah Khomeini"
+      ],
+      "related": [
+        "ismah",
+        "nass",
+        "ghayba"
+      ],
+      "name_ar": "الإمامة",
+      "name_ur": "امامت",
+      "definition_ar": "عقيدة الشيعة بأن قيادة الأمة حق أئمة معصومين معيّنين بالنص",
+      "definition_ur": "شیعہ عقیدہ کہ امت کی قیادت معصوم ائمہ کا حق ہے جو نص سے مقرر ہیں"
+    },
+    {
+      "slug": "wilayat-al-faqih",
+      "name": "Wilayat al-Faqih (guardianship of the jurist)",
+      "category": "politics",
+      "definition": "Doctrine that in the hidden Imam's absence the senior jurist holds political authority.",
+      "era_start": 19,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mulla Ahmad Naraqi",
+        "Ayatollah Khomeini",
+        "Hossein-Ali Montazeri",
+        "Ali Khamenei",
+        "contemporary Iranian jurists"
+      ],
+      "related": [
+        "imama",
+        "ghayba",
+        "marjaiyya"
+      ],
+      "name_ar": "ولاية الفقيه",
+      "name_ur": "ولایتِ فقیہ",
+      "definition_ar": "عقيدة أن الفقيه الأعلى يتولى السلطة السياسية في غيبة الإمام",
+      "definition_ur": "نظریہ کہ امام کی غیبت میں اعلیٰ فقیہ سیاسی اقتدار رکھتا ہے"
+    },
+    {
+      "slug": "bayah",
+      "name": "Bay'a (oath of allegiance)",
+      "category": "politics",
+      "definition": "The formal pledge by which rulers are recognized as legitimate.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Mawardi",
+        "Al-Juwayni",
+        "Ibn Taymiyya",
+        "Ibn Khaldun",
+        "modern constitutionalists"
+      ],
+      "related": [
+        "khilafa",
+        "shura",
+        "siyasa-shariyya"
+      ],
+      "name_ar": "البيعة",
+      "name_ur": "بیعت",
+      "definition_ar": "العهد الرسمي الذي يُعترف بموجبه بشرعية الحاكم",
+      "definition_ur": "رسمی عہد جس سے حکمران کی شرعی حیثیت تسلیم کی جاتی ہے"
+    },
+    {
+      "slug": "shura",
+      "name": "Shura (consultation)",
+      "category": "politics",
+      "definition": "The duty of rulers to consult, invoked to ground both pre-modern and modern political claims.",
+      "era_start": 7,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Mawardi",
+        "Fakhr al-Din al-Razi",
+        "Muhammad Abduh",
+        "Rashid Rida",
+        "contemporary Islamists"
+      ],
+      "related": [
+        "khilafa",
+        "bayah",
+        "maqasid-al-shariah"
+      ],
+      "name_ar": "الشورى",
+      "name_ur": "شوریٰ",
+      "definition_ar": "واجب الحاكم في المشاورة ويُستدل به لمطالب سياسية قديمة وحديثة",
+      "definition_ur": "حکمران کا مشاورت کا فریضہ جو قدیم اور جدید سیاسی مطالبات کی بنیاد ہے"
+    },
+    {
+      "slug": "siyasa-shariyya",
+      "name": "Siyasa Shar'iyya (shariah-oriented governance)",
+      "category": "politics",
+      "definition": "Discretionary rulership aimed at realizing the law's purposes beyond its textual rulings.",
+      "era_start": 13,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ibn Taymiyya",
+        "Ibn al-Qayyim",
+        "Al-Mawardi (precursor)",
+        "Ottoman jurists",
+        "modern Islamists"
+      ],
+      "related": [
+        "maqasid-al-shariah",
+        "maslaha",
+        "khilafa"
+      ],
+      "name_ar": "السياسة الشرعية",
+      "name_ur": "سیاستِ شرعیہ",
+      "definition_ar": "الحكم التقديري الهادف لتحقيق مقاصد الشريعة فيما وراء نصوصها",
+      "definition_ur": "شریعت کے مقاصد کی تحقیق کے لیے نصوص سے آگے تدبیری حکمرانی"
+    },
+    {
+      "slug": "taqiyya",
+      "name": "Taqiyya (precautionary concealment)",
+      "category": "politics",
+      "definition": "Shia-associated permission to conceal one's belief under threat of harm.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Imam Ja'far al-Sadiq (attributed)",
+        "Al-Shaykh al-Mufid",
+        "Al-Tusi",
+        "Shia Imami tradition",
+        "Sunni parallels in extremis"
+      ],
+      "related": [
+        "imama",
+        "ghayba",
+        "ismah"
+      ],
+      "name_ar": "التقية",
+      "name_ur": "تقیہ",
+      "definition_ar": "إذن شيعي بإخفاء العقيدة عند الخوف على النفس",
+      "definition_ur": "شیعہ اجازت جان کے خطرے پر اپنے عقیدے کو چھپانے کی"
+    },
+    {
+      "slug": "nass",
+      "name": "Nass (explicit designation of the Imam)",
+      "category": "politics",
+      "definition": "Shia doctrine that each Imam is explicitly designated by his predecessor.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Kulayni",
+        "Ibn Babawayh al-Saduq",
+        "Al-Shaykh al-Mufid",
+        "Al-Hilli",
+        "Imami kalam tradition"
+      ],
+      "related": [
+        "imama",
+        "ismah",
+        "ghayba"
+      ],
+      "name_ar": "النص",
+      "name_ur": "نص",
+      "definition_ar": "عقيدة شيعية بأن كل إمام يعيّنه سلفه بالنص الصريح",
+      "definition_ur": "شیعہ عقیدہ کہ ہر امام کو اس کے پیشرو نے صریح نص سے مقرر کیا"
+    },
+    {
+      "slug": "tafsir-bil-mathur",
+      "name": "Tafsir bi al-Ma'thur (exegesis by transmitted reports)",
+      "category": "language",
+      "definition": "Explaining the Qur'an mainly through prophetic reports and early authorities.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Tabari",
+        "Ibn Kathir",
+        "Al-Suyuti",
+        "Ibn Abi Hatim",
+        "Salafi commentators"
+      ],
+      "related": [
+        "asbab-al-nuzul",
+        "tafsir-bil-ray",
+        "ilm-al-rijal"
+      ],
+      "name_ar": "التفسير بالمأثور",
+      "name_ur": "تفسیر بالماثور",
+      "definition_ar": "تفسير القرآن بالأحاديث النبوية وأقوال السلف",
+      "definition_ur": "قرآن کی تفسیر احادیث نبوی اور اقوالِ سلف سے"
+    },
+    {
+      "slug": "tafsir-bil-ray",
+      "name": "Tafsir bi al-Ra'y (exegesis by reasoned opinion)",
+      "category": "language",
+      "definition": "Explaining the Qur'an through reasoned reflection, contested when unmoored from tradition.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Zamakhshari",
+        "Fakhr al-Din al-Razi",
+        "Al-Baydawi",
+        "Muhammad Abduh",
+        "Rashid Rida"
+      ],
+      "related": [
+        "tafsir-bil-mathur",
+        "tawil",
+        "majaz"
+      ],
+      "name_ar": "التفسير بالرأي",
+      "name_ur": "تفسیر بالرائے",
+      "definition_ar": "تفسير القرآن بالاجتهاد العقلي المثير للجدل إن انفصل عن الأثر",
+      "definition_ur": "قرآن کی تفسیر عقلی اجتہاد سے جو اثر سے الگ ہو تو متنازع ہے"
+    },
+    {
+      "slug": "tawil",
+      "name": "Ta'wil (allegorical interpretation)",
+      "category": "language",
+      "definition": "Reading beyond the apparent sense, especially for theologically ambiguous verses.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Mu'tazila",
+        "Shia exegetes",
+        "Ibn Arabi",
+        "Al-Ghazali",
+        "Ibn Taymiyya (critic)"
+      ],
+      "related": [
+        "muhkam-mutashabih",
+        "majaz",
+        "tafsir-bil-ray"
+      ],
+      "name_ar": "التأويل",
+      "name_ur": "تاویل",
+      "definition_ar": "تجاوز المعنى الظاهري خاصة في الآيات المتشابهات عقدياً",
+      "definition_ur": "ظاہری معنی سے آگے جانا خصوصاً عقیدتاً مبہم آیات میں"
+    },
+    {
+      "slug": "ijaz-al-quran",
+      "name": "I'jaz al-Qur'an (inimitability of the Qur'an)",
+      "category": "language",
+      "definition": "The Qur'an's linguistic and rhetorical uniqueness as proof of its divine origin.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Rummani",
+        "Al-Khattabi",
+        "Al-Baqillani",
+        "Abd al-Qahir al-Jurjani",
+        "modern apologists"
+      ],
+      "related": [
+        "balagha",
+        "nubuwwa",
+        "muhkam-mutashabih"
+      ],
+      "name_ar": "إعجاز القرآن",
+      "name_ur": "اعجازِ قرآن",
+      "definition_ar": "تفرّد القرآن اللغوي والبلاغي دليلاً على أصله الإلهي",
+      "definition_ur": "قرآن کی لسانی اور بلاغی منفرد خصوصیت بطور دلیلِ الٰہی اصل"
+    },
+    {
+      "slug": "asbab-al-nuzul",
+      "name": "Asbab al-Nuzul (occasions of revelation)",
+      "category": "language",
+      "definition": "Historical circumstances behind specific Qur'anic passages, used to interpret them.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Wahidi",
+        "Al-Suyuti",
+        "Ibn Hajar al-Asqalani",
+        "modern historicizing readers",
+        "Fazlur Rahman"
+      ],
+      "related": [
+        "tafsir-bil-mathur",
+        "naskh",
+        "ilm-al-rijal"
+      ],
+      "name_ar": "أسباب النزول",
+      "name_ur": "اسبابِ نزول",
+      "definition_ar": "الظروف التاريخية لنزول آيات قرآنية بعينها وتوظيفها في التفسير",
+      "definition_ur": "مخصوص قرآنی آیات کے نزول کے تاریخی اسباب اور ان کا تفسیر میں استعمال"
+    },
+    {
+      "slug": "muhkam-mutashabih",
+      "name": "Muhkam and Mutashabih (clear and ambiguous verses)",
+      "category": "language",
+      "definition": "The Qur'an's own distinction between unambiguous rulings and ambiguous passages.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Tabari",
+        "Fakhr al-Din al-Razi",
+        "Ibn Taymiyya",
+        "Shia exegetes",
+        "Al-Zarkashi"
+      ],
+      "related": [
+        "tawil",
+        "tafsir-bil-mathur",
+        "ijaz-al-quran"
+      ],
+      "name_ar": "المحكم والمتشابه",
+      "name_ur": "محکم و متشابہ",
+      "definition_ar": "التمييز القرآني بين الآيات الواضحة والآيات المتشابهة",
+      "definition_ur": "قرآن کی اپنی واضح آیات اور مبہم آیات کے درمیان تمیز"
+    },
+    {
+      "slug": "qiraat",
+      "name": "Qira'at (canonical Qur'anic readings)",
+      "category": "language",
+      "definition": "The canonized variant readings of the Qur'anic text transmitted from early reciters.",
+      "era_start": 8,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Ibn Mujahid",
+        "Al-Dani",
+        "Al-Shatibi (Qasim)",
+        "Ibn al-Jazari",
+        "modern reciter lineages"
+      ],
+      "related": [
+        "tafsir-bil-mathur",
+        "balagha",
+        "muhkam-mutashabih"
+      ],
+      "name_ar": "القراءات",
+      "name_ur": "قراءات",
+      "definition_ar": "القراءات المتواترة المعتمدة للنص القرآني المنقولة عن القرّاء الأوائل",
+      "definition_ur": "قرآنی متن کی متواتر معتمد قراءتیں جو ابتدائی قراء سے منقول ہیں"
+    },
+    {
+      "slug": "majaz",
+      "name": "Majaz (figurative language)",
+      "category": "language",
+      "definition": "Whether and how non-literal speech operates in the Qur'an and prophetic reports.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Jahiz",
+        "Abd al-Qahir al-Jurjani",
+        "Al-Zamakhshari",
+        "Al-Sakkaki",
+        "Ibn Taymiyya (narrow view)"
+      ],
+      "related": [
+        "balagha",
+        "tawil",
+        "tafsir-bil-ray"
+      ],
+      "name_ar": "المجاز",
+      "name_ur": "مجاز",
+      "definition_ar": "هل وكيف يعمل الكلام غير الحقيقي في القرآن والأحاديث",
+      "definition_ur": "کیا اور کیسے غیر حقیقی کلام قرآن اور احادیث میں کام کرتا ہے"
+    },
+    {
+      "slug": "balagha",
+      "name": "Balagha (Arabic rhetoric)",
+      "category": "language",
+      "definition": "The science of Arabic eloquence developed to explain the Qur'an's literary force.",
+      "era_start": 10,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Al-Jahiz",
+        "Al-Rummani",
+        "Abd al-Qahir al-Jurjani",
+        "Al-Sakkaki",
+        "Al-Qazwini (al-Khatib)"
+      ],
+      "related": [
+        "ijaz-al-quran",
+        "majaz",
+        "qiraat"
+      ],
+      "name_ar": "البلاغة",
+      "name_ur": "بلاغت",
+      "definition_ar": "علم البلاغة العربية المطوّر لبيان قوة القرآن الأدبية",
+      "definition_ur": "عربی فصاحت کا علم جو قرآن کی ادبی قوت واضح کرنے کے لیے تیار ہوا"
+    },
+    {
+      "slug": "ilm-al-rijal",
+      "name": "Ilm al-Rijal (biographical hadith evaluation)",
+      "category": "language",
+      "definition": "Assessing hadith transmitters' reliability to grade reports as sound, weak, or fabricated.",
+      "era_start": 9,
+      "era_end": 21,
+      "key_figures_hint": [
+        "Yahya ibn Ma'in",
+        "Al-Bukhari",
+        "Al-Dhahabi",
+        "Ibn Hajar al-Asqalani",
+        "Shia rijal tradition"
+      ],
+      "related": [
+        "tafsir-bil-mathur",
+        "asbab-al-nuzul",
+        "ijma"
+      ],
+      "name_ar": "علم الرجال",
+      "name_ur": "علمِ رجال",
+      "definition_ar": "تقييم رواة الحديث من حيث الثقة لتصنيف الأحاديث صحيحاً أو ضعيفاً",
+      "definition_ur": "حدیث کے راویوں کی ثقاہت جانچنا تاکہ احادیث کو صحیح یا ضعیف قرار دیا جائے"
+    }
+  ]
 }

@@ -2319,7 +2319,7 @@ body.snapshot-mode *{scrollbar-width:none}
 /* ── THINK View ── */
 #think-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
 #think-toolbar{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
-#think-definition{padding:4px 16px 6px;font-size:12px;color:#A0AEC0;font-style:italic;border-bottom:1px solid rgba(45,55,72,0.5)}
+#think-definition{padding:4px 16px 6px;font-size:12px;color:#A0AEC0;font-style:normal;border-bottom:1px solid rgba(45,55,72,0.5)}
 #think-legend{display:flex;gap:14px;padding:4px 16px;border-bottom:1px solid rgba(45,55,72,0.5);flex-wrap:wrap}
 .think-legend-item{display:flex;align-items:center;gap:4px;font-size:10px;font-family:'Cinzel',serif;color:#A0AEC0;letter-spacing:.06em}
 .think-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
