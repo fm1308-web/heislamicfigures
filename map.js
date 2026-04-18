@@ -4,6 +4,8 @@
 let _lMap=null, _empLayer=null, _mrkLayer=null, _labTile=null;
 let _mapYear=null; // null = all years
 const MAP_MIN=550, MAP_MAX=2025;
+let _geoEmpData=null, _geoEmpLayer=null, _geoEmpOn=false;
+let GEO_EMP_CENTURIES=[];
 function fmtYr(y){return y<0?`${Math.abs(y)} BCE`:`${y} CE`;}
 
 // Empire overlay data
@@ -105,9 +107,17 @@ function _drawEmpiresOnMap(map, year, existingLayer) {
 
 function _drawEmpires(){
   if(!_lMap) return;
-  _empLayer=_drawEmpiresOnMap(_lMap, _mapYear, _empLayer);
-
-  // Always keep label tile on top after re-drawing empires
+  if(_empLayer){_lMap.removeLayer(_empLayer);_empLayer=null;}
+  if(_geoEmpOn && _geoEmpData && _mapYear!==null){
+    var candidates=GEO_EMP_CENTURIES.filter(function(c){return +c <= _mapYear;});
+    if(!candidates.length){
+      if(_geoEmpLayer){_lMap.removeLayer(_geoEmpLayer);_geoEmpLayer=null;}
+      _removeEmpLegend();
+      if(_labTile){if(_lMap.hasLayer(_labTile)) _lMap.removeLayer(_labTile);_labTile.addTo(_lMap);}
+      return;
+    }
+    _renderGeoEmpires(candidates[candidates.length-1]);
+  }
   if(_labTile){
     if(_lMap.hasLayer(_labTile)) _lMap.removeLayer(_labTile);
     _labTile.addTo(_lMap);
@@ -506,7 +516,107 @@ function toggleMapLegend(){
   label.textContent=open?'CLOSE':'LEGEND';
 }
 
+function _loadGeoEmpires(cb){
+  if(_geoEmpData){cb();return;}
+  fetch('data/islamic/empire_overlays.json?v='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(j){
+      _geoEmpData=j||{};
+      GEO_EMP_CENTURIES=Object.keys(_geoEmpData).sort(function(a,b){return +a - +b;});
+      cb();
+    })
+    .catch(function(){_geoEmpData={};GEO_EMP_CENTURIES=[];cb();});
+}
+
+function _renderGeoEmpires(century){
+  if(!_lMap) return;
+  if(_geoEmpLayer){_lMap.removeLayer(_geoEmpLayer);_geoEmpLayer=null;}
+  var items=(_geoEmpData&&_geoEmpData[century])||[];
+  if(!items.length){_removeEmpLegend();return;}
+  var fc={type:'FeatureCollection',features:items.map(function(it){
+    return {type:'Feature',properties:{name:it.name,color:it.color},geometry:it.geometry};
+  })};
+  _geoEmpLayer=L.geoJSON(fc,{
+    style:function(f){return{fillColor:f.properties.color,fillOpacity:0.25,color:f.properties.color,weight:1.5,opacity:0.5};}
+  }).addTo(_lMap);
+  _buildEmpLegend(items);
+  if(_labTile){
+    if(_lMap.hasLayer(_labTile)) _lMap.removeLayer(_labTile);
+    _labTile.addTo(_lMap);
+  }
+}
+function _buildEmpLegend(items){
+  var colored=items.filter(function(it){
+    var m=(it.color||'').match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
+    if(!m)return false;
+    var r=parseInt(m[1],16),g=parseInt(m[2],16),b=parseInt(m[3],16);
+    return(Math.max(r,g,b)-Math.min(r,g,b))>35;
+  });
+  var el=document.getElementById('empOverlayLegend');
+  if(!colored.length){_removeEmpLegend();return;}
+  if(!el){
+    el=document.createElement('div');el.id='empOverlayLegend';
+    el.style.cssText="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:800;display:flex;flex-wrap:wrap;gap:4px 10px;padding:6px 14px;background:rgba(0,0,0,0.85);border:1px solid rgba(212,175,55,0.3);border-radius:4px;max-width:90%;justify-content:center;";
+    var mc=document.getElementById('mapContainer');
+    if(mc)mc.appendChild(el);
+  }
+  el.innerHTML=colored.map(function(it){
+    return '<div style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:16px;border-radius:2px;background:'+it.color+';flex-shrink:0;opacity:0.9"></span><span style="font-family:Cinzel,serif;font-size:13px;color:#ccc;letter-spacing:.04em;white-space:nowrap">'+it.name+'</span></div>';
+  }).join('');
+}
+function _removeEmpLegend(){
+  var el=document.getElementById('empOverlayLegend');
+  if(el)el.remove();
+}
+
+function _buildEmpireToggle(){
+  var toolbar=document.getElementById('mapToolbar');
+  if(!toolbar||document.getElementById('geoEmpToggle')) return;
+  // Tooltip CSS
+  if(!document.getElementById('geoEmpTtStyles')){
+    var st=document.createElement('style');st.id='geoEmpTtStyles';
+    st.textContent=".geo-emp-tt{background:rgba(0,0,0,0.85) !important;border:1px solid #D4AF37 !important;color:#fff !important;font-family:'Cinzel',serif !important;font-size:13px !important;font-weight:700 !important;letter-spacing:.06em !important;padding:5px 12px !important;border-radius:4px !important;box-shadow:0 0 10px rgba(0,0,0,.6) !important;white-space:nowrap !important}.geo-emp-tt::before{display:none !important}";
+    document.head.appendChild(st);
+  }
+  var btn=document.createElement('button');
+  btn.id='geoEmpToggle';
+  btn.textContent='Empires';
+  btn.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;cursor:pointer;transition:.2s;margin-left:8px";
+  btn.onmouseover=function(){if(!_geoEmpOn){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';}};
+  btn.onmouseout=function(){if(!_geoEmpOn){this.style.borderColor='#555';this.style.color='#888';}};
+  function _setActive(on){
+    _geoEmpOn=on;
+    btn.style.background=on?'rgba(212,175,55,0.15)':'transparent';
+    btn.style.borderColor=on?'#D4AF37':'#555';
+    btn.style.color=on?'#D4AF37':'#888';
+    btn.textContent=on?'Empires \u2715':'Empires';
+  }
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(!_geoEmpOn){
+      if(!_geoEmpData){
+        btn.textContent='Loading\u2026';btn.style.color='#D4AF37';btn.style.borderColor='#D4AF37';
+        _loadGeoEmpires(function(){
+          _setActive(true);
+          _drawEmpires();
+        });
+      } else {
+        _setActive(true);
+        _drawEmpires();
+      }
+    } else {
+      _setActive(false);
+      if(_geoEmpLayer){_lMap.removeLayer(_geoEmpLayer);_geoEmpLayer=null;}
+      _removeEmpLegend();
+    }
+  });
+  var animMount=document.getElementById('map-anim-mount');
+  if(animMount) toolbar.insertBefore(btn,animMount);
+  else toolbar.appendChild(btn);
+}
+
 function renderMap(){
+  var _mfb=document.getElementById('map-favFilterBtn');if(_mfb)_mfb.style.display='none';
   if(typeof L==='undefined'){
     const scr=document.createElement('script');
     scr.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
@@ -559,7 +669,7 @@ function _doRenderMap(){
     _lMap.on('moveend zoomend',_updateArrows);
   }
 
-  _drawEmpires();
+  if(_geoEmpOn && _geoEmpData) _drawEmpires();
   _renderMarkers();
 
   // Fit to markers on first load
@@ -589,6 +699,7 @@ function _doRenderMap(){
       });
     }
   }
+  if(!document.getElementById('geoEmpToggle')){ _buildEmpireToggle(); }
 }
 
 // ═══════════════════════════════════════════════════════════

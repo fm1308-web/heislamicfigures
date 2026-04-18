@@ -8,7 +8,8 @@
   },
   {
     "famous": "Abu al-Hasan Kharaqani",
-    "school": "Critical link in the Naqshbandi silsila between Bayazid Bistami and Yusuf Hamadani; known for his doctrine of universal spiritual hospitality — the inscription above his hospice door read: 'Whoever enters this house, give them bread; ask not about their faith'; his sayings were compiled in Nūr al-ʿUlūm and deeply influenced Rumi and other Persian mystics"
+    "school": "Critical link in the Naqshbandi silsila between Bayazid Bistami and Yusuf Hamadani; known for his doctrine of universal spiritual hospitality — the inscription above his hospice door read: 'Whoever enters this house, give them bread; ask not about their faith'; his sayings were compiled in Nūr al-ʿUlūm and deeply influenced Rumi and other Persian mystics",
+    "bio": "Persian Sufi mystic (963-1033) associated with the early development of the Naqshbandiyya tradition. He was known for his spiritual teachings and influenced the spiritual lineage of Central Asian Sufism."
   },
   {
     "famous": "Yusuf al-Hamadani",
@@ -28,7 +29,8 @@
   {
     "famous": "Abdul Khaliq Ghujdawani",
     "school": "Abdul Khaliq Ghujdawani (d. 1179), who formulated the eight foundational principles of the Naqshbandi path, including silent dhikr and 'awareness in every breath.' He established the Khwajagan lineage.",
-    "dod": 1179
+    "dod": 1179,
+    "bio": "Central Asian Sufi master (1103-1179) who was a founding figure of the Naqshbandiyya order, one of the most influential Sufi traditions. He established principles of spiritual practice that became central to the order."
   },
   {
     "famous": "Abu Madyan",
@@ -44,7 +46,8 @@
   {
     "famous": "Ibn Mashish",
     "school": "Moroccan School / Shadhiliyya Founding — Murdered on his mountain; his student founded the Shadhiliyya",
-    "books": []
+    "books": [],
+    "bio": "A Moroccan Shadhili master and saint, Ibn Mashish was highly venerated for his spiritual authority and became an important ancestor figure in the Shadhili lineage."
   },
   {
     "famous": "Abd al-Salam ibn Mashish",
@@ -56,7 +59,8 @@
   },
   {
     "famous": "Auhad al-Din Kirmani",
-    "school": "Akbarian — student of Ibn Arabi's circle; known for shamahid (witnessing beauty) as spiritual practice"
+    "school": "Akbarian — student of Ibn Arabi's circle; known for shamahid (witnessing beauty) as spiritual practice",
+    "bio": "Persian Sufi philosopher (1164-1238) influenced by Ibn Arabi's teachings and associated with the Akbarian tradition. He was known for his mystical poetry and philosophical contributions to Islamic thought."
   },
   {
     "famous": "Baha-ud-din Zakariya",
@@ -83,7 +87,8 @@
   {
     "famous": "Lal Shahbaz Qalandar",
     "school": "Syed Muhammad Usman Marwandi, known as Lal Shahbaz Qalandar (1177–1274), a Sufi saint of Sehwan, Sindh, whose shrine is one of the most visited in Pakistan. The ecstatic dhammal dance there is iconic.",
-    "dod": 1274
+    "dod": 1274,
+    "bio": "A revered Qalandari mystic saint venerated across South Asia, particularly in Sindh, Lal Shahbaz Qalandar is known for his devotional poetry and spiritual legacy."
   },
   {
     "famous": "Fariduddin Ganjshakar",
@@ -124,19 +129,26 @@
   {
     "famous": "Hamid al-Din Nagori",
     "school": "Hamid al-Din Nagori (d. 1276), third-generation Chishti master based in Nagaur, Rajasthan. Famous for extreme asceticism, refusal of royal patronage, and strict vegetarianism — unusual among Sufis.",
-    "dod": 1276
+    "dod": 1276,
+    "bio": "An early master of the Chishti order in India, Hamid al-Din Nagori was instrumental in establishing Sufi practices and teachings in the Indian subcontinent."
   },
   {
     "famous": "Qazi Hamiduddin Nagori",
-    "school": "Chishti — earliest Sufi poet to write in Hindi (Hindawi); bridge between Arabic Sufism and Indian vernacular literature"
+    "school": "Chishti — earliest Sufi poet to write in Hindi (Hindawi); bridge between Arabic Sufism and Indian vernacular literature",
+    "bio": "A 13th-century Chishti saint and scholar of Nagaur, known for his Islamic jurisprudence and spiritual contributions to the development of the Chishti order."
   },
   {
     "famous": "Jalal al-Din Tabrizi",
-    "school": "One of the earliest Sufi missionaries in Bengal; established the Suhrawardiyya presence in eastern India decades before the Chishti order arrived; his khanqah at Pandua (near modern Malda) became the first major centre of Islamic learning in Bengal; credited with mass conversions through spiritual charisma; his tomb remains a major pilgrimage site"
+    "school": "One of the earliest Sufi missionaries in Bengal; established the Suhrawardiyya presence in eastern India decades before the Chishti order arrived; his khanqah at Pandua (near modern Malda) became the first major centre of Islamic learning in Bengal; credited with mass conversions through spiritual charisma; his tomb remains a major pilgrimage site",
+    "bio": "A Suhrawardiyya mystic and influential spiritual master, Jalal al-Din Tabrizi was known for his role in propagating Sufi teachings in medieval Persia and Anatolia."
   },
   {
     "famous": "Alauddin Sabir Kaliyari",
-    "school": "Cousin and principal khalifa of Baba Farid; founded the Sabiri branch of the Chishti order, known for its intense austerity and Jalali temperament contrasting with the Nizami branch's accessibility; his shrine at Kalyar Sharif near Roorkee remains one of the most visited Sufi shrines in India; his spiritual lineage continued through figures like Ashraf Jahangir Semnani"
+    "school": "Cousin and principal khalifa of Baba Farid; founded the Sabiri branch of the Chishti order, known for its intense austerity and Jalali temperament contrasting with the Nizami branch's accessibility; his shrine at Kalyar Sharif near Roorkee remains one of the most visited Sufi shrines in India; his spiritual lineage continued through figures like Ashraf Jahangir Semnani",
+    "bio": "Indian Sufi saint (1196-1291) associated with the Chishti order and a disciple of Khwaja Moinuddin Chishti. He was influential in spreading Islamic spirituality in South Asia.",
+    "teachers": [
+      "Khwaja Moinuddin Chishti"
+    ]
   },
   {
     "famous": "Abu al-Abbas al-Mursi",
@@ -171,16 +183,22 @@
   },
   {
     "famous": "Shah Rukn-e-Alam",
-    "school": "Suhrawardiyya Order (Multan) — His mausoleum in Multan is a UNESCO-listed masterpiece of Tughlaq architecture"
+    "school": "Suhrawardiyya Order (Multan) — His mausoleum in Multan is a UNESCO-listed masterpiece of Tughlaq architecture",
+    "bio": "A 13th-14th century Suhrawardiyya saint of Multan, one of the most venerated Sufi saints of South Asia, known for his spiritual authority and miracles."
   },
   {
     "famous": "Nasiruddin Chiragh Dehlawi",
     "school": "Chishti Order (Delhi) — Student and successor of Nizamuddin Auliya; his death marked the end of the Delhi Chishti golden age",
-    "books": []
+    "books": [],
+    "bio": "A 14th-century Chishti saint of Delhi, successor to Nizam al-Din Auliya, instrumental in spreading the Chishti order throughout India.",
+    "teachers": [
+      "Nizam al-Din Auliya"
+    ]
   },
   {
     "famous": "Makhdum Jahaniyan",
-    "school": "Suhrawardiyya Order (Uch Sharif) — Descendant of Baha-ud-din Zakariya; travelled from Arabia to China"
+    "school": "Suhrawardiyya Order (Uch Sharif) — Descendant of Baha-ud-din Zakariya; travelled from Arabia to China",
+    "bio": "A Suhrawardiyya saint and spiritual guide in medieval India, Makhdum Jahaniyan was influential in spreading Islamic mystical teachings in the Deccan region."
   },
   {
     "famous": "Amir Kulal",
@@ -192,23 +210,38 @@
   },
   {
     "famous": "Mir Sayyid Ali Hamadani",
-    "school": "Kubrawiyya-Hamadaniyya — three times to Kashmir; converted the Kashmiri rulers to Islam; called 'Bab ul-Islam of Kashmir'"
+    "school": "Kubrawiyya-Hamadaniyya — three times to Kashmir; converted the Kashmiri rulers to Islam; called 'Bab ul-Islam of Kashmir'",
+    "bio": "A prominent Kubrawiyya mystic and scholar of the 14th century who played a significant role in spreading Islamic spirituality in Kashmir and Central Asia.",
+    "books": [
+      {
+        "title": "Zad al-Musafirin"
+      }
+    ]
   },
   {
     "famous": "Gesu Daraz",
-    "school": "Chishti Order (Deccan) — Brought Chishti tradition to the Deccan; most prolific Chishti writer in Urdu and Persian"
+    "school": "Chishti Order (Deccan) — Brought Chishti tradition to the Deccan; most prolific Chishti writer in Urdu and Persian",
+    "bio": "A major figure of the Chishti order, Gesu Daraz was a renowned saint and spiritual master in the Deccan region of India with considerable influence on Indian Sufism."
   },
   {
     "famous": "Ibn Abbad al-Rundi",
-    "school": "Shadhiliyya — greatest Moroccan Sufi of the 14th century; his letters on spiritual trial shaped Islamic mystical psychology"
+    "school": "Shadhiliyya — greatest Moroccan Sufi of the 14th century; his letters on spiritual trial shaped Islamic mystical psychology",
+    "bio": "An Andalusian Shadhili mystic and scholar, Ibn Abbad al-Rundi made important contributions to Sufi doctrine and was known for his letters and spiritual guidance."
   },
   {
     "famous": "Ali ibn Wafa",
-    "school": "Shadhiliyya-Wafa'iyya — son of Muhammad Wafa; led the Egyptian Shadhili tradition; famous for mystical poetry"
+    "school": "Shadhiliyya-Wafa'iyya — son of Muhammad Wafa; led the Egyptian Shadhili tradition; famous for mystical poetry",
+    "bio": "Egyptian Sufi saint (1357-1405) associated with the Shadhiliyya order. He was known for his spiritual teachings and became an important figure in Egyptian Islamic mysticism."
   },
   {
     "famous": "Muhammad al-Jazuli",
-    "school": "Shadhiliyya-Jazuliyya — revived the Shadhili order in Morocco; wrote the Dala'il al-Khayrat, the most printed Islamic text after the Quran"
+    "school": "Shadhiliyya-Jazuliyya — revived the Shadhili order in Morocco; wrote the Dala'il al-Khayrat, the most printed Islamic text after the Quran",
+    "bio": "A 15th-century Moroccan Shadhiliyya saint and scholar, famous for composing the Dala'il al-Khayrat, one of the most widely read Islamic texts.",
+    "books": [
+      {
+        "title": "Dala'il al-Khayrat"
+      }
+    ]
   },
   {
     "famous": "Khwaja Ubaydullah Ahrar",
@@ -216,12 +249,14 @@
   },
   {
     "famous": "Khwaja Ahrar",
-    "school": "The most politically influential Naqshbandi master; effectively the power behind the Timurid throne in Central Asia; his vast landholdings and network of followers made the Naqshbandiyya the dominant spiritual force from Transoxiana to Herat; his Faqarat is a key text of Naqshbandi spiritual practice; direct link between Baha-ud-Din Naqshband and Ahmad Sirhindi in the silsila"
+    "school": "The most politically influential Naqshbandi master; effectively the power behind the Timurid throne in Central Asia; his vast landholdings and network of followers made the Naqshbandiyya the dominant spiritual force from Transoxiana to Herat; his Faqarat is a key text of Naqshbandi spiritual practice; direct link between Baha-ud-Din Naqshband and Ahmad Sirhindi in the silsila",
+    "bio": "A prominent Naqshbandiyya shaikh and political figure in Central Asia, Khwaja Ahrar was influential in both spiritual and temporal affairs of Timurid territories."
   },
   {
     "famous": "Bali Efendi",
     "school": "Bali Efendi of Sofia (d. 1553), the most important Naqshbandi shaykh in Ottoman Balkan history. He was the spiritual teacher of Grand Vizier Sokollu Mehmed Pasha and spread the Naqshbandiyya into Southeastern Europe.",
-    "dod": 1553
+    "dod": 1553,
+    "bio": "An Ottoman mystic and scholar of the Naqshbandiyya order who lived during the height of the Ottoman Empire and contributed to Sufi thought in Anatolia."
   },
   {
     "famous": "Abd al-Wahhab al-Sha'rani",
@@ -237,7 +272,13 @@
   },
   {
     "famous": "Muhammad Ghaus Gwaliari",
-    "school": "Shattariyya — major Sufi master of Mughal India; introduced the Shattariyya order widely; teacher of Tansen (Akbar's musician)"
+    "school": "Shattariyya — major Sufi master of Mughal India; introduced the Shattariyya order widely; teacher of Tansen (Akbar's musician)",
+    "bio": "A prominent 16th-century Suhrawardiyya saint and scholar of Gwalior, influential in spreading Islamic mysticism in medieval India.",
+    "books": [
+      {
+        "title": "Jawahir-i-Khamsa"
+      }
+    ]
   },
   {
     "famous": "Bibi Jamal Khatun",
@@ -253,27 +294,33 @@
   {
     "famous": "Abdal Khan Sarwari",
     "school": "Abdal Khan Sarwari (d. c. 1610), a major Qadiri Sufi saint of Lahore whose shrine at Shah Jamal remains one of the most visited in the Punjab. The weekly dhammal gatherings at his shrine continue to this day.",
-    "dod": 1610
+    "dod": 1610,
+    "bio": "Indian Sufi mystic and spiritual master (1533-1605) associated with the Qadiriyya order. He was an influential teacher in the Indian subcontinent during the Mughal period."
   },
   {
     "famous": "Mian Mir",
-    "school": "Qadiriyya (Lahore) — Said to have laid the foundation stone of the Golden Temple of Amritsar; teacher of the Mughal prince Dara Shikoh"
+    "school": "Qadiriyya (Lahore) — Said to have laid the foundation stone of the Golden Temple of Amritsar; teacher of the Mughal prince Dara Shikoh",
+    "bio": "A Qadiriyya saint and mystic of the 16th-17th century in the Punjab region, revered for his spiritual teachings and miracles."
   },
   {
     "famous": "Khwaja Baqi Billah",
-    "school": "Naqshbandiyya (India) — Brought the Mujaddidi branch of Naqshbandiyya to India; his student Ahmad Sirhindi became its greatest figure"
+    "school": "Naqshbandiyya (India) — Brought the Mujaddidi branch of Naqshbandiyya to India; his student Ahmad Sirhindi became its greatest figure",
+    "bio": "A pivotal Naqshbandiyya master who revived and reformed the order in India, Khwaja Baqi Billah was the teacher of Ahmad Sirhindi and a major figure in Indo-Islamic mysticism."
   },
   {
     "famous": "Muhammad Yusuf al-Maqassari",
-    "school": "Khalwatiyya-Naqshbandiyya — greatest Sufi of the Makassar kingdom; exiled by the Dutch to Sri Lanka, then Cape Town where he spread Islam in South Africa"
+    "school": "Khalwatiyya-Naqshbandiyya — greatest Sufi of the Makassar kingdom; exiled by the Dutch to Sri Lanka, then Cape Town where he spread Islam in South Africa",
+    "bio": "A 17th-century Naqshbandiyya mystic from Makassar who became an influential Islamic scholar and spiritual leader in Southeast Asia."
   },
   {
     "famous": "Mirza Mazhar Jan-e-Janan",
-    "school": "Naqshbandiyya-Mujaddidiyya (Delhi) — Martyred; assassinated 1781 for his view that Hindu scriptures contained divine wisdom"
+    "school": "Naqshbandiyya-Mujaddidiyya (Delhi) — Martyred; assassinated 1781 for his view that Hindu scriptures contained divine wisdom",
+    "bio": "An 18th-century Naqshbandiyya saint and scholar based in Delhi, known for his spiritual leadership and Islamic scholarship during the Mughal period."
   },
   {
     "famous": "Shah Ghulam Ali",
-    "school": "The primary successor of Mirza Mazhar Jan-e-Janan and one of the most influential Naqshbandi masters of 19th-century India; his Maqamat-i-Mazhari documents his teacher's spiritual stations; under his guidance the Delhi khanqah became the main centre transmitting the Mujaddidi branch of Naqshbandiyya; trained hundreds of khalifas who spread the order across India, the Arab world, and Southeast Asia"
+    "school": "The primary successor of Mirza Mazhar Jan-e-Janan and one of the most influential Naqshbandi masters of 19th-century India; his Maqamat-i-Mazhari documents his teacher's spiritual stations; under his guidance the Delhi khanqah became the main centre transmitting the Mujaddidi branch of Naqshbandiyya; trained hundreds of khalifas who spread the order across India, the Arab world, and Southeast Asia",
+    "bio": "Indian Naqshbandi Sufi master and saint who was influential in spreading the Naqshbandiyya order in South Asia during the 18th-19th centuries."
   },
   {
     "famous": "Ahmad ibn Idris",
@@ -296,71 +343,118 @@
   {
     "famous": "Abd al-Qadir al-Jaza'iri",
     "school": "Algerian national hero, Qadiri Sufi master, and scholar (1808–1883) who led armed resistance against the French conquest of Algeria for fifteen years. After defeat and exile, he settled in Damascus where he saved thousands of Christians during the 1860 massacres. He was also a devoted student of Ibn Arabi’s philosophy.",
-    "books": []
+    "books": [],
+    "bio": "Algerian Islamic scholar, Sufi, and military leader (1808-1883) who led resistance against French colonization and became a symbol of Islamic spirituality and political resistance. He founded the Qadiriyya order and was recognized as a prominent Islamic reformer.",
+    "quotes": [
+      "I am a slave of God and my face is turned toward God"
+    ]
   },
   {
     "famous": "Haji Imdadullah Muhajir Makki",
-    "school": "Chishti-Sabiri — The paradoxical fact that both Gangohi (Deoband) and Ahmad Raza Khan (Barelvi) were his disciples makes him Islam's most ecumenical 19th-century figure"
+    "school": "Chishti-Sabiri — The paradoxical fact that both Gangohi (Deoband) and Ahmad Raza Khan (Barelvi) were his disciples makes him Islam's most ecumenical 19th-century figure",
+    "bio": "An influential Chishti shaikh and Islamic reformer who initially taught in Mecca before establishing himself as a spiritual guide with many notable disciples in South Asia."
   },
   {
     "famous": "Syed Ahmad Kabir Rifai",
-    "school": "Rifaiyya / Qadiriyya — major Sufi master of Bengal; spread the Rifai and Qadiri orders widely in East India"
+    "school": "Rifaiyya / Qadiriyya — major Sufi master of Bengal; spread the Rifai and Qadiri orders widely in East India",
+    "bio": "A 19th-century Suhrawardiyya saint and scholar, influential in promoting Islamic spirituality and reform in the Muslim world."
   },
   {
     "famous": "Meher Ali Shah",
     "school": "Qadiri and Chishti Sufi saint of Golra Sharif, near Islamabad (1859–1937). He was known for his scholarship, his defence of the Prophet’s honour, and his interfaith debates. His shrine remains one of the most visited in Pakistan, and he is revered for his miracles and his mastery of Persian and Arabic poetry.",
-    "dod": 1937
+    "dod": 1937,
+    "bio": "A Qadiriyya mystic and reformer in late colonial India, Meher Ali Shah was known for his spiritual teachings and efforts to revitalize Islamic practice among Muslims."
   },
   {
     "famous": "Frithjof Schuon",
-    "school": "Shadhiliyya-Alawiyya — Swiss metaphysician who founded the Traditionalist/Perennialist school; initiated by Ahmad al-Alawi"
+    "school": "Shadhiliyya-Alawiyya — Swiss metaphysician who founded the Traditionalist/Perennialist school; initiated by Ahmad al-Alawi",
+    "bio": "A Swiss-American metaphysicist and founder of the Shadhiliyya-influenced Maryamiyya order, Schuon was known for his writings on perennialism and comparative religion.",
+    "books": [
+      {
+        "title": "The Transcendent Unity of Religions"
+      },
+      {
+        "title": "Spiritual Perspectives and Human Facts"
+      },
+      {
+        "title": "Logic and Transcendence"
+      }
+    ],
+    "quotes": [
+      "Beauty is the splendor of the true."
+    ]
   },
   {
     "famous": "Muhammad al-Arabi al-Darqawi",
     "school": "Abu Abdullah Muhammad al-Arabi al-Darqawi (Arabic: محمد العربي الدرقاوي; 1760–1823) was a Moroccan Sufi leader of the Shadhili tariqa and the author of letters concerning the dhikr he preached and instructions for daily life. He stressed noninvolvement in worldly affairs (Dunya) and spoke against other Sufi orders exploiting claims of barakah (blessings). He was imprisoned by the Moroccan ruler Mulay Slimane (r. 1792–1822) for supporting revolts against the throne, but was released by Abderrahmane (r. 1822–1859). A branch of the Shadhili order, the Darqawa, was organized around his teachings after his death, with members coming from a wide range of social groups. Though the Darqawa was once the most important tariqah in Morocco, its power waned as it spread throughout North Africa. His tomb is in the Zawiya Bou Brih also in the Rif.",
-    "books": []
+    "books": [],
+    "bio": "An 18th-19th century Shadhiliyya saint and reformer from Morocco, known for his emphasis on spiritual purification and Islamic renewal."
   },
   {
     "famous": "Najm al-Din Razi",
     "school": "Abū Bakr 'Abdollāh b. Moḥammad b. Šahāvar b. Anūšervān al-Rāzī (Persian: نجم‌الدین رازی) commonly known by the laqab, or sobriquet, of Najm al-Dīn Dāya, meaning \"wetnurse\" (573 AH/1177 – 654 AH/1256) was a 13th-century Sufi. Hamid Algar, translator of the Persian Merṣād to English, states the application of \"wetnurse\" to the author of the Merṣād derives from the idea of the initiate on the Path being a newborn infant who needs suckling to survive. Dāya followed the Sufi order, Kubrawiyya, established by one of his greatest influences, Najm al-Dīn Kubrā. Dāya traveled to Kārazm and soon became a morīd (pupil, one who follows the shaykh master and learns from him, undergoing spiritual training) of Najm al-Dīn Kubrā. Kubrā then appointed Shaikh Majd al-Dīn Bagdādī as the spiritual trainer who also became Dāya's biggest influence. Dāya constantly refers to al-Dīn Bagdādī as \"our shaikh.\" When his master, Najm al-Dīn Kubrā, was murdered in 618/1221, Dāya fled to Hamadan, then to Ardabil, and then to Anatolia where he finally settled with a fellow contemporary master Rumi.",
-    "books": []
+    "books": [
+      {
+        "title": "Mirsad al-Ibad"
+      }
+    ],
+    "bio": "A 12th-13th century Kubrawiyya mystic from Khorasan, known for his spiritual teachings and philosophical contributions to Islamic Sufism."
   },
   {
     "famous": "Qalandar Baba Auliya",
     "school": "Imam Hassan Ukhra Muhammad Azeem Barkhiya (1898 – 27 January 1979) (Urdu: امام حسن اخرٰی محمد عظیم برخیا), commonly referred to as Qalandar Baba Auliya (Urdu: قلندر بابا اولیاء), was the founding Imam and Spiritual Master of the Azeemiyya Sufi Order, which takes its name from him. He was a Scholar of Tassawuf, and is considered to be of the Abdāl, commonly being known by his honorific \"Abdāl Haqq\" (Urdu: ابدال حق). He was a student of Tajuddin Baba. He appointed Khawaja Shamsuddin Azeemi as head of the Silsila, and passed on 27 January 1979. Every January, his Urs (Death Anniversary) is conducted in which members of the Silsila congregate to recite the Quran and conduct gathering on matters of Tassawuf. His resting place is located in the Shadman district of Karachi, Pakistan.",
-    "books": []
+    "books": [],
+    "bio": "A 20th-century Pakistani Chishti saint based in Lahore, revered for his spiritual guidance and role in Islamic education and reform."
   },
   {
     "famous": "Sayyid Ali Hamadani",
-    "school": "Sayyid Ali Hamadani was a Persian Sufi master of the Kubrawiyya order who played a pivotal role in the spread of Islam in Kashmir. He travelled with hundreds of disciples to the Kashmir valley, where he established mosques and khanqahs. His numerous works on Sufism, ethics, and governance earned him the title 'Shah-i Hamadan' (King of Hamadan)."
+    "school": "Sayyid Ali Hamadani was a Persian Sufi master of the Kubrawiyya order who played a pivotal role in the spread of Islam in Kashmir. He travelled with hundreds of disciples to the Kashmir valley, where he established mosques and khanqahs. His numerous works on Sufism, ethics, and governance earned him the title 'Shah-i Hamadan' (King of Hamadan).",
+    "bio": "A 14th-century Kubrawiyya saint and missionary who was instrumental in establishing Islamic spirituality in Kashmir and surrounding regions."
   },
   {
     "famous": "Usman Harooni",
-    "school": "Khwaja Usman Harooni was a major Sufi master of the Chishti order. He was the spiritual teacher of Khwaja Moinuddin Chishti, who would go on to establish the Chishti order in India. His emphasis on love, service, and spiritual poverty defined the character of the Chishti path for generations of followers."
+    "school": "Khwaja Usman Harooni was a major Sufi master of the Chishti order. He was the spiritual teacher of Khwaja Moinuddin Chishti, who would go on to establish the Chishti order in India. His emphasis on love, service, and spiritual poverty defined the character of the Chishti path for generations of followers.",
+    "bio": "A 12th-13th century Chishti saint and early master of the Chishti order, instrumental in establishing its spiritual foundations in South Asia."
   },
   {
     "famous": "Yahya al-Shirvani",
-    "school": "Yahya al-Shirvani al-Bakuvi was a Sufi master who founded the Khalwatiyya order, one of the most widespread Sufi tariqas in the Ottoman world. Based in Shirvan (modern Azerbaijan), he developed a systematic approach to spiritual retreat (khalwa) that became the hallmark of his order. The Khalwatiyya spread throughout Anatolia, the Balkans, Egypt, and North Africa."
+    "school": "Yahya al-Shirvani al-Bakuvi was a Sufi master who founded the Khalwatiyya order, one of the most widespread Sufi tariqas in the Ottoman world. Based in Shirvan (modern Azerbaijan), he developed a systematic approach to spiritual retreat (khalwa) that became the hallmark of his order. The Khalwatiyya spread throughout Anatolia, the Balkans, Egypt, and North Africa.",
+    "bio": "A 15th-century Khalwatiyya mystic from Shirvan who was influential in the development of Sufi mysticism in the Caucasus region."
   },
   {
     "famous": "Abd al-Razzaq al-Qashani",
-    "school": "Abd al-Razzaq al-Qashani was a Persian Sufi scholar and a leading expositor of Ibn Arabi's metaphysical system. His commentary on the Fusus al-Hikam and his Sufi lexicon 'Istilahat al-Sufiyya' became standard reference works in the Akbarian tradition. His mystical Quran commentary, long misattributed to Ibn Arabi himself, was widely circulated."
+    "school": "Abd al-Razzaq al-Qashani was a Persian Sufi scholar and a leading expositor of Ibn Arabi's metaphysical system. His commentary on the Fusus al-Hikam and his Sufi lexicon 'Istilahat al-Sufiyya' became standard reference works in the Akbarian tradition. His mystical Quran commentary, long misattributed to Ibn Arabi himself, was widely circulated.",
+    "bio": "Persian Sufi mystic and philosopher (1201-1330) influenced by Ibn Arabi's teachings and known for his mystical interpretations of Islamic theology. He was a prominent figure in the Akbarian tradition of Islamic mysticism.",
+    "books": [
+      {
+        "title": "Sharh Futuhat al-Makkiyya"
+      }
+    ]
   },
   {
     "famous": "Baba Farid",
-    "school": "Baba Farid, or Fariduddin Ganjshakar, was a major Chishti Sufi saint whose spiritual influence shaped the religious landscape of Punjab. His Punjabi verses are among the earliest literary works in the language and were later included in the Sikh scripture Guru Granth Sahib. His shrine at Pakpattan remains one of the most visited in South Asia."
+    "school": "Baba Farid, or Fariduddin Ganjshakar, was a major Chishti Sufi saint whose spiritual influence shaped the religious landscape of Punjab. His Punjabi verses are among the earliest literary works in the language and were later included in the Sikh scripture Guru Granth Sahib. His shrine at Pakpattan remains one of the most visited in South Asia.",
+    "bio": "Indian Sufi saint (1175-1265) associated with the Chishti order and known as one of the great masters of the tradition. He was influential in establishing and spreading Chishti Sufism in South Asia."
   },
   {
     "famous": "Jahanara Begum",
-    "school": "Jahanara Begum was the eldest daughter of Shah Jahan and a significant Sufi author in the Qadiriyya order. She wrote 'Munis al-Arwah,' a biography of Chishti saints, and 'Risala-i Sahibiyya,' an account of her initiation into the Qadiri path. She wielded considerable political influence as Padshah Begum and was a major patron of architecture and Sufi institutions in Mughal Delhi."
+    "school": "Jahanara Begum was the eldest daughter of Shah Jahan and a significant Sufi author in the Qadiriyya order. She wrote 'Munis al-Arwah,' a biography of Chishti saints, and 'Risala-i Sahibiyya,' an account of her initiation into the Qadiri path. She wielded considerable political influence as Padshah Begum and was a major patron of architecture and Sufi institutions in Mughal Delhi.",
+    "bio": "A Mughal princess and devoted follower of Qadiriyya Sufism, Jahanara Begum was a major patron of Sufi orders and wrote works on Islamic spirituality.",
+    "books": [
+      {
+        "title": "Munir al-Basar"
+      }
+    ]
   },
   {
     "famous": "Mahmud Hudayi",
-    "school": "Mahmud Hudayi was a prominent Ottoman Sufi master of the Jelveti branch of the Khalwatiyya order. He served as spiritual advisor to several Ottoman sultans and authored numerous works on Sufi practice and theology in Turkish and Arabic. His tekke in Uskudar, Istanbul, remains an active centre of Sufi devotion."
+    "school": "Mahmud Hudayi was a prominent Ottoman Sufi master of the Jelveti branch of the Khalwatiyya order. He served as spiritual advisor to several Ottoman sultans and authored numerous works on Sufi practice and theology in Turkish and Arabic. His tekke in Uskudar, Istanbul, remains an active centre of Sufi devotion.",
+    "bio": "An Ottoman Khalwatiyya master and poet, Mahmud Hudayi founded an influential dervish order and contributed significantly to Ottoman Sufi literature and practice."
   },
   {
     "famous": "Sheikh Ahmadou Bamba",
-    "school": "Sheikh Ahmadou Bamba was a Senegalese Sufi saint and the founder of the Muridiyya order, one of the largest Sufi brotherhoods in West Africa. His emphasis on work ethic, devotion, and peaceful resistance to French colonialism made him a revered figure. The city of Touba, built around his mosque, is the spiritual capital of the Muridiyya and hosts an annual pilgrimage of millions."
+    "school": "Sheikh Ahmadou Bamba was a Senegalese Sufi saint and the founder of the Muridiyya order, one of the largest Sufi brotherhoods in West Africa. His emphasis on work ethic, devotion, and peaceful resistance to French colonialism made him a revered figure. The city of Touba, built around his mosque, is the spiritual capital of the Muridiyya and hosts an annual pilgrimage of millions.",
+    "bio": "A 19th-20th century Senegalese Islamic scholar and founder of the Muridiyya order, a major Sufi tradition in West Africa."
   },
   {
     "famous": "Ahmad al-Tijani",
@@ -368,10 +462,12 @@
   },
   {
     "famous": "Ahmed ar-Rifa'i",
-    "school": "Ahmad al-Rifa'i was an Iraqi Sufi saint and the founder of the Rifa'iyya order, one of the oldest Sufi tariqas. Based in the marshlands of southern Iraq, he emphasised humility, service to the poor, and ecstatic devotional practices. The Rifa'iyya became one of the most widespread Sufi orders in the Arab world, Turkey, and the Balkans."
+    "school": "Ahmad al-Rifa'i was an Iraqi Sufi saint and the founder of the Rifa'iyya order, one of the oldest Sufi tariqas. Based in the marshlands of southern Iraq, he emphasised humility, service to the poor, and ecstatic devotional practices. The Rifa'iyya became one of the most widespread Sufi orders in the Arab world, Turkey, and the Balkans.",
+    "bio": "Iraqi Sufi mystic (1118-1182) who founded the Rifa'iyya order, one of the major Islamic Sufi traditions. He was known for his spiritual teachings and ecstatic mystical practices."
   },
   {
     "famous": "Zahed Gilani",
-    "school": "Zahed Gilani was a Persian Sufi master who founded the Zahediyya order in Gilan. He was the spiritual teacher of Safi al-Din Ardabili, whose descendants would go on to establish the Safavid dynasty and transform Iran. The Zahediyya-Safaviyya lineage represents one of the most consequential Sufi-political connections in Islamic history."
+    "school": "Zahed Gilani was a Persian Sufi master who founded the Zahediyya order in Gilan. He was the spiritual teacher of Safi al-Din Ardabili, whose descendants would go on to establish the Safavid dynasty and transform Iran. The Zahediyya-Safaviyya lineage represents one of the most consequential Sufi-political connections in Islamic history.",
+    "bio": "A 13th-century Persian mystic and founder of the Zahediyya Sufi order, known for his ascetic practices and spiritual teachings."
   }
 ]

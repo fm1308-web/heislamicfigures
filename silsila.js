@@ -68,6 +68,7 @@ function isLineageMember(p){
 }
 
 let SL_LIN_OPEN=false;
+let _slAnimTimer=null, _slAnimMode='stopped', _slAnimYr=500, _slAnimSpeedMs=1200, _slAnimCtl=null;
 
 // ── Build the full (unfiltered) lane list once from PEOPLE ──────────────────
 function _buildSLAllLanes(){
@@ -121,6 +122,41 @@ function _slIsAlive(p, yr){
   if(yr === null || yr === undefined) return true;
   var dod = (p.dod !== undefined && p.dod !== null) ? p.dod : p.dob + 60;
   return p.dob <= yr && dod >= yr;
+}
+
+function _slAnimPlay(){
+  if(typeof _setSliderYear!=='function') return;
+  if(_slAnimMode==='stopped'){
+    var yr=activeYear||500;
+    if(yr>=2000) yr=500;
+    _slAnimYr=yr;
+  }
+  _slAnimMode='playing';
+  _slAnimSpeedMs=_slAnimCtl?_slAnimCtl.getSpeedMs():1200;
+  _slAnimNextStep();
+}
+
+function _slAnimPause(){
+  _slAnimMode='paused';
+  if(_slAnimTimer){clearTimeout(_slAnimTimer);_slAnimTimer=null;}
+}
+
+function _slAnimNextStep(){
+  if(_slAnimMode!=='playing') return;
+  if(_slAnimYr>2000){_slAnimStop();return;}
+  _setSliderYear(_slAnimYr);
+  // Auto-scroll silsilaMain to bottom so new figures stay visible
+  var main=document.getElementById('silsilaMain');
+  if(main) main.scrollTop=main.scrollHeight;
+  _slAnimYr+=10;
+  _slAnimTimer=setTimeout(_slAnimNextStep,_slAnimSpeedMs);
+}
+
+function _slAnimStop(){
+  _slAnimMode='stopped';
+  if(_slAnimTimer){clearTimeout(_slAnimTimer);_slAnimTimer=null;}
+  _slAnimYr=500;
+  if(_slAnimCtl) _slAnimCtl.forceStop();
 }
 
 function renderSilsila(){
@@ -184,7 +220,7 @@ function renderSilsila(){
     if(_slYr !== null && !_slIsAlive(p, _slYr)) return;
     const li=getLI(p);
     if(li<0) return;
-    if(li===0 && _slActiveG && !SL_LIN_OPEN && p.famous!=='Prophet Muhammad') return;
+    if(li===0 && _slActiveG && !SL_LIN_OPEN && _slAnimMode!=='playing' && p.famous!=='Prophet Muhammad') return;
     (grps[li]=grps[li]||[]).push(p);
   });
 
@@ -435,6 +471,18 @@ function renderSilsila(){
       _slHowBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
       _slHowBtn.onclick=function(e){e.stopPropagation();_showSilsilaMethodology();};
       _slL1.appendChild(_slHowBtn);
+      // AnimControls mount
+      if(window.AnimControls){
+        var _slAnimMount=document.createElement('div');
+        _slAnimMount.id='sl-anim-mount';
+        _slAnimMount.style.cssText='margin-left:auto;display:flex;align-items:center';
+        _slL1.appendChild(_slAnimMount);
+        _slAnimCtl=window.AnimControls.create({
+          mountEl:_slAnimMount, idPrefix:'sl', initialSpeed:'1x',
+          onPlay:_slAnimPlay, onPause:_slAnimPause, onStop:_slAnimStop,
+          onSpeedChange:function(ms){ _slAnimSpeedMs=ms; }
+        });
+      }
       _slBody.parentNode.insertBefore(_slL1,_slBody);
     }
   }

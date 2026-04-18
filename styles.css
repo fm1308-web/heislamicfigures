@@ -39,7 +39,7 @@
   --col2-w:     430px;
   --row-h:      44px;
   --axis-h:     42px;
-  --fbar-h:     42px;  /* filter bar height — matches axis-h */
+  --fbar-h:     50px;  /* filter bar height — matches axis-h */
   --sbar-h:     22px;  /* scrollbar strip height */
 }
 
@@ -224,13 +224,13 @@ a:hover{text-decoration:underline}
 .ch-name{display:none}
 .ch-cents{display:flex;flex:1}
 .ch-cent{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
-  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:var(--lp-muted);
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  font-family:'Cinzel',serif;font-size:13px;letter-spacing:.08em;color:var(--lp-muted);
   border-right:1px solid #2D3748;transition:all .2s;
 }
 .ch-cent:last-child{border-right:none}
 .ch-cent.hi{color:var(--accent);font-weight:600;background:rgba(212,175,55,.07)}
-.ch-cent .cy-lbl{font-size:7px;letter-spacing:.04em;opacity:.6;font-weight:400}
+.ch-cent .cy-lbl{font-size:10px;letter-spacing:.04em;opacity:.55;font-weight:400}
 
 /* ── Filter bar: TYPE + TRADITION inside the names column ── */
 #filterBar{
@@ -242,7 +242,7 @@ a:hover{text-decoration:underline}
 #filterBarLeft{
   width:var(--col1-w);flex-shrink:0;
   border-right:1.5px solid var(--lp-brd);
-  display:flex;align-items:center;gap:4px;padding:0 5px;overflow:visible;position:relative;
+  display:flex;align-items:center;gap:4px;padding:0 10px;overflow:visible;position:relative;
 }
 /* Right: century columns — shows active filter summary */
 #filterBarCtrls{

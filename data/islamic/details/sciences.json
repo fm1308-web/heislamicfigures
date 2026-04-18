@@ -19,7 +19,15 @@
   {
     "famous": "Abu Ma'shar al-Balkhi",
     "school": "Abbasid Scientific Court — most influential Islamic astrologer; his Latin translations shaped European medieval astronomy",
-    "books": []
+    "books": [
+      {
+        "title": "Book of Thousands"
+      },
+      {
+        "title": "Great Introduction to Astrology"
+      }
+    ],
+    "bio": "Persian Islamic astronomer, astrologer, and mathematician whose works significantly influenced European medieval science through astronomical and astrological treatises."
   },
   {
     "famous": "Al-Farghani",
@@ -27,23 +35,62 @@
     "quotes": [
       "The science of the stars is among the most noble — for it concerns itself with the greatest of God's creations.",
       "The circumference of the earth, when measured, reveals the precision of its Creator."
+    ],
+    "bio": "Persian astronomer of the 9th century known for his comprehensive astronomical treatise that became influential in both Islamic and European science. His work on celestial spheres was widely studied and translated.",
+    "books": [
+      {
+        "title": "Kitab fi al-Hay'a"
+      }
     ]
   },
   {
     "famous": "Banu Musa",
-    "school": "Three brothers — Muhammad, Ahmad, and al-Hasan ibn Musa (9th century) — who worked at the House of Wisdom in Baghdad. They patronised translators, funded scientific expeditions, and wrote the Book of Ingenious Devices describing over 100 mechanical inventions including automatic fountains, self-trimming lamps, and programmable musical machines."
+    "school": "Three brothers — Muhammad, Ahmad, and al-Hasan ibn Musa (9th century) — who worked at the House of Wisdom in Baghdad. They patronised translators, funded scientific expeditions, and wrote the Book of Ingenious Devices describing over 100 mechanical inventions including automatic fountains, self-trimming lamps, and programmable musical machines.",
+    "bio": "Three Persian brothers of the 9th century who were mathematicians, astronomers, and patrons of science. They made significant contributions to geometry, astronomy, and mechanics, and played a key role in the House of Wisdom.",
+    "books": [
+      {
+        "title": "Kitab al-Marifah"
+      }
+    ]
   },
   {
     "famous": "Hunayn ibn Ishaq",
-    "school": "Nestorian Christian physician and translator (809–873) who led the translation movement at the House of Wisdom in Baghdad. He and his school translated virtually the entire Greek medical and scientific corpus into Arabic, including Galen, Hippocrates, and Plato. Without his work, much of ancient Greek knowledge would have been lost to history."
+    "school": "Nestorian Christian physician and translator (809–873) who led the translation movement at the House of Wisdom in Baghdad. He and his school translated virtually the entire Greek medical and scientific corpus into Arabic, including Galen, Hippocrates, and Plato. Without his work, much of ancient Greek knowledge would have been lost to history.",
+    "bio": "A renowned Arab physician, translator, and ophthalmologist of the 9th century who made significant contributions to medicine and translated Greek scientific texts into Arabic and Syriac. He is considered one of the most important medical figures of the Islamic Golden Age.",
+    "books": [
+      {
+        "title": "Ten Treatises on Ophthalmology"
+      },
+      {
+        "title": "Kitab al-Masail fi al-Tibb"
+      }
+    ]
   },
   {
     "famous": "Qusta ibn Luqa",
-    "school": "Melkite Christian physician, translator, and polymath (820–912) who worked at the House of Wisdom in Baghdad. He translated Greek scientific and philosophical texts into Arabic and wrote original works on optics, astronomy, and medicine. His treatise on the distinction between spirit and soul influenced both Islamic and Latin scholastic philosophy."
+    "school": "Melkite Christian physician, translator, and polymath (820–912) who worked at the House of Wisdom in Baghdad. He translated Greek scientific and philosophical texts into Arabic and wrote original works on optics, astronomy, and medicine. His treatise on the distinction between spirit and soul influenced both Islamic and Latin scholastic philosophy.",
+    "bio": "A 9th-century Arab physician, mathematician, and astronomer from Baalbek known for his translations of Greek works and original contributions to medicine and mathematics. He was a prominent figure in the transmission of ancient knowledge to the Islamic world.",
+    "books": [
+      {
+        "title": "Kitab al-Maraya al-Muhriqa"
+      },
+      {
+        "title": "On the Difference Between Spirit and Soul"
+      }
+    ]
   },
   {
     "famous": "Thabit ibn Qurra",
-    "school": "Sabian mathematician, astronomer, and physician (826–901) who worked at the House of Wisdom in Baghdad. He translated and improved upon Euclid, Archimedes, and Apollonius, and made original contributions to number theory and the calculation of the volume of paraboloids. He founded a dynasty of scholars that served the Abbasid caliphs for generations."
+    "school": "Sabian mathematician, astronomer, and physician (826–901) who worked at the House of Wisdom in Baghdad. He translated and improved upon Euclid, Archimedes, and Apollonius, and made original contributions to number theory and the calculation of the volume of paraboloids. He founded a dynasty of scholars that served the Abbasid caliphs for generations.",
+    "bio": "A 9th-century Arab mathematician, astronomer, physician, and philosopher from Harran who made fundamental contributions to geometry, astronomy, and medicine. He was a prolific translator and original thinker who significantly advanced Islamic scientific knowledge.",
+    "books": [
+      {
+        "title": "Kitab al-Qawl fi Tasis al-Nisbah"
+      },
+      {
+        "title": "Kitab al-Maqala fi'l-Alat al-Shakka"
+      }
+    ]
   },
   {
     "famous": "Al-Razi (Rhazes)",
@@ -69,7 +116,13 @@
   },
   {
     "famous": "Al-Sufi",
-    "school": "Abd al-Rahman al-Sufi (903–986), known in the Latin West as Azophi, was one of the most important astronomers in Islamic history. Based in Isfahan and later at the Buyid court in Shiraz, his masterwork Kitab Suwar al-Kawakib al-Thabita (Book of Fixed Stars) revised and updated Ptolemy's star catalogue with original observations, correcting star positions and magnitudes and adding Arabic star names that are still used today (such as Aldebaran, Altair, and Fomalhaut). He was the first astronomer in recorded history to describe the Andromeda Galaxy, which he called 'a small cloud,' and the first to observe the Large Magellanic Cloud. His star charts combined scientific precision with artistic beauty and were copied for centuries across the Islamic world and medieval Europe."
+    "school": "Abd al-Rahman al-Sufi (903–986), known in the Latin West as Azophi, was one of the most important astronomers in Islamic history. Based in Isfahan and later at the Buyid court in Shiraz, his masterwork Kitab Suwar al-Kawakib al-Thabita (Book of Fixed Stars) revised and updated Ptolemy's star catalogue with original observations, correcting star positions and magnitudes and adding Arabic star names that are still used today (such as Aldebaran, Altair, and Fomalhaut). He was the first astronomer in recorded history to describe the Andromeda Galaxy, which he called 'a small cloud,' and the first to observe the Large Magellanic Cloud. His star charts combined scientific precision with artistic beauty and were copied for centuries across the Islamic world and medieval Europe.",
+    "bio": "Persian astronomer of the 10th century known for his detailed star catalog and observations of celestial phenomena. His work remained the most comprehensive star catalog in the Islamic world for centuries.",
+    "books": [
+      {
+        "title": "Book of Fixed Stars"
+      }
+    ]
   },
   {
     "famous": "Al-Zahrawi",
@@ -168,11 +221,29 @@
   },
   {
     "famous": "Qutb al-Din Shirazi",
-    "school": "Maragha school — student of Nasir al-Din al-Tusi; explained the rainbow; major work on optics, astronomy and medicine"
+    "school": "Maragha school — student of Nasir al-Din al-Tusi; explained the rainbow; major work on optics, astronomy and medicine",
+    "bio": "A Persian polymath of the 13th-14th centuries who made significant contributions to astronomy, mathematics, medicine, and philosophy. He wrote commentaries on major scientific works and developed astronomical models.",
+    "books": [
+      {
+        "title": "Nihayat al-Idrak"
+      },
+      {
+        "title": "Durr al-Muhtadi"
+      }
+    ]
   },
   {
     "famous": "Ibn al-Banna al-Marrakushi",
-    "school": "A thirteenth- and fourteenth-century Moroccan mathematician and astronomer from Marrakesh, he authored numerous works on arithmetic, algebra, and astronomy. His Talkhis A'mal al-Hisab (Summary of Arithmetic Operations) introduced innovative methods for calculation and became a standard mathematical textbook across North Africa. He also contributed to the development of algebraic notation and compiled astronomical tables used in the western Islamic world."
+    "school": "A thirteenth- and fourteenth-century Moroccan mathematician and astronomer from Marrakesh, he authored numerous works on arithmetic, algebra, and astronomy. His Talkhis A'mal al-Hisab (Summary of Arithmetic Operations) introduced innovative methods for calculation and became a standard mathematical textbook across North Africa. He also contributed to the development of algebraic notation and compiled astronomical tables used in the western Islamic world.",
+    "bio": "A Moroccan mathematician and astronomer of the 13th-14th centuries known for his works on algebra, arithmetic, and astronomy. He made contributions to mathematical notation and astronomical calculations.",
+    "books": [
+      {
+        "title": "Talkhis amal al-hisab"
+      },
+      {
+        "title": "Kitab al-Qanun"
+      }
+    ]
   },
   {
     "famous": "Kamal al-Din al-Farisi",
@@ -185,7 +256,16 @@
   },
   {
     "famous": "Al-Kashi",
-    "school": "Persian mathematician and astronomer (c. 1380–1429) who worked at Ulugh Beg’s observatory in Samarkand. He calculated pi to sixteen decimal places — a record that stood for over 150 years — and developed methods for extracting roots of arbitrary degree. His Key of Arithmetic became a standard reference across the Islamic world."
+    "school": "Persian mathematician and astronomer (c. 1380–1429) who worked at Ulugh Beg’s observatory in Samarkand. He calculated pi to sixteen decimal places — a record that stood for over 150 years — and developed methods for extracting roots of arbitrary degree. His Key of Arithmetic became a standard reference across the Islamic world.",
+    "bio": "Persian mathematician and astronomer of the 15th century who made groundbreaking contributions to decimal fractions, trigonometry, and computational mathematics. He worked at the Samarkand observatory and advanced mathematical precision in calculations.",
+    "books": [
+      {
+        "title": "Miftah al-Hisab"
+      },
+      {
+        "title": "Risala al-Muhitiyya"
+      }
+    ]
   },
   {
     "famous": "Ali Qushji",
@@ -215,16 +295,30 @@
   },
   {
     "famous": "Shaykh Bahai",
-    "school": "Baha al-Din al-Amili, known as Shaykh Bahai (1547–1621), the most versatile scholar of the Safavid era — simultaneously a leading jurist, mathematician, astronomer, architect, and poet. He designed Isfahan's Masjid-i Shah."
+    "school": "Baha al-Din al-Amili, known as Shaykh Bahai (1547–1621), the most versatile scholar of the Safavid era — simultaneously a leading jurist, mathematician, astronomer, architect, and poet. He designed Isfahan's Masjid-i Shah.",
+    "bio": "A Persian polymath of the 16th-17th centuries known for his contributions to mathematics, astronomy, engineering, and Islamic sciences. He was a prominent theologian and scholar during the Safavid period.",
+    "books": [
+      {
+        "title": "Khulasa al-Hisab"
+      },
+      {
+        "title": "Risalat al-Wafiyya"
+      }
+    ]
   },
   {
     "famous": "Gelenbevi Ismail Efendi",
-    "school": "Ottoman mathematics — the most accomplished Ottoman mathematician; introduced modern European mathematics to the Ottoman system"
+    "school": "Ottoman mathematics — the most accomplished Ottoman mathematician; introduced modern European mathematics to the Ottoman system",
+    "bio": "Ottoman mathematician and astronomer of the 18th century known for his work in mathematics and reform of astronomical knowledge. He contributed to the advancement of mathematical sciences in the Ottoman Empire."
   },
   {
     "famous": "Abdus Salam",
     "school": "A Pakistani theoretical physicist who shared the 1979 Nobel Prize in Physics for his contribution to the electroweak unification theory, becoming the first Muslim Nobel laureate in science. He founded the International Centre for Theoretical Physics (ICTP) in Trieste, Italy, to provide scientists from developing countries access to advanced research facilities. His lifelong mission was to promote scientific excellence in the Muslim world, and he advocated tirelessly for investment in fundamental research.",
-    "books": []
+    "books": [],
+    "bio": "Pakistani theoretical physicist who won the Nobel Prize in Physics in 1979 for his contributions to electroweak theory and was a pioneering Muslim scientist.",
+    "quotes": [
+      "Science is the reflection of the Divine in the human mind"
+    ]
   },
   {
     "famous": "Abbas ibn Firnas",
@@ -240,79 +334,152 @@
   },
   {
     "famous": "Abu al-Wafa Buzjani",
-    "school": "Abu al-Wafa al-Buzjani was a Persian mathematician and astronomer who made foundational contributions to trigonometry. He introduced the tangent function, developed methods of calculating trigonometric tables, and established important trigonometric identities. His work on geometric constructions using a fixed compass opening was centuries ahead of its time."
+    "school": "Abu al-Wafa al-Buzjani was a Persian mathematician and astronomer who made foundational contributions to trigonometry. He introduced the tangent function, developed methods of calculating trigonometric tables, and established important trigonometric identities. His work on geometric constructions using a fixed compass opening was centuries ahead of its time.",
+    "bio": "Persian mathematician and astronomer of the 10th century who made major advances in trigonometry, geometry, and astronomy. He developed new trigonometric functions and improved astronomical observations.",
+    "books": [
+      {
+        "title": "Kitab al-Almajisti"
+      }
+    ]
   },
   {
     "famous": "Abu Zayd al-Balkhi",
-    "school": "Abu Zayd al-Balkhi was a Persian polymath who founded the 'Balkhi school' of geographic mapping and made remarkably early contributions to psychology. His 'Masalih al-Abdan wa al-Anfus' (Sustenance for Bodies and Souls) distinguished between neuroses and psychoses and proposed cognitive and behavioural treatments, anticipating modern clinical psychology by a millennium."
+    "school": "Abu Zayd al-Balkhi was a Persian polymath who founded the 'Balkhi school' of geographic mapping and made remarkably early contributions to psychology. His 'Masalih al-Abdan wa al-Anfus' (Sustenance for Bodies and Souls) distinguished between neuroses and psychoses and proposed cognitive and behavioural treatments, anticipating modern clinical psychology by a millennium.",
+    "bio": "Persian scholar of the 9th-10th centuries who made contributions to geography, mathematics, and medicine. He is known for his geographical works and treatises on various scientific subjects."
   },
   {
     "famous": "Abu Sahl al-Quhi",
-    "school": "Abu Sahl al-Quhi was a Persian mathematician and astronomer who made important advances in the geometry of conic sections. He solved geometric problems that had been open since antiquity and developed new methods for determining centres of gravity. He directed the astronomical observatory in Baghdad under the Buyid emir Sharaf al-Dawla."
+    "school": "Abu Sahl al-Quhi was a Persian mathematician and astronomer who made important advances in the geometry of conic sections. He solved geometric problems that had been open since antiquity and developed new methods for determining centres of gravity. He directed the astronomical observatory in Baghdad under the Buyid emir Sharaf al-Dawla.",
+    "bio": "Persian mathematician and astronomer of the 10th century known for his contributions to geometry, algebra, and astronomical instruments. He worked on problems in solid geometry and the theory of proportions."
   },
   {
     "famous": "Abu-Mahmud Khojandi",
-    "school": "Abu Mahmud Khojandi was a Persian astronomer and mathematician from Khujand in Central Asia. He constructed an enormous mural sextant at Rayy to measure the obliquity of the ecliptic with unprecedented precision. He also contributed to number theory, working on problems related to the sum of two cubes."
+    "school": "Abu Mahmud Khojandi was a Persian astronomer and mathematician from Khujand in Central Asia. He constructed an enormous mural sextant at Rayy to measure the obliquity of the ecliptic with unprecedented precision. He also contributed to number theory, working on problems related to the sum of two cubes.",
+    "bio": "Persian mathematician and astronomer of the 10th century known for his work on trigonometry and astronomy. He made contributions to spherical trigonometry and constructed astronomical instruments."
   },
   {
     "famous": "Abu Nasr Mansur",
-    "school": "Abu Nasr Mansur ibn Ali ibn Iraq was a Persian mathematician and astronomer who was the teacher and later collaborator of al-Biruni. He made important contributions to spherical trigonometry, developing the law of sines for spherical triangles. His mathematical work provided essential tools for the astronomical calculations of the Islamic golden age."
+    "school": "Abu Nasr Mansur ibn Ali ibn Iraq was a Persian mathematician and astronomer who was the teacher and later collaborator of al-Biruni. He made important contributions to spherical trigonometry, developing the law of sines for spherical triangles. His mathematical work provided essential tools for the astronomical calculations of the Islamic golden age.",
+    "bio": "Persian mathematician and astronomer who made significant contributions to spherical trigonometry and astronomy during the 10th-11th centuries. He served under the Ghaznavid dynasty and is known for his work on trigonometric functions."
   },
   {
     "famous": "Abu Mansur al-Baghdadi",
-    "school": "Abu Mansur al-Baghdadi was an Arab mathematician and Shafi'i-Ash'ari theologian. His mathematical works contributed to number theory, and he classified numbers in ways that anticipated later developments. He also authored important works on Islamic theology and the classification of religious sects, making him an unusual figure who excelled in both the rational and religious sciences."
+    "school": "Abu Mansur al-Baghdadi was an Arab mathematician and Shafi'i-Ash'ari theologian. His mathematical works contributed to number theory, and he classified numbers in ways that anticipated later developments. He also authored important works on Islamic theology and the classification of religious sects, making him an unusual figure who excelled in both the rational and religious sciences.",
+    "bio": "Medieval Islamic theologian and scholar known for his works on Islamic theology and refutations of theological positions he considered heretical.",
+    "books": [
+      {
+        "title": "The Difference Between the Sects"
+      }
+    ]
   },
   {
     "famous": "Abd al-Latif al-Baghdadi",
-    "school": "Abd al-Latif al-Baghdadi was a physician, philosopher, traveller, and polymath. His 'Kitab al-Ifada' on Egypt contains precise anatomical observations that corrected Galen, including his discovery that the lower jaw is a single bone, not two. He studied under over 200 scholars and his systematic approach to empirical observation made him a remarkable figure in the history of science."
+    "school": "Abd al-Latif al-Baghdadi was a physician, philosopher, traveller, and polymath. His 'Kitab al-Ifada' on Egypt contains precise anatomical observations that corrected Galen, including his discovery that the lower jaw is a single bone, not two. He studied under over 200 scholars and his systematic approach to empirical observation made him a remarkable figure in the history of science.",
+    "bio": "Medieval Islamic physician and polymath from Baghdad known for his medical treatises, anatomical observations, and contributions to various sciences.",
+    "books": [
+      {
+        "title": "Book of the Examination of the Properties of Foodstuffs"
+      }
+    ]
   },
   {
     "famous": "Abu'l-Barakat al-Baghdadi",
-    "school": "Abu'l-Barakat al-Baghdadi was an Iraqi philosopher and physician whose 'Kitab al-Mu'tabar' challenged Aristotelian physics. He argued that a moving body has an inclination (mail) that decreases as it moves, anticipating aspects of the later impetus theory. His philosophical critiques of Avicenna's system were influential in the development of post-Avicennan Islamic philosophy."
+    "school": "Abu'l-Barakat al-Baghdadi was an Iraqi philosopher and physician whose 'Kitab al-Mu'tabar' challenged Aristotelian physics. He argued that a moving body has an inclination (mail) that decreases as it moves, anticipating aspects of the later impetus theory. His philosophical critiques of Avicenna's system were influential in the development of post-Avicennan Islamic philosophy.",
+    "bio": "Persian philosopher and physician of the 11th-12th centuries who contributed to natural philosophy, medicine, and metaphysics. He challenged Aristotelian physics and proposed innovative theories about motion and causality."
   },
   {
     "famous": "Abu Kamil",
-    "school": "Abu Kamil Shuja ibn Aslam was an Egyptian mathematician who built upon al-Khwarizmi's pioneering algebra. He introduced the systematic use of irrational numbers as solutions and coefficients, solved systems of equations, and applied algebra to geometry. His work directly influenced the European mathematician Fibonacci, who drew extensively on Abu Kamil's methods."
+    "school": "Abu Kamil Shuja ibn Aslam was an Egyptian mathematician who built upon al-Khwarizmi's pioneering algebra. He introduced the systematic use of irrational numbers as solutions and coefficients, solved systems of equations, and applied algebra to geometry. His work directly influenced the European mathematician Fibonacci, who drew extensively on Abu Kamil's methods.",
+    "bio": "Egyptian Islamic mathematician known for his advanced work in algebra and geometry during the 9th-10th centuries.",
+    "books": [
+      {
+        "title": "Book of Algebra"
+      }
+    ]
   },
   {
     "famous": "Dinawari",
-    "school": "Abu Hanifa al-Dinawari was a Persian polymath whose 'Kitab al-Nabat' (Book of Plants) earned him recognition as the founder of Arabic botany. Describing over 637 plants with their growth stages and habitats, the work was the most comprehensive botanical treatise of the medieval Islamic world. He also authored important works on astronomy, mathematics, and history."
+    "school": "Abu Hanifa al-Dinawari was a Persian polymath whose 'Kitab al-Nabat' (Book of Plants) earned him recognition as the founder of Arabic botany. Describing over 637 plants with their growth stages and habitats, the work was the most comprehensive botanical treatise of the medieval Islamic world. He also authored important works on astronomy, mathematics, and history.",
+    "bio": "Persian polymath of the 9th century known for his contributions to botany, mathematics, and history. He wrote treatises on plants and their properties."
   },
   {
     "famous": "Ahmad al-Qalqashandi",
-    "school": "Ahmad al-Qalqashandi was an Egyptian scholar who authored 'Subh al-A'sha,' a fourteen-volume encyclopaedia of Mamluk chancery practice. The work covers everything from geography and natural history to cryptography, heraldry, and administrative procedures. His chapter on cryptanalysis is one of the earliest systematic treatments of code-breaking."
+    "school": "Ahmad al-Qalqashandi was an Egyptian scholar who authored 'Subh al-A'sha,' a fourteen-volume encyclopaedia of Mamluk chancery practice. The work covers everything from geography and natural history to cryptography, heraldry, and administrative procedures. His chapter on cryptanalysis is one of the earliest systematic treatments of code-breaking.",
+    "bio": "Egyptian scholar and administrator of the 14th-15th centuries known for his encyclopedic work on administrative science and geography. He served as a secretary and wrote extensively on chancellery practices and geographical knowledge.",
+    "books": [
+      {
+        "title": "Subh al-asha"
+      }
+    ]
   },
   {
     "famous": "Al-Khazini",
-    "school": "Al-Khazini was a scientist of Byzantine Greek origin who worked in Merv under the Seljuqs. His 'Kitab Mizan al-Hikma' (Book of the Balance of Wisdom) is a landmark work on mechanics, hydrostatics, and the determination of specific gravities. He compiled remarkably accurate density tables for metals and gemstones and built precision balances that could detect differences of milligrams."
+    "school": "Al-Khazini was a scientist of Byzantine Greek origin who worked in Merv under the Seljuqs. His 'Kitab Mizan al-Hikma' (Book of the Balance of Wisdom) is a landmark work on mechanics, hydrostatics, and the determination of specific gravities. He compiled remarkably accurate density tables for metals and gemstones and built precision balances that could detect differences of milligrams.",
+    "bio": "Persian scientist of the 11th-12th centuries known for his work in physics, mathematics, and astronomy. He made significant contributions to the study of gravity, density, and mechanical instruments.",
+    "books": [
+      {
+        "title": "Kitab Mizan al-Hikma"
+      }
+    ]
   },
   {
     "famous": "Abu al-Salt",
-    "school": "Abu al-Salt Umayya ibn Abd al-Aziz was an Andalusian polymath from Denia. He authored works on pharmacology, astronomy, geometry, and music theory. He spent years in Egypt and North Africa and his treatise on Egyptian materia medica and his astronomical tables contributed to the cross-pollination of Andalusian and Eastern Islamic sciences."
+    "school": "Abu al-Salt Umayya ibn Abd al-Aziz was an Andalusian polymath from Denia. He authored works on pharmacology, astronomy, geometry, and music theory. He spent years in Egypt and North Africa and his treatise on Egyptian materia medica and his astronomical tables contributed to the cross-pollination of Andalusian and Eastern Islamic sciences.",
+    "bio": "Andalusian polymath of the 11th-12th centuries known for his work in astronomy, medicine, and mathematics. He made contributions to astronomical instruments and mathematical sciences in medieval Al-Andalus."
   },
   {
     "famous": "Ahmad ibn Yusuf",
-    "school": "Ahmad ibn Yusuf ibn Ibrahim was an Arab mathematician whose treatise on ratios and proportions influenced medieval European mathematics through its Latin translation. He served the Tulunid rulers of Egypt and his work extended the Euclidean theory of proportionality. His commentary on Ptolemy's Centiloquium was widely read in both the Islamic world and medieval Europe."
+    "school": "Ahmad ibn Yusuf ibn Ibrahim was an Arab mathematician whose treatise on ratios and proportions influenced medieval European mathematics through its Latin translation. He served the Tulunid rulers of Egypt and his work extended the Euclidean theory of proportionality. His commentary on Ptolemy's Centiloquium was widely read in both the Islamic world and medieval Europe.",
+    "bio": "Arab mathematician of the 9th century known for his work on ratio and proportion theory. He contributed to geometry and the mathematical sciences during the Islamic Golden Age."
   },
   {
     "famous": "Habash al-Hasib al-Marwazi",
-    "school": "Habash al-Hasib al-Marwazi was a Central Asian astronomer and mathematician who worked at the Abbasid court. He compiled three astronomical handbooks (zij) and was one of the first to introduce the trigonometric functions of tangent and cotangent. His astronomical observations and computational methods influenced generations of Islamic astronomers."
+    "school": "Habash al-Hasib al-Marwazi was a Central Asian astronomer and mathematician who worked at the Abbasid court. He compiled three astronomical handbooks (zij) and was one of the first to introduce the trigonometric functions of tangent and cotangent. His astronomical observations and computational methods influenced generations of Islamic astronomers.",
+    "bio": "Persian mathematician and astronomer of the 9th century known for his astronomical observations and mathematical works. He made contributions to trigonometry and spherical geometry."
   },
   {
     "famous": "Ibn Yunus",
-    "school": "Ibn Yunus was an Egyptian astronomer who compiled the 'al-Zij al-Hakimi al-Kabir,' one of the most important astronomical handbooks of the medieval period. His remarkably precise observations of lunar and solar eclipses, conducted over many years at Cairo, were used by astronomers for centuries. He also developed new mathematical methods using prosthaphaeresis formulas."
+    "school": "Ibn Yunus was an Egyptian astronomer who compiled the 'al-Zij al-Hakimi al-Kabir,' one of the most important astronomical handbooks of the medieval period. His remarkably precise observations of lunar and solar eclipses, conducted over many years at Cairo, were used by astronomers for centuries. He also developed new mathematical methods using prosthaphaeresis formulas.",
+    "bio": "An Egyptian astronomer and mathematician of the 10th-11th centuries who made major contributions to trigonometry and spherical astronomy, and compiled important astronomical tables. He served under the Fatimid dynasty and developed significant trigonometric formulas.",
+    "books": [
+      {
+        "title": "Kitab al-Zij al-Hakimi al-Kabir"
+      }
+    ]
   },
   {
     "famous": "Ibn al-Shatir",
-    "school": "Ibn al-Shatir was a Syrian astronomer and the chief muwaqqit (timekeeper) of the Umayyad Mosque in Damascus. He developed non-Ptolemaic planetary models using double epicycles that are mathematically identical to those later used by Copernicus. His work represents the culmination of a long tradition of Islamic critiques of Ptolemaic astronomy and may have influenced the Copernican revolution."
+    "school": "Ibn al-Shatir was a Syrian astronomer and the chief muwaqqit (timekeeper) of the Umayyad Mosque in Damascus. He developed non-Ptolemaic planetary models using double epicycles that are mathematically identical to those later used by Copernicus. His work represents the culmination of a long tradition of Islamic critiques of Ptolemaic astronomy and may have influenced the Copernican revolution.",
+    "bio": "A Syrian mathematician and astronomer of the 14th century who developed non-Ptolemaic astronomical models and made significant contributions to spherical trigonometry. His work influenced later astronomical thought.",
+    "books": [
+      {
+        "title": "Nihayat al-Sul"
+      },
+      {
+        "title": "Kitab al-Zij"
+      }
+    ]
   },
   {
     "famous": "Ibrahim ibn Sinan",
-    "school": "Ibrahim ibn Sinan was an Arab mathematician and astronomer, the grandson of Thabit ibn Qurra. Despite dying at only 38, he made important contributions to the quadrature of the parabola, the theory of sundials, and the geometry of conic sections. He simplified his grandfather's proof of the area of a parabolic segment and developed elegant new methods."
+    "school": "Ibrahim ibn Sinan was an Arab mathematician and astronomer, the grandson of Thabit ibn Qurra. Despite dying at only 38, he made important contributions to the quadrature of the parabola, the theory of sundials, and the geometry of conic sections. He simplified his grandfather's proof of the area of a parabolic segment and developed elegant new methods.",
+    "bio": "A 10th-century mathematician and astronomer from Baghdad, grandson of Thabit ibn Qurra, known for his work in geometry and astronomical calculations. He made contributions to the measurement of areas and volumes.",
+    "teachers": [
+      "Thabit ibn Qurra"
+    ]
   },
   {
     "famous": "Kushyar Gilani",
-    "school": "Kushyar ibn Labban Gilani was a Persian mathematician and astronomer whose astronomical tables and works on arithmetic influenced major figures including al-Biruni. His 'Principles of Hindu Reckoning' is an important source on the transmission of Indian mathematical methods into the Islamic world. He worked at the observatory in Rayy and contributed to the development of trigonometry."
+    "school": "Kushyar ibn Labban Gilani was a Persian mathematician and astronomer whose astronomical tables and works on arithmetic influenced major figures including al-Biruni. His 'Principles of Hindu Reckoning' is an important source on the transmission of Indian mathematical methods into the Islamic world. He worked at the observatory in Rayy and contributed to the development of trigonometry.",
+    "bio": "A Persian mathematician and astronomer of the 10th-11th centuries known for his works on arithmetic, geometry, and astronomy. He contributed to the development of mathematical and astronomical sciences in the Islamic world.",
+    "books": [
+      {
+        "title": "Kitab fi al-Hisab"
+      },
+      {
+        "title": "Zij"
+      }
+    ]
   },
   {
     "famous": "Taqi al-Din ibn Ma'ruf",
@@ -320,30 +487,68 @@
   },
   {
     "famous": "Sharaf al-Zaman al-Marwazi",
-    "school": "Sharaf al-Zaman Tahir al-Marwazi was a Persian physician and natural historian who served at the court of the Seljuq sultan Malik-Shah. His 'Taba'i al-Hayawan' (Nature of Animals) contains important zoological observations and is a significant source on the natural history of Central Asia. He also left valuable geographic and ethnographic accounts of the peoples of Inner Asia."
+    "school": "Sharaf al-Zaman Tahir al-Marwazi was a Persian physician and natural historian who served at the court of the Seljuq sultan Malik-Shah. His 'Taba'i al-Hayawan' (Nature of Animals) contains important zoological observations and is a significant source on the natural history of Central Asia. He also left valuable geographic and ethnographic accounts of the peoples of Inner Asia.",
+    "bio": "A Persian mathematician, astronomer, and geographer of the 11th-12th centuries known for his astronomical observations and geographical works. He made contributions to the science of geodesy and mapmaking.",
+    "books": [
+      {
+        "title": "Kitab al-Azmina al-Mashhura"
+      }
+    ]
   },
   {
     "famous": "Al-Farghani",
-    "school": "Ahmad al-Farghani (Alfraganus) was a Central Asian astronomer who served at the Abbasid court of al-Ma'mun. His 'Jawami Ilm al-Nujum' (Elements of Astronomy) was one of the most widely read astronomical textbooks in both the Islamic world and medieval Europe. His calculation of the Earth's circumference influenced both Dante's cosmology in the Divine Comedy and Columbus's estimate of the distance to Asia."
+    "school": "Ahmad al-Farghani (Alfraganus) was a Central Asian astronomer who served at the Abbasid court of al-Ma'mun. His 'Jawami Ilm al-Nujum' (Elements of Astronomy) was one of the most widely read astronomical textbooks in both the Islamic world and medieval Europe. His calculation of the Earth's circumference influenced both Dante's cosmology in the Divine Comedy and Columbus's estimate of the distance to Asia.",
+    "bio": "Persian astronomer of the 9th century known for his comprehensive astronomical treatise that became influential in both Islamic and European science. His work on celestial spheres was widely studied and translated.",
+    "books": [
+      {
+        "title": "Kitab fi al-Hay'a"
+      }
+    ]
   },
   {
     "famous": "Ibn al-Jazzar",
-    "school": "Ibn al-Jazzar was a Tunisian physician from Kairouan whose 'Zad al-Musafir' (Provisions for the Traveller, known in Latin as Viaticum) became one of the most widely used medical textbooks in both the Islamic world and medieval Europe. He wrote on topics ranging from paediatrics to geriatrics and tropical diseases, and his practical approach to medicine influenced centuries of medical practice."
+    "school": "Ibn al-Jazzar was a Tunisian physician from Kairouan whose 'Zad al-Musafir' (Provisions for the Traveller, known in Latin as Viaticum) became one of the most widely used medical textbooks in both the Islamic world and medieval Europe. He wrote on topics ranging from paediatrics to geriatrics and tropical diseases, and his practical approach to medicine influenced centuries of medical practice.",
+    "bio": "A Tunisian physician of the 10th century known for his medical treatises and practical clinical observations. His works were widely used in medieval Islamic and European medicine.",
+    "books": [
+      {
+        "title": "Kitab Zad al-Musafir"
+      },
+      {
+        "title": "Kitab al-Mansuri"
+      }
+    ]
   },
   {
     "famous": "Ali ibn Isa al-Kahhal",
-    "school": "Ali ibn Isa al-Kahhal was the foremost ophthalmologist of the medieval period. His 'Tadhkirat al-Kahhalin' (Memorandum for Oculists) described 130 eye diseases and their treatments with a precision that was not surpassed for centuries. Translated into Latin, the work became the standard ophthalmic textbook in European medical schools through the Renaissance."
+    "school": "Ali ibn Isa al-Kahhal was the foremost ophthalmologist of the medieval period. His 'Tadhkirat al-Kahhalin' (Memorandum for Oculists) described 130 eye diseases and their treatments with a precision that was not surpassed for centuries. Translated into Latin, the work became the standard ophthalmic textbook in European medical schools through the Renaissance.",
+    "bio": "Arab ophthalmologist of the 10th century considered one of the greatest eye doctors of the Islamic Golden Age. He wrote influential treatises on eye diseases and surgical techniques.",
+    "books": [
+      {
+        "title": "Kitab al-Tasrif li-man Ajaza an al-Talif"
+      }
+    ]
   },
   {
     "famous": "Haly Abbas",
-    "school": "Ali ibn al-Abbas al-Majusi (Haly Abbas) was a Persian physician whose 'Kamil al-Sina'a al-Tibbiyya' (Complete Book of Medical Art, known in Latin as Liber Regius) was the most comprehensive medical encyclopaedia before Avicenna's Canon. The work was celebrated for its clear organisation and practical clinical guidance and was widely used in both the Islamic world and medieval Europe."
+    "school": "Ali ibn al-Abbas al-Majusi (Haly Abbas) was a Persian physician whose 'Kamil al-Sina'a al-Tibbiyya' (Complete Book of Medical Art, known in Latin as Liber Regius) was the most comprehensive medical encyclopaedia before Avicenna's Canon. The work was celebrated for its clear organisation and practical clinical guidance and was widely used in both the Islamic world and medieval Europe.",
+    "bio": "Persian physician of the 10th century known for his comprehensive medical encyclopedia that became influential in both Islamic and European medicine. His work synthesized Greek, Persian, and Indian medical knowledge.",
+    "books": [
+      {
+        "title": "Al-Maliki"
+      }
+    ]
   },
   {
     "famous": "Al-Samawal al-Maghribi",
-    "school": "Al-Samawal al-Maghribi was a mathematician of Jewish origin from Baghdad who later converted to Islam. His 'al-Bahir fi al-Jabr' (The Brilliant in Algebra), written when he was only 19, advanced the work of al-Karaji and introduced important methods for operating with negative numbers and polynomial arithmetic. He also worked on mathematical induction and combinatorics."
+    "school": "Al-Samawal al-Maghribi was a mathematician of Jewish origin from Baghdad who later converted to Islam. His 'al-Bahir fi al-Jabr' (The Brilliant in Algebra), written when he was only 19, advanced the work of al-Karaji and introduced important methods for operating with negative numbers and polynomial arithmetic. He also worked on mathematical induction and combinatorics.",
+    "bio": "Spanish-born Islamic mathematician of the 12th century known for his algebraic works and mathematical treatises. He made contributions to algebra and the theory of numbers."
   },
   {
     "famous": "Sinan ibn Thabit",
-    "school": "Sinan ibn Thabit ibn Qurra was a Sabian physician and administrator who organised the hospital system of Baghdad under the Abbasid caliphs. He implemented the licensing of physicians, established a system of hospital inspections, and expanded medical care to prisons and remote areas. He also contributed to astronomy and mathematics, continuing the scientific tradition of his illustrious family."
+    "school": "Sinan ibn Thabit ibn Qurra was a Sabian physician and administrator who organised the hospital system of Baghdad under the Abbasid caliphs. He implemented the licensing of physicians, established a system of hospital inspections, and expanded medical care to prisons and remote areas. He also contributed to astronomy and mathematics, continuing the scientific tradition of his illustrious family.",
+    "bio": "A 9th-10th century physician and mathematician, son of Thabit ibn Qurra, known for his medical treatises and astronomical work. He contributed to the advancement of medicine and mathematics in the Islamic world.",
+    "teachers": [
+      "Thabit ibn Qurra"
+    ]
   }
 ]

@@ -2,7 +2,8 @@
   {
     "famous": "Amra bint Abd al-Rahman",
     "school": "Madina School — niece and student of Aisha bint Abi Bakr; Caliph Umar ibn Abd al-Aziz ordered hadiths to be collected on her authority; overruled a judge's ruling on grounds of prophetic law",
-    "books": []
+    "books": [],
+    "bio": "Early Islamic female hadith scholar and transmitter of hadith who was highly respected for her knowledge and reliability in hadith transmission. She was among the prominent female scholars of the hadith sciences in early Islam."
   },
   {
     "famous": "Nafi' al-Madani",
@@ -32,7 +33,8 @@
   {
     "famous": "Yahya ibn Sa'id al-Qattan",
     "school": "The founding father of systematic hadith criticism (al-jarh wa'l-ta'dil — impugning and accrediting narrators); Ahmad ibn Hanbal said: 'I have not seen anyone like Yahya ibn Sa'id al-Qattan'; his rigorous evaluation of hadith transmitters became the methodological standard for all subsequent hadith scholarship; without him the Six Books may never have been compiled",
-    "books": []
+    "books": [],
+    "bio": "Early Islamic hadith scholar and jurist known for his expertise in hadith authentication and transmission during the 8th century."
   },
   {
     "famous": "Abd Allah ibn al-Mubarak",
@@ -45,7 +47,8 @@
       "We are more in need of a little good character than of a great deal of action.",
       "The foundation of the religion is scrupulousness, and the foundation of scrupulousness is restraint.",
       "I have tested all the speech of the people and found nothing more profitable than silence."
-    ]
+    ],
+    "bio": "Abd Allah ibn al-Mubarak was an 8th-century Islamic scholar renowned for his expertise in hadith sciences and Islamic jurisprudence. He is considered one of the great authorities in hadith transmission and Islamic legal methodology."
   },
   {
     "famous": "Abd al-Rahman ibn Mahdi",
@@ -71,7 +74,19 @@
   },
   {
     "famous": "Ibn Hisham",
-    "school": "A ninth-century Egyptian scholar of Himyarite descent, he is best known for editing and transmitting the Sirah (biography) of the Prophet Muhammad originally compiled by Ibn Ishaq. His recension, known as al-Sirah al-Nabawiyyah, became the standard version of the Prophet's biography and the most widely read account of early Islamic history. He refined Ibn Ishaq's text by removing certain materials he considered unreliable or irrelevant, while preserving the core narrative."
+    "school": "A ninth-century Egyptian scholar of Himyarite descent, he is best known for editing and transmitting the Sirah (biography) of the Prophet Muhammad originally compiled by Ibn Ishaq. His recension, known as al-Sirah al-Nabawiyyah, became the standard version of the Prophet's biography and the most widely read account of early Islamic history. He refined Ibn Ishaq's text by removing certain materials he considered unreliable or irrelevant, while preserving the core narrative.",
+    "bio": "9th century Islamic scholar best known for editing and transmitting the Sirah (biography) of Prophet Muhammad originally compiled by Ibn Ishaq.",
+    "books": [
+      {
+        "title": "Sirat Ibn Hisham"
+      },
+      {
+        "title": "Kitab al-Tijan"
+      }
+    ],
+    "teachers": [
+      "Muhammad ibn Sa'd"
+    ]
   },
   {
     "famous": "Imam al-Bukhari",
@@ -220,15 +235,31 @@
   },
   {
     "famous": "Al-Kulayni",
-    "school": "Abu Ja'far Muhammad ibn Ya'qub al-Kulayni (864–941) was the greatest Shia hadith compiler, whose al-Kafi (The Sufficient) is the most authoritative of the 'Four Books' of Twelver Shia hadith. Born in the village of Kulayn near present-day Tehran, he spent twenty years travelling across the Islamic world collecting traditions from the Imams. His work contains over 16,000 narrations organised into sections on theology (Usul al-Kafi), practical law (Furu' al-Kafi), and miscellaneous topics (Rawda). Al-Kafi was completed during the Minor Occultation of the Twelfth Imam, making it the earliest systematic Shia hadith collection of that critical period. Al-Kulayni is honoured with the title Thiqat al-Islam (Trustworthy Authority of Islam) and is buried in Baghdad."
+    "school": "Abu Ja'far Muhammad ibn Ya'qub al-Kulayni (864–941) was the greatest Shia hadith compiler, whose al-Kafi (The Sufficient) is the most authoritative of the 'Four Books' of Twelver Shia hadith. Born in the village of Kulayn near present-day Tehran, he spent twenty years travelling across the Islamic world collecting traditions from the Imams. His work contains over 16,000 narrations organised into sections on theology (Usul al-Kafi), practical law (Furu' al-Kafi), and miscellaneous topics (Rawda). Al-Kafi was completed during the Minor Occultation of the Twelfth Imam, making it the earliest systematic Shia hadith collection of that critical period. Al-Kulayni is honoured with the title Thiqat al-Islam (Trustworthy Authority of Islam) and is buried in Baghdad.",
+    "bio": "Major Twelver Shia hadith collector and compiler of the Kitab al-Kafi, considered one of the most important hadith collections in Shia Islam. He lived primarily in Baghdad before moving to Rey where he compiled his major works.",
+    "books": [
+      {
+        "title": "Kitab al-Kafi"
+      }
+    ]
   },
   {
     "famous": "Ibn Babawayh",
-    "school": "Abu Ja'far Muhammad ibn Ali ibn Babawayh al-Qummi (923–991), known as Shaykh al-Saduq (The Truthful Shaykh), was one of the most important Shia hadith scholars and theologians. Born in Qum to a prominent scholarly family, he travelled extensively through Khorasan, Baghdad, and the Hijaz collecting traditions. His magnum opus, Man La Yahduruhu al-Faqih (For the One Without Access to a Jurist), is one of the Four Books of Twelver Shia hadith, containing over 5,900 traditions focused on practical jurisprudence. He also compiled al-Tawhid on theology and Uyun Akhbar al-Rida on the traditions of the eighth Imam. His creedal text, al-I'tiqadat (The Beliefs), defined mainstream Twelver Shia theology. He is buried in Rey, near Tehran, where his shrine remains a place of visitation."
+    "school": "Abu Ja'far Muhammad ibn Ali ibn Babawayh al-Qummi (923–991), known as Shaykh al-Saduq (The Truthful Shaykh), was one of the most important Shia hadith scholars and theologians. Born in Qum to a prominent scholarly family, he travelled extensively through Khorasan, Baghdad, and the Hijaz collecting traditions. His magnum opus, Man La Yahduruhu al-Faqih (For the One Without Access to a Jurist), is one of the Four Books of Twelver Shia hadith, containing over 5,900 traditions focused on practical jurisprudence. He also compiled al-Tawhid on theology and Uyun Akhbar al-Rida on the traditions of the eighth Imam. His creedal text, al-I'tiqadat (The Beliefs), defined mainstream Twelver Shia theology. He is buried in Rey, near Tehran, where his shrine remains a place of visitation.",
+    "bio": "10th century Shia hadith scholar and theologian, founder of an important school of Shia jurisprudence and author of major hadith collections.",
+    "books": [
+      {
+        "title": "Man La Yahduruhu al-Faqih"
+      },
+      {
+        "title": "Kitab al-Tawhid"
+      }
+    ]
   },
   {
     "famous": "Shuhda al-Katiba",
-    "school": "Hadith transmission — the most celebrated female hadith scholar of Baghdad; students came from across the Islamic world"
+    "school": "Hadith transmission — the most celebrated female hadith scholar of Baghdad; students came from across the Islamic world",
+    "bio": "Muslim woman scholar of hadith sciences in the medieval Islamic period who achieved recognition for her knowledge and teaching of hadith traditions."
   },
   {
     "famous": "Yahya ibn Sharif al-Nawawi",
@@ -264,7 +295,8 @@
   },
   {
     "famous": "Zaynab bint al-Kamal",
-    "school": "Hadith transmission — the most prolific female hadith scholar of medieval Damascus; Ibn Hajar was among her students"
+    "school": "Hadith transmission — the most prolific female hadith scholar of medieval Damascus; Ibn Hajar was among her students",
+    "bio": "Medieval Islamic hadith scholar and jurist known for her expertise in hadith transmission and Islamic law during the 13th-14th centuries."
   },
   {
     "famous": "Al-Dhahabi",
@@ -312,22 +344,47 @@
   },
   {
     "famous": "Abd Allah ibn al-Mubarak",
-    "school": "Abdullah ibn al-Mubarak was one of the most revered figures of early Islam, celebrated as a hadith scholar, ascetic, and frontier warrior. He studied under the leading scholars of his generation including Abu Hanifa and Imam Malik, and his 'Kitab al-Zuhd' is one of the earliest works on Islamic asceticism. He embodied the ideal of combining scholarship with jihad on the Byzantine frontier."
+    "school": "Abdullah ibn al-Mubarak was one of the most revered figures of early Islam, celebrated as a hadith scholar, ascetic, and frontier warrior. He studied under the leading scholars of his generation including Abu Hanifa and Imam Malik, and his 'Kitab al-Zuhd' is one of the earliest works on Islamic asceticism. He embodied the ideal of combining scholarship with jihad on the Byzantine frontier.",
+    "bio": "Abd Allah ibn al-Mubarak was an 8th-century Islamic scholar renowned for his expertise in hadith sciences and Islamic jurisprudence. He is considered one of the great authorities in hadith transmission and Islamic legal methodology."
   },
   {
     "famous": "Abu Nu'aym al-Isfahani",
-    "school": "Abu Nu'aym al-Isfahani was a Persian hadith scholar and historian. His magnum opus 'Hilyat al-Awliya' (Adornment of the Saints) is a monumental biographical work covering early Muslim ascetics, mystics, and scholars in ten volumes. It is an essential source on early Islamic piety and Sufism, and his other works on hadith and prophetic history were equally influential."
+    "school": "Abu Nu'aym al-Isfahani was a Persian hadith scholar and historian. His magnum opus 'Hilyat al-Awliya' (Adornment of the Saints) is a monumental biographical work covering early Muslim ascetics, mystics, and scholars in ten volumes. It is an essential source on early Islamic piety and Sufism, and his other works on hadith and prophetic history were equally influential.",
+    "bio": "Persian hadith scholar and historian who compiled one of the most comprehensive collections of biographical material on Islamic scholars and saints. He was a major authority in hadith sciences during the 10th-11th centuries.",
+    "books": [
+      {
+        "title": "Hilyat al-Awliya wa-Tabaqat al-Asfiya"
+      }
+    ]
   },
   {
     "famous": "Al-Khatib al-Baghdadi",
-    "school": "Al-Khatib al-Baghdadi was one of the greatest hadith scholars and historians of the Islamic world. His 'Tarikh Baghdad' (History of Baghdad) is a massive biographical dictionary of scholars associated with the city and an invaluable source on Islamic intellectual history. His works on hadith methodology established principles that remain fundamental to the science of hadith criticism."
+    "school": "Al-Khatib al-Baghdadi was one of the greatest hadith scholars and historians of the Islamic world. His 'Tarikh Baghdad' (History of Baghdad) is a massive biographical dictionary of scholars associated with the city and an invaluable source on Islamic intellectual history. His works on hadith methodology established principles that remain fundamental to the science of hadith criticism.",
+    "bio": "Prominent Shafi'i scholar and historian who made significant contributions to hadith sciences and Islamic history through his extensive biographical dictionaries and works on hadith authentication. He served as a judge in Baghdad and was one of the most prolific scholars of his era.",
+    "books": [
+      {
+        "title": "Tarikh Baghdad"
+      }
+    ]
   },
   {
     "famous": "Al-Qastallani",
-    "school": "Shihab al-Din al-Qastallani was an Egyptian hadith scholar and author of 'Irshad al-Sari,' one of the most comprehensive commentaries on Sahih al-Bukhari. His work synthesised earlier commentarial traditions and became a standard reference in Sunni hadith scholarship. He also authored 'al-Mawahib al-Laduniyya,' a celebrated biography of the Prophet Muhammad."
+    "school": "Shihab al-Din al-Qastallani was an Egyptian hadith scholar and author of 'Irshad al-Sari,' one of the most comprehensive commentaries on Sahih al-Bukhari. His work synthesised earlier commentarial traditions and became a standard reference in Sunni hadith scholarship. He also authored 'al-Mawahib al-Laduniyya,' a celebrated biography of the Prophet Muhammad.",
+    "bio": "Egyptian hadith scholar and Shafi'i jurist known for his authoritative commentary on Sahih al-Bukhari and works on hadith sciences. He was one of the most respected scholars of his time in Cairo and contributed significantly to hadith authentication methodology.",
+    "books": [
+      {
+        "title": "Irshad al-Sari li-Sharh Sahih al-Bukhari"
+      }
+    ]
   },
   {
     "famous": "Al-Sam'ani",
-    "school": "Abu Sa'd al-Sam'ani was a Khorasani hadith scholar whose 'al-Ansab' (The Genealogies) is the most important dictionary of Arabic nisba (genealogical surname) designations. The work identifies the geographical and tribal origins of thousands of scholars and transmitters. He travelled extensively collecting hadith and his biographical works are essential for the study of Islamic intellectual networks."
+    "school": "Abu Sa'd al-Sam'ani was a Khorasani hadith scholar whose 'al-Ansab' (The Genealogies) is the most important dictionary of Arabic nisba (genealogical surname) designations. The work identifies the geographical and tribal origins of thousands of scholars and transmitters. He travelled extensively collecting hadith and his biographical works are essential for the study of Islamic intellectual networks.",
+    "bio": "Persian Hanafi scholar and hadith specialist who compiled important biographical dictionaries of hadith transmitters, particularly the Kitab al-Ansab. He was a notable jurist and contributed significantly to hadith sciences methodology.",
+    "books": [
+      {
+        "title": "Kitab al-Ansab"
+      }
+    ]
   }
 ]
