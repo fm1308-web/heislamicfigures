@@ -76,11 +76,12 @@ function _getMapFiltered(){
 
 // Shared helper: draw empire overlays on any Leaflet map for a given year
 // Returns the L.layerGroup so caller can track/remove it
-function _drawEmpiresOnMap(map, year, existingLayer) {
+function _drawEmpiresOnMap(map, year, existingLayer, legendContainerId) {
   if (!map) return null;
   if (existingLayer) { map.removeLayer(existingLayer); }
-  if (year === null) return null;
+  if (year === null) { _removeEmpLegendFor(legendContainerId); return null; }
   var layer = L.layerGroup();
+  var activeEmps = [];
 
   MAP_EMPIRES.forEach(function(em) {
     if (em.start > year || em.end < year) return;
@@ -89,19 +90,11 @@ function _drawEmpiresOnMap(map, year, existingLayer) {
       fillOpacity: 0.13, opacity: 0.55, dashArray: '5,4'
     });
     layer.addLayer(poly);
-    var cLat = em.poly.reduce(function(s, p) { return s + p[0]; }, 0) / em.poly.length;
-    var cLng = em.poly.reduce(function(s, p) { return s + p[1]; }, 0) / em.poly.length;
-    var lbl = L.marker([cLat, cLng], {
-      icon: L.divIcon({
-        html: '<div style="color:' + em.color + ';font-family:\'Cinzel\',Georgia,serif;font-size:16px;font-weight:900;white-space:nowrap;text-align:center;letter-spacing:.06em;line-height:1.3;pointer-events:none;text-shadow:0 0 12px ' + em.color + ',0 0 24px ' + em.color + ',0 1px 4px rgba(0,0,0,.9),0 0 40px rgba(0,0,0,.6);">' + em.name + '<br><span style="font-size:11px;font-weight:600;opacity:.9;">' + em.years + '</span></div>',
-        className: '', iconSize: [280, 44], iconAnchor: [140, 22]
-      }),
-      interactive: false, keyboard: false
-    });
-    layer.addLayer(lbl);
+    activeEmps.push({name:em.name, color:em.color});
   });
 
   layer.addTo(map);
+  if(legendContainerId) _buildEmpLegendFor(legendContainerId, activeEmps);
   return layer;
 }
 
@@ -568,6 +561,33 @@ function _removeEmpLegend(){
   var el=document.getElementById('empOverlayLegend');
   if(el)el.remove();
 }
+function _buildEmpLegendFor(containerId, items){
+  var legId='empLeg-'+containerId;
+  var colored=items.filter(function(it){
+    var m=(it.color||'').match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
+    if(!m)return false;
+    var r=parseInt(m[1],16),g=parseInt(m[2],16),b=parseInt(m[3],16);
+    return(Math.max(r,g,b)-Math.min(r,g,b))>35;
+  });
+  var el=document.getElementById(legId);
+  if(!colored.length){if(el)el.remove();return;}
+  if(!el){
+    el=document.createElement('div');el.id=legId;
+    el.style.cssText="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:800;display:flex;flex-wrap:wrap;gap:4px 10px;padding:6px 14px;background:rgba(0,0,0,0.85);border:1px solid rgba(212,175,55,0.3);border-radius:4px;max-width:90%;justify-content:center;";
+    var mc=document.getElementById(containerId);
+    if(mc){mc.style.position=mc.style.position||'relative';mc.appendChild(el);}
+  }
+  el.innerHTML=colored.map(function(it){
+    return '<div style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:16px;border-radius:2px;background:'+it.color+';flex-shrink:0;opacity:0.9"></span><span style="font-family:Cinzel,serif;font-size:13px;color:#ccc;letter-spacing:.04em;white-space:nowrap">'+it.name+'</span></div>';
+  }).join('');
+}
+function _removeEmpLegendFor(containerId){
+  if(!containerId)return;
+  var el=document.getElementById('empLeg-'+containerId);
+  if(el)el.remove();
+}
+window._buildEmpLegendFor=_buildEmpLegendFor;
+window._removeEmpLegendFor=_removeEmpLegendFor;
 
 function _buildEmpireToggle(){
   var toolbar=document.getElementById('mapToolbar');
@@ -617,7 +637,7 @@ function _buildEmpireToggle(){
 
 function renderMap(){
   var _mfb=document.getElementById('map-favFilterBtn');if(_mfb)_mfb.style.display='none';
-  if(!document.getElementById('map-l1')){var _ml1=document.createElement('div');_ml1.id='map-l1';_ml1.style.cssText='display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)';var _mhb=document.createElement('button');_mhb.id='map-how-btn';_mhb.textContent='How This Works';_mhb.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em";_mhb.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_mhb.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_mhb.onclick=function(e){e.stopPropagation();_showMapMethodology();};_ml1.appendChild(_mhb);var _mam=document.createElement('div');_mam.id='map-anim-mount';_mam.style.cssText='margin-left:auto;display:flex;align-items:center;gap:10px';_ml1.appendChild(_mam);var _mv=document.getElementById('mapView');var _mt=document.getElementById('mapToolbar');if(_mv&&_mt) _mv.insertBefore(_ml1,_mt);else if(_mv) _mv.prepend(_ml1);}
+  if(!document.getElementById('map-how-btn')){var _mt=document.getElementById('mapToolbar');if(_mt){var _mhb=document.createElement('button');_mhb.id='map-how-btn';_mhb.textContent='How This Works';_mhb.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";_mhb.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_mhb.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_mhb.onclick=function(e){e.stopPropagation();_showMapMethodology();};_mt.prepend(_mhb);}}
   if(typeof L==='undefined'){
     const scr=document.createElement('script');
     scr.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
@@ -686,8 +706,12 @@ function _doRenderMap(){
     // Hide old controls
     var oldGroup=document.querySelector('.map-anim-group');
     if(oldGroup) oldGroup.style.display='none';
-    var mount=document.getElementById('map-anim-mount');
-    if(mount&&window.AnimControls){
+    var toolbar=document.getElementById('mapToolbar');
+    if(toolbar&&window.AnimControls){
+      var mount=document.createElement('div');
+      mount.id='map-anim-mount';
+      mount.style.cssText='display:flex;align-items:center;margin-left:8px';
+      toolbar.appendChild(mount);
       _mapAnimCtl=window.AnimControls.create({
         mountEl:mount, idPrefix:'map', initialSpeed:'1x',
         onPlay:_mapAnimPlay, onPause:_mapAnimPause, onStop:_mapAnimStop,

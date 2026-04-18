@@ -678,7 +678,7 @@ function _fwInitMap() {
       _fwMap.fitBounds(bounds, { padding: [30, 30] });
 
       // Empire overlay (below markers)
-      _fwEmpLayer = _drawEmpiresOnMap(_fwMap, _fwYear, _fwEmpLayer);
+      _fwEmpLayer = _drawEmpiresOnMap(_fwMap, _fwYear, _fwEmpLayer, 'fw-map-wrap');
 
       _fwBuildMarkers();
 
@@ -819,7 +819,7 @@ function _fwShowAll() {
 function _fwUpdateMapForYear(year) {
   if (!_fwMap) return;
 
-  _fwEmpLayer = _drawEmpiresOnMap(_fwMap, year, _fwEmpLayer);
+  _fwEmpLayer = _drawEmpiresOnMap(_fwMap, year, _fwEmpLayer, 'fw-map-wrap');
 
   var activePts = [];
 
