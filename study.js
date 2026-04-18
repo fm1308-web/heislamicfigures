@@ -16,6 +16,7 @@ const _SR_SCHOLARS={
   'F0580': {name:'Farid ud-Din Attar',     death:'d. 1221 CE', dod:1221},
   'F1432': {name:'Umar Ibn al-Farid',     death:'d. 1235 CE', dod:1235},
   'F0728': {name:'Ibn Arabi',              death:'d. 1240 CE', dod:1240},
+  'F0574': {name:'Fakhr al-Din Iraqi',    death:'d. 1289 CE', dod:1289},
   'F0755': {name:'Ibn Taymiyya',           death:'d. 1328 CE', dod:1328},
   'F0727': {name:'Ibn al-Qayyim',          death:'d. 1350 CE', dod:1350},
   'F0743': {name:'Ibn Khaldun',            death:'d. 1406 CE', dod:1406}
@@ -300,8 +301,8 @@ function openStudyRoom(slug){
   setView('studyroom');
   selectStudyScholar(slug);
 }
-const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Firdowsi','Al-Biruni','Ali al-Hujwiri','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Farid ud-Din Attar','Abdul Qadir al-Jilani','Ibn Taymiyya','Ibn al-Qayyim','Ibn Hazm','Ibn Khaldun']);
-const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Firdowsi':'F0605','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727','Ibn Hazm':'F0737','Ibn Khaldun':'F0743'};
+const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Firdowsi','Al-Biruni','Ali al-Hujwiri','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Farid ud-Din Attar','Abdul Qadir al-Jilani','Fakhr al-Din Iraqi','Ibn Taymiyya','Ibn al-Qayyim','Ibn Hazm','Ibn Khaldun']);
+const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Firdowsi':'F0605','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Fakhr al-Din Iraqi':'F0574','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727','Ibn Hazm':'F0737','Ibn Khaldun':'F0743'};
 
 // Build sidebar immediately so it's ready when study view is shown
 if(document.readyState==='loading'){
