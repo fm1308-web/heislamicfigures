@@ -20,6 +20,7 @@ var _fwYearIdx = -1;            // index into _fwAllYears
 var _fwMarkers = {};            // filename -> [L.circleMarker]
 var _fwLines = {};              // filename -> [L.polyline]
 var _fwEmpLayer = null;         // empire overlay layer group
+var _fwLabTile = null;          // labels-on-top tile from mapbase
 
 var _fwPlaying = false;
 var _fwTimer = null;
@@ -28,6 +29,8 @@ var _fwAnimCtl = null;
 var _fwTickFn = null;
 
 var _fwDDOpen = false;          // add-figures dropdown open?
+var _fwUserDrag = false;        // true while user is dragging/zooming map
+var _fwLastEmpYear = null;       // throttle empire re-rendering
 
 // ── Figure colour palette (fixed order) ──
 var _FW_FIG_PALETTE = ['#c9a84c','#6b9fb8','#8fbc8f','#b87a6b','#9b8ab8'];
@@ -148,7 +151,7 @@ function initFollow() {
       _fwAnimCtl = window.AnimControls.create({
         mountEl: fwMount, idPrefix: 'fw', initialSpeed: '1x',
         onPlay: _fwAnimPlay, onPause: _fwAnimPause, onStop: _fwAnimStopFull,
-        onSpeedChange: function(ms){ _fwSpeed = ms; if(_fwPlaying){ clearInterval(_fwTimer); _fwTimer = setInterval(_fwTickFn, _fwSpeed); } }
+        onSpeedChange: function(ms){ _fwSpeed = ms; if(_fwPlaying){ clearTimeout(_fwTimer); _fwTimer = setTimeout(_fwTickFn, _fwSpeed); } }
       });
     }
     var _fwHowBtn=document.getElementById('fw-how-btn');
@@ -185,42 +188,40 @@ function _fwBuildDOM(container) {
   container.innerHTML =
     '<div id="fw-topbar">' +
       '<div id="fw-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">' +
-        '<button id="fw-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>' +
-        '<div id="fw-anim-mount" style="margin-left:auto;display:flex;align-items:center"></div>' +
-      '</div>' +
-      '<div id="fw-scrubber">' +
-        '<div id="fw-scrubber-track">' +
-          '<div id="fw-scrubber-fill"></div>' +
-          '<div id="fw-scrubber-marks"></div>' +
-          '<div id="fw-scrubber-thumb"></div>' +
-        '</div>' +
-        '<div id="fw-scrubber-labels">' +
-          '<span id="fw-scrub-start"></span>' +
-          '<span id="fw-scrub-current"></span>' +
-          '<span id="fw-scrub-end"></span>' +
-        '</div>' +
-      '</div>' +
-    '</div>' +
-    '<div id="fw-body">' +
-      '<div id="fw-left-rail">' +
-        '<div id="fw-grades-section">' +
-          '<div class="fw-rail-header">GRADES</div>' +
-          '<div class="fw-grade-legend-row"><span class="fw-grade-pill" style="background:#4a7c59">A</span> Highly confident</div>' +
-          '<div class="fw-grade-legend-row"><span class="fw-grade-pill" style="background:#4a6d8c">B</span> Mostly confident</div>' +
-          '<div class="fw-grade-legend-row"><span class="fw-grade-pill" style="background:#b08030">C</span> Some uncertainty</div>' +
-          '<div class="fw-grade-legend-row"><span class="fw-grade-pill" style="background:#707070">D</span> Weak / traditional</div>' +
-        '</div>' +
-        '<div class="fw-rail-divider"></div>' +
         '<div id="fw-add-wrap">' +
           '<button id="fw-add-btn" onclick="_fwToggleDD(event)">\u25BC Add figures to follow</button>' +
           '<div id="fw-add-panel" style="display:none"></div>' +
         '</div>' +
-        '<div class="fw-rail-divider"></div>' +
-        '<div id="fw-following-section">' +
-          '<div class="fw-rail-header">FOLLOWING</div>' +
-          '<div id="fw-following-list"></div>' +
+        '<div id="fw-following-list"></div>' +
+        '<div style="flex:1"></div>' +
+        '<div id="fw-grades-inline">' +
+          '<span class="fw-grade-pill" style="background:#4a7c59">A</span> Highly' +
+          '<span class="fw-gi-sep">\u00b7</span>' +
+          '<span class="fw-grade-pill" style="background:#4a6d8c">B</span> Mostly' +
+          '<span class="fw-gi-sep">\u00b7</span>' +
+          '<span class="fw-grade-pill" style="background:#b08030">C</span> Some' +
+          '<span class="fw-gi-sep">\u00b7</span>' +
+          '<span class="fw-grade-pill" style="background:#707070">D</span> Weak' +
         '</div>' +
       '</div>' +
+      '<div id="fw-l2" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">' +
+        '<button id="fw-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em;flex-shrink:0" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>' +
+        '<div id="fw-anim-mount" style="display:flex;align-items:center;flex-shrink:0"></div>' +
+        '<div id="fw-scrubber" style="flex:1;min-width:0">' +
+          '<div id="fw-scrubber-track">' +
+            '<div id="fw-scrubber-fill"></div>' +
+            '<div id="fw-scrubber-marks"></div>' +
+            '<div id="fw-scrubber-thumb"></div>' +
+          '</div>' +
+          '<div id="fw-scrubber-labels">' +
+            '<span id="fw-scrub-start"></span>' +
+            '<span id="fw-scrub-current"></span>' +
+            '<span id="fw-scrub-end"></span>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div id="fw-body">' +
       '<div id="fw-map-wrap">' +
         '<div id="fw-leaflet"></div>' +
       '</div>' +
@@ -243,7 +244,7 @@ function _fwLoadAll(cb) {
       var pending = arr.length;
       if (pending === 0) { cb(); return; }
       arr.forEach(function(item) {
-        fetch('data/islamic/journeys/' + item.file)
+        fetch('data/islamic/journeys/' + item.file + '?v=' + Date.now())
           .then(function(r) { return r.json(); })
           .then(function(data) {
             data.journey.sort(function(a, b) {
@@ -427,38 +428,38 @@ function _fwUpdateFollowingList() {
     var conf = _fwConfCache[file];
     var col = _fwFigColor(file);
 
-    var row = document.createElement('div');
-    row.className = 'fw-follow-row';
+    var chip = document.createElement('span');
+    chip.className = 'fw-follow-chip';
 
     var dot = document.createElement('span');
     dot.className = 'fw-follow-dot';
     dot.style.background = col;
-    row.appendChild(dot);
+    chip.appendChild(dot);
 
     var name = document.createElement('span');
-    name.className = 'fw-follow-name';
+    name.className = 'fw-follow-chipname';
     name.textContent = item.name;
-    row.appendChild(name);
+    chip.appendChild(name);
 
     if (conf && conf.grade) {
       var badge = document.createElement('span');
       badge.className = 'fw-grade-pill';
       badge.textContent = conf.grade;
       badge.style.background = _fwGradeColor(conf.grade);
-      row.appendChild(badge);
+      badge.style.marginLeft = '4px';
+      chip.appendChild(badge);
     }
 
     var x = document.createElement('span');
-    x.className = 'fw-follow-x';
+    x.className = 'fw-follow-chipx';
     x.textContent = '\u00d7';
-    x.title = 'Remove';
     x.onclick = function(ev) {
       ev.stopPropagation();
       _fwToggleSelection(file);
     };
-    row.appendChild(x);
+    chip.appendChild(x);
 
-    list.appendChild(row);
+    list.appendChild(chip);
   });
 }
 
@@ -656,29 +657,25 @@ function _fwInitMap() {
   _fwMarkers = {};
   _fwLines = {};
   _fwEmpLayer = null;
+  _fwLastEmpYear = null;
 
   requestAnimationFrame(function() {
     requestAnimationFrame(function() {
-      var mapEl = document.getElementById('fw-leaflet');
-      if (!mapEl) return;
+      var mb = _mbCreateMap('fw-leaflet');
+      if (!mb) return;
+      _fwMap = mb.map;
+      _fwLabTile = mb.labTile;
 
-      var bounds = L.latLngBounds(
-        [Math.min.apply(null, allLats) - 1, Math.min.apply(null, allLngs) - 2],
-        [Math.max.apply(null, allLats) + 1, Math.max.apply(null, allLngs) + 2]
-      );
+      // Focused bounds — tight fit to journey points only
+      var pts = [];
+      allLats.forEach(function(lat, i) { pts.push([lat, allLngs[i]]); });
+      _mbFitToPoints(_fwMap, pts, 0.08);
 
-      _fwMap = L.map(mapEl, { zoomControl: true, attributionControl: true });
-
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors \u00a9 <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(_fwMap);
-
-      _fwMap.fitBounds(bounds, { padding: [30, 30] });
-
-      // Empire overlay (below markers)
-      _fwEmpLayer = _drawEmpiresOnMap(_fwMap, _fwYear, _fwEmpLayer, 'fw-map-wrap');
+      // GeoJSON empire overlays — filtered to journey region only
+      var _fwJourneyBounds = L.latLngBounds(pts);
+      _mbLoadGeoEmpires(function() {
+        if (_fwMap) _fwEmpLayer = _mbRenderEmpires(_fwMap, _fwYear, _fwEmpLayer, _fwLabTile, 'fw-map-wrap', _fwJourneyBounds);
+      });
 
       _fwBuildMarkers();
 
@@ -819,7 +816,21 @@ function _fwShowAll() {
 function _fwUpdateMapForYear(year) {
   if (!_fwMap) return;
 
-  _fwEmpLayer = _drawEmpiresOnMap(_fwMap, year, _fwEmpLayer, 'fw-map-wrap');
+  // Throttle empire re-rendering: only when 50-year bracket changes
+  var _empBrk = Math.floor(year / 50);
+  var _lastBrk = _fwLastEmpYear !== null ? Math.floor(_fwLastEmpYear / 50) : -1;
+  if (_empBrk !== _lastBrk) {
+    try {
+      var _jPts = [];
+      _fwSelectedFiles().forEach(function(file) {
+        var fig = _fwFigures[file];
+        if (fig) fig.journey.forEach(function(e) { _jPts.push([e.lat, e.lng]); });
+      });
+      var _jBounds = _jPts.length ? L.latLngBounds(_jPts) : null;
+      _fwEmpLayer = _mbRenderEmpires(_fwMap, year, _fwEmpLayer, _fwLabTile, 'fw-map-wrap', _jBounds);
+      _fwLastEmpYear = year;
+    } catch(e) {}
+  }
 
   var activePts = [];
 
@@ -890,20 +901,7 @@ function _fwUpdateMapForYear(year) {
     });
   });
 
-  if (activePts.length > 0) {
-    var b = L.latLngBounds(activePts);
-    var mapBounds = _fwMap.getBounds().pad(-0.15);
-    if (!mapBounds.contains(b)) {
-      if (activePts.length === 1) {
-        _fwMap.panTo(activePts[0], { animate: true, duration: 0.5 });
-      } else {
-        _fwMap.fitBounds(b.pad(0.4), {
-          animate: true, duration: 0.5,
-          maxZoom: Math.max(_fwMap.getZoom(), 5)
-        });
-      }
-    }
-  }
+  _mbAutoPan(_fwMap, activePts);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1037,22 +1035,28 @@ function _fwAnimPlay() {
 
   _fwPlaying = true;
   _fwTickFn = function() {
-    var next = _fwYearIdx + 1;
-    if (next >= _fwAllYears.length) { _fwAnimStopFull(); return; }
-    _fwYearIdx = next;
-    _fwGoToYear(_fwAllYears[next]);
+    try {
+      var next = _fwYearIdx + 1;
+      if (next >= _fwAllYears.length) { _fwAnimStopFull(); return; }
+      _fwYearIdx = next;
+      _fwGoToYear(_fwAllYears[next]);
+    } catch(e) {
+      console.warn('[FOLLOW] Tick error:', e);
+    }
+    // Chain next tick only after this one finishes (prevents pile-up)
+    if (_fwPlaying) _fwTimer = setTimeout(_fwTickFn, _fwSpeed);
   };
-  _fwTimer = setInterval(_fwTickFn, _fwSpeed);
+  _fwTimer = setTimeout(_fwTickFn, _fwSpeed);
 }
 
 function _fwAnimPause() {
   _fwPlaying = false;
-  if (_fwTimer) { clearInterval(_fwTimer); _fwTimer = null; }
+  if (_fwTimer) { clearTimeout(_fwTimer); _fwTimer = null; }
 }
 
 function _fwAnimStopFull() {
   _fwPlaying = false;
-  if (_fwTimer) { clearInterval(_fwTimer); _fwTimer = null; }
+  if (_fwTimer) { clearTimeout(_fwTimer); _fwTimer = null; }
   _fwYearIdx = -1;
   _fwYear = null;
   _fwTickFn = null;
@@ -1193,6 +1197,7 @@ window._followShowFigure = function(slug){
           _showViewDesc('');
           var el=document.getElementById('viewDescInline');
           if(el) el.innerHTML='Follow <span class="hdr-stat-num">'+n.toLocaleString()+'</span> figures through their life journey';
+          var _fc=document.getElementById('fw-l1-center'); if(_fc) _fc.innerHTML='Follow <span style="color:#D4AF37;font-weight:700">'+n.toLocaleString()+'</span> figures through their life journey';
         } else {
           _showViewDesc('Follow figures through their life journey');
         }

@@ -268,7 +268,9 @@
     }
   ],
   "confidence": {
-    "overall": "low",
-    "notes": "Birth and death dates highly uncertain; itinerary reconstructed from fragmentary Risala texts with contested authenticity."
+    "grade": "C",
+    "density": "sparse",
+    "precision": "year",
+    "disclosure": "Abu Dulaf's two Risalas describe journeys through Central Asia and Iran (940s-950s). The texts survive only in excerpts quoted by Yaqut. Personal dates are approximate. Route reconstruction depends on geographic identifications."
   }
 }

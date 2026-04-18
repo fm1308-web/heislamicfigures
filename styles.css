@@ -1770,12 +1770,12 @@ body.view-one #searchWrap{display:none}
 /* ── Top bar: scrubber + play + speed (inside #follow-view) ── */
 #fw-topbar {
   display: flex;
-  align-items: center;
-  padding: 8px 18px;
+  flex-direction: column;
+  padding: 0;
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  gap: 14px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
 /* ── Grade pill (shared) ── */
@@ -1797,21 +1797,97 @@ body.view-one #searchWrap{display:none}
   flex: 1;
   overflow: hidden;
   min-height: 0;
+  position: relative;
+  z-index: 1;
 }
 
-/* ── Left Rail ── */
-#fw-left-rail {
-  width: 180px;
-  flex-shrink: 0;
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  overflow: hidden;
-}
+/* ── Left Rail — REMOVED, replaced by fw-controls-row ── */
+#fw-left-rail { display: none; }
 #fw-grades-section {
   flex-shrink: 0;
   padding: 10px 12px;
+}
+/* ── Controls Row — REMOVED, merged into L1 ── */
+#fw-controls-row { display: none; }
+#fw-l1 #fw-add-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+#fw-l1 #fw-add-btn {
+  width: auto;
+  padding: 3px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+#fw-l1 #fw-add-panel {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 320px;
+  z-index: 200;
+  background: #1a1a2e;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  max-height: 340px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.9);
+}
+#fw-l1 #fw-following-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.fw-follow-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px 2px 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--gold);
+}
+.fw-follow-chipname {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fw-follow-chipx {
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  margin-left: 2px;
+  line-height: 1;
+}
+.fw-follow-chipx:hover { color: var(--gold); }
+#fw-grades-inline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+#fw-l1-center {
+  flex: 1;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.fw-gi-sep {
+  color: var(--border);
+  margin: 0 2px;
 }
 .fw-rail-header {
   font-family: 'Cinzel', serif;
@@ -1861,7 +1937,7 @@ body.view-one #searchWrap{display:none}
   left: 0;
   top: 100%;
   width: 320px;
-  background: var(--surface);
+  background: #1a1a2e !important;
   border: 1px solid var(--border);
   border-radius: 4px;
   max-height: 340px;
@@ -2105,6 +2181,8 @@ body.view-one #searchWrap{display:none}
 
 /* ── Scrubber ── */
 #fw-scrubber {
+  flex: 1 !important;
+  min-width: 0 !important;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -2167,6 +2245,7 @@ body.view-one #searchWrap{display:none}
   color: var(--muted);
   letter-spacing: 0.04em;
   padding: 0 2px;
+  white-space: nowrap;
 }
 #fw-scrub-current {
   color: var(--gold);

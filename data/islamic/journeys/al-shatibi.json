@@ -254,7 +254,9 @@
     }
   ],
   "confidence": {
-    "overall": "medium",
-    "notes": "Precise dates for birth and most events uncertain; relying on biographical dictionaries with decade-level precision for many entries."
+    "grade": "C",
+    "density": "sparse",
+    "precision": "year",
+    "disclosure": "Al-Shatibi (d. 1388) spent his life in Granada. His Muwafaqat is dated. Personal chronology is sparse — reconstructed from Granadan biographical sources. Many period-level dates reflect limited documentation."
   }
 }

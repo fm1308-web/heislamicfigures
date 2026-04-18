@@ -283,7 +283,9 @@
     }
   ],
   "confidence": {
-    "overall": "medium",
-    "notes": "Birth year approximate; early biography sparse; major events in Egypt well-documented in Shadhili hagiographies."
+    "grade": "C",
+    "density": "sparse",
+    "precision": "year",
+    "disclosure": "Abu al-Hasan al-Shadhili (d. 1258) founded the Shadhiliyya order. His life is known through later hagiographies (Ibn Ata Allah's Lata'if al-Minan). Movements from Tunis to Alexandria to Egypt are attested but dates are approximate."
   }
 }
