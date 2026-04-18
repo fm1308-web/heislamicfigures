@@ -237,12 +237,15 @@ function _buildShell(view){
     document.head.appendChild(lk);
   }
   var s=_data.stats||{};
-  var h='<div id="think-toolbar">';
+  var h='<div id="think-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
+  h+='<button id="think-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  h+='<div id="think-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
+  h+='</div>';
+  h+='<div id="think-toolbar">';
   h+='<div class="bv-dd-wrap"><button class="bv-dd-btn" id="think-concept-btn">\u2014 SELECT A CONCEPT \u2014 <span style="opacity:.6">\u25BE</span></button>';
   h+='<div class="bv-dd-panel" id="think-concept-panel"><input class="bv-dd-search" id="think-concept-search" placeholder="search concepts\u2026"><div class="bv-dd-scroll" id="think-concept-scroll"></div></div></div>';
   h+='<button class="bv-clear-all" id="think-clear-all" title="Clear" style="opacity:.4">\u00D7</button>';
-  h+='<div id="think-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"><span id="think-stats" style="font-family:\'Cinzel\',serif;font-size:11px;color:#A0AEC0;letter-spacing:.06em">'+(s.concepts_with_figures||0)+' concepts / '+(s.figures_tagged||0)+' tagged</span></div>';
-  h+='<button id="think-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;margin-left:12px;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  h+='<span id="think-stats" style="margin-left:auto;font-family:\'Cinzel\',serif;font-size:11px;color:#A0AEC0;letter-spacing:.06em">'+(s.concepts_with_figures||0)+' concepts / '+(s.figures_tagged||0)+' tagged</span>';
   h+='<div id="think-lang-bar" style="display:flex;align-items:center;gap:6px;margin-left:16px">';
   h+='<button class="tk-lang-btn" data-lang="ar" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:13px;cursor:pointer;transition:.2s">\u0639\u0631\u0628\u064A\u0629</button>';
   h+='<button class="tk-lang-btn" data-lang="ur" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:13px;cursor:pointer;transition:.2s">\u0627\u0631\u062F\u0648</button>';

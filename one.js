@@ -163,6 +163,7 @@ function initOne(){
     /* ── ROW 1: topbar ── */
     '<div id="one-topbar">'+
       '<div class="one-tb-left">'+
+        '<button id="one-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em;margin-right:8px" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'" onclick="event.stopPropagation();_showOneMethodology();">How This Works</button>'+
         '<input id="oneSearch" type="text" placeholder="Search figures..." oninput="window._oneSearchChanged(this.value)">'+
         _ddWrap('oneEraPanel','ERA',erasHtml,'window._oneClearEras()','oneEraBtn')+
         _ddWrap('oneCentPanel','CENTURY',centsHtml,'window._oneClearCents()','oneCentBtn')+

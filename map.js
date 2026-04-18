@@ -617,6 +617,7 @@ function _buildEmpireToggle(){
 
 function renderMap(){
   var _mfb=document.getElementById('map-favFilterBtn');if(_mfb)_mfb.style.display='none';
+  if(!document.getElementById('map-l1')){var _ml1=document.createElement('div');_ml1.id='map-l1';_ml1.style.cssText='display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)';var _mhb=document.createElement('button');_mhb.id='map-how-btn';_mhb.textContent='How This Works';_mhb.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em";_mhb.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_mhb.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_mhb.onclick=function(e){e.stopPropagation();_showMapMethodology();};_ml1.appendChild(_mhb);var _mam=document.createElement('div');_mam.id='map-anim-mount';_mam.style.cssText='margin-left:auto;display:flex;align-items:center;gap:10px';_ml1.appendChild(_mam);var _mv=document.getElementById('mapView');var _mt=document.getElementById('mapToolbar');if(_mv&&_mt) _mv.insertBefore(_ml1,_mt);else if(_mv) _mv.prepend(_ml1);}
   if(typeof L==='undefined'){
     const scr=document.createElement('script');
     scr.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
@@ -685,13 +686,8 @@ function _doRenderMap(){
     // Hide old controls
     var oldGroup=document.querySelector('.map-anim-group');
     if(oldGroup) oldGroup.style.display='none';
-    // Create mount div in toolbar
-    var toolbar=document.getElementById('mapToolbar');
-    if(toolbar&&window.AnimControls){
-      var mount=document.createElement('div');
-      mount.id='map-anim-mount';
-      mount.style.cssText='margin-left:auto;display:flex;align-items:center';
-      toolbar.appendChild(mount);
+    var mount=document.getElementById('map-anim-mount');
+    if(mount&&window.AnimControls){
       _mapAnimCtl=window.AnimControls.create({
         mountEl:mount, idPrefix:'map', initialSpeed:'1x',
         onPlay:_mapAnimPlay, onPause:_mapAnimPause, onStop:_mapAnimStop,

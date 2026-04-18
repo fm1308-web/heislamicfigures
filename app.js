@@ -1001,6 +1001,7 @@ function setView(v){
   document.getElementById('leftPanel').style.display=v==='timeline'?'flex':'none';
   document.getElementById('filterBar').style.display=v==='timeline'?'flex':'none';
   document.getElementById('hdrRow4').style.display=v==='timeline'?'flex':'none';
+  if(v==='timeline'&&!document.getElementById('tl-how-btn')){var _r4=document.getElementById('hdrRow4');var _tlHB=document.createElement('button');_tlHB.id='tl-how-btn';_tlHB.textContent='How This Works';_tlHB.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";_tlHB.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_tlHB.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_tlHB.onclick=function(e){e.stopPropagation();_showTimelineMethodology();};if(_r4) _r4.prepend(_tlHB);}
   const ip=document.getElementById('infoPanel');
   if(v==='map'||v==='silsila'||v==='studyroom'||v==='eras'||v==='events'||v==='think'||v==='one'||v==='follow'||v==='talk'||v==='monastic'){
     ip.style.display='none'; ip.style.flex=''; ip.style.minWidth='';

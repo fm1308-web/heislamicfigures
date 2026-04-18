@@ -1767,6 +1767,19 @@ function init(){
 
   _resultsEl = document.getElementById('mon-results');
 
+  // ── HTW button in filter row ──
+  if(!document.getElementById('mon-how-btn')){
+    var _monFilters=document.getElementById('mon-filters');
+    if(_monFilters){
+      var _mhBtn=document.createElement('button');_mhBtn.id='mon-how-btn';_mhBtn.textContent='How This Works';
+      _mhBtn.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";
+      _mhBtn.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};
+      _mhBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
+      _mhBtn.onclick=function(e){e.stopPropagation();_openMethodology();};
+      _monFilters.prepend(_mhBtn);
+    }
+  }
+
   _drillEl = document.createElement('div');
   _drillEl.id = 'mon-drill';
   _drillEl.style.cssText = 'display:none;width:100%;box-sizing:border-box;padding:0;color:#E5E7EB;font-size:13px;max-height:calc(100vh - 260px);overflow-y:auto;overflow-x:hidden';
@@ -1818,7 +1831,7 @@ function init(){
   _computePeriodTotals();
 
   var methBtn = document.getElementById('mon-methodology-btn');
-  if(methBtn) methBtn.addEventListener('click', _openMethodology);
+  if(methBtn){ methBtn.style.display='none'; methBtn.addEventListener('click', _openMethodology); }
 
   var drillBtn = document.getElementById('mon-drill-btn');
   if(drillBtn){

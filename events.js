@@ -176,16 +176,6 @@ window.setView = function(v){
       if(!box.dataset.evOrigPh) box.dataset.evOrigPh=box.getAttribute('placeholder')||'';
       box.setAttribute('placeholder','Search events\u2026');
     }
-    var evMount=document.getElementById('ev-anim-mount');
-    if(evMount&&window.AnimControls){
-      _evAnimCtl=window.AnimControls.create({
-        mountEl:evMount, idPrefix:'ev', initialSpeed:'1x',
-        onPlay:_evAnimPlay, onPause:_evAnimPause, onStop:_evStopAnimate,
-        onSpeedChange:function(ms){ _evAnimSpeedMs=ms; }
-      });
-    }
-    var _evHowBtn=document.getElementById('events-how-btn');
-    if(_evHowBtn) _evHowBtn.onclick=function(e){e.stopPropagation();_showEventsMethodology();};
     if(typeof _showViewDesc==='function') _showViewDesc('Important historical events');
   }
   if(r3&&v==='studyroom') r3.style.display='none';
@@ -214,10 +204,8 @@ function _buildHeaderHTML(){
   var count=data.filter(function(e){return e.year>=_startYear&&e.year<=_endYear;}).length;
   h+='<span class="dd-clear-x" id="evYearClearX" onclick="window._evResetYears()" title="Reset year range" style="font-size:16px;margin:0 4px;display:none">\u00D7</span>';
   h+='<span class="ev-filter-count" id="evFilterCount">showing '+count+' events</span>';
+  // RIGHT: filter count details
   h+='<span class="ev-filter-count" style="opacity:.5;margin-left:6px">16 centuries \u00B7 500\u20132025 CE</span>';
-
-  // RIGHT: anim pill mount
-  h+='<div id="ev-anim-mount" style="margin-left:auto;display:flex;align-items:center"></div>';
   return h;
 }
 
@@ -261,7 +249,18 @@ function initEvents(){
   document.head.appendChild(_css);
   _startYear=500;
   _endYear=2025;
-  ct.innerHTML='<div class="ev-scroll" id="evScroll"></div>';
+  ct.style.display='flex';ct.style.flexDirection='column';
+  ct.innerHTML='<div id="ev-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)"><button id="events-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button><div id="ev-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div></div><div class="ev-scroll" id="evScroll" style="flex:1;overflow-y:auto"></div>';
+  var _evMountL1=document.getElementById('ev-anim-mount');
+  if(_evMountL1&&window.AnimControls){
+    _evAnimCtl=window.AnimControls.create({
+      mountEl:_evMountL1, idPrefix:'ev', initialSpeed:'1x',
+      onPlay:_evAnimPlay, onPause:_evAnimPause, onStop:_evStopAnimate,
+      onSpeedChange:function(ms){ _evAnimSpeedMs=ms; }
+    });
+  }
+  var _evHowBtnL1=document.getElementById('events-how-btn');
+  if(_evHowBtnL1) _evHowBtnL1.onclick=function(e){e.stopPropagation();_showEventsMethodology();};
   _renderRange(data,_startYear,_endYear);
 }
 

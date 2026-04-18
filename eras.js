@@ -57,7 +57,7 @@ function _evFmtYear(y){
 function _evDob(p){ return (p && p.dob_academic!=null) ? p.dob_academic : (p ? p.dob : null); }
 function _evWiki(p){
   if(!window._wikidata||!p.slug||!window._wikidata[p.slug]||!window._wikidata[p.slug].wikipedia||!window._wikidata[p.slug].wikipedia.en) return '';
-  return ' <a class="ev-wiki" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Wikipedia">W</a>';
+  return ' <a class="era-wiki" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Wikipedia">W</a>';
 }
 function _evNameColor(p){
   if(p.type==='Prophet') return '#D4AF37';
@@ -101,53 +101,53 @@ function _evInjectStyles(){
   if(old) old.remove();
   const css = `
   #eras-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
-  #ev-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
-  .ev-dd-wrap{position:relative}
-  .ev-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
-  .ev-dd-btn:hover{border-color:var(--gold,#D4AF37)}
-  .ev-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
-  .ev-dd-panel.open{display:flex}
-  .ev-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:12px;border-radius:2px;outline:none}
-  .ev-dd-search:focus{border-color:var(--gold,#D4AF37)}
-  .ev-dd-scroll{flex:1;overflow-y:auto;padding:4px 0 10px}
-  .ev-ck-row{display:flex;align-items:center;gap:10px;padding:6px 14px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text1,#E4E4E7)}
-  .ev-ck-row:hover{background:rgba(212,175,55,.08)}
-  .ev-ck-row.checked{background:rgba(212,175,55,.06);color:var(--gold,#D4AF37)}
-  .ev-ck{width:12px;height:12px;border:1px solid var(--border2,#2D3748);border-radius:2px;flex-shrink:0}
-  .ev-ck.on{background:var(--gold,#D4AF37);border-color:var(--gold,#D4AF37);box-shadow:inset 0 0 0 2px #0E1621}
-  .ev-ck-label{flex:1}
-  .ev-ck-count{font-size:10px;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif}
-  .ev-clear-all{background:none;border:1px solid var(--border2,#2D3748);color:var(--muted,#6B7B8C);width:32px;height:32px;cursor:pointer;border-radius:2px;font-size:14px;opacity:.4}
-  .ev-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6);color:var(--gold,#D4AF37)}
-  #ev-anim-mount{margin-left:auto;display:flex;align-items:center;gap:10px}
-  #ev-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
-  #ev-canvas{position:relative;width:100%}
-  #ev-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em}
-  #ev-stem{position:absolute;left:${_EV_STEM_X - 2}px;width:5px;background:var(--gold,#D4AF37);box-shadow:0 0 18px rgba(212,175,55,.55);pointer-events:none;z-index:1}
-  .ev-row{position:absolute;left:0;width:${_EV_LEFT_W}px;padding:4px 20px;cursor:pointer;transition:background .12s;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;z-index:4}
-  .ev-row:hover{background:rgba(212,175,55,.06)}
-  .ev-row.hi{background:rgba(212,175,55,.16);box-shadow:inset 3px 0 0 var(--gold,#D4AF37)}
-  .ev-row-main{text-align:right}
-  .ev-row-title{font-family:'Source Sans 3',sans-serif;font-size:13px;line-height:1.2}
-  .ev-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:10px;font-family:'Cinzel',serif}
-  .ev-wiki:hover{color:var(--gold,#D4AF37)}
-  .ev-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
-  .ev-hij-chip{position:absolute;transform:translateY(-50%);text-align:left;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#8B7A3E;z-index:5;white-space:nowrap;pointer-events:none}
-  .ev-ruler-toggle{position:absolute;display:flex;align-items:center;gap:4px;z-index:5}
-  .ev-ruler-btn{font-size:10px;color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
-  .ev-ruler-btn.on{color:#D4AF37;border-color:#D4AF37}
-  .ev-ruler-btn:hover{color:#D4AF37}
-  .ev-ruler-sep{color:#444;font-size:10px;pointer-events:none}
-  svg.ev-leaves{position:absolute;top:0;overflow:visible;pointer-events:none;z-index:2}
-  svg.ev-leaves g.ev-leaf{cursor:pointer;pointer-events:all}
-  .ev-leaf-label{position:absolute;white-space:nowrap;z-index:4}
-  .ev-era-band{position:absolute;left:${_EV_STEM_X+18}px;right:0;pointer-events:none;z-index:1}
-  .ev-era-label{position:absolute;right:24px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;pointer-events:none;z-index:1;text-align:right;font-weight:700;text-transform:uppercase}
-  .ev-era-label-name{font-weight:700}
-  .ev-era-label-dates{font-size:9px;opacity:.6;margin-top:2px;font-weight:400;letter-spacing:.08em}
-  .ev-curfew-line{position:absolute;left:0;right:0;height:1px;background:rgba(212,175,55,0.4);pointer-events:none;z-index:10}
-  .ev-curfew-year{position:absolute;right:40px;top:-10px;font-family:'Cinzel',serif;font-size:12px;color:var(--gold,#D4AF37);background:#0E1621;padding:2px 8px;border:1px solid rgba(212,175,55,.5);border-radius:2px}
-  .ev-hidden-by-curfew{visibility:hidden}
+  #era-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
+  .era-dd-wrap{position:relative}
+  .era-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
+  .era-dd-btn:hover{border-color:var(--gold,#D4AF37)}
+  .era-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+  .era-dd-panel.open{display:flex}
+  .era-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:12px;border-radius:2px;outline:none}
+  .era-dd-search:focus{border-color:var(--gold,#D4AF37)}
+  .era-dd-scroll{flex:1;overflow-y:auto;padding:4px 0 10px}
+  .era-ck-row{display:flex;align-items:center;gap:10px;padding:6px 14px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text1,#E4E4E7)}
+  .era-ck-row:hover{background:rgba(212,175,55,.08)}
+  .era-ck-row.checked{background:rgba(212,175,55,.06);color:var(--gold,#D4AF37)}
+  .era-ck{width:12px;height:12px;border:1px solid var(--border2,#2D3748);border-radius:2px;flex-shrink:0}
+  .era-ck.on{background:var(--gold,#D4AF37);border-color:var(--gold,#D4AF37);box-shadow:inset 0 0 0 2px #0E1621}
+  .era-ck-label{flex:1}
+  .era-ck-count{font-size:10px;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif}
+  .era-clear-all{background:none;border:1px solid var(--border2,#2D3748);color:var(--muted,#6B7B8C);width:32px;height:32px;cursor:pointer;border-radius:2px;font-size:14px;opacity:.4}
+  .era-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6);color:var(--gold,#D4AF37)}
+  #era-anim-mount{margin-left:auto;display:flex;align-items:center;gap:10px}
+  #era-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
+  #era-canvas{position:relative;width:100%}
+  #era-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em}
+  #era-stem{position:absolute;left:${_EV_STEM_X - 2}px;width:5px;background:var(--gold,#D4AF37);box-shadow:0 0 18px rgba(212,175,55,.55);pointer-events:none;z-index:1}
+  .era-row{position:absolute;left:0;width:${_EV_LEFT_W}px;padding:4px 20px;cursor:pointer;transition:background .12s;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;z-index:4}
+  .era-row:hover{background:rgba(212,175,55,.06)}
+  .era-row.hi{background:rgba(212,175,55,.16);box-shadow:inset 3px 0 0 var(--gold,#D4AF37)}
+  .era-row-main{text-align:right}
+  .era-row-title{font-family:'Source Sans 3',sans-serif;font-size:13px;line-height:1.2}
+  .era-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:10px;font-family:'Cinzel',serif}
+  .era-wiki:hover{color:var(--gold,#D4AF37)}
+  .era-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
+  .era-hij-chip{position:absolute;transform:translateY(-50%);text-align:left;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#8B7A3E;z-index:5;white-space:nowrap;pointer-events:none}
+  .era-ruler-toggle{position:absolute;display:flex;align-items:center;gap:4px;z-index:5}
+  .era-ruler-btn{font-size:10px;color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
+  .era-ruler-btn.on{color:#D4AF37;border-color:#D4AF37}
+  .era-ruler-btn:hover{color:#D4AF37}
+  .era-ruler-sep{color:#444;font-size:10px;pointer-events:none}
+  svg.era-leaves{position:absolute;top:0;overflow:visible;pointer-events:none;z-index:2}
+  svg.era-leaves g.era-leaf{cursor:pointer;pointer-events:all}
+  .era-leaf-label{position:absolute;white-space:nowrap;z-index:4}
+  .era-era-band{position:absolute;left:${_EV_STEM_X+18}px;right:0;pointer-events:none;z-index:1}
+  .era-era-label{position:absolute;right:24px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;pointer-events:none;z-index:1;text-align:right;font-weight:700;text-transform:uppercase}
+  .era-era-label-name{font-weight:700}
+  .era-era-label-dates{font-size:9px;opacity:.6;margin-top:2px;font-weight:400;letter-spacing:.08em}
+  .era-curfew-line{position:absolute;left:0;right:0;height:1px;background:rgba(212,175,55,0.4);pointer-events:none;z-index:10}
+  .era-curfew-year{position:absolute;right:40px;top:-10px;font-family:'Cinzel',serif;font-size:12px;color:var(--gold,#D4AF37);background:#0E1621;padding:2px 8px;border:1px solid rgba(212,175,55,.5);border-radius:2px}
+  .era-hidden-by-curfew{visibility:hidden}
   `;
   const s=document.createElement('style');
   s.id='erasViewStyles'; s.textContent=css;
@@ -208,19 +208,19 @@ function _evFiltered(){
 
 function _evBuildCanvas(){
   _evSyncClearBtn();
-  const canvas=document.getElementById('ev-canvas');
+  const canvas=document.getElementById('era-canvas');
   if(!canvas) return;
   const people=_evFiltered();
   if(!people.length){
     canvas.style.height='200px';
-    canvas.innerHTML='<div id="ev-empty">NO FIGURES MATCH YOUR FILTERS</div>';
+    canvas.innerHTML='<div id="era-empty">NO FIGURES MATCH YOUR FILTERS</div>';
     return;
   }
   const totalH=_EV_TOP_PAD + people.length*_EV_ROW_H + _EV_BOT_PAD;
   canvas.style.height=totalH+'px';
   const rowMap={};
   let html='';
-  html+='<div id="ev-stem" style="top:'+(_EV_TOP_PAD-10)+'px;height:'+(totalH - _EV_TOP_PAD - _EV_BOT_PAD + 20)+'px"></div>';
+  html+='<div id="era-stem" style="top:'+(_EV_TOP_PAD-10)+'px;height:'+(totalH - _EV_TOP_PAD - _EV_BOT_PAD + 20)+'px"></div>';
 
   people.forEach((p,idx)=>{
     const y=_EV_TOP_PAD+idx*_EV_ROW_H;
@@ -230,25 +230,25 @@ function _evBuildCanvas(){
     const nameCol=_evNameColor(p);
     const yrTxt=_evFmtYear(dob);
 
-    html+='<div class="ev-row" data-slug="'+_evEsc(p.slug)+'" data-name="'+_evEsc(p.famous)+'" data-year="'+(dob==null?'':dob)+'" style="top:'+y+'px;height:'+_EV_ROW_H+'px">';
-    html+='<div class="ev-row-main"><div class="ev-row-title" style="color:'+nameCol+'">'+_evEsc(p.famous)+_evWiki(p)+'</div></div>';
+    html+='<div class="era-row" data-slug="'+_evEsc(p.slug)+'" data-name="'+_evEsc(p.famous)+'" data-year="'+(dob==null?'':dob)+'" style="top:'+y+'px;height:'+_EV_ROW_H+'px">';
+    html+='<div class="era-row-main"><div class="era-row-title" style="color:'+nameCol+'">'+_evEsc(p.famous)+_evWiki(p)+'</div></div>';
     html+='</div>';
-    html+='<div class="ev-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px;'+(_evShowCE?'':'display:none')+'">'+yrTxt+'</div>';
+    html+='<div class="era-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px;'+(_evShowCE?'':'display:none')+'">'+yrTxt+'</div>';
     var _hij=_evCeToHijri(dob);
     var _hijLabel=_hij<0?Math.abs(_hij)+'<span class="year-era">\u0642.\u0647\u0640</span>':_hij+'<span class="year-era">\u0647\u0640</span>';
-    html+='<div class="ev-hij-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X+10)+'px;'+(_evShowHijri?'':'display:none')+'">'+_hijLabel+'</div>';
+    html+='<div class="era-hij-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X+10)+'px;'+(_evShowHijri?'':'display:none')+'">'+_hijLabel+'</div>';
   });
   // Dual ruler toggle at top of stem
-  html+='<div class="ev-ruler-toggle" style="top:'+(_EV_TOP_PAD-28)+'px;left:'+(_EV_STEM_X-22)+'px">';
-  html+='<span class="ev-ruler-btn'+(_evShowCE?' on':'')+'" data-ruler="ce">CE</span>';
-  html+='<span class="ev-ruler-sep">\u2502</span>';
-  html+='<span class="ev-ruler-btn'+(_evShowHijri?' on':'')+'" data-ruler="hij">\u0647\u0640</span>';
+  html+='<div class="era-ruler-toggle" style="top:'+(_EV_TOP_PAD-28)+'px;left:'+(_EV_STEM_X-22)+'px">';
+  html+='<span class="era-ruler-btn'+(_evShowCE?' on':'')+'" data-ruler="ce">CE</span>';
+  html+='<span class="era-ruler-sep">\u2502</span>';
+  html+='<span class="era-ruler-btn'+(_evShowHijri?' on':'')+'" data-ruler="hij">\u0647\u0640</span>';
   html+='</div>';
   canvas.innerHTML=html;
 
-  canvas.querySelectorAll('.ev-row').forEach(row=>{
+  canvas.querySelectorAll('.era-row').forEach(row=>{
     row.addEventListener('click',function(e){
-      if(e.target.closest('.ev-wiki')) return;
+      if(e.target.closest('.era-wiki')) return;
       const name=row.getAttribute('data-name');
       if(!name) return;
       if(typeof setView==='function') setView('timeline');
@@ -256,12 +256,12 @@ function _evBuildCanvas(){
     });
   });
   // Ruler toggle wiring
-  canvas.querySelectorAll('.ev-ruler-btn').forEach(btn=>{
+  canvas.querySelectorAll('.era-ruler-btn').forEach(btn=>{
     btn.addEventListener('click',function(e){
       e.stopPropagation();
       var which=this.getAttribute('data-ruler');
-      if(which==='ce'){_evShowCE=!_evShowCE;this.classList.toggle('on',_evShowCE);canvas.querySelectorAll('.ev-year-chip').forEach(m=>{m.style.display=_evShowCE?'':'none';});}
-      if(which==='hij'){_evShowHijri=!_evShowHijri;this.classList.toggle('on',_evShowHijri);canvas.querySelectorAll('.ev-hij-chip').forEach(m=>{m.style.display=_evShowHijri?'':'none';});}
+      if(which==='ce'){_evShowCE=!_evShowCE;this.classList.toggle('on',_evShowCE);canvas.querySelectorAll('.era-year-chip').forEach(m=>{m.style.display=_evShowCE?'':'none';});}
+      if(which==='hij'){_evShowHijri=!_evShowHijri;this.classList.toggle('on',_evShowHijri);canvas.querySelectorAll('.era-hij-chip').forEach(m=>{m.style.display=_evShowHijri?'':'none';});}
     });
   });
 
@@ -269,7 +269,7 @@ function _evBuildCanvas(){
 }
 
 function _evRenderLeaves(people, rowMap, totalH){
-  const canvas=document.getElementById('ev-canvas');
+  const canvas=document.getElementById('era-canvas');
   if(!canvas) return;
   const NS='http://www.w3.org/2000/svg';
 
@@ -306,19 +306,19 @@ function _evRenderLeaves(people, rowMap, totalH){
     const y2e=_evYearToY(era.end,people,rowMap);
     if(y2e-y1e<6) return;
     const gDiv=document.createElement('div');
-    gDiv.className='ev-era-band';
+    gDiv.className='era-era-band';
     gDiv.style.cssText='top:'+y1e+'px;height:'+(y2e-y1e)+'px;background:linear-gradient(to left, rgba('+era.glow+',0.10) 0%, rgba('+era.glow+',0.04) 50%, transparent 85%)';
     canvas.appendChild(gDiv);
     const label=document.createElement('div');
-    label.className='ev-era-label';
+    label.className='era-era-label';
     label.style.top=(y1e+12)+'px';
-    label.innerHTML='<div class="ev-era-label-name" style="color:rgba('+era.glow+',0.85)">'+era.name+'</div><div class="ev-era-label-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
+    label.innerHTML='<div class="era-era-label-name" style="color:rgba('+era.glow+',0.85)">'+era.name+'</div><div class="era-era-label-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
     canvas.appendChild(label);
   });
 
   // SVG leaves — EXACT books.js formula
   const svg=document.createElementNS(NS,'svg');
-  svg.setAttribute('class','ev-leaves');
+  svg.setAttribute('class','era-leaves');
   svg.style.left=_EV_STEM_X+'px';
   const rightW=Math.max(400,(canvas.clientWidth||1400)-_EV_STEM_X-80);
   svg.setAttribute('width',rightW);
@@ -350,7 +350,7 @@ function _evRenderLeaves(people, rowMap, totalH){
       ', '+stemX+' '+y2.toFixed(1)+' Z';
 
     const g=document.createElementNS(NS,'g');
-    g.setAttribute('class','ev-leaf'); g.setAttribute('data-tag',ld.key);
+    g.setAttribute('class','era-leaf'); g.setAttribute('data-tag',ld.key);
     g.style.cursor='pointer'; g.style.pointerEvents='auto';
     const path=document.createElementNS(NS,'path');
     path.setAttribute('d',d); path.setAttribute('fill','none'); path.setAttribute('fill-opacity','0');
@@ -370,8 +370,8 @@ function _evRenderLeaves(people, rowMap, totalH){
       e.stopPropagation();
       if(ld.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(ld.key); }
       else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(ld.key); }
-      _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-      _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
       _evBuildCanvas(); _evAnimStop();
     };
     g.addEventListener('click',clickH);
@@ -406,7 +406,7 @@ function _evRenderLeaves(people, rowMap, totalH){
     }
     canvas.appendChild(connDiv);
     const extLabel=document.createElement('div');
-    extLabel.className='ev-leaf-label';
+    extLabel.className='era-leaf-label';
     extLabel.setAttribute('data-tag',li.key);
     extLabel.style.cssText='position:absolute;top:'+li.resolvedY+'px;left:'+LABEL_LEFT+'px;white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+li.color+';background:rgba(14,22,33,0.85);padding:2px 8px;border-radius:2px;border:1px solid rgba('+_evColorToRgb(li.color)+',0.4);z-index:4';
     extLabel.textContent=li.key+' ('+li.count+')';
@@ -414,8 +414,8 @@ function _evRenderLeaves(people, rowMap, totalH){
       e.stopPropagation();
       if(li.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(li.key); }
       else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(li.key); }
-      _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-      _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
       _evBuildCanvas(); _evAnimStop();
     });
     canvas.appendChild(extLabel);
@@ -423,7 +423,7 @@ function _evRenderLeaves(people, rowMap, totalH){
 }
 
 // ── Multi-select dropdown panels ──
-function _evCk(on){ return '<span class="ev-ck'+(on?' on':'')+'"></span>'; }
+function _evCk(on){ return '<span class="era-ck'+(on?' on':'')+'"></span>'; }
 function _evSyncBtnLabel(btnId,filterSet,defaultLabel,noun){
   const btn=document.getElementById(btnId); if(!btn) return;
   const n=filterSet.size; let txt=defaultLabel;
@@ -435,41 +435,41 @@ function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
   const si=document.getElementById(searchId);
   const q=(si&&si.value||'').toLowerCase().trim();
   const toggleLabel=filterSet.size>0?'Deselect all':'Select all';
-  let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="ev-dd-toggle-all" style="font-family:Cinzel,serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
+  let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="era-dd-toggle-all" style="font-family:Cinzel,serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
   const filtered=items.filter(t=>!q||t.name.toLowerCase().indexOf(q)>-1);
   filtered.forEach(t=>{
     const on=filterSet.has(t.name);
-    html+='<div class="ev-ck-row'+(on?' checked':'')+'" data-val="'+_evEsc(t.name)+'">'+_evCk(on)+'<span class="ev-ck-label">'+_evEsc(t.name)+'</span><span class="ev-ck-count">('+t.count+')</span></div>';
+    html+='<div class="era-ck-row'+(on?' checked':'')+'" data-val="'+_evEsc(t.name)+'">'+_evCk(on)+'<span class="era-ck-label">'+_evEsc(t.name)+'</span><span class="era-ck-count">('+t.count+')</span></div>';
   });
   scroll.innerHTML=html;
-  scroll.querySelectorAll('.ev-ck-row').forEach(el=>{
+  scroll.querySelectorAll('.era-ck-row').forEach(el=>{
     el.addEventListener('click',function(){ const v=this.getAttribute('data-val'); if(filterSet.has(v)) filterSet.delete(v); else filterSet.add(v); onchange(); });
   });
-  scroll.querySelectorAll('.ev-dd-toggle-all').forEach(el=>{
+  scroll.querySelectorAll('.era-dd-toggle-all').forEach(el=>{
     el.addEventListener('click',function(){ if(filterSet.size>0) filterSet.clear(); else items.forEach(t=>filterSet.add(t.name)); onchange(); });
   });
 }
 function _evBuildTypePanel(){
-  _evBuildPanel('ev-type-scroll','ev-type-search',_EV_FILTER.types,_evCollectTypes(),function(){
-    _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+  _evBuildPanel('era-type-scroll','era-type-search',_EV_FILTER.types,_evCollectTypes(),function(){
+    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
     _evBuildTypePanel(); _evBuildCanvas(); _evAnimStop();
   });
 }
 function _evBuildTradPanel(){
-  _evBuildPanel('ev-trad-scroll','ev-trad-search',_EV_FILTER.trads,_evCollectTrads(),function(){
-    _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+  _evBuildPanel('era-trad-scroll','era-trad-search',_EV_FILTER.trads,_evCollectTrads(),function(){
+    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
     _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
 }
 function _evSyncClearBtn(){
-  const btn=document.getElementById('ev-clear-all'); if(!btn) return;
+  const btn=document.getElementById('era-clear-all'); if(!btn) return;
   const has=_EV_FILTER.types.size||_EV_FILTER.trads.size||_EV_FILTER.search;
   btn.classList.toggle('active',!!has);
 }
 
 // ── Animation (curfew sweep, matches books.js) ──
 function _evCurfewYToYear(cursorY,canvas){
-  const rows=[].slice.call(canvas.querySelectorAll('.ev-row'));
+  const rows=[].slice.call(canvas.querySelectorAll('.era-row'));
   for(let i=rows.length-1;i>=0;i--){
     const t=parseFloat(rows[i].style.top)||0;
     if(cursorY>=t){ const yr=rows[i].getAttribute('data-year'); if(yr!=='') return parseInt(yr,10); }
@@ -485,18 +485,18 @@ function _evSvgBottomY(el){
   return null;
 }
 function _evAnimPlay(){
-  const canvas=document.getElementById('ev-canvas');
-  const scroll=document.getElementById('ev-scroll');
+  const canvas=document.getElementById('era-canvas');
+  const scroll=document.getElementById('era-scroll');
   if(!canvas||!scroll) return;
-  let cursor=document.getElementById('ev-curfew');
+  let cursor=document.getElementById('era-curfew');
   if(!cursor){
-    cursor=document.createElement('div'); cursor.id='ev-curfew'; cursor.className='ev-curfew-line';
-    cursor.innerHTML='<span id="ev-curfew-year" class="ev-curfew-year"></span>';
+    cursor=document.createElement('div'); cursor.id='era-curfew'; cursor.className='era-curfew-line';
+    cursor.innerHTML='<span id="era-curfew-year" class="era-curfew-year"></span>';
     cursor.style.display='none'; canvas.appendChild(cursor);
   }
-  var blackout=document.getElementById('ev-blackout');
+  var blackout=document.getElementById('era-blackout');
   if(!blackout){
-    blackout=document.createElement('div'); blackout.id='ev-blackout';
+    blackout=document.createElement('div'); blackout.id='era-blackout';
     blackout.style.cssText='display:none;position:absolute;left:0;right:0;background:#000;z-index:8;pointer-events:none';
     canvas.appendChild(blackout);
   }
@@ -516,10 +516,10 @@ function _evAnimPlay(){
     _EV_ANIM.cursorY+=STEP;
     if(_EV_ANIM.cursorY>_EV_ANIM.maxY*0.8){ _evAnimStop(); return; }
     cursor.style.top=_EV_ANIM.cursorY+'px';
-    var bo=document.getElementById('ev-blackout');
+    var bo=document.getElementById('era-blackout');
     if(bo){bo.style.top=(_EV_ANIM.cursorY+1)+'px';bo.style.height=(_EV_ANIM.maxY-_EV_ANIM.cursorY)+'px';}
     const yr=_evCurfewYToYear(_EV_ANIM.cursorY,canvas);
-    const yrEl=document.getElementById('ev-curfew-year');
+    const yrEl=document.getElementById('era-curfew-year');
     if(yrEl) yrEl.innerHTML=yr!=null?_evFmtYear(yr):'';
     scroll.scrollTo({top:Math.max(0,_EV_ANIM.cursorY-scroll.clientHeight/2),behavior:'auto'});
   };
@@ -534,12 +534,12 @@ function _evAnimStop(){
   _EV_ANIM.mode='stopped';
   if(_EV_ANIM.timer){ clearInterval(_EV_ANIM.timer); _EV_ANIM.timer=null; }
   _EV_ANIM.tick=null;
-  const canvas=document.getElementById('ev-canvas');
+  const canvas=document.getElementById('era-canvas');
   if(canvas){
-    var bo=document.getElementById('ev-blackout');
+    var bo=document.getElementById('era-blackout');
     if(bo) bo.style.display='none';
   }
-  const cursor=document.getElementById('ev-curfew'); if(cursor) cursor.style.display='none';
+  const cursor=document.getElementById('era-curfew'); if(cursor) cursor.style.display='none';
   if(_EV_ANIM_CTL) _EV_ANIM_CTL.forceStop();
 }
 
@@ -549,26 +549,26 @@ function initEras(){
   view.style.flexDirection='column';
 
   let html='';
-  html+='<div id="ev-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
-  html+='<button id="ev-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
-  html+='<div id="ev-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
+  html+='<div id="era-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
+  html+='<button id="era-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  html+='<div id="era-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
   html+='</div>';
-  html+='<div id="ev-toolbar">';
-  html+='<div class="ev-dd-wrap"><button class="ev-dd-btn" id="ev-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
-  html+='<div class="ev-dd-panel" id="ev-type-panel"><input class="ev-dd-search" id="ev-type-search" placeholder="search types\u2026"><div class="ev-dd-scroll" id="ev-type-scroll"></div></div></div>';
-  html+='<div class="ev-dd-wrap"><button class="ev-dd-btn" id="ev-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
-  html+='<div class="ev-dd-panel" id="ev-trad-panel"><input class="ev-dd-search" id="ev-trad-search" placeholder="search traditions\u2026"><div class="ev-dd-scroll" id="ev-trad-scroll"></div></div></div>';
-  html+='<button class="ev-clear-all" id="ev-clear-all" title="Clear all filters">\u00D7</button>';
+  html+='<div id="era-toolbar">';
+  html+='<div class="era-dd-wrap"><button class="era-dd-btn" id="era-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  html+='<div class="era-dd-panel" id="era-type-panel"><input class="era-dd-search" id="era-type-search" placeholder="search types\u2026"><div class="era-dd-scroll" id="era-type-scroll"></div></div></div>';
+  html+='<div class="era-dd-wrap"><button class="era-dd-btn" id="era-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
+  html+='<div class="era-dd-panel" id="era-trad-panel"><input class="era-dd-search" id="era-trad-search" placeholder="search traditions\u2026"><div class="era-dd-scroll" id="era-trad-scroll"></div></div></div>';
+  html+='<button class="era-clear-all" id="era-clear-all" title="Clear all filters">\u00D7</button>';
   
   html+='</div>';
-  html+='<div id="ev-scroll"><div id="ev-canvas"></div></div>';
+  html+='<div id="era-scroll"><div id="era-canvas"></div></div>';
   view.innerHTML=html;
 
   _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas();
 
   const pairs=[
-    {btn:'ev-type-btn',panel:'ev-type-panel',search:'ev-type-search',build:_evBuildTypePanel},
-    {btn:'ev-trad-btn',panel:'ev-trad-panel',search:'ev-trad-search',build:_evBuildTradPanel}
+    {btn:'era-type-btn',panel:'era-type-panel',search:'era-type-search',build:_evBuildTypePanel},
+    {btn:'era-trad-btn',panel:'era-trad-panel',search:'era-trad-search',build:_evBuildTradPanel}
   ];
   pairs.forEach(dd=>{
     const btn=document.getElementById(dd.btn),panel=document.getElementById(dd.panel);
@@ -586,20 +586,20 @@ function initEras(){
       if(p&&!p.contains(e.target)&&e.target!==b&&!b.contains(e.target)) p.classList.remove('open');
     });
   });
-  document.getElementById('ev-clear-all').addEventListener('click',function(e){
+  document.getElementById('era-clear-all').addEventListener('click',function(e){
     e.stopPropagation();
     _EV_FILTER.types.clear(); _EV_FILTER.trads.clear(); _EV_FILTER.search='';
-    _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-    _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
     _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
-  var _evHowBtn=document.getElementById('ev-how-btn');
+  var _evHowBtn=document.getElementById('era-how-btn');
   if(_evHowBtn) _evHowBtn.addEventListener('click',function(e){e.stopPropagation();_showErasMethodology();});
 
-  const mount=document.getElementById('ev-anim-mount');
+  const mount=document.getElementById('era-anim-mount');
   if(mount && window.AnimControls){
     _EV_ANIM_CTL=window.AnimControls.create({
-      mountEl:mount, idPrefix:'ev', initialSpeed:'1x',
+      mountEl:mount, idPrefix:'era', initialSpeed:'1x',
       onPlay:_evAnimPlay, onPause:_evAnimPause, onStop:_evAnimStop,
       onSpeedChange:function(ms){ _EV_ANIM.speedMs=ms; }
     });
@@ -636,16 +636,16 @@ window._erasAnimStop=_evAnimStop;
 window.toggleErasAnimate=function(){};
 
 window._captureState_eras=function(){
-  const s=document.getElementById('ev-scroll');
+  const s=document.getElementById('era-scroll');
   return { types:Array.from(_EV_FILTER.types), trads:Array.from(_EV_FILTER.trads), search:_EV_FILTER.search, scrollY:s?s.scrollTop:0 };
 };
 window._restoreState_eras=function(s){
   if(!s) return;
   _EV_FILTER.types=new Set(s.types||[]); _EV_FILTER.trads=new Set(s.trads||[]); _EV_FILTER.search=s.search||'';
-  _evSyncBtnLabel('ev-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-  _evSyncBtnLabel('ev-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+  _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+  _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
   _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas();
-  if(s.scrollY){ const sc=document.getElementById('ev-scroll'); if(sc) sc.scrollTop=s.scrollY; }
+  if(s.scrollY){ const sc=document.getElementById('era-scroll'); if(sc) sc.scrollTop=s.scrollY; }
 };
 
 

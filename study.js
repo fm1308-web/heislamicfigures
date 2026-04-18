@@ -318,6 +318,7 @@ if(document.readyState==='loading'){
     _origSV(v);
     if(v==='studyroom'){
       if(typeof _showViewDesc==='function') _showViewDesc('Click on scholars on the left');
+      if(!document.getElementById('sr-how-btn')){var _shb=document.createElement('button');_shb.id='sr-how-btn';_shb.textContent='How This Works';_shb.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin:8px 10px 4px";_shb.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_shb.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_shb.onclick=function(e){e.stopPropagation();_showStudyMethodology();};var _sp=document.getElementById('sr-left');if(_sp)_sp.insertBefore(_shb,_sp.firstChild);}
     }
   };
 })();
