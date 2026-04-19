@@ -893,4 +893,24 @@ window._restoreState_think=function(s){
   };
 })();
 window.initThink=initThink;
+
+window.thinkSelectConceptBySlug=function(slug){
+  if(!slug) return false;
+  // Think not ready yet (view hasn't initialized). Return false so caller can retry.
+  if(!_data || !_data.concepts) return false;
+  var target=String(slug).toLowerCase();
+  var found=null;
+  for(var i=0;i<_data.concepts.length;i++){
+    var c=_data.concepts[i];
+    if(c && c.slug && String(c.slug).toLowerCase()===target){found=c;break;}
+  }
+  if(!found){console.error('[think] concept not found: '+slug);return false;}
+  // Add (don't toggle) so calling when already-selected still leaves it selected.
+  if(!_selConceptSlugs.has(found.slug)) _selConceptSlugs.add(found.slug);
+  // Reuse the exact three render calls the dropdown click handler uses.
+  _syncConceptBtn();
+  _buildConceptPanel();
+  _renderCanvas();
+  return true;
+};
 })();

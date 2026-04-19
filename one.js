@@ -544,30 +544,15 @@ async function _renderPerson(p,container){
       if(typeof qr==='object'&&qr.count!=null){
         qh+='<div class="one-quran-count">'+qr.count+'\u00D7</div>';
         qh+='<div class="one-quran-sub">mentioned in the Quran</div>';
-        if(qr.firstVerse) qh+='<a href="'+_e(qr.url||'')+'" target="_blank" rel="noopener" class="one-quran-link">First verse: '+_e(qr.firstVerse)+' \u2197</a>';
+        if(qr.firstVerse) qh+='<div class="one-quran-link">'+(typeof renderQuranRef==="function"?renderQuranRef(qr.firstVerse):_e(qr.firstVerse))+'</div>';
         if(qr.epithet) qh+='<div class="one-quran-epithet">'+_e(qr.epithet)+'</div>';
       } else if(p.type==='Prophet'){
-        var raw=String(qr);
-        var re=/([A-Z][A-Za-z'\-\s]+?)\s+(\d+):(\d+)/g;
-        var parts=[];var m;var lastIdx=0;
-        while((m=re.exec(raw))!==null){
-          if(m.index>lastIdx) parts.push({text:raw.slice(lastIdx,m.index)});
-          parts.push({surah:m[1].trim(),ch:m[2],vs:m[3]});
-          lastIdx=re.lastIndex;
-        }
-        if(lastIdx<raw.length) parts.push({text:raw.slice(lastIdx)});
-        var inner='';
-        parts.forEach(function(pt){
-          if(pt.surah) inner+='<a href="https://quran.com/'+pt.ch+'/'+pt.vs+'" target="_blank" rel="noopener" class="one-quran-verse">'+_e(pt.surah)+' '+pt.ch+':'+pt.vs+'</a>';
-          else inner+=_e(pt.text);
-        });
-        qh+='<div>'+inner+'</div>';
+        qh+='<div>'+(typeof renderQuranRef==="function"?renderQuranRef(String(qr)):_e(String(qr)))+'</div>';
       } else {
-        qh+='<div>'+_e(String(qr))+'</div>';
+        qh+='<div>'+(typeof renderQuranRef==="function"?renderQuranRef(String(qr)):_e(String(qr)))+'</div>';
       }
     } else if(p.quran_refs){
-      qh+='<div>'+_e(p.quran_refs)+'</div>';
-      if(p.quran_link) qh+='<a href="'+_e(p.quran_link)+'" target="_blank" rel="noopener" class="one-quran-link">Open in Quran.com \uD83C\uDF10</a>';
+      qh+='<div>'+(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):_e(p.quran_refs))+'</div>';
     }
     if(p.quranDetail) qh+='<div class="one-quran-detail">'+_e(p.quranDetail)+'</div>';
     h+=_sec('\uD83D\uDD4C','Quranic References',0,qh,false);

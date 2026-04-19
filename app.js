@@ -1286,21 +1286,21 @@ function renderInfo(p){
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
           <span style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
           <span style="font-size:11px;color:var(--ip-muted)">mentioned in the Quran</span>
-          <a href="${esc(qr.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:12px;font-weight:600">First verse: ${esc(qr.firstVerse)} ↗</a>
+          <span style="font-size:12px">${typeof renderQuranRef==="function"?renderQuranRef(qr.firstVerse):esc(qr.firstVerse)}</span>
         </div>
         <div style="font-size:11.5px;color:var(--ip-muted);font-style:italic">${esc(qr.epithet)}</div>
       </div>`;
     } else {
       quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
         <div style="font-size:13px;color:var(--ip-text);line-height:1.7">
-          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em">VERSES: </span>${esc(String(qr))}
+          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em">VERSES: </span>${typeof renderQuranRef==="function"?renderQuranRef(String(qr)):esc(String(qr))}
         </div></div>`;
     }
   } else if(p.quran_refs){
     const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:12px"> — Open in Quran.com 🌐</a>`:'';
     quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
       <div style="font-size:13px;color:var(--ip-text);line-height:1.7">
-        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em">VERSES: </span>${esc(p.quran_refs)}${qlink}
+        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em">VERSES: </span>${typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs)}
       </div></div>`;
   }
 

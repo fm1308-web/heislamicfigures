@@ -268,7 +268,7 @@ function initEvents(){
 // ── BUILD ONE EVENT ROW ──
 function _buildRow(ev,showYear,spanCount){
   var catColor=CAT_COLORS[ev.category]||'#A0AEC0';
-  var h='<div class="ev-row" data-year="'+ev.year+'">';
+  var h='<div class="ev-row" data-year="'+ev.year+'" data-event-id="'+ev.id+'">';
 
   // COL 1 — Year
   if(showYear){
@@ -286,7 +286,7 @@ function _buildRow(ev,showYear,spanCount){
   h+='<div class="ev-col-story"><div class="ev-card">';
   h+='<div class="ev-card-title">'+esc(ev.title)+'</div>';
   if(ev.description) h+='<div class="ev-card-desc">'+esc(ev.description)+'</div>';
-  if(ev.quranRef) h+='<div class="ev-quran-ref">'+esc(ev.quranRef)+'</div>';
+  if(ev.quranRef) h+='<div class="ev-quran-ref">'+(typeof renderQuranRef==="function"?renderQuranRef(ev.quranRef):esc(ev.quranRef))+'</div>';
 
   var figs=ev.figures||[];
   if(figs.length){

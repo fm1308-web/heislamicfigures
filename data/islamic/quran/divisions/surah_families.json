@@ -1,0 +1,96 @@
+{
+  "description": "Special surah families",
+  "families": {
+    "hawamim": {
+      "name": "Hawamim (Ha-Mim family)",
+      "description": "Seven consecutive surahs beginning with Ha-Mim",
+      "surahs": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "musabbihat": {
+      "name": "Musabbihat (Glorifying surahs)",
+      "description": "Surahs beginning with glorification of Allah",
+      "surahs": [
+        17,
+        57,
+        59,
+        61,
+        62,
+        64,
+        87
+      ]
+    },
+    "mu_awwidhatayn": {
+      "name": "Mu'awwidhatayn (Two protection surahs)",
+      "description": "Final two surahs recited for protection",
+      "surahs": [
+        113,
+        114
+      ]
+    },
+    "prophet_named": {
+      "name": "Surahs named after prophets",
+      "description": "Surahs titled by a prophet's name",
+      "surahs": [
+        10,
+        11,
+        12,
+        14,
+        21,
+        47,
+        71
+      ]
+    },
+    "woman_named": {
+      "name": "Surahs named after women or women's topics",
+      "description": "Surahs titled with a feminine name/theme",
+      "surahs": [
+        4,
+        19,
+        58,
+        60
+      ]
+    },
+    "animal_named": {
+      "name": "Surahs named after animals",
+      "description": "Surahs titled after animals mentioned within",
+      "surahs": [
+        2,
+        16,
+        27,
+        29,
+        105
+      ]
+    },
+    "alif_lam_ra_family": {
+      "name": "Alif Lam Ra family",
+      "description": "Five consecutive surahs with Alif Lam Ra opening",
+      "surahs": [
+        10,
+        11,
+        12,
+        14,
+        15
+      ]
+    },
+    "alif_lam_mim_family": {
+      "name": "Alif Lam Mim family",
+      "description": "Six surahs opening with Alif Lam Mim",
+      "surahs": [
+        2,
+        3,
+        29,
+        30,
+        31,
+        32
+      ]
+    }
+  }
+}

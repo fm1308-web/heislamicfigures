@@ -1,0 +1,1155 @@
+{
+  "surahs": [
+    {
+      "id": 1,
+      "name_en": "Al-Fatihah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 2,
+      "name_en": "Al-Baqarah",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "281",
+          "type": "meccan",
+          "note": "Revealed during Farewell Pilgrimage in Mina"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name_en": "Ali 'Imran",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 4,
+      "name_en": "An-Nisa",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 5,
+      "name_en": "Al-Ma'idah",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "3",
+          "type": "medinan",
+          "note": "Last legal verse, revealed during Farewell Pilgrimage at Arafat"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name_en": "Al-An'am",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "20,23,91,93,114,141,151,152,153",
+          "type": "medinan",
+          "note": "Some verses held to be Medinan by classical scholars"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name_en": "Al-A'raf",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "163-170",
+          "type": "medinan",
+          "note": "Verses about Sabbath-breakers held to be Medinan by some"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name_en": "Al-Anfal",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "30-36",
+          "type": "meccan",
+          "note": "Some verses held to be Meccan, recalling pre-Hijra events"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name_en": "At-Tawbah",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 10,
+      "name_en": "Yunus",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "40,94-96",
+          "type": "medinan",
+          "note": "Some verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name_en": "Hud",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "12,17,114",
+          "type": "medinan",
+          "note": "Some verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name_en": "Yusuf",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "1-3,7",
+          "type": "medinan",
+          "note": "Some verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name_en": "Ar-Ra'd",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Scholars differ - Ibn Abbas says Meccan, others say Medinan.",
+      "exceptions": []
+    },
+    {
+      "id": 14,
+      "name_en": "Ibrahim",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "28-29",
+          "type": "medinan",
+          "note": "Held to be Medinan by some, referring to Badr casualties"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name_en": "Al-Hijr",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 16,
+      "name_en": "An-Nahl",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "126-128",
+          "type": "medinan",
+          "note": "Last three verses revealed at Uhud"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name_en": "Al-Isra",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "26,32,33,57,73-80",
+          "type": "medinan",
+          "note": "Several verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name_en": "Al-Kahf",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "28,83-101",
+          "type": "medinan",
+          "note": "Some verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name_en": "Maryam",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "58,71",
+          "type": "medinan",
+          "note": "Two verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name_en": "Ta-Ha",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "130,131",
+          "type": "medinan",
+          "note": "Two verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name_en": "Al-Anbiya",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 22,
+      "name_en": "Al-Hajj",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Mixed - some verses Meccan, most Medinan.",
+      "exceptions": [
+        {
+          "verses": "52-55",
+          "type": "meccan",
+          "note": "Meccan context"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name_en": "Al-Mu'minun",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 24,
+      "name_en": "An-Nur",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 25,
+      "name_en": "Al-Furqan",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "68-70",
+          "type": "medinan",
+          "note": "Three verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name_en": "Ash-Shu'ara",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "197,224-227",
+          "type": "medinan",
+          "note": "Closing verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name_en": "An-Naml",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 28,
+      "name_en": "Al-Qasas",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "52-55",
+          "type": "medinan",
+          "note": "Four verses held to be Medinan"
+        },
+        {
+          "verses": "85",
+          "type": "meccan",
+          "note": "Revealed at Juhfa during Hijra journey"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name_en": "Al-'Ankabut",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - majority Meccan, some verses Medinan.",
+      "exceptions": [
+        {
+          "verses": "1-11",
+          "type": "medinan",
+          "note": "Opening verses held to be Medinan by some"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name_en": "Ar-Rum",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "17",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name_en": "Luqman",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "27-29",
+          "type": "medinan",
+          "note": "Three verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "name_en": "As-Sajdah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "16-20",
+          "type": "medinan",
+          "note": "Some verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "name_en": "Al-Ahzab",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 34,
+      "name_en": "Saba",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "6",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "name_en": "Fatir",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 36,
+      "name_en": "Ya-Sin",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "45",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "name_en": "As-Saffat",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 38,
+      "name_en": "Sad",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 39,
+      "name_en": "Az-Zumar",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "52-54",
+          "type": "medinan",
+          "note": "Three verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "name_en": "Ghafir",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "56,57",
+          "type": "medinan",
+          "note": "Two verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "name_en": "Fussilat",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 42,
+      "name_en": "Ash-Shura",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "23-27",
+          "type": "medinan",
+          "note": "Several verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "name_en": "Az-Zukhruf",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "54",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "name_en": "Ad-Dukhan",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 45,
+      "name_en": "Al-Jathiyah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "14",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "name_en": "Al-Ahqaf",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "10,15,35",
+          "type": "medinan",
+          "note": "Three verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "name_en": "Muhammad",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "13",
+          "type": "meccan",
+          "note": "Revealed during Hijra journey out of Mecca"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name_en": "Al-Fath",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 49,
+      "name_en": "Al-Hujurat",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 50,
+      "name_en": "Qaf",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "38",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "name_en": "Adh-Dhariyat",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 52,
+      "name_en": "At-Tur",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 53,
+      "name_en": "An-Najm",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "32",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "name_en": "Al-Qamar",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "44-46",
+          "type": "medinan",
+          "note": "Three verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "name_en": "Ar-Rahman",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Scholars differ - Ibn Abbas says Medinan, others say Meccan.",
+      "exceptions": []
+    },
+    {
+      "id": 56,
+      "name_en": "Al-Waqi'ah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "81,82",
+          "type": "medinan",
+          "note": "Two verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "name_en": "Al-Hadid",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 58,
+      "name_en": "Al-Mujadilah",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 59,
+      "name_en": "Al-Hashr",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 60,
+      "name_en": "Al-Mumtahanah",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 61,
+      "name_en": "As-Saff",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 62,
+      "name_en": "Al-Jumu'ah",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 63,
+      "name_en": "Al-Munafiqun",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 64,
+      "name_en": "At-Taghabun",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Scholars differ - most Medinan, some narrations Meccan.",
+      "exceptions": []
+    },
+    {
+      "id": 65,
+      "name_en": "At-Talaq",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 66,
+      "name_en": "At-Tahrim",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 67,
+      "name_en": "Al-Mulk",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 68,
+      "name_en": "Al-Qalam",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "17-33,48-50",
+          "type": "medinan",
+          "note": "Several verses held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "name_en": "Al-Haqqah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 70,
+      "name_en": "Al-Ma'arij",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 71,
+      "name_en": "Nuh",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 72,
+      "name_en": "Al-Jinn",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 73,
+      "name_en": "Al-Muzzammil",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "10,11,20",
+          "type": "medinan",
+          "note": "Verses 10-11 and 20 revealed in Medina per majority"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "name_en": "Al-Muddaththir",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 75,
+      "name_en": "Al-Qiyamah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 76,
+      "name_en": "Al-Insan",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Scholars differ - majority Medinan, some say Meccan.",
+      "exceptions": []
+    },
+    {
+      "id": 77,
+      "name_en": "Al-Mursalat",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": [
+        {
+          "verses": "48",
+          "type": "medinan",
+          "note": "One verse held to be Medinan"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "name_en": "An-Naba",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 79,
+      "name_en": "An-Nazi'at",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 80,
+      "name_en": "'Abasa",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 81,
+      "name_en": "At-Takwir",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 82,
+      "name_en": "Al-Infitar",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 83,
+      "name_en": "Al-Mutaffifin",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Transitional - most say early Medinan, some late Meccan.",
+      "exceptions": []
+    },
+    {
+      "id": 84,
+      "name_en": "Al-Inshiqaq",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 85,
+      "name_en": "Al-Buruj",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 86,
+      "name_en": "At-Tariq",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 87,
+      "name_en": "Al-A'la",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 88,
+      "name_en": "Al-Ghashiyah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 89,
+      "name_en": "Al-Fajr",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 90,
+      "name_en": "Al-Balad",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 91,
+      "name_en": "Ash-Shams",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 92,
+      "name_en": "Al-Layl",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 93,
+      "name_en": "Ad-Duha",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 94,
+      "name_en": "Ash-Sharh",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 95,
+      "name_en": "At-Tin",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 96,
+      "name_en": "Al-'Alaq",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 97,
+      "name_en": "Al-Qadr",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - first revelation context Meccan, some narrations Medinan.",
+      "exceptions": []
+    },
+    {
+      "id": 98,
+      "name_en": "Al-Bayyinah",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Scholars differ - majority Medinan, some say Meccan.",
+      "exceptions": []
+    },
+    {
+      "id": 99,
+      "name_en": "Az-Zalzalah",
+      "type": "medinan",
+      "disputed": true,
+      "note": "Scholars differ - most say Medinan, some Meccan.",
+      "exceptions": []
+    },
+    {
+      "id": 100,
+      "name_en": "Al-'Adiyat",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - Ibn Masud Meccan, Ibn Abbas Medinan.",
+      "exceptions": []
+    },
+    {
+      "id": 101,
+      "name_en": "Al-Qari'ah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 102,
+      "name_en": "At-Takathur",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - most Meccan, some Medinan.",
+      "exceptions": []
+    },
+    {
+      "id": 103,
+      "name_en": "Al-'Asr",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 104,
+      "name_en": "Al-Humazah",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 105,
+      "name_en": "Al-Fil",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 106,
+      "name_en": "Quraysh",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 107,
+      "name_en": "Al-Ma'un",
+      "type": "meccan",
+      "disputed": true,
+      "note": "First three verses Meccan, last four Medinan per some scholars.",
+      "exceptions": [
+        {
+          "verses": "4-7",
+          "type": "medinan",
+          "note": "Last four verses held to be Medinan by some"
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "name_en": "Al-Kawthar",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 109,
+      "name_en": "Al-Kafirun",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 110,
+      "name_en": "An-Nasr",
+      "type": "medinan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 111,
+      "name_en": "Al-Masad",
+      "type": "meccan",
+      "disputed": false,
+      "note": null,
+      "exceptions": []
+    },
+    {
+      "id": 112,
+      "name_en": "Al-Ikhlas",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - majority Meccan, some Medinan.",
+      "exceptions": []
+    },
+    {
+      "id": 113,
+      "name_en": "Al-Falaq",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - majority Meccan, some Medinan.",
+      "exceptions": []
+    },
+    {
+      "id": 114,
+      "name_en": "An-Nas",
+      "type": "meccan",
+      "disputed": true,
+      "note": "Scholars differ - majority Meccan, some Medinan.",
+      "exceptions": []
+    }
+  ]
+}

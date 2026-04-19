@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gold Ark</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="stylesheet" href="styles.css">
@@ -44,10 +44,11 @@
   <button class="hdr-tile hdr-tile-eras" data-view="eras">ERAS</button>
   <button class="hdr-tile hdr-tile-events" data-view="events">EVENTS</button>
   <button class="hdr-tile hdr-tile-think" data-view="think">THINK</button>
+  <button class="hdr-tile hdr-tile-map" data-view="map">MAP</button>
   <button class="hdr-tile hdr-tile-talk" data-view="talk">TALK</button>
   <button class="hdr-tile hdr-tile-monastic" data-view="monastic">MONASTIC</button>
-  <button class="hdr-tile hdr-tile-map" data-view="map">MAP</button>
   <button class="hdr-tile hdr-tile-one" data-view="one">ONE</button>
+  <button class="hdr-tile hdr-tile-start" data-view="start">START</button>
 </div>
 <!-- SEARCH + SLIDER ROW -->
 <div id="hdrRow2">
@@ -376,6 +377,9 @@
     </div>
   </div>
 
+  <!-- START VIEW -->
+  <div id="start-view" style="display:none"></div>
+
   <!-- INFO PANEL -->
   <div id="infoPanel">
     <div id="infoHdr"><button id="figureBackBtn" onclick="var prev=popFigureHistory();if(prev)jumpTo(prev);" style="display:none;align-items:center;background:none;border:1px solid var(--border2);color:var(--accent);font-size:11px;cursor:pointer;padding:2px 8px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:8px" title="Previous figure">&#8592; Back</button>INFORMATION<button onclick="activePerson=null;showEmptyInfo()" style="margin-left:auto;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:0 2px">✕</button></div>
@@ -385,7 +389,8 @@
     </div>
     <div id="infoScrollFoot"></div>
   </div>
-  <div id="updates-view" style="display:none;flex:1;overflow-y:auto;padding:40px;font-family:'Source Sans 3',system-ui,sans-serif;color:#ccc"></div>
+
+  <div id="updates-view" style="display:none;flex:1;overflow-y:auto;padding:40px;font-family:'Source Sans 3',system-ui,sans-serif;color:#ccc"></div>
 
 </div><!-- /mainShell -->
 
@@ -396,6 +401,7 @@
 <script src="gate.js"></script>
 <script src="feedback.js"></script>
 <script src="nav.js"></script>
+<script src="quranlink.js"></script>
 <script src="app.js"></script>
 <script src="study.js"></script>
 <script src="silsila.js"></script>
@@ -412,6 +418,8 @@
 <script src="share.js"></script>
 <script src="anim.js"></script>
 <script src="books.js"></script>
+<script src="start.js"></script>
+<script src="quran-audio.js"></script>
 <script src="monastic.js"></script>
 <script src="updates.js"></script>
 <script>

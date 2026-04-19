@@ -1,0 +1,40 @@
+{
+  "description": "7 Manzil - weekly reading cycle",
+  "manzil": [
+    {
+      "number": 1,
+      "surah_range": "1-4",
+      "description": "Al-Fatihah to An-Nisa"
+    },
+    {
+      "number": 2,
+      "surah_range": "5-9",
+      "description": "Al-Ma'idah to At-Tawbah"
+    },
+    {
+      "number": 3,
+      "surah_range": "10-16",
+      "description": "Yunus to An-Nahl"
+    },
+    {
+      "number": 4,
+      "surah_range": "17-25",
+      "description": "Al-Isra to Al-Furqan"
+    },
+    {
+      "number": 5,
+      "surah_range": "26-36",
+      "description": "Ash-Shu'ara to Ya-Sin"
+    },
+    {
+      "number": 6,
+      "surah_range": "37-49",
+      "description": "As-Saffat to Al-Hujurat"
+    },
+    {
+      "number": 7,
+      "surah_range": "50-114",
+      "description": "Qaf to An-Nas"
+    }
+  ]
+}

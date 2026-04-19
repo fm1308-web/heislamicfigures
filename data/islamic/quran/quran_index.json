@@ -1,0 +1,1028 @@
+[
+  {
+    "id": 1,
+    "name_ar": "الفاتحة",
+    "name_en": "Al-Fatihah",
+    "meaning": "The Opener",
+    "type": "meccan",
+    "verses": 7,
+    "juz_start": 1
+  },
+  {
+    "id": 2,
+    "name_ar": "البقرة",
+    "name_en": "Al-Baqarah",
+    "meaning": "The Cow",
+    "type": "medinan",
+    "verses": 286,
+    "juz_start": 1
+  },
+  {
+    "id": 3,
+    "name_ar": "آل عمران",
+    "name_en": "Ali 'Imran",
+    "meaning": "Family of Imran",
+    "type": "medinan",
+    "verses": 200,
+    "juz_start": 3
+  },
+  {
+    "id": 4,
+    "name_ar": "النساء",
+    "name_en": "An-Nisa",
+    "meaning": "The Women",
+    "type": "medinan",
+    "verses": 176,
+    "juz_start": 4
+  },
+  {
+    "id": 5,
+    "name_ar": "المائدة",
+    "name_en": "Al-Ma'idah",
+    "meaning": "The Table Spread",
+    "type": "medinan",
+    "verses": 120,
+    "juz_start": 6
+  },
+  {
+    "id": 6,
+    "name_ar": "الأنعام",
+    "name_en": "Al-An'am",
+    "meaning": "The Cattle",
+    "type": "meccan",
+    "verses": 165,
+    "juz_start": 7
+  },
+  {
+    "id": 7,
+    "name_ar": "الأعراف",
+    "name_en": "Al-A'raf",
+    "meaning": "The Heights",
+    "type": "meccan",
+    "verses": 206,
+    "juz_start": 8
+  },
+  {
+    "id": 8,
+    "name_ar": "الأنفال",
+    "name_en": "Al-Anfal",
+    "meaning": "The Spoils of War",
+    "type": "medinan",
+    "verses": 75,
+    "juz_start": 9
+  },
+  {
+    "id": 9,
+    "name_ar": "التوبة",
+    "name_en": "At-Tawbah",
+    "meaning": "The Repentance",
+    "type": "medinan",
+    "verses": 129,
+    "juz_start": 10
+  },
+  {
+    "id": 10,
+    "name_ar": "يونس",
+    "name_en": "Yunus",
+    "meaning": "Jonah",
+    "type": "meccan",
+    "verses": 109,
+    "juz_start": 11
+  },
+  {
+    "id": 11,
+    "name_ar": "هود",
+    "name_en": "Hud",
+    "meaning": "Hud",
+    "type": "meccan",
+    "verses": 123,
+    "juz_start": 11
+  },
+  {
+    "id": 12,
+    "name_ar": "يوسف",
+    "name_en": "Yusuf",
+    "meaning": "Joseph",
+    "type": "meccan",
+    "verses": 111,
+    "juz_start": 12
+  },
+  {
+    "id": 13,
+    "name_ar": "الرعد",
+    "name_en": "Ar-Ra'd",
+    "meaning": "The Thunder",
+    "type": "medinan",
+    "verses": 43,
+    "juz_start": 13
+  },
+  {
+    "id": 14,
+    "name_ar": "ابراهيم",
+    "name_en": "Ibrahim",
+    "meaning": "Abraham",
+    "type": "meccan",
+    "verses": 52,
+    "juz_start": 13
+  },
+  {
+    "id": 15,
+    "name_ar": "الحجر",
+    "name_en": "Al-Hijr",
+    "meaning": "The Rocky Tract",
+    "type": "meccan",
+    "verses": 99,
+    "juz_start": 14
+  },
+  {
+    "id": 16,
+    "name_ar": "النحل",
+    "name_en": "An-Nahl",
+    "meaning": "The Bee",
+    "type": "meccan",
+    "verses": 128,
+    "juz_start": 14
+  },
+  {
+    "id": 17,
+    "name_ar": "الإسراء",
+    "name_en": "Al-Isra",
+    "meaning": "The Night Journey",
+    "type": "meccan",
+    "verses": 111,
+    "juz_start": 15
+  },
+  {
+    "id": 18,
+    "name_ar": "الكهف",
+    "name_en": "Al-Kahf",
+    "meaning": "The Cave",
+    "type": "meccan",
+    "verses": 110,
+    "juz_start": 15
+  },
+  {
+    "id": 19,
+    "name_ar": "مريم",
+    "name_en": "Maryam",
+    "meaning": "Mary",
+    "type": "meccan",
+    "verses": 98,
+    "juz_start": 16
+  },
+  {
+    "id": 20,
+    "name_ar": "طه",
+    "name_en": "Taha",
+    "meaning": "Ta-Ha",
+    "type": "meccan",
+    "verses": 135,
+    "juz_start": 16
+  },
+  {
+    "id": 21,
+    "name_ar": "الأنبياء",
+    "name_en": "Al-Anbya",
+    "meaning": "The Prophets",
+    "type": "meccan",
+    "verses": 112,
+    "juz_start": 17
+  },
+  {
+    "id": 22,
+    "name_ar": "الحج",
+    "name_en": "Al-Hajj",
+    "meaning": "The Pilgrimage",
+    "type": "medinan",
+    "verses": 78,
+    "juz_start": 17
+  },
+  {
+    "id": 23,
+    "name_ar": "المؤمنون",
+    "name_en": "Al-Mu'minun",
+    "meaning": "The Believers",
+    "type": "meccan",
+    "verses": 118,
+    "juz_start": 18
+  },
+  {
+    "id": 24,
+    "name_ar": "النور",
+    "name_en": "An-Nur",
+    "meaning": "The Light",
+    "type": "medinan",
+    "verses": 64,
+    "juz_start": 18
+  },
+  {
+    "id": 25,
+    "name_ar": "الفرقان",
+    "name_en": "Al-Furqan",
+    "meaning": "The Criterion",
+    "type": "meccan",
+    "verses": 77,
+    "juz_start": 18
+  },
+  {
+    "id": 26,
+    "name_ar": "الشعراء",
+    "name_en": "Ash-Shu'ara",
+    "meaning": "The Poets",
+    "type": "meccan",
+    "verses": 227,
+    "juz_start": 19
+  },
+  {
+    "id": 27,
+    "name_ar": "النمل",
+    "name_en": "An-Naml",
+    "meaning": "The Ant",
+    "type": "meccan",
+    "verses": 93,
+    "juz_start": 19
+  },
+  {
+    "id": 28,
+    "name_ar": "القصص",
+    "name_en": "Al-Qasas",
+    "meaning": "The Stories",
+    "type": "meccan",
+    "verses": 88,
+    "juz_start": 20
+  },
+  {
+    "id": 29,
+    "name_ar": "العنكبوت",
+    "name_en": "Al-'Ankabut",
+    "meaning": "The Spider",
+    "type": "meccan",
+    "verses": 69,
+    "juz_start": 20
+  },
+  {
+    "id": 30,
+    "name_ar": "الروم",
+    "name_en": "Ar-Rum",
+    "meaning": "The Romans",
+    "type": "meccan",
+    "verses": 60,
+    "juz_start": 21
+  },
+  {
+    "id": 31,
+    "name_ar": "لقمان",
+    "name_en": "Luqman",
+    "meaning": "Luqman",
+    "type": "meccan",
+    "verses": 34,
+    "juz_start": 21
+  },
+  {
+    "id": 32,
+    "name_ar": "السجدة",
+    "name_en": "As-Sajdah",
+    "meaning": "The Prostration",
+    "type": "meccan",
+    "verses": 30,
+    "juz_start": 21
+  },
+  {
+    "id": 33,
+    "name_ar": "الأحزاب",
+    "name_en": "Al-Ahzab",
+    "meaning": "The Combined Forces",
+    "type": "medinan",
+    "verses": 73,
+    "juz_start": 21
+  },
+  {
+    "id": 34,
+    "name_ar": "سبإ",
+    "name_en": "Saba",
+    "meaning": "Sheba",
+    "type": "meccan",
+    "verses": 54,
+    "juz_start": 22
+  },
+  {
+    "id": 35,
+    "name_ar": "فاطر",
+    "name_en": "Fatir",
+    "meaning": "Originator",
+    "type": "meccan",
+    "verses": 45,
+    "juz_start": 22
+  },
+  {
+    "id": 36,
+    "name_ar": "يس",
+    "name_en": "Ya-Sin",
+    "meaning": "Ya Sin",
+    "type": "meccan",
+    "verses": 83,
+    "juz_start": 22
+  },
+  {
+    "id": 37,
+    "name_ar": "الصافات",
+    "name_en": "As-Saffat",
+    "meaning": "Those who set the Ranks",
+    "type": "meccan",
+    "verses": 182,
+    "juz_start": 23
+  },
+  {
+    "id": 38,
+    "name_ar": "ص",
+    "name_en": "Sad",
+    "meaning": "The Letter \"Saad\"",
+    "type": "meccan",
+    "verses": 88,
+    "juz_start": 23
+  },
+  {
+    "id": 39,
+    "name_ar": "الزمر",
+    "name_en": "Az-Zumar",
+    "meaning": "The Troops",
+    "type": "meccan",
+    "verses": 75,
+    "juz_start": 23
+  },
+  {
+    "id": 40,
+    "name_ar": "غافر",
+    "name_en": "Ghafir",
+    "meaning": "The Forgiver",
+    "type": "meccan",
+    "verses": 85,
+    "juz_start": 24
+  },
+  {
+    "id": 41,
+    "name_ar": "فصلت",
+    "name_en": "Fussilat",
+    "meaning": "Explained in Detail",
+    "type": "meccan",
+    "verses": 54,
+    "juz_start": 24
+  },
+  {
+    "id": 42,
+    "name_ar": "الشورى",
+    "name_en": "Ash-Shuraa",
+    "meaning": "The Consultation",
+    "type": "meccan",
+    "verses": 53,
+    "juz_start": 25
+  },
+  {
+    "id": 43,
+    "name_ar": "الزخرف",
+    "name_en": "Az-Zukhruf",
+    "meaning": "The Ornaments of Gold",
+    "type": "meccan",
+    "verses": 89,
+    "juz_start": 25
+  },
+  {
+    "id": 44,
+    "name_ar": "الدخان",
+    "name_en": "Ad-Dukhan",
+    "meaning": "The Smoke",
+    "type": "meccan",
+    "verses": 59,
+    "juz_start": 25
+  },
+  {
+    "id": 45,
+    "name_ar": "الجاثية",
+    "name_en": "Al-Jathiyah",
+    "meaning": "The Crouching",
+    "type": "meccan",
+    "verses": 37,
+    "juz_start": 25
+  },
+  {
+    "id": 46,
+    "name_ar": "الأحقاف",
+    "name_en": "Al-Ahqaf",
+    "meaning": "The Wind-Curved Sandhills",
+    "type": "meccan",
+    "verses": 35,
+    "juz_start": 26
+  },
+  {
+    "id": 47,
+    "name_ar": "محمد",
+    "name_en": "Muhammad",
+    "meaning": "Muhammad",
+    "type": "medinan",
+    "verses": 38,
+    "juz_start": 26
+  },
+  {
+    "id": 48,
+    "name_ar": "الفتح",
+    "name_en": "Al-Fath",
+    "meaning": "The Victory",
+    "type": "medinan",
+    "verses": 29,
+    "juz_start": 26
+  },
+  {
+    "id": 49,
+    "name_ar": "الحجرات",
+    "name_en": "Al-Hujurat",
+    "meaning": "The Rooms",
+    "type": "medinan",
+    "verses": 18,
+    "juz_start": 26
+  },
+  {
+    "id": 50,
+    "name_ar": "ق",
+    "name_en": "Qaf",
+    "meaning": "The Letter \"Qaf\"",
+    "type": "meccan",
+    "verses": 45,
+    "juz_start": 26
+  },
+  {
+    "id": 51,
+    "name_ar": "الذاريات",
+    "name_en": "Adh-Dhariyat",
+    "meaning": "The Winnowing Winds",
+    "type": "meccan",
+    "verses": 60,
+    "juz_start": 26
+  },
+  {
+    "id": 52,
+    "name_ar": "الطور",
+    "name_en": "At-Tur",
+    "meaning": "The Mount",
+    "type": "meccan",
+    "verses": 49,
+    "juz_start": 27
+  },
+  {
+    "id": 53,
+    "name_ar": "النجم",
+    "name_en": "An-Najm",
+    "meaning": "The Star",
+    "type": "meccan",
+    "verses": 62,
+    "juz_start": 27
+  },
+  {
+    "id": 54,
+    "name_ar": "القمر",
+    "name_en": "Al-Qamar",
+    "meaning": "The Moon",
+    "type": "meccan",
+    "verses": 55,
+    "juz_start": 27
+  },
+  {
+    "id": 55,
+    "name_ar": "الرحمن",
+    "name_en": "Ar-Rahman",
+    "meaning": "The Beneficent",
+    "type": "medinan",
+    "verses": 78,
+    "juz_start": 27
+  },
+  {
+    "id": 56,
+    "name_ar": "الواقعة",
+    "name_en": "Al-Waqi'ah",
+    "meaning": "The Inevitable",
+    "type": "meccan",
+    "verses": 96,
+    "juz_start": 27
+  },
+  {
+    "id": 57,
+    "name_ar": "الحديد",
+    "name_en": "Al-Hadid",
+    "meaning": "The Iron",
+    "type": "medinan",
+    "verses": 29,
+    "juz_start": 27
+  },
+  {
+    "id": 58,
+    "name_ar": "المجادلة",
+    "name_en": "Al-Mujadila",
+    "meaning": "The Pleading Woman",
+    "type": "medinan",
+    "verses": 22,
+    "juz_start": 28
+  },
+  {
+    "id": 59,
+    "name_ar": "الحشر",
+    "name_en": "Al-Hashr",
+    "meaning": "The Exile",
+    "type": "medinan",
+    "verses": 24,
+    "juz_start": 28
+  },
+  {
+    "id": 60,
+    "name_ar": "الممتحنة",
+    "name_en": "Al-Mumtahanah",
+    "meaning": "She that is to be examined",
+    "type": "medinan",
+    "verses": 13,
+    "juz_start": 28
+  },
+  {
+    "id": 61,
+    "name_ar": "الصف",
+    "name_en": "As-Saf",
+    "meaning": "The Ranks",
+    "type": "medinan",
+    "verses": 14,
+    "juz_start": 28
+  },
+  {
+    "id": 62,
+    "name_ar": "الجمعة",
+    "name_en": "Al-Jumu'ah",
+    "meaning": "The Congregation, Friday",
+    "type": "medinan",
+    "verses": 11,
+    "juz_start": 28
+  },
+  {
+    "id": 63,
+    "name_ar": "المنافقون",
+    "name_en": "Al-Munafiqun",
+    "meaning": "The Hypocrites",
+    "type": "medinan",
+    "verses": 11,
+    "juz_start": 28
+  },
+  {
+    "id": 64,
+    "name_ar": "التغابن",
+    "name_en": "At-Taghabun",
+    "meaning": "The Mutual Disillusion",
+    "type": "medinan",
+    "verses": 18,
+    "juz_start": 28
+  },
+  {
+    "id": 65,
+    "name_ar": "الطلاق",
+    "name_en": "At-Talaq",
+    "meaning": "The Divorce",
+    "type": "medinan",
+    "verses": 12,
+    "juz_start": 28
+  },
+  {
+    "id": 66,
+    "name_ar": "التحريم",
+    "name_en": "At-Tahrim",
+    "meaning": "The Prohibition",
+    "type": "medinan",
+    "verses": 12,
+    "juz_start": 28
+  },
+  {
+    "id": 67,
+    "name_ar": "الملك",
+    "name_en": "Al-Mulk",
+    "meaning": "The Sovereignty",
+    "type": "meccan",
+    "verses": 30,
+    "juz_start": 29
+  },
+  {
+    "id": 68,
+    "name_ar": "القلم",
+    "name_en": "Al-Qalam",
+    "meaning": "The Pen",
+    "type": "meccan",
+    "verses": 52,
+    "juz_start": 29
+  },
+  {
+    "id": 69,
+    "name_ar": "الحاقة",
+    "name_en": "Al-Haqqah",
+    "meaning": "The Reality",
+    "type": "meccan",
+    "verses": 52,
+    "juz_start": 29
+  },
+  {
+    "id": 70,
+    "name_ar": "المعارج",
+    "name_en": "Al-Ma'arij",
+    "meaning": "The Ascending Stairways",
+    "type": "meccan",
+    "verses": 44,
+    "juz_start": 29
+  },
+  {
+    "id": 71,
+    "name_ar": "نوح",
+    "name_en": "Nuh",
+    "meaning": "Noah",
+    "type": "meccan",
+    "verses": 28,
+    "juz_start": 29
+  },
+  {
+    "id": 72,
+    "name_ar": "الجن",
+    "name_en": "Al-Jinn",
+    "meaning": "The Jinn",
+    "type": "meccan",
+    "verses": 28,
+    "juz_start": 29
+  },
+  {
+    "id": 73,
+    "name_ar": "المزمل",
+    "name_en": "Al-Muzzammil",
+    "meaning": "The Enshrouded One",
+    "type": "meccan",
+    "verses": 20,
+    "juz_start": 29
+  },
+  {
+    "id": 74,
+    "name_ar": "المدثر",
+    "name_en": "Al-Muddaththir",
+    "meaning": "The Cloaked One",
+    "type": "meccan",
+    "verses": 56,
+    "juz_start": 29
+  },
+  {
+    "id": 75,
+    "name_ar": "القيامة",
+    "name_en": "Al-Qiyamah",
+    "meaning": "The Resurrection",
+    "type": "meccan",
+    "verses": 40,
+    "juz_start": 29
+  },
+  {
+    "id": 76,
+    "name_ar": "الانسان",
+    "name_en": "Al-Insan",
+    "meaning": "The Man",
+    "type": "medinan",
+    "verses": 31,
+    "juz_start": 29
+  },
+  {
+    "id": 77,
+    "name_ar": "المرسلات",
+    "name_en": "Al-Mursalat",
+    "meaning": "The Emissaries",
+    "type": "meccan",
+    "verses": 50,
+    "juz_start": 29
+  },
+  {
+    "id": 78,
+    "name_ar": "النبإ",
+    "name_en": "An-Naba",
+    "meaning": "The Tidings",
+    "type": "meccan",
+    "verses": 40,
+    "juz_start": 30
+  },
+  {
+    "id": 79,
+    "name_ar": "النازعات",
+    "name_en": "An-Nazi'at",
+    "meaning": "Those who drag forth",
+    "type": "meccan",
+    "verses": 46,
+    "juz_start": 30
+  },
+  {
+    "id": 80,
+    "name_ar": "عبس",
+    "name_en": "'Abasa",
+    "meaning": "He Frowned",
+    "type": "meccan",
+    "verses": 42,
+    "juz_start": 30
+  },
+  {
+    "id": 81,
+    "name_ar": "التكوير",
+    "name_en": "At-Takwir",
+    "meaning": "The Overthrowing",
+    "type": "meccan",
+    "verses": 29,
+    "juz_start": 30
+  },
+  {
+    "id": 82,
+    "name_ar": "الإنفطار",
+    "name_en": "Al-Infitar",
+    "meaning": "The Cleaving",
+    "type": "meccan",
+    "verses": 19,
+    "juz_start": 30
+  },
+  {
+    "id": 83,
+    "name_ar": "المطففين",
+    "name_en": "Al-Mutaffifin",
+    "meaning": "The Defrauding",
+    "type": "meccan",
+    "verses": 36,
+    "juz_start": 30
+  },
+  {
+    "id": 84,
+    "name_ar": "الإنشقاق",
+    "name_en": "Al-Inshiqaq",
+    "meaning": "The Sundering",
+    "type": "meccan",
+    "verses": 25,
+    "juz_start": 30
+  },
+  {
+    "id": 85,
+    "name_ar": "البروج",
+    "name_en": "Al-Buruj",
+    "meaning": "The Mansions of the Stars",
+    "type": "meccan",
+    "verses": 22,
+    "juz_start": 30
+  },
+  {
+    "id": 86,
+    "name_ar": "الطارق",
+    "name_en": "At-Tariq",
+    "meaning": "The Nightcommer",
+    "type": "meccan",
+    "verses": 17,
+    "juz_start": 30
+  },
+  {
+    "id": 87,
+    "name_ar": "الأعلى",
+    "name_en": "Al-A'la",
+    "meaning": "The Most High",
+    "type": "meccan",
+    "verses": 19,
+    "juz_start": 30
+  },
+  {
+    "id": 88,
+    "name_ar": "الغاشية",
+    "name_en": "Al-Ghashiyah",
+    "meaning": "The Overwhelming",
+    "type": "meccan",
+    "verses": 26,
+    "juz_start": 30
+  },
+  {
+    "id": 89,
+    "name_ar": "الفجر",
+    "name_en": "Al-Fajr",
+    "meaning": "The Dawn",
+    "type": "meccan",
+    "verses": 30,
+    "juz_start": 30
+  },
+  {
+    "id": 90,
+    "name_ar": "البلد",
+    "name_en": "Al-Balad",
+    "meaning": "The City",
+    "type": "meccan",
+    "verses": 20,
+    "juz_start": 30
+  },
+  {
+    "id": 91,
+    "name_ar": "الشمس",
+    "name_en": "Ash-Shams",
+    "meaning": "The Sun",
+    "type": "meccan",
+    "verses": 15,
+    "juz_start": 30
+  },
+  {
+    "id": 92,
+    "name_ar": "الليل",
+    "name_en": "Al-Layl",
+    "meaning": "The Night",
+    "type": "meccan",
+    "verses": 21,
+    "juz_start": 30
+  },
+  {
+    "id": 93,
+    "name_ar": "الضحى",
+    "name_en": "Ad-Duhaa",
+    "meaning": "The Morning Hours",
+    "type": "meccan",
+    "verses": 11,
+    "juz_start": 30
+  },
+  {
+    "id": 94,
+    "name_ar": "الشرح",
+    "name_en": "Ash-Sharh",
+    "meaning": "The Relief",
+    "type": "meccan",
+    "verses": 8,
+    "juz_start": 30
+  },
+  {
+    "id": 95,
+    "name_ar": "التين",
+    "name_en": "At-Tin",
+    "meaning": "The Fig",
+    "type": "meccan",
+    "verses": 8,
+    "juz_start": 30
+  },
+  {
+    "id": 96,
+    "name_ar": "العلق",
+    "name_en": "Al-'Alaq",
+    "meaning": "The Clot",
+    "type": "meccan",
+    "verses": 19,
+    "juz_start": 30
+  },
+  {
+    "id": 97,
+    "name_ar": "القدر",
+    "name_en": "Al-Qadr",
+    "meaning": "The Power",
+    "type": "meccan",
+    "verses": 5,
+    "juz_start": 30
+  },
+  {
+    "id": 98,
+    "name_ar": "البينة",
+    "name_en": "Al-Bayyinah",
+    "meaning": "The Clear Proof",
+    "type": "medinan",
+    "verses": 8,
+    "juz_start": 30
+  },
+  {
+    "id": 99,
+    "name_ar": "الزلزلة",
+    "name_en": "Az-Zalzalah",
+    "meaning": "The Earthquake",
+    "type": "medinan",
+    "verses": 8,
+    "juz_start": 30
+  },
+  {
+    "id": 100,
+    "name_ar": "العاديات",
+    "name_en": "Al-'Adiyat",
+    "meaning": "The Courser",
+    "type": "meccan",
+    "verses": 11,
+    "juz_start": 30
+  },
+  {
+    "id": 101,
+    "name_ar": "القارعة",
+    "name_en": "Al-Qari'ah",
+    "meaning": "The Calamity",
+    "type": "meccan",
+    "verses": 11,
+    "juz_start": 30
+  },
+  {
+    "id": 102,
+    "name_ar": "التكاثر",
+    "name_en": "At-Takathur",
+    "meaning": "The Rivalry in world increase",
+    "type": "meccan",
+    "verses": 8,
+    "juz_start": 30
+  },
+  {
+    "id": 103,
+    "name_ar": "العصر",
+    "name_en": "Al-'Asr",
+    "meaning": "The Declining Day",
+    "type": "meccan",
+    "verses": 3,
+    "juz_start": 30
+  },
+  {
+    "id": 104,
+    "name_ar": "الهمزة",
+    "name_en": "Al-Humazah",
+    "meaning": "The Traducer",
+    "type": "meccan",
+    "verses": 9,
+    "juz_start": 30
+  },
+  {
+    "id": 105,
+    "name_ar": "الفيل",
+    "name_en": "Al-Fil",
+    "meaning": "The Elephant",
+    "type": "meccan",
+    "verses": 5,
+    "juz_start": 30
+  },
+  {
+    "id": 106,
+    "name_ar": "قريش",
+    "name_en": "Quraysh",
+    "meaning": "Quraysh",
+    "type": "meccan",
+    "verses": 4,
+    "juz_start": 30
+  },
+  {
+    "id": 107,
+    "name_ar": "الماعون",
+    "name_en": "Al-Ma'un",
+    "meaning": "The Small kindnesses",
+    "type": "meccan",
+    "verses": 7,
+    "juz_start": 30
+  },
+  {
+    "id": 108,
+    "name_ar": "الكوثر",
+    "name_en": "Al-Kawthar",
+    "meaning": "The Abundance",
+    "type": "meccan",
+    "verses": 3,
+    "juz_start": 30
+  },
+  {
+    "id": 109,
+    "name_ar": "الكافرون",
+    "name_en": "Al-Kafirun",
+    "meaning": "The Disbelievers",
+    "type": "meccan",
+    "verses": 6,
+    "juz_start": 30
+  },
+  {
+    "id": 110,
+    "name_ar": "النصر",
+    "name_en": "An-Nasr",
+    "meaning": "The Divine Support",
+    "type": "medinan",
+    "verses": 3,
+    "juz_start": 30
+  },
+  {
+    "id": 111,
+    "name_ar": "المسد",
+    "name_en": "Al-Masad",
+    "meaning": "The Palm Fiber",
+    "type": "meccan",
+    "verses": 5,
+    "juz_start": 30
+  },
+  {
+    "id": 112,
+    "name_ar": "الإخلاص",
+    "name_en": "Al-Ikhlas",
+    "meaning": "The Sincerity",
+    "type": "meccan",
+    "verses": 4,
+    "juz_start": 30
+  },
+  {
+    "id": 113,
+    "name_ar": "الفلق",
+    "name_en": "Al-Falaq",
+    "meaning": "The Daybreak",
+    "type": "meccan",
+    "verses": 5,
+    "juz_start": 30
+  },
+  {
+    "id": 114,
+    "name_ar": "الناس",
+    "name_en": "An-Nas",
+    "meaning": "Mankind",
+    "type": "meccan",
+    "verses": 6,
+    "juz_start": 30
+  }
+]

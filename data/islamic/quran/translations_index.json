@@ -1,0 +1,182 @@
+{
+  "version": "2",
+  "default": "eng_saheeh",
+  "translations": [
+    {
+      "slug": "arabic",
+      "english_name": "Arabic",
+      "native_name": "العربية",
+      "translator": "Uthmani script",
+      "direction": "rtl",
+      "loaded_from_file": false,
+      "source": "quran_text.json"
+    },
+    {
+      "slug": "eng_saheeh",
+      "english_name": "English",
+      "native_name": "English",
+      "translator": "Saheeh International",
+      "direction": "ltr",
+      "loaded_from_file": false,
+      "source": "quran_text.json"
+    },
+    {
+      "slug": "transliteration",
+      "english_name": "Transliteration",
+      "native_name": "Transliteration",
+      "translator": "Roman script",
+      "direction": "ltr",
+      "loaded_from_file": false,
+      "source": "quran_text.json"
+    },
+    {
+      "slug": "urd_jalandhri",
+      "english_name": "Urdu",
+      "native_name": "اردو",
+      "translator": "Fateh Muhammad Jalandhri",
+      "direction": "rtl",
+      "file": "translations/urd_jalandhri.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "ind_ministry",
+      "english_name": "Indonesian",
+      "native_name": "Bahasa Indonesia",
+      "translator": "Ministry of Religious Affairs",
+      "direction": "ltr",
+      "file": "translations/ind_ministry.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "ben_khan",
+      "english_name": "Bengali",
+      "native_name": "বাংলা",
+      "translator": "Muhiuddin Khan",
+      "direction": "ltr",
+      "file": "translations/ben_khan.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "tur_diyanet",
+      "english_name": "Turkish",
+      "native_name": "Türkçe",
+      "translator": "Diyanet İşleri",
+      "direction": "ltr",
+      "file": "translations/tur_diyanet.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "fas_fooladvand",
+      "english_name": "Persian",
+      "native_name": "فارسی",
+      "translator": "Fooladvand",
+      "direction": "rtl",
+      "file": "translations/fas_fooladvand.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "fra_hamidullah",
+      "english_name": "French",
+      "native_name": "Français",
+      "translator": "Muhammad Hamidullah",
+      "direction": "ltr",
+      "file": "translations/fra_hamidullah.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "rus_kuliev",
+      "english_name": "Russian",
+      "native_name": "Русский",
+      "translator": "Elmir Kuliev",
+      "direction": "ltr",
+      "file": "translations/rus_kuliev.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "spa_garcia",
+      "english_name": "Spanish",
+      "native_name": "Español",
+      "translator": "Isa Garcia",
+      "direction": "ltr",
+      "file": "translations/spa_garcia.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "por_elhayek",
+      "english_name": "Portuguese",
+      "native_name": "Português",
+      "translator": "El-Hayek / Nasr",
+      "direction": "ltr",
+      "file": "translations/por_elhayek.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "deu_bubenheim",
+      "english_name": "German",
+      "native_name": "Deutsch",
+      "translator": "Bubenheim & Elyas",
+      "direction": "ltr",
+      "file": "translations/deu_bubenheim.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "hin_omari",
+      "english_name": "Hindi",
+      "native_name": "हिन्दी",
+      "translator": "Suhel Farooq Khan / Omari",
+      "direction": "ltr",
+      "file": "translations/hin_omari.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "zho_majian",
+      "english_name": "Chinese",
+      "native_name": "中文",
+      "translator": "Ma Jian",
+      "direction": "ltr",
+      "file": "translations/zho_majian.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "ita_piccardo",
+      "english_name": "Italian",
+      "native_name": "Italiano",
+      "translator": "Hamza Piccardo",
+      "direction": "ltr",
+      "file": "translations/ita_piccardo.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "jpn_mita",
+      "english_name": "Japanese",
+      "native_name": "日本語",
+      "translator": "Ryoichi Mita",
+      "direction": "ltr",
+      "file": "translations/jpn_mita.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "kor_choi",
+      "english_name": "Korean",
+      "native_name": "한국어",
+      "translator": "Hamid Choi",
+      "direction": "ltr",
+      "file": "translations/kor_choi.json",
+      "loaded_from_file": true
+    },
+    {
+      "slug": "swa_barwani",
+      "english_name": "Swahili",
+      "native_name": "Kiswahili",
+      "translator": "Ali Muhsin Al-Barwani",
+      "direction": "ltr",
+      "file": "translations/swa_barwani.json",
+      "loaded_from_file": true
+    }
+  ],
+  "stats": {
+    "total_options": 19,
+    "file_based": 16,
+    "embedded": 3
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "description": "Sajdah (prostration) marks extracted from Quran text. Extends earlier sajdah.json with exact char positions.",
+  "marks": [
+    {
+      "surah": 7,
+      "verse": 206,
+      "char_pos": 106,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 13,
+      "verse": 15,
+      "char_pos": 111,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 16,
+      "verse": 50,
+      "char_pos": 65,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 17,
+      "verse": 109,
+      "char_pos": 59,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 19,
+      "verse": 58,
+      "char_pos": 288,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 22,
+      "verse": 18,
+      "char_pos": 308,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 22,
+      "verse": 77,
+      "char_pos": 129,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 25,
+      "verse": 60,
+      "char_pos": 124,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 27,
+      "verse": 26,
+      "char_pos": 59,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 32,
+      "verse": 15,
+      "char_pos": 144,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 38,
+      "verse": 24,
+      "char_pos": 299,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 41,
+      "verse": 38,
+      "char_pos": 114,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 53,
+      "verse": 62,
+      "char_pos": 35,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 84,
+      "verse": 21,
+      "char_pos": 55,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    },
+    {
+      "surah": 96,
+      "verse": 19,
+      "char_pos": 41,
+      "mark_type": "sajdah",
+      "sign": "۩"
+    }
+  ]
+}
