@@ -2766,7 +2766,7 @@ body.mon-drill-on #mon-filters { display: none !important; }
 .mon-drill-inline-back-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 14px; margin-bottom: 12px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.6); border-radius: 3px; color: #D4AF37; font-family: 'Cinzel', serif; font-size: var(--fs-3); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
 .mon-drill-inline-back-btn:hover { background: rgba(212,175,55,0.25); }
 .mon-drill-inline-header { margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.12); }
-.mon-drill-inline-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.mon-drill-inline-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .mon-drill-inline-row-hdr { font-family: 'Cinzel', serif; font-size: var(--fs-3); letter-spacing: .1em; text-transform: uppercase; color: rgba(160,174,192,0.7); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
 .mon-drill-inline-col-a { min-width: 0; }
 .mon-drill-inline-col-b { min-width: 0; }
@@ -3913,6 +3913,32 @@ body.tl-focus #rowsScroll .tl-row.tl-compressed .tc-dot {
 /* BV19 final — hide empty filter bar strip; make pill + era title match #infoHdr exactly */
 #filterBar { display: none !important; }
 
+/* Pin title rows — survive view switching */
+#tlFocusPill {
+  width: var(--col1-w) !important;
+  max-width: var(--col1-w) !important;
+  min-width: var(--col1-w) !important;
+  flex: 0 0 var(--axis-h) !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  order: 0 !important;
+  align-self: flex-start !important;
+  box-sizing: border-box !important;
+  z-index: 1 !important;
+}
+.tl-era-title {
+  flex: 0 0 var(--axis-h) !important;
+  position: relative !important;
+  top: 0 !important;
+  margin: 0 !important;
+  order: 0 !important;
+  align-self: stretch !important;
+}
+#leftPanel { position: relative !important; }
+.tl-center { position: relative !important; }
+
 #tlFocusPill,
 .tl-era-title {
   height: var(--axis-h) !important;
@@ -4005,4 +4031,69 @@ body.tl-focus #tlFocusPill #tlFocusClose:hover { background: #FFD700 !important;
 .event-fig-link:hover {
   border-bottom-color: #D4AF37;
   color: #fff;
+}
+
+/* Hadith cross-reference panel */
+.hadith-xref {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(212,175,55,0.15);
+}
+.hadith-xref h4 { display: none; }
+.xref-group { margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.xref-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted, #888); margin-right: 4px; min-width: 60px; }
+.xref-chip { font-size: 11px; padding: 3px 8px; border-radius: 3px; cursor: pointer; border: 1px solid transparent; }
+.xref-fig   { background: rgba(212,175,55,0.12); color: #D4AF37; border-color: rgba(212,175,55,0.3); }
+.xref-verse { background: rgba(150,200,180,0.12); color: #8fd4b5; border-color: rgba(150,200,180,0.3); }
+.xref-place { background: rgba(180,140,220,0.12); color: #c9a6e6; border-color: rgba(180,140,220,0.3); }
+.xref-event { background: rgba(220,140,100,0.12); color: #e6b597; border-color: rgba(220,140,100,0.3); }
+.xref-book  { background: rgba(140,180,220,0.12); color: #a6c9e6; border-color: rgba(140,180,220,0.3); }
+.xref-chip:hover { filter: brightness(1.3); }
+.xref-chip-inactive { cursor: default; opacity: 0.7; }
+
+/* Xref chips inside Source column — stack vertically, narrow */
+.mon-drill-inline-col-a .hadith-xref-slot { margin-top: 10px; }
+.mon-drill-inline-col-a .xref-group {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.mon-drill-inline-col-a .xref-label {
+  min-width: 0;
+  margin-right: 0;
+  margin-bottom: 2px;
+}
+.mon-drill-inline-col-a .xref-chip {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.st-xref-chip.st-xref-hadith {
+  background: rgba(200, 160, 100, 0.15);
+  color: #e6c497;
+  border: 1px solid rgba(200, 160, 100, 0.4);
+}
+
+/* Monastic header stays pinned when returning from START via hadith link */
+#monastic-view #mon-header-row,
+#monastic-view #mon-filters,
+#monastic-view #mon-timeline-band,
+#monastic-view #mon-count {
+  position: sticky;
+  z-index: 6;
+  background: var(--bg, #0E1621);
+}
+#monastic-view #mon-header-row { top: 0; }
+#monastic-view #mon-filters { top: 44px; padding-top: 4px; padding-bottom: 8px; }
+#monastic-view #mon-timeline-band { top: 96px; }
+#monastic-view #mon-count { top: 136px; padding-top: 2px; padding-bottom: 6px; }
+
+/* Persistent highlight for jumped-to hadith */
+.mon-row-pinned {
+  background: rgba(212, 175, 55, 0.18) !important;
+  outline: 2px solid rgba(212, 175, 55, 0.75);
+  outline-offset: -2px;
 }

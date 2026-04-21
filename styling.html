@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gold Ark — Component Library</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;margin:0;padding:24px;}
+  .page-h1{font-family:'Cinzel',serif;color:var(--gold);font-size:28px;letter-spacing:.06em;margin:0 0 6px;}
+  .page-sub{color:var(--muted);font-size:13px;margin-bottom:28px;}
+  .section{margin:32px 0;}
+  .section-h{font-family:'Cinzel',serif;color:var(--gold);font-size:16px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:6px;margin:0 0 16px;}
+  .item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:240px 1fr;gap:18px;align-items:center;}
+  .item-meta{font-family:'Courier New',monospace;font-size:12px;}
+  .item-name{color:var(--gold);font-weight:600;}
+  .item-desc{color:var(--muted);font-size:11px;margin-top:3px;}
+  .item-demo{padding:8px;background:var(--bg);border-radius:4px;min-height:40px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .swatch-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+  .swatch{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px;display:flex;gap:10px;align-items:center;}
+  .swatch-box{width:42px;height:42px;border-radius:5px;flex-shrink:0;}
+  .swatch-meta{font-family:'Courier New',monospace;font-size:11px;}
+  .swatch-name{color:var(--gold);}
+  .swatch-val{color:var(--muted);font-size:10px;margin-top:2px;}
+</style>
+</head>
+<body>
+
+<div class="page-h1">Gold Ark — Component Library</div>
+<div class="page-sub">Actual rendered samples. Import styles.css live. Tell Claude the class name to change a component.</div>
+
+<!-- ───── COLORS ───── -->
+<div class="section">
+  <div class="section-h">Brand Colors</div>
+  <div class="swatch-row" id="brandColors"></div>
+</div>
+
+<div class="section">
+  <div class="section-h">Era Band Colors</div>
+  <div class="swatch-row" id="eraColors"></div>
+</div>
+
+<!-- ───── TYPOGRAPHY ───── -->
+<div class="section">
+  <div class="section-h">Typography</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">font-family Cinzel</div><div class="item-desc">titles, headings, era labels</div></div>
+    <div class="item-demo" style="font-family:'Cinzel',serif;color:var(--gold);font-size:22px;letter-spacing:.06em">GOLD ARK</div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">font-family Inter</div><div class="item-desc">body, descriptions, UI</div></div>
+    <div class="item-demo" style="font-family:'Inter',sans-serif;color:var(--text);font-size:14px">The quick brown fox jumps over the lazy dog</div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">--fs-1 (20px)</div><div class="item-desc">figure name / row primary</div></div>
+    <div class="item-demo" style="font-size:var(--fs-1);color:var(--text);font-weight:700">Adam</div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">--fs-2 (16px)</div><div class="item-desc">body / card titles</div></div>
+    <div class="item-demo" style="font-size:var(--fs-2);color:var(--text)">Battle of Badr — first major military victory</div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">--fs-3 (14px)</div><div class="item-desc">info / secondary / minimum</div></div>
+    <div class="item-demo" style="font-size:var(--fs-3);color:var(--text2)">Abu al-Bashar — Father of Humanity</div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">gold subtitle</div><div class="item-desc">labels like BORN, DIED, BIOGRAPHY</div></div>
+    <div class="item-demo" style="font-family:'Cinzel',serif;color:var(--gold);font-size:13px;letter-spacing:.08em;text-transform:uppercase">Born</div>
+  </div>
+</div>
+
+<!-- ───── HEADER NAV TILES ───── -->
+<div class="section">
+  <div class="section-h">Header Nav Tiles</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.hdr-tile</div><div class="item-desc">main nav button (per-view colored)</div></div>
+    <div class="item-demo">
+      <button class="hdr-tile hdr-tile-timeline active">TIMELINE</button>
+      <button class="hdr-tile hdr-tile-silsila">SILSILA</button>
+      <button class="hdr-tile hdr-tile-follow">FOLLOW</button>
+      <button class="hdr-tile hdr-tile-events">EVENTS</button>
+      <button class="hdr-tile hdr-tile-eras">ERAS</button>
+      <button class="hdr-tile hdr-tile-think">THINK</button>
+      <button class="hdr-tile hdr-tile-map">MAP</button>
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.hdr-stat-num</div><div class="item-desc">gold count number in header</div></div>
+    <div class="item-demo"><span class="hdr-stat-num">1,973</span> Figures &middot; <span class="hdr-stat-num">2,408</span> Relations</div>
+  </div>
+</div>
+
+<!-- ───── BUTTONS ───── -->
+<div class="section">
+  <div class="section-h">Action Buttons</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.share-btn / .snapshot-btn / .feedback-btn</div><div class="item-desc">top-row utility buttons</div></div>
+    <div class="item-demo">
+      <button class="share-btn">SHARE</button>
+      <button class="snapshot-btn">SNAPSHOT</button>
+      <button class="feedback-btn">FEEDBACK</button>
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.nav-btn</div><div class="item-desc">arrow nav (left/right)</div></div>
+    <div class="item-demo"><button class="nav-btn">←</button><button class="nav-btn">→</button></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-animate-btn</div><div class="item-desc">timeline animate play button</div></div>
+    <div class="item-demo"><button class="ev-animate-btn">▶ ANIMATE</button></div>
+  </div>
+</div>
+
+<!-- ───── DROPDOWNS ───── -->
+<div class="section">
+  <div class="section-h">Filter Dropdowns</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.dd-btn / .dd-wrap</div><div class="item-desc">filter dropdown closed state</div></div>
+    <div class="item-demo">
+      <div class="dd-wrap"><button class="dd-btn">TYPE <span class="dd-caret">▾</span></button></div>
+      <div class="dd-wrap"><button class="dd-btn">TRADITION <span class="dd-caret">▾</span></button></div>
+      <div class="dd-wrap"><button class="dd-btn">HAS <span class="dd-caret">▾</span></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── EVENTS COMPONENTS ───── -->
+<div class="section">
+  <div class="section-h">Event Card Elements</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-cat-pill</div><div class="item-desc">category pill (one per category)</div></div>
+    <div class="item-demo">
+      <span class="ev-cat-pill" style="background:#E53E3E">WAR</span>
+      <span class="ev-cat-pill" style="background:#3182CE">POLITICS</span>
+      <span class="ev-cat-pill" style="background:#38A169">SCIENCE</span>
+      <span class="ev-cat-pill" style="background:#805AD5">THEOLOGY</span>
+      <span class="ev-cat-pill" style="background:#D69E2E">SUFISM</span>
+      <span class="ev-cat-pill" style="background:#DD6B20">TRADE</span>
+      <span class="ev-cat-pill" style="background:#E53E8C">ART</span>
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-yr-num / .ev-yr-era</div><div class="item-desc">year + era label (event row left col)</div></div>
+    <div class="item-demo"><div><div class="ev-yr-num">624</div><div class="ev-yr-era">PROPHETIC ERA</div></div></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-card-title</div><div class="item-desc">event card title (first line)</div></div>
+    <div class="item-demo"><div class="ev-card-title">Battle of Badr</div></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-card-desc</div><div class="item-desc">event description body text</div></div>
+    <div class="item-demo"><div class="ev-card-desc">First major military victory of the Muslim community against the Quraysh of Mecca, fought near the wells of Badr.</div></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-fig-chip</div><div class="item-desc">figure chip inside event (clickable)</div></div>
+    <div class="item-demo"><span class="ev-fig-chip">Prophet Muhammad</span><span class="ev-fig-chip">Abu Bakr</span></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-tag</div><div class="item-desc">tag chip (filter or figure link)</div></div>
+    <div class="item-demo"><span class="ev-tag">battle</span><span class="ev-tag">turning-point</span><span class="ev-tag">quran-referenced</span></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-quran-ref</div><div class="item-desc">Quran reference (gold left border)</div></div>
+    <div class="item-demo" style="display:block"><div class="ev-quran-ref">Al-Imran 3:123</div></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.ev-outcome</div><div class="item-desc">event outcome line</div></div>
+    <div class="item-demo"><div class="ev-outcome">Muslim survival secured; established Medina as Islamic political center</div></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.event-fig-link</div><div class="item-desc">clickable figure name in description</div></div>
+    <div class="item-demo">…the army led by <span class="event-fig-link">Khalid ibn al-Walid</span> defeated…</div>
+  </div>
+</div>
+
+<!-- ───── TIMELINE COMPONENTS ───── -->
+<div class="section">
+  <div class="section-h">Timeline Elements</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.tl-era-title</div><div class="item-desc">era column header</div></div>
+    <div class="item-demo"><div class="tl-era-title">PROPHETIC ERA</div></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.tl-dob-chip / .tl-dod-chip-silver</div><div class="item-desc">birth (gold) / death (silver) year chips</div></div>
+    <div class="item-demo"><span class="tl-dob-chip">570</span><span class="tl-dod-chip-silver">632</span></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.tl-fp-label / .tl-fp-name</div><div class="item-desc">focus pill (single-figure mode)</div></div>
+    <div class="item-demo"><span class="tl-fp-label">FOR FOCUS, CLICK ON A PERSON</span></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.tl-wiki-link</div><div class="item-desc">small wikipedia link icon</div></div>
+    <div class="item-demo"><a class="tl-wiki-link" href="#">🌐</a></div>
+  </div>
+</div>
+
+<!-- ───── INFO PANEL ───── -->
+<div class="section">
+  <div class="section-h">Info Panel Elements</div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.info-quran</div><div class="item-desc">Quran reference inside info panel</div></div>
+    <div class="item-demo"><span class="info-quran">Al-Baqarah 2:31</span></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.info-follow-link</div><div class="item-desc">"Open in FOLLOW" link</div></div>
+    <div class="item-demo"><a class="info-follow-link" href="#">▶ Open in FOLLOW</a></div>
+  </div>
+  <div class="item">
+    <div class="item-meta"><div class="item-name">.info-wd-occ</div><div class="item-desc">occupation chip from Wikidata</div></div>
+    <div class="item-demo"><span class="info-wd-occ">Theologian</span><span class="info-wd-occ">Jurist</span><span class="info-wd-occ">Mystic</span></div>
+  </div>
+</div>
+
+<script>
+  // Pull computed colors from styles.css
+  var cs=getComputedStyle(document.documentElement);
+  function v(name){return cs.getPropertyValue(name).trim();}
+  function swatchHTML(name,cssVar){
+    var val=v(cssVar);
+    return '<div class="swatch"><div class="swatch-box" style="background:'+val+';border:1px solid rgba(255,255,255,.15)"></div><div class="swatch-meta"><div class="swatch-name">'+name+'</div><div class="swatch-val">'+val+'</div></div></div>';
+  }
+  document.getElementById('brandColors').innerHTML=[
+    swatchHTML('--gold','--gold'),
+    swatchHTML('--accent','--accent'),
+    swatchHTML('--bg','--bg'),
+    swatchHTML('--surface','--surface'),
+    swatchHTML('--border','--border'),
+    swatchHTML('--text','--text'),
+    swatchHTML('--muted','--muted'),
+    swatchHTML('--emerald','--emerald')
+  ].join('');
+  document.getElementById('eraColors').innerHTML=[
+    swatchHTML('Prophetic Era','--era-prophetic-era'),
+    swatchHTML('Rashidun','--era-rashidun'),
+    swatchHTML('Umayyad','--era-umayyad'),
+    swatchHTML('Abbasid Golden Age','--era-abbasid-golden-age'),
+    swatchHTML('Post-Mongol','--era-post-mongol'),
+    swatchHTML('Gunpowder Empires','--era-gunpowder-empires'),
+    swatchHTML('Colonial Reform','--era-colonial-reform'),
+    swatchHTML('Contemporary','--era-contemporary')
+  ].join('');
+</script>
+
+</body>
+</html>

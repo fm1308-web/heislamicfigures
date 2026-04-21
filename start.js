@@ -25,6 +25,8 @@ var _ST_EMBED_MAP = {arabic:'ar', eng_saheeh:'en', transliteration:'tr'};
 var _stXref = null;
 var _stXrefLookup = {};
 var _stXrefSurahFigs = {};
+var _stHadithByVerse = null;    // null = not loaded, {} = loaded
+var _stHadithLoading = false;
 var _stRevData = {};  // surah id -> revelation info
 
 var _ST_JUZ_START = [
@@ -248,6 +250,7 @@ function _stLoadData(cb){
     _stBuildReciterDD();
     _stUpdateReciterLabel();
     cb();
+    setTimeout(function(){ _stLoadHadithXrefIntoVerse(); }, 1500);
   }).catch(function(e){
     console.error('[START] Load failed:',e);
     var el=document.getElementById('st-loading');
@@ -759,11 +762,51 @@ function _stBuildXrefLookup(){
   });
 }
 
+async function _stLoadHadithXrefIntoVerse(){
+  if(_stHadithByVerse || _stHadithLoading) return _stHadithByVerse;
+  _stHadithLoading = true;
+  var colls = ['sahih-bukhari','sahih-muslim','sunan-abi-daud','jami-al-tirmidhi','sunan-an-nasai','sunan-ibn-majah'];
+  var map = {};
+  window._hadithXrefCache = window._hadithXrefCache || {};
+  await Promise.all(colls.map(async function(c){
+    try{
+      var idx;
+      if(window._hadithXrefCache[c]){
+        idx = window._hadithXrefCache[c];
+      } else {
+        var res = await fetch('data/islamic/hadith_xref/'+c+'.json');
+        if(!res.ok) return;
+        var json = await res.json();
+        idx = json.hadith_index || {};
+        window._hadithXrefCache[c] = idx;
+      }
+      Object.keys(idx).forEach(function(hkey){
+        var entry = idx[hkey];
+        var verses = (entry && entry.quran_verses) || [];
+        var parts = hkey.split('-');
+        var num = parts[parts.length-1];
+        var col = parts.slice(0,-1).join('-');
+        verses.forEach(function(v){
+          var k = v.surah+':'+v.verse;
+          (map[k] = map[k] || []).push({col:col,num:num,tokens:v.shared_tokens||0});
+        });
+      });
+    } catch(e){ console.warn('hadith xref load failed', c, e); }
+  }));
+  _stHadithByVerse = map;
+  _stHadithLoading = false;
+  // re-render current surah so chips appear with counts
+  if(typeof _stRenderSurah === 'function' && typeof _stSurah !== 'undefined') _stRenderSurah();
+  return map;
+}
+
 function _stXrefChip(surah,verse){
   var items=(_stXrefLookup[surah]||{})[verse];
-  if(!items||!items.length)return'';
+  var hadithList = _stHadithByVerse ? (_stHadithByVerse[surah+':'+verse] || []) : [];
+  var hadithCount = hadithList.length;
+  if((!items||!items.length) && !hadithCount) return '';
   var evCount=0,concCount=0,figCount=0;
-  items.forEach(function(it){
+  (items||[]).forEach(function(it){
     if(it.type==='event')evCount++;
     else if(it.type==='concept')concCount++;
     else if(it.type==='figure')figCount++;
@@ -779,13 +822,17 @@ function _stXrefChip(surah,verse){
   if(figCount){
     h+='<div class="st-xref-chip st-xref-fig"'+onclick+'>'+figCount+(figCount===1?' figure':' figures')+'</div>';
   }
+  if(hadithCount){
+    h+='<div class="st-xref-chip st-xref-hadith"'+onclick+'>'+hadithCount+(hadithCount===1?' hadith':' hadiths')+'</div>';
+  }
   return h;
 }
 
 function _stXrefPopup(surah,verse,ev){
   if(ev)ev.stopPropagation();
-  var items=(_stXrefLookup[surah]||{})[verse];
-  if(!items||!items.length)return;
+  var items=(_stXrefLookup[surah]||{})[verse] || [];
+  var hadithsForPopup = _stHadithByVerse ? (_stHadithByVerse[surah+':'+verse] || []) : [];
+  if(!items.length && !hadithsForPopup.length) return;
 
   var old=document.getElementById('st-xref-popup');
   if(old)old.remove();
@@ -822,6 +869,21 @@ function _stXrefPopup(surah,verse,ev){
     });
   }
 
+  var hadiths = _stHadithByVerse ? (_stHadithByVerse[surah+':'+verse] || []) : [];
+  if(hadiths.length){
+    hadiths.sort(function(a,b){ return (b.tokens||0) - (a.tokens||0); });
+    var shown = hadiths.slice(0, 25);
+    h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Hadiths ('+hadiths.length+')</div>';
+    var collLabels = {'sahih-bukhari':'Bukhari','sahih-muslim':'Muslim','sunan-abi-daud':'Abu Dawud','jami-al-tirmidhi':'Tirmidhi','sunan-an-nasai':'Nasa\u02bci','sunan-ibn-majah':'Ibn Majah'};
+    shown.forEach(function(hd){
+      var lbl = (collLabels[hd.col]||hd.col) + ' #' + hd.num;
+      h+='<div class="st-xref-row" onclick="_stXrefJumpHadith(\''+_stEsc(hd.col)+'\',\''+_stEsc(hd.num)+'\')"><span>'+_stEsc(lbl)+'</span><span style="color:#8fd4b5;font-size:10px">'+(hd.tokens||0)+' tok</span></div>';
+    });
+    if(hadiths.length > 25){
+      h+='<div style="font-size:var(--fs-3);color:#888;margin-top:6px">\u2026 '+(hadiths.length-25)+' more</div>';
+    }
+  }
+
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:var(--fs-3)';
   box.innerHTML=h;
@@ -833,6 +895,13 @@ function _stXrefPopup(surah,verse,ev){
 }
 
 window._stXrefPopup=_stXrefPopup;
+
+function _stXrefJumpHadith(col, num){
+  var pop=document.getElementById('st-xref-popup');if(pop)pop.remove();
+  window._stPendingHadith = {col:col, num:num};
+  if(typeof setView==='function') setView('monastic');
+}
+window._stXrefJumpHadith=_stXrefJumpHadith;
 
 function _stXrefJumpEvent(eventId){
   var pop=document.getElementById('st-xref-popup');if(pop)pop.remove();

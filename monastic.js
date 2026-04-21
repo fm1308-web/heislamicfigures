@@ -10,6 +10,19 @@ var COLLECTIONS = [
   {key:'ibnmajah', label:'Sunan Ibn Majah',     file:'data/hadith/ibnmajah.json'}
 ];
 
+// Maps monastic.js internal collection key → hadith_xref file basename.
+var XREF_COLL_MAP = {
+  bukhari:  'sahih-bukhari',
+  muslim:   'sahih-muslim',
+  abudawud: 'sunan-abi-daud',
+  tirmidhi: 'jami-al-tirmidhi',
+  nasai:    'sunan-an-nasai',
+  ibnmajah: 'sunan-ibn-majah'
+};
+
+var XREF_TO_MON_KEY = {};
+Object.keys(XREF_COLL_MAP).forEach(function(k){ XREF_TO_MON_KEY[XREF_COLL_MAP[k]] = k; });
+
 var MON_PERIODS = [
   {id:'early_makkan', label:'Early Makkan',  years:'610\u2013622 CE', span:12, color:'#8B6F47', rgb:'139,111,71'},
   {id:'madinan',      label:'Madinan',       years:'622\u2013632 CE', span:10, color:'#D4AF37', rgb:'212,175,55'},
@@ -43,6 +56,47 @@ var _monSel = {
 };
 var _monDDBound = false;
 var _monSearchBoxPrev = null;
+
+function _monHandlePendingHadith(){
+  var p = window._stPendingHadith;
+  if(!p || !p.col || !p.num) return;
+  window._stPendingHadith = null;
+  var monKey = XREF_TO_MON_KEY[p.col];
+  if(!monKey) return;
+  _monSel.period.clear();
+  _monSel.topic.clear();
+  _monSel.narrator.clear();
+  _monSel.collection.clear();
+  _monSel.collection.add(monKey);
+  _applyAllFilters();
+  // Force outer page to top so sticky header stays pinned
+  try { window.scrollTo({top:0, behavior:'auto'}); } catch(e){ window.scrollTo(0,0); }
+  // Clear any previous persistent highlight
+  document.querySelectorAll('.mon-row-pinned').forEach(function(r){ r.classList.remove('mon-row-pinned'); });
+  // Find row + scroll inside the results container + add permanent highlight
+  var attempts = 0;
+  var tick = setInterval(function(){
+    attempts++;
+    var row = _resultsEl && _resultsEl.querySelector('.mon-row[data-hcol="'+monKey+'"][data-hnum="'+p.num+'"]');
+    if(row){
+      clearInterval(tick);
+      row.scrollIntoView({behavior:'smooth', block:'center'});
+      row.classList.add('mon-row-pinned');
+      // Dismiss on any click or user scroll of mon-results
+      var dismiss = function(){
+        row.classList.remove('mon-row-pinned');
+        document.removeEventListener('click', dismiss, true);
+        if(_resultsEl) _resultsEl.removeEventListener('scroll', dismiss);
+      };
+      setTimeout(function(){
+        document.addEventListener('click', dismiss, true);
+        if(_resultsEl) _resultsEl.addEventListener('scroll', dismiss);
+      }, 600);
+    } else if(attempts > 30){
+      clearInterval(tick);
+    }
+  }, 150);
+}
 var MON_GLOSSARY = {
   'thiqah':           {def:'Trustworthy. Highest reliability rating for a narrator.', src:'Classical rijal'},
   'thiqah thiqah':    {def:'Doubly trustworthy. Emphatic reliability; used for the most reliable narrators.', src:'Classical rijal'},
@@ -792,8 +846,14 @@ function _drillShowInlineHadiths(earliest, latest){
           }
         }
         colA += '<div class="mon-narrator-chainonly" style="margin-top:8px">' + _chainOnlyBlock(h) + '</div>';
+        var xrefColl = XREF_COLL_MAP[h._colKey] || '';
+        var xrefSlot = '';
+        if(xrefColl && num != null && num !== ''){
+          var hkey = xrefColl + '-' + num;
+          xrefSlot = '<div class="hadith-xref-slot" data-hkey="' + esc(hkey) + '" data-hcoll="' + esc(xrefColl) + '"></div>';
+        }
         html += '<div class="mon-drill-inline-row">' +
-          '<div class="mon-drill-inline-col-a">' + colA + '</div>' +
+          '<div class="mon-drill-inline-col-a">' + colA + xrefSlot + '</div>' +
           '<div class="mon-drill-inline-col-b">' +
             '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.55">' + esc(text) + '</div>' +
             _datingLine(h) +
@@ -807,6 +867,7 @@ function _drillShowInlineHadiths(earliest, latest){
 
     panel.innerHTML = html;
     panel.style.display = 'block';
+    _populateXrefSlots(panel);
 
     panel.querySelectorAll('.mon-drill-compact-x').forEach(function(btn){
       btn.onclick = function(ev){
@@ -1536,6 +1597,16 @@ function _openMethodology(e){
         '<li>Cross-collection corroboration</li>' +
       '</ul>' +
       '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:20px 0 0;font-style:normal">This is not precise dating. Treat all ranges as approximate.</p>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">CROSS-REFERENCE CHIPS</h3>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:0 0 12px">Each hadith row shows related items from across the app. Click a chip to jump to that view.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-3);line-height:1.5">' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-fig">Figure</span><span>Person mentioned in the hadith (87% coverage). Click \u2192 info card.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-verse">2:183</span><span>Quran verse with shared wording (89% coverage). Click \u2192 START view at verse.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-place xref-chip-inactive">Place</span><span>Place referenced (33% coverage). Click wiring pending.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-event">Event</span><span>Historical event match (0.6% coverage). Click \u2192 Events view.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-book xref-chip-inactive">Book</span><span>Related book (7% coverage, noisy). Click wiring pending.</span></div>' +
+      '</div>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:16px 0 0;font-style:italic">Matches are keyword-based and include false positives. Use as a starting point, not a citation.</p>' +
     '</div>';
 
   document.body.appendChild(overlay);
@@ -1633,19 +1704,29 @@ function _renderRows(filtered, colKey){
       ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:' + periodColor + ';margin-top:3px">' + esc(periodLabel) + '</div>'
       : '';
 
+    var _xColl = XREF_COLL_MAP[h._colKey || colKey] || '';
+    var xrefSlotHtml = '';
+    if(_xColl && num != null && num !== ''){
+      var _xKey = _xColl + '-' + num;
+      xrefSlotHtml = '<div class="hadith-xref-slot" data-hkey="' + esc(_xKey) + '" data-hcoll="' + esc(_xColl) + '"></div>';
+    }
+
     var row = document.createElement('div');
     row.className = 'mon-row';
+    row.setAttribute('data-hcol', h._colKey || colKey || '');
+    row.setAttribute('data-hnum', String(num));
     row.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;align-items:start;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);';
     row.innerHTML =
       '<div><div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:4px">#' + esc(String(num)) + '</div>' +
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
-      topicHtml + periodHtml + '</div>' +
+      topicHtml + periodHtml + xrefSlotHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
       '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.5">' + esc(text) + _datingLine(h) + '</div>';
     frag.appendChild(row);
   }
 
   _resultsEl.appendChild(frag);
+  _populateXrefSlots(_resultsEl);
 
   if(filtered.length > MAX_ROWS){
     var trunc = document.createElement('div');
@@ -2289,6 +2370,121 @@ function _wizardApply(){
   _applyAllFilters();
 }
 
+// ═══════════════════════════════════════════════════════════
+// HADITH CROSS-REFERENCE (figures / verses / places / events / books)
+// Lazy-loads per-collection xref file on first expand.
+// ═══════════════════════════════════════════════════════════
+window._hadithXrefCache = window._hadithXrefCache || {};
+window._loadHadithXref = async function(collection){
+  if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
+  try{
+    var res = await fetch('data/islamic/hadith_xref/' + collection + '.json');
+    if(!res.ok) return {};
+    var data = await res.json();
+    window._hadithXrefCache[collection] = data.hadith_index || {};
+    return window._hadithXrefCache[collection];
+  } catch(e){ console.warn('xref load failed', collection, e); return {}; }
+};
+
+function _buildXrefPanel(entry){
+  if(!entry) return '';
+  var groups = [];
+  var figs = (entry.figures || []).slice(0, 10);
+  if(figs.length){
+    var chips = figs.map(function(f){
+      var nm = esc(f.name || '');
+      var sl = esc(f.slug || '');
+      return '<span class="xref-chip xref-fig" data-slug="' + sl + '" data-name="' + nm + '">' + nm + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Figures:</span>' + chips + '</div>');
+  }
+  var verses = (entry.quran_verses || []).slice(0, 5);
+  if(verses.length){
+    var chips2 = verses.map(function(v){
+      var lbl = v.surah + ':' + v.verse;
+      return '<span class="xref-chip xref-verse" data-surah="' + v.surah + '" data-verse="' + v.verse + '">' + lbl + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Verses:</span>' + chips2 + '</div>');
+  }
+  var places = entry.places || [];
+  if(places.length){
+    var chips3 = places.map(function(p){
+      return '<span class="xref-chip xref-place xref-chip-inactive" title="Map jump not wired">' + esc(p.name || '') + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Places:</span>' + chips3 + '</div>');
+  }
+  var events = entry.events || [];
+  if(events.length){
+    var chips4 = events.map(function(ev){
+      return '<span class="xref-chip xref-event" data-id="' + esc(ev.id || '') + '">' + esc(ev.title || '') + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Events:</span>' + chips4 + '</div>');
+  }
+  var books = (entry.books || []).slice(0, 5);
+  if(books.length){
+    var chips5 = books.map(function(b){
+      return '<span class="xref-chip xref-book xref-chip-inactive" title="Book open not wired">' + esc(b.title || '') + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Books:</span>' + chips5 + '</div>');
+  }
+  if(!groups.length) return '';
+  return groups.join('');
+}
+
+async function _populateXrefSlots(container){
+  if(!container) return;
+  var slots = container.querySelectorAll('.hadith-xref-slot');
+  if(!slots.length) return;
+  // Group slots by collection so we do one fetch per collection.
+  var byColl = {};
+  slots.forEach(function(slot){
+    var c = slot.dataset.hcoll;
+    if(!c) return;
+    (byColl[c] = byColl[c] || []).push(slot);
+  });
+  var colls = Object.keys(byColl);
+  for(var i = 0; i < colls.length; i++){
+    var c = colls[i];
+    var idx = await window._loadHadithXref(c);
+    byColl[c].forEach(function(slot){
+      var key = slot.dataset.hkey;
+      var entry = idx[key];
+      var html = _buildXrefPanel(entry);
+      slot.innerHTML = html || '';
+    });
+  }
+}
+
+// One-time delegated click on document for xref chip targets.
+if(typeof document !== 'undefined' && !window._hadithXrefDelegated){
+  window._hadithXrefDelegated = true;
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest) return;
+    var fig = t.closest('.xref-fig');
+    if(fig && !fig.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var nm = fig.dataset.name;
+      if(nm && typeof jumpTo === 'function') jumpTo(nm);
+      return;
+    }
+    var vs = t.closest('.xref-verse');
+    if(vs && !vs.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var s = +vs.dataset.surah, v = +vs.dataset.verse;
+      if(s && v && typeof window.openStartAtVerse === 'function') window.openStartAtVerse(s, v, v);
+      return;
+    }
+    var evn = t.closest('.xref-event');
+    if(evn && !evn.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var eid = evn.dataset.id;
+      if(eid && typeof window._stXrefJumpEvent === 'function') window._stXrefJumpEvent(eid);
+      return;
+    }
+  });
+}
+
 return {
   init: init,
   toggleDD: _monToggleDD,
@@ -2297,6 +2493,7 @@ return {
   onEnter: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
     if(box){ if(_monSearchBoxPrev === null) _monSearchBoxPrev = box.style.display || ''; box.style.display = 'none'; }
+    _monHandlePendingHadith();
   },
   onLeave: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
