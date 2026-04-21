@@ -262,34 +262,6 @@ a:hover{text-decoration:underline}
 }
 .tl-center.hidden { display: none; }
 
-/* ── Step 3.2 — gold birth-line + black mask overlay (animate panel moved to shared AnimControls) ── */
-.tl-anim-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(var(--row-h) * 9);
-  height: 2px;
-  background: var(--gold);
-  box-shadow: 0 0 10px rgba(212,175,55,0.75);
-  z-index: 4;
-  pointer-events: none;
-  display: none;
-}
-.tl-center.anim-active .tl-anim-line { display: block; }
-
-.tl-anim-mask {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(var(--row-h) * 9 + 2px);
-  bottom: 0;
-  background: #000;
-  z-index: 3;
-  pointer-events: none;
-  display: none;
-}
-.tl-center.anim-active .tl-anim-mask { display: block; }
-
 .tl-era-title {
   flex-shrink: 0;
   height: var(--fbar-h);
