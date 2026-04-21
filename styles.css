@@ -1268,7 +1268,7 @@ footer{
 /* ── 4-column CSS grid ── */
 .ev-grid{
   display:grid;
-  grid-template-columns:10% 10% 40% 40%;
+  grid-template-columns:8% 67% 25%;
   gap:0;
 }
 .ev-row{
@@ -1296,15 +1296,12 @@ footer{
   margin-top:2px;
 }
 
-/* COL 2 — Category pill */
-.ev-col-cat{
-  display:flex;align-items:flex-start;justify-content:center;
-  padding-top:14px;
-}
+/* Category pill — now inline in title */
 .ev-cat-pill{
-  display:inline-block;padding:3px 12px;border-radius:10px;
-  font-size:var(--fs-3);font-weight:600;letter-spacing:0.06em;
+  display:inline-block;padding:3px 10px;border-radius:10px;
+  font-size:11px;font-weight:600;letter-spacing:0.06em;
   color:#FFFFFF;text-transform:uppercase;white-space:nowrap;
+  vertical-align:middle;margin-right:10px;
 }
 
 /* COL 3 — The Story */
@@ -1321,10 +1318,14 @@ footer{
 
 .ev-card-title{
   font-size:var(--fs-2);font-weight:700;color:var(--text);
-  line-height:1.35;margin-bottom:4px;
+  line-height:1.4;margin-bottom:6px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:0;
+}
+.ev-card-title-text{
+  flex:1;min-width:0;
 }
 .ev-card-desc{
-  font-size:var(--fs-3);color:var(--text2);line-height:1.55;
+  font-size:var(--fs-3);color:#FFFFFF;line-height:1.6;
   margin-bottom:8px;
 }
 
@@ -3979,3 +3980,29 @@ body.tl-focus #tlFocusPill #tlFocusClose {
   flex-shrink: 0 !important;
 }
 body.tl-focus #tlFocusPill #tlFocusClose:hover { background: #FFD700 !important; }
+
+/* Death-block events — muted presentation with ✝ glyph */
+.ev-row.event-death-block { opacity: 0.85; }
+.ev-row.event-death-block .ev-card-title {
+  font-size: 14px;
+  color: var(--muted, #888);
+}
+.ev-row.event-death-block .ev-cat-pill {
+  background: rgba(150, 150, 150, 0.4) !important;
+  color: rgba(220, 220, 220, 0.9) !important;
+}
+.event-death-glyph {
+  color: rgba(180, 180, 180, 0.7);
+  margin-right: 6px;
+}
+
+/* Clickable figure-name links inside event descriptions */
+.event-fig-link {
+  color: var(--accent-gold, #D4AF37);
+  cursor: pointer;
+  border-bottom: 1px dotted rgba(212, 175, 55, 0.4);
+}
+.event-fig-link:hover {
+  border-bottom-color: #D4AF37;
+  color: #fff;
+}

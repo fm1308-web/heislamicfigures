@@ -51,6 +51,53 @@ function escAttr(s){return esc(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
 function figName(f){return typeof f==='string'?f:(f&&f.name?f.name:'');}
 function figRole(f){return(typeof f==='object'&&f&&f.role)?f.role:'';}
 
+// Build description HTML: esc plain text, wrap first-occurrence figure names in clickable spans.
+// Longest names first (so "Abdullah ibn Masud" wins over "Abdullah"). Each name linked at most once.
+function _evBuildDescHTML(desc, figs){
+  if(!desc) return '';
+  var candidates = (figs||[])
+    .map(function(f){ return { name: figName(f), slug: (f && f.slug) || '' }; })
+    .filter(function(c){ return c.name; })
+    .sort(function(a,b){ return b.name.length - a.name.length; });
+  if(!candidates.length) return esc(desc);
+  var used = Object.create(null);
+  var out = '';
+  var i = 0;
+  var n = desc.length;
+  outer: while(i < n){
+    for(var k = 0; k < candidates.length; k++){
+      var c = candidates[k];
+      if(used[c.name]) continue;
+      if(desc.substr(i, c.name.length) === c.name){
+        // Word-boundary: don't match if adjacent to alnum (prevents "Ali" in "Alibaba").
+        var prev = i > 0 ? desc.charAt(i-1) : ' ';
+        var next = desc.charAt(i + c.name.length) || ' ';
+        if(!/[A-Za-z0-9]/.test(prev) && !/[A-Za-z0-9]/.test(next)){
+          out += '<span class="event-fig-link" data-name="' + escAttr(c.name) + '">' + esc(c.name) + '</span>';
+          i += c.name.length;
+          used[c.name] = true;
+          continue outer;
+        }
+      }
+    }
+    out += esc(desc.charAt(i));
+    i++;
+  }
+  return out;
+}
+
+// One-time delegated click: .event-fig-link → open the figure's info card via the global jumpTo.
+if(typeof document !== 'undefined' && !window._evFigLinkDelegated){
+  window._evFigLinkDelegated = true;
+  document.addEventListener('click', function(e){
+    var el = e.target && e.target.closest && e.target.closest('.event-fig-link');
+    if(!el) return;
+    e.stopPropagation();
+    var nm = el.dataset && el.dataset.name;
+    if(nm && typeof jumpTo === 'function') jumpTo(nm);
+  });
+}
+
 // ── Navigate to figure in Timeline ──
 function _evGoToFigure(name){
   if(!name) return;
@@ -268,7 +315,9 @@ function initEvents(){
 // ── BUILD ONE EVENT ROW ──
 function _buildRow(ev,showYear,spanCount){
   var catColor=CAT_COLORS[ev.category]||'#A0AEC0';
-  var h='<div class="ev-row" data-year="'+ev.year+'" data-event-id="'+ev.id+'">';
+  var isDeathBlock = (ev.tags||[]).indexOf('death-block') !== -1;
+  var rowCls = 'ev-row' + (isDeathBlock ? ' event-death-block' : '');
+  var h='<div class="'+rowCls+'" data-year="'+ev.year+'" data-event-id="'+ev.id+'">';
 
   // COL 1 — Year
   if(showYear){
@@ -279,13 +328,14 @@ function _buildRow(ev,showYear,spanCount){
     h+='</div>';
   }
 
-  // COL 2 — Category
-  h+='<div class="ev-col-cat"><span class="ev-cat-pill" style="background:'+catColor+'">'+esc(ev.category)+'</span></div>';
-
-  // COL 3 — The Story
+  // COL 2 — The Story (pill now inline in title)
   h+='<div class="ev-col-story"><div class="ev-card">';
-  h+='<div class="ev-card-title">'+esc(ev.title)+'</div>';
-  if(ev.description) h+='<div class="ev-card-desc">'+esc(ev.description)+'</div>';
+  h+='<div class="ev-card-title">'
+    + '<span class="ev-cat-pill" style="background:'+catColor+'">'+esc(ev.category)+'</span>'
+    + (isDeathBlock ? '<span class="event-death-glyph">\u271d</span>' : '')
+    + '<span class="ev-card-title-text">'+esc(ev.title)+'</span>'
+    + '</div>';
+  if(ev.description) h+='<div class="ev-card-desc">'+_evBuildDescHTML(ev.description, ev.figures||[])+'</div>';
   if(ev.quranRef) h+='<div class="ev-quran-ref">'+(typeof renderQuranRef==="function"?renderQuranRef(ev.quranRef):esc(ev.quranRef))+'</div>';
 
   var figs=ev.figures||[];
