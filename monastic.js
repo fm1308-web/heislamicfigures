@@ -1501,7 +1501,7 @@ function _syncBand(){
 
 // ── Methodology modal ──
 function _openMethodology(e){
-  e.stopPropagation();
+  if(e && e.stopPropagation) e.stopPropagation();
   if(document.getElementById('mon-modal')) return;
 
   var overlay = document.createElement('div');
