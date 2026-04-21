@@ -1181,15 +1181,14 @@ function _tlRenderCenter(visible){
   let html = '';
   const rs0 = document.getElementById('rowsScroll');
   const rowEls = rs0 ? rs0.querySelectorAll('.tl-row') : [];
-  if(rowEls.length){
+  if(compressionOn && rowEls.length){
     rowEls.forEach(el => {
       const idx = parseInt(el.dataset.idx);
-      const p = _lastSortedPeople[idx];
+      if(isNaN(idx) || idx >= visible.length) return;
+      const p = visible[idx];
       if(!p) return;
-      const viMatch = visible.findIndex(v => v.famous === p.famous);
-      if(viMatch < 0) return;
       const mid = el.offsetTop + (el.offsetHeight / 2);
-      rowYs[viMatch] = mid;
+      rowYs[idx] = mid;
       const dob = _dobOf(p);
       if(dob == null) return;
       goldYs.push(mid);
@@ -1197,7 +1196,6 @@ function _tlRenderCenter(visible){
       html += '<div class="tl-dob-chip" style="top:' + mid + 'px">' + label + '</div>';
     });
   } else {
-    // Fallback only if rows haven't rendered yet.
     visible.forEach((p, vi) => {
       const dob = _dobOf(p);
       if(dob == null) return;
@@ -1332,9 +1330,8 @@ function _tlRenderCenter(visible){
   scaleEl.innerHTML = html + barsHtml + silverHtml;
   if(compressionOn){
     const rs = document.getElementById('rowsScroll');
-    const firstRow = rs ? rs.querySelector('.tl-row') : null;
     const lastRow = rs ? rs.querySelector('.tl-row:last-child') : null;
-    if(firstRow && lastRow){
+    if(lastRow){
       scaleEl.style.height = (lastRow.offsetTop + lastRow.offsetHeight) + 'px';
     } else {
       scaleEl.style.height = (visible.length * ROW_H) + 'px';
