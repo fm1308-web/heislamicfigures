@@ -566,10 +566,12 @@ window.addEventListener('popstate',function(e){
 function setHeight(){
   const topBar=document.getElementById('topBar');
   const barH=topBar?topBar.offsetHeight:0;
+  const fbar=document.getElementById('filterBar');
+  const fbarH=(fbar && fbar.offsetParent !== null) ? fbar.offsetHeight : 0;
   const foot=document.querySelector('footer').offsetHeight;
   const ms=document.getElementById('mainShell');
-  ms.style.marginTop=barH+'px';
-  ms.style.height=`calc(100vh - ${barH+foot}px)`;
+  ms.style.marginTop=(barH+fbarH)+'px';
+  ms.style.height=`calc(100vh - ${barH+fbarH+foot}px)`;
 }
 const _resizeShell=setHeight;
 
@@ -1161,6 +1163,9 @@ function _tlRenderCenter(visible){
   }
   titleEl.classList.remove('empty');
 
+  const compressionOn = document.body.classList.contains('tl-focus')
+    && document.querySelector('.tl-row.tl-compressed') != null;
+
   // Era determined by 4th visible figure (or last if fewer than 4).
   const anchor = visible[3] || visible[visible.length - 1];
   const era = _getEra(_dobOf(anchor));
@@ -1170,32 +1175,55 @@ function _tlRenderCenter(visible){
   col.style.setProperty('--tl-era-bg', 'rgba(' + borderRgb + ', 0.25)');
   col.style.setProperty('--tl-era-border', era.border);
 
-  // Dob chips — one per visible row, anchored to that row's midpoint.
+  // Dob chips — one per row, always at its DOM-measured midpoint (no synthetic math, no dedup).
   const goldYs = [];
+  const rowYs = new Array(visible.length);
   let html = '';
-  visible.forEach((p, vi) => {
-    const dob = _dobOf(p);
-    if(dob == null) return;
-    const y = vi * ROW_H + ROW_MID;
-    goldYs.push(y);
-    const label = dob < 0 ? Math.abs(dob) : dob;
-    html += '<div class="tl-dob-chip" style="top:' + y + 'px">' + label + '</div>';
-  });
+  const rs0 = document.getElementById('rowsScroll');
+  const rowEls = rs0 ? rs0.querySelectorAll('.tl-row') : [];
+  if(rowEls.length){
+    rowEls.forEach(el => {
+      const idx = parseInt(el.dataset.idx);
+      const p = _lastSortedPeople[idx];
+      if(!p) return;
+      const viMatch = visible.findIndex(v => v.famous === p.famous);
+      if(viMatch < 0) return;
+      const mid = el.offsetTop + (el.offsetHeight / 2);
+      rowYs[viMatch] = mid;
+      const dob = _dobOf(p);
+      if(dob == null) return;
+      goldYs.push(mid);
+      const label = dob < 0 ? Math.abs(dob) : dob;
+      html += '<div class="tl-dob-chip" style="top:' + mid + 'px">' + label + '</div>';
+    });
+  } else {
+    // Fallback only if rows haven't rendered yet.
+    visible.forEach((p, vi) => {
+      const dob = _dobOf(p);
+      if(dob == null) return;
+      const y = vi * ROW_H + ROW_MID;
+      rowYs[vi] = y;
+      goldYs.push(y);
+      const label = dob < 0 ? Math.abs(dob) : dob;
+      html += '<div class="tl-dob-chip" style="top:' + y + 'px">' + label + '</div>';
+    });
+  }
 
   // Row-anchored non-linear scale: interpolate years → Y using adjacent visible dobs.
   function yearToY(yr){
     if(!visible.length) return 0;
     const firstDob = _dobOf(visible[0]);
     const lastDob  = _dobOf(visible[visible.length-1]);
-    const maxY     = (visible.length-1)*ROW_H + ROW_MID;
-    if(yr <= firstDob) return ROW_MID;
+    const getY = (i) => (rowYs[i] != null) ? rowYs[i] : (i * ROW_H + ROW_MID);
+    const maxY = getY(visible.length - 1);
+    if(yr <= firstDob) return getY(0);
     if(yr >= lastDob)  return maxY;
     let lo = 0, hi = visible.length - 1;
     while(lo < hi - 1){
       const mid = (lo + hi) >> 1;
       if(_dobOf(visible[mid]) < yr) lo = mid; else hi = mid;
     }
-    const yA = lo * ROW_H + ROW_MID, yB = hi * ROW_H + ROW_MID;
+    const yA = getY(lo), yB = getY(hi);
     const dA = _dobOf(visible[lo]), dB = _dobOf(visible[hi]);
     if(dA === dB) return yA;
     return yA + ((yr - dA) / (dB - dA)) * (yB - yA);
@@ -1233,11 +1261,23 @@ function _tlRenderCenter(visible){
     if(!p) continue;
     const dob = _dobOf(p); if(dob == null) continue;
     const dod = _dodOf(p);
-    const yStart = vi * ROW_H + ROW_MID;
+    const yStart = (rowYs[vi] != null) ? rowYs[vi] : (vi * ROW_H + ROW_MID);
     let endYear, yEnd;
     if(dod != null){ endYear = dod; yEnd = yearToY(dod); }
     else           { endYear = dob + 30; yEnd = yearToY(endYear); }
     if(yEnd - yStart < 4) yEnd = yStart + 4;
+    if(compressionOn){
+      // Prefer the DOM-measured y of the row whose dob == endYear (if any).
+      let bestIdx = -1, bestDiff = Infinity;
+      for(let q = 0; q < visible.length; q++){
+        const vd = _dobOf(visible[q]);
+        if(vd == null) continue;
+        const diff = Math.abs(vd - endYear);
+        if(diff < bestDiff){ bestDiff = diff; bestIdx = q; }
+      }
+      if(bestIdx >= 0 && rowYs[bestIdx] != null) yEnd = rowYs[bestIdx];
+      if(yEnd - yStart < 4) yEnd = yStart + 4;
+    }
     // Clamp runaway arcs (dense eras push yEnd thousands of px below yStart).
     // Cap at 6 row-heights so arc remains visually meaningful inside the column.
     const isFocus = tlFocusName && p.famous === tlFocusName;
@@ -1290,7 +1330,18 @@ function _tlRenderCenter(visible){
   });
 
   scaleEl.innerHTML = html + barsHtml + silverHtml;
-  scaleEl.style.height = (visible.length * ROW_H) + 'px';
+  if(compressionOn){
+    const rs = document.getElementById('rowsScroll');
+    const firstRow = rs ? rs.querySelector('.tl-row') : null;
+    const lastRow = rs ? rs.querySelector('.tl-row:last-child') : null;
+    if(firstRow && lastRow){
+      scaleEl.style.height = (lastRow.offsetTop + lastRow.offsetHeight) + 'px';
+    } else {
+      scaleEl.style.height = (visible.length * ROW_H) + 'px';
+    }
+  } else {
+    scaleEl.style.height = (visible.length * ROW_H) + 'px';
+  }
 
   window._tlVisibleCache = visible; // reused by the scroll-driven title update
   _tlSyncScroll();
@@ -1381,6 +1432,11 @@ function _tlApplyFocus(){
       const desired = Math.max(0, offsetTop - Math.floor(viewH / 3) + rowH / 2);
       rs.scrollTo({ top: desired, behavior: 'smooth' });
     }
+  }
+
+  if(window._tlVisibleCache){
+    // Defer one frame so compressed row heights are applied in layout before we measure.
+    requestAnimationFrame(() => _tlRenderCenter(window._tlVisibleCache));
   }
 }
 
@@ -1535,7 +1591,6 @@ function selectRow(idx){
 function showEmptyInfo(){
   document.getElementById('infoScroll').innerHTML=
     `<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>`;
-  document.getElementById('infoFilterSpacer').textContent='SELECT A FIGURE FROM THE LIST';
 }
 
 function _getContemporaries(p) {
@@ -1580,8 +1635,6 @@ function renderInfo(p){
   const dod_s=_dodMain!=null?(_dodMain<0?`${Math.abs(_dodMain)} BCE`:`${_dodMain} CE`):'Unknown';
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
 
-  document.getElementById('infoFilterSpacer').textContent=
-    `${centLabel(gc(p.dob)).toUpperCase()} CENTURY · ${p.tradition||''} · ${p.type||''}`;
 
   // Quran references section
   let quranHtml='';

@@ -538,7 +538,7 @@ body.tl-focus .tl-life-arc.focus-target path {
 .tl-row{
   display:flex;height:var(--row-h);
   border-bottom:1px solid #2D3748;
-  cursor:pointer;transition:background .1s;
+  cursor:pointer;transition:none;
 }
 .tl-row:hover{background:rgba(212,175,55,.09)}
 .tl-row.sel{
@@ -2889,7 +2889,7 @@ body.st-active #hdrRow4 { display: none !important; }
 /* ── Column headers ── */
 .st-col-hdr {
   display: grid;
-  grid-template-columns: 56px 1fr 40px 1fr 20px 56px;
+  grid-template-columns: 96px 1fr 40px 1fr 20px 56px;
   gap: 0 12px;
   padding: 8px 0;
   border-bottom: 2px solid var(--border);
@@ -2904,7 +2904,7 @@ body.st-active #hdrRow4 { display: none !important; }
 /* ── Verse rows ── */
 .st-verse {
   display: grid;
-  grid-template-columns: 56px 1fr 40px 1fr 20px 56px;
+  grid-template-columns: 96px 1fr 40px 1fr 20px 56px;
   gap: 0 12px;
   padding: 16px 0;
   border-bottom: 1px solid rgba(45,55,72,0.3);
@@ -3216,9 +3216,9 @@ body.st-active #hdrRow4 { display: none !important; }
 
 /* Column modes (new layout: Trans | Center | Arabic) */
 .st-mode-arabic .st-vtr { display: none !important; }
-.st-mode-arabic .st-verse { grid-template-columns: 56px 40px 1fr 20px 56px !important; }
-.st-mode-arabic .st-col-hdr { grid-template-columns: 56px 40px 1fr 20px 56px !important; }
-.st-mode-trans .st-col-hdr { grid-template-columns: 56px 1fr 40px 20px 56px !important; }
+.st-mode-arabic .st-verse { grid-template-columns: 96px 40px 1fr 20px 56px !important; }
+.st-mode-arabic .st-col-hdr { grid-template-columns: 96px 40px 1fr 20px 56px !important; }
+.st-mode-trans .st-col-hdr { grid-template-columns: 96px 1fr 40px 20px 56px !important; }
 .st-mode-arabic .st-col-hdr > div:nth-child(2),
 .st-mode-arabic .st-col-hdr > div:nth-child(4),
 .st-mode-trans .st-col-hdr > div:nth-child(4) { display: none !important; }
@@ -3240,7 +3240,7 @@ body.st-active #hdrRow4 { display: none !important; }
 .st-mode-trans .st-var,
 .st-mode-trans .st-col-hdr div:last-child { display: none !important; }
 .st-mode-trans .st-verse,
-.st-mode-trans .st-col-hdr { grid-template-columns: 56px 1fr 40px 20px 56px !important; }
+.st-mode-trans .st-col-hdr { grid-template-columns: 96px 1fr 40px 20px 56px !important; }
 .st-mode-trans .st-vcenter { justify-content: flex-end; }
 /* Translation dropdown: two-line rows */
 .st-dd-tinfo { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
@@ -3352,7 +3352,7 @@ body.st-active #hdrRow4 { display: none !important; }
   border-radius: 4px;
   z-index: 0;
   pointer-events: none;
-  left: calc(50% - 16px);
+  left: calc(50% + 4px);
   transform: translateX(-50%);
 }
 .st-mode-arabic .st-goldline,
@@ -3508,7 +3508,7 @@ body.st-active #hdrRow4 { display: none !important; }
 .st-bism-prev { justify-self: start; }
 .st-bism-next { justify-self: end; }
 #st-reader.st-mode-trans .st-var { display: none !important; }
-#st-reader.st-mode-trans .st-verse { grid-template-columns: 56px 1fr 40px 20px 56px !important; }
+#st-reader.st-mode-trans .st-verse { grid-template-columns: 96px 1fr 40px 20px 56px !important; }
 
 .st-xref-chip,
 .st-xref-chip.st-xref-fig,
@@ -3522,7 +3522,7 @@ body.st-active #hdrRow4 { display: none !important; }
   font-family: 'Lato', sans-serif !important;
   display: inline-block !important;
   margin-top: 4px !important;
-  max-width: 52px !important;
+  max-width: 88px !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
@@ -3895,7 +3895,7 @@ body.tl-focus #tlFocusPill {
 body.tl-focus #rowsScroll .tl-row.tl-compressed {
   height: calc(var(--row-h) * 0.25) !important;
   min-height: calc(var(--row-h) * 0.25) !important;
-  transition: height 0.18s ease;
+  transition: none !important;
 }
 body.tl-focus #rowsScroll .tl-row.tl-compressed .tc-famous {
   font-size: var(--fs-3) !important;
@@ -3908,3 +3908,74 @@ body.tl-focus #rowsScroll .tl-row.tl-compressed .tc-dot {
   width: 8px !important;
   height: 8px !important;
 }
+
+/* BV19 final — hide empty filter bar strip; make pill + era title match #infoHdr exactly */
+#filterBar { display: none !important; }
+
+#tlFocusPill,
+.tl-era-title {
+  height: var(--axis-h) !important;
+  min-height: var(--axis-h) !important;
+  max-height: var(--axis-h) !important;
+  padding: 0 18px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  background: var(--ip-surf) !important;
+  border-bottom: 1px solid var(--ip-brd) !important;
+  border-top: none !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: var(--fs-3) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--ip-muted) !important;
+  text-shadow: none !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  justify-content: flex-start !important;
+}
+
+#tlFocusPill { justify-content: space-between !important; }
+.tl-era-title { justify-content: center !important; }
+
+#tlFocusPill .tl-fp-hint {
+  color: inherit !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  background: transparent !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 1 !important;
+}
+
+#tlFocusPill .tl-fp-label {
+  color: var(--accent) !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  background: transparent !important;
+  display: none !important;
+}
+#tlFocusPill #tlFocusClose { display: none !important; }
+
+body.tl-focus #tlFocusPill .tl-fp-hint { display: none !important; }
+body.tl-focus #tlFocusPill .tl-fp-label { display: inline-flex !important; align-items: center !important; }
+body.tl-focus #tlFocusPill #tlFocusClose {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  border: 2px solid #000 !important;
+  background: #FFFFFF !important;
+  color: #000 !important;
+  font: 900 14px/1 Arial, sans-serif !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+}
+body.tl-focus #tlFocusPill #tlFocusClose:hover { background: #FFD700 !important; }

@@ -129,23 +129,24 @@
 </div>
 </div><!-- /#topBar -->
 
+<!-- Filter bar kept as hidden container for JS compat (full-width sibling above three-column row) -->
+<div id="filterBar">
+  <div id="filterBarLeft"></div>
+  <div id="filterBarCtrls">
+    <span id="filterSummary" style="display:none"></span>
+    <button id="filterClearAll" onclick="clearAllFilters()" style="display:none">CLEAR ALL ✕</button>
+  </div>
+</div>
+
 <div id="mainShell">
 
   <!-- LEFT PANEL -->
   <div id="leftPanel">
 
-    <div id="tlFocusPill" style="display:none">
+    <div id="tlFocusPill">
+      <span class="tl-fp-hint">For focus, click on a person</span>
       <span class="tl-fp-label">FOCUS MODE</span>
-      <button id="tlFocusClose" title="Exit focus">×</button>
-    </div>
-
-    <!-- Filter bar kept as hidden container for JS compat -->
-    <div id="filterBar">
-      <div id="filterBarLeft"></div>
-      <div id="filterBarCtrls">
-        <span id="filterSummary" style="display:none"></span>
-        <button id="filterClearAll" onclick="clearAllFilters()" style="display:none">CLEAR ALL ✕</button>
-      </div>
+      <button id="tlFocusClose" type="button" aria-label="Exit focus">×</button>
     </div>
 
     <!-- Scrollable rows (names + bars) -->
@@ -393,7 +394,6 @@
   <!-- INFO PANEL -->
   <div id="infoPanel">
     <div id="infoHdr"><button id="figureBackBtn" onclick="var prev=popFigureHistory();if(prev)jumpTo(prev);" style="display:none;align-items:center;background:none;border:1px solid var(--border2);color:var(--accent);font-size:var(--fs-3);cursor:pointer;padding:2px 8px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:8px" title="Previous figure">&#8592; Back</button>INFORMATION</div>
-    <div id="infoFilterSpacer">SELECT A FIGURE FROM THE LIST</div>
     <div id="infoScroll">
       <div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>
     </div>
