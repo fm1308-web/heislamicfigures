@@ -208,7 +208,7 @@ function _drillTimescaleHtml(){
       var fontWeight = (isHijra || isDeath) ? '600' : '400';
       ticks +=
         '<div style="position:absolute;top:' + top + 'px;left:0;width:10px;height:1px;background:' + labelColor + '"></div>' +
-        '<div style="position:absolute;top:' + (top - 7) + 'px;right:14px;font-family:\'Cinzel\',serif;font-size:10px;color:' + labelColor + ';font-weight:' + fontWeight + ';white-space:nowrap">' + (isHijra ? 'HIJRA 622' : (isDeath ? 'PROPHET D. 632' : y + ' CE')) + '</div>';
+        '<div style="position:absolute;top:' + (top - 7) + 'px;right:14px;font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:' + labelColor + ';font-weight:' + fontWeight + ';white-space:nowrap">' + (isHijra ? 'HIJRA 622' : (isDeath ? 'PROPHET D. 632' : y + ' CE')) + '</div>';
     });
   }
 
@@ -217,7 +217,7 @@ function _drillTimescaleHtml(){
 
   return '' +
     '<div style="flex:none;width:140px;padding-right:12px">' +
-      '<button id="mon-drill-time-toggle" type="button" style="display:block;margin:0 0 12px auto;padding:3px 8px;background:transparent;border:1px solid rgba(212,175,55,0.4);border-radius:2px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">' + toggleIcon + ' ' + toggleLabel + '</button>' +
+      '<button id="mon-drill-time-toggle" type="button" style="display:block;margin:0 0 12px auto;padding:3px 8px;background:transparent;border:1px solid rgba(212,175,55,0.4);border-radius:2px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">' + toggleIcon + ' ' + toggleLabel + '</button>' +
       '<div id="mon-drill-stem" style="position:relative;height:' + totalH + 'px;border-right:1.5px solid rgba(212,175,55,0.5)">' +
         ticks +
       '</div>' +
@@ -261,7 +261,7 @@ function _drillRender(){
       chips +=
         '<button class="mon-drill-tier-chip" data-tier="' + m.key + '" type="button" style="' +
           'flex:1;min-width:130px;padding:6px 12px;background:' + bg + ';border:1px solid ' + bd + ';border-radius:3px;' +
-          'color:' + tc + ';font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;' +
+          'color:' + tc + ';font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;' +
           'cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">' +
           '<span style="width:10px;height:10px;background:' + m.color + ';border-radius:50%;' + (on ? '' : 'opacity:0.25') + '"></span>' +
           '<span>' + m.key + ' ' + esc(m.label) + '</span>' +
@@ -285,8 +285,8 @@ function _drillRender(){
     _drillEl.innerHTML =
       '<div style="padding:20px 24px 20px 24px;box-sizing:border-box">' +
         '<div style="display:flex;align-items:baseline;gap:18px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(212,175,55,0.15);flex-wrap:wrap">' +
-          '<div><span style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.12em;color:rgba(212,175,55,0.8);text-transform:uppercase">Total</span> <span style="font-family:\'Cinzel\',serif;font-size:22px;color:#D4AF37;font-weight:600;margin-left:6px">' + total.toLocaleString() + '</span></div>' +
-          '<div style="font-size:12px;color:rgba(229,231,235,0.75);line-height:1.4">All 34,441 placed by broad period \u00B7 <span style="color:#D4AF37">' + tight.toLocaleString() + '</span> (' + tightPct + '%) have extra dating layers. Toggle tiers below to include/exclude.</div>' +
+          '<div><span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,0.8);text-transform:uppercase">Total</span> <span style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);color:#D4AF37;font-weight:600;margin-left:6px">' + total.toLocaleString() + '</span></div>' +
+          '<div style="font-size:var(--fs-3);color:rgba(229,231,235,0.75);line-height:1.4">All 34,441 placed by broad period \u00B7 <span style="color:#D4AF37">' + tight.toLocaleString() + '</span> (' + tightPct + '%) have extra dating layers. Toggle tiers below to include/exclude.</div>' +
         '</div>' +
         '<div id="mon-drill-chip-row" style="display:flex;gap:8px;margin-bottom:14px;position:sticky;top:0;z-index:5;background:#0E1621;padding:6px 0">' + chips + '</div>' +
         '<div id="mon-drill-body" style="display:flex;gap:12px;align-items:flex-start;overflow-x:auto;overflow-y:visible;padding:0 48px 12px 0;width:100%;box-sizing:border-box">' +
@@ -366,14 +366,14 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
   var rgbAccent = _drillHexToRgb(accentColor);
 
   var header =
-    '<div style="margin-bottom:10px;font-size:12px;color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(' + rgbAccent + ',0.1);display:flex;align-items:baseline;gap:8px">' +
+    '<div style="margin-bottom:10px;font-size:var(--fs-3);color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(' + rgbAccent + ',0.1);display:flex;align-items:baseline;gap:8px">' +
       '<span>' + sourceHadiths.length.toLocaleString() + ' hadiths \u00B7 ' + options.length + ' ' + esc(_drillSplitLabel(step.splitBy).toLowerCase()) + 's</span>' +
-      '<button class="mon-drill-step-close" data-step-index="' + step.sourceColumn + '" type="button" style="margin-left:auto;padding:2px 8px;background:transparent;border:1px solid rgba(' + rgbAccent + ',0.4);border-radius:2px;color:' + accentColor + ';font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">\u2715</button>' +
+      '<button class="mon-drill-step-close" data-step-index="' + step.sourceColumn + '" type="button" style="margin-left:auto;padding:2px 8px;background:transparent;border:1px solid rgba(' + rgbAccent + ',0.4);border-radius:2px;color:' + accentColor + ';font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">\u2715</button>' +
     '</div>';
 
   var warn = '';
   if(totalSum !== sourceHadiths.length){
-    warn = '<div style="font-size:10px;color:#B45454;margin-bottom:6px">Note: ' + (sourceHadiths.length - totalSum) + ' hadiths have no ' + esc(step.splitBy) + ' value.</div>';
+    warn = '<div style="font-size:var(--fs-3);color:#B45454;margin-bottom:6px">Note: ' + (sourceHadiths.length - totalSum) + ' hadiths have no ' + esc(step.splitBy) + ' value.</div>';
   }
 
   var ROW_H = 56;
@@ -391,18 +391,18 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
     var dimStyle = isDim ? 'opacity:0.22;filter:saturate(0.4);' : '';
     var viewFlex = canExpandFurther ? '1' : '1 1 100%';
     var expandBtnHtml = canExpandFurther
-      ? '<button class="mon-drill-pick-expand-btn" data-val="' + esc(o.value) + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;border-top:1px solid rgba(' + rgbAccent + ',0.25);border-left:1px solid rgba(' + rgbAccent + ',0.25);color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Expand \u25BE</button>'
+      ? '<button class="mon-drill-pick-expand-btn" data-val="' + esc(o.value) + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;border-top:1px solid rgba(' + rgbAccent + ',0.25);border-left:1px solid rgba(' + rgbAccent + ',0.25);color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Expand \u25BE</button>'
       : '';
     tilesHtml +=
       '<div class="mon-drill-tile' + (isSelected ? ' mon-drill-tile-source' : '') + '" data-val="' + esc(o.value) + '" style="' +
         'position:absolute;top:' + top + 'px;left:0;right:0;height:' + TILE_H + 'px;' +
         'background:transparent;border:3px solid ' + accentColor + ';border-radius:3px;overflow:hidden;display:flex;flex-direction:column;' + selectedGlow + dimStyle + '">' +
         '<div style="padding:4px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex:1">' +
-          '<span style="font-family:\'Lato\',sans-serif;font-size:12px;color:#E5E7EB;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(_drillValueLabel(step.splitBy, o.value)) + '</span>' +
-          '<span style="font-family:\'Cinzel\',serif;font-size:14px;color:#FFFFFF;font-weight:700;flex:none">' + o.count.toLocaleString() + '</span>' +
+          '<span style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);color:#E5E7EB;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(_drillValueLabel(step.splitBy, o.value)) + '</span>' +
+          '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#FFFFFF;font-weight:700;flex:none">' + o.count.toLocaleString() + '</span>' +
         '</div>' +
         '<div style="display:flex;gap:0;flex:none;border-top:1px solid rgba(' + rgbAccent + ',0.25)">' +
-          '<button class="mon-drill-pick-view" data-val="' + esc(o.value) + '" type="button" style="flex:' + viewFlex + ';padding:3px 6px;background:transparent;border:none;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">View</button>' +
+          '<button class="mon-drill-pick-view" data-val="' + esc(o.value) + '" type="button" style="flex:' + viewFlex + ';padding:3px 6px;background:transparent;border:none;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">View</button>' +
           expandBtnHtml +
         '</div>' +
       '</div>';
@@ -434,15 +434,15 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
 
 function _drillColumnHeader(columnIndex){
   if(columnIndex === 0){
-    return '<div style="margin-bottom:8px;height:20px;display:flex;align-items:center;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:rgba(212,175,55,0.8);text-transform:uppercase">Years</div>';
+    return '<div style="margin-bottom:8px;height:20px;display:flex;align-items:center;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.8);text-transform:uppercase">Years</div>';
   }
   var step = _drillPath[columnIndex - 1];
   if(!step) return '';
   var rangeLabel = step.sourceEarliest === step.sourceLatest ? (step.sourceEarliest + ' CE') : (step.sourceEarliest + '\u2013' + step.sourceLatest + ' CE');
   var valuePart = step.value !== null ? ': ' + esc(_drillValueLabel(step.splitBy, step.value)) : '';
   return '<div style="margin-bottom:8px;height:20px;display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap">' +
-    '<span style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:rgba(212,175,55,0.8);text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1" title="' + esc(_drillSplitLabel(step.splitBy) + valuePart.replace(/^: /, ': ')) + '">' + esc(_drillSplitLabel(step.splitBy)) + valuePart + '</span>' +
-    '<span style="font-size:10px;color:rgba(160,174,192,0.55);flex:none">' + esc(rangeLabel) + '</span>' +
+    '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.8);text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1" title="' + esc(_drillSplitLabel(step.splitBy) + valuePart.replace(/^: /, ': ')) + '">' + esc(_drillSplitLabel(step.splitBy)) + valuePart + '</span>' +
+    '<span style="font-size:var(--fs-3);color:rgba(160,174,192,0.55);flex:none">' + esc(rangeLabel) + '</span>' +
     '</div>';
 }
 
@@ -580,14 +580,14 @@ function _drillShowSplitMenu(anchorBtn, columnIndex, groupKey, available, onPick
   menu.style.cssText = 'position:absolute;background:#1A2332;border:1px solid rgba(212,175,55,0.5);border-radius:4px;padding:6px;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,0.6);display:flex;flex-direction:column;gap:4px;min-width:140px';
 
   var headerDiv = document.createElement('div');
-  headerDiv.style.cssText = 'font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.08em;color:rgba(212,175,55,0.7);text-transform:uppercase;padding:4px 8px 2px';
+  headerDiv.style.cssText = 'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:rgba(212,175,55,0.7);text-transform:uppercase;padding:4px 8px 2px';
   headerDiv.textContent = 'Split by';
   menu.appendChild(headerDiv);
 
   available.forEach(function(k){
     var b = document.createElement('button');
     b.type = 'button';
-    b.style.cssText = 'padding:6px 12px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-align:left';
+    b.style.cssText = 'padding:6px 12px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-align:left';
     b.textContent = _drillSplitLabel(k);
     b.onmouseenter = function(){ b.style.background = 'rgba(212,175,55,0.15)'; };
     b.onmouseleave = function(){ b.style.background = 'transparent'; };
@@ -651,12 +651,12 @@ function _drillShowValuePicker(splitBy, options, earliest, latest, columnIndex){
   card.style.cssText = 'background:#1A2332;border:1px solid rgba(212,175,55,0.5);border-radius:6px;max-width:520px;width:100%;max-height:80vh;display:flex;flex-direction:column;padding:20px';
 
   var title = document.createElement('div');
-  title.style.cssText = 'font-family:\'Cinzel\',serif;font-size:14px;letter-spacing:.08em;color:#D4AF37;text-transform:uppercase;margin-bottom:4px';
+  title.style.cssText = 'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:#D4AF37;text-transform:uppercase;margin-bottom:4px';
   title.textContent = 'Pick a ' + _drillSplitLabel(splitBy);
   card.appendChild(title);
 
   var sub = document.createElement('div');
-  sub.style.cssText = 'font-size:11px;color:rgba(160,174,192,0.75);margin-bottom:14px';
+  sub.style.cssText = 'font-size:var(--fs-3);color:rgba(160,174,192,0.75);margin-bottom:14px';
   sub.textContent = (earliest === latest ? earliest + ' CE' : earliest + '\u2013' + latest + ' CE') + ' \u00B7 ' + options.length + ' options';
   card.appendChild(sub);
 
@@ -665,7 +665,7 @@ function _drillShowValuePicker(splitBy, options, earliest, latest, columnIndex){
   options.forEach(function(o){
     var b = document.createElement('button');
     b.type = 'button';
-    b.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:3px;color:#E5E7EB;font-size:12px;cursor:pointer;text-align:left';
+    b.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:3px;color:#E5E7EB;font-size:var(--fs-3);cursor:pointer;text-align:left';
     b.innerHTML = '<span>' + esc(_drillValueLabel(splitBy, o.value)) + '</span><span style="font-weight:600;color:rgba(160,174,192,0.85)">' + o.count.toLocaleString() + '</span>';
     b.onmouseenter = function(){ b.style.background = 'rgba(212,175,55,0.1)'; b.style.borderColor = 'rgba(212,175,55,0.5)'; };
     b.onmouseleave = function(){ b.style.background = 'rgba(255,255,255,0.03)'; b.style.borderColor = 'rgba(212,175,55,0.2)'; };
@@ -682,7 +682,7 @@ function _drillShowValuePicker(splitBy, options, earliest, latest, columnIndex){
   var cancel = document.createElement('button');
   cancel.type = 'button';
   cancel.textContent = 'Cancel';
-  cancel.style.cssText = 'margin-top:12px;padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;align-self:flex-end';
+  cancel.style.cssText = 'margin-top:12px;padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;align-self:flex-end';
   cancel.onclick = function(){ overlay.remove(); };
   card.appendChild(cancel);
 
@@ -765,7 +765,7 @@ function _drillShowInlineHadiths(earliest, latest){
     html += '</div>';
 
     if(!filtered.length){
-      html += '<div style="text-align:center;padding:40px;color:#6B7280;font-size:13px">No hadiths match this drill path.</div>';
+      html += '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">No hadiths match this drill path.</div>';
     } else {
       html += '<div class="mon-drill-inline-row mon-drill-inline-row-hdr">' +
         '<div class="mon-drill-inline-col-a">Source</div>' +
@@ -777,7 +777,7 @@ function _drillShowInlineHadiths(earliest, latest){
         var label = getLabel(h._colKey || '');
         var num = getNumber(h);
         var text = getText(h);
-        var colA = '<div style="font-family:\'Cinzel\',serif;font-size:11px;color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:6px">#' + esc(String(num)) + '</div>';
+        var colA = '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:6px">#' + esc(String(num)) + '</div>';
         if(!hasTopicFilter && h.topic){
           colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Topic</span><span class="mon-drill-src-val">' + esc(h.topic) + '</span></div>';
         }
@@ -795,13 +795,13 @@ function _drillShowInlineHadiths(earliest, latest){
         html += '<div class="mon-drill-inline-row">' +
           '<div class="mon-drill-inline-col-a">' + colA + '</div>' +
           '<div class="mon-drill-inline-col-b">' +
-            '<div style="font-size:13px;color:#E5E7EB;line-height:1.55">' + esc(text) + '</div>' +
+            '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.55">' + esc(text) + '</div>' +
             _datingLine(h) +
           '</div>' +
         '</div>';
       }
       if(filtered.length > MAX_ROWS){
-        html += '<div style="text-align:center;padding:12px;color:#D4AF37;font-size:11px;letter-spacing:.06em;border-top:1px solid #2D3748">\u2026 ' + (filtered.length - MAX_ROWS) + ' more results truncated.</div>';
+        html += '<div style="text-align:center;padding:12px;color:#D4AF37;font-size:var(--fs-3);letter-spacing:.06em;border-top:1px solid #2D3748">\u2026 ' + (filtered.length - MAX_ROWS) + ' more results truncated.</div>';
       }
     }
 
@@ -965,7 +965,7 @@ function _drillTierLaneHtml(meta, hadiths){
       var h = Math.max(3, topB - topA);
       var alpha = 0.15 + 0.75 * (c / maxC);
       marks += '<div title="' + y + 's: ' + c.toFixed(1) + ' hadiths" style="position:absolute;top:' + topA + 'px;left:6%;right:6%;height:' + h + 'px;background:rgba(' + rgb + ',' + alpha.toFixed(3) + ');border-top:1px solid rgba(' + rgb + ',0.35)"></div>' +
-        '<div style="position:absolute;top:' + (topA + h/2 - 6) + 'px;left:0;right:0;text-align:center;font-size:9px;color:rgba(229,231,235,0.85);font-weight:600;pointer-events:none">' + Math.round(c).toLocaleString() + '</div>';
+        '<div style="position:absolute;top:' + (topA + h/2 - 6) + 'px;left:0;right:0;text-align:center;font-size:var(--fs-3);color:rgba(229,231,235,0.85);font-weight:600;pointer-events:none">' + Math.round(c).toLocaleString() + '</div>';
     });
   }
 
@@ -973,10 +973,10 @@ function _drillTierLaneHtml(meta, hadiths){
     '<div style="flex:1;min-width:140px;max-width:220px">' +
       '<div style="margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(' + rgb + ',0.3)">' +
         '<div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap">' +
-          '<div style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.08em;color:' + meta.color + ';text-transform:uppercase;font-weight:600">' + meta.key + ' \u00B7 ' + esc(meta.label) + '</div>' +
-          '<div style="font-size:11px;color:#E5E7EB;font-weight:600">' + hadiths.length.toLocaleString() + '</div>' +
+          '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:' + meta.color + ';text-transform:uppercase;font-weight:600">' + meta.key + ' \u00B7 ' + esc(meta.label) + '</div>' +
+          '<div style="font-size:var(--fs-3);color:#E5E7EB;font-weight:600">' + hadiths.length.toLocaleString() + '</div>' +
         '</div>' +
-        '<div style="font-size:10px;color:rgba(160,174,192,0.65);margin-top:2px">' + esc(meta.sub) + ' \u00B7 ' + esc(meta.span) + '</div>' +
+        '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.65);margin-top:2px">' + esc(meta.sub) + ' \u00B7 ' + esc(meta.span) + '</div>' +
       '</div>' +
       '<div style="position:relative;height:' + laneH + 'px;background:rgba(' + rgb + ',0.03);border-radius:2px">' + marks + '</div>' +
     '</div>';
@@ -1152,18 +1152,18 @@ function _drillColumnHtml(meta, hadiths, tierColorMap){
           'background:transparent;border:3px solid ' + tileColor + ';border-radius:3px;overflow:hidden;display:flex;flex-direction:column;' + ringShadow + dimStyle + '">';
       })() +
         '<div style="padding:4px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex:1">' +
-          '<span style="font-family:\'Cinzel\',serif;font-size:14px;color:#FFFFFF;font-weight:700">' + g.hadiths.length.toLocaleString() + '</span>' +
-          '<span style="font-size:10px;color:#E5E7EB;font-family:\'Lato\',sans-serif">' + esc(rangeLabel) + '</span>' +
+          '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#FFFFFF;font-weight:700">' + g.hadiths.length.toLocaleString() + '</span>' +
+          '<span style="font-size:var(--fs-3);color:#E5E7EB;font-family:\'Lato\',sans-serif">' + esc(rangeLabel) + '</span>' +
         '</div>' +
         '<div style="display:flex;gap:0;flex:none;border-top:1px solid rgba(' + rgb + ',0.25)">' +
-          '<button class="mon-drill-view" data-group-key="' + g.earliest + '-' + g.latest + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">View</button>' +
-          '<button class="mon-drill-expand" data-group-key="' + g.earliest + '-' + g.latest + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;border-left:1px solid rgba(' + rgb + ',0.25);color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:9px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Expand</button>' +
+          '<button class="mon-drill-view" data-group-key="' + g.earliest + '-' + g.latest + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">View</button>' +
+          '<button class="mon-drill-expand" data-group-key="' + g.earliest + '-' + g.latest + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;border-left:1px solid rgba(' + rgb + ',0.25);color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Expand</button>' +
         '</div>' +
       '</div>';
   });
 
   var headerHtml =
-    '<div style="margin-bottom:10px;font-size:12px;color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(212,175,55,0.1)">' +
+    '<div style="margin-bottom:10px;font-size:var(--fs-3);color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(212,175,55,0.1)">' +
       hadiths.length.toLocaleString() + ' hadiths \u00B7 ' + groupList.length + ' date groups' +
     '</div>';
 
@@ -1329,7 +1329,7 @@ function _narratorCell(name){
   if(!name) return '';
   var matched = _matchNarrator(name);
   if(matched){
-    return '<span class="mon-narrator-tag" data-famous="' + esc(matched) + '" style="cursor:pointer;padding:2px 8px;border:1px solid rgba(212,175,55,0.4);border-radius:3px;background:rgba(212,175,55,0.08);color:#D4AF37;font-weight:500;font-size:12px">' + esc(name) + '</span>';
+    return '<span class="mon-narrator-tag" data-famous="' + esc(matched) + '" style="cursor:pointer;padding:2px 8px;border:1px solid rgba(212,175,55,0.4);border-radius:3px;background:rgba(212,175,55,0.08);color:#D4AF37;font-weight:500;font-size:var(--fs-3)">' + esc(name) + '</span>';
   }
   return '<span style="color:rgba(229,231,235,0.75)">' + esc(name) + '</span>';
 }
@@ -1347,10 +1347,10 @@ function _gradeShort(g){
 function _chainOnlyBlock(h){
   var narrs = Array.isArray(h.narrators) ? h.narrators : [];
   if(!narrs.length){
-    return '<div style="color:rgba(160,174,192,0.7);font-style:italic;font-size:11px">(Chain omitted)</div>';
+    return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Chain omitted)</div>';
   }
   var N = narrs.length;
-  var toggle = '<button class="mon-chain-toggle" type="button" style="display:inline-flex;align-items:center;gap:4px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;padding:3px 8px;color:rgba(212,175,55,0.85);font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
+  var toggle = '<button class="mon-chain-toggle" type="button" style="display:inline-flex;align-items:center;gap:4px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;padding:3px 8px;color:rgba(212,175,55,0.85);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
   var rows = '';
   for(var i = N - 1, pos = 1; i >= 0; i--, pos++){
     var nr = narrs[i];
@@ -1360,10 +1360,10 @@ function _chainOnlyBlock(h){
     var dy = (nr.death_year != null && nr.death_year !== '') ? ' \u00B7 d. ' + String(nr.death_year) : '';
     var gradeHtml = _glossWrap(grade) + esc(dy);
     rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
-              '<span style="color:rgba(212,175,55,0.7);font-size:11px;min-width:18px">' + pos + '.</span>' +
+              '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
               '<div style="flex:1">' +
-                '<div style="color:#E5E7EB;font-size:12px">' + esc(nm) + '</div>' +
-                '<div style="color:rgba(160,174,192,0.7);font-size:10px;margin-top:2px">' + gradeHtml + '</div>' +
+                '<div style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</div>' +
+                '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + gradeHtml + '</div>' +
               '</div>' +
             '</div>';
   }
@@ -1374,13 +1374,13 @@ function _chainOnlyBlock(h){
 function _narratorBlock(h){
   var narrs = Array.isArray(h.narrators) ? h.narrators : [];
   if(!narrs.length){
-    return '<div style="color:rgba(160,174,192,0.7);font-style:italic;font-size:12px">(Chain omitted in source)</div>';
+    return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Chain omitted in source)</div>';
   }
   var terminal = narrs[narrs.length - 1];
   var termName = _stripArabic((terminal.name || '').split('(')[0].trim());
   var termCell = _narratorCell(termName);
   var N = narrs.length;
-  var toggle = '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
+  var toggle = '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
   var rows = '';
   for(var i = N - 1, pos = 1; i >= 0; i--, pos++){
     var nr = narrs[i];
@@ -1392,19 +1392,19 @@ function _narratorBlock(h){
     var gradeHtml = _glossWrap(grade) + esc(dy);
     var relHtml = nr.reliability_grade ? ' <span style="color:rgba(212,175,55,0.8)">\u00B7 ' + _glossWrap(String(nr.reliability_grade)) + '</span>' : '';
     var tail = isTerm
-      ? '<div style="color:rgba(212,175,55,0.65);font-size:10px;font-style:italic;margin-top:2px">\u2191 heard from the Prophet</div>'
-      : (isComp ? '<div style="color:rgba(160,174,192,0.6);font-size:10px;font-style:italic;margin-top:2px">(compiler\'s direct source)</div>' : '');
+      ? '<div style="color:rgba(212,175,55,0.65);font-size:var(--fs-3);font-style:normal;margin-top:2px">\u2191 heard from the Prophet</div>'
+      : (isComp ? '<div style="color:rgba(160,174,192,0.6);font-size:var(--fs-3);font-style:normal;margin-top:2px">(compiler\'s direct source)</div>' : '');
     rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
-              '<span style="color:rgba(212,175,55,0.7);font-size:11px;min-width:18px">' + pos + '.</span>' +
+              '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
               '<div style="flex:1">' +
-                '<div style="color:#E5E7EB;font-size:12px">' + esc(nm) + '</div>' +
-                '<div style="color:rgba(160,174,192,0.7);font-size:10px;margin-top:2px">' + gradeHtml + relHtml + '</div>' +
+                '<div style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</div>' +
+                '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + gradeHtml + relHtml + '</div>' +
                 tail +
               '</div>' +
             '</div>';
   }
   var panel = '<div class="mon-chain" style="display:none;margin-top:8px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:4px">' +
-                '<div style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.1em;color:rgba(212,175,55,0.85);text-transform:uppercase;margin-bottom:6px">Chain of Narration</div>' +
+                '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.85);text-transform:uppercase;margin-bottom:6px">Chain of Narration</div>' +
                 rows +
               '</div>';
   return termCell + toggle + panel;
@@ -1431,11 +1431,11 @@ function _datingLine(h){
 
   var cs = CONF_STYLES[confidence] || CONF_STYLES.period_only;
 
-  return '<div class="mon-dating" style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:\'Lato\',sans-serif;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(160,174,192,0.8)">' +
+  return '<div class="mon-dating" style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;color:rgba(160,174,192,0.8)">' +
     '<span>Tentative Dating</span>' +
     '<span style="color:rgba(255,255,255,0.3)">\u00B7</span>' +
     '<span>' + esc(rangeText) + '</span>' +
-    '<span class="mon-conf-badge" title="' + esc(tooltip) + '" style="cursor:help;padding:2px 7px;border-radius:3px;font-size:9px;font-weight:600;letter-spacing:.08em;background:' + cs.bg + ';color:' + cs.text + '">' + cs.label + '</span>' +
+    '<span class="mon-conf-badge" title="' + esc(tooltip) + '" style="cursor:help;padding:2px 7px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:' + cs.bg + ';color:' + cs.text + '">' + cs.label + '</span>' +
     '</div>';
 }
 
@@ -1448,13 +1448,13 @@ function _buildBand(){
     html += '<div class="mon-period-seg" data-period="' + p.id + '" data-rgb="' + p.rgb + '" style="' +
       'position:relative;flex:' + p.span + ';background:rgba(' + p.rgb + ',0.55);' +
       'display:flex;align-items:center;justify-content:center;' +
-      'font-family:\'Cinzel\',serif;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;' +
+      'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;font-weight:600;' +
       'color:#FFFFFF;text-shadow:0 1px 2px rgba(0,0,0,0.85),0 0 3px rgba(0,0,0,0.6);' +
       'transition:background .2s;' + br + '">' +
       '<span>' + esc(p.label) + '</span>' +
       '<span class="mon-period-count" data-period="' + p.id + '" style="' +
         'position:absolute;right:6px;bottom:2px;' +
-        'font-family:\'Lato\',sans-serif;font-size:9px;font-weight:400;letter-spacing:.04em;text-transform:none;' +
+        'font-family:\'Lato\',sans-serif;font-size:var(--fs-3);font-weight:400;letter-spacing:.04em;text-transform:none;' +
         'color:rgba(255,255,255,0.55);text-shadow:0 1px 2px rgba(0,0,0,0.7);' +
         '"></span>' +
       '</div>';
@@ -1510,18 +1510,18 @@ function _openMethodology(e){
 
   overlay.innerHTML =
     '<div style="background:#1A2332;border:1px solid rgba(212,175,55,0.3);border-radius:6px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:28px 32px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB">' +
-      '<button id="mon-modal-close" style="position:absolute;top:10px;right:14px;background:transparent;border:none;color:#A0AEC0;font-size:24px;cursor:pointer;line-height:1">\u00D7</button>' +
-      '<h2 style="font-family:\'Cinzel\',serif;font-size:18px;letter-spacing:.12em;color:#D4AF37;margin:0 0 16px">TENTATIVE DATING \u2014 METHODOLOGY</h2>' +
-      '<p style="font-size:13px;line-height:1.6;margin:0 0 16px">Hadiths are reports about events from the Prophet\u2019s life (610\u2013632 CE) and after. None carry an exact date. What you see here is a best-effort reconstruction built by layering evidence. This is tentative by design and will keep improving as we connect more sources.</p>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">CONFIDENCE LEVELS</h3>' +
-      '<div style="font-size:13px;line-height:1.7">' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:600;letter-spacing:.08em;background:#D4AF37;color:#0E1621;margin-right:8px">HIGH</span>Hadith text names a specific dated event (e.g. Battle of Badr, 624 CE). Range typically 1\u20133 years.</p>' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:600;letter-spacing:.08em;background:#6B8E6B;color:#FFFFFF;margin-right:8px">MEDIUM</span>Multiple contextual clues line up (companion mentioned, location cue, surah cited). Range typically 5\u201315 years.</p>' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:600;letter-spacing:.08em;background:#5C7A8C;color:#FFFFFF;margin-right:8px">LOW</span>Only one weak clue beyond narrator period. Range usually covers most of the narrator\u2019s active life.</p>' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:600;letter-spacing:.08em;background:#666;color:#FFFFFF;margin-right:8px">PERIOD ONLY</span>No clues in the text itself \u2014 dating falls back to the narrator\u2019s broad period.</p>' +
+      '<button id="mon-modal-close" style="position:absolute;top:10px;right:14px;background:transparent;border:none;color:#A0AEC0;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>' +
+      '<h2 style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);letter-spacing:.12em;color:#D4AF37;margin:0 0 16px">TENTATIVE DATING \u2014 METHODOLOGY</h2>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Hadiths are reports about events from the Prophet\u2019s life (610\u2013632 CE) and after. None carry an exact date. What you see here is a best-effort reconstruction built by layering evidence. This is tentative by design and will keep improving as we connect more sources.</p>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">CONFIDENCE LEVELS</h3>' +
+      '<div style="font-size:var(--fs-3);line-height:1.7">' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#D4AF37;color:#0E1621;margin-right:8px">HIGH</span>Hadith text names a specific dated event (e.g. Battle of Badr, 624 CE). Range typically 1\u20133 years.</p>' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#6B8E6B;color:#FFFFFF;margin-right:8px">MEDIUM</span>Multiple contextual clues line up (companion mentioned, location cue, surah cited). Range typically 5\u201315 years.</p>' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#5C7A8C;color:#FFFFFF;margin-right:8px">LOW</span>Only one weak clue beyond narrator period. Range usually covers most of the narrator\u2019s active life.</p>' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#666;color:#FFFFFF;margin-right:8px">PERIOD ONLY</span>No clues in the text itself \u2014 dating falls back to the narrator\u2019s broad period.</p>' +
       '</div>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">LAYERS CURRENTLY APPLIED</h3>' +
-      '<div style="font-size:13px;line-height:1.6">' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">LAYERS CURRENTLY APPLIED</h3>' +
+      '<div style="font-size:var(--fs-3);line-height:1.6">' +
         '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L1 \u2014 Narrator period (100% coverage)</strong><br>The last narrator in the chain is the companion who heard it from the Prophet. Their known lifespan gives a broad window.</p>' +
         '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L2 \u2014 Named dated event (4.4%)</strong><br>The hadith text names a specific event with a known year \u2014 Battle of Badr (624), Treaty of Hudaybiyyah (628), etc. Highest confidence.</p>' +
         '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L3 \u2014 Book of Maghazi (1.7%)</strong><br>Hadith is in the Military Expeditions section of a collection, which scholars organized around the Madinan period.</p>' +
@@ -1529,13 +1529,13 @@ function _openMethodology(e){
         '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L5 \u2014 Location clue (2.6%)</strong><br>Text mentions Madinah, Ansar, Muhajirun etc. \u2014 implies post-Hijrah.</p>' +
         '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L6 \u2014 Quranic surah cited (13.4%)</strong><br>Makkan surahs point to 610\u2013622; Madinan surahs to 622\u2013632.</p>' +
       '</div>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">PLANNED LAYERS</h3>' +
-      '<ul style="font-size:13px;line-height:1.6;margin:0;padding-left:20px">' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">PLANNED LAYERS</h3>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0;padding-left:20px">' +
         '<li>Sunnah.com expedition cross-references</li>' +
         '<li>Manual scholar review for high-traffic hadiths</li>' +
         '<li>Cross-collection corroboration</li>' +
       '</ul>' +
-      '<p style="font-size:12px;color:#A0AEC0;margin:20px 0 0;font-style:italic">This is not precise dating. Treat all ranges as approximate.</p>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:20px 0 0;font-style:normal">This is not precise dating. Treat all ranges as approximate.</p>' +
     '</div>';
 
   document.body.appendChild(overlay);
@@ -1602,14 +1602,14 @@ function _renderRows(filtered, colKey){
   _countEl.textContent = filtered.length + ' hadith' + (filtered.length !== 1 ? 's' : '') + ' found';
 
   if(!filtered.length){
-    _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:13px">No hadiths match these filters.</div>';
+    _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">No hadiths match these filters.</div>';
     return;
   }
 
   var frag = document.createDocumentFragment();
 
   var hdr = document.createElement('div');
-  hdr.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(160,174,192,0.7)';
+  hdr.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(160,174,192,0.7)';
   hdr.innerHTML = '<div>Source</div><div>Narrator</div><div>Hadith</div>';
   frag.appendChild(hdr);
 
@@ -1623,25 +1623,25 @@ function _renderRows(filtered, colKey){
     var topic = h.topic ? String(h.topic) : '';
 
     var topicHtml = topic
-      ? '<div style="font-family:\'Lato\',sans-serif;font-size:10px;letter-spacing:.08em;color:#FFFFFF;margin-top:16px">' + esc(topic) + '</div>'
+      ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;color:#FFFFFF;margin-top:16px">' + esc(topic) + '</div>'
       : '';
 
     var _pi = _monPeriodInfo(h.period);
     var periodLabel = _pi ? _pi.label : '';
     var periodColor = _pi ? _pi.color : 'rgba(160,174,192,0.75)';
     var periodHtml = periodLabel
-      ? '<div style="font-family:\'Lato\',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:' + periodColor + ';margin-top:3px">' + esc(periodLabel) + '</div>'
+      ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:' + periodColor + ';margin-top:3px">' + esc(periodLabel) + '</div>'
       : '';
 
     var row = document.createElement('div');
     row.className = 'mon-row';
     row.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;align-items:start;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);';
     row.innerHTML =
-      '<div><div style="font-family:\'Cinzel\',serif;font-size:11px;color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:4px">#' + esc(String(num)) + '</div>' +
-      '<div style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
+      '<div><div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:4px">#' + esc(String(num)) + '</div>' +
+      '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
       topicHtml + periodHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
-      '<div style="font-size:13px;color:#E5E7EB;line-height:1.5">' + esc(text) + _datingLine(h) + '</div>';
+      '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.5">' + esc(text) + _datingLine(h) + '</div>';
     frag.appendChild(row);
   }
 
@@ -1649,7 +1649,7 @@ function _renderRows(filtered, colKey){
 
   if(filtered.length > MAX_ROWS){
     var trunc = document.createElement('div');
-    trunc.style.cssText = 'text-align:center;padding:12px;color:#D4AF37;font-size:11px;letter-spacing:.06em;border-top:1px solid #2D3748';
+    trunc.style.cssText = 'text-align:center;padding:12px;color:#D4AF37;font-size:var(--fs-3);letter-spacing:.06em;border-top:1px solid #2D3748';
     trunc.textContent = '\u2026 ' + (filtered.length - MAX_ROWS) + ' more results truncated. Narrow your filters to see them.';
     _resultsEl.appendChild(trunc);
   }
@@ -1772,7 +1772,7 @@ function init(){
     var _monFilters=document.getElementById('mon-filters');
     if(_monFilters){
       var _mhBtn=document.createElement('button');_mhBtn.id='mon-how-btn';_mhBtn.textContent='How This Works';
-      _mhBtn.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";
+      _mhBtn.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";
       _mhBtn.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};
       _mhBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
       _mhBtn.onclick=function(e){e.stopPropagation();_openMethodology();};
@@ -1782,7 +1782,7 @@ function init(){
 
   _drillEl = document.createElement('div');
   _drillEl.id = 'mon-drill';
-  _drillEl.style.cssText = 'display:none;width:100%;box-sizing:border-box;padding:0;color:#E5E7EB;font-size:13px;max-height:calc(100vh - 260px);overflow-y:auto;overflow-x:hidden';
+  _drillEl.style.cssText = 'display:none;width:100%;box-sizing:border-box;padding:0;color:#E5E7EB;font-size:var(--fs-3);max-height:calc(100vh - 260px);overflow-y:auto;overflow-x:hidden';
   if(_resultsEl && _resultsEl.parentNode){
     _resultsEl.parentNode.insertBefore(_drillEl, _resultsEl.nextSibling);
   }
@@ -2045,15 +2045,15 @@ function _wizardOpen(){
   overlay.innerHTML =
     '<div id="mon-wizard-card" style="background:#1A2332;border:1px solid rgba(212,175,55,0.4);border-radius:6px;width:520px;max-width:92vw;max-height:86vh;display:flex;flex-direction:column;color:#E5E7EB;box-shadow:0 12px 40px rgba(0,0,0,0.6)">' +
       '<div style="padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between">' +
-        '<div style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.12em;color:#D4AF37;text-transform:uppercase">Guided Search</div>' +
-        '<div id="mon-wizard-close" style="cursor:pointer;color:#9CA3AF;font-size:20px;line-height:1;padding:0 6px">\u00D7</div>' +
+        '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.12em;color:#D4AF37;text-transform:uppercase">Guided Search</div>' +
+        '<div id="mon-wizard-close" style="cursor:pointer;color:#9CA3AF;font-size:var(--fs-1);line-height:1;padding:0 6px">\u00D7</div>' +
       '</div>' +
       '<div id="mon-wizard-body" style="padding:18px;overflow-y:auto;flex:1"></div>' +
       '<div style="padding:12px 18px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">' +
         '<div id="mon-wizard-count" style="flex:1;min-width:0"></div>' +
         '<div style="display:flex;gap:8px">' +
-          '<button id="mon-wizard-back" style="padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-size:12px;cursor:pointer">Back</button>' +
-          '<button id="mon-wizard-next" style="padding:6px 14px;background:rgba(212,175,55,0.18);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#D4AF37;font-size:12px;cursor:pointer;font-weight:600">Next \u25B8</button>' +
+          '<button id="mon-wizard-back" style="padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-size:var(--fs-3);cursor:pointer">Back</button>' +
+          '<button id="mon-wizard-next" style="padding:6px 14px;background:rgba(212,175,55,0.18);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#D4AF37;font-size:var(--fs-3);cursor:pointer;font-weight:600">Next \u25B8</button>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -2086,7 +2086,7 @@ function _wizardOpen(){
     _wizardRender();
   });
 
-  document.getElementById('mon-wizard-body').innerHTML = '<div style="text-align:center;padding:40px;color:rgba(160,174,192,0.7);font-size:13px">Loading\u2026</div>';
+  document.getElementById('mon-wizard-body').innerHTML = '<div style="text-align:center;padding:40px;color:rgba(160,174,192,0.7);font-size:var(--fs-3)">Loading\u2026</div>';
   document.getElementById('mon-wizard-count').textContent = '';
 }
 
@@ -2155,13 +2155,13 @@ function _wizardRender(){
     ];
 
     var html = '';
-    html += '<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Begin</div>';
-    html += '<div style="font-size:15px;color:#E5E7EB;margin-bottom:14px">Where do you want to begin?</div>';
+    html += '<div style="font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Begin</div>';
+    html += '<div style="font-size:var(--fs-2);color:#E5E7EB;margin-bottom:14px">Where do you want to begin?</div>';
     html += '<div style="display:flex;flex-direction:column;gap:8px">';
     startOpts.forEach(function(o){
       html += '<div class="mon-wiz-start" data-key="' + o.key + '" style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:3px;cursor:pointer;background:transparent;transition:background .15s,border-color .15s">' +
-        '<div style="font-size:14px;color:#E5E7EB;font-weight:600;margin-bottom:3px">' + esc(o.label) + '</div>' +
-        '<div style="font-size:11px;color:rgba(160,174,192,0.8)">' + esc(o.desc) + '</div>' +
+        '<div style="font-size:var(--fs-3);color:#E5E7EB;font-weight:600;margin-bottom:3px">' + esc(o.label) + '</div>' +
+        '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.8)">' + esc(o.desc) + '</div>' +
         '</div>';
     });
     html += '</div>';
@@ -2183,7 +2183,7 @@ function _wizardRender(){
     backBtn.style.cursor = 'not-allowed';
     nextBtn.style.display = 'none';
     countEl.innerHTML = _wizardAllHadith
-      ? '<div style="font-family:\'Cinzel\',serif;font-size:16px;color:#D4AF37;letter-spacing:.08em">TOTAL ' + _wizardAllHadith.length.toLocaleString() + '</div>'
+      ? '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-2);color:#D4AF37;letter-spacing:.08em">TOTAL ' + _wizardAllHadith.length.toLocaleString() + '</div>'
       : 'Loading\u2026';
     return;
   }
@@ -2203,16 +2203,16 @@ function _wizardRender(){
   optsWithCounts.sort(function(a,b){ return b.n - a.n; });
 
   var html = '';
-  html += '<div style="font-size:12px;line-height:1.55;margin-bottom:14px;padding:10px 12px;background:rgba(212,175,55,0.04);border-left:2px solid rgba(212,175,55,0.4);border-radius:2px">' + _wizardBreadcrumb() + '</div>';
-  html += '<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Step ' + (_wizardState.step + 1) + ' of ' + _wizardState.steps.length + ' \u00B7 ' + stepDef.label + '</div>';
-  html += '<div style="font-size:15px;color:#E5E7EB;margin-bottom:14px">' + esc(stepDef.prompt) + '</div>';
+  html += '<div style="font-size:var(--fs-3);line-height:1.55;margin-bottom:14px;padding:10px 12px;background:rgba(212,175,55,0.04);border-left:2px solid rgba(212,175,55,0.4);border-radius:2px">' + _wizardBreadcrumb() + '</div>';
+  html += '<div style="font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Step ' + (_wizardState.step + 1) + ' of ' + _wizardState.steps.length + ' \u00B7 ' + stepDef.label + '</div>';
+  html += '<div style="font-size:var(--fs-2);color:#E5E7EB;margin-bottom:14px">' + esc(stepDef.prompt) + '</div>';
   html += '<div style="display:flex;flex-direction:column;gap:6px">';
 
   var anySelected = (currentArr.length === 0);
   var anyCountStr = (anyTotal === null) ? '\u2026' : anyTotal.toLocaleString();
-  html += '<div class="mon-wiz-opt" data-val="__any__" style="padding:8px 12px;border:1px solid ' + (anySelected ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)') + ';border-radius:3px;cursor:pointer;background:' + (anySelected ? 'rgba(212,175,55,0.10)' : 'transparent') + ';font-size:13px;color:' + (anySelected ? '#D4AF37' : '#E5E7EB') + ';font-style:italic;display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+  html += '<div class="mon-wiz-opt" data-val="__any__" style="padding:8px 12px;border:1px solid ' + (anySelected ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)') + ';border-radius:3px;cursor:pointer;background:' + (anySelected ? 'rgba(212,175,55,0.10)' : 'transparent') + ';font-size:var(--fs-3);color:' + (anySelected ? '#D4AF37' : '#E5E7EB') + ';font-style:normal;display:flex;justify-content:space-between;align-items:center;gap:10px">' +
     '<span>Any (skip this filter)</span>' +
-    '<span style="font-style:normal;font-size:11px;color:rgba(160,174,192,0.85);white-space:nowrap">' + anyCountStr + '</span>' +
+    '<span style="font-style:normal;font-size:var(--fs-3);color:rgba(160,174,192,0.85);white-space:nowrap">' + anyCountStr + '</span>' +
     '</div>';
 
   optsWithCounts.forEach(function(o){
@@ -2220,13 +2220,13 @@ function _wizardRender(){
     var borderCol = on ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)';
     var bg        = on ? 'rgba(212,175,55,0.10)' : 'transparent';
     var textCol   = on ? '#D4AF37' : '#E5E7EB';
-    html += '<div class="mon-wiz-opt" data-val="' + esc(o.value) + '" style="padding:8px 12px;border:1px solid ' + borderCol + ';border-radius:3px;cursor:pointer;background:' + bg + ';font-size:13px;color:' + textCol + ';display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+    html += '<div class="mon-wiz-opt" data-val="' + esc(o.value) + '" style="padding:8px 12px;border:1px solid ' + borderCol + ';border-radius:3px;cursor:pointer;background:' + bg + ';font-size:var(--fs-3);color:' + textCol + ';display:flex;justify-content:space-between;align-items:center;gap:10px">' +
       '<span>' + esc(o.label) + '</span>' +
-      '<span style="font-size:12px;font-weight:600;color:' + (on ? '#D4AF37' : '#E5E7EB') + ';white-space:nowrap">' + o.n.toLocaleString() + '</span>' +
+      '<span style="font-size:var(--fs-3);font-weight:600;color:' + (on ? '#D4AF37' : '#E5E7EB') + ';white-space:nowrap">' + o.n.toLocaleString() + '</span>' +
       '</div>';
   });
   if(optsWithCounts.length === 0){
-    html += '<div style="padding:16px;text-align:center;color:rgba(160,174,192,0.7);font-size:12px;font-style:italic">No ' + esc(stepDef.label.toLowerCase()) + ' has any match. Use "Any" to skip, or Back to change a prior pick.</div>';
+    html += '<div style="padding:16px;text-align:center;color:rgba(160,174,192,0.7);font-size:var(--fs-3);font-style:normal">No ' + esc(stepDef.label.toLowerCase()) + ' has any match. Use "Any" to skip, or Back to change a prior pick.</div>';
   }
   html += '</div>';
 
@@ -2260,10 +2260,10 @@ function _wizardRender(){
     var parts = MON_PERIODS.map(function(p){
       return '<span style="color:' + p.color + '">' + p.label.toUpperCase() + '</span> <span style="color:#E5E7EB;font-weight:600">' + (breakdown[p.id] || 0).toLocaleString() + '</span>';
     });
-    breakdownHtml = '<div style="font-size:10px;letter-spacing:.05em;color:rgba(160,174,192,0.85);margin-top:4px;display:flex;flex-wrap:wrap;gap:10px">' + parts.join('<span style="color:rgba(255,255,255,0.25)">\u00B7</span>') + '</div>';
+    breakdownHtml = '<div style="font-size:var(--fs-3);letter-spacing:.05em;color:rgba(160,174,192,0.85);margin-top:4px;display:flex;flex-wrap:wrap;gap:10px">' + parts.join('<span style="color:rgba(255,255,255,0.25)">\u00B7</span>') + '</div>';
   }
   countEl.innerHTML =
-    '<div style="font-family:\'Cinzel\',serif;font-size:18px;color:#D4AF37;letter-spacing:.1em;font-weight:600">TOTAL ' + totalStr + '</div>' +
+    '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);color:#D4AF37;letter-spacing:.1em;font-weight:600">TOTAL ' + totalStr + '</div>' +
     breakdownHtml;
 }
 

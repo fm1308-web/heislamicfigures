@@ -103,50 +103,50 @@ function _evInjectStyles(){
   #eras-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
   #era-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
   .era-dd-wrap{position:relative}
-  .era-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
+  .era-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
   .era-dd-btn:hover{border-color:var(--gold,#D4AF37)}
   .era-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
   .era-dd-panel.open{display:flex}
-  .era-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:12px;border-radius:2px;outline:none}
+  .era-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);border-radius:2px;outline:none}
   .era-dd-search:focus{border-color:var(--gold,#D4AF37)}
   .era-dd-scroll{flex:1;overflow-y:auto;padding:4px 0 10px}
-  .era-ck-row{display:flex;align-items:center;gap:10px;padding:6px 14px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text1,#E4E4E7)}
+  .era-ck-row{display:flex;align-items:center;gap:10px;padding:6px 14px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);color:var(--text1,#E4E4E7)}
   .era-ck-row:hover{background:rgba(212,175,55,.08)}
   .era-ck-row.checked{background:rgba(212,175,55,.06);color:var(--gold,#D4AF37)}
   .era-ck{width:12px;height:12px;border:1px solid var(--border2,#2D3748);border-radius:2px;flex-shrink:0}
   .era-ck.on{background:var(--gold,#D4AF37);border-color:var(--gold,#D4AF37);box-shadow:inset 0 0 0 2px #0E1621}
   .era-ck-label{flex:1}
-  .era-ck-count{font-size:10px;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif}
-  .era-clear-all{background:none;border:1px solid var(--border2,#2D3748);color:var(--muted,#6B7B8C);width:32px;height:32px;cursor:pointer;border-radius:2px;font-size:14px;opacity:.4}
+  .era-ck-count{font-size:var(--fs-3);color:var(--muted,#6B7B8C);font-family:'Cinzel',serif}
+  .era-clear-all{background:none;border:1px solid var(--border2,#2D3748);color:var(--muted,#6B7B8C);width:32px;height:32px;cursor:pointer;border-radius:2px;font-size:var(--fs-3);opacity:.4}
   .era-clear-all.active{opacity:1;border-color:rgba(212,175,55,.6);color:var(--gold,#D4AF37)}
   #era-anim-mount{margin-left:auto;display:flex;align-items:center;gap:10px}
   #era-scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
   #era-canvas{position:relative;width:100%}
-  #era-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em}
+  #era-empty{padding:60px;text-align:center;color:var(--muted,#6B7B8C);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em}
   #era-stem{position:absolute;left:${_EV_STEM_X - 2}px;width:5px;background:var(--gold,#D4AF37);box-shadow:0 0 18px rgba(212,175,55,.55);pointer-events:none;z-index:1}
   .era-row{position:absolute;left:0;width:${_EV_LEFT_W}px;padding:4px 20px;cursor:pointer;transition:background .12s;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;z-index:4}
   .era-row:hover{background:rgba(212,175,55,.06)}
   .era-row.hi{background:rgba(212,175,55,.16);box-shadow:inset 3px 0 0 var(--gold,#D4AF37)}
   .era-row-main{text-align:right}
-  .era-row-title{font-family:'Source Sans 3',sans-serif;font-size:13px;line-height:1.2}
-  .era-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:10px;font-family:'Cinzel',serif}
+  .era-row-title{font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);line-height:1.2}
+  .era-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:var(--fs-3);font-family:'Cinzel',serif}
   .era-wiki:hover{color:var(--gold,#D4AF37)}
-  .era-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
-  .era-hij-chip{position:absolute;transform:translateY(-50%);text-align:left;font-family:'Source Sans 3',sans-serif;font-size:11px;color:#8B7A3E;z-index:5;white-space:nowrap;pointer-events:none}
+  .era-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
+  .era-hij-chip{position:absolute;transform:translateY(-50%);text-align:left;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);color:#8B7A3E;z-index:5;white-space:nowrap;pointer-events:none}
   .era-ruler-toggle{position:absolute;display:flex;align-items:center;gap:4px;z-index:5}
-  .era-ruler-btn{font-size:10px;color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
+  .era-ruler-btn{font-size:var(--fs-3);color:#555;cursor:pointer;padding:2px 5px;border-radius:8px;border:1px solid transparent;transition:.2s;user-select:none;font-family:'Cinzel',serif;letter-spacing:.03em}
   .era-ruler-btn.on{color:#D4AF37;border-color:#D4AF37}
   .era-ruler-btn:hover{color:#D4AF37}
-  .era-ruler-sep{color:#444;font-size:10px;pointer-events:none}
+  .era-ruler-sep{color:#444;font-size:var(--fs-3);pointer-events:none}
   svg.era-leaves{position:absolute;top:0;overflow:visible;pointer-events:none;z-index:2}
   svg.era-leaves g.era-leaf{cursor:pointer;pointer-events:all}
   .era-leaf-label{position:absolute;white-space:nowrap;z-index:4}
   .era-era-band{position:absolute;left:${_EV_STEM_X+18}px;right:0;pointer-events:none;z-index:1}
-  .era-era-label{position:absolute;right:24px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;pointer-events:none;z-index:1;text-align:right;font-weight:700;text-transform:uppercase}
+  .era-era-label{position:absolute;right:24px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.14em;pointer-events:none;z-index:1;text-align:right;font-weight:700;text-transform:uppercase}
   .era-era-label-name{font-weight:700}
-  .era-era-label-dates{font-size:9px;opacity:.6;margin-top:2px;font-weight:400;letter-spacing:.08em}
+  .era-era-label-dates{font-size:var(--fs-3);opacity:.6;margin-top:2px;font-weight:400;letter-spacing:.08em}
   .era-curfew-line{position:absolute;left:0;right:0;height:1px;background:rgba(212,175,55,0.4);pointer-events:none;z-index:10}
-  .era-curfew-year{position:absolute;right:40px;top:-10px;font-family:'Cinzel',serif;font-size:12px;color:var(--gold,#D4AF37);background:#0E1621;padding:2px 8px;border:1px solid rgba(212,175,55,.5);border-radius:2px}
+  .era-curfew-year{position:absolute;right:40px;top:-10px;font-family:'Cinzel',serif;font-size:var(--fs-3);color:var(--gold,#D4AF37);background:#0E1621;padding:2px 8px;border:1px solid rgba(212,175,55,.5);border-radius:2px}
   .era-hidden-by-curfew{visibility:hidden}
   `;
   const s=document.createElement('style');
@@ -408,7 +408,7 @@ function _evRenderLeaves(people, rowMap, totalH){
     const extLabel=document.createElement('div');
     extLabel.className='era-leaf-label';
     extLabel.setAttribute('data-tag',li.key);
-    extLabel.style.cssText='position:absolute;top:'+li.resolvedY+'px;left:'+LABEL_LEFT+'px;white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+li.color+';background:rgba(14,22,33,0.85);padding:2px 8px;border-radius:2px;border:1px solid rgba('+_evColorToRgb(li.color)+',0.4);z-index:4';
+    extLabel.style.cssText='position:absolute;top:'+li.resolvedY+'px;left:'+LABEL_LEFT+'px;white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:var(--fs-3);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+li.color+';background:rgba(14,22,33,0.85);padding:2px 8px;border-radius:2px;border:1px solid rgba('+_evColorToRgb(li.color)+',0.4);z-index:4';
     extLabel.textContent=li.key+' ('+li.count+')';
     extLabel.addEventListener('click',function(e){
       e.stopPropagation();
@@ -435,7 +435,7 @@ function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
   const si=document.getElementById(searchId);
   const q=(si&&si.value||'').toLowerCase().trim();
   const toggleLabel=filterSet.size>0?'Deselect all':'Select all';
-  let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="era-dd-toggle-all" style="font-family:Cinzel,serif;font-size:10px;color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
+  let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="era-dd-toggle-all" style="font-family:Cinzel,serif;font-size:var(--fs-3);color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
   const filtered=items.filter(t=>!q||t.name.toLowerCase().indexOf(q)>-1);
   filtered.forEach(t=>{
     const on=filterSet.has(t.name);
@@ -550,7 +550,7 @@ function initEras(){
 
   let html='';
   html+='<div id="era-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
-  html+='<button id="era-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  html+='<button id="era-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
   html+='<div id="era-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
   html+='</div>';
   html+='<div id="era-toolbar">';
@@ -656,9 +656,9 @@ function _showErasMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">A vertical timeline where each figure appears as a leaf shape spanning their lifespan. The top is birth, the bottom is death. The central stem represents the flow of time. Filter by type and tradition to see how groups overlapped across centuries.</p>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:13px;line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold leaf</span><span style="color:#A0AEC0">A prophet</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf</span><span style="color:#A0AEC0">One figure\u2019s lifespan</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#777;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Stem</span><span style="color:#A0AEC0">Central timeline \u2014 CE left, Hijri right</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#555;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Animate</span><span style="color:#A0AEC0">Sweeping cursor revealing figures decade by decade</span></div></div>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Birth and death dates from classical Islamic biographical sources, cross-referenced with Wikipedia. Dates for early figures are estimates. The \u2248 symbol marks approximate dates.</p>'+'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">A vertical timeline where each figure appears as a leaf shape spanning their lifespan. The top is birth, the bottom is death. The central stem represents the flow of time. Filter by type and tradition to see how groups overlapped across centuries.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold leaf</span><span style="color:#A0AEC0">A prophet</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf</span><span style="color:#A0AEC0">One figure\u2019s lifespan</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#777;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Stem</span><span style="color:#A0AEC0">Central timeline \u2014 CE left, Hijri right</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#555;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Animate</span><span style="color:#A0AEC0">Sweeping cursor revealing figures decade by decade</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Birth and death dates from classical Islamic biographical sources, cross-referenced with Wikipedia. Dates for early figures are estimates. The \u2248 symbol marks approximate dates.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('eras-method-close').addEventListener('click',function(){ov.remove();});

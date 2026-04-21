@@ -130,10 +130,10 @@ function render(hadiths, colKey){
     row.className = 'hp-row';
     row.style.cssText = 'padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);';
     row.innerHTML =
-      '<div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:4px">' +
+      '<div style="font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:4px">' +
         esc(label) + ' · #' + esc(String(num)) + ' · Narrator: ' + esc(narrator) +
       '</div>' +
-      '<div style="font-size:13px;color:#E5E7EB;line-height:1.5">' + esc(truncate(text, 400)) + '</div>';
+      '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.5">' + esc(truncate(text, 400)) + '</div>';
     frag.appendChild(row);
   }
 

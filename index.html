@@ -29,7 +29,7 @@
     <div class="hdr-info-line hdr-disclosure-line">AI-generated</div>
     <div class="hdr-info-line hdr-disclosure-line">Independently verify</div>
     <div class="hdr-info-line hdr-disclosure-line">Updated Apr 2026</div>
-    <button id="updatesBtn" onclick="window._toggleUpdates()" style="margin-top:4px;padding:4px 14px;background:transparent;border:1px solid #555;color:#888;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;cursor:pointer;border-radius:2px;transition:.2s" onmouseover="this.style.borderColor='#D4AF37';this.style.color='#D4AF37'" onmouseout="if(!window._updatesOpen){this.style.borderColor='#555';this.style.color='#888'}">UPDATES</button>
+    <button id="updatesBtn" onclick="window._toggleUpdates()" style="margin-top:4px;padding:4px 14px;background:transparent;border:1px solid #555;color:#888;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer;border-radius:2px;transition:.2s" onmouseover="this.style.borderColor='#D4AF37';this.style.color='#D4AF37'" onmouseout="if(!window._updatesOpen){this.style.borderColor='#555';this.style.color='#888'}">UPDATES</button>
   </div>
 </div>
 <!-- ROW 1b - Tile Nav -->
@@ -69,7 +69,7 @@
   </div>
   <div id="searchWrap" style="position:relative">
     <input id="search" type="text" placeholder="Search figures..." oninput="onSearch();_toggleSearchClear()">
-    <button id="searchClearBtn" type="button" onclick="_clearSearchBox()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:1px solid var(--muted);color:var(--muted);width:22px;height:22px;font-size:14px;line-height:1;border-radius:3px;cursor:pointer;align-items:center;justify-content:center;padding:0;visibility:hidden;display:flex">×</button>
+    <button id="searchClearBtn" type="button" onclick="_clearSearchBox()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:1px solid var(--muted);color:var(--muted);width:22px;height:22px;font-size:var(--fs-3);line-height:1;border-radius:3px;cursor:pointer;align-items:center;justify-content:center;padding:0;visibility:hidden;display:flex">×</button>
   </div>
 </div>
 <!-- Empty mount for events.js toolbar injection -->
@@ -124,6 +124,8 @@
     </div>
   </div>
   <button class="dd-btn" id="favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
+  <div id="tlAnimPanel" style="display:flex;align-items:center;gap:8px;margin-left:auto;padding:0 8px"></div>
+  <span id="tlAnimReadout" style="color:#D4AF37;font:600 var(--fs-3)/1 'Source Sans 3',sans-serif;min-width:70px;text-align:center;padding:4px 8px;border:1px solid rgba(212,175,55,0.2);border-radius:3px">—</span>
 </div>
 </div><!-- /#topBar -->
 
@@ -132,15 +134,15 @@
   <!-- LEFT PANEL -->
   <div id="leftPanel">
 
+    <div id="tlFocusPill" style="display:none">
+      <span class="tl-fp-label">FOCUS MODE</span>
+      <button id="tlFocusClose" title="Exit focus">×</button>
+    </div>
+
     <!-- Filter bar kept as hidden container for JS compat -->
     <div id="filterBar">
       <div id="filterBarLeft"></div>
       <div id="filterBarCtrls">
-        <div class="ch-cents" style="display:flex;flex:1;height:100%">
-          <div class="ch-cent" id="ch0"><span id="ch0t">8TH C.</span><span class="cy-lbl" id="ch0y">700–800</span></div>
-          <div class="ch-cent hi" id="ch1"><span id="ch1t">9TH C.</span><span class="cy-lbl" id="ch1y">800–900</span></div>
-          <div class="ch-cent" id="ch2"><span id="ch2t">10TH C.</span><span class="cy-lbl" id="ch2y">900–1000</span></div>
-        </div>
         <span id="filterSummary" style="display:none"></span>
         <button id="filterClearAll" onclick="clearAllFilters()" style="display:none">CLEAR ALL ✕</button>
       </div>
@@ -163,6 +165,16 @@
     </div>
 
   </div><!-- /leftPanel -->
+
+  <!-- TIMELINE CENTRE CANVAS (Step 3.1: era title + left-edge gold scale + dob chips) -->
+  <div class="tl-center" id="tlCenter">
+    <div class="tl-era-title" id="tlEraTitle"></div>
+    <div class="tl-anim-line"></div>
+    <div class="tl-anim-mask"></div>
+    <div class="tl-center-scroll" id="tlCenterScroll">
+      <div class="tl-scale" id="tlScale"></div>
+    </div>
+  </div>
 
   <!-- SILSILA VIEW -->
   <div id="silsilaView">
@@ -299,12 +311,12 @@
     <div style="padding:20px 24px;width:100%;box-sizing:border-box">
       <div id="mon-header-row" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin:0 0 12px 0">
         <div style="justify-self:start">
-          <button id="mon-methodology-btn" style="padding:3px 10px;background:transparent;border:1px solid rgba(212,175,55,0.4);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.05em;cursor:pointer">How dating works</button>
+          <button id="mon-methodology-btn" style="padding:3px 10px;background:transparent;border:1px solid rgba(212,175,55,0.4);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:var(--fs-3);letter-spacing:.05em;cursor:pointer">How dating works</button>
         </div>
-        <div style="justify-self:center;font-family:'Lato',sans-serif;font-size:13px;color:#E5E7EB;font-weight:400;text-align:center">Read from any of the 34,441 Hadith narrated in 6 canonical texts</div>
+        <div style="justify-self:center;font-family:'Lato',sans-serif;font-size:var(--fs-3);color:#E5E7EB;font-weight:400;text-align:center">Read from any of the 34,441 Hadith narrated in 6 canonical texts</div>
         <div style="justify-self:end">
-          <button id="mon-guided-btn" onclick="Monastic.openWizard()" style="padding:3px 10px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.05em;cursor:pointer">✦ Guided Search</button>
-          <button id="mon-drill-btn" type="button" style="padding:3px 10px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.05em;cursor:pointer;margin-left:6px">⛭ DRILL</button>
+          <button id="mon-guided-btn" onclick="Monastic.openWizard()" style="padding:3px 10px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:var(--fs-3);letter-spacing:.05em;cursor:pointer">✦ Guided Search</button>
+          <button id="mon-drill-btn" type="button" style="padding:3px 10px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:var(--fs-3);letter-spacing:.05em;cursor:pointer;margin-left:6px">⛭ DRILL</button>
         </div>
       </div>
       <div style="display:flex;gap:14px;margin-bottom:0;flex-wrap:wrap;align-items:center" id="mon-filters">
@@ -370,10 +382,10 @@
         </div>
       </div>
       <div id="mon-timeline-band"></div>
-      <div id="mon-count" style="font-size:11px;color:#6B7280;margin-bottom:8px;text-align:right"></div>
-      <div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.06em">Loading hadiths…</div>
+      <div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>
+      <div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">Loading hadiths…</div>
       <div id="mon-results" style="max-height:70vh;overflow-y:auto;border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>
-      <div style="text-align:center;margin-top:20px;font-size:10px;color:#4B5563;font-style:italic">Data source: sahih-explorer dataset</div>
+      <div style="text-align:center;margin-top:20px;font-size:var(--fs-3);color:#4B5563;font-style:normal">Data source: sahih-explorer dataset</div>
     </div>
   </div>
 
@@ -382,7 +394,7 @@
 
   <!-- INFO PANEL -->
   <div id="infoPanel">
-    <div id="infoHdr"><button id="figureBackBtn" onclick="var prev=popFigureHistory();if(prev)jumpTo(prev);" style="display:none;align-items:center;background:none;border:1px solid var(--border2);color:var(--accent);font-size:11px;cursor:pointer;padding:2px 8px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:8px" title="Previous figure">&#8592; Back</button>INFORMATION<button onclick="activePerson=null;showEmptyInfo()" style="margin-left:auto;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:0 2px">✕</button></div>
+    <div id="infoHdr"><button id="figureBackBtn" onclick="var prev=popFigureHistory();if(prev)jumpTo(prev);" style="display:none;align-items:center;background:none;border:1px solid var(--border2);color:var(--accent);font-size:var(--fs-3);cursor:pointer;padding:2px 8px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:8px" title="Previous figure">&#8592; Back</button>INFORMATION</div>
     <div id="infoFilterSpacer">SELECT A FIGURE FROM THE LIST</div>
     <div id="infoScroll">
       <div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>
@@ -402,6 +414,7 @@
 <script src="feedback.js"></script>
 <script src="nav.js"></script>
 <script src="quranlink.js"></script>
+<script src="anim.js"></script>
 <script src="app.js"></script>
 <script src="study.js"></script>
 <script src="silsila.js"></script>
@@ -416,7 +429,6 @@
 <script src="validators.js"></script>
 <script src="talk.js"></script>
 <script src="share.js"></script>
-<script src="anim.js"></script>
 <script src="books.js"></script>
 <script src="start.js"></script>
 <script src="quran-audio.js"></script>

@@ -130,23 +130,23 @@ style.textContent=
     'box-shadow:0 8px 40px rgba(0,0,0,0.6);'+
   '}'+
   '.gafb-title{'+
-    'font-family:"Cinzel",serif;font-size:20px;font-weight:700;'+
+    'font-family:"Cinzel",serif;font-size:var(--fs-1);font-weight:700;'+
     'color:#D4AF37;margin:0 0 8px;text-align:center;'+
   '}'+
   '.gafb-sub{'+
-    'font-family:"Source Sans 3",sans-serif;font-size:13.5px;'+
+    'font-family:"Source Sans 3",sans-serif;font-size:var(--fs-3);'+
     'color:#a0aec0;line-height:1.5;margin:0 0 16px;text-align:center;'+
   '}'+
   '.gafb-label{'+
-    'display:block;font-family:"Source Sans 3",sans-serif;font-size:12px;'+
+    'display:block;font-family:"Source Sans 3",sans-serif;font-size:var(--fs-3);'+
     'color:#a0aec0;margin:0 0 4px;letter-spacing:.02em;'+
   '}'+
-  '.gafb-req{color:#e53e3e;font-size:11px}'+
-  '.gafb-opt{color:#718096;font-size:11px}'+
+  '.gafb-req{color:#e53e3e;font-size:var(--fs-3)}'+
+  '.gafb-opt{color:#718096;font-size:var(--fs-3)}'+
   '.gafb-select,.gafb-input,.gafb-textarea{'+
     'display:block;width:100%;box-sizing:border-box;'+
     'padding:9px 12px;border:1px solid #333;border-radius:6px;'+
-    'background:#0d0d1a;color:#e2e8f0;font-size:13.5px;'+
+    'background:#0d0d1a;color:#e2e8f0;font-size:var(--fs-3);'+
     'font-family:"Source Sans 3",sans-serif;outline:none;'+
     'transition:border-color .2s;margin-bottom:12px;'+
   '}'+
@@ -158,12 +158,12 @@ style.textContent=
   '}'+
   '.gafb-select option{background:#1a1a2e;color:#e2e8f0}'+
   '.gafb-error{'+
-    'font-family:"Source Sans 3",sans-serif;font-size:12.5px;'+
+    'font-family:"Source Sans 3",sans-serif;font-size:var(--fs-3);'+
     'color:#e53e3e;margin:4px 0 0;min-height:18px;text-align:center;'+
   '}'+
   '.gafb-btns{display:flex;gap:12px;margin-top:14px;justify-content:center}'+
   '.gafb-btn{'+
-    'font-family:"Cinzel",serif;font-size:13px;font-weight:600;'+
+    'font-family:"Cinzel",serif;font-size:var(--fs-3);font-weight:600;'+
     'padding:9px 28px;border-radius:6px;cursor:pointer;'+
     'letter-spacing:.04em;transition:opacity .15s;border:none;'+
   '}'+

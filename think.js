@@ -195,12 +195,12 @@ function _buildConceptPanel(){
     var cat=c.category||'other';if(!grouped[cat]) grouped[cat]=[];grouped[cat].push(c);
   });
   var toggleLabel=_selConceptSlugs.size>0?'Deselect all':'Select all';
-  var html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="tk-dd-toggle-all" style="font-family:Cinzel,serif;font-size:10px;color:#D4AF37;cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
+  var html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="tk-dd-toggle-all" style="font-family:Cinzel,serif;font-size:var(--fs-3);color:#D4AF37;cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
   var dir=_tkDir(),font=_tkFont();
   CATEGORIES.forEach(function(cat){
     if(!grouped[cat]||!grouped[cat].length) return;
     var catLabel=_tkCat(cat);
-    html+='<div dir="'+dir+'" style="padding:6px 14px 2px;font-family:'+font+';font-size:9px;font-weight:700;color:#D4AF37;letter-spacing:.12em;text-transform:uppercase;pointer-events:none">'+_esc(catLabel)+'</div>';
+    html+='<div dir="'+dir+'" style="padding:6px 14px 2px;font-family:'+font+';font-size:var(--fs-3);font-weight:700;color:#D4AF37;letter-spacing:.12em;text-transform:uppercase;pointer-events:none">'+_esc(catLabel)+'</div>';
     grouped[cat].forEach(function(c){
       var on=_selConceptSlugs.has(c.slug);
       var label=_tkName(c);
@@ -238,17 +238,17 @@ function _buildShell(view){
   }
   var s=_data.stats||{};
   var h='<div id="think-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
-  h+='<button id="think-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
+  h+='<button id="think-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
   h+='<div id="think-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
   h+='</div>';
   h+='<div id="think-toolbar">';
   h+='<div class="bv-dd-wrap"><button class="bv-dd-btn" id="think-concept-btn">\u2014 SELECT A CONCEPT \u2014 <span style="opacity:.6">\u25BE</span></button>';
   h+='<div class="bv-dd-panel" id="think-concept-panel"><input class="bv-dd-search" id="think-concept-search" placeholder="search concepts\u2026"><div class="bv-dd-scroll" id="think-concept-scroll"></div></div></div>';
   h+='<button class="bv-clear-all" id="think-clear-all" title="Clear" style="opacity:.4">\u00D7</button>';
-  h+='<span id="think-stats" style="margin-left:auto;font-family:\'Cinzel\',serif;font-size:11px;color:#A0AEC0;letter-spacing:.06em">'+(s.concepts_with_figures||0)+' concepts / '+(s.figures_tagged||0)+' tagged</span>';
+  h+='<span id="think-stats" style="margin-left:auto;font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#A0AEC0;letter-spacing:.06em">'+(s.concepts_with_figures||0)+' concepts / '+(s.figures_tagged||0)+' tagged</span>';
   h+='<div id="think-lang-bar" style="display:flex;align-items:center;gap:6px;margin-left:16px">';
-  h+='<button class="tk-lang-btn" data-lang="ar" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:13px;cursor:pointer;transition:.2s">\u0639\u0631\u0628\u064A\u0629</button>';
-  h+='<button class="tk-lang-btn" data-lang="ur" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:13px;cursor:pointer;transition:.2s">\u0627\u0631\u062F\u0648</button>';
+  h+='<button class="tk-lang-btn" data-lang="ar" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s">\u0639\u0631\u0628\u064A\u0629</button>';
+  h+='<button class="tk-lang-btn" data-lang="ur" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s">\u0627\u0631\u062F\u0648</button>';
   h+='</div>';
   h+='</div>';
   h+='<div id="think-legend">';
@@ -347,14 +347,14 @@ function _showThinkMethodology(){
   });
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="think-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
-    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">Each concept shows every historical figure who engaged with that idea, plotted on a timeline by their lifespan. Figures are color-coded by the role they played \u2014 whether they originated, developed, criticized, revived, synthesized, or transmitted the concept. Select multiple concepts to see overlapping figures across intellectual traditions.</p>'
-    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Role Definitions</h3>'
+  box.innerHTML='<button id="think-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Each concept shows every historical figure who engaged with that idea, plotted on a timeline by their lifespan. Figures are color-coded by the role they played \u2014 whether they originated, developed, criticized, revived, synthesized, or transmitted the concept. Select multiple concepts to see overlapping figures across intellectual traditions.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Role Definitions</h3>'
     +rb
-    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">AI-Generated Content</h3>'
-    +'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0">Concept-to-figure tagging was generated by AI based on book metadata (titles, themes, author, tradition, dates). Tags represent likely intellectual engagement, not verified scholarly consensus. Always cross-reference with primary sources.</p>';
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">AI-Generated Content</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0">Concept-to-figure tagging was generated by AI based on book metadata (titles, themes, author, tradition, dates). Tags represent likely intellectual engagement, not verified scholarly consensus. Always cross-reference with primary sources.</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('think-method-close').addEventListener('click',function(){ov.remove();});
@@ -852,7 +852,7 @@ function _showTooltip(e,f){
   var h='<div class="tt-name" dir="'+(_ttRtl?'rtl':'ltr')+'"'+(_ttRtl?' style="font-family:'+_tkFontBody()+'"':'')+'>'+_esc(_ttName)+'</div>';
   var roleLabel=_tkRole(role);
   h+='<div class="tt-role" dir="'+_tkDir()+'" style="color:'+color+';font-family:'+_tkFont()+'">'+_esc(roleLabel)+'</div>';
-  if(f.confidence) h+='<div style="font-size:10px;color:#6B7280">confidence: '+_esc(f.confidence)+'</div>';
+  if(f.confidence) h+='<div style="font-size:var(--fs-3);color:#6B7280">confidence: '+_esc(f.confidence)+'</div>';
   if(f.evidence) h+='<div class="tt-evidence">'+_esc(f.evidence)+'</div>';
   _tooltip.innerHTML=h;_tooltip.style.display='block';_moveTooltip(e);
 }

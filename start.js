@@ -794,14 +794,14 @@ function _stXrefPopup(surah,verse,ev){
   ov.id='st-xref-popup';
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
 
-  var h='<button onclick="document.getElementById(\'st-xref-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>';
-  h+='<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:14px;margin:0 0 16px;letter-spacing:.06em">Surah '+surah+' : Verse '+verse+'</h3>';
+  var h='<button onclick="document.getElementById(\'st-xref-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>';
+  h+='<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);margin:0 0 16px;letter-spacing:.06em">Surah '+surah+' : Verse '+verse+'</h3>';
 
   var events=items.filter(function(it){return it.type==='event';});
   var figures=items.filter(function(it){return it.type==='figure';});
 
   if(events.length){
-    h+='<div style="font-size:10px;color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Events</div>';
+    h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Events</div>';
     events.forEach(function(e){
       h+='<div class="st-xref-row" onclick="_stXrefJumpEvent(\''+_stEsc(e.id)+'\')"><span class="st-xref-year">'+e.year+' CE</span><span>'+_stEsc(e.title)+'</span></div>';
     });
@@ -809,21 +809,21 @@ function _stXrefPopup(surah,verse,ev){
 
   var concepts=items.filter(function(it){return it.type==='concept';});
   if(concepts.length){
-    h+='<div style="font-size:10px;color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Concepts</div>';
+    h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Concepts</div>';
     concepts.forEach(function(c){
       h+='<div class="st-xref-row" onclick="_stConceptJump(\''+_stEsc(c.slug||'')+'\',event)"><span>'+_stEsc(c.name)+' \u2192</span></div>';
     });
   }
 
   if(figures.length){
-    h+='<div style="font-size:10px;color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Figures</div>';
+    h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Figures</div>';
     figures.forEach(function(f){
       h+='<div class="st-xref-row" onclick="_stXrefJumpFigure(\''+_stEsc(f.slug||'')+'\',\''+_stEsc(f.name||'')+'\')"><span>'+_stEsc(f.name)+'</span></div>';
     });
   }
 
   var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:13px';
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:var(--fs-3)';
   box.innerHTML=h;
   ov.appendChild(box);
   document.body.appendChild(ov);
@@ -901,13 +901,13 @@ function _stFigPopup(surah,ev){
   var ov=document.createElement('div');
   ov.id='st-xref-popup';
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
-  var h='<button onclick="document.getElementById(\'st-xref-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>';
-  h+='<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:14px;margin:0 0 16px;letter-spacing:.06em">Figures Referenced in This Surah</h3>';
+  var h='<button onclick="document.getElementById(\'st-xref-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>';
+  h+='<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);margin:0 0 16px;letter-spacing:.06em">Figures Referenced in This Surah</h3>';
   figs.forEach(function(f){
     h+='<div class="st-xref-row" onclick="_stXrefJumpFigure(\''+_stEsc(f.slug||'')+'\',\''+_stEsc(f.name||'')+'\')"><span>'+_stEsc(f.name)+'</span></div>';
   });
   var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:13px';
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:var(--fs-3)';
   box.innerHTML=h;
   ov.appendChild(box);
   document.body.appendChild(ov);
@@ -938,6 +938,40 @@ function _stXrefJumpFigure(slug,name){
   }
 }
 window._stXrefJumpFigure=_stXrefJumpFigure;
+
+// External entry point: switch to START, load the given surah, scroll to + flash the verse range.
+// Called from info-card .quran-chip delegation.
+window.openStartAtVerse=function(surah, vstart, vend){
+  if(typeof setView==='function') setView('start'); // start.js's setView patch runs initStart()
+  // setView triggers initStart, which fires its own async _stLoadData → _stRenderSurah.
+  // Poll until the reader has rendered SOMETHING (first .st-verse), then do our switch.
+  // Mirrors _stConceptJump pattern (80ms tick, ~3.2s cap).
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    var reader=document.getElementById('st-reader');
+    if(reader && reader.querySelector('.st-verse')){
+      clearInterval(iv);
+      if(_stSurah !== surah) _stSelectSurah(surah); // synchronous re-render to target surah
+      requestAnimationFrame(function(){
+        var r2=document.getElementById('st-reader');
+        if(!r2) return;
+        var target=r2.querySelector('.st-verse[data-verse-id="'+vstart+'"]');
+        if(target) target.scrollIntoView({behavior:'smooth', block:'center'});
+        for(var v=vstart; v<=vend; v++){
+          (function(vv){
+            var row=r2.querySelector('.st-verse[data-verse-id="'+vv+'"]');
+            if(!row) return;
+            row.classList.add('quran-verse-flash');
+            setTimeout(function(){ row.classList.remove('quran-verse-flash'); }, 1800);
+          })(v);
+        }
+      });
+      return;
+    }
+    if(tries>40){ clearInterval(iv); console.warn('[openStartAtVerse] START reader never ready'); }
+  }, 80);
+};
 
 function _stConceptJump(slug,ev){
   if(ev)ev.stopPropagation();
@@ -994,8 +1028,8 @@ function _stRevNote(surah,ev){
   var ov=document.createElement('div');ov.id='st-rev-popup';
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
   var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;padding:24px;position:relative;font-family:Lato,sans-serif;color:#E5E7EB;font-size:13px;line-height:1.7';
-  box.innerHTML='<button onclick="document.getElementById(\'st-rev-popup\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;color:#888;font-size:20px;cursor:pointer">\u00D7</button><h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:14px;margin:0 0 12px">Disputed Revelation</h3><p>'+_stEsc(rv.note)+'</p>';
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;padding:24px;position:relative;font-family:Lato,sans-serif;color:#E5E7EB;font-size:var(--fs-3);line-height:1.7';
+  box.innerHTML='<button onclick="document.getElementById(\'st-rev-popup\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer">\u00D7</button><h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-3);margin:0 0 12px">Disputed Revelation</h3><p>'+_stEsc(rv.note)+'</p>';
   ov.appendChild(box);document.body.appendChild(ov);
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
@@ -1011,8 +1045,8 @@ function _stExNote(surah,verse,ev){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
   var typeLabel=ex.type==='meccan'?'Makkan':'Madinan';
   var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;padding:24px;position:relative;font-family:Lato,sans-serif;color:#E5E7EB;font-size:13px;line-height:1.7';
-  box.innerHTML='<button onclick="document.getElementById(\'st-rev-popup\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;color:#888;font-size:20px;cursor:pointer">\u00D7</button><h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:14px;margin:0 0 12px">Verse Exception</h3><p>Verse '+verse+' is classified as <strong style="color:'+(ex.type==='meccan'?'#D4AF37':'#2ecc9b')+'">'+typeLabel+'</strong> unlike the rest of this surah.</p>'+(ex.note?'<p style="color:var(--muted);font-style:italic;margin-top:8px">'+_stEsc(ex.note)+'</p>':'');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;padding:24px;position:relative;font-family:Lato,sans-serif;color:#E5E7EB;font-size:var(--fs-3);line-height:1.7';
+  box.innerHTML='<button onclick="document.getElementById(\'st-rev-popup\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer">\u00D7</button><h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-3);margin:0 0 12px">Verse Exception</h3><p>Verse '+verse+' is classified as <strong style="color:'+(ex.type==='meccan'?'#D4AF37':'#2ecc9b')+'">'+typeLabel+'</strong> unlike the rest of this surah.</p>'+(ex.note?'<p style="color:var(--muted);font-style:normal;margin-top:8px">'+_stEsc(ex.note)+'</p>':'');
   ov.appendChild(box);document.body.appendChild(ov);
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
@@ -1262,7 +1296,7 @@ function _stInitQmarkTooltip(){
   window._stQmarkInited=true;
   var tip=document.createElement('div');
   tip.id='st-qmark-tip';
-  tip.style.cssText='position:fixed;z-index:9999;display:none;font-size:11px;color:#FFF;background:#1a1a1a;padding:6px 8px;border-radius:4px;border:1px solid rgba(255,255,255,0.12);pointer-events:none;white-space:nowrap;font-family:Lato,sans-serif';
+  tip.style.cssText='position:fixed;z-index:9999;display:none;font-size:var(--fs-3);color:#FFF;background:#1a1a1a;padding:6px 8px;border-radius:4px;border:1px solid rgba(255,255,255,0.12);pointer-events:none;white-space:nowrap;font-family:Lato,sans-serif';
   document.body.appendChild(tip);
   document.addEventListener('mouseover',function(ev){
     var t=ev.target; if(!t||!t.classList||!t.classList.contains('qmark'))return;

@@ -32,12 +32,12 @@ _chatCSS.textContent = `
   flex-shrink:0;
 }
 .sch-header h3{
-  font-family:'Cinzel',serif;font-size:14px;font-weight:700;
+  font-family:'Cinzel',serif;font-size:var(--fs-3);font-weight:700;
   color:var(--gold);letter-spacing:.08em;flex:1;margin:0;
 }
 .sch-hbtn{
   background:none;border:none;color:var(--text2);cursor:pointer;
-  padding:4px 6px;font-size:16px;line-height:1;border-radius:4px;
+  padding:4px 6px;font-size:var(--fs-2);line-height:1;border-radius:4px;
   transition:color .2s,background .2s;
 }
 .sch-hbtn:hover{color:var(--gold);background:rgba(200,144,64,.12);}
@@ -48,7 +48,7 @@ _chatCSS.textContent = `
 }
 .sch-msg{
   max-width:85%;padding:10px 14px;border-radius:12px;
-  font-size:13.5px;line-height:1.65;word-wrap:break-word;
+  font-size:var(--fs-3);line-height:1.65;word-wrap:break-word;
 }
 .sch-msg.user{
   align-self:flex-end;background:#D4AF37;color:#1B2631;
@@ -65,12 +65,12 @@ _chatCSS.textContent = `
 .sch-msg.ai a.sch-figlink:hover{color:var(--gold);text-decoration-style:solid;}
 .sch-msg.error{
   align-self:center;background:rgba(200,60,60,.15);color:#e88;
-  border:1px solid rgba(200,60,60,.25);font-size:12.5px;text-align:center;
+  border:1px solid rgba(200,60,60,.25);font-size:var(--fs-3);text-align:center;
 }
 .sch-typing{
   align-self:flex-start;padding:10px 18px;
   background:var(--surface2);border-radius:12px;border:1px solid var(--border);
-  font-size:18px;letter-spacing:3px;color:var(--gold);
+  font-size:var(--fs-1);letter-spacing:3px;color:var(--gold);
 }
 .sch-typing span{animation:typeDot 1.4s infinite;opacity:.3;}
 .sch-typing span:nth-child(2){animation-delay:.2s;}
@@ -85,14 +85,14 @@ _chatCSS.textContent = `
 .sch-inputarea input{
   flex:1;padding:8px 12px;border-radius:8px;
   border:1px solid var(--border);background:var(--surface2);
-  color:var(--text);font-size:13.5px;font-family:inherit;outline:none;
+  color:var(--text);font-size:var(--fs-3);font-family:inherit;outline:none;
   transition:border-color .2s;
 }
 .sch-inputarea input:focus{border-color:var(--accent);}
 .sch-inputarea input::placeholder{color:var(--muted);}
 #scholarSendBtn{
   padding:8px 14px;border-radius:8px;border:none;
-  background:#D4AF37;color:#1B2631;font-weight:700;font-size:13px;
+  background:#D4AF37;color:#1B2631;font-weight:700;font-size:var(--fs-3);
   cursor:pointer;font-family:inherit;transition:background .2s;
 }
 #scholarSendBtn:hover{background:var(--gold);}
@@ -100,7 +100,7 @@ _chatCSS.textContent = `
 
 /* Footer */
 .sch-footer{
-  padding:4px 14px 8px;text-align:center;font-size:11px;
+  padding:4px 14px 8px;text-align:center;font-size:var(--fs-3);
   color:var(--muted);flex-shrink:0;
 }
 
@@ -111,21 +111,21 @@ _chatCSS.textContent = `
   flex-shrink:0;
 }
 .sch-settings.open{display:flex;}
-.sch-settings label{font-size:12px;color:var(--text2);font-family:'Cinzel',serif;letter-spacing:.05em;}
+.sch-settings label{font-size:var(--fs-3);color:var(--text2);font-family:'Cinzel',serif;letter-spacing:.05em;}
 .sch-settings input{
   padding:7px 10px;border-radius:6px;border:1px solid var(--border);
-  background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;
+  background:var(--surface2);color:var(--text);font-size:var(--fs-3);font-family:inherit;
   outline:none;width:100%;
 }
 .sch-settings input:focus{border-color:var(--accent);}
 .sch-settings .sch-sbtn-row{display:flex;gap:8px;align-items:center;}
 .sch-settings button{
   padding:6px 14px;border-radius:6px;border:1px solid var(--border);
-  background:var(--surface2);color:var(--text);font-size:12px;
+  background:var(--surface2);color:var(--text);font-size:var(--fs-3);
   cursor:pointer;font-family:inherit;transition:background .2s,border-color .2s;
 }
 .sch-settings button:hover{border-color:var(--accent);background:rgba(200,144,64,.1);}
-.sch-settings .sch-hint{font-size:11px;color:var(--muted);}
+.sch-settings .sch-hint{font-size:var(--fs-3);color:var(--muted);}
 `;
 document.head.appendChild(_chatCSS);
 

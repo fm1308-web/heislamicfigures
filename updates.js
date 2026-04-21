@@ -71,16 +71,16 @@ function _render(entries){
   if(!panel) return;
 
   var h = '<div style="max-width:700px;margin:0 auto">';
-  h += '<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:20px;letter-spacing:.08em;margin:0 0 8px">Project Updates</h2>';
-  h += '<p style="color:#6B7B8C;font-size:13px;margin:0 0 32px">What changed in Gold Ark</p>';
+  h += '<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);letter-spacing:.08em;margin:0 0 8px">Project Updates</h2>';
+  h += '<p style="color:#6B7B8C;font-size:var(--fs-3);margin:0 0 32px">What changed in Gold Ark</p>';
 
   if(!entries || !entries.length){
     h += '<p style="color:#6B7B8C">No updates yet.</p>';
   } else {
     entries.slice().reverse().forEach(function(e){
       h += '<div style="border-left:2px solid #D4AF37;padding:12px 0 12px 20px;margin:0 0 24px">';
-      h += '<div style="font-family:\'Cinzel\',serif;font-size:12px;color:#D4AF37;letter-spacing:.06em;margin:0 0 6px">' + _esc(e.date) + '</div>';
-      h += '<div style="font-size:14px;line-height:1.6;color:#ccc">' + _esc(e.text) + '</div>';
+      h += '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#D4AF37;letter-spacing:.06em;margin:0 0 6px">' + _esc(e.date) + '</div>';
+      h += '<div style="font-size:var(--fs-3);line-height:1.6;color:#ccc">' + _esc(e.text) + '</div>';
       h += '</div>';
     });
   }

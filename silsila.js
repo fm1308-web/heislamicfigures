@@ -466,7 +466,7 @@ function renderSilsila(){
       _slL1.style.cssText='display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5);';
       var _slHowBtn=document.createElement('button');
       _slHowBtn.id='sl-how-btn'; _slHowBtn.textContent='How This Works';
-      _slHowBtn.style.cssText='height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:12px;cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em';
+      _slHowBtn.style.cssText='height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em';
       _slHowBtn.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};
       _slHowBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
       _slHowBtn.onclick=function(e){e.stopPropagation();_showSilsilaMethodology();};
@@ -487,7 +487,7 @@ function renderSilsila(){
     }
   }
   const inner=document.getElementById('silsilaLanesInner');
-  let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
+  let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
   // Lineage row
   if(!_SL_ACTIVE){
     lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A">
@@ -554,7 +554,7 @@ function renderSilsila(){
     tt=document.createElement('div'); tt.id='sl-tt';
     tt.style.cssText='position:fixed;pointer-events:none;display:none;z-index:9999;'+
       'background:var(--surface2);border:1.5px solid var(--border);border-radius:4px;'+
-      'padding:7px 12px;font-size:11px;color:var(--text);'+
+      'padding:7px 12px;font-size:var(--fs-3);color:var(--text);'+
       'box-shadow:0 4px 22px rgba(0,0,0,.7);max-width:240px;line-height:1.5;'+
       'transition:opacity .1s';
     document.body.appendChild(tt);
@@ -567,10 +567,10 @@ function renderSilsila(){
     const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
-      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:8px;opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
-      `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:${col};font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-      `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
+      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:var(--fs-3);opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
+      `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:${col};font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
+      `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
         (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
     tt.style.pointerEvents='all';
     tt.style.cursor='default';
@@ -603,10 +603,10 @@ function renderSilsila(){
     const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
-      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:12.5px">${esc(p.famous)}</div>`+
-      `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:${col};font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-      `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
+      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:var(--fs-3)">${esc(p.famous)}</div>`+
+      `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:${col};font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
+      `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+      (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
         (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
     tt.style.pointerEvents='none';
     tt.style.display='block';
@@ -670,12 +670,12 @@ function renderSilsila(){
       const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
       const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
       tt.innerHTML=
-        `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:13px;margin-bottom:2px">${esc(p.famous)}</div>`+
-        `<div style="font-family:'Crimson Pro',serif;font-size:12px;color:var(--text2);font-style:italic;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-        `<div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
-        (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
+        `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px">${esc(p.famous)}</div>`+
+        `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:var(--text2);font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
+        `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+        (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
           (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'')+
-        `<button id="sl-tt-timeline-btn" style="background:var(--accent);color:var(--bg);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;padding:4px 12px;border:none;border-radius:2px;cursor:pointer;margin-top:6px;display:block">TIMELINE</button>`;
+        `<button id="sl-tt-timeline-btn" style="background:var(--accent);color:var(--bg);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:0.1em;padding:4px 12px;border:none;border-radius:2px;cursor:pointer;margin-top:6px;display:block">TIMELINE</button>`;
       tt.style.pointerEvents='all';
       tt.style.display='block';
       ttPinned=true;
@@ -830,7 +830,7 @@ function openSilsilaCard(p, cx, cy){
       <img id="scWikiImg" style="display:none;width:100%;max-width:90px;border-radius:4px;border:1px solid var(--ip-brd);object-fit:cover"
         alt="${esc(p.famous)}"
         onerror="this.style.display='none';document.getElementById('scWikiImgCaption').style.display='none';" />
-      <div id="scWikiImgCaption" style="display:none;font-size:8px;color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:3px">via Wikipedia</div>
+      <div id="scWikiImgCaption" style="display:none;font-size:var(--fs-3);color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:3px">via Wikipedia</div>
     </div>` : ''}
     <div class="sc-tags">
       <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(p.type||'')}</span>
@@ -863,14 +863,14 @@ function openSilsilaCard(p, cx, cy){
     html+=`<div class="sc-sec">WORKS & SOURCES</div>`;
     sortedBooks.forEach(b=>{
       html+=`<div class="sc-book">
-        ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:13px">${esc(b.title)}</span>`}
-        ${b.magnum?` <span style="color:var(--accent);font-size:10px">✦</span>`:''}
-        ${b.note?`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:''}
+        ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:var(--fs-3)">${esc(b.title)}</span>`}
+        ${b.magnum?` <span style="color:var(--accent);font-size:var(--fs-3)">✦</span>`:''}
+        ${b.note?`<div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:''}
       </div>`;
     });
   }
   if(p.source){
-    html+=`<div style="font-size:11px;color:var(--ip-muted);font-style:italic;margin-top:12px;padding-top:8px;border-top:1px solid var(--ip-brd)">Sources: ${esc(p.source)}</div>`;
+    html+=`<div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;margin-top:12px;padding-top:8px;border-top:1px solid var(--ip-brd)">Sources: ${esc(p.source)}</div>`;
   }
 
   if(window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en){
@@ -1119,9 +1119,9 @@ function _showSilsilaMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="sl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1">\u00D7</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:18px;margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 16px">Chains of knowledge transmission \u2014 who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.</p>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:13px;line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Silsila</span><span style="color:#A0AEC0">Arabic for \u201Cchain\u201D \u2014 unbroken teacher-to-student transmission</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Tradition color</span><span style="color:#A0AEC0">Each tradition (Sunni, Shia, Sufi, etc.) has its own color</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Line</span><span style="color:#A0AEC0">A documented teacher \u2192 student relationship</span></div></div>'+'<h3 style="color:#D4AF37;font-size:14px;margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 12px">Teacher\u2013student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.</p>'+'<p style="color:#999;font-size:12px;font-style:italic;margin:0">AI-generated \u00B7 independently verify</p>';
+  box.innerHTML='<button id="sl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Chains of knowledge transmission \u2014 who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Silsila</span><span style="color:#A0AEC0">Arabic for \u201Cchain\u201D \u2014 unbroken teacher-to-student transmission</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Tradition color</span><span style="color:#A0AEC0">Each tradition (Sunni, Shia, Sufi, etc.) has its own color</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Line</span><span style="color:#A0AEC0">A documented teacher \u2192 student relationship</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Teacher\u2013student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('sl-method-close').addEventListener('click',function(){ov.remove();});

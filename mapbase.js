@@ -210,7 +210,7 @@ if (typeof _buildEmpLegendFor === 'undefined') {
       if (mc) { mc.style.position = mc.style.position || 'relative'; mc.appendChild(el); }
     }
     el.innerHTML = colored.map(function(it) {
-      return '<div style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:16px;border-radius:2px;background:' + it.color + ';flex-shrink:0;opacity:0.9"></span><span style="font-family:Cinzel,serif;font-size:13px;color:#ccc;letter-spacing:.04em;white-space:nowrap">' + it.name + '</span></div>';
+      return '<div style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:16px;border-radius:2px;background:' + it.color + ';flex-shrink:0;opacity:0.9"></span><span style="font-family:Cinzel,serif;font-size:var(--fs-3);color:#ccc;letter-spacing:.04em;white-space:nowrap">' + it.name + '</span></div>';
     }).join('');
   }
   window._buildEmpLegendFor = _buildEmpLegendFor;
