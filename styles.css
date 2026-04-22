@@ -45,7 +45,7 @@
   /* 3-size font system (Step 2.3). 14px is the hard minimum. */
   --fs-1:       20px;  /* titles: figure name, row primary name */
   --fs-2:       16px;  /* body */
-  --fs-3:       14px;  /* info / minimum */
+  --fs-3:       16px;  /* info / minimum (matches fs-2 — global floor) */
 }
 
 /* Step 2.4d — override browser default italic on <i> and <em> tags */

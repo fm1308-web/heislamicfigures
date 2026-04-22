@@ -1102,6 +1102,11 @@ function setView(v){
   if(!window._popstateInProgress){
     history.pushState({view:v},'','#'+v);
   }
+  // Reset info card scroll on view change so top of card is visible
+  try {
+    var _ipScroll = document.getElementById('infoScroll');
+    if(_ipScroll) _ipScroll.scrollTop = 0;
+  } catch(e){}
   _tileNavSync(v);
 }
 
@@ -1624,6 +1629,36 @@ function _isAssumedDate(p){
 }
 const _assumedBadge='<span style="font-size:var(--fs-3);color:rgba(212,175,55,.55);cursor:help;margin-left:3px" title="Date estimated for visual placement — not historically confirmed">△</span>';
 
+var _figureHadithChips = null;
+var _figureHadithChipsLoading = null;
+function _ensureFigureHadithChips(){
+  if(_figureHadithChips) return Promise.resolve(_figureHadithChips);
+  if(_figureHadithChipsLoading) return _figureHadithChipsLoading;
+  _figureHadithChipsLoading = fetch('data/islamic/figure_hadith_chips.json')
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(d){ _figureHadithChips = d || {}; return _figureHadithChips; })
+    .catch(function(){ _figureHadithChips = {}; return _figureHadithChips; });
+  return _figureHadithChipsLoading;
+}
+function _populateFigureHadithChip(p){
+  var slot = document.getElementById('figHadithChipSlot');
+  if(!slot) return;
+  _ensureFigureHadithChips().then(function(chips){
+    var ids = chips[p.slug];
+    if(!ids || !ids.length) return;
+    slot.innerHTML = '<span class="i-tag" id="figHadithChip" style="cursor:pointer;border-color:rgba(212,175,55,.5);color:#D4AF37">HADITHS</span>';
+    var chip = document.getElementById('figHadithChip');
+    if(chip){
+      chip.onclick = function(ev){
+        ev.stopPropagation();
+        if(window.Monastic && typeof window.Monastic.showHadiths === 'function'){
+          window.Monastic.showHadiths(ids, 'Hadiths about ' + (p.famous || p.slug));
+        }
+      };
+    }
+  });
+}
+
 function renderInfo(p){
   const col = p.type==='Genealogy' ? '#D4AF37' : (CC[gc(p.dob)]||'#A0AEC0');
   const _dobMain = p.dob_academic!=null ? p.dob_academic : p.dob;
@@ -1840,12 +1875,13 @@ function renderInfo(p){
       ${p.classif?`<span class="i-tag">${esc(p.classif)}</span>`:''}
       ${p.city?`<span class="i-tag">📍 ${esc(p.city)}</span>`:''}
       ${p.lang?`<span class="i-tag">🌐 ${esc(p.lang)}</span>`:''}
+      <span id="figHadithChipSlot"></span>
     </div>
     ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="info-wd-occupations">'+chips.map(l=>'<span class="info-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
     ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; Follow their life on the map</a>`:''}
     <div class="i-dates">
-      <div class="i-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span class="ds"${String(p.dob_s).startsWith('~')?' style="font-style:normal"':''}>${esc(p.dob_s)}</span>`:''}${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
-      <div class="i-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span class="ds"${String(p.dod_s).startsWith('~')?' style="font-style:normal"':''}>${esc(p.dod_s)}</span>`:''}${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">BORN</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(p.dob_s)}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">DIED</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(p.dod_s)}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${((p.dob_s||'')+(p.dod_s||'')).toLowerCase().includes('legendary')?`<div style="font-size:var(--fs-3);color:rgba(160,174,192,.55);margin:-4px 0 10px 2px;line-height:1.4">Source: Ibn Ishaq, <i>Sirat Rasul Allah</i>; al-Tabari, <i>Tarikh al-Rusul wa al-Muluk</i></div>`:''}
@@ -1949,6 +1985,8 @@ function renderInfo(p){
       setTimeout(function() { document.addEventListener('click', closeOnOutside); }, 10);
     });
   })();
+
+  _populateFigureHadithChip(p);
 }
 
 function selectPerson(name) {
@@ -2082,7 +2120,7 @@ function _showTimelineMethodology(){
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
   box.innerHTML='<button id="tl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
     +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Every figure in the database arranged chronologically, grouped by century. Use type and tradition filters to narrow the view. Click any figure for their info card. Use the year slider to highlight who was alive at a specific time.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Figure Types</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Prophet</span><span style="color:#A0AEC0">A messenger of God. Never depicted visually</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4A90D9;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Companion</span><span style="color:#A0AEC0">Met the Prophet Muhammad and accepted Islam. Never depicted</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E6833A;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Scholar</span><span style="color:#A0AEC0">Contributions to Islamic sciences, law, theology, or philosophy</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#C0392B;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Ruler</span><span style="color:#A0AEC0">Caliph, sultan, emir, or governor</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9B59B6;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Poet</span><span style="color:#A0AEC0">Remembered primarily for literary or poetic works</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#2ECC71;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Sufi</span><span style="color:#A0AEC0">Associated with Islamic mysticism and spiritual practice</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Biographical data from classical Islamic sources including al-Dhahabi and Ibn Sa\u2019d, cross-referenced with Wikipedia. Dates marked \u2248 are approximate. Tradition classifications are simplified.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Every figure in the database arranged chronologically, grouped by century. Use type and tradition filters to narrow the view. Click any figure for their info card. Use the year slider to highlight who was alive at a specific time.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Figure Types</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Prophet</span><span style="color:#A0AEC0">A messenger of God. Never depicted visually</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4A90D9;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Companion</span><span style="color:#A0AEC0">Met the Prophet Muhammad and accepted Islam. Never depicted</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E6833A;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Scholar</span><span style="color:#A0AEC0">Contributions to Islamic sciences, law, theology, or philosophy</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#C0392B;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Ruler</span><span style="color:#A0AEC0">Caliph, sultan, emir, or governor</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9B59B6;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Poet</span><span style="color:#A0AEC0">Remembered primarily for literary or poetic works</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#2ECC71;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Sufi</span><span style="color:#A0AEC0">Associated with Islamic mysticism and spiritual practice</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Biographical data from classical Islamic sources including al-Dhahabi and Ibn Sa\u2019d, cross-referenced with Wikipedia. Dates marked \u2248 are approximate. Dates marked \u25B3 are estimated for visual placement and not historically confirmed \u2014 these are typically legendary figures, figures with no recorded dates, or rough century estimates (e.g. \u201Cc. 800 CE\u201D). When a death year is missing, it is sometimes estimated from the birth year using an average life span. Tradition classifications are simplified.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('tl-method-close').addEventListener('click',function(){ov.remove();});

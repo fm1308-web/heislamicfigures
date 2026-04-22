@@ -177,6 +177,7 @@ function _evFilterByTag(tag){
   scrollEl.innerHTML=html;
   setTimeout(_evInitMinimaps, 100);
   scrollEl.scrollTop=0;
+  _populateEventHadithChips();
 }
 window._evFilterByTag=_evFilterByTag;
 
@@ -285,6 +286,39 @@ window._evResetYears=function(){
 };
 
 // ── INIT ──
+var _eventHadithChips = null;
+var _eventHadithChipsLoading = null;
+function _ensureEventHadithChips(){
+  if(_eventHadithChips) return Promise.resolve(_eventHadithChips);
+  if(_eventHadithChipsLoading) return _eventHadithChipsLoading;
+  _eventHadithChipsLoading = fetch('data/islamic/event_hadith_chips.json')
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(d){ _eventHadithChips = d || {}; return _eventHadithChips; })
+    .catch(function(){ _eventHadithChips = {}; return _eventHadithChips; });
+  return _eventHadithChipsLoading;
+}
+function _populateEventHadithChips(){
+  _ensureEventHadithChips().then(function(chips){
+    var slots = document.querySelectorAll('.ev-hadith-chip-slot');
+    slots.forEach(function(slot){
+      var eid = slot.getAttribute('data-eid');
+      var etitle = slot.getAttribute('data-etitle') || eid;
+      var ids = chips[eid];
+      if(!ids || !ids.length) return;
+      slot.innerHTML = '<span class="ev-tag" style="cursor:pointer;border-color:rgba(212,175,55,.5);color:#D4AF37">HADITHS</span>';
+      var chip = slot.querySelector('span');
+      if(chip){
+        chip.onclick = function(ev){
+          ev.stopPropagation();
+          if(window.Monastic && typeof window.Monastic.showHadiths === 'function'){
+            window.Monastic.showHadiths(ids, 'Hadiths about ' + etitle);
+          }
+        };
+      }
+    });
+  });
+}
+
 function initEvents(){
   var ct=document.getElementById('events-view');
   if(!ct) return;
@@ -355,6 +389,8 @@ function _buildRow(ev,showYear,spanCount){
   var src=ev.sources||[];
   if(src.length) h+='<div class="ev-sources">'+src.map(function(s){return esc(s);}).join(' \u00b7 ')+'</div>';
   if(ev.outcome) h+='<div class="ev-outcome">'+esc(ev.outcome)+'</div>';
+
+  h+='<span class="ev-hadith-chip-slot" data-eid="'+escAttr(ev.id||'')+'" data-etitle="'+escAttr(ev.title||'')+'"></span>';
 
   var tags=ev.tags||[];
   if(tags.length){
@@ -430,6 +466,7 @@ function _renderRange(data,startYr,endYr){
   scrollEl.innerHTML=html;
   setTimeout(_evInitMinimaps, 100);
   scrollEl.scrollTop=0;
+  _populateEventHadithChips();
 
   // Card fade-in observer
   var cards=scrollEl.querySelectorAll('.ev-card');

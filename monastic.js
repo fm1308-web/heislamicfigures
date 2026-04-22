@@ -47,6 +47,7 @@ var _narratorIndex = [];
 var _topicList = null;
 var _clickBound = false;
 var _peopleIndex = null;
+var _pinnedHadiths = null;
 
 var _monSel = {
   period:     new Set(),
@@ -1841,6 +1842,92 @@ function _monDDClearAll(kind){
   _applyAllFilters();
 }
 
+// ── Pinned hadith mode (cross-view chip target) ──
+function _parseHadithId(id){
+  var i = String(id).lastIndexOf('-');
+  if(i < 0) return null;
+  var xref = id.substring(0, i);
+  var num  = id.substring(i + 1);
+  return { xref: xref, monKey: XREF_TO_MON_KEY[xref] || null, num: num };
+}
+
+function _processPinnedHadiths(){
+  if(!_pinnedHadiths) return;
+  var ids = _pinnedHadiths.ids;
+  var needed = {};
+  var orderMap = {};
+  for(var i = 0; i < ids.length; i++){
+    var p = _parseHadithId(ids[i]);
+    if(!p || !p.monKey) continue;
+    needed[p.monKey] = true;
+    orderMap[p.monKey + '-' + p.num] = i;
+  }
+  var keys = Object.keys(needed);
+  if(!keys.length){ _renderPinned([]); return; }
+  showLoading(true);
+  Promise.all(keys.map(function(k){ return fetchCollection(k); }))
+    .then(function(arrays){
+      var matched = [];
+      arrays.forEach(function(arr, idx){
+        var key = keys[idx];
+        arr.forEach(function(h){
+          h._colKey = key;
+          var k = key + '-' + String(getNumber(h));
+          if(orderMap.hasOwnProperty(k)){
+            h._sortIdx = orderMap[k];
+            matched.push(h);
+          }
+        });
+      });
+      matched.sort(function(a,b){ return a._sortIdx - b._sortIdx; });
+      showLoading(false);
+      _renderPinned(matched);
+    })
+    .catch(function(e){
+      console.warn('showHadiths load failed', e);
+      showLoading(false);
+      _renderPinned([]);
+    });
+}
+
+function _renderPinned(matched){
+  if(_drillEl) _drillEl.style.display = 'none';
+  _renderPinBanner(_pinnedHadiths ? _pinnedHadiths.label : '', matched.length);
+  _renderRows(matched, '');
+  try {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    var mv = document.getElementById('monastic-view');
+    if(mv) mv.scrollTop = 0;
+    var sr = document.getElementById('infoScroll');
+    if(sr) sr.scrollTop = 0;
+  } catch(e){}
+}
+
+function _renderPinBanner(label, count){
+  var existing = document.getElementById('mon-pin-banner');
+  if(existing) existing.remove();
+  if(!_pinnedHadiths) return;
+  var banner = document.createElement('div');
+  banner.id = 'mon-pin-banner';
+  banner.style.cssText = "padding:8px 14px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.4);border-radius:6px;color:#D4AF37;font-size:var(--fs-3);margin:0 0 10px;display:flex;align-items:center;gap:12px;font-family:'Cinzel',serif;letter-spacing:.04em";
+  banner.innerHTML = '<span style="flex:1">' + esc(label || '') + ' \u2014 ' + count + ' hadith' + (count !== 1 ? 's' : '') + '</span>' +
+    '<span id="mon-pin-clear" style="cursor:pointer;opacity:.85;padding:2px 10px;border:1px solid rgba(212,175,55,.5);border-radius:3px">\u2715 Clear</span>';
+  if(_resultsEl && _resultsEl.parentNode){
+    _resultsEl.parentNode.insertBefore(banner, _resultsEl);
+  }
+  var btn = document.getElementById('mon-pin-clear');
+  if(btn) btn.onclick = function(){ _clearPinned(); };
+}
+
+function _clearPinned(){
+  _pinnedHadiths = null;
+  var b = document.getElementById('mon-pin-banner');
+  if(b) b.remove();
+  if(typeof _applyAllFilters === 'function') _applyAllFilters();
+}
+
 // ── Init ──
 function init(){
   if(_inited) return;
@@ -2490,10 +2577,20 @@ return {
   toggleDD: _monToggleDD,
   ddClearAll: _monDDClearAll,
   openWizard: _wizardOpen,
+  showHadiths: function(hadithIds, label){
+    _pinnedHadiths = { ids: (hadithIds || []).slice(), label: label || '' };
+    if(typeof setView === 'function'){
+      setView('monastic');
+    } else {
+      init();
+      _processPinnedHadiths();
+    }
+  },
   onEnter: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
     if(box){ if(_monSearchBoxPrev === null) _monSearchBoxPrev = box.style.display || ''; box.style.display = 'none'; }
     _monHandlePendingHadith();
+    if(_pinnedHadiths) _processPinnedHadiths();
   },
   onLeave: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
