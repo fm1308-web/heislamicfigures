@@ -145,8 +145,8 @@ window._dvOpenExplain = _dvOpenExplain;
 function _dvRenderCard(surah, verse, translitText){
   var h = '<div class="dv-card" data-dv-surah="'+surah+'" data-dv-verse="'+verse+'">';
   h += '<details open><summary>Transliteration</summary><div class="dv-body">'+ (translitText ? _dvEsc(translitText) : '<span class="dv-pending">— pending data —</span>') +'</div></details>';
-  h += '<details><summary>Word-by-word / Root / Morphology</summary><div class="dv-body"><span class="dv-pending">— pending data —</span></div></details>';
-  h += '<details><summary>Dictionary</summary><div class="dv-body"><span class="dv-pending">— pending data —</span></div></details>';
+  h += '<details><summary>Word-by-word / Root / Morphology</summary><div class="dv-body dv-wbw-slot" data-mp-loaded="0"><span class="dv-pending">Open to load morphology…</span></div></details>';
+  h += '<details><summary>Dictionary</summary><div class="dv-body dv-dict-slot"><span class="dv-pending">Click any root above to look up its Lane\'s Lexicon entry.</span></div></details>';
   h += '<details><summary>Tafsir (multi)</summary><div class="dv-body dv-tafsir-slot" data-loaded="0"></div></details>';
   h += '<details><summary>Translations (multi)</summary><div class="dv-body"><span class="dv-pending">— pending data —</span></div></details>';
   h += '</div>';
@@ -225,6 +225,15 @@ document.addEventListener("toggle", function(e){
   if(t && t.tagName === "DETAILS" && t.open){
     var slot = t.querySelector(".dv-tafsir-slot");
     if(slot && slot.getAttribute("data-loaded") !== "1") _dvPopulateTafsirSlot(slot);
+    var wbw = t.querySelector(".dv-wbw-slot");
+    if(wbw && wbw.getAttribute("data-mp-loaded") !== "1" && typeof _mpPopulateWBW === "function"){
+      var card = wbw.closest(".dv-card");
+      if(card){
+        var s = parseInt(card.getAttribute("data-dv-surah"),10);
+        var v = parseInt(card.getAttribute("data-dv-verse"),10);
+        _mpPopulateWBW(wbw, s, v);
+      }
+    }
   }
 }, true);
 

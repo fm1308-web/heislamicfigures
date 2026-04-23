@@ -4211,7 +4211,7 @@ body.st-active #st-reader {
 /* ── DIVE final layout, minimal & non-destructive ── */
 /* DIVE card placed as grid child of .st-verse, spans Translation through Markers */
 .st-verse .dv-card {
-  grid-column: 2 / -1 !important;
+  grid-column: 2 / -2 !important;
   width: auto;
   margin: 4px 0 18px;
   padding: 14px 22px;
@@ -4252,3 +4252,36 @@ body.st-active #st-reader {
 body.st-active #st-reader {
   padding-top: var(--st-topbar-own-height, 48px) !important;
 }
+
+/* ── DIVE morphology (word-by-word + dictionary) ── */
+.mp-wbw { display: flex; flex-wrap: wrap; gap: 10px; direction: rtl; justify-content: flex-start; }
+.mp-word { direction: rtl; }
+.mp-seg { direction: rtl; }
+.mp-seg-form { font-family: 'Noto Naskh Arabic', 'Amiri', serif; font-size: 26px; line-height: 1.5; color: #fff; text-align: right; }
+.mp-word-num { text-align: right; direction: ltr; }
+.mp-seg-pos { direction: ltr; text-align: left; }
+.mp-seg-root, .mp-seg-lemma { direction: ltr; text-align: left; }
+.mp-seg-gloss { direction: ltr; text-align: left; font-size: 12px; color: #a0aec0; font-style: italic; margin-top: 3px; }
+.mp-root-chip { font-family: 'Noto Naskh Arabic', serif !important; font-size: 15px !important; }
+.mp-dict-root { font-family: 'Noto Naskh Arabic', serif; }
+.mp-dict-normalised { font-size: 10px; color: #6B7B8C; font-family: 'Cinzel', serif; letter-spacing: 0.04em; }
+.mp-word { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 6px 10px; background: rgba(255,255,255,0.015); min-width: 80px; }
+.mp-word-num { font-family: 'Cinzel', serif; font-size: 9px; color: #6B7B8C; letter-spacing: 0.1em; text-align: right; margin-bottom: 4px; }
+.mp-seg { margin: 6px 0; padding-bottom: 6px; border-bottom: 1px dashed rgba(255,255,255,0.06); direction: rtl; }
+.mp-seg:last-child { border-bottom: none; padding-bottom: 0; }
+.mp-seg-form { font-family: 'Noto Naskh Arabic', serif; font-size: 22px; line-height: 1.4; color: #fff; text-align: right; }
+.mp-seg-pos { font-family: 'Cinzel', serif; font-size: 10px; color: #9fb4d4; text-transform: uppercase; letter-spacing: 0.08em; direction: ltr; text-align: left; margin-top: 2px; }
+.mp-seg-root, .mp-seg-lemma { font-size: 11px; color: #b0b8c4; direction: ltr; text-align: left; margin-top: 2px; }
+.mp-seg-root-empty { color: #555; }
+.mp-root-chip {
+  display: inline-block; padding: 2px 8px;
+  background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.4);
+  color: #D4AF37; border-radius: 3px; font-family: 'Noto Naskh Arabic', serif;
+  font-size: 14px; cursor: pointer; transition: background .15s;
+}
+.mp-root-chip:hover { background: rgba(212,175,55,0.2); }
+
+.mp-dict-hdr { font-family: 'Cinzel', serif; color: #d8dce2; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; }
+.mp-dict-root { font-family: 'Noto Naskh Arabic', serif; color: #D4AF37; font-size: 18px; letter-spacing: normal; }
+.mp-dict-body { font-family: Georgia, 'Times New Roman', serif; font-size: 14px; line-height: 1.7; color: #ccc; white-space: normal; }
+.mp-dict-missing { color: #888; font-style: italic; }
