@@ -244,8 +244,7 @@ function _injectButtons(){
   wrap.id='shareSnapshotBtns';
   wrap.innerHTML=
     '<button class="share-btn hide-on-snapshot" onclick="window._doShare()" title="Copy shareable link">SHARE</button>'+
-    '<button class="snapshot-btn hide-on-snapshot" onclick="window._doSnapshot()" title="Save as image">SNAPSHOT</button>'+
-    '<button class="feedback-btn hide-on-snapshot" onclick="requireTester(\'feedback\',function(){openFeedbackModal();})" title="Send feedback">FEEDBACK</button>';
+    '<button class="snapshot-btn hide-on-snapshot" onclick="window._doSnapshot()" title="Save as image">SNAPSHOT</button>';
   row1Right.appendChild(wrap);
 }
 

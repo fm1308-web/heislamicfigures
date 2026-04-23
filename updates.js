@@ -77,7 +77,7 @@ function _render(entries){
   if(!entries || !entries.length){
     h += '<p style="color:#6B7B8C">No updates yet.</p>';
   } else {
-    entries.slice().reverse().forEach(function(e){
+    entries.forEach(function(e){
       h += '<div style="border-left:2px solid #D4AF37;padding:12px 0 12px 20px;margin:0 0 24px">';
       h += '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#D4AF37;letter-spacing:.06em;margin:0 0 6px">' + _esc(e.date) + '</div>';
       h += '<div style="font-size:var(--fs-3);line-height:1.6;color:#ccc">' + _esc(e.text) + '</div>';

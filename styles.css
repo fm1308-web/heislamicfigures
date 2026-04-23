@@ -156,6 +156,7 @@ a:hover{text-decoration:underline}
 .hdr-tile-books{background:#3a352a;border-top-color:#D4AF37}
 .hdr-tile-think{background:#2f2a3a;border-top-color:#6a5a8a}
 .hdr-tile-monastic{background:#2a1a3a;border-top-color:#7B2D8E}
+.hdr-tile-explain{background:#1a2a32;border-top-color:#5a7a8a}
 
 /* ── ROW 2: Slider + Search ── */
 #hdrRow2{
@@ -3226,15 +3227,7 @@ body.st-active #hdrRow4 { display: none !important; }
 .st-mode-both .st-col-hdr > div:nth-child(3) { visibility: hidden !important; }
 .st-col-hdr-vnum { text-align: center; font-family: 'Cinzel', serif; font-size: var(--fs-3); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 #st-verses::before {
-  content: '';
-  position: absolute;
-  left: 56px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(255,255,255,0.28);
-  z-index: 1;
-  pointer-events: none;
+  display: none !important;
 }
 .st-mode-arabic .st-vcenter { justify-content: flex-start; }
 .st-mode-arabic .st-var { text-align: center; font-size: calc(var(--st-font, 20px) * 1.3); }
@@ -4096,4 +4089,166 @@ body.tl-focus #tlFocusPill #tlFocusClose:hover { background: #FFD700 !important;
   background: rgba(212, 175, 55, 0.18) !important;
   outline: 2px solid rgba(212, 175, 55, 0.75);
   outline-offset: -2px;
+}
+
+/* ═══ DIVE (scholastic Quran extension for START) ═══ */
+.st-dv-toggle {
+  margin-left: 6px;
+  border: 1px solid rgba(212,175,55,0.5);
+  color: #D4AF37;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.st-dv-toggle.active { background: rgba(212,175,55,0.15); border-color: #D4AF37; }
+body.st-dive-on .dv-card { display: block; }
+.dv-card {
+  grid-column: 1 / -1;
+  margin: 8px 0 18px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+}
+.dv-card details { border-bottom: 1px dashed rgba(255,255,255,0.08); padding: 6px 0; }
+.dv-card details:last-child { border-bottom: none; }
+.dv-card summary {
+  cursor: pointer;
+  color: #D4AF37;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 0;
+}
+.dv-body { padding: 8px 0 10px 14px; color: #ccc; font-size: 14px; line-height: 1.5; }
+.dv-pending { color: #6B7B8C; font-style: italic; }
+.dv-lang-group { margin: 10px 0; }
+.dv-lang-label {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #6B7B8C; margin: 0 0 6px 2px;
+}
+.dv-btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.dv-btn {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.28);
+  color: #d8dce2; padding: 5px 12px; font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  border-radius: 3px; cursor: pointer; transition: background 0.15s, border-color 0.15s;
+}
+.dv-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.55); }
+.dv-btn.active { background: rgba(255,255,255,0.18); border-color: #fff; color: #fff; }
+.dv-panel { margin-top: 12px; padding: 10px 14px; background: rgba(255,255,255,0.03); border-left: 2px solid rgba(255,255,255,0.3); }
+.dv-panel-hdr { color: #d8dce2; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.06em; margin-bottom: 4px; }
+.dv-panel-sub { color: #6B7B8C; font-size: 11px; margin-bottom: 10px; }
+.dv-panel-body { line-height: 1.7; }
+.dv-text-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 22px; line-height: 2; }
+.dv-text-ur { font-family: 'Noto Nastaliq Urdu', serif; font-size: 20px; line-height: 2; }
+.dv-text-en { font-family: Georgia, serif; font-size: 15px; }
+.dv-author-chip {
+  display: inline-block; padding: 2px 10px; margin: 0 4px;
+  background: rgba(159,180,212,0.08); border: 1px solid rgba(159,180,212,0.4);
+  border-radius: 3px; color: #9fb4d4; font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+}
+.dv-author-chip:hover { background: rgba(159,180,212,0.18); border-color: #9fb4d4; color: #cddaf0; }
+.dv-author-plain { color: #d8dce2; }
+.dv-read-chip {
+  display: inline-block; padding: 2px 10px; margin: 0 4px;
+  background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.45);
+  border-radius: 3px; color: #D4AF37; font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+}
+.dv-read-chip:hover { background: rgba(212,175,55,0.2); }
+.st-xref-chip.st-xref-tafsir {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.3);
+  color: #d8dce2;
+}
+.st-xref-chip.st-xref-tafsir:hover { background: rgba(255,255,255,0.12); }
+
+
+/* ══════════════════════════════════════════════════════
+   START view top bar — position:fixed, measured by JS.
+   #st-topbar-top is set at runtime via CSS var --st-topbar-top
+   from dive.js to equal the measured height of the global app
+   header (hdr + tile nav). Always visible, always above.
+   ══════════════════════════════════════════════════════ */
+#st-topbar {
+  position: fixed !important;
+  top: var(--st-topbar-top, 0px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 80 !important;
+  background: #0e1420 !important;
+  display: block !important;
+  visibility: visible !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+#st-topbar #st-l1,
+#st-topbar #st-l2 {
+  display: flex !important;
+  visibility: visible !important;
+  background: #0e1420 !important;
+}
+
+/* Push reader content down only by the topbar's OWN height, not by
+   topbar-top (app header offset). Without this adjustment there's a
+   visible empty band above the surah title. */
+body.st-active #st-body,
+body.st-active #st-reader {
+  padding-top: var(--st-topbar-own-height, 48px) !important;
+}
+
+/* Active state on tafsir chip when DIVE ON (keep if previously added) */
+.st-xref-chip.st-xref-tafsir.active {
+  background: rgba(212,175,55,0.18);
+  border-color: #D4AF37;
+  color: #D4AF37;
+}
+
+
+/* ── DIVE final layout, minimal & non-destructive ── */
+/* DIVE card placed as grid child of .st-verse, spans Translation through Markers */
+.st-verse .dv-card {
+  grid-column: 2 / -1 !important;
+  width: auto;
+  margin: 4px 0 18px;
+  padding: 14px 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+}
+
+/* Links column: chips right-aligned. NO borders, NO extra lines. */
+.st-vlink {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding-right: 10px;
+}
+.st-col-hdr-link {
+  text-align: right;
+  padding-right: 10px;
+}
+
+/* Active state on tafsir chip when DIVE ON */
+.st-xref-chip.st-xref-tafsir.active {
+  background: rgba(212,175,55,0.18);
+  border-color: #D4AF37;
+  color: #D4AF37;
+}
+
+/* Topbar pinned — the ONE rule that must stay, nothing else */
+#st-topbar {
+  position: fixed !important;
+  top: var(--st-topbar-top, 0px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 80 !important;
+  background: #0e1420 !important;
+}
+body.st-active #st-reader {
+  padding-top: var(--st-topbar-own-height, 48px) !important;
 }

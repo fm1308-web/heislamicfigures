@@ -7,6 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script type="module" src="auth.js"></script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -46,8 +48,9 @@
   <button class="hdr-tile hdr-tile-think" data-view="think">THINK</button>
   <button class="hdr-tile hdr-tile-map" data-view="map">MAP</button>
   <button class="hdr-tile hdr-tile-talk" data-view="talk">TALK</button>
-  <button class="hdr-tile hdr-tile-monastic" data-view="monastic">MONASTIC</button>
   <button class="hdr-tile hdr-tile-one" data-view="one">ONE</button>
+  <button class="hdr-tile hdr-tile-monastic" data-view="monastic">MONASTIC</button>
+  <button class="hdr-tile hdr-tile-explain" data-view="explain">EXPLAIN</button>
   <button class="hdr-tile hdr-tile-start" data-view="start">START</button>
 </div>
 <!-- SEARCH + SLIDER ROW -->
@@ -389,6 +392,7 @@
   </div>
 
   <!-- START VIEW -->
+  <div id="explain-view" style="display:none"></div>
   <div id="start-view" style="display:none"></div>
 
   <!-- INFO PANEL -->
@@ -409,7 +413,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://unpkg.com/dom-to-image-more@3.5.0/dist/dom-to-image-more.min.js"></script>
 <script src="gate.js"></script>
-<script src="feedback.js"></script>
+<!-- feedback.js removed — Discourse forum link will replace it -->
 <script src="nav.js"></script>
 <script src="quranlink.js"></script>
 <script src="anim.js"></script>
@@ -429,6 +433,8 @@
 <script src="share.js"></script>
 <script src="books.js"></script>
 <script src="start.js"></script>
+<script src="explain.js"></script>
+<script src="dive.js"></script>
 <script src="quran-audio.js"></script>
 <script src="monastic.js"></script>
 <script src="updates.js"></script>

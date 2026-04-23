@@ -767,6 +767,20 @@ async function _renderPerson(p,container){
   /* ── Set HTML ── */
   container.innerHTML=h;
 
+  /* ── Contributor-only Suggest Correction button ── */
+  if (window.GoldArkAuth && window.GoldArkAuth.isContributor() && typeof window._gaOpenCorrectionModal === 'function') {
+    var corrBtn = document.createElement('button');
+    corrBtn.className = 'one-correction-btn';
+    corrBtn.textContent = '✎ Suggest Correction';
+    corrBtn.addEventListener('click', function(){
+      window._gaOpenCorrectionModal({
+        figureSlug: p.slug || '',
+        figureName: p.famous || p.full || ''
+      });
+    });
+    container.insertBefore(corrBtn, container.firstChild);
+  }
+
   /* ── Wikidata enrichment ── */
   _ensureWikidata().then(function(wd){
     if(!wd||!p.slug) return;

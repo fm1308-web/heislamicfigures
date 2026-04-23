@@ -132,6 +132,19 @@ function _stBuildDOM(container){
           '<button class="st-dd-btn" id="st-btn-trans" onclick="_stToggleDD(\'trans\',event)"><span id="st-trans-label">\u2630 Translation</span> <span class="st-dd-caret">\u25BE</span></button>'+
           '<div class="st-dd-panel st-dd-narrow st-dd-right" id="st-dd-trans" style="display:none"></div>'+
         '</div>'+
+        '<div class="st-dd-wrap" id="st-dv-lang-wrap" style="display:none">'+
+          '<button class="st-dd-btn" id="st-btn-dvlang" onclick="_stToggleDD(\'dvlang\',event)"><span id="st-dvlang-label">Tafsir Language</span> <span class="st-dd-caret">▾</span></button>'+
+          '<div class="st-dd-panel st-dd-narrow st-dd-right" id="st-dd-dvlang" style="display:none">'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'\')">All Languages</div>'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'AR\')">Arabic</div>'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'EN\')">English</div>'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'UR\')">Urdu</div>'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'BN\')">Bengali</div>'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'KU\')">Kurdish</div>'+
+            '<div class="st-dd-item" onclick="_dvPickLang(\'RU\')">Russian</div>'+
+          '</div>'+
+        '</div>'+
+        '<button class="st-dd-btn st-dv-toggle" id="st-btn-dive" onclick="_dvSetMode(!window._stDive)" title="Toggle scholastic Quran mode">DIVE: OFF</button>'+
       '</div>'+
     '</div>'+
     '<div id="st-body">'+
@@ -648,6 +661,10 @@ function _stRenderSurah(){
     }
     h+='<div class="st-vleg">'+_stBuildVerseLegends(_stSurah,v.id)+'</div>';
     h+='<div class="st-vmark"></div>';
+    if(window._stDive && typeof _dvRenderCard === "function"){
+      var _tr = _stGetVerseText("transliteration", _stSurah, v.id, v);
+      h += _dvRenderCard(_stSurah, v.id, _tr || "");
+    }
     h+='</div>';
   });
   h+='</div>';
@@ -664,6 +681,9 @@ function _stRenderSurah(){
   _stInitQmarkTooltip();
   _stLayoutMarkers();
   // goldline positioned by CSS
+  if(typeof _dvPrefetchSurah === "function"){
+    _dvPrefetchSurah(_stSurah, function(){ if(typeof _dvUpdateTafsirChips==="function") _dvUpdateTafsirChips(); });
+  }
 }
 
 
@@ -824,6 +844,9 @@ function _stXrefChip(surah,verse){
   }
   if(hadithCount){
     h+='<div class="st-xref-chip st-xref-hadith"'+onclick+'>'+hadithCount+(hadithCount===1?' hadith':' hadiths')+'</div>';
+  }
+  if(typeof _dvTafsirChipHTML === "function"){
+    h += _dvTafsirChipHTML(surah, verse);
   }
   return h;
 }
@@ -1639,3 +1662,18 @@ function _stCleanup(){
     }
   };
 })();
+
+function _dvPickLang(code){
+  DIVE_TLANG_FILTER = code || "";
+  var lbl = document.getElementById("st-dvlang-label");
+  if(lbl) lbl.textContent = code ? ("Tafsir: "+DIVE_LANG_FULL[code]) : "Tafsir Language";
+  _stCloseDD();
+  // Invalidate all loaded tafsir slots so they re-render with filter
+  document.querySelectorAll(".dv-tafsir-slot").forEach(function(s){ s.setAttribute("data-loaded","0"); s.innerHTML=""; });
+  // Reopen any currently-open tafsir details so they repopulate
+  document.querySelectorAll(".dv-card details").forEach(function(d){
+    var slot = d.querySelector(".dv-tafsir-slot");
+    if(slot && d.open) _dvPopulateTafsirSlot(slot);
+  });
+}
+window._dvPickLang = _dvPickLang;
