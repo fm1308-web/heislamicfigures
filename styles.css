@@ -4106,9 +4106,11 @@ body.st-dive-on .dv-card { display: block; }
   grid-column: 1 / -1;
   margin: 8px 0 18px;
   padding: 10px 16px;
-  background: rgba(255,255,255,0.02);
+  background: #1B2631;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 4px;
+  position: relative;
+  z-index: 2;
 }
 .dv-card details { border-bottom: 1px dashed rgba(255,255,255,0.08); padding: 6px 0; }
 .dv-card details:last-child { border-bottom: none; }
@@ -4215,9 +4217,11 @@ body.st-active #st-reader {
   width: auto;
   margin: 4px 0 18px;
   padding: 14px 22px;
-  background: rgba(255,255,255,0.02);
+  background: #1B2631;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 4px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Links column: chips right-aligned. NO borders, NO extra lines. */

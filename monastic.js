@@ -431,8 +431,8 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
     warn = '<div style="font-size:var(--fs-3);color:#B45454;margin-bottom:6px">Note: ' + (sourceHadiths.length - totalSum) + ' hadiths have no ' + esc(step.splitBy) + ' value.</div>';
   }
 
-  var ROW_H = 56;
-  var TILE_H = 48;
+  var ROW_H = 76;
+  var TILE_H = 68;
   var TILE_GAP = 8;
 
   var tilesHtml = '';
@@ -1073,7 +1073,7 @@ function _drillColumnHtml(meta, hadiths, tierColorMap){
     sourceTileKeys[step.sourceEarliest + '-' + step.sourceLatest] = true;
   });
 
-  var ROW_H = 56;
+  var ROW_H = 76;
   var rows = [];
   var yearAnchored = {};
 
