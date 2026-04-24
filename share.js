@@ -244,7 +244,8 @@ function _injectButtons(){
   wrap.id='shareSnapshotBtns';
   wrap.innerHTML=
     '<button class="share-btn hide-on-snapshot" onclick="window._doShare()" title="Copy shareable link">SHARE</button>'+
-    '<button class="snapshot-btn hide-on-snapshot" onclick="window._doSnapshot()" title="Save as image">SNAPSHOT</button>';
+    '<button class="snapshot-btn hide-on-snapshot" onclick="window._doSnapshot()" title="Save as image">SNAPSHOT</button>'+
+    '<button class="share-btn hide-on-snapshot" onclick="window._doFeedback()" title="Share feedback on our forum">FEEDBACK</button>';
   row1Right.appendChild(wrap);
 }
 
@@ -255,8 +256,15 @@ if(document.readyState==='loading'){
   _injectButtons();
 }
 
+function doFeedback(){
+  requireTester('feedback', function(){
+    window.open('https://goldark.discourse.group/new-topic?category=feedback','_blank','noopener');
+  });
+}
+
 /* ── Expose globally ── */
 window._doShare=doShare;
 window._doSnapshot=doSnapshot;
+window._doFeedback=doFeedback;
 
 })();
