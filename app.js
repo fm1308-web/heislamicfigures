@@ -1595,29 +1595,6 @@ function showEmptyInfo(){
     `<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>`;
 }
 
-function _getContemporaries(p) {
-  const dod = p.dod !== undefined && p.dod !== null
-    ? p.dod : p.dob + 60;
-  const results = { west: [], islamic: [], east: [] };
-  PEOPLE.forEach(other => {
-    if (other.famous === p.famous) return;
-    if (!other.lat || !other.lng) return;
-    const odod = other.dod !== undefined && other.dod !== null
-      ? other.dod : other.dob + 60;
-    const overlaps = !(odod < p.dob || other.dob > dod);
-    if (!overlaps) return;
-    if (other.lng < 15) results.west.push(other);
-    else if (other.lng >= 15 && other.lng <= 75)
-      results.islamic.push(other);
-    else results.east.push(other);
-  });
-  const sorter = (a, b) =>
-    Math.abs(a.dob - p.dob) - Math.abs(b.dob - p.dob);
-  results.west = results.west.sort(sorter).slice(0, 7);
-  results.islamic = results.islamic.sort(sorter).slice(0, 7);
-  results.east = results.east.sort(sorter).slice(0, 7);
-  return results;
-}
 
 function _isAssumedDate(p){
   if(p.famous==='Prophet Muhammad')return false;
@@ -1800,60 +1777,6 @@ function renderInfo(p){
       qItems + '</div>';
   }
 
-  const contemp = _getContemporaries(p);
-  const hasContemp = contemp.west.length ||
-    contemp.islamic.length || contemp.east.length;
-  let contempHtml = '';
-  if (hasContemp) {
-    const colStyle =
-      'display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;';
-    const headStyle =
-      'font-family:\'Cinzel\',serif;font-size:var(--fs-3);' +
-      'letter-spacing:.14em;color:var(--ip-muted);margin-bottom:5px;';
-    const chipStyle = (col) =>
-      'display:inline-block;padding:2px 7px;border-radius:2px;' +
-      'font-size:var(--fs-3);font-family:\'Crimson Pro\',serif;' +
-      'color:var(--ip-text);background:var(--ip-surf);' +
-      'border:1px solid var(--ip-brd);cursor:pointer;' +
-      'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' +
-      'max-width:100%;transition:border-color .12s,color .12s;' +
-      'border-left:2px solid ' + col + ';';
-    const makeChips = (group) => group.map(q => {
-      const qcol = typeof _markerTypeColor === 'function'
-        ? _markerTypeColor(q) : '#888';
-      const safe = q.famous.replace(/'/g, "\\'");
-      return '<span style="' + chipStyle(qcol) + '" ' +
-        'onclick="selectPerson(\'' + safe + '\')" ' +
-        'onmouseenter="this.style.color=\'var(--ip-acc)\';' +
-        'this.style.borderColor=\'rgba(212,175,55,.4)\'" ' +
-        'onmouseleave="this.style.color=\'var(--ip-text)\';' +
-        'this.style.borderColor=\'var(--ip-brd)\'">' +
-        esc(q.famous) + '</span>';
-    }).join('');
-    contempHtml =
-      '<div style="margin-top:18px;padding-top:14px;' +
-      'border-top:1px solid var(--ip-brd);">' +
-      '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);' +
-      'letter-spacing:.14em;color:var(--ip-muted);display:flex;' +
-      'align-items:center;gap:6px;margin-bottom:10px;">' +
-      'CONTEMPORARIES' +
-      '<span style="flex:1;height:1px;background:var(--ip-brd);' +
-      'display:inline-block;"></span>' +
-      '<span style="font-size:var(--fs-3);opacity:.5;">ALIVE AT THE SAME TIME' +
-      '</span></div>' +
-      '<div style="display:flex;gap:10px;align-items:flex-start;">' +
-      (contemp.west.length ?
-        '<div style="' + colStyle + '"><div style="' + headStyle +
-        '">WEST</div>' + makeChips(contemp.west) + '</div>' : '') +
-      (contemp.islamic.length ?
-        '<div style="' + colStyle + '"><div style="' + headStyle +
-        '">ISLAMIC WORLD</div>' + makeChips(contemp.islamic) +
-        '</div>' : '') +
-      (contemp.east.length ?
-        '<div style="' + colStyle + '"><div style="' + headStyle +
-        '">EAST</div>' + makeChips(contemp.east) + '</div>' : '') +
-      '</div></div>';
-  }
 
   document.getElementById('infoScroll').innerHTML=`
     ${locateBtn}
@@ -1890,7 +1813,6 @@ function renderInfo(p){
     ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
     ${quranHtml}${quranChipsHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
     ${quotesHtml}
-    ${contempHtml}
     <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--ip-brd);display:flex;gap:8px;flex-wrap:wrap;">
       <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}" target="_blank" rel="noopener"
         style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:2px;

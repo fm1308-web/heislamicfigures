@@ -1276,7 +1276,12 @@ function getField(obj, names){
 }
 
 function getNumber(h){ return getField(h, ['hadith_no','hadithNumber','number','id']); }
-function getText(h){ return getField(h, ['matn_en','text','english','body','hadith_text']); }
+var _monLang = 'en';
+function getText(h){
+  if(_monLang === 'ar') return getField(h, ['hadithArabic','matn_ar','text_ar','arabic','arabic_text']);
+  if(_monLang === 'ur') return getField(h, ['hadithUrdu','matn_ur','text_ur','urdu','urdu_text']);
+  return getField(h, ['matn_en','hadithEnglish','text','english','body','hadith_text']);
+}
 function getNarrator(h){
   var narrs = h.narrators;
   if(Array.isArray(narrs) && narrs.length){
@@ -1501,8 +1506,11 @@ function _datingLine(h){
     '</div>';
 }
 
-// ── Timeline band ──
+// ── Timeline band ── (REMOVED — hidden always per user rule)
 function _buildBand(){
+  if(_bandEl){ _bandEl.style.display = 'none'; }
+  return;
+  // Original code kept below but unreachable:
   if(!_bandEl) return;
   var html = '';
   MON_PERIODS.forEach(function(p, i){
@@ -1669,7 +1677,10 @@ function _applyAllFilters(){
   });
 }
 
+var _lastFiltered = null, _lastColKey = null;
 function _renderRows(filtered, colKey){
+  _lastFiltered = filtered;
+  _lastColKey = colKey;
   _resultsEl.innerHTML = '';
   _countEl.textContent = filtered.length + ' hadith' + (filtered.length !== 1 ? 's' : '') + ' found';
 
@@ -1722,7 +1733,7 @@ function _renderRows(filtered, colKey){
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
       topicHtml + periodHtml + xrefSlotHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
-      '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.5">' + esc(text) + _datingLine(h) + '</div>';
+      '<div style="font-size:' + (_monLang==='ar'?'20px':(_monLang==='ur'?'18px':'var(--fs-3)')) + ';color:#E5E7EB;line-height:' + (_monLang==='en'?'1.5':'2') + ';' + (_monLang==='ar'||_monLang==='ur'?'direction:rtl;text-align:right;font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;':'') + '">' + esc(text || '(no '+_monLang.toUpperCase()+' text)') + _datingLine(h) + '</div>';
     frag.appendChild(row);
   }
 
@@ -1945,6 +1956,36 @@ function init(){
       _mhBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
       _mhBtn.onclick=function(e){e.stopPropagation();_openMethodology();};
       _monFilters.prepend(_mhBtn);
+    }
+  }
+
+  // ── Language toggle buttons (EN / AR / UR) ──
+  if(!document.getElementById('mon-lang-group')){
+    var _monFiltersL=document.getElementById('mon-filters');
+    if(_monFiltersL){
+      var grp=document.createElement('div');
+      grp.id='mon-lang-group';
+      grp.style.cssText='display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle';
+      [['en','ENGLISH'],['ar','عربي'],['ur','اردو']].forEach(function(pair){
+        var lg=pair[0];
+        var b=document.createElement('button');
+        b.setAttribute('data-lang',lg);
+        b.textContent=pair[1];
+        b.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid "+(lg===_monLang?'#D4AF37':'#555')+";background:"+(lg===_monLang?'rgba(212,175,55,0.15)':'transparent')+";color:"+(lg===_monLang?'#D4AF37':'#888')+";font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em";
+        b.onclick=function(e){
+          e.stopPropagation();
+          _monLang=lg;
+          grp.querySelectorAll('button').forEach(function(bb){
+            var act=bb.getAttribute('data-lang')===_monLang;
+            bb.style.borderColor=act?'#D4AF37':'#555';
+            bb.style.background=act?'rgba(212,175,55,0.15)':'transparent';
+            bb.style.color=act?'#D4AF37':'#888';
+          });
+          if(_lastFiltered) _renderRows(_lastFiltered,_lastColKey);
+        };
+        grp.appendChild(b);
+      });
+      _monFiltersL.appendChild(grp);
     }
   }
 

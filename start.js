@@ -651,7 +651,7 @@ function _stRenderSurah(){
       }
     });
     h+='</div>';
-    h+='<div class="st-vcenter"><span>'+v.id+'</span></div>';
+    h+='<div class="st-vcenter"><span data-bmk-verse="'+v.id+'">'+v.id+'</span></div>';
     var _vex=_stVerseException(_stSurah,v.id);
     var _ar=_stWrapMarks(v.ar);
     if(_vex){
@@ -684,6 +684,8 @@ function _stRenderSurah(){
   if(typeof _dvPrefetchSurah === "function"){
     _dvPrefetchSurah(_stSurah, function(){ if(typeof _dvUpdateTafsirChips==="function") _dvUpdateTafsirChips(); });
   }
+  window._stCurrentSurah=_stSurah;
+  setTimeout(function(){ try{ _stBmkRender(); _stBmkInjectTopbarBtn(); }catch(e){} },50);
 }
 
 
@@ -1677,3 +1679,145 @@ function _dvPickLang(code){
   });
 }
 window._dvPickLang = _dvPickLang;
+
+window._stEsc=_stEsc;
+
+// ══════════════════════════════════════════════════════════
+// BOOKMARKS
+// ══════════════════════════════════════════════════════════
+function _stBmkRender(){
+  var auth=window.GoldArkAuth;
+  var signedIn=auth&&auth.isSignedIn();
+  // Remove any old ribbons (from any previous location)
+  document.querySelectorAll('#st-verses .st-bmk').forEach(function(x){ x.remove(); });
+  // Find each verse row and put the ribbon in the LINKS column (.st-vlink)
+  document.querySelectorAll('#st-verses .st-verse').forEach(function(row){
+    var centerSpan=row.querySelector('.st-vcenter span[data-bmk-verse]');
+    if(!centerSpan) return;
+    var v=parseInt(centerSpan.getAttribute('data-bmk-verse'));
+    if(!v) return;
+    var linkCol=row.querySelector('.st-vlink');
+    if(!linkCol) return;
+    var s=window._stCurrentSurah||1;
+    var filled=signedIn&&auth.hasBookmark(s,v);
+    var btn=document.createElement('button');
+    btn.className='st-bmk'+(filled?' on':'');
+    btn.title=signedIn?(filled?'Remove bookmark':'Add bookmark'):'Sign in to bookmark';
+    btn.innerHTML='<svg width="12" height="16" viewBox="0 0 12 16" fill="'+(filled?'#D4AF37':'none')+'" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+    btn.onclick=function(e){
+      e.stopPropagation();
+      window.requireTester('bookmark',function(){
+        var a=window.GoldArkAuth;
+        var surah=window._stCurrentSurah||1;
+        var p=a.hasBookmark(surah,v)?a.removeBookmark(surah,v):a.addBookmark(surah,v);
+        p.then(function(){
+          setTimeout(function(){
+            try{ _stBmkRender(); _stBmkInjectTopbarBtn(); }catch(e){}
+          },200);
+        }).catch(function(err){console.error(err);});
+      });
+    };
+    linkCol.appendChild(btn);
+  });
+}
+window._stBmkRender=_stBmkRender;
+
+function _stBmkPopup(){
+  var auth=window.GoldArkAuth;
+  if(!auth||!auth.isSignedIn()){
+    window.requireTester('bookmarks',function(){ _stBmkPopup(); });
+    return;
+  }
+  var bmks=auth.getBookmarks();
+  var old=document.getElementById('st-bmk-popup'); if(old) old.remove();
+  var overlay=document.createElement('div');
+  overlay.id='st-bmk-popup';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center';
+  overlay.onclick=function(e){ if(e.target===overlay) overlay.remove(); };
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:Lato,sans-serif;color:#E5E7EB;font-size:var(--fs-3)';
+  var h='<button onclick="document.getElementById(\'st-bmk-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>';
+  h+='<h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-2);margin:0 0 16px;letter-spacing:.06em">My Bookmarks</h3>';
+  if(!bmks.length){
+    h+='<div style="color:#888;font-style:italic">No bookmarks yet. Click the ribbon next to any verse to save it.</div>';
+  } else {
+    h+='<div style="display:flex;flex-direction:column;gap:6px">';
+    bmks.sort(function(a,b){
+      var pa=a.split(':').map(Number), pb=b.split(':').map(Number);
+      return pa[0]-pb[0]||pa[1]-pb[1];
+    }).forEach(function(k){
+      var p=k.split(':'); var s=parseInt(p[0]), v=parseInt(p[1]);
+      h+='<button class="st-bmk-item" data-s="'+s+'" data-v="'+v+'" style="text-align:left;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.3);color:#E5E7EB;padding:8px 12px;border-radius:4px;cursor:pointer;font-family:Lato,sans-serif;font-size:var(--fs-3)">Surah '+s+' : Verse '+v+'</button>';
+    });
+    h+='</div>';
+  }
+  box.innerHTML=h;
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  box.querySelectorAll('.st-bmk-item').forEach(function(btn){
+    btn.onclick=function(){
+      var s=parseInt(btn.getAttribute('data-s'));
+      var v=parseInt(btn.getAttribute('data-v'));
+      overlay.remove();
+      // Try every known surah-loader, then scroll to verse
+      var loaded=false;
+      var fns=['_stLoadSurah','_stGoto','_stOpenSurah','_stJumpTo','_stShowSurah','_stSelectSurah'];
+      for(var i=0;i<fns.length;i++){
+        if(typeof window[fns[i]]==='function'){
+          try{ window[fns[i]](s,v); loaded=true; break; }catch(e){}
+        }
+      }
+      // Fallback: set surah dropdown if it exists, then scroll to verse
+      if(!loaded){
+        var sel=document.querySelector('#st-surah-select,#st-surah-dd,select[data-st-surah]');
+        if(sel){
+          sel.value=s;
+          sel.dispatchEvent(new Event('change',{bubbles:true}));
+        }
+      }
+      // Scroll to the verse once rendered
+      setTimeout(function(){
+        var verseEl=document.querySelector('#st-verses .st-verse [data-bmk-verse="'+v+'"]');
+        if(verseEl){
+          var row=verseEl.closest('.st-verse');
+          if(row){
+            row.scrollIntoView({behavior:'smooth',block:'center'});
+            row.classList.add('qref-pulse');
+            setTimeout(function(){ row.classList.remove('qref-pulse'); },2500);
+          }
+        }
+      },500);
+    };
+  });
+}
+window._stBmkPopup=_stBmkPopup;
+
+function _stBmkInjectTopbarBtn(){
+  var bar=document.getElementById('st-topbar');
+  if(!bar) return;
+  var btn=document.getElementById('st-bmk-btn');
+  if(!btn){
+    btn=document.createElement('button');
+    btn.id='st-bmk-btn';
+    btn.className='st-topbar-btn';
+    btn.type='button';
+    btn.onclick=_stBmkPopup;
+    bar.appendChild(btn);
+  }
+  var auth=window.GoldArkAuth;
+  var count=(auth&&auth.isSignedIn())?auth.getBookmarks().length:0;
+  var hasAny=count>0;
+  var color=hasAny?'#D4AF37':'#A0AEC0';
+  var borderCol=hasAny?'rgba(212,175,55,0.8)':'rgba(160,174,192,0.5)';
+  btn.title=hasAny?('View my '+count+' bookmark(s)'):'No bookmarks yet';
+  btn.innerHTML='★ BOOKMARKS'+(hasAny?' ('+count+')':'');
+  btn.style.cssText='margin-left:6px;padding:4px 12px;background:transparent;border:1px solid '+borderCol+';color:'+color+';font-family:Cinzel,serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px';
+}
+window._stBmkInjectTopbarBtn=_stBmkInjectTopbarBtn;
+
+// Re-render bookmark ribbons + topbar button when auth state changes
+if(window.GoldArkAuth&&window.GoldArkAuth.onStateChange){
+  window.GoldArkAuth.onStateChange(function(){
+    try{ _stBmkRender(); _stBmkInjectTopbarBtn(); }catch(e){}
+  });
+}

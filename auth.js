@@ -10,7 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 import {
   getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp, onSnapshot,
-  addDoc, collection
+  addDoc, collection, arrayUnion, arrayRemove
 } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -51,7 +51,8 @@ function _computeEffectiveState(d) {
     baseTier: d.tier || "tester",
     role: d.role || "user",
     subscriptionStatus: d.subscriptionStatus || null,
-    stripeCustomerId: d.stripeCustomerId || null
+    stripeCustomerId: d.stripeCustomerId || null,
+    bookmarks: Array.isArray(d.bookmarks) ? d.bookmarks : []
   };
 }
 
@@ -74,7 +75,8 @@ async function _ensureUserDoc(firebaseUser, signInMethod) {
       role: "user",
       stripeCustomerId: null,
       subscriptionStatus: null,
-      legacyTesterEmail: legacyEmail || null
+      legacyTesterEmail: legacyEmail || null,
+      bookmarks: []
     });
   } else {
     await updateDoc(ref, { lastLogin: now });
@@ -153,6 +155,28 @@ const GoldArkAuth = {
   isAdmin() {
     const u = window._gaUser;
     return !!u && u.role === "admin";
+  },
+  getBookmarks() {
+    const u = window._gaUser;
+    return (u && Array.isArray(u.bookmarks)) ? u.bookmarks.slice() : [];
+  },
+  hasBookmark(surah, verse) {
+    const key = surah + ":" + verse;
+    return this.getBookmarks().indexOf(key) !== -1;
+  },
+  async addBookmark(surah, verse) {
+    const u = window._gaUser;
+    if (!u) throw new Error("Not signed in");
+    const key = surah + ":" + verse;
+    const ref = doc(db, "users", u.uid);
+    return updateDoc(ref, { bookmarks: arrayUnion(key) });
+  },
+  async removeBookmark(surah, verse) {
+    const u = window._gaUser;
+    if (!u) throw new Error("Not signed in");
+    const key = surah + ":" + verse;
+    const ref = doc(db, "users", u.uid);
+    return updateDoc(ref, { bookmarks: arrayRemove(key) });
   },
   async submitCorrection(data) {
     const u = window._gaUser;
