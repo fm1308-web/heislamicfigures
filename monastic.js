@@ -2,12 +2,12 @@ window.Monastic = (function(){
 'use strict';
 
 var COLLECTIONS = [
-  {key:'bukhari',  label:'Sahih Bukhari',      file:'data/hadith/bukhari.json'},
-  {key:'muslim',   label:'Sahih Muslim',        file:'data/hadith/muslim.json'},
-  {key:'abudawud', label:"Sunan Abi Da'ud",     file:'data/hadith/abudawud.json'},
-  {key:'tirmidhi', label:"Jami' al-Tirmidhi",   file:'data/hadith/tirmidhi.json'},
-  {key:'nasai',    label:"Sunan an-Nasa'i",      file:'data/hadith/nasai.json'},
-  {key:'ibnmajah', label:'Sunan Ibn Majah',     file:'data/hadith/ibnmajah.json'}
+  {key:'bukhari',  label:'Sahih Bukhari',      file:'data/islamic/hadith/sahih-bukhari.json'},
+  {key:'muslim',   label:'Sahih Muslim',        file:'data/islamic/hadith/sahih-muslim.json'},
+  {key:'abudawud', label:"Sunan Abi Da'ud",     file:'data/islamic/hadith/abu-dawood.json'},
+  {key:'tirmidhi', label:"Jami' al-Tirmidhi",   file:'data/islamic/hadith/al-tirmidhi.json'},
+  {key:'nasai',    label:"Sunan an-Nasa'i",      file:'data/islamic/hadith/sunan-nasai.json'},
+  {key:'ibnmajah', label:'Sunan Ibn Majah',     file:'data/islamic/hadith/ibn-e-majah.json'}
 ];
 
 // Maps monastic.js internal collection key → hadith_xref file basename.
@@ -1365,6 +1365,7 @@ function fetchCollection(key){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
+    if(data && !Array.isArray(data) && Array.isArray(data.hadiths)) data = data.hadiths;
     if(!Array.isArray(data)) data = [];
     _cache[key] = data;
     return data;
