@@ -29,13 +29,13 @@ function validateJourneys(){
           coreFig=PEOPLE.find(function(p){ return p.slug===slug; });
         }
         if(!coreFig){
-          console.warn('[validateJourneys] SLUG MISMATCH: '+filename+' has slug "'+slug+'" but no match in core.json');
+          console.warn('[validateJourneys] SLUG MISMATCH: '+filename+' has slug "'+slug+'" but no match in core.json?v=fixture1');
           problems++;
         }
 
         // b. INDEX REGISTRATION
         if(indexFiles.size&&!indexFiles.has(filename)){
-          console.warn('[validateJourneys] NOT IN INDEX: '+filename+' not listed in index.json');
+          console.warn('[validateJourneys] NOT IN INDEX: '+filename+' not listed in index.json?v=fixture1');
           problems++;
         }
 

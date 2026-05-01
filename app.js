@@ -388,21 +388,21 @@ function _tileNavSync(v){
 // BOOT
 // ═══════════════════════════════════════════════════════════
 async function boot(){
-  try{const r=await fetch('data/islamic/core.json');PEOPLE=await r.json();}
-  catch(e){try{const r=await fetch('./data/islamic/core.json');PEOPLE=await r.json();}catch(_){PEOPLE=[];}}
+  try{const r=await fetch(dataUrl('data/islamic/core.json'));PEOPLE=await r.json();}
+  catch(e){try{const r=await fetch('./data/islamic/core.json?v=fixture1');PEOPLE=await r.json();}catch(_){PEOPLE=[];}}
 
-  try{const r=await fetch('data/islamic/name_variants.json');window._NAME_VARIANTS=await r.json();}
+  try{const r=await fetch(dataUrl('data/islamic/name_variants.json'));window._NAME_VARIANTS=await r.json();}
   catch(e){window._NAME_VARIANTS={};}
 
-  try{const r=await fetch('data/islamic/figure_sources.json');window._FIGURE_SOURCES=await r.json();}
-  catch(e){try{const r=await fetch('./data/islamic/figure_sources.json');window._FIGURE_SOURCES=await r.json();}catch(_){window._FIGURE_SOURCES={};}}
+  try{const r=await fetch(dataUrl('data/islamic/figure_sources.json'));window._FIGURE_SOURCES=await r.json();}
+  catch(e){try{const r=await fetch('./data/islamic/figure_sources.json?v=fixture1');window._FIGURE_SOURCES=await r.json();}catch(_){window._FIGURE_SOURCES={};}}
 
-  try{const r=await fetch('data/islamic/events/master.json');window.eventsData=await r.json();}
+  try{const r=await fetch(dataUrl('data/islamic/events/master.json'));window.eventsData=await r.json();}
   catch(e){window.eventsData=[];}
 
   // Quran cross-references: figure → [{surah, verse_start, verse_end, ref_text}, ...]
   try{
-    const r=await fetch('data/islamic/quran/quran_xref.json');
+    const r=await fetch(dataUrl('data/islamic/quran/quran_xref.json'));
     const xref=await r.json();
     window.QURAN_XREF=xref;
     const bySlug={};
@@ -439,7 +439,7 @@ async function boot(){
     try{document.getElementById('hdrStatRelations').textContent=relCount.toLocaleString();}catch(e){}
 
     // Count books from books.json (total + free reads)
-    fetch('data/islamic/books.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
+    fetch(dataUrl('data/islamic/books.json')).then(function(r){return r.json();}).then(function(d){
       if(!window._BOOKS_DATA) window._BOOKS_DATA=d;
       if(typeof window._badgeInvalidateBooks==='function') window._badgeInvalidateBooks();
       var books=(d&&d.books)||[];
@@ -1611,7 +1611,7 @@ var _figureHadithChipsLoading = null;
 function _ensureFigureHadithChips(){
   if(_figureHadithChips) return Promise.resolve(_figureHadithChips);
   if(_figureHadithChipsLoading) return _figureHadithChipsLoading;
-  _figureHadithChipsLoading = fetch('data/islamic/figure_hadith_chips.json')
+  _figureHadithChipsLoading = fetch(dataUrl('data/islamic/figure_hadith_chips.json'))
     .then(function(r){ return r.ok ? r.json() : {}; })
     .then(function(d){ _figureHadithChips = d || {}; return _figureHadithChips; })
     .catch(function(){ _figureHadithChips = {}; return _figureHadithChips; });

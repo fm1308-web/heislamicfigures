@@ -1,14 +1,128 @@
-// ═══════════════════════════════════════════════════════════
-// MAP VIEW
-// ═══════════════════════════════════════════════════════════
+/* ─────────────────────────────────────────────────────────────
+   MAP view — verbatim lift from bv-app/map.js + bv-app/mapbase.js
+   IIFE exposes window.MapView = { mount, unmount }
+   Leaflet (1.9.4) is lazy-loaded from CDN if not already present.
+   ───────────────────────────────────────────────────────────── */
+window.MapView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (mirror timeline.js stub style)
+  // ═══════════════════════════════════════════════════════════
+  // stub: VIEW global
+  var VIEW = 'map';
+  window.VIEW = 'map';
+  // stub: APP namespace
+  var APP = window.APP || { Favorites:null, filterFavsOnly:false, _lang:'en',
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; } };
+  window.APP = APP;
+  // stub: TIMELINE filter state — _getMapFiltered reads selTypes / selTrads / searchQ.
+  if(typeof window.selTypes === 'undefined') window.selTypes = new Set();
+  if(typeof window.selTrads === 'undefined') window.selTrads = new Set();
+  if(typeof window.searchQ === 'undefined') window.searchQ = '';
+  // stub: PROPHET_CHAIN / ASHRA_MUBASHSHARA / _IH_SUBLANE_REV — silsila/timeline globals.
+  if(typeof window.PROPHET_CHAIN === 'undefined') window.PROPHET_CHAIN = new Set();
+  if(typeof window.ASHRA_MUBASHSHARA === 'undefined') window.ASHRA_MUBASHSHARA = new Set();
+  if(typeof window._IH_SUBLANE_REV === 'undefined') window._IH_SUBLANE_REV = {};
+  // stub: CC / gc — TIMELINE century color helpers, used by _openMapCard.
+  if(typeof window.CC === 'undefined') window.CC = {6:'#d4600a',7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#c87832',12:'#b86820',13:'#c8902a',14:'#a07828',15:'#a01030',16:'#a01030',17:'#a03000',18:'#8a5a00',19:'#4a7800',20:'#008050'};
+  if(typeof window.gc !== 'function') window.gc = function(y){if(y<600)return 6;if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;if(y<1800)return 18;if(y<1900)return 19;return 20;};
+  // stub: esc
+  if(typeof window.esc !== 'function') window.esc = function(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');};
+  // stub: jumpTo + focusPersonInTimeline — cross-view nav
+  if(typeof window.jumpTo !== 'function') window.jumpTo = function(name){ console.log('[map] jumpTo (stub):', name); };
+  if(typeof window.focusPersonInTimeline !== 'function') window.focusPersonInTimeline = function(name){ console.log('[map] focusPersonInTimeline (stub):', name); };
+  // stub: _wikidata / _WD_OCC_LABELS / _getJourneyLocation — populated by other views.
+  if(typeof window._wikidata === 'undefined') window._wikidata = {};
+  if(typeof window._WD_OCC_LABELS === 'undefined') window._WD_OCC_LABELS = {};
+  // stub: AnimControls — leave undefined; lifted code already null-checks.
+  // stub: activeYear / _setSliderYear — TIMELINE-driven; the lifted _mapAnimPlay no-ops if absent.
+  if(typeof window.activeYear === 'undefined') window.activeYear = null;
+
+  // PEOPLE — populated by core.json fetch in mount(). Lifted code reads PEOPLE without typeof.
+  // We hold a local view of it that gets synced on mount.
+  var PEOPLE = window.PEOPLE || [];
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ LIFTED MAPBASE.JS (inlined; same definitions, no fetch v=Date.now) ▼▼▼
+  // ═══════════════════════════════════════════════════════════
+
+  var _mbGeoEmpData = null;
+  var _mbGeoEmpCenturies = [];
+  var _MB_DARK_TILES = 'https://{s}.basemaps.cartocdn.com/positron_no_labels/{z}/{x}/{y}{r}.png';
+  var _MB_LABEL_TILES = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
+  var _MB_BORDERS_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson';
+
+  function _mbCreateMap(elementId, opts){
+    opts = opts || {};
+    var el = document.getElementById(elementId);
+    if(!el || typeof L === 'undefined') return null;
+    var map = L.map(el, {
+      zoomControl: opts.zoomControl !== false,
+      attributionControl: opts.attributionControl !== false,
+      minZoom: opts.minZoom || 2,
+      maxZoom: opts.maxZoom || 14,
+      maxBounds: [[-85,-180],[85,180]],
+      maxBoundsViscosity: 1.0
+    });
+    L.tileLayer(_MB_DARK_TILES, { subdomains:'abcd', attribution:'© <a href="https://carto.com/attributions">CARTO</a>', maxZoom:19 }).addTo(map);
+    fetch(_MB_BORDERS_URL).then(function(r){return r.json();}).then(function(geo){
+      if(!map) return;
+      L.geoJSON(geo, { style:{ color:'#7a8a72', weight:0.8, fillOpacity:0, opacity:0.8 } }).addTo(map);
+    }).catch(function(){});
+    var labTile = L.tileLayer(_MB_LABEL_TILES, { subdomains:'abcd', maxZoom:19, opacity:1 });
+    map._mbUserDrag = false;
+    map.on('movestart', function(){ map._mbUserDrag = true; });
+    map.on('moveend', function(){ setTimeout(function(){ map._mbUserDrag = false; }, 300); });
+    return { map:map, labTile:labTile };
+  }
+  function _mbLoadGeoEmpires(cb){
+    if(_mbGeoEmpData){ cb(); return; }
+    fetch(dataUrl('data/islamic/empire_overlays.json'))
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        _mbGeoEmpData = j || {};
+        _mbGeoEmpCenturies = Object.keys(_mbGeoEmpData).sort(function(a,b){return +a - +b;});
+        cb();
+      })
+      .catch(function(){ _mbGeoEmpData = {}; _mbGeoEmpCenturies = []; cb(); });
+  }
+  function _mbFitToPoints(map, points, padding){
+    if(!map || !points || !points.length || typeof L === 'undefined') return;
+    padding = padding || 0.08;
+    try { map.fitBounds(L.latLngBounds(points).pad(padding), { animate:false, maxZoom:10 }); } catch(e){}
+  }
+  function _mbAutoPan(map, activePts, padding){
+    if(!map || !activePts || !activePts.length || typeof L === 'undefined') return false;
+    if(map._mbUserDrag) return false;
+    try {
+      var b = L.latLngBounds(activePts);
+      var mapBounds = map.getBounds().pad(-0.15);
+      if(!mapBounds.contains(b)){
+        if(activePts.length === 1){ map.panTo(activePts[0], { animate:true, duration:0.5 }); }
+        else { map.fitBounds(b.pad(0.3), { animate:true, duration:0.5, maxZoom:Math.max(map.getZoom(),5) }); }
+        return true;
+      }
+    } catch(e){}
+    return false;
+  }
+  // Expose globally so any other view that loads after MAP can reuse them.
+  window._mbCreateMap = _mbCreateMap;
+  window._mbLoadGeoEmpires = _mbLoadGeoEmpires;
+  window._mbFitToPoints = _mbFitToPoints;
+  window._mbAutoPan = _mbAutoPan;
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/map.js ▼▼▼
+  // ═══════════════════════════════════════════════════════════
+
 let _lMap=null, _empLayer=null, _mrkLayer=null, _labTile=null;
-let _mapYear=null; // null = all years
+let _mapYear=null;
 const MAP_MIN=550, MAP_MAX=2025;
 let _geoEmpData=null, _geoEmpLayer=null, _geoEmpOn=false;
 let GEO_EMP_CENTURIES=[];
 function fmtYr(y){return y<0?`${Math.abs(y)} BCE`:`${y} CE`;}
 
-// Empire overlay data
 const MAP_EMPIRES=[
   {name:"Sumerian City-States",     years:"2900–2350 BCE",color:"#a07840",start:-2900,end:-2350,poly:[[34,43],[34,48],[30,48],[30,43]]},
   {name:"Babylonian Empire",        years:"1895–539 BCE", color:"#c8a020",start:-1895,end:-539, poly:[[35,39],[35,49],[29,49],[29,39]]},
@@ -33,19 +147,21 @@ const MAP_EMPIRES=[
   {name:"Mughal Empire",            years:"1526–1857 CE", color:"#006858",start:1526, end:1857, poly:[[38,60],[38,96],[8,96],[8,60]]},
   {name:"Delhi Sultanate",          years:"1206–1526 CE", color:"#009898",start:1206, end:1526, poly:[[36,66],[36,92],[14,92],[14,66]]},
   {name:"Mali Empire",              years:"1235–1600 CE", color:"#904820",start:1235, end:1600, poly:[[20,-16],[20,6],[8,6],[8,-16]]},
-  {name:"Sokoto Caliphate",         years:"1804–1903 CE", color:"#8a4020",start:1804, end:1903, poly:[[16,-4],[16,16],[8,16],[8,-4]]},
+  {name:"Sokoto Caliphate",         years:"1804–1903 CE", color:"#8a4020",start:1804, end:1903, poly:[[16,-4],[16,16],[8,16],[8,-4]]}
 ];
 
 function _setMapHeight(){
   const c=document.getElementById('mapContainer');
   const lm=document.getElementById('leafletMap');
-  if(c&&lm) lm.style.height=c.offsetHeight+'px';
+  if(c) c.style.height='100%';
+  if(c&&lm){
+    lm.style.height = c.offsetHeight + 'px';
+    lm.style.width  = '100%';
+  }
   if(_lMap) _lMap.invalidateSize();
 }
 
 function _getMapFiltered(){
-  // Use same getFiltered() but also require lat+lng
-  // Year filter uses _mapYear, not activeYear (map has its own slider)
   return PEOPLE.filter(p=>{
     if(!p.lat||!p.lng) return false;
     if(selTypes.size>0){
@@ -66,7 +182,6 @@ function _getMapFiltered(){
       const dod=p.dod!==undefined&&p.dod!==null?p.dod:p.dob+60;
       if(p.dob>_mapYear||dod<_mapYear) return false;
     }
-    /* Saved figures filter */
     if(APP.filterFavsOnly && APP.Favorites){
       if(!APP.Favorites.has(p.famous)) return false;
     }
@@ -74,25 +189,18 @@ function _getMapFiltered(){
   });
 }
 
-// Shared helper: draw empire overlays on any Leaflet map for a given year
-// Returns the L.layerGroup so caller can track/remove it
-function _drawEmpiresOnMap(map, year, existingLayer, legendContainerId) {
-  if (!map) return null;
-  if (existingLayer) { map.removeLayer(existingLayer); }
-  if (year === null) { _removeEmpLegendFor(legendContainerId); return null; }
+function _drawEmpiresOnMap(map, year, existingLayer, legendContainerId){
+  if(!map) return null;
+  if(existingLayer){ map.removeLayer(existingLayer); }
+  if(year === null){ _removeEmpLegendFor(legendContainerId); return null; }
   var layer = L.layerGroup();
   var activeEmps = [];
-
-  MAP_EMPIRES.forEach(function(em) {
-    if (em.start > year || em.end < year) return;
-    var poly = L.polygon(em.poly, {
-      color: em.color, weight: 1.5, fillColor: em.color,
-      fillOpacity: 0.13, opacity: 0.55, dashArray: '5,4'
-    });
+  MAP_EMPIRES.forEach(function(em){
+    if(em.start > year || em.end < year) return;
+    var poly = L.polygon(em.poly, { color:em.color, weight:1.5, fillColor:em.color, fillOpacity:0.13, opacity:0.55, dashArray:'5,4' });
     layer.addLayer(poly);
     activeEmps.push({name:em.name, color:em.color});
   });
-
   layer.addTo(map);
   if(legendContainerId) _buildEmpLegendFor(legendContainerId, activeEmps);
   return layer;
@@ -139,10 +247,11 @@ const MAP_LEGEND=[
   {label:'Scholar / Jurist',  color:'#2ecc9b'},
   {label:'Ruler / Caliph',    color:'#e05040'},
   {label:'Scientist / Philosopher', color:'#38bdf8'},
-  {label:'Poet',              color:'#e07090'},
+  {label:'Poet',              color:'#e07090'}
 ];
 
-function _makeMarker(p, showLabel=false){
+function _makeMarker(p, showLabel){
+  if(typeof showLabel === 'undefined') showLabel = false;
   const col=_markerTypeColor(p);
   const hasFree=(p.books||[]).some(b=>b.url&&b.url.startsWith('http'));
   const name=p.famous.length>22?p.famous.slice(0,20)+'…':p.famous;
@@ -174,7 +283,6 @@ function _makeMarker(p, showLabel=false){
     iconSize: [160, 40],
     iconAnchor: [isTheProphet ? 80 : anchor, anchor]
   });
-  // Journey-aware pin: use FOLLOW data if available
   var _jLoc=null;
   if(window._getJourneyLocation&&p.slug&&_mapYear!=null){
     _jLoc=window._getJourneyLocation(p.slug,_mapYear);
@@ -182,10 +290,8 @@ function _makeMarker(p, showLabel=false){
   const _lat=_jLoc?_jLoc.lat:(p._renderLat!=null?p._renderLat:p.lat);
   const _lng=_jLoc?_jLoc.lng:(p._renderLng!=null?p._renderLng:p.lng);
   const m=L.marker([_lat,_lng],{icon, zIndexOffset: isTheProphet ? 9999 : 0});
-  // First hover: show small tooltip
   m.on('mouseover',e=>{
-    const el=m.getElement()||(e&&e.originalEvent&&e.originalEvent.target
-      ?e.originalEvent.target.closest('.map-marker-wrap'):null);
+    const el=m.getElement()||(e&&e.originalEvent&&e.originalEvent.target?e.originalEvent.target.closest('.map-marker-wrap'):null);
     if(el){
       const lbl=el.querySelector('.map-marker-label');
       const dot=el.querySelector('.map-marker-dot');
@@ -199,8 +305,7 @@ function _makeMarker(p, showLabel=false){
     if(!_mapTTPinned) _posMapTT(e.originalEvent.clientX, e.originalEvent.clientY);
   });
   m.on('mouseout',e=>{
-    const el=m.getElement()||(e&&e.originalEvent&&e.originalEvent.target
-      ?e.originalEvent.target.closest('.map-marker-wrap'):null);
+    const el=m.getElement()||(e&&e.originalEvent&&e.originalEvent.target?e.originalEvent.target.closest('.map-marker-wrap'):null);
     if(el){
       const lbl=el.querySelector('.map-marker-label');
       const dot=el.querySelector('.map-marker-dot');
@@ -209,21 +314,17 @@ function _makeMarker(p, showLabel=false){
     }
     if(!_mapTTPinned) _hideMapTT();
   });
-  // First click: pin tooltip; second click (already pinned on same person): open card
   m.on('click',e=>{
     e.originalEvent.stopPropagation();
     if(_mapTTPinnedPerson===p.famous && _mapTTPinned){
-      // Second click → open big card
-      showMapCardWithDetails(p, e.originalEvent.clientX, e.originalEvent.clientY);
+      _openMapCard(p, e.originalEvent.clientX, e.originalEvent.clientY);
     } else {
-      // First click → pin the tooltip
       _pinMapTT(p, e.originalEvent.clientX, e.originalEvent.clientY);
     }
   });
   return m;
 }
 
-// ── Map hover tooltip + click card (mirrors silsila system) ──
 let _mapTT=null, _mapTTPinned=false, _mapTTPinnedPerson=null;
 
 function _ensureMapTT(){
@@ -239,7 +340,7 @@ function _ensureMapTT(){
 function _mapTTContent(p, pinned){
   const col=_markerTypeColor(p);
   const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-  const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
+  const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
   const nT=(p.teachers||[]).length, nS=(PEOPLE.filter(s=>s.teachers?.includes(p.famous))).length;
   const hint=pinned?`<span style="font-size:var(--fs-3);opacity:.5;margin-left:5px">→ CLICK AGAIN FOR FULL INFO</span>`:'';
   return `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px">${esc(p.famous)}${hint}</div>`+
@@ -273,23 +374,9 @@ function _pinMapTT(p, x, y){
   _mapTT.style.display='block';
   _posMapTT(x, y);
 }
-function _hideMapTT(){
-  if(_mapTT){ _mapTT.style.display='none'; }
-}
-function _unpinMapTT(){
-  _mapTTPinned=false; _mapTTPinnedPerson=null;
-  _hideMapTT();
-}
+function _hideMapTT(){ if(_mapTT){ _mapTT.style.display='none'; } }
+function _unpinMapTT(){ _mapTTPinned=false; _mapTTPinnedPerson=null; _hideMapTT(); }
 
-// Close map tooltip when clicking outside markers
-document.addEventListener('click',e=>{
-  if(_mapTTPinned && !e.target.closest('#map-tt') && !e.target.closest('.leaflet-marker-icon')){
-    _unpinMapTT();
-    _closeMapCard();
-  }
-});
-
-// ── Map detail card ──────────────────────────────────────────
 let _mapCardEl=null;
 
 function _ensureMapCard(){
@@ -306,20 +393,46 @@ function _ensureMapCard(){
     'opacity:0;transform:scale(.97) translateY(4px);transition:opacity .15s,transform .15s;';
   _mapCardEl.innerHTML=
     `<div id="mcHdr" style="padding:14px 16px 11px;border-bottom:1px solid var(--ip-brd);background:var(--ip-surf);flex-shrink:0;position:relative">
-      <button id="mcClose" style="position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);font-size:var(--fs-2);cursor:pointer;line-height:1" onclick="_closeMapCard()">✕</button>
+      <button id="mcClose" style="position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);font-size:var(--fs-2);cursor:pointer;line-height:1">✕</button>
       <div id="mcName" style="font-family:'Cinzel',serif;font-size:var(--fs-2);font-weight:700;line-height:1.2;padding-right:22px"></div>
       <div id="mcSub" style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;margin-top:3px;line-height:1.45"></div>
     </div>
     <div id="mcScroll" style="flex:1;overflow-y:auto;padding:14px 16px 18px">
       <div id="mcBody"></div>
-      <button id="mcTimelineBtn" style="display:flex;align-items:center;justify-content:center;gap:5px;width:100%;margin-top:12px;padding:6px 14px;border-radius:3px;cursor:pointer;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.3);color:var(--accent);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em;transition:background .12s,border-color .12s" onmouseenter="this.style.background='rgba(212,175,55,.14)'" onmouseleave="this.style.background='rgba(212,175,55,.07)'">
+      <button id="mcTimelineBtn" style="display:flex;align-items:center;justify-content:center;gap:5px;width:100%;margin-top:12px;padding:6px 14px;border-radius:3px;cursor:pointer;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.3);color:var(--accent);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em;transition:background .12s,border-color .12s">
         ↗ OPEN IN TIMELINE
       </button>
     </div>`;
   document.body.appendChild(_mapCardEl);
-  // Scrollbar style
+  // Wire close button (the inline onclick="_closeMapCard()" was bv-app's global; use a real handler).
+  _mapCardEl.querySelector('#mcClose').addEventListener('click', _closeMapCard);
   const sc=_mapCardEl.querySelector('#mcScroll');
   sc.style.cssText+=';scrollbar-width:thin;';
+}
+
+var _mapTafsirByPlace = null;
+var _mapTafsirLoading = false;
+function _ensureMapTafsirXref(){
+  if(_mapTafsirByPlace || _mapTafsirLoading) return;
+  _mapTafsirLoading = true;
+  fetch(dataUrl('data/islamic/xref/tafsir_xref_places.json'))
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(j){
+      _mapTafsirByPlace = j || {};
+      _mapTafsirLoading = false;
+      console.log('[MAP] tafsir xref places: loaded', Object.keys(_mapTafsirByPlace).length, 'places');
+    })
+    .catch(function(e){ _mapTafsirLoading = false; console.warn('[MAP] tafsir xref load failed', e); });
+}
+function _mapTafsirEntriesForPlace(name){
+  if(!_mapTafsirByPlace || !name) return [];
+  if(_mapTafsirByPlace[name]) return _mapTafsirByPlace[name];
+  var lc = String(name).toLowerCase();
+  var keys = Object.keys(_mapTafsirByPlace);
+  for(var i=0;i<keys.length;i++){
+    if(keys[i].toLowerCase() === lc) return _mapTafsirByPlace[keys[i]];
+  }
+  return [];
 }
 
 function _openMapCard(p, cx, cy){
@@ -331,8 +444,8 @@ function _openMapCard(p, cx, cy){
 
   const _rDob=(p.dob_academic!=null)?p.dob_academic:null;
   const _rDod=(p.dod_academic!=null)?p.dod_academic:null;
-  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'\u2014');
-  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'\u2014');
+  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'—');
+  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'—');
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
 
   let html=`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
@@ -351,32 +464,58 @@ function _openMapCard(p, cx, cy){
     const known=p.teachers.filter(t=>PEOPLE.find(pp=>pp.famous===t));
     if(known.length){
       html+=`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">TEACHERS<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px">${known.map(t=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:var(--fs-3);color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${t.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">⟵ ${esc(t)}</span>`).join('')}</div>`;
+      <div style="display:flex;flex-wrap:wrap;gap:5px">${known.map(t=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:var(--fs-3);color:var(--ip-text);cursor:pointer" onclick="window.jumpTo('${t.replace(/'/g,"\\'")}');">⟵ ${esc(t)}</span>`).join('')}</div>`;
     }
   }
   if(studentsOf.length){
     html+=`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">STUDENTS (${studentsOf.length})<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>
-    <div style="display:flex;flex-wrap:wrap;gap:5px">${studentsOf.map(s=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:var(--fs-3);color:var(--ip-text);cursor:pointer;transition:border-color .12s,color .12s" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}');_closeMapCard();" onmouseenter="this.style.borderColor='rgba(212,175,55,.5)';this.style.color='var(--ip-acc)'" onmouseleave="this.style.borderColor='var(--ip-brd)';this.style.color='var(--ip-text)'">▶ ${esc(s.famous)}</span>`).join('')}</div>`;
+    <div style="display:flex;flex-wrap:wrap;gap:5px">${studentsOf.map(s=>`<span style="padding:3px 9px;background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;font-size:var(--fs-3);color:var(--ip-text);cursor:pointer" onclick="window.jumpTo('${s.famous.replace(/'/g,"\\'")}');">▶ ${esc(s.famous)}</span>`).join('')}</div>`;
   }
   if(p.books?.length){
     const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
     html+=`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:6px;margin:12px 0 7px">WORKS & SOURCES<span style="flex:1;height:1px;background:var(--ip-brd);display:inline-block"></span></div>`;
     sortedBooks.forEach(b=>{
       html+=`<div style="margin-bottom:7px;font-size:var(--fs-3);color:var(--ip-text)">`+
-        (b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`)+
+        (b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`)+
         (b.magnum?` <span style="color:var(--accent);font-size:var(--fs-3)">✦</span>`:'')+
         (b.note?`<div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;margin-top:1px">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:'')+
         `</div>`;
     });
   }
-
   if(window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en){
     html+=`<a class="map-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Wikipedia ↗</a>`;
   }
 
+  if(p.city){
+    var _mtEntries = _mapTafsirEntriesForPlace(p.city);
+    if(_mtEntries.length){
+      html += '<div style="margin:10px 0 4px"><span class="map-tafsir-chip" data-place="'+esc(p.city).replace(/"/g,'&quot;')+'" style="display:inline-block;padding:3px 10px;background:rgba(192,132,252,0.10);border:1px solid rgba(192,132,252,0.45);border-radius:2px;color:#c084fc;font-size:var(--fs-3);cursor:pointer;font-family:\'Cinzel\',serif;letter-spacing:.06em">'
+        + _mtEntries.length + ' tafsir mention' + (_mtEntries.length===1?'':'s') + ' of ' + esc(p.city)
+        + '</span></div>';
+    }
+  }
   document.getElementById('mcBody').innerHTML=html;
   document.getElementById('mcScroll').scrollTop=0;
-  document.getElementById('mcTimelineBtn').onclick=()=>{ _closeMapCard(); _unpinMapTT(); focusPersonInTimeline(p.famous); };
+  document.getElementById('mcTimelineBtn').onclick=()=>{ _closeMapCard(); _unpinMapTT(); window.focusPersonInTimeline(p.famous); };
+  var _mtChip = document.querySelector('#mcBody .map-tafsir-chip');
+  if(_mtChip){
+    _mtChip.onclick = function(e){
+      e.stopPropagation();
+      var place = _mtChip.getAttribute('data-place') || '';
+      var entries = _mapTafsirEntriesForPlace(place);
+      if(!entries.length) return;
+      _closeMapCard();
+      window._stPendingPinnedTafsir = { entries: entries.slice(), label: place };
+      var candidates = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="explain"], .tab-explain');
+      for(var i=0;i<candidates.length;i++){
+        var el = candidates[i];
+        var txt = (el.textContent||'').trim().toUpperCase();
+        var dv = el.getAttribute('data-view')||'';
+        if(txt === 'EXPLAIN' || dv === 'explain'){ el.click(); return; }
+      }
+      if(typeof setView==='function') setView('explain');
+    };
+  }
 
   _mapCardEl.style.display='flex';
   requestAnimationFrame(()=>{
@@ -399,46 +538,247 @@ function _closeMapCard(){
   _mapCardEl.style.transform='scale(.97) translateY(4px)';
   setTimeout(()=>{ if(_mapCardEl) _mapCardEl.style.display='none'; },160);
 }
+window._closeMapCard = _closeMapCard;
 
-// Close map card on outside click
-document.addEventListener('click',e=>{
-  if(!_mapCardEl||_mapCardEl.style.display==='none') return;
-  if(!_mapCardEl.contains(e.target)&&!e.target.closest('.leaflet-marker-icon')) _closeMapCard();
-});
+// Label-spread state. Replaces the prior cluster-with-number-badge system.
+var _mapLabelOverlay = null;        // <div> over the map containing chips + SVG
+var _mapLabelChips   = [];          // [{p, x, y, w, h, dotX, dotY}, ...]
+var _mapLabelHoverEl = null;        // temp chip rendered on dot hover
+var _mapMoveDebounce = null;
+var _MAP_LABEL_MAX   = 30;          // top-N labelled by importance per viewport
+
+function _figRank(p){
+  if(p && p.famous === 'Prophet Muhammad') return 0;
+  var t = (p && p.type) || '';
+  if(t === 'Prophet')   return 1;
+  if(t === 'Genealogy') return 2;
+  if(t === 'Founder')   return 3;
+  if(t === 'Companion') return 4;
+  if(t === 'Scholar')   return 5;
+  return 9;
+}
+
+function _ensureLabelOverlay(){
+  var mapEl = document.getElementById('leafletMap');
+  if(!mapEl) return null;
+  if(_mapLabelOverlay && _mapLabelOverlay.parentNode === mapEl) return _mapLabelOverlay;
+  var ov = document.createElement('div');
+  ov.className = 'map-label-spread';
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('class', 'map-label-svg');
+  ov.appendChild(svg);
+  mapEl.appendChild(ov);
+  _mapLabelOverlay = ov;
+  return ov;
+}
+
+function _clearLabelOverlay(){
+  if(!_mapLabelOverlay) return;
+  // Keep the overlay element; clear its contents.
+  var keepSvg = _mapLabelOverlay.querySelector('svg');
+  _mapLabelOverlay.innerHTML = '';
+  if(keepSvg){
+    while(keepSvg.firstChild) keepSvg.removeChild(keepSvg.firstChild);
+    _mapLabelOverlay.appendChild(keepSvg);
+  }
+}
+
+function _placeMapLabels(){
+  if(!_lMap) return;
+  var mapEl = document.getElementById('leafletMap');
+  if(!mapEl) return;
+  var ov = _ensureLabelOverlay();
+  if(!ov) return;
+  _clearLabelOverlay();
+  _mapLabelChips = [];
+
+  var rect = mapEl.getBoundingClientRect();
+  var W = rect.width, H = rect.height;
+  if(W < 50 || H < 50) return;
+
+  var pts = _getMapFiltered();
+  // Filter to in-viewport, project to screen.
+  var bounds = _lMap.getBounds();
+  var dots = [];
+  pts.forEach(function(p){
+    if(p.lat < bounds.getSouth() || p.lat > bounds.getNorth()) return;
+    if(p.lng < bounds.getWest()  || p.lng > bounds.getEast())  return;
+    var pt;
+    try { pt = _lMap.latLngToContainerPoint([p.lat, p.lng]); } catch(e){ return; }
+    if(pt.x < -20 || pt.x > W + 20 || pt.y < -20 || pt.y > H + 20) return;
+    dots.push({p:p, dotX:pt.x, dotY:pt.y});
+  });
+
+  // Pick top-N by importance for labelling.
+  var ranked = dots.slice().sort(function(a,b){
+    var d = _figRank(a.p) - _figRank(b.p);
+    return d !== 0 ? d : (a.p.famous||'').localeCompare(b.p.famous||'');
+  });
+  var labelled = ranked.slice(0, _MAP_LABEL_MAX);
+
+  // Build initial chip rectangles. Pick a starting offset that points
+  // toward the empty side of the map relative to the dot.
+  var chips = [];
+  labelled.forEach(function(d){
+    var name = d.p.famous || '';
+    var w = Math.min(160, Math.max(48, 7 * Math.min(name.length, 22) + 16));
+    var h = 22;
+    // Initial offset: 30px outward along whichever axis has more space.
+    var rightSpace = W - d.dotX, leftSpace = d.dotX;
+    var aboveSpace = d.dotY,    belowSpace = H - d.dotY;
+    var offX, offY;
+    if(rightSpace >= leftSpace) offX = 30;
+    else                        offX = -30 - w;
+    if(belowSpace >= aboveSpace) offY = 18;
+    else                         offY = -18 - h;
+    var x = d.dotX + offX;
+    var y = d.dotY + offY;
+    // Clamp into viewport with 4px padding.
+    x = Math.max(4, Math.min(W - w - 4, x));
+    y = Math.max(4, Math.min(H - h - 4, y));
+    chips.push({p:d.p, name:name, dotX:d.dotX, dotY:d.dotY, x:x, y:y, w:w, h:h, rank:_figRank(d.p)});
+  });
+
+  // Iterative resolver — push lower-rank chips out of overlaps.
+  var ITERS = 50;
+  for(var k = 0; k < ITERS; k++){
+    var moved = false;
+    for(var i = 0; i < chips.length; i++){
+      var a = chips[i];
+      var dx = 0, dy = 0;
+      for(var j = 0; j < chips.length; j++){
+        if(i === j) continue;
+        var b = chips[j];
+        var ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
+        var oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+        if(ox > 0 && oy > 0){
+          // Lower rank yields more (higher rank value = lower importance).
+          var weight = (a.rank > b.rank) ? 1.0 : (a.rank < b.rank ? 0.0 : 0.5);
+          if(weight === 0) continue;
+          if(ox < oy){
+            dx += (a.x + a.w/2 < b.x + b.w/2 ? -1 : 1) * ox * weight * 1.05;
+          } else {
+            dy += (a.y + a.h/2 < b.y + b.h/2 ? -1 : 1) * oy * weight * 1.05;
+          }
+          moved = true;
+        }
+      }
+      // Repulse from any nearby dot (avoid sitting on a different figure's dot).
+      for(var d2 = 0; d2 < dots.length; d2++){
+        var dt = dots[d2];
+        if(dt.dotX >= a.x - 3 && dt.dotX <= a.x + a.w + 3 &&
+           dt.dotY >= a.y - 3 && dt.dotY <= a.y + a.h + 3){
+          // Skip pushing away from own dot.
+          if(Math.abs(dt.dotX - a.dotX) < 0.5 && Math.abs(dt.dotY - a.dotY) < 0.5) continue;
+          dy -= (a.h/2 + 4);
+          moved = true;
+        }
+      }
+      if(dx !== 0 || dy !== 0){
+        a.x += dx; a.y += dy;
+        a.x = Math.max(4, Math.min(W - a.w - 4, a.x));
+        a.y = Math.max(4, Math.min(H - a.h - 4, a.y));
+      }
+    }
+    if(!moved) break;
+  }
+
+  _mapLabelChips = chips;
+
+  // Render SVG leader lines + chip elements.
+  var svg = ov.querySelector('svg');
+  if(svg){
+    svg.setAttribute('width', W);
+    svg.setAttribute('height', H);
+    svg.style.width  = W + 'px';
+    svg.style.height = H + 'px';
+  }
+  var svgNS = 'http://www.w3.org/2000/svg';
+  chips.forEach(function(c){
+    // Leader line from chip's nearest edge midpoint to dot.
+    var cx = c.x + c.w/2, cy = c.y + c.h/2;
+    var endX, endY;
+    if(c.dotX < c.x)              { endX = c.x;          endY = cy; }
+    else if(c.dotX > c.x + c.w)   { endX = c.x + c.w;    endY = cy; }
+    else if(c.dotY < c.y)         { endX = cx;           endY = c.y; }
+    else                          { endX = cx;           endY = c.y + c.h; }
+    if(svg){
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttribute('x1', c.dotX); line.setAttribute('y1', c.dotY);
+      line.setAttribute('x2', endX);   line.setAttribute('y2', endY);
+      line.setAttribute('stroke', 'rgba(212,175,55,0.55)');
+      line.setAttribute('stroke-width', '1');
+      svg.appendChild(line);
+    }
+    var chip = document.createElement('div');
+    chip.className = 'map-label-chip';
+    chip.textContent = c.name;
+    chip.title = c.name;
+    chip.style.left = c.x + 'px';
+    chip.style.top  = c.y + 'px';
+    chip.style.width = c.w + 'px';
+    (function(p){
+      chip.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(typeof _showMapHoverTT === 'function'){
+          var r = mapEl.getBoundingClientRect();
+          _showMapHoverTT(p, r.left + (c.dotX), r.top + (c.dotY));
+        }
+      });
+    })(c.p);
+    ov.appendChild(chip);
+  });
+}
+
+function _showHoverChip(p, dotX, dotY){
+  if(_mapLabelHoverEl){ _mapLabelHoverEl.remove(); _mapLabelHoverEl = null; }
+  // Skip if this figure is already labelled.
+  for(var i = 0; i < _mapLabelChips.length; i++){
+    if(_mapLabelChips[i].p === p) return;
+  }
+  var ov = _ensureLabelOverlay();
+  if(!ov) return;
+  var chip = document.createElement('div');
+  chip.className = 'map-label-chip is-hover-temp';
+  chip.textContent = p.famous || '';
+  chip.style.left = (dotX + 14) + 'px';
+  chip.style.top  = (dotY - 24) + 'px';
+  ov.appendChild(chip);
+  _mapLabelHoverEl = chip;
+}
+function _hideHoverChip(){
+  if(_mapLabelHoverEl){ _mapLabelHoverEl.remove(); _mapLabelHoverEl = null; }
+}
 
 function _renderMarkers(){
   if(!_lMap) return;
   if(_mrkLayer){_lMap.removeLayer(_mrkLayer);_mrkLayer=null;}
-  const pts=_getMapFiltered();
-  // Spread figures that share the same coordinates
-  const _coordGroups={};
-  pts.forEach(p=>{
-    const key=p.lat.toFixed(2)+','+p.lng.toFixed(2);
-    if(!_coordGroups[key]) _coordGroups[key]=[];
-    _coordGroups[key].push(p.famous);
+  _hideHoverChip();
+
+  const pts = _getMapFiltered();
+  // Render each figure as a dot-only marker (no in-icon label).
+  // The label-spread overlay handles names separately.
+  var layers = pts.map(function(p){
+    var m = _makeMarker(p, false);
+    m.on('mouseover', function(e){
+      try {
+        var pt = _lMap.latLngToContainerPoint([p.lat, p.lng]);
+        _showHoverChip(p, pt.x, pt.y);
+      } catch(err){}
+    });
+    m.on('mouseout', function(){ _hideHoverChip(); });
+    return m;
   });
-  pts.forEach(p=>{
-    const key=p.lat.toFixed(2)+','+p.lng.toFixed(2);
-    const grp=_coordGroups[key];
-    const idx=grp.indexOf(p.famous);
-    if(grp.length>1){
-      const ang=(idx/grp.length)*2*Math.PI;
-      const r=0.18;
-      p._renderLat=p.lat+Math.cos(ang)*r;
-      p._renderLng=p.lng+Math.sin(ang)*r;
-    } else {
-      p._renderLat=p.lat;
-      p._renderLng=p.lng;
-    }
-  });
-  const _showLbls=_mapYear!==null;
-  _mrkLayer=L.layerGroup(pts.map(p=>_makeMarker(p,_showLbls))).addTo(_lMap);
+  _mrkLayer = L.layerGroup(layers).addTo(_lMap);
   _updateArrows();
+  _placeMapLabels();
 }
 
 function _updateArrows(){
   if(!_lMap) return;
   const mapEl=document.getElementById('leafletMap');
+  if(!mapEl) return;
   mapEl.querySelectorAll('.map-arrow').forEach(e=>e.remove());
   const bounds=_lMap.getBounds();
   const all=_getMapFiltered();
@@ -506,12 +846,13 @@ function toggleMapLegend(){
   if(!body) return;
   _initMapLegend();
   const open=body.classList.toggle('open');
-  label.textContent=open?'CLOSE':'LEGEND';
+  if(label) label.textContent=open?'CLOSE':'LEGEND';
 }
+window.toggleMapLegend = toggleMapLegend;
 
 function _loadGeoEmpires(cb){
   if(_geoEmpData){cb();return;}
-  fetch('data/islamic/empire_overlays.json?v='+Date.now())
+  fetch(dataUrl('data/islamic/empire_overlays.json'))
     .then(function(r){return r.json();})
     .then(function(j){
       _geoEmpData=j||{};
@@ -557,10 +898,8 @@ function _buildEmpLegend(items){
     return '<div style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:16px;border-radius:2px;background:'+it.color+';flex-shrink:0;opacity:0.9"></span><span style="font-family:Cinzel,serif;font-size:var(--fs-3);color:#ccc;letter-spacing:.04em;white-space:nowrap">'+it.name+'</span></div>';
   }).join('');
 }
-function _removeEmpLegend(){
-  var el=document.getElementById('empOverlayLegend');
-  if(el)el.remove();
-}
+function _removeEmpLegend(){ var el=document.getElementById('empOverlayLegend'); if(el)el.remove(); }
+
 function _buildEmpLegendFor(containerId, items){
   var legId='empLeg-'+containerId;
   var colored=items.filter(function(it){
@@ -592,7 +931,6 @@ window._removeEmpLegendFor=_removeEmpLegendFor;
 function _buildEmpireToggle(){
   var toolbar=document.getElementById('mapToolbar');
   if(!toolbar||document.getElementById('geoEmpToggle')) return;
-  // Tooltip CSS
   if(!document.getElementById('geoEmpTtStyles')){
     var st=document.createElement('style');st.id='geoEmpTtStyles';
     st.textContent=".geo-emp-tt{background:rgba(0,0,0,0.85) !important;border:1px solid #D4AF37 !important;color:#fff !important;font-family:'Cinzel',serif !important;font-size:var(--fs-3) !important;font-weight:700 !important;letter-spacing:.06em !important;padding:5px 12px !important;border-radius:4px !important;box-shadow:0 0 10px rgba(0,0,0,.6) !important;white-space:nowrap !important}.geo-emp-tt::before{display:none !important}";
@@ -609,20 +947,16 @@ function _buildEmpireToggle(){
     btn.style.background=on?'rgba(212,175,55,0.15)':'transparent';
     btn.style.borderColor=on?'#D4AF37':'#555';
     btn.style.color=on?'#D4AF37':'#888';
-    btn.textContent=on?'Empires \u2715':'Empires';
+    btn.textContent=on?'Empires ✕':'Empires';
   }
   btn.addEventListener('click',function(e){
     e.stopPropagation();
     if(!_geoEmpOn){
       if(!_geoEmpData){
-        btn.textContent='Loading\u2026';btn.style.color='#D4AF37';btn.style.borderColor='#D4AF37';
-        _loadGeoEmpires(function(){
-          _setActive(true);
-          _drawEmpires();
-        });
+        btn.textContent='Loading…';btn.style.color='#D4AF37';btn.style.borderColor='#D4AF37';
+        _loadGeoEmpires(function(){ _setActive(true); _drawEmpires(); });
       } else {
-        _setActive(true);
-        _drawEmpires();
+        _setActive(true); _drawEmpires();
       }
     } else {
       _setActive(false);
@@ -636,8 +970,6 @@ function _buildEmpireToggle(){
 }
 
 function renderMap(){
-  var _mfb=document.getElementById('map-favFilterBtn');if(_mfb)_mfb.style.display='none';
-  if(!document.getElementById('map-how-btn')){var _mt=document.getElementById('mapToolbar');if(_mt){var _mhb=document.createElement('button');_mhb.id='map-how-btn';_mhb.textContent='How This Works';_mhb.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";_mhb.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_mhb.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_mhb.onclick=function(e){e.stopPropagation();_showMapMethodology();};_mt.prepend(_mhb);}}
   if(typeof L==='undefined'){
     const scr=document.createElement('script');
     scr.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
@@ -649,8 +981,8 @@ function renderMap(){
       document.head.appendChild(s2);
     };
     document.head.appendChild(scr);
-    document.getElementById('leafletMap').innerHTML=
-      '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-family:Cinzel,serif;font-size:var(--fs-3);color:#A0AEC0;letter-spacing:.1em">LOADING MAP…</div>';
+    var lf = document.getElementById('leafletMap');
+    if(lf) lf.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;font-family:Cinzel,serif;font-size:var(--fs-3);color:#A0AEC0;letter-spacing:.1em">LOADING MAP…</div>';
     return;
   }
   _doRenderMap();
@@ -663,37 +995,40 @@ function _doRenderMap(){
       center:[30,45],zoom:3,zoomControl:true,minZoom:2,maxZoom:10,
       maxBounds:[[-85,-180],[85,180]],maxBoundsViscosity:1.0
     });
-
-    // 1) Base — no labels
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png',{
       subdomains:'abcd',
       attribution:'© <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom:19
     }).addTo(_lMap);
-
-    // 2) Country borders (subtle)
     fetch('https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson')
       .then(r=>r.json())
       .then(geo=>{
         if(!_lMap) return;
         L.geoJSON(geo,{style:{color:'#7a8a72',weight:0.8,fillOpacity:0,opacity:0.8}}).addTo(_lMap);
       }).catch(()=>{});
-
-    // 3) Empire overlays drawn by _drawEmpires()
-
-    // 4) Country name labels tile — MUST be added LAST so labels float above empires
     _labTile=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',{
       subdomains:'abcd',maxZoom:19,opacity:1
     });
-    // Added inside _drawEmpires() to guarantee z-order
-
-    _lMap.on('moveend zoomend',_updateArrows);
+    _lMap.on('moveend zoomend', _updateArrows);
+    // Zoom triggers a full re-render (markers + label spread).
+    _lMap.on('zoomend', function(){ try { _renderMarkers(); } catch(e){} });
+    // Pan reflows labels only — debounced so dragging stays smooth.
+    _lMap.on('moveend', function(){
+      if(_mapMoveDebounce) clearTimeout(_mapMoveDebounce);
+      _mapMoveDebounce = setTimeout(function(){
+        try { _placeMapLabels(); } catch(e){}
+      }, 200);
+    });
+    // Hide hover chip / clear leader lines during interactive drag.
+    _lMap.on('movestart zoomstart', function(){
+      _hideHoverChip();
+      if(_mapLabelOverlay){ _clearLabelOverlay(); }
+    });
   }
 
   if(_geoEmpOn && _geoEmpData) _drawEmpires();
   _renderMarkers();
 
-  // Fit to markers on first load
   const pts=_getMapFiltered();
   if(pts.length>0&&!_lMap._hasFit){
     _lMap._hasFit=true;
@@ -701,42 +1036,25 @@ function _doRenderMap(){
   }
   setTimeout(()=>{if(_lMap)_lMap.invalidateSize();},300);
 
-  // Mount AnimControls pill (once)
-  if(!_mapAnimCtl){
-    // Hide old controls
-    var oldGroup=document.querySelector('.map-anim-group');
-    if(oldGroup) oldGroup.style.display='none';
-    var toolbar=document.getElementById('mapToolbar');
-    if(toolbar&&window.AnimControls){
-      var mount=document.createElement('div');
-      mount.id='map-anim-mount';
-      mount.style.cssText='display:flex;align-items:center;margin-left:8px';
-      toolbar.appendChild(mount);
-      _mapAnimCtl=window.AnimControls.create({
-        mountEl:mount, idPrefix:'map', initialSpeed:'1x',
-        onPlay:_mapAnimPlay, onPause:_mapAnimPause, onStop:_mapAnimStop,
-        onSpeedChange:function(ms){ _mapAnimSpeedMs=ms; }
-      });
-    }
-  }
-  if(!document.getElementById('geoEmpToggle')){ _buildEmpireToggle(); }
+  var oldGroup=document.querySelector('.map-anim-group');
+  if(oldGroup) oldGroup.style.display='none';
+  var oldEmp=document.getElementById('geoEmpToggle');
+  if(oldEmp) oldEmp.style.display='none';
 }
 
-// ═══════════════════════════════════════════════════════════
-// MAP ANIMATE
-// ═══════════════════════════════════════════════════════════
-let _mapAnimTimer=null, _mapAnimMode='stopped', _mapAnimYr=500, _mapAnimSpeedMs=1200, _mapAnimCtl=null;
+// Per-year tick interval (ms). Spec: 0.5x→200, 1x→100, 2x→50, 4x→25.
+let _mapAnimTimer=null, _mapAnimMode='stopped', _mapAnimYr=500, _mapAnimSpeedMs=100, _mapAnimCtl=null;
 
 function _mapAnimPlay(){
-  if(typeof _setSliderYear!=='function') return;
+  if(typeof window._setSliderYear!=='function') return;
   if(_mapAnimMode==='stopped'){
-    let yr=activeYear||500;
-    if(yr>=2000) yr=500;
-    _mapAnimYr=yr;
+    // Spec: start year = 500 (fixed) on fresh play. Resume from current year on pause.
+    _mapAnimYr=500;
   }
   _mapAnimMode='playing';
-  _mapAnimSpeedMs=_mapAnimCtl?_mapAnimCtl.getSpeedMs():1200;
-  _mapAnimNextStep();
+  // Push the starting year to the slider immediately so the thumb jumps left.
+  if(typeof window._setSliderYear === 'function') window._setSliderYear(_mapAnimYr);
+  _mapAnimTimer=setTimeout(_mapAnimNextStep,_mapAnimSpeedMs);
 }
 
 function _mapAnimPause(){
@@ -746,9 +1064,9 @@ function _mapAnimPause(){
 
 function _mapAnimNextStep(){
   if(_mapAnimMode!=='playing') return;
+  _mapAnimYr+=1;
   if(_mapAnimYr>2000){_mapAnimStop();return;}
-  _setSliderYear(_mapAnimYr);
-  _mapAnimYr+=10;
+  if(typeof window._setSliderYear === 'function') window._setSliderYear(_mapAnimYr);
   _mapAnimTimer=setTimeout(_mapAnimNextStep,_mapAnimSpeedMs);
 }
 
@@ -756,13 +1074,351 @@ function _mapAnimStop(){
   _mapAnimMode='stopped';
   if(_mapAnimTimer){clearTimeout(_mapAnimTimer);_mapAnimTimer=null;}
   _mapAnimYr=500;
+  if(typeof window._setSliderYear === 'function') window._setSliderYear(500);
+  // Spec: animation stop → return slider to inactive silver state.
+  // Also flip the year-clear button + display back to default.
+  try {
+    var st = document.getElementById('sliderTrack');
+    if(st) st.classList.add('sl-inactive');
+    var ycb = document.getElementById('yearClearBtn');
+    if(ycb) ycb.classList.remove('active');
+    var yd = document.getElementById('yearDisplay');
+    if(yd) yd.innerHTML = '&mdash;';
+  } catch(e){}
   if(_mapAnimCtl) _mapAnimCtl.forceStop();
 }
 
-window._captureState_map=function(){return{year:typeof activeYear!=='undefined'?activeYear:null};};
-window._restoreState_map=function(s){
-  if(s&&s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
-};
+  // ═══════════════════════════════════════════════════════════
+  // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+  // ═══════════════════════════════════════════════════════════
+
+  // Lazy-load Leaflet CSS once.
+  function _ensureLeafletCSS(){
+    if(document.querySelector('link[data-map-leaflet]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+    link.setAttribute('data-map-leaflet','1');
+    document.head.appendChild(link);
+  }
+
+  // Document-level click handlers (mirroring bv-app behavior). Stored on window
+  // so we can detach in unmount() and avoid leaking handlers across re-mounts.
+  function _bindOutsideClickHandlers(){
+    if(window._mapOutsideClickBound) return;
+    window._mapOutsideClickBound = true;
+    window._mapOutsideClickHandler = function(e){
+      // Close pinned tooltip on outside click.
+      if(_mapTTPinned && !e.target.closest('#map-tt') && !e.target.closest('.leaflet-marker-icon')){
+        _unpinMapTT();
+        _closeMapCard();
+      }
+      // Close detail card on outside click.
+      if(_mapCardEl && _mapCardEl.style.display !== 'none'
+        && !_mapCardEl.contains(e.target) && !e.target.closest('.leaflet-marker-icon')){
+        _closeMapCard();
+      }
+    };
+    document.addEventListener('click', window._mapOutsideClickHandler);
+  }
+
+  // Wire shell's Zone B controls — MAP spec:
+  // { search:true, filters:[Type, Tradition], actions:[Recenter pill], htw:true }
+  function _wireZoneB(zoneBEl){
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = 'Search figures…';
+      searchInp.addEventListener('input', function(){
+        window.searchQ = searchInp.value || '';
+        _renderMarkers();
+      });
+    }
+
+    if(!zoneBEl) return;
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(!row2) return;
+    var selects = row2.querySelectorAll('.zb-select');
+    var pills   = row2.querySelectorAll('.zb-pill');
+
+    // Type / Tradition — sandbox shim: no in-view picker exists for MAP standalone,
+    // so click is parked. Visual zb-active toggle still fires via shell.bindActiveToggle.
+    // The filter sets are populated by SILSILA when that view runs; clicking those
+    // filters there will reflect in MAP via window.selTypes/selTrads on next render.
+    void selects; // intentional: parked
+
+    // Recenter pill — fit map to filtered points.
+    if(pills[0]){
+      pills[0].addEventListener('click', function(){
+        if(!_lMap) return;
+        var pts = _getMapFiltered().map(function(p){ return [p.lat, p.lng]; });
+        if(pts.length){
+          try { _lMap.fitBounds(L.latLngBounds(pts).pad(0.1), { animate:true }); } catch(e){}
+        } else {
+          try { _lMap.setView([30,45], 3, { animate:true }); } catch(e){}
+        }
+      });
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function _injectScaffold(zoneCEl){
+    zoneCEl.innerHTML =
+      '<div id="mapView" class="active">' +
+        '<div id="mapToolbar"></div>' +
+        '<div id="mapContainer">' +
+          '<div id="leafletMap"></div>' +
+          '<div class="map-legend">' +
+            '<button id="mapLegendToggle" onclick="window.toggleMapLegend()"><span id="mapLegendLabel">LEGEND</span></button>' +
+            '<div id="mapLegendBody"><div id="mapLegendItems"></div></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('mp-mounted');
+    _ensureLeafletCSS();
+    _injectScaffold(zoneCEl);
+
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ window.PEOPLE = arr || []; return arr; });
+
+    Promise.all([p1]).then(function(){
+      PEOPLE = window.PEOPLE || [];
+      _bindOutsideClickHandlers();
+      renderMap();
+      _wireZoneB(zoneBEl);
+    });
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('mp-mounted');
+
+    try { _mapAnimStop(); } catch(e) {}
+    _unpinMapTT();
+    _closeMapCard();
+
+    if(window._mapOutsideClickBound && window._mapOutsideClickHandler){
+      document.removeEventListener('click', window._mapOutsideClickHandler);
+      window._mapOutsideClickBound = false;
+      window._mapOutsideClickHandler = null;
+    }
+
+    // Tear down Leaflet so re-mount creates a fresh instance.
+    if(_lMap){
+      try { _lMap.remove(); } catch(e) {}
+      _lMap = null;
+    }
+    _empLayer = null; _mrkLayer = null; _labTile = null;
+    _geoEmpLayer = null; _geoEmpOn = false;
+    _mapAnimCtl = null;
+
+    // Drop floating UI added to document.body.
+    if(_mapTT && _mapTT.parentNode){ _mapTT.parentNode.removeChild(_mapTT); _mapTT = null; }
+    if(_mapCardEl && _mapCardEl.parentNode){ _mapCardEl.parentNode.removeChild(_mapCardEl); _mapCardEl = null; }
+    var ov = document.getElementById('map-method-overlay'); if(ov) ov.remove();
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+// ═══════════════════════════════════════════════════════════
+// SANDBOX SHELL WIRING
+// ═══════════════════════════════════════════════════════════
+function _mapWireZoneB(zoneBEl){
+  if(!zoneBEl) return;
+  var row1 = zoneBEl.querySelector('.zb-row1');
+  var row2 = zoneBEl.querySelector('.zb-row2');
+
+  // Search input
+  var sInp = zoneBEl.querySelector('.zb-search-input');
+  if(sInp){
+    sInp.placeholder = 'Search figures…';
+    sInp.addEventListener('input', function(){
+      window.searchQ = sInp.value || '';
+      if(typeof _renderMarkers === 'function') _renderMarkers();
+    });
+  }
+
+  // Year slider — drives _mapYear and re-renders
+  var sliderInp = document.getElementById('sliderInput');
+  var sliderTrack = document.getElementById('sliderTrack');
+  var sliderFill = document.getElementById('sliderFill');
+  var sliderThumb = document.getElementById('sliderThumb');
+  var yearDisp = document.getElementById('yearDisplay');
+  var yearClear = document.getElementById('yearClearBtn');
+  if(sliderInp && sliderTrack){
+    sliderInp.min = 500; sliderInp.max = 2025; sliderInp.value = 800;
+    function _setSlider(yr){
+      _mapYear = yr;
+      if(typeof activeYear !== 'undefined') window.activeYear = yr;
+      var pct = (yr - 500) / (2025 - 500) * 100;
+      if(sliderFill) sliderFill.style.width = pct + '%';
+      if(sliderThumb) sliderThumb.style.left = pct + '%';
+      if(yearDisp) yearDisp.textContent = (yr < 0 ? Math.abs(yr) + ' BCE' : yr + ' CE');
+      if(sliderTrack) sliderTrack.classList.remove('sl-inactive');
+      if(yearClear) yearClear.classList.add('active');
+      if(typeof _drawEmpires === 'function') _drawEmpires();
+      if(typeof _renderMarkers === 'function') _renderMarkers();
+    }
+    window._setSliderYear = _setSlider;
+    function _clickToYear(e){
+      var rect = sliderTrack.getBoundingClientRect();
+      var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      _setSlider(Math.round(500 + pct * (2025 - 500)));
+    }
+    sliderTrack.addEventListener('click', _clickToYear);
+    var dragging = false;
+    sliderThumb.addEventListener('mousedown', function(e){ dragging = true; e.preventDefault(); });
+    document.addEventListener('mousemove', function(e){ if(dragging) _clickToYear(e); });
+    document.addEventListener('mouseup', function(){ dragging = false; });
+    if(yearClear){
+      yearClear.addEventListener('click', function(){
+        _mapYear = null;
+        if(sliderFill) sliderFill.style.width = '0%';
+        if(sliderThumb) sliderThumb.style.left = '0%';
+        if(yearDisp) yearDisp.innerHTML = '&mdash;';
+        sliderTrack.classList.add('sl-inactive');
+        yearClear.classList.remove('active');
+        if(typeof _drawEmpires === 'function') _drawEmpires();
+        if(typeof _renderMarkers === 'function') _renderMarkers();
+      });
+    }
+  }
+
+  // Type / Tradition filter dropdowns
+  if(row2){
+    var selects = row2.querySelectorAll('.zb-select');
+    var typeBtn = null, tradBtn = null;
+    selects.forEach(function(b){
+      var t = (b.textContent||'').trim().toUpperCase();
+      if(t === 'TYPE') typeBtn = b;
+      else if(t === 'TRADITION') tradBtn = b;
+    });
+    function _ensurePanel(id, btn, items, getSet){
+      var p = document.getElementById(id);
+      if(!p){
+        p = document.createElement('div');
+        p.className = 'dd-panel';
+        p.id = id;
+        p.style.position = 'fixed';
+        p.style.display = 'none';
+        document.body.appendChild(p);
+      }
+      function _build(){
+        var set = getSet();
+        var allOn = set.size === 0;
+        var html = '<div class="dd-item dd-all'+(allOn?' selected':'')+'" data-val="__all__"><div class="dd-checkbox">'+(allOn?'✓':'')+'</div><span>All</span></div>';
+        items.forEach(function(t){
+          var on = set.has(t);
+          html += '<div class="dd-item'+(on?' selected':'')+'" data-val="'+t+'"><div class="dd-checkbox">'+(on?'✓':'')+'</div><span>'+t+'</span></div>';
+        });
+        p.innerHTML = html;
+        p.querySelectorAll('.dd-item').forEach(function(el){
+          el.addEventListener('click', function(){
+            var v = this.getAttribute('data-val');
+            if(v === '__all__') set.clear();
+            else { if(set.has(v)) set.delete(v); else set.add(v); }
+            _build();
+            if(typeof _renderMarkers === 'function') _renderMarkers();
+          });
+        });
+      }
+      _build();
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = p.classList.toggle('open');
+        if(open){
+          var r = btn.getBoundingClientRect();
+          p.style.top = (r.bottom + 4) + 'px';
+          p.style.left = r.left + 'px';
+          p.style.zIndex = 10000;
+          p.style.display = 'block';
+        } else { p.style.display = 'none'; }
+      });
+    }
+    window._mapFilterTypes = window._mapFilterTypes || new Set();
+    window._mapFilterTrads = window._mapFilterTrads || new Set();
+    if(typeBtn){
+      var types = [];
+      try { types = Array.from(new Set((window.PEOPLE||[]).map(function(p){return p.type;}).filter(Boolean))).sort(); } catch(e){}
+      _ensurePanel('map-type-panel', typeBtn, types, function(){return window._mapFilterTypes;});
+    }
+    if(tradBtn){
+      var trads = [];
+      try { trads = Array.from(new Set((window.PEOPLE||[]).map(function(p){return p.tradition;}).filter(Boolean))).sort(); } catch(e){}
+      _ensurePanel('map-trad-panel', tradBtn, trads, function(){return window._mapFilterTrads;});
+    }
+    document.addEventListener('click', function(e){
+      ['map-type-panel','map-trad-panel'].forEach(function(id){
+        var p = document.getElementById(id);
+        if(!p) return;
+        if(p.classList.contains('open') && !p.contains(e.target) && (typeBtn?!typeBtn.contains(e.target):true) && (tradBtn?!tradBtn.contains(e.target):true)){
+          p.classList.remove('open');
+          p.style.display = 'none';
+        }
+      });
+    });
+
+    // Pills: Empires + Recenter
+    var pills = row2.querySelectorAll('.zb-pill');
+    pills.forEach(function(p){
+      var t = (p.textContent||'').trim().toUpperCase();
+      if(t.indexOf('EMPIRE') !== -1){
+        p.addEventListener('click', function(){
+          _geoEmpOn = !_geoEmpOn;
+          p.classList.toggle('zb-active', _geoEmpOn);
+          if(_geoEmpOn && !_geoEmpData){
+            _loadGeoEmpires(function(){ _drawEmpires(); });
+          } else { _drawEmpires(); }
+        });
+      } else if(t.indexOf('RECENT') !== -1){
+        p.addEventListener('click', function(){
+          if(_lMap){
+            var pts = _getMapFiltered();
+            if(pts.length){
+              try { _lMap.fitBounds(L.latLngBounds(pts.map(function(x){return [x.lat,x.lng];})).pad(0.1)); } catch(e){}
+            } else {
+              _lMap.setView([30,45], 3);
+            }
+          }
+        });
+      }
+    });
+
+    // Kickstart: empires ON at year 500 from the moment MAP loads.
+    _geoEmpOn = true;
+    var _empPill = null;
+    pills.forEach(function(p){
+      if((p.textContent||'').toUpperCase().indexOf('EMPIRE') !== -1) _empPill = p;
+    });
+    if(_empPill) _empPill.classList.add('zb-active');
+    _loadGeoEmpires(function(){
+      if(typeof window._setSliderYear === 'function') window._setSliderYear(500);
+      else {
+        _mapYear = 500;
+        if(typeof _drawEmpires === 'function') _drawEmpires();
+        if(typeof _renderMarkers === 'function') _renderMarkers();
+      }
+    });
+  }
+}
 
 function _showMapMethodology(){
   if(document.getElementById('map-method-overlay')) return;
@@ -771,12 +1427,58 @@ function _showMapMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="map-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+  box.innerHTML='<button id="map-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
     +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">An interactive world map showing where historical figures lived and worked. Markers cluster when zoomed out \u2014 click to expand. The map reveals the geographic spread of Islamic civilisation.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Marker</span><span style="color:#A0AEC0">A single figure at their primary known location</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#5B8DEF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Cluster</span><span style="color:#A0AEC0">A group of figures in the same area</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#A0AEC0;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Primary location</span><span style="color:#A0AEC0">The city most associated with a figure</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">GPS coordinates from Wikipedia, OpenStreetMap, and manual research. Most are city-level, not building-level. Historical place names mapped to modern equivalents.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">An interactive world map showing where historical figures lived and worked. Use the slider to filter by year. Click Empires to overlay historical empire boundaries. Click any marker for details.</p>'
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('map-method-close').addEventListener('click',function(){ov.remove();});
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
+
+return {
+  mount: function(zoneCEl, zoneBEl){
+    document.body.classList.add('map-mounted');
+    _ensureMapTafsirXref();
+    zoneCEl.innerHTML = '<div id="mapView" style="display:flex;flex-direction:column;height:100%;width:100%;overflow:hidden">'
+      + '<div id="mapToolbar" style="display:none"></div>'
+      + '<div id="mapContainer" style="flex:1;position:relative;width:100%;height:100%"><div id="leafletMap" style="width:100%;height:100%"></div></div>'
+      + '</div>';
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ window.PEOPLE = arr || []; return arr; });
+    p1.then(function(){
+      renderMap();
+      _mapWireZoneB(zoneBEl);
+      setTimeout(function(){ _setMapHeight(); }, 100);
+    });
+  },
+  unmount: function(){
+    document.body.classList.remove('map-mounted');
+    try { _mapAnimStop(); } catch(e){}
+    if(_lMap){ try { _lMap.remove(); } catch(e){} _lMap = null; _empLayer = null; _mrkLayer = null; _labTile = null; }
+    var zb = document.getElementById('zoneB'); if(zb) zb.innerHTML = '';
+    var zc = document.getElementById('zoneC'); if(zc) zc.innerHTML = '';
+  },
+  showHtw: _showMapMethodology,
+  animateStart: _mapAnimPlay,
+  animatePause: _mapAnimPause,
+  animateStop:  _mapAnimStop,
+  animateSetSpeed: function(label){
+    // Per-year tick interval — spec.
+    var map = { '0.5x':200, '1x':100, '2x':50, '4x':25 };
+    _mapAnimSpeedMs = map[label] || 100;
+    // Live-apply: if currently playing, restart the timer with new interval
+    // so the change takes effect immediately on the next tick.
+    if(_mapAnimMode === 'playing'){
+      if(_mapAnimTimer){ clearTimeout(_mapAnimTimer); _mapAnimTimer = null; }
+      _mapAnimTimer = setTimeout(_mapAnimNextStep, _mapAnimSpeedMs);
+    }
+  }
+};
+})();

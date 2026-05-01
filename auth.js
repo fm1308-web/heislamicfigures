@@ -52,7 +52,8 @@ function _computeEffectiveState(d) {
     role: d.role || "user",
     subscriptionStatus: d.subscriptionStatus || null,
     stripeCustomerId: d.stripeCustomerId || null,
-    bookmarks: Array.isArray(d.bookmarks) ? d.bookmarks : []
+    bookmarks: Array.isArray(d.bookmarks) ? d.bookmarks : [],
+    progress: (d.progress && typeof d.progress === 'object') ? d.progress : null
   };
 }
 
@@ -160,6 +161,7 @@ const GoldArkAuth = {
     const u = window._gaUser;
     return (u && Array.isArray(u.bookmarks)) ? u.bookmarks.slice() : [];
   },
+  // Legacy Quran-only API (start.js still uses these). Keep as-is.
   hasBookmark(surah, verse) {
     const key = surah + ":" + verse;
     return this.getBookmarks().indexOf(key) !== -1;
@@ -177,6 +179,45 @@ const GoldArkAuth = {
     const key = surah + ":" + verse;
     const ref = doc(db, "users", u.uid);
     return updateDoc(ref, { bookmarks: arrayRemove(key) });
+  },
+  // Generic namespaced bookmark API. Use prefixes:
+  //   "q:<surah>:<verse>"   Quran verse
+  //   "h:<colKey>:<num>"    Hadith
+  //   "t:<tafsirSlug>:<surah>:<verse>"  Tafsir entry
+  hasBookmarkKey(key) {
+    return this.getBookmarks().indexOf(key) !== -1;
+  },
+  async addBookmarkKey(key) {
+    const u = window._gaUser;
+    if (!u) throw new Error("Not signed in");
+    const ref = doc(db, "users", u.uid);
+    return updateDoc(ref, { bookmarks: arrayUnion(key) });
+  },
+  async removeBookmarkKey(key) {
+    const u = window._gaUser;
+    if (!u) throw new Error("Not signed in");
+    const ref = doc(db, "users", u.uid);
+    return updateDoc(ref, { bookmarks: arrayRemove(key) });
+  },
+  // Reading progress: { lastSurah, lastVerse, furthest: { "<surah>": <verse>, ... } }
+  // Visitor (not signed in) → localStorage; signed in → Firestore users/{uid}.progress.
+  getProgress() {
+    var u = window._gaUser;
+    if (u && u.progress && typeof u.progress === 'object') return u.progress;
+    try {
+      var raw = localStorage.getItem('gold-ark-progress');
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return null;
+  },
+  async setProgress(data) {
+    if (!data || typeof data !== 'object') return;
+    // Always mirror to localStorage for fast reads on next visit.
+    try { localStorage.setItem('gold-ark-progress', JSON.stringify(data)); } catch (e) {}
+    var u = window._gaUser;
+    if (!u) return;
+    var ref = doc(db, "users", u.uid);
+    return updateDoc(ref, { progress: data });
   },
   async submitCorrection(data) {
     const u = window._gaUser;
@@ -196,6 +237,21 @@ const GoldArkAuth = {
       sourceUrl: data.sourceUrl || "",
       note: data.note || "",
       status: "pending",
+      createdAt: serverTimestamp()
+    });
+  },
+  async submitFeedback(data) {
+    const u = window._gaUser;
+    if (!u) throw new Error("Not signed in");
+    return addDoc(collection(db, "feedback"), {
+      uid: u.uid,
+      email: u.email || "",
+      displayName: u.displayName || "",
+      category: data.category || "other",
+      message: data.message || "",
+      url: data.url || "",
+      userAgent: data.userAgent || "",
+      status: "open",
       createdAt: serverTimestamp()
     });
   },

@@ -65,7 +65,7 @@ function _mbCreateMap(elementId, opts) {
 // ═══════════════════════════════════════════════════════════
 function _mbLoadGeoEmpires(cb) {
   if (_mbGeoEmpData) { cb(); return; }
-  fetch('data/islamic/empire_overlays.json?v=' + Date.now())
+  fetch(dataUrl('data/islamic/empire_overlays.json'))
     .then(function(r) { return r.json(); })
     .then(function(j) {
       _mbGeoEmpData = j || {};

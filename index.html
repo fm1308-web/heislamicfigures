@@ -3,449 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gold Ark</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
+<title>Gold Ark — Sandbox v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shell.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="config.js"></script>
+<script src="mapbase.js"></script>
+<script src="anim.js"></script>
+<script src="morphology.js"></script>
+<!-- Firebase auth — auth.js imports the SDK from gstatic, dispatches gold-ark-auth-ready -->
 <script type="module" src="auth.js"></script>
-<link rel="stylesheet" href="styles.css">
+<script src="gate.js"></script>
+<script src="feedback.js"></script>
+<script src="https://unpkg.com/dom-to-image-more@3.5.0/dist/dom-to-image-more.min.js"></script>
+<script src="snapshot.js"></script>
+<script src="share.js"></script>
+<script src="concepts.js"></script>
+<script src="concept-popover.js"></script>
 </head>
 <body>
 
-<div id="topBar">
-<!-- ROW 1 - Stats + Disclosures -->
-<div id="hdrRow1">
-  <div id="hdrRow1Left">
-    <!-- #hdrRow1Right kept so share.js _injectButtons() can find it -->
-    <div id="hdrRow1Right">
-      <div class="hdr-info-line"><span id="statFigures"><span class="hdr-stat-num" id="hdrStatFigures"></span> Figures</span> &middot; <span class="hdr-stat-num" id="hdrStatRelations"></span> Relations</div>
-      <div class="hdr-info-line"><span id="statBooks"><span class="hdr-stat-num" id="hdrStatBooks"></span> Books</span> &middot; <span class="hdr-stat-num" id="hdrStatFreeReads"></span> Free Reads</div>
-      <div class="hdr-info-line">Follow <span class="hdr-stat-num" id="hdrStatLives"></span> Lives &middot; Study <span class="hdr-stat-num" id="hdrStatStudyWriters"></span> Writers</div>
-    </div>
-  </div>
-  <div id="hdrRow1Center">
-    <h1 id="hdrLogo">GOLD ARK<svg width="68" height="26" viewBox="0 0 68 26" fill="none" style="display:inline-block;vertical-align:middle;margin-left:12px;"><path d="M4 12 Q2 14 2 17 L6 20 Q20 23 40 23 Q56 23 62 20 L66 15 Q66 12 64 10" stroke="#D4AF37" stroke-width="1.4" fill="none"/><path d="M4 12 Q3 10 4 7" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><path d="M64 10 Q65 8 64 5" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="12" x2="64" y2="10" stroke="#D4AF37" stroke-width="0.6" opacity="0.3"/><line x1="34" y1="3" x2="34" y2="13" stroke="#D4AF37" stroke-width="1.2"/><path d="M34 3 L46 9 L34 7.5 Z" fill="rgba(212,175,55,0.25)" stroke="#D4AF37" stroke-width="0.7"/></svg></h1>
-  </div>
-  <div id="hdrRow1Disclosures">
-    <div class="hdr-info-line hdr-disclosure-line">AI-generated</div>
-    <div class="hdr-info-line hdr-disclosure-line">Independently verify</div>
-    <div class="hdr-info-line hdr-disclosure-line">Updated Apr 2026</div>
-    <button id="updatesBtn" onclick="window._toggleUpdates()" style="margin-top:4px;padding:4px 14px;background:transparent;border:1px solid #555;color:#888;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer;border-radius:2px;transition:.2s" onmouseover="this.style.borderColor='#D4AF37';this.style.color='#D4AF37'" onmouseout="if(!window._updatesOpen){this.style.borderColor='#555';this.style.color='#888'}">UPDATES</button>
-  </div>
-</div>
-<!-- ROW 1b - Tile Nav -->
-<div id="hdrTileNav">
-  <button class="nav-btn" id="navBackBtn" disabled title="Back" onclick="window._navBack()">&#8592;</button>
-  <button class="nav-btn" id="navFwdBtn" disabled title="Forward" onclick="window._navForward()">&#8594;</button>
-  <button class="hdr-tile hdr-tile-timeline active" data-view="timeline">TIMELINE</button>
-  <button class="hdr-tile hdr-tile-silsila" data-view="silsila">SILSILA</button>
-  <button class="hdr-tile hdr-tile-follow" data-view="follow">FOLLOW</button>
-  <button class="hdr-tile hdr-tile-study" data-view="studyroom">STUDY</button>
-  <button class="hdr-tile hdr-tile-books" data-view="books">BOOKS</button>
-  <button class="hdr-tile hdr-tile-eras" data-view="eras">ERAS</button>
-  <button class="hdr-tile hdr-tile-events" data-view="events">EVENTS</button>
-  <button class="hdr-tile hdr-tile-think" data-view="think">THINK</button>
-  <button class="hdr-tile hdr-tile-map" data-view="map">MAP</button>
-  <button class="hdr-tile hdr-tile-talk" data-view="talk">TALK</button>
-  <button class="hdr-tile hdr-tile-one" data-view="one">ONE</button>
-  <button class="hdr-tile hdr-tile-monastic" data-view="monastic">MONASTIC</button>
-  <button class="hdr-tile hdr-tile-explain" data-view="explain">EXPLAIN</button>
-  <button class="hdr-tile hdr-tile-start" data-view="start">START</button>
-</div>
-<!-- SEARCH + SLIDER ROW -->
-<div id="hdrRow2">
-  <div id="hdrYearControls">
-    <span id="yearQuestion">WHO WAS ALIVE IN</span>
-    <span id="yrShiftHint" class="hdr-range-cap">hold &#8679; for 1yr</span>
-    <span class="hdr-range-cap">START</span>
-    <div id="sliderOuter">
-      <input id="sliderInput" type="range" min="500" max="2000" value="800" step="5">
-      <div id="sliderTrack">
-        <div id="sliderFill"></div>
-        <div id="sliderThumb" tabindex="0"></div>
-      </div>
-    </div>
-    <span id="yearDisplay">&mdash;</span>
-    <span id="yrPrecisionPill">1 YR</span>
-    <button id="yearClearBtn" onclick="clearYear()">&times;</button>
-  </div>
-  <div id="searchWrap" style="position:relative">
-    <input id="search" type="text" placeholder="Search figures..." oninput="onSearch();_toggleSearchClear()">
-    <button id="searchClearBtn" type="button" onclick="_clearSearchBox()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:1px solid var(--muted);color:var(--muted);width:22px;height:22px;font-size:var(--fs-3);line-height:1;border-radius:3px;cursor:pointer;align-items:center;justify-content:center;padding:0;visibility:hidden;display:flex">×</button>
-  </div>
-</div>
-<!-- Empty mount for events.js toolbar injection -->
-<div id="hdrRow3" style="display:none"></div>
+<!-- gate.js header-injection anchor (hidden — sandbox shell uses its own pill, but gate.js will keep retrying without this) -->
+<div id="hdrRow1Disclosures" style="display:none" aria-hidden="true"></div>
 
-<!-- ROW 4 - Filters -->
-<div id="hdrRow4">
-  <div class="dd-wrap">
-    <button class="dd-btn" id="typeBtn" onclick="toggleDD('type')">
-      <span>TYPE</span>
-      <div style="display:flex;align-items:center;gap:4px">
-        <span class="dd-dot" id="typeDot"></span>
-        <span class="dd-count" id="typeCount"></span>
-        <span class="dd-caret">▾</span>
-      </div>
-    </button>
-    <div class="dd-panel" id="typePanel">
-      <div class="dd-item dd-all" onclick="ddClearAll('type')">
-        <div class="dd-checkbox" id="typeAllCk">✓</div><span>All Types</span>
-      </div>
+<!-- ENTRY DOOR -->
+<div id="entryDoor" class="entry-door">
+  <div class="entry-inner">
+    <img class="entry-logo" src="assets/gold-ark-logo.png" alt="Gold Ark" />
+    <div class="entry-stats">
+      <div class="entry-stats-l1">Everything important to the <span class="entry-stats-one">One</span>.</div>
+      <div class="entry-stats-l2">In order.</div>
     </div>
-  </div>
-  <div class="dd-wrap">
-    <button class="dd-btn" id="tradBtn" onclick="toggleDD('trad')">
-      <span>TRADITION</span>
-      <div style="display:flex;align-items:center;gap:4px">
-        <span class="dd-dot" id="tradDot"></span>
-        <span class="dd-count" id="tradCount"></span>
-        <span class="dd-caret">▾</span>
-      </div>
-    </button>
-    <div class="dd-panel" id="tradPanel">
-      <div class="dd-item dd-all" onclick="ddClearAll('trad')">
-        <div class="dd-checkbox" id="tradAllCk">✓</div><span>All Traditions</span>
-      </div>
+    <div class="entry-tagline">Fifteen centuries of Monotheism</div>
+    <div class="entry-disclosure">AI-generated · independently verify · Updated May 2026</div>
+    <div class="entry-buttons">
+      <button class="btn btn-primary" id="btnGuest">Browse as Guest</button>
+      <button class="btn btn-secondary" id="btnSignIn">Sign In</button>
     </div>
-  </div>
-  <div class="dd-wrap">
-    <button class="dd-btn" id="badgeBtn" onclick="toggleDD('badge')">
-      <span>HAS</span>
-      <div style="display:flex;align-items:center;gap:4px">
-        <span class="dd-caret">▾</span>
-      </div>
-    </button>
-    <div class="dd-panel" id="badgePanel">
-      <div class="dd-item" data-val="" onclick="_badgeSelect('')"><div class="dd-checkbox">✓</div><span>All</span></div>
-      <div class="dd-item" data-val="S" onclick="_badgeSelect('S')"><div class="dd-checkbox"></div><span>Study Room</span></div>
-      <div class="dd-item" data-val="W" onclick="_badgeSelect('W')"><div class="dd-checkbox"></div><span>Wikipedia</span></div>
-      <div class="dd-item" data-val="F" onclick="_badgeSelect('F')"><div class="dd-checkbox"></div><span>Follow Journey</span></div>
-      <div class="dd-item" data-val="B" onclick="_badgeSelect('B')"><div class="dd-checkbox"></div><span>Free Books</span></div>
-      <div class="dd-item" data-val="T" onclick="_badgeSelect('T')"><div class="dd-checkbox"></div><span>Talk</span></div>
-    </div>
-  </div>
-  <button class="dd-btn" id="favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
-  <div id="tlAnimPanel" style="display:flex;align-items:center;gap:8px;margin-left:auto;padding:0 8px"></div>
-  <span id="tlAnimReadout" style="color:#D4AF37;font:600 var(--fs-3)/1 'Source Sans 3',sans-serif;min-width:70px;text-align:center;padding:4px 8px;border:1px solid rgba(212,175,55,0.2);border-radius:3px">—</span>
-</div>
-</div><!-- /#topBar -->
-
-<!-- Filter bar kept as hidden container for JS compat (full-width sibling above three-column row) -->
-<div id="filterBar">
-  <div id="filterBarLeft"></div>
-  <div id="filterBarCtrls">
-    <span id="filterSummary" style="display:none"></span>
-    <button id="filterClearAll" onclick="clearAllFilters()" style="display:none">CLEAR ALL ✕</button>
   </div>
 </div>
 
-<div id="mainShell">
+<!-- APP SHELL -->
+<div id="appShell" class="app-shell" hidden>
 
-  <!-- LEFT PANEL -->
-  <div id="leftPanel">
-
-    <div id="tlFocusPill">
-      <span class="tl-fp-hint">For focus, click on a person</span>
-      <span class="tl-fp-label">FOCUS MODE</span>
-      <button id="tlFocusClose" type="button" aria-label="Exit focus">×</button>
-    </div>
-
-    <!-- Scrollable rows (names + bars) -->
-    <div id="rowsScroll"></div>
-
-    <!-- Row 4: century scrollbar AT BOTTOM -->
-    <div id="centScrollStrip">
-      <div id="centScrollNameSpacer">CENTURY</div>
-      <span id="centLabelLeft">6th</span>
-      <div id="centScrollTrackWrap">
-        <div id="centScrollTrack">
-          <div id="centScrollFill"></div>
-          <div id="centScrollThumb" tabindex="0"></div>
-        </div>
-      </div>
-      <span id="centLabelRight">20th</span>
-    </div>
-
-  </div><!-- /leftPanel -->
-
-  <!-- TIMELINE CENTRE CANVAS (Step 3.1: era title + left-edge gold scale + dob chips) -->
-  <div class="tl-center" id="tlCenter">
-    <div class="tl-era-title" id="tlEraTitle"></div>
-    <div class="tl-center-scroll" id="tlCenterScroll">
-      <div class="tl-scale" id="tlScale"></div>
-    </div>
-  </div>
-
-  <!-- SILSILA VIEW -->
-  <div id="silsilaView">
-    <!-- ── Top filter bar (only visible in Silsila) ── -->
-    <div id="silsilaTop">
-      <div id="silsilaTopLeft">
-        <!-- TYPE dropdown -->
-        <div class="sl-dd-wrap">
-          <button class="sl-dd-btn" id="sl-typeBtn" onclick="toggleSLDD('type')">
-            <span id="sl-typeLbl">TYPE</span>
-            <span class="dd-caret">▾</span>
-          </button>
-          <div class="sl-dd-panel" id="sl-typePanel">
-            <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('type')">
-              <div class="sl-dd-ck" id="sl-typeAllCk">✓</div><span>All Types</span>
-            </div>
-          </div>
-        </div>
-        <!-- TRADITION dropdown -->
-        <div class="sl-dd-wrap">
-          <button class="sl-dd-btn" id="sl-tradBtn" onclick="toggleSLDD('trad')">
-            <span id="sl-tradLbl">TRADITION</span>
-            <span class="dd-caret">▾</span>
-          </button>
-          <div class="sl-dd-panel" id="sl-tradPanel">
-            <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('trad')">
-              <div class="sl-dd-ck" id="sl-tradAllCk">✓</div><span>All Traditions</span>
-            </div>
-          </div>
-        </div>
-        <button class="sl-dd-btn" id="sl-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
-        <span id="sl-filterSummary"></span>
-        <button id="sl-clearAll" onclick="clearAllFilters()">CLEAR ALL ✕</button>
-      </div>
-      <div id="silsilaTopRight">Click node to highlight · Click again for details</div>
-    </div>
-    <!-- ── Main content area ── -->
-    <div id="silsilaBody" style="display:flex;flex:1;overflow:hidden">
-      <div id="silsilaLanes"><div id="silsilaLanesInner"></div></div>
-      <div id="silsilaMain"></div>
-    </div>
-  </div>
-
-  <!-- Silsila click detail card -->
-  <div id="silsilaCard">
-    <div id="scCardHdr">
-      <button id="scCardClose" onclick="closeSilsilaCard()">✕</button>
-      <div id="scCardName" title="Click to view in Timeline"></div>
-      <div id="scCardNameHint">click name to open in timeline →</div>
-      <div id="scCardSub"></div>
-    </div>
-    <div id="scCardScroll"><div id="scCardBody"></div></div>
-  </div>
-
-  <!-- MAP VIEW -->
-  <div id="mapView">
-    <div id="mapToolbar">
-      <div class="sl-dd-wrap">
-        <button class="sl-dd-btn" id="map-typeBtn" onclick="toggleSLDD('type')">
-          <span id="map-typeLbl">TYPE</span>
-          <span class="dd-caret">▾</span>
-        </button>
-        <div class="sl-dd-panel" id="map-typePanel">
-          <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('type')">
-            <div class="sl-dd-ck" id="map-typeAllCk">✓</div><span>All Types</span>
-          </div>
-        </div>
-      </div>
-      <div class="sl-dd-wrap">
-        <button class="sl-dd-btn" id="map-tradBtn" onclick="toggleSLDD('trad')">
-          <span id="map-tradLbl">TRADITION</span>
-          <span class="dd-caret">▾</span>
-        </button>
-        <div class="sl-dd-panel" id="map-tradPanel">
-          <div class="sl-dd-item sl-dd-all" onclick="slDDClearAll('trad')">
-            <div class="sl-dd-ck" id="map-tradAllCk">✓</div><span>All Traditions</span>
-          </div>
-        </div>
-      </div>
-      <button class="sl-dd-btn" id="map-favFilterBtn" title="Show only saved figures" onclick="toggleFavFilter()">★ SAVED</button>
-      <div class="map-anim-group">
-        <select class="map-anim-speed" id="mapAnimSpeed">
-          <option value="2400">Slow</option>
-          <option value="1200" selected>Medium</option>
-          <option value="500">Fast</option>
-        </select>
-        <button class="map-anim-btn" id="mapAnimBtn" onclick="_mapAnimToggle()">▶ ANIMATE</button>
-      </div>
-    </div>
-    <div id="mapContainer">
-      <div id="leafletMap"></div>
-    </div>
-    <div id="mapLegend" class="map-legend">
-      <button id="mapLegendToggle" onclick="toggleMapLegend()" title="Toggle legend">
-        <span id="mapLegendIcon">◈</span> <span id="mapLegendLabel">LEGEND</span>
+  <!-- ZONE A — TOP BAR -->
+  <header class="zone-a">
+    <div class="zone-a-row1">
+      <button class="flag-btn" id="flagHome" title="Return to Entry Door" aria-label="Home">
+        <img class="za-logo" src="assets/gold-ark-logo-text.png" alt="Gold Ark" />
       </button>
-      <div id="mapLegendBody">
-        <div id="mapLegendItems"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STUDY ROOM VIEW -->
-  <div id="studyRoomView">
-    <div id="sr-left"></div>
-    <div id="sr-right">
-      <div id="sr-heading"></div>
-      <div id="sr-body"></div>
-    </div>
-  </div>
-
-  <!-- ERAS VIEW -->
-  <div id="eras-view" style="display:none"></div>
-
-  <!-- EVENTS VIEW -->
-  <div id="events-view" style="display:none"></div>
-
-  <!-- THINK VIEW -->
-  <div id="think-view" style="display:none"></div>
-
-  <!-- ONE VIEW -->
-  <div id="one-view" style="display:none"></div>
-
-  <!-- FOLLOW VIEW -->
-  <div id="follow-view" style="display:none"></div>
-
-  <!-- TALK VIEW -->
-  <div id="talk-view" style="display:none"></div>
-
-  <div id="books-view" style="display:none"></div>
-
-  <!-- MONASTIC VIEW -->
-  <div id="monastic-view" style="display:none">
-    <div style="padding:20px 24px;width:100%;box-sizing:border-box">
-      <div id="mon-header-row" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin:0 0 12px 0">
-        <div style="justify-self:start">
-          <button id="mon-methodology-btn" style="padding:3px 10px;background:transparent;border:1px solid rgba(212,175,55,0.4);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:var(--fs-3);letter-spacing:.05em;cursor:pointer">How dating works</button>
-        </div>
-        <div style="justify-self:center;font-family:'Lato',sans-serif;font-size:var(--fs-3);color:#E5E7EB;font-weight:400;text-align:center">Read from any of the 34,441 Hadith narrated in 6 canonical texts</div>
-        <div style="justify-self:end">
-          <button id="mon-guided-btn" onclick="Monastic.openWizard()" style="padding:3px 10px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:var(--fs-3);letter-spacing:.05em;cursor:pointer">✦ Guided Search</button>
-          <button id="mon-drill-btn" type="button" style="padding:3px 10px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#FFFFFF;font-family:'Lato',sans-serif;font-size:var(--fs-3);letter-spacing:.05em;cursor:pointer;margin-left:6px">⛭ DRILL</button>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;margin-bottom:0;flex-wrap:wrap;align-items:center" id="mon-filters">
-        <div class="dd-wrap">
-          <button class="dd-btn" id="mon-periodBtn" onclick="Monastic.toggleDD('period')">
-            <span>Periods</span>
-            <div style="display:flex;align-items:center;gap:4px">
-              <span class="dd-dot" id="mon-periodDot"></span>
-              <span class="dd-count" id="mon-periodCount"></span>
-              <span class="dd-caret">▾</span>
-            </div>
-          </button>
-          <div class="dd-panel" id="mon-periodPanel">
-            <div class="dd-item dd-all" onclick="Monastic.ddClearAll('period')">
-              <div class="dd-checkbox" id="mon-periodAllCk">✓</div><span>All Periods</span>
-            </div>
+      <div class="row1-right">
+        <button class="tools-btn" id="howToUseBtn" type="button" aria-label="How to use Gold Ark" title="How to use Gold Ark">HOW TO USE</button>
+        <div class="tools-wrap">
+          <button class="tools-btn" id="toolsBtn" aria-label="User tools" title="User tools">⚙ TOOLS</button>
+          <div class="menu-dropdown tools-dropdown" id="toolsDropdown" hidden>
+            <button class="menu-item locked" data-lock="share">Share 🔒</button>
+            <button class="menu-item locked" data-lock="snapshot">Snapshot 🔒</button>
+            <button class="menu-item locked" data-lock="feedback">Report a problem 🔒</button>
+            <button class="menu-item" data-action="community">Community forum</button>
+            <button class="menu-item locked" data-lock="correction" data-need-role="contributor">Suggest Correction 🔒</button>
+            <button class="menu-item" data-action="updates">Updates</button>
           </div>
         </div>
-        <div class="dd-wrap">
-          <button class="dd-btn" id="mon-topicBtn" onclick="Monastic.toggleDD('topic')">
-            <span>Topics</span>
-            <div style="display:flex;align-items:center;gap:4px">
-              <span class="dd-dot" id="mon-topicDot"></span>
-              <span class="dd-count" id="mon-topicCount"></span>
-              <span class="dd-caret">▾</span>
-            </div>
-          </button>
-          <div class="dd-panel" id="mon-topicPanel">
-            <div class="dd-item dd-all" onclick="Monastic.ddClearAll('topic')">
-              <div class="dd-checkbox" id="mon-topicAllCk">✓</div><span>All Topics</span>
-            </div>
-          </div>
-        </div>
-        <div class="dd-wrap">
-          <button class="dd-btn" id="mon-narratorBtn" onclick="Monastic.toggleDD('narrator')">
-            <span>Narrators</span>
-            <div style="display:flex;align-items:center;gap:4px">
-              <span class="dd-dot" id="mon-narratorDot"></span>
-              <span class="dd-count" id="mon-narratorCount"></span>
-              <span class="dd-caret">▾</span>
-            </div>
-          </button>
-          <div class="dd-panel" id="mon-narratorPanel">
-            <div class="dd-item dd-all" onclick="Monastic.ddClearAll('narrator')">
-              <div class="dd-checkbox" id="mon-narratorAllCk">✓</div><span>All Narrators</span>
-            </div>
-          </div>
-        </div>
-        <div class="dd-wrap">
-          <button class="dd-btn" id="mon-collectionBtn" onclick="Monastic.toggleDD('collection')">
-            <span>Collections</span>
-            <div style="display:flex;align-items:center;gap:4px">
-              <span class="dd-dot" id="mon-collectionDot"></span>
-              <span class="dd-count" id="mon-collectionCount"></span>
-              <span class="dd-caret">▾</span>
-            </div>
-          </button>
-          <div class="dd-panel" id="mon-collectionPanel">
-            <div class="dd-item dd-all" onclick="Monastic.ddClearAll('collection')">
-              <div class="dd-checkbox" id="mon-collectionAllCk">✓</div><span>All Collections</span>
-            </div>
+        <div class="user-wrap">
+          <button class="user-pill" id="userPill" type="button">Visitor</button>
+          <div class="menu-dropdown user-dropdown" id="userDropdown" hidden>
+            <button class="menu-item" data-action="signout">Sign out</button>
           </div>
         </div>
       </div>
-      <div id="mon-timeline-band"></div>
-      <div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>
-      <div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">Loading hadiths…</div>
-      <div id="mon-results" style="max-height:70vh;overflow-y:auto;border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>
-      <div style="text-align:center;margin-top:20px;font-size:var(--fs-3);color:#4B5563;font-style:normal">Data source: sahih-explorer dataset</div>
+    </div>
+    <nav class="zone-a-row2 tab-row" id="tabRow1"></nav>
+    <nav class="zone-a-row3 tab-row" id="tabRow2"></nav>
+  </header>
+
+  <!-- ZONE B — VIEW FILTER BAR -->
+  <div class="zone-b" id="zoneB"></div>
+
+  <!-- ZONE C — VIEW BODY -->
+  <main class="zone-c" id="zoneC">
+    <div class="view-placeholder" id="viewPlaceholder">
+      <div class="placeholder-name" id="placeholderName">TIMELINE</div>
+      <div class="placeholder-sub">View body placeholder</div>
+    </div>
+  </main>
+
+  <!-- ZONE D — BOTTOM BAR -->
+  <footer class="zone-d" id="zoneD">
+    <div class="zd-disclaimer">AI-generated · independently verify · Updated May 2026</div>
+    <span class="zd-spacer"></span>
+    <button class="zd-nav" id="zdBack" type="button" aria-label="Back" title="Back">◀</button>
+    <button class="zd-nav" id="zdForward" type="button" aria-label="Forward" title="Forward">▶</button>
+    <button class="zd-animate" id="zdAnimate" type="button">
+      <span class="zd-animate-icon" id="zdAnimateIcon">▶</span>
+      <span class="zd-animate-label" id="zdAnimateLabel">ANIMATE</span>
+    </button>
+    <button class="zd-speed" id="zdSpeed" type="button">SPEED 1x</button>
+    <span class="zd-spacer"></span>
+    <button class="zd-tip" id="zdTip" type="button" aria-label="Tip">ⓘ</button>
+  </footer>
+
+</div>
+
+<!-- MODALS -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" id="modal">
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="modalClose">Close</button>
     </div>
   </div>
+</div>
 
-  <!-- START VIEW -->
-  <div id="explain-view" style="display:none"></div>
-  <div id="start-view" style="display:none"></div>
-
-  <!-- INFO PANEL -->
-  <div id="infoPanel">
-    <div id="infoHdr"><button id="figureBackBtn" onclick="var prev=popFigureHistory();if(prev)jumpTo(prev);" style="display:none;align-items:center;background:none;border:1px solid var(--border2);color:var(--accent);font-size:var(--fs-3);cursor:pointer;padding:2px 8px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:8px" title="Previous figure">&#8592; Back</button>INFORMATION</div>
-    <div id="infoScroll">
-      <div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>
-    </div>
-    <div id="infoScrollFoot"></div>
-  </div>
-
-  <div id="updates-view" style="display:none;flex:1;overflow-y:auto;padding:40px;font-family:'Source Sans 3',system-ui,sans-serif;color:#ccc"></div>
-
-</div><!-- /mainShell -->
-
-<footer>GOLD ARK · FOURTEEN CENTURIES OF INTELLECTUAL TRADITION · CLICK ANY ROW TO EXPLORE</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://unpkg.com/dom-to-image-more@3.5.0/dist/dom-to-image-more.min.js"></script>
-<script src="gate.js"></script>
-<!-- feedback.js removed — Discourse forum link will replace it -->
-<script src="nav.js"></script>
-<script src="quranlink.js"></script>
-<script src="anim.js"></script>
-<script src="app.js"></script>
-<script src="study.js"></script>
-<script src="silsila.js"></script>
-<script src="mapbase.js"></script>
-<script src="map.js"></script>
-<script src="chatbot.js"></script>
-<script src="eras.js"></script>
-<script src="events.js"></script>
-<script src="think.js"></script>
-<script src="one.js"></script>
-<script src="follow.js"></script>
-<script src="validators.js"></script>
-<script src="talk.js"></script>
-<script src="share.js"></script>
-<script src="books.js"></script>
-<script src="start.js"></script>
-<script src="explain.js"></script>
-<script src="morphology.js"></script>
-<script src="dive.js"></script>
-<script src="quran-audio.js"></script>
-<script src="monastic.js"></script>
-<script src="updates.js"></script>
-<script>
-boot();
-</script>
-<script>
-function _h(){try{window.parent.postMessage({type:'resize',height:document.body.scrollHeight},'*');}catch(e){}}
-window.addEventListener('load',_h); window.addEventListener('resize',_h);
-new MutationObserver(_h).observe(document.body,{childList:true,subtree:true});
-</script>
+<script src="shell.js"></script>
+<script src="tour.js"></script>
 </body>
 </html>

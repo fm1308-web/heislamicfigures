@@ -1,9 +1,40 @@
-// ═══════════════════════════════════════════════════════════
-// ERAS VIEW — Direct clone of Books view (rewrite #5 final)
-// Apr 16 2026
-// ═══════════════════════════════════════════════════════════
-(function(){
-'use strict';
+/* ─────────────────────────────────────────────────────────────
+   ERAS view — verbatim lift from bv-app/eras.js
+   IIFE exposes window.ErasView = { mount, unmount }
+   ───────────────────────────────────────────────────────────── */
+window.ErasView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (mirror timeline.js stub style)
+  // ═══════════════════════════════════════════════════════════
+  // stub: VIEW global — ERAS uses 'eras'
+  var VIEW = 'eras';
+  window.VIEW = 'eras';
+  // stub: APP namespace
+  var APP = window.APP || {
+    Favorites: null, filterFavsOnly: false, _lang: 'en',
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; }
+  };
+  window.APP = APP;
+  // stub: setView — sandbox shell uses setActiveTab; eras' wrapper IIFE around setView
+  // early-exits when window.setView is not a function (already in lifted code).
+  // stub: jumpTo — bv-row click → "go to figure in TIMELINE"; in sandbox we log only.
+  if(typeof window.jumpTo !== 'function') window.jumpTo = function(name){
+    console.log('[eras] jumpTo (stub):', name);
+  };
+  // stub: PROPHET_CHAIN (silsila/timeline-injected global). _evNameColor null-checks.
+  if(typeof window.PROPHET_CHAIN === 'undefined') window.PROPHET_CHAIN = new Set();
+  // stub: _wikidata for the "W" Wikipedia link. _evWiki already null-checks.
+  if(typeof window._wikidata === 'undefined') window._wikidata = {};
+  // stub: AnimControls — leave undefined; lifted code already null-checks (line 600).
+  // stub: _resizeShell
+  if(typeof window._resizeShell !== 'function') window._resizeShell = function(){};
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/eras.js ▼▼▼
+  // (outer IIFE wrapper unwrapped — we already wrap above)
+  // ═══════════════════════════════════════════════════════════
 
 const _EV_ROW_H   = 32;
 const _EV_TOP_PAD = 40;
@@ -35,22 +66,22 @@ const _EV_TRAD_COLORS = {
 const _EV_SKIP_TRADS = {'Islamic History':true};
 const _EV_ERA_BANDS = [
   {name:'Prophetic Era',     start:-10000,end:632,  dates:'Before 632 CE',    glow:'210,170,50'},
-  {name:'Rashidun',          start:632,   end:661,  dates:'632\u2013661 CE',  glow:'60,160,90'},
-  {name:'Umayyad',           start:661,   end:750,  dates:'661\u2013750 CE',  glow:'50,180,180'},
-  {name:'Abbasid Golden Age',start:750,   end:1258, dates:'750\u20131258 CE', glow:'70,130,210'},
-  {name:'Post-Mongol',       start:1258,  end:1500, dates:'1258\u20131500 CE',glow:'180,60,60'},
-  {name:'Gunpowder Empires', start:1500,  end:1800, dates:'1500\u20131800 CE',glow:'50,140,90'},
-  {name:'Colonial & Reform', start:1800,  end:1950, dates:'1800\u20131950 CE',glow:'200,150,60'},
-  {name:'Contemporary',      start:1950,  end:2025, dates:'1950\u2013Present',glow:'80,160,200'}
+  {name:'Rashidun',          start:632,   end:661,  dates:'632–661 CE',  glow:'60,160,90'},
+  {name:'Umayyad',           start:661,   end:750,  dates:'661–750 CE',  glow:'50,180,180'},
+  {name:'Abbasid Golden Age',start:750,   end:1258, dates:'750–1258 CE', glow:'70,130,210'},
+  {name:'Post-Mongol',       start:1258,  end:1500, dates:'1258–1500 CE',glow:'180,60,60'},
+  {name:'Gunpowder Empires', start:1500,  end:1800, dates:'1500–1800 CE',glow:'50,140,90'},
+  {name:'Colonial & Reform', start:1800,  end:1950, dates:'1800–1950 CE',glow:'200,150,60'},
+  {name:'Contemporary',      start:1950,  end:2025, dates:'1950–Present',glow:'80,160,200'}
 ];
 
 function _evEsc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 var _evShowCE=true,_evShowHijri=true;
 function _evCeToHijri(ce){return Math.round((ce-622)*33/32);}
 function _evFmtYear(y){
-  if(y==null||y==='') return '\u2014';
+  if(y==null||y==='') return '—';
   const n = typeof y==='number' ? y : parseInt(y,10);
-  if(isNaN(n)) return '\u2014';
+  if(isNaN(n)) return '—';
   if(n<0) return Math.abs(n)+'<span class="year-era">BCE</span>';
   return n+'<span class="year-era">CE</span>';
 }
@@ -100,7 +131,7 @@ function _evInjectStyles(){
   const old=document.getElementById('erasViewStyles');
   if(old) old.remove();
   const css = `
-  #eras-view{flex:1;display:none;overflow:hidden;background:var(--bg0,#0E1621);flex-direction:column}
+  #eras-view{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg0,#0E1621);width:100%;height:100%}
   #era-toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
   .era-dd-wrap{position:relative}
   .era-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
@@ -164,7 +195,7 @@ function _evCollectTypes(){
   });
   const out=Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999}));
   out.sort((a,b)=>a._earliest-b._earliest);
-  if(typeof PROPHET_CHAIN!=='undefined' && !out.some(t=>t.name==='Prophetic Lineage')){
+  if(typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.size && !out.some(t=>t.name==='Prophetic Lineage')){
     const pi=out.findIndex(t=>t.name==='Prophet');
     out.splice(pi>=0?pi+1:0,0,{name:'Prophetic Lineage',count:PROPHET_CHAIN.size,_earliest:-4000});
   }
@@ -235,14 +266,13 @@ function _evBuildCanvas(){
     html+='</div>';
     html+='<div class="era-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px;'+(_evShowCE?'':'display:none')+'">'+yrTxt+'</div>';
     var _hij=_evCeToHijri(dob);
-    var _hijLabel=_hij<0?Math.abs(_hij)+'<span class="year-era">\u0642.\u0647\u0640</span>':_hij+'<span class="year-era">\u0647\u0640</span>';
+    var _hijLabel=_hij<0?Math.abs(_hij)+'<span class="year-era">ق.هـ</span>':_hij+'<span class="year-era">هـ</span>';
     html+='<div class="era-hij-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X+10)+'px;'+(_evShowHijri?'':'display:none')+'">'+_hijLabel+'</div>';
   });
-  // Dual ruler toggle at top of stem
   html+='<div class="era-ruler-toggle" style="top:'+(_EV_TOP_PAD-28)+'px;left:'+(_EV_STEM_X-22)+'px">';
   html+='<span class="era-ruler-btn'+(_evShowCE?' on':'')+'" data-ruler="ce">CE</span>';
-  html+='<span class="era-ruler-sep">\u2502</span>';
-  html+='<span class="era-ruler-btn'+(_evShowHijri?' on':'')+'" data-ruler="hij">\u0647\u0640</span>';
+  html+='<span class="era-ruler-sep">│</span>';
+  html+='<span class="era-ruler-btn'+(_evShowHijri?' on':'')+'" data-ruler="hij">هـ</span>';
   html+='</div>';
   canvas.innerHTML=html;
 
@@ -251,11 +281,10 @@ function _evBuildCanvas(){
       if(e.target.closest('.era-wiki')) return;
       const name=row.getAttribute('data-name');
       if(!name) return;
-      if(typeof setView==='function') setView('timeline');
-      setTimeout(()=>{ if(typeof jumpTo==='function') jumpTo(name); },50);
+      // sandbox: TIMELINE jump not wired — log only
+      if(typeof window.jumpTo === 'function'){ window.jumpTo(name); }
     });
   });
-  // Ruler toggle wiring
   canvas.querySelectorAll('.era-ruler-btn').forEach(btn=>{
     btn.addEventListener('click',function(e){
       e.stopPropagation();
@@ -273,7 +302,6 @@ function _evRenderLeaves(people, rowMap, totalH){
   if(!canvas) return;
   const NS='http://www.w3.org/2000/svg';
 
-  // Group into leaves by type + tradition + virtual Prophetic Lineage
   const byTag={};
   people.forEach(p=>{
     if(p.type){
@@ -300,7 +328,6 @@ function _evRenderLeaves(people, rowMap, totalH){
   leaves.sort((a,b)=>a.y1-b.y1);
   const maxCount=Math.max.apply(null,leaves.map(l=>l.count));
 
-  // Era bands — row-based yearToY
   _EV_ERA_BANDS.forEach(era=>{
     const y1e=_evYearToY(era.start,people,rowMap);
     const y2e=_evYearToY(era.end,people,rowMap);
@@ -316,7 +343,6 @@ function _evRenderLeaves(people, rowMap, totalH){
     canvas.appendChild(label);
   });
 
-  // SVG leaves — EXACT books.js formula
   const svg=document.createElementNS(NS,'svg');
   svg.setAttribute('class','era-leaves');
   svg.style.left=_EV_STEM_X+'px';
@@ -370,8 +396,8 @@ function _evRenderLeaves(people, rowMap, totalH){
       e.stopPropagation();
       if(ld.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(ld.key); }
       else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(ld.key); }
-      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
+      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
       _evBuildCanvas(); _evAnimStop();
     };
     g.addEventListener('click',clickH);
@@ -381,7 +407,6 @@ function _evRenderLeaves(people, rowMap, totalH){
 
   canvas.appendChild(svg);
 
-  // Leaf labels — at STEM_X + 90 with dashed connectors (EXACT books.js approach)
   const LABEL_H=22;
   const LABEL_LEFT=_EV_STEM_X+90;
   const labelInfos=[];
@@ -414,21 +439,20 @@ function _evRenderLeaves(people, rowMap, totalH){
       e.stopPropagation();
       if(li.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(li.key); }
       else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(li.key); }
-      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
+      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
       _evBuildCanvas(); _evAnimStop();
     });
     canvas.appendChild(extLabel);
   });
 }
 
-// ── Multi-select dropdown panels ──
 function _evCk(on){ return '<span class="era-ck'+(on?' on':'')+'"></span>'; }
 function _evSyncBtnLabel(btnId,filterSet,defaultLabel,noun){
   const btn=document.getElementById(btnId); if(!btn) return;
   const n=filterSet.size; let txt=defaultLabel;
   if(n===1) txt=[...filterSet][0]; else if(n>1) txt=n+' '+noun+' selected';
-  btn.innerHTML=_evEsc(txt)+'  <span style="opacity:.6">\u25BE</span>';
+  btn.innerHTML=_evEsc(txt)+'  <span style="opacity:.6">▾</span>';
 }
 function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
   const scroll=document.getElementById(scrollId); if(!scroll) return;
@@ -439,10 +463,10 @@ function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
   const filtered=items.filter(t=>!q||t.name.toLowerCase().indexOf(q)>-1);
   filtered.forEach(t=>{
     const on=filterSet.has(t.name);
-    html+='<div class="era-ck-row'+(on?' checked':'')+'" data-val="'+_evEsc(t.name)+'">'+_evCk(on)+'<span class="era-ck-label">'+_evEsc(t.name)+'</span><span class="era-ck-count">('+t.count+')</span></div>';
+    html+='<div class="dd-item'+(on?' selected':'')+'" data-val="'+_evEsc(t.name)+'"><div class="dd-checkbox">'+(on?'✓':'')+'</div><span>'+_evEsc(t.name)+'</span><span class="dd-count">'+t.count+'</span></div>';
   });
   scroll.innerHTML=html;
-  scroll.querySelectorAll('.era-ck-row').forEach(el=>{
+  scroll.querySelectorAll('.dd-item').forEach(el=>{
     el.addEventListener('click',function(){ const v=this.getAttribute('data-val'); if(filterSet.has(v)) filterSet.delete(v); else filterSet.add(v); onchange(); });
   });
   scroll.querySelectorAll('.era-dd-toggle-all').forEach(el=>{
@@ -451,13 +475,13 @@ function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
 }
 function _evBuildTypePanel(){
   _evBuildPanel('era-type-scroll','era-type-search',_EV_FILTER.types,_evCollectTypes(),function(){
-    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
+    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
     _evBuildTypePanel(); _evBuildCanvas(); _evAnimStop();
   });
 }
 function _evBuildTradPanel(){
   _evBuildPanel('era-trad-scroll','era-trad-search',_EV_FILTER.trads,_evCollectTrads(),function(){
-    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
     _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
 }
@@ -467,21 +491,12 @@ function _evSyncClearBtn(){
   btn.classList.toggle('active',!!has);
 }
 
-// ── Animation (curfew sweep, matches books.js) ──
 function _evCurfewYToYear(cursorY,canvas){
   const rows=[].slice.call(canvas.querySelectorAll('.era-row'));
   for(let i=rows.length-1;i>=0;i--){
     const t=parseFloat(rows[i].style.top)||0;
     if(cursorY>=t){ const yr=rows[i].getAttribute('data-year'); if(yr!=='') return parseInt(yr,10); }
   }
-  return null;
-}
-function _evSvgBottomY(el){
-  const tag=el.tagName.toLowerCase();
-  if(tag==='path'){ const b=el.getBBox(); return b.y+b.height; }
-  if(tag==='line'){ const y1=parseFloat(el.getAttribute('y1')),y2=parseFloat(el.getAttribute('y2')); return Math.max(y1||0,y2||0); }
-  if(tag==='circle') return parseFloat(el.getAttribute('cy'))||0;
-  if(tag==='g'){ const gb=el.getBBox(); return gb.y+gb.height; }
   return null;
 }
 function _evAnimPlay(){
@@ -549,57 +564,58 @@ function initEras(){
   view.style.flexDirection='column';
 
   let html='';
-  html+='<div id="era-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">';
-  html+='<button id="era-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>';
-  html+='<div id="era-anim-mount" style="margin-left:auto;display:flex;align-items:center;gap:10px"></div>';
+  // Hidden helper buttons — keep IDs so existing _evSyncBtnLabel etc. continues to work.
+  html+='<div style="display:none">';
+  html+='<button id="era-type-btn"></button>';
+  html+='<button id="era-trad-btn"></button>';
+  html+='<button id="era-clear-all"></button>';
   html+='</div>';
-  html+='<div id="era-toolbar">';
-  html+='<div class="era-dd-wrap"><button class="era-dd-btn" id="era-type-btn">\u2014 SELECT A TYPE \u2014  <span style="opacity:.6">\u25BE</span></button>';
-  html+='<div class="era-dd-panel" id="era-type-panel"><input class="era-dd-search" id="era-type-search" placeholder="search types\u2026"><div class="era-dd-scroll" id="era-type-scroll"></div></div></div>';
-  html+='<div class="era-dd-wrap"><button class="era-dd-btn" id="era-trad-btn">\u2014 SELECT A TRADITION \u2014  <span style="opacity:.6">\u25BE</span></button>';
-  html+='<div class="era-dd-panel" id="era-trad-panel"><input class="era-dd-search" id="era-trad-search" placeholder="search traditions\u2026"><div class="era-dd-scroll" id="era-trad-scroll"></div></div></div>';
-  html+='<button class="era-clear-all" id="era-clear-all" title="Clear all filters">\u00D7</button>';
-  
+  // Filter dropdown panels — fixed-positioned on open below shell row 2 buttons.
+  html+='<div class="dd-panel" id="era-type-panel" style="position:fixed;display:none">';
+  html+='<input class="dd-search" id="era-type-search" placeholder="search types…">';
+  html+='<div id="era-type-scroll"></div>';
+  html+='</div>';
+  html+='<div class="dd-panel" id="era-trad-panel" style="position:fixed;display:none">';
+  html+='<input class="dd-search" id="era-trad-search" placeholder="search traditions…">';
+  html+='<div id="era-trad-scroll"></div>';
   html+='</div>';
   html+='<div id="era-scroll"><div id="era-canvas"></div></div>';
   view.innerHTML=html;
 
   _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas();
 
-  const pairs=[
-    {btn:'era-type-btn',panel:'era-type-panel',search:'era-type-search',build:_evBuildTypePanel},
-    {btn:'era-trad-btn',panel:'era-trad-panel',search:'era-trad-search',build:_evBuildTradPanel}
-  ];
-  pairs.forEach(dd=>{
-    const btn=document.getElementById(dd.btn),panel=document.getElementById(dd.panel);
-    btn.addEventListener('click',function(e){
-      e.stopPropagation();
-      pairs.forEach(o=>{ if(o.panel!==dd.panel) document.getElementById(o.panel).classList.remove('open'); });
-      panel.classList.toggle('open');
-      if(panel.classList.contains('open')){ const s=document.getElementById(dd.search); if(s) s.focus(); }
-    });
-    document.getElementById(dd.search).addEventListener('input',dd.build);
+  // Panel content live-search bindings (panels themselves are wired to shell buttons in _wireZoneB).
+  ['era-type-search','era-trad-search'].forEach(function(id, i){
+    var el = document.getElementById(id);
+    var build = [_evBuildTypePanel, _evBuildTradPanel][i];
+    if(el && build) el.addEventListener('input', build);
   });
-  document.addEventListener('click',function(e){
-    pairs.forEach(dd=>{
-      const p=document.getElementById(dd.panel),b=document.getElementById(dd.btn);
-      if(p&&!p.contains(e.target)&&e.target!==b&&!b.contains(e.target)) p.classList.remove('open');
+  // Outside-click closes any open panel.
+  document.addEventListener('click', function(e){
+    ['era-type-panel','era-trad-panel'].forEach(function(pid){
+      var p = document.getElementById(pid);
+      if(!p) return;
+      var srcBtn = window._evShellBtns ? window._evShellBtns[pid] : null;
+      if(p.classList.contains('open') && !p.contains(e.target) && (!srcBtn || !srcBtn.contains(e.target))){
+        p.classList.remove('open');
+        p.style.display = 'none';
+      }
     });
   });
   document.getElementById('era-clear-all').addEventListener('click',function(e){
     e.stopPropagation();
     _EV_FILTER.types.clear(); _EV_FILTER.trads.clear(); _EV_FILTER.search='';
-    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
+    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
+    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
     _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
   var _evHowBtn=document.getElementById('era-how-btn');
   if(_evHowBtn) _evHowBtn.addEventListener('click',function(e){e.stopPropagation();_showErasMethodology();});
 
-  const mount=document.getElementById('era-anim-mount');
-  if(mount && window.AnimControls){
+  const animMount=document.getElementById('era-anim-mount');
+  if(animMount && window.AnimControls){
     _EV_ANIM_CTL=window.AnimControls.create({
-      mountEl:mount, idPrefix:'era', initialSpeed:'1x',
+      mountEl:animMount, idPrefix:'era', initialSpeed:'1x',
       onPlay:_evAnimPlay, onPause:_evAnimPause, onStop:_evAnimStop,
       onSpeedChange:function(ms){ _EV_ANIM.speedMs=ms; }
     });
@@ -608,47 +624,6 @@ function initEras(){
   _EV_INITED=true;
 }
 
-(function(){
-  const _origOnSearch=window.onSearch;
-  window.onSearch=function(){
-    if(typeof VIEW!=='undefined' && VIEW==='eras'){
-      const box=document.getElementById('search');
-      _EV_FILTER.search=box?box.value:'';
-      _evBuildCanvas(); _evAnimStop(); return;
-    }
-    if(typeof _origOnSearch==='function') _origOnSearch();
-  };
-})();
-
-(function(){
-  if(typeof window.setView!=='function') return;
-  const _origSetView=window.setView;
-  window.setView=function(v){
-    _origSetView(v);
-    const ev=document.getElementById('eras-view'); if(!ev) return;
-    if(v==='eras'){ ev.style.display='flex'; ev.style.flexDirection='column'; if(!_EV_INITED) initEras(); }
-    else { _evAnimStop(); }
-  };
-})();
-
-window.initEras=initEras;
-window._erasAnimStop=_evAnimStop;
-window.toggleErasAnimate=function(){};
-
-window._captureState_eras=function(){
-  const s=document.getElementById('era-scroll');
-  return { types:Array.from(_EV_FILTER.types), trads:Array.from(_EV_FILTER.trads), search:_EV_FILTER.search, scrollY:s?s.scrollTop:0 };
-};
-window._restoreState_eras=function(s){
-  if(!s) return;
-  _EV_FILTER.types=new Set(s.types||[]); _EV_FILTER.trads=new Set(s.trads||[]); _EV_FILTER.search=s.search||'';
-  _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'\u2014 SELECT A TYPE \u2014','types');
-  _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'\u2014 SELECT A TRADITION \u2014','traditions');
-  _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas();
-  if(s.scrollY){ const sc=document.getElementById('era-scroll'); if(sc) sc.scrollTop=s.scrollY; }
-};
-
-
 function _showErasMethodology(){
   if(document.getElementById('eras-method-overlay')) return;
   var ov=document.createElement('div');
@@ -656,13 +631,134 @@ function _showErasMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+  box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
     +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">A vertical timeline where each figure appears as a leaf shape spanning their lifespan. The top is birth, the bottom is death. The central stem represents the flow of time. Filter by type and tradition to see how groups overlapped across centuries.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Gold leaf</span><span style="color:#A0AEC0">A prophet</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8B7355;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Leaf</span><span style="color:#A0AEC0">One figure\u2019s lifespan</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#777;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Stem</span><span style="color:#A0AEC0">Central timeline \u2014 CE left, Hijri right</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#555;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Animate</span><span style="color:#A0AEC0">Sweeping cursor revealing figures decade by decade</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Birth and death dates from classical Islamic biographical sources, cross-referenced with Wikipedia. Dates for early figures are estimates. The \u2248 symbol marks approximate dates.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A vertical timeline where each figure appears as a leaf shape spanning their lifespan. Filter by type and tradition to see how groups overlapped across centuries.</p>'
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('eras-method-close').addEventListener('click',function(){ov.remove();});
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
+
+  // ═══════════════════════════════════════════════════════════
+  // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+  // ═══════════════════════════════════════════════════════════
+
+  // Wire shell's Zone B controls — ERAS spec: { search:false, filters:[Era select], actions:[], htw:true }
+  function _wireZoneB(zoneBEl){
+    if(!zoneBEl) return;
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(!row2) return;
+    var selects = row2.querySelectorAll('.zb-select');
+
+    var shellMap = { 'era-type-panel': null, 'era-trad-panel': null };
+    selects.forEach(function(b){
+      var t = (b.textContent||'').trim().toUpperCase();
+      if(t === 'TYPE'){ shellMap['era-type-panel'] = b; }
+      else if(t === 'TRADITION'){ shellMap['era-trad-panel'] = b; }
+    });
+    window._evShellBtns = shellMap;
+
+    function _evOpenPanel(panelId, btn){
+      var panel = document.getElementById(panelId);
+      if(!panel || !btn) return;
+      ['era-type-panel','era-trad-panel'].forEach(function(id){
+        if(id !== panelId){
+          var p = document.getElementById(id);
+          if(p){ p.classList.remove('open'); p.style.display = 'none'; }
+        }
+      });
+      var nowOpen = !panel.classList.contains('open');
+      panel.classList.toggle('open', nowOpen);
+      if(nowOpen){
+        var r = btn.getBoundingClientRect();
+        panel.style.position = 'fixed';
+        panel.style.top  = (r.bottom + 4) + 'px';
+        panel.style.left = r.left + 'px';
+        panel.style.zIndex = 10000;
+        panel.style.display = 'block';
+        var s = panel.querySelector('.dd-search');
+        if(s) s.focus();
+      } else {
+        panel.style.display = 'none';
+      }
+    }
+
+    Object.keys(shellMap).forEach(function(panelId){
+      var btn = shellMap[panelId];
+      if(!btn) return;
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        _evOpenPanel(panelId, btn);
+      });
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('er-mounted');
+
+    // initEras expects #eras-view in the DOM.
+    zoneCEl.innerHTML = '<div id="eras-view"></div>';
+
+    // Eager Promise.all: core.json (figures) + events/master.json (per task spec).
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ window.PEOPLE = arr || []; return arr; });
+    var p2 = (window.eventsData && window.eventsData.events)
+      ? Promise.resolve(window.eventsData)
+      : fetch(dataUrl('data/islamic/events/master.json'))
+          .then(function(r){ return r.ok ? r.json() : null; })
+          .catch(function(){ return null; })
+          .then(function(d){ if(d) window.eventsData = d; return d; });
+
+    Promise.all([p1, p2]).then(function(){
+      initEras();
+      _wireZoneB(zoneBEl);
+    });
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('er-mounted');
+
+    try { _evAnimStop(); } catch(e) {}
+
+    var ov = document.getElementById('eras-method-overlay'); if(ov) ov.remove();
+    var s = document.getElementById('erasViewStyles'); if(s) s.remove();
+
+    _EV_INITED = false;
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+  return {
+    mount: mount,
+    unmount: unmount,
+    showHtw: _showErasMethodology,
+    animateStart: _evAnimPlay,
+    animatePause: _evAnimPause,
+    animateStop:  _evAnimStop,
+    animateSetSpeed: function(label){
+      var map = { '0.5x':2400, '1x':1200, '2x':600, '4x':300 };
+      _EV_ANIM.speedMs = map[label] || 1200;
+    }
+  };
 })();

@@ -1,11 +1,391 @@
-// ═══════════════════════════════════════════════════════════
-// EXPLAIN VIEW — Tafsir Library
-// Mounted as #explain route. Mirrors the data shape of
-// DIVE_TAFSIR_REGISTRY (from dive.js); the registry is inlined
-// here so load order doesn't matter.
-// ═══════════════════════════════════════════════════════════
+/* ─────────────────────────────────────────────────────────────
+   EXPLAIN view — verbatim lift from bv-app/explain.js
+   IIFE exposes window.ExplainView = { mount, unmount }
+   Hash routing: #explain?tafsir=<id>&surah=N&verse=X
+   ───────────────────────────────────────────────────────────── */
+window.ExplainView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (mirror timeline.js stub style)
+  // ═══════════════════════════════════════════════════════════
+  // stub: VIEW global
+  var VIEW = 'explain';
+  window.VIEW = 'explain';
+  // stub: APP namespace
+  window.APP = window.APP || { Favorites:null, filterFavsOnly:false, _lang:'en',
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; } };
+  // stub: setView — sandbox shell uses setActiveTab. The lifted _exJumpToStart
+  // calls setView('start') as part of the verse-chip jump; sandbox stubs it
+  // to log so the click degrades to a hash-only nav.
+  if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[explain] setView (stub):', v); };
+  // stub: openStartAtVerse — lifted code calls this after switching to START.
+  if(typeof window.openStartAtVerse !== 'function') window.openStartAtVerse = function(s,v,e){ console.log('[explain] openStartAtVerse (stub):', s, v, e); };
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/explain.js ▼▼▼
+  // (CSS block removed — moved to explain.css. setView wrapper
+  //  IIFE at the bottom dropped — sandbox shell handles routing.)
+  // ═══════════════════════════════════════════════════════════
 
 var _exInited = false;
+// xref state for inline link chips on tafsir cards
+var _exForwardXref = null;             // {tafsirId: {surah: {verse: {figures, places, books, ...}}}}
+window._exBookLookup = window._exBookLookup || null;
+window._exBookLookupLoading = false;
+function _exLoadBookLookup(cb){
+  if(window._exBookLookup){ if(cb) cb(window._exBookLookup); return; }
+  if(window._exBookLookupLoading){ setTimeout(function(){ _exLoadBookLookup(cb); }, 100); return; }
+  window._exBookLookupLoading = true;
+  fetch(dataUrl('data/islamic/books.json'))
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(j){
+      var arr = (j && j.books) || (Array.isArray(j) ? j : []);
+      var lookup = {};
+      arr.forEach(function(b){
+        if(!b || !b.id) return;
+        lookup[b.id] = {
+          title:  b.title || b.id,
+          author: b.author_name || '',
+          url:    b.url || b.free_url || '',
+          is_free: !!b.is_free
+        };
+      });
+      window._exBookLookup = lookup;
+      window._exBookLookupLoading = false;
+      console.log('[EXPLAIN] book lookup: loaded', Object.keys(lookup).length, 'books');
+      if(cb) cb(lookup);
+    })
+    .catch(function(e){
+      window._exBookLookup = {};
+      window._exBookLookupLoading = false;
+      console.warn('[EXPLAIN] book lookup load failed', e);
+      if(cb) cb(window._exBookLookup);
+    });
+}
+// Prime the lookup as soon as the module loads.
+try { _exLoadBookLookup(); } catch(e){}
+var _exForwardXrefLoading = false;
+var _exEventsByTafsirVerse = null;     // "<tafsirId>|<surah>:<verse>" -> [eventId, ...]
+var _exEventsXrefLoading = false;
+var _exConceptsForward = null;         // {tafsirId: {surah: {verse: [concept_id|{...}]}}}
+var _exConceptsForwardLoading = false;
+var _exConceptCanon = null;
+var _exConceptCanonLoading = false;
+
+function _exEnsureForwardXref(){
+  if(!_exForwardXref && !_exForwardXrefLoading){
+    _exForwardXrefLoading = true;
+    fetch(dataUrl('data/islamic/xref/tafsir_xref_forward.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        _exForwardXref = j || {};
+        _exForwardXrefLoading = false;
+        console.log('[EXPLAIN] forward xref: loaded', Object.keys(_exForwardXref).length, 'tafsir editions');
+        if(_exState.edition && _exState.loadedSurahData) _exRenderCards(_exState.loadedSurahData);
+      })
+      .catch(function(e){ _exForwardXrefLoading = false; console.warn('[EXPLAIN] forward xref load failed', e); });
+  }
+  if(!_exEventsByTafsirVerse && !_exEventsXrefLoading){
+    _exEventsXrefLoading = true;
+    fetch(dataUrl('data/islamic/xref/tafsir_xref_events.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        var idx = {};
+        Object.keys(j||{}).forEach(function(eid){
+          (j[eid]||[]).forEach(function(ref){
+            var k = ref.tafsir + '|' + ref.surah + ':' + ref.verse;
+            (idx[k] = idx[k] || []).push(eid);
+          });
+        });
+        _exEventsByTafsirVerse = idx;
+        _exEventsXrefLoading = false;
+        console.log('[EXPLAIN] events xref reverse: built', Object.keys(idx).length, 'tafsir-verse keys');
+        if(_exState.edition && _exState.loadedSurahData) _exRenderCards(_exState.loadedSurahData);
+      })
+      .catch(function(e){ _exEventsXrefLoading = false; console.warn('[EXPLAIN] events xref load failed', e); });
+  }
+  if(!_exConceptsForward && !_exConceptsForwardLoading){
+    _exConceptsForwardLoading = true;
+    fetch(dataUrl('data/islamic/concepts/concept_forward_tafsir.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        _exConceptsForward = j || {};
+        _exConceptsForwardLoading = false;
+        console.log('[EXPLAIN] concepts forward: loaded', Object.keys(_exConceptsForward).length, 'tafsir editions');
+        if(_exState.edition && _exState.loadedSurahData) _exRenderCards(_exState.loadedSurahData);
+      })
+      .catch(function(e){ _exConceptsForwardLoading = false; console.warn('[EXPLAIN] concepts forward load failed', e); });
+  }
+  if(!_exConceptCanon && !_exConceptCanonLoading){
+    _exConceptCanonLoading = true;
+    fetch(dataUrl('data/islamic/concepts/concept-canon.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        _exConceptCanon = j || {};
+        _exConceptCanonLoading = false;
+        console.log('[EXPLAIN] concept canon: loaded', Object.keys(_exConceptCanon).length, 'entries');
+        if(_exState.edition && _exState.loadedSurahData) _exRenderCards(_exState.loadedSurahData);
+      })
+      .catch(function(e){ _exConceptCanonLoading = false; console.warn('[EXPLAIN] concept canon load failed', e); });
+  }
+}
+
+function _exNameForFigure(item){
+  // item may be string slug, string name, or object
+  if(item && typeof item === 'object'){
+    return { slug: item.slug || item.id || '', name: item.name || item.famous || item.label || item.slug || item.id || '' };
+  }
+  var s = String(item || '');
+  // Try slug → famous lookup via global PEOPLE
+  if(/^F\d{4}$/.test(s)){
+    var ppl = window.PEOPLE || [];
+    var p = ppl.find(function(x){ return x.slug === s; });
+    return { slug: s, name: p ? (p.famous || s) : s };
+  }
+  // Otherwise treat as a name; reverse-lookup slug via PEOPLE
+  var ppl2 = window.PEOPLE || [];
+  var p2 = ppl2.find(function(x){ return x.famous === s; });
+  return { slug: p2 ? p2.slug : '', name: s };
+}
+
+function _exBuildLinkChipsHtml(edition, surah, verse){
+  var tafsirId = edition && edition.id ? edition.id : '';
+  var fwd = _exForwardXref && _exForwardXref[tafsirId] && _exForwardXref[tafsirId][String(surah)] && _exForwardXref[tafsirId][String(surah)][String(verse)];
+  if(!fwd && _exForwardXref && edition && edition.work_id){
+    var enEd = EX_TAFSIR_REGISTRY.find(function(t){ return t.work_id === edition.work_id && t.lang === 'EN'; });
+    if(enEd && enEd.id !== tafsirId){
+      fwd = _exForwardXref[enEd.id] && _exForwardXref[enEd.id][String(surah)] && _exForwardXref[enEd.id][String(surah)][String(verse)];
+    }
+  }
+  var figs = (fwd && fwd.figures) || [];
+  var places = (fwd && fwd.places) || [];
+  var books = (fwd && fwd.books) || [];
+  var evKey = tafsirId + '|' + surah + ':' + verse;
+  var events = (_exEventsByTafsirVerse && _exEventsByTafsirVerse[evKey]) || [];
+  // Try EN-sibling key for events too
+  if(!events.length && edition && edition.work_id){
+    var enEd2 = EX_TAFSIR_REGISTRY.find(function(t){ return t.work_id === edition.work_id && t.lang === 'EN'; });
+    if(enEd2){
+      var altKey = enEd2.id + '|' + surah + ':' + verse;
+      events = (_exEventsByTafsirVerse && _exEventsByTafsirVerse[altKey]) || [];
+    }
+  }
+  var hasAny = figs.length || places.length || books.length || events.length;
+  if(!hasAny){
+    return '<div class="ex-c-link-empty">No cross-references<br>for this verse</div>';
+  }
+  var html = '';
+  if(figs.length){
+    html += '<div class="ex-c-link-hdr">FIGURES</div>';
+    figs.forEach(function(f){
+      var info = _exNameForFigure(f);
+      if(!info.name) return;
+      html += '<span class="ex-c-link-chip ex-c-link-fig" onclick="window._exClickFigure(\''+_exEsc(info.name)+'\')" title="'+_exEsc(info.name)+'">'+_exEsc(info.name)+'</span>';
+    });
+  }
+  if(events.length){
+    html += '<div class="ex-c-link-hdr">EVENTS</div>';
+    events.forEach(function(eid){
+      html += '<span class="ex-c-link-chip ex-c-link-event" onclick="window._stXrefJumpEvent(\''+_exEsc(eid)+'\')" title="'+_exEsc(eid)+'">'+_exEsc(eid)+'</span>';
+    });
+  }
+  if(places.length){
+    html += '<div class="ex-c-link-hdr">PLACES</div>';
+    places.forEach(function(pl){
+      var name = (typeof pl === 'object') ? (pl.name || pl.label || '') : String(pl||'');
+      if(!name) return;
+      html += '<span class="ex-c-link-chip ex-c-link-place" onclick="window._exClickPlace(\''+_exEsc(name)+'\')" title="'+_exEsc(name)+'">'+_exEsc(name)+'</span>';
+    });
+  }
+  if(books.length){
+    html += '<div class="ex-c-link-hdr">BOOKS</div>';
+    var bookLookup = window._exBookLookup || {};
+    books.forEach(function(bk){
+      var bid, fallbackLabel;
+      if(typeof bk === 'object'){
+        bid = bk.id || bk.slug || '';
+        fallbackLabel = bk.title || bk.name || bid || '';
+      } else {
+        bid = String(bk || '');
+        fallbackLabel = bid;
+      }
+      if(!bid && !fallbackLabel) return;
+      var rec = (bid && bookLookup[bid]) || null;
+      var title  = rec ? rec.title  : fallbackLabel;
+      var author = rec ? rec.author : '';
+      var url    = rec ? rec.url    : '';
+      var unresolved = !rec && bid && /^F\d+-B\d+$/.test(bid);
+      var readTag = url
+        ? '<span class="ex-c-book-readtag" title="Free to read">Read</span>'
+        : '';
+      var unkTag = unresolved
+        ? '<span class="ex-c-book-unktag" title="Book ID not found in registry">?</span>'
+        : '';
+      var authorLine = author
+        ? '<div class="ex-c-book-author">'+_exEsc(author)+'</div>'
+        : '';
+      html += '<div class="ex-c-link-chip ex-c-book-card" data-book-id="'+_exEsc(bid)+'" data-book-url="'+_exEsc(url)+'" data-book-title="'+_exEsc(title)+'" onclick="window._exClickBookCard(this, event)" title="'+_exEsc(title)+'">'
+        + '<div class="ex-c-book-title">'+_exEsc(title)+readTag+unkTag+'</div>'
+        + authorLine
+        + '</div>';
+    });
+  }
+  // CONCEPTS
+  var cdat = _exConceptsForward && _exConceptsForward[tafsirId] && _exConceptsForward[tafsirId][String(surah)] && _exConceptsForward[tafsirId][String(surah)][String(verse)];
+  if(!cdat && _exConceptsForward && edition && edition.work_id){
+    var enEdC = EX_TAFSIR_REGISTRY.find(function(t){ return t.work_id === edition.work_id && t.lang === 'EN'; });
+    if(enEdC && enEdC.id !== tafsirId){
+      cdat = _exConceptsForward[enEdC.id] && _exConceptsForward[enEdC.id][String(surah)] && _exConceptsForward[enEdC.id][String(surah)][String(verse)];
+    }
+  }
+  if(cdat && cdat.length){
+    html += '<div class="ex-c-link-hdr">CONCEPTS</div>';
+    cdat.forEach(function(c){
+      var cid = (typeof c === 'object') ? (c.concept_id || c.concept || c.id || '') : String(c||'');
+      if(!cid) return;
+      var meta = (_exConceptCanon && _exConceptCanon[cid]) || null;
+      var label = meta ? (meta.name || meta.english_name || meta.display_name || meta.label || cid) : cid;
+      var titleAttr = label;
+      if(typeof c === 'object' && c.count != null) titleAttr += ' · count ' + c.count;
+      html += '<span class="ex-c-link-chip ex-c-link-concept" onclick="window._exClickConcept(\''+_exEsc(cid)+'\')" title="'+_exEsc(titleAttr)+'" style="background:rgba(120,200,180,0.10);color:#78c8b4;border:1px solid rgba(120,200,180,0.45)">'+_exEsc(label)+'</span>';
+    });
+  }
+  return html;
+}
+
+window._exVerseGo = function(surah, verse){
+  if(!surah || !verse) return;
+  var s = parseInt(surah,10), v = parseInt(verse,10);
+  if(!s || !v) return;
+  if(window._exState){
+    window._exState.surah = s;
+    window._exState.targetVerse = v;
+  }
+  // Re-render reader at new surah; explain.js reader watches _exState.surah
+  if(typeof _exRenderReader === 'function'){
+    _exRenderReader();
+  }
+  // Defer scroll-to-verse until cards render
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var card = document.querySelector('.ex-tafsir-card[data-verse="'+v+'"]') || document.querySelector('.ex-tafsir-card');
+    if(card){
+      try{ card.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){ card.scrollIntoView(true); }
+      clearInterval(iv); return;
+    }
+    if(tries > 40) clearInterval(iv);
+  }, 80);
+};
+window._exNavVerse = function(dir){
+  if(!window._exState) return;
+  var s = window._exState.surah || 1;
+  // Find current visible card; fall back to first
+  var cards = document.querySelectorAll('.ex-tafsir-card[data-verse]');
+  var curV = 1;
+  if(cards.length){
+    // Pick the card most centered in viewport (or first)
+    var best = cards[0], bestDist = 1e9;
+    for(var i=0;i<cards.length;i++){
+      var r = cards[i].getBoundingClientRect();
+      var d = Math.abs(r.top);
+      if(d < bestDist){ bestDist = d; best = cards[i]; }
+    }
+    curV = parseInt(best.getAttribute('data-verse'),10) || 1;
+  }
+  var nextV = curV + (dir === 'next' ? 1 : -1);
+  if(nextV < 1) return;
+  // Clamp at top of surah; for next, just attempt scroll — if card doesn't exist, no-op
+  window._exVerseGo(s, nextV);
+};
+
+window._exClickConcept = function(cid){
+  if(!cid) return;
+  if(typeof window._stConceptJump === 'function'){
+    window._stConceptJump(cid);
+    return;
+  }
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="think"], .tab-think');
+  for(var i=0;i<c.length;i++){
+    var el=c[i];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='THINK'||dv==='think'){ el.click(); break; }
+  }
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    if(typeof window.thinkSelectConceptBySlug === 'function'){
+      try{ window.thinkSelectConceptBySlug(cid); }catch(e){}
+      clearInterval(iv); return;
+    }
+    if(tries>50) clearInterval(iv);
+  },80);
+};
+
+window._exClickFigure = function(famous){
+  if(!famous) return;
+  window._tlPendingFocus = famous;
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], .tab-timeline');
+  for(var i=0;i<c.length;i++){
+    var el=c[i];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='TIMELINE'||dv==='timeline'){ el.click(); break; }
+  }
+  // Retry until TIMELINE finishes mount + exposes its real jumpTo / focusPersonInTimeline
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var fn = (typeof window.focusPersonInTimeline === 'function' && window.focusPersonInTimeline.toString().length > 60)
+      ? window.focusPersonInTimeline
+      : window.jumpTo;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try { fn(famous); } catch(e){}
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 60) clearInterval(iv);
+  }, 80);
+};
+window._exClickPlace = function(name){
+  if(!name) return;
+  window._mapPendingPlace = name;
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="map"], .tab-map');
+  for(var i=0;i<c.length;i++){
+    var el=c[i];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='MAP'||dv==='map'){ el.click(); return; }
+  }
+  if(typeof setView==='function') setView('map');
+};
+window._exClickBook = function(bookId, label){
+  window._booksPendingBook = bookId || label || '';
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="books"], .tab-books');
+  for(var i=0;i<c.length;i++){
+    var el=c[i];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='BOOKS'||dv==='books'){ el.click(); return; }
+  }
+  if(typeof setView==='function') setView('books');
+};
+// Rich card variant: open free-read URL in a new tab if present, else fall
+// through to the BOOKS-view jump above.
+window._exClickBookCard = function(el, ev){
+  if(ev){ try { ev.stopPropagation(); } catch(e){} }
+  if(!el) return;
+  var url = el.getAttribute('data-book-url') || '';
+  var bid = el.getAttribute('data-book-id') || '';
+  var title = el.getAttribute('data-book-title') || '';
+  if(url){
+    try { window.open(url, '_blank', 'noopener,noreferrer'); return; } catch(e){}
+  }
+  window._exClickBook(bid, title);
+};
+var _pinnedTafsirs = null;  // { entries: [{tafsir, surah, verse}], label: '' }
 
 var EX_TAFSIR_REGISTRY = [
   {id:"ar-tafsir-ibn-kathir",          work:"Tafsir Ibn Kathir",                 work_id:"ibn-kathir",    author:"Ibn Kathir",               fcode:"F0741", lang:"AR", tradition:"sunni-classical", partial:false},
@@ -42,7 +422,6 @@ var EX_LANG_ORDER = ["EN","AR","UR","BN","KU","RU"];
 var EX_TRADITION_NAMES = {"sunni-classical":"Sunni Classical","sunni-modern":"Sunni Modern","sufi":"Sufi","ibn-abbas":"Ibn Abbas (attr.)"};
 var EX_WORKS = null;
 
-// State
 var _exState = {
   edition: null,
   surah: 0,
@@ -121,7 +500,7 @@ function _exLoadSurah(tafsirId, surahId){
   var key = tafsirId + '/' + surahId;
   if(_exState.fileCache[key]) return Promise.resolve(_exState.fileCache[key]);
   var pad = ('000' + surahId).slice(-3);
-  return fetch('data/islamic/tafsir/' + tafsirId + '/surah-' + pad + '.json')
+  return fetch(dataUrl('data/islamic/tafsir/' + tafsirId + '/surah-' + pad + '.json'))
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(j){
       var list = _exNormalize(j);
@@ -291,15 +670,59 @@ function _exRenderCards(list){
       : ('Surah ' + _exState.surah + ' : Verses ' + start + '–' + end);
     var chipLabel = '→ Verse ' + _exState.surah + ':' + start;
 
-    h += '<div class="ex-tafsir-card" id="ex-tc-' + start + '" data-start="' + start + '" data-end="' + end + '">';
-    h += '  <div class="ex-c-head">' + headLabel + '</div>';
-    h += '  <div class="' + bodyClass + '">' + _exEsc(e.text) + '</div>';
-    h += '  <div class="ex-chip-row">';
-    h += '    <a class="ex-chip" href="javascript:void(0)" onclick="_exJumpToStart(' + _exState.surah + ',' + start + ');return false;">' + chipLabel + '</a>';
+    var linkChipsHtml = _exBuildLinkChipsHtml(_exState.edition, _exState.surah, start);
+    var _exBmKey  = 't:' + _exState.edition + ':' + _exState.surah + ':' + start;
+    var _exBmAuth = window.GoldArkAuth;
+    var _exBmFilled = !!(_exBmAuth && _exBmAuth.isSignedIn && _exBmAuth.isSignedIn() && _exBmAuth.hasBookmarkKey && _exBmAuth.hasBookmarkKey(_exBmKey));
+    var _exBmTitle = _exBmAuth && _exBmAuth.isSignedIn && _exBmAuth.isSignedIn()
+      ? (_exBmFilled ? 'Remove bookmark' : 'Add bookmark')
+      : 'Sign in to bookmark';
+    var _exBmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_exBmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+    h += '<div class="ex-tafsir-card" id="ex-tc-' + start + '" data-start="' + start + '" data-end="' + end + '" data-verse="' + start + '">';
+    h += '  <div class="ex-tc-grid">';
+    h += '    <div class="ex-c-links">' + linkChipsHtml + '</div>';
+    h += '    <div class="ex-c-main">';
+    h += '      <div class="ex-c-head" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>' + headLabel + '</span>' +
+         '<button class="ex-bmk-btn" data-bmkey="' + _exBmKey + '" title="' + _exBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _exBmRibbon + '</button>' +
+         '</div>';
+    h += '      <div class="' + bodyClass + '">' + _exEsc(e.text) + '</div>';
+    h += '      <div class="ex-chip-row">';
+    h += '        <a class="ex-chip" href="#start?surah=' + _exState.surah + '&verse=' + start + '" onclick="window._exJumpToStart(' + _exState.surah + ',' + start + ');return false;">' + chipLabel + '</a>';
+    h += '      </div>';
+    h += '    </div>';
     h += '  </div>';
     h += '</div>';
   });
-  cardArea.innerHTML = h || '<div class="ex-loading">No entries for this surah.</div>';
+  var navHtml = '<div class="ex-verse-nav" style="display:flex;justify-content:center;align-items:center;gap:18px;padding:14px 0;margin:6px 0">'
+    + '<button onclick="window._exNavVerse(\'prev\')" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:Lato,sans-serif" title="Previous verse">◀  PREV VERSE</button>'
+    + '<button onclick="window._exNavVerse(\'next\')" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:Lato,sans-serif" title="Next verse">NEXT VERSE  ▶</button>'
+    + '</div>';
+  cardArea.innerHTML = h ? (navHtml + h + navHtml) : '<div class="ex-loading">No entries for this surah.</div>';
+
+  // Wire bookmark buttons on tafsir entries.
+  cardArea.querySelectorAll('.ex-bmk-btn').forEach(function(btn){
+    btn.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      var key = btn.getAttribute('data-bmkey');
+      if(!key) return;
+      var doToggle = function(){
+        var a = window.GoldArkAuth;
+        if(!a || !a.isSignedIn()) return;
+        var was = a.hasBookmarkKey(key);
+        var p = was ? a.removeBookmarkKey(key) : a.addBookmarkKey(key);
+        Promise.resolve(p).then(function(){
+          var nowOn = !was;
+          btn.innerHTML = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (nowOn?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+          btn.title = nowOn ? 'Remove bookmark' : 'Add bookmark';
+        }).catch(function(err){ console.warn('[ex-bmk] toggle failed', err); });
+      };
+      if(window.GoldArkAuth && window.GoldArkAuth.isSignedIn()){
+        doToggle();
+      } else if(typeof window.requireTester === 'function'){
+        window.requireTester('bookmark', doToggle);
+      }
+    });
+  });
 
   var verseSel = document.getElementById('ex-verseSel');
   if(verseSel){
@@ -316,9 +739,9 @@ function _exRenderCards(list){
   }
 
   if(_exState.pendingScrollVerse != null){
-    var jumpTo = _exState.pendingScrollVerse;
+    var jumpToVerse = _exState.pendingScrollVerse;
     _exState.pendingScrollVerse = null;
-    setTimeout(function(){ _exScrollToVerse(jumpTo); }, 50);
+    setTimeout(function(){ _exScrollToVerse(jumpToVerse); }, 50);
   } else if(_exState.verse){
     setTimeout(function(){ _exScrollToVerse(_exState.verse); }, 50);
   }
@@ -340,20 +763,37 @@ function _exScrollToVerse(v){
   setTimeout(function(){ target.classList.remove('pulse'); }, 1600);
 }
 
-// Invoked by verse-chip onclick in an entry card
+// Verse-chip click → DOM-click START tab + retry openStartAtVerse.
+// setView is a sandbox stub, so we navigate via the actual tab DOM.
 window._exJumpToStart = function(s, v){
-  location.hash = '#start';
-  if(typeof window.setView === 'function') window.setView('start');
-  setTimeout(function(){
-    if(typeof window.openStartAtVerse === 'function') window.openStartAtVerse(s, v, v);
-  }, 120);
+  location.hash = '#start?surah=' + s + '&verse=' + v;
+  var clicked = false;
+  var candidates = document.querySelectorAll(
+    '#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start'
+  );
+  for(var i=0;i<candidates.length;i++){
+    var el = candidates[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv = el.getAttribute('data-view')||'';
+    if(txt === 'START' || dv === 'start'){ el.click(); clicked = true; break; }
+  }
+  if(!clicked && typeof window.setView === 'function') window.setView('start');
+  // Retry calling openStartAtVerse — START's data may still be loading.
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(typeof window.openStartAtVerse === 'function'){
+      try{ window.openStartAtVerse(s, v, v); }catch(e){}
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 50){ clearInterval(iv); console.warn('[explain] openStartAtVerse never ready'); }
+  }, 80);
 };
 
-// Open a tafsir deep-link: called by _exApplyHash and by external _dvOpenExplain
 function _exOpenTafsir(id, surah, verse){
   var ed = EX_TAFSIR_REGISTRY.find(function(t){ return t.id === id; });
   if(!ed) { _exRenderBlank(); return; }
-  // Respect language filter if it's set to something other than this edition's lang
   var langSel = document.getElementById('ex-langSel');
   var pref = langSel ? langSel.value : '';
   if(pref && pref !== ed.lang){
@@ -372,7 +812,112 @@ function _exOpenTafsir(id, surah, verse){
 }
 window._exOpenTafsir = _exOpenTafsir;
 
-// Hash format: #explain?tafsir=<id>&surah=N&verse=X
+function _exHandlePendingPinned(){
+  var pp = window._stPendingPinnedTafsir;
+  if(!pp || !pp.entries || !pp.entries.length) return false;
+  console.log('[EXPLAIN] pending pinned tafsirs received', pp.entries.length, 'label:', pp.label);
+  window._stPendingPinnedTafsir = null;
+  _pinnedTafsirs = { entries: pp.entries.slice(), label: pp.label || '' };
+  var tries=0;
+  var iv = setInterval(function(){
+    tries++;
+    var main = document.getElementById('ex-main');
+    if(main){
+      clearInterval(iv);
+      try { _exRenderPinned(); } catch(e){ console.warn('[EX] _exRenderPinned threw', e); }
+    } else if(tries>50){
+      clearInterval(iv);
+      console.warn('[EX] ex-main never appeared for tafsir pin set');
+    }
+  },80);
+  return true;
+}
+
+function _exRenderPinned(){
+  if(!_pinnedTafsirs) return;
+  var main = document.getElementById('ex-main');
+  if(!main) return;
+  var entries = _pinnedTafsirs.entries;
+  var label = _pinnedTafsirs.label || '';
+  var count = entries.length;
+
+  var h = '<div id="ex-pin-banner" style="padding:10px 14px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.4);border-radius:6px;color:#D4AF37;font-size:14px;margin:0 0 14px;display:flex;align-items:center;gap:12px;font-family:\'Cinzel\',serif;letter-spacing:.04em">'
+    + '<span style="flex:1">'+_exEsc(label)+' — '+count+' tafsir entr'+(count!==1?'ies':'y')+'</span>'
+    + '<span id="ex-pin-clear" style="cursor:pointer;opacity:.85;padding:2px 10px;border:1px solid rgba(212,175,55,.5);border-radius:3px">✕ Clear</span>'
+    + '</div>'
+    + '<div id="ex-pin-results"><div class="ex-loading">Loading '+count+' tafsir entries…</div></div>';
+  main.innerHTML = h;
+  var clearBtn = document.getElementById('ex-pin-clear');
+  if(clearBtn) clearBtn.onclick = _exClearPinned;
+
+  // Group by (tafsir,surah) for batch fetch — one network call per tafsir+surah pair
+  var groupKeys = {};
+  entries.forEach(function(e){
+    var k = e.tafsir + '|' + e.surah;
+    groupKeys[k] = { tafsir: e.tafsir, surah: e.surah };
+  });
+  var groups = Object.keys(groupKeys).map(function(k){ return groupKeys[k]; });
+
+  var jobs = groups.map(function(g){
+    return _exLoadSurah(g.tafsir, g.surah)
+      .then(function(list){ return { tafsir: g.tafsir, surah: g.surah, list: list }; })
+      .catch(function(err){ console.warn('[EX pin] fetch failed', g.tafsir, g.surah, err); return { tafsir: g.tafsir, surah: g.surah, list: null }; });
+  });
+
+  Promise.all(jobs).then(function(results){
+    if(!_pinnedTafsirs) return; // user cleared mid-fetch
+    var resultsEl = document.getElementById('ex-pin-results');
+    if(!resultsEl) return;
+
+    var resultMap = {};
+    results.forEach(function(r){ resultMap[r.tafsir+'|'+r.surah] = r.list; });
+
+    var html = '';
+    entries.forEach(function(e){
+      var ed = EX_TAFSIR_REGISTRY.find(function(x){ return x.id===e.tafsir; });
+      var workLabel = ed ? (ed.work + (ed.author ? ' — ' + ed.author : '')) : e.tafsir;
+      var langBadge = ed ? ed.lang : '';
+      var bodyClass = ed && ed.lang === 'AR' ? 'ex-c-body-ar' : (ed && ed.lang === 'UR' ? 'ex-c-body-ur' : 'ex-c-body-en');
+      var list = resultMap[e.tafsir+'|'+e.surah];
+      var entry = list ? list.find(function(x){ return x.ayah===e.verse; }) : null;
+      var hasText = entry && entry.text;
+
+      html += '<div class="ex-tafsir-card" style="margin-bottom:14px">';
+      html += '  <div class="ex-c-head" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">';
+      html += '    <span style="flex:1;min-width:200px">'+_exEsc(workLabel)+'</span>';
+      if(langBadge){
+        html += '    <span style="font-size:11px;color:#c084fc;border:1px solid rgba(192,132,252,.4);border-radius:3px;padding:1px 6px">'+_exEsc(langBadge)+'</span>';
+      }
+      html += '    <span style="font-size:11px;color:#888">Surah '+e.surah+':'+e.verse+'</span>';
+      html += '  </div>';
+      if(hasText){
+        html += '  <div class="'+bodyClass+'">'+_exEsc(entry.text)+'</div>';
+      } else {
+        html += '  <div class="'+bodyClass+'" style="color:#888;font-style:italic">[entry not found in source file]</div>';
+      }
+      html += '  <div class="ex-chip-row" style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">';
+      html += '    <a class="ex-chip" href="#start?surah='+e.surah+'&verse='+e.verse+'" onclick="window._exJumpToStart('+e.surah+','+e.verse+');return false;">→ Verse '+e.surah+':'+e.verse+'</a>';
+      html += '    <a class="ex-chip" href="#" onclick="window._exClearPinnedAndOpen(\''+_exEsc(e.tafsir)+'\','+e.surah+','+e.verse+');return false;">Open in Reader</a>';
+      html += '  </div>';
+      html += '</div>';
+    });
+    resultsEl.innerHTML = html;
+  });
+}
+
+function _exClearPinned(){
+  _pinnedTafsirs = null;
+  var b = document.getElementById('ex-pin-banner');
+  if(b) b.remove();
+  var r = document.getElementById('ex-pin-results');
+  if(r) r.remove();
+  _exRenderBlank();
+}
+window._exClearPinnedAndOpen = function(tafsirId, surah, verse){
+  _pinnedTafsirs = null;
+  _exOpenTafsir(tafsirId, surah, verse);
+};
+
 function _exApplyHash(){
   var h = location.hash || '';
   if(h.indexOf('#explain') !== 0){
@@ -407,7 +952,6 @@ function _exHashWrite(){
   if(location.hash !== newHash) history.replaceState(null, '', newHash);
 }
 
-// Populate filters and wire events (one-time)
 function _exPopulateFilters(){
   var langSel   = document.getElementById('ex-langSel');
   var tradSel   = document.getElementById('ex-tradSel');
@@ -498,101 +1042,443 @@ function _exWireFilters(){
 function _exBuildDOM(container){
   EX_WORKS = _exBuildWorks();
 
-  var css =
-    '#explain-view{display:flex;flex-direction:column;flex:1;width:100%;height:100%;overflow:hidden;background:#0e1420;color:#ccc;font-family:Georgia,serif}' +
-    '#explain-view *{box-sizing:border-box}' +
-    '#explain-view .ex-hdr{flex-shrink:0;background:#0a1018;border-bottom:1px solid #2a3344;padding:12px 22px;display:flex;flex-direction:column;gap:10px}' +
-    '#explain-view .ex-top-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}' +
-    '#explain-view .ex-h1{font-family:\'Cinzel\',serif;font-weight:600;font-size:20px;letter-spacing:.08em;color:#D4AF37;margin:0}' +
-    '#explain-view .ex-filter-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}' +
-    '#explain-view .ex-filter-row label{display:flex;align-items:center;gap:6px;font-family:\'Cinzel\',serif;letter-spacing:.08em;font-size:11px;color:#6B7B8C;text-transform:uppercase}' +
-    '#explain-view .ex-filter-row select{background:#151d2b;color:#ccc;border:1px solid #2a3344;padding:6px 10px;font-family:Georgia,serif;font-size:13px;border-radius:3px;text-transform:none;letter-spacing:normal}' +
-    '#explain-view .ex-filter-row select:hover,#explain-view .ex-filter-row select:focus{border-color:#D4AF37;outline:none}' +
-    '#explain-view .ex-filter-row select:disabled{opacity:.4;cursor:not-allowed}' +
-    '#explain-view .ex-body{flex:1;overflow-y:auto}' +
-    '#explain-view .ex-main{max-width:1200px;margin:0 auto;padding:30px 20px 80px}' +
-    '#explain-view .ex-blank-intro{text-align:center;color:#6B7B8C;font-size:14px;margin:20px 0 24px;font-style:italic}' +
-    '#explain-view .ex-work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}' +
-    '#explain-view .ex-work-card{background:#151d2b;border:1px solid #2a3344;border-radius:6px;padding:16px 16px 14px;cursor:pointer;transition:border-color .15s;display:flex;flex-direction:column;gap:8px;position:relative;min-height:150px}' +
-    '#explain-view .ex-work-card:hover{border-color:#D4AF37}' +
-    '#explain-view .ex-w-title{font-family:\'Cinzel\',serif;color:#D4AF37;font-size:15px;letter-spacing:.06em;margin:0;line-height:1.3;padding-right:80px}' +
-    '#explain-view .ex-w-author{color:#6B7B8C;font-size:12px;margin:0;font-style:italic}' +
-    '#explain-view .ex-w-author a{color:inherit;text-decoration:underline}' +
-    '#explain-view .ex-w-author a:hover{color:#D4AF37}' +
-    '#explain-view .ex-w-langs{display:flex;flex-wrap:wrap;gap:4px}' +
-    '#explain-view .ex-w-tradition-row{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px}' +
-    '#explain-view .ex-lang-badge{font-family:\'Cinzel\',serif;letter-spacing:.08em;font-size:10px;color:#D4AF37;border:1px solid #D4AF37;padding:2px 7px;border-radius:2px}' +
-    '#explain-view .ex-trad-badge{font-family:\'Cinzel\',serif;letter-spacing:.08em;font-size:10px;color:#6B7B8C;border:1px solid #6B7B8C;padding:2px 7px;border-radius:2px;text-transform:uppercase}' +
-    '#explain-view .ex-partial-badge{position:absolute;top:12px;right:12px;font-family:\'Cinzel\',serif;letter-spacing:.06em;font-size:10px;color:#E0A960;border:1px solid #E0A960;background:rgba(212,175,55,0.10);padding:2px 7px;border-radius:2px;text-transform:uppercase}' +
-    '#explain-view .ex-reader-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid #2a3344;padding-bottom:14px;margin-bottom:22px;flex-wrap:wrap}' +
-    '#explain-view .ex-reader-head-main{flex:1 1 400px}' +
-    '#explain-view .ex-reader-title{font-family:\'Cinzel\',serif;color:#D4AF37;font-size:19px;letter-spacing:.06em;margin:0}' +
-    '#explain-view .ex-reader-meta{color:#6B7B8C;font-size:13px;margin-top:4px;font-style:italic}' +
-    '#explain-view .ex-reader-meta a{color:inherit;text-decoration:underline}' +
-    '#explain-view .ex-reader-meta a:hover{color:#D4AF37}' +
-    '#explain-view .ex-amber{color:#E0A960}' +
-    '#explain-view .ex-edition-pills{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}' +
-    '#explain-view .ex-edition-pill{background:#151d2b;color:#D4AF37;border:1px solid #D4AF37;padding:4px 10px;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;cursor:pointer;line-height:1.3}' +
-    '#explain-view .ex-edition-pill:hover{background:#1f2a3d}' +
-    '#explain-view .ex-edition-pill.active{background:#D4AF37;color:#0e1420}' +
-    '#explain-view .ex-close-btn{background:none;border:1px solid #555;color:#888;cursor:pointer;width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;padding:0;flex:0 0 auto}' +
-    '#explain-view .ex-close-btn:hover{border-color:#D4AF37;color:#D4AF37}' +
-    '#explain-view .ex-tafsir-card{background:#151d2b;border:1px solid #2a3344;border-radius:4px;margin:0 0 16px;padding:14px 18px;scroll-margin-top:140px}' +
-    '#explain-view .ex-tafsir-card.pulse{animation:ex-pulse 1.5s ease-out}' +
-    '@keyframes ex-pulse{0%{box-shadow:0 0 0 2px #D4AF37,0 0 30px rgba(212,175,55,.5);background:rgba(212,175,55,.10)}100%{box-shadow:0 0 0 0 transparent,0 0 0 transparent;background:#151d2b}}' +
-    '#explain-view .ex-c-head{font-family:\'Cinzel\',serif;color:#D4AF37;font-size:12px;letter-spacing:.1em;margin:0 0 8px;padding-bottom:6px;border-bottom:1px dashed #2a3344}' +
-    '#explain-view .ex-c-body-en{font-family:Georgia,serif;font-size:16px;line-height:1.65;color:#ccc;white-space:pre-wrap}' +
-    '#explain-view .ex-c-body-ar{font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;font-size:22px;line-height:2;color:#eee;direction:rtl;text-align:right;white-space:pre-wrap}' +
-    '#explain-view .ex-c-body-ur{font-family:\'Noto Nastaliq Urdu\',\'Noto Naskh Arabic\',serif;font-size:22px;line-height:2;color:#eee;direction:rtl;text-align:right;white-space:pre-wrap}' +
-    '#explain-view .ex-chip-row{margin-top:12px;padding-top:10px;border-top:1px dashed #2a3344;display:flex;flex-wrap:wrap;gap:8px}' +
-    '#explain-view .ex-chip{background:#1a2434;color:#D4AF37;border:1px solid #D4AF37;font-family:\'Cinzel\',serif;letter-spacing:.06em;font-size:11px;padding:3px 10px;border-radius:3px;cursor:pointer;text-decoration:none}' +
-    '#explain-view .ex-chip:hover{background:#D4AF37;color:#0e1420}' +
-    '#explain-view .ex-loading{text-align:center;padding:60px;color:#6B7B8C}';
-
+  // In-body header removed (shell row 2 owns Tafsir/Language/Surah/Verse). The
+  // five legacy <select>s are kept hidden so existing _exPopulateFilters /
+  // _exWireFilters / _exRenderCards code keeps working unchanged.
   container.innerHTML =
-    '<style>' + css + '</style>' +
-    '<div class="ex-hdr">' +
-      '<div class="ex-top-row">' +
-        '<h1 class="ex-h1">EXPLAIN — Tafsir Library</h1>' +
-      '</div>' +
-      '<div class="ex-filter-row">' +
-        '<label>Language <select id="ex-langSel"></select></label>' +
-        '<label>Tradition <select id="ex-tradSel"></select></label>' +
-        '<label>Author <select id="ex-authorSel"></select></label>' +
-        '<label>Surah <select id="ex-surahSel"></select></label>' +
-        '<label>Verse <select id="ex-verseSel" disabled></select></label>' +
-      '</div>' +
-    '</div>' +
     '<div class="ex-body">' +
-      '<div class="ex-main" id="ex-main"></div>' +
+      '<div class="ex-stash" style="display:none">' +
+        '<select id="ex-langSel"></select>' +
+        '<select id="ex-tradSel"></select>' +
+        '<select id="ex-authorSel"></select>' +
+        '<select id="ex-surahSel"></select>' +
+        '<select id="ex-verseSel" disabled></select>' +
+      '</div>' +
+      '<div class="ex-main content-body" id="ex-main"></div>' +
     '</div>';
 
   _exPopulateFilters();
   _exWireFilters();
 }
 
-// ═══════════════════════════════════════════════════════════
-// SETVIEW INTEGRATION — same pattern as start.js
-// ═══════════════════════════════════════════════════════════
-(function(){
-  var _origSV = window.setView;
-  if(!_origSV) return;
-  window.setView = function(v){
-    var ev = document.getElementById('explain-view');
-    if(v !== 'explain'){
-      if(ev) ev.style.display = 'none';
+  // ═══════════════════════════════════════════════════════════
+  // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+  // The trailing setView IIFE wrapper from bv-app/explain.js was
+  // dropped — sandbox shell handles tab switching via setActiveTab.
+  // ═══════════════════════════════════════════════════════════
+
+  // ═══════════════════════════════════════════════════════════
+  // SHELL FILTER WIRING (.dd-panel pattern lifted from monastic.js)
+  // ═══════════════════════════════════════════════════════════
+  var _exShellDocClickBound = false;
+
+  function _exFindShellBtn(row2, labelBase){
+    var sels = row2.querySelectorAll('.zb-select');
+    var lb = labelBase.toLowerCase();
+    for(var i = 0; i < sels.length; i++){
+      var t = (sels[i].textContent || '').trim().toLowerCase();
+      if(t === lb || t.indexOf(lb + ':') === 0) return sels[i];
     }
-    _origSV(v);
-    if(v === 'explain'){
-      ['leftPanel','silsilaView','mapView','studyRoomView',
-       'follow-view','events-view','eras-view','think-view','one-view',
-       'talk-view','books-view','monastic-view','updates-view','start-view'].forEach(function(id){
-        var el = document.getElementById(id); if(el) el.style.display = 'none';
+    return null;
+  }
+
+  function _exTafsirEntries(){
+    if(!EX_WORKS) EX_WORKS = _exBuildWorks();
+    return EX_WORKS.map(function(w){
+      return { value: w.work_id, label: w.work, count: w.langs.length };
+    });
+  }
+  function _exLangEntries(){
+    return EX_LANG_ORDER.map(function(L){
+      return { value: L, label: EX_LANG_FULL[L] + ' (' + L + ')' };
+    });
+  }
+  function _exSurahEntries(){
+    var arr = [];
+    for(var i = 1; i <= 114; i++) arr.push({ value: String(i), label: 'Surah ' + i });
+    return arr;
+  }
+  function _exVerseEntries(){
+    var max = 286;
+    if(_exState.loadedSurahData && _exState.loadedSurahData.length){
+      max = _exState.loadedSurahData[_exState.loadedSurahData.length - 1].ayah;
+    }
+    var arr = [];
+    for(var i = 1; i <= max; i++) arr.push({ value: String(i), label: 'Verse ' + i });
+    return arr;
+  }
+
+  function _exBuildShellPanel(kind, labelBase, entries, allLabel){
+    var panel = document.createElement('div');
+    panel.className = 'dd-panel ex-shell-panel';
+    panel.dataset.kind = kind;
+
+    var si = document.createElement('input');
+    si.type = 'text'; si.className = 'dd-search'; si.placeholder = 'Search...';
+    si.oninput = function(){
+      var q = si.value.toLowerCase();
+      panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){
+        el.style.display = el.innerText.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
       });
-      var ip = document.getElementById('infoPanel'); if(ip) ip.style.display = 'none';
-      var cs = document.getElementById('centScrollStrip'); if(cs) cs.style.display = 'none';
-      if(ev) ev.style.display = 'flex';
-      initExplain();
+    };
+    panel.appendChild(si);
+
+    var allRow = document.createElement('div');
+    allRow.className = 'dd-item dd-all';
+    allRow.innerHTML = '<div class="dd-checkbox">✓</div><span>' + _exEsc(allLabel || 'All') + '</span>';
+    allRow.onclick = function(){ _exShellPick(kind, '', allLabel || 'All'); };
+    panel.appendChild(allRow);
+
+    entries.forEach(function(entry){
+      var el = document.createElement('div');
+      el.className = 'dd-item';
+      el.dataset.val = entry.value;
+      var inner = '<div class="dd-checkbox"></div><span>' + _exEsc(entry.label) + '</span>';
+      if(entry.count != null) inner += '<span class="dd-count">' + entry.count + '</span>';
+      el.innerHTML = inner;
+      el.onclick = function(){ _exShellPick(kind, entry.value, entry.label); };
+      panel.appendChild(el);
+    });
+
+    panel._exLabelBase = labelBase;
+    return panel;
+  }
+
+  function _exRefreshShellPanel(kind){
+    var portal = document.getElementById('ex-portal');
+    if(!portal) return;
+    var panel = portal.querySelector('.ex-shell-panel[data-kind="' + kind + '"]');
+    if(!panel) return;
+    panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){ el.remove(); });
+    var entries;
+    if(kind === 'tafsir')      entries = _exTafsirEntries();
+    else if(kind === 'lang')   entries = _exLangEntries();
+    else if(kind === 'surah')  entries = _exSurahEntries();
+    else if(kind === 'verse')  entries = _exVerseEntries();
+    else entries = [];
+    entries.forEach(function(entry){
+      var el = document.createElement('div');
+      el.className = 'dd-item';
+      el.dataset.val = entry.value;
+      var inner = '<div class="dd-checkbox"></div><span>' + _exEsc(entry.label) + '</span>';
+      if(entry.count != null) inner += '<span class="dd-count">' + entry.count + '</span>';
+      el.innerHTML = inner;
+      el.onclick = function(){ _exShellPick(kind, entry.value, entry.label); };
+      panel.appendChild(el);
+    });
+  }
+
+  function _exShellSyncBtnLabel(kind, value, label){
+    var portal = document.getElementById('ex-portal');
+    if(!portal) return;
+    var panel = portal.querySelector('.ex-shell-panel[data-kind="' + kind + '"]');
+    if(!panel) return;
+    panel.querySelectorAll('.dd-item').forEach(function(item){
+      var ck = item.querySelector('.dd-checkbox');
+      var on = item.classList.contains('dd-all') ? value === '' : item.dataset.val === value;
+      if(ck) ck.textContent = on ? '✓' : '';
+      item.classList.toggle('selected', on);
+    });
+    var btn = panel._exBtn;
+    if(btn){
+      btn.textContent = (value === '' || value == null) ? panel._exLabelBase : (panel._exLabelBase + ': ' + label);
     }
-  };
+  }
+
+  function _exClosePanels(){
+    var portal = document.getElementById('ex-portal');
+    if(!portal) return;
+    portal.querySelectorAll('.dd-panel.open').forEach(function(p){
+      p.classList.remove('open');
+      p.style.display = 'none';
+    });
+  }
+
+  function _exShellPick(kind, value, label){
+    _exShellSyncBtnLabel(kind, value, label);
+    _exClosePanels();
+
+    if(kind === 'tafsir'){
+      if(value === ''){ _exCloseReader(); }
+      else { _exOpenWork(value); }
+      return;
+    }
+    if(kind === 'lang'){
+      var langSel = document.getElementById('ex-langSel');
+      if(langSel){
+        langSel.value = value || '';
+        langSel.dispatchEvent(new Event('change'));
+      }
+      return;
+    }
+    if(kind === 'surah'){
+      var n = parseInt(value, 10) || 0;
+      _exState.surah = n;
+      _exState.verse = 0;
+      var surahSel = document.getElementById('ex-surahSel');
+      if(surahSel) surahSel.value = String(n || 0);
+      _exHashWrite();
+      if(_exState.edition && n > 0) _exRenderReader();
+      _exShellSyncBtnLabel('verse', '', 'All');
+      _exRefreshShellPanel('verse');
+      return;
+    }
+    if(kind === 'verse'){
+      var v = parseInt(value, 10) || 0;
+      _exState.verse = v;
+      _exHashWrite();
+      if(v > 0) _exScrollToVerse(v);
+      return;
+    }
+  }
+
+  function _exWireShellFilters(zoneBEl){
+    if(!zoneBEl) return;
+
+    var searchInp = zoneBEl.querySelector('.zb-search-input');
+    if(searchInp){
+      searchInp.placeholder = 'Search tafsir works…';
+      searchInp.addEventListener('input', function(){
+        var q = (searchInp.value || '').toLowerCase();
+        document.querySelectorAll('#ex-main .ex-work-card').forEach(function(card){
+          var text = (card.textContent || '').toLowerCase();
+          card.style.display = !q || text.indexOf(q) !== -1 ? '' : 'none';
+        });
+      });
+    }
+
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(!row2) return;
+
+    var portal = document.getElementById('ex-portal');
+    if(portal && portal.parentNode) portal.parentNode.removeChild(portal);
+    portal = document.createElement('div');
+    portal.id = 'ex-portal';
+    document.body.appendChild(portal);
+
+    var btnTafsir = _exFindShellBtn(row2, 'Tafsir');
+    var btnLang   = _exFindShellBtn(row2, 'Language');
+
+    var panelTafsir = _exBuildShellPanel('tafsir', 'Tafsir', _exTafsirEntries(), 'All');
+    var panelLang   = _exBuildShellPanel('lang',   'Language', _exLangEntries(), 'All');
+
+    portal.appendChild(panelTafsir);
+    portal.appendChild(panelLang);
+
+    function _attach(btn, panel){
+      if(!btn || !panel) return;
+      panel._exBtn = btn;
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var wasOpen = panel.classList.contains('open');
+        _exClosePanels();
+        if(!wasOpen){
+          var r = btn.getBoundingClientRect();
+          panel.style.cssText = 'position:fixed;top:' + (r.bottom + 4) + 'px;left:' + r.left + 'px;z-index:10000;display:block;background:#1a1a2e;border:1px solid rgba(212,175,55,0.55);border-radius:6px;min-width:240px;max-height:400px;overflow-y:auto;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.6)';
+          panel.classList.add('open');
+          var si = panel.querySelector('.dd-search');
+          if(si){ si.value = ''; si.dispatchEvent(new Event('input')); si.focus(); }
+        }
+      });
+    }
+
+    _attach(btnTafsir, panelTafsir);
+    _attach(btnLang,   panelLang);
+
+    if(!_exShellDocClickBound){
+      _exShellDocClickBound = true;
+      document.addEventListener('click', function(e){
+        var portalNow = document.getElementById('ex-portal');
+        if(!portalNow) return;
+        portalNow.querySelectorAll('.dd-panel.open').forEach(function(p){
+          if(p.contains(e.target)) return;
+          if(p._exBtn && p._exBtn.contains(e.target)) return;
+          p.classList.remove('open');
+          p.style.display = 'none';
+        });
+      });
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT / HTW
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function _exMount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+    document.body.classList.add('ex-mounted');
+
+    var view = document.getElementById('explain-view');
+    if(!view){
+      view = document.createElement('div');
+      view.id = 'explain-view';
+      zoneCEl.appendChild(view);
+      _exInited = false;
+    }
+    view.style.display = 'flex';
+
+    if(!_exInited){
+      _exBuildDOM(view);
+      _exInited = true;
+    }
+
+    _exEnsureForwardXref();
+    if(!window.PEOPLE || !window.PEOPLE.length){
+      fetch(dataUrl('data/islamic/core.json'))
+        .then(function(r){ return r.ok ? r.json() : []; })
+        .catch(function(){ return []; })
+        .then(function(arr){
+          window.PEOPLE = arr || [];
+          if(_exState.edition && _exState.loadedSurahData) _exRenderCards(_exState.loadedSurahData);
+        });
+    }
+    _exWireShellFilters(zoneBEl);
+    var hadPin = _exHandlePendingPinned();
+    if(!hadPin) _exApplyHash();
+
+    setTimeout(function(){
+      if(!zoneBEl || !window._exState) return;
+      var row2 = zoneBEl.querySelector('.zb-row2');
+      if(!row2) return;
+      if(row2.querySelector('.ex-surah-picker')) return;
+      var holder = document.createElement('div');
+      holder.className = 'ex-verse-nav-pickers';
+      holder.style.cssText = 'display:flex;gap:8px;margin-left:auto;align-items:center';
+      holder.innerHTML = '<button class="zb-select ex-surah-picker" id="exSurahBtn">Surah <span id="exSurahLbl">--</span> ▾</button>'
+        + '<button class="zb-select ex-verse-picker" id="exVerseBtn">Verse <span id="exVerseLbl">--</span> ▾</button>';
+      row2.appendChild(holder);
+      var sBtn = holder.querySelector('#exSurahBtn');
+      var vBtn = holder.querySelector('#exVerseBtn');
+      var sLbl = holder.querySelector('#exSurahLbl');
+      var vLbl = holder.querySelector('#exVerseLbl');
+      function refreshLbls(){
+        sLbl.textContent = (window._exState && window._exState.surah) || '--';
+        vLbl.textContent = (window._exState && window._exState.targetVerse) || '1';
+      }
+      refreshLbls();
+      // Surah counts: 6236 ayahs across 114 surahs — load from quran-meta.json or hardcode
+      var SURAH_AYAHS = [7,286,200,176,120,165,206,75,129,109,123,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6];
+      function buildPanel(items, onPick){
+        var old = document.querySelector('.dd-panel.ex-nav-dd'); if(old) old.remove();
+        var p = document.createElement('div');
+        p.className = 'dd-panel ex-nav-dd open';
+        var inner = '<input class="dd-search" placeholder="search...">';
+        items.forEach(function(it){
+          inner += '<div class="dd-item" data-val="'+it.val+'"><div class="dd-checkbox">'+(it.sel?'✓':'')+'</div><span>'+it.label+'</span></div>';
+        });
+        p.innerHTML = inner;
+        document.body.appendChild(p);
+        var search = p.querySelector('.dd-search');
+        search.addEventListener('input', function(){
+          var q = search.value.toLowerCase();
+          p.querySelectorAll('.dd-item').forEach(function(it){
+            it.style.display = it.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+          });
+        });
+        p.querySelectorAll('.dd-item').forEach(function(it){
+          it.addEventListener('click', function(){
+            var v = parseInt(it.getAttribute('data-val'),10);
+            onPick(v);
+            p.remove();
+          });
+        });
+        // Outside-click close
+        setTimeout(function(){
+          var closer = function(e){
+            if(!p.contains(e.target)){ p.remove(); document.removeEventListener('click', closer); }
+          };
+          document.addEventListener('click', closer);
+        }, 50);
+        return p;
+      }
+      sBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var curS = (window._exState && window._exState.surah) || 1;
+        var items = [];
+        for(var i=1;i<=114;i++) items.push({val:i, label:'Surah '+i+' ('+SURAH_AYAHS[i-1]+' verses)', sel: i===curS});
+        var p = buildPanel(items, function(v){
+          window._exVerseGo(v, 1);
+          refreshLbls();
+        });
+        var r = sBtn.getBoundingClientRect();
+        p.style.position='fixed'; p.style.top=(r.bottom+4)+'px'; p.style.left=r.left+'px';
+      });
+      vBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var curS = (window._exState && window._exState.surah) || 1;
+        var curV = (window._exState && window._exState.targetVerse) || 1;
+        var ayahs = SURAH_AYAHS[curS-1] || 1;
+        var items = [];
+        for(var i=1;i<=ayahs;i++) items.push({val:i, label:'Verse '+curS+':'+i, sel: i===curV});
+        var p = buildPanel(items, function(v){
+          window._exVerseGo(curS, v);
+          refreshLbls();
+        });
+        var r = vBtn.getBoundingClientRect();
+        p.style.position='fixed'; p.style.top=(r.bottom+4)+'px'; p.style.left=r.left+'px';
+      });
+      // Refresh labels whenever state changes via arrows
+      var origVG = window._exVerseGo;
+      window._exVerseGo = function(s, v){ origVG(s, v); setTimeout(refreshLbls, 100); };
+    }, 400);
+  }
+
+  function _exUnmount(){
+    if(!_mounted) return;
+    _mounted = false;
+    document.body.classList.remove('ex-mounted');
+
+    var view = document.getElementById('explain-view');
+    if(view) view.style.display = 'none';
+
+    _exClosePanels();
+
+    _exState.edition = null;
+    _exState.surah = 0;
+    _exState.verse = 0;
+    _exState.pendingScrollVerse = null;
+    _exState.loadedSurahData = null;
+    _pinnedTafsirs = null;
+    _exInited = false;
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+  function _exShowHtw(){
+    var body =
+      'EXPLAIN — Tafsir Collection · The Explanation.\n\n' +
+      'Browse 28 tafsir editions across 21 works in 6 languages (Arabic, English, Urdu, Bengali, Kurdish, Russian).\n\n' +
+      'Filter by Tafsir or Language. Click any work card to read.';
+    if(typeof window.openModal === 'function') window.openModal('How This Works — EXPLAIN', body);
+  }
+
+  function _exCaptureState(){
+    var body = document.querySelector('#explain-view .ex-body');
+    return {
+      scroll: body ? body.scrollTop : 0,
+      pinEntries: _pinnedTafsirs ? _pinnedTafsirs.entries.slice() : null,
+      pinLabel: _pinnedTafsirs ? _pinnedTafsirs.label : ''
+    };
+  }
+  function _exRestoreState(s){
+    if(!s) return;
+    if(s.pinEntries && s.pinEntries.length){
+      _pinnedTafsirs = { entries: s.pinEntries.slice(), label: s.pinLabel || '' };
+      setTimeout(function(){
+        try { _exRenderPinned(); } catch(e){}
+      }, 250);
+    }
+    if(typeof s.scroll === 'number'){
+      setTimeout(function(){
+        var body = document.querySelector('#explain-view .ex-body');
+        if(body) body.scrollTop = s.scroll;
+      }, 400);
+    }
+  }
+  return { mount: _exMount, unmount: _exUnmount, showHtw: _exShowHtw, captureState: _exCaptureState, restoreState: _exRestoreState };
 })();

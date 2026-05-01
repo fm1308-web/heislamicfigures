@@ -1,0 +1,159 @@
+/* ─────────────────────────────────────────────────────────────
+   EXPLAIN view — lifted from the inline <style> block bv-app's
+   _exBuildDOM injects. Now in a real stylesheet so it's visible
+   in DevTools and not duplicated on remount.
+   No globals, no body{}, no .zone-*.
+   ───────────────────────────────────────────────────────────── */
+
+#zoneC #explain-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0e1420;
+  color: #ccc;
+  font-family: Georgia, serif;
+}
+
+#explain-view{display:flex;flex-direction:column;flex:1;width:100%;height:100%;overflow:hidden;background:#0e1420;color:#ccc;font-family:Georgia,serif}
+#explain-view *{box-sizing:border-box}
+
+/* ── Header (filter row) ── */
+#explain-view .ex-hdr{flex-shrink:0;background:#0a1018;border-bottom:1px solid #2a3344;padding:12px 22px;display:flex;flex-direction:column;gap:10px}
+#explain-view .ex-top-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+#explain-view .ex-h1{font-family:'Cinzel',serif;font-weight:600;font-size:20px;letter-spacing:.08em;color:#D4AF37;margin:0}
+#explain-view .ex-filter-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#explain-view .ex-filter-row label{display:flex;align-items:center;gap:6px;font-family:'Cinzel',serif;letter-spacing:.08em;font-size:11px;color:#6B7B8C;text-transform:uppercase}
+#explain-view .ex-filter-row select{background:#151d2b;color:#ccc;border:1px solid #2a3344;padding:6px 10px;font-family:Georgia,serif;font-size:13px;border-radius:3px;text-transform:none;letter-spacing:normal}
+#explain-view .ex-filter-row select:hover,#explain-view .ex-filter-row select:focus{border-color:#D4AF37;outline:none}
+#explain-view .ex-filter-row select:disabled{opacity:.4;cursor:not-allowed}
+
+/* ── Body / scroll container ── */
+#explain-view .ex-body{flex:1;overflow-y:auto}
+#explain-view .ex-main{max-width:1200px;margin:0 auto;padding:30px 20px 80px}
+#explain-view .ex-blank-intro{text-align:center;color:#6B7B8C;font-size:14px;margin:20px 0 24px;font-style:italic}
+
+/* ── Work-card grid (default state) ── */
+#explain-view .ex-work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+#explain-view .ex-work-card{background:#151d2b;border:1px solid #2a3344;border-radius:6px;padding:16px 16px 14px;cursor:pointer;transition:border-color .15s;display:flex;flex-direction:column;gap:8px;position:relative;min-height:150px}
+#explain-view .ex-work-card:hover{border-color:#D4AF37}
+#explain-view .ex-w-title{font-family:'Cinzel',serif;color:#D4AF37;font-size:15px;letter-spacing:.06em;margin:0;line-height:1.3;padding-right:80px}
+#explain-view .ex-w-author{color:#6B7B8C;font-size:12px;margin:0;font-style:italic}
+#explain-view .ex-w-author a{color:inherit;text-decoration:underline}
+#explain-view .ex-w-author a:hover{color:#D4AF37}
+#explain-view .ex-w-langs{display:flex;flex-wrap:wrap;gap:4px}
+#explain-view .ex-w-tradition-row{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px}
+#explain-view .ex-lang-badge{font-family:'Cinzel',serif;letter-spacing:.08em;font-size:10px;color:#D4AF37;border:1px solid #D4AF37;padding:2px 7px;border-radius:2px}
+#explain-view .ex-trad-badge{font-family:'Cinzel',serif;letter-spacing:.08em;font-size:10px;color:#6B7B8C;border:1px solid #6B7B8C;padding:2px 7px;border-radius:2px;text-transform:uppercase}
+#explain-view .ex-partial-badge{position:absolute;top:12px;right:12px;font-family:'Cinzel',serif;letter-spacing:.06em;font-size:10px;color:#E0A960;border:1px solid #E0A960;background:rgba(212,175,55,0.10);padding:2px 7px;border-radius:2px;text-transform:uppercase}
+
+/* ── Reader state (after picking a work) ── */
+#explain-view .ex-reader-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid #2a3344;padding-bottom:14px;margin-bottom:22px;flex-wrap:wrap}
+#explain-view .ex-reader-head-main{flex:1 1 400px}
+#explain-view .ex-reader-title{font-family:'Cinzel',serif;color:#D4AF37;font-size:19px;letter-spacing:.06em;margin:0}
+#explain-view .ex-reader-meta{color:#6B7B8C;font-size:13px;margin-top:4px;font-style:italic}
+#explain-view .ex-reader-meta a{color:inherit;text-decoration:underline}
+#explain-view .ex-reader-meta a:hover{color:#D4AF37}
+#explain-view .ex-amber{color:#E0A960}
+#explain-view .ex-edition-pills{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+#explain-view .ex-edition-pill{background:#151d2b;color:#D4AF37;border:1px solid #D4AF37;padding:4px 10px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;cursor:pointer;line-height:1.3}
+#explain-view .ex-edition-pill:hover{background:#1f2a3d}
+#explain-view .ex-edition-pill.active{background:#D4AF37;color:#0e1420}
+#explain-view .ex-close-btn{background:none;border:1px solid #555;color:#888;cursor:pointer;width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;padding:0;flex:0 0 auto}
+#explain-view .ex-close-btn:hover{border-color:#D4AF37;color:#D4AF37}
+
+/* ── Tafsir cards ── */
+#explain-view .ex-tafsir-card{background:#151d2b;border:1px solid #2a3344;border-radius:4px;margin:0 0 16px;padding:14px 18px;scroll-margin-top:140px}
+#explain-view .ex-tc-grid{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+#explain-view .ex-c-links{display:flex;flex-direction:column;gap:5px;padding-top:2px}
+#explain-view .ex-c-link-hdr{font-family:'Cinzel',serif;font-size:10px;color:rgba(212,175,55,0.65);letter-spacing:.1em;text-transform:uppercase;margin:6px 0 2px}
+#explain-view .ex-c-link-hdr:first-child{margin-top:0}
+#explain-view .ex-c-link-chip{display:inline-block;padding:3px 9px;border-radius:10px;font-size:11.5px;cursor:pointer;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis;transition:.15s;font-family:'Lato',sans-serif;letter-spacing:.03em;line-height:1.3}
+#explain-view .ex-c-link-fig{background:rgba(212,175,55,0.12);color:#d4af37;border:1px solid rgba(212,175,55,0.4)}
+#explain-view .ex-c-link-fig:hover{background:rgba(212,175,55,0.25);border-color:#d4af37}
+#explain-view .ex-c-link-event{background:rgba(255,140,80,0.12);color:#ffa770;border:1px solid rgba(255,140,80,0.4)}
+#explain-view .ex-c-link-event:hover{background:rgba(255,140,80,0.22);border-color:#ffa770}
+#explain-view .ex-c-link-place{background:rgba(180,140,255,0.12);color:#c0a8ff;border:1px solid rgba(180,140,255,0.4)}
+#explain-view .ex-c-link-place:hover{background:rgba(180,140,255,0.22);border-color:#c0a8ff}
+#explain-view .ex-c-link-book{background:rgba(120,180,255,0.12);color:#95c4ff;border:1px solid rgba(120,180,255,0.4)}
+#explain-view .ex-c-link-book:hover{background:rgba(120,180,255,0.22);border-color:#95c4ff}
+/* Rich book card — full title (wrap), optional author, Read tag. */
+#explain-view .ex-c-book-card{
+  display:block;
+  width:100%;
+  max-width:none !important;
+  white-space:normal !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  padding:8px 12px;
+  border-radius:5px;
+  background:rgba(120,180,255,0.10);
+  border:1px solid rgba(120,180,255,0.35);
+  font-size:12px;
+  line-height:1.35;
+  cursor:pointer;
+  transition:.15s;
+  font-family:'Lato',sans-serif;
+}
+#explain-view .ex-c-book-card:hover{
+  background:rgba(120,180,255,0.20);
+  border-color:#95c4ff;
+}
+#explain-view .ex-c-book-title{
+  font-weight:700;
+  color:#d4af37;
+  letter-spacing:.02em;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:6px;
+}
+#explain-view .ex-c-book-author{
+  font-style:italic;
+  color:#9aa3b2;
+  font-size:11px;
+  margin-top:3px;
+  line-height:1.3;
+}
+#explain-view .ex-c-book-readtag{
+  flex:0 0 auto;
+  background:rgba(80,200,120,0.20);
+  color:#7fdfa1;
+  border:1px solid rgba(80,200,120,0.5);
+  border-radius:3px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.06em;
+  padding:1px 6px;
+  text-transform:uppercase;
+  font-family:'Cinzel',serif;
+  align-self:flex-start;
+}
+#explain-view .ex-c-book-unktag{
+  flex:0 0 auto;
+  background:rgba(154,163,178,0.15);
+  color:#9aa3b2;
+  border:1px solid rgba(154,163,178,0.4);
+  border-radius:3px;
+  font-size:10px;
+  font-weight:700;
+  padding:1px 5px;
+  margin-left:4px;
+  align-self:flex-start;
+}
+@media (max-width:700px){#explain-view .ex-tc-grid{grid-template-columns:1fr}#explain-view .ex-c-links{flex-direction:row;flex-wrap:wrap}}
+#explain-view .ex-tafsir-card.pulse{animation:ex-pulse 1.5s ease-out}
+@keyframes ex-pulse{0%{box-shadow:0 0 0 2px #D4AF37,0 0 30px rgba(212,175,55,.5);background:rgba(212,175,55,.10)}100%{box-shadow:0 0 0 0 transparent,0 0 0 transparent;background:#151d2b}}
+#explain-view .ex-c-head{font-family:'Cinzel',serif;color:#D4AF37;font-size:12px;letter-spacing:.1em;margin:0 0 8px;padding-bottom:6px;border-bottom:1px dashed #2a3344}
+#explain-view .ex-c-body-en{font-family:Georgia,serif;font-size:16px;line-height:1.65;color:#ccc;white-space:pre-wrap}
+#explain-view .ex-c-body-ar{font-family:'Noto Naskh Arabic','Amiri',serif;font-size:22px;line-height:2;color:#eee;direction:rtl;text-align:right;white-space:pre-wrap}
+#explain-view .ex-c-body-ur{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;font-size:22px;line-height:2;color:#eee;direction:rtl;text-align:right;white-space:pre-wrap}
+#explain-view .ex-chip-row{margin-top:12px;padding-top:10px;border-top:1px dashed #2a3344;display:flex;flex-wrap:wrap;gap:8px}
+#explain-view .ex-chip{background:#1a2434;color:#D4AF37;border:1px solid #D4AF37;font-family:'Cinzel',serif;letter-spacing:.06em;font-size:11px;padding:3px 10px;border-radius:3px;cursor:pointer;text-decoration:none}
+#explain-view .ex-chip:hover{background:#D4AF37;color:#0e1420}
+#explain-view .ex-loading{text-align:center;padding:60px;color:#6B7B8C}
+#explain-view .ex-reader-head{position:sticky;top:0;background:#0e1420;z-index:5;padding-top:14px;margin-top:-14px;box-shadow:0 6px 12px -8px rgba(0,0,0,0.6)}
+#explain-view #ex-pin-banner{position:sticky;top:0;z-index:6}
+#explain-view .ex-c-link-empty{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;color:#4a5566;text-transform:uppercase;line-height:1.5;padding-top:4px;font-style:italic}

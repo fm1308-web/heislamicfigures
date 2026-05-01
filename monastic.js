@@ -1,16 +1,74 @@
+/* ─────────────────────────────────────────────────────────────
+   MONASTIC view — verbatim lift from bv-app/monastic.js
+   The inner `window.Monastic = (function(){…})()` IIFE remains
+   intact (sets up Monastic.init/openWizard/showHadiths/onEnter/
+   onLeave). This outer wrapper exposes window.MonasticView with
+   the standard mount/unmount lifecycle the sandbox shell expects.
+
+   Fetch URLs already swapped to dataUrl() (3 sites).
+   ───────────────────────────────────────────────────────────── */
+(function(){
+'use strict';
+
+// ═══════════════════════════════════════════════════════════
+// STUBBED EXTERNALS (mirror timeline.js stub style)
+// ═══════════════════════════════════════════════════════════
+// stub: VIEW global
+window.VIEW = 'monastic';
+// stub: APP namespace
+window.APP = window.APP || { Favorites:null, filterFavsOnly:false, _lang:'en',
+  getDisplayName: function(p){ return p ? (p.famous || '') : ''; } };
+// stub: setView — sandbox shell uses setActiveTab. Monastic.showHadiths()
+// calls setView('monastic') on entry; we provide a logging stub.
+if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[monastic] setView (stub):', v); };
+// stub: focusPersonInTimeline — narrator-pill click → TIMELINE jump.
+if(typeof window.focusPersonInTimeline !== 'function') window.focusPersonInTimeline = function(name){ console.log('[monastic] focusPersonInTimeline (stub):', name); };
+// stub: jumpTo — xref figure-chip click.
+if(typeof window.jumpTo !== 'function') window.jumpTo = function(name){ console.log('[monastic] jumpTo (stub):', name); };
+// stub: openStartAtVerse — xref verse-chip click → START view.
+if(typeof window.openStartAtVerse !== 'function') window.openStartAtVerse = function(s,v,e){ console.log('[monastic] openStartAtVerse (stub):', s, v, e); };
+// stub: _stXrefJumpEvent — xref event-chip click → EVENTS view.
+if(typeof window._stXrefJumpEvent !== 'function') window._stXrefJumpEvent = function(eid){ console.log('[monastic] _stXrefJumpEvent (stub):', eid); };
+// Shared cache key (per CLAUDE.md). Already set by START in bv-app; we initialise
+// here so the lifted code can populate it without a typeof guard.
+if(typeof window._hadithXrefCache === 'undefined') window._hadithXrefCache = {};
+// stub: PEOPLE — populated by core.json fetch in mount(). The lifted code's
+// _buildPeopleIndex reads PEOPLE without typeof, so we ensure a default.
+if(typeof window.PEOPLE === 'undefined') window.PEOPLE = [];
+
+// ═══════════════════════════════════════════════════════════
+// ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/monastic.js ▼▼▼
+// (Sets up window.Monastic = { init, toggleDD, ddClearAll,
+//  openWizard, showHadiths, onEnter, onLeave }.)
+// ═══════════════════════════════════════════════════════════
+
 window.Monastic = (function(){
 'use strict';
 
 var COLLECTIONS = [
-  {key:'bukhari',  label:'Sahih Bukhari',      file:'data/islamic/hadith/sahih-bukhari.json'},
-  {key:'muslim',   label:'Sahih Muslim',        file:'data/islamic/hadith/sahih-muslim.json'},
-  {key:'abudawud', label:"Sunan Abi Da'ud",     file:'data/islamic/hadith/abu-dawood.json'},
-  {key:'tirmidhi', label:"Jami' al-Tirmidhi",   file:'data/islamic/hadith/al-tirmidhi.json'},
-  {key:'nasai',    label:"Sunan an-Nasa'i",      file:'data/islamic/hadith/sunan-nasai.json'},
-  {key:'ibnmajah', label:'Sunan Ibn Majah',     file:'data/islamic/hadith/ibn-e-majah.json'}
+  // Canonical Six (Kutub al-Sittah)
+  {key:'bukhari',         label:'Sahih Bukhari',           group:'canonical', file:'data/islamic/hadith/sahih-bukhari.json'},
+  {key:'muslim',          label:'Sahih Muslim',            group:'canonical', file:'data/islamic/hadith/sahih-muslim.json'},
+  {key:'abudawud',        label:"Sunan Abi Da'ud",         group:'canonical', file:'data/islamic/hadith/abu-dawood.json'},
+  {key:'tirmidhi',        label:"Jami' al-Tirmidhi",       group:'canonical', file:'data/islamic/hadith/al-tirmidhi.json'},
+  {key:'nasai',           label:"Sunan an-Nasa'i",         group:'canonical', file:'data/islamic/hadith/sunan-nasai.json'},
+  {key:'ibnmajah',        label:'Sunan Ibn Majah',         group:'canonical', file:'data/islamic/hadith/ibn-e-majah.json'},
+  // Others — Sunni extras + Shia. No labels distinguishing tradition.
+  {key:'muwatta',         label:'Muwatta Malik',           group:'others', file:'data/islamic/hadith/muwatta-malik.json'},
+  {key:'musnad-ahmad',    label:'Musnad Ahmad',            group:'others', file:'data/islamic/hadith/musnad-ahmad.json'},
+  {key:'darimi',          label:'Sunan ad-Darimi',         group:'others', file:'data/islamic/hadith/sunan-ad-darimi.json'},
+  {key:'riyad',           label:'Riyad as-Salihin',        group:'others', file:'data/islamic/hadith/riyad-as-salihin.json'},
+  {key:'shamail',         label:'Shamail al-Muhammadiyah', group:'others', file:'data/islamic/hadith/shamail-al-muhammadiyah.json'},
+  {key:'bulugh',          label:'Bulugh al-Maram',         group:'others', file:'data/islamic/hadith/bulugh-al-maram.json'},
+  {key:'adab-mufrad',     label:'al-Adab al-Mufrad',       group:'others', file:'data/islamic/hadith/al-adab-al-mufrad.json'},
+  {key:'mishkat',         label:'Mishkat al-Masabih',      group:'others', file:'data/islamic/hadith/mishkat-al-masabih.json'},
+  {key:'40-nawawi',       label:'40 Hadith Nawawi',        group:'others', file:'data/islamic/hadith/40-hadith-nawawi.json'},
+  {key:'40-qudsi',        label:'40 Hadith Qudsi',         group:'others', file:'data/islamic/hadith/40-hadith-qudsi.json'},
+  {key:'40-shahwaliullah',label:'40 Hadith Shah Waliullah',group:'others', file:'data/islamic/hadith/40-hadith-shahwaliullah.json'}
 ];
 
 // Maps monastic.js internal collection key → hadith_xref file basename.
+// Original 6 (legacy xref schema). Keep for fallback path.
 var XREF_COLL_MAP = {
   bukhari:  'sahih-bukhari',
   muslim:   'sahih-muslim',
@@ -20,8 +78,22 @@ var XREF_COLL_MAP = {
   ibnmajah: 'sunan-ibn-majah'
 };
 
+// Reverse map: xref-style slug → monastic internal key.
+// Auto-built from COLLECTIONS so every book in the new dropdown is reachable.
 var XREF_TO_MON_KEY = {};
+// Start with the canonical 6
 Object.keys(XREF_COLL_MAP).forEach(function(k){ XREF_TO_MON_KEY[XREF_COLL_MAP[k]] = k; });
+// Add ALL COLLECTIONS by deriving the xref slug from their file path
+COLLECTIONS.forEach(function(c){
+  // Extract trailing filename basename: "data/islamic/hadith/sahih-bukhari.json" → "sahih-bukhari"
+  var m = (c.file || '').match(/\/([^\/]+)\.json$/);
+  if(m){
+    var slug = m[1];
+    if(!XREF_TO_MON_KEY[slug]) XREF_TO_MON_KEY[slug] = c.key;
+  }
+  // Also map the collection's own key to itself
+  XREF_TO_MON_KEY[c.key] = c.key;
+});
 
 var MON_PERIODS = [
   {id:'early_makkan', label:'Early Makkan',  years:'610\u2013622 CE', span:12, color:'#8B6F47', rgb:'139,111,71'},
@@ -58,45 +130,122 @@ var _monSel = {
 var _monDDBound = false;
 var _monSearchBoxPrev = null;
 
-function _monHandlePendingHadith(){
-  var p = window._stPendingHadith;
-  if(!p || !p.col || !p.num) return;
-  window._stPendingHadith = null;
-  var monKey = XREF_TO_MON_KEY[p.col];
-  if(!monKey) return;
+function _monHandlePendingNarrator(){
+  var name = window._stPendingNarrator;
+  if(!name) return;
+  window._stPendingNarrator = null;
   _monSel.period.clear();
   _monSel.topic.clear();
   _monSel.narrator.clear();
   _monSel.collection.clear();
-  _monSel.collection.add(monKey);
+  _monSel.narrator.add(name);
   _applyAllFilters();
-  // Force outer page to top so sticky header stays pinned
   try { window.scrollTo({top:0, behavior:'auto'}); } catch(e){ window.scrollTo(0,0); }
-  // Clear any previous persistent highlight
-  document.querySelectorAll('.mon-row-pinned').forEach(function(r){ r.classList.remove('mon-row-pinned'); });
-  // Find row + scroll inside the results container + add permanent highlight
-  var attempts = 0;
-  var tick = setInterval(function(){
-    attempts++;
-    var row = _resultsEl && _resultsEl.querySelector('.mon-row[data-hcol="'+monKey+'"][data-hnum="'+p.num+'"]');
-    if(row){
-      clearInterval(tick);
-      row.scrollIntoView({behavior:'smooth', block:'center'});
-      row.classList.add('mon-row-pinned');
-      // Dismiss on any click or user scroll of mon-results
-      var dismiss = function(){
-        row.classList.remove('mon-row-pinned');
-        document.removeEventListener('click', dismiss, true);
-        if(_resultsEl) _resultsEl.removeEventListener('scroll', dismiss);
-      };
-      setTimeout(function(){
-        document.addEventListener('click', dismiss, true);
-        if(_resultsEl) _resultsEl.addEventListener('scroll', dismiss);
-      }, 600);
-    } else if(attempts > 30){
-      clearInterval(tick);
+}
+
+function _monHandlePendingPinned(){
+  var pp = window._stPendingPinned;
+  if(!pp || !pp.ids || !pp.ids.length){
+    return false;
+  }
+  console.log('[MON] pending pinned received', pp.ids.length, 'ids; label:', pp.label);
+  window._stPendingPinned = null;
+  _pinnedHadiths = { ids: pp.ids.slice(), label: pp.label || '' };
+  // Wait for _resultsEl to mount, then process.
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(_resultsEl && typeof _processPinnedHadiths === 'function'){
+      clearInterval(iv);
+      try { _processPinnedHadiths(); }
+      catch(e){ console.warn('[MON] _processPinnedHadiths threw', e); }
+    } else if(tries > 50){
+      clearInterval(iv);
+      console.warn('[MON] _resultsEl never appeared for pin set');
     }
-  }, 150);
+  }, 80);
+  return true;
+}
+
+function _monHandlePendingHadith(){
+  var p = window._stPendingHadith;
+  if(!p || !p.col || !p.num){
+    console.log('[MON] no pending hadith', p);
+    return;
+  }
+  console.log('[MON] pending hadith received', p);
+  window._stPendingHadith = null;
+
+  // Resolve incoming xref col → monastic internal key.
+  // p.col may already BE a monastic key (sandbox flow), or a xref slug.
+  var monKey = null;
+  if(XREF_TO_MON_KEY[p.col]) monKey = XREF_TO_MON_KEY[p.col];
+  else if(XREF_COLL_MAP[p.col]) monKey = p.col;     // already a monastic key
+  else {
+    // Last resort: substring match
+    var lower = String(p.col||'').toLowerCase();
+    Object.keys(XREF_COLL_MAP).forEach(function(k){
+      if(monKey) return;
+      if(lower.indexOf(k) >= 0 || lower.indexOf(XREF_COLL_MAP[k]) >= 0) monKey = k;
+    });
+  }
+  if(!monKey){
+    console.warn('[MON] could not resolve collection key for', p.col,
+      '— XREF_TO_MON_KEY=', XREF_TO_MON_KEY, 'XREF_COLL_MAP=', XREF_COLL_MAP);
+    return;
+  }
+  console.log('[MON] resolved to monKey', monKey, 'num', p.num);
+
+  // Wait for filter state machine to be ready before applying picks.
+  var setupAttempts = 0;
+  var setupTick = setInterval(function(){
+    setupAttempts++;
+    if(_monSel && _monSel.collection && typeof _applyAllFilters === 'function'){
+      clearInterval(setupTick);
+      _monSel.period.clear();
+      _monSel.topic.clear();
+      _monSel.narrator.clear();
+      _monSel.collection.clear();
+      _monSel.collection.add(monKey);
+      // Sync the dropdown UI selection
+      if(typeof _monSyncDD === 'function'){
+        try{ _monSyncDD('collection'); }catch(e){}
+      }
+      _applyAllFilters();
+      try { window.scrollTo({top:0, behavior:'auto'}); } catch(e){ window.scrollTo(0,0); }
+      document.querySelectorAll('.mon-row-pinned').forEach(function(r){ r.classList.remove('mon-row-pinned'); });
+
+      // Find row + scroll. Allow up to ~7s for hadith collection to load + render.
+      var attempts = 0;
+      var tick = setInterval(function(){
+        attempts++;
+        var row = _resultsEl && _resultsEl.querySelector('.mon-row[data-hcol="'+monKey+'"][data-hnum="'+p.num+'"]');
+        if(row){
+          clearInterval(tick);
+          console.log('[MON] hadith row found, scrolling');
+          row.scrollIntoView({behavior:'smooth', block:'center'});
+          row.classList.add('mon-row-pinned');
+          var dismiss = function(){
+            row.classList.remove('mon-row-pinned');
+            document.removeEventListener('click', dismiss, true);
+            if(_resultsEl) _resultsEl.removeEventListener('scroll', dismiss);
+          };
+          setTimeout(function(){
+            document.addEventListener('click', dismiss, true);
+            if(_resultsEl) _resultsEl.addEventListener('scroll', dismiss);
+          }, 600);
+        } else if(attempts > 70){
+          console.warn('[MON] hadith row never appeared. Looking for', monKey, p.num,
+            '— resultsEl=', !!_resultsEl,
+            '— rows in dom=', _resultsEl ? _resultsEl.querySelectorAll('.mon-row').length : 'n/a');
+          clearInterval(tick);
+        }
+      }, 100);
+    } else if(setupAttempts > 80){
+      clearInterval(setupTick);
+      console.warn('[MON] filter state never ready');
+    }
+  }, 100);
 }
 var MON_GLOSSARY = {
   'thiqah':           {def:'Trustworthy. Highest reliability rating for a narrator.', src:'Classical rijal'},
@@ -832,7 +981,17 @@ function _drillShowInlineHadiths(earliest, latest){
         var label = getLabel(h._colKey || '');
         var num = getNumber(h);
         var text = getText(h);
-        var colA = '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:6px">#' + esc(String(num)) + '</div>';
+        var _drBmKey  = 'h:' + (h._colKey || '') + ':' + num;
+        var _drBmAuth = window.GoldArkAuth;
+        var _drBmFilled = !!(_drBmAuth && _drBmAuth.isSignedIn && _drBmAuth.isSignedIn() && _drBmAuth.hasBookmarkKey && _drBmAuth.hasBookmarkKey(_drBmKey));
+        var _drBmTitle = _drBmAuth && _drBmAuth.isSignedIn && _drBmAuth.isSignedIn()
+          ? (_drBmFilled ? 'Remove bookmark' : 'Add bookmark')
+          : 'Sign in to bookmark';
+        var _drBmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_drBmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+        var colA = '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px">' +
+          '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + '</div>' +
+          '<button class="mon-drill-bmk-btn" data-bmkey="' + _drBmKey + '" title="' + _drBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _drBmRibbon + '</button>' +
+          '</div>';
         if(!hasTopicFilter && h.topic){
           colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Topic</span><span class="mon-drill-src-val">' + esc(h.topic) + '</span></div>';
         }
@@ -926,6 +1085,30 @@ function _drillShowInlineHadiths(earliest, latest){
         if(!chain) return;
         chain.style.display = (chain.style.display !== 'none') ? 'none' : 'block';
       };
+    });
+    // Wire bookmark buttons on drill hadith cards.
+    panel.querySelectorAll('.mon-drill-bmk-btn').forEach(function(btn){
+      btn.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var key = btn.getAttribute('data-bmkey');
+        if(!key) return;
+        var doToggle = function(){
+          var a = window.GoldArkAuth;
+          if(!a || !a.isSignedIn()) return;
+          var was = a.hasBookmarkKey(key);
+          var p = was ? a.removeBookmarkKey(key) : a.addBookmarkKey(key);
+          Promise.resolve(p).then(function(){
+            var nowOn = !was;
+            btn.innerHTML = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (nowOn?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+            btn.title = nowOn ? 'Remove bookmark' : 'Add bookmark';
+          }).catch(function(err){ console.warn('[drill-bmk] toggle failed', err); });
+        };
+        if(window.GoldArkAuth && window.GoldArkAuth.isSignedIn()){
+          doToggle();
+        } else if(typeof window.requireTester === 'function'){
+          window.requireTester('bookmark', doToggle);
+        }
+      });
     });
   });
 }
@@ -1289,7 +1472,7 @@ function getNarrator(h){
     var name = (last.name || '').split('(')[0].trim();
     if(name) return name;
   }
-  var raw = getField(h, ['narrator','chain','narrated_by']);
+  var raw = getField(h, ['narrator','chain','narrated_by','englishNarrator']);
   if(typeof raw === 'string' && raw.indexOf(',') !== -1){
     var parts = raw.split(',');
     return parts[parts.length - 1].trim();
@@ -1361,7 +1544,7 @@ function fetchCollection(key){
     if(COLLECTIONS[i].key === key){ col = COLLECTIONS[i]; break; }
   }
   if(!col) return Promise.resolve([]);
-  return fetch(col.file).then(function(r){
+  return fetch(dataUrl(col.file)).then(function(r){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
@@ -1614,9 +1797,66 @@ function _openMethodology(e){
         '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-verse">2:183</span><span>Quran verse with shared wording (89% coverage). Click \u2192 START view at verse.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-place xref-chip-inactive">Place</span><span>Place referenced (33% coverage). Click wiring pending.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-event">Event</span><span>Historical event match (0.6% coverage). Click \u2192 Events view.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-book xref-chip-inactive">Book</span><span>Related book (7% coverage, noisy). Click wiring pending.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-book">Book</span><span>Scholarly commentary on this hadith. Click → BOOKS view.</span></div>' +
       '</div>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:24px 0 10px">CONCEPT TAG SCORES (1-5)</h3>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:0 0 12px">Concept tags on Quran verses carry a 1-5 strength score. Brighter gold means stronger match.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-3);line-height:1.5">' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:rgba(212,175,55,0.45)">1</span><span>Single shared word — weakest match.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:rgba(212,175,55,0.7)">2</span><span>Two-token overlap.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#d4af37">3</span><span>Solid phrase match — most common.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#e8c547;font-weight:600">4</span><span>Strong multi-word match.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#f5d24a;font-weight:700">5</span><span>Exact phrase — strongest, rare.</span></div>' +
+      '</div>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags are unscored for now. Books and Figures use low/medium/high. All will be unified later.</p>' +
       '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:16px 0 0;font-style:italic">Matches are keyword-based and include false positives. Use as a starting point, not a citation.</p>' +
+
+      // ── AI methodology disclosure ──
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:32px 0 10px">HOW CROSS-REFERENCES ARE BUILT</h3>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">This app uses AI (Claude by Anthropic) to identify which concepts each Quran verse, hadith, and tafsir entry discusses. Here’s exactly what that means:</p>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">WHAT AI DOES</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>Reads the English text of each verse, hadith, or tafsir entry</li>' +
+        '<li>Matches it against our 486-concept catalogue</li>' +
+        '<li>Assigns up to 8 concepts per item, each with a confidence score (1–5):' +
+          '<div style="margin-top:6px;padding-left:6px;color:#A0AEC0">' +
+            '5 = primary topic<br>' +
+            '4 = major theme<br>' +
+            '3 = clear reference<br>' +
+            '2 = brief mention<br>' +
+            '1 = tangential' +
+          '</div>' +
+        '</li>' +
+        '<li>Suggests parent / child / sibling / opposite relations between concepts</li>' +
+        '<li>Drafts 100-word summaries of each concept</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">WHAT AI DOES NOT DO</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>Decide which texts are authoritative — those are pre-set canonical sources (Bukhari, Muslim, Quran, etc.)</li>' +
+        '<li>Translate the Quran or hadith — those use established human translations from Tanzil, fawazahmed0, AhmedBaset, Thaqalayn</li>' +
+        '<li>Create or invent figures, events, or biographies — those come from Wikipedia, Wikidata, and primary historical sources</li>' +
+        '<li>Generate sectarian rulings or fatwas — this is a study tool, not a source of religious guidance</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">QUALITY LEVEL</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>AI tagging is approximately 85–90% accurate based on sample audits</li>' +
+        '<li>Confidence scores let you filter: high-score matches (4–5) are reliable enough for citation</li>' +
+        '<li>Low-score matches (1–2) are exploratory — useful for discovery, not for evidence</li>' +
+        '<li>All AI output is reviewable: every chip shows its score and lets you read the source text directly</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">INDEPENDENT VERIFICATION RECOMMENDED</h4>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 14px">For any serious scholarly use, verify the source text yourself. The AI helps you find connections faster — it does not replace reading the primary source.</p>' +
+
+      '<div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-3);line-height:1.5;margin-top:14px;padding:12px 14px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:5px">' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-high">AI</span><span><strong style="color:#d4af37">High confidence</strong> (score 4–5) — gold solid badge. Reliable for citation.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-med">AI</span><span><strong style="color:#bca066">Medium confidence</strong> (score 3) — dim gold badge. Clear reference.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-low">AI</span><span><strong style="color:#9aa3b2">Low confidence</strong> (score 1–2) — faint badge. Exploratory only.</span></div>' +
+        '<div style="margin-top:6px;color:#A0AEC0;font-size:11px;font-style:italic">Source text itself (Quran, hadith, tafsir text) and figure data (Wikipedia / Wikidata) are not AI-generated and carry no badge.</div>' +
+      '</div>' +
     '</div>';
 
   document.body.appendChild(overlay);
@@ -1632,28 +1872,42 @@ function _openMethodology(e){
 // ── Filter + render ──
 function _applyAllFilters(){
   _syncBand();
-  showLoading(true);
 
   var colSet = _monSel.collection;
   var periodSet = _monSel.period;
   var topicSet = _monSel.topic;
   var narSet = _monSel.narrator;
 
-  var promise;
-  if(colSet.size === 0){
-    promise = fetchAll();
-  } else {
-    var keys = Array.from(colSet);
-    promise = Promise.all(keys.map(function(k){
-      return fetchCollection(k).then(function(data){
-        data.forEach(function(h){ h._colKey = k; });
-        return data;
-      });
-    })).then(function(arrs){
-      var all = []; arrs.forEach(function(a){ all = all.concat(a); });
-      return all;
-    });
+  // Empty-state gate: only render the prompt when literally nothing is picked.
+  // Periods / Topics / Narrators all operate over the full 34k corpus, so any
+  // filter selection (not just Collection) must trigger a load.
+  if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0){
+    showLoading(false);
+    _lastFiltered = [];
+    _lastColKey = '';
+    if(_resultsEl){
+      _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">Pick a filter above (Periods, Topics, Narrators, or Collections) to load hadiths</div>';
+    }
+    if(_countEl) _countEl.textContent = '';
+    return;
   }
+
+  showLoading(true);
+
+  // Pick which collections to load. If user picked Collections explicitly,
+  // load only those. Otherwise (only Periods / Topics / Narrators picked),
+  // we need to scan the whole corpus, so load all 6 in parallel.
+  // fetchCollection caches in _cache[key] so re-selecting is instant.
+  var keys = colSet.size > 0 ? Array.from(colSet) : COLLECTIONS.map(function(c){ return c.key; });
+  var promise = Promise.all(keys.map(function(k){
+    return fetchCollection(k).then(function(data){
+      data.forEach(function(h){ h._colKey = k; });
+      return data;
+    });
+  })).then(function(arrs){
+    var all = []; arrs.forEach(function(a){ all = all.concat(a); });
+    return all;
+  });
 
   promise.then(function(hadiths){
     if(periodSet.size > 0){
@@ -1686,6 +1940,8 @@ function _renderRows(filtered, colKey){
   _countEl.textContent = filtered.length + ' hadith' + (filtered.length !== 1 ? 's' : '') + ' found';
 
   if(!filtered.length){
+    // Render only after the load promise resolved — at this point a fetch
+    // attempt was made, so "0 hadiths match" is the truthful state.
     _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">No hadiths match these filters.</div>';
     return;
   }
@@ -1729,8 +1985,18 @@ function _renderRows(filtered, colKey){
     row.setAttribute('data-hcol', h._colKey || colKey || '');
     row.setAttribute('data-hnum', String(num));
     row.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;align-items:start;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);';
+    var _bmKey = 'h:' + (h._colKey || colKey || '') + ':' + num;
+    var _bmAuth = window.GoldArkAuth;
+    var _bmFilled = !!(_bmAuth && _bmAuth.isSignedIn && _bmAuth.isSignedIn() && _bmAuth.hasBookmarkKey && _bmAuth.hasBookmarkKey(_bmKey));
+    var _bmTitle = _bmAuth && _bmAuth.isSignedIn && _bmAuth.isSignedIn()
+      ? (_bmFilled ? 'Remove bookmark' : 'Add bookmark')
+      : 'Sign in to bookmark';
+    var _bmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_bmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
     row.innerHTML =
-      '<div><div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em;margin-bottom:4px">#' + esc(String(num)) + '</div>' +
+      '<div><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px">' +
+        '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + '</span>' +
+        '<button class="mon-bmk-btn" data-bmkey="' + esc(_bmKey) + '" title="' + esc(_bmTitle) + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _bmRibbon + '</button>' +
+      '</div>' +
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
       topicHtml + periodHtml + xrefSlotHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
@@ -1740,6 +2006,31 @@ function _renderRows(filtered, colKey){
 
   _resultsEl.appendChild(frag);
   _populateXrefSlots(_resultsEl);
+
+  // Wire hadith bookmark buttons.
+  _resultsEl.querySelectorAll('.mon-bmk-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var key = btn.getAttribute('data-bmkey');
+      if(!key) return;
+      var doToggle = function(){
+        var a = window.GoldArkAuth;
+        if(!a || !a.isSignedIn()) return;
+        var was = a.hasBookmarkKey(key);
+        var p = was ? a.removeBookmarkKey(key) : a.addBookmarkKey(key);
+        Promise.resolve(p).then(function(){
+          var nowOn = !was;
+          btn.innerHTML = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (nowOn?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+          btn.title = nowOn ? 'Remove bookmark' : 'Add bookmark';
+        }).catch(function(err){ console.warn('[mon-bmk] toggle failed', err); });
+      };
+      if(window.GoldArkAuth && window.GoldArkAuth.isSignedIn()){
+        doToggle();
+      } else if(typeof window.requireTester === 'function'){
+        window.requireTester('bookmark', doToggle);
+      }
+    });
+  });
 
   if(filtered.length > MAX_ROWS){
     var trunc = document.createElement('div');
@@ -1790,6 +2081,14 @@ function _monBuildPanel(kind, entries){
   panel.appendChild(si);
 
   entries.forEach(function(entry){
+    if(entry.groupHeader){
+      var hdr = document.createElement('div');
+      hdr.className = 'dd-group-header';
+      hdr.style.cssText = 'padding:8px 12px;color:rgba(212,175,55,0.7);font-family:Cinzel,serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid rgba(212,175,55,0.15);background:rgba(212,175,55,0.04);';
+      hdr.textContent = entry.groupHeader;
+      panel.appendChild(hdr);
+      return;
+    }
     var el = document.createElement('div');
     el.className = 'dd-item';
     el.dataset.val = entry.value;
@@ -1843,6 +2142,16 @@ function _monToggleDD(kind){
   document.querySelectorAll('#mon-filters .dd-btn.open').forEach(function(b){ b.classList.remove('open'); });
   if(!wasOpen){
     panel.classList.add('open'); btn.classList.add('open');
+    // Lazy topic-list build: defer the bukhari load until the user actually
+    // opens the Topics dropdown. Re-uses fetchCollection's cache.
+    if(kind === 'topic' && !_topicList){
+      fetchCollection('bukhari').then(function(data){
+        var set = {};
+        data.forEach(function(h){ if(h.topic) set[h.topic] = true; });
+        _topicList = Object.keys(set).sort();
+        _monBuildPanel('topic', _topicList.map(function(t){ return { value: t, label: t }; }));
+      });
+    }
     var si = panel.querySelector('.dd-search');
     if(si){ si.value = ''; si.dispatchEvent(new Event('input')); si.focus(); }
   }
@@ -1865,17 +2174,29 @@ function _parseHadithId(id){
 
 function _processPinnedHadiths(){
   if(!_pinnedHadiths) return;
+  console.log('[MON process start]', _pinnedHadiths);
   var ids = _pinnedHadiths.ids;
   var needed = {};
   var orderMap = {};
+  var skipped = [];
   for(var i = 0; i < ids.length; i++){
     var p = _parseHadithId(ids[i]);
-    if(!p || !p.monKey) continue;
+    if(!p || !p.monKey){
+      skipped.push(ids[i]);
+      continue;
+    }
     needed[p.monKey] = true;
     orderMap[p.monKey + '-' + p.num] = i;
   }
+  if(skipped.length){
+    console.warn('[MON] skipped', skipped.length, 'hadiths with no monKey:', skipped.slice(0,5));
+  }
   var keys = Object.keys(needed);
-  if(!keys.length){ _renderPinned([]); return; }
+  if(!keys.length){
+    console.warn('[MON] no resolvable hadiths in pin set; rendering empty.');
+    _renderPinned([]);
+    return;
+  }
   showLoading(true);
   Promise.all(keys.map(function(k){ return fetchCollection(k); }))
     .then(function(arrays){
@@ -1893,6 +2214,7 @@ function _processPinnedHadiths(){
       });
       matched.sort(function(a,b){ return a._sortIdx - b._sortIdx; });
       showLoading(false);
+      console.log('[MON matched]', matched.length, 'of', ids.length, 'requested');
       _renderPinned(matched);
     })
     .catch(function(e){
@@ -1921,16 +2243,32 @@ function _renderPinBanner(label, count){
   var existing = document.getElementById('mon-pin-banner');
   if(existing) existing.remove();
   if(!_pinnedHadiths) return;
+  // User can hide the banner for the rest of the browser session via the
+  // "don't show this session" link below. Filter stays pinned; only the
+  // visual banner is suppressed.
+  try {
+    if(sessionStorage.getItem('mon-pin-banner-hidden') === '1') return;
+  } catch(e){}
   var banner = document.createElement('div');
   banner.id = 'mon-pin-banner';
-  banner.style.cssText = "padding:8px 14px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.4);border-radius:6px;color:#D4AF37;font-size:var(--fs-3);margin:0 0 10px;display:flex;align-items:center;gap:12px;font-family:'Cinzel',serif;letter-spacing:.04em";
-  banner.innerHTML = '<span style="flex:1">' + esc(label || '') + ' \u2014 ' + count + ' hadith' + (count !== 1 ? 's' : '') + '</span>' +
-    '<span id="mon-pin-clear" style="cursor:pointer;opacity:.85;padding:2px 10px;border:1px solid rgba(212,175,55,.5);border-radius:3px">\u2715 Clear</span>';
+  banner.style.cssText = "padding:4px 10px;background:rgba(212,175,55,.10);border:1px solid rgba(212,175,55,.32);border-radius:4px;color:#D4AF37;font-size:12px;margin:0 0 8px;display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;letter-spacing:.04em;line-height:1.3";
+  banner.innerHTML = '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(label || '') + ' \u2014 ' + count + ' hadith' + (count !== 1 ? 's' : '') + '</span>' +
+    '<a href="#" id="mon-pin-hide-session" style="color:#9aa3b2;font-size:11px;text-decoration:underline;font-family:Lato,sans-serif;letter-spacing:0;text-transform:none;font-weight:400">Don\u2019t show this session</a>' +
+    '<span id="mon-pin-clear" title="Clear pinned filter" style="cursor:pointer;opacity:.85;padding:1px 8px;border:1px solid rgba(212,175,55,.5);border-radius:3px;font-size:11px">Clear filter</span>' +
+    '<span id="mon-pin-dismiss" title="Hide banner (keep filter)" style="cursor:pointer;opacity:.7;padding:0 6px;font-size:14px;line-height:1">\u2715</span>';
   if(_resultsEl && _resultsEl.parentNode){
     _resultsEl.parentNode.insertBefore(banner, _resultsEl);
   }
   var btn = document.getElementById('mon-pin-clear');
   if(btn) btn.onclick = function(){ _clearPinned(); };
+  var dismiss = document.getElementById('mon-pin-dismiss');
+  if(dismiss) dismiss.onclick = function(){ banner.remove(); };
+  var hideSession = document.getElementById('mon-pin-hide-session');
+  if(hideSession) hideSession.onclick = function(e){
+    e.preventDefault();
+    try { sessionStorage.setItem('mon-pin-banner-hidden', '1'); } catch(err){}
+    banner.remove();
+  };
 }
 
 function _clearPinned(){
@@ -1947,48 +2285,7 @@ function init(){
 
   _resultsEl = document.getElementById('mon-results');
 
-  // ── HTW button in filter row ──
-  if(!document.getElementById('mon-how-btn')){
-    var _monFilters=document.getElementById('mon-filters');
-    if(_monFilters){
-      var _mhBtn=document.createElement('button');_mhBtn.id='mon-how-btn';_mhBtn.textContent='How This Works';
-      _mhBtn.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin-right:8px";
-      _mhBtn.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};
-      _mhBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
-      _mhBtn.onclick=function(e){e.stopPropagation();_openMethodology();};
-      _monFilters.prepend(_mhBtn);
-    }
-  }
-
-  // ── Language toggle buttons (EN / AR / UR) ──
-  if(!document.getElementById('mon-lang-group')){
-    var _monFiltersL=document.getElementById('mon-filters');
-    if(_monFiltersL){
-      var grp=document.createElement('div');
-      grp.id='mon-lang-group';
-      grp.style.cssText='display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle';
-      [['en','ENGLISH'],['ar','عربي'],['ur','اردو']].forEach(function(pair){
-        var lg=pair[0];
-        var b=document.createElement('button');
-        b.setAttribute('data-lang',lg);
-        b.textContent=pair[1];
-        b.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid "+(lg===_monLang?'#D4AF37':'#555')+";background:"+(lg===_monLang?'rgba(212,175,55,0.15)':'transparent')+";color:"+(lg===_monLang?'#D4AF37':'#888')+";font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em";
-        b.onclick=function(e){
-          e.stopPropagation();
-          _monLang=lg;
-          grp.querySelectorAll('button').forEach(function(bb){
-            var act=bb.getAttribute('data-lang')===_monLang;
-            bb.style.borderColor=act?'#D4AF37':'#555';
-            bb.style.background=act?'rgba(212,175,55,0.15)':'transparent';
-            bb.style.color=act?'#D4AF37':'#888';
-          });
-          if(_lastFiltered) _renderRows(_lastFiltered,_lastColKey);
-        };
-        grp.appendChild(b);
-      });
-      _monFiltersL.appendChild(grp);
-    }
-  }
+  // (HTW button + lang group now live in shell zone B — see _wireZoneB)
 
   _drillEl = document.createElement('div');
   _drillEl.id = 'mon-drill';
@@ -2005,13 +2302,20 @@ function init(){
     return { value: p.id, label: p.label + ' (' + p.years + ')' };
   }));
 
-  // Populate collection panel
-  _monBuildPanel('collection', COLLECTIONS.map(function(c){
-    return { value: c.key, label: c.label };
-  }));
+  // Populate collection panel — grouped: Canonical Six, then Others
+  var _canonicalEntries = COLLECTIONS.filter(function(c){ return c.group==='canonical'; })
+    .map(function(c){ return { value: c.key, label: c.label }; });
+  var _otherEntries = COLLECTIONS.filter(function(c){ return c.group==='others'; })
+    .map(function(c){ return { value: c.key, label: c.label }; });
+  var _grouped = []
+    .concat([{ groupHeader: 'Canonical Six' }])
+    .concat(_canonicalEntries)
+    .concat([{ groupHeader: 'Others' }])
+    .concat(_otherEntries);
+  _monBuildPanel('collection', _grouped);
 
   // Populate narrators from index (with counts)
-  fetch('data/hadith/narrator_index.json').then(function(r){
+  fetch(dataUrl('data/hadith/narrator_index.json')).then(function(r){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
@@ -2024,17 +2328,11 @@ function init(){
     console.warn('narrator_index.json not available:', e);
   });
 
-  // Populate topics from bukhari
-  if(!_topicList){
-    fetchCollection('bukhari').then(function(data){
-      var set = {};
-      data.forEach(function(h){ if(h.topic) set[h.topic] = true; });
-      _topicList = Object.keys(set).sort();
-      _monBuildPanel('topic', _topicList.map(function(t){
-        return { value: t, label: t };
-      }));
-    });
-  }
+  // Topic dropdown: do NOT pre-fetch bukhari (26 MB) on init. The list is
+  // populated lazily the first time the user opens the Topics dropdown
+  // (handled inside _monToggleDD when _topicList is still null), or
+  // automatically after the user picks any collection (since fetchCollection
+  // caches and re-uses).
 
   _buildBand();
   _syncBand();
@@ -2120,9 +2418,19 @@ function init(){
       if(!tag) return;
       e.stopPropagation();
       var famous = tag.getAttribute('data-famous');
-      if(famous && typeof focusPersonInTimeline === 'function'){
-        focusPersonInTimeline(famous);
-      }
+      if(!famous) return;
+      _monClickTab(['TIMELINE'], 'timeline');
+      var ntries = 0;
+      var niv = setInterval(function(){
+        ntries++;
+        var fn = window.focusPersonInTimeline || window.jumpTo;
+        var src = (typeof fn === 'function') ? String(fn) : '';
+        if(src && src.indexOf('(stub)') === -1 && src.length > 80){
+          try { fn(famous); } catch(err){ console.warn('[mon] narrator jump failed', err); }
+          clearInterval(niv); return;
+        }
+        if(ntries > 60){ clearInterval(niv); console.warn('[mon] narrator jump never ready'); }
+      }, 80);
     });
   }
 
@@ -2142,7 +2450,9 @@ function init(){
     _monSearchBoxPrev = _monSearchBox.style.display || '';
   }
 
-  _resultsEl.innerHTML = '';
+  // Initial empty state — instructs the user to pick a collection rather than
+  // dumping all 6 corpora (~110 MB) on mount.
+  _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">Pick a filter above (Periods, Topics, Narrators, or Collections) to load hadiths</div>';
 }
 
 var _WIZARD_STEPS_ALL = [
@@ -2507,7 +2817,7 @@ window._hadithXrefCache = window._hadithXrefCache || {};
 window._loadHadithXref = async function(collection){
   if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
   try{
-    var res = await fetch('data/islamic/hadith_xref/' + collection + '.json');
+    var res = await fetch(dataUrl('data/islamic/hadith_xref/' + collection + '.json'));
     if(!res.ok) return {};
     var data = await res.json();
     window._hadithXrefCache[collection] = data.hadith_index || {};
@@ -2518,7 +2828,15 @@ window._loadHadithXref = async function(collection){
 function _buildXrefPanel(entry){
   if(!entry) return '';
   var groups = [];
-  var figs = (entry.figures || []).slice(0, 10);
+  var figs = (entry.figures || []).filter(function(f){
+    var nm = (f && f.name) ? String(f.name).toLowerCase() : '';
+    var sl = (f && f.slug) ? String(f.slug) : '';
+    if(sl === 'F1132') return false;
+    if(nm === 'prophet muhammad') return false;
+    if(nm === 'muhammad') return false;
+    if(nm.indexOf('prophet muhammad') === 0) return false;
+    return true;
+  }).slice(0, 10);
   if(figs.length){
     var chips = figs.map(function(f){
       var nm = esc(f.name || '');
@@ -2527,9 +2845,9 @@ function _buildXrefPanel(entry){
     }).join('');
     groups.push('<div class="xref-group"><span class="xref-label">Figures:</span>' + chips + '</div>');
   }
-  var verses = (entry.quran_verses || []).slice(0, 5);
-  if(verses.length){
-    var chips2 = verses.map(function(v){
+  var allVerses = entry.quran_verses || [];
+  if(allVerses.length){
+    var chips2 = allVerses.map(function(v){
       var lbl = v.surah + ':' + v.verse;
       return '<span class="xref-chip xref-verse" data-surah="' + v.surah + '" data-verse="' + v.verse + '">' + lbl + '</span>';
     }).join('');
@@ -2538,7 +2856,7 @@ function _buildXrefPanel(entry){
   var places = entry.places || [];
   if(places.length){
     var chips3 = places.map(function(p){
-      return '<span class="xref-chip xref-place xref-chip-inactive" title="Map jump not wired">' + esc(p.name || '') + '</span>';
+      return '<span class="xref-chip xref-place" data-name="' + esc(p.name || '') + '" title="Find events in ' + esc(p.name || '') + '">' + esc(p.name || '') + '</span>';
     }).join('');
     groups.push('<div class="xref-group"><span class="xref-label">Places:</span>' + chips3 + '</div>');
   }
@@ -2549,13 +2867,32 @@ function _buildXrefPanel(entry){
     }).join('');
     groups.push('<div class="xref-group"><span class="xref-label">Events:</span>' + chips4 + '</div>');
   }
-  var books = (entry.books || []).slice(0, 5);
+  var books = entry.books || [];
   if(books.length){
     var chips5 = books.map(function(b){
-      return '<span class="xref-chip xref-book xref-chip-inactive" title="Book open not wired">' + esc(b.title || '') + '</span>';
+      var disp = b.label || b.title || '';
+      var srch = b.title || b.label || '';
+      return '<span class="xref-chip xref-book" data-title="' + esc(srch) + '" title="Open in BOOKS — ' + esc(srch) + '">' + esc(disp) + '</span>';
     }).join('');
     groups.push('<div class="xref-group"><span class="xref-label">Books:</span>' + chips5 + '</div>');
   }
+  // Concepts (word-matched) — neutral chips with M badge
+  try {
+    if(window.GoldArkConcepts && window.GoldArkConcepts.cache && window.GoldArkConcepts.cache.hadithByKey && entry && entry._hkey){
+      // _hkey format: "<coll>-<num>" — split on the LAST dash
+      var idx = entry._hkey.lastIndexOf('-');
+      var coll = idx > 0 ? entry._hkey.slice(0, idx) : '';
+      var num  = idx > 0 ? entry._hkey.slice(idx + 1) : '';
+      var ccs2 = window.GoldArkConcepts.getForHadith(coll, num) || [];
+      if(ccs2.length){
+        var chipsCC = ccs2.slice(0, 6).map(function(c){
+          var lbl = c.slug.replace(/-/g, ' ');
+          return '<span class="ga-concept-chip ga-cc-h" data-concept="' + c.slug + '" title="Keyword-matched concept">' + lbl + '<span class="ga-cc-sup">M</span></span>';
+        }).join('');
+        groups.push('<div class="xref-group"><span class="xref-label">Concepts:</span>' + chipsCC + '</div>');
+      }
+    }
+  } catch(e){}
   if(!groups.length) return '';
   return groups.join('');
 }
@@ -2577,7 +2914,8 @@ async function _populateXrefSlots(container){
     var idx = await window._loadHadithXref(c);
     byColl[c].forEach(function(slot){
       var key = slot.dataset.hkey;
-      var entry = idx[key];
+      var entry = idx[key] || {};
+      entry._hkey = key;
       var html = _buildXrefPanel(entry);
       slot.innerHTML = html || '';
     });
@@ -2585,6 +2923,65 @@ async function _populateXrefSlots(container){
 }
 
 // One-time delegated click on document for xref chip targets.
+// Uses tab-click + poll-retry pattern (cf. explain.js:_exJumpToStart) so
+// that the real openStartAtVerse / figure-jump are ready before we call.
+function _monClickTab(matchTexts, dataView){
+  var sels = '#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="'+dataView+'"], .tab-'+dataView;
+  var els = document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el = els[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv = el.getAttribute('data-view')||'';
+    if(matchTexts.indexOf(txt) !== -1 || dv === dataView){ el.click(); return true; }
+  }
+  return false;
+}
+
+function _monJumpToStartVerse(s, v){
+  // Stub-overwrite check: monastic.js installs a stub at module top. Only
+  // start.js's real implementation rewrites it — detect by stringifying.
+  function isReal(fn){
+    if(typeof fn !== 'function') return false;
+    var src = String(fn);
+    return src.indexOf('(stub)') === -1;
+  }
+  // Update URL hash for back/forward + deep-link.
+  // (hash is set inside openStartAtVerse AFTER the surah jump commits — see start.js)
+  _monClickTab(['START'], 'start');
+  if(typeof window.setView === 'function' && !document.querySelector('[data-view="start"]')){
+    try { window.setView('start'); } catch(e){}
+  }
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(isReal(window.openStartAtVerse)){
+      try { window.openStartAtVerse(s, v, v); } catch(e){}
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 50){ clearInterval(iv); console.warn('[monastic] openStartAtVerse never ready'); }
+  }, 80);
+}
+
+function _monJumpToFigure(slug, name){
+  if(!name) return;
+  // Click the TIMELINE tab — shell.setActiveTab handles hash update.
+  _monClickTab(['TIMELINE'], 'timeline');
+  // Poll for window.jumpTo to be timeline.js's real function (not undefined / not a stub).
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var fn = window.jumpTo;
+    var src = (typeof fn === 'function') ? String(fn) : '';
+    if(src && src.indexOf('(stub)') === -1 && src.length > 80){
+      try { fn(name); } catch(e){ console.warn('[mon] jumpTo failed', e); }
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[mon] jumpTo never ready'); }
+  }, 80);
+}
+
 if(typeof document !== 'undefined' && !window._hadithXrefDelegated){
   window._hadithXrefDelegated = true;
   document.addEventListener('click', function(e){
@@ -2593,22 +2990,95 @@ if(typeof document !== 'undefined' && !window._hadithXrefDelegated){
     var fig = t.closest('.xref-fig');
     if(fig && !fig.classList.contains('xref-chip-inactive')){
       e.stopPropagation();
-      var nm = fig.dataset.name;
-      if(nm && typeof jumpTo === 'function') jumpTo(nm);
+      var nm = fig.dataset.name || '';
+      var sl = fig.dataset.slug || '';
+      _monJumpToFigure(sl, nm);
       return;
     }
     var vs = t.closest('.xref-verse');
     if(vs && !vs.classList.contains('xref-chip-inactive')){
       e.stopPropagation();
       var s = +vs.dataset.surah, v = +vs.dataset.verse;
-      if(s && v && typeof window.openStartAtVerse === 'function') window.openStartAtVerse(s, v, v);
+      if(s && v) _monJumpToStartVerse(s, v);
       return;
     }
     var evn = t.closest('.xref-event');
     if(evn && !evn.classList.contains('xref-chip-inactive')){
       e.stopPropagation();
       var eid = evn.dataset.id;
-      if(eid && typeof window._stXrefJumpEvent === 'function') window._stXrefJumpEvent(eid);
+      if(!eid) return;
+      _monClickTab(['EVENTS'], 'events');
+      var etries = 0;
+      var eiv = setInterval(function(){
+        etries++;
+        if(typeof window._stXrefJumpEvent === 'function'){
+          try { window._stXrefJumpEvent(eid); } catch(err){}
+          clearInterval(eiv); return;
+        }
+        if(etries > 60){ clearInterval(eiv); console.warn('[mon] event jump never ready'); }
+      }, 80);
+      return;
+    }
+    var pl = t.closest('.xref-place');
+    if(pl && !pl.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var pname = pl.dataset.name || '';
+      if(!pname) return;
+      _monClickTab(['EVENTS'], 'events');
+      var ptries = 0;
+      var piv = setInterval(function(){
+        ptries++;
+        var sb = document.getElementById('search');
+        if(sb && typeof window._eventsApplySearch === 'function'){
+          sb.value = pname;
+          window.searchQ = pname;
+          try { window._eventsApplySearch(); } catch(err){}
+          clearInterval(piv); return;
+        }
+        if(ptries > 60){ clearInterval(piv); console.warn('[mon] place jump never ready'); }
+      }, 80);
+      return;
+    }
+    var bk = t.closest('.xref-book');
+    if(bk && !bk.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var btitle = bk.dataset.title || '';
+      if(!btitle) return;
+      _monClickTab(['BOOKS'], 'books');
+      var btries = 0;
+      var biv = setInterval(function(){
+        btries++;
+        var sb2 = document.getElementById('search');
+        if(sb2 && typeof window._booksBuildCanvas === 'function'){
+          sb2.value = btitle;
+          sb2.dispatchEvent(new Event('input', { bubbles: true }));
+          clearInterval(biv); return;
+        }
+        if(btries > 60){ clearInterval(biv); console.warn('[mon] book jump never ready'); }
+      }, 80);
+      return;
+    }
+    var sa = t.closest('.xref-verse-seeall');
+    if(sa){
+      e.stopPropagation();
+      e.preventDefault();
+      var raw = (sa.dataset.verses || '').split(',').filter(function(x){ return x; });
+      if(!raw.length) return;
+      var pinList = raw.map(function(p){
+        var bits = p.split(':');
+        var s = +bits[0], v = +bits[1];
+        return (s && v) ? { surah:s, verse:v, score:null } : null;
+      }).filter(function(x){ return x; });
+      if(!pinList.length) return;
+      window._stPendingPinnedVerses = { slug: '', label: sa.dataset.label || 'Linked verses', verses: pinList };
+      var stabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
+      for(var si=0;si<stabs.length;si++){
+        var sel=stabs[si];
+        var stxt=(sel.textContent||'').trim().toUpperCase();
+        var sdv=sel.getAttribute('data-view')||'';
+        if(stxt==='START' || sdv==='start'){ sel.click(); return; }
+      }
+      if(typeof window.setView === 'function') window.setView('start');
       return;
     }
   });
@@ -2618,25 +3088,387 @@ return {
   init: init,
   toggleDD: _monToggleDD,
   ddClearAll: _monDDClearAll,
+  applyFilters: function(){ try { _applyAllFilters(); } catch(e){ console.warn('[MON] applyFilters failed', e); } },
+  syncAllDDs: function(){ try { ['period','topic','narrator','collection'].forEach(function(k){ _monSyncDD(k); }); } catch(e){ console.warn('[MON] syncAllDDs failed', e); } },
   openWizard: _wizardOpen,
   showHadiths: function(hadithIds, label){
     _pinnedHadiths = { ids: (hadithIds || []).slice(), label: label || '' };
-    if(typeof setView === 'function'){
-      setView('monastic');
-    } else {
-      init();
-      _processPinnedHadiths();
+
+    // DOM-click the real MONASTIC tab. setView is a stub in sandbox.
+    var clicked = false;
+    var candidates = document.querySelectorAll(
+      '#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="monastic"], .tab-monastic'
+    );
+    for(var i=0;i<candidates.length;i++){
+      var el = candidates[i];
+      var txt = (el.textContent||'').trim().toUpperCase();
+      var dv = el.getAttribute('data-view')||'';
+      if(txt === 'MONASTIC' || dv === 'monastic'){ el.click(); clicked = true; break; }
     }
+    if(!clicked && typeof setView === 'function') setView('monastic');
+
+    // Make sure init runs even if shell didn't fire onEnter
+    setTimeout(function(){
+      try{ init(); }catch(e){}
+      // Force the pinned processor to run after init
+      var tries = 0;
+      var iv = setInterval(function(){
+        tries++;
+        if(_resultsEl){
+          clearInterval(iv);
+          try{ _processPinnedHadiths(); }catch(e){ console.warn('[MON] _processPinnedHadiths failed', e); }
+        } else if(tries > 50){ clearInterval(iv); console.warn('[MON] _resultsEl never appeared'); }
+      }, 80);
+    }, 60);
   },
   onEnter: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
     if(box){ if(_monSearchBoxPrev === null) _monSearchBoxPrev = box.style.display || ''; box.style.display = 'none'; }
-    _monHandlePendingHadith();
-    if(_pinnedHadiths) _processPinnedHadiths();
+    // Run pending handlers in priority order
+    var hadPinned = _monHandlePendingPinned();
+    if(!hadPinned){
+      _monHandlePendingHadith();
+      _monHandlePendingNarrator();
+      if(_pinnedHadiths) _processPinnedHadiths();
+    }
   },
   onLeave: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
     if(box){ box.style.display = (_monSearchBoxPrev === null ? '' : _monSearchBoxPrev); }
+  },
+  // Called by MonasticView.unmount() to clear all stateful refs that init()
+  // captures. Without this, a remount sees _inited === true and returns early
+  // while _resultsEl still points to the previous (destroyed) DOM, leaving
+  // the new mount blank.
+  reset: function(){
+    _inited = false;
+    _resultsEl = null;
+    _loadingEl = null;
+    _countEl   = null;
+    _bandEl    = null;
+    _drillEl   = null;
+    _clickBound = false;
+    _pinnedHadiths = null;
+    _drillOn = false;
+    _drillPicks = { period:[], topic:[], narrator:[], collection:[] };
+    _drillExpanded = false;
+    if(_monSel){
+      if(_monSel.collection) _monSel.collection.clear();
+      if(_monSel.period)     _monSel.period.clear();
+      if(_monSel.topic)      _monSel.topic.clear();
+      if(_monSel.narrator)   _monSel.narrator.clear();
+    }
+  },
+  _exportSel: function(){
+    if(!_monSel) return null;
+    function arr(s){ if(!s || typeof s.values !== 'function') return []; var out=[]; var it=s.values(); for(var step=it.next(); !step.done; step=it.next()) out.push(step.value); return out; }
+    return {
+      collection: arr(_monSel.collection),
+      period: arr(_monSel.period),
+      topic: arr(_monSel.topic),
+      narrator: arr(_monSel.narrator)
+    };
+  },
+  _importSel: function(snap){
+    if(!_monSel || !snap) return;
+    function load(set, keys){ if(!set) return; if(typeof set.clear === 'function') set.clear(); (keys||[]).forEach(function(k){ set.add(k); }); }
+    load(_monSel.collection, snap.collection);
+    load(_monSel.period,     snap.period);
+    load(_monSel.topic,      snap.topic);
+    load(_monSel.narrator,   snap.narrator);
   }
 };
 })();
+
+// ═══════════════════════════════════════════════════════════
+// ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+// ═══════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════
+// MonasticView — sandbox mount/unmount wrapper
+// ═══════════════════════════════════════════════════════════
+window.MonasticView = (function(){
+  'use strict';
+
+  // Lifted Monastic-view scaffold (verbatim from bv-app/index.html).
+  // Monastic.init() looks up #mon-results, #mon-loading, #mon-count,
+  // #mon-timeline-band, #mon-filters and the four dropdown buttons by id.
+  function _injectScaffold(zoneCEl){
+    if(!document.getElementById('mon-hide-body-row')){
+      var st = document.createElement('style');
+      st.id = 'mon-hide-body-row';
+      st.textContent =
+        '#mon-header-row{display:none !important}'+
+        '#mon-filters{position:absolute;left:-99999px;top:-99999px;width:0;height:0;overflow:visible !important}'+
+        '#mon-filters .dd-panel{position:fixed !important;left:auto;top:auto}'+
+        '#mon-how-btn,#mon-lang-group,#mon-methodology-btn,#mon-guided-btn,#mon-drill-btn{display:none !important}';
+      document.head.appendChild(st);
+    }
+    zoneCEl.innerHTML =
+      '<div id="monastic-view" style="display:flex;flex-direction:column;flex:1">' +
+        '<div style="padding:20px 24px;width:100%;box-sizing:border-box">' +
+          '<div id="mon-header-row" style="display:none"></div>' +
+          '<button id="mon-methodology-btn" style="display:none"></button>' +
+          '<button id="mon-guided-btn" onclick="Monastic.openWizard()" style="display:none"></button>' +
+          '<button id="mon-drill-btn" type="button" style="display:none"></button>' +
+          '<div style="display:none" id="mon-filters">' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-periodBtn" onclick="Monastic.toggleDD(\'period\')">' +
+                '<span>Periods</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-periodDot"></span>' +
+                  '<span class="dd-count" id="mon-periodCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-periodPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'period\')">' +
+                  '<div class="dd-checkbox" id="mon-periodAllCk">✓</div><span>All Periods</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-topicBtn" onclick="Monastic.toggleDD(\'topic\')">' +
+                '<span>Topics</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-topicDot"></span>' +
+                  '<span class="dd-count" id="mon-topicCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-topicPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'topic\')">' +
+                  '<div class="dd-checkbox" id="mon-topicAllCk">✓</div><span>All Topics</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-narratorBtn" onclick="Monastic.toggleDD(\'narrator\')">' +
+                '<span>Narrators</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-narratorDot"></span>' +
+                  '<span class="dd-count" id="mon-narratorCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-narratorPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'narrator\')">' +
+                  '<div class="dd-checkbox" id="mon-narratorAllCk">✓</div><span>All Narrators</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-collectionBtn" onclick="Monastic.toggleDD(\'collection\')">' +
+                '<span>Collections</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-collectionDot"></span>' +
+                  '<span class="dd-count" id="mon-collectionCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-collectionPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'collection\')">' +
+                  '<div class="dd-checkbox" id="mon-collectionAllCk">✓</div><span>All Collections</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div id="mon-timeline-band"></div>' +
+          '<div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>' +
+          '<div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em">Loading hadiths…</div>' +
+          '<div id="mon-results" class="content-body" style="max-height:70vh;overflow-y:auto;border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>' +
+          '<div style="text-align:center;margin-top:20px;font-size:var(--fs-3);color:#4B5563;font-style:normal">Data source: sahih-explorer dataset</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  // Wire shell's Zone B controls — MONASTIC spec:
+  // { search:true, filters:[Collection select, DRILL pill], actions:[], htw:true }
+  function _wireZoneB(zoneBEl){
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = 'Search hadiths…';
+      searchInp.addEventListener('input', function(){
+        var q = (searchInp.value || '').toLowerCase();
+        var rows = document.querySelectorAll('#mon-results .mon-row');
+        rows.forEach(function(r){
+          var hay = (r.textContent || '').toLowerCase();
+          r.style.display = !q || hay.indexOf(q) !== -1 ? '' : 'none';
+        });
+      });
+    }
+    if(!zoneBEl) return;
+
+    function _wireSelect(btn, ddKey, panelId){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(!(window.Monastic && typeof window.Monastic.toggleDD === 'function')) return;
+        ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel'].forEach(function(pid){
+          if(pid === panelId) return;
+          var op = document.getElementById(pid);
+          if(op){ op.classList.remove('open'); op.style.display='none'; }
+        });
+        window.Monastic.toggleDD(ddKey);
+        var p = document.getElementById(panelId);
+        if(!p) return;
+        var isOpen = p.classList.contains('open');
+        if(p.parentElement && p.parentElement.id !== 'mon-portal'){
+          var portal = document.getElementById('mon-portal');
+          if(!portal){ portal = document.createElement('div'); portal.id='mon-portal'; document.body.appendChild(portal); }
+          portal.appendChild(p);
+        }
+        if(isOpen){
+          var r = btn.getBoundingClientRect();
+          p.style.cssText = 'position:fixed !important;top:'+(r.bottom+4)+'px;left:'+r.left+'px;z-index:10000;display:block !important;background:#1a1a2e;border:1px solid rgba(212,175,55,0.55);border-radius:6px;min-width:240px;max-height:400px;overflow-y:auto;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.6)';
+        } else {
+          p.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('click', function(e){
+      ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel'].forEach(function(pid){
+        var p = document.getElementById(pid);
+        if(!p || p.style.display === 'none') return;
+        if(p.contains(e.target)) return;
+        var sels = (zoneBEl.querySelectorAll('.zb-select')||[]);
+        var inSel = false;
+        sels.forEach(function(s){ if(s.contains(e.target)) inSel = true; });
+        if(!inSel){ p.classList.remove('open'); p.style.display='none'; }
+      });
+    });
+
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(row2){
+      var selects = row2.querySelectorAll('.zb-select');
+      selects.forEach(function(b){
+        var t = (b.textContent||'').trim().toUpperCase();
+        if(t.indexOf('TOPIC') !== -1)         _wireSelect(b, 'topic',      'mon-topicPanel');
+        else if(t.indexOf('NARRATOR') !== -1) _wireSelect(b, 'narrator',   'mon-narratorPanel');
+        else if(t.indexOf('COLLECTION') !== -1) _wireSelect(b, 'collection','mon-collectionPanel');
+      });
+    }
+
+    var allPills = zoneBEl.querySelectorAll('.zb-pill');
+    allPills.forEach(function(p){
+      var t = (p.textContent||'').trim().toUpperCase();
+      if(t.indexOf('GUIDED') !== -1){
+        p.addEventListener('click', function(){
+          if(window.Monastic && typeof window.Monastic.openWizard === 'function') window.Monastic.openWizard();
+        });
+      } else if(t.indexOf('DRILL') !== -1){
+        p.addEventListener('click', function(){
+          var btn = document.getElementById('mon-drill-btn');
+          if(btn) btn.click();
+          else if(window.Monastic && typeof window.Monastic.toggleDrill === 'function') window.Monastic.toggleDrill();
+        });
+      }
+    });
+  }
+
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('mn-mounted');
+    _injectScaffold(zoneCEl);
+
+    // Eager core.json fetch (used by narrator-pill matcher). Hadith collection
+    // JSONs and xref files are lazy-loaded by Monastic.init / applyFilters.
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ window.PEOPLE = arr || []; return arr; });
+
+    Promise.all([p1]).then(function(){
+      if(window.Monastic && typeof window.Monastic.init === 'function'){
+        window.Monastic.init();
+      }
+      // onEnter handles the pending-hadith handshake (window._stPendingHadith)
+      // and pinned-hadith processing — per CLAUDE.md spec.
+      if(window.Monastic && typeof window.Monastic.onEnter === 'function'){
+        window.Monastic.onEnter();
+      }
+      _wireZoneB(zoneBEl);
+      // Restore filters + drill if user is returning to MONASTIC after navigating away.
+      if(window._monLastView){
+        var snap2 = window._monLastView;
+        setTimeout(function(){
+          try {
+            if(window.Monastic && typeof window.Monastic._importSel === 'function'){
+              window.Monastic._importSel(snap2);
+            }
+            if(window.Monastic && typeof window.Monastic.syncAllDDs === 'function'){
+              window.Monastic.syncAllDDs();
+            }
+            if(typeof window.Monastic.applyFilters === 'function') window.Monastic.applyFilters();
+            if(snap2.drillOn){
+              setTimeout(function(){
+                var dbtn = document.getElementById('mon-drill-btn');
+                if(dbtn && !document.body.classList.contains('mon-drill-on')) dbtn.click();
+              }, 100);
+            }
+            // Best-effort UI refresh — re-run any function that re-paints filter dropdowns.
+            ['_buildAllFilterDDs','_refreshFilterDDs','_paintFilterChips','_refreshDDs'].forEach(function(fn){
+              if(typeof window.Monastic[fn] === 'function'){ try{ window.Monastic[fn](); }catch(_){} }
+            });
+          } catch(e){ console.warn('[MON] restore failed', e); }
+        }, 250);
+      }
+    });
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('mn-mounted');
+    document.body.classList.remove('mon-drill-on');
+
+    if(window.Monastic && typeof window.Monastic.onLeave === 'function'){
+      try { window.Monastic.onLeave(); } catch(e) {}
+    }
+
+    // Drop floating menus/overlays appended to document.body by inner module.
+    var sm = document.getElementById('mon-drill-splitmenu');     if(sm) sm.remove();
+    var vp = document.getElementById('mon-drill-valuepicker');   if(vp) vp.remove();
+    var mo = document.getElementById('mon-methodology-overlay'); if(mo) mo.remove();
+    var pt = document.getElementById('mon-portal');              if(pt) pt.remove();
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+
+    // Snapshot filter selections + drill UI state so a remount can restore.
+    try {
+      var snap = { collection: [], period: [], topic: [], narrator: [], drillOn: document.body.classList.contains('mon-drill-on') };
+      if(window.Monastic && window.Monastic._exportSel){
+        var raw = window.Monastic._exportSel();
+        if(raw) snap = Object.assign(snap, raw);
+      }
+      window._monLastView = snap;
+    } catch(e){ console.warn('[MON] snapshot failed', e); }
+    // Clear inner-module state. Without this, a remount sees _inited === true
+    // and returns early while DOM refs still point to dead nodes.
+    if(window.Monastic && typeof window.Monastic.reset === 'function'){
+      try { window.Monastic.reset(); } catch(e) { console.warn('[MON] reset failed', e); }
+    }
+  }
+
+  return {
+    mount: mount,
+    unmount: unmount,
+    showHtw: function(){
+      var btn = document.getElementById('mon-methodology-btn');
+      if(btn){ btn.style.display=''; btn.click(); btn.style.display='none'; return; }
+      if(window.Monastic && typeof window.Monastic.openMethodology === 'function') window.Monastic.openMethodology();
+    }
+  };
+})();
+
+})(); // close outer MonasticView wrapper

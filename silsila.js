@@ -1,6 +1,140 @@
-// ═══════════════════════════════════════════════════════════
-// SILSILA — chain-of-transmission view
-// ═══════════════════════════════════════════════════════════
+/* ─────────────────────────────────────────────────────────────
+   SILSILA view — verbatim lift from bv-app/silsila.js
+   IIFE exposes window.SilsilaView = { mount, unmount, animate* }
+   ───────────────────────────────────────────────────────────── */
+window.SilsilaView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (no-ops so lifted code can run cleanly)
+  // ═══════════════════════════════════════════════════════════
+  // stub: requireTester — auth gate skipped in sandbox
+  function requireTester(action, cb){ if(typeof cb === 'function') cb(); }
+  // stub: canShowImage — Wikipedia thumb fetch skipped in sandbox
+  function canShowImage(p){ return false; }
+  // stub: fetchWikiImage — no-op
+  function fetchWikiImage(){}
+  // stub: pushFigureHistory
+  function pushFigureHistory(){}
+  // stub: openStudyRoom
+  function openStudyRoom(){}
+  // stub: jumpTo — silsila card "teacher/student" links: open silsila card for that person if found
+  function jumpTo(name){
+    var p = PEOPLE.find(function(pp){ return pp.famous === name; });
+    if(p){ activePerson = p; openSilsilaCard(p, window.innerWidth/2, window.innerHeight/2); }
+  }
+  window.jumpTo = jumpTo;
+  // stub: focusPersonInTimeline — would switch to TIMELINE in full app; here just close card
+  function focusPersonInTimeline(name){
+    closeSilsilaCard();
+    // In sandbox: log only. Real shell could route via setActiveTab('TIMELINE').
+    console.log('[silsila] focusPersonInTimeline (stub):', name);
+  }
+  window.focusPersonInTimeline = focusPersonInTimeline;
+  // stub: toggleFavFilter / clearAllFilters
+  function toggleFavFilter(){
+    // stub: ★ SAVED button — favourites not wired in sandbox
+  }
+  window.toggleFavFilter = toggleFavFilter;
+  function clearAllFilters(){
+    selTypes.clear();
+    selTrads.clear();
+    syncSLDD('type'); syncSLDD('trad');
+    applyFilterAndFocus();
+  }
+  window.clearAllFilters = clearAllFilters;
+  // stub: syncDD — main (TIMELINE) dropdown sync; no-op in sandbox
+  function syncDD(){ /* no main timeline DDs in sandbox */ }
+  window.syncDD = syncDD;
+  // stub: APP namespace (favourites + i18n)
+  var APP = window.APP || {
+    Favorites: null,
+    filterFavsOnly: false,
+    _lang: 'en',
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; }
+  };
+  window.APP = APP;
+  // stub: VIEW global — SILSILA always 'silsila' here
+  var VIEW = 'silsila';
+  window.VIEW = 'silsila';
+  // stub: AnimControls — silsila uses its own anim engine via _slAnimCtl. In sandbox we drive
+  // animation from Zone D, so leave AnimControls undefined (lifted code already null-checks).
+  // stub: window._wikidata, window._WD_OCC_LABELS
+  if(typeof window._wikidata === 'undefined') window._wikidata = {};
+  if(typeof window._WD_OCC_LABELS === 'undefined') window._WD_OCC_LABELS = {};
+  // stub: SL_NM / SL_STUDENTS / SL_EDGES — declared in original app.js, redeclared in silsila.js renderSilsila.
+  // We declare them up here so they're in IIFE scope and reset() in renderSilsila assigns work.
+  var SL_NM = {};
+  var SL_STUDENTS = {};
+  var SL_EDGES = [];
+  var SL_ALL_LANES = [];
+  var SL_LANES_KEY = '';
+
+  // ═══════════════════════════════════════════════════════════
+  // CONSTANTS (lifted; lineage chain shared with TIMELINE)
+  // ═══════════════════════════════════════════════════════════
+  function gc(y){if(y<600)return 6;if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;
+    if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;
+    if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;
+    if(y<1800)return 18;if(y<1900)return 19;return 20;}
+  var CC = {6:'#d4600a',7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#c87832',
+            12:'#b86820',13:'#c8902a',14:'#a07828',15:'#a01030',16:'#a01030',17:'#a03000',
+            18:'#8a5a00',19:'#4a7800',20:'#008050'};
+  function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+  var LINEAGE_CHAIN = [
+    'Adam','Shith ibn Adam','Yanash','Qaynan ibn Anush','Mahlail ibn Qaynan',
+    'Yared ibn Mahlail','Idris','Mattushalakh ibn Idris','Lamak ibn Mattushalakh','Nuh',
+    'Sam ibn Nuh','Arfakhshadh ibn Sam','Shalikh ibn Arfakhshadh','Abir ibn Shalikh',
+    "Faligh ibn Abir","Ra'u ibn Faligh","Sarugh ibn Ra'u",'Nahur ibn Sarugh',
+    'Azar ibn Nahur','Ibrahim','Ismail','Nabit ibn Ismail',
+    'Yashjub ibn Nabit',"Ya'rub ibn Yashjub","Tayrah ibn Ya'rub",'Nahur ibn Tayrah',
+    'Muqawwam ibn Nahur','Udd ibn Muqawwam',
+    'Adnan',"Ma'ad ibn Adnan","Nizar ibn Ma'ad",'Mudar ibn Nizar','Ilyas ibn Mudar',
+    'Mudrikah ibn Ilyas','Khuzayma ibn Mudrikah','Kinana ibn Khuzayma',
+    'al-Nadr ibn Kinana','Malik ibn al-Nadr','Fihr ibn Malik','Ghalib ibn Fihr',
+    "Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murrah ibn Ka'b",'Kilab ibn Murrah',
+    'Qusayy ibn Kilab','Abd Manaf ibn Qusayy','Hashim ibn Abd Manaf',
+    'Abd al-Muttalib ibn Hashim','Abd Allah ibn Abd al-Muttalib','Prophet Muhammad'
+  ];
+  var PROPHET_CHAIN = new Set(LINEAGE_CHAIN);
+  var ASHRA_MUBASHSHARA = new Set([
+    'Abu Bakr al-Siddiq','Umar ibn al-Khattab','Uthman ibn Affan','Ali ibn Abi Talib',
+    'Talha ibn Ubayd Allah','Zubayr ibn al-Awwam','Abd al-Rahman ibn Awf',
+    "Sa'd ibn Abi Waqqas","Sa'id ibn Zayd",'Abu Ubayda ibn al-Jarrah'
+  ]);
+
+  // ═══════════════════════════════════════════════════════════
+  // STATE (lifted; previously globals in app.js)
+  // ═══════════════════════════════════════════════════════════
+  var PEOPLE = window.PEOPLE || [];
+  var activeYear = null;
+  var activePerson = null;
+  var selTypes = new Set();
+  var selTrads = new Set();
+  var searchQ = '';
+
+  // Filter — minimal version mirroring TIMELINE's getFiltered
+  function getFiltered(){
+    return PEOPLE.filter(function(p){
+      if(selTypes.size>0){
+        var passType = selTypes.has(p.type);
+        var passTags = (p.tags||[]).some(function(t){return selTypes.has(t);});
+        var passIHSub = Array.from(selTypes).some(function(st){return _IH_SUBLANE_REV[st]&&_IH_SUBLANE_REV[st].has(p.type);});
+        var passAshra = (selTypes.has('Ashra Mubashshara')||selTypes.has('Companions')) && ASHRA_MUBASHSHARA.has(p.famous);
+        if(!passType && !passTags && !passIHSub && !passAshra) return false;
+      }
+      if(selTrads.size>0&&!selTrads.has(p.tradition))return false;
+      return true;
+    });
+  }
+  function applyFilterAndFocus(){
+    renderSilsila();
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/silsila.js ▼▼▼
+  // ═══════════════════════════════════════════════════════════
 
 const TRAD_COLORS={
   'Prophetic Lineage':'#D4AF37',
@@ -92,15 +226,12 @@ function _buildSLAllLanes(){
 }
 
 // ── Return only the lanes that should be VISIBLE under the current filter ───
-// Lineage (index 0) is always included. Tradition lanes are included only when
-// they contain at least one person matching the active type/tradition filters.
 function _getActiveSLLanes(){
   _buildSLAllLanes();
   if(selTypes.size===0&&selTrads.size===0) return [...SL_ALL_LANES];
   const activeLanes=new Set();
   PEOPLE.forEach(p=>{
     if(isLineageMember(p)) return;
-    // Apply type filter
     if(selTypes.size>0){
       const passType=selTypes.has(p.type);
       const passTags=(p.tags||[]).some(t=>selTypes.has(t));
@@ -108,9 +239,7 @@ function _getActiveSLLanes(){
       const passAshra=(selTypes.has('Ashra Mubashshara')||selTypes.has('Companions'))&&ASHRA_MUBASHSHARA.has(p.famous);
       if(!passType&&!passTags&&!passIHSub&&!passAshra) return;
     }
-    // Apply tradition filter
     if(selTrads.size>0&&!selTrads.has(p.tradition)) return;
-    // Determine effective lane name
     const ihSub=getIHSubLane(p);
     if(ihSub) activeLanes.add(ihSub);
     else if(p.tradition) activeLanes.add(p.tradition);
@@ -124,6 +253,13 @@ function _slIsAlive(p, yr){
   return p.dob <= yr && dod >= yr;
 }
 
+function _setSliderYear(yr){
+  // stub: silsila has no slider in sandbox — store year and re-render
+  activeYear = yr;
+  window.activeYear = yr;
+  renderSilsila();
+}
+
 function _slAnimPlay(){
   if(typeof _setSliderYear!=='function') return;
   if(_slAnimMode==='stopped'){
@@ -132,7 +268,7 @@ function _slAnimPlay(){
     _slAnimYr=yr;
   }
   _slAnimMode='playing';
-  _slAnimSpeedMs=_slAnimCtl?_slAnimCtl.getSpeedMs():1200;
+  // _slAnimSpeedMs is set externally by SilsilaView.animateSetSpeed
   _slAnimNextStep();
 }
 
@@ -159,29 +295,28 @@ function _slAnimStop(){
   if(_slAnimCtl) _slAnimCtl.forceStop();
 }
 
+function _slAnimSetSpeed(ms){
+  _slAnimSpeedMs = ms;
+}
+
 function renderSilsila(){
   if(!PEOPLE.length)return;
 
   const PL='Prophetic Lineage';
-  // Determine which lanes the current filter requires
   const LANES=_getActiveSLLanes();
   const _slYr = (typeof activeYear !== 'undefined' && activeYear !== null) ? activeYear : null;
   const newKey=LANES.join('\x00') + '|' + (_slYr !== null ? _slYr : 'all');
 
   if(document.getElementById('silsilaSVG')){
     if(newKey===SL_LANES_KEY){updateSilsilaHighlight();return;}
-    // Lanes changed (filter applied/cleared) — clear SVG and rebuild
     document.getElementById('silsilaMain').innerHTML='';
     document.getElementById('silsilaLanesInner').innerHTML='';
     SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
   }
   SL_LANES_KEY=newKey;
 
-  // getLI: returns lane index within the current (filtered) LANES array.
-  // Returns -1 for people whose tradition is not in the active lane set.
   const getLI=p=>{
     if(isLineageMember(p)) return 0;
-    // Islamic History people route to their sub-lane
     const ihSub=getIHSubLane(p);
     if(ihSub){ const idx=LANES.indexOf(ihSub); return idx>=1?idx:-1; }
     const idx=LANES.indexOf(p.tradition||'');
@@ -190,30 +325,30 @@ function renderSilsila(){
 
   const _SL_ACTIVE = (typeof activeYear!=='undefined' && activeYear!==null);
 
-  // ── Geometry ──────────────────────────────────────────────
-  const PRE_W=320, MAIN_W=3200, TW=PRE_W+MAIN_W;
+  const PRE_W=320;
+  const _slMain = document.getElementById('silsilaMain');
+  const _containerW = (_slMain && _slMain.clientWidth) ? _slMain.clientWidth : 1500;
+  const MAIN_W = Math.max(700, _containerW - PRE_W - 8);
+  const TW = PRE_W + MAIN_W;
   const NR=6, PT=12, PB=10;
-  const NODE_DIAM=NR*2+6; // minimum px gap to avoid overlap
-  const ROW_H=13;          // px per sub-row (compact)
-  const LANE_PAD=4;        // padding top+bottom inside each lane
-  const MIN_LH=24;         // minimum lane height
-  const GRID_COLS=5;        // max 5 figures per row
-  const GRID_CELL_W=160;    // fixed cell width, figures cluster left
-  const GRID_CELL_H=16;    // row height in grid
-  const LIN_CELL_H=38;     // lineage row height (dot + label)
-  const LIN_PAD=6;          // lineage band top/bottom padding
+  const NODE_DIAM=NR*2+6;
+  const ROW_H=13;
+  const LANE_PAD=4;
+  const MIN_LH=24;
+  const GRID_COLS=5;
+  const GRID_CELL_W=160;
+  const GRID_CELL_H=16;
+  const LIN_CELL_H=38;
+  const LIN_PAD=6;
 
-  // X mapping: pre-Islamic compressed; 600-800 CE expanded 2x; 800+ linear
-  // This gives the Sahaba era (600-700 CE) much more horizontal room
-  const EARLY_W = 1100; // px for 600-800 CE (was ~456 before)
-  const LATE_W  = MAIN_W - EARLY_W; // px for 800-2000 CE
+  const EARLY_W = MAIN_W * 0.34;
+  const LATE_W  = MAIN_W - EARLY_W;
   const x2px=dob=>{
     if(dob<600) return Math.max(4, Math.min(PRE_W-8, (dob+4200)/4800*(PRE_W-8)));
     if(dob<=800) return PRE_W + ((dob-600)/200)*EARLY_W;
     return PRE_W + EARLY_W + Math.min(1,(dob-800)/1200)*LATE_W;
   };
 
-  // ── Build grps (lane index → people array) — skip hidden lanes (li = -1) ──
   const grps={};
   const _slActiveG = (typeof activeYear!=='undefined' && activeYear!==null);
   PEOPLE.forEach(p=>{
@@ -224,8 +359,6 @@ function renderSilsila(){
     (grps[li]=grps[li]||[]).push(p);
   });
 
-  // When type/tradition filters are active, restrict non-lineage grps to only matching people
-  // Search queries use dimming instead of removing nodes (handled by silsilaSearch)
   const _hasTypeSearch=selTypes.size>0||selTrads.size>0;
   if(_hasTypeSearch){
     const _fSet=new Set(getFiltered().map(p=>p.famous));
@@ -236,14 +369,12 @@ function renderSilsila(){
     });
   }
 
-  // ── All non-lineage lanes use left-aligned grid layout ─────
   const isGridLane={};
   Object.keys(grps).forEach(liS=>{
     const li=+liS; if(li===0) return;
     isGridLane[li]=true;
   });
 
-  // Lane height based on grid rows needed
   function laneH(li){
     const n=(grps[li]||[]).length;
     if(_SL_ACTIVE && n===0) return 0;
@@ -251,7 +382,6 @@ function renderSilsila(){
     return Math.max(MIN_LH, rows*GRID_CELL_H + LANE_PAD*2);
   }
 
-  // ── Lineage members + dynamic height ─────────────────────
   SL_NM={}; SL_STUDENTS={}; SL_EDGES=[];
   let linMembers=LINEAGE_CHAIN.map(n=>PEOPLE.find(p=>p.famous===n)).filter(Boolean);
   const _slActive = (typeof activeYear!=='undefined' && activeYear!==null);
@@ -261,7 +391,6 @@ function renderSilsila(){
   const LIN_ROWS=Math.ceil(linMembers.length/GRID_COLS);
   const LH_LIN=LIN_ROWS*LIN_CELL_H+LIN_PAD*2;
 
-  // ── Cumulative Y offsets ───────────────────────────────────
   const TRAD_OFFSET=PT+LH_LIN;
   const laneStartY={};
   let curY=TRAD_OFFSET;
@@ -272,7 +401,6 @@ function renderSilsila(){
   });
   const SVG_H=curY+PB;
 
-  // ── Boustrophedon grid positions for lineage (snake: even rows L→R, odd R→L) ──
   const qProphets=new Set(['Adam','Idris','Nuh','Hud','Salih','Ibrahim','Lut','Ismail','Ishaq','Yaqub','Yusuf',"Shu'ayb",'Ayyub','Musa','Harun','Dawud','Sulayman','Ilyas','Yunus','Zakariyya','Yahya','Isa','Prophet Muhammad']);
   linMembers.forEach((p,idx)=>{
     const posInRow=idx%GRID_COLS;
@@ -283,7 +411,6 @@ function renderSilsila(){
     SL_NM[p.famous]={x, y, li:0, col:'#D4AF37'};
   });
 
-  // ── Assign tradition node positions (left-aligned grid) ───
   Object.keys(grps).forEach(liS=>{
     const li=+liS; if(li===0) return;
     const tradCol=TRAD_COLORS[LANES[li]];
@@ -301,10 +428,8 @@ function renderSilsila(){
     (p.teachers||[]).forEach(t=>{(SL_STUDENTS[t]=SL_STUDENTS[t]||[]).push(p.famous);});
   });
 
-  // ── SVG parts ─────────────────────────────────────────────
   const P=[];
 
-  // Defs
   P.push(`<defs>
     <filter id="slg" x="-70%" y="-70%" width="240%" height="240%">
       <feGaussianBlur stdDeviation="4.5" result="b"/>
@@ -319,13 +444,10 @@ function renderSilsila(){
     </marker>
   </defs>`);
 
-  // ── Lane background bands ──────────────────────────────────
-  // Lineage lane (dark, taller)
   P.push(`<rect x="0" y="${PT}" width="${TW}" height="${LH_LIN}" fill="#222D3A" />`);
   P.push(`<rect x="0" y="${PT}" width="5" height="${LH_LIN}" fill="#D4AF37" opacity="0.7" />`);
   P.push(`<line x1="0" y1="${PT+LH_LIN}" x2="${TW}" y2="${PT+LH_LIN}" stroke="rgba(212,175,55,0.35)" stroke-width="1.5"/>`);
 
-  // Tradition lanes (auto-height)
   LANES.forEach((lane,li)=>{
     if(li===0) return;
     const y=laneStartY[li], h=laneH(li);
@@ -335,7 +457,6 @@ function renderSilsila(){
     P.push(`<line x1="0" y1="${y+h}" x2="${TW}" y2="${y+h}" stroke="rgba(45,55,72,.28)" stroke-width="1" />`);
   });
 
-  // ── Century grid lines + labels ────────────────────────────
   P.push(`<line x1="${PRE_W}" y1="0" x2="${PRE_W}" y2="${SVG_H}" stroke="rgba(212,175,55,0.16)" stroke-width="1.5" />`);
   if(!(_SL_ACTIVE && activeYear>500)){
     P.push(`<text x="${(PRE_W/2).toFixed(1)}" y="22" font-family="Cinzel,serif" font-size="9" text-anchor="middle" fill="#A0AEC0" letter-spacing="1.5">PRE-ISLAMIC</text>`);
@@ -343,10 +464,8 @@ function renderSilsila(){
   for(let yr=600;yr<=2000;yr+=100){
     const x=x2px(yr).toFixed(1), c=gc(yr);
     P.push(`<line x1="${x}" y1="0" x2="${x}" y2="${SVG_H}" stroke="rgba(212,175,55,.04)" stroke-width="1" />`);
-    // Century labels removed — chronology is approximate
   }
 
-  // ── Build edge DATA (no SVG rendered yet — injected on click) ────────────
   PEOPLE.forEach(p=>{
     if(!p.teachers?.length) return;
     const to=SL_NM[p.famous]; if(!to) return;
@@ -359,34 +478,26 @@ function renderSilsila(){
     });
   });
 
-  // Nodes that have at least one valid connection in the dataset
   const SL_CONNECTED=new Set();
   SL_EDGES.forEach(e=>{SL_CONNECTED.add(e.from);SL_CONNECTED.add(e.to);});
-  // Lineage members are always shown
   linMembers.forEach(p=>SL_CONNECTED.add(p.famous));
 
-  // ── Empty group for on-demand chain edges ─────────────────────────────────
   P.push(`<g id="sl-active-edges"></g>`);
 
-  // ── Tradition nodes — ALL dots visible at full opacity by default ────────
   PEOPLE.forEach(p=>{
     if(isLineageMember(p)) return;
     const nd=SL_NM[p.famous]; if(!nd) return;
     const hasFree=p.books&&p.books.some(b=>b.url&&b.url.startsWith('http'));
     const r=hasFree?NR:NR-1;
     P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity="0.85" stroke="${nd.col}" stroke-width="1.4" stroke-opacity="0.9"/>`);
-    // Always-visible short name label
     const _sn=p.famous.length>14?p.famous.slice(0,13)+'…':p.famous;
     P.push(`<text class="sl-node-text" data-name="${esc(p.famous)}" x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
   });
 
-  // ── Boustrophedon chain connector for lineage ──────────────────────────────
   {
-    // Draw row-by-row horizontal segments following the snake direction
     for(let r=0;r<LIN_ROWS;r++){
       const start=r*GRID_COLS;
       const end=Math.min(start+GRID_COLS, linMembers.length);
-      // Collect dots in VISUAL order (already boustrophedon-positioned)
       const pts=[];
       for(let i=start;i<end;i++){
         const nd=SL_NM[linMembers[i].famous];
@@ -397,12 +508,10 @@ function renderSilsila(){
         for(let i=1;i<pts.length;i++) d+=` L${pts[i].x.toFixed(1)},${pts[i].y.toFixed(1)}`;
         P.push(`<path d="${d}" stroke="#D4AF37" stroke-width="2" fill="none" opacity="0.7"/>`);
       }
-      // U-turn connector to next row (boundary dots are vertically aligned)
       if(r<LIN_ROWS-1){
-        const tailNd=SL_NM[linMembers[end-1].famous];   // last in this row
-        const headNd=SL_NM[linMembers[end].famous];      // first in next row
+        const tailNd=SL_NM[linMembers[end-1].famous];
+        const headNd=SL_NM[linMembers[end].famous];
         if(tailNd&&headNd){
-          // Bulge outward: right side for even rows, left side for odd rows
           const bulge=(r%2===0)?28:-28;
           const bx=tailNd.x+bulge;
           const my=(tailNd.y+headNd.y)/2;
@@ -410,14 +519,12 @@ function renderSilsila(){
         }
       }
     }
-    // Arrow at Prophet Muhammad (last member — leftmost on last row)
     const lastNd=SL_NM[linMembers[linMembers.length-1].famous];
     if(lastNd){
       P.push(`<path d="M${(lastNd.x-6).toFixed(1)},${lastNd.y.toFixed(1)} L${(lastNd.x-14).toFixed(1)},${lastNd.y.toFixed(1)}" stroke="#D4AF37" stroke-width="2.5" fill="none" opacity="0.88" marker-end="url(#arr-gold)"/>`);
     }
   }
 
-  // ── Lineage nodes + labels (all names shown, font-size 11 matches tradition rows) ──
   {
     const bigSet=new Set(['Adam','Idris','Nuh','Ibrahim','Ismail','Prophet Muhammad']);
     linMembers.forEach(p=>{
@@ -438,7 +545,6 @@ function renderSilsila(){
       } else {
         P.push(`<circle class="sl-node sl-lin-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y}" r="${r}" fill="#D4AF37" fill-opacity="${isPM?.95:isQ?.85:.6}" stroke="#D4AF37" stroke-width="${isPM?2.5:isQ?1.6:1}" stroke-opacity=".8" ${flt}/>`);
       }
-      // Label — font-size 11 for all, matching tradition row labels
       const labelY=nd.y+r+11;
       let shortName;
       if(isPM) shortName='Prophet Muhammad ☆';
@@ -453,42 +559,14 @@ function renderSilsila(){
       P.push(`<text x="${nd.x.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle" font-size="11" font-family="Cinzel,serif" fill="#D4AF37" font-weight="${fw}" fill-opacity="0.85" pointer-events="none">${esc(shortName)}</text>`);
     });
   }
-  // ── Inject SVG ────────────────────────────────────────────
   const mainDiv=document.getElementById('silsilaMain');
   mainDiv.innerHTML=`<svg id="silsilaSVG" xmlns="http://www.w3.org/2000/svg" width="${TW}" height="${SVG_H}" style="display:block;min-width:${TW}px">${P.join('\n')}</svg>`;
 
-  // ── Lane labels sidebar ────────────────────────────────────
-  // Inject L1 once
-  if(!document.getElementById('sl-how-btn')){
-    var _slBody=document.getElementById('silsilaBody');
-    if(_slBody){
-      var _slL1=document.createElement('div');
-      _slL1.style.cssText='display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5);';
-      var _slHowBtn=document.createElement('button');
-      _slHowBtn.id='sl-how-btn'; _slHowBtn.textContent='How This Works';
-      _slHowBtn.style.cssText='height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em';
-      _slHowBtn.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};
-      _slHowBtn.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};
-      _slHowBtn.onclick=function(e){e.stopPropagation();_showSilsilaMethodology();};
-      _slL1.appendChild(_slHowBtn);
-      // AnimControls mount
-      if(window.AnimControls){
-        var _slAnimMount=document.createElement('div');
-        _slAnimMount.id='sl-anim-mount';
-        _slAnimMount.style.cssText='margin-left:auto;display:flex;align-items:center';
-        _slL1.appendChild(_slAnimMount);
-        _slAnimCtl=window.AnimControls.create({
-          mountEl:_slAnimMount, idPrefix:'sl', initialSpeed:'1x',
-          onPlay:_slAnimPlay, onPause:_slAnimPause, onStop:_slAnimStop,
-          onSpeedChange:function(ms){ _slAnimSpeedMs=ms; }
-        });
-      }
-      _slBody.parentNode.insertBefore(_slL1,_slBody);
-    }
-  }
+  // (Lifted code originally injected a "How This Works" button + AnimControls into a row above silsilaBody.
+  // In the sandbox shell, ANIMATE lives in Zone D and HTW lives in Zone B. Skip that injection.)
+
   const inner=document.getElementById('silsilaLanesInner');
   let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
-  // Lineage row
   if(!_SL_ACTIVE){
     lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A">
       <span class="sl-lane-dot" style="background:#D4AF37;box-shadow:0 0 6px rgba(212,175,55,.6)"></span>
@@ -515,7 +593,6 @@ function renderSilsila(){
   });
   inner.innerHTML=lh;
 
-  // ── Scroll sync (vertical) — attach only once ────────────
   if(!mainDiv._slScrollBound){
     mainDiv._slScrollBound=true;
     mainDiv.addEventListener('scroll',()=>{
@@ -524,7 +601,6 @@ function renderSilsila(){
     },{passive:true});
   }
 
-  // ── Lane label click → filter by tradition — attach only once ──
   const lanesWrap=document.getElementById('silsilaLanes');
   if(!lanesWrap._slBound){
     lanesWrap._slBound=true;
@@ -539,7 +615,6 @@ function renderSilsila(){
         renderSilsila();
         return;
       }
-      // IH sub-lanes filter by 'Islamic History' tradition
       const isIHSub=IH_SUBLANE_ORDER.includes(t);
       const tradKey=isIHSub?'Islamic History':t;
       if(selTrads.size===1&&selTrads.has(tradKey)) selTrads.clear();
@@ -548,7 +623,6 @@ function renderSilsila(){
     });
   }
 
-  // ── Hover tooltip ─────────────────────────────────────────
   let tt=document.getElementById('sl-tt');
   if(!tt){
     tt=document.createElement('div'); tt.id='sl-tt';
@@ -559,12 +633,12 @@ function renderSilsila(){
       'transition:opacity .1s';
     document.body.appendChild(tt);
   }
-  let ttPinned=false; // true when tooltip is pinned by click
+  let ttPinned=false;
 
   function pinTooltip(p, x, y){
     const col=SL_NM[p.famous]?.col||'#A0AEC0';
     const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
+    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
       `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:var(--fs-3);opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
@@ -576,7 +650,6 @@ function renderSilsila(){
     tt.style.cursor='default';
     tt.style.display='block';
     ttPinned=true;
-    // Name link → jump to timeline
     const nameLink=tt.querySelector('#tt-name-link');
     if(nameLink) nameLink.onclick=e=>{
       e.stopPropagation();
@@ -585,9 +658,7 @@ function renderSilsila(){
       closeSilsilaCard();
       focusPersonInTimeline(name);
     };
-    // Clicking elsewhere in tooltip does nothing (so user can read it)
     tt.onclick=e=>e.stopPropagation();
-    // Position
     const tw=240, th=90;
     let lx=x+16, ly=y-10;
     if(lx+tw>window.innerWidth-8) lx=x-tw-16;
@@ -597,10 +668,10 @@ function renderSilsila(){
   }
 
   function showHoverTooltip(p, x, y){
-    if(ttPinned) return; // don't overwrite pinned tooltip
+    if(ttPinned) return;
     const col=SL_NM[p.famous]?.col||'#A0AEC0';
     const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
+    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
       `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:var(--fs-3)">${esc(p.famous)}</div>`+
@@ -619,12 +690,9 @@ function renderSilsila(){
   }
 
   const svg=document.getElementById('silsilaSVG');
-  let _silsilaHighlighted=null; // tracks first-click highlighted node
+  let _silsilaHighlighted=null;
 
-  // ── Full chain traversal (ancestors + descendants) ────────────────────────
   function getDirectChain(name){
-    // Only the clicked person + their immediate teachers + their immediate students
-    // No recursive traversal — avoids drawing the entire connected graph
     const p=PEOPLE.find(pp=>pp.famous===name);
     const teachers=new Set(p?.teachers||[]);
     const students=new Set(SL_STUDENTS[name]||[]);
@@ -634,7 +702,6 @@ function renderSilsila(){
   function renderChainEdges(name){
     const {teachers, students, all}=getDirectChain(name);
     const grp=svg.querySelector('#sl-active-edges'); if(!grp) return;
-    // Only edges where this person is one endpoint
     const paths=SL_EDGES
       .filter(e=>(e.to===name && teachers.has(e.from)) || (e.from===name && students.has(e.to)))
       .map(e=>`<path class="sl-edge sl-chain-edge" data-from="${esc(e.from)}" data-to="${esc(e.to)}" d="${e.d}" stroke="${e.col}" stroke-width="1.8" fill="none" opacity="0.82"/>`)
@@ -647,7 +714,6 @@ function renderSilsila(){
     grp.innerHTML='';
   }
 
-  // ── Helper: clear all highlights ────────────
   function _silsilaClearHighlight(){
     _silsilaHighlighted=null;
     clearChainEdges();
@@ -656,7 +722,6 @@ function renderSilsila(){
     ttPinned=false;
   }
 
-  // ── Node click → two-stage interaction ────────────
   svg.addEventListener('click',e=>{
     const nd=e.target.closest('.sl-node'); if(!nd) return;
     const name=nd.dataset.name;
@@ -664,10 +729,9 @@ function renderSilsila(){
     activePerson=p;
 
     if(_silsilaHighlighted===name){
-      // SECOND CLICK — show popup with TIMELINE button
       const col=SL_NM[p.famous]?.col||'#A0AEC0';
       const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-      const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'\u2014');
+      const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
       const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
       tt.innerHTML=
         `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px">${esc(p.famous)}</div>`+
@@ -691,7 +755,6 @@ function renderSilsila(){
       return;
     }
 
-    // FIRST CLICK — highlight connections, dim others
     _silsilaHighlighted=name;
     svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
     nd.classList.add('sl-selected');
@@ -702,14 +765,12 @@ function renderSilsila(){
     svg.querySelectorAll('.sl-node,.sl-node-text').forEach(n=>{
       n.classList.toggle('sl-dim',!connected.has(n.dataset.name));
     });
-    // Sync lane highlight
     const inner2=document.getElementById('silsilaLanesInner');
     if(inner2){
       inner2.querySelectorAll('.sl-lane-label').forEach(l=>l.classList.remove('sl-lane-sel'));
       const tl=isLineageMember(p)?PL:(getIHSubLane(p)||p.tradition||'');
       inner2.querySelectorAll('.sl-lane-label').forEach(l=>{if(l.dataset.lane===tl)l.classList.add('sl-lane-sel');});
     }
-    // Hide any tooltip
     if(tt){tt.style.display='none';tt.style.pointerEvents='none';}
     ttPinned=false;
   });
@@ -720,14 +781,14 @@ function renderSilsila(){
     });
   }
 
-  // Clear selection when clicking empty space — attach only once
   if(!window._slOutsideClickBound){
     window._slOutsideClickBound=true;
-    document.addEventListener('click',e=>{
+    window._slOutsideClickHandler=function(e){
       const _svg=document.getElementById('silsilaSVG'); if(!_svg) return;
       if(e.target.closest('.sl-node')||e.target.closest('#silsilaCard')||e.target.closest('#sl-tt')) return;
       _silsilaClearHighlight();
-    });
+    };
+    document.addEventListener('click',window._slOutsideClickHandler);
   }
 
   updateSilsilaHighlight();
@@ -737,15 +798,13 @@ function renderSilsila(){
 function updateSilsilaHighlight(){
   const svg=document.getElementById('silsilaSVG'); if(!svg) return;
 
-  // If the filter or year has changed, rebuild the SVG for compact layout.
   const _slYr2 = (typeof activeYear !== 'undefined' && activeYear !== null) ? activeYear : null;
   const newKey=_getActiveSLLanes().join('\x00') + '|' + (_slYr2 !== null ? _slYr2 : 'all');
   if(newKey!==SL_LANES_KEY){
-    renderSilsila(); // rebuilds with correct filtered lanes
+    renderSilsila();
     return;
   }
 
-  // Only the year filter dims dots — everything else is full opacity
   svg.querySelectorAll('.sl-node').forEach(nd=>{
     const name=nd.dataset.name;
     let op=1;
@@ -758,40 +817,33 @@ function updateSilsilaHighlight(){
     }
     nd.style.opacity=op<1?String(op):'';
   });
-  // Edges are rendered on-demand on click; clear any active chain when filters change
   const grp=svg.querySelector('#sl-active-edges');
   if(grp && grp.children.length){
     grp.innerHTML='';
     svg.querySelectorAll('.sl-node').forEach(n=>{n.style.opacity='';});
   }
 
-  // Sync silsila filter dropdowns UI
   syncSLDD('type'); syncSLDD('trad');
 
-  // Apply search dimming if a query is active
   if(typeof searchQ!=='undefined'&&searchQ){
     silsilaSearch(searchQ);
   }
 }
 
-// Scroll the SVG to centre on a named figure, then briefly pulse it
 function silsilaLocate(name){
   const svg=document.getElementById('silsilaSVG');
   const mainDiv=document.getElementById('silsilaMain');
   if(!svg||!mainDiv) return;
   const nd=SL_NM[name]; if(!nd) return;
 
-  // Centre the view on the node
   const vw=mainDiv.clientWidth, vh=mainDiv.clientHeight;
   const targetX=Math.max(0, nd.x - vw/2);
   const targetY=Math.max(0, nd.y - vh/2);
   mainDiv.scrollTo({left:targetX, top:targetY, behavior:'smooth'});
 
-  // Sync sidebar scroll
   const inner=document.getElementById('silsilaLanesInner');
   if(inner) setTimeout(()=>{ inner.style.transform=`translateY(-${mainDiv.scrollTop}px)`; },320);
 
-  // Pulse animation: temporarily enlarge the node's SVG circle
   const circle=svg.querySelector(`.sl-node[data-name="${name.replace(/"/g,'&quot;')}"]`);
   if(circle){
     const origR=circle.getAttribute('r');
@@ -820,8 +872,8 @@ function openSilsilaCard(p, cx, cy){
 
   const _rDob=(p.dob_academic!=null)?p.dob_academic:null;
   const _rDod=(p.dod_academic!=null)?p.dod_academic:null;
-  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'\u2014');
-  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'\u2014');
+  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'—');
+  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'—');
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
 
   let html=`
@@ -880,14 +932,12 @@ function openSilsilaCard(p, cx, cy){
   document.getElementById('scCardBody').innerHTML=html;
   document.getElementById('scCardScroll').scrollTop=0;
 
-  // Fetch Wikipedia image for silsila card
   if (canShowImage(p)) {
     var scImgEl = document.getElementById('scWikiImg');
     var scCapEl = document.getElementById('scWikiImgCaption');
     if (scImgEl) fetchWikiImage(p.source, scImgEl, scCapEl);
   }
 
-  // Position near click but keep in viewport
   card.style.display='flex';
   requestAnimationFrame(()=>{
     const CW=card.offsetWidth||310, CH=Math.min(card.offsetHeight,window.innerHeight*0.75);
@@ -915,13 +965,18 @@ function closeSilsilaCard(){
   }
   activePerson=null;
 }
+window.closeSilsilaCard=closeSilsilaCard;
 
-// Close card on outside click
-document.addEventListener('click',e=>{
-  const card=document.getElementById('silsilaCard');
-  if(!card||!card.classList.contains('visible')) return;
-  if(!card.contains(e.target)&&!e.target.closest('.sl-node')) closeSilsilaCard();
-});
+// Close card on outside click — bind once, persistent
+if(!window._slCardOutsideClickBound){
+  window._slCardOutsideClickBound=true;
+  window._slCardOutsideClickHandler=function(e){
+    const card=document.getElementById('silsilaCard');
+    if(!card||!card.classList.contains('visible')) return;
+    if(!card.contains(e.target)&&!e.target.closest('.sl-node')) closeSilsilaCard();
+  };
+  document.addEventListener('click',window._slCardOutsideClickHandler);
+}
 
 // ═══════════════════════════════════════════════════════════
 // SILSILA FILTER DROPDOWNS (in top bar)
@@ -930,6 +985,8 @@ function buildSLDD(kind, values){
   ['sl','map'].forEach(prefix=>{
     const panel=document.getElementById(prefix+'-'+(kind==='type'?'typePanel':'tradPanel'));
     if(!panel) return;
+    // Only build once per panel
+    if(panel.querySelector('.sl-dd-search')) return;
     const si=document.createElement('input');
     si.type='text';si.className='sl-dd-search';si.placeholder='Search...';
     si.oninput=function(){
@@ -955,7 +1012,6 @@ function toggleSLDD(kind){
   const btn=document.getElementById(prefix+'-'+(kind==='type'?'typeBtn':'tradBtn'));
   if(!panel||!btn) return;
   const wasOpen=panel.classList.contains('open');
-  // Close all SL dropdowns and main dropdowns
   document.querySelectorAll('.sl-dd-panel.open').forEach(p=>p.classList.remove('open'));
   document.querySelectorAll('.sl-dd-btn.open').forEach(b=>b.classList.remove('open'));
   document.querySelectorAll('.dd-panel.open').forEach(p=>p.classList.remove('open'));
@@ -966,12 +1022,14 @@ function toggleSLDD(kind){
     if(si){si.value='';si.dispatchEvent(new Event('input'));si.focus();}
   }
 }
+window.toggleSLDD=toggleSLDD;
 
 function slDDClearAll(kind){
   const sel=kind==='type'?selTypes:selTrads;
   sel.clear();
   syncDD(kind); syncSLDD(kind); applyFilterAndFocus();
 }
+window.slDDClearAll=slDDClearAll;
 
 function slDDToggle(kind,v){
   const sel=kind==='type'?selTypes:selTrads;
@@ -1005,21 +1063,19 @@ function syncSLDD(kind){
       else if(sel.size>1) lbl.textContent=(kind==='type'?'TYPE':'TRADITION')+` (${sel.size})`;
       else lbl.textContent=kind==='type'?'TYPE':'TRADITION';
     }
-    // Inline × clear button
     if(btn){
       var oldX=btn.querySelector('.dd-clear-x');
       if(oldX) oldX.remove();
       if(sel.size>0){
         var xEl=document.createElement('span');
         xEl.className='dd-clear-x';
-        xEl.textContent='\u00D7';
+        xEl.textContent='×';
         xEl.onclick=function(e){e.stopPropagation();slDDClearAll(kind);};
         btn.appendChild(xEl);
       }
     }
   });
 
-  // Update summary
   const parts=[];
   if(selTypes.size>0) parts.push([...selTypes].join(', '));
   if(selTrads.size>0) parts.push([...selTrads].join(', '));
@@ -1029,13 +1085,16 @@ function syncSLDD(kind){
   if(clrEl) clrEl.classList.toggle('visible',selTypes.size>0||selTrads.size>0);
 }
 
-// Close silsila dropdowns when clicking outside
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.sl-dd-wrap')){
-    document.querySelectorAll('.sl-dd-panel.open').forEach(p=>p.classList.remove('open'));
-    document.querySelectorAll('.sl-dd-btn.open').forEach(b=>b.classList.remove('open'));
-  }
-});
+if(!window._slDDOutsideBound){
+  window._slDDOutsideBound=true;
+  window._slDDOutsideHandler=function(e){
+    if(!e.target.closest('.sl-dd-wrap')){
+      document.querySelectorAll('.sl-dd-panel.open').forEach(p=>p.classList.remove('open'));
+      document.querySelectorAll('.sl-dd-btn.open').forEach(b=>b.classList.remove('open'));
+    }
+  };
+  document.addEventListener('click',window._slDDOutsideHandler);
+}
 
 // ═══════════════════════════════════════════════════════════
 // SILSILA SEARCH — dim non-matching figures via sl-dim
@@ -1046,7 +1105,6 @@ function silsilaSearch(query){
   var svg=document.getElementById('silsilaSVG'); if(!svg) return;
   var q=(query||'').trim().toLowerCase();
 
-  // Clear all existing dim/selected from both click-chain and search
   svg.querySelectorAll('.sl-node,.sl-node-text').forEach(function(n){
     n.classList.remove('sl-dim','sl-selected');
   });
@@ -1066,7 +1124,6 @@ function silsilaSearch(query){
     nd.classList.toggle('sl-dim',!match);
     if(!firstMatch&&match) firstMatch=nd;
   });
-  // Also dim text labels
   svg.querySelectorAll('.sl-node-text').forEach(function(nd){
     var name=nd.dataset.name;
     var p=PEOPLE.find(function(pp){return pp.famous===name;});
@@ -1076,7 +1133,6 @@ function silsilaSearch(query){
     nd.classList.toggle('sl-dim',hay.indexOf(q)===-1);
   });
 
-  // Scroll to first match
   if(firstMatch){
     var mainDiv=document.getElementById('silsilaMain');
     if(mainDiv){
@@ -1090,17 +1146,7 @@ function silsilaSearch(query){
 }
 window.silsilaSearch=silsilaSearch;
 
-// Hook into the global search input for silsila view
-(function(){
-  var searchEl=document.getElementById('search');
-  if(!searchEl) return;
-  searchEl.addEventListener('input',function(){
-    if(typeof VIEW!=='undefined'&&VIEW==='silsila'){
-      silsilaSearch(searchEl.value);
-    }
-  });
-})();
-
+// (NOTE: original silsila.js auto-bound to #search input on load; we wire that in mount() instead.)
 
 window._captureState_silsila=function(){
   var m=document.getElementById('silsilaMain');
@@ -1119,12 +1165,288 @@ function _showSilsilaMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="sl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+  box.innerHTML='<button id="sl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
     +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Chains of knowledge transmission \u2014 who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Silsila</span><span style="color:#A0AEC0">Arabic for \u201Cchain\u201D \u2014 unbroken teacher-to-student transmission</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Tradition color</span><span style="color:#A0AEC0">Each tradition (Sunni, Shia, Sufi, etc.) has its own color</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Line</span><span style="color:#A0AEC0">A documented teacher \u2192 student relationship</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Teacher\u2013student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Chains of knowledge transmission — who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Silsila</span><span style="color:#A0AEC0">Arabic for “chain” — unbroken teacher-to-student transmission</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Tradition color</span><span style="color:#A0AEC0">Each tradition (Sunni, Shia, Sufi, etc.) has its own color</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Line</span><span style="color:#A0AEC0">A documented teacher → student relationship</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Teacher–student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated · independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('sl-method-close').addEventListener('click',function(){ov.remove();});
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
+
+  // ═══════════════════════════════════════════════════════════
+  // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+  // ═══════════════════════════════════════════════════════════
+
+  // ═══════════════════════════════════════════════════════════
+  // SCAFFOLD INJECTION + ZONE B WIRING + MOUNT/UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  function _injectScaffold(zoneCEl){
+    zoneCEl.innerHTML =
+      '<div id="silsilaView" class="active">' +
+        '<div id="silsilaBody" style="display:flex;flex:1;overflow:hidden">' +
+          '<div id="silsilaLanes"><div id="silsilaLanesInner"></div></div>' +
+          '<div id="silsilaMain"></div>' +
+        '</div>' +
+      '</div>' +
+      '<div id="silsilaCard">' +
+        '<div id="scCardHdr">' +
+          '<button id="scCardClose" onclick="closeSilsilaCard()">✕</button>' +
+          '<div id="scCardName" title="Click to view in Timeline"></div>' +
+          '<div id="scCardNameHint">click name to open in timeline →</div>' +
+          '<div id="scCardSub"></div>' +
+        '</div>' +
+        '<div id="scCardScroll"><div id="scCardBody"></div></div>' +
+      '</div>';
+  }
+
+  // Year-slider engine — drives activeYear and re-renders silsila.
+  // Mirrors the TIMELINE _setSliderYear / _initSlider pattern.
+  var MIN_YR = 500, MAX_YR = 2000;
+  function _setSliderYear(yr){
+    if(yr < MIN_YR) yr = MIN_YR;
+    if(yr > MAX_YR) yr = MAX_YR;
+    activeYear = yr;
+    window.activeYear = yr;
+    var pct = ((yr - MIN_YR) / (MAX_YR - MIN_YR)) * 100;
+    var thumb = document.getElementById('sliderThumb');
+    var fill  = document.getElementById('sliderFill');
+    var trk   = document.getElementById('sliderTrack');
+    var yd    = document.getElementById('yearDisplay');
+    var cb    = document.getElementById('yearClearBtn');
+    if(thumb) thumb.style.left = pct + '%';
+    if(fill)  fill.style.width  = pct + '%';
+    if(trk)   trk.classList.remove('sl-inactive');
+    if(yd)    yd.textContent = yr + ' CE';
+    if(cb)    cb.classList.add('active');
+    renderSilsila();
+  }
+  function _clearSliderYear(){
+    activeYear = null;
+    window.activeYear = null;
+    var thumb = document.getElementById('sliderThumb');
+    var fill  = document.getElementById('sliderFill');
+    var trk   = document.getElementById('sliderTrack');
+    var yd    = document.getElementById('yearDisplay');
+    var cb    = document.getElementById('yearClearBtn');
+    if(thumb) thumb.style.left = '0%';
+    if(fill)  fill.style.width  = '0%';
+    if(trk)   trk.classList.add('sl-inactive');
+    if(yd)    yd.textContent = '—';
+    if(cb)    cb.classList.remove('active');
+    renderSilsila();
+  }
+  function _initSilsilaSlider(){
+    var track = document.getElementById('sliderTrack');
+    var thumb = document.getElementById('sliderThumb');
+    if(!track || !thumb) return;
+    function px2yr(px, w){
+      var raw = MIN_YR + Math.max(0, Math.min(1, px / w)) * (MAX_YR - MIN_YR);
+      return Math.round(raw / 5) * 5;
+    }
+    var dragging = false;
+    function doMove(e){
+      var r = track.getBoundingClientRect();
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      _setSliderYear(px2yr(x - r.left, r.width));
+    }
+    thumb.addEventListener('mousedown',  function(e){ dragging = true; e.preventDefault(); doMove(e); });
+    thumb.addEventListener('touchstart', function(e){ dragging = true; e.preventDefault(); doMove(e); }, { passive:false });
+    track.addEventListener('click',      function(e){ var r = track.getBoundingClientRect(); _setSliderYear(px2yr(e.clientX - r.left, r.width)); });
+    document.addEventListener('mousemove',  function(e){ if(!dragging) return; doMove(e); });
+    document.addEventListener('touchmove',  function(e){ if(!dragging) return; doMove(e); }, { passive:false });
+    document.addEventListener('mouseup',    function(){ dragging = false; });
+    document.addEventListener('touchend',   function(){ dragging = false; });
+    var clearBtn = document.getElementById('yearClearBtn');
+    if(clearBtn) clearBtn.addEventListener('click', _clearSliderYear);
+  }
+
+  // Wire Zone B controls (built by shell.renderZoneB('SILSILA'))
+  // Spec: search:true, slider:true, filters:[TYPE,TRADITION,HAS], actions:[★ Saved, Reset]
+  function _wireZoneB(zoneBEl){
+    // Search input
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = 'Search figures…';
+      searchInp.addEventListener('input', function(){
+        searchQ = searchInp.value;
+        silsilaSearch(searchQ);
+      });
+    }
+
+    // Year slider (mounted by shell when spec.slider=true)
+    if(document.getElementById('sliderTrack')) _initSilsilaSlider();
+
+    if(!zoneBEl) return;
+    var selects = zoneBEl.querySelectorAll('.zb-row2 .zb-select');
+    var pills   = zoneBEl.querySelectorAll('.zb-pill');
+    // Skip the HOW THIS WORKS pill when wiring view actions
+    pills = Array.prototype.filter.call(pills, function(p){ return p.id !== 'zbHtwPill'; });
+
+    // Wrap each select in a .sl-dd-wrap and inject the matching panel.
+    function _wrapSelect(btn, kind){
+      if(!btn) return;
+      var wrap = document.createElement('span');
+      wrap.className = 'sl-dd-wrap';
+      btn.parentNode.insertBefore(wrap, btn);
+      wrap.appendChild(btn);
+      // Aliases the silsila code looks up by id
+      btn.id = 'sl-' + (kind==='type'?'typeBtn':'tradBtn');
+      // Label span (so syncSLDD can rewrite text)
+      var lbl = document.createElement('span');
+      lbl.id = 'sl-' + (kind==='type'?'typeLbl':'tradLbl');
+      lbl.textContent = btn.textContent;
+      btn.textContent = '';
+      btn.appendChild(lbl);
+      var caret = document.createElement('span');
+      caret.className = 'dd-caret';
+      caret.textContent = '▾';
+      btn.appendChild(caret);
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var pnId = 'sl-' + (kind==='type'?'typePanel':'tradPanel');
+        var pn = document.getElementById(pnId);
+        if(pn){
+          var r = btn.getBoundingClientRect();
+          pn.style.position = 'fixed';
+          pn.style.top      = (r.bottom + 4) + 'px';
+          pn.style.left     = r.left + 'px';
+        }
+        toggleSLDD(kind);
+      });
+      // Panel — uses shell's dd-panel/.dd-item/.dd-checkbox classes (same as TIMELINE)
+      var panel = document.createElement('div');
+      panel.className = 'dd-panel';
+      panel.id = 'sl-' + (kind==='type'?'typePanel':'tradPanel');
+      var allItem = document.createElement('div');
+      allItem.className = 'dd-item dd-all';
+      allItem.addEventListener('click', function(){ slDDClearAll(kind); });
+      var allCk = document.createElement('div');
+      allCk.className = 'dd-checkbox';
+      allCk.id = 'sl-' + (kind==='type'?'typeAllCk':'tradAllCk');
+      allCk.textContent = '✓';
+      allItem.appendChild(allCk);
+      var allLbl = document.createElement('span');
+      allLbl.textContent = kind==='type'?'All Types':'All Traditions';
+      allItem.appendChild(allLbl);
+      panel.appendChild(allItem);
+      wrap.appendChild(panel);
+    }
+    if(selects[0]) _wrapSelect(selects[0], 'type');
+    if(selects[1]) _wrapSelect(selects[1], 'trad');
+
+    // Pills: [0] = ★ Saved, [1] = Reset
+    if(pills[0]){
+      pills[0].id = 'sl-favFilterBtn';
+      pills[0].addEventListener('click', function(){ toggleFavFilter(); });
+    }
+    if(pills[1]){
+      pills[1].addEventListener('click', function(){ clearAllFilters(); });
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('sl-mounted');
+    _injectScaffold(zoneCEl);
+
+    // Sync our PEOPLE with whatever the global is (TIMELINE may have populated it)
+    if(window.PEOPLE && window.PEOPLE.length){
+      PEOPLE = window.PEOPLE;
+      _afterPeopleReady(zoneBEl);
+    } else {
+      // Fetch core.json fresh
+      fetch(dataUrl('data/islamic/core.json'))
+        .then(function(r){ return r.ok ? r.json() : []; })
+        .catch(function(){ return []; })
+        .then(function(arr){
+          PEOPLE = arr || [];
+          window.PEOPLE = PEOPLE;
+          _afterPeopleReady(zoneBEl);
+        });
+    }
+  }
+
+  function _afterPeopleReady(zoneBEl){
+    _buildSLAllLanes();
+    var typeSet = new Set();
+    var tradSet = new Set();
+    PEOPLE.forEach(function(p){
+      if(p.type) typeSet.add(p.type);
+      if(p.tradition) tradSet.add(p.tradition);
+    });
+    // Wire Zone B FIRST so panels exist before buildSLDD populates them.
+    _wireZoneB(zoneBEl);
+    buildSLDD('type', [...typeSet].sort());
+    buildSLDD('trad', [...tradSet].sort());
+    renderSilsila();
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('sl-mounted');
+
+    // Stop animation
+    _slAnimStop();
+
+    // Remove document-level listeners we attached
+    if(window._slOutsideClickBound && window._slOutsideClickHandler){
+      document.removeEventListener('click', window._slOutsideClickHandler);
+      window._slOutsideClickBound = false;
+      window._slOutsideClickHandler = null;
+    }
+    if(window._slCardOutsideClickBound && window._slCardOutsideClickHandler){
+      document.removeEventListener('click', window._slCardOutsideClickHandler);
+      window._slCardOutsideClickBound = false;
+      window._slCardOutsideClickHandler = null;
+    }
+    if(window._slDDOutsideBound && window._slDDOutsideHandler){
+      document.removeEventListener('click', window._slDDOutsideHandler);
+      window._slDDOutsideBound = false;
+      window._slDDOutsideHandler = null;
+    }
+
+    // Remove tooltip
+    var tt = document.getElementById('sl-tt');
+    if(tt) tt.remove();
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // ANIMATION HOOKS (called by shell.js when ANIMATE/SPEED/PAUSE clicked)
+  // ═══════════════════════════════════════════════════════════
+  function animateStart(){
+    _slAnimPlay();
+  }
+  function animatePause(){
+    _slAnimPause();
+  }
+  function animateSetSpeed(speed){
+    var map = { '0.5x':2400, '1x':1200, '2x':600, '4x':300 };
+    var ms = map[speed] || 1200;
+    _slAnimSetSpeed(ms);
+  }
+
+  return {
+    mount: mount,
+    unmount: unmount,
+    animateStart: animateStart,
+    animatePause: animatePause,
+    animateSetSpeed: animateSetSpeed,
+    showHtw: _showSilsilaMethodology
+  };
+})();

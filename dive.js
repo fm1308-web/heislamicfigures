@@ -64,7 +64,7 @@ function _dvPad3(n){ return String(n).padStart ? String(n).padStart(3,"0") : ("0
 function _dvFetchTafsir(id, surah){
   if(!_dvTafsirCache[id]) _dvTafsirCache[id] = {};
   if(_dvTafsirCache[id][surah] !== undefined) return Promise.resolve(_dvTafsirCache[id][surah]);
-  var url = "data/islamic/tafsir/"+id+"/surah-"+_dvPad3(surah)+".json";
+  var url = dataUrl("data/islamic/tafsir/"+id+"/surah-"+_dvPad3(surah)+".json");
   return fetch(url).then(function(r){
     if(!r.ok) throw new Error("404");
     return r.json();

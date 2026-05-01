@@ -1,6 +1,36 @@
-// ═══════════════════════════════════════════════════════════
-// FOLLOW VIEW — Multi-figure life journey map
-// ═══════════════════════════════════════════════════════════
+/* ─────────────────────────────────────────────────────────────
+   FOLLOW view — verbatim lift from bv-app/follow.js
+   IIFE exposes window.FollowView = { mount, unmount }
+   ───────────────────────────────────────────────────────────── */
+window.FollowView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (mirror timeline/silsila stub style)
+  // ═══════════════════════════════════════════════════════════
+  // stub: VIEW global — FOLLOW always 'follow' here
+  var VIEW = 'follow';
+  window.VIEW = 'follow';
+  // stub: APP namespace (i18n / favourites)
+  var APP = window.APP || {
+    Favorites: null,
+    filterFavsOnly: false,
+    _lang: 'en',
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; }
+  };
+  window.APP = APP;
+  // stub: PEOPLE — populated by core.json fetch in mount(); _fwResolveName guards typeof
+  var PEOPLE = window.PEOPLE || [];
+  // stub: AnimControls — bv-app injects this; in sandbox we leave undefined.
+  // The lifted initFollow() null-checks `window.AnimControls` so the anim mount silently no-ops.
+  // stub: setView — sandbox shell uses setActiveTab; external _followShowFigure call is parked.
+  if(typeof window.setView !== 'function') window.setView = function(){};
+  // stub: _showViewDesc — sandbox has no header tagline target; no-op.
+  if(typeof window._showViewDesc !== 'function') window._showViewDesc = function(){};
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/follow.js ▼▼▼
+  // ═══════════════════════════════════════════════════════════
 
 // ── State ──
 var _fwMap = null;
@@ -97,7 +127,7 @@ function _fwFmtDate(entry) {
   if (entry.precision === 'month' && entry.month)
     return M[entry.month] + ' ' + entry.year + ' CE';
   if (entry.precision === 'period' && entry.period_end)
-    return entry.year + ' \u2013 ' + entry.period_end + ' CE';
+    return entry.year + ' – ' + entry.period_end + ' CE';
   if (entry.precision === 'decade')
     return entry.year + 's CE';
   return entry.year + ' CE';
@@ -146,16 +176,7 @@ function initFollow() {
   if (!_fwInited) {
     _fwBuildDOM(container);
     _fwInited = true;
-    var fwMount = document.getElementById('fw-anim-mount');
-    if(fwMount && window.AnimControls){
-      _fwAnimCtl = window.AnimControls.create({
-        mountEl: fwMount, idPrefix: 'fw', initialSpeed: '1x',
-        onPlay: _fwAnimPlay, onPause: _fwAnimPause, onStop: _fwAnimStopFull,
-        onSpeedChange: function(ms){ _fwSpeed = ms; if(_fwPlaying){ clearTimeout(_fwTimer); _fwTimer = setTimeout(_fwTickFn, _fwSpeed); } }
-      });
-    }
-    var _fwHowBtn=document.getElementById('fw-how-btn');
-    if(_fwHowBtn) _fwHowBtn.addEventListener('click',function(e){e.stopPropagation();_showFollowMethodology();});
+    // (anim controls + how-btn moved to shell Zone B; wired in _wireZoneB)
     window.addEventListener('resize', function() {
       if (VIEW === 'follow' && _fwMap) _fwMap.invalidateSize();
     });
@@ -182,50 +203,16 @@ function initFollow() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// DOM — FIX 2: #fw-topbar is first child, above #fw-body
+// DOM — body only (map + feed); chrome lives in shell Zone B/D
 // ═══════════════════════════════════════════════════════════
 function _fwBuildDOM(container) {
   container.innerHTML =
-    '<div id="fw-topbar">' +
-      '<div id="fw-l1" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">' +
-        '<div id="fw-add-wrap">' +
-          '<button id="fw-add-btn" onclick="_fwToggleDD(event)">\u25BC Add figures to follow</button>' +
-          '<div id="fw-add-panel" style="display:none"></div>' +
-        '</div>' +
-        '<div id="fw-following-list"></div>' +
-        '<div style="flex:1"></div>' +
-        '<div id="fw-grades-inline">' +
-          '<span class="fw-grade-pill" style="background:#4a7c59">A</span> Highly' +
-          '<span class="fw-gi-sep">\u00b7</span>' +
-          '<span class="fw-grade-pill" style="background:#4a6d8c">B</span> Mostly' +
-          '<span class="fw-gi-sep">\u00b7</span>' +
-          '<span class="fw-grade-pill" style="background:#b08030">C</span> Some' +
-          '<span class="fw-gi-sep">\u00b7</span>' +
-          '<span class="fw-grade-pill" style="background:#707070">D</span> Weak' +
-        '</div>' +
-      '</div>' +
-      '<div id="fw-l2" style="display:flex;align-items:center;gap:10px;padding:6px 16px;border-bottom:1px solid rgba(45,55,72,0.5)">' +
-        '<button id="fw-how-btn" style="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:\'Cinzel\',serif;letter-spacing:.05em;flex-shrink:0" onmouseover="this.style.borderColor=\'#D4AF37\';this.style.color=\'#D4AF37\'" onmouseout="this.style.borderColor=\'#555\';this.style.color=\'#888\'">How This Works</button>' +
-        '<div id="fw-anim-mount" style="display:flex;align-items:center;flex-shrink:0"></div>' +
-        '<div id="fw-scrubber" style="flex:1;min-width:0">' +
-          '<div id="fw-scrubber-track">' +
-            '<div id="fw-scrubber-fill"></div>' +
-            '<div id="fw-scrubber-marks"></div>' +
-            '<div id="fw-scrubber-thumb"></div>' +
-          '</div>' +
-          '<div id="fw-scrubber-labels">' +
-            '<span id="fw-scrub-start"></span>' +
-            '<span id="fw-scrub-current"></span>' +
-            '<span id="fw-scrub-end"></span>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-    '</div>' +
     '<div id="fw-body">' +
       '<div id="fw-map-wrap">' +
         '<div id="fw-leaflet"></div>' +
       '</div>' +
       '<div id="fw-feed">' +
+        '<div id="fw-feed-chips"></div>' +
         '<div id="fw-feed-inner"></div>' +
       '</div>' +
     '</div>';
@@ -236,7 +223,7 @@ function _fwBuildDOM(container) {
 // ═══════════════════════════════════════════════════════════
 function _fwLoadAll(cb) {
   if (_fwIndex.length > 0 && Object.keys(_fwFigures).length === _fwIndex.length) { cb(); return; }
-  fetch('data/islamic/journeys/index.json?v=' + Date.now())
+  fetch(dataUrl('data/islamic/journeys/index.json'))
     .then(function(r) { return r.json(); })
     .then(function(arr) {
       console.log('[FOLLOW] index.json loaded:', arr.length, 'figures');
@@ -244,7 +231,7 @@ function _fwLoadAll(cb) {
       var pending = arr.length;
       if (pending === 0) { cb(); return; }
       arr.forEach(function(item) {
-        fetch('data/islamic/journeys/' + item.file + '?v=' + Date.now())
+        fetch(dataUrl('data/islamic/journeys/' + item.file))
           .then(function(r) { return r.json(); })
           .then(function(data) {
             data.journey.sort(function(a, b) {
@@ -291,7 +278,7 @@ function _fwAssignColors() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// FIX 4: LEFT RAIL — Dropdown picker + Following list
+// LEFT RAIL — Dropdown picker + Following list
 // ═══════════════════════════════════════════════════════════
 function _fwBuildLeftRail() {
   _fwBuildAddPanel();
@@ -339,7 +326,7 @@ function _fwBuildAddPanel() {
 
     var ck = document.createElement('span');
     ck.className = 'fw-dd-ck';
-    ck.textContent = _fwSelected[item.file] ? '\u2713' : '';
+    ck.textContent = _fwSelected[item.file] ? '✓' : '';
     row.appendChild(ck);
 
     var dot = document.createElement('span');
@@ -382,6 +369,7 @@ function _fwToggleDD(ev) {
     _fwUpdateDDChecks();
   }
 }
+window._fwToggleDD = _fwToggleDD;
 
 function _fwCloseDD() {
   _fwDDOpen = false;
@@ -394,7 +382,7 @@ function _fwUpdateDDChecks() {
   rows.forEach(function(row) {
     var file = row.dataset.file;
     var ck = row.querySelector('.fw-dd-ck');
-    if (ck) ck.textContent = _fwSelected[file] ? '\u2713' : '';
+    if (ck) ck.textContent = _fwSelected[file] ? '✓' : '';
     row.classList.toggle('selected', !!_fwSelected[file]);
   });
 }
@@ -415,7 +403,7 @@ function _fwToggleSelection(file) {
 }
 
 function _fwUpdateFollowingList() {
-  var list = document.getElementById('fw-following-list');
+  var list = document.getElementById('fw-feed-chips');
   if (!list) return;
   list.innerHTML = '';
 
@@ -452,7 +440,7 @@ function _fwUpdateFollowingList() {
 
     var x = document.createElement('span');
     x.className = 'fw-follow-chipx';
-    x.textContent = '\u00d7';
+    x.textContent = '×';
     x.onclick = function(ev) {
       ev.stopPropagation();
       _fwToggleSelection(file);
@@ -461,6 +449,11 @@ function _fwUpdateFollowingList() {
 
     list.appendChild(chip);
   });
+  var statusEl = document.getElementById('fw-status-text');
+  if(statusEl){
+    var n = _fwSelectedCount();
+    statusEl.textContent = 'Following ' + n + ' figure' + (n===1?'':'s');
+  }
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -468,6 +461,10 @@ function _fwUpdateFollowingList() {
 // ═══════════════════════════════════════════════════════════
 function _fwRebuild() {
   _fwComputeYearRange();
+  if (_fwYear === null && _fwAllYears.length > 0) {
+    _fwYear = _fwYearMin;
+    _fwYearIdx = 0;
+  }
   _fwInitMap();
   _fwBuildScrubber();
   _fwBuildFeed();
@@ -496,17 +493,14 @@ function _fwComputeYearRange() {
 
 // ═══════════════════════════════════════════════════════════
 // TIMELINE FEED (right column)
-// FIX 3: Only show entries where year <= _fwYear
-// FIX 5: Compact single-line format with expand
 // ═══════════════════════════════════════════════════════════
 var _fwFeedEntries = [];
-var _fwExpandedIdx = -1; // only one expanded at a time when paused
+var _fwExpandedIdx = -1;
 
 function _fwBuildFeed() {
   var container = document.getElementById('fw-feed-inner');
   if (!container) return;
 
-  // Merge all journey entries from selected figures, sorted by year
   _fwFeedEntries = [];
   _fwSelectedFiles().forEach(function(file) {
     var fig = _fwFigures[file];
@@ -527,7 +521,6 @@ function _fwBuildFeed() {
     return a.year !== b.year ? a.year - b.year : (a.entry.month || 0) - (b.entry.month || 0);
   });
 
-  // Build all rows (visibility controlled by _fwUpdateFeedActive)
   var html = '';
   _fwFeedEntries.forEach(function(item, idx) {
     var e = item.entry;
@@ -540,8 +533,8 @@ function _fwBuildFeed() {
     html += '<span class="fw-feed-year">' + item.year + '</span> ';
     html += '<span class="fw-feed-dot" style="background:' + item.color + '"></span> ';
     html += '<span class="fw-feed-figname">' + shortName + '</span>';
-    html += ' <span class="fw-feed-title">\u2014 ' + ageStr + cat + '</span>';
-    html += ' <span class="fw-feed-arrow">\u25BE</span>';
+    html += ' <span class="fw-feed-title">— ' + ageStr + cat + '</span>';
+    html += ' <span class="fw-feed-arrow">▾</span>';
     html += '</div>';
     html += '<div class="fw-feed-detail">';
     html += '<div class="fw-feed-loc">' + e.location + (e.modern ? ', ' + e.modern : '') + '</div>';
@@ -564,16 +557,10 @@ function _fwBuildFeed() {
 function _fwFeedClick(idx) {
   var item = _fwFeedEntries[idx];
   if (!item) return;
-
-  // Jump scrubber to this year
   _fwGoToYear(item.year);
-
-  // Pan map to this location
   if (_fwMap) {
     _fwMap.panTo([item.entry.lat, item.entry.lng], { animate: true, duration: 0.5 });
   }
-
-  // Toggle expand when paused — only one at a time
   if (!_fwPlaying) {
     if (_fwExpandedIdx === idx) {
       _fwExpandedIdx = -1;
@@ -583,6 +570,7 @@ function _fwFeedClick(idx) {
     _fwApplyExpanded();
   }
 }
+window._fwFeedClick = _fwFeedClick;
 
 function _fwApplyExpanded() {
   var rows = document.querySelectorAll('.fw-feed-row');
@@ -591,7 +579,7 @@ function _fwApplyExpanded() {
     var isExp = (i === _fwExpandedIdx);
     row.classList.toggle('expanded', isExp);
     var arrow = row.querySelector('.fw-feed-arrow');
-    if (arrow) arrow.textContent = isExp ? '\u25B4' : '\u25BE';
+    if (arrow) arrow.textContent = isExp ? '▴' : '▾';
   });
 }
 
@@ -604,26 +592,22 @@ function _fwUpdateFeedActive() {
     var yr = parseInt(row.dataset.year);
     var idx = parseInt(row.dataset.idx);
 
-    // FIX 3: Only show entries at or before current year
     var visible = (currentYear !== null && yr <= currentYear);
     row.style.display = visible ? '' : 'none';
 
-    // Active = the most recent visible entry matching current year
     var isActive = (currentYear !== null && yr === currentYear);
     row.classList.toggle('active', isActive);
     if (isActive) activeRow = row;
 
-    // During playback, auto-expand only the active row
     if (_fwPlaying) {
       var isExp = isActive;
       row.classList.toggle('expanded', isExp);
       var arrow = row.querySelector('.fw-feed-arrow');
-      if (arrow) arrow.textContent = isExp ? '\u25B4' : '\u25BE';
+      if (arrow) arrow.textContent = isExp ? '▴' : '▾';
       if (isExp) _fwExpandedIdx = idx;
     }
   });
 
-  // Auto-scroll active row to center of feed
   if (activeRow) {
     var feed = document.getElementById('fw-feed');
     if (feed) {
@@ -666,13 +650,11 @@ function _fwInitMap() {
       _fwMap = mb.map;
       _fwLabTile = mb.labTile;
 
-      // Focused bounds — tight fit to journey points only
       var pts = [];
       allLats.forEach(function(lat, i) { pts.push([lat, allLngs[i]]); });
       _mbFitToPoints(_fwMap, pts, 0.08);
 
-      // GeoJSON empire overlays — filtered to journey region only
-      var _fwJourneyBounds = L.latLngBounds(pts);
+      var _fwJourneyBounds = (typeof L !== 'undefined') ? L.latLngBounds(pts) : null;
       _mbLoadGeoEmpires(function() {
         if (_fwMap) _fwEmpLayer = _mbRenderEmpires(_fwMap, _fwYear, _fwEmpLayer, _fwLabTile, 'fw-map-wrap', _fwJourneyBounds);
       });
@@ -687,6 +669,7 @@ function _fwInitMap() {
 }
 
 function _fwBuildMarkers() {
+  if (typeof L === 'undefined') return;
   var files = _fwSelectedFiles();
   files.forEach(function(file) {
     var fig = _fwFigures[file];
@@ -699,7 +682,6 @@ function _fwBuildMarkers() {
     var _burialSvg = '<svg viewBox="0 0 56 56" width="56" height="56"><defs><filter id="bd" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.6"/></filter></defs><path d="M16 46 L16 24 Q16 14 28 14 Q40 14 40 24 L40 46 Z" fill="rgba(0,0,0,0.25)" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" filter="url(#bd)"/><rect x="13" y="43" width="30" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="3"/></svg>';
     var _lastIdx = fig.journey.length - 1;
 
-    // Collect birth + burial coords for dot suppression
     var _birthLat = fig.journey[0] ? fig.journey[0].lat : null;
     var _birthLng = fig.journey[0] ? fig.journey[0].lng : null;
     var _burialLat = (_lastIdx > 0 && fig.journey[_lastIdx]) ? fig.journey[_lastIdx].lat : null;
@@ -724,7 +706,7 @@ function _fwBuildMarkers() {
         m._fwPinned = true;
         m.bindTooltip(
           '<b style="color:' + figCol + '">' + fig.person + '</b><br>' +
-          'Born ' + (entry.year || '') + ' \u2014 ' + (entry.location || ''),
+          'Born ' + (entry.year || '') + ' — ' + (entry.location || ''),
           { direction: 'top', offset: [0, -26], className: 'fw-tooltip' }
         );
       } else if (isLast) {
@@ -741,11 +723,10 @@ function _fwBuildMarkers() {
         m._fwPinned = true;
         m.bindTooltip(
           '<b style="color:' + figCol + '">' + fig.person + '</b><br>' +
-          verb + ' ' + (entry.year || '') + ' \u2014 ' + (entry.location || ''),
+          verb + ' ' + (entry.year || '') + ' — ' + (entry.location || ''),
           { direction: 'top', offset: [0, -26], className: 'fw-tooltip' }
         );
       } else {
-        // Suppress journey dots that overlap birth or burial coordinates
         var _skipDot = false;
         if (_birthLat !== null && Math.abs(entry.lat - _birthLat) < _TOL && Math.abs(entry.lng - _birthLng) < _TOL) _skipDot = true;
         if (_burialLat !== null && Math.abs(entry.lat - _burialLat) < _TOL && Math.abs(entry.lng - _burialLng) < _TOL) _skipDot = true;
@@ -816,7 +797,6 @@ function _fwShowAll() {
 function _fwUpdateMapForYear(year) {
   if (!_fwMap) return;
 
-  // Throttle empire re-rendering: only when 50-year bracket changes
   var _empBrk = Math.floor(year / 50);
   var _lastBrk = _fwLastEmpYear !== null ? Math.floor(_fwLastEmpYear / 50) : -1;
   if (_empBrk !== _lastBrk) {
@@ -826,7 +806,7 @@ function _fwUpdateMapForYear(year) {
         var fig = _fwFigures[file];
         if (fig) fig.journey.forEach(function(e) { _jPts.push([e.lat, e.lng]); });
       });
-      var _jBounds = _jPts.length ? L.latLngBounds(_jPts) : null;
+      var _jBounds = (_jPts.length && typeof L !== 'undefined') ? L.latLngBounds(_jPts) : null;
       _fwEmpLayer = _mbRenderEmpires(_fwMap, year, _fwEmpLayer, _fwLabTile, 'fw-map-wrap', _jBounds);
       _fwLastEmpYear = year;
     } catch(e) {}
@@ -884,11 +864,12 @@ function _fwUpdateMapForYear(year) {
           m.setRadius(isPeriod ? 14 : 7);
         }
       }
-      m.bringToFront();
+      if(m && typeof m.bringToFront === 'function'){
+        try { m.bringToFront(); } catch(e){}
+      }
       activePts.push([entry.lat, entry.lng]);
     }
 
-    // Re-raise pinned birth/burial markers above journey dots
     markers.forEach(function(pm){ if(pm._fwPinned && pm._fwVisible && pm.setZIndexOffset) pm.setZIndexOffset(1000); });
 
     lines.forEach(function(l, i) {
@@ -1014,12 +995,16 @@ function _fwGoToYear(year) {
 // ═══════════════════════════════════════════════════════════
 // ANIMATION
 // ═══════════════════════════════════════════════════════════
+function _fwUpdatePlayBtn(){
+  var btn = document.getElementById('fw-play-btn');
+  if(btn) btn.textContent = _fwPlaying ? '❚❚' : '▶';
+}
+
 function _fwAnimPlay() {
   if (_fwAllYears.length === 0) return;
-  _fwSpeed = _fwAnimCtl ? _fwAnimCtl.getSpeedMs() : 1200;
+  if(typeof _fwSpeed !== 'number' || _fwSpeed <= 0) _fwSpeed = 1200;
 
   if (!_fwTickFn || _fwYearIdx < 0 || _fwYearIdx >= _fwAllYears.length - 1) {
-    // Fresh start — reset markers
     _fwYearIdx = -1;
     _fwYear = null;
     _fwSelectedFiles().forEach(function(file) {
@@ -1031,9 +1016,9 @@ function _fwAnimPlay() {
       });
     });
   }
-  // else: resume from current _fwYearIdx
 
   _fwPlaying = true;
+  _fwUpdatePlayBtn();
   _fwTickFn = function() {
     try {
       var next = _fwYearIdx + 1;
@@ -1043,7 +1028,6 @@ function _fwAnimPlay() {
     } catch(e) {
       console.warn('[FOLLOW] Tick error:', e);
     }
-    // Chain next tick only after this one finishes (prevents pile-up)
     if (_fwPlaying) _fwTimer = setTimeout(_fwTickFn, _fwSpeed);
   };
   _fwTimer = setTimeout(_fwTickFn, _fwSpeed);
@@ -1052,160 +1036,30 @@ function _fwAnimPlay() {
 function _fwAnimPause() {
   _fwPlaying = false;
   if (_fwTimer) { clearTimeout(_fwTimer); _fwTimer = null; }
+  _fwUpdatePlayBtn();
 }
 
 function _fwAnimStopFull() {
   _fwPlaying = false;
+  _fwUpdatePlayBtn();
   if (_fwTimer) { clearTimeout(_fwTimer); _fwTimer = null; }
   _fwYearIdx = -1;
   _fwYear = null;
   _fwTickFn = null;
-  if (_fwAnimCtl) _fwAnimCtl.forceStop();
-  // Reveal all markers for selected figures
   _fwSelectedFiles().forEach(function(file) {
     (_fwMarkers[file] || []).forEach(function(m) {
-      if (!m._fwVisible) { m.addTo(_fwMap); m._fwVisible = true; }
+      if (!m._fwVisible && _fwMap) { m.addTo(_fwMap); m._fwVisible = true; }
     });
     (_fwLines[file] || []).forEach(function(l) {
-      if (!l._fwVisible) { l.addTo(_fwMap); l._fwVisible = true; }
+      if (!l._fwVisible && _fwMap) { l.addTo(_fwMap); l._fwVisible = true; }
     });
   });
   _fwUpdateScrubberUI();
 }
 
 // ═══════════════════════════════════════════════════════════
-// CLEANUP
+// METHODOLOGY MODAL
 // ═══════════════════════════════════════════════════════════
-function _fwCleanup() {
-  _fwAnimStopFull();
-  document.body.classList.remove('fw-active');
-}
-
-window._captureState_follow=function(){
-  var files=Object.keys(_fwSelected).filter(function(f){return _fwSelected[f];});
-  return{selected:files,yearIdx:_fwYearIdx};
-};
-window._restoreState_follow=function(s){
-  if(!s||!s.selected) return;
-  _fwSelected={};
-  s.selected.forEach(function(f){_fwSelected[f]=true;});
-  if(typeof _fwRebuild==='function') _fwRebuild();
-};
-
-// ═══════════════════════════════════════════════════════════
-// PRELOAD JOURNEY INDEX + GLOBAL EXPOSE
-// ═══════════════════════════════════════════════════════════
-window._journeyFigures = null; // Set of F-code slugs
-
-// Hardcoded fallback for journey names that don't match core.json famous exactly
-var _FW_NAME_MAP = {
-  'Abd al-Qadir al-Jilani':'Abdul Qadir al-Jilani',
-  'Abu Bakr as-Siddiq':'Abu Bakr al-Siddiq',
-  'Abu Dawud al-Sijistani':'Abu Dawud',
-  'Abu Hanifa':'Imam Abu Hanifa',
-  'Bayazid Bistami':'Abu Yazid al-Bistami',
-  'Junayd al-Baghdadi':'Junayd of Baghdad',
-  'Rabia al-Adawiyya':'Rabia al-Basri',
-  'Evliya \u00C7elebi':'Evliya Celebi',
-  'Hayreddin Barbarossa':'Khayr al-Din Barbarossa'
-};
-
-function _fwResolveName(journeyName){
-  if(typeof PEOPLE==='undefined') return null;
-  // Exact match
-  var p = PEOPLE.find(function(pp){ return pp.famous===journeyName; });
-  if(p) return p;
-  // Hardcoded fallback
-  var mapped = _FW_NAME_MAP[journeyName];
-  if(mapped){ p = PEOPLE.find(function(pp){ return pp.famous===mapped; }); if(p) return p; }
-  // Core famous is substring of journey name (handles parentheticals like "Al-Zahrawi (Abulcasis)")
-  var matches = PEOPLE.filter(function(pp){ return pp.famous && pp.famous.length>3 && journeyName.indexOf(pp.famous)!==-1; });
-  if(matches.length===1) return matches[0];
-  return null;
-}
-
-window._fwGetSelectedSlug = function(){
-  var files = _fwSelectedFiles();
-  if(!files.length) return null;
-  var fig = _fwFigures[files[0]];
-  if(!fig) return null;
-  var p = _fwResolveName(fig.name || _fwIndex.find(function(i){return i.file===files[0];})?.name);
-  return p ? p.slug : null;
-};
-
-window._preloadJourneyIndex = function(){
-  if(window._journeyFigures) return Promise.resolve(window._journeyFigures);
-  return fetch('data/islamic/journeys/index.json?v='+Date.now())
-    .then(function(r){ return r.json(); })
-    .then(function(arr){
-      _fwIndex = arr;
-      var set = new Set();
-      arr.forEach(function(item){
-        var p = _fwResolveName(item.name);
-        if(p && p.slug) set.add(p.slug);
-      });
-      window._journeyFigures = set;
-      window._journeyIndexCount = arr.length;
-      // Update header stat
-      var el = document.getElementById('hdrStatLives');
-      if(el) el.textContent = arr.length.toLocaleString();
-      return set;
-    })
-    .catch(function(){ window._journeyFigures = new Set(); return window._journeyFigures; });
-};
-
-window._followShowFigure = function(slug){
-  if(!slug) return;
-  // Find the journey file for this slug
-  var file = null;
-  if(typeof PEOPLE!=='undefined'){
-    var p = PEOPLE.find(function(pp){ return pp.slug===slug; });
-    if(p){
-      for(var i=0; i<_fwIndex.length; i++){
-        // Check direct name match or resolved match
-        var resolved = _fwResolveName(_fwIndex[i].name);
-        if(resolved && resolved.slug===slug){ file=_fwIndex[i].file; break; }
-      }
-    }
-  }
-  if(!file) return;
-  // Switch to follow view
-  if(typeof setView==='function') setView('follow');
-  // Wait for follow to init, then select the figure
-  _fwLoadAll(function(){
-    _fwSelected = {};
-    _fwSelected[file] = true;
-    _fwUpdateDDChecks();
-    _fwUpdateFollowingList();
-    _fwAnimStopFull();
-    _fwYear = null;
-    _fwYearIdx = -1;
-    _fwRebuild();
-  });
-};
-
-// Show tagline when entering follow view
-(function(){
-  var _origSV=window.setView;
-  if(!_origSV) return;
-  window.setView=function(v){
-    _origSV(v);
-    if(v==='follow'){
-      if(typeof _showViewDesc==='function'){
-        var n=window._journeyIndexCount||0;
-        if(n>0){
-          _showViewDesc('');
-          var el=document.getElementById('viewDescInline');
-          if(el) el.innerHTML='Follow <span class="hdr-stat-num">'+n.toLocaleString()+'</span> figures through their life journey';
-          var _fc=document.getElementById('fw-l1-center'); if(_fc) _fc.innerHTML='Follow <span style="color:#D4AF37;font-weight:700">'+n.toLocaleString()+'</span> figures through their life journey';
-        } else {
-          _showViewDesc('Follow figures through their life journey');
-        }
-      }
-    }
-  };
-})();
-
 function _showFollowMethodology(){
   if(document.getElementById('fw-method-overlay')) return;
   var ov=document.createElement('div');
@@ -1213,12 +1067,168 @@ function _showFollowMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="fw-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+  box.innerHTML='<button id="fw-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
     +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">An animated map tracing a historical figure\u2019s life journey. Events appear chronologically in the side feed, synchronized with the map. Empire overlays show political control. Use play/pause and speed control.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Journey point</span><span style="color:#A0AEC0">A documented place the figure visited</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4a7c59;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade A</span><span style="color:#A0AEC0">Highly confident date</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4a6d8c;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade B</span><span style="color:#A0AEC0">Mostly confident</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#b08030;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade C</span><span style="color:#A0AEC0">Some uncertainty</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#707070;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Grade D</span><span style="color:#A0AEC0">Weak / traditional</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Journey data manually researched with GPS coordinates and source citations. Routes between points are illustrative. Empire borders simplified.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">An animated map tracing a historical figure’s life journey. Events appear chronologically in the side feed, synchronized with the map.</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('fw-method-close').addEventListener('click',function(){ov.remove();});
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
+
+  // ═══════════════════════════════════════════════════════════
+  // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+  // ═══════════════════════════════════════════════════════════
+
+  // Leaflet lazy-loader (CDN). Sandbox index.html does not include Leaflet.
+  function _ensureLeaflet(cb){
+    if(typeof L !== 'undefined'){ cb(); return; }
+    if(!document.querySelector('link[data-fw-leaflet]')){
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      link.setAttribute('data-fw-leaflet','1');
+      document.head.appendChild(link);
+    }
+    var existing = document.querySelector('script[data-fw-leaflet]');
+    if(existing){
+      existing.addEventListener('load', cb);
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    s.setAttribute('data-fw-leaflet','1');
+    s.onload = cb;
+    s.onerror = function(){ console.warn('[follow] Leaflet failed to load — map disabled'); cb(); };
+    document.head.appendChild(s);
+  }
+
+  // Wire shell's Zone B Figure-select to open the in-view add-figures dropdown.
+  function _wireZoneB(zoneBEl){
+    if(!zoneBEl) return;
+    // Add-figures button — opens dropdown panel positioned under the button
+    var addBtn = document.getElementById('fw-add-btn');
+    if(addBtn){
+      addBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var panel = document.getElementById('fw-add-panel');
+        if(!panel) return;
+        // Build panel contents on first click if empty
+        if(!panel.firstChild) _fwBuildAddPanel();
+        // Position fixed under the button
+        var r = addBtn.getBoundingClientRect();
+        panel.style.position = 'fixed';
+        panel.style.top = (r.bottom + 4) + 'px';
+        panel.style.left = r.left + 'px';
+        panel.style.width = '320px';
+        panel.style.zIndex = 10000;
+        _fwToggleDD(e);
+      });
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('fw-mounted');
+
+    // initFollow expects #follow-view in the DOM. Inject it into Zone C.
+    zoneCEl.innerHTML = '<div id="follow-view"></div>';
+
+    // Reset _fwInited so _fwBuildDOM repopulates the freshly-injected #follow-view
+    // (we destroyed the previous DOM tree on unmount).
+    _fwInited = false;
+
+    _wireZoneB(zoneBEl);
+
+    // Sync PEOPLE if TIMELINE/SILSILA already loaded core.json. Eagerly load journeys.
+    if(window.PEOPLE && window.PEOPLE.length){
+      PEOPLE = window.PEOPLE;
+    }
+
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ PEOPLE = arr || []; window.PEOPLE = PEOPLE; return PEOPLE; });
+
+    var p2 = (window._NAME_VARIANTS)
+      ? Promise.resolve(window._NAME_VARIANTS)
+      : fetch(dataUrl('data/islamic/name_variants.json'))
+          .then(function(r){ return r.ok ? r.json() : {}; })
+          .catch(function(){ return {}; })
+          .then(function(obj){ window._NAME_VARIANTS = obj || {}; return obj; });
+
+    Promise.all([p1, p2]).then(function(){
+      _ensureLeaflet(function(){
+        _fwEnsureDeps(function(){
+          initFollow();
+        });
+      });
+    });
+  }
+
+  function _fwEnsureDeps(cb){
+    var pending = 0, done = false;
+    function tryDone(){ if(pending === 0 && !done){ done = true; cb(); } }
+    function loadScript(src){
+      pending++;
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload  = function(){ pending--; tryDone(); };
+      s.onerror = function(){ console.warn('[FOLLOW] failed to load', src); pending--; tryDone(); };
+      document.head.appendChild(s);
+    }
+    if(typeof window._mbCreateMap !== 'function') loadScript('mapbase.js');
+    if(typeof window.AnimControls === 'undefined')  loadScript('anim.js');
+    if(pending === 0) cb();
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('fw-mounted');
+    document.body.classList.remove('fw-active');
+
+    // Stop animation, tear down map cleanly.
+    try { _fwAnimStopFull(); } catch(e) {}
+    if(_fwMap){
+      try { _fwMap.remove(); } catch(e) {}
+      _fwMap = null;
+    }
+    _fwMarkers = {};
+    _fwLines = {};
+    _fwEmpLayer = null;
+    _fwLabTile = null;
+    _fwInited = false;
+    _fwDDOpen = false;
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+  return {
+    mount: mount,
+    unmount: unmount,
+    showHtw: _showFollowMethodology,
+    animateStart: _fwAnimPlay,
+    animatePause: _fwAnimPause,
+    animateStop:  _fwAnimStopFull,
+    animateSetSpeed: function(label){
+      var map = { '0.5x':2400, '1x':1200, '2x':600, '4x':300 };
+      _fwSpeed = map[label] || 1200;
+      if(_fwPlaying){ clearTimeout(_fwTimer); _fwTimer = setTimeout(_fwTickFn, _fwSpeed); }
+    }
+  };
+})();

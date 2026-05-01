@@ -57,7 +57,7 @@ window._toggleUpdates = function(){
     _render(_data);
   } else {
     panel.innerHTML = '<div style="text-align:center;padding:60px;color:#6B7B8C">Loading...</div>';
-    fetch('data/updates.json').then(function(r){ return r.json(); }).then(function(d){
+    fetch(dataUrl('data/updates.json')).then(function(r){ return r.json(); }).then(function(d){
       _data = d;
       _render(d);
     }).catch(function(){

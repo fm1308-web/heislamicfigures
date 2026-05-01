@@ -1,6 +1,39 @@
-// ═══════════════════════════════════════════════════════════
-// STUDY ROOM
-// ═══════════════════════════════════════════════════════════
+/* ─────────────────────────────────────────────────────────────
+   STUDY view — verbatim lift from bv-app/study.js
+   IIFE exposes window.StudyView = { mount, unmount }
+   ───────────────────────────────────────────────────────────── */
+window.StudyView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (mirror timeline.js stub style)
+  // ═══════════════════════════════════════════════════════════
+  // stub: VIEW global — STUDY uses 'studyroom' in the lifted code
+  var VIEW = 'studyroom';
+  window.VIEW = 'studyroom';
+  // stub: APP namespace (favourites + i18n)
+  var APP = window.APP || {
+    Favorites: null,
+    filterFavsOnly: false,
+    _lang: 'en',
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; }
+  };
+  window.APP = APP;
+  // stub: requireTester — auth gate skipped in sandbox; star toggle still works
+  function requireTester(action, cb){ if(typeof cb === 'function') cb(); }
+  window.requireTester = requireTester;
+  // stub: _updateFavFilterBtn — header SAVED toggle in bv-app; sandbox no-op
+  function _updateFavFilterBtn(){ /* no-op */ }
+  window._updateFavFilterBtn = _updateFavFilterBtn;
+  // stub: setView — sandbox shell uses setActiveTab; openStudyRoom is parked
+  if(typeof window.setView !== 'function') window.setView = function(){};
+  // stub: _showViewDesc — sandbox has no header tagline target; no-op
+  if(typeof window._showViewDesc !== 'function') window._showViewDesc = function(){};
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/study.js ▼▼▼
+  // ═══════════════════════════════════════════════════════════
+
 const _SR_SCHOLARS={
   'F0241': {name:'Al-Hallaj',              death:'d. 922 CE',  dod:922},
   'F0229': {name:'Al-Farabi',              death:'d. 950 CE',  dod:950},
@@ -31,7 +64,7 @@ async function _fetchScholarBooks(slug){
   const cats=['slides','summary','video'];
   for(const cat of cats){
     try{
-      const res=await fetch('data/islamic/studyroom/'+cat+'/'+slug+'-manifest.json?v='+Date.now());
+      const res=await fetch(dataUrl('data/islamic/studyroom/'+cat+'/'+slug+'-manifest.json'));
       if(!res.ok) continue;
       const items=await res.json();
       items.forEach(function(item){
@@ -56,7 +89,6 @@ function _buildStudySidebar(){
     const s=_SR_SCHOLARS[slug];
     if(showFavsOnly&&!APP.Favorites.has(s.name)) return;
 
-    // Scholar card
     var card=document.createElement('div');
     card.className='sr-card';
     card.dataset.slug=slug;
@@ -72,31 +104,29 @@ function _buildStudySidebar(){
     var star=document.createElement('span');
     star.className='sr-card-fav';
     var isFav=APP.Favorites&&APP.Favorites.has(s.name);
-    star.textContent=isFav?'\u2605':'\u2606';
+    star.textContent=isFav?'★':'☆';
     if(isFav) star.classList.add('active');
     star.onclick=function(e){
       e.stopPropagation();
       if(!APP.Favorites) return;
       requireTester('save', function(){
         var nowFav=APP.Favorites.toggle(s.name);
-        star.textContent=nowFav?'\u2605':'\u2606';
+        star.textContent=nowFav?'★':'☆';
         star.classList.toggle('active',nowFav);
         _updateFavFilterBtn();
         if(APP.filterFavsOnly) _buildStudySidebar();
       });
     };
 
-    // Chevron
     var chevron=document.createElement('span');
     chevron.className='sr-card-chevron';
-    chevron.textContent='\u25B8';
+    chevron.textContent='▸';
 
     card.appendChild(chevron);
     card.appendChild(nameDiv);
     card.appendChild(dateDiv);
     card.appendChild(star);
 
-    // Book dropdown container (hidden by default)
     var dropdown=document.createElement('div');
     dropdown.className='sr-book-dropdown';
     dropdown.dataset.slug=slug;
@@ -112,30 +142,26 @@ function _buildStudySidebar(){
 }
 
 async function _toggleScholarDropdown(slug, dropdown, card, chevron){
-  // If already open, close it
   if(_srOpenScholar===slug){
     dropdown.classList.remove('open');
     card.classList.remove('sel');
-    chevron.textContent='\u25B8';
+    chevron.textContent='▸';
     _srOpenScholar=null;
     return;
   }
-  // Close any previously open
   document.querySelectorAll('.sr-book-dropdown.open').forEach(function(d){d.classList.remove('open');});
   document.querySelectorAll('.sr-card.sel').forEach(function(c){c.classList.remove('sel');});
-  document.querySelectorAll('.sr-card-chevron').forEach(function(ch){ch.textContent='\u25B8';});
+  document.querySelectorAll('.sr-card-chevron').forEach(function(ch){ch.textContent='▸';});
 
   card.classList.add('sel');
-  chevron.textContent='\u25BE';
+  chevron.textContent='▾';
   _srOpenScholar=slug;
   _srActive=slug;
 
-  // Update heading
   var s=_SR_SCHOLARS[slug];
   document.getElementById('sr-heading').textContent=s?s.name:slug;
 
-  // Fetch book data
-  dropdown.innerHTML='<div class="sr-book-loading">Loading\u2026</div>';
+  dropdown.innerHTML='<div class="sr-book-loading">Loading…</div>';
   dropdown.classList.add('open');
 
   var books=await _fetchScholarBooks(slug);
@@ -162,7 +188,7 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
       var sb=document.createElement('button');
       sb.className='sr-tab sr-book-tab';
       sb.setAttribute('data-type','slides');
-      sb.textContent='\uD83D\uDCD6 Slides';
+      sb.textContent='📖 Slides';
       sb.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'slides',book);_highlightBtn(btns,sb);};
       btns.appendChild(sb);
     }
@@ -170,7 +196,7 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
       var ub=document.createElement('button');
       ub.className='sr-tab sr-book-tab';
       ub.setAttribute('data-type','summary');
-      ub.textContent='\uD83D\uDCC4 Summary';
+      ub.textContent='📄 Summary';
       ub.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'summary',book);_highlightBtn(btns,ub);};
       btns.appendChild(ub);
     }
@@ -178,7 +204,7 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
       var vb=document.createElement('button');
       vb.className='sr-tab sr-book-tab';
       vb.setAttribute('data-type','video');
-      vb.textContent='\uD83C\uDFA5 Video';
+      vb.textContent='🎥 Video';
       vb.onclick=function(e){e.stopPropagation();_loadBookContent(slug,'video',book);_highlightBtn(btns,vb);};
       btns.appendChild(vb);
     }
@@ -187,13 +213,11 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
     dropdown.appendChild(bookEl);
   });
 
-  // Auto-load first book's first available type
   if(books.length){
     var first=books[0];
     var type=first.types.slides?'slides':first.types.summary?'summary':first.types.video?'video':null;
     if(type){
       _loadBookContent(slug,type,first);
-      // Highlight the button
       var firstBtn=dropdown.querySelector('.sr-book-tab');
       if(firstBtn) firstBtn.classList.add('active');
     }
@@ -201,7 +225,6 @@ async function _toggleScholarDropdown(slug, dropdown, card, chevron){
 }
 
 function _highlightBtn(container, btn){
-  // Clear all active tabs across entire sidebar
   document.querySelectorAll('.sr-book-tab.active').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
 }
@@ -211,7 +234,6 @@ function _loadBookContent(slug, type, book){
   body.querySelectorAll('iframe').forEach(function(f){f.src='about:blank';});
   body.innerHTML='';
 
-  // Update heading to show book title
   var s=_SR_SCHOLARS[slug];
   document.getElementById('sr-heading').innerHTML=
     '<span style="opacity:0.5;font-size:var(--fs-3)">'+(s?s.name:'')+'</span><br>'+
@@ -221,8 +243,7 @@ function _loadBookContent(slug, type, book){
   if(!entry) return;
 
   if(type==='slides'){
-    var base='data/islamic/studyroom/slides/';
-    var bust='?v='+Date.now();
+    var url=dataUrl('data/islamic/studyroom/slides/'+encodeURIComponent(entry.file));
     var wrap=document.createElement('div');
     wrap.style.cssText='position:relative;margin-bottom:32px';
     var f=document.createElement('iframe');
@@ -231,7 +252,7 @@ function _loadBookContent(slug, type, book){
     f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px';
     wrap.appendChild(f);
     var fsBtn=document.createElement('button');
-    fsBtn.textContent='\u26F6';
+    fsBtn.textContent='⛶';
     fsBtn.style.cssText='position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.5);border:1px solid var(--border2);border-radius:4px;color:var(--accent);font-size:var(--fs-1);padding:4px 8px;cursor:pointer';
     fsBtn.onmouseenter=function(){fsBtn.style.background='rgba(212,175,55,.15)';fsBtn.style.borderColor='var(--accent)';};
     fsBtn.onmouseleave=function(){fsBtn.style.background='rgba(0,0,0,0.5)';fsBtn.style.borderColor='var(--border2)';};
@@ -239,26 +260,25 @@ function _loadBookContent(slug, type, book){
       if(wrap.dataset.expanded==='1'){
         wrap.style.cssText='position:relative;margin-bottom:32px';
         f.style.width='100%';f.style.height='600px';
-        fsBtn.textContent='\u26F6';wrap.dataset.expanded='0';
+        fsBtn.textContent='⛶';wrap.dataset.expanded='0';
       }else{
         wrap.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:#000;margin:0';
         f.style.width='100%';f.style.height='100%';
-        fsBtn.textContent='\u2716';wrap.dataset.expanded='1';
+        fsBtn.textContent='✖';wrap.dataset.expanded='1';
       }
     };
     wrap.appendChild(fsBtn);
     document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&wrap.dataset.expanded==='1')fsBtn.click();});
     body.appendChild(wrap);
-    f.src=base+encodeURIComponent(entry.file)+bust;
+    f.src=url;
   }
 
   if(type==='summary'){
-    var base='data/islamic/studyroom/summary/';
-    var bust='?v='+Date.now();
+    var url2=dataUrl('data/islamic/studyroom/summary/'+encodeURIComponent(entry.file));
     var f=document.createElement('iframe');
     f.style.cssText='width:100%;height:600px;border:none;display:block;border-radius:5px;margin-bottom:32px';
     body.appendChild(f);
-    f.src=base+encodeURIComponent(entry.file)+bust;
+    f.src=url2;
   }
 
   if(type==='video'){
@@ -280,13 +300,12 @@ function selectStudyScholar(slug){
   _srActive=slug;
   var panel=document.getElementById('sr-left');
   if(panel&&!panel.children.length) _buildStudySidebar();
-  // Find and click the scholar card to open dropdown
   var card=panel.querySelector('.sr-card[data-slug="'+slug+'"]');
   if(card) card.click();
 }
+window.selectStudyScholar = selectStudyScholar;
 
 async function selectStudyTab(tab){
-  // Legacy compatibility: if called with just a tab name, load first book of that type
   if(!_srActive) return;
   var books=await _fetchScholarBooks(_srActive);
   for(var i=0;i<books.length;i++){
@@ -296,33 +315,17 @@ async function selectStudyTab(tab){
     }
   }
 }
+window.selectStudyTab = selectStudyTab;
 
 function openStudyRoom(slug){
   setView('studyroom');
   selectStudyScholar(slug);
 }
+window.openStudyRoom = openStudyRoom;
+
 const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Firdowsi','Al-Biruni','Ali al-Hujwiri','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Farid ud-Din Attar','Abdul Qadir al-Jilani','Fakhr al-Din Iraqi','Ibn Taymiyya','Ibn al-Qayyim','Ibn Hazm','Ibn Khaldun']);
 const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Firdowsi':'F0605','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Fakhr al-Din Iraqi':'F0574','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727','Ibn Hazm':'F0737','Ibn Khaldun':'F0743'};
-
-// Build sidebar immediately so it's ready when study view is shown
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',function(){ _buildStudySidebar(); });
-} else {
-  _buildStudySidebar();
-}
-
-// Show tagline when entering study view
-(function(){
-  var _origSV=window.setView;
-  if(!_origSV) return;
-  window.setView=function(v){
-    _origSV(v);
-    if(v==='studyroom'){
-      if(typeof _showViewDesc==='function') _showViewDesc('Click on scholars on the left');
-      if(!document.getElementById('sr-how-btn')){var _shb=document.createElement('button');_shb.id='sr-how-btn';_shb.textContent='How This Works';_shb.style.cssText="height:26px;padding:0 12px;border-radius:13px;border:1px solid #555;background:transparent;color:#888;font-size:var(--fs-3);cursor:pointer;transition:.2s;font-family:'Cinzel',serif;letter-spacing:.05em;margin:8px 10px 4px";_shb.onmouseover=function(){this.style.borderColor='#D4AF37';this.style.color='#D4AF37';};_shb.onmouseout=function(){this.style.borderColor='#555';this.style.color='#888';};_shb.onclick=function(e){e.stopPropagation();_showStudyMethodology();};var _sp=document.getElementById('sr-left');if(_sp)_sp.insertBefore(_shb,_sp.firstChild);}
-    }
-  };
-})();
+window._SR_SLUG_MAP = _SR_SLUG_MAP;
 
 function _showStudyMethodology(){
   if(document.getElementById('sr-method-overlay')) return;
@@ -331,12 +334,115 @@ function _showStudyMethodology(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="sr-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+  box.innerHTML='<button id="sr-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
     +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Curated educational content \u2014 slide decks, visual summaries, and video lectures about key Islamic scholars. Each module combines visual overviews with deeper resources.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Slides</span><span style="color:#A0AEC0">Visual summaries covering key facts and context</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#3B82F6;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Summary</span><span style="color:#A0AEC0">Written overview of a scholar’s life and works</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E53E3E;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Video</span><span style="color:#A0AEC0">Embedded lectures from public YouTube channels</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Video content is from third-party creators and may reflect their perspectives. Slide content written for this project. Materials are introductory-level.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Curated educational content — slide decks, visual summaries, and video lectures about key Islamic scholars.</p>'
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('sr-method-close').addEventListener('click',function(){ov.remove();});
   ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
   document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
+
+  // ═══════════════════════════════════════════════════════════
+  // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+  // ═══════════════════════════════════════════════════════════
+
+  function _injectScaffold(zoneCEl){
+    zoneCEl.innerHTML =
+      '<div id="studyRoomView" class="active">' +
+        '<div id="sr-left"></div>' +
+        '<div id="sr-right">' +
+          '<div id="sr-heading"></div>' +
+          '<div id="sr-body"></div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  // Wire shell's Zone B controls (search + Writer / Topic selects).
+  // Per HARD RULES, view only attaches handlers — does not inject Zone B DOM.
+  function _wireZoneB(zoneBEl){
+    // Search input → filter sidebar by name (live).
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = 'Search writers…';
+      searchInp.addEventListener('input', function(){
+        var q = (searchInp.value || '').toLowerCase();
+        document.querySelectorAll('#sr-left .sr-card').forEach(function(card){
+          var name = (card.querySelector('.sr-card-name') || {}).textContent || '';
+          var match = !q || name.toLowerCase().indexOf(q) !== -1;
+          card.style.display = match ? '' : 'none';
+          // Hide adjacent dropdown alongside the card
+          var dd = card.nextElementSibling;
+          if(dd && dd.classList && dd.classList.contains('sr-book-dropdown')){
+            dd.style.display = match ? '' : 'none';
+          }
+        });
+      });
+    }
+
+    if(!zoneBEl) return;
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(!row2) return;
+    // Writer / Topic selects: handlers parked — picker UI not implemented in sandbox.
+    // Click toggles zb-active state via shell.bindActiveToggle, which is already bound.
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('sr-mounted');
+    _injectScaffold(zoneCEl);
+    _wireZoneB(zoneBEl);
+
+    // Reset transient state so re-mount rebuilds cleanly.
+    _srOpenScholar = null;
+    _srActive = null;
+
+    // Eagerly load core.json (used by jump-to-figure cross-view chips) and the three
+    // studyroom manifest categories for the first scholar so the auto-load is instant
+    // when the user clicks. Mirrors timeline's Promise.all pattern.
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ window.PEOPLE = arr || []; return arr; });
+
+    // Pre-warm manifests for the first (earliest dod) scholar so first click is instant.
+    var firstSlug = Object.keys(_SR_SCHOLARS).sort(function(a,b){
+      return _SR_SCHOLARS[a].dod - _SR_SCHOLARS[b].dod;
+    })[0];
+    var p2 = firstSlug ? _fetchScholarBooks(firstSlug) : Promise.resolve([]);
+
+    Promise.all([p1, p2]).then(function(){
+      _buildStudySidebar();
+    });
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('sr-mounted');
+
+    // Stop iframes so PDFs/videos release before zoneC is wiped.
+    document.querySelectorAll('#sr-body iframe').forEach(function(f){
+      try { f.src = 'about:blank'; } catch(e) {}
+    });
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+  return { mount: mount, unmount: unmount, showHtw: _showStudyMethodology };
+})();

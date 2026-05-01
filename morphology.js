@@ -11,7 +11,7 @@ function _mpPad3(n){ return ("00"+n).slice(-3); }
 
 function _mpLoadSurah(surah){
   if(window._mpCorpusCache[surah] !== undefined) return Promise.resolve(window._mpCorpusCache[surah]);
-  return fetch("data/islamic/morphology/corpus/surah-"+_mpPad3(surah)+".json")
+  return fetch(dataUrl("data/islamic/morphology/corpus/surah-"+_mpPad3(surah)+".json"))
     .then(function(r){ if(!r.ok) throw new Error("404"); return r.json(); })
     .then(function(j){ window._mpCorpusCache[surah] = j; return j; })
     .catch(function(){ window._mpCorpusCache[surah] = null; return null; });
@@ -19,7 +19,7 @@ function _mpLoadSurah(surah){
 
 function _mpLoadLaneIndex(){
   if(window._mpLaneIndex) return Promise.resolve(window._mpLaneIndex);
-  return fetch("data/islamic/morphology/lane_letter_index.json")
+  return fetch(dataUrl("data/islamic/morphology/lane_letter_index.json"))
     .then(function(r){ return r.json(); })
     .then(function(j){ window._mpLaneIndex = j; return j; })
     .catch(function(){ window._mpLaneIndex = {}; return {}; });
@@ -30,7 +30,7 @@ function _mpLoadLaneLetter(letter){
   return _mpLoadLaneIndex().then(function(idx){
     var fn = idx[letter];
     if(!fn){ window._mpLaneCache[letter] = {}; return {}; }
-    return fetch("data/islamic/morphology/lane/"+fn)
+    return fetch(dataUrl("data/islamic/morphology/lane/"+fn))
       .then(function(r){ return r.json(); })
       .then(function(j){ window._mpLaneCache[letter] = j; return j; })
       .catch(function(){ window._mpLaneCache[letter] = {}; return {}; });
@@ -123,9 +123,9 @@ function _mpRootClick(rootEncoded, ev){
   if(!chip) return;
   var card = chip.closest(".dv-card");
   if(!card) return;
-  // Dictionary is the 3rd <details>
+  // Dictionary is the 2nd <details> (WBW=0, Dictionary=1, Tafsir=2, Translations=3)
   var details = card.querySelectorAll("details");
-  var dictDetails = details[2];
+  var dictDetails = details[1];
   if(!dictDetails) return;
   dictDetails.open = true;
   var body = dictDetails.querySelector(".dv-body");

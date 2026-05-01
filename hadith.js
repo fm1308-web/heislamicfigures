@@ -2,12 +2,12 @@
 'use strict';
 
 var COLLECTIONS = [
-  {key:'bukhari',  label:'Sahih Bukhari',      file:'data/hadith/bukhari.json'},
-  {key:'muslim',   label:'Sahih Muslim',        file:'data/hadith/muslim.json'},
-  {key:'abudawud', label:"Sunan Abi Da'ud",     file:'data/hadith/abudawud.json'},
-  {key:'tirmidhi', label:"Jami' al-Tirmidhi",   file:'data/hadith/tirmidhi.json'},
-  {key:'nasai',    label:"Sunan an-Nasa'i",      file:'data/hadith/nasai.json'},
-  {key:'ibnmajah', label:'Sunan Ibn Majah',     file:'data/hadith/ibnmajah.json'}
+  {key:'bukhari',  label:'Sahih Bukhari',      file:'data/hadith/bukhari.json?v=fixture1'},
+  {key:'muslim',   label:'Sahih Muslim',        file:'data/hadith/muslim.json?v=fixture1'},
+  {key:'abudawud', label:"Sunan Abi Da'ud",     file:'data/hadith/abudawud.json?v=fixture1'},
+  {key:'tirmidhi', label:"Jami' al-Tirmidhi",   file:'data/hadith/tirmidhi.json?v=fixture1'},
+  {key:'nasai',    label:"Sunan an-Nasa'i",      file:'data/hadith/nasai.json?v=fixture1'},
+  {key:'ibnmajah', label:'Sunan Ibn Majah',     file:'data/hadith/ibnmajah.json?v=fixture1'}
 ];
 
 var _cache = {};
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   // Populate narrator dropdown from index
-  fetch('data/hadith/narrator_index.json').then(function(r){
+  fetch(dataUrl('data/hadith/narrator_index.json')).then(function(r){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
