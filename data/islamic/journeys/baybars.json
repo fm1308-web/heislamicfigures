@@ -1,0 +1,205 @@
+{
+  "person": "Baybars",
+  "slug": "F0527",
+  "lifespan": "1223-1277",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Al-Zahir Rukn al-Din Baybars al-Bunduqdari, the first great Mamluk sultan, is exceptionally well documented in 13th-century Arabic chronicles, especially in the official biography by his confidant Ibn Abd al-Zahir (Sirat al-Malik al-Zahir) and in the chronicles of al-Maqrizi and Abu'l-Mahasin Ibn Taghribirdi. The major events of his reign - the battles of Mansura and Ayn Jalut, his accession in 1260, his campaigns against the crusaders and the Mongols, his death in Damascus in 1277 - are firmly placed by year and many by day. His early life as a Kipchak Turk slave is less well documented."
+  },
+  "sources": [
+    "Ibn Abd al-Zahir, Sirat al-Malik al-Zahir",
+    "Al-Maqrizi, Kitab al-Suluk li-Ma'rifat Duwal al-Muluk",
+    "Abu'l-Mahasin Ibn Taghribirdi, al-Nujum al-Zahira",
+    "Peter Thorau, The Lion of Egypt: Sultan Baybars I (1992)",
+    "Encyclopaedia of Islam, 2nd ed., 'Baybars I'"
+  ],
+  "journey": [
+    {
+      "year": 1223,
+      "age": 0,
+      "precision": "year",
+      "location": "Kipchak steppe",
+      "lat": 47.0,
+      "lng": 45.0,
+      "event": "Born around 1223 (or 1227) in the Kipchak steppe north of the Black Sea, into a Turkic family of the Burj-Oghli clan. His distinctive feature, mentioned by every source, is one blue eye covered by a cataract.",
+      "category": "birth",
+      "source": "Ibn Abd al-Zahir; Thorau"
+    },
+    {
+      "year": 1240,
+      "age": 17,
+      "precision": "period",
+      "location": "Crimea",
+      "lat": 45.0,
+      "lng": 34.0,
+      "event": "Around 1240 his tribe is broken by the Mongol invasions of the Kipchak steppe. As a young man Baybars is captured and sold into slavery, ending up in the slave market of Sivas in Anatolia, then in the markets of Aleppo and Hama in Syria.",
+      "category": "loss",
+      "source": "Ibn Abd al-Zahir"
+    },
+    {
+      "year": 1242,
+      "age": 19,
+      "precision": "period",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Eventually purchased for the Ayyubid sultan al-Salih Ayyub of Egypt, who is building up an elite slave-soldier corps known as the Bahri Mamluks (the river Mamluks, after their barracks on Roda island in the Nile). Baybars rises rapidly within this corps.",
+      "category": "civic",
+      "source": "Al-Maqrizi"
+    },
+    {
+      "day": 8,
+      "month": 2,
+      "year": 1250,
+      "age": 27,
+      "precision": "day",
+      "location": "Mansura",
+      "lat": 31.0364,
+      "lng": 31.3807,
+      "event": "On 8 February 1250 commands a Mamluk detachment at the Battle of Mansura against the army of King Louis IX of France during the Seventh Crusade. The Mamluks rout the heavily-armoured Frankish vanguard under Robert of Artois (the king's brother), who is killed. Louis is forced to retreat and is eventually captured.",
+      "category": "battle",
+      "source": "Joinville, Vie de saint Louis; Al-Maqrizi"
+    },
+    {
+      "year": 1250,
+      "age": 27,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "When the Ayyubid sultan al-Salih Ayyub dies during the campaign and his successor al-Mu'azzam Turanshah threatens to displace the Bahri Mamluks, Baybars is one of the conspirators in his assassination in May 1250. The Mamluks then take power directly, ending the Ayyubid dynasty in Egypt and beginning the Mamluk Sultanate.",
+      "category": "crisis",
+      "source": "Al-Maqrizi; Thorau"
+    },
+    {
+      "year": 1254,
+      "age": 31,
+      "precision": "period",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Falls out with the Mamluk sultan Aybak (the second of the new dynasty) and flees to Syria, where he serves the Ayyubid prince of Damascus, al-Nasir Yusuf, for several years. Acquires direct knowledge of Syrian politics and the crusader principalities of the Levant.",
+      "category": "civic",
+      "source": "Al-Maqrizi; Ibn Abd al-Zahir"
+    },
+    {
+      "year": 1260,
+      "age": 37,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "When the Mongol army of Hulagu sweeps through Syria in 1260 (sacking Aleppo in January and Damascus in March), Baybars rejoins the Mamluk service in Egypt under the new sultan Qutuz. The Mamluks decide to confront the Mongols rather than surrender.",
+      "category": "civic",
+      "source": "Al-Maqrizi"
+    },
+    {
+      "day": 3,
+      "month": 9,
+      "year": 1260,
+      "age": 37,
+      "precision": "day",
+      "location": "Ayn Jalut",
+      "lat": 32.5167,
+      "lng": 35.3500,
+      "event": "On 3 September 1260, at the Battle of Ayn Jalut in Galilee, the Mamluk army under Qutuz crushes the Mongol force under Kitbuqa. Baybars commands the vanguard and lures the Mongols into a feigned retreat. It is the first major defeat of the Mongols in open battle and the event that saves Egypt and the western Islamic lands from being overrun.",
+      "category": "battle",
+      "source": "Al-Maqrizi; Ibn al-Athir; Thorau"
+    },
+    {
+      "day": 24,
+      "month": 10,
+      "year": 1260,
+      "age": 37,
+      "precision": "day",
+      "location": "near Cairo",
+      "lat": 30.5,
+      "lng": 31.5,
+      "event": "On the journey back from Syria to Cairo in October 1260, Baybars assassinates Sultan Qutuz at Salihiyya in the Nile Delta - reportedly because Qutuz had refused to give him the governorship of Aleppo as promised. Baybars rides immediately to Cairo and is acclaimed sultan.",
+      "category": "accession",
+      "source": "Al-Maqrizi; Ibn Abd al-Zahir"
+    },
+    {
+      "year": 1261,
+      "age": 38,
+      "precision": "year",
+      "location": "Cairo",
+      "lat": 30.0444,
+      "lng": 31.2357,
+      "event": "Consolidates his rule in Cairo. Brings the last surviving member of the Abbasid family (rescued from the Mongol sack of Baghdad in 1258) to Cairo and installs him as a shadow caliph, al-Mustansir. This gives the Mamluk sultanate a measure of religious legitimacy as the protector of the caliphate.",
+      "category": "civic",
+      "source": "Al-Maqrizi"
+    },
+    {
+      "year": 1265,
+      "age": 42,
+      "precision": "year",
+      "location": "Caesarea",
+      "lat": 32.5008,
+      "lng": 34.8917,
+      "event": "Begins his great campaigns against the crusader states of the Levant. In February-March 1265 takes Caesarea and Arsuf. He reorganises the Mamluk army around mounted archery, intensive training, and a sophisticated postal and intelligence system covering the whole sultanate.",
+      "category": "siege",
+      "source": "Al-Maqrizi; Ibn Abd al-Zahir"
+    },
+    {
+      "year": 1266,
+      "age": 43,
+      "precision": "year",
+      "location": "Safed",
+      "lat": 32.9650,
+      "lng": 35.4956,
+      "event": "Takes the Templar fortress of Safed (Safed) in upper Galilee after a siege in July 1266. The garrison is allowed to surrender on terms, but Baybars violates the terms and has the survivors executed. The harshness is intended as a warning to other crusader fortresses.",
+      "category": "siege",
+      "source": "Al-Maqrizi"
+    },
+    {
+      "year": 1268,
+      "age": 45,
+      "precision": "month",
+      "location": "Antioch",
+      "lat": 36.2,
+      "lng": 36.16,
+      "event": "On 18 May 1268 takes Antioch, one of the great crusader cities of the Levant, after a four-day siege. The city is sacked and the population enslaved. The fall of Antioch sends shock waves through Christendom and contributes to the call for new crusades.",
+      "category": "siege",
+      "source": "Al-Maqrizi; Ibn Abd al-Zahir"
+    },
+    {
+      "year": 1271,
+      "age": 48,
+      "precision": "year",
+      "location": "Krak des Chevaliers",
+      "lat": 34.7567,
+      "lng": 36.2944,
+      "event": "In April 1271 takes the great Hospitaller castle of Krak des Chevaliers (Hisn al-Akrad) in central Syria after a siege of about a month. It is the most famous and most defensible of all crusader castles. Its fall effectively ends the strategic crusader presence in inland Syria.",
+      "category": "siege",
+      "source": "Al-Maqrizi"
+    },
+    {
+      "year": 1277,
+      "age": 54,
+      "precision": "year",
+      "location": "Elbistan",
+      "lat": 38.2069,
+      "lng": 37.1856,
+      "event": "In April 1277 invades Mongol-held Anatolia and on 15 April defeats the Ilkhanid Mongol army at the Battle of Elbistan, his last major military victory. He then turns back, having no resources to consolidate the conquest.",
+      "category": "battle",
+      "source": "Al-Maqrizi; Thorau"
+    },
+    {
+      "day": 1,
+      "month": 7,
+      "year": 1277,
+      "age": 54,
+      "precision": "day",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "Returns to Damascus from the Anatolian campaign and dies there on 1 July 1277 (28 Muharram 676 AH), aged about 54. The cause of death is uncertain - tradition holds that he accidentally drank a cup of poisoned koumiss intended for an enemy. Is buried in the Zahiriyya madrasa in Damascus, which still stands and houses one of the great manuscript libraries of the Arab world.",
+      "category": "death",
+      "source": "Al-Maqrizi; Ibn Abd al-Zahir"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "person": "Yunus Emre",
+  "slug": "F1667",
+  "lifespan": "1238-1320",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "D",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Yunus Emre is one of the most beloved Turkish poets - the founder of the Turkish poetic tradition in the language of the people - but the historical record about his life is unusually thin and overlaid with legend. Even his birth and death years are reconstructed from a single chronogram in his Risalat al-Nushiyya (composed in 1307-08, when he says he is 80 lunar years old). The places associated with him have been disputed for centuries, with at least seven different villages in Turkey claiming his tomb. The journey is therefore a sketch based on tradition rather than firm history."
+  },
+  "sources": [
+    "Yunus Emre, Divan",
+    "Yunus Emre, Risalat al-Nushiyya",
+    "Talat S. Halman, Yunus Emre and his Mystical Poetry (1981)",
+    "Annemarie Schimmel, As Through a Veil: Mystical Poetry in Islam (1982)",
+    "Encyclopaedia of Islam, 2nd ed., 'Yunus Emre'"
+  ],
+  "journey": [
+    {
+      "year": 1238,
+      "age": 0,
+      "precision": "year",
+      "location": "central Anatolia",
+      "lat": 39.7667,
+      "lng": 30.5256,
+      "event": "Born around 1238 in central Anatolia under the Seljuk Sultanate of Rum, into a Turkish-speaking peasant or village family. The most often cited birthplace is the village of Sariköy near Eskisehir, though Karaman, Sivrihisar, and several other places have been claimed.",
+      "category": "birth",
+      "source": "Yunus Emre, Risalat al-Nushiyya (chronogram)"
+    },
+    {
+      "year": 1250,
+      "age": 12,
+      "precision": "period",
+      "location": "central Anatolia",
+      "lat": 39.7667,
+      "lng": 30.5256,
+      "event": "Grows up in the rural Turkish-speaking world of central Anatolia, in a society where Persian is the language of high culture and Turkish is the language of the village. The Seljuk sultanate is in decline, increasingly under Mongol domination after the Battle of Köse Dag (1243).",
+      "category": "childhood",
+      "source": "Halman; Encyclopaedia of Islam"
+    },
+    {
+      "year": 1265,
+      "age": 27,
+      "precision": "period",
+      "location": "Sariköy",
+      "lat": 39.7667,
+      "lng": 30.5256,
+      "event": "According to the famous tradition of Yunus's life, lives a normal village existence as a poor labourer until a famine drives him to seek charity. He goes to the lodge of the Sufi master Tapduk Emre to ask for grain. Tapduk gives him grain but Yunus, on the road home, regrets having asked for material help instead of spiritual blessing. He returns and asks to become a disciple.",
+      "category": "conversion",
+      "source": "Tradition; Halman"
+    },
+    {
+      "year": 1266,
+      "age": 28,
+      "precision": "period",
+      "location": "Tapduk's lodge",
+      "lat": 39.5,
+      "lng": 30.5,
+      "event": "Becomes a disciple of Tapduk Emre. According to tradition, his service consists of carrying logs on his back from the forest to the lodge for forty years - and he carries only straight logs, refusing to bring crooked ones to the threshold of his master. The story is symbolic of the inner discipline of the Sufi path.",
+      "category": "spiritual",
+      "source": "Tradition (Vilayetname-i Hacim Sultan)"
+    },
+    {
+      "year": 1280,
+      "age": 42,
+      "precision": "period",
+      "location": "Anatolia",
+      "lat": 39.0,
+      "lng": 35.0,
+      "event": "Begins to compose poetry in spoken Anatolian Turkish, in the simple syllabic metres of the folk tradition rather than the complex Persian arudh metres used by the educated court poets. His poems are sung from village to village by wandering dervishes and become one of the formative texts of Turkish literature.",
+      "category": "civic",
+      "source": "Yunus Emre, Divan"
+    },
+    {
+      "year": 1290,
+      "age": 52,
+      "precision": "period",
+      "location": "Konya",
+      "lat": 37.8716,
+      "lng": 32.4847,
+      "event": "Tradition holds that he visits Konya, then the cultural centre of the Seljuk and post-Seljuk Anatolian world, and meets (or just misses) the great Persian poet Mawlana Rumi. The famous saying attributed to Yunus on hearing Rumi's Mathnawi is: 'I would have written it shorter, I would only have said: I came clothed in flesh, then I took it off and went.'",
+      "category": "civic",
+      "source": "Tradition"
+    },
+    {
+      "year": 1300,
+      "age": 62,
+      "precision": "period",
+      "location": "Anatolia",
+      "lat": 39.0,
+      "lng": 35.0,
+      "event": "Travels widely through Anatolia as a wandering dervish, composing poems and singing them in the lodges of the Bektashi and other Sufi orders that are forming in the wake of the Seljuk collapse. The early Ottoman emirate is just beginning in the northwest under Osman I.",
+      "category": "travel",
+      "source": "Yunus Emre, Divan"
+    },
+    {
+      "year": 1307,
+      "age": 69,
+      "precision": "year",
+      "location": "Anatolia",
+      "lat": 39.7667,
+      "lng": 30.5256,
+      "event": "Composes his Risalat al-Nushiyya (Book of Counsel), a long didactic poem in Turkish couplets, in 707 AH (1307-08 CE). In the introduction he gives his age as eighty (lunar) years - this is the only direct evidence for his lifespan and is the basis of the conventional birth and death dates assigned to him.",
+      "category": "civic",
+      "source": "Risalat al-Nushiyya, dating chronogram"
+    },
+    {
+      "year": 1320,
+      "age": 82,
+      "precision": "year",
+      "location": "Anatolia",
+      "lat": 39.7667,
+      "lng": 30.5256,
+      "event": "Dies around 1320, aged about 82 in lunar years. The location of his tomb is famously contested - at least seven different sites in Turkey claim to be his burial place, including Sariköy near Eskisehir, Karaman, and Bursa. The Turkish government has accepted Sariköy (now renamed Yunusemre) as the official site. Wherever he lies, his poems remain alive in Turkish folk and devotional song to this day.",
+      "category": "death",
+      "source": "Encyclopaedia of Islam"
+    }
+  ]
+}

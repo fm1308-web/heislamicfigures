@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "person": "Shah Isma'il I",
+  "slug": "F1288",
+  "lifespan": "1487-1524 CE",
+  "confidence": {
+    "grade": "B",
+    "density": "moderate",
+    "precision": "year",
+    "disclosure": "Reconstructed from Hasan Beg Rumlu's Ahsan al-Tavarikh, Khwandamir's Habib al-Siyar, and Qasem Beg Hayati's Tarikh. The period of concealment in Lahijan, the rapid early campaigns to Ardabil and Tabriz (1499-1501), and the fateful defeat at Chaldiran (August 1514) are all well dated. Dates for some later eastern campaigns rely on general chronology rather than specific entries; month-precision is uncommon outside the Chaldiran campaign."
+  },
+  "sources": [
+    "Hasan Beg Rumlu, Ahsan al-Tavarikh (c. 1577)",
+    "Khwandamir, Habib al-Siyar (c. 1524)",
+    "Qasem Beg Hayati Tabrizi, Tarikh (c. 1564)",
+    "Roger Savory, Iran Under the Safavids (1980)",
+    "Andrew Newman, Safavid Iran: Rebirth of a Persian Empire (2006)"
+  ],
+  "journey": [
+    {"year": 1487, "location": "Ardabil, Iran", "lat": 38.2498, "lng": 48.2933, "event": "Born at Ardabil on 17 July 1487, son of the Safavid sheikh Haydar and grandson of Uzun Hasan of the Aq Qoyunlu.", "category": "birth", "precision": "day", "source": "Khwandamir"},
+    {"year": 1494, "location": "Lahijan, Iran", "lat": 37.2074, "lng": 50.0036, "event": "Taken at age six by loyal Safavid followers to hide in Lahijan in the forests of Gilan after his father's death and brothers' deaths.", "category": "exile", "precision": "year", "source": "Rumlu"},
+    {"year": 1499, "location": "Lahijan, Iran", "lat": 37.2074, "lng": 50.0036, "event": "Emerged from concealment at age twelve and began to gather Qizilbash followers.", "category": "other", "precision": "year", "source": "Rumlu"},
+    {"year": 1500, "location": "Erzincan, Turkey", "lat": 39.7500, "lng": 39.5000, "event": "Summoned his followers to assemble at Erzincan in eastern Anatolia to launch his movement.", "category": "campaign", "precision": "year", "source": "Rumlu"},
+    {"year": 1500, "location": "Shirvan, Azerbaijan", "lat": 40.9833, "lng": 48.9167, "event": "Invaded Shirvan and defeated its ruler Farrukh Yasar, avenging his father's death.", "category": "battle", "precision": "year", "source": "Rumlu"},
+    {"year": 1501, "location": "Nakhchivan, Azerbaijan", "lat": 39.2089, "lng": 45.4122, "event": "Defeated the Aq Qoyunlu ruler Alvand Mirza at the Battle of Sharur near Nakhchivan in summer 1501.", "category": "battle", "precision": "month", "source": "Rumlu"},
+    {"year": 1501, "location": "Tabriz, Iran", "lat": 38.0962, "lng": 46.2738, "event": "Entered Tabriz in triumph and was proclaimed Shah; declared Twelver Shi'ism the state religion.", "category": "coronation", "precision": "month", "source": "Khwandamir"},
+    {"year": 1503, "location": "Hamadan, Iran", "lat": 34.7989, "lng": 48.5149, "event": "Defeated the last Aq Qoyunlu ruler Murad at the Battle of Alma Qulaq near Hamadan.", "category": "battle", "precision": "year", "source": "Rumlu"},
+    {"year": 1503, "location": "Isfahan, Iran", "lat": 32.6539, "lng": 51.6660, "event": "Took Isfahan and absorbed central Persia into the nascent Safavid state.", "category": "campaign", "precision": "year", "source": "Khwandamir"},
+    {"year": 1503, "location": "Shiraz, Iran", "lat": 29.5918, "lng": 52.5837, "event": "Accepted the submission of Shiraz and the Fars province.", "category": "campaign", "precision": "year", "source": "Rumlu"},
+    {"year": 1504, "location": "Yazd, Iran", "lat": 31.8974, "lng": 54.3569, "event": "Added Yazd and the central desert province to the Safavid realm.", "category": "campaign", "precision": "year", "source": "Rumlu"},
+    {"year": 1504, "location": "Firuzkuh, Iran", "lat": 35.7586, "lng": 52.7736, "event": "Reduced the Kia dynasty of the Caspian uplands around Firuzkuh.", "category": "campaign", "precision": "year", "source": "Rumlu"},
+    {"year": 1507, "location": "Diyarbakir, Turkey", "lat": 37.9144, "lng": 40.2306, "event": "Captured Diyarbakir in the Jazira, extending Safavid power west of the Euphrates.", "category": "campaign", "precision": "year", "source": "Rumlu"},
+    {"year": 1508, "location": "Baghdad, Iraq", "lat": 33.3152, "lng": 44.3661, "event": "Entered Baghdad and visited the Shia shrine cities of Najaf, Karbala, Kazimayn, and Samarra.", "category": "campaign", "precision": "year", "source": "Khwandamir"},
+    {"year": 1508, "location": "Najaf, Iraq", "lat": 31.9867, "lng": 44.3147, "event": "Prayed at the shrine of Ali ibn Abi Talib in Najaf.", "category": "pilgrimage", "precision": "year", "source": "Khwandamir"},
+    {"year": 1508, "location": "Karbala, Iraq", "lat": 32.6167, "lng": 44.0333, "event": "Visited the shrine of Husayn at Karbala, fulfilling Twelver Shia pilgrimage obligations.", "category": "pilgrimage", "precision": "year", "source": "Khwandamir"},
+    {"year": 1510, "location": "Merv, Turkmenistan", "lat": 37.6594, "lng": 62.1939, "event": "Defeated and killed the Uzbek khan Muhammad Shaybani at the Battle of Merv on 2 December 1510.", "category": "battle", "precision": "day", "source": "Rumlu"},
+    {"year": 1510, "location": "Herat, Afghanistan", "lat": 34.3529, "lng": 62.2040, "event": "Entered Herat after the Uzbek collapse and installed a Safavid governor over Khurasan.", "category": "campaign", "precision": "month", "source": "Rumlu"},
+    {"year": 1511, "location": "Tus, Iran", "lat": 36.4833, "lng": 59.5167, "event": "Visited the shrine of Imam Ali al-Rida at Mashhad.", "category": "pilgrimage", "precision": "year", "source": "Khwandamir"},
+    {"year": 1511, "location": "Isfahan, Iran", "lat": 32.6539, "lng": 51.6660, "event": "Returned to Isfahan to consolidate his rule over western Iran.", "category": "campaign", "precision": "year", "source": "Khwandamir"},
+    {"year": 1514, "location": "Tabriz, Iran", "lat": 38.0962, "lng": 46.2738, "event": "Gathered his army at Tabriz as Selim I's Ottoman forces advanced.", "category": "campaign", "precision": "month", "source": "Rumlu"},
+    {"year": 1514, "location": "Khoy, Iran", "lat": 38.5503, "lng": 44.9521, "event": "Moved northwest to Khoy to intercept the Ottoman army.", "category": "campaign", "precision": "month", "source": "Rumlu"},
+    {"year": 1514, "location": "Chaldiran, Iran", "lat": 39.0522, "lng": 44.3861, "event": "Defeated by Selim I at the Battle of Chaldiran on 23 August 1514; Ottoman artillery and janissary firepower destroyed the Qizilbash cavalry charge.", "category": "battle", "precision": "day", "source": "Rumlu"},
+    {"year": 1514, "location": "Tabriz, Iran", "lat": 38.0962, "lng": 46.2738, "event": "Lost Tabriz to the Ottomans for several weeks before Selim withdrew due to winter.", "category": "campaign", "precision": "month", "source": "Rumlu"},
+    {"year": 1515, "location": "Dargazin, Iran", "lat": 35.2500, "lng": 49.0000, "event": "Withdrew to winter quarters at Dargazin after the Ottoman withdrawal.", "category": "other", "precision": "year", "source": "Rumlu"},
+    {"year": 1517, "location": "Isfahan, Iran", "lat": 32.6539, "lng": 51.6660, "event": "Held court at Isfahan during years of depression following the defeat at Chaldiran.", "category": "capital", "precision": "year", "source": "Khwandamir"},
+    {"year": 1520, "location": "Ardabil, Iran", "lat": 38.2498, "lng": 48.2933, "event": "Visited the family shrine at Ardabil.", "category": "pilgrimage", "precision": "year", "source": "Rumlu"},
+    {"year": 1524, "location": "Ardabil, Iran", "lat": 38.2498, "lng": 48.2933, "event": "Died on 23 May 1524 at Saeenqaleh and was buried at the Safavid family shrine in Ardabil.", "category": "death", "precision": "day", "source": "Rumlu"}
+  ]
+}

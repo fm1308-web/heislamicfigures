@@ -1,0 +1,166 @@
+{
+  "person": "Moinuddin Chishti",
+  "slug": "F1016",
+  "lifespan": {
+    "birth": 1141,
+    "death": 1230
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "medium",
+    "precision": "low",
+    "disclosure": "Moinuddin Chishti (Khwaja Gharib Nawaz) brought the Chishti Sufi order from Khurasan to India and established it at Ajmer, where his shrine remains the most important Sufi sanctuary in the subcontinent. The early sources are the malfuzat (recorded sayings) of his successors and the Siyar al-Awliya of Mir Khwurd (14th c.). His itinerary from Sistan to Khurasan to Iraq to Mecca to India is traditional; specific years are reconstructed and partly devotional."
+  },
+  "sources": [
+    "Mir Khwurd, Siyar al-Awliya (c. 1351)",
+    "Jamali Kanboh, Siyar al-Arifin (16th c.)",
+    "P.M. Currie, The Shrine and Cult of Mu'in al-din Chishti of Ajmer (1989)",
+    "Bruce Lawrence, Notes from a Distant Flute (1978)"
+  ],
+  "journey": [
+    {
+      "year": 1141,
+      "age": 0,
+      "precision": "year",
+      "location": "Sistan",
+      "lat": 31.0,
+      "lng": 61.4,
+      "event": "Born in Sistan (or possibly Sanjar in Khurasan), traditionally in 537 AH. His family are sayyids tracing descent from Ali ibn Abi Talib. His father is a respected scholar and small landowner.",
+      "category": "birth",
+      "source": "Mir Khwurd"
+    },
+    {
+      "year": 1156,
+      "age": 15,
+      "precision": "year",
+      "location": "Sistan",
+      "lat": 31.0,
+      "lng": 61.4,
+      "event": "Loses his father. He inherits a garden and a mill. According to the famous story, a wandering majdhub (intoxicated mystic) named Ibrahim Qandozi visits the garden, the young Moinuddin offers him a bunch of grapes, and the saint feeds him a piece of bread that awakens his heart. Moinuddin sells the garden and the mill, gives the money to the poor, and sets out in search of God.",
+      "category": "loss",
+      "source": "Mir Khwurd; Jamali"
+    },
+    {
+      "year": 1162,
+      "age": 21,
+      "precision": "period",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "Travels through Samarkand and Bukhara, studying with the great teachers of Transoxiana. He memorises the Quran and masters the standard religious sciences before continuing his search for a spiritual master.",
+      "category": "travel",
+      "source": "Mir Khwurd"
+    },
+    {
+      "year": 1170,
+      "age": 29,
+      "precision": "period",
+      "location": "Harvan",
+      "lat": 32.45,
+      "lng": 60.5,
+      "event": "Meets his master Khwaja Uthman Harwani in the village of Harwan in Khurasan. He spends more than twenty years in his service, traveling with him through the holy cities and the Sufi centres of the central Islamic lands.",
+      "category": "spiritual",
+      "source": "Mir Khwurd"
+    },
+    {
+      "year": 1186,
+      "age": 45,
+      "precision": "period",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Performs the hajj with his master. They travel onward to Medina, where (the hagiographers say) Moinuddin receives a vision of the Prophet directing him to go to India and bring its people to Islam.",
+      "category": "pilgrimage",
+      "source": "Mir Khwurd"
+    },
+    {
+      "year": 1190,
+      "age": 49,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Visits the great Sufi centres of Iraq and Iran, meeting (in tradition) Abd al-Qadir al-Jilani's successors in Baghdad and Najmuddin Kubra in Khwarezm. He is initiated into multiple silsilas, but his primary chain remains the Chishti.",
+      "category": "travel",
+      "source": "Mir Khwurd; Currie (1989)"
+    },
+    {
+      "year": 1192,
+      "age": 51,
+      "precision": "year",
+      "location": "Lahore",
+      "lat": 31.5497,
+      "lng": 74.3436,
+      "event": "Crosses into India through Multan and reaches Lahore in the year of the second battle of Tarain, in which Muhammad of Ghor defeats the Rajput king Prithviraj Chauhan and opens northern India to Muslim rule.",
+      "category": "travel",
+      "source": "Mir Khwurd"
+    },
+    {
+      "year": 1194,
+      "age": 53,
+      "precision": "year",
+      "location": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
+      "event": "Stays briefly in Delhi, which is just being established as the new Muslim capital of northern India by Qutb al-Din Aybak.",
+      "category": "travel",
+      "source": "Currie (1989)"
+    },
+    {
+      "year": 1195,
+      "age": 54,
+      "precision": "year",
+      "location": "Ajmer",
+      "lat": 26.4499,
+      "lng": 74.6399,
+      "event": "Settles in Ajmer in Rajasthan, then a major Hindu centre and stronghold of the recently defeated Chauhan dynasty. He chooses to live in the conquered, hostile city — a deliberate spiritual statement that becomes his signature.",
+      "category": "travel",
+      "source": "Mir Khwurd; Currie (1989)"
+    },
+    {
+      "year": 1200,
+      "age": 59,
+      "precision": "period",
+      "location": "Ajmer",
+      "lat": 26.4499,
+      "lng": 74.6399,
+      "event": "Establishes his small khanqah in Ajmer. His message of universal love, service to the poor, and rejection of caste distinctions attracts followers from both Muslim and Hindu communities. The Chishti emphasis on sama (devotional music) takes root in Indian soil.",
+      "category": "spiritual",
+      "source": "Mir Khwurd; Lawrence (1978)"
+    },
+    {
+      "year": 1210,
+      "age": 69,
+      "precision": "period",
+      "location": "Ajmer",
+      "lat": 26.4499,
+      "lng": 74.6399,
+      "event": "Marries late in life and has children. According to tradition he marries two wives, one a captive princess and one a Muslim woman, and his sons continue the Chishti line.",
+      "category": "marriage",
+      "source": "Mir Khwurd"
+    },
+    {
+      "year": 1220,
+      "age": 79,
+      "precision": "period",
+      "location": "Ajmer",
+      "lat": 26.4499,
+      "lng": 74.6399,
+      "event": "Initiates Qutbuddin Bakhtiyar Kaki, who will carry the Chishti order to Delhi, and whose successor Farid al-Din Ganj-i-Shakar will establish it across the Punjab. The Chishti silsila will dominate north Indian Sufism for centuries.",
+      "category": "spiritual",
+      "source": "Mir Khwurd; Lawrence (1978)"
+    },
+    {
+      "year": 1230,
+      "age": 89,
+      "precision": "year",
+      "location": "Ajmer",
+      "lat": 26.4499,
+      "lng": 74.6399,
+      "event": "Dies in Ajmer on 6 Rajab 633 AH (March 1236 by some accounts; tradition fixes the year as 627 AH / 1230 CE). His tomb becomes the dargah that grows over centuries into the most visited Sufi shrine in South Asia, drawing pilgrims of all religions to this day.",
+      "category": "death",
+      "source": "Mir Khwurd; Currie (1989)"
+    }
+  ]
+}

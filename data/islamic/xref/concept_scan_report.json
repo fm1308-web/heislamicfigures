@@ -1,0 +1,1461 @@
+{
+  "total_concepts": 519,
+  "tafsir_verses_scanned": 143581,
+  "tafsir_hits": 205931,
+  "tafsir_concepts_with_hits": 367,
+  "hadith_total_scanned": 34172,
+  "hadith_hits": 42399,
+  "hadith_concepts_with_hits": 213,
+  "top_30": [
+    {
+      "slug": "uns",
+      "name": "Uns (intimacy with God)",
+      "category": "mysticism",
+      "tafsir_hits": 11076,
+      "hadith_hits": 4097,
+      "total": 15173
+    },
+    {
+      "slug": "makan",
+      "name": "Makan (place)",
+      "category": "philosophy",
+      "tafsir_hits": 10042,
+      "hadith_hits": 2278,
+      "total": 12320
+    },
+    {
+      "slug": "umma",
+      "name": "Umma (global Muslim community)",
+      "category": "politics",
+      "tafsir_hits": 8024,
+      "hadith_hits": 2576,
+      "total": 10600
+    },
+    {
+      "slug": "iman",
+      "name": "Iman (definition of faith)",
+      "category": "theology",
+      "tafsir_hits": 9569,
+      "hadith_hits": 808,
+      "total": 10377
+    },
+    {
+      "slug": "dhikr",
+      "name": "Dhikr (invocation of God)",
+      "category": "mysticism",
+      "tafsir_hits": 6308,
+      "hadith_hits": 2225,
+      "total": 8533
+    },
+    {
+      "slug": "sarf",
+      "name": "Sarf (morphology)",
+      "category": "language",
+      "tafsir_hits": 6075,
+      "hadith_hits": 1839,
+      "total": 7914
+    },
+    {
+      "slug": "nafs",
+      "name": "Nafs (the soul)",
+      "category": "philosophy",
+      "tafsir_hits": 4699,
+      "hadith_hits": 401,
+      "total": 5100
+    },
+    {
+      "slug": "raja",
+      "name": "Raj'a (return)",
+      "category": "theology",
+      "tafsir_hits": 3668,
+      "hadith_hits": 1270,
+      "total": 4938
+    },
+    {
+      "slug": "amil",
+      "name": "'Amil (syntactic governance)",
+      "category": "language",
+      "tafsir_hits": 3361,
+      "hadith_hits": 809,
+      "total": 4170
+    },
+    {
+      "slug": "zaman",
+      "name": "Zaman (time)",
+      "category": "philosophy",
+      "tafsir_hits": 3224,
+      "hadith_hits": 928,
+      "total": 4152
+    },
+    {
+      "slug": "nass",
+      "name": "Nass (designation)",
+      "category": "theology",
+      "tafsir_hits": 3900,
+      "hadith_hits": 224,
+      "total": 4124
+    },
+    {
+      "slug": "nass-designation",
+      "name": "Nass (designation of successor)",
+      "category": "politics",
+      "tafsir_hits": 3890,
+      "hadith_hits": 223,
+      "total": 4113
+    },
+    {
+      "slug": "ruh",
+      "name": "Ruh (the spirit)",
+      "category": "mysticism",
+      "tafsir_hits": 3539,
+      "hadith_hits": 369,
+      "total": 3908
+    },
+    {
+      "slug": "shukr",
+      "name": "Shukr (gratitude)",
+      "category": "mysticism",
+      "tafsir_hits": 3376,
+      "hadith_hits": 471,
+      "total": 3847
+    },
+    {
+      "slug": "tawil",
+      "name": "Ta'wil (allegorical interpretation)",
+      "category": "theology",
+      "tafsir_hits": 3742,
+      "hadith_hits": 17,
+      "total": 3759
+    },
+    {
+      "slug": "tawba",
+      "name": "Tawba (repentance)",
+      "category": "mysticism",
+      "tafsir_hits": 3188,
+      "hadith_hits": 387,
+      "total": 3575
+    },
+    {
+      "slug": "khayal",
+      "name": "Khayal (creative imagination)",
+      "category": "mysticism",
+      "tafsir_hits": 2590,
+      "hadith_hits": 844,
+      "total": 3434
+    },
+    {
+      "slug": "sabr",
+      "name": "Sabr (patience)",
+      "category": "mysticism",
+      "tafsir_hits": 3148,
+      "hadith_hits": 247,
+      "total": 3395
+    },
+    {
+      "slug": "bayyina",
+      "name": "Bayyina (proof)",
+      "category": "law",
+      "tafsir_hits": 3230,
+      "hadith_hits": 96,
+      "total": 3326
+    },
+    {
+      "slug": "sirr",
+      "name": "Sirr (the secret)",
+      "category": "mysticism",
+      "tafsir_hits": 2662,
+      "hadith_hits": 551,
+      "total": 3213
+    },
+    {
+      "slug": "nubuwwa",
+      "name": "Nubuwwa (prophethood)",
+      "category": "theology",
+      "tafsir_hits": 3101,
+      "hadith_hits": 105,
+      "total": 3206
+    },
+    {
+      "slug": "zulm",
+      "name": "Zulm (tyranny)",
+      "category": "politics",
+      "tafsir_hits": 2960,
+      "hadith_hits": 241,
+      "total": 3201
+    },
+    {
+      "slug": "sama",
+      "name": "Sama' (spiritual audition)",
+      "category": "mysticism",
+      "tafsir_hits": 540,
+      "hadith_hits": 2561,
+      "total": 3101
+    },
+    {
+      "slug": "tawhid",
+      "name": "Tawhid (divine oneness)",
+      "category": "theology",
+      "tafsir_hits": 3077,
+      "hadith_hits": 18,
+      "total": 3095
+    },
+    {
+      "slug": "jihad",
+      "name": "Jihad (legal doctrine of armed struggle)",
+      "category": "law",
+      "tafsir_hits": 2382,
+      "hadith_hits": 553,
+      "total": 2935
+    },
+    {
+      "slug": "jihad-political",
+      "name": "Jihad (political-military doctrine)",
+      "category": "politics",
+      "tafsir_hits": 2382,
+      "hadith_hits": 553,
+      "total": 2935
+    },
+    {
+      "slug": "tariqa",
+      "name": "Tariqa (the path)",
+      "category": "mysticism",
+      "tafsir_hits": 2324,
+      "hadith_hits": 100,
+      "total": 2424
+    },
+    {
+      "slug": "darura",
+      "name": "Darura (necessity)",
+      "category": "law",
+      "tafsir_hits": 1924,
+      "hadith_hits": 443,
+      "total": 2367
+    },
+    {
+      "slug": "riba",
+      "name": "Riba (usury and interest)",
+      "category": "law",
+      "tafsir_hits": 1274,
+      "hadith_hits": 990,
+      "total": 2264
+    },
+    {
+      "slug": "hisab",
+      "name": "Hisab (arithmetic and reckoning)",
+      "category": "science",
+      "tafsir_hits": 2061,
+      "hadith_hits": 157,
+      "total": 2218
+    }
+  ],
+  "zero_hit_concepts": [
+    {
+      "slug": "wilayat-al-faqih",
+      "name": "Wilayat al-faqih (guardianship of the jurist)",
+      "category": "theology",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "wahdat-al-shuhud",
+      "name": "Wahdat al-shuhud (oneness of witnessing)",
+      "category": "theology",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "haqiqa-muhammadiyya",
+      "name": "Al-haqiqa al-muhammadiyya (Muhammadan reality)",
+      "category": "theology",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ayan-thabita",
+      "name": "Al-a'yan al-thabita (immutable entities)",
+      "category": "theology",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "qanun-al-tawil",
+      "name": "Qanun al-ta'wil (rule of interpretation)",
+      "category": "theology",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "sam-and-aql",
+      "name": "Sam'iyyat (revealed-only matters)",
+      "category": "theology",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "essence-existence-distinction",
+      "name": "Distinction of essence and existence",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "asalat-al-wujud",
+      "name": "Asalat al-wujud (primacy of existence)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "asalat-al-mahiyya",
+      "name": "Asalat al-mahiyya (primacy of essence)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "tashkik-al-wujud",
+      "name": "Tashkik al-wujud (gradation of being)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "harakat-jawhariyya",
+      "name": "Harakat jawhariyya (substantial motion)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ittihad-aqil-maqul",
+      "name": "Ittihad al-'aqil wa'l-ma'qul (unity of intellect and intelligible)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ten-intellects",
+      "name": "Emanation of ten intellects",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "hudus-dahri",
+      "name": "Huduth dahri (atemporal origination)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "causality-falsafa",
+      "name": "Necessary causation",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "hyle-sura",
+      "name": "Hayula and sura (matter and form)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "categories-maqulat",
+      "name": "Maqulat (the ten categories)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "natural-place",
+      "name": "Natural place and motion",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "infinity-falsafa",
+      "name": "Actual and potential infinity",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "floating-man",
+      "name": "Floating man argument",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "intellect-stages",
+      "name": "Stages of human intellect",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "unity-of-intellect",
+      "name": "Unity of the intellect",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "immortality-soul",
+      "name": "Immortality of the rational soul",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "maad-jismani-falsafa",
+      "name": "Bodily resurrection in falsafa",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "prophetic-imagination",
+      "name": "Prophetic imagination",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ilm-huduri",
+      "name": "Ilm huduri (knowledge by presence)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "hypothetical-syllogism",
+      "name": "Hypothetical and disjunctive syllogism",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "modal-logic",
+      "name": "Modal logic in falsafa",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "five-arts",
+      "name": "Five arts of logic",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "isagoge-five",
+      "name": "Five predicables",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "good-and-evil-falsafa",
+      "name": "Privation theory of evil",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "tadbir-al-mutawahhid",
+      "name": "Governance of the solitary",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "natural-theology",
+      "name": "Hayy ibn Yaqzan thought experiment",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "falsafa-shariah",
+      "name": "Harmony of philosophy and revelation",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ikhwan-cosmology",
+      "name": "Numerical cosmology of the Brethren",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ismaili-tawil",
+      "name": "Isma'ili philosophical ta'wil",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "five-eternals",
+      "name": "Razi's five eternals",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "tibb-ruhani",
+      "name": "Spiritual medicine of the soul",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mean-virtue",
+      "name": "Doctrine of the mean",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "asbab-al-nuzul-cosmic",
+      "name": "Celestial spheres causation",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "asbab-al-mutawassita",
+      "name": "Intermediate causes",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "divine-simplicity",
+      "name": "Divine simplicity",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "basit-al-haqiqa",
+      "name": "Basit al-haqiqa (the simple reality)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "naqd-mantiq",
+      "name": "Critique of Aristotelian logic",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "closing-gate-ijtihad",
+      "name": "Closing of the gate of ijtihad",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "takhrij-al-manat",
+      "name": "Takhrij, tanqih, tahqiq al-manat",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ijma-ahl-bayt",
+      "name": "Ijma' of the Ahl al-Bayt",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "istislah",
+      "name": "Istislah / maslaha mursala (unattested public interest)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "fath-al-dharai",
+      "name": "Fath al-dhara'i' (opening the means)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "amm-khass",
+      "name": "Amm and khass (general and particular)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mujmal-mubayyan",
+      "name": "Mujmal and mubayyan (unclear and clarified)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "taarud-tarjih",
+      "name": "Ta'arud and tarjih (conflict and weighing)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "rukhsa-azima",
+      "name": "Rukhsa and 'azima (concession and resolve)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "qawaid-fiqhiyya",
+      "name": "Qawa'id fiqhiyya (legal maxims)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "awl-radd",
+      "name": "'Awl and radd (proportional adjustment)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "sukr-sahw",
+      "name": "Sukr and sahw (intoxication and sobriety)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "shath",
+      "name": "Shath (ecstatic utterance)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "hadarat-khams",
+      "name": "Five divine presences",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "dhikr-jali-khafi",
+      "name": "Dhikr jali and khafi (vocal and silent)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "shariah-tariqah-haqiqah",
+      "name": "Shari'a, tariqa, haqiqa",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "khatm-al-awliya",
+      "name": "Khatm al-awliya' (seal of the saints)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "rijal-al-ghayb",
+      "name": "Rijal al-ghayb (men of the unseen)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "khidr",
+      "name": "Khidr as initiator",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "uwaysi",
+      "name": "Uwaysi transmission",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "sayr-fi-allah",
+      "name": "Sayr fi'llah and ila'llah (journey to and in God)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "qaws-nuzul-suud",
+      "name": "Arcs of descent and ascent",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "tafsir-ishari",
+      "name": "Tafsir ishari (allusive Qur'anic exegesis)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "science-of-letters",
+      "name": "'Ilm al-huruf (science of letters)",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "abjad",
+      "name": "Abjad numerology",
+      "category": "mysticism",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "quraysh-condition",
+      "name": "Qurayshi lineage requirement",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "khariji-imamate",
+      "name": "Khariji elective imamate",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "zaydi-imamate",
+      "name": "Zaydi qualified imamate",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ismaili-imamate",
+      "name": "Isma'ili living imamate",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "akhlaq-adab-genre",
+      "name": "Adab al-muluk (mirrors for princes)",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "circle-of-justice",
+      "name": "Circle of justice",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "adl-political",
+      "name": "'Adl (political justice)",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "obedience-unjust-ruler",
+      "name": "Obedience to the unjust ruler",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "dar-al-islam",
+      "name": "Dar al-Islam and dar al-harb",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "dar-al-sulh",
+      "name": "Dar al-'ahd / dar al-sulh (abode of treaty)",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mulk",
+      "name": "Mulk (kingship) vs khilafa",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ulama-state",
+      "name": "'Ulama and state authority",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "islamic-state-modern",
+      "name": "Modern Islamic state",
+      "category": "politics",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "scientific-method-ibn-haytham",
+      "name": "Experimental method (i'tibar)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "intromission-theory",
+      "name": "Intromission theory of vision",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "rainbow-explanation",
+      "name": "Theory of the rainbow",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "shukuk-ptolemy",
+      "name": "Shukuk 'ala Batlamyus (doubts on Ptolemy)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "tusi-couple",
+      "name": "Tusi couple",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "urdi-lemma",
+      "name": "Urdi lemma",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ibn-al-shatir-model",
+      "name": "Ibn al-Shatir's planetary model",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "earth-rotation",
+      "name": "Possibility of earth's rotation",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "trepidation",
+      "name": "Trepidation of the equinoxes",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "homocentric-andalusi",
+      "name": "Andalusi homocentric astronomy",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "qibla-determination",
+      "name": "Qibla determination",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "miqat",
+      "name": "'Ilm al-miqat (timekeeping science)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "astrolabe",
+      "name": "Astrolabe theory",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "algebra-jabr",
+      "name": "'Ilm al-jabr wa'l-muqabala (algebra)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "cubic-equations",
+      "name": "Geometric solution of cubics",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "decimal-fractions",
+      "name": "Decimal fractions",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "combinatorics",
+      "name": "Combinatorial mathematics",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "binomial-theorem",
+      "name": "Binomial expansion and Pascal's triangle",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "parallel-postulate",
+      "name": "Parallel postulate investigations",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "trigonometry",
+      "name": "Spherical trigonometry",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "law-of-sines",
+      "name": "Law of sines",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "dynamics-mayl",
+      "name": "Mayl (impressed inclination)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "specific-gravity",
+      "name": "Specific gravity measurements",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "balance-wisdom",
+      "name": "Science of weights (hiyal and mizan)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "automata",
+      "name": "'Ilm al-hiyal (ingenious devices)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "pulmonary-circulation",
+      "name": "Pulmonary circulation",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "contagion-debate",
+      "name": "Contagion ('adwa) debate",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "smallpox-measles",
+      "name": "Differential diagnosis of smallpox and measles",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "surgery-zahrawi",
+      "name": "Surgical practice",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "hospitals-bimaristan",
+      "name": "Bimaristan (teaching hospital)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "pharmacology-adwiya",
+      "name": "'Ilm al-adwiya (materia medica)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "ophthalmology",
+      "name": "'Ilm al-kuhl (ophthalmology)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "sulfur-mercury",
+      "name": "Sulfur-mercury theory",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "critique-alchemy",
+      "name": "Critique of alchemical transmutation",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "geography-masalik",
+      "name": "Masalik wa mamalik (human geography)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mathematical-geography",
+      "name": "Mathematical geography",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "earth-circumference",
+      "name": "Measurement of earth's circumference",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "climes-aqalim",
+      "name": "Seven climes (aqalim)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mineralogy",
+      "name": "Mineralogy and gemology",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "cartography",
+      "name": "Cartographic representation",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "cosmology-falak",
+      "name": "Celestial sphere cosmology (aflak)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "critique-astrology",
+      "name": "Critique of astrology",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "classification-sciences",
+      "name": "Classification of the sciences",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mathematization-nature",
+      "name": "Mathematization of physics",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "naturalism-tabi",
+      "name": "Naturalism (tab') vs occasionalism",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "islam-and-modern-science",
+      "name": "Islam and modern science (modern debate)",
+      "category": "science",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "basra-kufa-disputes",
+      "name": "Basran–Kufan grammatical disputes",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "sama-qiyas",
+      "name": "Sama' and qiyas in grammar",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "hadith-as-grammatical-evidence",
+      "name": "Hadith as grammatical evidence",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "poetic-license",
+      "name": "Darura shi'riyya (poetic license)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "wujuh-nazair",
+      "name": "Wujuh wa naza'ir (polysemy in Qur'an)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "sariqat",
+      "name": "Sariqat shi'riyya (poetic plagiarism)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "logic-vs-grammar",
+      "name": "Grammar versus logic debate",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mantiq-lugha",
+      "name": "Logic of language in usul",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "amm-khass-ling",
+      "name": "'Amm and khass as linguistic forms",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "mushtarak",
+      "name": "Mushtarak (homonymy)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "furuq-lughawiyya",
+      "name": "Furuq lughawiyya (lexical distinctions)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "rhyme-dictionary",
+      "name": "Rhyme-based lexicography",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "thematic-lexicography",
+      "name": "Thematic lexicography",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "grammatical-abridgment",
+      "name": "Grammatical abridgment (mukhtasar) tradition",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "alfiyya-commentary",
+      "name": "Alfiyya commentary tradition",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "persian-grammar",
+      "name": "Persian grammatical tradition",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "turkish-grammar",
+      "name": "Turkic lexicography",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "diglossia-aammiyya",
+      "name": "Fusha and 'ammiyya (standard and vernacular)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "nahda-arabic-reform",
+      "name": "Nahda Arabic reform",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "wujud-mahiyya",
+      "name": "Wujud and Mahiyya (existence and essence)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "wajib-mumkin",
+      "name": "Wajib and Mumkin (necessary and contingent being)",
+      "category": "philosophy",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "marjaiyya",
+      "name": "Marja'iyya (source of emulation)",
+      "category": "law",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    },
+    {
+      "slug": "tafsir-bil-ray",
+      "name": "Tafsir bi al-Ra'y (exegesis by reasoned opinion)",
+      "category": "language",
+      "tafsir_hits": 0,
+      "hadith_hits": 0,
+      "total": 0
+    }
+  ]
+}

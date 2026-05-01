@@ -1,0 +1,1008 @@
+{
+  "topline": {
+    "total": 100,
+    "free": 85
+  },
+  "books": [
+    {
+      "id": "ANC001",
+      "title": "Epic of Gilgamesh",
+      "year": -2100,
+      "region": "Mesopotamia",
+      "genre": "Epic Poetry",
+      "url": "",
+      "note": "Oldest surviving literary work",
+      "fact": "Uruk king seeks immortality, fails"
+    },
+    {
+      "id": "ANC002",
+      "title": "Pyramid Texts",
+      "year": -2400,
+      "region": "Egypt",
+      "genre": "Funerary Literature",
+      "url": "https://www.sacred-texts.com/egy/pyt/index.htm",
+      "note": "Oldest religious texts in the world",
+      "fact": "Carved on pyramid of Unas, Saqqara"
+    },
+    {
+      "id": "ANC003",
+      "title": "Code of Ur-Nammu",
+      "year": -2100,
+      "region": "Mesopotamia",
+      "genre": "Legal Code",
+      "url": "https://www.sacred-texts.com/ane/sum.htm",
+      "note": "Oldest surviving legal code",
+      "fact": "Precedes Hammurabi by three centuries"
+    },
+    {
+      "id": "ANC004",
+      "title": "Code of Hammurabi",
+      "year": -1754,
+      "region": "Mesopotamia",
+      "genre": "Legal Code",
+      "url": "https://avalon.law.yale.edu/ancient/hamframe.asp",
+      "note": "Most complete ancient legal code",
+      "fact": "Inscribed on seven-foot basalt stele"
+    },
+    {
+      "id": "ANC005",
+      "title": "Egyptian Book of the Dead",
+      "year": -1550,
+      "region": "Egypt",
+      "genre": "Funerary Literature",
+      "url": "https://www.sacred-texts.com/egy/ebod/index.htm",
+      "note": "Guide to the afterlife",
+      "fact": "Spells placed inside tombs for rebirth"
+    },
+    {
+      "id": "ANC006",
+      "title": "Rigveda",
+      "year": -1500,
+      "region": "India",
+      "genre": "Sacred Hymns",
+      "url": "https://www.sacred-texts.com/hin/rigveda/index.htm",
+      "note": "Oldest Vedic scripture",
+      "fact": "Composed by Rishi poets of Punjab"
+    },
+    {
+      "id": "ANC007",
+      "title": "Enuma Elish",
+      "year": -1100,
+      "region": "Mesopotamia",
+      "genre": "Creation Myth",
+      "url": "https://www.sacred-texts.com/ane/enuma.htm",
+      "note": "Babylonian creation epic",
+      "fact": "Read aloud at Babylonian New Year"
+    },
+    {
+      "id": "ANC008",
+      "title": "Atrahasis",
+      "year": -1700,
+      "region": "Mesopotamia",
+      "genre": "Epic Poetry",
+      "url": "https://www.sacred-texts.com/ane/atra.htm",
+      "note": "Mesopotamian flood narrative",
+      "fact": "Noah story predates Genesis flood"
+    },
+    {
+      "id": "ANC009",
+      "title": "Instructions of Shuruppak",
+      "year": -2600,
+      "region": "Mesopotamia",
+      "genre": "Wisdom Literature",
+      "url": "",
+      "note": "One of the oldest written texts",
+      "fact": "Father advises son on righteous life"
+    },
+    {
+      "id": "ANC010",
+      "title": "Maxims of Ptahhotep",
+      "year": -2350,
+      "region": "Egypt",
+      "genre": "Wisdom Literature",
+      "url": "https://www.sacred-texts.com/egy/woe/woe07.htm",
+      "note": "Egyptian wisdom tradition",
+      "fact": "Vizier instructs son at pharaoh court"
+    },
+    {
+      "id": "ANC011",
+      "title": "Iliad",
+      "year": -750,
+      "region": "Greece",
+      "genre": "Epic Poetry",
+      "url": "https://www.gutenberg.org/ebooks/6130",
+      "note": "Homer's epic of the Trojan War",
+      "fact": "Achilles rages over Patroclus death"
+    },
+    {
+      "id": "ANC012",
+      "title": "Odyssey",
+      "year": -725,
+      "region": "Greece",
+      "genre": "Epic Poetry",
+      "url": "https://www.gutenberg.org/ebooks/1727",
+      "note": "Homer's epic of Odysseus' return",
+      "fact": "Ten-year homecoming past monsters"
+    },
+    {
+      "id": "ANC013",
+      "title": "Theogony",
+      "year": -700,
+      "region": "Greece",
+      "genre": "Cosmogony",
+      "url": "https://www.sacred-texts.com/cla/hesiod/theogony.htm",
+      "note": "Hesiod's genealogy of the gods",
+      "fact": "Traces gods from primordial chaos"
+    },
+    {
+      "id": "ANC014",
+      "title": "Works and Days",
+      "year": -700,
+      "region": "Greece",
+      "genre": "Didactic Poetry",
+      "url": "https://www.sacred-texts.com/cla/hesiod/works.htm",
+      "note": "Hesiod on agriculture and justice",
+      "fact": "Brother feud becomes farming almanac"
+    },
+    {
+      "id": "ANC015",
+      "title": "Yajurveda",
+      "year": -1200,
+      "region": "India",
+      "genre": "Sacred Hymns",
+      "url": "https://www.sacred-texts.com/hin/yv/index.htm",
+      "note": "Vedic liturgical formulas",
+      "fact": "Chanted by adhvaryu priests at sacrifice"
+    },
+    {
+      "id": "ANC016",
+      "title": "Samaveda",
+      "year": -1200,
+      "region": "India",
+      "genre": "Sacred Hymns",
+      "url": "https://www.sacred-texts.com/hin/sv.htm",
+      "note": "Vedic chants and melodies",
+      "fact": "Sung by udgatri priest during soma"
+    },
+    {
+      "id": "ANC017",
+      "title": "Atharvaveda",
+      "year": -1000,
+      "region": "India",
+      "genre": "Sacred Hymns",
+      "url": "https://www.sacred-texts.com/hin/av/index.htm",
+      "note": "Vedic hymns and incantations",
+      "fact": "Spells for healing, love, and curses"
+    },
+    {
+      "id": "ANC018",
+      "title": "Upanishads",
+      "year": -800,
+      "region": "India",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/hin/upan/index.htm",
+      "note": "Philosophical essence of the Vedas",
+      "fact": "Forest seekers question Brahman"
+    },
+    {
+      "id": "ANC019",
+      "title": "Mahabharata",
+      "year": -400,
+      "region": "India",
+      "genre": "Epic Poetry",
+      "url": "https://www.sacred-texts.com/hin/maha/index.htm",
+      "note": "Longest epic poem in history",
+      "fact": "Cousin-war over succession in Hastinapura"
+    },
+    {
+      "id": "ANC020",
+      "title": "Bhagavad Gita",
+      "year": -400,
+      "region": "India",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/hin/gita/index.htm",
+      "note": "Dialogue on duty and dharma",
+      "fact": "Krishna counsels Arjuna on battlefield"
+    },
+    {
+      "id": "ANC021",
+      "title": "Ramayana",
+      "year": -500,
+      "region": "India",
+      "genre": "Epic Poetry",
+      "url": "https://www.sacred-texts.com/hin/rama/index.htm",
+      "note": "Epic of Prince Rama",
+      "fact": "Sita abducted by demon-king Ravana"
+    },
+    {
+      "id": "ANC022",
+      "title": "Avesta",
+      "year": -1000,
+      "region": "Persia",
+      "genre": "Sacred Scripture",
+      "url": "https://www.sacred-texts.com/zor/sbe05/index.htm",
+      "note": "Zoroastrian holy texts",
+      "fact": "Survives via Sasanian Persian priests"
+    },
+    {
+      "id": "ANC023",
+      "title": "Gathas of Zarathustra",
+      "year": -1000,
+      "region": "Persia",
+      "genre": "Sacred Hymns",
+      "url": "https://www.sacred-texts.com/zor/sbe31/index.htm",
+      "note": "Oldest Zoroastrian hymns",
+      "fact": "Seventeen hymns from Zarathustra himself"
+    },
+    {
+      "id": "ANC024",
+      "title": "Tao Te Ching",
+      "year": -400,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/tao/taote.htm",
+      "note": "Laozi's foundational Daoist text",
+      "fact": "Serves as modern Taoist scripture"
+    },
+    {
+      "id": "ANC025",
+      "title": "Analects",
+      "year": -475,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/4094",
+      "note": "Sayings of Confucius",
+      "fact": "Compiled by disciples after his death"
+    },
+    {
+      "id": "ANC026",
+      "title": "Art of War",
+      "year": -500,
+      "region": "China",
+      "genre": "Military Strategy",
+      "url": "https://www.gutenberg.org/ebooks/132",
+      "note": "Sun Tzu's treatise on warfare",
+      "fact": "Thirteen chapters read by generals today"
+    },
+    {
+      "id": "ANC027",
+      "title": "I Ching",
+      "year": -1000,
+      "region": "China",
+      "genre": "Divination",
+      "url": "https://www.sacred-texts.com/ich/index.htm",
+      "note": "Book of Changes",
+      "fact": "Divination manual used by Confucius"
+    },
+    {
+      "id": "ANC028",
+      "title": "Book of Songs (Shijing)",
+      "year": -600,
+      "region": "China",
+      "genre": "Poetry",
+      "url": "https://www.sacred-texts.com/cfu/sbe03/index.htm",
+      "note": "Oldest Chinese poetry anthology",
+      "fact": "Royal court songs collected by Confucius"
+    },
+    {
+      "id": "ANC029",
+      "title": "Mencius",
+      "year": -300,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/6312",
+      "note": "Confucian moral philosophy",
+      "fact": "Argues human nature is inherently good"
+    },
+    {
+      "id": "ANC030",
+      "title": "Zhuangzi",
+      "year": -300,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/tao/mcm/index.htm",
+      "note": "Daoist parables and philosophy",
+      "fact": "Butterfly dream dissolves self into cosmos"
+    },
+    {
+      "id": "ANC031",
+      "title": "Republic",
+      "year": -375,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/1497",
+      "note": "Plato's dialogue on justice and the ideal state",
+      "fact": "Cave allegory reveals shadows as reality"
+    },
+    {
+      "id": "ANC032",
+      "title": "Symposium",
+      "year": -385,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/1600",
+      "note": "Plato on the nature of love",
+      "fact": "Drinking party debates love at Agathon's"
+    },
+    {
+      "id": "ANC033",
+      "title": "Nicomachean Ethics",
+      "year": -340,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/8438",
+      "note": "Aristotle's ethical treatise",
+      "fact": "Happiness is virtuous activity of soul"
+    },
+    {
+      "id": "ANC034",
+      "title": "Politics",
+      "year": -335,
+      "region": "Greece",
+      "genre": "Political Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/6762",
+      "note": "Aristotle on governance",
+      "fact": "Humans as naturally political animals"
+    },
+    {
+      "id": "ANC035",
+      "title": "Metaphysics",
+      "year": -340,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/cla/ari/met/index.htm",
+      "note": "Aristotle's first philosophy",
+      "fact": "Investigates being as being itself"
+    },
+    {
+      "id": "ANC036",
+      "title": "Poetics",
+      "year": -335,
+      "region": "Greece",
+      "genre": "Literary Criticism",
+      "url": "https://www.gutenberg.org/ebooks/1974",
+      "note": "Aristotle on drama and poetry",
+      "fact": "Defines tragedy as cathartic imitation"
+    },
+    {
+      "id": "ANC037",
+      "title": "Histories",
+      "year": -430,
+      "region": "Greece",
+      "genre": "History",
+      "url": "https://www.gutenberg.org/ebooks/2707",
+      "note": "Herodotus — father of history",
+      "fact": "Greco-Persian war from both sides"
+    },
+    {
+      "id": "ANC038",
+      "title": "History of the Peloponnesian War",
+      "year": -400,
+      "region": "Greece",
+      "genre": "History",
+      "url": "https://www.gutenberg.org/ebooks/7142",
+      "note": "Thucydides' account of the war",
+      "fact": "Athenian general writes defeated side"
+    },
+    {
+      "id": "ANC039",
+      "title": "Elements",
+      "year": -300,
+      "region": "Greece",
+      "genre": "Mathematics",
+      "url": "https://www.gutenberg.org/ebooks/21076",
+      "note": "Euclid's foundational geometry",
+      "fact": "Thirteen books of axioms and proofs"
+    },
+    {
+      "id": "ANC040",
+      "title": "On the Nature of Things",
+      "year": -55,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/785",
+      "note": "Lucretius on Epicurean atomism",
+      "fact": "Poem explains atoms to banish fear"
+    },
+    {
+      "id": "ANC041",
+      "title": "Meditations",
+      "year": 170,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/2680",
+      "note": "Marcus Aurelius' Stoic reflections",
+      "fact": "Emperor notes on Danube campaign"
+    },
+    {
+      "id": "ANC042",
+      "title": "Aeneid",
+      "year": -19,
+      "region": "Rome",
+      "genre": "Epic Poetry",
+      "url": "https://www.gutenberg.org/ebooks/228",
+      "note": "Virgil's Roman national epic",
+      "fact": "Trojan refugee founds Roman bloodline"
+    },
+    {
+      "id": "ANC043",
+      "title": "Metamorphoses",
+      "year": 8,
+      "region": "Rome",
+      "genre": "Mythological Poetry",
+      "url": "https://www.gutenberg.org/ebooks/26073",
+      "note": "Ovid's mythological transformations",
+      "fact": "Two hundred fifty mythological transformations"
+    },
+    {
+      "id": "ANC044",
+      "title": "Natural History",
+      "year": 77,
+      "region": "Rome",
+      "genre": "Encyclopedia",
+      "url": "https://www.gutenberg.org/ebooks/57493",
+      "note": "Pliny the Elder's encyclopedia",
+      "fact": "Thirty-seven volumes of Roman knowledge"
+    },
+    {
+      "id": "ANC045",
+      "title": "Geography",
+      "year": -7,
+      "region": "Greece",
+      "genre": "Geography",
+      "url": "https://www.gutenberg.org/ebooks/44884",
+      "note": "Strabo's description of the known world",
+      "fact": "Seventeen books on world geography"
+    },
+    {
+      "id": "ANC046",
+      "title": "Almagest",
+      "year": 150,
+      "region": "Egypt",
+      "genre": "Astronomy",
+      "url": "https://archive.org/details/ptolemys-almagest",
+      "note": "Ptolemy's astronomical treatise",
+      "fact": "Ruled astronomy for fourteen centuries"
+    },
+    {
+      "id": "ANC047",
+      "title": "Parallel Lives",
+      "year": 100,
+      "region": "Greece",
+      "genre": "Biography",
+      "url": "https://www.gutenberg.org/ebooks/674",
+      "note": "Plutarch's comparative biographies",
+      "fact": "Pairs one Greek with one Roman"
+    },
+    {
+      "id": "ANC048",
+      "title": "Moralia",
+      "year": 100,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/3052",
+      "note": "Plutarch's ethical essays",
+      "fact": "Seventy-eight essays on daily ethics"
+    },
+    {
+      "id": "ANC049",
+      "title": "Dhammapada",
+      "year": -300,
+      "region": "India",
+      "genre": "Sacred Scripture",
+      "url": "https://www.sacred-texts.com/bud/dhp/index.htm",
+      "note": "Sayings of the Buddha",
+      "fact": "Verses Theravada monks recite daily"
+    },
+    {
+      "id": "ANC050",
+      "title": "Tripitaka (Pali Canon)",
+      "year": -100,
+      "region": "India",
+      "genre": "Sacred Scripture",
+      "url": "https://www.sacred-texts.com/bud/index.htm",
+      "note": "Theravada Buddhist canon",
+      "fact": "Three baskets: rules, sermons, metaphysics"
+    },
+    {
+      "id": "ANC051",
+      "title": "Arthashastra",
+      "year": -300,
+      "region": "India",
+      "genre": "Political Philosophy",
+      "url": "https://www.sacred-texts.com/hin/artu/index.htm",
+      "note": "Kautilya's treatise on statecraft",
+      "fact": "Mauryan minister guides Chandragupta empire"
+    },
+    {
+      "id": "ANC052",
+      "title": "Manusmriti",
+      "year": -200,
+      "region": "India",
+      "genre": "Legal Code",
+      "url": "https://www.sacred-texts.com/hin/manu.htm",
+      "note": "Hindu legal and ethical code",
+      "fact": "Defines caste duties and punishments"
+    },
+    {
+      "id": "ANC053",
+      "title": "Yoga Sutras",
+      "year": -200,
+      "region": "India",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/hin/yogasutr.htm",
+      "note": "Patanjali's foundational yoga text",
+      "fact": "Eight limbs from asana to samadhi"
+    },
+    {
+      "id": "ANC054",
+      "title": "Enchiridion",
+      "year": 125,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/45109",
+      "note": "Epictetus' Stoic handbook",
+      "fact": "Freed slave teaches inner freedom"
+    },
+    {
+      "id": "ANC055",
+      "title": "Discourses",
+      "year": 108,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/10661",
+      "note": "Epictetus' Stoic lectures",
+      "fact": "Student notes of Nicopolis lectures"
+    },
+    {
+      "id": "ANC056",
+      "title": "Letters from a Stoic",
+      "year": 65,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/66598",
+      "note": "Seneca's moral epistles",
+      "fact": "One hundred twenty-four letters to Lucilius"
+    },
+    {
+      "id": "ANC057",
+      "title": "On the Shortness of Life",
+      "year": 49,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/67672",
+      "note": "Seneca on the value of time",
+      "fact": "Life is long if well used"
+    },
+    {
+      "id": "ANC058",
+      "title": "Tusculan Disputations",
+      "year": -45,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/14988",
+      "note": "Cicero on happiness and virtue",
+      "fact": "Five-day dialogue at Tusculum villa"
+    },
+    {
+      "id": "ANC059",
+      "title": "On the Republic",
+      "year": -51,
+      "region": "Rome",
+      "genre": "Political Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/54161",
+      "note": "Cicero's dialogue on the state",
+      "fact": "Survives only as Vatican palimpsest"
+    },
+    {
+      "id": "ANC060",
+      "title": "Torah",
+      "year": -1300,
+      "region": "Levant",
+      "genre": "Sacred Scripture",
+      "url": "https://www.sacred-texts.com/bib/index.htm",
+      "note": "Five Books of Moses",
+      "fact": "Revealed to Musa at Mount Sinai"
+    },
+    {
+      "id": "ANC061",
+      "title": "Book of Psalms",
+      "year": -500,
+      "region": "Levant",
+      "genre": "Sacred Poetry",
+      "url": "https://www.sacred-texts.com/bib/kjv/psa.htm",
+      "note": "Hebrew devotional poetry",
+      "fact": "One hundred fifty songs for worship"
+    },
+    {
+      "id": "ANC062",
+      "title": "Book of Proverbs",
+      "year": -700,
+      "region": "Levant",
+      "genre": "Wisdom Literature",
+      "url": "https://www.sacred-texts.com/bib/kjv/pro.htm",
+      "note": "Solomonic wisdom sayings",
+      "fact": "Hebrew aphorisms attributed to Solomon"
+    },
+    {
+      "id": "ANC063",
+      "title": "Book of Job",
+      "year": -600,
+      "region": "Levant",
+      "genre": "Wisdom Literature",
+      "url": "https://www.sacred-texts.com/bib/kjv/job.htm",
+      "note": "Theodicy and human suffering",
+      "fact": "Righteous man suffers, debates his friends"
+    },
+    {
+      "id": "ANC064",
+      "title": "Ecclesiastes",
+      "year": -300,
+      "region": "Levant",
+      "genre": "Wisdom Literature",
+      "url": "https://www.sacred-texts.com/bib/kjv/ecc.htm",
+      "note": "On the meaning of life",
+      "fact": "\"Vanity of vanities, all is vanity\""
+    },
+    {
+      "id": "ANC065",
+      "title": "Song of Songs",
+      "year": -400,
+      "region": "Levant",
+      "genre": "Poetry",
+      "url": "https://www.sacred-texts.com/bib/kjv/sol.htm",
+      "note": "Love poetry",
+      "fact": "Erotic dialogue read as sacred allegory"
+    },
+    {
+      "id": "ANC066",
+      "title": "Dead Sea Scrolls",
+      "year": -200,
+      "region": "Levant",
+      "genre": "Religious Texts",
+      "url": "https://www.deadseascrolls.org.il/",
+      "note": "Qumran community library",
+      "fact": "Hidden in Qumran caves for millennia"
+    },
+    {
+      "id": "ANC067",
+      "title": "Book of Enoch",
+      "year": -300,
+      "region": "Levant",
+      "genre": "Apocalyptic Literature",
+      "url": "https://www.sacred-texts.com/bib/boe/index.htm",
+      "note": "Angelic and eschatological visions",
+      "fact": "Excluded from canon, preserved in Ethiopia"
+    },
+    {
+      "id": "ANC068",
+      "title": "Instruction of Amenemope",
+      "year": -1100,
+      "region": "Egypt",
+      "genre": "Wisdom Literature",
+      "url": "",
+      "note": "Egyptian wisdom paralleling Proverbs",
+      "fact": "Thirty chapters parallel Hebrew Proverbs"
+    },
+    {
+      "id": "ANC069",
+      "title": "Tale of Sinuhe",
+      "year": -1875,
+      "region": "Egypt",
+      "genre": "Narrative Fiction",
+      "url": "",
+      "note": "Egyptian literary masterpiece",
+      "fact": "Courtier flees Egypt, returns to die"
+    },
+    {
+      "id": "ANC070",
+      "title": "Dispute of a Man with His Ba",
+      "year": -2000,
+      "region": "Egypt",
+      "genre": "Philosophy",
+      "url": "",
+      "note": "Existential dialogue on death",
+      "fact": "Soul argues man should embrace death"
+    },
+    {
+      "id": "ANC071",
+      "title": "Apology",
+      "year": -399,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/1656",
+      "note": "Plato's account of Socrates' trial",
+      "fact": "Socrates defends himself before Athenian jury"
+    },
+    {
+      "id": "ANC072",
+      "title": "Phaedo",
+      "year": -380,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/1658",
+      "note": "Plato on the immortality of the soul",
+      "fact": "Socrates drinks hemlock discussing afterlife"
+    },
+    {
+      "id": "ANC073",
+      "title": "Timaeus",
+      "year": -360,
+      "region": "Greece",
+      "genre": "Cosmology",
+      "url": "https://www.gutenberg.org/ebooks/1572",
+      "note": "Plato's creation account",
+      "fact": "Explains cosmos built from geometric forms"
+    },
+    {
+      "id": "ANC074",
+      "title": "On the Soul",
+      "year": -350,
+      "region": "Greece",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/cla/ari/soul/index.htm",
+      "note": "Aristotle's psychology",
+      "fact": "Three kinds of soul animate life"
+    },
+    {
+      "id": "ANC075",
+      "title": "Organon",
+      "year": -350,
+      "region": "Greece",
+      "genre": "Logic",
+      "url": "https://www.gutenberg.org/ebooks/5500",
+      "note": "Aristotle's logical treatises",
+      "fact": "Six works founding Western logic"
+    },
+    {
+      "id": "ANC076",
+      "title": "Hippocratic Corpus",
+      "year": -400,
+      "region": "Greece",
+      "genre": "Medicine",
+      "url": "https://www.gutenberg.org/ebooks/57417",
+      "note": "Foundation of Western medicine",
+      "fact": "Sixty texts from Kos medical school"
+    },
+    {
+      "id": "ANC077",
+      "title": "Problemata Physica",
+      "year": -300,
+      "region": "Greece",
+      "genre": "Natural Philosophy",
+      "url": "",
+      "note": "Peripatetic natural investigations",
+      "fact": "Nine hundred questions on nature"
+    },
+    {
+      "id": "ANC078",
+      "title": "On the Heavens",
+      "year": -340,
+      "region": "Greece",
+      "genre": "Astronomy",
+      "url": "https://www.sacred-texts.com/cla/ari/oth/index.htm",
+      "note": "Aristotle on celestial bodies",
+      "fact": "Argues universe is finite and eternal"
+    },
+    {
+      "id": "ANC079",
+      "title": "Annals of Spring and Autumn",
+      "year": -500,
+      "region": "China",
+      "genre": "History",
+      "url": "https://www.sacred-texts.com/cfu/sbe27/index.htm",
+      "note": "Chronicle of the state of Lu",
+      "fact": "Confucius edited this state chronicle"
+    },
+    {
+      "id": "ANC080",
+      "title": "Classic of Rites (Liji)",
+      "year": -200,
+      "region": "China",
+      "genre": "Ritual",
+      "url": "https://www.sacred-texts.com/cfu/liki/index.htm",
+      "note": "Confucian ritual and social norms",
+      "fact": "Prescribes rites from birth to burial"
+    },
+    {
+      "id": "ANC081",
+      "title": "Daodejing Commentary (Heshang Gong)",
+      "year": -100,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "",
+      "note": "Earliest Daoist commentary",
+      "fact": "Reads Laozi as statecraft manual"
+    },
+    {
+      "id": "ANC082",
+      "title": "Records of the Grand Historian",
+      "year": -91,
+      "region": "China",
+      "genre": "History",
+      "url": "https://archive.org/details/records-of-the-grand-historian",
+      "note": "Sima Qian's comprehensive history",
+      "fact": "First systematic history of China"
+    },
+    {
+      "id": "ANC083",
+      "title": "Classic of Mountains and Seas",
+      "year": -300,
+      "region": "China",
+      "genre": "Geography",
+      "url": "https://www.sacred-texts.com/shi/index.htm",
+      "note": "Chinese mythical geography",
+      "fact": "Catalogs monsters, plants, distant peoples"
+    },
+    {
+      "id": "ANC084",
+      "title": "Han Feizi",
+      "year": -233,
+      "region": "China",
+      "genre": "Political Philosophy",
+      "url": "https://www.sacred-texts.com/cfu/index.htm",
+      "note": "Legalist political theory",
+      "fact": "Synthesizes Legalist reward and punishment"
+    },
+    {
+      "id": "ANC085",
+      "title": "Mozi",
+      "year": -400,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/cfu/index.htm",
+      "note": "Mohist universal love and logic",
+      "fact": "Condemns war, music, elaborate funerals"
+    },
+    {
+      "id": "ANC086",
+      "title": "Xunzi",
+      "year": -238,
+      "region": "China",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/47397",
+      "note": "Confucian human nature debate",
+      "fact": "Argues human nature is originally bad"
+    },
+    {
+      "id": "ANC087",
+      "title": "Milindapanha",
+      "year": -100,
+      "region": "India",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/bud/milinda.htm",
+      "note": "Questions of King Milinda",
+      "fact": "Monk converts Indo-Greek king to Buddhism"
+    },
+    {
+      "id": "ANC088",
+      "title": "Buddhacharita",
+      "year": 100,
+      "region": "India",
+      "genre": "Epic Poetry",
+      "url": "https://www.sacred-texts.com/bud/sbe49/index.htm",
+      "note": "Ashvaghosha's life of the Buddha",
+      "fact": "First complete Sanskrit Buddha biography"
+    },
+    {
+      "id": "ANC089",
+      "title": "Abhidhamma Pitaka",
+      "year": -250,
+      "region": "India",
+      "genre": "Philosophy",
+      "url": "https://www.sacred-texts.com/bud/index.htm",
+      "note": "Buddhist analytical philosophy",
+      "fact": "Seven books classify mental phenomena"
+    },
+    {
+      "id": "ANC090",
+      "title": "Jataka Tales",
+      "year": -300,
+      "region": "India",
+      "genre": "Narrative Fiction",
+      "url": "https://www.sacred-texts.com/bud/j1/index.htm",
+      "note": "Stories of the Buddha's past lives",
+      "fact": "Five hundred forty-seven past-life stories"
+    },
+    {
+      "id": "ANC091",
+      "title": "Georgics",
+      "year": -29,
+      "region": "Rome",
+      "genre": "Didactic Poetry",
+      "url": "https://www.gutenberg.org/ebooks/232",
+      "note": "Virgil on farming and nature",
+      "fact": "Four-book poem commissioned by Maecenas"
+    },
+    {
+      "id": "ANC092",
+      "title": "Ab Urbe Condita",
+      "year": -25,
+      "region": "Rome",
+      "genre": "History",
+      "url": "https://www.gutenberg.org/ebooks/19725",
+      "note": "Livy's history of Rome",
+      "fact": "One hundred forty-two books on Rome"
+    },
+    {
+      "id": "ANC093",
+      "title": "Antiquities of the Jews",
+      "year": 93,
+      "region": "Levant",
+      "genre": "History",
+      "url": "https://www.gutenberg.org/ebooks/2848",
+      "note": "Josephus' Jewish history",
+      "fact": "Links Jews to Greco-Roman history"
+    },
+    {
+      "id": "ANC094",
+      "title": "Guide to Greece",
+      "year": 175,
+      "region": "Greece",
+      "genre": "Geography",
+      "url": "https://www.gutenberg.org/ebooks/67585",
+      "note": "Pausanias' travelogue",
+      "fact": "Ten-book guidebook for Roman tourists"
+    },
+    {
+      "id": "ANC095",
+      "title": "Denkard",
+      "year": 300,
+      "region": "Persia",
+      "genre": "Religious Encyclopedia",
+      "url": "",
+      "note": "Zoroastrian compendium",
+      "fact": "Ninth-century survival of lost Avesta"
+    },
+    {
+      "id": "ANC096",
+      "title": "Bundahishn",
+      "year": 300,
+      "region": "Persia",
+      "genre": "Cosmogony",
+      "url": "https://www.sacred-texts.com/zor/sbe05/index.htm",
+      "note": "Zoroastrian creation narrative",
+      "fact": "Ahura Mazda creates the material world"
+    },
+    {
+      "id": "ANC097",
+      "title": "Shahnameh Oral Tradition",
+      "year": 400,
+      "region": "Persia",
+      "genre": "Epic Poetry",
+      "url": "",
+      "note": "Pre-Islamic Persian epic cycle",
+      "fact": "Oral sources later shape Ferdowsi epic"
+    },
+    {
+      "id": "ANC098",
+      "title": "Confessions",
+      "year": 397,
+      "region": "North Africa",
+      "genre": "Autobiography",
+      "url": "https://www.gutenberg.org/ebooks/3296",
+      "note": "Augustine's spiritual autobiography",
+      "fact": "Converts to Christianity, confesses to God"
+    },
+    {
+      "id": "ANC099",
+      "title": "City of God",
+      "year": 426,
+      "region": "North Africa",
+      "genre": "Theology",
+      "url": "https://www.gutenberg.org/ebooks/45304",
+      "note": "Augustine on divine vs earthly order",
+      "fact": "Defends Christianity after Rome sacking"
+    },
+    {
+      "id": "ANC100",
+      "title": "Consolation of Philosophy",
+      "year": 524,
+      "region": "Rome",
+      "genre": "Philosophy",
+      "url": "https://www.gutenberg.org/ebooks/14328",
+      "note": "Boethius' prison meditation",
+      "fact": "Awaits execution, dialogues with Lady Philosophy"
+    }
+  ]
+}

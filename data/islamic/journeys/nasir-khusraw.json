@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "person": "Nasir Khusraw",
+  "slug": "F1104",
+  "lifespan": "1004-1088 CE",
+  "confidence": {
+    "grade": "A",
+    "density": "dense",
+    "precision": "month",
+    "disclosure": "Route is taken directly from Nasir Khusraw's own Safarnama, one of the most precisely dated medieval travel texts: he records over 125 stops with months and lengths of stay. Wheeler Thackston's 1986 translation and Guy Le Strange's 1893 Syria/Palestine extracts provide the chronology. Dates between 1053 and his death in Yumgan are reconstructed from the Diwan and later Ismaili tradition."
+  },
+  "sources": [
+    "Nasir Khusraw, Safarnama (c. 1052)",
+    "Wheeler M. Thackston (trans.), Naser-e Khosraw's Book of Travels (1986)",
+    "Guy Le Strange (trans.), Diary of a Journey Through Syria and Palestine (1893)",
+    "Alice C. Hunsberger, Nasir Khusraw, the Ruby of Badakhshan (2000)"
+  ],
+  "journey": [
+    {"year": 1004, "location": "Qubadiyan, Tajikistan", "lat": 37.7833, "lng": 68.0167, "event": "Born into a family of Khorasan landowner-officials.", "category": "birth", "precision": "year", "source": "Hunsberger 2000"},
+    {"year": 1045, "location": "Marv, Turkmenistan", "lat": 37.6594, "lng": 62.1939, "event": "Working as a Seljuk revenue official, has the dream-vision that prompts him to abandon his career.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Nishapur, Iran", "lat": 36.2133, "lng": 58.7958, "event": "Departs Marv on 5 March 1046 with his brother and a Hindu servant, reaching Nishapur after a few weeks.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Damghan, Iran", "lat": 36.1683, "lng": 54.3486, "event": "Crossed Qumes province, visiting Damghan and the tomb of Bayazid Bistami.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Semnan, Iran", "lat": 35.5728, "lng": 53.3924, "event": "Met the philosopher-physician Ustad Ali Nisai, a pupil of Avicenna.", "category": "study", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Qazvin, Iran", "lat": 36.2797, "lng": 50.0049, "event": "Passed through Qazvin on the way north to Azerbaijan.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Tabriz, Iran", "lat": 38.0962, "lng": 46.2738, "event": "Reached Tabriz on 20 Safar 438 AH (26 August 1046); met the poet Qatran.", "category": "other", "precision": "day", "source": "Safarnama"},
+    {"year": 1046, "location": "Khoy, Iran", "lat": 38.5503, "lng": 44.9521, "event": "Continued northwest through Marand and Khoy in Azerbaijan.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Van, Turkey", "lat": 38.4942, "lng": 43.3800, "event": "Crossed into Armenia, visiting Van and Akhlat.", "category": "other", "precision": "month", "source": "Thackston 1986"},
+    {"year": 1046, "location": "Bitlis, Turkey", "lat": 38.4011, "lng": 42.1086, "event": "Travelled through Bitlis on the way to upper Mesopotamia.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1046, "location": "Diyarbakır, Turkey", "lat": 37.9144, "lng": 40.2306, "event": "Visited Amid (Diyarbakır), praising its black basalt walls.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1047, "location": "Aleppo, Syria", "lat": 36.2021, "lng": 37.1343, "event": "Stayed in Aleppo, recording its citadel and markets.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1047, "location": "Maarat al-Numan, Syria", "lat": 35.6500, "lng": 36.6667, "event": "Met the blind Arab philosopher-poet Abu al-Ala al-Maarri, of whom he speaks with deep admiration.", "category": "study", "precision": "month", "source": "Safarnama"},
+    {"year": 1047, "location": "Tripoli, Lebanon", "lat": 34.4361, "lng": 35.8497, "event": "Reached the Syrian coast and recorded the prosperous Fatimid port of Tripoli.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1047, "location": "Beirut, Lebanon", "lat": 33.8938, "lng": 35.5018, "event": "Travelled south along the coast through Beirut.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1047, "location": "Tyre, Lebanon", "lat": 33.2706, "lng": 35.1956, "event": "Described Tyre as a thriving five- and six-storey port renowned among Syrian coastal cities.", "category": "other", "precision": "month", "source": "Thackston 1986"},
+    {"year": 1047, "location": "Acre, Israel", "lat": 32.9233, "lng": 35.0700, "event": "Stopped at Acre on the way inland to Jerusalem.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1047, "location": "Jerusalem, Israel/Palestine", "lat": 31.7683, "lng": 35.2137, "event": "Spent three months in Jerusalem, leaving the most detailed 11th-century Muslim description of the Haram al-Sharif.", "category": "pilgrimage", "precision": "month", "source": "Le Strange 1893"},
+    {"year": 1047, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "First of four pilgrimages to Mecca during his seven-year journey.", "category": "pilgrimage", "precision": "year", "source": "Safarnama"},
+    {"year": 1047, "location": "Cairo, Egypt", "lat": 30.0444, "lng": 31.2357, "event": "Arrived in Fatimid Cairo in August 1047 and remained for three years, training as an Ismaili dai under al-Muayyad fi al-Din al-Shirazi.", "category": "study", "precision": "month", "source": "Thackston 1986"},
+    {"year": 1050, "location": "Aswan, Egypt", "lat": 24.0889, "lng": 32.8998, "event": "Travelled up the Nile from Cairo before crossing to the Red Sea on his way to a later Hajj.", "category": "other", "precision": "year", "source": "Safarnama"},
+    {"year": 1050, "location": "Aydhab, Sudan", "lat": 22.3333, "lng": 36.5000, "event": "Crossed from Aswan to the Red Sea port of Aydhab to embark for the Hijaz.", "category": "other", "precision": "year", "source": "Safarnama"},
+    {"year": 1050, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "Performed his second Hajj, returning thereafter to Cairo.", "category": "pilgrimage", "precision": "year", "source": "Safarnama"},
+    {"year": 1051, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "Performed his third Hajj while serving the Fatimid dawa.", "category": "pilgrimage", "precision": "year", "source": "Safarnama"},
+    {"year": 1052, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "Performed his fourth and final Hajj before turning eastward.", "category": "pilgrimage", "precision": "year", "source": "Safarnama"},
+    {"year": 1052, "location": "Lahsa (al-Hasa), Saudi Arabia", "lat": 25.4296, "lng": 49.5870, "event": "Crossed the Arabian peninsula via the Carmathian-controlled oasis of al-Hasa.", "category": "other", "precision": "year", "source": "Safarnama"},
+    {"year": 1052, "location": "Basra, Iraq", "lat": 30.5085, "lng": 47.7804, "event": "Reached Basra after the Arabian crossing, almost destitute.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1052, "location": "Isfahan, Iran", "lat": 32.6539, "lng": 51.6660, "event": "Crossed Persia eastward through Isfahan on the return route.", "category": "other", "precision": "year", "source": "Safarnama"},
+    {"year": 1052, "location": "Balkh, Afghanistan", "lat": 36.7581, "lng": 66.8970, "event": "Returned home to Balkh in October 1052, completing the seven-year journey.", "category": "other", "precision": "month", "source": "Safarnama"},
+    {"year": 1060, "location": "Yumgan, Badakhshan, Afghanistan", "lat": 36.5000, "lng": 70.7833, "event": "Forced into exile in the remote Badakhshan valley of Yumgan, where he wrote his Ismaili philosophical works.", "category": "exile", "precision": "period", "source": "Hunsberger 2000"},
+    {"year": 1088, "location": "Yumgan, Badakhshan, Afghanistan", "lat": 36.5000, "lng": 70.7833, "event": "Died in Yumgan; his shrine became a pilgrimage site for Central Asian Ismailis.", "category": "death", "precision": "period", "source": "Hunsberger 2000"}
+  ]
+}

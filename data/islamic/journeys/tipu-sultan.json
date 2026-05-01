@@ -1,0 +1,174 @@
+{
+  "person": "Tipu Sultan",
+  "slug": "F1397",
+  "lifespan": "1750-1799",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Fath Ali Tipu Sultan, the ruler of Mysore from 1782 to 1799, is exceptionally well documented through his own surviving letters and orders, the records of the British East India Company, the chronicles of his courtiers (Mir Husain Ali Khan Kirmani's Nishan-i Haydari and Tarikh-i Tipu Sultan), and the journals of British and French officers who served with or against him. The major events of his life - his birth in Devanahalli, his role in the four Anglo-Mysore wars, his accession in 1782, the Treaty of Seringapatam in 1792, and his death defending Seringapatam in 1799 - are all firm by year and almost all by day."
+  },
+  "sources": [
+    "Mir Husain Ali Khan Kirmani, Nishan-i Haydari and Tarikh-i Tipu Sultan",
+    "Tipu Sultan, Selected Letters",
+    "Mahmud Husain, History of Tipu Sultan",
+    "Kate Brittlebank, Tiger: The Life of Tipu Sultan (2016)",
+    "Encyclopaedia of Islam, 2nd ed., 'Tipu Sultan'"
+  ],
+  "journey": [
+    {
+      "day": 20,
+      "month": 11,
+      "year": 1750,
+      "age": 0,
+      "precision": "day",
+      "location": "Devanahalli",
+      "lat": 13.2467,
+      "lng": 77.7115,
+      "event": "Born on 20 November 1750 in Devanahalli, about 33 km north of Bangalore in the kingdom of Mysore in southern India. His father Haydar Ali is then a rising military commander; he will become the de facto ruler of Mysore in 1761. The boy is named after the Sufi saint Tipu Mastan Aulia of Arcot. The 'Sultan' of his later name is a regnal title, not a personal name.",
+      "category": "birth",
+      "source": "Kirmani, Nishan-i Haydari"
+    },
+    {
+      "year": 1761,
+      "age": 11,
+      "precision": "year",
+      "location": "Srirangapatna",
+      "lat": 12.4244,
+      "lng": 76.6866,
+      "event": "In 1761 his father Haydar Ali takes effective control of Mysore from the Wadiyar maharaja and makes Srirangapatna (Seringapatam, the island fortress on the Cauvery River) his capital. The young Tipu grows up at the court there, receiving an education in Persian, Arabic, Quranic studies, and the military arts.",
+      "category": "childhood",
+      "source": "Kirmani"
+    },
+    {
+      "year": 1767,
+      "age": 16,
+      "precision": "year",
+      "location": "Carnatic",
+      "lat": 13.0,
+      "lng": 79.5,
+      "event": "At the age of 17, takes part in his first military campaign during the First Anglo-Mysore War (1767-1769). His father gives him command of a corps of cavalry and he conducts raids into the Carnatic, the territory under British protection in southeastern India.",
+      "category": "battle",
+      "source": "Kirmani"
+    },
+    {
+      "year": 1780,
+      "age": 30,
+      "precision": "month",
+      "location": "Pollilur",
+      "lat": 13.0,
+      "lng": 79.5,
+      "event": "On 10 September 1780, during the Second Anglo-Mysore War, commands the Mysore forces at the Battle of Pollilur, where the British force under Colonel William Baillie is annihilated. Some 3,800 British and Company troops are killed or captured. It is one of the worst British military defeats in 18th-century India and makes Tipu's reputation as a commander.",
+      "category": "battle",
+      "source": "Kirmani; British despatches"
+    },
+    {
+      "day": 7,
+      "month": 12,
+      "year": 1782,
+      "age": 32,
+      "precision": "day",
+      "location": "Chittoor",
+      "lat": 13.2167,
+      "lng": 79.1000,
+      "event": "On 7 December 1782 his father Haydar Ali dies in his camp at Chittoor in the middle of the Second Anglo-Mysore War. Tipu, then commanding troops elsewhere, is summoned and proclaimed sultan of Mysore. He immediately takes up the conduct of the war.",
+      "category": "accession",
+      "source": "Kirmani"
+    },
+    {
+      "day": 11,
+      "month": 3,
+      "year": 1784,
+      "age": 33,
+      "precision": "day",
+      "location": "Mangalore",
+      "lat": 12.9141,
+      "lng": 74.8560,
+      "event": "On 11 March 1784 signs the Treaty of Mangalore with the British East India Company, ending the Second Anglo-Mysore War. The treaty restores the status quo before the war and is one of the few treaties of the period in which the British make significant concessions. Tipu is at the peak of his power and reputation.",
+      "category": "treaty",
+      "source": "Kirmani; British records"
+    },
+    {
+      "year": 1785,
+      "age": 35,
+      "precision": "year",
+      "location": "Srirangapatna",
+      "lat": 12.4244,
+      "lng": 76.6866,
+      "event": "In the years after the Treaty of Mangalore, undertakes a programme of administrative reforms. Standardises weights and measures, introduces a new calendar (the Mauludi era), establishes a state monopoly on key trades, mints new coinage, builds workshops for the manufacture of muskets and rocket artillery (the Mysore rockets, ancestors of modern military rockets, are an innovation he develops to a high degree).",
+      "category": "civic",
+      "source": "Kirmani; Brittlebank"
+    },
+    {
+      "year": 1787,
+      "age": 36,
+      "precision": "year",
+      "location": "Istanbul",
+      "lat": 41.0082,
+      "lng": 28.9784,
+      "event": "In 1787 sends an embassy to the Ottoman sultan Abdulhamid I in Istanbul, requesting recognition as 'Padshah' and asking for an alliance against the British. The embassy travels via Basra and Baghdad. Although the Ottomans receive the ambassadors with honour, they cannot help; their own empire is in crisis with Russia and Austria. Tipu also sends embassies to Versailles (Louis XVI), Paris, and Constantinople in pursuit of alliances.",
+      "category": "diplomacy",
+      "source": "Kirmani; Brittlebank"
+    },
+    {
+      "year": 1789,
+      "age": 39,
+      "precision": "year",
+      "location": "Travancore",
+      "lat": 8.5241,
+      "lng": 76.9366,
+      "event": "In December 1789 invades Travancore, a Hindu kingdom on the southwestern coast that is allied with the British. The invasion gives the British their pretext for the Third Anglo-Mysore War (1789-1792). Tipu is opposed by a triple alliance of the Company, the Marathas, and the Nizam of Hyderabad.",
+      "category": "battle",
+      "source": "Kirmani"
+    },
+    {
+      "day": 19,
+      "month": 3,
+      "year": 1792,
+      "age": 41,
+      "precision": "day",
+      "location": "Srirangapatna",
+      "lat": 12.4244,
+      "lng": 76.6866,
+      "event": "On 19 March 1792, after the British under Lord Cornwallis besiege Srirangapatna, Tipu is forced to sign the Treaty of Seringapatam. He cedes half of his territory and pays a war indemnity of 33 million rupees. As a guarantee of payment two of his young sons are taken as hostages by Cornwallis and held at Madras for two years.",
+      "category": "treaty",
+      "source": "Kirmani; British records"
+    },
+    {
+      "year": 1796,
+      "age": 45,
+      "precision": "year",
+      "location": "Srirangapatna",
+      "lat": 12.4244,
+      "lng": 76.6866,
+      "event": "In the years after the Treaty of Seringapatam, rebuilds his army and his finances and continues to seek foreign alliances - sending envoys to revolutionary France, the Ottomans, and the Afghan Zaman Shah Durrani. The French Republic, then at war with Britain, sends a small mission to Mysore in 1798. Tipu plants a 'tree of liberty' in Srirangapatna and styles himself 'Citizen Tipu' in correspondence with the French.",
+      "category": "diplomacy",
+      "source": "Brittlebank"
+    },
+    {
+      "year": 1799,
+      "age": 48,
+      "precision": "month",
+      "location": "Srirangapatna",
+      "lat": 12.4244,
+      "lng": 76.6866,
+      "event": "In February-March 1799 the British under Lord Mornington (Wellesley) and General George Harris launch the Fourth Anglo-Mysore War, with the explicit aim of destroying Mysore. The combined British, Company, and allied army of about 50,000 men converges on Srirangapatna and lays siege from early April.",
+      "category": "siege",
+      "source": "British despatches; Brittlebank"
+    },
+    {
+      "day": 4,
+      "month": 5,
+      "year": 1799,
+      "age": 48,
+      "precision": "day",
+      "location": "Srirangapatna",
+      "lat": 12.4244,
+      "lng": 76.6866,
+      "event": "On 4 May 1799 the British storm the breach in the walls of Srirangapatna. Tipu Sultan, refusing to flee, fights in person at one of the gates of the inner fortress. He is shot down and killed in the fighting at the Water Gate. The British find his body amid a heap of dead defenders that evening; the future Duke of Wellington (Arthur Wellesley) is among the officers who identify him. Tipu is 48 years old. He is buried with honour the next day in the Gumbaz mausoleum at Srirangapatna, beside his father Haydar Ali. The kingdom of Mysore ceases to be an independent power; the British restore the Wadiyar dynasty as their puppets and take the strategic territory for themselves. Tipu becomes one of the most famous Indian rulers in European memory.",
+      "category": "death",
+      "source": "British despatches; Kirmani; Brittlebank"
+    }
+  ]
+}

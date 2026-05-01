@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "person": "Amr ibn al-As",
+  "slug": "F0419",
+  "lifespan": "0573-0664 CE",
+  "confidence": {
+    "grade": "B",
+    "density": "moderate",
+    "precision": "year",
+    "disclosure": "Itinerary reconstructed principally from Ibn Abd al-Hakam's Futuh Misr (the earliest surviving Arabic history of the conquest of Egypt), al-Tabari, and the Coptic chronicle of John of Nikiu. The Egypt conquest sequence is securely dated from 639 to 642. The Libya expeditions and later governorships give a broad framework; some dates for secondary stops are reconstructed from general chronology rather than explicit source citations."
+  },
+  "sources": [
+    "Ibn Abd al-Hakam, Futuh Misr wa Akhbariha (c. 870)",
+    "Al-Tabari, Tarikh al-Rusul wa al-Muluk (c. 915)",
+    "Al-Baladhuri, Futuh al-Buldan (c. 860)",
+    "John of Nikiu, Chronicle (c. 690)",
+    "Alfred Butler, The Arab Conquest of Egypt (1902)"
+  ],
+  "journey": [
+    {"year": 573, "location": "Mecca, Saudi Arabia", "lat": 21.4225, "lng": 39.8262, "event": "Born in Mecca into the Banu Sahm clan of Quraysh.", "category": "birth", "precision": "period", "source": "al-Tabari"},
+    {"year": 615, "location": "Axum, Ethiopia", "lat": 14.1333, "lng": 38.7167, "event": "Travelled on a Meccan diplomatic mission to the Negus of Axum in a failed attempt to extradite the Muslim refugees there.", "category": "embassy", "precision": "year", "source": "al-Tabari"},
+    {"year": 630, "location": "Medina, Saudi Arabia", "lat": 24.4686, "lng": 39.6142, "event": "Converted to Islam and joined the Prophet Muhammad in Medina shortly before the conquest of Mecca.", "category": "other", "precision": "year", "source": "al-Tabari"},
+    {"year": 630, "location": "Dhat al-Salasil, Saudi Arabia", "lat": 28.0000, "lng": 37.0000, "event": "Led a Muslim expedition against hostile tribes on the northern Arabian frontier.", "category": "campaign", "precision": "year", "source": "al-Waqidi"},
+    {"year": 634, "location": "Ayla (Aqaba), Jordan", "lat": 29.5267, "lng": 35.0078, "event": "Led a Muslim force into southern Palestine at the start of the Syrian campaigns.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 634, "location": "Gaza, Palestine", "lat": 31.5017, "lng": 34.4668, "event": "Defeated a Byzantine force near Gaza (Dathin) in early 634.", "category": "battle", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 634, "location": "Ajnadayn, Palestine", "lat": 31.7000, "lng": 34.9500, "event": "Took part in the Battle of Ajnadayn, a major Muslim victory in Palestine.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 636, "location": "Yarmuk River, Syria", "lat": 32.7167, "lng": 35.9000, "event": "Commanded a division at the Battle of Yarmuk that broke Byzantine power in Syria.", "category": "battle", "precision": "year", "source": "al-Tabari"},
+    {"year": 639, "location": "al-Arish, Egypt", "lat": 31.1333, "lng": 33.8000, "event": "Crossed into Egypt with a small force of ~4,000 men in December 639, beginning the Arab conquest.", "category": "campaign", "precision": "month", "source": "Ibn Abd al-Hakam"},
+    {"year": 640, "location": "Pelusium (Farama), Egypt", "lat": 31.0358, "lng": 32.5447, "event": "Captured the Byzantine frontier fortress of Pelusium after a month-long siege.", "category": "campaign", "precision": "month", "source": "Ibn Abd al-Hakam"},
+    {"year": 640, "location": "Bilbeis, Egypt", "lat": 30.4204, "lng": 31.5617, "event": "Took Bilbeis in the eastern Nile delta after a short siege.", "category": "campaign", "precision": "month", "source": "Ibn Abd al-Hakam"},
+    {"year": 640, "location": "Heliopolis, Egypt", "lat": 30.1293, "lng": 31.3070, "event": "Defeated the Byzantine field army at the Battle of Heliopolis in July 640.", "category": "battle", "precision": "month", "source": "John of Nikiu"},
+    {"year": 641, "location": "Babylon (Fustat area), Egypt", "lat": 30.0073, "lng": 31.2333, "event": "Besieged and took the Roman fortress of Babylon on the Nile in April 641, the future site of Fustat.", "category": "campaign", "precision": "month", "source": "Ibn Abd al-Hakam"},
+    {"year": 641, "location": "Nikiou, Egypt", "lat": 30.4333, "lng": 30.8333, "event": "Defeated Byzantine forces at the Battle of Nikiou on the Nile in May 641.", "category": "battle", "precision": "month", "source": "John of Nikiu"},
+    {"year": 642, "location": "Alexandria, Egypt", "lat": 31.2001, "lng": 29.9187, "event": "Accepted the surrender of Alexandria in September 642 after negotiation with the Byzantine patriarch Cyrus.", "category": "campaign", "precision": "month", "source": "Ibn Abd al-Hakam"},
+    {"year": 642, "location": "Fustat, Egypt", "lat": 30.0073, "lng": 31.2333, "event": "Founded Fustat as the first Muslim garrison city and capital of Egypt on the site of his siege camp.", "category": "capital", "precision": "year", "source": "Ibn Abd al-Hakam"},
+    {"year": 643, "location": "Barqa (Cyrene area), Libya", "lat": 32.5000, "lng": 20.8667, "event": "Led the first Muslim expedition into Cyrenaica and made a treaty with the local population.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 643, "location": "Tripoli, Libya", "lat": 32.8872, "lng": 13.1913, "event": "Besieged and took Tripoli in western Libya.", "category": "campaign", "precision": "year", "source": "al-Baladhuri"},
+    {"year": 645, "location": "Alexandria, Egypt", "lat": 31.2001, "lng": 29.9187, "event": "Retook Alexandria after a Byzantine naval expedition under Manuel briefly recaptured the city.", "category": "battle", "precision": "year", "source": "Ibn Abd al-Hakam"},
+    {"year": 658, "location": "Siffin, Syria", "lat": 35.9500, "lng": 39.0333, "event": "Served as chief negotiator for Mu'awiya at the arbitration following the Battle of Siffin.", "category": "embassy", "precision": "year", "source": "al-Tabari"},
+    {"year": 658, "location": "Adhruh, Jordan", "lat": 30.3500, "lng": 35.5833, "event": "Took part in the Adhruh arbitration between supporters of Ali and Mu'awiya.", "category": "embassy", "precision": "year", "source": "al-Tabari"},
+    {"year": 658, "location": "Fustat, Egypt", "lat": 30.0073, "lng": 31.2333, "event": "Returned to Egypt as governor for Mu'awiya after defeating Ali's appointee Muhammad ibn Abi Bakr.", "category": "capital", "precision": "year", "source": "al-Tabari"},
+    {"year": 664, "location": "Fustat, Egypt", "lat": 30.0073, "lng": 31.2333, "event": "Died in Fustat in 664 while serving as governor of Egypt under Mu'awiya.", "category": "death", "precision": "year", "source": "al-Tabari"}
+  ]
+}

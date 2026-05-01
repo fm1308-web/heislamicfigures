@@ -1,0 +1,9579 @@
+{
+  "tawhid": {
+    "label": "Tawhid (divine oneness)",
+    "parent": null,
+    "children": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "tawhid-al-asma-wa-sifat"
+    ],
+    "siblings": [
+      "divine-attributes",
+      "tanzih",
+      "tashbih",
+      "hulul",
+      "ittihad"
+    ],
+    "opposite": null,
+    "related": [
+      "fitra",
+      "al-mithaq",
+      "maarifa",
+      "ishq"
+    ]
+  },
+  "tawhid-al-uluhiyya": {
+    "label": "Tawhid al-uluhiyya (oneness of worship)",
+    "parent": "tawhid",
+    "children": [
+      "tawhid-al-rububiyya",
+      "tawhid-al-asma-wa-sifat"
+    ],
+    "siblings": [
+      "tawhid-al-rububiyya",
+      "tawhid-al-asma-wa-sifat"
+    ],
+    "opposite": null,
+    "related": [
+      "al-amr-bil-maruf",
+      "divine-attributes",
+      "tanzih"
+    ]
+  },
+  "tawhid-al-rububiyya": {
+    "label": "Tawhid al-rububiyya (oneness of lordship)",
+    "parent": "tawhid",
+    "children": [
+      "khalq-al-afal",
+      "qadar",
+      "kasb",
+      "sababiyya",
+      "occasionalism"
+    ],
+    "siblings": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-asma-wa-sifat"
+    ],
+    "opposite": null,
+    "related": [
+      "wujub-al-wujud",
+      "adl",
+      "khalq-jadid",
+      "providence-inaya"
+    ]
+  },
+  "tawhid-al-asma-wa-sifat": {
+    "label": "Tawhid al-asma wa'l-sifat (oneness of names and attributes)",
+    "parent": "tawhid",
+    "children": [
+      "tanzih",
+      "tashbih",
+      "tawil",
+      "tafwid",
+      "bila-kayf"
+    ],
+    "siblings": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "divine-attributes"
+    ],
+    "opposite": "tatil",
+    "related": [
+      "divine-simplicity",
+      "basit-al-haqiqa",
+      "sifa-fil",
+      "ijaz-al-quran"
+    ]
+  },
+  "divine-attributes": {
+    "label": "Sifat Allah (divine attributes)",
+    "parent": "tawhid",
+    "children": [
+      "tawhid-al-asma-wa-sifat",
+      "tashbih",
+      "tanzih",
+      "tatil",
+      "tawil"
+    ],
+    "siblings": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "kalam-allah",
+      "ruyat-allah"
+    ],
+    "opposite": null,
+    "related": [
+      "divine-simplicity",
+      "basit-al-haqiqa",
+      "sifa-fil",
+      "tajalli"
+    ]
+  },
+  "tashbih": {
+    "label": "Tashbih (anthropomorphism)",
+    "parent": "divine-attributes",
+    "children": [],
+    "siblings": [
+      "tanzih",
+      "tatil",
+      "tawil",
+      "tafwid",
+      "bila-kayf"
+    ],
+    "opposite": "tanzih",
+    "related": [
+      "tawhid-al-asma-wa-sifat",
+      "divine-simplicity",
+      "istiwa"
+    ]
+  },
+  "tanzih": {
+    "label": "Tanzih (divine transcendence)",
+    "parent": "tawhid",
+    "children": [
+      "bila-kayf",
+      "tafwid",
+      "tawil"
+    ],
+    "siblings": [
+      "tashbih",
+      "tatil",
+      "tawhid-al-asma-wa-sifat",
+      "divine-attributes"
+    ],
+    "opposite": "tashbih",
+    "related": [
+      "divine-simplicity",
+      "basit-al-haqiqa",
+      "jihat-allah",
+      "taklif"
+    ]
+  },
+  "tatil": {
+    "label": "Ta'til (divestment of attributes)",
+    "parent": "divine-attributes",
+    "children": [],
+    "siblings": [
+      "tashbih",
+      "tanzih",
+      "tawil",
+      "tafwid",
+      "bila-kayf"
+    ],
+    "opposite": "tashbih",
+    "related": [
+      "tawhid-al-asma-wa-sifat",
+      "khalq-al-quran",
+      "kalam-allah"
+    ]
+  },
+  "tawil": {
+    "label": "Ta'wil (allegorical interpretation)",
+    "parent": "divine-attributes",
+    "children": [
+      "qanun-al-tawil",
+      "tafsir-ishari"
+    ],
+    "siblings": [
+      "tashbih",
+      "tanzih",
+      "tatil",
+      "tafwid",
+      "bila-kayf"
+    ],
+    "opposite": "haqiqa-majaz",
+    "related": [
+      "ijaz-al-quran",
+      "qiraat",
+      "tafsir-lughawi"
+    ]
+  },
+  "tafwid": {
+    "label": "Tafwid (consigning meaning to God)",
+    "parent": "divine-attributes",
+    "children": [],
+    "siblings": [
+      "tashbih",
+      "tanzih",
+      "tatil",
+      "tawil",
+      "bila-kayf"
+    ],
+    "opposite": "tawil",
+    "related": [
+      "tawhid-al-asma-wa-sifat",
+      "sifa-fil",
+      "qanun-al-tawil"
+    ]
+  },
+  "bila-kayf": {
+    "label": "Bila kayf (without asking how)",
+    "parent": "tawhid-al-asma-wa-sifat",
+    "children": [],
+    "siblings": [
+      "tawil",
+      "tafwid",
+      "tanzih",
+      "tashbih",
+      "tatil"
+    ],
+    "opposite": "tawil",
+    "related": [
+      "divine-attributes",
+      "tanzih",
+      "tashbih"
+    ]
+  },
+  "qadar": {
+    "label": "Qadar (divine decree)",
+    "parent": "tawhid",
+    "children": [
+      "jabr",
+      "kasb",
+      "ikhtiyar",
+      "istitaa",
+      "khalq-al-afal"
+    ],
+    "siblings": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "tawhid-al-asma-wa-sifat",
+      "divine-attributes",
+      "kalam-allah"
+    ],
+    "opposite": null,
+    "related": [
+      "wad-wa-waid",
+      "adl",
+      "lutf",
+      "al-aslah"
+    ]
+  },
+  "jabr": {
+    "label": "Jabr (compulsion)",
+    "parent": "qadar",
+    "children": [],
+    "siblings": [
+      "kasb",
+      "ikhtiyar",
+      "istitaa",
+      "khalq-al-afal",
+      "manzila-bayn-manzilatayn"
+    ],
+    "opposite": "ikhtiyar",
+    "related": [
+      "qadar",
+      "tawhid",
+      "adl",
+      "lutf"
+    ]
+  },
+  "kasb": {
+    "label": "Kasb (acquisition)",
+    "parent": "qadar",
+    "children": [],
+    "siblings": [
+      "jabr",
+      "ikhtiyar",
+      "istitaa",
+      "khalq-al-afal",
+      "manzila-bayn-manzilatayn"
+    ],
+    "opposite": "jabr",
+    "related": [
+      "adl",
+      "taklif",
+      "iman-amal"
+    ]
+  },
+  "ikhtiyar": {
+    "label": "Ikhtiyar (human choice)",
+    "parent": "qadar",
+    "children": [
+      "istitaa",
+      "kasb"
+    ],
+    "siblings": [
+      "jabr",
+      "kasb",
+      "istitaa",
+      "khalq-al-afal"
+    ],
+    "opposite": "jabr",
+    "related": [
+      "adl",
+      "taklif",
+      "iman-amal",
+      "wad-wa-waid"
+    ]
+  },
+  "istitaa": {
+    "label": "Istita'a (capacity to act)",
+    "parent": "qadar",
+    "children": [],
+    "siblings": [
+      "jabr",
+      "kasb",
+      "ikhtiyar",
+      "khalq-al-afal"
+    ],
+    "opposite": "jabr",
+    "related": [
+      "taklif",
+      "manzila-bayn-manzilatayn",
+      "lutf"
+    ]
+  },
+  "khalq-al-afal": {
+    "label": "Khalq al-af'al (creation of acts)",
+    "parent": "qadar",
+    "children": [],
+    "siblings": [
+      "jabr",
+      "kasb",
+      "ikhtiyar",
+      "istitaa"
+    ],
+    "opposite": "ikhtiyar",
+    "related": [
+      "khalq-al-quran",
+      "occasionalism",
+      "manzila-bayn-manzilatayn"
+    ]
+  },
+  "khalq-al-quran": {
+    "label": "Khalq al-Qur'an (createdness of the Qur'an)",
+    "parent": "kalam-allah",
+    "children": [],
+    "siblings": [
+      "tawhid-al-asma-wa-sifat",
+      "divine-attributes",
+      "ruyat-allah"
+    ],
+    "opposite": null,
+    "related": [
+      "tawil",
+      "tashbih",
+      "tanzih",
+      "ijaz-al-quran"
+    ]
+  },
+  "kalam-allah": {
+    "label": "Kalam Allah (divine speech)",
+    "parent": "tawhid",
+    "children": [
+      "khalq-al-quran",
+      "ijaz-al-quran"
+    ],
+    "siblings": [
+      "divine-attributes",
+      "tawhid-al-asma-wa-sifat",
+      "ruyat-allah"
+    ],
+    "opposite": "khalq-al-quran",
+    "related": [
+      "tawil",
+      "tanzih",
+      "tashbih",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "ruyat-allah": {
+    "label": "Ru'yat Allah (beatific vision)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "divine-attributes",
+      "tanzih",
+      "tashbih",
+      "kalam-allah",
+      "ismah"
+    ],
+    "opposite": "tanzih",
+    "related": [
+      "maarifa",
+      "tajalli",
+      "barzakh",
+      "hashr"
+    ]
+  },
+  "husn-wa-qubh": {
+    "label": "Husn wa qubh (moral ontology)",
+    "parent": "tawhid",
+    "children": [
+      "al-aslah",
+      "lutf",
+      "adl"
+    ],
+    "siblings": [
+      "qadar",
+      "jabr",
+      "kasb",
+      "ikhtiyar",
+      "khalq-al-afal",
+      "wad-wa-waid"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "maqasid-al-shariah",
+      "good-and-evil-falsafa"
+    ]
+  },
+  "al-aslah": {
+    "label": "Al-aslah (the optimal)",
+    "parent": "adl",
+    "children": [],
+    "siblings": [
+      "lutf",
+      "wad-wa-waid",
+      "husn-wa-qubh"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "maqasid-al-shariah",
+      "al-insan-al-kamil"
+    ]
+  },
+  "lutf": {
+    "label": "Lutf (divine grace)",
+    "parent": "adl",
+    "children": [],
+    "siblings": [
+      "adl",
+      "wad-wa-waid",
+      "al-aslah",
+      "kasb",
+      "istitaa"
+    ],
+    "opposite": "jabr",
+    "related": [
+      "qadar",
+      "khalq-al-afal",
+      "ikhtiyar",
+      "manzila-bayn-manzilatayn"
+    ]
+  },
+  "adl": {
+    "label": "Adl (divine justice)",
+    "parent": "tawhid",
+    "children": [
+      "lutf",
+      "al-aslah",
+      "wad-wa-waid",
+      "adl-political"
+    ],
+    "siblings": [
+      "husn-wa-qubh",
+      "qadar",
+      "kasb",
+      "ikhtiyar"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "maqasid-al-shariah",
+      "siyasa-shariyya",
+      "circle-of-justice",
+      "divine-attributes"
+    ]
+  },
+  "wad-wa-waid": {
+    "label": "Al-wa'd wa'l-wa'id (promise and threat)",
+    "parent": "adl",
+    "children": [],
+    "siblings": [
+      "lutf",
+      "adl",
+      "husn-wa-qubh",
+      "al-aslah"
+    ],
+    "opposite": "lutf",
+    "related": [
+      "qadar",
+      "kasb",
+      "kabira",
+      "shafaa"
+    ]
+  },
+  "manzila-bayn-manzilatayn": {
+    "label": "Al-manzila bayna al-manzilatayn (intermediate position)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "irja",
+      "kabira",
+      "takfir",
+      "iman-amal",
+      "husn-wa-qubh"
+    ],
+    "opposite": "takfir",
+    "related": [
+      "adl",
+      "wad-wa-waid",
+      "shafaa"
+    ]
+  },
+  "al-amr-bil-maruf": {
+    "label": "Al-amr bi'l-ma'ruf wa'l-nahy 'an al-munkar",
+    "parent": "tawhid",
+    "children": [
+      "amr-bil-maruf-political"
+    ],
+    "siblings": [
+      "iman-amal",
+      "taklif",
+      "ihsan",
+      "adab",
+      "maqasid-al-shariah"
+    ],
+    "opposite": null,
+    "related": [
+      "hisba",
+      "nasiha",
+      "siyasa-shariyya",
+      "wilaya"
+    ]
+  },
+  "iman-amal": {
+    "label": "Iman and amal (faith and works)",
+    "parent": "tawhid",
+    "children": [
+      "hadd-al-iman",
+      "ziyada-iman",
+      "irja"
+    ],
+    "siblings": [
+      "adl",
+      "husn-wa-qubh",
+      "taklif",
+      "wad-wa-waid"
+    ],
+    "opposite": "irja",
+    "related": [
+      "ihsan",
+      "tawba",
+      "ikhlas"
+    ]
+  },
+  "irja": {
+    "label": "Irja (postponement of judgment)",
+    "parent": "iman-amal",
+    "children": [],
+    "siblings": [
+      "takfir",
+      "kabira",
+      "iman-amal",
+      "manzila-bayn-manzilatayn"
+    ],
+    "opposite": "takfir",
+    "related": [
+      "shafaa",
+      "wad-wa-waid",
+      "adl"
+    ]
+  },
+  "takfir": {
+    "label": "Takfir (excommunication)",
+    "parent": "iman-amal",
+    "children": [],
+    "siblings": [
+      "irja",
+      "kabira",
+      "iman-amal",
+      "hadd-al-iman"
+    ],
+    "opposite": "shafaa",
+    "related": [
+      "tawhid",
+      "khatm-al-nubuwwa",
+      "ismah",
+      "taqlid-in-aqida"
+    ]
+  },
+  "kabira": {
+    "label": "Al-kabira (grave sin)",
+    "parent": "iman-amal",
+    "children": [],
+    "siblings": [
+      "iman-amal",
+      "irja",
+      "takfir",
+      "hadd-al-iman",
+      "ziyada-iman"
+    ],
+    "opposite": null,
+    "related": [
+      "tawba",
+      "shafaa",
+      "wad-wa-waid"
+    ]
+  },
+  "shafaa": {
+    "label": "Shafa'a (intercession)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "wad-wa-waid",
+      "adl",
+      "lutf",
+      "ruyat-allah",
+      "khulud"
+    ],
+    "opposite": null,
+    "related": [
+      "ismah",
+      "nubuwwa",
+      "wilaya",
+      "karamat",
+      "tawassul"
+    ]
+  },
+  "ismah": {
+    "label": "'Isma (prophetic and imami infallibility)",
+    "parent": "nubuwwa",
+    "children": [
+      "isma-anbiya"
+    ],
+    "siblings": [
+      "mujiza",
+      "ijaz-al-quran",
+      "khatm-al-nubuwwa",
+      "imamate-shia"
+    ],
+    "opposite": null,
+    "related": [
+      "nass",
+      "imamate-shia",
+      "wilayat-al-faqih",
+      "taqlid-in-aqida"
+    ]
+  },
+  "nubuwwa": {
+    "label": "Nubuwwa (prophethood)",
+    "parent": "tawhid",
+    "children": [
+      "khatm-al-nubuwwa",
+      "ismah",
+      "mujiza",
+      "ijaz-al-quran"
+    ],
+    "siblings": [
+      "imamate-shia",
+      "imama-sunni",
+      "khilafa"
+    ],
+    "opposite": null,
+    "related": [
+      "al-insan-al-kamil",
+      "haqiqa-muhammadiyya",
+      "nur-muhammadi"
+    ]
+  },
+  "khatm-al-nubuwwa": {
+    "label": "Khatm al-nubuwwa (finality of prophethood)",
+    "parent": "nubuwwa",
+    "children": [],
+    "siblings": [
+      "ismah",
+      "mujiza",
+      "ijaz-al-quran",
+      "ismaili-imamate"
+    ],
+    "opposite": null,
+    "related": [
+      "imamate-shia",
+      "mahdi",
+      "wilayat-al-faqih"
+    ]
+  },
+  "mujiza": {
+    "label": "Mu'jiza (prophetic miracle)",
+    "parent": "nubuwwa",
+    "children": [
+      "ijaz-al-quran",
+      "sarfa",
+      "karamat-al-awliya"
+    ],
+    "siblings": [
+      "ismah",
+      "khatm-al-nubuwwa",
+      "nubuwwa"
+    ],
+    "opposite": null,
+    "related": [
+      "tajalli",
+      "ilham",
+      "kashf",
+      "karamat"
+    ]
+  },
+  "ijaz-al-quran": {
+    "label": "I'jaz al-Qur'an (Qur'anic inimitability)",
+    "parent": "nubuwwa",
+    "children": [
+      "ijaz-al-quran-linguistic",
+      "sarfa",
+      "sarfa-linguistic"
+    ],
+    "siblings": [
+      "mujiza",
+      "karamat-al-awliya",
+      "khatm-al-nubuwwa"
+    ],
+    "opposite": null,
+    "related": [
+      "kalam-allah",
+      "tajalli",
+      "balagha",
+      "tafsir-lughawi"
+    ]
+  },
+  "sarfa": {
+    "label": "Sarfa (divine deflection)",
+    "parent": "ijaz-al-quran",
+    "children": [],
+    "siblings": [
+      "ijaz-al-quran-linguistic"
+    ],
+    "opposite": "ijaz-al-quran",
+    "related": [
+      "mujiza",
+      "khatm-al-nubuwwa",
+      "qidam-al-alam"
+    ]
+  },
+  "karamat-al-awliya": {
+    "label": "Karamat al-awliya (saintly miracles)",
+    "parent": "wilaya",
+    "children": [],
+    "siblings": [
+      "mujiza",
+      "ismah",
+      "isma-anbiya",
+      "karamat"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "sarfa",
+      "kashf",
+      "ilham"
+    ]
+  },
+  "imamate-shia": {
+    "label": "Imama (Shia imamate)",
+    "parent": "khilafa",
+    "children": [
+      "nass",
+      "imamate-shia",
+      "ghayba",
+      "wilayat-al-faqih"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "khariji-imamate",
+      "zaydi-imamate",
+      "ismaili-imamate"
+    ],
+    "opposite": "imama-sunni",
+    "related": [
+      "ismah",
+      "walaya-shia",
+      "mahdi",
+      "irfan"
+    ]
+  },
+  "nass": {
+    "label": "Nass (designation)",
+    "parent": "imama-shia",
+    "children": [],
+    "siblings": [
+      "khariji-imamate",
+      "zaydi-imamate",
+      "ismaili-imamate",
+      "quraysh-condition",
+      "shura"
+    ],
+    "opposite": "khariji-imamate",
+    "related": [
+      "imamate-shia",
+      "ghayba",
+      "wilayat-al-faqih",
+      "ismah"
+    ]
+  },
+  "ghayba": {
+    "label": "Ghayba (occultation)",
+    "parent": "imamate-shia",
+    "children": [
+      "ghayba-political"
+    ],
+    "siblings": [
+      "nass",
+      "raja",
+      "bada",
+      "taqiyya",
+      "mahdi"
+    ],
+    "opposite": null,
+    "related": [
+      "khatm-al-nubuwwa",
+      "ismaili-imamate",
+      "wilayat-al-faqih"
+    ]
+  },
+  "raja": {
+    "label": "Raj'a (return)",
+    "parent": "imamate-shia",
+    "children": [],
+    "siblings": [
+      "ghayba",
+      "bada",
+      "mahdi",
+      "nass"
+    ],
+    "opposite": "khatm-al-nubuwwa",
+    "related": [
+      "hashr",
+      "mead-jismani",
+      "barzakh"
+    ]
+  },
+  "bada": {
+    "label": "Bada' (divine alteration)",
+    "parent": "qadar",
+    "children": [],
+    "siblings": [
+      "qadar",
+      "khalq-al-afal",
+      "kasb",
+      "ikhtiyar",
+      "istitaa"
+    ],
+    "opposite": null,
+    "related": [
+      "adl",
+      "lutf",
+      "ghayba",
+      "divine-knowledge-particulars"
+    ]
+  },
+  "taqiyya": {
+    "label": "Taqiyya (precautionary dissimulation)",
+    "parent": "imamate-shia",
+    "children": [],
+    "siblings": [
+      "nass",
+      "ghayba",
+      "wilayat-al-faqih",
+      "ijma-ahl-bayt"
+    ],
+    "opposite": null,
+    "related": [
+      "takfir",
+      "dhimma",
+      "aman",
+      "darura"
+    ]
+  },
+  "wilayat-al-faqih": {
+    "label": "Wilayat al-faqih (guardianship of the jurist)",
+    "parent": "imama-shia",
+    "children": [],
+    "siblings": [
+      "ghayba",
+      "ghayba-political",
+      "nass",
+      "imamate-shia",
+      "mahdi"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "ijtihad",
+      "ulama-state"
+    ]
+  },
+  "mahdi": {
+    "label": "Mahdi (eschatological guide)",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "dajjal",
+      "hashr",
+      "barzakh",
+      "mead-jismani",
+      "khulud"
+    ],
+    "opposite": "dajjal",
+    "related": [
+      "khatm-al-nubuwwa",
+      "ghayba",
+      "imamate-shia",
+      "adl"
+    ]
+  },
+  "dajjal": {
+    "label": "Dajjal (antichrist)",
+    "parent": "hashr",
+    "children": [],
+    "siblings": [
+      "mahdi",
+      "barzakh",
+      "adhab-al-qabr",
+      "mead-jismani",
+      "mizan",
+      "sirat"
+    ],
+    "opposite": "mahdi",
+    "related": [
+      "khatm-al-nubuwwa",
+      "nubuwwa",
+      "mujiza",
+      "ijaz-al-quran"
+    ]
+  },
+  "barzakh": {
+    "label": "Barzakh (intermediate realm)",
+    "parent": null,
+    "children": [
+      "adhab-al-qabr",
+      "ruyat-allah"
+    ],
+    "siblings": [
+      "mead-jismani",
+      "hashr",
+      "mizan",
+      "sirat",
+      "khulud"
+    ],
+    "opposite": null,
+    "related": [
+      "alam-mithal",
+      "mahdi",
+      "raja",
+      "nafs"
+    ]
+  },
+  "adhab-al-qabr": {
+    "label": "'Adhab al-qabr (punishment in the grave)",
+    "parent": "barzakh",
+    "children": [],
+    "siblings": [
+      "barzakh",
+      "mead-jismani",
+      "hashr",
+      "mizan",
+      "sirat"
+    ],
+    "opposite": null,
+    "related": [
+      "ruyat-allah",
+      "khulud",
+      "shafaa"
+    ]
+  },
+  "mead-jismani": {
+    "label": "Ma'ad jismani (bodily resurrection)",
+    "parent": "hashr",
+    "children": [],
+    "siblings": [
+      "barzakh",
+      "adhab-al-qabr",
+      "mizan",
+      "sirat",
+      "khulud"
+    ],
+    "opposite": null,
+    "related": [
+      "nafs",
+      "alam-al-mithal"
+    ]
+  },
+  "hashr": {
+    "label": "Hashr (gathering and judgment)",
+    "parent": "mead-jismani",
+    "children": [
+      "mizan",
+      "sirat"
+    ],
+    "siblings": [
+      "mead-jismani",
+      "barzakh",
+      "adhab-al-qabr",
+      "mahdi",
+      "dajjal"
+    ],
+    "opposite": null,
+    "related": [
+      "ruyat-allah",
+      "khulud",
+      "shafaa"
+    ]
+  },
+  "mizan": {
+    "label": "Mizan (the scale)",
+    "parent": "hashr",
+    "children": [],
+    "siblings": [
+      "hashr",
+      "sirat",
+      "barzakh",
+      "adhab-al-qabr",
+      "mead-jismani"
+    ],
+    "opposite": null,
+    "related": [
+      "adl",
+      "amal-ahl-medina",
+      "husn-wa-qubh"
+    ]
+  },
+  "sirat": {
+    "label": "Sirat (the bridge)",
+    "parent": "hashr",
+    "children": [],
+    "siblings": [
+      "mizan",
+      "adhab-al-qabr",
+      "barzakh",
+      "mead-jismani"
+    ],
+    "opposite": null,
+    "related": [
+      "khulud",
+      "ruyat-allah",
+      "shafaa"
+    ]
+  },
+  "khulud": {
+    "label": "Khulud (eternity of hell)",
+    "parent": "hashr",
+    "children": [],
+    "siblings": [
+      "adhab-al-qabr",
+      "barzakh",
+      "mizan",
+      "sirat",
+      "mead-jismani"
+    ],
+    "opposite": null,
+    "related": [
+      "wad-wa-waid",
+      "adl",
+      "shafaa",
+      "kabira"
+    ]
+  },
+  "fitra": {
+    "label": "Fitra (innate disposition)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "al-mithaq",
+      "hudus-al-alam",
+      "natural-theology",
+      "maarifa"
+    ],
+    "opposite": null,
+    "related": [
+      "tafwid",
+      "ilham",
+      "hads",
+      "taklif"
+    ]
+  },
+  "al-mithaq": {
+    "label": "Al-mithaq (primordial covenant)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "fitra",
+      "al-insan-al-kamil",
+      "nubuwwa",
+      "al-mithaq"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid-al-rububiyya",
+      "maarifa",
+      "iman-amal",
+      "wad-wa-waid"
+    ]
+  },
+  "hudus-al-alam": {
+    "label": "Hudus al-'alam (temporal origination of the world)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "dalil-al-huduth",
+      "ibda",
+      "hudus-dahri"
+    ],
+    "siblings": [
+      "qidam-al-alam",
+      "wujub-al-wujud",
+      "essence-existence-distinction",
+      "tawhid-al-rububiyya"
+    ],
+    "opposite": "qidam-al-alam",
+    "related": [
+      "khalq-jadid",
+      "causality-falsafa",
+      "fayd",
+      "tawhid"
+    ]
+  },
+  "qidam-al-alam": {
+    "label": "Qidam al-'alam (eternity of the world)",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "hudus-al-alam",
+      "dalil-al-huduth",
+      "wujub-al-wujud",
+      "tawhid",
+      "hudus-dahri"
+    ],
+    "opposite": "hudus-al-alam",
+    "related": [
+      "falsafa-shariah",
+      "tahafut",
+      "ten-intellects",
+      "causality-falsafa"
+    ]
+  },
+  "dalil-al-huduth": {
+    "label": "Dalil al-huduth (argument from origination)",
+    "parent": "hudus-al-alam",
+    "children": [],
+    "siblings": [
+      "qidam-al-alam",
+      "wujub-al-wujud",
+      "atomism-kalam",
+      "occasionalism",
+      "sababiyya"
+    ],
+    "opposite": "qidam-al-alam",
+    "related": [
+      "tawhid",
+      "khalq-jadid",
+      "causality-falsafa",
+      "tahafut"
+    ]
+  },
+  "atomism-kalam": {
+    "label": "Atomism (jawhar fard)",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "occasionalism",
+      "sababiyya",
+      "jawhar-arad",
+      "khalq-jadid",
+      "naturalism-tabi"
+    ],
+    "opposite": "sababiyya",
+    "related": [
+      "khalq-al-afal",
+      "qadar",
+      "tawhid",
+      "hudus-al-alam"
+    ]
+  },
+  "occasionalism": {
+    "label": "Occasionalism",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "sababiyya",
+      "atomism-kalam",
+      "causality-falsafa",
+      "naturalism-tabi"
+    ],
+    "opposite": "sababiyya",
+    "related": [
+      "khalq-al-afal",
+      "kasb",
+      "takwin",
+      "divine-simplicity"
+    ]
+  },
+  "sababiyya": {
+    "label": "Sababiyya (secondary causality)",
+    "parent": "tawhid",
+    "children": [
+      "asbab-al-mutawassita"
+    ],
+    "siblings": [
+      "occasionalism",
+      "khalq-al-afal",
+      "qadar"
+    ],
+    "opposite": "occasionalism",
+    "related": [
+      "causality-falsafa",
+      "naturalism-tabi",
+      "divine-knowledge-particulars"
+    ]
+  },
+  "wujub-al-wujud": {
+    "label": "Wajib al-wujud (necessary existence)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "mumkin-al-wujud",
+      "essence-existence-distinction",
+      "asalat-al-wujud",
+      "divine-simplicity",
+      "hudus-al-alam"
+    ],
+    "opposite": "mumkin-al-wujud",
+    "related": [
+      "tawhid",
+      "dalil-al-huduth",
+      "wajib-al-wujud"
+    ]
+  },
+  "tawhid-al-wujud": {
+    "label": "Wahdat al-wujud (oneness of being)",
+    "parent": "tasawwuf",
+    "children": [
+      "fana",
+      "baqa",
+      "hulul",
+      "tajalli",
+      "al-insan-al-kamil"
+    ],
+    "siblings": [
+      "wahdat-al-shuhud",
+      "tawhid-al-wujud",
+      "ittihad",
+      "maarifa",
+      "shariah-tariqah-haqiqah"
+    ],
+    "opposite": "wahdat-al-shuhud",
+    "related": [
+      "tawhid",
+      "wujub-al-wujud",
+      "ittihad-aqil-maqul",
+      "fayd"
+    ]
+  },
+  "wahdat-al-shuhud": {
+    "label": "Wahdat al-shuhud (oneness of witnessing)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "tawhid-al-asma-wa-sifat",
+      "tawhid-al-wujud",
+      "wahdat-al-wujud"
+    ],
+    "opposite": "tawhid-al-wujud",
+    "related": [
+      "fana",
+      "baqa",
+      "tajalli",
+      "kashf"
+    ]
+  },
+  "hulul": {
+    "label": "Hulul (indwelling)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "ittihad",
+      "tawhid-al-wujud",
+      "wahdat-al-shuhud",
+      "fana",
+      "baqa"
+    ],
+    "opposite": "tanzih",
+    "related": [
+      "tashbih",
+      "tatil",
+      "al-insan-al-kamil",
+      "haqiqa-muhammadiyya"
+    ]
+  },
+  "ittihad": {
+    "label": "Ittihad (mystical union)",
+    "parent": "tasawwuf",
+    "children": [
+      "fana",
+      "baqa",
+      "wahdat-al-wujud",
+      "hulul"
+    ],
+    "siblings": [
+      "fana",
+      "baqa",
+      "wahdat-al-wujud",
+      "tawhid-al-wujud",
+      "hulul"
+    ],
+    "opposite": "hulul",
+    "related": [
+      "al-insan-al-kamil",
+      "tajalli",
+      "maqamat-ahwal",
+      "sayr-fi-allah"
+    ]
+  },
+  "fana": {
+    "label": "Fana' (annihilation in God)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "baqa",
+      "tawhid-al-wujud",
+      "wahdat-al-shuhud",
+      "ittihad",
+      "hulul"
+    ],
+    "opposite": "baqa",
+    "related": [
+      "sayr-fi-allah",
+      "maqamat-ahwal",
+      "insan-kamil",
+      "tajalli"
+    ]
+  },
+  "baqa": {
+    "label": "Baqa' (subsistence in God)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "fana",
+      "wahdat-al-wujud",
+      "ittihad",
+      "hulul",
+      "sayr-fi-allah"
+    ],
+    "opposite": "fana",
+    "related": [
+      "insan-kamil",
+      "qaws-nuzul-suud",
+      "tajalli",
+      "maqamat-ahwal"
+    ]
+  },
+  "al-insan-al-kamil": {
+    "label": "Al-insan al-kamil (the perfect human)",
+    "parent": "tasawwuf",
+    "children": [
+      "haqiqa-muhammadiyya",
+      "nur-muhammadi",
+      "tajalli",
+      "insan-kamil"
+    ],
+    "siblings": [
+      "wahdat-al-wujud",
+      "fana",
+      "baqa",
+      "maarifa",
+      "tajalli"
+    ],
+    "opposite": null,
+    "related": [
+      "hadarat-khams",
+      "ittihad-aqil-maqul",
+      "aql-faal",
+      "khilafa"
+    ]
+  },
+  "haqiqa-muhammadiyya": {
+    "label": "Al-haqiqa al-muhammadiyya (Muhammadan reality)",
+    "parent": "tawhid",
+    "children": [
+      "nur-muhammadi",
+      "al-insan-al-kamil"
+    ],
+    "siblings": [
+      "ayan-thabita",
+      "tajalli",
+      "wahdat-al-wujud",
+      "insan-kamil"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "khatm-al-nubuwwa",
+      "ismah",
+      "fayd"
+    ]
+  },
+  "nur-muhammadi": {
+    "label": "Nur Muhammadi (Muhammadan light)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "haqiqa-muhammadiyya",
+      "al-insan-al-kamil",
+      "ayan-thabita",
+      "tajalli",
+      "fayd"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "khatm-al-nubuwwa",
+      "mujiza",
+      "isma-anbiya"
+    ]
+  },
+  "ayan-thabita": {
+    "label": "Al-a'yan al-thabita (immutable entities)",
+    "parent": "tawhid-al-wujud",
+    "children": [],
+    "siblings": [
+      "tajalli",
+      "khalq-jadid",
+      "haqiqa-muhammadiyya",
+      "nur-muhammadi",
+      "wahdat-al-wujud"
+    ],
+    "opposite": null,
+    "related": [
+      "wujub-al-wujud",
+      "mumkin-al-wujud",
+      "essence-existence-distinction",
+      "fayd"
+    ]
+  },
+  "tajalli": {
+    "label": "Tajalli (divine self-disclosure)",
+    "parent": "tawhid-al-asma-wa-sifat",
+    "children": [
+      "hadarat-khams",
+      "alam-mithal",
+      "khayal"
+    ],
+    "siblings": [
+      "tawhid-al-wujud",
+      "wahdat-al-shuhud",
+      "fayd"
+    ],
+    "opposite": null,
+    "related": [
+      "maarifa",
+      "kashf",
+      "ilham",
+      "nur-muhammadi"
+    ]
+  },
+  "khalq-jadid": {
+    "label": "Khalq jadid (perpetual recreation)",
+    "parent": "occasionalism",
+    "children": [],
+    "siblings": [
+      "atomism-kalam",
+      "occasionalism",
+      "sababiyya",
+      "khalq-al-afal"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid",
+      "qadar",
+      "tajalli",
+      "takwin"
+    ]
+  },
+  "al-asma-wal-sifat": {
+    "label": "Divine names cosmology",
+    "parent": "tawhid",
+    "children": [
+      "tajalli",
+      "khalq-jadid",
+      "sifa-fil",
+      "divine-attributes"
+    ],
+    "siblings": [
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "tawhid-al-asma-wa-sifat"
+    ],
+    "opposite": null,
+    "related": [
+      "al-asma-wal-sifat",
+      "maqasid-al-shariah",
+      "insan-kamil",
+      "hikmat-ishraq"
+    ]
+  },
+  "taklif": {
+    "label": "Taklif (moral obligation)",
+    "parent": null,
+    "children": [
+      "istitaa",
+      "darura",
+      "rukhsa-azima"
+    ],
+    "siblings": [
+      "adl",
+      "husn-wa-qubh",
+      "al-aslah",
+      "lutf",
+      "wad-wa-waid"
+    ],
+    "opposite": null,
+    "related": [
+      "usul-al-fiqh",
+      "amr-nahy",
+      "hukm-shari"
+    ]
+  },
+  "maarifa": {
+    "label": "Ma'rifa (gnosis of God)",
+    "parent": "tawhid",
+    "children": [
+      "ilm-huduri",
+      "ilm-husuli",
+      "kashf",
+      "ilham"
+    ],
+    "siblings": [
+      "iman-amal",
+      "tawhid-al-uluhiyya",
+      "tawhid-al-rububiyya",
+      "ihsan",
+      "irfan"
+    ],
+    "opposite": "taqlid-in-aqida",
+    "related": [
+      "tafkir-aqli",
+      "burhan",
+      "fitra",
+      "al-mithaq"
+    ]
+  },
+  "taqlid-in-aqida": {
+    "label": "Taqlid in creed",
+    "parent": "tafkir-aqli",
+    "children": [],
+    "siblings": [
+      "tafkir-aqli",
+      "burhan",
+      "hadd-al-iman",
+      "taqlid"
+    ],
+    "opposite": "tafkir-aqli",
+    "related": [
+      "maarifa",
+      "ilm-husuli",
+      "ilm-huduri",
+      "iman-amal"
+    ]
+  },
+  "tafkir-aqli": {
+    "label": "'Aql wa naql (reason and revelation)",
+    "parent": "tawhid",
+    "children": [
+      "qanun-al-tawil",
+      "falsafa-shariah",
+      "double-truth",
+      "sam-and-aql"
+    ],
+    "siblings": [
+      "maarifa",
+      "taqlid-in-aqida",
+      "burhan",
+      "hikmat-ishraq"
+    ],
+    "opposite": null,
+    "related": [
+      "tahafut",
+      "logic-vs-grammar"
+    ]
+  },
+  "qanun-al-tawil": {
+    "label": "Qanun al-ta'wil (rule of interpretation)",
+    "parent": "tafkir-aqli",
+    "children": [],
+    "siblings": [
+      "tawil",
+      "tanzih",
+      "tashbih",
+      "bila-kayf",
+      "tafwid"
+    ],
+    "opposite": "sama-qiyas",
+    "related": [
+      "adl",
+      "husn-wa-qubh",
+      "divine-attributes",
+      "falsafa-shariah"
+    ]
+  },
+  "jihat-allah": {
+    "label": "Jiha (divine direction)",
+    "parent": "tawhid-al-asma-wa-sifat",
+    "children": [
+      "istiwa"
+    ],
+    "siblings": [
+      "tanzih",
+      "tashbih",
+      "tawil",
+      "tafwid",
+      "bila-kayf"
+    ],
+    "opposite": "tanzih",
+    "related": [
+      "divine-attributes",
+      "tawhid",
+      "basit-al-haqiqa"
+    ]
+  },
+  "istiwa": {
+    "label": "Istiwa' (divine settling on the throne)",
+    "parent": "divine-attributes",
+    "children": [],
+    "siblings": [
+      "tanzih",
+      "tashbih",
+      "tawil",
+      "tafwid",
+      "bila-kayf"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid-al-asma-wa-sifat",
+      "sifa-fil",
+      "jihat-allah",
+      "qanun-al-tawil"
+    ]
+  },
+  "hadd-al-iman": {
+    "label": "Definition of iman",
+    "parent": "iman-amal",
+    "children": [
+      "ziyada-iman",
+      "hadd-al-iman"
+    ],
+    "siblings": [
+      "iman-amal",
+      "irja",
+      "takfir",
+      "kabira"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid",
+      "ihsan",
+      "ikhlas"
+    ]
+  },
+  "ziyada-iman": {
+    "label": "Ziyadat al-iman (increase of faith)",
+    "parent": "iman-amal",
+    "children": [],
+    "siblings": [
+      "hadd-al-iman",
+      "irja",
+      "takfir",
+      "kabira"
+    ],
+    "opposite": null,
+    "related": [
+      "husn-wa-qubh",
+      "adl",
+      "taklif",
+      "ihsan"
+    ]
+  },
+  "sam-and-aql": {
+    "label": "Sam'iyyat (revealed-only matters)",
+    "parent": "tafkir-aqli",
+    "children": [
+      "ruyat-allah",
+      "adhab-al-qabr",
+      "hashr",
+      "barzakh",
+      "mahdi",
+      "dajjal"
+    ],
+    "siblings": [
+      "tafkir-aqli",
+      "tawhid",
+      "qadar",
+      "khalq-al-quran"
+    ],
+    "opposite": "tafkir-aqli",
+    "related": [
+      "ijma",
+      "mutawatir",
+      "khabar-wahid",
+      "nass-zahir"
+    ]
+  },
+  "sifa-fil": {
+    "label": "Sifat al-fi'l (attributes of action)",
+    "parent": "divine-attributes",
+    "children": [],
+    "siblings": [
+      "tawhid-al-asma-wa-sifat",
+      "tanzih",
+      "tashbih",
+      "tawil"
+    ],
+    "opposite": null,
+    "related": [
+      "khalq-al-afal",
+      "qadar",
+      "takwin",
+      "tajalli"
+    ]
+  },
+  "takwin": {
+    "label": "Takwin (divine bringing-into-being)",
+    "parent": "divine-attributes",
+    "children": [],
+    "siblings": [
+      "khalq-al-afal",
+      "sifa-fil",
+      "kasb",
+      "occasionalism"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid-al-asma-wa-sifat",
+      "wujub-al-wujud",
+      "khalq-jadid"
+    ]
+  },
+  "isma-anbiya": {
+    "label": "'Isma of prophets",
+    "parent": "nubuwwa",
+    "children": [],
+    "siblings": [
+      "mujiza",
+      "ijaz-al-quran",
+      "khatm-al-nubuwwa",
+      "ismah"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid",
+      "adl"
+    ]
+  },
+  "khilafa": {
+    "label": "Khilafa (caliphate as theological office)",
+    "parent": "imama-sunni",
+    "children": [
+      "nass-designation",
+      "quraysh-condition",
+      "bayah",
+      "shura"
+    ],
+    "siblings": [
+      "imama-shia",
+      "imama-sunni",
+      "khariji-imamate",
+      "zaydi-imamate",
+      "ismaili-imamate"
+    ],
+    "opposite": null,
+    "related": [
+      "ahl-al-hall-wal-aqd",
+      "nasiha",
+      "siyasa-shariyya",
+      "ulama-state"
+    ]
+  },
+  "wajib-al-wujud": {
+    "label": "Wajib al-wujud (necessary existence)",
+    "parent": null,
+    "children": [
+      "essence-existence-distinction",
+      "asalat-al-wujud",
+      "asalat-al-mahiyya",
+      "tashkik-al-wujud"
+    ],
+    "siblings": [
+      "mumkin-al-wujud",
+      "hudus-al-alam",
+      "dalil-al-huduth",
+      "wujub-al-wujud",
+      "divine-simplicity",
+      "tawhid"
+    ],
+    "opposite": "mumkin-al-wujud",
+    "related": [
+      "basit-al-haqiqa",
+      "fayd",
+      "causality-falsafa"
+    ]
+  },
+  "mumkin-al-wujud": {
+    "label": "Mumkin al-wujud (contingent existence)",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "wajib-al-wujud",
+      "essence-existence-distinction",
+      "asalat-al-wujud",
+      "asalat-al-mahiyya",
+      "tashkik-al-wujud"
+    ],
+    "opposite": "wajib-al-wujud",
+    "related": [
+      "hudus-al-alam",
+      "dalil-al-huduth",
+      "causality-falsafa",
+      "tawhid-al-wujud"
+    ]
+  },
+  "essence-existence-distinction": {
+    "label": "Distinction of essence and existence",
+    "parent": null,
+    "children": [
+      "asalat-al-wujud",
+      "asalat-al-mahiyya",
+      "tashkik-al-wujud"
+    ],
+    "siblings": [
+      "wujub-al-wujud",
+      "mumkin-al-wujud",
+      "divine-simplicity",
+      "hudus-al-alam",
+      "qidam-al-alam"
+    ],
+    "opposite": null,
+    "related": [
+      "basit-al-haqiqa",
+      "wujub-al-wujud",
+      "tawhid-al-wujud"
+    ]
+  },
+  "asalat-al-wujud": {
+    "label": "Asalat al-wujud (primacy of existence)",
+    "parent": null,
+    "children": [
+      "tashkik-al-wujud",
+      "essence-existence-distinction",
+      "wujub-al-wujud"
+    ],
+    "siblings": [
+      "asalat-al-mahiyya",
+      "divine-simplicity",
+      "ittihad-aqil-maqul",
+      "tawhid-al-wujud",
+      "ten-intellects"
+    ],
+    "opposite": "asalat-al-mahiyya",
+    "related": [
+      "mumkin-al-wujud",
+      "wajib-al-wujud",
+      "basit-al-haqiqa"
+    ]
+  },
+  "asalat-al-mahiyya": {
+    "label": "Asalat al-mahiyya (primacy of essence)",
+    "parent": "essence-existence-distinction",
+    "children": [],
+    "siblings": [
+      "asalat-al-wujud",
+      "tashkik-al-wujud",
+      "wujub-al-wujud",
+      "mumkin-al-wujud"
+    ],
+    "opposite": "asalat-al-wujud",
+    "related": [
+      "hikmat-ishraq",
+      "ayan-thabita",
+      "tawhid-al-wujud"
+    ]
+  },
+  "tashkik-al-wujud": {
+    "label": "Tashkik al-wujud (gradation of being)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "wujub-al-wujud",
+      "mumkin-al-wujud",
+      "essence-existence-distinction",
+      "asalat-al-wujud",
+      "asalat-al-mahiyya"
+    ],
+    "opposite": "asalat-al-mahiyya",
+    "related": [
+      "tawhid-al-wujud",
+      "divine-simplicity",
+      "basit-al-haqiqa"
+    ]
+  },
+  "harakat-jawhariyya": {
+    "label": "Harakat jawhariyya (substantial motion)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "khalq-jadid",
+      "tajalli",
+      "essence-existence-distinction",
+      "asalat-al-wujud",
+      "tashkik-al-wujud"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid-al-wujud",
+      "wujub-al-wujud",
+      "fayd",
+      "occasionalism"
+    ]
+  },
+  "ittihad-aqil-maqul": {
+    "label": "Ittihad al-'aqil wa'l-ma'qul (unity of intellect and intelligible)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "aql-faal",
+      "ten-intellects",
+      "fayd",
+      "unity-of-intellect",
+      "intellect-stages"
+    ],
+    "opposite": null,
+    "related": [
+      "ittihad",
+      "fana",
+      "tawhid-al-wujud",
+      "ilm-huduri"
+    ]
+  },
+  "aql-faal": {
+    "label": "Aql fa'al (active intellect)",
+    "parent": "ten-intellects",
+    "children": [],
+    "siblings": [
+      "first-intellect",
+      "intellect-stages",
+      "ittihad-aqil-maqul"
+    ],
+    "opposite": null,
+    "related": [
+      "fayd",
+      "taklif",
+      "prophetic-imagination",
+      "ilm-huduri"
+    ]
+  },
+  "ten-intellects": {
+    "label": "Emanation of ten intellects",
+    "parent": "falsafa-shariah",
+    "children": [
+      "aql-faal",
+      "first-intellect",
+      "fayd"
+    ],
+    "siblings": [
+      "ikhwan-cosmology",
+      "al-asma-wal-sifat",
+      "asbab-al-nuzul-cosmic",
+      "divine-simplicity"
+    ],
+    "opposite": null,
+    "related": [
+      "aql-faal",
+      "asbab-al-mutawassita",
+      "causality-falsafa",
+      "harakat-jawhariyya"
+    ]
+  },
+  "fayd": {
+    "label": "Fayd (emanation)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "first-intellect",
+      "ten-intellects",
+      "aql-faal"
+    ],
+    "siblings": [
+      "wujub-al-wujud",
+      "tawhid-al-wujud",
+      "hudus-dahri",
+      "ibda",
+      "causality-falsafa"
+    ],
+    "opposite": "ibda",
+    "related": [
+      "al-asma-wal-sifat",
+      "tajalli",
+      "khalq-jadid",
+      "ayan-thabita"
+    ]
+  },
+  "hudus-dahri": {
+    "label": "Huduth dahri (atemporal origination)",
+    "parent": "hudus-al-alam",
+    "children": [],
+    "siblings": [
+      "qidam-al-alam",
+      "dalil-al-huduth",
+      "hudus-al-alam"
+    ],
+    "opposite": "qidam-al-alam",
+    "related": [
+      "wujub-al-wujud",
+      "tawhid-al-wujud",
+      "fayd",
+      "ten-intellects"
+    ]
+  },
+  "tahafut": {
+    "label": "Critique of philosophers (tahafut)",
+    "parent": "tafkir-aqli",
+    "children": [
+      "qidam-al-alam",
+      "mead-jismani",
+      "divine-knowledge-particulars",
+      "ruyat-allah"
+    ],
+    "siblings": [
+      "falsafa-shariah",
+      "double-truth",
+      "natural-theology",
+      "causality-falsafa"
+    ],
+    "opposite": "falsafa-shariah",
+    "related": [
+      "hudus-al-alam",
+      "kalam-allah",
+      "khalq-al-quran",
+      "ten-intellects"
+    ]
+  },
+  "divine-knowledge-particulars": {
+    "label": "God's knowledge of particulars",
+    "parent": "tafkir-aqli",
+    "children": [],
+    "siblings": [
+      "divine-simplicity",
+      "wujub-al-wujud",
+      "essence-existence-distinction",
+      "causality-falsafa",
+      "tawhid"
+    ],
+    "opposite": null,
+    "related": [
+      "providence-inaya",
+      "qadar",
+      "khalq-al-afal",
+      "tahafut"
+    ]
+  },
+  "causality-falsafa": {
+    "label": "Necessary causation",
+    "parent": "falsafa-shariah",
+    "children": [
+      "asbab-al-mutawassita",
+      "sababiyya",
+      "wujub-al-wujud"
+    ],
+    "siblings": [
+      "occasionalism",
+      "divine-knowledge-particulars",
+      "hudus-al-alam",
+      "qidam-al-alam"
+    ],
+    "opposite": "occasionalism",
+    "related": [
+      "khalq-al-afal",
+      "qadar",
+      "naturalism-tabi",
+      "divine-simplicity"
+    ]
+  },
+  "hyle-sura": {
+    "label": "Hayula and sura (matter and form)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "jawhar-arad",
+      "categories-maqulat",
+      "natural-place",
+      "universals-kulli"
+    ],
+    "opposite": null,
+    "related": [
+      "atomism-kalam",
+      "essence-existence-distinction",
+      "harakat-jawhariyya"
+    ]
+  },
+  "jawhar-arad": {
+    "label": "Jawhar and 'arad (substance and accident)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "categories-maqulat",
+      "hyle-sura",
+      "universals-kulli",
+      "essence-existence-distinction",
+      "itibariyyat"
+    ],
+    "opposite": null,
+    "related": [
+      "atomism-kalam",
+      "occasionalism",
+      "divine-attributes",
+      "sifa-fil"
+    ]
+  },
+  "categories-maqulat": {
+    "label": "Maqulat (the ten categories)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "jawhar-arad",
+      "universals-kulli",
+      "natural-place",
+      "zaman",
+      "makan"
+    ],
+    "siblings": [
+      "hyle-sura",
+      "causality-falsafa",
+      "five-arts",
+      "isagoge-five",
+      "modal-logic"
+    ],
+    "opposite": null,
+    "related": [
+      "itibariyyat",
+      "tasawwur-tasdiq",
+      "dalala"
+    ]
+  },
+  "universals-kulli": {
+    "label": "Kulli (universals)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "itibariyyat",
+      "mushtarak",
+      "taraduf",
+      "addad"
+    ],
+    "siblings": [
+      "categories-maqulat",
+      "jawhar-arad",
+      "hyle-sura",
+      "ittihad-aqil-maqul",
+      "wujub-al-wujud"
+    ],
+    "opposite": null,
+    "related": [
+      "tasawwur-tasdiq",
+      "dalala",
+      "haqiqa-majaz-linguistic",
+      "logic-vs-grammar"
+    ]
+  },
+  "natural-place": {
+    "label": "Natural place and motion",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "void-khala",
+      "makan",
+      "zaman",
+      "mayl",
+      "causality-falsafa"
+    ],
+    "opposite": null,
+    "related": [
+      "hyle-sura",
+      "jawhar-arad",
+      "naturalism-tabi"
+    ]
+  },
+  "mayl": {
+    "label": "Mayl (impressed inclination)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "dynamics-mayl",
+      "specific-gravity",
+      "balance-wisdom",
+      "natural-place"
+    ],
+    "opposite": null,
+    "related": [
+      "occasionalism",
+      "sababiyya",
+      "naturalism-tabi",
+      "khalq-jadid"
+    ]
+  },
+  "void-khala": {
+    "label": "Khala' (the void)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "makan",
+      "zaman",
+      "natural-place",
+      "atomism-kalam",
+      "infinity-falsafa"
+    ],
+    "opposite": "makan",
+    "related": [
+      "occasionalism",
+      "causality-falsafa",
+      "hudus-al-alam"
+    ]
+  },
+  "zaman": {
+    "label": "Zaman (time)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "makan",
+      "void-khala",
+      "zaman",
+      "natural-place",
+      "infinity-falsafa",
+      "mayl"
+    ],
+    "opposite": null,
+    "related": [
+      "khalq-jadid",
+      "hudus-al-alam",
+      "qidam-al-alam",
+      "occasionalism"
+    ]
+  },
+  "makan": {
+    "label": "Makan (place)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "zaman",
+      "void-khala",
+      "natural-place",
+      "makan"
+    ],
+    "opposite": null,
+    "related": [
+      "naturalism-tabi",
+      "categories-maqulat",
+      "hyle-sura"
+    ]
+  },
+  "infinity-falsafa": {
+    "label": "Actual and potential infinity",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "hudus-al-alam",
+      "qidam-al-alam",
+      "dalil-al-huduth",
+      "causality-falsafa",
+      "asbab-al-mutawassita"
+    ],
+    "opposite": null,
+    "related": [
+      "wujub-al-wujud",
+      "mumkin-al-wujud",
+      "essence-existence-distinction",
+      "ten-intellects"
+    ]
+  },
+  "nafs": {
+    "label": "Nafs (the soul)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "nafs-ammara",
+      "ruh",
+      "intellect-stages",
+      "immortality-soul"
+    ],
+    "siblings": [
+      "aql-faal",
+      "alam-al-mithal",
+      "hyle-sura",
+      "jawhar-arad"
+    ],
+    "opposite": null,
+    "related": [
+      "floating-man",
+      "practical-intellect",
+      "unity-of-intellect",
+      "tibb-ruhani"
+    ]
+  },
+  "floating-man": {
+    "label": "Floating man argument",
+    "parent": "nafs",
+    "children": [],
+    "siblings": [
+      "intellect-stages",
+      "immortality-soul",
+      "unity-of-intellect",
+      "ittihad-aqil-maqul"
+    ],
+    "opposite": null,
+    "related": [
+      "intellect-stages",
+      "maad-jismani-falsafa"
+    ]
+  },
+  "intellect-stages": {
+    "label": "Stages of human intellect",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "aql-faal",
+      "ittihad-aqil-maqul",
+      "unity-of-intellect",
+      "immortality-soul",
+      "nafs"
+    ],
+    "opposite": null,
+    "related": [
+      "floating-man",
+      "ten-intellects",
+      "practical-intellect",
+      "ilm-huduri"
+    ]
+  },
+  "unity-of-intellect": {
+    "label": "Unity of the intellect",
+    "parent": "intellect-stages",
+    "children": [],
+    "siblings": [
+      "aql-faal",
+      "ten-intellects",
+      "ittihad-aqil-maqul",
+      "fayd",
+      "immortality-soul"
+    ],
+    "opposite": null,
+    "related": [
+      "nafs",
+      "falsafa-shariah",
+      "tahafut",
+      "divine-knowledge-particulars"
+    ]
+  },
+  "immortality-soul": {
+    "label": "Immortality of the rational soul",
+    "parent": "falsafa-shariah",
+    "children": [
+      "nafs",
+      "intellect-stages",
+      "unity-of-intellect",
+      "maad-jismani-falsafa"
+    ],
+    "siblings": [
+      "floating-man",
+      "alam-al-mithal",
+      "tadbir-al-mutawahhid"
+    ],
+    "opposite": null,
+    "related": [
+      "barzakh",
+      "al-insan-al-kamil",
+      "ilm-huduri"
+    ]
+  },
+  "maad-jismani-falsafa": {
+    "label": "Bodily resurrection in falsafa",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "mead-jismani",
+      "hudus-al-alam",
+      "qidam-al-alam"
+    ],
+    "opposite": null,
+    "related": [
+      "immortality-soul",
+      "nafs",
+      "hashr",
+      "hyle-sura"
+    ]
+  },
+  "alam-al-mithal": {
+    "label": "'Alam al-mithal (imaginal world)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "khayal",
+      "ruya-sadiqa",
+      "prophetic-imagination"
+    ],
+    "siblings": [
+      "alam-mithal",
+      "hyle-sura",
+      "ten-intellects"
+    ],
+    "opposite": null,
+    "related": [
+      "tajalli",
+      "kashf",
+      "isra-miraj",
+      "hikmat-ishraq"
+    ]
+  },
+  "hads": {
+    "label": "Hads (intuition)",
+    "parent": "intellect-stages",
+    "children": [],
+    "siblings": [
+      "ilm-huduri",
+      "ilm-husuli",
+      "burhan",
+      "qiyas-mantiqi",
+      "ittihad-aqil-maqul"
+    ],
+    "opposite": "qiyas-mantiqi",
+    "related": [
+      "aql-faal",
+      "floating-man",
+      "prophetic-imagination",
+      "ilham"
+    ]
+  },
+  "prophetic-imagination": {
+    "label": "Prophetic imagination",
+    "parent": "intellect-stages",
+    "children": [],
+    "siblings": [
+      "hads",
+      "ilm-huduri",
+      "kashf",
+      "ilham",
+      "firasa"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "mujiza",
+      "ismah",
+      "alam-al-mithal",
+      "khayal"
+    ]
+  },
+  "hikmat-ishraq": {
+    "label": "Hikmat al-ishraq (illuminationist wisdom)",
+    "parent": null,
+    "children": [
+      "tajalli",
+      "nur-muhammadi",
+      "alam-al-mithal",
+      "ilm-huduri"
+    ],
+    "siblings": [
+      "tahafut",
+      "natural-theology",
+      "hikmat-ishraq",
+      "tawhid-al-wujud",
+      "ten-intellects"
+    ],
+    "opposite": null,
+    "related": [
+      "ayan-thabita",
+      "intellect-stages",
+      "prophetic-imagination",
+      "khalq-jadid"
+    ]
+  },
+  "ilm-huduri": {
+    "label": "Ilm huduri (knowledge by presence)",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "ilm-husuli",
+      "ittihad-aqil-maqul",
+      "hads",
+      "burhan"
+    ],
+    "opposite": "ilm-husuli",
+    "related": [
+      "nafs",
+      "floating-man",
+      "intellect-stages",
+      "ittihad-aqil-maqul"
+    ]
+  },
+  "ilm-husuli": {
+    "label": "Ilm husuli (acquired knowledge)",
+    "parent": "maarifa",
+    "children": [],
+    "siblings": [
+      "ilm-huduri",
+      "burhan",
+      "tasawwur-tasdiq"
+    ],
+    "opposite": "ilm-huduri",
+    "related": [
+      "intellect-stages",
+      "aql-faal",
+      "ittihad-aqil-maqul"
+    ]
+  },
+  "burhan": {
+    "label": "Burhan (demonstration)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "qiyas-mantiqi",
+      "hypothetical-syllogism"
+    ],
+    "siblings": [
+      "qiyas-mantiqi",
+      "hypothetical-syllogism",
+      "modal-logic",
+      "tasawwur-tasdiq",
+      "five-arts"
+    ],
+    "opposite": null,
+    "related": [
+      "five-arts",
+      "ittihad-aqil-maqul",
+      "ilm-huduri"
+    ]
+  },
+  "qiyas-mantiqi": {
+    "label": "Qiyas (logical syllogism)",
+    "parent": "five-arts",
+    "children": [
+      "hypothetical-syllogism",
+      "modal-logic"
+    ],
+    "siblings": [
+      "burhan",
+      "five-arts",
+      "isagoge-five",
+      "tasawwur-tasdiq"
+    ],
+    "opposite": null,
+    "related": [
+      "mantiq-lugha",
+      "logic-vs-grammar",
+      "tafkir-aqli"
+    ]
+  },
+  "hypothetical-syllogism": {
+    "label": "Hypothetical and disjunctive syllogism",
+    "parent": "mantiq-lugha",
+    "children": [],
+    "siblings": [
+      "qiyas-mantiqi",
+      "burhan",
+      "modal-logic",
+      "five-arts",
+      "isagoge-five"
+    ],
+    "opposite": null,
+    "related": [
+      "tasawwur-tasdiq",
+      "logic-vs-grammar",
+      "tafkir-aqli"
+    ]
+  },
+  "modal-logic": {
+    "label": "Modal logic in falsafa",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "qiyas-mantiqi",
+      "hypothetical-syllogism",
+      "burhan",
+      "five-arts",
+      "isagoge-five"
+    ],
+    "opposite": null,
+    "related": [
+      "wujub-al-wujud",
+      "mumkin-al-wujud",
+      "hudus-al-alam",
+      "qidam-al-alam"
+    ]
+  },
+  "five-arts": {
+    "label": "Five arts of logic",
+    "parent": "mantiq-lugha",
+    "children": [
+      "burhan",
+      "qiyas-mantiqi",
+      "hypothetical-syllogism"
+    ],
+    "siblings": [
+      "modal-logic",
+      "isagoge-five",
+      "tasawwur-tasdiq"
+    ],
+    "opposite": null,
+    "related": [
+      "tafkir-aqli",
+      "logic-vs-grammar",
+      "naqd-mantiq"
+    ]
+  },
+  "isagoge-five": {
+    "label": "Five predicables",
+    "parent": "five-arts",
+    "children": [],
+    "siblings": [
+      "five-arts",
+      "tasawwur-tasdiq",
+      "burhan",
+      "qiyas-mantiqi",
+      "hypothetical-syllogism"
+    ],
+    "opposite": null,
+    "related": [
+      "categories-maqulat",
+      "universals-kulli",
+      "haqiqa-majaz",
+      "amm-khass"
+    ]
+  },
+  "tasawwur-tasdiq": {
+    "label": "Tasawwur and tasdiq (conception and assent)",
+    "parent": "tafkir-aqli",
+    "children": [],
+    "siblings": [
+      "burhan",
+      "qiyas-mantiqi",
+      "modal-logic",
+      "five-arts",
+      "isagoge-five"
+    ],
+    "opposite": null,
+    "related": [
+      "ilm-huduri",
+      "ilm-husuli",
+      "maarifa",
+      "hads"
+    ]
+  },
+  "good-and-evil-falsafa": {
+    "label": "Privation theory of evil",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "happiness-saada",
+      "natural-theology",
+      "virtuous-city",
+      "providence-inaya",
+      "causality-falsafa"
+    ],
+    "opposite": null,
+    "related": [
+      "adl",
+      "husn-wa-qubh",
+      "tawhid",
+      "divine-attributes"
+    ]
+  },
+  "providence-inaya": {
+    "label": "Inaya (divine providence)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "al-aslah",
+      "lutf",
+      "adl"
+    ],
+    "siblings": [
+      "happiness-saada",
+      "divine-knowledge-particulars",
+      "causality-falsafa",
+      "wujub-al-wujud"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "qadar",
+      "khalq-al-afal",
+      "tawhid"
+    ]
+  },
+  "happiness-saada": {
+    "label": "Sa'ada (ultimate happiness)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "virtuous-city",
+      "practical-intellect",
+      "ittihad-aqil-maqul",
+      "immortality-soul"
+    ],
+    "siblings": [
+      "natural-theology",
+      "siyasa-madaniyya",
+      "tadbir-al-mutawahhid",
+      "good-and-evil-falsafa",
+      "providence-inaya"
+    ],
+    "opposite": null,
+    "related": [
+      "aql-faal",
+      "intellect-stages",
+      "maarifa",
+      "ihsan"
+    ]
+  },
+  "virtuous-city": {
+    "label": "Al-madina al-fadila (virtuous city)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "philosopher-king",
+      "madina-fadila"
+    ],
+    "siblings": [
+      "siyasa-madaniyya",
+      "happiness-saada",
+      "natural-theology",
+      "circle-of-justice"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "adl-political",
+      "akhlaq-adab-genre",
+      "tadbir-al-mutawahhid"
+    ]
+  },
+  "tadbir-al-mutawahhid": {
+    "label": "Governance of the solitary",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "natural-theology",
+      "virtuous-city",
+      "philosopher-king",
+      "happiness-saada"
+    ],
+    "opposite": "virtuous-city",
+    "related": [
+      "madina-fadila",
+      "siyasa-madaniyya",
+      "ihsan",
+      "maarifa"
+    ]
+  },
+  "natural-theology": {
+    "label": "Hayy ibn Yaqzan thought experiment",
+    "parent": "falsafa-shariah",
+    "children": [
+      "floating-man",
+      "happiness-saada",
+      "virtuous-city"
+    ],
+    "siblings": [
+      "tahafut",
+      "ittihad-aqil-maqul",
+      "ten-intellects",
+      "fayd"
+    ],
+    "opposite": null,
+    "related": [
+      "aql-faal",
+      "practical-intellect",
+      "maarifa",
+      "tafkir-aqli"
+    ]
+  },
+  "falsafa-shariah": {
+    "label": "Harmony of philosophy and revelation",
+    "parent": null,
+    "children": [
+      "double-truth",
+      "falsafa-shariah",
+      "tahafut",
+      "ismaili-tawil"
+    ],
+    "siblings": [
+      "tafkir-aqli",
+      "sam-and-aql",
+      "qanun-al-tawil",
+      "tawil",
+      "tafsir-lughawi"
+    ],
+    "opposite": "tahafut",
+    "related": [
+      "natural-theology",
+      "divine-knowledge-particulars",
+      "maarifa",
+      "burhan"
+    ]
+  },
+  "double-truth": {
+    "label": "Double truth (attributed)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "falsafa-shariah",
+      "tahafut",
+      "qanun-al-tawil"
+    ],
+    "opposite": "falsafa-shariah",
+    "related": [
+      "tawil",
+      "tafsir-ishari",
+      "batin-zahir",
+      "shariah-tariqah-haqiqah"
+    ]
+  },
+  "ikhwan-cosmology": {
+    "label": "Numerical cosmology of the Brethren",
+    "parent": "falsafa-shariah",
+    "children": [
+      "asbab-al-nuzul-cosmic",
+      "ten-intellects",
+      "fayd"
+    ],
+    "siblings": [
+      "natural-theology",
+      "tahafut",
+      "hikmat-ishraq",
+      "tawhid-al-wujud",
+      "al-insan-al-kamil"
+    ],
+    "opposite": null,
+    "related": [
+      "wujub-al-wujud",
+      "hudus-al-alam",
+      "universals-kulli",
+      "divine-simplicity"
+    ]
+  },
+  "ismaili-tawil": {
+    "label": "Isma'ili philosophical ta'wil",
+    "parent": "tawil",
+    "children": [],
+    "siblings": [
+      "tafsir-ishari",
+      "batin-zahir",
+      "science-of-letters",
+      "jafr"
+    ],
+    "opposite": null,
+    "related": [
+      "fayd",
+      "ten-intellects",
+      "aql-faal",
+      "ismaili-imamate"
+    ]
+  },
+  "ibda": {
+    "label": "Ibda' (ex nihilo origination)",
+    "parent": "tawhid",
+    "children": [],
+    "siblings": [
+      "hudus-al-alam",
+      "qidam-al-alam",
+      "dalil-al-huduth",
+      "wujub-al-wujud",
+      "fayd"
+    ],
+    "opposite": "qidam-al-alam",
+    "related": [
+      "first-intellect",
+      "ismaili-tawil",
+      "ismaili-imamate",
+      "tawhid-al-wujud"
+    ]
+  },
+  "first-intellect": {
+    "label": "Aql awwal (first intellect)",
+    "parent": "fayd",
+    "children": [
+      "aql-faal",
+      "ten-intellects"
+    ],
+    "siblings": [
+      "ibda",
+      "wujub-al-wujud",
+      "asbab-al-mutawassita"
+    ],
+    "opposite": null,
+    "related": [
+      "haqiqa-muhammadiyya",
+      "ayan-thabita"
+    ]
+  },
+  "transmigration-tanasukh": {
+    "label": "Tanasukh (transmigration)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "maad-jismani-falsafa",
+      "immortality-soul",
+      "nafs",
+      "alam-al-mithal",
+      "five-eternals"
+    ],
+    "opposite": "mead-jismani",
+    "related": [
+      "nafs",
+      "alam-mithal",
+      "falsafa-shariah",
+      "hulul"
+    ]
+  },
+  "five-eternals": {
+    "label": "Razi's five eternals",
+    "parent": null,
+    "children": [],
+    "siblings": [
+      "wujub-al-wujud",
+      "tawhid-al-wujud",
+      "hudus-al-alam",
+      "qidam-al-alam",
+      "fayd"
+    ],
+    "opposite": "tawhid",
+    "related": [
+      "essence-existence-distinction",
+      "atomism-kalam",
+      "natural-place",
+      "zaman",
+      "makan"
+    ]
+  },
+  "tibb-ruhani": {
+    "label": "Spiritual medicine of the soul",
+    "parent": "tasawwuf",
+    "children": [
+      "tahdhib-akhlaq",
+      "mean-virtue",
+      "muhasaba",
+      "mujahada"
+    ],
+    "siblings": [
+      "ihsan",
+      "zuhd",
+      "wara",
+      "tawba",
+      "maqamat-ahwal"
+    ],
+    "opposite": null,
+    "related": [
+      "nafs-ammara",
+      "taklif",
+      "riyada",
+      "practical-intellect"
+    ]
+  },
+  "tahdhib-akhlaq": {
+    "label": "Tahdhib al-akhlaq (refinement of character)",
+    "parent": "falsafa-shariah",
+    "children": [
+      "mean-virtue",
+      "practical-intellect",
+      "happiness-saada",
+      "virtuous-city"
+    ],
+    "siblings": [
+      "good-and-evil-falsafa",
+      "siyasa-madaniyya",
+      "natural-theology",
+      "tibb-ruhani"
+    ],
+    "opposite": null,
+    "related": [
+      "tasawwuf",
+      "ihsan",
+      "akhlaq-adab-genre",
+      "tadbir-al-mutawahhid"
+    ]
+  },
+  "mean-virtue": {
+    "label": "Doctrine of the mean",
+    "parent": "practical-intellect",
+    "children": [],
+    "siblings": [
+      "virtuous-city",
+      "happiness-saada",
+      "tahdhib-akhlaq",
+      "good-and-evil-falsafa"
+    ],
+    "opposite": null,
+    "related": [
+      "adl",
+      "adab",
+      "ihsan"
+    ]
+  },
+  "practical-intellect": {
+    "label": "Practical intellect",
+    "parent": "intellect-stages",
+    "children": [
+      "siyasa-madaniyya",
+      "tadbir-al-mutawahhid",
+      "virtuous-city"
+    ],
+    "siblings": [
+      "aql-faal",
+      "ittihad-aqil-maqul",
+      "ilm-huduri",
+      "ilm-husuli"
+    ],
+    "opposite": null,
+    "related": [
+      "maarifa",
+      "hikmat-ishraq",
+      "falsafa-shariah"
+    ]
+  },
+  "siyasa-madaniyya": {
+    "label": "Siyasa madaniyya (political science)",
+    "parent": null,
+    "children": [
+      "philosopher-king",
+      "virtuous-city",
+      "madina-fadila",
+      "happiness-saada",
+      "circle-of-justice"
+    ],
+    "siblings": [
+      "natural-theology",
+      "falsafa-shariah",
+      "practical-intellect",
+      "good-and-evil-falsafa",
+      "providence-inaya"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "adl-political",
+      "usul-al-fiqh",
+      "maqasid-al-shariah"
+    ]
+  },
+  "asbab-al-nuzul-cosmic": {
+    "label": "Celestial spheres causation",
+    "parent": "cosmology-falak",
+    "children": [
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "hayaa",
+      "homocentric-andalusi"
+    ],
+    "siblings": [
+      "occasionalism",
+      "sababiyya",
+      "asbab-al-mutawassita",
+      "naturalism-tabi",
+      "khalq-jadid"
+    ],
+    "opposite": "occasionalism",
+    "related": [
+      "divine-simplicity",
+      "tawhid",
+      "causality-falsafa",
+      "ten-intellects"
+    ]
+  },
+  "asbab-al-mutawassita": {
+    "label": "Intermediate causes",
+    "parent": "sababiyya",
+    "children": [],
+    "siblings": [
+      "sababiyya",
+      "occasionalism",
+      "asbab-al-nuzul-cosmic",
+      "causality-falsafa",
+      "fayd"
+    ],
+    "opposite": "occasionalism",
+    "related": [
+      "wujub-al-wujud",
+      "khalq-jadid",
+      "divine-simplicity"
+    ]
+  },
+  "divine-simplicity": {
+    "label": "Divine simplicity",
+    "parent": "wujub-al-wujud",
+    "children": [
+      "basit-al-haqiqa",
+      "essence-existence-distinction",
+      "divine-attributes"
+    ],
+    "siblings": [
+      "wujub-al-wujud",
+      "tawhid-al-wujud",
+      "ten-intellects",
+      "ittihad-aqil-maqul"
+    ],
+    "opposite": "atomism-kalam",
+    "related": [
+      "tawhid",
+      "itibariyyat",
+      "asalat-al-wujud"
+    ]
+  },
+  "basit-al-haqiqa": {
+    "label": "Basit al-haqiqa (the simple reality)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "wujub-al-wujud",
+      "divine-simplicity",
+      "tawhid-al-wujud",
+      "essence-existence-distinction",
+      "asalat-al-wujud"
+    ],
+    "opposite": null,
+    "related": [
+      "al-insan-al-kamil",
+      "tajalli",
+      "haqiqa-muhammadiyya",
+      "fayd"
+    ]
+  },
+  "itibariyyat": {
+    "label": "I'tibariyyat (mental constructs)",
+    "parent": "falsafa-shariah",
+    "children": [],
+    "siblings": [
+      "divine-simplicity",
+      "basit-al-haqiqa",
+      "essence-existence-distinction",
+      "jawhar-arad",
+      "categories-maqulat"
+    ],
+    "opposite": null,
+    "related": [
+      "universals-kulli",
+      "hyle-sura",
+      "ittihad-aqil-maqul",
+      "tasawwur-tasdiq"
+    ]
+  },
+  "naqd-mantiq": {
+    "label": "Critique of Aristotelian logic",
+    "parent": "falsafa-shariah",
+    "children": [
+      "qiyas-mantiqi",
+      "hypothetical-syllogism",
+      "modal-logic",
+      "categories-maqulat",
+      "five-arts"
+    ],
+    "siblings": [
+      "tahafut",
+      "tafkir-aqli",
+      "logic-vs-grammar",
+      "mantiq-lugha"
+    ],
+    "opposite": null,
+    "related": [
+      "burhan",
+      "tasawwur-tasdiq",
+      "universals-kulli"
+    ]
+  },
+  "usul-al-fiqh": {
+    "label": "Usul al-fiqh (legal theory)",
+    "parent": null,
+    "children": [
+      "qiyas",
+      "ijma",
+      "istihsan",
+      "istislah",
+      "maqasid-al-shariah"
+    ],
+    "siblings": [
+      "ijtihad",
+      "taqlid",
+      "fatwa",
+      "qada"
+    ],
+    "opposite": null,
+    "related": [
+      "amm-khass",
+      "naskh",
+      "takhsis",
+      "hukm-shari"
+    ]
+  },
+  "ijtihad": {
+    "label": "Ijtihad (independent legal reasoning)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "qiyas",
+      "istihsan",
+      "istislah",
+      "takhrij-al-manat"
+    ],
+    "siblings": [
+      "taqlid",
+      "ijma",
+      "khabar-wahid",
+      "mutawatir",
+      "qawl-sahabi"
+    ],
+    "opposite": "taqlid",
+    "related": [
+      "closing-gate-ijtihad",
+      "maqasid-al-shariah",
+      "illa",
+      "fatwa"
+    ]
+  },
+  "taqlid": {
+    "label": "Taqlid (following authority)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "closing-gate-ijtihad",
+      "taqlid-in-aqida"
+    ],
+    "siblings": [
+      "ijtihad",
+      "qiyas",
+      "ijma",
+      "istihsan",
+      "istislah"
+    ],
+    "opposite": "ijtihad",
+    "related": [
+      "takhayyur",
+      "talfiq",
+      "fatwa",
+      "ikhtilaf"
+    ]
+  },
+  "closing-gate-ijtihad": {
+    "label": "Closing of the gate of ijtihad",
+    "parent": "ijtihad",
+    "children": [],
+    "siblings": [
+      "taqlid",
+      "ikhtilaf",
+      "takhayyur",
+      "talfiq"
+    ],
+    "opposite": "ijtihad",
+    "related": [
+      "closing-gate-ijtihad",
+      "usul-al-fiqh",
+      "maqasid-al-shariah"
+    ]
+  },
+  "qiyas": {
+    "label": "Qiyas (analogical reasoning)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "illa",
+      "takhrij-al-manat",
+      "qiyas-mantiqi"
+    ],
+    "siblings": [
+      "ijma",
+      "istihsan",
+      "istislah",
+      "khabar-wahid",
+      "mutawatir"
+    ],
+    "opposite": "taqlid",
+    "related": [
+      "ijtihad",
+      "maqasid-al-shariah",
+      "asbab-al-mutawassita"
+    ]
+  },
+  "illa": {
+    "label": "'Illa (effective cause)",
+    "parent": "qiyas",
+    "children": [
+      "takhrij-al-manat",
+      "illa-nahwiyya"
+    ],
+    "siblings": [
+      "qiyas",
+      "ijma",
+      "istihsan",
+      "istislah",
+      "maqasid-al-shariah"
+    ],
+    "opposite": null,
+    "related": [
+      "sababiyya",
+      "causality-falsafa",
+      "asbab-al-mutawassita"
+    ]
+  },
+  "takhrij-al-manat": {
+    "label": "Takhrij, tanqih, tahqiq al-manat",
+    "parent": "illa",
+    "children": [],
+    "siblings": [
+      "qiyas",
+      "istihsan",
+      "istislah",
+      "sadd-al-dharai",
+      "fath-al-dharai"
+    ],
+    "opposite": null,
+    "related": [
+      "usul-al-fiqh",
+      "ijtihad",
+      "maqasid-al-shariah",
+      "taarud-tarjih"
+    ]
+  },
+  "ijma": {
+    "label": "Ijma' (scholarly consensus)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "ijma-sukuti",
+      "ijma-ahl-bayt"
+    ],
+    "siblings": [
+      "qiyas",
+      "illa",
+      "khabar-wahid",
+      "mutawatir",
+      "amal-ahl-medina",
+      "qawl-sahabi"
+    ],
+    "opposite": "ikhtilaf",
+    "related": [
+      "taqlid",
+      "ijtihad",
+      "maqasid-al-shariah"
+    ]
+  },
+  "ijma-sukuti": {
+    "label": "Ijma' sukuti (tacit consensus)",
+    "parent": "ijma",
+    "children": [],
+    "siblings": [
+      "ijma-ahl-bayt",
+      "qawl-sahabi",
+      "amal-ahl-medina",
+      "mutawatir",
+      "khabar-wahid"
+    ],
+    "opposite": null,
+    "related": [
+      "ijma",
+      "ijtihad",
+      "taqlid",
+      "ikhtilaf"
+    ]
+  },
+  "ijma-ahl-bayt": {
+    "label": "Ijma' of the Ahl al-Bayt",
+    "parent": "ijma",
+    "children": [],
+    "siblings": [
+      "ijma-sukuti",
+      "amal-ahl-medina",
+      "qawl-sahabi"
+    ],
+    "opposite": null,
+    "related": [
+      "ismah",
+      "imamate-shia",
+      "nass",
+      "walaya-shia"
+    ]
+  },
+  "khabar-wahid": {
+    "label": "Khabar al-wahid (solitary report)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "mutawatir",
+      "ijma",
+      "qiyas",
+      "amal-ahl-medina",
+      "qawl-sahabi"
+    ],
+    "opposite": "mutawatir",
+    "related": [
+      "hadith-as-grammatical-evidence",
+      "taqlid",
+      "ijtihad"
+    ]
+  },
+  "mutawatir": {
+    "label": "Mutawatir reports",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "khabar-wahid",
+      "ijma",
+      "qiyas",
+      "amal-ahl-medina",
+      "qawl-sahabi"
+    ],
+    "opposite": "khabar-wahid",
+    "related": [
+      "ijma-sukuti",
+      "nass-zahir",
+      "burhan"
+    ]
+  },
+  "amal-ahl-medina": {
+    "label": "Amal ahl al-Madina (practice of Medina)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "qiyas",
+      "ijma",
+      "khabar-wahid",
+      "mutawatir",
+      "qawl-sahabi",
+      "shar-man-qablana"
+    ],
+    "opposite": null,
+    "related": [
+      "taqlid",
+      "ijtihad",
+      "maqasid-al-shariah",
+      "urf"
+    ]
+  },
+  "qawl-sahabi": {
+    "label": "Qawl al-sahabi (companion's opinion)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "amal-ahl-medina",
+      "shar-man-qablana",
+      "ijma",
+      "qiyas",
+      "istihsan"
+    ],
+    "opposite": null,
+    "related": [
+      "taqlid",
+      "ijtihad",
+      "khabar-wahid",
+      "mutawatir"
+    ]
+  },
+  "shar-man-qablana": {
+    "label": "Shar' man qablana (laws of prior prophets)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "qiyas",
+      "illa",
+      "ijma",
+      "istihsan",
+      "istislah",
+      "amal-ahl-medina"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "khatm-al-nubuwwa",
+      "tafsir-lughawi",
+      "maqasid-al-shariah"
+    ]
+  },
+  "istihsan": {
+    "label": "Istihsan (juristic preference)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "qiyas",
+      "ijma",
+      "istislah",
+      "sadd-al-dharai",
+      "fath-al-dharai"
+    ],
+    "opposite": "qiyas",
+    "related": [
+      "maqasid-al-shariah",
+      "darura",
+      "urf"
+    ]
+  },
+  "istislah": {
+    "label": "Istislah / maslaha mursala (unattested public interest)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "qiyas",
+      "ijma",
+      "istihsan",
+      "sadd-al-dharai",
+      "fath-al-dharai"
+    ],
+    "opposite": null,
+    "related": [
+      "maqasid-al-shariah",
+      "daruriyyat-hajiyyat",
+      "mashaqqa",
+      "siyasa-shariyya"
+    ]
+  },
+  "maqasid-al-shariah": {
+    "label": "Maqasid al-shari'a (higher objectives of law)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "daruriyyat-hajiyyat",
+      "sadd-al-dharai",
+      "fath-al-dharai",
+      "istislah"
+    ],
+    "siblings": [
+      "qiyas",
+      "illa",
+      "ijma",
+      "istihsan",
+      "istishab"
+    ],
+    "opposite": null,
+    "related": [
+      "adl",
+      "siyasa-shariyya",
+      "taklif"
+    ]
+  },
+  "daruriyyat-hajiyyat": {
+    "label": "Daruriyyat, hajiyyat, tahsiniyyat",
+    "parent": "maqasid-al-shariah",
+    "children": [],
+    "siblings": [
+      "istislah",
+      "sadd-al-dharai",
+      "fath-al-dharai",
+      "mashaqqa"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "darura",
+      "qawaid-fiqhiyya"
+    ]
+  },
+  "sadd-al-dharai": {
+    "label": "Sadd al-dhara'i' (blocking the means)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "fath-al-dharai",
+      "maqasid-al-shariah",
+      "istislah",
+      "istihsan",
+      "darura"
+    ],
+    "opposite": "fath-al-dharai",
+    "related": [
+      "siyasa-shariyya",
+      "taklif",
+      "hukm-shari"
+    ]
+  },
+  "fath-al-dharai": {
+    "label": "Fath al-dhara'i' (opening the means)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "sadd-al-dharai",
+      "maqasid-al-shariah",
+      "istislah",
+      "istihsan"
+    ],
+    "opposite": "sadd-al-dharai",
+    "related": [
+      "siyasa-shariyya",
+      "taklif",
+      "darura"
+    ]
+  },
+  "urf": {
+    "label": "'Urf (custom)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "qiyas",
+      "ijma",
+      "istihsan",
+      "istislah",
+      "darura"
+    ],
+    "opposite": null,
+    "related": [
+      "maqasid-al-shariah",
+      "taqlid",
+      "ijtihad",
+      "fasaha"
+    ]
+  },
+  "istishab": {
+    "label": "Istishab (presumption of continuity)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "bara-asliyya",
+      "ibaha-asliyya",
+      "qiyas",
+      "istihsan",
+      "istislah"
+    ],
+    "opposite": "naskh",
+    "related": [
+      "hukm-shari",
+      "taklif",
+      "maqasid-al-shariah"
+    ]
+  },
+  "bara-asliyya": {
+    "label": "Bara'a asliyya (original non-liability)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "ibaha-asliyya",
+      "istishab",
+      "darura",
+      "bara-asliyya"
+    ],
+    "opposite": "ibaha-asliyya",
+    "related": [
+      "taklif",
+      "hukm-shari",
+      "qawaid-fiqhiyya"
+    ]
+  },
+  "ibaha-asliyya": {
+    "label": "Ibaha asliyya (presumption of permissibility)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "bara-asliyya",
+      "istishab",
+      "darura",
+      "rukhsa-azima",
+      "qawaid-fiqhiyya"
+    ],
+    "opposite": "bara-asliyya",
+    "related": [
+      "amr-nahy",
+      "hukm-shari",
+      "taklif"
+    ]
+  },
+  "amm-khass": {
+    "label": "Amm and khass (general and particular)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "amm-khass-ling",
+      "takhsis",
+      "mutlaq-muqayyad",
+      "mujmal-mubayyan"
+    ],
+    "siblings": [
+      "nass-zahir",
+      "haqiqa-majaz",
+      "amr-nahy",
+      "naskh",
+      "taarud-tarjih"
+    ],
+    "opposite": null,
+    "related": [
+      "qiyas",
+      "illa",
+      "qawaid-fiqhiyya"
+    ]
+  },
+  "mutlaq-muqayyad": {
+    "label": "Mutlaq and muqayyad (absolute and qualified)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "amm-khass",
+      "mujmal-mubayyan",
+      "nass-zahir",
+      "haqiqa-majaz",
+      "amr-nahy"
+    ],
+    "opposite": null,
+    "related": [
+      "takhsis",
+      "taarud-tarjih",
+      "qanun-al-tawil"
+    ]
+  },
+  "mujmal-mubayyan": {
+    "label": "Mujmal and mubayyan (unclear and clarified)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "nass-zahir",
+      "haqiqa-majaz",
+      "takhsis"
+    ],
+    "opposite": null,
+    "related": [
+      "qanun-al-tawil",
+      "taarud-tarjih",
+      "naskh"
+    ]
+  },
+  "nass-zahir": {
+    "label": "Nass and zahir (explicit and apparent)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "haqiqa-majaz",
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "mujmal-mubayyan"
+    ],
+    "siblings": [
+      "amr-nahy",
+      "naskh",
+      "takhsis",
+      "taarud-tarjih",
+      "qawl-sahabi"
+    ],
+    "opposite": "haqiqa-majaz",
+    "related": [
+      "qanun-al-tawil",
+      "tafsir-lughawi",
+      "dalala",
+      "mantiq-lugha"
+    ]
+  },
+  "haqiqa-majaz": {
+    "label": "Haqiqa and majaz (literal and figurative)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "tawil",
+      "haqiqa-majaz-linguistic",
+      "kinaya",
+      "istiara",
+      "majaz-mursal"
+    ],
+    "siblings": [
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "mujmal-mubayyan",
+      "nass-zahir",
+      "takhsis",
+      "naskh"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran",
+      "tafsir-lughawi",
+      "qanun-al-tawil",
+      "balagha"
+    ]
+  },
+  "amr-nahy": {
+    "label": "Amr and nahy (command and prohibition)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "taklif",
+      "hukm-shari"
+    ],
+    "siblings": [
+      "naskh",
+      "takhsis",
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "haqiqa-majaz",
+      "nass-zahir"
+    ],
+    "opposite": null,
+    "related": [
+      "illa",
+      "qiyas",
+      "taarud-tarjih",
+      "qawaid-fiqhiyya"
+    ]
+  },
+  "naskh": {
+    "label": "Naskh (abrogation)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "takhsis",
+      "taarud-tarjih",
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "mujmal-mubayyan"
+    ],
+    "opposite": null,
+    "related": [
+      "hukm-shari",
+      "qiyas",
+      "ijma",
+      "khabar-wahid"
+    ]
+  },
+  "takhsis": {
+    "label": "Takhsis (specification)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "mujmal-mubayyan",
+      "naskh",
+      "taarud-tarjih"
+    ],
+    "opposite": "amm-khass",
+    "related": [
+      "illa",
+      "qiyas",
+      "takhrij-al-manat"
+    ]
+  },
+  "taarud-tarjih": {
+    "label": "Ta'arud and tarjih (conflict and weighing)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "naskh",
+      "takhsis"
+    ],
+    "siblings": [
+      "qiyas",
+      "illa",
+      "istihsan",
+      "istislah",
+      "ijma",
+      "amm-khass"
+    ],
+    "opposite": null,
+    "related": [
+      "mujmal-mubayyan",
+      "amr-nahy",
+      "qawaid-fiqhiyya"
+    ]
+  },
+  "hukm-shari": {
+    "label": "Al-hukm al-shar'i (legal ruling)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "fard-wajib",
+      "fard-kifaya",
+      "rukhsa-azima",
+      "darura"
+    ],
+    "siblings": [
+      "amr-nahy",
+      "naskh",
+      "takhsis",
+      "taarud-tarjih",
+      "qiyas"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "qawaid-fiqhiyya",
+      "fatwa"
+    ]
+  },
+  "fard-wajib": {
+    "label": "Fard and wajib distinction",
+    "parent": "hukm-shari",
+    "children": [
+      "fard-kifaya"
+    ],
+    "siblings": [
+      "rukhsa-azima",
+      "darura",
+      "amr-nahy",
+      "naskh"
+    ],
+    "opposite": null,
+    "related": [
+      "usul-al-fiqh",
+      "ijtihad",
+      "mutawatir",
+      "khabar-wahid"
+    ]
+  },
+  "fard-kifaya": {
+    "label": "Fard kifaya (collective obligation)",
+    "parent": "taklif",
+    "children": [],
+    "siblings": [
+      "fard-wajib"
+    ],
+    "opposite": "fard-wajib",
+    "related": [
+      "ijma",
+      "ijma-ahl-bayt",
+      "taklif"
+    ]
+  },
+  "rukhsa-azima": {
+    "label": "Rukhsa and 'azima (concession and resolve)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "darura",
+      "mashaqqa",
+      "sadd-al-dharai",
+      "fath-al-dharai",
+      "istihsan"
+    ],
+    "opposite": null,
+    "related": [
+      "maqasid-al-shariah",
+      "taklif",
+      "hukm-shari"
+    ]
+  },
+  "darura": {
+    "label": "Darura (necessity)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "daruriyyat-hajiyyat",
+      "rukhsa-azima",
+      "mashaqqa",
+      "istislah",
+      "sadd-al-dharai"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "hukm-shari",
+      "maqasid-al-shariah"
+    ]
+  },
+  "mashaqqa": {
+    "label": "Mashaqqa tajlib al-taysir (hardship brings ease)",
+    "parent": "qawaid-fiqhiyya",
+    "children": [],
+    "siblings": [
+      "darura",
+      "rukhsa-azima",
+      "maqasid-al-shariah",
+      "istislah",
+      "sadd-al-dharai"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "adl"
+    ]
+  },
+  "qawaid-fiqhiyya": {
+    "label": "Qawa'id fiqhiyya (legal maxims)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "daruriyyat-hajiyyat",
+      "maqasid-al-shariah",
+      "sadd-al-dharai",
+      "fath-al-dharai",
+      "istishab"
+    ],
+    "siblings": [
+      "qiyas",
+      "illa",
+      "ijma",
+      "istihsan",
+      "istislah",
+      "furuq"
+    ],
+    "opposite": null,
+    "related": [
+      "hukm-shari",
+      "taarud-tarjih",
+      "naskh",
+      "takhsis"
+    ]
+  },
+  "furuq": {
+    "label": "Furuq (legal distinctions)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "furuq-lughawiyya"
+    ],
+    "siblings": [
+      "qawaid-fiqhiyya",
+      "ikhtilaf",
+      "takhayyur",
+      "talfiq",
+      "qiyas"
+    ],
+    "opposite": null,
+    "related": [
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "illa"
+    ]
+  },
+  "ikhtilaf": {
+    "label": "Ikhtilaf (juristic disagreement)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "takhayyur",
+      "talfiq"
+    ],
+    "siblings": [
+      "ijma",
+      "qiyas",
+      "istihsan",
+      "istislah",
+      "taqlid"
+    ],
+    "opposite": "ijma",
+    "related": [
+      "maqasid-al-shariah",
+      "taarud-tarjih",
+      "closing-gate-ijtihad"
+    ]
+  },
+  "takhayyur": {
+    "label": "Takhayyur (selecting across schools)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "talfiq",
+      "takhayyur",
+      "ikhtilaf",
+      "ijtihad",
+      "taqlid"
+    ],
+    "opposite": "taqlid",
+    "related": [
+      "maqasid-al-shariah",
+      "fatwa"
+    ]
+  },
+  "talfiq": {
+    "label": "Talfiq (combining school rulings)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "takhayyur",
+      "ikhtilaf",
+      "taqlid",
+      "ijtihad"
+    ],
+    "opposite": "taqlid",
+    "related": [
+      "maqasid-al-shariah",
+      "istislah",
+      "istihsan"
+    ]
+  },
+  "fatwa": {
+    "label": "Fatwa (juristic responsum)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "qada",
+      "ijtihad",
+      "taqlid"
+    ],
+    "opposite": null,
+    "related": [
+      "hukm-shari",
+      "taarud-tarjih",
+      "qawaid-fiqhiyya"
+    ]
+  },
+  "qada": {
+    "label": "Qada' (judgeship)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "shahada",
+      "yamin",
+      "bayyina"
+    ],
+    "siblings": [
+      "fatwa",
+      "ijtihad",
+      "taqlid",
+      "hudud",
+      "qisas"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "hisba",
+      "ahl-al-hall-wal-aqd"
+    ]
+  },
+  "shahada": {
+    "label": "Shahada (testimony)",
+    "parent": "qada",
+    "children": [],
+    "siblings": [
+      "yamin",
+      "bayyina"
+    ],
+    "opposite": null,
+    "related": [
+      "shahada",
+      "adl",
+      "taklif"
+    ]
+  },
+  "yamin": {
+    "label": "Yamin (judicial oath)",
+    "parent": "hukm-shari",
+    "children": [],
+    "siblings": [
+      "bayyina",
+      "shahada",
+      "qada"
+    ],
+    "opposite": null,
+    "related": [
+      "darura",
+      "istishab",
+      "bara-asliyya"
+    ]
+  },
+  "bayyina": {
+    "label": "Bayyina (proof)",
+    "parent": "qada",
+    "children": [],
+    "siblings": [
+      "shahada",
+      "yamin"
+    ],
+    "opposite": null,
+    "related": [
+      "ijma",
+      "mutawatir",
+      "khabar-wahid"
+    ]
+  },
+  "hudud": {
+    "label": "Hudud (fixed penalties)",
+    "parent": "hukm-shari",
+    "children": [],
+    "siblings": [
+      "qisas",
+      "diya",
+      "tazir"
+    ],
+    "opposite": null,
+    "related": [
+      "takfir",
+      "kabira",
+      "shahada",
+      "siyasa-shariyya"
+    ]
+  },
+  "qisas": {
+    "label": "Qisas (retaliation)",
+    "parent": "hudud",
+    "children": [],
+    "siblings": [
+      "hudud",
+      "diya",
+      "tazir"
+    ],
+    "opposite": "diya",
+    "related": [
+      "siyar",
+      "jihad",
+      "qada"
+    ]
+  },
+  "diya": {
+    "label": "Diya (blood money)",
+    "parent": "hudud",
+    "children": [],
+    "siblings": [
+      "qisas",
+      "hudud",
+      "tazir"
+    ],
+    "opposite": null,
+    "related": [
+      "darura",
+      "adl",
+      "siyasa-shariyya"
+    ]
+  },
+  "tazir": {
+    "label": "Ta'zir (discretionary punishment)",
+    "parent": "hukm-shari",
+    "children": [],
+    "siblings": [
+      "hudud",
+      "qisas",
+      "diya"
+    ],
+    "opposite": null,
+    "related": [
+      "darura",
+      "mashaqqa",
+      "qawaid-fiqhiyya",
+      "taklif"
+    ]
+  },
+  "siyasa-shariyya": {
+    "label": "Siyasa shar'iyya (governance within sharia)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "hisba",
+      "siyar",
+      "darura",
+      "taghallub"
+    ],
+    "siblings": [
+      "qiyas",
+      "istihsan",
+      "istislah",
+      "maqasid-al-shariah",
+      "sadd-al-dharai"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "siyasa-madaniyya",
+      "ulama-state",
+      "nasiha",
+      "adl-political"
+    ]
+  },
+  "hisba": {
+    "label": "Hisba (market and moral oversight)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "siyasa-shariyya",
+      "qada",
+      "jihad"
+    ],
+    "opposite": null,
+    "related": [
+      "riba",
+      "gharar",
+      "zakat"
+    ]
+  },
+  "riba": {
+    "label": "Riba (usury and interest)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "gharar",
+      "hiyal",
+      "waqf",
+      "zakat",
+      "nikah"
+    ],
+    "opposite": null,
+    "related": [
+      "sababiyya",
+      "illa",
+      "maqasid-al-shariah",
+      "siyasa-shariyya"
+    ]
+  },
+  "gharar": {
+    "label": "Gharar (excessive uncertainty)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "riba",
+      "hiyal",
+      "maqasid-al-shariah",
+      "istislah",
+      "darura"
+    ],
+    "opposite": null,
+    "related": [
+      "nikah",
+      "waqf",
+      "siyasa-shariyya"
+    ]
+  },
+  "hiyal": {
+    "label": "Hiyal (legal stratagems)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "istihsan",
+      "istislah",
+      "sadd-al-dharai",
+      "fath-al-dharai",
+      "maqasid-al-shariah"
+    ],
+    "opposite": "sadd-al-dharai",
+    "related": [
+      "qiyas",
+      "illa",
+      "taqlid",
+      "fatwa"
+    ]
+  },
+  "waqf": {
+    "label": "Waqf (charitable endowment)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "zakat",
+      "khums",
+      "jizya",
+      "nikah",
+      "farai-inheritance"
+    ],
+    "opposite": null,
+    "related": [
+      "maqasid-al-shariah",
+      "istislah",
+      "taklif",
+      "siyasa-shariyya"
+    ]
+  },
+  "zakat": {
+    "label": "Zakat (obligatory almsgiving)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "khums",
+      "jizya",
+      "riba",
+      "waqf",
+      "nikah"
+    ],
+    "opposite": null,
+    "related": [
+      "maqasid-al-shariah",
+      "daruriyyat-hajiyyat",
+      "taklif",
+      "adl"
+    ]
+  },
+  "khums": {
+    "label": "Khums (one-fifth tax)",
+    "parent": "usul-al-fiqh",
+    "children": [],
+    "siblings": [
+      "zakat",
+      "jizya",
+      "waqf"
+    ],
+    "opposite": null,
+    "related": [
+      "imama-shia",
+      "wilayat-al-faqih",
+      "ijma-ahl-bayt"
+    ]
+  },
+  "jizya": {
+    "label": "Jizya (poll tax on non-Muslims)",
+    "parent": "siyar",
+    "children": [],
+    "siblings": [
+      "dhimma",
+      "aman",
+      "dar-al-islam",
+      "dhimma-political"
+    ],
+    "opposite": null,
+    "related": [
+      "zakat",
+      "khums",
+      "siyasa-shariyya"
+    ]
+  },
+  "dhimma": {
+    "label": "Dhimma (protection contract)",
+    "parent": "siyar",
+    "children": [
+      "jizya",
+      "dhimma-political"
+    ],
+    "siblings": [
+      "aman",
+      "dar-al-islam",
+      "dar-al-sulh",
+      "jihad"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "ahl-al-hall-wal-aqd"
+    ]
+  },
+  "siyar": {
+    "label": "Siyar (law of nations and warfare)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "jihad",
+      "aman",
+      "dar-al-islam",
+      "dar-al-sulh",
+      "dhimma-political"
+    ],
+    "siblings": [
+      "nikah",
+      "farai-inheritance",
+      "zakat",
+      "waqf",
+      "hudud"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "bughat",
+      "fitna",
+      "khuruj"
+    ]
+  },
+  "jihad": {
+    "label": "Jihad (legal doctrine of armed struggle)",
+    "parent": "siyar",
+    "children": [
+      "jihad-political",
+      "aman",
+      "khuruj"
+    ],
+    "siblings": [
+      "siyar",
+      "dar-al-islam",
+      "dar-al-sulh",
+      "dhimma-political",
+      "bughat"
+    ],
+    "opposite": null,
+    "related": [
+      "amr-bil-maruf-political",
+      "wilayat-al-faqih",
+      "maqasid-al-shariah",
+      "siyasa-shariyya"
+    ]
+  },
+  "aman": {
+    "label": "Aman (safe-conduct)",
+    "parent": "siyar",
+    "children": [],
+    "siblings": [
+      "dhimma",
+      "jizya",
+      "dar-al-sulh"
+    ],
+    "opposite": null,
+    "related": [
+      "dar-al-islam",
+      "jihad-political",
+      "siyasa-shariyya"
+    ]
+  },
+  "nikah": {
+    "label": "Nikah (marriage contract)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "mahr",
+      "talaq",
+      "khul",
+      "mutah-marriage"
+    ],
+    "siblings": [
+      "nikah",
+      "farai-inheritance",
+      "waqf",
+      "zakat",
+      "khums",
+      "jizya"
+    ],
+    "opposite": null,
+    "related": [
+      "adl",
+      "shura",
+      "wilayat-al-faqih"
+    ]
+  },
+  "mahr": {
+    "label": "Mahr (dower)",
+    "parent": "nikah",
+    "children": [],
+    "siblings": [
+      "talaq",
+      "khul",
+      "mutah-marriage",
+      "farai-inheritance"
+    ],
+    "opposite": null,
+    "related": [
+      "nikah",
+      "taklif",
+      "adl"
+    ]
+  },
+  "talaq": {
+    "label": "Talaq (repudiation)",
+    "parent": "nikah",
+    "children": [],
+    "siblings": [
+      "khul",
+      "mutah-marriage",
+      "mahr"
+    ],
+    "opposite": "nikah",
+    "related": [
+      "usul-al-fiqh",
+      "qada",
+      "hukm-shari"
+    ]
+  },
+  "khul": {
+    "label": "Khul' (wife-initiated divorce)",
+    "parent": "nikah",
+    "children": [],
+    "siblings": [
+      "talaq",
+      "mutah-marriage",
+      "mahr"
+    ],
+    "opposite": "nikah",
+    "related": [
+      "adl",
+      "maqasid-al-shariah",
+      "darura"
+    ]
+  },
+  "mutah-marriage": {
+    "label": "Mut'a (temporary marriage)",
+    "parent": "nikah",
+    "children": [],
+    "siblings": [
+      "nikah",
+      "mahr",
+      "talaq",
+      "khul"
+    ],
+    "opposite": null,
+    "related": [
+      "taqiyya",
+      "ijma",
+      "imama-shia"
+    ]
+  },
+  "farai-inheritance": {
+    "label": "Fara'id (inheritance shares)",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "awl-radd"
+    ],
+    "siblings": [
+      "nikah",
+      "talaq",
+      "khul",
+      "mutah-marriage",
+      "waqf",
+      "zakat"
+    ],
+    "opposite": null,
+    "related": [
+      "taklif",
+      "qiyas",
+      "ijma"
+    ]
+  },
+  "awl-radd": {
+    "label": "'Awl and radd (proportional adjustment)",
+    "parent": "farai-inheritance",
+    "children": [],
+    "siblings": [
+      "farai-inheritance",
+      "nikah",
+      "talaq",
+      "waqf",
+      "zakat"
+    ],
+    "opposite": null,
+    "related": [
+      "qawaid-fiqhiyya",
+      "hukm-shari",
+      "takhsis",
+      "usul-al-fiqh"
+    ]
+  },
+  "tasawwuf": {
+    "label": "Tasawwuf (the discipline of Sufism)",
+    "parent": null,
+    "children": [
+      "ihsan",
+      "dhikr",
+      "tariqa",
+      "maqamat-ahwal",
+      "kashf"
+    ],
+    "siblings": [
+      "kalam-allah",
+      "usul-al-fiqh"
+    ],
+    "opposite": null,
+    "related": [
+      "irfan",
+      "tawhid",
+      "maarifa",
+      "wilaya"
+    ]
+  },
+  "ihsan": {
+    "label": "Ihsan (spiritual excellence)",
+    "parent": "tasawwuf",
+    "children": [
+      "tawakkul",
+      "ikhlas",
+      "muhasaba",
+      "muraqaba",
+      "mujahada"
+    ],
+    "siblings": [
+      "zuhd",
+      "wara",
+      "tawba",
+      "sabr",
+      "shukr",
+      "khawf-raja"
+    ],
+    "opposite": "riya",
+    "related": [
+      "maarifa",
+      "kashf",
+      "shariah-tariqah-haqiqah",
+      "nubuwwa"
+    ]
+  },
+  "zuhd": {
+    "label": "Zuhd (renunciation)",
+    "parent": "tasawwuf",
+    "children": [
+      "wara",
+      "tawakkul",
+      "rida",
+      "faqr"
+    ],
+    "siblings": [
+      "ihsan",
+      "wara",
+      "tawba",
+      "sabr",
+      "shukr",
+      "khawf-raja"
+    ],
+    "opposite": "riya",
+    "related": [
+      "taqlid-in-aqida",
+      "tibb-ruhani",
+      "sayr-suluk"
+    ]
+  },
+  "wara": {
+    "label": "Wara' (scrupulousness)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "zuhd",
+      "ikhlas",
+      "tawba",
+      "sabr"
+    ],
+    "opposite": "riya",
+    "related": [
+      "ihsan",
+      "adab",
+      "taklif",
+      "maarifa"
+    ]
+  },
+  "tawba": {
+    "label": "Tawba (repentance)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "zuhd",
+      "wara",
+      "sabr",
+      "shukr",
+      "khawf-raja",
+      "tawakkul"
+    ],
+    "opposite": "riya",
+    "related": [
+      "muhasaba",
+      "mujahada",
+      "maqamat-ahwal",
+      "ikhlas"
+    ]
+  },
+  "sabr": {
+    "label": "Sabr (patience)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "shukr",
+      "tawakkul",
+      "rida",
+      "khawf-raja",
+      "zuhd"
+    ],
+    "opposite": null,
+    "related": [
+      "mujahada",
+      "maqamat-ahwal",
+      "ihsan",
+      "taklif"
+    ]
+  },
+  "shukr": {
+    "label": "Shukr (gratitude)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "sabr",
+      "khawf-raja",
+      "tawakkul",
+      "rida",
+      "mahabba"
+    ],
+    "opposite": "riya",
+    "related": [
+      "ihsan",
+      "ikhlas",
+      "tajalli",
+      "tawhid"
+    ]
+  },
+  "khawf-raja": {
+    "label": "Khawf and raja' (fear and hope)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "zuhd",
+      "wara",
+      "tawba",
+      "sabr",
+      "shukr",
+      "tawakkul"
+    ],
+    "opposite": null,
+    "related": [
+      "qabd-bast",
+      "hayba-uns",
+      "maqamat-ahwal",
+      "ihsan"
+    ]
+  },
+  "tawakkul": {
+    "label": "Tawakkul (reliance on God)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "rida",
+      "tawba",
+      "sabr",
+      "shukr",
+      "khawf-raja"
+    ],
+    "opposite": null,
+    "related": [
+      "qadar",
+      "kasb",
+      "istitaa",
+      "lutf"
+    ]
+  },
+  "rida": {
+    "label": "Rida (contentment with God's decree)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "tawakkul",
+      "sabr",
+      "shukr",
+      "khawf-raja",
+      "mahabba"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "qadar",
+      "tawba",
+      "ikhlas",
+      "mujahada"
+    ]
+  },
+  "mahabba": {
+    "label": "Mahabba (divine love)",
+    "parent": "tasawwuf",
+    "children": [
+      "ishq",
+      "shawq"
+    ],
+    "siblings": [
+      "khawf-raja",
+      "tawakkul",
+      "rida",
+      "mahabba",
+      "uns",
+      "qabd-bast"
+    ],
+    "opposite": null,
+    "related": [
+      "maarifa",
+      "tajalli",
+      "fana",
+      "baqa"
+    ]
+  },
+  "ishq": {
+    "label": "'Ishq (passionate love)",
+    "parent": "mahabba",
+    "children": [],
+    "siblings": [
+      "mahabba",
+      "shawq",
+      "uns",
+      "hayba-uns"
+    ],
+    "opposite": null,
+    "related": [
+      "sukr-sahw",
+      "fana",
+      "wahdat-al-wujud",
+      "shath"
+    ]
+  },
+  "shawq": {
+    "label": "Shawq (longing)",
+    "parent": "mahabba",
+    "children": [],
+    "siblings": [
+      "ishq",
+      "uns",
+      "hayba-uns",
+      "khawf-raja",
+      "qabd-bast"
+    ],
+    "opposite": null,
+    "related": [
+      "shawq",
+      "tawhid",
+      "sayr-fi-allah",
+      "maqamat-ahwal"
+    ]
+  },
+  "uns": {
+    "label": "Uns (intimacy with God)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "hayba-uns",
+      "khawf-raja",
+      "qabd-bast",
+      "mahabba",
+      "ishq"
+    ],
+    "opposite": null,
+    "related": [
+      "ihsan",
+      "maqamat-ahwal",
+      "tajalli",
+      "fana"
+    ]
+  },
+  "qabd-bast": {
+    "label": "Qabd and bast (contraction and expansion)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "hayba-uns",
+      "sukr-sahw",
+      "khawf-raja",
+      "qabd-bast",
+      "mahabba"
+    ],
+    "opposite": null,
+    "related": [
+      "maqamat-ahwal",
+      "sayr-suluk",
+      "muraqaba"
+    ]
+  },
+  "hayba-uns": {
+    "label": "Hayba and uns (awe and intimacy)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "khawf-raja",
+      "qabd-bast",
+      "sukr-sahw",
+      "mahabba",
+      "shawq"
+    ],
+    "opposite": null,
+    "related": [
+      "uns",
+      "maqamat-ahwal",
+      "tajalli"
+    ]
+  },
+  "sukr-sahw": {
+    "label": "Sukr and sahw (intoxication and sobriety)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "qabd-bast",
+      "hayba-uns",
+      "shath",
+      "wahdat-al-wujud",
+      "maqamat-ahwal"
+    ],
+    "opposite": null,
+    "related": [
+      "fana",
+      "baqa",
+      "khawf-raja",
+      "ilham"
+    ]
+  },
+  "shath": {
+    "label": "Shath (ecstatic utterance)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "sukr-sahw",
+      "hayba-uns",
+      "qabd-bast",
+      "wahdat-al-wujud",
+      "fana"
+    ],
+    "opposite": null,
+    "related": [
+      "ilham",
+      "kashf",
+      "mahabba",
+      "ishq"
+    ]
+  },
+  "wahdat-al-wujud": {
+    "label": "Wahdat al-wujud (oneness of being)",
+    "parent": "tasawwuf",
+    "children": [
+      "tawhid-al-wujud",
+      "hulul",
+      "ittihad",
+      "fana",
+      "tajalli"
+    ],
+    "siblings": [
+      "wahdat-al-shuhud",
+      "baqa",
+      "al-insan-al-kamil",
+      "haqiqa-muhammadiyya",
+      "shariah-tariqah-haqiqah"
+    ],
+    "opposite": "wahdat-al-shuhud",
+    "related": [
+      "tawhid",
+      "nur-muhammadi",
+      "ayan-thabita",
+      "wujub-al-wujud"
+    ]
+  },
+  "hadarat-khams": {
+    "label": "Five divine presences",
+    "parent": "tasawwuf",
+    "children": [
+      "latifa",
+      "qalb",
+      "ruh",
+      "sirr",
+      "nafs-ammara"
+    ],
+    "siblings": [
+      "maqamat-ahwal",
+      "sayr-suluk",
+      "wahdat-al-wujud",
+      "insan-kamil",
+      "alam-mithal"
+    ],
+    "opposite": null,
+    "related": [
+      "tajalli",
+      "ittihad",
+      "fana",
+      "baqa"
+    ]
+  },
+  "insan-kamil": {
+    "label": "Al-insan al-kamil (the perfect human)",
+    "parent": "tasawwuf",
+    "children": [
+      "haqiqa-muhammadiyya",
+      "nur-muhammadi",
+      "tajalli",
+      "al-insan-al-kamil"
+    ],
+    "siblings": [
+      "wahdat-al-wujud",
+      "fana",
+      "baqa",
+      "wilaya",
+      "qutb"
+    ],
+    "opposite": null,
+    "related": [
+      "tawhid-al-wujud",
+      "hadarat-khams",
+      "maarifa",
+      "ittihad"
+    ]
+  },
+  "latifa": {
+    "label": "Lata'if (subtle centers)",
+    "parent": "tasawwuf",
+    "children": [
+      "qalb",
+      "ruh",
+      "sirr"
+    ],
+    "siblings": [
+      "nafs-ammara",
+      "ruh",
+      "qalb",
+      "sirr",
+      "khatir",
+      "muhasaba"
+    ],
+    "opposite": null,
+    "related": [
+      "muraqaba",
+      "dhikr",
+      "hadarat-khams",
+      "khalwa"
+    ]
+  },
+  "qalb": {
+    "label": "Qalb (the spiritual heart)",
+    "parent": "tasawwuf",
+    "children": [
+      "nafs-ammara",
+      "ruh",
+      "sirr"
+    ],
+    "siblings": [
+      "latifa",
+      "nafs-ammara",
+      "ruh",
+      "sirr",
+      "khatir"
+    ],
+    "opposite": "nafs-ammara",
+    "related": [
+      "maarifa",
+      "kashf",
+      "tajalli",
+      "ihsan"
+    ]
+  },
+  "nafs-ammara": {
+    "label": "Nafs (stages of the lower self)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "qalb",
+      "ruh",
+      "sirr",
+      "maqamat-ahwal",
+      "muraqaba"
+    ],
+    "opposite": null,
+    "related": [
+      "mujahada",
+      "muhasaba",
+      "tawba",
+      "fana"
+    ]
+  },
+  "ruh": {
+    "label": "Ruh (the spirit)",
+    "parent": "tasawwuf",
+    "children": [
+      "ilham",
+      "kashf",
+      "ruya-sadiqa"
+    ],
+    "siblings": [
+      "qalb",
+      "nafs-ammara",
+      "sirr",
+      "latifa",
+      "khatir"
+    ],
+    "opposite": "nafs-ammara",
+    "related": [
+      "fana",
+      "baqa",
+      "tajalli",
+      "sayr-fi-allah"
+    ]
+  },
+  "sirr": {
+    "label": "Sirr (the secret)",
+    "parent": "latifa",
+    "children": [],
+    "siblings": [
+      "qalb",
+      "ruh",
+      "khatir"
+    ],
+    "opposite": null,
+    "related": [
+      "tajalli",
+      "ilham",
+      "kashf",
+      "maarifa"
+    ]
+  },
+  "khatir": {
+    "label": "Khatir (passing thought)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "muhasaba",
+      "muraqaba",
+      "dhikr",
+      "kashf",
+      "ilham"
+    ],
+    "opposite": null,
+    "related": [
+      "nafs-ammara",
+      "ruh",
+      "sirr",
+      "tawajjuh"
+    ]
+  },
+  "muhasaba": {
+    "label": "Muhasaba (self-examination)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "muraqaba",
+      "mujahada",
+      "riyada",
+      "tawba",
+      "ikhlas"
+    ],
+    "opposite": "riya",
+    "related": [
+      "nafs-ammara",
+      "qalb",
+      "taklif",
+      "adab"
+    ]
+  },
+  "muraqaba": {
+    "label": "Muraqaba (vigilant awareness)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "muhasaba",
+      "dhikr",
+      "khalwa",
+      "riyada",
+      "mujahada"
+    ],
+    "opposite": null,
+    "related": [
+      "muraqaba",
+      "qalb",
+      "tajalli",
+      "ilham"
+    ]
+  },
+  "dhikr": {
+    "label": "Dhikr (invocation of God)",
+    "parent": "tasawwuf",
+    "children": [
+      "dhikr-jali-khafi",
+      "hadra"
+    ],
+    "siblings": [
+      "muraqaba",
+      "khalwa",
+      "sama",
+      "muhasaba",
+      "mujahada"
+    ],
+    "opposite": "sukut",
+    "related": [
+      "baraka",
+      "tajalli",
+      "ilham",
+      "kashf"
+    ]
+  },
+  "dhikr-jali-khafi": {
+    "label": "Dhikr jali and khafi (vocal and silent)",
+    "parent": "dhikr",
+    "children": [],
+    "siblings": [
+      "sama",
+      "hadra",
+      "khalwa",
+      "muraqaba",
+      "muhasaba"
+    ],
+    "opposite": null,
+    "related": [
+      "tasawwuf",
+      "ihsan",
+      "maqamat-ahwal",
+      "kashf"
+    ]
+  },
+  "sama": {
+    "label": "Sama' (spiritual audition)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "dhikr",
+      "hadra",
+      "khalwa",
+      "muraqaba",
+      "kashf"
+    ],
+    "opposite": "sukut",
+    "related": [
+      "takhyil",
+      "khayal",
+      "maqamat-ahwal",
+      "sayr-suluk"
+    ]
+  },
+  "hadra": {
+    "label": "Hadra (collective remembrance gathering)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "dhikr",
+      "sama",
+      "khalwa",
+      "muraqaba",
+      "riyada"
+    ],
+    "opposite": null,
+    "related": [
+      "baraka",
+      "tajalli",
+      "maqamat-ahwal",
+      "silsila"
+    ]
+  },
+  "khalwa": {
+    "label": "Khalwa (spiritual retreat)",
+    "parent": "tasawwuf",
+    "children": [
+      "arbain",
+      "riyada"
+    ],
+    "siblings": [
+      "muraqaba",
+      "muhasaba",
+      "dhikr",
+      "mujahada",
+      "khalwa"
+    ],
+    "opposite": null,
+    "related": [
+      "tariqa",
+      "sayr-suluk",
+      "faqr"
+    ]
+  },
+  "arbain": {
+    "label": "Arba'in (forty-day retreat)",
+    "parent": "riyada",
+    "children": [],
+    "siblings": [
+      "khalwa",
+      "muhasaba",
+      "muraqaba",
+      "mujahada",
+      "dhikr"
+    ],
+    "opposite": null,
+    "related": [
+      "tariqa",
+      "sayr-suluk",
+      "maqamat-ahwal",
+      "isra-miraj"
+    ]
+  },
+  "riyada": {
+    "label": "Riyada (spiritual training)",
+    "parent": "tasawwuf",
+    "children": [
+      "mujahada",
+      "muhasaba",
+      "muraqaba"
+    ],
+    "siblings": [
+      "ihsan",
+      "zuhd",
+      "wara",
+      "tawba",
+      "mujahada"
+    ],
+    "opposite": null,
+    "related": [
+      "nafs-ammara",
+      "tadbir-al-mutawahhid",
+      "tahdhib-akhlaq"
+    ]
+  },
+  "mujahada": {
+    "label": "Mujahada (inner struggle)",
+    "parent": "tasawwuf",
+    "children": [
+      "riyada",
+      "muhasaba",
+      "nafs-ammara",
+      "mujahada"
+    ],
+    "siblings": [
+      "riyada",
+      "muraqaba",
+      "tawba",
+      "ikhlas",
+      "tahdhib-akhlaq"
+    ],
+    "opposite": null,
+    "related": [
+      "nafs-ammara",
+      "maqamat-ahwal",
+      "sayr-suluk"
+    ]
+  },
+  "tariqa": {
+    "label": "Tariqa (the path)",
+    "parent": "tasawwuf",
+    "children": [
+      "maqamat-ahwal",
+      "sayr-suluk",
+      "riyada",
+      "khalwa",
+      "silsila"
+    ],
+    "siblings": [
+      "ihsan",
+      "zuhd",
+      "wara",
+      "tawakkul",
+      "mahabba"
+    ],
+    "opposite": null,
+    "related": [
+      "shariah-tariqah-haqiqah",
+      "baya",
+      "adab"
+    ]
+  },
+  "shariah-tariqah-haqiqah": {
+    "label": "Shari'a, tariqa, haqiqa",
+    "parent": "tasawwuf",
+    "children": [
+      "maqamat-ahwal",
+      "sayr-suluk",
+      "ihsan",
+      "kashf"
+    ],
+    "siblings": [
+      "tariqa",
+      "sayr-fi-allah",
+      "insan-kamil",
+      "wahdat-al-wujud"
+    ],
+    "opposite": null,
+    "related": [
+      "batin-zahir",
+      "tafsir-ishari",
+      "hadarat-khams"
+    ]
+  },
+  "maqamat-ahwal": {
+    "label": "Maqamat and ahwal (stations and states)",
+    "parent": "tasawwuf",
+    "children": [
+      "qabd-bast",
+      "sukr-sahw"
+    ],
+    "siblings": [
+      "sayr-suluk",
+      "shariah-tariqah-haqiqah",
+      "ihsan",
+      "kashf",
+      "ilham"
+    ],
+    "opposite": null,
+    "related": [
+      "baqa",
+      "fana",
+      "mahabba",
+      "tajalli"
+    ]
+  },
+  "suhba": {
+    "label": "Suhba (spiritual companionship)",
+    "parent": "tasawwuf",
+    "children": [
+      "baya",
+      "silsila",
+      "ijaza-sufiyya",
+      "khirqa",
+      "rabita"
+    ],
+    "siblings": [
+      "tariqa",
+      "maqamat-ahwal",
+      "riyada",
+      "mujahada",
+      "khalwa"
+    ],
+    "opposite": null,
+    "related": [
+      "adab",
+      "himma",
+      "tawajjuh"
+    ]
+  },
+  "baya": {
+    "label": "Bay'a (initiatic pact)",
+    "parent": "tasawwuf",
+    "children": [
+      "silsila",
+      "ijaza-sufiyya",
+      "khirqa",
+      "rabita"
+    ],
+    "siblings": [
+      "suhba",
+      "tariqa",
+      "riyada",
+      "mujahada",
+      "adab",
+      "himma"
+    ],
+    "opposite": null,
+    "related": [
+      "bayah",
+      "wilaya",
+      "tawassul"
+    ]
+  },
+  "silsila": {
+    "label": "Silsila (chain of transmission)",
+    "parent": "tasawwuf",
+    "children": [
+      "ijaza-sufiyya",
+      "khirqa",
+      "uwaysi"
+    ],
+    "siblings": [
+      "tariqa",
+      "suhba",
+      "baya",
+      "maqamat-ahwal",
+      "sayr-suluk"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "ismah",
+      "wilaya",
+      "khatm-al-awliya"
+    ]
+  },
+  "ijaza-sufiyya": {
+    "label": "Ijaza (initiatic license)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "silsila",
+      "khirqa",
+      "baya",
+      "suhba",
+      "tariqa"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaza-sufiyya",
+      "uwaysi",
+      "baraka",
+      "wilaya"
+    ]
+  },
+  "khirqa": {
+    "label": "Khirqa (mantle of initiation)",
+    "parent": "tariqa",
+    "children": [],
+    "siblings": [
+      "ijaza-sufiyya",
+      "silsila",
+      "baya",
+      "suhba",
+      "khidr"
+    ],
+    "opposite": null,
+    "related": [
+      "baraka",
+      "wilaya",
+      "adab",
+      "maqamat-ahwal"
+    ]
+  },
+  "futuwwa": {
+    "label": "Futuwwa (spiritual chivalry)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "adab",
+      "ihsan",
+      "zuhd",
+      "wara",
+      "mahabba"
+    ],
+    "opposite": null,
+    "related": [
+      "suhba",
+      "silsila",
+      "baya",
+      "himma"
+    ]
+  },
+  "adab": {
+    "label": "Adab (spiritual courtesy)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "ihsan",
+      "zuhd",
+      "wara",
+      "tawakkul",
+      "ikhlas"
+    ],
+    "opposite": "riya",
+    "related": [
+      "tahdhib-akhlaq",
+      "futuwwa",
+      "suhba"
+    ]
+  },
+  "himma": {
+    "label": "Himma (spiritual aspiration)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "mujahada",
+      "riyada",
+      "muraqaba",
+      "tawakkul",
+      "ikhlas"
+    ],
+    "opposite": null,
+    "related": [
+      "qalb",
+      "nafs-ammara",
+      "kashf",
+      "tajalli"
+    ]
+  },
+  "kashf": {
+    "label": "Kashf (unveiling)",
+    "parent": "tasawwuf",
+    "children": [
+      "ilham",
+      "firasa",
+      "karamat"
+    ],
+    "siblings": [
+      "ilham",
+      "firasa",
+      "karamat",
+      "ilm-huduri",
+      "hads"
+    ],
+    "opposite": null,
+    "related": [
+      "maarifa",
+      "tajalli",
+      "al-insan-al-kamil",
+      "sayr-suluk"
+    ]
+  },
+  "ilham": {
+    "label": "Ilham (divine inspiration)",
+    "parent": "kashf",
+    "children": [],
+    "siblings": [
+      "kashf",
+      "firasa",
+      "hads",
+      "prophetic-imagination"
+    ],
+    "opposite": null,
+    "related": [
+      "maarifa",
+      "ilm-huduri",
+      "tajalli",
+      "wahdat-al-wujud"
+    ]
+  },
+  "firasa": {
+    "label": "Firasa (spiritual physiognomy)",
+    "parent": "kashf",
+    "children": [],
+    "siblings": [
+      "kashf",
+      "ilham",
+      "karamat",
+      "hads"
+    ],
+    "opposite": null,
+    "related": [
+      "wilaya",
+      "khatm-al-awliya",
+      "qutb",
+      "firasa"
+    ]
+  },
+  "karamat": {
+    "label": "Karamat (saintly miracles)",
+    "parent": "wilaya",
+    "children": [],
+    "siblings": [
+      "mujiza",
+      "karamat-al-awliya",
+      "ijaz-al-quran",
+      "ismah"
+    ],
+    "opposite": null,
+    "related": [
+      "wilaya",
+      "qutb",
+      "kashf",
+      "baraka"
+    ]
+  },
+  "wilaya": {
+    "label": "Wilaya (sainthood)",
+    "parent": "tasawwuf",
+    "children": [
+      "khatm-al-awliya",
+      "qutb",
+      "abdal",
+      "karamat",
+      "wilayat-al-faqih"
+    ],
+    "siblings": [
+      "ihsan",
+      "maarifa",
+      "kashf",
+      "ilham",
+      "ismah"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "ismaili-tawil",
+      "tawassul",
+      "baraka"
+    ]
+  },
+  "khatm-al-awliya": {
+    "label": "Khatm al-awliya' (seal of the saints)",
+    "parent": "wilaya",
+    "children": [],
+    "siblings": [
+      "qutb",
+      "abdal",
+      "rijal-al-ghayb",
+      "karamat-al-awliya"
+    ],
+    "opposite": "khatm-al-nubuwwa",
+    "related": [
+      "insan-kamil",
+      "sayr-suluk",
+      "wilaya",
+      "tasawwuf"
+    ]
+  },
+  "qutb": {
+    "label": "Qutb (the axial saint)",
+    "parent": "wilaya",
+    "children": [],
+    "siblings": [
+      "abdal",
+      "rijal-al-ghayb",
+      "khatm-al-awliya"
+    ],
+    "opposite": null,
+    "related": [
+      "qawl-sahabi",
+      "silsila",
+      "baraka"
+    ]
+  },
+  "abdal": {
+    "label": "Abdal (the substitutes)",
+    "parent": "wilaya",
+    "children": [],
+    "siblings": [
+      "qutb",
+      "rijal-al-ghayb",
+      "khatm-al-awliya"
+    ],
+    "opposite": null,
+    "related": [
+      "karamat",
+      "baraka",
+      "wilayat-al-faqih"
+    ]
+  },
+  "rijal-al-ghayb": {
+    "label": "Rijal al-ghayb (men of the unseen)",
+    "parent": "wilaya",
+    "children": [
+      "qutb",
+      "abdal",
+      "khatm-al-awliya"
+    ],
+    "siblings": [
+      "qutb",
+      "abdal",
+      "khatm-al-awliya",
+      "karamat",
+      "kashf"
+    ],
+    "opposite": null,
+    "related": [
+      "wilaya",
+      "sayr-suluk",
+      "hadarat-khams",
+      "tajalli"
+    ]
+  },
+  "khidr": {
+    "label": "Khidr as initiator",
+    "parent": "wilaya",
+    "children": [],
+    "siblings": [
+      "uwaysi",
+      "tawassul",
+      "khidr"
+    ],
+    "opposite": null,
+    "related": [
+      "suhba",
+      "silsila",
+      "ijaza-sufiyya",
+      "kashf"
+    ]
+  },
+  "uwaysi": {
+    "label": "Uwaysi transmission",
+    "parent": "silsila",
+    "children": [],
+    "siblings": [
+      "suhba",
+      "ijaza-sufiyya",
+      "khirqa",
+      "tawajjuh",
+      "rabita"
+    ],
+    "opposite": null,
+    "related": [
+      "khidr",
+      "kashf",
+      "ilham",
+      "wilaya"
+    ]
+  },
+  "tawajjuh": {
+    "label": "Tawajjuh (spiritual focusing)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "rabita",
+      "suhba",
+      "baya",
+      "tawassul",
+      "baraka"
+    ],
+    "opposite": null,
+    "related": [
+      "tajalli",
+      "ilham",
+      "kashf",
+      "himma"
+    ]
+  },
+  "rabita": {
+    "label": "Rabita (binding to the shaykh)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "tawassul",
+      "tawajjuh",
+      "suhba",
+      "baya",
+      "silsila"
+    ],
+    "opposite": null,
+    "related": [
+      "baraka",
+      "kashf",
+      "muraqaba",
+      "wilaya"
+    ]
+  },
+  "tawassul": {
+    "label": "Tawassul (intercessory mediation)",
+    "parent": "tasawwuf",
+    "children": [
+      "ziyara",
+      "baraka",
+      "tawajjuh"
+    ],
+    "siblings": [
+      "karamat",
+      "wilaya",
+      "shafaa",
+      "khidr",
+      "uwaysi"
+    ],
+    "opposite": null,
+    "related": [
+      "maarifa",
+      "tajalli",
+      "sayr-suluk",
+      "rabita"
+    ]
+  },
+  "ziyara": {
+    "label": "Ziyara (visitation of tombs)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "tawassul",
+      "baraka",
+      "karamat",
+      "wilaya",
+      "khidr"
+    ],
+    "opposite": null,
+    "related": [
+      "maqamat-ahwal",
+      "sayr-suluk",
+      "isra-miraj"
+    ]
+  },
+  "baraka": {
+    "label": "Baraka (transmissible blessing)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "karamat",
+      "wilaya",
+      "karamat-al-awliya",
+      "tawassul",
+      "ziyara"
+    ],
+    "opposite": null,
+    "related": [
+      "tajalli",
+      "nur-muhammadi",
+      "silsila",
+      "qutb"
+    ]
+  },
+  "isra-miraj": {
+    "label": "Mi'raj (mystical ascent)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "sayr-suluk",
+      "sayr-fi-allah",
+      "qaws-nuzul-suud",
+      "kashf",
+      "alam-mithal"
+    ],
+    "opposite": null,
+    "related": [
+      "nubuwwa",
+      "mujiza",
+      "insan-kamil",
+      "hadarat-khams"
+    ]
+  },
+  "sayr-suluk": {
+    "label": "Sayr wa suluk (wayfaring)",
+    "parent": "tasawwuf",
+    "children": [
+      "maqamat-ahwal",
+      "sayr-fi-allah",
+      "qaws-nuzul-suud",
+      "khalwa",
+      "riyada"
+    ],
+    "siblings": [
+      "ihsan",
+      "kashf",
+      "maarifa",
+      "wilaya"
+    ],
+    "opposite": null,
+    "related": [
+      "muhasaba",
+      "muraqaba",
+      "dhikr",
+      "mujahada"
+    ]
+  },
+  "sayr-fi-allah": {
+    "label": "Sayr fi'llah and ila'llah (journey to and in God)",
+    "parent": "tasawwuf",
+    "children": [
+      "qaws-nuzul-suud",
+      "sayr-suluk",
+      "tajalli"
+    ],
+    "siblings": [
+      "maqamat-ahwal",
+      "fana",
+      "baqa",
+      "insan-kamil",
+      "wahdat-al-wujud"
+    ],
+    "opposite": null,
+    "related": [
+      "mahabba",
+      "tawakkul",
+      "ilham",
+      "kashf"
+    ]
+  },
+  "qaws-nuzul-suud": {
+    "label": "Arcs of descent and ascent",
+    "parent": "tasawwuf",
+    "children": [
+      "sayr-suluk",
+      "sayr-fi-allah",
+      "maqamat-ahwal",
+      "tajalli"
+    ],
+    "siblings": [
+      "hadarat-khams",
+      "insan-kamil",
+      "wahdat-al-wujud",
+      "fana",
+      "baqa"
+    ],
+    "opposite": null,
+    "related": [
+      "khalq-jadid",
+      "alam-mithal",
+      "tawhid-al-wujud",
+      "isra-miraj"
+    ]
+  },
+  "alam-mithal": {
+    "label": "'Alam al-mithal (imaginal world)",
+    "parent": "tasawwuf",
+    "children": [
+      "khayal",
+      "ruya-sadiqa",
+      "alam-al-mithal"
+    ],
+    "siblings": [
+      "hadarat-khams",
+      "tajalli",
+      "sayr-suluk",
+      "qaws-nuzul-suud"
+    ],
+    "opposite": null,
+    "related": [
+      "kashf",
+      "ilham",
+      "prophetic-imagination",
+      "isra-miraj"
+    ]
+  },
+  "khayal": {
+    "label": "Khayal (creative imagination)",
+    "parent": "tasawwuf",
+    "children": [
+      "ruya-sadiqa",
+      "alam-mithal",
+      "prophetic-imagination"
+    ],
+    "siblings": [
+      "kashf",
+      "ilham",
+      "firasa",
+      "hads",
+      "muraqaba"
+    ],
+    "opposite": null,
+    "related": [
+      "tafsir-ishari",
+      "tajalli",
+      "sayr-suluk",
+      "intellect-stages"
+    ]
+  },
+  "ruya-sadiqa": {
+    "label": "Ru'ya sadiqa (true dreams)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "kashf",
+      "ilham",
+      "firasa",
+      "khayal",
+      "alam-mithal"
+    ],
+    "opposite": null,
+    "related": [
+      "isra-miraj",
+      "prophetic-imagination",
+      "sayr-suluk",
+      "tajalli"
+    ]
+  },
+  "tafsir-ishari": {
+    "label": "Tafsir ishari (allusive Qur'anic exegesis)",
+    "parent": "tasawwuf",
+    "children": [
+      "batin-zahir",
+      "science-of-letters",
+      "jafr"
+    ],
+    "siblings": [
+      "tafsir-lughawi",
+      "mushkil-al-quran",
+      "gharib-al-quran",
+      "qiraat"
+    ],
+    "opposite": "tafsir-lughawi",
+    "related": [
+      "tajalli",
+      "kashf",
+      "ilham",
+      "maarifa"
+    ]
+  },
+  "batin-zahir": {
+    "label": "Zahir and batin (outer and inner)",
+    "parent": "tasawwuf",
+    "children": [
+      "tafsir-ishari",
+      "science-of-letters",
+      "khayal",
+      "alam-mithal"
+    ],
+    "siblings": [
+      "shariah-tariqah-haqiqah",
+      "maqamat-ahwal",
+      "kashf",
+      "ilham",
+      "sayr-suluk"
+    ],
+    "opposite": null,
+    "related": [
+      "tawil",
+      "haqiqa-majaz",
+      "tajalli",
+      "wahdat-al-wujud"
+    ]
+  },
+  "science-of-letters": {
+    "label": "'Ilm al-huruf (science of letters)",
+    "parent": "tasawwuf",
+    "children": [
+      "jafr",
+      "abjad"
+    ],
+    "siblings": [
+      "tafsir-ishari",
+      "khayal",
+      "alam-mithal",
+      "ilham",
+      "kashf"
+    ],
+    "opposite": null,
+    "related": [
+      "batin-zahir",
+      "tawhid-al-asma-wa-sifat",
+      "tajalli"
+    ]
+  },
+  "jafr": {
+    "label": "Jafr (esoteric divination)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "science-of-letters",
+      "abjad",
+      "tafsir-ishari",
+      "ilham",
+      "kashf"
+    ],
+    "opposite": null,
+    "related": [
+      "irfan",
+      "wilaya",
+      "batin-zahir",
+      "khayal"
+    ]
+  },
+  "abjad": {
+    "label": "Abjad numerology",
+    "parent": "science-of-letters",
+    "children": [],
+    "siblings": [
+      "jafr",
+      "science-of-letters",
+      "tafsir-ishari",
+      "batin-zahir"
+    ],
+    "opposite": null,
+    "related": [
+      "irfan",
+      "khayal",
+      "ijaz-al-quran",
+      "tafsir-lughawi"
+    ]
+  },
+  "irfan": {
+    "label": "'Irfan (Shia gnosis)",
+    "parent": "tasawwuf",
+    "children": [
+      "walaya-shia",
+      "tafsir-ishari",
+      "ilm-huduri",
+      "kashf",
+      "maarifa"
+    ],
+    "siblings": [
+      "tasawwuf",
+      "hikmat-ishraq",
+      "tawhid-al-wujud",
+      "al-insan-al-kamil",
+      "fana"
+    ],
+    "opposite": null,
+    "related": [
+      "imama-shia",
+      "nass",
+      "ghayba",
+      "bada",
+      "taqiyya"
+    ]
+  },
+  "walaya-shia": {
+    "label": "Walaya (Shia spiritual authority)",
+    "parent": "tasawwuf",
+    "children": [
+      "wilayat-al-faqih",
+      "tawassul",
+      "baraka",
+      "karamat"
+    ],
+    "siblings": [
+      "imamate-shia",
+      "nass",
+      "irfan",
+      "ismah"
+    ],
+    "opposite": null,
+    "related": [
+      "al-insan-al-kamil",
+      "tajalli",
+      "ghayba",
+      "khatm-al-awliya"
+    ]
+  },
+  "sukut": {
+    "label": "Samt (mystical silence)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "dhikr",
+      "muraqaba",
+      "khalwa",
+      "tawakkul",
+      "ikhlas"
+    ],
+    "opposite": "dhikr-jali-khafi",
+    "related": [
+      "maqamat-ahwal",
+      "sayr-suluk",
+      "fana",
+      "uns"
+    ]
+  },
+  "ju": {
+    "label": "Ju' (spiritual hunger)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "zuhd",
+      "wara",
+      "sabr",
+      "tawakkul",
+      "rida",
+      "sahar"
+    ],
+    "opposite": null,
+    "related": [
+      "ihsan",
+      "mujahada",
+      "riyada",
+      "khalwa"
+    ]
+  },
+  "sahar": {
+    "label": "Sahar (night vigil)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "zuhd",
+      "wara",
+      "tawba",
+      "sabr",
+      "shukr",
+      "khawf-raja"
+    ],
+    "opposite": null,
+    "related": [
+      "dhikr",
+      "muraqaba",
+      "khalwa",
+      "arbain"
+    ]
+  },
+  "faqr": {
+    "label": "Faqr (spiritual poverty)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "zuhd",
+      "wara",
+      "ikhlas",
+      "tawakkul",
+      "sabr"
+    ],
+    "opposite": null,
+    "related": [
+      "fana",
+      "insan-kamil",
+      "mahabba",
+      "maqamat-ahwal"
+    ]
+  },
+  "ikhlas": {
+    "label": "Ikhlas (sincerity)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "riya",
+      "tawakkul",
+      "tawba",
+      "adab",
+      "wara"
+    ],
+    "opposite": "riya",
+    "related": [
+      "ihsan",
+      "maarifa",
+      "tawhid"
+    ]
+  },
+  "riya": {
+    "label": "Riya' (spiritual ostentation)",
+    "parent": "tasawwuf",
+    "children": [],
+    "siblings": [
+      "ikhlas",
+      "tawba",
+      "muhasaba",
+      "wara",
+      "zuhd"
+    ],
+    "opposite": "ikhlas",
+    "related": [
+      "muraqaba",
+      "nafs-ammara",
+      "mujahada"
+    ]
+  },
+  "imama-sunni": {
+    "label": "Imama (Sunni theory of leadership)",
+    "parent": null,
+    "children": [
+      "bayah",
+      "shura",
+      "ahl-al-hall-wal-aqd",
+      "quraysh-condition",
+      "imama-sunni"
+    ],
+    "siblings": [
+      "imama-shia",
+      "khariji-imamate",
+      "zaydi-imamate",
+      "ismaili-imamate",
+      "khilafa"
+    ],
+    "opposite": null,
+    "related": [
+      "obedience-unjust-ruler",
+      "nasiha",
+      "siyasa-shariyya",
+      "ulama-state"
+    ]
+  },
+  "imama-shia": {
+    "label": "Imama (Shia imamate)",
+    "parent": "imama-sunni",
+    "children": [
+      "nass",
+      "ghayba",
+      "wilayat-al-faqih",
+      "ismaili-imamate",
+      "zaydi-imamate"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "khilafa",
+      "shura",
+      "ahl-al-hall-wal-aqd"
+    ],
+    "opposite": null,
+    "related": [
+      "walaya-shia",
+      "ismah",
+      "nubuwwa",
+      "irfan"
+    ]
+  },
+  "bayah": {
+    "label": "Bay'a (oath of allegiance)",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "shura",
+      "ahl-al-hall-wal-aqd",
+      "nass-designation",
+      "quraysh-condition"
+    ],
+    "opposite": "khuruj",
+    "related": [
+      "bayah",
+      "taghallub",
+      "ulama-state",
+      "nasiha"
+    ]
+  },
+  "shura": {
+    "label": "Shura (consultation)",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "ahl-al-hall-wal-aqd",
+      "bayah",
+      "nass-designation",
+      "quraysh-condition",
+      "khariji-imamate"
+    ],
+    "opposite": "taghallub",
+    "related": [
+      "nasiha",
+      "amr-bil-maruf-political",
+      "adl-political",
+      "siyasa-shariyya"
+    ]
+  },
+  "ahl-al-hall-wal-aqd": {
+    "label": "Ahl al-hall wa'l-'aqd (people who loose and bind)",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "shura",
+      "bayah",
+      "nass-designation",
+      "ahl-al-hall-wal-aqd",
+      "quraysh-condition"
+    ],
+    "opposite": null,
+    "related": [
+      "ijma",
+      "imama-shia",
+      "philosopher-king",
+      "circle-of-justice"
+    ]
+  },
+  "nass-designation": {
+    "label": "Nass (designation of successor)",
+    "parent": "imama-shia",
+    "children": [],
+    "siblings": [
+      "quraysh-condition",
+      "khariji-imamate",
+      "zaydi-imamate",
+      "ismaili-imamate",
+      "ghayba-political"
+    ],
+    "opposite": "shura",
+    "related": [
+      "bayah",
+      "wilayat-al-faqih",
+      "ismah"
+    ]
+  },
+  "quraysh-condition": {
+    "label": "Qurayshi lineage requirement",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "nass-designation",
+      "shura",
+      "ahl-al-hall-wal-aqd",
+      "khariji-imamate",
+      "zaydi-imamate"
+    ],
+    "opposite": null,
+    "related": [
+      "khilafa",
+      "bayah",
+      "imama-shia",
+      "taghallub"
+    ]
+  },
+  "khariji-imamate": {
+    "label": "Khariji elective imamate",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "zaydi-imamate",
+      "ismaili-imamate",
+      "imama-shia",
+      "quraysh-condition"
+    ],
+    "opposite": "nass-designation",
+    "related": [
+      "ahl-al-hall-wal-aqd",
+      "shura",
+      "bayah",
+      "taghallub"
+    ]
+  },
+  "zaydi-imamate": {
+    "label": "Zaydi qualified imamate",
+    "parent": "imama-shia",
+    "children": [],
+    "siblings": [
+      "khariji-imamate",
+      "ismaili-imamate",
+      "imama-sunni",
+      "nass-designation",
+      "ghayba-political"
+    ],
+    "opposite": null,
+    "related": [
+      "khuruj",
+      "amr-bil-maruf-political",
+      "nubuwwa",
+      "ismah"
+    ]
+  },
+  "ismaili-imamate": {
+    "label": "Isma'ili living imamate",
+    "parent": "imamate-shia",
+    "children": [
+      "ismaili-tawil"
+    ],
+    "siblings": [
+      "zaydi-imamate",
+      "khariji-imamate",
+      "imama-sunni"
+    ],
+    "opposite": null,
+    "related": [
+      "nass",
+      "silsila",
+      "ghayba"
+    ]
+  },
+  "ghayba-political": {
+    "label": "Ghayba (occultation and political authority)",
+    "parent": "imama-shia",
+    "children": [
+      "wilayat-al-faqih",
+      "mahdi",
+      "nass-designation"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "khariji-imamate",
+      "zaydi-imamate",
+      "ismaili-imamate",
+      "ghayba"
+    ],
+    "opposite": null,
+    "related": [
+      "imamate-shia",
+      "dar-al-islam",
+      "siyasa-shariyya",
+      "ulama-state"
+    ]
+  },
+  "hisba-political": {
+    "label": "Hisba (public moral oversight)",
+    "parent": "siyasa-shariyya",
+    "children": [],
+    "siblings": [
+      "siyar",
+      "jihad",
+      "dar-al-islam",
+      "dhimma-political",
+      "amr-bil-maruf-political"
+    ],
+    "opposite": null,
+    "related": [
+      "al-amr-bil-maruf",
+      "hisba",
+      "adl-political",
+      "zulm"
+    ]
+  },
+  "madina-fadila": {
+    "label": "Al-madina al-fadila (virtuous city)",
+    "parent": "siyasa-madaniyya",
+    "children": [
+      "philosopher-king",
+      "virtuous-city",
+      "circle-of-justice",
+      "adl-political"
+    ],
+    "siblings": [
+      "siyasa-shariyya",
+      "imama-sunni",
+      "imama-shia",
+      "akhlaq-adab-genre",
+      "natural-theology"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "al-insan-al-kamil",
+      "happiness-saada",
+      "tahdhib-akhlaq",
+      "falsafa-shariah"
+    ]
+  },
+  "philosopher-king": {
+    "label": "Ra'is al-madina (philosopher-ruler)",
+    "parent": "madina-fadila",
+    "children": [
+      "siyasa-shariyya",
+      "nasiha",
+      "adl-political"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "imama-shia",
+      "circle-of-justice",
+      "akhlaq-adab-genre"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "maqasid-al-shariah",
+      "ulama-state",
+      "shura"
+    ]
+  },
+  "akhlaq-adab-genre": {
+    "label": "Adab al-muluk (mirrors for princes)",
+    "parent": "siyasa-madaniyya",
+    "children": [
+      "circle-of-justice",
+      "adl-political",
+      "nasiha",
+      "philosopher-king"
+    ],
+    "siblings": [
+      "siyasa-shariyya",
+      "imama-sunni",
+      "khilafa",
+      "ulama-state"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "madina-fadila",
+      "virtuous-city",
+      "tahdhib-akhlaq",
+      "hakimiyya"
+    ]
+  },
+  "circle-of-justice": {
+    "label": "Circle of justice",
+    "parent": "siyasa-madaniyya",
+    "children": [],
+    "siblings": [
+      "philosopher-king",
+      "virtuous-city",
+      "madina-fadila",
+      "adl-political",
+      "akhlaq-adab-genre"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "asabiyya",
+      "dynastic-cycle",
+      "nasiha",
+      "siyasa-shariyya"
+    ]
+  },
+  "adl-political": {
+    "label": "'Adl (political justice)",
+    "parent": "siyasa-shariyya",
+    "children": [
+      "circle-of-justice",
+      "adl",
+      "nasiha"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "imama-shia",
+      "khilafa",
+      "sultanate",
+      "akhlaq-adab-genre"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "maqasid-al-shariah",
+      "madina-fadila",
+      "obedience-unjust-ruler"
+    ]
+  },
+  "zulm": {
+    "label": "Zulm (tyranny)",
+    "parent": "siyasa-shariyya",
+    "children": [
+      "obedience-unjust-ruler",
+      "khuruj",
+      "fitna"
+    ],
+    "siblings": [
+      "adl-political",
+      "circle-of-justice",
+      "nasiha",
+      "taghallub",
+      "asabiyya"
+    ],
+    "opposite": "adl-political",
+    "related": [
+      "hakimiyya",
+      "sultanate",
+      "mulk",
+      "imama-sunni"
+    ]
+  },
+  "obedience-unjust-ruler": {
+    "label": "Obedience to the unjust ruler",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "khuruj",
+      "fitna",
+      "amr-bil-maruf-political",
+      "nasiha",
+      "zulm"
+    ],
+    "opposite": "khuruj",
+    "related": [
+      "siyasa-shariyya",
+      "circle-of-justice",
+      "adl-political",
+      "ulama-state"
+    ]
+  },
+  "khuruj": {
+    "label": "Khuruj (armed rebellion)",
+    "parent": "siyasa-shariyya",
+    "children": [],
+    "siblings": [
+      "bughat",
+      "fitna",
+      "obedience-unjust-ruler",
+      "amr-bil-maruf-political",
+      "jihad-political"
+    ],
+    "opposite": "obedience-unjust-ruler",
+    "related": [
+      "zulm",
+      "adl-political",
+      "nasiha",
+      "ulama-state"
+    ]
+  },
+  "fitna": {
+    "label": "Fitna (civil strife)",
+    "parent": "siyasa-shariyya",
+    "children": [],
+    "siblings": [
+      "obedience-unjust-ruler",
+      "khuruj",
+      "bughat",
+      "dar-al-islam",
+      "amr-bil-maruf-political"
+    ],
+    "opposite": "adl-political",
+    "related": [
+      "asabiyya",
+      "dynastic-cycle",
+      "ulama-state",
+      "shura"
+    ]
+  },
+  "amr-bil-maruf-political": {
+    "label": "Commanding right and forbidding wrong (political)",
+    "parent": "siyasa-shariyya",
+    "children": [
+      "nasiha",
+      "khuruj",
+      "hisba-political"
+    ],
+    "siblings": [
+      "dar-al-islam",
+      "dhimma-political",
+      "jihad-political",
+      "obedience-unjust-ruler",
+      "fitna"
+    ],
+    "opposite": "zulm",
+    "related": [
+      "adl-political",
+      "ulama-state",
+      "taghallub"
+    ]
+  },
+  "dar-al-islam": {
+    "label": "Dar al-Islam and dar al-harb",
+    "parent": "siyar",
+    "children": [
+      "dar-al-sulh",
+      "dhimma-political",
+      "jihad-political"
+    ],
+    "siblings": [
+      "siyar",
+      "jihad-political",
+      "aman",
+      "bughat"
+    ],
+    "opposite": null,
+    "related": [
+      "umma",
+      "hakimiyya",
+      "khalq-jadid"
+    ]
+  },
+  "dar-al-sulh": {
+    "label": "Dar al-'ahd / dar al-sulh (abode of treaty)",
+    "parent": "siyar",
+    "children": [],
+    "siblings": [
+      "dar-al-islam",
+      "dhimma-political",
+      "aman",
+      "jihad-political"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "siyar",
+      "ahl-al-hall-wal-aqd"
+    ]
+  },
+  "dhimma-political": {
+    "label": "Dhimma (protected non-Muslim subjects)",
+    "parent": "siyar",
+    "children": [],
+    "siblings": [
+      "jizya",
+      "dar-al-islam",
+      "dar-al-sulh",
+      "jihad-political",
+      "aman"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "hisba-political",
+      "adl-political"
+    ]
+  },
+  "jihad-political": {
+    "label": "Jihad (political-military doctrine)",
+    "parent": "siyar",
+    "children": [
+      "aman",
+      "bughat"
+    ],
+    "siblings": [
+      "siyar",
+      "dar-al-islam",
+      "dar-al-sulh",
+      "dhimma-political"
+    ],
+    "opposite": null,
+    "related": [
+      "hakimiyya",
+      "khuruj",
+      "fitna",
+      "amr-bil-maruf-political"
+    ]
+  },
+  "bughat": {
+    "label": "Bughat (legal rebels)",
+    "parent": "siyar",
+    "children": [],
+    "siblings": [
+      "jihad-political",
+      "khuruj",
+      "fitna",
+      "aman",
+      "dar-al-islam"
+    ],
+    "opposite": "obedience-unjust-ruler",
+    "related": [
+      "siyasa-shariyya",
+      "adl-political",
+      "dhimma-political",
+      "ulama-state"
+    ]
+  },
+  "asabiyya": {
+    "label": "'Asabiyya (group solidarity)",
+    "parent": "siyasa-madaniyya",
+    "children": [],
+    "siblings": [
+      "dynastic-cycle",
+      "mulk",
+      "taghallub",
+      "circle-of-justice",
+      "adl-political"
+    ],
+    "opposite": "fitna",
+    "related": [
+      "ahl-al-hall-wal-aqd",
+      "nasiha",
+      "khuruj",
+      "imama-sunni"
+    ]
+  },
+  "dynastic-cycle": {
+    "label": "Dawla (dynastic cycle)",
+    "parent": "siyasa-shariyya",
+    "children": [
+      "asabiyya",
+      "taghallub",
+      "mulk"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "imama-shia",
+      "khilafa",
+      "sultanate",
+      "circle-of-justice",
+      "adl-political"
+    ],
+    "opposite": null,
+    "related": [
+      "ulama-state",
+      "fitna",
+      "nasiha"
+    ]
+  },
+  "mulk": {
+    "label": "Mulk (kingship) vs khilafa",
+    "parent": "imama-sunni",
+    "children": [
+      "sultanate",
+      "taghallub"
+    ],
+    "siblings": [
+      "khilafa",
+      "imama-shia",
+      "shura",
+      "ahl-al-hall-wal-aqd"
+    ],
+    "opposite": "khilafa",
+    "related": [
+      "siyasa-shariyya",
+      "circle-of-justice",
+      "adl-political",
+      "nasiha"
+    ]
+  },
+  "sultanate": {
+    "label": "Sultana (delegated temporal authority)",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "mulk",
+      "khilafa",
+      "taghallub",
+      "imama-sunni",
+      "ahl-al-hall-wal-aqd"
+    ],
+    "opposite": "khilafa",
+    "related": [
+      "siyasa-shariyya",
+      "adl-political",
+      "nasiha",
+      "ulama-state"
+    ]
+  },
+  "taghallub": {
+    "label": "Taghallub (legitimation by seizure)",
+    "parent": "imama-sunni",
+    "children": [],
+    "siblings": [
+      "nass-designation",
+      "shura",
+      "quraysh-condition",
+      "khariji-imamate",
+      "zaydi-imamate",
+      "bayah"
+    ],
+    "opposite": "nass-designation",
+    "related": [
+      "sultanate",
+      "taghallub",
+      "mulk",
+      "siyasa-shariyya"
+    ]
+  },
+  "nasiha": {
+    "label": "Nasiha (counsel to rulers)",
+    "parent": "siyasa-shariyya",
+    "children": [],
+    "siblings": [
+      "amr-bil-maruf-political",
+      "obedience-unjust-ruler",
+      "khuruj",
+      "ulama-state",
+      "hisba-political"
+    ],
+    "opposite": "khuruj",
+    "related": [
+      "adl-political",
+      "zulm",
+      "akhlaq-adab-genre"
+    ]
+  },
+  "ulama-state": {
+    "label": "'Ulama and state authority",
+    "parent": "imama-sunni",
+    "children": [
+      "fatwa",
+      "ijtihad",
+      "taqlid",
+      "nasiha",
+      "hisba-political"
+    ],
+    "siblings": [
+      "imama-shia",
+      "khilafa",
+      "sultanate",
+      "siyasa-shariyya",
+      "ahl-al-hall-wal-aqd"
+    ],
+    "opposite": null,
+    "related": [
+      "usul-al-fiqh",
+      "ijma",
+      "closing-gate-ijtihad",
+      "islamic-state-modern"
+    ]
+  },
+  "islamic-state-modern": {
+    "label": "Modern Islamic state",
+    "parent": "siyasa-shariyya",
+    "children": [
+      "hakimiyya",
+      "dar-al-islam",
+      "umma"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "imama-shia",
+      "sultanate",
+      "taghallub",
+      "siyasa-madaniyya"
+    ],
+    "opposite": null,
+    "related": [
+      "usul-al-fiqh",
+      "maqasid-al-shariah",
+      "ulama-state",
+      "circle-of-justice"
+    ]
+  },
+  "hakimiyya": {
+    "label": "Hakimiyya (divine sovereignty)",
+    "parent": "siyasa-shariyya",
+    "children": [],
+    "siblings": [
+      "siyasa-madaniyya",
+      "khilafa",
+      "imama-sunni",
+      "imama-shia",
+      "philosopher-king"
+    ],
+    "opposite": "taghallub",
+    "related": [
+      "adl-political",
+      "umma",
+      "dar-al-islam",
+      "amr-bil-maruf-political"
+    ]
+  },
+  "umma": {
+    "label": "Umma (global Muslim community)",
+    "parent": null,
+    "children": [
+      "dar-al-islam",
+      "dar-al-sulh",
+      "dhimma-political",
+      "jihad-political",
+      "hakimiyya"
+    ],
+    "siblings": [
+      "imama-sunni",
+      "imama-shia",
+      "khilafa",
+      "siyasa-shariyya",
+      "shura"
+    ],
+    "opposite": null,
+    "related": [
+      "ahl-al-hall-wal-aqd",
+      "asabiyya",
+      "bayah",
+      "fitna"
+    ]
+  },
+  "tabiiyyat": {
+    "label": "Tabi'iyyat (natural philosophy)",
+    "parent": null,
+    "children": [
+      "scientific-method-ibn-haytham",
+      "optics-manazir",
+      "hayaa",
+      "tibb",
+      "alchemy-kimiya",
+      "geography-masalik"
+    ],
+    "siblings": [
+      "mantiq-lugha",
+      "hikmat-ishraq",
+      "classification-sciences"
+    ],
+    "opposite": "naturalism-tabi",
+    "related": [
+      "occasionalism",
+      "sababiyya",
+      "mathematization-nature",
+      "scientific-observatory"
+    ]
+  },
+  "scientific-method-ibn-haytham": {
+    "label": "Experimental method (i'tibar)",
+    "parent": "tabiiyyat",
+    "children": [
+      "induction-istiqra",
+      "optics-manazir",
+      "scientific-observatory"
+    ],
+    "siblings": [
+      "induction-istiqra",
+      "optics-manazir",
+      "intromission-theory",
+      "dynamics-mayl",
+      "mathematization-nature"
+    ],
+    "opposite": null,
+    "related": [
+      "burhan",
+      "qiyas-mantiqi",
+      "classification-sciences"
+    ]
+  },
+  "induction-istiqra": {
+    "label": "Istiqra' (induction)",
+    "parent": "scientific-method-ibn-haytham",
+    "children": [],
+    "siblings": [
+      "scientific-method-ibn-haytham",
+      "burhan",
+      "qiyas-mantiqi"
+    ],
+    "opposite": null,
+    "related": [
+      "tabiiyyat",
+      "mathematization-nature",
+      "classification-sciences"
+    ]
+  },
+  "optics-manazir": {
+    "label": "'Ilm al-manazir (science of optics)",
+    "parent": "tabiiyyat",
+    "children": [
+      "intromission-theory",
+      "rainbow-explanation",
+      "refraction-law"
+    ],
+    "siblings": [
+      "hayaa",
+      "algebra-jabr",
+      "tibb",
+      "alchemy-kimiya",
+      "geography-masalik"
+    ],
+    "opposite": null,
+    "related": [
+      "scientific-method-ibn-haytham",
+      "mathematization-nature",
+      "astrolabe"
+    ]
+  },
+  "intromission-theory": {
+    "label": "Intromission theory of vision",
+    "parent": "optics-manazir",
+    "children": [],
+    "siblings": [
+      "rainbow-explanation",
+      "refraction-law",
+      "astrolabe"
+    ],
+    "opposite": null,
+    "related": [
+      "scientific-method-ibn-haytham",
+      "naturalism-tabi",
+      "tabiiyyat"
+    ]
+  },
+  "rainbow-explanation": {
+    "label": "Theory of the rainbow",
+    "parent": "optics-manazir",
+    "children": [],
+    "siblings": [
+      "refraction-law",
+      "intromission-theory",
+      "law-of-sines"
+    ],
+    "opposite": null,
+    "related": [
+      "hayaa",
+      "astrolabe",
+      "mathematical-geography"
+    ]
+  },
+  "refraction-law": {
+    "label": "Law of refraction (Ibn Sahl)",
+    "parent": "optics-manazir",
+    "children": [],
+    "siblings": [
+      "intromission-theory",
+      "rainbow-explanation",
+      "refraction-law"
+    ],
+    "opposite": null,
+    "related": [
+      "mathematization-nature",
+      "hayaa"
+    ]
+  },
+  "hayaa": {
+    "label": "'Ilm al-hay'a (theoretical astronomy)",
+    "parent": "tabiiyyat",
+    "children": [
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "earth-rotation",
+      "trepidation"
+    ],
+    "siblings": [
+      "optics-manazir",
+      "algebra-jabr",
+      "tibb",
+      "geography-masalik",
+      "astrolabe"
+    ],
+    "opposite": null,
+    "related": [
+      "cosmology-falak",
+      "zij",
+      "astrolabe",
+      "mathematization-nature"
+    ]
+  },
+  "shukuk-ptolemy": {
+    "label": "Shukuk 'ala Batlamyus (doubts on Ptolemy)",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "earth-rotation",
+      "homocentric-andalusi"
+    ],
+    "opposite": null,
+    "related": [
+      "falsafa-shariah",
+      "tahafut",
+      "mathematization-nature"
+    ]
+  },
+  "tusi-couple": {
+    "label": "Tusi couple",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "shukuk-ptolemy",
+      "earth-rotation",
+      "trepidation"
+    ],
+    "opposite": null,
+    "related": [
+      "zij",
+      "astrolabe",
+      "qibla-determination"
+    ]
+  },
+  "urdi-lemma": {
+    "label": "Urdi lemma",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "tusi-couple",
+      "ibn-al-shatir-model",
+      "shukuk-ptolemy",
+      "homocentric-andalusi"
+    ],
+    "opposite": null,
+    "related": [
+      "zij",
+      "earth-rotation"
+    ]
+  },
+  "ibn-al-shatir-model": {
+    "label": "Ibn al-Shatir's planetary model",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "urdi-lemma",
+      "earth-rotation",
+      "homocentric-andalusi"
+    ],
+    "opposite": null,
+    "related": [
+      "zij",
+      "qibla-determination",
+      "astrolabe"
+    ]
+  },
+  "earth-rotation": {
+    "label": "Possibility of earth's rotation",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "trepidation",
+      "homocentric-andalusi",
+      "ibn-al-shatir-model",
+      "urdi-lemma",
+      "tusi-couple"
+    ],
+    "opposite": null,
+    "related": [
+      "shukuk-ptolemy",
+      "natural-place",
+      "dynamics-mayl"
+    ]
+  },
+  "trepidation": {
+    "label": "Trepidation of the equinoxes",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "earth-rotation"
+    ],
+    "opposite": null,
+    "related": [
+      "zij",
+      "astrolabe",
+      "mathematical-geography"
+    ]
+  },
+  "homocentric-andalusi": {
+    "label": "Andalusi homocentric astronomy",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "earth-rotation"
+    ],
+    "opposite": null,
+    "related": [
+      "cosmology-falak",
+      "mathematization-nature",
+      "scientific-method-ibn-haytham"
+    ]
+  },
+  "zij": {
+    "label": "Zij (astronomical tables)",
+    "parent": "hayaa",
+    "children": [],
+    "siblings": [
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "astrolabe"
+    ],
+    "opposite": null,
+    "related": [
+      "qibla-determination",
+      "miqat",
+      "earth-circumference",
+      "mathematical-geography"
+    ]
+  },
+  "qibla-determination": {
+    "label": "Qibla determination",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "mathematical-geography",
+      "miqat",
+      "astrolabe",
+      "hayaa"
+    ],
+    "opposite": null,
+    "related": [
+      "earth-circumference",
+      "climes-aqalim"
+    ]
+  },
+  "miqat": {
+    "label": "'Ilm al-miqat (timekeeping science)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "hayaa",
+      "qibla-determination",
+      "astrolabe",
+      "zij"
+    ],
+    "opposite": null,
+    "related": []
+  },
+  "astrolabe": {
+    "label": "Astrolabe theory",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "hayaa",
+      "zij",
+      "qibla-determination",
+      "miqat",
+      "astrolabe"
+    ],
+    "opposite": null,
+    "related": [
+      "qibla-determination",
+      "miqat",
+      "mathematical-geography",
+      "trigonometry"
+    ]
+  },
+  "algebra-jabr": {
+    "label": "'Ilm al-jabr wa'l-muqabala (algebra)",
+    "parent": "tabiiyyat",
+    "children": [
+      "cubic-equations",
+      "decimal-fractions"
+    ],
+    "siblings": [
+      "trigonometry",
+      "combinatorics",
+      "law-of-sines",
+      "parallel-postulate"
+    ],
+    "opposite": null,
+    "related": [
+      "mathematization-nature",
+      "classification-sciences"
+    ]
+  },
+  "cubic-equations": {
+    "label": "Geometric solution of cubics",
+    "parent": "algebra-jabr",
+    "children": [],
+    "siblings": [
+      "algebra-jabr",
+      "decimal-fractions",
+      "combinatorics",
+      "binomial-theorem",
+      "parallel-postulate",
+      "trigonometry"
+    ],
+    "opposite": null,
+    "related": [
+      "mathematization-nature",
+      "asl-far"
+    ]
+  },
+  "decimal-fractions": {
+    "label": "Decimal fractions",
+    "parent": "algebra-jabr",
+    "children": [],
+    "siblings": [
+      "algebra-jabr",
+      "cubic-equations",
+      "combinatorics",
+      "binomial-theorem",
+      "trigonometry"
+    ],
+    "opposite": null,
+    "related": [
+      "mathematization-nature",
+      "scientific-method-ibn-haytham",
+      "zij"
+    ]
+  },
+  "combinatorics": {
+    "label": "Combinatorial mathematics",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "algebra-jabr",
+      "cubic-equations",
+      "decimal-fractions",
+      "trigonometry",
+      "law-of-sines",
+      "parallel-postulate"
+    ],
+    "opposite": null,
+    "related": [
+      "binomial-theorem",
+      "classification-sciences",
+      "mathematization-nature"
+    ]
+  },
+  "binomial-theorem": {
+    "label": "Binomial expansion and Pascal's triangle",
+    "parent": "combinatorics",
+    "children": [],
+    "siblings": [
+      "combinatorics",
+      "algebra-jabr",
+      "cubic-equations",
+      "decimal-fractions",
+      "trigonometry",
+      "law-of-sines"
+    ],
+    "opposite": null,
+    "related": [
+      "algebra-jabr",
+      "mathematization-nature",
+      "classification-sciences"
+    ]
+  },
+  "parallel-postulate": {
+    "label": "Parallel postulate investigations",
+    "parent": "mathematization-nature",
+    "children": [],
+    "siblings": [
+      "trigonometry",
+      "law-of-sines",
+      "cubic-equations",
+      "algebra-jabr",
+      "combinatorics"
+    ],
+    "opposite": null,
+    "related": [
+      "scientific-method-ibn-haytham",
+      "classification-sciences",
+      "falsafa-shariah"
+    ]
+  },
+  "trigonometry": {
+    "label": "Spherical trigonometry",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "law-of-sines",
+      "algebra-jabr",
+      "hayaa",
+      "optics-manazir"
+    ],
+    "opposite": null,
+    "related": [
+      "zij",
+      "astrolabe",
+      "qibla-determination",
+      "miqat"
+    ]
+  },
+  "law-of-sines": {
+    "label": "Law of sines",
+    "parent": "trigonometry",
+    "children": [],
+    "siblings": [
+      "trigonometry",
+      "parallel-postulate",
+      "cubic-equations"
+    ],
+    "opposite": null,
+    "related": [
+      "hayaa",
+      "mathematical-geography",
+      "qibla-determination",
+      "astrolabe"
+    ]
+  },
+  "dynamics-mayl": {
+    "label": "Mayl (impressed inclination)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "specific-gravity",
+      "balance-wisdom",
+      "optics-manazir",
+      "hayaa"
+    ],
+    "opposite": "occasionalism",
+    "related": [
+      "sababiyya",
+      "naturalism-tabi",
+      "mathematization-nature",
+      "khalq-jadid"
+    ]
+  },
+  "specific-gravity": {
+    "label": "Specific gravity measurements",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "balance-wisdom",
+      "optics-manazir",
+      "dynamics-mayl",
+      "tibb",
+      "alchemy-kimiya"
+    ],
+    "opposite": null,
+    "related": [
+      "mathematization-nature",
+      "scientific-method-ibn-haytham",
+      "mineralogy",
+      "pharmacology-adwiya"
+    ]
+  },
+  "balance-wisdom": {
+    "label": "Science of weights (hiyal and mizan)",
+    "parent": "tabiiyyat",
+    "children": [
+      "automata"
+    ],
+    "siblings": [
+      "optics-manazir",
+      "dynamics-mayl",
+      "specific-gravity",
+      "algebra-jabr",
+      "hayaa"
+    ],
+    "opposite": null,
+    "related": [
+      "siyasa-shariyya",
+      "sababiyya",
+      "occasionalism"
+    ]
+  },
+  "automata": {
+    "label": "'Ilm al-hiyal (ingenious devices)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "balance-wisdom",
+      "optics-manazir",
+      "algebra-jabr",
+      "tibb",
+      "alchemy-kimiya"
+    ],
+    "opposite": null,
+    "related": [
+      "dynamics-mayl",
+      "mathematical-geography",
+      "scientific-method-ibn-haytham"
+    ]
+  },
+  "tibb": {
+    "label": "Tibb (Galenic-Islamic medicine)",
+    "parent": "tabiiyyat",
+    "children": [
+      "humoral-theory",
+      "mizaj",
+      "pulmonary-circulation",
+      "contagion-debate",
+      "smallpox-measles",
+      "pharmacology-adwiya"
+    ],
+    "siblings": [
+      "optics-manazir",
+      "hayaa",
+      "algebra-jabr",
+      "geography-masalik",
+      "zoology",
+      "botany"
+    ],
+    "opposite": null,
+    "related": [
+      "surgery-zahrawi",
+      "hospitals-bimaristan",
+      "ophthalmology",
+      "tibb-ruhani"
+    ]
+  },
+  "humoral-theory": {
+    "label": "Four humors (akhlat)",
+    "parent": "tibb",
+    "children": [
+      "mizaj",
+      "humoral-theory"
+    ],
+    "siblings": [
+      "pulmonary-circulation",
+      "contagion-debate",
+      "smallpox-measles",
+      "surgery-zahrawi",
+      "pharmacology-adwiya",
+      "ophthalmology"
+    ],
+    "opposite": null,
+    "related": [
+      "balance-wisdom",
+      "specific-gravity",
+      "tibb-ruhani"
+    ]
+  },
+  "mizaj": {
+    "label": "Mizaj (temperament)",
+    "parent": "humoral-theory",
+    "children": [],
+    "siblings": [
+      "humoral-theory",
+      "tibb",
+      "pulmonary-circulation",
+      "pharmacology-adwiya"
+    ],
+    "opposite": null,
+    "related": [
+      "tibb-ruhani",
+      "tahdhib-akhlaq",
+      "mean-virtue"
+    ]
+  },
+  "pulmonary-circulation": {
+    "label": "Pulmonary circulation",
+    "parent": "tibb",
+    "children": [],
+    "siblings": [
+      "humoral-theory",
+      "mizaj",
+      "contagion-debate",
+      "smallpox-measles",
+      "surgery-zahrawi",
+      "pharmacology-adwiya"
+    ],
+    "opposite": null,
+    "related": []
+  },
+  "contagion-debate": {
+    "label": "Contagion ('adwa) debate",
+    "parent": "tibb",
+    "children": [],
+    "siblings": [
+      "humoral-theory",
+      "pulmonary-circulation",
+      "smallpox-measles",
+      "surgery-zahrawi",
+      "pharmacology-adwiya"
+    ],
+    "opposite": null,
+    "related": [
+      "qadar",
+      "adl",
+      "naturalism-tabi"
+    ]
+  },
+  "smallpox-measles": {
+    "label": "Differential diagnosis of smallpox and measles",
+    "parent": "tibb",
+    "children": [],
+    "siblings": [
+      "humoral-theory",
+      "mizaj",
+      "pulmonary-circulation",
+      "contagion-debate",
+      "surgery-zahrawi",
+      "pharmacology-adwiya"
+    ],
+    "opposite": null,
+    "related": [
+      "contagion-debate",
+      "hospitals-bimaristan",
+      "ophthalmology"
+    ]
+  },
+  "surgery-zahrawi": {
+    "label": "Surgical practice",
+    "parent": "tibb",
+    "children": [],
+    "siblings": [
+      "pharmacology-adwiya",
+      "ophthalmology",
+      "humoral-theory",
+      "contagion-debate",
+      "smallpox-measles"
+    ],
+    "opposite": null,
+    "related": [
+      "hospitals-bimaristan",
+      "mizaj",
+      "pulmonary-circulation"
+    ]
+  },
+  "hospitals-bimaristan": {
+    "label": "Bimaristan (teaching hospital)",
+    "parent": "tabiiyyat",
+    "children": [
+      "tibb",
+      "surgery-zahrawi",
+      "pharmacology-adwiya",
+      "ophthalmology",
+      "humoral-theory"
+    ],
+    "siblings": [
+      "tibb",
+      "optics-manazir",
+      "hayaa",
+      "scientific-observatory"
+    ],
+    "opposite": null,
+    "related": [
+      "pulmonary-circulation",
+      "contagion-debate",
+      "smallpox-measles",
+      "scientific-method-ibn-haytham"
+    ]
+  },
+  "pharmacology-adwiya": {
+    "label": "'Ilm al-adwiya (materia medica)",
+    "parent": "tabiiyyat",
+    "children": [
+      "humoral-theory",
+      "mizaj",
+      "pulmonary-circulation",
+      "contagion-debate",
+      "surgery-zahrawi"
+    ],
+    "siblings": [
+      "tibb",
+      "optics-manazir",
+      "alchemy-kimiya",
+      "botany",
+      "zoology"
+    ],
+    "opposite": null,
+    "related": [
+      "hospitals-bimaristan",
+      "smallpox-measles",
+      "ophthalmology"
+    ]
+  },
+  "ophthalmology": {
+    "label": "'Ilm al-kuhl (ophthalmology)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "tibb",
+      "surgery-zahrawi",
+      "pharmacology-adwiya",
+      "hospitals-bimaristan",
+      "humoral-theory"
+    ],
+    "opposite": null,
+    "related": [
+      "mizaj",
+      "contagion-debate",
+      "smallpox-measles"
+    ]
+  },
+  "alchemy-kimiya": {
+    "label": "Kimiya (alchemy)",
+    "parent": "tabiiyyat",
+    "children": [
+      "sulfur-mercury",
+      "critique-alchemy"
+    ],
+    "siblings": [
+      "tibb",
+      "optics-manazir",
+      "alchemy-kimiya",
+      "hayaa",
+      "algebra-jabr",
+      "geography-masalik"
+    ],
+    "opposite": null,
+    "related": [
+      "naturalism-tabi",
+      "mathematization-nature",
+      "scientific-method-ibn-haytham"
+    ]
+  },
+  "sulfur-mercury": {
+    "label": "Sulfur-mercury theory",
+    "parent": "alchemy-kimiya",
+    "children": [],
+    "siblings": [
+      "critique-alchemy",
+      "humoral-theory"
+    ],
+    "opposite": null,
+    "related": [
+      "naturalism-tabi",
+      "mathematization-nature",
+      "tibb"
+    ]
+  },
+  "critique-alchemy": {
+    "label": "Critique of alchemical transmutation",
+    "parent": "alchemy-kimiya",
+    "children": [],
+    "siblings": [
+      "sulfur-mercury",
+      "tibb"
+    ],
+    "opposite": "alchemy-kimiya",
+    "related": [
+      "naturalism-tabi",
+      "causality-falsafa",
+      "tabiiyyat"
+    ]
+  },
+  "geography-masalik": {
+    "label": "Masalik wa mamalik (human geography)",
+    "parent": "tabiiyyat",
+    "children": [
+      "mathematical-geography",
+      "earth-circumference",
+      "climes-aqalim",
+      "cartography"
+    ],
+    "siblings": [
+      "hayaa",
+      "mineralogy",
+      "botany",
+      "zoology",
+      "agronomy-filaha"
+    ],
+    "opposite": null,
+    "related": [
+      "cosmology-falak",
+      "miqat",
+      "qibla-determination"
+    ]
+  },
+  "mathematical-geography": {
+    "label": "Mathematical geography",
+    "parent": "geography-masalik",
+    "children": [
+      "qibla-determination",
+      "earth-circumference",
+      "climes-aqalim"
+    ],
+    "siblings": [
+      "zij",
+      "astrolabe",
+      "earth-rotation"
+    ],
+    "opposite": null,
+    "related": [
+      "cartography",
+      "miqat",
+      "scientific-observatory"
+    ]
+  },
+  "earth-circumference": {
+    "label": "Measurement of earth's circumference",
+    "parent": "mathematical-geography",
+    "children": [],
+    "siblings": [
+      "mathematical-geography",
+      "climes-aqalim",
+      "cartography",
+      "qibla-determination"
+    ],
+    "opposite": null,
+    "related": [
+      "hayaa",
+      "astrolabe",
+      "zij",
+      "cosmology-falak"
+    ]
+  },
+  "climes-aqalim": {
+    "label": "Seven climes (aqalim)",
+    "parent": "mathematical-geography",
+    "children": [],
+    "siblings": [
+      "earth-circumference",
+      "mathematical-geography",
+      "cartography",
+      "mineralogy"
+    ],
+    "opposite": null,
+    "related": [
+      "geography-masalik",
+      "cosmology-falak",
+      "astrology-ahkam"
+    ]
+  },
+  "mineralogy": {
+    "label": "Mineralogy and gemology",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "botany",
+      "zoology",
+      "geography-masalik",
+      "alchemy-kimiya"
+    ],
+    "opposite": null,
+    "related": [
+      "balance-wisdom",
+      "pharmacology-adwiya",
+      "specific-gravity"
+    ]
+  },
+  "botany": {
+    "label": "'Ilm al-nabat (botany)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "zoology",
+      "mineralogy",
+      "geography-masalik",
+      "agronomy-filaha"
+    ],
+    "opposite": null,
+    "related": [
+      "pharmacology-adwiya",
+      "tibb",
+      "classification-sciences"
+    ]
+  },
+  "zoology": {
+    "label": "'Ilm al-hayawan (zoology)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "botany",
+      "mineralogy",
+      "optics-manazir",
+      "tibb",
+      "geography-masalik"
+    ],
+    "opposite": null,
+    "related": [
+      "naturalism-tabi",
+      "classification-sciences",
+      "agronomy-filaha"
+    ]
+  },
+  "agronomy-filaha": {
+    "label": "Filaha (agronomy)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "botany",
+      "zoology",
+      "mineralogy",
+      "geography-masalik",
+      "tibb"
+    ],
+    "opposite": null,
+    "related": [
+      "balance-wisdom",
+      "specific-gravity",
+      "earth-circumference"
+    ]
+  },
+  "cartography": {
+    "label": "Cartographic representation",
+    "parent": "geography-masalik",
+    "children": [],
+    "siblings": [
+      "mathematical-geography",
+      "earth-circumference",
+      "climes-aqalim",
+      "qibla-determination"
+    ],
+    "opposite": null,
+    "related": [
+      "zij",
+      "astrolabe",
+      "hayaa"
+    ]
+  },
+  "cosmology-falak": {
+    "label": "Celestial sphere cosmology (aflak)",
+    "parent": "tabiiyyat",
+    "children": [
+      "hayaa",
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "urdi-lemma",
+      "ibn-al-shatir-model",
+      "earth-rotation"
+    ],
+    "siblings": [
+      "optics-manazir",
+      "zij",
+      "qibla-determination",
+      "astrolabe",
+      "astrology-ahkam"
+    ],
+    "opposite": null,
+    "related": [
+      "trepidation",
+      "homocentric-andalusi",
+      "mathematization-nature",
+      "scientific-observatory"
+    ]
+  },
+  "astrology-ahkam": {
+    "label": "Ahkam al-nujum (judicial astrology)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "cosmology-falak",
+      "asbab-al-nuzul-cosmic"
+    ],
+    "opposite": "critique-astrology",
+    "related": [
+      "science-of-letters",
+      "jafr",
+      "abjad",
+      "tajalli"
+    ]
+  },
+  "critique-astrology": {
+    "label": "Critique of astrology",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "astrology-ahkam",
+      "optics-manazir",
+      "shukuk-ptolemy",
+      "alchemy-kimiya"
+    ],
+    "opposite": "astrology-ahkam",
+    "related": [
+      "qadar",
+      "causality-falsafa",
+      "divine-knowledge-particulars"
+    ]
+  },
+  "classification-sciences": {
+    "label": "Classification of the sciences",
+    "parent": null,
+    "children": [
+      "mathematization-nature",
+      "tabiiyyat",
+      "nahw",
+      "mantiq-lugha"
+    ],
+    "siblings": [
+      "scientific-method-ibn-haytham",
+      "falsafa-shariah",
+      "usul-al-fiqh",
+      "tafkir-aqli"
+    ],
+    "opposite": null,
+    "related": [
+      "burhan",
+      "qiyas-mantiqi",
+      "five-arts"
+    ]
+  },
+  "mathematization-nature": {
+    "label": "Mathematization of physics",
+    "parent": "tabiiyyat",
+    "children": [
+      "optics-manazir",
+      "dynamics-mayl",
+      "balance-wisdom",
+      "trigonometry"
+    ],
+    "siblings": [
+      "scientific-method-ibn-haytham",
+      "induction-istiqra",
+      "classification-sciences",
+      "naturalism-tabi"
+    ],
+    "opposite": "naturalism-tabi",
+    "related": [
+      "algebra-jabr",
+      "hayaa",
+      "automata",
+      "scientific-observatory"
+    ]
+  },
+  "naturalism-tabi": {
+    "label": "Naturalism (tab') vs occasionalism",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "occasionalism",
+      "sababiyya",
+      "causality-falsafa",
+      "khalq-jadid",
+      "mayl"
+    ],
+    "opposite": "occasionalism",
+    "related": [
+      "atomism-kalam",
+      "hudus-al-alam",
+      "asbab-al-mutawassita",
+      "divine-simplicity"
+    ]
+  },
+  "scientific-observatory": {
+    "label": "Marsad (observatory institution)",
+    "parent": "tabiiyyat",
+    "children": [
+      "zij",
+      "hayaa",
+      "astrolabe",
+      "qibla-determination"
+    ],
+    "siblings": [
+      "scientific-method-ibn-haytham",
+      "optics-manazir",
+      "mathematization-nature",
+      "classification-sciences"
+    ],
+    "opposite": null,
+    "related": [
+      "shukuk-ptolemy",
+      "tusi-couple",
+      "ibn-al-shatir-model",
+      "miqat"
+    ]
+  },
+  "islam-and-modern-science": {
+    "label": "Islam and modern science (modern debate)",
+    "parent": "tabiiyyat",
+    "children": [],
+    "siblings": [
+      "scientific-method-ibn-haytham",
+      "mathematization-nature",
+      "naturalism-tabi",
+      "critique-astrology",
+      "classification-sciences"
+    ],
+    "opposite": null,
+    "related": [
+      "falsafa-shariah",
+      "tafkir-aqli",
+      "ijaz-al-quran"
+    ]
+  },
+  "nahw": {
+    "label": "Nahw (Arabic grammar / syntax)",
+    "parent": null,
+    "children": [
+      "sarf",
+      "amil",
+      "irab",
+      "illa-nahwiyya",
+      "ishtiqaq"
+    ],
+    "siblings": [
+      "lugha",
+      "balagha",
+      "logic-vs-grammar",
+      "poetics-shir"
+    ],
+    "opposite": null,
+    "related": [
+      "sama-qiyas",
+      "fasaha",
+      "lahn",
+      "mantiq-lugha"
+    ]
+  },
+  "sarf": {
+    "label": "Sarf (morphology)",
+    "parent": "lugha",
+    "children": [
+      "ishtiqaq",
+      "ishtiqaq-akbar",
+      "arabization-tarib",
+      "asl-far",
+      "wad"
+    ],
+    "siblings": [
+      "nahw",
+      "lugha",
+      "amil",
+      "irab"
+    ],
+    "opposite": null,
+    "related": [
+      "sama-qiyas",
+      "illa-nahwiyya",
+      "fasaha",
+      "origin-of-language"
+    ]
+  },
+  "lugha": {
+    "label": "'Ilm al-lugha (lexicography)",
+    "parent": "tabiiyyat",
+    "children": [
+      "dictionary-ayn",
+      "rhyme-dictionary",
+      "thematic-lexicography",
+      "gharib-al-quran",
+      "furuq-lughawiyya",
+      "addad"
+    ],
+    "siblings": [
+      "nahw",
+      "sarf",
+      "balagha",
+      "poetics-shir",
+      "calligraphy-khatt"
+    ],
+    "opposite": null,
+    "related": [
+      "ishtiqaq",
+      "dalala",
+      "haqiqa-majaz-linguistic",
+      "tafsir-lughawi"
+    ]
+  },
+  "amil": {
+    "label": "'Amil (syntactic governance)",
+    "parent": "nahw",
+    "children": [
+      "illa-nahwiyya",
+      "asl-far"
+    ],
+    "siblings": [
+      "sarf",
+      "lugha",
+      "basra-kufa-disputes",
+      "irab",
+      "sama-qiyas"
+    ],
+    "opposite": null,
+    "related": [
+      "fasaha",
+      "lahn",
+      "logic-vs-grammar",
+      "mantiq-lugha"
+    ]
+  },
+  "basra-kufa-disputes": {
+    "label": "Basran–Kufan grammatical disputes",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "sama-qiyas",
+      "illa-nahwiyya",
+      "asl-far",
+      "fasaha",
+      "irab"
+    ],
+    "opposite": null,
+    "related": [
+      "shawahid",
+      "poetic-license",
+      "logic-vs-grammar"
+    ]
+  },
+  "irab": {
+    "label": "I'rab (case and mood inflection)",
+    "parent": "nahw",
+    "children": [
+      "makharij",
+      "sifat-al-huruf"
+    ],
+    "siblings": [
+      "sarf",
+      "lugha",
+      "amil",
+      "fasaha"
+    ],
+    "opposite": null,
+    "related": [
+      "ishtiqaq",
+      "dalala",
+      "haqiqa-majaz-linguistic"
+    ]
+  },
+  "sama-qiyas": {
+    "label": "Sama' and qiyas in grammar",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "illa-nahwiyya",
+      "asl-far",
+      "ishtiqaq",
+      "shawahid",
+      "fasaha"
+    ],
+    "opposite": null,
+    "related": [
+      "qiyas-mantiqi",
+      "illa",
+      "logic-vs-grammar"
+    ]
+  },
+  "illa-nahwiyya": {
+    "label": "'Illa (grammatical causation)",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "amil",
+      "irab",
+      "asl-far"
+    ],
+    "opposite": null,
+    "related": [
+      "sama-qiyas",
+      "grammatical-abridgment",
+      "logic-vs-grammar"
+    ]
+  },
+  "asl-far": {
+    "label": "Asl and far' (root and branch)",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "ishtiqaq",
+      "ishtiqaq-akbar",
+      "illa-nahwiyya",
+      "sama-qiyas",
+      "amil"
+    ],
+    "opposite": null,
+    "related": [
+      "fasaha",
+      "lahn",
+      "shawahid",
+      "poetic-license"
+    ]
+  },
+  "fasaha": {
+    "label": "Fasaha (linguistic purity)",
+    "parent": "lugha",
+    "children": [
+      "arabiyya-fusha",
+      "lahn",
+      "dialects-lughat",
+      "shawahid"
+    ],
+    "siblings": [
+      "nahw",
+      "sarf",
+      "ishtiqaq",
+      "origin-of-language",
+      "balagha"
+    ],
+    "opposite": "lahn",
+    "related": [
+      "hadith-as-grammatical-evidence",
+      "poetic-license",
+      "ijaz-al-quran-linguistic",
+      "tafsir-lughawi"
+    ]
+  },
+  "arabiyya-fusha": {
+    "label": "Al-'arabiyya al-fusha (classical standard)",
+    "parent": "lugha",
+    "children": [
+      "fasaha",
+      "lahn",
+      "dialects-lughat"
+    ],
+    "siblings": [
+      "nahw",
+      "sarf",
+      "balagha",
+      "poetics-shir"
+    ],
+    "opposite": "diglossia-aammiyya",
+    "related": [
+      "shawahid",
+      "ishtiqaq",
+      "qiraat",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "lahn": {
+    "label": "Lahn (solecism)",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "fasaha",
+      "arabiyya-fusha",
+      "irab",
+      "basra-kufa-disputes"
+    ],
+    "opposite": "fasaha",
+    "related": [
+      "lugha",
+      "sarf",
+      "poetic-license",
+      "hadith-as-grammatical-evidence"
+    ]
+  },
+  "dialects-lughat": {
+    "label": "Lughat (tribal dialects)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "fasaha",
+      "arabiyya-fusha",
+      "lahn",
+      "shawahid",
+      "dialects-lughat"
+    ],
+    "opposite": "arabiyya-fusha",
+    "related": [
+      "sama-qiyas",
+      "basra-kufa-disputes",
+      "hadith-as-grammatical-evidence",
+      "diglossia-aammiyya"
+    ]
+  },
+  "shawahid": {
+    "label": "Shawahid (evidentiary citations)",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "sama-qiyas",
+      "illa-nahwiyya",
+      "asl-far",
+      "fasaha",
+      "poetic-license"
+    ],
+    "opposite": null,
+    "related": [
+      "hadith-as-grammatical-evidence",
+      "ijaz-al-quran-linguistic",
+      "tafsir-lughawi",
+      "logic-vs-grammar"
+    ]
+  },
+  "hadith-as-grammatical-evidence": {
+    "label": "Hadith as grammatical evidence",
+    "parent": "tafsir-lughawi",
+    "children": [],
+    "siblings": [
+      "sama-qiyas",
+      "shawahid",
+      "poetic-license",
+      "basra-kufa-disputes"
+    ],
+    "opposite": null,
+    "related": [
+      "lugha",
+      "nahw",
+      "illa-nahwiyya"
+    ]
+  },
+  "poetic-license": {
+    "label": "Darura shi'riyya (poetic license)",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "illa-nahwiyya",
+      "asl-far",
+      "fasaha",
+      "lahn",
+      "irab"
+    ],
+    "opposite": "fasaha",
+    "related": [
+      "shawahid",
+      "hadith-as-grammatical-evidence",
+      "poetics-shir",
+      "takhyil"
+    ]
+  },
+  "ishtiqaq": {
+    "label": "Ishtiqaq (derivation)",
+    "parent": "lugha",
+    "children": [
+      "ishtiqaq-akbar"
+    ],
+    "siblings": [
+      "sarf",
+      "nahw",
+      "irab",
+      "amil",
+      "dalala"
+    ],
+    "opposite": null,
+    "related": [
+      "asl-far",
+      "wad",
+      "origin-of-language",
+      "tafsir-lughawi"
+    ]
+  },
+  "ishtiqaq-akbar": {
+    "label": "Ishtiqaq akbar (greater derivation)",
+    "parent": "ishtiqaq",
+    "children": [],
+    "siblings": [
+      "ishtiqaq",
+      "dalala",
+      "mushtarak",
+      "taraduf",
+      "addad"
+    ],
+    "opposite": null,
+    "related": [
+      "irab",
+      "asl-far",
+      "furuq-lughawiyya",
+      "wad"
+    ]
+  },
+  "arabization-tarib": {
+    "label": "Ta'rib (arabization of loanwords)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "ishtiqaq",
+      "wad",
+      "dalala",
+      "origin-of-language",
+      "arabiyya-fusha"
+    ],
+    "opposite": null,
+    "related": [
+      "fasaha",
+      "lahn",
+      "dialects-lughat"
+    ]
+  },
+  "origin-of-language": {
+    "label": "Origin of language (tawqif vs istilah)",
+    "parent": "lugha",
+    "children": [
+      "wad"
+    ],
+    "siblings": [
+      "ishtiqaq",
+      "dalala",
+      "arabization-tarib",
+      "wad"
+    ],
+    "opposite": null,
+    "related": [
+      "fasaha",
+      "lahn",
+      "poetic-license"
+    ]
+  },
+  "wad": {
+    "label": "Wad' al-lugha (linguistic positing)",
+    "parent": "lugha",
+    "children": [
+      "dalala",
+      "haqiqa-majaz-linguistic",
+      "ishtiqaq",
+      "taraduf"
+    ],
+    "siblings": [
+      "origin-of-language",
+      "arabization-tarib",
+      "ishtiqaq",
+      "dalala",
+      "fasaha"
+    ],
+    "opposite": "origin-of-language",
+    "related": [
+      "amil",
+      "mantiq-lugha",
+      "mushtarak",
+      "addad"
+    ]
+  },
+  "dalala": {
+    "label": "Dalala (signification)",
+    "parent": "lugha",
+    "children": [
+      "haqiqa-majaz-linguistic",
+      "kinaya",
+      "mushtarak",
+      "taraduf",
+      "addad"
+    ],
+    "siblings": [
+      "ishtiqaq",
+      "wad",
+      "fasaha",
+      "lafz-mana",
+      "tafsir-lughawi"
+    ],
+    "opposite": null,
+    "related": [
+      "amil",
+      "sama-qiyas",
+      "mantiq-lugha",
+      "haqiqa-majaz"
+    ]
+  },
+  "haqiqa-majaz-linguistic": {
+    "label": "Haqiqa and majaz (literal and figurative)",
+    "parent": "balagha",
+    "children": [
+      "kinaya",
+      "istiara",
+      "majaz-mursal"
+    ],
+    "siblings": [
+      "tashbih-balagha",
+      "maani",
+      "bayan",
+      "badi",
+      "nazm"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "tafsir-lughawi",
+      "dalala",
+      "haqiqa-majaz"
+    ]
+  },
+  "kinaya": {
+    "label": "Kinaya (allusive indirect speech)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "tashbih-balagha",
+      "istiara",
+      "majaz-mursal"
+    ],
+    "opposite": "haqiqa-majaz-linguistic",
+    "related": [
+      "dalala",
+      "maani",
+      "bayan",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "tashbih-balagha": {
+    "label": "Tashbih (simile)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "istiara",
+      "majaz-mursal",
+      "kinaya"
+    ],
+    "opposite": null,
+    "related": [
+      "bayan",
+      "lafz-mana",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "istiara": {
+    "label": "Isti'ara (metaphor)",
+    "parent": "bayan",
+    "children": [],
+    "siblings": [
+      "tashbih-balagha",
+      "kinaya",
+      "majaz-mursal",
+      "haqiqa-majaz-linguistic"
+    ],
+    "opposite": "haqiqa-majaz-linguistic",
+    "related": [
+      "balagha",
+      "ijaz-al-quran-linguistic",
+      "takhyil"
+    ]
+  },
+  "majaz-mursal": {
+    "label": "Majaz mursal (metonymy)",
+    "parent": "haqiqa-majaz-linguistic",
+    "children": [],
+    "siblings": [
+      "istiara",
+      "tashbih-balagha",
+      "kinaya"
+    ],
+    "opposite": "haqiqa-majaz-linguistic",
+    "related": [
+      "balagha",
+      "bayan",
+      "dalala",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "balagha": {
+    "label": "Balagha (eloquence)",
+    "parent": null,
+    "children": [
+      "maani",
+      "bayan",
+      "badi",
+      "nazm",
+      "ijaz-al-quran-linguistic"
+    ],
+    "siblings": [
+      "fasaha",
+      "nahw",
+      "sarf",
+      "lugha",
+      "poetics-shir"
+    ],
+    "opposite": null,
+    "related": [
+      "tashbih-balagha",
+      "istiara",
+      "majaz-mursal",
+      "kinaya"
+    ]
+  },
+  "maani": {
+    "label": "'Ilm al-ma'ani (science of meanings)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "bayan",
+      "badi"
+    ],
+    "opposite": null,
+    "related": [
+      "nazm",
+      "lafz-mana",
+      "dalala",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "bayan": {
+    "label": "'Ilm al-bayan (science of clarity)",
+    "parent": "balagha",
+    "children": [
+      "tashbih-balagha",
+      "istiara",
+      "majaz-mursal",
+      "kinaya"
+    ],
+    "siblings": [
+      "maani",
+      "badi"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "nazm",
+      "lafz-mana",
+      "haqiqa-majaz-linguistic"
+    ]
+  },
+  "badi": {
+    "label": "'Ilm al-badi' (rhetorical embellishment)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "maani",
+      "bayan"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "nazm",
+      "tashbih-balagha",
+      "istiara"
+    ]
+  },
+  "nazm": {
+    "label": "Nazm (theory of syntactic composition)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "maani",
+      "bayan",
+      "badi",
+      "ijaz-al-quran-linguistic",
+      "lafz-mana"
+    ],
+    "opposite": null,
+    "related": [
+      "tafsir-lughawi",
+      "ijaz-al-quran",
+      "qanun-al-tawil"
+    ]
+  },
+  "ijaz-al-quran-linguistic": {
+    "label": "I'jaz al-Qur'an (linguistic inimitability)",
+    "parent": "ijaz-al-quran",
+    "children": [
+      "sarfa-linguistic",
+      "tafsir-lughawi",
+      "gharib-al-quran",
+      "wujuh-nazair"
+    ],
+    "siblings": [
+      "ijaz-al-quran",
+      "kalam-allah",
+      "qiraat",
+      "tajwid",
+      "mujiza"
+    ],
+    "opposite": null,
+    "related": [
+      "balagha",
+      "nazm",
+      "fasaha",
+      "tashbih-balagha"
+    ]
+  },
+  "sarfa-linguistic": {
+    "label": "Sarfa (deflection theory of inimitability)",
+    "parent": "ijaz-al-quran",
+    "children": [],
+    "siblings": [
+      "ijaz-al-quran-linguistic",
+      "takhyil"
+    ],
+    "opposite": "ijaz-al-quran-linguistic",
+    "related": [
+      "mujiza",
+      "tafsir-lughawi"
+    ]
+  },
+  "tafsir-lughawi": {
+    "label": "Tafsir lughawi (linguistic exegesis)",
+    "parent": null,
+    "children": [
+      "gharib-al-quran",
+      "mushkil-al-quran",
+      "wujuh-nazair"
+    ],
+    "siblings": [
+      "tafsir-ishari",
+      "ijaz-al-quran-linguistic",
+      "sarfa-linguistic"
+    ],
+    "opposite": "tafsir-ishari",
+    "related": [
+      "bayan",
+      "maani",
+      "qiraat",
+      "haqiqa-majaz-linguistic"
+    ]
+  },
+  "gharib-al-quran": {
+    "label": "Gharib al-Qur'an (rare Qur'anic vocabulary)",
+    "parent": "tafsir-lughawi",
+    "children": [],
+    "siblings": [
+      "mushkil-al-quran",
+      "wujuh-nazair",
+      "ijaz-al-quran-linguistic",
+      "sarfa-linguistic"
+    ],
+    "opposite": null,
+    "related": [
+      "lugha",
+      "balagha",
+      "fasaha",
+      "qiraat"
+    ]
+  },
+  "mushkil-al-quran": {
+    "label": "Mushkil al-Qur'an (problematic passages)",
+    "parent": "tafsir-lughawi",
+    "children": [],
+    "siblings": [
+      "gharib-al-quran",
+      "wujuh-nazair",
+      "ijaz-al-quran-linguistic",
+      "qiraat"
+    ],
+    "opposite": null,
+    "related": [
+      "qanun-al-tawil",
+      "tawil",
+      "balagha"
+    ]
+  },
+  "wujuh-nazair": {
+    "label": "Wujuh wa naza'ir (polysemy in Qur'an)",
+    "parent": "tafsir-lughawi",
+    "children": [],
+    "siblings": [
+      "gharib-al-quran",
+      "mushkil-al-quran",
+      "ijaz-al-quran-linguistic",
+      "qiraat"
+    ],
+    "opposite": "mushtarak",
+    "related": [
+      "haqiqa-majaz-linguistic",
+      "dalala",
+      "furuq-lughawiyya"
+    ]
+  },
+  "qiraat": {
+    "label": "Qira'at (canonical readings)",
+    "parent": "ijaz-al-quran",
+    "children": [
+      "tajwid",
+      "makharij",
+      "sifat-al-huruf",
+      "idgham",
+      "imala"
+    ],
+    "siblings": [
+      "tajwid",
+      "tafsir-lughawi",
+      "gharib-al-quran",
+      "mushkil-al-quran",
+      "wujuh-nazair"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "sarfa-linguistic",
+      "lafz-mana"
+    ]
+  },
+  "tajwid": {
+    "label": "Tajwid (rules of recitation)",
+    "parent": "qiraat",
+    "children": [
+      "makharij",
+      "sifat-al-huruf",
+      "imala",
+      "idgham"
+    ],
+    "siblings": [
+      "qiraat",
+      "qafiya",
+      "prosody-arud",
+      "gharib-al-quran",
+      "mushkil-al-quran"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "tafsir-lughawi",
+      "makharij"
+    ]
+  },
+  "makharij": {
+    "label": "Makharij al-huruf (articulation points)",
+    "parent": "tajwid",
+    "children": [
+      "sifat-al-huruf"
+    ],
+    "siblings": [
+      "sifat-al-huruf",
+      "idgham",
+      "imala",
+      "qiraat"
+    ],
+    "opposite": null,
+    "related": [
+      "nahw",
+      "sarf",
+      "fasaha"
+    ]
+  },
+  "sifat-al-huruf": {
+    "label": "Sifat al-huruf (phonetic qualities)",
+    "parent": "tajwid",
+    "children": [],
+    "siblings": [
+      "makharij",
+      "imala",
+      "idgham"
+    ],
+    "opposite": null,
+    "related": [
+      "sarf",
+      "nahw",
+      "fasaha"
+    ]
+  },
+  "imala": {
+    "label": "Imala (vowel fronting)",
+    "parent": "sifat-al-huruf",
+    "children": [],
+    "siblings": [
+      "idgham",
+      "makharij",
+      "tajwid"
+    ],
+    "opposite": null,
+    "related": [
+      "qiraat",
+      "tafsir-lughawi",
+      "dialects-lughat"
+    ]
+  },
+  "idgham": {
+    "label": "Idgham (assimilation)",
+    "parent": "sifat-al-huruf",
+    "children": [],
+    "siblings": [
+      "imala",
+      "makharij",
+      "tajwid",
+      "idgham"
+    ],
+    "opposite": null,
+    "related": [
+      "tajwid",
+      "qiraat",
+      "sifat-al-huruf"
+    ]
+  },
+  "prosody-arud": {
+    "label": "'Arud (prosody)",
+    "parent": "poetics-shir",
+    "children": [
+      "qafiya",
+      "makharij",
+      "sifat-al-huruf",
+      "tajwid"
+    ],
+    "siblings": [
+      "qafiya",
+      "poetics-shir",
+      "takhyil",
+      "sariqat",
+      "lafz-mana"
+    ],
+    "opposite": null,
+    "related": [
+      "balagha",
+      "bayan",
+      "nazm",
+      "ijaz-al-quran-linguistic"
+    ]
+  },
+  "qafiya": {
+    "label": "Qafiya (rhyme theory)",
+    "parent": "poetics-shir",
+    "children": [],
+    "siblings": [
+      "prosody-arud",
+      "takhyil",
+      "sariqat",
+      "lafz-mana"
+    ],
+    "opposite": null,
+    "related": [
+      "balagha",
+      "badi",
+      "ijaz-al-quran-linguistic",
+      "maqama-rhymed-prose"
+    ]
+  },
+  "poetics-shir": {
+    "label": "'Ilm al-shi'r (poetic theory)",
+    "parent": "lugha",
+    "children": [
+      "takhyil",
+      "sariqat",
+      "lafz-mana",
+      "prosody-arud",
+      "qafiya"
+    ],
+    "siblings": [
+      "balagha",
+      "maani",
+      "bayan",
+      "badi",
+      "nazm"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "tafsir-lughawi",
+      "shawahid"
+    ]
+  },
+  "takhyil": {
+    "label": "Takhyil (poetic imagination)",
+    "parent": "poetics-shir",
+    "children": [],
+    "siblings": [
+      "sariqat",
+      "lafz-mana",
+      "tashbih-balagha",
+      "istiara",
+      "majaz-mursal"
+    ],
+    "opposite": null,
+    "related": [
+      "prophetic-imagination",
+      "khayal",
+      "tajalli"
+    ]
+  },
+  "sariqat": {
+    "label": "Sariqat shi'riyya (poetic plagiarism)",
+    "parent": "poetics-shir",
+    "children": [],
+    "siblings": [
+      "takhyil",
+      "lafz-mana",
+      "tashbih-balagha",
+      "istiara",
+      "majaz-mursal"
+    ],
+    "opposite": null,
+    "related": [
+      "fasaha",
+      "shawahid",
+      "poetic-license"
+    ]
+  },
+  "lafz-mana": {
+    "label": "Lafz and ma'na (word and meaning)",
+    "parent": "balagha",
+    "children": [
+      "nazm",
+      "takhyil",
+      "ijaz-al-quran-linguistic"
+    ],
+    "siblings": [
+      "maani",
+      "bayan",
+      "badi",
+      "tashbih-balagha",
+      "istiara"
+    ],
+    "opposite": null,
+    "related": [
+      "logic-vs-grammar",
+      "dalala",
+      "haqiqa-majaz-linguistic"
+    ]
+  },
+  "logic-vs-grammar": {
+    "label": "Grammar versus logic debate",
+    "parent": "mantiq-lugha",
+    "children": [
+      "amm-khass-ling",
+      "mushtarak",
+      "taraduf",
+      "furuq-lughawiyya"
+    ],
+    "siblings": [
+      "mantiq-lugha",
+      "sama-qiyas",
+      "illa-nahwiyya",
+      "tafsir-lughawi",
+      "nazm"
+    ],
+    "opposite": null,
+    "related": [
+      "amil",
+      "dalala",
+      "irab",
+      "fasaha"
+    ]
+  },
+  "mantiq-lugha": {
+    "label": "Logic of language in usul",
+    "parent": "usul-al-fiqh",
+    "children": [
+      "amm-khass-ling",
+      "amr-nahy",
+      "mutlaq-muqayyad",
+      "mushtarak"
+    ],
+    "siblings": [
+      "amm-khass",
+      "logic-vs-grammar",
+      "haqiqa-majaz-linguistic",
+      "dalala"
+    ],
+    "opposite": "logic-vs-grammar",
+    "related": [
+      "tafsir-lughawi",
+      "qanun-al-tawil",
+      "takhsis",
+      "naskh"
+    ]
+  },
+  "amm-khass-ling": {
+    "label": "'Amm and khass as linguistic forms",
+    "parent": "mantiq-lugha",
+    "children": [],
+    "siblings": [
+      "amm-khass",
+      "mutlaq-muqayyad",
+      "mujmal-mubayyan",
+      "nass-zahir",
+      "haqiqa-majaz-linguistic",
+      "mushtarak"
+    ],
+    "opposite": null,
+    "related": [
+      "tafsir-lughawi",
+      "dalala",
+      "wad",
+      "logic-vs-grammar"
+    ]
+  },
+  "mushtarak": {
+    "label": "Mushtarak (homonymy)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "taraduf",
+      "addad",
+      "furuq-lughawiyya",
+      "wujuh-nazair"
+    ],
+    "opposite": "taraduf",
+    "related": [
+      "dalala",
+      "haqiqa-majaz-linguistic",
+      "amm-khass-ling"
+    ]
+  },
+  "taraduf": {
+    "label": "Taraduf (synonymy)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "mushtarak",
+      "addad",
+      "furuq-lughawiyya",
+      "ishtiqaq",
+      "dalala"
+    ],
+    "opposite": "mushtarak",
+    "related": [
+      "haqiqa-majaz-linguistic",
+      "lafz-mana",
+      "logic-vs-grammar",
+      "furuq"
+    ]
+  },
+  "furuq-lughawiyya": {
+    "label": "Furuq lughawiyya (lexical distinctions)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "addad",
+      "mushtarak",
+      "taraduf",
+      "wujuh-nazair"
+    ],
+    "opposite": "taraduf",
+    "related": [
+      "dalala",
+      "haqiqa-majaz-linguistic",
+      "logic-vs-grammar"
+    ]
+  },
+  "addad": {
+    "label": "Addad (contranyms)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "mushtarak",
+      "taraduf",
+      "furuq-lughawiyya",
+      "wujuh-nazair"
+    ],
+    "opposite": null,
+    "related": [
+      "dalala",
+      "haqiqa-majaz-linguistic",
+      "dictionary-ayn"
+    ]
+  },
+  "dictionary-ayn": {
+    "label": "Kitab al-'ayn system",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "rhyme-dictionary",
+      "thematic-lexicography",
+      "grammatical-abridgment",
+      "alfiyya-commentary"
+    ],
+    "opposite": null,
+    "related": [
+      "makharij",
+      "sifat-al-huruf",
+      "ishtiqaq",
+      "dalala"
+    ]
+  },
+  "rhyme-dictionary": {
+    "label": "Rhyme-based lexicography",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "dictionary-ayn",
+      "thematic-lexicography",
+      "grammatical-abridgment"
+    ],
+    "opposite": null,
+    "related": [
+      "qafiya",
+      "prosody-arud",
+      "poetics-shir"
+    ]
+  },
+  "thematic-lexicography": {
+    "label": "Thematic lexicography",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "dictionary-ayn",
+      "rhyme-dictionary",
+      "grammatical-abridgment",
+      "alfiyya-commentary"
+    ],
+    "opposite": null,
+    "related": [
+      "ishtiqaq",
+      "dalala",
+      "furuq-lughawiyya"
+    ]
+  },
+  "grammatical-abridgment": {
+    "label": "Grammatical abridgment (mukhtasar) tradition",
+    "parent": "nahw",
+    "children": [
+      "alfiyya-commentary"
+    ],
+    "siblings": [
+      "dictionary-ayn",
+      "rhyme-dictionary",
+      "thematic-lexicography",
+      "lugha",
+      "sarf"
+    ],
+    "opposite": null,
+    "related": [
+      "balagha",
+      "fasaha",
+      "poetics-shir"
+    ]
+  },
+  "alfiyya-commentary": {
+    "label": "Alfiyya commentary tradition",
+    "parent": "nahw",
+    "children": [],
+    "siblings": [
+      "grammatical-abridgment",
+      "dictionary-ayn",
+      "rhyme-dictionary",
+      "thematic-lexicography",
+      "persian-grammar"
+    ],
+    "opposite": null,
+    "related": [
+      "sarf",
+      "lugha",
+      "shawahid",
+      "irab"
+    ]
+  },
+  "persian-grammar": {
+    "label": "Persian grammatical tradition",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "turkish-grammar",
+      "basra-kufa-disputes",
+      "nahw",
+      "sarf",
+      "arabization-tarib"
+    ],
+    "opposite": null,
+    "related": [
+      "arabiyya-fusha",
+      "dialects-lughat",
+      "diglossia-aammiyya",
+      "origin-of-language"
+    ]
+  },
+  "turkish-grammar": {
+    "label": "Turkic lexicography",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "persian-grammar",
+      "dialects-lughat",
+      "dictionary-ayn",
+      "rhyme-dictionary",
+      "thematic-lexicography"
+    ],
+    "opposite": null,
+    "related": [
+      "arabization-tarib",
+      "origin-of-language",
+      "ishtiqaq"
+    ]
+  },
+  "diglossia-aammiyya": {
+    "label": "Fusha and 'ammiyya (standard and vernacular)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "dialects-lughat",
+      "fasaha",
+      "arabiyya-fusha",
+      "lahn"
+    ],
+    "opposite": "arabiyya-fusha",
+    "related": [
+      "origin-of-language",
+      "logic-vs-grammar"
+    ]
+  },
+  "maqama-rhymed-prose": {
+    "label": "Saj' (rhymed prose)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "nazm",
+      "balagha",
+      "bayan",
+      "maani",
+      "badi"
+    ],
+    "opposite": null,
+    "related": [
+      "chancery-insha",
+      "poetics-shir",
+      "takhyil",
+      "lafz-mana"
+    ]
+  },
+  "chancery-insha": {
+    "label": "Insha' (chancery prose)",
+    "parent": "balagha",
+    "children": [],
+    "siblings": [
+      "maqama-rhymed-prose",
+      "calligraphy-khatt",
+      "orthography-rasm"
+    ],
+    "opposite": null,
+    "related": [
+      "lafz-mana",
+      "nazm",
+      "balagha"
+    ]
+  },
+  "calligraphy-khatt": {
+    "label": "'Ilm al-khatt (calligraphic theory)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "orthography-rasm",
+      "tajwid",
+      "balagha",
+      "nahw",
+      "sarf"
+    ],
+    "opposite": null,
+    "related": [
+      "ijaz-al-quran-linguistic",
+      "fasaha",
+      "tafsir-lughawi"
+    ]
+  },
+  "orthography-rasm": {
+    "label": "Rasm al-mushaf (Qur'anic orthography)",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "tajwid",
+      "qiraat",
+      "makharij",
+      "sifat-al-huruf",
+      "ijaz-al-quran-linguistic"
+    ],
+    "opposite": null,
+    "related": [
+      "gharib-al-quran",
+      "mushkil-al-quran",
+      "tafsir-lughawi",
+      "ijaz-al-quran"
+    ]
+  },
+  "nahda-arabic-reform": {
+    "label": "Nahda Arabic reform",
+    "parent": "lugha",
+    "children": [],
+    "siblings": [
+      "fasaha",
+      "arabiyya-fusha",
+      "lahn",
+      "dialects-lughat",
+      "arabization-tarib"
+    ],
+    "opposite": null,
+    "related": [
+      "origin-of-language",
+      "wad",
+      "tafsir-lughawi"
+    ]
+  }
+}

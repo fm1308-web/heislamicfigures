@@ -1,0 +1,130 @@
+{
+  "person": "Mulla Sadra",
+  "slug": "F1069",
+  "lifespan": "1571-1640",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Sadr al-Din Muhammad ibn Ibrahim al-Shirazi al-Qawami, known as Mulla Sadra, is the most important philosopher of the Safavid period and arguably the greatest Shia philosopher of the early modern era. Biographical sources include his own Sih Asl (Three Principles) and Mafatih al-Ghayb, references in the works of his students Mulla Muhsin Fayd al-Kashani and Abd al-Razzaq Lahiji, and the entry in al-Mahallati's Rayhanat al-Adab. The major dates - birth in Shiraz, study with Mir Damad and Shaykh Baha'i in Isfahan, retreat in Kahak, return to Shiraz, and death on his seventh hajj - are firm by year. The chronology of specific philosophical works is loose."
+  },
+  "sources": [
+    "Sajjad H. Rizvi, Mulla Sadra and Metaphysics (2009)",
+    "Fazlur Rahman, The Philosophy of Mulla Sadra (1975)",
+    "Mulla Sadra, al-Asfar al-Arba'a",
+    "Encyclopaedia Iranica, 'Sadr al-Din Shirazi'"
+  ],
+  "journey": [
+    {
+      "year": 1571,
+      "age": 0,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Born around 1571 (979 AH) in Shiraz in the province of Fars in southern Iran, into a wealthy and influential family. His father Khwaja Ibrahim Qawami is a high official in the Safavid administration of Fars, of substantial means.",
+      "category": "birth",
+      "source": "Encyclopaedia Iranica"
+    },
+    {
+      "year": 1585,
+      "age": 14,
+      "precision": "period",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Receives his early education in Shiraz, then a major centre of Shia learning. Studies the religious sciences (tafsir, hadith, fiqh, kalam) and the rational sciences (logic, mathematics, philosophy). His exceptional gifts are recognised early.",
+      "category": "childhood",
+      "source": "Rizvi; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1591,
+      "age": 20,
+      "precision": "year",
+      "location": "Qazvin",
+      "lat": 36.2688,
+      "lng": 50.0041,
+      "event": "Around 1591, in the reign of Shah Abbas I, travels to Qazvin (then still the Safavid capital, before its move to Isfahan) to continue his studies. There he begins to study with the two greatest Shia scholars of the age: the philosopher Mir Damad and the polymath Shaykh Baha al-Din al-Amili (Shaykh Baha'i).",
+      "category": "travel",
+      "source": "Encyclopaedia Iranica"
+    },
+    {
+      "year": 1597,
+      "age": 26,
+      "precision": "year",
+      "location": "Isfahan",
+      "lat": 32.6539,
+      "lng": 51.6660,
+      "event": "Around 1597, when Shah Abbas moves the Safavid capital from Qazvin to Isfahan, Mulla Sadra moves with his teachers. Continues his philosophical training in Isfahan, the new intellectual capital of the Safavid empire. Mir Damad is the founder of the new school of philosophy that combines Avicennan, Suhrawardian, and Shia traditions; Mulla Sadra is his most gifted student.",
+      "category": "travel",
+      "source": "Rizvi"
+    },
+    {
+      "year": 1605,
+      "age": 34,
+      "precision": "period",
+      "location": "Isfahan",
+      "lat": 32.6539,
+      "lng": 51.6660,
+      "event": "By his early thirties is recognised as one of the leading minds of his generation. But his philosophical positions - especially his view of the substantial motion of the soul and his unification of philosophy with mystical experience - draw criticism from the more literalist Shia jurists, who suspect him of innovations bordering on heresy.",
+      "category": "civic",
+      "source": "Rizvi; Mulla Sadra, Sih Asl"
+    },
+    {
+      "year": 1610,
+      "age": 39,
+      "precision": "year",
+      "location": "Kahak",
+      "lat": 34.4000,
+      "lng": 51.0000,
+      "event": "Around 1610, frustrated by the hostility of the literalist clergy in Isfahan, withdraws to a small village called Kahak in the mountains near Qom. Lives there in semi-retirement and contemplative seclusion for about fifteen years. This is the great period of his philosophical writing.",
+      "category": "spiritual",
+      "source": "Mulla Sadra, Sih Asl (introduction); Rizvi"
+    },
+    {
+      "year": 1620,
+      "age": 49,
+      "precision": "period",
+      "location": "Kahak",
+      "lat": 34.4000,
+      "lng": 51.0000,
+      "event": "At Kahak composes his great work al-Hikma al-Muta'aliyya fi'l-Asfar al-Arba'a al-Aqliyya (The Transcendent Wisdom of the Four Intellectual Journeys), commonly called the Asfar. It is a vast philosophical synthesis in four parts that brings together Avicennan peripateticism, Suhrawardian illuminationism, and the metaphysics of Ibn Arabi into a single system organised around the principle that 'existence (wujud) is the fundamental reality, and essences are derivative'.",
+      "category": "civic",
+      "source": "Mulla Sadra, Asfar; Rahman"
+    },
+    {
+      "year": 1625,
+      "age": 54,
+      "precision": "year",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "Around 1625, at the invitation of the new Safavid governor of Fars Allah Wirdi Khan and his son Imam Quli Khan, returns from Kahak to his native Shiraz. The governor builds for him the famous Khan Madrasa in Shiraz, where Mulla Sadra teaches for the rest of his life. The madrasa still stands today.",
+      "category": "civic",
+      "source": "Encyclopaedia Iranica"
+    },
+    {
+      "year": 1630,
+      "age": 59,
+      "precision": "period",
+      "location": "Shiraz",
+      "lat": 29.5918,
+      "lng": 52.5837,
+      "event": "At the Khan Madrasa trains the next generation of Shia philosophers, including Mulla Muhsin Fayd al-Kashani (his son-in-law and most important interpreter) and Abd al-Razzaq Lahiji. Through these students his school of 'transcendent philosophy' (al-hikma al-muta'aliyya) becomes the dominant philosophical tradition in Twelver Shia learning, a position it still holds in Iran.",
+      "category": "civic",
+      "source": "Rizvi"
+    },
+    {
+      "year": 1640,
+      "age": 69,
+      "precision": "year",
+      "location": "Basra",
+      "lat": 30.5081,
+      "lng": 47.7836,
+      "event": "Dies in Basra in 1640 (1050 AH), aged about 69, while returning from his seventh pilgrimage to Mecca. According to tradition the seventh hajj is his because the journey from Shiraz to Mecca is so arduous that completing it seven times is considered exceptional even for a wealthy scholar. He is buried in Basra; the exact location of his grave is not preserved. His philosophical school will become the dominant tradition in Shia Iran and remains so in the seminaries of Qom and Najaf to the present day.",
+      "category": "death",
+      "source": "Encyclopaedia Iranica; Rizvi"
+    }
+  ]
+}

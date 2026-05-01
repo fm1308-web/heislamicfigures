@@ -1,0 +1,166 @@
+{
+  "person": "Al-Khwarizmi",
+  "slug": "F0273",
+  "lifespan": {
+    "birth": 780,
+    "death": 850
+  },
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Al-Khwarizmi's biography survives only in fragments. We know he worked at the House of Wisdom in Baghdad under al-Ma'mun, that he wrote the foundational works on algebra and Hindu numerals, and that he led an astronomical expedition. His birth in or near Khwarezm is inferred from his nisba; specific dates for his life events outside Baghdad are mostly reconstructed from internal references in his books and from the chronicler Ibn al-Nadim's Fihrist. Treat decade-level dates as approximate."
+  },
+  "sources": [
+    "Ibn al-Nadim, Kitab al-Fihrist (10th c.)",
+    "Roshdi Rashed, Al-Khwarizmi: The Beginnings of Algebra (2009)",
+    "J.L. Berggren, Episodes in the Mathematics of Medieval Islam (1986)",
+    "MacTutor History of Mathematics — al-Khwarizmi"
+  ],
+  "journey": [
+    {
+      "year": 780,
+      "age": 0,
+      "precision": "decade",
+      "location": "Khwarezm region",
+      "lat": 41.55,
+      "lng": 60.63,
+      "event": "Born around this time in the region of Khwarezm (modern Khiva, Uzbekistan), south of the Aral Sea. The nisba 'al-Khwarizmi' attached to his name is the only clear evidence of his origin; family details are unknown.",
+      "category": "birth",
+      "source": "Ibn al-Nadim; nisba inference"
+    },
+    {
+      "year": 800,
+      "age": 20,
+      "precision": "decade",
+      "location": "Khwarezm region",
+      "lat": 41.55,
+      "lng": 60.63,
+      "event": "Receives his early education in the Persian-Khwarezmian scholarly tradition, including Indian and Persian mathematical and astronomical texts that had reached Central Asia along the Silk Road.",
+      "category": "childhood",
+      "source": "Inferred from later works"
+    },
+    {
+      "year": 813,
+      "age": 33,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Caliph al-Ma'mun, who has just emerged victorious from the civil war with his brother al-Amin, takes the throne in Baghdad and begins gathering scholars from across the empire for his House of Wisdom. Al-Khwarizmi is among those drawn to the new capital.",
+      "category": "travel",
+      "source": "Ibn al-Nadim"
+    },
+    {
+      "year": 820,
+      "age": 40,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Working at the Bayt al-Hikma (House of Wisdom), he is given access to Sanskrit and Greek manuscripts that the caliph's translators have brought from India and Byzantium. He begins synthesising Indian arithmetic with Greek geometry.",
+      "category": "civic",
+      "source": "Ibn al-Nadim; Rashed (2009)"
+    },
+    {
+      "year": 825,
+      "age": 45,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Composes Kitab al-Mukhtasar fi Hisab al-Jabr wa'l-Muqabala (The Compendious Book on Calculation by Completion and Balancing), the founding work of algebra. The Latinised title gives Europe the word 'algebra'; his own Latinised name, 'Algoritmi', gives the word 'algorithm'.",
+      "category": "spiritual",
+      "source": "Rashed (2009); MacTutor"
+    },
+    {
+      "year": 828,
+      "age": 48,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Writes Kitab al-Jam' wa'l-Tafriq bi-Hisab al-Hind (On Calculation with Hindu Numerals), the work that introduces the place-value decimal system and the digit zero to the Arabic-speaking world — and through later Latin translations, to Europe.",
+      "category": "spiritual",
+      "source": "Berggren (1986)"
+    },
+    {
+      "year": 830,
+      "age": 50,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Compiles his Zij al-Sindhind, a set of astronomical tables based on Indian, Persian, and Ptolemaic sources. The tables include sine and tangent functions and become the model for later Islamic and Latin zijes.",
+      "category": "spiritual",
+      "source": "Rashed (2009)"
+    },
+    {
+      "year": 833,
+      "age": 53,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Caliph al-Ma'mun dies on campaign in Anatolia. Al-Khwarizmi continues his work under the new caliph al-Mu'tasim, who maintains the patronage of the Bayt al-Hikma.",
+      "category": "loss",
+      "source": "Tabari, Tarikh"
+    },
+    {
+      "year": 836,
+      "age": 56,
+      "precision": "period",
+      "location": "Sinjar plain",
+      "lat": 36.32,
+      "lng": 41.86,
+      "event": "Joins or leads the geodetic expedition al-Ma'mun had commissioned (and which continues under al-Mu'tasim) to measure the length of a degree of latitude on the plain of Sinjar in northern Mesopotamia. The result is a remarkably accurate estimate of the Earth's circumference.",
+      "category": "expedition",
+      "source": "Ibn al-Nadim; Rashed (2009)"
+    },
+    {
+      "year": 838,
+      "age": 58,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Writes Kitab Surat al-Ard (The Image of the Earth), a revised geography based on Ptolemy but correcting many coordinates from new Islamic observations. It lists 2,402 localities with latitude and longitude.",
+      "category": "spiritual",
+      "source": "Rashed (2009)"
+    },
+    {
+      "year": 842,
+      "age": 62,
+      "precision": "period",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Sent by the caliph al-Wathiq, according to Ibn al-Nadim, to the land of the Khazars on a diplomatic-scientific mission, possibly to investigate reports of Gog and Magog and the wall of Dhu'l-Qarnayn. The details are sparse and partly legendary.",
+      "category": "diplomacy",
+      "source": "Ibn al-Nadim"
+    },
+    {
+      "year": 847,
+      "age": 67,
+      "precision": "year",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Caliph al-Wathiq dies and is succeeded by al-Mutawakkil, whose reign brings a more conservative theological climate. Al-Khwarizmi, now elderly, continues working but produces no major new treatises.",
+      "category": "civic",
+      "source": "Tabari"
+    },
+    {
+      "year": 850,
+      "age": 70,
+      "precision": "decade",
+      "location": "Baghdad",
+      "lat": 33.3152,
+      "lng": 44.3661,
+      "event": "Dies in Baghdad around this time. His exact death date and burial place are not recorded by early sources; he is mentioned only as having died in the reign of al-Mutawakkil (847–861).",
+      "category": "death",
+      "source": "Ibn al-Nadim"
+    }
+  ]
+}

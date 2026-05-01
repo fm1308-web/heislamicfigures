@@ -1,0 +1,119 @@
+{
+  "person": "Ibn Tufayl",
+  "slug": "F0756",
+  "lifespan": "1105-1185",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "C",
+    "density": "low",
+    "precision": "low",
+    "disclosure": "Abu Bakr Muhammad ibn Tufayl al-Qaysi al-Andalusi is one of the most famous Andalusian philosophers, known above all for his philosophical novel Hayy ibn Yaqzan, but the details of his personal life are sparsely documented in the surviving sources. The basic outline is clear: born near Granada, served as physician and secretary to the Almohad rulers, introduced the young Ibn Rushd to the caliph Abu Yaqub Yusuf, died in Marrakesh. Specific dates beyond a few key events are missing; the journey is reconstructed from his known posts."
+  },
+  "sources": [
+    "Ibn Tufayl, Hayy ibn Yaqzan",
+    "Al-Marrakushi, al-Mu'jib fi Talkhis Akhbar al-Maghrib",
+    "Lenn Goodman, introduction to Hayy ibn Yaqzan (translation, 1972)",
+    "Encyclopaedia of Islam, 2nd ed., 'Ibn Tufayl'"
+  ],
+  "journey": [
+    {
+      "year": 1105,
+      "age": 0,
+      "precision": "year",
+      "location": "Wadi Ash",
+      "lat": 37.3000,
+      "lng": -3.1333,
+      "event": "Born around 1105 (probably) in Wadi Ash, the modern Guadix in the province of Granada, in southeastern al-Andalus. His family belongs to the Arab tribe of Qays.",
+      "category": "birth",
+      "source": "Al-Marrakushi, al-Mu'jib"
+    },
+    {
+      "year": 1125,
+      "age": 20,
+      "precision": "period",
+      "location": "Granada",
+      "lat": 37.1773,
+      "lng": -3.5986,
+      "event": "Studies the religious sciences, philosophy, and medicine in Granada and other cities of al-Andalus. Becomes a master of all the major branches of learning of his time, particularly philosophy in the tradition of al-Farabi and Avicenna and the medicine of Galen and Avicenna.",
+      "category": "childhood",
+      "source": "Encyclopaedia of Islam"
+    },
+    {
+      "year": 1140,
+      "age": 35,
+      "precision": "period",
+      "location": "Granada",
+      "lat": 37.1773,
+      "lng": -3.5986,
+      "event": "Practices medicine in Granada and probably teaches philosophy privately. Lives through the political upheavals as the Almoravid dynasty collapses and the Almohads (under Abd al-Mu'min) sweep across the Maghrib and into al-Andalus.",
+      "category": "civic",
+      "source": "Al-Marrakushi"
+    },
+    {
+      "year": 1154,
+      "age": 49,
+      "precision": "year",
+      "location": "Tangier",
+      "lat": 35.7595,
+      "lng": -5.8340,
+      "event": "Around 1154 enters the service of the Almohad governor of Tangier and Ceuta, Abu Sa'id, son of the caliph Abd al-Mu'min, as physician and secretary. Crosses to North Africa and lives in the Almohad sphere from this point on.",
+      "category": "civic",
+      "source": "Encyclopaedia of Islam"
+    },
+    {
+      "year": 1160,
+      "age": 55,
+      "precision": "period",
+      "location": "Marrakesh",
+      "lat": 31.6295,
+      "lng": -7.9811,
+      "event": "After the death of the founder Abd al-Mu'min in 1163 and the accession of his son Abu Yaqub Yusuf, becomes the personal physician and intimate friend of the new Almohad caliph at Marrakesh. Abu Yaqub is unusually receptive to philosophy and welcomes scholars at his court.",
+      "category": "civic",
+      "source": "Al-Marrakushi, al-Mu'jib"
+    },
+    {
+      "year": 1169,
+      "age": 64,
+      "precision": "year",
+      "location": "Marrakesh",
+      "lat": 31.6295,
+      "lng": -7.9811,
+      "event": "Around 1169 introduces the young philosopher Averroes (Ibn Rushd) to the caliph Abu Yaqub Yusuf in Marrakesh. The famous interview, in which the caliph discusses philosophy with Ibn Rushd and asks him whether the heavens are eternal or created, leads to Ibn Rushd's lifelong commission to write commentaries on Aristotle.",
+      "category": "diplomacy",
+      "source": "Al-Marrakushi, al-Mu'jib"
+    },
+    {
+      "year": 1175,
+      "age": 70,
+      "precision": "period",
+      "location": "Marrakesh",
+      "lat": 31.6295,
+      "lng": -7.9811,
+      "event": "In his final period composes his only surviving philosophical work, the famous Hayy ibn Yaqzan (Living, Son of the Awake). It is a philosophical novel about a child who grows up alone on a desert island and discovers, by his own unaided reason, the existence and nature of God and the structure of the universe. The book argues that natural reason and revealed religion arrive at the same truths.",
+      "category": "civic",
+      "source": "Ibn Tufayl, Hayy ibn Yaqzan; Goodman intro"
+    },
+    {
+      "year": 1182,
+      "age": 77,
+      "precision": "year",
+      "location": "Marrakesh",
+      "lat": 31.6295,
+      "lng": -7.9811,
+      "event": "In 1182, in his old age, asks the caliph Abu Yaqub Yusuf to relieve him of his duties as court physician on grounds of age. He recommends his protege Ibn Rushd as his successor. Continues to live at the court in semi-retirement.",
+      "category": "civic",
+      "source": "Al-Marrakushi, al-Mu'jib"
+    },
+    {
+      "year": 1185,
+      "age": 80,
+      "precision": "year",
+      "location": "Marrakesh",
+      "lat": 31.6295,
+      "lng": -7.9811,
+      "event": "Dies in Marrakesh in 1185 (581 AH), aged about 80. The funeral is attended by the caliph Abu Yusuf Ya'qub al-Mansur (who succeeded Abu Yaqub Yusuf the previous year) in person. He is buried in Marrakesh. Hayy ibn Yaqzan will be translated into Latin in 1671 (as Philosophus Autodidactus) and influence European philosophy and the rise of the philosophical novel.",
+      "category": "death",
+      "source": "Al-Marrakushi; Encyclopaedia of Islam"
+    }
+  ]
+}

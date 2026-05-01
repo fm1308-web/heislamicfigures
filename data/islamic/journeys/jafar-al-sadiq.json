@@ -1,0 +1,142 @@
+{
+  "person": "Ja'far al-Sadiq",
+  "slug": "F0799",
+  "lifespan": "702-765",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "B",
+    "density": "medium",
+    "precision": "medium",
+    "disclosure": "Ja'far al-Sadiq is one of the most influential figures in Islamic intellectual history - the sixth imam of Twelver and Ismaili Shi'ism, the founder of the Ja'fari school of jurisprudence, and a teacher of Abu Hanifa, Malik ibn Anas, and many of the early Sufis. His life is well documented but mostly stationary in Medina; the major dates of his birth, the deaths of his father and his son Isma'il, and his own death are firm. The journey is therefore largely centred on Medina with brief travels to Iraq when summoned by the early Abbasid caliphs."
+  },
+  "sources": [
+    "Al-Mufid, Kitab al-Irshad",
+    "Al-Kulayni, al-Kafi",
+    "Al-Dhahabi, Siyar A'lam al-Nubala",
+    "Ibn Khallikan, Wafayat al-A'yan",
+    "Encyclopaedia Iranica, 'Ja'far al-Sadiq'"
+  ],
+  "journey": [
+    {
+      "year": 702,
+      "age": 0,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Born in Medina in 702 (83 AH) to Muhammad al-Baqir, the fifth Shia imam, and Umm Farwa, a great-granddaughter of Abu Bakr. Through his mother he is descended from both the first and the fourth caliphs.",
+      "category": "birth",
+      "source": "Al-Mufid, Irshad"
+    },
+    {
+      "year": 712,
+      "age": 10,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Grows up in the household of his grandfather Ali Zayn al-Abidin, who lives until 712. He is taught by his father Muhammad al-Baqir, who has gathered a circle of students in Medina to discuss tafsir, fiqh, and the family traditions of the Prophet.",
+      "category": "childhood",
+      "source": "Al-Kulayni, al-Kafi"
+    },
+    {
+      "year": 733,
+      "age": 31,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "On the death of his father Muhammad al-Baqir in 733 (114 AH), succeeds him as imam in the eyes of the Imami Shi'a. The Umayyad caliphate is in its final decades and the family of the Prophet is closely watched.",
+      "category": "accession",
+      "source": "Al-Mufid, Irshad"
+    },
+    {
+      "year": 740,
+      "age": 38,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Lives through the failed Kufan revolt of his uncle Zayd ibn Ali in 740, in which Zayd is killed. Ja'far refuses to join the revolt and counsels political quietism: maintaining the religious authority of the imams while avoiding armed rebellion against the Umayyads.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 750,
+      "age": 48,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "The Abbasid revolution of 750 overthrows the Umayyads. Many had hoped that Ja'far, as the senior descendant of Ali, might become the new caliph, but he refuses to make any claim. The Abbasids, descendants of the Prophet's uncle al-Abbas, take the caliphate themselves under al-Saffah.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh; Encyclopaedia Iranica"
+    },
+    {
+      "year": 755,
+      "age": 53,
+      "precision": "period",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "His circle of students in Medina expands greatly under the early Abbasids. Among those reported to have studied with him are Abu Hanifa, the founder of the Hanafi madhhab, and Malik ibn Anas, the founder of the Maliki madhhab. Abu Hanifa later said: 'I have never seen a more learned man than Ja'far ibn Muhammad.' He teaches fiqh, hadith, tafsir, and a distinctive Imami theology.",
+      "category": "civic",
+      "source": "Ibn Khallikan, Wafayat; Al-Dhahabi, Siyar"
+    },
+    {
+      "year": 760,
+      "age": 58,
+      "precision": "year",
+      "location": "Hira / Kufa",
+      "lat": 31.8833,
+      "lng": 44.45,
+      "event": "Around 760, the second Abbasid caliph al-Mansur summons Ja'far to his court (then at Hira near Kufa) more than once, suspicious of his standing among the Shi'a. Ja'far avoids any political commitment and is allowed each time to return to Medina. Hostile interrogations between him and al-Mansur are recorded in later sources.",
+      "category": "diplomacy",
+      "source": "Al-Mufid, Irshad; Al-Kulayni, al-Kafi"
+    },
+    {
+      "year": 762,
+      "age": 60,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "In 762 his nephew Muhammad al-Nafs al-Zakiyya leads a revolt against al-Mansur in Medina and is killed. Al-Mansur suspects the family of Ali generally; surveillance of Ja'far intensifies but he himself takes no part.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 762,
+      "age": 60,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "His eldest son Isma'il dies before him in Medina. Ja'far publicly displays his body to confirm the death. The succession question that follows divides his followers: those who hold that Isma'il should still have been imam (and that the imamate passed to his son Muhammad) become the Isma'ilis, while the majority recognise his other son Musa al-Kazim and become the Twelvers.",
+      "category": "loss",
+      "source": "Al-Mufid, Irshad"
+    },
+    {
+      "year": 765,
+      "age": 63,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Dies in Medina in 765 (148 AH), aged about 63. Tradition (especially Shia tradition) holds that he was poisoned on the orders of al-Mansur. He is buried in the Baqi cemetery in Medina, next to his father, his grandfather, and his great-uncle Hasan ibn Ali.",
+      "category": "death",
+      "source": "Al-Mufid, Irshad; Ibn Khallikan, Wafayat"
+    },
+    {
+      "year": 765,
+      "age": 63,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Leaves behind a school of jurisprudence (madhhab Ja'fari) which becomes the official school of Twelver Shi'ism and is one of the major systems of Islamic law to this day. His teachings on hadith, fiqh, and the conduct of the imams are preserved in al-Kulayni's al-Kafi and other early Imami collections.",
+      "category": "death",
+      "source": "Al-Kulayni, al-Kafi"
+    }
+  ]
+}

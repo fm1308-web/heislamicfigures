@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "person": "Hayreddin Barbarossa",
+  "slug": "F0898",
+  "lifespan": "1478-1546 CE",
+  "confidence": {
+    "grade": "A",
+    "density": "moderate",
+    "precision": "month",
+    "disclosure": "Reconstructed from the Gazavat-i Hayreddin Pasha (the memoirs Barbarossa dictated to Muradi Sinan Reis), Ottoman chronicles, and the Spanish, Venetian and French archival record. Most major campaigns are documented to the month or day. Ernle Bradford's The Sultan's Admiral provides the modern narrative spine."
+  },
+  "sources": [
+    "Muradi Sinan Reis, Gazavat-i Hayreddin Pasha (c. 1545)",
+    "Ernle Bradford, The Sultan's Admiral: The Life of Barbarossa (1968)",
+    "Emrah Safa Gürkan, Sultanın Korsanları: Osmanlı Akdenizi'nde Gazâ, Yağma ve Esaret 1500-1700 (2018)"
+  ],
+  "journey": [
+    {"year": 1478, "location": "Mytilene, Lesbos, Greece", "lat": 39.1100, "lng": 26.5547, "event": "Born Hizir on the recently Ottoman island of Lesbos to a sipahi father and a Greek mother.", "category": "birth", "precision": "year", "source": "Bradford 1968"},
+    {"year": 1503, "location": "Djerba, Tunisia", "lat": 33.8076, "lng": 10.8451, "event": "Joined his elder brother Oruç in establishing a corsair base on the island of Djerba under the Hafsids of Tunis.", "category": "other", "precision": "year", "source": "Gazavat"},
+    {"year": 1510, "location": "Bougie (Béjaïa), Algeria", "lat": 36.7525, "lng": 5.0844, "event": "Took part in his brother's failed assault on the Spanish-held fortress of Bougie, where Oruç lost his left arm.", "category": "conquest", "precision": "year", "source": "Bradford 1968"},
+    {"year": 1513, "location": "Valencia, Spain", "lat": 39.4699, "lng": -0.3763, "event": "Joined the corsair raid on Valencia that captured four Spanish ships.", "category": "conquest", "precision": "year", "source": "Gazavat"},
+    {"year": 1516, "location": "Algiers, Algeria", "lat": 36.7538, "lng": 3.0588, "event": "Captured Algiers from the Spanish protectorate; Oruç declared himself sultan of the city.", "category": "conquest", "precision": "year", "source": "Bradford 1968"},
+    {"year": 1518, "location": "Tlemcen, Algeria", "lat": 34.8825, "lng": -1.3144, "event": "Inherited the leadership of Algiers after Oruç was killed in the Spanish-led siege of Tlemcen.", "category": "other", "precision": "month", "source": "Bradford 1968"},
+    {"year": 1519, "location": "Algiers, Algeria", "lat": 36.7538, "lng": 3.0588, "event": "Offered Algiers to Sultan Selim I in exchange for Ottoman troops, becoming Beylerbey of the new Ottoman regency.", "category": "other", "precision": "year", "source": "Gürkan 2018"},
+    {"year": 1529, "location": "Algiers, Algeria", "lat": 36.7538, "lng": 3.0588, "event": "Captured the Peñón of Algiers, the small Spanish island fortress in the harbour, removing the last Habsburg foothold in the city.", "category": "conquest", "precision": "month", "source": "Bradford 1968"},
+    {"year": 1531, "location": "Tripoli, Libya", "lat": 32.8872, "lng": 13.1913, "event": "Raided the Knights of St John at Tripoli, which had been granted to them by Charles V the previous year.", "category": "conquest", "precision": "year", "source": "Gürkan 2018"},
+    {"year": 1532, "location": "Bonifacio, Corsica, France", "lat": 41.3873, "lng": 9.1581, "event": "Raided Bonifacio, Montecristo, Elba and Lampedusa during his journey east to answer Suleiman's summons.", "category": "conquest", "precision": "year", "source": "Bradford 1968"},
+    {"year": 1533, "location": "Istanbul, Turkey", "lat": 41.0082, "lng": 28.9784, "event": "Received by Suleiman the Magnificent at Topkapı Palace and appointed Kapudan Pasha (Grand Admiral) of the Ottoman Navy.", "category": "other", "precision": "year", "source": "Bradford 1968"},
+    {"year": 1534, "location": "Reggio Calabria, Italy", "lat": 38.1147, "lng": 15.6500, "event": "Sacked Reggio Calabria and a string of Italian coastal towns at the start of the 1534 campaign.", "category": "conquest", "precision": "month", "source": "Gürkan 2018"},
+    {"year": 1534, "location": "Tunis, Tunisia", "lat": 36.8065, "lng": 10.1815, "event": "Captured Tunis and the fortress of La Goulette on 16 August 1534, expelling the Hafsid sultan Mulay Hasan.", "category": "conquest", "precision": "day", "source": "Gazavat"},
+    {"year": 1535, "location": "La Goulette, Tunisia", "lat": 36.8189, "lng": 10.3050, "event": "Lost Tunis to Charles V's expedition; escaped overland with his fleet from Bône (Annaba).", "category": "conquest", "precision": "month", "source": "Bradford 1968"},
+    {"year": 1535, "location": "Mahón, Menorca, Spain", "lat": 39.8885, "lng": 4.2659, "event": "Sacked Mahón on the Balearic island of Menorca, taking some 6,000 captives in retaliation for the loss of Tunis.", "category": "conquest", "precision": "month", "source": "Bradford 1968"},
+    {"year": 1537, "location": "Otranto, Italy", "lat": 40.1456, "lng": 18.4910, "event": "Raided the Apulian coast in support of Suleiman's campaign in southern Italy.", "category": "conquest", "precision": "year", "source": "Gürkan 2018"},
+    {"year": 1537, "location": "Corfu, Greece", "lat": 39.6243, "lng": 19.9217, "event": "Took part in the unsuccessful Ottoman siege of Venetian Corfu.", "category": "conquest", "precision": "month", "source": "Bradford 1968"},
+    {"year": 1538, "location": "Preveza, Greece", "lat": 38.9583, "lng": 20.7517, "event": "Won a decisive victory over Andrea Doria's Holy League fleet at the Battle of Preveza on 28 September 1538, securing Ottoman naval dominance in the eastern Mediterranean.", "category": "conquest", "precision": "day", "source": "Bradford 1968"},
+    {"year": 1540, "location": "Kotor, Montenegro", "lat": 42.4247, "lng": 18.7712, "event": "Captured Venetian outposts in the Adriatic during the closing phase of the Ottoman-Venetian war.", "category": "conquest", "precision": "year", "source": "Gürkan 2018"},
+    {"year": 1543, "location": "Marseille, France", "lat": 43.2965, "lng": 5.3698, "event": "Received with full honours at Marseille on 23 July 1543 as part of the Franco-Ottoman alliance against Charles V.", "category": "embassy", "precision": "day", "source": "Bradford 1968"},
+    {"year": 1543, "location": "Nice, France", "lat": 43.7102, "lng": 7.2620, "event": "Joint Franco-Ottoman force besieged and took Nice on 22 August 1543.", "category": "conquest", "precision": "day", "source": "Gürkan 2018"},
+    {"year": 1543, "location": "Toulon, France", "lat": 43.1242, "lng": 5.9280, "event": "Wintered the Ottoman fleet at Toulon for eight months at Francis I's invitation, with the city's cathedral converted to a mosque.", "category": "other", "precision": "month", "source": "Bradford 1968"},
+    {"year": 1544, "location": "Genoa, Italy", "lat": 44.4056, "lng": 8.9463, "event": "Threatened Genoa to force the release of his lieutenant Turgut Reis from Christian captivity.", "category": "conquest", "precision": "month", "source": "Gürkan 2018"},
+    {"year": 1545, "location": "Istanbul, Turkey", "lat": 41.0082, "lng": 28.9784, "event": "Retired to his seaside palace at Büyükdere on the Bosphorus, dictating his memoirs to Muradi Sinan Reis.", "category": "other", "precision": "year", "source": "Bradford 1968"},
+    {"year": 1546, "location": "Istanbul, Turkey", "lat": 41.0082, "lng": 28.9784, "event": "Died on 4 July 1546 in Istanbul; buried in the mausoleum at Beşiktaş designed by Mimar Sinan.", "category": "death", "precision": "day", "source": "Bradford 1968"}
+  ]
+}

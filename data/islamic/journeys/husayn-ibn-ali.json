@@ -1,0 +1,231 @@
+{
+  "person": "Husayn ibn Ali",
+  "slug": "F0708",
+  "lifespan": "626-680",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Husayn ibn Ali, the younger grandson of the Prophet Muhammad, is one of the best documented figures of early Islam. The events leading up to and including his martyrdom at Karbala in October 680 are recorded in great detail by the early historians al-Tabari, al-Baladhuri, and al-Mufid, with day-by-day chronology of the journey from Medina to Mecca to Karbala. Most major events of his life have firm Hijri dates that can be converted to specific days in the Julian calendar. The journey is rich in geography because the last six months of his life involved travel of about 1,400 km."
+  },
+  "sources": [
+    "Al-Tabari, Tarikh al-Rusul wa al-Muluk (al-Tabari's account of Karbala in vol. 19 of the Albany translation)",
+    "Al-Baladhuri, Ansab al-Ashraf",
+    "Al-Mufid, Kitab al-Irshad",
+    "Ibn Sa'd, Kitab al-Tabaqat al-Kabir",
+    "Al-Khwarizmi, Maqtal al-Husayn"
+  ],
+  "journey": [
+    {
+      "day": 8,
+      "month": 1,
+      "year": 626,
+      "age": 0,
+      "precision": "day",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "Born in Medina on 3 Sha'ban 4 AH (8 January 626) to Ali ibn Abi Talib and Fatimah al-Zahra. The Prophet Muhammad himself names him Husayn, recites the call to prayer in his ear, and shaves his head on the seventh day. Tradition has it that the Prophet wept on seeing him, foretelling his eventual martyrdom.",
+      "category": "birth",
+      "source": "Ibn Sa'd, Tabaqat; Al-Mufid, Irshad"
+    },
+    {
+      "year": 632,
+      "age": 6,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "His grandfather the Prophet Muhammad dies in June 632. A few months later his mother Fatimah also dies. He is raised in the household of his father Ali alongside his older brother Hasan.",
+      "category": "loss",
+      "source": "Sahih al-Bukhari, Maghazi"
+    },
+    {
+      "year": 656,
+      "age": 30,
+      "precision": "year",
+      "location": "Kufa",
+      "lat": 32.0386,
+      "lng": 44.4006,
+      "event": "After his father Ali becomes caliph, moves with him from Medina to Kufa, the new capital. Lives in Kufa for most of his father's reign.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 657,
+      "age": 31,
+      "precision": "year",
+      "location": "Siffin",
+      "lat": 35.95,
+      "lng": 39.0,
+      "event": "Fights alongside his father at the Battle of Siffin against Mu'awiya, on the upper Euphrates in northern Syria. The battle ends inconclusively.",
+      "category": "battle",
+      "source": "Nasr ibn Muzahim, Waq'at Siffin"
+    },
+    {
+      "year": 661,
+      "age": 35,
+      "precision": "month",
+      "location": "Kufa",
+      "lat": 32.0386,
+      "lng": 44.4006,
+      "event": "His father Ali is assassinated in the mosque of Kufa in January 661. Husayn's elder brother Hasan becomes caliph but soon abdicates in favour of Mu'awiya.",
+      "category": "loss",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 661,
+      "age": 35,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "After Hasan's abdication, returns with his brother to Medina and lives there quietly for nearly twenty years under the rule of Mu'awiya, refusing to actively challenge the Umayyad caliphate but also refusing to recognise it as legitimate.",
+      "category": "civic",
+      "source": "Al-Mufid, Irshad"
+    },
+    {
+      "year": 669,
+      "age": 43,
+      "precision": "year",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "His brother Hasan dies in Medina in 669, leaving Husayn as the senior surviving male of the Prophet's household. He continues to live in Medina, teaching and worshipping.",
+      "category": "loss",
+      "source": "Al-Mufid, Irshad"
+    },
+    {
+      "day": 22,
+      "month": 4,
+      "year": 680,
+      "age": 54,
+      "precision": "day",
+      "location": "Damascus",
+      "lat": 33.5138,
+      "lng": 36.2765,
+      "event": "On 15 Rajab 60 AH (22 April 680) Mu'awiya dies in Damascus. His son Yazid succeeds him and immediately orders the governor of Medina to extract a pledge of allegiance from Husayn, with force if necessary.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "day": 4,
+      "month": 5,
+      "year": 680,
+      "age": 54,
+      "precision": "day",
+      "location": "Medina",
+      "lat": 24.4683,
+      "lng": 39.6142,
+      "event": "On 28 Rajab 60 AH (4 May 680), refuses to give allegiance in the secrecy of a private meeting and leaves Medina by night with his family and household, taking the road to Mecca. He recites the verse of Moses leaving Egypt: 'So he left it, fearful, looking around.'",
+      "category": "migration",
+      "source": "Al-Tabari, Tarikh; Al-Mufid, Irshad"
+    },
+    {
+      "year": 680,
+      "age": 54,
+      "precision": "month",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "Arrives in Mecca at the beginning of May 680 and takes refuge in the sanctuary. Stays in Mecca for the next four months. Receives a flood of letters from the people of Kufa inviting him to come and lead them, promising allegiance.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 680,
+      "age": 54,
+      "precision": "month",
+      "location": "Kufa",
+      "lat": 32.0386,
+      "lng": 44.4006,
+      "event": "Sends his cousin Muslim ibn Aqil to Kufa to gauge the sincerity of the Kufans. Muslim is initially welcomed and receives the pledges of thousands, but the new Umayyad governor Ubayd Allah ibn Ziyad, sent from Basra, terrorises the city. Muslim is betrayed and executed in early September.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "day": 9,
+      "month": 9,
+      "year": 680,
+      "age": 54,
+      "precision": "day",
+      "location": "Mecca",
+      "lat": 21.4225,
+      "lng": 39.8262,
+      "event": "On 8 Dhu al-Hijja 60 AH (9 September 680), the day before the start of the Hajj, leaves Mecca for Kufa with about 50 family members and supporters. He performs the umra rather than the hajj, fearing arrest in the sanctuary. Has not yet learned of the death of Muslim ibn Aqil.",
+      "category": "travel",
+      "source": "Al-Tabari, Tarikh; Al-Mufid, Irshad"
+    },
+    {
+      "year": 680,
+      "age": 54,
+      "precision": "month",
+      "location": "Tha'labiyya",
+      "lat": 30.0,
+      "lng": 41.5,
+      "event": "Moves north along the route towards Iraq, stopping at a series of waypoints (Dhat Irq, Batn al-Rumma, Zarud, Tha'labiyya, Zubala, and others). At Zubala receives the news of the death of Muslim ibn Aqil and his messenger Qays ibn Mushir. Despite the news, decides to continue northward.",
+      "category": "travel",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "year": 680,
+      "age": 54,
+      "precision": "month",
+      "location": "near Qadisiyya",
+      "lat": 31.7,
+      "lng": 44.4,
+      "event": "Near Qadisiyya, the caravan is intercepted by an Umayyad cavalry detachment of 1,000 men under al-Hurr ibn Yazid al-Riyahi. Hurr blocks the route to Kufa but allows Husayn to camp wherever he wishes. Hurr's force then escorts Husayn northwards as further orders are awaited from Ibn Ziyad.",
+      "category": "civic",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "day": 2,
+      "month": 10,
+      "year": 680,
+      "age": 54,
+      "precision": "day",
+      "location": "Karbala",
+      "lat": 32.6160,
+      "lng": 44.0247,
+      "event": "On 2 Muharram 61 AH (2 October 680), Husayn arrives at the desert plain of Karbala, about 70 km north of Kufa, and is forced by Hurr (acting on Ibn Ziyad's orders) to make camp there in a place without fortifications or access to water. The next day Umar ibn Sa'd arrives with 4,000 more Umayyad troops.",
+      "category": "siege",
+      "source": "Al-Tabari, Tarikh; Al-Mufid, Irshad"
+    },
+    {
+      "year": 680,
+      "age": 54,
+      "precision": "month",
+      "location": "Karbala",
+      "lat": 32.6160,
+      "lng": 44.0247,
+      "event": "For the next eight days, negotiations go back and forth. Ibn Ziyad refuses any settlement except total surrender. Access to the Euphrates is cut off by 500 horsemen on the seventh day. Husayn and his small band suffer thirst as the women and children grow desperate. On the night before the battle, Husayn extinguishes the camp lamps and tells his companions they are free to leave; none do.",
+      "category": "siege",
+      "source": "Al-Tabari, Tarikh"
+    },
+    {
+      "day": 10,
+      "month": 10,
+      "year": 680,
+      "age": 54,
+      "precision": "day",
+      "location": "Karbala",
+      "lat": 32.6160,
+      "lng": 44.0247,
+      "event": "On 10 Muharram 61 AH (10 October 680), the Day of Ashura, the Battle of Karbala is fought. Husayn's small force of about 72 men, including his half-brother Abbas, his nephew Qasim, his son Ali Akbar, and his infant son Ali Asghar (struck by an arrow), are killed one by one. Husayn himself is the last to fall, reportedly struck down by Sinan ibn Anas and Shimr ibn Dhi'l-Jawshan. He is 54 years old. His head is severed and sent to Ibn Ziyad in Kufa.",
+      "category": "death",
+      "source": "Al-Tabari, Tarikh; Al-Mufid, Irshad; Al-Khwarizmi, Maqtal"
+    },
+    {
+      "year": 680,
+      "age": 54,
+      "precision": "month",
+      "location": "Karbala",
+      "lat": 32.6160,
+      "lng": 44.0247,
+      "event": "His body is buried at the place of his martyrdom in Karbala by the local tribe of Banu Asad after the Umayyad army has left. The grave becomes the most important Shi'i shrine in the world. The surviving women and children, including his sister Zaynab and his son Ali Zayn al-Abidin (who had been too ill to fight), are taken captive to Kufa and then to Damascus, before being sent back to Medina the following year.",
+      "category": "death",
+      "source": "Al-Tabari, Tarikh; Al-Mufid, Irshad"
+    }
+  ]
+}

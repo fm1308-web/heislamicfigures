@@ -1,0 +1,159 @@
+{
+  "person": "Ulugh Beg",
+  "slug": "F1416",
+  "lifespan": "1394-1449",
+  "schema_version": 1,
+  "confidence": {
+    "grade": "A",
+    "density": "high",
+    "precision": "high",
+    "disclosure": "Ulugh Beg, the Timurid astronomer-king, is one of the best documented figures of 15th-century Central Asia. The Persian and Arabic chronicles of his reign (especially the Matla' al-Sa'dayn of Abd al-Razzaq Samarqandi and Hafiz Abru's continuation of Rashid al-Din's Jami' al-Tawarikh), the introduction to his own Zij-i Sultani, and the chronograms in his buildings give firm dates for the major events of his life - including his birth in Sultaniyya, his governorship of Samarqand from 1409, the construction of the great observatory, his brief reign as Timurid sultan, and his death by his own son in October 1449."
+  },
+  "sources": [
+    "Abd al-Razzaq Samarqandi, Matla' al-Sa'dayn",
+    "Hafiz Abru, Zubdat al-Tawarikh",
+    "Ulugh Beg, Zij-i Sultani (introduction)",
+    "Kevin Krisciunas, The Legacy of Ulugh Beg (1992)",
+    "Encyclopaedia Iranica, 'Ulugh Beg'"
+  ],
+  "journey": [
+    {
+      "day": 22,
+      "month": 3,
+      "year": 1394,
+      "age": 0,
+      "precision": "day",
+      "location": "Sultaniyya",
+      "lat": 36.4344,
+      "lng": 48.7950,
+      "event": "Born on 22 March 1394 in Sultaniyya in northwestern Iran (the former Mongol Ilkhanid capital), while his grandfather Timur (Tamerlane) is on campaign in the west. His birth name is Mirza Muhammad Taraghay; Ulugh Beg ('Great Prince' in Turkic) is a later regnal name. His father Shah Rukh is Timur's youngest son.",
+      "category": "birth",
+      "source": "Abd al-Razzaq, Matla' al-Sa'dayn"
+    },
+    {
+      "year": 1395,
+      "age": 1,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "Brought to the Timurid capital Samarkand as an infant. Grows up at the courts of Timur and (after 1405) of his father Shah Rukh, who establishes himself as Timurid sovereign with his capital at Herat. The young Ulugh Beg receives an unusually thorough education in literature, history, mathematics, and astronomy.",
+      "category": "childhood",
+      "source": "Hafiz Abru; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1405,
+      "age": 11,
+      "precision": "year",
+      "location": "Otrar",
+      "lat": 42.8500,
+      "lng": 68.3000,
+      "event": "His grandfather Timur dies on 18 February 1405 at Otrar on the Syr Darya, on the eve of an invasion of Ming China. The Timurid empire breaks into competing principalities. The young Ulugh Beg accompanies the family back to Samarkand.",
+      "category": "loss",
+      "source": "Abd al-Razzaq, Matla' al-Sa'dayn"
+    },
+    {
+      "year": 1409,
+      "age": 15,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "After his father Shah Rukh consolidates Timurid rule from Herat, in 1409 Ulugh Beg (still 15) is appointed governor of Samarkand and Transoxiana. He will hold this position for 38 years and turn Samarkand into the great scientific and cultural centre of his age.",
+      "category": "accession",
+      "source": "Abd al-Razzaq; Hafiz Abru"
+    },
+    {
+      "year": 1417,
+      "age": 23,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "Founds a great madrasa on the Registan square in Samarkand for the study of mathematics, astronomy, and the religious sciences. Construction begins in 1417 and is completed by 1420. The Ulugh Beg Madrasa, built around the famous square iwan-flanked courtyard, still stands today and is one of the masterpieces of Timurid architecture.",
+      "category": "civic",
+      "source": "Hafiz Abru; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1422,
+      "age": 28,
+      "precision": "year",
+      "location": "Bukhara",
+      "lat": 39.7747,
+      "lng": 64.4286,
+      "event": "Founds a second madrasa at Bukhara, the famous Ulugh Beg Madrasa of Bukhara, which carries the famous Persian inscription on its portal: 'The pursuit of knowledge is the duty of every Muslim, male and female.' This is one of three madrasas he founds in his realm.",
+      "category": "civic",
+      "source": "Hafiz Abru"
+    },
+    {
+      "year": 1424,
+      "age": 30,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "In 1424 begins construction of the great observatory of Samarkand, on a hill called Kuhak just outside the city. Working with the leading astronomers of the day - Ghiyath al-Din Jamshid al-Kashi (the polymath who wrote the Miftah al-Hisab) and Qadi Zada al-Rumi - Ulugh Beg himself participates actively in the work, taking observations.",
+      "category": "civic",
+      "source": "Krisciunas; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1429,
+      "age": 35,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "The observatory is completed by 1429. Its centrepiece is a sextant of unprecedented size: a curved track 40 metres in radius, sunk into a trench cut into the hill, used to measure the meridian altitudes of the Sun and stars with extraordinary precision. The lower part of this great instrument was excavated in 1908 and can still be seen today.",
+      "category": "civic",
+      "source": "Krisciunas; Encyclopaedia Iranica"
+    },
+    {
+      "year": 1437,
+      "age": 43,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "After more than a decade of observations, completes (around 1437) the Zij-i Sultani, a set of astronomical tables that includes a star catalogue of 994 stars based on direct observation - the first major catalogue of fixed stars since Ptolemy in the 2nd century. Its values for the obliquity of the ecliptic, the length of the year, and the precession of the equinoxes are the most accurate produced anywhere before Tycho Brahe's work in the 16th century.",
+      "category": "civic",
+      "source": "Ulugh Beg, Zij-i Sultani; Krisciunas"
+    },
+    {
+      "day": 13,
+      "month": 3,
+      "year": 1447,
+      "age": 53,
+      "precision": "day",
+      "location": "Herat",
+      "lat": 34.3529,
+      "lng": 62.2040,
+      "event": "On 13 March 1447 his father Shah Rukh dies at Herat. Ulugh Beg becomes the new Timurid sovereign. But his accession is contested by his nephews and other relatives, and the politically distracted scholar-king proves a poor general in the wars that follow.",
+      "category": "accession",
+      "source": "Abd al-Razzaq, Matla' al-Sa'dayn"
+    },
+    {
+      "year": 1449,
+      "age": 55,
+      "precision": "year",
+      "location": "Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "Loses a series of military engagements to his rivals. His own eldest son, Abd al-Latif, rebels against him. In 1449 Abd al-Latif defeats Ulugh Beg in battle near Samarkand and takes the city.",
+      "category": "battle",
+      "source": "Abd al-Razzaq; Hafiz Abru"
+    },
+    {
+      "day": 27,
+      "month": 10,
+      "year": 1449,
+      "age": 55,
+      "precision": "day",
+      "location": "near Samarkand",
+      "lat": 39.6542,
+      "lng": 66.9597,
+      "event": "On 27 October 1449, after being formally permitted by his son Abd al-Latif to make the pilgrimage to Mecca, Ulugh Beg is intercepted on the road and beheaded by an executioner sent secretly by his son. He is 55 years old. After Abd al-Latif's brief and bloody reign ends with his own murder six months later, Ulugh Beg is buried in the Gur-e Amir (the tomb of Timur) in Samarkand, alongside his grandfather. His observatory is destroyed by his religious enemies within a generation. The Zij-i Sultani survives him and circulates throughout the Islamic world; it is translated into Latin in the 17th century and influences European astronomy.",
+      "category": "death",
+      "source": "Abd al-Razzaq, Matla' al-Sa'dayn"
+    }
+  ]
+}
