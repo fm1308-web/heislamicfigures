@@ -24,6 +24,7 @@ function captureCurrentState(){
   var fn = _captureFn(entry.view);
   if(fn) entry.state = fn();
 }
+window._navCaptureCurrent = captureCurrentState;
 
 function restoreState(entry){
   if(!entry) return;
@@ -89,5 +90,9 @@ document.addEventListener('keydown', function(e){
 });
 
 window._navUpdateButtons = updateNavButtons;
+window._navCaptureCurrent = captureCurrentState;
+Object.defineProperty(window, '_navDebug', {
+  get: function(){ return { history: _history.slice(), idx: _idx, navigating: _navigating }; }
+});
 
 })();

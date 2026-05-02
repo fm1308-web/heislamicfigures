@@ -19,6 +19,39 @@ window.ExplainView = (function(){
   // calls setView('start') as part of the verse-chip jump; sandbox stubs it
   // to log so the click degrades to a hash-only nav.
   if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[explain] setView (stub):', v); };
+
+  // Nav hooks for in-app back/forward (used by nav.js).
+  // Internal _exCaptureState/_exRestoreState handle pinned tafsirs — leave alone.
+  window._captureState_explain = function(){
+    if(!window._exState) return null;
+    var visibleVerse = null;
+    try {
+      var cards = document.querySelectorAll('.ex-tafsir-card[data-start]');
+      var bestDist = Infinity;
+      var midY = window.innerHeight / 2;
+      cards.forEach(function(c){
+        var r = c.getBoundingClientRect();
+        var dist = Math.abs((r.top + r.bottom) / 2 - midY);
+        if(dist < bestDist){ bestDist = dist; visibleVerse = parseInt(c.getAttribute('data-start'), 10); }
+      });
+    } catch(e){}
+    return {
+      editionId: window._exState.edition ? window._exState.edition.id : null,
+      surah:     window._exState.surah || 1,
+      verse:     visibleVerse || window._exState.verse || null
+    };
+  };
+
+  window._restoreState_explain = function(s){
+    if(!s || !s.editionId) return;
+    if(typeof window._exOpenTafsir === 'function'){
+      window._exOpenTafsir(s.editionId, s.surah || 1, s.verse || null);
+    }
+    setTimeout(function(){
+      if(s.verse && typeof _exScrollToVerse === 'function') _exScrollToVerse(s.verse);
+    }, 350);
+  };
+
   // stub: openStartAtVerse — lifted code calls this after switching to START.
   if(typeof window.openStartAtVerse !== 'function') window.openStartAtVerse = function(s,v,e){ console.log('[explain] openStartAtVerse (stub):', s, v, e); };
 
@@ -187,7 +220,7 @@ function _exBuildLinkChipsHtml(edition, surah, verse){
   if(events.length){
     html += '<div class="ex-c-link-hdr">EVENTS</div>';
     events.forEach(function(eid){
-      html += '<span class="ex-c-link-chip ex-c-link-event" onclick="window._stXrefJumpEvent(\''+_exEsc(eid)+'\')" title="'+_exEsc(eid)+'">'+_exEsc(eid)+'</span>';
+      html += '<span class="ex-c-link-chip ex-c-link-event" onclick="window._stXrefJumpEvent(\''+_exEsc(eid)+'\')" title="'+_exEsc(eid)+'">'+_exEsc((window._eventNameLookup && window._eventNameLookup[eid]) || eid)+'</span>';
     });
   }
   if(places.length){
@@ -305,13 +338,16 @@ window._exNavSurah = function(dir){
   var nextS = s + (dir === 'next' ? 1 : -1);
   if(nextS < 1 || nextS > 114) return;
   _exState.surah = nextS;
+  _exState.verse = 0;
   _exState.targetVerse = 1;
+  if(typeof _exHashWrite === 'function') _exHashWrite();
   if(typeof _exRenderReader === 'function') _exRenderReader();
   var body = document.querySelector('#explain-view .ex-body');
   if(body) body.scrollTop = 0;
 };
 
 window._exClickConcept = function(cid){
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   if(!cid) return;
   if(typeof window._stConceptJump === 'function'){
     window._stConceptJump(cid);
@@ -336,6 +372,7 @@ window._exClickConcept = function(cid){
 };
 
 window._exClickFigure = function(famous){
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   if(!famous) return;
   window._tlPendingFocus = famous;
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], .tab-timeline');
@@ -361,6 +398,7 @@ window._exClickFigure = function(famous){
   }, 80);
 };
 window._exClickPlace = function(name){
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   if(!name) return;
   window._mapPendingPlace = name;
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="map"], .tab-map');
@@ -386,6 +424,7 @@ window._exClickBook = function(bookId, label){
 // Rich card variant: open free-read URL in a new tab if present, else fall
 // through to the BOOKS-view jump above.
 window._exClickBookCard = function(el, ev){
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   if(ev){ try { ev.stopPropagation(); } catch(e){} }
   if(!el) return;
   var url = el.getAttribute('data-book-url') || '';
@@ -442,6 +481,26 @@ var _exState = {
   fileCache: {}
 };
 window._exState = _exState;
+
+  window._exEnglishXrefCache = null;
+  window._exEnglishXrefPromise = null;
+  function _exLoadEnglishXref(){
+    if(window._exEnglishXrefCache) return Promise.resolve(window._exEnglishXrefCache);
+    if(window._exEnglishXrefPromise) return window._exEnglishXrefPromise;
+    window._exEnglishXrefPromise = fetch(dataUrl('data/islamic/xref/tafsir_xref_english.json'))
+      .then(function(r){ return r.ok ? r.json() : {}; })
+      .then(function(d){ window._exEnglishXrefCache = d || {}; return window._exEnglishXrefCache; })
+      .catch(function(e){ console.warn('[ex] english xref load failed', e); window._exEnglishXrefCache = {}; return {}; });
+    return window._exEnglishXrefPromise;
+  }
+  function _exGetXrefChips(editionId, surah, verse){
+    var d = window._exEnglishXrefCache;
+    if(!d) return null;
+    return d[editionId + ':' + surah + ':' + verse] || null;
+  }
+  window._exLoadEnglishXref = _exLoadEnglishXref;
+  window._exGetXrefChips = _exGetXrefChips;
+
 
 function initExplain(){
   var container = document.getElementById('explain-view');
@@ -619,6 +678,46 @@ function _exSwitchEdition(editionId){
 }
 
 function _exRenderReader(){
+  _exLoadEnglishXref();
+  // Standardize all left-column chips to identical size/shape — only color varies.
+  if(!document.getElementById('ex-chip-style-override')){
+    var styleEl = document.createElement('style');
+    styleEl.id = 'ex-chip-style-override';
+    styleEl.textContent =
+      '#explain-view .ex-c-link-chip,' +
+      '#explain-view .ex-c-link-chip.ex-c-link-fig,' +
+      '#explain-view .ex-c-link-chip.ex-c-link-place,' +
+      '#explain-view .ex-c-link-chip.ex-c-link-event,' +
+      '#explain-view .ex-c-link-chip.ex-c-link-book,' +
+      '#explain-view .ex-c-link-chip.ex-c-link-concept,' +
+      '#explain-view .ga-concept-chip {' +
+        'display:block !important;' +
+        'width:100% !important;' +
+        'box-sizing:border-box !important;' +
+        'padding:5px 10px !important;' +
+        'margin:3px 0 !important;' +
+        'font-size:12px !important;' +
+        'font-family:\'Lato\',sans-serif !important;' +
+        'border-radius:3px !important;' +
+        'border:1px solid !important;' +
+        'background:transparent !important;' +
+        'cursor:pointer !important;' +
+        'text-align:left !important;' +
+        'overflow:hidden !important;' +
+        'text-overflow:ellipsis !important;' +
+        'white-space:nowrap !important;' +
+      '}' +
+      '#explain-view .ex-c-link-chip.ex-c-link-fig { color:#D4AF37 !important; border-color:rgba(212,175,55,0.5) !important; }' +
+      '#explain-view .ex-c-link-chip.ex-c-link-place { color:#c084fc !important; border-color:rgba(192,132,252,0.5) !important; }' +
+      '#explain-view .ex-c-link-chip.ex-c-link-event { color:#FFA500 !important; border-color:rgba(255,165,0,0.5) !important; }' +
+      '#explain-view .ex-c-link-chip.ex-c-link-book,' +
+      '#explain-view .ex-c-link-chip.ex-c-book-card { color:#63B3ED !important; border-color:rgba(99,179,237,0.5) !important; }' +
+      '#explain-view .ex-c-link-chip[style*="143,212,181"],' +
+      '#explain-view .ex-c-link-chip.ex-c-verse { color:#8fd4b5 !important; border-color:rgba(143,212,181,0.5) !important; }' +
+      '#explain-view .ga-concept-chip { color:#78c8b4 !important; border-color:rgba(120,200,180,0.45) !important; }' +
+      '#explain-view .ex-c-link-hdr { font-size:10px !important; letter-spacing:.1em !important; color:#A0AEC0 !important; margin:10px 0 4px !important; font-family:\'Cinzel\',serif !important; text-transform:uppercase !important; }';
+    document.head.appendChild(styleEl);
+  }
   if(!_exState.edition){ _exRenderBlank(); return; }
   var ed = _exState.edition;
   var main = document.getElementById('ex-main');
@@ -674,9 +773,12 @@ function _exRenderCards(list){
   var byAyah = {};
   list.forEach(function(e){ byAyah[e.ayah] = e.text; });
 
+  // Sort numerically so verses 1,2,3...286 visit in true order (data files often sort as strings: "1","10","100","2"...)
+  var sortedList = list.slice().sort(function(a, b){ return (parseInt(a.ayah,10)||0) - (parseInt(b.ayah,10)||0); });
+
   var rendered = {};
   var h = '';
-  list.forEach(function(e){
+  sortedList.forEach(function(e){
     if(rendered[e.ayah]) return;
     if(!e.text) return;
     var start = e.ayah, end = e.ayah;
@@ -688,7 +790,6 @@ function _exRenderCards(list){
       : ('Surah ' + _exState.surah + ' : Verses ' + start + '–' + end);
     var chipLabel = '→ Verse ' + _exState.surah + ':' + start;
 
-    var linkChipsHtml = _exBuildLinkChipsHtml(_exState.edition, _exState.surah, start);
     var _exBmKey  = 't:' + _exState.edition + ':' + _exState.surah + ':' + start;
     var _exBmAuth = window.GoldArkAuth;
     var _exBmFilled = !!(_exBmAuth && _exBmAuth.isSignedIn && _exBmAuth.isSignedIn() && _exBmAuth.hasBookmarkKey && _exBmAuth.hasBookmarkKey(_exBmKey));
@@ -696,17 +797,84 @@ function _exRenderCards(list){
       ? (_exBmFilled ? 'Remove bookmark' : 'Add bookmark')
       : 'Sign in to bookmark';
     var _exBmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_exBmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+    var bmRibbonHtml = '<button class="ex-bmk-btn" data-bmkey="' + _exBmKey + '" title="' + _exBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1;display:inline-block;vertical-align:middle">' + _exBmRibbon + '</button>';
+    var verseJumpChipHtml = '<div class="ex-chip-row" style="margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap"><a class="ex-chip" href="#start?surah=' + _exState.surah + '&verse=' + start + '" onclick="window._exJumpToStart(' + _exState.surah + ',' + start + ');return false;">' + chipLabel + '</a>' + bmRibbonHtml + '</div>';
+    var linkChipsHtml = verseJumpChipHtml + _exBuildLinkChipsHtml(_exState.edition, _exState.surah, start);
+    // Append cross-reference chips into the LEFT column with the existing link chips.
+    var _xc = (typeof _exGetXrefChips === 'function') ? _exGetXrefChips(_exState.edition.id, _exState.surah, start) : null;
+    if(_xc){
+      // Detect what existing _exBuildLinkChipsHtml already rendered
+      var _hasFig    = linkChipsHtml.indexOf('FIGURES') !== -1;
+      var _hasPlaces = linkChipsHtml.indexOf('PLACES') !== -1;
+      var _hasEvents = linkChipsHtml.indexOf('EVENTS') !== -1;
+      var _hasBooks  = linkChipsHtml.indexOf('BOOKS') !== -1;
+      var _xrefHtml = '';
+
+      // Figures — only if existing builder didn't render any
+      if(!_hasFig && _xc.figures && _xc.figures.length){
+        _xrefHtml += '<div class="ex-c-link-hdr">FIGURES</div>';
+        _xc.figures.slice(0, 12).forEach(function(slug){
+          var nm = slug;
+          if(window.PEOPLE && window.PEOPLE.length){
+            var p = window.PEOPLE.find(function(x){ return x.slug === slug; });
+            if(p) nm = p.famous || p.name || p.display_name || slug;
+          }
+          _xrefHtml += '<span class="ex-c-link-chip ex-c-link-fig" onclick="window._exClickFigure(\'' + _exEsc(nm) + '\')" title="' + _exEsc(nm) + '">' + _exEsc(nm) + '</span>';
+        });
+      }
+      if(!_hasEvents && _xc.events && _xc.events.length){
+        _xrefHtml += '<div class="ex-c-link-hdr">EVENTS</div>';
+        _xc.events.slice(0, 12).forEach(function(eid){
+          _xrefHtml += '<span class="ex-c-link-chip ex-c-link-event" onclick="window._stXrefJumpEvent(\'' + _exEsc(eid) + '\')" title="' + _exEsc(eid) + '">' + _exEsc((window._eventNameLookup && window._eventNameLookup[eid]) || eid) + '</span>';
+        });
+      }
+      if(!_hasPlaces && _xc.places && _xc.places.length){
+        _xrefHtml += '<div class="ex-c-link-hdr">PLACES</div>';
+        _xc.places.slice(0, 12).forEach(function(p){
+          _xrefHtml += '<span class="ex-c-link-chip ex-c-link-place" onclick="window._exClickPlace(\'' + _exEsc(p) + '\')" title="' + _exEsc(p) + '">' + _exEsc(p) + '</span>';
+        });
+      }
+      if(!_hasBooks && _xc.books && _xc.books.length){
+        _xrefHtml += '<div class="ex-c-link-hdr">BOOKS</div>';
+        _xc.books.slice(0, 12).forEach(function(bid){
+          var bnm = bid;
+          if(window._exBookLookup && window._exBookLookup[bid]){
+            bnm = window._exBookLookup[bid].title || bid;
+          }
+          _xrefHtml += '<span class="ex-c-link-chip ex-c-link-book" title="' + _exEsc(bnm) + '">' + _exEsc(bnm) + '</span>';
+        });
+      }
+      // Verses and Concepts — always render (existing builder doesn't have these)
+      if(_xc.quran && _xc.quran.length){
+        _xrefHtml += '<div class="ex-c-link-hdr">VERSES</div>';
+        _xc.quran.slice(0, 12).forEach(function(sv){
+          var p = String(sv).split(':');
+          if(p.length !== 2) return;
+          _xrefHtml += '<span class="ex-c-link-chip" onclick="window._exJumpToStart(' + p[0] + ',' + p[1] + ')" style="color:#8fd4b5;border-color:rgba(143,212,181,0.5);cursor:pointer">' + _exEsc(sv) + '</span>';
+        });
+      }
+      if(_xc.concepts && _xc.concepts.length){
+        _xrefHtml += '<div class="ex-c-link-hdr">CONCEPTS</div>';
+        _xc.concepts.slice(0, 12).forEach(function(slug){
+          var lbl = String(slug).replace(/-/g, ' ');
+          _xrefHtml += '<span class="ga-concept-chip" data-concept="' + _exEsc(slug) + '" style="display:inline-block;margin:2px 4px 2px 0">' + _exEsc(lbl) + '<span class="ga-cc-sup">M</span></span>';
+        });
+      }
+
+      if(_xrefHtml){
+        if(linkChipsHtml.indexOf('No cross-references') !== -1){
+          linkChipsHtml = _xrefHtml;
+        } else {
+          linkChipsHtml += _xrefHtml;
+        }
+      }
+    }
     h += '<div class="ex-tafsir-card" id="ex-tc-' + start + '" data-start="' + start + '" data-end="' + end + '" data-verse="' + start + '">';
     h += '  <div class="ex-tc-grid">';
     h += '    <div class="ex-c-links">' + linkChipsHtml + '</div>';
     h += '    <div class="ex-c-main">';
-    h += '      <div class="ex-c-head" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>' + headLabel + '</span>' +
-         '<button class="ex-bmk-btn" data-bmkey="' + _exBmKey + '" title="' + _exBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _exBmRibbon + '</button>' +
-         '</div>';
+    h += '      <div class="ex-c-head" style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;color:rgba(212,175,55,0.85);margin-bottom:8px">' + headLabel + '</div>';
     h += '      <div class="' + bodyClass + '">' + _exEsc(e.text) + '</div>';
-    h += '      <div class="ex-chip-row">';
-    h += '        <a class="ex-chip" href="#start?surah=' + _exState.surah + '&verse=' + start + '" onclick="window._exJumpToStart(' + _exState.surah + ',' + start + ');return false;">' + chipLabel + '</a>';
-    h += '      </div>';
     h += '    </div>';
     h += '  </div>';
     h += '</div>';
@@ -791,6 +959,7 @@ function _exScrollToVerse(v){
 // Verse-chip click → DOM-click START tab + retry openStartAtVerse.
 // setView is a sandbox stub, so we navigate via the actual tab DOM.
 window._exJumpToStart = function(s, v){
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   location.hash = '#start?surah=' + s + '&verse=' + v;
   var clicked = false;
   var candidates = document.querySelectorAll(

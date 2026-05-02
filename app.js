@@ -400,6 +400,13 @@ async function boot(){
   try{const r=await fetch(dataUrl('data/islamic/events/master.json'));window.eventsData=await r.json();}
   catch(e){window.eventsData=[];}
 
+  // Event ID → Name lookup. Loaded once at boot, cached on window.
+  window._eventNameLookup = {};
+  fetch(dataUrl('data/islamic/event_id_to_name.json'))
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(j){ window._eventNameLookup = j || {}; console.log('[GoldArk] event name lookup loaded:', Object.keys(window._eventNameLookup).length); })
+    .catch(function(e){ console.warn('[GoldArk] event name lookup failed', e); });
+
   // Quran cross-references: figure → [{surah, verse_start, verse_end, ref_text}, ...]
   try{
     const r=await fetch(dataUrl('data/islamic/quran/quran_xref.json'));

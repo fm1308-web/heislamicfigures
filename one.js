@@ -681,7 +681,7 @@ async function _renderPerson(p,container){
       return '<div class="one-event">'+
         '<span class="one-ev-year">'+ev.year+'</span>'+
         '<span class="one-ev-cat">'+_e(ev.category||'')+'</span>'+
-        '<span class="one-ev-title">'+_e(ev.title)+'</span>'+
+        '<span class="one-ev-title">'+_e(ev.title || (window._eventNameLookup && window._eventNameLookup[ev.id]) || ev.id || '')+'</span>'+
         (role?'<span class="one-ev-role">('+_e(role)+')</span>':'')+
         (ev.description?'<div class="one-ev-desc">'+_e(ev.description)+'</div>':'')+
       '</div>';

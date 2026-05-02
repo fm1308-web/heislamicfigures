@@ -1457,7 +1457,7 @@ function _stXrefPopup(surah,verse,ev){
   if(events.length){
     h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Events</div>';
     events.forEach(function(e){
-      h+='<div class="st-xref-row" onclick="_stXrefJumpEvent(\''+_stEsc(e.id)+'\')"><span class="st-xref-year">'+e.year+' CE</span><span>'+_stEsc(e.title)+'</span></div>';
+      h+='<div class="st-xref-row" onclick="_stXrefJumpEvent(\''+_stEsc(e.id)+'\')"><span class="st-xref-year">'+e.year+' CE</span><span>'+_stEsc(e.title || (window._eventNameLookup && window._eventNameLookup[e.id]) || e.id || '')+'</span></div>';
     });
   }
 

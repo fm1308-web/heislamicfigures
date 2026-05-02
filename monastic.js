@@ -1994,7 +1994,18 @@ function _renderRows(filtered, colKey, page){
       ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:' + periodColor + ';margin-top:3px">' + esc(periodLabel) + '</div>'
       : '';
 
+    // Resolve xref file basename:
+    // 1. Original 6 use the legacy XREF_COLL_MAP
+    // 2. The 11 'others' derive from COLLECTIONS[].file basename (e.g. "muwatta-malik")
     var _xColl = XREF_COLL_MAP[h._colKey || colKey] || '';
+    if(!_xColl){
+      var _ck = h._colKey || colKey;
+      var _cobj = COLLECTIONS.find(function(c){ return c.key === _ck; });
+      if(_cobj && _cobj.file){
+        var _m = _cobj.file.match(/\/([^\/]+)\.json$/);
+        if(_m) _xColl = _m[1];
+      }
+    }
     var xrefSlotHtml = '';
     if(_xColl && num != null && num !== ''){
       var _xKey = _xColl + '-' + num;
@@ -2840,13 +2851,41 @@ function _wizardApply(){
 window._hadithXrefCache = window._hadithXrefCache || {};
 window._loadHadithXref = async function(collection){
   if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
+  // First try the merged v2 file (canonical 6 + 11 others).
+  if(!window._hadithXrefV2Promise){
+    window._hadithXrefV2Promise = fetch(dataUrl('data/islamic/hadith_xref_v2.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(e){ console.warn('xref v2 load failed', e); return null; });
+  }
+  var v2 = await window._hadithXrefV2Promise;
+  if(v2){
+    // v2 is keyed "<collection>-<num>". Build per-collection slice on first hit, cache it.
+    Object.keys(window._hadithXrefCache).length === 0 || null;
+    if(!window._hadithXrefV2Sliced){
+      var sliced = {};
+      Object.keys(v2).forEach(function(key){
+        var dash = key.lastIndexOf('-');
+        if(dash < 0) return;
+        var col = key.substring(0, dash);
+        var num = key.substring(dash + 1);
+        if(!sliced[col]) sliced[col] = {};
+        sliced[col][num] = v2[key];
+        // Also key by full "col-num" for direct lookups elsewhere
+        sliced[col][key] = v2[key];
+      });
+      window._hadithXrefV2Sliced = sliced;
+      Object.keys(sliced).forEach(function(c){ window._hadithXrefCache[c] = sliced[c]; });
+    }
+    if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
+  }
+  // Fallback to per-collection legacy file (for collections not in v2).
   try{
     var res = await fetch(dataUrl('data/islamic/hadith_xref/' + collection + '.json'));
-    if(!res.ok) return {};
+    if(!res.ok){ window._hadithXrefCache[collection] = {}; return {}; }
     var data = await res.json();
     window._hadithXrefCache[collection] = data.hadith_index || {};
     return window._hadithXrefCache[collection];
-  } catch(e){ console.warn('xref load failed', collection, e); return {}; }
+  } catch(e){ console.warn('xref load failed', collection, e); window._hadithXrefCache[collection] = {}; return {}; }
 };
 
 function _buildXrefPanel(entry){
@@ -2887,7 +2926,7 @@ function _buildXrefPanel(entry){
   var events = entry.events || [];
   if(events.length){
     var chips4 = events.map(function(ev){
-      return '<span class="xref-chip xref-event" data-id="' + esc(ev.id || '') + '">' + esc(ev.title || '') + '</span>';
+      return '<span class="xref-chip xref-event" data-id="' + esc(ev.id || '') + '">' + esc(ev.title || (window._eventNameLookup && window._eventNameLookup[ev.id]) || ev.id || '') + '</span>';
     }).join('');
     groups.push('<div class="xref-group"><span class="xref-label">Events:</span>' + chips4 + '</div>');
   }
