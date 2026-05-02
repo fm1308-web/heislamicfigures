@@ -299,6 +299,17 @@ window._exNavVerse = function(dir){
   // Clamp at top of surah; for next, just attempt scroll — if card doesn't exist, no-op
   window._exVerseGo(s, nextV);
 };
+window._exNavSurah = function(dir){
+  if(!_exState) return;
+  var s = _exState.surah || 1;
+  var nextS = s + (dir === 'next' ? 1 : -1);
+  if(nextS < 1 || nextS > 114) return;
+  _exState.surah = nextS;
+  _exState.targetVerse = 1;
+  if(typeof _exRenderReader === 'function') _exRenderReader();
+  var body = document.querySelector('#explain-view .ex-body');
+  if(body) body.scrollTop = 0;
+};
 
 window._exClickConcept = function(cid){
   if(!cid) return;
@@ -430,6 +441,7 @@ var _exState = {
   loadedSurahData: null,
   fileCache: {}
 };
+window._exState = _exState;
 
 function initExplain(){
   var container = document.getElementById('explain-view');
@@ -541,7 +553,8 @@ function _exRenderBlank(){
   var main = document.getElementById('ex-main');
   if(!main) return;
   var list = _exFilteredWorks();
-  var h = '<div class="ex-blank-intro">Select a tafsir to begin. ' + EX_TAFSIR_REGISTRY.length + ' editions across ' + EX_WORKS.length + ' works.</div>';
+  var langCount = new Set(EX_TAFSIR_REGISTRY.map(function(t){return t.lang;})).size;
+  var h = '<div class="ex-blank-intro">Select a tafsir to begin. ' + EX_WORKS.length + ' tafsir works · ' + EX_TAFSIR_REGISTRY.length + ' editions across ' + langCount + ' languages.</div>';
   if(list.length === 0){
     h += '<div class="ex-blank-intro">No works match current filters.</div>';
   } else {
@@ -613,10 +626,10 @@ function _exRenderReader(){
   var workEds = _exEditionsFor(ed.work_id);
 
   var h = '<div class="ex-reader-head">';
-  h += '  <div class="ex-reader-head-main">';
-  h += '    <h2 class="ex-reader-title">' + _exEsc(ed.work) + '</h2>';
-  h += '    <div class="ex-reader-meta">' + _exAuthorLink(ed) + ' · ' + _exEsc(EX_TRADITION_NAMES[ed.tradition] || ed.tradition) + (ed.partial ? ' · <span class="ex-amber">partial coverage</span>' : '') + '</div>';
-  h += '    <div class="ex-edition-pills">';
+  h += '  <div class="ex-reader-head-main" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1 1 400px">';
+  h += '    <h2 class="ex-reader-title" style="margin:0">' + _exEsc(ed.work) + '</h2>';
+  h += '    <div class="ex-reader-meta" style="margin:0">' + _exAuthorLink(ed) + ' · ' + _exEsc(EX_TRADITION_NAMES[ed.tradition] || ed.tradition) + (ed.partial ? ' · <span class="ex-amber">partial coverage</span>' : '') + '</div>';
+  h += '    <div class="ex-edition-pills" style="margin:0">';
   var pillLangs = EX_LANG_ORDER.filter(function(L){ return workEds.some(function(e){ return e.lang === L; }); });
   pillLangs.forEach(function(L){
     var e = workEds.find(function(x){ return x.lang === L; });
@@ -626,6 +639,11 @@ function _exRenderReader(){
   h += '    </div>';
   h += '  </div>';
   h += '  <button class="ex-close-btn" id="ex-closeReader" title="Back to library">×</button>';
+  h += '  <div class="ex-surah-nav" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding-top:10px;margin-top:6px;border-top:1px dashed #2a3344">';
+  h += '    <button onclick="window._exNavSurah(\'prev\')" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:Lato,sans-serif" title="Previous surah">◀  PREV SURAH</button>';
+  h += '    <span style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.08em;color:#9aa3b2;text-transform:uppercase">Surah ' + (_exState.surah || 1) + ' / 114</span>';
+  h += '    <button onclick="window._exNavSurah(\'next\')" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:Lato,sans-serif" title="Next surah">NEXT SURAH  ▶</button>';
+  h += '  </div>';
   h += '</div>';
 
   if(!_exState.surah) _exState.surah = 1;
@@ -693,11 +711,7 @@ function _exRenderCards(list){
     h += '  </div>';
     h += '</div>';
   });
-  var navHtml = '<div class="ex-verse-nav" style="display:flex;justify-content:center;align-items:center;gap:18px;padding:14px 0;margin:6px 0">'
-    + '<button onclick="window._exNavVerse(\'prev\')" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:Lato,sans-serif" title="Previous verse">◀  PREV VERSE</button>'
-    + '<button onclick="window._exNavVerse(\'next\')" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:pointer;font-family:Lato,sans-serif" title="Next verse">NEXT VERSE  ▶</button>'
-    + '</div>';
-  cardArea.innerHTML = h ? (navHtml + h + navHtml) : '<div class="ex-loading">No entries for this surah.</div>';
+  cardArea.innerHTML = h ? h : '<div class="ex-loading">No entries for this surah.</div>';
 
   // Wire bookmark buttons on tafsir entries.
   cardArea.querySelectorAll('.ex-bmk-btn').forEach(function(btn){
@@ -751,11 +765,22 @@ function _exScrollToVerse(v){
   var container = document.getElementById('explain-view');
   if(!container) return;
   var cards = container.querySelectorAll('.ex-tafsir-card');
+  if(!cards.length) return;
   var target = null;
   for(var i=0;i<cards.length;i++){
     var s = parseInt(cards[i].getAttribute('data-start'), 10);
     var e = parseInt(cards[i].getAttribute('data-end'), 10);
     if(v >= s && v <= e){ target = cards[i]; break; }
+  }
+  if(!target){
+    // Partial tafsir — pick nearest card by start verse.
+    var bestDiff = Infinity;
+    for(var j=0;j<cards.length;j++){
+      var sv = parseInt(cards[j].getAttribute('data-start'), 10);
+      if(isNaN(sv)) continue;
+      var diff = Math.abs(sv - v);
+      if(diff < bestDiff){ bestDiff = diff; target = cards[j]; }
+    }
   }
   if(!target) return;
   target.scrollIntoView({ behavior:'smooth', block:'start' });

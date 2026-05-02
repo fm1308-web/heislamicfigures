@@ -267,7 +267,7 @@ function _dvUpdateTafsirChips(){
     var s = parseInt(chip.getAttribute("data-surah"),10);
     var v = parseInt(chip.getAttribute("data-verse"),10);
     var n = _dvTafsirCount(s,v);
-    if(n > 0){ chip.textContent = n + (n===1 ? " tafsir" : " tafsirs"); chip.style.display = ""; }
+    if(n > 0){ chip.textContent = "Tafsir"; chip.style.display = ""; }
     else if(n === 0){ chip.style.display = "none"; }
     chip.classList.toggle("active", on);
   });
@@ -277,7 +277,7 @@ window._dvUpdateTafsirChips = _dvUpdateTafsirChips;
 // Called from start.js _stXrefChip. Always emits a chip; real count
 // fills in after prefetch completes.
 function _dvTafsirChipHTML(surah, verse){
-  return '<div class="st-xref-chip st-xref-tafsir" data-surah="'+surah+'" data-verse="'+verse+'" onclick="_dvTafsirChipClick('+surah+','+verse+',event)">tafsirs</div>';
+  return '<div class="st-xref-chip st-xref-tafsir" data-surah="'+surah+'" data-verse="'+verse+'" onclick="_dvTafsirChipClick('+surah+','+verse+',event)">Tafsir</div>';
 }
 window._dvTafsirChipHTML = _dvTafsirChipHTML;
 

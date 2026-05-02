@@ -112,6 +112,7 @@ var CONF_STYLES = {
 var _inited = false;
 var _cache = {};
 var MAX_ROWS = 500;
+var _currentPage = 0;
 
 var _resultsEl, _loadingEl, _countEl, _bandEl;
 var _periodTotals = null;
@@ -1933,11 +1934,18 @@ function _applyAllFilters(){
 }
 
 var _lastFiltered = null, _lastColKey = null;
-function _renderRows(filtered, colKey){
+function _renderRows(filtered, colKey, page){
   _lastFiltered = filtered;
   _lastColKey = colKey;
   _resultsEl.innerHTML = '';
   _countEl.textContent = filtered.length + ' hadith' + (filtered.length !== 1 ? 's' : '') + ' found';
+
+  var totalPages = Math.max(1, Math.ceil(filtered.length / MAX_ROWS));
+  if(typeof page !== 'number') page = 0;
+  if(page < 0) page = 0;
+  if(page >= totalPages) page = totalPages - 1;
+  _currentPage = page;
+  var startIdx = page * MAX_ROWS;
 
   if(!filtered.length){
     // Render only after the load promise resolved — at this point a fetch
@@ -1948,13 +1956,26 @@ function _renderRows(filtered, colKey){
 
   var frag = document.createDocumentFragment();
 
+  if(totalPages > 1){
+    var pageNav = document.createElement('div');
+    pageNav.className = 'mon-page-nav';
+    pageNav.style.cssText = 'position:sticky;top:0;z-index:10;background:#1B2631;width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #2D3748;box-sizing:border-box';
+    var prevDis = page === 0;
+    var nextDis = page === totalPages - 1;
+    pageNav.innerHTML =
+      '<button onclick="window._monNavPage(\'prev\')" ' + (prevDis?'disabled':'') + ' style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:'+(prevDis?'not-allowed':'pointer')+';opacity:'+(prevDis?'0.4':'1')+';font-family:Lato,sans-serif" title="Previous page">◀  PREV PAGE</button>' +
+      '<span style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.08em;color:#9aa3b2;text-transform:uppercase">Page ' + (page + 1) + ' / ' + totalPages + ' · ' + filtered.length.toLocaleString() + ' hadiths</span>' +
+      '<button onclick="window._monNavPage(\'next\')" ' + (nextDis?'disabled':'') + ' style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:'+(nextDis?'not-allowed':'pointer')+';opacity:'+(nextDis?'0.4':'1')+';font-family:Lato,sans-serif" title="Next page">NEXT PAGE  ▶</button>';
+    frag.appendChild(pageNav);
+  }
+
   var hdr = document.createElement('div');
   hdr.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(160,174,192,0.7)';
   hdr.innerHTML = '<div>Source</div><div>Narrator</div><div>Hadith</div>';
   frag.appendChild(hdr);
 
-  var limit = Math.min(filtered.length, MAX_ROWS);
-  for(var i = 0; i < limit; i++){
+  var endIdx = Math.min(filtered.length, startIdx + MAX_ROWS);
+  for(var i = startIdx; i < endIdx; i++){
     var h = filtered[i];
     var label = getLabel(h._colKey || colKey || '');
     var num = getNumber(h);
@@ -2032,13 +2053,16 @@ function _renderRows(filtered, colKey){
     });
   });
 
-  if(filtered.length > MAX_ROWS){
-    var trunc = document.createElement('div');
-    trunc.style.cssText = 'text-align:center;padding:12px;color:#D4AF37;font-size:var(--fs-3);letter-spacing:.06em;border-top:1px solid #2D3748';
-    trunc.textContent = '\u2026 ' + (filtered.length - MAX_ROWS) + ' more results truncated. Narrow your filters to see them.';
-    _resultsEl.appendChild(trunc);
-  }
 }
+
+window._monNavPage = function(dir){
+  if(!_lastFiltered) return;
+  var totalPages = Math.max(1, Math.ceil(_lastFiltered.length / MAX_ROWS));
+  var newPage = _currentPage + (dir === 'next' ? 1 : -1);
+  if(newPage < 0 || newPage >= totalPages) return;
+  _renderRows(_lastFiltered, _lastColKey, newPage);
+  if(_resultsEl) _resultsEl.scrollTop = 0;
+};
 
 // ── Topic population ──
 function _populateTopics(){

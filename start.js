@@ -1426,7 +1426,7 @@ function _stXrefChip(surah,verse){
     h+='<div class="st-xref-chip st-xref-hadith"'+onclick+'>'+hadithCount+(hadithCount===1?' hadith':' hadiths')+'</div>';
   }
   if(tafsirCount){
-    h+='<div class="st-xref-chip st-xref-tafsir"'+onclick+'>'+tafsirCount+(tafsirCount===1?' tafsir':' tafsirs')+'</div>';
+    h+='<div class="st-xref-chip st-xref-tafsir" onclick="_stTafsirChipPopup('+surah+','+verse+',event)">Tafsir</div>';
   }
   return h;
 }
@@ -1436,7 +1436,10 @@ function _stXrefPopup(surah,verse,ev){
   var items=(_stXrefLookup[surah]||{})[verse] || [];
   var hadithsForPopup = _stHadithByVerse ? (_stHadithByVerse[surah+':'+verse] || []) : [];
   var tafsirsForPopup = _stTafsirByVerse ? (_stTafsirByVerse[surah+':'+verse] || []) : [];
-  if(!items.length && !hadithsForPopup.length && !tafsirsForPopup.length) return;
+  var conceptsForGuard = _stConceptsByVerse ? (_stConceptsByVerse[surah+':'+verse] || []) : [];
+  var scoredForGuard = [];
+  try { if(window.GoldArkConcepts && window.GoldArkConcepts.cache && window.GoldArkConcepts.cache.quranByVerse){ scoredForGuard = window.GoldArkConcepts.getForVerse(surah, verse) || []; } } catch(e){}
+  if(!items.length && !hadithsForPopup.length && !tafsirsForPopup.length && !conceptsForGuard.length && !scoredForGuard.length) return;
 
   var old=document.getElementById('st-xref-popup');
   if(old)old.remove();
@@ -1526,20 +1529,6 @@ function _stXrefPopup(surah,verse,ev){
     });
     if(hadiths.length > 25){
       h+='<div style="font-size:var(--fs-3);color:#888;margin-top:6px">\u2026 '+(hadiths.length-25)+' more</div>';
-    }
-  }
-
-  var verseTafsirs = _stTafsirByVerse ? (_stTafsirByVerse[surah+':'+verse] || []) : [];
-  if(verseTafsirs.length){
-    h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif;display:flex;align-items:center;justify-content:space-between"><span>Linked Tafsir Entries ('+verseTafsirs.length+')</span><span onclick="_stXrefPinAllTafsirs('+surah+','+verse+')" style="font-size:11px;text-transform:uppercase;color:#D4AF37;border:1px solid rgba(212,175,55,.5);border-radius:3px;padding:2px 8px;cursor:pointer;letter-spacing:.04em">See all '+verseTafsirs.length+'</span></div>';
-    verseTafsirs.slice(0,15).forEach(function(t){
-      var reg = (typeof DIVE_TAFSIR_REGISTRY!=='undefined') ? DIVE_TAFSIR_REGISTRY.find(function(x){return x.id===t.tafsir;}) : null;
-      var workLabel = reg ? (reg.work + (reg.author ? ' \u2014 ' + reg.author : '')) : t.tafsir;
-      var surahName = (_stIndex && _stIndex[t.surah-1]) ? (_stIndex[t.surah-1].name || _stIndex[t.surah-1].translit || ('Surah '+t.surah)) : ('Surah '+t.surah);
-      h+='<div class="st-xref-row" onclick="_stXrefJumpTafsir(\''+_stEsc(t.tafsir)+'\','+t.surah+','+t.verse+')"><span>'+_stEsc(workLabel)+'</span><span style="color:#c084fc;font-size:10px">'+_stEsc(surahName)+' '+t.surah+':'+t.verse+'</span></div>';
-    });
-    if(verseTafsirs.length > 15){
-      h+='<div style="font-size:var(--fs-3);color:#888;margin-top:6px">\u2026 '+(verseTafsirs.length-15)+' more</div>';
     }
   }
 
@@ -1661,6 +1650,101 @@ function _stXrefJumpEvent(eventId){
   },80);
 }
 window._stXrefJumpEvent=_stXrefJumpEvent;
+
+  // Build a lookup: tafsirId -> sorted array of {surah, verse} this tafsir covers.
+  // Scans _stTafsirByVerse once; cached.
+  var _stTafsirCoverage = null;
+  function _stBuildTafsirCoverage(){
+    if(_stTafsirCoverage) return _stTafsirCoverage;
+    var cov = {};
+    if(!_stTafsirByVerse) return cov;
+    Object.keys(_stTafsirByVerse).forEach(function(key){
+      var parts = key.split(':');
+      var s = +parts[0], v = +parts[1];
+      var arr = _stTafsirByVerse[key] || [];
+      arr.forEach(function(e){
+        if(!e || !e.tafsir) return;
+        if(!cov[e.tafsir]) cov[e.tafsir] = [];
+        cov[e.tafsir].push({surah: s, verse: v});
+      });
+    });
+    Object.keys(cov).forEach(function(tid){
+      cov[tid].sort(function(a,b){ return a.surah===b.surah ? a.verse-b.verse : a.surah-b.surah; });
+    });
+    _stTafsirCoverage = cov;
+    return cov;
+  }
+
+  // Find the verse in a tafsir's coverage closest to the requested (surah, verse).
+  // Returns {surah, verse, exact:true|false} or null if tafsir has no coverage.
+  function _stNearestTafsirVerse(tafsirId, surah, verse){
+    var cov = _stBuildTafsirCoverage();
+    var list = cov[tafsirId];
+    if(!list || !list.length) return null;
+    // Exact match first
+    for(var i=0;i<list.length;i++){
+      if(list[i].surah===surah && list[i].verse===verse) return {surah:surah, verse:verse, exact:true};
+    }
+    // Same surah, nearest verse
+    var sameSurah = list.filter(function(x){return x.surah===surah;});
+    if(sameSurah.length){
+      var best = sameSurah[0], bd = Math.abs(sameSurah[0].verse-verse);
+      sameSurah.forEach(function(x){
+        var d = Math.abs(x.verse-verse);
+        if(d < bd){ bd = d; best = x; }
+      });
+      return {surah:best.surah, verse:best.verse, exact:false};
+    }
+    // No same-surah coverage — return absolute nearest by surah distance, fallback to first entry
+    var bestAbs = list[0];
+    var bestSd = Math.abs(list[0].surah-surah);
+    list.forEach(function(x){
+      var sd = Math.abs(x.surah-surah);
+      if(sd < bestSd){ bestSd = sd; bestAbs = x; }
+    });
+    return {surah:bestAbs.surah, verse:bestAbs.verse, exact:false};
+  }
+
+  // Popup: all 28 tafsir editions for this verse, grouped by language.
+  // Each row: clicking jumps to EXPLAIN at exact verse if available, else nearest.
+  function _stTafsirChipPopup(surah, verse, ev){
+    if(ev) ev.stopPropagation();
+    var old = document.getElementById('st-xref-popup'); if(old) old.remove();
+    var registry = (typeof DIVE_TAFSIR_REGISTRY !== 'undefined') ? DIVE_TAFSIR_REGISTRY : [];
+    if(!registry.length){ console.warn('[start] tafsir registry not loaded'); return; }
+
+    var LANG_FULL = {AR:'Arabic', EN:'English', UR:'Urdu', BN:'Bengali', KU:'Kurdish', RU:'Russian'};
+    var byLang = {};
+    registry.forEach(function(t){
+      var lg = t.lang || 'XX';
+      if(!byLang[lg]) byLang[lg] = [];
+      byLang[lg].push(t);
+    });
+    var langOrder = ['AR','EN','UR','BN','KU','RU'];
+
+    var ov = document.createElement('div');
+    ov.id = 'st-xref-popup';
+    ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+    var h = '<button onclick="document.getElementById(\'st-xref-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>';
+    h += '<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);margin:0 0 14px;letter-spacing:.06em">Tafsir — Surah '+surah+' : Verse '+verse+'</h3>';
+
+    langOrder.forEach(function(lg){
+      var arr = byLang[lg]; if(!arr || !arr.length) return;
+      h += '<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:14px 0 6px;font-family:\'Cinzel\',serif">'+(LANG_FULL[lg]||lg)+'</div>';
+      arr.forEach(function(t){
+        var workLabel = t.work + (t.author ? ' — ' + t.author : '');
+        h += '<div class="st-xref-row" onclick="_stXrefJumpTafsir(\''+_stEsc(t.id)+'\','+surah+','+verse+')"><span>'+_stEsc(workLabel)+'</span></div>';
+      });
+    });
+
+    var box = document.createElement('div');
+    box.style.cssText = 'background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:520px;width:92%;max-height:80vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:var(--fs-3)';
+    box.innerHTML = h;
+    ov.appendChild(box);
+    document.body.appendChild(ov);
+    ov.addEventListener('click', function(e){ if(e.target===ov) ov.remove(); });
+  }
+  window._stTafsirChipPopup = _stTafsirChipPopup;
 
 function _stXrefJumpTafsir(tafsirId, surah, verse){
   var pop=document.getElementById('st-xref-popup'); if(pop)pop.remove();
@@ -4318,7 +4402,7 @@ function _dvUpdateTafsirChips(){
     var s = parseInt(chip.getAttribute("data-surah"),10);
     var v = parseInt(chip.getAttribute("data-verse"),10);
     var n = _dvTafsirCount(s,v);
-    if(n > 0){ chip.textContent = n + (n===1 ? " tafsir" : " tafsirs"); chip.style.display = ""; }
+    if(n > 0){ chip.textContent = "Tafsir"; chip.style.display = ""; }
     else if(n === 0){ chip.style.display = "none"; }
     chip.classList.toggle("active", on);
   });
