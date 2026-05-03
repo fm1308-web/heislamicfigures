@@ -246,6 +246,7 @@ const ROW_MID = ROW_H / 2;
 // STATE
 // ═══════════════════════════════════════════════════════════
 let PEOPLE=[],VIEW='timeline',activeYear=null,activePerson=null;
+window.VIEW=VIEW;
 let tlFocusName = null;
 let _viewYears={timeline:null,silsila:null,map:null};
 let selTypes=new Set(),selTrads=new Set(),searchQ='',selBadge='';
@@ -1053,7 +1054,7 @@ function setView(v){
   if(v==='map') _mapYear=activeYear;
   _syncSliderUI();
 
-  VIEW=v;
+  VIEW=v; window.VIEW=v;
   document.querySelectorAll('.view-tab').forEach(t=>{
     const txt=t.textContent.trim().toLowerCase().replace(/\s+/g,'');
     t.classList.toggle('active',txt===v.toLowerCase().replace(/\s+/g,''));
@@ -2148,3 +2149,31 @@ function _showTimelineMethodology(){
     _wire();
   }
 })();
+
+// ── TIMELINE export hook (BV42) ────────────────────────────
+window._tlGetExportNode = function(){
+  console.log('[TL EXPORT] hook fired');
+  var ip = document.getElementById('infoPanel');
+  if(!ip){ console.warn('[TL EXPORT] no infoPanel'); return null; }
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'background:#0E1621;color:#E8EAEF;padding:32px;font-family:Lato,sans-serif;width:780px;max-height:3200px;overflow:hidden';
+  var hdr = document.createElement('div');
+  hdr.style.cssText = 'text-align:center;padding:8px 0 18px;border-bottom:1px solid #d4af37;margin-bottom:24px';
+  hdr.innerHTML = '<img src="assets/gold-ark-logo-text.png" alt="Gold Ark" style="max-height:40px;display:inline-block">';
+  wrap.appendChild(hdr);
+  var inner = document.createElement('div');
+  inner.innerHTML = ip.innerHTML;
+  inner.style.cssText = 'width:100%;height:auto;position:static;display:block';
+  var all = inner.querySelectorAll('*');
+  for(var i=0;i<all.length;i++){
+    var el = all[i];
+    el.style.maxHeight = 'none';
+    el.style.overflow = 'visible';
+    el.style.position = 'static';
+    el.style.transform = 'none';
+    el.style.height = 'auto';
+  }
+  wrap.appendChild(inner);
+  console.log('[TL EXPORT] node ready, height=', wrap.scrollHeight);
+  return wrap;
+};

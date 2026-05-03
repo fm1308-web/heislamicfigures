@@ -1109,6 +1109,12 @@ function bindTools(){
           } else {
             console.warn('[tools] snapshot not loaded');
           }
+        } else if(act === 'export' || key === 'export'){
+          if(window.GoldArkExport && typeof window.GoldArkExport.open === 'function'){
+            window.GoldArkExport.open();
+          } else {
+            console.warn('[tools] export not loaded');
+          }
         } else if(act === 'share' || key === 'share'){
           if(window.GoldArkShare && typeof window.GoldArkShare.open === 'function'){
             window.GoldArkShare.open();
