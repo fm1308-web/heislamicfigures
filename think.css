@@ -33,7 +33,17 @@
 
 #think-view{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg0,#0E1621)}
 #think-toolbar{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid var(--border2,#2D3748);background:var(--bg0,#0E1621);flex-wrap:wrap}
-#think-definition{flex-shrink:0;padding:10px 20px 12px;font-size:var(--fs-3);line-height:1.55;color:#C8CDD6;font-style:normal;border-bottom:1px solid rgba(45,55,72,0.5);max-height:140px;overflow-y:auto;background:rgba(212,175,55,0.03);transition:max-height .2s ease}
+#think-definition{flex-shrink:0;position:relative;padding:10px 20px 22px;font-size:var(--fs-3);line-height:1.55;color:#C8CDD6;font-style:normal;border-bottom:1px solid rgba(45,55,72,0.5);overflow:hidden;background:rgba(212,175,55,0.03);transition:max-height .2s ease}
+#think-definition.tk-def-collapsed{overflow:hidden}
+#think-definition.tk-def-expanded-full{max-height:none !important}
+.tk-def-chev-btn{display:none;align-items:center;justify-content:center;background:transparent;border:none;color:#D4AF37;font-size:22px;line-height:1;cursor:pointer;padding:0}
+.tk-def-chev-btn:hover{color:#E8C977}
+.tk-def-chev-btn.is-visible{display:inline-flex}
+.tk-def-chev-btn:hover{background:#0E1621;border-color:#D4AF37}
+.tk-def-chev-btn.is-visible{display:flex}
+.tk-def-resize{position:absolute;left:0;right:0;bottom:0;height:4px;cursor:ns-resize;background:transparent;z-index:6}
+.tk-def-resize:hover{background:rgba(212,175,55,0.25)}
+.tk-def-resizing{user-select:none}
 #think-definition.tk-def-expanded{max-height:50vh}
 #think-definition .tk-def-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
 #think-definition .tk-def-toggle:hover{color:#E8C977}
@@ -42,7 +52,7 @@
 #think-definition .tk-def-item{padding:10px 0;border-top:1px solid rgba(45,55,72,0.4)}
 #think-definition .tk-def-item:first-child{border-top:none;padding-top:6px}
 #think-definition .tk-def-item-title{display:block;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:#D4AF37;margin-bottom:4px}
-#think-definition .tk-def-title{display:block;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:#D4AF37;margin-bottom:4px}
+#think-definition .tk-def-title{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:#D4AF37;margin-bottom:4px}
 #think-definition .tk-def-body{display:block;color:#C8CDD6}
 #think-definition .tk-def-fallback{color:#A0AEC0;font-style:italic}
 #think-legend{display:flex;gap:14px;padding:4px 16px;border-bottom:1px solid rgba(45,55,72,0.5);flex-wrap:wrap}
@@ -111,7 +121,11 @@ svg.tk-concept-tags{opacity:0.7}
 .bv-dd-wrap{position:relative}
 .bv-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em;padding:7px 10px;cursor:pointer;min-width:170px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:6px;border-radius:2px}
 .bv-dd-btn:hover{border-color:var(--gold,#D4AF37)}
-.bv-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+.bv-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:70vh;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+.bv-dd-scroll::-webkit-scrollbar{width:10px}
+.bv-dd-scroll::-webkit-scrollbar-track{background:rgba(212,175,55,0.05)}
+.bv-dd-scroll::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.45);border-radius:5px}
+.bv-dd-scroll::-webkit-scrollbar-thumb:hover{background:rgba(212,175,55,0.75)}
 .bv-dd-panel.open{display:flex}
 .bv-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);border-radius:2px;outline:none}
 .bv-dd-search:focus{border-color:var(--gold,#D4AF37)}

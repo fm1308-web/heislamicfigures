@@ -305,8 +305,8 @@ var FILTER_SPECS = {
   },
   THINK: {
     search: false,
-    filters: [ { type:'select', label:'Concept' } ],
-    actions: [ { type:'pill', label:'عربية' }, { type:'pill', label:'اردو' } ],
+    filters: [ { type:'select', label:'Concept' }, { type:'select', label:'Languages' } ],
+    actions: [],
     hint: 'Follow a concept through history',
     hintInRow2: true,
     htw: true

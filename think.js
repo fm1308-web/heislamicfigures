@@ -55,12 +55,12 @@ function _tkLoadSummaries(cb){
       var map = {};
       if(j){
         if(Array.isArray(j)){
-          j.forEach(function(it){ if(it && it.slug) map[it.slug] = it.summary || it.text || it.body || ''; });
+          j.forEach(function(it){ if(it && it.slug) map[it.slug] = it; });
         } else if(typeof j === 'object'){
           Object.keys(j).forEach(function(k){
             var v = j[k];
-            if(typeof v === 'string') map[k] = v;
-            else if(v && typeof v === 'object') map[k] = v.summary || v.text || v.body || '';
+            if(typeof v === 'string') map[k] = { summary: v };
+            else if(v && typeof v === 'object') map[k] = v;
           });
         }
       }
@@ -68,6 +68,58 @@ function _tkLoadSummaries(cb){
       cb(map);
     })
     .catch(function(){ _tkSummaryCache = {}; cb({}); });
+}
+var GA_LANG_LIST = (function(){
+  var rest = [
+    ['ar','Arabic'],['ur','Urdu'],['hi','Hindi'],['bn','Bengali'],['id','Indonesian'],
+    ['tr','Turkish'],['fa','Persian'],['ms','Malay'],['ha','Hausa'],['sw','Swahili'],
+    ['fr','French'],['de','German'],['es','Spanish'],['pt','Portuguese'],['zh','Chinese'],
+    ['ru','Russian'],['ja','Japanese'],['it','Italian'],['nl','Dutch'],['pl','Polish'],
+    ['ta','Tamil'],['te','Telugu'],['pa','Punjabi'],['ps','Pashto'],['tl','Tagalog'],
+    ['vi','Vietnamese'],['th','Thai'],['ko','Korean'],['kk','Kazakh'],['uz','Uzbek']
+  ].sort(function(a,b){ return a[1].localeCompare(b[1]); });
+  return [['en','English']].concat(rest);
+})();
+var GA_RTL_LANGS = { ar:1, ur:1, fa:1, ps:1, ha:0 };
+var _gaLangs = (function(){
+  try {
+    var s2 = localStorage.getItem('goldArkLangs2');
+    if(s2) return new Set(JSON.parse(s2));
+    var s1 = localStorage.getItem('goldArkLangs');
+    var arr = s1 ? JSON.parse(s1) : [];
+    if(arr.indexOf('en') === -1) arr.unshift('en');
+    var set = new Set(arr);
+    localStorage.setItem('goldArkLangs2', JSON.stringify(Array.from(set)));
+    return set;
+  } catch(e){ return new Set(['en']); }
+})();
+function _gaSaveLangs(){ try { localStorage.setItem('goldArkLangs2', JSON.stringify(Array.from(_gaLangs))); } catch(e){} }
+function _gaLangName(code){ for(var i=0;i<GA_LANG_LIST.length;i++){ if(GA_LANG_LIST[i][0]===code) return GA_LANG_LIST[i][1]; } return code; }
+function _gaLangFont(code){
+  if(code==='ar') return "'Amiri',serif";
+  if(code==='ur'||code==='ps') return "'Noto Nastaliq Urdu',serif";
+  if(code==='zh'||code==='ja'||code==='ko') return "'Noto Sans CJK',sans-serif";
+  return "'Noto Sans',sans-serif";
+}
+function _renderSummaryStacked(slug, map, fallback){
+  var entry = map[slug] || {};
+  if(typeof entry === 'string') entry = { summary: entry };
+  if(_gaLangs.size === 0){
+    return '<div class="tk-def-body tk-def-fallback" style="font-style:italic">No language selected — open the Languages dropdown.</div>';
+  }
+  var html = '';
+  GA_LANG_LIST.forEach(function(pair){
+    var code = pair[0], name = pair[1];
+    if(!_gaLangs.has(code)) return;
+    var t = (code === 'en') ? (entry.summary || entry.text || entry.body || fallback || '') : (entry['summary_'+code] || '');
+    if(!t) return;
+    var dir = GA_RTL_LANGS[code] ? 'rtl' : 'ltr';
+    if(html) html += '<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,175,55,0.15)"></div>';
+    html += '<div style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.08em;color:#8B7A3E;margin-bottom:4px">'+name.toUpperCase()+'</div>';
+    html += '<div class="tk-def-body" dir="'+dir+'" style="font-family:'+_gaLangFont(code)+'">'+t+'</div>';
+  });
+  if(!html) html = '<div class="tk-def-body tk-def-fallback">No translation available for this concept in selected languages.</div>';
+  return html;
 }
 var _thinkAnimCtl=null,_thinkAnim={mode:'stopped',timer:null,cursorY:0,maxY:0,speedMs:600,tick:null};
 var ROLE_COLORS={originator:'#2ECC71',developer:'#3B82F6',critic:'#E24B4A',reviver:'#F59E0B',synthesizer:'#14B8A6',transmitter:'#38BDF8'};
@@ -429,11 +481,10 @@ function _renderCanvas(){
       defEl.innerHTML='<span class="tk-def-title">'+(_tkName(concept)||concept.slug||'Concept')+'</span><span class="tk-def-body tk-def-fallback">'+(_fallback||'Loading summary…')+'</span>';
       (function(slug, fallback){
         _tkLoadSummaries(function(map){
-          var sum = map[slug];
-          var body = sum || fallback || 'No summary available.';
-          var bodyClass = sum ? 'tk-def-body' : 'tk-def-body tk-def-fallback';
           if(defEl && _selConceptSlugs.has(slug)){
-            defEl.innerHTML='<span class="tk-def-title">'+(_tkName(concept)||slug)+'</span><span class="'+bodyClass+'">'+body+'</span>';
+            defEl.innerHTML='<span class="tk-def-title">'+(_tkName(concept)||slug)+'</span>'+_renderSummaryStacked(slug, map, fallback);
+            _tkDefApplyBaseHeight();
+            _tkDefUpdateChev();
           }
         });
       })(concept.slug, _fallback);
@@ -443,6 +494,8 @@ function _renderCanvas(){
       defEl.dir='ltr';
       var headHtml='<span class="tk-def-title tk-def-toggle"><span>'+selConcepts.length+' concept summaries</span><span class="tk-def-chev">▼</span></span>';
       defEl.innerHTML=headHtml+'<div class="tk-def-multi" style="display:none"><div class="tk-def-body tk-def-fallback">Loading summaries…</div></div>';
+      _tkDefApplyBaseHeight();
+      _tkDefUpdateChev();
       var _toggleEl=defEl.querySelector('.tk-def-toggle');
       var _chevEl=defEl.querySelector('.tk-def-chev');
       if(_toggleEl){
@@ -466,16 +519,14 @@ function _renderCanvas(){
           if(!multi) return;
           var html='';
           conceptsArr.forEach(function(sc){
-            var sum=map[sc.slug];
             var fallback=_tkDef(sc)||'';
-            var body=sum||fallback||'No summary available.';
-            var bodyClass=sum?'tk-def-body':'tk-def-body tk-def-fallback';
             html+='<div class="tk-def-item">';
             html+='<span class="tk-def-item-title">'+(_tkName(sc)||sc.slug)+'</span>';
-            html+='<span class="'+bodyClass+'">'+body+'</span>';
+            html+=_renderSummaryStacked(sc.slug, map, fallback);
             html+='</div>';
           });
           multi.innerHTML=html;
+          _tkDefUpdateChev();
         });
       })(selConcepts.slice());
     } else {
@@ -934,6 +985,125 @@ window.thinkSelectConceptBySlug = thinkSelectConceptBySlug;
   // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
   // ═══════════════════════════════════════════════════════════
 
+var _tkDefStored = (function(){ try { var v = parseInt(localStorage.getItem('tkDefHeight'),10); return (v>40 && v<2000) ? v : 140; } catch(e){ return 140; } })();
+var _tkDefExpanded = false;
+function _tkDefSaveHeight(h){ try { localStorage.setItem('tkDefHeight', String(Math.round(h))); } catch(e){} }
+function _tkDefApplyBaseHeight(){
+  var d = document.getElementById('think-definition');
+  if(!d) return;
+  if(_tkDefExpanded){
+    d.style.maxHeight = 'none';
+    d.classList.add('tk-def-expanded-full');
+  } else {
+    d.classList.remove('tk-def-expanded-full');
+    d.style.maxHeight = _tkDefStored + 'px';
+  }
+}
+function _tkDefUpdateChev(){
+  var d = document.getElementById('think-definition');
+  if(!d) return;
+  var titleEl = d.querySelector('.tk-def-title');
+  var btn = d.querySelector('.tk-def-chev-btn');
+  if(!btn){
+    btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tk-def-chev-btn';
+    btn.innerHTML = '▾';
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      _tkDefExpanded = !_tkDefExpanded;
+      btn.innerHTML = _tkDefExpanded ? '▴' : '▾';
+      _tkDefApplyBaseHeight();
+      setTimeout(_tkDefUpdateChev, 50);
+    });
+  }
+  if(titleEl && btn.parentNode !== titleEl){
+    titleEl.appendChild(btn);
+  } else if(!titleEl && btn.parentNode !== d){
+    d.appendChild(btn);
+  }
+  var grip = d.querySelector('.tk-def-resize');
+  if(!grip){
+    grip = document.createElement('div');
+    grip.className = 'tk-def-resize';
+    grip.title = 'Drag to resize';
+    grip.addEventListener('mousedown', function(e){
+      e.preventDefault();
+      var startY = e.clientY;
+      var startH = d.getBoundingClientRect().height;
+      _tkDefExpanded = false;
+      d.classList.remove('tk-def-expanded-full');
+      document.body.classList.add('tk-def-resizing');
+      function move(ev){
+        var nh = Math.max(60, Math.min(window.innerHeight*0.8, startH + (ev.clientY - startY)));
+        _tkDefStored = nh;
+        d.style.maxHeight = nh + 'px';
+      }
+      function up(){
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', up);
+        document.body.classList.remove('tk-def-resizing');
+        _tkDefSaveHeight(_tkDefStored);
+        _tkDefUpdateChev();
+      }
+      document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', up);
+    });
+    d.appendChild(grip);
+  }
+  setTimeout(function(){
+    var overflow = d.scrollHeight > d.clientHeight + 4;
+    btn.classList.toggle('is-visible', overflow || _tkDefExpanded);
+    btn.innerHTML = _tkDefExpanded ? '▴' : '▾';
+  }, 30);
+}
+function _gaBuildLangPanel(){
+  if(document.getElementById('think-lang-panel')) return;
+  var p = document.createElement('div');
+  p.id = 'think-lang-panel';
+  p.className = 'bv-dd-panel';
+  p.style.width = '280px';
+  var html = '<input id="think-lang-search" class="bv-dd-search" placeholder="Search languages…" />';
+  html += '<div class="bv-dd-scroll" id="think-lang-scroll"></div>';
+  p.innerHTML = html;
+  document.body.appendChild(p);
+  function paint(filter){
+    var scr = document.getElementById('think-lang-scroll');
+    if(!scr) return;
+    var f = (filter||'').toLowerCase();
+    var rows = '';
+    GA_LANG_LIST.forEach(function(pair){
+      var code = pair[0], name = pair[1];
+      if(f && name.toLowerCase().indexOf(f) === -1) return;
+      var on = _gaLangs.has(code);
+      rows += '<div class="bv-ck-row'+(on?' checked':'')+'" data-code="'+code+'">';
+      rows += '<span class="bv-ck'+(on?' on':'')+'"></span>';
+      rows += '<span class="bv-ck-label">'+name+'</span>';
+      rows += '</div>';
+    });
+    scr.innerHTML = rows;
+    scr.querySelectorAll('.bv-ck-row').forEach(function(r){
+      r.addEventListener('click', function(){
+        var code = r.getAttribute('data-code');
+        if(_gaLangs.has(code)) _gaLangs.delete(code); else _gaLangs.add(code);
+        _gaSaveLangs();
+        paint(document.getElementById('think-lang-search').value);
+        var btn = window._thLangBtn; if(btn) _gaSyncLangBtn(btn);
+        if(typeof _tkRenderDef === 'function') _tkRenderDef();
+        else if(typeof _renderCanvas === 'function') _renderCanvas();
+      });
+    });
+  }
+  paint('');
+  var si = document.getElementById('think-lang-search');
+  if(si) si.addEventListener('input', function(){ paint(si.value); });
+}
+function _gaSyncLangBtn(btn){
+  window._thLangBtn = btn;
+  var n = _gaLangs.size;
+  btn.textContent = n ? ('Languages ('+n+')') : 'Languages';
+  btn.classList.toggle('zb-active', n>0);
+}
   // Wire shell's Zone B controls — THINK spec: { search:false, filters:[Concept select], actions:[], htw:true }
   function _wireZoneB(zoneBEl){
     if(!zoneBEl) return;
@@ -948,17 +1118,24 @@ window.thinkSelectConceptBySlug = thinkSelectConceptBySlug;
       });
       legSlot.innerHTML = lh;
     }
-    var sel = row2.querySelector('.zb-select');
-    if(sel){
-      window._thShellBtn = sel;
-      sel.addEventListener('click', function(e){
+    var allSel = row2.querySelectorAll('.zb-select');
+    var conceptBtn = null, langBtn = null;
+    allSel.forEach(function(b){
+      var t = (b.textContent||'').trim().toUpperCase();
+      if(t.indexOf('LANG') !== -1) langBtn = b;
+      else conceptBtn = b;
+    });
+    if(conceptBtn){
+      window._thShellBtn = conceptBtn;
+      conceptBtn.addEventListener('click', function(e){
         e.stopPropagation();
         var cPanel = document.getElementById('think-concept-panel');
         if(!cPanel) return;
+        var lp = document.getElementById('think-lang-panel'); if(lp){ lp.classList.remove('open'); lp.style.display='none'; }
         var nowOpen = !cPanel.classList.contains('open');
         cPanel.classList.toggle('open', nowOpen);
         if(nowOpen){
-          var r = sel.getBoundingClientRect();
+          var r = conceptBtn.getBoundingClientRect();
           cPanel.style.position = 'fixed';
           cPanel.style.top  = (r.bottom + 4) + 'px';
           cPanel.style.left = r.left + 'px';
@@ -970,40 +1147,35 @@ window.thinkSelectConceptBySlug = thinkSelectConceptBySlug;
         }
       });
     }
-    var pills = row2.querySelectorAll('.zb-pill');
-    pills.forEach(function(p){
-      var t = (p.textContent||'').trim();
-      var lang = null;
-      if(t.indexOf('عربية') !== -1) lang = 'ar';
-      else if(t.indexOf('اردو') !== -1) lang = 'ur';
-      if(!lang) return;
-      p.setAttribute('data-lang', lang);
-      p.classList.add('tk-lang-btn');
-      p.style.fontFamily = (lang === 'ar') ? "'Amiri',serif" : "'Noto Nastaliq Urdu',serif";
-      p.style.textTransform = 'none';
-      p.style.letterSpacing = '0';
-      p.addEventListener('click', function(e){
+    if(langBtn){
+      _gaBuildLangPanel();
+      _gaSyncLangBtn(langBtn);
+      langBtn.addEventListener('click', function(e){
         e.stopPropagation();
-        _thinkLang = (_thinkLang === lang) ? 'en' : lang;
-        row2.querySelectorAll('.zb-pill.tk-lang-btn').forEach(function(b){
-          var on = (b.getAttribute('data-lang') === _thinkLang);
-          b.classList.toggle('zb-active', on);
-        });
-        if(typeof _syncConceptBtn === 'function') _syncConceptBtn();
-        if(typeof _buildConceptPanel === 'function') _buildConceptPanel();
-        if(typeof _renderCanvas === 'function') _renderCanvas();
-        var leg = document.getElementById('think-shell-legend');
-        if(leg && typeof _tkRole === 'function'){
-          var lh = '';
-          Object.keys(ROLE_COLORS).forEach(function(role){
-            var label = _tkRole(role);
-            if(_thinkLang === 'en') label = label.charAt(0).toUpperCase() + label.slice(1);
-            lh += '<span style="display:inline-flex;align-items:center;gap:5px"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+ROLE_COLORS[role]+'"></span>'+label+'</span>';
-          });
-          leg.innerHTML = lh;
+        var lp = document.getElementById('think-lang-panel'); if(!lp) return;
+        var cp = document.getElementById('think-concept-panel'); if(cp){ cp.classList.remove('open'); cp.style.display='none'; }
+        var nowOpen = !lp.classList.contains('open');
+        lp.classList.toggle('open', nowOpen);
+        if(nowOpen){
+          var r = langBtn.getBoundingClientRect();
+          var availH = Math.max(200, window.innerHeight - r.bottom - 16);
+          lp.style.position = 'fixed';
+          lp.style.top  = (r.bottom + 4) + 'px';
+          lp.style.left = r.left + 'px';
+          lp.style.zIndex = 10000;
+          lp.style.display = 'flex';
+          lp.style.maxHeight = availH + 'px';
+        } else {
+          lp.style.display = 'none';
         }
       });
-    });
+      document.addEventListener('click', function(ev){
+        var lp = document.getElementById('think-lang-panel');
+        if(!lp) return;
+        if(lp.contains(ev.target) || langBtn.contains(ev.target)) return;
+        lp.classList.remove('open'); lp.style.display='none';
+      });
+    }
   }
 
   // ═══════════════════════════════════════════════════════════
