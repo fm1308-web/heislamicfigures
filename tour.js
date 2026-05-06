@@ -183,7 +183,7 @@
         'filter bar for view-specific details.</p>' +
         '<p>Community: <a href="https://goldark.discourse.group" target="_blank" rel="noopener" ' +
         'style="color:#c9a961">goldark.discourse.group</a>.<br>' +
-        'Support: <a href="mailto:fm1308@gmail.com" style="color:#c9a961">fm1308@gmail.com</a>.</p>' +
+        'Support: <a href="mailto:feedback@hoomanlibrary.com" style="color:#c9a961">feedback@hoomanlibrary.com</a>.</p>' +
         '<p style="margin-top:20px"><strong style="color:#c9a961">Take a deep breath. Click anywhere ' +
         'to start exploring.</strong></p>'
     }

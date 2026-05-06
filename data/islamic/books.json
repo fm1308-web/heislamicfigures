@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-08T09:46:16.372725Z",
   "topline": {
-    "total": 1107,
-    "free": 496
+    "total": 1098,
+    "free": 492
   },
   "books": [
     {
@@ -2592,6 +2592,31 @@
       "year_display": 901,
       "title_ar": "عدد ثابت",
       "title_ur": "عدد ثابت"
+    },
+    {
+      "id": "F1388-B52",
+      "slug": "F1388",
+      "title": "amicable numbers",
+      "author_name": "Thabit ibn Qurra",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scientist",
+      "year": 901,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Sciences",
+        "Scientist"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Mathematics and arithmetic"
+      ],
+      "year_display": 901,
+      "title_ar": "الأعداد المتحابة",
+      "title_ur": "الاعداد المتحابہ"
     },
     {
       "id": "F1388-B53",
@@ -8271,6 +8296,36 @@
       "title_ur": "شرح اوسط علی السفسطائیہ"
     },
     {
+      "id": "F0751-B58",
+      "slug": "F0751",
+      "title": "unity of the intellect",
+      "author_name": "Ibn Rushd",
+      "author_tradition": "Islamic Philosophy",
+      "author_type": "Philosopher",
+      "year": 1198,
+      "year_source": "author_dod",
+      "topics": [
+        "Islamic Philosophy",
+        "Philosopher"
+      ],
+      "is_free": true,
+      "harvested": true,
+      "has_study": false,
+      "url": "https://archive.org/details/onunityofintel00thom",
+      "priority": "LOW",
+      "themes": [
+        "Soul and intellect",
+        "Active intellect",
+        "Peripatetic philosophy",
+        "Aristotelian logic",
+        "Existence and essence",
+        "Metaphysics of being"
+      ],
+      "year_display": 1198,
+      "title_ar": "وحدة العقل",
+      "title_ur": "وحدۃ العقل"
+    },
+    {
       "id": "F0359-B51",
       "slug": "F0359",
       "title": "Chirurgia",
@@ -13846,6 +13901,63 @@
       "title_ur": "ديوان حافظ"
     },
     {
+      "id": "F0640-B51",
+      "slug": "F0640",
+      "title": "irony in Hafez poetry",
+      "author_name": "Hafez",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1390,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Lyric poetry (ghazal)",
+        "Spiritual poetry",
+        "Intoxicated mysticism",
+        "Love mysticism"
+      ],
+      "year_display": 1390,
+      "title_ar": "السخرية في شعر حافظ",
+      "title_ur": "طنز حافظ کی شاعری میں"
+    },
+    {
+      "id": "F0640-B52",
+      "slug": "F0640",
+      "title": "Hafez, by Sayeh",
+      "author_name": "Hafez",
+      "author_tradition": "Persian Poetry",
+      "author_type": "Poet",
+      "year": 1390,
+      "year_source": "author_dod",
+      "topics": [
+        "Persian Poetry",
+        "Poet"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Lyric poetry (ghazal)",
+        "Spiritual poetry",
+        "Love mysticism",
+        "Intoxicated mysticism",
+        "Unity of being (wahdat al-wujud)"
+      ],
+      "year_display": 1390,
+      "title_ar": "حافظ لسايه",
+      "title_ur": "حافظ از سايہ"
+    },
+    {
       "id": "F0640-B53",
       "slug": "F0640",
       "title": "Diwan-i-Khwajah Hafez-i Shirazi: The Works of Dewan Hafez",
@@ -15313,6 +15425,33 @@
       "year_display": 1161,
       "title_ar": "فتوح الغيب",
       "title_ur": "فتوح الغيب"
+    },
+    {
+      "id": "F1370-B50",
+      "slug": "F1370",
+      "title": "globe at the Istanbul Observatory",
+      "author_name": "Taqi al-Din",
+      "author_tradition": "Islamic Sciences",
+      "author_type": "Scientist",
+      "year": 1500,
+      "year_source": "publication_date",
+      "topics": [
+        "Islamic Sciences",
+        "Scientist"
+      ],
+      "is_free": false,
+      "harvested": true,
+      "has_study": false,
+      "url": "",
+      "priority": "LOW",
+      "themes": [
+        "Astronomy and astrology",
+        "Mathematics and arithmetic",
+        "Geometry"
+      ],
+      "year_display": 1580,
+      "title_ar": "الكرة في المرصد الإسطنبولي",
+      "title_ur": "الكرة في المرصد الإسطنبولي"
     },
     {
       "id": "F1416-B51",
@@ -17475,6 +17614,37 @@
         18,
         55
       ]
+    },
+    {
+      "id": "F1293-B55",
+      "slug": "F1293",
+      "title": "book",
+      "author_name": "Shah Waliullah",
+      "author_tradition": "Naqshbandiyya",
+      "author_type": "Reformer",
+      "year": 1762,
+      "year_source": "author_dod",
+      "topics": [
+        "Naqshbandiyya",
+        "Reformer"
+      ],
+      "is_free": true,
+      "harvested": true,
+      "has_study": false,
+      "url": "https://archive.org/details/TheCompleteBookOfEnochStandardEnglishVersionJayWinter",
+      "priority": "LOW",
+      "themes": [
+        "Reformist and revivalist thought",
+        "Hadith criticism",
+        "Quranic exegesis (tafsir)",
+        "Legal theory (usul al-fiqh)",
+        "Divine unity (tawhid)",
+        "Sufi path (tariqa)",
+        "Unity of witnessing (wahdat al-shuhud)"
+      ],
+      "year_display": 1762,
+      "title_ar": "كتاب",
+      "title_ur": "کتاب"
     },
     {
       "id": "F0735-B95",
@@ -28480,6 +28650,33 @@
       "title_ur": "عبقرية الإمام علي"
     },
     {
+      "id": "F1748-B123",
+      "slug": "F1748",
+      "title": "They ask you",
+      "title_ar": "يسألونك",
+      "year": 2018,
+      "wikidata_id": "Q135405127",
+      "is_free": true,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "contemporary fatwas",
+        "social questions",
+        "religious queries"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": 1959,
+      "concept_tags": [
+        "hukm-shari",
+        "adab"
+      ],
+      "title_ur": "يسألونك"
+    },
+    {
       "id": "F1748-B124",
       "slug": "F1748",
       "title": "The poet language",
@@ -32967,6 +33164,33 @@
       "title_ur": "مخزن الأسرار"
     },
     {
+      "id": "F1279-B91",
+      "slug": "F1279",
+      "title": "list of books of Sayyid Qutb",
+      "title_ar": "قائمة مؤلفات سيد قطب",
+      "year": null,
+      "wikidata_id": "Q56377098",
+      "is_free": false,
+      "url": "",
+      "harvested": true,
+      "is_scripture": false,
+      "themes": [
+        "Qutb bibliography",
+        "modern Islamic literature",
+        "scholarly works"
+      ],
+      "topics": [],
+      "tags": [
+        "harvested-wikidata"
+      ],
+      "year_display": null,
+      "concept_tags": [
+        "classification-sciences",
+        "adab"
+      ],
+      "title_ur": "قائمہ مؤلفات سيد قطب"
+    },
+    {
       "id": "F1640-B90",
       "slug": "F1640",
       "title": "Heer Ranjha",
@@ -33176,231 +33400,6 @@
         "zuhd"
       ],
       "title_ur": "لفتہ الکبد إلی نصيحہ الولد"
-    },
-    {
-      "id": "F1648-B50",
-      "slug": "F1648",
-      "title": "Al-Minhaj fi Sharh Sahih Muslim ibn al-Hajjaj",
-      "title_ar": "المنهاج في شرح صحيح مسلم بن الحجاج",
-      "year": 1277,
-      "year_display": 1277,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sahih Muslim"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": true,
-      "url": "https://archive.org/details/SharhMuslim",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F2015-B50",
-      "slug": "F2015",
-      "title": "Tuhfat al-Ahwadhi bi-Sharh Jami al-Tirmidhi",
-      "title_ar": "تحفة الأحوذي بشرح جامع الترمذي",
-      "year": 1935,
-      "year_display": 1935,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Jami al-Tirmidhi"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": true,
-      "url": "https://archive.org/details/tuhfat-al-ahwadhi",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F1812-B50",
-      "slug": "F1812",
-      "title": "Awn al-Ma'bud Sharh Sunan Abi Dawud",
-      "title_ar": "عون المعبود شرح سنن أبي داود",
-      "year": 1911,
-      "year_display": 1911,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sunan Abu Dawud"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": true,
-      "url": "https://archive.org/details/AwnAlMabud",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F0344-B51",
-      "slug": "F0344",
-      "title": "Misbah al-Zujajah ala Sunan Ibn Majah",
-      "title_ar": "مصباح الزجاجة على سنن ابن ماجه",
-      "year": 1505,
-      "year_display": 1505,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sunan Ibn Majah"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": false,
-      "url": "",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F2028-B50",
-      "slug": "F2028",
-      "title": "Hashiyat al-Sindi ala Sunan al-Nasai",
-      "title_ar": "حاشية السندي على سنن النسائي",
-      "year": 1726,
-      "year_display": 1726,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sunan al-Nasai"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": false,
-      "url": "",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F2029-B50",
-      "slug": "F2029",
-      "title": "Umdat al-Qari Sharh Sahih al-Bukhari",
-      "title_ar": "عمدة القاري شرح صحيح البخاري",
-      "year": 1451,
-      "year_display": 1451,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sahih Bukhari"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": true,
-      "url": "https://archive.org/details/UmdatAlQari",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F1894-B50",
-      "slug": "F1894",
-      "title": "Irshad al-Sari li-Sharh Sahih al-Bukhari",
-      "title_ar": "إرشاد الساري لشرح صحيح البخاري",
-      "year": 1517,
-      "year_display": 1517,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sahih Bukhari"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": false,
-      "url": "",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F0727-B52",
-      "slug": "F0727",
-      "title": "Tahdhib Sunan Abi Dawud",
-      "title_ar": "تهذيب سنن أبي داود",
-      "year": 1350,
-      "year_display": 1350,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sunan Abu Dawud"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": false,
-      "url": "",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
-    },
-    {
-      "id": "F2030-B50",
-      "slug": "F2030",
-      "title": "Ma'alim al-Sunan",
-      "title_ar": "معالم السنن",
-      "year": 998,
-      "year_display": 998,
-      "year_source": "author dod",
-      "topics": [
-        "Hadith commentary"
-      ],
-      "themes": [
-        "Hadith commentary",
-        "Sunan Abu Dawud"
-      ],
-      "tags": [
-        "hadith-commentary"
-      ],
-      "is_free": false,
-      "url": "",
-      "is_scripture": false,
-      "harvested": false,
-      "has_study": false,
-      "author_hidden": false
     }
   ],
   "themes_summary": {
