@@ -86,6 +86,18 @@ window.TimelineView = (function(){
   if(typeof window._shareRestoreFromURL !== 'function') window._shareRestoreFromURL = null;
   if(typeof window.renderQuranRef !== 'function') window.renderQuranRef = function(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
 
+  // Linkify "Quran 2:30-37" / "Quran 2:30" mentions inside an already-escaped HTML
+  // string into <button class="quran-chip"> chips that match the existing pattern.
+  function _linkifyQuranRefs(html){
+    if(!html) return html;
+    var re = /\bQuran\s+(\d{1,3}):(\d{1,3})(?:[–—-](\d{1,3}))?/g;
+    return html.replace(re, function(match, surah, vstart, vend){
+      var ve = vend || vstart;
+      return '<button class="quran-chip" data-surah="'+surah+'" data-vstart="'+vstart+'" data-vend="'+ve+'" style="display:inline;padding:1px 6px;margin:0 2px;font-size:inherit;line-height:inherit">'+match+'</button>';
+    });
+  }
+  window._linkifyQuranRefs = _linkifyQuranRefs;
+
   // Globals the lifted code reads as bare names (not via window.).
   // SL_* are declared inside the lifted body (lines 766-771).
   // We need IH_SUBLANE_ORDER + _IH_SUBLANE_REV in scope — silsila.js defines
@@ -1258,6 +1270,25 @@ function _isAssumedDate(p){
 }
 const _assumedBadge='<span style="font-size:var(--fs-3);color:rgba(212,175,55,.55);cursor:help;margin-left:3px" title="Date estimated for visual placement — not historically confirmed">△</span>';
 
+var _ctBios = null;
+var _ctSlugMap = null;
+var _ctVariants = null;
+var _ctLoading = null;
+function _ensureCrossTraditionData(){
+  if(_ctLoading) return _ctLoading;
+  if(_ctBios && _ctSlugMap) return Promise.resolve();
+  _ctLoading = Promise.all([
+    fetch(dataUrl('data/islamic/cross_tradition_bios.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch(dataUrl('data/islamic/prophet_slug_map.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch(dataUrl('data/islamic/prophet_name_variants.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  ]).then(function(res){
+    _ctBios = res[0] || {};
+    _ctSlugMap = res[1] || {};
+    _ctVariants = res[2] || {};
+  });
+  return _ctLoading;
+}
+
 var _figureHadithChips = null;
 var _figureHadithChipsLoading = null;
 function _ensureFigureHadithChips(){
@@ -1461,7 +1492,60 @@ function renderInfo(p){
     </div>
     ${((p.dob_s||'')+(p.dod_s||'')).toLowerCase().includes('legendary')?`<div style="font-size:var(--fs-3);color:rgba(160,174,192,.55);margin:-4px 0 10px 2px;line-height:1.4">Source: Ibn Ishaq, <i>Sirat Rasul Allah</i>; al-Tabari, <i>Tarikh al-Rusul wa al-Muluk</i></div>`:''}
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
-    ${(function(){ var _bf=p.bio_full; if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf=null; var _bio = _bf || (p.famous==='Prophet Muhammad'?(p.school||'The Last Prophet'):(p.bio||p.school)); return _bio ? `<div class="i-sec"><div class="i-sl">Biography</div><p>${_bio}</p></div>` : ''; })()}
+    ${(function(){
+      var ctKey = (_ctSlugMap && p.slug) ? _ctSlugMap[p.slug] : null;
+      var ctEntry = (ctKey && _ctBios) ? _ctBios[ctKey] : null;
+      var nvEntry = (_ctVariants && p.slug) ? _ctVariants[p.slug] : null;
+
+      var nvHtml = '';
+      if(nvEntry && Array.isArray(nvEntry.variants) && nvEntry.variants.length){
+        var TBADGE = {Islamic:'#D4AF37', Christian:'#9B59B6', Jewish:'#4A90D9', "Bahá'í":'#2ECC71', Bahai:'#2ECC71'};
+        var rows = nvEntry.variants.map(function(v){
+          var lang = esc(v.lang||'');
+          var nm   = esc(v.name||'');
+          var trad = v.tradition||'';
+          var tcol = TBADGE[trad] || 'rgba(160,174,192,.55)';
+          var tbadge = trad ? '<span style="font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:'+tcol+';border:1px solid '+tcol+';border-radius:2px;padding:1px 5px;margin-left:6px;font-family:Cinzel,serif">'+esc(trad)+'</span>' : '';
+          return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dotted var(--ip-brd)"><span style="font-size:var(--fs-3);color:var(--ip-muted);min-width:64px">'+lang+'</span><span style="flex:1;font-size:var(--fs-3);color:var(--ip-text);text-align:right;font-family:\'Source Sans 3\',sans-serif">'+nm+tbadge+'</span></div>';
+        }).join('');
+        nvHtml = '<div class="i-sec"><div class="i-sl">Names Across Traditions</div><div style="margin-top:4px">'+rows+'</div></div>';
+      }
+
+      if(ctEntry && ctEntry.traditions){
+        var DEFAULT_ORDER = ['islamic','christian','jewish','bahai'];
+        var order = (Array.isArray(ctEntry.tradition_order) && ctEntry.tradition_order.length) ? ctEntry.tradition_order : DEFAULT_ORDER;
+        var avail = order.filter(function(k){
+          var t = ctEntry.traditions[k];
+          if(!t) return false;
+          var txt = (typeof t === 'string') ? t : (t.text || '');
+          return txt && txt.trim().length > 0;
+        });
+        if(avail.length){
+          var LABELS = {islamic:'Islamic', christian:'Christian', jewish:'Jewish', bahai:"Bahá'í"};
+          var tabBar = '<div class="i-ct-tabbar" style="display:flex;gap:4px;border-bottom:1px solid rgba(212,175,55,.25);margin:6px 0 10px;flex-wrap:wrap">';
+          avail.forEach(function(k,i){
+            var on = (i===0);
+            tabBar += '<button class="i-ct-tab" data-tab="'+esc(k)+'" style="background:none;border:none;color:'+(on?'#D4AF37':'#9aa3b2')+';font-family:Cinzel,serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;cursor:pointer;border-bottom:2px solid '+(on?'#D4AF37':'transparent')+';margin-bottom:-1px">'+esc(LABELS[k]||k)+'</button>';
+          });
+          tabBar += '</div>';
+          var panes = avail.map(function(k,i){
+            var t = ctEntry.traditions[k];
+            var txt = (typeof t === 'string') ? t : (t.text || '');
+            var srcs = (typeof t === 'object' && Array.isArray(t.sources)) ? t.sources : [];
+            var srcLine = srcs.length ? '<div style="margin-top:8px;font-size:11px;color:var(--ip-muted);font-style:italic">Sources: '+srcs.map(esc).join(' · ')+'</div>' : '';
+            var paneTxt = _linkifyQuranRefs(esc(txt).replace(/\n+/g,'<br>'));
+            return '<div class="i-ct-pane" data-tab="'+esc(k)+'" style="display:'+(i===0?'block':'none')+'"><p>'+paneTxt+'</p>'+srcLine+'<div style="margin-top:6px;font-size:10px;color:var(--ip-muted)">AI-generated · independently verify</div></div>';
+          }).join('');
+          return nvHtml + '<div class="i-sec i-ct-wrap"><div class="i-sl">Biography</div>'+tabBar+panes+'</div>';
+        }
+      }
+
+      var _bf = p.bio_full;
+      if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf = null;
+      var _bio = _bf || (p.famous==='Prophet Muhammad' ? (p.school||'The Last Prophet') : (p.bio||p.school));
+      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">Biography</div><p>'+_linkifyQuranRefs(_bio)+'</p></div>' : '';
+      return nvHtml + legacyBio;
+    })()}
     ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
     ${quranHtml}${quranChipsHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
     ${quotesHtml}
@@ -1561,6 +1645,56 @@ function renderInfo(p){
   })();
 
   _populateFigureHadithChip(p);
+
+  // Wire ALL quran-chip buttons inside the info panel — bio tabs, QURAN section,
+  // anywhere — to jump to START view at the referenced verse.
+  (function(){
+    var root = document.getElementById('infoScroll');
+    if(!root) return;
+    root.querySelectorAll('button.quran-chip').forEach(function(btn){
+      if(btn.dataset._wired === '1') return;
+      btn.dataset._wired = '1';
+      btn.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var surah = parseInt(btn.getAttribute('data-surah'), 10);
+        var vstart = parseInt(btn.getAttribute('data-vstart'), 10);
+        var vend = parseInt(btn.getAttribute('data-vend'), 10) || vstart;
+        if(!surah || !vstart) return;
+        // Same handshake pattern used by MONASTIC -> START.
+        window._stPendingVerse = { surah: surah, verse_start: vstart, verse_end: vend };
+        // Click the START tab if present, else fallback to setView.
+        var tabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
+        for(var i=0;i<tabs.length;i++){
+          var el = tabs[i];
+          var txt = (el.textContent||'').trim().toUpperCase();
+          var dv = el.getAttribute('data-view')||'';
+          if(txt === 'START' || dv === 'start'){ el.click(); return; }
+        }
+        if(typeof setView === 'function') setView('start');
+        else if(typeof window.setView === 'function') window.setView('start');
+      });
+    });
+  })();
+
+  (function(){
+    var root = document.getElementById('infoScroll');
+    if(!root) return;
+    var wrap = root.querySelector('.i-ct-wrap');
+    if(!wrap) return;
+    wrap.querySelectorAll('.i-ct-tab').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var tk = btn.getAttribute('data-tab');
+        wrap.querySelectorAll('.i-ct-tab').forEach(function(b){
+          var on = b.getAttribute('data-tab') === tk;
+          b.style.color = on ? '#D4AF37' : '#9aa3b2';
+          b.style.borderBottomColor = on ? '#D4AF37' : 'transparent';
+        });
+        wrap.querySelectorAll('.i-ct-pane').forEach(function(pane){
+          pane.style.display = (pane.getAttribute('data-tab') === tk) ? 'block' : 'none';
+        });
+      });
+    });
+  })();
 }
 
 function selectPerson(name) {
@@ -1994,6 +2128,10 @@ function _showTimelineMethodology(){
     var p2 = fetch(dataUrl('data/islamic/name_variants.json'))
       .then(function(r){ return r.ok ? r.json() : {}; })
       .catch(function(){ return {}; });
+
+    _ensureCrossTraditionData().then(function(){
+      if(activePerson) renderInfoWithDetails(activePerson);
+    });
 
     Promise.all([p1, p2]).then(function(results){
       PEOPLE = results[0] || [];

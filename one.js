@@ -78,6 +78,9 @@ var _addMode = false;
 // re-render storms when their data fails to land on window in the sandbox.
 var _journeyFiguresLoaded = false;
 var _booksDataLoaded = false;
+var _ctBiosCache = null;
+var _ctSlugMapCache = null;
+var _ctLoading = false;
 
 var _wikidata = null;
 var _wdLoading = false;
@@ -411,6 +414,21 @@ window._oneClickName=function(name){
   _renderMain();
 };
 
+function _loadCrossTraditionBios(){
+  if(_ctBiosCache && _ctSlugMapCache) return Promise.resolve({bios:_ctBiosCache, map:_ctSlugMapCache});
+  if(_ctLoading) return Promise.resolve({bios:null, map:null});
+  _ctLoading = true;
+  return Promise.all([
+    fetch(dataUrl('data/islamic/cross_tradition_bios.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch(dataUrl('data/islamic/prophet_slug_map.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  ]).then(function(res){
+    _ctBiosCache = res[0] || {};
+    _ctSlugMapCache = res[1] || {};
+    _ctLoading = false;
+    return {bios:_ctBiosCache, map:_ctSlugMapCache};
+  });
+}
+
 function _renderMain(){
   var main=document.getElementById('one-main');
   if(!main) return;
@@ -539,18 +557,60 @@ async function _renderPerson(p,container){
   // linking to bio_full_url.
   var _bf = p.bio_full;
   if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf = null;
+  var _ctKey = (_ctSlugMapCache && p.slug) ? _ctSlugMapCache[p.slug] : null;
+  var _ctEntry = (_ctKey && _ctBiosCache) ? _ctBiosCache[_ctKey] : null;
   var bio = _bf || ((p.famous==='Prophet Muhammad') ? (p.school||'The Last Prophet') : (p.bio || p.school));
-  if(bio){
-    var bioBody = '<div class="one-bio">'+bio+'</div>';
+
+  if(_ctEntry && _ctEntry.traditions){
+    var DEFAULT_ORDER = ['islamic','christian','jewish','bahai'];
+    var order = (Array.isArray(_ctEntry.tradition_order) && _ctEntry.tradition_order.length) ? _ctEntry.tradition_order : DEFAULT_ORDER;
+    var avail = order.filter(function(k){
+      var t = _ctEntry.traditions[k];
+      if(!t) return false;
+      var txt = (typeof t === 'string') ? t : (t.text || '');
+      return txt && txt.trim().length > 0;
+    });
+    if(avail.length){
+      var LABELS = {islamic:'Islamic', christian:'Christian', jewish:'Jewish', bahai:"Bahá'í"};
+      var ctId = 'one-ct-' + (p.slug || Math.random().toString(36).slice(2,8));
+      var tabsHtml = '<div class="one-ct-tabs" id="'+ctId+'" style="margin-top:4px">';
+      tabsHtml += '<div class="one-ct-tabbar" style="display:flex;gap:6px;border-bottom:1px solid rgba(212,175,55,0.25);margin-bottom:10px;flex-wrap:wrap">';
+      avail.forEach(function(k, i){
+        var active = (i===0) ? ' one-ct-tab-active' : '';
+        tabsHtml += '<button class="one-ct-tab'+active+'" data-tab="'+k+'" style="background:none;border:none;color:'+(i===0?'#D4AF37':'#9aa3b2')+';font-family:Cinzel,serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;border-bottom:2px solid '+(i===0?'#D4AF37':'transparent')+';margin-bottom:-1px">'+_e(LABELS[k]||k)+'</button>';
+      });
+      tabsHtml += '</div>';
+      avail.forEach(function(k, i){
+        var t = _ctEntry.traditions[k];
+        var txt = (typeof t === 'string') ? t : (t.text || '');
+        var srcs = (typeof t === 'object' && Array.isArray(t.sources)) ? t.sources : [];
+        var disp = (i===0) ? 'block' : 'none';
+        var paneHtml = '<div class="one-ct-pane" data-tab="'+k+'" style="display:'+disp+'">';
+        paneHtml += '<div class="one-bio">'+_e(txt).replace(/\n+/g,'<br>')+'</div>';
+        if(srcs.length){
+          paneHtml += '<div class="one-ct-sources" style="margin-top:8px;font-size:11px;color:#6B7280;font-style:italic">Sources: '+srcs.map(_e).join(' · ')+'</div>';
+        }
+        paneHtml += '<div style="margin-top:6px;font-size:10px;color:#6B7280">AI-generated · independently verify</div>';
+        paneHtml += '</div>';
+        tabsHtml += paneHtml;
+      });
+      tabsHtml += '</div>';
+      h += _sec('📜','Biography',0,tabsHtml,true);
+    } else if(bio){
+      var bioBody = '<div class="one-bio">'+bio+'</div>';
+      h += _sec('📜','Biography',0,bioBody,true);
+    }
+  } else if(bio){
+    var bioBody2 = '<div class="one-bio">'+bio+'</div>';
     if(_bf && p.bio_full_source){
-      var srcLbl = _e(p.bio_full_source);
+      var srcLbl2 = _e(p.bio_full_source);
       if(p.bio_full_url){
-        bioBody += '<a class="one-bio-cite" href="'+_e(p.bio_full_url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+srcLbl+' ↗</a>';
+        bioBody2 += '<a class="one-bio-cite" href="'+_e(p.bio_full_url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+srcLbl2+' ↗</a>';
       } else {
-        bioBody += '<span class="one-bio-cite">'+srcLbl+'</span>';
+        bioBody2 += '<span class="one-bio-cite">'+srcLbl2+'</span>';
       }
     }
-    h+=_sec('📜','Biography',0,bioBody,true);
+    h+=_sec('📜','Biography',0,bioBody2,true);
   }
 
   if(p.quranRef||p.quran_refs){
@@ -776,6 +836,25 @@ async function _renderPerson(p,container){
   h+='<div id="one-wikilinks"></div>';
 
   container.innerHTML=h;
+
+  // Wire cross-tradition tabs (if present)
+  var _ctRoot = container.querySelector('.one-ct-tabs');
+  if(_ctRoot){
+    _ctRoot.querySelectorAll('.one-ct-tab').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var tk = btn.getAttribute('data-tab');
+        _ctRoot.querySelectorAll('.one-ct-tab').forEach(function(b){
+          var on = b.getAttribute('data-tab') === tk;
+          b.style.color = on ? '#D4AF37' : '#9aa3b2';
+          b.style.borderBottomColor = on ? '#D4AF37' : 'transparent';
+          b.classList.toggle('one-ct-tab-active', on);
+        });
+        _ctRoot.querySelectorAll('.one-ct-pane').forEach(function(pane){
+          pane.style.display = (pane.getAttribute('data-tab') === tk) ? 'block' : 'none';
+        });
+      });
+    });
+  }
 
   // Suggest Correction button — role-gated via stubbed GoldArkAuth.isContributor()
   if (window.GoldArkAuth && typeof window.GoldArkAuth.isContributor === 'function'
@@ -1202,6 +1281,10 @@ window._showOneMethodology = _showOneMethodology;
       }
 
       _wireZoneB(zoneBEl);
+
+      _loadCrossTraditionBios().then(function(){
+        if(typeof _renderMain === 'function') _renderMain();
+      });
     });
   }
 
