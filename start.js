@@ -5479,3 +5479,15 @@ window._stUpdateTransRtl = function(){
 })();
 
 })(); // close outer StartView wrapper
+
+// Consume any jump queued before this script loaded
+(function(){
+  var pj = window._stPendingJump;
+  if(pj && pj.surah && pj.vstart){
+    setTimeout(function(){
+      if(typeof window.openStartAtVerse === 'function'){
+        window.openStartAtVerse(pj.surah, pj.vstart, pj.vend);
+      }
+    }, 150);
+  }
+})();

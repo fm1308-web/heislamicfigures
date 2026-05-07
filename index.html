@@ -22,6 +22,21 @@
 <script src="share.js"></script>
 <script src="concepts.js"></script>
 <script src="concept-popover.js"></script>
+<script>
+window.openStartAtVerse = window.openStartAtVerse || function(s, v, e){
+  var S = +s, V = +v, VE = +(e || v);
+  if(!S || !V) { console.warn('[openStartAtVerse stub] bad args:', s, v, e); return; }
+  window._stPendingJump = { surah: S, vstart: V, vend: VE };
+  var tabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], [data-tab="START"], .tab-btn, .tab-start');
+  for(var i=0;i<tabs.length;i++){
+    var el = tabs[i];
+    var txt = (el.textContent || '').trim().toUpperCase();
+    var dv = el.getAttribute('data-view') || '';
+    var dt = el.getAttribute('data-tab') || '';
+    if(txt === 'START' || dv === 'start' || dt === 'START'){ el.click(); break; }
+  }
+};
+</script>
 </head>
 <body>
 
