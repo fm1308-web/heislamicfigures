@@ -881,16 +881,9 @@ async function _renderPerson(p,container){
       var vstart = parseInt(btn.getAttribute('data-vstart'), 10);
       var vend = parseInt(btn.getAttribute('data-vend'), 10) || vstart;
       if(!surah || !vstart) return;
-      window._stPendingVerse = { surah: surah, verse_start: vstart, verse_end: vend };
-      var tabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
-      for(var i=0;i<tabs.length;i++){
-        var el = tabs[i];
-        var txt = (el.textContent||'').trim().toUpperCase();
-        var dv = el.getAttribute('data-view')||'';
-        if(txt === 'START' || dv === 'start'){ el.click(); return; }
+      if(typeof window.openStartAtVerse === 'function'){
+        window.openStartAtVerse(surah, vstart, vend);
       }
-      if(typeof window.setView === 'function') window.setView('start');
-      else if(typeof setView === 'function') setView('start');
     });
   });
 

@@ -1842,12 +1842,13 @@ window.openStartAtVerse = function(surah, vstart, vend){
   if(!S || !V) { console.warn('[openStartAtVerse] bad args:', surah, vstart, vend); return; }
   window._stPendingJump = { surah: S, vstart: V, vend: VE };
   // DOM-click the START tab — setView is a stub inside this IIFE.
-  var _stTabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
+  var _stTabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], [data-tab="START"], .tab-btn, .tab-start');
   for(var _i=0;_i<_stTabs.length;_i++){
     var _el=_stTabs[_i];
     var _txt=(_el.textContent||'').trim().toUpperCase();
     var _dv=_el.getAttribute('data-view')||'';
-    if(_txt==='START' || _dv==='start'){ _el.click(); break; }
+    var _dt=_el.getAttribute('data-tab')||'';
+    if(_txt==='START' || _dv==='start' || _dt==='START'){ _el.click(); break; }
   }
   if(typeof setView === 'function') setView('start');
   var tries = 0;
