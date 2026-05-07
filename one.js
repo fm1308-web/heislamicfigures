@@ -34,6 +34,37 @@ window.OneView = (function(){
   if(typeof window.renderQuranRef !== 'function') window.renderQuranRef = function(s){
     return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   };
+  // Linkify "Quran 2:30-37" / "Quran 2:30" / "(7:23)" / "Al-Baqarah 2:31" mentions
+  // inside an already-escaped HTML string into <button class="quran-chip"> chips.
+  if(true){
+    window._linkifyQuranRefs = function(html){
+      if(!html) return html;
+      var SURAH_NAMES = "Al-Baqarah|Al-Imran|Al-Nisa|Al-Ma'idah|Al-Maidah|Al-An'am|Al-Anam|Al-A'raf|Al-Araf|Al-Anfal|At-Tawbah|Yunus|Hud|Yusuf|Ar-Ra'd|Ar-Rad|Ibrahim|Al-Hijr|An-Nahl|Al-Isra|Al-Kahf|Maryam|Ta-Ha|Al-Anbiya|Al-Hajj|Al-Mu'minun|Al-Muminun|An-Nur|Al-Furqan|Ash-Shu'ara|Ash-Shuara|An-Naml|Al-Qasas|Al-Ankabut|Ar-Rum|Luqman|As-Sajdah|Al-Ahzab|Saba|Fatir|Ya-Sin|Yasin|As-Saffat|Sad|Az-Zumar|Ghafir|Fussilat|Ash-Shura|Az-Zukhruf|Ad-Dukhan|Al-Jathiyah|Al-Ahqaf|Muhammad|Al-Fath|Al-Hujurat|Qaf|Adh-Dhariyat|At-Tur|An-Najm|Al-Qamar|Ar-Rahman|Al-Waqi'ah|Al-Waqiah|Al-Hadid|Al-Mujadilah|Al-Hashr|Al-Mumtahanah|As-Saff|Al-Jumu'ah|Al-Jumuah|Al-Munafiqun|At-Taghabun|At-Talaq|At-Tahrim|Al-Mulk|Al-Qalam|Al-Haqqah|Al-Ma'arij|Al-Maarij|Nuh|Al-Jinn|Al-Muzzammil|Al-Muddaththir|Al-Qiyamah|Al-Insan|Al-Mursalat|An-Naba|An-Nazi'at|An-Naziat|Abasa|At-Takwir|Al-Infitar|Al-Mutaffifin|Al-Inshiqaq|Al-Buruj|At-Tariq|Al-A'la|Al-Ala|Al-Ghashiyah|Al-Fajr|Al-Balad|Ash-Shams|Al-Layl|Ad-Duha|Ash-Sharh|At-Tin|Al-Alaq|Al-Qadr|Al-Bayyinah|Az-Zalzalah|Al-Adiyat|Al-Qari'ah|Al-Qariah|At-Takathur|Al-Asr|Al-Humazah|Al-Fil|Quraysh|Al-Ma'un|Al-Maun|Al-Kawthar|Al-Kafirun|An-Nasr|Al-Masad|Al-Ikhlas|Al-Falaq|An-Nas|Al-Fatihah";
+      function makeChip(surah, vstart, vend, label){
+        var s = parseInt(surah,10);
+        if(s < 1 || s > 114) return null;
+        var ve = vend || vstart;
+        return '<button class="quran-chip" data-surah="'+surah+'" data-vstart="'+vstart+'" data-vend="'+ve+'" style="display:inline;padding:1px 6px;margin:0 2px;font-size:inherit;line-height:inherit;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.4);border-radius:3px;color:#D4AF37;cursor:pointer;font-family:inherit">'+label+'</button>';
+      }
+      // Pattern A: "Quran X:Y" or "Quran X:Y-Z"
+      html = html.replace(/\bQuran\s+\(?(\d{1,3}):(\d{1,3})(?:[–—-](\d{1,3}))?\)?/g, function(m, surah, vstart, vend){
+        var chip = makeChip(surah, vstart, vend, 'Quran '+surah+':'+vstart+(vend?'-'+vend:''));
+        return chip || m;
+      });
+      // Pattern B: bare "(X:Y)" or "(X:Y-Z)"
+      html = html.replace(/\((\d{1,3}):(\d{1,3})(?:[–—\-](\d{1,3}))?\)/g, function(m, surah, vstart, vend){
+        var chip = makeChip(surah, vstart, vend, surah+':'+vstart+(vend?'-'+vend:''));
+        return chip ? '('+chip+')' : m;
+      });
+      // Pattern C: "Surah-Name X:Y"
+      var reC = new RegExp('\\b('+SURAH_NAMES+')\\s+(\\d{1,3}):(\\d{1,3})(?:[\\u2013\\u2014-](\\d{1,3}))?', 'g');
+      html = html.replace(reC, function(m, name, surah, vstart, vend){
+        var chip = makeChip(surah, vstart, vend, name+' '+surah+':'+vstart+(vend?'-'+vend:''));
+        return chip || m;
+      });
+      return html;
+    };
+  }
   // stub: _markerTypeColor (MAP-injected); _typeColor falls back if absent.
   // stub: _renderBadgesHtml — TIMELINE row badges (S/W/F/B/T); skipped in sandbox.
   if(typeof window._renderBadgesHtml !== 'function') window._renderBadgesHtml = function(){ return ''; };
@@ -586,7 +617,7 @@ async function _renderPerson(p,container){
         var srcs = (typeof t === 'object' && Array.isArray(t.sources)) ? t.sources : [];
         var disp = (i===0) ? 'block' : 'none';
         var paneHtml = '<div class="one-ct-pane" data-tab="'+k+'" style="display:'+disp+'">';
-        paneHtml += '<div class="one-bio">'+_e(txt).replace(/\n+/g,'<br>')+'</div>';
+        paneHtml += '<div class="one-bio">'+window._linkifyQuranRefs(_e(txt).replace(/\n+/g,'<br>'))+'</div>';
         if(srcs.length){
           paneHtml += '<div class="one-ct-sources" style="margin-top:8px;font-size:11px;color:#6B7280;font-style:italic">Sources: '+srcs.map(_e).join(' · ')+'</div>';
         }
@@ -597,11 +628,11 @@ async function _renderPerson(p,container){
       tabsHtml += '</div>';
       h += _sec('📜','Biography',0,tabsHtml,true);
     } else if(bio){
-      var bioBody = '<div class="one-bio">'+bio+'</div>';
+      var bioBody = '<div class="one-bio">'+window._linkifyQuranRefs(bio)+'</div>';
       h += _sec('📜','Biography',0,bioBody,true);
     }
   } else if(bio){
-    var bioBody2 = '<div class="one-bio">'+bio+'</div>';
+    var bioBody2 = '<div class="one-bio">'+window._linkifyQuranRefs(bio)+'</div>';
     if(_bf && p.bio_full_source){
       var srcLbl2 = _e(p.bio_full_source);
       if(p.bio_full_url){
@@ -630,6 +661,7 @@ async function _renderPerson(p,container){
     } else if(p.quran_refs){
       qh+='<div>'+(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):_e(p.quran_refs))+'</div>';
     }
+    qh = window._linkifyQuranRefs(qh);
     if(p.quranDetail) qh+='<div class="one-quran-detail">'+_e(p.quranDetail)+'</div>';
     h+=_sec('🕌','Quranic References',0,qh,false);
   }
@@ -836,6 +868,31 @@ async function _renderPerson(p,container){
   h+='<div id="one-wikilinks"></div>';
 
   container.innerHTML=h;
+
+  // Wire ALL quran-chip buttons inside the ONE profile to jump to START at
+  // the referenced verse. Idempotent — _wired flag prevents double-binding.
+  container.querySelectorAll('button.quran-chip').forEach(function(btn){
+    if(btn.dataset._wired === '1') return;
+    btn.dataset._wired = '1';
+    btn.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      ev.preventDefault();
+      var surah = parseInt(btn.getAttribute('data-surah'), 10);
+      var vstart = parseInt(btn.getAttribute('data-vstart'), 10);
+      var vend = parseInt(btn.getAttribute('data-vend'), 10) || vstart;
+      if(!surah || !vstart) return;
+      window._stPendingVerse = { surah: surah, verse_start: vstart, verse_end: vend };
+      var tabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
+      for(var i=0;i<tabs.length;i++){
+        var el = tabs[i];
+        var txt = (el.textContent||'').trim().toUpperCase();
+        var dv = el.getAttribute('data-view')||'';
+        if(txt === 'START' || dv === 'start'){ el.click(); return; }
+      }
+      if(typeof window.setView === 'function') window.setView('start');
+      else if(typeof setView === 'function') setView('start');
+    });
+  });
 
   // Wire cross-tradition tabs (if present)
   var _ctRoot = container.querySelector('.one-ct-tabs');

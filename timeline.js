@@ -88,15 +88,31 @@ window.TimelineView = (function(){
 
   // Linkify "Quran 2:30-37" / "Quran 2:30" mentions inside an already-escaped HTML
   // string into <button class="quran-chip"> chips that match the existing pattern.
-  function _linkifyQuranRefs(html){
+  // V2 linkify — supports "Quran X:Y", "(X:Y)", and "Surah-Name X:Y"
+  window._linkifyQuranRefs = function(html){
     if(!html) return html;
-    var re = /\bQuran\s+(\d{1,3}):(\d{1,3})(?:[–—-](\d{1,3}))?/g;
-    return html.replace(re, function(match, surah, vstart, vend){
+    var SURAH_NAMES = "Al-Baqarah|Al-Imran|Al-Nisa|Al-Ma'idah|Al-Maidah|Al-An'am|Al-Anam|Al-A'raf|Al-Araf|Al-Anfal|At-Tawbah|Yunus|Hud|Yusuf|Ar-Ra'd|Ar-Rad|Ibrahim|Al-Hijr|An-Nahl|Al-Isra|Al-Kahf|Maryam|Ta-Ha|Al-Anbiya|Al-Hajj|Al-Mu'minun|Al-Muminun|An-Nur|Al-Furqan|Ash-Shu'ara|Ash-Shuara|An-Naml|Al-Qasas|Al-Ankabut|Ar-Rum|Luqman|As-Sajdah|Al-Ahzab|Saba|Fatir|Ya-Sin|Yasin|As-Saffat|Sad|Az-Zumar|Ghafir|Fussilat|Ash-Shura|Az-Zukhruf|Ad-Dukhan|Al-Jathiyah|Al-Ahqaf|Muhammad|Al-Fath|Al-Hujurat|Qaf|Adh-Dhariyat|At-Tur|An-Najm|Al-Qamar|Ar-Rahman|Al-Waqi'ah|Al-Waqiah|Al-Hadid|Al-Mujadilah|Al-Hashr|Al-Mumtahanah|As-Saff|Al-Jumu'ah|Al-Jumuah|Al-Munafiqun|At-Taghabun|At-Talaq|At-Tahrim|Al-Mulk|Al-Qalam|Al-Haqqah|Al-Ma'arij|Al-Maarij|Nuh|Al-Jinn|Al-Muzzammil|Al-Muddaththir|Al-Qiyamah|Al-Insan|Al-Mursalat|An-Naba|An-Nazi'at|An-Naziat|Abasa|At-Takwir|Al-Infitar|Al-Mutaffifin|Al-Inshiqaq|Al-Buruj|At-Tariq|Al-A'la|Al-Ala|Al-Ghashiyah|Al-Fajr|Al-Balad|Ash-Shams|Al-Layl|Ad-Duha|Ash-Sharh|At-Tin|Al-Alaq|Al-Qadr|Al-Bayyinah|Az-Zalzalah|Al-Adiyat|Al-Qari'ah|Al-Qariah|At-Takathur|Al-Asr|Al-Humazah|Al-Fil|Quraysh|Al-Ma'un|Al-Maun|Al-Kawthar|Al-Kafirun|An-Nasr|Al-Masad|Al-Ikhlas|Al-Falaq|An-Nas|Al-Fatihah";
+    function makeChip(surah, vstart, vend, label){
+      var s = parseInt(surah,10);
+      if(s < 1 || s > 114) return null;
       var ve = vend || vstart;
-      return '<button class="quran-chip" data-surah="'+surah+'" data-vstart="'+vstart+'" data-vend="'+ve+'" style="display:inline;padding:1px 6px;margin:0 2px;font-size:inherit;line-height:inherit">'+match+'</button>';
+      return '<button class="quran-chip" data-surah="'+surah+'" data-vstart="'+vstart+'" data-vend="'+ve+'" style="display:inline;padding:1px 6px;margin:0 2px;font-size:inherit;line-height:inherit;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.4);border-radius:3px;color:#D4AF37;cursor:pointer;font-family:inherit">'+label+'</button>';
+    }
+    html = html.replace(/\bQuran\s+\(?(\d{1,3}):(\d{1,3})(?:[–—-](\d{1,3}))?\)?/g, function(m, surah, vstart, vend){
+      var chip = makeChip(surah, vstart, vend, 'Quran '+surah+':'+vstart+(vend?'-'+vend:''));
+      return chip || m;
     });
-  }
-  window._linkifyQuranRefs = _linkifyQuranRefs;
+    html = html.replace(/\((\d{1,3}):(\d{1,3})(?:[–—\-](\d{1,3}))?\)/g, function(m, surah, vstart, vend){
+      var chip = makeChip(surah, vstart, vend, surah+':'+vstart+(vend?'-'+vend:''));
+      return chip ? '('+chip+')' : m;
+    });
+    var reC = new RegExp('\\b('+SURAH_NAMES+')\\s+(\\d{1,3}):(\\d{1,3})(?:[\\u2013\\u2014-](\\d{1,3}))?', 'g');
+    html = html.replace(reC, function(m, name, surah, vstart, vend){
+      var chip = makeChip(surah, vstart, vend, name+' '+surah+':'+vstart+(vend?'-'+vend:''));
+      return chip || m;
+    });
+    return html;
+  };
 
   // Globals the lifted code reads as bare names (not via window.).
   // SL_* are declared inside the lifted body (lines 766-771).
@@ -1344,14 +1360,14 @@ function renderInfo(p){
     } else {
       quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
         <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
-          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">VERSES: </span>${typeof renderQuranRef==="function"?renderQuranRef(String(qr)):esc(String(qr))}
+          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">VERSES: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(String(qr)):esc(String(qr)))}
         </div></div>`;
     }
   } else if(p.quran_refs){
     const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:var(--fs-3)"> — Open in Quran.com 🌐</a>`:'';
     quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
       <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
-        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">VERSES: </span>${typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs)}
+        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">VERSES: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs))}
       </div></div>`;
   }
 
