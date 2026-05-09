@@ -18,6 +18,497 @@ window.TimelineView = (function(){
   'use strict';
 
   // ═══════════════════════════════════════════════════════════
+  // I18N HELPERS (BV49 Prompt A)
+  // ═══════════════════════════════════════════════════════════
+  var _TL_UR = {
+    // HTW modal
+    'How This Works': 'یہ کیسے کام کرتا ہے',
+    'TYPE': 'قسم',
+    'TRADITION': 'روایت',
+    'HAS': 'رکھتا ہے',
+    'Year slider': 'سال سلائیڈر',
+    // HTW prose
+    'TYPE_DESC': 'شخصیت کی قسم کے مطابق فلٹر کریں۔',
+    'TRADITION_DESC': 'مکتب یا فرقے کے مطابق فلٹر کریں۔',
+    'HAS_DESC': 'وہ شخصیات جن کے پاس اضافی مواد ہے:',
+    'YEAR_DESC': 'منتخب سال میں زندہ شخصیات کو نمایاں کریں۔',
+    'S_LABEL': 'مطالعہ کا کمرہ',
+    'W_LABEL': 'ویکیپیڈیا اندراج',
+    'F_LABEL': 'سفر کی پیروی',
+    'B_LABEL': 'کتابیں',
+    'T_LABEL': 'بات چیت (AI گفتگو)',
+    // Info card section headings
+    'BORN': 'پیدائش',
+    'DIED': 'وفات',
+    'CENTURY': 'صدی',
+    'Biography': 'سوانح',
+    'Titles & Epithets': 'القاب و کنیتیں',
+    'Names Across Traditions': 'مختلف روایات میں نام',
+    'Sources': 'ماخذ',
+    'SCHOLARSHIP': 'علمیت',
+    'INFORMATION': 'معلومات',
+    'AI-generated': 'AI سے تیار شدہ',
+    'AI-generated · independently verify': 'AI سے تیار شدہ · خود تصدیق کریں',
+    // UI labels
+    'Click a name to focus': 'فوکس کے لیے کسی شخصیت پر کلک کریں',
+    'FOCUS MODE': 'فوکس موڈ',
+    'PRE-ISLAMIC': 'قبل از اسلام',
+    'PROPHETIC ERA': 'دور نبوت',
+    'Search figures…': 'شخصیات تلاش کریں…',
+    'Follow journey': 'سفر کی پیروی',
+    'Source': 'ماخذ',
+    'legendary': 'روایتی',
+    'Wikipedia': 'ویکیپیڈیا',
+    // Types
+    'Prophet':'نبی','Founder':'بانی','Sahaba':'صحابہ','Sahabiyya':'صحابیہ',
+    "Tabi'un":'تابعون','Scholar':'عالم','Mystic':'صوفی','Ruler':'حاکم',
+    'Poet':'شاعر','Philosopher':'فلسفی','Scientist':'سائنسدان','Historian':'مورخ',
+    'Reformer':'مصلح','Jurist':'فقیہ','Caliph':'خلیفہ','Warrior':'مجاہد',
+    'Sufi':'صوفی','Traveler':'سیاح','Mufassir':'مفسر','Mujaddid':'مجدد',
+    'Companion':'صحابی','Prophetic Lineage':'نبوی نسب','Genealogy':'نسب',
+    'Ashra Mubashshara':'عشرہ مبشرہ',
+    // Traditions
+    'Hadith Sciences':'علومِ حدیث','Early Ascetics':'ابتدائی زاہدین',
+    'Islamic Jurisprudence':'فقہ اسلامی','Islamic Philosophy':'فلسفہ اسلامی',
+    'Islamic Sciences':'اسلامی علوم','Islamic Theology':'علم الکلام',
+    'Islamic Literature':'اسلامی ادب','Persian Poetry':'فارسی شاعری',
+    'Khorasan School':'مکتبِ خراسان','Baghdad School':'مکتبِ بغداد',
+    'Andalusian Sciences':'اندلسی علوم',
+    'Naqshbandiyya':'نقشبندیہ','Shadhiliyya':'شاذلیہ','Qadiriyya':'قادریہ',
+    'Chishti':'چشتیہ','Suhrawardiyya':'سہروردیہ','Mawlawiyya':'مولویہ',
+    'Qalandari':'قلندریہ','Yeseviyya':'یسویہ','Kubrawiyya':'کبرویہ',
+    'Akbarian':'اکبریہ','Ishraqiyya':'اشراقیہ','Mughal':'مغل',
+    'Sunni':'سنی','Shia':'شیعہ','Ismaili':'اسماعیلی',
+    'Twelver Shia':'اثناء عشری شیعہ','Nizari Ismaili':'نزاری اسماعیلی',
+    'Tayyibi Ismaili':'طیبی اسماعیلی',
+    // Filter labels
+    'All Types':'تمام اقسام','All Traditions':'تمام روایات',
+    'Search...':'تلاش…','Any':'کوئی بھی','Study':'مطالعہ','Wiki':'ویکی',
+    'Follow Journey':'سفر دیکھیں','Books':'کتب','Talk':'گفتگو',
+    // Cross-tradition labels
+    'Islamic':'اسلامی','Christian':'مسیحی','Jewish':'یہودی',"Bahá'í":'بہائی',
+    // Misc UI
+    'For focus, click on a person':'فوکس کے لیے کسی شخصیت پر کلک کریں',
+    'Click a name to explore':'کسی نام پر کلک کر کے دریافت کریں',
+    'Follow their life on the map':'نقشے پر زندگی کا سفر دیکھیں',
+    'CLEAR ALL ✕':'سب صاف کریں ✕',
+    'WHO WAS ALIVE IN':'کون زندہ تھا','HOLD ⇧ FOR 1YR':'1 سال کے لیے ⇧ دبائیں',
+    'SAVED':'محفوظ','BOOKMARKS ★':'بک مارکس ★',
+    // Info card section headings (carry-over)
+    'TEACHERS': 'اساتذہ',
+    'STUDENTS': 'شاگرد',
+    'RELATIONS': 'تعلقات',
+    'STUDENTS (1)': 'شاگرد (1)',
+    // Relation badges
+    'CHILD': 'اولاد',
+    'FATHER': 'والد',
+    'MOTHER': 'والدہ',
+    'SON': 'بیٹا',
+    'DAUGHTER': 'بیٹی',
+    'SPOUSE': 'شریکِ حیات',
+    'WIFE': 'زوجہ',
+    'HUSBAND': 'شوہر',
+    'BROTHER': 'بھائی',
+    'SISTER': 'بہن',
+    'GRANDFATHER': 'دادا',
+    'GRANDMOTHER': 'دادی',
+    'GRANDSON': 'پوتا',
+    'GRANDDAUGHTER': 'پوتی',
+    'UNCLE': 'چچا',
+    'AUNT': 'پھوپھی',
+    'NEPHEW': 'بھتیجا',
+    'NIECE': 'بھتیجی',
+    'COUSIN': 'کزن',
+    'STEPFATHER': 'سوتیلا والد',
+    'STEPMOTHER': 'سوتیلی والدہ',
+    'STEPSON': 'سوتیلا بیٹا',
+    'STEPDAUGHTER': 'سوتیلی بیٹی',
+    'ADOPTED SON': 'منہ بولا بیٹا',
+    'GUARDIAN': 'سرپرست',
+    'WARD': 'زیرِ سرپرستی',
+    'FREEDMAN': 'آزاد کردہ غلام',
+    'FREEDWOMAN': 'آزاد کردہ کنیز',
+    'IN-LAW': 'سسرالی رشتہ دار',
+    'FATHER-IN-LAW': 'سُسر',
+    'MOTHER-IN-LAW': 'ساس',
+    'SON-IN-LAW': 'داماد',
+    'DAUGHTER-IN-LAW': 'بہو',
+    'BROTHER-IN-LAW': 'سالا',
+    'SISTER-IN-LAW': 'سالی',
+    // Era bands
+    'PROPHETIC ERA': 'دور نبوت',
+    'RASHIDUN ERA': 'دور خلفائے راشدین',
+    'UMAYYAD ERA': 'دور بنو امیہ',
+    'ABBASID ERA': 'دور بنو عباس',
+    'OTTOMAN ERA': 'دور عثمانیہ',
+    'EARLY ISLAMIC ERA': 'ابتدائی اسلامی دور',
+    'CLASSICAL ERA': 'کلاسیکی دور',
+    'MEDIEVAL ERA': 'قرون وسطیٰ کا دور',
+    'POST-CLASSICAL ERA': 'مابعد کلاسیکی دور',
+    'MODERN ERA': 'جدید دور',
+    // Type / location / language chips
+    'PROPHET / FIRST HUMAN': 'نبی / پہلا انسان',
+    'PROPHET': 'نبی',
+    'FIRST HUMAN': 'پہلا انسان',
+    'EDEN / MESOPOTAMIA': 'جنت / میسوپوٹیمیا',
+    'EDEN': 'جنت',
+    'MESOPOTAMIA': 'میسوپوٹیمیا',
+    'ARABIC': 'عربی',
+    'PERSIAN': 'فارسی',
+    'TURKISH': 'ترکی',
+    'URDU': 'اردو',
+    'HEBREW': 'عبرانی',
+    'ARAMAIC': 'آرامی',
+    'GREEK': 'یونانی',
+    'LATIN': 'لاطینی',
+    'SYRIAC': 'سریانی',
+    'ENGLISH': 'انگریزی',
+    // Tradition chips
+    'ISLAMIC': 'اسلامی',
+    'CHRISTIAN': 'مسیحی',
+    'JEWISH': 'یہودی',
+    'MANDAEAN': 'منڈائی',
+    'BAHÁ\'Í': 'بہائی',
+    'BAHAI': 'بہائی',
+    'ZOROASTRIAN': 'زرتشتی',
+    'HINDU': 'ہندو',
+    'BUDDHIST': 'بدھ',
+    'SUNNI': 'سُنی',
+    'SHIA': 'شیعہ',
+    'SUFI': 'صوفی',
+    // Date markers
+    'BCE': 'ق م',
+    'CE': 'عیسوی',
+    'AH': 'ہجری',
+    'circa': 'تقریباً',
+    'Source:': 'ماخذ:',
+    'Islamic': 'اسلامی',
+    'Christian': 'مسیحی',
+    'Jewish': 'یہودی',
+    "Bahá'í": 'بہائی',
+    'Bahai': 'بہائی',
+    'Quranic References': 'قرآنی حوالہ جات',
+    'QURANIC REFERENCES': 'قرآنی حوالہ جات',
+    'Verses': 'آیات',
+    'VERSES': 'آیات',
+    'Sources': 'ماخذ',
+    'Quran': 'قرآن',
+    // Types / classifications
+    'Prophet': 'نبی',
+    'Prophet / First Human': 'نبی / پہلا انسان',
+    'Prophet / Vizier of Egypt': 'نبی / مصر کے وزیر',
+    'Prophet / Sage': 'نبی / حکیم',
+    'Companion': 'صحابی',
+    'Scholar': 'عالم',
+    'Ruler': 'حکمران',
+    'Poet': 'شاعر',
+    'Sufi': 'صوفی',
+    'Founder': 'بانی',
+    'Genealogy': 'نسب',
+    'Genealogical Link': 'نسبی رابطہ',
+    'Sage': 'حکیم',
+    'Vizier of Egypt': 'مصر کے وزیر',
+    'First Human': 'پہلا انسان',
+    // Cities / regions
+    'Mesopotamia': 'میسوپوٹیمیا',
+    'Eden / Mesopotamia': 'باغِ عدن / میسوپوٹیمیا',
+    'Eden': 'باغِ عدن',
+    'Canaan': 'کنعان',
+    'Egypt': 'مصر',
+    'Canaan / Egypt': 'کنعان / مصر',
+    'Hauran, Syria': 'حوران، شام',
+    'Arabian Peninsula': 'جزیرہ نما عرب',
+    'Hauran, Syria / Arabian Peninsula': 'حوران، شام / جزیرہ نما عرب',
+    'Mecca': 'مکہ',
+    'Medina': 'مدینہ',
+    'Jerusalem': 'یروشلم',
+    'Damascus': 'دمشق',
+    'Baghdad': 'بغداد',
+    'Cairo': 'قاہرہ',
+    'Basra': 'بصرہ',
+    'Kufa': 'کوفہ',
+    // Languages
+    'Arabic': 'عربی',
+    'Hebrew': 'عبرانی',
+    'Aramaic': 'آرامی',
+    'Persian': 'فارسی',
+    'Greek': 'یونانی',
+    'Syriac': 'سریانی',
+    'Turkish': 'ترکی',
+    'Urdu': 'اردو',
+    'English': 'انگریزی',
+    // Titles & epithets — common
+    'Yusuf': 'یوسف',
+    'Joseph the Beautiful': 'یوسفِ حسین',
+    'Ahsan al-Qasas': 'احسن القصص',
+    'The Most Beautiful of Stories': 'بہترین قصہ',
+    'Ahsan al-Qasas — The Most Beautiful of Stories': 'احسن القصص — بہترین قصہ',
+    'Siddiq': 'صدیق',
+    'Siddiq (the Truthful)': 'صدیق (سچا)',
+    'the Truthful': 'سچا',
+    'Khalifat Allah': 'خلیفۃ اللہ',
+    'Safi Allah': 'صفی اللہ',
+    'Safi Allah (the Chosen of God)': 'صفی اللہ (اللہ کا برگزیدہ)',
+    'the Chosen of God': 'اللہ کا برگزیدہ',
+    'Abu al-Bashar': 'ابو البشر',
+    'Father of Humanity': 'انسانیت کا باپ',
+    'Abu al-Bashar — Father of Humanity': 'ابو البشر — انسانیت کا باپ',
+    // Tradition labels
+    'ISLAMIC': 'اسلامی',
+    'CHRISTIAN': 'مسیحی',
+    'JEWISH': 'یہودی',
+    "BAHA'I": 'بہائی',
+    'BAHAI': 'بہائی',
+    'MANDAEAN': 'منڈائی',
+    // Surah names (verse chips)
+    'Al-Fatihah': 'الفاتحہ',
+    'Al-Baqarah': 'البقرہ',
+    'Al-Imran': 'آل عمران',
+    'Al-Nisa': 'النساء',
+    "Al-Ma'idah": 'المائدہ',
+    'Al-Maidah': 'المائدہ',
+    "Al-An'am": 'الأنعام',
+    'Al-Anam': 'الأنعام',
+    "Al-A'raf": 'الأعراف',
+    'Al-Araf': 'الأعراف',
+    'Al-Anfal': 'الأنفال',
+    'At-Tawbah': 'التوبہ',
+    'Yunus': 'یونس',
+    'Hud': 'ہود',
+    "Ar-Ra'd": 'الرعد',
+    'Ar-Rad': 'الرعد',
+    'Ibrahim': 'ابراہیم',
+    'Al-Hijr': 'الحجر',
+    'An-Nahl': 'النحل',
+    'Al-Isra': 'الإسراء',
+    'Al-Kahf': 'الکہف',
+    'Maryam': 'مریم',
+    'Ta-Ha': 'طٰہٰ',
+    'Al-Anbiya': 'الأنبیاء',
+    'Al-Hajj': 'الحج',
+    "Al-Mu'minun": 'المؤمنون',
+    'Al-Muminun': 'المؤمنون',
+    'An-Nur': 'النور',
+    'Al-Furqan': 'الفرقان',
+    "Ash-Shu'ara": 'الشعراء',
+    'Ash-Shuara': 'الشعراء',
+    'An-Naml': 'النمل',
+    'Al-Qasas': 'القصص',
+    'Al-Ankabut': 'العنکبوت',
+    'Ar-Rum': 'الروم',
+    'Luqman': 'لقمان',
+    'As-Sajdah': 'السجدہ',
+    'Al-Ahzab': 'الأحزاب',
+    'Saba': 'سبأ',
+    'Fatir': 'فاطر',
+    'Ya-Sin': 'یٰسٓ',
+    'Yasin': 'یٰسٓ',
+    'As-Saffat': 'الصافات',
+    'Sad': 'صٓ',
+    'Az-Zumar': 'الزمر',
+    'Ghafir': 'غافر',
+    'Fussilat': 'فصلت',
+    'Ash-Shura': 'الشورىٰ',
+    'Az-Zukhruf': 'الزخرف',
+    'Ad-Dukhan': 'الدخان',
+    'Al-Jathiyah': 'الجاثیہ',
+    'Al-Ahqaf': 'الأحقاف',
+    'Muhammad': 'محمد',
+    'Al-Fath': 'الفتح',
+    'Al-Hujurat': 'الحجرات',
+    'Qaf': 'قٓ',
+    'Adh-Dhariyat': 'الذاریات',
+    'At-Tur': 'الطور',
+    'An-Najm': 'النجم',
+    'Al-Qamar': 'القمر',
+    'Ar-Rahman': 'الرحمٰن',
+    "Al-Waqi'ah": 'الواقعہ',
+    'Al-Waqiah': 'الواقعہ',
+    'Al-Hadid': 'الحدید',
+    'Al-Mujadilah': 'المجادلہ',
+    'Al-Hashr': 'الحشر',
+    'Al-Mumtahanah': 'الممتحنہ',
+    'As-Saff': 'الصف',
+    "Al-Jumu'ah": 'الجمعہ',
+    'Al-Jumuah': 'الجمعہ',
+    'Al-Munafiqun': 'المنافقون',
+    'At-Taghabun': 'التغابن',
+    'At-Talaq': 'الطلاق',
+    'At-Tahrim': 'التحریم',
+    'Al-Mulk': 'الملک',
+    'Al-Qalam': 'القلم',
+    'Al-Haqqah': 'الحاقہ',
+    "Al-Ma'arij": 'المعارج',
+    'Al-Maarij': 'المعارج',
+    'Nuh': 'نوح',
+    'Al-Jinn': 'الجن',
+    'Al-Muzzammil': 'المزمل',
+    'Al-Muddaththir': 'المدثر',
+    'Al-Qiyamah': 'القیامہ',
+    'Al-Insan': 'الإنسان',
+    'Al-Mursalat': 'المرسلات',
+    'An-Naba': 'النبأ',
+    "An-Nazi'at": 'النازعات',
+    'An-Naziat': 'النازعات',
+    'Abasa': 'عبس',
+    'At-Takwir': 'التکویر',
+    'Al-Infitar': 'الإنفطار',
+    'Al-Mutaffifin': 'المطففین',
+    'Al-Inshiqaq': 'الإنشقاق',
+    'Al-Buruj': 'البروج',
+    'At-Tariq': 'الطارق',
+    "Al-A'la": 'الأعلیٰ',
+    'Al-Ala': 'الأعلیٰ',
+    'Al-Ghashiyah': 'الغاشیہ',
+    'Al-Fajr': 'الفجر',
+    'Al-Balad': 'البلد',
+    'Ash-Shams': 'الشمس',
+    'Al-Layl': 'اللیل',
+    'Ad-Duha': 'الضحیٰ',
+    'Ash-Sharh': 'الشرح',
+    'At-Tin': 'التین',
+    'Al-Alaq': 'العلق',
+    'Al-Qadr': 'القدر',
+    'Al-Bayyinah': 'البینہ',
+    'Az-Zalzalah': 'الزلزلہ',
+    'Al-Adiyat': 'العادیات',
+    "Al-Qari'ah": 'القارعہ',
+    'Al-Qariah': 'القارعہ',
+    'At-Takathur': 'التکاثر',
+    'Al-Asr': 'العصر',
+    'Al-Humazah': 'الہمزہ',
+    'Al-Fil': 'الفیل',
+    'Quraysh': 'قریش',
+    "Al-Ma'un": 'الماعون',
+    'Al-Maun': 'الماعون',
+    'Al-Kawthar': 'الکوثر',
+    'Al-Kafirun': 'الکافرون',
+    'An-Nasr': 'النصر',
+    'Al-Masad': 'المسد',
+    'Al-Ikhlas': 'الإخلاص',
+    'Al-Falaq': 'الفلق',
+    'An-Nas': 'الناس',
+    'Ibn Ishaq, Sirat Rasul Allah; al-Tabari, Tarikh al-Rusul wa al-Muluk': 'ابن اسحاق، سیرت رسول اللہ؛ الطبری، تاریخ الرسل والملوک',
+  };
+  function _tlGetLang(){
+    try { return (window.GoldArkI18n && window.GoldArkI18n.getLang && window.GoldArkI18n.getLang()) || 'en'; }
+    catch(e){ return 'en'; }
+  }
+  function _tlT(en){
+    if(!en) return en;
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    if(lang === 'ur' && _TL_UR[en]) return _TL_UR[en];
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tt){
+        var v = window.GoldArkI18n.tt(en);
+        if(v && v !== en) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigName(p){
+    if(!p) return '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return p.famous || p.name || '';
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'famous');
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return p.famous || p.name || '';
+  }
+  function _tlFigSubtitle(p){
+    if(!p) return '';
+    var en = p.subtitle || p.primaryTitle || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'subtitle')
+             || window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'primaryTitle');
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigField(p, field){
+    if(!p || !field) return '';
+    var en = p[field] || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, field);
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigBio(p){
+    if(!p) return '';
+    var en = p.bio_full || p.bio || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio_full')
+             || window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio');
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  document.addEventListener('gold-ark-i18n-ready', function(){
+    try {
+      var _lang = _tlGetLang();
+      if(_lang !== 'en' && window.GoldArkI18n && window.GoldArkI18n.loadBucket){
+        window.GoldArkI18n.loadBucket(_lang, 'figures').then(function(){
+          try { if(typeof renderAll === 'function') renderAll(); } catch(e){}
+          if(typeof activePerson !== 'undefined' && activePerson && typeof renderInfoWithDetails === 'function'){
+            try { renderInfoWithDetails(activePerson); } catch(e){}
+          }
+        });
+      }
+    } catch(e){}
+  });
+  document.addEventListener('gold-ark-lang-changed', function(){
+    // Re-render right column rows (.tc-famous / .tc-sub) by re-running renderAll
+    try { if(typeof renderAll === 'function') renderAll(); } catch(e){}
+    // If renderAll doesn't rebuild the scroll list, force-refresh each row text
+    try {
+      var rows = document.querySelectorAll('.tc-famous');
+      rows.forEach(function(el){
+        var name = el.getAttribute('data-name');
+        if(!name) return;
+        var p = (window.PEOPLE || PEOPLE || []).find(function(x){ return x.famous === name; });
+        if(!p) return;
+        // First child text node holds the name (badges follow as element nodes)
+        var first = el.firstChild;
+        if(first && first.nodeType === 3){
+          first.nodeValue = _tlFigName(p);
+        } else {
+          el.insertBefore(document.createTextNode(_tlFigName(p)), el.firstChild);
+        }
+        var sub = el.parentElement && el.parentElement.querySelector('.tc-sub');
+        if(sub) sub.textContent = _tlFigSubtitle(p) || (p.classif||'');
+      });
+    } catch(e){ console.warn('[tl i18n] row refresh failed', e); }
+    // Re-render info card
+    try {
+      if(typeof activePerson !== 'undefined' && activePerson && typeof renderInfoWithDetails === 'function'){
+        renderInfoWithDetails(activePerson);
+      }
+    } catch(e){}
+    // Re-open methodology modal if visible
+    var openModal = document.querySelector('.tl-htw-modal, #tlHtwModal, .htw-modal');
+    if(openModal && openModal.style.display !== 'none'){
+      try { _showTimelineMethodology(); } catch(e){}
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════════
   // STUBBED EXTERNALS (mirror silsila.js stub style)
   // ═══════════════════════════════════════════════════════════
 
@@ -99,7 +590,7 @@ window.TimelineView = (function(){
       return '<button class="quran-chip" data-surah="'+surah+'" data-vstart="'+vstart+'" data-vend="'+ve+'" style="display:inline;padding:1px 6px;margin:0 2px;font-size:inherit;line-height:inherit;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.4);border-radius:3px;color:#D4AF37;cursor:pointer;font-family:inherit">'+label+'</button>';
     }
     html = html.replace(/\bQuran\s+\(?(\d{1,3}):(\d{1,3})(?:[–—-](\d{1,3}))?\)?/g, function(m, surah, vstart, vend){
-      var chip = makeChip(surah, vstart, vend, 'Quran '+surah+':'+vstart+(vend?'-'+vend:''));
+      var chip = makeChip(surah, vstart, vend, _tlT('Quran')+' '+surah+':'+vstart+(vend?'-'+vend:''));
       return chip || m;
     });
     html = html.replace(/\((\d{1,3}):(\d{1,3})(?:[–—\-](\d{1,3}))?\)/g, function(m, surah, vstart, vend){
@@ -108,7 +599,7 @@ window.TimelineView = (function(){
     });
     var reC = new RegExp('\\b('+SURAH_NAMES+')\\s+(\\d{1,3}):(\\d{1,3})(?:[\\u2013\\u2014-](\\d{1,3}))?', 'g');
     html = html.replace(reC, function(m, name, surah, vstart, vend){
-      var chip = makeChip(surah, vstart, vend, name+' '+surah+':'+vstart+(vend?'-'+vend:''));
+      var chip = makeChip(surah, vstart, vend, _tlT(name)+' '+surah+':'+vstart+(vend?'-'+vend:''));
       return chip || m;
     });
     return html;
@@ -312,7 +803,7 @@ async function showMapCardWithDetails(p,cx,cy){
 function buildDD(kind,values){
   const panel=document.getElementById(kind==='type'?'typePanel':'tradPanel');
   const si=document.createElement('input');
-  si.type='text';si.className='dd-search';si.placeholder='Search...';
+  si.type='text';si.className='dd-search';si.placeholder=_tlT('Search...');
   si.oninput=function(){
     const q=si.value.toLowerCase();
     panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){
@@ -323,7 +814,7 @@ function buildDD(kind,values){
   values.forEach(v=>{
     const el=document.createElement('div');
     el.className='dd-item'; el.dataset.val=v;
-    el.innerHTML=`<div class="dd-checkbox"></div><span>${v}</span>`;
+    el.innerHTML=`<div class="dd-checkbox"></div><span>${_tlT(v)}</span>`;
     el.onclick=()=>ddToggle(kind,v); panel.appendChild(el);
   });
 }
@@ -579,7 +1070,7 @@ function updateCentHeaders(){
   // Century header elements removed in Step 1.3 — function is now a no-op.
   if(!document.getElementById('ch0t')) return;
   const [c0,c1,c2]=CW;
-  function lbl(c){return c===0?'PRE-ISLAMIC':centLabel(c)+' C.'}
+  function lbl(c){return c===0?_tlT('PRE-ISLAMIC'):centLabel(c)+' C.'}
   function yrLbl(c){return c===0?'Pre-600 CE':c>0?((c-1)*100)+' – '+(c*100):''}
   document.getElementById('ch0t').textContent=lbl(c0);
   document.getElementById('ch1t').textContent=lbl(c1);
@@ -854,7 +1345,7 @@ function _tlRenderCenter(visible){
   // Era determined by 4th visible figure (or last if fewer than 4).
   const anchor = visible[3] || visible[visible.length - 1];
   const era = _getEra(_dobOf(anchor));
-  titleEl.textContent = era.name;
+  titleEl.textContent = _tlT(era.name);
   // era.border is 'rgb(r,g,b)' — derive a 25%-alpha column tint from it.
   const borderRgb = era.border.replace('rgb(', '').replace(')', '');
   col.style.setProperty('--tl-era-bg', 'rgba(' + borderRgb + ', 0.25)');
@@ -1144,7 +1635,7 @@ function _tlUpdateEraTitleOnScroll(){
   if(!anchor) return;
 
   const era = _getEra(_dobOf(anchor));
-  titleEl.textContent = era.name;
+  titleEl.textContent = _tlT(era.name);
   const borderRgb = era.border.replace('rgb(', '').replace(')', '');
   col.style.setProperty('--tl-era-bg', 'rgba(' + borderRgb + ', 0.25)');
   col.style.setProperty('--tl-era-border', era.border);
@@ -1217,8 +1708,8 @@ function renderRows(filtered){
     html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="background:${era.bg}">
       <div class="tc-name${isSacred?' is-sacred':''}">
         <div class="tc-texts">
-          <div class="tc-famous">${esc(p.famous)}${_renderBadgesHtml(p.slug,p.famous,'tl')}</div>
-          <div class="tc-sub">${esc(p.primaryTitle||p.classif||'')}</div>
+          <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}</div>
+          <div class="tc-sub">${esc(_tlFigSubtitle(p) || p.classif || '')}</div>
         </div>
         <div class="tc-dot" style="background:${col}${isProphet?';box-shadow:0 0 8px '+col+'90':''}"></div>
       </div>
@@ -1272,7 +1763,7 @@ function selectRow(idx){
 // ═══════════════════════════════════════════════════════════
 function showEmptyInfo(){
   document.getElementById('infoScroll').innerHTML=
-    `<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>`;
+    `<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">${_tlT('Click a name to explore')}</div></div>`;
 }
 
 
@@ -1339,8 +1830,8 @@ function renderInfo(p){
   const col = p.type==='Genealogy' ? '#D4AF37' : (CC[gc(p.dob)]||'#A0AEC0');
   const _dobMain = p.dob_academic!=null ? p.dob_academic : p.dob;
   const _dodMain = p.dod_academic!=null ? p.dod_academic : p.dod;
-  const dob_s=_dobMain!=null?(_dobMain<0?`${Math.abs(_dobMain)} BCE`:`${_dobMain} CE`):'Unknown';
-  const dod_s=_dodMain!=null?(_dodMain<0?`${Math.abs(_dodMain)} BCE`:`${_dodMain} CE`):'Unknown';
+  const dob_s=_dobMain!=null?(_dobMain<0?`${Math.abs(_dobMain)} ${_tlT('BCE')}`:`${_dobMain} ${_tlT('CE')}`):'Unknown';
+  const dod_s=_dodMain!=null?(_dodMain<0?`${Math.abs(_dodMain)} ${_tlT('BCE')}`:`${_dodMain} ${_tlT('CE')}`):'Unknown';
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
 
 
@@ -1349,7 +1840,7 @@ function renderInfo(p){
   if(p.quranRef){
     const qr=p.quranRef;
     if(typeof qr==='object'&&qr.count!=null){
-      quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
+      quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
           <span style="font-family:'Cinzel',serif;font-size:var(--fs-1);font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
           <span style="font-size:var(--fs-3);color:var(--ip-muted)">mentioned in the Quran</span>
@@ -1358,16 +1849,16 @@ function renderInfo(p){
         <div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal">${esc(qr.epithet)}</div>
       </div>`;
     } else {
-      quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
+      quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
         <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
-          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">VERSES: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(String(qr)):esc(String(qr)))}
+          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">${_tlT('VERSES')}: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(String(qr)):esc(String(qr)))}
         </div></div>`;
     }
   } else if(p.quran_refs){
     const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:var(--fs-3)"> — Open in Quran.com 🌐</a>`:'';
-    quranHtml=`<div class="i-sec"><div class="i-sl">Quranic References</div>
+    quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
       <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
-        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">VERSES: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs))}
+        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">${_tlT('VERSES')}: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs))}
       </div></div>`;
   }
 
@@ -1407,9 +1898,9 @@ function renderInfo(p){
   }
   let teachHtml='';
   if(p.famous!=='Prophet Muhammad'&&p.teachers?.length){
-    teachHtml=`<div class="i-sec"><div class="i-sl">Teachers</div>
+    teachHtml=`<div class="i-sec"><div class="i-sl">${_tlT('TEACHERS')}</div>
       <div class="i-teachers">
-        ${p.teachers.map(t=>`<span class="i-teacher" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(t)}</span>`).join('')}
+        ${p.teachers.map(t=>{const _tp=PEOPLE.find(pp=>pp.famous===t);return `<span class="i-teacher" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(_tp?_tlFigName(_tp):t)}</span>`;}).join('')}
       </div></div>`;
   }
 
@@ -1417,20 +1908,20 @@ function renderInfo(p){
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
   let studHtml='';
   if(p.famous!=='Prophet Muhammad'&&studentsOf.length){
-    studHtml=`<div class="i-sec"><div class="i-sl">Students (${studentsOf.length})</div>
+    studHtml=`<div class="i-sec"><div class="i-sl">${_tlT('STUDENTS')} (${studentsOf.length})</div>
       <div class="i-teachers">
-        ${studentsOf.map(s=>`<span class="i-student" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(s.famous)}</span>`).join('')}
+        ${studentsOf.map(s=>`<span class="i-student" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(_tlFigName(s))}</span>`).join('')}
       </div></div>`;
   }
 
   let relHtml='';
   if(p.relations?.length){
-    relHtml=`<div class="i-sec"><div class="i-sl">Relations</div>
+    relHtml=`<div class="i-sec"><div class="i-sl">${_tlT('RELATIONS')}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
         ${p.relations.map(r=>{
           const inData=PEOPLE.find(pp=>pp.famous===r.person);
-          const relLabel=`<span class="i-rel-type">${esc(r.relation)}</span>`;
-          const name=esc(r.person);
+          const relLabel=`<span class="i-rel-type" data-rel="${esc(r.relation)}">${esc(_tlT(String(r.relation||'').toUpperCase()))}</span>`;
+          const name=esc(inData ? _tlFigName(inData) : r.person);
           if(inData){
             return `<span class="i-rel-chip clickable" data-rel="${esc(r.relation)}" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')" title="Go to ${esc(r.person)}">${relLabel} ${name}</span>`;
           } else {
@@ -1445,9 +1936,10 @@ function renderInfo(p){
     ?`<button class="sl-locate-btn" onclick="silsilaLocate('${p.famous.replace(/'/g,"\\'")}')">`+
       `<span class="slb-icon">◎</span>LOCATE IN CHAIN</button>`:'';
 
-  var _isFav = APP.Favorites ? APP.Favorites.has(p.famous) : false;
-  var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" '
-    + 'title="' + (_isFav ? 'Remove from saved' : 'Save figure') + '" '
+  var _bmAuth = window.GoldArkAuth;
+  var _isFav = (_bmAuth && _bmAuth.hasBookmarkKey && p.slug) ? _bmAuth.hasBookmarkKey('f:' + p.slug) : false;
+  var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" data-slug="' + esc(p.slug || '') + '" '
+    + 'title="' + (_isFav ? 'Remove from bookmarks' : 'Bookmark this figure') + '" '
     + 'style="background:none;border:none;cursor:pointer;font-size:var(--fs-1);'
     + 'color:' + (_isFav ? '#D4AF37' : 'rgba(160,174,192,0.25)') + ';'
     + 'float:right;margin-left:10px;padding:2px;line-height:1;'
@@ -1487,26 +1979,26 @@ function renderInfo(p){
         onerror="this.style.display='none';document.getElementById('wikiImgCaption').style.display='none';" />
       <div id="wikiImgCaption" style="display:none;font-size:var(--fs-3);color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:4px">via Wikipedia</div>
     </div>` : ''}
-    <div class="i-name">${esc(p.famous)}${p.names_i18n?'<span class="i18n-trigger" id="i18nTrigger" title="View name in other languages" style="display:inline-block;margin-left:8px;font-size:var(--fs-3);color:var(--ip-muted);cursor:pointer;vertical-align:middle;opacity:.5;transition:opacity .15s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.5">🌐</span>':''}</div>
-    ${p.full&&p.full!==p.famous?`<div class="i-full">${esc(p.full)}</div>`:''}
-    <div class="i-primary">${esc(p.primaryTitle||'')}</div>
+    <div class="i-name">${esc(_tlFigName(p))}${p.names_i18n?'<span class="i18n-trigger" id="i18nTrigger" title="View name in other languages" style="display:inline-block;margin-left:8px;font-size:var(--fs-3);color:var(--ip-muted);cursor:pointer;vertical-align:middle;opacity:.5;transition:opacity .15s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.5">🌐</span>':''}</div>
+    ${p.full&&p.full!==p.famous?`<div class="i-full">${esc(_tlFigField(p,'full'))}</div>`:''}
+    <div class="i-primary">${esc(_tlFigField(p,'primaryTitle'))}</div>
     ${p.tags&&p.tags.length?`<div style="margin-bottom:10px;display:flex;flex-wrap:wrap;gap:5px">${p.tags.map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div>`:''}
     <div class="i-tags">
-      <span class="i-tag hi">${esc(p.type||'')}</span>
-      <span class="i-tag hi">${esc(p.tradition||'')}</span>
-      ${p.classif?`<span class="i-tag">${esc(p.classif)}</span>`:''}
-      ${p.city?`<span class="i-tag">📍 ${esc(p.city)}</span>`:''}
-      ${p.lang?`<span class="i-tag">🌐 ${esc(p.lang)}</span>`:''}
+      <span class="i-tag hi">${esc(_tlT(p.type||''))}</span>
+      <span class="i-tag hi">${esc(_tlT(p.tradition||''))}</span>
+      ${p.classif?`<span class="i-tag">${esc(_tlT(p.classif))}</span>`:''}
+      ${p.city?`<span class="i-tag">📍 ${esc(_tlT(p.city))}</span>`:''}
+      ${p.lang?`<span class="i-tag">🌐 ${esc(_tlT(p.lang))}</span>`:''}
       <span id="figHadithChipSlot"></span>
     </div>
     ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="info-wd-occupations">'+chips.map(l=>'<span class="info-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
-    ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; Follow their life on the map</a>`:''}
+    ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; ${_tlT('Follow their life on the map')}</a>`:''}
     <div class="i-dates">
-      <div class="i-di"><span class="dl">BORN</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(p.dob_s)}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
-      <div class="i-di"><span class="dl">DIED</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(p.dod_s)}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(p.dating_source)}</span>`:''}</div>
-      ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">CENTURY</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
+      <div class="i-di"><span class="dl">${_tlT('BORN')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dob_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">${_tlT('DIED')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dod_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
+      ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">${_tlT('CENTURY')}</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
-    ${((p.dob_s||'')+(p.dod_s||'')).toLowerCase().includes('legendary')?`<div style="font-size:var(--fs-3);color:rgba(160,174,192,.55);margin:-4px 0 10px 2px;line-height:1.4">Source: Ibn Ishaq, <i>Sirat Rasul Allah</i>; al-Tabari, <i>Tarikh al-Rusul wa al-Muluk</i></div>`:''}
+    ${((p.dob_s||'')+(p.dod_s||'')).toLowerCase().includes('legendary')?`<div style="font-size:var(--fs-3);color:rgba(160,174,192,.55);margin:-4px 0 10px 2px;line-height:1.4">${_tlT('Source:')} ${_tlT('Ibn Ishaq, Sirat Rasul Allah; al-Tabari, Tarikh al-Rusul wa al-Muluk')}</div>`:''}
     ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
     ${(function(){
       var ctKey = (_ctSlugMap && p.slug) ? _ctSlugMap[p.slug] : null;
@@ -1521,10 +2013,10 @@ function renderInfo(p){
           var nm   = esc(v.name||'');
           var trad = v.tradition||'';
           var tcol = TBADGE[trad] || 'rgba(160,174,192,.55)';
-          var tbadge = trad ? '<span style="font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:'+tcol+';border:1px solid '+tcol+';border-radius:2px;padding:1px 5px;margin-left:6px;font-family:Cinzel,serif">'+esc(trad)+'</span>' : '';
-          return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dotted var(--ip-brd)"><span style="font-size:var(--fs-3);color:var(--ip-muted);min-width:64px">'+lang+'</span><span style="flex:1;font-size:var(--fs-3);color:var(--ip-text);text-align:right;font-family:\'Source Sans 3\',sans-serif">'+nm+tbadge+'</span></div>';
+          var tbadge = trad ? '<span style="font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:'+tcol+';border:1px solid '+tcol+';border-radius:2px;padding:1px 5px;margin-left:6px;font-family:Cinzel,serif">'+esc(_tlT(trad.toUpperCase()))+'</span>' : '';
+          return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dotted var(--ip-brd)"><span style="font-size:var(--fs-3);color:var(--ip-muted);min-width:64px">'+(window.GoldArkI18n && window.GoldArkI18n.tt ? window.GoldArkI18n.tt(lang) : lang)+'</span><span style="flex:1;font-size:var(--fs-3);color:var(--ip-text);text-align:right;font-family:\'Source Sans 3\',sans-serif">'+nm+tbadge+'</span></div>';
         }).join('');
-        nvHtml = '<div class="i-sec"><div class="i-sl">Names Across Traditions</div><div style="margin-top:4px">'+rows+'</div></div>';
+        nvHtml = '<div class="i-sec"><details class="i-nv-details"><summary class="i-nv-summary"><span class="i-sl" style="display:inline">'+_tlT('Names Across Traditions')+'</span><span class="i-nv-count">('+nvEntry.variants.length+')</span><span class="i-nv-arrow">▾</span></summary><div style="margin-top:4px">'+rows+'</div></details></div>';
       }
 
       if(ctEntry && ctEntry.traditions){
@@ -1537,32 +2029,39 @@ function renderInfo(p){
           return txt && txt.trim().length > 0;
         });
         if(avail.length){
-          var LABELS = {islamic:'Islamic', christian:'Christian', jewish:'Jewish', bahai:"Bahá'í"};
+          var LABELS = {islamic:_tlT('Islamic'), christian:_tlT('Christian'), jewish:_tlT('Jewish'), bahai:_tlT("Bahá'í")};
           var tabBar = '<div class="i-ct-tabbar" style="display:flex;gap:4px;border-bottom:1px solid rgba(212,175,55,.25);margin:6px 0 10px;flex-wrap:wrap">';
           avail.forEach(function(k,i){
             var on = (i===0);
-            tabBar += '<button class="i-ct-tab" data-tab="'+esc(k)+'" style="background:none;border:none;color:'+(on?'#D4AF37':'#9aa3b2')+';font-family:Cinzel,serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;cursor:pointer;border-bottom:2px solid '+(on?'#D4AF37':'transparent')+';margin-bottom:-1px">'+esc(LABELS[k]||k)+'</button>';
+            tabBar += '<button class="i-ct-tab" data-tab="'+esc(k)+'" style="background:none;border:none;color:'+(on?'#D4AF37':'#9aa3b2')+';font-family:Cinzel,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;cursor:pointer;border-bottom:2px solid '+(on?'#D4AF37':'transparent')+';margin-bottom:-1px">'+esc(_tlT(LABELS[k]||k))+'</button>';
           });
           tabBar += '</div>';
           var panes = avail.map(function(k,i){
             var t = ctEntry.traditions[k];
             var txt = (typeof t === 'string') ? t : (t.text || '');
             var srcs = (typeof t === 'object' && Array.isArray(t.sources)) ? t.sources : [];
-            var srcLine = srcs.length ? '<div style="margin-top:8px;font-size:11px;color:var(--ip-muted);font-style:italic">Sources: '+srcs.map(esc).join(' · ')+'</div>' : '';
+            // Urdu overlay: pull from cross_tradition bucket keyed by p.famous (English)
+            try {
+              if(window.GoldArkI18n && window.GoldArkI18n.tForView && p && p.famous){
+                var urText = window.GoldArkI18n.tForView('TIMELINE','cross_tradition', p.famous, k);
+                if(urText && typeof urText === 'string' && urText.trim().length > 0) txt = urText;
+              }
+            } catch(e){}
+            var srcLine = srcs.length ? '<div style="margin-top:8px;font-size:11px;color:var(--ip-muted);font-style:italic">'+_tlT('Sources')+': '+srcs.map(esc).join(' · ')+'</div>' : '';
             var paneTxt = _linkifyQuranRefs(esc(txt).replace(/\n+/g,'<br>'));
-            return '<div class="i-ct-pane" data-tab="'+esc(k)+'" style="display:'+(i===0?'block':'none')+'"><p>'+paneTxt+'</p>'+srcLine+'<div style="margin-top:6px;font-size:10px;color:var(--ip-muted)">AI-generated · independently verify</div></div>';
+            return '<div class="i-ct-pane" data-tab="'+esc(k)+'" style="display:'+(i===0?'block':'none')+'"><p>'+paneTxt+'</p>'+srcLine+'<div style="margin-top:6px;font-size:10px;color:var(--ip-muted)">'+_tlT('AI-generated · independently verify')+'</div></div>';
           }).join('');
-          return nvHtml + '<div class="i-sec i-ct-wrap"><div class="i-sl">Biography</div>'+tabBar+panes+'</div>';
+          return '<div class="i-sec i-ct-wrap"><div class="i-sl">'+_tlT('Biography')+'</div>'+tabBar+panes+'</div>' + nvHtml;
         }
       }
 
-      var _bf = p.bio_full;
+      var _bf = _tlFigBio(p) || p.bio_full;
       if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf = null;
       var _bio = _bf || (p.famous==='Prophet Muhammad' ? (p.school||'The Last Prophet') : (p.bio||p.school));
-      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">Biography</div><p>'+_linkifyQuranRefs(_bio)+'</p></div>' : '';
-      return nvHtml + legacyBio;
+      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">'+_tlT('Biography')+'</div><p>'+_linkifyQuranRefs(_bio)+'</p></div>' : '';
+      return legacyBio + nvHtml;
     })()}
-    ${p.titles?`<div class="i-sec"><div class="i-sl">Titles &amp; Epithets</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div></div>`:''}
+    ${p.titles?`<div class="i-sec"><div class="i-sl">${_tlT('Titles & Epithets')}</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(_tlT(t))}</span>`).join('')}</div></div>`:''}
     ${quranHtml}${quranChipsHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
     ${quotesHtml}
     <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--ip-brd);display:flex;gap:8px;flex-wrap:wrap;">
@@ -1574,11 +2073,11 @@ function renderInfo(p){
         transition:color .15s,border-color .15s;"
         onmouseenter="this.style.color='var(--ip-acc)';this.style.borderColor='rgba(212,175,55,.4)'"
         onmouseleave="this.style.color='var(--ip-muted)';this.style.borderColor='var(--ip-brd)'">
-        <span style="font-size:var(--fs-3);">𝒮</span> SCHOLARSHIP
+        <span style="font-size:var(--fs-3);">𝒮</span> ${_tlT('SCHOLARSHIP')}
       </a>
     </div>
-    ${p.source?`<div class="i-source">Sources: ${(()=>{
-      const s=p.source;
+    ${p.source?`<div class="i-source">${_tlT('Sources')}: ${(()=>{
+      const s=_tlFigField(p,'source')||p.source;
       if(/^https?:\/\//.test(s)){
         try{
           const u=new URL(s);
@@ -1606,22 +2105,39 @@ function renderInfo(p){
     if (imgEl) fetchWikiImage(p.source, imgEl, capEl);
   }
 
-  // Wire star button click handler
+  // Wire star button click handler — bookmarks via GoldArkAuth (no APP.Favorites dependency).
   (function() {
     var btn = document.getElementById('favToggleBtn');
-    if (!btn || !APP.Favorites) return;
+    if (!btn) return;
     btn.addEventListener('click', function() {
       var self = this;
-      requireTester('save', function() {
-        var name = self.dataset.name;
-        var nowFav = APP.Favorites.toggle(name);
-        self.textContent   = nowFav ? '★' : '☆';
-        self.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
-        self.title         = nowFav ? 'Remove from saved' : 'Save figure';
-        self.style.transform = 'scale(1.5)';
-        setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
-        _updateFavFilterBtn();
-      });
+      console.log('[bmk] star clicked, slug=', self.dataset.slug);
+      function _doToggle(){
+        var slug = self.dataset.slug;
+        var auth = window.GoldArkAuth;
+        if(!slug){ console.warn('[bmk] no slug on star button'); return; }
+        if(!auth || !auth.addBookmarkKey){ console.warn('[bmk] GoldArkAuth missing'); return; }
+        if(!auth.isSignedIn || !auth.isSignedIn()){ console.warn('[bmk] not signed in'); return; }
+        var key = 'f:' + slug;
+        var has = !!(auth.hasBookmarkKey && auth.hasBookmarkKey(key));
+        var pr = has ? auth.removeBookmarkKey(key) : auth.addBookmarkKey(key);
+        Promise.resolve(pr).then(function(){
+          var nowFav = !has;
+          self.textContent   = nowFav ? '★' : '☆';
+          self.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
+          self.title         = nowFav ? 'Remove from bookmarks' : 'Bookmark this figure';
+          self.style.transform = 'scale(1.5)';
+          setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
+          try { if(typeof window._zbBmkRefresh === 'function') window._zbBmkRefresh(); } catch(e){}
+          console.log('[bmk] toggled', key, 'now=', nowFav);
+        }).catch(function(err){ console.warn('[bmk] toggle failed', err); });
+      }
+      // Match start.js's working bookmark gate: action 'bookmark', not 'save'.
+      if(typeof window.requireTester === 'function'){
+        window.requireTester('bookmark', _doToggle);
+      } else {
+        _doToggle();
+      }
     });
   })();
 
@@ -1835,7 +2351,7 @@ function _showTimelineMethodology(){
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
   box.innerHTML='<button id="tl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">'+_tlT('How This Works')+'</h2>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Every figure arranged chronologically, grouped by century. Use the type and tradition filters to narrow the view. Click any figure to open their info card. Use the year slider to highlight who was alive at a specific moment.</p>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Figure Types (row dot colour)</h3>'
@@ -1847,10 +2363,10 @@ function _showTimelineMethodology(){
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Info Card Symbols</h3>'
     +'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#D4AF37;font-weight:700;min-width:100px;text-align:center;font-size:var(--fs-1)">\u2605</span><span style="color:#A0AEC0">Saved figure (click \u2606 to save)</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#D4AF37;font-weight:700;min-width:100px;text-align:center;font-size:var(--fs-1)">\u2726</span><span style="color:#A0AEC0">Magnum opus \u2014 the figure\u2019s most influential work</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="min-width:100px;text-align:center">\uD83D\uDCCD</span><span style="color:#A0AEC0">City or place associated with the figure</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="min-width:100px;text-align:center">\uD83C\uDF10</span><span style="color:#A0AEC0">Language, or link to an external source</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;min-width:100px;text-align:center;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;color:#D4AF37;border:1px solid rgba(212,175,55,.5);border-radius:3px;padding:1px 6px">HADITHS</span><span style="color:#A0AEC0">Narrator of hadiths in the six canonical collections \u2014 click to view</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;min-width:100px;text-align:center;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;color:#cfd2d6;border:1px solid rgba(212,175,55,.3);border-radius:3px;padding:1px 6px">2:31</span><span style="color:#A0AEC0">Quran verse referencing the figure \u2014 click to open in Quran reader</span></div></div>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Filters</h3>'
-    +'<div style="font-size:var(--fs-3);line-height:1.7;color:#ccc"><p style="margin:0 0 8px"><strong style="color:#D4AF37">TYPE</strong> \u2014 filter by figure category. <strong style="color:#D4AF37">TRADITION</strong> \u2014 filter by school or denomination.</p><p style="margin:0 0 8px"><strong style="color:#D4AF37">HAS</strong> \u2014 figures who have additional content: <em>S</em> Study room, <em>W</em> Wikipedia entry, <em>F</em> Follow journey, <em>B</em> Books, <em>T</em> Talk (AI conversation).</p><p style="margin:0">Year slider \u2014 highlight figures alive in a chosen year.</p></div>'
+    +'<div style="font-size:var(--fs-3);line-height:1.7;color:#ccc"><p style="margin:0 0 8px"><strong style="color:#D4AF37">'+_tlT('TYPE')+'</strong> \u2014 '+_tlT('TYPE_DESC')+' <strong style="color:#D4AF37">'+_tlT('TRADITION')+'</strong> \u2014 '+_tlT('TRADITION_DESC')+'</p><p style="margin:0 0 8px"><strong style="color:#D4AF37">'+_tlT('HAS')+'</strong> \u2014 '+_tlT('HAS_DESC')+' <em>S</em> '+_tlT('S_LABEL')+', <em>W</em> '+_tlT('W_LABEL')+', <em>F</em> '+_tlT('F_LABEL')+', <em>B</em> '+_tlT('B_LABEL')+', <em>T</em> '+_tlT('T_LABEL')+'.</p><p style="margin:0">'+_tlT('Year slider')+' \u2014 '+_tlT('YEAR_DESC')+'</p></div>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Biographical data from classical Islamic sources including al-Dhahabi and Ibn Sa\u2019d, cross-referenced with Wikipedia. Dates marked \u2248 are approximate. Dates marked \u25B3 are estimated for visual placement and not historically confirmed \u2014 typically legendary figures, figures with no recorded dates, or rough century estimates (e.g. \u201Cc. 800 CE\u201D). When a death year is missing, it is sometimes estimated from the birth year using an average life span. Tradition classifications are simplified.</p>'
-    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated \u00B7 independently verify</p>';
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">'+_tlT('AI-generated \u00B7 independently verify')+'</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('tl-method-close').addEventListener('click',function(){ov.remove();});
@@ -1875,13 +2391,13 @@ function _showTimelineMethodology(){
       '<div id="mainShell">' +
         '<div id="leftPanel">' +
           '<div id="tlFocusPill">' +
-            '<span class="tl-fp-hint">For focus, click on a person</span>' +
-            '<span class="tl-fp-label">FOCUS MODE</span>' +
+            '<span class="tl-fp-hint">'+_tlT('For focus, click on a person')+'</span>' +
+            '<span class="tl-fp-label">'+_tlT('FOCUS MODE')+'</span>' +
             '<button id="tlFocusClose" type="button" aria-label="Exit focus">×</button>' +
           '</div>' +
           '<div id="rowsScroll"></div>' +
           '<div id="centScrollStrip">' +
-            '<div id="centScrollNameSpacer">CENTURY</div>' +
+            '<div id="centScrollNameSpacer">'+_tlT('CENTURY')+'</div>' +
             '<span id="centLabelLeft">6th</span>' +
             '<div id="centScrollTrackWrap">' +
               '<div id="centScrollTrack">' +
@@ -1899,9 +2415,9 @@ function _showTimelineMethodology(){
           '</div>' +
         '</div>' +
         '<div id="infoPanel">' +
-          '<div id="infoHdr">INFORMATION</div>' +
+          '<div id="infoHdr">'+_tlT('INFORMATION')+'</div>' +
           '<div id="infoScroll">' +
-            '<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">Click a name to explore</div></div>' +
+            '<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">'+_tlT('Click a name to explore')+'</div></div>' +
           '</div>' +
           '<div id="infoScrollFoot"></div>' +
         '</div>' +
@@ -1914,31 +2430,31 @@ function _showTimelineMethodology(){
         '<div class="dd-wrap">' +
           '<div class="dd-panel" id="typePanel">' +
             '<div class="dd-item dd-all" onclick="ddClearAll(\'type\')">' +
-              '<div class="dd-checkbox" id="typeAllCk">✓</div><span>All Types</span>' +
+              '<div class="dd-checkbox" id="typeAllCk">✓</div><span>'+_tlT('All Types')+'</span>' +
             '</div>' +
           '</div>' +
         '</div>' +
         '<div class="dd-wrap">' +
           '<div class="dd-panel" id="tradPanel">' +
             '<div class="dd-item dd-all" onclick="ddClearAll(\'trad\')">' +
-              '<div class="dd-checkbox" id="tradAllCk">✓</div><span>All Traditions</span>' +
+              '<div class="dd-checkbox" id="tradAllCk">✓</div><span>'+_tlT('All Traditions')+'</span>' +
             '</div>' +
           '</div>' +
         '</div>' +
         '<div class="dd-wrap">' +
           '<div class="dd-panel" id="badgePanel">' +
             '<div class="dd-item" data-val="" onclick="_badgeSelect(\'\')">' +
-              '<div class="dd-checkbox"></div><span>Any</span>' +
+              '<div class="dd-checkbox"></div><span>'+_tlT('Any')+'</span>' +
             '</div>' +
-            '<div class="dd-item" data-val="S" onclick="_badgeSelect(\'S\')"><div class="dd-checkbox"></div><span>Study</span></div>' +
-            '<div class="dd-item" data-val="W" onclick="_badgeSelect(\'W\')"><div class="dd-checkbox"></div><span>Wiki</span></div>' +
-            '<div class="dd-item" data-val="F" onclick="_badgeSelect(\'F\')"><div class="dd-checkbox"></div><span>Follow Journey</span></div>' +
-            '<div class="dd-item" data-val="B" onclick="_badgeSelect(\'B\')"><div class="dd-checkbox"></div><span>Books</span></div>' +
-            '<div class="dd-item" data-val="T" onclick="_badgeSelect(\'T\')"><div class="dd-checkbox"></div><span>Talk</span></div>' +
+            '<div class="dd-item" data-val="S" onclick="_badgeSelect(\'S\')"><div class="dd-checkbox"></div><span>'+_tlT('Study')+'</span></div>' +
+            '<div class="dd-item" data-val="W" onclick="_badgeSelect(\'W\')"><div class="dd-checkbox"></div><span>'+_tlT('Wiki')+'</span></div>' +
+            '<div class="dd-item" data-val="F" onclick="_badgeSelect(\'F\')"><div class="dd-checkbox"></div><span>'+_tlT('Follow Journey')+'</span></div>' +
+            '<div class="dd-item" data-val="B" onclick="_badgeSelect(\'B\')"><div class="dd-checkbox"></div><span>'+_tlT('Books')+'</span></div>' +
+            '<div class="dd-item" data-val="T" onclick="_badgeSelect(\'T\')"><div class="dd-checkbox"></div><span>'+_tlT('Talk')+'</span></div>' +
           '</div>' +
         '</div>' +
         '<span id="filterSummary"></span>' +
-        '<button id="filterClearAll" onclick="clearAllFilters()">CLEAR ALL ✕</button>' +
+        '<button id="filterClearAll" onclick="clearAllFilters()">'+_tlT('CLEAR ALL ✕')+'</button>' +
       '</div>';
   }
 
@@ -1948,7 +2464,7 @@ function _showTimelineMethodology(){
     // Search input — has id="search"
     var searchInp = document.getElementById('search');
     if(searchInp){
-      searchInp.placeholder = 'Search figures…';
+      searchInp.placeholder = _tlT('Search figures…');
       searchInp.addEventListener('input', function(){
         searchQ = searchInp.value.trim();
         applyFilterAndFocus();
@@ -2219,6 +2735,19 @@ function _showTimelineMethodology(){
       }
       renderAll();
       _wireZoneB(zoneBEl);
+
+      // Kick off non-EN figures bucket and re-render when it lands.
+      // i18n init only preloads 'ui'; figures bucket loads silently and
+      // never fires an event, so right column stayed English on first load.
+      try {
+        var _tlLang = _tlGetLang();
+        if(_tlLang !== 'en' && window.GoldArkI18n && window.GoldArkI18n.loadBucket){
+          window.GoldArkI18n.loadBucket(_tlLang, 'figures').then(function(){
+            try { renderAll(); } catch(e){}
+            if(activePerson){ try { renderInfoWithDetails(activePerson); } catch(e){} }
+          });
+        }
+      } catch(e){}
     });
   }
 

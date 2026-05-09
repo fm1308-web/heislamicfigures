@@ -44,6 +44,69 @@ window.ThinkView = (function(){
   // ═══════════════════════════════════════════════════════════
 
 var _data=null,_booksData=null,_inited=false,_selConceptSlugs=new Set(),_tooltip=null,_uiTrans=null,_thinkLang='en';
+let _TK_CONF = 'h';   // 'h' | 'm' | 'l'
+let _TK_V2 = null;            // raw think_v2.json
+let _TK_V2_BY_SLUG = null;    // {conceptSlug: conceptObject}
+
+function _tkLoadV2(){
+  if(_TK_V2) return Promise.resolve(_TK_V2);
+  var url = (typeof dataUrl === 'function')
+    ? dataUrl('data/islamic/think_v2.json')
+    : 'data/islamic/think_v2.json';
+  return fetch(url)
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(j){
+      _TK_V2 = j || {concepts:[]};
+      _TK_V2_BY_SLUG = {};
+      (_TK_V2.concepts || []).forEach(function(c){
+        if(c && c.slug) _TK_V2_BY_SLUG[c.slug] = c;
+      });
+      return _TK_V2;
+    });
+}
+
+function _tkBandAllows(band){
+  if(_TK_CONF === 'h') return band === 'h';
+  if(_TK_CONF === 'm') return band === 'h' || band === 'm';
+  return true;
+}
+
+function _tkGetConceptItems(conceptSlug){
+  if(!_TK_V2_BY_SLUG) return {figures:[], books:[]};
+  var c = _TK_V2_BY_SLUG[conceptSlug];
+  if(!c) return {figures:[], books:[]};
+  var figs = (c.figures || []).filter(function(f){ return _tkBandAllows(f.band); });
+  var books = (c.books || []).filter(function(b){ return _tkBandAllows(b.band); });
+  return {figures: figs, books: books};
+}
+
+function _tkConfLabel(){
+  return _TK_CONF === 'h' ? 'HIGH'
+       : _TK_CONF === 'm' ? 'MED'
+       : 'LOW';
+}
+function _tkSyncConfBtn(){
+  var btn = document.getElementById('thinkConfPill');
+  if(!btn) return;
+  btn.textContent = _tkConfLabel();
+  btn.classList.remove('tk-conf-h','tk-conf-m','tk-conf-l');
+  btn.classList.add('tk-conf-' + _TK_CONF);
+}
+function _tkConfCycle(){
+  _TK_CONF = _TK_CONF === 'h' ? 'm'
+           : _TK_CONF === 'm' ? 'l'
+           : 'h';
+  _tkSyncConfBtn();
+  console.log('[think] confidence:', _TK_CONF);
+  if(typeof _tkRedrawCurrent === 'function'){
+    _tkRedrawCurrent();
+  } else if(typeof _tkRender === 'function'){
+    _tkRender();
+  } else if(typeof _renderCanvas === 'function'){
+    _renderCanvas();
+  }
+}
 var _tkSummaryCache = null;
 function _tkLoadSummaries(cb){
   if(_tkSummaryCache){ cb(_tkSummaryCache); return; }
@@ -454,6 +517,18 @@ function _showThinkMethodology(){
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Each concept shows every historical figure who engaged with that idea, plotted on a timeline by their lifespan. Figures are color-coded by the role they played.</p>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Role Definitions</h3>'
     +rb
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Confidence band</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Each concept now links to figures and books with rated evidence strength.</p>'
+    +'<ul style="color:#ccc;font-size:var(--fs-3);line-height:1.6;padding-left:20px;margin:8px 0">'
+    +'<li><b>HIGH</b> — strongest evidence. The figure or book is well-attested as central to this concept.</li>'
+    +'<li><b>MED</b> — adds figures and books with secondary or partial evidence. Wider net, softer claims.</li>'
+    +'<li><b>LOW</b> — adds figures and books with thin or contested links. Maximum breadth, weakest certainty.</li>'
+    +'</ul>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Click the HIGH / MED / LOW pill in the filter row to cycle. The pill dims as confidence loosens. Counts shown on the canvas update with each click.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Evidence text</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Hover any figure or book to see a short note explaining why it is linked to this concept. These notes are AI-generated and verified against the figure\'s profile — treat them as starting points, not final scholarship.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Concept linking</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A single figure can appear under many concepts at different confidence levels. Al-Ghazali is HIGH on tasawwuf and kalam, MED on falsafa. Walking concepts at different bands shows different views of the same figure.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
@@ -540,7 +615,9 @@ function _renderCanvas(){
   var _ciForColor=0;
   selConcepts.forEach(function(sc){
     var _cc=_TAG_PALETTE[_ciForColor%_TAG_PALETTE.length];
-    (sc.figures||[]).forEach(function(f){
+    var items = _TK_V2_BY_SLUG ? _tkGetConceptItems(sc.slug) : null;
+    var srcFigs = (items && items.figures && items.figures.length) ? items.figures : (sc.figures||[]);
+    srcFigs.forEach(function(f){
       var fc=_multiConcept?Object.assign({},f,{_cColor:_cc,_cSlug:sc.slug}):f;
       _allFigs.push(fc);
     });
@@ -720,7 +797,9 @@ function _renderCanvas(){
     _ctSvg.style.cssText='position:absolute;top:0;left:'+(STEM_X+6)+'px;width:600px;height:'+totalH+'px;pointer-events:none;z-index:0;opacity:0.7';
     var _ctIdx=0;
     selConcepts.forEach(function(sc){
-      var figSlugs=new Set();(sc.figures||[]).forEach(function(f){figSlugs.add(f.slug);});
+      var _items2 = _TK_V2_BY_SLUG ? _tkGetConceptItems(sc.slug) : null;
+      var _srcFigs2 = (_items2 && _items2.figures && _items2.figures.length) ? _items2.figures : (sc.figures||[]);
+      var figSlugs=new Set();_srcFigs2.forEach(function(f){figSlugs.add(f.slug);});
       var minY=Infinity,maxY=-Infinity;
       events.forEach(function(ev){
         if(ev.type==='fig'&&figSlugs.has(ev.f.slug)){
@@ -873,6 +952,44 @@ function _renderCanvas(){
     el.addEventListener('click',function(e){
       e.stopPropagation();
       _highlightAuthor(el.dataset.slug);
+    });
+    el.addEventListener('dblclick',function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      var slug = el.dataset.slug;
+      if(!slug) return;
+      // resolve famous English name from PEOPLE for DOM scroll fallback
+      var famous = null;
+      if(typeof PEOPLE !== 'undefined' && PEOPLE && PEOPLE.length){
+        for(var i=0;i<PEOPLE.length;i++){
+          if(PEOPLE[i].slug === slug){ famous = PEOPLE[i].famous; break; }
+        }
+      }
+      // switch to TIMELINE
+      try {
+        if(typeof window.setActiveTab === 'function'){
+          window.setActiveTab('TIMELINE');
+        } else if(typeof setView === 'function'){
+          setView('timeline');
+        }
+      } catch(err){}
+      // scroll + focus after timeline mounts
+      setTimeout(function(){
+        try {
+          if(typeof window.focusPersonInTimeline === 'function'){
+            window.focusPersonInTimeline(slug);
+            return;
+          }
+        } catch(err){}
+        if(famous){
+          var row = document.querySelector('.tc-famous[data-name="'+famous.replace(/"/g,'\\"')+'"]');
+          if(row){
+            row.scrollIntoView({block:'center', behavior:'smooth'});
+            row.classList.add('tc-pulse');
+            setTimeout(function(){ row.classList.remove('tc-pulse'); }, 1800);
+          }
+        }
+      }, 380);
     });
   });
   canvas.addEventListener('click',function(e){
@@ -1176,6 +1293,15 @@ function _gaSyncLangBtn(btn){
         lp.classList.remove('open'); lp.style.display='none';
       });
     }
+
+    var confBtn = document.getElementById('thinkConfPill');
+    if(confBtn){
+      _tkSyncConfBtn();
+      confBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        _tkConfCycle();
+      });
+    }
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -1200,8 +1326,9 @@ function _gaSyncLangBtn(btn){
           .catch(function(){ return []; })
           .then(function(arr){ window.PEOPLE = arr || []; return arr; });
     var p2 = _loadData();
+    var p3 = _tkLoadV2();
 
-    Promise.all([p1, p2]).then(function(){
+    Promise.all([p1, p2, p3]).then(function(){
       initThink().then(function(){
         _wireZoneB(zoneBEl);
       });

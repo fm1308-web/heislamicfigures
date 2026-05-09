@@ -53,7 +53,8 @@ function _computeEffectiveState(d) {
     subscriptionStatus: d.subscriptionStatus || null,
     stripeCustomerId: d.stripeCustomerId || null,
     bookmarks: Array.isArray(d.bookmarks) ? d.bookmarks : [],
-    progress: (d.progress && typeof d.progress === 'object') ? d.progress : null
+    progress: (d.progress && typeof d.progress === 'object') ? d.progress : null,
+    appLang: d.appLang || null,
   };
 }
 
@@ -77,7 +78,8 @@ async function _ensureUserDoc(firebaseUser, signInMethod) {
       stripeCustomerId: null,
       subscriptionStatus: null,
       legacyTesterEmail: legacyEmail || null,
-      bookmarks: []
+      bookmarks: [],
+      appLang: null
     });
   } else {
     await updateDoc(ref, { lastLogin: now });
@@ -239,6 +241,12 @@ const GoldArkAuth = {
       status: "pending",
       createdAt: serverTimestamp()
     });
+  },
+  async setAppLang(lang) {
+    const u = window._gaUser;
+    if (!u) return;
+    const ref = doc(db, "users", u.uid);
+    return updateDoc(ref, { appLang: lang });
   },
   async submitFeedback(data) {
     const u = window._gaUser;

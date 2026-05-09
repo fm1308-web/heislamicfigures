@@ -99,18 +99,23 @@ function _renderUserPill(){
   var tier = state.tier || 'visitor';
   var role = window.userRole || 'user';
   var dn = _displayName || 'Signed in';
+  var I = window.GoldArkI18n;
   if(tier === 'visitor'){
-    pill.textContent = 'VISITOR';
-  } else if(tier === 'subscriber'){
-    pill.textContent = dn + ' · SCHOLAR';
-  } else if(tier === 'tester' || tier === 'free'){
-    if(role === 'contributor' || role === 'admin'){
-      pill.textContent = dn + ' · ' + role.toUpperCase();
-    } else {
-      pill.textContent = dn + ' · TESTER';
-    }
+    pill.textContent = (I && I.tt) ? I.tt('Visitor') : 'VISITOR';
+    pill.setAttribute('data-i18n', 'Visitor');
   } else {
-    pill.textContent = dn;
+    pill.removeAttribute('data-i18n');
+    if(tier === 'subscriber'){
+      pill.textContent = dn + ' · SCHOLAR';
+    } else if(tier === 'tester' || tier === 'free'){
+      if(role === 'contributor' || role === 'admin'){
+        pill.textContent = dn + ' · ' + role.toUpperCase();
+      } else {
+        pill.textContent = dn + ' · TESTER';
+      }
+    } else {
+      pill.textContent = dn;
+    }
   }
 }
 
@@ -137,6 +142,7 @@ function _refreshToolsLocks(){
 window.setUserTier = setUserTier;
 window.setUserRole = setUserRole;
 window.setUserDisplayName = setUserDisplayName;
+window.setActiveTab = setActiveTab;
 
 // Zone D per-view rules: which controls are enabled
 var ZONE_D_RULES = {
@@ -285,7 +291,9 @@ var FILTER_SPECS = {
     search: false,
     filters: [
       { type:'select', label:'TYPE' },
-      { type:'select', label:'TRADITION' }
+      { type:'pill',   label:'AND', id:'eraLogicPill', cls:'era-logic-pill' },
+      { type:'select', label:'TRADITION' },
+      { type:'pill',   label:'HIGH', id:'eraConfPill', cls:'era-conf-pill era-conf-h' }
     ],
     actions: [],
     hint: 'Explore the time lines individually',
@@ -305,7 +313,11 @@ var FILTER_SPECS = {
   },
   THINK: {
     search: false,
-    filters: [ { type:'select', label:'Concept' }, { type:'select', label:'Languages' } ],
+    filters: [
+      { type:'select', label:'Concept' },
+      { type:'select', label:'Languages' },
+      { type:'pill', label:'HIGH', id:'thinkConfPill', cls:'tk-conf-pill tk-conf-h' }
+    ],
     actions: [],
     hint: 'Follow a concept through history',
     hintInRow2: true,
@@ -505,7 +517,9 @@ function makeTab(name){
   var b = document.createElement('button');
   b.className = 'tab-btn';
   b.dataset.tab = name;
-  b.textContent = name;
+  var _I = window.GoldArkI18n;
+  b.textContent = (_I && _I.tt) ? _I.tt(name) : name;
+  b.setAttribute('data-i18n', name);
   b.addEventListener('click', function(){
     _enterFocusedMode();
     setActiveTab(name);
@@ -588,7 +602,8 @@ function renderZoneB(viewName){
     sInp.type = 'text';
     sInp.id = 'search';
     sInp.className = 'zb-search-input';
-    sInp.placeholder = 'Search…';
+    sInp.placeholder = (window.GoldArkI18n && window.GoldArkI18n.tt) ? window.GoldArkI18n.tt('Search…') : 'Search…';
+    sInp.setAttribute('data-i18n-placeholder', 'Search…');
     sLbl.appendChild(sInp);
     bindActiveToggle(sLbl, sInp);
     searchSlot.appendChild(sLbl);
@@ -609,7 +624,7 @@ function renderZoneB(viewName){
   if(viewName === 'TIMELINE' || spec.slider){
     sliderSlot.innerHTML =
       '<div id="hdrYearControls">' +
-        '<span id="yearQuestion">WHO WAS ALIVE IN</span>' +
+        '<span id="yearQuestion" data-i18n="WHO WAS ALIVE IN">WHO WAS ALIVE IN</span>' +
         '<span class="hdr-range-cap">500</span>' +
         '<div id="sliderOuter">' +
           '<input id="sliderInput" type="range" min="500" max="2000" value="800" step="5">' +
@@ -643,7 +658,8 @@ function renderZoneB(viewName){
   if(spec.hint && !spec.hintInRow2){
     var hintSlot = document.createElement('span');
     hintSlot.className = 'zb-slot-hint';
-    hintSlot.textContent = spec.hint;
+    hintSlot.textContent = (window.GoldArkI18n && window.GoldArkI18n.tt) ? window.GoldArkI18n.tt(spec.hint) : spec.hint;
+    hintSlot.setAttribute('data-i18n', spec.hint);
     row1.appendChild(hintSlot);
   }
 
@@ -653,10 +669,40 @@ function renderZoneB(viewName){
   if(viewName === 'TIMELINE'){
     var sBtn = document.createElement('button');
     sBtn.className = 'zb-pill';
-    sBtn.id = 'zbSavedPill';
+    sBtn.id = 'zbBookmarksPill';
     sBtn.type = 'button';
-    sBtn.textContent = 'SAVED';
+    // NO data-i18n on the button itself — that would wipe icon + count on retranslate.
+    // Structured: bookmark flag SVG + i18n word span + separate count span.
+    var _zbI = window.GoldArkI18n;
+    var _zbLbl = (_zbI && _zbI.tt) ? _zbI.tt('BOOKMARKS') : 'BOOKMARKS';
+    sBtn.innerHTML =
+      '<svg width="11" height="14" viewBox="0 0 12 16" fill="currentColor" stroke="currentColor" stroke-width="1.4" style="vertical-align:-2px;margin-right:5px"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>'
+      + '<span data-i18n="BOOKMARKS">' + _zbLbl + '</span>'
+      + ' <span id="zbBmkCount"></span>';
+    sBtn.addEventListener('click', function(){
+      function _open(){ try { window._stBmkPopup(); } catch(e){} }
+      if(typeof window._stBmkPopup === 'function'){ _open(); return; }
+      var _s = document.createElement('script');
+      _s.src = 'start.js?v=' + Date.now();
+      _s.onload = function(){ if(typeof window._stBmkPopup === 'function') _open(); };
+      document.head.appendChild(_s);
+    });
     savedSlot.appendChild(sBtn);
+    // Refresh only the count span — survives DOM-walker retranslation.
+    window._zbBmkRefresh = function(){
+      var c = document.getElementById('zbBmkCount');
+      if(!c) return;
+      var n = (window.GoldArkAuth && window.GoldArkAuth.getBookmarks) ? window.GoldArkAuth.getBookmarks().length : 0;
+      c.textContent = n ? '(' + n + ')' : '';
+    };
+    window._zbBmkRefresh();
+    // Subscribe ONCE to auth state. Fires when Firestore loads user doc and on every bookmark change.
+    if(!window._zbBmkAuthBound && window.GoldArkAuth && window.GoldArkAuth.onStateChange){
+      window._zbBmkAuthBound = true;
+      window.GoldArkAuth.onStateChange(function(){
+        try { if(typeof window._zbBmkRefresh === 'function') window._zbBmkRefresh(); } catch(e){}
+      });
+    }
   } else if(viewName === 'FOLLOW'){
     savedSlot.innerHTML =
       '<div id="fw-grades-inline">' +
@@ -682,7 +728,8 @@ function renderZoneB(viewName){
     htw.className = 'zb-pill zb-slot-htw';
     htw.id = 'zbHtwPill';
     htw.type = 'button';
-    htw.textContent = 'How This Works';
+    htw.textContent = (window.GoldArkI18n && window.GoldArkI18n.tt) ? window.GoldArkI18n.tt('How This Works') : 'How This Works';
+    htw.setAttribute('data-i18n', 'How This Works');
     htw.addEventListener('click', function(){
       var api = _activeViewApi;
       if(api && typeof api.showHtw === 'function') api.showHtw();
@@ -712,7 +759,8 @@ function renderZoneB(viewName){
     if(hintForRow2){
       var hintR2 = document.createElement('span');
       hintR2.className = 'zb-slot-hint';
-      hintR2.textContent = hintForRow2;
+      hintR2.textContent = (window.GoldArkI18n && window.GoldArkI18n.tt) ? window.GoldArkI18n.tt(hintForRow2) : hintForRow2;
+      hintR2.setAttribute('data-i18n', hintForRow2);
       row2.appendChild(hintR2);
     }
     actionsForRow2.forEach(function(a){
@@ -737,10 +785,18 @@ function renderZoneB(viewName){
       '</div>';
   }
   zb.appendChild(row2);
+  // Re-translate any data-i18n nodes we just built — needed because Zone B
+  // is rebuilt on every tab switch, and the i18n-ready/lang-changed events
+  // already fired earlier in the page lifetime.
+  if(window.GoldArkI18n && window.GoldArkI18n.applyDomTranslations){
+    window.GoldArkI18n.applyDomTranslations();
+  }
 }
 
 function makeZBItem(item){
   var el;
+  var I = window.GoldArkI18n;
+  var tt = (I && I.tt) ? I.tt : function(s){ return s; };
   switch(item.type){
     case 'search':
       el = document.createElement('label');
@@ -749,7 +805,9 @@ function makeZBItem(item){
       var inp = document.createElement('input');
       inp.type = 'text';
       inp.className = 'zb-search-input';
-      inp.placeholder = item.placeholder || 'Search…';
+      var phr = item.placeholder || 'Search…';
+      inp.placeholder = tt(phr);
+      inp.setAttribute('data-i18n-placeholder', phr);
       el.appendChild(inp);
       bindActiveToggle(el, inp);
       return el;
@@ -757,7 +815,9 @@ function makeZBItem(item){
       el = document.createElement('button');
       el.className = 'zb-select';
       el.type = 'button';
-      el.textContent = item.label || 'Select';
+      var slbl = item.label || 'Select';
+      el.textContent = tt(slbl);
+      el.setAttribute('data-i18n', slbl);
       if(item.width) el.style.width = item.width + 'px';
       bindActiveToggle(el);
       return el;
@@ -765,7 +825,11 @@ function makeZBItem(item){
       el = document.createElement('button');
       el.className = 'zb-pill';
       el.type = 'button';
-      el.textContent = item.label || 'Pill';
+      var plbl = item.label || 'Pill';
+      el.textContent = tt(plbl);
+      el.setAttribute('data-i18n', plbl);
+      if(item.id)  el.id = item.id;
+      if(item.cls) el.className += ' ' + item.cls;
       bindActiveToggle(el);
       return el;
     case 'iconbtn':
@@ -1129,6 +1193,119 @@ function bindTools(){
   });
 }
 
+// ---------- Language switcher ----------
+function _ensureFontLoaded(font){
+  if(!font) return;
+  var id = 'gafont-' + font.replace(/\s+/g, '-').toLowerCase();
+  if(document.getElementById(id)) return;
+  var link = document.createElement('link');
+  link.id = id;
+  link.rel = 'stylesheet';
+  var fam = font.replace(/\s+/g, '+');
+  link.href = 'https://fonts.googleapis.com/css2?family=' + fam +
+              ':wght@400;600;700&display=swap';
+  document.head.appendChild(link);
+}
+
+function _applyLangDirAndFont(code){
+  var I = window.GoldArkI18n;
+  if(!I) return;
+  var langs = I.getAvailableLangs();
+  var entry = null;
+  for(var i=0;i<langs.length;i++){ if(langs[i].code === code){ entry = langs[i]; break; } }
+  if(!entry) entry = { code: code, dir: 'ltr', font: null };
+  var docEl = document.documentElement;
+  docEl.setAttribute('dir', entry.dir || 'ltr');
+  docEl.setAttribute('lang', code);
+  // Replace any prior app-lang-* class
+  var cls = (docEl.className || '').split(/\s+/).filter(function(c){ return c && !/^app-lang-/.test(c); });
+  cls.push('app-lang-' + code);
+  docEl.className = cls.join(' ');
+  _ensureFontLoaded(entry.font);
+}
+
+function _renderLangDropdown(){
+  var I = window.GoldArkI18n; if(!I) return;
+  var dd = document.getElementById('langDropdown'); if(!dd) return;
+  var current = I.getLang();
+  var langs = I.getAvailableLangs();
+  var html = '';
+  for(var i=0;i<langs.length;i++){
+    var L = langs[i];
+    var active = (L.code === current);
+    html += '<button class="menu-item' + (active ? ' is-active' : '') +
+            '" data-lang="' + L.code + '">' +
+            '<span class="lang-name">' + (L.name || L.code) + '</span>' +
+            '<span class="lang-check">' + (active ? '✓' : '') + '</span>' +
+            '</button>';
+  }
+  dd.innerHTML = html;
+  dd.querySelectorAll('.menu-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      dd.hidden = true;
+      var code = item.getAttribute('data-lang');
+      if(code) I.setLang(code);
+    });
+  });
+}
+
+function _renderLangBtnLabel(code){
+  var btn = document.getElementById('langBtn');
+  if(btn) btn.textContent = '🌐 ' + (code || 'EN').toUpperCase();
+}
+
+function _renderEntryLangPills(){
+  var I = window.GoldArkI18n; if(!I) return;
+  var box = document.getElementById('entryLangOptions'); if(!box) return;
+  var current = I.getLang();
+  var langs = I.getAvailableLangs();
+  var html = '';
+  for(var i=0;i<langs.length;i++){
+    var L = langs[i];
+    var active = (L.code === current);
+    html += '<button class="entry-lang-pill' + (active ? ' is-active' : '') +
+            '" data-lang="' + L.code + '">' + (L.name || L.code) + '</button>';
+  }
+  box.innerHTML = html;
+  box.querySelectorAll('.entry-lang-pill').forEach(function(item){
+    item.addEventListener('click', function(){
+      var code = item.getAttribute('data-lang');
+      if(code) I.setLang(code);
+    });
+  });
+}
+
+function bindLanguage(){
+  var btn = document.getElementById('langBtn');
+  var dd  = document.getElementById('langDropdown');
+  if(btn && dd){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      dd.hidden = !dd.hidden;
+      var td = document.getElementById('toolsDropdown'); if(td) td.hidden = true;
+      var ud = document.getElementById('userDropdown'); if(ud) ud.hidden = true;
+    });
+    document.addEventListener('click', function(e){
+      if(!dd.hidden && !dd.contains(e.target) && e.target !== btn) dd.hidden = true;
+    });
+  }
+
+  function _syncAll(){
+    var code = (window.GoldArkI18n && window.GoldArkI18n.getLang()) || 'en';
+    _renderLangBtnLabel(code);
+    _applyLangDirAndFont(code);
+    _renderLangDropdown();
+    _renderEntryLangPills();
+  }
+
+  if(window.GoldArkI18n && window.GoldArkI18n.getAvailableLangs().length > 1){
+    _syncAll();
+  } else {
+    document.addEventListener('gold-ark-i18n-ready', _syncAll, { once: true });
+  }
+  document.addEventListener('gold-ark-lang-changed', _syncAll);
+}
+
 // ---------- Modals ----------
 function openModal(title, body){
   document.getElementById('modalTitle').textContent = title;
@@ -1290,6 +1467,21 @@ document.addEventListener('DOMContentLoaded', function(){
   bindEntry();
   bindUserPill();
   bindTools();
+  bindLanguage();
+  document.addEventListener('gold-ark-lang-changed', function(){
+    _renderUserPill();
+    // DO NOT rebuild Zone B — it destroys buttons that views (e.g. start.js)
+    // bind their click handlers to. The data-i18n walker translates labels
+    // in place without touching the DOM nodes.
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        if (typeof _centerActiveTab === 'function') _centerActiveTab();
+      });
+    });
+    if (window.GoldArkI18n && typeof window.GoldArkI18n.applyDomTranslations === 'function'){
+      window.GoldArkI18n.applyDomTranslations();
+    }
+  });
   setUserTier('visitor');
   setUserRole('user');
   setUserDisplayName(null);

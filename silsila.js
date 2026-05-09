@@ -18,19 +18,45 @@ window.SilsilaView = (function(){
   function pushFigureHistory(){}
   // stub: openStudyRoom
   function openStudyRoom(){}
-  // stub: jumpTo — silsila card "teacher/student" links: open silsila card for that person if found
+  // silsila card teacher/student links: open silsila card for that person.
+  // window.jumpTo override is set in mount() and restored in unmount() so timeline's
+  // jumpTo (registered at timeline.js IIFE load) survives across view switches.
   function jumpTo(name){
     var p = PEOPLE.find(function(pp){ return pp.famous === name; });
     if(p){ activePerson = p; openSilsilaCard(p, window.innerWidth/2, window.innerHeight/2); }
   }
-  window.jumpTo = jumpTo;
-  // stub: focusPersonInTimeline — would switch to TIMELINE in full app; here just close card
+  // focusPersonInTimeline — switch to TIMELINE and scroll the figure's row into view.
+  // Used by tooltip "→ TIMELINE" buttons inside silsila. Does NOT register on window —
+  // timeline.js owns the global. Internal silsila calls resolve to this via scope chain.
   function focusPersonInTimeline(name){
     closeSilsilaCard();
-    // In sandbox: log only. Real shell could route via setActiveTab('TIMELINE').
-    console.log('[silsila] focusPersonInTimeline (stub):', name);
+    try { if(typeof window.setActiveTab === 'function') window.setActiveTab('TIMELINE'); } catch(e){}
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      var nameEls = document.querySelectorAll('.tc-famous');
+      for(var i = 0; i < nameEls.length; i++){
+        if(nameEls[i].getAttribute('data-name') === name){
+          var row = nameEls[i].closest('.tl-row');
+          if(row){
+            try {
+              row.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+              row.classList.remove('focus-pulse');
+              void row.offsetWidth;
+              row.classList.add('focus-pulse');
+              setTimeout(function(){ row.classList.remove('focus-pulse'); }, 1600);
+              if(typeof window.selectRow === 'function'){
+                var idx = parseInt(row.getAttribute('data-idx'), 10);
+                if(!isNaN(idx)) window.selectRow(idx);
+              }
+            } catch(e){}
+            clearInterval(iv); return;
+          }
+        }
+      }
+      if(tries > 60){ clearInterval(iv); }
+    }, 100);
   }
-  window.focusPersonInTimeline = focusPersonInTimeline;
   // stub: toggleFavFilter / clearAllFilters
   function toggleFavFilter(){
     // stub: ★ SAVED button — favourites not wired in sandbox
@@ -69,6 +95,81 @@ window.SilsilaView = (function(){
   var SL_EDGES = [];
   var SL_ALL_LANES = [];
   var SL_LANES_KEY = '';
+
+  // ── i18n dictionary + helpers ──
+  var _SL_UR = {
+    // SILSILA-specific only - common terms come from i18n.js UI_FALLBACK via GoldArkI18n.tt()
+    'TRADITION / CHAIN':'روایت / سلسلہ',
+    "Prophets' Lineage":'انبیاء کا سلسلہ',
+    'Prophetic Lineage':'انبیاء کا سلسلہ',
+    '→ TIMELINE':'← ٹائم لائن',
+    'click name to open in timeline →':'نام پر کلک کریں ٹائم لائن کھولنے کے لیے ←',
+    'Click to view in Timeline':'ٹائم لائن میں دیکھنے کے لیے کلک کریں',
+    'Chains of knowledge transmission — who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.':'علم کی منتقلی کے سلسلے — صدیوں کے دوران کس نے کس کو سکھایا۔ رنگ مختلف فکری روایات کی نمائندگی کرتے ہیں۔ یوں اسلامی علم محفوظ رہا: شخص سے شخص، صدی در صدی۔',
+    'Arabic for "chain" — unbroken teacher-to-student transmission':'عربی میں "زنجیر" — استاد سے شاگرد تک غیر منقطع منتقلی',
+    'Each tradition (Sunni, Shia, Sufi, etc.) has its own color':'ہر روایت (سنی، شیعہ، صوفی وغیرہ) کا اپنا رنگ ہے',
+    'A documented teacher → student relationship':'ایک مستند استاد ← شاگرد رشتہ',
+    'Teacher–student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.':'استاد-شاگرد کے رشتے کلاسیکی سوانحی لغات سے۔ تمام کڑیاں مستند نہیں۔ کچھ شخصیات نے سینکڑوں کو سکھایا؛ صرف اہم ترین شامل ہیں۔'
+  };
+  function _slGetLang(){
+    try{ return (window.GoldArkI18n && window.GoldArkI18n.getLang && window.GoldArkI18n.getLang()) || 'en'; }
+    catch(e){ return 'en'; }
+  }
+  function _slT(en){
+    if(!en) return en;
+    var lang = _slGetLang();
+    if(lang === 'en') return en;
+    if(lang === 'ur' && _SL_UR[en]) return _SL_UR[en];
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tt){
+        var v = window.GoldArkI18n.tt(en);
+        if(v && v !== en) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _slFigName(p){
+    if(!p) return '';
+    if(_slGetLang() !== 'ur') return p.famous || '';
+    try{
+      var v = window.GoldArkI18n && window.GoldArkI18n.tForView
+        ? window.GoldArkI18n.tForView('SILSILA','figures',p.slug,'famous') : null;
+      return v || p.famous || '';
+    }catch(e){ return p.famous || ''; }
+  }
+  function _slFigSubtitle(p){
+    if(!p) return '';
+    if(_slGetLang() !== 'ur') return p.primaryTitle || p.tradition || '';
+    try{
+      var v = window.GoldArkI18n && window.GoldArkI18n.tForView
+        ? window.GoldArkI18n.tForView('SILSILA','figures',p.slug,'primaryTitle') : null;
+      return v || _slT(p.tradition || '') || p.primaryTitle || '';
+    }catch(e){ return p.primaryTitle || p.tradition || ''; }
+  }
+  function _slFigField(p, field){
+    if(!p) return '';
+    if(_slGetLang() !== 'ur') return p[field] || '';
+    try{
+      var v = window.GoldArkI18n && window.GoldArkI18n.tForView
+        ? window.GoldArkI18n.tForView('SILSILA','figures',p.slug,field) : null;
+      return v || p[field] || '';
+    }catch(e){ return p[field] || ''; }
+  }
+  function _slDateStr(p, field){
+    var raw = (p && p[field]) ? p[field] : '';
+    if(!raw) return '—';
+    if(_slGetLang() !== 'ur') return raw;
+    var v = _slFigField(p, field);
+    if(v && v !== raw) return v;
+    return raw
+      .replace(/\bBCE\b/g, _slT('BCE'))
+      .replace(/\bCE\b/g, _slT('CE'))
+      .replace(/\(estimated from event participation\)/gi, '(واقعہ میں شرکت سے اندازہ)')
+      .replace(/\(estimated\)/gi, '(اندازہ)')
+      .replace(/\blegendary\b/gi, 'روایتی')
+      .replace(/\bunknown\b/gi, 'نامعلوم')
+      .replace(/\bc\.\s*/gi, 'تقریباً ');
+  }
 
   // ═══════════════════════════════════════════════════════════
   // CONSTANTS (lifted; lineage chain shared with TIMELINE)
@@ -305,7 +406,7 @@ function renderSilsila(){
   const PL='Prophetic Lineage';
   const LANES=_getActiveSLLanes();
   const _slYr = (typeof activeYear !== 'undefined' && activeYear !== null) ? activeYear : null;
-  const newKey=LANES.join('\x00') + '|' + (_slYr !== null ? _slYr : 'all');
+  const newKey=LANES.join('\x00') + '|' + (_slYr !== null ? _slYr : 'all') + '|' + _slGetLang();
 
   if(document.getElementById('silsilaSVG')){
     if(newKey===SL_LANES_KEY){updateSilsilaHighlight();return;}
@@ -328,7 +429,7 @@ function renderSilsila(){
   const PRE_W=320;
   const _slMain = document.getElementById('silsilaMain');
   const _containerW = (_slMain && _slMain.clientWidth) ? _slMain.clientWidth : 1500;
-  const MAIN_W = Math.max(700, _containerW - PRE_W - 8);
+  const MAIN_W = Math.max(400, _containerW - PRE_W - 8);
   const TW = PRE_W + MAIN_W;
   const NR=6, PT=12, PB=10;
   const NODE_DIAM=NR*2+6;
@@ -490,8 +591,14 @@ function renderSilsila(){
     const hasFree=p.books&&p.books.some(b=>b.url&&b.url.startsWith('http'));
     const r=hasFree?NR:NR-1;
     P.push(`<circle class="sl-node" data-name="${esc(p.famous)}" cx="${nd.x.toFixed(1)}" cy="${nd.y.toFixed(1)}" r="${r}" fill="${nd.col}" fill-opacity="0.85" stroke="${nd.col}" stroke-width="1.4" stroke-opacity="0.9"/>`);
-    const _sn=p.famous.length>14?p.famous.slice(0,13)+'…':p.famous;
-    P.push(`<text class="sl-node-text" data-name="${esc(p.famous)}" x="${(nd.x+r+3).toFixed(1)}" y="${(nd.y+3.5).toFixed(1)}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
+    const _isUR = (typeof _slGetLang==='function' && _slGetLang()==='ur');
+    const _fullName = _slFigName(p);
+    const _sn = _isUR ? (_fullName.length>22?_fullName.slice(0,21)+'…':_fullName)
+                      : (_fullName.length>14?_fullName.slice(0,13)+'…':_fullName);
+    const _tx = _isUR ? (nd.x - r - 10).toFixed(1) : (nd.x + r + 3).toFixed(1);
+    const _anchor = 'start';
+    const _dir = _isUR ? 'rtl' : 'ltr';
+    P.push(`<text class="sl-node-text" data-name="${esc(p.famous)}" x="${_tx}" y="${(nd.y+3.5).toFixed(1)}" text-anchor="${_anchor}" direction="${_dir}" font-size="11" font-family="Cinzel,serif" font-weight="500" fill="${nd.col}" fill-opacity="0.85" pointer-events="none">${esc(_sn)}</text>`);
   });
 
   {
@@ -547,10 +654,11 @@ function renderSilsila(){
       }
       const labelY=nd.y+r+11;
       let shortName;
-      if(isPM) shortName='Prophet Muhammad ☆';
-      else if(isBig) shortName=p.famous.split(' ')[0];
+      const _dn=_slFigName(p);
+      if(isPM) shortName=_dn+' ☆';
+      else if(isBig) shortName=_dn.split(' ')[0];
       else{
-        const parts=p.famous.split(' ');
+        const parts=_dn.split(' ');
         const cutIdx=parts.findIndex((w,i)=>i>0&&(w==='ibn'||w==='bin'||w==='bint'));
         shortName=(cutIdx>0?parts.slice(0,cutIdx):parts.slice(0,2)).join(' ');
         if(shortName.length>14) shortName=shortName.slice(0,13)+'…';
@@ -566,11 +674,11 @@ function renderSilsila(){
   // In the sandbox shell, ANIMATE lives in Zone D and HTW lives in Zone B. Skip that injection.)
 
   const inner=document.getElementById('silsilaLanesInner');
-  let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,.16)">TRADITION / CHAIN</div>`;
+  let lh=`<div style="height:${PT}px;display:flex;align-items:flex-end;padding:0 12px 5px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,.16)">${_slT('TRADITION / CHAIN')}</div>`;
   if(!_SL_ACTIVE){
     lh+=`<div class="sl-lane-label" data-lane="${esc(PL)}" style="height:${LH_LIN}px;background:#222D3A">
       <span class="sl-lane-dot" style="background:#D4AF37;box-shadow:0 0 6px rgba(212,175,55,.6)"></span>
-      <span class="sl-lane-name" style="color:#D4AF37">${SL_LIN_OPEN?'◉':'⭕'} Prophets' Lineage</span>
+      <span class="sl-lane-name" style="color:#D4AF37">${SL_LIN_OPEN?'◉':'⭕'} ${_slT("Prophets' Lineage")}</span>
       <span class="sl-lane-count">${linMembers.length}</span>
     </div>`;
   } else {
@@ -586,7 +694,7 @@ function renderSilsila(){
     } else {
       lh+=`<div class="sl-lane-label" data-lane="${esc(lane)}" style="height:${laneH(li)}px">
         <span class="sl-lane-dot" style="background:${col};box-shadow:0 0 5px ${col}55"></span>
-        <span class="sl-lane-name" style="color:${col}">${esc(lane)}</span>
+        <span class="sl-lane-name" style="color:${col}">${esc(_slT(lane))}</span>
         <span class="sl-lane-count">${count}</span>
       </div>`;
     }
@@ -638,14 +746,14 @@ function renderSilsila(){
   function pinTooltip(p, x, y){
     const col=SL_NM[p.famous]?.col||'#A0AEC0';
     const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
+    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} ${_slT('BCE')}`:`${_rd} ${_slT('CE')}`):_slDateStr(p,'dob_s');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
-      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(p.famous)}<span style="font-size:var(--fs-3);opacity:.5;margin-left:5px">→ TIMELINE</span></div>`+
-      `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:${col};font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-      `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px;cursor:pointer;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:5px;margin-bottom:6px" id="tt-name-link" data-name="${esc(p.famous)}">${esc(_slFigName(p))}<span style="font-size:var(--fs-3);opacity:.5;margin-left:5px">${_slT('→ TIMELINE')}</span></div>`+
+      `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:${col};font-style:normal;margin-bottom:4px">${esc(_slFigSubtitle(p))}</div>`+
+      `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(_slT(p.tradition))}`:''}</div>`+
       (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
-        (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
+        (nT?`↑ ${nT} ${nT>1?_slT('teachers'):_slT('teacher')}  `:'')+( nS?`↓ ${nS} ${nS>1?_slT('students'):_slT('student')}`:'')+`</div>`:'');
     tt.style.pointerEvents='all';
     tt.style.cursor='default';
     tt.style.display='block';
@@ -671,14 +779,14 @@ function renderSilsila(){
     if(ttPinned) return;
     const col=SL_NM[p.famous]?.col||'#A0AEC0';
     const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
+    const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} ${_slT('BCE')}`:`${_rd} ${_slT('CE')}`):_slDateStr(p,'dob_s');
     const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
     tt.innerHTML=
-      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:var(--fs-3)">${esc(p.famous)}</div>`+
-      `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:${col};font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-      `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+      `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;margin-bottom:3px;font-size:var(--fs-3)">${esc(_slFigName(p))}</div>`+
+      `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:${col};font-style:normal;margin-bottom:4px">${esc(_slFigSubtitle(p))}</div>`+
+      `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:${col};opacity:0.7">${dob_s}${p.tradition?` · ${esc(_slT(p.tradition))}`:''}</div>`+
       (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
-        (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
+        (nT?`↑ ${nT} ${nT>1?_slT('teachers'):_slT('teacher')}  `:'')+( nS?`↓ ${nS} ${nS>1?_slT('students'):_slT('student')}`:'')+`</div>`:'');
     tt.style.pointerEvents='none';
     tt.style.display='block';
   }
@@ -731,15 +839,15 @@ function renderSilsila(){
     if(_silsilaHighlighted===name){
       const col=SL_NM[p.famous]?.col||'#A0AEC0';
       const _rd=(p.dob_academic!=null)?p.dob_academic:null;
-      const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} BCE`:`${_rd} CE`):(p.dob_s||'—');
+      const dob_s=(_rd!=null)?(_rd<0?`${Math.abs(_rd)} ${_slT('BCE')}`:`${_rd} ${_slT('CE')}`):_slDateStr(p,'dob_s');
       const nT=(p.teachers||[]).length, nS=(SL_STUDENTS[p.famous]||[]).length;
       tt.innerHTML=
-        `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px">${esc(p.famous)}</div>`+
-        `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:var(--text2);font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-        `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+        `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px">${esc(_slFigName(p))}</div>`+
+        `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:var(--text2);font-style:normal;margin-bottom:4px">${esc(_slFigSubtitle(p))}</div>`+
+        `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(_slT(p.tradition))}`:''}</div>`+
         (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
-          (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'')+
-        `<button id="sl-tt-timeline-btn" style="background:var(--accent);color:var(--bg);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:0.1em;padding:4px 12px;border:none;border-radius:2px;cursor:pointer;margin-top:6px;display:block">TIMELINE</button>`;
+          (nT?`↑ ${nT} ${nT>1?_slT('teachers'):_slT('teacher')}  `:'')+( nS?`↓ ${nS} ${nS>1?_slT('students'):_slT('student')}`:'')+`</div>`:'')+
+        `<button id="sl-tt-timeline-btn" style="background:var(--accent);color:var(--bg);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:0.1em;padding:4px 12px;border:none;border-radius:2px;cursor:pointer;margin-top:6px;display:block">${_slT('TIMELINE')}</button>`;
       tt.style.pointerEvents='all';
       tt.style.display='block';
       ttPinned=true;
@@ -799,7 +907,7 @@ function updateSilsilaHighlight(){
   const svg=document.getElementById('silsilaSVG'); if(!svg) return;
 
   const _slYr2 = (typeof activeYear !== 'undefined' && activeYear !== null) ? activeYear : null;
-  const newKey=_getActiveSLLanes().join('\x00') + '|' + (_slYr2 !== null ? _slYr2 : 'all');
+  const newKey=_getActiveSLLanes().join('\x00') + '|' + (_slYr2 !== null ? _slYr2 : 'all') + '|' + _slGetLang();
   if(newKey!==SL_LANES_KEY){
     renderSilsila();
     return;
@@ -866,14 +974,68 @@ function openSilsilaCard(p, cx, cy){
   const card=document.getElementById('silsilaCard');
   if(!card) return;
   const col=isLineageMember(p)?'#D4AF37':(TRAD_COLORS[p.tradition]||'#A0AEC0');
-  document.getElementById('scCardName').textContent=p.famous;
-  document.getElementById('scCardName').style.color=col;
-  document.getElementById('scCardSub').textContent=p.primaryTitle||p.tradition||'';
+  var _nameEl=document.getElementById('scCardName');
+  _nameEl.textContent=_slFigName(p);
+  _nameEl.style.color=col;
+  _nameEl.style.cursor='pointer';
+  _nameEl.setAttribute('title', _slT('Click to view in Timeline'));
+  _nameEl.onclick=function(ev){
+    if(ev){ try{ ev.stopPropagation(); ev.preventDefault(); }catch(e){} }
+    var fam = p.famous;
+    closeSilsilaCard();
+
+    // Switch to TIMELINE — shell.js synchronously runs silsila.unmount + timeline.mount.
+    try { if(typeof window.setActiveTab === 'function') window.setActiveTab('TIMELINE'); } catch(e){}
+
+    // Poll up to 6s for either timeline's real focusPersonInTimeline OR for
+    // timeline rows to appear in the DOM (data-name on .tc-famous = original English famous).
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+
+      // Try timeline's real focusPersonInTimeline (centers century, scrolls, pulses)
+      var fpit = window.focusPersonInTimeline;
+      if(typeof fpit === 'function'){
+        var src = ''; try { src = fpit.toString(); } catch(e){}
+        if(src.indexOf('renderAll') !== -1){
+          try { fpit(fam); } catch(e){}
+          clearInterval(iv); return;
+        }
+      }
+
+      // Direct DOM fallback — scroll the row ourselves, no globals needed.
+      var nameEls = document.querySelectorAll('.tc-famous');
+      for(var i = 0; i < nameEls.length; i++){
+        if(nameEls[i].getAttribute('data-name') === fam){
+          var row = nameEls[i].closest('.tl-row');
+          if(row){
+            try {
+              row.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+              row.classList.remove('focus-pulse');
+              void row.offsetWidth;
+              row.classList.add('focus-pulse');
+              setTimeout(function(){ row.classList.remove('focus-pulse'); }, 1600);
+              if(typeof window.selectRow === 'function'){
+                var idx = parseInt(row.getAttribute('data-idx'), 10);
+                if(!isNaN(idx)) window.selectRow(idx);
+              }
+            } catch(e){}
+            clearInterval(iv); return;
+          }
+        }
+      }
+
+      if(tries > 60){ clearInterval(iv); }
+    }, 100);
+  };
+  var _hint=document.getElementById('scCardNameHint');
+  if(_hint) _hint.textContent=_slT('click name to open in timeline →');
+  document.getElementById('scCardSub').textContent=_slFigSubtitle(p);
 
   const _rDob=(p.dob_academic!=null)?p.dob_academic:null;
   const _rDod=(p.dod_academic!=null)?p.dod_academic:null;
-  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} BCE`:`${_rDob} CE`):(p.dob_s||'—');
-  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} BCE`:`${_rDod} CE`):(p.dod_s||'—');
+  const dob_s=(_rDob!=null)?(_rDob<0?`${Math.abs(_rDob)} ${_slT('BCE')}`:`${_rDob} ${_slT('CE')}`):_slDateStr(p,'dob_s');
+  const dod_s=(_rDod!=null)?(_rDod<0?`${Math.abs(_rDod)} ${_slT('BCE')}`:`${_rDod} ${_slT('CE')}`):_slDateStr(p,'dod_s');
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
 
   let html=`
@@ -882,37 +1044,37 @@ function openSilsilaCard(p, cx, cy){
       <img id="scWikiImg" style="display:none;width:100%;max-width:90px;border-radius:4px;border:1px solid var(--ip-brd);object-fit:cover"
         alt="${esc(p.famous)}"
         onerror="this.style.display='none';document.getElementById('scWikiImgCaption').style.display='none';" />
-      <div id="scWikiImgCaption" style="display:none;font-size:var(--fs-3);color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:3px">via Wikipedia</div>
+      <div id="scWikiImgCaption" style="display:none;font-size:var(--fs-3);color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:3px">${_slT('via Wikipedia')}</div>
     </div>` : ''}
     <div class="sc-tags">
-      <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(p.type||'')}</span>
-      <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(p.tradition||'')}</span>
-      ${p.city?`<span class="sc-tag">📍 ${esc(p.city)}</span>`:''}
+      <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(_slT(p.type||''))}</span>
+      <span class="sc-tag hi" style="color:${col};border-color:${col}55">${esc(_slT(p.tradition||''))}</span>
+      ${p.city?`<span class="sc-tag">📍 ${esc(_slT(p.city))}</span>`:''}
     </div>
     ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="sl-wd-occupations">'+chips.map(l=>'<span class="sl-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
     <div class="sc-dates">
-      <div class="sc-di"><span class="dl">BORN</span><span class="dv" style="color:${col}">${dob_s}</span></div>
-      <div class="sc-di"><span class="dl">DIED</span><span class="dv" style="color:${col}">${dod_s}</span></div>
+      <div class="sc-di"><span class="dl">${_slT('BORN')}</span><span class="dv" style="color:${col}">${dob_s}</span></div>
+      <div class="sc-di"><span class="dl">${_slT('DIED')}</span><span class="dv" style="color:${col}">${dod_s}</span></div>
     </div>
-    ${p.school?`<div class="sc-sec">BIOGRAPHY</div><p class="sc-bio">${esc(p.school)}</p>`:''}
+    ${p.school?`<div class="sc-sec">${_slT('BIOGRAPHY')}</div><p class="sc-bio">${esc(_slFigField(p,'school'))}</p>`:''}
   `;
 
   if(p.teachers?.length){
     const known=p.teachers.filter(t=>PEOPLE.find(pp=>pp.famous===t));
     if(known.length){
-      html+=`<div class="sc-sec">TEACHERS</div><div class="sc-link-row">
-        ${known.map(t=>`<span class="sc-link" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(t)}</span>`).join('')}
+      html+=`<div class="sc-sec">${_slT('TEACHERS')}</div><div class="sc-link-row">
+        ${known.map(t=>{var _tp=PEOPLE.find(pp=>pp.famous===t);var _dn=_tp?_slFigName(_tp):t;return `<span class="sc-link" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(_dn)}</span>`;}).join('')}
       </div>`;
     }
   }
   if(studentsOf.length){
-    html+=`<div class="sc-sec">STUDENTS (${studentsOf.length})</div><div class="sc-link-row">
-      ${studentsOf.map(s=>`<span class="sc-link" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(s.famous)}</span>`).join('')}
+    html+=`<div class="sc-sec">${_slT('STUDENTS')} (${studentsOf.length})</div><div class="sc-link-row">
+      ${studentsOf.map(s=>`<span class="sc-link" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(_slFigName(s))}</span>`).join('')}
     </div>`;
   }
   if(p.books?.length){
     const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
-    html+=`<div class="sc-sec">WORKS & SOURCES</div>`;
+    html+=`<div class="sc-sec">${_slT('WORKS & SOURCES')}</div>`;
     sortedBooks.forEach(b=>{
       html+=`<div class="sc-book">
         ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span style="color:var(--ip-text);font-size:var(--fs-3)">${esc(b.title)}</span>`}
@@ -922,11 +1084,11 @@ function openSilsilaCard(p, cx, cy){
     });
   }
   if(p.source){
-    html+=`<div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;margin-top:12px;padding-top:8px;border-top:1px solid var(--ip-brd)">Sources: ${esc(p.source)}</div>`;
+    html+=`<div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;margin-top:12px;padding-top:8px;border-top:1px solid var(--ip-brd)">${_slT('Sources')}: ${esc(_slFigField(p,'source'))}</div>`;
   }
 
   if(window._wikidata&&window._wikidata[p.slug]&&window._wikidata[p.slug].wikipedia&&window._wikidata[p.slug].wikipedia.en){
-    html+=`<a class="sl-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Wikipedia ↗</a>`;
+    html+=`<a class="sl-wiki-link" href="https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${_slT('Wikipedia ↗')}</a>`;
   }
 
   document.getElementById('scCardBody').innerHTML=html;
@@ -988,7 +1150,7 @@ function buildSLDD(kind, values){
     // Only build once per panel
     if(panel.querySelector('.sl-dd-search')) return;
     const si=document.createElement('input');
-    si.type='text';si.className='sl-dd-search';si.placeholder='Search...';
+    si.type='text';si.className='sl-dd-search';si.placeholder=_slT('Search...');
     si.oninput=function(){
       const q=si.value.toLowerCase();
       panel.querySelectorAll('.sl-dd-item:not(.sl-dd-all)').forEach(function(el){
@@ -999,7 +1161,7 @@ function buildSLDD(kind, values){
     values.forEach(v=>{
       const el=document.createElement('div');
       el.className='sl-dd-item'; el.dataset.val=v;
-      el.innerHTML=`<div class="sl-dd-ck"></div><span>${v}</span>`;
+      el.innerHTML=`<div class="sl-dd-ck"></div><span>${esc(_slT(v))}</span>`;
       el.onclick=()=>slDDToggle(kind,v);
       panel.appendChild(el);
     });
@@ -1059,9 +1221,13 @@ function syncSLDD(kind){
     if(allCk) allCk.textContent=sel.size===0?'✓':'';
     if(btn) btn.classList.toggle('filtered',sel.size>0);
     if(lbl){
-      if(sel.size===1) lbl.textContent=[...sel][0].length>14?[...sel][0].slice(0,12)+'…':[...sel][0];
-      else if(sel.size>1) lbl.textContent=(kind==='type'?'TYPE':'TRADITION')+` (${sel.size})`;
-      else lbl.textContent=kind==='type'?'TYPE':'TRADITION';
+      if(sel.size===1){
+        var _v=[...sel][0];
+        var _tv=_slT(_v);
+        lbl.textContent=_tv.length>14?_tv.slice(0,12)+'…':_tv;
+      }
+      else if(sel.size>1) lbl.textContent=_slT(kind==='type'?'TYPE':'TRADITION')+` (${sel.size})`;
+      else lbl.textContent=_slT(kind==='type'?'TYPE':'TRADITION');
     }
     if(btn){
       var oldX=btn.querySelector('.dd-clear-x');
@@ -1166,8 +1332,8 @@ function _showSilsilaMethodology(){
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
   box.innerHTML='<button id="sl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Chains of knowledge transmission — who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Key Terms</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Silsila</span><span style="color:#A0AEC0">Arabic for “chain” — unbroken teacher-to-student transmission</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Tradition color</span><span style="color:#A0AEC0">Each tradition (Sunni, Shia, Sufi, etc.) has its own color</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Line</span><span style="color:#A0AEC0">A documented teacher → student relationship</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Teacher–student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">AI-generated · independently verify</p>';
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">'+_slT('How This Works')+'</h2>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">'+_slT('What You Are Seeing')+'</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">'+_slT('Chains of knowledge transmission — who taught whom across generations. Colors represent intellectual traditions. This is how Islamic scholarship was preserved: person to person, century after century.')+'</p>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">'+_slT('Key Terms')+'</h3>'+'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">'+_slT('Silsila')+'</span><span style="color:#A0AEC0">'+_slT('Arabic for “chain” — unbroken teacher-to-student transmission')+'</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7C8FBF;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">'+_slT('Tradition color')+'</span><span style="color:#A0AEC0">'+_slT('Each tradition (Sunni, Shia, Sufi, etc.) has its own color')+'</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">'+_slT('Line')+'</span><span style="color:#A0AEC0">'+_slT('A documented teacher → student relationship')+'</span></div></div>'+'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">'+_slT('Data & Disclaimers')+'</h3>'+'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">'+_slT('Teacher–student relationships from classical biographical dictionaries. Not all links are documented. Some figures taught hundreds; only the most significant are included.')+'</p>'+'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">'+_slT('AI-generated · independently verify')+'</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('sl-method-close').addEventListener('click',function(){ov.remove();});
@@ -1268,7 +1434,7 @@ function _showSilsilaMethodology(){
     // Search input
     var searchInp = document.getElementById('search');
     if(searchInp){
-      searchInp.placeholder = 'Search figures…';
+      searchInp.placeholder = _slT('Search figures…');
       searchInp.addEventListener('input', function(){
         searchQ = searchInp.value;
         silsilaSearch(searchQ);
@@ -1296,7 +1462,10 @@ function _showSilsilaMethodology(){
       // Label span (so syncSLDD can rewrite text)
       var lbl = document.createElement('span');
       lbl.id = 'sl-' + (kind==='type'?'typeLbl':'tradLbl');
-      lbl.textContent = btn.textContent;
+      var _btnKey = (btn.getAttribute('data-i18n')||'').trim().toUpperCase();
+      if(!_btnKey) _btnKey = (btn.textContent||'').trim().toUpperCase();
+      lbl.textContent = _slT(_btnKey);
+      lbl.setAttribute('data-i18n-key', _btnKey);
       btn.textContent = '';
       btn.appendChild(lbl);
       var caret = document.createElement('span');
@@ -1328,7 +1497,7 @@ function _showSilsilaMethodology(){
       allCk.textContent = '✓';
       allItem.appendChild(allCk);
       var allLbl = document.createElement('span');
-      allLbl.textContent = kind==='type'?'All Types':'All Traditions';
+      allLbl.textContent = kind==='type'?_slT('All Types'):_slT('All Traditions');
       allItem.appendChild(allLbl);
       panel.appendChild(allItem);
       wrap.appendChild(panel);
@@ -1355,8 +1524,17 @@ function _showSilsilaMethodology(){
     if(_mounted) return;
     _mounted = true;
 
+    // Save whatever jumpTo was registered (typically timeline's) and override with ours
+    // so in-card teacher/student name clicks resolve via silsila while mounted.
+    window._slPrevJumpTo = window.jumpTo;
+    window.jumpTo = jumpTo;
+
     document.body.classList.add('sl-mounted');
     _injectScaffold(zoneCEl);
+
+    if(window.GoldArkI18n && window.GoldArkI18n.loadBucket){
+      try{ window.GoldArkI18n.loadBucket(_slGetLang(),'figures').then(function(){ if(typeof renderSilsila==='function') renderSilsila(); }); }catch(e){}
+    }
 
     // Sync our PEOPLE with whatever the global is (TIMELINE may have populated it)
     if(window.PEOPLE && window.PEOPLE.length){
@@ -1393,6 +1571,10 @@ function _showSilsilaMethodology(){
   function unmount(){
     if(!_mounted) return;
     _mounted = false;
+
+    // Restore previous jumpTo (timeline's) so card-name → TIMELINE jump works.
+    if(window._slPrevJumpTo){ window.jumpTo = window._slPrevJumpTo; }
+    window._slPrevJumpTo = null;
 
     document.body.classList.remove('sl-mounted');
 
@@ -1440,6 +1622,16 @@ function _showSilsilaMethodology(){
     var ms = map[speed] || 1200;
     _slAnimSetSpeed(ms);
   }
+
+  document.addEventListener('gold-ark-lang-changed', function(){
+    if(_mounted && typeof renderSilsila === 'function') renderSilsila();
+  });
+  document.addEventListener('gold-ark-i18n-ready', function(){
+    if(!_mounted) return;
+    if(window.GoldArkI18n && window.GoldArkI18n.loadBucket){
+      try{ window.GoldArkI18n.loadBucket(_slGetLang(),'figures').then(function(){ if(typeof renderSilsila==='function') renderSilsila(); }); }catch(e){}
+    }
+  });
 
   return {
     mount: mount,

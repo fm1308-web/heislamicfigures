@@ -142,3 +142,8 @@ svg.tk-concept-tags{opacity:0.7}
 
 /* Year era subscript inside year chips. */
 .year-era{font-size:9px;opacity:.55;margin-left:2px;letter-spacing:.04em}
+
+.tk-conf-pill{min-width:0 !important;padding:7px 14px !important;letter-spacing:.12em;transition:opacity .15s}
+.tk-conf-pill.tk-conf-h{opacity:1}
+.tk-conf-pill.tk-conf-m{opacity:0.65}
+.tk-conf-pill.tk-conf-l{opacity:0.40}

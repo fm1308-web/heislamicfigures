@@ -37,6 +37,7 @@ window.openStartAtVerse = window.openStartAtVerse || function(s, v, e){
   }
 };
 </script>
+<script src="i18n.js"></script>
 </head>
 <body>
 
@@ -48,14 +49,18 @@ window.openStartAtVerse = window.openStartAtVerse || function(s, v, e){
   <div class="entry-inner">
     <img class="entry-logo" src="assets/gold-ark-logo.png" alt="Gold Ark" />
     <div class="entry-stats">
-      <div class="entry-stats-l1">Everything important to the <span class="entry-stats-one">One</span>.</div>
-      <div class="entry-stats-l2">In order.</div>
+      <div class="entry-stats-l1" data-i18n="Everything important to the">Everything important to the <span class="entry-stats-one" data-i18n="One">One</span>.</div>
+      <div class="entry-stats-l2" data-i18n="In order.">In order.</div>
     </div>
-    <div class="entry-tagline">Fifteen centuries of Monotheism</div>
-    <div class="entry-disclosure">AI-generated · independently verify · Updated May 2026</div>
+    <div class="entry-tagline" data-i18n="Fifteen centuries of Monotheism">Fifteen centuries of Monotheism</div>
+    <div class="entry-disclosure" data-i18n="AI-generated · independently verify">AI-generated · independently verify · Updated May 2026</div>
+    <div class="entry-lang">
+      <div class="entry-lang-label" data-i18n="Language">Language</div>
+      <div class="entry-lang-options" id="entryLangOptions"></div>
+    </div>
     <div class="entry-buttons">
-      <button class="btn btn-primary" id="btnGuest">Browse as Guest</button>
-      <button class="btn btn-secondary" id="btnSignIn">Sign In</button>
+      <button class="btn btn-primary" id="btnGuest" data-i18n="Browse as Guest">Browse as Guest</button>
+      <button class="btn btn-secondary" id="btnSignIn" data-i18n="Sign In">Sign In</button>
     </div>
   </div>
 </div>
@@ -70,23 +75,27 @@ window.openStartAtVerse = window.openStartAtVerse || function(s, v, e){
         <img class="za-logo" src="assets/gold-ark-logo-text.png" alt="Gold Ark" />
       </button>
       <div class="row1-right">
-        <button class="tools-btn" id="howToUseBtn" type="button" aria-label="How to use Gold Ark" title="How to use Gold Ark">HOW TO USE</button>
+        <button class="tools-btn" id="howToUseBtn" type="button" aria-label="How to use Gold Ark" title="How to use Gold Ark" data-i18n="HOW TO USE" data-i18n-title="How to use Gold Ark">HOW TO USE</button>
+        <div class="lang-wrap">
+          <button class="lang-btn" id="langBtn" aria-label="App language" title="App language">🌐 EN</button>
+          <div class="menu-dropdown lang-dropdown" id="langDropdown" hidden></div>
+        </div>
         <div class="tools-wrap">
-          <button class="tools-btn" id="toolsBtn" aria-label="User tools" title="User tools">⚙ TOOLS</button>
+          <button class="tools-btn" id="toolsBtn" aria-label="User tools" title="User tools" data-i18n="⚙ TOOLS" data-i18n-title="User tools">⚙ TOOLS</button>
           <div class="menu-dropdown tools-dropdown" id="toolsDropdown" hidden>
-            <button class="menu-item locked" data-lock="share">Share 🔒</button>
-            <button class="menu-item locked" data-lock="snapshot">Snapshot 🔒</button>
-            <button class="menu-item locked" data-lock="export">Export 🔒</button>
-            <button class="menu-item locked" data-lock="feedback">Report a problem 🔒</button>
-            <button class="menu-item" data-action="community">Community forum</button>
-            <button class="menu-item locked" data-lock="correction" data-need-role="contributor">Suggest Correction 🔒</button>
-            <button class="menu-item" data-action="updates">Updates</button>
+            <button class="menu-item locked" data-lock="share" data-i18n="Share">Share 🔒</button>
+            <button class="menu-item locked" data-lock="snapshot" data-i18n="Snapshot">Snapshot 🔒</button>
+            <button class="menu-item locked" data-lock="export" data-i18n="Export">Export 🔒</button>
+            <button class="menu-item locked" data-lock="feedback" data-i18n="Report a problem">Report a problem 🔒</button>
+            <button class="menu-item" data-action="community" data-i18n="Community forum">Community forum</button>
+            <button class="menu-item locked" data-lock="correction" data-need-role="contributor" data-i18n="Suggest Correction">Suggest Correction 🔒</button>
+            <button class="menu-item" data-action="updates" data-i18n="Updates">Updates</button>
           </div>
         </div>
         <div class="user-wrap">
-          <button class="user-pill" id="userPill" type="button">Visitor</button>
+          <button class="user-pill" id="userPill" type="button" data-i18n="Visitor">Visitor</button>
           <div class="menu-dropdown user-dropdown" id="userDropdown" hidden>
-            <button class="menu-item" data-action="signout">Sign out</button>
+            <button class="menu-item" data-action="signout" data-i18n="Sign out">Sign out</button>
           </div>
         </div>
       </div>
@@ -129,7 +138,7 @@ window.openStartAtVerse = window.openStartAtVerse || function(s, v, e){
     <div class="modal-title" id="modalTitle"></div>
     <div class="modal-body" id="modalBody"></div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" id="modalClose">Close</button>
+      <button class="btn btn-secondary" id="modalClose" data-i18n="Close">Close</button>
     </div>
   </div>
 </div>

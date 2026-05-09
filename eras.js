@@ -31,6 +31,63 @@ window.ErasView = (function(){
   // stub: _resizeShell
   if(typeof window._resizeShell !== 'function') window._resizeShell = function(){};
 
+  // Inline Urdu dictionary for ERAS-specific labels.
+  var _ERAS_UR = {
+    // Types
+    'Prophet':'نبی','Founder':'بانی','Sahaba':'صحابہ','Sahabiyya':'صحابیہ',
+    "Tabi'un":'تابعون','Scholar':'عالم','Mystic':'صوفی','Ruler':'حاکم',
+    'Poet':'شاعر','Philosopher':'فلسفی','Scientist':'سائنسدان','Historian':'مورخ',
+    'Reformer':'مصلح','Jurist':'فقیہ','Caliph':'خلیفہ','Warrior':'مجاہد',
+    'Sufi':'صوفی','Traveler':'سیاح','Mufassir':'مفسر',
+    // Traditions
+    'Hadith Sciences':'علومِ حدیث','Early Ascetics':'ابتدائی زاہدین',
+    'Islamic Jurisprudence':'فقہ اسلامی','Islamic Philosophy':'فلسفہ اسلامی',
+    'Islamic Sciences':'اسلامی علوم','Islamic Theology':'علم الکلام',
+    'Islamic Literature':'اسلامی ادب','Persian Poetry':'فارسی شاعری',
+    'Khorasan School':'مکتبِ خراسان','Baghdad School':'مکتبِ بغداد',
+    'Naqshbandiyya':'نقشبندیہ','Shadhiliyya':'شاذلیہ','Qadiriyya':'قادریہ',
+    'Chishti':'چشتیہ','Suhrawardiyya':'سہروردیہ','Mawlawiyya':'مولویہ',
+    'Qalandari':'قلندریہ','Yeseviyya':'یسویہ','Kubrawiyya':'کبرویہ',
+    'Akbarian':'اکبریہ','Ishraqiyya':'اشراقیہ','Mughal':'مغل','Genealogy':'نسب',
+    'Sunni':'سنی','Shia':'شیعہ','Ismaili':'اسماعیلی',
+    'Twelver Shia':'اثناء عشری شیعہ','Nizari Ismaili':'نزاری اسماعیلی',
+    'Tayyibi Ismaili':'طیبی اسماعیلی',
+    // Era band names
+    'Prophetic Era':'عہدِ نبوی','Rashidun':'راشدین','Umayyad':'اموی',
+    'Abbasid Golden Age':'عباسی عہدِ زریں','Post-Mongol':'مابعد مغل',
+    'Gunpowder Empires':'بارود کی سلطنتیں','Colonial & Reform':'استعماری و اصلاح',
+    'Contemporary':'عصرِ حاضر',
+    // UI labels
+    'NO FIGURES MATCH YOUR FILTERS':'آپ کی فلٹر کے مطابق کوئی شخصیت نہیں ملی',
+    'search types…':'اقسام تلاش کریں…',
+    'search traditions…':'روایات تلاش کریں…',
+    '— SELECT A TYPE —':'— قسم منتخب کریں —',
+    '— SELECT A TRADITION —':'— روایت منتخب کریں —',
+    'types':'اقسام','traditions':'روایات','selected':'منتخب',
+    'Select all':'سب منتخب کریں','Deselect all':'سب غیر منتخب کریں',
+    'How This Works':'یہ کیسے کام کرتا ہے',
+    'A vertical timeline where each figure appears as a leaf shape spanning their lifespan. Filter by type and tradition to see how groups overlapped across centuries.':'ایک عمودی ٹائم لائن جس میں ہر شخصیت اپنی زندگی کے دورانیے پر پتے کی شکل میں ظاہر ہوتی ہے۔ قسم اور روایت سے فلٹر کر کے دیکھیں کہ گروہ صدیوں میں کیسے ایک دوسرے سے ملتے ہیں۔',
+    'AI-generated · independently verify':'اے آئی سے تیار · آزادانہ تصدیق کریں'
+  };
+
+  function _evT(en){
+    try {
+      var lang = (window.GoldArkI18n && window.GoldArkI18n.getLang) ? window.GoldArkI18n.getLang() : 'en';
+      if(lang === 'ur' && _ERAS_UR.hasOwnProperty(en)) return _ERAS_UR[en];
+      return (window.GoldArkI18n && window.GoldArkI18n.tt) ? window.GoldArkI18n.tt(en) : en;
+    } catch(e){ return en; }
+  }
+  function _evFigName(p){
+    if(!p) return '';
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView){
+        var v = window.GoldArkI18n.tForView('ERAS','figures', p.slug, 'famous');
+        if(v) return v;
+      }
+    } catch(e){}
+    return p.famous || '';
+  }
+
   // ═══════════════════════════════════════════════════════════
   // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/eras.js ▼▼▼
   // (outer IIFE wrapper unwrapped — we already wrap above)
@@ -46,6 +103,93 @@ let _EV_FILTER = { types:new Set(), trads:new Set(), search:'' };
 let _EV_ANIM   = { mode:'stopped', timer:null, cursorY:0, maxY:0, speedMs:1200, tick:null };
 let _EV_INITED = false;
 let _EV_ANIM_CTL = null;
+let _EV_CONF = 'h';   // 'h' | 'm' | 'l'
+let _EV_LOGIC = 'and';   // 'and' | 'or'
+let _EV_TAGS_V2 = null;        // raw object keyed by slug
+let _EV_TAG_INDEX = null;      // { type:{tag:Set<slug>}, tradition:{...} }
+
+function _evLoadTagsV2(){
+  if(_EV_TAGS_V2) return Promise.resolve(_EV_TAGS_V2);
+  var url = (typeof dataUrl === 'function')
+    ? dataUrl('data/islamic/figures_tag_v2.json')
+    : 'data/islamic/figures_tag_v2.json';
+  return fetch(url)
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .catch(function(){ return {}; })
+    .then(function(j){ _EV_TAGS_V2 = j || {}; return _EV_TAGS_V2; });
+}
+
+function _evBandAllows(band){
+  if(_EV_CONF === 'h') return band === 'h';
+  if(_EV_CONF === 'm') return band === 'h' || band === 'm';
+  return true;  // 'l' shows all
+}
+
+function _evFigTags(slug, cat){
+  if(!_EV_TAGS_V2 || !_EV_TAGS_V2[slug]) return [];
+  var arr = _EV_TAGS_V2[slug].tags && _EV_TAGS_V2[slug].tags[cat];
+  if(!arr) return [];
+  var out = [];
+  for(var i=0;i<arr.length;i++){
+    var row = arr[i];
+    if(_evBandAllows(row[1])) out.push(row[0]);
+  }
+  return out;
+}
+
+function _evRebuildTagIndex(){
+  var idx = { type:{}, tradition:{}, domain:{}, role:{}, demographic:{} };
+  if(!_EV_TAGS_V2){ _EV_TAG_INDEX = idx; return; }
+  Object.keys(_EV_TAGS_V2).forEach(function(slug){
+    var entry = _EV_TAGS_V2[slug]; if(!entry || !entry.tags) return;
+    Object.keys(idx).forEach(function(cat){
+      var arr = entry.tags[cat]; if(!arr) return;
+      arr.forEach(function(row){
+        var tag = row[0], band = row[1];
+        if(!_evBandAllows(band)) return;
+        if(!idx[cat][tag]) idx[cat][tag] = new Set();
+        idx[cat][tag].add(slug);
+      });
+    });
+  });
+  _EV_TAG_INDEX = idx;
+}
+
+function _evConfLabel(){
+  return _EV_CONF === 'h' ? 'HIGH'
+       : _EV_CONF === 'm' ? 'MED'
+       : 'LOW';
+}
+function _evConfCycle(){
+  _EV_CONF = _EV_CONF === 'h' ? 'm'
+           : _EV_CONF === 'm' ? 'l'
+           : 'h';
+  _evSyncConfBtn();
+  _evRebuildTagIndex();
+  if(typeof _evBuildTypePanel === 'function') _evBuildTypePanel();
+  if(typeof _evBuildTradPanel === 'function') _evBuildTradPanel();
+  if(typeof _evBuildCanvas === 'function') _evBuildCanvas();
+  if(typeof _evAnimStop === 'function') _evAnimStop();
+  console.log('[eras] confidence:', _EV_CONF);
+}
+function _evSyncLogicBtn(){
+  var btn = document.getElementById('eraLogicPill');
+  if(!btn) return;
+  btn.textContent = _EV_LOGIC === 'and' ? 'AND' : 'OR';
+}
+function _evLogicCycle(){
+  _EV_LOGIC = _EV_LOGIC === 'and' ? 'or' : 'and';
+  _evSyncLogicBtn();
+  if(typeof _evBuildCanvas === 'function') _evBuildCanvas();
+  if(typeof _evAnimStop === 'function') _evAnimStop();
+}
+function _evSyncConfBtn(){
+  var btn = document.getElementById('eraConfPill');
+  if(!btn) return;
+  btn.textContent = _evConfLabel();
+  btn.classList.remove('era-conf-h','era-conf-m','era-conf-l');
+  btn.classList.add('era-conf-' + _EV_CONF);
+}
 
 const _EV_TYPE_COLORS = {
   'Prophet':'#D4AF37','Founder':'#b8860b','Sahaba':'#e74c3c','Sahabiyya':'#ff6b6b',
@@ -90,11 +234,60 @@ function _evWiki(p){
   if(!window._wikidata||!p.slug||!window._wikidata[p.slug]||!window._wikidata[p.slug].wikipedia||!window._wikidata[p.slug].wikipedia.en) return '';
   return ' <a class="era-wiki" href="https://en.wikipedia.org/wiki/'+encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,'_'))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Wikipedia">W</a>';
 }
+var _EV_TAG_PALETTE = [
+  '#D4AF37','#3498db','#2ECC71','#e74c3c','#9b59b6','#1abc9c',
+  '#e67e22','#00bcd4','#f06292','#ab47bc','#5c6bc0','#ffa726',
+  '#4fc3f7','#66bb6a','#7986cb','#4db6ac','#9575cd','#ce93d8',
+  '#a1887f','#90a4ae','#7e57c2','#26a69a','#42a5f5','#d4e157'
+];
+var _EV_TYPE_OVERRIDE = {
+  'prophet':'#D4AF37','companion':'#e74c3c','sahabiyya':'#ff6b6b',
+  'scholar':'#3498db','mystic':'#2ECC71','sufi':'#2ECC71',
+  'ruler':'#9b59b6','caliph':'#ab47bc','poet':'#e91e90',
+  'philosopher':'#1abc9c','scientist':'#00bcd4','historian':'#8d6e63',
+  'reformer':'#ff9800','jurist':'#5c6bc0','warrior':'#ef5350',
+  'mufassir':'#D4AF37','theologian':'#9575cd','hadith-scholar':'#4fc3f7',
+  'ascetic':'#66bb6a','statesman':'#9b59b6','administrator':'#7986cb',
+  'preacher':'#e67e22','polymath':'#ffa726','traveler':'#26a69a',
+  'biographer':'#a1887f','linguist':'#ce93d8','founder':'#b8860b'
+};
+var _EV_TRAD_OVERRIDE = {
+  'sunni':'#7986cb','shia':'#ab47bc','sufism':'#2ECC71',
+  'zuhd':'#66bb6a','hanafi':'#5c6bc0','shafii':'#42a5f5',
+  'maliki':'#7e57c2','hanbali':'#9575cd','ashari':'#9575cd',
+  'maturidi':'#5c6bc0','athari':'#a1887f','mutazila':'#1abc9c',
+  'kalam':'#9575cd','falsafa':'#1abc9c','peripateticism':'#1abc9c',
+  'ishraqiyya':'#ffca28','illuminationism':'#ffca28',
+  'persian-poetry':'#ce93d8','arabic-poetry':'#f06292',
+  'turkish-literature':'#d4e157','urdu-literature':'#26a69a',
+  'akbarian':'#ab47bc','andalusian-school':'#90a4ae',
+  'baghdad-school':'#90a4ae','khorasan-school':'#a1887f',
+  'naqshbandiyya':'#7e57c2','shadhiliyya':'#26a69a',
+  'qadiriyya':'#42a5f5','chishti':'#ffa726','suhrawardiyya':'#d4e157',
+  'mawlawiyya':'#ec407a','qalandari':'#8d6e63',
+  'twelver-shia':'#9b59b6','jafari':'#42a5f5','ismaili':'#ab47bc',
+  'ahl-al-hadith':'#4fc3f7','tafsir-tradition':'#D4AF37',
+  'mughal':'#ef6c00'
+};
+function _evHashColor(s){
+  var h = 0;
+  for(var i=0;i<s.length;i++){ h = ((h<<5)-h) + s.charCodeAt(i); h |= 0; }
+  return _EV_TAG_PALETTE[Math.abs(h) % _EV_TAG_PALETTE.length];
+}
+function _evTypeColor(tag){
+  return _EV_TYPE_OVERRIDE[tag] || _evHashColor(tag);
+}
+function _evTradColor(tag){
+  return _EV_TRAD_OVERRIDE[tag] || _evHashColor(tag);
+}
+
 function _evNameColor(p){
-  if(p.type==='Prophet') return '#D4AF37';
+  var ptypes = _evFigTags(p.slug, 'type');
+  if(ptypes.indexOf('prophet') !== -1) return '#D4AF37';
   if(typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.has(p.famous)) return 'rgba(212,175,55,0.65)';
-  if(p.type && _EV_TYPE_COLORS[p.type]) return _EV_TYPE_COLORS[p.type];
-  if(p.tradition && !_EV_SKIP_TRADS[p.tradition] && _EV_TRAD_COLORS[p.tradition]) return _EV_TRAD_COLORS[p.tradition];
+  if(ptypes.length) return _evTypeColor(ptypes[0]);
+  var ptrads = _evFigTags(p.slug, 'tradition');
+  if(ptrads.length) return _evTradColor(ptrads[0]);
   return '#A0AEC0';
 }
 function _evColorToRgb(c){
@@ -136,6 +329,11 @@ function _evInjectStyles(){
   .era-dd-wrap{position:relative}
   .era-dd-btn{background:none;border:1px solid var(--border2,#2D3748);color:var(--gold,#D4AF37);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.1em;padding:8px 14px;cursor:pointer;min-width:220px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
   .era-dd-btn:hover{border-color:var(--gold,#D4AF37)}
+  .era-conf-pill{min-width:0 !important;padding:7px 14px !important;letter-spacing:.12em;transition:opacity .15s}
+  .era-conf-pill.era-conf-h{opacity:1}
+  .era-conf-pill.era-conf-m{opacity:0.65}
+  .era-conf-pill.era-conf-l{opacity:0.40}
+  .era-logic-pill{min-width:0 !important;padding:7px 12px !important;letter-spacing:.12em;opacity:0.85}
   .era-dd-panel{position:absolute;top:calc(100% + 4px);left:0;width:300px;max-height:420px;background:#0E1621;border:1px solid var(--gold,#D4AF37);border-radius:2px;z-index:100;display:none;flex-direction:column;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.6)}
   .era-dd-panel.open{display:flex}
   .era-dd-search{margin:10px 10px 6px;padding:7px 9px;background:#1a2330;border:1px solid var(--border2,#2D3748);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);border-radius:2px;outline:none}
@@ -186,30 +384,44 @@ function _evInjectStyles(){
 }
 
 function _evCollectTypes(){
-  const counts={};
-  const earliest={};
-  (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{
-    if(!p.type) return;
-    counts[p.type]=(counts[p.type]||0)+1;
-    var d=_evDob(p); if(d!=null&&(earliest[p.type]==null||d<earliest[p.type])) earliest[p.type]=d;
-  });
-  const out=Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999}));
-  out.sort((a,b)=>a._earliest-b._earliest);
-  if(typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.size && !out.some(t=>t.name==='Prophetic Lineage')){
-    const pi=out.findIndex(t=>t.name==='Prophet');
-    out.splice(pi>=0?pi+1:0,0,{name:'Prophetic Lineage',count:PROPHET_CHAIN.size,_earliest:-4000});
+  if(!_EV_TAG_INDEX) _evRebuildTagIndex();
+  var idx = _EV_TAG_INDEX.type || {};
+  var people = (typeof PEOPLE !== 'undefined') ? PEOPLE : [];
+  var dobBySlug = {};
+  for(var i=0;i<people.length;i++){
+    dobBySlug[people[i].slug] = _evDob(people[i]);
   }
+  var out = Object.keys(idx).map(function(tag){
+    var slugs = idx[tag];
+    var minDob = null;
+    slugs.forEach(function(s){
+      var d = dobBySlug[s];
+      if(d != null && (minDob == null || d < minDob)) minDob = d;
+    });
+    return { name: tag, count: slugs.size, minDob: (minDob == null ? Infinity : minDob) };
+  });
+  out.sort(function(a,b){ return a.minDob - b.minDob; });
   return out;
 }
 function _evCollectTrads(){
-  const counts={};
-  const earliest={};
-  (typeof PEOPLE!=='undefined'?PEOPLE:[]).forEach(p=>{
-    if(!p.tradition || _EV_SKIP_TRADS[p.tradition]) return;
-    counts[p.tradition]=(counts[p.tradition]||0)+1;
-    var d=_evDob(p); if(d!=null&&(earliest[p.tradition]==null||d<earliest[p.tradition])) earliest[p.tradition]=d;
+  if(!_EV_TAG_INDEX) _evRebuildTagIndex();
+  var idx = _EV_TAG_INDEX.tradition || {};
+  var people = (typeof PEOPLE !== 'undefined') ? PEOPLE : [];
+  var dobBySlug = {};
+  for(var i=0;i<people.length;i++){
+    dobBySlug[people[i].slug] = _evDob(people[i]);
+  }
+  var out = Object.keys(idx).map(function(tag){
+    var slugs = idx[tag];
+    var minDob = null;
+    slugs.forEach(function(s){
+      var d = dobBySlug[s];
+      if(d != null && (minDob == null || d < minDob)) minDob = d;
+    });
+    return { name: tag, count: slugs.size, minDob: (minDob == null ? Infinity : minDob) };
   });
-  return Object.keys(counts).map(k=>({name:k,count:counts[k],_earliest:earliest[k]||9999})).sort((a,b)=>a._earliest-b._earliest);
+  out.sort(function(a,b){ return a.minDob - b.minDob; });
+  return out;
 }
 
 function _evFiltered(){
@@ -217,13 +429,32 @@ function _evFiltered(){
   const q=(_EV_FILTER.search||'').toLowerCase().trim();
   const ts=_EV_FILTER.types, tr=_EV_FILTER.trads;
   let out=all.filter(p=>{
-    if(ts.size){
-      let match=false;
-      if(ts.has('Prophetic Lineage') && typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.has(p.famous)) match=true;
-      if(!match){ for(const t of ts){ if(t!=='Prophetic Lineage' && p.type===t){ match=true; break; } } }
-      if(!match) return false;
+    var hasFilters = ts.size || tr.size;
+    if(hasFilters){
+      var pTypes = _evFigTags(p.slug, 'type');
+      var pTrads = _evFigTags(p.slug, 'tradition');
+      var typeHit = false, tradHit = false;
+      if(ts.size){
+        if(ts.has('Prophetic Lineage') && typeof PROPHET_CHAIN!=='undefined' && PROPHET_CHAIN.has(p.famous)) typeHit = true;
+        if(!typeHit){
+          for(const t of ts){
+            if(t === 'Prophetic Lineage') continue;
+            if(pTypes.indexOf(t) !== -1){ typeHit = true; break; }
+          }
+        }
+      }
+      if(tr.size){
+        for(const t of tr){
+          if(pTrads.indexOf(t) !== -1){ tradHit = true; break; }
+        }
+      }
+      if(_EV_LOGIC === 'or'){
+        if(!typeHit && !tradHit) return false;
+      } else {
+        if(ts.size && !typeHit) return false;
+        if(tr.size && !tradHit) return false;
+      }
     }
-    if(tr.size && !tr.has(p.tradition)) return false;
     if(q){
       const hay=((p.famous||'')+' '+(p.type||'')+' '+(p.tradition||'')).toLowerCase();
       if(hay.indexOf(q)===-1) return false;
@@ -244,7 +475,7 @@ function _evBuildCanvas(){
   const people=_evFiltered();
   if(!people.length){
     canvas.style.height='200px';
-    canvas.innerHTML='<div id="era-empty">NO FIGURES MATCH YOUR FILTERS</div>';
+    canvas.innerHTML='<div id="era-empty">'+_evT('NO FIGURES MATCH YOUR FILTERS')+'</div>';
     return;
   }
   const totalH=_EV_TOP_PAD + people.length*_EV_ROW_H + _EV_BOT_PAD;
@@ -262,7 +493,7 @@ function _evBuildCanvas(){
     const yrTxt=_evFmtYear(dob);
 
     html+='<div class="era-row" data-slug="'+_evEsc(p.slug)+'" data-name="'+_evEsc(p.famous)+'" data-year="'+(dob==null?'':dob)+'" style="top:'+y+'px;height:'+_EV_ROW_H+'px">';
-    html+='<div class="era-row-main"><div class="era-row-title" style="color:'+nameCol+'">'+_evEsc(p.famous)+_evWiki(p)+'</div></div>';
+    html+='<div class="era-row-main"><div class="era-row-title" style="color:'+nameCol+'">'+_evEsc(_evFigName(p))+_evWiki(p)+'</div></div>';
     html+='</div>';
     html+='<div class="era-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px;'+(_evShowCE?'':'display:none')+'">'+yrTxt+'</div>';
     var _hij=_evCeToHijri(dob);
@@ -281,8 +512,15 @@ function _evBuildCanvas(){
       if(e.target.closest('.era-wiki')) return;
       const name=row.getAttribute('data-name');
       if(!name) return;
-      // sandbox: TIMELINE jump not wired — log only
-      if(typeof window.jumpTo === 'function'){ window.jumpTo(name); }
+      // Switch to TIMELINE then call jumpTo after it mounts.
+      if(typeof window.setActiveTab === 'function'){
+        window.setActiveTab('TIMELINE');
+        setTimeout(function(){
+          if(typeof window.jumpTo === 'function') window.jumpTo(name);
+        }, 600);
+      } else if(typeof window.jumpTo === 'function'){
+        window.jumpTo(name);
+      }
     });
   });
   canvas.querySelectorAll('.era-ruler-btn').forEach(btn=>{
@@ -303,14 +541,28 @@ function _evRenderLeaves(people, rowMap, totalH){
   const NS='http://www.w3.org/2000/svg';
 
   const byTag={};
-  people.forEach(p=>{
-    if(p.type){
-      if(!byTag[p.type]) byTag[p.type]={key:p.type,field:'type',people:[],color:_EV_TYPE_COLORS[p.type]||'#A0AEC0'};
-      byTag[p.type].people.push(p);
+  // Build tag bands ONLY for selected tags
+  var selTypes = _EV_FILTER.types;
+  var selTrads = _EV_FILTER.trads;
+  people.forEach(function(p){
+    if(selTypes.size){
+      var fTypes = _evFigTags(p.slug, 'type');
+      for(var i=0;i<fTypes.length;i++){
+        var tt = fTypes[i];
+        if(!selTypes.has(tt)) continue;
+        if(!byTag[tt]) byTag[tt] = {key:tt, field:'type', people:[], color:_evTypeColor(tt)};
+        byTag[tt].people.push(p);
+      }
     }
-    if(p.tradition && !_EV_SKIP_TRADS[p.tradition]){
-      if(!byTag[p.tradition]) byTag[p.tradition]={key:p.tradition,field:'trad',people:[],color:_EV_TRAD_COLORS[p.tradition]||'#A0AEC0'};
-      byTag[p.tradition].people.push(p);
+    if(selTrads.size){
+      var fTrads = _evFigTags(p.slug, 'tradition');
+      for(var j=0;j<fTrads.length;j++){
+        var tt2 = fTrads[j];
+        if(!selTrads.has(tt2)) continue;
+        if(_EV_SKIP_TRADS[tt2]) continue;
+        if(!byTag[tt2]) byTag[tt2] = {key:tt2, field:'trad', people:[], color:_evTradColor(tt2)};
+        byTag[tt2].people.push(p);
+      }
     }
   });
   if(typeof PROPHET_CHAIN!=='undefined'){
@@ -339,7 +591,7 @@ function _evRenderLeaves(people, rowMap, totalH){
     const label=document.createElement('div');
     label.className='era-era-label';
     label.style.top=(y1e+12)+'px';
-    label.innerHTML='<div class="era-era-label-name" style="color:rgba('+era.glow+',0.85)">'+era.name+'</div><div class="era-era-label-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
+    label.innerHTML='<div class="era-era-label-name" style="color:rgba('+era.glow+',0.85)">'+_evT(era.name)+'</div><div class="era-era-label-dates" style="color:rgba('+era.glow+',0.7)">'+era.dates+'</div>';
     canvas.appendChild(label);
   });
 
@@ -396,8 +648,8 @@ function _evRenderLeaves(people, rowMap, totalH){
       e.stopPropagation();
       if(ld.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(ld.key); }
       else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(ld.key); }
-      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
-      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
+      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types');
+      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions');
       _evBuildCanvas(); _evAnimStop();
     };
     g.addEventListener('click',clickH);
@@ -434,13 +686,13 @@ function _evRenderLeaves(people, rowMap, totalH){
     extLabel.className='era-leaf-label';
     extLabel.setAttribute('data-tag',li.key);
     extLabel.style.cssText='position:absolute;top:'+li.resolvedY+'px;left:'+LABEL_LEFT+'px;white-space:nowrap;pointer-events:auto;cursor:pointer;font-family:\'Cinzel\',serif;font-size:var(--fs-3);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:'+li.color+';background:rgba(14,22,33,0.85);padding:2px 8px;border-radius:2px;border:1px solid rgba('+_evColorToRgb(li.color)+',0.4);z-index:4';
-    extLabel.textContent=li.key+' ('+li.count+')';
+    extLabel.textContent=_evT(li.key)+' ('+li.count+')';
     extLabel.addEventListener('click',function(e){
       e.stopPropagation();
       if(li.field==='type'){ _EV_FILTER.types.clear(); _EV_FILTER.types.add(li.key); }
       else { _EV_FILTER.trads.clear(); _EV_FILTER.trads.add(li.key); }
-      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
-      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
+      _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types');
+      _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions');
       _evBuildCanvas(); _evAnimStop();
     });
     canvas.appendChild(extLabel);
@@ -451,19 +703,19 @@ function _evCk(on){ return '<span class="era-ck'+(on?' on':'')+'"></span>'; }
 function _evSyncBtnLabel(btnId,filterSet,defaultLabel,noun){
   const btn=document.getElementById(btnId); if(!btn) return;
   const n=filterSet.size; let txt=defaultLabel;
-  if(n===1) txt=[...filterSet][0]; else if(n>1) txt=n+' '+noun+' selected';
+  if(n===1) txt=[...filterSet][0]; else if(n>1) txt=n+' '+_evT(noun)+' '+_evT('selected');
   btn.innerHTML=_evEsc(txt)+'  <span style="opacity:.6">▾</span>';
 }
 function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
   const scroll=document.getElementById(scrollId); if(!scroll) return;
   const si=document.getElementById(searchId);
   const q=(si&&si.value||'').toLowerCase().trim();
-  const toggleLabel=filterSet.size>0?'Deselect all':'Select all';
+  const toggleLabel=filterSet.size>0?_evT('Deselect all'):_evT('Select all');
   let html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="era-dd-toggle-all" style="font-family:Cinzel,serif;font-size:var(--fs-3);color:var(--gold,#D4AF37);cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
   const filtered=items.filter(t=>!q||t.name.toLowerCase().indexOf(q)>-1);
   filtered.forEach(t=>{
     const on=filterSet.has(t.name);
-    html+='<div class="dd-item'+(on?' selected':'')+'" data-val="'+_evEsc(t.name)+'"><div class="dd-checkbox">'+(on?'✓':'')+'</div><span>'+_evEsc(t.name)+'</span><span class="dd-count">'+t.count+'</span></div>';
+    html+='<div class="dd-item'+(on?' selected':'')+'" data-val="'+_evEsc(t.name)+'"><div class="dd-checkbox">'+(on?'✓':'')+'</div><span>'+_evEsc(_evT(t.name))+'</span><span class="dd-count">'+t.count+'</span></div>';
   });
   scroll.innerHTML=html;
   scroll.querySelectorAll('.dd-item').forEach(el=>{
@@ -475,13 +727,13 @@ function _evBuildPanel(scrollId,searchId,filterSet,items,onchange){
 }
 function _evBuildTypePanel(){
   _evBuildPanel('era-type-scroll','era-type-search',_EV_FILTER.types,_evCollectTypes(),function(){
-    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
+    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types');
     _evBuildTypePanel(); _evBuildCanvas(); _evAnimStop();
   });
 }
 function _evBuildTradPanel(){
   _evBuildPanel('era-trad-scroll','era-trad-search',_EV_FILTER.trads,_evCollectTrads(),function(){
-    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
+    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions');
     _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
 }
@@ -572,11 +824,11 @@ function initEras(){
   html+='</div>';
   // Filter dropdown panels — fixed-positioned on open below shell row 2 buttons.
   html+='<div class="dd-panel" id="era-type-panel" style="position:fixed;display:none">';
-  html+='<input class="dd-search" id="era-type-search" placeholder="search types…">';
+  html+='<input class="dd-search" id="era-type-search" placeholder="'+_evT('search types…')+'">';
   html+='<div id="era-type-scroll"></div>';
   html+='</div>';
   html+='<div class="dd-panel" id="era-trad-panel" style="position:fixed;display:none">';
-  html+='<input class="dd-search" id="era-trad-search" placeholder="search traditions…">';
+  html+='<input class="dd-search" id="era-trad-search" placeholder="'+_evT('search traditions…')+'">';
   html+='<div id="era-trad-scroll"></div>';
   html+='</div>';
   html+='<div id="era-scroll"><div id="era-canvas"></div></div>';
@@ -605,8 +857,8 @@ function initEras(){
   document.getElementById('era-clear-all').addEventListener('click',function(e){
     e.stopPropagation();
     _EV_FILTER.types.clear(); _EV_FILTER.trads.clear(); _EV_FILTER.search='';
-    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,'— SELECT A TYPE —','types');
-    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,'— SELECT A TRADITION —','traditions');
+    _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types');
+    _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions');
     _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
   var _evHowBtn=document.getElementById('era-how-btn');
@@ -632,9 +884,21 @@ function _showErasMethodology(){
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
   box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
-    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A vertical timeline where each figure appears as a leaf shape spanning their lifespan. Filter by type and tradition to see how groups overlapped across centuries.</p>'
-    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">'+_evT('How This Works')+'</h2>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">'+_evT('A vertical timeline where each figure appears as a leaf shape spanning their lifespan. Filter by type and tradition to see how groups overlapped across centuries.')+'</p>'
+    +'<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-2);margin:20px 0 8px;letter-spacing:.06em">Confidence band</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Every figure now carries multiple type and tradition tags, each rated for evidence strength.</p>'
+    +'<ul style="color:#ccc;font-size:var(--fs-3);line-height:1.6;padding-left:20px;margin:8px 0">'
+    +'<li><b>HIGH</b> — strongest evidence. Well-attested in primary sources, central to the figure\'s identity.</li>'
+    +'<li><b>MED</b> — adds figures with secondary or partial evidence. More figures appear; some claims are softer.</li>'
+    +'<li><b>LOW</b> — adds figures with thin or contested evidence. Maximum breadth, weakest certainty.</li>'
+    +'</ul>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Click the HIGH / MED / LOW pill on the right of the filter row to cycle. The pill dims as confidence loosens.</p>'
+    +'<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-2);margin:20px 0 8px;letter-spacing:.06em">Multiple tags per figure</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A figure can carry many type and tradition tags. Imam al-Bukhari is a hadith-scholar, scholar, writer, traveler, theologian, biographer, and jurist all at once. Selecting any of these tags pulls him in. Selecting two tags shows the figure under each band on the right of the canvas.</p>'
+    +'<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-2);margin:20px 0 8px;letter-spacing:.06em">AND vs OR</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">The pill between TYPE and TRADITION toggles logic. <b>AND</b> requires the figure to match a selected type AND a selected tradition. <b>OR</b> shows figures matching either side. Useful for narrowing or broadening together.</p>'
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">'+_evT('AI-generated · independently verify')+'</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   document.getElementById('eras-method-close').addEventListener('click',function(){ov.remove();});
@@ -655,9 +919,11 @@ function _showErasMethodology(){
 
     var shellMap = { 'era-type-panel': null, 'era-trad-panel': null };
     selects.forEach(function(b){
-      var t = (b.textContent||'').trim().toUpperCase();
-      if(t === 'TYPE'){ shellMap['era-type-panel'] = b; }
-      else if(t === 'TRADITION'){ shellMap['era-trad-panel'] = b; }
+      var key = (b.getAttribute('data-i18n') || '').trim().toUpperCase();
+      if(!key) key = (b.textContent||'').trim().toUpperCase();
+      var t = (b.textContent||'').trim();
+      if(key === 'TYPE' || t === 'قسم'){ shellMap['era-type-panel'] = b; }
+      else if(key === 'TRADITION' || t === 'روایت'){ shellMap['era-trad-panel'] = b; }
     });
     window._evShellBtns = shellMap;
 
@@ -694,6 +960,24 @@ function _showErasMethodology(){
         _evOpenPanel(panelId, btn);
       });
     });
+
+    var confBtn = document.getElementById('eraConfPill');
+    if(confBtn){
+      _evSyncConfBtn();
+      confBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        _evConfCycle();
+      });
+    }
+
+    var logicBtn = document.getElementById('eraLogicPill');
+    if(logicBtn){
+      _evSyncLogicBtn();
+      logicBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        _evLogicCycle();
+      });
+    }
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -710,7 +994,7 @@ function _showErasMethodology(){
     // initEras expects #eras-view in the DOM.
     zoneCEl.innerHTML = '<div id="eras-view"></div>';
 
-    // Eager Promise.all: core.json (figures) + events/master.json (per task spec).
+    // Eager Promise.all: core.json (figures) + events/master.json + figures_tag_v2.json.
     var p1 = (window.PEOPLE && window.PEOPLE.length)
       ? Promise.resolve(window.PEOPLE)
       : fetch(dataUrl('data/islamic/core.json'))
@@ -723,8 +1007,10 @@ function _showErasMethodology(){
           .then(function(r){ return r.ok ? r.json() : null; })
           .catch(function(){ return null; })
           .then(function(d){ if(d) window.eventsData = d; return d; });
+    var p3 = _evLoadTagsV2();
 
-    Promise.all([p1, p2]).then(function(){
+    Promise.all([p1, p2, p3]).then(function(){
+      _evRebuildTagIndex();
       initEras();
       _wireZoneB(zoneBEl);
     });
@@ -748,6 +1034,18 @@ function _showErasMethodology(){
     if(zb) zb.innerHTML = '';
     if(zc) zc.innerHTML = '';
   }
+
+  // Re-render whole canvas + filter panels when app language changes.
+  window.addEventListener('gold-ark-lang-changed', function(){
+    if(!_mounted) return;
+    try { _evBuildTypePanel(); } catch(e){}
+    try { _evBuildTradPanel(); } catch(e){}
+    try { _evBuildCanvas(); } catch(e){}
+    try { _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types'); } catch(e){}
+    try { _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions'); } catch(e){}
+    var ov = document.getElementById('eras-method-overlay');
+    if(ov){ ov.remove(); _showErasMethodology(); }
+  });
 
   return {
     mount: mount,

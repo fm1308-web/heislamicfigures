@@ -29,7 +29,7 @@
   --ip-muted:   #A0AEC0;
   --ip-acc:     #D4AF37;
 
-  --col1-w:     378px;
+  --col1-w:     220px;
 
   --fs-1:       20px;
   --fs-2:       16px;
@@ -225,3 +225,27 @@
 
 /* SILSILA tab tile color (lifted from header tile rule) */
 .hdr-tile-silsila{background:#2a3545;border-top-color:#6a5a8a}
+#silsilaView{direction:ltr;}
+#silsilaView .sl-lane-name,
+#silsilaView .sl-node-text,
+#silsilaView .sc-bio,
+#silsilaView #scCardName,
+#silsilaView #scCardSub{unicode-bidi:plaintext;}
+
+
+/* RTL layout: lane column on right, names right-aligned */
+body[dir="rtl"] #zoneC #silsilaView{flex-direction:row-reverse;}
+body[dir="rtl"] #silsilaLanes{border-right:none;border-left:2px solid var(--lp-brd);}
+body[dir="rtl"] .sl-lane-label{flex-direction:row-reverse;text-align:right;}
+body[dir="rtl"] .sl-lane-name{text-align:right;direction:rtl;}
+body[dir="rtl"] #silsilaCard{direction:rtl;text-align:right;}
+body[dir="rtl"] #scCardName,
+body[dir="rtl"] #scCardSub,
+body[dir="rtl"] #scCardNameHint,
+body[dir="rtl"] .sc-bio{text-align:right;direction:rtl;}
+body[dir="rtl"] .sc-tags,
+body[dir="rtl"] .sc-link-row{direction:rtl;}
+body[dir="rtl"] .sc-dates{flex-direction:row-reverse;}
+body[dir="rtl"] .sl-dd-panel{direction:rtl;text-align:right;}
+body[dir="rtl"] .sl-dd-item{flex-direction:row-reverse;}
+body[dir="rtl"] .sl-dd-search{text-align:right;direction:rtl;}

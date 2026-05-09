@@ -848,7 +848,6 @@ function _stEnsureSurahLoaded(slug,surahId){
   }
   if(!entry||!entry.lang_code||!entry.sub_slug){
     console.warn('[START] No path data for',slug);
-    delete _stTrans[slug];
     _stBuildTransDD();return;
   }
   // Already cached for this surah?
@@ -2867,6 +2866,11 @@ function _stBmkPopup(){
       if(!tSlug || isNaN(tS) || isNaN(tV)) return null;
       return { type:'t', slug:tSlug, surah:tS, verse:tV, key:k };
     }
+    if(k.indexOf('f:') === 0){
+      var fSlug = k.slice(2);
+      if(!fSlug) return null;
+      return { type:'f', slug:fSlug, key:k };
+    }
     if(k.indexOf('q:') === 0){
       var qp = k.slice(2).split(':');
       if(qp.length !== 2) return null;
@@ -2894,8 +2898,19 @@ function _stBmkPopup(){
     var hadith = entries.filter(function(e){ return e.type==='h'; })
       .sort(function(a,b){ if(a.col!==b.col) return a.col<b.col?-1:1; return a.num-b.num; });
     var tafsir = entries.filter(function(e){ return e.type==='t'; });
+    var figures = entries.filter(function(e){ return e.type==='f'; })
+      .sort(function(a,b){ return a.slug<b.slug?-1:1; });
+    function _figLabel(slug){
+      try {
+        if(window.PEOPLE && window.PEOPLE.length){
+          var p = window.PEOPLE.find(function(x){ return x.slug === slug; });
+          if(p) return p.famous + ' (' + slug + ')';
+        }
+      } catch(e){}
+      return 'Figure ' + slug;
+    }
 
-    var h='<button id="st-bmk-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>';
+    var h='<button id="st-bmk-close" style="position:absolute;top:14px;right:18px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1;width:28px;height:28px;border-radius:50%">×</button>';
     h+='<h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-2);margin:0 0 16px;letter-spacing:.06em">My Bookmarks</h3>';
 
     if(!entries.length){
@@ -2910,6 +2925,7 @@ function _stBmkPopup(){
           if(e.type==='q')      label = 'Surah ' + e.surah + ' : Verse ' + e.verse;
           else if(e.type==='h') label = _hadithLabel(e.col) + ' · Hadith #' + e.num;
           else if(e.type==='t') label = 'Tafsir ' + e.slug + ' · ' + e.surah + ':' + e.verse;
+          else if(e.type==='f') label = _figLabel(e.slug);
           sec += '<div class="st-bmk-row" style="display:flex;align-items:stretch;gap:6px">'
             + '<button class="st-bmk-item" data-key="' + e.key + '" data-type="' + e.type + '" style="flex:1;text-align:left;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.3);color:#E5E7EB;padding:8px 12px;border-radius:4px;cursor:pointer;font-family:Lato,sans-serif;font-size:var(--fs-3)">' + label + '</button>'
             + '<button class="st-bmk-x" data-key="' + e.key + '" data-type="' + e.type + (e.legacy?'" data-legacy="1':'') + '" title="Remove bookmark" style="width:36px;background:rgba(220,80,80,0.08);border:1px solid rgba(220,80,80,0.4);color:#e87a7a;border-radius:4px;cursor:pointer;font-size:var(--fs-2);line-height:1;padding:0">×</button>'
@@ -2921,6 +2937,7 @@ function _stBmkPopup(){
       h += _section('Verses (Quran)', quran);
       h += _section('Hadiths', hadith);
       h += _section('Tafsir', tafsir);
+      h += _section('Figures', figures);
     }
 
     box.innerHTML=h;
@@ -2971,6 +2988,41 @@ function _stBmkPopup(){
           // Tafsir entry — open EXPLAIN view (deep-link not yet wired in modal).
           var expBtn = document.querySelector('.tab-btn[data-tab="EXPLAIN"]');
           if(expBtn) expBtn.click();
+          return;
+        }
+        if(entry.type === 'f'){
+          // Figure — switch to TIMELINE, locate row by data-name, scroll + pulse.
+          var fSlugJ = entry.slug;
+          var tlBtnJ = document.querySelector('.tab-btn[data-tab="TIMELINE"]');
+          if(tlBtnJ) tlBtnJ.click();
+          var pollAttF = 0;
+          var pollF = setInterval(function(){
+            pollAttF++;
+            var people = window.PEOPLE || [];
+            var pf = people.find(function(x){ return x.slug === fSlugJ; });
+            if(!pf){ if(pollAttF > 80) clearInterval(pollF); return; }
+            var nameElsF = document.querySelectorAll('.tc-famous');
+            for(var iF = 0; iF < nameElsF.length; iF++){
+              if(nameElsF[iF].getAttribute('data-name') === pf.famous){
+                var rowF = nameElsF[iF].closest('.tl-row');
+                if(rowF){
+                  try {
+                    rowF.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+                    rowF.classList.remove('focus-pulse');
+                    void rowF.offsetWidth;
+                    rowF.classList.add('focus-pulse');
+                    setTimeout(function(){ rowF.classList.remove('focus-pulse'); }, 1600);
+                    if(typeof window.selectRow === 'function'){
+                      var idxF = parseInt(rowF.getAttribute('data-idx'), 10);
+                      if(!isNaN(idxF)) window.selectRow(idxF);
+                    }
+                  } catch(e){}
+                  clearInterval(pollF); return;
+                }
+              }
+            }
+            if(pollAttF > 80) clearInterval(pollF);
+          }, 100);
           return;
         }
         // Quran verse — switch to START tab (if not already there) and scroll to verse.
@@ -3049,7 +3101,12 @@ function _stBmkInjectTopbarBtn(){
   var color=hasAny?'#D4AF37':'#A0AEC0';
   var borderCol=hasAny?'rgba(212,175,55,0.8)':'rgba(160,174,192,0.5)';
   btn.title=hasAny?('View my '+count+' bookmark(s)'):'No bookmarks yet';
-  btn.innerHTML='★ BOOKMARKS'+(hasAny?' ('+count+')':'');
+  var _bmI = window.GoldArkI18n;
+  var _bmLbl = (_bmI && _bmI.tt) ? _bmI.tt('BOOKMARKS') : 'BOOKMARKS';
+  btn.innerHTML =
+    '<svg width="11" height="14" viewBox="0 0 12 16" fill="currentColor" stroke="currentColor" stroke-width="1.4" style="vertical-align:-2px;margin-right:5px"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>'
+    + '<span data-i18n="BOOKMARKS">' + _bmLbl + '</span>'
+    + (hasAny ? ' <span>(' + count + ')</span>' : '');
   btn.style.cssText='margin-left:6px;padding:4px 12px;background:transparent;border:1px solid '+borderCol+';color:'+color+';font-family:Cinzel,serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px';
 }
 window._stBmkInjectTopbarBtn=_stBmkInjectTopbarBtn;
@@ -3187,7 +3244,7 @@ function _stRenderRichTrans(el, opts){
     var esc = _stRichTransEsc;
     // Build a slug→bool lookup for fast registry-membership check
     var _validSlugs = {};
-    validList.forEach(function(t){ _validSlugs[t.slug] = true; });
+    validList.forEach(function(t){ _validSlugs[t.id || t.slug] = true; });
 
     function render(){
       var sel = (opts.getSel ? opts.getSel() : []) || [];
@@ -3234,7 +3291,7 @@ function _stRenderRichTrans(el, opts){
             + '</summary>';
         hi += '<div style="padding:6px 14px 12px 18px;display:flex;flex-direction:column;gap:3px">';
         arr.forEach(function(t){
-          var slug = t.slug; var checked = sel.indexOf(slug) !== -1;
+          var slug = t.id || t.slug; var checked = sel.indexOf(slug) !== -1;
           var label = t.translator || t.title || slug;
           var romBadge = (t.script === 'romanised') ? ' <span style="background:rgba(154,163,178,0.18);color:#9aa3b2;border:1px solid rgba(154,163,178,0.4);border-radius:8px;padding:1px 6px;font-size:10px;font-weight:600;margin-left:6px;letter-spacing:.05em">ROM</span>' : '';
           hi += '<label class="strt-row" style="display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:3px;cursor:pointer;line-height:1.35;font-size:13px">'
@@ -3246,13 +3303,23 @@ function _stRenderRichTrans(el, opts){
       hi += '</div>';
 
       el.innerHTML = hi;
-      el.querySelectorAll('.strt-row input').forEach(function(cb){
-        cb.addEventListener('change', function(){
-          var slug = cb.getAttribute('data-slug');
+
+      // Bind a direct click handler on each row label.
+      // The label wraps the checkbox, so clicking anywhere on the row
+      // triggers this handler. preventDefault stops the default checkbox
+      // toggle so we control state ourselves.
+      el.querySelectorAll('label.strt-row').forEach(function(row){
+        var cb = row.querySelector('input[type="checkbox"][data-slug]');
+        if(!cb) return;
+        var slug = cb.getAttribute('data-slug');
+        if(!slug) return;
+        row.addEventListener('click', function(ev){
+          ev.preventDefault();
+          ev.stopPropagation();
           var cur = ((opts.getSel ? opts.getSel() : []) || []).slice();
           var i = cur.indexOf(slug);
-          if(cb.checked && i === -1) cur.push(slug);
-          else if(!cb.checked && i !== -1) cur.splice(i,1);
+          if(i === -1) cur.push(slug);
+          else cur.splice(i, 1);
           if(opts.onChange) opts.onChange(cur);
           render();
         });
@@ -3837,7 +3904,7 @@ function _stMyViewBuildBookShell(){
     + '<button id="mv-bs-toggle" style="background:rgba(212,175,55,0.22);color:#c9a961;border:1px solid #c9a961;border-radius:18px;padding:6px 14px;font-size:11px;cursor:pointer;font-weight:700;letter-spacing:.05em;font-family:Lato,sans-serif">MY VIEW: ON</button>'
     + '<button id="mv-bs-edit" style="background:transparent;color:#9aa3b2;border:1px solid rgba(154,163,178,0.45);border-radius:50%;width:30px;height:30px;font-size:13px;cursor:pointer;padding:0;line-height:1" title="Edit My View">✎</button>'
     + '<button id="mv-bs-cancel" style="background:transparent;color:#9aa3b2;border:1px solid rgba(154,163,178,0.45);border-radius:50%;width:30px;height:30px;font-size:14px;cursor:pointer;padding:0;line-height:1" title="Exit My View">×</button>'
-    + '<button id="mv-bs-bookmarks" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.4);border-radius:18px;padding:6px 14px;font-size:11px;cursor:pointer;font-family:Lato,sans-serif">★ BOOKMARKS</button>'
+    + '<button id="mv-bs-bookmarks" style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.4);border-radius:18px;padding:6px 14px;font-size:11px;cursor:pointer;font-family:Lato,sans-serif"><svg width="10" height="13" viewBox="0 0 12 16" fill="currentColor" stroke="currentColor" stroke-width="1.4" style="vertical-align:-2px;margin-right:5px"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg><span data-i18n="BOOKMARKS">BOOKMARKS</span></button>'
     + '<div style="display:inline-flex;align-items:center;gap:4px;margin-left:8px">'
     + '<button id="mv-bs-fontm" style="background:rgba(212,175,55,0.15);color:#c9a961;border:1px solid #c9a961;border-radius:16px;padding:6px 14px;font-size:14px;font-weight:700;cursor:pointer;font-family:Lato,sans-serif;letter-spacing:.02em" title="Smaller text">A−</button>'
     + '<span id="mv-bs-scale-lbl" style="color:#c9a961;font-size:13px;font-weight:600;min-width:50px;text-align:center;font-family:Lato,sans-serif">100%</span>'
@@ -5172,7 +5239,12 @@ window.StartView = (function(){
     var auth = window.GoldArkAuth;
     var count = (auth && auth.isSignedIn && auth.isSignedIn()) ? (auth.getBookmarks ? auth.getBookmarks().length : 0) : 0;
     var hasAny = count > 0;
-    btn.textContent = '★ BOOKMARKS' + (hasAny ? ' (' + count + ')' : '');
+    var I = window.GoldArkI18n;
+    var label = (I && I.tt) ? I.tt('BOOKMARKS') : 'BOOKMARKS';
+    btn.innerHTML =
+      '<svg width="11" height="14" viewBox="0 0 12 16" fill="currentColor" stroke="currentColor" stroke-width="1.4" style="vertical-align:-2px;margin-right:5px"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>'
+      + '<span data-i18n="BOOKMARKS">' + label + '</span>'
+      + (hasAny ? ' <span>(' + count + ')</span>' : '');
     btn.title = hasAny ? ('View my ' + count + ' bookmark(s)') : 'No bookmarks yet';
     btn.classList.toggle('zb-active', hasAny);
   }
@@ -5196,7 +5268,8 @@ window.StartView = (function(){
     ];
 
     Array.prototype.slice.call(row2.querySelectorAll('.zb-select')).forEach(function(btn){
-      var lbl = (btn.textContent || '').replace(/[▾▼]/g,'').trim();
+      var lbl = (btn.getAttribute('data-i18n') || btn.textContent || '')
+                .replace(/[▾▼]/g,'').trim();
       var b = bindings.find(function(x){ return x.label === lbl; });
       if(!b) return;
       btn.setAttribute('data-st-shell', b.name);
@@ -5477,6 +5550,38 @@ window._stUpdateTransRtl = function(){
   }
   init();
 })();
+
+// When app language is Urdu, default Start view to Fateh Muhammad Jalandhry's Urdu translation.
+(function(){
+  function applyUrduDefault(){
+    if(typeof _stTrans === 'undefined') return;
+    Object.keys(_stTrans).forEach(function(k){ delete _stTrans[k]; });
+    _stTrans['urd-fatehmuhammadja'] = true;
+    if(typeof _stLoadFileTrans === 'function' && typeof _stSurah !== 'undefined'){
+      try { _stLoadFileTrans('urd-fatehmuhammadja', _stSurah); } catch(e){}
+    }
+    if(typeof _stPersistTransMulti === 'function') _stPersistTransMulti();
+    if(typeof _stRenderSurah === 'function') _stRenderSurah();
+    if(typeof _stUpdateTransLabel === 'function') _stUpdateTransLabel();
+    if(typeof _stShellRefreshLabels === 'function') _stShellRefreshLabels();
+  }
+  window.addEventListener('gold-ark-lang-changed', function(e){
+    var lang = e && e.detail && e.detail.lang;
+    if(lang === 'ur') applyUrduDefault();
+  });
+  function bootCheck(){
+    try {
+      var lang = (window.GoldArkI18n && window.GoldArkI18n.getLang)
+        ? window.GoldArkI18n.getLang() : null;
+      if(lang === 'ur') applyUrduDefault();
+    } catch(e){}
+  }
+  if(document.readyState === 'complete') setTimeout(bootCheck, 1500);
+  else window.addEventListener('load', function(){ setTimeout(bootCheck, 1500); });
+})();
+
+if(typeof _stToggleTrans === 'function') window._stToggleTrans = _stToggleTrans;
+if(typeof _stTrans !== 'undefined') Object.defineProperty(window, '_stTrans', { get: function(){ return _stTrans; } });
 
 })(); // close outer StartView wrapper
 

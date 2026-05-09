@@ -1382,3 +1382,223 @@ body[data-tab-mode="focused"] .tab-arrow { display: flex !important; }
 #ga-concept-pop .gcp-explore { display: block; width: 100%; margin-top: 12px; padding: 8px 12px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.6); border-radius: 3px; color: #D4AF37; font-family: 'Cinzel', serif; font-size: var(--fs-3, 13px); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 #ga-concept-pop .gcp-explore:hover { background: rgba(212,175,55,0.22); }
 #ga-concept-pop .gcp-explore-disabled { opacity: 0.45; cursor: not-allowed; border-style: dashed; }
+
+/* ============ LANGUAGE SWITCHER (top bar) ============ */
+.lang-wrap { position: relative; display: flex; align-items: center; }
+.lang-btn {
+  background: none;
+  border: 1px solid #7B9DC4;
+  color: #7B9DC4;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  height: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.lang-btn:hover { border-color: #A8BCD9; color: #A8BCD9; background: rgba(123,157,196,0.10); }
+.lang-dropdown {
+  top: 30px;
+  right: 0;
+  left: auto;
+  min-width: 180px;
+}
+.lang-dropdown .menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.lang-dropdown .menu-item .lang-name { color: var(--text); }
+.lang-dropdown .menu-item .lang-check {
+  color: var(--gold);
+  font-size: 14px;
+  width: 14px;
+  text-align: right;
+}
+.lang-dropdown .menu-item.is-active { background: var(--gold-faint); }
+.lang-dropdown .menu-item.is-active .lang-name { color: var(--gold); }
+
+/* ============ ENTRY DOOR LANGUAGE PICKER ============ */
+.entry-lang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+.entry-lang-label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.entry-lang-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.entry-lang-pill {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 16px;
+  height: 32px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.entry-lang-pill:hover {
+  border-color: var(--gold);
+  background: var(--gold-faint);
+}
+.entry-lang-pill.is-active {
+  border-color: var(--gold);
+  background: var(--gold-faint);
+  color: #c9a961;
+}
+
+/* ============ RTL FLIP MECHANICS ============ */
+html[dir="rtl"] body { direction: rtl; text-align: right; }
+
+/* Numbers stay LTR even inside RTL context */
+html[dir="rtl"] .num,
+html[dir="rtl"] .stat-value,
+html[dir="rtl"] [data-keep-ltr] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* Quran reader (START view) center-spine MUST NOT FLIP — it's sacred. */
+html[dir="rtl"] #zoneC #start-view,
+html[dir="rtl"] #zoneC .st-vcenter,
+html[dir="rtl"] #zoneC .st-verses-list { direction: ltr; }
+
+/* But the top bar inside START still flips */
+html[dir="rtl"] #zoneC .st-topbar { direction: rtl; }
+
+/* ============ URDU FONT (lazy-loaded by i18n.js) ============ */
+html[dir="rtl"] body,
+html.app-lang-ur body {
+  font-family: 'Noto Nastaliq Urdu', 'Source Sans 3', sans-serif;
+}
+html.app-lang-ur .entry-stats-l1,
+html.app-lang-ur .entry-stats-l2,
+html.app-lang-ur .entry-tagline {
+  font-family: 'Noto Nastaliq Urdu', 'Cinzel', serif;
+}
+
+/* ════════════════ RTL LAYOUT RULES ════════════════ */
+
+/* Top bar Row 1: logo to right, controls cluster to left */
+html[dir="rtl"] .zone-a-row1 {
+  flex-direction: row-reverse;
+}
+html[dir="rtl"] .row1-right {
+  flex-direction: row-reverse;
+}
+
+/* Tab rows: keep LTR direction so both rows render correctly,
+   scroll arrows stay positioned right */
+html[dir="rtl"] .zone-a-row2,
+html[dir="rtl"] .zone-a-row3,
+html[dir="rtl"] #tabRow1,
+html[dir="rtl"] #tabRow2,
+html[dir="rtl"] .tab-row {
+  direction: ltr;
+}
+/* …but tab BUTTON content (the Urdu label) reads RTL inside the button */
+html[dir="rtl"] .tab-row .tab-btn,
+html[dir="rtl"] .tab-row button {
+  direction: rtl;
+  text-align: center;
+}
+
+/* Zone D bottom bar: keep LTR so back/forward/animate stay in LTR order */
+html[dir="rtl"] .zone-d {
+  direction: ltr;
+}
+html[dir="rtl"] .zone-d .zd-disclaimer {
+  direction: rtl;
+}
+
+/* Modals: keep buttons in physical LTR order */
+html[dir="rtl"] .modal-actions {
+  direction: ltr;
+}
+
+/* Dropdowns (tools, lang, user) should still flow RTL inside */
+html[dir="rtl"] .menu-dropdown {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Filter bar (Zone B): KEEP LTR overall structure (filters left to right),
+   but each filter button's text reads RTL inside */
+html[dir="rtl"] .zone-b,
+html[dir="rtl"] #zoneB {
+  direction: ltr;
+}
+html[dir="rtl"] .zone-b .zb-select,
+html[dir="rtl"] .zone-b .zb-pill,
+html[dir="rtl"] .zone-b .zb-slot-hint,
+html[dir="rtl"] .zone-b button {
+  direction: rtl;
+}
+
+/* Search input: text RTL but input flow stays normal */
+html[dir="rtl"] .zb-search-input,
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="search"],
+html[dir="rtl"] textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Tab carousel: viewport + row + arrows ALL stay LTR in RTL mode */
+html[dir="rtl"] .tab-viewport,
+html[dir="rtl"] #tabViewport,
+html[dir="rtl"] .tab-arrow,
+html[dir="rtl"] .tab-arrow-prev,
+html[dir="rtl"] .tab-arrow-next {
+  direction: ltr;
+}
+/* Tab buttons: outer container LTR (so positions match), inner text
+   reads RTL (so Urdu label renders correctly) */
+html[dir="rtl"] .tab-btn {
+  direction: ltr;
+}
+html[dir="rtl"] .tab-btn > * {
+  direction: rtl;
+}
+
+/* Zone D — keep all bottom-bar buttons baseline-aligned */
+.zone-d {
+  align-items: center !important;
+}
+.zone-d .zd-nav,
+.zone-d .zd-animate,
+.zone-d .zd-speed,
+.zone-d .zd-tip {
+  align-self: center !important;
+  vertical-align: middle;
+}
+/* Keep Zone D LTR even when body is RTL — animate flow is left→right */
+body[dir="rtl"] .zone-d,
+html[dir="rtl"] .zone-d {
+  direction: ltr;
+}

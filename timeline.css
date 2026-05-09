@@ -270,7 +270,8 @@ body.tl-mounted #zoneC .tc-name{
   display:flex;align-items:center;gap:8px;padding:0 10px;
   border-right:1.5px solid var(--lp-brd);overflow:hidden;
 }
-body.tl-mounted #zoneC .tc-dot{width:14px;height:14px;border-radius:50%;margin-left:auto;margin-right:18px;flex-shrink:0;transition:background-color .15s}
+body.tl-mounted #zoneC .tc-dot{width:14px;height:14px;border-radius:50%;margin-inline-start:auto;margin-inline-end:18px;flex-shrink:0;transition:background-color .15s}
+body[dir="rtl"].tl-mounted #zoneC .tc-dot{margin-inline-end:32px}
 body.tl-mounted #zoneC .tc-texts{display:flex;flex-direction:column;flex:1;min-width:0;gap:1px}
 body.tl-mounted #zoneC .tc-famous{font-size:var(--fs-1);font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;transition:color .1s}
 body.tl-mounted #zoneC .tl-row:hover .tc-famous,
@@ -798,3 +799,22 @@ body.tl-focus.tl-mounted #zoneC #tlFocusPill #tlFocusClose:hover { background: #
 
 #filterBar { display: contents !important; }
 .dd-panel { min-width: 220px; }
+/* Names Across Traditions — collapsible */
+body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary{
+  list-style:none; cursor:pointer; display:flex; align-items:center; gap:8px;
+  padding:2px 0; user-select:none;
+}
+body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary::-webkit-details-marker{display:none}
+body.tl-mounted #zoneC .i-nv-count{
+  font-size:var(--fs-3); color:var(--ip-muted); font-family:inherit;
+}
+body.tl-mounted #zoneC .i-nv-arrow{
+  margin-left:auto; color:var(--ip-acc); font-size:var(--fs-2);
+  transition:transform .18s ease;
+}
+body[dir="rtl"].tl-mounted #zoneC .i-nv-arrow{margin-left:0; margin-right:auto}
+body.tl-mounted #zoneC .i-nv-details[open] .i-nv-arrow{transform:rotate(180deg)}
+body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary:hover .i-sl,
+body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary:hover .i-nv-arrow{
+  color:var(--ip-acc);
+}
