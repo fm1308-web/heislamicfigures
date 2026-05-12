@@ -1,0 +1,40 @@
+{
+  "languages": {
+    "ur": {
+      "name_native": "اردو",
+      "name_english": "Urdu",
+      "dir": "rtl",
+      "buckets": {
+        "figures": {
+          "version": 2,
+          "sha": "54b526ada49724bd",
+          "size": 11575625
+        },
+        "ui_strings": {
+          "version": 2,
+          "sha": "b97195cbdd6cc666",
+          "size": 4730
+        },
+        "concepts": {
+          "version": 1,
+          "sha": "2947c82fda7f58cc",
+          "size": 99982
+        },
+        "events": {
+          "version": 1,
+          "sha": "468225ffc1fef235",
+          "size": 202377
+        },
+        "name_variants": {
+          "version": 2,
+          "sha": "204d75efaf9d7380",
+          "size": 354342
+        }
+      },
+      "font": "Noto Nastaliq Urdu",
+      "updated": "2026-05-11"
+    }
+  },
+  "default": "en",
+  "version": 4
+}

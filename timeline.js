@@ -460,6 +460,18 @@ window.TimelineView = (function(){
     } catch(e){}
     return en;
   }
+  function _tlFigQuote(p, idx){
+    var en = (p && p.quotes && p.quotes[idx]) || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p && p.slug){
+        var qi = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'quotes_i18n');
+        if(qi && typeof qi === 'object' && Array.isArray(qi[lang]) && qi[lang][idx]) return qi[lang][idx];
+      }
+    } catch(e){}
+    return en;
+  }
   document.addEventListener('gold-ark-i18n-ready', function(){
     try {
       var _lang = _tlGetLang();
@@ -1843,10 +1855,10 @@ function renderInfo(p){
       quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
           <span style="font-family:'Cinzel',serif;font-size:var(--fs-1);font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
-          <span style="font-size:var(--fs-3);color:var(--ip-muted)">mentioned in the Quran</span>
+          <span style="font-size:var(--fs-3);color:var(--ip-muted)">${_tlT('mentioned in the Quran')}</span>
           <span style="font-size:var(--fs-3)">${typeof renderQuranRef==="function"?renderQuranRef(qr.firstVerse):esc(qr.firstVerse)}</span>
         </div>
-        <div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal">${esc(qr.epithet)}</div>
+        <div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal">${esc((qr.epithet||'').split('·').map(s=>_tlT(s.trim())).join(' · '))}</div>
       </div>`;
     } else {
       quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
@@ -1923,7 +1935,7 @@ function renderInfo(p){
           const relLabel=`<span class="i-rel-type" data-rel="${esc(r.relation)}">${esc(_tlT(String(r.relation||'').toUpperCase()))}</span>`;
           const name=esc(inData ? _tlFigName(inData) : r.person);
           if(inData){
-            return `<span class="i-rel-chip clickable" data-rel="${esc(r.relation)}" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')" title="Go to ${esc(r.person)}">${relLabel} ${name}</span>`;
+            return `<span class="i-rel-chip clickable" data-rel="${esc(r.relation)}" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')" title="${_tlT('Go to')} ${esc(r.person)}">${relLabel} ${name}</span>`;
           } else {
             return `<span class="i-rel-chip" data-rel="${esc(r.relation)}">${relLabel} ${name}</span>`;
           }
@@ -1939,7 +1951,7 @@ function renderInfo(p){
   var _bmAuth = window.GoldArkAuth;
   var _isFav = (_bmAuth && _bmAuth.hasBookmarkKey && p.slug) ? _bmAuth.hasBookmarkKey('f:' + p.slug) : false;
   var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" data-slug="' + esc(p.slug || '') + '" '
-    + 'title="' + (_isFav ? 'Remove from bookmarks' : 'Bookmark this figure') + '" '
+    + 'title="' + (_isFav ? _tlT('Remove from bookmarks') : _tlT('Bookmark this figure')) + '" '
     + 'style="background:none;border:none;cursor:pointer;font-size:var(--fs-1);'
     + 'color:' + (_isFav ? '#D4AF37' : 'rgba(160,174,192,0.25)') + ';'
     + 'float:right;margin-left:10px;padding:2px;line-height:1;'
@@ -1948,13 +1960,13 @@ function renderInfo(p){
 
   let quotesHtml = '';
   if (p.quotes && p.quotes.length) {
-    const qItems = p.quotes.map(q =>
+    const qItems = p.quotes.map((q, i) =>
       '<blockquote style="margin:0 0 10px 0;padding:10px 14px;' +
       'border-left:3px solid var(--ip-acc);' +
       'background:rgba(212,175,55,.05);' +
       'font-family:\'Source Sans 3\',sans-serif;font-size:var(--fs-3);' +
       'font-style:normal;color:var(--ip-text);line-height:1.65;">' +
-      esc(q) + '</blockquote>'
+      esc(_tlFigQuote(p, i)) + '</blockquote>'
     ).join('');
     quotesHtml =
       '<div style="margin-top:18px;padding-top:14px;' +
@@ -1962,7 +1974,7 @@ function renderInfo(p){
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);' +
       'letter-spacing:.14em;color:var(--ip-muted);display:flex;' +
       'align-items:center;gap:6px;margin-bottom:10px;">' +
-      'IN THEIR OWN WORDS' +
+      _tlT('IN THEIR OWN WORDS') +
       '<span style="flex:1;height:1px;background:var(--ip-brd);' +
       'display:inline-block;"></span></div>' +
       qItems + '</div>';
@@ -2044,7 +2056,14 @@ function renderInfo(p){
             try {
               if(window.GoldArkI18n && window.GoldArkI18n.tForView && p && p.famous){
                 var urText = window.GoldArkI18n.tForView('TIMELINE','cross_tradition', p.famous, k);
-                if(urText && typeof urText === 'string' && urText.trim().length > 0) txt = urText;
+                if(urText && typeof urText === 'string' && urText.trim().length > 0) {
+                  txt = urText;
+                } else if(k === 'islamic' && _tlGetLang() !== 'en' && p && p.slug){
+                  // Fallback: Islamic tab uses figures.bio_full UR when cross_tradition bucket missing
+                  var bf = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio_full')
+                        || window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio');
+                  if(bf && typeof bf === 'string' && bf.trim().length > 0) txt = bf;
+                }
               }
             } catch(e){}
             var srcLine = srcs.length ? '<div style="margin-top:8px;font-size:11px;color:var(--ip-muted);font-style:italic">'+_tlT('Sources')+': '+srcs.map(esc).join(' · ')+'</div>' : '';
@@ -2125,7 +2144,7 @@ function renderInfo(p){
           var nowFav = !has;
           self.textContent   = nowFav ? '★' : '☆';
           self.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
-          self.title         = nowFav ? 'Remove from bookmarks' : 'Bookmark this figure';
+          self.title         = nowFav ? _tlT('Remove from bookmarks') : _tlT('Bookmark this figure');
           self.style.transform = 'scale(1.5)';
           setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
           try { if(typeof window._zbBmkRefresh === 'function') window._zbBmkRefresh(); } catch(e){}

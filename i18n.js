@@ -12,6 +12,17 @@
   var TTL = 24 * 60 * 60 * 1000; // 24h
   var BUCKETS = ['figures', 'events', 'books', 'journeys', 'eras', 'ui'];
 
+  // BV54 kill-switch — Urdu disabled app-wide while RV redoes data pass.
+  // Flip to true to re-enable UR. Bucket data on CDN is untouched.
+  var UR_ENABLED = true;
+
+  // BV54 — per-view UR shipping whitelist.
+  // Add view name (as passed to tForView) when that view is fully wired for UR.
+  // Views not in this list fall back to EN even when global lang is UR.
+  var UR_VIEW_WHITELIST = { TIMELINE: 1 };
+  var UR_COMING_SOON_TOAST = 'اس ویو میں اردو جلد آرہی ہے  ·  Urdu coming soon to this view';
+  var UR_DISABLED_TOAST = 'Urdu translation in progress — coming back soon';
+
   // Inline supplement for ui strings the auto-extractor missed (uppercase
   // view IDs, short words filtered as code-like). Used as fallback after
   // ui.json from CDN.
@@ -306,7 +317,174 @@
 
       // HTW key term lines (long)
       'Arabic for "chain" — unbroken teacher-to-student transmission':'عربی میں "زنجیر" — استاد سے شاگرد تک غیر منقطع منتقلی',
-      'Arabic for \u201cchain\u201d \u2014 unbroken teacher-to-student transmission':'عربی میں "زنجیر" — استاد سے شاگرد تک غیر منقطع منتقلی'
+      'Arabic for \u201cchain\u201d \u2014 unbroken teacher-to-student transmission':'عربی میں "زنجیر" — استاد سے شاگرد تک غیر منقطع منتقلی',
+
+      // Kinship — extended (BV54)
+      'MATERNAL GRANDFATHER':'نانا',
+      'MATERNAL GRANDMOTHER':'نانی',
+      'PATERNAL GRANDFATHER':'دادا',
+      'PATERNAL GRANDMOTHER':'دادی',
+      'MATERNAL UNCLE':'ماموں',
+      'MATERNAL AUNT':'خالہ',
+      'PATERNAL UNCLE':'چچا',
+      'PATERNAL AUNT':'پھوپھی',
+      'FOSTER MOTHER':'رضاعی والدہ',
+      'FOSTER FATHER':'رضاعی والد',
+      'FOSTER BROTHER':'رضاعی بھائی',
+      'FOSTER SISTER':'رضاعی بہن',
+      'STEP-BROTHER':'سوتیلا بھائی',
+      'STEP-SISTER':'سوتیلی بہن',
+      'HALF-BROTHER':'سوتیلا بھائی',
+      'HALF-SISTER':'سوتیلی بہن',
+
+      // Quran refs + card prose (BV54)
+      'mentioned in the Quran':'قرآن میں ذکر',
+      'IN THEIR OWN WORDS':'انکے اپنے الفاظ میں',
+      'Bookmark this figure':'اس شخصیت کو محفوظ کریں',
+      'Remove from bookmarks':'بک مارک ہٹائیں',
+      'Go to':'جائیں',
+      'Updated':'تازہ کردہ',
+
+      // Prophet titles + epithets (BV54)
+      'Seal of the Prophets':'خاتم النبیین',
+      'The Praised One':'محمود',
+      'Mercy to the Worlds':'رحمۃ للعالمین',
+      'AL-SADIQ':'الصادق',
+      'AL-AMIN':'الامین',
+      'AL-MUSTAFA':'المصطفیٰ',
+      'RASUL ALLAH':'رسول اللہ',
+      'HABIB ALLAH':'حبیب اللہ',
+      'RAHMATUL LIL ALAMEEN':'رحمۃ للعالمین',
+      'SHAFI AL-MUDHNIBEEN':'شافع المذنبین',
+      'AL-NABI AL-UMMI':'النبی الامی',
+      'SAYYID AL-MURSALIN':'سید المرسلین',
+      'KHAYRU L-KHALQ':'خیر الخلق',
+      'Al-Sadiq':'الصادق',
+      'Al-Amin':'الامین',
+      'Al-Mustafa':'المصطفیٰ',
+      'Rasul Allah':'رسول اللہ',
+      'Habib Allah':'حبیب اللہ',
+      'Rahmatul Lil Alameen':'رحمۃ للعالمین',
+      'Shafi al-Mudhnibeen':'شافع المذنبین',
+      'al-Nabi al-Ummi':'النبی الامی',
+      'Sayyid al-Mursalin':'سید المرسلین',
+      'Khayru l-Khalq':'خیر الخلق',
+
+      // Surah names cited on cards (BV54)
+      'Ali Imran':'آل عمران',
+      'Al-Baqarah':'البقرہ',
+      'An-Nisa':'النساء',
+      'Al-Maidah':'المائدہ',
+      'Al-Anam':'الانعام',
+      'Al-Araf':'الاعراف',
+      'Al-Anfal':'الانفال',
+      'At-Tawbah':'التوبہ',
+      'Yunus':'یونس',
+      'Hud':'ہود',
+      'Yusuf':'یوسف',
+      'Ar-Rad':'الرعد',
+      'Ibrahim':'ابراہیم',
+      'Al-Hijr':'الحجر',
+      'An-Nahl':'النحل',
+      'Al-Isra':'الاسراء',
+      'Al-Kahf':'الکہف',
+      'Maryam':'مریم',
+      'Ta-Ha':'طہ',
+      'Al-Anbiya':'الانبیاء',
+      'Al-Hajj':'الحج',
+      'Al-Muminun':'المؤمنون',
+      'An-Nur':'النور',
+      'Al-Furqan':'الفرقان',
+      'Ash-Shuara':'الشعراء',
+      'An-Naml':'النمل',
+      'Al-Qasas':'القصص',
+      'Al-Ankabut':'العنکبوت',
+      'Ar-Rum':'الروم',
+      'Luqman':'لقمان',
+      'As-Sajdah':'السجدہ',
+      'Al-Ahzab':'الاحزاب',
+      'Saba':'سبا',
+      'Fatir':'فاطر',
+      'Ya-Sin':'یس',
+      'As-Saffat':'الصافات',
+      'Sad':'ص',
+      'Az-Zumar':'الزمر',
+      'Ghafir':'غافر',
+      'Fussilat':'فصلت',
+      'Ash-Shura':'الشوریٰ',
+      'Az-Zukhruf':'الزخرف',
+      'Ad-Dukhan':'الدخان',
+      'Al-Jathiyah':'الجاثیہ',
+      'Al-Ahqaf':'الاحقاف',
+      'Muhammad':'محمد',
+      'Al-Fath':'الفتح',
+      'Al-Hujurat':'الحجرات',
+      'Qaf':'ق',
+      'Adh-Dhariyat':'الذاریات',
+      'At-Tur':'الطور',
+      'An-Najm':'النجم',
+      'Al-Qamar':'القمر',
+      'Ar-Rahman':'الرحمٰن',
+      'Al-Waqiah':'الواقعہ',
+      'Al-Hadid':'الحدید',
+      'Al-Mujadilah':'المجادلہ',
+      'Al-Hashr':'الحشر',
+      'Al-Mumtahanah':'الممتحنہ',
+      'As-Saff':'الصف',
+      'Al-Jumuah':'الجمعہ',
+      'Al-Munafiqun':'المنافقون',
+      'At-Taghabun':'التغابن',
+      'At-Talaq':'الطلاق',
+      'At-Tahrim':'التحریم',
+      'Al-Mulk':'الملک',
+      'Al-Qalam':'القلم',
+      'Al-Haqqah':'الحاقہ',
+      'Al-Maarij':'المعارج',
+      'Nuh':'نوح',
+      'Al-Jinn':'الجن',
+      'Al-Muzzammil':'المزمل',
+      'Al-Muddaththir':'المدثر',
+      'Al-Qiyamah':'القیامہ',
+      'Al-Insan':'الانسان',
+      'Al-Mursalat':'المرسلات',
+      'An-Naba':'النبا',
+      'An-Naziat':'النازعات',
+      'Abasa':'عبس',
+      'At-Takwir':'التکویر',
+      'Al-Infitar':'الانفطار',
+      'Al-Mutaffifin':'المطففین',
+      'Al-Inshiqaq':'الانشقاق',
+      'Al-Buruj':'البروج',
+      'At-Tariq':'الطارق',
+      'Al-Ala':'الاعلیٰ',
+      'Al-Ghashiyah':'الغاشیہ',
+      'Al-Fajr':'الفجر',
+      'Al-Balad':'البلد',
+      'Ash-Shams':'الشمس',
+      'Al-Lail':'اللیل',
+      'Ad-Duha':'الضحیٰ',
+      'Ash-Sharh':'الشرح',
+      'At-Tin':'التین',
+      'Al-Alaq':'العلق',
+      'Al-Qadr':'القدر',
+      'Al-Bayyinah':'البینہ',
+      'Az-Zalzalah':'الزلزلہ',
+      'Al-Adiyat':'العادیات',
+      'Al-Qariah':'القارعہ',
+      'At-Takathur':'التکاثر',
+      'Al-Asr':'العصر',
+      'Al-Humazah':'الہمزہ',
+      'Al-Fil':'الفیل',
+      'Quraysh':'قریش',
+      'Al-Maun':'الماعون',
+      'Al-Kawthar':'الکوثر',
+      'Al-Kafirun':'الکافرون',
+      'An-Nasr':'النصر',
+      'Al-Masad':'المسد',
+      'Al-Ikhlas':'الاخلاص',
+      'Al-Falaq':'الفلق',
+      'An-Nas':'الناس',
+      'Al-Fatihah':'الفاتحہ'
     }
   };
 
@@ -357,19 +535,18 @@
 
   // ─── Manifest ─────────────────────────────────────────────
   function _loadManifest(){
-    return _idbGet('__manifest__').catch(function(){ return null; }).then(function(cached){
-      var fresh = cached && (Date.now() - cached.fetchedAt) < TTL;
-      if (fresh) return cached.data;
-      return fetch(MANIFEST_URL).then(function(res){
-        if (!res.ok) throw new Error('manifest ' + res.status);
-        return res.json();
-      }).then(function(data){
-        _idbPut('__manifest__', { data: data, fetchedAt: Date.now() }).catch(function(){});
-        return data;
-      }).catch(function(err){
-        console.warn('[i18n] manifest fetch failed', err);
+    // Always fetch manifest fresh (no IDB cache) so per-bucket sha changes are visible.
+    return fetch(MANIFEST_URL, { cache: 'no-store' }).then(function(res){
+      if (!res.ok) throw new Error('manifest ' + res.status);
+      return res.json();
+    }).then(function(data){
+      _idbPut('__manifest__', { data: data, fetchedAt: Date.now() }).catch(function(){});
+      return data;
+    }).catch(function(err){
+      console.warn('[i18n] manifest fetch failed', err);
+      return _idbGet('__manifest__').catch(function(){ return null; }).then(function(cached){
         if (cached) return cached.data;
-        return _manifest; // English-only default
+        return _manifest;
       });
     });
   }
@@ -382,34 +559,46 @@
       return res.json();
     }).then(function(data){
       _memoryCache[lang + ':' + bucket] = data;
-      _idbPut(lang + ':' + bucket, { data: data, fetchedAt: Date.now() }).catch(function(){});
+      var sha = _expectedSha(lang, bucket);
+      _idbPut(lang + ':' + bucket, { data: data, fetchedAt: Date.now(), sha: sha }).catch(function(){});
       return data;
     });
   }
 
+  function _expectedSha(lang, bucket){
+    try {
+      var L = _manifest && _manifest.languages && _manifest.languages[lang];
+      var B = L && L.buckets && L.buckets[bucket];
+      return (B && B.sha) ? B.sha : null;
+    } catch(e){ return null; }
+  }
+
   function loadBucket(lang, bucket){
-    if (lang === 'en') return Promise.resolve(null); // English in-app
+    if (lang === 'en') return Promise.resolve(null);
     var key = lang + ':' + bucket;
     if (_memoryCache[key] && _inflight[key] === undefined) {
-      // Already in memory, no inflight refresh — serve from memory
       return Promise.resolve(_memoryCache[key]);
     }
     if (_inflight[key]) return _inflight[key];
 
+    var expectedSha = _expectedSha(lang, bucket);
+
     _inflight[key] = _idbGet(key).catch(function(){ return null; }).then(function(cached){
+      var shaMatch = cached && expectedSha && cached.sha === expectedSha;
       var fresh = cached && (Date.now() - cached.fetchedAt) < TTL;
-      if (fresh) {
+      if (cached && shaMatch && fresh) {
         _memoryCache[key] = cached.data;
         return cached.data;
       }
-      if (cached) {
-        // Stale — serve immediately, refresh in background
+      if (cached && shaMatch) {
+        // Sha matches but stale by TTL — serve, refresh in bg
         _memoryCache[key] = cached.data;
         _refreshBucket(lang, bucket).catch(function(e){
           console.warn('[i18n] bg refresh failed', key, e);
         });
         return cached.data;
       }
+      // No cache OR sha mismatch — force fresh fetch, do not serve stale
       return _refreshBucket(lang, bucket);
     });
 
@@ -428,12 +617,17 @@
 
   function _resolveInitialLang(){
     var u = window._gaUser;
-    if (u && u.appLang && _isAvailable(u.appLang)) return u.appLang;
+    if (u && u.appLang && _isAvailable(u.appLang) && !(u.appLang === 'ur' && !UR_ENABLED)) return u.appLang;
     try {
       var stored = localStorage.getItem('gold-ark-app-lang');
+      if (stored === 'ur' && !UR_ENABLED) {
+        try { localStorage.setItem('gold-ark-app-lang', 'en'); } catch(e){}
+        return 'en';
+      }
       if (stored && _isAvailable(stored)) return stored;
     } catch (e) {}
     var navLang = (navigator.language || 'en').toLowerCase().split('-')[0];
+    if (navLang === 'ur' && !UR_ENABLED) return 'en';
     if (_isAvailable(navLang)) return navLang;
     return 'en';
   }
@@ -466,6 +660,50 @@
     return _lookup(effectiveLangFor(viewName), bucket, key, field);
   }
 
+  // ─── Phase 2: overlay merge layer (BV54) ──────────────────
+  // EN is source of truth. Translations are sparse overlays.
+  // Missing/empty/pending UR fields fall back to EN automatically.
+  function _mergeOverlay(en, tr){
+    if (!tr || typeof tr !== 'object') return en;
+    var out = {};
+    for (var k in en) if (Object.prototype.hasOwnProperty.call(en, k)) out[k] = en[k];
+    for (var k2 in tr) {
+      if (!Object.prototype.hasOwnProperty.call(tr, k2)) continue;
+      // Skip flagged/pending overlays (e.g. _bio_ar_pending_ur)
+      if (k2.charAt(0) === '_' && k2.indexOf('_pending') > -1) continue;
+      var v = tr[k2];
+      if (v == null) continue;
+      if (typeof v === 'string' && v.trim() === '') continue;
+      if (Array.isArray(v) && v.length === 0) continue;
+      // Nested objects (names_i18n, quotes_i18n) overwrite as-is
+      out[k2] = v;
+    }
+    return out;
+  }
+
+  function merge(bucket, key, enRecord){
+    if (!enRecord || _currentLang === 'en') return enRecord;
+    var ck = _currentLang + ':' + bucket;
+    var obj = _memoryCache[ck];
+    if (!obj) {
+      loadBucket(_currentLang, bucket).catch(function(){});
+      return enRecord;
+    }
+    return _mergeOverlay(enRecord, obj[key]);
+  }
+
+  function mergeForView(viewName, bucket, key, enRecord){
+    var lang = effectiveLangFor(viewName);
+    if (!enRecord || lang === 'en') return enRecord;
+    var ck = lang + ':' + bucket;
+    var obj = _memoryCache[ck];
+    if (!obj) {
+      loadBucket(lang, bucket).catch(function(){});
+      return enRecord;
+    }
+    return _mergeOverlay(enRecord, obj[key]);
+  }
+
   // ─── View overrides (sessionStorage map) ──────────────────
   function _readViewOverrides(){
     try { return JSON.parse(sessionStorage.getItem('gold-ark-view-lang') || '{}'); }
@@ -495,8 +733,70 @@
       BUCKETS.forEach(function(b){ loadBucket(lang, b).catch(function(){}); });
     }
   }
+  var _urToastShownFor = {};
+  function _showUrComingSoonToast(viewName){
+    if (_urToastShownFor[viewName]) return;
+    _urToastShownFor[viewName] = true;
+    try {
+      var prev = document.getElementById('ga-ur-soon-toast');
+      if (prev) prev.remove();
+      var t = document.createElement('div');
+      t.id = 'ga-ur-soon-toast';
+      t.textContent = UR_COMING_SOON_TOAST;
+      t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a2434;color:#c9a961;border:1px solid #c9a961;border-radius:6px;padding:12px 18px;font-family:"Noto Nastaliq Urdu",Cinzel,serif;font-size:14px;z-index:999999;box-shadow:0 8px 24px rgba(0,0,0,.6);max-width:90vw;text-align:center;direction:rtl';
+      document.body.appendChild(t);
+      setTimeout(function(){ t.style.transition='opacity .4s'; t.style.opacity='0'; setTimeout(function(){ t.remove(); }, 400); }, 4000);
+    } catch(e){}
+  }
+
+  // Map data-active-tab value (lowercase) to view name in whitelist (UPPERCASE)
+  var _VIEW_TAB_MAP = {
+    timeline:'TIMELINE', silsila:'SILSILA', follow:'FOLLOW', study:'STUDY',
+    books:'BOOKS', eras:'ERAS', events:'EVENTS', think:'THINK', map:'MAP',
+    talk:'TALK', one:'ONE', monastic:'MONASTIC', explain:'EXPLAIN',
+    start:'START', dive:'DIVE'
+  };
+  function _checkViewForToast(){
+    try {
+      if (_currentLang !== 'ur') return;
+      var tab = document.body && document.body.getAttribute('data-active-tab');
+      if (!tab) return;
+      var viewName = _VIEW_TAB_MAP[tab.toLowerCase()] || tab.toUpperCase();
+      if (!UR_VIEW_WHITELIST[viewName]) _showUrComingSoonToast(viewName);
+    } catch(e){}
+  }
+  function _installViewSwitchObserver(){
+    try {
+      if (!document.body) {
+        document.addEventListener('DOMContentLoaded', _installViewSwitchObserver);
+        return;
+      }
+      // Initial check, with retries — body data-active-tab may not be set yet at boot
+      var tries = 0;
+      var initial = setInterval(function(){
+        tries++;
+        var tab = document.body.getAttribute('data-active-tab');
+        if (tab) { _checkViewForToast(); clearInterval(initial); }
+        else if (tries > 30) { clearInterval(initial); }
+      }, 200);
+      var obs = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          if (muts[i].attributeName === 'data-active-tab') { _checkViewForToast(); break; }
+        }
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ['data-active-tab'] });
+    } catch(e){}
+  }
+  _installViewSwitchObserver();
+
   function effectiveLangFor(viewName){
-    return getViewOverride(viewName) || _currentLang;
+    var override = getViewOverride(viewName);
+    if (override) return override;
+    if (_currentLang === 'ur' && viewName && !UR_VIEW_WHITELIST[viewName]) {
+      _showUrComingSoonToast(viewName);
+      return 'en';
+    }
+    return _currentLang;
   }
 
   // ─── Public API ───────────────────────────────────────────
@@ -506,6 +806,7 @@
     var out = [{ code: 'en', name: 'English', dir: 'ltr', font: null }];
     if (_manifest && _manifest.languages && typeof _manifest.languages === 'object') {
       Object.keys(_manifest.languages).forEach(function(code){
+        if (code === 'ur' && !UR_ENABLED) return; // BV54 kill-switch
         var L = _manifest.languages[code];
         out.push({
           code: code,
@@ -522,6 +823,21 @@
   }
 
   function setLang(lang){
+    _urToastShownFor = {};
+    setTimeout(function(){ if (lang === 'ur') _checkViewForToast(); }, 50);
+    if (lang === 'ur' && !UR_ENABLED) {
+      try {
+        var prevToast = document.getElementById('ga-ur-toast');
+        if (prevToast) prevToast.remove();
+        var t = document.createElement('div');
+        t.id = 'ga-ur-toast';
+        t.textContent = UR_DISABLED_TOAST;
+        t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a2434;color:#c9a961;border:1px solid #c9a961;border-radius:6px;padding:12px 18px;font-family:Cinzel,serif;letter-spacing:.06em;font-size:14px;z-index:999999;box-shadow:0 8px 24px rgba(0,0,0,.6)';
+        document.body.appendChild(t);
+        setTimeout(function(){ t.style.transition='opacity .4s'; t.style.opacity='0'; setTimeout(function(){ t.remove(); }, 400); }, 3500);
+      } catch(e){}
+      return Promise.resolve();
+    }
     if (!_isAvailable(lang)) {
       console.warn('[i18n] unknown lang:', lang);
       return Promise.resolve();
@@ -672,6 +988,8 @@
     effectiveLangFor: effectiveLangFor,
     t: t,
     tForView: tForView,
+    merge: merge,
+    mergeForView: mergeForView,
     tt: tt,
     applyDomTranslations: _applyDomTranslations,
     loadBucket: loadBucket
