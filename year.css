@@ -1,0 +1,254 @@
+#zoneC #year-view {
+  flex: 1;
+  background: var(--bg0, #0E1621);
+  width: 100%;
+  height: 100%;
+  color: #E8EAEF;
+  font-family: 'Source Sans 3', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+#zoneC #year-view .yr-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 90px 1.45fr;
+  min-height: 0;
+}
+#zoneC #year-view .yr-col {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#zoneC #year-view .yr-col-left { padding: 18px 22px 18px 18px; }
+#zoneC #year-view .yr-left-title {
+  font-family: 'Cinzel', serif;
+  color: #c9a961;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+}
+#zoneC #year-view .yr-section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 6px;
+}
+#zoneC #year-view .yr-section-label {
+  color: #9aa3b2;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-family: 'Cinzel', serif;
+}
+#zoneC #year-view .yr-section-title {
+  color: #c9a961;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-family: 'Cinzel', serif;
+}
+#zoneC #year-view .yr-count {
+  background: rgba(201,169,97,0.22);
+  color: #c9a961;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Source Sans 3', sans-serif;
+}
+#zoneC #year-view .yr-count.yr-count-zero {
+  background: rgba(155,163,178,0.16);
+  color: #6b7384;
+}
+#zoneC #year-view .yr-empty {
+  font-size: 13px;
+  color: #6b7384;
+  font-style: italic;
+  padding: 2px 0;
+}
+#zoneC #year-view .yr-col-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-left: 1px solid rgba(212,175,55,0.55);
+  border-right: 1px solid rgba(212,175,55,0.55);
+  background: rgba(212,175,55,0.05);
+}
+#zoneC #year-view .yr-spine-top,
+#zoneC #year-view .yr-spine-bot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+#zoneC #year-view .yr-spine-arrow {
+  color: #9aa3b2;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+#zoneC #year-view .yr-spine-arrow:hover { color: #c9a961; }
+#zoneC #year-view .yr-spine-range {
+  font-size: 11px;
+  color: #9aa3b2;
+  letter-spacing: 0.12em;
+  font-family: 'Cinzel', serif;
+}
+#zoneC #year-view .yr-spine-tick {
+  font-size: 12px;
+  color: #6b7384;
+  font-family: 'Source Sans 3', sans-serif;
+}
+#zoneC #year-view .yr-spine-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+#zoneC #year-view .yr-spine-year-num {
+  font-size: 34px;
+  color: #c9a961;
+  font-weight: 500;
+  font-family: 'Cinzel', serif;
+  line-height: 1;
+}
+#zoneC #year-view .yr-spine-year-era {
+  font-size: 10px;
+  color: rgba(201,169,97,0.65);
+  letter-spacing: 0.18em;
+  font-family: 'Cinzel', serif;
+  margin-top: 3px;
+}
+#zoneC #year-view .yr-col-right {
+  position: relative;
+  border: 1px solid rgba(201,169,97,0.2);
+  border-radius: 4px;
+  margin: 10px 10px 10px 6px;
+}
+#zoneC #year-view .yr-right-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+  pointer-events: none;
+}
+#zoneC #year-view .yr-era-band {
+  min-height: 24px;
+}
+#zoneC #year-view .yr-right-labels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  pointer-events: none;
+}
+#zoneC #year-view .yr-era-label-row {
+  position: relative;
+  min-height: 24px;
+}
+#zoneC #year-view .yr-era-label {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  color: rgba(232,184,124,0.85);
+  cursor: pointer;
+  text-decoration: underline dotted rgba(232,184,124,0.5);
+  text-underline-offset: 3px;
+  pointer-events: auto;
+}
+#zoneC #year-view .yr-era-label:hover { color: #e8b87c; }
+#zoneC #year-view .yr-right-content {
+  position: relative;
+  z-index: 1;
+  padding: 14px 16px;
+}
+#zoneC #year-view .yr-section-spacer { height: 40px; }
+#zoneC #year-view .yr-row {
+  font-size: 13px;
+  color: #cfd2d6;
+  padding: 3px 0;
+  line-height: 1.5;
+}
+#zoneC #year-view .yr-fig-chip {
+  color: #c9a961;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(201,169,97,0.4);
+  text-underline-offset: 2px;
+}
+#zoneC #year-view .yr-fig-chip:hover {
+  color: #d4a96a;
+  text-decoration-color: #c9a961;
+}
+#zoneC #year-view .yr-ev-chip {
+  color: #cfd2d6;
+  cursor: pointer;
+  text-decoration: none;
+}
+#zoneC #year-view .yr-ev-chip-key {
+  color: #c9a961;
+  text-decoration: underline;
+  text-decoration-color: rgba(201,169,97,0.4);
+  text-underline-offset: 2px;
+}
+#zoneC #year-view .yr-ev-chip:hover { color: #e8eaef; }
+#zoneC #year-view .yr-ev-chip:hover .yr-ev-chip-key {
+  color: #d4a96a;
+  text-decoration-color: #c9a961;
+}
+#zoneC #year-view .yr-item-tag {
+  color: #9aa3b2;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  margin-right: 2px;
+}
+#zoneC #year-view .yr-date-sym {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  color: #9aa3b2;
+  margin-right: 1px;
+}
+#zoneC #year-view .yr-date-sym-tri {
+  color: rgba(212,175,55,0.55);
+  font-weight: 700;
+  cursor: help;
+}
+#zoneC #year-view .yr-more {
+  color: #9aa3b2;
+  font-size: 12px;
+  font-style: italic;
+  padding: 6px 0 0;
+}
+
+/* Hadith chip — full summary on its own line, gold keywords */
+#year-view .yr-hd-chip {
+  display: block;
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 4px 0;
+}
+#year-view .yr-hd-chip:hover .yr-hd-summary {
+  color: var(--gold-soft);
+}
+#year-view .yr-hd-summary {
+  color: #E8EAEF;
+  font-size: 13px;
+}
+#year-view .yr-hd-tag {
+  color: var(--gold);
+  font-weight: 600;
+}
+#year-view .yr-hd-range {
+  color: var(--text-dim);
+  font-size: 12px;
+}

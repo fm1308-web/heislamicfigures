@@ -217,28 +217,66 @@ function _monHandlePendingHadith(){
       document.querySelectorAll('.mon-row-pinned').forEach(function(r){ r.classList.remove('mon-row-pinned'); });
 
       // Find row + scroll. Allow up to ~7s for hadith collection to load + render.
+      // BV57 fix: hadiths beyond MAX_ROWS (500) live on later pages. After
+      // _lastFiltered populates, locate the target index, compute its page,
+      // and re-render that page before searching the DOM.
       var attempts = 0;
+      var pageSwitched = false;
+      var targetNum = parseInt(p.num, 10);
       var tick = setInterval(function(){
         attempts++;
+        // Step 1: once filtered set exists, jump to correct page.
+        if(!pageSwitched && _lastFiltered && _lastFiltered.length){
+          var idx = -1;
+          for(var k = 0; k < _lastFiltered.length; k++){
+            var n = parseInt(getNumber(_lastFiltered[k]), 10);
+            if(n === targetNum){ idx = k; break; }
+          }
+          if(idx >= 0){
+            var targetPage = Math.floor(idx / MAX_ROWS);
+            if(targetPage !== _currentPage){
+              console.log('[MON] hadith on page', targetPage + 1, '— switching from page', _currentPage + 1);
+              _renderRows(_lastFiltered, _lastColKey, targetPage);
+            } else {
+              console.log('[MON] hadith on current page', targetPage + 1);
+            }
+          } else {
+            console.warn('[MON] hadith num', p.num, 'not found in filtered set of', _lastFiltered.length);
+          }
+          pageSwitched = true;
+        }
+        // Step 2: find row in current DOM.
         var row = _resultsEl && _resultsEl.querySelector('.mon-row[data-hcol="'+monKey+'"][data-hnum="'+p.num+'"]');
         if(row){
           clearInterval(tick);
           console.log('[MON] hadith row found, scrolling');
-          row.scrollIntoView({behavior:'smooth', block:'center'});
-          row.classList.add('mon-row-pinned');
-          var dismiss = function(){
-            row.classList.remove('mon-row-pinned');
-            document.removeEventListener('click', dismiss, true);
-            if(_resultsEl) _resultsEl.removeEventListener('scroll', dismiss);
-          };
-          setTimeout(function(){
-            document.addEventListener('click', dismiss, true);
-            if(_resultsEl) _resultsEl.addEventListener('scroll', dismiss);
-          }, 600);
+          // Use instant scroll (auto) not smooth — smooth scrolling fires
+          // scroll events while in flight which races with the dismiss
+          // listener below and kills both the pin and the scroll mid-jump.
+          // Wrap in two requestAnimationFrames so layout is fully settled
+          // after the page-switch _renderRows() before we measure offsets.
+          requestAnimationFrame(function(){
+            requestAnimationFrame(function(){
+              row.scrollIntoView({behavior:'auto', block:'center'});
+              row.classList.add('mon-row-pinned');
+              var dismiss = function(){
+                row.classList.remove('mon-row-pinned');
+                document.removeEventListener('click', dismiss, true);
+                if(_resultsEl) _resultsEl.removeEventListener('scroll', dismiss);
+              };
+              // 1500ms — long enough that the instant scroll's own one-shot
+              // scroll event has fired and settled before we listen.
+              setTimeout(function(){
+                document.addEventListener('click', dismiss, true);
+                if(_resultsEl) _resultsEl.addEventListener('scroll', dismiss);
+              }, 1500);
+            });
+          });
         } else if(attempts > 70){
           console.warn('[MON] hadith row never appeared. Looking for', monKey, p.num,
             '— resultsEl=', !!_resultsEl,
-            '— rows in dom=', _resultsEl ? _resultsEl.querySelectorAll('.mon-row').length : 'n/a');
+            '— rows in dom=', _resultsEl ? _resultsEl.querySelectorAll('.mon-row').length : 'n/a',
+            '— filtered=', _lastFiltered ? _lastFiltered.length : 'null');
           clearInterval(tick);
         }
       }, 100);

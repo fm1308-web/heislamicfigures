@@ -24,7 +24,7 @@
       id: 'tabs',
       title: 'Top tabs',
       body:
-        '<p>Across the top: <strong>14 views</strong>, each a different way to explore. Click any ' +
+        '<p>Across the top: <strong>15 views</strong>, each a different way to explore. Click any ' +
         'tab to switch. Click <strong>◀ ▶</strong> at the row edges to scroll through them.</p>' +
         '<p>Each tab has a sober accent colour so you can recognise where you are. The active tab ' +
         'sits centred. Inactive tabs dim — click any to bring it forward.</p>'
@@ -49,7 +49,7 @@
     },
     {
       id: 'views',
-      title: 'The 14 views',
+      title: 'The 15 views',
       body:
         '<p><strong>TIMELINE</strong> — figures by century.<br>' +
         '<strong>SILSILA</strong> — teacher-student chains.<br>' +
@@ -58,6 +58,7 @@
         '<strong>BOOKS</strong> — 1,098 books with free reads.<br>' +
         '<strong>ERAS</strong> — visual overview of historical periods.<br>' +
         '<strong>EVENTS</strong> — 2,211 enriched events.<br>' +
+        '<strong>YEAR</strong> — drill into any single year.<br>' +
         '<strong>THINK</strong> — concept map across 14 centuries.<br>' +
         '<strong>MAP</strong> — places + animate through years.<br>' +
         '<strong>TALK</strong> — AI conversation with scholars.<br>' +
@@ -113,6 +114,17 @@
         '<p>2,211 historical events with primary-source citations, figure tags, and Quranic links ' +
         'where applicable. Filter by category and century. Animate for chronological playback.</p>',
       tryView: 'EVENTS'
+    },
+    {
+      id: 'year',
+      title: 'YEAR — pick a year',
+      body:
+        '<p>Pick any year between 500 and 2025 CE on the slider. The left column lists figures ' +
+        'born and died that year, events that took place, books published, year-precise hadiths, ' +
+        'and journey stops. The right column shows what happened ±5/10/25/50 years around it. ' +
+        'Click any item to drill deep — events open in EVENTS, books scroll to their row in ' +
+        'BOOKS, hadiths jump to the exact row in MONASTIC.</p>',
+      tryView: 'YEAR'
     },
     {
       id: 'monastic',

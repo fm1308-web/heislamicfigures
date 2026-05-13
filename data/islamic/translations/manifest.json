@@ -36,5 +36,19 @@
     }
   },
   "default": "en",
-  "version": 4
+  "version": 10,
+  "files": {
+    "hadith_year_index.json": {
+      "path": "data/islamic/hadith_year_index.json",
+      "version": 5,
+      "sha": "8ca66069b0059e94",
+      "size": 12051438
+    },
+    "hadith_tags_master.json": {
+      "path": "data/islamic/hadith_tags_master.json",
+      "version": 1,
+      "sha": "bedcf3cd0a87ba54",
+      "size": 43109
+    }
+  }
 }

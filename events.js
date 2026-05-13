@@ -850,6 +850,40 @@ function _showEventsMethodology(){
     Promise.all([p1, p2, p3]).then(function(){
       initEvents();
       _wireZoneB(zoneBEl);
+      if(window._evJumpId){
+        var target = String(window._evJumpId);
+        window._evJumpId = null;
+        try { if(typeof window._evResetYears === 'function') window._evResetYears(); } catch(e){}
+        setTimeout(function(){
+          var sels = [
+            '[data-event-id="'+target+'"]',
+            '[data-evid="'+target+'"]',
+            '[data-id="'+target+'"]',
+            '#event-'+target,
+            '#ev-'+target,
+            '#'+target
+          ];
+          var el = null;
+          for(var k=0;k<sels.length;k++){
+            try { el = document.querySelector(sels[k]); } catch(err){}
+            if(el) break;
+          }
+          if(el){
+            var scrollEl = document.getElementById('ev-scroll') || document.getElementById('zoneC');
+            try { el.scrollIntoView({behavior:'smooth', block:'center'}); } catch(e2){
+              if(scrollEl) scrollEl.scrollTop = Math.max(0, el.offsetTop - 60);
+            }
+            el.style.outline = '2px solid #c9a961';
+            el.style.outlineOffset = '4px';
+            setTimeout(function(){
+              el.style.outline = '';
+              el.style.outlineOffset = '';
+            }, 2000);
+          } else {
+            console.warn('[events] no DOM match for jump id:', target);
+          }
+        }, 220);
+      }
     });
   }
 

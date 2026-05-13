@@ -586,6 +586,7 @@ function _evRenderLeaves(people, rowMap, totalH){
     if(y2e-y1e<6) return;
     const gDiv=document.createElement('div');
     gDiv.className='era-era-band';
+    gDiv.dataset.era=era.name;
     gDiv.style.cssText='top:'+y1e+'px;height:'+(y2e-y1e)+'px;background:linear-gradient(to left, rgba('+era.glow+',0.10) 0%, rgba('+era.glow+',0.04) 50%, transparent 85%)';
     canvas.appendChild(gDiv);
     const label=document.createElement('div');
@@ -1013,6 +1014,17 @@ function _showErasMethodology(){
       _evRebuildTagIndex();
       initEras();
       _wireZoneB(zoneBEl);
+      if(window._yrJumpEra){
+        var target = window._yrJumpEra;
+        window._yrJumpEra = null;
+        setTimeout(function(){
+          var scrollEl = document.getElementById('era-scroll');
+          var band = document.querySelector('.era-era-band[data-era="' + target + '"]');
+          if(scrollEl && band){
+            scrollEl.scrollTop = Math.max(0, band.offsetTop - 40);
+          }
+        }, 150);
+      }
     });
   }
 

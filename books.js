@@ -1122,6 +1122,42 @@ function _showBooksMethodology(){
     Promise.all([p1, p2]).then(function(){
       initBooks().then(function(){
         _wireZoneB(zoneBEl);
+        // YEAR → BOOKS jump. year.js sets window._bkJumpId = book.id and
+        // setActiveTab('BOOKS'). After canvas renders, find the matching
+        // .bv-row[data-id], scroll it into view, and apply the existing
+        // .hi gold highlight. Auto-dismiss on click or manual scroll.
+        var jumpId = window._bkJumpId;
+        if(!jumpId) return;
+        window._bkJumpId = null;
+        // Two rAFs so the absolutely-positioned rows have laid out before
+        // we measure offsets for scrollIntoView.
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            var sel = '.bv-row[data-id="' + jumpId.replace(/"/g,'\\"') + '"]';
+            var row = document.querySelector(sel);
+            if(!row){
+              console.warn('[BOOKS] jump row not found for id:', jumpId);
+              return;
+            }
+            row.scrollIntoView({behavior:'auto', block:'center'});
+            // Clear any stale .hi from other rows, then mark this one.
+            document.querySelectorAll('.bv-row.hi').forEach(function(r){ r.classList.remove('hi'); });
+            row.classList.add('hi');
+            console.log('[BOOKS] jumped to:', jumpId);
+            var scrollEl = document.getElementById('bv-scroll');
+            var dismiss = function(){
+              row.classList.remove('hi');
+              document.removeEventListener('click', dismiss, true);
+              if(scrollEl) scrollEl.removeEventListener('scroll', dismiss);
+            };
+            // 1500ms — let the instant scroll's own scroll event fire and
+            // settle before we listen for user-driven dismiss.
+            setTimeout(function(){
+              document.addEventListener('click', dismiss, true);
+              if(scrollEl) scrollEl.addEventListener('scroll', dismiss);
+            }, 1500);
+          });
+        });
       });
     });
   }

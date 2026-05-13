@@ -1,0 +1,1730 @@
+[
+  {
+    "tag_id": "prayer",
+    "category": "worship",
+    "label_en": "Prayer (Salah)",
+    "label_ar": "الصلاة",
+    "label_ur": "نماز",
+    "hadith_count": 2954
+  },
+  {
+    "tag_id": "etiquette",
+    "category": "ethics",
+    "label_en": "Etiquette (Adab)",
+    "label_ar": "الأدب",
+    "label_ur": "آداب",
+    "hadith_count": 2398
+  },
+  {
+    "tag_id": "supplication",
+    "category": "worship",
+    "label_en": "Supplication (Dua)",
+    "label_ar": "الدعاء",
+    "label_ur": "دعا",
+    "hadith_count": 1340
+  },
+  {
+    "tag_id": "hadith_transmission",
+    "category": "knowledge",
+    "label_en": "Hadith Transmission",
+    "label_ar": "رواية الحديث",
+    "label_ur": "حدیث کی روایت",
+    "hadith_count": 1286
+  },
+  {
+    "tag_id": "knowledge",
+    "category": "knowledge",
+    "label_en": "Knowledge and Learning",
+    "label_ar": "العلم والتعلم",
+    "label_ur": "علم",
+    "hadith_count": 1163
+  },
+  {
+    "tag_id": "food",
+    "category": "daily_life",
+    "label_en": "Food and Drink",
+    "label_ar": "الطعام والشراب",
+    "label_ur": "کھانا پینا",
+    "hadith_count": 1139
+  },
+  {
+    "tag_id": "companions",
+    "category": "prophet_life",
+    "label_en": "Companions (Sahabah)",
+    "label_ar": "الصحابة",
+    "label_ur": "صحابہ",
+    "hadith_count": 1098
+  },
+  {
+    "tag_id": "prohibition",
+    "category": "law",
+    "label_en": "Prohibition (Haram)",
+    "label_ar": "التحريم",
+    "label_ur": "حرام",
+    "hadith_count": 1027
+  },
+  {
+    "tag_id": "jurisprudence",
+    "category": "knowledge",
+    "label_en": "Jurisprudence (Fiqh)",
+    "label_ar": "الفقه",
+    "label_ur": "فقہ",
+    "hadith_count": 997
+  },
+  {
+    "tag_id": "hajj",
+    "category": "worship",
+    "label_en": "Hajj",
+    "label_ar": "الحج",
+    "label_ur": "حج",
+    "hadith_count": 991
+  },
+  {
+    "tag_id": "faith",
+    "category": "belief",
+    "label_en": "Faith (Iman)",
+    "label_ar": "الإيمان",
+    "label_ur": "ایمان",
+    "hadith_count": 957
+  },
+  {
+    "tag_id": "marriage",
+    "category": "family",
+    "label_en": "Marriage (Nikah)",
+    "label_ar": "النكاح",
+    "label_ur": "نکاح",
+    "hadith_count": 911
+  },
+  {
+    "tag_id": "sunnah",
+    "category": "knowledge",
+    "label_en": "Sunnah",
+    "label_ar": "السنة",
+    "label_ur": "سنت",
+    "hadith_count": 842
+  },
+  {
+    "tag_id": "charity",
+    "category": "worship",
+    "label_en": "Charity (Sadaqah)",
+    "label_ar": "الصدقة",
+    "label_ur": "صدقہ",
+    "hadith_count": 807
+  },
+  {
+    "tag_id": "good_character",
+    "category": "ethics",
+    "label_en": "Good Character",
+    "label_ar": "حسن الخلق",
+    "label_ur": "اچھے اخلاق",
+    "hadith_count": 798
+  },
+  {
+    "tag_id": "accountability",
+    "category": "hereafter",
+    "label_en": "Accountability (Hisab)",
+    "label_ar": "الحساب",
+    "label_ur": "حساب",
+    "hadith_count": 795
+  },
+  {
+    "tag_id": "travel",
+    "category": "daily_life",
+    "label_en": "Travel and Journey",
+    "label_ar": "السفر",
+    "label_ur": "سفر",
+    "hadith_count": 759
+  },
+  {
+    "tag_id": "fasting",
+    "category": "worship",
+    "label_en": "Fasting (Sawm)",
+    "label_ar": "الصيام",
+    "label_ur": "روزہ",
+    "hadith_count": 725
+  },
+  {
+    "tag_id": "quran",
+    "category": "knowledge",
+    "label_en": "Quran",
+    "label_ar": "القرآن الكريم",
+    "label_ur": "قرآن",
+    "hadith_count": 673
+  },
+  {
+    "tag_id": "women",
+    "category": "family",
+    "label_en": "Women's Affairs",
+    "label_ar": "شؤون المرأة",
+    "label_ur": "خواتین کے معاملات",
+    "hadith_count": 668
+  },
+  {
+    "tag_id": "prayer_timing",
+    "category": "worship",
+    "label_en": "Prayer Timing",
+    "label_ar": "أوقات الصلاة",
+    "label_ur": "نماز کے اوقات",
+    "hadith_count": 665
+  },
+  {
+    "tag_id": "battles",
+    "category": "prophet_life",
+    "label_en": "Battles and Expeditions",
+    "label_ar": "الغزوات",
+    "label_ur": "غزوات",
+    "hadith_count": 619
+  },
+  {
+    "tag_id": "ablution",
+    "category": "worship",
+    "label_en": "Ablution (Wudu)",
+    "label_ar": "الوضوء",
+    "label_ur": "وضو",
+    "hadith_count": 601
+  },
+  {
+    "tag_id": "warfare",
+    "category": "war",
+    "label_en": "Warfare and Military",
+    "label_ar": "الحرب والقتال",
+    "label_ur": "جنگ و جدل",
+    "hadith_count": 598
+  },
+  {
+    "tag_id": "animals",
+    "category": "daily_life",
+    "label_en": "Animals",
+    "label_ar": "الحيوانات",
+    "label_ur": "جانور",
+    "hadith_count": 585
+  },
+  {
+    "tag_id": "clothing",
+    "category": "daily_life",
+    "label_en": "Clothing and Dress",
+    "label_ar": "اللباس",
+    "label_ur": "لباس",
+    "hadith_count": 574
+  },
+  {
+    "tag_id": "commerce",
+    "category": "commerce",
+    "label_en": "Commerce and Trade",
+    "label_ar": "التجارة",
+    "label_ur": "تجارت",
+    "hadith_count": 571
+  },
+  {
+    "tag_id": "kinship",
+    "category": "family",
+    "label_en": "Kinship and Family Ties",
+    "label_ar": "صلة الرحم",
+    "label_ur": "صلہ رحمی",
+    "hadith_count": 545
+  },
+  {
+    "tag_id": "justice_ruling",
+    "category": "governance",
+    "label_en": "Judicial Rulings",
+    "label_ar": "الأحكام القضائية",
+    "label_ur": "عدالتی فیصلے",
+    "hadith_count": 541
+  },
+  {
+    "tag_id": "governance",
+    "category": "governance",
+    "label_en": "Governance",
+    "label_ar": "الحكم",
+    "label_ur": "حکومت",
+    "hadith_count": 489
+  },
+  {
+    "tag_id": "purity",
+    "category": "worship",
+    "label_en": "Ritual Purity (Taharah)",
+    "label_ar": "الطهارة",
+    "label_ur": "طہارت",
+    "hadith_count": 472
+  },
+  {
+    "tag_id": "death",
+    "category": "hereafter",
+    "label_en": "Death",
+    "label_ar": "الموت",
+    "label_ur": "موت",
+    "hadith_count": 466
+  },
+  {
+    "tag_id": "justice",
+    "category": "ethics",
+    "label_en": "Justice",
+    "label_ar": "العدل",
+    "label_ur": "عدل",
+    "hadith_count": 455
+  },
+  {
+    "tag_id": "slavery",
+    "category": "social",
+    "label_en": "Slavery",
+    "label_ar": "الرق",
+    "label_ur": "غلامی",
+    "hadith_count": 449
+  },
+  {
+    "tag_id": "punishment",
+    "category": "law",
+    "label_en": "Punishment (Hudud)",
+    "label_ar": "الحدود",
+    "label_ur": "حدود",
+    "hadith_count": 443
+  },
+  {
+    "tag_id": "kindness",
+    "category": "ethics",
+    "label_en": "Kindness and Mercy",
+    "label_ar": "الرحمة",
+    "label_ur": "مہربانی",
+    "hadith_count": 430
+  },
+  {
+    "tag_id": "property",
+    "category": "law",
+    "label_en": "Property and Ownership",
+    "label_ar": "الملكية",
+    "label_ur": "ملکیت",
+    "hadith_count": 424
+  },
+  {
+    "tag_id": "inheritance",
+    "category": "law",
+    "label_en": "Inheritance",
+    "label_ar": "الميراث",
+    "label_ur": "وراثت",
+    "hadith_count": 420
+  },
+  {
+    "tag_id": "grooming",
+    "category": "daily_life",
+    "label_en": "Grooming and Hygiene",
+    "label_ar": "الزينة والنظافة",
+    "label_ur": "صفائی و آراستگی",
+    "hadith_count": 385
+  },
+  {
+    "tag_id": "mosque",
+    "category": "worship",
+    "label_en": "Mosque",
+    "label_ar": "المسجد",
+    "label_ur": "مسجد",
+    "hadith_count": 376
+  },
+  {
+    "tag_id": "teaching",
+    "category": "knowledge",
+    "label_en": "Teaching and Instruction",
+    "label_ar": "التعليم والتدريس",
+    "label_ur": "تعلیم",
+    "hadith_count": 375
+  },
+  {
+    "tag_id": "illness",
+    "category": "daily_life",
+    "label_en": "Illness and Disease",
+    "label_ar": "المرض",
+    "label_ur": "بیماری",
+    "hadith_count": 375
+  },
+  {
+    "tag_id": "recitation",
+    "category": "worship",
+    "label_en": "Quran Recitation",
+    "label_ar": "تلاوة القرآن",
+    "label_ur": "تلاوت قرآن",
+    "hadith_count": 369
+  },
+  {
+    "tag_id": "community",
+    "category": "social",
+    "label_en": "Community",
+    "label_ar": "المجتمع",
+    "label_ur": "معاشرہ",
+    "hadith_count": 368
+  },
+  {
+    "tag_id": "patience",
+    "category": "ethics",
+    "label_en": "Patience (Sabr)",
+    "label_ar": "الصبر",
+    "label_ur": "صبر",
+    "hadith_count": 357
+  },
+  {
+    "tag_id": "leadership",
+    "category": "governance",
+    "label_en": "Leadership and Authority",
+    "label_ar": "الإمارة والسلطة",
+    "label_ur": "قیادت اور اختیار",
+    "hadith_count": 356
+  },
+  {
+    "tag_id": "paradise",
+    "category": "hereafter",
+    "label_en": "Paradise (Jannah)",
+    "label_ar": "الجنة",
+    "label_ur": "جنت",
+    "hadith_count": 352
+  },
+  {
+    "tag_id": "medicine",
+    "category": "daily_life",
+    "label_en": "Medicine and Healing",
+    "label_ar": "الطب والشفاء",
+    "label_ur": "طب اور علاج",
+    "hadith_count": 349
+  },
+  {
+    "tag_id": "kaaba_mecca",
+    "category": "daily_life",
+    "label_en": "Kaaba and Mecca",
+    "label_ar": "الكعبة ومكة",
+    "label_ur": "کعبہ اور مکہ",
+    "hadith_count": 341
+  },
+  {
+    "tag_id": "isnad",
+    "category": "knowledge",
+    "label_en": "Chain of Narrators (Isnad)",
+    "label_ar": "الإسناد",
+    "label_ur": "سند",
+    "hadith_count": 339
+  },
+  {
+    "tag_id": "sacrifice",
+    "category": "worship",
+    "label_en": "Sacrifice (Udhiyah)",
+    "label_ar": "الأضحية",
+    "label_ur": "قربانی",
+    "hadith_count": 322
+  },
+  {
+    "tag_id": "visiting_sick",
+    "category": "social",
+    "label_en": "Visiting the Sick",
+    "label_ar": "عيادة المريض",
+    "label_ur": "مریض کی عیادت",
+    "hadith_count": 320
+  },
+  {
+    "tag_id": "obedience",
+    "category": "governance",
+    "label_en": "Obedience to Authority",
+    "label_ar": "طاعة ولي الأمر",
+    "label_ur": "اطاعت امیر",
+    "hadith_count": 310
+  },
+  {
+    "tag_id": "night_prayer",
+    "category": "worship",
+    "label_en": "Night Prayer (Tahajjud)",
+    "label_ar": "صلاة الليل",
+    "label_ur": "تہجد",
+    "hadith_count": 296
+  },
+  {
+    "tag_id": "zakat",
+    "category": "worship",
+    "label_en": "Zakat",
+    "label_ar": "الزكاة",
+    "label_ur": "زکوٰۃ",
+    "hadith_count": 292
+  },
+  {
+    "tag_id": "jihad",
+    "category": "war",
+    "label_en": "Jihad",
+    "label_ar": "الجهاد",
+    "label_ur": "جہاد",
+    "hadith_count": 276
+  },
+  {
+    "tag_id": "oath",
+    "category": "law",
+    "label_en": "Oaths and Vows",
+    "label_ar": "الأيمان والنذور",
+    "label_ur": "قسم اور نذر",
+    "hadith_count": 274
+  },
+  {
+    "tag_id": "treaty",
+    "category": "war",
+    "label_en": "Treaties and Pledges",
+    "label_ar": "المعاهدات والعهود",
+    "label_ur": "معاہدے",
+    "hadith_count": 273
+  },
+  {
+    "tag_id": "funeral",
+    "category": "hereafter",
+    "label_en": "Funeral Rites",
+    "label_ar": "الجنازة",
+    "label_ur": "جنازہ",
+    "hadith_count": 271
+  },
+  {
+    "tag_id": "adhan",
+    "category": "worship",
+    "label_en": "Call to Prayer (Adhan)",
+    "label_ar": "الأذان",
+    "label_ur": "اذان",
+    "hadith_count": 270
+  },
+  {
+    "tag_id": "ramadan",
+    "category": "worship",
+    "label_en": "Ramadan",
+    "label_ar": "رمضان",
+    "label_ur": "رمضان",
+    "hadith_count": 269
+  },
+  {
+    "tag_id": "day_of_judgment",
+    "category": "hereafter",
+    "label_en": "Day of Judgment",
+    "label_ar": "يوم القيامة",
+    "label_ur": "یوم قیامت",
+    "hadith_count": 269
+  },
+  {
+    "tag_id": "children",
+    "category": "family",
+    "label_en": "Children and Upbringing",
+    "label_ar": "الأطفال والتربية",
+    "label_ur": "بچے اور تربیت",
+    "hadith_count": 259
+  },
+  {
+    "tag_id": "dhikr",
+    "category": "worship",
+    "label_en": "Remembrance (Dhikr)",
+    "label_ar": "الذكر",
+    "label_ur": "ذکر",
+    "hadith_count": 257
+  },
+  {
+    "tag_id": "blood_money",
+    "category": "law",
+    "label_en": "Blood Money (Diyah)",
+    "label_ar": "الدية",
+    "label_ur": "دیت",
+    "hadith_count": 255
+  },
+  {
+    "tag_id": "prostration",
+    "category": "worship",
+    "label_en": "Prostration (Sujud)",
+    "label_ar": "السجود",
+    "label_ur": "سجدہ",
+    "hadith_count": 254
+  },
+  {
+    "tag_id": "friday_prayer",
+    "category": "worship",
+    "label_en": "Friday Prayer",
+    "label_ar": "صلاة الجمعة",
+    "label_ur": "جمعہ کی نماز",
+    "hadith_count": 248
+  },
+  {
+    "tag_id": "revelation",
+    "category": "prophet_life",
+    "label_en": "Revelation (Wahy)",
+    "label_ar": "الوحي",
+    "label_ur": "وحی",
+    "hadith_count": 243
+  },
+  {
+    "tag_id": "piety",
+    "category": "ethics",
+    "label_en": "Piety (Taqwa)",
+    "label_ar": "التقوى",
+    "label_ur": "تقویٰ",
+    "hadith_count": 239
+  },
+  {
+    "tag_id": "rain_water",
+    "category": "daily_life",
+    "label_en": "Rain and Water",
+    "label_ar": "المطر والماء",
+    "label_ur": "بارش اور پانی",
+    "hadith_count": 239
+  },
+  {
+    "tag_id": "ihram",
+    "category": "worship",
+    "label_en": "Ihram",
+    "label_ar": "الإحرام",
+    "label_ur": "احرام",
+    "hadith_count": 237
+  },
+  {
+    "tag_id": "asceticism",
+    "category": "ethics",
+    "label_en": "Asceticism (Zuhd)",
+    "label_ar": "الزهد",
+    "label_ur": "زہد",
+    "hadith_count": 236
+  },
+  {
+    "tag_id": "divorce",
+    "category": "law",
+    "label_en": "Divorce (Talaq)",
+    "label_ar": "الطلاق",
+    "label_ur": "طلاق",
+    "hadith_count": 235
+  },
+  {
+    "tag_id": "testimony",
+    "category": "law",
+    "label_en": "Testimony and Witnesses",
+    "label_ar": "الشهادة",
+    "label_ur": "گواہی",
+    "hadith_count": 227
+  },
+  {
+    "tag_id": "greeting",
+    "category": "ethics",
+    "label_en": "Greeting (Salam)",
+    "label_ar": "السلام",
+    "label_ur": "سلام",
+    "hadith_count": 208
+  },
+  {
+    "tag_id": "prophet_appearance",
+    "category": "prophet_life",
+    "label_en": "Prophet's Appearance",
+    "label_ar": "صفة النبي",
+    "label_ur": "نبی کا حلیہ",
+    "hadith_count": 205
+  },
+  {
+    "tag_id": "dreams",
+    "category": "belief",
+    "label_en": "Dreams and Visions",
+    "label_ar": "الرؤى والأحلام",
+    "label_ur": "خواب اور رویا",
+    "hadith_count": 204
+  },
+  {
+    "tag_id": "menstruation",
+    "category": "family",
+    "label_en": "Menstruation",
+    "label_ar": "الحيض",
+    "label_ur": "حیض",
+    "hadith_count": 203
+  },
+  {
+    "tag_id": "sermon",
+    "category": "worship",
+    "label_en": "Sermon (Khutbah)",
+    "label_ar": "الخطبة",
+    "label_ur": "خطبہ",
+    "hadith_count": 200
+  },
+  {
+    "tag_id": "gift",
+    "category": "commerce",
+    "label_en": "Gifts and Exchange",
+    "label_ar": "الهبة والهدية",
+    "label_ur": "تحفہ",
+    "hadith_count": 196
+  },
+  {
+    "tag_id": "debt",
+    "category": "law",
+    "label_en": "Debt and Loans",
+    "label_ar": "الدين والقرض",
+    "label_ur": "قرض",
+    "hadith_count": 191
+  },
+  {
+    "tag_id": "witr_prayer",
+    "category": "worship",
+    "label_en": "Witr Prayer",
+    "label_ar": "صلاة الوتر",
+    "label_ur": "وتر",
+    "hadith_count": 187
+  },
+  {
+    "tag_id": "forgiveness",
+    "category": "ethics",
+    "label_en": "Forgiveness",
+    "label_ar": "العفو",
+    "label_ur": "معافی",
+    "hadith_count": 187
+  },
+  {
+    "tag_id": "angels",
+    "category": "belief",
+    "label_en": "Angels",
+    "label_ar": "الملائكة",
+    "label_ur": "فرشتے",
+    "hadith_count": 185
+  },
+  {
+    "tag_id": "honesty",
+    "category": "ethics",
+    "label_en": "Honesty and Truthfulness",
+    "label_ar": "الصدق",
+    "label_ur": "سچائی",
+    "hadith_count": 183
+  },
+  {
+    "tag_id": "eid_prayer",
+    "category": "worship",
+    "label_en": "Eid Prayer",
+    "label_ar": "صلاة العيد",
+    "label_ur": "عید کی نماز",
+    "hadith_count": 179
+  },
+  {
+    "tag_id": "poetry_speech",
+    "category": "daily_life",
+    "label_en": "Poetry and Speech",
+    "label_ar": "الشعر والكلام",
+    "label_ur": "شعر اور گفتگو",
+    "hadith_count": 176
+  },
+  {
+    "tag_id": "sleep",
+    "category": "daily_life",
+    "label_en": "Sleep and Rest",
+    "label_ar": "النوم",
+    "label_ur": "نیند",
+    "hadith_count": 165
+  },
+  {
+    "tag_id": "ghusl",
+    "category": "worship",
+    "label_en": "Full Bath (Ghusl)",
+    "label_ar": "الغسل",
+    "label_ur": "غسل",
+    "hadith_count": 160
+  },
+  {
+    "tag_id": "prophethood",
+    "category": "prophet_life",
+    "label_en": "Prophethood",
+    "label_ar": "النبوة",
+    "label_ur": "نبوت",
+    "hadith_count": 160
+  },
+  {
+    "tag_id": "modesty",
+    "category": "ethics",
+    "label_en": "Modesty (Haya)",
+    "label_ar": "الحياء",
+    "label_ur": "حیاء",
+    "hadith_count": 158
+  },
+  {
+    "tag_id": "hospitality",
+    "category": "ethics",
+    "label_en": "Hospitality",
+    "label_ar": "الضيافة",
+    "label_ur": "مہمان نوازی",
+    "hadith_count": 157
+  },
+  {
+    "tag_id": "land_agriculture",
+    "category": "law",
+    "label_en": "Land and Agriculture",
+    "label_ar": "الأرض والزراعة",
+    "label_ur": "زمین اور زراعت",
+    "hadith_count": 157
+  },
+  {
+    "tag_id": "grave",
+    "category": "hereafter",
+    "label_en": "Grave and Afterlife",
+    "label_ar": "القبر والآخرة",
+    "label_ur": "قبر اور آخرت",
+    "hadith_count": 157
+  },
+  {
+    "tag_id": "medina",
+    "category": "daily_life",
+    "label_en": "Medina",
+    "label_ar": "المدينة المنورة",
+    "label_ur": "مدینہ منورہ",
+    "hadith_count": 156
+  },
+  {
+    "tag_id": "intoxicants",
+    "category": "law",
+    "label_en": "Intoxicants (Khamr)",
+    "label_ar": "الخمر",
+    "label_ur": "شراب",
+    "hadith_count": 153
+  },
+  {
+    "tag_id": "signs_of_hour",
+    "category": "belief",
+    "label_en": "Signs of the Hour",
+    "label_ar": "أشراط الساعة",
+    "label_ur": "قیامت کی نشانیاں",
+    "hadith_count": 153
+  },
+  {
+    "tag_id": "congregation",
+    "category": "worship",
+    "label_en": "Congregational Prayer",
+    "label_ar": "الجماعة",
+    "label_ur": "جماعت",
+    "hadith_count": 151
+  },
+  {
+    "tag_id": "emancipation",
+    "category": "law",
+    "label_en": "Emancipation of Slaves",
+    "label_ar": "العتق",
+    "label_ur": "آزادی غلام",
+    "hadith_count": 151
+  },
+  {
+    "tag_id": "repentance",
+    "category": "ethics",
+    "label_en": "Repentance (Tawbah)",
+    "label_ar": "التوبة",
+    "label_ur": "توبہ",
+    "hadith_count": 150
+  },
+  {
+    "tag_id": "conquest_mecca",
+    "category": "prophet_life",
+    "label_en": "Conquest of Mecca",
+    "label_ar": "فتح مكة",
+    "label_ur": "فتح مکہ",
+    "hadith_count": 149
+  },
+  {
+    "tag_id": "naming",
+    "category": "family",
+    "label_en": "Naming and Aqiqah",
+    "label_ar": "التسمية والعقيقة",
+    "label_ur": "نام رکھنا اور عقیقہ",
+    "hadith_count": 147
+  },
+  {
+    "tag_id": "gold_silver",
+    "category": "daily_life",
+    "label_en": "Gold and Silver",
+    "label_ar": "الذهب والفضة",
+    "label_ur": "سونا اور چاندی",
+    "hadith_count": 147
+  },
+  {
+    "tag_id": "prophet_household",
+    "category": "prophet_life",
+    "label_en": "Prophet's Household",
+    "label_ar": "آل النبي",
+    "label_ur": "آل نبی",
+    "hadith_count": 145
+  },
+  {
+    "tag_id": "umrah",
+    "category": "worship",
+    "label_en": "Umrah",
+    "label_ar": "العمرة",
+    "label_ur": "عمرہ",
+    "hadith_count": 142
+  },
+  {
+    "tag_id": "burial",
+    "category": "hereafter",
+    "label_en": "Burial",
+    "label_ar": "الدفن",
+    "label_ur": "دفن",
+    "hadith_count": 138
+  },
+  {
+    "tag_id": "intention",
+    "category": "ethics",
+    "label_en": "Intention (Niyyah)",
+    "label_ar": "النية",
+    "label_ur": "نیت",
+    "hadith_count": 134
+  },
+  {
+    "tag_id": "tawaf",
+    "category": "worship",
+    "label_en": "Tawaf (Circumambulation)",
+    "label_ar": "الطواف",
+    "label_ur": "طواف",
+    "hadith_count": 131
+  },
+  {
+    "tag_id": "battle_badr",
+    "category": "prophet_life",
+    "label_en": "Battle of Badr",
+    "label_ar": "غزوة بدر",
+    "label_ur": "غزوہ بدر",
+    "hadith_count": 131
+  },
+  {
+    "tag_id": "battle_khaybar",
+    "category": "prophet_life",
+    "label_en": "Battle of Khaybar",
+    "label_ar": "غزوة خيبر",
+    "label_ur": "غزوہ خیبر",
+    "hadith_count": 131
+  },
+  {
+    "tag_id": "theft",
+    "category": "law",
+    "label_en": "Theft",
+    "label_ar": "السرقة",
+    "label_ur": "چوری",
+    "hadith_count": 126
+  },
+  {
+    "tag_id": "martyrdom",
+    "category": "war",
+    "label_en": "Martyrdom (Shahadah)",
+    "label_ar": "الشهادة",
+    "label_ur": "شہادت",
+    "hadith_count": 126
+  },
+  {
+    "tag_id": "murder",
+    "category": "law",
+    "label_en": "Murder and Killing",
+    "label_ar": "القتل",
+    "label_ur": "قتل",
+    "hadith_count": 124
+  },
+  {
+    "tag_id": "war_spoils",
+    "category": "war",
+    "label_en": "War Spoils (Ghanimah)",
+    "label_ar": "الغنيمة",
+    "label_ur": "مال غنیمت",
+    "hadith_count": 124
+  },
+  {
+    "tag_id": "mourning",
+    "category": "hereafter",
+    "label_en": "Mourning",
+    "label_ar": "الحداد",
+    "label_ur": "سوگ",
+    "hadith_count": 119
+  },
+  {
+    "tag_id": "sale",
+    "category": "commerce",
+    "label_en": "Sale and Purchase",
+    "label_ar": "البيع والشراء",
+    "label_ur": "خرید و فروخت",
+    "hadith_count": 118
+  },
+  {
+    "tag_id": "adultery",
+    "category": "law",
+    "label_en": "Adultery and Fornication",
+    "label_ar": "الزنا",
+    "label_ur": "زنا",
+    "hadith_count": 112
+  },
+  {
+    "tag_id": "hijrah",
+    "category": "prophet_life",
+    "label_en": "Hijrah (Migration)",
+    "label_ar": "الهجرة",
+    "label_ur": "ہجرت",
+    "hadith_count": 110
+  },
+  {
+    "tag_id": "tawhid",
+    "category": "belief",
+    "label_en": "Monotheism (Tawhid)",
+    "label_ar": "التوحيد",
+    "label_ur": "توحید",
+    "hadith_count": 110
+  },
+  {
+    "tag_id": "brotherhood",
+    "category": "social",
+    "label_en": "Brotherhood",
+    "label_ar": "الأخوة",
+    "label_ur": "بھائی چارہ",
+    "hadith_count": 108
+  },
+  {
+    "tag_id": "hellfire",
+    "category": "hereafter",
+    "label_en": "Hellfire (Jahannam)",
+    "label_ar": "جهنم",
+    "label_ur": "جہنم",
+    "hadith_count": 103
+  },
+  {
+    "tag_id": "generosity",
+    "category": "ethics",
+    "label_en": "Generosity",
+    "label_ar": "الكرم",
+    "label_ur": "سخاوت",
+    "hadith_count": 101
+  },
+  {
+    "tag_id": "caliphate",
+    "category": "governance",
+    "label_en": "Caliphate",
+    "label_ar": "الخلافة",
+    "label_ur": "خلافت",
+    "hadith_count": 101
+  },
+  {
+    "tag_id": "battle_uhud",
+    "category": "prophet_life",
+    "label_en": "Battle of Uhud",
+    "label_ar": "غزوة أحد",
+    "label_ur": "غزوہ احد",
+    "hadith_count": 98
+  },
+  {
+    "tag_id": "takbir",
+    "category": "worship",
+    "label_en": "Takbir",
+    "label_ar": "التكبير",
+    "label_ur": "تکبیر",
+    "hadith_count": 97
+  },
+  {
+    "tag_id": "ansar",
+    "category": "social",
+    "label_en": "Ansar",
+    "label_ar": "الأنصار",
+    "label_ur": "انصار",
+    "hadith_count": 97
+  },
+  {
+    "tag_id": "resurrection",
+    "category": "hereafter",
+    "label_en": "Resurrection",
+    "label_ar": "البعث",
+    "label_ur": "قیامت",
+    "hadith_count": 96
+  },
+  {
+    "tag_id": "hunting",
+    "category": "daily_life",
+    "label_en": "Hunting",
+    "label_ar": "الصيد",
+    "label_ur": "شکار",
+    "hadith_count": 94
+  },
+  {
+    "tag_id": "parents",
+    "category": "family",
+    "label_en": "Parents and Filial Duty",
+    "label_ar": "الوالدان وبرهما",
+    "label_ur": "والدین کی اطاعت",
+    "hadith_count": 90
+  },
+  {
+    "tag_id": "expiation",
+    "category": "law",
+    "label_en": "Expiation (Kaffarah)",
+    "label_ar": "الكفارة",
+    "label_ur": "کفارہ",
+    "hadith_count": 89
+  },
+  {
+    "tag_id": "contract",
+    "category": "law",
+    "label_en": "Contracts and Transactions",
+    "label_ar": "العقود والمعاملات",
+    "label_ur": "معاہدات",
+    "hadith_count": 86
+  },
+  {
+    "tag_id": "shirk",
+    "category": "belief",
+    "label_en": "Polytheism (Shirk)",
+    "label_ar": "الشرك",
+    "label_ur": "شرک",
+    "hadith_count": 86
+  },
+  {
+    "tag_id": "wage",
+    "category": "commerce",
+    "label_en": "Wages and Employment",
+    "label_ar": "الأجرة والعمل",
+    "label_ur": "اجرت",
+    "hadith_count": 86
+  },
+  {
+    "tag_id": "conjugal_rights",
+    "category": "family",
+    "label_en": "Conjugal Rights",
+    "label_ar": "حقوق الزوجية",
+    "label_ur": "ازدواجی حقوق",
+    "hadith_count": 81
+  },
+  {
+    "tag_id": "predestination",
+    "category": "belief",
+    "label_en": "Predestination (Qadar)",
+    "label_ar": "القدر",
+    "label_ur": "تقدیر",
+    "hadith_count": 79
+  },
+  {
+    "tag_id": "lying",
+    "category": "ethics",
+    "label_en": "Lying and Deception",
+    "label_ar": "الكذب",
+    "label_ur": "جھوٹ",
+    "hadith_count": 78
+  },
+  {
+    "tag_id": "gratitude",
+    "category": "ethics",
+    "label_en": "Gratitude (Shukr)",
+    "label_ar": "الشكر",
+    "label_ur": "شکر",
+    "hadith_count": 73
+  },
+  {
+    "tag_id": "itikaf",
+    "category": "worship",
+    "label_en": "Seclusion (I'tikaf)",
+    "label_ar": "الاعتكاف",
+    "label_ur": "اعتکاف",
+    "hadith_count": 72
+  },
+  {
+    "tag_id": "humility",
+    "category": "ethics",
+    "label_en": "Humility",
+    "label_ar": "التواضع",
+    "label_ur": "انکساری",
+    "hadith_count": 72
+  },
+  {
+    "tag_id": "pregnancy_childbirth",
+    "category": "family",
+    "label_en": "Pregnancy and Childbirth",
+    "label_ar": "الحمل والولادة",
+    "label_ur": "حمل اور ولادت",
+    "hadith_count": 71
+  },
+  {
+    "tag_id": "eclipse_prayer",
+    "category": "worship",
+    "label_en": "Eclipse Prayer",
+    "label_ar": "صلاة الكسوف",
+    "label_ur": "گرہن کی نماز",
+    "hadith_count": 70
+  },
+  {
+    "tag_id": "talbiyah",
+    "category": "worship",
+    "label_en": "Talbiyah",
+    "label_ar": "التلبية",
+    "label_ur": "تلبیہ",
+    "hadith_count": 70
+  },
+  {
+    "tag_id": "arafat",
+    "category": "worship",
+    "label_en": "Arafat Standing",
+    "label_ar": "الوقوف بعرفة",
+    "label_ur": "وقوف عرفات",
+    "hadith_count": 70
+  },
+  {
+    "tag_id": "usury",
+    "category": "law",
+    "label_en": "Usury (Riba)",
+    "label_ar": "الربا",
+    "label_ur": "سود",
+    "hadith_count": 69
+  },
+  {
+    "tag_id": "pictures_images",
+    "category": "daily_life",
+    "label_en": "Pictures and Images",
+    "label_ar": "الصور والتصاوير",
+    "label_ur": "تصویریں",
+    "hadith_count": 65
+  },
+  {
+    "tag_id": "imam_leadership",
+    "category": "worship",
+    "label_en": "Prayer Leadership (Imam)",
+    "label_ar": "الإمامة",
+    "label_ur": "امامت",
+    "hadith_count": 63
+  },
+  {
+    "tag_id": "retaliation",
+    "category": "law",
+    "label_en": "Retaliation (Qisas)",
+    "label_ar": "القصاص",
+    "label_ur": "قصاص",
+    "hadith_count": 63
+  },
+  {
+    "tag_id": "breastfeeding",
+    "category": "family",
+    "label_en": "Breastfeeding (Radah)",
+    "label_ar": "الرضاعة",
+    "label_ur": "رضاعت",
+    "hadith_count": 62
+  },
+  {
+    "tag_id": "prayer_rows",
+    "category": "worship",
+    "label_en": "Prayer Rows",
+    "label_ar": "صفوف الصلاة",
+    "label_ur": "نماز کی صفیں",
+    "hadith_count": 60
+  },
+  {
+    "tag_id": "tashahhud",
+    "category": "worship",
+    "label_en": "Tashahhud",
+    "label_ar": "التشهد",
+    "label_ur": "تشہد",
+    "hadith_count": 58
+  },
+  {
+    "tag_id": "qibla",
+    "category": "worship",
+    "label_en": "Qibla Direction",
+    "label_ar": "القبلة",
+    "label_ur": "قبلہ",
+    "hadith_count": 58
+  },
+  {
+    "tag_id": "waiting_period",
+    "category": "law",
+    "label_en": "Waiting Period (Iddah)",
+    "label_ar": "العدة",
+    "label_ur": "عدت",
+    "hadith_count": 57
+  },
+  {
+    "tag_id": "captives",
+    "category": "war",
+    "label_en": "Captives and Prisoners",
+    "label_ar": "الأسرى",
+    "label_ur": "قیدی",
+    "hadith_count": 56
+  },
+  {
+    "tag_id": "tafsir",
+    "category": "knowledge",
+    "label_en": "Quranic Interpretation (Tafsir)",
+    "label_ar": "التفسير",
+    "label_ur": "تفسیر",
+    "hadith_count": 55
+  },
+  {
+    "tag_id": "intercession",
+    "category": "worship",
+    "label_en": "Intercession (Shafa'ah)",
+    "label_ar": "الشفاعة",
+    "label_ur": "شفاعت",
+    "hadith_count": 54
+  },
+  {
+    "tag_id": "guardianship",
+    "category": "law",
+    "label_en": "Guardianship (Wilayah)",
+    "label_ar": "الولاية",
+    "label_ur": "ولایت",
+    "hadith_count": 53
+  },
+  {
+    "tag_id": "hudaibiyah",
+    "category": "prophet_life",
+    "label_en": "Hudaibiyah Treaty",
+    "label_ar": "صلح الحديبية",
+    "label_ur": "صلح حدیبیہ",
+    "hadith_count": 51
+  },
+  {
+    "tag_id": "arrogance",
+    "category": "ethics",
+    "label_en": "Arrogance and Pride",
+    "label_ar": "الكبر",
+    "label_ur": "تکبر",
+    "hadith_count": 50
+  },
+  {
+    "tag_id": "battle_hunayn",
+    "category": "prophet_life",
+    "label_en": "Battle of Hunayn",
+    "label_ar": "غزوة حنين",
+    "label_ur": "غزوہ حنین",
+    "hadith_count": 50
+  },
+  {
+    "tag_id": "perfume",
+    "category": "daily_life",
+    "label_en": "Perfume and Fragrance",
+    "label_ar": "الطيب والعطر",
+    "label_ur": "خوشبو",
+    "hadith_count": 50
+  },
+  {
+    "tag_id": "envy",
+    "category": "ethics",
+    "label_en": "Envy and Jealousy",
+    "label_ar": "الحسد",
+    "label_ur": "حسد",
+    "hadith_count": 49
+  },
+  {
+    "tag_id": "dajjal",
+    "category": "belief",
+    "label_en": "Dajjal (Antichrist)",
+    "label_ar": "الدجال",
+    "label_ur": "دجال",
+    "hadith_count": 49
+  },
+  {
+    "tag_id": "mina",
+    "category": "worship",
+    "label_en": "Mina",
+    "label_ar": "منى",
+    "label_ur": "منیٰ",
+    "hadith_count": 48
+  },
+  {
+    "tag_id": "hypocrisy",
+    "category": "ethics",
+    "label_en": "Hypocrisy (Nifaq)",
+    "label_ar": "النفاق",
+    "label_ur": "نفاق",
+    "hadith_count": 48
+  },
+  {
+    "tag_id": "magic_sorcery",
+    "category": "belief",
+    "label_en": "Magic and Sorcery",
+    "label_ar": "السحر",
+    "label_ur": "جادو",
+    "hadith_count": 48
+  },
+  {
+    "tag_id": "muzdalifah",
+    "category": "worship",
+    "label_en": "Muzdalifah",
+    "label_ar": "المزدلفة",
+    "label_ur": "مزدلفہ",
+    "hadith_count": 47
+  },
+  {
+    "tag_id": "orphans",
+    "category": "family",
+    "label_en": "Orphans",
+    "label_ar": "اليتامى",
+    "label_ur": "یتیم",
+    "hadith_count": 47
+  },
+  {
+    "tag_id": "neighbors",
+    "category": "social",
+    "label_en": "Neighbors",
+    "label_ar": "الجيران",
+    "label_ur": "پڑوسی",
+    "hadith_count": 47
+  },
+  {
+    "tag_id": "bowing",
+    "category": "worship",
+    "label_en": "Bowing (Ruku)",
+    "label_ar": "الركوع",
+    "label_ur": "رکوع",
+    "hadith_count": 46
+  },
+  {
+    "tag_id": "zakat_al_fitr",
+    "category": "worship",
+    "label_en": "Zakat al-Fitr",
+    "label_ar": "زكاة الفطر",
+    "label_ur": "زکاۃ الفطر",
+    "hadith_count": 46
+  },
+  {
+    "tag_id": "backbiting",
+    "category": "ethics",
+    "label_en": "Backbiting and Slander",
+    "label_ar": "الغيبة والبهتان",
+    "label_ur": "غیبت اور بہتان",
+    "hadith_count": 45
+  },
+  {
+    "tag_id": "battle_khandaq",
+    "category": "prophet_life",
+    "label_en": "Battle of Khandaq",
+    "label_ar": "غزوة الخندق",
+    "label_ur": "غزوہ خندق",
+    "hadith_count": 44
+  },
+  {
+    "tag_id": "miracles",
+    "category": "prophet_life",
+    "label_en": "Miracles (Mu'jizat)",
+    "label_ar": "المعجزات",
+    "label_ur": "معجزات",
+    "hadith_count": 43
+  },
+  {
+    "tag_id": "iqamah",
+    "category": "worship",
+    "label_en": "Iqamah",
+    "label_ar": "الإقامة",
+    "label_ur": "اقامت",
+    "hadith_count": 41
+  },
+  {
+    "tag_id": "sincerity",
+    "category": "ethics",
+    "label_en": "Sincerity (Ikhlas)",
+    "label_ar": "الإخلاص",
+    "label_ur": "اخلاص",
+    "hadith_count": 40
+  },
+  {
+    "tag_id": "sneezing",
+    "category": "daily_life",
+    "label_en": "Sneezing and Yawning",
+    "label_ar": "العطاس والتثاؤب",
+    "label_ur": "چھینک اور جمائی",
+    "hadith_count": 40
+  },
+  {
+    "tag_id": "pebble_throwing",
+    "category": "worship",
+    "label_en": "Pebble Throwing (Rami)",
+    "label_ar": "رمي الجمرات",
+    "label_ur": "رمی جمرات",
+    "hadith_count": 39
+  },
+  {
+    "tag_id": "miswak",
+    "category": "worship",
+    "label_en": "Tooth Stick (Miswak)",
+    "label_ar": "السواك",
+    "label_ur": "مسواک",
+    "hadith_count": 39
+  },
+  {
+    "tag_id": "apostasy",
+    "category": "law",
+    "label_en": "Apostasy (Riddah)",
+    "label_ar": "الردة",
+    "label_ur": "ارتداد",
+    "hadith_count": 39
+  },
+  {
+    "tag_id": "funeral_prayer",
+    "category": "worship",
+    "label_en": "Funeral Prayer (Janazah)",
+    "label_ar": "صلاة الجنازة",
+    "label_ur": "جنازے کی نماز",
+    "hadith_count": 36
+  },
+  {
+    "tag_id": "dowry",
+    "category": "family",
+    "label_en": "Dowry (Mahr)",
+    "label_ar": "المهر",
+    "label_ur": "مہر",
+    "hadith_count": 36
+  },
+  {
+    "tag_id": "partnership",
+    "category": "commerce",
+    "label_en": "Partnership (Sharikah)",
+    "label_ar": "الشركة",
+    "label_ur": "شراکت",
+    "hadith_count": 36
+  },
+  {
+    "tag_id": "market",
+    "category": "commerce",
+    "label_en": "Market and Prices",
+    "label_ar": "السوق والأسعار",
+    "label_ur": "بازار اور قیمتیں",
+    "hadith_count": 36
+  },
+  {
+    "tag_id": "shortening_prayer",
+    "category": "worship",
+    "label_en": "Shortening Prayer (Qasr)",
+    "label_ar": "قصر الصلاة",
+    "label_ur": "قصر نماز",
+    "hadith_count": 35
+  },
+  {
+    "tag_id": "sutra",
+    "category": "worship",
+    "label_en": "Prayer Barrier (Sutra)",
+    "label_ar": "السترة",
+    "label_ur": "سترہ",
+    "hadith_count": 33
+  },
+  {
+    "tag_id": "slaughter",
+    "category": "daily_life",
+    "label_en": "Slaughter (Dhabh)",
+    "label_ar": "الذبح",
+    "label_ur": "ذبح",
+    "hadith_count": 33
+  },
+  {
+    "tag_id": "duha_prayer",
+    "category": "worship",
+    "label_en": "Forenoon Prayer (Duha)",
+    "label_ar": "صلاة الضحى",
+    "label_ur": "چاشت کی نماز",
+    "hadith_count": 31
+  },
+  {
+    "tag_id": "anger",
+    "category": "ethics",
+    "label_en": "Anger Control",
+    "label_ar": "ضبط الغضب",
+    "label_ur": "غصے پر قابو",
+    "hadith_count": 31
+  },
+  {
+    "tag_id": "lost_property",
+    "category": "law",
+    "label_en": "Lost Property",
+    "label_ar": "اللقطة",
+    "label_ur": "گمشدہ مال",
+    "hadith_count": 30
+  },
+  {
+    "tag_id": "shroud",
+    "category": "hereafter",
+    "label_en": "Shroud (Kafan)",
+    "label_ar": "الكفن",
+    "label_ur": "کفن",
+    "hadith_count": 30
+  },
+  {
+    "tag_id": "lian",
+    "category": "law",
+    "label_en": "Mutual Cursing (Li'an)",
+    "label_ar": "اللعان",
+    "label_ur": "لعان",
+    "hadith_count": 26
+  },
+  {
+    "tag_id": "suhur",
+    "category": "worship",
+    "label_en": "Pre-dawn Meal (Suhur)",
+    "label_ar": "السحور",
+    "label_ur": "سحری",
+    "hadith_count": 25
+  },
+  {
+    "tag_id": "night_journey",
+    "category": "prophet_life",
+    "label_en": "Night Journey (Isra & Mi'raj)",
+    "label_ar": "الإسراء والمعراج",
+    "label_ur": "اسراء اور معراج",
+    "hadith_count": 25
+  },
+  {
+    "tag_id": "laylat_al_qadr",
+    "category": "worship",
+    "label_en": "Night of Power",
+    "label_ar": "ليلة القدر",
+    "label_ur": "لیلۃ القدر",
+    "hadith_count": 23
+  },
+  {
+    "tag_id": "tayammum",
+    "category": "worship",
+    "label_en": "Dry Ablution (Tayammum)",
+    "label_ar": "التيمم",
+    "label_ur": "تیمم",
+    "hadith_count": 22
+  },
+  {
+    "tag_id": "gambling",
+    "category": "law",
+    "label_en": "Gambling",
+    "label_ar": "الميسر",
+    "label_ur": "جوا",
+    "hadith_count": 21
+  },
+  {
+    "tag_id": "head_shaving",
+    "category": "worship",
+    "label_en": "Head Shaving (Halq)",
+    "label_ar": "الحلق",
+    "label_ur": "سر منڈانا",
+    "hadith_count": 20
+  },
+  {
+    "tag_id": "forbearance",
+    "category": "ethics",
+    "label_en": "Forbearance (Hilm)",
+    "label_ar": "الحلم",
+    "label_ur": "بردباری",
+    "hadith_count": 20
+  },
+  {
+    "tag_id": "farewell_pilgrimage",
+    "category": "prophet_life",
+    "label_en": "Farewell Pilgrimage",
+    "label_ar": "حجة الوداع",
+    "label_ur": "حجۃ الوداع",
+    "hadith_count": 20
+  },
+  {
+    "tag_id": "combining_prayers",
+    "category": "worship",
+    "label_en": "Combining Prayers",
+    "label_ar": "جمع الصلاتين",
+    "label_ur": "نمازیں جمع کرنا",
+    "hadith_count": 19
+  },
+  {
+    "tag_id": "evil_eye",
+    "category": "belief",
+    "label_en": "Evil Eye",
+    "label_ar": "العين",
+    "label_ur": "نظر بد",
+    "hadith_count": 19
+  },
+  {
+    "tag_id": "fear_prayer",
+    "category": "worship",
+    "label_en": "Fear Prayer",
+    "label_ar": "صلاة الخوف",
+    "label_ur": "خوف کی نماز",
+    "hadith_count": 18
+  },
+  {
+    "tag_id": "iftar",
+    "category": "worship",
+    "label_en": "Breaking Fast (Iftar)",
+    "label_ar": "الإفطار",
+    "label_ur": "افطار",
+    "hadith_count": 17
+  },
+  {
+    "tag_id": "scholarship",
+    "category": "knowledge",
+    "label_en": "Scholarship and Scholars",
+    "label_ar": "العلماء",
+    "label_ur": "علماء",
+    "hadith_count": 17
+  },
+  {
+    "tag_id": "qunut",
+    "category": "worship",
+    "label_en": "Qunut Supplication",
+    "label_ar": "القنوت",
+    "label_ur": "قنوت",
+    "hadith_count": 16
+  },
+  {
+    "tag_id": "jizyah",
+    "category": "law",
+    "label_en": "Jizyah Tax",
+    "label_ar": "الجزية",
+    "label_ur": "جزیہ",
+    "hadith_count": 15
+  },
+  {
+    "tag_id": "jinn",
+    "category": "belief",
+    "label_en": "Jinn",
+    "label_ar": "الجن",
+    "label_ur": "جن",
+    "hadith_count": 15
+  },
+  {
+    "tag_id": "abrogation",
+    "category": "knowledge",
+    "label_en": "Abrogation (Naskh)",
+    "label_ar": "النسخ",
+    "label_ur": "نسخ",
+    "hadith_count": 12
+  },
+  {
+    "tag_id": "hadi",
+    "category": "worship",
+    "label_en": "Sacrificial Animal (Hadi)",
+    "label_ar": "الهدي",
+    "label_ur": "ہدی",
+    "hadith_count": 9
+  },
+  {
+    "tag_id": "zihar",
+    "category": "law",
+    "label_en": "Zihar",
+    "label_ar": "الظهار",
+    "label_ur": "ظہار",
+    "hadith_count": 8
+  },
+  {
+    "tag_id": "polygamy",
+    "category": "family",
+    "label_en": "Polygamy",
+    "label_ar": "تعدد الزوجات",
+    "label_ur": "تعدد ازدواج",
+    "hadith_count": 7
+  },
+  {
+    "tag_id": "istikhara",
+    "category": "worship",
+    "label_en": "Istikhara Prayer",
+    "label_ar": "صلاة الاستخارة",
+    "label_ur": "استخارہ",
+    "hadith_count": 4
+  },
+  {
+    "tag_id": "tarawih",
+    "category": "worship",
+    "label_en": "Tarawih Prayer",
+    "label_ar": "صلاة التراويح",
+    "label_ur": "تراویح",
+    "hadith_count": 3
+  },
+  {
+    "tag_id": "prophet_character",
+    "category": "prophet_life",
+    "label_en": "Prophet's Character",
+    "label_ar": "أخلاق النبي",
+    "label_ur": "نبی کا کردار",
+    "hadith_count": 0
+  },
+  {
+    "tag_id": "usurious_transactions",
+    "category": "commerce",
+    "label_en": "Prohibited Transactions",
+    "label_ar": "المعاملات المحرمة",
+    "label_ur": "حرام معاملات",
+    "hadith_count": 0
+  },
+  {
+    "tag_id": "tobacco_intoxication",
+    "category": "daily_life",
+    "label_en": "Intoxication and Forbidden Drinks",
+    "label_ar": "المسكرات",
+    "label_ur": "نشہ آور مشروبات",
+    "hadith_count": 0
+  }
+]

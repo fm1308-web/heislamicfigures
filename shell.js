@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-var TABS_ROW1 = ['TIMELINE','SILSILA','FOLLOW','STUDY','BOOKS','ERAS','EVENTS'];
+var TABS_ROW1 = ['TIMELINE','SILSILA','FOLLOW','STUDY','BOOKS','ERAS','EVENTS','YEAR'];
 var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START'];
 var ALL_TABS = TABS_ROW1.concat(TABS_ROW2);
 
@@ -147,6 +147,7 @@ window.setActiveTab = setActiveTab;
 // Zone D per-view rules: which controls are enabled
 var ZONE_D_RULES = {
   TIMELINE:  { animate: true,  audio: false },
+  YEAR:      { animate: false, audio: false },
   SILSILA:   { animate: true,  audio: false },
   FOLLOW:    { animate: true,  audio: false },
   STUDY:     { animate: false, audio: false },
@@ -168,6 +169,7 @@ var ZONE_D_RULES = {
 // ---------- View registry (lazy-loaded view modules) ----------
 var VIEW_REGISTRY = {
   TIMELINE: { script: 'timeline.js', css: 'timeline.css', api: 'TimelineView' },
+  YEAR:     { script: 'year.js',     css: 'year.css',     api: 'YearView' },
   SILSILA:  { script: 'silsila.js',  css: 'silsila.css',  api: 'SilsilaView' },
   FOLLOW:   { script: 'follow.js',   css: 'follow.css',   api: 'FollowView' },
   STUDY:    { script: 'study.js',    css: 'study.css',    api: 'StudyView' },
@@ -236,6 +238,20 @@ function loadAndMountView(name){
 }
 
 var FILTER_SPECS = {
+  YEAR: {
+    search: false,
+    slider: true,
+    filters: [],
+    actions: [
+      { type:'pill', label:'± 5',  id:'yrRange5',  cls:'zb-active' },
+      { type:'pill', label:'± 10', id:'yrRange10' },
+      { type:'pill', label:'± 25', id:'yrRange25' },
+      { type:'pill', label:'± 50', id:'yrRange50' }
+    ],
+    hint: 'Pick a year — see what happened in and around it',
+    hintInRow2: true,
+    htw: true
+  },
   TIMELINE: {
     search: true,
     filters: [
@@ -1244,7 +1260,17 @@ function _renderLangDropdown(){
     item.addEventListener('click', function(){
       dd.hidden = true;
       var code = item.getAttribute('data-lang');
-      if(code) I.setLang(code);
+      if(!code) return;
+      // Urdu is only fully translated on TIMELINE and SILSILA today.
+      // On every other view, intercept the click and show a friendly
+      // "translation in progress" notice instead of switching.
+      // Allowlist grows as RV ships UR buckets per view.
+      var UR_READY_VIEWS = ['TIMELINE','SILSILA'];
+      if(code.toLowerCase() === 'ur' && UR_READY_VIEWS.indexOf(state.activeTab) === -1){
+        alert('Urdu translation in progress for this view.\nAvailable in a few days.');
+        return;
+      }
+      I.setLang(code);
     });
   });
 }
