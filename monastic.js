@@ -2387,19 +2387,40 @@ function init(){
     .concat(_otherEntries);
   _monBuildPanel('collection', _grouped);
 
+  // NARRATOR FILTER PARKED — RV rebuilding from sunnah.com API.
+  // Re-enable by uncommenting the fetch block below.
+  /*
   // Populate narrators from index (with counts)
+  // Adam preferences: strip Arabic from name, drop "Unknown Scholar",
+  // sort alphabetically A-Z. _narratorIndex stays as cleaned list.
   fetch(dataUrl('data/hadith/narrator_index.json')).then(function(r){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
     if(!Array.isArray(data) || !data.length) throw new Error('empty');
-    _narratorIndex = data.sort(function(a,b){ return b.count - a.count; });
+    _narratorIndex = data
+      .map(function(n){
+        var clean = _stripArabic(n.name || '');
+        clean = clean.replace(/\(\s*\)/g, '');
+        clean = clean.replace(/^[\s,()]+|[\s,()]+$/g, '');
+        clean = clean.replace(/\s+/g, ' ').trim();
+        return { name: clean, count: n.count };
+      })
+      .filter(function(n){
+        if(!n.name) return false;
+        if(/^unknown\b/i.test(n.name)) return false;
+        return true;
+      })
+      .sort(function(a, b){
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+      });
     _monBuildPanel('narrator', _narratorIndex.map(function(n){
       return { value: n.name, label: n.name + ' (' + n.count.toLocaleString() + ')' };
     }));
   }).catch(function(e){
     console.warn('narrator_index.json not available:', e);
   });
+  */
 
   // Topic dropdown: do NOT pre-fetch bukhari (26 MB) on init. The list is
   // populated lazily the first time the user opens the Topics dropdown
@@ -3343,7 +3364,7 @@ window.MonasticView = (function(){
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="dd-wrap">' +
+            '<div class="dd-wrap" style="display:none">' +
               '<button class="dd-btn" id="mon-narratorBtn" onclick="Monastic.toggleDD(\'narrator\')">' +
                 '<span>Narrators</span>' +
                 '<div style="display:flex;align-items:center;gap:4px">' +

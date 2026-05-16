@@ -374,7 +374,7 @@ var FILTER_SPECS = {
   MONASTIC: {
     search: true,
     filters: [
-      { type:'select', label:'Narrators' },
+      { type:'select', label:'Narrators', hidden:true },
       { type:'select', label:'Collections' }
     ],
     actions: [
@@ -835,6 +835,7 @@ function makeZBItem(item){
       el.textContent = tt(slbl);
       el.setAttribute('data-i18n', slbl);
       if(item.width) el.style.width = item.width + 'px';
+      if(item.hidden) el.style.display = 'none';
       bindActiveToggle(el);
       return el;
     case 'pill':
