@@ -37,6 +37,36 @@ window.openStartAtVerse = window.openStartAtVerse || function(s, v, e){
   }
 };
 </script>
+<script>
+// Eager-load quran_xref.json once at boot and populate window.QURAN_XREF_BY_SLUG
+// so timeline / one / any view can render verified prophet verse chips.
+// Source file rebuilt by RV44 — direct name mentions only, all double-verified.
+(function(){
+  try {
+    fetch(dataUrl('data/islamic/quran/quran_xref.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(data){
+        if(!data || !Array.isArray(data.figure_refs)) return;
+        var idx = {};
+        data.figure_refs.forEach(function(r){
+          if(!r || !r.slug) return;
+          if(!idx[r.slug]) idx[r.slug] = [];
+          idx[r.slug].push(r);
+        });
+        // Sort each figure's refs by surah, then verse_start.
+        Object.keys(idx).forEach(function(k){
+          idx[k].sort(function(a,b){
+            if(a.surah !== b.surah) return a.surah - b.surah;
+            return (a.verse_start||0) - (b.verse_start||0);
+          });
+        });
+        window.QURAN_XREF_BY_SLUG = idx;
+        window.dispatchEvent(new Event('quran-xref-ready'));
+      })
+      .catch(function(e){ console.warn('[quran-xref-loader] fetch failed', e); });
+  } catch(e){ console.warn('[quran-xref-loader] init failed', e); }
+})();
+</script>
 <script src="i18n.js"></script>
 </head>
 <body>

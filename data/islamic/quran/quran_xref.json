@@ -1,4 +1,14 @@
 {
+  "_meta": {
+    "phase": 1,
+    "scope": "direct mentions only (Arabic name + English name both present)",
+    "method": "mechanical Arabic-name search, English translation cross-verified",
+    "source_text": "bv-app/data/islamic/quran/quran_text.json",
+    "source_translation": "Sahih International (in quran_text.json verses[].en)",
+    "prophets_covered": 25,
+    "total_verses_tagged": 493,
+    "phase_2_pending": "indirect mentions; companions other than direct-named — awaiting scholarly source approval"
+  },
   "event_refs": [
     {
       "event_id": "E0510-01",
@@ -354,2188 +364,4441 @@
   ],
   "figure_refs": [
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 2,
-      "verse_start": 30,
-      "verse_end": 39,
-      "ref_text": "2:30-39"
+      "verse_start": 31,
+      "verse_end": 31,
+      "ref_text": "Al-Baqarah 2:31",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
+      "surah": 2,
+      "verse_start": 33,
+      "verse_end": 33,
+      "ref_text": "Al-Baqarah 2:33",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
+      "surah": 2,
+      "verse_start": 34,
+      "verse_end": 34,
+      "ref_text": "Al-Baqarah 2:34",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
+      "surah": 2,
+      "verse_start": 35,
+      "verse_end": 35,
+      "ref_text": "Al-Baqarah 2:35",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
+      "surah": 2,
+      "verse_start": 37,
+      "verse_end": 37,
+      "ref_text": "Al-Baqarah 2:37",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
       "surah": 3,
       "verse_start": 33,
       "verse_end": 33,
-      "ref_text": "3:33"
+      "ref_text": "Ali 'Imran 3:33",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 3,
       "verse_start": 59,
       "verse_end": 59,
-      "ref_text": "3:59"
+      "ref_text": "Ali 'Imran 3:59",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 5,
       "verse_start": 27,
       "verse_end": 27,
-      "ref_text": "5:27"
+      "ref_text": "Al-Ma'idah 5:27",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 7,
       "verse_start": 11,
-      "verse_end": 25,
-      "ref_text": "7:11-25"
+      "verse_end": 11,
+      "ref_text": "Al-A'raf 7:11",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
+      "surah": 7,
+      "verse_start": 19,
+      "verse_end": 19,
+      "ref_text": "Al-A'raf 7:19",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
       "surah": 7,
       "verse_start": 26,
-      "verse_end": 27,
-      "ref_text": "7:26-27"
+      "verse_end": 26,
+      "ref_text": "Al-A'raf 7:26",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
+      "surah": 7,
+      "verse_start": 27,
+      "verse_end": 27,
+      "ref_text": "Al-A'raf 7:27",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
       "surah": 7,
       "verse_start": 31,
       "verse_end": 31,
-      "ref_text": "7:31"
+      "ref_text": "Al-A'raf 7:31",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 7,
       "verse_start": 35,
       "verse_end": 35,
-      "ref_text": "7:35"
+      "ref_text": "Al-A'raf 7:35",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 7,
       "verse_start": 172,
       "verse_end": 172,
-      "ref_text": "7:172"
+      "ref_text": "Al-A'raf 7:172",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 17,
       "verse_start": 61,
       "verse_end": 61,
-      "ref_text": "17:61"
+      "ref_text": "Al-Isra 17:61",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 17,
       "verse_start": 70,
       "verse_end": 70,
-      "ref_text": "17:70"
+      "ref_text": "Al-Isra 17:70",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 18,
       "verse_start": 50,
       "verse_end": 50,
-      "ref_text": "18:50"
+      "ref_text": "Al-Kahf 18:50",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 19,
       "verse_start": 58,
       "verse_end": 58,
-      "ref_text": "19:58"
+      "ref_text": "Maryam 19:58",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
       "surah": 20,
       "verse_start": 115,
-      "verse_end": 123,
-      "ref_text": "20:115-123"
+      "verse_end": 115,
+      "ref_text": "Taha 20:115",
+      "type": "direct"
     },
     {
-      "name": "Adam",
       "slug": "F0172",
+      "name": "Adam",
+      "surah": 20,
+      "verse_start": 116,
+      "verse_end": 116,
+      "ref_text": "Taha 20:116",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
+      "surah": 20,
+      "verse_start": 117,
+      "verse_end": 117,
+      "ref_text": "Taha 20:117",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
+      "surah": 20,
+      "verse_start": 120,
+      "verse_end": 120,
+      "ref_text": "Taha 20:120",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
+      "surah": 20,
+      "verse_start": 121,
+      "verse_end": 121,
+      "ref_text": "Taha 20:121",
+      "type": "direct"
+    },
+    {
+      "slug": "F0172",
+      "name": "Adam",
       "surah": 36,
       "verse_start": 60,
       "verse_end": 60,
-      "ref_text": "36:60"
+      "ref_text": "Ya-Sin 36:60",
+      "type": "direct"
     },
     {
-      "name": "Idris",
-      "slug": "F0767",
-      "surah": 19,
-      "verse_start": 56,
-      "verse_end": 57,
-      "ref_text": "19:56-57"
-    },
-    {
-      "name": "Idris",
-      "slug": "F0767",
-      "surah": 21,
-      "verse_start": 85,
-      "verse_end": 85,
-      "ref_text": "21:85"
-    },
-    {
-      "name": "Nuh",
       "slug": "F1118",
-      "surah": 7,
-      "verse_start": 59,
-      "verse_end": 64,
-      "ref_text": "7:59-64"
-    },
-    {
       "name": "Nuh",
-      "slug": "F1118",
-      "surah": 10,
-      "verse_start": 71,
-      "verse_end": 73,
-      "ref_text": "10:71-73"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 11,
-      "verse_start": 25,
-      "verse_end": 49,
-      "ref_text": "11:25-49"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 23,
-      "verse_start": 23,
-      "verse_end": 30,
-      "ref_text": "23:23-30"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 26,
-      "verse_start": 105,
-      "verse_end": 122,
-      "ref_text": "26:105-122"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 29,
-      "verse_start": 14,
-      "verse_end": 15,
-      "ref_text": "29:14-15"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 37,
-      "verse_start": 75,
-      "verse_end": 82,
-      "ref_text": "37:75-82"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 54,
-      "verse_start": 9,
-      "verse_end": 15,
-      "ref_text": "54:9-15"
-    },
-    {
-      "name": "Nuh",
-      "slug": "F1118",
-      "surah": 71,
-      "verse_start": 1,
-      "verse_end": 28,
-      "ref_text": "71:1-28"
-    },
-    {
-      "name": "Hud",
-      "slug": "F0699",
-      "surah": 7,
-      "verse_start": 65,
-      "verse_end": 72,
-      "ref_text": "7:65-72"
-    },
-    {
-      "name": "Hud",
-      "slug": "F0699",
-      "surah": 11,
-      "verse_start": 50,
-      "verse_end": 60,
-      "ref_text": "11:50-60"
-    },
-    {
-      "name": "Hud",
-      "slug": "F0699",
-      "surah": 26,
-      "verse_start": 124,
-      "verse_end": 140,
-      "ref_text": "26:124-140"
-    },
-    {
-      "name": "Hud",
-      "slug": "F0699",
-      "surah": 46,
-      "verse_start": 21,
-      "verse_end": 26,
-      "ref_text": "46:21-26"
-    },
-    {
-      "name": "Salih",
-      "slug": "F1249",
-      "surah": 7,
-      "verse_start": 73,
-      "verse_end": 79,
-      "ref_text": "7:73-79"
-    },
-    {
-      "name": "Salih",
-      "slug": "F1249",
-      "surah": 11,
-      "verse_start": 61,
-      "verse_end": 68,
-      "ref_text": "11:61-68"
-    },
-    {
-      "name": "Salih",
-      "slug": "F1249",
-      "surah": 26,
-      "verse_start": 142,
-      "verse_end": 159,
-      "ref_text": "26:142-159"
-    },
-    {
-      "name": "Salih",
-      "slug": "F1249",
-      "surah": 27,
-      "verse_start": 45,
-      "verse_end": 53,
-      "ref_text": "27:45-53"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 2,
-      "verse_start": 124,
-      "verse_end": 141,
-      "ref_text": "2:124-141"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
       "surah": 3,
-      "verse_start": 65,
-      "verse_end": 68,
-      "ref_text": "3:65-68"
+      "verse_start": 33,
+      "verse_end": 33,
+      "ref_text": "Ali 'Imran 3:33",
+      "type": "direct"
     },
     {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 3,
-      "verse_start": 95,
-      "verse_end": 97,
-      "ref_text": "3:95-97"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 4,
-      "verse_start": 54,
-      "verse_end": 54,
-      "ref_text": "4:54"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 4,
-      "verse_start": 125,
-      "verse_end": 125,
-      "ref_text": "4:125"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 4,
       "verse_start": 163,
       "verse_end": 163,
-      "ref_text": "4:163"
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
     },
     {
-      "name": "Ibrahim",
-      "slug": "F0761",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 6,
-      "verse_start": 74,
-      "verse_end": 83,
-      "ref_text": "6:74-83"
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
     },
     {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 6,
-      "verse_start": 161,
-      "verse_end": 161,
-      "ref_text": "6:161"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 7,
+      "verse_start": 59,
+      "verse_end": 59,
+      "ref_text": "Al-A'raf 7:59",
+      "type": "direct"
     },
     {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 9,
-      "verse_start": 70,
-      "verse_end": 70,
-      "ref_text": "9:70"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 9,
-      "verse_start": 114,
-      "verse_end": 114,
-      "ref_text": "9:114"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 11,
-      "verse_start": 69,
-      "verse_end": 76,
-      "ref_text": "11:69-76"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 14,
-      "verse_start": 35,
-      "verse_end": 41,
-      "ref_text": "14:35-41"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 15,
-      "verse_start": 51,
-      "verse_end": 60,
-      "ref_text": "15:51-60"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 16,
-      "verse_start": 120,
-      "verse_end": 123,
-      "ref_text": "16:120-123"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 19,
-      "verse_start": 41,
-      "verse_end": 50,
-      "ref_text": "19:41-50"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 21,
-      "verse_start": 51,
-      "verse_end": 73,
-      "ref_text": "21:51-73"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 22,
-      "verse_start": 26,
-      "verse_end": 27,
-      "ref_text": "22:26-27"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 22,
-      "verse_start": 78,
-      "verse_end": 78,
-      "ref_text": "22:78"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 26,
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 7,
       "verse_start": 69,
       "verse_end": 69,
-      "ref_text": "26:69"
+      "ref_text": "Al-A'raf 7:69",
+      "type": "direct"
     },
     {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 29,
-      "verse_start": 16,
-      "verse_end": 17,
-      "ref_text": "29:16-17"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 37,
-      "verse_start": 83,
-      "verse_end": 113,
-      "ref_text": "37:83-113"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 38,
-      "verse_start": 45,
-      "verse_end": 48,
-      "ref_text": "38:45-48"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 42,
-      "verse_start": 13,
-      "verse_end": 13,
-      "ref_text": "42:13"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 43,
-      "verse_start": 26,
-      "verse_end": 28,
-      "ref_text": "43:26-28"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 51,
-      "verse_start": 24,
-      "verse_end": 37,
-      "ref_text": "51:24-37"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 53,
-      "verse_start": 37,
-      "verse_end": 37,
-      "ref_text": "53:37"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 57,
-      "verse_start": 26,
-      "verse_end": 26,
-      "ref_text": "57:26"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 60,
-      "verse_start": 4,
-      "verse_end": 6,
-      "ref_text": "60:4-6"
-    },
-    {
-      "name": "Ibrahim",
-      "slug": "F0761",
-      "surah": 87,
-      "verse_start": 19,
-      "verse_end": 19,
-      "ref_text": "87:19"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 7,
-      "verse_start": 80,
-      "verse_end": 84,
-      "ref_text": "7:80-84"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 11,
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 9,
       "verse_start": 70,
       "verse_end": 70,
-      "ref_text": "11:70"
+      "ref_text": "At-Tawbah 9:70",
+      "type": "direct"
     },
     {
-      "name": "Lut",
-      "slug": "F0944",
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 10,
+      "verse_start": 71,
+      "verse_end": 71,
+      "ref_text": "Yunus 10:71",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 11,
-      "verse_start": 74,
-      "verse_end": 74,
-      "ref_text": "11:74"
+      "verse_start": 25,
+      "verse_end": 25,
+      "ref_text": "Hud 11:25",
+      "type": "direct"
     },
     {
-      "name": "Lut",
-      "slug": "F0944",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 11,
-      "verse_start": 77,
-      "verse_end": 77,
-      "ref_text": "11:77"
+      "verse_start": 32,
+      "verse_end": 32,
+      "ref_text": "Hud 11:32",
+      "type": "direct"
     },
     {
-      "name": "Lut",
-      "slug": "F0944",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 11,
-      "verse_start": 81,
-      "verse_end": 81,
-      "ref_text": "11:81"
+      "verse_start": 36,
+      "verse_end": 36,
+      "ref_text": "Hud 11:36",
+      "type": "direct"
     },
     {
-      "name": "Lut",
-      "slug": "F0944",
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 11,
+      "verse_start": 42,
+      "verse_end": 42,
+      "ref_text": "Hud 11:42",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 11,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Hud 11:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 11,
+      "verse_start": 46,
+      "verse_end": 46,
+      "ref_text": "Hud 11:46",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 11,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Hud 11:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 11,
       "verse_start": 89,
       "verse_end": 89,
-      "ref_text": "11:89"
+      "ref_text": "Hud 11:89",
+      "type": "direct"
     },
     {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 15,
-      "verse_start": 59,
-      "verse_end": 61,
-      "ref_text": "15:59-61"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 21,
-      "verse_start": 71,
-      "verse_end": 71,
-      "ref_text": "21:71"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 21,
-      "verse_start": 74,
-      "verse_end": 75,
-      "ref_text": "21:74-75"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 26,
-      "verse_start": 160,
-      "verse_end": 175,
-      "ref_text": "26:160-175"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 27,
-      "verse_start": 54,
-      "verse_end": 56,
-      "ref_text": "27:54-56"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 29,
-      "verse_start": 26,
-      "verse_end": 26,
-      "ref_text": "29:26"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 29,
-      "verse_start": 28,
-      "verse_end": 32,
-      "ref_text": "29:28-32"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 37,
-      "verse_start": 133,
-      "verse_end": 138,
-      "ref_text": "37:133-138"
-    },
-    {
-      "name": "Lut",
-      "slug": "F0944",
-      "surah": 54,
-      "verse_start": 33,
-      "verse_end": 34,
-      "ref_text": "54:33-34"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 2,
-      "verse_start": 125,
-      "verse_end": 129,
-      "ref_text": "2:125-129"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 2,
-      "verse_start": 133,
-      "verse_end": 133,
-      "ref_text": "2:133"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 2,
-      "verse_start": 136,
-      "verse_end": 136,
-      "ref_text": "2:136"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 2,
-      "verse_start": 140,
-      "verse_end": 140,
-      "ref_text": "2:140"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 14,
-      "verse_start": 39,
-      "verse_end": 39,
-      "ref_text": "14:39"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 19,
-      "verse_start": 54,
-      "verse_end": 55,
-      "ref_text": "19:54-55"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 21,
-      "verse_start": 85,
-      "verse_end": 85,
-      "ref_text": "21:85"
-    },
-    {
-      "name": "Ismail",
-      "slug": "F0790",
-      "surah": 38,
-      "verse_start": 48,
-      "verse_end": 48,
-      "ref_text": "38:48"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 2,
-      "verse_start": 133,
-      "verse_end": 133,
-      "ref_text": "2:133"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 2,
-      "verse_start": 136,
-      "verse_end": 136,
-      "ref_text": "2:136"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 2,
-      "verse_start": 140,
-      "verse_end": 140,
-      "ref_text": "2:140"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 11,
-      "verse_start": 71,
-      "verse_end": 71,
-      "ref_text": "11:71"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 12,
-      "verse_start": 6,
-      "verse_end": 6,
-      "ref_text": "12:6"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 12,
-      "verse_start": 38,
-      "verse_end": 38,
-      "ref_text": "12:38"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 14,
-      "verse_start": 39,
-      "verse_end": 39,
-      "ref_text": "14:39"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 19,
-      "verse_start": 49,
-      "verse_end": 49,
-      "ref_text": "19:49"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 21,
-      "verse_start": 72,
-      "verse_end": 72,
-      "ref_text": "21:72"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 37,
-      "verse_start": 112,
-      "verse_end": 113,
-      "ref_text": "37:112-113"
-    },
-    {
-      "name": "Ishaq",
-      "slug": "F0788",
-      "surah": 38,
-      "verse_start": 45,
-      "verse_end": 46,
-      "ref_text": "38:45-46"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 2,
-      "verse_start": 132,
-      "verse_end": 133,
-      "ref_text": "2:132-133"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 2,
-      "verse_start": 136,
-      "verse_end": 136,
-      "ref_text": "2:136"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 2,
-      "verse_start": 140,
-      "verse_end": 140,
-      "ref_text": "2:140"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 3,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "3:84"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 4,
-      "verse_start": 163,
-      "verse_end": 163,
-      "ref_text": "4:163"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 11,
-      "verse_start": 71,
-      "verse_end": 71,
-      "ref_text": "11:71"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 12,
-      "verse_start": 4,
-      "verse_end": 101,
-      "ref_text": "12:4-101"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 19,
-      "verse_start": 6,
-      "verse_end": 6,
-      "ref_text": "19:6"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 19,
-      "verse_start": 49,
-      "verse_end": 49,
-      "ref_text": "19:49"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 21,
-      "verse_start": 72,
-      "verse_end": 72,
-      "ref_text": "21:72"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 29,
-      "verse_start": 27,
-      "verse_end": 27,
-      "ref_text": "29:27"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 38,
-      "verse_start": 45,
-      "verse_end": 46,
-      "ref_text": "38:45-46"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 12,
-      "verse_start": 4,
-      "verse_end": 101,
-      "ref_text": "12:4-101"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 19,
-      "verse_start": 49,
-      "verse_end": 49,
-      "ref_text": "19:49"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 21,
-      "verse_start": 72,
-      "verse_end": 72,
-      "ref_text": "21:72"
-    },
-    {
-      "name": "Yaqub",
-      "slug": "F1651",
-      "surah": 38,
-      "verse_start": 45,
-      "verse_end": 45,
-      "ref_text": "38:45"
-    },
-    {
-      "name": "Yusuf",
-      "slug": "F1668",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
-    },
-    {
-      "name": "Yusuf",
-      "slug": "F1668",
-      "surah": 12,
-      "verse_start": 4,
-      "verse_end": 101,
-      "ref_text": "12:4-101"
-    },
-    {
-      "name": "Yusuf",
-      "slug": "F1668",
-      "surah": 40,
-      "verse_start": 34,
-      "verse_end": 34,
-      "ref_text": "40:34"
-    },
-    {
-      "name": "Ayyub",
-      "slug": "F0500",
-      "surah": 4,
-      "verse_start": 163,
-      "verse_end": 163,
-      "ref_text": "4:163"
-    },
-    {
-      "name": "Ayyub",
-      "slug": "F0500",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
-    },
-    {
-      "name": "Ayyub",
-      "slug": "F0500",
-      "surah": 21,
-      "verse_start": 83,
-      "verse_end": 84,
-      "ref_text": "21:83-84"
-    },
-    {
-      "name": "Ayyub",
-      "slug": "F0500",
-      "surah": 38,
-      "verse_start": 41,
-      "verse_end": 44,
-      "ref_text": "38:41-44"
-    },
-    {
-      "name": "Shuayb",
-      "slug": "F1305",
-      "surah": 7,
-      "verse_start": 85,
-      "verse_end": 93,
-      "ref_text": "7:85-93"
-    },
-    {
-      "name": "Shuayb",
-      "slug": "F1305",
-      "surah": 11,
-      "verse_start": 84,
-      "verse_end": 95,
-      "ref_text": "11:84-95"
-    },
-    {
-      "name": "Shuayb",
-      "slug": "F1305",
-      "surah": 26,
-      "verse_start": 177,
-      "verse_end": 191,
-      "ref_text": "26:177-191"
-    },
-    {
-      "name": "Shuayb",
-      "slug": "F1305",
-      "surah": 29,
-      "verse_start": 36,
-      "verse_end": 37,
-      "ref_text": "29:36-37"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 2,
-      "verse_start": 49,
-      "verse_end": 61,
-      "ref_text": "2:49-61"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 2,
-      "verse_start": 67,
-      "verse_end": 74,
-      "ref_text": "2:67-74"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 2,
-      "verse_start": 87,
-      "verse_end": 87,
-      "ref_text": "2:87"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 2,
-      "verse_start": 92,
-      "verse_end": 93,
-      "ref_text": "2:92-93"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 2,
-      "verse_start": 108,
-      "verse_end": 108,
-      "ref_text": "2:108"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 2,
-      "verse_start": 246,
-      "verse_end": 248,
-      "ref_text": "2:246-248"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 5,
-      "verse_start": 20,
-      "verse_end": 26,
-      "ref_text": "5:20-26"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 7,
-      "verse_start": 103,
-      "verse_end": 162,
-      "ref_text": "7:103-162"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 10,
-      "verse_start": 75,
-      "verse_end": 92,
-      "ref_text": "10:75-92"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 11,
-      "verse_start": 96,
-      "verse_end": 99,
-      "ref_text": "11:96-99"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 11,
-      "verse_start": 110,
-      "verse_end": 110,
-      "ref_text": "11:110"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 14,
-      "verse_start": 5,
-      "verse_end": 8,
-      "ref_text": "14:5-8"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 17,
-      "verse_start": 101,
-      "verse_end": 103,
-      "ref_text": "17:101-103"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 18,
-      "verse_start": 60,
-      "verse_end": 82,
-      "ref_text": "18:60-82"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 19,
-      "verse_start": 51,
-      "verse_end": 53,
-      "ref_text": "19:51-53"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 20,
       "verse_start": 9,
-      "verse_end": 98,
-      "ref_text": "20:9-98"
+      "verse_end": 9,
+      "ref_text": "Ibrahim 14:9",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 21,
-      "verse_start": 48,
-      "verse_end": 48,
-      "ref_text": "21:48"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 23,
-      "verse_start": 45,
-      "verse_end": 49,
-      "ref_text": "23:45-49"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 25,
-      "verse_start": 35,
-      "verse_end": 36,
-      "ref_text": "25:35-36"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 26,
-      "verse_start": 10,
-      "verse_end": 68,
-      "ref_text": "26:10-68"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 27,
-      "verse_start": 7,
-      "verse_end": 14,
-      "ref_text": "27:7-14"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 28,
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 17,
       "verse_start": 3,
-      "verse_end": 44,
-      "ref_text": "28:3-44"
+      "verse_end": 3,
+      "ref_text": "Al-Isra 17:3",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 29,
-      "verse_start": 39,
-      "verse_end": 39,
-      "ref_text": "29:39"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 17,
+      "verse_start": 17,
+      "verse_end": 17,
+      "ref_text": "Al-Isra 17:17",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 32,
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 19,
+      "verse_start": 58,
+      "verse_end": 58,
+      "ref_text": "Maryam 19:58",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 21,
+      "verse_start": 76,
+      "verse_end": 76,
+      "ref_text": "Al-Anbya 21:76",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 22,
+      "verse_start": 42,
+      "verse_end": 42,
+      "ref_text": "Al-Hajj 22:42",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 23,
       "verse_start": 23,
       "verse_end": 23,
-      "ref_text": "32:23"
+      "ref_text": "Al-Mu'minun 23:23",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 25,
+      "verse_start": 37,
+      "verse_end": 37,
+      "ref_text": "Al-Furqan 25:37",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 26,
+      "verse_start": 105,
+      "verse_end": 105,
+      "ref_text": "Ash-Shu'ara 26:105",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 26,
+      "verse_start": 106,
+      "verse_end": 106,
+      "ref_text": "Ash-Shu'ara 26:106",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 26,
+      "verse_start": 116,
+      "verse_end": 116,
+      "ref_text": "Ash-Shu'ara 26:116",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 29,
+      "verse_start": 14,
+      "verse_end": 14,
+      "ref_text": "Al-'Ankabut 29:14",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 33,
       "verse_start": 7,
       "verse_end": 7,
-      "ref_text": "33:7"
+      "ref_text": "Al-Ahzab 33:7",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 33,
-      "verse_start": 69,
-      "verse_end": 69,
-      "ref_text": "33:69"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 37,
-      "verse_start": 114,
-      "verse_end": 122,
-      "ref_text": "37:114-122"
+      "verse_start": 75,
+      "verse_end": 75,
+      "ref_text": "As-Saffat 37:75",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 37,
+      "verse_start": 79,
+      "verse_end": 79,
+      "ref_text": "As-Saffat 37:79",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 38,
+      "verse_start": 12,
+      "verse_end": 12,
+      "ref_text": "Sad 38:12",
+      "type": "direct"
+    },
+    {
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 40,
-      "verse_start": 23,
-      "verse_end": 54,
-      "ref_text": "40:23-54"
+      "verse_start": 5,
+      "verse_end": 5,
+      "ref_text": "Ghafir 40:5",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 41,
-      "verse_start": 45,
-      "verse_end": 45,
-      "ref_text": "41:45"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 40,
+      "verse_start": 31,
+      "verse_end": 31,
+      "ref_text": "Ghafir 40:31",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 42,
       "verse_start": 13,
       "verse_end": 13,
-      "ref_text": "42:13"
+      "ref_text": "Ash-Shuraa 42:13",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 43,
-      "verse_start": 46,
-      "verse_end": 56,
-      "ref_text": "43:46-56"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 44,
-      "verse_start": 17,
-      "verse_end": 33,
-      "ref_text": "44:17-33"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 46,
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 50,
       "verse_start": 12,
       "verse_end": 12,
-      "ref_text": "46:12"
+      "ref_text": "Qaf 50:12",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 46,
-      "verse_start": 30,
-      "verse_end": 30,
-      "ref_text": "46:30"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 51,
-      "verse_start": 38,
-      "verse_end": 40,
-      "ref_text": "51:38-40"
+      "verse_start": 46,
+      "verse_end": 46,
+      "ref_text": "Adh-Dhariyat 51:46",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
+      "slug": "F1118",
+      "name": "Nuh",
       "surah": 53,
-      "verse_start": 36,
-      "verse_end": 36,
-      "ref_text": "53:36"
+      "verse_start": 52,
+      "verse_end": 52,
+      "ref_text": "An-Najm 53:52",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 61,
-      "verse_start": 5,
-      "verse_end": 5,
-      "ref_text": "61:5"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 54,
+      "verse_start": 9,
+      "verse_end": 9,
+      "ref_text": "Al-Qamar 54:9",
+      "type": "direct"
     },
     {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 79,
-      "verse_start": 15,
-      "verse_end": 25,
-      "ref_text": "79:15-25"
-    },
-    {
-      "name": "Musa",
-      "slug": "F1076",
-      "surah": 87,
-      "verse_start": 19,
-      "verse_end": 19,
-      "ref_text": "87:19"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 4,
-      "verse_start": 163,
-      "verse_end": 163,
-      "ref_text": "4:163"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 7,
-      "verse_start": 122,
-      "verse_end": 122,
-      "ref_text": "7:122"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 7,
-      "verse_start": 142,
-      "verse_end": 142,
-      "ref_text": "7:142"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 7,
-      "verse_start": 148,
-      "verse_end": 150,
-      "ref_text": "7:148-150"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 10,
-      "verse_start": 75,
-      "verse_end": 75,
-      "ref_text": "10:75"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 19,
-      "verse_start": 28,
-      "verse_end": 28,
-      "ref_text": "19:28"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 19,
-      "verse_start": 53,
-      "verse_end": 53,
-      "ref_text": "19:53"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 20,
-      "verse_start": 30,
-      "verse_end": 30,
-      "ref_text": "20:30"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 20,
-      "verse_start": 40,
-      "verse_end": 40,
-      "ref_text": "20:40"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 20,
-      "verse_start": 70,
-      "verse_end": 70,
-      "ref_text": "20:70"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 20,
-      "verse_start": 90,
-      "verse_end": 90,
-      "ref_text": "20:90"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 20,
-      "verse_start": 92,
-      "verse_end": 92,
-      "ref_text": "20:92"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 21,
-      "verse_start": 48,
-      "verse_end": 48,
-      "ref_text": "21:48"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 23,
-      "verse_start": 45,
-      "verse_end": 45,
-      "ref_text": "23:45"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 25,
-      "verse_start": 35,
-      "verse_end": 35,
-      "ref_text": "25:35"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 26,
-      "verse_start": 13,
-      "verse_end": 13,
-      "ref_text": "26:13"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 26,
-      "verse_start": 48,
-      "verse_end": 48,
-      "ref_text": "26:48"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 28,
-      "verse_start": 34,
-      "verse_end": 34,
-      "ref_text": "28:34"
-    },
-    {
-      "name": "Harun",
-      "slug": "F0663",
-      "surah": 37,
-      "verse_start": 114,
-      "verse_end": 120,
-      "ref_text": "37:114-120"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 2,
-      "verse_start": 251,
-      "verse_end": 251,
-      "ref_text": "2:251"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 4,
-      "verse_start": 163,
-      "verse_end": 163,
-      "ref_text": "4:163"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 5,
-      "verse_start": 78,
-      "verse_end": 78,
-      "ref_text": "5:78"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 17,
-      "verse_start": 55,
-      "verse_end": 55,
-      "ref_text": "17:55"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 21,
-      "verse_start": 78,
-      "verse_end": 80,
-      "ref_text": "21:78-80"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 27,
-      "verse_start": 15,
-      "verse_end": 16,
-      "ref_text": "27:15-16"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 34,
-      "verse_start": 10,
-      "verse_end": 13,
-      "ref_text": "34:10-13"
-    },
-    {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 38,
-      "verse_start": 17,
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 57,
+      "verse_start": 26,
       "verse_end": 26,
-      "ref_text": "38:17-26"
+      "ref_text": "Al-Hadid 57:26",
+      "type": "direct"
     },
     {
-      "name": "Dawud",
-      "slug": "F0552",
-      "surah": 38,
-      "verse_start": 30,
-      "verse_end": 30,
-      "ref_text": "38:30"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 66,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "At-Tahrim 66:10",
+      "type": "direct"
     },
     {
-      "name": "Sulayman",
-      "slug": "F1342",
-      "surah": 2,
-      "verse_start": 102,
-      "verse_end": 102,
-      "ref_text": "2:102"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 71,
+      "verse_start": 1,
+      "verse_end": 1,
+      "ref_text": "Nuh 71:1",
+      "type": "direct"
     },
     {
-      "name": "Sulayman",
-      "slug": "F1342",
-      "surah": 4,
-      "verse_start": 163,
-      "verse_end": 163,
-      "ref_text": "4:163"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 71,
+      "verse_start": 21,
+      "verse_end": 21,
+      "ref_text": "Nuh 71:21",
+      "type": "direct"
     },
     {
-      "name": "Sulayman",
-      "slug": "F1342",
-      "surah": 6,
-      "verse_start": 84,
-      "verse_end": 84,
-      "ref_text": "6:84"
+      "slug": "F1118",
+      "name": "Nuh",
+      "surah": 71,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Nuh 71:26",
+      "type": "direct"
     },
     {
-      "name": "Sulayman",
-      "slug": "F1342",
+      "slug": "F0767",
+      "name": "Idris",
+      "surah": 19,
+      "verse_start": 56,
+      "verse_end": 56,
+      "ref_text": "Maryam 19:56",
+      "type": "direct"
+    },
+    {
+      "slug": "F0767",
+      "name": "Idris",
       "surah": 21,
-      "verse_start": 78,
-      "verse_end": 82,
-      "ref_text": "21:78-82"
-    },
-    {
-      "name": "Sulayman",
-      "slug": "F1342",
-      "surah": 27,
-      "verse_start": 15,
-      "verse_end": 44,
-      "ref_text": "27:15-44"
-    },
-    {
-      "name": "Sulayman",
-      "slug": "F1342",
-      "surah": 34,
-      "verse_start": 12,
-      "verse_end": 14,
-      "ref_text": "34:12-14"
-    },
-    {
-      "name": "Sulayman",
-      "slug": "F1342",
-      "surah": 38,
-      "verse_start": 30,
-      "verse_end": 40,
-      "ref_text": "38:30-40"
-    },
-    {
-      "name": "Ilyas",
-      "slug": "F0770",
-      "surah": 6,
       "verse_start": 85,
       "verse_end": 85,
-      "ref_text": "6:85"
+      "ref_text": "Al-Anbya 21:85",
+      "type": "direct"
     },
     {
-      "name": "Ilyas",
-      "slug": "F0770",
-      "surah": 37,
-      "verse_start": 123,
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 124,
+      "verse_end": 124,
+      "ref_text": "Al-Baqarah 2:124",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 125,
+      "verse_end": 125,
+      "ref_text": "Al-Baqarah 2:125",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 126,
+      "verse_end": 126,
+      "ref_text": "Al-Baqarah 2:126",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 127,
+      "verse_end": 127,
+      "ref_text": "Al-Baqarah 2:127",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 130,
       "verse_end": 130,
-      "ref_text": "37:123-130"
+      "ref_text": "Al-Baqarah 2:130",
+      "type": "direct"
     },
     {
-      "name": "Al-Yasa",
-      "slug": "F0357",
-      "surah": 6,
-      "verse_start": 86,
-      "verse_end": 86,
-      "ref_text": "6:86"
-    },
-    {
-      "name": "Al-Yasa",
-      "slug": "F0357",
-      "surah": 38,
-      "verse_start": 48,
-      "verse_end": 48,
-      "ref_text": "38:48"
-    },
-    {
-      "name": "Yunus",
-      "slug": "F1666",
-      "surah": 4,
-      "verse_start": 163,
-      "verse_end": 163,
-      "ref_text": "4:163"
-    },
-    {
-      "name": "Yunus",
-      "slug": "F1666",
-      "surah": 6,
-      "verse_start": 86,
-      "verse_end": 86,
-      "ref_text": "6:86"
-    },
-    {
-      "name": "Yunus",
-      "slug": "F1666",
-      "surah": 10,
-      "verse_start": 98,
-      "verse_end": 98,
-      "ref_text": "10:98"
-    },
-    {
-      "name": "Yunus",
-      "slug": "F1666",
-      "surah": 10,
-      "verse_start": 98,
-      "verse_end": 98,
-      "ref_text": "10:98"
-    },
-    {
-      "name": "Dhul-Kifl",
-      "slug": "F0559",
-      "surah": 21,
-      "verse_start": 85,
-      "verse_end": 85,
-      "ref_text": "21:85"
-    },
-    {
-      "name": "Dhul-Kifl",
-      "slug": "F0559",
-      "surah": 38,
-      "verse_start": 48,
-      "verse_end": 48,
-      "ref_text": "38:48"
-    },
-    {
-      "name": "Zakariyya",
-      "slug": "F1675",
-      "surah": 3,
-      "verse_start": 37,
-      "verse_end": 41,
-      "ref_text": "3:37-41"
-    },
-    {
-      "name": "Zakariyya",
-      "slug": "F1675",
-      "surah": 6,
-      "verse_start": 85,
-      "verse_end": 85,
-      "ref_text": "6:85"
-    },
-    {
-      "name": "Zakariyya",
-      "slug": "F1675",
-      "surah": 19,
-      "verse_start": 2,
-      "verse_end": 11,
-      "ref_text": "19:2-11"
-    },
-    {
-      "name": "Zakariyya",
-      "slug": "F1675",
-      "surah": 21,
-      "verse_start": 89,
-      "verse_end": 90,
-      "ref_text": "21:89-90"
-    },
-    {
-      "name": "Yahya",
-      "slug": "F1645",
-      "surah": 3,
-      "verse_start": 39,
-      "verse_end": 39,
-      "ref_text": "3:39"
-    },
-    {
-      "name": "Yahya",
-      "slug": "F1645",
-      "surah": 6,
-      "verse_start": 85,
-      "verse_end": 85,
-      "ref_text": "6:85"
-    },
-    {
-      "name": "Yahya",
-      "slug": "F1645",
-      "surah": 19,
-      "verse_start": 7,
-      "verse_end": 7,
-      "ref_text": "19:7"
-    },
-    {
-      "name": "Yahya",
-      "slug": "F1645",
-      "surah": 19,
-      "verse_start": 12,
-      "verse_end": 12,
-      "ref_text": "19:12"
-    },
-    {
-      "name": "Yahya",
-      "slug": "F1645",
-      "surah": 21,
-      "verse_start": 90,
-      "verse_end": 90,
-      "ref_text": "21:90"
-    },
-    {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 2,
-      "verse_start": 87,
-      "verse_end": 87,
-      "ref_text": "2:87"
+      "verse_start": 132,
+      "verse_end": 132,
+      "ref_text": "Al-Baqarah 2:132",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 133,
+      "verse_end": 133,
+      "ref_text": "Al-Baqarah 2:133",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 135,
+      "verse_end": 135,
+      "ref_text": "Al-Baqarah 2:135",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 2,
       "verse_start": 136,
       "verse_end": 136,
-      "ref_text": "2:136"
+      "ref_text": "Al-Baqarah 2:136",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 2,
-      "verse_start": 253,
-      "verse_end": 253,
-      "ref_text": "2:253"
+      "verse_start": 140,
+      "verse_end": 140,
+      "ref_text": "Al-Baqarah 2:140",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 258,
+      "verse_end": 258,
+      "ref_text": "Al-Baqarah 2:258",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 2,
+      "verse_start": 260,
+      "verse_end": 260,
+      "ref_text": "Al-Baqarah 2:260",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 3,
-      "verse_start": 45,
-      "verse_end": 55,
-      "ref_text": "3:45-55"
+      "verse_start": 33,
+      "verse_end": 33,
+      "ref_text": "Ali 'Imran 3:33",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 3,
-      "verse_start": 59,
-      "verse_end": 59,
-      "ref_text": "3:59"
+      "verse_start": 65,
+      "verse_end": 65,
+      "ref_text": "Ali 'Imran 3:65",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 3,
+      "verse_start": 67,
+      "verse_end": 67,
+      "ref_text": "Ali 'Imran 3:67",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 3,
+      "verse_start": 68,
+      "verse_end": 68,
+      "ref_text": "Ali 'Imran 3:68",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 3,
       "verse_start": 84,
       "verse_end": 84,
-      "ref_text": "3:84"
+      "ref_text": "Ali 'Imran 3:84",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 3,
+      "verse_start": 95,
+      "verse_end": 95,
+      "ref_text": "Ali 'Imran 3:95",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 3,
+      "verse_start": 97,
+      "verse_end": 97,
+      "ref_text": "Ali 'Imran 3:97",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 4,
-      "verse_start": 157,
-      "verse_end": 157,
-      "ref_text": "4:157"
+      "verse_start": 54,
+      "verse_end": 54,
+      "ref_text": "An-Nisa 4:54",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 4,
+      "verse_start": 125,
+      "verse_end": 125,
+      "ref_text": "An-Nisa 4:125",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
       "surah": 4,
       "verse_start": 163,
       "verse_end": 163,
-      "ref_text": "4:163"
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 4,
-      "verse_start": 171,
-      "verse_end": 171,
-      "ref_text": "4:171"
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 6,
+      "verse_start": 74,
+      "verse_end": 74,
+      "ref_text": "Al-An'am 6:74",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 5,
-      "verse_start": 46,
-      "verse_end": 46,
-      "ref_text": "5:46"
-    },
-    {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 5,
-      "verse_start": 72,
-      "verse_end": 72,
-      "ref_text": "5:72"
-    },
-    {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 5,
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 6,
       "verse_start": 75,
       "verse_end": 75,
-      "ref_text": "5:75"
+      "ref_text": "Al-An'am 6:75",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 6,
+      "verse_start": 83,
+      "verse_end": 83,
+      "ref_text": "Al-An'am 6:83",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 6,
+      "verse_start": 161,
+      "verse_end": 161,
+      "ref_text": "Al-An'am 6:161",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 9,
+      "verse_start": 70,
+      "verse_end": 70,
+      "ref_text": "At-Tawbah 9:70",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 9,
+      "verse_start": 114,
+      "verse_end": 114,
+      "ref_text": "At-Tawbah 9:114",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 11,
+      "verse_start": 69,
+      "verse_end": 69,
+      "ref_text": "Hud 11:69",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 11,
+      "verse_start": 74,
+      "verse_end": 74,
+      "ref_text": "Hud 11:74",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 11,
+      "verse_start": 75,
+      "verse_end": 75,
+      "ref_text": "Hud 11:75",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 11,
+      "verse_start": 76,
+      "verse_end": 76,
+      "ref_text": "Hud 11:76",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 12,
+      "verse_start": 6,
+      "verse_end": 6,
+      "ref_text": "Yusuf 12:6",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 12,
+      "verse_start": 38,
+      "verse_end": 38,
+      "ref_text": "Yusuf 12:38",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 14,
+      "verse_start": 35,
+      "verse_end": 35,
+      "ref_text": "Ibrahim 14:35",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 15,
+      "verse_start": 51,
+      "verse_end": 51,
+      "ref_text": "Al-Hijr 15:51",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 16,
+      "verse_start": 120,
+      "verse_end": 120,
+      "ref_text": "An-Nahl 16:120",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 16,
+      "verse_start": 123,
+      "verse_end": 123,
+      "ref_text": "An-Nahl 16:123",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 19,
+      "verse_start": 41,
+      "verse_end": 41,
+      "ref_text": "Maryam 19:41",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 19,
+      "verse_start": 46,
+      "verse_end": 46,
+      "ref_text": "Maryam 19:46",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 19,
+      "verse_start": 58,
+      "verse_end": 58,
+      "ref_text": "Maryam 19:58",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 21,
+      "verse_start": 51,
+      "verse_end": 51,
+      "ref_text": "Al-Anbya 21:51",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 21,
+      "verse_start": 60,
+      "verse_end": 60,
+      "ref_text": "Al-Anbya 21:60",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 21,
+      "verse_start": 62,
+      "verse_end": 62,
+      "ref_text": "Al-Anbya 21:62",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 21,
+      "verse_start": 69,
+      "verse_end": 69,
+      "ref_text": "Al-Anbya 21:69",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 22,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Al-Hajj 22:26",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 22,
+      "verse_start": 43,
+      "verse_end": 43,
+      "ref_text": "Al-Hajj 22:43",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 22,
+      "verse_start": 78,
+      "verse_end": 78,
+      "ref_text": "Al-Hajj 22:78",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 26,
+      "verse_start": 69,
+      "verse_end": 69,
+      "ref_text": "Ash-Shu'ara 26:69",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 29,
+      "verse_start": 16,
+      "verse_end": 16,
+      "ref_text": "Al-'Ankabut 29:16",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 29,
+      "verse_start": 31,
+      "verse_end": 31,
+      "ref_text": "Al-'Ankabut 29:31",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 33,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Al-Ahzab 33:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 37,
+      "verse_start": 83,
+      "verse_end": 83,
+      "ref_text": "As-Saffat 37:83",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 37,
+      "verse_start": 104,
+      "verse_end": 104,
+      "ref_text": "As-Saffat 37:104",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 37,
+      "verse_start": 109,
+      "verse_end": 109,
+      "ref_text": "As-Saffat 37:109",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 38,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Sad 38:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 42,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Ash-Shuraa 42:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 43,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Az-Zukhruf 43:26",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 51,
+      "verse_start": 24,
+      "verse_end": 24,
+      "ref_text": "Adh-Dhariyat 51:24",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 53,
+      "verse_start": 37,
+      "verse_end": 37,
+      "ref_text": "An-Najm 53:37",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 57,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Al-Hadid 57:26",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 60,
+      "verse_start": 4,
+      "verse_end": 4,
+      "ref_text": "Al-Mumtahanah 60:4",
+      "type": "direct"
+    },
+    {
+      "slug": "F0761",
+      "name": "Ibrahim",
+      "surah": 87,
+      "verse_start": 19,
+      "verse_end": 19,
+      "ref_text": "Al-A'la 87:19",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 2,
+      "verse_start": 125,
+      "verse_end": 125,
+      "ref_text": "Al-Baqarah 2:125",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 2,
+      "verse_start": 127,
+      "verse_end": 127,
+      "ref_text": "Al-Baqarah 2:127",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 2,
+      "verse_start": 133,
+      "verse_end": 133,
+      "ref_text": "Al-Baqarah 2:133",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 2,
+      "verse_start": 136,
+      "verse_end": 136,
+      "ref_text": "Al-Baqarah 2:136",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 2,
+      "verse_start": 140,
+      "verse_end": 140,
+      "ref_text": "Al-Baqarah 2:140",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 3,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Ali 'Imran 3:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 6,
+      "verse_start": 86,
+      "verse_end": 86,
+      "ref_text": "Al-An'am 6:86",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 14,
+      "verse_start": 39,
+      "verse_end": 39,
+      "ref_text": "Ibrahim 14:39",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 19,
+      "verse_start": 54,
+      "verse_end": 54,
+      "ref_text": "Maryam 19:54",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 21,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Al-Anbya 21:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F0790",
+      "name": "Ismail",
+      "surah": 38,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Sad 38:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 2,
+      "verse_start": 133,
+      "verse_end": 133,
+      "ref_text": "Al-Baqarah 2:133",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 2,
+      "verse_start": 136,
+      "verse_end": 136,
+      "ref_text": "Al-Baqarah 2:136",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 2,
+      "verse_start": 140,
+      "verse_end": 140,
+      "ref_text": "Al-Baqarah 2:140",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 3,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Ali 'Imran 3:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 11,
+      "verse_start": 71,
+      "verse_end": 71,
+      "ref_text": "Hud 11:71",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 12,
+      "verse_start": 6,
+      "verse_end": 6,
+      "ref_text": "Yusuf 12:6",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 12,
+      "verse_start": 38,
+      "verse_end": 38,
+      "ref_text": "Yusuf 12:38",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 14,
+      "verse_start": 39,
+      "verse_end": 39,
+      "ref_text": "Ibrahim 14:39",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 19,
+      "verse_start": 49,
+      "verse_end": 49,
+      "ref_text": "Maryam 19:49",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 21,
+      "verse_start": 72,
+      "verse_end": 72,
+      "ref_text": "Al-Anbya 21:72",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 29,
+      "verse_start": 27,
+      "verse_end": 27,
+      "ref_text": "Al-'Ankabut 29:27",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 37,
+      "verse_start": 112,
+      "verse_end": 112,
+      "ref_text": "As-Saffat 37:112",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 37,
+      "verse_start": 113,
+      "verse_end": 113,
+      "ref_text": "As-Saffat 37:113",
+      "type": "direct"
+    },
+    {
+      "slug": "F0788",
+      "name": "Ishaq",
+      "surah": 38,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Sad 38:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 2,
+      "verse_start": 132,
+      "verse_end": 132,
+      "ref_text": "Al-Baqarah 2:132",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 2,
+      "verse_start": 133,
+      "verse_end": 133,
+      "ref_text": "Al-Baqarah 2:133",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 2,
+      "verse_start": 136,
+      "verse_end": 136,
+      "ref_text": "Al-Baqarah 2:136",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 2,
+      "verse_start": 140,
+      "verse_end": 140,
+      "ref_text": "Al-Baqarah 2:140",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 3,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Ali 'Imran 3:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 11,
+      "verse_start": 71,
+      "verse_end": 71,
+      "ref_text": "Hud 11:71",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 12,
+      "verse_start": 6,
+      "verse_end": 6,
+      "ref_text": "Yusuf 12:6",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 12,
+      "verse_start": 38,
+      "verse_end": 38,
+      "ref_text": "Yusuf 12:38",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 12,
+      "verse_start": 68,
+      "verse_end": 68,
+      "ref_text": "Yusuf 12:68",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 19,
+      "verse_start": 6,
+      "verse_end": 6,
+      "ref_text": "Maryam 19:6",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 19,
+      "verse_start": 49,
+      "verse_end": 49,
+      "ref_text": "Maryam 19:49",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 21,
+      "verse_start": 72,
+      "verse_end": 72,
+      "ref_text": "Al-Anbya 21:72",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 29,
+      "verse_start": 27,
+      "verse_end": 27,
+      "ref_text": "Al-'Ankabut 29:27",
+      "type": "direct"
+    },
+    {
+      "slug": "F1651",
+      "name": "Yaqub",
+      "surah": 38,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Sad 38:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 4,
+      "verse_end": 4,
+      "ref_text": "Yusuf 12:4",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Yusuf 12:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 8,
+      "verse_end": 8,
+      "ref_text": "Yusuf 12:8",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 9,
+      "verse_end": 9,
+      "ref_text": "Yusuf 12:9",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "Yusuf 12:10",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 11,
+      "verse_end": 11,
+      "ref_text": "Yusuf 12:11",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 17,
+      "verse_end": 17,
+      "ref_text": "Yusuf 12:17",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 21,
+      "verse_end": 21,
+      "ref_text": "Yusuf 12:21",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 29,
+      "verse_end": 29,
+      "ref_text": "Yusuf 12:29",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 46,
+      "verse_end": 46,
+      "ref_text": "Yusuf 12:46",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 51,
+      "verse_end": 51,
+      "ref_text": "Yusuf 12:51",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 56,
+      "verse_end": 56,
+      "ref_text": "Yusuf 12:56",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 58,
+      "verse_end": 58,
+      "ref_text": "Yusuf 12:58",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 69,
+      "verse_end": 69,
+      "ref_text": "Yusuf 12:69",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 76,
+      "verse_end": 76,
+      "ref_text": "Yusuf 12:76",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 77,
+      "verse_end": 77,
+      "ref_text": "Yusuf 12:77",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 80,
+      "verse_end": 80,
+      "ref_text": "Yusuf 12:80",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Yusuf 12:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Yusuf 12:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 87,
+      "verse_end": 87,
+      "ref_text": "Yusuf 12:87",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 89,
+      "verse_end": 89,
+      "ref_text": "Yusuf 12:89",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 90,
+      "verse_end": 90,
+      "ref_text": "Yusuf 12:90",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 94,
+      "verse_end": 94,
+      "ref_text": "Yusuf 12:94",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 12,
+      "verse_start": 99,
+      "verse_end": 99,
+      "ref_text": "Yusuf 12:99",
+      "type": "direct"
+    },
+    {
+      "slug": "F1668",
+      "name": "Yusuf",
+      "surah": 40,
+      "verse_start": 34,
+      "verse_end": 34,
+      "ref_text": "Ghafir 40:34",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 6,
+      "verse_start": 86,
+      "verse_end": 86,
+      "ref_text": "Al-An'am 6:86",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 7,
+      "verse_start": 80,
+      "verse_end": 80,
+      "ref_text": "Al-A'raf 7:80",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 11,
+      "verse_start": 70,
+      "verse_end": 70,
+      "ref_text": "Hud 11:70",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 11,
+      "verse_start": 74,
+      "verse_end": 74,
+      "ref_text": "Hud 11:74",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 11,
+      "verse_start": 77,
+      "verse_end": 77,
+      "ref_text": "Hud 11:77",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 11,
+      "verse_start": 81,
+      "verse_end": 81,
+      "ref_text": "Hud 11:81",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 11,
+      "verse_start": 89,
+      "verse_end": 89,
+      "ref_text": "Hud 11:89",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 15,
+      "verse_start": 59,
+      "verse_end": 59,
+      "ref_text": "Al-Hijr 15:59",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 15,
+      "verse_start": 61,
+      "verse_end": 61,
+      "ref_text": "Al-Hijr 15:61",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 21,
+      "verse_start": 71,
+      "verse_end": 71,
+      "ref_text": "Al-Anbya 21:71",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 21,
+      "verse_start": 74,
+      "verse_end": 74,
+      "ref_text": "Al-Anbya 21:74",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 22,
+      "verse_start": 43,
+      "verse_end": 43,
+      "ref_text": "Al-Hajj 22:43",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 26,
+      "verse_start": 160,
+      "verse_end": 160,
+      "ref_text": "Ash-Shu'ara 26:160",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 26,
+      "verse_start": 161,
+      "verse_end": 161,
+      "ref_text": "Ash-Shu'ara 26:161",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 26,
+      "verse_start": 167,
+      "verse_end": 167,
+      "ref_text": "Ash-Shu'ara 26:167",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 27,
+      "verse_start": 54,
+      "verse_end": 54,
+      "ref_text": "An-Naml 27:54",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 27,
+      "verse_start": 56,
+      "verse_end": 56,
+      "ref_text": "An-Naml 27:56",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 29,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Al-'Ankabut 29:26",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 29,
+      "verse_start": 28,
+      "verse_end": 28,
+      "ref_text": "Al-'Ankabut 29:28",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 29,
+      "verse_start": 32,
+      "verse_end": 32,
+      "ref_text": "Al-'Ankabut 29:32",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 29,
+      "verse_start": 33,
+      "verse_end": 33,
+      "ref_text": "Al-'Ankabut 29:33",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 37,
+      "verse_start": 133,
+      "verse_end": 133,
+      "ref_text": "As-Saffat 37:133",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 38,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Sad 38:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 50,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Qaf 50:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 54,
+      "verse_start": 33,
+      "verse_end": 33,
+      "ref_text": "Al-Qamar 54:33",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 54,
+      "verse_start": 34,
+      "verse_end": 34,
+      "ref_text": "Al-Qamar 54:34",
+      "type": "direct"
+    },
+    {
+      "slug": "F0944",
+      "name": "Lut",
+      "surah": 66,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "At-Tahrim 66:10",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 7,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Al-A'raf 7:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 7,
+      "verse_start": 88,
+      "verse_end": 88,
+      "ref_text": "Al-A'raf 7:88",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 7,
+      "verse_start": 90,
+      "verse_end": 90,
+      "ref_text": "Al-A'raf 7:90",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 7,
+      "verse_start": 92,
+      "verse_end": 92,
+      "ref_text": "Al-A'raf 7:92",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 11,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Hud 11:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 11,
+      "verse_start": 87,
+      "verse_end": 87,
+      "ref_text": "Hud 11:87",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 11,
+      "verse_start": 91,
+      "verse_end": 91,
+      "ref_text": "Hud 11:91",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 11,
+      "verse_start": 94,
+      "verse_end": 94,
+      "ref_text": "Hud 11:94",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 26,
+      "verse_start": 177,
+      "verse_end": 177,
+      "ref_text": "Ash-Shu'ara 26:177",
+      "type": "direct"
+    },
+    {
+      "slug": "F1305",
+      "name": "Shuayb",
+      "surah": 29,
+      "verse_start": 36,
+      "verse_end": 36,
+      "ref_text": "Al-'Ankabut 29:36",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 51,
+      "verse_end": 51,
+      "ref_text": "Al-Baqarah 2:51",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 53,
+      "verse_end": 53,
+      "ref_text": "Al-Baqarah 2:53",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 54,
+      "verse_end": 54,
+      "ref_text": "Al-Baqarah 2:54",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 55,
+      "verse_end": 55,
+      "ref_text": "Al-Baqarah 2:55",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 60,
+      "verse_end": 60,
+      "ref_text": "Al-Baqarah 2:60",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 61,
+      "verse_end": 61,
+      "ref_text": "Al-Baqarah 2:61",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 67,
+      "verse_end": 67,
+      "ref_text": "Al-Baqarah 2:67",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 87,
+      "verse_end": 87,
+      "ref_text": "Al-Baqarah 2:87",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 92,
+      "verse_end": 92,
+      "ref_text": "Al-Baqarah 2:92",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 108,
+      "verse_end": 108,
+      "ref_text": "Al-Baqarah 2:108",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 136,
+      "verse_end": 136,
+      "ref_text": "Al-Baqarah 2:136",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 246,
+      "verse_end": 246,
+      "ref_text": "Al-Baqarah 2:246",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 2,
+      "verse_start": 248,
+      "verse_end": 248,
+      "ref_text": "Al-Baqarah 2:248",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 3,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Ali 'Imran 3:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 4,
+      "verse_start": 153,
+      "verse_end": 153,
+      "ref_text": "An-Nisa 4:153",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 4,
+      "verse_start": 164,
+      "verse_end": 164,
+      "ref_text": "An-Nisa 4:164",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 5,
+      "verse_start": 20,
+      "verse_end": 20,
+      "ref_text": "Al-Ma'idah 5:20",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 5,
+      "verse_start": 22,
+      "verse_end": 22,
+      "ref_text": "Al-Ma'idah 5:22",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 5,
+      "verse_start": 24,
+      "verse_end": 24,
+      "ref_text": "Al-Ma'idah 5:24",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 6,
+      "verse_start": 91,
+      "verse_end": 91,
+      "ref_text": "Al-An'am 6:91",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 6,
+      "verse_start": 154,
+      "verse_end": 154,
+      "ref_text": "Al-An'am 6:154",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 103,
+      "verse_end": 103,
+      "ref_text": "Al-A'raf 7:103",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 104,
+      "verse_end": 104,
+      "ref_text": "Al-A'raf 7:104",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 115,
+      "verse_end": 115,
+      "ref_text": "Al-A'raf 7:115",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 117,
+      "verse_end": 117,
+      "ref_text": "Al-A'raf 7:117",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 122,
+      "verse_end": 122,
+      "ref_text": "Al-A'raf 7:122",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 127,
+      "verse_end": 127,
+      "ref_text": "Al-A'raf 7:127",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 128,
+      "verse_end": 128,
+      "ref_text": "Al-A'raf 7:128",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 131,
+      "verse_end": 131,
+      "ref_text": "Al-A'raf 7:131",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 134,
+      "verse_end": 134,
+      "ref_text": "Al-A'raf 7:134",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 138,
+      "verse_end": 138,
+      "ref_text": "Al-A'raf 7:138",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 142,
+      "verse_end": 142,
+      "ref_text": "Al-A'raf 7:142",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 143,
+      "verse_end": 143,
+      "ref_text": "Al-A'raf 7:143",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 144,
+      "verse_end": 144,
+      "ref_text": "Al-A'raf 7:144",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 148,
+      "verse_end": 148,
+      "ref_text": "Al-A'raf 7:148",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 150,
+      "verse_end": 150,
+      "ref_text": "Al-A'raf 7:150",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 154,
+      "verse_end": 154,
+      "ref_text": "Al-A'raf 7:154",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 155,
+      "verse_end": 155,
+      "ref_text": "Al-A'raf 7:155",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 159,
+      "verse_end": 159,
+      "ref_text": "Al-A'raf 7:159",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 7,
+      "verse_start": 160,
+      "verse_end": 160,
+      "ref_text": "Al-A'raf 7:160",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 75,
+      "verse_end": 75,
+      "ref_text": "Yunus 10:75",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 77,
+      "verse_end": 77,
+      "ref_text": "Yunus 10:77",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 80,
+      "verse_end": 80,
+      "ref_text": "Yunus 10:80",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 81,
+      "verse_end": 81,
+      "ref_text": "Yunus 10:81",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 83,
+      "verse_end": 83,
+      "ref_text": "Yunus 10:83",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Yunus 10:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 87,
+      "verse_end": 87,
+      "ref_text": "Yunus 10:87",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 10,
+      "verse_start": 88,
+      "verse_end": 88,
+      "ref_text": "Yunus 10:88",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 11,
+      "verse_start": 17,
+      "verse_end": 17,
+      "ref_text": "Hud 11:17",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 11,
+      "verse_start": 96,
+      "verse_end": 96,
+      "ref_text": "Hud 11:96",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 11,
+      "verse_start": 110,
+      "verse_end": 110,
+      "ref_text": "Hud 11:110",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 14,
+      "verse_start": 5,
+      "verse_end": 5,
+      "ref_text": "Ibrahim 14:5",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 14,
+      "verse_start": 6,
+      "verse_end": 6,
+      "ref_text": "Ibrahim 14:6",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 14,
+      "verse_start": 8,
+      "verse_end": 8,
+      "ref_text": "Ibrahim 14:8",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 17,
+      "verse_start": 2,
+      "verse_end": 2,
+      "ref_text": "Al-Isra 17:2",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 17,
+      "verse_start": 101,
+      "verse_end": 101,
+      "ref_text": "Al-Isra 17:101",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 18,
+      "verse_start": 60,
+      "verse_end": 60,
+      "ref_text": "Al-Kahf 18:60",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 18,
+      "verse_start": 66,
+      "verse_end": 66,
+      "ref_text": "Al-Kahf 18:66",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 19,
+      "verse_start": 51,
+      "verse_end": 51,
+      "ref_text": "Maryam 19:51",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 9,
+      "verse_end": 9,
+      "ref_text": "Taha 20:9",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 11,
+      "verse_end": 11,
+      "ref_text": "Taha 20:11",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 17,
+      "verse_end": 17,
+      "ref_text": "Taha 20:17",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 19,
+      "verse_end": 19,
+      "ref_text": "Taha 20:19",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 36,
+      "verse_end": 36,
+      "ref_text": "Taha 20:36",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 40,
+      "verse_end": 40,
+      "ref_text": "Taha 20:40",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 49,
+      "verse_end": 49,
+      "ref_text": "Taha 20:49",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 57,
+      "verse_end": 57,
+      "ref_text": "Taha 20:57",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 61,
+      "verse_end": 61,
+      "ref_text": "Taha 20:61",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 65,
+      "verse_end": 65,
+      "ref_text": "Taha 20:65",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 67,
+      "verse_end": 67,
+      "ref_text": "Taha 20:67",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 70,
+      "verse_end": 70,
+      "ref_text": "Taha 20:70",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 77,
+      "verse_end": 77,
+      "ref_text": "Taha 20:77",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 83,
+      "verse_end": 83,
+      "ref_text": "Taha 20:83",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 86,
+      "verse_end": 86,
+      "ref_text": "Taha 20:86",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 88,
+      "verse_end": 88,
+      "ref_text": "Taha 20:88",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 20,
+      "verse_start": 91,
+      "verse_end": 91,
+      "ref_text": "Taha 20:91",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 21,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Al-Anbya 21:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 22,
+      "verse_start": 44,
+      "verse_end": 44,
+      "ref_text": "Al-Hajj 22:44",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 23,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Al-Mu'minun 23:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 23,
+      "verse_start": 49,
+      "verse_end": 49,
+      "ref_text": "Al-Mu'minun 23:49",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 25,
+      "verse_start": 35,
+      "verse_end": 35,
+      "ref_text": "Al-Furqan 25:35",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "Ash-Shu'ara 26:10",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 43,
+      "verse_end": 43,
+      "ref_text": "Ash-Shu'ara 26:43",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Ash-Shu'ara 26:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Ash-Shu'ara 26:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 52,
+      "verse_end": 52,
+      "ref_text": "Ash-Shu'ara 26:52",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 61,
+      "verse_end": 61,
+      "ref_text": "Ash-Shu'ara 26:61",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 63,
+      "verse_end": 63,
+      "ref_text": "Ash-Shu'ara 26:63",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 26,
+      "verse_start": 65,
+      "verse_end": 65,
+      "ref_text": "Ash-Shu'ara 26:65",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 27,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "An-Naml 27:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 27,
+      "verse_start": 9,
+      "verse_end": 9,
+      "ref_text": "An-Naml 27:9",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 27,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "An-Naml 27:10",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 3,
+      "verse_end": 3,
+      "ref_text": "Al-Qasas 28:3",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Al-Qasas 28:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "Al-Qasas 28:10",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 15,
+      "verse_end": 15,
+      "ref_text": "Al-Qasas 28:15",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 18,
+      "verse_end": 18,
+      "ref_text": "Al-Qasas 28:18",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 19,
+      "verse_end": 19,
+      "ref_text": "Al-Qasas 28:19",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 20,
+      "verse_end": 20,
+      "ref_text": "Al-Qasas 28:20",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 29,
+      "verse_end": 29,
+      "ref_text": "Al-Qasas 28:29",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 30,
+      "verse_end": 30,
+      "ref_text": "Al-Qasas 28:30",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 31,
+      "verse_end": 31,
+      "ref_text": "Al-Qasas 28:31",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 36,
+      "verse_end": 36,
+      "ref_text": "Al-Qasas 28:36",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 37,
+      "verse_end": 37,
+      "ref_text": "Al-Qasas 28:37",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 38,
+      "verse_end": 38,
+      "ref_text": "Al-Qasas 28:38",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 43,
+      "verse_end": 43,
+      "ref_text": "Al-Qasas 28:43",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 44,
+      "verse_end": 44,
+      "ref_text": "Al-Qasas 28:44",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Al-Qasas 28:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 28,
+      "verse_start": 76,
+      "verse_end": 76,
+      "ref_text": "Al-Qasas 28:76",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 29,
+      "verse_start": 39,
+      "verse_end": 39,
+      "ref_text": "Al-'Ankabut 29:39",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 32,
+      "verse_start": 23,
+      "verse_end": 23,
+      "ref_text": "As-Sajdah 32:23",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 33,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Al-Ahzab 33:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 33,
+      "verse_start": 69,
+      "verse_end": 69,
+      "ref_text": "Al-Ahzab 33:69",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 37,
+      "verse_start": 114,
+      "verse_end": 114,
+      "ref_text": "As-Saffat 37:114",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 37,
+      "verse_start": 120,
+      "verse_end": 120,
+      "ref_text": "As-Saffat 37:120",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 40,
+      "verse_start": 23,
+      "verse_end": 23,
+      "ref_text": "Ghafir 40:23",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 40,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Ghafir 40:26",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 40,
+      "verse_start": 27,
+      "verse_end": 27,
+      "ref_text": "Ghafir 40:27",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 40,
+      "verse_start": 37,
+      "verse_end": 37,
+      "ref_text": "Ghafir 40:37",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 40,
+      "verse_start": 53,
+      "verse_end": 53,
+      "ref_text": "Ghafir 40:53",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 41,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Fussilat 41:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 42,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Ash-Shuraa 42:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 43,
+      "verse_start": 46,
+      "verse_end": 46,
+      "ref_text": "Az-Zukhruf 43:46",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 46,
+      "verse_start": 12,
+      "verse_end": 12,
+      "ref_text": "Al-Ahqaf 46:12",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 46,
+      "verse_start": 30,
+      "verse_end": 30,
+      "ref_text": "Al-Ahqaf 46:30",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 51,
+      "verse_start": 38,
+      "verse_end": 38,
+      "ref_text": "Adh-Dhariyat 51:38",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 53,
+      "verse_start": 36,
+      "verse_end": 36,
+      "ref_text": "An-Najm 53:36",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 61,
+      "verse_start": 5,
+      "verse_end": 5,
+      "ref_text": "As-Saf 61:5",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 79,
+      "verse_start": 15,
+      "verse_end": 15,
+      "ref_text": "An-Nazi'at 79:15",
+      "type": "direct"
+    },
+    {
+      "slug": "F1076",
+      "name": "Musa",
+      "surah": 87,
+      "verse_start": 19,
+      "verse_end": 19,
+      "ref_text": "Al-A'la 87:19",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 2,
+      "verse_start": 248,
+      "verse_end": 248,
+      "ref_text": "Al-Baqarah 2:248",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 7,
+      "verse_start": 122,
+      "verse_end": 122,
+      "ref_text": "Al-A'raf 7:122",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 7,
+      "verse_start": 142,
+      "verse_end": 142,
+      "ref_text": "Al-A'raf 7:142",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 10,
+      "verse_start": 75,
+      "verse_end": 75,
+      "ref_text": "Yunus 10:75",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 19,
+      "verse_start": 28,
+      "verse_end": 28,
+      "ref_text": "Maryam 19:28",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 19,
+      "verse_start": 53,
+      "verse_end": 53,
+      "ref_text": "Maryam 19:53",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 20,
+      "verse_start": 30,
+      "verse_end": 30,
+      "ref_text": "Taha 20:30",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 20,
+      "verse_start": 70,
+      "verse_end": 70,
+      "ref_text": "Taha 20:70",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 20,
+      "verse_start": 90,
+      "verse_end": 90,
+      "ref_text": "Taha 20:90",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 20,
+      "verse_start": 92,
+      "verse_end": 92,
+      "ref_text": "Taha 20:92",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 21,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Al-Anbya 21:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 23,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Al-Mu'minun 23:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 25,
+      "verse_start": 35,
+      "verse_end": 35,
+      "ref_text": "Al-Furqan 25:35",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 26,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Ash-Shu'ara 26:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 26,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Ash-Shu'ara 26:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 28,
+      "verse_start": 34,
+      "verse_end": 34,
+      "ref_text": "Al-Qasas 28:34",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 37,
+      "verse_start": 114,
+      "verse_end": 114,
+      "ref_text": "As-Saffat 37:114",
+      "type": "direct"
+    },
+    {
+      "slug": "F0663",
+      "name": "Harun",
+      "surah": 37,
+      "verse_start": 120,
+      "verse_end": 120,
+      "ref_text": "As-Saffat 37:120",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 2,
+      "verse_start": 251,
+      "verse_end": 251,
+      "ref_text": "Al-Baqarah 2:251",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
       "surah": 5,
       "verse_start": 78,
       "verse_end": 78,
-      "ref_text": "5:78"
+      "ref_text": "Al-Ma'idah 5:78",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 5,
-      "verse_start": 110,
-      "verse_end": 117,
-      "ref_text": "5:110-117"
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 17,
+      "verse_start": 55,
+      "verse_end": 55,
+      "ref_text": "Al-Isra 17:55",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 21,
+      "verse_start": 78,
+      "verse_end": 78,
+      "ref_text": "Al-Anbya 21:78",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 21,
+      "verse_start": 79,
+      "verse_end": 79,
+      "ref_text": "Al-Anbya 21:79",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 27,
+      "verse_start": 15,
+      "verse_end": 15,
+      "ref_text": "An-Naml 27:15",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 27,
+      "verse_start": 16,
+      "verse_end": 16,
+      "ref_text": "An-Naml 27:16",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 34,
+      "verse_start": 10,
+      "verse_end": 10,
+      "ref_text": "Saba 34:10",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 34,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Saba 34:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 38,
+      "verse_start": 17,
+      "verse_end": 17,
+      "ref_text": "Sad 38:17",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 38,
+      "verse_start": 22,
+      "verse_end": 22,
+      "ref_text": "Sad 38:22",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 38,
+      "verse_start": 24,
+      "verse_end": 24,
+      "ref_text": "Sad 38:24",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 38,
+      "verse_start": 26,
+      "verse_end": 26,
+      "ref_text": "Sad 38:26",
+      "type": "direct"
+    },
+    {
+      "slug": "F0552",
+      "name": "Dawud",
+      "surah": 38,
+      "verse_start": 30,
+      "verse_end": 30,
+      "ref_text": "Sad 38:30",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 2,
+      "verse_start": 102,
+      "verse_end": 102,
+      "ref_text": "Al-Baqarah 2:102",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 21,
+      "verse_start": 78,
+      "verse_end": 78,
+      "ref_text": "Al-Anbya 21:78",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 21,
+      "verse_start": 79,
+      "verse_end": 79,
+      "ref_text": "Al-Anbya 21:79",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 21,
+      "verse_start": 81,
+      "verse_end": 81,
+      "ref_text": "Al-Anbya 21:81",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 15,
+      "verse_end": 15,
+      "ref_text": "An-Naml 27:15",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 16,
+      "verse_end": 16,
+      "ref_text": "An-Naml 27:16",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 17,
+      "verse_end": 17,
+      "ref_text": "An-Naml 27:17",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 18,
+      "verse_end": 18,
+      "ref_text": "An-Naml 27:18",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 30,
+      "verse_end": 30,
+      "ref_text": "An-Naml 27:30",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 36,
+      "verse_end": 36,
+      "ref_text": "An-Naml 27:36",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 27,
+      "verse_start": 44,
+      "verse_end": 44,
+      "ref_text": "An-Naml 27:44",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 34,
+      "verse_start": 12,
+      "verse_end": 12,
+      "ref_text": "Saba 34:12",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 38,
+      "verse_start": 30,
+      "verse_end": 30,
+      "ref_text": "Sad 38:30",
+      "type": "direct"
+    },
+    {
+      "slug": "F1342",
+      "name": "Sulayman",
+      "surah": 38,
+      "verse_start": 34,
+      "verse_end": 34,
+      "ref_text": "Sad 38:34",
+      "type": "direct"
+    },
+    {
+      "slug": "F0770",
+      "name": "Ilyas",
       "surah": 6,
       "verse_start": 85,
       "verse_end": 85,
-      "ref_text": "6:85"
+      "ref_text": "Al-An'am 6:85",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 9,
-      "verse_start": 30,
-      "verse_end": 31,
-      "ref_text": "9:30-31"
+      "slug": "F0770",
+      "name": "Ilyas",
+      "surah": 37,
+      "verse_start": 123,
+      "verse_end": 123,
+      "ref_text": "As-Saffat 37:123",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F0357",
+      "name": "Al-Yasa",
+      "surah": 6,
+      "verse_start": 86,
+      "verse_end": 86,
+      "ref_text": "Al-An'am 6:86",
+      "type": "direct"
+    },
+    {
+      "slug": "F0357",
+      "name": "Al-Yasa",
+      "surah": 38,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Sad 38:48",
+      "type": "direct"
+    },
+    {
+      "slug": "F1666",
+      "name": "Yunus",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F1666",
+      "name": "Yunus",
+      "surah": 6,
+      "verse_start": 86,
+      "verse_end": 86,
+      "ref_text": "Al-An'am 6:86",
+      "type": "direct"
+    },
+    {
+      "slug": "F1666",
+      "name": "Yunus",
+      "surah": 10,
+      "verse_start": 98,
+      "verse_end": 98,
+      "ref_text": "Yunus 10:98",
+      "type": "direct"
+    },
+    {
+      "slug": "F1666",
+      "name": "Yunus",
+      "surah": 37,
+      "verse_start": 139,
+      "verse_end": 139,
+      "ref_text": "As-Saffat 37:139",
+      "type": "direct"
+    },
+    {
+      "slug": "F1675",
+      "name": "Zakariyya",
+      "surah": 3,
+      "verse_start": 37,
+      "verse_end": 37,
+      "ref_text": "Ali 'Imran 3:37",
+      "type": "direct"
+    },
+    {
+      "slug": "F1675",
+      "name": "Zakariyya",
+      "surah": 3,
+      "verse_start": 38,
+      "verse_end": 38,
+      "ref_text": "Ali 'Imran 3:38",
+      "type": "direct"
+    },
+    {
+      "slug": "F1675",
+      "name": "Zakariyya",
+      "surah": 6,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Al-An'am 6:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F1675",
+      "name": "Zakariyya",
       "surah": 19,
-      "verse_start": 16,
-      "verse_end": 34,
-      "ref_text": "19:16-34"
+      "verse_start": 2,
+      "verse_end": 2,
+      "ref_text": "Maryam 19:2",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
+      "slug": "F1675",
+      "name": "Zakariyya",
+      "surah": 19,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Maryam 19:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F1675",
+      "name": "Zakariyya",
       "surah": 21,
-      "verse_start": 91,
-      "verse_end": 91,
-      "ref_text": "21:91"
+      "verse_start": 89,
+      "verse_end": 89,
+      "ref_text": "Al-Anbya 21:89",
+      "type": "direct"
     },
     {
-      "name": "Isa",
-      "slug": "F0786",
-      "surah": 23,
-      "verse_start": 50,
-      "verse_end": 50,
-      "ref_text": "23:50"
+      "slug": "F1645",
+      "name": "Yahya",
+      "surah": 3,
+      "verse_start": 39,
+      "verse_end": 39,
+      "ref_text": "Ali 'Imran 3:39",
+      "type": "direct"
     },
     {
-      "name": "Isa",
+      "slug": "F1645",
+      "name": "Yahya",
+      "surah": 6,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Al-An'am 6:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F1645",
+      "name": "Yahya",
+      "surah": 19,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Maryam 19:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F1645",
+      "name": "Yahya",
+      "surah": 19,
+      "verse_start": 12,
+      "verse_end": 12,
+      "ref_text": "Maryam 19:12",
+      "type": "direct"
+    },
+    {
+      "slug": "F1645",
+      "name": "Yahya",
+      "surah": 21,
+      "verse_start": 90,
+      "verse_end": 90,
+      "ref_text": "Al-Anbya 21:90",
+      "type": "direct"
+    },
+    {
       "slug": "F0786",
+      "name": "Isa",
+      "surah": 2,
+      "verse_start": 87,
+      "verse_end": 87,
+      "ref_text": "Al-Baqarah 2:87",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 2,
+      "verse_start": 136,
+      "verse_end": 136,
+      "ref_text": "Al-Baqarah 2:136",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 2,
+      "verse_start": 253,
+      "verse_end": 253,
+      "ref_text": "Al-Baqarah 2:253",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 3,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "Ali 'Imran 3:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 3,
+      "verse_start": 52,
+      "verse_end": 52,
+      "ref_text": "Ali 'Imran 3:52",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 3,
+      "verse_start": 55,
+      "verse_end": 55,
+      "ref_text": "Ali 'Imran 3:55",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 3,
+      "verse_start": 59,
+      "verse_end": 59,
+      "ref_text": "Ali 'Imran 3:59",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 3,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Ali 'Imran 3:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 4,
+      "verse_start": 157,
+      "verse_end": 157,
+      "ref_text": "An-Nisa 4:157",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 4,
+      "verse_start": 171,
+      "verse_end": 171,
+      "ref_text": "An-Nisa 4:171",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 5,
+      "verse_start": 46,
+      "verse_end": 46,
+      "ref_text": "Al-Ma'idah 5:46",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 5,
+      "verse_start": 78,
+      "verse_end": 78,
+      "ref_text": "Al-Ma'idah 5:78",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 5,
+      "verse_start": 110,
+      "verse_end": 110,
+      "ref_text": "Al-Ma'idah 5:110",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 5,
+      "verse_start": 112,
+      "verse_end": 112,
+      "ref_text": "Al-Ma'idah 5:112",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 5,
+      "verse_start": 114,
+      "verse_end": 114,
+      "ref_text": "Al-Ma'idah 5:114",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 5,
+      "verse_start": 116,
+      "verse_end": 116,
+      "ref_text": "Al-Ma'idah 5:116",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 6,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Al-An'am 6:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 19,
+      "verse_start": 34,
+      "verse_end": 34,
+      "ref_text": "Maryam 19:34",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 33,
+      "verse_start": 7,
+      "verse_end": 7,
+      "ref_text": "Al-Ahzab 33:7",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
+      "surah": 42,
+      "verse_start": 13,
+      "verse_end": 13,
+      "ref_text": "Ash-Shuraa 42:13",
+      "type": "direct"
+    },
+    {
+      "slug": "F0786",
+      "name": "Isa",
       "surah": 43,
-      "verse_start": 57,
-      "verse_end": 65,
-      "ref_text": "43:57-65"
+      "verse_start": 63,
+      "verse_end": 63,
+      "ref_text": "Az-Zukhruf 43:63",
+      "type": "direct"
     },
     {
-      "name": "Isa",
       "slug": "F0786",
+      "name": "Isa",
       "surah": 57,
       "verse_start": 27,
       "verse_end": 27,
-      "ref_text": "57:27"
+      "ref_text": "Al-Hadid 57:27",
+      "type": "direct"
     },
     {
-      "name": "Isa",
       "slug": "F0786",
+      "name": "Isa",
       "surah": 61,
       "verse_start": 6,
       "verse_end": 6,
-      "ref_text": "61:6"
+      "ref_text": "As-Saf 61:6",
+      "type": "direct"
     },
     {
-      "name": "Isa",
       "slug": "F0786",
+      "name": "Isa",
       "surah": 61,
       "verse_start": 14,
       "verse_end": 14,
-      "ref_text": "61:14"
+      "ref_text": "As-Saf 61:14",
+      "type": "direct"
     },
     {
-      "name": "Muhammad",
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 7,
+      "verse_start": 65,
+      "verse_end": 65,
+      "ref_text": "Al-A'raf 7:65",
+      "type": "direct"
+    },
+    {
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 11,
+      "verse_start": 50,
+      "verse_end": 50,
+      "ref_text": "Hud 11:50",
+      "type": "direct"
+    },
+    {
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 11,
+      "verse_start": 53,
+      "verse_end": 53,
+      "ref_text": "Hud 11:53",
+      "type": "direct"
+    },
+    {
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 11,
+      "verse_start": 58,
+      "verse_end": 58,
+      "ref_text": "Hud 11:58",
+      "type": "direct"
+    },
+    {
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 11,
+      "verse_start": 60,
+      "verse_end": 60,
+      "ref_text": "Hud 11:60",
+      "type": "direct"
+    },
+    {
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 11,
+      "verse_start": 89,
+      "verse_end": 89,
+      "ref_text": "Hud 11:89",
+      "type": "direct"
+    },
+    {
+      "slug": "F0699",
+      "name": "Hud",
+      "surah": 26,
+      "verse_start": 124,
+      "verse_end": 124,
+      "ref_text": "Ash-Shu'ara 26:124",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 7,
+      "verse_start": 73,
+      "verse_end": 73,
+      "ref_text": "Al-A'raf 7:73",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 7,
+      "verse_start": 75,
+      "verse_end": 75,
+      "ref_text": "Al-A'raf 7:75",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 7,
+      "verse_start": 77,
+      "verse_end": 77,
+      "ref_text": "Al-A'raf 7:77",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 11,
+      "verse_start": 61,
+      "verse_end": 61,
+      "ref_text": "Hud 11:61",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 11,
+      "verse_start": 62,
+      "verse_end": 62,
+      "ref_text": "Hud 11:62",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 11,
+      "verse_start": 66,
+      "verse_end": 66,
+      "ref_text": "Hud 11:66",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 11,
+      "verse_start": 89,
+      "verse_end": 89,
+      "ref_text": "Hud 11:89",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 26,
+      "verse_start": 142,
+      "verse_end": 142,
+      "ref_text": "Ash-Shu'ara 26:142",
+      "type": "direct"
+    },
+    {
+      "slug": "F1249",
+      "name": "Salih",
+      "surah": 27,
+      "verse_start": 45,
+      "verse_end": 45,
+      "ref_text": "An-Naml 27:45",
+      "type": "direct"
+    },
+    {
+      "slug": "F0500",
+      "name": "Ayyub",
+      "surah": 4,
+      "verse_start": 163,
+      "verse_end": 163,
+      "ref_text": "An-Nisa 4:163",
+      "type": "direct"
+    },
+    {
+      "slug": "F0500",
+      "name": "Ayyub",
+      "surah": 6,
+      "verse_start": 84,
+      "verse_end": 84,
+      "ref_text": "Al-An'am 6:84",
+      "type": "direct"
+    },
+    {
+      "slug": "F0500",
+      "name": "Ayyub",
+      "surah": 21,
+      "verse_start": 83,
+      "verse_end": 83,
+      "ref_text": "Al-Anbya 21:83",
+      "type": "direct"
+    },
+    {
+      "slug": "F0500",
+      "name": "Ayyub",
+      "surah": 38,
+      "verse_start": 41,
+      "verse_end": 41,
+      "ref_text": "Sad 38:41",
+      "type": "direct"
+    },
+    {
+      "slug": "F0559",
+      "name": "Dhul-Kifl",
+      "surah": 21,
+      "verse_start": 85,
+      "verse_end": 85,
+      "ref_text": "Al-Anbya 21:85",
+      "type": "direct"
+    },
+    {
+      "slug": "F0559",
+      "name": "Dhul-Kifl",
+      "surah": 38,
+      "verse_start": 48,
+      "verse_end": 48,
+      "ref_text": "Sad 38:48",
+      "type": "direct"
+    },
+    {
       "slug": "F1132",
+      "name": "Muhammad",
       "surah": 3,
       "verse_start": 144,
       "verse_end": 144,
-      "ref_text": "3:144"
+      "ref_text": "Ali 'Imran 3:144",
+      "type": "direct"
     },
     {
-      "name": "Muhammad",
       "slug": "F1132",
+      "name": "Muhammad",
       "surah": 33,
       "verse_start": 40,
       "verse_end": 40,
-      "ref_text": "33:40"
+      "ref_text": "Al-Ahzab 33:40",
+      "type": "direct"
     },
     {
-      "name": "Muhammad",
       "slug": "F1132",
+      "name": "Muhammad",
       "surah": 47,
       "verse_start": 2,
       "verse_end": 2,
-      "ref_text": "47:2"
+      "ref_text": "Muhammad 47:2",
+      "type": "direct"
     },
     {
-      "name": "Muhammad",
       "slug": "F1132",
+      "name": "Muhammad",
       "surah": 48,
       "verse_start": 29,
       "verse_end": 29,
-      "ref_text": "48:29"
-    },
-    {
-      "name": "Zayd ibn Harithah",
-      "slug": "F1685",
-      "surah": 33,
-      "verse_start": 37,
-      "verse_end": 37,
-      "ref_text": "33:37"
-    },
-    {
-      "name": "Suhayb bin Sinan ar-Rumi",
-      "slug": "F1331",
-      "surah": 2,
-      "verse_start": 207,
-      "verse_end": 207,
-      "ref_text": "2:207"
-    },
-    {
-      "name": "Suhaib al-Rumi",
-      "slug": "F1330",
-      "surah": 2,
-      "verse_start": 207,
-      "verse_end": 207,
-      "ref_text": "2:207"
-    },
-    {
-      "name": "Salman al-Farisi",
-      "slug": "F1263",
-      "surah": 33,
-      "verse_start": 9,
-      "verse_end": 9,
-      "ref_text": "33:9"
-    },
-    {
-      "name": "Salim Mawla Abi Hudhayfah",
-      "slug": "F1252",
-      "surah": 33,
-      "verse_start": 4,
-      "verse_end": 5,
-      "ref_text": "33:4-5"
-    },
-    {
-      "name": "Salama bin Hisham",
-      "slug": "F1241",
-      "surah": 4,
-      "verse_start": 97,
-      "verse_end": 97,
-      "ref_text": "4:97"
-    },
-    {
-      "name": "Safwan bin Bayda",
-      "slug": "F1230",
-      "surah": 24,
-      "verse_start": 11,
-      "verse_end": 11,
-      "ref_text": "24:11"
-    },
-    {
-      "name": "Sa'd ibn Muadh",
-      "slug": "F1204",
-      "surah": 33,
-      "verse_start": 25,
-      "verse_end": 27,
-      "ref_text": "33:25-27"
-    },
-    {
-      "name": "Mistah bin Uthatha b 'Abbad b al-Mutt",
-      "slug": "F1012",
-      "surah": 24,
-      "verse_start": 11,
-      "verse_end": 22,
-      "ref_text": "24:11-22"
-    },
-    {
-      "name": "Miqdad ibn Amr",
-      "slug": "F1004",
-      "surah": 8,
-      "verse_start": 5,
-      "verse_end": 7,
-      "ref_text": "8:5-7"
-    },
-    {
-      "name": "Khabbab ibn al-Aratt",
-      "slug": "F0858",
-      "surah": 80,
-      "verse_start": 1,
-      "verse_end": 10,
-      "ref_text": "80:1-10"
-    },
-    {
-      "name": "Ka'b ibn Malik",
-      "slug": "F0838",
-      "surah": 9,
-      "verse_start": 117,
-      "verse_end": 118,
-      "ref_text": "9:117-118"
-    },
-    {
-      "name": "Hatib bin Abi Balta'ah",
-      "slug": "F0674",
-      "surah": 60,
-      "verse_start": 1,
-      "verse_end": 1,
-      "ref_text": "60:1"
-    },
-    {
-      "name": "Hafsa bint Umar",
-      "slug": "F0643",
-      "surah": 66,
-      "verse_start": 1,
-      "verse_end": 5,
-      "ref_text": "66:1-5"
-    },
-    {
-      "name": "Fatimah al-Zahra",
-      "slug": "F0599",
-      "surah": 108,
-      "verse_start": 1,
-      "verse_end": 3,
-      "ref_text": "108:1-3"
-    },
-    {
-      "name": "Aus bin As-Samit",
-      "slug": "F0490",
-      "surah": 58,
-      "verse_start": 1,
-      "verse_end": 4,
-      "ref_text": "58:1-4"
-    },
-    {
-      "name": "Aisha bint Abi Bakr",
-      "slug": "F0199",
-      "surah": 24,
-      "verse_start": 11,
-      "verse_end": 26,
-      "ref_text": "24:11-26"
-    },
-    {
-      "name": "Aisha bint Abi Bakr",
-      "slug": "F0199",
-      "surah": 33,
-      "verse_start": 53,
-      "verse_end": 53,
-      "ref_text": "33:53"
-    },
-    {
-      "name": "Aisha bint Abi Bakr",
-      "slug": "F0199",
-      "surah": 66,
-      "verse_start": 1,
-      "verse_end": 5,
-      "ref_text": "66:1-5"
-    },
-    {
-      "name": "Abu Lubaba ibn Abd al-Mundhir",
-      "slug": "F0136",
-      "surah": 8,
-      "verse_start": 27,
-      "verse_end": 27,
-      "ref_text": "8:27"
-    },
-    {
-      "name": "Abu Lubaba bin 'Abdul Mundhir",
-      "slug": "F0135",
-      "surah": 8,
-      "verse_start": 27,
-      "verse_end": 27,
-      "ref_text": "8:27"
-    },
-    {
-      "name": "Abu Bakr al-Siddiq",
-      "slug": "F0114",
-      "surah": 9,
-      "verse_start": 40,
-      "verse_end": 40,
-      "ref_text": "9:40"
-    },
-    {
-      "name": "Umar ibn al-Khattab",
-      "slug": "F1433",
-      "surah": 66,
-      "verse_start": 3,
-      "verse_end": 5,
-      "ref_text": "66:3-5"
-    },
-    {
-      "name": "Khadija bint Khuwaylid",
-      "slug": "F0862",
-      "surah": 93,
-      "verse_start": 6,
-      "verse_end": 8,
-      "ref_text": "93:6-8"
-    },
-    {
-      "name": "Abbas ibn Abd al-Muttalib",
-      "slug": "F0006",
-      "surah": 111,
-      "verse_start": 1,
-      "verse_end": 5,
-      "ref_text": "111:1-5"
+      "ref_text": "Al-Fath 48:29",
+      "type": "direct"
     }
   ],
   "surah_refs": {

@@ -57,7 +57,29 @@
     + '.stp-wiz button{font-size:15px !important}'
     + '.stp-wiz input[type="checkbox"], .stp-wiz input[type="radio"]{width:18px !important;height:18px !important}'
     + '.stp-num{appearance:textfield !important}'
-    + '.stp-num::-webkit-inner-spin-button,.stp-num::-webkit-outer-spin-button{-webkit-appearance:none !important;appearance:none !important;margin:0 !important}';
+    + '.stp-num::-webkit-inner-spin-button,.stp-num::-webkit-outer-spin-button{-webkit-appearance:none !important;appearance:none !important;margin:0 !important}'
+    + 'body.st-search-active #st-reader{display:none !important}'
+    + 'body.st-search-active .st-prev-surah,body.st-search-active .st-next-surah,body.st-search-active .st-surah-nav,body.st-search-active .st-bismillah,body.st-search-active .st-bism-row,body.st-search-active .st-nav,body.st-search-active .dv-card{display:none !important}'
+    + 'body.st-search-active #st-fixed-cols,body.st-search-active #st-fixed-hdr{display:none !important}'
+    + '#st-search-panel{display:none;position:fixed;left:0;right:0;bottom:0;top:140px;background:#0a0f1a;z-index:50;padding:24px 40px;overflow-y:auto}'
+    + '.st-srch-top{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap}'
+    + '#st-srch-lang{background:#1a2030;color:#e5e7eb;border:1px solid #2a3346;border-radius:4px;padding:8px 12px;font-size:14px;min-width:220px}'
+    + '#st-srch-input{flex:1;min-width:260px;background:#1a2030;color:#e5e7eb;border:1px solid #c9a961;border-radius:4px;padding:10px 14px;font-size:16px}'
+    + '#st-srch-input:focus{outline:none;border-color:#e0c578}'
+    + '#st-srch-status{color:#94a3b8;font-size:14px;min-width:140px}'
+    + '#st-srch-results .st-srch-row{padding:14px 16px;border-bottom:1px solid rgba(45,55,72,0.4);cursor:pointer;transition:background 0.15s}'
+    + '#st-srch-results .st-srch-row:hover{background:rgba(212,175,55,0.06)}'
+    + '.st-srch-ref{color:#c9a961;font-family:Cinzel,serif;font-size:13px;margin-bottom:6px;letter-spacing:.04em}'
+    + '.st-srch-text{color:#e5e7eb;font-size:16px;line-height:1.7}'
+    + '.st-srch-text mark{background:rgba(212,175,55,0.35);color:#fff;padding:1px 3px;border-radius:2px}'
+    + '.st-srch-empty{color:#94a3b8;padding:24px;text-align:center}'
+    + '#st-srch-results.grid{display:grid;grid-template-columns:60% 40%;gap:0;align-items:stretch}'
+    + '.st-srch-cell-left,.st-srch-cell-right{padding:14px 16px;border-bottom:1px solid rgba(45,55,72,0.4);cursor:pointer;transition:background 0.15s}'
+    + '.st-srch-cell-left:hover,.st-srch-cell-right:hover{background:rgba(212,175,55,0.06)}'
+    + '.st-srch-cell-right{direction:rtl;text-align:right;font-family:"Amiri","Scheherazade New",serif;font-size:22px;line-height:1.95;color:#e5e7eb;border-left:1px solid rgba(201,169,97,0.25)}'
+    + '.st-srch-cell-left .st-srch-ref{color:#c9a961;font-family:Cinzel,serif;font-size:13px;margin-bottom:6px;letter-spacing:.04em}'
+    + '.st-srch-cell-left .st-srch-text{color:#e5e7eb;font-size:16px;line-height:1.7}'
+    + '.st-search-btn.zb-active{background:rgba(212,175,55,0.22) !important;color:#c9a961 !important;border-color:#c9a961 !important}';
   document.head.appendChild(s);
 })();
 /* ─────────────────────────────────────────────────────────────
@@ -5337,6 +5359,12 @@ window.StartView = (function(){
       mvEdit.addEventListener('click', function(e){ e.stopPropagation(); if(typeof window._stOpenPrefs === 'function') window._stOpenPrefs(); });
       mvWrap.appendChild(mvBtn);
       mvWrap.appendChild(mvEdit);
+      var srchBtn = document.createElement('button');
+      srchBtn.className = 'zb-pill st-search-btn';
+      srchBtn.textContent = 'SEARCH';
+      srchBtn.title = 'Search any word in any translation';
+      srchBtn.addEventListener('click', function(){ if(typeof window._stSearchToggle === 'function') window._stSearchToggle(); });
+      mvWrap.appendChild(srchBtn);
       row1.insertBefore(mvWrap, row1.firstChild);
       setTimeout(_stRefreshMyViewBtn, 50);
     }
@@ -5582,6 +5610,264 @@ window._stUpdateTransRtl = function(){
 
 if(typeof _stToggleTrans === 'function') window._stToggleTrans = _stToggleTrans;
 if(typeof _stTrans !== 'undefined') Object.defineProperty(window, '_stTrans', { get: function(){ return _stTrans; } });
+
+// ═══════════════════════════════════════════════════════════
+// SEARCH SUB-VIEW — search any word in any translation
+// ═══════════════════════════════════════════════════════════
+var _stSearchOn = false;
+var _stSearchPanel = null;
+
+function _stSrchNormArabic(s){
+  if(!s) return '';
+  return s
+    .replace(/[ً-ٰٟۖ-ۭ]/g,'')
+    .replace(/[آأإ]/g,'ا')
+    .replace(/ى/g,'ي')
+    .toLowerCase();
+}
+function _stSrchNormLatin(s){ return (s||'').toLowerCase(); }
+
+function _stSrchNormFor(slug){
+  for(var i=0;i<_stTransIndex.length;i++){
+    if(_stTransIndex[i].slug===slug){
+      return _stTransIndex[i].direction==='rtl' ? _stSrchNormArabic : _stSrchNormLatin;
+    }
+  }
+  return _stSrchNormLatin;
+}
+
+function _stSrchPositionPanel(){
+  if(!_stSearchPanel) return;
+  var za = document.querySelector('.zone-a');
+  var zb = document.getElementById('zoneB');
+  var top = 0;
+  if(za) top += za.offsetHeight;
+  if(zb && getComputedStyle(zb).display !== 'none') top += zb.offsetHeight;
+  _stSearchPanel.style.top = top + 'px';
+}
+
+function _stSrchBuildPanel(){
+  if(document.getElementById('st-search-panel')){
+    _stSearchPanel = document.getElementById('st-search-panel');
+    return;
+  }
+  var p = document.createElement('div');
+  p.id = 'st-search-panel';
+  p.innerHTML = ''
+    + '<div class="st-srch-top">'
+    +   '<select id="st-srch-lang"></select>'
+    +   '<input id="st-srch-input" type="text" placeholder="Type a word in any language…" autocomplete="off">'
+    +   '<span id="st-srch-status"></span>'
+    + '</div>'
+    + '<div id="st-srch-results"></div>';
+  document.body.appendChild(p);
+  _stSearchPanel = p;
+
+  var sel = p.querySelector('#st-srch-lang');
+  // Group: embedded first, then file-based
+  var seen = {};
+  function addOpt(t){
+    if(seen[t.slug]) return;
+    seen[t.slug] = 1;
+    var o = document.createElement('option');
+    o.value = t.slug;
+    var label = t.native_name || t.english_name || t.slug;
+    if(t.english_name && t.native_name && t.english_name !== t.native_name) label += ' — ' + t.english_name;
+    o.textContent = label;
+    sel.appendChild(o);
+  }
+  // embedded slugs first
+  ['arabic','eng_saheeh','transliteration'].forEach(function(s){
+    for(var i=0;i<_stTransIndex.length;i++){ if(_stTransIndex[i].slug===s){ addOpt(_stTransIndex[i]); break; } }
+  });
+  _stTransIndex.forEach(addOpt);
+
+  var defaultSlug = null;
+  Object.keys(_stTrans||{}).forEach(function(k){ if(_stTrans[k] && !defaultSlug) defaultSlug = k; });
+  if(!defaultSlug) defaultSlug = 'eng_saheeh';
+  sel.value = defaultSlug;
+
+  var input = p.querySelector('#st-srch-input');
+  var debounceT = null;
+  function trigger(){
+    clearTimeout(debounceT);
+    debounceT = setTimeout(_stSrchRun, 250);
+  }
+  input.addEventListener('input', trigger);
+  sel.addEventListener('change', trigger);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Escape') window._stSearchToggle(); });
+  window.addEventListener('resize', _stSrchPositionPanel);
+}
+
+function _stSrchEnsureLangLoaded(slug, onProgress, done){
+  if(_ST_EMBED_MAP[slug]){ done(); return; }
+  var entry = null;
+  for(var i=0;i<_stTransIndex.length;i++){ if(_stTransIndex[i].slug===slug){ entry=_stTransIndex[i]; break; } }
+  if(!entry || !entry.lang_code || !entry.sub_slug){ done(); return; }
+  if(!_stFileCache[slug]) _stFileCache[slug] = {};
+  var missing = [];
+  for(var s=1; s<=114; s++) if(!_stFileCache[slug][s]) missing.push(s);
+  if(!missing.length){ done(); return; }
+  var total = missing.length;
+  var loaded = 0;
+  var inflight = 0;
+  var MAX = 8;
+  function pump(){
+    while(missing.length && inflight < MAX){
+      var sid = missing.shift();
+      inflight++;
+      (function(surahId){
+        var pad = ('00'+surahId).slice(-3);
+        var path = 'data/islamic/quran/translations/'+entry.lang_code+'/'+entry.sub_slug+'/surah-'+pad+'.json';
+        fetch(dataUrl(path)).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
+          var bucket = {};
+          if(d && d.ayahs) d.ayahs.forEach(function(a){ bucket[a.ayah] = a.text || ''; });
+          _stFileCache[slug][surahId] = bucket;
+        }).catch(function(){
+          _stFileCache[slug][surahId] = {};
+        }).then(function(){
+          inflight--;
+          loaded++;
+          onProgress(loaded, total);
+          if(missing.length) pump();
+          else if(loaded === total) done();
+        });
+      })(sid);
+    }
+  }
+  pump();
+}
+
+function _stSrchEscRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function _stSrchRun(){
+  if(!_stSearchPanel) return;
+  var inp = _stSearchPanel.querySelector('#st-srch-input');
+  var sel = _stSearchPanel.querySelector('#st-srch-lang');
+  var statusEl = _stSearchPanel.querySelector('#st-srch-status');
+  var resultsEl = _stSearchPanel.querySelector('#st-srch-results');
+  var q = (inp.value || '').trim();
+  var slug = sel.value;
+  if(!q || q.length < 2){
+    resultsEl.innerHTML = '';
+    statusEl.textContent = '';
+    return;
+  }
+  var norm = _stSrchNormFor(slug);
+  var nq = norm(q);
+  statusEl.textContent = 'Loading…';
+  _stSrchEnsureLangLoaded(slug, function(loaded, total){
+    statusEl.textContent = 'Loading '+loaded+'/'+total+'…';
+  }, function(){
+    if((inp.value||'').trim() !== q || sel.value !== slug) return; // input changed mid-load
+    statusEl.textContent = 'Searching…';
+    var hits = [];
+    var CAP = 500;
+    var embedField = _ST_EMBED_MAP[slug];
+    if(embedField){
+      for(var i=0;i<_stText.length && hits.length<CAP;i++){
+        var s = _stText[i];
+        for(var j=0;j<s.verses.length && hits.length<CAP;j++){
+          var v = s.verses[j];
+          var t = v[embedField] || '';
+          if(t && norm(t).indexOf(nq) !== -1) hits.push({surah:s.id, verse:v.id, text:t});
+        }
+      }
+    } else {
+      var bucket = _stFileCache[slug] || {};
+      for(var sid=1; sid<=114 && hits.length<CAP; sid++){
+        var sb = bucket[sid];
+        if(!sb) continue;
+        var keys = Object.keys(sb);
+        for(var k=0;k<keys.length && hits.length<CAP;k++){
+          var vid = keys[k];
+          var t2 = sb[vid] || '';
+          if(t2 && norm(t2).indexOf(nq) !== -1) hits.push({surah:sid, verse:+vid, text:t2});
+        }
+      }
+    }
+    _stSrchRenderResults(hits, q, slug, statusEl, resultsEl);
+  });
+}
+
+var _stSrchArCache = null;
+function _stSrchBuildArCache(){
+  if(_stSrchArCache) return;
+  _stSrchArCache = {};
+  _stText.forEach(function(s){
+    s.verses.forEach(function(v){
+      _stSrchArCache[s.id+':'+v.id] = v.ar || '';
+    });
+  });
+}
+
+function _stSrchRenderResults(hits, q, slug, statusEl, resultsEl){
+  if(!hits.length){
+    statusEl.textContent = '0 results';
+    resultsEl.className = '';
+    resultsEl.innerHTML = '<div class="st-srch-empty">No verses contain “'+_stEsc(q)+'”.</div>';
+    return;
+  }
+  statusEl.textContent = hits.length + (hits.length>=500?'+':'') + ' results';
+  _stSrchBuildArCache();
+  function surahName(id){
+    for(var i=0;i<_stIndex.length;i++) if(_stIndex[i].id===id) return _stIndex[i];
+    return {name_en:'Surah '+id, name_ar:''};
+  }
+  var dir = _stTransDir(slug);
+  var leftDirAttr = dir==='rtl' ? ' style="direction:rtl;text-align:right"' : '';
+  var re = null;
+  try { re = new RegExp('('+_stSrchEscRe(q)+')','gi'); } catch(e){}
+  var html = hits.map(function(h){
+    var m = surahName(h.surah);
+    var safeLeft = _stEsc(h.text);
+    var hiLeft = re ? safeLeft.replace(re,'<mark>$1</mark>') : safeLeft;
+    var ar = _stSrchArCache[h.surah+':'+h.verse] || '';
+    var safeAr = _stEsc(ar);
+    return '<div class="st-srch-cell-left" data-surah="'+h.surah+'" data-verse="'+h.verse+'">'
+      +   '<div class="st-srch-ref">'+_stEsc(m.name_en)+' · '+h.surah+':'+h.verse+'</div>'
+      +   '<div class="st-srch-text"'+leftDirAttr+'>'+hiLeft+'</div>'
+      + '</div>'
+      + '<div class="st-srch-cell-right" data-surah="'+h.surah+'" data-verse="'+h.verse+'">'+safeAr+'</div>';
+  }).join('');
+  resultsEl.className = 'grid';
+  resultsEl.innerHTML = html;
+  Array.prototype.slice.call(resultsEl.querySelectorAll('.st-srch-cell-left,.st-srch-cell-right')).forEach(function(cell){
+    cell.addEventListener('click', function(){
+      var sid = +cell.getAttribute('data-surah');
+      var vid = +cell.getAttribute('data-verse');
+      _stSrchJumpTo(sid, vid);
+    });
+  });
+}
+
+function _stSrchJumpTo(surahId, verseId){
+  if(_stSearchOn) window._stSearchToggle();
+  if(typeof _stSelectSurah === 'function') _stSelectSurah(surahId);
+  setTimeout(function(){
+    var v = document.querySelector('.st-verse[data-verse-id="'+verseId+'"]');
+    if(v) v.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 450);
+}
+
+window._stSearchToggle = function(){
+  _stSearchOn = !_stSearchOn;
+  if(_stSearchOn){
+    _stSrchBuildPanel();
+    document.body.classList.add('st-search-active');
+    _stSrchPositionPanel();
+    _stSearchPanel.style.display = 'block';
+    setTimeout(function(){
+      var inp = _stSearchPanel.querySelector('#st-srch-input');
+      if(inp) inp.focus();
+    }, 50);
+  } else {
+    document.body.classList.remove('st-search-active');
+    if(_stSearchPanel) _stSearchPanel.style.display = 'none';
+  }
+  var btn = document.querySelector('.st-search-btn');
+  if(btn) btn.classList.toggle('zb-active', _stSearchOn);
+};
 
 })(); // close outer StartView wrapper
 

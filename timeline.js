@@ -1847,9 +1847,17 @@ function renderInfo(p){
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
 
 
-  // Quran references section
+  // Quran references section — verified xref wins; legacy strings only render
+  // when no xref entries exist for this figure (e.g. companions in Phase 1).
   let quranHtml='';
-  if(p.quranRef){
+  let quranChipsHtml='';
+  const _xrefs=(window.QURAN_XREF_BY_SLUG && window.QURAN_XREF_BY_SLUG[p.slug]) || null;
+  if(_xrefs && _xrefs.length){
+    quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')} <span style="color:var(--ip-muted);font-weight:normal;font-size:var(--fs-3)">(${_xrefs.length})</span></div>
+      <div class="quran-chips" style="line-height:1.9">${_xrefs.map(r=>
+        `<button class="quran-chip" data-surah="${r.surah}" data-vstart="${r.verse_start}" data-vend="${r.verse_end}">${esc(r.ref_text)}</button>`
+      ).join('')}</div></div>`;
+  } else if(p.quranRef){
     const qr=p.quranRef;
     if(typeof qr==='object'&&qr.count!=null){
       quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
@@ -1867,20 +1875,10 @@ function renderInfo(p){
         </div></div>`;
     }
   } else if(p.quran_refs){
-    const qlink=p.quran_link?`<a href="${p.quran_link}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none;font-size:var(--fs-3)"> — Open in Quran.com 🌐</a>`:'';
     quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
       <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
         <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">${_tlT('VERSES')}: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs))}
       </div></div>`;
-  }
-
-  // Verse chips from quran_xref.json — one section, sorted by surah then verse_start.
-  let quranChipsHtml='';
-  const _xrefs=(window.QURAN_XREF_BY_SLUG && window.QURAN_XREF_BY_SLUG[p.slug]) || null;
-  if(_xrefs && _xrefs.length){
-    quranChipsHtml=`<section class="info-quran"><h4>QURAN</h4><div class="quran-chips">${_xrefs.map(r=>
-      `<button class="quran-chip" data-surah="${r.surah}" data-vstart="${r.verse_start}" data-vend="${r.verse_end}">${esc(r.ref_text)}</button>`
-    ).join('')}</div></section>`;
   }
 
   let booksHtml='';

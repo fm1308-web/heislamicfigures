@@ -644,7 +644,17 @@ async function _renderPerson(p,container){
     h+=_sec('📜','Biography',0,bioBody2,true);
   }
 
-  if(p.quranRef||p.quran_refs){
+  // Quranic References — verified xref data wins; legacy strings only
+  // render when no xref entries exist for this figure (Phase-1 prophets
+  // have xref; companions still on legacy data until Phase 2).
+  var _xrefs = (window.QURAN_XREF_BY_SLUG && window.QURAN_XREF_BY_SLUG[p.slug]) || null;
+  if(_xrefs && _xrefs.length){
+    var _chipStyle = 'display:inline-block;padding:2px 8px;margin:2px 3px;font-size:13px;line-height:1.5;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.4);border-radius:3px;color:#D4AF37;cursor:pointer;font-family:inherit';
+    var _chips = _xrefs.map(function(r){
+      return '<button class="quran-chip" data-surah="'+r.surah+'" data-vstart="'+r.verse_start+'" data-vend="'+r.verse_end+'" style="'+_chipStyle+'">'+_e(r.ref_text)+'</button>';
+    }).join('');
+    h += _sec('🕌','Quranic References',_xrefs.length,'<div style="line-height:1.9">'+_chips+'</div>',false);
+  } else if(p.quranRef||p.quran_refs){
     var qh='';
     if(p.quranRef){
       var qr=p.quranRef;
