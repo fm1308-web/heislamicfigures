@@ -13,7 +13,7 @@
       title: 'Welcome',
       body:
         '<p><strong>Gold Ark</strong> is a free interactive map of 1,400+ years of Islamic history. ' +
-        '1,962 figures, 2,211 events, 1,098 books, 21 tafsir works, 16 hadith collections, ' +
+        '1,962 figures, 2,211 events, 2,062 books (1,098 curated + 964 OpenITI), 21 tafsir works, 16 hadith collections, ' +
         '492 Quran translations.</p>' +
         '<p>No ads. No tracking. No login required to browse — sign up free to save bookmarks ' +
         'and reading progress. Take a minute to look around. Explore at your pace.</p>' +
@@ -55,7 +55,7 @@
         '<strong>SILSILA</strong> — teacher-student chains.<br>' +
         '<strong>FOLLOW</strong> — a figure’s life journey across the map.<br>' +
         '<strong>STUDY</strong> — slide decks and curated videos.<br>' +
-        '<strong>BOOKS</strong> — 1,098 books with free reads.<br>' +
+        '<strong>BOOKS</strong> — 2,062 books with public links to free reads.<br>' +
         '<strong>ERAS</strong> — visual overview of historical periods.<br>' +
         '<strong>EVENTS</strong> — 2,211 enriched events.<br>' +
         '<strong>YEAR</strong> — drill into any single year.<br>' +

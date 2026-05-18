@@ -299,7 +299,7 @@ var FILTER_SPECS = {
     actions: [
       { type:'pill', label:'+ ANCIENT' }
     ],
-    hint: 'Browse the book library across themes, eras, and traditions',
+    hint: 'Browse 2,062 books across themes, eras, and traditions — all with public links to free reads',
     hintInRow2: true,
     htw: true
   },

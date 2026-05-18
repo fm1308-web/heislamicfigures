@@ -255,6 +255,74 @@ async function _loadBooksData(){
   try{
     const res = await fetch(dataUrl('data/islamic/books.json'));
     _BOOKS_DATA = await res.json();
+    // OpenITI books merge (source: OpenITI v2025.1.9)
+    try{
+      const oiRes = await fetch(dataUrl('data/openiti/books_openiti.json'));
+      if(oiRes.ok){
+        const oiData = await oiRes.json();
+        const oiBooks = (oiData && oiData.books) || [];
+        // Build slug → canonical name map from core.json.
+        // Reuses cache if timeline/silsila already loaded it.
+        var coreMap = window._OPENITI_SLUG_TO_NAME || null;
+        if(!coreMap){
+          try{
+            var coreSrc = window.PEOPLE || (window._coreCache && window._coreCache.PEOPLE) || null;
+            if(!coreSrc){
+              const coreRes = await fetch(dataUrl('data/islamic/core.json'));
+              const coreJson = coreRes.ok ? await coreRes.json() : null;
+              coreSrc = (coreJson && (coreJson.PEOPLE || coreJson.people || coreJson)) || [];
+            }
+            coreMap = {};
+            (coreSrc || []).forEach(function(p){
+              if(p && p.slug && p.famous) coreMap[p.slug] = p.famous;
+            });
+            window._OPENITI_SLUG_TO_NAME = coreMap;
+          }catch(e){
+            console.warn('[BOOKS] core.json slug map build failed:', e);
+            coreMap = {};
+          }
+        }
+        // Adapter — map OpenITI shape to books.js shape
+        const adapted = oiBooks.map(function(b){
+          return {
+            id: 'openiti:' + (b.openiti_uri || ''),
+            title: b.title_lat || b.title_ar || '(untitled)',
+            title_ar: b.title_ar || '',
+            author_name: (coreMap && b.goldark_slug && coreMap[b.goldark_slug]) || b.author_shuhra || b.author_uri_key || '',
+            author_slug: b.goldark_slug || '',
+            year: (typeof b.death_ce === 'number') ? b.death_ce : null,
+            century: b.century_ah || null,
+            language: b.language || 'Arabic',
+            themes: b.themes || [],
+            is_free: true,
+            url: b.reader_url || '',
+            reader_source: b.reader_source || '',
+            attribution: b.attribution || 'Source: OpenITI v2025.1.9',
+            source: 'openiti'
+          };
+        });
+        // Dedup: skip OpenITI book if existing book has same
+        // author_slug AND matching title (case-insensitive).
+        const existing = _BOOKS_DATA.books || [];
+        const existingKeys = new Set();
+        existing.forEach(function(eb){
+          var k = (eb.author_slug || '') + '|' + String(eb.title || '').toLowerCase().trim();
+          existingKeys.add(k);
+        });
+        const merged = adapted.filter(function(nb){
+          var k = (nb.author_slug || '') + '|' + String(nb.title || '').toLowerCase().trim();
+          return !existingKeys.has(k);
+        });
+        _BOOKS_DATA.books = existing.concat(merged);
+        if(_BOOKS_DATA.topline){
+          _BOOKS_DATA.topline.total = (_BOOKS_DATA.topline.total || 0) + merged.length;
+          _BOOKS_DATA.topline.free  = (_BOOKS_DATA.topline.free  || 0) + merged.length;
+        }
+        console.log('[BOOKS] OpenITI merged:', merged.length, 'new of', adapted.length);
+      }
+    }catch(e){
+      console.warn('[BOOKS] OpenITI fetch skipped:', e);
+    }
     // Lazy-load name_variants for author → slug resolution. Cached on window.
     if(!window._NAME_VARIANTS){
       try{
