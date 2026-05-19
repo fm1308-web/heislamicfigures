@@ -1391,7 +1391,7 @@ async function _stLoadHadithXrefIntoVerse(){
       if(window._hadithXrefCache[c]){
         idx = window._hadithXrefCache[c];
       } else {
-        var res = await fetch(dataUrl('data/islamic/hadith_xref/'+c+'.json'));
+        var res = await fetch(dataUrl('data/islamic/hadith/support/xref/'+c+'.json'));
         if(!res.ok) return;
         var json = await res.json();
         idx = json.hadith_index || {};

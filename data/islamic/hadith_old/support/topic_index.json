@@ -1,0 +1,746 @@
+{
+  "_meta": {
+    "source": "R2 full hadith books (17 Sunni)",
+    "books_processed": [
+      "sahih-bukhari",
+      "sahih-muslim",
+      "abu-dawood",
+      "al-tirmidhi",
+      "sunan-nasai",
+      "ibn-e-majah",
+      "muwatta-malik",
+      "musnad-ahmad",
+      "sunan-ad-darimi",
+      "riyad-as-salihin",
+      "shamail-al-muhammadiyah",
+      "bulugh-al-maram",
+      "al-adab-al-mufrad",
+      "mishkat-al-masabih",
+      "40-hadith-nawawi",
+      "40-hadith-qudsi",
+      "40-hadith-shahwaliullah"
+    ],
+    "books_skipped": [],
+    "generated": "2026-05-19T12:34:55.701080+00:00",
+    "total_unique_topics": 179,
+    "records_without_topic": 37593
+  },
+  "topics": [
+    {
+      "name": "'Adhab al-qabr (punishment in the grave)",
+      "count": 9
+    },
+    {
+      "name": "'Aql wa naql (reason and revelation)",
+      "count": 32
+    },
+    {
+      "name": "'Illa (effective cause)",
+      "count": 2
+    },
+    {
+      "name": "'Ilm al-huruf (science of letters)",
+      "count": 1
+    },
+    {
+      "name": "'Ilm al-miqat (timekeeping science)",
+      "count": 2
+    },
+    {
+      "name": "'Isma (prophetic and imami infallibility)",
+      "count": 15
+    },
+    {
+      "name": "'Isma of prophets",
+      "count": 1
+    },
+    {
+      "name": "Abdal (the substitutes)",
+      "count": 2
+    },
+    {
+      "name": "Abjad numerology",
+      "count": 1
+    },
+    {
+      "name": "Adab (spiritual courtesy)",
+      "count": 3
+    },
+    {
+      "name": "Adl (divine justice)",
+      "count": 17
+    },
+    {
+      "name": "Al-a'yan al-thabita (immutable entities)",
+      "count": 7
+    },
+    {
+      "name": "Al-amr bi'l-ma'ruf wa'l-nahy 'an al-munkar",
+      "count": 88
+    },
+    {
+      "name": "Al-aslah (the optimal)",
+      "count": 351
+    },
+    {
+      "name": "Al-haqiqa al-muhammadiyya (Muhammadan reality)",
+      "count": 1
+    },
+    {
+      "name": "Al-hukm al-shar'i (legal ruling)",
+      "count": 1
+    },
+    {
+      "name": "Al-kabira (grave sin)",
+      "count": 6
+    },
+    {
+      "name": "Al-madina al-fadila (virtuous city)",
+      "count": 4
+    },
+    {
+      "name": "Al-manzila bayna al-manzilatayn (intermediate position)",
+      "count": 53
+    },
+    {
+      "name": "Al-mithaq (primordial covenant)",
+      "count": 2
+    },
+    {
+      "name": "Al-wa'd wa'l-wa'id (promise and threat)",
+      "count": 40
+    },
+    {
+      "name": "Amal ahl al-Madina (practice of Medina)",
+      "count": 3
+    },
+    {
+      "name": "Aman (safe-conduct)",
+      "count": 1
+    },
+    {
+      "name": "Amm and khass (general and particular)",
+      "count": 1
+    },
+    {
+      "name": "Aql awwal (first intellect)",
+      "count": 8
+    },
+    {
+      "name": "Aql fa'al (active intellect)",
+      "count": 1
+    },
+    {
+      "name": "Atomism (jawhar fard)",
+      "count": 1
+    },
+    {
+      "name": "Bada' (divine alteration)",
+      "count": 1
+    },
+    {
+      "name": "Bara'a asliyya (original non-liability)",
+      "count": 6
+    },
+    {
+      "name": "Barzakh (intermediate realm)",
+      "count": 16
+    },
+    {
+      "name": "Basit al-haqiqa (the simple reality)",
+      "count": 1
+    },
+    {
+      "name": "Bila kayf (without asking how)",
+      "count": 46
+    },
+    {
+      "name": "Bodily resurrection in falsafa",
+      "count": 1
+    },
+    {
+      "name": "Burials",
+      "count": 1
+    },
+    {
+      "name": "Business Transactions",
+      "count": 10
+    },
+    {
+      "name": "Circumcision",
+      "count": 2
+    },
+    {
+      "name": "Closing of the gate of ijtihad",
+      "count": 2
+    },
+    {
+      "name": "Consequences",
+      "count": 1
+    },
+    {
+      "name": "Dajjal (antichrist)",
+      "count": 1
+    },
+    {
+      "name": "Darura (necessity)",
+      "count": 1
+    },
+    {
+      "name": "Definition of iman",
+      "count": 1
+    },
+    {
+      "name": "Dhimma (protection contract)",
+      "count": 1
+    },
+    {
+      "name": "Disparaging",
+      "count": 1
+    },
+    {
+      "name": "Distinction of essence and existence",
+      "count": 1
+    },
+    {
+      "name": "Divine names cosmology",
+      "count": 1
+    },
+    {
+      "name": "Diya (blood money)",
+      "count": 2
+    },
+    {
+      "name": "Doctrine of the mean",
+      "count": 1
+    },
+    {
+      "name": "Drinks",
+      "count": 5
+    },
+    {
+      "name": "Fana' (annihilation in God)",
+      "count": 2
+    },
+    {
+      "name": "Fard kifaya (collective obligation)",
+      "count": 1
+    },
+    {
+      "name": "Fath al-dhara'i' (opening the means)",
+      "count": 2
+    },
+    {
+      "name": "Fitra (innate disposition)",
+      "count": 1
+    },
+    {
+      "name": "Five predicables",
+      "count": 6
+    },
+    {
+      "name": "Floating man argument",
+      "count": 2
+    },
+    {
+      "name": "Furuq (legal distinctions)",
+      "count": 9
+    },
+    {
+      "name": "Futuwwa (spiritual chivalry)",
+      "count": 1
+    },
+    {
+      "name": "Ghayba (occultation)",
+      "count": 11
+    },
+    {
+      "name": "Greetings",
+      "count": 5
+    },
+    {
+      "name": "Hads (intuition)",
+      "count": 6
+    },
+    {
+      "name": "Hajj",
+      "count": 5
+    },
+    {
+      "name": "Haqiqa and majaz (literal and figurative)",
+      "count": 12
+    },
+    {
+      "name": "Harakat jawhariyya (substantial motion)",
+      "count": 2
+    },
+    {
+      "name": "Harmony of philosophy and revelation",
+      "count": 18
+    },
+    {
+      "name": "Hashr (gathering and judgment)",
+      "count": 3
+    },
+    {
+      "name": "Hudus al-'alam (temporal origination of the world)",
+      "count": 46
+    },
+    {
+      "name": "Huduth dahri (atemporal origination)",
+      "count": 1
+    },
+    {
+      "name": "Husn wa qubh (moral ontology)",
+      "count": 110
+    },
+    {
+      "name": "I'jaz al-Qur'an (Qur'anic inimitability)",
+      "count": 4
+    },
+    {
+      "name": "Ibaha asliyya (presumption of permissibility)",
+      "count": 2
+    },
+    {
+      "name": "Ihsan (spiritual excellence)",
+      "count": 1
+    },
+    {
+      "name": "Ijma' (scholarly consensus)",
+      "count": 1
+    },
+    {
+      "name": "Ijma' sukuti (tacit consensus)",
+      "count": 2
+    },
+    {
+      "name": "Ikhtiyar (human choice)",
+      "count": 22
+    },
+    {
+      "name": "Ilm husuli (acquired knowledge)",
+      "count": 1
+    },
+    {
+      "name": "Imama (Shia imamate)",
+      "count": 60
+    },
+    {
+      "name": "Iman and amal (faith and works)",
+      "count": 38
+    },
+    {
+      "name": "Inaya (divine providence)",
+      "count": 3
+    },
+    {
+      "name": "Irja (postponement of judgment)",
+      "count": 1
+    },
+    {
+      "name": "Istihsan (juristic preference)",
+      "count": 2
+    },
+    {
+      "name": "Istishab (presumption of continuity)",
+      "count": 1
+    },
+    {
+      "name": "Istita'a (capacity to act)",
+      "count": 360
+    },
+    {
+      "name": "Ittihad al-'aqil wa'l-ma'qul (unity of intellect and intelligible)",
+      "count": 3
+    },
+    {
+      "name": "Jabr (compulsion)",
+      "count": 38
+    },
+    {
+      "name": "Jafr (esoteric divination)",
+      "count": 1
+    },
+    {
+      "name": "Jiha (divine direction)",
+      "count": 283
+    },
+    {
+      "name": "Jihad (legal doctrine of armed struggle)",
+      "count": 1
+    },
+    {
+      "name": "Judgements",
+      "count": 1
+    },
+    {
+      "name": "Kalam Allah (divine speech)",
+      "count": 74
+    },
+    {
+      "name": "Karamat al-awliya (saintly miracles)",
+      "count": 17
+    },
+    {
+      "name": "Kasb (acquisition)",
+      "count": 789
+    },
+    {
+      "name": "Khabar al-wahid (solitary report)",
+      "count": 45
+    },
+    {
+      "name": "Khala' (the void)",
+      "count": 2
+    },
+    {
+      "name": "Khalq al-af'al (creation of acts)",
+      "count": 408
+    },
+    {
+      "name": "Khalq al-Qur'an (createdness of the Qur'an)",
+      "count": 260
+    },
+    {
+      "name": "Khalwa (spiritual retreat)",
+      "count": 57
+    },
+    {
+      "name": "Khatm al-awliya' (seal of the saints)",
+      "count": 1
+    },
+    {
+      "name": "Khatm al-nubuwwa (finality of prophethood)",
+      "count": 464
+    },
+    {
+      "name": "Khawf and raja' (fear and hope)",
+      "count": 2
+    },
+    {
+      "name": "Khayal (creative imagination)",
+      "count": 2
+    },
+    {
+      "name": "Khilafa (caliphate as theological office)",
+      "count": 1
+    },
+    {
+      "name": "Khulud (eternity of hell)",
+      "count": 8
+    },
+    {
+      "name": "Khums (one-fifth tax)",
+      "count": 1
+    },
+    {
+      "name": "Kunyas",
+      "count": 1
+    },
+    {
+      "name": "Lafz and ma'na (word and meaning)",
+      "count": 1
+    },
+    {
+      "name": "Lutf (divine grace)",
+      "count": 20
+    },
+    {
+      "name": "Ma'ad jismani (bodily resurrection)",
+      "count": 10
+    },
+    {
+      "name": "Ma'rifa (gnosis of God)",
+      "count": 8
+    },
+    {
+      "name": "Mahdi (eschatological guide)",
+      "count": 1
+    },
+    {
+      "name": "Mahr (dower)",
+      "count": 1
+    },
+    {
+      "name": "Majaz mursal (metonymy)",
+      "count": 1
+    },
+    {
+      "name": "Maqasid al-shari'a (higher objectives of law)",
+      "count": 1
+    },
+    {
+      "name": "Mizan (the scale)",
+      "count": 1
+    },
+    {
+      "name": "Mujmal and mubayyan (unclear and clarified)",
+      "count": 2
+    },
+    {
+      "name": "Musnad 'Ali Ibn Abi Talib",
+      "count": 4
+    },
+    {
+      "name": "Musnad `Umar b. al-Khattab (ra)",
+      "count": 1
+    },
+    {
+      "name": "Musnad Uthman ibn Affan",
+      "count": 5
+    },
+    {
+      "name": "Mutawatir reports",
+      "count": 68
+    },
+    {
+      "name": "Mutlaq and muqayyad (absolute and qualified)",
+      "count": 67
+    },
+    {
+      "name": "Nafs (stages of the lower self)",
+      "count": 1
+    },
+    {
+      "name": "Nafs (the soul)",
+      "count": 2
+    },
+    {
+      "name": "Nass (designation)",
+      "count": 8
+    },
+    {
+      "name": "Natural place and motion",
+      "count": 1
+    },
+    {
+      "name": "Necessary causation",
+      "count": 1
+    },
+    {
+      "name": "Nikah (marriage contract)",
+      "count": 14
+    },
+    {
+      "name": "Nubuwwa (prophethood)",
+      "count": 2
+    },
+    {
+      "name": "Numerical cosmology of the Brethren",
+      "count": 1
+    },
+    {
+      "name": "Nur Muhammadi (Muhammadan light)",
+      "count": 1
+    },
+    {
+      "name": "Occasionalism",
+      "count": 2
+    },
+    {
+      "name": "Qadar (divine decree)",
+      "count": 77
+    },
+    {
+      "name": "Qanun al-ta'wil (rule of interpretation)",
+      "count": 3
+    },
+    {
+      "name": "Qawl al-sahabi (companion's opinion)",
+      "count": 3
+    },
+    {
+      "name": "Qisas (retaliation)",
+      "count": 1
+    },
+    {
+      "name": "Qiyas (analogical reasoning)",
+      "count": 1
+    },
+    {
+      "name": "Ra'is al-madina (philosopher-ruler)",
+      "count": 2
+    },
+    {
+      "name": "Raj'a (return)",
+      "count": 13
+    },
+    {
+      "name": "Razi's five eternals",
+      "count": 5
+    },
+    {
+      "name": "Ru'yat Allah (beatific vision)",
+      "count": 325
+    },
+    {
+      "name": "Sababiyya (secondary causality)",
+      "count": 55
+    },
+    {
+      "name": "Sadd al-dhara'i' (blocking the means)",
+      "count": 1
+    },
+    {
+      "name": "Sama' (spiritual audition)",
+      "count": 1
+    },
+    {
+      "name": "Sarfa (deflection theory of inimitability)",
+      "count": 3
+    },
+    {
+      "name": "Sarfa (divine deflection)",
+      "count": 18
+    },
+    {
+      "name": "Sayings",
+      "count": 3
+    },
+    {
+      "name": "Shafa'a (intercession)",
+      "count": 2
+    },
+    {
+      "name": "Shukr (gratitude)",
+      "count": 2
+    },
+    {
+      "name": "Sifat al-fi'l (attributes of action)",
+      "count": 14
+    },
+    {
+      "name": "Sifat Allah (divine attributes)",
+      "count": 5345
+    },
+    {
+      "name": "Spiritual medicine of the soul",
+      "count": 4
+    },
+    {
+      "name": "Supervision",
+      "count": 1
+    },
+    {
+      "name": "Supplications",
+      "count": 1
+    },
+    {
+      "name": "Ta'til (divestment of attributes)",
+      "count": 12
+    },
+    {
+      "name": "Ta'wil (allegorical interpretation)",
+      "count": 74
+    },
+    {
+      "name": "Tafwid (consigning meaning to God)",
+      "count": 477
+    },
+    {
+      "name": "Tahdhib al-akhlaq (refinement of character)",
+      "count": 3
+    },
+    {
+      "name": "Takfir (excommunication)",
+      "count": 377
+    },
+    {
+      "name": "Takhsis (specification)",
+      "count": 3
+    },
+    {
+      "name": "Taklif (moral obligation)",
+      "count": 4
+    },
+    {
+      "name": "Taqiyya (precautionary dissimulation)",
+      "count": 1
+    },
+    {
+      "name": "Taqlid (following authority)",
+      "count": 2
+    },
+    {
+      "name": "Tasawwuf (the discipline of Sufism)",
+      "count": 1
+    },
+    {
+      "name": "Tasawwur and tasdiq (conception and assent)",
+      "count": 1
+    },
+    {
+      "name": "Tashbih (anthropomorphism)",
+      "count": 321
+    },
+    {
+      "name": "Tashkik al-wujud (gradation of being)",
+      "count": 2
+    },
+    {
+      "name": "Tawba (repentance)",
+      "count": 3
+    },
+    {
+      "name": "Tawhid (divine oneness)",
+      "count": 981
+    },
+    {
+      "name": "Tawhid al-asma wa'l-sifat (oneness of names and attributes)",
+      "count": 663
+    },
+    {
+      "name": "Tawhid al-rububiyya (oneness of lordship)",
+      "count": 10
+    },
+    {
+      "name": "Tawhid al-uluhiyya (oneness of worship)",
+      "count": 227
+    },
+    {
+      "name": "The Book of Purification",
+      "count": 1
+    },
+    {
+      "name": "Tibb (Galenic-Islamic medicine)",
+      "count": 1
+    },
+    {
+      "name": "Tusi couple",
+      "count": 2
+    },
+    {
+      "name": "Unity of the intellect",
+      "count": 12
+    },
+    {
+      "name": "Usul al-fiqh (legal theory)",
+      "count": 1
+    },
+    {
+      "name": "Wahdat al-shuhud (oneness of witnessing)",
+      "count": 1
+    },
+    {
+      "name": "Wajib al-wujud (necessary existence)",
+      "count": 9
+    },
+    {
+      "name": "Wara' (scrupulousness)",
+      "count": 2
+    },
+    {
+      "name": "Wilayat al-faqih (guardianship of the jurist)",
+      "count": 31
+    },
+    {
+      "name": "Zakat (obligatory almsgiving)",
+      "count": 3
+    },
+    {
+      "name": "Zaman (time)",
+      "count": 1
+    }
+  ]
+}

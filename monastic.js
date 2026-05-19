@@ -47,24 +47,24 @@ window.Monastic = (function(){
 
 var COLLECTIONS = [
   // Canonical Six (Kutub al-Sittah)
-  {key:'bukhari',         label:'Sahih Bukhari',           group:'canonical', file:'data/islamic/hadith/sahih-bukhari.json'},
-  {key:'muslim',          label:'Sahih Muslim',            group:'canonical', file:'data/islamic/hadith/sahih-muslim.json'},
-  {key:'abudawud',        label:"Sunan Abi Da'ud",         group:'canonical', file:'data/islamic/hadith/abu-dawood.json'},
-  {key:'tirmidhi',        label:"Jami' al-Tirmidhi",       group:'canonical', file:'data/islamic/hadith/al-tirmidhi.json'},
-  {key:'nasai',           label:"Sunan an-Nasa'i",         group:'canonical', file:'data/islamic/hadith/sunan-nasai.json'},
-  {key:'ibnmajah',        label:'Sunan Ibn Majah',         group:'canonical', file:'data/islamic/hadith/ibn-e-majah.json'},
+  {key:'bukhari',         label:'Sahih Bukhari',           group:'canonical', file:'data/islamic/hadith/canonical_six/sahih-bukhari.json'},
+  {key:'muslim',          label:'Sahih Muslim',            group:'canonical', file:'data/islamic/hadith/canonical_six/sahih-muslim.json'},
+  {key:'abudawud',        label:"Sunan Abi Da'ud",         group:'canonical', file:'data/islamic/hadith/canonical_six/abu-dawood.json'},
+  {key:'tirmidhi',        label:"Jami' al-Tirmidhi",       group:'canonical', file:'data/islamic/hadith/canonical_six/al-tirmidhi.json'},
+  {key:'nasai',           label:"Sunan an-Nasa'i",         group:'canonical', file:'data/islamic/hadith/canonical_six/sunan-nasai.json'},
+  {key:'ibnmajah',        label:'Sunan Ibn Majah',         group:'canonical', file:'data/islamic/hadith/canonical_six/ibn-e-majah.json'},
   // Others — Sunni extras + Shia. No labels distinguishing tradition.
-  {key:'muwatta',         label:'Muwatta Malik',           group:'others', file:'data/islamic/hadith/muwatta-malik.json'},
-  {key:'musnad-ahmad',    label:'Musnad Ahmad',            group:'others', file:'data/islamic/hadith/musnad-ahmad.json'},
-  {key:'darimi',          label:'Sunan ad-Darimi',         group:'others', file:'data/islamic/hadith/sunan-ad-darimi.json'},
-  {key:'riyad',           label:'Riyad as-Salihin',        group:'others', file:'data/islamic/hadith/riyad-as-salihin.json'},
-  {key:'shamail',         label:'Shamail al-Muhammadiyah', group:'others', file:'data/islamic/hadith/shamail-al-muhammadiyah.json'},
-  {key:'bulugh',          label:'Bulugh al-Maram',         group:'others', file:'data/islamic/hadith/bulugh-al-maram.json'},
-  {key:'adab-mufrad',     label:'al-Adab al-Mufrad',       group:'others', file:'data/islamic/hadith/al-adab-al-mufrad.json'},
-  {key:'mishkat',         label:'Mishkat al-Masabih',      group:'others', file:'data/islamic/hadith/mishkat-al-masabih.json'},
-  {key:'40-nawawi',       label:'40 Hadith Nawawi',        group:'others', file:'data/islamic/hadith/40-hadith-nawawi.json'},
-  {key:'40-qudsi',        label:'40 Hadith Qudsi',         group:'others', file:'data/islamic/hadith/40-hadith-qudsi.json'},
-  {key:'40-shahwaliullah',label:'40 Hadith Shah Waliullah',group:'others', file:'data/islamic/hadith/40-hadith-shahwaliullah.json'}
+  {key:'muwatta',         label:'Muwatta Malik',           group:'others', file:'data/islamic/hadith/sunni_other/muwatta-malik.json'},
+  {key:'musnad-ahmad',    label:'Musnad Ahmad',            group:'others', file:'data/islamic/hadith/sunni_other/musnad-ahmad.json'},
+  {key:'darimi',          label:'Sunan ad-Darimi',         group:'others', file:'data/islamic/hadith/sunni_other/sunan-ad-darimi.json'},
+  {key:'riyad',           label:'Riyad as-Salihin',        group:'others', file:'data/islamic/hadith/sunni_other/riyad-as-salihin.json'},
+  {key:'shamail',         label:'Shamail al-Muhammadiyah', group:'others', file:'data/islamic/hadith/sunni_other/shamail-al-muhammadiyah.json'},
+  {key:'bulugh',          label:'Bulugh al-Maram',         group:'others', file:'data/islamic/hadith/sunni_other/bulugh-al-maram.json'},
+  {key:'adab-mufrad',     label:'al-Adab al-Mufrad',       group:'others', file:'data/islamic/hadith/sunni_other/al-adab-al-mufrad.json'},
+  {key:'mishkat',         label:'Mishkat al-Masabih',      group:'others', file:'data/islamic/hadith/sunni_other/mishkat-al-masabih.json'},
+  {key:'40-nawawi',       label:'40 Hadith Nawawi',        group:'others', file:'data/islamic/hadith/sunni_other/40-hadith-nawawi.json'},
+  {key:'40-qudsi',        label:'40 Hadith Qudsi',         group:'others', file:'data/islamic/hadith/sunni_other/40-hadith-qudsi.json'},
+  {key:'40-shahwaliullah',label:'40 Hadith Shah Waliullah',group:'others', file:'data/islamic/hadith/sunni_other/40-hadith-shahwaliullah.json'}
 ];
 
 // Maps monastic.js internal collection key → hadith_xref file basename.
@@ -392,7 +392,9 @@ function _drillUsedSplits(){
 
 function _drillAvailableSplits(){
   var used = _drillUsedSplits();
-  return ['topic','narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
+  // Topic split-by removed until RV remediation: 74% of corpus lacks
+  // a topic field; current 179 topic values are skewed toward kalam.
+  return ['narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
 }
 
 function _drillSplitLabel(k){
@@ -1850,6 +1852,14 @@ function _openMethodology(e){
       '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags are unscored for now. Books and Figures use low/medium/high. All will be unified later.</p>' +
       '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:16px 0 0;font-style:italic">Matches are keyword-based and include false positives. Use as a starting point, not a citation.</p>' +
 
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">NARRATOR FILTER</h3>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Narrator dropdown lists every distinct narrator who appears as the last name in a hadith chain across the 17 Sunni books on file (Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasa\'i, Ibn Majah, Muwatta Malik, Musnad Ahmad, Darimi, Riyad as-Salihin, Shamail, Bulugh al-Maram, al-Adab al-Mufrad, Mishkat, and the three 40-hadith collections).</p>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">Names ending with <em>"Unknown Scholar"</em> mean the chain end was either not recorded or did not match a known companion at index time. They are listed at the bottom of the dropdown so the known names sort cleanly. Shia books are not included yet.</p>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">Counts shown next to each name = number of hadiths attributed to that narrator across these 17 books.</p>' +
+
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">TOPIC FILTER (PAUSED)</h3>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Topic dropdown is temporarily hidden. Only 26% of hadiths in the corpus currently carry a topic field, and the topics that exist are skewed toward theology rather than the practical chapters readers expect. A full re-tagging pass is in progress.</p>' +
+
       // ── AI methodology disclosure ──
       '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:32px 0 10px">HOW CROSS-REFERENCES ARE BUILT</h3>' +
       '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">This app uses AI (Claude by Anthropic) to identify which concepts each Quran verse, hadith, and tafsir entry discusses. Here’s exactly what that means:</p>' +
@@ -2387,40 +2397,46 @@ function init(){
     .concat(_otherEntries);
   _monBuildPanel('collection', _grouped);
 
-  // NARRATOR FILTER PARKED — RV rebuilding from sunnah.com API.
-  // Re-enable by uncommenting the fetch block below.
-  /*
-  // Populate narrators from index (with counts)
-  // Adam preferences: strip Arabic from name, drop "Unknown Scholar",
-  // sort alphabetically A-Z. _narratorIndex stays as cleaned list.
-  fetch(dataUrl('data/hadith/narrator_index.json')).then(function(r){
+  // Narrator filter — loads from clean index built from 17 Sunni books on R2.
+  // File shape: { _meta:{...}, narrators:[{name,count}, ...] }.
+  // "Unknown Scholar" sorts to the END of the list (not alphabetical).
+  fetch(dataUrl('data/islamic/hadith/support/narrator_index.json')).then(function(r){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
-    if(!Array.isArray(data) || !data.length) throw new Error('empty');
-    _narratorIndex = data
-      .map(function(n){
-        var clean = _stripArabic(n.name || '');
-        clean = clean.replace(/\(\s*\)/g, '');
-        clean = clean.replace(/^[\s,()]+|[\s,()]+$/g, '');
-        clean = clean.replace(/\s+/g, ' ').trim();
-        return { name: clean, count: n.count };
-      })
-      .filter(function(n){
-        if(!n.name) return false;
-        if(/^unknown\b/i.test(n.name)) return false;
-        return true;
-      })
-      .sort(function(a, b){
-        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-      });
+    var arr = (data && Array.isArray(data.narrators)) ? data.narrators : [];
+    if(!arr.length) throw new Error('empty');
+    var known = [];
+    var unknown = [];
+    arr.forEach(function(n){
+      var clean = _stripArabic(n.name || '');
+      clean = clean.replace(/\(\s*\)/g, '');
+      clean = clean.replace(/^[\s,()]+|[\s,()]+$/g, '');
+      clean = clean.replace(/\s+/g, ' ').trim();
+      if(!clean) return;
+      var entry = { name: clean, count: n.count };
+      if(/^unknown\b/i.test(clean)) unknown.push(entry);
+      else known.push(entry);
+    });
+    known.sort(function(a, b){
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+    });
+    _narratorIndex = known.concat(unknown);
     _monBuildPanel('narrator', _narratorIndex.map(function(n){
       return { value: n.name, label: n.name + ' (' + n.count.toLocaleString() + ')' };
     }));
+    // Add disclosure note at top of dropdown panel.
+    var panel = document.getElementById('mon-narratorPanel');
+    if(panel && !panel.querySelector('.mon-narr-note')){
+      var note = document.createElement('div');
+      note.className = 'mon-narr-note';
+      note.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
+      note.textContent = 'Built from the last narrator in each hadith chain across 17 Sunni books. "Unknown Scholar" = chain end not yet matched to a known companion. Listed at the bottom.';
+      panel.insertBefore(note, panel.firstChild);
+    }
   }).catch(function(e){
     console.warn('narrator_index.json not available:', e);
   });
-  */
 
   // Topic dropdown: do NOT pre-fetch bukhari (26 MB) on init. The list is
   // populated lazily the first time the user opens the Topics dropdown
@@ -2912,7 +2928,7 @@ window._loadHadithXref = async function(collection){
   if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
   // First try the merged v2 file (canonical 6 + 11 others).
   if(!window._hadithXrefV2Promise){
-    window._hadithXrefV2Promise = fetch(dataUrl('data/islamic/hadith_xref_v2.json'))
+    window._hadithXrefV2Promise = fetch(dataUrl('data/islamic/hadith/support/xref/hadith_xref_v2.json'))
       .then(function(r){ return r.ok ? r.json() : null; })
       .catch(function(e){ console.warn('xref v2 load failed', e); return null; });
   }
@@ -2939,7 +2955,7 @@ window._loadHadithXref = async function(collection){
   }
   // Fallback to per-collection legacy file (for collections not in v2).
   try{
-    var res = await fetch(dataUrl('data/islamic/hadith_xref/' + collection + '.json'));
+    var res = await fetch(dataUrl('data/islamic/hadith/support/xref/' + collection + '.json'));
     if(!res.ok){ window._hadithXrefCache[collection] = {}; return {}; }
     var data = await res.json();
     window._hadithXrefCache[collection] = data.hadith_index || {};
@@ -3349,7 +3365,7 @@ window.MonasticView = (function(){
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="dd-wrap">' +
+            '<div class="dd-wrap" style="display:none">' +
               '<button class="dd-btn" id="mon-topicBtn" onclick="Monastic.toggleDD(\'topic\')">' +
                 '<span>Topics</span>' +
                 '<div style="display:flex;align-items:center;gap:4px">' +
@@ -3364,7 +3380,7 @@ window.MonasticView = (function(){
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="dd-wrap" style="display:none">' +
+            '<div class="dd-wrap">' +
               '<button class="dd-btn" id="mon-narratorBtn" onclick="Monastic.toggleDD(\'narrator\')">' +
                 '<span>Narrators</span>' +
                 '<div style="display:flex;align-items:center;gap:4px">' +

@@ -374,7 +374,7 @@ var FILTER_SPECS = {
   MONASTIC: {
     search: true,
     filters: [
-      { type:'select', label:'Narrators', hidden:true },
+      { type:'select', label:'Narrators' },
       { type:'select', label:'Collections' }
     ],
     actions: [
