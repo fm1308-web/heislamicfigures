@@ -374,8 +374,10 @@ var FILTER_SPECS = {
   MONASTIC: {
     search: true,
     filters: [
+      { type:'select', label:'Collections' },
       { type:'select', label:'Narrators' },
-      { type:'select', label:'Collections' }
+      { type:'select', label:'Topics' },
+      { type:'select', label:'Volume' }
     ],
     actions: [
       { type:'pill', label:'✦ Guided' },
@@ -386,8 +388,8 @@ var FILTER_SPECS = {
     ],
     actionsInRow1: true,
     bookmarks: true,
-    hint: 'Hadith — six canonical and other major collections',
-    hintInRow2: true,
+    hint: 'Hadith — 32 books across Sunni and Shia traditions',
+    hintInRow2: false,
     htw: false
   },
   EXPLAIN: {

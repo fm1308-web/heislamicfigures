@@ -47,25 +47,111 @@ window.Monastic = (function(){
 
 var COLLECTIONS = [
   // Canonical Six (Kutub al-Sittah)
-  {key:'bukhari',         label:'Sahih Bukhari',           group:'canonical', file:'data/islamic/hadith/canonical_six/sahih-bukhari.json'},
-  {key:'muslim',          label:'Sahih Muslim',            group:'canonical', file:'data/islamic/hadith/canonical_six/sahih-muslim.json'},
-  {key:'abudawud',        label:"Sunan Abi Da'ud",         group:'canonical', file:'data/islamic/hadith/canonical_six/abu-dawood.json'},
-  {key:'tirmidhi',        label:"Jami' al-Tirmidhi",       group:'canonical', file:'data/islamic/hadith/canonical_six/al-tirmidhi.json'},
-  {key:'nasai',           label:"Sunan an-Nasa'i",         group:'canonical', file:'data/islamic/hadith/canonical_six/sunan-nasai.json'},
-  {key:'ibnmajah',        label:'Sunan Ibn Majah',         group:'canonical', file:'data/islamic/hadith/canonical_six/ibn-e-majah.json'},
-  // Others — Sunni extras + Shia. No labels distinguishing tradition.
-  {key:'muwatta',         label:'Muwatta Malik',           group:'others', file:'data/islamic/hadith/sunni_other/muwatta-malik.json'},
-  {key:'musnad-ahmad',    label:'Musnad Ahmad',            group:'others', file:'data/islamic/hadith/sunni_other/musnad-ahmad.json'},
-  {key:'darimi',          label:'Sunan ad-Darimi',         group:'others', file:'data/islamic/hadith/sunni_other/sunan-ad-darimi.json'},
-  {key:'riyad',           label:'Riyad as-Salihin',        group:'others', file:'data/islamic/hadith/sunni_other/riyad-as-salihin.json'},
-  {key:'shamail',         label:'Shamail al-Muhammadiyah', group:'others', file:'data/islamic/hadith/sunni_other/shamail-al-muhammadiyah.json'},
-  {key:'bulugh',          label:'Bulugh al-Maram',         group:'others', file:'data/islamic/hadith/sunni_other/bulugh-al-maram.json'},
-  {key:'adab-mufrad',     label:'al-Adab al-Mufrad',       group:'others', file:'data/islamic/hadith/sunni_other/al-adab-al-mufrad.json'},
-  {key:'mishkat',         label:'Mishkat al-Masabih',      group:'others', file:'data/islamic/hadith/sunni_other/mishkat-al-masabih.json'},
-  {key:'40-nawawi',       label:'40 Hadith Nawawi',        group:'others', file:'data/islamic/hadith/sunni_other/40-hadith-nawawi.json'},
-  {key:'40-qudsi',        label:'40 Hadith Qudsi',         group:'others', file:'data/islamic/hadith/sunni_other/40-hadith-qudsi.json'},
-  {key:'40-shahwaliullah',label:'40 Hadith Shah Waliullah',group:'others', file:'data/islamic/hadith/sunni_other/40-hadith-shahwaliullah.json'}
+  {key:'bukhari',         label:'Sahih Bukhari',           group:'canonical', file:'data/islamic/hadith/sahih-bukhari.json'},
+  {key:'muslim',          label:'Sahih Muslim',            group:'canonical', file:'data/islamic/hadith/sahih-muslim.json'},
+  {key:'abudawud',        label:"Sunan Abi Da'ud",         group:'canonical', file:'data/islamic/hadith/abu-dawood.json'},
+  {key:'tirmidhi',        label:"Jami' al-Tirmidhi",       group:'canonical', file:'data/islamic/hadith/al-tirmidhi.json'},
+  {key:'nasai',           label:"Sunan an-Nasa'i",         group:'canonical', file:'data/islamic/hadith/sunan-nasai.json'},
+  {key:'ibnmajah',        label:'Sunan Ibn Majah',         group:'canonical', file:'data/islamic/hadith/ibn-e-majah.json'},
+  // Sunni — Other
+  {key:'muwatta',         label:'Muwatta Malik',           group:'sunni_other', file:'data/islamic/hadith/muwatta-malik.json'},
+  {key:'musnad-ahmad',    label:'Musnad Ahmad',            group:'sunni_other', file:'data/islamic/hadith/musnad-ahmad.json'},
+  {key:'darimi',          label:'Sunan ad-Darimi',         group:'sunni_other', file:'data/islamic/hadith/sunan-ad-darimi.json'},
+  {key:'riyad',           label:'Riyad as-Salihin',        group:'sunni_other', file:'data/islamic/hadith/riyad-as-salihin.json'},
+  {key:'shamail',         label:'Shamail al-Muhammadiyah', group:'sunni_other', file:'data/islamic/hadith/shamail-al-muhammadiyah.json'},
+  {key:'bulugh',          label:'Bulugh al-Maram',         group:'sunni_other', file:'data/islamic/hadith/bulugh-al-maram.json'},
+  {key:'adab-mufrad',     label:'al-Adab al-Mufrad',       group:'sunni_other', file:'data/islamic/hadith/al-adab-al-mufrad.json'},
+  {key:'mishkat',         label:'Mishkat al-Masabih',      group:'sunni_other', file:'data/islamic/hadith/mishkat-al-masabih.json'},
+  {key:'40-nawawi',       label:'40 Hadith Nawawi',        group:'sunni_other', file:'data/islamic/hadith/40-hadith-nawawi.json'},
+  {key:'40-qudsi',        label:'40 Hadith Qudsi',         group:'sunni_other', file:'data/islamic/hadith/40-hadith-qudsi.json'},
+  {key:'40-shahwaliullah',label:'40 Hadith Shah Waliullah',group:'sunni_other', file:'data/islamic/hadith/40-hadith-shahwaliullah.json'},
+  // Shia
+  {key:'amali-mufid',     label:"al-Amali (al-Mufid)",     group:'shia', file:'data/islamic/hadith/al-amali-mufid.json'},
+  {key:'amali-saduq',     label:"al-Amali (al-Saduq)",     group:'shia', file:'data/islamic/hadith/al-amali-saduq.json'},
+  {key:'kafi',            label:'al-Kafi (Kulayni)',       group:'shia', files:[
+        'data/islamic/hadith/al-kafi-volume-1-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-2-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-3-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-4-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-5-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-6-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-7-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-8-kulayni.json'
+      ]},
+  {key:'khisal',          label:'al-Khisal (al-Saduq)',    group:'shia', file:'data/islamic/hadith/al-khisal-saduq.json'},
+  {key:'tawhid',          label:'al-Tawhid (al-Saduq)',    group:'shia', file:'data/islamic/hadith/al-tawhid-saduq.json'},
+  {key:'fadail-shia',     label:'Fadail al-Shia',          group:'shia', file:'data/islamic/hadith/fadail-al-shia-saduq.json'},
+  {key:'kamal-din',       label:"Kamal al-Din wa Tamam al-Ni'ma", group:'shia', file:'data/islamic/hadith/kamal-al-din-wa-tamam-al-nima-saduq.json'},
+  {key:'kamil-ziyarat',   label:'Kamil al-Ziyarat',        group:'shia', file:'data/islamic/hadith/kamil-al-ziyarat-qummi.json'},
+  {key:'duafa-ghadairi',  label:"Kitab al-Du'afa",         group:'shia', file:'data/islamic/hadith/kitab-al-duafa-ghadairi.json'},
+  {key:'ghayba-numani',   label:"Kitab al-Ghayba (al-Nu'mani)", group:'shia', file:'data/islamic/hadith/kitab-al-ghayba-numani.json'},
+  {key:'ghayba-tusi',     label:'Kitab al-Ghayba (al-Tusi)',    group:'shia', file:'data/islamic/hadith/kitab-al-ghayba-tusi.json'},
+  {key:'mumin-ahwazi',    label:"Kitab al-Mu'min",         group:'shia', file:'data/islamic/hadith/kitab-al-mumin-ahwazi.json'},
+  {key:'zuhd-ahwazi',     label:'Kitab al-Zuhd',           group:'shia', file:'data/islamic/hadith/kitab-al-zuhd-ahwazi.json'},
+  {key:'maani-akhbar',    label:"Ma'ani al-Akhbar",        group:'shia', file:'data/islamic/hadith/maani-al-akhbar-saduq.json'},
+  {key:'faqih',           label:'Man La Yahduruh al-Faqih', group:'shia', files:[
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-1-saduq.json',
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-2-saduq.json',
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-3-saduq.json',
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-4-saduq.json'
+      ]}
 ];
+
+// Map Arabic chapter-name topics to their English equivalents so the Topic
+// dropdown reads in English and filters work uniformly. Applied at:
+//   (a) topic_index.json load — Arabic buckets fold into their English bucket
+//   (b) fetchCollection — each hadith's `topic` field is rewritten via map
+// Unmapped Arabic topics fall back to 'Other'.
+var ARABIC_TOPIC_MAP = {
+  'الأَشْرِبَة': 'Drinks',
+  'الأَضَاحِىِّ': 'Sacrifices',
+  'الأَطْعِمَة': 'Food',
+  'الاسْتِئْذَان': 'Seeking Permission',
+  'الْبُيُوع': 'Commerce',
+  'الْجِهَاد': 'Jihad',
+  'الْحُدُود': 'Legal Punishments',
+  'الدِّيَات': 'Blood Money',
+  'الرُّؤْيَا': 'Dreams',
+  'الرِّقَاق': 'Heart-Softening',
+  'الزَّكَاة': 'Zakat',
+  'السِّيَر': 'Military Campaigns',
+  'الصَّلاَة': 'Prayer',
+  'الصَّوْم': 'Fasting',
+  'الصَّيْد': 'Hunting',
+  'الطَّلاَق': 'Divorce',
+  'الطَّهَارَة': 'Purification',
+  'الفَرَائِض': 'Inheritance',
+  'الْمَنَاسِك': 'Hajj',
+  'النُّذُور وَالأَيْمَان': 'Vows and Oaths',
+  'النِّكَّاح': 'Marriage',
+  'الْوَصَايَا': 'Bequests'
+};
+
+// Strip Arabic diacritics so visually-equivalent strings (with or without
+// fatha/kasra/damma marks) hit the same key in the map.
+function _stripDiacritics(s){
+  return String(s || '').replace(/[ً-ْٰـ]/g, '');
+}
+
+// Build a diacritic-stripped lookup once.
+var _ARABIC_TOPIC_LOOKUP = (function(){
+  var out = {};
+  Object.keys(ARABIC_TOPIC_MAP).forEach(function(k){
+    out[_stripDiacritics(k)] = ARABIC_TOPIC_MAP[k];
+  });
+  return out;
+})();
+
+// Resolve any topic string to its canonical form. English passes through;
+// known Arabic translates; unknown Arabic → 'Other'.
+function _resolveTopic(t){
+  if(!t) return 'Other';
+  var hasArabic = /[؀-ۿ]/.test(t);
+  if(!hasArabic) return t;
+  var stripped = _stripDiacritics(t);
+  return _ARABIC_TOPIC_LOOKUP[stripped] || 'Other';
+}
+
 
 // Maps monastic.js internal collection key → hadith_xref file basename.
 // Original 6 (legacy xref schema). Keep for fallback path.
@@ -85,12 +171,15 @@ var XREF_TO_MON_KEY = {};
 Object.keys(XREF_COLL_MAP).forEach(function(k){ XREF_TO_MON_KEY[XREF_COLL_MAP[k]] = k; });
 // Add ALL COLLECTIONS by deriving the xref slug from their file path
 COLLECTIONS.forEach(function(c){
-  // Extract trailing filename basename: "data/islamic/hadith/sahih-bukhari.json" → "sahih-bukhari"
-  var m = (c.file || '').match(/\/([^\/]+)\.json$/);
-  if(m){
-    var slug = m[1];
-    if(!XREF_TO_MON_KEY[slug]) XREF_TO_MON_KEY[slug] = c.key;
-  }
+  // Extract trailing filename basename from single-file OR multi-file entries.
+  var allFiles = Array.isArray(c.files) ? c.files : (c.file ? [c.file] : []);
+  allFiles.forEach(function(f){
+    var m = (f || '').match(/\/([^\/]+)\.json$/);
+    if(m){
+      var slug = m[1];
+      if(!XREF_TO_MON_KEY[slug]) XREF_TO_MON_KEY[slug] = c.key;
+    }
+  });
   // Also map the collection's own key to itself
   XREF_TO_MON_KEY[c.key] = c.key;
 });
@@ -126,7 +215,8 @@ var _monSel = {
   period:     new Set(),
   topic:      new Set(),
   narrator:   new Set(),
-  collection: new Set()
+  collection: new Set(),
+  volume:     new Set()
 };
 var _monDDBound = false;
 var _monSearchBoxPrev = null;
@@ -392,9 +482,7 @@ function _drillUsedSplits(){
 
 function _drillAvailableSplits(){
   var used = _drillUsedSplits();
-  // Topic split-by removed until RV remediation: 74% of corpus lacks
-  // a topic field; current 179 topic values are skewed toward kalam.
-  return ['narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
+  return ['topic','narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
 }
 
 function _drillSplitLabel(k){
@@ -597,9 +685,9 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
   var counts = {};
   sourceHadiths.forEach(function(h){
     var v;
-    if(step.splitBy === 'topic') v = h.topic;
+    if(step.splitBy === 'topic') v = h.topic || 'Other';
     else if(step.splitBy === 'collection') v = h._colKey;
-    else if(step.splitBy === 'narrator') v = _stripArabic((getNarrator(h) || '').split('(')[0].trim());
+    else if(step.splitBy === 'narrator') v = _stripArabic((getNarrator(h) || '').split('(')[0].trim()) || 'Unknown';
     if(v) counts[v] = (counts[v] || 0) + 1;
   });
   var options = Object.keys(counts).map(function(k){ return { value:k, count:counts[k] }; });
@@ -1585,18 +1673,35 @@ function fetchCollection(key){
     if(COLLECTIONS[i].key === key){ col = COLLECTIONS[i]; break; }
   }
   if(!col) return Promise.resolve([]);
-  return fetch(dataUrl(col.file)).then(function(r){
-    if(!r.ok) throw new Error(r.status);
-    return r.json();
-  }).then(function(data){
-    if(data && !Array.isArray(data) && Array.isArray(data.hadiths)) data = data.hadiths;
-    if(!Array.isArray(data)) data = [];
-    _cache[key] = data;
-    return data;
-  }).catch(function(e){
-    console.warn('Failed to load ' + col.file + ':', e);
+
+  // Multi-file book: fetch all files in parallel and concatenate.
+  var fileList = Array.isArray(col.files) ? col.files : (col.file ? [col.file] : []);
+  if(!fileList.length){
     _cache[key] = [];
-    return [];
+    return Promise.resolve([]);
+  }
+
+  return Promise.all(fileList.map(function(f){
+    return fetch(dataUrl(f)).then(function(r){
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function(data){
+      if(data && !Array.isArray(data) && Array.isArray(data.hadiths)) data = data.hadiths;
+      if(!Array.isArray(data)) data = [];
+      return data;
+    }).catch(function(e){
+      console.warn('Failed to load ' + f + ':', e);
+      return [];
+    });
+  })).then(function(arrays){
+    var merged = [];
+    arrays.forEach(function(arr){ merged = merged.concat(arr); });
+    // Normalize topics: Arabic chapter labels → English via map.
+    merged.forEach(function(h){
+      if(h && typeof h.topic === 'string') h.topic = _resolveTopic(h.topic);
+    });
+    _cache[key] = merged;
+    return merged;
   });
 }
 
@@ -1926,11 +2031,12 @@ function _applyAllFilters(){
   var periodSet = _monSel.period;
   var topicSet = _monSel.topic;
   var narSet = _monSel.narrator;
+  var volSet = _monSel.volume;
 
   // Empty-state gate: only render the prompt when literally nothing is picked.
   // Periods / Topics / Narrators all operate over the full 34k corpus, so any
   // filter selection (not just Collection) must trigger a load.
-  if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0){
+  if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0 && volSet.size === 0){
     showLoading(false);
     _lastFiltered = [];
     _lastColKey = '';
@@ -1974,6 +2080,9 @@ function _applyAllFilters(){
         }
         return false;
       });
+    }
+    if(volSet.size > 0){
+      hadiths = hadiths.filter(function(h){ return volSet.has(h.volume); });
     }
 
     showLoading(false);
@@ -2123,28 +2232,58 @@ window._monNavPage = function(dir){
   if(_resultsEl) _resultsEl.scrollTop = 0;
 };
 
-// ── Topic population ──
-function _populateTopics(){
-  if(_topicList) return Promise.resolve();
-  return fetchCollection('bukhari').then(function(data){
-    var set = {};
-    data.forEach(function(h){ if(h.topic) set[h.topic] = true; });
-    _topicList = Object.keys(set).sort();
-    _topicList.forEach(function(t){
-      var opt = document.createElement('option');
-      opt.value = t;
-      opt.textContent = t;
-      _topicSel.appendChild(opt);
+// ── Multi-select dropdown helpers ──
+// 'chapter' kind aliases to 'chapters' in DOM ids (HTML uses plural).
+function _monKindKey(kind){ return kind === 'chapter' ? 'chapters' : kind; }
+function _monPanelId(kind){ return 'mon-' + _monKindKey(kind) + 'Panel'; }
+function _monBtnId(kind){   return 'mon-' + _monKindKey(kind) + 'Btn'; }
+function _monCountId(kind){ return 'mon-' + _monKindKey(kind) + 'Count'; }
+function _monDotId(kind){   return 'mon-' + _monKindKey(kind) + 'Dot'; }
+function _monAllCkId(kind){ return 'mon-' + _monKindKey(kind) + 'AllCk'; }
+
+// Cascade rebuilder: triggered when Collection selection changes.
+// Loads the single picked book's hadiths and populates the Volume panel.
+function _refreshVolumeChapterCascade(){
+  var picked = Array.from(_monSel.collection || []);
+  var volBtn = document.getElementById('mon-volumeBtn');
+  function setInactive(btn, hint){
+    if(!btn) return;
+    btn.disabled = true;
+    btn.style.opacity = '0.45';
+    btn.style.pointerEvents = 'none';
+    btn.title = hint || 'Pick exactly one Collection to enable';
+  }
+  function setActive(btn){
+    if(!btn) return;
+    btn.disabled = false;
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+    btn.title = '';
+  }
+
+  // Reset volume panel.
+  _monSel.volume.clear();
+  _monBuildPanel('volume', []);
+
+  if(picked.length !== 1){
+    setInactive(volBtn);
+    return;
+  }
+
+  var key = picked[0];
+  fetchCollection(key).then(function(data){
+    var volCounts = {};
+    data.forEach(function(h){
+      var v = h && h.volume;
+      if(v){ volCounts[v] = (volCounts[v] || 0) + 1; }
     });
+    var volKeys = Object.keys(volCounts).sort();
+    _monBuildPanel('volume', volKeys.map(function(v){
+      return { value: v, label: v + ' (' + volCounts[v].toLocaleString() + ')' };
+    }));
+    if(volKeys.length > 1) setActive(volBtn); else setInactive(volBtn, 'This book has only one volume');
   });
 }
-
-// ── Multi-select dropdown helpers ──
-function _monPanelId(kind){ return 'mon-' + kind + 'Panel'; }
-function _monBtnId(kind){   return 'mon-' + kind + 'Btn'; }
-function _monCountId(kind){ return 'mon-' + kind + 'Count'; }
-function _monDotId(kind){   return 'mon-' + kind + 'Dot'; }
-function _monAllCkId(kind){ return 'mon-' + kind + 'AllCk'; }
 
 function _monBuildPanel(kind, entries){
   var panel = document.getElementById(_monPanelId(kind));
@@ -2182,6 +2321,9 @@ function _monBuildPanel(kind, entries){
 }
 
 function _monSyncDD(kind){
+  if(kind === 'collection'){
+    try { _refreshVolumeChapterCascade(); } catch(e){ console.warn('[MON] cascade failed', e); }
+  }
   var sel = _monSel[kind];
   var panel = document.getElementById(_monPanelId(kind));
   var btn   = document.getElementById(_monBtnId(kind));
@@ -2225,16 +2367,6 @@ function _monToggleDD(kind){
   document.querySelectorAll('#mon-filters .dd-btn.open').forEach(function(b){ b.classList.remove('open'); });
   if(!wasOpen){
     panel.classList.add('open'); btn.classList.add('open');
-    // Lazy topic-list build: defer the bukhari load until the user actually
-    // opens the Topics dropdown. Re-uses fetchCollection's cache.
-    if(kind === 'topic' && !_topicList){
-      fetchCollection('bukhari').then(function(data){
-        var set = {};
-        data.forEach(function(h){ if(h.topic) set[h.topic] = true; });
-        _topicList = Object.keys(set).sort();
-        _monBuildPanel('topic', _topicList.map(function(t){ return { value: t, label: t }; }));
-      });
-    }
     var si = panel.querySelector('.dd-search');
     if(si){ si.value = ''; si.dispatchEvent(new Event('input')); si.focus(); }
   }
@@ -2385,17 +2517,24 @@ function init(){
     return { value: p.id, label: p.label + ' (' + p.years + ')' };
   }));
 
-  // Populate collection panel — grouped: Canonical Six, then Others
+  // Populate collection panel — grouped: Canonical Six, Sunni Other, Shia
   var _canonicalEntries = COLLECTIONS.filter(function(c){ return c.group==='canonical'; })
     .map(function(c){ return { value: c.key, label: c.label }; });
-  var _otherEntries = COLLECTIONS.filter(function(c){ return c.group==='others'; })
+  var _sunniOtherEntries = COLLECTIONS.filter(function(c){ return c.group==='sunni_other'; })
+    .map(function(c){ return { value: c.key, label: c.label }; });
+  var _shiaEntries = COLLECTIONS.filter(function(c){ return c.group==='shia'; })
     .map(function(c){ return { value: c.key, label: c.label }; });
   var _grouped = []
     .concat([{ groupHeader: 'Canonical Six' }])
     .concat(_canonicalEntries)
-    .concat([{ groupHeader: 'Others' }])
-    .concat(_otherEntries);
+    .concat([{ groupHeader: 'Sunni — Other' }])
+    .concat(_sunniOtherEntries)
+    .concat([{ groupHeader: 'Shia' }])
+    .concat(_shiaEntries);
   _monBuildPanel('collection', _grouped);
+
+  // Initial cascade — both pills start inactive (no collection picked yet).
+  try { _refreshVolumeChapterCascade(); } catch(e){}
 
   // Narrator filter — loads from clean index built from 17 Sunni books on R2.
   // File shape: { _meta:{...}, narrators:[{name,count}, ...] }.
@@ -2438,11 +2577,57 @@ function init(){
     console.warn('narrator_index.json not available:', e);
   });
 
-  // Topic dropdown: do NOT pre-fetch bukhari (26 MB) on init. The list is
-  // populated lazily the first time the user opens the Topics dropdown
-  // (handled inside _monToggleDD when _topicList is still null), or
-  // automatically after the user picks any collection (since fetchCollection
-  // caches and re-uses).
+  // Topic filter — loads from new topic_index.json built across all 42 books.
+  // File shape: { _meta:{...}, topics:[{name,count,books,raw_samples}, ...] }.
+  fetch(dataUrl('data/islamic/hadith/support/topic_index.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    var arrRaw = (data && Array.isArray(data.topics)) ? data.topics : [];
+    if(!arrRaw.length) throw new Error('empty');
+    // Fold Arabic-named topics into their English equivalents via map.
+    var byName = {};
+    arrRaw.forEach(function(t){
+      var nm = (t.name || '').trim();
+      if(!nm) return;
+      var resolved = _resolveTopic(nm);
+      if(!byName[resolved]){
+        byName[resolved] = { name: resolved, count: 0, books: [], raw_samples: [] };
+      }
+      byName[resolved].count += (t.count || 0);
+      (t.books || []).forEach(function(b){
+        if(byName[resolved].books.indexOf(b) === -1) byName[resolved].books.push(b);
+      });
+    });
+    var arr = Object.keys(byName).map(function(k){ return byName[k]; });
+    // Sort by name ascending, but push "Other" and "Unclassified" to bottom.
+    var primary = [];
+    var trailing = [];
+    arr.forEach(function(t){
+      var nm = (t.name || '').trim();
+      if(!nm) return;
+      if(/^(other|unclassified)$/i.test(nm)) trailing.push(t);
+      else primary.push(t);
+    });
+    primary.sort(function(a,b){ return a.name.toLowerCase().localeCompare(b.name.toLowerCase()); });
+    trailing.sort(function(a,b){ return a.name.toLowerCase().localeCompare(b.name.toLowerCase()); });
+    var combined = primary.concat(trailing);
+    _topicList = combined.map(function(t){ return t.name; });
+    _monBuildPanel('topic', combined.map(function(t){
+      return { value: t.name, label: t.name + ' (' + (t.count || 0).toLocaleString() + ')' };
+    }));
+    // Add disclosure note at top of topic dropdown.
+    var topicPanel = document.getElementById('mon-topicPanel');
+    if(topicPanel && !topicPanel.querySelector('.mon-topic-note')){
+      var tnote = document.createElement('div');
+      tnote.className = 'mon-topic-note';
+      tnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
+      tnote.textContent = 'Topics under review — refining continuously. Hadiths whose chapter labels don’t fit a clean topic sit under "Other" for now.';
+      topicPanel.insertBefore(tnote, topicPanel.firstChild);
+    }
+  }).catch(function(e){
+    console.warn('topic_index.json not available:', e);
+  });
 
   _buildBand();
   _syncBand();
@@ -2623,6 +2808,9 @@ function _wizardApplyPicksExcept(excludeKey){
       return false;
     });
   }
+  if(excludeKey !== 'volume' && picks.volume && picks.volume.length){
+    list = list.filter(function(h){ return picks.volume.indexOf(h.volume) !== -1; });
+  }
   return list;
 }
 
@@ -2702,12 +2890,6 @@ function _wizardOpen(){
   document.addEventListener('keydown', _wizardKey);
 
   var prep = Promise.resolve();
-  if(!_topicList){
-    prep = prep.then(function(){ return fetchCollection('bukhari').then(function(data){
-      var set = {}; data.forEach(function(h){ if(h.topic) set[h.topic] = true; });
-      _topicList = Object.keys(set).sort();
-    }); });
-  }
   prep.then(function(){
     if(!_wizardAllHadith){
       return fetchAll().then(function(all){ _wizardAllHadith = all; });
@@ -3227,7 +3409,7 @@ return {
   toggleDD: _monToggleDD,
   ddClearAll: _monDDClearAll,
   applyFilters: function(){ try { _applyAllFilters(); } catch(e){ console.warn('[MON] applyFilters failed', e); } },
-  syncAllDDs: function(){ try { ['period','topic','narrator','collection'].forEach(function(k){ _monSyncDD(k); }); } catch(e){ console.warn('[MON] syncAllDDs failed', e); } },
+  syncAllDDs: function(){ try { ['period','topic','narrator','collection','volume'].forEach(function(k){ _monSyncDD(k); }); } catch(e){ console.warn('[MON] syncAllDDs failed', e); } },
   openWizard: _wizardOpen,
   showHadiths: function(hadithIds, label){
     _pinnedHadiths = { ids: (hadithIds || []).slice(), label: label || '' };
@@ -3365,7 +3547,7 @@ window.MonasticView = (function(){
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="dd-wrap" style="display:none">' +
+            '<div class="dd-wrap">' +
               '<button class="dd-btn" id="mon-topicBtn" onclick="Monastic.toggleDD(\'topic\')">' +
                 '<span>Topics</span>' +
                 '<div style="display:flex;align-items:center;gap:4px">' +
@@ -3410,6 +3592,21 @@ window.MonasticView = (function(){
                 '</div>' +
               '</div>' +
             '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-volumeBtn" onclick="Monastic.toggleDD(\'volume\')">' +
+                '<span>Volume</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-volumeDot"></span>' +
+                  '<span class="dd-count" id="mon-volumeCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-volumePanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'volume\')">' +
+                  '<div class="dd-checkbox" id="mon-volumeAllCk">✓</div><span>All Volumes</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
           '</div>' +
           '<div id="mon-timeline-band"></div>' +
           '<div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>' +
@@ -3441,7 +3638,7 @@ window.MonasticView = (function(){
       btn.addEventListener('click', function(e){
         e.stopPropagation();
         if(!(window.Monastic && typeof window.Monastic.toggleDD === 'function')) return;
-        ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel'].forEach(function(pid){
+        ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel'].forEach(function(pid){
           if(pid === panelId) return;
           var op = document.getElementById(pid);
           if(op){ op.classList.remove('open'); op.style.display='none'; }
@@ -3457,7 +3654,31 @@ window.MonasticView = (function(){
         }
         if(isOpen){
           var r = btn.getBoundingClientRect();
-          p.style.cssText = 'position:fixed !important;top:'+(r.bottom+4)+'px;left:'+r.left+'px;z-index:10000;display:block !important;background:#1a1a2e;border:1px solid rgba(212,175,55,0.55);border-radius:6px;min-width:240px;max-height:400px;overflow-y:auto;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.6)';
+          var panelLeft = Math.min(r.left, Math.max(8, window.innerWidth - 480));
+          p.style.cssText = 'position:fixed !important;top:'+(r.bottom+4)+'px;left:'+panelLeft+'px;z-index:10000;display:block !important;background:#1a1a2e;border:1px solid rgba(212,175,55,0.55);border-radius:6px;width:460px;max-width:calc(100vw - 16px);max-height:60vh;overflow-y:auto;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.6);word-break:break-word';
+          // Inject one-time close-X button at top-right of the panel.
+          if(!p.querySelector('.dd-close-x')){
+            var x = document.createElement('button');
+            x.className = 'dd-close-x';
+            x.type = 'button';
+            x.textContent = '✕';
+            x.setAttribute('aria-label','Close');
+            x.style.cssText = 'position:sticky;top:0;float:right;margin:2px 6px 0 0;background:transparent;border:none;color:#D4AF37;font-size:18px;line-height:1;cursor:pointer;padding:4px 6px;z-index:2';
+            x.addEventListener('click', function(ev){
+              ev.stopPropagation();
+              p.classList.remove('open');
+              p.style.display = 'none';
+            });
+            p.insertBefore(x, p.firstChild);
+          }
+          // Ensure dd-item labels wrap rather than forcing panel-wide rows.
+          p.querySelectorAll('.dd-item').forEach(function(it){
+            it.style.whiteSpace = 'normal';
+            it.style.wordBreak = 'break-word';
+            it.style.lineHeight = '1.35';
+            it.style.paddingTop = '6px';
+            it.style.paddingBottom = '6px';
+          });
         } else {
           p.style.display = 'none';
         }
@@ -3465,7 +3686,7 @@ window.MonasticView = (function(){
     }
 
     document.addEventListener('click', function(e){
-      ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel'].forEach(function(pid){
+      ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel'].forEach(function(pid){
         var p = document.getElementById(pid);
         if(!p || p.style.display === 'none') return;
         if(p.contains(e.target)) return;
@@ -3481,9 +3702,10 @@ window.MonasticView = (function(){
       var selects = row2.querySelectorAll('.zb-select');
       selects.forEach(function(b){
         var t = (b.textContent||'').trim().toUpperCase();
-        if(t.indexOf('TOPIC') !== -1)         _wireSelect(b, 'topic',      'mon-topicPanel');
-        else if(t.indexOf('NARRATOR') !== -1) _wireSelect(b, 'narrator',   'mon-narratorPanel');
-        else if(t.indexOf('COLLECTION') !== -1) _wireSelect(b, 'collection','mon-collectionPanel');
+        if(t.indexOf('TOPIC') !== -1)            _wireSelect(b, 'topic',      'mon-topicPanel');
+        else if(t.indexOf('NARRATOR') !== -1)    _wireSelect(b, 'narrator',   'mon-narratorPanel');
+        else if(t.indexOf('COLLECTION') !== -1)  _wireSelect(b, 'collection', 'mon-collectionPanel');
+        else if(t.indexOf('VOLUME') !== -1)      _wireSelect(b, 'volume',     'mon-volumePanel');
       });
     }
 
