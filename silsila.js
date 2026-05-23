@@ -218,6 +218,7 @@ window.SilsilaView = (function(){
   // _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
   function _slPTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
   function _slPTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+  function _slClassifStr(p){ if(Array.isArray(p.classif)) return p.classif.join(', '); return p.classif || ''; }
 
   // Filter — minimal version mirroring TIMELINE's getFiltered
   function getFiltered(){
@@ -1289,7 +1290,7 @@ function silsilaSearch(query){
     var p=PEOPLE.find(function(pp){return pp.famous===name;});
     if(!p) return;
     var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
-    var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
+    var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,_slClassifStr(p),p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
     var match=hay.indexOf(q)!==-1;
     nd.classList.toggle('sl-dim',!match);
     if(!firstMatch&&match) firstMatch=nd;
@@ -1299,7 +1300,7 @@ function silsilaSearch(query){
     var p=PEOPLE.find(function(pp){return pp.famous===name;});
     if(!p) return;
     var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
-    var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
+    var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,_slClassifStr(p),p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
     nd.classList.toggle('sl-dim',hay.indexOf(q)===-1);
   });
 

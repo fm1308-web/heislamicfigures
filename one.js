@@ -170,6 +170,7 @@ function _safe(s){ return (s||'').replace(/'/g,"\\'"); }
 // _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
 function _onePTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
 function _onePTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+function _oneClassifStr(p){ if(Array.isArray(p.classif)) return p.classif.join(', '); return p.classif || ''; }
 
 function _getUniqueTypes(){ var s=new Set(); PEOPLE.forEach(function(p){ _onePTypes(p).forEach(function(t){if(t)s.add(t);}); }); return Array.from(s).sort(); }
 function _getUniqueTrads(){ var s=new Set(); PEOPLE.forEach(function(p){ _onePTrads(p).forEach(function(t){if(t)s.add(t);}); }); return Array.from(s).sort(); }
@@ -199,7 +200,7 @@ function _getFilteredPeople(){
     var q=_oneSearch.toLowerCase();
     arr=arr.filter(function(p){
       var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
-      var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
+      var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,_oneClassifStr(p),p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
       return hay.indexOf(q)!==-1;
     });
   }
@@ -539,7 +540,7 @@ async function _renderPerson(p,container){
   if(p.tradition) h+='<span class="one-tag hi">'+_e(p.tradition)+'</span>';
   if(p.city) h+='<span class="one-tag">📍 '+_e(p.city)+'</span>';
   if(p.lang) h+='<span class="one-tag">🌐 '+_e(p.lang)+'</span>';
-  if(p.classif) h+='<span class="one-tag">'+_e(p.classif)+'</span>';
+  if(_oneClassifStr(p)) h+='<span class="one-tag">'+_e(_oneClassifStr(p))+'</span>';
   if(p.tags&&p.tags.length) p.tags.forEach(function(t){ h+='<span class="one-tag gold">'+_e(t)+'</span>'; });
   h+='</div>';
   h+='<div id="one-occupations"></div>';
