@@ -504,7 +504,7 @@ window.TimelineView = (function(){
           el.insertBefore(document.createTextNode(_tlFigName(p)), el.firstChild);
         }
         var sub = el.parentElement && el.parentElement.querySelector('.tc-sub');
-        if(sub) sub.textContent = _tlFigSubtitle(p) || (p.classif||'');
+        if(sub) sub.textContent = _tlFigSubtitle(p) || _tlClassifStr(p);
       });
     } catch(e){ console.warn('[tl i18n] row refresh failed', e); }
     // Re-render info card
@@ -1007,6 +1007,7 @@ let SL_LANES_KEY='';  // fingerprint of currently-rendered lanes — drives re-r
 // _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
 function _tlPTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
 function _tlPTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+function _tlClassifStr(p){ if(Array.isArray(p.classif)) return p.classif.join(', '); return p.classif || ''; }
 
 function getFiltered(){
   return PEOPLE.filter(p=>{
@@ -1725,7 +1726,7 @@ function renderRows(filtered){
       <div class="tc-name${isSacred?' is-sacred':''}">
         <div class="tc-texts">
           <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}</div>
-          <div class="tc-sub">${esc(_tlFigSubtitle(p) || p.classif || '')}</div>
+          <div class="tc-sub">${esc(_tlFigSubtitle(p) || _tlClassifStr(p))}</div>
         </div>
         <div class="tc-dot" style="background:${col}${isProphet?';box-shadow:0 0 8px '+col+'90':''}"></div>
       </div>
@@ -2000,7 +2001,7 @@ function renderInfo(p){
     <div class="i-tags">
       <span class="i-tag hi">${esc(_tlT(p.type||''))}</span>
       <span class="i-tag hi">${esc(_tlT(p.tradition||''))}</span>
-      ${p.classif?`<span class="i-tag">${esc(_tlT(p.classif))}</span>`:''}
+      ${_tlClassifStr(p)?`<span class="i-tag">${esc(_tlT(_tlClassifStr(p)))}</span>`:''}
       ${p.city?`<span class="i-tag">📍 ${esc(_tlT(p.city))}</span>`:''}
       ${p.lang?`<span class="i-tag">🌐 ${esc(_tlT(p.lang))}</span>`:''}
       <span id="figHadithChipSlot"></span>
