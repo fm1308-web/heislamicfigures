@@ -1004,20 +1004,24 @@ let SL_HOVERED=null; // currently hovered person name (for hover-dim logic)
 let SL_ALL_LANES=[];  // full tradition lane list, built once from PEOPLE
 let SL_LANES_KEY='';  // fingerprint of currently-rendered lanes — drives re-render on filter change
 
+// _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
+function _tlPTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
+function _tlPTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+
 function getFiltered(){
   return PEOPLE.filter(p=>{
     if(selTypes.size>0){
-      const passType = selTypes.has(p.type);
+      const passType = _tlPTypes(p).some(t=>selTypes.has(t));
       const passChainProphet = (selTypes.has('Genealogy') || selTypes.has('Prophetic Lineage')) && PROPHET_CHAIN.has(p.famous);
       // Tag-based type filters (e.g. Ashra Mubashshara stored in p.tags)
       const passTags = (p.tags||[]).some(t=>selTypes.has(t));
       // IH sub-lane virtual type filters (e.g. "Prophets" matches type=Prophet)
-      const passIHSub = [...selTypes].some(st=>_IH_SUBLANE_REV[st]&&_IH_SUBLANE_REV[st].has(p.type));
+      const passIHSub = [...selTypes].some(st=>_IH_SUBLANE_REV[st]&&_tlPTypes(p).some(t=>_IH_SUBLANE_REV[st].has(t)));
       // Ashra Mubashshara: match by hardcoded name list; also include them under "Companions"
       const passAshra = (selTypes.has('Ashra Mubashshara')||selTypes.has('Companions')) && ASHRA_MUBASHSHARA.has(p.famous);
       if(!passType && !passChainProphet && !passTags && !passIHSub && !passAshra) return false;
     }
-    if(selTrads.size>0&&!selTrads.has(p.tradition))return false;
+    if(selTrads.size>0&&!_tlPTrads(p).some(t=>selTrads.has(t)))return false;
     if(searchQ){
       const q=searchQ.toLowerCase();
       const vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
@@ -2692,7 +2696,7 @@ function _showTimelineMethodology(){
           });
           return values.slice().sort(function(a,b){ return earliest[a] - earliest[b]; });
         }
-        var types = chronoSort(Array.from(new Set(PEOPLE.map(function(p){ return p.type; }).filter(Boolean))), 'type');
+        var types = chronoSort(Array.from(new Set([].concat.apply([], PEOPLE.map(function(p){ return _tlPTypes(p); })).filter(Boolean))), 'type');
         var sahabaIdx = types.indexOf('Sahaba');
         var insertAt = sahabaIdx >= 0 ? sahabaIdx + 1 : types.length;
         var _plIdx = types.indexOf('Prophet');
@@ -2700,7 +2704,7 @@ function _showTimelineMethodology(){
         types.splice(insertAt, 0, 'Ashra Mubashshara');
         if(types.indexOf('Mujaddid') === -1) types.push('Mujaddid');
         IH_SUBLANE_ORDER.forEach(function(sl){ if(sl !== 'Islamic History' && types.indexOf(sl) === -1) types.push(sl); });
-        var trads = chronoSort(Array.from(new Set(PEOPLE.map(function(p){ return p.tradition; }).filter(Boolean))), 'tradition');
+        var trads = chronoSort(Array.from(new Set([].concat.apply([], PEOPLE.map(function(p){ return _tlPTrads(p); })).filter(Boolean))), 'tradition');
         if(typeof buildDD === 'function'){
           buildDD('type', types);
           buildDD('trad', trads);

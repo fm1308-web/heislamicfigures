@@ -167,16 +167,20 @@ function _typeColor(p){
 
 function _safe(s){ return (s||'').replace(/'/g,"\\'"); }
 
-function _getUniqueTypes(){ var s=new Set(); PEOPLE.forEach(function(p){ if(p.type) s.add(p.type); }); return Array.from(s).sort(); }
-function _getUniqueTrads(){ var s=new Set(); PEOPLE.forEach(function(p){ if(p.tradition) s.add(p.tradition); }); return Array.from(s).sort(); }
+// _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
+function _onePTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
+function _onePTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+
+function _getUniqueTypes(){ var s=new Set(); PEOPLE.forEach(function(p){ _onePTypes(p).forEach(function(t){if(t)s.add(t);}); }); return Array.from(s).sort(); }
+function _getUniqueTrads(){ var s=new Set(); PEOPLE.forEach(function(p){ _onePTrads(p).forEach(function(t){if(t)s.add(t);}); }); return Array.from(s).sort(); }
 function _getUniqueCities(){ var s=new Set(); PEOPLE.forEach(function(p){ if(p.city) s.add(p.city); }); return Array.from(s).sort(); }
 function _dobInEra(dob,era){ return dob>=era.min && dob<era.max; }
 function _dobInCent(dob,c){ return dob>=(c-1)*100 && dob<c*100; }
 
 function _getFilteredPeople(){
   var arr=PEOPLE.slice();
-  if(_oneTypes.size>0) arr=arr.filter(function(p){ return _oneTypes.has(p.type); });
-  if(_oneTrads.size>0) arr=arr.filter(function(p){ return _oneTrads.has(p.tradition); });
+  if(_oneTypes.size>0) arr=arr.filter(function(p){ return _onePTypes(p).some(function(t){return _oneTypes.has(t);}); });
+  if(_oneTrads.size>0) arr=arr.filter(function(p){ return _onePTrads(p).some(function(t){return _oneTrads.has(t);}); });
   if(_oneCities.size>0) arr=arr.filter(function(p){ return _oneCities.has(p.city); });
   if(_oneEras.size>0) arr=arr.filter(function(p){
     if(p.dob==null) return false;

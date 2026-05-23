@@ -215,17 +215,21 @@ window.SilsilaView = (function(){
   var selTrads = new Set();
   var searchQ = '';
 
+  // _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
+  function _slPTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
+  function _slPTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+
   // Filter — minimal version mirroring TIMELINE's getFiltered
   function getFiltered(){
     return PEOPLE.filter(function(p){
       if(selTypes.size>0){
-        var passType = selTypes.has(p.type);
+        var passType = _slPTypes(p).some(function(t){return selTypes.has(t);});
         var passTags = (p.tags||[]).some(function(t){return selTypes.has(t);});
-        var passIHSub = Array.from(selTypes).some(function(st){return _IH_SUBLANE_REV[st]&&_IH_SUBLANE_REV[st].has(p.type);});
+        var passIHSub = Array.from(selTypes).some(function(st){return _IH_SUBLANE_REV[st]&&_slPTypes(p).some(function(t){return _IH_SUBLANE_REV[st].has(t);});});
         var passAshra = (selTypes.has('Ashra Mubashshara')||selTypes.has('Companions')) && ASHRA_MUBASHSHARA.has(p.famous);
         if(!passType && !passTags && !passIHSub && !passAshra) return false;
       }
-      if(selTrads.size>0&&!selTrads.has(p.tradition))return false;
+      if(selTrads.size>0&&!_slPTrads(p).some(function(t){return selTrads.has(t);}))return false;
       return true;
     });
   }
@@ -309,12 +313,12 @@ let _slAnimTimer=null, _slAnimMode='stopped', _slAnimYr=500, _slAnimSpeedMs=1200
 function _buildSLAllLanes(){
   if(SL_ALL_LANES.length) return;
   const PL='Prophetic Lineage';
-  const tradSet=[...new Set(PEOPLE.map(p=>p.tradition).filter(Boolean))];
+  const tradSet=[...new Set(PEOPLE.flatMap(p=>_slPTrads(p)).filter(Boolean))];
   // Remove 'Islamic History' — it's replaced by sub-lanes
   const otherTrads=tradSet.filter(t=>t!=='Islamic History');
   const tradEarly={};
   otherTrads.forEach(t=>{
-    const mb=PEOPLE.filter(p=>p.tradition===t&&!isLineageMember(p));
+    const mb=PEOPLE.filter(p=>_slPTrads(p).includes(t)&&!isLineageMember(p));
     tradEarly[t]=mb.length?Math.min(...mb.map(p=>p.dob)):9999;
   });
   const sortedOther=[...otherTrads].sort((a,b)=>tradEarly[a]-tradEarly[b]);
@@ -334,13 +338,13 @@ function _getActiveSLLanes(){
   PEOPLE.forEach(p=>{
     if(isLineageMember(p)) return;
     if(selTypes.size>0){
-      const passType=selTypes.has(p.type);
+      const passType=_slPTypes(p).some(t=>selTypes.has(t));
       const passTags=(p.tags||[]).some(t=>selTypes.has(t));
-      const passIHSub=[...selTypes].some(st=>_IH_SUBLANE_REV[st]&&_IH_SUBLANE_REV[st].has(p.type));
+      const passIHSub=[...selTypes].some(st=>_IH_SUBLANE_REV[st]&&_slPTypes(p).some(t=>_IH_SUBLANE_REV[st].has(t)));
       const passAshra=(selTypes.has('Ashra Mubashshara')||selTypes.has('Companions'))&&ASHRA_MUBASHSHARA.has(p.famous);
       if(!passType&&!passTags&&!passIHSub&&!passAshra) return;
     }
-    if(selTrads.size>0&&!selTrads.has(p.tradition)) return;
+    if(selTrads.size>0&&!_slPTrads(p).some(t=>selTrads.has(t))) return;
     const ihSub=getIHSubLane(p);
     if(ihSub) activeLanes.add(ihSub);
     else if(p.tradition) activeLanes.add(p.tradition);
@@ -1558,8 +1562,8 @@ function _showSilsilaMethodology(){
     var typeSet = new Set();
     var tradSet = new Set();
     PEOPLE.forEach(function(p){
-      if(p.type) typeSet.add(p.type);
-      if(p.tradition) tradSet.add(p.tradition);
+      _slPTypes(p).forEach(function(t){if(t)typeSet.add(t);});
+      _slPTrads(p).forEach(function(t){if(t)tradSet.add(t);});
     });
     // Wire Zone B FIRST so panels exist before buildSLDD populates them.
     _wireZoneB(zoneBEl);
