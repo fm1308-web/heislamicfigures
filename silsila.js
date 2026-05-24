@@ -1289,7 +1289,7 @@ function silsilaSearch(query){
     var name=nd.dataset.name;
     var p=PEOPLE.find(function(pp){return pp.famous===name;});
     if(!p) return;
-    var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
+    var vars=p.slug?GA_nameVariants.getSpellings(p.slug):[];
     var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,_slClassifStr(p),p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
     var match=hay.indexOf(q)!==-1;
     nd.classList.toggle('sl-dim',!match);
@@ -1299,7 +1299,7 @@ function silsilaSearch(query){
     var name=nd.dataset.name;
     var p=PEOPLE.find(function(pp){return pp.famous===name;});
     if(!p) return;
-    var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
+    var vars=p.slug?GA_nameVariants.getSpellings(p.slug):[];
     var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,_slClassifStr(p),p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
     nd.classList.toggle('sl-dim',hay.indexOf(q)===-1);
   });

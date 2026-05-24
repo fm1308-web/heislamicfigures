@@ -199,7 +199,7 @@ function _getFilteredPeople(){
   if(_oneSearch){
     var q=_oneSearch.toLowerCase();
     arr=arr.filter(function(p){
-      var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]||[]:[];
+      var vars=p.slug?GA_nameVariants.getSpellings(p.slug):[];
       var hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,_oneClassifStr(p),p.tradition,p.type].concat(p.tags||[]).concat(vars).join(' ').toLowerCase();
       return hay.indexOf(q)!==-1;
     });
@@ -867,7 +867,7 @@ async function _renderPerson(p,container){
   plH+='</div>';
   h+=_sec('🔗','Public Links',0,plH,false);
 
-  var vars=window._NAME_VARIANTS&&p.slug?window._NAME_VARIANTS[p.slug]:null;
+  var vars=p.slug?GA_nameVariants.getAllForResolve(p.slug):null;
   var vH='';
   if(vars&&vars.length) vH+='<div class="one-variants">'+vars.join(' · ')+'</div>';
   vH+='<table class="one-facts"><tbody>';

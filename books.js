@@ -336,7 +336,7 @@ async function _loadBooksData(){
     if(!window._NAME_VAR_REVERSE){
       var rev = {};
       Object.keys(window._NAME_VARIANTS||{}).forEach(function(slug){
-        var arr = window._NAME_VARIANTS[slug] || [];
+        var arr = GA_nameVariants.getAllForResolve(slug);
         arr.forEach(function(v){ if(v) rev[String(v).toLowerCase()] = slug; });
       });
       window._NAME_VAR_REVERSE = rev;
