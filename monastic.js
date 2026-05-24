@@ -207,6 +207,7 @@ var _resultsEl, _loadingEl, _countEl, _bandEl;
 var _periodTotals = null;
 var _narratorIndex = [];
 var _topicList = null;
+var _topicMap = {};
 var _clickBound = false;
 var _peopleIndex = null;
 var _pinnedHadiths = null;
@@ -2069,7 +2070,10 @@ function _applyAllFilters(){
       hadiths = hadiths.filter(function(h){ return periodSet.has(h.period); });
     }
     if(topicSet.size > 0){
-      hadiths = hadiths.filter(function(h){ return topicSet.has(h.topic); });
+      hadiths = hadiths.filter(function(h){
+        var clean = _topicMap[h.topic] || 'Other';
+        return topicSet.has(clean);
+      });
     }
     if(narSet.size > 0){
       var narLowers = Array.from(narSet).map(function(s){ return s.toLowerCase(); });
@@ -2629,6 +2633,17 @@ function init(){
     console.warn('topic_index.json not available:', e);
   });
 
+  // Topic mapping — folds raw chapter labels into clean topic names for filtering.
+  fetch(dataUrl('data/islamic/hadith/support/topic_mapping.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    _topicMap = (data && typeof data === 'object') ? data : {};
+  }).catch(function(e){
+    _topicMap = {};
+    console.warn('topic_mapping.json not available:', e);
+  });
+
   _buildBand();
   _syncBand();
   _computePeriodTotals();
@@ -2798,7 +2813,7 @@ function _wizardApplyPicksExcept(excludeKey){
     list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; });
   }
   if(excludeKey !== 'topic' && picks.topic.length){
-    list = list.filter(function(h){ return picks.topic.indexOf(h.topic) !== -1; });
+    list = list.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return picks.topic.indexOf(clean) !== -1; });
   }
   if(excludeKey !== 'narrator' && picks.narrator.length){
     var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
@@ -2819,7 +2834,7 @@ function _wizardCountForValue(stepKey, value){
   if(!base) return 0;
   if(stepKey === 'collection') return base.filter(function(h){ return h._colKey === value; }).length;
   if(stepKey === 'period')     return base.filter(function(h){ return h.period === value; }).length;
-  if(stepKey === 'topic')      return base.filter(function(h){ return h.topic === value; }).length;
+  if(stepKey === 'topic')      return base.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return clean === value; }).length;
   if(stepKey === 'narrator'){
     var q = String(value).toLowerCase();
     return base.filter(function(h){
@@ -2836,7 +2851,7 @@ function _wizardCount(){
   var list = _wizardAllHadith;
   if(picks.collection.length){ list = list.filter(function(h){ return picks.collection.indexOf(h._colKey) !== -1; }); }
   if(picks.period.length){     list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; }); }
-  if(picks.topic.length){      list = list.filter(function(h){ return picks.topic.indexOf(h.topic) !== -1; }); }
+  if(picks.topic.length){      list = list.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return picks.topic.indexOf(clean) !== -1; }); }
   if(picks.narrator.length){
     var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
     list = list.filter(function(h){
