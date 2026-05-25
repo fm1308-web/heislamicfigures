@@ -377,7 +377,8 @@ var FILTER_SPECS = {
       { type:'select', label:'Collections' },
       { type:'select', label:'Narrators' },
       { type:'select', label:'Topics' },
-      { type:'select', label:'Volume' }
+      { type:'select', label:'Volume' },
+      { type:'select', label:'Concepts' }
     ],
     actions: [
       { type:'pill', label:'✦ Guided' },
@@ -388,7 +389,7 @@ var FILTER_SPECS = {
     ],
     actionsInRow1: true,
     bookmarks: true,
-    hint: 'Hadith — 32 books across Sunni and Shia traditions',
+    hint: 'Hadith — 29 books across Sunni and Shia traditions',
     hintInRow2: false,
     htw: false
   },
