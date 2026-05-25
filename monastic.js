@@ -2705,36 +2705,34 @@ function init(){
     console.warn('narrator_index.json not available:', e);
   });
 
-  // Topic filter — loads from new topic_index.json built across all 42 books.
-  // File shape: { _meta:{...}, topics:[{name,count,books,raw_samples}, ...] }.
-  fetch(dataUrl('data/islamic/hadith/support/topic_index.json')).then(function(r){
-    if(!r.ok) throw new Error(r.status);
-    return r.json();
-  }).then(function(data){
-    var arrRaw = (data && Array.isArray(data.topics)) ? data.topics : [];
-    if(!arrRaw.length) throw new Error('empty');
-    // Fold Arabic-named topics into their English equivalents via map.
-    var byName = {};
+  // Topic dropdown — needs BOTH topic_index.json (raw labels + counts) and
+  // topic_mapping.json (fold raw → clean bucket). Wait for both, then build.
+  var _rawTopicData = null;
+  var _topicMapLoaded = false;
+  function _buildFoldedTopicDropdown(){
+    if(!_rawTopicData || !_topicMapLoaded) return;
+    var arrRaw = _rawTopicData;
+    var byBucket = {};
     arrRaw.forEach(function(t){
       var nm = (t.name || '').trim();
       if(!nm) return;
+      // Step 1: resolve Arabic → English if needed.
       var resolved = _resolveTopic(nm);
-      if(!byName[resolved]){
-        byName[resolved] = { name: resolved, count: 0, books: [], raw_samples: [] };
+      // Step 2: fold via topic_mapping. If no mapping, bucket as "Other".
+      var bucket = _topicMap[resolved] || _topicMap[nm] || 'Other';
+      if(!byBucket[bucket]){
+        byBucket[bucket] = { name: bucket, count: 0, books: [] };
       }
-      byName[resolved].count += (t.count || 0);
+      byBucket[bucket].count += (t.count || 0);
       (t.books || []).forEach(function(b){
-        if(byName[resolved].books.indexOf(b) === -1) byName[resolved].books.push(b);
+        if(byBucket[bucket].books.indexOf(b) === -1) byBucket[bucket].books.push(b);
       });
     });
-    var arr = Object.keys(byName).map(function(k){ return byName[k]; });
-    // Sort by name ascending, but push "Other" and "Unclassified" to bottom.
-    var primary = [];
-    var trailing = [];
+    var arr = Object.keys(byBucket).map(function(k){ return byBucket[k]; });
+    // Sort: clean buckets alphabetical, "Other"/"Unclassified" pushed to bottom.
+    var primary = [], trailing = [];
     arr.forEach(function(t){
-      var nm = (t.name || '').trim();
-      if(!nm) return;
-      if(/^(other|unclassified)$/i.test(nm)) trailing.push(t);
+      if(/^(other|unclassified)$/i.test(t.name)) trailing.push(t);
       else primary.push(t);
     });
     primary.sort(function(a,b){ return a.name.toLowerCase().localeCompare(b.name.toLowerCase()); });
@@ -2744,7 +2742,6 @@ function init(){
     _monBuildPanel('topic', combined.map(function(t){
       return { value: t.name, label: t.name + ' (' + (t.count || 0).toLocaleString() + ')' };
     }));
-    // Add disclosure note at top of topic dropdown.
     var topicPanel = document.getElementById('mon-topicPanel');
     if(topicPanel && !topicPanel.querySelector('.mon-topic-note')){
       var tnote = document.createElement('div');
@@ -2753,18 +2750,31 @@ function init(){
       tnote.textContent = 'Topics under review — refining continuously. Hadiths whose chapter labels don’t fit a clean topic sit under "Other" for now.';
       topicPanel.insertBefore(tnote, topicPanel.firstChild);
     }
+  }
+
+  fetch(dataUrl('data/islamic/hadith/support/topic_index.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    var arrRaw = (data && Array.isArray(data.topics)) ? data.topics : [];
+    if(!arrRaw.length) throw new Error('empty');
+    _rawTopicData = arrRaw;
+    _buildFoldedTopicDropdown();
   }).catch(function(e){
     console.warn('topic_index.json not available:', e);
   });
 
-  // Topic mapping — folds raw chapter labels into clean topic names for filtering.
   fetch(dataUrl('data/islamic/hadith/support/topic_mapping.json')).then(function(r){
     if(!r.ok) throw new Error(r.status);
     return r.json();
   }).then(function(data){
     _topicMap = (data && typeof data === 'object') ? data : {};
+    _topicMapLoaded = true;
+    _buildFoldedTopicDropdown();
   }).catch(function(e){
     _topicMap = {};
+    _topicMapLoaded = true;
+    _buildFoldedTopicDropdown();
     console.warn('topic_mapping.json not available:', e);
   });
 
