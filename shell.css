@@ -445,7 +445,7 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
 .tab-btn[data-tab="ERAS"]      { --tab-accent: #C8975A; } /* amber */
 .tab-btn[data-tab="EVENTS"]    { --tab-accent: #B8825F; } /* bronze */
 .tab-btn[data-tab="BOOKS"]     { --tab-accent: #C09060; } /* copper */
-.tab-btn[data-tab="SILSILA"]   { --tab-accent: #6B8CAE; } /* slate blue */
+.tab-btn[data-tab="RELATIONS"]   { --tab-accent: #6B8CAE; } /* slate blue */
 .tab-btn[data-tab="THINK"]     { --tab-accent: #7B9DC4; } /* steel blue */
 .tab-btn[data-tab="MAP"]       { --tab-accent: #5F95A8; } /* teal blue */
 .tab-btn[data-tab="ONE"]       { --tab-accent: #C28968; } /* terracotta */
@@ -563,44 +563,55 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
 }
 
 .zb-search {
-  padding: 0 14px 0 34px;
+  padding: 0 14px 0 44px;
   position: relative;
   width: 100%;
+  background: rgba(168, 188, 217, 0.18);
+  border: 1.5px solid rgba(212,175,55,0.65);
   background-image: none;
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.10) inset;
+  backdrop-filter: blur(2px);
+}
+.zb-search:hover {
+  background: rgba(168, 188, 217, 0.24);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.20) inset, 0 0 8px rgba(212,175,55,0.20);
 }
 .zb-search::before {
   content: '';
   position: absolute;
-  left: 12px;
+  left: 10px;
   top: 50%;
-  width: 12px;
-  height: 12px;
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
-  transform: translateY(-50%) translateY(-1px);
-  opacity: 0.7;
+  width: 26px;
+  height: 26px;
+  transform: translateY(-50%);
+  background-image: url('assets/boat.only.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 0;
+  opacity: 1;
 }
-.zb-search::after {
-  content: '';
-  position: absolute;
-  left: 22px;
-  top: 50%;
-  width: 6px;
-  border-bottom: 1.5px solid currentColor;
-  transform: translateY(2px) rotate(45deg);
-  opacity: 0.7;
-}
+.zb-search::after { display: none; }
 .zb-search-input {
   background: transparent;
   border: none;
   outline: none;
-  color: inherit;
-  font: inherit;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   width: 100%;
   height: 100%;
   padding: 0;
 }
-.zb-search-input::placeholder { color: var(--text-faint); }
+.zb-search-input::placeholder {
+  color: rgba(212,175,55,0.6);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
 
 .zb-slider { gap: 10px; padding: 0 16px; }
 .zb-slider .zb-slider-label { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
@@ -896,7 +907,7 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
 
 /* ═══════════════════════════════════════════════════════════
    SHARED ZONE B SLIDER + DROPDOWN STYLES
-   (Used by TIMELINE, SILSILA, and any view with spec.slider / filters)
+   (Used by TIMELINE, RELATIONS, and any view with spec.slider / filters)
    ═══════════════════════════════════════════════════════════ */
 #zoneB #hdrYearControls{
   position: relative;

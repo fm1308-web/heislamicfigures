@@ -36,7 +36,7 @@ function _buildShareURL(){
     if(view === 'start' && typeof window._stSurah !== 'undefined' && window._stSurah){
       extras.push('surah=' + window._stSurah);
     }
-    if((view === 'timeline' || view === 'silsila' || view === 'map' || view === 'eras' || view === 'events') && window.activeYear){
+    if((view === 'timeline' || view === 'relations' || view === 'map' || view === 'eras' || view === 'events') && window.activeYear){
       extras.push('year=' + window.activeYear);
     }
     if((view === 'one' || view === 'follow') && window.activePerson && window.activePerson.slug){

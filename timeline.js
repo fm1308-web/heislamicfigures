@@ -521,7 +521,7 @@ window.TimelineView = (function(){
   });
 
   // ═══════════════════════════════════════════════════════════
-  // STUBBED EXTERNALS (mirror silsila.js stub style)
+  // STUBBED EXTERNALS (mirror relations.js stub style)
   // ═══════════════════════════════════════════════════════════
 
   // APP namespace — Favorites + i18n. The lifted code reads APP without typeof.
@@ -557,10 +557,10 @@ window.TimelineView = (function(){
   if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[timeline] setView (stub):', v); };
 
   // Cross-view targets used by info card chip clicks.
-  if(typeof window.silsilaLocate !== 'function') window.silsilaLocate = function(){};
-  if(typeof window.renderSilsila !== 'function') window.renderSilsila = function(){};
-  if(typeof window.updateSilsilaHighlight !== 'function') window.updateSilsilaHighlight = function(){};
-  if(typeof window.openSilsilaCard !== 'function') window.openSilsilaCard = function(){};
+  if(typeof window.relationsLocate !== 'function') window.relationsLocate = function(){};
+  if(typeof window.renderRelations !== 'function') window.renderRelations = function(){};
+  if(typeof window.updateRelationsHighlight !== 'function') window.updateRelationsHighlight = function(){};
+  if(typeof window.openRelationsCard !== 'function') window.openRelationsCard = function(){};
   if(typeof window._openMapCard !== 'function') window._openMapCard = function(){};
   if(typeof window._renderMarkers !== 'function') window._renderMarkers = function(){};
   if(typeof window._setMapHeight !== 'function') window._setMapHeight = function(){};
@@ -619,14 +619,14 @@ window.TimelineView = (function(){
 
   // Globals the lifted code reads as bare names (not via window.).
   // SL_* are declared inside the lifted body (lines 766-771).
-  // We need IH_SUBLANE_ORDER + _IH_SUBLANE_REV in scope — silsila.js defines
-  // these but we can't depend on silsila being mounted. Provide empty defaults.
+  // We need IH_SUBLANE_ORDER + _IH_SUBLANE_REV in scope — relations.js defines
+  // these but we can't depend on relations being mounted. Provide empty defaults.
   var IH_SUBLANE_ORDER = window.IH_SUBLANE_ORDER || [];
   var _IH_SUBLANE_REV = window._IH_SUBLANE_REV || {};
   if(!window.IH_SUBLANE_ORDER) window.IH_SUBLANE_ORDER = IH_SUBLANE_ORDER;
   if(!window._IH_SUBLANE_REV) window._IH_SUBLANE_REV = _IH_SUBLANE_REV;
 
-  // buildSLDD — silsila dropdown builder; the lifted boot calls it. We dropped boot,
+  // buildSLDD — relations dropdown builder; the lifted boot calls it. We dropped boot,
   // but provide a stub anyway in case other lifted paths call it.
   function buildSLDD(){}
 
@@ -687,7 +687,7 @@ const ROW_MID = ROW_H / 2;
 // ═══════════════════════════════════════════════════════════
 let PEOPLE=[],VIEW='timeline',activeYear=null,activePerson=null;
 let tlFocusName = null;
-let _viewYears={timeline:null,silsila:null,map:null};
+let _viewYears={timeline:null,relations:null,map:null};
 let selTypes=new Set(),selTrads=new Set(),searchQ='',selBadge='';
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
 
@@ -792,15 +792,15 @@ async function _ensureDetails(p){
   return p;
 }
 
-// Wrapper functions — use these instead of calling renderInfo / openSilsilaCard / _openMapCard directly from click handlers
+// Wrapper functions — use these instead of calling renderInfo / openRelationsCard / _openMapCard directly from click handlers
 async function renderInfoWithDetails(p){
   await _ensureDetails(p);
   renderInfo(p);
   pushFigureHistory(p.famous);
 }
-async function openSilsilaCardWithDetails(p,cx,cy){
+async function openRelationsCardWithDetails(p,cx,cy){
   await _ensureDetails(p);
-  openSilsilaCard(p,cx,cy);
+  openRelationsCard(p,cx,cy);
 }
 async function showMapCardWithDetails(p,cx,cy){
   await _ensureDetails(p);
@@ -971,7 +971,7 @@ function _clearSearchBox(){
 // ═══════════════════════════════════════════════════════════
 // Full Adam→Muhammad prophetic lineage chain (50 members).
 // Verified against lineage_adam_to_muhammad_FINAL.xlsx — 27 Mar 2026.
-// Used by isLineageMember() for Silsila lane assignment and type filtering.
+// Used by isLineageMember() for Relations lane assignment and type filtering.
 const LINEAGE_CHAIN=[
   'Adam','Shith ibn Adam','Yanash','Qaynan ibn Anush','Mahlail ibn Qaynan',
   'Yared ibn Mahlail','Idris','Mattushalakh ibn Idris','Lamak ibn Mattushalakh','Nuh',
@@ -996,7 +996,7 @@ const ASHRA_MUBASHSHARA = new Set([
   "Sa'd ibn Abi Waqqas","Sa'id ibn Zayd",'Abu Ubayda ibn al-Jarrah'
 ]);
 
-// Silsila global state — built once by renderSilsila()
+// Relations global state — built once by renderRelations()
 let SL_NM={};        // name → {x, y, li, col}
 let SL_STUDENTS={};  // name → [student famous names]
 let SL_EDGES=[];     // [{from, to, col, d}] — stored as data, rendered on demand
@@ -1064,7 +1064,7 @@ function applyFilterAndFocus(){
     updateCentHeaders(); updateCentScrollbar();
   }
   renderAll(filtered);
-  if(VIEW==='silsila') updateSilsilaHighlight();
+  if(VIEW==='relations') updateRelationsHighlight();
   if(VIEW==='map') _renderMarkers();
   if(VIEW==='events' && typeof window._eventsApplySearch === 'function') window._eventsApplySearch();
 }
@@ -1324,7 +1324,7 @@ function renderAll(filtered){
     const still=sorted.find(p=>p.famous===activePerson.famous);
     if(still) renderInfoWithDetails(still); else{activePerson=null;showEmptyInfo();}
   }
-  if(VIEW==='silsila') updateSilsilaHighlight();
+  if(VIEW==='relations') updateRelationsHighlight();
 }
 
 // Sacred-rule single source of truth (retained post-wipe for the left-list name colour).
@@ -1946,9 +1946,9 @@ function renderInfo(p){
       </div></div>`;
   }
 
-  // Locate-in-silsila button (only when silsila view active and node exists)
-  const locateBtn=VIEW==='silsila'&&SL_NM[p.famous]
-    ?`<button class="sl-locate-btn" onclick="silsilaLocate('${p.famous.replace(/'/g,"\\'")}')">`+
+  // Locate-in-relations button (only when relations view active and node exists)
+  const locateBtn=VIEW==='relations'&&SL_NM[p.famous]
+    ?`<button class="sl-locate-btn" onclick="relationsLocate('${p.famous.replace(/'/g,"\\'")}')">`+
       `<span class="slb-icon">◎</span>LOCATE IN CHAIN</button>`:'';
 
   var _bmAuth = window.GoldArkAuth;
@@ -2248,18 +2248,18 @@ function selectPerson(name) {
 }
 
 function jumpTo(name){
-  // In silsila mode: locate node in the SVG and render info
-  if(VIEW==='silsila'){
+  // In relations mode: locate node in the SVG and render info
+  if(VIEW==='relations'){
     const p=PEOPLE.find(pp=>pp.famous===name); if(!p)return;
     activePerson=p; renderInfoWithDetails(p);
-    silsilaLocate(name);
-    const svg=document.getElementById('silsilaSVG'); if(!svg)return;
+    relationsLocate(name);
+    const svg=document.getElementById('relationsSVG'); if(!svg)return;
     svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
     svg.querySelectorAll('.sl-node').forEach(n=>{
       if(n.dataset.name===name) n.classList.add('sl-selected');
     });
     // Sync lane label
-    const inner2=document.getElementById('silsilaLanesInner');
+    const inner2=document.getElementById('relationsLanesInner');
     if(inner2){
       inner2.querySelectorAll('.sl-lane-label').forEach(l=>l.classList.remove('sl-lane-sel'));
       const tl=isLineageMember(p)?'Prophetic Lineage':p.tradition||'';
@@ -2311,7 +2311,7 @@ function jumpTo(name){
   selectRow(idx);
 }
 // Switches to Timeline, centres the century columns on the person, scrolls the row into view,
-// and highlights it — works correctly from Map, Silsila, or any other view.
+// and highlights it — works correctly from Map, Relations, or any other view.
 function focusPersonInTimeline(name){
   const p=PEOPLE.find(pp=>pp.famous===name); if(!p) return;
 
@@ -2515,7 +2515,7 @@ function _showTimelineMethodology(){
     // for each filter; we (a) tag it with the id the lifted code expects
     // (typeBtn / tradBtn / badgeBtn) so toggleDD/syncDD find it, (b) attach
     // a click handler that positions the matching panel under the button and
-    // calls toggleDD(kind), (c) mirror the SILSILA wrap+id pattern.
+    // calls toggleDD(kind), (c) mirror the RELATIONS wrap+id pattern.
     if(!zoneBEl) return;
     var row2 = zoneBEl.querySelector('.zb-row2');
     if(!row2) return;

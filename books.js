@@ -24,7 +24,7 @@ window.BooksView = (function(){
   if(typeof window.jumpTo !== 'function') window.jumpTo = function(name){
     console.log('[books] jumpTo (stub):', name);
   };
-  // stub: TRAD_COLORS (silsila-injected global). _bvGetTradColor null-checks.
+  // stub: TRAD_COLORS (relations-injected global). _bvGetTradColor null-checks.
   if(typeof window.TRAD_COLORS === 'undefined') window.TRAD_COLORS = null;
   // stub: AnimControls — leave undefined; lifted code at line 853 was unconditional —
   //       we guarded that one call site below.
@@ -262,7 +262,7 @@ async function _loadBooksData(){
         const oiData = await oiRes.json();
         const oiBooks = (oiData && oiData.books) || [];
         // Build slug → canonical name map from core.json.
-        // Reuses cache if timeline/silsila already loaded it.
+        // Reuses cache if timeline/relations already loaded it.
         var coreMap = window._OPENITI_SLUG_TO_NAME || null;
         if(!coreMap){
           try{
@@ -815,7 +815,7 @@ function _bvBuildPanel(scrollId, searchId, filterSet, items, pinnedRow, onchange
   const si=document.getElementById(searchId);
   const q=(si&&si.value||'').toLowerCase().trim();
   const allOn = filterSet.size === 0;
-  // Use shell standard .dd-item / .dd-checkbox for consistency with SILSILA / TIMELINE.
+  // Use shell standard .dd-item / .dd-checkbox for consistency with RELATIONS / TIMELINE.
   let html = '<div class="dd-item dd-all'+(allOn?' selected':'')+'" data-val="__all__"><div class="dd-checkbox">'+(allOn?'✓':'')+'</div><span>All</span></div>';
   if(pinnedRow){
     const on=filterSet.has(pinnedRow.value);

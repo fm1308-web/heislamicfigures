@@ -21,11 +21,11 @@ window.OneView = (function(){
   // stub: _updateFavFilterBtn — header SAVED toggle in bv-app; no-op
   if(typeof window._updateFavFilterBtn !== 'function') window._updateFavFilterBtn = function(){};
   // stub: setView — sandbox shell uses setActiveTab. Cross-view jumps inside ONE
-  // call setView('silsila'/'books'/'events'/'map'/'follow'); we provide a stub
+  // call setView('relations'/'books'/'events'/'map'/'follow'); we provide a stub
   // that logs so the inline onclicks don't throw.
   if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[one] setView (stub):', v); };
   // stub: Cross-view targets used by inline onclicks inside section render.
-  if(typeof window.silsilaLocate !== 'function') window.silsilaLocate = function(name){ console.log('[one] silsilaLocate (stub):', name); };
+  if(typeof window.relationsLocate !== 'function') window.relationsLocate = function(name){ console.log('[one] relationsLocate (stub):', name); };
   if(typeof window.openStudyRoom !== 'function') window.openStudyRoom = function(slug){ console.log('[one] openStudyRoom (stub):', slug); };
   if(typeof window.selectStudyTab !== 'function') window.selectStudyTab = function(tab){ console.log('[one] selectStudyTab (stub):', tab); };
   if(typeof window.focusPersonInTimeline !== 'function') window.focusPersonInTimeline = function(name){ console.log('[one] focusPersonInTimeline (stub):', name); };
@@ -707,7 +707,7 @@ async function _renderPerson(p,container){
       });
       tsH+='</div>';
     }
-    tsH+='<div class="one-section-jump"><a href="#silsila" onclick="event.preventDefault();if(typeof setView===\'function\')setView(\'silsila\');setTimeout(function(){if(typeof silsilaLocate===\'function\')silsilaLocate(\''+_safe(p.famous)+'\');},300);return false;">View in SILSILA →</a></div>';
+    tsH+='<div class="one-section-jump"><a href="#relations" onclick="event.preventDefault();if(typeof setView===\'function\')setView(\'relations\');setTimeout(function(){if(typeof relationsLocate===\'function\')relationsLocate(\''+_safe(p.famous)+'\');},300);return false;">View in RELATIONS →</a></div>';
     h+=_sec('🔗','Teachers & Students',teachers.length+studentsOf.length,tsH,false);
   }
 

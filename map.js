@@ -20,7 +20,7 @@ window.MapView = (function(){
   if(typeof window.selTypes === 'undefined') window.selTypes = new Set();
   if(typeof window.selTrads === 'undefined') window.selTrads = new Set();
   if(typeof window.searchQ === 'undefined') window.searchQ = '';
-  // stub: PROPHET_CHAIN / ASHRA_MUBASHSHARA / _IH_SUBLANE_REV — silsila/timeline globals.
+  // stub: PROPHET_CHAIN / ASHRA_MUBASHSHARA / _IH_SUBLANE_REV — relations/timeline globals.
   if(typeof window.PROPHET_CHAIN === 'undefined') window.PROPHET_CHAIN = new Set();
   if(typeof window.ASHRA_MUBASHSHARA === 'undefined') window.ASHRA_MUBASHSHARA = new Set();
   if(typeof window._IH_SUBLANE_REV === 'undefined') window._IH_SUBLANE_REV = {};
@@ -1142,7 +1142,7 @@ function _mapAnimStop(){
 
     // Type / Tradition — sandbox shim: no in-view picker exists for MAP standalone,
     // so click is parked. Visual zb-active toggle still fires via shell.bindActiveToggle.
-    // The filter sets are populated by SILSILA when that view runs; clicking those
+    // The filter sets are populated by RELATIONS when that view runs; clicking those
     // filters there will reflect in MAP via window.selTypes/selTrads on next render.
     void selects; // intentional: parked
 

@@ -29,7 +29,7 @@
   var UI_FALLBACK = {
     ur: {
       'TIMELINE': 'ٹائم لائن',
-      'SILSILA': 'سلسلہ',
+      'RELATIONS': 'سلسلہ',
       'FOLLOW': 'پیروی',
       'STUDY': 'مطالعہ',
       'BOOKS': 'کتابیں',
@@ -129,7 +129,7 @@
       'Key Terms':'اہم اصطلاحات',
       'Tradition color':'روایت کا رنگ',
       'Line':'لکیر',
-      'Silsila':'سلسلہ',
+      'Relations':'سلسلہ',
       'Data & Disclaimers':'ڈیٹا اور وضاحت',
 
       // Figure types
@@ -751,7 +751,7 @@
 
   // Map data-active-tab value (lowercase) to view name in whitelist (UPPERCASE)
   var _VIEW_TAB_MAP = {
-    timeline:'TIMELINE', silsila:'SILSILA', follow:'FOLLOW', study:'STUDY',
+    timeline:'TIMELINE', relations:'RELATIONS', follow:'FOLLOW', study:'STUDY',
     books:'BOOKS', eras:'ERAS', events:'EVENTS', think:'THINK', map:'MAP',
     talk:'TALK', one:'ONE', monastic:'MONASTIC', explain:'EXPLAIN',
     start:'START', dive:'DIVE'

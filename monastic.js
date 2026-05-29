@@ -2050,7 +2050,7 @@ function _openMethodology(e){
         '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#e8c547;font-weight:600">4</span><span>Strong multi-word match.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#f5d24a;font-weight:700">5</span><span>Exact phrase — strongest, rare.</span></div>' +
       '</div>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags are unscored for now. Books and Figures use low/medium/high. All will be unified later.</p>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags shown here are older keyword-match tags built before our new method launched. They are useful for discovery but not vetted at the same quality as Quran verse tags. Upgrade to the new three-level method for hadith is planned for a future release. Treat hadith concept chips as exploratory only.</p>' +
       '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:16px 0 0;font-style:italic">Matches are keyword-based and include false positives. Use as a starting point, not a citation.</p>' +
 
       '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">NARRATOR FILTER</h3>' +
@@ -2063,23 +2063,24 @@ function _openMethodology(e){
 
       // ── AI methodology disclosure ──
       '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:32px 0 10px">HOW CROSS-REFERENCES ARE BUILT</h3>' +
-      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">This app uses AI (Claude by Anthropic) to identify which concepts each Quran verse, hadith, and tafsir entry discusses. Here’s exactly what that means:</p>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">This app uses AI (Claude by Anthropic) to link concepts to Quran verses, hadiths, and tafsir entries. The method differs by source.</p>' +
 
-      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">WHAT AI DOES</h4>' +
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">QURAN VERSES — NEW (LEVEL 3 METHOD)</h4>' +
       '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
-        '<li>Reads the English text of each verse, hadith, or tafsir entry</li>' +
-        '<li>Matches it against our 486-concept catalogue</li>' +
-        '<li>Assigns up to 8 concepts per item, each with a confidence score (1–5):' +
-          '<div style="margin-top:6px;padding-left:6px;color:#A0AEC0">' +
-            '5 = primary topic<br>' +
-            '4 = major theme<br>' +
-            '3 = clear reference<br>' +
-            '2 = brief mention<br>' +
-            '1 = tangential' +
-          '</div>' +
-        '</li>' +
-        '<li>Suggests parent / child / sibling / opposite relations between concepts</li>' +
-        '<li>Drafts 100-word summaries of each concept</li>' +
+        '<li>475 concepts, each with a written summary.</li>' +
+        '<li>Step 1: filter Quran to verses where the concept\'s Arabic root word appears (root match).</li>' +
+        '<li>Step 2: AI reads each candidate verse against the concept summary and answers YES or NO.</li>' +
+        '<li>Only YES verses kept. Result: 4,311 verse links across 205 concepts. Every chip survived all three filters.</li>' +
+        '<li>Limit: a verse that teaches a concept without using its specific Arabic root is not tagged here. Surah Ikhlas (112) teaches tawhid but its text does not contain the root و-ح-د, so no tawhid chip. We chose narrow and provable over wide and loose.</li>' +
+        '<li>Confidence stamp: medium_ai. AI judged YES under a clear rule. Human review in progress.</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">HADITH AND TAFSIR — OLDER (KEYWORD MATCH)</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>Hadith and tafsir concept chips were built before the new Level 3 method.</li>' +
+        '<li>They are keyword-match tags. Wider net, lower quality than Quran chips.</li>' +
+        '<li>Useful for discovery, not for citation.</li>' +
+        '<li>Upgrade to the Level 3 method for hadith and tafsir is planned for a future release.</li>' +
       '</ul>' +
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">WHAT AI DOES NOT DO</h4>' +
@@ -2088,14 +2089,6 @@ function _openMethodology(e){
         '<li>Translate the Quran or hadith — those use established human translations from Tanzil, fawazahmed0, AhmedBaset, Thaqalayn</li>' +
         '<li>Create or invent figures, events, or biographies — those come from Wikipedia, Wikidata, and primary historical sources</li>' +
         '<li>Generate sectarian rulings or fatwas — this is a study tool, not a source of religious guidance</li>' +
-      '</ul>' +
-
-      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">QUALITY LEVEL</h4>' +
-      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
-        '<li>AI tagging is approximately 85–90% accurate based on sample audits</li>' +
-        '<li>Confidence scores let you filter: high-score matches (4–5) are reliable enough for citation</li>' +
-        '<li>Low-score matches (1–2) are exploratory — useful for discovery, not for evidence</li>' +
-        '<li>All AI output is reviewable: every chip shows its score and lets you read the source text directly</li>' +
       '</ul>' +
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">INDEPENDENT VERIFICATION RECOMMENDED</h4>' +

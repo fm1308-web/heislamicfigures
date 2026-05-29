@@ -6,7 +6,7 @@ window.FollowView = (function(){
   'use strict';
 
   // ═══════════════════════════════════════════════════════════
-  // STUBBED EXTERNALS (mirror timeline/silsila stub style)
+  // STUBBED EXTERNALS (mirror timeline/relations stub style)
   // ═══════════════════════════════════════════════════════════
   // stub: VIEW global — FOLLOW always 'follow' here
   var VIEW = 'follow';
@@ -1148,7 +1148,7 @@ function _showFollowMethodology(){
 
     _wireZoneB(zoneBEl);
 
-    // Sync PEOPLE if TIMELINE/SILSILA already loaded core.json. Eagerly load journeys.
+    // Sync PEOPLE if TIMELINE/RELATIONS already loaded core.json. Eagerly load journeys.
     if(window.PEOPLE && window.PEOPLE.length){
       PEOPLE = window.PEOPLE;
     }

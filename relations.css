@@ -1,0 +1,889 @@
+/* ───── RELATIONS view ───── */
+#zoneC #relationsView{
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  overflow:auto;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Lato','Crimson Pro',Georgia,serif;
+  width:100%;
+  height:100%;
+}
+
+.rl-canvas{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px 18px 80px 18px;
+  width:100%;
+}
+
+.rl-zone-label{
+  font-variant:small-caps;
+  letter-spacing:2.5px;
+  font-size:10px;
+  color:var(--accent,#D4AF37);
+  opacity:0.7;
+  margin:0 0 8px 0;
+}
+
+.rl-cat-strip{
+  display:flex;
+  gap:8px;
+  margin-bottom:24px;
+}
+
+.rl-cat{
+  flex:1;
+  min-width:0;
+  padding:10px 14px;
+  background:var(--surface,#222D3A);
+  border:1px solid var(--border,#2D3748);
+  color:var(--text2,#A0AEC0);
+  font-family:'Cinzel',serif;
+  font-size:12px;
+  letter-spacing:1.2px;
+  cursor:pointer;
+  text-align:center;
+}
+
+.rl-cat .rl-ct{
+  display:block;
+  font-size:9px;
+  color:var(--text2,#A0AEC0);
+  opacity:0.6;
+  margin-top:2px;
+  letter-spacing:0.5px;
+}
+
+.rl-cat:hover{
+  border-color:var(--accent,#D4AF37);
+  color:var(--text,#FFF);
+}
+
+.rl-more-btn{
+  flex:0 0 90px;
+  background:transparent;
+  border-style:dashed;
+  color:var(--accent,#D4AF37);
+}
+
+.rl-empty{
+  text-align:center;
+  color:var(--text2,#A0AEC0);
+  opacity:0.5;
+  font-style:italic;
+  font-size:13px;
+  padding:80px 20px;
+}
+
+/* Tab tile colour for RELATIONS — replaces hdr-tile-silsila */
+.hdr-tile-relations{
+  background:#2a3545;
+  border-top-color:#6a5a8a;
+}
+
+/* Active category button */
+.rl-cat-active{
+  background:rgba(212,175,55,0.15) !important;
+  border-color:var(--accent,#D4AF37) !important;
+  color:var(--accent,#D4AF37) !important;
+}
+.rl-cat-active .rl-ct{
+  color:var(--accent,#D4AF37) !important;
+  opacity:0.7 !important;
+}
+
+/* Figure row */
+.rl-row{
+  margin-top:8px;
+  margin-bottom:36px;
+}
+.rl-row-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:1px dashed var(--border,#2D3748);
+}
+.rl-row-title{
+  font-variant:small-caps;
+  letter-spacing:1.5px;
+  font-size:11px;
+  color:var(--text2,#A0AEC0);
+}
+.rl-row-title .rl-from{
+  color:var(--accent,#D4AF37);
+  opacity:0.7;
+}
+
+/* Figure blocks grid */
+.rl-row-body{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:12px;
+}
+@media(max-width:900px){
+  .rl-row-body{ grid-template-columns:repeat(3, 1fr); }
+}
+@media(max-width:560px){
+  .rl-row-body{ grid-template-columns:repeat(2, 1fr); }
+}
+
+/* Single block */
+.rl-block{
+  background:var(--surface,#222D3A);
+  border:1px solid var(--border,#2D3748);
+  border-left:3px solid rgba(212,175,55,0.5);
+  padding:14px 12px;
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.15s;
+}
+.rl-block:hover{
+  background:rgba(212,175,55,0.04);
+  border-color:var(--accent,#D4AF37);
+}
+.rl-nm-en{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:13px;
+  color:var(--text,#FFF);
+  line-height:1.25;
+  margin-bottom:4px;
+}
+.rl-nm-ar{
+  direction:rtl;
+  font-size:15px;
+  color:var(--accent,#D4AF37);
+  line-height:1.25;
+  margin-bottom:6px;
+}
+.rl-yr{
+  color:var(--text2,#A0AEC0);
+  opacity:0.6;
+  font-size:10px;
+  font-variant:small-caps;
+  letter-spacing:0.5px;
+}
+
+/* ───── Active block expansion ───── */
+.rl-block-active{
+  background:rgba(212,175,55,0.08) !important;
+  border-color:var(--accent,#D4AF37) !important;
+  border-left-color:var(--accent,#D4AF37) !important;
+  box-shadow:0 0 0 1px rgba(212,175,55,0.35), 0 4px 18px rgba(212,175,55,0.08);
+  z-index:2;
+  position:relative;
+}
+
+/* Dim siblings in the same row when one block is active */
+.rl-row-has-active .rl-block:not(.rl-block-active){
+  opacity:0.28;
+}
+.rl-row-has-active .rl-block:not(.rl-block-active):hover{
+  opacity:0.55;
+}
+
+/* Relation nodes inside the active block */
+.rl-nodes{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:5px;
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px dashed var(--border,#2D3748);
+  width:100%;
+}
+
+.rl-node{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px 9px;
+  font-size:10px;
+  border-left:3px solid;
+  background:rgba(0,0,0,0.25);
+  font-variant:small-caps;
+  letter-spacing:0.8px;
+  cursor:pointer;
+}
+.rl-node:hover{ background:rgba(0,0,0,0.4); }
+
+.rl-n-label{ flex:1; text-align:left; }
+.rl-n-count{
+  font-size:9px;
+  color:var(--text2,#A0AEC0);
+  opacity:0.7;
+  flex-shrink:0;
+}
+
+/* Relation colours */
+.rl-n-parent   { border-left-color:#5a9bd4; color:#5a9bd4; }
+.rl-n-teacher  { border-left-color:#d4a84b; color:#d4a84b; }
+.rl-n-student  { border-left-color:#d97a3a; color:#d97a3a; }
+.rl-n-family   { border-left-color:#6fa86f; color:#6fa86f; }
+.rl-n-sibling  { border-left-color:#9a7ad9; color:#9a7ad9; }
+.rl-n-narration{ border-left-color:#c87a9a; color:#c87a9a; }
+
+/* When Relations is the active tab, stretch the search bar full-width
+   up to the How This Works button. Overrides shell.css zone-B widths. */
+body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-search,
+body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-search{
+  flex:1 1 auto !important;
+  width:auto !important;
+  max-width:none !important;
+}
+body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-search-input{
+  width:100% !important;
+}
+body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-slider,
+body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-spacer,
+body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-saved{
+  display:none !important;
+}
+
+/* Active relation node — full colour, dim siblings inside same block */
+.rl-node-active{
+  background:rgba(212,175,55,0.12) !important;
+  box-shadow:0 0 0 1px currentColor;
+  font-weight:600;
+}
+.rl-block-active .rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active){
+  opacity:0.3;
+}
+
+/* Child row spawned by a node click */
+.rl-row-child{
+  margin-top:24px;
+}
+.rl-row-child .rl-row-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.rl-row-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  display:inline-block;
+}
+.rl-dot-parent   { background:#5a9bd4; }
+.rl-dot-teacher  { background:#d4a84b; }
+.rl-dot-student  { background:#d97a3a; }
+.rl-dot-family   { background:#6fa86f; }
+.rl-dot-sibling  { background:#9a7ad9; }
+.rl-dot-narration{ background:#c87a9a; }
+
+.rl-row-collapse{
+  color:var(--text2,#A0AEC0);
+  opacity:0.5;
+  font-size:10px;
+  font-variant:small-caps;
+  letter-spacing:1px;
+  cursor:pointer;
+}
+.rl-row-collapse:hover{
+  opacity:1;
+  color:var(--accent,#D4AF37);
+}
+
+/* SVG connector layer — sits behind content */
+#relationsView{ position:relative; }
+.rl-lines{
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  z-index:0;
+}
+.rl-canvas{ position:relative; z-index:1; }
+
+/* "More ▾" tile in row body */
+.rl-more-tile{
+  background:transparent;
+  border:1px dashed var(--gold-dim,#6b5320);
+  color:var(--accent,#D4AF37);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  cursor:pointer;
+  min-height:120px;
+  font-family:'Cinzel',serif;
+  letter-spacing:1.2px;
+  font-size:12px;
+  transition:all 0.15s;
+}
+.rl-more-tile:hover{
+  background:rgba(212,175,55,0.06);
+  border-color:var(--accent,#D4AF37);
+}
+.rl-more-label{ font-size:13px; margin-bottom:4px; }
+.rl-more-sub{
+  font-size:9px;
+  opacity:0.6;
+  letter-spacing:0.5px;
+  font-variant:small-caps;
+}
+
+/* No-relations message inside a card with all zero counts */
+.rl-no-relations{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px dashed var(--border,#2D3748);
+  font-style:italic;
+  color:var(--text2,#A0AEC0);
+  opacity:0.5;
+  font-size:11px;
+  text-align:center;
+}
+
+/* When an active block is present, allow it to fill the row width */
+.rl-row-body:has(.rl-block-active){
+  grid-template-columns:1fr !important;
+}
+.rl-row-body:has(.rl-block-active) .rl-block-active{
+  max-width:600px;
+  margin:0 auto;
+}
+
+/* Prophet card highlight inside Full Lineage view */
+.rl-block.rl-block-prophet {
+  border-left-color: #D4AF37;
+  box-shadow: inset 3px 0 0 #D4AF37, 0 0 0 1px rgba(212,175,55,0.25);
+}
+.rl-block.rl-block-prophet .rl-nm-en {
+  color: #E8C977;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ─── Compact pill mode for Full Lineage / Prophets browse view ─── */
+/* When the row is NOT in active-lock state, shrink cards to thin pills */
+.rl-row:not(.rl-row-has-active) .rl-row-body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px 12px;
+  padding: 4px 0;
+}
+.rl-row:not(.rl-row-has-active) .rl-block {
+  min-height: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,175,55,0.18);
+  background: rgba(20,28,42,0.55);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+.rl-row:not(.rl-row-has-active) .rl-block:hover {
+  border-color: rgba(212,175,55,0.7);
+  background: rgba(40,48,62,0.7);
+  transform: translateY(-1px);
+}
+.rl-row:not(.rl-row-has-active) .rl-block .rl-nm-en {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+/* Hide everything except the english name on pills */
+.rl-row:not(.rl-row-has-active) .rl-block .rl-nm-ar,
+.rl-row:not(.rl-row-has-active) .rl-block .rl-yr,
+.rl-row:not(.rl-row-has-active) .rl-block .rl-nodes,
+.rl-row:not(.rl-row-has-active) .rl-block .rl-no-relations {
+  display: none;
+}
+/* Override the rectangular gold left border on pill mode */
+.rl-row:not(.rl-row-has-active) .rl-block {
+  border-left: 1px solid rgba(212,175,55,0.18);
+  box-shadow: none;
+}
+/* Prophet pills: bright gold border + brighter text */
+.rl-row:not(.rl-row-has-active) .rl-block.rl-block-prophet {
+  border-color: rgba(212,175,55,0.9);
+  background: rgba(50,40,15,0.5);
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.5);
+}
+.rl-row:not(.rl-row-has-active) .rl-block.rl-block-prophet .rl-nm-en {
+  color: #E8C977;
+  font-weight: 600;
+}
+
+/* Mobile: 3 columns */
+@media (max-width: 560px) {
+  .rl-row:not(.rl-row-has-active) .rl-row-body {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px 8px;
+  }
+  .rl-row:not(.rl-row-has-active) .rl-block .rl-nm-en {
+    font-size: 10px;
+  }
+}
+
+/* ─── Refinements: breathing room + pill stays pill when locked ─── */
+
+/* More vertical room between rows so the snake-line is visible */
+.rl-row .rl-row-body {
+  row-gap: 22px;
+}
+
+/* When a block becomes active (locked), keep it pill-shaped, not a big card */
+.rl-block.rl-block-active {
+  min-height: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,175,55,0.9);
+  background: rgba(50,40,15,0.65);
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.rl-block.rl-block-active .rl-nm-en {
+  font-size: 12px;
+  font-weight: 600;
+  color: #E8C977;
+  white-space: nowrap;
+}
+.rl-block.rl-block-active .rl-nm-ar,
+.rl-block.rl-block-active .rl-yr {
+  display: none;
+}
+/* Relation nodes under a locked pill: small inline row */
+.rl-block.rl-block-active .rl-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 4px;
+}
+.rl-block.rl-block-active .rl-node {
+  font-size: 10px;
+  padding: 2px 8px;
+}
+
+/* When row has an active block: keep the locked pill in its grid position, hide siblings */
+.rl-row-has-active .rl-row-body {
+  /* Grid layout already set above; just dim/hide non-active here */
+}
+.rl-row-has-active .rl-block:not(.rl-block-active) {
+  display: none;
+}
+
+/* ─── Locked pill: push relation nodes outside the pill, below it ─── */
+.rl-block.rl-block-active {
+  overflow: visible;
+  position: relative;
+}
+.rl-block.rl-block-active .rl-nodes {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  justify-content: center;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* Make sure there's room below the locked pill for the nodes to sit */
+.rl-row-has-active .rl-row-body {
+  padding-bottom: 60px;
+}
+
+/* Pill grid: more vertical room (~1.6× prior) so the snake-line's bezier can
+   arc between rows without touching pill text. Column-gap unchanged. */
+.rl-row:not(.rl-row-has-active) .rl-row-body {
+  row-gap: 35px;
+}
+@media (max-width: 560px) {
+  .rl-row:not(.rl-row-has-active) .rl-row-body {
+    row-gap: 26px;
+  }
+}
+
+/* ─── Browse mode (Prophets / Full Lineage): 4 pills per row, with a half-height
+       blank spacer row after each row of 4. The gold snake-line curves through those
+       empty spacer rows so it never crosses a pill. Natural height; vertical scroll
+       handles overflow. Scoped to the main browse row only (not locked, not child). ─── */
+.rl-row:not(.rl-row-has-active):not(.rl-row-child) .rl-row-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 4 pills per row, desktop */
+  column-gap: 12px;
+  row-gap: 0;                              /* spacer rows provide vertical rhythm */
+  align-content: start;
+}
+@media (max-width: 560px) {
+  .rl-row:not(.rl-row-has-active):not(.rl-row-child) .rl-row-body {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on mobile too */
+    column-gap: 8px;
+  }
+}
+/* Pills shrink within their 1fr column — never force horizontal overflow.
+   Each pill fills its full column width so column 1 left-edges and column 4
+   right-edges line up neatly down the page. The gap between columns shows
+   the gold connector line. */
+.rl-row:not(.rl-row-has-active):not(.rl-row-child) .rl-block {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* Open up the column gap so the gold connector line sits in cleanly between
+   pills (column 1 ↔ 2, 2 ↔ 3, 3 ↔ 4). */
+.rl-row:not(.rl-row-has-active):not(.rl-row-child) .rl-row-body {
+  column-gap: 56px;
+}
+@media (max-width: 560px) {
+  .rl-row:not(.rl-row-has-active):not(.rl-row-child) .rl-row-body {
+    column-gap: 32px;
+  }
+}
+/* Full-height blank row between rows of 4 — routing band for the snake-line's
+   U-turns. Equal in height to a pill row so the U-turn curve has clearance. */
+.rl-row:not(.rl-row-has-active):not(.rl-row-child) .rl-spacer-row {
+  grid-column: 1 / -1;
+  height: 36px;
+  pointer-events: none;
+}
+
+/* ─── A. Locked/drill pill = one browse-column wide, centered ───
+   Browse grid is 4 columns with column-gap:12px, so a single pill spans
+   (100% - 3 gaps) / 4. Match that and centre it. */
+.rl-drill-level > .rl-block.rl-block-active{
+  width: calc((100% - 3 * 12px) / 4);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── B1. Child pills colour-coded by the row's relation kind ───
+   (chip tint .rl-n-* and row dot .rl-dot-* already match this map above) */
+.rl-row-child[data-parent-kind="parent"]  .rl-child-pill{ border-color:#5a9bd4; box-shadow:0 0 0 1px rgba(90,155,212,.35); }
+.rl-row-child[data-parent-kind="teacher"] .rl-child-pill{ border-color:#d4a84b; box-shadow:0 0 0 1px rgba(212,168,75,.35); }
+.rl-row-child[data-parent-kind="student"] .rl-child-pill{ border-color:#d97a3a; box-shadow:0 0 0 1px rgba(217,122,58,.35); }
+.rl-row-child[data-parent-kind="family"]  .rl-child-pill{ border-color:#6fa86f; box-shadow:0 0 0 1px rgba(111,168,111,.35); }
+.rl-row-child[data-parent-kind="sibling"] .rl-child-pill{ border-color:#9a7ad9; box-shadow:0 0 0 1px rgba(154,122,217,.35); }
+/* Unlinked (non-clickable) pills stay a dim grey regardless of kind. */
+.rl-row-child .rl-child-pill.rl-unlinked{ border-color:rgba(160,170,190,.25)!important; box-shadow:none!important; opacity:.6; }
+
+/* Make the chosen relation unmistakable: the active chip gets a full 2px border
+   in its kind colour (currentColor is set per .rl-n-<kind>) plus a stronger tint. */
+.rl-node.rl-node-active{
+  border-width:2px;
+  border-style:solid;
+  border-color:currentColor;
+  background:rgba(255,255,255,.06);
+  font-weight:600;
+}
+
+/* ─── Chip restyle: solid category-colour fill, white text, +2px ─── */
+.rl-node{
+  border:none !important;
+  background:rgba(255,255,255,.06);
+  color:#fff !important;
+  font-size:12px !important;
+}
+.rl-n-label{ color:#fff !important; }
+.rl-n-count{ color:rgba(255,255,255,.9) !important; opacity:1 !important; }
+
+.rl-n-parent   { background:#5a9bd4 !important; }
+.rl-n-teacher  { background:#d4a84b !important; }
+.rl-n-student  { background:#d97a3a !important; }
+.rl-n-family   { background:#6fa86f !important; }
+.rl-n-sibling  { background:#9a7ad9 !important; }
+.rl-n-narration{ background:#c87a9a !important; }
+
+/* keep larger text in locked-pill mode too */
+.rl-block.rl-block-active .rl-node{
+  font-size:12px !important;
+  padding:4px 10px !important;
+}
+
+/* selected chip: white ring instead of coloured border (no layout shift) */
+.rl-node.rl-node-active{
+  border:none !important;
+  box-shadow:0 0 0 2px #fff !important;
+  background:rgba(255,255,255,.10), inherit;
+}
+
+/* ─── Chip contrast fix: dark bold text on colour fills ─── */
+.rl-node,
+.rl-node .rl-n-label,
+.rl-node .rl-n-count{
+  color:#15202e !important;
+  opacity:1 !important;
+  font-weight:700 !important;
+  text-shadow:none !important;
+}
+
+/* selected chip: dark ring + brighter fill so it still pops */
+.rl-node.rl-node-active{
+  box-shadow:0 0 0 2px #15202e !important;
+  filter:brightness(1.12);
+}
+
+/* ─── Non-prophet locked pill: border = connecting relation colour ─── */
+.rl-block.rl-block-active.rl-conn-parent   { border-color:#5a9bd4 !important; box-shadow:0 0 0 2px rgba(90,155,212,.55) !important; background:rgba(90,155,212,.10) !important; }
+.rl-block.rl-block-active.rl-conn-teacher  { border-color:#d4a84b !important; box-shadow:0 0 0 2px rgba(212,168,75,.55) !important; background:rgba(212,168,75,.10) !important; }
+.rl-block.rl-block-active.rl-conn-student  { border-color:#d97a3a !important; box-shadow:0 0 0 2px rgba(217,122,58,.55) !important; background:rgba(217,122,58,.10) !important; }
+.rl-block.rl-block-active.rl-conn-family   { border-color:#6fa86f !important; box-shadow:0 0 0 2px rgba(111,168,111,.55) !important; background:rgba(111,168,111,.10) !important; }
+.rl-block.rl-block-active.rl-conn-sibling  { border-color:#9a7ad9 !important; box-shadow:0 0 0 2px rgba(154,122,217,.55) !important; background:rgba(154,122,217,.10) !important; }
+.rl-block.rl-block-active.rl-conn-narration{ border-color:#c87a9a !important; box-shadow:0 0 0 2px rgba(200,122,154,.55) !important; background:rgba(200,122,154,.10) !important; }
+.rl-block.rl-block-active[class*="rl-conn-"] .rl-nm-en{ color:#fff !important; }
+
+/* ─── Teacher relation recoloured TEAL — gold is reserved for prophets ONLY ─── */
+.rl-n-teacher{ background:rgba(93,122,140,.45) !important; }
+.rl-dot-teacher{ background:#5d7a8c !important; }
+.rl-row-child[data-parent-kind="teacher"] .rl-child-pill{
+  border-color:#5d7a8c !important;
+  box-shadow:0 0 0 1px rgba(93,122,140,.35) !important;
+}
+.rl-block.rl-block-active.rl-conn-teacher{
+  border-color:#5d7a8c !important;
+  box-shadow:0 0 0 2px rgba(93,122,140,.55) !important;
+  background:rgba(93,122,140,.10) !important;
+}
+.rl-block.rl-block-active.rl-conn-teacher .rl-nm-en{ color:#fff !important; }
+
+/* ─── Hard guarantee: NO non-prophet pill is ever gold/tan ─── */
+.rl-block.rl-block-active:not(.rl-block-prophet){
+  border-color:inherit;
+}
+.rl-block.rl-block-active.rl-block-prophet{
+  border:2px solid #f0cf6b !important;
+  box-shadow:0 0 0 2px rgba(240,207,107,.55), 0 0 20px rgba(240,207,107,.4) !important;
+  background:rgba(120,95,30,.32) !important;
+}
+
+/* ─── Ancestor chips dim except the connecting one ───
+   A locked level that has a chosen chip fades its other chips; the leaf level
+   (nothing chosen yet) keeps all chips bright. */
+.rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active),
+.rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active) .rl-n-label,
+.rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active) .rl-n-count{
+  opacity:.35 !important;
+}
+
+/* ─── Make active chip unmistakable, crush the rest harder ─── */
+.rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active),
+.rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active) .rl-n-label,
+.rl-nodes:has(.rl-node-active) .rl-node:not(.rl-node-active) .rl-n-count{
+  opacity:.18 !important;
+}
+.rl-node.rl-node-active{
+  opacity:1 !important;
+  box-shadow:0 0 0 2px #fff, 0 0 10px rgba(255,255,255,.5) !important;
+  filter:brightness(1.3) !important;
+  transform:scale(1.06);
+}
+
+.rl-n-companion{ background:#5d7a8c; }
+.rl-dot-companion{ background:#5d7a8c; }
+.rl-block.rl-conn-companion{ border-color:#5d7a8c !important; }
+
+/* Arees figures: underlined name instead of a button pill */
+.rl-arees .rl-nm-en,
+.rl-child-pill[data-arees] .rl-nm-en{
+  border-bottom: 3px solid #7cc0c9;
+  padding-bottom: 2px;
+  display: inline-block;
+}
+.rl-child-pill[data-arees]{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Softer, lighter relation chips (~50% transparent) */
+.rl-node.rl-n-parent   { background: rgba(90,155,212,0.40) !important; }
+.rl-node.rl-n-teacher  { background: rgba(93,122,140,0.40) !important; }
+.rl-node.rl-n-student  { background: rgba(217,122,58,0.38) !important; }
+.rl-node.rl-n-companion{ background: rgba(93,122,140,0.38) !important; }
+.rl-node.rl-n-family   { background: rgba(111,168,111,0.40) !important; }
+.rl-node.rl-n-sibling  { background: rgba(154,122,217,0.40) !important; }
+.rl-node.rl-n-narration{ background: rgba(200,122,154,0.38) !important; }
+.rl-node .rl-n-label   { color: rgba(255,255,255,0.85) !important; }
+
+/* Count number: pure white, bold, stands out from the chip */
+.rl-node .rl-n-count{
+  color: #ffffff !important;
+  background: transparent !important;
+  font-weight: 700 !important;
+  margin-left: 7px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.55);
+}
+
+/* ═══════════════ AREES ENHANCEMENT (A.E.) STYLING ═══════════════
+   Arees-only figures (no full Gold Ark profile) appear as underlined
+   names with a small "A.E." superscript watermark.
+   A.E. = Arees Enhancement — narrators from the Muslim Scholars
+   Database who can still be drilled through for relations.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Child pills with arees id → underlined-name only, no pill shape */
+.rl-child-pill[data-arees]{
+  background: transparent !important;
+  border: 1px dashed transparent !important;
+  border-bottom: 1px dashed rgba(255,255,255,0.45) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 2px 16px 3px 4px !important;
+  position: relative;
+  cursor: pointer;
+}
+.rl-child-pill[data-arees]:hover{
+  background: transparent !important;
+  border-bottom-color: rgba(212,175,55,0.85) !important;
+}
+.rl-child-pill[data-arees]::after{
+  content: 'A.E.';
+  position: absolute;
+  top: -3px;
+  right: 0;
+  font-family: var(--sans);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(212,175,55,0.42);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Override row-kind coloured borders on data-arees pills */
+.rl-row-child[data-parent-kind="parent"]  .rl-child-pill[data-arees],
+.rl-row-child[data-parent-kind="teacher"] .rl-child-pill[data-arees],
+.rl-row-child[data-parent-kind="student"] .rl-child-pill[data-arees],
+.rl-row-child[data-parent-kind="family"]  .rl-child-pill[data-arees],
+.rl-row-child[data-parent-kind="sibling"] .rl-child-pill[data-arees]{
+  border: 1px dashed transparent !important;
+  border-bottom: 1px dashed rgba(255,255,255,0.45) !important;
+  box-shadow: none !important;
+}
+
+/* Unlinked pills are also Arees-sourced (no resolved id). Same A.E. style. */
+.rl-child-pill.rl-unlinked{
+  background: transparent !important;
+  border: 1px dashed transparent !important;
+  border-bottom: 1px dashed rgba(255,255,255,0.45) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 2px 16px 3px 4px !important;
+  position: relative;
+  opacity: 0.85 !important;
+}
+.rl-child-pill.rl-unlinked::after{
+  content: 'A.E.';
+  position: absolute;
+  top: -3px;
+  right: 0;
+  font-family: var(--sans);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(212,175,55,0.42);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Main drill blocks that are arees-sourced: keep pill shape but
+   add A.E. watermark in the corner */
+.rl-block.rl-arees:not(.rl-child-pill){ position: relative; }
+.rl-block.rl-arees:not(.rl-child-pill)::after{
+  content: 'A.E.';
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(212,175,55,0.55);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Wives chip + child-pill border colour: warm rose (distinct) */
+.rl-row-child[data-parent-kind="wife"] .rl-child-pill{
+  border-color: #d97a7a;
+  box-shadow: 0 0 0 1px rgba(217,122,122,0.35);
+}
+.rl-node.rl-n-wife{ background: rgba(217,122,122,0.40) !important; }
+.rl-block.rl-block-active.rl-conn-wife{
+  border-color: #d97a7a !important;
+  box-shadow: 0 0 0 2px rgba(217,122,122,0.55) !important;
+  background: rgba(217,122,122,0.10) !important;
+}
+
+/* ─── HOW THIS WORKS modal for Relations view ─── */
+.rl-htw-modal{
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.rl-htw-backdrop{
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(3px);
+}
+.rl-htw-panel{
+  position: relative;
+  max-width: 760px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--bg-navy, #0c1a2b);
+  border: 1.5px solid rgba(212,175,55,0.55);
+  border-radius: 14px;
+  padding: 28px 36px 32px;
+  color: var(--text, #e8e8e8);
+  font-family: var(--sans);
+  line-height: 1.55;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+.rl-htw-panel h2{
+  font-family: 'Cinzel', serif;
+  color: var(--accent, #D4AF37);
+  font-size: 22px;
+  margin: 0 0 14px;
+  letter-spacing: 0.04em;
+}
+.rl-htw-panel h3{
+  font-family: 'Cinzel', serif;
+  color: var(--accent, #D4AF37);
+  font-size: 15px;
+  margin: 22px 0 8px;
+  letter-spacing: 0.04em;
+}
+.rl-htw-panel p{ margin: 0 0 10px; font-size: 14px; }
+.rl-htw-panel ul{ margin: 0 0 10px; padding-left: 22px; }
+.rl-htw-panel li{ margin-bottom: 5px; font-size: 14px; }
+.rl-htw-panel strong{ color: var(--accent, #D4AF37); font-weight: 600; }
+.rl-htw-panel em{ color: rgba(212,175,55,0.85); font-style: normal; }
+.rl-htw-close{
+  position: absolute; top: 10px; right: 14px;
+  background: transparent; border: none;
+  color: var(--accent, #D4AF37);
+  font-size: 28px; line-height: 1;
+  cursor: pointer; padding: 4px 10px;
+}
+.rl-htw-close:hover{ color: #fff; }

@@ -52,7 +52,9 @@
       title: 'The 15 views',
       body:
         '<p><strong>TIMELINE</strong> — figures by century.<br>' +
-        '<strong>SILSILA</strong> — teacher-student chains.<br>' +
+        '<strong>RELATIONS</strong> — every connection across 14 centuries: parents, ' +
+        'teachers, students, wives, family, companions, narration chains. Search any name, ' +
+        'drill back through the chain, all the way to the Prophet.<br>' +
         '<strong>FOLLOW</strong> — a figure’s life journey across the map.<br>' +
         '<strong>STUDY</strong> — slide decks and curated videos.<br>' +
         '<strong>BOOKS</strong> — 2,062 books with public links to free reads.<br>' +

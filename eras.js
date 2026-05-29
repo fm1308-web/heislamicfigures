@@ -23,7 +23,7 @@ window.ErasView = (function(){
   if(typeof window.jumpTo !== 'function') window.jumpTo = function(name){
     console.log('[eras] jumpTo (stub):', name);
   };
-  // stub: PROPHET_CHAIN (silsila/timeline-injected global). _evNameColor null-checks.
+  // stub: PROPHET_CHAIN (relations/timeline-injected global). _evNameColor null-checks.
   if(typeof window.PROPHET_CHAIN === 'undefined') window.PROPHET_CHAIN = new Set();
   // stub: _wikidata for the "W" Wikipedia link. _evWiki already null-checks.
   if(typeof window._wikidata === 'undefined') window._wikidata = {};

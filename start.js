@@ -5464,6 +5464,16 @@ window.StartView = (function(){
       'A− / A+ adjust font size. ع / ع|T / T switch column layout. ' +
       'DIVE opens scholastic mode (word-by-word, tafsir, multiple translations).\n\n' +
       'Zone D PLAY SURAH plays the full surah with the chosen reciter.\n\n' +
+      'CONCEPT TAGS ON VERSES\n\n' +
+      'Each verse may show one or more concept chips. These link the verse to one of 475 Islamic concepts in our catalogue. ' +
+      'Tags were built in three steps:\n' +
+      '1. Each concept has a written summary (Level 1).\n' +
+      '2. The Quran is filtered to verses where the concept\'s Arabic root word appears (Level 2 — root match).\n' +
+      '3. An AI (Claude Haiku) reads each candidate verse against the concept summary and keeps only verses that truly teach the concept (Level 3 — meaning check).\n\n' +
+      'Result: 4,311 verse links across 205 concepts. Every chip survived all three filters.\n\n' +
+      'IMPORTANT LIMIT\n\n' +
+      'The method is anchored on the concept\'s Arabic root word. If a verse teaches a concept without using its specific root, it will not appear here — even if the verse is widely understood to teach that concept. Example: Surah Ikhlas (112) teaches tawhid clearly but its Arabic text does not contain the root و-ح-د, so it shows no tawhid chip. This is the deliberate limit of a defensible method. We chose narrow and provable over wide and loose. Use the chips as a starting point for study, not as a complete index.\n\n' +
+      'Every chip carries the confidence stamp medium_ai — AI judged YES under a clear rule, human review in progress. Use feedback to flag wrong matches.\n\n' +
       'Sources: tanzil.net · Saheeh International · qurancomplex.gov.sa';
     if(typeof window.openModal === 'function') window.openModal('How This Works — START', body);
   }

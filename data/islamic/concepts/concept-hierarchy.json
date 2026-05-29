@@ -1791,7 +1791,6 @@
     "children": [
       "essence-existence-distinction",
       "asalat-al-wujud",
-      "asalat-al-mahiyya",
       "tashkik-al-wujud"
     ],
     "siblings": [
@@ -1817,7 +1816,6 @@
       "wajib-al-wujud",
       "essence-existence-distinction",
       "asalat-al-wujud",
-      "asalat-al-mahiyya",
       "tashkik-al-wujud"
     ],
     "opposite": "wajib-al-wujud",
@@ -1833,7 +1831,6 @@
     "parent": null,
     "children": [
       "asalat-al-wujud",
-      "asalat-al-mahiyya",
       "tashkik-al-wujud"
     ],
     "siblings": [
@@ -1859,34 +1856,15 @@
       "wujub-al-wujud"
     ],
     "siblings": [
-      "asalat-al-mahiyya",
       "divine-simplicity",
       "ittihad-aqil-maqul",
       "tawhid-al-wujud",
       "ten-intellects"
     ],
-    "opposite": "asalat-al-mahiyya",
     "related": [
       "mumkin-al-wujud",
       "wajib-al-wujud",
       "basit-al-haqiqa"
-    ]
-  },
-  "asalat-al-mahiyya": {
-    "label": "Asalat al-mahiyya (primacy of essence)",
-    "parent": "essence-existence-distinction",
-    "children": [],
-    "siblings": [
-      "asalat-al-wujud",
-      "tashkik-al-wujud",
-      "wujub-al-wujud",
-      "mumkin-al-wujud"
-    ],
-    "opposite": "asalat-al-wujud",
-    "related": [
-      "hikmat-ishraq",
-      "ayan-thabita",
-      "tawhid-al-wujud"
     ]
   },
   "tashkik-al-wujud": {
@@ -1897,10 +1875,8 @@
       "wujub-al-wujud",
       "mumkin-al-wujud",
       "essence-existence-distinction",
-      "asalat-al-wujud",
-      "asalat-al-mahiyya"
+      "asalat-al-wujud"
     ],
-    "opposite": "asalat-al-mahiyya",
     "related": [
       "tawhid-al-wujud",
       "divine-simplicity",
@@ -2131,7 +2107,6 @@
       "jawhar-arad",
       "universals-kulli",
       "natural-place",
-      "zaman",
       "makan"
     ],
     "siblings": [
@@ -2179,7 +2154,6 @@
     "siblings": [
       "void-khala",
       "makan",
-      "zaman",
       "mayl",
       "causality-falsafa"
     ],
@@ -2214,7 +2188,6 @@
     "children": [],
     "siblings": [
       "makan",
-      "zaman",
       "natural-place",
       "atomism-kalam",
       "infinity-falsafa"
@@ -2226,32 +2199,11 @@
       "hudus-al-alam"
     ]
   },
-  "zaman": {
-    "label": "Zaman (time)",
-    "parent": "tabiiyyat",
-    "children": [],
-    "siblings": [
-      "makan",
-      "void-khala",
-      "zaman",
-      "natural-place",
-      "infinity-falsafa",
-      "mayl"
-    ],
-    "opposite": null,
-    "related": [
-      "khalq-jadid",
-      "hudus-al-alam",
-      "qidam-al-alam",
-      "occasionalism"
-    ]
-  },
   "makan": {
     "label": "Makan (place)",
     "parent": "tabiiyyat",
     "children": [],
     "siblings": [
-      "zaman",
       "void-khala",
       "natural-place",
       "makan"
@@ -2445,8 +2397,7 @@
       "hads",
       "ilm-huduri",
       "kashf",
-      "ilham",
-      "firasa"
+      "ilham"
     ],
     "opposite": null,
     "related": [
@@ -2929,7 +2880,6 @@
       "essence-existence-distinction",
       "atomism-kalam",
       "natural-place",
-      "zaman",
       "makan"
     ]
   },
@@ -3050,7 +3000,6 @@
       "tusi-couple",
       "urdi-lemma",
       "ibn-al-shatir-model",
-      "hayaa",
       "homocentric-andalusi"
     ],
     "siblings": [
@@ -4749,7 +4698,6 @@
     "opposite": null,
     "related": [
       "qabd-bast",
-      "hayba-uns",
       "maqamat-ahwal",
       "ihsan"
     ]
@@ -4822,8 +4770,7 @@
     "siblings": [
       "mahabba",
       "shawq",
-      "uns",
-      "hayba-uns"
+      "uns"
     ],
     "opposite": null,
     "related": [
@@ -4840,7 +4787,6 @@
     "siblings": [
       "ishq",
       "uns",
-      "hayba-uns",
       "khawf-raja",
       "qabd-bast"
     ],
@@ -4857,7 +4803,6 @@
     "parent": "tasawwuf",
     "children": [],
     "siblings": [
-      "hayba-uns",
       "khawf-raja",
       "qabd-bast",
       "mahabba",
@@ -4876,7 +4821,6 @@
     "parent": "tasawwuf",
     "children": [],
     "siblings": [
-      "hayba-uns",
       "sukr-sahw",
       "khawf-raja",
       "qabd-bast",
@@ -4889,31 +4833,12 @@
       "muraqaba"
     ]
   },
-  "hayba-uns": {
-    "label": "Hayba and uns (awe and intimacy)",
-    "parent": "tasawwuf",
-    "children": [],
-    "siblings": [
-      "khawf-raja",
-      "qabd-bast",
-      "sukr-sahw",
-      "mahabba",
-      "shawq"
-    ],
-    "opposite": null,
-    "related": [
-      "uns",
-      "maqamat-ahwal",
-      "tajalli"
-    ]
-  },
   "sukr-sahw": {
     "label": "Sukr and sahw (intoxication and sobriety)",
     "parent": "tasawwuf",
     "children": [],
     "siblings": [
       "qabd-bast",
-      "hayba-uns",
       "shath",
       "wahdat-al-wujud",
       "maqamat-ahwal"
@@ -4932,7 +4857,6 @@
     "children": [],
     "siblings": [
       "sukr-sahw",
-      "hayba-uns",
       "qabd-bast",
       "wahdat-al-wujud",
       "fana"
@@ -5584,12 +5508,10 @@
     "parent": "tasawwuf",
     "children": [
       "ilham",
-      "firasa",
       "karamat"
     ],
     "siblings": [
       "ilham",
-      "firasa",
       "karamat",
       "ilm-huduri",
       "hads"
@@ -5608,7 +5530,6 @@
     "children": [],
     "siblings": [
       "kashf",
-      "firasa",
       "hads",
       "prophetic-imagination"
     ],
@@ -5618,24 +5539,6 @@
       "ilm-huduri",
       "tajalli",
       "wahdat-al-wujud"
-    ]
-  },
-  "firasa": {
-    "label": "Firasa (spiritual physiognomy)",
-    "parent": "kashf",
-    "children": [],
-    "siblings": [
-      "kashf",
-      "ilham",
-      "karamat",
-      "hads"
-    ],
-    "opposite": null,
-    "related": [
-      "wilaya",
-      "khatm-al-awliya",
-      "qutb",
-      "firasa"
     ]
   },
   "karamat": {
@@ -6011,7 +5914,6 @@
     "siblings": [
       "kashf",
       "ilham",
-      "firasa",
       "hads",
       "muraqaba"
     ],
@@ -6030,7 +5932,6 @@
     "siblings": [
       "kashf",
       "ilham",
-      "firasa",
       "khayal",
       "alam-mithal"
     ],
@@ -7073,9 +6974,6 @@
     "children": [
       "scientific-method-ibn-haytham",
       "optics-manazir",
-      "hayaa",
-      "tibb",
-      "alchemy-kimiya",
       "geography-masalik"
     ],
     "siblings": [
@@ -7138,10 +7036,7 @@
       "refraction-law"
     ],
     "siblings": [
-      "hayaa",
       "algebra-jabr",
-      "tibb",
-      "alchemy-kimiya",
       "geography-masalik"
     ],
     "opposite": null,
@@ -7178,7 +7073,6 @@
     ],
     "opposite": null,
     "related": [
-      "hayaa",
       "astrolabe",
       "mathematical-geography"
     ]
@@ -7194,39 +7088,11 @@
     ],
     "opposite": null,
     "related": [
-      "mathematization-nature",
-      "hayaa"
-    ]
-  },
-  "hayaa": {
-    "label": "'Ilm al-hay'a (theoretical astronomy)",
-    "parent": "tabiiyyat",
-    "children": [
-      "shukuk-ptolemy",
-      "tusi-couple",
-      "urdi-lemma",
-      "ibn-al-shatir-model",
-      "earth-rotation",
-      "trepidation"
-    ],
-    "siblings": [
-      "optics-manazir",
-      "algebra-jabr",
-      "tibb",
-      "geography-masalik",
-      "astrolabe"
-    ],
-    "opposite": null,
-    "related": [
-      "cosmology-falak",
-      "zij",
-      "astrolabe",
       "mathematization-nature"
     ]
   },
   "shukuk-ptolemy": {
     "label": "Shukuk 'ala Batlamyus (doubts on Ptolemy)",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "tusi-couple",
@@ -7244,7 +7110,6 @@
   },
   "tusi-couple": {
     "label": "Tusi couple",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "urdi-lemma",
@@ -7262,7 +7127,6 @@
   },
   "urdi-lemma": {
     "label": "Urdi lemma",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "tusi-couple",
@@ -7278,7 +7142,6 @@
   },
   "ibn-al-shatir-model": {
     "label": "Ibn al-Shatir's planetary model",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "shukuk-ptolemy",
@@ -7296,7 +7159,6 @@
   },
   "earth-rotation": {
     "label": "Possibility of earth's rotation",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "trepidation",
@@ -7314,7 +7176,6 @@
   },
   "trepidation": {
     "label": "Trepidation of the equinoxes",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "shukuk-ptolemy",
@@ -7332,7 +7193,6 @@
   },
   "homocentric-andalusi": {
     "label": "Andalusi homocentric astronomy",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "shukuk-ptolemy",
@@ -7350,7 +7210,6 @@
   },
   "zij": {
     "label": "Zij (astronomical tables)",
-    "parent": "hayaa",
     "children": [],
     "siblings": [
       "shukuk-ptolemy",
@@ -7374,8 +7233,7 @@
     "siblings": [
       "mathematical-geography",
       "miqat",
-      "astrolabe",
-      "hayaa"
+      "astrolabe"
     ],
     "opposite": null,
     "related": [
@@ -7388,7 +7246,6 @@
     "parent": "tabiiyyat",
     "children": [],
     "siblings": [
-      "hayaa",
       "qibla-determination",
       "astrolabe",
       "zij"
@@ -7401,7 +7258,6 @@
     "parent": "tabiiyyat",
     "children": [],
     "siblings": [
-      "hayaa",
       "zij",
       "qibla-determination",
       "miqat",
@@ -7533,7 +7389,6 @@
     "siblings": [
       "law-of-sines",
       "algebra-jabr",
-      "hayaa",
       "optics-manazir"
     ],
     "opposite": null,
@@ -7555,7 +7410,6 @@
     ],
     "opposite": null,
     "related": [
-      "hayaa",
       "mathematical-geography",
       "qibla-determination",
       "astrolabe"
@@ -7568,8 +7422,7 @@
     "siblings": [
       "specific-gravity",
       "balance-wisdom",
-      "optics-manazir",
-      "hayaa"
+      "optics-manazir"
     ],
     "opposite": "occasionalism",
     "related": [
@@ -7586,9 +7439,7 @@
     "siblings": [
       "balance-wisdom",
       "optics-manazir",
-      "dynamics-mayl",
-      "tibb",
-      "alchemy-kimiya"
+      "dynamics-mayl"
     ],
     "opposite": null,
     "related": [
@@ -7608,8 +7459,7 @@
       "optics-manazir",
       "dynamics-mayl",
       "specific-gravity",
-      "algebra-jabr",
-      "hayaa"
+      "algebra-jabr"
     ],
     "opposite": null,
     "related": [
@@ -7625,9 +7475,7 @@
     "siblings": [
       "balance-wisdom",
       "optics-manazir",
-      "algebra-jabr",
-      "tibb",
-      "alchemy-kimiya"
+      "algebra-jabr"
     ],
     "opposite": null,
     "related": [
@@ -7636,36 +7484,8 @@
       "scientific-method-ibn-haytham"
     ]
   },
-  "tibb": {
-    "label": "Tibb (Galenic-Islamic medicine)",
-    "parent": "tabiiyyat",
-    "children": [
-      "humoral-theory",
-      "mizaj",
-      "pulmonary-circulation",
-      "contagion-debate",
-      "smallpox-measles",
-      "pharmacology-adwiya"
-    ],
-    "siblings": [
-      "optics-manazir",
-      "hayaa",
-      "algebra-jabr",
-      "geography-masalik",
-      "zoology",
-      "botany"
-    ],
-    "opposite": null,
-    "related": [
-      "surgery-zahrawi",
-      "hospitals-bimaristan",
-      "ophthalmology",
-      "tibb-ruhani"
-    ]
-  },
   "humoral-theory": {
     "label": "Four humors (akhlat)",
-    "parent": "tibb",
     "children": [
       "mizaj",
       "humoral-theory"
@@ -7691,7 +7511,6 @@
     "children": [],
     "siblings": [
       "humoral-theory",
-      "tibb",
       "pulmonary-circulation",
       "pharmacology-adwiya"
     ],
@@ -7704,7 +7523,6 @@
   },
   "pulmonary-circulation": {
     "label": "Pulmonary circulation",
-    "parent": "tibb",
     "children": [],
     "siblings": [
       "humoral-theory",
@@ -7719,7 +7537,6 @@
   },
   "contagion-debate": {
     "label": "Contagion ('adwa) debate",
-    "parent": "tibb",
     "children": [],
     "siblings": [
       "humoral-theory",
@@ -7737,7 +7554,6 @@
   },
   "smallpox-measles": {
     "label": "Differential diagnosis of smallpox and measles",
-    "parent": "tibb",
     "children": [],
     "siblings": [
       "humoral-theory",
@@ -7756,7 +7572,6 @@
   },
   "surgery-zahrawi": {
     "label": "Surgical practice",
-    "parent": "tibb",
     "children": [],
     "siblings": [
       "pharmacology-adwiya",
@@ -7776,16 +7591,13 @@
     "label": "Bimaristan (teaching hospital)",
     "parent": "tabiiyyat",
     "children": [
-      "tibb",
       "surgery-zahrawi",
       "pharmacology-adwiya",
       "ophthalmology",
       "humoral-theory"
     ],
     "siblings": [
-      "tibb",
       "optics-manazir",
-      "hayaa",
       "scientific-observatory"
     ],
     "opposite": null,
@@ -7807,9 +7619,7 @@
       "surgery-zahrawi"
     ],
     "siblings": [
-      "tibb",
       "optics-manazir",
-      "alchemy-kimiya",
       "botany",
       "zoology"
     ],
@@ -7825,7 +7635,6 @@
     "parent": "tabiiyyat",
     "children": [],
     "siblings": [
-      "tibb",
       "surgery-zahrawi",
       "pharmacology-adwiya",
       "hospitals-bimaristan",
@@ -7838,56 +7647,16 @@
       "smallpox-measles"
     ]
   },
-  "alchemy-kimiya": {
-    "label": "Kimiya (alchemy)",
-    "parent": "tabiiyyat",
-    "children": [
-      "sulfur-mercury",
-      "critique-alchemy"
-    ],
-    "siblings": [
-      "tibb",
-      "optics-manazir",
-      "alchemy-kimiya",
-      "hayaa",
-      "algebra-jabr",
-      "geography-masalik"
-    ],
-    "opposite": null,
-    "related": [
-      "naturalism-tabi",
-      "mathematization-nature",
-      "scientific-method-ibn-haytham"
-    ]
-  },
   "sulfur-mercury": {
     "label": "Sulfur-mercury theory",
-    "parent": "alchemy-kimiya",
     "children": [],
     "siblings": [
-      "critique-alchemy",
       "humoral-theory"
     ],
     "opposite": null,
     "related": [
       "naturalism-tabi",
-      "mathematization-nature",
-      "tibb"
-    ]
-  },
-  "critique-alchemy": {
-    "label": "Critique of alchemical transmutation",
-    "parent": "alchemy-kimiya",
-    "children": [],
-    "siblings": [
-      "sulfur-mercury",
-      "tibb"
-    ],
-    "opposite": "alchemy-kimiya",
-    "related": [
-      "naturalism-tabi",
-      "causality-falsafa",
-      "tabiiyyat"
+      "mathematization-nature"
     ]
   },
   "geography-masalik": {
@@ -7896,11 +7665,9 @@
     "children": [
       "mathematical-geography",
       "earth-circumference",
-      "climes-aqalim",
-      "cartography"
+      "climes-aqalim"
     ],
     "siblings": [
-      "hayaa",
       "mineralogy",
       "botany",
       "zoology",
@@ -7928,7 +7695,6 @@
     ],
     "opposite": null,
     "related": [
-      "cartography",
       "miqat",
       "scientific-observatory"
     ]
@@ -7940,12 +7706,10 @@
     "siblings": [
       "mathematical-geography",
       "climes-aqalim",
-      "cartography",
       "qibla-determination"
     ],
     "opposite": null,
     "related": [
-      "hayaa",
       "astrolabe",
       "zij",
       "cosmology-falak"
@@ -7958,7 +7722,6 @@
     "siblings": [
       "earth-circumference",
       "mathematical-geography",
-      "cartography",
       "mineralogy"
     ],
     "opposite": null,
@@ -7975,8 +7738,7 @@
     "siblings": [
       "botany",
       "zoology",
-      "geography-masalik",
-      "alchemy-kimiya"
+      "geography-masalik"
     ],
     "opposite": null,
     "related": [
@@ -7998,7 +7760,6 @@
     "opposite": null,
     "related": [
       "pharmacology-adwiya",
-      "tibb",
       "classification-sciences"
     ]
   },
@@ -8010,7 +7771,6 @@
       "botany",
       "mineralogy",
       "optics-manazir",
-      "tibb",
       "geography-masalik"
     ],
     "opposite": null,
@@ -8028,8 +7788,7 @@
       "botany",
       "zoology",
       "mineralogy",
-      "geography-masalik",
-      "tibb"
+      "geography-masalik"
     ],
     "opposite": null,
     "related": [
@@ -8038,28 +7797,10 @@
       "earth-circumference"
     ]
   },
-  "cartography": {
-    "label": "Cartographic representation",
-    "parent": "geography-masalik",
-    "children": [],
-    "siblings": [
-      "mathematical-geography",
-      "earth-circumference",
-      "climes-aqalim",
-      "qibla-determination"
-    ],
-    "opposite": null,
-    "related": [
-      "zij",
-      "astrolabe",
-      "hayaa"
-    ]
-  },
   "cosmology-falak": {
     "label": "Celestial sphere cosmology (aflak)",
     "parent": "tabiiyyat",
     "children": [
-      "hayaa",
       "shukuk-ptolemy",
       "tusi-couple",
       "urdi-lemma",
@@ -8104,8 +7845,7 @@
     "siblings": [
       "astrology-ahkam",
       "optics-manazir",
-      "shukuk-ptolemy",
-      "alchemy-kimiya"
+      "shukuk-ptolemy"
     ],
     "opposite": "astrology-ahkam",
     "related": [
@@ -8154,7 +7894,6 @@
     "opposite": "naturalism-tabi",
     "related": [
       "algebra-jabr",
-      "hayaa",
       "automata",
       "scientific-observatory"
     ]
@@ -8183,7 +7922,6 @@
     "parent": "tabiiyyat",
     "children": [
       "zij",
-      "hayaa",
       "astrolabe",
       "qibla-determination"
     ],
@@ -8383,7 +8121,6 @@
     "opposite": null,
     "related": [
       "sama-qiyas",
-      "grammatical-abridgment",
       "logic-vs-grammar"
     ]
   },
@@ -9350,7 +9087,6 @@
     "siblings": [
       "rhyme-dictionary",
       "thematic-lexicography",
-      "grammatical-abridgment",
       "alfiyya-commentary"
     ],
     "opposite": null,
@@ -9367,8 +9103,7 @@
     "children": [],
     "siblings": [
       "dictionary-ayn",
-      "thematic-lexicography",
-      "grammatical-abridgment"
+      "thematic-lexicography"
     ],
     "opposite": null,
     "related": [
@@ -9384,7 +9119,6 @@
     "siblings": [
       "dictionary-ayn",
       "rhyme-dictionary",
-      "grammatical-abridgment",
       "alfiyya-commentary"
     ],
     "opposite": null,
@@ -9394,32 +9128,11 @@
       "furuq-lughawiyya"
     ]
   },
-  "grammatical-abridgment": {
-    "label": "Grammatical abridgment (mukhtasar) tradition",
-    "parent": "nahw",
-    "children": [
-      "alfiyya-commentary"
-    ],
-    "siblings": [
-      "dictionary-ayn",
-      "rhyme-dictionary",
-      "thematic-lexicography",
-      "lugha",
-      "sarf"
-    ],
-    "opposite": null,
-    "related": [
-      "balagha",
-      "fasaha",
-      "poetics-shir"
-    ]
-  },
   "alfiyya-commentary": {
     "label": "Alfiyya commentary tradition",
     "parent": "nahw",
     "children": [],
     "siblings": [
-      "grammatical-abridgment",
       "dictionary-ayn",
       "rhyme-dictionary",
       "thematic-lexicography",

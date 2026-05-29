@@ -1,0 +1,17 @@
+{
+  "total_arees": 25000,
+  "strong_matches": 41,
+  "weak_matches": 3882,
+  "no_match": 21077,
+  "ties_demoted_to_weak": 1,
+  "correction_candidates": 5,
+  "thresholds": {
+    "STRONG_MIN_TOKENS": 4,
+    "STRONG_ERA_WINDOW_YEARS": 25,
+    "WEAK_MIN_TOKENS": 2,
+    "head_name_rule": "arees english_name head token must match (Lev<=1) head of core 'famous' or 'full' fields. Excludes name_variants spellings to avoid kunya pollution.",
+    "gender_gate": "bin/ibn vs bint mismatch hard-rejects",
+    "era_gate": "strong requires both years known and within +/- 25 CE"
+  },
+  "elapsed_seconds": 2.8
+}

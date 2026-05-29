@@ -358,25 +358,61 @@ function _buildConceptPanel(){
   var scroll=document.getElementById('think-concept-scroll');if(!scroll) return;
   var si=document.getElementById('think-concept-search');
   var q=(si&&si.value||'').toLowerCase().trim();
-  var grouped={};
+  // Cap dropdown panel scroll height so it does not flow off screen.
+  scroll.style.maxHeight='60vh';
+  scroll.style.overflowY='auto';
+  // Build Monotheistic-set (slugs with at least 1 Quran verse) from the
+  // already-loaded concepts.js reverse cache. Falls back to empty if not loaded.
+  var monoSet=new Set();
+  try {
+    var rev=(window._gaConcepts && window._gaConcepts.quranByConcept) || null;
+    if(rev){
+      Object.keys(rev).forEach(function(k){
+        if(rev[k] && rev[k].length) monoSet.add(k);
+      });
+    }
+  } catch(e){}
+  // Trigger background load if cache empty so next open of panel is correct.
+  if(monoSet.size===0 && window.GoldArkConcepts && window.GoldArkConcepts.loadQuranReverse){
+    window.GoldArkConcepts.loadQuranReverse(function(){ try { _buildConceptPanel(); } catch(e){} });
+  }
+  var mono=[], rest={};
   (_data.concepts||[]).forEach(function(c){
     if(c.figure_count===0) return;
     if(q&&c.name.toLowerCase().indexOf(q)===-1) return;
-    var cat=c.category||'other';if(!grouped[cat]) grouped[cat]=[];grouped[cat].push(c);
+    if(monoSet.has(c.slug)){
+      mono.push(c);
+    } else {
+      var cat=c.category||'other';
+      if(!rest[cat]) rest[cat]=[];
+      rest[cat].push(c);
+    }
   });
+  mono.sort(function(a,b){return (a.name||'').localeCompare(b.name||'');});
   var toggleLabel=_selConceptSlugs.size>0?'Deselect all':'Select all';
   var html='<div style="display:flex;justify-content:flex-end;padding:2px 14px 4px"><span class="tk-dd-toggle-all" style="font-family:Cinzel,serif;font-size:var(--fs-3);color:#D4AF37;cursor:pointer;letter-spacing:.06em">'+toggleLabel+'</span></div>';
   var dir=_tkDir(),font=_tkFont();
-  CATEGORIES.forEach(function(cat){
-    if(!grouped[cat]||!grouped[cat].length) return;
-    var catLabel=_tkCat(cat);
-    html+='<div dir="'+dir+'" style="padding:6px 14px 2px;font-family:'+font+';font-size:var(--fs-3);font-weight:700;color:#D4AF37;letter-spacing:.12em;text-transform:uppercase;pointer-events:none">'+_esc(catLabel)+'</div>';
-    grouped[cat].forEach(function(c){
-      var on=_selConceptSlugs.has(c.slug);
-      var label=_tkName(c);
-      html+='<div class="dd-item'+(on?' selected':'')+'" data-val="'+_esc(c.slug)+'"><div class="dd-checkbox">'+(on?'✓':'')+'</div><span dir="'+dir+'" style="font-family:'+font+'">'+_esc(label)+'</span><span class="dd-count">'+c.figure_count+'</span></div>';
+  function _rowHtml(c){
+    var on=_selConceptSlugs.has(c.slug);
+    var label=_tkName(c);
+    return '<div class="dd-item'+(on?' selected':'')+'" data-val="'+_esc(c.slug)+'"><div class="dd-checkbox">'+(on?'✓':'')+'</div><span dir="'+dir+'" style="font-family:'+font+'">'+_esc(label)+'</span></div>';
+  }
+  // Monotheistic section — flat, no sub-headers
+  if(mono.length){
+    html+='<div dir="'+dir+'" style="padding:10px 14px 4px;font-family:'+font+';font-size:var(--fs-3);font-weight:700;color:#D4AF37;letter-spacing:.14em;text-transform:uppercase;pointer-events:none;border-bottom:1px solid rgba(212,175,55,0.25);margin-bottom:4px">Monotheistic</div>';
+    mono.forEach(function(c){ html+=_rowHtml(c); });
+  }
+  // Non-Monotheistic section — grouped by category
+  var hasRest=Object.keys(rest).some(function(k){return rest[k] && rest[k].length;});
+  if(hasRest){
+    html+='<div dir="'+dir+'" style="padding:14px 14px 4px;font-family:'+font+';font-size:var(--fs-3);font-weight:700;color:#9AA;letter-spacing:.14em;text-transform:uppercase;pointer-events:none;border-bottom:1px solid rgba(154,170,170,0.25);margin-bottom:4px">Non-Monotheistic</div>';
+    CATEGORIES.forEach(function(cat){
+      if(!rest[cat]||!rest[cat].length) return;
+      var catLabel=_tkCat(cat);
+      html+='<div dir="'+dir+'" style="padding:6px 14px 2px;font-family:'+font+';font-size:var(--fs-3);font-weight:600;color:#9AA;letter-spacing:.10em;text-transform:uppercase;pointer-events:none">'+_esc(catLabel)+'</div>';
+      rest[cat].forEach(function(c){ html+=_rowHtml(c); });
     });
-  });
+  }
   scroll.innerHTML=html;
   scroll.querySelectorAll('.dd-item').forEach(function(el){
     el.addEventListener('click',function(){
@@ -529,6 +565,20 @@ function _showThinkMethodology(){
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Hover any figure or book to see a short note explaining why it is linked to this concept. These notes are AI-generated and verified against the figure\'s profile — treat them as starting points, not final scholarship.</p>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Concept linking</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A single figure can appear under many concepts at different confidence levels. Al-Ghazali is HIGH on tasawwuf and kalam, MED on falsafa. Walking concepts at different bands shows different views of the same figure.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:24px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em;border-top:1px solid rgba(212,175,55,0.25);padding-top:18px">Quran Verse Links — Method</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Concepts marked <b style="color:#D4AF37">Monotheistic</b> in the filter have at least one Quran verse linked to them. The link is built in three steps, each tightening confidence:</p>'
+    +'<ul style="color:#ccc;font-size:var(--fs-3);line-height:1.6;padding-left:20px;margin:8px 0">'
+    +'<li><b>Level 1 — Definition.</b> 485 concepts each have a written summary that defines the concept in plain language.</li>'
+    +'<li><b>Level 2 — Root Match.</b> The Quran is filtered to verses that contain the concept\'s Arabic root word. Wide net (~42,700 candidate pairs). Low confidence on its own.</li>'
+    +'<li><b>Level 3 — Meaning Check.</b> An AI (Claude Haiku 4.5) reads each Level-2 candidate verse against the Level-1 summary and answers YES or NO: does this verse genuinely teach this concept? Only YES verses are kept. About 90% of Level-2 candidates are dropped here.</li>'
+    +'</ul>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Result: <b>4,311 verse links across 205 concepts</b>. Every verse shown survived all three filters. 270 concepts had no surviving verses and show no Quran chip — that is honest, not a bug.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Why some central concepts show few verses</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">The method is anchored on the concept\'s Arabic root word. If a verse teaches a concept without using its specific root, it does not appear here — even if the verse is widely understood to teach that concept. Example: tawhid shows 29 verses (where the root و-ح-د appears and the verse passes meaning-check). Many other verses also teach tawhid without using that root; they are not shown under this slug. This is the deliberate limit of a defensible method. We chose narrow and provable over wide and loose.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Confidence stamp</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Every Quran verse link carries the stamp <b>medium_ai</b>. Translation: the AI judged it YES under a clear rule, but a human scholar has not yet signed off each one. Human review is in progress. If you find a verse you believe was wrongly kept or wrongly dropped, use the feedback button — we want to know.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What this is not</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">This is not a list of every verse that teaches a concept. It is a list of verses where the concept\'s Arabic root word appears AND the verse passes a meaning check. Use it as a starting point for study, not as a complete index of Quranic teaching on the concept.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
   ov.appendChild(box);
   document.body.appendChild(ov);
@@ -637,7 +687,27 @@ function _renderCanvas(){
   figs.forEach(function(f){slugSet.add(f.slug);});
   var rels=_findRelations(slugSet);
 
+  // Collect every selected concept that has Quran verses.
+  // ONE start label, one pill per monotheistic concept.
+  var _startList=[];
+  try {
+    var _rev=(window._gaConcepts && window._gaConcepts.quranByConcept) || null;
+    if(_rev){
+      selConcepts.forEach(function(sc){
+        if(_rev[sc.slug] && _rev[sc.slug].length){
+          _startList.push({slug:sc.slug, name:_tkName(sc), verses:_rev[sc.slug]});
+        }
+      });
+    }
+  } catch(e){}
+
   var events=[];
+  if(_startList.length){
+    // First entry carries the "Start" label. Each entry gets its own pill row.
+    _startList.forEach(function(s, idx){
+      events.push({type:'start', startEntry:s, isFirstStart:(idx===0), isLastStart:(idx===_startList.length-1)});
+    });
+  }
   figs.forEach(function(f,i){
     var yr=f._book?f._book.year:(f.dob||600);
     events.push({type:'fig',yr:yr,f:f,idx:i});
@@ -667,10 +737,20 @@ function _renderCanvas(){
 
   var html='';
 
-  html+='<div class="tk-stem" style="top:'+(PAD-10)+'px;height:'+(totalH-PAD*2+20)+'px"></div>';
+  // Stem starts from the BOTTOM EDGE of the last START pill (so the line
+  // emerges from the centre-bottom of the brick stack). When no start row
+  // exists, stem starts at the top PAD.
+  var _stemTop=PAD-10;
+  if(_startList.length){
+    var _lastStartIdx=_startList.length-1;
+    var _lastStartEv=events[_lastStartIdx];
+    _stemTop=_lastStartEv.y+ROW_H; // bottom edge of last brick
+  }
+  html+='<div class="tk-stem" style="top:'+_stemTop+'px;height:'+(totalH-_stemTop-PAD+10)+'px"></div>';
 
   var _connectedYrs={};
   events.forEach(function(ev){
+    if(ev.type==='start') return;  // skip start rows from year axis
     var yr=ev.yr;
     if(!_connectedYrs[yr]) _connectedYrs[yr]={count:0,midY:ev.y+ROW_H/2};
     _connectedYrs[yr].count++;
@@ -696,6 +776,47 @@ function _renderCanvas(){
   html+='</div>';
 
   events.forEach(function(ev){
+    if(ev.type==='start'){
+      var sY=ev.y, sMid=sY+ROW_H/2;
+      var sEntry=ev.startEntry;
+      var sSlug=sEntry.slug;
+      var sName=sEntry.name||sSlug;
+      // Compress the row height to zero gap — bricks must touch.
+      // Use ROW_H for layout slot but draw the pill flush to row edges.
+      // First row prints the "Start" label above the bricks (offset up).
+      if(ev.isFirstStart){
+        html+='<div class="tk-fig-row tk-anim-el" data-start-row="1" data-y="'+sMid+'" style="top:'+(sY-22)+'px;height:20px">';
+        html+='<div class="tk-fig-main"><div class="tk-fig-title" style="color:#D4AF37;font-family:Cinzel,serif;letter-spacing:.14em;text-transform:uppercase">Start</div></div>';
+        html+='</div>';
+      }
+      // Determine corner radii so stacked pills look like bricks.
+      // Single pill = fully rounded. Top of stack = rounded top only.
+      // Middle = square. Bottom = rounded bottom only.
+      var _isOnly=(ev.isFirstStart && ev.isLastStart);
+      var _isTop=(ev.isFirstStart && !ev.isLastStart);
+      var _isBot=(!ev.isFirstStart && ev.isLastStart);
+      var _radius;
+      if(_isOnly)      _radius='14px';
+      else if(_isTop)  _radius='14px 14px 0 0';
+      else if(_isBot)  _radius='0 0 14px 14px';
+      else             _radius='0';
+      // Pill sits centred on the stem X. Use absolute positioning so the
+      // pill column aligns with the stem regardless of row flex.
+      var _stemX=STEM_X;
+      var _pillW=110;
+      var _pillH=ROW_H; // brick height matches row slot — zero gap
+      var _pillLeft=_stemX - _pillW/2;
+      html+='<a class="tk-book-read tk-start-read" href="#start" data-slug="'+_esc(sSlug)+'" '+
+        'style="position:absolute;left:'+_pillLeft+'px;top:'+sY+'px;width:'+_pillW+'px;height:'+_pillH+'px;'+
+        'display:flex;align-items:center;justify-content:center;'+
+        'background:linear-gradient(180deg,#e8c547,#d4af37);color:#0d1117;'+
+        'border:1px solid rgba(212,175,55,1);'+
+        'border-radius:'+_radius+';'+
+        'font-weight:700;text-decoration:none;font-family:Cinzel,serif;letter-spacing:.12em;font-size:var(--fs-3)">READ</a>';
+      // Concept name label sits to the right of the pill column.
+      html+='<span class="tk-start-label" style="position:absolute;left:'+(_pillLeft+_pillW+12)+'px;top:'+sY+'px;height:'+_pillH+'px;display:flex;align-items:center;color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-3);letter-spacing:.10em;text-transform:uppercase;opacity:0.85">'+_esc(sName)+'</span>';
+      return;
+    }
     if(ev.type!=='fig') return;
     var f=ev.f;
     var role=(f.role||'transmitter').toLowerCase();
@@ -734,6 +855,39 @@ function _renderCanvas(){
     html+=marker+'<span class="tk-book-icon">📖</span><a class="tk-book-link" href="#books" data-book-id="'+_bid+'" dir="'+_bDir+'"'+(_bStyle?' style="'+_bStyle+'"':'')+' onclick="event.preventDefault();if(typeof setView===\'function\')setView(\'books\');setTimeout(function(){if(window._scrollToBookId)window._scrollToBookId(\''+_bid+'\');},350);return false;">'+_esc(_bTitle)+'</a>'+_readBtn;
     html+='</div>';
   });
+
+  // Bind START pill clicks: pin verses for the concept and switch to START view.
+  setTimeout(function(){
+    var pillEls=document.querySelectorAll('.tk-start-read');
+    pillEls.forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        var sl=this.getAttribute('data-slug');
+        var rev=(window._gaConcepts && window._gaConcepts.quranByConcept) || {};
+        var raw=rev[sl] || [];
+        var summary=(window.GoldArkConcepts && window.GoldArkConcepts.getSummary) ? window.GoldArkConcepts.getSummary(sl) : null;
+        var label=(summary && (summary.title || summary.name)) || sl;
+        var pinList=raw.map(function(v){
+          if(Array.isArray(v)){
+            if(typeof v[0]==='string' && v[0].indexOf(':')>0){var p=v[0].split(':');return {surah:+p[0],verse:+p[1],score:v[1]};}
+            return {surah:+v[0],verse:+v[1],score:v[2]};
+          }
+          if(typeof v==='object') return {surah:+(v.surah||v.s),verse:+(v.verse||v.v),score:v.score};
+          if(typeof v==='string' && v.indexOf(':')>0){var pp=v.split(':');return {surah:+pp[0],verse:+pp[1]};}
+          return null;
+        }).filter(function(x){return x && x.surah && x.verse;});
+        window._stPendingPinnedVerses = { slug: sl, label: label, verses: pinList };
+        var tabs=document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
+        for(var i=0;i<tabs.length;i++){
+          var elt=tabs[i];
+          var txt=(elt.textContent||'').trim().toUpperCase();
+          var dv=elt.getAttribute('data-view')||'';
+          if(txt==='START' || dv==='start'){ elt.click(); return; }
+        }
+        if(typeof window.setView==='function') window.setView('start');
+      });
+    });
+  }, 50);
 
   roleBands.forEach(function(band){
     var color=ROLE_COLORS[band.role]||'#999';

@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-var TABS_ROW1 = ['TIMELINE','SILSILA','FOLLOW','STUDY','BOOKS','ERAS','EVENTS','YEAR'];
+var TABS_ROW1 = ['TIMELINE','RELATIONS','FOLLOW','STUDY','BOOKS','ERAS','EVENTS','YEAR'];
 var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START'];
 var ALL_TABS = TABS_ROW1.concat(TABS_ROW2);
 
@@ -148,7 +148,7 @@ window.setActiveTab = setActiveTab;
 var ZONE_D_RULES = {
   TIMELINE:  { animate: true,  audio: false },
   YEAR:      { animate: false, audio: false },
-  SILSILA:   { animate: true,  audio: false },
+  RELATIONS: { animate: false, audio: false },
   FOLLOW:    { animate: true,  audio: false },
   STUDY:     { animate: false, audio: false },
   BOOKS:     { animate: true,  audio: false },
@@ -170,7 +170,7 @@ var ZONE_D_RULES = {
 var VIEW_REGISTRY = {
   TIMELINE: { script: 'timeline.js', css: 'timeline.css', api: 'TimelineView' },
   YEAR:     { script: 'year.js',     css: 'year.css',     api: 'YearView' },
-  SILSILA:  { script: 'silsila.js',  css: 'silsila.css',  api: 'SilsilaView' },
+  RELATIONS: { script: 'relations.js', css: 'relations.css', api: 'RelationsView' },
   FOLLOW:   { script: 'follow.js',   css: 'follow.css',   api: 'FollowView' },
   STUDY:    { script: 'study.js',    css: 'study.css',    api: 'StudyView' },
   BOOKS:    { script: 'books.js',    css: 'books.css',    api: 'BooksView' },
@@ -262,16 +262,11 @@ var FILTER_SPECS = {
     actions: [],
     htw: true
   },
-  SILSILA: {
+  RELATIONS: {
     search: true,
-    slider: true,
-    filters: [
-      { type:'select', label:'TYPE' },
-      { type:'select', label:'TRADITION' }
-    ],
-    actions: [ { type:'pill', label:'★ Saved' }, { type:'pill', label:'Reset' } ],
-    actionsInRow1: true,
-    hint: 'Click node to highlight · Click again for details',
+    filters: [],
+    actions: [],
+    hint: 'Search for names, traditions, types, places, or areas above · or click a category below',
     hintInRow2: true,
     htw: true
   },
@@ -1028,7 +1023,7 @@ function bindZoneD(){
     var rules = ZONE_D_RULES[state.activeTab] || {};
     if(!rules.animate) return;
     var api = _activeViewApi;
-    // View-specific animation delegation (e.g. SILSILA drives its own engine).
+    // View-specific animation delegation (e.g. RELATIONS drives its own engine).
     if(api && typeof api.animateStart === 'function' && typeof api.animatePause === 'function'){
       if(state.animating){
         api.animatePause();
@@ -1265,11 +1260,11 @@ function _renderLangDropdown(){
       dd.hidden = true;
       var code = item.getAttribute('data-lang');
       if(!code) return;
-      // Urdu is only fully translated on TIMELINE and SILSILA today.
+      // Urdu is only fully translated on TIMELINE and RELATIONS today.
       // On every other view, intercept the click and show a friendly
       // "translation in progress" notice instead of switching.
       // Allowlist grows as RV ships UR buckets per view.
-      var UR_READY_VIEWS = ['TIMELINE','SILSILA'];
+      var UR_READY_VIEWS = ['TIMELINE','RELATIONS'];
       if(code.toLowerCase() === 'ur' && UR_READY_VIEWS.indexOf(state.activeTab) === -1){
         alert('Urdu translation in progress for this view.\nAvailable in a few days.');
         return;
