@@ -2050,8 +2050,7 @@ function _openMethodology(e){
         '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#e8c547;font-weight:600">4</span><span>Strong multi-word match.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#f5d24a;font-weight:700">5</span><span>Exact phrase — strongest, rare.</span></div>' +
       '</div>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags shown here are older keyword-match tags built before our new method launched. They are useful for discovery but not vetted at the same quality as Quran verse tags. Upgrade to the new three-level method for hadith is planned for a future release. Treat hadith concept chips as exploratory only.</p>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:16px 0 0;font-style:italic">Matches are keyword-based and include false positives. Use as a starting point, not a citation.</p>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags currently cover the six canonical collections (28,889 hadith tagged) and are inherited from the Quran verses each hadith shares wording with, using the same Level 3 concept list as the Quran tags. The hadith-to-verse link is word-overlap, not meaning-checked, so treat these chips as exploratory, not a citation.</p>' +
 
       '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">NARRATOR FILTER</h3>' +
       '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Narrator dropdown lists every distinct narrator who appears as the end of a hadith chain across all Sunni and Shia books on file.</p>' +
@@ -2808,7 +2807,7 @@ function init(){
                 var cnote = document.createElement('div');
                 cnote.className = 'mon-concept-note';
                 cnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
-                cnote.textContent = 'Concept tags cover ~11.6% of hadiths so far. Word-matched, not yet AI-scored. Coverage expands continuously.';
+                cnote.textContent = 'Hadith concept tags currently cover the six canonical collections (28,889 hadith tagged) and are inherited from the Quran verses each hadith shares wording with, using the same Level 3 concept list as the Quran tags. The hadith-to-verse link is word-overlap, not meaning-checked, so treat these chips as exploratory, not a citation.';
                 panel.insertBefore(cnote, panel.firstChild);
               }
             }catch(e){ console.warn('[MON] concept dropdown build failed', e); }
@@ -3298,6 +3297,34 @@ function _wizardApply(){
 // Lazy-loads per-collection xref file on first expand.
 // ═══════════════════════════════════════════════════════════
 window._hadithXrefCache = window._hadithXrefCache || {};
+window._monShowBookConcept = function(hcoll, slug){
+  if(!slug) return;
+  var monKey = XREF_TO_MON_KEY[hcoll] || hcoll;
+  function apply(){
+    if(!(_monSel && _monSel.collection && typeof _applyAllFilters === 'function')) return false;
+    _monSel.period.clear();
+    _monSel.topic.clear();
+    _monSel.narrator.clear();
+    _monSel.volume.clear();
+    _monSel.collection.clear();
+    _monSel.concept.clear();
+    if(monKey) _monSel.collection.add(monKey);
+    _monSel.concept.add(slug);
+    if(typeof _monSyncDD === 'function'){
+      try{ _monSyncDD('collection'); }catch(e){}
+      try{ _monSyncDD('concept'); }catch(e){}
+    }
+    _applyAllFilters();
+    try{ window.scrollTo({top:0, behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
+    return true;
+  }
+  if(!apply()){
+    if(typeof _monClickTab === 'function') _monClickTab(['MONASTIC'], 'monastic');
+    var tries = 0;
+    var iv = setInterval(function(){ tries++; if(apply() || tries > 80) clearInterval(iv); }, 80);
+  }
+};
+
 window._loadHadithXref = async function(collection){
   if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
   // v2 merged file not yet deployed on R2 — go straight to per-collection files.
@@ -3395,6 +3422,14 @@ async function _populateXrefSlots(container){
     (byColl[c] = byColl[c] || []).push(slot);
   });
   var colls = Object.keys(byColl);
+  // Wait for the hadith concept-tag file to finish loading before
+  // building panels, else the Concepts row is silently skipped on
+  // first render.
+  await new Promise(function(res){
+    if(window.GoldArkConcepts && typeof window.GoldArkConcepts.loadHadithTags === 'function'){
+      window.GoldArkConcepts.loadHadithTags(function(){ res(); });
+    } else { res(); }
+  });
   for(var i = 0; i < colls.length; i++){
     var c = colls[i];
     var idx = await window._loadHadithXref(c);

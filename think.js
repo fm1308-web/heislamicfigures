@@ -4,6 +4,89 @@
    ───────────────────────────────────────────────────────────── */
 window.ThinkView = (function(){
   'use strict';
+// Tafsir works for the THINK timeline. year = author death year (core.json)
+// or sourced publication/era for committee/living authors (web-verified).
+// editionId is the default edition to open in EXPLAIN when clicked.
+var TK_TAFSIRS = [
+  {work_id:"tanwir-miqbas", year:687},
+  {work_id:"tustari",       year:896},
+  {work_id:"tabari",        year:923},
+  {work_id:"qushayri",      year:1072},
+  {work_id:"wahidi",        year:1076},
+  {work_id:"baghawi",       year:1122},
+  {work_id:"maybudi",       year:1135},
+  {work_id:"qurtubi",       year:1273},
+  {work_id:"kashani",       year:1329},
+  {work_id:"ibn-kathir",    year:1373},
+  {work_id:"jalalayn",      year:1505},
+  {work_id:"fathul",        year:1868},
+  {work_id:"saadi",         year:1956},
+  {work_id:"maariful",      year:1976},
+  {work_id:"muyassar",      year:2003},
+  {work_id:"wasit",         year:2010},
+  {work_id:"bayan-israr",   year:2010},
+  {work_id:"zakaria",       year:2015},
+  {work_id:"ahsanul",       year:2020},
+  {work_id:"rebar",         year:2020},
+  {work_id:"tazkirul",      year:2021}
+];
+
+// Hadith books (canonical 6) for the THINK timeline. year = compilation
+// end year (user-confirmed). hcoll = MONASTIC collection key. EN only.
+var TK_HADITH_BOOKS = [
+  {hcoll:"bukhari",  year:865, author:"Al-Bukhari",           work:"Sahih al-Bukhari"},
+  {hcoll:"muslim",   year:874, author:"Muslim ibn al-Hajjaj", work:"Sahih Muslim"},
+  {hcoll:"ibnmajah", year:885, author:"Ibn Majah",            work:"Sunan Ibn Majah"},
+  {hcoll:"abudawud", year:888, author:"Abu Dawud",            work:"Sunan Abu Dawud"},
+  {hcoll:"tirmidhi", year:892, author:"Al-Tirmidhi",          work:"Jami al-Tirmidhi"},
+  {hcoll:"nasai",    year:915, author:"Al-Nasa'i",            work:"Sunan al-Nasa'i"}
+];
+
+// Build {work_id: {author, editions:[{id,lang}]}} live from the EXPLAIN registry.
+var TK_TAFSIR_REGISTRY = [
+  {id:"ar-tafsir-ibn-kathir", work_id:"ibn-kathir", author:"Ibn Kathir", work:"Tafsir Ibn Kathir", lang:"AR"},
+  {id:"en-tafisr-ibn-kathir", work_id:"ibn-kathir", author:"Ibn Kathir", work:"Tafsir Ibn Kathir", lang:"EN"},
+  {id:"ur-tafseer-ibn-e-kaseer", work_id:"ibn-kathir", author:"Ibn Kathir", work:"Tafsir Ibn Kathir", lang:"UR"},
+  {id:"bn-tafseer-ibn-e-kaseer", work_id:"ibn-kathir", author:"Ibn Kathir", work:"Tafsir Ibn Kathir", lang:"BN"},
+  {id:"ar-tafsir-al-tabari", work_id:"tabari", author:"al-Tabari", work:"Tafsir al-Tabari", lang:"AR"},
+  {id:"ar-tafsir-al-jalalayn", work_id:"jalalayn", author:"Mahalli + Suyuti", work:"Tafsir al-Jalalayn", lang:"AR"},
+  {id:"en-al-jalalayn", work_id:"jalalayn", author:"Mahalli + Suyuti", work:"Tafsir al-Jalalayn", lang:"EN"},
+  {id:"ar-tafsir-al-qurtubi", work_id:"qurtubi", author:"al-Qurtubi", work:"Tafsir al-Qurtubi", lang:"AR"},
+  {id:"ar-tafsir-al-baghawi", work_id:"baghawi", author:"al-Baghawi", work:"Tafsir al-Baghawi", lang:"AR"},
+  {id:"ar-tafsir-muyassar", work_id:"muyassar", author:"King Fahd Complex", work:"Tafsir al-Muyassar", lang:"AR"},
+  {id:"ar-tafsir-al-wasit", work_id:"wasit", author:"Al-Azhar group", work:"Tafsir al-Wasit", lang:"AR"},
+  {id:"ar-tafsir-tanwir-al-miqbas", work_id:"tanwir-miqbas", author:"Ibn Abbas (attr.)", work:"Tanwir al-Miqbas", lang:"AR"},
+  {id:"en-tafsir-ibn-abbas", work_id:"tanwir-miqbas", author:"Ibn Abbas (attr.)", work:"Tanwir al-Miqbas", lang:"EN"},
+  {id:"ar-tafseer-al-saddi", work_id:"saadi", author:"al-Sa'di", work:"Tafsir al-Sa'di", lang:"AR"},
+  {id:"ru-tafseer-al-saddi", work_id:"saadi", author:"al-Sa'di", work:"Tafsir al-Sa'di", lang:"RU"},
+  {id:"en-tafsir-maarif-ul-quran", work_id:"maariful", author:"Mufti Shafi Usmani", work:"Ma'ariful Quran", lang:"EN"},
+  {id:"en-tazkirul-quran", work_id:"tazkirul", author:"Wahiduddin Khan", work:"Tazkirul Quran", lang:"EN"},
+  {id:"ur-tazkirul-quran", work_id:"tazkirul", author:"Wahiduddin Khan", work:"Tazkirul Quran", lang:"UR"},
+  {id:"en-tafsir-al-tustari", work_id:"tustari", author:"Sahl al-Tustari", work:"Tafsir al-Tustari", lang:"EN"},
+  {id:"en-al-qushairi-tafsir", work_id:"qushayri", author:"al-Qushayri", work:"Lata'if al-Isharat", lang:"EN"},
+  {id:"en-kashani-tafsir", work_id:"kashani", author:"al-Kashani", work:"Ta'wilat al-Qur'an", lang:"EN"},
+  {id:"en-kashf-al-asrar-tafsir", work_id:"maybudi", author:"al-Maybudi", work:"Kashf al-Asrar", lang:"EN"},
+  {id:"en-asbab-al-nuzul-by-al-wahidi", work_id:"wahidi", author:"al-Wahidi", work:"Asbab al-Nuzul", lang:"EN"},
+  {id:"ur-tafsir-bayan-ul-quran", work_id:"bayan-israr", author:"Dr. Israr Ahmad", work:"Bayan ul Quran", lang:"UR"},
+  {id:"bn-tafsir-abu-bakr-zakaria", work_id:"zakaria", author:"Abu Bakr Zakaria", work:"Tafsir Abu Bakr Zakaria", lang:"BN"},
+  {id:"bn-tafsir-ahsanul-bayaan", work_id:"ahsanul", author:"Salahuddin Yusuf", work:"Ahsanul Bayaan", lang:"BN"},
+  {id:"bn-tafisr-fathul-majid", work_id:"fathul", author:"Aal al-Shaykh", work:"Fathul Majid", lang:"BN"},
+  {id:"kurd-tafsir-rebar", work_id:"rebar", author:"Mulla Rebar Kurdi", work:"Tafsir Rebar", lang:"KU"}
+];
+
+function _tkTafsirEditions(){
+  var reg = (window.EX_TAFSIR_REGISTRY && window.EX_TAFSIR_REGISTRY.length) ? window.EX_TAFSIR_REGISTRY : TK_TAFSIR_REGISTRY;
+  var map = {};
+  reg.forEach(function(r){
+    if(!map[r.work_id]) map[r.work_id] = {author:r.author, work:r.work, editions:[]};
+    map[r.work_id].editions.push({id:r.id, lang:r.lang});
+  });
+  var order = ["EN","AR","UR","BN","KU","RU"];
+  Object.keys(map).forEach(function(k){
+    map[k].editions.sort(function(a,b){ return order.indexOf(a.lang)-order.indexOf(b.lang); });
+  });
+  return map;
+}
 
   // ═══════════════════════════════════════════════════════════
   // STUBBED EXTERNALS (mirror timeline.js stub style)
@@ -712,8 +795,43 @@ function _renderCanvas(){
     var yr=f._book?f._book.year:(f.dob||600);
     events.push({type:'fig',yr:yr,f:f,idx:i});
   });
+  // Tafsir rows: one per work, only when at least one selected concept has verses.
+  var _tkVerseConcepts=[];
+  try {
+    var _rv2=(window._gaConcepts && window._gaConcepts.quranByConcept) || null;
+    if(_rv2){
+      for(var _si=0;_si<selConcepts.length;_si++){
+        var _scx=selConcepts[_si];
+        if(_rv2[_scx.slug] && _rv2[_scx.slug].length){ _tkVerseConcepts.push(_scx); }
+      }
+    }
+  } catch(e){}
+  if(_tkVerseConcepts.length){
+    var _tkEdMap=_tkTafsirEditions();
+    TK_TAFSIRS.forEach(function(t,i){
+      var info=_tkEdMap[t.work_id];
+      if(!info || !info.editions.length) return;
+      _tkVerseConcepts.forEach(function(_cc,ci){
+        events.push({type:'tafsir', yr:t.year, taf:{year:t.year, author:info.author, work:info.work, editions:info.editions}, concept:_cc, idx:1000+i*10+ci});
+      });
+    });
+    TK_HADITH_BOOKS.forEach(function(b,i){
+      _tkVerseConcepts.forEach(function(_cc,ci){
+        events.push({type:'hadithbook', yr:b.year, hb:b, concept:_cc, idx:2000+i*10+ci});
+      });
+    });
+  }
 
   var ROW_H=44,PAD=30,STEM_X=500,DOT_X=16,LEFT_W=STEM_X-40;
+  // Keep start rows first, then order fig + tafsir rows together by year.
+  var _starts=events.filter(function(e){return e.type==='start';});
+  var _timed=events.filter(function(e){return e.type!=='start';});
+  _timed.sort(function(a,b){
+    var ya=(a.type==='tafsir'||a.type==='hadithbook')?a.yr:(a.f&&a.f._book?a.f._book.year:(a.f?a.f.dob:9999))||9999;
+    var yb=(b.type==='tafsir'||b.type==='hadithbook')?b.yr:(b.f&&b.f._book?b.f._book.year:(b.f?b.f.dob:9999))||9999;
+    return ya-yb;
+  });
+  events=_starts.concat(_timed);
   var yPos=PAD;
   events.forEach(function(ev){ev.y=yPos;yPos+=ROW_H;});
   var totalH=yPos+PAD;
@@ -784,11 +902,6 @@ function _renderCanvas(){
       // Compress the row height to zero gap — bricks must touch.
       // Use ROW_H for layout slot but draw the pill flush to row edges.
       // First row prints the "Start" label above the bricks (offset up).
-      if(ev.isFirstStart){
-        html+='<div class="tk-fig-row tk-anim-el" data-start-row="1" data-y="'+sMid+'" style="top:'+(sY-22)+'px;height:20px">';
-        html+='<div class="tk-fig-main"><div class="tk-fig-title" style="color:#D4AF37;font-family:Cinzel,serif;letter-spacing:.14em;text-transform:uppercase">Start</div></div>';
-        html+='</div>';
-      }
       // Determine corner radii so stacked pills look like bricks.
       // Single pill = fully rounded. Top of stack = rounded top only.
       // Middle = square. Bottom = rounded bottom only.
@@ -806,6 +919,7 @@ function _renderCanvas(){
       var _pillW=110;
       var _pillH=ROW_H; // brick height matches row slot — zero gap
       var _pillLeft=_stemX - _pillW/2;
+      html+='<span style="position:absolute;left:'+(_pillLeft-66)+'px;top:'+sY+'px;width:60px;height:'+_pillH+'px;display:flex;align-items:center;justify-content:flex-end;color:#c9a961;font-family:Cinzel,serif;font-size:12px;letter-spacing:.06em;border-bottom:1px solid #c9a961">Quran</span>';
       html+='<a class="tk-book-read tk-start-read" href="#start" data-slug="'+_esc(sSlug)+'" '+
         'style="position:absolute;left:'+_pillLeft+'px;top:'+sY+'px;width:'+_pillW+'px;height:'+_pillH+'px;'+
         'display:flex;align-items:center;justify-content:center;'+
@@ -836,6 +950,40 @@ function _renderCanvas(){
     html+='<div class="tk-dash-left tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px'+(f._bookless?';opacity:0.75':'')+'"></div>';
   });
 
+  // Tafsir rows — author + year on left; "Tafsir" label + language pills on right.
+  events.forEach(function(ev){
+    if(ev.type!=='tafsir') return;
+    var t=ev.taf;
+    var midY=ev.y+ROW_H/2;
+    html+='<div class="tk-fig-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
+    html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(t.author)+'</div><div class="tk-fig-meta">'+_tkNum(t.year)+' '+_tkUI('CE')+'</div></div>';
+    html+='</div>';
+    html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:#c9a961"></div>';
+    html+='<div class="tk-dash-left tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px"></div>';
+    var _ctitle=(ev.concept && (ev.concept.title||ev.concept.name||ev.concept.slug))||'';
+    var pills='<span style="color:#9aa3b2;font-family:Lato,sans-serif;font-size:11px;margin-right:8px;font-style:italic">'+_esc(_ctitle)+'</span><span style="color:#c9a961;text-decoration:underline;font-family:\''+'Cinzel\',serif;font-size:12px;letter-spacing:.06em;margin-right:8px">Tafsir</span>';
+    t.editions.forEach(function(ed){
+      pills+='<button class="tk-tafsir-pill" data-edition="'+_esc(ed.id)+'" data-concept="'+_esc(ev.concept.slug)+'" style="background:rgba(201,169,97,0.12);color:#c9a961;border:1px solid rgba(201,169,97,0.55);border-radius:12px;padding:2px 10px;font-size:11px;font-family:Lato,sans-serif;cursor:pointer;margin:0 4px 0 0">'+_esc(ed.lang)+'</button>';
+    });
+    html+='<div style="position:absolute;left:'+(STEM_X+120)+'px;top:'+(ev.y+9)+'px;display:flex;align-items:center;flex-wrap:wrap">'+pills+'</div>';
+  });
+
+  // Hadith-book rows — author + year on left; book name + EN pill on right.
+  events.forEach(function(ev){
+    if(ev.type!=='hadithbook') return;
+    var hb=ev.hb;
+    var midY=ev.y+ROW_H/2;
+    html+='<div class="tk-fig-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
+    html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(hb.author)+'</div><div class="tk-fig-meta">'+_tkNum(hb.year)+' '+_tkUI('CE')+'</div></div>';
+    html+='</div>';
+    html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:#8ab4d4"></div>';
+    html+='<div class="tk-dash-left tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px"></div>';
+    var _hctitle=(ev.concept && (ev.concept.title||ev.concept.name||ev.concept.slug))||'';
+    var hpills='<span style="color:#9aa3b2;font-family:Lato,sans-serif;font-size:11px;margin-right:8px;font-style:italic">'+_esc(_hctitle)+'</span><span style="color:#8ab4d4;text-decoration:underline;font-family:\'Cinzel\',serif;font-size:12px;letter-spacing:.06em;margin-right:8px">'+_esc(hb.work)+'</span>';
+    hpills+='<button class="tk-hadith-pill" data-hcoll="'+_esc(hb.hcoll)+'" data-concept="'+_esc(ev.concept.slug)+'" style="background:rgba(138,180,212,0.12);color:#8ab4d4;border:1px solid rgba(138,180,212,0.55);border-radius:12px;padding:2px 10px;font-size:11px;font-family:Lato,sans-serif;cursor:pointer;margin:0 4px 0 0">EN</button>';
+    html+='<div style="position:absolute;left:'+(STEM_X+120)+'px;top:'+(ev.y+9)+'px;display:flex;align-items:center;flex-wrap:wrap">'+hpills+'</div>';
+  });
+
   var BOOK_ROW_H=ROW_H;
   events.forEach(function(ev){
     if(ev.type!=='fig') return;
@@ -855,6 +1003,60 @@ function _renderCanvas(){
     html+=marker+'<span class="tk-book-icon">📖</span><a class="tk-book-link" href="#books" data-book-id="'+_bid+'" dir="'+_bDir+'"'+(_bStyle?' style="'+_bStyle+'"':'')+' onclick="event.preventDefault();if(typeof setView===\'function\')setView(\'books\');setTimeout(function(){if(window._scrollToBookId)window._scrollToBookId(\''+_bid+'\');},350);return false;">'+_esc(_bTitle)+'</a>'+_readBtn;
     html+='</div>';
   });
+
+  // Bind tafsir pill clicks: open that tafsir in EXPLAIN with concept verses pinned.
+  setTimeout(function(){
+    document.querySelectorAll('.tk-tafsir-pill').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        var edId=this.getAttribute('data-edition');
+        var sl=this.getAttribute('data-concept');
+        var rev=(window._gaConcepts && window._gaConcepts.quranByConcept) || {};
+        var raw=rev[sl] || [];
+        var summary=(window.GoldArkConcepts && window.GoldArkConcepts.getSummary) ? window.GoldArkConcepts.getSummary(sl) : null;
+        var label=(summary && (summary.title || summary.name)) || sl;
+        var pinList=raw.map(function(v){
+          if(Array.isArray(v)){
+            if(typeof v[0]==='string' && v[0].indexOf(':')>0){var p=v[0].split(':');return {surah:+p[0],verse:+p[1]};}
+            return {surah:+v[0],verse:+v[1]};
+          }
+          if(typeof v==='object') return {surah:+(v.surah||v.s),verse:+(v.verse||v.v)};
+          if(typeof v==='string' && v.indexOf(':')>0){var pp=v.split(':');return {surah:+pp[0],verse:+pp[1]};}
+          return null;
+        }).filter(function(x){return x && x.surah && x.verse;});
+        if(typeof window._exOpenConceptTafsirs==='function'){
+          window._exOpenConceptTafsirs(sl, label, pinList, edId);
+        }
+      });
+    });
+  }, 50);
+
+  // Bind hadith-book EN pill clicks: open MONASTIC filtered to that book + concept.
+  setTimeout(function(){
+    document.querySelectorAll('.tk-hadith-pill').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        var hc=this.getAttribute('data-hcoll');
+        var sl=this.getAttribute('data-concept');
+        var tabs=document.querySelectorAll('#tabRow1 button,#tabRow1 a,#tabRow2 button,#tabRow2 a,[data-view="monastic"],.tab-monastic');
+        for(var i=0;i<tabs.length;i++){
+          var elx=tabs[i];
+          var txt=(elx.textContent||'').trim().toUpperCase();
+          var dv=elx.getAttribute('data-view')||'';
+          if(txt==='MONASTIC'||dv==='monastic'){ elx.click(); break; }
+        }
+        var tries=0;
+        var iv=setInterval(function(){
+          tries++;
+          if(typeof window._monShowBookConcept==='function'){
+            try{ window._monShowBookConcept(hc, sl); }catch(err){}
+            clearInterval(iv); return;
+          }
+          if(tries>80){ clearInterval(iv); }
+        }, 80);
+      });
+    });
+  }, 50);
 
   // Bind START pill clicks: pin verses for the concept and switch to START view.
   setTimeout(function(){

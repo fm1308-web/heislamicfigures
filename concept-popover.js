@@ -61,6 +61,8 @@ function _open(slug, anchorEl){
         var verses  = (GC.getVersesForConcept(slug) || []).slice();
         var title   = (summary && (summary.title || summary.name)) || slug;
         var inThink = THINK_SLUGS.has(slug);
+        var _hslot  = (anchorEl && anchorEl.closest) ? anchorEl.closest('.hadith-xref-slot') : null;
+        var _hcoll  = _hslot ? (_hslot.getAttribute('data-hcoll') || '') : '';
 
         var html = '<button class="gcp-close" type="button">×</button>';
         html += '<div class="gcp-title' + (inThink ? '' : ' gcp-title-dim') + '">' + _esc(title) + '</div>';
@@ -68,29 +70,21 @@ function _open(slug, anchorEl){
 
         if(verses.length){
           html += '<div class="gcp-section-hdr">Quran Links (' + verses.length + ')</div>';
-          html += '<div class="gcp-verse-grid">';
-          verses.forEach(function(raw){
-            var v = _normVerse(raw);
-            if(!v) return;
-            var sc = v.score;
-            var scColors = {1:'rgba(212,175,55,0.45)',2:'rgba(212,175,55,0.7)',3:'#d4af37',4:'#e8c547',5:'#f5d24a'};
-            var scBold = sc >= 4 ? 'font-weight:700;' : '';
-            var scoreHtml = sc ? '<span class="gcp-verse-score" style="color:' + (scColors[sc] || '#d4af37') + ';' + scBold + 'margin-left:4px;font-size:10px">' + sc + '</span>' : '';
-            html += '<span class="gcp-verse-chip" data-surah="' + v.surah + '" data-verse="' + v.verse + '">' + v.surah + ':' + v.verse + scoreHtml + '</span>';
-          });
-          html += '</div>';
-          if(verses.length > 1){
-            html += '<button class="gcp-seeall ga-cc-seeall" type="button" data-slug="' + _esc(slug) + '">See All ' + verses.length + ' →</button>';
-          }
+          html += '<button class="gcp-explore gcp-seeall ga-cc-seeall" type="button" data-slug="' + _esc(slug) + '">Explore ' + verses.length + ' verses on the concept ▶</button>';
         } else {
           html += '<div class="gcp-section-hdr">Quran Links</div>';
           html += '<div class="gcp-empty">No tagged verses yet.</div>';
         }
 
         if(inThink){
-          html += '<button class="gcp-explore" type="button" data-slug="' + _esc(slug) + '">Explore Concept in THINK ▶</button>';
+          html += '<button class="gcp-explore gcp-think" type="button" data-slug="' + _esc(slug) + '">Explore Concept in THINK ▶</button>';
         } else {
           html += '<button class="gcp-explore gcp-explore-disabled" type="button" disabled title="Not yet in THINK view">Explore Concept (unavailable)</button>';
+        }
+        if(_hcoll){
+          html += '<button class="gcp-explore gcp-bookhadith" type="button" data-slug="' + _esc(slug) + '" data-hcoll="' + _esc(_hcoll) + '">See hadith in this book with this concept ▶</button>';
+        } else if(verses.length){
+          html += '<button class="gcp-explore gcp-tafsirs ga-cc-tafsirs" type="button" data-slug="' + _esc(slug) + '">See this concept in this tafsir ▶</button>';
         }
 
         EL = document.createElement('div');
@@ -137,7 +131,7 @@ function _open(slug, anchorEl){
           });
         });
 
-        var explore = EL.querySelector('.gcp-explore');
+        var explore = EL.querySelector('.gcp-think');
         if(explore && !explore.disabled){
           explore.addEventListener('click', function(){
             var sl = explore.dataset.slug;
@@ -160,6 +154,7 @@ function _open(slug, anchorEl){
           seeAll.addEventListener('click', function(){
             var sl = seeAll.dataset.slug;
             var pinList = (verses || []).map(_normVerse).filter(function(x){ return x; });
+            try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
             window._stPendingPinnedVerses = { slug: sl, label: title, verses: pinList };
             _close();
             var tabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
@@ -170,6 +165,30 @@ function _open(slug, anchorEl){
               if(txt==='START' || dv==='start'){ el.click(); return; }
             }
             if(typeof window.setView === 'function') window.setView('start');
+          });
+        }
+
+        var seeTafsirs = EL.querySelector('.gcp-tafsirs');
+        if(seeTafsirs){
+          seeTafsirs.addEventListener('click', function(){
+            var sl = seeTafsirs.dataset.slug;
+            var pinList = (verses || []).map(_normVerse).filter(function(x){ return x; });
+            _close();
+            if(typeof window._exOpenConceptTafsirs === 'function'){
+              window._exOpenConceptTafsirs(sl, title, pinList);
+            }
+          });
+        }
+
+        var seeBookHadith = EL.querySelector('.gcp-bookhadith');
+        if(seeBookHadith){
+          seeBookHadith.addEventListener('click', function(){
+            var sl = seeBookHadith.dataset.slug;
+            var hc = seeBookHadith.dataset.hcoll;
+            _close();
+            if(typeof window._monShowBookConcept === 'function'){
+              window._monShowBookConcept(hc, sl);
+            }
           });
         }
 

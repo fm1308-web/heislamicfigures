@@ -63,6 +63,15 @@ function navForward(){
   }
   setActiveTab(entry.tab, { skipHistory: true, restoreData: entry });
 }
+window._navCaptureCurrent = function(){
+  try {
+    navHistory.back.push(_captureCurrent());
+    if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
+    navHistory.forward = [];
+    _updateNavButtons();
+  } catch(e){}
+};
+
 window.userTier = 'visitor';
 window.userRole = 'user';
 

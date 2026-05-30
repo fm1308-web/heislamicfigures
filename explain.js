@@ -204,7 +204,25 @@ function _exBuildLinkChipsHtml(edition, surah, verse){
       events = (_exEventsByTafsirVerse && _exEventsByTafsirVerse[altKey]) || [];
     }
   }
-  var hasAny = figs.length || places.length || books.length || events.length;
+  // Verse-level concepts (belong to the verse, not the edition).
+  var cdat = [];
+  var _exGC = window.GoldArkConcepts;
+  if(_exGC){
+    var _exQbv = _exGC.cache && _exGC.cache.quranByVerse;
+    if(!_exQbv){
+      _exGC.loadQuranTags(function(){ if(_exState && _exState.edition && _exState.loadedSurahData) _exRenderCards(_exState.loadedSurahData); });
+    } else {
+      var _exVrow = _exQbv[String(surah) + ':' + String(verse)];
+      if(Array.isArray(_exVrow)){
+        cdat = _exVrow.map(function(it){
+          if(Array.isArray(it)) return it[0];
+          if(it && typeof it === 'object') return it.slug || it.concept_id || it.concept || it.id;
+          return String(it || '');
+        }).filter(function(s){ return s; });
+      }
+    }
+  }
+  var hasAny = figs.length || places.length || books.length || events.length || cdat.length;
   if(!hasAny){
     return '<div class="ex-c-link-empty">No cross-references<br>for this verse</div>';
   }
@@ -264,14 +282,8 @@ function _exBuildLinkChipsHtml(edition, surah, verse){
         + '</div>';
     });
   }
-  // CONCEPTS
-  var cdat = _exConceptsForward && _exConceptsForward[tafsirId] && _exConceptsForward[tafsirId][String(surah)] && _exConceptsForward[tafsirId][String(surah)][String(verse)];
-  if(!cdat && _exConceptsForward && edition && edition.work_id){
-    var enEdC = EX_TAFSIR_REGISTRY.find(function(t){ return t.work_id === edition.work_id && t.lang === 'EN'; });
-    if(enEdC && enEdC.id !== tafsirId){
-      cdat = _exConceptsForward[enEdC.id] && _exConceptsForward[enEdC.id][String(surah)] && _exConceptsForward[enEdC.id][String(surah)][String(verse)];
-    }
-  }
+  // CONCEPTS — verse-level. Concepts belong to the verse, not the tafsir
+  // edition, so every edition shows the same concepts for the same verse.
   if(cdat && cdat.length){
     html += '<div class="ex-c-link-hdr">CONCEPTS</div>';
     cdat.forEach(function(c){
@@ -281,7 +293,7 @@ function _exBuildLinkChipsHtml(edition, surah, verse){
       var label = meta ? (meta.name || meta.english_name || meta.display_name || meta.label || cid) : cid;
       var titleAttr = label;
       if(typeof c === 'object' && c.count != null) titleAttr += ' · count ' + c.count;
-      html += '<span class="ex-c-link-chip ex-c-link-concept" onclick="window._exClickConcept(\''+_exEsc(cid)+'\')" title="'+_exEsc(titleAttr)+'" style="background:rgba(120,200,180,0.10);color:#78c8b4;border:1px solid rgba(120,200,180,0.45)">'+_exEsc(label)+'</span>';
+      html += '<span class="ex-c-link-chip ex-c-link-concept" onclick="window._exConceptPopup(\''+_exEsc(cid)+'\', this)" title="'+_exEsc(titleAttr)+'" style="background:rgba(120,200,180,0.10);color:#78c8b4;border:1px solid rgba(120,200,180,0.45)">'+_exEsc(label)+'</span>';
     });
   }
   return html;
@@ -344,6 +356,15 @@ window._exNavSurah = function(dir){
   if(typeof _exRenderReader === 'function') _exRenderReader();
   var body = document.querySelector('#explain-view .ex-body');
   if(body) body.scrollTop = 0;
+};
+
+window._exConceptPopup = function(cid, anchorEl){
+  if(!cid) return;
+  if(window.GoldArkConceptPop && typeof window.GoldArkConceptPop.open === 'function'){
+    window.GoldArkConceptPop.open(cid, anchorEl);
+  } else {
+    window._exClickConcept(cid);
+  }
 };
 
 window._exClickConcept = function(cid){
@@ -437,7 +458,7 @@ window._exClickBookCard = function(el, ev){
 };
 var _pinnedTafsirs = null;  // { entries: [{tafsir, surah, verse}], label: '' }
 
-var EX_TAFSIR_REGISTRY = [
+window.EX_TAFSIR_REGISTRY = [
   {id:"ar-tafsir-ibn-kathir",          work:"Tafsir Ibn Kathir",                 work_id:"ibn-kathir",    author:"Ibn Kathir",               fcode:"F0741", lang:"AR", tradition:"sunni-classical", partial:false},
   {id:"en-tafisr-ibn-kathir",          work:"Tafsir Ibn Kathir",                 work_id:"ibn-kathir",    author:"Ibn Kathir",               fcode:"F0741", lang:"EN", tradition:"sunni-classical", partial:false},
   {id:"ur-tafseer-ibn-e-kaseer",       work:"Tafsir Ibn Kathir",                 work_id:"ibn-kathir",    author:"Ibn Kathir",               fcode:"F0741", lang:"UR", tradition:"sunni-classical", partial:false},
@@ -1678,5 +1699,79 @@ function _exBuildDOM(container){
       }, 400);
     }
   }
+window._exOpenConceptTafsirs = function(slug, label, verses, editionId){
+  window._exPinnedConcept = { slug: slug, label: label || slug, verses: (verses || []) };
+  if(editionId){
+    var _pick = EX_TAFSIR_REGISTRY.find(function(t){ return t.id === editionId; });
+    if(_pick){ _exState.edition = _pick; }
+  }
+  // Go to EXPLAIN tab.
+  var tabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="explain"], .tab-explain');
+  for(var i=0;i<tabs.length;i++){
+    var el=tabs[i];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='EXPLAIN'||dv==='explain'){ el.click(); break; }
+  }
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    if(typeof window.initExplain === 'function' && document.getElementById('explain-view')){
+      // If no tafsir open yet, open the first English edition as default.
+      if(!_exState.edition){
+        var def = EX_TAFSIR_REGISTRY.find(function(t){ return t.lang==='EN'; }) || EX_TAFSIR_REGISTRY[0];
+        if(def){ _exState.edition = def; }
+      }
+      _exRenderConceptPins();
+      clearInterval(iv); return;
+    }
+    if(tries>80){ clearInterval(iv); }
+  }, 80);
+};
+
+function _exRenderConceptPins(){
+  var pin = window._exPinnedConcept;
+  if(!pin || !pin.verses || !pin.verses.length) return;
+  // Normalise verses to {surah,verse}.
+  var list = pin.verses.map(function(v){
+    if(Array.isArray(v)){
+      if(typeof v[0]==='string' && v[0].indexOf(':')>0){ var p=v[0].split(':'); return {surah:+p[0],verse:+p[1]}; }
+      return {surah:+v[0],verse:+v[1]};
+    }
+    if(v && typeof v==='object'){ return {surah:+(v.surah||v.s),verse:+(v.verse||v.v)}; }
+    if(typeof v==='string' && v.indexOf(':')>0){ var q=v.split(':'); return {surah:+q[0],verse:+q[1]}; }
+    return null;
+  }).filter(function(x){ return x && x.surah && x.verse; });
+  if(!list.length) return;
+  // Open the surah of the first pin in the current tafsir.
+  var first = list[0];
+  _exState.surah = first.surah;
+  _exState.verse = first.verse;
+  _exRenderReader();
+  // Mount the pin row after the reader head.
+  setTimeout(function(){
+    var head = document.querySelector('#explain-view .ex-reader-head');
+    if(!head) return;
+    var existing = document.getElementById('ex-concept-pins'); if(existing) existing.remove();
+    var row = document.createElement('div');
+    row.id = 'ex-concept-pins';
+    row.style.cssText = 'padding:10px 14px;border-bottom:1px dashed #2a3344';
+    var chips = list.map(function(x){
+      return '<button class="ex-cp-pill" data-surah="'+x.surah+'" data-verse="'+x.verse+'" style="background:rgba(120,200,180,0.10);color:#78c8b4;border:1px solid rgba(120,200,180,0.45);border-radius:14px;padding:3px 12px;font-size:12px;cursor:pointer;font-family:Lato,sans-serif;margin:0 6px 6px 0">'+x.surah+':'+x.verse+'</button>';
+    }).join('');
+    row.innerHTML = '<div style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.08em;color:#9aa3b2;text-transform:uppercase;margin-bottom:6px">Tafsir for: '+_exEsc(pin.label)+'</div><div style="display:flex;flex-wrap:wrap">'+chips+'</div><button id="ex-cp-clear" style="margin-top:4px;background:transparent;color:#9aa3b2;border:1px solid #3a4658;border-radius:14px;padding:3px 12px;font-size:11px;cursor:pointer;font-family:Lato,sans-serif">Clear</button>';
+    head.parentNode.insertBefore(row, head.nextSibling);
+    row.querySelectorAll('.ex-cp-pill').forEach(function(b){
+      b.addEventListener('click', function(){
+        var s=+b.getAttribute('data-surah'), v=+b.getAttribute('data-verse');
+        if(s!==_exState.surah){ _exState.surah=s; _exState.verse=v; _exState.pendingScrollVerse=v; _exRenderReader(); }
+        else { _exScrollToVerse(v); }
+      });
+    });
+    var clr=document.getElementById('ex-cp-clear');
+    if(clr) clr.addEventListener('click', function(){ window._exPinnedConcept=null; row.remove(); });
+  }, 60);
+}
+
   return { mount: _exMount, unmount: _exUnmount, showHtw: _exShowHtw, captureState: _exCaptureState, restoreState: _exRestoreState };
 })();

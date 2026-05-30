@@ -60,9 +60,16 @@ function getForVerse(surah, verse){
 // Look up concepts for a hadith. Handles two shapes:
 //   flat:   { "sahih-bukhari-1": [slug,...] }
 //   nested: { "sahih-bukhari": { "1": [slug,...] } }
+var H_COLL_ALIAS = {
+  bukhari:'sahih-bukhari', muslim:'sahih-muslim', abudawud:'abu-dawood',
+  tirmidhi:'al-tirmidhi', nasai:'sunan-nasai', ibnmajah:'ibn-e-majah',
+  'sunan-abi-daud':'abu-dawood', 'jami-al-tirmidhi':'al-tirmidhi',
+  'sunan-an-nasai':'sunan-nasai', 'sunan-ibn-majah':'ibn-e-majah'
+};
 function getForHadith(coll, num){
   if(!CACHE.hadithByKey) return [];
   var d = CACHE.hadithByKey;
+  coll = H_COLL_ALIAS[coll] || coll;
   var raw = d[coll + '-' + num];
   if(!raw && d[coll] && typeof d[coll] === 'object'){ raw = d[coll][num]; }
   if(!raw) return [];

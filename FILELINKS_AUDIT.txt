@@ -1,0 +1,437 @@
+FILE LINKS AUDIT - bv-app/
+Read-only scan. Each entry: line number -> referenced link.
+=======================================================
+
+## _backups\app_pre-eras-bands.js
+  line 126: https://en.wikipedia.org/api/rest_v1/page/summary/
+  line 250: data/islamic/core.json
+  line 251: ./data/islamic/core.json
+  line 253: data/islamic/name_variants.json
+  line 915: >⟵ ${esc(t)}</span>`).join(
+  line 925: >▶ ${esc(s.famous)}</span>`).join(
+  line 1070: https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}
+
+## _backups\index_2026-03-29.html
+  line 7: https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap
+  line 8: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css
+  line 1134: https://en.wikipedia.org/api/rest_v1/page/summary/
+  line 1258: data/islamic/core.json
+  line 1259: ./data/islamic/core.json
+  line 1261: data/islamic/name_variants.json
+  line 2068: >⟵ ${esc(t)}</span>`).join(
+  line 2078: >▶ ${esc(s.famous)}</span>`).join(
+  line 2223: https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}
+  line 2642: ${(PRE_W/2).toFixed(1)}
+  line 2730: http://www.w3.org/2000/svg
+  line 3068: >⟵ ${esc(t)}</span>`).join(
+  line 3074: >▶ ${esc(s.famous)}</span>`).join(
+  line 3563: >⟵ ${esc(t)}</span>`).join(
+  line 3568: >▶ ${esc(s.famous)}</span>`).join(
+  line 3720: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js
+  line 3724: https://unpkg.com/leaflet@1.9.4/dist/leaflet.js
+  line 3745: https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png
+  line 3752: https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson
+  line 3762: https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png
+
+## _backups\index_pre-eras.html
+  line 7: https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap
+  line 8: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css
+  line 9: styles.css
+  line 265: app.js
+  line 266: study.js
+  line 267: silsila.js
+  line 268: map.js
+  line 269: chatbot.js
+
+## _backups\index_pre-split.html
+  line 7: https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap
+  line 8: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css
+  line 1134: https://en.wikipedia.org/api/rest_v1/page/summary/
+  line 1258: data/islamic/core.json
+  line 1259: ./data/islamic/core.json
+  line 1261: data/islamic/name_variants.json
+  line 2070: >⟵ ${esc(t)}</span>`).join(
+  line 2080: >▶ ${esc(s.famous)}</span>`).join(
+  line 2225: https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}
+  line 2644: ${(PRE_W/2).toFixed(1)}
+  line 2732: http://www.w3.org/2000/svg
+  line 3070: >⟵ ${esc(t)}</span>`).join(
+  line 3076: >▶ ${esc(s.famous)}</span>`).join(
+  line 3565: >⟵ ${esc(t)}</span>`).join(
+  line 3570: >▶ ${esc(s.famous)}</span>`).join(
+  line 3722: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js
+  line 3726: https://unpkg.com/leaflet@1.9.4/dist/leaflet.js
+  line 3747: https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png
+  line 3754: https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson
+  line 3764: https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png
+  line 3986: Welcome to <strong>Ask Me</strong> \u2014 your AI-powered Islamic history assistant.<br><br>
+  line 4173: https://api.anthropic.com/v1/messages
+
+## auth.js
+  line 5: https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js
+  line 10: https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js
+  line 14: https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js
+
+## books.js
+  line 119: data/islamic/xref/tafsir_xref_books.json
+  line 137: data/islamic/concepts/concept_reverse_books.json
+  line 138: data/islamic/concepts/concept-canon.json
+  line 256: data/islamic/books.json
+  line 260: data/openiti/books_openiti.json
+  line 271: data/islamic/core.json
+  line 329: data/islamic/name_variants.json
+  line 355: data/islamic/ancient_books.json
+  line 625: http://www.w3.org/2000/svg
+  line 1184: data/islamic/core.json
+  line 1344: data/islamic/xref/tafsir_xref_books.json
+  line 1367: data/islamic/concepts/concept_reverse_books.json
+  line 1368: data/islamic/concepts/concept-canon.json
+
+## concept-popover.js
+  line 44: data/islamic/think/think.json
+
+## concepts.js
+  line 36: concept_tags_quran.json
+  line 37: concept_reverse_quran.json
+  line 38: concept_tags_hadith_wordmatch.json
+  line 39: concept_reverse_hadith_wordmatch.json
+  line 40: concept-summaries.json
+  line 41: concept-hierarchy.json
+
+## config.js
+  line 4: https://gold-ark-data.hooman-92b.workers.dev
+
+## dive.js
+  line 67: .json
+
+## eras.js
+  line 114: data/islamic/figures_tag_v2.json
+  line 115: data/islamic/figures_tag_v2.json
+  line 541: http://www.w3.org/2000/svg
+  line 893: <li><b>HIGH</b> — strongest evidence. Well-attested in primary sources, central to the figure\
+  line 1001: data/islamic/core.json
+  line 1007: data/islamic/events/master.json
+
+## events.js
+  line 64: data/islamic/xref/tafsir_xref_events.json
+  line 262: data/islamic/event_hadith_chips.json
+  line 833: data/islamic/core.json
+  line 839: data/islamic/events/master.json
+
+## explain.js
+  line 73: data/islamic/books.json
+  line 112: data/islamic/xref/tafsir_xref_forward.json
+  line 124: data/islamic/xref/tafsir_xref_events.json
+  line 143: data/islamic/concepts/concept_forward_tafsir.json
+  line 155: data/islamic/concepts/concept-canon.json
+  line 490: data/islamic/xref/tafsir_xref_english.json
+  line 574: .json
+  line 1523: data/islamic/core.json
+
+## export.js
+  line 5: https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
+  line 6: https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+  line 185: .png
+  line 203: .pdf
+  line 221: .pdf
+
+## follow.js
+  line 106: prophet-muhammad.json
+  line 111: prophet-muhammad.json
+  line 226: data/islamic/journeys/index.json
+  line 1090: https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
+  line 1100: https://unpkg.com/leaflet@1.9.4/dist/leaflet.js
+  line 1158: data/islamic/core.json
+  line 1165: data/islamic/name_variants.json
+  line 1190: mapbase.js
+  line 1191: anim.js
+
+## gate.js
+  line 19: https://buy.stripe.com/9B63cufrZg4n15xb1v8so02
+
+## i18n.js
+  line 7: https://gold-ark-data.hooman-92b.workers.dev/data/islamic/translations
+  line 8: /manifest.json
+  line 556: .json
+
+## index.html
+  line 7: assets/favicon.ico
+  line 8: assets/icon-512.png
+  line 9: assets/apple-touch-icon.png
+  line 10: https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap
+  line 11: shell.css
+  line 12: https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
+  line 13: https://unpkg.com/leaflet@1.9.4/dist/leaflet.js
+  line 14: config.js
+  line 15: mapbase.js
+  line 16: anim.js
+  line 17: morphology.js
+  line 19: auth.js
+  line 20: gate.js
+  line 21: feedback.js
+  line 22: https://unpkg.com/dom-to-image-more@3.5.0/dist/dom-to-image-more.min.js
+  line 23: snapshot.js
+  line 24: export.js
+  line 25: share.js
+  line 26: concepts.js
+  line 27: concept-popover.js
+  line 49: data/islamic/quran/quran_xref.json
+  line 73: i18n.js
+  line 83: assets/gold-ark-logo.png
+  line 108: assets/gold-ark-logo-text.png
+  line 179: nameVariants.js
+  line 180: shell.js
+  line 181: tour.js
+
+## map.js
+  line 52: https://{s}.basemaps.cartocdn.com/positron_no_labels/{z}/{x}/{y}{r}.png
+  line 53: https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png
+  line 54: https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson
+  line 81: data/islamic/empire_overlays.json
+  line 418: data/islamic/xref/tafsir_xref_places.json
+  line 467: >⟵ ${esc(t)}</span>`).join(
+  line 472: >▶ ${esc(s.famous)}</span>`).join(
+  line 486: https://en.wikipedia.org/wiki/${encodeURIComponent(window._wikidata[p.slug].wikipedia.en.replace(/ /g,
+  line 567: http://www.w3.org/2000/svg
+  line 697: http://www.w3.org/2000/svg
+  line 855: data/islamic/empire_overlays.json
+  line 975: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js
+  line 979: https://unpkg.com/leaflet@1.9.4/dist/leaflet.js
+  line 998: https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png
+  line 1003: https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson
+  line 1009: https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png
+  line 1100: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css
+  line 1192: data/islamic/core.json
+  line 1451: data/islamic/core.json
+
+## mapbase.js
+  line 10: https://{s}.basemaps.cartocdn.com/positron_no_labels/{z}/{x}/{y}{r}.png
+  line 11: https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png
+  line 12: https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson
+  line 68: data/islamic/empire_overlays.json
+
+## monastic.js
+  line 50: data/islamic/hadith/sahih-bukhari.json
+  line 51: data/islamic/hadith/sahih-muslim.json
+  line 55: data/islamic/hadith/ibn-e-majah.json
+  line 57: data/islamic/hadith/muwatta-malik.json
+  line 58: data/islamic/hadith/musnad-ahmad.json
+  line 59: data/islamic/hadith/sunan-ad-darimi.json
+  line 60: data/islamic/hadith/riyad-as-salihin.json
+  line 61: data/islamic/hadith/shamail-al-muhammadiyah.json
+  line 62: data/islamic/hadith/bulugh-al-maram.json
+  line 63: data/islamic/hadith/al-adab-al-mufrad.json
+  line 64: data/islamic/hadith/mishkat-al-masabih.json
+  line 65: data/islamic/hadith/40-hadith-nawawi.json
+  line 66: data/islamic/hadith/40-hadith-qudsi.json
+  line 67: data/islamic/hadith/40-hadith-shahwaliullah.json
+  line 69: data/islamic/hadith/al-amali-mufid.json
+  line 70: data/islamic/hadith/al-amali-saduq.json
+  line 72: data/islamic/hadith/al-kafi-volume-1-kulayni.json
+  line 73: data/islamic/hadith/al-kafi-volume-2-kulayni.json
+  line 74: data/islamic/hadith/al-kafi-volume-3-kulayni.json
+  line 75: data/islamic/hadith/al-kafi-volume-4-kulayni.json
+  line 76: data/islamic/hadith/al-kafi-volume-5-kulayni.json
+  line 77: data/islamic/hadith/al-kafi-volume-6-kulayni.json
+  line 78: data/islamic/hadith/al-kafi-volume-7-kulayni.json
+  line 79: data/islamic/hadith/al-kafi-volume-8-kulayni.json
+  line 81: data/islamic/hadith/al-khisal-saduq.json
+  line 82: data/islamic/hadith/al-tawhid-saduq.json
+  line 83: data/islamic/hadith/fadail-al-shia-saduq.json
+  line 85: data/islamic/hadith/kamil-al-ziyarat-qummi.json
+  line 88: data/islamic/hadith/kitab-al-zuhd-ahwazi.json
+  line 90: data/islamic/hadith/man-la-yahduruh-al-faqih-volume-1-saduq.json
+  line 91: data/islamic/hadith/man-la-yahduruh-al-faqih-volume-2-saduq.json
+  line 92: data/islamic/hadith/man-la-yahduruh-al-faqih-volume-3-saduq.json
+  line 93: data/islamic/hadith/man-la-yahduruh-al-faqih-volume-4-saduq.json
+  line 2651: data/islamic/hadith/support/narrator_index.json
+  line 2748: data/islamic/hadith/support/topic_index.json
+  line 2760: data/islamic/hadith/support/topic_mapping.json
+  line 3306: .json
+  line 3924: data/islamic/core.json
+
+## morphology.js
+  line 14: .json
+  line 22: data/islamic/morphology/lane_letter_index.json
+
+## one.js
+  line 125: data/islamic/wikidata.json
+  line 458: data/islamic/cross_tradition_bios.json
+  line 459: data/islamic/prophet_slug_map.json
+  line 750: data/islamic/books.json
+  line 983: https://
+  line 1281: data/islamic/concepts/concept_reverse_figures.json
+  line 1282: data/islamic/concepts/concept-canon.json
+  line 1294: data/islamic/xref/tafsir_xref_figures.json
+  line 1316: data/islamic/core.json
+  line 1322: data/islamic/name_variants.json
+  line 1414: data/islamic/xref/tafsir_xref_figures.json
+  line 1436: data/islamic/concepts/concept_reverse_figures.json
+  line 1437: data/islamic/concepts/concept-canon.json
+
+## quran-audio.js
+  line 64: https://cdn.islamic.network/quran/audio/
+
+## relations.js
+  line 24: https://gold-ark-data.hooman-92b.workers.dev/data/islamic/
+  line 25: arees/arees_figures.json
+  line 26: arees/arees_to_core_matches.json
+  line 27: core.json
+  line 28: arees/arees_enrichment.json
+  line 29: arees/arees_chain_to_prophet.json
+  line 30: /data/islamic/arees_enrichment.json
+  line 178: arees/core_to_arees_slug.json
+  line 1075: http://www.w3.org/2000/svg
+  line 1114: http://www.w3.org/2000/svg
+  line 1126: http://www.w3.org/2000/svg
+  line 1131: http://www.w3.org/2000/svg
+
+## shell.css
+  line 588: assets/boat.only.png
+
+## shell.js
+  line 171: timeline.css
+  line 171: timeline.js
+  line 172: year.css
+  line 172: year.js
+  line 173: relations.css
+  line 173: relations.js
+  line 174: follow.css
+  line 174: follow.js
+  line 175: study.css
+  line 175: study.js
+  line 176: books.css
+  line 176: books.js
+  line 177: eras.css
+  line 177: eras.js
+  line 178: events.css
+  line 178: events.js
+  line 179: think.css
+  line 179: think.js
+  line 180: map.css
+  line 180: map.js
+  line 181: talk.css
+  line 181: talk.js
+  line 182: one.css
+  line 182: one.js
+  line 183: monastic.css
+  line 183: monastic.js
+  line 184: explain.css
+  line 184: explain.js
+  line 185: start.css
+  line 185: start.js
+  line 1177: https://goldark.discourse.group
+  line 1220: https://fonts.googleapis.com/css2?family=
+
+## snapshot.js
+  line 56: .png
+
+## start.js
+  line 330: juz.json
+  line 331: hizb.json
+  line 332: manzil.json
+  line 333: length_categories.json
+  line 334: chronology_traditional.json
+  line 335: noldeke_phases.json
+  line 336: sajdah.json
+  line 337: muqattaat.json
+  line 338: surah_families.json
+  line 339: rub_al_hizb.json
+  line 340: ruku_placeholder.json
+  line 341: sajdah_positions.json
+  line 342: rub_al_hizb_positions.json
+  line 343: waqf_marks.json
+  line 408: quran_index.json
+  line 409: quran_text.json
+  line 410: data/islamic/quran/translations/registry.json
+  line 411: quran_xref.json
+  line 412: quran_revelation.json
+  line 413: reciters.json
+  line 885: .json
+  line 1292: data/islamic/concepts/verse-concepts.json
+  line 1293: data/islamic/concepts/concept-canon.json
+  line 1313: data/islamic/xref/tafsir_xref_quran.json
+  line 1340: data/islamic/xref/quran_hadith_reverse.json
+  line 1394: .json
+  line 2256: data/islamic/morphology/grammar_labels.json
+  line 2299: .json
+  line 2305: .json
+  line 3235: data/islamic/quran/translations/registry.json
+  line 3413: data/islamic/quran/translations/registry.json
+  line 4004: grid-column:1 / -1;background:rgba(14,20,32,0.85);border-left:3px solid rgba(212,175,55,0.3);margin:8px 0 16px 0;padding:14px 18px;border-radius:0 4px 4px 0
+  line 4148: data/islamic/morphology/lane_lexicon.json
+  line 4267: .json
+  line 4294: .json
+  line 4750: https://cdn.islamic.network/quran/audio/
+  line 4909: .json
+  line 4917: data/islamic/morphology/lane_letter_index.json
+  line 5462: Use Surah / Juz / Hizb / Manzil to navigate. Reciter picks the audio voice.
+  line 5464: A− / A+ adjust font size. ع / ع|T / T switch column layout.
+  line 5731: .json
+
+## study.js
+  line 67: -manifest.json
+  line 414: data/islamic/core.json
+
+## think.js
+  line 54: data/islamic/think_v2.json
+  line 55: data/islamic/think_v2.json
+  line 114: data/islamic/concepts/concept-summaries.json
+  line 115: data/islamic/concepts/concept-summaries.json
+  line 227: data/islamic/think/think.json
+  line 229: data/islamic/think/think_roles.json
+  line 232: data/islamic/think/think.json.old
+  line 239: data/islamic/books.json
+  line 242: data/islamic/think/think_ui_translations.json
+  line 441: https://fonts.googleapis.com/css2?family=Amiri&family=Noto+Nastaliq+Urdu&display=swap
+  line 948: http://www.w3.org/2000/svg
+  line 1478: data/islamic/core.json
+
+## timeline.js
+  line 762: .json
+  line 1805: data/islamic/cross_tradition_bios.json
+  line 1806: data/islamic/prophet_slug_map.json
+  line 1807: data/islamic/prophet_name_variants.json
+  line 1821: data/islamic/figure_hadith_chips.json
+  line 1918: >⟵ ${esc(_tp?_tlFigName(_tp):t)}</span>`;}).join(
+  line 1928: >▶ ${esc(_tlFigName(s))}</span>`).join(
+  line 2012: }</span>${p.dating_source?`<span class=
+  line 2013: }</span>${p.dating_source?`<span class=
+  line 2090: https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}
+  line 2671: data/islamic/core.json
+  line 2674: data/islamic/name_variants.json
+  line 2728: .json
+
+## tour.js
+  line 15: <p><strong>Gold Ark</strong> is a free interactive map of 1,400+ years of Islamic history.
+  line 27: <p>Across the top: <strong>15 views</strong>, each a different way to explore. Click any
+  line 36: <p>Below the tabs: the <strong>filter bar</strong>. Every view has its own filters —
+  line 46: 1× / 2× / 4×), and back/forward navigation. Available on views that animate
+  line 54: <p><strong>TIMELINE</strong> — figures by century.<br>
+  line 58: <strong>FOLLOW</strong> — a figure’s life journey across the map.<br>
+  line 59: <strong>STUDY</strong> — slide decks and curated videos.<br>
+  line 60: <strong>BOOKS</strong> — 2,062 books with public links to free reads.<br>
+  line 61: <strong>ERAS</strong> — visual overview of historical periods.<br>
+  line 62: <strong>EVENTS</strong> — 2,211 enriched events.<br>
+  line 63: <strong>YEAR</strong> — drill into any single year.<br>
+  line 64: <strong>THINK</strong> — concept map across 14 centuries.<br>
+  line 65: <strong>MAP</strong> — places + animate through years.<br>
+  line 66: <strong>TALK</strong> — AI conversation with scholars.<br>
+  line 67: <strong>ONE</strong> — deep figure profile.<br>
+  line 68: <strong>MONASTIC</strong> — hadith corpus.<br>
+  line 69: <strong>EXPLAIN</strong> — tafsir library.<br>
+  line 126: and journey stops. The right column shows what happened ±5/10/25/50 years around it.
+  line 185: <p>Quran text from <strong>tanzil.net</strong>. Hadith from hadithapi.com. Tafsir from the
+  line 189: AI-generated</strong>. We mark those with a small <em>AI</em> badge. Verify independently
+  line 199: >goldark.discourse.group</a>.<br>
+
+## year.js
+  line 860: data/islamic/core.json
+  line 861: data/islamic/events/master.json
+  line 862: data/islamic/books.json
+  line 863: data/islamic/hadith_year_index.json
+  line 937: data/islamic/journeys/index.json
+
+=======================================================
+Files with links: 34
+Total links found: 362
