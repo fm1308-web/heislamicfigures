@@ -874,11 +874,28 @@ function _exRenderCards(list){
           _xrefHtml += '<span class="ex-c-link-chip" onclick="window._exJumpToStart(' + p[0] + ',' + p[1] + ')" style="color:#8fd4b5;border-color:rgba(143,212,181,0.5);cursor:pointer">' + _exEsc(sv) + '</span>';
         });
       }
-      if(_xc.concepts && _xc.concepts.length){
+      // CONCEPTS — read from the L3 verse tags (concept_tags_quran),
+      // unioned across this card's verse range. Replaces the old
+      // keyword-match concepts so EXPLAIN matches THINK/MONASTIC.
+      var _l3Concepts = [];
+      try {
+        var _exGC2 = window.GoldArkConcepts;
+        if(_exGC2 && typeof _exGC2.getForVerse === 'function'){
+          var _seen = {};
+          for(var _vv = start; _vv <= end; _vv++){
+            var _cs = _exGC2.getForVerse(_exState.surah, _vv) || [];
+            for(var _ci = 0; _ci < _cs.length; _ci++){
+              var _sl = _cs[_ci].slug;
+              if(_sl && !_seen[_sl]){ _seen[_sl] = 1; _l3Concepts.push(_sl); }
+            }
+          }
+        }
+      } catch(e){}
+      if(_l3Concepts.length){
         _xrefHtml += '<div class="ex-c-link-hdr">CONCEPTS</div>';
-        _xc.concepts.slice(0, 12).forEach(function(slug){
+        _l3Concepts.slice(0, 12).forEach(function(slug){
           var lbl = String(slug).replace(/-/g, ' ');
-          _xrefHtml += '<span class="ga-concept-chip" data-concept="' + _exEsc(slug) + '" style="display:inline-block;margin:2px 4px 2px 0">' + _exEsc(lbl) + '<span class="ga-cc-sup">M</span></span>';
+          _xrefHtml += '<span class="ga-concept-chip" data-concept="' + _exEsc(slug) + '" style="display:inline-block;margin:2px 4px 2px 0">' + _exEsc(lbl) + '</span>';
         });
       }
 

@@ -1024,9 +1024,22 @@ function _renderCanvas(){
           if(typeof v==='string' && v.indexOf(':')>0){var pp=v.split(':');return {surah:+pp[0],verse:+pp[1]};}
           return null;
         }).filter(function(x){return x && x.surah && x.verse;});
-        if(typeof window._exOpenConceptTafsirs==='function'){
-          window._exOpenConceptTafsirs(sl, label, pinList, edId);
+        var _exTabs=document.querySelectorAll('#tabRow1 button,#tabRow1 a,#tabRow2 button,#tabRow2 a,[data-view="explain"],.tab-explain');
+        for(var _i=0;_i<_exTabs.length;_i++){
+          var _ex=_exTabs[_i];
+          var _t=(_ex.textContent||'').trim().toUpperCase();
+          var _d=_ex.getAttribute('data-view')||'';
+          if(_t==='EXPLAIN'||_d==='explain'){ _ex.click(); break; }
         }
+        var _etries=0;
+        var _eiv=setInterval(function(){
+          _etries++;
+          if(typeof window._exOpenConceptTafsirs==='function'){
+            try{ window._exOpenConceptTafsirs(sl, label, pinList, edId); }catch(err){}
+            clearInterval(_eiv); return;
+          }
+          if(_etries>80){ clearInterval(_eiv); }
+        }, 80);
       });
     });
   }, 50);

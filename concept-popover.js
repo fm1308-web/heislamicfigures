@@ -174,9 +174,22 @@ function _open(slug, anchorEl){
             var sl = seeTafsirs.dataset.slug;
             var pinList = (verses || []).map(_normVerse).filter(function(x){ return x; });
             _close();
-            if(typeof window._exOpenConceptTafsirs === 'function'){
-              window._exOpenConceptTafsirs(sl, title, pinList);
+            var _exTabs=document.querySelectorAll('#tabRow1 button,#tabRow1 a,#tabRow2 button,#tabRow2 a,[data-view="explain"],.tab-explain');
+            for(var _i=0;_i<_exTabs.length;_i++){
+              var _ex=_exTabs[_i];
+              var _t=(_ex.textContent||'').trim().toUpperCase();
+              var _d=_ex.getAttribute('data-view')||'';
+              if(_t==='EXPLAIN'||_d==='explain'){ _ex.click(); break; }
             }
+            var _etries=0;
+            var _eiv=setInterval(function(){
+              _etries++;
+              if(typeof window._exOpenConceptTafsirs === 'function'){
+                try{ window._exOpenConceptTafsirs(sl, title, pinList); }catch(err){}
+                clearInterval(_eiv); return;
+              }
+              if(_etries>80){ clearInterval(_eiv); }
+            }, 80);
           });
         }
 
