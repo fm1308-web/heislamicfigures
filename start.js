@@ -5638,6 +5638,7 @@ function _stSrchNormArabic(s){
 function _stSrchNormLatin(s){ return (s||'').toLowerCase(); }
 
 function _stSrchNormFor(slug){
+  if(slug==='arabic') return _stSrchNormArabic;
   for(var i=0;i<_stTransIndex.length;i++){
     if(_stTransIndex[i].slug===slug){
       return _stTransIndex[i].direction==='rtl' ? _stSrchNormArabic : _stSrchNormLatin;

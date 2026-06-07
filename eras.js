@@ -400,7 +400,12 @@ function _evCollectTypes(){
     });
     return { name: tag, count: slugs.size, minDob: (minDob == null ? Infinity : minDob) };
   });
-  out.sort(function(a,b){ return a.minDob - b.minDob; });
+  out.sort(function(a,b){
+    if(a.name==='prophet' && b.name!=='prophet') return -1;
+    if(b.name==='prophet' && a.name!=='prophet') return 1;
+    if(a.minDob !== b.minDob) return a.minDob - b.minDob;
+    return a.name.localeCompare(b.name);
+  });
   return out;
 }
 function _evCollectTrads(){
