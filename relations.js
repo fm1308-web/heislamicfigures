@@ -800,8 +800,9 @@ function renderBlock(f, seq, lvl, connKind){
       ['companion', 'Companions', counts.companions || 0],
       ['wife',      'Wives',      counts.wives || 0],
       ['family',    'Family',     counts.family],
-      ['sibling',   'Siblings',   counts.siblings],
-      ['narration', 'Narrations', counts.narrations]
+      ['sibling',   'Siblings',   counts.siblings]
+      // TEMP: Narrations tile hidden until narration data is linked
+      // ['narration', 'Narrations', counts.narrations]
     ];
     var nonZero = '';
     for(var n=0;n<nodeList.length;n++){
@@ -1053,6 +1054,53 @@ function drawConnectors(){
   svg.style.height = view.scrollHeight + 'px';
   svg.innerHTML = '';
 
+  // Shared label placer with vertical collision-avoidance: no two relation
+  // labels ever overlap. Registry resets each draw.
+  var _placedLabelBoxes = [];
+  var _labelQueue = [];
+  function _placeRelLabel(x, y, text, color, strokeOpacity){
+    var t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('dominant-baseline','middle');
+    t.setAttribute('font-size','11');
+    t.setAttribute('font-family',"'Source Sans 3',sans-serif");
+    t.setAttribute('fill',color);
+    t.setAttribute('opacity','0.9');
+    t.setAttribute('pointer-events','none');
+    t.setAttribute('x', x.toFixed(1));
+    t.setAttribute('y', y.toFixed(1));
+    t.textContent = text;
+    svg.appendChild(t);
+    var bb; try { bb = t.getBBox(); } catch(e){ return; }
+    var pad = 4;
+    function hit(by){
+      for(var k=0;k<_placedLabelBoxes.length;k++){
+        var o = _placedLabelBoxes[k];
+        if(bb.x < o.x+o.w+pad && bb.x+bb.width+pad > o.x &&
+           by < o.y+o.h+pad && by+bb.height+pad > o.y) return true;
+      }
+      return false;
+    }
+    var yy = bb.y, tries = 0, dir = 1, step = 0;
+    while(hit(yy) && tries < 60){ step += 7; dir = -dir; yy = bb.y + dir*step; tries++; }
+    var shift = yy - bb.y;
+    if(shift){ t.setAttribute('y', (y + shift).toFixed(1)); }
+    var _px=6,_py=2;
+    var rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',(bb.x-_px).toFixed(1));
+    rect.setAttribute('y',(yy-_py).toFixed(1));
+    rect.setAttribute('width',(bb.width+_px*2).toFixed(1));
+    rect.setAttribute('height',(bb.height+_py*2).toFixed(1));
+    rect.setAttribute('rx','3');
+    rect.setAttribute('fill','#0E1621');
+    rect.setAttribute('stroke',color);
+    rect.setAttribute('stroke-opacity', String(strokeOpacity || 0.4));
+    rect.setAttribute('opacity','0.85');
+    rect.setAttribute('pointer-events','none');
+    svg.insertBefore(rect, t);
+    _placedLabelBoxes.push({x:bb.x-_px, y:yy-_py, w:bb.width+_px*2, h:bb.height+_py*2});
+  }
+
   // ── ONE continuous gold line connecting pill edges, NEVER inside a pill ──
   // Same row: short segment from right-edge of pill A to left-edge of pill B,
   // drawn at row.cy (in the column gap only — pills are opaque rectangles, so
@@ -1155,6 +1203,58 @@ function drawConnectors(){
   }
   _gutterX += 50;
 
+  // ── Cross-connections: arcs between NON-adjacent drill levels that have a
+  // direct relation (e.g. a deep figure who is also the Prophet's cousin).
+  // Drawn BEFORE the sequential arcs so they sit behind. Dashed + gold + dimmer.
+  var crossPairs = [];
+  for(var ci=0; ci<DRILL.length; ci++){
+    for(var cj=ci+2; cj<DRILL.length; cj++){
+      var upSlug = DRILL[ci] && DRILL[ci].slug;
+      var loSlug = DRILL[cj] && DRILL[cj].slug;
+      if(!upSlug || !loSlug) continue;
+      var clabel = _relWordsBetween(upSlug, loSlug);
+      if(!clabel){
+        var rev = _relWordsBetween(loSlug, upSlug);
+        if(rev) clabel = rev + ' (mutual)';
+      }
+      if(!clabel) continue;
+      var cFrom = view.querySelector('.rl-drill-level[data-level="' + ci + '"] > .rl-block-active');
+      var cTo   = view.querySelector('.rl-drill-level[data-level="' + cj + '"] > .rl-block-active');
+      if(cFrom && cTo){
+        var _cw = clabel.split(' · ')[0].replace(' (mutual)','');
+        var _ck = classifyRelationKind(_cw);
+        var _cc = CONN_COLOR[_ck] || CONN_COLOR.family;
+        crossPairs.push({ from: cFrom, to: cTo, label: clabel, color: _cc });
+      }
+    }
+  }
+  for(var xi=0; xi<crossPairs.length; xi++){
+    var xp = crossPairs[xi];
+    var xfb = xp.from.getBoundingClientRect();
+    var xtb = xp.to.getBoundingClientRect();
+    var cx1 = xfb.left - vb.left;
+    var cy1 = xfb.top + xfb.height/2 - vb.top + scrollTop;
+    var cx2 = xtb.left - vb.left;
+    var cy2 = xtb.top + xtb.height/2 - vb.top + scrollTop;
+    var cbulge = Math.min(cx1, cx2) * 0.7;
+    if(cbulge < 8) cbulge = 8;
+    var cpath = document.createElementNS('http://www.w3.org/2000/svg','path');
+    cpath.setAttribute('d', 'M ' + cx1.toFixed(1) + ' ' + cy1.toFixed(1)
+      + ' C ' + cbulge.toFixed(1) + ' ' + cy1.toFixed(1)
+      + ', ' + cbulge.toFixed(1) + ' ' + cy2.toFixed(1)
+      + ', ' + cx2.toFixed(1) + ' ' + cy2.toFixed(1));
+    cpath.setAttribute('stroke', xp.color);
+    cpath.setAttribute('stroke-width', '1.5');
+    cpath.setAttribute('stroke-dasharray', '6 3');
+    cpath.setAttribute('fill', 'none');
+    cpath.setAttribute('stroke-linecap', 'round');
+    cpath.setAttribute('opacity', '0.6');
+    svg.appendChild(cpath);
+    var clx = (cx1 * 0.125 + cx2 * 0.125 + cbulge * 0.75);
+    var cly = (cy1 * 0.35 + cy2 * 0.65);
+    _labelQueue.push({x:clx, y:cly, text:xp.label, color:xp.color, so:0.3});
+  }
+
   for(var i=0;i<pairs.length;i++){
     var p = pairs[i];
     var fb = p.from.getBoundingClientRect();
@@ -1195,37 +1295,14 @@ function drawConnectors(){
       if(_kindWord) _relLabel = _kindWord;
     }
     if(_relLabel){
-      var _lx = (x1 * 0.125 + x2 * 0.125 + bulge * 0.75);
-      var _ly = (y1 + y2) / 2;
-      var _t = document.createElementNS('http://www.w3.org/2000/svg','text');
-      _t.setAttribute('x', _lx.toFixed(1));
-      _t.setAttribute('y', _ly.toFixed(1));
-      _t.setAttribute('text-anchor', 'middle');
-      _t.setAttribute('dominant-baseline', 'middle');
-      _t.setAttribute('font-size', '11');
-      _t.setAttribute('font-family', "'Source Sans 3',sans-serif");
-      _t.setAttribute('fill', p.color);
-      _t.setAttribute('opacity', '0.9');
-      _t.setAttribute('pointer-events', 'none');
-      _t.textContent = _relLabel;
-      svg.appendChild(_t);
-      try {
-        var _bb = _t.getBBox();
-        var _px = 6, _py = 2;
-        var _rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-        _rect.setAttribute('x', (_bb.x - _px).toFixed(1));
-        _rect.setAttribute('y', (_bb.y - _py).toFixed(1));
-        _rect.setAttribute('width', (_bb.width + _px * 2).toFixed(1));
-        _rect.setAttribute('height', (_bb.height + _py * 2).toFixed(1));
-        _rect.setAttribute('rx', '3');
-        _rect.setAttribute('fill', '#0E1621');
-        _rect.setAttribute('stroke', p.color);
-        _rect.setAttribute('stroke-opacity', '0.4');
-        _rect.setAttribute('opacity', '0.85');
-        _rect.setAttribute('pointer-events', 'none');
-        svg.insertBefore(_rect, _t);
-      } catch(e){}
+      _labelQueue.push({x:(x1 * 0.125 + x2 * 0.125 + bulge * 0.75), y:(y1 + y2) / 2, text:_relLabel, color:p.color, so:0.4});
     }
+  }
+
+  // Draw ALL labels last, on top of every line, so no line crosses label text.
+  for(var _li=0; _li<_labelQueue.length; _li++){
+    var _lq = _labelQueue[_li];
+    _placeRelLabel(_lq.x, _lq.y, _lq.text, _lq.color, _lq.so);
   }
 }
 
