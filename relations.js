@@ -380,6 +380,14 @@ function buildReverseTeachers(){
       var tslug = resolveName(tn); if(!tslug) continue;
       if(tslug === c.slug) continue;
       if(localSeen[tslug]) continue; localSeen[tslug] = 1;
+      // Safety guard: a figure who died in childhood cannot have had students.
+      // Uses only real birth/death years; skips when dates are missing or when
+      // the math is non-positive (legendary / BCE figures), so nothing valid is removed.
+      var _tf = CORE_BY_SLUG[tslug];
+      if(_tf && typeof _tf.dob === 'number' && typeof _tf.dod === 'number'){
+        var _tlife = _tf.dod - _tf.dob;
+        if(_tlife > 0 && _tlife < 13) continue;
+      }
       (STUDENTS_OF[tslug] || (STUDENTS_OF[tslug] = [])).push(c);
     }
   }
