@@ -112,6 +112,95 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060f;color:#f5f0e
 .ld-err{color:#c88;margin-top:12px;font:12px/1.6 Georgia,serif;
   max-width:380px;text-align:left;padding:12px;
   border:1px solid rgba(200,100,100,.2);background:rgba(200,100,100,.04)}
+/* ---- tools bar (top-right) ---- */
+#tools-bar{
+  position:fixed;top:14px;right:18px;
+  display:flex;gap:8px;align-items:flex-start;
+  pointer-events:auto;z-index:10
+}
+.tool-btn{
+  padding:4px 11px;background:rgba(6,6,15,.88);
+  border:1px solid rgba(212,168,74,.28);border-radius:1px;
+  color:#d4a84a;font:11px Georgia,serif;
+  cursor:pointer;transition:background .15s;white-space:nowrap
+}
+.tool-btn:hover{background:rgba(212,168,74,.12)}
+.tool-btn.active{background:rgba(212,168,74,.18);border-color:rgba(212,168,74,.55)}
+
+/* ---- search ---- */
+#search-wrap{position:relative}
+#search-input{
+  display:block;width:210px;margin-top:4px;
+  padding:5px 10px;
+  background:rgba(6,6,15,.97);
+  border:1px solid rgba(212,168,74,.35);border-radius:1px;
+  color:#f5f0e8;font:12px Georgia,serif;outline:none
+}
+#search-input::placeholder{color:rgba(245,240,232,.30)}
+#search-results{
+  position:absolute;top:100%;left:0;width:100%;
+  background:rgba(6,6,15,.98);
+  border:1px solid rgba(212,168,74,.22);border-top:none;
+  max-height:260px;overflow-y:auto;z-index:20
+}
+.sr-item{
+  padding:7px 10px;cursor:pointer;
+  font:11px/1.3 Georgia,serif;color:rgba(245,240,232,.78);
+  border-bottom:1px solid rgba(255,255,255,.04)
+}
+.sr-item:hover{background:rgba(212,168,74,.10);color:#fff}
+.sr-type{font-size:10px;color:#888;margin-left:6px}
+
+/* ---- path panel ---- */
+#path-wrap{position:relative}
+#path-panel{
+  position:absolute;top:calc(100% + 4px);right:0;
+  width:264px;
+  background:rgba(6,6,15,.96);
+  border:1px solid rgba(212,168,74,.22);border-radius:2px;
+  padding:14px 14px 12px;z-index:20
+}
+.pp-hd{font:9px/1 Georgia,serif;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(212,168,74,.55);margin-bottom:12px}
+.pp-lbl{font:10px/1 Georgia,serif;color:#888;margin-bottom:4px}
+.pp-iw{position:relative;margin-bottom:8px}
+.pp-inp{
+  width:100%;padding:5px 8px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(212,168,74,.22);border-radius:1px;
+  color:#f5f0e8;font:11px Georgia,serif;outline:none
+}
+.pp-ac{
+  position:absolute;top:100%;left:0;width:100%;
+  background:rgba(6,6,15,.98);
+  border:1px solid rgba(212,168,74,.18);border-top:none;
+  max-height:130px;overflow-y:auto;z-index:30;display:none
+}
+#path-find-btn{
+  width:100%;padding:6px 0;margin-top:2px;
+  background:transparent;
+  border:1px solid rgba(212,168,74,.30);border-radius:1px;
+  color:#d4a84a;font:11px Georgia,serif;cursor:pointer;transition:background .15s
+}
+#path-find-btn:hover{background:rgba(212,168,74,.10)}
+#path-result{
+  margin-top:10px;font:11px/1.8 Georgia,serif;
+  color:rgba(245,240,232,.72);max-height:190px;overflow-y:auto
+}
+.ps-row{display:flex;align-items:baseline;gap:6px;margin-bottom:1px}
+.ps-num{color:#666;font-size:10px;flex-shrink:0;width:14px;text-align:right}
+.ps-name{color:#e8c878;cursor:pointer}
+.ps-name:hover{text-decoration:underline}
+.ps-rel{font-size:10px;color:rgba(212,168,74,.50);font-style:italic;flex-shrink:0}
+.ps-arrow{color:#444;font-size:10px;flex-shrink:0}
+#path-walk-btn{
+  display:block;width:100%;padding:6px 0;margin-top:8px;
+  background:rgba(212,168,74,.08);
+  border:1px solid rgba(212,168,74,.25);border-radius:1px;
+  color:#d4a84a;font:11px Georgia,serif;cursor:pointer;transition:background .15s
+}
+#path-walk-btn:hover{background:rgba(212,168,74,.14)}
+.hidden{display:none!important}
 </style>
 </head>
 <body>
@@ -131,6 +220,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060f;color:#f5f0e
   <div class="leg-row"><span class="leg-dot" style="background:#c9a227"></span><span class="leg-lbl">Companions</span></div>
   <div class="leg-row"><span class="leg-dot" style="background:#d97a3a"></span><span class="leg-lbl">Students</span></div>
   <div class="leg-row"><span class="leg-dot" style="background:#c87a9a"></span><span class="leg-lbl">Narrators</span></div>
+  <div class="leg-row"><span class="leg-dot" style="background:#b83030"></span><span class="leg-lbl">Adversaries</span></div>
 </div>
 <div id="nav-bar">
   <div id="breadcrumb"></div>
@@ -144,6 +234,34 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060f;color:#f5f0e
   <div class="ip-title" id="ip-title"></div>
   <div class="ip-rel"   id="ip-rel"></div>
   <button class="ip-drill" id="ip-drill">Explore this person →</button>
+</div>
+<div id="tools-bar">
+  <!-- Search -->
+  <div id="search-wrap">
+    <button class="tool-btn" id="search-btn">⌕ Search</button>
+    <input id="search-input" type="text" placeholder="Search any figure…" autocomplete="off" spellcheck="false" style="display:none">
+    <div id="search-results" style="display:none"></div>
+  </div>
+  <!-- Path finder -->
+  <div id="path-wrap">
+    <button class="tool-btn" id="path-btn">Path ⟲</button>
+    <div id="path-panel" style="display:none">
+      <div class="pp-hd">Find Connection</div>
+      <div class="pp-lbl">From</div>
+      <div class="pp-iw">
+        <input class="pp-inp" id="path-from" type="text" autocomplete="off" placeholder="Current figure">
+        <div class="pp-ac" id="path-from-ac"></div>
+      </div>
+      <div class="pp-lbl">To</div>
+      <div class="pp-iw">
+        <input class="pp-inp" id="path-to" type="text" autocomplete="off" placeholder="Search target…">
+        <div class="pp-ac" id="path-to-ac"></div>
+      </div>
+      <button id="path-find-btn">Find shortest path</button>
+      <div id="path-result"></div>
+      <button id="path-walk-btn" style="display:none">Walk path →</button>
+    </div>
+  </div>
 </div>
 <div id="hint">colour bands = relation groups · click to explore · drag to spin · scroll to zoom</div>
 <div id="count-badge"></div>
@@ -219,14 +337,16 @@ function buildReverseTeachers(){
 var CONN_COLOR={
   parent:'#5a9bd4',teacher:'#2fa6a0',student:'#d97a3a',
   companion:'#c9a227',family:'#6fa86f',sibling:'#9a7ad9',
-  wife:'#b06cc4',narration:'#c87a9a'
+  wife:'#b06cc4',narration:'#c87a9a',adversary:'#b83030'
 };
 var KIND_LABELS={
   teacher:'Teachers',parent:'Parents',wife:'Spouses',
   sibling:'Siblings',family:'Family',companion:'Companions',
-  student:'Students',narration:'Narrators'
+  student:'Students',narration:'Narrators',adversary:'Adversaries'
 };
-var KIND_ORDER=['teacher','parent','wife','sibling','family','companion','student','narration'];
+var KIND_ORDER=['teacher','parent','wife','sibling','family','companion','student','narration','adversary'];
+// Kinds that always show as individuals (never grouped), regardless of count
+var ALWAYS_EXPAND={wife:1,sibling:1};
 
 var PARENT_RELS={father:1,mother:1,parent:1,'foster mother':1,'foster father':1,'milk mother':1,'wet nurse':1};
 var SIBLING_RELS={brother:1,sister:1,sibling:1,'half-brother':1,'half-sister':1};
@@ -234,13 +354,16 @@ var WIFE_RELS={wife:1,husband:1,spouse:1};
 
 function bucketRel(rel){
   var r=(rel||'').toLowerCase().trim();
-  if(PARENT_RELS[r])                      return 'parent';
-  if(SIBLING_RELS[r])                     return 'sibling';
-  if(WIFE_RELS[r])                        return 'wife';
-  if(r==='companion')                     return 'companion';
-  if(r==='student'||r==='silsila after')  return 'student';
-  if(r==='teacher'||r==='silsila before') return 'teacher';
-  if(r==='narration'||r==='narrator')     return 'narration';
+  if(PARENT_RELS[r])                                    return 'parent';
+  if(SIBLING_RELS[r])                                   return 'sibling';
+  if(WIFE_RELS[r])                                      return 'wife';
+  if(r==='companion')                                   return 'companion';
+  if(r==='student'||r==='silsila after'
+     ||r==='has follower')                              return 'student';
+  if(r==='teacher'||r==='silsila before'
+     ||r==='follower of')                               return 'teacher';
+  if(r==='narration'||r==='narrator')                   return 'narration';
+  if(r==='adversary')                                   return 'adversary';
   return 'family';
 }
 
@@ -292,8 +415,102 @@ function getRelations(focusSlug){
 }
 
 // ---------------------------------------------------------------
-// CONSTANTS & HELPERS
+// ADJACENCY GRAPH + PATH FINDER (BFS)
 // ---------------------------------------------------------------
+function _buildAdj(){
+  if(_ADJ) return;
+  buildResolver(); buildReverseTeachers();
+  _ADJ={};
+  function addE(a,b,lbl){
+    if(!a||!b||a===b||!CORE_BY_SLUG[a]||!CORE_BY_SLUG[b]) return;
+    (_ADJ[a]||(_ADJ[a]=[])).push({s:b,l:lbl});
+  }
+  for(var i=0;i<CORE.length;i++){
+    var c=CORE[i]; if(!c||!c.slug) continue;
+    // Teachers array
+    var tn=[];
+    if(Array.isArray(c.teachers)) tn=tn.concat(c.teachers);
+    var enr=getEnrich(c.slug); if(enr&&Array.isArray(enr.teachers)) tn=tn.concat(enr.teachers);
+    for(var t=0;t<tn.length;t++){
+      var tt=tn[t]; if(typeof tt==='object') tt=tt.name||tt.english_name||'';
+      tt=String(tt||'').trim(); if(!tt) continue;
+      var ts=resolveName(tt); if(!ts||ts===c.slug) continue;
+      addE(c.slug,ts,'student of'); addE(ts,c.slug,'teacher of');
+    }
+    // Relations array
+    if(Array.isArray(c.relations)){
+      for(var r=0;r<c.relations.length;r++){
+        var rel=c.relations[r]; if(!rel||!rel.person) continue;
+        var rs=resolveName(rel.person); if(!rs||rs===c.slug) continue;
+        addE(c.slug,rs,rel.relation||'related');
+      }
+    }
+  }
+  // STUDENTS_OF reverse edges
+  for(var tslug in STUDENTS_OF){
+    if(!STUDENTS_OF.hasOwnProperty(tslug)) continue;
+    var studs=STUDENTS_OF[tslug];
+    for(var j=0;j<studs.length;j++){
+      var st=studs[j]; if(!st||!st.slug) continue;
+      addE(st.slug,tslug,'student of'); addE(tslug,st.slug,'teacher of');
+    }
+  }
+}
+
+/** BFS shortest path. Returns [{slug, label}, …] or null. */
+function findPath(fromSlug,toSlug){
+  if(!fromSlug||!toSlug) return null;
+  if(fromSlug===toSlug) return [{slug:fromSlug,label:''}];
+  _buildAdj();
+  var visited={},prev={},queue=[fromSlug];
+  visited[fromSlug]=true;
+  while(queue.length){
+    var curr=queue.shift();
+    var nbrs=_ADJ[curr]||[];
+    for(var i=0;i<nbrs.length;i++){
+      var nb=nbrs[i]; if(visited[nb.s]) continue;
+      visited[nb.s]=true; prev[nb.s]={from:curr,label:nb.l};
+      if(nb.s===toSlug){
+        var path=[],s=toSlug;
+        while(s!==fromSlug){ var p=prev[s]; path.unshift({slug:s,label:p.label}); s=p.from; }
+        path.unshift({slug:fromSlug,label:''});
+        return path;
+      }
+      queue.push(nb.s);
+    }
+  }
+  return null;
+}
+
+/** Search famous names. Returns up to maxN figure objects. */
+function _searchFigs(query,maxN){
+  if(!query||query.length<2) return [];
+  var q=query.toLowerCase(), out=[];
+  for(var i=0;i<CORE.length&&out.length<maxN;i++){
+    var f=CORE[i]; if(!f||!f.slug) continue;
+    if((f.famous||f.full||'').toLowerCase().indexOf(q)!==-1) out.push(f);
+  }
+  return out;
+}
+
+/** Fly camera to a sphere mesh (rotate + pan) */
+function flyToSphere(mesh){
+  if(!mesh||!mesh.position) return;
+  _autoRot=false;
+  if(_autoRotTimer){clearTimeout(_autoRotTimer);_autoRotTimer=null;}
+  // Target rotation: bring mesh's angle to front (world Z = max → face camera)
+  var sx=mesh.position.x,sz=mesh.position.z;
+  var sphereAngle=Math.atan2(sz,sx);
+  var targetRy=-sphereAngle;
+  // Shortest arc
+  var curr=sceneGroup.rotation.y;
+  var diff=targetRy-curr;
+  while(diff>Math.PI) diff-=Math.PI*2;
+  while(diff<-Math.PI) diff+=Math.PI*2;
+  _flyRyTarget=curr+diff;
+  _camTargetY=mesh.position.y;
+  _flyMesh=mesh;
+}
 var SPINE_R     = 0.055;
 var BOW_R       = 3.0;
 var TUBE_R      = 0.014;
@@ -302,8 +519,9 @@ var SPH_FOCUS_R = 0.09;   // small focus disc — spine does the talking now
 var SPH_GROUP_R = 0.28;
 var GOLD        = 0xd4a84a;
 
-var YSCALE_GROUP  = 0.04;
-var YSCALE_DETAIL = 0.16;
+// Negative = earlier dates are HIGHER on screen (matches rest of app)
+var YSCALE_GROUP  = -0.04;
+var YSCALE_DETAIL = -0.16;
 
 // Groups with ≤ this many members are expanded directly in group view (individual wishbones)
 var AUTO_EXPAND_THRESHOLD = 5;
@@ -311,7 +529,8 @@ var AUTO_EXPAND_THRESHOLD = 5;
 function _isProphet(fig){
   if(!fig) return false;
   var tags=Array.isArray(fig.tags)?fig.tags:[];
-  return fig.type==='prophet'||tags.indexOf('prophet')!==-1||fig.slug==='F1132';
+  var t=(fig.type||'').toLowerCase();
+  return t==='prophet'||tags.indexOf('prophet')!==-1||tags.indexOf('Prophet')!==-1;
 }
 function _figColor(fig,kind){
   return _isProphet(fig)?new THREE.Color(GOLD):new THREE.Color(CONN_COLOR[kind]||'#888888');
@@ -340,6 +559,9 @@ var renderer,scene,camera,sceneGroup;
 var clickTargets=[];
 var _labels=[], _ticks=[];
 var _camTargetY=0;
+var _flyRyTarget=null, _flyMesh=null;  // camera fly-to state
+var _ADJ=null;                          // adjacency graph (built lazily for path finder)
+var _pathWalk=null;                     // active path walk state
 
 function initThree(){
   renderer=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true});
@@ -399,32 +621,33 @@ function _buildSegmentedSpine(fig, focusDob, YSCALE, yMin, yMax){
   var dodY = fig.dod!=null ? (fig.dod-focusDob)*YSCALE : null;
 
   if(dobY==null&&dodY==null){
-    // No date info — single neutral spine
     _addSpineSeg(spineBot,spineTop,0x666680,0.50);
     return;
   }
 
-  var lifeStart = dobY!=null ? dobY : spineBot;
-  var lifeEnd   = dodY!=null ? dodY : spineTop;
+  // With negative YSCALE: dob (birth) is HIGHER than dod (death) on screen.
+  // lifeTop = the upper (earlier) boundary, lifeBot = the lower (later) boundary.
+  var lifeTop = dobY!=null ? dobY : spineTop;   // birth = higher
+  var lifeBot = dodY!=null ? dodY : spineBot;   // death = lower
+  // Safety swap if somehow reversed
+  if(lifeTop<lifeBot){ var _t=lifeTop; lifeTop=lifeBot; lifeBot=_t; }
 
-  // Pre-life (dimmed)
-  if(lifeStart>spineBot+0.05)
-    _addSpineSeg(spineBot,lifeStart,DIM_COL,DIM_OP);
+  // Pre-life: ABOVE birth (earlier times = higher Y)
+  if(lifeTop<spineTop-0.05)
+    _addSpineSeg(lifeTop,spineTop,DIM_COL,DIM_OP);
 
-  // Lifespan (bright, coloured)
-  var segH = lifeEnd-lifeStart;
-  if(segH>0.02){
-    _addSpineSeg(lifeStart,lifeEnd,lifeCol,1.0);
+  // Lifespan (bright, coloured) — from death(low) to birth(high)
+  if(lifeTop-lifeBot>0.02){
+    _addSpineSeg(lifeBot,lifeTop,lifeCol,1.0);
   } else {
-    // Same-year birth/death: single narrow disc
-    _addSpineSeg(lifeStart-0.08,lifeStart+0.08,lifeCol,1.0);
+    _addSpineSeg(lifeTop-0.08,lifeTop+0.08,lifeCol,1.0);
   }
 
-  // Post-life (dimmed)
-  if(lifeEnd<spineTop-0.05)
-    _addSpineSeg(lifeEnd,spineTop,DIM_COL,DIM_OP);
+  // Post-life: BELOW death (later times = lower Y)
+  if(lifeBot>spineBot+0.05)
+    _addSpineSeg(spineBot,lifeBot,DIM_COL,DIM_OP);
 
-  // Dob/Dod markers — small flat discs protruding from spine
+  // Dob/Dod discs
   if(dobY!=null) _addSpineDisc(dobY,lifeCol,true);
   if(dodY!=null) _addSpineDisc(dodY,lifeCol,false);
 }
@@ -458,9 +681,12 @@ function _buildFocusLabel(fig){
 }
 
 function _buildTicks(yMin,yMax,YSCALE,focusDob){
-  var ceMin=focusDob+yMin/YSCALE-30;
-  var ceMax=focusDob+yMax/YSCALE+30;
-  var step=YSCALE>=0.12?25:50;
+  // Convert Y extremes back to CE years (works for positive or negative YSCALE)
+  var ce1=focusDob+yMin/YSCALE;
+  var ce2=focusDob+yMax/YSCALE;
+  var ceMin=Math.min(ce1,ce2)-30;
+  var ceMax=Math.max(ce1,ce2)+30;
+  var step=Math.abs(YSCALE)>=0.12?25:50;
   var start=Math.ceil(ceMin/step)*step;
   for(var ce=start;ce<=ceMax;ce+=step){
     var ty=(ce-focusDob)*YSCALE;
@@ -544,7 +770,7 @@ function buildGroupView(slug){
     var angle=(ki/nK)*Math.PI*2+(Math.PI*0.08);
     var col=new THREE.Color(CONN_COLOR[kind]||'#888');
 
-    if(krels.length<=AUTO_EXPAND_THRESHOLD){
+    if(krels.length<=AUTO_EXPAND_THRESHOLD || ALWAYS_EXPAND[kind]){
       // Small group: show each person individually (wishbone per person)
       for(var gi=0;gi<krels.length;gi++){
         var subAngle=angle+(gi-(krels.length-1)*0.5)*0.28;
@@ -877,7 +1103,22 @@ function updateNavUI(){
 // ---------------------------------------------------------------
 function _animate(){
   requestAnimationFrame(_animate);
-  if(_autoRot&&!_drag) sceneGroup.rotation.y+=.0020;
+  // Fly-to: smooth rotation toward target angle
+  if(_flyRyTarget!==null){
+    var diff=_flyRyTarget-sceneGroup.rotation.y;
+    sceneGroup.rotation.y+=diff*0.10;
+    if(Math.abs(diff)<0.008){
+      sceneGroup.rotation.y=_flyRyTarget; _flyRyTarget=null;
+      var arrived=_flyMesh; _flyMesh=null;
+      if(arrived&&arrived.userData&&arrived.userData.type==='person'){
+        arrived.scale.setScalar(1.8);
+        setTimeout(function(){ if(arrived)arrived.scale.setScalar(1.0); },300);
+        _showInfo(arrived.userData.fig,arrived.userData.kind,arrived.userData.relWord);
+      }
+      _autoRotTimer=setTimeout(function(){ _autoRot=true;_autoRotTimer=null; },3000);
+    }
+  }
+  if(_autoRot&&!_drag&&_flyRyTarget===null) sceneGroup.rotation.y+=.0020;
   camera.position.y+=(_camTargetY-camera.position.y)*.055;
   camera.lookAt(0,camera.position.y,0);
   updateOverlay();
@@ -917,6 +1158,202 @@ async function loadAndStart(){
     _setMsg('Failed.'); _showErr(err.message); console.error('[3d]',err);
   }
 }
+
+// ---------------------------------------------------------------
+// SEARCH UI
+// ---------------------------------------------------------------
+(function(){
+  var searchBtn=document.getElementById('search-btn');
+  var searchInput=document.getElementById('search-input');
+  var searchResults=document.getElementById('search-results');
+  var open=false;
+
+  function toggleSearch(){
+    open=!open;
+    searchBtn.classList.toggle('active',open);
+    searchInput.style.display=open?'block':'none';
+    searchResults.style.display='none';
+    if(open){ searchInput.value=''; searchInput.focus(); }
+  }
+
+  searchBtn.addEventListener('click',toggleSearch);
+
+  searchInput.addEventListener('input',function(){
+    var q=this.value.trim();
+    if(q.length<2){ searchResults.style.display='none'; return; }
+    var hits=_searchFigs(q,9);
+    if(!hits.length){ searchResults.innerHTML='<div class="sr-item" style="color:#666">No results</div>'; }
+    else{
+      searchResults.innerHTML=hits.map(function(f){
+        return '<div class="sr-item" data-slug="'+_esc(f.slug)+'">'
+          +_esc(f.famous||f.slug)
+          +'<span class="sr-type">'+_esc(f.type||'')+'</span>'
+          +'</div>';
+      }).join('');
+    }
+    searchResults.style.display='block';
+  });
+
+  searchResults.addEventListener('click',function(e){
+    var item=e.target.closest('.sr-item');
+    if(!item||!item.dataset.slug) return;
+    var slug=item.dataset.slug;
+    searchInput.value='';
+    searchResults.style.display='none';
+    toggleSearch();
+    // Fly to sphere if visible, else navigate
+    var found=false;
+    for(var i=0;i<clickTargets.length;i++){
+      var m=clickTargets[i];
+      if(m.userData&&m.userData.type==='person'&&m.userData.fig.slug===slug){
+        flyToSphere(m); found=true; break;
+      }
+    }
+    if(!found){
+      if(slug!==currentFocusSlug) focusStack.push(currentFocusSlug);
+      buildGroupView(slug);
+    }
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&open) toggleSearch();
+  });
+})();
+
+// ---------------------------------------------------------------
+// PATH FINDER UI
+// ---------------------------------------------------------------
+(function(){
+  var pathBtn   =document.getElementById('path-btn');
+  var pathPanel =document.getElementById('path-panel');
+  var fromInput =document.getElementById('path-from');
+  var toInput   =document.getElementById('path-to');
+  var fromAc    =document.getElementById('path-from-ac');
+  var toAc      =document.getElementById('path-to-ac');
+  var findBtn   =document.getElementById('path-find-btn');
+  var resultDiv =document.getElementById('path-result');
+  var walkBtn   =document.getElementById('path-walk-btn');
+  var panelOpen =false;
+
+  var _fromSlug=null, _toSlug=null;
+
+  function togglePanel(){
+    panelOpen=!panelOpen;
+    pathBtn.classList.toggle('active',panelOpen);
+    pathPanel.style.display=panelOpen?'block':'none';
+    if(panelOpen){
+      // Pre-fill From with current figure
+      if(currentFocusFig){
+        fromInput.value=currentFocusFig.famous||currentFocusSlug;
+        _fromSlug=currentFocusSlug;
+      }
+      resultDiv.innerHTML='';
+      walkBtn.style.display='none';
+    }
+  }
+
+  pathBtn.addEventListener('click',togglePanel);
+
+  function makeAc(input,acDiv,onSelect){
+    input.addEventListener('input',function(){
+      var q=this.value.trim();
+      acDiv.innerHTML='';
+      acDiv.style.display='none';
+      if(q.length<2) return;
+      var hits=_searchFigs(q,7);
+      if(!hits.length) return;
+      hits.forEach(function(f){
+        var d=document.createElement('div');
+        d.className='sr-item';
+        d.textContent=f.famous||f.slug;
+        d.addEventListener('click',function(){
+          input.value=f.famous||f.slug;
+          acDiv.style.display='none';
+          onSelect(f.slug);
+        });
+        acDiv.appendChild(d);
+      });
+      acDiv.style.display='block';
+    });
+    document.addEventListener('click',function(e){
+      if(!input.contains(e.target)&&!acDiv.contains(e.target)) acDiv.style.display='none';
+    });
+  }
+
+  makeAc(fromInput,fromAc,function(slug){ _fromSlug=slug; });
+  makeAc(toInput,toAc,function(slug){ _toSlug=slug; });
+
+  findBtn.addEventListener('click',function(){
+    resultDiv.innerHTML='<span style="color:#888">Searching…</span>';
+    walkBtn.style.display='none';
+    _pathWalk=null;
+
+    // Lazy-build adjacency (may take a moment)
+    setTimeout(function(){
+      if(!_fromSlug||!_toSlug){
+        resultDiv.innerHTML='<span style="color:#c88">Select both figures.</span>';
+        return;
+      }
+      var path=findPath(_fromSlug,_toSlug);
+      if(!path){
+        resultDiv.innerHTML='<span style="color:#c88">No connection found.</span>';
+        return;
+      }
+      // Render path
+      var html='<div style="color:#888;font-size:10px;margin-bottom:8px">'+
+        (path.length-1)+' step'+(path.length-1===1?'':'s')+'</div>';
+      for(var i=0;i<path.length;i++){
+        var step=path[i];
+        var fig=CORE_BY_SLUG[step.slug];
+        var name=fig?(fig.famous||fig.slug):step.slug;
+        html+='<div class="ps-row">'
+          +'<span class="ps-num">'+(i+1)+'</span>'
+          +'<span class="ps-name" data-slug="'+_esc(step.slug)+'">'+_esc(name)+'</span>'
+          +(step.label?'<span class="ps-rel">'+_esc(step.label)+'</span>':'')
+          +'</div>';
+        if(i<path.length-1)
+          html+='<div class="ps-row"><span class="ps-num"></span><span class="ps-arrow">↓</span></div>';
+      }
+      resultDiv.innerHTML=html;
+
+      // Clickable names in result
+      resultDiv.querySelectorAll('.ps-name').forEach(function(el){
+        el.addEventListener('click',function(){
+          var slug=this.dataset.slug;
+          if(slug!==currentFocusSlug) focusStack.push(currentFocusSlug);
+          buildGroupView(slug);
+        });
+      });
+
+      // Walk button
+      _pathWalk={path:path,idx:0};
+      walkBtn.textContent='Walk path: start →';
+      walkBtn.style.display='block';
+    },10);
+  });
+
+  walkBtn.addEventListener('click',function(){
+    if(!_pathWalk) return;
+    _pathWalk.idx++;
+    if(_pathWalk.idx>=_pathWalk.path.length){ walkBtn.textContent='End of path'; return; }
+    var step=_pathWalk.path[_pathWalk.idx];
+    if(step.slug!==currentFocusSlug){
+      focusStack.push(currentFocusSlug);
+      buildGroupView(step.slug);
+    }
+    var remaining=_pathWalk.path.length-_pathWalk.idx-1;
+    if(remaining>0){
+      var nxt=CORE_BY_SLUG[_pathWalk.path[_pathWalk.idx+1].slug];
+      walkBtn.textContent='Next: '+(nxt?nxt.famous||nxt.slug:'…')+' →';
+    } else {
+      walkBtn.textContent='End of path';
+    }
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&panelOpen) togglePanel();
+  });
+})();
 
 // ---------------------------------------------------------------
 // BOOT

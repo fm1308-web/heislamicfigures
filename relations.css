@@ -905,3 +905,22 @@ body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-saved{
   text-align:right !important;
   padding-right:10px;
 }
+
+/* 3D overlay toggle button */
+.rl-3d-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 0 10px;
+}
+.rel-3d-btn {
+  padding: 5px 18px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  background: transparent;
+  border: 1px solid rgba(212,168,74,.35);
+  color: #d4a84a;
+  cursor: pointer;
+  border-radius: 1px;
+  font-family: Georgia, serif;
+}
+.rel-3d-btn:hover { background: rgba(212,168,74,.10); }

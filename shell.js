@@ -275,7 +275,7 @@ var FILTER_SPECS = {
     search: true,
     filters: [],
     actions: [],
-    hint: 'Search for names, traditions, types, places, or areas above · or click a category below',
+    hint: 'Search for names, traditions, or types above · or click a category below',
     hintInRow2: true,
     htw: true
   },
@@ -747,6 +747,20 @@ function renderZoneB(viewName){
 
   // HTW (always far right)
   if(spec.htw !== false){
+    if(viewName === 'RELATIONS'){
+      var rel3d = document.createElement('button');
+      rel3d.className = 'zb-pill rel-3d-btn';
+      rel3d.id = 'shell-btn-rel-3d';
+      rel3d.type = 'button';
+      rel3d.textContent = 'VIEW IN 3D';
+      rel3d.addEventListener('click', function(){
+        if(window.Relations3D && window.RelationsView){
+          var _s = window.RelationsView.getState();
+          Relations3D.open(_s.currentSlug, _s);
+        }
+      });
+      row1.appendChild(rel3d);
+    }
     var htw = document.createElement('button');
     htw.className = 'zb-pill zb-slot-htw';
     htw.id = 'zbHtwPill';

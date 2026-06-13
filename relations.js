@@ -460,6 +460,23 @@ function render(){
     +   '</div>'
     + '</div>';
 
+  // Wire 3D button
+  var btn3d = ROOT.querySelector('#btn-rel-3d');
+  if(btn3d){
+    btn3d.addEventListener('click', function(){
+      if(!window.Relations3D || !CORE || !CORE_BY_SLUG) return;
+      var slug = (DRILL.length && DRILL[DRILL.length-1] && DRILL[DRILL.length-1].slug)
+                 ? DRILL[DRILL.length-1].slug : 'F1132';
+      Relations3D.open(slug, {
+        core:        CORE,
+        coreBySlug:  CORE_BY_SLUG,
+        name2Slug:   NAME2SLUG,
+        studentsOf:  STUDENTS_OF,
+        enrichBySlug: ENRICH || {}
+      });
+    });
+  }
+
   // Wire category clicks
   var btns = ROOT.querySelectorAll('.rl-cat[data-cat]');
   for(var b=0;b<btns.length;b++){ btns[b].addEventListener('click', onCatClick); }
@@ -1613,10 +1630,22 @@ function showHtw(){
     + '    </ul>'
 
     + '    <h3>Sources</h3>'
-    + '    <p>Core figures: Gold Ark canonical dataset (1,962 figures). Narrators: Arees '
-    + '    Institute Muslim Scholars Database (25,000+). Cross-checked against classical '
-    + '    biographical sources (Ibn Hisham, al-Tabari, Tahdheeb al-Tahdheeb, and others) '
-    + '    for the Prophet’s immediate family.</p>'
+    + '    <ul>'
+    + '      <li><strong>Gold Ark canonical dataset</strong> — 2,006 core figures. Primary'
+    + '      source for all biographical data: dates, relations, titles, traditions.</li>'
+    + '      <li><strong>Arees Institute Muslim Scholars Database</strong> — 25,000+ hadith'
+    + '      narrators. Provides the extended narrator chains that fill gaps between core'
+    + '      figures and trace transmission all the way back to the Prophet.</li>'
+    + '      <li><strong>Classical biographical sources</strong> — cross-referenced for the'
+    + '      Prophet’s immediate family and Companions: Ibn Hishām’s'
+    + '      <em>Sīrah</em>, al-Ṭabarī’s <em>Tārīkh</em>,'
+    + '      Ibn Ḥajar’s <em>Tahdhīb al-Tahdhīb</em>, and'
+    + '      Ibn Saʿd’s <em>al-Ṭabaqāt al-Kubrā</em>.</li>'
+    + '      <li><strong>Relation data</strong> — sourced from each figure’s own'
+    + '      record where declared, supplemented by Arees enrichment for teachers and'
+    + '      students. Nothing is inferred or invented: if a link is absent from the'
+    + '      source data, it does not appear here.</li>'
+    + '    </ul>'
 
     + '  </div>'
     + '</div>';
@@ -1634,5 +1663,20 @@ function showHtw(){
   });
 }
 
-window.RelationsView = { mount: mount, unmount: unmount, showHtw: showHtw };
+window.RelationsView = {
+  mount: mount,
+  unmount: unmount,
+  showHtw: showHtw,
+  getState: function(){
+    return {
+      core:        CORE,
+      coreBySlug:  CORE_BY_SLUG,
+      name2Slug:   NAME2SLUG,
+      studentsOf:  STUDENTS_OF,
+      enrichBySlug: ENRICH || {},
+      currentSlug: (DRILL.length && DRILL[DRILL.length-1] && DRILL[DRILL.length-1].slug)
+                     ? DRILL[DRILL.length-1].slug : 'F1132'
+    };
+  }
+};
 })();
