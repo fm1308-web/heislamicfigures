@@ -887,3 +887,21 @@ body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-saved{
   cursor: pointer; padding: 4px 10px;
 }
 .rl-htw-close:hover{ color: #fff; }
+
+/* Drill view: left-align locked pill + its relation-tile row to the left,
+   keeping the right side free for the connector line and relation labels. */
+.rl-drill-level > .rl-block.rl-block-active{
+  margin-left:30% !important;
+  margin-right:auto !important;
+}
+.rl-drill-level > .rl-block.rl-block-active .rl-nodes{
+  left:0 !important;
+  transform:none !important;
+  justify-content:flex-start !important;
+}
+
+/* Drill view: push the Show all / Back controls to the right edge */
+.rl-drill-back{
+  text-align:right !important;
+  padding-right:10px;
+}

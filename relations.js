@@ -701,6 +701,17 @@ function renderStep(i){
   return html;
 }
 
+// Optional muted "(source)" suffix for a relation chip. Non-clickable
+// (pointer-events:none) so it never interferes with the pill's click handler
+// or the wiki-link stopPropagation pattern. Empty source → '' (no parentheses).
+function _relSourceHtml(it){
+  var s = (it && typeof it.source === 'string') ? it.source.trim() : '';
+  if(!s) return '';
+  return ' <span class="rl-rel-source" style="font-size:0.78em;opacity:0.55;'
+       + 'font-weight:400;text-decoration:none;pointer-events:none;">('
+       + escapeHtml(s) + ')</span>';
+}
+
 function renderChildGrid(f, kind, lvl){
   var labels = { parent:'Parents', teacher:'Teachers', student:'Students', family:'Family', sibling:'Siblings' };
   var figs = getRelationFigures(f, kind);
@@ -716,18 +727,18 @@ function renderChildGrid(f, kind, lvl){
       var it = figs[i];
       if(it.slug && !ancestors[it.slug]){
         body += '<div class="rl-block rl-child-pill" data-slug="' + escapeHtml(it.slug) + '" data-drill="' + lvl + '">'
-              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div></div>';
       } else if(it.areesId != null && it.fig){
         body += '<div class="rl-block rl-child-pill" data-arees="' + escapeHtml(String(it.areesId)) + '" data-drill="' + lvl + '">'
-              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div></div>';
       } else if(it.slug){
         // Back-reference to an ancestor in the path: shown but NOT drillable (no data-slug),
         // so the existing child-pill click handler skips it and the chain can't loop.
         body += '<div class="rl-block rl-child-pill rl-backref">'
-              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div></div>';
       } else {
         body += '<div class="rl-block rl-child-pill rl-unlinked" data-drill="' + lvl + '">'
-              + '<div class="rl-nm-en">' + escapeHtml(it.name) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(it.name) + _relSourceHtml(it) + '</div></div>';
       }
     }
   }
@@ -949,23 +960,28 @@ function getRelationFigures(f, kind){
     if((kind==='parent'||kind==='sibling'||kind==='family'||kind==='wife') && Array.isArray(f.relations)){
       for(var i=0;i<f.relations.length;i++){
         var r=f.relations[i];
-        if(r && r.person && classifyRelationKind(r.relation) === kind) names.push(r.person);
+        if(r && r.person && classifyRelationKind(r.relation) === kind) names.push({ name: r.person, source: (typeof r.source === 'string' ? r.source.trim() : '') });
       }
     }
+    // Parents only: if core relations[] already supplied parent chips, skip the
+    // enrichment parents overlay so the same names don't appear twice (chips +
+    // plain text). A chip-less figure still falls through to the enrichment text.
+    var _hasCoreParents = (kind === 'parent' && names.length > 0);
     var ee = getEnrich(f.slug);
     if(ee){
-      if(kind==='parent' && typeof ee.parents==='string'){ var ps=ee.parents.split('/'); for(var p=0;p<ps.length;p++){var t=ps[p].trim(); if(t) names.push(t);} }
-      else if(kind==='parent' && Array.isArray(ee.parents)) names=names.concat(ee.parents);
+      if(kind==='parent' && !_hasCoreParents && typeof ee.parents==='string'){ var ps=ee.parents.split('/'); for(var p=0;p<ps.length;p++){var t=ps[p].trim(); if(t) names.push(t);} }
+      else if(kind==='parent' && !_hasCoreParents && Array.isArray(ee.parents)) names=names.concat(ee.parents);
       else if(kind==='family' && Array.isArray(ee.family)) names=names.concat(ee.family);
     }
   }
   var seen={}, out=[];
   for(var j=0;j<names.length;j++){
-    var nm=names[j]; if(typeof nm==='object') nm=nm.name||nm.english_name||'';
+    var nm=names[j], src='';
+    if(typeof nm==='object'){ src=(typeof nm.source==='string'?nm.source:''); nm=nm.name||nm.english_name||''; }
     nm=String(nm).trim(); if(!nm) continue;
     var key=_norm(nm); if(!key||seen[key]) continue; seen[key]=1;
     var slug=resolveName(nm);
-    out.push({ name:nm, slug:slug, fig: slug?CORE_BY_SLUG[slug]:null });
+    out.push({ name:nm, slug:slug, fig: slug?CORE_BY_SLUG[slug]:null, source: src });
   }
   if(kind === 'student' && f && f.slug){
     buildReverseTeachers();
@@ -995,6 +1011,25 @@ function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
   });
+}
+
+// Relation word(s) FROM the upper figure's relations[] row(s) whose person
+// resolves to the lower figure. Direction: upper -> lower only. Words render
+// exactly as stored. Multiple links joined with " · ". No match = "".
+function _relWordsBetween(upperSlug, lowerSlug){
+  if(!upperSlug || !lowerSlug) return '';
+  var uf = CORE_BY_SLUG[upperSlug];
+  if(!uf || !Array.isArray(uf.relations)) return '';
+  var words = [];
+  for(var i=0;i<uf.relations.length;i++){
+    var r = uf.relations[i];
+    if(!r || !r.person || !r.relation) continue;
+    if(resolveName(r.person) === lowerSlug){
+      var w = String(r.relation).trim();
+      if(w && words.indexOf(w) === -1) words.push(w);
+    }
+  }
+  return words.join(' · ');
 }
 
 function drawConnectors(){
@@ -1098,18 +1133,30 @@ function drawConnectors(){
     if(!kind || kind === 'narration') continue;
     var fromPill = view.querySelector('.rl-drill-level[data-level="' + dl + '"] > .rl-block-active');
     var toPill   = view.querySelector('.rl-drill-level[data-level="' + (dl+1) + '"] > .rl-block-active');
-    if(fromPill && toPill) pairs.push({ from: fromPill, to: toPill, color: CONN_COLOR[kind] || '#8aa0b8' });
+    if(fromPill && toPill) pairs.push({ from: fromPill, to: toPill, color: CONN_COLOR[kind] || '#8aa0b8', kind: kind });
   }
+
+  // Right gutter: just past the widest tile row / pill in the drill view, so
+  // the connector apex AND the relation label always clear the tiles behind.
+  var _gutterX = 0;
+  var _measure = view.querySelectorAll('.rl-drill-level .rl-nodes, .rl-drill-level > .rl-block.rl-block-active, .rl-drill-level .rl-no-relations');
+  for(var _mi=0;_mi<_measure.length;_mi++){
+    var _mr = _measure[_mi].getBoundingClientRect();
+    var _rx = _mr.right - vb.left;
+    if(_rx > _gutterX) _gutterX = _rx;
+  }
+  _gutterX += 50;
 
   for(var i=0;i<pairs.length;i++){
     var p = pairs[i];
     var fb = p.from.getBoundingClientRect();
     var tb = p.to.getBoundingClientRect();
-    var x1 = fb.right - vb.left;
+    var x1 = fb.left - vb.left;
     var y1 = fb.top + fb.height/2 - vb.top + scrollTop;
-    var x2 = tb.right - vb.left;
+    var x2 = tb.left - vb.left;
     var y2 = tb.top + tb.height/2 - vb.top + scrollTop;
-    var bulge = Math.max(x1, x2) + 40;
+    var bulge = Math.min(x1, x2) * 0.45;
+    if(bulge < 8) bulge = 8;
 
     var path = document.createElementNS('http://www.w3.org/2000/svg','path');
     path.setAttribute('d', 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1)
@@ -1132,6 +1179,45 @@ function drawConnectors(){
     dot2.setAttribute('cx', x2); dot2.setAttribute('cy', y2);
     dot2.setAttribute('r', 3); dot2.setAttribute('fill', p.color);
     svg.appendChild(dot2);
+
+    // Relation-word label on the connecting curve (upper -> lower direction).
+    var _relLabel = _relWordsBetween(p.from.getAttribute('data-slug'), p.to.getAttribute('data-slug'));
+    if(!_relLabel){
+      var _kindWord = { teacher:'teacher', student:'student', companion:'companion', narration:'narration' }[p.kind];
+      if(_kindWord) _relLabel = _kindWord;
+    }
+    if(_relLabel){
+      var _lx = (x1 * 0.125 + x2 * 0.125 + bulge * 0.75);
+      var _ly = (y1 + y2) / 2;
+      var _t = document.createElementNS('http://www.w3.org/2000/svg','text');
+      _t.setAttribute('x', _lx.toFixed(1));
+      _t.setAttribute('y', _ly.toFixed(1));
+      _t.setAttribute('text-anchor', 'middle');
+      _t.setAttribute('dominant-baseline', 'middle');
+      _t.setAttribute('font-size', '11');
+      _t.setAttribute('font-family', "'Source Sans 3',sans-serif");
+      _t.setAttribute('fill', p.color);
+      _t.setAttribute('opacity', '0.9');
+      _t.setAttribute('pointer-events', 'none');
+      _t.textContent = _relLabel;
+      svg.appendChild(_t);
+      try {
+        var _bb = _t.getBBox();
+        var _px = 6, _py = 2;
+        var _rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        _rect.setAttribute('x', (_bb.x - _px).toFixed(1));
+        _rect.setAttribute('y', (_bb.y - _py).toFixed(1));
+        _rect.setAttribute('width', (_bb.width + _px * 2).toFixed(1));
+        _rect.setAttribute('height', (_bb.height + _py * 2).toFixed(1));
+        _rect.setAttribute('rx', '3');
+        _rect.setAttribute('fill', '#0E1621');
+        _rect.setAttribute('stroke', p.color);
+        _rect.setAttribute('stroke-opacity', '0.4');
+        _rect.setAttribute('opacity', '0.85');
+        _rect.setAttribute('pointer-events', 'none');
+        svg.insertBefore(_rect, _t);
+      } catch(e){}
+    }
   }
 }
 

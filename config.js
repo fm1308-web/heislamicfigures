@@ -3,7 +3,7 @@
 window.GOLD_ARK_CONFIG = {
   CDN_BASE: 'https://gold-ark-data.hooman-92b.workers.dev',
   USE_CDN: true,
-  FIXTURE_VERSION: 'fixture3'
+  FIXTURE_VERSION: 'fixture5'
 };
 
 // dataUrl(relPath) — builds the final URL for a data fetch.
