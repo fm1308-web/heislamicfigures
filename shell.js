@@ -747,6 +747,17 @@ function renderZoneB(viewName){
 
   // HTW (always far right)
   if(spec.htw !== false){
+    if(viewName === 'BOOKS'){
+      var frPill = document.createElement('button');
+      frPill.className = 'zb-pill';
+      frPill.id = 'shell-btn-free-reads';
+      frPill.type = 'button';
+      frPill.textContent = 'FREE LIBRARY';
+      frPill.addEventListener('click', function(){
+        if(typeof window._bvOpenFreeLibrary === 'function') window._bvOpenFreeLibrary();
+      });
+      row1.appendChild(frPill);
+    }
     if(viewName === 'RELATIONS'){
       var rel3d = document.createElement('button');
       rel3d.className = 'zb-pill rel-3d-btn';

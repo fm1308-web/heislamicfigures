@@ -45,6 +45,8 @@ function _bYr(b){return b.year_display!=null?b.year_display:b.year;}
 
 let _BOOKS_DATA = null;
 var _ANCIENT_DATA = null;
+var _FREE_READS_DATA = null;
+var _frRenderFn = null;
 var _ancientOn = false;
 let _booksInited = false;
 let _booksFilter = { source:new Set(), theme:new Set(), author:new Set(), search:'' };
@@ -361,6 +363,18 @@ async function _loadAncientData(){
     return _ANCIENT_DATA;
   }
 }
+async function _loadFreeReadsData(){
+  if(_FREE_READS_DATA) return _FREE_READS_DATA;
+  try{
+    var res=await fetch(dataUrl('data/islamic/free_reads.json'));
+    _FREE_READS_DATA=await res.json();
+    return _FREE_READS_DATA;
+  }catch(e){
+    console.error('free_reads.json load failed',e);
+    _FREE_READS_DATA={total:0,with_links:0,books:[]};
+    return _FREE_READS_DATA;
+  }
+}
 
 function _showViewDesc(txt){
   // Sandbox: no header tagline target. No-op.
@@ -418,6 +432,31 @@ function _booksInjectStyles(){
   svg.bv-leaves g.bv-leaf{cursor:pointer;pointer-events:all}
   .bv-leaf-label{position:absolute;white-space:nowrap;z-index:4}
   .bv-pinned-scripture{padding:8px 16px 7px;border-bottom:1px solid rgba(212,175,55,.4);margin-bottom:4px}
+  #bv-lib-bar{flex-shrink:0;display:flex;justify-content:flex-end;align-items:center;padding:6px 20px;border-bottom:1px solid rgba(212,175,55,.10);background:#0e1621}
+  #bv-fr-btn{background:transparent;border:1px solid rgba(212,175,55,.35);color:#D4AF37;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.12em;padding:5px 16px;cursor:pointer;border-radius:2px;transition:background .15s}
+  #bv-fr-btn:hover{background:rgba(212,175,55,.10)}
+  #bv-fr-panel{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#0d0d18;display:none;flex-direction:column;font-family:Georgia,serif;color:#e0e0e0}
+  #bv-fr-panel.fr-open{display:flex}
+  #bv-fr-hd{flex-shrink:0;padding:16px 20px;border-bottom:1px solid rgba(212,175,55,.22);display:flex;align-items:flex-start;justify-content:space-between}
+  .bv-fr-ht{font-family:'Cinzel',serif;font-size:16px;letter-spacing:.14em;color:#D4AF37;text-transform:uppercase}
+  .bv-fr-st{font-size:11px;color:#6B7B8C;margin-top:5px;letter-spacing:.04em}
+  #bv-fr-close{background:none;border:1px solid rgba(212,175,55,.3);color:#D4AF37;font-size:16px;width:28px;height:28px;cursor:pointer;border-radius:2px;flex-shrink:0;line-height:28px;text-align:center}
+  #bv-fr-close:hover{background:rgba(212,175,55,.12)}
+  #bv-fr-srch{flex-shrink:0;padding:10px 16px;border-bottom:1px solid rgba(212,175,55,.10)}
+  #bv-fr-sinp{width:100%;padding:7px 10px;background:#1a1a2e;border:1px solid #2D3748;color:#e0e0e0;font-family:Georgia,serif;font-size:13px;border-radius:2px;outline:none;box-sizing:border-box}
+  #bv-fr-sinp:focus{border-color:#D4AF37}
+  #bv-fr-thd{flex-shrink:0;display:grid;grid-template-columns:40px 1fr 220px 64px minmax(180px,340px);gap:10px;padding:8px 20px;background:#080812;border-bottom:1px solid rgba(212,175,55,.22);font-size:10px;letter-spacing:.08em;color:#D4AF37;font-family:'Cinzel',serif}
+  #bv-fr-body{flex:1;overflow-y:auto}
+  .bv-fr-row{display:grid;grid-template-columns:40px 1fr 220px 64px minmax(180px,340px);gap:10px;padding:9px 20px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;align-items:center}
+  .bv-fr-row:hover{background:rgba(212,175,55,.05)}
+  .bv-fr-n{color:#D4AF37;font-size:11px;text-align:right}
+  .bv-fr-ti{color:#E4E4E7;line-height:1.3}
+  .bv-fr-au{color:#6B7B8C;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bv-fr-yr{color:#888;font-size:11px;text-align:center}
+  .bv-fr-lk{text-align:center}
+  .bv-fr-lk a{color:#6ab0f5;font-size:11px;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;max-width:100%}
+  .bv-fr-lk a:hover{color:#D4AF37;text-decoration:underline}
+  .bv-fr-off{color:#444;font-size:11px;text-align:center}
   `;
   const s=document.createElement('style');
   s.id='booksViewStyles';
@@ -1018,6 +1057,68 @@ async function initBooks(){
   }
   var _bvHowBtn=document.getElementById('bv-how-btn');
   if(_bvHowBtn) _bvHowBtn.addEventListener('click',function(e){e.stopPropagation();_showBooksMethodology();});
+  async function _openFreeLibrary(){
+    var panel = document.getElementById('bv-fr-panel');
+    if(panel){ panel.classList.toggle('fr-open'); return; }
+    if(!_FREE_READS_DATA) await _loadFreeReadsData();
+    var d = _FREE_READS_DATA;
+    panel = document.createElement('div');
+    panel.id = 'bv-fr-panel';
+    panel.innerHTML = ''
+      +'<div id="bv-fr-hd"><div><div class="bv-fr-ht">Free Library</div>'
+      +'<div class="bv-fr-st" id="bv-fr-st">'+d.total+' entries · '+d.with_links+' with links · '+(d.total-d.with_links)+' offline</div></div>'
+      +'<button id="bv-fr-close" title="Close (ESC)">×</button></div>'
+      +'<div id="bv-fr-thd"><span>#</span><span>TITLE</span><span>AUTHOR</span><span>YEAR</span><span>DOWNLOAD LINK</span></div>'
+      +'<div id="bv-fr-body"></div>';
+    var _frZoneB = document.getElementById('zoneB');
+    panel.style.top = (_frZoneB ? Math.round(_frZoneB.getBoundingClientRect().bottom) : 130) + 'px';
+    document.body.appendChild(panel);
+    function _renderFr(q){
+      var books = d.books;
+      var ql = (q||'').toLowerCase().trim();
+      var shown = ql ? books.filter(function(b){ return (b.t||'').toLowerCase().indexOf(ql)!==-1||(b.a||'').toLowerCase().indexOf(ql)!==-1; }) : books;
+      var html = '';
+      for(var i=0;i<shown.length;i++){
+        var b = shown[i];
+        var lk = b.u
+          ? '<a href="'+_booksEscape(b.u)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="'+_booksEscape(b.u)+'">'+_booksEscape(b.u)+'</a>'
+          : '<span class="bv-fr-off">—</span>';
+        html += '<div class="bv-fr-row">'
+          +'<span class="bv-fr-n">'+(i+1)+'</span>'
+          +'<span class="bv-fr-ti">'+_booksEscape(b.t||'')+'</span>'
+          +'<span class="bv-fr-au">'+_booksEscape(b.a||'')+'</span>'
+          +'<span class="bv-fr-yr">'+(b.y||'—')+'</span>'
+          +'<span class="bv-fr-lk">'+lk+'</span>'
+          +'</div>';
+      }
+      var body = document.getElementById('bv-fr-body');
+      if(body) body.innerHTML = html || '<div style="padding:30px;color:#555;font-size:13px">No results.</div>';
+      var st = document.getElementById('bv-fr-st');
+      if(st) st.textContent = shown.length+' of '+d.total+' entries';
+    }
+    _frRenderFn = _renderFr;
+    _renderFr('');
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = 'Search free library…';
+      searchInp.value = '';
+    }
+    document.getElementById('bv-fr-close').addEventListener('click', function(){
+      panel.classList.remove('fr-open');
+      _frRenderFn = null;
+      if(searchInp){ searchInp.placeholder = 'Search books…'; searchInp.value = ''; }
+    });
+    document.addEventListener('keydown', function _frEsc(e){
+      if(e.key==='Escape'){
+        panel.classList.remove('fr-open');
+        _frRenderFn = null;
+        if(searchInp){ searchInp.placeholder = 'Search books…'; searchInp.value = ''; }
+        document.removeEventListener('keydown', _frEsc);
+      }
+    });
+    panel.classList.add('fr-open');
+  }
+  window._bvOpenFreeLibrary = _openFreeLibrary;
   document.getElementById('bv-ancient-toggle').addEventListener('click',async function(){
     _ancientOn=!_ancientOn;
     var btn=document.getElementById('bv-ancient-toggle');
@@ -1081,6 +1182,11 @@ function _showBooksMethodology(){
       searchInp.placeholder = 'Search books…';
       searchInp.value = _booksFilter.search || '';
       searchInp.addEventListener('input', function(){
+        var frPanel = document.getElementById('bv-fr-panel');
+        if(frPanel && frPanel.classList.contains('fr-open') && _frRenderFn){
+          _frRenderFn(this.value);
+          return;
+        }
         _booksFilter.search = searchInp.value || '';
         _booksBuildCanvas();
         _booksAnimStop();
