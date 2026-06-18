@@ -35,6 +35,7 @@ window.StudyView = (function(){
   // ═══════════════════════════════════════════════════════════
 
 const _SR_SCHOLARS={
+  'F1168': {name:'Rabia al-Basri',          death:'d. 801 CE', dod:801},
   'F0241': {name:'Al-Hallaj',              death:'d. 922 CE',  dod:922},
   'F0229': {name:'Al-Farabi',              death:'d. 950 CE',  dod:950},
   'F0605': {name:'Firdowsi',              death:'d. 1020 CE', dod:1020},
@@ -49,7 +50,9 @@ const _SR_SCHOLARS={
   'F0580': {name:'Farid ud-Din Attar',     death:'d. 1221 CE', dod:1221},
   'F1432': {name:'Umar Ibn al-Farid',     death:'d. 1235 CE', dod:1235},
   'F0728': {name:'Ibn Arabi',              death:'d. 1240 CE', dod:1240},
+  'F0814': {name:'Jalal ad-Din Rumi',       death:'d. 1273 CE', dod:1273},
   'F0574': {name:'Fakhr al-Din Iraqi',    death:'d. 1289 CE', dod:1289},
+  'F1217': {name:'Saadi Shirazi',           death:'d. 1291 CE', dod:1291},
   'F0755': {name:'Ibn Taymiyya',           death:'d. 1328 CE', dod:1328},
   'F0727': {name:'Ibn al-Qayyim',          death:'d. 1350 CE', dod:1350},
   'F0743': {name:'Ibn Khaldun',            death:'d. 1406 CE', dod:1406}
@@ -323,8 +326,8 @@ function openStudyRoom(slug){
 }
 window.openStudyRoom = openStudyRoom;
 
-const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Firdowsi','Al-Biruni','Ali al-Hujwiri','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Farid ud-Din Attar','Abdul Qadir al-Jilani','Fakhr al-Din Iraqi','Ibn Taymiyya','Ibn al-Qayyim','Ibn Hazm','Ibn Khaldun']);
-const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Firdowsi':'F0605','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Fakhr al-Din Iraqi':'F0574','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727','Ibn Hazm':'F0737','Ibn Khaldun':'F0743'};
+const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Firdowsi','Al-Biruni','Ali al-Hujwiri','Ibn Arabi','Al-Qushayri','Al-Ghazali','Umar Ibn al-Farid','Ibn Rushd','Ibn Tufayl','Farid ud-Din Attar','Abdul Qadir al-Jilani','Fakhr al-Din Iraqi','Ibn Taymiyya','Ibn al-Qayyim','Ibn Hazm','Ibn Khaldun','Jalal ad-Din Rumi','Rabia al-Basri','Saadi Shirazi']);
+const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Firdowsi':'F0605','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Fakhr al-Din Iraqi':'F0574','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727','Ibn Hazm':'F0737','Ibn Khaldun':'F0743','Jalal ad-Din Rumi':'F0814','Rabia al-Basri':'F1168','Saadi Shirazi':'F1217'};
 window._SR_SLUG_MAP = _SR_SLUG_MAP;
 
 function _showStudyMethodology(){
