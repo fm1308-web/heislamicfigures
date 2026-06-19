@@ -303,7 +303,7 @@ var FILTER_SPECS = {
     actions: [
       { type:'pill', label:'+ ANCIENT' }
     ],
-    hint: 'Browse 2,062 books across themes, eras, and traditions — all with public links to free reads',
+    hint: 'Books timeline · explore free reads',
     hintInRow2: true,
     htw: true
   },

@@ -457,6 +457,7 @@ function _booksInjectStyles(){
   .bv-fr-lk a{color:#6ab0f5;font-size:11px;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;max-width:100%}
   .bv-fr-lk a:hover{color:#D4AF37;text-decoration:underline}
   .bv-fr-off{color:#444;font-size:11px;text-align:center}
+  .bv-fr-row--ancient{background:rgba(101,80,50,0.13);border-left:2px solid rgba(160,120,60,0.35);}
   `;
   const s=document.createElement('style');
   s.id='booksViewStyles';
@@ -1061,7 +1062,23 @@ async function initBooks(){
     var panel = document.getElementById('bv-fr-panel');
     if(panel){ panel.classList.toggle('fr-open'); return; }
     if(!_FREE_READS_DATA) await _loadFreeReadsData();
-    var d = _FREE_READS_DATA;
+    // Merge ancient_books into free library display
+    var _ancientForFr = [];
+    try {
+      var _abRes = await fetch(dataUrl('data/islamic/ancient_books.json'));
+      if(_abRes.ok){
+        var _abJson = await _abRes.json();
+        (_abJson.books||[]).forEach(function(b){
+          _ancientForFr.push({t:b.title, a:b.region||'', y:b.year||'', u:b.url||'', _note:b.note||'', _ancient:true});
+        });
+      }
+    } catch(e){ console.warn('[FREE LIB] ancient_books load failed', e); }
+    var _frMerged = {
+      total: (_FREE_READS_DATA.total||0) + _ancientForFr.length,
+      with_links: (_FREE_READS_DATA.with_links||0) + _ancientForFr.filter(function(b){return b.u;}).length,
+      books: (_FREE_READS_DATA.books||[]).concat(_ancientForFr)
+    };
+    var d = _frMerged;
     panel = document.createElement('div');
     panel.id = 'bv-fr-panel';
     panel.innerHTML = ''
@@ -1076,14 +1093,15 @@ async function initBooks(){
     function _renderFr(q){
       var books = d.books;
       var ql = (q||'').toLowerCase().trim();
-      var shown = ql ? books.filter(function(b){ return (b.t||'').toLowerCase().indexOf(ql)!==-1||(b.a||'').toLowerCase().indexOf(ql)!==-1; }) : books;
+      var shown = ql ? books.filter(function(b){ return b.u && ((b.t||'').toLowerCase().indexOf(ql)!==-1||(b.a||'').toLowerCase().indexOf(ql)!==-1); }) : books.filter(function(b){ return !!b.u; });
+      shown.sort(function(a,b){ return (a.y||0)-(b.y||0); });
       var html = '';
       for(var i=0;i<shown.length;i++){
         var b = shown[i];
         var lk = b.u
           ? '<a href="'+_booksEscape(b.u)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="'+_booksEscape(b.u)+'">'+_booksEscape(b.u)+'</a>'
           : '<span class="bv-fr-off">—</span>';
-        html += '<div class="bv-fr-row">'
+        html += '<div class="bv-fr-row' + (b._ancient ? ' bv-fr-row--ancient' : '') + '">'
           +'<span class="bv-fr-n">'+(i+1)+'</span>'
           +'<span class="bv-fr-ti">'+_booksEscape(b.t||'')+'</span>'
           +'<span class="bv-fr-au">'+_booksEscape(b.a||'')+'</span>'
