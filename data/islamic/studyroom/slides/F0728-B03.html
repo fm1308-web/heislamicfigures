@@ -26,7 +26,7 @@
   let pdfDoc = null, currentPage = 1;
   const canvas = document.getElementById('slide-canvas');
   const ctx = canvas.getContext('2d');
-  pdfjsLib.getDocument('F0728-B03.pdf').promise.then(doc => {
+  pdfjsLib.getDocument('F0728-B03.pdf?v=' + Date.now()).promise.then(doc => {
     pdfDoc = doc;
     document.getElementById('page-info').textContent = `1 / ${doc.numPages}`;
     renderPage(1);
