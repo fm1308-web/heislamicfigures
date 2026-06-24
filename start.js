@@ -223,6 +223,7 @@ function initStart(){
 
   if(!_stInited){
     _stBuildDOM(container);
+    document.querySelectorAll('#st-dd-surah').forEach(function(p){p.parentNode.removeChild(p);});var _stSurahPanel=document.createElement('div');_stSurahPanel.id='st-dd-surah';_stSurahPanel.setAttribute('style','display:none!important;position:fixed!important;z-index:99999999!important;');document.body.appendChild(_stSurahPanel);
     _stInited=true;
     document.addEventListener('click',function(ev){
       if(!_stDDOpen)return;
@@ -254,7 +255,6 @@ function _stBuildDOM(container){
       '<div id="st-l2">'+
         '<div class="st-dd-wrap">'+
           '<button class="st-dd-btn" id="st-btn-surah" onclick="_stToggleDD(\'surah\',event)"><span id="st-surah-label">Surah</span> <span class="st-dd-caret">\u25BE</span></button>'+
-          '<div class="st-dd-panel" id="st-dd-surah" style="display:none"></div>'+
         '</div>'+
         '<div class="st-dd-wrap">'+
           '<button class="st-dd-btn" id="st-btn-juz" onclick="_stToggleDD(\'juz\',event)"><span id="st-juz-label">Juz</span> <span class="st-dd-caret">\u25BE</span></button>'+
@@ -485,9 +485,10 @@ function _stBuildSurahDD(){
   var panel=document.getElementById('st-dd-surah');
   if(!panel)return;
   panel.innerHTML='';
-
   var search=document.createElement('input');
-  search.className='st-dd-search';search.type='text';search.placeholder='Search surahs\u2026';
+  search.className='st-dd-search';
+  search.type='text';
+  search.placeholder='Search surahs\u2026';
   search.onclick=function(ev){ev.stopPropagation();};
   search.oninput=function(){
     var q=search.value.toLowerCase();
@@ -496,18 +497,16 @@ function _stBuildSurahDD(){
     });
   };
   panel.appendChild(search);
-
-  var filtered=_stFilteredSurahs();
-  filtered.forEach(function(s){
+  var surahs=Array.isArray(_stIndex)?_stIndex:[];
+  surahs.forEach(function(s){
     var row=document.createElement('div');
     row.className='st-dd-item'+(s.id===_stSurah?' selected':'');
     row.dataset.id=s.id;
-    row.dataset.stxt=s.id+' '+s.name_ar+' '+s.name_en+' '+s.meaning;
-    var _srvd=_stRevData[s.id]||{};var _sdot=(_srvd.disputed)?'st-dot-disp':(_srvd.type==='meccan'||(!_srvd.type&&s.type==='meccan'))?'st-dot-mec':'st-dot-med';
-    row.innerHTML='<span class="st-dd-sdot '+_sdot+'"></span><span class="st-dd-snum">'+s.id+'</span>'+
-      '<span class="st-dd-sar">'+_stEsc(s.name_ar)+'</span>'+
-      '<span class="st-dd-sen">'+_stEsc(s.name_en)+'</span>'+
-      '<span class="st-dd-smn">'+_stEsc(s.meaning)+'</span>';
+    row.dataset.stxt=s.id+' '+s.name_ar+' '+s.name_en+' '+(s.meaning||'');
+    row.style.cssText='display:flex;align-items:center;gap:8px;padding:7px 12px;cursor:pointer;color:#9aa3b2;font-size:13px;';
+    row.innerHTML='<span style="min-width:28px;color:#c9a961;font-size:12px;">'+s.id+'</span>'+
+      '<span style="flex:1;color:#E8EAEF;">'+s.name_en+'</span>'+
+      '<span style="color:#9aa3b2;font-size:11px;">'+(s.meaning||'')+'</span>';
     (function(sid){
       row.onclick=function(ev){ev.stopPropagation();_stSelectSurah(sid);_stCloseDD();};
     })(s.id);
@@ -680,20 +679,39 @@ function _stBuildTransDD(){
 // ═══════════════════════════════════════════════════════════
 // DROPDOWN TOGGLE
 // ═══════════════════════════════════════════════════════════
-function _stToggleDD(which,ev){
+window._stToggleDD = function _stToggleDD(which, ev){
   if(ev)ev.stopPropagation();
   if(_stDDOpen===which){_stCloseDD();return;}
   _stCloseDD();
   _stDDOpen=which;
   var panel=document.getElementById('st-dd-'+which);
-  if(panel)panel.style.display='block';
+  if(!panel)return;
+  document.body.appendChild(panel);
   var btn=document.getElementById('st-btn-'+which);
   if(btn)btn.classList.add('active');
+  var rect=btn?btn.getBoundingClientRect():{left:0,bottom:0};
+  var viewportHeight=window.innerHeight;
+  var topOffset=Math.max(10,rect.bottom+8);
+  var maxAvailableHeight=viewportHeight-topOffset-20;
+  var maxHeight=maxAvailableHeight;
+  panel.style.cssText=
+    'display:block!important;'+
+    'position:fixed!important;'+
+    'top:'+topOffset+'px!important;'+
+    'left:'+Math.max(10,rect.left)+'px!important;'+
+    'width:420px!important;'+
+    'max-height:300px!important;'+
+    'overflow-y:auto!important;'+
+    'z-index:99999999!important;'+
+    'background:#1a2434!important;'+
+    'border:1px solid #c9a961!important;'+
+    'border-radius:4px!important;'+
+    'box-shadow:0 8px 24px rgba(0,0,0,0.6)!important;';
   if(which==='surah'){
-    var si=panel?panel.querySelector('.st-dd-search'):null;
+    var si=panel.querySelector('.st-dd-search');
     if(si){si.value='';si.dispatchEvent(new Event('input'));si.focus();}
   }
-}
+};
 
 function _stCloseDD(){
   if(!_stDDOpen)return;
@@ -4575,7 +4593,7 @@ function _dvMeasureTopbar(){
 window._dvMeasureTopbar = _dvMeasureTopbar;
 
 function _dvCloseAllStartDropdowns(){
-  document.querySelectorAll("#st-topbar .st-dd-panel").forEach(function(p){
+  document.querySelectorAll("#st-topbar .st-dd-panel, #st-dd-surah").forEach(function(p){
     p.style.display = "none";
   });
   if(typeof window._stDDOpen !== "undefined") window._stDDOpen = null;
@@ -5118,7 +5136,8 @@ window.StartView = (function(){
       ck.className = 'dd-checkbox';
       ck.textContent = sel ? '✓' : '';
       var sp = document.createElement('span');
-      sp.textContent = it.label;
+      if(it.html){ sp.style.flex = '1'; sp.innerHTML = it.html; }
+      else { sp.textContent = it.label; }
       row.appendChild(ck);
       row.appendChild(sp);
       if(sel) row.classList.add('selected');
@@ -5140,6 +5159,7 @@ window.StartView = (function(){
     var r = btnEl.getBoundingClientRect();
     panel.style.position = 'fixed';
     panel.style.top = (r.bottom + 4) + 'px';
+    panel.style.setProperty('max-height', (window.innerHeight - r.bottom - 24) + 'px', 'important');
     // first show panel to measure its width
     panel.style.display = 'block';
     panel.classList.add('open');
@@ -5179,8 +5199,15 @@ window.StartView = (function(){
     var arr = (_stIndex && _stIndex.surahs) ? _stIndex.surahs : (Array.isArray(_stIndex) ? _stIndex : null);
     if(arr && arr.length){
       arr.forEach(function(s){
-        var nm = s.english || s.name_en || s.name_arabic || s.name_ar || ('Surah '+s.id);
-        out.push({ value: s.id, label: s.id + ' — ' + nm });
+        var dotColor = (s.type === 'medinan') ? '#2ecc9b' : '#c9a961';
+        var html = '<span style="display:inline-flex;align-items:center;gap:10px;width:100%">'
+          + '<span style="width:8px;height:8px;border-radius:50%;background:' + dotColor + ';flex:0 0 auto"></span>'
+          + '<span style="min-width:28px;color:#c9a961;font-size:12px">' + s.id + '</span>'
+          + '<span style="min-width:70px;color:#E8EAEF;font-family:Amiri,serif;font-size:15px;direction:rtl;text-align:right">' + (s.name_ar || '') + '</span>'
+          + '<span style="flex:1;color:#E8EAEF;font-weight:600">' + (s.name_en || '') + '</span>'
+          + '<span style="color:#9aa3b2;font-size:11px;text-align:right">' + (s.meaning || '') + '</span>'
+          + '</span>';
+        out.push({ value: s.id, label: s.id + ' ' + (s.name_en || '') + ' ' + (s.name_ar || '') + ' ' + (s.meaning || ''), html: html });
       });
     } else {
       for(var i=1;i<=114;i++) out.push({ value:i, label:'Surah '+i });

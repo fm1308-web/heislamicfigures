@@ -32,6 +32,21 @@ html, body {
   font-family: var(--sans);
 }
 
+#st-dd-surah {
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 300px !important;
+  overflow-y: auto !important;
+}
+
+#st-dd-surah .st-dd-search {
+  flex-shrink: 0 !important;
+}
+
+#st-dd-surah .st-dd-item {
+  flex-shrink: 0 !important;
+}
+
 button { font-family: inherit; cursor: pointer; }
 
 /* ============ ENTRY DOOR ============ */
@@ -1613,3 +1628,60 @@ body[dir="rtl"] .zone-d,
 html[dir="rtl"] .zone-d {
   direction: ltr;
 }
+/* ── START view dropdown panels (.st-dd-panel / .st-dd-wrap) ── */
+/* shell.css only defined .dd-panel; START view uses .st-dd-panel.  */
+/* Without these rules the surah list has no overflow-y, so surahs  */
+/* 113-114 render but are unreachable.                               */
+.st-dd-wrap {
+  position: relative;
+  display: inline-block;
+}
+.st-dd-panel {
+  display: none;
+  position: fixed;
+  top: 160px;
+  left: 0;
+  background: #1a1a2e;
+  border: 1px solid var(--gold-dim, #6B5A1F);
+  border-radius: 6px;
+  min-width: 220px;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 180px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 6px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  font-family: var(--sans, system-ui, sans-serif);
+  z-index: 999999;
+}
+.st-dd-panel.st-dd-right {
+  left: auto;
+  right: 0;
+}
+.st-dd-search {
+  display: block;
+  width: calc(100% - 16px);
+  margin: 4px 8px 6px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 4px;
+  color: #E5E7EB;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+.st-dd-search:focus { border-color: var(--gold, #D4AF37); }
+.st-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  color: #cfd2d6;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.st-dd-item:hover { background: rgba(212,175,55,0.1); color: var(--gold, #D4AF37); }
+.st-dd-item.selected { color: var(--gold, #D4AF37); }
