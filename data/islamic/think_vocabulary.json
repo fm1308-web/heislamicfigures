@@ -17,7 +17,7 @@
         "Ibn Taymiyya"
       ],
       "related": [
-        "sifat-allah",
+        "divine-attributes",
         "tanzih",
         "tashbih"
       ],
@@ -67,7 +67,7 @@
       "related": [
         "qadar",
         "jabr",
-        "sifat-allah"
+        "divine-attributes"
       ],
       "name_ar": "الكسب",
       "name_ur": "کسب",
@@ -99,7 +99,7 @@
       "definition_ur": "یہ نظریہ کہ انسان اپنے افعال میں مجبور ہے"
     },
     {
-      "slug": "sifat-allah",
+      "slug": "divine-attributes",
       "name": "Sifat Allah (divine attributes)",
       "category": "theology",
       "definition": "Whether God's attributes like knowledge and speech are real, metaphorical, or identical to His essence.",
@@ -137,7 +137,7 @@
         "Al-Ash'ari"
       ],
       "related": [
-        "sifat-allah",
+        "divine-attributes",
         "tawhid",
         "tanzih"
       ],
@@ -161,7 +161,7 @@
         "Shia theologians"
       ],
       "related": [
-        "sifat-allah",
+        "divine-attributes",
         "tanzih",
         "tashbih"
       ],
@@ -259,7 +259,7 @@
       "related": [
         "tashbih",
         "tawhid",
-        "sifat-allah"
+        "divine-attributes"
       ],
       "name_ar": "التنزيه",
       "name_ur": "تنزیہ",
@@ -282,7 +282,7 @@
       ],
       "related": [
         "tanzih",
-        "sifat-allah",
+        "divine-attributes",
         "tawil"
       ],
       "name_ar": "التشبيه",
@@ -499,7 +499,7 @@
       "related": [
         "wajib-mumkin",
         "asalat-al-wujud",
-        "wahdat-al-wujud"
+        "tawhid-al-wujud"
       ],
       "name_ar": "الوجود والماهية",
       "name_ur": "وجود اور ماہیت",
@@ -643,7 +643,7 @@
       "related": [
         "wujud-mahiyya",
         "harakat-jawhariyya",
-        "wahdat-al-wujud"
+        "tawhid-al-wujud"
       ],
       "name_ar": "أصالة الوجود",
       "name_ur": "اصالتِ وجود",
@@ -1218,7 +1218,7 @@
       ],
       "related": [
         "baqa",
-        "wahdat-al-wujud",
+        "tawhid-al-wujud",
         "shath"
       ],
       "name_ar": "الفناء",
@@ -1243,7 +1243,7 @@
       "related": [
         "fana",
         "marifa",
-        "insan-kamil"
+        "al-insan-al-kamil"
       ],
       "name_ar": "البقاء",
       "name_ur": "بقا",
@@ -1251,7 +1251,7 @@
       "definition_ur": "فنا کے بعد ہوشیار واپسی اور خودی سے مرنے کے بعد اللہ میں زندگی"
     },
     {
-      "slug": "wahdat-al-wujud",
+      "slug": "tawhid-al-wujud",
       "name": "Wahdat al-Wujud (unity of being)",
       "category": "mysticism",
       "definition": "Ibn Arabi's doctrine that all existence is one reality manifesting as many.",
@@ -1289,7 +1289,7 @@
         "Mazhar Jan-i Janan"
       ],
       "related": [
-        "wahdat-al-wujud",
+        "tawhid-al-wujud",
         "fana",
         "tajalli"
       ],
@@ -1482,7 +1482,7 @@
       ],
       "related": [
         "qutb",
-        "insan-kamil",
+        "al-insan-al-kamil",
         "ismah"
       ],
       "name_ar": "الولاية",
@@ -1506,7 +1506,7 @@
       ],
       "related": [
         "wilaya",
-        "insan-kamil",
+        "al-insan-al-kamil",
         "tajalli"
       ],
       "name_ar": "القطب",
@@ -1515,7 +1515,7 @@
       "definition_ur": "ہر دور کا اعلیٰ ترین ولی جس کے گرد روحانی نظام گھومتا ہے"
     },
     {
-      "slug": "insan-kamil",
+      "slug": "al-insan-al-kamil",
       "name": "Al-Insan al-Kamil (the Perfect Human)",
       "category": "mysticism",
       "definition": "The cosmic archetype of humanity as complete mirror of the divine names.",
@@ -1529,7 +1529,7 @@
         "Aziz Nasafi"
       ],
       "related": [
-        "wahdat-al-wujud",
+        "tawhid-al-wujud",
         "wilaya",
         "tajalli"
       ],
@@ -1553,7 +1553,7 @@
         "Qunawi"
       ],
       "related": [
-        "wahdat-al-wujud",
+        "tawhid-al-wujud",
         "alam-al-mithal",
         "marifa"
       ],
@@ -1602,7 +1602,7 @@
       ],
       "related": [
         "fana",
-        "wahdat-al-wujud",
+        "tawhid-al-wujud",
         "shath"
       ],
       "name_ar": "الحلول",

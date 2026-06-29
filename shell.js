@@ -15,7 +15,7 @@ var state = {
 };
 
 // ---------- View navigation history ----------
-var NAV_MAX = 50;
+var NAV_MAX = 100;
 var navHistory = { back: [], forward: [] };
 var _pendingRestore = null;
 

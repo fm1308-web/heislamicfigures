@@ -711,6 +711,7 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
   overflow-y: auto;
   background: var(--bg-navy);
   padding: 0;
+  padding-bottom: 64px;
 }
 
 .view-placeholder {
@@ -740,6 +741,12 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
 
 /* --- ZONE D --- */
 .zone-d {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 50;
   flex-shrink: 0;
   flex-grow: 0;
   height: 56px;
