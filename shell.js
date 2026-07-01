@@ -17,6 +17,8 @@ var state = {
 // ---------- View navigation history ----------
 var NAV_MAX = 100;
 var navHistory = { back: [], forward: [] };
+var _gaSeq = 0;     // browser-history sequence counter
+var _gaCurrent = 0; // ga of the state currently shown
 var _pendingRestore = null;
 
 function _captureCurrent(){
@@ -48,7 +50,7 @@ function navBack(){
   if(navHistory.forward.length > NAV_MAX) navHistory.forward.shift();
   var entry = navHistory.back.pop();
   if(entry.hash){
-    try { history.replaceState(null, '', entry.hash); } catch(e){ location.hash = entry.hash; }
+    try { history.replaceState({ga:_gaCurrent}, '', entry.hash); } catch(e){ location.hash = entry.hash; }
   }
   setActiveTab(entry.tab, { skipHistory: true, restoreData: entry });
 }
@@ -59,7 +61,7 @@ function navForward(){
   if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
   var entry = navHistory.forward.pop();
   if(entry.hash){
-    try { history.replaceState(null, '', entry.hash); } catch(e){ location.hash = entry.hash; }
+    try { history.replaceState({ga:_gaCurrent}, '', entry.hash); } catch(e){ location.hash = entry.hash; }
   }
   setActiveTab(entry.tab, { skipHistory: true, restoreData: entry });
 }
@@ -68,6 +70,8 @@ window._navCaptureCurrent = function(){
     navHistory.back.push(_captureCurrent());
     if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
     navHistory.forward = [];
+    _gaSeq++; _gaCurrent = _gaSeq;
+    try { history.pushState({ga:_gaSeq}, '', location.hash || ''); } catch(e){}
     _updateNavButtons();
   } catch(e){}
 };
@@ -444,8 +448,23 @@ function showEntry(){
 function showShell(){
   document.getElementById('entryDoor').hidden = true;
   document.getElementById('appShell').hidden = false;
-  // Entry door always lands on TIMELINE in browse mode — clear any stale hash.
-  try { history.replaceState(null, '', location.pathname + location.search); } catch(e){ location.hash = ''; }
+  _gaSeq = 0; _gaCurrent = 0;
+  // Deep-link: if the address names a real view, open THAT view (not TIMELINE).
+  var _raw = (location.hash || '').replace(/^#/, '');
+  var _viewPart = _raw.split('?')[0].split('&')[0].toLowerCase();
+  var _target = '';
+  for(var _i = 0; _i < ALL_TABS.length; _i++){
+    if(ALL_TABS[_i].toLowerCase() === _viewPart){ _target = ALL_TABS[_i]; break; }
+  }
+  if(_target){
+    // Valid deep link — keep the full address intact, route to that view.
+    try { history.replaceState({ga:0}, '', location.hash); } catch(e){}
+    state.activeTab = _target;
+    setActiveTab(_target, { skipHistory: true });
+    return;
+  }
+  // No valid deep link — clean baseline on TIMELINE.
+  try { history.replaceState({ga:0}, '', location.pathname + location.search); } catch(e){ location.hash = ''; }
   state.activeTab = 'TIMELINE';
   setActiveTab('TIMELINE');
 }
@@ -551,8 +570,9 @@ function makeTab(name){
 }
 function setActiveTab(name, opts){
   opts = opts || {};
+  var _isNewFwd = (!opts.skipHistory && _activeViewApi && state.activeTab !== name);
   // Push outgoing state onto back stack ONLY for user-driven new tab clicks
-  if(!opts.skipHistory && _activeViewApi && state.activeTab !== name){
+  if(_isNewFwd){
     navHistory.back.push(_captureCurrent());
     if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
     navHistory.forward = [];
@@ -597,8 +617,13 @@ function setActiveTab(name, opts){
   _renderShellBookmarkPill(name);
   syncZoneD();
   if(!opts.skipHistory){
-    if(history.replaceState) history.replaceState(null, '', '#' + name.toLowerCase());
-    else location.hash = name.toLowerCase();
+    var _h = '#' + name.toLowerCase();
+    if(_isNewFwd){
+      _gaSeq++; _gaCurrent = _gaSeq;
+      try { history.pushState({ga:_gaSeq}, '', _h); } catch(e){ location.hash = name.toLowerCase(); }
+    } else {
+      try { history.replaceState({ga:_gaCurrent}, '', _h); } catch(e){ location.hash = name.toLowerCase(); }
+    }
   }
   _updateNavButtons();
 }
@@ -1094,8 +1119,21 @@ function bindZoneD(){
     }
     syncZoneD();
   });
-  document.getElementById('zdBack').addEventListener('click', function(){ navBack(); });
-  document.getElementById('zdForward').addEventListener('click', function(){ navForward(); });
+  document.getElementById('zdBack').addEventListener('click', function(){ if(navHistory.back.length) history.back(); });
+  document.getElementById('zdForward').addEventListener('click', function(){ if(navHistory.forward.length) history.forward(); });
+  window.addEventListener('popstate', function(e){
+    var sh = document.getElementById('appShell');
+    if(!sh || sh.hidden) return;
+    var target = (e.state && typeof e.state.ga === 'number') ? e.state.ga : 0;
+    var steps;
+    if(target < _gaCurrent){
+      steps = _gaCurrent - target; _gaCurrent = target;
+      while(steps-- > 0 && navHistory.back.length){ navBack(); }
+    } else if(target > _gaCurrent){
+      steps = target - _gaCurrent; _gaCurrent = target;
+      while(steps-- > 0 && navHistory.forward.length){ navForward(); }
+    }
+  });
   document.getElementById('zdTip').addEventListener('click', function(){
     openModal('Tip for ' + state.activeTab, 'Placeholder tip body for ' + state.activeTab + '. Real tips will be authored per view.');
   });
@@ -1405,7 +1443,21 @@ function _entryDoorVisible(){
 function _hideEntryDoor(){
   document.getElementById('entryDoor').hidden = true;
   document.getElementById('appShell').hidden = false;
-  try { history.replaceState(null, '', location.pathname + location.search); } catch(e){ location.hash = ''; }
+  _gaSeq = 0; _gaCurrent = 0;
+  // Deep-link: if the address names a real view, open THAT view (not TIMELINE).
+  var _raw = (location.hash || '').replace(/^#/, '');
+  var _viewPart = _raw.split('?')[0].split('&')[0].toLowerCase();
+  var _target = '';
+  for(var _i = 0; _i < ALL_TABS.length; _i++){
+    if(ALL_TABS[_i].toLowerCase() === _viewPart){ _target = ALL_TABS[_i]; break; }
+  }
+  if(_target){
+    try { history.replaceState({ga:0}, '', location.hash); } catch(e){}
+    state.activeTab = _target;
+    setActiveTab(_target, { skipHistory: true });
+    return;
+  }
+  try { history.replaceState({ga:0}, '', location.pathname + location.search); } catch(e){ location.hash = ''; }
   state.activeTab = 'TIMELINE';
   setActiveTab('TIMELINE');
 }

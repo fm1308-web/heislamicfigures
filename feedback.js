@@ -12,6 +12,7 @@ function _formHtml(){
   return ''
     + '<div style="font-family:\'Cinzel\',serif;font-size:18px;letter-spacing:.08em;color:#D4AF37;margin-bottom:14px">Send Feedback</div>'
     + '<div style="font-size:12px;color:#9aa3b2;margin-bottom:16px">We read every message. Reply by email if needed.</div>'
+    + '<div id="fbWho" style="font-size:12px;color:#D4AF37;margin-bottom:12px;display:none"></div>'
     + '<select id="fbCategory" style="width:100%;background:#0E1621;border:1px solid rgba(212,175,55,0.25);color:#E8EAEF;padding:8px;border-radius:3px;margin-bottom:12px;font-family:Lato,sans-serif;font-size:13px">'
     +   '<option value="bug">Bug</option>'
     +   '<option value="idea">Idea</option>'
@@ -70,6 +71,20 @@ function _openModal(){
   var msg = ov.querySelector('#fbMessage'); if(msg) msg.value = '';
   var cat = ov.querySelector('#fbCategory'); if(cat) cat.value = 'other';
   var err = ov.querySelector('#fbErr'); if(err){ err.style.display = 'none'; err.textContent = ''; }
+  var who = ov.querySelector('#fbWho');
+  if(who){
+    var _wu = (window.GoldArkAuth && window.GoldArkAuth.getCurrentUser) ? window.GoldArkAuth.getCurrentUser() : null;
+    if(_wu){
+      var _nm = _wu.displayName || _wu.email || 'Signed in';
+      var _tg = (_wu.tier === 'tester' || _wu.tier === 'free') ? 'TESTER'
+              : (_wu.tier === 'subscriber') ? 'SCHOLAR'
+              : (_wu.role && _wu.role !== 'user') ? String(_wu.role).toUpperCase() : '';
+      who.textContent = 'Sending as ' + _nm + (_tg ? ' · ' + _tg : '');
+      who.style.display = 'block';
+    } else {
+      who.style.display = 'none';
+    }
+  }
   var sendBtn = ov.querySelector('#fbSend'); if(sendBtn){ sendBtn.disabled = false; sendBtn.style.opacity = '1'; }
   ov.style.display = 'flex';
   setTimeout(function(){ var m = ov.querySelector('#fbMessage'); if(m) m.focus(); }, 50);
@@ -105,7 +120,14 @@ function _submit(){
   }
   sendBtn.disabled = true;
   sendBtn.style.opacity = '0.6';
+  var _fu = (window.GoldArkAuth && window.GoldArkAuth.getCurrentUser) ? window.GoldArkAuth.getCurrentUser() : null;
   var payload = { category: category, message: message, url: location.href, userAgent: navigator.userAgent };
+  if(_fu){
+    payload.name = _fu.displayName || '';
+    payload.email = _fu.email || '';
+    payload.role = _fu.role || '';
+    payload.tier = _fu.tier || '';
+  }
   Promise.resolve(window.GoldArkAuth.submitFeedback(payload)).then(function(){
     var card = _modalEl.querySelector('#fbCard');
     if(card){

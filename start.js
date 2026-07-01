@@ -234,6 +234,21 @@ function initStart(){
   }
 
   _stLoadData(function(){
+    // Deep-link: open the surah/verse named in the address bar (once per session).
+    try {
+      if(!window._stDeepLinkConsumed){
+        var _dl = (location.hash || '').match(/^#start\?(.*)$/i);
+        if(_dl){
+          var _p = {};
+          _dl[1].split('&').forEach(function(kv){ var a = kv.split('='); if(a[0]) _p[decodeURIComponent(a[0])] = decodeURIComponent(a[1] || ''); });
+          var _s = parseInt(_p.surah, 10);
+          if(_s >= 1 && _s <= 114) _stSurah = _s;
+          var _v = parseInt(_p.verse, 10);
+          if(_v >= 1) window._stPendingJump = { surah: _stSurah, vstart: _v, vend: _v };
+        }
+        window._stDeepLinkConsumed = true;
+      }
+    } catch(e){}
     _stBuildSurahDD();
     _stBuildJuzDD();
     _stBuildHizbDD();
@@ -242,6 +257,18 @@ function initStart(){
     _stBuildTransDD();
     _stRenderSurah();
     try { _stRenderConceptPin(); } catch(e){ console.warn('[start] concept pin render failed', e); }
+    try {
+      var _pj = window._stPendingJump;
+      if(_pj && _pj.vstart){
+        window._stPendingJump = null;
+        var _vv = _pj.vstart;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){
+          var _r = document.getElementById('st-reader'); if(!_r) return;
+          var _row = _r.querySelector('.st-verse[data-verse-id="' + _vv + '"]');
+          if(_row){ _row.scrollIntoView({ behavior: 'smooth', block: 'center' }); _row.classList.add('quran-verse-flash'); setTimeout(function(){ _row.classList.remove('quran-verse-flash'); }, 1800); }
+        }); });
+      }
+    } catch(e){}
   });
 }
 
@@ -5919,4 +5946,34 @@ window._stSearchToggle = function(){
       }
     }, 150);
   }
+})();
+
+// Deep-link from the address bar on load: #start?surah=2  or  #start?surah=2&verse=255
+(function(){
+  try {
+    var h = location.hash || '';
+    if(!/^#start(\?|$)/i.test(h)) return;
+    var q = h.split('?')[1] || '';
+    if(!q) return;
+    var params = {};
+    q.split('&').forEach(function(p){
+      var kv = p.split('=');
+      if(kv[0]) params[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+    });
+    var S = parseInt(params.surah, 10);
+    if(!S || S < 1 || S > 114) return;
+    var V = parseInt(params.verse, 10);
+    if(!V || V < 1) V = 1;
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      var shell = document.getElementById('appShell');
+      var shellVisible = !shell || !shell.hidden;
+      if(shellVisible && typeof window.openStartAtVerse === 'function'){
+        clearInterval(iv);
+        window.openStartAtVerse(S, V);
+      }
+      if(tries > 100){ clearInterval(iv); }
+    }, 60);
+  } catch(e){ console.warn('[start deep-link] failed', e); }
 })();

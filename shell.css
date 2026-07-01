@@ -1089,12 +1089,19 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
   max-width: calc(100vw - 24px) !important;
   max-height: calc(100vh - 120px) !important;
   overflow-y: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dim, #6B5A1F) rgba(255,255,255,0.04);
   padding: 6px 0;
   box-shadow: 0 8px 24px rgba(0,0,0,0.6);
   font-family: var(--sans, system-ui, sans-serif);
   z-index: 999999;
 }
 .dd-panel.open { display: block; }
+.dd-panel::-webkit-scrollbar { width: 8px; }
+.dd-panel::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 4px; }
+.dd-panel::-webkit-scrollbar-thumb { background: var(--gold-dim, #6B5A1F); border-radius: 4px; }
+.dd-panel::-webkit-scrollbar-thumb:hover { background: var(--gold, #D4AF37); }
 
 .dd-search {
   display: block;
@@ -1115,9 +1122,9 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 14px;
+  padding: 4px 12px;
   color: #cfd2d6;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
