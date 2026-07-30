@@ -234,7 +234,7 @@ function loadAndMountView(name){
     return true;
   }
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=132';
+  var _cb = '?v=134';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';

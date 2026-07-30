@@ -215,13 +215,12 @@ window.FinanceView = (function(){
   // ── Live-run model selection — persisted (same plain pattern). Single source of truth for the model list + pricing. ──
   var API_MODEL_LS = 'finance_api_model_v1';
   var LIVE_MODELS = [
-    { value:'claude-fable-5',             label:'Claude Fable 5' },
     { value:'claude-sonnet-4-6',          label:'Claude Sonnet 4.6' },
     { value:'claude-haiku-4-5-20251001',  label:'Claude Haiku 4.5' }
   ];
   var LIVE_MODEL_DEFAULT = 'claude-sonnet-4-6';
-  // Price per MILLION tokens { in, out }. Claude Fable 5 pricing is unknown → intentionally absent
-  // (the cost line then omits the USD figure and points to console.anthropic.com).
+  // Price per MILLION tokens { in, out }. Any model listed above but absent here shows
+  // no USD figure on the cost line — it points to console.anthropic.com instead.
   var LIVE_MODEL_PRICING = {
     'claude-sonnet-4-6':          { in:3, out:15 },
     'claude-haiku-4-5-20251001':  { in:1, out:5 }
@@ -2535,7 +2534,7 @@ window.FinanceView = (function(){
     + '=== DOCUMENT START ===\n'
     + String((_liveDoc && _liveDoc.text) || '').slice(0, 100000) + '\n'
     + '=== DOCUMENT END ===';
-    return { model: _apiModelGet(), max_tokens: 50000, messages: [{ role: 'user', content: content }] };
+    return { model: _apiModelGet(), max_tokens: 50000, temperature: 0, system: RECIPE_SYSTEM, messages: [{ role: 'user', content: content }] };
   }
   // Strip accidental ``` fences / prose, then JSON.parse. Returns object or null.
   function _parseLiveJson(txt){
@@ -2781,9 +2780,14 @@ window.FinanceView = (function(){
     };
   })();
 
+  var RECIPE_SYSTEM = 'You are a Shari\'ah compliance analyst. NEVER INVENT: every quote must be copied character-for-character from the provided DOCUMENT; every claim must trace to the DOCUMENT, the provided clauses, or the named standards. If unsure, mark it uncertain rather than guess. Scope: AAOIFI + CBUAE standards as adopted in the UAE. Tradition: Sunni. School: Maliki. Perspective: the financing bank. Respond with ONLY raw JSON matching the requested shape.';
+
   // One browser-direct POST to Anthropic; resolves { status, j }. Rejects { reason } on network failure.
   function _pipeApiCall(key, model, promptText, maxTokens, tools, toolChoice){
-    var body = { model: model, max_tokens: maxTokens, messages: [{ role: 'user', content: promptText }] };
+    var body = { model: model, max_tokens: maxTokens, temperature: 0, messages: [{ role: 'user', content: promptText }] };
+    body.system = tools
+      ? RECIPE_SYSTEM.replace('Respond with ONLY raw JSON matching the requested shape.', 'Return your answer through the provided tool, matching its schema exactly.')
+      : RECIPE_SYSTEM;
     if(tools){ body.tools = tools; if(toolChoice) body.tool_choice = toolChoice; }
     return fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
