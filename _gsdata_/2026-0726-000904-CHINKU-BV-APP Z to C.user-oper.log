@@ -1,0 +1,23 @@
+2026-07-26 00:09:09: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 00:09:09: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 00:09:09: == Sync Started by User Command
+2026-07-26 00:09:09: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 00:09:09: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 00:09:09: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 00:09:09: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 00:09:09: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 00:09:09: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 00:09:09: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 00:09:09: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 00:09:09: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 00:09:09: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 00:09:09: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 00:09:09: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 00:09:09: Copy Over 'Z:/Islamic App/bv-app/data/Finance/standards_files.json' -> 'C:/TEST/bv-app/data/Finance/standards_files.json' (14,262) (User Action)
+2026-07-26 00:09:09: Copy Over 'Z:/Islamic App/bv-app/data/Finance/standards_lights.json' -> 'C:/TEST/bv-app/data/Finance/standards_lights.json' (61,291) (User Action)
+2026-07-26 00:09:09: Copy Over 'Z:/Islamic App/bv-app/finance.css' -> 'C:/TEST/bv-app/finance.css' (114,722) (User Action)
+2026-07-26 00:09:09: Copy Over 'Z:/Islamic App/bv-app/shell.js' -> 'C:/TEST/bv-app/shell.js' (60,113) (User Action)
+2026-07-26 00:09:09: Copy Over 'Z:/Islamic App/bv-app/finance.js' -> 'C:/TEST/bv-app/finance.js' (350,118) (User Action)
+2026-07-26 00:09:09: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 00:09:09: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 00:09:09: == Sync Complete. Time: 00:00:00, Speed: 0.00/s, OK: 4,514, Errors: 0

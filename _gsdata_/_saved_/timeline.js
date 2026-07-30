@@ -1,0 +1,2805 @@
+/* ─────────────────────────────────────────────────────────────
+   TIMELINE view — verbatim lift from bv-app/app.js
+   IIFE exposes window.TimelineView = { mount, unmount }
+
+   Edits applied (vs bv-app/app.js):
+   - Lines 1-219 (top boot stub region) → replaced by stubs below
+   - Lines 370-384 (_tileNavInit/_tileNavSync) → dropped (sandbox shell handles tab nav)
+   - Lines 386-576 (boot + popstate + setHeight + _resizeShell) → dropped (replaced by mount() at footer)
+   - Lines 1039-1111 (setView) → dropped (sandbox shell handles)
+   - Lines 2053-2143 (trailing AnimControls IIFE) → dropped (no shell-level anim panel)
+   - All fetches routed through dataUrl()
+
+   ── SACRED RULE ──
+   Center gold spine (.tl-life-arc + dob chips) is sacred.
+   Only DOB labels and lifespan arcs render in #tlScale.
+   ───────────────────────────────────────────────────────────── */
+window.TimelineView = (function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════
+  // I18N HELPERS (BV49 Prompt A)
+  // ═══════════════════════════════════════════════════════════
+  var _TL_UR = {
+    // HTW modal
+    'How This Works': 'یہ کیسے کام کرتا ہے',
+    'TYPE': 'قسم',
+    'TRADITION': 'روایت',
+    'HAS': 'رکھتا ہے',
+    'Year slider': 'سال سلائیڈر',
+    // HTW prose
+    'TYPE_DESC': 'شخصیت کی قسم کے مطابق فلٹر کریں۔',
+    'TRADITION_DESC': 'مکتب یا فرقے کے مطابق فلٹر کریں۔',
+    'HAS_DESC': 'وہ شخصیات جن کے پاس اضافی مواد ہے:',
+    'YEAR_DESC': 'منتخب سال میں زندہ شخصیات کو نمایاں کریں۔',
+    'S_LABEL': 'مطالعہ کا کمرہ',
+    'W_LABEL': 'ویکیپیڈیا اندراج',
+    'F_LABEL': 'سفر کی پیروی',
+    'B_LABEL': 'کتابیں',
+    'T_LABEL': 'بات چیت (AI گفتگو)',
+    // Info card section headings
+    'BORN': 'پیدائش',
+    'DIED': 'وفات',
+    'CENTURY': 'صدی',
+    'Biography': 'سوانح',
+    'Titles & Epithets': 'القاب و کنیتیں',
+    'Names Across Traditions': 'مختلف روایات میں نام',
+    'Sources': 'ماخذ',
+    'SCHOLARSHIP': 'علمیت',
+    'INFORMATION': 'معلومات',
+    'AI-generated': 'AI سے تیار شدہ',
+    'AI-generated · independently verify': 'AI سے تیار شدہ · خود تصدیق کریں',
+    // UI labels
+    'Click a name to focus': 'فوکس کے لیے کسی شخصیت پر کلک کریں',
+    'FOCUS MODE': 'فوکس موڈ',
+    'PRE-ISLAMIC': 'قبل از اسلام',
+    'PROPHETIC ERA': 'دور نبوت',
+    'Search figures…': 'شخصیات تلاش کریں…',
+    'Follow journey': 'سفر کی پیروی',
+    'Source': 'ماخذ',
+    'legendary': 'روایتی',
+    'Wikipedia': 'ویکیپیڈیا',
+    // Types
+    'Prophet':'نبی','Founder':'بانی','Sahaba':'صحابہ','Sahabiyya':'صحابیہ',
+    "Tabi'un":'تابعون','Scholar':'عالم','Mystic':'صوفی','Ruler':'حاکم',
+    'Poet':'شاعر','Philosopher':'فلسفی','Scientist':'سائنسدان','Historian':'مورخ',
+    'Reformer':'مصلح','Jurist':'فقیہ','Caliph':'خلیفہ','Warrior':'مجاہد',
+    'Sufi':'صوفی','Traveler':'سیاح','Mufassir':'مفسر','Mujaddid':'مجدد',
+    'Companion':'صحابی','Prophetic Lineage':'نبوی نسب','Genealogy':'نسب',
+    'Ashra Mubashshara':'عشرہ مبشرہ',
+    // Traditions
+    'Hadith Sciences':'علومِ حدیث','Early Ascetics':'ابتدائی زاہدین',
+    'Islamic Jurisprudence':'فقہ اسلامی','Islamic Philosophy':'فلسفہ اسلامی',
+    'Islamic Sciences':'اسلامی علوم','Islamic Theology':'علم الکلام',
+    'Islamic Literature':'اسلامی ادب','Persian Poetry':'فارسی شاعری',
+    'Khorasan School':'مکتبِ خراسان','Baghdad School':'مکتبِ بغداد',
+    'Andalusian Sciences':'اندلسی علوم',
+    'Naqshbandiyya':'نقشبندیہ','Shadhiliyya':'شاذلیہ','Qadiriyya':'قادریہ',
+    'Chishti':'چشتیہ','Suhrawardiyya':'سہروردیہ','Mawlawiyya':'مولویہ',
+    'Qalandari':'قلندریہ','Yeseviyya':'یسویہ','Kubrawiyya':'کبرویہ',
+    'Akbarian':'اکبریہ','Ishraqiyya':'اشراقیہ','Mughal':'مغل',
+    'Sunni':'سنی','Shia':'شیعہ','Ismaili':'اسماعیلی',
+    'Twelver Shia':'اثناء عشری شیعہ','Nizari Ismaili':'نزاری اسماعیلی',
+    'Tayyibi Ismaili':'طیبی اسماعیلی',
+    // Filter labels
+    'All Types':'تمام اقسام','All Traditions':'تمام روایات',
+    'Search...':'تلاش…','Any':'کوئی بھی','Study':'مطالعہ','Wiki':'ویکی',
+    'Follow Journey':'سفر دیکھیں','Books':'کتب','Talk':'گفتگو',
+    // Cross-tradition labels
+    'Islamic':'اسلامی','Christian':'مسیحی','Jewish':'یہودی',"Bahá'í":'بہائی',
+    // Misc UI
+    'For focus, click on a person':'فوکس کے لیے کسی شخصیت پر کلک کریں',
+    'Click a name to explore':'کسی نام پر کلک کر کے دریافت کریں',
+    'Follow their life on the map':'نقشے پر زندگی کا سفر دیکھیں',
+    'CLEAR ALL ✕':'سب صاف کریں ✕',
+    'WHO WAS ALIVE IN':'کون زندہ تھا','HOLD ⇧ FOR 1YR':'1 سال کے لیے ⇧ دبائیں',
+    'SAVED':'محفوظ','BOOKMARKS ★':'بک مارکس ★',
+    // Info card section headings (carry-over)
+    'TEACHERS': 'اساتذہ',
+    'STUDENTS': 'شاگرد',
+    'RELATIONS': 'تعلقات',
+    'STUDENTS (1)': 'شاگرد (1)',
+    // Relation badges
+    'CHILD': 'اولاد',
+    'FATHER': 'والد',
+    'MOTHER': 'والدہ',
+    'SON': 'بیٹا',
+    'DAUGHTER': 'بیٹی',
+    'SPOUSE': 'شریکِ حیات',
+    'WIFE': 'زوجہ',
+    'HUSBAND': 'شوہر',
+    'BROTHER': 'بھائی',
+    'SISTER': 'بہن',
+    'GRANDFATHER': 'دادا',
+    'GRANDMOTHER': 'دادی',
+    'GRANDSON': 'پوتا',
+    'GRANDDAUGHTER': 'پوتی',
+    'UNCLE': 'چچا',
+    'AUNT': 'پھوپھی',
+    'NEPHEW': 'بھتیجا',
+    'NIECE': 'بھتیجی',
+    'COUSIN': 'کزن',
+    'STEPFATHER': 'سوتیلا والد',
+    'STEPMOTHER': 'سوتیلی والدہ',
+    'STEPSON': 'سوتیلا بیٹا',
+    'STEPDAUGHTER': 'سوتیلی بیٹی',
+    'ADOPTED SON': 'منہ بولا بیٹا',
+    'GUARDIAN': 'سرپرست',
+    'WARD': 'زیرِ سرپرستی',
+    'FREEDMAN': 'آزاد کردہ غلام',
+    'FREEDWOMAN': 'آزاد کردہ کنیز',
+    'IN-LAW': 'سسرالی رشتہ دار',
+    'FATHER-IN-LAW': 'سُسر',
+    'MOTHER-IN-LAW': 'ساس',
+    'SON-IN-LAW': 'داماد',
+    'DAUGHTER-IN-LAW': 'بہو',
+    'BROTHER-IN-LAW': 'سالا',
+    'SISTER-IN-LAW': 'سالی',
+    // Era bands
+    'PROPHETIC ERA': 'دور نبوت',
+    'RASHIDUN ERA': 'دور خلفائے راشدین',
+    'UMAYYAD ERA': 'دور بنو امیہ',
+    'ABBASID ERA': 'دور بنو عباس',
+    'OTTOMAN ERA': 'دور عثمانیہ',
+    'EARLY ISLAMIC ERA': 'ابتدائی اسلامی دور',
+    'CLASSICAL ERA': 'کلاسیکی دور',
+    'MEDIEVAL ERA': 'قرون وسطیٰ کا دور',
+    'POST-CLASSICAL ERA': 'مابعد کلاسیکی دور',
+    'MODERN ERA': 'جدید دور',
+    // Type / location / language chips
+    'PROPHET / FIRST HUMAN': 'نبی / پہلا انسان',
+    'PROPHET': 'نبی',
+    'FIRST HUMAN': 'پہلا انسان',
+    'EDEN / MESOPOTAMIA': 'جنت / میسوپوٹیمیا',
+    'EDEN': 'جنت',
+    'MESOPOTAMIA': 'میسوپوٹیمیا',
+    'ARABIC': 'عربی',
+    'PERSIAN': 'فارسی',
+    'TURKISH': 'ترکی',
+    'URDU': 'اردو',
+    'HEBREW': 'عبرانی',
+    'ARAMAIC': 'آرامی',
+    'GREEK': 'یونانی',
+    'LATIN': 'لاطینی',
+    'SYRIAC': 'سریانی',
+    'ENGLISH': 'انگریزی',
+    // Tradition chips
+    'ISLAMIC': 'اسلامی',
+    'CHRISTIAN': 'مسیحی',
+    'JEWISH': 'یہودی',
+    'MANDAEAN': 'منڈائی',
+    'BAHÁ\'Í': 'بہائی',
+    'BAHAI': 'بہائی',
+    'ZOROASTRIAN': 'زرتشتی',
+    'HINDU': 'ہندو',
+    'BUDDHIST': 'بدھ',
+    'SUNNI': 'سُنی',
+    'SHIA': 'شیعہ',
+    'SUFI': 'صوفی',
+    // Date markers
+    'BCE': 'ق م',
+    'CE': 'عیسوی',
+    'AH': 'ہجری',
+    'circa': 'تقریباً',
+    'Source:': 'ماخذ:',
+    'Islamic': 'اسلامی',
+    'Christian': 'مسیحی',
+    'Jewish': 'یہودی',
+    "Bahá'í": 'بہائی',
+    'Bahai': 'بہائی',
+    'Quranic References': 'قرآنی حوالہ جات',
+    'QURANIC REFERENCES': 'قرآنی حوالہ جات',
+    'Verses': 'آیات',
+    'VERSES': 'آیات',
+    'Sources': 'ماخذ',
+    'Quran': 'قرآن',
+    // Types / classifications
+    'Prophet': 'نبی',
+    'Prophet / First Human': 'نبی / پہلا انسان',
+    'Prophet / Vizier of Egypt': 'نبی / مصر کے وزیر',
+    'Prophet / Sage': 'نبی / حکیم',
+    'Companion': 'صحابی',
+    'Scholar': 'عالم',
+    'Ruler': 'حکمران',
+    'Poet': 'شاعر',
+    'Sufi': 'صوفی',
+    'Founder': 'بانی',
+    'Genealogy': 'نسب',
+    'Genealogical Link': 'نسبی رابطہ',
+    'Sage': 'حکیم',
+    'Vizier of Egypt': 'مصر کے وزیر',
+    'First Human': 'پہلا انسان',
+    // Cities / regions
+    'Mesopotamia': 'میسوپوٹیمیا',
+    'Eden / Mesopotamia': 'باغِ عدن / میسوپوٹیمیا',
+    'Eden': 'باغِ عدن',
+    'Canaan': 'کنعان',
+    'Egypt': 'مصر',
+    'Canaan / Egypt': 'کنعان / مصر',
+    'Hauran, Syria': 'حوران، شام',
+    'Arabian Peninsula': 'جزیرہ نما عرب',
+    'Hauran, Syria / Arabian Peninsula': 'حوران، شام / جزیرہ نما عرب',
+    'Mecca': 'مکہ',
+    'Medina': 'مدینہ',
+    'Jerusalem': 'یروشلم',
+    'Damascus': 'دمشق',
+    'Baghdad': 'بغداد',
+    'Cairo': 'قاہرہ',
+    'Basra': 'بصرہ',
+    'Kufa': 'کوفہ',
+    // Languages
+    'Arabic': 'عربی',
+    'Hebrew': 'عبرانی',
+    'Aramaic': 'آرامی',
+    'Persian': 'فارسی',
+    'Greek': 'یونانی',
+    'Syriac': 'سریانی',
+    'Turkish': 'ترکی',
+    'Urdu': 'اردو',
+    'English': 'انگریزی',
+    // Titles & epithets — common
+    'Yusuf': 'یوسف',
+    'Joseph the Beautiful': 'یوسفِ حسین',
+    'Ahsan al-Qasas': 'احسن القصص',
+    'The Most Beautiful of Stories': 'بہترین قصہ',
+    'Ahsan al-Qasas — The Most Beautiful of Stories': 'احسن القصص — بہترین قصہ',
+    'Siddiq': 'صدیق',
+    'Siddiq (the Truthful)': 'صدیق (سچا)',
+    'the Truthful': 'سچا',
+    'Khalifat Allah': 'خلیفۃ اللہ',
+    'Safi Allah': 'صفی اللہ',
+    'Safi Allah (the Chosen of God)': 'صفی اللہ (اللہ کا برگزیدہ)',
+    'the Chosen of God': 'اللہ کا برگزیدہ',
+    'Abu al-Bashar': 'ابو البشر',
+    'Father of Humanity': 'انسانیت کا باپ',
+    'Abu al-Bashar — Father of Humanity': 'ابو البشر — انسانیت کا باپ',
+    // Tradition labels
+    'ISLAMIC': 'اسلامی',
+    'CHRISTIAN': 'مسیحی',
+    'JEWISH': 'یہودی',
+    "BAHA'I": 'بہائی',
+    'BAHAI': 'بہائی',
+    'MANDAEAN': 'منڈائی',
+    // Surah names (verse chips)
+    'Al-Fatihah': 'الفاتحہ',
+    'Al-Baqarah': 'البقرہ',
+    'Al-Imran': 'آل عمران',
+    'Al-Nisa': 'النساء',
+    "Al-Ma'idah": 'المائدہ',
+    'Al-Maidah': 'المائدہ',
+    "Al-An'am": 'الأنعام',
+    'Al-Anam': 'الأنعام',
+    "Al-A'raf": 'الأعراف',
+    'Al-Araf': 'الأعراف',
+    'Al-Anfal': 'الأنفال',
+    'At-Tawbah': 'التوبہ',
+    'Yunus': 'یونس',
+    'Hud': 'ہود',
+    "Ar-Ra'd": 'الرعد',
+    'Ar-Rad': 'الرعد',
+    'Ibrahim': 'ابراہیم',
+    'Al-Hijr': 'الحجر',
+    'An-Nahl': 'النحل',
+    'Al-Isra': 'الإسراء',
+    'Al-Kahf': 'الکہف',
+    'Maryam': 'مریم',
+    'Ta-Ha': 'طٰہٰ',
+    'Al-Anbiya': 'الأنبیاء',
+    'Al-Hajj': 'الحج',
+    "Al-Mu'minun": 'المؤمنون',
+    'Al-Muminun': 'المؤمنون',
+    'An-Nur': 'النور',
+    'Al-Furqan': 'الفرقان',
+    "Ash-Shu'ara": 'الشعراء',
+    'Ash-Shuara': 'الشعراء',
+    'An-Naml': 'النمل',
+    'Al-Qasas': 'القصص',
+    'Al-Ankabut': 'العنکبوت',
+    'Ar-Rum': 'الروم',
+    'Luqman': 'لقمان',
+    'As-Sajdah': 'السجدہ',
+    'Al-Ahzab': 'الأحزاب',
+    'Saba': 'سبأ',
+    'Fatir': 'فاطر',
+    'Ya-Sin': 'یٰسٓ',
+    'Yasin': 'یٰسٓ',
+    'As-Saffat': 'الصافات',
+    'Sad': 'صٓ',
+    'Az-Zumar': 'الزمر',
+    'Ghafir': 'غافر',
+    'Fussilat': 'فصلت',
+    'Ash-Shura': 'الشورىٰ',
+    'Az-Zukhruf': 'الزخرف',
+    'Ad-Dukhan': 'الدخان',
+    'Al-Jathiyah': 'الجاثیہ',
+    'Al-Ahqaf': 'الأحقاف',
+    'Muhammad': 'محمد',
+    'Al-Fath': 'الفتح',
+    'Al-Hujurat': 'الحجرات',
+    'Qaf': 'قٓ',
+    'Adh-Dhariyat': 'الذاریات',
+    'At-Tur': 'الطور',
+    'An-Najm': 'النجم',
+    'Al-Qamar': 'القمر',
+    'Ar-Rahman': 'الرحمٰن',
+    "Al-Waqi'ah": 'الواقعہ',
+    'Al-Waqiah': 'الواقعہ',
+    'Al-Hadid': 'الحدید',
+    'Al-Mujadilah': 'المجادلہ',
+    'Al-Hashr': 'الحشر',
+    'Al-Mumtahanah': 'الممتحنہ',
+    'As-Saff': 'الصف',
+    "Al-Jumu'ah": 'الجمعہ',
+    'Al-Jumuah': 'الجمعہ',
+    'Al-Munafiqun': 'المنافقون',
+    'At-Taghabun': 'التغابن',
+    'At-Talaq': 'الطلاق',
+    'At-Tahrim': 'التحریم',
+    'Al-Mulk': 'الملک',
+    'Al-Qalam': 'القلم',
+    'Al-Haqqah': 'الحاقہ',
+    "Al-Ma'arij": 'المعارج',
+    'Al-Maarij': 'المعارج',
+    'Nuh': 'نوح',
+    'Al-Jinn': 'الجن',
+    'Al-Muzzammil': 'المزمل',
+    'Al-Muddaththir': 'المدثر',
+    'Al-Qiyamah': 'القیامہ',
+    'Al-Insan': 'الإنسان',
+    'Al-Mursalat': 'المرسلات',
+    'An-Naba': 'النبأ',
+    "An-Nazi'at": 'النازعات',
+    'An-Naziat': 'النازعات',
+    'Abasa': 'عبس',
+    'At-Takwir': 'التکویر',
+    'Al-Infitar': 'الإنفطار',
+    'Al-Mutaffifin': 'المطففین',
+    'Al-Inshiqaq': 'الإنشقاق',
+    'Al-Buruj': 'البروج',
+    'At-Tariq': 'الطارق',
+    "Al-A'la": 'الأعلیٰ',
+    'Al-Ala': 'الأعلیٰ',
+    'Al-Ghashiyah': 'الغاشیہ',
+    'Al-Fajr': 'الفجر',
+    'Al-Balad': 'البلد',
+    'Ash-Shams': 'الشمس',
+    'Al-Layl': 'اللیل',
+    'Ad-Duha': 'الضحیٰ',
+    'Ash-Sharh': 'الشرح',
+    'At-Tin': 'التین',
+    'Al-Alaq': 'العلق',
+    'Al-Qadr': 'القدر',
+    'Al-Bayyinah': 'البینہ',
+    'Az-Zalzalah': 'الزلزلہ',
+    'Al-Adiyat': 'العادیات',
+    "Al-Qari'ah": 'القارعہ',
+    'Al-Qariah': 'القارعہ',
+    'At-Takathur': 'التکاثر',
+    'Al-Asr': 'العصر',
+    'Al-Humazah': 'الہمزہ',
+    'Al-Fil': 'الفیل',
+    'Quraysh': 'قریش',
+    "Al-Ma'un": 'الماعون',
+    'Al-Maun': 'الماعون',
+    'Al-Kawthar': 'الکوثر',
+    'Al-Kafirun': 'الکافرون',
+    'An-Nasr': 'النصر',
+    'Al-Masad': 'المسد',
+    'Al-Ikhlas': 'الإخلاص',
+    'Al-Falaq': 'الفلق',
+    'An-Nas': 'الناس',
+    'Ibn Ishaq, Sirat Rasul Allah; al-Tabari, Tarikh al-Rusul wa al-Muluk': 'ابن اسحاق، سیرت رسول اللہ؛ الطبری، تاریخ الرسل والملوک',
+  };
+  function _tlGetLang(){
+    try { return (window.GoldArkI18n && window.GoldArkI18n.getLang && window.GoldArkI18n.getLang()) || 'en'; }
+    catch(e){ return 'en'; }
+  }
+  function _tlT(en){
+    if(!en) return en;
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    if(lang === 'ur' && _TL_UR[en]) return _TL_UR[en];
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tt){
+        var v = window.GoldArkI18n.tt(en);
+        if(v && v !== en) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigName(p){
+    if(!p) return '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return p.famous || p.name || '';
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'famous');
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return p.famous || p.name || '';
+  }
+  function _tlFigSubtitle(p){
+    if(!p) return '';
+    var en = p.subtitle || p.primaryTitle || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'subtitle')
+             || window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'primaryTitle');
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigField(p, field){
+    if(!p || !field) return '';
+    var en = p[field] || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, field);
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigBio(p){
+    if(!p) return '';
+    var en = p.bio_full || p.bio || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p.slug){
+        var v = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio_full')
+             || window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio');
+        if(v && v !== p.slug) return v;
+      }
+    } catch(e){}
+    return en;
+  }
+  function _tlFigQuote(p, idx){
+    var en = (p && p.quotes && p.quotes[idx]) || '';
+    var lang = _tlGetLang();
+    if(lang === 'en') return en;
+    try {
+      if(window.GoldArkI18n && window.GoldArkI18n.tForView && p && p.slug){
+        var qi = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'quotes_i18n');
+        if(qi && typeof qi === 'object' && Array.isArray(qi[lang]) && qi[lang][idx]) return qi[lang][idx];
+      }
+    } catch(e){}
+    return en;
+  }
+  document.addEventListener('gold-ark-i18n-ready', function(){
+    try {
+      var _lang = _tlGetLang();
+      if(_lang !== 'en' && window.GoldArkI18n && window.GoldArkI18n.loadBucket){
+        window.GoldArkI18n.loadBucket(_lang, 'figures').then(function(){
+          try { if(typeof renderAll === 'function') renderAll(); } catch(e){}
+          if(typeof activePerson !== 'undefined' && activePerson && typeof renderInfoWithDetails === 'function'){
+            try { renderInfoWithDetails(activePerson); } catch(e){}
+          }
+        });
+      }
+    } catch(e){}
+  });
+  document.addEventListener('gold-ark-lang-changed', function(){
+    // Re-render right column rows (.tc-famous / .tc-sub) by re-running renderAll
+    try { if(typeof renderAll === 'function') renderAll(); } catch(e){}
+    // If renderAll doesn't rebuild the scroll list, force-refresh each row text
+    try {
+      var rows = document.querySelectorAll('.tc-famous');
+      rows.forEach(function(el){
+        var name = el.getAttribute('data-name');
+        if(!name) return;
+        var p = (window.PEOPLE || PEOPLE || []).find(function(x){ return x.famous === name; });
+        if(!p) return;
+        // First child text node holds the name (badges follow as element nodes)
+        var first = el.firstChild;
+        if(first && first.nodeType === 3){
+          first.nodeValue = _tlFigName(p);
+        } else {
+          el.insertBefore(document.createTextNode(_tlFigName(p)), el.firstChild);
+        }
+        var sub = el.parentElement && el.parentElement.querySelector('.tc-sub');
+        if(sub) sub.textContent = _tlFigSubtitle(p) || _tlClassifStr(p);
+      });
+    } catch(e){ console.warn('[tl i18n] row refresh failed', e); }
+    // Re-render info card
+    try {
+      if(typeof activePerson !== 'undefined' && activePerson && typeof renderInfoWithDetails === 'function'){
+        renderInfoWithDetails(activePerson);
+      }
+    } catch(e){}
+    // Re-open methodology modal if visible
+    var openModal = document.querySelector('.tl-htw-modal, #tlHtwModal, .htw-modal');
+    if(openModal && openModal.style.display !== 'none'){
+      try { _showTimelineMethodology(); } catch(e){}
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════════
+  // STUBBED EXTERNALS (mirror relations.js stub style)
+  // ═══════════════════════════════════════════════════════════
+
+  // APP namespace — Favorites + i18n. The lifted code reads APP without typeof.
+  var APP = window.APP || {
+    Favorites: null,
+    filterFavsOnly: false,
+    _lang: 'en',
+    _RTL_LANGS: new Set(),
+    _LANG_LABELS: {},
+    getDisplayName: function(p){ return p ? (p.famous || '') : ''; },
+    isRTL: function(){ return false; }
+  };
+  window.APP = APP;
+
+  // requireTester — auth gate skipped in sandbox; star toggle still works.
+  if(typeof window.requireTester !== 'function') window.requireTester = function(action, cb){ if(typeof cb === 'function') cb(); };
+  // _updateFavFilterBtn — header SAVED toggle in bv-app; sandbox no-op.
+  if(typeof window._updateFavFilterBtn !== 'function') window._updateFavFilterBtn = function(){};
+  // canShowImage / fetchWikiImage — Wikipedia thumb fetch skipped in sandbox.
+  function canShowImage(p){ return false; }
+  function fetchWikiImage(){}
+  // _renderBadgesHtml + getFigureBadges — TIMELINE row badges (S/W/F/B/T) skipped.
+  function _renderBadgesHtml(slug, famous, context){ return ''; }
+  function getFigureBadges(slug, famous){ return []; }
+  // pushFigureHistory — back/forward not wired in sandbox.
+  function pushFigureHistory(){}
+  // jumpTo — wrapper used by info-card chip clicks; redirected to local jumpTo
+  // (which the lifted code defines further down).
+  // (No stub — the lifted code defines window.jumpTo via local function jumpTo().)
+
+  // setView — sandbox shell uses setActiveTab. Cross-view jumps inside info card
+  // (jumpTo, focusPersonInTimeline) call setView; provide a logging stub.
+  if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[timeline] setView (stub):', v); };
+
+  // Cross-view targets used by info card chip clicks.
+  if(typeof window.relationsLocate !== 'function') window.relationsLocate = function(){};
+  if(typeof window.renderRelations !== 'function') window.renderRelations = function(){};
+  if(typeof window.updateRelationsHighlight !== 'function') window.updateRelationsHighlight = function(){};
+  if(typeof window.openRelationsCard !== 'function') window.openRelationsCard = function(){};
+  if(typeof window._openMapCard !== 'function') window._openMapCard = function(){};
+  if(typeof window._renderMarkers !== 'function') window._renderMarkers = function(){};
+  if(typeof window._setMapHeight !== 'function') window._setMapHeight = function(){};
+  if(typeof window.renderMap !== 'function') window.renderMap = function(){};
+  if(typeof window._applyMapYear !== 'function') window._applyMapYear = function(){};
+  if(typeof window._unpinMapTT !== 'function') window._unpinMapTT = function(){};
+  if(typeof window._closeMapCard !== 'function') window._closeMapCard = function(){};
+  if(typeof window._mapAnimStop !== 'function') window._mapAnimStop = function(){};
+  if(typeof window.initEras !== 'function') window.initEras = function(){};
+  if(typeof window.initEvents !== 'function') window.initEvents = function(){};
+  if(typeof window.initOne !== 'function') window.initOne = function(){};
+  if(typeof window.initFollow !== 'function') window.initFollow = function(){};
+  if(typeof window._fwCleanup !== 'function') window._fwCleanup = function(){};
+  if(typeof window.initTalk !== 'function') window.initTalk = function(){};
+  if(typeof window._buildStudySidebar !== 'function') window._buildStudySidebar = function(){};
+  if(typeof window._navPush !== 'function') window._navPush = function(){};
+  if(typeof window._showViewDesc !== 'function') window._showViewDesc = function(){};
+  if(typeof window._followShowFigure !== 'function') window._followShowFigure = function(){};
+  if(typeof window._talkSelectScholar !== 'function') window._talkSelectScholar = function(){};
+  if(typeof window._talkBack !== 'function') window._talkBack = function(){};
+  if(typeof window._oneClickName !== 'function') window._oneClickName = function(){};
+  if(typeof window.openStartAtVerse !== 'function') window.openStartAtVerse = function(){ /* (stub) */ };
+  if(typeof window._badgeInvalidateBooks !== 'function') window._badgeInvalidateBooks = function(){};
+  if(typeof window._ensureWikidata !== 'function') window._ensureWikidata = function(){ return Promise.resolve({}); };
+  if(typeof window._preloadJourneyIndex !== 'function') window._preloadJourneyIndex = function(){ return Promise.resolve(new Set()); };
+  if(typeof window._shareRestoreFromURL !== 'function') window._shareRestoreFromURL = null;
+  if(typeof window.renderQuranRef !== 'function') window.renderQuranRef = function(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+  // Linkify "Quran 2:30-37" / "Quran 2:30" mentions inside an already-escaped HTML
+  // string into <button class="quran-chip"> chips that match the existing pattern.
+  // V2 linkify — supports "Quran X:Y", "(X:Y)", and "Surah-Name X:Y"
+  window._linkifyQuranRefs = function(html){
+    if(!html) return html;
+    var SURAH_NAMES = "Al-Baqarah|Al-Imran|Al-Nisa|Al-Ma'idah|Al-Maidah|Al-An'am|Al-Anam|Al-A'raf|Al-Araf|Al-Anfal|At-Tawbah|Yunus|Hud|Yusuf|Ar-Ra'd|Ar-Rad|Ibrahim|Al-Hijr|An-Nahl|Al-Isra|Al-Kahf|Maryam|Ta-Ha|Al-Anbiya|Al-Hajj|Al-Mu'minun|Al-Muminun|An-Nur|Al-Furqan|Ash-Shu'ara|Ash-Shuara|An-Naml|Al-Qasas|Al-Ankabut|Ar-Rum|Luqman|As-Sajdah|Al-Ahzab|Saba|Fatir|Ya-Sin|Yasin|As-Saffat|Sad|Az-Zumar|Ghafir|Fussilat|Ash-Shura|Az-Zukhruf|Ad-Dukhan|Al-Jathiyah|Al-Ahqaf|Muhammad|Al-Fath|Al-Hujurat|Qaf|Adh-Dhariyat|At-Tur|An-Najm|Al-Qamar|Ar-Rahman|Al-Waqi'ah|Al-Waqiah|Al-Hadid|Al-Mujadilah|Al-Hashr|Al-Mumtahanah|As-Saff|Al-Jumu'ah|Al-Jumuah|Al-Munafiqun|At-Taghabun|At-Talaq|At-Tahrim|Al-Mulk|Al-Qalam|Al-Haqqah|Al-Ma'arij|Al-Maarij|Nuh|Al-Jinn|Al-Muzzammil|Al-Muddaththir|Al-Qiyamah|Al-Insan|Al-Mursalat|An-Naba|An-Nazi'at|An-Naziat|Abasa|At-Takwir|Al-Infitar|Al-Mutaffifin|Al-Inshiqaq|Al-Buruj|At-Tariq|Al-A'la|Al-Ala|Al-Ghashiyah|Al-Fajr|Al-Balad|Ash-Shams|Al-Layl|Ad-Duha|Ash-Sharh|At-Tin|Al-Alaq|Al-Qadr|Al-Bayyinah|Az-Zalzalah|Al-Adiyat|Al-Qari'ah|Al-Qariah|At-Takathur|Al-Asr|Al-Humazah|Al-Fil|Quraysh|Al-Ma'un|Al-Maun|Al-Kawthar|Al-Kafirun|An-Nasr|Al-Masad|Al-Ikhlas|Al-Falaq|An-Nas|Al-Fatihah";
+    function makeChip(surah, vstart, vend, label){
+      var s = parseInt(surah,10);
+      if(s < 1 || s > 114) return null;
+      var ve = vend || vstart;
+      return '<button class="quran-chip" data-surah="'+surah+'" data-vstart="'+vstart+'" data-vend="'+ve+'" style="display:inline;padding:1px 6px;margin:0 2px;font-size:inherit;line-height:inherit;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.4);border-radius:3px;color:#D4AF37;cursor:pointer;font-family:inherit">'+label+'</button>';
+    }
+    html = html.replace(/\bQuran\s+\(?(\d{1,3}):(\d{1,3})(?:[–—-](\d{1,3}))?\)?/g, function(m, surah, vstart, vend){
+      var chip = makeChip(surah, vstart, vend, _tlT('Quran')+' '+surah+':'+vstart+(vend?'-'+vend:''));
+      return chip || m;
+    });
+    html = html.replace(/\((\d{1,3}):(\d{1,3})(?:[–—\-](\d{1,3}))?\)/g, function(m, surah, vstart, vend){
+      var chip = makeChip(surah, vstart, vend, surah+':'+vstart+(vend?'-'+vend:''));
+      return chip ? '('+chip+')' : m;
+    });
+    var reC = new RegExp('\\b('+SURAH_NAMES+')\\s+(\\d{1,3}):(\\d{1,3})(?:[\\u2013\\u2014-](\\d{1,3}))?', 'g');
+    html = html.replace(reC, function(m, name, surah, vstart, vend){
+      var chip = makeChip(surah, vstart, vend, _tlT(name)+' '+surah+':'+vstart+(vend?'-'+vend:''));
+      return chip || m;
+    });
+    return html;
+  };
+
+  // Globals the lifted code reads as bare names (not via window.).
+  // SL_* are declared inside the lifted body (lines 766-771).
+  // We need IH_SUBLANE_ORDER + _IH_SUBLANE_REV in scope — relations.js defines
+  // these but we can't depend on relations being mounted. Provide empty defaults.
+  var IH_SUBLANE_ORDER = window.IH_SUBLANE_ORDER || [];
+  var _IH_SUBLANE_REV = window._IH_SUBLANE_REV || {};
+  if(!window.IH_SUBLANE_ORDER) window.IH_SUBLANE_ORDER = IH_SUBLANE_ORDER;
+  if(!window._IH_SUBLANE_REV) window._IH_SUBLANE_REV = _IH_SUBLANE_REV;
+
+  // buildSLDD — relations dropdown builder; the lifted boot calls it. We dropped boot,
+  // but provide a stub anyway in case other lifted paths call it.
+  function buildSLDD(){}
+
+  // Monastic — sandbox loads on demand; stub the parts setView referenced.
+  if(typeof window.Monastic === 'undefined') window.Monastic = { onLeave: function(){}, onEnter: function(){}, init: function(){} };
+
+  // Validators
+  if(typeof window._validators === 'undefined') window._validators = {};
+
+  // _journeyFigures — FOLLOW-injected Set
+  if(typeof window._journeyFigures === 'undefined') window._journeyFigures = null;
+  // _journeyIndexCount
+  if(typeof window._journeyIndexCount === 'undefined') window._journeyIndexCount = 0;
+
+  // _BOOKS_DATA, _FIGURE_SOURCES, eventsData
+  if(typeof window._BOOKS_DATA === 'undefined') window._BOOKS_DATA = null;
+  if(typeof window._FIGURE_SOURCES === 'undefined') window._FIGURE_SOURCES = {};
+  if(typeof window.eventsData === 'undefined') window.eventsData = [];
+  if(typeof window.QURAN_XREF === 'undefined') window.QURAN_XREF = {};
+  if(typeof window.QURAN_XREF_BY_SLUG === 'undefined') window.QURAN_XREF_BY_SLUG = {};
+  // _SR_SCHOLARS — STUDY-injected; the lifted boot reads it for header stat.
+  if(typeof window._SR_SCHOLARS === 'undefined') window._SR_SCHOLARS = {};
+
+  // ═══════════════════════════════════════════════════════════
+  // ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/app.js ▼▼▼
+  // (lines 220-369, 385, 577-1016, 1017-1037 _syncSliderUI, 1112-2052)
+  // ═══════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════
+const MIN_YR=500,MAX_YR=2000;
+// Expose year range so shell.js's animate fallback engine reads the correct min/max.
+window._YR_RANGE = { MIN: MIN_YR, MAX: MAX_YR };
+const ALL_CENTS=[0,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]; // 0 = Pre-Islamic
+const CC={6:'#d4600a',7:'#c04a08',8:'#a07800',9:'#5a8a00',10:'#007a5c',11:'#c87832',
+          12:'#b86820',13:'#c8902a',14:'#a07828',15:'#a01030',16:'#a01030',17:'#a03000',
+          18:'#8a5a00',19:'#4a7800',20:'#008050'};
+function gc(y){if(y<600)return 6;if(y<700)return 7;if(y<800)return 8;if(y<900)return 9;
+  if(y<1000)return 10;if(y<1100)return 11;if(y<1200)return 12;if(y<1300)return 13;
+  if(y<1400)return 14;if(y<1500)return 15;if(y<1600)return 16;if(y<1700)return 17;
+  if(y<1800)return 18;if(y<1900)return 19;return 20;}
+function centLabel(c){return c===1?'1st':c===2?'2nd':c===3?'3rd':`${c}th`}
+
+// Academic-date accessors: prefer scholarly-estimated years (matches what the info card shows).
+// Used by Timeline centre column (sort, visibility filter, timescale, lifespans, tooltips).
+function _dobOf(p) {
+  return (p.dob_academic !== undefined && p.dob_academic !== null) ? p.dob_academic : p.dob;
+}
+function _dodOf(p) {
+  return (p.dod_academic !== undefined && p.dod_academic !== null) ? p.dod_academic : p.dod;
+}
+
+// Single source of truth for Timeline row height, read from CSS var --row-h.
+const ROW_H = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row-h')) || 88;
+const ROW_MID = ROW_H / 2;
+
+// ═══════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════
+let PEOPLE=[],VIEW='timeline',activeYear=null,activePerson=null;
+let tlFocusName = null;
+let _viewYears={timeline:null,relations:null,map:null};
+let selTypes=new Set(),selTrads=new Set(),searchQ='',selBadge='';
+let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
+
+window._captureState_timeline=function(){
+  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear};
+};
+window._restoreState_timeline=function(s){
+  if(!s) return;
+  selTypes=new Set(s.types||[]);selTrads=new Set(s.trads||[]);
+  searchQ=s.search||'';
+  var box=document.getElementById('search');if(box) box.value=searchQ;
+  if(s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
+  syncDD('type');syncDD('trad');applyFilterAndFocus();
+};
+
+// ── Figure history stack (in-app back navigation) ──
+var _figureHistory=[];
+var _figureHistoryMax=20;
+function pushFigureHistory(name){
+  if(_figureHistory.length&&_figureHistory[_figureHistory.length-1]===name) return;
+  _figureHistory.push(name);
+  if(_figureHistory.length>_figureHistoryMax) _figureHistory.shift();
+  _updateBackBtn();
+}
+function popFigureHistory(){
+  if(_figureHistory.length<2) return null;
+  _figureHistory.pop();
+  var prev=_figureHistory[_figureHistory.length-1];
+  _updateBackBtn();
+  return prev;
+}
+function _updateBackBtn(){
+  var btn=document.getElementById('figureBackBtn');
+  if(btn) btn.style.display=_figureHistory.length>1?'inline-flex':'none';
+}
+let CW=[0,6,7]; // Default: PRE-ISLAMIC | 6TH C. | 7TH C.
+let centIdx=1; // Index of 6 in ALL_CENTS=[0,6,7,...]
+
+// ═══════════════════════════════════════════════════════════
+// LAZY-LOAD DETAIL CHUNKS
+// ═══════════════════════════════════════════════════════════
+const _SUFI_ORDER_TRADS=new Set([
+  'Naqshbandiyya','Shadhiliyya','Qadiriyya','Chishti',
+  'Suhrawardiyya','Mawlawiyya','Qalandari','Yeseviyya',
+  'Kubrawiyya','Badawiyya','Burhaniyya','Akbarian',
+  'Ishraqiyya','Sindhi/Punjabi Sufism'
+]);
+function getChunkName(p){
+  const t=p.type||'', tr=p.tradition||'';
+  if(t==='Prophet'||t==='Founder') return 'lineage';
+  if(t==='Sahaba') return 'sahaba';
+  if(t==='Sahabiyya') return 'sahabiyya';
+  if(t==="Tabi'un") return 'tabiun';
+  if(t==='Ruler'||t==='Caliph') return 'rulers';
+  if(t==='Poet') return 'poets';
+  if(t==='Philosopher') return 'philosophy';
+  if(t==='Scientist') return 'sciences';
+  if(t==='Mystic') return _SUFI_ORDER_TRADS.has(tr)?'sufis-orders':'sufis-early';
+  if(tr==='Hadith Sciences') return 'hadith';
+  if(tr==='Early Ascetics'||tr==='Khorasan School'||tr==='Baghdad School') return 'sufis-early';
+  return 'scholars';
+}
+
+const _detailCache={};   // chunk name -> array of detail records
+const _detailLoading={}; // chunk name -> promise (in-flight)
+
+async function _loadChunk(chunk){
+  if(_detailCache[chunk]) return _detailCache[chunk];
+  if(_detailLoading[chunk]) return _detailLoading[chunk];
+  _detailLoading[chunk]=(async()=>{
+    try{
+      const r=await fetch(dataUrl('data/islamic/details/'+chunk+'.json'));
+      if(!r.ok) throw new Error(r.status);
+      const arr=await r.json();
+      _detailCache[chunk]=arr;
+      delete _detailLoading[chunk];
+      return arr;
+    }catch(_){
+      _detailCache[chunk]=[];
+      delete _detailLoading[chunk];
+      return [];
+    }
+  })();
+  return _detailLoading[chunk];
+}
+
+async function _ensureDetails(p){
+  if(p._detailLoaded) return p;
+  const chunk=getChunkName(p);
+  const arr=await _loadChunk(chunk);
+  const det=arr.find(d=>d.famous===p.famous);
+  if(det){
+    if(det.school) p.school=det.school;
+    if(det.books)  p.books=det.books;
+    if(det.parents)  p.parents=det.parents;
+    if(det.children) p.children=det.children;
+    if(det.spouses)  p.spouses=det.spouses;
+    if(det.quotes) p.quotes=det.quotes;
+    if(det.quranDetail) p.quranDetail=det.quranDetail;
+  }
+  p._detailLoaded=true;
+  return p;
+}
+
+// Wrapper functions — use these instead of calling renderInfo / openRelationsCard / _openMapCard directly from click handlers
+async function renderInfoWithDetails(p){
+  await _ensureDetails(p);
+  renderInfo(p);
+  pushFigureHistory(p.famous);
+}
+async function openRelationsCardWithDetails(p,cx,cy){
+  await _ensureDetails(p);
+  openRelationsCard(p,cx,cy);
+}
+async function showMapCardWithDetails(p,cx,cy){
+  await _ensureDetails(p);
+  _openMapCard(p,cx,cy);
+}
+
+
+
+// ═══════════════════════════════════════════════════════════
+// DROPDOWNS
+// ═══════════════════════════════════════════════════════════
+function buildDD(kind,values){
+  const panel=document.getElementById(kind==='type'?'typePanel':'tradPanel');
+  const si=document.createElement('input');
+  si.type='text';si.className='dd-search';si.placeholder=_tlT('Search...');
+  si.oninput=function(){
+    const q=si.value.toLowerCase();
+    panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){
+      el.style.display=el.innerText.toLowerCase().includes(q)?'':'none';
+    });
+  };
+  panel.appendChild(si);
+  values.forEach(v=>{
+    const el=document.createElement('div');
+    el.className='dd-item'; el.dataset.val=v;
+    el.innerHTML=`<div class="dd-checkbox"></div><span>${_tlT(v)}</span>`;
+    el.onclick=()=>ddToggle(kind,v); panel.appendChild(el);
+  });
+}
+function toggleDD(kind){
+  var panelId=kind==='type'?'typePanel':kind==='trad'?'tradPanel':kind==='badge'?'badgePanel':null;
+  var btnId=kind==='type'?'typeBtn':kind==='trad'?'tradBtn':kind==='badge'?'badgeBtn':null;
+  if(!panelId) return;
+  const panel=document.getElementById(panelId);
+  const btn=document.getElementById(btnId);
+  const wasOpen=panel.classList.contains('open');
+  document.querySelectorAll('.dd-panel.open').forEach(p=>p.classList.remove('open'));
+  document.querySelectorAll('.dd-btn.open').forEach(b=>b.classList.remove('open'));
+  if(!wasOpen){
+    panel.classList.add('open');btn.classList.add('open');
+    var si=panel.querySelector('.dd-search');
+    if(si){si.value='';si.dispatchEvent(new Event('input'));si.focus();}
+  }
+}
+function ddClearAll(kind){
+  const sel=kind==='type'?selTypes:selTrads;
+  sel.clear(); syncDD(kind); applyFilterAndFocus();
+}
+function ddToggle(kind,v){
+  const sel=kind==='type'?selTypes:selTrads;
+  sel.has(v)?sel.delete(v):sel.add(v);
+  syncDD(kind); applyFilterAndFocus();
+}
+function clearAllFilters(){
+  selTypes.clear(); selTrads.clear(); selBadge='';
+  syncDD('type'); syncDD('trad'); _syncBadgeDD();
+  applyFilterAndFocus();
+}
+function _badgeSelect(val){
+  selBadge=val;
+  _syncBadgeDD();
+  applyFilterAndFocus();
+  document.querySelectorAll('.dd-panel.open').forEach(function(p){p.classList.remove('open');});
+  document.querySelectorAll('.dd-btn.open').forEach(function(b){b.classList.remove('open');});
+}
+function _syncBadgeDD(){
+  var btn=document.getElementById('badgeBtn');
+  var panel=document.getElementById('badgePanel');
+  if(!btn||!panel) return;
+  panel.querySelectorAll('.dd-item').forEach(function(item){
+    item.classList.toggle('selected',item.dataset.val===selBadge);
+    var ck=item.querySelector('.dd-checkbox');
+    if(ck) ck.textContent=item.dataset.val===selBadge?'✓':'';
+  });
+  var labelSpan=btn.querySelector('span');
+  if(selBadge){
+    var labels={'S':'Study','W':'Wiki','F':'Follow','B':'Books','T':'Talk'};
+    if(labelSpan) labelSpan.textContent=labels[selBadge]||'HAS';
+    btn.classList.add('filtered');
+    var oldX=btn.querySelector('.dd-clear-x');
+    if(oldX) oldX.remove();
+    var xEl=document.createElement('span');
+    xEl.className='dd-clear-x';
+    xEl.textContent='\u00D7';
+    xEl.onclick=function(e){e.stopPropagation();_badgeSelect('');};
+    btn.appendChild(xEl);
+  } else {
+    if(labelSpan) labelSpan.textContent='HAS';
+    btn.classList.remove('filtered');
+    var oldX2=btn.querySelector('.dd-clear-x');
+    if(oldX2) oldX2.remove();
+  }
+  updateFilterSummary();
+}
+function syncDD(kind){
+  const sel=kind==='type'?selTypes:selTrads;
+  const panel=document.getElementById(kind==='type'?'typePanel':'tradPanel');
+  const cnt=document.getElementById(kind==='type'?'typeCount':'tradCount');
+  const allCk=document.getElementById(kind==='type'?'typeAllCk':'tradAllCk');
+  const btn=document.getElementById(kind==='type'?'typeBtn':'tradBtn');
+  const dot=document.getElementById(kind==='type'?'typeDot':'tradDot');
+
+  panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(item=>{
+    const on=sel.has(item.dataset.val);
+    item.classList.toggle('selected',on);
+    item.querySelector('.dd-checkbox').textContent=on?'✓':'';
+  });
+  allCk.textContent=sel.size===0?'✓':'';
+
+  if(sel.size>0){
+    cnt.textContent=sel.size; cnt.style.display='';
+    btn.classList.add('filtered');
+    dot.style.display='inline-block';
+  } else {
+    cnt.style.display='none';
+    btn.classList.remove('filtered');
+    dot.style.display='none';
+  }
+
+  // Inline × clear button
+  var oldX=btn.querySelector('.dd-clear-x');
+  if(oldX) oldX.remove();
+  if(sel.size>0){
+    var xEl=document.createElement('span');
+    xEl.className='dd-clear-x';
+    xEl.textContent='\u00D7';
+    xEl.onclick=function(e){e.stopPropagation();ddClearAll(kind);applyFilterAndFocus();};
+    btn.appendChild(xEl);
+  }
+
+  // Update summary label
+  updateFilterSummary();
+}
+function updateFilterSummary(){
+  const parts=[];
+  if(selTypes.size>0) parts.push([...selTypes].join(', '));
+  if(selTrads.size>0) parts.push([...selTrads].join(', '));
+  if(selBadge) parts.push('Has: '+{S:'Study',W:'Wiki',F:'Follow',B:'Books',T:'Talk'}[selBadge]);
+  const sumEl=document.getElementById('filterSummary');
+  const clrEl=document.getElementById('filterClearAll');
+  if(parts.length>0){
+    sumEl.textContent='↳ '+parts.join(' · ');
+    sumEl.classList.add('visible');
+    clrEl.classList.add('visible');
+  } else {
+    sumEl.classList.remove('visible');
+    clrEl.classList.remove('visible');
+  }
+}
+function onSearch(){searchQ=document.getElementById('search').value.trim();applyFilterAndFocus();}
+function _toggleSearchClear(){
+  var i=document.getElementById('search');
+  var b=document.getElementById('searchClearBtn');
+  if(!i||!b) return;
+  b.style.visibility = i.value.length>0 ? 'visible' : 'hidden';
+}
+function _clearSearchBox(){
+  var i=document.getElementById('search');
+  if(!i) return;
+  i.value='';
+  onSearch();
+  _toggleSearchClear();
+  i.focus();
+}
+
+// ═══════════════════════════════════════════════════════════
+// FILTER
+// ═══════════════════════════════════════════════════════════
+// Full Adam→Muhammad prophetic lineage chain (50 members).
+// Verified against lineage_adam_to_muhammad_FINAL.xlsx — 27 Mar 2026.
+// Used by isLineageMember() for Relations lane assignment and type filtering.
+const LINEAGE_CHAIN=[
+  'Adam','Shith ibn Adam','Yanash','Qaynan ibn Anush','Mahlail ibn Qaynan',
+  'Yared ibn Mahlail','Idris','Mattushalakh ibn Idris','Lamak ibn Mattushalakh','Nuh',
+  'Sam ibn Nuh','Arfakhshadh ibn Sam','Shalikh ibn Arfakhshadh','Abir ibn Shalikh',
+  "Faligh ibn Abir","Ra'u ibn Faligh","Sarugh ibn Ra'u",'Nahur ibn Sarugh',
+  'Azar ibn Nahur','Ibrahim','Ismail','Nabit ibn Ismail',
+  'Yashjub ibn Nabit',"Ya'rub ibn Yashjub","Tayrah ibn Ya'rub",'Nahur ibn Tayrah',
+  'Muqawwam ibn Nahur','Udd ibn Muqawwam',
+  'Adnan',"Ma'ad ibn Adnan","Nizar ibn Ma'ad",'Mudar ibn Nizar','Ilyas ibn Mudar',
+  'Mudrikah ibn Ilyas','Khuzayma ibn Mudrikah','Kinana ibn Khuzayma',
+  'al-Nadr ibn Kinana','Malik ibn al-Nadr','Fihr ibn Malik','Ghalib ibn Fihr',
+  "Lu'ayy ibn Ghalib","Ka'b ibn Lu'ayy","Murrah ibn Ka'b",'Kilab ibn Murrah',
+  'Qusayy ibn Kilab','Abd Manaf ibn Qusayy','Hashim ibn Abd Manaf',
+  'Abd al-Muttalib ibn Hashim','Abd Allah ibn Abd al-Muttalib','Prophet Muhammad'
+];
+const PROPHET_CHAIN = new Set(LINEAGE_CHAIN);
+
+// The ten Companions promised Paradise — hardcoded for virtual type filter
+const ASHRA_MUBASHSHARA = new Set([
+  'Abu Bakr al-Siddiq','Umar ibn al-Khattab','Uthman ibn Affan','Ali ibn Abi Talib',
+  'Talha ibn Ubayd Allah','Zubayr ibn al-Awwam','Abd al-Rahman ibn Awf',
+  "Sa'd ibn Abi Waqqas","Sa'id ibn Zayd",'Abu Ubayda ibn al-Jarrah'
+]);
+
+// Relations global state — built once by renderRelations()
+let SL_NM={};        // name → {x, y, li, col}
+let SL_STUDENTS={};  // name → [student famous names]
+let SL_EDGES=[];     // [{from, to, col, d}] — stored as data, rendered on demand
+let SL_HOVERED=null; // currently hovered person name (for hover-dim logic)
+let SL_ALL_LANES=[];  // full tradition lane list, built once from PEOPLE
+let SL_LANES_KEY='';  // fingerprint of currently-rendered lanes — drives re-render on filter change
+
+// _pTypesV2_MARKER — multi-tag fix Prompt 6. Read list-first, fall back to string.
+function _tlPTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.types; return p.type ? [p.type] : []; }
+function _tlPTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
+function _tlClassifStr(p){ if(Array.isArray(p.classif)) return p.classif.join(', '); return p.classif || ''; }
+
+function getFiltered(){
+  return PEOPLE.filter(p=>{
+    if(selTypes.size>0){
+      const passType = _tlPTypes(p).some(t=>selTypes.has(t));
+      const passChainProphet = (selTypes.has('Genealogy') || selTypes.has('Prophetic Lineage')) && PROPHET_CHAIN.has(p.famous);
+      // Tag-based type filters (e.g. Ashra Mubashshara stored in p.tags)
+      const passTags = (p.tags||[]).some(t=>selTypes.has(t));
+      // IH sub-lane virtual type filters (e.g. "Prophets" matches type=Prophet)
+      const passIHSub = [...selTypes].some(st=>_IH_SUBLANE_REV[st]&&_tlPTypes(p).some(t=>_IH_SUBLANE_REV[st].has(t)));
+      // Ashra Mubashshara: match by hardcoded name list; also include them under "Companions"
+      const passAshra = (selTypes.has('Ashra Mubashshara')||selTypes.has('Companions')) && ASHRA_MUBASHSHARA.has(p.famous);
+      if(!passType && !passChainProphet && !passTags && !passIHSub && !passAshra) return false;
+    }
+    if(selTrads.size>0&&!_tlPTrads(p).some(t=>selTrads.has(t)))return false;
+    if(searchQ){
+      const q=searchQ.toLowerCase();
+      const vars=p.slug?GA_nameVariants.getSpellings(p.slug):[];
+      const hay=[p.famous,p.full,p.primaryTitle,p.titles||'',p.city,p.classif,p.tradition,p.type,...(p.tags||[]),...vars].join(' ').toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    /* Saved figures filter */
+    if(APP.filterFavsOnly && APP.Favorites){
+      if(!APP.Favorites.has(p.famous)) return false;
+    }
+    /* Badge filter */
+    if(selBadge){
+      var badges=getFigureBadges(p.slug,p.famous);
+      if(badges.indexOf(selBadge)===-1) return false;
+    }
+    return true;
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// AUTO-FOCUS: centre century on first visible person
+// ═══════════════════════════════════════════════════════════
+function applyFilterAndFocus(){
+  const filtered=getFiltered();
+  // Sort chronologically to find the earliest person for auto-focus
+  const sorted=[...filtered].sort((a,b)=>a.dob-b.dob);
+  let firstP=null;
+  for(const p of sorted){
+    if(activeYear!==null){
+      const dod=p.dod!==undefined&&p.dod!==null?p.dod:p.dob+60;
+      if(p.dob>activeYear||dod<activeYear) continue;
+    }
+    firstP=p; break;
+  }
+  if(firstP){
+    const cent=gc(firstP.dob);
+    const idx=ALL_CENTS.indexOf(cent);
+    if(idx!==-1){centIdx=Math.max(idx,1); setCW();}
+    updateCentHeaders(); updateCentScrollbar();
+  }
+  renderAll(filtered);
+  if(VIEW==='relations') updateRelationsHighlight();
+  if(VIEW==='map') _renderMarkers();
+  if(VIEW==='events' && typeof window._eventsApplySearch === 'function') window._eventsApplySearch();
+}
+
+function setCW(){
+  // Centre column (CW[1]) is ALWAYS at least 6th century (ALL_CENTS index >= 1).
+  // centIdx=0 is allowed only to mean "show pre-Islamic in left column".
+  // This prevents CW=[0,0,6] (duplicate pre-Islamic).
+  const safeIdx = Math.max(centIdx, 1); // centre never uses index 0
+  const c    = ALL_CENTS[safeIdx];                                      // centre = 6th+
+  const prev = safeIdx === 1 ? 0 : ALL_CENTS[safeIdx-1];               // left = pre-Islamic when at 6th
+  const next = ALL_CENTS[Math.min(ALL_CENTS.length-1, safeIdx+1)];     // right = next century
+  CW = [prev, c, next];
+}
+
+// ═══════════════════════════════════════════════════════════
+// CENTURY HEADERS
+// ═══════════════════════════════════════════════════════════
+function updateCentHeaders(){
+  // Century header elements removed in Step 1.3 — function is now a no-op.
+  if(!document.getElementById('ch0t')) return;
+  const [c0,c1,c2]=CW;
+  function lbl(c){return c===0?_tlT('PRE-ISLAMIC'):centLabel(c)+' C.'}
+  function yrLbl(c){return c===0?'Pre-600 CE':c>0?((c-1)*100)+' – '+(c*100):''}
+  document.getElementById('ch0t').textContent=lbl(c0);
+  document.getElementById('ch1t').textContent=lbl(c1);
+  document.getElementById('ch2t').textContent=lbl(c2);
+  document.getElementById('ch0y').textContent=yrLbl(c0);
+  document.getElementById('ch1y').textContent=yrLbl(c1);
+  document.getElementById('ch2y').textContent=yrLbl(c2);
+}
+
+// ═══════════════════════════════════════════════════════════
+// CENTURY SCROLLBAR (at bottom)
+// ═══════════════════════════════════════════════════════════
+function initCentScrollbar(){
+  const track=document.getElementById('centScrollTrack');
+  const thumb=document.getElementById('centScrollThumb');
+
+  function setFromPx(px,w){
+    const ratio=Math.max(0,Math.min(1,px/w));
+    const idx=Math.round(ratio*(ALL_CENTS.length-1));
+    if(idx!==centIdx){
+      centIdx=idx; setCW();
+      updateCentHeaders(); updateCentScrollbar(); renderAll();
+    }
+  }
+
+  let dragging=false;
+  thumb.addEventListener('mousedown',e=>{
+    dragging=true; thumb.classList.add('dragging'); e.preventDefault();
+    const r=track.getBoundingClientRect(); setFromPx(e.clientX-r.left,r.width);
+  });
+  document.addEventListener('mousemove',e=>{
+    if(!dragging)return;
+    const r=track.getBoundingClientRect(); setFromPx(e.clientX-r.left,r.width);
+  });
+  document.addEventListener('mouseup',()=>{dragging=false;thumb.classList.remove('dragging');});
+  track.addEventListener('click',e=>{
+    const r=track.getBoundingClientRect(); setFromPx(e.clientX-r.left,r.width);
+  });
+  thumb.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){centIdx=Math.min(ALL_CENTS.length-1,centIdx+1);setCW();updateCentHeaders();updateCentScrollbar();renderAll();}
+    if(e.key==='ArrowLeft'){centIdx=Math.max(0,centIdx-1);setCW();updateCentHeaders();updateCentScrollbar();renderAll();}
+  });
+}
+
+function updateCentScrollbar(){
+  const total=ALL_CENTS.length;
+  const pct=(centIdx/(total-1))*100;
+  const thumbW=Math.round(100/total);
+  const thumbLeft=Math.max(0,Math.min(100-thumbW,pct-thumbW/2));
+  document.getElementById('centScrollThumb').style.left=thumbLeft+'%';
+  document.getElementById('centScrollThumb').style.width=thumbW+'%';
+  document.getElementById('centScrollFill').style.width=pct+'%';
+}
+
+// ═══════════════════════════════════════════════════════════
+// YEAR SLIDER — Shift precision helper (universal)
+// Hold Shift → slider steps at fineStep; release → coarseStep.
+// Works for native <input type="range"> year sliders.
+// The main custom slider wires its own shift handling in initSlider().
+// ═══════════════════════════════════════════════════════════
+window._enableShiftPrecision=function(sliderEl,coarseStep,fineStep){
+  if(!sliderEl) return;
+  sliderEl.step=coarseStep;
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Shift') sliderEl.step=fineStep;
+  });
+  document.addEventListener('keyup',function(e){
+    if(e.key==='Shift') sliderEl.step=coarseStep;
+  });
+  window.addEventListener('blur',function(){sliderEl.step=coarseStep;});
+};
+
+// ═══════════════════════════════════════════════════════════
+// YEAR SLIDER
+// ═══════════════════════════════════════════════════════════
+function initSlider(){
+  const track=document.getElementById('sliderTrack');
+  const thumb=document.getElementById('sliderThumb');
+  const fill=document.getElementById('sliderFill');
+
+  function yr2pct(yr){return((yr-MIN_YR)/(MAX_YR-MIN_YR))*100;}
+  function px2yr(px,w){
+    var step=window._yrSliderShift?1:5;
+    var raw=MIN_YR+Math.max(0,Math.min(1,px/w))*(MAX_YR-MIN_YR);
+    return Math.round(raw/step)*step;
+  }
+
+  function setYear(yr){
+    const pct=yr2pct(yr);
+    thumb.style.left=pct+'%'; fill.style.width=pct+'%';
+    const _trk=document.getElementById('sliderTrack'); if(_trk) _trk.classList.remove('sl-inactive');
+    activeYear=yr;
+    window.activeYear=yr;
+    _viewYears[VIEW]=yr;
+    if(VIEW==='map'&&typeof _applyMapYear==='function') _applyMapYear(yr);
+    if(typeof _onSliderYear==='function') _onSliderYear(yr);
+    // For years before 600 CE, keep centre at 6th century (centIdx=1)
+    const cent=yr<600?6:Math.ceil(yr/100);
+    const idx=ALL_CENTS.indexOf(cent);
+    if(idx!==-1){centIdx=Math.max(idx,1); setCW();}
+    document.getElementById('yearDisplay').textContent=yr+' CE';
+    const cb=document.getElementById('yearClearBtn'); if(cb) cb.classList.add('active');
+    updateCentHeaders(); updateCentScrollbar();
+    renderAll();
+    // Sync activePerson + info card to topmost alive (post-render so _lastSortedPeople is set).
+    if(!_animActive && _lastSortedPeople && _lastSortedPeople.length){
+      const _top = _lastSortedPeople[0];
+      if(_top){
+        activePerson = _top;
+        renderInfoWithDetails(_top);
+        document.querySelectorAll('.tl-row').forEach(function(r,i){
+          r.classList.toggle('sel', parseInt(r.dataset.idx)===0);
+        });
+      }
+    }
+  }
+  window._setSliderYear=setYear;
+
+  let dragging=false;
+  function doMove(e){
+    if(typeof _mapAnimStop==='function') _mapAnimStop();
+    const r=track.getBoundingClientRect();
+    const x=e.touches?e.touches[0].clientX:e.clientX;
+    setYear(px2yr(x-r.left,r.width));
+  }
+  thumb.addEventListener('mousedown',e=>{dragging=true;thumb.classList.add('dragging');e.preventDefault();doMove(e);});
+  thumb.addEventListener('touchstart',e=>{dragging=true;thumb.classList.add('dragging');e.preventDefault();doMove(e);},{passive:false});
+  track.addEventListener('click',e=>{const r=track.getBoundingClientRect();setYear(px2yr(e.clientX-r.left,r.width));});
+  document.addEventListener('mousemove',e=>{if(!dragging)return;doMove(e);});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;doMove(e);},{passive:false});
+  document.addEventListener('mouseup',()=>{dragging=false;thumb.classList.remove('dragging');});
+  document.addEventListener('touchend',()=>{dragging=false;thumb.classList.remove('dragging');});
+  thumb.addEventListener('keydown',e=>{
+    let yr=activeYear||800;
+    var step=e.shiftKey?1:5;
+    if(e.key==='ArrowRight'||e.key==='ArrowUp')yr=Math.min(MAX_YR,yr+step);
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown')yr=Math.max(MIN_YR,yr-step);
+    if(e.key==='PageUp')yr=Math.min(MAX_YR,yr+100);
+    if(e.key==='PageDown')yr=Math.max(MIN_YR,yr-100);
+    setYear(yr);
+  });
+
+  // Shift precision: 5yr default → 1yr while Shift held (drag + arrow keys)
+  window._yrSliderShift=false;
+  var pill=document.getElementById('yrPrecisionPill');
+  var nativeSl=document.getElementById('sliderInput');
+  function setShift(on){
+    if(window._yrSliderShift===on) return;
+    window._yrSliderShift=on;
+    if(nativeSl) nativeSl.step=on?1:5;
+    if(pill) pill.classList.toggle('show',on);
+    // Mid-drag toggles take effect on next mousemove automatically.
+  }
+  document.addEventListener('keydown',function(e){if(e.key==='Shift')setShift(true);});
+  document.addEventListener('keyup',function(e){if(e.key==='Shift')setShift(false);});
+  window.addEventListener('blur',function(){setShift(false);});
+  // Slider starts at left edge — inactive until user clicks YEAR FILTER
+  thumb.style.left='0%'; fill.style.width='0%';
+  track.classList.add('sl-inactive');
+}
+
+function toggleYearSlider(){
+  // Slider is now always visible in hdrRow3 — toggle is a no-op
+}
+
+function clearYear(){
+  activeYear=null;
+  window.activeYear=null;
+  _viewYears[VIEW]=null;
+  if(VIEW==='map'&&typeof _applyMapYear==='function') _applyMapYear(null);
+  if(typeof _onSliderYear==='function') _onSliderYear(null);
+  document.getElementById('yearDisplay').textContent='\u2014';
+  const cb=document.getElementById('yearClearBtn'); if(cb) cb.classList.remove('active');
+  const _trk2=document.getElementById('sliderTrack'); if(_trk2) _trk2.classList.add('sl-inactive');
+  updateCentHeaders(); updateCentScrollbar();
+  renderAll();
+}
+
+// ═══════════════════════════════════════════════════════════
+// VIEW
+// ═══════════════════════════════════════════════════════════
+function _syncSliderUI(){
+  const thumb=document.getElementById('sliderThumb');
+  const fill=document.getElementById('sliderFill');
+  const track=document.getElementById('sliderTrack');
+  const cb=document.getElementById('yearClearBtn');
+  if(activeYear!==null){
+    const pct=((activeYear-MIN_YR)/(MAX_YR-MIN_YR))*100;
+    thumb.style.left=pct+'%'; fill.style.width=pct+'%';
+    document.getElementById('yearDisplay').textContent=activeYear+' CE';
+    if(cb) cb.classList.add('active');
+    if(track) track.classList.remove('sl-inactive');
+  } else {
+    thumb.style.left='0%'; fill.style.width='0%';
+    document.getElementById('yearDisplay').textContent='\u2014';
+    if(cb) cb.classList.remove('active');
+    if(track) track.classList.add('sl-inactive');
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════
+function renderAll(filtered){
+  if(!filtered) filtered=getFiltered();
+  // YEAR FILTER: when slider is active (and not animating), keep only figures alive at activeYear.
+  if(activeYear !== null && !_animActive){
+    filtered = filtered.filter(function(p){
+      const _dob = _dobOf(p); if(_dob == null) return false;
+      const _dod = _dodOf(p);
+      const _end = (_dod != null) ? _dod : _dob + 60;
+      return _dob <= activeYear && _end >= activeYear;
+    });
+  }
+  const sorted = [...filtered].sort((a,b)=>_dobOf(a)-_dobOf(b));
+  const visible = sorted.filter(p => _dobOf(p) != null);
+  // Shared colour map — single source of truth for left-list dot AND centre-column lifespan.
+  const TL_PALETTE = [
+    '#E6833A', '#4A90D9', '#9B59B6', '#2ECC71', '#E74C3C',
+    '#1ABC9C', '#F39C12', '#8E44AD', '#16A085', '#D35400',
+    '#3498DB', '#E91E63', '#00BCD4', '#CDDC39', '#FF5722'
+  ];
+  window._tlColorMap = {};
+  visible.forEach((p, vi) => {
+    const isGold = p.slug === 'adam' || p.slug === 'F0172'
+                 || p.famous === 'Prophet Muhammad'
+                 || p.type === 'Genealogy';
+    window._tlColorMap[p.famous] = isGold ? '#D4AF37' : TL_PALETTE[vi % TL_PALETTE.length];
+  });
+  renderRows(sorted);
+  _tlRenderCenter(visible);
+  if(activePerson){
+    const still=sorted.find(p=>p.famous===activePerson.famous);
+    if(still) renderInfoWithDetails(still); else{activePerson=null;showEmptyInfo();}
+  }
+  if(VIEW==='relations') updateRelationsHighlight();
+}
+
+// Sacred-rule single source of truth (retained post-wipe for the left-list name colour).
+// Only type:'Prophet' figures — plus Adam explicitly — render in soft gold.
+function _tlIsSacred(p){
+  if(!p) return false;
+  if(p.slug === 'adam' || p.slug === 'F0172') return true;
+  return p.type === 'Prophet';
+}
+
+// ═══════════════════════════════════════════════════════════
+// TIMELINE CENTRE COLUMN (Step 3.1) — era title + left-edge gold scale + dob chips.
+// ═══════════════════════════════════════════════════════════
+function _tlRenderCenter(visible){
+  const col = document.getElementById('tlCenter');
+  const titleEl = document.getElementById('tlEraTitle');
+  const scaleEl = document.getElementById('tlScale');
+  if(!col || !titleEl || !scaleEl) return;
+
+  if(!visible.length){
+    titleEl.classList.add('empty');
+    titleEl.textContent = '';
+    scaleEl.innerHTML = '';
+    scaleEl.style.height = '0';
+    col.style.setProperty('--tl-era-bg', 'transparent');
+    col.style.setProperty('--tl-era-border', 'var(--gold)');
+    _tlSyncScroll();
+    return;
+  }
+  titleEl.classList.remove('empty');
+
+  const compressionOn = document.body.classList.contains('tl-focus')
+    && document.querySelector('.tl-row.tl-compressed') != null;
+
+  // Era determined by 4th visible figure (or last if fewer than 4).
+  const anchor = visible[3] || visible[visible.length - 1];
+  const era = _getEra(_dobOf(anchor));
+  titleEl.textContent = _tlT(era.name);
+  // era.border is 'rgb(r,g,b)' — derive a 25%-alpha column tint from it.
+  const borderRgb = era.border.replace('rgb(', '').replace(')', '');
+  col.style.setProperty('--tl-era-bg', 'rgba(' + borderRgb + ', 0.25)');
+  col.style.setProperty('--tl-era-border', era.border);
+
+  // Dob chips — one per row, always at its DOM-measured midpoint (no synthetic math, no dedup).
+  const goldYs = [];
+  const rowYs = new Array(visible.length);
+  let html = '';
+  const rs0 = document.getElementById('rowsScroll');
+  const rowEls = rs0 ? rs0.querySelectorAll('.tl-row') : [];
+  if(compressionOn && rowEls.length){
+    rowEls.forEach(el => {
+      const idx = parseInt(el.dataset.idx);
+      if(isNaN(idx) || idx >= visible.length) return;
+      const p = visible[idx];
+      if(!p) return;
+      const mid = el.offsetTop + (el.offsetHeight / 2);
+      rowYs[idx] = mid;
+      const dob = _dobOf(p);
+      if(dob == null) return;
+      goldYs.push(mid);
+      const label = dob < 0 ? Math.abs(dob) : dob;
+      html += '<div class="tl-dob-chip" style="top:' + mid + 'px">' + label + '</div>';
+    });
+  } else {
+    visible.forEach((p, vi) => {
+      const dob = _dobOf(p);
+      if(dob == null) return;
+      const y = vi * ROW_H + ROW_MID;
+      rowYs[vi] = y;
+      goldYs.push(y);
+      const label = dob < 0 ? Math.abs(dob) : dob;
+      html += '<div class="tl-dob-chip" style="top:' + y + 'px">' + label + '</div>';
+    });
+  }
+
+  // Row-anchored non-linear scale: interpolate years → Y using adjacent visible dobs.
+  function yearToY(yr){
+    if(!visible.length) return 0;
+    const firstDob = _dobOf(visible[0]);
+    const lastDob  = _dobOf(visible[visible.length-1]);
+    const getY = (i) => (rowYs[i] != null) ? rowYs[i] : (i * ROW_H + ROW_MID);
+    const maxY = getY(visible.length - 1);
+    if(yr <= firstDob) return getY(0);
+    if(yr >= lastDob)  return maxY;
+    let lo = 0, hi = visible.length - 1;
+    while(lo < hi - 1){
+      const mid = (lo + hi) >> 1;
+      if(_dobOf(visible[mid]) < yr) lo = mid; else hi = mid;
+    }
+    const yA = getY(lo), yB = getY(hi);
+    const dA = _dobOf(visible[lo]), dB = _dobOf(visible[hi]);
+    if(dA === dB) return yA;
+    return yA + ((yr - dA) / (dB - dA)) * (yB - yA);
+  }
+
+  // Centre-column colour rule — read from the shared map built in renderAll.
+  const dotCol = (pp) => (window._tlColorMap && window._tlColorMap[pp.famous]) || '#A0AEC0';
+
+  // Viewport window: only the ~15 rows currently on-screen render lifespans.
+  const _rs = document.getElementById('rowsScroll');
+  const _st = _rs ? _rs.scrollTop : 0;
+  const _vh = _rs ? _rs.clientHeight : ROW_H * 15;
+  const winStart = Math.max(0, Math.floor(_st / ROW_H));
+  const winEndRaw = Math.min(visible.length - 1, Math.floor((_st + _vh) / ROW_H));
+  const winEnd = Math.min(winEndRaw, winStart + 14);
+
+  // Same-year breathing space: track horizontal offset per yStart / yEnd bucket so clustered arcs fan out.
+  const _yStartBuckets = {};
+  const _yEndBuckets   = {};
+
+  let barsHtml = '';
+  const silverChips = [];
+
+  // Build the set of indices to render arcs for.
+  const renderSet = new Set();
+  for(let vi = winStart; vi <= winEnd; vi++) renderSet.add(vi);
+  // If focus mode, also include the focused figure's index wherever they sit.
+  if(tlFocusName){
+    const fIdx = visible.findIndex(pp => pp.famous === tlFocusName);
+    if(fIdx >= 0) renderSet.add(fIdx);
+  }
+  const renderIdxs = Array.from(renderSet).sort((a,b)=>a-b);
+  for(const vi of renderIdxs){
+    const p = visible[vi];
+    if(!p) continue;
+    const dob = _dobOf(p); if(dob == null) continue;
+    const dod = _dodOf(p);
+    const yStart = (rowYs[vi] != null) ? rowYs[vi] : (vi * ROW_H + ROW_MID);
+    let endYear, yEnd;
+    if(dod != null){ endYear = dod; yEnd = yearToY(dod); }
+    else           { endYear = dob + 30; yEnd = yearToY(endYear); }
+    if(yEnd - yStart < 4) yEnd = yStart + 4;
+    if(compressionOn){
+      // Prefer the DOM-measured y of the row whose dob == endYear (if any).
+      let bestIdx = -1, bestDiff = Infinity;
+      for(let q = 0; q < visible.length; q++){
+        const vd = _dobOf(visible[q]);
+        if(vd == null) continue;
+        const diff = Math.abs(vd - endYear);
+        if(diff < bestDiff){ bestDiff = diff; bestIdx = q; }
+      }
+      if(bestIdx >= 0 && rowYs[bestIdx] != null) yEnd = rowYs[bestIdx];
+      if(yEnd - yStart < 4) yEnd = yStart + 4;
+    }
+    // Clamp runaway arcs (dense eras push yEnd thousands of px below yStart).
+    // Cap at 6 row-heights so arc remains visually meaningful inside the column.
+    const isFocus = tlFocusName && p.famous === tlFocusName;
+    const MAX_H = ROW_H * 6;
+    let truncated = false;
+    if(!isFocus && yEnd - yStart > MAX_H){
+      yEnd = yStart + MAX_H;
+      truncated = true;
+    }
+
+    const kS = Math.round(yStart);
+    const kE = Math.round(yEnd);
+    const offS = _yStartBuckets[kS] || 0;
+    const offE = _yEndBuckets[kE] || 0;
+    const xShift = Math.max(offS, offE) * 10;
+    _yStartBuckets[kS] = offS + 1;
+    _yEndBuckets[kE]   = offE + 1;
+
+    const colr = dotCol(p);
+    const h = yEnd - yStart;
+    // peakPx = visual peak of the arc (what the eye sees at t=0.5).
+    // Quadratic control point must be 2x the peak to achieve that peak.
+    const peakPx = Math.max(18, Math.min(115, h * 0.55));
+    const ctrlX  = peakPx * 2 - 2;
+    const svgW   = Math.ceil(peakPx) + 12;
+
+    const dashAttr = truncated ? ' stroke-dasharray="4,4"' : '';
+    const safeName = esc(p.famous);
+    const clickName = p.famous.replace(/'/g, "\\'");
+    const focusCls = (tlFocusName && p.famous === tlFocusName) ? ' focus-target' : '';
+    barsHtml += '<svg class="tl-life-arc' + focusCls + '" data-famous="' + safeName + '" onclick="_tlFocusByName(\'' + clickName + '\')" style="left:' + (61 + xShift) + 'px;top:' + yStart + 'px;height:' + h + 'px;width:' + svgW + 'px" viewBox="0 0 ' + svgW + ' ' + h + '" preserveAspectRatio="none">'
+             +  '<path d="M 2 0 Q ' + ctrlX + ' ' + (h / 2) + ' 2 ' + h + '" fill="none" stroke="' + colr + '" stroke-width="3" stroke-linecap="round" opacity="0.9"' + dashAttr + '/>'
+             +  '</svg>';
+
+    const matchesVisibleDob = visible.some(q => _dobOf(q) === endYear);
+    if(!matchesVisibleDob && !truncated) silverChips.push({ y: yEnd, year: endYear });
+  }
+
+  silverChips.sort((a, b) => a.y - b.y);
+  const placedYs = goldYs.slice();
+  let silverHtml = '';
+  silverChips.forEach(s => {
+    let y = s.y, tries = 0;
+    while(tries < 40 && placedYs.some(py => Math.abs(py - y) < 14)){
+      y += 14; tries++;
+    }
+    placedYs.push(y);
+    const label = s.year < 0 ? Math.abs(s.year) : s.year;
+    silverHtml += '<div class="tl-dod-chip-silver" style="top:' + y + 'px">' + label + '</div>';
+  });
+
+  scaleEl.innerHTML = html + barsHtml + silverHtml;
+  if(compressionOn){
+    const rs = document.getElementById('rowsScroll');
+    const lastRow = rs ? rs.querySelector('.tl-row:last-child') : null;
+    if(lastRow){
+      scaleEl.style.height = (lastRow.offsetTop + lastRow.offsetHeight) + 'px';
+    } else {
+      scaleEl.style.height = (visible.length * ROW_H) + 'px';
+    }
+  } else {
+    scaleEl.style.height = (visible.length * ROW_H) + 'px';
+  }
+
+  window._tlVisibleCache = visible; // reused by the scroll-driven title update
+  _tlSyncScroll();
+
+  // If focus is active, re-apply after re-render (scroll/filter rebuilds arcs).
+  if(tlFocusName) _tlApplyFocus();
+}
+
+// Scroll handler — updates era title + tint from the 4th row visible on-screen.
+function _tlExitFocus(){
+  window._tlFocusScrolled = false;
+  tlFocusName = null;
+  document.body.classList.remove('tl-focus');
+  const tc = document.getElementById('tlCenter');
+  if(tc) tc.classList.remove('focus-mode');
+  document.querySelectorAll('.tl-row.focus-target').forEach(r=>r.classList.remove('focus-target'));
+  document.querySelectorAll('.tl-row.focus-overlap').forEach(r=>r.classList.remove('focus-overlap'));
+  document.querySelectorAll('.tl-row.tl-compressed').forEach(r=>r.classList.remove('tl-compressed'));
+  document.querySelectorAll('.tl-life-arc.focus-target').forEach(a=>a.classList.remove('focus-target'));
+  const pillName = document.getElementById('tlFocusPillName');
+  if(pillName) pillName.textContent = '';
+  if(window._tlVisibleCache) _tlRenderCenter(window._tlVisibleCache);
+}
+
+function _tlApplyFocus(){
+  if(!tlFocusName) return;
+  document.body.classList.add('tl-focus');
+  const tc = document.getElementById('tlCenter');
+  if(tc) tc.classList.add('focus-mode');
+  const pillName = document.getElementById('tlFocusPillName');
+  if(pillName) pillName.textContent = tlFocusName;
+
+  const target = _lastSortedPeople.find(pp => pp.famous === tlFocusName);
+  const tDob = target ? _dobOf(target) : null;
+  const tDod = target ? (_dodOf(target) != null ? _dodOf(target) : tDob + 60) : null;
+  let targetRow = null;
+  document.querySelectorAll('.tl-row').forEach(r=>{
+    const idx = parseInt(r.dataset.idx);
+    const pp = _lastSortedPeople[idx];
+    if(!pp){ r.classList.remove('focus-target','focus-overlap'); return; }
+    const isSelf = pp.famous === tlFocusName;
+    let overlaps = false;
+    if(tDob != null && tDod != null){
+      const pDob = _dobOf(pp);
+      const pDod = _dodOf(pp) != null ? _dodOf(pp) : (pDob != null ? pDob + 60 : null);
+      if(pDob != null && pDod != null){
+        overlaps = !(pDod < tDob || pDob > tDod);
+      }
+    }
+    r.classList.toggle('focus-target', isSelf);
+    r.classList.toggle('focus-overlap', !isSelf && overlaps);
+    if(isSelf) targetRow = r;
+  });
+  document.querySelectorAll('.tl-life-arc').forEach(a=>{
+    a.classList.toggle('focus-target', a.dataset.famous === tlFocusName);
+  });
+
+  // Compression: if the target's dob-row to dod-row range exceeds 15 rows in the sorted list,
+  // compress every row strictly between those two row indices so the arc stays usable.
+  document.querySelectorAll('.tl-row.tl-compressed').forEach(r => r.classList.remove('tl-compressed'));
+  if(target){
+    const sorted = _lastSortedPeople;
+    const tIdx = sorted.findIndex(pp => pp.famous === tlFocusName);
+    if(tIdx >= 0){
+      let endIdx = tIdx;
+      for(let j = tIdx + 1; j < sorted.length; j++){
+        const pDob = _dobOf(sorted[j]);
+        if(pDob != null && pDob <= tDod) endIdx = j;
+        else if(pDob != null && pDob > tDod) break;
+      }
+      const span = endIdx - tIdx;
+      if(span > 15){
+        document.querySelectorAll('.tl-row').forEach(r => {
+          const idx = parseInt(r.dataset.idx);
+          if(idx > tIdx && idx < endIdx) r.classList.add('tl-compressed');
+        });
+      }
+    }
+  }
+
+  if(!window._tlFocusScrolled){
+    window._tlFocusScrolled = true;
+    const rs = document.getElementById('rowsScroll');
+    if(targetRow && rs){
+      const offsetTop = targetRow.offsetTop;
+      const viewH = rs.clientHeight;
+      const rowH = targetRow.offsetHeight || ROW_H;
+      const desired = Math.max(0, offsetTop - Math.floor(viewH / 3) + rowH / 2);
+      rs.scrollTo({ top: desired, behavior: 'smooth' });
+    }
+  }
+
+  if(window._tlVisibleCache){
+    // Defer one frame so compressed row heights are applied in layout before we measure.
+    requestAnimationFrame(() => _tlRenderCenter(window._tlVisibleCache));
+  }
+}
+
+window._tlFocusByName = function(name){
+  if(tlFocusName === name){ _tlExitFocus(); return; }
+  tlFocusName = name;
+  const p = PEOPLE.find(pp => pp.famous === name);
+  if(p){ activePerson = p; renderInfoWithDetails(p); }
+  _tlApplyFocus();
+};
+
+function _tlUpdateEraTitleOnScroll(){
+  const rs = document.getElementById('rowsScroll');
+  const col = document.getElementById('tlCenter');
+  const titleEl = document.getElementById('tlEraTitle');
+  if(!rs || !col || !titleEl) return;
+  const sortedVisible = window._tlVisibleCache || [];
+  if(!sortedVisible.length) return;
+
+  const topRowIdx = Math.floor(rs.scrollTop / ROW_H);
+  const fourthIdx = Math.min(topRowIdx + 3, sortedVisible.length - 1);
+  const anchor = sortedVisible[fourthIdx];
+  if(!anchor) return;
+
+  const era = _getEra(_dobOf(anchor));
+  titleEl.textContent = _tlT(era.name);
+  const borderRgb = era.border.replace('rgb(', '').replace(')', '');
+  col.style.setProperty('--tl-era-bg', 'rgba(' + borderRgb + ', 0.25)');
+  col.style.setProperty('--tl-era-border', era.border);
+}
+
+// One-time mirror: figure-list scroll → centre column scroll, so dob chips stay aligned.
+function _tlSyncScroll(){
+  const rs = document.getElementById('rowsScroll');
+  const ts = document.getElementById('tlCenterScroll');
+  if(!rs || !ts || ts.dataset.synced) return;
+  ts.dataset.synced = '1';
+  let _tlTitlePending = false;
+  rs.addEventListener('scroll', () => {
+    ts.scrollTop = rs.scrollTop;
+    if(_tlTitlePending) return;
+    _tlTitlePending = true;
+    requestAnimationFrame(() => {
+      _tlTitlePending = false;
+      _tlUpdateEraTitleOnScroll();
+      if(window._tlVisibleCache) _tlRenderCenter(window._tlVisibleCache);
+    });
+  });
+
+  const fcBtn = document.getElementById('tlFocusClose');
+  if(fcBtn && !fcBtn.dataset.bound){
+    fcBtn.dataset.bound = '1';
+    fcBtn.addEventListener('click', function(e){ e.stopPropagation(); _tlExitFocus(); });
+  }
+}
+
+// ── Era definitions for timeline bands ──
+const _ERA_BANDS=[
+  {min:-Infinity,max:632,  name:'Prophetic Era',      dates:'Before 632 CE',    bg:'rgba(139,105,20,0.08)', border:'rgb(139,105,20)'},
+  {min:632,      max:661,  name:'Rashidun',            dates:'632\u2013661 CE',  bg:'rgba(45,90,61,0.10)',  border:'rgb(45,90,61)'},
+  {min:661,      max:750,  name:'Umayyad',             dates:'661\u2013750 CE',  bg:'rgba(90,61,45,0.10)',  border:'rgb(90,61,45)'},
+  {min:750,      max:1258, name:'Abbasid Golden Age',  dates:'750\u20131258 CE', bg:'rgba(45,61,90,0.10)',  border:'rgb(45,61,90)'},
+  {min:1258,     max:1500, name:'Post-Mongol',         dates:'1258\u20131500 CE',bg:'rgba(74,45,74,0.10)',  border:'rgb(74,45,74)'},
+  {min:1500,     max:1800, name:'Gunpowder Empires',   dates:'1500\u20131800 CE',bg:'rgba(61,74,45,0.10)',  border:'rgb(61,74,45)'},
+  {min:1800,     max:1950, name:'Colonial & Reform',   dates:'1800\u20131950 CE',bg:'rgba(90,74,45,0.10)',  border:'rgb(90,74,45)'},
+  {min:1950,     max:Infinity,name:'Contemporary',     dates:'1950\u2013Present',bg:'rgba(45,74,74,0.10)',  border:'rgb(45,74,74)'}
+];
+function _getEra(dob){
+  for(let i=0;i<_ERA_BANDS.length;i++){
+    if(dob<_ERA_BANDS[i].max) return _ERA_BANDS[i];
+  }
+  return _ERA_BANDS[_ERA_BANDS.length-1];
+}
+
+function renderRows(filtered){
+  _lastSortedPeople=filtered; // FIX: store so selectRow uses same sorted array
+  const container=document.getElementById('rowsScroll');
+  let html='';
+
+  filtered.forEach((p,i)=>{
+    // Auto-hide: if year filter active and person wasn't alive, skip entirely
+    if(activeYear!==null){
+      const dob=p.dob;
+      const dod=p.dod!==undefined&&p.dod!==null?p.dod:dob+60;
+      if(dob>activeYear||dod<activeYear) return;
+    }
+
+    const era=_getEra(p.dob);
+    // Dot colour comes from the shared map built in renderAll so it always matches the centre-column lifespan.
+    const col = (window._tlColorMap && window._tlColorMap[p.famous]) || '#A0AEC0';
+    const isSel=activePerson&&activePerson.famous===p.famous;
+    const isProphet=p.famous==='Prophet Muhammad';
+    // Step 2.8 — sacred rule: only type:'Prophet' figures (and Adam explicitly) get the gold treatment.
+    const isSacred = _tlIsSacred(p);
+
+    html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="background:${era.bg}">
+      <div class="tc-name${isSacred?' is-sacred':''}">
+        <div class="tc-texts">
+          <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}</div>
+          <div class="tc-sub">${esc(_tlFigSubtitle(p) || _tlClassifStr(p))}</div>
+        </div>
+        <div class="tc-dot" style="background:${col}${isProphet?';box-shadow:0 0 8px '+col+'90':''}"></div>
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML=html;
+  if(activePerson){
+    const sel=container.querySelector('.sel');
+    if(sel)sel.scrollIntoView({block:'nearest'});
+  }
+  // Era-tinted column headers on scroll
+  if(!container._eraScrollBound){
+    container._eraScrollBound=true;
+    const fb=document.getElementById('filterBar');
+    container.addEventListener('scroll',function(){
+      const rows=container.querySelectorAll('.tl-row');
+      for(let r=0;r<rows.length;r++){
+        const rect=rows[r].getBoundingClientRect();
+        if(rect.bottom>container.getBoundingClientRect().top){
+          const bg=rows[r].dataset.eraBg;
+          if(bg&&fb) fb.style.background=bg;
+          break;
+        }
+      }
+    });
+  }
+}
+
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function selectRow(idx){
+  // FIX: use _lastSortedPeople (the sorted array that renderRows used to assign data-idx)
+  // Previously used getFiltered() which returns unsorted JSON order — causing 577/611 wrong selections
+  const p=_lastSortedPeople[idx]; if(!p)return;
+  if(activePerson && activePerson.famous === p.famous && tlFocusName === p.famous){
+    _tlExitFocus();
+    return;
+  }
+  activePerson=p;
+  if(VIEW === 'timeline'){
+    tlFocusName = p.famous;
+    _tlApplyFocus();
+  }
+  document.querySelectorAll('.tl-row').forEach(r=>r.classList.toggle('sel',parseInt(r.dataset.idx)===idx));
+  renderInfoWithDetails(p);
+}
+
+// ═══════════════════════════════════════════════════════════
+// INFO PANEL
+// ═══════════════════════════════════════════════════════════
+function showEmptyInfo(){
+  document.getElementById('infoScroll').innerHTML=
+    `<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">${_tlT('Click a name to explore')}</div></div>`;
+}
+
+
+function _isAssumedDate(p){
+  if(p.famous==='Prophet Muhammad')return false;
+  if(p._dobFromDod)return true;
+  const s=((p.dob_s||'')+(p.dod_s||'')).toLowerCase();
+  if(/legendary|assumed|estimated|c\./.test(s))return true;
+  if((p.type==='Founder'||p.type==='Prophet')&&p.dob<500)return true;
+  return false;
+}
+const _assumedBadge='<span style="font-size:var(--fs-3);color:rgba(212,175,55,.55);cursor:help;margin-left:3px" title="Date estimated for visual placement — not historically confirmed">△</span>';
+
+var _ctBios = null;
+var _ctSlugMap = null;
+var _ctVariants = null;
+var _ctLoading = null;
+function _ensureCrossTraditionData(){
+  if(_ctLoading) return _ctLoading;
+  if(_ctBios && _ctSlugMap) return Promise.resolve();
+  _ctLoading = Promise.all([
+    fetch(dataUrl('data/islamic/cross_tradition_bios.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch(dataUrl('data/islamic/prophet_slug_map.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch(dataUrl('data/islamic/prophet_name_variants.json')).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  ]).then(function(res){
+    _ctBios = res[0] || {};
+    _ctSlugMap = res[1] || {};
+    _ctVariants = res[2] || {};
+  });
+  return _ctLoading;
+}
+
+var _figureHadithChips = null;
+var _figureHadithChipsLoading = null;
+function _ensureFigureHadithChips(){
+  if(_figureHadithChips) return Promise.resolve(_figureHadithChips);
+  if(_figureHadithChipsLoading) return _figureHadithChipsLoading;
+  _figureHadithChipsLoading = fetch(dataUrl('data/islamic/figure_hadith_chips.json'))
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(d){ _figureHadithChips = d || {}; return _figureHadithChips; })
+    .catch(function(){ _figureHadithChips = {}; return _figureHadithChips; });
+  return _figureHadithChipsLoading;
+}
+function _populateFigureHadithChip(p){
+  var slot = document.getElementById('figHadithChipSlot');
+  if(!slot) return;
+  _ensureFigureHadithChips().then(function(chips){
+    var ids = chips[p.slug];
+    if(!ids || !ids.length) return;
+    slot.innerHTML = '<span class="i-tag" id="figHadithChip" style="cursor:pointer;border-color:rgba(212,175,55,.5);color:#D4AF37">HADITHS</span>';
+    var chip = document.getElementById('figHadithChip');
+    if(chip){
+      chip.onclick = function(ev){
+        ev.stopPropagation();
+        if(window.Monastic && typeof window.Monastic.showHadiths === 'function'){
+          window.Monastic.showHadiths(ids, 'Hadiths about ' + (p.famous || p.slug));
+        }
+      };
+    }
+  });
+}
+
+function renderInfo(p){
+  const col = p.type==='Genealogy' ? '#D4AF37' : (CC[gc(p.dob)]||'#A0AEC0');
+  const _dobMain = p.dob_academic!=null ? p.dob_academic : p.dob;
+  const _dodMain = p.dod_academic!=null ? p.dod_academic : p.dod;
+  const dob_s=_dobMain!=null?(_dobMain<0?`${Math.abs(_dobMain)} ${_tlT('BCE')}`:`${_dobMain} ${_tlT('CE')}`):'Unknown';
+  const dod_s=_dodMain!=null?(_dodMain<0?`${Math.abs(_dodMain)} ${_tlT('BCE')}`:`${_dodMain} ${_tlT('CE')}`):'Unknown';
+  const _ab=_isAssumedDate(p)?_assumedBadge:'';
+
+
+  // Quran references section — verified xref wins; legacy strings only render
+  // when no xref entries exist for this figure (e.g. companions in Phase 1).
+  let quranHtml='';
+  let quranChipsHtml='';
+  const _xrefs=(window.QURAN_XREF_BY_SLUG && window.QURAN_XREF_BY_SLUG[p.slug]) || null;
+  if(_xrefs && _xrefs.length){
+    quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')} <span style="color:var(--ip-muted);font-weight:normal;font-size:var(--fs-3)">(${_xrefs.length})</span></div>
+      <div class="quran-chips" style="line-height:1.9">${_xrefs.map(r=>
+        `<button class="quran-chip" data-surah="${r.surah}" data-vstart="${r.verse_start}" data-vend="${r.verse_end}">${esc(r.ref_text)}</button>`
+      ).join('')}</div></div>`;
+  } else if(p.quranRef){
+    const qr=p.quranRef;
+    if(typeof qr==='object'&&qr.count!=null){
+      quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:5px">
+          <span style="font-family:'Cinzel',serif;font-size:var(--fs-1);font-weight:700;color:var(--ip-acc);line-height:1">${qr.count}×</span>
+          <span style="font-size:var(--fs-3);color:var(--ip-muted)">${_tlT('mentioned in the Quran')}</span>
+          <span style="font-size:var(--fs-3)">${typeof renderQuranRef==="function"?renderQuranRef(qr.firstVerse):esc(qr.firstVerse)}</span>
+        </div>
+        <div style="font-size:var(--fs-3);color:var(--ip-muted);font-style:normal">${esc((qr.epithet||'').split('·').map(s=>_tlT(s.trim())).join(' · '))}</div>
+      </div>`;
+    } else {
+      quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
+        <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
+          <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">${_tlT('VERSES')}: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(String(qr)):esc(String(qr)))}
+        </div></div>`;
+    }
+  } else if(p.quran_refs){
+    quranHtml=`<div class="i-sec"><div class="i-sl">${_tlT('Quranic References')}</div>
+      <div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">
+        <span style="color:var(--ip-acc);font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em">${_tlT('VERSES')}: </span>${window._linkifyQuranRefs(typeof renderQuranRef==="function"?renderQuranRef(p.quran_refs):esc(p.quran_refs))}
+      </div></div>`;
+  }
+
+  let booksHtml='';
+  if(p.books?.length && p.type!=='Prophet'){
+    const sortedBooks=[...p.books].sort((a,b)=>/quran/i.test(a.title)?-1:/quran/i.test(b.title)?1:0);
+    booksHtml=`<div class="i-sec"><div class="i-sl">Works &amp; Sources</div>
+      <div class="i-books">${sortedBooks.map(b=>`
+        <div class="i-book">
+          <span style="color:${col};font-size:var(--fs-3);flex-shrink:0">▸</span>
+          <div>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">${esc(b.title)}</a>`:`<span>${esc(b.title)}</span>`}
+          ${b.magnum?` <span style="color:var(--ip-acc);font-size:var(--fs-3)">✦</span>`:''}
+          ${b.note?`<div class="i-bnote">${esc(b.note).replace(/quran\.com/g,'<a href="https://quran.com" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">quran.com</a>')}</div>`:''}</div>
+        </div>`).join('')}
+      </div></div>`;
+  }
+  // Scripture section for prophets (from figure_sources.json)
+  const _fSrc=window._FIGURE_SOURCES&&window._FIGURE_SOURCES[p.slug];
+  if(_fSrc&&_fSrc.scripture_or_refs&&_fSrc.scripture_or_refs.length){
+    booksHtml+=`<div class="i-sec"><div class="i-sl">Scripture</div>
+      <div class="i-books">${_fSrc.scripture_or_refs.map(ref=>`
+        <div class="i-book">
+          <span style="color:${col};font-size:var(--fs-3);flex-shrink:0">▸</span>
+          <div><span>${esc(ref.title)}</span>
+          ${ref.revealed_to?`<div class="i-bnote">Revealed to ${esc(ref.revealed_to)}</div>`:''}</div>
+        </div>`).join('')}
+      </div></div>`;
+  }
+  let teachHtml='';
+  if(p.famous!=='Prophet Muhammad'&&p.teachers?.length){
+    teachHtml=`<div class="i-sec"><div class="i-sl">${_tlT('TEACHERS')}</div>
+      <div class="i-teachers">
+        ${p.teachers.map(t=>{const _tp=PEOPLE.find(pp=>pp.famous===t);return `<span class="i-teacher" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(_tp?_tlFigName(_tp):t)}</span>`;}).join('')}
+      </div></div>`;
+  }
+
+  // Students (people who list this figure as a teacher)
+  const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
+  let studHtml='';
+  if(p.famous!=='Prophet Muhammad'&&studentsOf.length){
+    studHtml=`<div class="i-sec"><div class="i-sl">${_tlT('STUDENTS')} (${studentsOf.length})</div>
+      <div class="i-teachers">
+        ${studentsOf.map(s=>`<span class="i-student" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(_tlFigName(s))}</span>`).join('')}
+      </div></div>`;
+  }
+
+  let relHtml='';
+  if(p.relations?.length){
+    relHtml=`<div class="i-sec"><div class="i-sl">${_tlT('RELATIONS')}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+        ${p.relations.map(r=>{
+          const inData=PEOPLE.find(pp=>pp.famous===r.person);
+          const relLabel=`<span class="i-rel-type" data-rel="${esc(r.relation)}">${esc(_tlT(String(r.relation||'').toUpperCase()))}</span>`;
+          const name=esc(inData ? _tlFigName(inData) : r.person);
+          if(inData){
+            return `<span class="i-rel-chip clickable" data-rel="${esc(r.relation)}" onclick="jumpTo('${r.person.replace(/'/g,"\\'")}')" title="${_tlT('Go to')} ${esc(r.person)}">${relLabel} ${name}</span>`;
+          } else {
+            return `<span class="i-rel-chip" data-rel="${esc(r.relation)}">${relLabel} ${name}</span>`;
+          }
+        }).join('')}
+      </div></div>`;
+  }
+
+  // Locate-in-relations button (only when relations view active and node exists)
+  const locateBtn=VIEW==='relations'&&SL_NM[p.famous]
+    ?`<button class="sl-locate-btn" onclick="relationsLocate('${p.famous.replace(/'/g,"\\'")}')">`+
+      `<span class="slb-icon">◎</span>LOCATE IN CHAIN</button>`:'';
+
+  var _bmAuth = window.GoldArkAuth;
+  var _isFav = (_bmAuth && _bmAuth.hasBookmarkKey && p.slug) ? _bmAuth.hasBookmarkKey('f:' + p.slug) : false;
+  var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" data-slug="' + esc(p.slug || '') + '" '
+    + 'title="' + (_isFav ? _tlT('Remove from bookmarks') : _tlT('Bookmark this figure')) + '" '
+    + 'style="background:none;border:none;cursor:pointer;font-size:var(--fs-1);'
+    + 'color:' + (_isFav ? '#D4AF37' : 'rgba(160,174,192,0.25)') + ';'
+    + 'float:right;margin-left:10px;padding:2px;line-height:1;'
+    + 'transition:color 0.15s,transform 0.15s;">'
+    + (_isFav ? '★' : '☆') + '</button>';
+
+  let quotesHtml = '';
+  if (p.quotes && p.quotes.length) {
+    const qItems = p.quotes.map((q, i) =>
+      '<blockquote style="margin:0 0 10px 0;padding:10px 14px;' +
+      'border-left:3px solid var(--ip-acc);' +
+      'background:rgba(212,175,55,.05);' +
+      'font-family:\'Source Sans 3\',sans-serif;font-size:var(--fs-3);' +
+      'font-style:normal;color:var(--ip-text);line-height:1.65;">' +
+      esc(_tlFigQuote(p, i)) + '</blockquote>'
+    ).join('');
+    quotesHtml =
+      '<div style="margin-top:18px;padding-top:14px;' +
+      'border-top:1px solid var(--ip-brd);">' +
+      '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);' +
+      'letter-spacing:.14em;color:var(--ip-muted);display:flex;' +
+      'align-items:center;gap:6px;margin-bottom:10px;">' +
+      _tlT('IN THEIR OWN WORDS') +
+      '<span style="flex:1;height:1px;background:var(--ip-brd);' +
+      'display:inline-block;"></span></div>' +
+      qItems + '</div>';
+  }
+
+
+  document.getElementById('infoScroll').innerHTML=`
+    ${locateBtn}
+    ${_starHTML}
+    ${canShowImage(p) ? `
+    <div id="wikiImgWrap" style="float:right;margin:0 0 12px 14px;max-width:120px;text-align:center">
+      <img id="wikiImg" style="display:none;width:100%;max-width:120px;border-radius:4px;border:1px solid var(--ip-brd);object-fit:cover"
+        alt="${esc(p.famous)}"
+        onerror="this.style.display='none';document.getElementById('wikiImgCaption').style.display='none';" />
+      <div id="wikiImgCaption" style="display:none;font-size:var(--fs-3);color:var(--ip-muted);font-family:'Cinzel',serif;letter-spacing:.06em;margin-top:4px">via Wikipedia</div>
+    </div>` : ''}
+    <div class="i-name">${esc(_tlFigName(p))}${p.names_i18n?'<span class="i18n-trigger" id="i18nTrigger" title="View name in other languages" style="display:inline-block;margin-left:8px;font-size:var(--fs-3);color:var(--ip-muted);cursor:pointer;vertical-align:middle;opacity:.5;transition:opacity .15s" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.5">🌐</span>':''}</div>
+    ${p.full&&p.full!==p.famous?`<div class="i-full">${esc(_tlFigField(p,'full'))}</div>`:''}
+    <div class="i-primary">${esc(_tlFigField(p,'primaryTitle'))}</div>
+    ${p.tags&&p.tags.length?`<div style="margin-bottom:10px;display:flex;flex-wrap:wrap;gap:5px">${p.tags.map(t=>`<span class="i-badge">${esc(t)}</span>`).join('')}</div>`:''}
+    <div class="i-tags">
+      <span class="i-tag hi">${esc(_tlT(p.type||''))}</span>
+      <span class="i-tag hi">${esc(_tlT(p.tradition||''))}</span>
+      ${_tlClassifStr(p)?`<span class="i-tag">${esc(_tlT(_tlClassifStr(p)))}</span>`:''}
+      ${p.city?`<span class="i-tag">📍 ${esc(_tlT(p.city))}</span>`:''}
+      ${p.lang?`<span class="i-tag">🌐 ${esc(_tlT(p.lang))}</span>`:''}
+      <span id="figHadithChipSlot"></span>
+    </div>
+    ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="info-wd-occupations">'+chips.map(l=>'<span class="info-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
+    ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; ${_tlT('Follow their life on the map')}</a>`:''}
+    <div class="i-dates">
+      <div class="i-di"><span class="dl">${_tlT('BORN')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dob_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">${_tlT('DIED')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dod_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
+      ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">${_tlT('CENTURY')}</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
+    </div>
+    ${((p.dob_s||'')+(p.dod_s||'')).toLowerCase().includes('legendary')?`<div style="font-size:var(--fs-3);color:rgba(160,174,192,.55);margin:-4px 0 10px 2px;line-height:1.4">${_tlT('Source:')} ${_tlT('Ibn Ishaq, Sirat Rasul Allah; al-Tabari, Tarikh al-Rusul wa al-Muluk')}</div>`:''}
+    ${p.dateNote?`<div style="display:flex;align-items:flex-start;gap:5px;margin:-6px 0 13px;padding:5px 9px;background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;font-size:var(--fs-3);color:var(--ip-muted);font-style:normal;line-height:1.45"><span style="flex-shrink:0">⚠</span><span>${esc(p.dateNote)}</span></div>`:''}
+    ${(function(){
+      var ctKey = (_ctSlugMap && p.slug) ? _ctSlugMap[p.slug] : null;
+      var ctEntry = (ctKey && _ctBios) ? _ctBios[ctKey] : null;
+      var nvEntry = (_ctVariants && p.slug) ? _ctVariants[p.slug] : null;
+
+      var nvHtml = '';
+      if(nvEntry && Array.isArray(nvEntry.variants) && nvEntry.variants.length){
+        var TBADGE = {Islamic:'#D4AF37', Christian:'#9B59B6', Jewish:'#4A90D9', "Bahá'í":'#2ECC71', Bahai:'#2ECC71'};
+        var rows = nvEntry.variants.map(function(v){
+          var lang = esc(v.lang||'');
+          var nm   = esc(v.name||'');
+          var trad = v.tradition||'';
+          var tcol = TBADGE[trad] || 'rgba(160,174,192,.55)';
+          var tbadge = trad ? '<span style="font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:'+tcol+';border:1px solid '+tcol+';border-radius:2px;padding:1px 5px;margin-left:6px;font-family:Cinzel,serif">'+esc(_tlT(trad.toUpperCase()))+'</span>' : '';
+          return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dotted var(--ip-brd)"><span style="font-size:var(--fs-3);color:var(--ip-muted);min-width:64px">'+(window.GoldArkI18n && window.GoldArkI18n.tt ? window.GoldArkI18n.tt(lang) : lang)+'</span><span style="flex:1;font-size:var(--fs-3);color:var(--ip-text);text-align:right;font-family:\'Source Sans 3\',sans-serif">'+nm+tbadge+'</span></div>';
+        }).join('');
+        nvHtml = '<div class="i-sec"><details class="i-nv-details"><summary class="i-nv-summary"><span class="i-sl" style="display:inline">'+_tlT('Names Across Traditions')+'</span><span class="i-nv-count">('+nvEntry.variants.length+')</span><span class="i-nv-arrow">▾</span></summary><div style="margin-top:4px">'+rows+'</div></details></div>';
+      }
+
+      if(ctEntry && ctEntry.traditions){
+        var DEFAULT_ORDER = ['islamic','christian','jewish','bahai'];
+        var order = (Array.isArray(ctEntry.tradition_order) && ctEntry.tradition_order.length) ? ctEntry.tradition_order : DEFAULT_ORDER;
+        var avail = order.filter(function(k){
+          var t = ctEntry.traditions[k];
+          if(!t) return false;
+          var txt = (typeof t === 'string') ? t : (t.text || '');
+          return txt && txt.trim().length > 0;
+        });
+        if(avail.length){
+          var LABELS = {islamic:_tlT('Islamic'), christian:_tlT('Christian'), jewish:_tlT('Jewish'), bahai:_tlT("Bahá'í")};
+          var tabBar = '<div class="i-ct-tabbar" style="display:flex;gap:4px;border-bottom:1px solid rgba(212,175,55,.25);margin:6px 0 10px;flex-wrap:wrap">';
+          avail.forEach(function(k,i){
+            var on = (i===0);
+            tabBar += '<button class="i-ct-tab" data-tab="'+esc(k)+'" style="background:none;border:none;color:'+(on?'#D4AF37':'#9aa3b2')+';font-family:Cinzel,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;cursor:pointer;border-bottom:2px solid '+(on?'#D4AF37':'transparent')+';margin-bottom:-1px">'+esc(_tlT(LABELS[k]||k))+'</button>';
+          });
+          tabBar += '</div>';
+          var panes = avail.map(function(k,i){
+            var t = ctEntry.traditions[k];
+            var txt = (typeof t === 'string') ? t : (t.text || '');
+            var srcs = (typeof t === 'object' && Array.isArray(t.sources)) ? t.sources : [];
+            // Urdu overlay: pull from cross_tradition bucket keyed by p.famous (English)
+            try {
+              if(window.GoldArkI18n && window.GoldArkI18n.tForView && p && p.famous){
+                var urText = window.GoldArkI18n.tForView('TIMELINE','cross_tradition', p.famous, k);
+                if(urText && typeof urText === 'string' && urText.trim().length > 0) {
+                  txt = urText;
+                } else if(k === 'islamic' && _tlGetLang() !== 'en' && p && p.slug){
+                  // Fallback: Islamic tab uses figures.bio_full UR when cross_tradition bucket missing
+                  var bf = window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio_full')
+                        || window.GoldArkI18n.tForView('TIMELINE','figures', p.slug, 'bio');
+                  if(bf && typeof bf === 'string' && bf.trim().length > 0) txt = bf;
+                }
+              }
+            } catch(e){}
+            var srcLine = srcs.length ? '<div style="margin-top:8px;font-size:11px;color:var(--ip-muted);font-style:italic">'+_tlT('Sources')+': '+srcs.map(esc).join(' · ')+'</div>' : '';
+            var paneTxt = _linkifyQuranRefs(esc(txt).replace(/\n+/g,'<br>'));
+            return '<div class="i-ct-pane" data-tab="'+esc(k)+'" style="display:'+(i===0?'block':'none')+'"><p>'+paneTxt+'</p>'+srcLine+'<div style="margin-top:6px;font-size:10px;color:var(--ip-muted)">'+_tlT('AI-generated · independently verify')+'</div></div>';
+          }).join('');
+          return '<div class="i-sec i-ct-wrap"><div class="i-sl">'+_tlT('Biography')+'</div>'+tabBar+panes+'</div>' + nvHtml;
+        }
+      }
+
+      var _bf = _tlFigBio(p) || p.bio_full;
+      if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf = null;
+      var _bio = _bf || (p.famous==='Prophet Muhammad' ? (p.school||'The Last Prophet') : (p.bio||p.school));
+      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">'+_tlT('Biography')+'</div><p>'+_linkifyQuranRefs(_bio)+'</p></div>' : '';
+      return legacyBio + nvHtml;
+    })()}
+    ${p.titles?`<div class="i-sec"><div class="i-sl">${_tlT('Titles & Epithets')}</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(_tlT(t))}</span>`).join('')}</div></div>`:''}
+    ${quranHtml}${quranChipsHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
+    ${quotesHtml}
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--ip-brd);display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:2px;
+        background:var(--ip-surf);border:1px solid var(--ip-brd);
+        font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.12em;
+        color:var(--ip-muted);text-decoration:none;
+        transition:color .15s,border-color .15s;"
+        onmouseenter="this.style.color='var(--ip-acc)';this.style.borderColor='rgba(212,175,55,.4)'"
+        onmouseleave="this.style.color='var(--ip-muted)';this.style.borderColor='var(--ip-brd)'">
+        <span style="font-size:var(--fs-3);">𝒮</span> ${_tlT('SCHOLARSHIP')}
+      </a>
+    </div>
+    ${p.source?`<div class="i-source">${_tlT('Sources')}: ${(()=>{
+      const s=_tlFigField(p,'source')||p.source;
+      if(/^https?:\/\//.test(s)){
+        try{
+          const u=new URL(s);
+          const host=u.hostname.replace(/^www\./,'');
+          let label;
+          if(host.includes('wikipedia')){
+            const name=decodeURIComponent(u.pathname.split('/').pop()||'').replace(/_/g,' ');
+            label=name?'Wikipedia — '+name+' ↗':'Wikipedia ↗';
+          } else if(host.includes('sunnah.com')){
+            label='Sunnah.com ↗';
+          } else {
+            label=host+' ↗';
+          }
+          return '<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">'+esc(label)+'</a>';
+        }catch(_){return esc(s);}
+      }
+      return esc(s);
+    })()}</div>`:''}
+  `;
+
+  // Fetch Wikipedia image if eligible
+  if (canShowImage(p)) {
+    var imgEl = document.getElementById('wikiImg');
+    var capEl = document.getElementById('wikiImgCaption');
+    if (imgEl) fetchWikiImage(p.source, imgEl, capEl);
+  }
+
+  // Wire star button click handler — bookmarks via GoldArkAuth (no APP.Favorites dependency).
+  (function() {
+    var btn = document.getElementById('favToggleBtn');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var self = this;
+      console.log('[bmk] star clicked, slug=', self.dataset.slug);
+      function _doToggle(){
+        var slug = self.dataset.slug;
+        var auth = window.GoldArkAuth;
+        if(!slug){ console.warn('[bmk] no slug on star button'); return; }
+        if(!auth || !auth.addBookmarkKey){ console.warn('[bmk] GoldArkAuth missing'); return; }
+        if(!auth.isSignedIn || !auth.isSignedIn()){ console.warn('[bmk] not signed in'); return; }
+        var key = 'f:' + slug;
+        var has = !!(auth.hasBookmarkKey && auth.hasBookmarkKey(key));
+        var pr = has ? auth.removeBookmarkKey(key) : auth.addBookmarkKey(key);
+        Promise.resolve(pr).then(function(){
+          var nowFav = !has;
+          self.textContent   = nowFav ? '★' : '☆';
+          self.style.color   = nowFav ? '#D4AF37' : 'rgba(160,174,192,0.25)';
+          self.title         = nowFav ? _tlT('Remove from bookmarks') : _tlT('Bookmark this figure');
+          self.style.transform = 'scale(1.5)';
+          setTimeout(function() { self.style.transform = 'scale(1)'; }, 180);
+          try { if(typeof window._zbBmkRefresh === 'function') window._zbBmkRefresh(); } catch(e){}
+          console.log('[bmk] toggled', key, 'now=', nowFav);
+        }).catch(function(err){ console.warn('[bmk] toggle failed', err); });
+      }
+      // Match start.js's working bookmark gate: action 'bookmark', not 'save'.
+      if(typeof window.requireTester === 'function'){
+        window.requireTester('bookmark', _doToggle);
+      } else {
+        _doToggle();
+      }
+    });
+  })();
+
+  // Wire i18n hover popup
+  (function() {
+    var trigger = document.getElementById('i18nTrigger');
+    if (!trigger || !activePerson || !activePerson.names_i18n) return;
+    var names = activePerson.names_i18n;
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var existing = document.getElementById('i18nPopup');
+      if (existing) { existing.remove(); return; }
+      var langs = Object.keys(names).filter(function(k) { return names[k] && APP._LANG_LABELS[k]; });
+      if (!langs.length) return;
+      var rows = langs.map(function(lang) {
+        var isRtl = APP._RTL_LANGS.has(lang);
+        return '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--ip-brd)">' +
+          '<span style="font-size:var(--fs-3);color:var(--ip-muted);min-width:70px">' + APP._LANG_LABELS[lang] + '</span>' +
+          '<span style="font-size:var(--fs-3);color:var(--ip-text);font-family:\'Source Sans 3\',sans-serif;text-align:right"' +
+          (isRtl ? ' dir="rtl"' : '') + '>' + names[lang] + '</span></div>';
+      }).join('');
+      var popup = document.createElement('div');
+      popup.id = 'i18nPopup';
+      popup.innerHTML =
+        '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.12em;color:var(--ip-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px">NAME IN OTHER LANGUAGES<span style="flex:1;height:1px;background:var(--ip-brd)"></span><span style="cursor:pointer;font-size:var(--fs-3);color:var(--ip-muted)" onclick="document.getElementById(\'i18nPopup\').remove()">×</span></div>' + rows;
+      popup.style.cssText = 'position:absolute;top:' + (trigger.getBoundingClientRect().bottom - trigger.closest('#infoScroll').getBoundingClientRect().top + 8) + 'px;left:10px;right:10px;background:var(--ip-bg);border:1px solid var(--ip-brd);border-radius:4px;padding:10px 14px;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,.3)';
+      trigger.closest('#infoScroll').style.position = 'relative';
+      trigger.closest('#infoScroll').appendChild(popup);
+      function closeOnOutside(ev) {
+        if (!popup.contains(ev.target) && ev.target !== trigger) {
+          popup.remove();
+          document.removeEventListener('click', closeOnOutside);
+        }
+      }
+      setTimeout(function() { document.addEventListener('click', closeOnOutside); }, 10);
+    });
+  })();
+
+  _populateFigureHadithChip(p);
+
+  // Wire ALL quran-chip buttons inside the info panel — bio tabs, QURAN section,
+  // anywhere — to jump to START view at the referenced verse.
+  (function(){
+    var root = document.getElementById('infoScroll');
+    if(!root) return;
+    root.querySelectorAll('button.quran-chip').forEach(function(btn){
+      if(btn.dataset._wired === '1') return;
+      btn.dataset._wired = '1';
+      btn.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        ev.preventDefault();
+        var surah = parseInt(btn.getAttribute('data-surah'), 10);
+        var vstart = parseInt(btn.getAttribute('data-vstart'), 10);
+        var vend = parseInt(btn.getAttribute('data-vend'), 10) || vstart;
+        if(!surah || !vstart) return;
+        if(typeof window.openStartAtVerse === 'function'){
+          window.openStartAtVerse(surah, vstart, vend);
+        }
+      });
+    });
+  })();
+
+  (function(){
+    var root = document.getElementById('infoScroll');
+    if(!root) return;
+    var wrap = root.querySelector('.i-ct-wrap');
+    if(!wrap) return;
+    wrap.querySelectorAll('.i-ct-tab').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var tk = btn.getAttribute('data-tab');
+        wrap.querySelectorAll('.i-ct-tab').forEach(function(b){
+          var on = b.getAttribute('data-tab') === tk;
+          b.style.color = on ? '#D4AF37' : '#9aa3b2';
+          b.style.borderBottomColor = on ? '#D4AF37' : 'transparent';
+        });
+        wrap.querySelectorAll('.i-ct-pane').forEach(function(pane){
+          pane.style.display = (pane.getAttribute('data-tab') === tk) ? 'block' : 'none';
+        });
+      });
+    });
+  })();
+}
+
+function selectPerson(name) {
+  jumpTo(name);
+}
+
+function jumpTo(name){
+  // In relations mode: locate node in the SVG and render info
+  if(VIEW==='relations'){
+    const p=PEOPLE.find(pp=>pp.famous===name); if(!p)return;
+    activePerson=p; renderInfoWithDetails(p);
+    relationsLocate(name);
+    const svg=document.getElementById('relationsSVG'); if(!svg)return;
+    svg.querySelectorAll('.sl-node.sl-selected').forEach(n=>n.classList.remove('sl-selected'));
+    svg.querySelectorAll('.sl-node').forEach(n=>{
+      if(n.dataset.name===name) n.classList.add('sl-selected');
+    });
+    // Sync lane label
+    const inner2=document.getElementById('relationsLanesInner');
+    if(inner2){
+      inner2.querySelectorAll('.sl-lane-label').forEach(l=>l.classList.remove('sl-lane-sel'));
+      const tl=isLineageMember(p)?'Prophetic Lineage':p.tradition||'';
+      inner2.querySelectorAll('.sl-lane-label').forEach(l=>{if(l.dataset.lane===tl)l.classList.add('sl-lane-sel');});
+    }
+    return;
+  }
+  // Timeline mode — use _lastSortedPeople (matches display order)
+  let idx=_lastSortedPeople.findIndex(p=>p.famous===name);
+  if(idx===-1){
+    const p=PEOPLE.find(pp=>pp.famous===name);
+    if(p) renderInfoWithDetails(p);
+    return;
+  }
+  const rows=document.querySelectorAll('.tl-row');
+  const target=[...rows].find(r=>parseInt(r.dataset.idx)===idx);
+  const _person = _lastSortedPeople[idx];
+  const _preIslamic = _person && _person.dob != null && _person.dob < 570;
+  if(target && !_preIslamic){
+    var _sc=document.getElementById('rowsScroll');
+    if(_sc){
+      var _tr=target.getBoundingClientRect(),_cr=_sc.getBoundingClientRect();
+      _sc.scrollTo({top: _sc.scrollTop+(_tr.top-_cr.top)-(_cr.height/2)+(_tr.height/2), behavior:'smooth'});
+      // Horizontal centering on birth century band
+      if(_person.dob != null){
+        var _cent = _person.dob<600 ? 6 : Math.ceil(_person.dob/100);
+        var _band = _sc.querySelector('[data-cent="'+_cent+'"]') || document.querySelector('[data-cent="'+_cent+'"]');
+        if(_band){
+          var _br = _band.getBoundingClientRect();
+          _sc.scrollTo({left: _sc.scrollLeft+(_br.left-_cr.left)-(_cr.width/2)+(_br.width/2), behavior:'smooth'});
+        }
+      }
+    }else{
+      target.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+    }
+    target.classList.remove('tl-jump-pulse');
+    void target.offsetWidth;
+    target.classList.add('tl-jump-pulse');
+    setTimeout(function(){ target.classList.remove('tl-jump-pulse'); }, 1500);
+  } else if(target){
+    var _sc2=document.getElementById('rowsScroll');
+    if(_sc2){
+      var _tr2=target.getBoundingClientRect(),_cr2=_sc2.getBoundingClientRect();
+      _sc2.scrollTop+=(_tr2.top-_cr2.top)-(_cr2.height/2)+(_tr2.height/2);
+    }else{
+      target.scrollIntoView({block:'center',behavior:'smooth'});
+    }
+  }
+  selectRow(idx);
+}
+// Switches to Timeline, centres the century columns on the person, scrolls the row into view,
+// and highlights it — works correctly from Map, Relations, or any other view.
+function focusPersonInTimeline(name){
+  const p=PEOPLE.find(pp=>pp.famous===name); if(!p) return;
+
+  // Lift year filter if the person wouldn't be visible under it
+  if(activeYear!==null){
+    const dod=p.dod!==undefined&&p.dod!==null?p.dod:p.dob+60;
+    if(p.dob>activeYear||dod<activeYear){
+      activeYear=null;
+      _viewYears[VIEW]=null;
+      if(VIEW==='map'&&typeof _applyMapYear==='function') _applyMapYear(null);
+      document.getElementById('yearDisplay').textContent='\u2014';
+      const cb=document.getElementById('yearClearBtn'); if(cb) cb.classList.remove('active');
+    }
+  }
+
+  setView('timeline');
+
+  // Horizontal: centre on midpoint of lifespan, not just birth century
+  const deathYr = (p.dod!=null) ? p.dod : (p.dob!=null ? p.dob+60 : null);
+  if(p.dob!=null){
+    const mid = (deathYr!=null) ? Math.floor((p.dob+deathYr)/2) : p.dob;
+    const cent = mid<600 ? 6 : Math.ceil(mid/100);
+    const idx = ALL_CENTS.indexOf(cent);
+    if(idx!==-1){ centIdx = Math.max(idx,1); setCW(); }
+    updateCentHeaders(); updateCentScrollbar();
+  }
+
+  renderAll();
+
+  // Wait for layout, then select + centre + pulse
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{
+    activePerson=p;
+    renderInfoWithDetails(p);
+    const rows=document.querySelectorAll('.tl-row');
+    let target=null;
+    rows.forEach(r=>{
+      const nm=r.querySelector('.tc-famous');
+      if(nm && nm.textContent.trim().indexOf(name)===0){
+        r.classList.add('sel'); target=r;
+      } else {
+        r.classList.remove('sel');
+      }
+    });
+    if(target){
+      target.scrollIntoView({block:'center', inline:'center', behavior:'smooth'});
+      target.classList.remove('focus-pulse');
+      void target.offsetWidth;            // force reflow so animation restarts
+      target.classList.add('focus-pulse');
+      setTimeout(()=>{ target.classList.remove('focus-pulse'); }, 1600);
+    }
+  });});
+}
+
+function _showTimelineMethodology(){
+  if(document.getElementById('tl-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='tl-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="tl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">'+_tlT('How This Works')+'</h2>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Every figure arranged chronologically, grouped by century. Use the type and tradition filters to narrow the view. Click any figure to open their info card. Use the year slider to highlight who was alive at a specific moment.</p>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Figure Types (row dot colour)</h3>'
+    +'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#D4AF37;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Prophet</span><span style="color:#A0AEC0">A messenger of God. Never depicted visually</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4A90D9;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Companion</span><span style="color:#A0AEC0">Met the Prophet Muhammad and accepted Islam. Never depicted</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E6833A;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Scholar</span><span style="color:#A0AEC0">Contributions to Islamic sciences, law, theology, or philosophy</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#C0392B;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Ruler</span><span style="color:#A0AEC0">Caliph, sultan, emir, or governor</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9B59B6;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Poet</span><span style="color:#A0AEC0">Remembered primarily for literary or poetic works</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#2ECC71;flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">Sufi</span><span style="color:#A0AEC0">Associated with Islamic mysticism and spiritual practice</span></div></div>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Center Spine</h3>'
+    +'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#D4AF37;font-weight:700;min-width:100px;text-align:center">10000</span><span style="color:#A0AEC0">Gold chip \u2014 year of birth</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#9aa3b2;font-weight:700;min-width:100px;text-align:center">9900</span><span style="color:#A0AEC0">Silver chip \u2014 year of death</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:60px;min-width:100px;height:18px;background:linear-gradient(90deg,#4A90D9,#9B59B6);border-radius:9px;flex-shrink:0"></span><span style="color:#A0AEC0">Colored arc \u2014 life span, colour matches figure type</span></div></div>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Date Markers</h3>'
+    +'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#D4AF37;font-weight:700;min-width:100px;text-align:center;font-size:var(--fs-1)">\u2248</span><span style="color:#A0AEC0">Approximate date</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:rgba(212,175,55,.55);font-weight:700;min-width:100px;text-align:center;font-size:var(--fs-1)">\u25B3</span><span style="color:#A0AEC0">Estimated for visual placement (legendary, unrecorded, or rough century)</span></div></div>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Info Card Symbols</h3>'
+    +'<div style="font-size:var(--fs-3);line-height:1.7"><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#D4AF37;font-weight:700;min-width:100px;text-align:center;font-size:var(--fs-1)">\u2605</span><span style="color:#A0AEC0">Saved figure (click \u2606 to save)</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="color:#D4AF37;font-weight:700;min-width:100px;text-align:center;font-size:var(--fs-1)">\u2726</span><span style="color:#A0AEC0">Magnum opus \u2014 the figure\u2019s most influential work</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="min-width:100px;text-align:center">\uD83D\uDCCD</span><span style="color:#A0AEC0">City or place associated with the figure</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="min-width:100px;text-align:center">\uD83C\uDF10</span><span style="color:#A0AEC0">Language, or link to an external source</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;min-width:100px;text-align:center;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;color:#D4AF37;border:1px solid rgba(212,175,55,.5);border-radius:3px;padding:1px 6px">HADITHS</span><span style="color:#A0AEC0">Narrator of hadiths in the six canonical collections \u2014 click to view</span></div><div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;min-width:100px;text-align:center;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;color:#cfd2d6;border:1px solid rgba(212,175,55,.3);border-radius:3px;padding:1px 6px">2:31</span><span style="color:#A0AEC0">Quran verse referencing the figure \u2014 click to open in Quran reader</span></div></div>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Filters</h3>'
+    +'<div style="font-size:var(--fs-3);line-height:1.7;color:#ccc"><p style="margin:0 0 8px"><strong style="color:#D4AF37">'+_tlT('TYPE')+'</strong> \u2014 '+_tlT('TYPE_DESC')+' <strong style="color:#D4AF37">'+_tlT('TRADITION')+'</strong> \u2014 '+_tlT('TRADITION_DESC')+'</p><p style="margin:0 0 8px"><strong style="color:#D4AF37">'+_tlT('HAS')+'</strong> \u2014 '+_tlT('HAS_DESC')+' <em>S</em> '+_tlT('S_LABEL')+', <em>W</em> '+_tlT('W_LABEL')+', <em>F</em> '+_tlT('F_LABEL')+', <em>B</em> '+_tlT('B_LABEL')+', <em>T</em> '+_tlT('T_LABEL')+'.</p><p style="margin:0">'+_tlT('Year slider')+' \u2014 '+_tlT('YEAR_DESC')+'</p></div>'
+    +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Biographical data from classical Islamic sources including al-Dhahabi and Ibn Sa\u2019d, cross-referenced with Wikipedia. Dates marked \u2248 are approximate. Dates marked \u25B3 are estimated for visual placement and not historically confirmed \u2014 typically legendary figures, figures with no recorded dates, or rough century estimates (e.g. \u201Cc. 800 CE\u201D). When a death year is missing, it is sometimes estimated from the birth year using an average life span. Tradition classifications are simplified.</p>'
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">'+_tlT('AI-generated \u00B7 independently verify')+'</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('tl-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}
+
+
+// ═══════════════════════════════════════════════════════════
+// ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+// ═══════════════════════════════════════════════════════════
+
+  // ═══════════════════════════════════════════════════════════
+  // SCAFFOLD INJECTION + ZONE B WIRING + MOUNT/UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+
+  // Inject the bv-app TIMELINE shell into Zone C. Lifted from bv-app/index.html
+  // lines 144-179 (#mainShell + #leftPanel + #rowsScroll + century strip + #tlCenter
+  // + #infoPanel). The shell HTML the lifted code expects to operate on.
+  function _injectMainShell(zoneCEl){
+    zoneCEl.innerHTML =
+      '<div id="mainShell">' +
+        '<div id="leftPanel">' +
+          '<div id="tlFocusPill">' +
+            '<span class="tl-fp-hint">'+_tlT('For focus, click on a person')+'</span>' +
+            '<span class="tl-fp-label">'+_tlT('FOCUS MODE')+'</span>' +
+            '<button id="tlFocusClose" type="button" aria-label="Exit focus">×</button>' +
+          '</div>' +
+          '<div id="rowsScroll"></div>' +
+          '<div id="centScrollStrip">' +
+            '<div id="centScrollNameSpacer">'+_tlT('CENTURY')+'</div>' +
+            '<span id="centLabelLeft">6th</span>' +
+            '<div id="centScrollTrackWrap">' +
+              '<div id="centScrollTrack">' +
+                '<div id="centScrollFill"></div>' +
+                '<div id="centScrollThumb" tabindex="0"></div>' +
+              '</div>' +
+            '</div>' +
+            '<span id="centLabelRight">20th</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="tl-center" id="tlCenter">' +
+          '<div class="tl-era-title" id="tlEraTitle"></div>' +
+          '<div class="tl-center-scroll" id="tlCenterScroll">' +
+            '<div class="tl-scale" id="tlScale"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div id="infoPanel">' +
+          '<div id="infoHdr">'+_tlT('INFORMATION')+'</div>' +
+          '<div id="infoScroll">' +
+            '<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">'+_tlT('Click a name to explore')+'</div></div>' +
+          '</div>' +
+          '<div id="infoScrollFoot"></div>' +
+        '</div>' +
+      '</div>' +
+      // Filter dropdown panels — sibling of #mainShell. The shell renders only the
+      // <button class="zb-select">TYPE</button> etc.; the panels live here so the
+      // lifted toggleDD/buildDD/syncDD lookups (typePanel/tradPanel/badgePanel +
+      // their AllCk children) resolve. Hidden until toggleDD opens them.
+      '<div id="filterBar" style="display:none">' +
+        '<div class="dd-wrap">' +
+          '<div class="dd-panel" id="typePanel">' +
+            '<div class="dd-item dd-all" onclick="ddClearAll(\'type\')">' +
+              '<div class="dd-checkbox" id="typeAllCk">✓</div><span>'+_tlT('All Types')+'</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="dd-wrap">' +
+          '<div class="dd-panel" id="tradPanel">' +
+            '<div class="dd-item dd-all" onclick="ddClearAll(\'trad\')">' +
+              '<div class="dd-checkbox" id="tradAllCk">✓</div><span>'+_tlT('All Traditions')+'</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="dd-wrap">' +
+          '<div class="dd-panel" id="badgePanel">' +
+            '<div class="dd-item" data-val="" onclick="_badgeSelect(\'\')">' +
+              '<div class="dd-checkbox"></div><span>'+_tlT('Any')+'</span>' +
+            '</div>' +
+            '<div class="dd-item" data-val="S" onclick="_badgeSelect(\'S\')"><div class="dd-checkbox"></div><span>'+_tlT('Study')+'</span></div>' +
+            '<div class="dd-item" data-val="W" onclick="_badgeSelect(\'W\')"><div class="dd-checkbox"></div><span>'+_tlT('Wiki')+'</span></div>' +
+            '<div class="dd-item" data-val="F" onclick="_badgeSelect(\'F\')"><div class="dd-checkbox"></div><span>'+_tlT('Follow Journey')+'</span></div>' +
+            '<div class="dd-item" data-val="B" onclick="_badgeSelect(\'B\')"><div class="dd-checkbox"></div><span>'+_tlT('Books')+'</span></div>' +
+            '<div class="dd-item" data-val="T" onclick="_badgeSelect(\'T\')"><div class="dd-checkbox"></div><span>'+_tlT('Talk')+'</span></div>' +
+          '</div>' +
+        '</div>' +
+        '<span id="filterSummary"></span>' +
+        '<button id="filterClearAll" onclick="clearAllFilters()">'+_tlT('CLEAR ALL ✕')+'</button>' +
+      '</div>';
+  }
+
+  // Wire shell's Zone B controls — TIMELINE spec:
+  // { search:true, filters:[TYPE, TRADITION, HAS], slider:true, htw:true, saved-pill }
+  function _wireZoneB(zoneBEl){
+    // Search input — has id="search"
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = _tlT('Search figures…');
+      searchInp.addEventListener('input', function(){
+        searchQ = searchInp.value.trim();
+        applyFilterAndFocus();
+      });
+    }
+
+    // Year slider lives in Zone B (built by shell when spec.slider is true)
+    if(document.getElementById('sliderTrack')){
+      try { initSlider(); } catch(e) { console.warn('[timeline] initSlider failed', e); }
+      var clearBtn = document.getElementById('yearClearBtn');
+      if(clearBtn) clearBtn.addEventListener('click', function(){ clearYear(); });
+    }
+
+    // SAVED pill
+    var savedBtn = document.getElementById('zbSavedPill');
+    if(savedBtn){
+      savedBtn.addEventListener('click', function(){
+        savedBtn.classList.toggle('zb-active');
+        APP.filterFavsOnly = savedBtn.classList.contains('zb-active');
+        applyFilterAndFocus();
+      });
+    }
+
+    // Type / Tradition / Has Zone B selects — wire to the lifted toggleDD()
+    // engine. The shell renders bare `<button class="zb-select">TYPE</button>`
+    // for each filter; we (a) tag it with the id the lifted code expects
+    // (typeBtn / tradBtn / badgeBtn) so toggleDD/syncDD find it, (b) attach
+    // a click handler that positions the matching panel under the button and
+    // calls toggleDD(kind), (c) mirror the RELATIONS wrap+id pattern.
+    if(!zoneBEl) return;
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(!row2) return;
+    var selects = row2.querySelectorAll('.zb-select');
+
+    function _wireSelect(btn, kind){
+      if(!btn) return;
+      btn.id = kind === 'type' ? 'typeBtn' : kind === 'trad' ? 'tradBtn' : 'badgeBtn';
+      // The lifted syncDD writes a count badge + dot via id lookups — provide them.
+      var cntId = kind === 'type' ? 'typeCount' : kind === 'trad' ? 'tradCount' : null;
+      var dotId = kind === 'type' ? 'typeDot'   : kind === 'trad' ? 'tradDot'   : null;
+      if(cntId && !btn.querySelector('#' + cntId)){
+        var cnt = document.createElement('span'); cnt.id = cntId; cnt.className = 'dd-count'; cnt.style.display = 'none';
+        btn.appendChild(cnt);
+      }
+      if(dotId && !btn.querySelector('#' + dotId)){
+        var dot = document.createElement('span'); dot.id = dotId; dot.className = 'dd-dot'; dot.style.display = 'none';
+        btn.appendChild(dot);
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var panelId = kind === 'type' ? 'typePanel' : kind === 'trad' ? 'tradPanel' : 'badgePanel';
+        var panel = document.getElementById(panelId);
+        if(panel){
+          // Position panel directly under the Zone B button (panels live inside
+          // #filterBar, which is detached from the button's flow).
+          var r = btn.getBoundingClientRect();
+          panel.style.position = 'fixed';
+          panel.style.top      = (r.bottom + 4) + 'px';
+          panel.style.left     = r.left + 'px';
+          panel.style.zIndex   = 10000;
+        }
+        toggleDD(kind);
+      });
+    }
+    _wireSelect(selects[0], 'type');
+    _wireSelect(selects[1], 'trad');
+    _wireSelect(selects[2], 'badge');
+
+    // Outside-click closer (the shell's filter row had its own; ours doesn't).
+    if(!window._tlOutsideClickBound){
+      window._tlOutsideClickBound = true;
+      window._tlOutsideClickHandler = function(ev){
+        if(ev.target.closest('.zb-select') || ev.target.closest('.dd-panel')) return;
+        document.querySelectorAll('#filterBar .dd-panel.open').forEach(function(p){ p.classList.remove('open'); });
+        var bbtn = document.getElementById('typeBtn');  if(bbtn) bbtn.classList.remove('open');
+        var bbt2 = document.getElementById('tradBtn');  if(bbt2) bbt2.classList.remove('open');
+        var bbt3 = document.getElementById('badgeBtn'); if(bbt3) bbt3.classList.remove('open');
+      };
+      document.addEventListener('click', window._tlOutsideClickHandler);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // EXPORT INLINE-ONCLICK TARGETS
+  // The lifted code's HTML uses inline onclick="selectRow(0)" / "ddToggle(...)" etc.
+  // Browsers resolve those as window.X. Trap-in-IIFE means we must export.
+  // ═══════════════════════════════════════════════════════════
+  window.selectRow      = selectRow;
+  window.ddToggle       = ddToggle;
+  window.ddClearAll     = ddClearAll;
+  window._badgeSelect   = _badgeSelect;
+  window.clearAllFilters= clearAllFilters;
+  window.jumpTo         = jumpTo;
+  window.focusPersonInTimeline = focusPersonInTimeline;
+
+  // ═══════════════════════════════════════════════════════════
+  // ANIMATE ENGINE — figure-by-figure dwell (lifted from bv-app/app.js 2053-2143)
+  // Walks visible figures sorted by dob, calls selectRow on each (which drives
+  // info card + focus mode dim/highlight via .focus-target / .tl-compressed CSS).
+  // Sandbox shell calls animateStart/animatePause/animateSetSpeed via _activeViewApi.
+  // ═══════════════════════════════════════════════════════════
+  var _animActive = false;
+  var _animIndex  = 0;
+  var _animTimer  = null;
+  var _animDwellMs = 1200; // 1x default
+  var ANIM_SPEED_MAP = { '0.5x': 2400, '1x': 1200, '2x': 600, '4x': 300 };
+
+  function _getAnimVisible(){
+    var filtered = (typeof getFiltered === 'function') ? getFiltered() : PEOPLE;
+    return [].concat(filtered).sort(function(a,b){ return _dobOf(a) - _dobOf(b); })
+                              .filter(function(p){ return _dobOf(p) != null; });
+  }
+
+  function _animTick(){
+    var visible = _getAnimVisible();
+    if(!visible.length || _animIndex >= visible.length){ _animStop(); return; }
+    var p = visible[_animIndex];
+    if(typeof selectRow === 'function'){
+      var rendered = (typeof _lastSortedPeople !== 'undefined' && _lastSortedPeople.length) ? _lastSortedPeople : visible;
+      var rowIdx = rendered.indexOf(p);
+      if(rowIdx >= 0) selectRow(rowIdx);
+    }
+    var rs = document.getElementById('rowsScroll');
+    if(rs){
+      var visIdx = visible.indexOf(p);
+      var desiredTop = Math.max(0, (visIdx - 2)) * ROW_H;
+      rs.scrollTop = desiredTop;
+    }
+    _animIndex++;
+    _animTimer = setTimeout(_animTick, _animDwellMs);
+  }
+
+  function _animStart(){
+    _animActive = true;
+    if(_animIndex === 0 || _animIndex >= _getAnimVisible().length) _animIndex = 0;
+    var tc = document.getElementById('tlCenter');
+    if(tc) tc.classList.add('anim-active');
+    _animTick();
+  }
+
+  function _animPause(){
+    if(_animTimer){ clearTimeout(_animTimer); _animTimer = null; }
+  }
+
+  function _animStop(){
+    if(_animTimer){ clearTimeout(_animTimer); _animTimer = null; }
+    _animActive = false;
+    _animIndex = 0;
+    var tc = document.getElementById('tlCenter');
+    if(tc) tc.classList.remove('anim-active');
+  }
+
+  function _animSetSpeed(speedStr){
+    if(ANIM_SPEED_MAP[speedStr]) _animDwellMs = ANIM_SPEED_MAP[speedStr];
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // MOUNT / UNMOUNT
+  // ═══════════════════════════════════════════════════════════
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('tl-mounted');
+    _injectMainShell(zoneCEl);
+
+    // Resolve --row-h once shell HTML is in DOM. The lifted code captured ROW_H
+    // at module-load time (when document.documentElement may not yet have the
+    // var). Re-derive here from CSS and override the consts via window.
+    try {
+      var rh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row-h'));
+      if(!isNaN(rh) && rh > 0){
+        // ROW_H / ROW_MID are const inside the lifted body — can't reassign.
+        // The values at module-load are from CSS (timeline.css declares --row-h),
+        // so they should already be correct. This is defensive only.
+      }
+    } catch(e) {}
+
+    // Eager load: core.json + name_variants.json (mirrors bv-app boot).
+    var p1 = fetch(dataUrl('data/islamic/core.json'))
+      .then(function(r){ return r.ok ? r.json() : []; })
+      .catch(function(){ return []; });
+    var p2 = fetch(dataUrl('data/islamic/name_variants.json'))
+      .then(function(r){ return r.ok ? r.json() : {}; })
+      .catch(function(){ return {}; });
+
+    _ensureCrossTraditionData().then(function(){
+      if(activePerson) renderInfoWithDetails(activePerson);
+    });
+
+    Promise.all([p1, p2]).then(function(results){
+      PEOPLE = results[0] || [];
+      window.PEOPLE = PEOPLE;
+      window._NAME_VARIANTS = results[1] || {};
+
+      // Populate the TYPE / TRADITION dropdown panels now that PEOPLE is loaded.
+      // Sort types/trads chronologically by earliest DOB so Prophet → Sahaba →
+      // Tabi'un order matches bv-app's boot. Inject Prophetic Lineage virtual
+      // type after Prophet, plus IH sub-lane virtuals — same logic as bv-app boot.
+      try {
+        function chronoSort(values, field){
+          var earliest = {};
+          values.forEach(function(v){
+            var members = PEOPLE.filter(function(p){ return p[field] === v; });
+            earliest[v] = members.length ? Math.min.apply(null, members.map(function(p){ return p.dob; })) : 9999;
+          });
+          return values.slice().sort(function(a,b){ return earliest[a] - earliest[b]; });
+        }
+        var types = chronoSort(Array.from(new Set([].concat.apply([], PEOPLE.map(function(p){ return _tlPTypes(p); })).filter(Boolean))), 'type');
+        var sahabaIdx = types.indexOf('Sahaba');
+        var insertAt = sahabaIdx >= 0 ? sahabaIdx + 1 : types.length;
+        var _plIdx = types.indexOf('Prophet');
+        if(types.indexOf('Prophetic Lineage') === -1) types.splice(_plIdx >= 0 ? _plIdx + 1 : 1, 0, 'Prophetic Lineage');
+        types.splice(insertAt, 0, 'Ashra Mubashshara');
+        if(types.indexOf('Mujaddid') === -1) types.push('Mujaddid');
+        IH_SUBLANE_ORDER.forEach(function(sl){ if(sl !== 'Islamic History' && types.indexOf(sl) === -1) types.push(sl); });
+        var trads = chronoSort(Array.from(new Set([].concat.apply([], PEOPLE.map(function(p){ return _tlPTrads(p); })).filter(Boolean))), 'tradition');
+        if(typeof buildDD === 'function'){
+          buildDD('type', types);
+          buildDD('trad', trads);
+        }
+      } catch(e) { console.warn('[timeline] buildDD failed', e); }
+
+      // Build slug→figure map for detail merge (used by re-render after details land).
+      var bySlug = {}, byFamous = {};
+      PEOPLE.forEach(function(p){
+        if(p && p.slug)   bySlug[p.slug]     = p;
+        if(p && p.famous) byFamous[p.famous] = p;
+      });
+
+      // Load all 12 known detail chunks in parallel and merge into
+      // window._DETAILS_BY_SLUG / _DETAILS_BY_FAMOUS for fast lookup.
+      var DETAIL_CHUNKS = ['hadith','lineage','philosophy','poets','rulers',
+                           'sahaba','sahabiyya','scholars','sciences',
+                           'sufis-early','sufis-orders','tabiun'];
+      var detailPromises = DETAIL_CHUNKS.map(function(name){
+        return fetch(dataUrl('data/islamic/details/' + name + '.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; });
+      });
+      Promise.all(detailPromises).then(function(allArrs){
+        var bySlugDet = {}, byFamousDet = {};
+        allArrs.forEach(function(arr){
+          if(!Array.isArray(arr)) return;
+          arr.forEach(function(rec){
+            if(!rec || typeof rec !== 'object') return;
+            var coreP = rec.famous ? byFamous[rec.famous] : null;
+            if(coreP && coreP.slug) bySlugDet[coreP.slug] = rec;
+            if(rec.famous) byFamousDet[rec.famous] = rec;
+          });
+        });
+        window._DETAILS_BY_SLUG    = bySlugDet;
+        window._DETAILS_BY_FAMOUS  = byFamousDet;
+        // If a figure was already rendered before details landed, re-render
+        // with merged data.
+        if(activePerson){
+          activePerson._detailLoaded = false;
+          renderInfoWithDetails(activePerson);
+        }
+      });
+
+      // Default info card: Adam (matches bv-app boot behaviour) or first figure.
+      if(!activePerson && PEOPLE.length){
+        activePerson = PEOPLE.find(function(p){ return p.famous === 'Adam'; }) || PEOPLE[0];
+        renderInfoWithDetails(activePerson);
+      }
+      renderAll();
+      _wireZoneB(zoneBEl);
+
+      // Kick off non-EN figures bucket and re-render when it lands.
+      // i18n init only preloads 'ui'; figures bucket loads silently and
+      // never fires an event, so right column stayed English on first load.
+      try {
+        var _tlLang = _tlGetLang();
+        if(_tlLang !== 'en' && window.GoldArkI18n && window.GoldArkI18n.loadBucket){
+          window.GoldArkI18n.loadBucket(_tlLang, 'figures').then(function(){
+            try { renderAll(); } catch(e){}
+            if(activePerson){ try { renderInfoWithDetails(activePerson); } catch(e){} }
+          });
+        }
+      } catch(e){}
+    });
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    _animStop();
+    document.body.classList.remove('tl-mounted');
+    document.body.classList.remove('tl-focus');
+
+    if(window._tlOutsideClickBound && window._tlOutsideClickHandler){
+      document.removeEventListener('click', window._tlOutsideClickHandler);
+      window._tlOutsideClickBound = false;
+      window._tlOutsideClickHandler = null;
+    }
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+  }
+
+  return {
+    mount: mount,
+    unmount: unmount,
+    animateStart:    _animStart,
+    animatePause:    _animPause,
+    animateStop:     _animStop,
+    animateSetSpeed: _animSetSpeed,
+    showHtw:         _showTimelineMethodology
+  };
+})();

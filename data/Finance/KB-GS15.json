@@ -1,0 +1,106 @@
+{
+  "id": "KB-GS15",
+  "source": {
+    "title": "AAOIFI Governance Standard (GS) 15: Syndicated Financing",
+    "issuer": "AAOIFI Governance and Ethics Board (AGEB)",
+    "approved": "19-20 July 2023 (AGEB meeting no. 31, 1-2 Muharram 1445H), approved unanimously",
+    "issued": "28 December 2023 (15 Jumada II 1445H)",
+    "effective_date": "Syndicated financing transactions executed on or after 1 July 2024; earlier application encouraged",
+    "url": null,
+    "status": "needs_check",
+    "companion_standard": "Must be read in conjunction with AAOIFI Shari'ah Standard (SS) 24 'Syndicated Financing' (2005)"
+  },
+  "display_card": {
+    "name": "GS 15 — Syndicated Financing",
+    "one_liner": "Governance framework for the full lifecycle of Shari'ah-compliant syndicated financing — from mandate to maturity — including strict segregation rules for hybrid deals with conventional banks.",
+    "paragraph_count": "Standard set out in paragraphs 1-52",
+    "status": "verified (from uploaded PDF)"
+  },
+  "applicability": {
+    "applies_to": [
+      "Those charged with governance and management of the lead arranger",
+      "Syndicate participants (IFIs and, in hybrid arrangements, CFIs' Shari'ah tranche counterparts)",
+      "The IFI's customers, in their respective capacities"
+    ],
+    "sukuk_carve_out": "Sukuk are excluded from scope, BUT guidance on the awarding-of-mandate phase and transaction-close phase applies mutatis mutandis to listed and unlisted Sukuk issuances insofar as not in conflict with GS 12 'Sukuk Governance' (para 6)",
+    "customer_binding": "Customer is bound to Shari'ah principles and this standard by virtue of signing the mandate and transaction documents (BC22)"
+  },
+  "core_machinery": {
+    "five_pillars": ["Shari'ah compliance", "accountability", "fairness", "transparency", "responsibility"],
+    "seven_principles": [
+      "Effective Shari'ah compliance structures (minimum: comply with SS 24)",
+      "Fair treatment of and amongst stakeholders",
+      "Equitable and fair treatment amongst syndication participants (fees commensurate with work)",
+      "Transparent interaction amongst syndication participants",
+      "Effective oversight by lead arranger's governance organs",
+      "Transparency and mutual disclosures at all stages",
+      "Code of conduct and ethics (AAOIFI code of ethics + IFSB conduct-of-business principles)"
+    ],
+    "parties": ["Lead arranger", "Arrangers", "Security agent", "Facility agent (optional, roles left to mutual agreement)", "Syndication participants", "Customer"],
+    "lifecycle_phases": [
+      "1. Awarding of mandate (paras 14-21)",
+      "2. Marketing and negotiations (paras 22-30)",
+      "3. Transaction close (paras 31-37)",
+      "4. Continuity of the transaction (paras 38-42)",
+      "5. Changes before intended maturity (paras 43-49)",
+      "6. Maturity (paras 50-51)"
+    ],
+    "key_documents": {
+      "mandate": "First document; initiates syndication, sets proposed terms, exclusivity, customer's Shari'ah-compliance commitment, authorises arrangers (para 16)",
+      "provisional_fatwa": "Initial Fatwa from lead arranger's SSB approving the basic structure — enables documentation drafting and gives other SSBs early comfort (paras 7(k), 17)",
+      "information_memorandum": "Minimum contents listed in para 23 (a-r): customer profile, feasibility study, pricing, profit/loss-sharing ratios, fees, risks, credit assessment, settlement mechanisms, credit enhancements, dispute resolution, etc.",
+      "inter_financier_agreement": "Term deliberately chosen over 'inter-creditor agreement' (BC15). Minimum contents in para 25 (a-m): rights/responsibilities, security handling per Shari'ah, equitable-treatment terms, information protocols, pre-exit conditions, transfer of shares, dispute resolution. No illustrative format included — IIFM has a documentation project (BC6-BC7)"
+    }
+  },
+  "key_rules_for_assurance": [
+    "Minimum Shari'ah bar: every syndicated transaction must comply with SS 24 plus any other applicable Shari'ah standards (Principle 1)",
+    "Provisional Fatwa from lead arranger's SSB required at mandate stage (para 17)",
+    "Hybrid arrangements: Shari'ah tranche sanctity maintained at all times; arrangers of the Shari'ah tranche must be IFIs only; IFI may NOT lead, arrange or facilitate (incl. as agent) the conventional tranche in any manner (para 21)",
+    "Hybrid arrangements: TWO distinct inter-financier agreements — one for the Shari'ah tranche, one for the conventional tranche; IFIs must not sign the combined one (paras 26-27, BC16-BC18)",
+    "Hybrid entry conditions: overall purpose Shari'ah-compliant, AND either (a) IFIs alone cannot meet the need and the customer alone approaches CFIs, or (b) a CFI already holds the mandate and a separate Shari'ah tranche is created with SSB approvals (para 20)",
+    "Conflict of interest at mandate: transparent negotiation, disclosure of prior relationships/exposures/off-market fees, refusal of mandate if interests would be jeopardised (paras 18-19)",
+    "Transaction close: lead arranger discloses allocation basis, preferential allocations, underwriting details to customer (para 31); customer given reasonable time to evaluate contracts (para 32)",
+    "Non-participating invitees must not counter-propose directly to the customer or divulge non-public information (para 37)",
+    "Continuity: each participant remains responsible for Shari'ah compliance of its own proportionate share — own SSB, Shari'ah compliance function, internal + external Shari'ah audit (para 40)",
+    "Shari'ah issues found by any participant go to lead arranger, who informs all after consulting customer; participants collaborate on a solution (para 41)",
+    "Change of Fatwa by any participant's SSB: follow SS 29 and relevant GS, promptly inform all parties, collaborate on Shari'ah-compliant solution (para 42)",
+    "Early settlement requires SSB approval of modus operandi, due deliberation, fair treatment (paras 43-44)",
+    "Pre-exit by a participant: comply with inter-financier agreement, debt-sale Shari'ah rules where a debt exists, inform customer/participants, NOC and NDA if required (paras 45-46)",
+    "Restructuring/rescheduling: must preserve original objective and initial equilibrium of benefits; reviewed and approved by respective SSBs (paras 48-49)",
+    "At maturity: SSBs supervise liquidation where needed (paras 50-51)"
+  ],
+  "implications": [
+    "Creates the first globally standardised governance (not just fiqh) framework for Islamic syndications — SS 24 covered Shari'ah rules; GS 15 adds control, transparency and conflict-of-interest machinery",
+    "Hybrid deals are permitted but deliberately discouraged and boxed in — the market signal is 'IFI-only syndicates preferred' (BC10-BC12)",
+    "No common/joint SSB per transaction: each IFI's SSB keeps full responsibility; delegation possible but accountability never transfers (BC8-BC9)",
+    "The customer — usually not an IFI — is pulled into the compliance perimeter contractually via the mandate (BC20-BC22)",
+    "Mandate-phase and close-phase rules leak usefully into Sukuk practice via para 6, filling gaps GS 12 does not cover (BC3)"
+  ],
+  "limitations": [
+    "No prescribed format for the inter-financier agreement — left to regulators/IIFM/market practice (footnote 6, BC5-BC7)",
+    "Facility agent's roles not separately defined — left to mutual agreement of participants (para 7(c), BC23-BC24)",
+    "CFIs are not bound by the standard, so in hybrid deals compliance leverage exists only over the IFI side (BC10)",
+    "Exception to the two-agreement rule in hybrids possible via a jurisdiction's central Shari'ah board or an SSB case-by-case (e.g. legal enforceability), but the standard itself refuses to codify that exception (BC19)"
+  ],
+  "disputes": [
+    "Common SSB / shared Shari'ah functions per transaction: proposed for cost and speed, rejected as administratively unworkable and contrary to SSB accountability under existing GSs and regulation (BC8-BC9)",
+    "Whether IFIs should be banned from hybrid syndications entirely: rejected; allowed under strict conditions due to industry needs (BC10-BC12)",
+    "Terminology fight: 'inter-creditor agreement' rejected to avoid implying Islamic finance is credit/borrowing (BC13-BC15)",
+    "Single vs. segregated inter-financier agreement in hybrids: Shari'ah Committee forced segregation late in drafting (2023 amendments) to remove cooperation-in-riba concerns (BC16-BC18, H7)",
+    "How far to impose duties directly on the (non-IFI) customer: resolved by keeping the onus on IFIs and binding the customer via contract (BC20-BC22)"
+  ],
+  "timeline_bridge": {
+    "context": "Modern standard. AGEB project approved 29-30 March 2021; exposure draft 29 December 2021; four public hearings 2022; Shari'ah Committee review June + October 2023; final approval July 2023; issued 28 December 2023; effective 1 July 2024.",
+    "predecessor": "AAOIFI SS 24 'Syndicated Financing' (2005) — the fiqh layer this governance layer sits on",
+    "note_for_app_timeline": "Anchor as 2023 issuance / 2024 effectiveness in the contemporary standards era; no classical-period dating applies"
+  },
+  "related_standards": [
+    "SS 24 Syndicated Financing (mandatory companion)",
+    "GS 12 Sukuk Governance (mandate + close phases apply to Sukuk mutatis mutandis)",
+    "SS 29 Stipulations and Ethics of Fatwa in the Institutional Framework (change-of-Fatwa procedure)",
+    "SS 59 Sale of Debt (relevant to pre-exit where debt is sold)",
+    "AAOIFI Code of Ethics for Islamic Finance Professionals",
+    "IFSB guiding principles on conduct of business",
+    "GS [ED] Shari'ah Decision-Making Process (referenced for Fatwa change, still exposure draft at issuance)"
+  ]
+}

@@ -1,0 +1,22 @@
+2026-07-26 16:52:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 16:52:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 16:52:58: == Sync Started by User Command
+2026-07-26 16:52:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 16:52:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 16:52:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 16:52:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 16:52:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 16:52:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 16:52:58: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 16:52:58: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 16:52:58: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 16:52:58: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 16:52:58: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 16:52:58: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 16:52:59: Copy Over 'C:/TEST/bv-app/data/Finance/enriched_terms_all.json' -> 'Z:/Islamic App/bv-app/data/Finance/enriched_terms_all.json' (330,516)
+2026-07-26 16:52:59: Copy Over 'C:/TEST/bv-app/finance.js' -> 'Z:/Islamic App/bv-app/finance.js' (354,958)
+2026-07-26 16:52:59: Copy Over 'C:/TEST/bv-app/shell.js' -> 'Z:/Islamic App/bv-app/shell.js' (60,113)
+2026-07-26 16:53:00: Copy Over 'C:/TEST/bv-app/data/Finance/term_contract_cleanup_v3.csv' -> 'Z:/Islamic App/bv-app/data/Finance/term_contract_cleanup_v3.csv' (28,852)
+2026-07-26 16:53:00: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 16:53:00: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 16:53:00: == Sync Complete. Time: 00:00:02, Speed: 0.00/s, OK: 4, Errors: 0

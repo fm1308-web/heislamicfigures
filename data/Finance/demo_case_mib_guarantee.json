@@ -1,0 +1,25 @@
+{
+  "reference": "MIB-BG-FORM",
+  "title": "Bank Guarantee Application Form (Kafalah) — Maldives Islamic Bank",
+  "institution": "Maldives Islamic Bank Pvt. Ltd.",
+  "source_url": "",
+  "real_world_notice": "WORKED EXAMPLE FROM A PUBLIC BANK APPLICATION FORM (MALDIVES ISLAMIC BANK, FORM V1910/11).",
+  "families_in_scope": ["AAOIFI","IFSB"],
+  "open_items_from_map": true,
+  "tradition": "Shafi'i",
+  "jurisdiction": "Maldives",
+  "clauses": [
+    { "no": 1, "text": "Please issue a guarantee, according to the above detailed information. We agree to sign your counter indemnity when sent to us." },
+    { "no": 2, "text": "Prior to issuance of Bank Guarantee, the Applicant to make placement of security deposit equivalent to 100% of Bid Guarantee amount with duly executed Letter of Set-Off." },
+    { "no": 3, "text": "All charges will be debited to the Applicant's account as per detailed in the Bank's 'Schedule of Charges'. The Bank reserves the right to revise all charges from time to time without prior notice." },
+    { "no": 4, "text": "We understand that the Foreign Bank's charges will also be debited to our account." },
+    { "no": 5, "text": "We hereby authorize Maldives Islamic Bank Pvt. Ltd to debit the Company's account for placing the debited amount as Security Deposit with your Bank, and to be used as collateral for the purpose of issuing a Kafalah Bid/Performance/Advance Payment Guarantee in favour of the Company." },
+    { "no": 6, "text": "Further, we hereby authorize the Bank to apply any credit balance to which the Company is entitled to, including the aforementioned Security Deposit, or any amount which is payable to the Company by the Bank at any time, in or towards partial or total satisfaction of any sum which may be due from or payable by the Company." }
+  ],
+  "excerpt_map": {
+    "SS 5": [1, 2, 5],
+    "K018": [3],
+    "K019": [3],
+    "K020": [3]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "reference": "DEMO-KAFALAH-001",
+  "title": "Letter of Guarantee (Kafalah) Facility — Offer Letter",
+  "fictional_notice": "FICTIONAL DOCUMENT — CREATED FOR DEMONSTRATION ONLY. NO REAL INSTITUTION.",
+  "families_in_scope": ["AAOIFI","CBUAE"],
+  "open_items_from_map": true,
+  "tradition": "Hanafi",
+  "jurisdiction": "Demonstration (UAE-style)",
+  "clauses": [
+    { "no": 1, "text": "The Bank agrees to issue, at the request of the Customer, letters of guarantee in favour of named beneficiaries for amounts not exceeding AED 5,000,000 in aggregate at any one time." },
+    { "no": 2, "text": "In consideration of each guarantee issued, the Customer shall pay the Bank a guarantee commission of 1.50% per annum, calculated on the face amount of the guarantee and payable quarterly in advance." },
+    { "no": 3, "text": "The commission rate shall be determined by reference to the guaranteed amount and the tenor of the guarantee, and shall increase proportionally with any extension of the guarantee period." },
+    { "no": 4, "text": "Any commission amount remaining unpaid after its due date shall accrue an additional charge of 2% per month on the outstanding balance until settled in full." },
+    { "no": 5, "text": "The facility may secure obligations of the Customer arising in the future, whether or not ascertained at the date of this letter, without further documentation being required." },
+    { "no": 6, "text": "Amendments to the scope or amount of any guarantee may be agreed by telephone and confirmed in writing within thirty days of the verbal agreement." },
+    { "no": 7, "text": "The Bank shall have full recourse to the Customer for all amounts paid under any guarantee, together with all associated costs and charges reasonably incurred." },
+    { "no": 8, "text": "The Customer shall maintain a cash margin of 25% of each outstanding guarantee amount in a non-remunerated account with the Bank for the life of the guarantee." }
+  ],
+  "excerpt_map": {
+    "Q01":  [3, 4],
+    "Q15":  [5, 6],
+    "K018": [2],
+    "K019": [2],
+    "K020": [3],
+    "SS 5": [5],
+    "SS 19": [4]
+  }
+}

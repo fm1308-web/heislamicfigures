@@ -1,0 +1,74 @@
+{
+  "id": "KB-GS7",
+  "status": "plausible_review",
+  "source": {
+    "file": "AAOIFI-GS-7-Corporate-Social-Responsibility-Conduct-and-Disclosure-for-Islamic-Financial-Institutions.pdf",
+    "url": null,
+    "url_status": "needs_check",
+    "issued": "2 April 2009 AD (6 Rabi' II 1430H) \u2014 adopted AAOIFI AASB meeting No. 35",
+    "issued_status": "verified",
+    "effective": "1 January 2010 AD (1 Muharram 1431H)",
+    "effective_status": "verified",
+    "paragraph_range": "1-57 + Appendices A-E"
+  },
+  "display_card": {
+    "one_liner": "Mandatory and recommended Corporate Social Responsibility conduct and disclosure obligations for Islamic Financial Institutions.",
+    "what_it_is": "AAOIFI's standard defining CSR for IFIs and splitting it into mandatory core conduct (client screening, fair dealing, prohibited earnings, employee welfare, Zakah) and recommended conduct (Qard Hasan, environmental impact, charitable activities, Waqf management, customer service, micro/small business support), plus matching disclosure rules.",
+    "why_it_matters_to_timeline": "First AAOIFI codification linking classical fiqh ethical duties (vicegerency, divine accountability, enjoining good/forbidding evil) to modern IFI governance practice.",
+    "source_label": "AAOIFI GS7",
+    "source_url": null
+  },
+  "applicability": {
+    "text": "Applies to all IFIs (incl. Islamic Insurance/Takaful) regardless of legal form, country, or size for mandatory sections; recommended sections apply only where the IFI has the capacity to comply. Charter/law conflicts must be disclosed; Takaful firms may disregard inapplicable provisions.",
+    "para": "2-3",
+    "status": "verified"
+  },
+  "core_machinery": {
+    "text": "Two-tier structure: (1) mandatory conduct with specific required policies (5/2), (2) recommended conduct as discretionary guidance (5/3). Disclosure mirrors this split: mandatory disclosure in a dedicated CSR report within the annual report (6/1), voluntary disclosure for recommended conduct (6/2). Board of directors attests compliance after an independent compliance audit (7/1); management implements (7/2).",
+    "status": "verified"
+  },
+  "key_rules_for_assurance": [
+    {"rule": "Mandatory CSR policy for screening clients, incl. SSB approval of screening criteria", "para": "11", "status": "verified"},
+    {"rule": "Mandatory policy for responsible dealing with clients, incl. SSB screening of contract forms to avoid onerous terms", "para": "14(a)", "status": "verified"},
+    {"rule": "Mandatory policy for earnings/expenditure prohibited by Shari'ah, incl. SSB verdict on necessity of each impermissible transaction", "para": "16(d)", "status": "verified"},
+    {"rule": "Mandatory employee welfare policy (non-discrimination, health & safety, code of ethics)", "para": "18", "status": "verified"},
+    {"rule": "Zakah policy per SS35 / FAS2 \u00a74/6 / FAS9", "para": "20", "status": "verified"},
+    {"rule": "Mandatory CSR disclosure in a dedicated annual-report section", "para": "34-42", "status": "verified"},
+    {"rule": "Board attestation requires prior independent compliance audit", "para": "53", "status": "verified"},
+    {"rule": "Recommended (voluntary) conduct: Qard Hasan, environment, social/development/environmental investment quotas, customer service, micro/small business & social savings, charitable activities, Waqf management", "para": "21-33", "status": "verified"}
+  ],
+  "implications": [
+    "IFIs need a documented due-process trail for impermissible income (description, amount, SSB verdict, disposal plan, remediation strategy) \u2014 para 16.",
+    "CSR/ethics sits as a compliance layer on top of contract-level fiqh rules \u2014 useful cross-link for any contract or product card in the app.",
+    "Zakah policy disclosure is mandatory but governed by separate FAS/SS references, not this standard directly."
+  ],
+  "limitations": [
+    "No BC-numbered Basis-for-Conclusions section exists in this standard (unlike GS8-GS22) \u2014 Appendix C is narrative only, so no dispute paragraphs can be cited.",
+    "Predates the 2024-era governance overhaul (GS1 revised 2024, GS22); does not reference the 5-level Shari'ah hierarchy or the four-organs framework used in later standards."
+  ],
+  "disputes": [],
+  "timeline_bridge": {
+    "concept_thread": "Enjoining-good/forbidding-evil (amr bil ma'ruf) \u2014 same root thread flagged plausible for the hisbah/market-discipline link in GS9/GS10 notes; GS7 grounds it explicitly in Qur'anic vicegerency + accountability principles.",
+    "concept_thread_status": "plausible",
+    "quran_anchors": [
+      {"ref": "Al-Baqarah 2:30", "note": "vicegerency of mankind", "status": "verified"},
+      {"ref": "Al-An'am 6:165", "note": "vicegerency, generations succeeding one another", "status": "verified"},
+      {"ref": "Al-Nisa' 4:86", "note": "divine accountability", "status": "verified"},
+      {"ref": "Al-Zalzalah 99:7-8", "note": "atom's-weight accountability", "status": "verified"},
+      {"ref": "Al-Tawbah 9:71", "note": "enjoining good/forbidding evil, mutual believers", "status": "verified"},
+      {"ref": "Al-'Imran 3:110", "note": "best of peoples, enjoining good", "status": "verified"},
+      {"ref": "Al-Baqarah 2:286", "note": "no burden beyond capacity \u2014 basis for mandatory/recommended split", "status": "verified"}
+    ],
+    "hadith_anchors": [],
+    "hadith_note": "No hadith cited in GS7 text.",
+    "contracts_touched": {"by_c_id": [], "concepts_mentioned": ["Qard Hasan"], "status": "needs_check - contracts.json not in this session"},
+    "terms_touched": {"concepts_mentioned": ["Zakah", "Waqf", "Qard Hasan", "Fard Kifayah"], "status": "needs_check - terms.json not in this session"},
+    "figures_touched": {"list": [], "status": "not_applicable", "note": "No historical figures named; standard-drafting committee members are modern professionals, out of scope per Rule 5."}
+  },
+  "related_standards": [
+    {"ref": "Shari'ah Standard No. 35", "context": "Zakah policy basis", "para": "20", "status": "verified"},
+    {"ref": "FAS 2 \u00a74/6-4/7", "context": "Zakah/Qard Hasan accounting concepts", "para": "20, 22, 49", "status": "verified"},
+    {"ref": "FAS 9", "context": "Zakah", "para": "20, 42", "status": "verified"},
+    {"ref": "FAS 1 \u00a73/6", "context": "disclosure of prohibited earnings/expenditure", "para": "39", "status": "verified"}
+  ]
+}

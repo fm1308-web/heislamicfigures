@@ -2,7 +2,7 @@
 'use strict';
 
 var TABS_ROW1 = ['TIMELINE','RELATIONS','FOLLOW','STUDY','BOOKS','ERAS','EVENTS','YEAR'];
-var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START'];
+var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START','FINANCE'];
 var ALL_TABS = TABS_ROW1.concat(TABS_ROW2);
 
 var _tabFocused = false;
@@ -195,7 +195,8 @@ var VIEW_REGISTRY = {
   ONE:      { script: 'one.js',      css: 'one.css',      api: 'OneView' },
   MONASTIC: { script: 'monastic.js', css: 'monastic.css', api: 'MonasticView' },
   EXPLAIN:  { script: 'explain.js',  css: 'explain.css',  api: 'ExplainView' },
-  START:    { script: 'start.js',    css: 'start.css',    api: 'StartView' }
+  START:    { script: 'start.js',    css: 'start.css',    api: 'StartView' },
+  FINANCE:  { script: 'finance.js',  css: 'finance.css',  api: 'FinanceView' }
 };
 
 var _activeViewApi = null;
@@ -233,7 +234,7 @@ function loadAndMountView(name){
     return true;
   }
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=30';
+  var _cb = '?v=129';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -251,6 +252,7 @@ function loadAndMountView(name){
 }
 
 var FILTER_SPECS = {
+  FINANCE: { search:false, filters:[], actions:[], hint:'', htw:false },
   YEAR: {
     search: false,
     slider: true,
@@ -561,7 +563,11 @@ function makeTab(name){
   b.dataset.tab = name;
   var _I = window.GoldArkI18n;
   b.textContent = (_I && _I.tt) ? _I.tt(name) : name;
-  b.setAttribute('data-i18n', name);
+  if(name === 'FINANCE'){
+    b.textContent = 'USUL 🔒'; // displayed name is USUL; internal tab id stays FINANCE (gating + CSS depend on it)
+  } else {
+    b.setAttribute('data-i18n', name);
+  }
   b.addEventListener('click', function(){
     _enterFocusedMode();
     setActiveTab(name);
@@ -569,6 +575,15 @@ function makeTab(name){
   return b;
 }
 function setActiveTab(name, opts){
+  if(name === 'FINANCE' && !window._finUnlocked){
+    if(typeof window.requireTester === 'function'){
+      window.requireTester('Finance preview', function(){
+        window._finUnlocked = true;
+        setActiveTab('FINANCE', opts);
+      });
+      return;
+    }
+  }
   opts = opts || {};
   var _isNewFwd = (!opts.skipHistory && _activeViewApi && state.activeTab !== name);
   // Push outgoing state onto back stack ONLY for user-driven new tab clicks

@@ -1,0 +1,159 @@
+{
+ "_meta": {
+  "date_run": "2026-07-05",
+  "folder_path": "Z:\\Islamic App\\finance-proto\\data\\standards",
+  "total_pdf_count": 14,
+  "note": "PDFs that could not be opened: none | Large compilation PDF 'Accounting and Auditing Organization for Islamic Financial Institutions.pdf' is an image-only scan with no text layer or bookmarks; individual Shari'ah Standard numbers could not be enumerated without OCR (tesseract unavailable)."
+ },
+ "pdfs": [
+  {
+   "filename": "AAOIFI-GS-10-Shariah-Compliance-and-Fiduciary-Ratings-for-IFIs-Final-for-Issuance-CS-Clean.pdf",
+   "size_mb": 0.46,
+   "page_count": 33,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS10"
+   ],
+   "title_page_text": "AAOIFI Governance Standard (GS) 10 Shari’ah Compliance and Fiduciary Ratings for Islamic Financial Institutions",
+   "assurance": "verified"
+  },
+  {
+   "filename": "AAOIFI-GS-11-Internal-Shariah-Audit-Final-for-Issuance-CS.pdf",
+   "size_mb": 0.58,
+   "page_count": 30,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS11"
+   ],
+   "title_page_text": "AAOIFI Governance Standard (GS) 11 Internal Shari’ah Audit",
+   "assurance": "verified"
+  },
+  {
+   "filename": "AAOIFI-GS-12-Sukuk-Governance-Final-for-Issuance-CS.pdf",
+   "size_mb": 0.45,
+   "page_count": 40,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS12"
+   ],
+   "title_page_text": "AAOIFI Governance Standard (GS) 12 Sukuk Governance",
+   "assurance": "verified"
+  },
+  {
+   "filename": "AAOIFI-GS-17-Shariah-Compliance-and-Fiduciary-Ratings-of-Sukuk.pdf",
+   "size_mb": 0.56,
+   "page_count": 30,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS17"
+   ],
+   "title_page_text": "AAOIFI Governance Standard (GS) 17 Shari’ah Compliance and Fiduciary Ratings of Sukuk and Other Islamic Finance Instruments",
+   "assurance": "verified"
+  },
+  {
+   "filename": "AAOIFI-GS-7-Corporate-Social-Responsibility-Conduct-and-Disclosure-for-Islamic-Financial-Institutions.pdf",
+   "size_mb": 0.36,
+   "page_count": 36,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS7"
+   ],
+   "title_page_text": "Governance Standard (No. 7) Governance Standard (No. 7) Corporate Social Responsibility, Corporate Social Responsibility, Conduct and Disclosure for Conduct and Disclosure for Islamic Financial Instit",
+   "assurance": "verified"
+  },
+  {
+   "filename": "AAOIFI-GS-8-Central-Shariah-Board.pdf",
+   "size_mb": 0.41,
+   "page_count": 21,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS8"
+   ],
+   "title_page_text": "Governance Standard for Islamic Financial Institutions No. 8 Central Shari'ah Board",
+   "assurance": "verified"
+  },
+  {
+   "filename": "AAOIFI-GS-9-Shariah-Compliance-Function-Final-for-Issuance-CS-1.pdf",
+   "size_mb": 0.41,
+   "page_count": 29,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS9"
+   ],
+   "title_page_text": "Governance Standard for Islamic Financial Institutions No. 9 Shari’ah Compliance Function",
+   "assurance": "plausible"
+  },
+  {
+   "filename": "Accounting and Auditing Organization for Islamic Financial Institutions.pdf",
+   "size_mb": 375.4,
+   "page_count": 1264,
+   "doc_type": "shariah_standards_full_text",
+   "standards_contained": [],
+   "title_page_text": "",
+   "assurance": "plausible",
+   "note": "Image-only scan (Chrome/Skia print-to-PDF): no text layer, no bookmarks/TOC. Standard numbers could not be confirmed from inside the PDF without OCR (tesseract not available). Filename indicates the AAOIFI Shari'ah Standards full-text compilation (expected SS1-SS59, unverified)."
+  },
+  {
+   "filename": "GS-1-Revised-2024-Shariah-Governance-Framework.pdf",
+   "size_mb": 0.47,
+   "page_count": 36,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS1"
+   ],
+   "title_page_text": "14 AAOIFI Governance Standard (GS) 1 (Revised 2024) Shari’ah Governance Framework",
+   "assurance": "verified"
+  },
+  {
+   "filename": "GS-15-Syndicated-Financing.pdf",
+   "size_mb": 0.53,
+   "page_count": 35,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS15"
+   ],
+   "title_page_text": "AAOIFI Governance Standard (GS) 15 Syndicated Financing",
+   "assurance": "verified"
+  },
+  {
+   "filename": "GS-22-Islamic-Finance-Subsidiaries-and-Associates.pdf",
+   "size_mb": 0.33,
+   "page_count": 18,
+   "doc_type": "governance_standard",
+   "standards_contained": [
+    "GS22"
+   ],
+   "title_page_text": "14 AAOIFI Governance Standard (GS) 22 Application of Shari’ah Governance Principles to Islamic Finance Subsidiaries / Associates",
+   "assurance": "verified"
+  },
+  {
+   "filename": "Guidance-Note-on-Waqf-Governance-GS-13.pdf",
+   "size_mb": 0.34,
+   "page_count": 17,
+   "doc_type": "guidance_note",
+   "standards_contained": [
+    "GS13"
+   ],
+   "title_page_text": "Guidance Note for Governance Standard 13 Waqf Governance",
+   "assurance": "verified"
+  },
+  {
+   "filename": "contract lineage.pdf",
+   "size_mb": 6.3,
+   "page_count": 12,
+   "doc_type": "project_file",
+   "standards_contained": [],
+   "title_page_text": "",
+   "assurance": "plausible"
+  },
+  {
+   "filename": "history dataset 2-8.pdf",
+   "size_mb": 8.11,
+   "page_count": 39,
+   "doc_type": "project_file",
+   "standards_contained": [],
+   "title_page_text": "",
+   "assurance": "plausible"
+  }
+ ]
+}

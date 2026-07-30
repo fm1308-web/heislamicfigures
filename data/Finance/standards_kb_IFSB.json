@@ -1,0 +1,47 @@
+{
+ "_meta": {
+  "type": "standards_kb_addition",
+  "family": "IFSB",
+  "count": 1,
+  "generated": "2026-07-05",
+  "shape_note": "Mirrors the AAOIFI GS deep-note shape (display_card + the analytic fields) so BV renders IFSB cards with the same page. id_scheme KB-IFSB-<n>.",
+  "source_text": "IFSB-28_En.txt (official IFSB PDF -> txt), 15 Dec 2022 issue. Clause paragraph numbers below are IFSB-28's own numbering, verified-to-text.",
+  "tag_policy": "Extracted clauses = verified-to-text. Framing/summary = plausible.",
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "notes": [
+  {
+   "id": "KB-IFSB-28",
+   "standard_code": "IFSB-28",
+   "standard_name": "Revised Solvency Requirements for Takaful / Retakaful Undertakings",
+   "family": "IFSB",
+   "pillar": "IFSB-Prudential",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2022-12-15",
+   "supersedes": "IFSB-11 (2010)",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "How much capital a takaful (Islamic insurance) operator must hold so it can always pay claims.",
+    "what_it_is": "A prudential solvency standard for takaful and retakaful firms - the Islamic-insurance counterpart to conventional insurance capital rules, adapted for the two-fund takaful model.",
+    "who_it_applies_to": "Regulators supervising takaful, retakaful and takaful-window operations (general, family or composite licences).",
+    "why_it_matters": "Solvency is the promise that the mutual fund can pay. It sets the safety margin that protects participants and public confidence."
+   },
+   "applicability": "Supervisory authorities apply it proportionately to the nature, scale and complexity of the undertaking; a lighter touch is allowed for microtakaful (IFSB-28, para 14).",
+   "core_machinery": "Two of three sections carry the rules: Section 2 (Valuation) and Section 3 (Regulatory Capital Requirements). Each is built on a Takaful Core Principle from IFSB-27 (Section 2 on TCP 14, Section 3 on TCP 17) and follows the international insurance hierarchy of core principle -> standard -> guidance (IFSB-28, paras 15-16, 726).",
+   "key_rules_for_assurance": [
+    {"rule": "Capital must be set so a takaful undertaking can meet all contractual obligations with high probability (protection-of-participants objective).", "clause": "IFSB-28 para 5", "tag": "verified"},
+    {"rule": "Funds are segregated: a shareholders' fund (SHF) for the operator, and one or more risk-bearing takaful funds (PRF/PIF) for participants' contributions and payouts.", "clause": "IFSB-28 para 6c", "tag": "verified"},
+    {"rule": "Underwriting surplus of a takaful fund should NOT go to the shareholders' fund (IFSB Shari'ah board, citing the International Fiqh Academy); investment income may partly go to SHF as the mudarib share.", "clause": "IFSB-28 para 6d note 7", "tag": "verified"},
+    {"rule": "A fund deficit may be covered by a qard from the SHF or a third party, repaid from future surplus; deficits caused by operator negligence/misconduct must be compensated by the operator.", "clause": "IFSB-28 para 6d(ii)-(iii)", "tag": "verified"},
+    {"rule": "Applies to retakaful and, mutatis mutandis, to takaful windows.", "clause": "IFSB-28 para 12", "tag": "verified"}
+   ],
+   "implications": "Anchors the takaful/mutual-protection family (F08) at the prudential floor: it is where 'aqilah -> modern takaful lands as a capital rule. Complements AAOIFI SS 26 (Islamic Insurance) and SS 41 (Islamic Reinsurance) - AAOIFI gives the Shari'ah of the contract, IFSB gives the capital math.",
+   "limitations": "Guidance to regulators, not a contract fiqh standard; expressed for a typical two-tier model and needs modification for other structures (IFSB-28 para 11).",
+   "disputes": "Surplus disposition and the SHF's entitlement to underwriting surplus remain debated across jurisdictions; IFSB-28 sides with 'no underwriting surplus to SHF' per the Fiqh Academy resolution.",
+   "timeline_bridge": "aqilah (Q-layer, tribal mutual compensation) -> classical mutual-help fiqh -> 20th c. takaful models -> IFSB-11 (2010) -> IFSB-28 (2022).",
+   "related_standards": ["IFSB-11 (superseded)", "IFSB-8", "IFSB-14", "IFSB-25", "IFSB-27", "AAOIFI SS 26", "AAOIFI SS 41", "AAOIFI FAS 42", "AAOIFI FAS 43"],
+   "links_into_project": {"family_id": "F08", "quran_layer_id": "Q02 (maisir avoidance underpins takaful)", "related_term_ids": ["T011", "T012", "T079", "T080", "T081", "T185", "T186", "T187", "T188", "T189"]}
+  }
+ ]
+}

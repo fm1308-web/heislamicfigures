@@ -1,0 +1,2042 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GUIDANCE NOTE - 9
+
+
+MACROPRUDENTIAL TOOLS FOR INSTITUTIONS OFFERING ISLAMIC FINANCIAL SERVICES
+(BANKING SEGMENT)
+
+
+
+
+
+December 2024
+ABOUT THE ISLAMIC FINANCIAL SERVICES BOARD (IFSB)
+
+
+
+
+
+The IFSB is an international standard-setting organisation, which was officially inaugurated on 3
+November 2002 and started operations on 10 March 2003. The organisation promotes and enhances the soundness and stability of the Islamic financial services industry by issuing global prudential standards and guiding principles for the industry, broadly defined to include the banking, capital markets and insurance sectors. The standards prepared by the IFSB follow a stringent due process as outlined in its Guidelines and Procedures for the Preparation of Standards/Guidelines, which includes holding several Working Group meetings, issuing exposure drafts and organising public hearings/webinars and
+reviews by the IFBS’s Sharīʻah Board and Technical Committee. The IFSB also conducts research and
+coordinates initiatives on industry-related issues and organises roundtables, seminars and conferences for regulators and industry stakeholders. Towards this end, the IFSB works closely with relevant international, regional and national organisations, research/educational institutions and market participants.
+
+
+
+For more information about the IFSB, please visit www.ifsb.org.
+TABLE OF CONTENTS
+
+
+
+ABBREVIATIONS ........................................................................................................................... 2
+
+SECTION 1: INTRODUCTION ........................................................................................................ 3
+
+1.1       Background .................................................................................................................... 3
+
+1.2       Objective ........................................................................................................................ 4
+
+1.3       Scope and Application ................................................................................................... 4
+
+1.4       General Approach .......................................................................................................... 4
+
+1.5       Structure......................................................................................................................... 6
+
+1.6       Recommendations for Effective Macroprudential Policy Tools and Governance for IIFS (Banking Segment) ........................................................................................................ 8
+
+SECTION 2: SYSTEM-WIDE VULNERABILITIES AND MACROPRUDENTIAL POLICY FOR IIFS
+................................................................................................................................... 10
+
+2.1       Specificities of IIFS....................................................................................................... 10
+
+2.2       System-wide Vulnerabilities ......................................................................................... 11
+
+2.3       Macroprudential Policy................................................................................................. 12
+
+2.4       Available Macroprudential Tools .................................................................................. 13
+
+2.5       Identification Methods for System-Wide Vulnerabilities ............................................... 15
+
+SECTION    3:    RECOMMENDATIONS    FOR    MACROPRUDENTIAL    POLICY    TOOLS.
+GOVERNANCE AND LEAKAGES FOR IIFS........................................................... 17
+
+3.1       Recommendations for Macroprudential Policy Tools .................................................. 17
+
+3.1.1 Excessive Leverage, Excessive Credit Growth, and Asset Mispricing .............. 17
+
+3.1.2 Liquidity Risk, Asset-Liability/Currency Mismatches, and Volatility ................... 21
+
+3.1.3 Asset Concentration, Interconnectedness, and Contagion Risk........................ 24
+
+3.2       Recommendations for Macroprudential Policy Governance and Leakage.................. 27
+
+DEFINITIONS ................................................................................................................................ 29
+
+Appendix 1: Overview of Specificities of Islamic Banking and Implications for Macroprudential
+Vulnerabilities and Measures .................................................................................... 31
+
+Appendix 2: Specificities of Islamic Banking with Implications for Macroprudential Policy ........... 34
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
+ABBREVIATIONS
+
+
+
+BCBS        Basel Committee on Banking Supervision
+
+BIS            Bank for International Settlements
+
+CCyB         Countercyclical Capital Buffer
+
+CMT          Commodity Murābahah Transaction
+
+DCR          Displaced Commercial Risk
+
+FX             Foreign Exchange
+
+GN             Guidance Note on Macroprudential Tools for IIFS (Banking Segment)
+GN-6         Guidance Note on Quantitative Measures for Liquidity Risk Management in
+Institutions Offering Islamic Financial Services [banking segment]
+HQLA        High-Quality Liquid Assets
+
+IAH            Investment Account Holder
+
+IFSB          Islamic Financial Services Board
+IFSB-23     Revised Capital Adequacy Standard for Institutions Offering Islamic Financial
+Services [Banking Segment]
+IFSI           Islamic Financial Services Industry
+
+IIFS           Institutions Offering Islamic Financial Services
+
+IMF            International Monetary Fund IRR            Investment Risk Reserve LCR           Liquidity Coverage Ratio
+MaPP        Mapping of Macroprudential Policy
+
+NSFR        Net Stable Funding Ratio PER           Profit Equalisation Reserve PLS           Profit- and Loss-Sharing
+PSIA          Profit-Sharing Investment Account
+
+RSA           Regulatory and Supervisory Authorities
+
+SnCR        Sharīʻah non-Compliance Risk
+TN-2          Technical Note on Stress Testing for Institutions Offering Islamic Financial
+Services (IIFS)
+UIAH         Unrestricted Investment Account Holders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+Bism Allah al-Raḥmān al-Raḥīm
+
+Allahumma Ṣallī Wa Sallim ‘Alā Sayyidinā Muḥammad Wa ‘Alā Ᾱlihī Wa Ṣaḥbih
+
+
+SECTION 1: INTRODUCTION
+
+
+
+1.1 Background
+
+1.        While Institutions Offering Islamic Financial Services (IIFS) share many characteristics with their conventional peers, they are exposed to different (often system-wide) risks due to the specific nature of their business models. IIFS may be particularly affected by counterparty and liquidity risks as well as adverse shocks to commodity and real asset prices, given the scarcity of short-term liquid assets and deep money markets, as well as the highly concentrated exposures to other less liquid assets such as real estate.
+
+2.        Many regulatory and supervisory authorities (RSAs) lack a comprehensive framework for the application of macroprudential policies for IIFS that effectively address system-wide shocks or vulnerabilities of IIFS taking into consideration the specificities of Islamic banking.1
+The Core Principles for Islamic Finance Regulation (Banking Segment) (IFSB-17) highlight the importance of a clear macroprudential policy as a prerequisite for effective supervision of IIFS. It further notes that several macroprudential issues need to be addressed, in part through supervisory consideration of IIFS business models and practices, including procyclicality, leverage, and excessive financing expansion, among other issues.
+
+3.        A  stocktake  of  current  macroprudential  policies  and  practices  across  different jurisdictions where IIFS operate (Appendix 2) suggest that several system-wide risks arising from specificities of IIFS require differentiated macroprudential policy measures, including: greater structural vulnerability to funding shocks; indirect interest rate risk; capital requirements and smoothing practices in PSIA; concentration risk; asset-liability mismatches; and market risk due to high asset inventory. Differentiated macroprudential policies offer a way to address these unique system-wide risks more effectively.
+
+
+
+
+
+
+
+
+
+
+
+1 The current body of knowledge and standards for macroprudential policy comprises guidance issued by several international and regional financial institutions, including the Basel Committee on Banking Supervision (BCBS) of the Bank for International Settlements (BIS), the International Monetary Fund (IMF), the World Bank (WB), and the European Systemic Risk Board (ESRB).
+
+
+
+
+3
+1.2 Objective
+
+4.        This Guidance Note (GN) on macroprudential tools for IIFS (banking segment) builds on previous IFSB work.2 It aims to facilitate effective macroprudential policy for Islamic banks by:
+
+a.   providing guidance on adjustments to available macroprudential tools to reflect the specificities of Islamic banking (“adaptation”).
+
+b.   addressing challenges in identifying system-wide vulnerabilities and calibrating macroprudential tools for the Islamic banking sector (“implementation”); and
+
+c.    making recommendations to enhance the governance of macroprudential policy according to the characteristics of Islamic banking (“governance”).
+
+1.3 Scope and Application
+
+5.        The scope of the GN includes but is not limited to, commercial banks, banking windows, and investment banks. Individual jurisdictions may choose to apply this GN to other IIFS should it be considered relevant and appropriate.
+
+6.        The GN covers macroprudential tools that can mitigate system-wide vulnerabilities related to excessive credit growth and leverage, liquidity risks (i.e., excessive asset-liability mismatches and market liquidity), and structural (systemic) risks, with a focus on the specific characteristics of IIFS.
+
+1.4 General Approach
+
+7.        The GN adopts a supplementary approach, building on available macroprudential policy guidelines for conventional banks but focusing particularly on issues that are specific to IIFS (of which, some might require different regulatory treatment in jurisdictions with significant Islamic banking segments). Where issues are equally applicable to both conventional banks and IIFS, reference is made to the applicable guidelines. Where necessary, amendments to existing guidelines are provided to reflect IIFS specificities. Appendix 1 maps macroprudential policy measures for conventional banking to Islamic banking.
+
+8.       Implementing differentiated macroprudential policy tools can impose significant (additional) costs on IIFS. For instance, if an RSA decides to increase the alpha factor due to displaced commercial risk (DCR) from lower loss absorbency by unrestricted investment account holders in its funding mix, it will also raise the affected IIFS’s cost of capital relative to
+
+
+2 See  Working Paper 17 Effectiveness of Macroprudential Tools for Islamic Banking and  IFSB-23 Revised Capital
+Adequacy Standard for Institutions Offering Islamic Financial Services [Banking Segment].
+
+
+
+
+4
+its conventional peers. Another example is the requirement of maintaining sufficient counterbalancing capacity through marketable securities to meet liquidity risk management requirements even though Sharīʻah-compliant high quality liquid assets (HQLA) are still scarce; IIFS may therefore incur a significant opportunity cost from holding higher cash buffers and/or excess reserves. However, enhancing macroprudential supervision in jurisdictions - particularly where deposit insurance and/or a comprehensive banking resolution could be more challenging for IIFS - helps enhance financial stability, leaving Islamic banks no worse off from an ex-post perspective.
+
+9.        Within dual banking systems, a differentiated macroprudential treatment of IIFS needs to be consistent with the existing conventional framework. By addressing the distinctive risk sources and structuring appropriate governance for macroprudential policy, the differentiated treatment for IIFS should enhance overall financial stability. However, in dual banking systems, the co-existence of conventional and Islamic macroprudential policies could lead to regulatory arbitrage (e.g., between different capital and/or liquidity risk requirements). Such arbitrage can also manifest in the migration of financial activities toward non-bank financial institutions (NBFIs). Capital regulatory arbitrage can occur when higher capital requirements for Islamic banks create incentives to bypass regulatory limits by reallocating capital within the group. Liquidity restrictions may encourage cross-border allocation of liquid assets, often through intragroup transfers, without affecting the group’s overall liquidity position. Similar to conventional banks, stricter regulations for IIFS may lead to a "waterbed effect," promoting growth in the less-regulated NBFI sector. Nevertheless, applying macroprudential tools specifically to Islamic financial markets and Islamic NBFIs can help mitigate these risks, preventing regulatory gaps and ensuring consistent standards across both banking and non- banking sectors. The GN recognises the diverse nature of macroprudential policy for IIFS across countries (together with the potential complications in dual banking sectors) and provides principles-based recommendations for conceptual consistency based on its three objectives – adaptation, implementation, and governance – without prescribing a uniform practice (Figure 1). Thus, the overall approach of the GN is to establish a common understanding of effective macroprudential policy for IIFS based on existing approaches and to identify areas for future development.
+
+10.    The GN should be read in the context of the proportionality principle. The recommendations provided in this GN can be incorporated into a jurisdiction’s macroprudential framework in a manner appropriate to the size, sophistication, complexity, legal structure, Sharīʻah aspects, and market conditions of the Islamic banking sector. Implementing the
+recommendations outlined in this GN is subject to authorities' evaluation of their respective
+
+
+
+
+
+5
+macroprudential risk profiles. The supervisor and macroprudential authority may adjust the intensity of application according to the risks inherent to IIFS, the Islamic banking sector, or the overall financial system. Authorities should also ensure that the proportionality approach does not create regulatory arbitrage opportunities. In addition, macroprudential policy should adjust to evolving risks. Any risks identified in the GN are not intended to be exhaustive but are indicative as of the time of its issuance.
+
+1.5 Structure
+
+11.      The GN is structured into three sections. Section 2 outlines the specificities of IIFS, system-wide vulnerabilities and macroprudential policy for IIFS. Section 3 provides recommendations for the application of macroprudential policy tools for IIFS, governance and management of potential leakages. Figure 1 provides a conceptual overview of how the objectives of the GN – adaptation, implementation and governance – of macroprudential policy tools are reflected in its overall structure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6
+Figure 1: Conceptual Framework of Macroprudential Policies for IIFS
+
+
+
+Identifying System-wide
+Risks
+
+
+Risk Identification and Assessment
+
+
+
+No IIFS Specificities or Non-Systemic IIFS Specificities
+
+
+
+
+Systemic IIFS Specificities
+
+
+
+
+
+Macroprudential Tools
+
+
+Broad-based
+Tools
+Liquidity and
+FX Tools
+Structural and
+Sectoral Tools
+
+
+
+
+Policy Adaptation and Implementation
+
+Recommendations for Adaptation and Implementation
+
+
+
+
+
+No differentiation for IIFS
+Differentiated treatment for IIFS
+
+
+
+
+
+
+Governance and Evaluation of Potential Leakages
+
+
+Governance and Policy Evaluation
+
+
+
+
+Governance                                                    Policy Evaluation and Leakages
+
+
+
+
+
+Same as conventional banks
+
+Sharīʻah governance mechanisms
+
+Same as conventional banks
+Specific considerations for dual banking systems
+
+
+
+
+
+
+7
+1.6 Recommendations for Effective Macroprudential Policy Tools and Governance for IIFS (Banking Segment)
+
+12.      The recommendations of the GN address gaps in current macroprudential frameworks and suggest appropriate measures within the established categories of macroprudential policy tools as well as providing guidance on specificities related to governance and leakages.3 (Detailed recommendations are outlined in Section 3).
+
+
+Box 1. Recommendations for Effective Macroprudential Policy for IIFS (Banking Segment)
+
+Broad-Based Tools
+
+Recommendation 1 (Asset Performance and Inventory Risk): Authorities may consider the valuation risk from the inventory of underlying asset(s) in exchange-based contracts when applying broad-based tools.
+
+Recommendation  2  (Loss  Absorption):  Authorities  may  consider  the  level  of  loss
+absorption by IAHs and its impact on displaced commercial risk.
+
+Recommendation 3 (Partnership Contracts): Authorities may consider additional credit
+risk in partnership contracts when determining the capital charge for these exposures.
+
+Recommendation 4 (Leverage): Authorities may, where necessary, establish appropriate requirements to reduce the build-up of leverage.
+
+
+Liquidity and Foreign Exchange Tools
+
+Recommendation 5 (Structural Liquidity Buffer): Authorities may design and implement
+measures that help boost structural liquidity buffers and enhance liquidity risk management.
+
+Recommendation 6 (Forward Contracts): Authorities may consider limiting the use of forward-exchange contracts if liquidity buffers are deemed insufficient.
+
+Recommendation 7 (Commodity-based Exchange Contracts): Authorities may consider system-wide restrictions on the repetitive and frequent use of a specific class of commodities for commodity-based exchange contracts.
+
+Recommendation 8 (Profit Smoothing Mechanisms): Authorities may require IIFS to have clear and definitive mechanisms for profit distribution and the use of reserves if funding arrangements via partnership contracts are material.
+
+Recommendation 9 (Net Open Foreign Exchange Positions): Authorities may consider
+appropriate restrictions on net open foreign exchange positions.
+
+
+Structural and Sectoral Tools
+
+Recommendation 10 (Concentration): Authorities may amend structural tools that specifically address potential contagion risks stemming from large and/or concentrated exposures to commodities or other underlying assets or sectors.
+
+
+
+3 Note that sectoral tools have been integrated into structural tools for organisational clarity and practical relevance in the context of Islamic banking, which reduces the number of categories of macroprudential tools from four to three.
+
+
+
+
+8
+Recommendation 11 (Interconnectedness): Authorities may consider the potential for increased institutional interconnectedness of IIFS due to the limited number of institutions.
+
+
+Governance and Leakage
+
+Recommendation 12 (Governance): Authorities need appropriate governance mechanisms to ensure Sharīʻah-compliance is considered in formulating macroprudential policy for IIFS.
+
+Recommendation 13 (Leakage): Authorities may consider appropriate mechanisms to mitigate the risk of leakage when formulating macroprudential policy for IIFS in dual banking systems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9
+SECTION 2: SYSTEM-WIDE VULNERABILITIES AND MACROPRUDENTIAL POLICY FOR IIFS
+
+
+
+2.1      Specificities of IIFS
+
+13.      The Islamic finance contracts and instruments used by IIFS are different from their conventional counterparts in many aspects. Differences in the nature of  the underlying contracts that govern the contractual relationships have implications for individual and aggregate risks of IIFS. Subsection 1.5 of the Revised Capital Adequacy Standard for IIFS (IFSB-23) introduces Islamic financial instruments, their  specificities, how they generate returns, and potential risks arising from these specificities. Additionally, Section 5 of the same standard provides a detailed explanation of nine classes of Islamic financing assets, and their risk exposures (credit and/or market risk) and sets out the minimum capital requirement according to these exposures. On the other side of the balance sheet, PSIAs and their associated risks (DCR), special reserves (profit equalisation reserve (PER) and investment risk  reserve (IRR))  and treatment  of  PSIAs in the  calculation  of  capital  adequacy,  are
+extensively elaborated in Subsection 4.4. of  IFSB-23 as well as GN-34 and GN-45.
+
+14.       IIFS share many characteristics with their conventional peers, but the strong asset linkage and process-driven perspective6 on profit generation entails different risks, and, thus, requires a differentiated supervisory and regulatory assessment. As with conventional banks, the most common risks affecting solvency conditions are credit risk (if a counterparty fails to perform its payment obligations) and market risk (if market prices, for example, interest rates, foreign exchange, and stock prices, are volatile). However, IIFS face other unique7 risks, such
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 IFSB Guidance Note-3 (GN-3: Practice of Smoothing the Profits Payout to Investment Account Holders).
+
+5 IFSB Guidance Note-4 in connection with the IFSB Capital Adequacy Standard (GN-4: The Determination of Alpha in the Capital Adequacy Ratio for Institutions (other than Insurance Institutions) Offering Only Islamic Financial Services).
+
+6 IIFS are expected to execute legal documentation in the correct order and sequence for each type of underlying contract, as advised by the respective Sharīʻah board to minimise legal and Sharīʻah non-compliance risk. See IFSB-23 (footnote 217).
+
+7 See  IFSB-1 Guiding Principles of Risk Management for IIFS for more details.
+
+
+
+
+10
+as operational risks specific to IIFS,8 indirect interest risk,9 DCR, project risk from equity- based instruments, inventory risk10 and elevated liquidity risks due to concentrated asset exposures, and limitations in Sharīʻah-compliant market funding and liquidity management opportunities.11
+
+15.      Managing liquidity risk is especially challenging for IIFS because, unlike conventional banks, IIFS have limited access to short-term liquidity management tools, including standing credit operations and emergency liquidity support from central banks, which reduces their resilience to funding shocks, all else equal. They cannot source funding in the conventional interbank market, and, thus, in many jurisdictions where IIFS operate, they do not have a mature, well-developed Islamic money market. Also, the general lack of Sharīʿah-compliant HQLA limits their ability to build sufficient counterbalancing capacity to absorb net cash outflows during times of stress. In most cases, liquid (but expensive) short-term assets and illiquid (but profitable) long-term assets are funded by short-term deposits, investment accounts, and, to a lesser extent, long-term exchange-based/profit- and loss-sharing contracts. These impediments put IIFS at a disadvantage compared with their conventional peers. Despite recent improvements in liquidity risk management, secondary markets remain small or shallow in many jurisdictions.
+
+2.2      System-wide Vulnerabilities
+
+16.      Differences in risk exposure and contractual agreements lead to different ways that specificities of IIFS manifest in system-wide vulnerabilities, and, thus, require additional
+
+
+
+
+
+
+
+8    Sources of additional operational risk in Islamic banking that can have wide significance include Sharīʻah non- compliance risk (SnCR), inadequacies in risk management for profit-sharing agreements, such as insufficient exit strategies, imbalanced risk-sharing, and a lack of transparency in profit-sharing ratios and calculations. In addition, transactions in Islamic banking usually require complex documentation and sequencing in contract execution. IIFS must comply with both general banking and specific Sharī’ah-related regulations. Changes in laws, regulations, or interpretations of the Sharī’ah board’s resolutions/fatāwā can impact the operations of IIFS and introduce compliance and legal risks. For example, legal risk due to the non-standardisation of contracts makes IIFS vulnerable to risks that they cannot anticipate.
+
+9 Indirect interest rate risk arises from the competition for deposits in dual banking systems. Conventional banks typically offer interest-bearing deposit products, which can be perceived as more attractive to depositors seeking fixed returns. This competitive pressure can make it challenging for IIFS to attract sufficient cost-efficient deposit funding.
+
+10 Significant commodity exposures and uncovered sales contracts (parallel salam) in some jurisdictions can create inventory risk. The risks relate to the current and future volatility of market values of specific assets (for example, the commodity price of salam assets and the market value of murābahah assets purchased to be delivered over a specific period).
+
+11 The limitations are due to less-developed financial market infrastructure, the shortage in Sharī’ah-compliant liquidity risk management tools, and, in most jurisdictions, the absence of Sharī’ah-compliant deposit insurance schemes.
+
+
+
+
+11
+macroprudential considerations. In general, system-wide vulnerabilities 12 stem from rising leverage, rapid credit expansion, asset mispricing amid increasing financial distortions and negative externalities, which are amplified by liquidity risk and asset-liability mismatches. Asymmetric information and other forms of market failures tend to encourage excessive risk- taking, which leads to the build-up of risks. Generally, financial leverage of IIFS is lower compared to conventional banks.13 However, without appropriate governance, oversight, and disclosures, excessive risk-taking and asymmetric information can arise in partnership contracts. In addition, asset concentration and interconnectedness can increase the chances of system-wide spillover effects and adverse feedback loops with real activities.14 Spillover risks are also relevant to Islamic banking due to the concentration of transactions among a few institutions, which often share similar exposures in many jurisdictions. Furthermore, general (national) laws could conflict with the enforceability of Islamic contracts and, thus, might lead to legal uncertainty or even disputes, with system-wide implications.15
+
+2.3      Macroprudential Policy
+
+17.      In general, macroprudential policy applies primarily prudential tools to limit systemic or system-wide financial risk,16 based on three main systemic externalities: the financial system's tendency to amplify shocks, the macro-financial feedback that increases exposure to these shocks, and the interconnectedness that makes the system more vulnerable to disruptions17.
+
+18.      To achieve this, macroprudential policy focuses on three core objectives: building resilience to systemic shocks by creating buffers, reducing procyclical asset prices and credit cycles to limit the accumulation of risks over time, and addressing structural vulnerabilities resulting from direct and indirect interconnectedness within the financial system.
+
+19.     Macroprudential policy for Islamic banks operating in a dual banking system is conceptually similar; however, its implementation through appropriate tools and measures
+
+
+
+12 See IMF Working Paper “A Framework for Macroprudential Bank Solvency Stress Testing: Application to S-25 and Other G-20 Country FSAPs”, March 2013.
+
+13 See paragraph 40.
+
+14 See Figure 2 of IMF Policy Paper on “2021 Comprehensive Surveillance Review— Background Paper on
+Systemic Risk and Macroprudential Policy Advice in Article IV Consultations”
+
+15 IIFS face spillover risks from the build-up of financial vulnerabilities, but the propagation of negative shocks via fire sales is limited. For instance, selling debt at a discount is not permissible under Sharī`ah rulings and principles. Therefore, fire sales in IIFS are limited to physical and non-debt-based contracts.
+
+16 Systemic risk is defined as the risk of disruption in the provision of financial services caused by an impairment of the financial system with serious negative effects for the real economy (IMF-FSB-BIS, 2016).
+
+17 See IMF-FSB-BIS Joint Progress Report to the G20 (Macroprudential Policy Tools and Frameworks – Progress Report to G20), October 2011, and IMF-FSB-BIS Joint Policy Paper (Elements of Effective Macroprudential Policies), August 2016.
+
+
+
+
+12
+differs if the specificities of IIFS result in different system-wide vulnerabilities. This creates the need for alternative or differentiated approaches to mitigate associated impacts on financial stability. For instance, IIFS face significant risks from counterparty and  liquidity  issues, leverage from the use of commodity murābahah transactions (CMT), as well as shocks to commodity and real asset prices. These risks arise from the limited availability of short-term liquid assets and shallow money markets, along with a high concentration in less liquid assets like real estate.
+
+2.4       Available Macroprudential Tools
+
+20.      Achieving macroprudential objectives requires effective indicators and tools. Indicators help in the early identification of relevant risks and assess their severity, while instruments or tools help prevent and mitigate their materialisation. Access to a comprehensive macroprudential policy toolkit on an ex-ante basis is essential to enable the timely application of the relevant tools if the need arises.18 In addition to common macroprudential measures that can be used for both Islamic and conventional banking, Islamic banking requires a differentiated application of some tools or even the use of other tools altogether.   Typically, four categories of macroprudential tools are available in most jurisdictions and have also been applied in countries with dual banking systems: broad-based tools, sectoral tools, liquidity and FX (foreign exchange) tools, as well as structural tools. Some of the tools have been
+introduced in IFSB-23, as prudential regulation also contains some macroprudential aspects.
+
+21.      Macroprudential tools in each of these four categories have their specific purpose in addressing relevant system-wide vulnerabilities (Figure 2). This GN integrates “sectoral tools” into “structural tools”19 (see Section 3 and Appendix 1) without prejudice to conceptual clarity, which results in three categories of macroprudential measures in Islamic banking.
+
+a.  Broad-based  tools:  general  capital  and  provisioning  measures to  address excessive credit growth and leverage while at the same time increasing the IIFS resilience to shocks. The tools in this category affect all credit exposures and operate mostly through capital add-ons, such as the capital conservation buffer (CCB) and countercyclical capital buffer (CCyB), as well as the leverage ratio.
+
+b.  Liquidity and FX tools: general liquidity measures to mitigate excessive maturity mismatches and market illiquidity. Policy tools in this category aim primarily to
+
+
+
+
+18 IMF-FSB-BIS.  Elements of Effective Macroprudential Policies: Lessons from International Experience; August
+2016
+
+19 Some recommendations are equally applicable to both tools.
+
+
+
+
+13
+mitigate the impact of potential liquidity stress through the system-wide use of adequate microprudential measures, including LCR, Net Stable Funding Ratio (NSFR), core funding ratio, and FDR (Financing to Deposit Ratio), which can take different forms and are frequently used to manage liquidity and FX mismatches associated with increasing banks’ reliance on non-core funding, such as short-term, wholesale, or foreign currency funding to fund illiquid assets;20
+
+c.  Structural and sectoral tools: structural tools represent structural measures to limit exposure concentrations and the systemic impact of misaligned incentives to address risks arising from interconnectedness and the risk of contagion from the failure of individual systemically significant institutions (i.e., those institutions whose failure poses risks to the entire financial system). Interconnectedness can arise due to credit exposures or funding dependencies between financial institutions, such that the failure of a systemically important bank can, directly or indirectly, create contagion through spillovers between institutions and across the system. Banks and other financial institutions can be exposed to cascading effects from a solvency or liquidity shock, leading to system-wide liquidity squeezes, bank deposit runs, and asset fire sales. Sectoral tools represent household and corporate sector-specific capital and provisioning measures as well as borrower-based measures to address vulnerabilities from excessive credit to the household and corporate sector. The tools in the sectoral category include increases in capital requirements (risk weights) for particular sectors, and financing-to-value (FTV), debt-service-to-income (DSTI) and financing-to-income (FTI) ratios. These tools have been used in several countries, and a range of empirical studies show that these instruments were effective in addressing systemic risk externalities when used appropriately.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20 In addition, restrictions on dividend payout ratios or profit-sharing ratios after supervisory reviews and/or in response to identified liquidity shortfalls as part of system-wide stress tests provide a consistent and equitable way of establishing sufficient liquidity buffers outside prudential ratios. In countries with structural liquidity surplus, reserve requirements can also be adjusted to manage excess liquidity in a counter-cyclical manner.
+
+
+
+
+14
+
+Broad-based tools
+Excessive leverage, credit growth and asset mispricing
+
+
+
+
+
+
+Liquidity and FX tools
+Liquidity risk and asset-liability mismatches
+
+
+
+
+
+Structural tools and
+Sectoral tools
+Asset concentration, interconnectedness, and contagion risk
+
+
+Figure 2: Mapping of Macroprudential Policy (MaPP) Tools to System-wide Vulnerabilities
+
+
+
+
+2.5       Identification Methods for System-Wide Vulnerabilities
+
+22.     Although effective macroprudential policy mitigates systemic financial risk and safeguards financial stability, there is no reliable direct method for measuring the extent to which these objectives are being met. As a result, authorities not only track macro-financial variables as proxies for systemic risk but also use them as intermediate objectives for setting and adjusting policy.
+
+23.      Operationalising macroprudential policy requires mapping risk indicators to policy responses within a comprehensive framework for monitoring potential  risks and related system-wide vulnerabilities.21 Effective systemic risk mitigation entails the use of tools that address both time and structural (or “cross-sectional”) dimensions of system-wide vulnerabilities. The time dimension relates to measures aimed at mitigating the build-up of risks within the financial system over time. Structural vulnerabilities relate to risks from linkages within and across key asset classes, intermediaries, and market infrastructures as well as the system-wide impact of the failure of financial institutions.
+
+24.      Two important complementary tools are stress testing and early warning exercises. Stress tests are particularly useful to address the specificities of IIFS and derive a differentiated assessment of vulnerabilities for macroprudential policy purposes. The IFSB TN-
+2: Stress Testing for IIFS highlights that stress testing tools have some basic requirements and important limitations, which should be considered for stress tests of financial systems with a strong presence of IIFS. This also involves bringing to bear relevant capabilities and
+
+
+
+21 See IMF Policy Paper “Staff Guidance Note on Macroprudential Policy,” November 2014.
+
+
+
+
+15
+knowledge of the specificities of IIFS products and their adequate inclusion and coverage in stress tests.22 Aside from stress testing, early warning indicators are additional tools that are frequently used for the implementation of macroprudential policy. While the IIFS-specific elements are limited in this context, they are essential to a holistic assessment of changes in system-wide risk affecting IIFS. Using a diverse set of tools allows RSA to lengthen the lead time in identifying vulnerabilities to inform the implementation of available macroprudential tools.
+
+25.      The IFSB’s Prudential and Structural Islamic Financial Indicators can also be applied in macroprudential analysis for Islamic banks in conjunction with other approaches. The core and additional prudential Islamic finance indicators provide a snapshot of the condition of the Islamic banking system. Trend analysis of some indicators, such as financing concentration by economic activity and liquidity ratios, could be useful in identifying the build-up of systemic risks. It could provide insight into when to trigger macroprudential tools and the tightening or relaxation of these tools once deployed. While the available data may not always support rules-based decisions, it can be valuable in informing the expert judgment of authorities.
+
+26.      Expert judgment  is essential  in the calibration  of  policy tools,  especially  in  less developed financial systems or when data gaps exist. Given the complexity involved in the identification and measurement of systemic risk, expert judgment serves as a valuable complement to analytical calibration tools. In the context of IIFS, the use of expert judgment is particularly important due to the data gaps and varying information levels compared to conventional financial counterparts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22  See  IMF  Working  Paper  “The  Nature  of  Islamic  Banking  and  Solvency  Stress  Testing  -  Conceptual
+Considerations,” August 2020.
+
+
+
+
+16
+SECTION 3: RECOMMENDATIONS FOR MACROPRUDENTIAL POLICY TOOLS, GOVERNANCE AND LEAKAGES FOR IIFS
+
+
+27.      This GN focuses specifically on macroprudential tools for Islamic banking to ensure that the objectives of macroprudential policy are supported by suitable tools that address unique specificities and risk-related aspects of Islamic banking, thereby enhancing the policy’s effectiveness and coherence. In most jurisdictions with dual banking systems, the same (or similar) macroprudential policy instruments are applied to both IIFS and conventional banks. Any differentiated treatment of IIFS tends to focus on the adaptation and implementation of well-established (conventional) macroprudential tools rather than the development of new approaches and techniques. There is no one-size-fits-all solution when it comes to macroprudential policy, given the varying characteristics of IIFS and considerable cross- country differences. Building on existing macroprudential policy frameworks, specificities from Islamic banking suggest the need for differentiated treatment of IIFS in mitigating system-wide vulnerabilities by adapting existing measures and/or developing variations thereof when existing measures fall short (Figure 1). Appendix 1 summarises recommendations for further consideration in the application of macroprudential tools and their governance and provides more detailed explanations and a broad assessment of current gaps in jurisdictions with significant Islamic banking activities. Note that characteristics of sectoral tools are included in structural tools.
+
+28.      The next subsections explain the recommendations in detail.
+
+
+3.1     Recommendations for Macroprudential Policy Tools
+
+3.1.1   Excessive Leverage, Excessive Credit Growth, and Asset Mispricing
+
+29.      Excessive credit growth occurs when credit is extended at a pace that exceeds the underlying economic growth, beyond the ability of the borrowers to repay and the overall financial system’s capacity to absorb and manage the associated risks. At times of rapid credit growth, financial institutions, including IIFS, become more leveraged and may face funding challenges outside their traditional funding mix. In this situation, there is a higher likelihood of asset mispricing in certain markets, such as real estate or securities, which can trigger greater risk-taking.
+
+
+
+
+
+
+
+
+
+
+
+
+
+17
+Recommendation 1 (Broad-based Tools – Asset Performance and Inventory Risk): Authorities may consider the valuation risk from the inventory of underlying asset(s) in exchange-based contracts when applying broad-based tools.
+
+30.      Due to the more prevalent use of asset-based contracts in Islamic finance, IIFS are more exposed to market risks arising from adverse asset price movements.
+
+31.      IIFS may face market risk from the sudden change in the valuation of underlying asset(s) in all sale-based and lease-based contracts (e.g., murābaḥah, ijārah), which could lead to potentially larger/longer financial/business cycles due to stronger asset re-pricing, further amplified by larger sectoral concentration. This dynamic is particularly significant in sectors where IIFS have substantial exposures. IIFS hold considerable inventories of commodities to support future sales contracts, such as CMT,23 or salam contracts, which exposes them to the risk of a decline in the future market price of the underlying asset. IIFS tend to have a high and concentrated exposure to real estate and commodities, which may also be difficult to liquidate during times of stress.
+
+32.      Additionally, credit risk might also be amplified when IIFS are not permitted to charge penalties on late payments; this could increase the build-up of arrears and, thus, increase implied leverage.
+
+33.      Thus,  IIFS  may  consider,  where  relevant,  additional  risks  arising  from  asset performance and inventory risks in the application of broad-based tools to address these cyclical vulnerabilities.
+
+Recommendation 2 (Broad-based Tools – Loss Absorption): Authorities may consider the level of loss absorption by IAHs and its impact on displaced commercial risk.
+
+34.        If IIFS face pressure to align the actual returns for investors with market benchmarks, they may need to smooth profits to Investment Account Holders (IAHs) when returns fall short. While some contractual loss-bearing by IAHs could help mitigate the capital impact of financial shocks, DCR from profit-smoothing can significantly impact the financial soundness and risk profile of IIFS.
+
+35.        DCR underscores a critical linkage between solvency and liquidity in IIFS, particularly under stress conditions. For example, IIFS may experience a significant withdrawal of funds and associated liquidity pressures, if IAHs perceive that their returns are consistently lower
+
+
+
+23 Inventory risk will be very low and insignificant in jurisdictions where IIFS instantaneously execute the transaction.
+
+
+
+
+18
+than those offered by conventional banks. This can also weaken the capital base if IIFS consistently absorb losses or forgo profits, particularly through the transfer of shareholder funds, to mitigate the impact of lower returns and navigate the interest rate risks created by deposit competition in dual banking systems. Such adverse dynamics, if faced by multiple IIFS, could pose potential systemic risks.
+
+36.        RSAs need to adequately assess the consistent treatment of DCR across IIFS and its system-wide implications during times of stress. Adopting a market-based calibration of the alpha factor could help mitigate the risk of overstating the extent to which unrestricted IAHs absorb losses (i.e., the alpha factor is too low, or conversely, the implied loss absorption is too high relative to actual unexpected losses).24
+
+37.        No RSA currently specifies a macroprudential measure targeting DCR. However, some jurisdictions have taken steps towards imposing higher loan/financing loss provisioning for IIFS compared to their conventional counterparts.
+
+Recommendation 3 (Broad-based Tools – Partnership Contracts): Authorities may consider additional credit risk in partnership contracts when determining the capital charge for these exposures.
+
+38.        Partnership contracts, such as muḍārabah, introduce a set of risk dynamics that are distinct from those in conventional finance. In these contracts, the entrepreneur or project manager (muḍārib in muḍārabah contracts) may undertake riskier projects or investments, knowing that the financial losses will be borne by the bank (rab al-mal). This risk-taking can lead to sub-optimal project selection and management, potentially jeopardising the invested capital. In this context, IIFS face the challenge of distinguishing between high-risk and low- risk projects or entrepreneurs at the time of contract initiation. Entrepreneurs with riskier projects may be more inclined to seek such financing, anticipating that losses will be shared. This can lead to a portfolio skewed towards higher-risk investments, increasing the likelihood of financial losses for the bank.25
+
+39.        Given these elevated risks,  imposing a higher capital  charge  on financing  and investments predicated on partnership contracts might be appropriate, as recommended in IFSB-23. This measure aims to ensure that IIFS maintain a capital buffer sufficient to absorb
+
+
+
+
+24 A relatively recent approach involves treating PSIA as a purely investment-oriented account. Consequently, no
+reserves are established, and smoothing practices are not permitted.
+
+25 Conversely, cautious IIFS might also anticipate such adverse selection and err on the side of refusing funding to
+viable projects, which would result in a suboptimal allocation of funding from Islamic banks.
+
+
+
+
+19
+potential losses arising from these high-risk exposures. This approach compensates for the delayed recognition of impairments in the performance of contracts, offering an additional layer of financial protection against underperforming investments.
+
+40.        Some jurisdictions recognise the unique risk profile of partnership contracts and have raised credit risk weights for these contracts when determining capital adequacy. Additionally, certain countries have adopted more stringent standards for loan/financing loss provisioning, significantly exceeding the requirements for conventional banks. These regulatory measures acknowledge the distinct challenges posed by partnership contracts and aim to mitigate the associated financial stability risks.
+
+Recommendation 4 (Broad-based Tools – Leverage): Authorities may, where necessary, establish appropriate requirements to reduce the build-up of leverage.
+
+41.        Financial leverage of  IIFS is lower  compared to  conventional banking  because Sharīʻah principles require that any financing must be linked to real activity, i.e., production, services, and trade. Similarly, there are restrictions on the exchange of debts and products involving speculation, but risk-sharing funding structures are encouraged. The combination of these requirements reduces the leverage of the IIFS but does not rule it out.
+
+42.        IIFS do not raise material levels of funding using fixed-return instruments to achieve leverage. Unrestricted PSIAs (UPSIAs) tend to be a major source of funds for IIFS, except in some jurisdictions where CMT or tawarruq-based funding are the primary funding sources. Similarly, IIFS do not enter into transactions involving excessive gharar or leverage, such as leveraged loans, collateralised debt obligations (CDOs), or re-securitisations. However, some IIFS offer CMT-based fixed-return deposits (tawarruq). Banks also use CMTs on the asset side of the balance sheet, not just for liquidity management but to provide financing to their customers. The combination of CMT-based deposits and CMT-based term financing has the potential to create excessive debt.
+
+43.        RSA  could  consider  implementing  specific  macroprudential  measures,  such  as imposing limits on the use of tawarruq transactions and restricting the use of certain commodities in CMTs, which can serve as effective tools to curb the excessive build-up of leverage.
+
+44.        Some jurisdictions have already taken steps to impose restrictions on tawarruq transactions and/or, murābahah profit margins, and/or established minimum down payment requirements for murābahah-funded assets. These measures help manage leverage and
+
+
+
+
+
+
+
+20
+promote responsible financing practices, ensuring that financing is provided in a way that supports financial stability.
+
+3.1.2   Liquidity Risk, Asset-Liability/Currency Mismatches, and Volatility
+
+45.        System-wide vulnerabilities of IIFS to liquidity stress can arise from structural and cyclical factors. Structural liquidity risk stems from the characteristics of the financial system (e.g., interconnectedness and availability of Sharīʻah-compliant liquidity risk management tools) and the inherent illiquidity of certain asset exposures or contractual arrangements (e.g., partnership contracts, real estate). For instance, ṣukūk based on murābaḥah, istisnā’, and salam are only tradeable in line with the rulings of bai’ dayn, which is economically impractical and reduces secondary market liquidity.
+
+46.        Cyclical liquidity risks are related to the business and financial cycles. For example, during economic downturns or periods of financial stress, asset values may decline, market liquidity can dry up, and customer deposits and PSIA withdrawals may increase. These cyclical factors can strain the liquidity position, which might be further amplified by the concentration of financing/investments in certain sectors.
+
+Recommendation 5 (Liquidity Tools – Structural Liquidity Buffer): Authorities may design and implement measures that help boost structural liquidity buffers and enhance liquidity risk management.
+
+47.        A large duration gap26 between assets and liabilities, and the reliance on investment accounts for funding in some jurisdictions increases the potential for liquidity pressures in Islamic banking.
+
+48.        Other constraints may also impede efficient liquidity risk management in Islamic banking at every level (institutional, interbank, and central bank) and typically include: (a) scarcity of Sharīʻah-compliant liquid assets; (b) limited Sharīʻah-compliant money market activities, including active Sharīʻah-compliant trading or repurchase (repo) agreements; (c) insufficient Sharīʻah-compliant mechanisms to mitigate liquidity risk; (d) limited active participants in money market activities; (e) lack of interest to trade in the secondary markets for tradable short-term Islamic money market instruments; and (f) limited central bank liquidity support to IIFS in normal and stressed market conditions, including lender-of-last-resort schemes.27
+
+
+
+26 See footnote 6.
+
+27 In some jurisdictions IIFS may have access to the same liquidity facilities as conventional banks.
+
+
+
+
+21
+49.      RSA may consider implementing specific macroprudential measures, including encouraging the use of HQLA or Alternative Liquidity Approaches (ALA)28 for IIFS as set out in GN-6,29 higher reserve requirements, and a diversified funding mix to reduce dependence on volatile funding sources, together with limits on fixed-return contracts, which could help manage liquidity mismatches. Several countries have imposed greater cash reserve requirements for IIFS, and some have enhanced the definition of HQLA. However, no RSA currently mandates differentiated LCR or NSFR for IIFS.
+
+Recommendation 6 (Liquidity Tools – Forward Contracts): Authorities may consider limiting the use of forward-exchange contracts if liquidity buffers are deemed insufficient.
+
+50.        Forward-exchange contracts, such as salam, carry additional market risks, given the scarcity of appropriate hedging tools.30 These contracts involve the advance payment for goods to be delivered or for assets at a future date. Since most conventional hedging instruments do not comply with Sharīʻah principles, asset price fluctuations can significantly affect the valuation of these contracts and expose IIFS to greater market risk from shared or common exposures.
+
+51.        Limiting the use of forward contracts where liquidity buffers are insufficient can minimise risks stemming from significant fluctuations in the valuation of assets underlying forward-exchange contracts in times of market stress.
+
+Recommendation 7 (Liquidity Tools – Commodity-based Exchange Contracts): Authorities may consider system-wide restrictions on the repetitive and frequent use of a specific class of commodities for commodity-based exchange contracts.
+
+52.        The use of specific commodities-exchange-based contracts can create system-wide vulnerabilities. The system-wide dependence of IIFS on the buying and selling of commodities integral to tawarruq31 or CMT contracts can create several associated risks. While IIFS can
+
+
+
+28 Subject to conditions, jurisdictions that do not have enough assets in their own currency to meet banks' needs for HQLA may use ALA. These include the provision of central bank liquidity facilities, the coverage of liquidity needs in the domestic currency by foreign currency HQLA, and the use of additional Level 2 assets but subject to a higher haircut. See GN-6 Annex 2 and BIS Liquidity Coverage Ratio (LCR) - Executive Summary.
+
+29 IFSB Guidance Note 6: Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic Financial Services [Excluding Islamic Insurance (Takāful) Institutions and Islamic Collective Investment Schemes]
+
+30 Parallel salam and istisnā (a second contract with a third party to sell/manufacture the product at a specified future date) may mitigate the effect of price fluctuation.
+
+31 In some jurisdictions salam is used instead of murābahah.
+
+
+
+
+22
+be exposed to market risk arising from a price change of the underlying commodity, it is considered  minimal  since  the  ownership  of  underlying  commodities  is  brief  in  CMT. 32
+Operational risk may stem from CMT relying on a limited pool of underlying assets (commodities) and the repetitive recycling of these assets, which can create backlogs affecting the ability to complete transactions. Since the price is artificially determined and does not correlate with the external market price of assets, each CMT must refer to tangible assets stored in bonded warehouses, it could create price dislocations if multiple transactions rely on a constrained supply of commodities.
+
+53.        CMT transactions are also susceptible to disruptions in global commodity markets such as those caused by geopolitical conflicts or supply chain crises     which could disrupt money markets and create liquidity challenges for IIFS that depend heavily on CMT for liquidity management.
+
+54.        Additionally, given that only a few key players (suppliers) dominate the CMT market, dependence on these third parties for facilitating transactions introduces concentration risk from individual failure (also see Recommendation 10). Reducing the scale and/or concentration of particular commodities used in CMTs33 and limiting the average volume or value of commodities could further protect against systemic vulnerabilities.
+
+55.        So far, no RSA has imposed restrictions on commodity-based exchange contracts.
+
+
+Recommendation 8 (Liquidity Tools – Profit Smoothing Mechanisms): Authorities may require IIFS to have clear and definitive mechanisms for profit distribution and the use of reserves if funding arrangements via partnership contracts are material.
+
+56.        Indirect interest rate risk34 could amplify deposit competition for IIFS. The returns on unrestricted PSIAs are directly tied to the actual performance of assets financed by these accounts. If they underperform relative to prevailing market rates, the gap between expected and actual returns can precipitate redemptions. Therefore, ensuring transparency is crucial to avoid any ambiguity or unrealistic expectations.
+
+
+
+
+
+
+
+
+32 Purchase and sale typically take place within minutes on the same day.
+
+33 See IFSB GN-2: Guidance Note in Connection with the Risk Management and Capital Adequacy Standards: Commodity Murābaḥah Transactions (December 2010).
+
+34 This occurs when an increase in benchmark (interest) rates results in IAHs having expectations of a higher rate of return.
+
+
+
+
+23
+57.        RSA should require IIFS to adopt clear and binding profit payout mechanisms to strengthen market confidence and mitigate the potential for redemption pressures during periods of market volatility.
+
+Recommendation 9 (Liquidity Tools – Net Open Foreign Exchange Positions): Authorities may consider appropriate restrictions on net open foreign exchange positions.
+
+58.        Unhedged or unmatched FX exposures may result in liquidity risk. Similarly, any changes in the market liquidity may make it difficult to sell assets in foreign currency at acceptable prices. While the use of Sharīʻah-compliant hedging is possible, it requires a linkage to a real, profit-generating asset. Although some Sharīʻah-compliant alternatives have been developed, suitable Sharīʻah-compliant options for IIFS in hedging their risks are still limited.
+
+59.        A few RSAs have imposed, where necessary, limits on net open foreign exchange positions and/or higher market risk weights on exposures that involve currency mismatches as strategic approaches to manage and mitigate the risks associated with currency fluctuations.
+
+3.1.3   Asset Concentration, Interconnectedness, and Contagion Risk
+
+60.        System-wide vulnerabilities can arise from concentrated exposures as well as a high degree of interconnectedness within the financial system. 35  Adverse spillover effects are externalities related to interconnectedness caused by the propagation of shocks from systemically significant banks or through financial markets or networks (“contagion”). Banks and other financial institutions are highly interconnected, with distress or failure of one affecting others. Spillovers can arise because of bilateral balance sheets (interbank) and other exposures, asset price movements, or aggregate feedback from the real economy.
+
+Recommendation 10 (Structural/Sectoral Tools – Concentration): Authorities may amend structural tools that specifically address potential contagion risks stemming from large and/or concentrated exposures to commodities or other underlying assets or sectors.
+
+
+
+
+
+
+
+35 Name concentration implies less than perfect granularity of the portfolio, while sectoral concentration implies that risk may be driven by more than one systematic component (factor).
+
+
+
+
+24
+61.        Concentration risk can expose IIFS to common shocks directly and/or indirectly. Direct concentration risk arises from large exposures36 to specific sectors (e.g., real estate or construction) or asset classes. Indirect concentration risks arise when a shock weakens banks through contagion, such as interconnectedness, asset fire sales, and a general drying up of liquidity. 37   IIFS’  exposure  to  inventory  risk,  particularly  from  significant  commodities transactions (e.g., tawarruq) and certain types of contracts (e.g., parallel salam) that are not covered38, amplifies these institutions’ risk profiles. IIFS also have relatively high exposures to real estate through various forms of financing39 and investing.40 Thus, the impact of an asset price shock in this sector is likely to extend beyond a single bank, especially if multiple banks are exposed to the same concentrated risk. The limited availability of Sharīʻah-compliant hedging tools exacerbates concentration risk and associated contagion effects.
+
+62.        The contagion risk posed by these common exposures,  stemming  from  limited diversification opportunities within the Sharīʻah-compliant framework, underscores the need for RSA to define large exposure limits with lower thresholds and higher credit/market risk capital requirements.
+
+63.       Current exposure thresholds for IIFS often mirror or exceed those applied to conventional banks, suggesting that they may not fully account for the distinct risk dynamics of Islamic finance. This is particularly concerning for real estate used as collateral or for financing arrangements (e.g., sale and leaseback transactions). The high demand generated by IIFS in the real estate sector can lead to price distortions, exposing these institutions to risks associated with inflated property values.
+
+
+
+
+
+
+
+36 See BCBS Supervisory framework for measuring and controlling large exposures for more details.
+
+37 These risks are indirect in the sense that they may stem from fragilities in other parts of the financial sector with repercussions on the pricing or quality of bank assets.
+
+38 In a parallel salam contract, the buyer in the original salam contract signs a separate salam contract with a third party (other than the original seller) to deliver the same good(s). In the absence of such a promise to sell, the buyer would be exposed to price risk until the good(s) can be sold.
+
+39 “Financing of real estate” refers to an IIFS providing financing as a part of usual financial intermediation activities and requires effective risk management practices. In the case of an ijārah muntahia bittamlīk (also known as ijārah wa iqtinā`) contract, since customers intend to ultimately purchase the underlying asset, the assets held by the IIFS under such a contract during the lease period will be considered part of financial intermediation activities.
+
+40 “Investment in real estate” essentially refers to an IIFS investing in immovable properties when the IIFS invests its own and/or customers’ funds directly in real estate assets or in real estate projects (or in partnerships in real estate or real estate projects) for commercial purposes to achieve profits from property development, or to benefit from asset price appreciation. In the case of an operating ijārah contract, though an IIFS leases a specified asset to the customer for an agreed period against specified instalments of lease rental, the market or price risk attached to the residual value of the leased asset at the end of the contract remains with the IIFS.
+
+
+
+
+25
+Recommendation 11 (Structural Tools – Interconnectedness): Authorities may consider the potential for increased institutional interconnectedness of IIFS due to the limited number of institutions.
+
+64.        The interconnectedness of financial institutions can create contagion risk, as the distress or failure of one institution can spread to others. Spillovers can occur through various channels, including relationships between banks, asset price movements, and feedback from the real economy.41 The potential for increased institutional interconnectedness, exacerbated by the relatively limited number of IIFS, poses significant systemic risks and potential contagion effects during periods of financial stress. Excessive interconnectedness can also lead to herd behaviour as financial institutions engage in similar investment or financing activities. Thus, adverse events or shocks affecting one institution can quickly spread to others, which could undermine confidence in the financial system.
+
+65.         Contagion risk can be stronger in less developed financial systems where IIFS, takāful operators, and Islamic capital markets are closely linked, not just through financial transactions but also through shared governance frameworks and market practices. The compact nature of this ecosystem means that difficulties faced by one institution can quickly spread to others, amplifying systemic vulnerabilities and the potential for widespread financial disruptions.
+
+66.        RSA may consider implementing limits on exposures to connected counterparties and related parties, making a clear distinction between direct counterparties and ultimate risk owners. Such macroprudential measures help mitigate concentration risk and reduce the likelihood of contagion by diversifying exposures among entities within the Islamic Financial Services Industry (IFSI).  This approach necessitates  a more  granular  understanding  of counterparty relationships and the cascading effects that may ensue from the failure of a single entity within the network.
+
+67.        Currently, no RSA seems to have implemented special provisions or restrictions tailored specifically to address the unique systemic risks and contagion potential within the IFSI.
+
+
+
+
+
+
+
+41 Recent empirical research indicates contagion effects between Islamic and conventional banks during systemic events, “Heterogeneous Market Structure and Systemic Risk: Evidence from Dual Banking Systems,” Journal of Financial Stability, Vol. 33 (December), pp. 96-119) as well as asymmetric effects of extreme risk spillovers between conventional and Islamic banks (“Interconnectedness and Extreme risk: Evidence from Dual Banking Systems,” Economic Modelling, Vol. 120 (March)).
+
+
+
+
+26
+3.2     Recommendations for Macroprudential Policy Governance and Leakage
+
+68.        The governance of macroprudential policy requires legal clarity and transparency. This includes designating an agency/authority that is accountable for macroprudential policy and operates based on clear relationships with other regulators and organs of Sharīʻah governance, within an articulated framework for coordination, independence, skills, accountability, and disclosure. Decision-making should be well-defined and supported by clear processes. Macroprudential authorities may at times require access to a Sharīʻah Board in formulating appropriate policies for IIFS, for example, when dealing with SnCR as a systemic risk. Having appropriate and clear structures and roles for how this takes place is important.
+
+Recommendation 12 (Governance): Authorities need appropriate governance mechanisms to ensure Sharīʻah-compliance is considered in formulating macroprudential policy for IIFS.
+
+69.        When  introducing  a  set  of  macroprudential  tools  to  IIFS  by  macroprudential authorities, particularly with respect to those that may require cognisance of relevant Sharīʻah principles, due consideration should be given to ensuring that these mechanisms are in accordance  with  Sharīʻah  rulings  and  principles. While  the  full  scope  of  the  Sharīʻah governance framework may not be applicable to macroprudential authorities, timely access to a Sharīʻah Board or authority that can provide advice on Sharīʻah considerations relevant to the application of macroprudential policies to IIFS is important.
+
+70.        It would be helpful for authorities to have an appropriate mechanism in place for obtaining Sharīʻah rulings or advice from a Sharīʻah authority, where relevant, and monitoring Sharīʻah compliance in all relevant aspects.
+
+71.        The macroprudential authority possesses the discretion to determine the suitable Sharīʻah governance approach for macroprudential policy in IIFS. This authority could be a single or a group of government institutions with such mandate and power.
+72.        If a specific Sharīʻah governance approach is decided upon by the macroprudential authority, a clear definition of the roles and responsibilities should be identified and disclosed. The Sharīʻah governance structure adopted should be commensurate and proportionate with the size, complexity, and nature of the Islamic banking industry within the jurisdiction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+27
+Recommendation 13 (Leakage): Authorities may consider appropriate mechanisms to mitigate the risk of leakage when formulating macroprudential policy for IIFS in dual banking systems.
+
+73.       The potential for leakages poses challenges to the effective implementation of macroprudential policy tools. “Leakages” refers to the migration of financial activity outside the scope of application and enforcement of the macroprudential tool, potentially undermining its effectiveness. For example, the differences in regulations and application of tools between Islamic and conventional banking can influence their relative competitiveness.
+
+74.        Islamic banking activities may also be closely related to activities of non-bank IIFS. To manage its balance sheet, IIFS may invest in Sharīʻah-compliant assets, such as sukūk, which are under Islamic capital market supervision. IIFS may also use strategies such as collaboration with Islamic microfinance institutions to increase their financing growth. Such cross-sectoral activities should be considered when macroprudential policy is being implemented to avoid any leakages where these potential unobserved areas are not subject to such policy, which may compromise the effectiveness of policy implementation.42
+
+75.        Authorities  should  carefully  assess  the  potential  leakage  when  implementing differential treatment for IIFS and should take steps to address these risks. It is important for authorities to plan and analyse thoroughly before activating any macroprudential tool to ensure that it does not conflict with tools activated for both Islamic and conventional banks in dual banking systems. Additionally, authorities should integrate these tools with microprudential tools at the institutional level.
+
+
+
+
+
+
+
+
+*   *   *
+
+
+
+
+
+
+
+
+
+
+
+
+42 See Gebauer, Stefan and Falk Mazelis, 2020. Macroprudential Regulation and Leakage to the Shadow Banking Sector. ECB Working Paper Series 2406; Bhargava, Apoorv, Lucyna Gornicka, and Peichu Xie. 2021. Leakages from Macroprudential Regulations: The Case of Household-Specific Tools and Corporate Credit. IMF Working Paper No. 2021/113.
+
+
+
+
+
+28
+DEFINITIONS
+
+The definitions provided below are meant to offer a basic comprehension of the terms used in this document. This list is not comprehensive.
+
+Alpha (α)                              A measure of the proportion of actual credit and market risk on assets financed by investment account holders’ funds that is transferred to shareholders, that is, the displaced commercial risk. The parameter “alpha” is dependent on the supervisory authority’s directive in the jurisdiction in which the Islamic bank operates. The value of “alpha” varies from 0 to 1. GN-4 provides a methodology to estimate the value of “alpha” to be used when the supervisory discretion formula is applied in calculating the capital adequacy ratio of the Islamic bank
+
+Diminishing mushārakah     A form of partnership in which one of the partners promises to buy the equity share of the other partner gradually until the title to the equity is completely transferred to him. It is necessary that this buying and selling should not be stipulated in the partnership contract. In other words, the buying partner is allowed to give only a promise to buy. This promise should be independent of the partnership contract. In addition, the buying and selling agreement must be independent of the partnership contract. It is not permitted that one contract be entered into as a condition for concluding the other.
+
+Ijārah                                    A contract made to lease the usufruct of a specified asset for an agreed period against a specified rental. It could be preceded by  a unilateral binding promise from  one of the contracting parties. As for the ijārah contract, it is binding on both contracting parties.
+
+Ijārah muntahiyah bittamlīk
+
+
+
+
+
+
+
+
+Investment risk reserve
+(IRR)
+A lease contract combined with a separate promise from the lessor giving the lessee a binding promise to own the asset at the end of the lease period either by purchase of the asset through a token consideration, or by the payment of an agreed- upon price or the payment of its market value. This can be done through a promise to sell, a promise to donate, or a contract of conditional donation.
+
+The amount appropriated out of the profit of investment account holders, after allocating the muḍārib’s share of profit, to cushion against future investment losses for investment account holders.
+
+Istisnā`                                 The sale of a specified asset, with an obligation on the part of the seller to manufacture/construct it using his own materials and to deliver it on a specific date in return for a specific price to be paid in one lump sum or instalments.
+
+
+
+
+
+
+
+
+
+
+29
+Muḍārabah                           A partnership contract between the capital provider (rabb al- māl) and an entrepreneur (muḍārib) whereby the capital provider would contribute capital to an enterprise or activity that is to be managed by the entrepreneur. Profits generated by that enterprise or activity are shared in accordance with the percentage specified in the contract, while losses are to be borne solely by the capital provider unless the losses are due to misconduct, negligence or breach of contracted terms.
+
+Murābahah/ Murābahah
+for the Purchase Orderer
+
+
+
+
+Mushārakah
+(Sharikat al-Mulk)
+
+
+Profit equalisation reserve
+(PER)
+
+
+Restricted investment accounts
+
+A sale contract whereby the institution sells a specified asset to a customer and the selling price is the sum of the cost price and an agreed profit margin. The murābaḥah contract can be preceded by a promise to purchase from the customer.
+
+The participation of two or more partners in owning an asset either voluntarily or obligatorily. The profit loss-sharing ratio will be based on the equity of each partner.
+
+The  amount  appropriated  out  of  the muḍārabah profits  to maintain   a   certain   level   of   return   on   investment   for the muḍārib and unrestricted investment account holders.
+
+Accounts whose holders authorise the investment of their funds based on muḍārabah or wakālah agency contracts with certain restrictions as to where, how, and for what purpose these funds are to be invested.
+
+Salam                                   The sale of a specified commodity that is of a known type, quantity, and attributes for a known price paid at the time of signing the contract for its delivery in the future in one or several batches.
+
+Sukūk                                   Certificates that represent a proportional undivided ownership right in tangible assets, or a pool of tangible assets and other types of assets. These assets could be in a specific project or specific investment activity that is Sharīʻah-compliant.
+
+Unrestricted investment accounts
+
+Accounts whose holders authorise the investment of their funds based on muḍārabah contracts without imposing any restrictions. The institutions can commingle these funds with their own funds and invest them in a pooled portfolio.
+
+Wakālah                               An agency contract where the customer (principal) appoints an institution as agent (wakīl) to carry out the business on his behalf. The contract can be for a fee or without a fee.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+30
+
+
+
+Appendix  1:  Overview  of  Specificities  of  Islamic  Banking  and  Implications  for  Macroprudential
+Vulnerabilities and Measures
+Vulnerabilities                                                                                 Primary Macroprudential Measures                                 Relevant
+Standards
+Gaps                      Recommendations
+
+General               Islamic-specific                      General and Islamic- specific Implications
+
+Type                Stylized Example                Country Experience
+
+No RSA with CCyB
+
+
+Recommendation #1:
+
+
+
+
+
+
+
+
+
+
+
+
+
+Excessive leverage, excessive credit growth, and asset mispricing
+Credit risk of asset performance and market risk from large inventory of underlying asset(s) in all exchange-based contracts (murābaḥah, ijārah)
+
+
+IIFS incurring "displaced commercial risk” (DCR) due to commercial pressure arising from the need to smooth profits to IAHs when the actual investments' pool rate of return is lower than the market benchmark
+
+
+
+
+Counterparty and project risks from equity-based contracts (mudarabah, musharakah)
+
+
+
+
+Leverage through commodity murābaḥah transaction (CMT)-based deposits and term financing
+Potentially larger/longer
+financial/business cycles due to additional risks arising
+from asset performance and inventory risks in the application of broad-based tools.
+Stronger solvency-liquidity linkage under stress due to DCR, which implies a
+transfer of some shareholder value to unsecured depositors via reserves that help smooth profits from lending and investments (in case of lower-than-expected
+returns), and interest rate risk due to competition for deposits in dual banking systems;
+
+
+Stronger moral hazard and adverse selection of borrowers due to higher share of funding of equity- based contracts (compared to conventional banks).
+
+
+A large share of CMT-based deposits funding CMT-based lending significantly
+increases leverage, and, if done systematically, can create credit risk-sensitivity due to higher debt levels within the financial system.
+
+
+
+
+
+
+
+
+
+
+Broad- based tools (earlier trigger/relea se, larger buffers and/or greater cyclicality component in the
+capital structure)
+
+
+Larger counter-cyclical capital buffer
+
+
+
+
+
+
+Market-based calibration of alpha-factor determining loss-sharing;
+
+
+
+
+Higher capital charge on financing and investments based on Profit- and Loss-Sharing (PLS) contracts; and higher loan/financing
+loss coverage (reserves) to account for delayed recognition of impairments
+
+
+Limits on the use of tawarruq and/or certain commodities in CMTs
+above the conventional range (0-2.5%).
+No macroprudential calibration additional risks arising from asset performance and inventory risks
+
+
+
+
+No macroprudential
+calibration of DCR
+
+
+
+
+Some jurisdictions impose higher risk weights on financing based on PLS contracts in the calculation of capital adequacy ratio and some countries
+with much higher (standardised) loan loss provisioning (compared to conventional banks) Weakly developed; some countries with restrictions on murābaḥah profit
+margin and minimum down payments on assets financed by
+murābaḥah
+
+
+•  BCBS
+•  IFSB-23
+
+
+
+
+
+
+
+•  IFSB-23
+•  GN-4
+
+
+
+
+
+
+
+
+•  IFSB-23
+
+
+
+
+
+
+
+•  GN-2
+
+Does not address counter-cyclical risks arising from inventory in exchange-based contracts
+
+
+
+
+
+Does not cover the macroprudential impact of DCR
+
+
+
+
+
+
+
+Does not cover the macroprudential impact of partnership contracts
+
+
+
+
+
+Does not address the build-up of leverage arising from the CMT
+Authorities may consider the valuation risks from the inventory of underlying asset(s) in exchange-based contracts when applying broad-based tools
+
+
+
+Recommendation #2: Authorities may consider the level of loss absorption by IAHs and its impact on displaced commercial risk
+
+
+
+
+Recommendation #3
+Authorities may consider additional credit risk in partnership contracts when determining the capital charge for these exposures
+
+
+Recommendation #4
+Authorities may, where necessary, establish appropriate requirements to reduce the build-up of leverage
+Liquidity risk, asset-
+Constrained liquidity risk
+management (e.g., scarcity
+Larger effects of liquidity shocks and greater spillover
+Liquidity/FX
+tools
+More stringent definition of HQLA; higher reserve
+No RSA with higher
+LCR/NSFR ratios;
+•  BCBS           Only addresses the micro perspective of
+Recommendation #5
+Authorities may design
+
+
+
+
+31
+
+
+
+liability/curre ncy mismatches, and volatility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Asset concentratio n, interconnecte dness, and
+of Sharīʿah -compliant access to central bank money, interbank funding (due to Sharīʿah impediments to securities trading and hedging) and larger (positive) duration gap compared to conventional banks (with liabilities repricing faster than asset exposures)
+
+
+Market risk of asset price fluctuations affecting the valuation of forward exchange-based contracts (salam and istiṣnāʼ);
+
+
+Frequent buying and selling of commodities in the context of murābaḥah or CMT contracts could pose operational and concentration risks.
+
+
+
+
+Interest rate risk due to competition for deposits in dual banking systems
+
+
+
+
+
+Sharīʿah impediments on currencies trading (sarf)
+
+
+Inventory risk in the investment/trading portfolio from significant commodities exposures (e.g., tawarruq) and
+risks, with limited scope for central banks acting as lender of last resort; higher deposit run risk due to investment accounts (as major funding source - depending on country- circumstances); potentially amplified by limited Shari'ah- compliant money market participants (concentration risk)
+
+Greater market risk due to shared/common exposures and greater impact of price volatility due to limited hedging opportunities;
+
+
+IIFS might contribute to systemic risk if repetitive and frequent commodity murābaḥah transactions create artificial demand, concentration and
+operational risks.
+
+Return on PSIA is linked to the actual performance of the investment pool financed by the PSIA. The performance
+of this pool could be less than the current market interest rate (rate of return risk). This difference may create a withdrawal risk and bank run.
+Sarf contracts are treated similarly to the sale of debt, where parties take possession of the countervalues. Their pervasive and frequent use results in system-wide relevance.
+
+Contagion risk from common exposures due to limited diversification
+(Earlier trigger/ release, larger buffers)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Structural tools (sector/asse t class- specific
+requirements and diversified funding mix; limits on fixed return contracts (sale-based contracts)
+
+
+
+
+
+
+
+Higher capital intensity/provisioning for unhedged exposures; higher liquidity buffer(s);
+
+
+
+
+Limits on the use of tawarruq and/or certain commodities in CMTs
+
+
+
+
+Require a clear and binding profit payout mechanism (PER and IRR) that provides some protection to the UIAHs to avoid run risk
+
+
+Limits on net open foreign exchange position and/or higher market risk weights on exposures with currency mismatches
+
+Large exposure limits have lower threshold, higher credit/market risk capital intensity
+some restrictions on the definition of HQLA; several countries with high cash reserve requirements
+
+
+
+
+
+
+
+
+No RSA with special restrictions
+
+
+
+
+Some RSA have imposed limits on the use of tawarruq
+
+
+
+
+
+Some jurisdictions mandate PER for unrestricted PSIA
+
+
+
+
+
+A few RSA impose special restrictions
+
+
+
+Exposure limits similar to (or even higher than) conventional banks
+•  IFSB-1
+•  IFSB-12
+•  IFSB-23
+•  GN-6
+•  GN-7
+•  TN-1
+•  TN-2
+•  TN-5
+
+
+
+
+•  IFSB-23
+
+
+
+
+
+
+•  IFSB-23
+•  GN-2
+
+
+
+
+
+
+•  IFSB-23
+•  GN-4
+
+
+
+
+
+
+•  BCBS
+•  IFSB-23
+
+
+
+
+•  IFSB-23
+liquidity tools and do not cover the potential macroprudential impact.
+
+
+
+
+
+
+
+Does not address the macroprudential aspect of forward- exchange contracts in IFSI
+
+
+Does not address the buildup risks arising from the repetitive
+and frequent use of a specific class of commodities
+
+
+
+
+Does not address the macroprudential aspect of PER and IRR
+
+
+
+
+Does not address the macroprudential aspect of unhedged net open foreign exchange positions
+
+Does not address the macroprudential aspect of concentrated exposures to
+and implement measures that help boost structural liquidity buffers and enhance liquidity risk management
+
+
+
+
+
+Recommendation #6
+Authorities may consider limiting the use of
+forward-exchange contracts if liquidity buffers are deemed insufficient Recommendation #7
+Authorities may consider system-wide restrictions on the repetitive and frequent use of a
+specific class of commodities for
+commodity-based exchange contracts.
+Recommendation #8
+Authorities may require IIFS to have clear and definitive mechanisms for profit distribution and the use of reserves if funding arrangements
+via partnership contracts are material
+
+
+Recommendation #9
+Authorities may consider appropriate restrictions on net open foreign exchange positions.
+
+Recommendation #10
+Authorities may amend structural tools that specifically address potential contagion risks
+
+
+
+
+32
+
+
+
+contagion risk
+uncovered/parallel special sales contracts (parallel salam); concentration of underlying asset (e.g. commodity murābaḥah); relatively high exposure to real estate market
+
+
+Greater institutional interconnectedness due to less developed financial system(s)
+
+
+
+
+Sharīʿah Governance for
+
+
+
+
+
+
+There is a high level of interconnectedness due to small number of players in Islamic finance (IIFS, takaful, and capital markets), which can pose challenges in terms of systemic risks and contagion effects during periods of financial stress.
+requirement s)
+
+
+
+
+
+
+
+Limits on exposures to connected counterparty and related parties (with greater distinction between direct counterparty and ultimate risk owner)
+
+
+Due consideration should be given to
+
+
+
+
+
+
+
+
+
+No RSA with special           •  IFSB-23 provisions
+
+
+
+
+
+The majority of RSAs are not considering
+commodities or other underlying assets or sectors
+
+
+
+
+
+
+Does not cover macroprudential policy for IIFS
+
+
+
+
+
+Does not cover
+stemming from large and/or concentrated exposures to commodities or other underlying assets or sectors
+
+
+Recommendation #11
+Authorities may consider the potential for increased institutional interconnectedness of IIFS due to the limited number of institutions
+
+Recommendation #12
+Authorities need appropriate governance mechanisms to ensure
+
+
+
+
+Governance and Leakage
+Macroprudential policy for
+IIFS
+
+
+
+
+
+Leakage when formulating macroprudential policy for IIFS in dual banking systems
+
+
+
+
+
+
+The potential for leakages poses challenges to the effective implementation of macroprudential policy tools
+Sharīʿah
+Governance
+
+
+
+
+
+
+Leakage
+ensuring that policies follow Sharīʿah rulings and principles
+
+
+Differences in regulations and application of tools between Islamic and conventional banking can influence their relative competitiveness and may impact the effectiveness of macroprudential tools
+Sharīʻah compliance in their macroprudential governance
+
+
+
+
+
+-
+•  IFSB-10
+
+
+
+
+
+•  IMF Staff Guidance Note on Macroprude ntial Policy
+macroprudential policy for IIFS
+
+
+
+There is no guidance on the possible impact of leakage arising from implementing macroprudential policy for IIFS in dual banking systems
+Sharīʿah-compliance is considered in formulating macroprudential policy for IIFS.
+Recommendation #13
+Authorities may consider appropriate mechanisms to mitigate the risk of leakage when
+formulating macroprudential policy for IIFS in dual banking systems
+
+
+Note: *The colour coding of “Country Experience” uses green to indicate areas that are satisfactory, orange for those that require some effort to improve, and red to highlight areas that are weakly developed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+33
+
+
+
+Appendix 2: Specificities of Islamic Banking with Implications for Macroprudential Policy
+(Count of Responses from Survey Participants)
+
+
+
+
+
+Differentiated/Specific Risks of Islamic Banking
+Highly significant for all banks
+Somewhat significant for all banks
+Significant for only a few banks
+
+Little or no relevance
+
+Responding
+Jurisdictions
+Capital requirements and smoothing practices in PSIA            31%                         32%                           19%                        19%                       16
+Market risk due to large asset inventory holdings (1)                 0%                          62%                           15%                        23%                       13
+Higher structural vulnerability to funding shocks (2)                  47%                         13%                           27%                        13%                       15
+Concentration risk (3)                                                                30%                         25%                           40%                         5%                        20
+Sharīʻah non-compliance risk                                                    47%                          7%                            27%                        20%                       15
+Asset-liabilities mismatches (4)                                                 29%                         24%                           41%                         6%                        17
+Indirect interest rate risk (5)                                                       42%                          8%                            25%                        25%                       12
+Displaced commercial risk (DCR)                                              13%                         33%                           33%                        20%                       15
+Other                                                                                          20%                          0%                            40%                        40%                        5
+
+
+
+
+
+
+
+Source: IFSB Survey (2023). Note: PSIA=profit-sharing investment accounts; risks are ordered based on relevance (which is defined as the combined percentage share of “highly significant for all banks” and “somewhat significant for all banks”); (1) in sale- or lease-based contracts; (2) due to scarcity of Sharīʻah-compliant liquidity management tools and/or deficiencies in financial market infrastructure (e.g. concentrated brokerage, illiquid securities); (3) due to focus on particular sectors (e.g., real estate), countries (e.g., less regional diversification); (4) including positive duration gap between investments and funding (i.e., between fixed-rate long-term assets and variable-rate short-term liabilities); (5) due to competition for deposits in dual banking systems
+
+
+
+
+
+
+
+
+
+34
+IFSB COUNCIL Chair
+H.E. Ahmed Osman Ali, Banque Centrale De Djibouti
+
+Deputy Chair
+
+H.E. Abdellatif Jouahri, Bank Al-Maghrib
+
+Members*
+
+
+H.E. Dr. Muhammad Sulaiman Al Jasser                      Islamic Development Bank
+
+H.E. Khalid Ebrahim Humaidan                                    Central Bank of Bahrain
+
+H.E. Mr. Dr. Ahsan H. Mansur                                      Bangladesh Bank
+
+H.E. Rokiah Badar                                                        Brunei Darussalam Central Bank
+
+H.E. Hassan Abdalla                                                     Central Bank of Egypt
+
+H.E. Dr. Perry Warjiyo                                                   Bank of Indonesia
+
+H.E. Dr. Mohammad-Reza Farzin                                 Central Bank of Islamic Republic of Iran
+
+H.E. Dr. Ali Mohsen Ismail                                            Central Bank of Iraq
+
+H.E. Dr. Adel AlSharkas                                                Central Bank of Jordan
+
+H.E. Basel Ahmad Al-Haroon                                       Central Bank of Kuwait
+
+H.E. Naji Mohammed Issa Belqasim                             Central Bank of Libya
+
+H.E. Dato' Seri Shaik Abdul Rasheed Ghaffour            Bank Negara Malaysia
+
+H.E. Sir Mohamed Lemine Dhehby                               Central Bank of Mauritania
+
+H.E. Dr. Rama Krishna Sithanen, G.C.S.K                   Central Bank of Mauritius
+
+H.E. Dr. Olayemi Michael Cardoso                               Central Bank of Nigeria
+
+H.E. Tahir bin Salim bin Abdullah Al Amri                     Central Bank of Oman
+
+H.E. Jameel Ahmad                                                      State Bank of Pakistan
+
+H.E. Sheikh Bandar bin Mohammed bin Saoud Al-
+Thani                                                                             Qatar Central Bank
+
+H.E. Ayman Mohammed Al-Sayari                               Saudi Central Bank
+
+H.E. Burai Al-Saddiq Ahmed                                         Central Bank of Sudan
+
+H.E. Prof. Dr. Şahap KAVCIOĞLU                               Banking Regulation and Supervision Agency of
+Türkiye
+
+H.E. Khaled Mohamed Balama Al Tameemi                Central Bank of the United Arab Emirates
+
+*In alphabetical order of the country the member’s organisation represents, except international organisations, which are listed first
+TECHNICAL COMMITTEE Chair
+H.E. Mr. Saud Al Busaidi – Central Bank of Oman (from August 2024)
+
+H.E. Dr. Fahad Ibrahim Al Shathri – Saudi Central Bank (until April 2024)
+
+
+
+Deputy Chair
+
+Mr. Mohamed Abou Moussa, Central Bank of Egypt (from August 2024) Mr. Saud Al Busaidi - Central Bank of Oman (until April 2024) Members*
+Mr. Syed Faiq Najeeb                                                   Islamic Development Bank
+
+Mrs. Shireen Al Sayed                                                  Central Bank of Bahrain
+
+Ms. Maksuda Begum (Until Aug. 2023)                        Bangladesh Bank
+
+Mr. Mohammad Shahriar Siddiqui (from Aug. 2023)     Bangladesh Bank
+
+Dr. Mariawati Omar (from July 2024)                            Brunei Darussalam Central Bank
+
+Mr. Muhammad Shukri bin Haji Ahmad (until April
+2024)                                                                             Brunei Darussalam Central Bank
+
+Dr. Rifki Ismal (from July 2024)                                     Bank of Indonesia
+
+Dr. Jardine Husman (until April 2024)                           Bank of Indonesia
+
+Mrs. Nyimas Rohmah                                                    Indonesia Financial Services Authority
+
+Dr. Alireza Naserpour (until April 2024)                        Securities and Exchange Organization of Iran
+
+Mr. Mustafa Abd Nazzal (from July 2024)                     Central Bank of Iraq
+
+Mr. Ahmed Yousif Kadhim (until April 2024)                 Central Bank of Iraq
+
+Mr. Mahmoud Ibrahim Moh’d Alsbeihat (from Aug.
+2023 until April 2024)                                                    Central Bank of Jordan
+
+Mr. Adnan Y. Naji (until Aug. 2023)                               Central Bank of Jordan
+
+Mr. Anuar Kaliyev (until April 2024)                               Astana Financial Services Authority, Kazakhstan
+
+Dr. Mohammad Bader Alkhamis                                   Central Bank of Kuwait
+
+Dr. Ali Abusalah Elmabrok                                            Central Bank of Libya
+
+Mr. Nik Faris Nik Sallahuddin                                        Bank Negara Malaysia
+
+Mrs. Sharifatul Hanizah Said Ali                                    Securities Commission Malaysia
+
+Dr. Mohammed Zougari Laghrari                                  Bank Al-Maghrib
+
+Dr. Abdurrahman Abdullahi (from July 2024)                Central Bank of Nigeria
+Mr. Muhammed Hamisu Musa (until April 2024)           Central Bank of Nigeria
+
+Dr. Waziri Mohammed Galadima (until April 2024)       Nigeria Deposit Insurance Corporation
+
+Mr. Ahmad Usman Kollere (from July 2024)                 National Insurance Commission (NAICOM),
+Nigeria
+
+Ms. Nighat Tanveer (from July 2024)                            State Bank of Pakistan
+
+Mr. Ghulam Muhammad Abbasi (until April 2024)        State Bank of Pakistan
+
+Mr. Hisham Saleh Al-Mannai                                        Qatar Central Bank
+
+Mr. Bader Alissa (until April 2024)                                 Capital Market Authority, Saudi Arabia
+
+Mr. Walid Alzahrani (from July 2024)                            Saudi Central Bank
+
+Ms. Sumaia Amer Osman Ibrahim (until April 2024)     Central Bank of Sudan
+
+Dr. Ilker Koc                                                                   Banking Regulation and Supervision Agency of
+Türkiye
+
+Dr. Muhammed Habib Dolgun (from July 2024)            Central Bank of the Republic of Türkiye
+
+Mr. Mehmet Zahid Samancıoğlu (until April 2024)        Central Bank of the Republic of Türkiye
+
+Ms. Emine Nur Öztürk Alkan (until April 2024)              Private Pension Regulation and Supervision
+Authority, Türkiye
+
+Mr. Abdulaziz Saoud Al-Mualla                                     Central Bank of the United Arab Emirates
+
+*In alphabetical order of the country the member’s organisation represents, except international organisations, which are listed first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxvii
+WORKING GROUP Chairman
+Dr. Mohammed Zougari Laghrari -Bank Al-Maghrib (from July 2024) Mr. Ghulam Muhammad Abbasi–State Bank of Pakistan (until April 2024) Deputy Chairman
+Dr. Jardine Husman–Bank Indonesia (until April 2024)
+
+Members*
+
+Dr. Dawood Ashraf                                                Islamic Development Bank
+Dr. Akhtar Ali Saeed Mohammed                          Islamic Corporation for the Development of the
+Private Sector (ICD)
+Ms. Fatma Cinar (until Dec. 2022)                         United Nations Development Programme Dr. Abdurrahman Yazici (from Jan. 2023)             United Nations Development Programme Mr. Abdullah Akhundzada                                     Da Afghanistan Bank
+Ms. Amina Al Maskati                                            Central Bank of Bahrain
+
+Ms. Maizatul Najibah Mohamad                            Brunei Darussalam Central Bank
+
+Ms. Ina Nurmalia Kurniati (from Dec. 2022)          Bank Indonesia
+
+Mr. Muhammad Arif                                               Indonesia Financial Services Authority Ms. Salma Maryam                                                Indonesia Financial Services Authority Mr. Mahdi Khairallah (until Dec. 2022)                  Central Bank of Kuwait
+Mr. Yusif AlHajji (from Dec. 2022)                         Central Bank of Kuwait
+
+Dr. Ali Charif                                                          Banque du Liban
+Mr. Nik Ahmad Rusydan Nik Hafizi (until Dec.
+2022)                                                                     Bank Negara Malaysia
+Mr. Waesh Khodabocus                                        Bank of Mauritius
+
+Mr. Nemane Junusso                                            Banco de Moçambique Mr. Harry J. Audu                                                  Central Bank of Nigeria Mr. Napoleon D. Okosu                                         Central Bank of Nigeria
+Mr. Adamu Aliyu                                                    Nigeria Deposit Insurance Corporation
+
+Mr. Sulaiman Humaid Salim Al-Harthy                  Central Bank of Oman
+
+Mr. Imran Sultan Khan                                           State Bank of Pakistan
+
+Ms. Anna Lisa B. Atienza                                      Bangko Sentral ng Pilipinas
+
+Ms. Nada Alromi                                                    Saudi Central Bank
+
+Mr. Khaled Albesher                                              Saudi Central Bank
+
+Ms. Ayda Awad Mohamed Shareef                       Central Bank of Sudan
+
+Mr. Erhan Akkaya                                                  Central Bank of the Republic of Türkiye Ms. Farah Izzaty Azman                                        Central Bank of United Arab Emirates Mr. Yasir Ali Alobeidli                                             Central Bank of United Arab Emirates
+* In alphabetical order of the country the member’s organisation represents, except international
+organisations, which are listed first
+THE SHARĪʻAH BOARD
+
+
+Chairman
+
+
+His Eminence Shaikh Dr. Mohamed Ali Ibrahim Elgari
+
+
+Deputy Chairman
+
+
+His Eminence Shaikh Dr. Nizam Muhammad Saleh Yaqoobi
+
+
+Members
+
+
+His Eminence Shaikh Dr. Aznan Hasan                                          Member
+
+
+His Eminence Shaikh Dr. Mufti Muhammad Hassan Kalim             Member
+
+
+His Eminence Shaikh Dr. Said Adekunle Mikail                              Member
+
+
+
+
+ISLAMIC FINANCIAL SERVICES BOARD Secretariat
+
+Dr. Ghiath Shabsigh (from April 2024)                Secretary-General
+
+Dr. Bello Lawal Danbatta (until Jan. 2024)         Secretary-General
+
+Dr. Rifki Ismal (until Dec. 2022)                          Assistant Secretary-General
+
+Aminath Amany Ahmed                                      Acting Assistant Secretary-General
+
+Ahmed Nasser Saif Al Aamri (until Aug.
+2024)
+
+Member of the Secretariat, Research and
+Standard Development
+Reza Mustafa (until May 2023)                           Member of the Secretariat, Research and
+Standard Development
+Mohamed Omer Mohamed Elamin Abbasher    Member of the Secretariat, Research and
+Standard Development
+
+Dr. Andreas Alexander Jobst                              Consultant
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+39

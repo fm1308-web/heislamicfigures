@@ -1,0 +1,559 @@
+{
+ "_meta": {
+  "type": "quran_word_filter_map",
+  "generated": "2026-07-10",
+  "source": "quran_finance_layer.json v2 (CONFIRMED the right source) + lineage_v4 quran rows + minted T201-T214",
+  "ui_rule": "Selecting a word highlights its highlight_contract_ids rows plus every row linked to its highlight_term_ids. glow=false words (Q23 gharar, Q24 waqf) render pale with an origin-hadith badge.",
+  "counts": {
+   "words": 24,
+   "glow": 22,
+   "pale_hadith_origin": 2
+  }
+ },
+ "rows": [
+  {
+   "word_id": "Q01",
+   "arabic": "riba",
+   "english": "interest / usury",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:275",
+    "2:276",
+    "2:278-279",
+    "3:130",
+    "4:161",
+    "30:39"
+   ],
+   "highlight_term_ids": [
+    "T022",
+    "T023",
+    "T082",
+    "T083",
+    "T201"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q02",
+   "arabic": "maysir / qimar",
+   "english": "gambling",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:219",
+    "5:90-91"
+   ],
+   "highlight_term_ids": [
+    "T021",
+    "T091"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q03",
+   "arabic": "kanz / iktinaz",
+   "english": "hoarding wealth",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "9:34-35"
+   ],
+   "highlight_term_ids": [
+    "T202"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q04",
+   "arabic": "israf / tabdhir",
+   "english": "extravagance / squandering",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "17:26-27",
+    "7:31",
+    "25:67"
+   ],
+   "highlight_term_ids": [
+    "T203"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q05",
+   "arabic": "tatfif (kayl wa mizan)",
+   "english": "short-changing weights & measures",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "83:1-3",
+    "11:84-85",
+    "17:35",
+    "6:152"
+   ],
+   "highlight_term_ids": [
+    "T204"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q06",
+   "arabic": "akl al-mal bil-batil",
+   "english": "devouring wealth wrongfully",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:188",
+    "4:29"
+   ],
+   "highlight_term_ids": [
+    "T131",
+    "T205"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q07",
+   "arabic": "suht",
+   "english": "illicit gain",
+   "tier": "A",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "5:42",
+    "5:62-63"
+   ],
+   "highlight_term_ids": [
+    "T206"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q08",
+   "arabic": "zakat",
+   "english": "alms-tax",
+   "tier": "B",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:43",
+    "9:60",
+    "9:103"
+   ],
+   "highlight_term_ids": [
+    "T116",
+    "T119",
+    "T120"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q09",
+   "arabic": "sadaqah / infaq",
+   "english": "charity / spending in good",
+   "tier": "B",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:261",
+    "2:264",
+    "2:271",
+    "57:18"
+   ],
+   "highlight_term_ids": [
+    "T118",
+    "T207"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q10",
+   "arabic": "qard hasan",
+   "english": "goodly (benevolent) loan",
+   "tier": "B",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:245",
+    "5:12",
+    "57:11",
+    "57:18",
+    "64:17",
+    "73:20"
+   ],
+   "highlight_term_ids": [
+    "T048",
+    "T172"
+   ],
+   "highlight_contract_ids": [
+    "C10"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q11",
+   "arabic": "mirath / wasiyyah",
+   "english": "inheritance / bequest",
+   "tier": "B",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "4:11-12",
+    "4:176",
+    "2:180",
+    "5:106"
+   ],
+   "highlight_term_ids": [
+    "T208",
+    "T209"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q12",
+   "arabic": "mahr (saduqat)",
+   "english": "dower",
+   "tier": "B",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "4:4",
+    "4:24"
+   ],
+   "highlight_term_ids": [
+    "T210"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q13",
+   "arabic": "amwal al-yatama",
+   "english": "orphans' property",
+   "tier": "B",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "4:2",
+    "4:10",
+    "17:34",
+    "6:152"
+   ],
+   "highlight_term_ids": [
+    "T046",
+    "T124",
+    "T211"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q14",
+   "arabic": "bay' / tijarah",
+   "english": "sale / trade",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:275",
+    "4:29",
+    "62:10",
+    "2:198"
+   ],
+   "highlight_term_ids": [
+    "T004",
+    "T024",
+    "T025",
+    "T026",
+    "T089",
+    "T149",
+    "T166",
+    "T173",
+    "T174",
+    "T212"
+   ],
+   "highlight_contract_ids": [
+    "C03",
+    "C05",
+    "C06"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q15",
+   "arabic": "dayn + kitabah",
+   "english": "debt + its documentation",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:282",
+    "2:283"
+   ],
+   "highlight_term_ids": [
+    "T003",
+    "T047",
+    "T213"
+   ],
+   "highlight_contract_ids": [
+    "C05",
+    "C10"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q16",
+   "arabic": "rahn",
+   "english": "pledge / collateral",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "2:283"
+   ],
+   "highlight_term_ids": [
+    "T016",
+    "T170",
+    "T171"
+   ],
+   "highlight_contract_ids": [
+    "C09"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q17",
+   "arabic": "amanah / wadi'ah",
+   "english": "trust / deposit",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "4:58",
+    "2:283",
+    "8:27",
+    "23:8"
+   ],
+   "highlight_term_ids": [
+    "T038",
+    "T039",
+    "T046",
+    "T124"
+   ],
+   "highlight_contract_ids": [],
+   "special": "Wadiah: also highlight lineage chain L095-L103 (T038)",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q18",
+   "arabic": "ijarah / ajr",
+   "english": "hire / wage",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "65:6",
+    "28:26-27",
+    "18:77"
+   ],
+   "highlight_term_ids": [
+    "T006",
+    "T027",
+    "T044",
+    "T045",
+    "T087"
+   ],
+   "highlight_contract_ids": [
+    "C04"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q19",
+   "arabic": "kafalah / za'im",
+   "english": "guarantee",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "12:72",
+    "12:66",
+    "12:78"
+   ],
+   "highlight_term_ids": [
+    "T042",
+    "T043",
+    "T105",
+    "T169"
+   ],
+   "highlight_contract_ids": [
+    "C08"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q20",
+   "arabic": "wakala",
+   "english": "agency",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "18:19",
+    "12:55"
+   ],
+   "highlight_term_ids": [
+    "T015",
+    "T055",
+    "T056",
+    "T144"
+   ],
+   "highlight_contract_ids": [
+    "C07"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q21",
+   "arabic": "shirkah / mudarabah roots",
+   "english": "partnership roots",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "38:24",
+    "4:12",
+    "73:20"
+   ],
+   "highlight_term_ids": [
+    "T040",
+    "T041",
+    "T049",
+    "T050",
+    "T051",
+    "T052",
+    "T053",
+    "T054"
+   ],
+   "highlight_contract_ids": [
+    "C01",
+    "C02"
+   ],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q22",
+   "arabic": "jizyah / ghanimah / fay'",
+   "english": "state levies & public wealth",
+   "tier": "C",
+   "glow": true,
+   "origin": "quran",
+   "origin_badge": "",
+   "verses": [
+    "9:29",
+    "8:41",
+    "59:7"
+   ],
+   "highlight_term_ids": [
+    "T214"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q23",
+   "arabic": "gharar",
+   "english": "excessive uncertainty",
+   "tier": "A",
+   "glow": false,
+   "origin": "hadith",
+   "origin_badge": "render pale + 'origin: hadith' badge - never fake a verse",
+   "verses": [],
+   "highlight_term_ids": [
+    "T020",
+    "T072"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  },
+  {
+   "word_id": "Q24",
+   "arabic": "waqf",
+   "english": "endowment",
+   "tier": "B",
+   "glow": false,
+   "origin": "hadith",
+   "origin_badge": "render pale + 'origin: hadith' badge - never fake a verse",
+   "verses": [],
+   "highlight_term_ids": [
+    "T013",
+    "T182",
+    "T183",
+    "T184"
+   ],
+   "highlight_contract_ids": [],
+   "special": "",
+   "mapping_tag": "verses+contract links verified; word->term assignment plausible (editorial)"
+  }
+ ]
+}

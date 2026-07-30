@@ -1,0 +1,2869 @@
+@import url('finance-shim.css');
+/* ─────────────────────────────────────────────────────────────
+   FINANCE view — PRIVATE Islamic-finance provenance timeline.
+   Mirrors THINK's stem/year-axis/era-band geometry and BOOKS'
+   .bv-dd-* dropdown widget + .think-tooltip. Self-contained:
+   every class it needs is (re)defined here so the view renders
+   without think.css / books.css being loaded.
+   Only #finance-view, .fin-*, and the reused .bv-dd-* /
+   .think-tooltip selectors. No globals, no body{}, no .zone-*.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --bg0:     #0E1621;
+  --bg:      #1B2631;
+  --surface: #222D3A;
+  --border2: #2D3748;
+  --gold:    #D4AF37;
+  --gold-dim:#6B5A1F;
+  --muted:   #6B7B8C;
+  --text1:   #E4E4E7;
+  --fs-1:    20px;
+  --fs-2:    16px;
+  --fs-3:    13px;
+}
+
+#zoneC #finance-view {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg0, #0E1621);
+}
+#finance-view { flex:1; display:flex; flex-direction:column; overflow:hidden; background:var(--bg0,#0E1621); }
+
+/* ── Standing "not certified" notice — one slim line ── */
+#finance-notice{
+  flex-shrink:0;
+  display:flex; align-items:center; gap:10px;
+  padding:5px 20px;
+  background:rgba(212,175,55,0.05);
+  border-bottom:1px solid rgba(212,175,55,0.22);
+  font-family:'Source Sans 3',sans-serif; font-size:12px; line-height:1.4;
+  color:#9AA6B2;
+}
+#finance-notice .fin-notice-badge{
+  flex-shrink:0; font-family:'Cinzel',serif; letter-spacing:.14em;
+  font-variant:small-caps; text-transform:none; font-weight:600; font-size:10px; color:var(--gold,#D4AF37);
+  border:1px solid rgba(212,175,55,0.5); border-radius:2px; padding:1px 8px;
+}
+#finance-notice .fin-notice-text{ flex:1; min-width:0; text-align:center; }
+/* How-this-works — tab-style button at the far right of the mode row,
+   same plain look as the LECTURE mode tab (Cinzel, letterspaced, gold on hover). */
+#finance-htw-btn{
+  flex-shrink:0; background:none; border:none; border-bottom:2px solid transparent;
+  color:#8B95A5; font-family:'Cinzel',serif; font-size:12px;
+  letter-spacing:.14em; padding:4px 2px; margin-left:14px; cursor:pointer;
+  transition:color .12s, border-color .12s;
+}
+#finance-htw-btn:hover{ color:var(--gold,#D4AF37); }
+
+/* ── Toolbar (all multi-select .bv-dd-* dropdowns) ── */
+#finance-toolbar{
+  flex-shrink:0; display:flex; align-items:center; gap:10px;
+  padding:8px 16px; border-bottom:1px solid var(--border2,#2D3748);
+  background:var(--bg0,#0E1621); flex-wrap:wrap;
+}
+#finance-readout{
+  font-family:'Cinzel',serif; font-size:12px; letter-spacing:.06em;
+  color:#8B95A5; margin-left:12px; white-space:nowrap;
+}
+
+/* ── Three-column layout: canvas (flex) + right info hub ── */
+#finance-main{ flex:1; display:flex; min-height:0; }
+.fin-canvas{ flex:1; min-width:0; overflow:auto; position:relative; }
+.fin-hub{ flex:0 0 360px; overflow:auto; border-left:1px solid var(--border,#2D3748);
+  background:var(--surface,#222D3A); }
+
+/* Gold thin scrollbars on canvas + hub (reuse the shim's .bv-dd-scroll pattern) */
+.fin-canvas::-webkit-scrollbar,
+.fin-hub::-webkit-scrollbar{ width:10px; height:10px; }
+.fin-canvas::-webkit-scrollbar-track,
+.fin-hub::-webkit-scrollbar-track{ background:rgba(212,175,55,0.05); }
+.fin-canvas::-webkit-scrollbar-thumb,
+.fin-hub::-webkit-scrollbar-thumb{ background:rgba(212,175,55,0.45); border-radius:5px; }
+.fin-canvas::-webkit-scrollbar-thumb:hover,
+.fin-hub::-webkit-scrollbar-thumb:hover{ background:rgba(212,175,55,0.75); }
+
+/* ── Canvas ── */
+#finance-canvas{ position:relative; width:100%; }
+.fin-empty{
+  display:flex; align-items:center; justify-content:center; min-height:280px;
+  font-family:'Cinzel',serif; font-size:var(--fs-3); color:#6B7280;
+  letter-spacing:.08em; text-align:center; padding:0 24px; line-height:1.7;
+}
+.fin-error{ color:#E24B4A; border:1px solid rgba(226,75,74,0.4); border-radius:2px;
+  margin:40px auto; max-width:560px; padding:24px; background:rgba(226,75,74,0.06); }
+
+/* ── Stem + year axis (mirror THINK) ── */
+.fin-stem{ position:absolute; left:500px; width:6px; background:#D4AF37; pointer-events:none; z-index:1; }
+.fin-stem-cap{
+  position:absolute; left:500px; transform:translateX(-50%);
+  font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:.16em;
+  color:#0d1117; background:linear-gradient(180deg,#e8c547,#d4af37);
+  border:1px solid rgba(212,175,55,1); border-radius:2px; padding:3px 12px; z-index:6;
+}
+
+.fin-yr-mark{ position:absolute; left:470px; transform:translateY(-50%); width:30px;
+  text-align:right; font-family:'Source Sans 3',sans-serif; font-size:var(--fs-3);
+  color:#6B7280; pointer-events:none; white-space:nowrap; }
+.fin-yr-mark.year-multi{ color:#D4AF37; }
+.fin-hij-mark{ position:absolute; left:510px; transform:translateY(-50%); width:60px;
+  text-align:left; font-family:'Source Sans 3',sans-serif; font-size:var(--fs-3);
+  color:#8B7A3E; pointer-events:none; white-space:nowrap; }
+.fin-hij-mark.year-multi{ color:#D4AF37; }
+/* CE / هـ ruler switch — solid opaque backing so the spine line and any pill behind it
+   never bleed through. Auto width (was a cramped fixed 50px) + padding so both buttons fit;
+   centred on the spine; z-index above the Qur'an pill (7). */
+.fin-ruler-toggle{ position:absolute; left:500px; transform:translateX(-50%);
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:3px 12px; background:#0d1117; border:1px solid rgba(212,175,55,0.25);
+  border-radius:8px; z-index:8; }
+.fin-ruler-btn{ font-size:var(--fs-3); color:#555; cursor:pointer; padding:2px 5px;
+  border-radius:2px; border:1px solid transparent; transition:.2s; user-select:none;
+  font-family:'Cinzel',serif; letter-spacing:.03em; }
+.fin-ruler-btn.on{ color:#D4AF37; border-color:#D4AF37; }
+.fin-ruler-btn:hover{ color:#D4AF37; }
+.fin-ruler-sep{ color:#444; font-size:var(--fs-3); pointer-events:none; }
+.year-era{ font-size:9px; opacity:.55; margin-left:2px; letter-spacing:.04em; }
+
+/* ── Rows (left of stem) ── */
+.fin-row{ position:absolute; left:0; width:446px; padding:4px 20px; cursor:pointer;
+  transition:background .12s; display:flex; flex-direction:column; justify-content:center;
+  box-sizing:border-box; z-index:4; text-align:right; overflow:hidden; }
+.fin-row:hover{ background:rgba(212,175,55,.06); }
+.fin-row-title{ font-family:'Crimson Pro','Lato',serif; font-size:var(--fs-3);
+  color:#E4E4E7; line-height:1.25; }
+.fin-row:hover .fin-row-title{ color:#D4AF37; }
+/* Single-line spine rows: title + chip stay on one line (chip at the right stays visible);
+   all detail moved into the DETAILS panel. */
+.fin-row-1l .fin-row-title{ white-space:nowrap; overflow:hidden; }
+.fin-row-meta{ font-family:'Source Sans 3',sans-serif; font-size:11.5px; color:#6B7280;
+  letter-spacing:.02em; margin-top:1px; }
+.fin-tag{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:10px;
+  color:#9AA6B2; border:1px solid rgba(154,166,178,0.3); border-radius:2px;
+  padding:0 6px; margin:2px 0 0 4px; letter-spacing:.02em; }
+/* Book READ button in the TIMELINE list rows — BLUE (gold is reserved for the Qur'an pill/spine):
+   readable blue text/border, no glow. Hover = blue-tinted fill. */
+.fin-read{ display:inline-block; vertical-align:middle; margin-left:10px; padding:2px 11px;
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:.10em;
+  color:#5AA9E6; border:1px solid #5AA9E6; border-radius:3px;
+  background:transparent; text-decoration:none; cursor:pointer; transition:.12s;
+  box-shadow:none; }
+.fin-read:hover{ background:rgba(90,169,230,0.18); color:#9CD1FF; box-shadow:none; }
+/* PALE variant — book has no cited Qur'an verse root: muted colour, no glow, clearly inactive.
+   The READ link is kept (still opens the book URL) but reads as dimmed, not a live gold button. */
+.fin-read-pale{ color:#7c8694; border-color:rgba(124,134,148,0.4); box-shadow:none; }
+.fin-read-pale:hover{ background:rgba(124,134,148,0.14); color:#9aa6b2; box-shadow:none; }
+/* Root-tag chip beside a glowing book's READ — verified = green, plausible = amber. Tag text is from the data. */
+.fin-root-chip{ display:inline-block; vertical-align:middle; margin-left:6px;
+  font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
+  padding:1px 7px; border-radius:2px; }
+.fin-root-verified{ color:#2ECC71; border:1px solid rgba(46,204,113,0.5); background:rgba(46,204,113,0.08); }
+.fin-root-plausible{ color:#F59E0B; border:1px solid rgba(245,158,11,0.5); background:rgba(245,158,11,0.08); }
+
+/* ── Confidence squares on the stem + inline badges ── */
+.fin-conf-dot{ position:absolute; left:451px; width:9px; height:9px; border-radius:2px;
+  transform:translateY(-50%); z-index:5; pointer-events:none; }
+.fin-badge{ display:inline-block; font-family:'Cinzel',serif; font-size:10px;
+  letter-spacing:.08em; text-transform:uppercase; padding:0 6px; border-radius:2px;
+  margin-left:6px; vertical-align:middle; }
+.fin-badge-est{ color:#2ECC71; border:1px solid rgba(46,204,113,0.5); background:rgba(46,204,113,0.08); }
+.fin-badge-ill{ color:#F59E0B; border:1px solid rgba(245,158,11,0.5); background:rgba(245,158,11,0.08); }
+.fin-badge-plc{ color:#8A94A2; border:1px solid rgba(138,148,162,0.5); background:rgba(138,148,162,0.08); }
+
+/* ── Term origin markers — rendered in the SAME left-of-stem, right-aligned flow as normal rows
+   (mirrors .fin-row geometry), kept visibly distinct by the ◈ marker, gold tint (#E8C977) and the
+   year + assurance badge. Only when exactly one contract is selected. ── */
+.fin-term-origin-row{ position:absolute; left:0; width:446px; padding:4px 20px; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:flex-end;
+  cursor:pointer; z-index:4; overflow:hidden; }
+.fin-term-origin-row::before{ content:''; position:absolute; right:-9px; top:50%; width:9px;
+  border-top:1px solid rgba(232,201,119,0.7); }   /* short connector from label to the spine */
+.fin-term-origin-label{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#E8C977; white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis; opacity:.9; transition:opacity .12s, filter .12s; }
+.fin-term-origin-row:hover .fin-term-origin-label{ opacity:1; filter:brightness(1.25); }
+.fin-term-origin-yr{ font-size:10.5px; color:#C9A961; letter-spacing:.03em; margin-left:2px; }
+/* ── Coloured term lifelines — tiles on the RIGHT of the stem + a line dropping to today.
+   Left border colour + line gradient are set inline from _termColor (data-driven). ── */
+.fin-term-tile{ position:absolute; max-width:240px; padding:6px 10px;
+  border-radius:8px; background:#141a24; border:1px solid rgba(255,255,255,.10);
+  border-left-width:4px; color:#E8E2D2; font-size:12.5px; line-height:1.35;
+  cursor:pointer; z-index:4; box-shadow:0 1px 4px rgba(0,0,0,.35);
+  white-space:normal; overflow:visible; }
+.fin-term-tile:hover{ filter:brightness(1.14); border-color:rgba(255,255,255,.25); }
+.fin-term-tile .fin-tile-en{ font-weight:600; color:#F0EAD8; }
+.fin-term-tile .fin-tile-ar{ font-size:11px; color:#B8AE93; margin-top:1px; }
+/* APPROX tile — term plotted at the END of a rough/period date. Dashed border (keeps its colour) + a
+   small "by ~<yr>" line marking the date as approximate. */
+.fin-term-tile-approx{ border-style:dashed; }
+.fin-term-tile .fin-tile-approx-yr{ font-size:10.5px; color:#C9A961; margin-bottom:1px; }
+/* Curved term life lines — one SVG behind the tiles; each <path> is a cubic bezier bowing sideways.
+   All geometry/colour is inline from JS; pointer-events:none so tile clicks are never blocked. */
+.fin-term-lifelines-svg{ position:absolute; left:0; top:0; z-index:3; pointer-events:none; }
+/* ── Undated term origins strip (below the spine, inside the scroll area) ── */
+.fin-term-undated{ position:absolute; left:0; right:0; margin:18px 0 30px; padding:10px 14px; box-sizing:border-box; }
+.fin-term-undated-head{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:#6B7B8C; margin-bottom:6px; }
+.fin-term-undated-chip{ display:inline-block; font-size:11.5px; color:#8B95A5; background:rgba(139,149,165,0.06);
+  border:1px dashed #6B7485; border-radius:2px; padding:2px 9px; margin:3px 4px 0 0; cursor:pointer; transition:.12s; }
+.fin-term-undated-chip:hover{ color:#E8C977; border-color:#C9A961; }
+/* Muted raw-date text appended to a NOT-PLOTTED chip, e.g. "hawala (8th c.)". */
+.fin-term-chip-date{ color:#6B7485; font-size:10.5px; }
+/* ── QUR'AN-BLOCK term strip (undated by the Qur'an block rule) — top of the timeline, just below
+   the gold QUR'AN pill. Same visual family as the undated strip; header in the era-label small-caps style. */
+.fin-term-qblock{ position:absolute; left:0; right:0; margin:6px 0 0; padding:0 14px; box-sizing:border-box; z-index:2; }
+.fin-term-qblock-head{ font-family:'Cinzel',serif; font-size:10px; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:#6B7B8C; margin-bottom:5px; }
+.fin-term-qblock-chips{ display:flex; flex-wrap:wrap; }
+
+/* ── Era bands (right of stem, mirror THINK) ── */
+.fin-era-band{ position:absolute; left:506px; right:0; pointer-events:none; z-index:0;
+  display:flex; flex-direction:column; align-items:flex-end; box-sizing:border-box;
+  padding:8px 24px 0 0; }
+.fin-era-band-label{ font-family:'Cinzel',serif; font-size:10px; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+.fin-era-band-dates{ font-family:'Cinzel',serif; font-size:9.5px; font-weight:400;
+  letter-spacing:.10em; margin-top:2px; white-space:nowrap; }
+/* LADDER era bands: label sits just right of the lifeline lane (~120px right of the stem, via the ~114px
+   padding from the band's left at stem+6) and is vertically centred in the band. Tint stays full-width. */
+.fin-era-band-lad{ align-items:flex-start; justify-content:center; padding:0 0 0 114px; }
+.fin-era-band-lad .fin-era-band-label{ font-size:11px; }
+
+/* ── Concept-family arcs SVG ── */
+svg.fin-concept-arcs{ opacity:0.8; }
+
+/* ── Highlight / dim ── */
+.fin-dimmed{ opacity:0.18; transition:opacity .2s; }
+/* Tradition filter: non-matching rows greyed but legible; untagged marked, never hidden. */
+.fin-row-tdim{ opacity:.32; transition:opacity .15s; }
+.fin-row-tdim:hover{ opacity:.65; }
+.fin-conf-dot.fin-row-tdim{ opacity:.32; }
+.fin-tag-untagged{ color:#8A94A2; border-color:rgba(138,148,162,.5); background:rgba(138,148,162,.08); }
+/* Standard full-text reader — click a standard to read it. */
+.fin-sr-open{ cursor:pointer; }
+.fin-sr-open:hover{ background:rgba(212,175,55,.06); }
+.fin-rdr{ position:fixed; inset:0; z-index:99999; background:rgba(10,16,26,.72); display:flex; align-items:center; justify-content:center; }
+.fin-rdr-box{ width:min(900px,92vw); height:86vh; display:flex; flex-direction:column; background:#0E1621; border:1px solid rgba(201,191,168,.35); border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.6); }
+.fin-rdr-head{ display:flex; align-items:center; gap:10px; padding:12px 16px; border-bottom:1px solid rgba(201,191,168,.2); }
+.fin-rdr-code{ font-family:'Cinzel',serif; color:#D4AF37; font-size:14px; letter-spacing:.06em; }
+.fin-rdr-title{ font-family:'Source Sans 3',sans-serif; color:#C9BFA8; font-size:13px; flex:1; }
+.fin-rdr-x{ background:none; border:1px solid rgba(201,191,168,.4); color:#C9BFA8; width:28px; height:28px; border-radius:4px; cursor:pointer; }
+.fin-rdr-x:hover{ border-color:#D4AF37; color:#D4AF37; }
+.fin-rdr-body{ flex:1; overflow:auto; padding:18px 22px; white-space:pre-wrap; font-family:'Source Sans 3',sans-serif; font-size:13px; line-height:1.55; color:#D8DDE5; }
+.fin-selected{ background:rgba(212,175,55,.10); }
+.fin-flash{ box-shadow:0 0 0 2px #d4af37; transition:box-shadow 200ms ease; }
+
+/* ── Qur'an START rows near the spine (mirror THINK's stacked READ pills) ── */
+.fin-start-tag{ position:absolute; left:378px; width:66px; text-align:right;
+  display:flex; align-items:center; justify-content:flex-end;
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:.06em; color:#C9A961;
+  border-bottom:1px solid rgba(201,169,97,0.5); z-index:5; }
+/* READ control — ON state: HAS a cited Qur'an verse root. Warm gold glow, solid gold
+   border, dark-on-gold label — clearly a live, tappable button. Nudged right of the
+   QUR'AN (n) tag so the two read as two separate elements, not one blob. */
+.fin-start-read{ position:absolute; left:460px; width:94px; height:24px;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(180deg,#f2d65f,#d4af37); color:#0d1117;
+  border:1px solid #f0d878; border-radius:3px;
+  font-family:'Cinzel',serif; font-weight:700; letter-spacing:.12em; font-size:12px;
+  text-decoration:none; cursor:pointer; z-index:6;
+  box-shadow:0 0 12px rgba(212,175,55,0.55), 0 0 2px rgba(240,216,120,0.9), inset 0 1px 0 rgba(255,255,255,0.28); }
+.fin-start-read:hover{ filter:brightness(1.08);
+  box-shadow:0 0 16px rgba(212,175,55,0.78), 0 0 3px rgba(240,216,120,1), inset 0 1px 0 rgba(255,255,255,0.28); }
+/* READ control — OFF state: no cited verse root. Pale, muted border, no glow — clearly inactive. */
+.fin-start-read.fin-read-off{ background:linear-gradient(180deg,#242a33,#1e232b); color:#6b7280;
+  border:1px solid rgba(120,130,145,0.35); box-shadow:none; cursor:default; }
+.fin-start-read.fin-read-off:hover{ filter:none; box-shadow:none; }
+.fin-start-label{ position:absolute; left:562px; display:flex; align-items:center;
+  font-family:'Cinzel',serif; font-size:12px; letter-spacing:.10em; text-transform:uppercase;
+  cursor:pointer; z-index:5; }
+.fin-start-label:hover{ text-decoration:underline; }
+
+/* ── Info hub (right column) ── */
+#finance-hub{ padding:0 0 28px; font-family:'Source Sans 3',sans-serif; color:#E4E4E7; }
+.fin-hub-head{ display:flex; align-items:center; gap:8px; padding:14px 16px 12px;
+  position:sticky; top:0; background:var(--surface,#222D3A); z-index:2;
+  border-bottom:1px solid rgba(212,175,55,0.2); }
+.fin-hub-title{ flex:1; font-family:'Cinzel',serif; font-size:15px; letter-spacing:.04em;
+  color:#D4AF37; line-height:1.3; }
+.fin-hub-swatch{ width:14px; height:14px; border-radius:2px; flex-shrink:0; }
+.fin-hub-hint{ padding:16px; font-size:12.5px; color:#8B95A5; line-height:1.6; font-style:italic; }
+.fin-hub-sec{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.12em;
+  font-variant:small-caps; text-transform:none; color:#C9A961; padding:14px 16px 4px; }
+.fin-hub-sub{ text-transform:none; letter-spacing:.02em; font-style:italic; color:#6B7B8C; }
+.fin-hub-field{ padding:3px 16px; font-size:12.5px; line-height:1.5; }
+.fin-hub-k{ display:block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.08em;
+  text-transform:uppercase; color:#6B7B8C; margin-bottom:1px; }
+.fin-hub-v{ color:#E4E4E7; word-break:break-word; }
+.fin-hub-chips{ padding:2px 12px 4px; }
+/* Connections (crosslinks_spine) — relation sub-heading + tag-coloured chips. Border colour is set inline
+   per chip by edge.tag; clickable chips (contracts/terms) get a pointer + hover brightness. */
+.fin-spine-rel{ font-family:'Source Sans 3',sans-serif; font-size:10px; letter-spacing:.06em;
+  text-transform:uppercase; color:#8B95A5; padding:6px 16px 0; }
+.fin-spine-chip{ display:inline-block; margin:2px 4px 2px 0; padding:2px 9px; border-radius:10px;
+  font-size:11.5px; background:rgba(255,255,255,.04); border:1px solid; color:#C8CDD6; }
+.fin-spine-chip.clk{ cursor:pointer; transition:filter .12s; }
+.fin-spine-chip.clk:hover{ filter:brightness(1.25); }
+.fin-hub-chip{ display:inline-block; font-size:11.5px; color:#C9A961; background:rgba(201,169,97,0.06);
+  border:1px solid rgba(201,169,97,0.4); border-radius:2px; padding:2px 9px; margin:3px 4px 0 0;
+  cursor:pointer; transition:.12s; }
+.fin-hub-chip:hover{ background:rgba(212,175,55,0.18); color:#fff; }
+/* Qur'anic origin (q_to_c_map) assurance chips + caveats — established uses the green treatment inline */
+.fin-qc-plausible{ border-color:#D89B3D; color:#D89B3D; }
+.fin-qc-illustrative{ border-style:dashed; border-color:#6B7485; color:#8B95A5; }
+.fin-qc-note{ font-size:11px; color:#8B95A5; margin:3px 0 6px; line-height:1.5; }
+.fin-qc-evidence{ font-size:10.5px; color:#6B7485; font-style:italic; margin-bottom:6px; }
+.fin-hub-none{ display:inline-block; font-size:12px; color:#6B7B8C; font-style:italic; padding:2px 4px; }
+
+/* term cards inside the hub */
+.fin-term-card{ margin:6px 12px; padding:7px 10px; border:1px solid var(--border,#2D3748);
+  border-radius:2px; background:var(--surface,#222D3A); transition:border-color .12s, transform .12s; }
+.fin-term-card:hover{ border-color:var(--gold,#D4AF37); transform:translateY(-1px); }
+.fin-term-ar{ font-size:14px; color:#E8C977; direction:rtl; text-align:right; }
+.fin-term-en{ font-size:12.5px; color:#E4E4E7; margin-top:1px; }
+.fin-term-src{ font-size:11px; color:#8B95A5; margin-top:3px; line-height:1.4; font-style:italic; }
+/* term-card enrichment (expandable "links" section) */
+.fin-term-links-toggle{ display:inline-block; font-size:11px; color:#8B95A5; margin-top:5px; cursor:pointer; user-select:none; transition:color .12s; }
+.fin-term-links-toggle:hover{ color:var(--gold,#D4AF37); }
+.fin-term-enrich{ display:none; padding-top:6px; border-top:1px solid var(--border,#2D3748); margin-top:6px; }
+.fin-term-enrich.open{ display:block; }
+.fin-term-enrich-sec{ font-size:11px; letter-spacing:.06em; color:#8B95A5; text-transform:uppercase; margin-top:6px; }
+.fin-term-std-name{ font-size:12px; color:#E4E4E7; font-weight:600; margin-top:4px; }
+.fin-term-std-clause{ font-size:11.5px; color:#8B95A5; padding-left:10px; line-height:1.5; }
+.fin-term-std-ver{ font-size:10.5px; color:#6B7485; font-style:italic; }
+
+/* Qur'an verse cards inside the hub */
+.fin-q-card{ margin:6px 12px; padding:8px 10px; border:1px solid var(--border,#2D3748);
+  border-radius:2px; background:var(--surface,#222D3A); transition:border-color .12s, transform .12s; }
+.fin-q-card:hover{ border-color:var(--gold,#D4AF37); transform:translateY(-1px); }
+.fin-q-line{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.fin-q-ref{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.04em; color:#D4AF37; }
+.fin-q-cited{ font-size:11.5px; color:#C8CDD6; margin-top:5px; line-height:1.4; }
+.fin-q-read{ display:inline-block; padding:2px 12px; font-family:'Cinzel',serif; font-size:11px;
+  letter-spacing:.12em; font-weight:700; color:#D4AF37; border:1px solid #D4AF37; border-radius:2px;
+  background:rgba(212,175,55,0.08); text-decoration:none; cursor:pointer; flex-shrink:0; }
+.fin-q-read:hover{ background:rgba(212,175,55,0.2); }
+
+/* ── BV dropdown widget (reused from BOOKS/THINK) ── */
+.bv-dd-wrap{ position:relative; }
+.bv-dd-btn{ background:none; border:1px solid var(--border2,#2D3748); color:var(--gold,#D4AF37);
+  font-family:'Cinzel',serif; font-size:var(--fs-3); letter-spacing:.1em; padding:7px 10px;
+  cursor:pointer; min-width:150px; text-align:left; display:flex; justify-content:space-between;
+  align-items:center; gap:6px; border-radius:2px; }
+.bv-dd-btn:hover{ border-color:var(--gold,#D4AF37); }
+.bv-dd-panel{ position:absolute; top:calc(100% + 4px); left:0; width:280px; max-height:70vh;
+  background:var(--surface,#222D3A); border:1px solid var(--border,#2D3748); border-radius:2px; z-index:100;
+  display:none; flex-direction:column; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.4); }
+.bv-dd-panel.open{ border-color:var(--gold,#D4AF37); }
+.bv-dd-panel.open{ display:flex; }
+.bv-dd-search{ margin:10px 10px 6px; padding:7px 9px; background:#1a2330;
+  border:1px solid var(--border2,#2D3748); color:#fff; font-family:'Source Sans 3',sans-serif;
+  font-size:var(--fs-3); border-radius:2px; outline:none; }
+.bv-dd-search:focus{ border-color:var(--gold,#D4AF37); }
+.bv-dd-scroll{ flex:1; overflow-y:auto; padding:4px 0 10px; }
+.bv-dd-scroll::-webkit-scrollbar{ width:10px; }
+.bv-dd-scroll::-webkit-scrollbar-track{ background:rgba(212,175,55,0.05); }
+.bv-dd-scroll::-webkit-scrollbar-thumb{ background:rgba(212,175,55,0.45); border-radius:5px; }
+.bv-dd-scroll::-webkit-scrollbar-thumb:hover{ background:rgba(212,175,55,0.75); }
+.bv-ck-row{ display:flex; align-items:center; gap:8px; padding:5px 16px; cursor:pointer;
+  transition:background .1s; font-family:'Source Sans 3',sans-serif; font-size:var(--fs-3);
+  color:var(--text1,#E4E4E7); }
+.bv-ck-row:hover{ background:rgba(212,175,55,.10); }
+.bv-ck-row.checked{ color:var(--gold,#D4AF37); }
+.bv-ck{ display:inline-block; width:14px; height:14px; border:1px solid rgba(212,175,55,.5);
+  border-radius:2px; flex-shrink:0; text-align:center; line-height:14px; font-size:var(--fs-3);
+  color:transparent; transition:all .1s; }
+.bv-ck.on{ color:var(--gold,#D4AF37); border-color:var(--gold,#D4AF37); background:rgba(212,175,55,.12); }
+.bv-ck.on::after{ content:'\2713'; }
+.bv-ck-swatch{ width:11px; height:11px; border-radius:2px; flex-shrink:0; }
+.bv-ck-label{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bv-ck-count{ font-size:var(--fs-3); color:var(--muted,#6B7B8C); flex-shrink:0; }
+.bv-ck-prefix{ font-size:10px; color:var(--muted,#6B7B8C); letter-spacing:.04em; flex-shrink:0; text-transform:uppercase; }
+.bv-dd-allnone{ display:flex; justify-content:flex-end; gap:12px; padding:6px 16px 2px; }
+.bv-dd-allnone span{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.06em;
+  color:#D4AF37; cursor:pointer; }
+.bv-dd-allnone span:hover{ color:#E8C977; }
+.fin-reset-btn{ background:transparent; border:1px solid var(--border2,#2D3748); border-radius:2px;
+  color:var(--gold,#D4AF37); font-family:'Cinzel',serif; font-size:var(--fs-3); letter-spacing:.08em;
+  padding:7px 12px; cursor:pointer; }
+.fin-reset-btn:hover{ border-color:var(--gold,#D4AF37); }
+
+/* ── View-mode switch (TIMELINE | LADDER | STORY | RIVERS) — reuses .fin-ruler-btn ── */
+.fin-mode-switch{ display:flex; align-items:center; gap:10px; margin-right:8px;
+  padding-right:14px; border-right:1px solid var(--border2,#2D3748); }
+/* Mode buttons: Cinzel 12px, wide letterspacing, a 2px gold underline marks the active one. */
+.fin-mode-switch .fin-mode-btn{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.14em;
+  padding:4px 2px; border:none; border-radius:0; background:none; color:#8B95A5; cursor:pointer;
+  border-bottom:2px solid transparent; transition:color .12s, border-color .12s; }
+.fin-mode-switch .fin-mode-btn:hover{ color:var(--gold,#D4AF37); border-bottom-color:transparent; }
+.fin-mode-switch .fin-mode-btn.on{ color:var(--gold,#D4AF37); border-bottom-color:var(--gold,#D4AF37); }
+/* ── Mode-row colour groups: SOURCE tiles gold-tinted, USER tiles green-tinted ── */
+/* LECTURE (in .fin-mode-lone) keeps the original plain gold-underline style. */
+.fin-group-source .fin-mode-btn{ background:rgba(212,175,55,.08);
+  border:1px solid rgba(212,175,55,.22); border-radius:2px; padding:2px 9px; }
+.fin-group-source .fin-mode-btn.on{ background:rgba(212,175,55,.20);
+  color:var(--gold,#D4AF37); border-color:var(--gold,#D4AF37); }
+.fin-group-user .fin-mode-btn{ background:rgba(46,204,113,.08);
+  border:1px solid rgba(46,204,113,.22); border-radius:2px; padding:2px 9px; }
+.fin-group-user .fin-mode-btn.on{ background:rgba(46,204,113,.20);
+  color:#2ECC71; border-color:#2ECC71; }
+.fin-group-user .fin-mode-btn:hover{ color:#2ECC71; }
+.fin-group-user{ margin-left:auto; margin-right:0; }
+/* Hide filter dropdowns on the upload page. */
+#finance-view[data-mode="upload"] .bv-dd-wrap{ display:none; }
+/* UPLOAD placeholder box. */
+.fin-upload{ max-width:640px; margin:48px auto; text-align:center; }
+.fin-upload-h1{ font-family:'Cinzel',serif; font-size:22px; letter-spacing:.10em;
+  color:var(--gold,#D4AF37); margin:0 0 24px; }
+.fin-upload-drop{ border:1px dashed var(--border2,#2D3748); border-radius:4px;
+  padding:48px 32px; color:#8B95A5; font-size:15px; background:rgba(212,175,55,.03); cursor:pointer; transition:.12s; }
+.fin-upload-drop:hover{ border-color:rgba(212,175,55,.55); background:rgba(212,175,55,.06); }
+.fin-upload-drop.drag{ border-color:var(--gold,#D4AF37); border-style:solid; background:rgba(212,175,55,.10); color:#D7D9DE; }
+.fin-upload-drop-main{ font-size:15px; }
+.fin-upload-drop-sub{ font-size:12px; color:#5C6675; margin-top:8px; }
+.fin-upload-status{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; margin:14px 0 4px; }
+.fin-upload-status.grey{ color:#8B95A5; }
+.fin-upload-status.amber{ color:#F59E0B; }
+.fin-upload-status.green{ color:#2ECC71; }
+.fin-upload-status.red{ color:#E06666; }
+.fin-upload-meta{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#C8CDD6; margin:8px 0 6px; }
+.fin-upload-metak{ color:#8B95A5; text-transform:uppercase; letter-spacing:.06em; font-size:10.5px; }
+.fin-upload-prevlbl{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--gold,#D4AF37); text-align:left; margin:10px 0 5px; }
+.fin-upload-preview{ text-align:left; max-height:260px; overflow-y:auto; white-space:pre-wrap; word-break:break-word;
+  background:rgba(255,255,255,.03); border:1px solid var(--border,#2D3748); border-radius:3px;
+  padding:12px 14px; font-family:'Source Sans 3',monospace; font-size:12px; line-height:1.5; color:#C8CDD6; }
+.fin-upload-note{ color:#5C6675; font-size:12px; margin:16px 0 20px; }
+.fin-upload-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.fin-upload-continue{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.10em;
+  color:#2ECC71; background:rgba(46,204,113,.08); border:1px solid rgba(46,204,113,.5);
+  border-radius:2px; padding:8px 18px; cursor:pointer; }
+.fin-upload-continue:hover{ background:rgba(46,204,113,.20); }
+.fin-upload-toreport[disabled]{ color:#5C6675; background:transparent; border-color:var(--border,#2D3748); cursor:not-allowed; }
+.fin-upload-toreport[disabled]:hover{ background:transparent; }
+
+/* ── Per-mode filter visibility (CONFIDENCE stays visible everywhere) ── */
+/* HOME + LECTURE: only CONFIDENCE — hide SHOW, CONCEPTS, CONTRACT, TRADITION */
+#finance-view[data-mode="home"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="home"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="home"] .bv-dd-wrap[data-dd="qwords"],
+#finance-view[data-mode="home"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="home"] .bv-dd-wrap[data-dd="tradition"],
+#finance-view[data-mode="lecture"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="lecture"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="lecture"] .bv-dd-wrap[data-dd="qwords"],
+#finance-view[data-mode="lecture"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="lecture"] .bv-dd-wrap[data-dd="tradition"]{ display:none; }
+
+/* QUR'AN WORDS filter — glow:false words (e.g. gharar, waqf) render pale with a small "origin: hadith"
+   badge; never a fake verse. */
+.bv-ck-row.fin-qword-pale .bv-ck-label{ color:#8B95A5; }
+.fin-qword-badge{ display:inline-block; margin-left:6px; font-family:'Cinzel',serif; font-size:9px;
+  letter-spacing:.04em; color:#8B95A5; border:1px solid rgba(139,149,165,0.4); border-radius:2px;
+  padding:0 5px; vertical-align:middle; }
+/* LADDER: hide SHOW and CONCEPTS (CONTRACT is the ladder selector — keep it) */
+#finance-view[data-mode="ladder"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="ladder"] .bv-dd-wrap[data-dd="concepts"]{ display:none; }
+/* TIMELINE: hide CONFIDENCE and SHOW (their sets keep defaults; scholars/books/events still show) */
+#finance-view[data-mode="timeline"] .bv-dd-wrap[data-dd="conf"],
+#finance-view[data-mode="timeline"] .bv-dd-wrap[data-dd="show"]{ display:none; }
+/* STANDARDS: only the PILLAR filter — hide it everywhere else, hide the rest here */
+#finance-view:not([data-mode="standards"]) .bv-dd-wrap[data-dd="pillar"],
+#finance-view:not([data-mode="standards"]) .bv-dd-wrap[data-dd="family"]{ display:none; }
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="conf"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="tradition"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="concepts"]{ display:none; }
+/* REPORT: a document — no filters */
+#finance-view[data-mode="report"] .bv-dd-wrap{ display:none; }
+#finance-view[data-mode="prism"] .bv-dd-wrap{ display:none; }
+/* ── PRISM — cross-tradition comparison page ── */
+.fin-prism{ max-width:1000px; margin:0 auto; padding:24px 28px 60px; overflow-y:auto; }
+.fin-prism-h1{ font-family:'Cinzel',serif; color:#D4AF37; font-size:22px; letter-spacing:.06em; margin:0 0 6px; }
+.fin-prism-intro{ font-family:'Source Sans 3',sans-serif; color:#9AA6B2; font-size:13px; margin:0 0 28px; max-width:70ch; }
+.fin-prism-empty{ color:#6B7280; font-style:italic; }
+.fin-prism-topic{ border:1px solid rgba(201,191,168,.18); border-radius:8px; padding:18px 20px; margin-bottom:22px; background:rgba(201,191,168,.03); }
+.fin-prism-q{ font-family:'Crimson Pro',serif; color:#E8C977; font-size:18px; margin-bottom:4px; }
+.fin-prism-why{ font-family:'Source Sans 3',sans-serif; color:#8A94A2; font-size:12.5px; margin-bottom:12px; }
+.fin-prism-refs{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.fin-prism-ref{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#C9BFA8; border:1px solid rgba(201,191,168,.3); border-radius:4px; padding:2px 8px; }
+.fin-prism-col{ margin-bottom:14px; }
+.fin-prism-collabel{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em; color:#8A94A2; text-transform:uppercase; margin-bottom:8px; border-bottom:1px solid rgba(201,191,168,.12); padding-bottom:4px; }
+.fin-prism-pos{ padding:8px 0 10px; border-bottom:1px dashed rgba(201,191,168,.10); }
+.fin-prism-pos:last-child{ border-bottom:none; }
+.fin-prism-auth{ font-family:'Source Sans 3',sans-serif; font-weight:600; font-size:13px; color:#E6E1D6; display:flex; align-items:center; gap:8px; margin-bottom:3px; }
+.fin-prism-text{ font-family:'Crimson Pro',serif; font-size:14px; color:#CDC7BA; line-height:1.5; }
+.fin-prism-basis{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#6B7280; margin-top:3px; font-style:italic; }
+.fin-prism-pending .fin-prism-text{ opacity:.5; }
+.fin-prism-pending .fin-prism-auth{ color:#9AA6B2; }
+.fin-prism-summary{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8A94A2; margin-bottom:12px; letter-spacing:.02em; }
+.fin-prism-cx{ cursor:pointer; color:#E8C977; border-color:rgba(212,175,55,.4); }
+.fin-prism-cx:hover{ background:rgba(212,175,55,.10); }
+.fin-prism-terms{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.fin-prism-term{ font-family:'Crimson Pro',serif; font-size:12px; color:#B8B0A0; background:rgba(201,191,168,.06); border-radius:4px; padding:2px 8px; }
+
+/* ── LADDER mode — a real vertical timeline for one contract ──
+   Stage colours as CSS vars (mirrored in STAGE_COLORS in finance.js). */
+:root{
+  --stg-quran:  #D4AF37;
+  --stg-hadith: #4FD1C5;
+  --stg-tafsir: #7C93A8;
+  --stg-fiqh:   #B8860B;
+  --stg-modern: #9DB86B;
+  --stg-current:#C36A6A;
+}
+
+/* Sticky header strip: contract name + evidence-tier gold chip */
+.fin-ladder-header{ position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; align-items:center;
+  gap:12px; padding:12px 18px; background:var(--bg0,#0E1621);
+  border-bottom:1px solid rgba(212,175,55,0.25); }
+.fin-ladder-contract{ font-family:'Cinzel',serif; font-size:20px; letter-spacing:.06em; color:#D4AF37; }
+.fin-ladder-tier{ font-family:'Source Sans 3',sans-serif; font-size:12px; line-height:1.4;
+  color:#0d1117; background:linear-gradient(180deg,#e8c547,#d4af37);
+  border:1px solid rgba(212,175,55,1); border-radius:2px; padding:3px 12px; max-width:640px; }
+
+/* Qur'an spine header — TWO pills used identically in LADDER and TIMELINE:
+   a fixed gold QUR'AN pill (always visible) + a SEPARATE READ pill beside it.
+   Both carry solid backings and sit above the era bands so no title/label shows through. */
+.fin-qpill-wrap{ position:absolute; left:500px; transform:translate(-50%,-50%);
+  display:inline-flex; align-items:center; gap:7px; z-index:7; white-space:nowrap; }
+
+/* Fixed gold header pill — the page's only glow (gold is reserved for the Qur'an pill + spine). */
+.fin-qpill{ font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:.14em;
+  color:#0d1117; background:linear-gradient(180deg,#e8c547,#d4af37);
+  border:1px solid rgba(212,175,55,1); border-radius:12px; padding:3px 12px;
+  box-shadow:0 0 16px rgba(212,175,55,0.5); }
+
+/* Separate READ pill — ACTIVE (cited verses): gold text/border, solid dark backing, gold glow, clickable. */
+.fin-qread{ font-family:'Cinzel',serif; font-size:10px; font-weight:700; letter-spacing:.10em;
+  color:var(--gold,#D4AF37); border:1px solid var(--gold,#D4AF37);
+  background:#0d1117; border-radius:10px; padding:2px 9px; cursor:pointer; transition:.12s;
+  box-shadow:0 0 12px rgba(212,175,55,0.5); }
+.fin-qread:hover{ background:var(--gold,#D4AF37); color:#0d1117; box-shadow:0 0 16px rgba(212,175,55,0.78); }
+/* READ pill — INACTIVE/PALE (no cited verses): muted, no glow, non-clickable. Never fabricates a verse. */
+.fin-qread-off{ color:#8B95A5; border-color:rgba(139,149,165,0.4);
+  background:#1b222b; box-shadow:none; cursor:default; }
+.fin-qread-off:hover{ background:#1b222b; color:#8B95A5; box-shadow:none; }
+
+/* READ pills on the spine — hadith evidence nodes: 10px Cinzel, gold outline, transparent, hover fills. */
+.fin-read-pill{ display:inline-block; font-family:'Cinzel',serif; font-size:10px; letter-spacing:.10em;
+  color:var(--gold,#D4AF37); border:1px solid var(--gold,#D4AF37); background:transparent; border-radius:2px;
+  padding:0 6px; margin-left:6px; line-height:1.5; cursor:pointer; vertical-align:middle; transition:.12s; }
+.fin-read-pill:hover{ background:var(--gold,#D4AF37); color:#0d1117; }
+
+/* Dashed "derived" connector (line only, no text), just right of the stem */
+.fin-ladder-gap{ position:absolute; left:512px; width:0; border-left:3px dashed #8B95A5; z-index:2; }
+
+/* AH marks nudged clear of the swaying lifeline (reuses .fin-hij-mark look) */
+.fin-hij-mark.fin-ladder-hij{ left:582px; }
+
+/* Nodes sit exactly on the curved lifeline (left set inline per node) + labels left of stem */
+.fin-ladder-node{ position:absolute; width:10px; height:10px; border-radius:2px;
+  transform:translate(-50%,-50%); z-index:4; cursor:pointer; box-shadow:0 0 0 2px rgba(14,22,33,0.95); }
+.fin-ladder-node:hover{ filter:brightness(1.2); }
+.fin-ladder-node.sel{ box-shadow:0 0 0 2px #D4AF37; }
+.fin-ladder-node-label{ position:absolute; left:0; width:452px; padding:0 20px 0 12px; box-sizing:border-box;
+  transform:translateY(-50%); text-align:right; cursor:pointer; z-index:4; }
+.fin-ladder-node-label:hover .fin-ladder-node-title{ color:#D4AF37; }
+.fin-ladder-node-label.sel .fin-ladder-node-title{ color:#D4AF37; }
+.fin-ladder-node-title{ font-family:'Crimson Pro','Lato',serif; font-size:14px; color:#E4E4E7; line-height:1.2; }
+.fin-ladder-node-meta{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:var(--muted,#6B7B8C);
+  letter-spacing:.02em; margin-top:0; }
+.fin-ladder-today{ display:inline-block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.12em;
+  font-weight:700; text-transform:uppercase; color:#0d1117; background:#C36A6A; border-radius:2px;
+  padding:1px 8px; margin-left:6px; vertical-align:middle; }
+
+/* Undated shelf below the timeline */
+.fin-ladder-shelf{ position:absolute; left:0; width:452px; padding-right:20px; box-sizing:border-box;
+  text-align:right; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:#6B7B8C; border-bottom:1px solid rgba(107,123,140,0.3); z-index:4; }
+
+/* Grey note-dots (no direct verse/hadith) pinned beside the Qur'an pill */
+.fin-ladder-note{ position:absolute; width:11px; height:11px; border-radius:50%;
+  border:1.5px solid #8B95A5; background:rgba(139,149,165,0.15);
+  transform:translate(-50%,-50%); z-index:5; cursor:pointer; }
+.fin-ladder-note:hover{ border-color:#D4AF37; }
+.fin-ladder-note.sel{ border-color:#D4AF37; }
+
+/* Hub extras reused by LADDER node cards */
+.fin-ladder-pos{ display:inline-block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.06em;
+  text-transform:uppercase; color:#9AA6B2; border:1px solid rgba(154,166,178,0.4); border-radius:2px; padding:1px 8px; }
+.fin-cite{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#D4AF37; font-weight:600; }
+.fin-verify-no{ margin-left:8px; }
+.fin-hub-anchor{ padding:3px 16px; font-size:11px; color:#6B7B8C; font-style:italic; }
+.fin-ladder-link{ cursor:default; }
+.fin-ladder-link:hover{ background:rgba(201,169,97,0.06); color:#C9A961; }   /* non-clickable this pass */
+
+/* ── HOME mode — "Financial words of the Qur'an" (the undated ceiling) ── */
+.fin-home{ padding:20px 20px 60px; }
+.fin-home-head{ margin:4px 0 22px; }
+.fin-home-title{ font-family:'Cinzel',serif; font-size:24px; letter-spacing:.06em; color:var(--gold,#D4AF37); }
+.fin-home-sub{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#8B95A5;
+  font-style:italic; margin-top:5px; }
+.fin-home-shelf{ margin-bottom:30px; }
+.fin-shelf-head{ margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid rgba(212,175,55,0.22); }
+.fin-shelf-title{ font-family:'Cinzel',serif; font-size:16px; letter-spacing:.12em;
+  font-variant:small-caps; text-transform:none; color:#C9A961; margin-right:10px; }
+.fin-shelf-desc{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#9AA6B2; line-height:1.5; }
+.fin-home-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+
+/* Word cards reuse the .fin-q-card base; layout + gold-hover are scoped to .fin-home so the
+   hub's Qur'an verse cards (also .fin-q-card) stay exactly as they were. */
+.fin-home .fin-q-card{ margin:0; padding:12px 14px; cursor:pointer; border-radius:2px;
+  display:flex; flex-direction:column; gap:2px; transition:border-color .12s, background .12s, box-shadow .12s; }
+.fin-home .fin-q-card:hover{ border-color:var(--gold,#D4AF37); background:rgba(212,175,55,0.07); }
+.fin-home .fin-q-card.sel{ border-color:var(--gold,#D4AF37);
+  box-shadow:0 0 0 1px var(--gold,#D4AF37); }
+.fin-word-ar{ font-family:'Crimson Pro','Lato',serif; font-size:22px; color:#E8C977; line-height:1.2; }
+.fin-word-en{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#E4E4E7; }
+.fin-word-count{ font-family:'Source Sans 3',sans-serif; font-size:11.5px; color:#8B95A5; margin-top:2px; }
+.fin-word-id{ font-family:'Source Sans 3',sans-serif; font-size:10px; color:#5A6675; letter-spacing:.06em; margin-top:4px; }
+
+/* Contract front-door cards on HOME — same base/look as the word cards, with a 4px left border in the
+   contract's colour (set inline per card). Word cards (.fin-q-card) are untouched. */
+.fin-c-card{ margin:0; padding:12px 14px; border:1px solid var(--border,#2D3748);
+  border-left:4px solid var(--gold,#D4AF37); border-radius:2px; background:var(--surface,#222D3A);
+  cursor:pointer; display:flex; flex-direction:column; gap:2px;
+  transition:border-color .12s, background .12s, box-shadow .12s; }
+.fin-c-card:hover{ border-color:var(--gold,#D4AF37); background:rgba(212,175,55,0.07); }
+.fin-c-card .fin-c-name{ font-weight:600; color:#F0EAD8; }
+.fin-c-card .fin-c-ar{ font-size:12px; color:#B8AE93; direction:rtl; }
+.fin-c-card .fin-c-terms{ font-size:11px; color:#8B95A5; margin-top:2px; }
+
+/* Qur'an READ pill on a word card, mirroring the spine control's two states.
+   ON — the word HAS a cited verse root: warm gold glow, solid gold border, dark-on-gold
+   label, a live tappable button that opens the verse. Kept clearly apart from the
+   "n verses" line above it (its own margin) so the two never read as one blob. */
+.fin-home .fin-word-read{ align-self:flex-start; display:inline-block; margin-top:8px;
+  padding:2px 13px; border-radius:3px;
+  font-family:'Cinzel',serif; font-weight:700; font-size:10.5px; letter-spacing:.14em;
+  background:linear-gradient(180deg,#f2d65f,#d4af37); color:#0d1117;
+  border:1px solid #f0d878; text-decoration:none; cursor:pointer;
+  box-shadow:0 0 12px rgba(212,175,55,0.5), 0 0 2px rgba(240,216,120,0.85), inset 0 1px 0 rgba(255,255,255,0.28); }
+.fin-home .fin-word-card:hover .fin-word-read{
+  box-shadow:0 0 16px rgba(212,175,55,0.72), 0 0 3px rgba(240,216,120,1), inset 0 1px 0 rgba(255,255,255,0.28); }
+/* OFF — 0 verses (e.g. traced-from-hadith / origin-clear): pale, muted border, no glow, inactive. */
+.fin-home .fin-word-read.fin-read-off{ background:none; color:#5f6772;
+  border:1px solid rgba(120,130,145,0.30); box-shadow:none; cursor:default; }
+.fin-home .fin-word-card:hover .fin-word-read.fin-read-off{ box-shadow:none; }
+
+/* trace-status chip (traced = green tone, anything else = amber tone) */
+.fin-q-trace{ display:inline-block; align-self:flex-start; font-family:'Cinzel',serif; font-size:9.5px;
+  letter-spacing:.06em; text-transform:uppercase; padding:1px 8px; border-radius:2px; margin-top:5px; }
+.fin-trace-traced{ color:#2ECC71; border:1px solid rgba(46,204,113,0.5); background:rgba(46,204,113,0.08); }
+.fin-trace-partial{ color:#F59E0B; border:1px solid rgba(245,158,11,0.5); background:rgba(245,158,11,0.08); }
+
+/* tier chip in the word-detail hub header */
+.fin-tier-chip{ display:inline-block; flex-shrink:0; font-family:'Cinzel',serif; font-size:9.5px;
+  letter-spacing:.08em; text-transform:uppercase; padding:0 8px; border-radius:2px;
+  color:var(--gold,#D4AF37); border:1px solid rgba(212,175,55,0.5); background:rgba(212,175,55,0.08); }
+
+/* honesty box in the word-detail hub (amber-bordered) */
+.fin-honesty{ margin:8px 16px; padding:9px 11px; border:1px solid rgba(245,158,11,0.5);
+  border-radius:2px; background:rgba(245,158,11,0.06); }
+.fin-honesty-line{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#E8C977; line-height:1.5; }
+.fin-honesty-line + .fin-honesty-line{ margin-top:7px; }
+
+/* ── LECTURE mode — the "elevator ride" read as a document ── */
+.fin-lecture{ max-width:760px; margin:48px auto 0; padding:0 20px 90px; }
+.fin-lec-h1{ font-family:'Cinzel',serif; font-size:27px; line-height:1.25; letter-spacing:.04em;
+  color:var(--gold,#D4AF37); margin:6px 0 10px; font-weight:700; }
+.fin-lec-h2{ font-family:'Cinzel',serif; font-size:15px; letter-spacing:.12em;
+  font-variant:small-caps; text-transform:none; color:#C9A961; margin:30px 0 8px; padding-bottom:6px;
+  border-bottom:1px solid rgba(212,175,55,0.22); }   /* hairline rule under lecture section headings only */
+.fin-lec-h3{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.10em; text-transform:uppercase;
+  color:#8B95A5; margin:20px 0 6px; }
+/* Document body — Crimson Pro, generous measure */
+.fin-lec-body{ font-family:'Crimson Pro','Lato',serif; font-size:17px; line-height:1.75;
+  color:#D7D9DE; margin:6px 0; }
+.fin-lec-tierdesc,.fin-lec-desc{ font-family:'Crimson Pro','Lato',serif; font-size:17px; line-height:1.7;
+  color:#B7BDC7; font-style:italic; margin:4px 0 10px; }
+.fin-lec-banner{ font-family:'Source Sans 3',sans-serif; font-size:12px; line-height:1.5;
+  color:#C9A961; font-style:italic; margin:4px 0 14px; }
+/* Sub-titles — Source Sans 600 */
+.fin-lec-subtitle{ font-family:'Source Sans 3',sans-serif; font-weight:600; font-size:15px;
+  color:#E4E4E7; margin:2px 0 3px; }
+/* Badges sit on the text baseline inside the document */
+.fin-lecture .fin-badge{ vertical-align:baseline; }
+/* Sub-entry block */
+.fin-lec-entry{ margin:10px 0 14px; padding:0 0 2px 14px; border-left:2px solid rgba(212,175,55,0.18); }
+.fin-lec-sec{ margin-bottom:8px; }
+/* Dimmed block (da'eef supporting narrations) */
+.fin-lec-dim{ opacity:0.55; }
+.fin-lec-dim .fin-lec-subtitle{ color:#9AA6B2; }
+/* Gold citation line + grading chip + narrator */
+.fin-lec-cite{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:var(--gold,#D4AF37); font-weight:600; margin:2px 0; }
+.fin-lec-grade{ display:inline-block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.06em;
+  text-transform:uppercase; color:#9AA6B2; border:1px solid rgba(154,166,178,0.4); border-radius:2px;
+  padding:1px 8px; margin:2px 0; }
+.fin-lec-narr{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#9AA6B2; margin:2px 0; }
+.fin-lec-work{ font-family:'Crimson Pro','Lato',serif; font-size:16px; color:#C8CDD6; margin:2px 0; }
+.fin-lec-evidence{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#8B95A5; line-height:1.5; margin:3px 0; }
+.fin-lec-basis{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#6B7B8C; font-style:italic; margin:2px 0; }
+.fin-lec-enttag{ display:inline-block; font-family:'Cinzel',serif; font-size:9px; letter-spacing:.06em;
+  text-transform:uppercase; color:#C9A961; border:1px solid rgba(201,169,97,0.4); border-radius:2px;
+  padding:0 7px; margin-left:2px; vertical-align:baseline; }
+/* Amber-left-border honesty line (no dedicated verse / no direct hadith) */
+.fin-lec-honesty{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#E8C977; line-height:1.55;
+  border-left:3px solid rgba(245,158,11,0.7); background:rgba(245,158,11,0.06);
+  padding:7px 11px; margin:8px 0; border-radius:0 2px 2px 0; }
+/* The word-lecture gap box gets a heavier amber left border in this document context */
+.fin-lecture .fin-honesty{ margin:12px 0; border-left-width:3px; }
+/* Verse chips + lists + links */
+.fin-lec-chips{ margin:6px 0 8px; }
+.fin-lec-vchip{ display:inline-block; font-family:'Cinzel',serif; font-size:11.5px; letter-spacing:.04em;
+  color:var(--gold,#D4AF37); border:1px solid rgba(212,175,55,0.45); background:rgba(212,175,55,0.07);
+  border-radius:2px; padding:1px 10px; margin:3px 5px 0 0; }
+.fin-lec-list{ list-style:none; padding:0; margin:4px 0 8px; }
+.fin-lec-list li{ padding:5px 0; border-bottom:1px solid rgba(45,55,72,0.6); }
+.fin-lec-link{ font-family:'Crimson Pro','Lato',serif; font-size:17px; color:#D7D9DE; cursor:pointer;
+  text-decoration:none; }
+.fin-lec-link:hover{ color:var(--gold,#D4AF37); text-decoration:underline; }
+.fin-lec-cchip{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#C9A961;
+  background:rgba(201,169,97,0.06); border:1px solid rgba(201,169,97,0.4); border-radius:2px;
+  padding:3px 11px; margin:3px 6px 0 0; cursor:pointer; }
+.fin-lec-cchip:hover{ background:rgba(212,175,55,0.18); color:#fff; }
+/* Back-link + cross-mode link */
+.fin-lec-back{ display:inline-block; font-family:'Cinzel',serif; font-size:12px; letter-spacing:.08em;
+  color:#8B95A5; cursor:pointer; text-decoration:none; margin-bottom:4px; }
+.fin-lec-back:hover{ color:var(--gold,#D4AF37); }
+.fin-lec-cross{ display:inline-block; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em;
+  color:var(--gold,#D4AF37); border:1px solid rgba(212,175,55,0.45); border-radius:2px;
+  padding:4px 10px; margin:2px 0 8px; cursor:pointer; text-decoration:none; }
+.fin-lec-cross:hover{ border-color:var(--gold,#D4AF37); background:rgba(212,175,55,0.08); }
+.fin-lec-badgeline{ margin:4px 0 2px; }
+/* Per-row v4 enrichment — compact chips + muted lines (display only, additive) */
+.fin-lec-mchips{ margin:3px 0 2px; }
+.fin-lec-mchip{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:11px; line-height:1.4;
+  border-radius:2px; padding:1px 8px; margin:3px 6px 0 0; vertical-align:baseline; }
+.fin-lec-mstage{ color:#C9A961; border:1px solid rgba(201,169,97,0.35); background:rgba(201,169,97,0.05); letter-spacing:.02em; }
+.fin-lec-mconf{ color:#9AA6B2; border:1px solid rgba(154,166,178,0.4); background:rgba(154,166,178,0.06); }
+.fin-lec-mgrade{ color:#9AA6B2; border:1px solid rgba(154,166,178,0.4); background:rgba(154,166,178,0.06); }
+.fin-lec-mnote{ color:#C9A961; border:1px solid rgba(201,169,97,0.4); background:rgba(201,169,97,0.06); }
+.fin-lec-mbasis{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#6B7B8C; font-style:italic; line-height:1.5; margin:2px 0; }
+.fin-lec-mevi{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#8B95A5; line-height:1.5; margin:3px 0; }
+.fin-lec-msrc{ font-family:'Source Sans 3',sans-serif; font-size:10.5px; color:#5A6774; line-height:1.5; margin:2px 0 0; }
+.fin-lec-mid{ font-family:'Source Sans 3',sans-serif; font-size:10px; letter-spacing:.06em; color:#5A6774; margin:3px 0 0; text-align:right; }
+/* LADDER hub → "Read as lecture" line */
+.fin-hub-lecline{ padding:8px 16px 2px; }
+
+/* ── STANDARDS mode — AAOIFI coverage board ── */
+.fin-std{ padding:20px; }
+.fin-std-head{ margin:0 0 18px; }
+.fin-std-title{ font-family:'Cinzel',serif; font-size:24px; letter-spacing:.06em; color:var(--gold,#D4AF37); }
+.fin-std-totals{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#8B95A5; margin-top:5px; }
+/* Five pillar columns; responsive — min 300px each, wrap to the next line rather than squeeze */
+.fin-std-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; align-items:start; }
+/* RUN REPORT footer — full-width bar below the columns, pins SETTINGS → REPORT */
+.fin-run-bar{ display:flex; align-items:center; justify-content:flex-end; gap:16px;
+  margin-top:22px; padding-top:16px; border-top:1px solid var(--border2,#2D3748); }
+.fin-run-note{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#8B95A5; }
+.fin-run-btn{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.1em;
+  color:#0d1117; background:linear-gradient(180deg,#e8c547,#d4af37);
+  border:none; border-radius:3px; padding:8px 20px; cursor:pointer; }
+.fin-run-btn:hover{ filter:brightness(1.08); }
+/* Legend — one slim line, two groups, small caps 11px muted */
+.fin-std-legend{ display:flex; flex-wrap:wrap; gap:5px 22px; margin:0 0 16px;
+  font-family:'Source Sans 3',sans-serif; font-size:11px; font-variant:small-caps; color:#8B95A5; line-height:1.6; }
+.fin-std-leg-k{ color:#C9A961; }
+.fin-std-leg-dot{ font-size:10px; }
+.fin-std-leg-tag{ color:#C9A961; font-size:10px; }
+.fin-iss{border-top:1px solid rgba(212,175,55,.18);margin-top:8px}
+.fin-iss-sum{cursor:pointer;list-style:none;padding:10px 4px;display:flex;gap:10px;align-items:baseline;color:#D4AF37}
+.fin-iss-sum::-webkit-details-marker{display:none}
+.fin-iss-name{font-weight:600;font-size:14px;letter-spacing:.4px}
+.fin-iss-n{color:#8A94A2;font-size:12px}
+.fin-grp{margin:0 0 4px 18px}
+.fin-grp-sum{cursor:pointer;list-style:none;padding:6px 4px;display:flex;gap:8px;align-items:baseline;color:rgba(212,175,55,.8)}
+.fin-grp-sum::-webkit-details-marker{display:none}
+.fin-grp-name{font-size:12px;letter-spacing:.3px}
+.fin-grp-n{color:#8A94A2;font-size:11px}
+.fin-sr{display:flex;align-items:center;gap:10px;padding:3px 4px 3px 30px;font-size:13px}
+.fin-sr-dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.fin-sr-id{color:#8A94A2;min-width:80px;font-size:12px}
+.fin-sr-ttl{color:#d8d8d8}
+.fin-sr-off{color:#7a7f87}
+.fin-std-col{ border:1px solid var(--border,#2D3748); border-radius:2px; background:var(--surface,#222D3A); padding:8px 8px 10px; }
+.fin-std-colhead{ display:flex; align-items:center; gap:8px; padding:2px 4px 8px; margin-bottom:4px;
+  border-bottom:1px solid rgba(212,175,55,0.18); }
+.fin-std-pillar{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold,#D4AF37); }
+.fin-std-coln{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8B95A5; }
+.fin-std-bar{ flex:1; height:4px; border-radius:2px; background:rgba(107,123,140,0.3); overflow:hidden; }
+.fin-std-bar-proc{ display:block; height:100%; background:linear-gradient(90deg,#9DB86B,#D4AF37); }
+/* Slim rows — [dot] [number] [full name ……] [glyph] */
+.fin-std-row{ display:flex; align-items:flex-start; gap:7px; padding:4px 4px; font-size:13px; cursor:pointer;
+  border-radius:2px; transition:background .1s; }
+.fin-std-row:hover{ background:rgba(212,175,55,0.07); }
+.fin-std-row.sel{ background:rgba(212,175,55,0.12); box-shadow:inset 0 0 0 1px rgba(212,175,55,0.5); }
+.fin-std-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+.fin-std-code{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.03em; color:#C9A961; flex-shrink:0;
+  min-width:22px; text-align:right; margin-top:1px; }
+/* Name takes the full remaining width; wraps to 2 lines, then ellipsis (full name in title attr) */
+.fin-std-name{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#D7D9DE; flex:1 1 auto; min-width:0;
+  line-height:1.35; overflow:hidden; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+.fin-std-row:hover .fin-std-name{ color:var(--gold,#D4AF37); }
+.fin-std-strike{ text-decoration:line-through; color:#8B95A5; }
+/* Tiny name-check glyph at the row end (● verified · ◐ plausible · ○ needs_check), muted gold */
+.fin-std-tag{ flex-shrink:0; align-self:flex-start; margin-top:2px; font-size:9px; line-height:1; color:#C9A961; }
+/* Row checkbox (reuses .bv-ck) + pillar All/None */
+.fin-std-ck{ margin-top:3px; flex-shrink:0; cursor:pointer; }
+.fin-std-allnone{ flex-shrink:0; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.05em; color:#6B7B8C; }
+.fin-std-an{ color:#C9A961; cursor:pointer; }
+.fin-std-an:hover{ color:var(--gold,#D4AF37); text-decoration:underline; }
+
+/* Report-vetting settings bar (pinned above the columns, quiet-toolbar look) */
+/* ── LIVE DEMO — API CONNECTION panel (top of SETTINGS, dark theme) ── */
+.fin-api{ background:var(--bg0,#0E1621); border:1px solid var(--border,#2D3748); border-radius:2px;
+  padding:12px 14px; margin:0 0 12px; display:flex; flex-direction:column; gap:9px; }
+.fin-api-title{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold,#D4AF37); }
+.fin-api-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fin-api-lbl{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#8B95A5; }
+.fin-api-input{ flex:1; min-width:220px; background:rgba(255,255,255,.04); border:1px solid var(--border,#2D3748);
+  border-radius:3px; color:#D7D9DE; font-family:'Source Sans 3',sans-serif; font-size:12.5px; padding:6px 9px; }
+.fin-api-input:focus{ outline:none; border-color:rgba(212,175,55,.55); }
+.fin-api-btn{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.06em; cursor:pointer; white-space:nowrap;
+  color:var(--gold,#D4AF37); background:none; border:1px solid rgba(212,175,55,.45); border-radius:3px; padding:6px 12px; transition:.12s; }
+.fin-api-btn:hover{ background:rgba(212,175,55,.10); border-color:var(--gold,#D4AF37); }
+.fin-api-clear{ color:#C36A6A; border-color:rgba(195,106,106,.45); }
+.fin-api-clear:hover{ background:rgba(195,106,106,.10); border-color:#C36A6A; }
+.fin-api-status{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; }
+.fin-api-status.grey{ color:#8B95A5; }
+.fin-api-status.green{ color:#2ECC71; }
+.fin-api-status.red{ color:#E06666; }
+.fin-api-note{ font-size:11px; color:#6B7B8C; }
+.fin-api-model{ flex:0 0 auto; min-width:200px; cursor:pointer; }
+
+/* ── Read-only "Standards coverage lights" (additive; independent of the AAOIFI coverage board) ── */
+.fin-lite{ background:var(--bg0,#0E1621); border:1px solid var(--border,#2D3748); border-radius:2px;
+  padding:12px 14px; margin:0 0 12px; }
+.fin-lite-empty{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#6B7B8C; }
+.fin-lite-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin:0 0 10px; }
+.fin-lite-title{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold,#D4AF37); }
+.fin-lite-chip{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#8B95A5;
+  border:1px solid var(--border,#2D3748); border-radius:10px; padding:2px 9px; white-space:nowrap; }
+.fin-lite-reg{ font-family:'Source Sans 3',sans-serif; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  color:#8B95A5; margin:12px 0 5px; padding-bottom:3px; border-bottom:1px solid rgba(255,255,255,.06); }
+.fin-lite-reg:first-of-type{ margin-top:0; }
+.fin-lite-grp{ font-family:'Source Sans 3',sans-serif; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(212,175,55,.55); margin:7px 0 3px; padding-left:14px; }
+.fin-lite-row{ display:flex; align-items:center; gap:9px; padding:3px 0;
+  font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#D7D9DE; }
+.fin-lite-dot{ flex:0 0 auto; width:9px; height:9px; border-radius:50%; }
+.fin-lite-id{ flex:0 0 auto; min-width:64px; color:#B5BDC9; font-variant-numeric:tabular-nums; }
+.fin-lite-ttl{ color:#D7D9DE; }
+.fin-lite-red{ color:#7A8290; }
+.fin-lite-red .fin-lite-id, .fin-lite-red .fin-lite-ttl{ color:#7A8290; }
+.fin-lite-gone{ margin:5px 0 2px; }
+.fin-lite-gone > summary{ cursor:pointer; font-family:'Source Sans 3',sans-serif; font-size:11.5px;
+  color:#8B95A5; padding:3px 0; list-style:revert; }
+.fin-lite-gone > summary:hover{ color:#B5BDC9; }
+
+.fin-vet-bar{ position:sticky; top:0; z-index:5; background:var(--bg0,#0E1621);
+  border:1px solid var(--border,#2D3748); border-radius:2px; padding:10px 12px; margin:0 0 6px;
+  display:flex; flex-direction:column; gap:8px; }
+.fin-vet-head{ display:flex; align-items:center; gap:12px; }
+.fin-vet-title{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold,#D4AF37); }
+.fin-vet-count{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#8B95A5; }
+.fin-vet-reset{ margin-left:auto; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.06em; color:#C9A961; cursor:pointer; }
+.fin-vet-reset:hover{ color:var(--gold,#D4AF37); text-decoration:underline; }
+.fin-vet-picker{ display:flex; flex-wrap:wrap; align-items:center; gap:5px; }
+.fin-vet-plabel{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:.10em; text-transform:uppercase;
+  color:#8B95A5; margin-right:4px; min-width:66px; }
+.fin-vet-hint{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#6B7B8C; font-style:italic; }
+.fin-vet-chip{ display:inline-flex; align-items:center; gap:5px; font-family:'Source Sans 3',sans-serif; font-size:11.5px;
+  color:#9AA6B2; border:1px solid var(--border,#2D3748); border-radius:2px; padding:2px 8px; cursor:pointer; transition:.12s; }
+.fin-vet-chip:hover{ border-color:rgba(212,175,55,0.5); }
+.fin-vet-chip.sel{ color:var(--gold,#D4AF37); border-color:var(--gold,#D4AF37); background:rgba(212,175,55,0.08); }
+.fin-vet-chip-pre{ font-size:9px; letter-spacing:.04em; text-transform:uppercase; color:#6B7B8C; }
+.fin-vet-chip.sel .fin-vet-chip-pre{ color:#C9A961; }
+.fin-vet-chip-n{ font-size:10px; color:#6B7B8C; }
+.fin-vet-chip.muted{opacity:.5}
+.fin-jx-tier{color:#8A94A2;font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-left:4px}
+.fin-vet-note{ font-family:'Source Sans 3',sans-serif; font-size:11.5px; color:#6B7B8C; font-style:italic; margin:0 0 14px; }
+/* Hub extras for a standard card */
+.fin-std-rulechip{ font-size:11px; }
+.fin-std-debates{ margin:8px 16px; padding:6px 10px; border:1px solid var(--border,#2D3748); border-radius:2px;
+  background:var(--surface,#222D3A); }
+.fin-std-debates > summary{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.10em; font-variant:small-caps;
+  text-transform:none; color:#C9A961; cursor:pointer; }
+.fin-std-debate{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#C8CDD6; line-height:1.5;
+  padding:6px 0 0; border-top:1px solid rgba(45,55,72,0.5); margin-top:6px; }
+.fin-std-debate:first-of-type{ border-top:none; margin-top:8px; }
+.fin-std-source{ display:inline-block; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em;
+  color:var(--gold,#D4AF37); text-decoration:none; padding:2px 0; }
+.fin-std-source:hover{ text-decoration:underline; }
+/* Inline clickable standard code — gold dotted underline, solid on hover */
+.fin-std-link{ color:var(--gold,#D4AF37); border-bottom:1px dotted var(--gold,#D4AF37); cursor:pointer; }
+.fin-std-link:hover{ border-bottom-style:solid; }
+
+/* LADDER hub "Standards coverage" strip (shown when no node is selected) */
+.fin-cov{ padding:6px 16px 12px; border-bottom:1px solid rgba(212,175,55,0.18); }
+.fin-cov-row{ display:flex; align-items:center; gap:10px; padding:3px 0; }
+.fin-cov-label{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#C9A961;
+  flex:0 0 80px; white-space:nowrap; }
+.fin-cov .fin-std-bar{ flex:1; height:4px; border-radius:2px; background:rgba(107,123,140,0.3); overflow:hidden; }
+.fin-cov-foot{ margin-top:8px; }
+.fin-cov-open{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em;
+  color:var(--gold,#D4AF37); cursor:pointer; text-decoration:none; }
+.fin-cov-open:hover{ text-decoration:underline; }
+
+/* ── REPORT mode — a paper-style compliance document ── */
+.fin-report{ max-width:800px; margin:0 auto; padding:40px 32px 90px; font-family:'Source Sans 3',sans-serif; color:#D7D9DE; }
+.fin-rep-demo{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.14em; font-variant:small-caps;
+  color:var(--gold,#D4AF37); border:1px solid rgba(212,175,55,0.5); border-radius:2px; padding:5px 10px; text-align:center; }
+.fin-rep-h1{ font-family:'Cinzel',serif; font-size:23px; line-height:1.3; letter-spacing:.03em; color:var(--gold,#D4AF37);
+  margin:18px 0 6px; font-weight:700; }
+.fin-rep-meta{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#8B95A5; margin-bottom:10px; }
+.fin-rep-h2{ font-family:'Cinzel',serif; font-size:14px; letter-spacing:.12em; font-variant:small-caps; text-transform:none;
+  color:#C9A961; margin:28px 0 10px; padding-bottom:6px; border-bottom:1px solid rgba(212,175,55,0.22); }
+/* Section 1 — provenance elevator chips */
+.fin-rep-elev{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; line-height:1.9; }
+.fin-rep-arrow{ color:#6B7B8C; font-size:14px; }
+.fin-rep-chip{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:12px; color:#E4E4E7;
+  border:1px solid rgba(212,175,55,0.4); background:rgba(212,175,55,0.05); border-radius:2px; padding:2px 9px; cursor:pointer; transition:.12s; }
+.fin-rep-chip:hover{ border-color:var(--gold,#D4AF37); background:rgba(212,175,55,0.14); color:#fff; }
+.fin-rep-vchip{ display:inline-block; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.03em; color:var(--gold,#D4AF37);
+  border:1px solid rgba(212,175,55,0.4); background:rgba(212,175,55,0.06); border-radius:2px; padding:1px 8px; cursor:pointer; }
+.fin-rep-vchip:hover{ background:rgba(212,175,55,0.18); }
+.fin-rep-elev-foot{ margin-top:10px; }
+.fin-rep-lecturelink{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em; color:var(--gold,#D4AF37); cursor:pointer; text-decoration:none; }
+.fin-rep-lecturelink:hover{ text-decoration:underline; }
+/* Section 2 — checklist table */
+.fin-rep-table{ width:100%; border-collapse:collapse; margin-top:4px; font-size:13px; }
+.fin-rep-table th{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:.10em; text-transform:uppercase; color:#8B95A5;
+  text-align:left; padding:6px 8px; border-bottom:1px solid rgba(212,175,55,0.3); }
+.fin-rep-table td{ padding:9px 8px; border-bottom:1px solid rgba(45,55,72,0.7); vertical-align:top; }
+.fin-rep-num{ color:#8B95A5; width:24px; }
+.fin-rep-check{ font-weight:600; color:#E4E4E7; width:150px; }
+.fin-rep-src{ color:#C8CDD6; line-height:1.5; }
+.fin-rep-stat{ width:120px; text-align:right; }
+.fin-rep-ref{ margin-left:4px; }
+.fin-rep-status{ display:inline-block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+  border-radius:2px; padding:1px 8px; color:#9AA6B2; border:1px solid rgba(154,166,178,0.4); white-space:nowrap; }
+.fin-rep-status.fin-rep-ok{ color:#2ECC71; border-color:rgba(46,204,113,0.5); background:rgba(46,204,113,0.08); }
+.fin-rep-status.fin-rep-warn{ color:#F59E0B; border-color:rgba(245,158,11,0.5); background:rgba(245,158,11,0.08); }
+.fin-rep-missing{ font-style:italic; color:#C36A6A; }
+/* Section 3 — open items + sign-off */
+.fin-rep-open{ margin:4px 0 0; padding-left:20px; }
+.fin-rep-open li{ font-size:13px; color:#C8CDD6; line-height:1.7; }
+.fin-rep-openid{ font-family:'Cinzel',serif; font-size:11px; color:var(--gold,#D4AF37); }
+.fin-rep-openstatus{ color:#9AA6B2; }
+.fin-rep-open-none{ font-size:13px; color:#8B95A5; font-style:italic; }
+.fin-rep-signoff{ display:flex; gap:24px; margin:34px 0 10px; }
+.fin-rep-sig{ flex:1; }
+.fin-rep-sigline{ border-bottom:1px solid #6B7B8C; height:34px; }
+.fin-rep-siglabel{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.08em; color:#8B95A5; margin-top:5px; }
+.fin-rep-signote{ font-size:11.5px; color:#8B95A5; font-style:italic; margin-top:8px; }
+/* Vetting scope — head link, dimmed out-of-scope rows, exclusion lines */
+.fin-rep-scopeline{ margin:2px 0 10px; }
+.fin-rep-scopelink,.fin-rep-stdlink{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.06em;
+  color:var(--gold,#D4AF37); cursor:pointer; text-decoration:none; }
+.fin-rep-scopelink:hover,.fin-rep-stdlink:hover{ text-decoration:underline; }
+/* dimmed but still legible ("stay visible but dimmed") */
+.fin-rep-table tr.fin-dimmed{ opacity:0.45; }
+.fin-rep-excluded{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8B95A5; font-style:italic; margin-top:4px; }
+.fin-rep-excl-note{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#C9A961; font-style:italic; margin:10px 0 0; }
+/* Report back-tag chip (appears in Details hubs) */
+.fin-report-backtag{ display:inline-block; font-family:'Cinzel',serif; font-size:10px; letter-spacing:.06em;
+  color:var(--gold,#D4AF37); border:1px dotted var(--gold,#D4AF37); border-radius:2px; padding:1px 8px; cursor:pointer; }
+.fin-report-backtag:hover{ border-style:solid; background:rgba(212,175,55,0.1); }
+
+/* ── Printable-document look: white sheet on a soft grey backdrop ── */
+#finance-view[data-mode="report"] #finance-canvas{ background:#F4F1EA; }
+.fin-report{ background:#FFFFFF; max-width:820px; margin:22px auto; padding:44px 52px; box-shadow:0 2px 18px rgba(0,0,0,.35); border-radius:2px; color:#1A1A1A; }
+.fin-report .fin-rep-h1{ color:#1A1A1A; }
+.fin-report .fin-rep-h2{ color:#0B3D2E; border-bottom:1px solid #D8D2C4; padding-bottom:4px; }
+/* Business-case header box */
+.fin-rep-casebox{ margin:14px 0 20px; padding:14px 18px; background:#FAF8F3; border:1px solid #E4DFD3; border-radius:3px; }
+.fin-rep-caserow{ display:flex; gap:14px; padding:3px 0; font-family:'Source Sans 3',sans-serif; font-size:13px; }
+.fin-rep-casek{ flex:0 0 130px; color:#6B6B6B; text-transform:uppercase; letter-spacing:.06em; font-size:11px; padding-top:1px; }
+.fin-rep-casev{ color:#1A1A1A; font-weight:600; }
+/* Contrast sweep — plain greys darkened for white paper; assurance chips (ok/warn) and gold accents untouched */
+.fin-report .fin-rep-meta{ color:#5A5A5A; }
+.fin-report .fin-rep-arrow{ color:#5A5A5A; }
+.fin-report .fin-rep-chip{ color:#1A1A1A; }
+.fin-report .fin-rep-chip:hover{ color:#1A1A1A; }
+.fin-report .fin-rep-table th{ color:#5A5A5A; }
+.fin-report .fin-rep-table td{ border-bottom-color:#D8D2C4; }
+.fin-report .fin-rep-num{ color:#5A5A5A; }
+.fin-report .fin-rep-check{ color:#1A1A1A; }
+.fin-report .fin-rep-src{ color:#1A1A1A; }
+.fin-report .fin-rep-status:not(.fin-rep-ok):not(.fin-rep-warn){ color:#5A5A5A; border-color:#B8B2A4; }
+.fin-report .fin-rep-missing{ color:#B03030; }
+.fin-report .fin-rep-open li{ color:#1A1A1A; }
+.fin-report .fin-rep-openstatus{ color:#5A5A5A; }
+.fin-report .fin-rep-open-none{ color:#5A5A5A; }
+.fin-report .fin-rep-siglabel{ color:#5A5A5A; }
+.fin-report .fin-rep-signote{ color:#5A5A5A; }
+.fin-report .fin-rep-excluded{ color:#5A5A5A; }
+.fin-report .fin-rep-sigline{ border-bottom-color:#8A8A8A; }
+
+/* ── Report v2 — readability on the white sheet (scoped to .fin-report only) ── */
+.fin-report{ font-size:14.5px; line-height:1.55; position:relative; }
+.fin-report .fin-rep-table{ font-size:14.5px; }
+.fin-report .fin-rep-table td{ padding:8px 10px; }
+.fin-report .fin-rep-open li{ font-size:14.5px; line-height:1.65; }
+.fin-report .fin-rep-h2{ margin:34px 0 12px; }
+/* PRINT button — top-right of the sheet, small gold outline */
+.fin-rep-print{ position:absolute; top:18px; right:20px; font-family:'Cinzel',serif; font-size:11px;
+  letter-spacing:.12em; color:var(--gold,#D4AF37); background:none; border:1px solid var(--gold,#D4AF37);
+  border-radius:3px; padding:5px 14px; cursor:pointer; }
+.fin-rep-print:hover{ background:rgba(212,175,55,.10); }
+/* SIGN OFF & ARCHIVE sits just left of PRINT; the inline confirmation sits left of that */
+#fin-rep-archive{ right:80px; }
+.fin-rep-archived{ position:absolute; top:20px; right:250px; font-family:'Cinzel',serif; font-size:11px;
+  letter-spacing:.10em; color:#2e7d32; }
+/* LIVE-case sign-off gating (saved cases are unaffected): disabled button, grey hint, green confirmation */
+#fin-rep-archive[disabled]{ color:#9A9488; border-color:#C9C3B5; background:transparent; cursor:not-allowed; }
+.fin-rep-signoff-hint{ position:absolute; top:44px; right:20px; max-width:230px; text-align:right;
+  font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8A8A8A; font-style:italic; line-height:1.4; }
+.fin-rep-signedoff{ position:absolute; top:44px; right:20px; font-family:'Cinzel',serif; font-size:11px;
+  letter-spacing:.10em; color:#2e7d32; }
+@media print{ .fin-rep-print, #fin-rep-archive, .fin-rep-caseselect-wrap, .fin-live-strip, .fin-pipe-extra, .fin-rep-signoff-hint, #fin-rep-signedoff{ display:none !important; } .fin-oi-det{ display:none !important; } }
+/* ── LIVE REVIEW strip (above the CASE dropdown on the white sheet) ── */
+.fin-live-strip{ display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:0 0 12px; padding:10px 12px;
+  background:#FAF8F3; border:1px solid #E4DFD3; border-radius:3px; }
+.fin-live-doc{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#1A1A1A; }
+.fin-live-run{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em; cursor:pointer;
+  color:#0B3D2E; background:rgba(11,61,46,.06); border:1px solid #0B3D2E; border-radius:3px; padding:6px 14px; }
+.fin-live-run:hover{ background:rgba(11,61,46,.14); }
+.fin-live-run[disabled]{ color:#8A8A8A; background:transparent; border-color:#C9C3B5; cursor:not-allowed; }
+.fin-live-hint{ font-size:11.5px; color:#8A8A8A; font-style:italic; }
+.fin-live-cost{ font-family:'Source Sans 3',sans-serif; font-size:11.5px; color:#8A8A8A; margin:-4px 0 12px; }
+.fin-live-status{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; }
+.fin-live-status.amber{ color:#B26A00; }
+.fin-live-status.red{ color:#B03030; }
+.fin-live-status.green{ color:#2e7d32; }
+/* ── TIERED PIPELINE — progress strip segments + Tier-1 term chips ── */
+.fin-pipe-seg{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; font-weight:600; }
+.fin-pipe-seg.amber{ color:#B26A00; }
+.fin-pipe-seg.green{ color:#2e7d32; }
+.fin-pipe-seg.red{ color:#B03030; }
+.fin-pipe-sep{ color:#B9B2A2; }
+.fin-pipe-extra{ margin:0 0 12px; }
+.fin-pipe-extra:empty{ margin:0; }
+.fin-pipe-chips{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#3A3A3A; line-height:1.9; }
+.fin-pipe-chips-lbl{ color:#8A8A8A; margin-right:4px; }
+.fin-pipe-chip{ display:inline-block; font-size:11.5px; color:#0B3D2E; background:rgba(11,61,46,.06);
+  border:1px solid rgba(11,61,46,.28); border-radius:2px; padding:2px 8px; margin:2px 3px 0 0; }
+.fin-pipe-none{ color:#8A8A8A; font-style:italic; }
+.fin-pipe-note{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#B26A00; font-style:italic; margin:6px 0 0; }
+/* Tier-2 compact clause list */
+.fin-pipe-clauses{ margin:8px 0 0; }
+.fin-pipe-clauses-lbl{ font-family:'Source Sans 3',sans-serif; font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:#8A8A8A; margin:0 0 3px; }
+.fin-pipe-clause{ display:flex; align-items:baseline; flex-wrap:nowrap; gap:8px; font-family:'Source Sans 3',sans-serif;
+  font-size:12px; color:#3A3A3A; line-height:1.7; padding:2px 0; border-top:1px solid #EDE8DD; overflow:hidden; }
+.fin-pipe-clause:first-of-type{ border-top:none; }
+.fin-pipe-clause-term{ flex:0 0 auto; font-weight:600; color:#0B3D2E; }
+.fin-pipe-clause-ref{ flex:0 0 auto; color:#8A8A8A; }
+.fin-pipe-clause-quote{ flex:1 1 auto; min-width:0; color:#5A5A5A; font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.fin-pipe-clause-none{ flex:0 0 auto; color:#B26A00; font-style:italic; }
+.fin-pipe-clause-flag{ flex:0 0 auto; color:#B03030; font-size:11px; }
+.fin-pipe-clause-ok{ flex:0 0 auto; color:#2e7d32; font-size:11px; }
+/* AI-generated guardrail banner — red-tinted, above the ILLUSTRATIVE banner */
+.fin-report .fin-live-banner{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em; font-variant:small-caps;
+  color:#B03030; background:rgba(176,48,48,.08); border:1px solid rgba(176,48,48,.45); border-radius:3px;
+  padding:8px 12px; margin:0 0 8px; text-align:center; }
+@media print{ .fin-report .fin-live-banner{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; } }
+/* Open items v2 — numbered, drillable, with placeholder scholar actions */
+.fin-rep-open-item{ padding:8px 8px; border-radius:3px; }
+.fin-rep-open-item.sel{ background:#FAF8F3; box-shadow:inset 0 0 0 1px #D8D2C4; }
+.fin-rep-oinum{ font-family:'Cinzel',serif; font-size:12.5px; font-weight:700; color:#0B3D2E; letter-spacing:.04em; }
+.fin-oi-acts{ display:flex; gap:8px; margin:7px 0 2px; }
+.fin-oi-act{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#5A5A5A; background:#F4F1EA;
+  border:1px solid #D8D2C4; border-radius:3px; padding:3px 11px; cursor:pointer; transition:.12s; }
+.fin-oi-act:hover{ border-color:#0B3D2E; color:#0B3D2E; }
+.fin-oi-act.sel{ background:#0B3D2E; color:#FFFFFF; border-color:#0B3D2E; }
+/* Report Details hub — permanent count line (right panel, dark theme) */
+.fin-rep-hub-count{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.04em; color:var(--gold,#D4AF37); margin:2px 0 10px; }
+
+/* ── Report v3 — sign-off redesign ── */
+/* Provenance paragraph + checklist footer on the white sheet */
+.fin-report .fin-rep-prov{ font-size:14px; line-height:1.6; color:#1A1A1A; margin:4px 0 6px; }
+/* Highlighted provenance values — subtle gold tint, slightly bolder; kept in PRINT (see print block) */
+.fin-report .fin-prov-hl{ background:rgba(212,175,55,0.18); color:#1A1A1A; font-weight:600;
+  padding:0 3px; border-radius:2px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.fin-report .fin-rep-checkfoot{ font-size:12px; color:#5A5A5A; font-style:italic; margin:6px 0 0; }
+/* CASE selector — small native dropdown at the very top of the report sheet */
+.fin-report .fin-rep-caseselect-wrap{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.08em; color:#5A5A5A;
+  margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+.fin-report .fin-rep-caseselect{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#1A1A1A;
+  background:#FFFFFF; border:1px solid #D8D2C4; border-radius:3px; padding:4px 8px; max-width:520px; cursor:pointer; }
+/* Source line under the header block */
+.fin-report .fin-rep-source{ font-size:12px; color:#5A5A5A; margin:2px 0 6px; word-break:break-all; }
+.fin-report .fin-rep-source a{ color:#0B3D2E; text-decoration:underline; }
+
+/* Single non-clickable status dot on each open item (white sheet) — reflects the hub decision */
+.fin-oi-dot{ display:inline-block; width:12px; height:12px; border-radius:50%; margin-left:12px;
+  vertical-align:middle; box-shadow:0 0 0 1px rgba(0,0,0,.18); }
+.fin-oi-dot.green{  background:#2e7d32; }
+.fin-oi-dot.orange{ background:#ef6c00; }
+.fin-oi-dot.red{    background:#c62828; }
+.fin-oi-dot.hollow{ background:transparent; box-shadow:inset 0 0 0 1.5px #9AA0A6; }
+/* Scholar decision buttons in the Details hub (dark right panel) */
+.fin-oi-decide{ display:flex; gap:8px; margin:6px 0 2px; }
+.fin-oi-dbtn{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.06em; cursor:pointer;
+  background:none; border:1px solid; border-radius:3px; padding:5px 10px; transition:.12s; }
+.fin-oi-dbtn.green{  color:#4caf50; border-color:rgba(76,175,80,.55); }
+.fin-oi-dbtn.orange{ color:#ffa726; border-color:rgba(255,167,38,.55); }
+.fin-oi-dbtn.red{    color:#ef5350; border-color:rgba(239,83,80,.55); }
+.fin-oi-dbtn:hover{ filter:brightness(1.15); }
+.fin-oi-dbtn.green.chosen{  background:#2e7d32; color:#fff; border-color:#2e7d32; }
+.fin-oi-dbtn.orange.chosen{ background:#ef6c00; color:#fff; border-color:#ef6c00; }
+.fin-oi-dbtn.red.chosen{    background:#c62828; color:#fff; border-color:#c62828; }
+/* Accepted (green) row: dims and reveals its check mark */
+.fin-oi-check{ display:none; margin-left:10px; color:#2e7d32; font-weight:700; }
+.fin-rep-open-item.oi-accepted{ opacity:.5; }
+.fin-rep-open-item.oi-accepted .fin-oi-check{ display:inline; }
+
+/* "From the document" quote block in the Details hub (dark right panel) */
+.fin-rep-quote{ margin:6px 0; padding:8px 12px; border-left:3px solid var(--gold,#D4AF37);
+  background:rgba(255,255,255,0.045); font-style:italic; font-size:12.5px; line-height:1.55; color:#C8CDD6; border-radius:0 3px 3px 0; }
+
+/* ── FAB compliance report — open-item rows (white sheet) ── */
+.fin-fab-item{ padding:8px 8px; border-radius:3px; cursor:pointer; }
+.fin-report .fin-fab-item.sel{ background:#FAF8F3; box-shadow:inset 0 0 0 1px #D8D2C4; }
+.fin-fab-title{ font-weight:600; }
+/* Applied-standards strip under Provenance (white sheet) */
+.fin-report .fin-fab-applied{ margin:8px 0 4px; }
+.fin-report .fin-fab-applied-lbl{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:.10em; text-transform:uppercase; color:#0B3D2E; margin-bottom:6px; }
+.fin-report .fin-fab-applied-chips{ display:flex; flex-wrap:wrap; gap:6px; }
+.fin-report .fin-fab-appliedchip{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; color:#1A1A1A;
+  background:rgba(212,175,55,0.16); border:1px solid rgba(212,175,55,0.45); border-radius:3px; padding:2px 9px; }
+/* Checklist badges: applied (amber), out-of-scope (grey); greyed out-of-scope rows */
+.fin-report .fin-rep-status.fin-fab-badge-amber{ color:#B26A00; border-color:rgba(239,108,0,.55); background:rgba(239,108,0,.10); }
+.fin-report .fin-rep-status.fin-fab-badge-grey{ color:#6b7280; border-color:rgba(107,114,128,.45); background:rgba(107,114,128,.08); }
+.fin-report .fin-fab-greyrow{ opacity:.55; }
+/* Severity chip (row + panel) */
+.fin-fab-sev{ display:inline-block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+  padding:1px 7px; border-radius:9px; margin-left:8px; border:1px solid; vertical-align:middle; }
+.fin-fab-sev.high{ color:#c62828; border-color:rgba(198,40,40,.55); background:rgba(198,40,40,.12); }
+.fin-fab-sev.med{  color:#ef6c00; border-color:rgba(239,108,0,.55); background:rgba(239,108,0,.12); }
+.fin-fab-sev.low{  color:#6b7280; border-color:rgba(107,114,128,.55); background:rgba(107,114,128,.12); }
+/* FAB panel (dark hub) — sub-line, principle clause tag, confidence chip, standards chips */
+.fin-fab-sub{ font-size:11px; color:#8B95A5; font-style:italic; margin:4px 0 2px; }
+.fin-fab-clausetag{ display:block; font-weight:700; font-size:11.5px; color:#C8CDD6; margin:6px 0 2px; }
+.fin-fab-conf{ display:inline-block; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+  padding:1px 7px; border-radius:9px; border:1px solid; }
+.fin-fab-conf.green{ color:#2ECC71; border-color:rgba(46,204,113,.5); background:rgba(46,204,113,.10); }
+.fin-fab-conf.amber{ color:#F59E0B; border-color:rgba(245,158,11,.5); background:rgba(245,158,11,.10); }
+.fin-fab-conf.grey{  color:#8A94A2; border-color:rgba(138,148,162,.5); background:rgba(138,148,162,.10); }
+.fin-fab-stdchip{ cursor:default; }
+.fin-fab-stdstatus{ color:#8B95A5; font-size:10px; margin-left:6px; }
+/* Scholar determination box */
+.fin-fab-det{ margin-top:8px; }
+.fin-fab-rationale{ width:100%; box-sizing:border-box; margin-top:8px; background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,175,55,.25); border-radius:3px; color:#D7D9DE;
+  font-family:'Source Sans 3',sans-serif; font-size:12.5px; line-height:1.5; padding:8px; resize:vertical; }
+.fin-fab-rationale:focus{ outline:none; border-color:rgba(212,175,55,.55); }
+.fin-fab-signrow{ display:flex; align-items:center; gap:8px; margin-top:8px; flex-wrap:wrap; }
+.fin-fab-signk{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.06em; color:#8B95A5; }
+.fin-fab-name{ flex:1; min-width:120px; background:rgba(255,255,255,.04); border:1px solid rgba(212,175,55,.25);
+  border-radius:3px; color:#D7D9DE; font-family:'Source Sans 3',sans-serif; font-size:12.5px; padding:5px 8px; }
+.fin-fab-name:focus{ outline:none; border-color:rgba(212,175,55,.55); }
+.fin-fab-date{ font-size:11px; color:#8B95A5; }
+
+/* ── Report v4 — white-sheet readability & button affordance (screen; scoped to .fin-report / report buttons) ── */
+/* 1) BODY TEXT — ~2px larger, near-black, roomier line-height for strong contrast on white */
+.fin-report{ font-size:16.5px; line-height:1.62; color:#1A1A1A; }
+.fin-report .fin-rep-table{ font-size:16.5px; }
+.fin-report .fin-rep-open li{ font-size:16.5px; line-height:1.72; }
+.fin-report .fin-rep-prov{ font-size:16px; line-height:1.68; color:#1A1A1A; }
+
+/* 4) GENERAL SCHEME — more air between sections and around open-item rows (gold headers kept) */
+.fin-report .fin-rep-h2{ margin:40px 0 16px; }
+.fin-report .fin-rep-casebox{ margin:16px 0 26px; }
+.fin-report .fin-rep-open{ margin-top:8px; }
+.fin-report .fin-rep-open-item,
+.fin-report .fin-fab-item{ padding:11px 10px; margin:4px 0; }
+
+/* 2) GUARDRAIL BANNERS — legible deep amber / deep red on white, bolder (hue kept) */
+.fin-report .fin-rep-demo{ color:#8A5A00; font-weight:700;
+  border-color:rgba(138,90,0,.55); background:rgba(138,90,0,.07); }
+.fin-report .fin-live-banner{ color:#8E1616; font-weight:700;
+  border-color:rgba(142,22,22,.60); background:rgba(142,22,22,.10); }
+
+/* 3) WHITE-SHEET BUTTONS — separation, solid visible border, rounded, comfortable padding, hover, greyed disabled */
+.fin-report .fin-rep-print{ padding:7px 15px; border:1px solid var(--gold,#D4AF37); border-radius:4px;
+  background:rgba(212,175,55,.06); font-weight:600; transition:background .12s, box-shadow .12s; }
+.fin-report .fin-rep-print:hover{ background:rgba(212,175,55,.18); box-shadow:0 1px 4px rgba(0,0,0,.12); }
+.fin-report #fin-rep-archive{ right:100px; }   /* push clear of PRINT so the two don't look joined */
+.fin-report #fin-rep-archive[disabled]{ color:#9A9488; border-color:#C9C3B5; background:#F0EEE8; cursor:not-allowed; }
+.fin-report .fin-live-run{ padding:8px 16px; border:1px solid #0B3D2E; border-radius:4px; font-weight:600; transition:background .12s, box-shadow .12s; }
+.fin-report .fin-live-run:hover{ background:rgba(11,61,46,.16); box-shadow:0 1px 4px rgba(0,0,0,.12); }
+.fin-report .fin-live-run[disabled]{ color:#8A8A8A; background:#F0EEE8; border-color:#C9C3B5; cursor:not-allowed; box-shadow:none; }
+
+/* 3) SCHOLAR DECISION BUTTONS (ACCEPT/HOLD/REFER BACK) — affordance only; colours (green/amber/red) unchanged */
+.fin-oi-decide{ gap:12px; margin:10px 0 4px; }
+.fin-oi-dbtn{ font-size:11px; padding:7px 14px; border-radius:4px; }
+.fin-oi-dbtn[disabled]{ color:#7A7A7A; border-color:rgba(120,120,120,.40); background:transparent; cursor:not-allowed; filter:none; opacity:.6; }
+
+/* ── ARCHIVE mode — signed-off report snapshots ── */
+.fin-arch-empty{ font-size:14px; color:#5A5A5A; font-style:italic; margin:18px 0; }
+.fin-arch-list{ margin:18px 0 0; }
+.fin-arch-row{ display:flex; align-items:center; gap:16px; padding:14px 16px; margin:0 0 12px;
+  background:#FAF8F3; border:1px solid #E4DFD3; border-radius:3px; }
+.fin-arch-info{ flex:1; min-width:0; }
+.fin-arch-title{ font-family:'Source Sans 3',sans-serif; font-size:14.5px; font-weight:600; color:#1A1A1A; }
+.fin-arch-metaline{ font-size:12px; color:#5A5A5A; margin-top:3px; }
+.fin-arch-date{ font-size:11px; color:#8A8A8A; margin-top:2px; }
+.fin-arch-actions{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.fin-arch-open-btn{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.10em; color:#0B3D2E;
+  background:none; border:1px solid #0B3D2E; border-radius:3px; padding:5px 14px; cursor:pointer; }
+.fin-arch-open-btn:hover{ background:rgba(11,61,46,.08); }
+.fin-arch-del{ font-size:13px; line-height:1; color:#B03030; background:none; border:1px solid #D8C4C4;
+  border-radius:3px; padding:4px 9px; cursor:pointer; }
+.fin-arch-del:hover{ background:rgba(176,48,48,.08); border-color:#B03030; }
+/* Opened snapshot: back/print stay live; the stored sheet is frozen (read-only) */
+.fin-arch-back{ right:auto; left:20px; }
+.fin-arch-view{ pointer-events:none; margin-top:14px; }
+/* Static traffic-light dots on a frozen snapshot — reuse the live light colours */
+.fin-arch-dot{ display:inline-block; width:12px; height:12px; border-radius:50%; margin-left:12px;
+  vertical-align:middle; box-shadow:0 0 0 1px rgba(0,0,0,.18); }
+.fin-arch-dot.green{  background:#2e7d32; }
+.fin-arch-dot.orange{ background:#ef6c00; }
+.fin-arch-dot.red{    background:#c62828; }
+.fin-arch-dot.hollow{ background:transparent; box-shadow:inset 0 0 0 1.5px #9AA0A6; }
+/* Print an opened snapshot cleanly: hide chrome + controls, ink on white */
+@media print{
+  body:has(#finance-view[data-mode="archive"]),
+  body:has(#finance-view[data-mode="archive"]) #zoneC{ height:auto !important; overflow:visible !important; display:block !important; background:#fff !important; }
+  #finance-view[data-mode="archive"],
+  #finance-view[data-mode="archive"] #finance-main,
+  #finance-view[data-mode="archive"] #finance-canvas-wrap,
+  #finance-view[data-mode="archive"] #finance-canvas{ height:auto !important; max-height:none !important; overflow:visible !important; display:block !important; background:#fff !important; }
+  #finance-view[data-mode="archive"] #finance-toolbar,
+  #finance-view[data-mode="archive"] #finance-notice,
+  #finance-view[data-mode="archive"] #finance-hub,
+  #finance-view[data-mode="archive"] .fin-arch-back,
+  #finance-view[data-mode="archive"] #fin-arch-print{ display:none !important; }
+  #finance-view[data-mode="archive"] .fin-report,
+  #finance-view[data-mode="archive"] .fin-report *{ color:#000 !important; }
+  #finance-view[data-mode="archive"] .fin-oi-dot{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; box-shadow:none !important; }
+  #finance-view[data-mode="archive"] .fin-prov-hl{ background:rgba(212,175,55,0.18) !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+}
+
+/* ── Standards board v2 — collapsible regulator-family accordion ── */
+.fin-fam-sec{ margin:0 0 8px; }
+.fin-fam-sec.open{ margin-bottom:20px; }
+/* Collapsed family bar — a clean full-width band; 6 of these read as a tidy professional list. */
+.fin-fam-head{ display:flex; align-items:center; gap:12px; padding:12px 16px; border-radius:3px;
+  border:1px solid rgba(212,175,55,0.22); background:rgba(212,175,55,0.04);
+  cursor:pointer; transition:background .12s, border-color .12s; }
+.fin-fam-head:hover{ background:rgba(212,175,55,0.10); border-color:rgba(212,175,55,0.45); }
+.fin-fam-sec.open > .fin-fam-head{ background:rgba(212,175,55,0.09); border-color:rgba(212,175,55,0.45); }
+.fin-fam-name{ font-family:'Cinzel',serif; font-size:15px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold,#D4AF37); }
+.fin-fam-count{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#8B95A5; }
+.fin-fam-deep{ margin-left:auto; font-family:'Source Sans 3',sans-serif; font-size:11.5px; color:#8B95A5; }
+.fin-fam-chev{ color:var(--gold,#D4AF37); font-size:12px; width:14px; text-align:center; }
+/* Expanded body — indented with a left rule so the group reads as one unit. */
+.fin-fam-body{ margin:8px 0 0 6px; padding:8px 0 2px 16px; border-left:2px solid rgba(212,175,55,0.25); }
+.fin-fam-tools{ margin:2px 0 12px; }
+/* Stricter clickable rule — only .fin-std-clickable rows are interactive; others are static */
+.fin-std-row:not(.fin-std-clickable){ cursor:default; }
+.fin-std-row:not(.fin-std-clickable):hover{ background:transparent; }
+.fin-std-row:not(.fin-std-clickable):hover .fin-std-name{ color:inherit; }
+
+/* ── Print — REPORT mode only: a ~2-page report for a scholar ── */
+@media print{
+  body:has(#finance-view[data-mode="report"]),
+  body:has(#finance-view[data-mode="report"]) #zoneC{ height:auto !important; overflow:visible !important; display:block !important; background:#fff !important; }
+  #finance-view[data-mode="report"],
+  #finance-view[data-mode="report"] #finance-main,
+  #finance-view[data-mode="report"] #finance-canvas-wrap,
+  #finance-view[data-mode="report"] #finance-canvas{ height:auto !important; max-height:none !important; overflow:visible !important; display:block !important; background:#fff !important; }
+  /* hide chrome: toolbar, banner, hub */
+  #finance-view[data-mode="report"] #finance-toolbar,
+  #finance-view[data-mode="report"] #finance-notice,
+  #finance-view[data-mode="report"] #finance-hub{ display:none !important; }
+  /* black ink on white */
+  #finance-view[data-mode="report"] .fin-report,
+  #finance-view[data-mode="report"] .fin-report *{ color:#000 !important; }
+  #finance-view[data-mode="report"] .fin-report{ max-width:none; padding-top:44px; }
+  #finance-view[data-mode="report"] .fin-rep-table td{ border-bottom-color:#bbb !important; }
+  #finance-view[data-mode="report"] .fin-rep-chip,
+  #finance-view[data-mode="report"] .fin-rep-vchip,
+  #finance-view[data-mode="report"] .fin-rep-status,
+  #finance-view[data-mode="report"] .fin-report-backtag{ background:none !important; border-color:#999 !important; }
+  #finance-view[data-mode="report"] .fin-rep-sigline{ border-bottom-color:#000 !important; }
+  /* Highlighted provenance values keep their gold tint on paper */
+  #finance-view[data-mode="report"] .fin-prov-hl{ background:rgba(212,175,55,0.18) !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  /* Status dot prints as its colour dot (keep the ink; force colour output) */
+  #finance-view[data-mode="report"] .fin-oi-dot{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; box-shadow:none !important; }
+  #finance-view[data-mode="report"] .fin-oi-dot.green{  background:#2e7d32 !important; }
+  #finance-view[data-mode="report"] .fin-oi-dot.orange{ background:#ef6c00 !important; }
+  #finance-view[data-mode="report"] .fin-oi-dot.red{    background:#c62828 !important; }
+  #finance-view[data-mode="report"] .fin-oi-check{ color:#2e7d32 !important; }
+  /* demonstration line repeats at the top of every printed page */
+  #finance-view[data-mode="report"] .fin-rep-demo{ position:fixed; top:0; left:0; right:0; border:none !important;
+    border-bottom:1px solid #999 !important; background:#fff !important; }
+  /* Section 3 starts on a fresh page */
+  #finance-view[data-mode="report"] .fin-rep-sec3{ break-before:page; page-break-before:always; }
+}
+
+/* ── Print — LECTURE mode only: a lecture prints like clean course notes ── */
+@media print{
+  /* Let the page flow across sheets instead of being clipped to one viewport (lecture only) */
+  body:has(#finance-view[data-mode="lecture"]),
+  body:has(#finance-view[data-mode="lecture"]) #zoneC{
+    height:auto !important; overflow:visible !important; display:block !important; background:#fff !important; }
+  #finance-view[data-mode="lecture"],
+  #finance-view[data-mode="lecture"] #finance-main,
+  #finance-view[data-mode="lecture"] #finance-canvas-wrap,
+  #finance-view[data-mode="lecture"] #finance-canvas{
+    height:auto !important; max-height:none !important; overflow:visible !important;
+    display:block !important; background:#fff !important; }
+  /* Hide chrome — toolbar, hub, and the How-this-works button; keep the banner text line */
+  #finance-view[data-mode="lecture"] #finance-toolbar,
+  #finance-view[data-mode="lecture"] #finance-hub,
+  #finance-view[data-mode="lecture"] #finance-htw-btn,
+  #finance-view[data-mode="lecture"] .fin-lec-cross,
+  #finance-view[data-mode="lecture"] .fin-lec-back{ display:none !important; }
+  #finance-view[data-mode="lecture"] #finance-notice{
+    background:#fff !important; border-bottom:1px solid #ccc !important; color:#000 !important; padding:6px 0; }
+  #finance-view[data-mode="lecture"] .fin-notice-badge{ color:#000 !important; border-color:#666 !important; }
+  /* Document body → black ink on white */
+  #finance-view[data-mode="lecture"] .fin-lecture{ max-width:none; margin:0; padding:0; color:#000; }
+  #finance-view[data-mode="lecture"] .fin-lecture,
+  #finance-view[data-mode="lecture"] .fin-lecture *{ color:#000 !important; }
+  #finance-view[data-mode="lecture"] .fin-lec-banner{ color:#333 !important; }
+  #finance-view[data-mode="lecture"] .fin-lec-h1,
+  #finance-view[data-mode="lecture"] .fin-lec-h2,
+  #finance-view[data-mode="lecture"] .fin-lec-h3{ border-color:#999 !important; }
+  /* Badges / chips / rules → outline only, no fills or glows */
+  #finance-view[data-mode="lecture"] .fin-badge,
+  #finance-view[data-mode="lecture"] .fin-lec-vchip,
+  #finance-view[data-mode="lecture"] .fin-lec-cchip,
+  #finance-view[data-mode="lecture"] .fin-lec-grade,
+  #finance-view[data-mode="lecture"] .fin-lec-enttag,
+  #finance-view[data-mode="lecture"] .fin-lec-mchip,
+  #finance-view[data-mode="lecture"] .fin-hub-chip{ background:none !important; border-color:#999 !important; }
+  #finance-view[data-mode="lecture"] .fin-lec-entry{ border-left-color:#999 !important; }
+  #finance-view[data-mode="lecture"] .fin-honesty,
+  #finance-view[data-mode="lecture"] .fin-lec-honesty{ background:none !important; border-color:#999 !important; }
+}
+/* ── Usul logo — visible only in finance fullscreen mode (body.fin-fullscreen).
+   Replaces the hidden Gold Ark logo so demo viewers know they are in Usul. ── */
+#usul-fs-logo { display: none; height: 34px; width: auto; margin-right: 14px; vertical-align: middle; }
+body.fin-fullscreen #usul-fs-logo { display: inline-block; }
+.fin-pages-wrap{ position:relative; display:inline-flex; }
+#fin-pages-btn{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.14em; background:rgba(212,175,55,.08); }
+#fin-pages-panel{ width:180px; flex-direction:column; padding:6px 0; }
+#fin-pages-panel .fin-mode-btn{ display:block; padding:7px 14px; text-align:left; }
+/* ── STANDARDS reader page (mode=reader): dropdown of all standards + full text ── */
+#finance-view[data-mode="reader"] .bv-dd-wrap{ display:none; }
+.fin-reader-page{ padding:16px 22px; }
+.fin-reader-head{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.fin-reader-lbl{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.12em; color:#8B95A5; text-transform:uppercase; }
+.fin-reader-sel{ flex:1; max-width:640px; background:#0d1117; color:#E8EAEF; border:1px solid rgba(212,175,55,0.4); border-radius:6px; padding:8px 12px; font-family:'Source Sans 3',sans-serif; font-size:14px; }
+.fin-reader-sel:focus{ outline:none; border-color:#D4AF37; }
+.fin-reader-body{ background:rgba(212,175,55,0.03); border:1px solid rgba(212,175,55,0.18); border-radius:6px; padding:18px 22px; }
+.fin-reader-ttl{ font-family:'Cinzel',serif; font-size:16px; letter-spacing:.04em; color:#D4AF37; margin-bottom:14px; }
+.fin-reader-text{ white-space:pre-wrap; word-wrap:break-word; font-family:'Source Sans 3',sans-serif; font-size:14px; line-height:1.7; color:#D6DBE3; margin:0; }
+.fin-reader-empty{ color:#8B95A5; font-style:italic; }
+#finance-view[data-mode="htw"] .bv-dd-wrap{ display:none; }
+.fin-pages-div{ height:1px; background:rgba(212,175,55,0.25); margin:5px 10px; }
+#fin-pages-panel .fin-pages-htw{ color:#8B95A5; font-style:italic; }
+/* ── Fullscreen demo header: white tile, logo centred, notice text right (navy) ── */
+body.fin-fullscreen #finance-notice{
+  position:relative;
+  background:#ffffff;
+  border-bottom:1px solid rgba(14,22,33,0.25);
+  justify-content:flex-end;
+  padding:8px 24px;
+  min-height:52px;
+}
+body.fin-fullscreen #finance-notice .fin-notice-text{
+  flex:0 0 auto;
+  text-align:right;
+  color:#0E1621;
+  font-weight:600;
+}
+body.fin-fullscreen #usul-fs-logo{
+  display:block;
+  position:absolute;
+  left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  height:40px; width:auto; margin:0;
+}
+
+/* Library-preview exits — verse READ pills open START, hadith opens MONASTIC.
+   Mark them so a buyer sees these are the separate library add-on, not core USUL. */
+.fin-start-read::after,
+.fin-q-read[data-s]::after,
+.fin-verse-read::after,
+.fin-mon-open::after,
+[data-read-hadith]::after{
+  content:" ↗ library";
+  font-size:9px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-left:4px;
+  color:#c9a24a;
+  opacity:.85;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* Outbound citations to external websites (book free-read source; standard source page).
+   Grey "external" tag distinguishes these from the gold "library" add-on links. */
+.fin-q-read[target="_blank"]::after,
+.fin-std-source::after{
+  content:" external";
+  font-size:9px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-left:4px;
+  color:#8B95A5;
+  opacity:.85;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* Report quote → jump to the exact clause in the uploaded document */
+.fin-rep-quote-jump{ cursor:pointer; }
+.fin-rep-quote-jump:hover{ outline:1px solid rgba(201,162,74,.55); }
+.fin-doc-jump-tag{ color:#c9a24a; font-size:10px; letter-spacing:.04em; text-transform:uppercase; margin-left:6px; white-space:nowrap; }
+.fin-doc-hit{ background:#c9a24a; color:#0b1220; padding:1px 2px; border-radius:2px; }
+
+.fin-trace-hadith{ color:#4FD1C5; border:1px solid rgba(79,209,197,0.5); background:rgba(79,209,197,0.08); }
+.fin-trace-clear{ color:#9FB0C3; border:1px solid rgba(159,176,195,0.5); background:rgba(159,176,195,0.08); }
+
+.fin-home-stats{ display:flex; gap:20px; flex-wrap:wrap; margin:4px 0 16px; padding-bottom:12px; border-bottom:1px solid rgba(201,162,74,0.15); }
+.fin-home-stat{ font-size:12px; color:#9FB0C3; letter-spacing:.02em; }
+.fin-home-stat b{ color:#C9A24A; font-size:15px; font-weight:600; margin-right:4px; }
+
+.fin-reader-back{ background:transparent; color:#C9A24A; border:1px solid rgba(201,162,74,0.5); border-radius:4px; padding:4px 11px; font-size:12px; cursor:pointer; margin-right:12px; font-family:'Cinzel',serif; letter-spacing:.04em; }
+.fin-reader-back:hover{ background:rgba(201,162,74,0.12); }
+
+#fin-back-btn:disabled{ opacity:.4; cursor:default; }
+
+.fin-back-btn{ background:rgba(201,162,74,0.15); color:#E8C877; border:1px solid #C9A24A; border-radius:4px; padding:5px 12px; font-family:'Cinzel',serif; font-size:12px; letter-spacing:.04em; cursor:pointer; margin-right:10px; }
+.fin-back-btn:hover{ background:rgba(201,162,74,0.28); }
+.fin-back-btn:disabled{ opacity:.35; cursor:default; }
+
+/* ── TRACE — search a modern term, follow it back to the Qur'an ── */
+.fin-trace-page{ max-width:820px; margin:0 auto; padding:24px 28px 60px; overflow-y:auto; }
+.fin-trace-h1{ font-family:'Cinzel',serif; color:#D4AF37; font-size:22px; letter-spacing:.06em; margin:0 0 6px; }
+.fin-trace-sub{ font-family:'Source Sans 3',sans-serif; color:#9AA6B2; font-size:13px; margin:0 0 20px; }
+.fin-trace-search{ width:100%; box-sizing:border-box; margin:0 0 4px; padding:10px 12px; background:#1a2330;
+  border:1px solid var(--border2,#2D3748); color:#fff; font-family:'Source Sans 3',sans-serif;
+  font-size:14px; border-radius:4px; outline:none; }
+.fin-trace-search:focus{ border-color:var(--gold,#D4AF37); }
+.fin-trace-search::placeholder{ color:#6B7B8C; }
+
+.fin-trace-results{ margin:8px 0 4px; }
+.fin-trace-none{ font-size:12px; color:#6B7B8C; font-style:italic; padding:6px 2px; }
+.fin-trace-res{ display:flex; align-items:baseline; gap:10px; padding:8px 10px; border:1px solid rgba(201,191,168,.14);
+  border-radius:4px; margin-bottom:5px; cursor:pointer; background:rgba(201,191,168,.03); transition:border-color .12s, background .12s; }
+.fin-trace-res:hover{ border-color:rgba(201,162,74,.55); background:rgba(212,175,55,.06); }
+.fin-trace-res.on{ border-color:var(--gold,#D4AF37); background:rgba(212,175,55,.10); }
+.fin-trace-res-en{ font-family:'Source Sans 3',sans-serif; font-weight:600; font-size:13.5px; color:#E6E1D6; }
+.fin-trace-res-ar{ font-family:'Crimson Pro',serif; font-size:14px; color:#C9BFA8; direction:rtl; }
+.fin-trace-res-yr{ margin-left:auto; font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8A94A2; white-space:nowrap; }
+
+/* Journey — a single vertical card; sections strung on a thin gold connector line. */
+.fin-trace-journey{ position:relative; margin-top:20px; padding:4px 0 4px 22px;
+  border-left:2px solid rgba(201,162,74,.35); }
+.fin-trace-sec{ position:relative; padding:0 0 20px 6px; }
+.fin-trace-sec:last-child{ padding-bottom:2px; }
+.fin-trace-sec::before{ content:''; position:absolute; left:-31px; top:3px; width:9px; height:9px; border-radius:50%;
+  background:#0F1622; border:2px solid var(--gold,#D4AF37); box-shadow:0 0 0 3px rgba(15,22,34,1); }
+.fin-trace-sec-h{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.10em; color:#C9A24A;
+  text-transform:uppercase; margin-bottom:8px; }
+.fin-trace-term-line{ display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:4px; }
+.fin-trace-term-en{ font-family:'Source Sans 3',sans-serif; font-weight:600; font-size:16px; color:#E8C977; }
+.fin-trace-term-ar{ font-family:'Crimson Pro',serif; font-size:17px; color:#C9BFA8; direction:rtl; }
+.fin-trace-first{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#9AA6B2; margin-bottom:2px; }
+.fin-trace-src{ font-family:'Source Sans 3',sans-serif; font-size:11.5px; color:#8A94A2; font-style:italic; }
+
+.fin-trace-hrow{ display:flex; align-items:baseline; flex-wrap:wrap; gap:8px; padding:5px 8px; border-radius:3px;
+  border-left:2px solid transparent; margin-bottom:2px; }
+.fin-trace-hrow-hit{ border-left:2px solid var(--gold,#D4AF37); background:rgba(212,175,55,.07); }
+.fin-trace-hrow-yr{ font-family:'Cinzel',serif; font-size:11px; color:#8A94A2; min-width:56px; }
+.fin-trace-hrow-hit .fin-trace-hrow-yr{ color:#E8C977; }
+.fin-trace-hrow-stage{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#7C8794; }
+.fin-trace-hrow-name{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; color:#D8D3C7; }
+.fin-trace-hrow-sect{ font-family:'Source Sans 3',sans-serif; font-size:10.5px; color:#6B7B8C; }
+.fin-trace-hrow-flag{ font-family:'Source Sans 3',sans-serif; font-size:10.5px; color:#C9A24A; font-style:italic;
+  padding:0 8px 4px 58px; margin-top:-1px; }
+
+/* TRACE — TRADITION filter response on the DATED HISTORY rows + PRISM "scholars differ" link */
+.fin-trace-trad-note{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8A94A2; font-style:italic;
+  margin:-2px 0 8px; padding-left:2px; }
+.fin-trace-hrow-off{ opacity:.35; }                              /* off-tradition: greyed, never hidden */
+.fin-trace-hrow-trad{ border-left:2px solid rgba(201,162,74,.55); background:rgba(212,175,55,.05); }  /* matches selection */
+.fin-trace-hrow .fin-tag-untagged{ margin-left:2px; }            /* untagged chip spacing inside a row */
+.fin-trace-diverge{ display:inline-flex; align-items:center; gap:4px; margin:4px 0 12px; padding:5px 11px;
+  font-family:'Source Sans 3',sans-serif; font-size:11.5px; font-weight:600; letter-spacing:.02em;
+  color:#F0B44C; border:1px solid rgba(245,158,11,.55); background:rgba(245,158,11,.09);
+  border-radius:14px; cursor:pointer; transition:border-color .12s, background .12s; }
+.fin-trace-diverge:hover{ border-color:#F59E0B; background:rgba(245,158,11,.16); }
+
+/* TRACE — STANDARDS TODAY jurisdiction scope (reuses SETTINGS' JURIS selection) */
+.fin-trace-juris-note{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8A94A2;
+  margin:-2px 0 8px; padding-left:2px; }
+.fin-trace-std{ margin-bottom:2px; }
+.fin-trace-std-out{ opacity:.4; }                         /* out-of-scope: greyed, never hidden */
+.fin-trace-std-outchip{ margin-left:8px; vertical-align:middle;
+  color:#8A94A2; border-color:rgba(138,148,162,.5); background:rgba(138,148,162,.08); }
+
+/* TRACE: hide the global filter dropdowns that don't apply here (same per-mode mechanism PILLAR uses).
+   RESET / FULLSCREEN / BACK and the right-hand USER group are unaffected. */
+#finance-view[data-mode="trace"] .bv-dd-wrap[data-dd="tradition"],
+#finance-view[data-mode="trace"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="trace"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="trace"] .bv-dd-wrap[data-dd="concepts"]{ display:none; }
+
+/* TRACE — in-page filter row (Tradition / School / Jurisdiction chips). */
+.fin-trace-filters{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; margin:8px 0 2px; padding:2px 0; }
+.fin-trace-fgroup{ display:inline-flex; flex-wrap:wrap; align-items:center; gap:5px; }
+.fin-trace-flabel{ font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.10em; text-transform:uppercase;
+  color:#7C8794; margin-right:2px; }
+.fin-trace-fchip{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:11px; padding:2px 9px;
+  border:1px solid rgba(201,191,168,.28); border-radius:12px; color:#C9BFA8; background:rgba(201,191,168,.04);
+  cursor:pointer; transition:border-color .12s, background .12s, color .12s; }
+.fin-trace-fchip:hover{ border-color:rgba(201,162,74,.55); }
+.fin-trace-fchip.on{ border-color:var(--gold,#D4AF37); color:#E8C977; background:rgba(212,175,55,.12); }
+.fin-trace-fclear{ font-family:'Source Sans 3',sans-serif; font-size:11px; color:#8A94A2; cursor:pointer;
+  text-decoration:underline; margin-left:4px; }
+.fin-trace-fclear:hover{ color:var(--gold,#D4AF37); }
+
+/* ── TRACE density + layout (override earlier .fin-trace-* rules) ── */
+/* CHANGE 1 — use the canvas: left-aligned block, modest margin, tightened header, +1 font step. */
+.fin-trace-page{ max-width:900px; margin:0; padding:14px 30px 48px; }
+.fin-trace-head{ display:flex; align-items:baseline; flex-wrap:wrap; gap:10px; margin:0 0 8px; }
+.fin-trace-h1{ font-size:17px; margin:0; }
+.fin-trace-sub{ font-size:12px; margin:0; }
+.fin-trace-sec-h{ font-size:13px; }
+.fin-trace-term-en{ font-size:18px; }
+.fin-trace-term-ar{ font-size:18px; }
+.fin-trace-first{ font-size:13px; }
+.fin-trace-src{ font-size:12px; }
+.fin-trace-hrow-yr{ font-size:13px; font-weight:700; }
+.fin-trace-hrow-stage{ font-size:12px; }
+.fin-trace-hrow-name{ font-size:13px; }
+.fin-trace-hrow-sect{ font-size:11px; }
+.fin-trace-hrow-flag{ font-size:11px; }
+.fin-trace-juris-note, .fin-trace-trad-note{ font-size:11px; }
+.fin-trace-page .fin-tag{ font-size:11px; }          /* untagged / outside-jurisdiction chips — floor 11px */
+.fin-trace-search{ font-size:13px; }
+/* CHANGE 3 — compact gap above TODAY: only the selected-term chip line sits between filters and journey. */
+.fin-trace-filters{ margin:8px 0 4px; }
+.fin-trace-selchip-wrap{ margin:2px 0; }
+.fin-trace-selchip-wrap:empty{ display:none; margin:0; }
+.fin-trace-results{ margin:6px 0 0; }
+.fin-trace-results:empty{ display:none; margin:0; }
+.fin-trace-journey{ margin-top:6px; }
+.fin-trace-journey:empty{ margin:0; }
+
+/* ── TRACE full-width redesign (override earlier .fin-trace-* rules) ── */
+/* CHANGE 1 — page + journey use the whole canvas; drop the narrow connector column. */
+.fin-trace-page{ max-width:1150px; }
+.fin-trace-journey{ width:100%; max-width:1150px; margin-top:6px; padding:0; border-left:none; }
+.fin-trace-sec{ padding:0 0 18px 0; }
+.fin-trace-sec::before{ display:none; }                 /* remove the gold connector dots */
+.fin-trace-sec-h{ font-size:14px; }
+
+/* Top row — TODAY (left) + PARENT CONTRACT beside it on wide screens. */
+.fin-trace-top{ display:flex; flex-wrap:wrap; gap:12px 34px; align-items:flex-start; }
+.fin-trace-top .fin-trace-sec{ flex:1 1 280px; min-width:240px; padding-bottom:10px; }
+.fin-trace-term-en{ font-size:20px; }
+.fin-trace-term-ar{ font-size:20px; }
+.fin-trace-first{ font-size:14px; }
+.fin-trace-src{ font-size:13px; }
+
+.fin-trace-diverge-row{ display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 14px; }
+.fin-trace-diverge{ margin:0; }
+
+/* STANDARDS TODAY — cards in a responsive grid (2–3 across on wide screens). */
+.fin-trace-std-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:12px; margin-top:6px; }
+.fin-trace-std{ border:1px solid rgba(201,191,168,.18); border-radius:6px; padding:12px 14px; background:rgba(201,191,168,.03); margin:0; }
+.fin-term-std-name{ font-size:14px; }
+.fin-term-std-clause{ font-size:13px; }
+.fin-term-std-ver{ font-size:13px; }
+
+/* DATED HISTORY — full-width rows, comfortable padding. */
+.fin-trace-hrow{ padding:15px 12px; }
+.fin-trace-hrow-yr{ font-size:14px; font-weight:700; min-width:64px; }
+.fin-trace-hrow-stage{ font-size:13px; }
+.fin-trace-hrow-name{ font-size:14px; }
+.fin-trace-hrow-sect{ font-size:13px; }
+.fin-trace-hrow-flag{ font-size:13px; }
+
+/* QUR'ANIC ORIGIN — verse READ cards 3-across on wide screens. */
+.fin-trace-q-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:10px; margin:6px 0 4px; }
+.fin-trace-q-grid .fin-q-card{ margin:0; }
+
+/* Font floors — nothing under 13px on this page. */
+.fin-trace-juris-note, .fin-trace-trad-note{ font-size:13px; }
+.fin-trace-page .fin-tag{ font-size:13px; }
+.fin-trace-fclear{ font-size:13px; }
+.fin-trace-search{ font-size:14px; }
+.fin-trace-res-yr{ font-size:13px; }
+
+/* CHANGE 2 — "back to term" link atop a drilled-in hub card. */
+.fin-trace-hubback{ margin:0 0 8px; }
+.fin-trace-hubback-link{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#8A94A2; cursor:pointer; }
+.fin-trace-hubback-link:hover{ color:var(--gold,#D4AF37); }
+
+/* ════════════════════════════════════════════════════════════════════════
+   TRACE colour policy + font scale (final override). Gold is sacred — reserved
+   for Qur'an/scripture only; nothing else on TRACE may be gold.
+   GOLD #C9A24A · IVORY #E8EDF4 · STEEL #7FA8CF · MUTED #9FB0C3 · TEAL #4FD1C5
+   · LAVENDER #A78BFA · AMBER #F59E0B
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* IVORY — page title + all section headings (except QUR'ANIC ORIGIN). */
+.fin-trace-page .fin-trace-h1{ color:#E8EDF4; }
+.fin-trace-page .fin-trace-sec-h{ color:#E8EDF4; font-size:16px; }
+
+/* GOLD — ONLY Qur'an: verse cards, READ pills, QUR'ANIC ORIGIN title + word chip. */
+.fin-trace-page .fin-trace-origin .fin-trace-sec-h{ color:#C9A24A; }
+.fin-trace-journey .fin-q-ref{ color:#C9A24A; }
+.fin-trace-journey .fin-q-card:hover{ border-color:#C9A24A; }
+.fin-trace-page .fin-q-read{ color:#C9A24A; border-color:rgba(201,162,74,.5); font-size:12px; }
+.fin-trace-page .fin-trace-origin .fin-hub-chip[data-trace-qword]{
+  color:#C9A24A !important; border-color:rgba(201,162,74,.5) !important; background:rgba(201,162,74,.08) !important; }
+
+/* STEEL — term names, year numbers, filter labels/chips, selected-term chip, result selection. */
+.fin-trace-page .fin-trace-term-en{ color:#7FA8CF; }
+.fin-trace-page .fin-trace-hrow-yr,
+.fin-trace-page .fin-trace-hrow-hit .fin-trace-hrow-yr{ color:#7FA8CF; }
+.fin-trace-page .fin-trace-res-en{ color:#7FA8CF; }
+.fin-trace-page .fin-trace-search:focus{ border-color:#7FA8CF; }
+.fin-trace-page .fin-trace-res:hover{ border-color:rgba(127,168,207,.55); background:rgba(127,168,207,.06); }
+.fin-trace-page .fin-trace-res.on{ border-color:#7FA8CF; background:rgba(127,168,207,.10); }
+.fin-trace-filters .bv-dd-btn{ color:#7FA8CF; }
+.fin-trace-filters .bv-dd-btn:hover{ border-color:#7FA8CF; }
+.fin-trace-filters .bv-dd-panel.open{ border-color:#7FA8CF; }
+.fin-trace-filters .bv-ck{ border-color:rgba(127,168,207,.5); }
+.fin-trace-filters .bv-ck.on{ color:#7FA8CF; border-color:#7FA8CF; background:rgba(127,168,207,.12); }
+.fin-trace-filters .bv-ck-row.checked{ color:#7FA8CF; }
+/* Selected-term chip is inline-styled in JS → needs !important to leave gold. */
+.fin-trace-page .fin-trace-selchip{ border-color:#7FA8CF !important; background:rgba(127,168,207,.12) !important; }
+.fin-trace-page .fin-trace-selchip span{ color:#7FA8CF !important; }
+.fin-trace-page .fin-trace-selchip .fin-trace-selchip-x{ color:#7FA8CF !important; background:rgba(127,168,207,.28) !important; }
+
+/* MUTED — notes, meta, clause text, verified lines, dating basis, captions. */
+.fin-trace-page .fin-trace-first,
+.fin-trace-page .fin-trace-src,
+.fin-trace-page .fin-trace-juris-note,
+.fin-trace-page .fin-trace-trad-note,
+.fin-trace-page .fin-trace-hrow-stage,
+.fin-trace-page .fin-trace-hrow-sect,
+.fin-trace-page .fin-trace-hrow-flag,
+.fin-trace-page .fin-term-std-clause,
+.fin-trace-page .fin-term-std-ver,
+.fin-trace-page .fin-qc-note,
+.fin-trace-page .fin-qc-evidence,
+.fin-trace-page .fin-hub-none,
+.fin-trace-page .fin-trace-none,
+.fin-trace-page .fin-trace-res-yr{ color:#9FB0C3; }
+
+/* LAVENDER — internal cross-links: standard-code links, contract/term chips, back-to-term. */
+.fin-trace-page .fin-std-link{ color:#A78BFA; border-bottom-color:#A78BFA; }
+.fin-trace-page .fin-hub-chip[data-sel-kind]{ color:#A78BFA; border-color:rgba(167,139,250,.5); background:rgba(167,139,250,.08); }
+.fin-trace-hubback-link{ color:#A78BFA; }
+.fin-trace-hubback-link:hover{ color:#A78BFA; }
+
+/* TEAL — leaving USUL: external / library links. */
+.fin-trace-page a[target="_blank"]{ color:#4FD1C5; }
+
+/* AMBER — scholars-differ chip (⚖) + caution chips. */
+.fin-trace-page .fin-trace-diverge{ color:#F59E0B; border-color:rgba(245,158,11,.55); background:rgba(245,158,11,.10); font-size:12px; }
+.fin-trace-page .fin-trace-diverge:hover{ border-color:#F59E0B; background:rgba(245,158,11,.18); }
+.fin-trace-page .fin-trace-std-outchip{ color:#F59E0B; border-color:rgba(245,158,11,.5); background:rgba(245,158,11,.08); }
+
+/* Non-Qur'an highlights lose gold → steel (incl. the JS-injected hover/selected styles). */
+.fin-trace-page .fin-trace-hrow-hit{ border-left-color:#7FA8CF; background:rgba(127,168,207,.07); }
+.fin-trace-page .fin-trace-hrow-trad{ border-left-color:#7FA8CF; background:rgba(127,168,207,.05); }
+.fin-trace-page .fin-trace-hrow.fin-trace-hrow-sel{ border-left-color:#7FA8CF; background:rgba(127,168,207,.12); }
+.fin-trace-page .fin-trace-hrow.clk:hover{ background:rgba(127,168,207,.08); }
+.fin-trace-page .fin-trace-fclear:hover{ color:#7FA8CF; }
+
+/* FONTS + SPACING (TRACE only) — nothing below 12px. */
+.fin-trace-page .fin-trace-term-en,
+.fin-trace-page .fin-trace-term-ar{ font-size:22px; }
+.fin-trace-page .fin-trace-hrow-name,
+.fin-trace-page .fin-trace-hrow-yr,
+.fin-trace-page .fin-trace-first,
+.fin-trace-page .fin-term-std-name{ font-size:15px; }
+.fin-trace-page .fin-term-std-clause{ font-size:14px; }
+.fin-trace-page .fin-trace-src,
+.fin-trace-page .fin-trace-hrow-stage,
+.fin-trace-page .fin-trace-hrow-sect,
+.fin-trace-page .fin-trace-hrow-flag,
+.fin-trace-page .fin-term-std-ver,
+.fin-trace-page .fin-trace-juris-note,
+.fin-trace-page .fin-trace-trad-note{ font-size:13px; }
+.fin-trace-page .fin-qc-note,
+.fin-trace-page .fin-qc-evidence{ font-size:12px; }
+.fin-trace-page .fin-hub-chip,
+.fin-trace-page .fin-badge{ font-size:12px; }
+/* Kill the triple-height gaps: rows 6px vertical, sections 14px. */
+.fin-trace-page .fin-trace-hrow{ padding:6px 12px; }
+.fin-trace-page .fin-trace-sec{ padding:0 0 14px 0; }
+
+/* LEGEND — one small line under the filter row (pure CSS; wraps to its own line). */
+.fin-trace-filters::after{
+  content:"Gold = Qur'an \00B7  \2696  amber = scholars differ \00B7  teal = opens library";
+  flex-basis:100%; width:100%; margin-top:2px;
+  font-family:'Source Sans 3',sans-serif; font-size:12px; color:#9FB0C3; letter-spacing:.01em; }
+
+/* ════════════════════════════════════════════════════════════════
+   IVORY MANUSCRIPT THEME (Option A) — approved by Adam 2026-07-26.
+   USUL pages only. Appended override block: DELETE FROM THIS LINE
+   TO END OF FILE to restore the previous dark theme.
+   Rules honoured: GOLD appears only on Qur'an elements (spine,
+   Qur'an READ pill). Actions = teal. Scholars-differ = amber.
+   ════════════════════════════════════════════════════════════════ */
+
+/* 1 ── Base surfaces & ink */
+#zoneC #finance-view, #finance-view{
+  --bg0:#F6F1E7; --bg:#FFFFFF; --surface:#FFFFFF;
+  --border2:#D9D0BC; --gold:#0E6B63; --gold-dim:#9BB8B3;
+  --muted:#75849A; --text1:#22303F;
+  background:#F6F1E7; color:#22303F; color-scheme:light;
+}
+#finance-view .fin-canvas{ background:#F6F1E7; }
+#finance-view .fin-empty{ color:#75849A; }
+
+/* 2 ── Standing notice line */
+#finance-notice{ background:#FDFBF5; border-bottom:1px solid #D9D0BC; color:#5B6B7C; }
+#finance-notice .fin-notice-badge{ color:#0E6B63; border-color:#0E6B63; }
+
+/* 3 ── Toolbar: white band, teal rule; SOURCE buttons filled, USER buttons outlined */
+#finance-toolbar{ background:#FFFFFF; border-bottom:2px solid #0E6B63; }
+#finance-view .fin-mode-switch .fin-mode-btn{
+  font-size:13px; color:#22303F; background:#EEE8DA;
+  border:1px solid #D9D0BC; border-radius:6px; padding:6px 12px;
+}
+#finance-view .fin-mode-switch .fin-mode-btn:hover{ color:#0E6B63; border-color:#0E6B63; }
+#finance-view .fin-mode-switch .fin-mode-btn.on{
+  color:#fff; background:#0E6B63; border-color:#0E6B63;
+}
+#finance-view #fin-pages-btn{
+  font-size:13px; color:#22303F; background:#EEE8DA;
+  border:1px solid #D9D0BC; border-radius:6px; padding:6px 12px;
+}
+#finance-view .fin-group-user{ gap:8px; padding-left:14px; border-left:2px solid #D9D0BC; }
+#finance-view .fin-group-user .fin-mode-btn{
+  background:#FFFFFF; color:#0E6B63; border:1.5px solid #0E6B63;
+}
+#finance-view .fin-group-user .fin-mode-btn:hover{ background:#E5F2F0; color:#0A5650; }
+#finance-view .fin-group-user .fin-mode-btn.on{ background:#0E6B63; color:#fff; }
+#finance-view .fin-back-btn{
+  background:#22303F; color:#FFFFFF; border:1px solid #22303F;
+  font-size:12.5px; border-radius:6px;
+}
+#finance-view .fin-back-btn:hover{ background:#33455E; }
+#finance-view .fin-reset-btn{
+  color:#22303F; border:1.5px solid #8A94A2; border-radius:6px; font-size:12.5px;
+}
+#finance-view .fin-reset-btn:hover{ border-color:#0E6B63; color:#0E6B63; }
+#finance-readout{ color:#5B6B7C; }
+#fin-pages-panel{ background:#FFFFFF; border:1px solid #D9D0BC; box-shadow:0 6px 18px rgba(34,48,63,.18); }
+#fin-pages-panel .fin-mode-btn{ background:#FFFFFF; border:none; color:#22303F; }
+#fin-pages-panel .fin-mode-btn:hover{ background:#EEF6F5; color:#0E6B63; }
+.fin-pages-div{ background:#D9D0BC; }
+#fin-pages-panel .fin-pages-htw{ color:#75849A; }
+#finance-htw-btn{ color:#5B6B7C; }
+#finance-htw-btn:hover{ color:#0E6B63; }
+
+/* 4 ── Filter dropdown widgets */
+#finance-view .bv-dd-btn{
+  background:#FFFFFF; color:#0E6B63; border:1.5px solid #0E6B63;
+  border-radius:6px; font-size:13px;
+}
+#finance-view .bv-dd-btn:hover{ background:#E5F2F0; }
+#finance-view .bv-dd-panel{ background:#FFFFFF; border:1px solid #D9D0BC; box-shadow:0 6px 18px rgba(34,48,63,.18); color:#22303F; }
+#finance-view .bv-ck-row{ color:#22303F; }
+#finance-view .bv-ck-row:hover{ background:#EEF6F5; }
+#finance-view .bv-ck-label{ font-size:13.5px; color:#22303F; }
+#finance-view .bv-ck-prefix{ color:#75849A; }
+#finance-view .bv-ck-count{ color:#75849A; }
+#finance-view .bv-dd-search input{ background:#FDFBF5; color:#22303F; border:1px solid #D9D0BC; }
+#finance-view .bv-dd-allnone span{ color:#0E6B63; }
+
+/* 5 ── Right info hub (DETAILS panel) — readable labels, one type scale */
+#finance-view .fin-hub{ background:#FBF8F1; border-left:1px solid #D9D0BC; }
+#finance-view .fin-hub::-webkit-scrollbar-track{ background:#EEE8DA; }
+#finance-view .fin-hub::-webkit-scrollbar-thumb{ background:#B9AF97; }
+#finance-view .fin-hub-head{ border-bottom:1px solid #D9D0BC; }
+#finance-view .fin-hub-title{ color:#1A2432; font-size:16px; }
+#finance-view .fin-hub-sec{ color:#8A7B5C; font-size:12px; letter-spacing:.14em; border-bottom:1px solid #E7DFCC; padding-bottom:3px; }
+#finance-view .fin-hub-k{ color:#0E6B63; font-size:11.5px; letter-spacing:.10em; }
+#finance-view .fin-hub-v{ color:#22303F; font-size:14px; line-height:1.55; }
+#finance-view .fin-hub-field{ font-size:14px; padding:4px 16px; }
+#finance-view .fin-hub-hint{ color:#75849A; font-size:13px; }
+#finance-view .fin-hub-none{ color:#75849A; font-size:13px; }
+#finance-view .fin-hub-anchor{ color:#75849A; font-size:12px; }
+#finance-view .fin-hub-chip{
+  color:#0E6B63; background:#FFFFFF; border:1.5px solid #0E6B63;
+  font-size:13px; border-radius:5px;
+}
+#finance-view .fin-hub-chip:hover{ background:#0E6B63; color:#fff; }
+
+/* 6 ── Assurance badges: ILLUSTRATIVE is amber-on-cream, never gold */
+#finance-view .fin-badge{ font-size:11px; letter-spacing:.08em; border-radius:4px; }
+#finance-view .fin-badge-ill{ color:#8A5A00; background:#FBEED3; border:1px solid #E0B95E; }
+#finance-view .fin-badge-plc{ color:#8A5200; background:#FFF4E2; border:1px solid #D98E2B; }
+#finance-view .fin-badge-est{ color:#1E5B2E; background:#E7F3E9; border:1px solid #2e7d32; }
+
+/* 7 ── TRACE page */
+#finance-view .fin-trace-page{ color:#22303F; }
+#finance-view .fin-trace-diverge{
+  background:#FFF4E2; border:1.5px solid #D98E2B; color:#8A5200; border-radius:7px;
+}
+#finance-view .fin-trace-diverge:hover{ background:#FBE7C4; }
+
+/* 8 ── PRISM page */
+#finance-view .fin-prism-h1, #finance-view .fin-prism-q{ color:#1A2432; }
+#finance-view .fin-prism-intro, #finance-view .fin-prism-why{ color:#5B6B7C; }
+#finance-view .fin-prism-topic{ background:#FFFFFF; border:1px solid #D9D0BC; border-radius:10px; }
+#finance-view .fin-prism-collabel{ color:#8A7B5C; }
+#finance-view .fin-prism-auth{ color:#1A2432; }
+#finance-view .fin-prism-text{ color:#22303F; }
+#finance-view .fin-prism-basis{ color:#75849A; }
+#finance-view .fin-prism-summary{ color:#5B6B7C; }
+#finance-view .fin-prism-ref, #finance-view .fin-prism-term{ color:#0E6B63; border-color:#0E6B63; background:#FFFFFF; }
+#finance-view .fin-prism-pending{ opacity:.75; }
+#finance-view .fin-prism-empty{ color:#75849A; }
+
+/* 9 ── Standards reader + full-text overlay */
+#finance-view .fin-reader-page{ color:#22303F; }
+#finance-view .fin-reader-sel{ background:#FFFFFF; color:#22303F; border:1.5px solid #0E6B63; }
+#finance-view .fin-reader-back{ background:#22303F; color:#fff; border:none; border-radius:6px; }
+#finance-view .fin-reader-ttl{ color:#1A2432; }
+#finance-view .fin-reader-text{ color:#22303F; background:#FFFFFF; border:1px solid #D9D0BC; }
+#finance-view .fin-reader-empty{ color:#75849A; }
+.fin-rdr{ background:rgba(34,48,63,.45); }
+.fin-rdr .fin-rdr-box{ background:#FFFFFF; color:#22303F; border:1px solid #D9D0BC; }
+.fin-rdr .fin-rdr-code{ color:#0E6B63; }
+.fin-rdr .fin-rdr-title{ color:#1A2432; }
+.fin-rdr .fin-rdr-body{ color:#22303F; }
+
+/* 10 ── HOME shelf + stats */
+#finance-view .fin-home-title, #finance-view .fin-home-head{ color:#1A2432; }
+#finance-view .fin-home-sub{ color:#5B6B7C; }
+#finance-view .fin-home-stat{ background:#FFFFFF; border:1px solid #D9D0BC; color:#22303F; }
+
+/* 11 ── Tooltip */
+.think-tooltip{ background:#FFFFFF; color:#22303F; border:1px solid #D9D0BC; box-shadow:0 4px 14px rgba(34,48,63,.2); }
+
+/* 12 ── Qur'an stays GOLD — re-gild explicitly (var --gold is teal now) */
+#finance-view .fin-qread{
+  color:#7A5E00; border-color:#C9A227; background:rgba(201,162,39,.10);
+}
+#finance-view .fin-qread:hover{ background:#C9A227; color:#FFFFFF; box-shadow:0 0 14px rgba(201,162,39,.55); }
+#finance-view .fin-qread-off{ color:#9AA6B2; border-color:#C8CDD6; background:transparent; }
+#finance-view .fin-qread-off:hover{ background:transparent; color:#9AA6B2; box-shadow:none; }
+
+/* ── IVORY PATCH 2 (2026-07-26): HOME words page + leftover pale text.
+      The first pass missed classes that still carried light-on-dark colours;
+      on paper they were unreadable. All text now ink/teal; Qur'an keeps a
+      DARK legible gold. ── */
+
+#finance-view{ --border:#D9D0BC; }
+
+/* Page head */
+#finance-view .fin-home-title{ color:#1A2432; }
+#finance-view .fin-home-sub{ color:#5B6B7C; font-size:13.5px; }
+#finance-view .fin-shelf-title{ color:#6B5D3F; font-size:16px; }
+#finance-view .fin-shelf-desc{ color:#4A5A6C; font-size:13.5px; }
+#finance-view .fin-shelf-head{ border-bottom:1px solid #D9D0BC; }
+
+/* Word cards — Arabic word stays gold (it IS the Qur'an word) but a DARK,
+   readable gold; everything else ink/slate. */
+#finance-view .fin-home .fin-q-card{ background:#FFFFFF; border:1px solid #D9D0BC; border-radius:8px; }
+#finance-view .fin-home .fin-q-card:hover{ border-color:#0E6B63; background:#FDFBF5; }
+#finance-view .fin-home .fin-q-card.sel{ border-color:#0E6B63; box-shadow:0 0 0 1px #0E6B63; }
+#finance-view .fin-word-ar{ color:#8A6A12; font-size:22px; }
+#finance-view .fin-word-en{ color:#22303F; font-size:14px; }
+#finance-view .fin-word-count{ color:#5B6B7C; font-size:12.5px; }
+#finance-view .fin-word-id{ color:#75849A; font-size:11px; }
+
+/* Qur'an READ pill — solid dark gold, readable label, glow toned down for paper */
+#finance-view .fin-home .fin-word-read{
+  background:linear-gradient(180deg,#C9A227,#A8861B); color:#FFFFFF;
+  border:1px solid #A8861B; font-size:11px;
+  box-shadow:0 1px 4px rgba(160,130,30,.35);
+}
+#finance-view .fin-home .fin-word-card:hover .fin-word-read{ box-shadow:0 2px 8px rgba(160,130,30,.5); }
+#finance-view .fin-home .fin-word-read.fin-read-off{ background:none; color:#8A94A2; border:1px solid #C8CDD6; box-shadow:none; }
+
+/* Status chips under the pill */
+#finance-view .fin-q-trace{ font-size:10.5px; }
+#finance-view .fin-trace-traced{ color:#1E7E45; border-color:#1E7E45; background:#E7F3E9; }
+#finance-view .fin-trace-partial{ color:#B26A00; border-color:#B26A00; background:#FFF4E2; }
+
+/* Contract cards on HOME */
+#finance-view .fin-c-card{ background:#FFFFFF; border:1px solid #D9D0BC; border-radius:8px; }
+#finance-view .fin-c-card:hover{ border-color:#0E6B63; background:#FDFBF5; }
+#finance-view .fin-c-card .fin-c-name{ color:#22303F; }
+#finance-view .fin-c-card .fin-c-ar{ color:#75849A; }
+#finance-view .fin-c-card .fin-c-terms{ color:#5B6B7C; font-size:12px; }
+
+/* Tier chip + stat chips */
+#finance-view .fin-tier-chip{ color:#0E6B63; border-color:#0E6B63; background:#EEF6F5; font-size:10.5px; }
+#finance-view .fin-home-stats{ gap:10px; }
+#finance-view .fin-home-stat{ background:#FFFFFF; border:1px solid #C9BFA8; color:#22303F; border-radius:6px; }
+
+/* DETAILS side panel headline + hint on words page */
+#finance-view .fin-hub-hint{ color:#5B6B7C; }
+
+/* ── IVORY PATCH 3 (2026-07-26): FULL AUDIT — every light-on-dark text colour
+      in the original dark theme forced to a dark, readable equivalent.
+      Generated by scanning all 324 affected selectors. Plus manual fixes:
+      search box, stat chips, trace title, verse cards. ── */
+
+/* Manual: TRACE title + search box (was jet black on paper) */
+#finance-view .fin-trace-h1, #finance-view .fin-trace-page .fin-trace-h1{ color:#1A2432 !important; }
+#finance-view .fin-trace-search{ background:#FFFFFF !important; color:#22303F !important; border:1.5px solid #C9BFA8 !important; border-radius:8px; }
+#finance-view .fin-trace-search:focus{ border-color:#0E6B63 !important; }
+#finance-view .fin-trace-search::placeholder{ color:#8A94A2 !important; }
+
+/* Manual: HOME stat chips — no boxes, just dark readable text with breathing room */
+#finance-view .fin-home-stat{ background:none !important; border:none !important; color:#22303F !important; font-size:14px !important; padding:0 !important; }
+#finance-view .fin-home-stat b, #finance-view .fin-home-stat strong{ color:#0E6B63; }
+#finance-view .fin-home-stats{ gap:26px !important; }
+
+/* Manual: hub verse cards — roomier, dark gold refs */
+#finance-view .fin-hub .fin-q-card{ padding:10px 14px; background:#FFFFFF; border:1px solid #D9D0BC; border-radius:7px; }
+
+/* Manual: top-right readout ("24 QUR'AN TERMS" / "361 ROWS") */
+#finance-readout{ color:#3D4C5E !important; }
+
+#finance-notice{ color:#22303F !important; }
+#finance-notice .fin-notice-badge{ color:#8A6A12 !important; }
+#finance-htw-btn{ color:#2F5F8F !important; }
+#finance-htw-btn:hover{ color:#8A6A12 !important; }
+#finance-readout{ color:#2F5F8F !important; }
+#finance-view .fin-yr-mark.year-multi{ color:#8A6A12 !important; }
+#finance-view .fin-hij-mark.year-multi{ color:#8A6A12 !important; }
+#finance-view .fin-ruler-btn.on{ color:#8A6A12 !important; }
+#finance-view .fin-ruler-btn:hover{ color:#8A6A12 !important; }
+#finance-view .fin-row-title{ color:#22303F !important; }
+#finance-view .fin-row:hover .fin-row-title{ color:#8A6A12 !important; }
+#finance-view .fin-tag{ color:#22303F !important; }
+#finance-view .fin-read{ color:#2F5F8F !important; }
+#finance-view .fin-read:hover{ color:#0E6B63 !important; }
+#finance-view .fin-read-pale{ color:#22303F !important; }
+#finance-view .fin-read-pale:hover{ color:#22303F !important; }
+#finance-view .fin-root-verified{ color:#1E7E45 !important; }
+#finance-view .fin-root-plausible{ color:#8A6A12 !important; }
+#finance-view .fin-badge-est{ color:#1E7E45 !important; }
+#finance-view .fin-badge-ill{ color:#8A6A12 !important; }
+#finance-view .fin-badge-plc{ color:#22303F !important; }
+#finance-view .fin-term-origin-label{ color:#8A6A12 !important; }
+#finance-view .fin-term-origin-yr{ color:#8A6A12 !important; }
+#finance-view .fin-term-tile .fin-tile-en{ color:#22303F !important; }
+#finance-view .fin-term-tile .fin-tile-ar{ color:#8A6A12 !important; }
+#finance-view .fin-term-tile .fin-tile-approx-yr{ color:#8A6A12 !important; }
+#finance-view .fin-term-undated-chip{ color:#2F5F8F !important; }
+#finance-view .fin-term-undated-chip:hover{ color:#8A6A12 !important; }
+#finance-view .fin-tag-untagged{ color:#22303F !important; }
+.fin-rdr-code{ color:#8A6A12 !important; }
+.fin-rdr-title{ color:#8A6A12 !important; }
+.fin-rdr-x{ color:#8A6A12 !important; }
+.fin-rdr-x:hover{ color:#8A6A12 !important; }
+.fin-rdr-body{ color:#22303F !important; }
+#finance-view .fin-start-tag{ color:#8A6A12 !important; }
+#finance-hub{ color:#22303F !important; }
+#finance-view .fin-hub-title{ color:#8A6A12 !important; }
+#finance-view .fin-hub-hint{ color:#2F5F8F !important; }
+#finance-view .fin-hub-sec{ color:#8A6A12 !important; }
+#finance-view .fin-hub-v{ color:#22303F !important; }
+#finance-view .fin-spine-rel{ color:#2F5F8F !important; }
+#finance-view .fin-spine-chip{ color:#22303F !important; }
+#finance-view .fin-hub-chip{ color:#8A6A12 !important; }
+#finance-view .fin-hub-chip:hover{ color:#22303F !important; }
+#finance-view .fin-qc-plausible{ color:#8A6A12 !important; }
+#finance-view .fin-qc-illustrative{ color:#2F5F8F !important; }
+#finance-view .fin-qc-note{ color:#2F5F8F !important; }
+#finance-view .fin-term-ar{ color:#8A6A12 !important; }
+#finance-view .fin-term-en{ color:#22303F !important; }
+#finance-view .fin-term-src{ color:#2F5F8F !important; }
+#finance-view .fin-term-links-toggle{ color:#2F5F8F !important; }
+#finance-view .fin-term-links-toggle:hover{ color:#8A6A12 !important; }
+#finance-view .fin-term-enrich-sec{ color:#2F5F8F !important; }
+#finance-view .fin-term-std-name{ color:#22303F !important; }
+#finance-view .fin-term-std-clause{ color:#2F5F8F !important; }
+#finance-view .fin-q-ref{ color:#8A6A12 !important; }
+#finance-view .fin-q-cited{ color:#22303F !important; }
+#finance-view .fin-q-read{ color:#8A6A12 !important; }
+#finance-view .bv-dd-btn{ color:#8A6A12 !important; }
+#finance-view .bv-ck-row{ color:#22303F !important; }
+#finance-view .bv-ck-row.checked{ color:#8A6A12 !important; }
+#finance-view .bv-ck.on{ color:#8A6A12 !important; }
+#finance-view .bv-dd-allnone span{ color:#8A6A12 !important; }
+#finance-view .bv-dd-allnone span:hover{ color:#8A6A12 !important; }
+#finance-view .fin-reset-btn{ color:#8A6A12 !important; }
+#finance-view .fin-mode-switch .fin-mode-btn{ color:#2F5F8F !important; }
+#finance-view .fin-mode-switch .fin-mode-btn:hover{ color:#8A6A12 !important; }
+#finance-view .fin-mode-switch .fin-mode-btn.on{ color:#8A6A12 !important; }
+#finance-view .fin-group-source .fin-mode-btn.on{ color:#8A6A12 !important; }
+#finance-view .fin-group-user .fin-mode-btn.on{ color:#1E7E45 !important; }
+#finance-view .fin-group-user .fin-mode-btn:hover{ color:#1E7E45 !important; }
+#finance-view .fin-upload-h1{ color:#8A6A12 !important; }
+#finance-view .fin-upload-drop{ color:#2F5F8F !important; }
+#finance-view .fin-upload-drop.drag{ color:#22303F !important; }
+#finance-view .fin-upload-status.grey{ color:#2F5F8F !important; }
+#finance-view .fin-upload-status.amber{ color:#8A6A12 !important; }
+#finance-view .fin-upload-status.green{ color:#1E7E45 !important; }
+#finance-view .fin-upload-status.red{ color:#A33333 !important; }
+#finance-view .fin-upload-meta{ color:#22303F !important; }
+#finance-view .fin-upload-metak{ color:#2F5F8F !important; }
+#finance-view .fin-upload-prevlbl{ color:#8A6A12 !important; }
+#finance-view .fin-upload-preview{ color:#22303F !important; }
+#finance-view .fin-upload-continue{ color:#1E7E45 !important; }
+#finance-view .bv-ck-row.fin-qword-pale .bv-ck-label{ color:#2F5F8F !important; }
+#finance-view .fin-qword-badge{ color:#2F5F8F !important; }
+#finance-view .fin-prism-h1{ color:#8A6A12 !important; }
+#finance-view .fin-prism-intro{ color:#22303F !important; }
+#finance-view .fin-prism-q{ color:#8A6A12 !important; }
+#finance-view .fin-prism-why{ color:#22303F !important; }
+#finance-view .fin-prism-ref{ color:#8A6A12 !important; }
+#finance-view .fin-prism-collabel{ color:#22303F !important; }
+#finance-view .fin-prism-auth{ color:#22303F !important; }
+#finance-view .fin-prism-text{ color:#22303F !important; }
+#finance-view .fin-prism-pending .fin-prism-auth{ color:#22303F !important; }
+#finance-view .fin-prism-summary{ color:#22303F !important; }
+#finance-view .fin-prism-cx{ color:#8A6A12 !important; }
+#finance-view .fin-prism-term{ color:#22303F !important; }
+#finance-view .fin-ladder-contract{ color:#8A6A12 !important; }
+#finance-view .fin-read-pill{ color:#8A6A12 !important; }
+#finance-view .fin-ladder-node-label:hover .fin-ladder-node-title{ color:#8A6A12 !important; }
+#finance-view .fin-ladder-node-label.sel .fin-ladder-node-title{ color:#8A6A12 !important; }
+#finance-view .fin-ladder-node-title{ color:#22303F !important; }
+#finance-view .fin-ladder-pos{ color:#22303F !important; }
+#finance-view .fin-cite{ color:#8A6A12 !important; }
+#finance-view .fin-ladder-link:hover{ color:#8A6A12 !important; }
+#finance-view .fin-home-title{ color:#8A6A12 !important; }
+#finance-view .fin-home-sub{ color:#2F5F8F !important; }
+#finance-view .fin-shelf-title{ color:#8A6A12 !important; }
+#finance-view .fin-shelf-desc{ color:#22303F !important; }
+#finance-view .fin-word-ar{ color:#8A6A12 !important; }
+#finance-view .fin-word-en{ color:#22303F !important; }
+#finance-view .fin-word-count{ color:#2F5F8F !important; }
+#finance-view .fin-c-card .fin-c-name{ color:#22303F !important; }
+#finance-view .fin-c-card .fin-c-ar{ color:#8A6A12 !important; }
+#finance-view .fin-c-card .fin-c-terms{ color:#2F5F8F !important; }
+#finance-view .fin-trace-traced{ color:#1E7E45 !important; }
+#finance-view .fin-trace-partial{ color:#8A6A12 !important; }
+#finance-view .fin-tier-chip{ color:#8A6A12 !important; }
+#finance-view .fin-honesty-line{ color:#8A6A12 !important; }
+#finance-view .fin-lec-h1{ color:#8A6A12 !important; }
+#finance-view .fin-lec-h2{ color:#8A6A12 !important; }
+#finance-view .fin-lec-h3{ color:#2F5F8F !important; }
+#finance-view .fin-lec-body{ color:#22303F !important; }
+#finance-view .fin-lec-tierdesc,.fin-lec-desc{ color:#22303F !important; }
+#finance-view .fin-lec-banner{ color:#8A6A12 !important; }
+#finance-view .fin-lec-subtitle{ color:#22303F !important; }
+#finance-view .fin-lec-dim .fin-lec-subtitle{ color:#22303F !important; }
+#finance-view .fin-lec-cite{ color:#8A6A12 !important; }
+#finance-view .fin-lec-grade{ color:#22303F !important; }
+#finance-view .fin-lec-narr{ color:#22303F !important; }
+#finance-view .fin-lec-work{ color:#22303F !important; }
+#finance-view .fin-lec-evidence{ color:#2F5F8F !important; }
+#finance-view .fin-lec-enttag{ color:#8A6A12 !important; }
+#finance-view .fin-lec-honesty{ color:#8A6A12 !important; }
+#finance-view .fin-lec-vchip{ color:#8A6A12 !important; }
+#finance-view .fin-lec-link{ color:#22303F !important; }
+#finance-view .fin-lec-link:hover{ color:#8A6A12 !important; }
+#finance-view .fin-lec-cchip{ color:#8A6A12 !important; }
+#finance-view .fin-lec-cchip:hover{ color:#22303F !important; }
+#finance-view .fin-lec-back{ color:#2F5F8F !important; }
+#finance-view .fin-lec-back:hover{ color:#8A6A12 !important; }
+#finance-view .fin-lec-cross{ color:#8A6A12 !important; }
+#finance-view .fin-lec-mstage{ color:#8A6A12 !important; }
+#finance-view .fin-lec-mconf{ color:#22303F !important; }
+#finance-view .fin-lec-mgrade{ color:#22303F !important; }
+#finance-view .fin-lec-mnote{ color:#8A6A12 !important; }
+#finance-view .fin-lec-mevi{ color:#2F5F8F !important; }
+#finance-view .fin-std-title{ color:#8A6A12 !important; }
+#finance-view .fin-std-totals{ color:#2F5F8F !important; }
+#finance-view .fin-run-note{ color:#2F5F8F !important; }
+#finance-view .fin-std-legend{ color:#2F5F8F !important; }
+#finance-view .fin-std-leg-k{ color:#8A6A12 !important; }
+#finance-view .fin-std-leg-tag{ color:#8A6A12 !important; }
+#finance-view .fin-iss-sum{ color:#8A6A12 !important; }
+#finance-view .fin-iss-n{ color:#22303F !important; }
+#finance-view .fin-grp-n{ color:#22303F !important; }
+#finance-view .fin-sr-id{ color:#22303F !important; }
+#finance-view .fin-sr-ttl{ color:#22303F !important; }
+#finance-view .fin-std-pillar{ color:#8A6A12 !important; }
+#finance-view .fin-std-coln{ color:#2F5F8F !important; }
+#finance-view .fin-std-code{ color:#8A6A12 !important; }
+#finance-view .fin-std-name{ color:#22303F !important; }
+#finance-view .fin-std-row:hover .fin-std-name{ color:#8A6A12 !important; }
+#finance-view .fin-std-strike{ color:#2F5F8F !important; }
+#finance-view .fin-std-tag{ color:#8A6A12 !important; }
+#finance-view .fin-std-an{ color:#8A6A12 !important; }
+#finance-view .fin-std-an:hover{ color:#8A6A12 !important; }
+#finance-view .fin-api-title{ color:#8A6A12 !important; }
+#finance-view .fin-api-lbl{ color:#2F5F8F !important; }
+#finance-view .fin-api-input{ color:#22303F !important; }
+#finance-view .fin-api-btn{ color:#8A6A12 !important; }
+#finance-view .fin-api-clear{ color:#3D4C5E !important; }
+#finance-view .fin-api-status.grey{ color:#2F5F8F !important; }
+#finance-view .fin-api-status.green{ color:#1E7E45 !important; }
+#finance-view .fin-api-status.red{ color:#A33333 !important; }
+#finance-view .fin-lite-title{ color:#8A6A12 !important; }
+#finance-view .fin-lite-chip{ color:#2F5F8F !important; }
+#finance-view .fin-lite-reg{ color:#2F5F8F !important; }
+#finance-view .fin-lite-row{ color:#22303F !important; }
+#finance-view .fin-lite-id{ color:#22303F !important; }
+#finance-view .fin-lite-ttl{ color:#22303F !important; }
+#finance-view .fin-lite-gone > summary{ color:#2F5F8F !important; }
+#finance-view .fin-lite-gone > summary:hover{ color:#22303F !important; }
+#finance-view .fin-vet-title{ color:#8A6A12 !important; }
+#finance-view .fin-vet-count{ color:#2F5F8F !important; }
+#finance-view .fin-vet-reset{ color:#8A6A12 !important; }
+#finance-view .fin-vet-reset:hover{ color:#8A6A12 !important; }
+#finance-view .fin-vet-plabel{ color:#2F5F8F !important; }
+#finance-view .fin-vet-chip{ color:#22303F !important; }
+#finance-view .fin-vet-chip.sel{ color:#8A6A12 !important; }
+#finance-view .fin-vet-chip.sel .fin-vet-chip-pre{ color:#8A6A12 !important; }
+#finance-view .fin-jx-tier{ color:#22303F !important; }
+#finance-view .fin-std-debates > summary{ color:#8A6A12 !important; }
+#finance-view .fin-std-debate{ color:#22303F !important; }
+#finance-view .fin-std-source{ color:#8A6A12 !important; }
+#finance-view .fin-std-link{ color:#8A6A12 !important; }
+#finance-view .fin-cov-label{ color:#8A6A12 !important; }
+#finance-view .fin-cov-open{ color:#8A6A12 !important; }
+#finance-view .fin-report{ color:#22303F !important; }
+#finance-view .fin-rep-demo{ color:#8A6A12 !important; }
+#finance-view .fin-rep-h1{ color:#8A6A12 !important; }
+#finance-view .fin-rep-meta{ color:#2F5F8F !important; }
+#finance-view .fin-rep-h2{ color:#8A6A12 !important; }
+#finance-view .fin-rep-chip{ color:#22303F !important; }
+#finance-view .fin-rep-chip:hover{ color:#22303F !important; }
+#finance-view .fin-rep-vchip{ color:#8A6A12 !important; }
+#finance-view .fin-rep-lecturelink{ color:#8A6A12 !important; }
+#finance-view .fin-rep-table th{ color:#2F5F8F !important; }
+#finance-view .fin-rep-num{ color:#2F5F8F !important; }
+#finance-view .fin-rep-check{ color:#22303F !important; }
+#finance-view .fin-rep-src{ color:#22303F !important; }
+#finance-view .fin-rep-status{ color:#22303F !important; }
+#finance-view .fin-rep-status.fin-rep-ok{ color:#1E7E45 !important; }
+#finance-view .fin-rep-status.fin-rep-warn{ color:#8A6A12 !important; }
+#finance-view .fin-rep-missing{ color:#3D4C5E !important; }
+#finance-view .fin-rep-open li{ color:#22303F !important; }
+#finance-view .fin-rep-openid{ color:#8A6A12 !important; }
+#finance-view .fin-rep-openstatus{ color:#22303F !important; }
+#finance-view .fin-rep-open-none{ color:#2F5F8F !important; }
+#finance-view .fin-rep-siglabel{ color:#2F5F8F !important; }
+#finance-view .fin-rep-signote{ color:#2F5F8F !important; }
+#finance-view .fin-rep-scopelink,.fin-rep-stdlink{ color:#8A6A12 !important; }
+#finance-view .fin-rep-excluded{ color:#2F5F8F !important; }
+#finance-view .fin-rep-excl-note{ color:#8A6A12 !important; }
+#finance-view .fin-report-backtag{ color:#8A6A12 !important; }
+#finance-view .fin-rep-print{ color:#8A6A12 !important; }
+#finance-view #fin-rep-archive[disabled]{ color:#22303F !important; }
+#finance-view .fin-rep-signoff-hint{ color:#22303F !important; }
+#finance-view .fin-live-run[disabled]{ color:#22303F !important; }
+#finance-view .fin-live-hint{ color:#22303F !important; }
+#finance-view .fin-live-cost{ color:#22303F !important; }
+#finance-view .fin-pipe-sep{ color:#22303F !important; }
+#finance-view .fin-pipe-chips-lbl{ color:#22303F !important; }
+#finance-view .fin-pipe-none{ color:#22303F !important; }
+#finance-view .fin-pipe-clauses-lbl{ color:#22303F !important; }
+#finance-view .fin-pipe-clause-ref{ color:#22303F !important; }
+#finance-view .fin-rep-hub-count{ color:#8A6A12 !important; }
+#finance-view .fin-oi-dbtn.green{ color:#1E7E45 !important; }
+#finance-view .fin-oi-dbtn.orange{ color:#8A6A12 !important; }
+#finance-view .fin-oi-dbtn.green.chosen{ color:#22303F !important; }
+#finance-view .fin-oi-dbtn.orange.chosen{ color:#22303F !important; }
+#finance-view .fin-oi-dbtn.red.chosen{ color:#22303F !important; }
+#finance-view .fin-rep-quote{ color:#22303F !important; }
+#finance-view .fin-fab-sev.med{ color:#8A6A12 !important; }
+#finance-view .fin-fab-sub{ color:#2F5F8F !important; }
+#finance-view .fin-fab-clausetag{ color:#22303F !important; }
+#finance-view .fin-fab-conf.green{ color:#1E7E45 !important; }
+#finance-view .fin-fab-conf.amber{ color:#8A6A12 !important; }
+#finance-view .fin-fab-conf.grey{ color:#22303F !important; }
+#finance-view .fin-fab-stdstatus{ color:#2F5F8F !important; }
+#finance-view .fin-fab-rationale{ color:#22303F !important; }
+#finance-view .fin-fab-signk{ color:#2F5F8F !important; }
+#finance-view .fin-fab-name{ color:#22303F !important; }
+#finance-view .fin-fab-date{ color:#2F5F8F !important; }
+#finance-view .fin-report #fin-rep-archive[disabled]{ color:#22303F !important; }
+#finance-view .fin-report .fin-live-run[disabled]{ color:#22303F !important; }
+#finance-view .fin-arch-date{ color:#22303F !important; }
+#finance-view .fin-fam-name{ color:#8A6A12 !important; }
+#finance-view .fin-fam-count{ color:#2F5F8F !important; }
+#finance-view .fin-fam-deep{ color:#2F5F8F !important; }
+#finance-view .fin-fam-chev{ color:#8A6A12 !important; }
+#finance-view .fin-reader-lbl{ color:#2F5F8F !important; }
+#finance-view .fin-reader-ttl{ color:#8A6A12 !important; }
+#finance-view .fin-reader-text{ color:#22303F !important; }
+#finance-view .fin-reader-empty{ color:#2F5F8F !important; }
+#finance-view #fin-pages-panel .fin-pages-htw{ color:#2F5F8F !important; }
+#finance-view .fin-std-source::after{ color:#2F5F8F !important; }
+#finance-view .fin-doc-jump-tag{ color:#8A6A12 !important; }
+#finance-view .fin-trace-hadith{ color:#1E7E45 !important; }
+#finance-view .fin-trace-clear{ color:#2F5F8F !important; }
+#finance-view .fin-home-stat{ color:#2F5F8F !important; }
+#finance-view .fin-home-stat b{ color:#8A6A12 !important; }
+#finance-view .fin-reader-back{ color:#8A6A12 !important; }
+#finance-view .fin-back-btn{ color:#8A6A12 !important; }
+#finance-view .fin-trace-h1{ color:#8A6A12 !important; }
+#finance-view .fin-trace-sub{ color:#22303F !important; }
+#finance-view .fin-trace-res-en{ color:#22303F !important; }
+#finance-view .fin-trace-res-ar{ color:#8A6A12 !important; }
+#finance-view .fin-trace-res-yr{ color:#22303F !important; }
+#finance-view .fin-trace-sec-h{ color:#8A6A12 !important; }
+#finance-view .fin-trace-term-en{ color:#8A6A12 !important; }
+#finance-view .fin-trace-term-ar{ color:#8A6A12 !important; }
+#finance-view .fin-trace-first{ color:#22303F !important; }
+#finance-view .fin-trace-src{ color:#22303F !important; }
+#finance-view .fin-trace-hrow-yr{ color:#22303F !important; }
+#finance-view .fin-trace-hrow-hit .fin-trace-hrow-yr{ color:#8A6A12 !important; }
+#finance-view .fin-trace-hrow-stage{ color:#22303F !important; }
+#finance-view .fin-trace-hrow-name{ color:#22303F !important; }
+#finance-view .fin-trace-hrow-flag{ color:#8A6A12 !important; }
+#finance-view .fin-trace-trad-note{ color:#22303F !important; }
+#finance-view .fin-trace-diverge{ color:#8A6A12 !important; }
+#finance-view .fin-trace-juris-note{ color:#22303F !important; }
+#finance-view .fin-trace-std-outchip{ color:#22303F !important; }
+#finance-view .fin-trace-flabel{ color:#22303F !important; }
+#finance-view .fin-trace-fchip{ color:#8A6A12 !important; }
+#finance-view .fin-trace-fchip.on{ color:#8A6A12 !important; }
+#finance-view .fin-trace-fclear{ color:#22303F !important; }
+#finance-view .fin-trace-fclear:hover{ color:#8A6A12 !important; }
+#finance-view .fin-trace-hubback-link{ color:#22303F !important; }
+#finance-view .fin-trace-hubback-link:hover{ color:#8A6A12 !important; }
+#finance-view .fin-trace-page .fin-trace-h1{ color:#22303F !important; }
+#finance-view .fin-trace-page .fin-trace-sec-h{ color:#22303F !important; }
+#finance-view .fin-trace-page .fin-trace-origin .fin-trace-sec-h{ color:#8A6A12 !important; }
+#finance-view .fin-trace-journey .fin-q-ref{ color:#8A6A12 !important; }
+#finance-view .fin-trace-page .fin-q-read{ color:#8A6A12 !important; }
+#finance-view .fin-trace-page .fin-trace-origin .fin-hub-chip[data-trace-qword]{ color:#8A6A12 !important; }
+#finance-view .fin-trace-page .fin-trace-term-en{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-trace-hrow-hit .fin-trace-hrow-yr{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-trace-res-en{ color:#2F5F8F !important; }
+#finance-view .fin-trace-filters .bv-dd-btn{ color:#2F5F8F !important; }
+#finance-view .fin-trace-filters .bv-ck.on{ color:#2F5F8F !important; }
+#finance-view .fin-trace-filters .bv-ck-row.checked{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-trace-selchip span{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-trace-selchip .fin-trace-selchip-x{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-trace-res-yr{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-std-link{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page .fin-hub-chip[data-sel-kind]{ color:#2F5F8F !important; }
+#finance-view .fin-trace-hubback-link{ color:#2F5F8F !important; }
+#finance-view .fin-trace-hubback-link:hover{ color:#2F5F8F !important; }
+#finance-view .fin-trace-page a[target="_blank"]{ color:#1E7E45 !important; }
+#finance-view .fin-trace-page .fin-trace-diverge{ color:#8A6A12 !important; }
+#finance-view .fin-trace-page .fin-trace-std-outchip{ color:#8A6A12 !important; }
+#finance-view .fin-trace-page .fin-trace-fclear:hover{ color:#2F5F8F !important; }
+#finance-view .fin-trace-filters::after{ color:#2F5F8F !important; }
+
+/* ══════════════════════════════════════════════════════════════
+   IVORY PATCH 4 (2026-07-26) — THE BLUNT PASS.
+   Adam's rule: ONE dark font colour everywhere, ONE minimum size.
+   1) Every piece of text inside USUL = near-black. No exceptions
+      by colour class. Full stop.
+   2) White text ONLY on elements that themselves have a dark or
+      teal or gold FILL (buttons/pills) — explicitly re-set below.
+   3) Font floor: nothing under 14px; small chips/badges 12px.
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1 — one dark colour for ALL text */
+#finance-view, #finance-view *{ color:#1A2432 !important; }
+.fin-rdr, .fin-rdr *{ color:#1A2432 !important; }
+.think-tooltip, .think-tooltip *{ color:#1A2432 !important; }
+#finance-view ::placeholder{ color:#75849A !important; }
+
+/* 2 — white text ONLY where the element has a dark/teal/gold fill */
+#finance-view .fin-mode-switch .fin-ruler-btn.fin-mode-btn.on{ color:#FFFFFF !important; }
+#finance-view .fin-group-user .fin-ruler-btn.fin-mode-btn.on{ color:#FFFFFF !important; }
+#fin-pages-panel .fin-ruler-btn.fin-mode-btn.on{ color:#0E6B63 !important; background:#EEF6F5; }
+#finance-view .fin-back-btn{ color:#FFFFFF !important; }
+#finance-view .fin-back-btn:disabled{ color:#C8CDD6 !important; }
+#finance-view .fin-home .fin-word-read{ color:#FFFFFF !important; }
+#finance-view .fin-qread:hover{ color:#FFFFFF !important; }
+#finance-view .fin-ruler-btn[data-ruler]{ color:#E8EDF4 !important; }
+#finance-view .fin-ruler-btn[data-ruler].on{ color:#F2D65F !important; }
+
+/* Mode buttons (not active): dark text, teal on hover */
+#finance-view .fin-mode-switch .fin-ruler-btn.fin-mode-btn{ border-bottom-color:transparent; }
+#finance-view .fin-mode-switch .fin-ruler-btn.fin-mode-btn:hover{ color:#0E6B63 !important; }
+
+/* Section headings (VERSES, MEANING, DEVELOPED INTO, PRISM labels...):
+   same dark ink, just bold + spaced — hierarchy by weight, not colour */
+#finance-view .fin-hub-sec, #finance-view .fin-prism-collabel,
+#finance-view .fin-shelf-title, #finance-view .fin-hub-k{
+  color:#1A2432 !important; font-weight:700 !important;
+}
+
+/* Links stay dark but clearly underlined so they are findable */
+#finance-view a, #finance-view .fin-ladder-link, #finance-view .fin-std-link{
+  color:#0E6B63 !important; text-decoration:underline;
+}
+
+#finance-notice{ font-size:14px !important; }
+#finance-notice .fin-notice-badge{ font-size:12px !important; }
+#finance-htw-btn{ font-size:14px !important; }
+#finance-readout{ font-size:14px !important; }
+#finance-view .fin-stem-cap{ font-size:14px !important; }
+#finance-view .fin-row-meta{ font-size:14px !important; }
+#finance-view .fin-tag{ font-size:12px !important; }
+#finance-view .fin-read{ font-size:14px !important; }
+#finance-view .fin-root-chip{ font-size:12px !important; }
+#finance-view .fin-badge{ font-size:12px !important; }
+#finance-view .fin-term-origin-label{ font-size:14px !important; }
+#finance-view .fin-term-origin-yr{ font-size:14px !important; }
+#finance-view .fin-term-tile{ font-size:14px !important; }
+#finance-view .fin-term-tile .fin-tile-ar{ font-size:14px !important; }
+#finance-view .fin-term-tile .fin-tile-approx-yr{ font-size:14px !important; }
+#finance-view .fin-term-undated-head{ font-size:14px !important; }
+#finance-view .fin-term-undated-chip{ font-size:12px !important; }
+#finance-view .fin-term-chip-date{ font-size:12px !important; }
+#finance-view .fin-term-qblock-head{ font-size:14px !important; }
+#finance-view .fin-era-band-label{ font-size:14px !important; }
+#finance-view .fin-era-band-dates{ font-size:14px !important; }
+#finance-view .fin-era-band-lad .fin-era-band-label{ font-size:14px !important; }
+.fin-rdr-title{ font-size:14px !important; }
+.fin-rdr-body{ font-size:14px !important; }
+#finance-view .fin-start-tag{ font-size:12px !important; }
+#finance-view .fin-start-read{ font-size:14px !important; }
+#finance-view .fin-start-label{ font-size:14px !important; }
+#finance-view .fin-hub-hint{ font-size:14px !important; }
+#finance-view .fin-hub-sec{ font-size:14px !important; }
+#finance-view .fin-hub-field{ font-size:14px !important; }
+#finance-view .fin-hub-k{ font-size:14px !important; }
+#finance-view .fin-spine-rel{ font-size:14px !important; }
+#finance-view .fin-spine-chip{ font-size:12px !important; }
+#finance-view .fin-hub-chip{ font-size:12px !important; }
+#finance-view .fin-qc-note{ font-size:14px !important; }
+#finance-view .fin-qc-evidence{ font-size:14px !important; }
+#finance-view .fin-hub-none{ font-size:14px !important; }
+#finance-view .fin-term-en{ font-size:14px !important; }
+#finance-view .fin-term-src{ font-size:14px !important; }
+#finance-view .fin-term-links-toggle{ font-size:14px !important; }
+#finance-view .fin-term-enrich-sec{ font-size:14px !important; }
+#finance-view .fin-term-std-name{ font-size:14px !important; }
+#finance-view .fin-term-std-clause{ font-size:14px !important; }
+#finance-view .fin-term-std-ver{ font-size:14px !important; }
+#finance-view .fin-q-ref{ font-size:14px !important; }
+#finance-view .fin-q-cited{ font-size:14px !important; }
+#finance-view .fin-q-read{ font-size:14px !important; }
+#finance-view .bv-ck-prefix{ font-size:12px !important; }
+#finance-view .bv-dd-allnone span{ font-size:14px !important; }
+#finance-view .fin-mode-switch .fin-mode-btn{ font-size:14px !important; }
+#finance-view .fin-upload-drop-sub{ font-size:14px !important; }
+#finance-view .fin-upload-meta{ font-size:14px !important; }
+#finance-view .fin-upload-metak{ font-size:14px !important; }
+#finance-view .fin-upload-prevlbl{ font-size:14px !important; }
+#finance-view .fin-upload-preview{ font-size:14px !important; }
+#finance-view .fin-upload-note{ font-size:14px !important; }
+#finance-view .fin-upload-continue{ font-size:14px !important; }
+#finance-view .fin-qword-badge{ font-size:12px !important; }
+#finance-view .fin-prism-intro{ font-size:14px !important; }
+#finance-view .fin-prism-why{ font-size:14px !important; }
+#finance-view .fin-prism-ref{ font-size:14px !important; }
+#finance-view .fin-prism-collabel{ font-size:14px !important; }
+#finance-view .fin-prism-auth{ font-size:14px !important; }
+#finance-view .fin-prism-basis{ font-size:14px !important; }
+#finance-view .fin-prism-summary{ font-size:14px !important; }
+#finance-view .fin-prism-term{ font-size:14px !important; }
+#finance-view .fin-qpill{ font-size:12px !important; }
+#finance-view .fin-qread{ font-size:12px !important; }
+#finance-view .fin-read-pill{ font-size:12px !important; }
+#finance-view .fin-ladder-node-meta{ font-size:14px !important; }
+#finance-view .fin-ladder-today{ font-size:14px !important; }
+#finance-view .fin-ladder-shelf{ font-size:14px !important; }
+#finance-view .fin-ladder-pos{ font-size:14px !important; }
+#finance-view .fin-cite{ font-size:14px !important; }
+#finance-view .fin-hub-anchor{ font-size:14px !important; }
+#finance-view .fin-home-sub{ font-size:14px !important; }
+#finance-view .fin-shelf-desc{ font-size:14px !important; }
+#finance-view .fin-word-en{ font-size:14px !important; }
+#finance-view .fin-word-count{ font-size:12px !important; }
+#finance-view .fin-word-id{ font-size:12px !important; }
+#finance-view .fin-c-card .fin-c-ar{ font-size:14px !important; }
+#finance-view .fin-c-card .fin-c-terms{ font-size:14px !important; }
+#finance-view .fin-home .fin-word-read{ font-size:14px !important; }
+#finance-view .fin-q-trace{ font-size:12px !important; }
+#finance-view .fin-tier-chip{ font-size:12px !important; }
+#finance-view .fin-honesty-line{ font-size:14px !important; }
+#finance-view .fin-lec-h3{ font-size:14px !important; }
+#finance-view .fin-lec-banner{ font-size:14px !important; }
+#finance-view .fin-lec-cite{ font-size:14px !important; }
+#finance-view .fin-lec-grade{ font-size:14px !important; }
+#finance-view .fin-lec-narr{ font-size:14px !important; }
+#finance-view .fin-lec-evidence{ font-size:14px !important; }
+#finance-view .fin-lec-basis{ font-size:14px !important; }
+#finance-view .fin-lec-enttag{ font-size:12px !important; }
+#finance-view .fin-lec-honesty{ font-size:14px !important; }
+#finance-view .fin-lec-vchip{ font-size:12px !important; }
+#finance-view .fin-lec-back{ font-size:14px !important; }
+#finance-view .fin-lec-cross{ font-size:14px !important; }
+#finance-view .fin-lec-mchip{ font-size:12px !important; }
+#finance-view .fin-lec-mbasis{ font-size:14px !important; }
+#finance-view .fin-lec-mevi{ font-size:14px !important; }
+#finance-view .fin-lec-msrc{ font-size:14px !important; }
+#finance-view .fin-lec-mid{ font-size:14px !important; }
+#finance-view .fin-std-totals{ font-size:14px !important; }
+#finance-view .fin-run-note{ font-size:14px !important; }
+#finance-view .fin-run-btn{ font-size:14px !important; }
+#finance-view .fin-std-legend{ font-size:14px !important; }
+#finance-view .fin-std-leg-dot{ font-size:14px !important; }
+#finance-view .fin-std-leg-tag{ font-size:12px !important; }
+#finance-view .fin-iss-n{ font-size:14px !important; }
+#finance-view .fin-grp-name{ font-size:14px !important; }
+#finance-view .fin-grp-n{ font-size:14px !important; }
+#finance-view .fin-sr{ font-size:14px !important; }
+#finance-view .fin-std-coln{ font-size:14px !important; }
+#finance-view .fin-std-row{ font-size:14px !important; }
+#finance-view .fin-std-code{ font-size:14px !important; }
+#finance-view .fin-std-name{ font-size:14px !important; }
+#finance-view .fin-std-tag{ font-size:12px !important; }
+#finance-view .fin-std-allnone{ font-size:14px !important; }
+#finance-view .fin-api-title{ font-size:14px !important; }
+#finance-view .fin-api-lbl{ font-size:14px !important; }
+#finance-view .fin-api-input{ font-size:14px !important; }
+#finance-view .fin-api-btn{ font-size:14px !important; }
+#finance-view .fin-api-note{ font-size:14px !important; }
+#finance-view .fin-lite-empty{ font-size:14px !important; }
+#finance-view .fin-lite-title{ font-size:14px !important; }
+#finance-view .fin-lite-reg{ font-size:14px !important; }
+#finance-view .fin-lite-grp{ font-size:14px !important; }
+#finance-view .fin-lite-row{ font-size:14px !important; }
+#finance-view .fin-lite-gone > summary{ font-size:14px !important; }
+#finance-view .fin-vet-title{ font-size:14px !important; }
+#finance-view .fin-vet-reset{ font-size:14px !important; }
+#finance-view .fin-vet-plabel{ font-size:14px !important; }
+#finance-view .fin-vet-hint{ font-size:14px !important; }
+#finance-view .fin-vet-chip{ font-size:12px !important; }
+#finance-view .fin-vet-chip-pre{ font-size:12px !important; }
+#finance-view .fin-vet-chip-n{ font-size:12px !important; }
+#finance-view .fin-jx-tier{ font-size:12px !important; }
+#finance-view .fin-vet-note{ font-size:14px !important; }
+#finance-view .fin-std-rulechip{ font-size:12px !important; }
+#finance-view .fin-std-debates > summary{ font-size:14px !important; }
+#finance-view .fin-std-debate{ font-size:14px !important; }
+#finance-view .fin-std-source{ font-size:14px !important; }
+#finance-view .fin-cov-label{ font-size:14px !important; }
+#finance-view .fin-cov-open{ font-size:14px !important; }
+#finance-view .fin-rep-demo{ font-size:14px !important; }
+#finance-view .fin-rep-meta{ font-size:14px !important; }
+#finance-view .fin-rep-vchip{ font-size:12px !important; }
+#finance-view .fin-rep-lecturelink{ font-size:14px !important; }
+#finance-view .fin-rep-table{ font-size:14px !important; }
+#finance-view .fin-rep-table th{ font-size:14px !important; }
+#finance-view .fin-rep-status{ font-size:12px !important; }
+#finance-view .fin-rep-open li{ font-size:14px !important; }
+#finance-view .fin-rep-openid{ font-size:14px !important; }
+#finance-view .fin-rep-open-none{ font-size:14px !important; }
+#finance-view .fin-rep-siglabel{ font-size:14px !important; }
+#finance-view .fin-rep-signote{ font-size:14px !important; }
+#finance-view .fin-rep-scopelink,.fin-rep-stdlink{ font-size:14px !important; }
+#finance-view .fin-rep-excluded{ font-size:14px !important; }
+#finance-view .fin-rep-excl-note{ font-size:14px !important; }
+#finance-view .fin-report-backtag{ font-size:12px !important; }
+#finance-view .fin-rep-caserow{ font-size:14px !important; }
+#finance-view .fin-rep-casek{ font-size:14px !important; }
+#finance-view .fin-rep-print{ font-size:14px !important; }
+#finance-view .fin-rep-archived{ font-size:14px !important; }
+#finance-view .fin-rep-signoff-hint{ font-size:14px !important; }
+#finance-view .fin-rep-signedoff{ font-size:14px !important; }
+#finance-view .fin-live-doc{ font-size:14px !important; }
+#finance-view .fin-live-run{ font-size:14px !important; }
+#finance-view .fin-live-hint{ font-size:14px !important; }
+#finance-view .fin-live-cost{ font-size:14px !important; }
+#finance-view .fin-pipe-chip{ font-size:12px !important; }
+#finance-view .fin-pipe-note{ font-size:14px !important; }
+#finance-view .fin-pipe-clauses-lbl{ font-size:14px !important; }
+#finance-view .fin-pipe-clause{ font-size:14px !important; }
+#finance-view .fin-pipe-clause-flag{ font-size:14px !important; }
+#finance-view .fin-pipe-clause-ok{ font-size:14px !important; }
+#finance-view .fin-report .fin-live-banner{ font-size:14px !important; }
+#finance-view .fin-rep-oinum{ font-size:14px !important; }
+#finance-view .fin-oi-act{ font-size:14px !important; }
+#finance-view .fin-report .fin-rep-checkfoot{ font-size:14px !important; }
+#finance-view .fin-report .fin-rep-caseselect-wrap{ font-size:14px !important; }
+#finance-view .fin-report .fin-rep-caseselect{ font-size:14px !important; }
+#finance-view .fin-report .fin-rep-source{ font-size:14px !important; }
+#finance-view .fin-oi-dbtn{ font-size:14px !important; }
+#finance-view .fin-rep-quote{ font-size:14px !important; }
+#finance-view .fin-report .fin-fab-applied-lbl{ font-size:14px !important; }
+#finance-view .fin-fab-sev{ font-size:14px !important; }
+#finance-view .fin-fab-sub{ font-size:14px !important; }
+#finance-view .fin-fab-clausetag{ font-size:12px !important; }
+#finance-view .fin-fab-conf{ font-size:12px !important; }
+#finance-view .fin-fab-stdstatus{ font-size:12px !important; }
+#finance-view .fin-fab-rationale{ font-size:14px !important; }
+#finance-view .fin-fab-signk{ font-size:14px !important; }
+#finance-view .fin-fab-name{ font-size:14px !important; }
+#finance-view .fin-fab-date{ font-size:14px !important; }
+#finance-view .fin-arch-metaline{ font-size:14px !important; }
+#finance-view .fin-arch-date{ font-size:14px !important; }
+#finance-view .fin-arch-open-btn{ font-size:14px !important; }
+#finance-view .fin-arch-del{ font-size:14px !important; }
+#finance-view .fin-fam-deep{ font-size:14px !important; }
+#finance-view .fin-fam-chev{ font-size:14px !important; }
+#finance-view #fin-pages-btn{ font-size:14px !important; }
+#finance-view .fin-reader-lbl{ font-size:14px !important; }
+#finance-view .fin-std-source::after{ font-size:14px !important; }
+#finance-view .fin-doc-jump-tag{ font-size:12px !important; }
+#finance-view .fin-reader-back{ font-size:14px !important; }
+#finance-view .fin-back-btn{ font-size:14px !important; }
+#finance-view .fin-trace-sub{ font-size:14px !important; }
+#finance-view .fin-trace-none{ font-size:14px !important; }
+#finance-view .fin-trace-res-en{ font-size:14px !important; }
+#finance-view .fin-trace-res-yr{ font-size:14px !important; }
+#finance-view .fin-trace-sec-h{ font-size:14px !important; }
+#finance-view .fin-trace-first{ font-size:14px !important; }
+#finance-view .fin-trace-src{ font-size:14px !important; }
+#finance-view .fin-trace-hrow-yr{ font-size:14px !important; }
+#finance-view .fin-trace-hrow-stage{ font-size:12px !important; }
+#finance-view .fin-trace-hrow-name{ font-size:14px !important; }
+#finance-view .fin-trace-hrow-sect{ font-size:14px !important; }
+#finance-view .fin-trace-hrow-flag{ font-size:14px !important; }
+#finance-view .fin-trace-trad-note{ font-size:14px !important; }
+#finance-view .fin-trace-diverge{ font-size:14px !important; }
+#finance-view .fin-trace-juris-note{ font-size:14px !important; }
+#finance-view .fin-trace-flabel{ font-size:14px !important; }
+#finance-view .fin-trace-fchip{ font-size:12px !important; }
+#finance-view .fin-trace-fclear{ font-size:14px !important; }
+#finance-view .fin-trace-juris-note, .fin-trace-trad-note{ font-size:14px !important; }
+#finance-view .fin-trace-page .fin-tag{ font-size:12px !important; }
+#finance-view .fin-trace-search{ font-size:14px !important; }
+#finance-view .fin-trace-hubback-link{ font-size:14px !important; }
+#finance-view .fin-trace-page .fin-q-read{ font-size:14px !important; }
+#finance-view .fin-trace-page .fin-trace-diverge{ font-size:14px !important; }
+#finance-view .fin-trace-page .fin-trace-trad-note{ font-size:14px !important; }
+#finance-view .fin-trace-page .fin-qc-evidence{ font-size:14px !important; }
+#finance-view .fin-trace-filters::after{ font-size:14px !important; }
+#finance-view .fin-reset-btn{ font-size:14px !important; }
+#finance-view .bv-dd-btn{ font-size:14px !important; }
+#finance-view .bv-ck-label{ font-size:14px !important; }
+
+/* ══ IVORY PATCH 5 (2026-07-26) — REPORT typography (3 sizes), strong buttons,
+      dark inputs, remaining gold text → ink, settings tick-all chip. ══ */
+
+/* 1 — REPORT page: exactly three sizes. Body 15 / headings 17 bold / chips 12. */
+#finance-view[data-mode="report"] #finance-canvas *{ font-size:15px !important; line-height:1.6; }
+#finance-view[data-mode="report"] #finance-canvas [class*="badge"],
+#finance-view[data-mode="report"] #finance-canvas [class*="chip"],
+#finance-view[data-mode="report"] #finance-canvas [class*="status"],
+#finance-view[data-mode="report"] #finance-canvas [class*="-num"],
+#finance-view[data-mode="report"] #finance-canvas [class*="meta"]{ font-size:12px !important; letter-spacing:.04em; }
+#finance-view[data-mode="report"] #finance-canvas [class*="rep-h"],
+#finance-view[data-mode="report"] #finance-canvas [class*="-h1"],
+#finance-view[data-mode="report"] #finance-canvas summary{ font-size:17px !important; font-weight:700 !important; }
+#finance-view .fin-hub-title{ font-size:17px !important; font-weight:700 !important; }
+#finance-view .fin-hub-sec{ font-size:13px !important; }
+
+/* 2 — Scholar decision buttons: strong borders, dark labels; chosen = filled + white */
+#finance-view .fin-oi-dbtn{ font-size:13px !important; font-weight:700; border:2px solid; background:#FFFFFF; border-radius:6px; }
+#finance-view .fin-oi-dbtn.green{  color:#1E5B2E !important; border-color:#1E7E45 !important; }
+#finance-view .fin-oi-dbtn.orange{ color:#8A5200 !important; border-color:#B26A00 !important; }
+#finance-view .fin-oi-dbtn.red{    color:#A33333 !important; border-color:#A33333 !important; }
+#finance-view .fin-oi-dbtn.green.chosen{  background:#1E7E45 !important; color:#FFFFFF !important; }
+#finance-view .fin-oi-dbtn.orange.chosen{ background:#B26A00 !important; color:#FFFFFF !important; }
+#finance-view .fin-oi-dbtn.red.chosen{    background:#A33333 !important; color:#FFFFFF !important; }
+
+/* 3 — Every input/textarea (scholar name, reasoning, search): white, bordered, dark */
+#finance-view input[type="text"], #finance-view input:not([type]), #finance-view textarea, #finance-view select{
+  background:#FFFFFF !important; color:#1A2432 !important;
+  border:1.5px solid #8A94A2 !important; border-radius:6px;
+  font-size:14px !important;
+}
+#finance-view input:focus, #finance-view textarea:focus, #finance-view select:focus{ border-color:#0E6B63 !important; outline:none; }
+
+/* 4 — Settings: tick-all chip on issuer/group headings */
+#finance-view .fin-ckall{
+  display:inline-block; margin-left:10px; padding:2px 10px; cursor:pointer;
+  font-size:12px !important; font-weight:700; letter-spacing:.06em;
+  color:#0E6B63 !important; background:#FFFFFF; border:1.5px solid #0E6B63; border-radius:5px;
+}
+#finance-view .fin-ckall:hover{ background:#0E6B63; color:#FFFFFF !important; }
+
+/* 5 — remaining dark-gold / blue text selectors forced to ink (generated, 202 rules) */
+#finance-notice .fin-notice-badge{ color:#1A2432 !important; }
+#finance-htw-btn{ color:#1A2432 !important; }
+#finance-htw-btn:hover{ color:#1A2432 !important; }
+#finance-readout{ color:#1A2432 !important; }
+#finance-view .fin-yr-mark.year-multi{ color:#1A2432 !important; }
+#finance-view .fin-hij-mark.year-multi{ color:#1A2432 !important; }
+#finance-view .fin-ruler-btn.on{ color:#1A2432 !important; }
+#finance-view .fin-ruler-btn:hover{ color:#1A2432 !important; }
+#finance-view .fin-row:hover .fin-row-title{ color:#1A2432 !important; }
+#finance-view .fin-read{ color:#1A2432 !important; }
+#finance-view .fin-root-plausible{ color:#1A2432 !important; }
+#finance-view .fin-badge-ill{ color:#1A2432 !important; }
+#finance-view .fin-term-origin-label{ color:#1A2432 !important; }
+#finance-view .fin-term-origin-yr{ color:#1A2432 !important; }
+#finance-view .fin-term-tile .fin-tile-ar{ color:#1A2432 !important; }
+#finance-view .fin-term-tile .fin-tile-approx-yr{ color:#1A2432 !important; }
+#finance-view .fin-term-undated-chip{ color:#1A2432 !important; }
+#finance-view .fin-term-undated-chip:hover{ color:#1A2432 !important; }
+.fin-rdr-code{ color:#1A2432 !important; }
+.fin-rdr-title{ color:#1A2432 !important; }
+.fin-rdr-x{ color:#1A2432 !important; }
+.fin-rdr-x:hover{ color:#1A2432 !important; }
+#finance-view .fin-start-tag{ color:#1A2432 !important; }
+#finance-view .fin-hub-title{ color:#1A2432 !important; }
+#finance-view .fin-hub-hint{ color:#1A2432 !important; }
+#finance-view .fin-hub-sec{ color:#1A2432 !important; }
+#finance-view .fin-spine-rel{ color:#1A2432 !important; }
+#finance-view .fin-hub-chip{ color:#1A2432 !important; }
+#finance-view .fin-qc-plausible{ color:#1A2432 !important; }
+#finance-view .fin-qc-illustrative{ color:#1A2432 !important; }
+#finance-view .fin-qc-note{ color:#1A2432 !important; }
+#finance-view .fin-term-ar{ color:#1A2432 !important; }
+#finance-view .fin-term-src{ color:#1A2432 !important; }
+#finance-view .fin-term-links-toggle{ color:#1A2432 !important; }
+#finance-view .fin-term-links-toggle:hover{ color:#1A2432 !important; }
+#finance-view .fin-term-enrich-sec{ color:#1A2432 !important; }
+#finance-view .fin-term-std-clause{ color:#1A2432 !important; }
+#finance-view .fin-q-ref{ color:#1A2432 !important; }
+#finance-view .fin-q-read{ color:#1A2432 !important; }
+#finance-view .bv-dd-btn{ color:#1A2432 !important; }
+#finance-view .bv-ck-row.checked{ color:#1A2432 !important; }
+#finance-view .bv-ck.on{ color:#1A2432 !important; }
+#finance-view .bv-dd-allnone span{ color:#1A2432 !important; }
+#finance-view .bv-dd-allnone span:hover{ color:#1A2432 !important; }
+#finance-view .fin-reset-btn{ color:#1A2432 !important; }
+#finance-view .fin-mode-switch .fin-mode-btn{ color:#1A2432 !important; }
+#finance-view .fin-mode-switch .fin-mode-btn:hover{ color:#1A2432 !important; }
+#finance-view .fin-mode-switch .fin-mode-btn.on{ color:#1A2432 !important; }
+#finance-view .fin-group-source .fin-mode-btn.on{ color:#1A2432 !important; }
+#finance-view .fin-upload-h1{ color:#1A2432 !important; }
+#finance-view .fin-upload-drop{ color:#1A2432 !important; }
+#finance-view .fin-upload-status.grey{ color:#1A2432 !important; }
+#finance-view .fin-upload-status.amber{ color:#1A2432 !important; }
+#finance-view .fin-upload-metak{ color:#1A2432 !important; }
+#finance-view .fin-upload-prevlbl{ color:#1A2432 !important; }
+#finance-view .bv-ck-row.fin-qword-pale .bv-ck-label{ color:#1A2432 !important; }
+#finance-view .fin-qword-badge{ color:#1A2432 !important; }
+#finance-view .fin-prism-h1{ color:#1A2432 !important; }
+#finance-view .fin-prism-q{ color:#1A2432 !important; }
+#finance-view .fin-prism-ref{ color:#1A2432 !important; }
+#finance-view .fin-prism-cx{ color:#1A2432 !important; }
+#finance-view .fin-ladder-contract{ color:#1A2432 !important; }
+#finance-view .fin-read-pill{ color:#1A2432 !important; }
+#finance-view .fin-ladder-node-label:hover .fin-ladder-node-title{ color:#1A2432 !important; }
+#finance-view .fin-ladder-node-label.sel .fin-ladder-node-title{ color:#1A2432 !important; }
+#finance-view .fin-cite{ color:#1A2432 !important; }
+#finance-view .fin-ladder-link:hover{ color:#1A2432 !important; }
+#finance-view .fin-home-title{ color:#1A2432 !important; }
+#finance-view .fin-home-sub{ color:#1A2432 !important; }
+#finance-view .fin-shelf-title{ color:#1A2432 !important; }
+#finance-view .fin-word-count{ color:#1A2432 !important; }
+#finance-view .fin-c-card .fin-c-ar{ color:#1A2432 !important; }
+#finance-view .fin-c-card .fin-c-terms{ color:#1A2432 !important; }
+#finance-view .fin-trace-partial{ color:#1A2432 !important; }
+#finance-view .fin-tier-chip{ color:#1A2432 !important; }
+#finance-view .fin-honesty-line{ color:#1A2432 !important; }
+#finance-view .fin-lec-h1{ color:#1A2432 !important; }
+#finance-view .fin-lec-h2{ color:#1A2432 !important; }
+#finance-view .fin-lec-h3{ color:#1A2432 !important; }
+#finance-view .fin-lec-banner{ color:#1A2432 !important; }
+#finance-view .fin-lec-cite{ color:#1A2432 !important; }
+#finance-view .fin-lec-evidence{ color:#1A2432 !important; }
+#finance-view .fin-lec-enttag{ color:#1A2432 !important; }
+#finance-view .fin-lec-honesty{ color:#1A2432 !important; }
+#finance-view .fin-lec-vchip{ color:#1A2432 !important; }
+#finance-view .fin-lec-link:hover{ color:#1A2432 !important; }
+#finance-view .fin-lec-cchip{ color:#1A2432 !important; }
+#finance-view .fin-lec-back{ color:#1A2432 !important; }
+#finance-view .fin-lec-back:hover{ color:#1A2432 !important; }
+#finance-view .fin-lec-cross{ color:#1A2432 !important; }
+#finance-view .fin-lec-mstage{ color:#1A2432 !important; }
+#finance-view .fin-lec-mnote{ color:#1A2432 !important; }
+#finance-view .fin-lec-mevi{ color:#1A2432 !important; }
+#finance-view .fin-std-title{ color:#1A2432 !important; }
+#finance-view .fin-std-totals{ color:#1A2432 !important; }
+#finance-view .fin-run-note{ color:#1A2432 !important; }
+#finance-view .fin-std-legend{ color:#1A2432 !important; }
+#finance-view .fin-std-leg-k{ color:#1A2432 !important; }
+#finance-view .fin-std-leg-tag{ color:#1A2432 !important; }
+#finance-view .fin-iss-sum{ color:#1A2432 !important; }
+#finance-view .fin-std-pillar{ color:#1A2432 !important; }
+#finance-view .fin-std-coln{ color:#1A2432 !important; }
+#finance-view .fin-std-code{ color:#1A2432 !important; }
+#finance-view .fin-std-row:hover .fin-std-name{ color:#1A2432 !important; }
+#finance-view .fin-std-strike{ color:#1A2432 !important; }
+#finance-view .fin-std-tag{ color:#1A2432 !important; }
+#finance-view .fin-std-an{ color:#1A2432 !important; }
+#finance-view .fin-std-an:hover{ color:#1A2432 !important; }
+#finance-view .fin-api-title{ color:#1A2432 !important; }
+#finance-view .fin-api-lbl{ color:#1A2432 !important; }
+#finance-view .fin-api-btn{ color:#1A2432 !important; }
+#finance-view .fin-api-status.grey{ color:#1A2432 !important; }
+#finance-view .fin-lite-title{ color:#1A2432 !important; }
+#finance-view .fin-lite-chip{ color:#1A2432 !important; }
+#finance-view .fin-lite-reg{ color:#1A2432 !important; }
+#finance-view .fin-lite-gone > summary{ color:#1A2432 !important; }
+#finance-view .fin-vet-title{ color:#1A2432 !important; }
+#finance-view .fin-vet-count{ color:#1A2432 !important; }
+#finance-view .fin-vet-reset{ color:#1A2432 !important; }
+#finance-view .fin-vet-reset:hover{ color:#1A2432 !important; }
+#finance-view .fin-vet-plabel{ color:#1A2432 !important; }
+#finance-view .fin-vet-chip.sel{ color:#1A2432 !important; }
+#finance-view .fin-vet-chip.sel .fin-vet-chip-pre{ color:#1A2432 !important; }
+#finance-view .fin-std-debates > summary{ color:#1A2432 !important; }
+#finance-view .fin-std-source{ color:#1A2432 !important; }
+#finance-view .fin-std-link{ color:#1A2432 !important; }
+#finance-view .fin-cov-label{ color:#1A2432 !important; }
+#finance-view .fin-cov-open{ color:#1A2432 !important; }
+#finance-view .fin-rep-demo{ color:#1A2432 !important; }
+#finance-view .fin-rep-h1{ color:#1A2432 !important; }
+#finance-view .fin-rep-meta{ color:#1A2432 !important; }
+#finance-view .fin-rep-h2{ color:#1A2432 !important; }
+#finance-view .fin-rep-vchip{ color:#1A2432 !important; }
+#finance-view .fin-rep-lecturelink{ color:#1A2432 !important; }
+#finance-view .fin-rep-table th{ color:#1A2432 !important; }
+#finance-view .fin-rep-num{ color:#1A2432 !important; }
+#finance-view .fin-rep-status.fin-rep-warn{ color:#1A2432 !important; }
+#finance-view .fin-rep-openid{ color:#1A2432 !important; }
+#finance-view .fin-rep-open-none{ color:#1A2432 !important; }
+#finance-view .fin-rep-siglabel{ color:#1A2432 !important; }
+#finance-view .fin-rep-signote{ color:#1A2432 !important; }
+#finance-view .fin-rep-scopelink,.fin-rep-stdlink{ color:#1A2432 !important; }
+#finance-view .fin-rep-excluded{ color:#1A2432 !important; }
+#finance-view .fin-rep-excl-note{ color:#1A2432 !important; }
+#finance-view .fin-report-backtag{ color:#1A2432 !important; }
+#finance-view .fin-rep-print{ color:#1A2432 !important; }
+#finance-view .fin-rep-hub-count{ color:#1A2432 !important; }
+#finance-view .fin-oi-dbtn.orange{ color:#1A2432 !important; }
+#finance-view .fin-fab-sev.med{ color:#1A2432 !important; }
+#finance-view .fin-fab-sub{ color:#1A2432 !important; }
+#finance-view .fin-fab-conf.amber{ color:#1A2432 !important; }
+#finance-view .fin-fab-stdstatus{ color:#1A2432 !important; }
+#finance-view .fin-fab-signk{ color:#1A2432 !important; }
+#finance-view .fin-fab-date{ color:#1A2432 !important; }
+#finance-view .fin-fam-name{ color:#1A2432 !important; }
+#finance-view .fin-fam-count{ color:#1A2432 !important; }
+#finance-view .fin-fam-deep{ color:#1A2432 !important; }
+#finance-view .fin-fam-chev{ color:#1A2432 !important; }
+#finance-view .fin-reader-lbl{ color:#1A2432 !important; }
+#finance-view .fin-reader-ttl{ color:#1A2432 !important; }
+#finance-view .fin-reader-empty{ color:#1A2432 !important; }
+#finance-view #fin-pages-panel .fin-pages-htw{ color:#1A2432 !important; }
+#finance-view .fin-std-source::after{ color:#1A2432 !important; }
+#finance-view .fin-doc-jump-tag{ color:#1A2432 !important; }
+#finance-view .fin-trace-clear{ color:#1A2432 !important; }
+#finance-view .fin-home-stat{ color:#1A2432 !important; }
+#finance-view .fin-home-stat b{ color:#1A2432 !important; }
+#finance-view .fin-reader-back{ color:#1A2432 !important; }
+#finance-view .fin-back-btn{ color:#1A2432 !important; }
+#finance-view .fin-trace-h1{ color:#1A2432 !important; }
+#finance-view .fin-trace-res-ar{ color:#1A2432 !important; }
+#finance-view .fin-trace-sec-h{ color:#1A2432 !important; }
+#finance-view .fin-trace-term-en{ color:#1A2432 !important; }
+#finance-view .fin-trace-term-ar{ color:#1A2432 !important; }
+#finance-view .fin-trace-hrow-hit .fin-trace-hrow-yr{ color:#1A2432 !important; }
+#finance-view .fin-trace-hrow-flag{ color:#1A2432 !important; }
+#finance-view .fin-trace-diverge{ color:#1A2432 !important; }
+#finance-view .fin-trace-fchip{ color:#1A2432 !important; }
+#finance-view .fin-trace-fchip.on{ color:#1A2432 !important; }
+#finance-view .fin-trace-fclear:hover{ color:#1A2432 !important; }
+#finance-view .fin-trace-hubback-link:hover{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-origin .fin-trace-sec-h{ color:#1A2432 !important; }
+#finance-view .fin-trace-journey .fin-q-ref{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-q-read{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-origin .fin-hub-chip[data-trace-qword]{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-term-en{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-hrow-hit .fin-trace-hrow-yr{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-res-en{ color:#1A2432 !important; }
+#finance-view .fin-trace-filters .bv-dd-btn{ color:#1A2432 !important; }
+#finance-view .fin-trace-filters .bv-ck.on{ color:#1A2432 !important; }
+#finance-view .fin-trace-filters .bv-ck-row.checked{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-selchip span{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-selchip .fin-trace-selchip-x{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-res-yr{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-std-link{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-hub-chip[data-sel-kind]{ color:#1A2432 !important; }
+#finance-view .fin-trace-hubback-link{ color:#1A2432 !important; }
+#finance-view .fin-trace-hubback-link:hover{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-diverge{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-std-outchip{ color:#1A2432 !important; }
+#finance-view .fin-trace-page .fin-trace-fclear:hover{ color:#1A2432 !important; }
+#finance-view .fin-trace-filters::after{ color:#1A2432 !important; }
+
+/* ── IVORY PATCH 6 (2026-07-26): back-button disabled state, timeline tiles, ✓ALL states ── */
+
+/* BACK when there is nothing to go back to: pale, clearly inactive — not a black blob */
+#finance-view .fin-back-btn:disabled{
+  background:#E9E4D6 !important; color:#9AA3B0 !important;
+  border-color:#D9D0BC !important; opacity:1 !important;
+}
+
+/* TIMELINE term tiles: were dark navy boxes — now white cards, compact so they don't overlap */
+#finance-view .fin-term-tile{
+  background:#FFFFFF !important; border-color:#C9BFA8 !important;
+  box-shadow:0 1px 4px rgba(34,48,63,.18) !important;
+  font-size:12.5px !important; line-height:1.3 !important; padding:5px 9px !important;
+}
+#finance-view .fin-term-tile:hover{ filter:none; border-color:#0E6B63 !important; }
+#finance-view .fin-term-tile .fin-tile-en{ font-size:12.5px !important; }
+#finance-view .fin-term-tile .fin-tile-ar{ font-size:11.5px !important; color:#5B6B7C !important; }
+#finance-view .fin-term-tile .fin-tile-approx-yr{ font-size:11px !important; color:#6B5D3F !important; }
+
+/* ✓ALL chip: filled teal when the whole group IS selected, outline when it is not */
+#finance-view .fin-ckall.on{ background:#0E6B63 !important; color:#FFFFFF !important; }
+
+/* ══ IVORY PATCH 7 (2026-07-26) — FINAL WORD on the BACK button, timeline overlap, page-name chip.
+      Root cause found: generated rule at ~line 2759 forced the BACK label dark on its dark fill.
+      These rules are LAST in the file and therefore win. ══ */
+
+/* 1 — BACK button, both states, by id AND class, end of file = final say */
+#fin-back-btn, #finance-view .fin-back-btn{
+  background:#22303F !important; color:#FFFFFF !important;
+  border:1px solid #22303F !important; opacity:1 !important; border-radius:6px;
+}
+#fin-back-btn:hover:not(:disabled){ background:#33455E !important; }
+#fin-back-btn:disabled, #finance-view .fin-back-btn:disabled{
+  background:#EDE8DA !important; color:#9AA3B0 !important;
+  border:1px solid #D9D0BC !important; opacity:1 !important; cursor:default;
+}
+
+/* 2 — TIMELINE rows + era labels: compact again so nothing overlaps
+      (the 14px floor broke the fixed row spacing on this one page) */
+#finance-view .fin-row-title{ font-size:13px !important; line-height:1.25 !important; }
+#finance-view .fin-row-meta{ font-size:11.5px !important; line-height:1.2 !important; }
+#finance-view .fin-era-band-label{ font-size:12px !important; }
+#finance-view .fin-era-band-dates{ font-size:11px !important; }
+
+/* 3 — current page name chip in the toolbar */
+#fin-cur-page{
+  display:inline-block; margin:0 4px 0 8px; padding:5px 12px;
+  font-family:'Cinzel',serif; font-weight:700; font-size:14px !important;
+  letter-spacing:.1em; color:#FFFFFF !important; background:#0E6B63;
+  border-radius:6px; white-space:nowrap;
+}
+
+/* ══ IVORY PATCH 8 — WHITE-TEXT GUARANTEE. One block, LAST in the file,
+      covering EVERY dark-filled element. Nothing can override these. ══ */
+#finance-view .fin-mode-switch .fin-mode-btn.on,
+#finance-view .fin-group-user .fin-mode-btn.on,
+#fin-back-btn:not(:disabled), #finance-view .fin-back-btn:not(:disabled),
+#finance-view .fin-hub-chip:hover,
+#fin-reader-back, #finance-view .fin-reader-back,
+#finance-view .fin-home .fin-word-read,
+#finance-view .fin-oi-dbtn.green.chosen,
+#finance-view .fin-oi-dbtn.orange.chosen,
+#finance-view .fin-oi-dbtn.red.chosen,
+#finance-view .fin-run-btn,
+#fin-cur-page{
+  color:#FFFFFF !important;
+}
+#fin-reader-back, #finance-view .fin-reader-back{
+  background:#22303F !important; border:none !important; border-radius:6px;
+  font-size:13px !important; padding:6px 14px;
+}
+#finance-view .fin-run-btn{ background:#0E6B63 !important; border:none !important; font-size:14px !important; border-radius:6px; }
+#fin-back-btn:disabled, #finance-view .fin-back-btn:disabled{
+  background:#EDE8DA !important; color:#9AA3B0 !important;
+  border:1px solid #D9D0BC !important; opacity:1 !important;
+}

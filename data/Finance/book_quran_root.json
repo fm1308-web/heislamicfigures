@@ -1,0 +1,1359 @@
+{
+ "_meta": {
+  "type": "book_quran_root_flags",
+  "generated": "2026-07-10",
+  "rule": "glow=true ONLY where a real chain exists in the data: book->contract (crosslinks) -> lineage quran verses [verified], or book->term (crosslinks) -> quran_finance_layer word with verses [plausible]. No guessing; unflagged books stay pale.",
+  "coverage_note": "Only ~10 books have term/contract links in crosslinks.json, so 9 of 110 flag. That is EXPECTED and honest. Extending book links = Step D work from source docs, not invention. B017 (tawarruq) and B026 (gharar) correctly do NOT glow - their concepts are post-Quranic, the honesty feature.",
+  "counts": {
+   "books_total": 110,
+   "flagged": 9,
+   "verified_chains": 7,
+   "plausible_only": 2
+  }
+ },
+ "rows": [
+  {
+   "book_id": "B001",
+   "title": "The Well-Trodden Path",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "term",
+     "chain": "B001 -> T040 -> Q21 (shirkah / mudarabah roots)",
+     "verses": [
+      "38:24",
+      "4:12",
+      "73:20"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B001 -> T041 -> Q21 (shirkah / mudarabah roots)",
+     "verses": [
+      "38:24",
+      "4:12",
+      "73:20"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B001 -> T024 -> Q14 (bay' / tijarah)",
+     "verses": [
+      "2:275",
+      "4:29",
+      "62:10",
+      "2:198"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "contract",
+     "chain": "B001 -> C02 -> lineage quran block",
+     "verses": [
+      "73:20",
+      "2:198",
+      "62:10"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B001 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B001 -> C05 -> lineage quran block",
+     "verses": [
+      "2:282"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B002",
+   "title": "Book of Taxation",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B003",
+   "title": "The Mother (Compendium)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B004",
+   "title": "The Great Compilation",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B005",
+   "title": "Book of Revenues",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B006",
+   "title": "The Extensive",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "contract",
+     "chain": "B006 -> C01 -> lineage quran block",
+     "verses": [
+      "38:24",
+      "4:12"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B006 -> C02 -> lineage quran block",
+     "verses": [
+      "73:20",
+      "2:198",
+      "62:10"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B006 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B007",
+   "title": "Wondrous Crafts",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B008",
+   "title": "Distinguished Jurist's Primer",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B009",
+   "title": "The Enricher",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "term",
+     "chain": "B009 -> T016 -> Q16 (rahn)",
+     "verses": [
+      "2:283"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B009 -> T026 -> Q14 (bay' / tijarah)",
+     "verses": [
+      "2:275",
+      "4:29",
+      "62:10",
+      "2:198"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "contract",
+     "chain": "B009 -> C01 -> lineage quran block",
+     "verses": [
+      "38:24",
+      "4:12"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B009 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B009 -> C09 -> lineage quran block",
+     "verses": [
+      "2:283"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B010",
+   "title": "Revival of Religious Sciences",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B011",
+   "title": "Collected Fatwas",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B012",
+   "title": "Notification of the Signatories",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B013",
+   "title": "Ordinances of Government",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B014",
+   "title": "Ottoman Civil Code",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "contract",
+     "chain": "B014 -> C01 -> lineage quran block",
+     "verses": [
+      "38:24",
+      "4:12"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B014 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B014 -> C04 -> lineage quran block",
+     "verses": [
+      "65:6",
+      "28:26",
+      "28:27",
+      "18:77"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B014 -> C09 -> lineage quran block",
+     "verses": [
+      "2:283"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B015",
+   "title": "The Guidance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B016",
+   "title": "The Epistle",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B017",
+   "title": "Commentary on the Utmost Aims",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B018",
+   "title": "The Concise",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B019",
+   "title": "Victory of the Capable",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B020",
+   "title": "Similitudes and Parallels",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B021",
+   "title": "Banking Without Interest",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B022",
+   "title": "An Introduction to Islamic Finance",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "term",
+     "chain": "B022 -> T026 -> Q14 (bay' / tijarah)",
+     "verses": [
+      "2:275",
+      "4:29",
+      "62:10",
+      "2:198"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B022 -> T006 -> Q18 (ijarah / ajr)",
+     "verses": [
+      "65:6",
+      "28:26-27",
+      "18:77"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "contract",
+     "chain": "B022 -> C01 -> lineage quran block",
+     "verses": [
+      "38:24",
+      "4:12"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B022 -> C02 -> lineage quran block",
+     "verses": [
+      "73:20",
+      "2:198",
+      "62:10"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B022 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B022 -> C04 -> lineage quran block",
+     "verses": [
+      "65:6",
+      "28:26",
+      "28:27",
+      "18:77"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B023",
+   "title": "Islam and the Economic Challenge",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B024",
+   "title": "Our Economics",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B025",
+   "title": "Islamic Banking and Interest",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B026",
+   "title": "Hedging in Islamic Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B027",
+   "title": "The Future of Economics",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B028",
+   "title": "Fiqh al-Zakat",
+   "has_quran_root": true,
+   "root_tag": "plausible",
+   "chains": [
+    {
+     "via": "term",
+     "chain": "B028 -> T116 -> Q08 (zakat)",
+     "verses": [
+      "2:43",
+      "9:60",
+      "9:103"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B028 -> T118 -> Q09 (sadaqah / infaq)",
+     "verses": [
+      "2:261",
+      "2:264",
+      "2:271",
+      "57:18"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B028 -> T119 -> Q08 (zakat)",
+     "verses": [
+      "2:43",
+      "9:60",
+      "9:103"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B028 -> T120 -> Q08 (zakat)",
+     "verses": [
+      "2:43",
+      "9:60",
+      "9:103"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B029",
+   "title": "Islamic Jurisprudence and its Proofs",
+   "has_quran_root": true,
+   "root_tag": "plausible",
+   "chains": [
+    {
+     "via": "term",
+     "chain": "B029 -> T021 -> Q02 (maysir / qimar)",
+     "verses": [
+      "2:219",
+      "5:90-91"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B029 -> T022 -> Q01 (riba)",
+     "verses": [
+      "2:275",
+      "2:276",
+      "2:278-279",
+      "3:130",
+      "4:161",
+      "30:39"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B029 -> T023 -> Q01 (riba)",
+     "verses": [
+      "2:275",
+      "2:276",
+      "2:278-279",
+      "3:130",
+      "4:161",
+      "30:39"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B029 -> T024 -> Q14 (bay' / tijarah)",
+     "verses": [
+      "2:275",
+      "4:29",
+      "62:10",
+      "2:198"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B029 -> T025 -> Q14 (bay' / tijarah)",
+     "verses": [
+      "2:275",
+      "4:29",
+      "62:10",
+      "2:198"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    },
+    {
+     "via": "term",
+     "chain": "B029 -> T026 -> Q14 (bay' / tijarah)",
+     "verses": [
+      "2:275",
+      "4:29",
+      "62:10",
+      "2:198"
+     ],
+     "tag": "plausible",
+     "tag_reason": "term->word assignment is editorial (layer); verses themselves verified"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B030",
+   "title": "Islamic Finance Contracts",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B031",
+   "title": "Towards a Just Monetary System",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B032",
+   "title": "Islamic Finance: Law, Economics, and Practice",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "contract",
+     "chain": "B032 -> C01 -> lineage quran block",
+     "verses": [
+      "38:24",
+      "4:12"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B032 -> C02 -> lineage quran block",
+     "verses": [
+      "73:20",
+      "2:198",
+      "62:10"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B032 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B032 -> C04 -> lineage quran block",
+     "verses": [
+      "65:6",
+      "28:26",
+      "28:27",
+      "18:77"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B032 -> C05 -> lineage quran block",
+     "verses": [
+      "2:282"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B032 -> C06 -> lineage quran block",
+     "verses": [
+      "2:275"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B033",
+   "title": "Islamic Commercial Law",
+   "has_quran_root": true,
+   "root_tag": "verified",
+   "chains": [
+    {
+     "via": "contract",
+     "chain": "B033 -> C03 -> lineage quran block",
+     "verses": [
+      "2:275",
+      "4:29"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    },
+    {
+     "via": "contract",
+     "chain": "B033 -> C04 -> lineage quran block",
+     "verses": [
+      "65:6",
+      "28:26",
+      "28:27",
+      "18:77"
+     ],
+     "tag": "verified",
+     "tag_reason": "book->contract link in crosslinks + verse list in lineage_v4 quran row"
+    }
+   ],
+   "glow": true
+  },
+  {
+   "book_id": "B034",
+   "title": "Islam and Mammon",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B035",
+   "title": "The Long Divergence",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B036",
+   "title": "Partnership and Profit-Sharing in Islamic Law",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B037",
+   "title": "Insurance in an Islamic Economy",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B038",
+   "title": "Meezan Bank's Guide to Islamic Banking",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B039",
+   "title": "A Compendium of Legal Opinions",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B040",
+   "title": "An Introduction to Islamic Finance: Theory and Practice",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B041",
+   "title": "Studies in Islamic Economics",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B042",
+   "title": "Theoretical Studies in Islamic Banking and Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B043",
+   "title": "Islamic Economics: Theory and Practice",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B044",
+   "title": "Islam and the Theory of Interest",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B045",
+   "title": "Issues in Islamic Banking",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B046",
+   "title": "Islamic Finance in the Global Economy",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B047",
+   "title": "Dictionary of the Language of Jurists",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B048",
+   "title": "The General Juristic Introduction",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B049",
+   "title": "Sukuk",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B050",
+   "title": "Understanding Islamic Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B051",
+   "title": "Progress of Islamic Banking",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B052",
+   "title": "Islamic Financial System: Principles and Operations",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B053",
+   "title": "Product Development in Islamic Banks",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B054",
+   "title": "Legal, Regulatory and Governance Issues in Islamic Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B055",
+   "title": "Risk Sharing in Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B056",
+   "title": "Islamic Finance in Western Higher Education",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B057",
+   "title": "AAOIFI Shari'ah Standards (complete English edition)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B058",
+   "title": "IFSB-1 Risk Management Principles",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B059",
+   "title": "Muslim Economic Thinking",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B060",
+   "title": "The Islamic Economy",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B061",
+   "title": "The Islamic Vision of Development",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B062",
+   "title": "The Historic Judgment on Interest (Riba)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B063",
+   "title": "Risk Management in Islamic Financial Industry",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B064",
+   "title": "Islamic Banking FAQ",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B065",
+   "title": "Principles of Islamic Jurisprudence",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B066",
+   "title": "A Basic Guide to Contemporary Islamic Banking and Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B067",
+   "title": "Riba, Bank Interest and the Rationale of Its Prohibition",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B068",
+   "title": "Thirty Years of Islamic Banking",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B069",
+   "title": "Islamic Law and Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B070",
+   "title": "Sukuk and their Contemporary Applications",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B071",
+   "title": "Book of Taxation (Yahya ibn Adam)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B072",
+   "title": "The Foundation",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B073",
+   "title": "The Seekers' Path",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B074",
+   "title": "Public Duties in Islam (Hisba)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B075",
+   "title": "The Abridgement of Khalil",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B076",
+   "title": "The Introduction (Prolegomena)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B077",
+   "title": "The Reconciliations",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B078",
+   "title": "Helping the Community by Examining the Distress",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B079",
+   "title": "Similitudes and Parallels (Ibn Nujaym)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B080",
+   "title": "The Answer to the Perplexed (Ibn Abidin's Gloss)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B081",
+   "title": "Islam's Solution of the Basic Economic Problems",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B082",
+   "title": "Interest (Sud)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B083",
+   "title": "An Outline of Interestless Banking",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B084",
+   "title": "Riba and Interest",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B085",
+   "title": "Economic System of Islam",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B086",
+   "title": "The Interest-Free Bank in Islam",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B087",
+   "title": "The Theory of Maslaha in Islamic Jurisprudence",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B088",
+   "title": "Banks Without Interest",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B089",
+   "title": "Developing Banking Operations in Conformity with Islamic Law",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B090",
+   "title": "Economic Development in an Islamic Framework",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B091",
+   "title": "Money and Banking in Islam",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B092",
+   "title": "Fiscal Policy and Resource Allocation in Islam",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B093",
+   "title": "Development and Problems of Islamic Banks",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B094",
+   "title": "The Compendium on the Principles of Riba",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B095",
+   "title": "An Introduction to Islamic Economics",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B096",
+   "title": "Essays in Islamic Economics",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B097",
+   "title": "Economics of Zakah",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B098",
+   "title": "Regulation and Supervision of Islamic Banks",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B099",
+   "title": "OIC Fiqh Academy Resolutions 1985-2000",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B100",
+   "title": "Corporate Governance in Islamic Financial Institutions",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B101",
+   "title": "Theoretical Foundations of Islamic Economics",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B102",
+   "title": "Financial Transactions in Islamic Jurisprudence (trans. El-Gamal)",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B103",
+   "title": "Islamic Economics: A Short History",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B104",
+   "title": "Studies in Contemporary Fiqh Issues",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B105",
+   "title": "Shari'ah Law: An Introduction",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B106",
+   "title": "Risk Analysis for Islamic Banks",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B107",
+   "title": "Essential Readings in Islamic Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B108",
+   "title": "BNM Shariah Resolutions in Islamic Finance",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B109",
+   "title": "Islam and the Path to Human and Economic Development",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  },
+  {
+   "book_id": "B110",
+   "title": "What Is Wrong with Islamic Economics?",
+   "has_quran_root": false,
+   "root_tag": "",
+   "chains": [],
+   "glow": false
+  }
+ ]
+}

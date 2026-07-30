@@ -1,0 +1,138 @@
+{
+  "id": "KB-GS17",
+  "source": {
+    "title": "AAOIFI Governance Standard (GS) 17: Shari'ah Compliance and Fiduciary Ratings of Sukuk and Other Islamic Finance Instruments",
+    "issuer": "AAOIFI Governance and Ethics Board (AGEB)",
+    "approved": "AGEB meeting no. 33, October 2023 (Appendix A states 4-5 October / 19-20 Rabi' I 1445H; preparation history states 5-6 October / 20-21 Rabi' I 1445H — internal one-day discrepancy in the PDF), approved unanimously",
+    "issued": "22 November 2023 (8 Jumada I 1445H)",
+    "effective_date": "Ratings of instruments issued on or after 1 July 2023 (effective date precedes issuance date — retrospective by design)",
+    "url": null,
+    "status": "needs_check",
+    "companion_standard": "Continuation of GS 10 'Shari'ah Compliance and Fiduciary Ratings for Islamic Financial Institutions' — GS 17 repeatedly imports GS 10 requirements"
+  },
+  "display_card": {
+    "name": "GS 17 — Shari'ah Compliance & Fiduciary Ratings of Sukuk",
+    "one_liner": "Tells rating agencies how to rate Sukuk and other Islamic instruments on Shari'ah compliance and fiduciary performance — not just credit — with instrument-type classification, weighted parameters and a suggested iAAAs-to-iCs scale.",
+    "paragraph_count": "Standard set out in paragraphs 1-60",
+    "status": "verified (from uploaded PDF)"
+  },
+  "applicability": {
+    "applies_to": "Independent rating agencies conducting Shari'ah compliance and fiduciary (SCF) rating engagements on instruments",
+    "instruments_in_scope": [
+      "Sukuk (by IFIs, corporates or governments — anything meeting the Sukuk definition, by whatever name)",
+      "Investment management instruments incl. restricted investment accounts (RIA) not registered as separate legal entities",
+      "Unrestricted investment accounts (URIA) or classes thereof — when offered by a non-IFI, or by an IFI not rated under GS 10, or rated below target",
+      "Any other publicly offered Islamic finance instrument/product (liability, quasi-equity or asset product)"
+    ],
+    "recommended_not_mandatory": "Highly recommended (not mandatory) for all publicly offered instruments except those from IFIs already rated under GS 10; preferably updated annually and announced publicly (para 6, BC21-BC23)",
+    "assessment_level": "Primarily at instrument level; extends to originator / service provider / trustee functions where the instrument's nature requires (para 3)"
+  },
+  "core_machinery": {
+    "eligible_agencies": [
+      "Licensed credit rating agencies that develop GS 10 + GS 17 capacity and methodology",
+      "Specialised SCF rating agencies licensed/recognised, with credit-rating expertise involved (para 8)",
+      "Plus GS 10 ethics, quality control, engagement-acceptance and fit-and-proper requirements (para 9); AAOIFI code of ethics (para 10)"
+    ],
+    "two_sided_rating": {
+      "side_1_shariah_compliance_and_governance": [
+        "a. Compliance with Shari'ah principles and rules",
+        "b. Shari'ah governance framework",
+        "c. Corporate governance practices related to Shari'ah governance",
+        "d. Transparency and disclosure",
+        "e. Ethics and values"
+      ],
+      "side_2_fiduciary_performance_and_capacity": [
+        "f. Asset quality and returns",
+        "g. Creditworthiness of the originator (where applicable)"
+      ],
+      "preferred_practice": "Two separate scores/ratings — one for Shari'ah compliance & governance, one for fiduciary responsibilities & capacity (paras 27, 42)"
+    },
+    "four_instrument_types": {
+      "1_equity_or_quasi_equity_no_guarantee": "Participatory; residual interest; perpetual/convertible; no guarantee or purchase undertaking. Examples: Tier 1 Musharaka/Mudaraba/Wakala Sukuk; off-balance-sheet participatory Sukuk and RIAs; Ijarah Muntahia Bittamleek at fair-value transfer (paras 14-17)",
+      "2_quasi_equity_with_guarantee": "Guarantee or purchase undertaking gives promised redemption; recourse first to originator, asset acts more as security. Examples: guaranteed participatory Sukuk; IMB at pre-promised price/gift; hybrids not meeting equity or liability tests; URIAs with ongoing redemption (paras 18-20)",
+      "3_liability_type": "Murabaha, Tawarruq, Salam, Istisna and hybrids where liability component >50% of underlying assets at par AND/OR liability component supplies >66.67% of returns. Classification is NOT a Shari'ah-compliance verdict (para 21 + explanation, footnote refers to SS 59 paras 8/2/2-8/2/3)",
+      "4_asset_type": "Asset-side financing/investment products offered by unrated or under-target-rated IFIs, or by non-IFI entities (e.g. Shari'ah-compliant housing finance where no IFIs exist) (para 23)"
+    },
+    "benchmark_hierarchies": {
+      "shariah_principles": "1) AAOIFI Shari'ah standards → 2) jurisdiction regulator's Shari'ah regulations → 3) central Shari'ah board rulings → 4) AAOIFI FASs (Shari'ah-related content) → 5) originator's SSB approvals (para 28)",
+      "shariah_governance": "AAOIFI GSs (esp. GS 12) → IFSB Shari'ah governance standards → jurisdiction RSA regulations (para 30)",
+      "corporate_governance": "IFSB corporate governance → AAOIFI GSs → RSA regulations (para 32); assessed at entity level only, not instrument level (para 35)",
+      "transparency_disclosure": "AAOIFI GSs (esp. GS 12) → AAOIFI FASs (esp. FAS 34 'Financial Reporting for Sukuk-holders') → IFSB → IIFM template documents → RSA regulations (para 37)",
+      "ethics_values": "AAOIFI code of ethics → IFSB conduct-of-business → RSA regulations (para 38)"
+    },
+    "suggested_weights_table_para_48": {
+      "shariah_compliance_rules": "30-35% for ALL four types",
+      "shariah_governance_framework": "equity/quasi-eq no guarantee 15-20; quasi-eq with guarantee 10-15; liability 10-15; asset 5-10",
+      "corporate_governance": "10-15 for first three types; asset 5-10",
+      "transparency_disclosure": "10-15 for first three types; asset 5-10",
+      "ethics_values": "equity type 10-15; others 5-10",
+      "asset_quality_returns": "equity/no-guarantee 25-30; with-guarantee 15-20; N/A for liability and asset types",
+      "creditworthiness_of_originator": "N/A for equity/no-guarantee; with-guarantee 15-20; liability 35-45; N/A for asset type",
+      "kill_switch": "Failure in a significant category — particularly compliance with Shari'ah principles and rules — is an OVERALL failure regardless of weighted score (footnote 8, para 53)"
+    },
+    "suggested_rating_scale_para_54": [
+      "iAAAs 90+ Excellent compliance — preferred structure, no controversial elements, excellent governance and fiduciary performance",
+      "iAAs 80-89 Very good — preferred structure, strong governance, strong fiduciary",
+      "iAs 70-79 Good — approved structure free of basic non-compliance, good governance",
+      "iBBs 60-69 Highly satisfactory — less-preferred structure, may include some controversial elements, sound governance",
+      "iBs 50-59 Reasonable — structure not universally considered compliant but approved; certain material non-compliant elements noted",
+      "iCs <50 Unsatisfactory — structure controversial per several international jurists or noteworthy basic non-compliance; weak governance and fiduciary",
+      "Scale span suggested 5-10 grades; denominations left to the agency (para 53, BC18-BC19)"
+    ],
+    "tiered_and_jurisdiction_specific": "Global vs jurisdiction-specific ratings allowed; jurisdiction ratings may amend/drop hierarchy sources but must: publish the amended hierarchy, carry a three-letter jurisdiction suffix, and NOT claim AAOIFI alignment (paras 45-46)"
+  },
+  "key_rules_for_assurance": [
+    "Agency must classify the instrument into one of the four types BEFORE choosing scope, weights and scale (para 13)",
+    "Shari'ah-compliance parameter is never diluted: 30-35% weight for every type and a failure there fails the whole rating (paras 25, 48 fn8, 53)",
+    "For liability and guaranteed quasi-equity types, repayment/returns evaluated via credit-rating-like methodologies (excluding external factors), with fiduciary element reduced/eliminated on the scale (paras 44, 55)",
+    "For asset-type instruments the fiduciary element may be eliminated as irrelevant (para 55)",
+    "Agency must define and PUBLICISE consistent weights (para 47) and the rating scale (para 53)",
+    "Scope limitations that persist after due effort → agency must consider withdrawing (para 49)",
+    "Cannot conclude on suitability of benchmarked parameters → agency MUST withdraw (para 51)",
+    "Missing Shari'ah parameters → develop them in coordination with the Shari'ah supervisor(s) (para 50)",
+    "Agency must identify the correct Shari'ah supervisor(s) of originator/service provider/trustee for Fatwas and rulings (para 52)",
+    "Procedures, documentation, archiving, confidentiality and reporting all imported from GS 10 paras 37-54 and 61-62, suitably amended (paras 57-59)",
+    "Trustee capacity to uphold Shari'ah provisions is itself an assessed item (para 31(f))"
+  ],
+  "implications": [
+    "Formal recognition that conventional credit-rating methodology alone is unsuitable for Sukuk — asset-performance risk and Shari'ah compliance are rating dimensions in their own right (IN5, BC2)",
+    "Asset-backed Sukuk (Shari'ah-preferred but excluded by most credit raters) get a rating pathway (BC2)",
+    "Creates market pressure ('investors' right to know') rather than regulatory compulsion — adoption expected via peer pressure and market discipline (BC5-BC8, BC23)",
+    "Lets an unrated or lower-rated IFI get a single product rated to compete (BC3)",
+    "The classification tests in para 21 (50% asset / 66.67% return) give the app a concrete, checkable rule for tagging hybrid Sukuk as liability-type",
+    "Ratings hierarchy puts AAOIFI Shari'ah standards above national regulators and above the originator's own SSB — a quiet centralisation of benchmark authority (para 28)"
+  ],
+  "limitations": [
+    "Ratings are 'highly recommended', not mandatory — board explicitly deferred mandatory status to the future (BC21-BC23)",
+    "Rating scale and denominations are only suggested; agencies keep discretion (BC18-BC19)",
+    "Jurisdiction-specific ratings may drop AAOIFI sources entirely — they just can't claim AAOIFI alignment (para 46)",
+    "Classification criteria in para 21 are expressly NOT a statement of Shari'ah compliance (para 21 explanation)",
+    "Instrument classification deliberately diverges from AAOIFI FAS classification: quasi-equity is split in two by guarantee/purchase-undertaking existence (BC24-BC27)",
+    "Internal date discrepancy in the PDF for the approval meeting (4-5 vs 5-6 October 2023) — tag needs_check for final assembly"
+  ],
+  "disputes": [
+    "Issue now vs wait for market development: issued now to lead the market (BC1, BC4)",
+    "Market relevance without regulatory push: resolved via peer pressure / market discipline / investors' right to know (BC5-BC8)",
+    "Sukuk-only vs all instruments: single standard covering all types, including asset-side products (BC9-BC10)",
+    "Which agencies are eligible: credit rating agencies included unconditionally (with capacity-building) despite skill-set differences, to widen adoption (BC11-BC13)",
+    "One parameter set for all instruments: rejected — hence the four-type classification (BC14)",
+    "Prescribed vs discretionary rating scale: discretion won; scale in the standard is illustrative only (BC18-BC19)",
+    "Mandatory vs recommended ratings (public-hearing push for mandatory): kept highly recommended — too few service providers exist yet (BC21-BC23)",
+    "Divergence from FAS classifications challenged at public hearing: board kept its split, arguing it is a sub-classification within quasi-equity, not a new taxonomy (BC24-BC27)"
+  ],
+  "timeline_bridge": {
+    "context": "Modern standard. Project approved 24-25 March 2020; preliminary study meetings 2020-2021; exposure draft issued 11 December 2022; four public hearings Feb-Aug 2023; final approval October 2023; issued 22 November 2023; effective retrospectively for instruments issued on/after 1 July 2023.",
+    "predecessor": "GS 10 (institution-level SCF ratings) — GS 17 extends the same rating philosophy from institutions to instruments",
+    "note_for_app_timeline": "Anchor as 2023 in the contemporary standards era; developed with executive input from the Islamic International Rating Agency (IIRA); no classical-period dating applies"
+  },
+  "related_standards": [
+    "GS 10 Shari'ah Compliance and Fiduciary Ratings for IFIs (parent standard — eligibility, quality control, acceptance, procedures, documentation, reporting all imported)",
+    "GS 12 Sukuk Governance (top of Shari'ah-governance and disclosure hierarchies)",
+    "FAS 34 Financial Reporting for the Sukuk-holders (disclosure benchmark)",
+    "SS 59 Sale of Debt (paras 8/2/2-8/2/3 — hybrid tradability/tangibility)",
+    "GS 16 Institutional Framework for the Implementation of Ethics (read with the code of ethics)",
+    "AAOIFI Code of Ethics for Islamic Finance Professionals",
+    "IFSB Shari'ah governance, corporate governance and conduct-of-business standards",
+    "IIFM template documents (disclosure benchmark)"
+  ]
+}

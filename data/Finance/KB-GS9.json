@@ -1,0 +1,76 @@
+{
+  "id": "KB-GS9",
+  "source": {
+    "title": "Governance Standard for Islamic Financial Institutions No. 9 - Shari'ah Compliance Function",
+    "url": null,
+    "needs_check": true
+  },
+  "display_card": "GS 9: Shari'ah Compliance Function - management responsibility, Shari'ah Compliance Department (SCD) structure, controls, and reporting",
+  "applicability": [
+    "Sets requirements for establishing/operating the Shari'ah compliance function within IFIs (para 2), covering: (a) the function as integrated part of IFI strategy/processes/people/technology, and (b) establishment, scope and operations of the Shari'ah Compliance Department (SCD) (para 2a-b).",
+    "Applies to IFIs including stand-alone branches, divisions and windows of conventional institutions offering Shari'ah-compliant products (definitions, para 3d).",
+    "Shari'ah compliance function is distinct from, and is a management responsibility, unlike independent organs such as SSB, internal Shari'ah review/audit, external Shari'ah audit (PR2, para 4)."
+  ],
+  "core_machinery": [
+    "Overall Shari'ah compliance function: primary responsibility of management and TCWG (paras 5-10); organizational commitment/culture (paras 11-12); preventive vs detective controls (paras 13-14); function vs department distinction (para 15); SSB oversight role (para 16); key considerations for instituting the function (paras 17-20).",
+    "Controls and processes: objectives/scope aligned to COSO five pillars - control environment, risk assessment, control activities, information and communication, monitoring (paras 21-22); policies/SOPs (paras 23-24); risk assessment and monitoring (paras 25-26); communication protocols (paras 27-29); HR integration - hiring, training, performance appraisals (paras 30-34); technology (paras 35-37); comprehensive control framework adoption (para 38).",
+    "SCD structure, scope and functioning: SCD structure/leadership (paras 39-40); key functions and reporting line, management function list a-m (paras 41-42); additional considerations (paras 43-46); ongoing compliance review process (paras 47-48); dotted-line reporting to SSB (para 49); controls/procedures/methodology and Shari'ah compliance manual (para 50); organizational independence from managerial decision-making, finance, legal, marketing/sales, product development (para 51).",
+    "Secretariat of the SSB: functions/responsibilities (paras 52-54); secretary appointment (para 55); Shari'ah review support (paras 56-57).",
+    "SCD human resources: staffing/hiring (paras 58-61); training/CPD (para 62).",
+    "Compliance techniques/tools (para 63); escalation and follow-up (paras 64-66); compliance report of SCD - contents and frequency (paras 67-70)."
+  ],
+  "key_rules_for_assurance": [
+    "para 39",
+    "para 40",
+    "para 41",
+    "para 42",
+    "para 49",
+    "para 50",
+    "para 51",
+    "para 52",
+    "para 55",
+    "para 58",
+    "para 60",
+    "para 67",
+    "para 68",
+    "para 69"
+  ],
+  "implications": [
+    "Shari'ah compliance is termed backbone of IFI; inconsistencies in approach, reporting lines and controls across IFIs/jurisdictions motivated the standard (IN3).",
+    "SCD reports primarily to senior management (accountable/evaluated by senior management) with a dotted-line to SSB (para 41, para 49) - not the reverse.",
+    "Head of SCD appointment requires SSB concurrence against specimen fit and proper criteria in Appendix B (para 40, Appendix B).",
+    "In resource-constrained IFIs, SCD may also perform the SSB secretariat function, provided no self-review threat results (para 52).",
+    "SCD compliance reports (quarterly/annual) feed into the SSB's annual Shari'ah review report (paras 67-69)."
+  ],
+  "limitations": [
+    "No outsourcing of the SCD function permitted, as it is a management function unique in nature; function may instead be allocated to different organs/departments if needed (BC12).",
+    "SCD's role in product development is input/review only, not final approval, to avoid self-review threat (para 51e, BC6).",
+    "SCD's dual role as SSB secretariat is conditional - only where resources are constrained and no self-review threat arises (para 52, BC8).",
+    "Staffing must be both qualitatively adequate and quantitatively sufficient relative to IFI size (para 58, footnote 6)."
+  ],
+  "disputes": [
+    "BC1: name and scope of standard - 'function' chosen as broader term than 'department'/'unit'.",
+    "BC2: primary responsibility for Shari'ah compliance lies with management, not SSB.",
+    "BC3: use of COSO five pillars as base framework, not mandatory adoption.",
+    "BC4: reporting line debate - resolved as main reporting to management, dotted line to SSB.",
+    "BC5: organizational independence of SCD from managerial decision-making, finance, legal, marketing/sales, product development.",
+    "BC6: product development function - SCD gives input only, not final approval, to avoid self-review threat.",
+    "BC7: role of SSB secretariat vs SCD - secretariat provides logistics; SCD performs research.",
+    "BC8: merging SSB secretariat and SCD functions permitted in resource-constrained institutions absent conflict of interest.",
+    "BC9: pre-approvals of business transactions assigned to SCD due to closer monitoring/understanding of business functions.",
+    "BC10: appointment of Head of SCD - years of experience (10 preferred, min 5 in new markets) and SSB approval of knowledge/skills.",
+    "BC11: frequency and contents of SCD compliance report - quarterly/half-yearly recommended, renamed 'Compliance Report of SCD'.",
+    "BC12: outsourcing the SCD rejected - function is unique management function; reallocation across departments permitted instead."
+  ],
+  "timeline_bridge": {
+    "effective_date": "1 July 2021 (para 71); earlier application encouraged",
+    "adoption": "Approved in AAOIFI Governance and Ethics Board meeting No. 8, 24-25 Shawwal 1439H / 8-9 July 2018 (Appendix A)",
+    "issued": "28 Safar 1440H / 6 November 2018 (Appendix D, H9)"
+  },
+  "related_standards": [
+    "GSIFI No. 2 - Shari'ah Review",
+    "GSIFI No. 3 - Internal Shari'ah Review",
+    "IESBA pronouncement on those charged with governance",
+    "COSO integrated framework"
+  ]
+}

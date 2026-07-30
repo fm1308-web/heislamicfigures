@@ -1,0 +1,774 @@
+{
+ "_meta": {
+  "type": "standards_kb_addition",
+  "families": [
+   "IFSB",
+   "BNM",
+   "SAMA",
+   "CBUAE"
+  ],
+  "count": 19,
+  "generated": "2026-07-05",
+  "note": "19 new deep-note cards in the AAOIFI-note shape. KB-IFSB-28 lives separately in standards_kb_IFSB.json (do not duplicate). Load both alongside standards_kb.json.",
+  "tag_policy": "Titles/dates/scope verified-to-text from uploaded IFSB/BNM/SAMA/CBUAE txt files; concise clause summaries = plausible (full clause-referencing can be deepened later like the AAOIFI GS notes).",
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "notes": [
+  {
+   "id": "KB-IFSB-9",
+   "standard_code": "IFSB-9",
+   "standard_name": "Conduct of Business for IIFS",
+   "family": "IFSB",
+   "pillar": "IFSB-Conduct",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2009-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Fair-dealing rules for how Islamic banks treat customers.",
+    "what_it_is": "Guiding principles on ethical conduct of business - honesty, disclosure, fair treatment of clients and Shari'ah compliance in dealings.",
+    "who_it_applies_to": "Institutions offering Islamic financial services (IIFS).",
+    "why_it_matters": "Customer trust is the product; conduct rules protect it."
+   },
+   "applicability": "Applies to IIFS conduct toward clients and counterparties.",
+   "core_machinery": "Sets principles of truthfulness, capability, disclosure, and Shari'ah compliance across the client relationship.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Institutions must observe honesty, fair dealing and full disclosure with clients.",
+     "tag": "verified"
+    },
+    {
+     "rule": "Conduct must remain Shari'ah compliant at every stage of the relationship.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-30",
+    "AAOIFI GS 7"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T191",
+     "T192"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-10",
+   "standard_code": "IFSB-10",
+   "standard_name": "Shariah Governance Systems for IIFS",
+   "family": "IFSB",
+   "pillar": "IFSB-Governance",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2009-12",
+   "supersedes": "",
+   "superseded_by": "IFSB-31 (2025) - IFSB-31 revises/supersedes the Shari'ah-governance supervision scope",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The blueprint for how a bank runs its Shari'ah board and compliance.",
+    "what_it_is": "Guiding principles on Shari'ah governance systems - the structure, competence, independence and processes of the Shari'ah board and compliance functions.",
+    "who_it_applies_to": "Institutions offering Islamic financial services (IIFS).",
+    "why_it_matters": "It is the IFSB parallel to AAOIFI's governance standards - the system that makes compliance real."
+   },
+   "applicability": "Applies to the Shari'ah governance arrangements of IIFS.",
+   "core_machinery": "Covers competence, independence, confidentiality and consistency of the Shari'ah board, plus internal Shari'ah review.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "A competent, independent Shari'ah board must issue and oversee rulings.",
+     "tag": "verified"
+    },
+    {
+     "rule": "An internal Shari'ah review must check ongoing compliance.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-31",
+    "AAOIFI GS 1"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T190",
+     "T191"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-11",
+   "standard_code": "IFSB-11",
+   "standard_name": "Solvency Requirements for Takaful",
+   "family": "IFSB",
+   "pillar": "IFSB-Prudential",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2010-12",
+   "supersedes": "",
+   "superseded_by": "IFSB-28 (2022)",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The older capital-safety rule for takaful firms (now replaced).",
+    "what_it_is": "The first IFSB solvency standard for takaful - key principles on capital resources and adequacy for Islamic insurers.",
+    "who_it_applies_to": "Regulators supervising takaful undertakings.",
+    "why_it_matters": "Foundation the current solvency rules were built on."
+   },
+   "applicability": "Applied to takaful undertakings' solvency.",
+   "core_machinery": "Set key principles for solvency, later expanded by IFSB-28.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Takaful undertakings must hold capital to meet obligations with high probability.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-28",
+    "IFSB-8"
+   ],
+   "links_into_project": {
+    "family_id": "F08",
+    "related_term_ids": [
+     "T011",
+     "T012"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-12",
+   "standard_code": "IFSB-12",
+   "standard_name": "Liquidity Risk Management for IIFS",
+   "family": "IFSB",
+   "pillar": "IFSB-Prudential",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2012-03",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Rules so an Islamic bank always has cash on hand.",
+    "what_it_is": "Guiding principles on managing liquidity risk - the risk of not having funds when needed - for IIFS (excluding takaful and Islamic funds).",
+    "who_it_applies_to": "IIFS excluding takaful institutions and Islamic collective investment schemes.",
+    "why_it_matters": "A bank can be profitable yet fail if it runs out of cash."
+   },
+   "applicability": "Applies to liquidity risk frameworks of IIFS.",
+   "core_machinery": "Requires governance of liquidity, buffers, and stress-aware funding.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "IIFS must maintain a sound liquidity risk management framework and adequate buffers.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-GN-6",
+    "IFSB-13"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T196"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-13",
+   "standard_code": "IFSB-13",
+   "standard_name": "Stress Testing for IIFS",
+   "family": "IFSB",
+   "pillar": "IFSB-Prudential",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2012-03",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Testing a bank against imagined bad scenarios.",
+    "what_it_is": "Guiding principles on stress testing - checking resilience against severe but plausible shocks - for IIFS.",
+    "who_it_applies_to": "IIFS excluding takaful institutions and Islamic funds.",
+    "why_it_matters": "Reveals weaknesses before a real crisis does."
+   },
+   "applicability": "Applies to IIFS stress-testing programmes.",
+   "core_machinery": "Sets premises and scope for regular, board-owned stress testing.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "IIFS must run regular stress tests covering severe but plausible scenarios.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-TN-2",
+    "IFSB-12"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T196"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-15",
+   "standard_code": "IFSB-15",
+   "standard_name": "Revised Capital Adequacy Standard for IIFS",
+   "family": "IFSB",
+   "pillar": "IFSB-Prudential",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2013-12",
+   "supersedes": "",
+   "superseded_by": "IFSB-23 (2021) for the banking segment",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "How much capital an Islamic bank must keep as a cushion.",
+    "what_it_is": "The revised capital adequacy standard - how to calculate the capital buffer against risks, aligned with global (Basel) standards, adapted for Islamic contracts.",
+    "who_it_applies_to": "IIFS excluding takaful institutions and Islamic funds.",
+    "why_it_matters": "Capital is the shock absorber that keeps a bank standing."
+   },
+   "applicability": "Applies to IIFS capital adequacy calculation.",
+   "core_machinery": "Covers credit, market and operational risk weightings for Islamic contracts and sukuk.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "IIFS must hold regulatory capital against credit, market and operational risk, using Islamic-contract weightings.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-23",
+    "IFSB-7"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T194",
+     "T195"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-21",
+   "standard_code": "IFSB-21",
+   "standard_name": "Core Principles for Islamic Finance Regulation (Capital Market Segment)",
+   "family": "IFSB",
+   "pillar": "IFSB-CorePrinciples",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2018-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The regulator's rulebook checklist for Islamic capital markets.",
+    "what_it_is": "Core principles a regulator should meet to supervise Islamic capital markets soundly.",
+    "who_it_applies_to": "Securities/capital-market regulators.",
+    "why_it_matters": "Sets the baseline for well-run Islamic markets."
+   },
+   "applicability": "Applies to supervision of Islamic capital markets.",
+   "core_machinery": "A set of assessable core principles for market regulation and oversight.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Regulators should meet defined core principles for supervising Islamic capital markets.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-27",
+    "IFSB-17"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T197"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-22",
+   "standard_code": "IFSB-22",
+   "standard_name": "Revised Disclosures to Promote Transparency and Market Discipline (Banking)",
+   "family": "IFSB",
+   "pillar": "IFSB-Disclosure",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2018-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "What an Islamic bank must publicly disclose.",
+    "what_it_is": "Revised standard on disclosures - the information IIFS must publish so markets can judge them.",
+    "who_it_applies_to": "IIFS, banking segment.",
+    "why_it_matters": "Transparency lets depositors and markets hold banks accountable."
+   },
+   "applicability": "Applies to public disclosures by IIFS.",
+   "core_machinery": "Specifies key disclosures on risk, capital and profit-sharing accounts.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "IIFS must publish defined disclosures on capital, risk and investment-account holders.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-25",
+    "IFSB-4"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T192"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-23",
+   "standard_code": "IFSB-23",
+   "standard_name": "Revised Capital Adequacy Standard for IIFS (Banking Segment)",
+   "family": "IFSB",
+   "pillar": "IFSB-Prudential",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2021-12",
+   "supersedes": "IFSB-15 (banking segment)",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The current capital-cushion rule for Islamic banks.",
+    "what_it_is": "The up-to-date capital adequacy standard for Islamic banks, enhancing IFSB-15 and aligning with global capital rules.",
+    "who_it_applies_to": "IIFS, banking segment.",
+    "why_it_matters": "The live version of the bank capital rulebook."
+   },
+   "applicability": "Applies to IIFS capital adequacy (banking).",
+   "core_machinery": "Refines risk weightings and capital components beyond IFSB-15.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Banks must meet enhanced capital adequacy requirements aligned to global standards.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-15",
+    "IFSB-7"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T194",
+     "T195"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-24",
+   "standard_code": "IFSB-24",
+   "standard_name": "Guiding Principles for Investor Protection in Islamic Capital Markets",
+   "family": "IFSB",
+   "pillar": "IFSB-CapitalMarkets",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2020-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Rules that protect people who invest in Islamic markets.",
+    "what_it_is": "Minimum requirements to protect investors and promote stability in Islamic capital markets.",
+    "who_it_applies_to": "Capital-market regulators and market participants.",
+    "why_it_matters": "Protected investors mean trusted markets."
+   },
+   "applicability": "Applies to investor protection in Islamic capital markets.",
+   "core_machinery": "Sets minimum protection requirements across the investment lifecycle.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Minimum investor-protection requirements must apply across Islamic capital markets.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-21",
+    "IFSB-19"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T197"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-25",
+   "standard_code": "IFSB-25",
+   "standard_name": "Disclosures to Promote Transparency for Takaful/Retakaful",
+   "family": "IFSB",
+   "pillar": "IFSB-Disclosure",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2020-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "What takaful firms must publicly disclose.",
+    "what_it_is": "Disclosure requirements applied by regulators to takaful and retakaful undertakings.",
+    "who_it_applies_to": "Regulators of takaful/retakaful undertakings.",
+    "why_it_matters": "Transparency protects takaful participants."
+   },
+   "applicability": "Applies to takaful/retakaful disclosures.",
+   "core_machinery": "Specifies disclosures on funds, surplus and solvency for TUs.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Takaful undertakings must publish defined disclosures on funds, surplus and solvency.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-22",
+    "IFSB-28"
+   ],
+   "links_into_project": {
+    "family_id": "F08",
+    "related_term_ids": [
+     "T185",
+     "T186"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-26",
+   "standard_code": "IFSB-26",
+   "standard_name": "Core Principles for Islamic Finance Regulation (Financial Market Infrastructures)",
+   "family": "IFSB",
+   "pillar": "IFSB-CorePrinciples",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2021-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Rules for the plumbing behind Islamic markets (payment/settlement systems).",
+    "what_it_is": "Core principles for regulating financial market infrastructures - the clearing, settlement and payment systems - in an Islamic context.",
+    "who_it_applies_to": "Regulators of financial market infrastructures.",
+    "why_it_matters": "If the plumbing fails, everything fails."
+   },
+   "applicability": "Applies to FMIs serving Islamic finance.",
+   "core_machinery": "Assessable core principles for safe, efficient FMIs.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "FMIs must meet core principles for safety and efficiency in an Islamic-finance context.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-21",
+    "IFSB-27"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T198"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-27",
+   "standard_code": "IFSB-27",
+   "standard_name": "Core Principles for Islamic Finance Regulation (Takaful Segment)",
+   "family": "IFSB",
+   "pillar": "IFSB-CorePrinciples",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2022-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The regulator's rulebook checklist for takaful.",
+    "what_it_is": "The Takaful Core Principles (TCPs) - the assessable baseline a regulator should meet to supervise takaful, aligned to international insurance core principles.",
+    "who_it_applies_to": "Regulators supervising takaful.",
+    "why_it_matters": "The foundation IFSB-28 and IFSB-29 build on."
+   },
+   "applicability": "Applies to supervision of takaful undertakings.",
+   "core_machinery": "Defines TCPs mirrored on the international insurance ICPs.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Regulators should meet the Takaful Core Principles for sound takaful supervision.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-28",
+    "IFSB-29",
+    "IFSB-8"
+   ],
+   "links_into_project": {
+    "family_id": "F08",
+    "related_term_ids": [
+     "T185",
+     "T188"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-29",
+   "standard_code": "IFSB-29",
+   "standard_name": "Conduct of Business Supervision for Takaful Undertakings",
+   "family": "IFSB",
+   "pillar": "IFSB-Conduct",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2023-12",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "How regulators make sure takaful firms treat customers fairly.",
+    "what_it_is": "A framework of conduct-of-business principles and rules regulators use to supervise how takaful undertakings treat participants.",
+    "who_it_applies_to": "Regulators supervising takaful conduct.",
+    "why_it_matters": "Fair treatment of participants is the heart of mutual insurance."
+   },
+   "applicability": "Applies to conduct supervision of takaful undertakings.",
+   "core_machinery": "Sets COB principles for disclosure, fair handling and claims.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Regulators must supervise takaful conduct for fair treatment, disclosure and claims handling.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-27",
+    "IFSB-9"
+   ],
+   "links_into_project": {
+    "family_id": "F08",
+    "related_term_ids": [
+     "T185",
+     "T187"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-30",
+   "standard_code": "IFSB-30",
+   "standard_name": "Revised Guiding Principles on Corporate Governance for IIFS (Banking)",
+   "family": "IFSB",
+   "pillar": "IFSB-Governance",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2023-12",
+   "supersedes": "IFSB-3 (2006)",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The current rulebook for how an Islamic bank's board is run.",
+    "what_it_is": "The up-to-date corporate governance principles for Islamic banks - board structure, risk oversight, stakeholder rights.",
+    "who_it_applies_to": "IIFS, banking segment.",
+    "why_it_matters": "Good boards prevent bad banks."
+   },
+   "applicability": "Applies to corporate governance of IIFS.",
+   "core_machinery": "Covers board responsibilities, controls and investment-account-holder interests.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Boards of IIFS must ensure effective governance, controls and protection of investment-account holders.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-3",
+    "AAOIFI GS 1"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T190",
+     "T191"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-IFSB-31",
+   "standard_code": "IFSB-31",
+   "standard_name": "Guiding Principles for Effective Supervision of Shari'ah Governance",
+   "family": "IFSB",
+   "pillar": "IFSB-Governance",
+   "issuer": "Islamic Financial Services Board (IFSB), Kuala Lumpur",
+   "issue_date": "2025-07",
+   "supersedes": "IFSB-10 (2009)",
+   "superseded_by": "",
+   "official_url": "https://www.ifsb.org/standard/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The newest rules for regulators watching over Shari'ah compliance.",
+    "what_it_is": "Guidance for regulators on supervising Shari'ah governance - strengthening oversight of Shari'ah boards and compliance across the system. Expected to supersede IFSB-10.",
+    "who_it_applies_to": "Regulators supervising Shari'ah governance of IIFS.",
+    "why_it_matters": "The most current word on making Shari'ah compliance verifiable."
+   },
+   "applicability": "Applies to supervisory oversight of Shari'ah governance.",
+   "core_machinery": "Sets principles for how supervisors assess Shari'ah-governance systems.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Supervisors must effectively assess and oversee IIFS Shari'ah-governance systems.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "IFSB-10",
+    "AAOIFI GS 1"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T190",
+     "T191"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-BNM-SG-2019",
+   "standard_code": "BNM-SG-2019",
+   "standard_name": "Shariah Governance Policy Document 2019",
+   "family": "BNM",
+   "pillar": "BNM-Governance",
+   "issuer": "Bank Negara Malaysia (BNM)",
+   "issue_date": "2019-09",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://www.bnm.gov.my/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Malaysia's official rulebook for Shari'ah governance in Islamic banks and takaful.",
+    "what_it_is": "The BNM policy document setting the Shari'ah governance framework - board, Shari'ah committee, and control functions - for Malaysian Islamic financial institutions.",
+    "who_it_applies_to": "Licensed Islamic banks, takaful/retakaful operators, and approved banks with Islamic windows.",
+    "why_it_matters": "Malaysia is a lead Islamic-finance market; this is its governance benchmark."
+   },
+   "applicability": "Applies to Malaysian licensed Islamic financial institutions.",
+   "core_machinery": "Assigns duties to the board, Shari'ah committee, Shari'ah risk, review, audit and research functions.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "A Shari'ah committee must oversee compliance; board is ultimately accountable.",
+     "tag": "verified"
+    },
+    {
+     "rule": "Dedicated Shari'ah risk, review, audit and research functions must operate.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "AAOIFI GS 1",
+    "IFSB-10"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T190",
+     "T191"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-SAMA-SG-2020",
+   "standard_code": "SAMA-SG-2020",
+   "standard_name": "Shariah Governance Framework for Local Banks (Saudi Arabia)",
+   "family": "SAMA",
+   "pillar": "SAMA-Governance",
+   "issuer": "Saudi Central Bank (SAMA)",
+   "issue_date": "2020-02",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://rulebook.sama.gov.sa/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "Saudi Arabia's rulebook for Shari'ah governance in local banks.",
+    "what_it_is": "The SAMA framework enhancing Shari'ah compliance in Saudi banks - defining the Shari'ah committee's tasks and the bank's responsibilities.",
+    "who_it_applies_to": "Local banks operating in Saudi Arabia.",
+    "why_it_matters": "Sets the governance bar in a major Gulf market."
+   },
+   "applicability": "Applies to Saudi local banks' Shari'ah governance.",
+   "core_machinery": "Defines Shari'ah committee mandate, independence and the bank's compliance duties.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Banks must establish a Shari'ah committee with defined tasks and independence.",
+     "tag": "verified"
+    },
+    {
+     "rule": "The bank must build an environment of ongoing Shari'ah compliance.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "AAOIFI GS 1",
+    "IFSB-10"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T190",
+     "T191"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  },
+  {
+   "id": "KB-CBUAE-SG",
+   "standard_code": "CBUAE-SG",
+   "standard_name": "Standard re. Shari'ah Governance for Islamic Financial Institutions (UAE)",
+   "family": "CBUAE",
+   "pillar": "CBUAE-HSA",
+   "issuer": "Central Bank of the UAE - Higher Shari'ah Authority (HSA)",
+   "issue_date": "2020",
+   "supersedes": "",
+   "superseded_by": "",
+   "official_url": "https://rulebook.centralbank.ae/",
+   "assurance": "verified",
+   "display_card": {
+    "one_liner": "The UAE's Shari'ah governance rulebook, sitting on top of AAOIFI standards.",
+    "what_it_is": "The CBUAE/HSA standard governing Shari'ah compliance in UAE Islamic financial institutions - internal Shari'ah supervision committees and control functions.",
+    "who_it_applies_to": "Islamic financial institutions licensed in the UAE.",
+    "why_it_matters": "UAE = AAOIFI standards + HSA resolutions layered on top."
+   },
+   "applicability": "Applies to UAE Islamic financial institutions.",
+   "core_machinery": "Requires an internal Shari'ah supervision committee, internal Shari'ah control and audit, all under HSA oversight.",
+   "key_rules_for_assurance": [
+    {
+     "rule": "Each institution must have an internal Shari'ah supervision committee under HSA oversight.",
+     "tag": "verified"
+    },
+    {
+     "rule": "Internal Shari'ah control and audit functions must operate.",
+     "tag": "verified"
+    }
+   ],
+   "related_standards": [
+    "AAOIFI GS 1",
+    "IFSB-10"
+   ],
+   "links_into_project": {
+    "family_id": "F18",
+    "related_term_ids": [
+     "T190",
+     "T191"
+    ]
+   },
+   "source_text_tag": "verified-to-text (title/objective/scope confirmed from uploaded txt); analytic framing = plausible"
+  }
+ ]
+}

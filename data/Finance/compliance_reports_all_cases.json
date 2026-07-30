@@ -1,0 +1,1312 @@
+{
+ "_meta": {
+  "type": "compliance_reports_multi_case",
+  "generated": "2026-07-09",
+  "banner": "ILLUSTRATIVE - private preview. Demonstration mapping, not a ruling, not scholar-certified.",
+  "supersedes": "compliance_report_FAB_demo.json (that file was one combined report; this file gives each document its own full-depth 12-item report as a separate case).",
+  "jurisdiction": "United Arab Emirates",
+  "jurisdiction_filter_note": "UAE -> only AAOIFI + CBUAE families apply. IFSB/BNM/SAMA/SC are out of scope for a UAE filing (grey them out).",
+  "scope_standard_set_in_scope": "All AAOIFI standards (SS/FAS/GS) + all CBUAE HSA standards/resolutions = 140 standards (matches the app's '140 of 211' scope line).",
+  "reviewer_role": "Financier / Bank (FAB-ISD)",
+  "workflow_applied": "1) Jurisdiction filter. 2) Reviewer role = financier. 3) word-level vet. 4) sentence-level vet. 5) terms/concepts vs each in-scope standard's parameters. 6) per-document report.",
+  "tag_policy": "Document text = verified-to-source. Standard clause refs marked verified were confirmed from ss1/ss2/ss3.txt (esp. SS 5, SS 19); others marked plausible pending processing of the SS PDFs. Issue summaries = analyst reasoned view (plausible).",
+  "scholar_box_note": "Every open item has an empty scholar_determination object for BV to render as an editable ACCEPT/HOLD/REFER-BACK box with rationale + signature. Nothing pre-filled.",
+  "cases": 3,
+  "total_open_items": 36
+ },
+ "reports": [
+  {
+   "report_id": "DEMO-FAB-1050",
+   "case": "Facility Offer Letter - LME Murabaha (FAB Islamic Banking)",
+   "exhibit": "10.50",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1774983/000121390019019088/ff42019ex10-50_broogehold.htm",
+   "jurisdiction": "United Arab Emirates",
+   "scope": "AAOIFI + CBUAE (UAE-adopted standards)",
+   "reviewer_role": "Financier / Bank (First Abu Dhabi Bank PJSC - Islamic Banking Division)",
+   "applied_standards": [
+    "SS 27",
+    "SS 8",
+    "SS 30",
+    "SS 3",
+    "SS 5",
+    "SS 19",
+    "SS 9",
+    "SS 49",
+    "CBUAE-SG",
+    "SS 29",
+    "SS 11"
+   ],
+   "counts": {
+    "open_items": 12,
+    "high": 2,
+    "medium": 5,
+    "low": 5
+   },
+   "provenance_statement": "Reviewed under scope AAOIFI + CBUAE (UAE), reviewer acting as the financing bank. Each of the 12 open items ties a clause in this document to a specific AAOIFI/CBUAE parameter, states the rule, and states the potential issue. Standards not yet processed are flagged for manual reference.",
+   "open_items": [
+    {
+     "id": "OI-1",
+     "severity": "high",
+     "title": "Profit priced off a conventional interest index (EBOR) with a stated floor",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Schedule A - Pricing; Part I pricing amendment",
+      "quoted_text": "LME Murabaha ... Pricing: 1M EBOR + 2.0% per annum. ... Existing pricing (i.e. 3M EBOR + 3.5% p.a. minimum 5.5% pm.) has been changed to 3M EBOR + 3.0% p.a."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 27",
+       "name": "Indices",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "AAOIFI permits a conventional interest index to serve only as a one-time REFERENCE for a Murabaha profit that is itself fixed and known when the contract is struck (SS 27; SS 8 requires the profit be a known amount or percentage agreed at contract). A profit that floats with the index over the term, or that carries a minimum floor, leaves the debt unfixed (gharar) and makes the price track interest (tashabbuh bi'l-riba).",
+      "clause_ref": "SS 27 (Indices as benchmark only); SS 8 (Murabaha profit fixed/known at contract)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The pricing is a floating interest index plus a spread, with a 5.5% floor on one leg. A floor effectively guarantees a minimum interest-like return. Scholar to confirm the Murabaha profit is locked at inception (EBOR used once as reference) rather than resetting, and whether the floor is acceptable.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-2",
+     "severity": "high",
+     "title": "Facility purpose is to settle profit already accrued on existing facilities",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Schedule A - Purpose",
+      "quoted_text": "Purpose: To settle the accrued profit on existing facilities."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 30",
+       "name": "Monetization (Tawarruq)",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A Murabaha/tawarruq must finance a genuine acquisition of goods, not generate cash to pay profit owed on an existing debt. Capitalising and re-lending unpaid profit is the shape of riba al-jahiliyyah ('pay or increase it'); AAOIFI bars Murabaha over a pre-existing debt of the same customer (SS 8) and requires tawarruq to be a real commodity transaction (SS 30).",
+      "clause_ref": "SS 8 (no Murabaha on a pre-existing debt); SS 30 (real acquisition)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The stated purpose - settling profit already owed - is the classic marker of debt-rescheduling-for-an-increase. Even wrapped as a fresh commodity Murabaha it can roll an old exposure into a new marked-up debt. Scholar to examine whether a genuine separately-owned commodity actually changes hands.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-3",
+     "severity": "medium",
+     "title": "Early-settlement charge of 1.0% of outstanding",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Schedule A - Conditions, item 4",
+      "quoted_text": "Early settlement charge at 1.0% of the total outstanding to be paid, in case of early settlement of the facility."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A Murabaha creates a fixed debt (the deferred price). AAOIFI allows the institution to grant a rebate (ibra) for early settlement, but it cannot CHARGE the customer an extra amount for paying a debt early - a surcharge for prepayment is compensation for the time value of money, the essence of riba. Any early-settlement rebate must also not be a stipulated contractual right (SS 8 on rebate/ibra for accelerated payment).",
+      "clause_ref": "SS 8 (ibra permitted, but no surcharge for early repayment of a debt)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Charging 1% extra to settle early is a penalty for prepaying a debt - the reverse of a permissible rebate, and resembles interest. Scholar to determine whether this charge must be removed or recast as a discretionary (non-stipulated) rebate arrangement.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-4",
+     "severity": "medium",
+     "title": "Late-payment charge of 10% p.a. (donated to charity)",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Conditions, item 10",
+      "quoted_text": "to donate to charity an amount ... calculated for the delay period on the basis of 10.0% p.a. of the overdue amount ... FAB-ISD shall not retain such amount nor account for it in its profits."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 3",
+       "name": "Procrastinating Debtor",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "AAOIFI allows a default penalty only if it is donated to charity and the institution keeps nothing (this clause does, which is correct). But the amount must not be a per-annum percentage of the outstanding, because a time-based percentage of the debt is the arithmetic of interest even when given away; permissible compensation is limited to actual proven loss plus a deterrent, not 'X% per annum' (SS 8 late-amount-to-charity; SS 3).",
+      "clause_ref": "SS 8 (charity, bank retains nothing) and SS 3; the time-based % is the concern",
+      "tag": "plausible"
+     },
+     "issue_summary": "The charity mechanism and non-retention are drafted correctly. The defect is the FORMULA - '10% per annum of the overdue amount' is a time-value charge many boards reject even for charity. Scholar to confirm acceptability or require actual-loss-plus-flat-deterrent.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-5",
+     "severity": "low",
+     "title": "Delay 'deemed procrastination unless proven otherwise'",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Conditions, item 10",
+      "quoted_text": "Any delay in payment from your side shall be deemed as procrastination unless proven otherwise."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 3",
+       "name": "Procrastinating Debtor",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "SS 3 distinguishes a solvent debtor who deliberately delays (who may be penalised) from a genuinely insolvent one, who under Qur'an 2:280 must be granted respite and not charged. Presuming every delay is culpable conflicts with the duty to first establish the debtor's ability to pay.",
+      "clause_ref": "SS 3 (penalty only on solvent wilful delay; respite for insolvent - Qur'an 2:280)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The presumption could penalise a genuinely distressed debtor. Scholar to require ability-to-pay be established before any penalty/charity charge attaches.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-6",
+     "severity": "medium",
+     "title": "Customer undertaking to cover any shortfall from other income",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Schedule A - Support, item 2",
+      "quoted_text": "Undertaking to cover the default or shortfall, if any, in finance payment arrangement from your other sources of income."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      }
+     ],
+     "principle": {
+      "text": "In a Murabaha the customer is the debtor, so a promise to pay the debt from any source is ordinarily fine. The scrutiny is whether this undertaking, combined with the DSRA cash reserve and cash-sweep, layers additional guarantees onto what should be a straightforward sale-debt, and whether any reserve account itself earns interest (SS 8; SS 5 on permissible guarantees of a debtor's own obligation).",
+      "clause_ref": "SS 8 (debtor's payment obligation); SS 5 (guarantee scope)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Likely acceptable as the debtor's own payment promise, but scholar should confirm the DSRA reserve does not earn interest and the stacked securities do not convert into an impermissible guarantee of profit.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-7",
+     "severity": "low",
+     "title": "Debt Service Reserve Account (DSRA) - possible interest on reserves",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Securities/Support (DSRA references)",
+      "quoted_text": "Debt Service Reserve Account (DSRA) in the name of the Customer to maintained with the FAB-ISD ... equal to one (1) quarterly installment of the facility limit."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 19",
+       "name": "Loan (Qard)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 27",
+       "name": "Indices",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A mandatory cash reserve held at the bank must not itself generate interest, and if the balance is treated as a deposit it is, under AAOIFI, a qard (loan) on which no benefit may be stipulated (SS 19, 10/1/1 - current accounts are loans; 4/1 - no stipulated benefit on a loan).",
+      "clause_ref": "SS 19, 10/1/1 (accounts are loans) and 4/1 (no benefit on a loan) - VERIFIED",
+      "tag": "verified"
+     },
+     "issue_summary": "If the DSRA earns any return or profit-share, that return is a benefit on a loan (riba). Scholar to confirm the reserve is non-profit-bearing.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-8",
+     "severity": "low",
+     "title": "Cross-collateralisation with existing Istisna'/Ijarah facilities",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Securities, item 4",
+      "quoted_text": "All the relevant securities ... covering the aforementioned Contracts for work & forward lease facilities ... shall continue and remain unchanged, and the same shall also be treated as securities ... for the above mentioned LME Murabaha facility."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      },
+      {
+       "code": "SS 9",
+       "name": "Ijarah and Ijarah Muntahia Bittamleek",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Security may be taken over identified assets, and one security package may back several facilities, provided each underlying contract is independently valid and the security does not secure a prohibited element. AAOIFI permits combining securities (SS 5, 2/1) but the cross-use must not entangle a valid contract with a defective one.",
+      "clause_ref": "SS 5, 2/1 (combining securities permitted)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Sharing one security package across a Murabaha and forward-lease/istisna facilities is generally acceptable, but scholar should confirm each secured facility is itself compliant so the collateral does not prop up a defective structure.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-9",
+     "severity": "medium",
+     "title": "Binding offer to enter Murabaha before the commodity is owned (wa'd sequencing)",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Opening paragraph + Conditions items 7-8",
+      "quoted_text": "pleased to offer you the Islamic banking facilities ... subject to the terms hereinafter and the terms of the documentation to be concluded ... This Offer is part of the documentation to be executed in respect of the Facility."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 49",
+       "name": "Unilateral and Bilateral Promise",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "In a compliant Murabaha the bank must own and possess the commodity before it can sell it to the customer; any promise to purchase must precede, and be separate from, the sale, and a binding promise may bind only one party (SS 8 sequence of ownership then sale; SS 49 - binding promise on one side only).",
+      "clause_ref": "SS 8 (own then sell); SS 49 (one-sided binding promise)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The offer letter binds the parties to a financing before the sale mechanics and commodity ownership exist. Scholar to confirm the actual sequence (promise -> bank buys and possesses -> sale) is honoured and the promise is not a two-sided binding sale of a future commodity.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-10",
+     "severity": "low",
+     "title": "Governing law and documentation to be concluded later",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Conditions items 7-9",
+      "quoted_text": "this Offer shall not be binding on FAB-ISD unless documentation and formalities are completed and executed to the entire satisfaction of FAB-ISD ... FAB-ISD may revoke this offer letter at its sole discretion."
+     },
+     "affected_standards": [
+      {
+       "code": "CBUAE-SG",
+       "name": "CBUAE HSA Shari'ah Governance Standard",
+       "status": "processed_deep_note",
+       "note_id": "KB-CBUAE-SG"
+      },
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "For a UAE IFI the CBUAE Higher Shari'ah Authority requires that the institution's own Shari'ah committee approve the product and its documentation, and that Shari'ah be the governing framework (KB-CBUAE-SG). An offer that leaves core terms to later documents must ensure those documents pass Shari'ah board review before execution.",
+      "clause_ref": "CBUAE HSA Shari'ah Governance Standard; SS 29",
+      "tag": "plausible"
+     },
+     "issue_summary": "The binding Shari'ah content sits in documents 'to be concluded'. Scholar to confirm the executed Murabaha and security documents were reviewed and approved by the institution's Shari'ah committee, per the HSA regime.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-11",
+     "severity": "medium",
+     "title": "Cash sweep / acceleration tied to the debt",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Additional Terms items - cash sweep & DSCR",
+      "quoted_text": "Cash sweep to the extent of 50% of the excess cash to service the debt in inverse order of maturity ... Minimum Debt Service Cover Ratio (DSCR) of 150% ... if DSCR reaches 120% or less it must be triggered as an event of default."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 3",
+       "name": "Procrastinating Debtor",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Acceleration on default is permissible in principle (AAOIFI allows all instalments to fall due on default, SS 3-type provision), but the accelerated amount must be the outstanding SALE PRICE only, without adding unearned future profit or a time penalty; covenant-driven acceleration must not convert into an interest recovery.",
+      "clause_ref": "SS 3 / SS 8 (acceleration to outstanding price, no unearned profit added)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Scholar to confirm that on a DSCR-triggered default the amount claimed is the outstanding Murabaha price (net of unearned profit / with rebate) and not a figure inflated by future profit or penalties.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-12",
+     "severity": "low",
+     "title": "Facility described as 'Islamic banking facilities' pending Shari'ah contract execution",
+     "from_document": {
+      "case": "Facility Offer Letter (Ex 10.50)",
+      "clause_ref": "Existing-facilities table",
+      "quoted_text": "This new Facility is in addition to your existing facilities ... Contracts for work & forward lease ... Approved Limit (AED) / Principal Outstanding (AED)."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 9",
+       "name": "Ijarah and Ijarah Muntahia Bittamleek",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 11",
+       "name": "Istisna'a and Parallel Istisna'a",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "The 'contracts for work & forward lease' are the Istisna'/forward-Ijarah facilities. AAOIFI requires that in a forward lease (ijarah mawsufah fi al-dhimmah) rent accrues only once usufruct is available, and that an istisna' and its parallel lease be genuinely distinct contracts (SS 9; SS 11).",
+      "clause_ref": "SS 9 (forward-lease rent timing); SS 11 (istisna' distinctness)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The existing facilities pull the Istisna'/forward-lease structures into scope. Scholar to confirm (via the separate lease/istisna documents) that rent did not accrue before asset availability and the two legs are properly separated.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    }
+   ]
+  },
+  {
+   "report_id": "DEMO-FAB-1051",
+   "case": "Murabaha Agreement for Sale & Purchase of Commodities",
+   "exhibit": "10.51",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1774983/000121390019019088/ff42019ex10-51_broogehold.htm",
+   "jurisdiction": "United Arab Emirates",
+   "scope": "AAOIFI + CBUAE (UAE-adopted standards)",
+   "reviewer_role": "Financier / Bank (First Abu Dhabi Bank PJSC - Islamic Banking Division)",
+   "applied_standards": [
+    "SS 30",
+    "SS 25",
+    "SS 18",
+    "SS 8",
+    "SS 1",
+    "SS 49",
+    "SS 3",
+    "SS 4",
+    "SS 5",
+    "CBUAE-SG",
+    "SS 29"
+   ],
+   "counts": {
+    "open_items": 12,
+    "high": 1,
+    "medium": 7,
+    "low": 4
+   },
+   "provenance_statement": "Reviewed under scope AAOIFI + CBUAE (UAE), reviewer acting as the financing bank. Each of the 12 open items ties a clause in this document to a specific AAOIFI/CBUAE parameter, states the rule, and states the potential issue. Standards not yet processed are flagged for manual reference.",
+   "open_items": [
+    {
+     "id": "OI-1",
+     "severity": "high",
+     "title": "Organised tawarruq - Bank arranges both the purchase and the same-day resale",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clauses 5.4-5.6",
+      "quoted_text": "the Purchaser shall be entitled (but not obligated) to appoint the Seller as the Purchaser's messenger ... to send to Third Party Purchaser the Offer to Sell ... on the same day ... at no less than the Cost Price ... The Seller shall not be entitled to a fee ... as messenger."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 30",
+       "name": "Monetization (Tawarruq)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 25",
+       "name": "Combination of Contracts",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "SS 30 permits classical tawarruq only if the buyer takes real possession and independently sells the commodity to a party OTHER than the original seller, without the bank organising the resale. Where the same bank sells the commodity and arranges the customer's immediate resale it becomes 'organised tawarruq', declared impermissible by the OIC International Islamic Fiqh Academy (Resolution 179, 2009).",
+      "clause_ref": "SS 30 (independent resale, no bank-arranged chain); OIC Fiqh Academy Res. 179/2009",
+      "tag": "plausible"
+     },
+     "issue_summary": "The agreement lets the Bank act as the customer's agent to resell the very commodity it just sold, same day, at cost - the defining feature of organised tawarruq. No agency fee helps, but the pre-wired round-trip is what the Fiqh Academy prohibited. Scholar to determine whether the resale is genuinely independent.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-2",
+     "severity": "medium",
+     "title": "Constructive-only possession (qabd) before resale",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clause 4.2",
+      "quoted_text": "the Seller shall purchase the Commodities from the Supplier ... and shall take delivery of the Commodities physically or constructively."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 18",
+       "name": "Possession (Qabd)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 30",
+       "name": "Monetization (Tawarruq)",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A seller may not sell what it does not possess; the Bank must take possession (real or constructive) before on-selling, and the customer likewise before reselling. AAOIFI accepts constructive possession only if genuine - the goods identified, ascertained and at the possessor's risk (SS 18; SS 30 possession before resale).",
+      "clause_ref": "SS 18 (goods at risk of possessor); SS 30 (possession before resale)",
+      "tag": "plausible"
+     },
+     "issue_summary": "'Physically or constructively' leaves room for paper-only possession where commodity risk never rests with anyone. If risk never transfers, the sale legs are formal only. Scholar to verify warrants/identified lots/risk transfer satisfy qabd.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-3",
+     "severity": "medium",
+     "title": "Bank disclaims all warranties / defect liability as seller",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clause 5.2",
+      "quoted_text": "The Seller shall not be deemed to give to the Purchaser any warranty or representation whatsoever relating to the Commodities ... expressly excluded to the extent permitted by law and sanctioned by the Sharia'."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "In a valid Murabaha the institution genuinely owns the asset and bears the seller's liability for defects (daman al-'ayb) until delivery; this ownership risk legitimises the profit ('al-kharaj bil-daman'). A blanket warranty disclaimer can strip out that risk (SS 8 - permissible only to pass on a supplier warranty, not to negate ownership liability).",
+      "clause_ref": "SS 8 (institution as owner bears defect liability before delivery)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Total disclaimer signals the Bank never truly bore ownership risk, undercutting the basis for its profit. The 'to the extent sanctioned by Sharia' proviso helps but the default is a full exclusion. Scholar to confirm pre-delivery defect liability actually rests with the Bank.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-4",
+     "severity": "medium",
+     "title": "'Islamically acceptable commodities' - no explicit ribawi safeguard",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Interpretation - definition of 'Commodities'",
+      "quoted_text": "'Commodities': Islamically acceptable commodities comprised or intended to be comprised in Murabaha Contract."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 30",
+       "name": "Monetization (Tawarruq)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 1",
+       "name": "Trading in Currencies",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "SS 30 requires the tawarruq/Murabaha commodity to be a real, identified, deliverable asset that is NOT gold, silver or a currency (which are ribawi and trigger sarf rules). A vague 'Islamically acceptable' label without excluding ribawi items and without an identification/deliverability requirement is a known weak point (SS 30; SS 1 on currencies).",
+      "clause_ref": "SS 30 (commodity not gold/silver/currency; identified, deliverable); SS 1",
+      "tag": "plausible"
+     },
+     "issue_summary": "The definition does not exclude gold, silver or currencies, nor require the commodity be specifically identified and deliverable. Scholar to require an explicit non-ribawi, identified-and-deliverable commodity condition.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-5",
+     "severity": "medium",
+     "title": "Binding customer promise to purchase (wa'd) and damages for non-purchase",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clauses 4.3 and 4.6",
+      "quoted_text": "the Purchaser shall ... promise the Seller to immediately purchase the Commodities from the Seller ... In the event of the Purchaser's failure to purchase ... the Purchaser shall compensate the Seller ... including the difference between the Cost Price and the sale price of the Commodities to a third party."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 49",
+       "name": "Unilateral and Bilateral Promise",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "AAOIFI permits a binding promise (wa'd) to purchase in a Murabaha to be imposed on ONE party (the customer) and allows recovery of the institution's ACTUAL loss if the promise is broken - but not a two-sided binding sale of a future commodity, and not damages exceeding real loss (SS 49; SS 8 on the binding promise and actual-loss compensation).",
+      "clause_ref": "SS 49 (one-sided binding promise); SS 8 (actual-loss damages only)",
+      "tag": "plausible"
+     },
+     "issue_summary": "A binding customer promise plus actual-loss damages is generally acceptable, but scholar should confirm the promise binds only the customer (not a mutual binding sale) and that 'compensation' is capped at the Bank's genuine loss, not a guaranteed margin.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-6",
+     "severity": "medium",
+     "title": "Pooled commodity buying across a group of clients",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clause 5.7",
+      "quoted_text": "The Seller may purchase the Commodities from Suppliers within transactions related to several transactions for a group of the Seller's clients including the Purchaser."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 18",
+       "name": "Possession (Qabd)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 30",
+       "name": "Monetization (Tawarruq)",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Each customer's Murabaha needs its own identified, possessed commodity; buying one block for a pool of clients risks the individual customer never holding an ascertained portion, defeating qabd and allowing the same commodity to back multiple sales (SS 18 identification/ascertainment; SS 30).",
+      "clause_ref": "SS 18 (identified, ascertained goods per sale); SS 30",
+      "tag": "plausible"
+     },
+     "issue_summary": "Pooled purchasing can leave the customer without an identified commodity of their own. Scholar to confirm each customer receives an ascertained, separately-allocated quantity that is genuinely possessed before resale.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-7",
+     "severity": "medium",
+     "title": "Late-payment charge of 10% p.a. (donated to charity)",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clause 8.4",
+      "quoted_text": "the Purchaser hereby undertakes to donate to charity an amount at the rate of 10% per annum of the overdue amount ... after deducting all actual claims, costs and expenses ... Any delay in payment shall be deemed procrastination unless proven otherwise."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 3",
+       "name": "Procrastinating Debtor",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A default amount is permissible only if donated to charity with the bank retaining nothing (satisfied here). But a per-annum percentage of the outstanding is the arithmetic of interest even when given away; and 'deemed procrastination unless proven otherwise' reverses the burden, whereas SS 3 protects the genuinely insolvent debtor (Qur'an 2:280).",
+      "clause_ref": "SS 8 (charity, no retention) and SS 3 (solvent wilful delay only)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Two issues in one clause: the time-based 10% p.a. formula resembles interest, and the procrastination presumption could penalise an insolvent debtor. Scholar to recast the formula as actual-loss-plus-deterrent and require ability-to-pay be established first.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-8",
+     "severity": "low",
+     "title": "Cross-currency set-off / conversion",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clauses 5.8 and 8.8",
+      "quoted_text": "the Seller is authorised to purchase with the monies standing to the credit of any such account such other currencies as may be necessary to effect such application."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 4",
+       "name": "Settlement of Debts by Set-Off",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 1",
+       "name": "Trading in Currencies",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Set-off of mutual debts is permitted (SS 4), but where the amounts are in different currencies the set-off effects a currency exchange, which must observe the sarf rule of same-sitting spot exchange at the prevailing rate (SS 1 - no deferment in currency exchange).",
+      "clause_ref": "SS 4 (set-off); SS 1 (currency exchange spot at market)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Open-ended authority to convert currencies to apply a set-off can amount to a deferred or off-market sarf on different-currency balances. Scholar to require any cross-currency set-off be executed spot at prevailing rate.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-9",
+     "severity": "low",
+     "title": "Conditions and discretions run one-way to the Seller",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clauses 3.1, 3.8",
+      "quoted_text": "The Seller shall not be obliged to issue any Offer Notice ... is subject to absolute discretion of the Seller. ... The conditions inserted in the Fourth Schedule (if any) are for the benefit of the Seller and the Seller may waive or defer ..."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 25",
+       "name": "Combination of Contracts",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A Murabaha must be a genuine bilateral sale with balanced consent; heavily one-sided discretions are not themselves prohibited, but combined with a binding customer purchase-promise they can make the customer bound while the bank is free, approaching a one-sided obligation the Shari'ah disfavours (SS 8 mutual sale; SS 25 on combinations).",
+      "clause_ref": "SS 8 (genuine bilateral sale); SS 25",
+      "tag": "plausible"
+     },
+     "issue_summary": "The customer is bound by a purchase promise while the Bank retains absolute discretion to proceed. Scholar to confirm the imbalance does not render the customer's promise a one-sided binding obligation without a genuine reciprocal sale commitment.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-10",
+     "severity": "medium",
+     "title": "Third-party guarantees / securities defined and required",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Interpretation ('Guarantee(s)', 'Securities') + Clause 3.6",
+      "quoted_text": "'Guarantee(s)': the guarantee(s) specified in the Third Schedule (if any) ... guaranteeing the Purchaser's payment obligations. ... The Purchaser undertakes to provide the Seller with the Securities."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      }
+     ],
+     "principle": {
+      "text": "A third-party guarantee (kafalah) of the customer's Murabaha debt is permissible, but the guarantor may charge no fee for giving the guarantee - only recovery of actual expenses (SS 5, 3/1/5 - no remuneration for a personal guarantee, expenses only; VERIFIED from text).",
+      "clause_ref": "SS 5, 3/1/5 (no fee for a guarantee, expenses only) - VERIFIED",
+      "tag": "verified"
+     },
+     "issue_summary": "Guarantees of the payment obligation are allowed, but scholar to confirm no guarantee fee/commission is charged to the customer for procuring any third-party guarantee - only actual expenses may be passed on.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-11",
+     "severity": "low",
+     "title": "Governing law - Shari'ah prevails on conflict, board's determination binding",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clause 9.1",
+      "quoted_text": "governed ... in accordance with the laws of the United Arab Emirates save to the extent these conflict with the rules and principles of the Islamic Sharia', when the latter shall prevail. The parties ... agree to be bound by the exclusive determination of the Sharia' Fatwa and Supervisory Board of the Seller."
+     },
+     "affected_standards": [
+      {
+       "code": "CBUAE-SG",
+       "name": "CBUAE HSA Shari'ah Governance Standard",
+       "status": "processed_deep_note",
+       "note_id": "KB-CBUAE-SG"
+      },
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "This clause is largely aligned with AAOIFI/HSA expectations: Shari'ah prevails on conflict and the Shari'ah board's determination is binding (KB-CBUAE-SG; SS 29 on the authority of the institutional fatwa body). The residual check is that the board is properly constituted and its rulings are actually implemented.",
+      "clause_ref": "CBUAE HSA Shari'ah Governance Standard; SS 29",
+      "tag": "plausible"
+     },
+     "issue_summary": "A compliant-looking clause (Shari'ah primacy, binding board). Scholar to confirm the Seller's Shari'ah board is properly constituted under the HSA regime and its rulings are operationally enforced - then this item can be cleared.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-12",
+     "severity": "low",
+     "title": "Interest expressly rejected - confirm the carve-out is not merely cosmetic",
+     "from_document": {
+      "case": "Murabaha Agreement (Ex 10.51)",
+      "clause_ref": "Clause 9.2",
+      "quoted_text": "the principle of the payment of interest is repugnant to the Sharia' and accordingly ... the parties hereby irrevocably and unconditionally expressly waive and reject any entitlement to recover interest from each other."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 8",
+       "name": "Murabahah",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "An explicit rejection of interest is required and welcome, but it cannot cure a structure whose economics deliver an interest-equivalent return; the substance (fixed profit from a real sale, genuine risk) must match the wording (SS 8 - the sale must be real, not a re-labelled loan).",
+      "clause_ref": "SS 8 (substance over label)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The anti-interest clause is correct but is only meaningful if the underlying tawarruq is genuine (see OI-1, OI-2). Scholar to confirm the interest waiver reflects real economics, not a cosmetic overlay on interest-equivalent pricing.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    }
+   ]
+  },
+  {
+   "report_id": "DEMO-FAB-1060",
+   "case": "Indemnity Undertaking (FAB as Investment Agent)",
+   "exhibit": "10.60",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1774983/000121390019019088/ff42019ex10-60_broogehold.htm",
+   "jurisdiction": "United Arab Emirates",
+   "scope": "AAOIFI + CBUAE (UAE-adopted standards)",
+   "reviewer_role": "Financier / Bank (First Abu Dhabi Bank PJSC - Islamic Banking Division)",
+   "applied_standards": [
+    "SS 5",
+    "SS 46",
+    "SS 13",
+    "SS 29",
+    "SS 49",
+    "SS 9",
+    "CBUAE-SG",
+    "SS 25",
+    "SS 19",
+    "SS 11"
+   ],
+   "counts": {
+    "open_items": 12,
+    "high": 2,
+    "medium": 7,
+    "low": 3
+   },
+   "provenance_statement": "Reviewed under scope AAOIFI + CBUAE (UAE), reviewer acting as the financing bank. Each of the 12 open items ties a clause in this document to a specific AAOIFI/CBUAE parameter, states the rule, and states the potential issue. Standards not yet processed are flagged for manual reference.",
+   "open_items": [
+    {
+     "id": "OI-1",
+     "severity": "high",
+     "title": "Indemnity guarantees the Exercise Price to the Investment Agent (capital guarantee in a fiduciary structure)",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clauses 2.2(ii) and 2.3",
+      "quoted_text": "as an independent obligation, to indemnify the Investment Agent against any actual cost, loss or liability incurred by it ... including, but not limited to, the payment of any Exercise Price. ... the amount payable under any such indemnity will equal the Exercise Price."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      },
+      {
+       "code": "SS 46",
+       "name": "Al-Wakalah Bi Al-Istithmar (Investment Agency)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 13",
+       "name": "Mudarabah",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "AAOIFI SS 5 prohibits building a guarantee into trust/fiduciary contracts: an agent, mudarib or investment manager may NOT guarantee the capital or a fixed return; a guarantee bites only for the manager's own negligence, misconduct or breach - not ordinary loss (SS 5, 2/2/1, VERIFIED). SS 46 and SS 13 carry the same rule. An indemnity making the customer pay the Investment Agent a fixed Exercise Price regardless of performance can amount to a guaranteed return to the financier.",
+      "clause_ref": "SS 5, 2/2/1 (no guarantee in trust contracts except negligence/breach) - VERIFIED; SS 46; SS 13",
+      "tag": "verified"
+     },
+     "issue_summary": "The most serious item. If FAB is Investment Agent (a fiduciary) yet the customer must indemnify it for the full Exercise Price on ANY ineffectiveness, the arrangement may deliver a guaranteed principal-plus-profit return, which SS 5 forbids in fiduciary contracts except for negligence/breach. Scholar to determine whether this crosses into a prohibited capital/return guarantee and should be limited to the customer's own default/misconduct.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-2",
+     "severity": "high",
+     "title": "Indemnity extends to ALL ineffectiveness, not only negligence or breach",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clause 2.2 (Affected Obligation)",
+      "quoted_text": "To the extent that ... any other term of any Finance Document ... is not effective in any jurisdiction for any reason (an Affected Obligation), the Company hereby agrees ... to indemnify the Investment Agent against any actual cost, loss or liability incurred by it or any other Secured Party as a result of such ineffectiveness."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      },
+      {
+       "code": "SS 46",
+       "name": "Al-Wakalah Bi Al-Istithmar (Investment Agency)",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Under SS 5 (2/2/1, VERIFIED) a fiduciary's exposure to loss may be shifted to it only where the loss arises from its negligence, misconduct or breach. Extending the customer's indemnity to cover ANY ineffectiveness 'for any reason' - including legal invalidity outside the customer's fault - re-imports the very capital guarantee the standard removes.",
+      "clause_ref": "SS 5, 2/2/1 (loss-shifting only for negligence/breach) - VERIFIED; SS 46",
+      "tag": "verified"
+     },
+     "issue_summary": "The indemnity is triggered by ineffectiveness 'for any reason', catching events wholly outside the customer's conduct. Scholar to require the trigger be narrowed to the customer's own negligence, misconduct or breach - otherwise it is a disguised guarantee of the Agent's capital.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-3",
+     "severity": "medium",
+     "title": "Indemnity triggered if the customer disputes the Agent's rights",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clause 2.3",
+      "quoted_text": "if it or any other person disputes or challenges the rights, interests, benefits and entitlements of the Investment Agent under the Finance Documents, the Company shall fully indemnify the Investment Agent within five Business Days of demand ... equal to the Exercise Price."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      },
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "A guarantee/indemnity must attach to a genuine loss, not penalise a party for exercising a lawful right. Making the full Exercise Price payable merely because the customer (or 'any person') disputes the Agent's rights converts the indemnity into a penalty that deters legitimate legal recourse and is untethered from actual loss (SS 5 - indemnity for real loss; SS 29 fairness of stipulations).",
+      "clause_ref": "SS 5 (indemnity tied to genuine loss); SS 29 (fair stipulations)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Triggering the full Exercise Price on a mere dispute - even one raised by a third party - penalises the exercise of legal rights and is disconnected from actual loss. Scholar to strike or narrow this so the indemnity follows real, proven loss.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-4",
+     "severity": "medium",
+     "title": "Gross-up increasing the indemnity beyond actual loss",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clause 2.3 (Relevant Amount)",
+      "quoted_text": "If any amount of the Exercise Price ... is or may in any way be subject to any steps, action or proceedings by any person to recover or turnover such Relevant Amount, then the relevant amount payable under this Clause ... shall be increased by the Relevant Amount."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      }
+     ],
+     "principle": {
+      "text": "AAOIFI limits recoverable amounts to genuine, quantified loss. A clause that automatically INCREASES the payable amount by a 'Relevant Amount' that is merely subject to potential recovery action can produce a payment exceeding the Agent's real loss - approaching an unjustified increase (SS 5 - indemnity confined to actual loss/expenses).",
+      "clause_ref": "SS 5 (recovery limited to actual loss)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The gross-up can inflate the indemnity above the Agent's genuine loss. Scholar to cap the indemnity at actual, proven loss and remove any automatic increase for amounts merely at risk of recovery.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-5",
+     "severity": "medium",
+     "title": "Exercise Price / Purchase Undertaking mechanics (wa'd)",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Recitals A; Clause 1.1.2",
+      "quoted_text": "Exercise Price means an amount equal to the amount calculated under paragraph (a) of the definition 'Exercise Price' in the Purchase Undertaking. ... The Common Terms Agreement, Master Forward Lease Agreement, Master Istisna' Agreement and other Finance Documents are being entered into ..."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 49",
+       "name": "Unilateral and Bilateral Promise",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 9",
+       "name": "Ijarah and Ijarah Muntahia Bittamleek",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "In lease-to-own/istisna-plus-lease structures the purchase-undertaking price must reflect a genuine sale value, and a binding promise (wa'd) may bind only one party; a pre-computed Exercise Price engineered to return principal-plus-profit irrespective of the asset makes the 'sale' a financing (SS 49; SS 9 on IMB purchase undertakings).",
+      "clause_ref": "SS 49 (one-sided binding promise); SS 9 (IMB purchase-undertaking price)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The Exercise Price is a formula in a Purchase Undertaking not supplied to this review. Scholar needs that document to confirm the promise binds one party only and the price is a real sale value, not an outstanding-finance pay-off dressed as a sale.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-6",
+     "severity": "medium",
+     "title": "Governing law is English law, with Shari'ah only a narrow carve-out",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clauses 6.1, 6.2 and 7",
+      "quoted_text": "this Undertaking ... shall be governed by, and construed in accordance with, English law. ... the creation and transfer of any proprietary rights ... in relation to the Istisna' Asset shall be governed by ... the laws of Fujairah and the federal laws of the UAE. ... [cl.7] the principle of the payment of interest is prohibited under Shari'ah ..."
+     },
+     "affected_standards": [
+      {
+       "code": "CBUAE-SG",
+       "name": "CBUAE HSA Shari'ah Governance Standard",
+       "status": "processed_deep_note",
+       "note_id": "KB-CBUAE-SG"
+      },
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "For a UAE Islamic financial institution the CBUAE Higher Shari'ah Authority requires Shari'ah to be the governing framework, with the internal Shari'ah committee's rulings binding (KB-CBUAE-SG). A document making English law the governing law and treating Shari'ah only as a residual interest-waiver sits in tension with the HSA's primacy-of-Shari'ah expectation.",
+      "clause_ref": "CBUAE HSA Shari'ah Governance Standard; SS 29",
+      "tag": "plausible"
+     },
+     "issue_summary": "Unlike the Murabaha (which makes Shari'ah prevail), this undertaking picks English law with only a narrow interest-waiver nod to Shari'ah, and splits proprietary questions to UAE law. Scholar to confirm the governing-law hierarchy is acceptable to the institution's Shari'ah committee and the HSA.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-7",
+     "severity": "medium",
+     "title": "Investment Agent's claim ranks pari passu as an unsecured creditor (debt characterisation)",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clause 3.2",
+      "quoted_text": "The Company shall ensure that at all times any unsecured and unsubordinated claims of the Investment Agent against the Company under this Undertaking rank in right of priority and payment with the claims of all the Company's other unsecured and unsubordinated creditors."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 46",
+       "name": "Al-Wakalah Bi Al-Istithmar (Investment Agency)",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      }
+     ],
+     "principle": {
+      "text": "In a genuine investment agency the provider bears investment risk and does not hold a fixed creditor 'claim' for its capital; framing the Agent's entitlement as a ranked unsecured CLAIM reinforces that the arrangement treats the Agent's money as a guaranteed debt rather than at-risk capital (SS 46 - agent bears investment risk; SS 5 - no capital guarantee to a fiduciary).",
+      "clause_ref": "SS 46 (investment risk on the capital provider); SS 5, 2/2/1 - VERIFIED",
+      "tag": "verified"
+     },
+     "issue_summary": "Describing the Agent's entitlement as a pari-passu unsecured claim treats its capital as debt, dovetailing with the guarantee concern in OI-1/OI-2. Scholar to assess whether the Agent's return is genuinely at risk or has been converted into a ranked debt claim.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-8",
+     "severity": "low",
+     "title": "Waiver of sovereign/other immunity",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clause 5",
+      "quoted_text": "The Company irrevocably and unconditionally waives any rights of immunity which it or its assets now has or may subsequently acquire in connection with any legal proceedings ... and consents ... to the ... enforcement or execution against any assets whatsoever."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "An immunity waiver is primarily a legal-enforceability term and is not itself objectionable in Shari'ah, provided it does not enable enforcement of a prohibited (e.g. interest-bearing) obligation; the check is that what is being enforced is a valid Shari'ah entitlement (SS 29 on the propriety of stipulations).",
+      "clause_ref": "SS 29 (stipulations must not enforce a prohibited entitlement)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Low concern in isolation. Scholar to confirm the waiver serves enforcement of Shari'ah-valid obligations only, given the guarantee/Exercise-Price concerns above.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-9",
+     "severity": "medium",
+     "title": "Core terms incorporated by reference from the Common Terms Agreement (not supplied)",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clauses 1.4 and 4",
+      "quoted_text": "This Undertaking and the rights and obligations of the Parties hereunder are subject to the provisions of the Common Terms Agreement. ... Clauses 12 (Amendments), 23 (Costs and expenses), 26 (Changes), 29 (Notices) and 32 (Partial invalidity) of the Common Terms Agreement shall apply ... In the event of a conflict ... the terms of the Common Terms Agreement shall prevail."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 25",
+       "name": "Combination of Contracts",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Where a document's operative terms live in a master agreement that prevails on conflict, the Shari'ah review is incomplete without that master document; combined multi-document structures must be assessed as a whole to ensure no cross-incorporated term introduces a prohibited element (SS 25 on combinations; SS 29).",
+      "clause_ref": "SS 25 (assess combined structure as a whole); SS 29",
+      "tag": "plausible"
+     },
+     "issue_summary": "The Common Terms Agreement prevails on conflict but was not provided to this window. Scholar cannot fully clear the indemnity without reviewing the CTA's costs, expenses and cost-recovery clauses for interest-equivalent charges. Flag as a document-dependency gap.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-10",
+     "severity": "low",
+     "title": "'Costs and expenses' incorporated - confirm no interest-equivalent charges",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clause 4 (incorporating CTA clause 23)",
+      "quoted_text": "Clauses ... 23 (Costs and expenses) ... of the Common Terms Agreement shall apply to this Undertaking, mutatis mutandis ..."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 5",
+       "name": "Guarantees",
+       "status": "processed_deep_note",
+       "note_id": "(AAOIFI SS 5, verified)"
+      },
+      {
+       "code": "SS 19",
+       "name": "Loan (Qard)",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Recoverable costs must be genuine, actual expenses; a 'costs and expenses' clause must not become a channel for time-based or margin-style charges that recover an interest-equivalent (SS 5, 3/1/5 - only actual expenses recoverable on a guarantee, VERIFIED; SS 19, 9/1 - service charges limited to actual direct cost).",
+      "clause_ref": "SS 5, 3/1/5 and SS 19, 9/1 (actual direct expenses only) - VERIFIED",
+      "tag": "verified"
+     },
+     "issue_summary": "Scholar to review the incorporated CTA costs clause to confirm recoverable amounts are actual, direct expenses only, not disguised interest or margin.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-11",
+     "severity": "low",
+     "title": "Executed as a deed under English-law formalities",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Execution page",
+      "quoted_text": "This Undertaking is executed by the Company as a deed and delivered on the date specified at the beginning of this Undertaking."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 29",
+       "name": "Stipulations & Ethics of Fatwa",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Legal form (deed vs simple contract) is a matter of enforceability rather than Shari'ah validity; a valid Shari'ah obligation may be evidenced by any lawful form, provided the underlying obligation is itself compliant (SS 29).",
+      "clause_ref": "SS 29 (form follows a valid underlying obligation)",
+      "tag": "plausible"
+     },
+     "issue_summary": "Form is not itself an issue. Included for completeness: scholar to note that a compliant deed still requires the underlying indemnity (OI-1 to OI-4) to be Shari'ah-valid.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    },
+    {
+     "id": "OI-12",
+     "severity": "medium",
+     "title": "Split governing law between English law and UAE federal law for the Istisna' Asset",
+     "from_document": {
+      "case": "Indemnity Undertaking (Ex 10.60)",
+      "clause_ref": "Clauses 6.2 and 6.4",
+      "quoted_text": "the creation and transfer of any proprietary rights of the Parties in relation to the Istisna' Asset shall be governed by ... the laws of Fujairah and the federal laws of the UAE ... the UAE federal courts shall have exclusive jurisdiction to settle any dispute arising out of or in connection with the proprietary rights ... in relation to the Istisna' Asset."
+     },
+     "affected_standards": [
+      {
+       "code": "SS 11",
+       "name": "Istisna'a and Parallel Istisna'a",
+       "status": "pdf_on_disk_unprocessed"
+      },
+      {
+       "code": "SS 9",
+       "name": "Ijarah and Ijarah Muntahia Bittamleek",
+       "status": "pdf_on_disk_unprocessed"
+      }
+     ],
+     "principle": {
+      "text": "Ownership and transfer of the underlying asset are central to a valid istisna'/forward-lease structure - the financier must genuinely own the asset it leases/sells. Splitting proprietary questions to UAE law is sensible for enforceability, but the Shari'ah review must confirm real ownership actually vests as the structure requires (SS 11 istisna' ownership; SS 9 lease requires lessor ownership).",
+      "clause_ref": "SS 11 (istisna' ownership); SS 9 (lessor must own the leased asset)",
+      "tag": "plausible"
+     },
+     "issue_summary": "The split governing law is workable, but scholar must confirm that under the applicable UAE/Fujairah law genuine ownership of the Istisna' Asset actually vests in the financier - otherwise the forward-lease and sale legs lack their required ownership basis.",
+     "scholar_determination": {
+      "stance": "",
+      "rationale": "",
+      "scholar_name": "",
+      "date": ""
+     }
+    }
+   ]
+  }
+ ]
+}

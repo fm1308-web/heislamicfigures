@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "type": "term_lineage_links",
+    "contract": "C02 Mudarabah",
+    "built_by": "RV (Research seat)",
+    "generated": "2026-07-25 (v2 — T142 promoted to CITED from SS13.txt full read)",
+    "rule": "NEVER INVENT. born_at_row / descends_from_term filled ONLY when a verbatim cited source ties the term to that row. Empty + NEEDS_VERIFICATION where no source states the link.",
+    "source_files": ["enriched_terms_all.json", "mudarabah_v4.json (MD001-MD017)", "SS13.txt (AAOIFI Shari'ah Standard 13, revised, uploaded by Adam 2026-07-25)"],
+    "count": 7,
+    "summary": "7 terms resolve to C02. 2 CITED born_at_row (T143, T142). 5 NEEDS_VERIFICATION (no source states a birth-row or term-to-term descent). 0 descends_from_term links found."
+  },
+  "links": [
+    {
+      "term_id": "T143",
+      "term_english": "unrestricted mudarabah",
+      "born_at_row": "MD016",
+      "descends_from_term": "",
+      "evidence_quote": "9/1 in unrestricted mudarabah the mudarib may do what entrepreneurs in his field do",
+      "source": "AAOIFI Shari'ah Standard 13, clause 9/1 (ss1.txt, verified 2026-07-14); mudarabah_v4.json MD016",
+      "status": "CITED",
+      "note": "Verbatim SS13 clause names 'unrestricted mudarabah' (mudarabah mutlaqah) at the codification row MD016. Anchor is the codification, not an etymological birth claim. descends_from_term left empty: no source states descent from another term."
+    },
+    {
+      "term_id": "T142",
+      "term_english": "restricted mudarabah",
+      "born_at_row": "MD016",
+      "descends_from_term": "",
+      "evidence_quote": "5/2 A restricted Mudarabah contract is a contract in which the capital provider restricts the actions of the Mudarib to a particular location or to a particular type of investment as the capital provider considers appropriate, but not in a manner that would unduly constrain the Mudarib in his operations.",
+      "source": "AAOIFI Shari'ah Standard 13, clause 5/2 (SS13.txt, read verbatim 2026-07-25); anchored to mudarabah_v4.json MD016 (the SS13 codification row, same anchor as T143)",
+      "status": "CITED",
+      "note": "SS13 clause 5/2 defines 'restricted Mudarabah' verbatim (clause 9/2 also permits the restrictions). Anchor is the SS13 codification row, same as T143 — not an etymological birth claim; earlier classical usage (al-Sarakhsi, al-Mabsut) exists per enriched_terms but has no row. If MD016 is not the SS13 row in mudarabah_v4.json, BV to correct the row id."
+    },
+    {
+      "term_id": "T040",
+      "term_english": "manager (mudarib)",
+      "born_at_row": "",
+      "descends_from_term": "",
+      "evidence_quote": "",
+      "source": "",
+      "status": "NEEDS_VERIFICATION",
+      "note": "Role present throughout (e.g. MD009 al-Kafi: 'the working partner ... is not liable for depreciation (loss) unless he violates the instructions of the owner of the assets'). This is usage, not a statement of the term's birth-row. No source states which row births the term."
+    },
+    {
+      "term_id": "T041",
+      "term_english": "capital provider (rabb al-mal)",
+      "born_at_row": "",
+      "descends_from_term": "",
+      "evidence_quote": "",
+      "source": "",
+      "status": "NEEDS_VERIFICATION",
+      "note": "Named in MD015 (Siddiqi, 'depositors as rabb al-mal') but that row is assurance=plausible and describes modern usage, not birth. No cited source states a birth-row."
+    },
+    {
+      "term_id": "T085",
+      "term_english": "capital (ras al-mal)",
+      "born_at_row": "",
+      "descends_from_term": "",
+      "evidence_quote": "",
+      "source": "",
+      "status": "NEEDS_VERIFICATION",
+      "note": "No mudarabah_v4.json row names 'ras al-mal' verbatim. No source states a birth-row."
+    },
+    {
+      "term_id": "T008",
+      "term_english": "profit-sharing certificates (sukuk al-mudarabah)",
+      "born_at_row": "",
+      "descends_from_term": "",
+      "evidence_quote": "",
+      "source": "",
+      "status": "NEEDS_VERIFICATION",
+      "note": "MD017 mentions 'mudarabah sukuk' but that row is assurance=plausible, no single source. enriched_terms earliest_source is Cagamas Malaysia 1994, which has no matching row. SS13 itself EXCLUDES sukuk from its scope ('The standard does not cover Sukuk of Mudarabah'). No cited source states a birth-row."
+    },
+    {
+      "term_id": "T189",
+      "term_english": "profit-sharing takaful (mudarabah takaful model)",
+      "born_at_row": "",
+      "descends_from_term": "",
+      "evidence_quote": "",
+      "source": "",
+      "status": "NEEDS_VERIFICATION",
+      "note": "enriched_terms earliest_source is Syarikat Takaful Malaysia 1984. No takaful row exists in mudarabah_v4.json. No cited source states a birth-row or descent."
+    }
+  ]
+}

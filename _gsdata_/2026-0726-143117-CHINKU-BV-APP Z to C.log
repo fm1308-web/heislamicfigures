@@ -1,0 +1,22 @@
+2026-07-26 14:31:24: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 14:31:24: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 14:31:24: == Sync Started by User Command
+2026-07-26 14:31:24: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 14:31:24: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 14:31:24: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 14:31:24: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 14:31:24: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 14:31:24: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 14:31:24: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 14:31:24: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 14:31:24: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-26 14:31:24: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 14:31:24: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 14:31:24: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-26 14:31:26: Copy Over 'C:/TEST/bv-app/shell.js' -> 'Z:/Islamic App/bv-app/shell.js' (60,113)
+2026-07-26 14:31:26: Copy Over 'C:/TEST/bv-app/finance.js' -> 'Z:/Islamic App/bv-app/finance.js' (351,517)
+2026-07-26 14:31:26: Copy Over 'C:/TEST/bv-app/data/Finance/enriched_terms_all.json' -> 'Z:/Islamic App/bv-app/data/Finance/enriched_terms_all.json' (330,446)
+2026-07-26 14:31:26: Copy Over 'C:/TEST/bv-app/data/Finance/standards_lights.json' -> 'Z:/Islamic App/bv-app/data/Finance/standards_lights.json' (60,719)
+2026-07-26 14:31:26: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 14:31:26: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 14:31:27: == Sync Complete. Time: 00:00:03, Speed: 0.00/s, OK: 4, Errors: 0

@@ -1,0 +1,22 @@
+{
+  "reference": "SEC-EX-10.60",
+  "title": "Indemnity Undertaking (FAB as Investment Agent)",
+  "institution": "First Abu Dhabi Bank PJSC / Brooge Petroleum and Gas Investment Company FZC",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1774983/000121390019019088/ff42019ex10-60_broogehold.htm",
+  "real_world_notice": "WORKED EXAMPLE FROM AN OPEN-SOURCE PUBLIC SEC FILING (EXHIBIT 10.60, BROOGE HOLDINGS FORM F-4).",
+  "families_in_scope": ["AAOIFI","IFSB"],
+  "open_items_from_map": true,
+  "tradition": "Maliki",
+  "jurisdiction": "United Arab Emirates",
+  "clauses": [
+    { "no": 1, "text": "The Company acknowledges and confirms that it has entered into the relevant Finance Documents with the intention of at all times being bound by their terms." },
+    { "no": 2, "text": "It will continue to act in accordance with the terms of the Finance Documents, and in particular shall continue to make any payments to the Investment Agent required by them, as if the Finance Documents were fully binding upon it." },
+    { "no": 3, "text": "As an independent obligation, to indemnify the Investment Agent against any actual cost, loss or liability incurred by it or any other Secured Party as a result of such ineffectiveness of such Affected Obligation including, but not limited to, the payment of any Exercise Price." },
+    { "no": 4, "text": "If it breaches any declaration or undertaking in the Finance Documents or if it or any other person disputes or challenges the rights, interests, benefits and entitlements of the Investment Agent under the Finance Documents, the Company shall fully indemnify the Investment Agent within five Business Days of demand, it being agreed that the amount payable under any such indemnity will equal the Exercise Price." },
+    { "no": 5, "text": "The Parties recognise and agree that the principle of the payment of interest is prohibited under Shari'ah and accordingly, to the extent that any court or legal system would impose (whether by contract or by statute) any obligation to pay interest, the Parties hereby irrevocably and unconditionally expressly waive and reject any entitlement to recover interest from each other." },
+    { "no": 6, "text": "The Company irrevocably and unconditionally waives any rights of immunity which it or its assets now has or may subsequently acquire in connection with any legal proceedings against it or its assets in relation to this Undertaking." }
+  ],
+  "excerpt_map": {
+    "SS 5": [3, 4]
+  }
+}

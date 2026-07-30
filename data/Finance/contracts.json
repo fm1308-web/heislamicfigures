@@ -1,0 +1,83 @@
+{
+ "_meta": {
+  "type": "contracts",
+  "count": 10,
+  "id_scheme": "C01-C10",
+  "completeness": "complete",
+  "source": "Generated in Claude chat session (research-grade). Phase 1 reference set.",
+  "warning": "Research-grade. Verify before production use.",
+  "assurance_note": "All 10 are core Islamic-finance contracts corroborated against AAOIFI Shari'ah Standard names."
+ },
+ "rows": [
+  {
+   "id": "C01",
+   "name": "Musharakah",
+   "type": "partnership/equity",
+   "description": "Joint-venture profit-and-loss sharing; all partners contribute capital.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C02",
+   "name": "Mudarabah",
+   "type": "profit-sharing",
+   "description": "One party (rabb al-mal) funds, other (mudarib) manages; profit shared, loss borne by capital.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C03",
+   "name": "Murabaha",
+   "type": "sale (cost-plus)",
+   "description": "Trust sale disclosing cost plus agreed markup.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C04",
+   "name": "Ijarah",
+   "type": "lease",
+   "description": "Sale of usufruct for defined rent.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C05",
+   "name": "Salam",
+   "type": "forward sale",
+   "description": "Full advance payment for deferred delivery of fungibles.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C06",
+   "name": "Istisna",
+   "type": "manufacturing sale",
+   "description": "Order to manufacture/build with staged/deferred payment.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C07",
+   "name": "Wakala",
+   "type": "agency",
+   "description": "Agent (wakil) acts for principal (muwakkil) for a fee.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C08",
+   "name": "Kafala",
+   "type": "guarantee/suretyship",
+   "description": "Third party guarantees a debt/obligation.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C09",
+   "name": "Rahn",
+   "type": "pledge",
+   "description": "Asset pledged as security for a debt.",
+   "assurance": "verified"
+  },
+  {
+   "id": "C10",
+   "name": "Qard",
+   "type": "loan",
+   "description": "Interest-free loan of fungibles (qard hasan).",
+   "assurance": "verified"
+  }
+ ]
+}

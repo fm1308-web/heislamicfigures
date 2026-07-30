@@ -1,0 +1,1045 @@
+
+
+
+
+
+
+
+
+
+
+AAOIFI Financial Accounting Standard 31
+Investment Agency (Al-Wakala Bi Al-Istithmar)
+
+
+
+Contents
+
+
+
+Contents ........................................................................................................................................................ 2
+
+Preface........................................................................................................................................................... 5
+
+Introduction................................................................................................................................................... 6
+
+Overview........................................................................................................................................ 6
+
+Rationale for issuing this standard ................................................................................................... 6
+
+Objective of the standard.............................................................................................................................. 7
+
+Scope ............................................................................................................................................................. 7
+
+Definitions ..................................................................................................................................................... 7
+
+Accounting approaches of investment agency for the principal (investor) .................................................. 8
+
+Broad classification ......................................................................................................................... 8
+
+Pass-through investment................................................................................................................. 9
+
+Wakala venture .............................................................................................................................. 9
+Criteria for eligibility for Wakala venture approach.............................................................................. 9
+
+Accounting by the principal (investor) under pass-through approach .......................................................10
+
+Recognition and measurement ...................................................................................................... 10
+Revenues, expenses and agent’s remuneration .................................................................................10
+Contingent or conditional variable remuneration expense ................................................................10
+
+Presentation and disclosure .......................................................................................................... 11
+
+Accounting by the principal (investor) under Wakala venture approach ...................................................11
+
+Initial recognition.......................................................................................................................... 11
+
+Subsequent measurement ............................................................................................................ 12
+
+Revenues, expenses and agent’s remuneration .............................................................................. 12
+
+Presentation and disclosure .......................................................................................................... 12
+
+Accounting approaches of investment agency for the agent .....................................................................13
+
+Broad classification: off-balance-sheet vs. on-balance-sheet approach ............................................. 13
+Control .................................................................................................................................................13
+Criteria for applying on-balance-sheet approach................................................................................13
+Multi-level investments and commingling ..........................................................................................13
+
+Accounting by the agent under agency (off-balance-sheet) approach............................................... 14
+
+
+
+
+
+
+2
+Revenues and expenses ................................................................................................................ 14
+Contingent or conditional variable remuneration income.................................................................. 14
+
+Presentation and disclosures ......................................................................................................... 15
+
+Other considerations on investment agency arrangements.......................................................................15
+
+Sale and purchase of the Wakala venture assets between principal and agent ................................. 15
+
+Specific considerations and explanations........................................................................................ 15
+Purchase undertakings ........................................................................................................................16
+Guarantees ..........................................................................................................................................16
+Management arrangements and responsibilities ...............................................................................16
+
+Effective date...............................................................................................................................................16
+
+Transitional provisions ................................................................................................................................16
+
+Appendices ..................................................................................................................................................18
+
+Appendix A: Adoption of the standard........................................................................................................18
+
+Members of the Board .................................................................................................................. 18
+
+Reservation .................................................................................................................................. 18
+
+Working group members............................................................................................................... 19
+
+Executive team ............................................................................................................................. 19
+
+Appendix B: Basis for conclusions ...............................................................................................................20
+
+Scoping: certain investments in Sukuk (based on investment agency) apply to this standard............. 20
+
+Definition of control...................................................................................................................... 20
+Agent: definition and variable return impact on control ....................................................................20
+
+Principal vs. agent relationship as per GAAPs.................................................................................. 21
+Who is an agent? ................................................................................................................................. 21
+
+Principal-agent relationship: off-balance-sheet treatment and derecognition criteria ....................... 22
+
+Effect of guarantees, purchase undertakings, managerial functions and similar instruments on the accounting for derecognition of assets ........................................................................................... 22
+
+Proposed equity method of accounting vs. equity method under FAS 24 or GAAPs........................... 23
+
+Variable (including contingent) remuneration accounting ............................................................... 24
+
+Criteria for Wakala venture approach ............................................................................................ 24
+
+Appendix C: Brief History of the Preparation of the Standard....................................................................25
+
+
+
+
+
+
+
+
+
+
+
+
+
+3
+
+
+AAOIFI Financial Accounting Standard FAS 31 “Investment Agency (Al-Wakala Bi Al-Istithmar)” is set out in paragraphs 01-53. All the paragraphs have equal authority. This standard should be read in the context of its objective and the Conceptual Framework for Financial Reporting as endorsed by AAOIFI.
+
+All AAOIFI FASs shall be read in conjunction with the definitions, Shari’ah principles and rules and key considerations provided by AAOIFI Shari’ah Standards (SS) in respect of such products and matters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+Preface
+
+PR1       Application of Wakala-based instruments in Islamic financial institutions has become more common in the recent past and partially replaced certain products which were more common earlier. Particularly, the use of Wakala-based instruments for investment management (investment agency / Al-Wakala Bi Al-Istithmar) has significantly increased and a number of structures for over-the- counter instruments, treasury placements and Sukuk issuances are now based on investment
+agency.
+
+PR2       The use of Wakala is quite common either as a direct product, e.g. for issuing documentary credits / letters of credit or as part of a transaction structure, e.g. as agency for the procurement of assets in a Murabaha transaction. However, investment agency (Al-Wakala Bi Al-Istithmar) has a complex structure and wider and more sophisticated use. Initially in its 2015-16 plan for the project was to develop a standard for Wakala as a whole, considering investment agency to be only a part thereof.
+Since the accounting for ordinary Wakala transactions individually or as a part of a complex structure (i.e., the normal agency relationship in general transactions e.g. agency in a Murabaha structure or service-based transactions) is comparatively simple and does not mandate a complete standard, the Board decided to keep the focus of this project on investment agency and its common forms.
+
+PR3       This standard sets out that the primary consideration for an investment agency transaction is determination of a principal-agent relationship. Such a relationship does not entail transfer of the ownership right and incidental risks and rewards to the agent, hence such transactions shall be kept off-balance-sheet for the agent. On the contrary, the principal shall account for the assets or
+investment in assets in its books (i.e., on-balance-sheet).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5
+Introduction
+
+Overview
+IN1        This standard intends to define the accounting principles and reporting requirements for investment agency (Al-Wakala Bi Al-Istithmar) transactions and instruments to be in line with the ever-changing global best practices, in the hands of both the principal and the agent.
+
+Rationale for issuing this standard
+IN2        During the recent past, service-based modes of Islamic finance have increasingly become common.
+Wakala (agency) arrangements are utilized by Islamic financial institutions under different structures. In certain structures, they are part of a transaction structure which is based on another mode while in other situations the primary transaction is based on Wakala itself. A number of Islamic finance products like Murabaha, Ijarah, Musharaka, etc., have built-in Wakala contracts for facilitation or risk management purposes. Similarly, various models of Takaful and capital market institutions are also based on Wakala or entail Wakala contracts as part of a complex structure.
+
+IN3        The use of Wakala as an investment and investment management tool has, in recent years significantly increased in the Islamic financial institutions as well. This specific type of Wakala which is normally referred to as Al-Wakala Bi Al-Istithmar (investment agency) represents a significant portion of an Islamic financial institutions’ portfolio. These are being used for procuring deposits, placements in inter-bank market, issuing Sukuk and other permissible avenues.
+
+IN4        Till now AAOIFI does not have any specific standard in this area. Due to divergent practices in the market as well as specific structures, with their complexities and specific conditions with regard to
+Shari’ah, it was considered necessary for AAOIFI to develop a standard for such transactions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6
+AAOIFI Financial Accounting Standard 31
+Investment Agency (Al-Wakala Bi Al-Istithmar)
+
+Objective of the standard
+
+1.           The objective of this standard is to establish the principles of accounting and financial reporting for the investment agency (Al-Wakala Bi Al-Istithmar) instruments and the related assets and obligations, as applicable, for the Islamic financial institutions (IFIs / the institutions) from both perspectives i.e., the principal (investor) and the agent.
+
+Scope
+
+2.           This standard shall apply to all investment agency (Al-Wakala Bi Al-Istithmar) contracts entered into by IFIs, either in the capacity of an agent or a principal, except for those limited exclusions which are prescribed in paragraph 4.
+
+3.           For the sake of clarity, it is specified that the following products, inter-alia, if based on investment agency are particularly included within the scope of this standard:
+
+a.           investment account offerings and placements – either offered on a retail basis or for inter- bank placements, and the placements made in such instruments;
+
+b.           investment funds i.e., the funds managed by IFIs under investment agency arrangement (see paragraph 4(b) for exclusions); and
+
+c.           Sukuk issuances, except for certain specific requirements of FAS 29 “Sukuk in the Books of the Issuer / Originator” which shall prevail over the requirements of this standard.
+
+4.           This standard shall not be applicable to the following:
+
+a.           investments in Sukuk or similar instruments (based on investment agency), which shall be accounted for in line with the respective FAS, unless the same do not meet the criteria for eligibility of Wakala venture approach provided in paragraph 10, in which case the same are required to be accounted for under the pass-through investment approach under this standard;
+
+b.           investment funds being formal mutual funds and other capital or secondary market funds on which the accounting and financial reporting requirements of FAS 14 “Investment Funds” apply; and
+
+c.           Takaful structures in which the segregation of the investment component based on investment agency is not considered appropriate in line with the respective FAS, on which the respective FAS shall apply unless it is a separately identified unit-linked fund managed under investment agency arrangement or otherwise the respective FAS requires it to be accounted for under this standard.
+
+Definitions
+5.           For the purpose of interpreting and applying this standard, the following short definitions are relevant:
+
+
+
+
+
+7
+a.           Agency (Wakala) – is the act of one party delegating the other to act on its behalf in what can be a subject matter of delegation. Its basic elements comprise the form, the subject matter of agency, and the two parties to the contract (the principal and the agent);
+
+b.           Agent (Wakeel) – is the party that acts on behalf of another (the principal) in an agency contract;
+
+c.           Agent’s remuneration – for the purpose of this standard comprises the fixed fee and variable remuneration (if applicable) (see “fixed fee” and “variable remuneration” below);
+
+d.           Control – is as defined in paragraph 33 (read with paragraph 34);
+
+e.           Fixed fee – for the purpose of this standard means any amount of fee paid or payable by the principal to the agent which is fixed on a lump sum or periodic basis;
+
+f.            Incentive – for the purpose of this standard means any variable (including contingent) consideration paid or payable by the principal to the agent against services which is linked to the performance of the agent or the underlying asset(s);
+
+g.           Investment agency (Al-Wakala Bi Al-Istithmar) instrument – being a type of Wakala, is an instrument in which the principal (Muwakkil) appoints an agent (Wakeel) to carry out investment on behalf of principal with or without conditions as regards to how the funds may be invested;
+
+h.           Investor – is the principal in an investment agency arrangement (see “principal” below);
+
+i.            Principal (Muwakkil) – is the party that appoints another party (the agent) to act on its behalf in an agency contract;
+
+j.            Principal-agent relationship – is the relationship created by virtue of an agency contract, irrespective of being expressed or implied, between a principal and an agent;
+
+k.           Reserve – for the purpose of this standard is the amount(s) set aside from the profits or equity of investor(s) in an investment agency arrangement for the purpose of meeting investment losses, other contingencies, smoothing of profits, or as incentive due to the
+agent after meeting all investment losses, other contingencies and smoothing of profits; and
+
+l.            Variable remuneration – for the purpose of this standard means any amount of
+remuneration paid or payable by the principal to the agent, which is not fixed on a lump sum or periodic basis. This may, for example, be linked to revenues, expenses, assets, number of transactions, etc. and includes incentive (see “incentive” above).
+
+Accounting approaches of investment agency for the principal (investor) Broad classification
+6.           At the inception of the transaction, the principal (investor) shall evaluate the nature of investment as
+either:
+
+a.           a pass-through investment – as a preferred option; or
+
+
+
+
+
+
+8
+b.           a Wakala venture.
+
+Pass-through investment
+7.           A pass-through investment is an investment in which the involvement of the agent, as well as, the options for transferability of the instrument are limited and the investor principally takes a direct exposure on the underlying assets. An investor shall apply the pass-through investment approach for its investments in an investment agency instrument; unless it opts to apply Wakala venture
+approach for an instrument that meets the criteria defined in paragraph 10.
+
+8.           There is a rebuttable assumption that in all investment agency arrangements, the investor takes direct exposure on the underlying assets (including a business) at the back end. As a result, the investor shall account for the assets (including the business) in its books directly, according to appropriate accounting policies applicable on such assets (or business) in line with respective FAS or the generally accepted accounting principles in absence of a specific FAS on the subject1.
+
+Wakala venture
+9.           Investments made under investment agency instruments may be accounted for under the Wakala venture approach, if they meet the criteria defined in paragraph 10.
+
+Criteria for eligibility for Wakala venture approach
+10.        The principal may opt to apply Wakala venture approach if, and only if, the investment agency contract meets any of the following conditions (or are subject to exception under the requirements of paragraph 11):
+
+a.           the instrument is transferable; or
+
+b.           the investment is made in a single asset (or pool of assets) where such asset(s) are subject to frequent changes throughout the term of the contract i.e., there are routine changes or replacements over the term of arrangement (unless it constitutes a business) at the discretion of the agent; or
+
+c.           the role of the agent is not limited whereby the agent performs day-to-day asset management function and, where applicable, is also responsible for replacement of assets or recoveries against them.
+
+11.        An exception to the above criteria may be created in rare circumstances, and Wakala venture approach may be applied, whereby without undue cost and efforts, the principal is unable to obtain relevant information with regards to the assets and their performance and hence it determines that the application of pass-through approach is not practicably possible. These may include short-term
+transactions, for example transactions maturing within a period of three months.
+
+
+
+
+
+
+
+1 The application of generally accepted accounting principles in all situations shall not result in an accounting
+treatment which is repugnant to the requirements of AAOIFI’s Framework or Shari’ah.
+
+
+
+
+
+
+9
+Accounting by the principal (investor) under pass-through approach
+
+Recognition and measurement
+12.        On initial recognition using the pass-through approach, the principal shall recognise the assets (as well as liabilities, if any) underlying the Wakala arrangement in its books of account applying the initial recognition principles as applicable in line with respective FAS, and in absence thereof, in line with the generally accepted accounted principles applicable to such assets (and liabilities)2. Proportionate assets (and liabilities) shall be recognised, applying the same principles, in cases where the arrangement has more than one principal. Subsequent to initial recognition, the underlying assets (and liabilities) shall be measured according to the requirements of respective FAS (or generally accepted accounting principles, in absence thereof). Proportionate accounting shall
+apply, where applicable. [Explanation: These shall be recognised on a gross basis by the investor (i.e., assets to be included in assets, and liabilities, if any, to be included in liabilities].
+
+13.        The investor shall determine, at each period end, impairment in the value of investment under pass- through approach in line with the requirements of FAS 30 “Impairment, Credit Losses and Onerous Commitments”. The settlement risk shall also be considered for impairment purposes.
+
+Revenues, expenses and agent’s remuneration
+14.        Unless contrary to a specific requirement of this standard, the resulting revenues, expenses, gains and losses, arising from the execution of the investment agency contract, shall be measured and accounted for, respectively, according to the nature of the contract(s) in line with the requirements of respective FAS applicable to such transactions (or in absence thereof, in line with generally accepted accounting principles). Normal accounting policies of the institution shall apply in respect of all such matters.
+
+15.        Revenues, expenses, gains and losses shall be recognised on a gross basis (i.e., the same shall be included in respective line items in the financial statements of the investor).
+
+16.        Agent’s remuneration payable, including both fixed fee and variable remuneration, shall be recognised on an accrual basis, based on the best estimate of amounts payable, as of the respective period end, based on contractual and constructive obligations. The estimates for contingent or conditional variable remuneration shall be based on the principles defined in paragraph 17.
+
+Contingent or conditional variable remuneration expense
+17.        Contingent or conditional variable remuneration payable as per contractual terms shall be recognised based on best estimates of the same, applying the following principles:
+
+a.           variable remuneration related to past performance based on contractual arrangement shall be recognised as a liability when it becomes due – on an accrual basis;
+
+
+
+
+
+2 The application of generally accepted accounting principles in all situations shall not result in an accounting treatment which is repugnant to the requirements of AAOIFI’s Accounting Conceptual Framework or Shari’ah
+Standards.
+
+
+
+
+
+
+10
+b.           variable remuneration related to past performance which is reversible on a cumulative basis (e.g. reversible in case of a future loss) or is dependent on a decision of a third party (e.g. a decision of the trustee at maturity of the transaction), shall be recognised as a liability when due, irrespective of probability of their reversal;
+
+c.           reversal of a liability earlier recorded (in line with (b) above) e.g. to recover a loss or against below par performance shall be recognised as a reduction of respective expense, in the period in which such reversals occur; and
+
+d.           Variable remuneration related to, or fully dependent on, future performance of the agent shall not be recognised.
+
+Presentation and disclosure
+18.        All assets, liabilities, revenues, expenses, gains and losses under pass-through approach shall be presented on a gross basis, rather than being presented on a net basis. Accordingly, these are to be clubbed on a line-by-line basis, with the respective assets, liabilities, revenues, expenses, gains and losses, in the financial statements of the investor. These shall however be presented and disclosed in a manner that the same can be identified as relating to investment agency arrangement.
+
+19.        Agent’s remuneration including fixed fee and variable remuneration shall be included in direct expenses and disclosed appropriately.
+
+20.        In addition to the normal presentation and disclosure requirements applicable as per respective FAS (or in absence thereof, the generally accepted accounting principles), the minimum disclosure requirements are as follows:
+
+a.           summary of the principal – agent relationship(s);
+
+b.           the nature of assets and / or activity(ies) managed under the investment agency arrangement(s); and
+
+c.           any contingent agent’s remuneration payable.
+
+Accounting by the principal (investor) under Wakala venture approach
+
+21.        An investment in a Wakala venture shall be accounted for in the books of the investor applying the
+“equity method of accounting” as specified in paragraphs 22-30 of this standard.
+
+Initial recognition
+22.        While applying the Wakala venture approach, the investor shall initially recognise the investment made as an investment in Wakala venture at cost, at the time when it is made available to the agent for investment.
+
+23.        In case the investor has made investment available to the agent, but the contract is yet to be initiated, such amount shall be represented as an advance against investment in Wakala venture.
+
+
+
+
+
+
+
+
+
+
+
+11
+Subsequent measurement
+24.        The investment in a Wakala venture shall be measured at the end of a financial period at carrying amount and shall be adjusted to include the investor’s share in the profit or loss of the Wakala venture (determined under the respective FAS or the generally accepted accounting principles, as the case may be), net of any agent’s remuneration including variable remuneration payable as of that date.
+
+25.        The investor shall determine, at each period end, impairment in the value of investment in Wakala venture in line with the requirements of FAS 30 “Impairment, Credit Losses and Onerous Commitments”. The settlement risk shall also be considered for impairment purposes.
+
+Revenues, expenses and agent’s remuneration
+26.        Revenues, expenses, gains and losses, arising from investment in Wakala venture as well as the respective agent’s remuneration (including both, fixed fee and variable remuneration shall be recognised periodically, on a net basis.
+
+27.        Agent’s remuneration payable shall be determined and accounted for in line with the requirements of paragraphs 16 and 17.
+
+Presentation and disclosure
+28.        Net revenues (or losses) arising from investment in Wakala venture shall be disclosed separately from other revenues of the investor, on a net basis.
+
+29.        In addition, the investor shall disclose the following as a minimum disclosure requirements:
+
+a.           summary of the principal terms and conditions of the agreement(s) between the principal and the agent;
+
+b.           the nature of assets and / or activity(ies) managed under the investment agency arrangement(s);
+
+c.           the amount of agent’s remuneration for the period, netted-off against the revenues, duly segregating the fixed fee and the variable part thereof;
+
+d.           the amount of agent’s remuneration payable as of the end of the period, netted-off with the balance of investment in Wakala venture;
+
+e.           any contingent agent’s remuneration payable; and
+
+f.            the rationale for judgment applied in not opting for the pass-through approach.
+
+30.        In respect of any investment in Wakala venture which is considered material to the financial statements of the investor, the investor shall preferably provide memorandum information in respect of assets, liabilities, revenues, expenses, gains and losses, as well as, the fixed and variable
+components of the agent’s remuneration.
+
+
+
+
+
+
+
+
+
+
+12
+Accounting approaches of investment agency for the agent
+
+Broad classification: off-balance-sheet vs. on-balance-sheet approach
+31.        At inception of the transaction the agent shall recognise an agency arrangement under off-balance- sheet approach whereby, since the agent does not control the related assets / business and hence does not record the assets and related income and expenditure in its books of account. The agency approach of accounting is defined in paragraphs 39-44.
+
+32.        There may be exceptions to off-balance-sheet approach where by virtue of additional considerations attached to the instrument based on investment agency may mandate the same to be accounted for as on-balance-sheet (see paragraphs 35-38).
+
+Control
+33.        For the purpose of this standard, an institution controls an asset or business, when it has substantially all risks and rewards incidental to ownership of such asset or business, duly meeting both of the following conditions:
+
+a.           it is directly exposed to, or has rights to, variable returns (negative or positive, respectively)
+from its involvement with such assets or business; and
+
+b.           it has the ability to affect those returns through its power over the assets or business.
+
+34.        Nevertheless, for the purpose of this standard, control does not include situations whereby the institution has the power but such power is exercisable in a fiduciary capacity, and not for the variable returns to the institution itself and hence the risks and rewards with regard to such asset is not with the institution. It is clarified that performance incentives receivable by an agent are in a fiduciary capacity, and hence not considered to be variable returns for this purpose.
+
+Criteria for applying on-balance-sheet approach
+35.        The agent shall consider the investment agency arrangement as a separate class of equity for accounting purposes (other than common equity), if the investment agency instrument, by virtue of additional considerations attached to the instrument, is subordinated to all liabilities and quasi- equity instruments of the agent (duly having absorption of losses condition) and is either:
+
+a.           perpetual (i.e., with no option of liquidation by the principal); or
+
+b.           convertible to ordinary share capital of the agent, at his discretion instead of liquidating the
+Wakala.
+
+36.        The agent shall consider the investment agency arrangement as a quasi-equity instrument for accounting purposes, if the investment agency instrument, by virtue of additional considerations attached to the instrument, is subordinated to all liabilities of the agent, but the same is neither perpetual nor convertible to ordinary share capital of the agent.
+
+Multi-level investments and commingling
+37.        An agent may maintain multi-level investment arrangements e.g. investment of Wakala funds in investment schemes or arrangements based on independent permissible transactions with the agent
+itself. Notwithstanding the requirements of this standard with regard to investment agency
+
+
+
+
+
+13
+arrangements, such secondary transactions shall be accounted for in line with the requirements of respective FAS in the books of the agent. For example, in such arrangements, the funds of the investment agency may take the form of an unrestricted investment arrangement, under a separate contract. In such situation, the assets shall remain on-balance-sheet for the agent, not by virtue of the investment agency arrangement, but rather by virtue of the unrestricted investment arrangement under the separate contract which is based on Mudaraba. The accounting, presentation and disclosure requirements for the primary arrangement of off-balance-sheet investment agency arrangement shall continue to be applicable.
+
+38.        If the funds of investment agency are commingled with the agent’s own funds or the funds of the unrestricted investment accountholders (or similar instruments) without due authority, the proportionate assets and revenues (and expenses) shall be segregated and kept off-balance-sheet in line with the off-balance-sheet approach. Shari’ah considerations in this respect shall be complied with and necessary disclosures with regard to Shari’ah restrictions shall be made.
+
+Accounting by the agent under agency (off-balance-sheet) approach
+39.        Considering the fact that the agency relationship does not establish control of the agent over the assets (or business) managed under the arrangement, the agent shall not recognise the assets and / or liabilities owned by the investor(s) (principal(s)) in its books of account.
+
+40.        If the agent previously owned such assets directly or through on-balance-sheet equity of investment accountholders or similar instruments, the agent shall derecognise the assets (and liabilities) from its books of account (see paragraphs 47-51).
+
+Revenues and expenses
+41.        The agent shall recognise the agency remuneration including fixed and variable components thereof, on an accrual basis i.e., when the relevant services are provided. The estimates for contingent or conditional variable remuneration shall be based on the principles defined in paragraph 43.
+
+42.        Any expenses, including losses reimbursable due to agent’s negligence and misconduct, shall be recognised when due.
+
+Contingent or conditional variable remuneration income
+43.        Contingent or conditional variable remuneration as per contractual terms shall be recognised when there remains no material uncertainty with regard to its recoverability, duly applying the following principles:
+
+a.           variable remuneration related to past performance based on contractual arrangement shall be recognised as and when due;
+
+b.           variable remuneration related to past performance which is reversible on a cumulative basis (e.g. reversible in case of a future loss) or is dependent on a decision of a third party (e.g. a decision of the trustee at maturity of the transaction), shall be recognised only to the extent of a best estimate of amounts recoverable with reasonable certainty, based on justifiable future projections and established customary practice, after allowing for a reasonable
+margin for uncertainties; and
+
+
+
+
+
+
+14
+c.           variable remuneration related to, or fully dependent on, future performance shall not be recognised irrespective of their probability of recoverability.
+
+Presentation and disclosures
+44.        In respect of off-balance-sheet treatment, the agent shall, at a minimum, make the following disclosures:
+
+a.           a summary of the assets, liabilities and related movement including income on such assets and expenses thereon collectively for all investment agency instruments to be taken to the statement of off-balance-sheet investment accounts;
+
+b.           the total administrative expenses charged to the investment agency contract along with a brief description of its major components based on the material significance of the amounts;
+
+c.           the basis applied by the agent for determining incentive profits which it receives from the profits of investment agency if such profits are of material significance;
+
+d.           the cumulative amount of contingent agent’s remuneration receivable, but not recognised due to conditions provided in paragraph 43; and
+
+e.           provision(s) needed against onerous commitments (including purchase undertaking, guarantee, etc.) in line with the requirements of FAS 30 “Impairment, Credit Losses and Onerous Commitments”.
+
+f.            Disclosure of all transfers of assets shall be adequately made in line with the requirements of
+FAS 21 “Disclosure on Transfer of Assets”.
+
+Other considerations on investment agency arrangements
+
+Sale and purchase of the Wakala venture assets between principal and agent
+45.        Sales transaction(s) between the agent and principal may take place at inception of the investment agency transaction or during the continuity of the same, from time to time. In all such sales transactions the agent (being the seller) shall derecognise the asset from its books of account. Any gain or loss thereon shall be recognised immediately.
+
+46.        A purchase of an asset(s) by the agent from the principal may also take place during the continuity or at maturity of investment agency arrangement. Such purchase of asset(s) shall be recognised by the agent (being purchaser) at cost (i.e., the mutually agreed value).
+
+Specific considerations and explanations
+47.        Under the off-balance-sheet approach, the underlying assets shall be derecognised by the agent when sold to the principal if these were earlier owned by the agent (as an independent seller). However, there are certain specific additional considerations in a number of arrangements that may lead to anomalies with regard to the transfer of control of such assets. In addition, at times, at inception or during the continuity of the contract, the agent procures additional assets or replaces assets for and on behalf of the principal. Such assets are also not recognised by the agent even if
+similar anomalies with regard to the control of such assets exist.
+
+
+
+
+
+
+
+15
+48.        Explanation with regard to such issues and their respective effect on control is provided in paragraphs 49 to 51.
+
+Purchase undertakings
+49.        Purchase undertakings are not contracts but rather future commitments and are considered to be independent of the base contract. If these become a part and condition of the base contract, this is tantamount to Shari’ah non-compliance. Accordingly, a purchase undertaking is not a contract and shall be considered as a commitment only, and disclosed accordingly. However, if it is expected that a purchase undertaking needs to be executed in a manner that may result in form of a loss to the entity, in such situation a provision against such expected loss shall be created.
+
+Guarantees
+50.        A guarantee permissible from Shari’ah perspective is provided in a capacity of a third person, or by a third person, independent of the contract of sale or transfer of assets, duly executed after consummation of sale and cannot be made a condition thereto. Accordingly, if the Shari’ah rules are followed in this respect, the existence of an independent guarantee arrangement does not contravene the essence of sale per se, in line with Shari’ah principles. Accordingly, a guarantee in such arrangements does not affect the recording of sale or transfer of assets independently. A provision shall be made against a guarantee to the extent of best estimate of the amount of losses guaranteed, if any.
+
+Management arrangements and responsibilities
+51.        Management or agency arrangements are independent of the sale or transfer of asset contract and are executed separately. Additionally, these contracts entail a principal – agent relationship, and accordingly, are not tantamount to continuing involvement with the assets. It is relevant to note that the term control has two elements i.e., the power to control the asset (which exists in such arrangements), and the variable economic benefits of the entity (which does not exist in such arrangements and the economic benefits of the assets vested with the principal). Accordingly, existence of a management or agency contract of the underlying assets in Shari’ah compliant transactions does not constitute a control of such assets.
+
+Effective date
+
+52.        This standard shall be effective on the financial statements of the institutions beginning on or after
+01 January 20213. Early adoption of the standard is encouraged.
+
+Transitional provisions
+
+53.        At the first time adoption an entity may opt not to apply this standard only on such transactions:
+
+a.           which were already executed before the adoption date of this standard for the entity; and
+
+
+
+
+
+
+3 The effective date was deferred from 1 January 2020 to 1 January 2021. See paragraph H8 of Appendix C:
+Brief history of the preparation of the standard.
+
+
+
+
+
+
+16
+b.           their original maturity falls no later than 12 months after the adoption date of this standard for the entity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17
+Appendices
+
+
+Appendix A: Adoption of the standard
+
+This standard was presented for the approval in the AAOIFI Accounting Board’s 8th meeting held on 11-12
+Rabi’ II 1439H, corresponding 29-30 December 2017 and was duly approved.
+
+Members of the board
+1.           Mr. Hamad A. Al-Oqab – chairman
+
+2.           Mr. Mohamed Bouya Ould Mohamed Fall – deputy chairman
+
+3.           Mr. Abdelhalim Elsayed Elamin
+
+4.           Dr. Abdulrahman M. Alrazeen
+
+5.           Mr. Aly Hamed El Azhary
+
+6.           Dr. Bello Lawal Danbatta
+
+7.           Mr. Firas Hamdan
+
+8.           Mr. Hondamir Nusratkhujaev
+
+9.           Mr. Khalid E. Al Shatti
+
+10.        Mr. Ismail Erdemir
+
+11.        Mr. Mohamed Ibrahim Hammad
+
+12.        Mr. Muhammad Jusuf Wibisana
+
+13.        Mr. Nader Yousif Rahimi
+
+14.        Dr. Saeed Al-Muharrami
+
+15.        Mr. Syed Najmul Hussain
+
+Reservation
+The standard was approved unanimously.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+18
+Working group members
+1.           Mr. Nader Yousif Rahimi – chairman
+
+2.           Dr. Bello Lawal Danbatta
+
+3.           Ms. Fatimah Abdul Rahman
+
+4.           Mr. Irshad Mahmood
+
+Executive team
+1.           Mr. Haroon Shahban (EY Bahrain)
+
+2.           Mr. Omar Mustafa Ansari (AAOIFI)
+
+3.           Mr. Mohammad Majd Bakir (AAOIFI)
+
+4.           Ms. Merjan Abid (AAOIFI)
+
+5.           Mr. Farhan Noor (AAOIFI)
+
+6.           Ms. Zahra Jassim AlSaraifi (AAOIFI)
+
+7.           Ms. Farida Cassim (AAOIFI)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+19
+Appendix B: Basis for conclusions
+
+Scoping: certain investments in Sukuk (based on investment agency) apply to this standard
+BC1       The board decided to generally exclude investments in Sukuk or similar instruments (based on investment agency), which shall be accounted for in line with respective FAS (currently FAS 25 “Investment in Sukuk, Shares and Similar Instruments”). However, the board considered the probability of situations whereby only by virtue of giving an instrument the name of Sukuk (with some additional documentation) without having genuine characteristics of a tradable instrument, the accounting treatment might be changed and the pass-through investment approach (which in the board’s view is the primary approach of accounting for investment agency instruments) is
+bypassed. Accordingly, the board decided that the instrument for Sukuk based on investment agency shall not be eligible for accounting under respective FAS and shall be accounted for based on pass- through investments if the same does not meet the criteria for eligibility of Wakala venture
+approach provided under this standard.
+
+Definition of control
+BC2       The board, in line with the new strategy of accounting standards development and the view taken in standards being developed alongside this standard, considered the definition of control according to the generally accepted accounting principles as well as Shari’ah requirements, whereby an
+institution controls an asset or business when it has substantially all risks and rewards incidental to ownership of such asset or business and it is exposed to or has rights to the variable returns from asset or business along with the ability to affect those returns through its power. The board, however, was of the view that any power to only control is not sufficient whether the power is held in a fiduciary capacity or the variable returns are primarily for the counter-party and a portion thereof can be attributable to the entity, not contractually, but rather at the discretion of the counter-party.
+
+BC3       The discussions held by the board on several occasions in determining whether an institution controls an asset or business were to conclude whether to consolidate such asset or business with the institution or to keep them on-balance-sheet.
+
+BC4       The board however, decided that assets or business managed by an institution only in a fiduciary capacity i.e., as a manager or as an agent are not a valid basis for consolidation or for keeping them on-balance-sheet, particularly where the nature of the contract itself is of principal-agent, and not of partnership per se. This is because the institution only manages the asset on behalf of the stakeholders rather than to affect variable returns for its own benefit.
+
+Agent: definition and variable return impact on control
+BC5       The board considered the definition of an agent from Shari’ah as well as accounting and legal perspectives, with due consideration to the definition of control. A key question was with regard to the definition of control and the role of agent when the agent has a variable return possibility mainly in case of variable remuneration including contingent and performance based remuneration. The board also evaluated and assessed the differences and similarities with the Mudaraba transactions. Having considered all such factors, the board decided that having a contractual or constructive right
+(both situations tend to exist in real life transactions) to variable returns does not effectively result in
+
+
+
+
+
+20
+the control of the agent as firstly, the return is not completely variable i.e., it is not negative (losses
+to be borne by principal only) and secondly the power is also exercised on behalf of principal and not in the absolute status (e.g. a chief executive of a parent company may have power over the subsidiary company, but he exercises the same on behalf  of the shareholders and not on his
+personal behalf).
+
+Principal vs. agent relationship as per GAAPs
+BC6       The board further evaluated the criteria provided by the generally accepted accounting principles (GAAPs) for determination of principal and agent. Following paragraphs provide a summary of such criteria and the board’s view in respect of the same.
+
+BC7       According to GAAPs, the key considerations are the performance obligation and control. If the party holds the primary performance obligation and control, it becomes the principal, whereas if the party does not have the performance obligation and control and is acting on behalf of others, it becomes the agent.
+
+Who is an agent?
+BC8       Considering the above key considerations, this indicates that an entity is an agent (and therefore does not control the good or service before it is provided to a customer (in this case the third parties) include the following:
+
+a.           another party is primarily responsible for fulfilling the contract (in this situation the contracts related to assets underlying the investment agency arrangement e.g. Ijarah assets);
+
+b.           the entity does not have inventory risk before or after the goods have been ordered by a customer, during shipping or on return (like the assets acquired under investment agency arrangement to be sold to customers on a Murabaha basis);
+
+c.           the entity does not have discretion in establishing prices for the other party’s goods or services and, therefore, the benefit that the entity can receive from those goods or services is limited (this is more relevant to direct sales agency). However, this condition is not met in the management of agency transactions;
+
+d.           the entity’s consideration is in the form of a commission (which can be fixed or variable like the fixed fee and variable remuneration based on performance); and
+
+e.           the entity is not exposed to credit risk for the amount receivable from a customer in exchange for the other party’s goods or services (like e.g. the credit risk of Murabaha transactions executed under investment agency contract).
+
+BC9       After due consideration, the board concluded that the primary criteria of performance obligations and control for the determination of agency relationship is pervasively in line with Shari’ah. However, the board acknowledged that there might be specific situations where the verbatim application of GAAPs might result in Shari’ah non-compliance and concluded that the investment
+agency contracts shall be primarily accounted for under principal – agent accounting approaches.
+
+
+
+
+
+
+
+
+
+21
+Principal-agent relationship: off-balance-sheet treatment and derecognition criteria
+BC10     In line with the discussion in paragraphs BC2-BC5, on the matter of control and paragraphs BC6 to BC9 on the matter of determining the principal – agent relationships, where the institutions role is primarily of a manager or agent in a fiduciary capacity only and does not control the underlying asset or business, the board decided that any such instruments shall be recorded on an off-balance-sheet basis by the agent. The board acknowledged that Shari’ah principally has a strong view on this issue which cannot be compromised.
+
+BC11     The board discussed at length that the AAOIFI’s Framework, in line with the Shari’ah principles, defines asset as a resource controlled by the entity (whether financed by the equity or the investment accountholders) as a result of past transaction, event or condition which provides the institution an enforceable right over the resource and gives it an economic benefit, present or future. The board decided that the acid test for derecognition of an asset in case of a transfer to another party is the transfer of control, which is also the requirement of Shari’ah. Accordingly, the
+asset has to be derecognised from the balance sheet once the control is transferred to another party or diminished, or the asset is destroyed or fully impaired. Here it is important that from Shari’ah perspective, a partnership (whether Musharaka or Mudaraba based) creates a joint control whereas a principal-agent relationship (i.e., Wakala or service Ijarah) does not create a joint control, unless other evidence of control is available from a different perspective.
+
+BC12     The board further discussed and in light of Shari’ah requirements in this respect and AAOIFI’s conceptual framework concluded that principally sale of an asset is tantamount to immediate derecognition of such asset in the books of the seller and should be transferred to the purchaser (investor). This shall apply even if in some circumstances, the legal title is not transferred and ownership transfer is ensured through alternative documentation like counter deeds and un- registered sales agreements etc. (subject to approval from Shari’ah perspective).
+
+Effect of guarantees, purchase undertakings, managerial functions and similar instruments on the accounting for derecognition of assets
+BC13     The board acknowledges that the transfer of control of an asset for an investment agency transaction requiring derecognition has certain complexities in contemporary transactions prevalent in Islamic finance and banking. These structures may include purchase undertaking to buy back the assets, or guarantees in the capacity of a third party, as well as, managerial or agency based involvement with the maintenance, operations or recovery of the assets. Most generally accepted accounting principles tend to consider these factors as continuing involvement with the assets requiring an objective assessment of the economic substance of the transaction. If as per the assessment, it is established that the entity continues to control the asset or the entity has failed to transfer substantially all the risks and rewards incidental to ownership of such assets the entity shall refrain from de-recognizing such assets from its books.
+
+BC14     The board referred to the concept of substance and form under the Framework whereby, if information is to represent faithfully the transactions and other events that it purports to represent, it is necessary that they are accounted for and presented in accordance with its substance and economic reality as well as the legal form. Accordingly, it proclaims that the financial reporting
+involves consideration of the substance of an economic phenomenon as well as its legal form. The
+
+
+
+
+
+
+22
+board also evaluated certain specific Shari’ah requirements e.g. the specific prohibition on
+combination of two or more contracts together.
+
+BC15     The board established its view through the Framework, and Shari’ah considerations, and defined accounting treatment of each component (contract or undertaking / promise) as mentioned below:
+
+a.           Purchase undertakings – are not contracts and are rather future commitments and are considered to be independent of the base contract. If these become a part and condition of the base contract, this is tantamount to Shari’ah non-compliance. Accordingly, the board took a considered view that a purchase undertaking is not a contract and shall be considered as a commitment only, and disclosed accordingly. However, if it is expected that a purchase undertaking needs to be executed in a manner that may result in form of a loss to the entity, in such situations a provision against such expected loss shall be created;
+
+b.           Guarantees – a guarantee permissible from Shari’ah perspective is provided in a capacity of
+a third person, or by a third person, independent of the contract of sale or transfer of assets, duly executed after consummation of sale and cannot be made a condition thereto. Accordingly, if the Shari’ah rules are followed in this respect, the existence of an
+independent guarantee arrangement does not contravene the essence of sale per se, in line with Shari’ah principles. Accordingly, the board took a considered view that a guarantee in such arrangements does not affect the recording of sale or transfer of assets independently. A provision shall be made against a guarantee to the extent of best estimate of the amount of losses guaranteed, if any; and
+
+c.           Management or agency arrangements – are independent of the sale or transfer of assets contract and are executed separately. Additionally, these contracts entail a principal – agent relationship, and accordingly, do not tantamount to continuing involvement with the assets. It is relevant to note that the term control has two elements i.e., the power to control the asset (which exists in such arrangements), and the variable economic benefits of the entity (which does not exist in such arrangements and the economic benefits of the assets vest with the principal). Accordingly, the board took a considered view that existence of a management or agency contract of the underlying assets in Shari’ah compliant transactions does not constitute a control of such assets.
+
+BC16     To conclude the discussion, the board decided that the principal – agent relationship and the derecognition of assets / sale of assets between agent and principal shall not be affected by the existence of situations such as purchase undertakings, guarantees and / or management and agency arrangements as defined above insofar as the same are in line with the principles of Shari’ah defined in respective Shari’ah standards issued by AAOIFI.
+
+Proposed equity method of accounting vs. equity method under FAS 24 or GAAPs
+BC17     While discussing on the accounting approach for the Wakala ventures, the board decided to allow a simplified accounting approach which is essentially the equity method of accounting but has certain minor differences with the equity method of accounting under FAS 24 “Investments in Associates” or under generally accepted accounting principles. The board took a view that considering the nature
+of the instruments based on investment agency, and considering the constraints with regard to
+frequent financial reporting by IFIs as well as the limitations on information availability, it might not
+
+
+
+
+
+23
+be justified to require the investors to account for such transactions based on a more comprehensive accounting approach (as required under such standards) and instead decided to allow a simplified accounting approach with minimal reporting requirements.
+
+Variable (including contingent) remuneration accounting
+BC18     The board considered various possible approaches for accounting for variable remuneration and particularly the contingent part thereof in the books of the investor as well as the agent. After due deliberations, the board decided that generally the agency remuneration shall be accounted for on accrual basis by both parties. However, the contingent part thereof being the variable remuneration related to past performance which are reversible on a cumulative basis (e.g. reversible in case of a future loss) or are dependent on a decision of a third party (e.g. a decision of the trustee at maturity of the transaction), shall be recognised by the principal as a liability when due, irrespective of probability of their reversal as it is more prudent. On the contrary the agent shall recognise the same only to the extent of a best estimate of amounts recoverable with reasonable certainty, based on justifiable future projections and established customary practice, after allowing for a reasonable margin for uncertainties, as it is more prudent for the agent.
+
+BC19     The board further considered that any part of contingent remuneration which is related to future performance shall not be recognised by either party even if it is more probable than not, because it is a future event and shall not be accounted for presently.
+
+Criteria for Wakala venture approach
+BC20     The board considered the criteria for applicability of Wakala venture approach, as it was of the opinion that the primary approach of accounting shall be that of pass-through approach. Having said that, due to the practical constraints the board acknowledged that it is more likely than not that most transactions will be accounted for under the Wakala venture approach. The board evaluated
+several possible considerations for the criteria and rejected a few originally proposed by the working group and decided to keep to three main conditions.
+
+BC21     The board was of the opinion that the justification of the Wakala venture approach (apart from any exceptions to be allowed due to mere practicability) would not be achieved unless:
+
+a.           transferability of the instrument is a primary consideration and if the instrument is not transferable, then by default the primary risk is on the assets at the back end;
+
+b.           the assets change frequently and hence the objective is not actually to hold the specific assets for a contractual term, and rather it is the overall business with such assets. In situations whereby the asset(s) is / are subject to frequent changes throughout the term of the contract, it can be understood that the intention of investment is not primarily to hold a single asset through an agent and rather the intention is to maintain a revenue stream through series of investments (and if necessary through their liquidation) and accordingly, these maybe accounted for under the Wakala venture approach; and
+
+c.           the agent’s role in management is significant with regard to asset management including replacement and recovery against assets.
+
+
+
+
+
+
+
+
+24
+Appendix C: Brief History of the preparation of the standard
+
+H1         The newly formed AAOIFI Accounting Board (AAB) held its 1st meeting on 6-7 of Jumada II 1437H, corresponding to 15-16 of March 2016 at Ramee Grand Hotel, Kingdom of Bahrain. In this meeting the overall approach and plan for the standard was discussed.
+
+H2         The 1st working group meeting for the standard was held on 15 Rajab 1438H, corresponding to 11
+April 2017 where the basic content of the standard was discussed.
+
+H3         The 2nd working group meeting was held on 24 Ramadan 1438H, corresponding to 19 June 2017 where the preliminary study was presented and discussed. In this meeting the two broad classifications of Investment agencies and its accounting treatments was discussed.
+
+H4         The AAB held its 6th meeting on 20-21 Shawwal 1438H, corresponding to 15-16 of July 2017 at AAOIFI head office, Kingdom of Bahrain. In this meeting the contents of the draft standard were discussed and duly approved for issuance.
+
+H5         The public hearing for the standard was conducted in Pakistan and Bahrain in the months of November and December in 2017. The exposure draft together with comments received from the public hearing events and comments and views received in writing from industry participants was presented to the working group on 10 Rabi’ II 1439H, corresponding to 28 December 2017 for discussion and conclusions. After due deliberation, the working group forwarded the standard with its recommendations to the AAB.
+
+H6         The AAB on its 8th meeting held on 11-12 Rabi’ II 1439H, corresponding to 29-30 December 2017 discussed the comments recommended by the working group. After due deliberation and incorporating minor changes, the standard was principally approved for issuance.
+
+H7         The standard was issued after duly taking the views for conformity with Shari’ah from the committee of the Shari’ah board for review of accounting and governance standards.
+
+H8         The AAB, in its 18th meeting held on 23-24 Dhul-Qa’dah, 1443H corresponding to 22-23 June 2020, deliberated on the feedback received from the institutions operating in various markets, about the potential constraints in adopting and implementing the recently issued AAOIFI FASs, in the wake of the COVID-19 pandemic. The AAB decided to defer the effective date of the recently issued AAOIFI FASs, namely, FAS 30 “Impairment, Credit Losses and Onerous Commitments”, FAS 31 “Investment Agency (Al-Wakala Bi Al-Istithmar)”, FAS 33 “Investments in Sukuk, Shares and Similar Instruments”, and FAS 34 “Financial Reporting for Sukuk-holders”; from 1 January 2020 to 1 January 2021. The AAB
+emphasised that institutions are still encouraged to early adopt these standards.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+25

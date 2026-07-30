@@ -1,0 +1,433 @@
+{
+ "_meta": {
+  "file": "standards_kb_ifsb_gntn.json",
+  "built": "2026-07-19 (RV session, IFSB GN/TN batch 2)",
+  "purpose": "Deep notes for 16 IFSB Guidance Notes + Technical Notes. Adds issued_date, effective/implementation dates where stated, supersedes/complements chains for the auto-selection charts.",
+  "jurisdiction": {
+   "code": "INTL",
+   "name": "International",
+   "regulator": "IFSB (Islamic Financial Services Board)",
+   "authority_basis": "voluntary prudential standards; adoption at each RSA's discretion",
+   "jurisdictions_json_id": "J01 default (international/AAOIFI-IFSB) — confirm mapping when BV wires"
+  },
+  "sect_school": "regulator/standard-setter ruleset — never madhhab-filtered (locked rule). IFSB Shari'ah Board chaired era-dependent (e.g. Taqi Usmani in recent GN/TNs).",
+  "note_on_effective_dates": "IFSB GN/TN are guidance: no binding effective date unless stated. GN-10 states an encouraged implementation date (Jun 2027). RSAs adopt per jurisdiction — adoption_lag not applicable except where noted.",
+  "reading_scope_legend": "full = whole text read; core = executive/objective + main guidance read, annexes/case studies pending; structural = TOC + identity verified, body reading pending."
+ },
+ "standards": [
+  {
+   "id": "IFSB-GN-1",
+   "regulator": "IFSB",
+   "title": "GN-1: Recognition of Ratings by ECAIs on Shariah-Compliant Financial Instruments (in connection with the Capital Adequacy Standard)",
+   "issued_date": "2008-03",
+   "linked_standards": [
+    "IFSB-2"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full",
+   "key_points": [
+    "Purpose: criteria for supervisors to recognise rating agencies (ECAIs) whose ratings feed IFSB-2 capital risk-weights.",
+    "Shariah-compliant assets = distinct set of asset classes needing dedicated rating methodology (para 10, 37).",
+    "KEY concept — dual default: 'hard default' (failure to repay contractual sum due) vs 'soft default'/capital impairment (failure to repay sum invested, e.g. PSIA repaying net asset value) (paras 25-27).",
+    "Qard deposits: 100% repayable on demand; PSIA: contractual obligation = net asset value only.",
+    "Rating criteria groups: process/controls/transparency, analytic competence, accuracy, resources (para 28).",
+    "Analytic issues ECAIs must address: DCR & PER/IRR reserves (48-50), definition of capital in IIFS, sukuk rated above/below originator (51), Murabahah inventory market risk, Mudarabah/Musharakah capital-impairment risk (52-54), asset-based recovery rates/LGD (55).",
+    "Trading in sukuk is not debt-trading (note 11): returns from fractional ownership of assets/usufruct or securitised partnership."
+   ]
+  },
+  {
+   "id": "IFSB-GN-2",
+   "regulator": "IFSB",
+   "title": "GN-2: Commodity Murabahah Transactions (risk management + capital adequacy)",
+   "issued_date": "2010-12",
+   "linked_standards": [
+    "IFSB-1",
+    "IFSB-2",
+    "IFSB-5",
+    "IFSB-10",
+    "TN-1"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full",
+   "divergence_evidence": [
+    {
+     "topic_id": "DV02",
+     "topic": "tawarruq/commodity murabahah",
+     "position": "IFSB (international): does NOT rule on permissibility — notes 'differences of opinion among Islamic scholars as to its Shariah permissibility' (para 2) and IFSB studies warning that overwhelming use could lead to excessive leveraging 'inconsistent with Shariah principles' (para 25). Treats CMT as prudential fact: defines CMLF/CMF/CMOF, requires risk framework + capital treatment.",
+     "clauses": [
+      "2",
+      "9",
+      "11",
+      "25"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "key_points": [
+    "Three CMT categories (para 11): CMLF (interbank/central-bank liquid funds), CMF (financing — client sells commodity on spot), CMOF (IIFS obtains funding; 'reverse murabahah/murabahah deposit').",
+    "Commodity definition excludes gold, silver, currency (footnote to para 8).",
+    "Risk map (para 16-18): market risk pre-sale transforms into credit risk after deferred sale; CMOF side = market risk only if title held.",
+    "Murabahah must not be recorded as 'investment' — it is a receivable (footnote 11).",
+    "Non-tradability of CMT receivables = locked-in liquidity risk (para 24, fn 28: debt cannot be sold except at face value in most jurisdictions).",
+    "Para 25: ex-ante caps on intraday gross turnover / net outstanding CMT positions recommended; prefer series of short-maturity CMF rolled over vs long CMF.",
+    "Rate-of-return risk: CMT return contractually fixed ex-ante vs PSIA not (para 27).",
+    "Capital: CMOF/CMLF liabilities treated like any liabilities (like current accounts, paras 36-38); asset side takes counterparty RW, unrated=100% standardised (para 39).",
+    "Shariah non-compliance risk controls: supplier screening, commodity admission, SSB-endorsed flows, Shariah audit (para 33)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-3",
+   "regulator": "IFSB",
+   "title": "GN-3: The Practice of Smoothing the Profits Payout to Investment Account Holders",
+   "issued_date": "2010-12",
+   "linked_standards": [
+    "IFSB-1",
+    "IFSB-2",
+    "IFSB-3",
+    "IFSB-4",
+    "IFSB-6",
+    "TN-1"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full",
+   "key_points": [
+    "Issuing GN ≠ endorsement of smoothing (para 3).",
+    "Smoothing methods WITHOUT DCR mitigation: forgo Mudarib share (most common per IFSB survey, para 22); hibah transfer from shareholders' profits.",
+    "Methods WITH mitigation: PER (pre-allocation reserve, mitigates DCR); IRR (post-Mudarib-share, IAH-only, covers losses — does NOT mitigate DCR).",
+    "Mudarib share in contract = maximum; actual varies yearly (para 22); unilateral increase above contract barred.",
+    "Governance problems: inter-generational transfer, IAH have no say/exit rights over reserves, moral hazard of IRR, weakened market discipline, blurring with conventional deposits (paras 37-52).",
+    "Liquidation: PER disposition must follow what was agreed — to owners or charity; courts may not recognise (para 53).",
+    "Capital: DCR → alpha % of IAH-funded RWA into CAR denominator (paras 55-58; alpha methodology in GN-4).",
+    "Supervisors should set constraints: max appropriation %, max reserve balances, end-of-contract treatment (para 63); Governance Committee scrutiny (71); disclosure of distribution rate vs actual profit rate (74); PSIA contract must disclose smoothing terms (79)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-4",
+   "regulator": "IFSB",
+   "title": "GN-4: The Determination of Alpha in the Capital Adequacy Ratio",
+   "issued_date": "2011-03",
+   "linked_standards": [
+    "IFSB-2",
+    "GN-3",
+    "IFSB-3"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full",
+   "key_points": [
+    "Alpha = proportion of UPSIA-funded RWA included in CAR denominator under IFSB-2 supervisory-discretion formula.",
+    "Alpha 0 = pure investment (IAH bear risk); alpha 1 = deposit-like (shareholders bear risk).",
+    "DCR formally = extra risk borne by shareholders vs pure-Mudarabah case; excludes covering IAH losses (IRR's job) (paras 11-12).",
+    "Model: payout Ri = w·Rm + (1−w)·RA + C; estimate w by regression (paras 30-31, App 2).",
+    "Alpha = (UL2−UL0)/(UL1−UL0) from unexpected-loss scenarios (App 2 step 4).",
+    "Supervisors: IIFS-specific or country panel-data approach (para 39); stressed alpha using stressed-period data (para 42); misconduct/negligence liability is operational risk, kept OUT of alpha (para 43).",
+    "CARs highly sensitive to alpha — too high = excessive capital, too low = prudential risk (para 41)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-5",
+   "regulator": "IFSB",
+   "title": "GN-5: Recognition of Ratings by ECAIs on Takaful and Retakaful Undertakings",
+   "issued_date": "2011-03",
+   "linked_standards": [
+    "GN-1",
+    "IFSB-8",
+    "IFSB-10",
+    "IFSB-11"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full",
+   "key_points": [
+    "Takaful undertaking = hybrid: Takaful Operator (TO) + Participants' Risk Fund(s) (PRF) belonging to participants (para 8).",
+    "Different ratings can coexist (PRF ability vs TO support ability) — meanings must be distinguished (paras 22-25).",
+    "12 analytic areas incl.: legal structure (Wakil vs Mudarib remuneration), TO→PRF qard support likelihood (paras 49-51), transferability between PRFs, surplus ownership (surpluses stay in PRF), winding-up claim priority unclear in many laws, Shariah-compliance governance (IFSB-10), investment restrictions, proportional re-insurance generally Shariah-acceptable vs non-proportional not (para 71), conventional re-insurance allowed by some scholars under conditions due to retakaful capacity limits (para 72), windows, retrocession.",
+    "IDB Shariah Committee position noted: TO taking % of underwriting surplus rejected — surplus is not profit (fn 12).",
+    "IOSCO Code of Conduct = basis for process criteria (paras 82-86)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-6",
+   "regulator": "IFSB",
+   "title": "GN-6: Quantitative Measures for Liquidity Risk Management in IIFS (LCR + NSFR)",
+   "issued_date": "2015-04",
+   "linked_standards": [
+    "IFSB-12",
+    "IFSB-13",
+    "IFSB-15",
+    "TN-1",
+    "Basel III"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Sections 1-2.2.2 read; NSFR section + appendices from TOC)",
+   "key_points": [
+    "Adapts Basel III LCR/NSFR to IIFS; LCR timeline 60% from 1 Jan 2015 +10%/yr to 100% by 1 Jan 2019; NSFR from 1 Jan 2018 (paras 14-16).",
+    "LCR = Shariah-compliant HQLA / net cash outflows 30 days ≥100%; inflows capped at 75% of outflows.",
+    "Stress scenario includes UPSIA run-off and 3-notch downgrade (para 23).",
+    "HQLA Level 1: cash, central-bank reserves, 0%-RW sovereign/PSE/MDB/IILM sukuk, domestic-currency sovereign sukuk (para 29).",
+    "Shariah non-compliance risk itself can destroy asset liquidity (para 26).",
+    "Central banks urged to accord HQLA status to sukuk they accept as collateral (para 27).",
+    "ALA (alternative liquidity approaches) for jurisdictions short of Shariah-compliant HQLA (2.2.5).",
+    "Covers full-fledged IIFS, windows, subsidiaries; RPSIA treatment para 53."
+   ]
+  },
+  {
+   "id": "IFSB-GN-7",
+   "regulator": "IFSB",
+   "title": "GN-7: Shariah-Compliant Lender-of-Last-Resort (SLOLR) Facilities",
+   "issued_date": "2019-12",
+   "linked_standards": [
+    "IFSB-1",
+    "IFSB-12",
+    "IFSB-17",
+    "TN-1",
+    "WP-01"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Sections 1-3.1 read; mechanism diagrams from TOC: CMT, Mudarabah, Wakalah bi al-istithmar, interest-free Qard, repo models)",
+   "key_points": [
+    "SLOLR = discretionary CB liquidity to illiquid-but-solvent IIFS; conventional LOLR is interest-based hence unusable (paras 1-3, 18).",
+    "Three mechanism kinds: standing facilities, discretionary idiosyncratic, discretionary systemic (para 17).",
+    "Moral hazard limits: credible liquidity regime, punitive pricing, short (overnight) tenors (para 20).",
+    "Not for insolvent banks; good collateral + strong supervision + recovery/resolution regime as mitigants (paras 22-24).",
+    "Regime must be pre-formulated, Shariah-approved IN ADVANCE, published; dual systems: align rates with conventional LOLR to prevent arbitrage (paras 21, 27).",
+    "Legal frameworks may need amendment (qard lending powers, commodity-trading capacity for CMT) (para 28).",
+    "Eligibility: solvency plus Shariah-compliant collateral AND mechanism (para 30); five modelled structures: CMT, Mudarabah, Wakalah bi al-istithmar, Qard, Shariah-compliant repo."
+   ]
+  },
+  {
+   "id": "IFSB-GN-8",
+   "regulator": "IFSB",
+   "title": "GN-8: Deepening the Islamic Capital Markets",
+   "issued_date": "2022-12-15",
+   "linked_standards": [
+    "IFSB-6",
+    "IFSB-19",
+    "IFSB-21",
+    "IFSB-24",
+    "IFSB-26",
+    "IOSCO 2020 EM recommendations"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Sections 1 + recommendation headings 4.1-4.13)",
+   "title_correction": "Earlier tracker guess 'GN-8 title unknown' resolved: GN-8 = Deepening the Islamic Capital Markets. (The app settings' guidance list item 7 'Lender-of-Last-Resort' = GN-7 — no conflict.)",
+   "key_points": [
+    "ICM = Shariah-compliant stocks, sukuk, Islamic collective investment schemes, Islamic risk-management products.",
+    "13 best-practice areas: holistic strategy; institutional + retail investor participation; deepening liquidity; legal-doc standardisation/certainty for Shariah issuances; SME + infrastructure financing; diversified products; lower issuance costs; sovereign sukuk benchmark curves (maturity range + volume, domestic + FX); liquidity-management tool challenges; implementing international standards; sustainability/ESG integration; fintech products & infrastructure.",
+    "Takaful needs long-term sukuk; banks need short-term domestic-currency HQLA sukuk (para 6)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-9",
+   "regulator": "IFSB",
+   "title": "GN-9: Macroprudential Tools for IIFS (Banking Segment)",
+   "issued_date": "2024-12",
+   "linked_standards": [
+    "IFSB-17",
+    "IFSB-23",
+    "GN-6",
+    "TN-2",
+    "WP-17"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Section 1 + Box 1 recommendations; Section 3 detail headings)",
+   "key_points": [
+    "Objectives: adaptation, implementation, governance of macroprudential tools for Islamic banking specificities.",
+    "IIFS-specific systemic risks: funding-shock vulnerability, indirect interest-rate risk, PSIA smoothing/DCR, concentration, asset-liability mismatch, inventory-driven market risk (para 3).",
+    "Box 1 (seen): R1 inventory/valuation risk in exchange contracts in broad-based tools; R2 IAH loss absorption + DCR level; R3 extra credit risk of partnership contracts in capital charges; R4 leverage build-up limits; further liquidity/FX and structural tool recommendations.",
+    "Dual-system arbitrage risks: capital/liquidity arbitrage, NBFI 'waterbed effect' (para 9).",
+    "Proportionality principle (para 10)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-10",
+   "regulator": "IFSB",
+   "title": "GN-10: Recovery and Resolution for Takaful Undertakings",
+   "issued_date": "2025-07",
+   "implementation_date": "2027-06 (encouraged adoption date, para 9)",
+   "linked_standards": [
+    "IFSB-27 (TCP 12, TCP 16)",
+    "FSB Key Attributes",
+    "IAIS application papers",
+    "TN-4",
+    "TN-5",
+    "IFSB-10"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Sections 1-2.3.3; resolution section from TOC)",
+   "key_points": [
+    "Applies to takaful undertakings + windows; recovery guidance for all TUs, resolution for systemically significant/critical (paras 4-6).",
+    "Shariah governance function embedded in recovery planning from the start: pre-positioning per contract, opinions, periodic Shariah review of plan (para 14).",
+    "Segregated funds: per-fund recovery planning, PRF qard-utilisation projections in scenarios (paras 15-16).",
+    "Takaful-specific triggers: PRF deficit frequency + qard size, PRF/PIF asset-mix deterioration, count of Shariah non-compliance events, FATWA CHANGES impacting viability (para 19).",
+    "Recovery options incl. suspending surplus distribution, parent writing off qard to subsidiary (para 21).",
+    "Resolution part: powers, bridge institutions, bail-ins, safeguards, PPS (participant protection scheme), Shariah governance in resolution planning (Section 3)."
+   ]
+  },
+  {
+   "id": "IFSB-GN-11",
+   "regulator": "IFSB",
+   "title": "GN-11: Climate-Related Financial Risks for IIFS (Banking Segment)",
+   "issued_date": "2025-12",
+   "linked_standards": [
+    "BCBS Climate Principles 2022",
+    "IFSB-23",
+    "IFSB-17",
+    "IFSB-30",
+    "GN-6",
+    "TN-2",
+    "TN-1",
+    "TN-5"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full",
+   "key_points": [
+    "13 recommendations mapped to BCBS Principles (appendix map).",
+    "Contract-specific climate transmission: murabahah/ijarah inventory risk; istisna completion risk (parallel istisna mitigant); salam commodity non-delivery from droughts/floods + carbon-pricing transition risk; musharakah/mudarabah capital impairment (paras 10-13).",
+    "Commodity-market disruption = operational risk for commodity murabahah (paras 14, 38 — arrange alternative commodities).",
+    "PSIA: climate risk transmits to IAH returns; smoothing → DCR; separate IAH climate analysis in ICAAP/ILAAP + reserves decisions (paras 17, 24, 27).",
+    "Limited Shariah-compliant hedging + takaful = harder mitigation (para 19).",
+    "Windows: risk aggregation with conventional parent; consolidation at parent level (paras 28, 42).",
+    "Scenario analysis must reflect contracts + IAH position (paras 39-45)."
+   ]
+  },
+  {
+   "id": "IFSB-TN-1",
+   "regulator": "IFSB",
+   "title": "TN-1: Issues in Strengthening Liquidity Management of IIFS — Development of Islamic Money Markets",
+   "issued_date": "2008-03",
+   "linked_standards": [
+    "IFSB-1",
+    "IFSB-2"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Executive Summary paras 1-32 in full = complete strategy; country case studies pending)",
+   "divergence_evidence": [
+    {
+     "topic_id": "DV04",
+     "topic": "bay al-dayn / sale of debt",
+     "position": "IFSB survey: sale of debt to third party + securitisation of receivables for debt trading (bay al-dayn) = 'most urgent Shariah issues' with differing rulings across jurisdictions; revenue-sharing, floating ijarah and diminishing musharakah accepted by majority; only HALF of surveyed jurisdictions accept Islamic profit-rate swap, FX swap, salam-forward, wa'd-FX-forward, 'urbun options, futures, bay al-istijrar; repo-alternatives non-uniform.",
+     "clauses": [
+      "para 7"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "key_points": [
+    "Five-part strategy (para 2): well-designed instruments (low-risk, simple, regular, widely held, robust settlement); Islamic government finance instruments inside public debt programme; active use in central-bank OMOs; trading microstructure + FX market; supervisory guidance + private instruments.",
+    "2006 survey: CMT ranked highest (49%) of liquidity instruments used.",
+    "Mudarabah/murabahah-type instruments non-negotiable → hampers secondary market (para 5); securitisation (esp. GIC-type) most promising (para 6).",
+    "Central-bank facilities largely unadapted; absence of transparent LOLR → IIFS hold high excess reserves (para 9).",
+    "Reserve requirements: 5 central banks exempt PSIA from reserve base (para 11).",
+    "Payment/settlement systems need Shariah-eligible collateral + transparent facilities; RTGS mostly unadapted (para 18).",
+    "Avoid segmentation between central-bank and government paper (paras 16, 21).",
+    "FX swaps/forwards rejected by certain Shariah boards → constrains monetary tools (para 14)."
+   ]
+  },
+  {
+   "id": "IFSB-TN-2",
+   "regulator": "IFSB",
+   "title": "TN-2: Stress Testing for IIFS",
+   "issued_date": "2016-12",
+   "linked_standards": [
+    "IFSB-13",
+    "IFSB-12",
+    "GN-6",
+    "IFSB-1",
+    "BCBS 2009 principles",
+    "CEBS 2010"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Section 1 + full TOC; models sections structural)",
+   "key_points": [
+    "Operationalises IFSB-13 (principles) with technical how-to: solvency + liquidity stress tests, institutional and industry-wide, banking sector only (para 12).",
+    "IIFS-specific risk set for stress design: Shariah non-compliance risk, rate-of-return risk in banking book (RRRBB), equity investment risk, DCR/IAH position (paras 5-6; sections 3.4.3, 3.4.4).",
+    "Solvency models per risk: credit, market, operational-SNCR, RRRBB; sensitivity + scenario analysis (Section 3).",
+    "Liquidity stress: scenarios + models + LCR/HQLA linkage (Section 4).",
+    "Recent developments: integrated liquidity-solvency tests, network contagion/second-round effects, cross-border macro stress (Section 5).",
+    "Supervisory data-collection template + shock/scenario designs in appendices."
+   ]
+  },
+  {
+   "id": "IFSB-TN-3",
+   "regulator": "IFSB",
+   "title": "TN-3: Financial Inclusion and Islamic Finance",
+   "issued_date": "2019-12",
+   "linked_standards": [
+    "IFSB-1",
+    "IFSB-15",
+    "FATF recommendations"
+   ],
+   "status": "identified_structural",
+   "tag": "verified",
+   "reading_scope": "structural (identity, date + full TOC verified; body reading pending — low priority for finance ladder, say the word to finish)",
+   "key_points": [
+    "Structure: definitions of financial inclusion in Islamic finance; proportionality; microfinance regulation (financing/deposit/investment activities); non-prudential regulation (consumer protection, conduct, AML/CFT); digital finance (platforms, agents, mobile); Islamic social finance (zakat/waqf/sadaqah integration — direct, third-party, reverse); financial-stability + national strategies.",
+    "Relevant terms for cross-tags: qard hasan, zakat, waqf, takaful micro-products, murabaha/salam micro-financing."
+   ]
+  },
+  {
+   "id": "IFSB-TN-4",
+   "regulator": "IFSB",
+   "title": "TN-4: Recovery and Resolution for IIFS",
+   "issued_date": "2022-06",
+   "linked_standards": [
+    "FSB Key Attributes",
+    "IFSB-10",
+    "GN-7",
+    "IFSB core principles"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Section 1.1-1.2 + full TOC incl. resolution options)",
+   "key_points": [
+    "Fills gap: no Shariah-based recovery/resolution framework existed; Islamic D-SIBs make it critical (paras 4-5).",
+    "Preconditions: Shariah-compliant investor protection schemes + clear asset-treatment rules; robust legal + Shariah governance (1.5).",
+    "Recovery options: asset sales with Shariah pre-positioning; group capital/liquidity support with Shariah pre-positioning (2.4).",
+    "Resolution options: SHARIAH-COMPLIANT CONTRACTUAL BAIL-IN (3.11.1), asset/liability transfers + bridge banks, recapitalisation/mergers.",
+    "Set-off, netting, collateralisation, client-asset segregation treated (3.4); Shariah perspective on insolvency (3.13).",
+    "Continued enforceability + Shariah compliance of contracts during RR measures = core challenge; harmonise common/civil law with Shariah governance (para 5).",
+    "Annexes: critical functions, crisis management groups, resolvability assessments, gap analysis."
+   ]
+  },
+  {
+   "id": "IFSB-TN-5",
+   "regulator": "IFSB",
+   "title": "TN-5: Shariah-Compliant Liquidity-Risk-Management Tools",
+   "issued_date": "2023-08",
+   "linked_standards": [
+    "TN-1",
+    "GN-2",
+    "IFSB-12",
+    "GN-6",
+    "GN-7",
+    "IFSB-23",
+    "GN-8",
+    "WP-01"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "core (Sections 1-2 full; Sections 3-6 models from TOC: central-bank deposit models, funding models, interbank instruments, short-term sukuk, FX risk models)",
+   "key_points": [
+    "Consolidates + supplements all prior IFSB liquidity guidance (para 24).",
+    "Two tool categories: ongoing liquidity-risk tools vs emergency/last-resort tools (para 25).",
+    "Tradable: musharakah certificates, mudarabah instruments, short-term wakalah sukuk, ijarah sukuk/certificates (para 29); tradability requires sufficient non-financial underlying (4.4).",
+    "Non-tradable (debt): murabahah/istisna/salam-based sukuk + CMT — liquidity at maturity only; ≤30-day residual counts as LCR inflow (paras 32-33).",
+    "Standing liquidity facility contracts: CMT, murabahah sukuk, salam sukuk, Shariah-compliant repo, wakalah deposit (paras 33-34).",
+    "Challenge list: short-term sukuk scarcity, HQLA criteria shortfall, POSSIBLE EXCESSIVE DEPENDENCE ON CMT, interbank placement issues, FX instrument shortage, unreliable SLOLR, collateral scarcity, differing Shariah interpretations (Section 3).",
+    "Sovereign/central-bank regular issuance programmes = key fix (4.1-4.2)."
+   ]
+  }
+ ]
+}

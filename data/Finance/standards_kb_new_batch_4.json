@@ -1,0 +1,155 @@
+{
+ "_meta": {
+  "file": "standards_kb_new_batch_4.json",
+  "type": "standards_kb_addition",
+  "built_by": "RV (Research seat)",
+  "generated": "2026-07-25",
+  "batch": "4 of 4 — DEEP NOTE COVERAGE job",
+  "count": 2,
+  "method": "Every note written ONLY from the standard's own text file on disk (paths under bv-app/data/Finance/Standards/). NEVER INVENT held: titles, dates, clause numbers and rules are quoted or closely paraphrased from the source; empty string where the document does not state a fact. Clause ids are the document's own numbering.",
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "notes": [
+  {
+   "id": "AAOIFI-AAB-1-2025",
+   "standard_id": "AAB 1/2025",
+   "standard_code": "AAB 1/2025",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Accounting Board (AAB) Statement 1/2025: Withdrawal of FAS 26 'Investment in Real Estate' and Related Transitional Provisions",
+   "display_card": {
+    "one_liner": "Formally withdraws AAOIFI's real estate investment accounting standard (FAS 26) and tells institutions how to switch over, including transitional rules.",
+    "what_it_is": "The objective of this statement is to withdraw AAOIFI Financial Accounting Standard (FAS) 26 'Investment in Real Estate' and to provide necessary guidance, including transitional provisions, to institutions applying AAOIFI FASs in respect of accounting and financial reporting for investment property. After the withdrawal, institutions account for investment property under generally accepted accounting principles insofar as these do not contradict other AAOIFI FASs, the AAOIFI Conceptual Framework and Shari'ah principles and rules.",
+    "why_it_matters_to_timeline": "Approved in the AAOIFI Accounting Board's meeting No. 44 held on 30 Rabi II, 1447H, corresponding to 22 October 2025 (and, per the preparation history, approved by circulation on 9 Rajab, 1447H, corresponding to 29 December 2025); the withdrawal of FAS 26 is effective for periods beginning on or after 1 January 2027, with earlier application permitted.",
+    "source_label": "Statement-Withdrawal-of-Investment-in-Real-Estate-and-Related-Transitional-Provisions.txt (read verbatim 2026-07-25)"
+   },
+   "issued_date": "Presented for approval in the AAOIFI Accounting Board's meeting No. 44 held on 30 Rabi II, 1447H, corresponding to 22 October 2025, and duly approved; per Appendix B, the board approved the statement by circulation on 9 Rajab, 1447H, corresponding to 29 December 2025",
+   "timeline_bridge": {
+    "effective_date": "The withdrawal of FAS 26 'Investment in Real Estate' shall be effective for the purpose of the financial statements of the institutions for the periods beginning on or after 1 January 2027. It is permitted to apply such withdrawal at an earlier date."
+   },
+   "supersedes": "Withdraws AAOIFI Financial Accounting Standard (FAS) 26 'Investment in Real Estate'.",
+   "related_standards": [
+    "FAS 26 'Investment in Real Estate'",
+    "FAS 1 'General Presentation and Disclosures in the Financial Statements'",
+    "FAS 45 'Quasi-Equity (Including Investment Accounts)'",
+    "FAS 46 'Off-Balance-Sheet Assets Under Management'",
+    "FAS 31 'Investment Agency (Al-Wakala Bi Al-Istithmar)'",
+    "AAOIFI Conceptual Framework for Financial Reporting"
+   ],
+   "key_rules_for_assurance": [
+    {
+     "rule": "AAOIFI Accounting Board (AAB) has decided to withdraw FAS 26 'Investment in Real Estate', considering the need for aligning accounting and financial reporting requirements after revision of the AAOIFI Conceptual Framework and FAS 1, and that certain Shari'ah-related requirements are already provided in other relevant AAOIFI FASs.",
+     "clause": "section: Statement of withdrawal",
+     "tag": "verified"
+    },
+    {
+     "rule": "Following the withdrawal of FAS 26, an institution shall account for investment property and present the same in its financial statements in line with the requirements of generally accepted accounting principles, insofar as the same do not contradict with the requirements of any other AAOIFI FAS(s), the AAOIFI Conceptual Framework and Shari'ah principles and rules.",
+     "clause": "section: Accounting and financial reporting guidance in respect of investment property",
+     "tag": "verified"
+    },
+    {
+     "rule": "An institution shall assess at the time of withdrawal of FAS 26 whether such withdrawal would result in a change in accounting policy, particularly considering the suitable business model applicable to the institution and / or its contractual arrangements with participatory stakeholders.",
+     "clause": "section: Change in accounting policy",
+     "tag": "verified"
+    },
+    {
+     "rule": "In case investment property is financed solely or jointly by participatory stakeholders other than common shareholders, the respective provisions of relevant AAOIFI FASs shall continue to apply, requiring income, profits, gains, losses and reserves to be attributed between the relevant stakeholders in line with Shari'ah principles and rules and contractual arrangements.",
+     "clause": "section: Attribution of gains, losses and reserves",
+     "tag": "verified"
+    },
+    {
+     "rule": "Irrespective of whether the new accounting policy is applied using a full restatement approach or a modified restatement approach, the balances attributable to the respective participatory stakeholders at the end of the last financial reporting period of application of FAS 26 shall remain unchanged (including unrealised gains, losses and reserves).",
+     "clause": "section: Transitional provisions",
+     "tag": "verified"
+    },
+    {
+     "rule": "Any 'property fair value reserve' previously maintained under FAS 26 shall be reclassified as part of retained earnings (insofar as it relates to common shareholders), as a reserve within the respective class of quasi-equity, or as a reserve within the respective class of off-balance-sheet assets under management.",
+     "clause": "section: Transitional provisions",
+     "tag": "verified"
+    },
+    {
+     "rule": "A change in accounting policy shall only be considered acceptable if it is expected to result in more reliable and relevant information; generally a change from the fair value model to the cost model would not result in a more reliable or relevant presentation, but in rare circumstances, if justifiably opted, such change shall be applied prospectively with fair value at the date of change carried as deemed cost.",
+     "clause": "section: Transitional provisions",
+     "tag": "verified"
+    },
+    {
+     "rule": "An institution shall disclose, for the period in which FAS 26 is withdrawn, the nature of the change in accounting policy, the transitional provisions applied, the effects of the change (including reclassification amounts), and a reconciliation between the carrying amount of investment property under the previous and revised accounting policies.",
+     "clause": "section: Presentation and disclosure",
+     "tag": "verified"
+    }
+   ],
+   "assurance": "verified",
+   "note": "Paragraph numbers were lost in the .txt conversion of this statement (the original PDF is numbered - the text itself cites 'paragraph 13' and 'paragraphs 7-11'). Clause refs therefore use the document's own section headings, verified present in the text."
+  },
+  {
+   "id": "AAOIFI-CODE-ETHICS",
+   "standard_id": "Code_Ethics",
+   "standard_code": "Code_Ethics",
+   "regulator": "AAOIFI",
+   "title": "Code of Ethics for Islamic Finance Professionals",
+   "display_card": {
+    "one_liner": "Sets the ethical conduct rules that everyone working in Islamic finance must follow, built around Islamic virtues and practical protocols for ethical decisions.",
+    "what_it_is": "This code seeks to help the Islamic finance industry and its professionals achieve Barakah by aligning with Maqasid-e-Shari'ah, assist them in choosing the right course of action in ethical dilemmas, encourage them to stand up for truth and become role models, reduce operational, Shari'ah non-compliance and reputational risks of Islamic financial institutions, and enhance public confidence in the industry. It applies to Islamic finance professionals including employees, directors, Shari'ah board members, AAOIFI fellows, academics, auditors and consultants. It is built on a conceptual framework of the Adl and Ihsaan equation, six ethical virtues and four ethics protocols, with illustrative violations and ideals.",
+    "why_it_matters_to_timeline": "Approved in the AAOIFI Governance and Ethics Board's meeting No. 13 held on 01 Safar, 1441H corresponding to 01 October 2019 and issued on 28 Rabi Al-Thani 1441H, corresponding to 26 December 2019; it is effective for periods beginning on or after 01 July 2021 and supersedes the two previous AAOIFI codes of ethics (for accountants and auditors, and for employees, of Islamic financial institutions).",
+    "source_label": "AAOIFI-Code-of-Ethics-for-Islamic-finance-Professionals.txt (read verbatim 2026-07-25)"
+   },
+   "issued_date": "Approved and adopted in the AAOIFI Governance and Ethics Board's (AGEB) meeting No. 13 held on 01 Safar, 1441H corresponding to 01 October 2019; the code was issued on 28 Rabi Al-Thani 1441H, corresponding to 26 December 2019",
+   "timeline_bridge": {
+    "effective_date": "This code is effective on IFP (as defined in Paragraph 2) for the periods beginning on or after 01 July 2021."
+   },
+   "supersedes": "This code supersedes the following two codes of ethics previously issued by AAOIFI: the code of ethics for accountants and auditors of Islamic financial institutions, and the code of ethics for the employees of Islamic financial institutions.",
+   "related_standards": [
+    "Code of ethics for accountants and auditors of Islamic financial institutions",
+    "Code of ethics for the employees of Islamic financial institutions",
+    "IESBA code of ethics"
+   ],
+   "key_rules_for_assurance": [
+    {
+     "rule": "The code applies to Islamic finance professionals held accountable in their individual capacities, including employees, directors, Shari'ah Supervisory Board members, AAOIFI fellows and candidates, academics, service providers and consultants such as auditors; auditors shall, in addition to this code, also comply with the IESBA code of ethics.",
+     "clause": "paragraph 2",
+     "tag": "verified"
+    },
+    {
+     "rule": "In the event of a conflict with any other applicable code(s) of ethics, all such codes shall be considered superseded by this code if they are less stringent in a given matter and / or they contravene or are inconsistent with the principles and rulings of Shari'ah.",
+     "clause": "paragraph 7",
+     "tag": "verified"
+    },
+    {
+     "rule": "In the event of non-compliance to this code by the AAOIFI Fellows, the AAOIFI Education Board may subject the violator to disciplinary action, proportionate to the nature, materiality, and frequency of the violation(s), up to permanent revocation of the fellowship.",
+     "clause": "paragraph 8",
+     "tag": "verified"
+    },
+    {
+     "rule": "An IFP shall achieve Adl in all work activities at all times, failure of which shall constitute as Zulm.",
+     "clause": "paragraph 12",
+     "tag": "verified"
+    },
+    {
+     "rule": "An IFP shall maintain all four elements of the AAOIFI Adl and Ihsaan Equation: have the right intention and the right mindset, do the right thing, do the right thing in the right manner, and engage with others positively; choosing to remain silent with an attitude of neutrality or indifference towards gross violations of ethics is also a violation of this code.",
+     "clause": "paragraph 14",
+     "tag": "verified"
+    },
+    {
+     "rule": "An IFP shall uphold six ethical virtues: Taqwa (Allah consciousness), Tawakkul (reliance on Allah Almighty), Sidq (integrity), Amanah (trustworthiness), Quwwah (strengths) and Tawasi bil Haq (exhorting truth).",
+     "clause": "paragraph 15",
+     "tag": "verified"
+    },
+    {
+     "rule": "An IFP shall uphold the decision-making protocol to make ethically defensible decisions, including making decisions compliant with the Shari'ah, the Law, the Code, and the policies of the IFI, and not pursuing self-interest to the detriment of those he has a duty to serve; public interest takes priority and precedence over all other interests.",
+     "clause": "paragraph 19",
+     "tag": "verified"
+    },
+    {
+     "rule": "An IFP shall uphold the violation-escalation protocol: conduct due diligence before reporting a violation, follow the official reporting process, and has the right to blow the whistle only after having exhausted all available internal channels of reporting (unless those channels are compromised or there is confirmation of a severe threat of retaliation).",
+     "clause": "paragraph 20",
+     "tag": "verified"
+    },
+    {
+     "rule": "An IFP shall not violate the ethical virtue of Sidq, avoiding verbal violations such as lying, exaggeration, paltering, plagiarism, empty promises, false oath, slander and half-truth.",
+     "clause": "paragraph 25",
+     "tag": "verified"
+    }
+   ],
+   "assurance": "verified"
+  }
+ ]
+}

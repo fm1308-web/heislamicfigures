@@ -1,0 +1,26 @@
+{
+  "reference": "SEC-EX-10.50",
+  "title": "Facility Offer Letter — LME Murabaha (FAB Islamic Banking)",
+  "institution": "First Abu Dhabi Bank PJSC — Islamic Banking Division / Brooge Petroleum and Gas Investment Company FZC",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1774983/000121390019019088/ff42019ex10-50_broogehold.htm",
+  "real_world_notice": "WORKED EXAMPLE FROM AN OPEN-SOURCE PUBLIC SEC FILING (EXHIBIT 10.50, BROOGE HOLDINGS FORM F-4).",
+  "families_in_scope": ["AAOIFI","CBUAE"],
+  "open_items_from_map": true,
+  "tradition": "Maliki",
+  "jurisdiction": "United Arab Emirates",
+  "clauses": [
+    { "no": 1, "text": "LME Murabaha (One-off) {New} — Limit AED 13,000,000 — Purpose: To settle the accrued profit on existing facilities." },
+    { "no": 2, "text": "Pricing: 1M EBOR+2.0% per annum. Existing pricing (i.e. 3M EBOR + 3.5% p.a. minimum 5.5%) has been changed to 3M EBOR + 3.0% p.a." },
+    { "no": 3, "text": "Early settlement charge at 1.0% of the total outstanding to be paid, in case of early settlement of the facility." },
+    { "no": 4, "text": "You hereby commit yourself and undertake, in the event of any delay by way of procrastination in the payment of any instalment (advance or normal) or any other amount due to FAB-ISD on its due date, to donate to charity an amount to be added by FAB-ISD to any next instalment and calculated for the delay period on the basis of 10.0% p.a. of the overdue amount." },
+    { "no": 5, "text": "Considering to delay in completion, repayment schedules are deferred (i.e. starting from June 2018 and final maturity March 2030)." },
+    { "no": 6, "text": "Debt Service Reserve Account (DSRA) in the name of the Customer to maintained with the FAB-ISD, funded prior to the First Installment Due Date of an amount equal to one (1) quarterly installment of the facility limit." },
+    { "no": 7, "text": "Minimum Debt Service Cover Ratio (DSCR) of 150% is required at all the times, if DSCR reaches to 120% or less, it must be triggered as an event of default." },
+    { "no": 8, "text": "FAB-ISD may revoke this offer letter at its sole discretion if, an event occurs or series of events occur which might have in the opinion of FAB-ISD adverse effect on your financial condition or where market conditions change." }
+  ],
+  "excerpt_map": {
+    "K018": [1],
+    "K020": [2],
+    "SS 19": [4]
+  }
+}

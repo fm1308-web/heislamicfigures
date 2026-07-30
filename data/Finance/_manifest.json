@@ -1,0 +1,120 @@
+{
+ "_meta": {
+  "type": "finance_manifest",
+  "generated": "2026-07-17",
+  "built_by": "RV Step G",
+  "note": "Load order groups: 1st = reference layers, then terms, then books, spine last. lineage_v4.json is SUPERSEDED - do not load. Superseded/retired: lineage_v4.json, enriched_terms_batch_1.json, standards_kb_partial_2.json, compliance_report_FAB_demo.json.",
+  "pyramid": "Q (quran_word_filter_map) -> C (q_to_c_map) -> T (enriched_terms_all) -> Standards (standard_refs). Families = separate editorial lens.",
+  "outstanding": "20 term dates NEEDS_VERIFICATION; 189 standards not yet clause-verified (await downloads); scholar sign-off pending before public."
+ },
+ "files": [
+  {
+   "file": "q_to_c_map.json",
+   "purpose": "Q->C pyramid layer (10 contracts, 15 links)",
+   "load": "load 1st",
+   "row_count": 10
+  },
+  {
+   "file": "kafalah_v4.json",
+   "purpose": "C08 lineage (20 rows)",
+   "load": "load with peers",
+   "row_count": 20
+  },
+  {
+   "file": "murabaha_v4.json",
+   "purpose": "C03 lineage (18 rows)",
+   "load": "load with peers",
+   "row_count": 18
+  },
+  {
+   "file": "qard_v4.json",
+   "purpose": "C10 lineage (10 rows)",
+   "load": "load with peers",
+   "row_count": 10
+  },
+  {
+   "file": "musharakah_v4.json",
+   "purpose": "C01 lineage (14 rows)",
+   "load": "load with peers",
+   "row_count": 14
+  },
+  {
+   "file": "mudarabah_v4.json",
+   "purpose": "C02 lineage (17 rows)",
+   "load": "load with peers",
+   "row_count": 17
+  },
+  {
+   "file": "ijarah_v4.json",
+   "purpose": "C04 lineage (12 rows)",
+   "load": "load with peers",
+   "row_count": 12
+  },
+  {
+   "file": "salam_v4.json",
+   "purpose": "C05 lineage (9 rows)",
+   "load": "load with peers",
+   "row_count": 9
+  },
+  {
+   "file": "istisna_v4.json",
+   "purpose": "C06 lineage (8 rows)",
+   "load": "load with peers",
+   "row_count": 8
+  },
+  {
+   "file": "rahn_v4.json",
+   "purpose": "C09 lineage (12 rows)",
+   "load": "load with peers",
+   "row_count": 12
+  },
+  {
+   "file": "wakala_v4.json",
+   "purpose": "C07 lineage (11 rows)",
+   "load": "load with peers",
+   "row_count": 11
+  },
+  {
+   "file": "enriched_terms_all.json",
+   "purpose": "214 terms + enrichment (dates, standards, links)",
+   "load": "load 2nd",
+   "row_count": 214
+  },
+  {
+   "file": "book_quran_root.json",
+   "purpose": "110 books, 12 glow",
+   "load": "load 3rd",
+   "row_count": 110
+  },
+  {
+   "file": "quran_word_filter_map.json",
+   "purpose": "24 Qur'an words filter",
+   "load": "load 1st",
+   "row_count": 24
+  },
+  {
+   "file": "crosslinks_spine.json",
+   "purpose": "605-edge relation spine",
+   "load": "load last",
+   "row_count": 605
+  },
+  {
+   "file": "compliance_reports_all_cases.json",
+   "purpose": "3 demo compliance reports",
+   "load": "independent",
+   "row_count": "(in bv-app / not in this session)"
+  },
+  {
+   "file": "contracts.json",
+   "purpose": "10 contracts reference",
+   "load": "load 1st",
+   "row_count": 10
+  },
+  {
+   "file": "concept_families.json",
+   "purpose": "18 editorial families (NOT lineage)",
+   "load": "independent",
+   "row_count": 18
+  }
+ ]
+}

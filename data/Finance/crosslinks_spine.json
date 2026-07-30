@@ -1,0 +1,4857 @@
+{
+ "_meta": {
+  "type": "crosslinks_spine",
+  "version": 1,
+  "generated": "2026-07-17",
+  "built_by": "RV Step E",
+  "design": "single edge list {from_id,to_id,relation,era,tag,evidence}. Relations: revealed_in, narrated_in, defined_by, developed_by, codified_in, governed_by, descends_from, traces_to, authored_by, discusses, participated_in. Supersedes crosslinks.json for graph rendering; crosslinks.json retained as source archive.",
+  "sources": "q_to_c_map.json + 10 *_v4 files + enriched_terms_all.json + book_quran_root.json + crosslinks.json (carried)",
+  "count": 605,
+  "gaps": [
+   "concept families (F01-F18) deliberately NOT wired — editorial lens, no lineage claim (pyramid brief rule)",
+   "deviates_from / superseded_by / disputed_by edges await the standards-hunting downloads (supersession data sits in standards_tracker)"
+  ]
+ },
+ "edges": [
+  {
+   "from_id": "Q21",
+   "to_id": "C01",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json rows MS001 (quran), MS006 + MS007 (tafsir on 38:24)"
+  },
+  {
+   "from_id": "Q21",
+   "to_id": "C02",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "mudarabah_v4.json rows MD001 (quran), MD014 (tafsir al-Tabari)"
+  },
+  {
+   "from_id": "Q14",
+   "to_id": "C02",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "mudarabah_v4.json row MD001 (quran)"
+  },
+  {
+   "from_id": "Q14",
+   "to_id": "C03",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json rows MB001 (quran), MB005 + MB008 (tafsir on 2:275), MB009 (tafsir on 4:29)"
+  },
+  {
+   "from_id": "Q18",
+   "to_id": "C04",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json rows IJ001 (quran), IJ007 + IJ008 (tafsir on 28:26)"
+  },
+  {
+   "from_id": "Q15",
+   "to_id": "C05",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "salam_v4.json rows SL001 (quran), SL006 (tafsir al-Tabari)"
+  },
+  {
+   "from_id": "Q14",
+   "to_id": "C05",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "contracts.json C05 type 'forward sale' + salam_v4 design note"
+  },
+  {
+   "from_id": "Q14",
+   "to_id": "C06",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "istisna_v4.json row IS001 (quran) + file _meta honesty note"
+  },
+  {
+   "from_id": "Q20",
+   "to_id": "C07",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "wakala_v4.json rows WK001 (quran), WK006 (tafsir on 18:19)"
+  },
+  {
+   "from_id": "Q19",
+   "to_id": "C08",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json rows K001 (quran), K011 (tafsir)"
+  },
+  {
+   "from_id": "Q16",
+   "to_id": "C09",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "rahn_v4.json rows RH001 (quran), RH006 + RH007 (tafsir on 2:283)"
+  },
+  {
+   "from_id": "Q15",
+   "to_id": "C09",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "rahn_v4.json row RH006"
+  },
+  {
+   "from_id": "Q17",
+   "to_id": "C09",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "rahn_v4.json row RH006"
+  },
+  {
+   "from_id": "Q10",
+   "to_id": "C10",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "qard_v4.json rows QR001 (quran), QR005 + QR007 (tafsir on 2:245)"
+  },
+  {
+   "from_id": "Q15",
+   "to_id": "C10",
+   "relation": "developed_by",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "qard_v4.json row QR001"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ005",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ007",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ008",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ009",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ010",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ011",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C04",
+   "to_id": "IJ012",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ijarah_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS005",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS006",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS007",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C06",
+   "to_id": "IS008",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "istisna_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K005",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K006",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K007",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K008",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K009",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K010",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K011",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K012",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K013",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K014",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K015",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K016",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K017",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K018",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K019",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "needs_check",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C08",
+   "to_id": "K020",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "kafalah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD005",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD006",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD007",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD008",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD009",
+   "relation": "narrated_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD010",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD011",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD012",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD013",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD014",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD015",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD016",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C02",
+   "to_id": "MD017",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "mudarabah_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB003",
+   "relation": "narrated_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB004",
+   "relation": "narrated_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB005",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB007",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB008",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB009",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB010",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB011",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB012",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB013",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB014",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB015",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB016",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB017",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB018",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C03",
+   "to_id": "MB019",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "murabaha_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS005",
+   "relation": "narrated_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS007",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS008",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS009",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS010",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS011",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS012",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS013",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C01",
+   "to_id": "MS014",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "musharakah_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR005",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR007",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR008",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR009",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C10",
+   "to_id": "QR010",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "qard_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH005",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH007",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH008",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH009",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH010",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH011",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C09",
+   "to_id": "RH012",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "rahn_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL005",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL007",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL008",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C05",
+   "to_id": "SL009",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "salam_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK002",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK003",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK004",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK005",
+   "relation": "narrated_in",
+   "era": "origin",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK006",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK007",
+   "relation": "defined_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK008",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK009",
+   "relation": "developed_by",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK010",
+   "relation": "codified_in",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "C07",
+   "to_id": "WK011",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "wakala_v4.json"
+  },
+  {
+   "from_id": "T001",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T001",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T001",
+   "to_id": "AAOIFI SS 30 (Monetization/Tawarruq)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T002",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T002",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T002",
+   "to_id": "AAOIFI SS 30 (Monetization/Tawarruq)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T003",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T003",
+   "to_id": "Q15",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T003",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T004",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T004",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T004",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T005",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T005",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T005",
+   "to_id": "AAOIFI SS 25 (Combination of Contracts)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T006",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T006",
+   "to_id": "Q18",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T006",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T007",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T007",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T007",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T008",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T008",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T008",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T009",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T009",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T009",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T010",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T010",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T010",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T010",
+   "to_id": "AAOIFI SS 46 (Al-Wakalah Bi Al-Istithmar)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T011",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T011",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T011",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T011",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T011",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T012",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T013",
+   "to_id": "Q24",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T013",
+   "to_id": "AAOIFI SS 33 (Waqf)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T015",
+   "to_id": "Q20",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T016",
+   "to_id": "C09",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T016",
+   "to_id": "Q16",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T016",
+   "to_id": "AAOIFI SS 39 (Rahn)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-14"
+  },
+  {
+   "from_id": "T018",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T018",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T020",
+   "to_id": "Q23",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T020",
+   "to_id": "AAOIFI SS 31 (Controls on Gharar)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T021",
+   "to_id": "Q02",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T022",
+   "to_id": "Q01",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T023",
+   "to_id": "Q01",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T024",
+   "to_id": "C05",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T024",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T024",
+   "to_id": "AAOIFI SS 10 (Salam)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T025",
+   "to_id": "C06",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T025",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T025",
+   "to_id": "AAOIFI SS 11 (Istisna'a)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T026",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T026",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T026",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T027",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T027",
+   "to_id": "Q18",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T027",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T028",
+   "to_id": "AAOIFI SS 1 (Trading in Currencies)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-17"
+  },
+  {
+   "from_id": "T029",
+   "to_id": "AAOIFI SS 49 (Unilateral & Bilateral Promise)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T030",
+   "to_id": "AAOIFI SS 49 (Unilateral & Bilateral Promise)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T032",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T032",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T033",
+   "to_id": "C05",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T033",
+   "to_id": "AAOIFI SS 10 (Salam)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T034",
+   "to_id": "C06",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T034",
+   "to_id": "AAOIFI SS 11 (Istisna'a)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T035",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T035",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T036",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T036",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T037",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T037",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T038",
+   "to_id": "Q17",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T039",
+   "to_id": "Q17",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T040",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T040",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T040",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T041",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T041",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T041",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T042",
+   "to_id": "C08",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T042",
+   "to_id": "Q19",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T042",
+   "to_id": "AAOIFI SS 5 (Guarantees)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "earlier session (sample_term_kafala v2)"
+  },
+  {
+   "from_id": "T043",
+   "to_id": "C08",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T043",
+   "to_id": "Q19",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T043",
+   "to_id": "AAOIFI SS 5 (Guarantees)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "earlier session (sample_term_kafala v2)"
+  },
+  {
+   "from_id": "T044",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T044",
+   "to_id": "Q18",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T044",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T045",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T045",
+   "to_id": "Q18",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T045",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T046",
+   "to_id": "Q13",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T046",
+   "to_id": "Q17",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T047",
+   "to_id": "Q15",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T047",
+   "to_id": "AAOIFI SS 3 (Procrastinating Debtor)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-17"
+  },
+  {
+   "from_id": "T048",
+   "to_id": "C10",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T048",
+   "to_id": "Q10",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T048",
+   "to_id": "AAOIFI SS 19 (Qard)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "quran_finance_layer v2 chain"
+  },
+  {
+   "from_id": "T049",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T049",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T049",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T050",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T050",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T050",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T051",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T051",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T051",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T052",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T052",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T052",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T053",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T053",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T053",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T054",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T054",
+   "to_id": "Q21",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T054",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T055",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T055",
+   "to_id": "Q20",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T055",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T056",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T056",
+   "to_id": "Q20",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T056",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T060",
+   "to_id": "AAOIFI SS 25 (Combination of Contracts)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T061",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T061",
+   "to_id": "C09",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T061",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T061",
+   "to_id": "AAOIFI SS 39 (Rahn)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-14"
+  },
+  {
+   "from_id": "T061",
+   "to_id": "AAOIFI SS 25 (Combination of Contracts)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T072",
+   "to_id": "Q23",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T072",
+   "to_id": "AAOIFI SS 31 (Controls on Gharar)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T082",
+   "to_id": "Q01",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T083",
+   "to_id": "Q01",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T085",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T085",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T086",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T087",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T087",
+   "to_id": "Q18",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T087",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T088",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T088",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T089",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T089",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T089",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T091",
+   "to_id": "Q02",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T096",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T096",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T097",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T097",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T098",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T098",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T099",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T099",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T103",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T103",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T105",
+   "to_id": "C08",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T105",
+   "to_id": "Q19",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T105",
+   "to_id": "AAOIFI SS 5 (Guarantees)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "earlier session (sample_term_kafala v2)"
+  },
+  {
+   "from_id": "T116",
+   "to_id": "Q08",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T116",
+   "to_id": "AAOIFI SS 35 (Zakah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T118",
+   "to_id": "Q09",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T119",
+   "to_id": "Q08",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T119",
+   "to_id": "AAOIFI SS 35 (Zakah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T120",
+   "to_id": "Q08",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T120",
+   "to_id": "AAOIFI SS 35 (Zakah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T124",
+   "to_id": "Q13",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T124",
+   "to_id": "Q17",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T131",
+   "to_id": "Q06",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T133",
+   "to_id": "C05",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T133",
+   "to_id": "AAOIFI SS 10 (Salam)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T133",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T134",
+   "to_id": "C06",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T134",
+   "to_id": "AAOIFI SS 11 (Istisna'a)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T134",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T135",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T135",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T135",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T136",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T137",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T138",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T139",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T140",
+   "to_id": "AAOIFI SS 17 (Investment Sukuk)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T142",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T142",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T142",
+   "to_id": "AAOIFI SS 40 (Profit Distribution in Mudarabah-Based Accounts)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T143",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T143",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T143",
+   "to_id": "AAOIFI SS 40 (Profit Distribution in Mudarabah-Based Accounts)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T144",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T144",
+   "to_id": "Q20",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T144",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T144",
+   "to_id": "AAOIFI SS 46 (Al-Wakalah Bi Al-Istithmar)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T145",
+   "to_id": "C01",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T145",
+   "to_id": "AAOIFI SS 12 (Sharikah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T145",
+   "to_id": "AAOIFI SS 40 (Profit Distribution in Mudarabah-Based Accounts)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-17"
+  },
+  {
+   "from_id": "T146",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T146",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T147",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T147",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T148",
+   "to_id": "C04",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T148",
+   "to_id": "AAOIFI SS 9 (Ijarah & IMB)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T149",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T162",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T162",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T162",
+   "to_id": "AAOIFI SS 30 (Monetization/Tawarruq)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T163",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T163",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T163",
+   "to_id": "AAOIFI SS 30 (Monetization/Tawarruq)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T164",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T164",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T164",
+   "to_id": "AAOIFI SS 30 (Monetization/Tawarruq)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T165",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T165",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T165",
+   "to_id": "AAOIFI SS 30 (Monetization/Tawarruq)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T166",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T166",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T166",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T168",
+   "to_id": "C07",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T168",
+   "to_id": "AAOIFI SS 23 (Agency)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-14"
+  },
+  {
+   "from_id": "T169",
+   "to_id": "C08",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T169",
+   "to_id": "Q19",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T169",
+   "to_id": "AAOIFI SS 5 (Guarantees)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "earlier session (sample_term_kafala v2)"
+  },
+  {
+   "from_id": "T170",
+   "to_id": "C09",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T170",
+   "to_id": "Q16",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T170",
+   "to_id": "AAOIFI SS 39 (Rahn)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-14"
+  },
+  {
+   "from_id": "T171",
+   "to_id": "C09",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T171",
+   "to_id": "Q16",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T171",
+   "to_id": "AAOIFI SS 39 (Rahn)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss3.txt 2026-07-14"
+  },
+  {
+   "from_id": "T172",
+   "to_id": "C10",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T172",
+   "to_id": "Q10",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T172",
+   "to_id": "AAOIFI SS 19 (Qard)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "quran_finance_layer v2 chain"
+  },
+  {
+   "from_id": "T173",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T173",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T173",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T174",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T174",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T174",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T175",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T175",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T177",
+   "to_id": "C03",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T177",
+   "to_id": "AAOIFI SS 8 (Murabahah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T182",
+   "to_id": "Q24",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T182",
+   "to_id": "AAOIFI SS 33 (Waqf)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T183",
+   "to_id": "Q24",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T183",
+   "to_id": "AAOIFI SS 33 (Waqf)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T184",
+   "to_id": "Q24",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T184",
+   "to_id": "AAOIFI SS 33 (Waqf)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T185",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T186",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T187",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T188",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T189",
+   "to_id": "C02",
+   "relation": "descends_from",
+   "era": "modern",
+   "tag": "verified",
+   "evidence": "parent_contract field"
+  },
+  {
+   "from_id": "T189",
+   "to_id": "AAOIFI SS 13 (Mudarabah)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss1.txt 2026-07-14"
+  },
+  {
+   "from_id": "T189",
+   "to_id": "AAOIFI SS 26 (Islamic Insurance)",
+   "relation": "governed_by",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "ss2.txt 2026-07-17"
+  },
+  {
+   "from_id": "T201",
+   "to_id": "Q01",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T202",
+   "to_id": "Q03",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T203",
+   "to_id": "Q04",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T204",
+   "to_id": "Q05",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T205",
+   "to_id": "Q06",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T206",
+   "to_id": "Q07",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T207",
+   "to_id": "Q09",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T208",
+   "to_id": "Q11",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T209",
+   "to_id": "Q11",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T210",
+   "to_id": "Q12",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T211",
+   "to_id": "Q13",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T212",
+   "to_id": "Q14",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T213",
+   "to_id": "Q15",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "T214",
+   "to_id": "Q22",
+   "relation": "revealed_in",
+   "era": "origin",
+   "tag": "plausible",
+   "evidence": "quran_word_filter_map (editorial word->term)"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "Q21",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B001 -> T040 -> Q21 (shirkah / mudarabah roots)"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "Q21",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B001 -> T041 -> Q21 (shirkah / mudarabah roots)"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B001 -> T024 -> Q14 (bay' / tijarah)"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B001 -> C02 -> lineage quran block"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B001 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B001 -> C05 -> lineage quran block"
+  },
+  {
+   "from_id": "B003",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B003 -> murabaha_v4.json MB011 (C03) -> Q14"
+  },
+  {
+   "from_id": "B006",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B006 -> C01 -> lineage quran block"
+  },
+  {
+   "from_id": "B006",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B006 -> C02 -> lineage quran block"
+  },
+  {
+   "from_id": "B006",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B006 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B007",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B007 -> murabaha_v4.json MB012 (C03) -> Q14"
+  },
+  {
+   "from_id": "B007",
+   "to_id": "Q21",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B007 -> musharakah_v4.json MS010 (C01) -> Q21"
+  },
+  {
+   "from_id": "B007",
+   "to_id": "Q19",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B007 -> kafalah_v4.json K016 (C08) -> Q19"
+  },
+  {
+   "from_id": "B008",
+   "to_id": "Q21",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B008 -> musharakah_v4.json MS011 (C01) -> Q21"
+  },
+  {
+   "from_id": "B008",
+   "to_id": "Q20",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B008 -> wakala_v4.json WK008 (C07) -> Q20"
+  },
+  {
+   "from_id": "B008",
+   "to_id": "Q18",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B008 -> ijarah_v4.json IJ009 (C04) -> Q18"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "Q16",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B009 -> T016 -> Q16 (rahn)"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B009 -> T026 -> Q14 (bay' / tijarah)"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B009 -> C01 -> lineage quran block"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B009 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B009 -> C09 -> lineage quran block"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B014 -> C01 -> lineage quran block"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B014 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B014 -> C04 -> lineage quran block"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B014 -> C09 -> lineage quran block"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B022 -> T026 -> Q14 (bay' / tijarah)"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "Q18",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B022 -> T006 -> Q18 (ijarah / ajr)"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B022 -> C01 -> lineage quran block"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B022 -> C02 -> lineage quran block"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B022 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B022 -> C04 -> lineage quran block"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "Q08",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B028 -> T116 -> Q08 (zakat)"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "Q09",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B028 -> T118 -> Q09 (sadaqah / infaq)"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "Q08",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B028 -> T119 -> Q08 (zakat)"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "Q08",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B028 -> T120 -> Q08 (zakat)"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "Q02",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B029 -> T021 -> Q02 (maysir / qimar)"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "Q01",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B029 -> T022 -> Q01 (riba)"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "Q01",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B029 -> T023 -> Q01 (riba)"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B029 -> T024 -> Q14 (bay' / tijarah)"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B029 -> T025 -> Q14 (bay' / tijarah)"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "Q14",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "B029 -> T026 -> Q14 (bay' / tijarah)"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B032 -> C01 -> lineage quran block"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B032 -> C02 -> lineage quran block"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B032 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B032 -> C04 -> lineage quran block"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B032 -> C05 -> lineage quran block"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B032 -> C06 -> lineage quran block"
+  },
+  {
+   "from_id": "B033",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B033 -> C03 -> lineage quran block"
+  },
+  {
+   "from_id": "B033",
+   "to_id": "lineage",
+   "relation": "traces_to",
+   "era": "classical",
+   "tag": "verified",
+   "evidence": "B033 -> C04 -> lineage quran block"
+  },
+  {
+   "from_id": "B021",
+   "to_id": "S002",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "S001",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B023",
+   "to_id": "S003",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B024",
+   "to_id": "S014",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B025",
+   "to_id": "S028",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B026",
+   "to_id": "S019",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B027",
+   "to_id": "S003",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "S007",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "S006",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B030",
+   "to_id": "S004",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B031",
+   "to_id": "S003",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "S031",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B033",
+   "to_id": "S018",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B034",
+   "to_id": "S027",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B035",
+   "to_id": "S027",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B036",
+   "to_id": "S002",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B037",
+   "to_id": "S002",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B038",
+   "to_id": "S045",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B039",
+   "to_id": "S043",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B040",
+   "to_id": "S056",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B041",
+   "to_id": "S033",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B042",
+   "to_id": "S026",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B043",
+   "to_id": "S055",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B044",
+   "to_id": "S052",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B045",
+   "to_id": "S002",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B046",
+   "to_id": "S059",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B047",
+   "to_id": "S016",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B048",
+   "to_id": "S008",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B051",
+   "to_id": "S005",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B053",
+   "to_id": "S039",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B054",
+   "to_id": "S058",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B055",
+   "to_id": "S056",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B059",
+   "to_id": "S002",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B060",
+   "to_id": "S004",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B061",
+   "to_id": "S003",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B062",
+   "to_id": "S001",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B063",
+   "to_id": "S057",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B064",
+   "to_id": "S032",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B065",
+   "to_id": "S018",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B066",
+   "to_id": "S031",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B067",
+   "to_id": "S002",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B070",
+   "to_id": "S001",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B081",
+   "to_id": "S049",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B082",
+   "to_id": "S051",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B083",
+   "to_id": "S050",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B084",
+   "to_id": "S053",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B085",
+   "to_id": "S051",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B086",
+   "to_id": "S014",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B087",
+   "to_id": "S022",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B088",
+   "to_id": "S012",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B089",
+   "to_id": "S005",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B090",
+   "to_id": "S033",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B091",
+   "to_id": "S036",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B092",
+   "to_id": "S036",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B094",
+   "to_id": "S017",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B095",
+   "to_id": "S035",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B097",
+   "to_id": "S004",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B098",
+   "to_id": "S003",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B100",
+   "to_id": "S003",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B101",
+   "to_id": "S039",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B102",
+   "to_id": "S006",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B103",
+   "to_id": "S058",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B104",
+   "to_id": "S001",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B105",
+   "to_id": "S018",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B106",
+   "to_id": "S056",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B107",
+   "to_id": "S024",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B109",
+   "to_id": "S026",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B110",
+   "to_id": "S035",
+   "relation": "authored_by",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "C02",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "C05",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B006",
+   "to_id": "C01",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B006",
+   "to_id": "C02",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B006",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "C01",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "C09",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "C01",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "C04",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B014",
+   "to_id": "C09",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "C01",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "C02",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "C04",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "C01",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "C02",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "C04",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "C05",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "C06",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B033",
+   "to_id": "C03",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B033",
+   "to_id": "C04",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B017",
+   "to_id": "T001",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "T040",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "T041",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B001",
+   "to_id": "T024",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "T016",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "T026",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B009",
+   "to_id": "T060",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B026",
+   "to_id": "T020",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B026",
+   "to_id": "T030",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B026",
+   "to_id": "T031",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "T001",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "T002",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "T060",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B032",
+   "to_id": "T086",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "T116",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "T117",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "T118",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "T119",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B028",
+   "to_id": "T120",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T020",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T021",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T022",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T023",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T024",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T025",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B029",
+   "to_id": "T026",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "T026",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "T005",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "T006",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "B022",
+   "to_id": "T032",
+   "relation": "discusses",
+   "era": "classical",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S012",
+   "to_id": "E001",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S012",
+   "to_id": "E003",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S013",
+   "to_id": "E005",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S013",
+   "to_id": "E007",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S005",
+   "to_id": "E009",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S005",
+   "to_id": "E020",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S001",
+   "to_id": "E021",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S001",
+   "to_id": "E030",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S001",
+   "to_id": "E034",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S040",
+   "to_id": "E021",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S015",
+   "to_id": "E012",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S026",
+   "to_id": "E012",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S026",
+   "to_id": "E029",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S033",
+   "to_id": "E004",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S033",
+   "to_id": "E013",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S051",
+   "to_id": "E013",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S006",
+   "to_id": "E014",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S021",
+   "to_id": "E014",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S060",
+   "to_id": "E002",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S025",
+   "to_id": "E035",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S043",
+   "to_id": "E025",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S044",
+   "to_id": "E024",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S044",
+   "to_id": "E025",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  },
+  {
+   "from_id": "S002",
+   "to_id": "E004",
+   "relation": "participated_in",
+   "era": "modern",
+   "tag": "plausible",
+   "evidence": "crosslinks.json"
+  }
+ ]
+}

@@ -1,0 +1,1095 @@
+{
+ "_meta": {
+  "type": "tradition_index_divergences_delivery",
+  "version": 1,
+  "generated": "2026-07-25",
+  "built_by": "RV divergence sweep (Pass B expansion)",
+  "for_file": "tradition_index.json — APPEND new_topics[] to divergences[]; apply extensions[] to DV01/DV02/DV03 positions only. Do not touch row_ref / filter_map / rows.",
+  "method": "Systematic sweep: 10 contracts x 5 schools, standards bodies (AAOIFI/IFSB/BNM/CBUAE/SC), jurisdiction splits, modern topics. Every position carries a source in basis or is tagged needs_check. NEVER INVENT observed: no position entered without a read source.",
+  "tag_rule": "verified = read this session on an official domain (iifa-aifi.org, sc.com.my, centralbank.ae, bursamalaysia, sistani.org) or already verified on-disk. plausible = read this session on a reliable secondary host (full-text standard reproductions, official PDFs mirrored, academic journals, named-manual fatwa sites) — upgrade path noted in basis. needs_check = no source read; never filled.",
+  "upgrade_note": "Positions tagged plausible that cite an AAOIFI SS clause (SS 8, 9, 13, 17, 21, 49, 59) can be upgraded to verified by reading the on-disk Standards .txt for that standard (all are green in standards_lights.json).",
+  "counts_note": "Counts are in the session report, not here, to avoid drift if BV edits."
+ },
+ "new_topics": [
+  {
+   "topic_id": "DV06",
+   "topic": "Bay' al-'inah (sale and buy-back) — Malaysia-permitted vs Gulf-prohibited",
+   "why_it_matters": "The sharpest jurisdiction split in Islamic finance: the same two-leg structure is a regulated product in Malaysia and a void riba stratagem under AAOIFI.",
+   "contract": "C03",
+   "term_refs": ["T002", "T060", "T162"],
+   "standard_refs": [
+    "SS 8",
+    "SS 30",
+    "SC Malaysia SAC resolution on bai' 'inah (5th meeting 29 Jan 1997; revised resolution effective 1 Oct 2014)",
+    "BNM SAC circular on bai' 'inah (19 Dec 2012)"
+   ],
+   "positions": [
+    {
+     "authority": "AAOIFI SS 8 (Murabahah)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "A murabaha later discovered to have been carried out through buy-back arrangements is void as tantamount to 'inah; the customer must not sell an item to the institution and then repurchase it (clause 2/2/3).",
+     "basis": "SS 8 clause 2/2/3 read verbatim from full-text reproduction (pkic.com SS-8 PDF) 2026-07-25 — 'this would render the transaction void as it is tantamount to Inah'. Upgrade: confirm against on-disk Standards file.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "AAOIFI SS 30 (Monetization)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Tawarruq commodity must be sold to a third party, never back to the original seller by prior agreement, collusion or custom — 'inah blocked (4/5).",
+     "basis": "SS 30 clause 4/5 already read verbatim on disk for DV02 (ss2.txt, 2026-07-17).",
+     "tag": "verified"
+    },
+    {
+     "authority": "SC Malaysia SAC",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "1997: 'bai` `inah is a principle that is permissible in the Islamic capital market in Malaysia' (contracts judged by disclosed terms, adopting the Shafi'i view). Revised resolution effective 1 Oct 2014 tightened it: two clear and separate contracts, any repurchase condition annuls the contract, simultaneous execution annuls both, and 'the practice of pre-signing of legal documents for bai` `inah transaction is not allowed'.",
+     "basis": "sc.com.my official PDFs: SAC Resolutions 2nd ed. 2006 (5th meeting, 29 Jan 1997) + Resolutions compilation 31 Dec 2020 (revised bai' 'inah resolution), read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "BNM SAC (Malaysia)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Permitted inah from 1998 (interbank money market, Shafi'i mechanism, non-ribawi commodity); 2012 circular imposed five strict conditions (two clear separate agreements, no repurchase obligation term, different execution times, correct sequence, effective ownership transfer) — banks that cannot comply 'are not allowed to offer financial products and services based on bai' inah'.",
+     "basis": "BNM SAC Resolutions compilation 2007 (8th meeting 12 Dec 1998; 18th meeting 12 Apr 2001) + BNM circular 'Implementation of SAC of BNM's Resolution on Bai' Inah' 19 Dec 2012, official documents read via islamicbankers.center mirror 2026-07-25 (bnm.gov.my robots-blocked).",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Bilateral inah condemned — Muhammad al-Shaybani: 'I hate this sale so much and it is the invention of those who eat riba'; later Hanafis permit only the tripartite form (via a third party).",
+     "basis": "Habib Ahmed, Durham repository tawarruq paper + islamqa.info/en/answers/105339 citing Fath al-Qadir 7/213 and Bada'i al-Sana'i 5/198, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Prohibited where the resale is arranged with the first seller — a riba stratagem blocked under sadd al-dhara'i (al-Qarafi: 'we only forbid when the second sale is arranged by the first seller').",
+     "basis": "Habib Ahmed, Durham repository tawarruq paper (quoting al-Qarafi), read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Contract valid judged by its external form — al-Shafi'i (al-Umm 3/78) authorized it, intention left to God; later Shafi'is deem it disliked though legally valid.",
+     "basis": "Habib Ahmed, Durham repository tawarruq paper + islamqa.info/en/answers/105339 citing al-Umm 3/78, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Haram as 'a trick aimed at getting around the prohibition on riba' (Ibn al-Qayyim, I'lam al-Muwaqqi'in 3/166); one report from Ahmad.",
+     "basis": "islamqa.info/en/answers/105339 citing I'lam al-Muwaqqi'in 3/166, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Sistani: buy-back at a different price is permissible provided the resale is not stipulated as a condition in the first contract — 'there is no harm in entering into such a transaction, if the contract does not contain such a provision'.",
+     "basis": "sistani.org, Current Legal Issues (english-book-45.pdf), read 2026-07-25.",
+     "tag": "verified"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV07",
+   "topic": "Bay' al-dayn — selling debt to a third party at a discount",
+   "why_it_matters": "Decides whether receivables and debt-heavy sukuk can trade at all: Malaysia says yes, the fiqh academies and AAOIFI say no.",
+   "contract": "C03",
+   "term_refs": ["T003", "T047"],
+   "standard_refs": [
+    "SS 59",
+    "OIC IIFA Resolution 158 (7/17) 2006",
+    "OIC IIFA Resolution 101 (4/11)",
+    "SC Malaysia SAC resolution on bay' al-dayn (2nd meeting, 21 Aug 1996)"
+   ],
+   "positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 101 (4/11): 'It is not permissible to sell, to a third party, any immature debt for an early-paid amount of money, whether in the same currency of the debt or any other currency.' Resolution 158 (7/17), Amman 2006: prohibits any increase of debt against extending maturity; permits selling a debt for a spot commodity, usufruct, or a different currency at the spot rate.",
+     "basis": "iifa-aifi.org/en/32934.html (Res 158 page, which quotes Res 101 verbatim), read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "AAOIFI SS 59 (Sale of Debt)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "'It is not permitted to sell a monetary debt against cash or for a monetary debt' (5/1). Permitted: sale for a commodity with spot delivery, or a usufruct/service with ascertained subject-delivery (5/2); deferred-delivery counter-values prohibited.",
+     "basis": "SS 59 clauses 5/1, 5/2 read verbatim from full-text reproduction (pkic.com SS-59 PDF) 2026-07-25. Upgrade: confirm against on-disk Standards file.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "SC Malaysia SAC",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "2nd meeting, 21 Aug 1996: accepted 'the principle of bai` dayn i.e. debt trading as one of the concepts for developing Islamic capital market instruments', conditional on a transparent regulatory system safeguarding market participants; the 2020 compilation also records bai' al-dayn bi al-sila' as permissible.",
+     "basis": "sc.com.my official PDFs: SAC Resolutions 2nd ed. 2006 + compilation 31 Dec 2020, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Sale of debt to a non-debtor prohibited — the creditor cannot ensure delivery of the debt (al-Kasani cited).",
+     "basis": "ijmar.org/v6n4/19-022.html (school-attributed survey citing al-Kasani), read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Permits sale of a confirmed debt to a third party with conditions (spot performance, no gharar/riba) — Hashiyat al-Dasuqi 3/63 cited.",
+     "basis": "ijmar.org/v6n4/19-022.html + elzarshariah.com debt-trading article citing Hashiyat al-Dasuqi 3/63, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Reports split in the secondary literature: one line allows sale of a confirmed (deliverable) debt; most later Shafi'is reported as prohibiting. Both readings recorded; primary-text check pending.",
+     "basis": "ijmar.org/v6n4/19-022.html (allows confirmed debt) vs elzarshariah.com (most prohibit), read 2026-07-25 — sources disagree.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Sale of debt to a non-debtor prohibited (delivery cannot be ensured).",
+     "basis": "ijmar.org/v6n4/19-022.html, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Sistani: a creditor may sell a demand loan to a third party for less cash — 'a hundred Dinars for ninety eight in cash' (ruling 2307); not valid for fictitious 'friendly' bills that record no real debt.",
+     "basis": "sistani.org/english/book/48/2357/ (Islamic Laws, ruling 2307) + Current Legal Issues PDF, read 2026-07-25.",
+     "tag": "verified"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV08",
+   "topic": "Credit cards — what may an Islamic issuer charge?",
+   "why_it_matters": "The everyday consumer product: fee-based models split from any structure that lets interest accrue.",
+   "contract": "",
+   "term_refs": ["T027"],
+   "standard_refs": [
+    "SS 2",
+    "OIC IIFA Resolution 108 (2/12) 2000",
+    "OIC IIFA Resolution 139 (5/15) 2004"
+   ],
+   "positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 108 (2/12), Riyadh 2000: impermissible to issue or use cards whose terms impose usurious interest (even if the holder intends to pay within the grace period); no purchase of gold, silver or currencies by card. Permitted: interest-free cards, a flat issuance/renewal fee for actual services, merchant commission if cash and credit prices are equal, and cash withdrawal as a loan with a flat service charge not linked to amount or duration.",
+     "basis": "iifa-aifi.org/en/32584.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 139 (5/15), Muscat 2004: unsecured credit cards permissible if issuing or dealing in them 'does not involve charging interest for repayment defaults'.",
+     "basis": "iifa-aifi.org/en/32885.html, read via official IIFA page 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "AAOIFI SS 2 (Debit/Charge/Credit Card)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Position pending a clause pull — SS 2 is green/on disk (standards_kb_star.json).",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Modern instrument — school-level position pending a citation from a contemporary madhhab-affiliated authority.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Modern instrument — school-level position pending a citation from a contemporary madhhab-affiliated authority.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Modern instrument — school-level position pending a citation from a contemporary madhhab-affiliated authority.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Modern instrument — school-level position pending a citation from a contemporary madhhab-affiliated authority.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Modern instrument — school-level position pending a citation from a contemporary madhhab-affiliated authority.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV09",
+   "topic": "Options, futures and short-selling — prohibited instruments vs Malaysia's regulated alternatives",
+   "why_it_matters": "Derivatives are where the fiqh academies said a flat no and Malaysia engineered compliant substitutes.",
+   "contract": "",
+   "term_refs": ["T019", "T031"],
+   "standard_refs": [
+    "SS 20",
+    "SS 21",
+    "OIC IIFA Resolution 63 (1/7) 1992",
+    "SC Malaysia SAC resolutions on SBL (13th meeting 1998) and RSS (69th meeting 2006)"
+   ],
+   "positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 63 (1/7), Jeddah 1992: options contracts 'do not fall under any one of the Shariah nominate contracts' and since the object 'is neither a sum of money nor a utility or a financial right which may be waived', the contract is impermissible — 'neither is their trading'. Commodity contracts closed out by offsetting opposite contracts without actual delivery are impermissible; deferred-delivery deals must meet salam conditions.",
+     "basis": "iifa-aifi.org/en/32438.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "SC Malaysia SAC",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Malaysia built regulated alternatives: SBL approved (13th meeting, 19 Mar 1998, via ijarah reasoning), then 'regulated short selling (RSS) is in line with the Shariah as the inclusion of SBL principles in RSS eliminates the element of gharar' (69th meeting, 18 Apr 2006); the official 2020 compilation resolves 'the proposed iSSB-NT Model is permissible' as the compliant alternative to conventional SBL.",
+     "basis": "sc.com.my Resolutions compilation 31 Dec 2020 (iSSB-NT, official) + maybank.com Islamic fatwa page (RSS/SBL meeting dates), read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "AAOIFI SS 20 / SS 21",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Position pending a clause pull — both standards green/on disk (standards_kb_star.json).",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Modern instruments — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Modern instruments — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Modern instruments — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Modern instruments — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Modern instruments — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV10",
+   "topic": "Cryptocurrency / virtual assets — asset, currency, or undecided?",
+   "why_it_matters": "Three live regulator answers coexist: UAE 'financial asset, permissible with conditions', Malaysia 'mal, tradable on registered exchanges', IIFA 'ruling deferred'.",
+   "contract": "",
+   "term_refs": ["T101", "T151"],
+   "standard_refs": [
+    "HSA 3",
+    "SC 3",
+    "OIC IIFA Resolution 237 (8/24) 2019"
+   ],
+   "positions": [
+    {
+     "authority": "CBUAE HSA",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 217/10/2025 (11 Nov 2025): Bitcoin is 'a financial asset, not a currency'; dealing is permissible treating it as a financial asset, conditional on ownership registered to the purchaser on-chain, no use violating Shariah/public order or facilitating money-laundering/prohibited commerce, and consumer-protection compliance for Islamic FIs offering brokerage.",
+     "basis": "centralbank.ae official PDF (Notice 6111/2025 with HSA Resolution 217/10/2025), read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "SC Malaysia SAC",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "233rd/234th meetings (2020): 'digital currency is recognised as mal'; technology-based coins without underlying are 'urudh (goods), not currency, so bai' al-sarf rules do not apply; coins backed by ribawi items follow sarf rules; 'investment and trading of Digital Assets that fulfil the above requirements and which are traded on Digital Asset Exchange (DAX) registered with SC are permissible'.",
+     "basis": "sc.com.my SAC resolutions page, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 237 (8/24), Dubai 2019: no permit/prohibit ruling issued — the Academy cited definitional questions and 'significant risks associated with this type of currencies' and 'recommends pursuing research and studies' before ruling.",
+     "basis": "iifa-aifi.org/en/5980.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Modern instrument — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Modern instrument — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Modern instrument — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Modern instrument — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Modern instrument — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV11",
+   "topic": "Equity screening thresholds — AAOIFI 30/30/5 vs SC Malaysia 5 + 33/33",
+   "why_it_matters": "The same share can be halal under one screen and non-compliant under another; purification follows the screen chosen.",
+   "contract": "",
+   "term_refs": ["T190", "T191", "T192", "T193"],
+   "standard_refs": [
+    "SS 21",
+    "SC Malaysia Shariah screening methodology (current) + Revised Methodology 2013"
+   ],
+   "positions": [
+    {
+     "authority": "AAOIFI SS 21",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Trading shares of companies with incidental prohibited dealings is conditioned (clauses 3/4/1-3/4/4): interest-based borrowing not exceeding 30% of market capitalisation; interest-taking deposits not exceeding 30% of market capitalisation; income from prohibited sources not exceeding 5% of total income.",
+     "basis": "Clauses 3/4/2-3/4/4 quoted by multiple secondary screening sources (halal.ninja, blog.islamicly.com, faithscreener.com), read 2026-07-25 — numbers consistent across all three. Upgrade: SS 21 is green/on disk, pull clause verbatim.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "SC Malaysia SAC",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Current published methodology: non-compliant activities compared against a 5% benchmark of group income; two financial ratios — cash over total assets and debt over total assets — each 'must be lower than 33%', counting conventional cash/interest-bearing debt only (Islamic instruments excluded); plus a qualitative test.",
+     "basis": "sc.com.my screening methodology page, read 2026-07-25. Note: the 2013 Revised Methodology used a two-tier 5% and 20% activity benchmark (sc.com.my FAQ, read 2026-07-25); the current page shows only the 5% benchmark — later revisions (281st meeting 2024) not yet pulled.",
+     "tag": "verified"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Modern methodology — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Modern methodology — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Modern methodology — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Modern methodology — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Modern methodology — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV12",
+   "topic": "Diminishing musharakah — buyout at market value vs par, and contract independence",
+   "why_it_matters": "The home-finance workhorse: buyout at par quietly turns a partnership into a guaranteed loan.",
+   "contract": "C01",
+   "term_refs": ["T005", "T035"],
+   "standard_refs": [
+    "SS 12",
+    "OIC IIFA Resolution 136 (2/15) 2004"
+   ],
+   "positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 136 (2/15), Muscat 2004: permissible with a binding undertaking from only one party to buy the other out, provided the other has the option; the pledge 'should not be for purchasing the shares of the other party at par value because the pledge, in that case, amounts to providing a guarantee of the capital' — buyout at market value or a mutually agreed price; 'the contracts and commitments relating to the Musharakah transaction should be kept independent from each other'; profits as percentage shares, not fixed amounts; loss pro-rata to capital.",
+     "basis": "iifa-aifi.org/en/32878.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "AAOIFI SS 12 (Sharikah)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Position pending a clause pull — SS 12 is green/on disk (standards_kb_new_batch_1.json).",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Modern composite structure — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Modern composite structure — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Modern composite structure — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Modern composite structure — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Modern composite structure — school-level position pending citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV13",
+   "topic": "Ijarah mawsufah fi al-dhimmah (forward lease) — advance rental required or not?",
+   "why_it_matters": "Underpins off-plan property and forward-lease sukuk: whether rent may wait until delivery splits the schools.",
+   "contract": "C04",
+   "term_refs": ["T146"],
+   "standard_refs": [
+    "SS 9"
+   ],
+   "positions": [
+    {
+     "authority": "AAOIFI SS 9 (Ijarah)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Forward lease of an accurately described asset permitted even if the lessor does not yet own it; 'it is not a requirement of this lease that the rental should be paid in advance as long as the lease is not executed according to the contract of Salam' (clause 3/5).",
+     "basis": "SS 9 clause 3/5 read verbatim from full-text reproduction (pkic.com SS-9 PDF) 2026-07-25. Upgrade: confirm against on-disk Standards file.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Permits the forward lease but requires spot/advance rental payment.",
+     "basis": "ijmar.org/v6n4/19-014.html — 'The Maliki and Syafii Schools insist that spot payments must be made in forward Ijarah', read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Permits the forward lease but requires spot/advance rental payment (salam-type treatment).",
+     "basis": "ijmar.org/v6n4/19-014.html, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Permits the forward lease and allows rental to be deferred ('the Hanbali scholars held the contrary view' on the advance-payment requirement).",
+     "basis": "ijmar.org/v6n4/19-014.html, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Contested in the secondary literature: one survey says the Hanafis 'did not explicitly confirm' the forward lease; another attributes validation to Hanafi authorities (al-Samarqandi, Ibn Mazah; al-Kasani permitting deferred payment). Both readings recorded; primary-text check pending.",
+     "basis": "ijmar.org/v6n4/19-014.html vs isamveri.org 2020 IMAD paper — sources disagree, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV14",
+   "topic": "Wa'd and muwa'adah — when does a promise become a binding contract?",
+   "why_it_matters": "Promises hold together murabaha, hedging and sukuk exits; a binding bilateral promise is one step from a forward contract.",
+   "contract": "",
+   "term_refs": ["T029", "T030", "T178", "T179"],
+   "standard_refs": [
+    "SS 49",
+    "PD Wa'd",
+    "OIC IIFA Resolutions 40-41 (2/5 and 3/5) 1988"
+   ],
+   "positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolutions 40-41 (2/5, 3/5), Kuwait 1988: a unilateral promise is 'morally binding on the promisor, unless there is a valid excuse' and legally binding if made conditional and the promisee incurred expenses. 'Mutual promise is permissible in the case of Murabahah sale provided that the option is given to one or both parties. Without such an option, it is not permissible' — a binding muwa'adah resembles the sale itself, which requires the seller's possession.",
+     "basis": "iifa-aifi.org/en/32332.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "AAOIFI SS 49",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "'A bilateral promise to perform an act that is prohibited by the Shari'ah is itself prohibited' (4/1 — e.g. structures circumventing riba). Fulfilling a permitted bilateral promise is a religious obligation 'but is not legally binding except in situations where an actual commercial transaction is not possible without a binding bilateral promise' due to legal requirements or commercial custom, and the objective is not merely financing (4/2; named applications: documentary credits, supply agreements).",
+     "basis": "SS 49 clauses 4/1, 4/2 read verbatim from full-text reproduction (pkic.com SS-49 PDF) 2026-07-25. Upgrade: confirm against on-disk Standards file. Note: currency hedging is NOT named in the fetched SS 49 text.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "BNM (Malaysia), Wa'd PD",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Goes further than AAOIFI: 'muwa`adah shall be binding and enforceable on the promisor' (15.2), with the restriction that muwa'adah involving currency exchange 'shall only be structured for the purpose of hedging' (15.5).",
+     "basis": "BNM Wa'd Policy Document (BNM/RH/PD 028-38), official document read via islamicbankers.center mirror 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Position pending a direct citation (classical Maliki view that promises causing incurred expense are enforceable is often cited in the literature — no named-manual source read this session).",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV15",
+   "topic": "Guaranteeing mudarabah/sukuk capital — manager never, independent third party maybe",
+   "why_it_matters": "The line between investment and disguised loan: who may promise investors their money back.",
+   "contract": "C02",
+   "term_refs": ["T008", "T085", "T105"],
+   "standard_refs": [
+    "SS 17",
+    "SS 13",
+    "OIC IIFA Resolution 30 (5/4) 1988"
+   ],
+   "positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 30 (5/4), Jeddah 1988: the prospectus may not include a mudarib guarantee of capital or fixed profit (any such condition void). Permitted: 'a promise made by a third party, totally unrelated to the two parties to the contract, to donate a specific amount, without any counter benefit, to meet losses' — provided it is an independent commitment, not a condition of the contract, and neither party may invoke its non-fulfilment.",
+     "basis": "iifa-aifi.org/en/32300.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "AAOIFI SS 17 (Investment Sukuk)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "The issuer/manager may not undertake to compensate holders up to nominal value (except own tort/negligence) nor guarantee fixed profit; 'it is, however, permitted to an independent third party to provide a guarantee free of charge' (clause 5/1/8/7, subject to SS 5).",
+     "basis": "SS 17 clause 5/1/8/7 read verbatim from full-text reproduction (pkic.com SS-17 PDF) 2026-07-25. Upgrade: confirm against on-disk Standards file.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "AAOIFI SS 13 (Mudarabah)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "The mudarib invests on a trust basis and 'is not liable for losses except in case of breach of the requirements of trust' (4/4); guarantees obtained from the mudarib are enforceable only for misconduct, negligence or breach (section 6); loss otherwise falls on capital (8/7).",
+     "basis": "SS 13 clauses 4/4, 6, 8/7 read verbatim from full-text reproduction (pkic.com SS-13 PDF) 2026-07-25. Upgrade: confirm against on-disk Standards file.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV16",
+   "topic": "Restricted vs unrestricted mudarabah — may the capital provider tie the manager's hands?",
+   "why_it_matters": "Directly behind terms T142/T143: whether restrictions (term, place, sector) bind the mudarib divides the schools.",
+   "contract": "C02",
+   "term_refs": ["T142", "T143"],
+   "standard_refs": [
+    "SS 13"
+   ],
+   "positions": [
+    {
+     "authority": "AAOIFI SS 13 (Mudarabah)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Recognises restricted mudarabah: 'a contract in which the capital provider restricts the actions of the Mudarib to a particular location or to a particular type of investment' (clause 5/2).",
+     "basis": "SS 13 clause 5/2 read verbatim from full-text reproduction (pkic.com SS-13 PDF) 2026-07-25; consistent with the T142 SS13 clause 5/2 quote anchored 2026-07-25 (term_lineage_links_C02_v2.json). Upgrade: on-disk check.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "The capital provider may restrict the mudarib, including setting a maximum term for the contract (Bada'i al-Sana'i v.6 p.79; Mukhtasar al-Quduri cited).",
+     "basis": "islamqa.org/hanafi/daruliftaa-birmingham/87884 citing Bada'i al-Sana'i 6/79, read 2026-07-25. Note: source confirms the time-restriction point specifically.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Restrictions valid — 'Hanafi and Hanbali jurists are of the opinion that a maximum term of the mudarabah contract can be set'.",
+     "basis": "islamqa.org/hanafi/daruliftaa-birmingham/87884, read 2026-07-25. Time-restriction point specifically.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "'The Shafe'i and Maleki jurists are of the opinion that no term restriction can be added to the mudarabah contract.'",
+     "basis": "islamqa.org/hanafi/daruliftaa-birmingham/87884, read 2026-07-25. Time-restriction point specifically; broader restrictions not school-attributed in the source.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "No term restriction may be added to the mudarabah contract (with the Malikis, per the source).",
+     "basis": "islamqa.org/hanafi/daruliftaa-birmingham/87884, read 2026-07-25. Time-restriction point specifically.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Sistani: owner and worker may stipulate conditions in the mudarabah and 'it is obligatory for them to act according to this condition' — restrictions valid and binding (rulings 2231, 2233).",
+     "basis": "sistani.org/english/book/48/2351/ (Islamic Laws, mudarabah rulings), read 2026-07-25.",
+     "tag": "verified"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV17",
+   "topic": "Khiyar al-shart — how long may a cooling-off option run?",
+   "why_it_matters": "A clean classical five-way split on one number: 3 days, 'as the subject needs', or any agreed period.",
+   "contract": "C03",
+   "term_refs": ["T019", "T097"],
+   "standard_refs": [
+    "SS 52"
+   ],
+   "positions": [
+    {
+     "authority": "AAOIFI SS 52 (Options to Reconsider)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Position pending a clause pull — SS 52 is green/on disk (standards_kb_star.json).",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Maximum three days (Abu Hanifa and Zufar; later Hanafis reported more permissive).",
+     "basis": "islamicbankers.center CIL/ILT lecture 4 PDF — 'Shafi'is, Imam Abu Hanifah and Zufar – three days', read 2026-07-25. No classical manual named by the source.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Maximum three days.",
+     "basis": "islamicbankers.center CIL/ILT lecture 4 PDF, read 2026-07-25. No classical manual named by the source.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Three days or more depending on the subject matter — 'two days for clothes, one month or more for houses'.",
+     "basis": "islamicbankers.center CIL/ILT lecture 4 PDF, read 2026-07-25. No classical manual named by the source.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Any duration agreed by the parties, provided it is fixed.",
+     "basis": "islamicbankers.center CIL/ILT lecture 4 PDF, read 2026-07-25. No classical manual named by the source.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Either or both parties may annul 'within a specified period' stipulated in the contract — no three-day cap stated (Sistani, Islamic Laws, ruling 2134).",
+     "basis": "sistani.org/english/book/48/2343/, read 2026-07-25.",
+     "tag": "verified"
+    }
+   ]
+  },
+  {
+   "topic_id": "DV18",
+   "topic": "Istisna' — independent contract or salam in disguise, and is it binding?",
+   "why_it_matters": "Project finance rests on istisna being valid and binding; classically only the Hanafis built it as its own contract.",
+   "contract": "C06",
+   "term_refs": ["T025", "T034"],
+   "standard_refs": [
+    "SS 11"
+   ],
+   "positions": [
+    {
+     "authority": "AAOIFI SS 11 (Istisna'a)",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Position pending a clause pull — SS 11 is green/on disk (standards_kb_new_batch_1.json).",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanafi",
+     "authority_type": "school",
+     "tradition": "Hanafi",
+     "position": "Valid as an independent contract by istihsan ('Istisna` contract is permissible, out of Istihsan' — al-Kasani, Bada'i al-Sana'i; Majallah al-Ahkam al-Adliyyah). Binding status internally disputed: Abu Yusuf reported to hold it binding, with a counter-report.",
+     "basis": "islamqa.org/shafii/darul-iftaa-jordan/228124 citing Bada'i al-Sana'i and the Majallah, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Shafi'i",
+     "authority_type": "school",
+     "tradition": "Shafi'i",
+     "position": "Valid only if it meets the conditions of salam ('the Shafi jurists considered it permissible in case it met the conditions of Salam contract').",
+     "basis": "islamqa.org/shafii/darul-iftaa-jordan/228124, read 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "Maliki",
+     "authority_type": "school",
+     "tradition": "Maliki",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Hanbali",
+     "authority_type": "school",
+     "tradition": "Hanbali",
+     "position": "Position pending a direct citation.",
+     "basis": "",
+     "tag": "needs_check"
+    },
+    {
+     "authority": "Ja'fari",
+     "authority_type": "school",
+     "tradition": "Ja'fari",
+     "position": "Position pending a direct citation (Sistani's Current Legal Issues contains no istisna discussion — checked 2026-07-25).",
+     "basis": "",
+     "tag": "needs_check"
+    }
+   ]
+  }
+ ],
+ "extensions": [
+  {
+   "topic_id": "DV01",
+   "note": "Kafalah fee — closes the CBUAE needs_check slot and three school slots.",
+   "replace_positions": [
+    {
+     "match_authority": "CBUAE HSA",
+     "new": {
+      "authority": "CBUAE HSA",
+      "authority_type": "regulator",
+      "tradition": "",
+      "position": "Resolution 136/6/2020 (10 Dec 2020, effective 1 Jul 2021): the issuing bank 'may charge an amount equal to the value of actual expenses'; additional amounts only within the stated parameters, and 'it is impermissible to charge an additional amount above the Actual Expenses in exchange for issuing a Guarantee if the Guarantee resulted into a loan' — such excess must be returned to the client or transferred to charity; fees must not be 'a pretext to collect interest (riba)'.",
+      "basis": "centralbank.ae official PDF (HSA Resolution 136/6/2020, parameters for LG/LC fees), read 2026-07-25.",
+      "tag": "verified"
+     }
+    },
+    {
+     "match_authority": "Maliki",
+     "new": {
+      "authority": "Maliki",
+      "authority_type": "school",
+      "tradition": "Maliki",
+      "position": "Fee for the guarantee itself impermissible — al-Hattab (Maliki) quoted: 'Scholars are agreed on the impermissibility of guarantee against conditional payment'; guarantee treated as a gratuitous/charitable contract.",
+      "basis": "aliftaa.jo/en-fatwas/3474 (Jordan Iftaa', quoting al-Hattab) + UM Journal of Shariah Law Research kafalah-bil-ujr article, read 2026-07-25.",
+      "tag": "plausible"
+     }
+    },
+    {
+     "match_authority": "Shafi'i",
+     "new": {
+      "authority": "Shafi'i",
+      "authority_type": "school",
+      "tradition": "Shafi'i",
+      "position": "Among the four schools reported unanimous that taking a fee for the guarantee itself is impermissible (guarantee analogized to a loan drawing benefit).",
+      "basis": "UM Journal of Shariah Law Research kafalah-bil-ujr article — 'jurists of Hanafi, Shafi'i, Maliki and Hanbali Schools... non-permissibility of taking fee', read 2026-07-25.",
+      "tag": "plausible"
+     }
+    },
+    {
+     "match_authority": "Ja'fari",
+     "new": {
+      "authority": "Ja'fari",
+      "authority_type": "school",
+      "tradition": "Ja'fari",
+      "position": "Sistani: 'it is permissible for the bank to receive commission from the contractor in return for standing guarantor', characterized as a sort of ju'alah — the live counter-position to the Sunni-schools prohibition.",
+      "basis": "sistani.org, Current Legal Issues (english-book-45.pdf), read 2026-07-25.",
+      "tag": "verified"
+     }
+    }
+   ],
+   "add_standard_refs": []
+  },
+  {
+   "topic_id": "DV02",
+   "note": "Organized tawarruq — new bodies found (BNM PD, Bursa platform, IFSB GN-2) and four school slots closed.",
+   "replace_positions": [
+    {
+     "match_authority": "SC Malaysia / Bursa practice",
+     "new": {
+      "authority": "SC Malaysia / Bursa Suq al-Sila'",
+      "authority_type": "regulator",
+      "tradition": "",
+      "position": "Bursa Suq al-Sila' (launched 17 Aug 2009, developed with BNM and the SC) is the official 'platform that conducts commodity trading transactions, especially in Islamic banking transactions involving Tawarruq or Commodity Murabahah contracts' — organized tawarruq operates at national-exchange scale in Malaysia.",
+      "basis": "my.bursamalaysia.com BSAS introduction page, read 2026-07-25.",
+      "tag": "verified"
+     }
+    },
+    {
+     "match_authority": "Hanafi",
+     "new": {
+      "authority": "Hanafi",
+      "authority_type": "school",
+      "tradition": "Hanafi",
+      "position": "Individual tawarruq (sale to a third party) permitted by the Hanafi mainstream (Ibn al-Humam, Ibn Abidin cited), while bilateral inah is condemned.",
+      "basis": "Habib Ahmed, Durham repository tawarruq paper, read 2026-07-25.",
+      "tag": "plausible"
+     }
+    },
+    {
+     "match_authority": "Maliki",
+     "new": {
+      "authority": "Maliki",
+      "authority_type": "school",
+      "tradition": "Maliki",
+      "position": "Tawarruq permissible 'as long as there is no interference by the first seller in the second sale'.",
+      "basis": "Habib Ahmed, Durham repository tawarruq paper, read 2026-07-25.",
+      "tag": "plausible"
+     }
+    },
+    {
+     "match_authority": "Shafi'i",
+     "new": {
+      "authority": "Shafi'i",
+      "authority_type": "school",
+      "tradition": "Shafi'i",
+      "position": "Early Shafi'is (al-Shafi'i, al-Mawardi) permitted even inah, a fortiori tawarruq; later Shafi'is deem such sales disliked though valid.",
+      "basis": "Habib Ahmed, Durham repository tawarruq paper, read 2026-07-25.",
+      "tag": "plausible"
+     }
+    }
+   ],
+   "add_positions": [
+    {
+     "authority": "BNM (Malaysia), Tawarruq PD",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Recognises organized/banking tawarruq as a permissible product structure, with conditions: strict contract sequence, real identifiable deliverable asset (gold/silver/currencies/debt excluded), possession before onward sale, agency permitted, and 'the tawarruq shall not contain any condition that requires the purchaser to promise that the asset will be sold to its original seller' (18.3).",
+     "basis": "BNM Tawarruq PD reissued 28 Dec 2018 (BNM/RH/PD 028-8), official document read via islamicbankers.center mirror 2026-07-25.",
+     "tag": "plausible"
+    },
+    {
+     "authority": "IFSB GN-2",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "IFSB's guidance note on Commodity Murabahah Transactions treats CMT as an accepted, widely used liquidity-management tool and sets its risk/capital treatment — the standards-body counterweight to IIFA Resolution 179's prohibition.",
+     "basis": "GN-2 title/scope confirmed via IFSB-23 abbreviations list + IFSB TN-5 footnote (ifsb.org PDFs), read 2026-07-25. GN-2 paragraph-level text not yet read (green/on disk — standards_kb_new_batch_2.json): pull clause to upgrade.",
+     "tag": "plausible"
+    }
+   ],
+   "add_standard_refs": ["PD Tawarruq", "GN-2"]
+  },
+  {
+   "topic_id": "DV03",
+   "note": "Late-payment charge — IIFA and BNM positions added; BNM is the clean counter-position (capped ta'wid as income).",
+   "add_positions": [
+    {
+     "authority": "OIC International Islamic Fiqh Academy",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Resolution 109 (3/12), Riyadh 2000: penalty clauses are valid in contracts of work (construction, supply, istisna delivery) but prohibited where the original commitment is a debt — 'the imposition of a penalty clause in debt contracts is usurious in the strict sense'; courts may reduce excessive stipulated compensation.",
+     "basis": "iifa-aifi.org/en/32587.html, read 2026-07-25.",
+     "tag": "verified"
+    },
+    {
+     "authority": "BNM (Malaysia), Late Payment Charges guidelines",
+     "authority_type": "regulator",
+     "tradition": "",
+     "position": "Splits the charge: ta'widh (compensation for actual loss) may be recognised as bank income, capped at 1% p.a. pre-maturity and the IIMM overnight rate post-maturity; gharamah (penalty) can never be income — 'all gharamah amounts must be channelled to charitable organisation(s)'; combined charge capped, non-compounding.",
+     "basis": "BNM Guidelines on Late Payment Charges for Islamic Banking Institutions (BNM/RH/GL 008-14, effective 1 Jan 2012), official document read via islamicbankers.center mirror 2026-07-25.",
+     "tag": "plausible"
+    }
+   ],
+   "add_standard_refs": ["OIC IIFA Resolution 109 (3/12) 2000", "BNM Guidelines on Late Payment Charges 2012"]
+  }
+ ]
+}

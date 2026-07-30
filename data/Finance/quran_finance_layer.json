@@ -1,0 +1,1218 @@
+{
+ "_meta": {
+  "type": "quran_finance_layer",
+  "version": 2,
+  "generated": "2026-07-05",
+  "purpose": "Recategorises LEVEL 1 (the ceiling) from 'contract types found in the Qur'an' to 'FINANCIAL WORDS of the Qur'an'. Three tiers: (A) prohibitions & commands, (B) obligations & benevolence, (C) commerce & contract words. Every entry links down to existing terms/contracts and to its AAOIFI landing.",
+  "dating_rule": "UNDATED BY RULE - the whole layer is the single undated starting block. No years anywhere in this file.",
+  "tag_policy": "verse existence = verified (standard mushaf references, checkable in the app's Qur'an). Phrase gists and meaning summaries = plausible (paraphrase; the app's tafsir texts are the checkable source, hooked via tafsir_edition_ids). Standard landings = verified where the SS name/text was confirmed from ss1-ss3.txt, else plausible.",
+  "tafsir_hook_note": "The app carries these tafsir editions (seen in lineage_v4 crosstags): en-tafsir-ibn-abbas, ar-tafsir-al-tabari, ar-tafsir-al-qurtubi, ar/en/ur/bn tafsir-ibn-kathir, en-tafsir-maarif-ul-quran. Each verse_ref below can open any of them - BV should link verse -> tafsir panel.",
+  "honesty_rules": "Words NOT in the Qur'an are never dressed up as Qur'anic: gharar (financial sense), waqf, tawarruq, sukuk, takaful are marked origin: hadith-era / fiqh-era / modern. This is the 'origin honest' feature.",
+  "sources": "Qur'an standard references; lineage_v4.json L001-L103 (existing contract anchors reused verbatim); terms.json (coverage scan); ss1-ss3.txt (SS names + SS 19 clauses verified-to-text); standards_kb.json (11 GS notes).",
+  "counts": {
+   "words": 24,
+   "covered_by_existing_terms": 13,
+   "new_term_candidates": 14
+  },
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "tiers": {
+  "A": "Prohibitions & commands - what the Qur'an forbids or demands in wealth dealings",
+  "B": "Obligations & benevolence - what the Qur'an obliges or praises giving",
+  "C": "Commerce & contract words - dealings the Qur'an names, regulates or presumes"
+ },
+ "rows": [
+  {
+   "id": "Q01",
+   "arabic": "riba",
+   "english": "interest / usury",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "2:275",
+     "gist": "Allah has permitted trade and forbidden riba - the axis verse of the whole system",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:276",
+     "gist": "Allah destroys riba and gives increase to charities",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:278-279",
+     "gist": "give up what remains of riba, or be at war with Allah; keep your principal - wrong not, be not wronged",
+     "tag": "verified"
+    },
+    {
+     "ref": "3:130",
+     "gist": "devour not riba, doubled and multiplied",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:161",
+     "gist": "riba condemned in earlier scriptures too",
+     "tag": "verified"
+    },
+    {
+     "ref": "30:39",
+     "gist": "what you give in riba to increase in people's wealth does not increase with Allah",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Any stipulated excess on a loan or on unequal exchange of ribawi goods. The tafsirs read 2:275-279 as the final, absolute prohibition; 2:279 fixes the rule 'principal only'.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T022",
+    "T023",
+    "T082",
+    "T083"
+   ],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "terms.json has the SUB-types (riba al-fadl, riba al-nasi'ah, riba al-jahiliyyah, ribawi) but NO plain 'riba' umbrella term. Proposed new term NT01."
+   },
+   "developed_into": "The screening bedrock (family F13) -> classical two-type analysis -> every modern product test.",
+   "standard_landing": [
+    {
+     "ref": "SS 19 (Loan) 4/1 - stipulated excess in qard IS riba",
+     "tag": "verified"
+    },
+    {
+     "ref": "Interest-income screen T193 (governance/screening family F18)",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q02",
+   "arabic": "maysir / qimar",
+   "english": "gambling",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "2:219",
+     "gist": "in wine and maysir is great sin and some benefit - the sin is greater",
+     "tag": "verified"
+    },
+    {
+     "ref": "5:90-91",
+     "gist": "maysir is filth of Satan's work - avoid it",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Wealth transfer by pure chance/speculation. With riba and gharar, the third screening pillar.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T021",
+    "T091"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "Bars options, conventional insurance, speculative derivatives; shapes SS 31 controls and takaful design.",
+   "standard_landing": [
+    {
+     "ref": "SS 31 (Controls on Gharar) - gharar/maysir boundary rules",
+     "tag": "verified"
+    },
+    {
+     "ref": "SS 26 (Islamic Insurance) - takaful as the maysir-free alternative",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q03",
+   "arabic": "kanz / iktinaz",
+   "english": "hoarding wealth",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "9:34-35",
+     "gist": "those who hoard gold and silver and spend it not in Allah's way - painful punishment; branded with it",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Idle accumulation of monetary wealth outside circulation. Tafsirs link it to refusing zakat; the economic reading: money must work.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Closest existing is T158 ihtikar (hoarding goods/monopoly) - different word, market-corner sense. Proposed NT02 kanz."
+   },
+   "developed_into": "Anti-idle-money principle -> zakat on idle wealth -> modern arguments for investment accounts over cash piles.",
+   "standard_landing": [
+    {
+     "ref": "SS 35 (Zakah) - zakat as the levy that punishes hoarding",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q04",
+   "arabic": "israf / tabdhir",
+   "english": "extravagance / squandering",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "17:26-27",
+     "gist": "squanderers are brothers of the devils",
+     "tag": "verified"
+    },
+    {
+     "ref": "7:31",
+     "gist": "eat and drink but be not excessive",
+     "tag": "verified"
+    },
+    {
+     "ref": "25:67",
+     "gist": "neither extravagant nor tight-fisted - a just balance between",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Consumption ethics: spending has a floor (no miserliness) and a ceiling (no waste).",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Proposed NT03. Feeds the maqasid/ethics family F16."
+   },
+   "developed_into": "Consumer-finance ethics, responsible-lending arguments, ESG/maqasid framing (F16).",
+   "standard_landing": [
+    {
+     "ref": "GS 7 (CSR, Conduct and Disclosure) - conduct layer; KB-GS7 note exists",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "partial"
+  },
+  {
+   "id": "Q05",
+   "arabic": "tatfif (kayl wa mizan)",
+   "english": "short-changing weights & measures",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "83:1-3",
+     "gist": "woe to the defrauders - who take full measure for themselves but give less",
+     "tag": "verified"
+    },
+    {
+     "ref": "11:84-85",
+     "gist": "Shu'ayb: give full measure and weight, defraud not people of their things",
+     "tag": "verified"
+    },
+    {
+     "ref": "17:35",
+     "gist": "give full measure and weigh with an even balance",
+     "tag": "verified"
+    },
+    {
+     "ref": "6:152",
+     "gist": "full measure and weight in justice",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Market integrity: exact delivery of what is promised. The Shu'ayb narrative makes fair dealing a prophetic mission in itself.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Proposed NT04. No term covers measurement fraud / disclosure integrity."
+   },
+   "developed_into": "Disclosure and fair-dealing duties -> spec precision in salam/istisna -> modern documentation and audit standards.",
+   "standard_landing": [
+    {
+     "ref": "SS 10 (Salam) & SS 11 (Istisna'a) - exact specification rules",
+     "tag": "verified"
+    },
+    {
+     "ref": "GS 11 (Internal Shari'ah Audit) as the checking machinery; KB-GS11",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q06",
+   "arabic": "akl al-mal bil-batil",
+   "english": "devouring wealth wrongfully",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "2:188",
+     "gist": "consume not one another's wealth unjustly nor bribe rulers to consume a portion of others' wealth",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:29",
+     "gist": "consume not wealth wrongfully - but trade by mutual consent",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "The general anti-expropriation clause: all wealth transfer must be by right (trade, gift, inheritance) - everything else is batil.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T131"
+   ],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "T131 batil = void contract (fiqh category). The Qur'anic principle itself deserves an entry. Proposed NT05."
+   },
+   "developed_into": "Doctrine of void/voidable contracts (batil/fasid) -> consumer protection -> anti-fraud clauses in every standard.",
+   "standard_landing": [
+    {
+     "ref": "SS 25 (Combination of Contracts) & option standards SS 48-54 - policing consent",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q07",
+   "arabic": "suht",
+   "english": "illicit gain",
+   "tier": "A",
+   "verse_refs": [
+    {
+     "ref": "5:42",
+     "gist": "avid consumers of suht (unlawful gain)",
+     "tag": "verified"
+    },
+    {
+     "ref": "5:62-63",
+     "gist": "rabbis and scholars blamed for not forbidding their consuming suht",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Tainted earnings - bribes and forbidden income. Tafsirs commonly gloss suht as bribery.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Proposed NT06. Feeds income-purification screens."
+   },
+   "developed_into": "Income purification -> the modern purification/cleansing of non-compliant income in screening (F18).",
+   "standard_landing": [
+    {
+     "ref": "SS 21 (Financial Paper) - purification of mixed income",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "partial"
+  },
+  {
+   "id": "Q08",
+   "arabic": "zakat",
+   "english": "alms-tax",
+   "tier": "B",
+   "verse_refs": [
+    {
+     "ref": "2:43",
+     "gist": "establish prayer and give zakat - the recurring pair",
+     "tag": "verified"
+    },
+    {
+     "ref": "9:60",
+     "gist": "the eight categories of zakat recipients (asnaf)",
+     "tag": "verified"
+    },
+    {
+     "ref": "9:103",
+     "gist": "take sadaqah from their wealth to purify them",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Obligatory wealth levy with fixed recipients - the Qur'an's only itemised fiscal rule (9:60).",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T116",
+    "T119",
+    "T120"
+   ],
+   "gap": {
+    "missing_umbrella_term": false,
+    "note": "T116-T120 exist but are condensed stubs - enrich in Step C."
+   },
+   "developed_into": "Nisab/hawl calculus -> state zakat systems -> corporate zakat accounting.",
+   "standard_landing": [
+    {
+     "ref": "SS 35 (Zakah) - full text in ss2.txt",
+     "tag": "verified"
+    },
+    {
+     "ref": "FAS 9 / FAS 39 (zakah accounting & reporting)",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q09",
+   "arabic": "sadaqah / infaq",
+   "english": "charity / spending in good",
+   "tier": "B",
+   "verse_refs": [
+    {
+     "ref": "2:261",
+     "gist": "a grain that grows seven ears, in each a hundred grains - the multiplication of giving",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:264",
+     "gist": "nullify not your charities by reminders and injury",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:271",
+     "gist": "open giving is good; secret giving to the poor is better",
+     "tag": "verified"
+    },
+    {
+     "ref": "57:18",
+     "gist": "charitable men and women who lend Allah a goodly loan - doubled",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Voluntary giving with an etiquette of dignity. Infaq is the broadest spending-for-good word.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T118"
+   ],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "sadaqah exists (T118, stub); infaq as a concept does not. Proposed NT07 infaq."
+   },
+   "developed_into": "Social finance family F12: sadaqah -> waqf endowments -> microfinance and impact funds.",
+   "standard_landing": [
+    {
+     "ref": "SS 33 (Waqf) + GS 13 Waqf Governance (KB-GS13-GN)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q10",
+   "arabic": "qard hasan",
+   "english": "goodly (benevolent) loan",
+   "tier": "B",
+   "verse_refs": [
+    {
+     "ref": "2:245",
+     "gist": "who will lend Allah a goodly loan so He multiplies it",
+     "tag": "verified"
+    },
+    {
+     "ref": "5:12",
+     "gist": "believe, pray, give zakat and lend Allah a goodly loan",
+     "tag": "verified"
+    },
+    {
+     "ref": "57:11",
+     "gist": "a goodly loan - He will multiply it and a noble reward",
+     "tag": "verified"
+    },
+    {
+     "ref": "57:18",
+     "gist": "charity and the goodly loan doubled",
+     "tag": "verified"
+    },
+    {
+     "ref": "64:17",
+     "gist": "if you lend Allah a goodly loan He multiplies it and forgives",
+     "tag": "verified"
+    },
+    {
+     "ref": "73:20",
+     "gist": "establish prayer, give zakat, lend Allah a goodly loan",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Six times the Qur'an calls giving 'a loan to Allah' - the only loan language it praises. Jurists took it as the model of the interest-free loan; 2:282 then supplies the paperwork.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T048",
+    "T172"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "SEE worked_example_qard_hasan below - the full development chain Adam asked for.",
+   "standard_landing": [
+    {
+     "ref": "SS 19 (Loan/Qard) - full text in ss1.txt, clauses cited below",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q11",
+   "arabic": "mirath / wasiyyah",
+   "english": "inheritance / bequest",
+   "tier": "B",
+   "verse_refs": [
+    {
+     "ref": "4:11-12",
+     "gist": "the fixed inheritance shares - after any bequest or debt",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:176",
+     "gist": "the kalalah rule closing the inheritance system",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:180",
+     "gist": "bequest prescribed when death approaches",
+     "tag": "verified"
+    },
+    {
+     "ref": "5:106",
+     "gist": "witnessing a bequest - two just witnesses",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "The most mathematically explicit rules in the Qur'an: fractional estate shares, ranked AFTER debts - which is why debt documentation (2:282) matters so much.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Nothing in terms.json covers inheritance or bequest. Proposed NT08 (mirath) and NT09 (wasiyyah). Big gap for 'Islamic estate planning' products."
+   },
+   "developed_into": "Fara'id calculus -> classical estate division -> modern Islamic wills, waqf-vs-inheritance planning, takaful nominee disputes.",
+   "standard_landing": [
+    {
+     "ref": "SS 26/41 (takaful) nominee/beneficiary rules touch it; no dedicated AAOIFI standard - honest gap",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q12",
+   "arabic": "mahr (saduqat)",
+   "english": "dower",
+   "tier": "B",
+   "verse_refs": [
+    {
+     "ref": "4:4",
+     "gist": "give women their dower as a free gift",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:24",
+     "gist": "give them their due compensation as an obligation",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "An obligatory wealth transfer creating a woman's independent property - often the first 'financial asset' discussion in classical fiqh.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Proposed NT10. Low product relevance but completes the Qur'anic wealth-transfer set."
+   },
+   "developed_into": "Women's independent property doctrine -> deferred mahr as a debt instrument in classical law.",
+   "standard_landing": [
+    {
+     "ref": "No AAOIFI standard - honest gap",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "origin_clear_no_modern_standard"
+  },
+  {
+   "id": "Q13",
+   "arabic": "amwal al-yatama",
+   "english": "orphans' property",
+   "tier": "B",
+   "verse_refs": [
+    {
+     "ref": "4:2",
+     "gist": "give orphans their property; devour it not",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:10",
+     "gist": "those who consume orphans' property consume fire",
+     "tag": "verified"
+    },
+    {
+     "ref": "17:34",
+     "gist": "approach not the orphan's property except in the best way until maturity",
+     "tag": "verified"
+    },
+    {
+     "ref": "6:152",
+     "gist": "same guardianship rule paired with fair measure",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "The Qur'an's fiduciary-duty core: managing another's wealth 'in the best way' until capacity. The root of guardianship and, by extension, fund-management ethics.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T046",
+    "T124"
+   ],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "amanah exists; the specific fiduciary-guardianship concept does not. Proposed NT11 wilayah/fiduciary duty."
+   },
+   "developed_into": "Guardianship (wilayah) -> trustee/fund-manager duties -> SS 46 investment agency and SS 56-type manager-liability rules.",
+   "standard_landing": [
+    {
+     "ref": "SS 46 (Investment Agency) - full text in ss3.txt",
+     "tag": "verified"
+    },
+    {
+     "ref": "GS 1 framework duties (KB-GS1)",
+     "tag": "plausible"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q14",
+   "arabic": "bay' / tijarah",
+   "english": "sale / trade",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "2:275",
+     "gist": "Allah permitted trade (al-bay') - the charter of commerce",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:29",
+     "gist": "trade by mutual consent (tijaratan 'an taradin) - the consent principle",
+     "tag": "verified"
+    },
+    {
+     "ref": "62:10",
+     "gist": "when prayer ends, disperse and seek of Allah's bounty",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:198",
+     "gist": "no sin in seeking bounty (trading) during pilgrimage",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Trade is not merely allowed - it is the stated lawful opposite of riba (2:275) and its validity condition is consent (4:29). Every sale-based contract descends from these two verses.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T004",
+    "T024",
+    "T025",
+    "T026",
+    "T089",
+    "T149",
+    "T166",
+    "T173",
+    "T174"
+   ],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "17+ bay' sub-terms exist but no umbrella 'bay'/tijarah' entry. Proposed NT12."
+   },
+   "developed_into": "The whole sale family F02/F06: murabaha (C03), salam (C05), istisna (C06), sarf, and every deferred-payment structure.",
+   "standard_landing": [
+    {
+     "ref": "SS 8 (Murabahah), SS 10 (Salam), SS 11 (Istisna'a), SS 1 (Currencies), SS 20 (Organized Markets)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q15",
+   "arabic": "dayn + kitabah",
+   "english": "debt + its documentation",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "2:282",
+     "gist": "the longest verse of the Qur'an: write down debts, dictate faithfully, two witnesses, do not tire of writing it small or large with its term",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:283",
+     "gist": "if no scribe, a pledge in hand; let the trustee discharge his trust",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "The Qur'an mandates financial paperwork: documentation, dictation standards, witnessing, and collateral as fallback. Ibn Abbas read 2:282 as covering salam specifically (lineage L043). This is the proto-standard - the ancestor of every disclosure rule in AAOIFI.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T003",
+    "T047"
+   ],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "dayn exists (T047); 'kitabat al-dayn' (documentation duty) does not. Proposed NT13 - strong investor-story item: 'the Qur'an invented the term sheet'."
+   },
+   "developed_into": "Witnessing/notary practice -> qadi registers -> modern documentation, and the entire idea that compliance is CHECKABLE - the project's own premise.",
+   "standard_landing": [
+    {
+     "ref": "SS 5 (Guarantees) 2/4 written documentation & attestation rules - verified in ss1.txt",
+     "tag": "verified"
+    },
+    {
+     "ref": "SS 37 (Credit Agreement), SS 38 (Online Financial Dealings)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q16",
+   "arabic": "rahn",
+   "english": "pledge / collateral",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "2:283",
+     "gist": "a pledge taken in hand when no scribe is present",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Collateral named directly in the Qur'an as documentation's substitute.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T016",
+    "T170",
+    "T171"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "C09 lineage (L081-L087): pledge fiqh -> Islamic pawnbroking (ar-rahnu) -> collateral standards.",
+   "standard_landing": [
+    {
+     "ref": "SS 39 (Mortgage and Its Contemporary Applications) - full text in ss3.txt",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q17",
+   "arabic": "amanah / wadi'ah",
+   "english": "trust / deposit",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "4:58",
+     "gist": "render trusts to whom they are due",
+     "tag": "verified"
+    },
+    {
+     "ref": "2:283",
+     "gist": "let the one entrusted discharge his trust",
+     "tag": "verified"
+    },
+    {
+     "ref": "8:27",
+     "gist": "betray not your trusts knowingly",
+     "tag": "verified"
+    },
+    {
+     "ref": "23:8",
+     "gist": "the believers keep their trusts and covenants",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Custody without ownership. The wadi'ah deposit family and every 'trust vs guarantee' distinction in banking descends from this word.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T038",
+    "T039",
+    "T046",
+    "T124"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "Wadiah lineage exists (L095-L103): amanah custody -> yad damanah bank deposits -> the current-account debate (deposit vs loan, see SS 19 10/1/1).",
+   "standard_landing": [
+    {
+     "ref": "SS 19 10/1/1: current accounts are LOANS not deposits - verified in ss1.txt",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q18",
+   "arabic": "ijarah / ajr",
+   "english": "hire / wage",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "65:6",
+     "gist": "if they suckle for you, give them their wages",
+     "tag": "verified"
+    },
+    {
+     "ref": "28:26-27",
+     "gist": "hire him - the strong, the trustworthy; Moses hired for eight years",
+     "tag": "verified"
+    },
+    {
+     "ref": "18:77",
+     "gist": "you could have taken a wage for it",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Paid service is prophetic practice in the Qur'an itself (Moses). Usufruct-for-rent generalises it to assets.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T006",
+    "T027",
+    "T044",
+    "T045",
+    "T087"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "C04 lineage: lease fiqh -> ijarah muntahia bittamleek -> sukuk al-ijarah backbone (F04/F05).",
+   "standard_landing": [
+    {
+     "ref": "SS 9 (Ijarah & IMB), SS 34 (Hiring of Persons)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q19",
+   "arabic": "kafalah / za'im",
+   "english": "guarantee",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "12:72",
+     "gist": "a camel-load for whoever brings it - and I am guarantor (za'im) for it",
+     "tag": "verified"
+    },
+    {
+     "ref": "12:66",
+     "gist": "a binding pledge taken from the sons",
+     "tag": "verified"
+    },
+    {
+     "ref": "12:78",
+     "gist": "take one of us in his place - personal substitution",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Suretyship spoken inside a Qur'anic story. Fully developed in sample_term_kafala.json v2.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T042",
+    "T043",
+    "T105",
+    "T169"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "C08 lineage L061-L080; SS 5 landing with verified clauses.",
+   "standard_landing": [
+    {
+     "ref": "SS 5 (Guarantees) 3/1/5 + 6/1/1 - verified",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q20",
+   "arabic": "wakala",
+   "english": "agency",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "18:19",
+     "gist": "send one of you with this silver coin to the city - delegation with money",
+     "tag": "verified"
+    },
+    {
+     "ref": "12:55",
+     "gist": "set me over the storehouses of the land - appointment to manage",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "Acting for another with their money - recognized, then systematised as the agency contract.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T015",
+    "T055",
+    "T056",
+    "T144"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "C07 lineage; wakala bi-istithmar becomes the workhorse of modern funds and takaful operation.",
+   "standard_landing": [
+    {
+     "ref": "SS 23 (Agency & Fodooli), SS 46 (Investment Agency)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q21",
+   "arabic": "shirkah / mudarabah roots",
+   "english": "partnership roots",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "38:24",
+     "gist": "many partners wrong one another - except the believers who do right",
+     "tag": "verified"
+    },
+    {
+     "ref": "4:12",
+     "gist": "then they are partners in a third - co-ownership named in inheritance law",
+     "tag": "verified"
+    },
+    {
+     "ref": "73:20",
+     "gist": "others journeying in the land seeking Allah's bounty - the darb fi'l-ard root jurists cite for mudarabah",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "HONEST NOTE: musharakah is recognized, not legislated, in the Qur'an; mudarabah is not named at all - jurists derive it from the travel-for-trade phrase and Prophetic practice. The lineage files already say this plainly (L014, L024). Keep saying it - honesty is the feature.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T040",
+    "T041",
+    "T049",
+    "T050",
+    "T051",
+    "T052",
+    "T053",
+    "T054"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "C01/C02 lineages -> the 'ideal mode' family F01 -> profit-sharing deposits and equity sukuk.",
+   "standard_landing": [
+    {
+     "ref": "SS 12 (Sharikah & Modern Corporations), SS 13 (Mudarabah), SS 40 (Profit Distribution)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced"
+  },
+  {
+   "id": "Q22",
+   "arabic": "jizyah / ghanimah / fay'",
+   "english": "state levies & public wealth",
+   "tier": "C",
+   "verse_refs": [
+    {
+     "ref": "9:29",
+     "gist": "the jizyah levy",
+     "tag": "verified"
+    },
+    {
+     "ref": "8:41",
+     "gist": "a fifth (khums) of gains for Allah, the Messenger, kin, orphans, needy, wayfarer",
+     "tag": "verified"
+    },
+    {
+     "ref": "59:7",
+     "gist": "so that wealth does not merely circulate among the rich of you - the anti-concentration clause",
+     "tag": "verified"
+    }
+   ],
+   "meaning_summary": {
+    "text": "The Qur'an's public-finance words. 59:7 gives investors the best one-liner in the dataset: an explicit anti-wealth-concentration principle.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [],
+   "gap": {
+    "missing_umbrella_term": true,
+    "note": "Proposed NT14 (public finance words: jizyah/kharaj/ghanimah/fay') - historical tier, feeds the events file (Umar's diwan, bayt al-mal E-rows if present)."
+   },
+   "developed_into": "Bayt al-mal treasury practice -> kharaj land-tax literature (Abu Yusuf's Kitab al-Kharaj is B-list material) -> modern sovereign Islamic finance framing.",
+   "standard_landing": [
+    {
+     "ref": "No direct AAOIFI standard - honest gap; nearest is SS 35 Zakah",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "origin_clear_no_modern_standard"
+  },
+  {
+   "id": "Q23",
+   "arabic": "gharar",
+   "english": "excessive uncertainty",
+   "tier": "A",
+   "verse_refs": [],
+   "origin_flag": "NOT a Qur'anic financial word. The Qur'an uses the root for Satan's deception (e.g. 31:33), not for sale uncertainty. The financial prohibition is HADITH-based (the Prophet forbade bay' al-gharar - Muslim). Listed here so Level 1 is honest about it.",
+   "meaning_summary": {
+    "text": "Included in the layer with an explicit 'origin: hadith' banner - it sits at the top of family F13 with riba/maysir but its starting block is the hadith stage, not the Qur'an block.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T020",
+    "T072"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "Uncertainty doctrine -> insurance debate -> SS 31 codification.",
+   "standard_landing": [
+    {
+     "ref": "SS 31 (Controls on Gharar in Financial Transactions) - full text in ss2.txt",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced_from_hadith"
+  },
+  {
+   "id": "Q24",
+   "arabic": "waqf",
+   "english": "endowment",
+   "tier": "B",
+   "verse_refs": [],
+   "origin_flag": "NOT a Qur'anic word. Anchored generically in charity verses (e.g. 3:92 'you will not attain righteousness until you spend of what you love') and concretely in the HADITH of Umar's Khaybar land. Starting block = hadith stage.",
+   "meaning_summary": {
+    "text": "Perpetual charitable endowment - the institution the hadith built.",
+    "tag": "plausible"
+   },
+   "existing_term_ids": [
+    "T013",
+    "T182",
+    "T183",
+    "T184"
+   ],
+   "gap": {
+    "missing_umbrella_term": false
+   },
+   "developed_into": "Waqf law -> Ottoman cash waqfs -> SS 33 + GS 13 governance revival, waqf sukuk.",
+   "standard_landing": [
+    {
+     "ref": "SS 33 (Waqf) + GS 13 (Waqf Governance, KB-GS13-GN)",
+     "tag": "verified"
+    }
+   ],
+   "trace_status": "traced_from_hadith"
+  }
+ ],
+ "worked_example_qard_hasan": {
+  "headline": "One word's journey: Qard Hasan from 'a loan to Allah' to AAOIFI SS 19",
+  "chain": [
+   {
+    "stage": "quran",
+    "dated": false,
+    "content": "Six verses call giving 'a goodly loan to Allah' (2:245; 5:12; 57:11; 57:18; 64:17; 73:20). 2:282 supplies the documentation duty for all debt.",
+    "tag": "verified"
+   },
+   {
+    "stage": "hadith",
+    "content": "Bukhari 2068: the Prophet himself borrowed against pledged armor - borrowing is legitimate. Ibn Majah 2430 ('lending twice counts as charity once') is graded DA'EEF in the app - kept as SUPPORTING evidence only, per project rule 4.",
+    "source": "lineage L089-L090",
+    "tag": "verified"
+   },
+   {
+    "stage": "tafsir",
+    "content": "Ibn Kathir on 57:11 and 64:17: the 'loan to Allah' as charitable spending with guaranteed manifold return.",
+    "source": "lineage L091",
+    "tag": "verified"
+   },
+   {
+    "stage": "classical_fiqh",
+    "content": "Four-school consensus: qard is gratuitous; ANY stipulated increase is riba; repay the exact substitute.",
+    "source": "lineage L092",
+    "tag": "verified"
+   },
+   {
+    "stage": "morphs",
+    "content": "The one word became at least SEVEN modern forms: (1) current accounts - SS 19 10/1/1 rules they ARE qard, not deposits; (2) qard hasan benevolent funds (T172); (3) Islamic microfinance (family F12); (4) ar-rahnu pawnbroking = qard + rahn combo (T171 + T016); (5) inter-bank mutual overdrafts (SS 19 preface names them); (6) hibah-on-repayment practice - voluntary excess allowed by SS 19 5/2, the basis of 'gift' returns on savings (T200) and a LIVE DISPUTE when it becomes customary; (7) benevolent side of takaful surplus lending.",
+    "tag": "plausible"
+   },
+   {
+    "stage": "modern_codification",
+    "content": "AAOIFI SS 19 (Loan/Qard) - verified clauses from ss1.txt: 4/1 stipulated excess = riba in any form (quality, quantity, benefit, written or customary); 5/2 voluntary excess at repayment is permissible if not stipulated/customary; 7 no tying a sale or lease into the qard; 9/1-9/2 service charges limited to ACTUAL DIRECT costs, method set by the Shari'ah Supervisory Board, indirect costs (salaries, rent) excluded; 10/1/1 current accounts are loans.",
+    "tag": "verified"
+   },
+   {
+    "stage": "governance_check",
+    "content": "The compliance checklist a bank running qard products faces, using our 11 GS notes: GS 1 framework (KB-GS1) - who approves the product; GS 9 compliance function (KB-GS9) - who checks the service-charge math against SS 19 9/1; GS 11 internal audit (KB-GS11) - who re-checks it. This is exactly the ceiling-to-floor story: a Qur'anic word ends as an auditable line item.",
+    "tag": "plausible"
+   }
+  ]
+ },
+ "new_term_candidates": [
+  {
+   "id": "NT01",
+   "arabic": "riba (umbrella)",
+   "english": "interest/usury - the parent concept",
+   "reason": "Only sub-types exist in terms.json",
+   "proposed_family": "F13",
+   "minted_as": "T201"
+  },
+  {
+   "id": "NT02",
+   "arabic": "kanz / iktinaz",
+   "english": "hoarding of money",
+   "reason": "No coverage; distinct from ihtikar (T158)",
+   "proposed_family": "F13 or F16",
+   "minted_as": "T202"
+  },
+  {
+   "id": "NT03",
+   "arabic": "israf / tabdhir",
+   "english": "extravagance / squandering",
+   "reason": "No coverage",
+   "proposed_family": "F16",
+   "minted_as": "T203"
+  },
+  {
+   "id": "NT04",
+   "arabic": "tatfif",
+   "english": "short measure / market fraud",
+   "reason": "No coverage",
+   "proposed_family": "F13 or F16",
+   "minted_as": "T204"
+  },
+  {
+   "id": "NT05",
+   "arabic": "akl al-mal bil-batil",
+   "english": "wrongful consumption of wealth",
+   "reason": "Only the fiqh category batil (T131) exists",
+   "proposed_family": "F13",
+   "minted_as": "T205"
+  },
+  {
+   "id": "NT06",
+   "arabic": "suht",
+   "english": "illicit gain / bribery income",
+   "reason": "No coverage; feeds purification screens",
+   "proposed_family": "F18",
+   "minted_as": "T206"
+  },
+  {
+   "id": "NT07",
+   "arabic": "infaq",
+   "english": "spending in good",
+   "reason": "Broader than sadaqah (T118)",
+   "proposed_family": "F12",
+   "minted_as": "T207"
+  },
+  {
+   "id": "NT08",
+   "arabic": "mirath / fara'id",
+   "english": "inheritance shares",
+   "reason": "No coverage at all",
+   "proposed_family": "new or F12",
+   "minted_as": "T208"
+  },
+  {
+   "id": "NT09",
+   "arabic": "wasiyyah",
+   "english": "bequest",
+   "reason": "No coverage",
+   "proposed_family": "same as NT08",
+   "minted_as": "T209"
+  },
+  {
+   "id": "NT10",
+   "arabic": "mahr",
+   "english": "dower",
+   "reason": "No coverage",
+   "proposed_family": "same as NT08",
+   "minted_as": "T210"
+  },
+  {
+   "id": "NT11",
+   "arabic": "wilayah / fiduciary guardianship",
+   "english": "managing another's wealth",
+   "reason": "amanah exists but guardianship duty does not",
+   "proposed_family": "F09 or F18",
+   "minted_as": "T211"
+  },
+  {
+   "id": "NT12",
+   "arabic": "bay' / tijarah (umbrella)",
+   "english": "trade - the parent concept",
+   "reason": "17+ children, no parent",
+   "proposed_family": "F02",
+   "minted_as": "T212"
+  },
+  {
+   "id": "NT13",
+   "arabic": "kitabat al-dayn",
+   "english": "debt documentation duty (2:282)",
+   "reason": "The proto-standard; strong investor story",
+   "proposed_family": "F15 or F18",
+   "minted_as": "T213"
+  },
+  {
+   "id": "NT14",
+   "arabic": "public levies (jizyah/kharaj/ghanimah/fay')",
+   "english": "Qur'anic public finance",
+   "reason": "Historical tier missing entirely",
+   "proposed_family": "new historical family or F12",
+   "minted_as": "T214"
+  }
+ ],
+ "decision_needed_from_adam": [
+  "RESOLVED 2026-07-05: tiers kept; all 14 minted as T201-T214; inheritance set placed in F12 social finance."
+ ]
+}

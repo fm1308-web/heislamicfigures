@@ -1,0 +1,3901 @@
+
+
+
+
+
+
+
+
+
+TN-5: TECHNICAL NOTE ON SHARĪ`AH- COMPLIANT LIQUIDITY-RISK-MANAGEMENT
+TOOLS
+
+
+
+
+
+
+
+
+
+
+
+August 2023
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i
+ABOUT THE ISLAMIC FINANCIAL SERVICES BOARD (IFSB)
+
+The IFSB is an international standard-setting organisation which was officially inaugurated on 3 November 2002 and started operations on 10 March 2003. The organisation promotes and  enhances the soundness and stability of the Islamic financial services  industry  by issuing global prudential standards and guiding principles for the industry, broadly defined to include the banking, capital markets and insurance sectors. The standards prepared by the IFSB follow a stringent due process as outlined in its Guidelines and Procedures for the Preparation of Standards/Guidelines, which includes holding several Working Group meetings, issuing exposure drafts and organising public hearings/webinars and reviews by the IFBS’s Sharīʻah Board and Technical Committee. The IFSB also conducts research and coordinates initiatives on industry-related issues and organises roundtables, seminars and conferences for regulators and industry stakeholders. Towards this end, the IFSB works closely with relevant international, regional and national organisations, research/educational institutions and market players.
+
+For more information about the IFSB, please visit www.ifsb.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ii
+IFSB COUNCIL
+
+
+Chairperson
+H.E. Ayman Alsayari - Saudi Central Bank
+
+Deputy Chairperson
+H.E. Ahmed Osman - Banque Centrale De Djibouti
+
+
+
+H.E. Dr. Muhammad Sulaiman AlJasser                  Islamic Development Bank
+
+H.E. Rasheed M. Al-Maraj                                       Central Bank of Bahrain
+
+H.E. Abdur Rouf Talukder                                        Bangladesh Bank
+
+H.E. Rokiah Badar                                                   Brunei Darussalam Central Bank
+
+H.E. Hassan Abdalla                                                Central Bank of Egypt
+
+H.E. Dr. Perry Warjiyo                                              Bank Indonesia
+
+H.E. Dr. Mohammad-Reza Farzin                            Central Bank of the Islamic Republic of Iran
+
+H.E. Dr. Ali Mohsen Ismail                                       Central Bank of Iraq
+
+H.E. Dr. Adel AlSharkas                                           Central Bank of Jordan
+
+H.E. Madina Abylkassymova                                   Agency of the Republic of Kazakhstan for Regulation and Development of the Financial Market
+
+H.E. Basel Ahmad Al-Haroon                                  Central Bank of Kuwait
+
+H.E. Saddek El Kaber                                              Central Bank of Libya
+
+H.E. Datuk Shaik Abdul Rasheed Ghaffour             Bank Negara Malaysia
+
+H.E. Sir Mohamed Lemine Dhehby                          Central Bank of Mauritania
+
+H.E. Harvesh Kumar Seegolam                               Bank of Mauritius
+
+H.E. Abdellatif Jouahri                                              Bank Al-Maghrib, Morocco
+
+H.E. Godwin Emefiele                                              Central Bank of Nigeria
+
+H.E. Tahir bin Salim bin Abdullah Al Amri                Central Bank of Oman
+
+H.E. Jameel Ahmad                                                 State Bank of Pakistan
+
+H.E. Sheikh Bandar Bin Mohammed Bin Saoud
+Al-Thani                                                                    Qatar Central Bank
+
+H.E. Hussein Yahya Jangoul Elbasha                     Central Bank of Sudan
+
+H.E. Mehmet Ali Akben                                            Banking Regulation and Supervision Agency, Turkey
+
+H.E. Khaled Mohamed Balama Al Tameemi           Central Bank of the United Arab Emirates
+
+
+
+
+
+
+iii
+TECHNICAL COMMITTEE Chair
+H.E. Dr. Fahad Ibrahim Al Shathri – Saudi Central Bank
+
+
+Deputy Chair
+
+
+Mr. Saud Al Busaidi - Central Bank of Oman
+
+
+Members*
+
+
+Mr. Syed Faiq Najeeb                                 Islamic Development Bank Mrs. Shireen Al Sayed                                Central Bank of Bahrain Ms. Maksuda Begum                                  Bangladesh Bank
+Mr. Muhammad Shukri bin Haji Ahmad      Brunei Darussalam Central Bank
+
+Dr. Jardine Husman                                   Bank of Indonesia
+
+Mrs. Nyimas Rohmah                                 Indonesia Financial Services Authority
+
+Mr. Ahmed Yousif Kadhim                          Central Bank of Iraq
+
+Mr. Adnan Y. Naji                                       Central Bank of Jordan
+
+Mr. Anuar Kaliyev                                       Astana Financial Services Authority, Kazakhstan
+
+Dr. Mohammad Bader Alkhamis                Central Bank of Kuwait Dr. Ali Abusalah Elmabrok                         Central Bank of Libya Mr. Nik Faris Nik Sallahuddin                     Bank Negara Malaysia
+Mrs. Sharifatul Hanizah Said Ali                 Securities Commission Malaysia
+
+Mr. Muhammed Hamisu Musa                   Central Bank of Nigeria
+
+Dr. Waziri Mohammed Galadima               Nigeria Deposit Insurance Corporation
+
+Mr. Ghulam Muhammad Abbasi                 State Bank of Pakistan
+
+Mr. Hisham Saleh Al-Mannai                      Qatar Central Bank
+
+Mr. Bader Alissa                                         Capital Market Authority, Saudi Arabia
+
+Ms. Sumaia Amer Osman Ibrahim             Central Bank of Sudan
+
+Mr. Ömer Çekin (until 11 August 2022)      Banking Regulation and Supervision Agency of Turkey
+
+Mr. Mehmet Zahid Samancıoğlu                Central Bank of the Republic of Turkey
+
+Mr. Hüseyin Ünal                                        Private Pension Regulation and Supervision Authority, Turkey
+
+Mr. Abdulaziz Saoud Al-Mualla                  Central Bank of the United Arab Emirates
+
+
+* In alphabetical order of the country the member’s organisation represents, except international
+organisations, which are listed first.
+
+
+
+
+
+
+iv
+TASK FORCE FOR SHARĪ`AH-COMPLIANT LIQUIDITY-RISK-MANAGEMENT TOOLS Chair
+Dr. Jardine Husman – Bank of Indonesia
+
+Deputy Chair
+
+Mr. Saud Al Busaidi – Central Bank of Oman
+
+Members*
+
+
+Dr. Abozer Mohamed                                            Islamic Development Bank
+Mr. Hichem Bouqniss                                            International Islamic Liquidity Management
+Corporation
+Mr. Md Rabiul Karim                                             Bangladesh Bank
+
+Ms. Siti Arina binti Hj. Mohd. Amin Liew               Brunei Darussalam Central Bank
+
+Ms. Yuri Fathia Zumara (until 11 May 2021)         Bank of Indonesia
+
+Ms. Dahnila Dahlan (from 11 May 2021)              Bank of Indonesia
+
+Mr. Hussein Ridha Mahdi Al-Anssari                    Central Bank of Iraq
+
+Mr. Islam Khalil Mohammad Al-Qassas                Central Bank of Jordan
+
+Mr. Bilal Mohd Parid                                              Bank Negara Malaysia
+
+Mr. Muhammed Hamisu Musa                              Central Bank of Nigeria
+
+Ms. Maryam Abdullah Mohammed Al Shidi          Central Bank of Oman
+
+Mr. Rayan Al kheraigi (until 23 Aug 2021)            Saudi Central Bank
+
+Mr. Nasser Alzallal                                                Saudi Central Bank
+
+Mr. Hamad A. Aljaad (from 23 Aug 2021)             Saudi Central Bank
+
+Ms. Ma. Marisol A. De Villa-Go                             Bangko Sentral ng Pilipinas
+
+Mr. Chacha Wang’Eng’I                                        Central Bank of Tanzania
+
+Ms. Mumine Kubra Altuntas                                  Banking Regulation and Supervision Agency, Turkey
+
+
+* In alphabetical order of the country the member’s organisation represents, except international organisations, which are listed first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+v
+THE SHARĪʻAH BOARD
+
+
+Chair
+
+
+Sheikh Muhammad Taqi Al-Usmani
+
+
+Deputy Chair
+
+
+H.E. Sheikh Abdullah Bin Sulaiman Al-Meneea
+
+
+Members*
+
+
+Sheikh Dr. Bashir Aliyu Umar                                     Member
+
+Sheikh Prof. Koutoub Moustapha Sano                      Member
+
+Sheikh Dr. Mohamed Raougui                                    Member
+
+Sheikh Dr. Muhammad Syafii Antonio                        Member
+
+Sheikh Dr. Osaid Kailani                                             Member
+
+*In alphabetical order
+
+
+
+
+
+
+
+ISLAMIC FINANCIAL SERVICES BOARD Secretariat
+
+Dr. Bello Lawal Danbatta                                      Secretary-General
+
+
+Dr. Rifki Ismal (until Dec 2022)                             Assistant Secretary-General
+
+
+Aminath Amany Ahmed                                        Head of Standards Development
+
+
+Professor Simon Archer                                        Consultant
+
+
+Mr. Sani Tazara Muhammad (until 2 Jan 2021)   Member of the Secretariat, Technical and Research
+
+Mr. Mohamed Omer Mohamed Elamin (from
+Mar 2021 until August 2021)                                 Member of the Secretariat, Technical and Research
+
+Mr. Ahmed Nasser Saif Al Aamri (from Aug
+2021)                                                                     Member of the Secretariat, Technical and Research
+
+
+
+
+
+
+
+
+
+vi
+TABLE OF CONTENTS
+
+ABBREVIATIONS ............................................................................................................... ix
+
+Section 1: Introduction ..................................................................................................... 10
+
+1.1     Background........................................................................................................... 10
+
+1.2     Objectives of the TN ............................................................................................. 14
+
+1.3     Scope of Application ............................................................................................. 15
+
+Section 2: Existing IFSB Guidance on Sharī`ah Liquidity-Risk-Management Tools .... 16
+
+2.1     Existing IFSB Publications on Managing Liquidity Risk ......................................... 16
+
+2.2     Categories of Sharī`ah-Compliant Liquidity-risk-management Tools ..................... 16
+
+2.3     Tools or Mechanisms to Manage Ongoing Liquidity Risk ...................................... 17
+
+2.3.1  Tradable Instruments ............................................................................................ 17
+
+2.3.2  Non-Tradable Instruments .................................................................................... 18
+
+2.4     Tools or Mechanisms to Use in Emergency or “Last Resort” Situations ................ 19
+
+Section 3: Issues and Challenges with Availability of Sharī`ah Compliant Liquidity- Risk-Management Tools ................................................................................................... 20
+
+3.1     Limited Supply of Short-Term Ṣukūk..................................................................... 20
+
+3.2     Insufficient Tools that Meet High-Quality Liquid Assets Criteria............................. 20
+
+3.3     Possible Excessive Dependence on Commodity Murābaḥah Transactions .......... 21
+
+3.4     Issues with Interbank Placements......................................................................... 22
+
+3.5     Shortage of Sharī`ah-Compliant Foreign-Currency Instruments............................ 22
+
+3.6     Lack of Reliable Sharī`ah-Compliant Lender-of-Last-Resort Facilities................... 23
+
+3.7     Lack of Sharī`ah-Compliant Collateral................................................................... 24
+
+3.8     Differing Interpretations of Sharī`ah Rulings.......................................................... 24
+
+3.9     Other Issues and Challenges ................................................................................ 25
+
+Section 4: Important Measures for Sharī`ah-Compliant Liquidity-Risk-Management
+Instruments ....................................................................................................................... 27
+
+4.1     Instruments and Ṣukūk Issued by Governments and Central Banks ..................... 27
+
+4.2     Compatibility with HQLA Requirements ................................................................ 27
+
+4.3     Variety and Diversity of Instruments...................................................................... 29
+
+4.4     A Sharī`ah Perspective on Tradability ................................................................... 29
+
+4.5     Interaction Between Liquidity Risk and Other Risks .............................................. 30
+
+4.6     Securitisation of Assets......................................................................................... 31
+
+Section 5: Different Models for Sharī`ah-Compliant Liquidity-Risk-Management Tools
+........................................................................................................................................... 33
+
+5.1     Models for Deposits with Central Banks................................................................ 33
+
+5.2     Models for Obtaining Funds from a Central Bank.................................................. 37
+
+5.3     Islamic Interbank Instruments ............................................................................... 43
+
+5.4     Short-Term Ṣukūk and Certificates ....................................................................... 50
+
+vii
+5.5     Sharī`ah-Compliant FX Risk Management Models................................................ 61
+
+Section 6: Considerations for Central Banks Setting Up Sharī`ah Liquidity-Risk- Management Tools............................................................................................................ 64
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+viii
+ABBREVIATIONS
+
+
+CD                       Certificates of deposit
+
+CMT                     Commodity murābaḥah transaction
+
+ELA                      Emergency liquidity assistance
+Islamic Financial Services Board. (December 2010). Guidance Note in
+GN-2
+
+
+
+GN-6
+Connection with the Risk Management and Capital Adequacy Standards: Commodity Murābaḥah Transactions
+Islamic Financial Services Board. (April 2015). Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic Financial Services [excluding Islamic insurance (takâful) institutions and Islamic collective investment schemes]
+GN-7                    Islamic Financial Services Board. (December 2019). Guidance Note on
+Sharî`ah-Compliant Lender-Of-Last-Resort Facilities
+GN-8                    Islamic Financial Services Board. (December 2022). Guidance Note on
+Deepening the Islamic Capital Markets
+HQLA                   High-quality liquid assets
+
+IFSB                    Islamic Financial Services Board
+Islamic Financial Services Board. (March 2012). IFSB-12: Guiding
+IFSB-12
+Principles on Liquidity Risk Management for Institutions Offering Islamic
+Financial Services
+IIFS                      Institutions offering Islamic financial services
+
+LCR                     Liquidity coverage ratio
+
+OBS                     Off-balance sheet
+
+OMO                    Open market operations
+
+REPO                  Repurchase operations
+
+RSA                     Regulatory and supervisory authority
+
+SLF                      Standing liquidity facility
+
+SLOLR                 Sharī`ah-compliant lender of last resort
+
+SLRMT                Sharī`ah liquidity-risk-management tools
+
+SPV                     Special purpose vehicle
+
+TN                        Technical note
+Islamic Financial Services Board. (March 2008). Technical Note on Issues
+TN-1
+in Strengthening Liquidity Management of Institutions Offering Islamic
+Financial Services: The Development of Islamic Money Markets
+UPSIA                  Unrestricted profit-sharing investment accounts
+Islamic Financial Services Board. (April 2014). The Role of Sharī`ah-
+WP-01
+Compliant Lender-of-Last Resort Facilities as an Emergency Financing
+Mechanism
+
+
+
+
+
+
+
+
+
+ix
+Section 1: Introduction
+
+
+1.1   Background
+
+
+1.        Banking institutions offering Islamic finance services, hereafter referred to as IIFS, have two types of liquidity risk: market-liquidity risk (asset side) and funding-liquidity risk (liability side). Market-liquidity risk is related to a bank’s inability to readily sell assets at reasonable market prices, due to an inadequate, immature market (for example, a market that lacks regulation, instruments, and infrastructure) or stressed market conditions.
+
+2.        Funding-liquidity risk is associated with refinancing or rollover risk, when the bank cannot meet or refinance its obligations when they are due, and liquidity mismatch, when liabilities have substantially shorter maturities than assets.
+
+3.        In addition to the funding and market liquidity of individual IIFS, central bank liquidity is also relevant. Central bank liquidity is the term used to describe the investments or deposits of Islamic financial institutions at the central bank, i.e., reserve or settlement balances. These reserve balances are held by Islamic financial institutions to meet reserve requirements, if any, and to achieve final settlement of all financial transactions in the payments system. Thus, there are three kinds of liquidity shortages: a shortage of Sharī`ah- compliant central bank liquidity, a critical shortage of funding liquidity at specific institutions, and a systemic shortage of funding and market liquidity.
+
+4.        An  immature  (“shallow”)  market  may  occur  when  there  are  not  enough  market players, inadequate regulatory provisions for Islamic asset securitisation, and insufficient instruments in the market. This is likely to result in IIFS having difficulty obtaining liquidity by selling assets, which increases market-liquidity risk. In stressed conditions, deteriorating market liquidity can affect the liquidity of a particular type of instrument or a wide range of assets in the market. Therefore, in many jurisdictions, the immature market for Sharī`ah- compliant instruments (such as ṣukūk) has increased the market risk of the IIFS that hold these instruments. In addition, over-the-counter markets for ṣukūk typically suffer from a lack of supply, resulting in a hold-to-maturity policy by ṣukūk holders. A low supply of Sharī`ah- compliant liquid instruments may force IIFS to hold other types of assets that are less liquid.
+
+5.        Liquidity risk commonly arises from banks’ usual illiquid activities related to their operational and financing policies. It can also result from unfavourable economic conditions, such as an economic crisis or pandemic. Banks typically use an upward-sloping yield curve to earn a spread: by holding assets with longer maturities than their liabilities, this exposes them to liquidity risk.
+
+10
+6.        A  conventional  bank tries  to maximise the  return  on  its  total  assets  by  heavily investing its liquid funds in interest-bearing liquid assets. It also has access to an interbank market,  where  it  can  borrow  on  an  interest-bearing  basis.  However,  this  approach  is restricted  for  IIFS,  as  interest-bearing  assets  and  loans  are  prohibited  and  Sharī`ah- compliant securities or ṣukūk are in short supply or unavailable in many jurisdictions. This compels IIFS to hold more cash and non-earning liquid assets than conventional institutions.
+
+7.        An IIFS needs to manage any mismatches between the maturity of its short-term obligations, such as unrestricted profit-sharing investment accounts (UPSIA), and that of its assets. To effectively manage liquidity risk, a financial institution must have, among other things, adequate high-quality liquid assets, stable funding sources, proper balance of asset– liability maturity and well-managed off-balance sheet (OBS) exposures.
+
+8.        Due to various constraints, IIFS in different jurisdictions often find that managing liquidity risk is a very challenging part of their operations. These challenges exist at every level (institutional, interbank, and central bank) of an IIFS liquidity-risk-management framework. These constraints include:
+
+•   scarcity of Sharī`ah-compliant liquid instruments;
+
+
+•   lack of Sharī`ah-compliant money-market activities, or an active Sharī`ah-compliant trading or repurchase (“repo”) market;
+
+•   insufficient Sharī`ah-compliant mechanisms to mitigate liquidity risk; insufficient tools for supervisory authorities to give liquidity support to IIFS in normal and/or in stressed
+market conditions;
+
+
+•  insufficient consideration of what IIFS need in open market operations to meet monetary-policy objectives; and
+
+• no form of Sharī`ah-compliant lender-of-last-resort (SLOLR) scheme, in most jurisdictions, to protect the soundness and stability of IIFS under serious liquidity stress.
+
+9.        The Islamic banking segment needs Sharī`ah-compliant instruments to be managed to anticipate and meet several pressing liquidity needs, such as:
+
+•   short-term placement of funds to manage liquidity;
+
+
+•   management of asset–liability mismatches;
+
+
+11
+•   financial-risk management and hedging;
+
+
+•   resource mobilisation at a competitive cost; and
+
+
+•   balance-sheet management through securitisation.
+
+
+10.     While a financial institution’s goals and objectives can differ depending on its circumstances  and  environment,  prudent  liquidity  management  should  always  ensure enough liquidity to guarantee that it can fund its depositors’ or UPSIA-holders’ requirements; has a prudent cushion for unforeseen liquidity needs; and can invest liquid funds in a manner that emphasises security and liquidity.
+
+11.      Managing liquidity risk is especially challenging for Islamic banks because, unlike conventional  banks,  they  cannot  hold  interest-bearing  deposits  with  other  financial institutions or interest-bearing high-quality liquid assets (HQLA), and cannot borrow through the conventional interbank market. At the same time, holding cash is expensive as it yields no return. In most jurisdictions, this challenge puts IIFS at a disadvantage, compared with their conventional counterparts that can access central banks’ standard interest-based lending and deposit facilities. This uneven playing field compounds the liquidity-risk- management challenge for IIFS.
+
+12.      Previously, Islamic banks tended to hold more liquid assets than conventional banks, which negatively affected their profitability and efficiency. Advancements in the Islamic financial-services  industry  mean  infrastructure  and  tools  to  manage  liquidity  risk  have evolved rapidly. However, the liquid instruments that are available can be limited by their tradability, an inactive or  immature secondary market,  and difficulties  with  cross-border transactions.
+
+13.      The  Islamic  money  market  is  an  important  component  of  the  liquidity-risk- management  framework,  as  it  is  the  first  place  to  deposit  or  obtain  short-term  funds. However, many jurisdictions where Islamic banks  operate do not  have  a mature, well- developed Islamic money market. Unfortunately, these markets have insufficient Sharī`ah- compliant financial instruments, which can negatively affect liquidity flows between Islamic banks across borders. New products and innovations are needed to resolve these problems in  Islamic money markets, to enable Islamic banks to manage their liquidity  gaps  and remove, or reduce, their disadvantage compared with conventional banks.
+
+14.      Due to the inadequate number of instruments, when there is any issue of suitable papers in the market issued by either the government or a corporate entity, in most cases
+
+
+12
+there is an oversubscription, so that some potential buyers do not have effective access to the market. In addition, for liquidity purposes, a deep secondary market is absolutely needed (but this may require comprehensive approaches and efforts).
+
+15.      Islamic banks that invest in long-term assets also face the problem that most of their deposit liabilities and UPSIA obligations have very short tenors, which aggravates the liquidity-mismatch problem. Banks need appropriate Islamic liquidity-risk-management tools to bridge this mismatch.
+
+16.      As IIFS constitute a small share of the overall financial system in some jurisdictions, money market instruments that are used only among IIFS will not have the scale and volume needed to generate a liquid market.  Therefore, developing Sharī`ah-compatible money- market instruments that are broadly acceptable across Islamic and conventional institutions is paramount to developing Islamic finance.
+
+17.      The IFSB has published several guidance documents for IIFS on managing liquidity risk. These include:
+
+•  TN-1: Technical Note on Issues in Strengthening Liquidity Management of Institutions Offering Islamic Financial Services: The Development of Islamic Money Markets (March 2008);
+
+•   GN-2: Guidance Note in Connection with the Risk Management and Capital
+
+Adequacy Standards: Commodity Murābaḥah Transactions (December 2010);
+
+
+•   IFSB-12:  Guiding  Principles  on  Liquidity  Risk  Management  for  Institutions
+
+Offering Islamic Financial Services (March 2012);
+
+
+•   GN-6: Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic Financial Services (April 2015);
+
+•   GN-7: Guidance Note on Sharî`ah-Compliant Lender-Of-Last-Resort Facilities
+
+(December 2019);
+
+
+•   IFSB-23: Revised Capital Adequacy Standard for Institutions Offering Islamic
+
+Financial Services (Banking Segment) (December 2021);
+
+
+•   WP-01: The Role of Sharī`ah-Compliant Lender-of-Last Resort Facilities as an
+
+Emergency Financing Mechanism (April 2014).
+
+
+
+
+13
+18.      The IFSB believes that further guidance is needed to develop the Islamic financial- services industry, as several new issues and challenges have arisen as the industry has evolved.
+
+19.      Guiding principle 23 in IFSB-12 states:
+
+
+“In order to provide a conducive environment for liquidity risk management by the IIFS, supervisory authorities should work closely with other relevant official or public sector bodies (e.g., the finance ministry and the deposit insurance provider) to facilitate the issuance of Sharī`ah-compliant instruments/ṣukūk by the government and the provision of Sharī`ah- compliant deposit insurance. Supervisory authorities, together with other relevant bodies, should facilitate the availability of market makers in Sharī`ah-compliant instruments/ṣukūk in their jurisdictions so as to develop secondary markets in such instruments and to increase market liquidity.”
+
+20.      Developing a new Islamic financial instrument, and a new structure on which to base it, and managing Sharī`ah concerns, regulatory and tax treatments, and fund leakages in a dual-banking system all pose additional challenges to developing Islamic liquidity-risk- management facilities.
+
+1.2   Objectives of the TN
+
+
+21.      Sharī`ah-compliant liquidity-risk-management tools (SLRMT) can be used to manage liquidity risk on either side of the balance sheet. The purpose of this technical note (TN) is to enumerate, describe, and evaluate the SLRMT available, or potentially available, to IIFS, and provide guidance on how to use them.
+
+22.      The specific objectives of this TN are to:
+
+
+•   enumerate liquidity-risk-management tools and examine their Sharī`ah compliance,
+
+assessing their regulatory and supervisory implications;
+
+
+•   assess the needs of the IIFS and provide recommendations for dealing with liquidity- risk-management issues;
+
+•   propose illustrative versions of Sharī`ah-compliant tools to be used for liquidity-risk management; and
+•   provide  technical  guidance  on  the  modus  operandi  of  the  Sharī`ah-compliant liquidity-risk-management tools.
+
+
+
+14
+1.3   Scope of Application
+
+
+23.      The scope of this TN includes:
+
+
+•   all major liquidity-risk-management instruments used in various jurisdictions and by multinational institutions. The TN evaluates and analyses these instruments and makes recommendations on the use of the instruments1;
+
+•   guidance for member jurisdictions on using SLRMT;
+
+•   guidance on the operationalisation of the instruments, bearing in mind practical reality and compliance with the tenets of Sharī`ah rules and principles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 In the process of developing this TN, the IFSB carried out surveys to collect information from both regulatory and supervisory authorities (RSAs) and market players and to seek feedback from key stakeholders.
+
+
+15
+Section 2: Existing IFSB Guidance on Sharī`ah Liquidity-Risk- Management Tools
+
+2.1   Existing IFSB Publications on Managing Liquidity Risk
+
+
+24.      The IFSB has issued a series of publications for IIFS on managing liquidity risk (see paragraph 17). This TN aims to consolidate and supplement that guidance. In particular, the current publications do not deal exhaustively with SLRMT available to IIFS. This TN provides guidance on this subject in Section 5.
+
+2.2   Categories of Sharī`ah-Compliant Liquidity-risk-management Tools
+
+
+25.      SLRMT can be divided into two main categories:
+
+•    tools or mechanisms to manage and minimise exposure to ongoing liquidity risk;
+
+•    tools or mechanisms to use in emergency or “last resort” situations.
+
+
+26.      Liquidity risk in banking institutions, including Islamic banks, arises because they typically use an upward-sloping yield curve to earn a spread, by holding assets with longer maturities than their liabilities (see paragraph 3). Banks need to manage this risk by holding assets that they can readily monetise to yield liquidity and by having access to sources of short-term funding. IIFS faced two main types of liquidity risk:
+
+•  Funding-liquidity risk: the risk that an IIFS cannot efficiently meet its expected and unexpected current and future cashflow and collateral needs without affecting its daily operations or its financial condition. This risk means the institution cannot make payments when it needs to, because expected sources of funding are unavailable, as maturing liabilities cannot be refinanced (rollover or refinancing risk).
+
+•   Market-liquidity risk: the risk that an IIFS cannot easily offset or eliminate a position at the market price because of inadequate market depth2  or market disruption. This risk  means that  the  institution  cannot  monetise assets  as  expected  to  meet  its obligations, because of adverse market conditions.
+
+27.      These two types of liquidity risk can interact. For example, a market-liquidity failure may trigger a funding-liquidity problem, so an institution cannot meet obligations that are coming due by monetising an asset. Individual IIFS cannot currently mitigate market-liquidity risk. To do so, they need liquid secondary markets for Islamic instruments, such as ṣukūk.
+
+
+2 Please refer to section 4.3 of IFSB GN-8: Guidance Note on Deepening Liquidity in the Market
+
+
+16
+These markets would give IIFS an incentive to issue such instruments to create liquidity, for example by asset securitisations.
+
+2.3   Tools or Mechanisms to Manage Ongoing Liquidity Risk
+
+
+28.      Tools or mechanisms can be divided into tradable and non-tradable instruments. Some  mechanisms  (standing  liquidity  facility  and  lender  of  last  resort)  are  only  made available by a central bank or monetary authority. Asset securitisation is another source of liquidity. These securities are tradable if a sufficient proportion of the underlying securitised assets is non-financial (see subsection 4.4). However, asset securitisations are not suitable for meeting the originator’s short-term liquidity needs, since using them requires advance planning and organisation.
+
+2.3.1  Tradable Instruments
+
+
+29.      According to Sharī`ah rulings, for an instrument to be considered tradable, certain conditions  have to be met (subsection  4.4  gives  details  of  these  conditions).  Tradable instruments include:
+
+•   various instruments (certificates) based on mushārakah contracts. These instruments give the holder ownership rights in an enterprise or project and normally also give management and voting rights (in some versions of these instruments, these rights are for a limited term);
+
+•   instruments based on muḍārabah contracts. In these instruments the holder is rabb al-māl – a sleeping partner with no management or voting rights;
+
+•   short-term tradable ṣukūk, such as wakālah-based ṣukūk; and
+
+
+•   ijārah certificates or ṣukūk, which represent shared ownership of certain assets.
+
+
+30.      These instruments provide the issuer with liquid funds. The holder can sell them before maturity to obtain liquid funds if there is a liquid secondary market. The main function of instruments like the ṣukūk issued by multilateral institutions or by a sovereign is to provide the holder with a highly liquid asset that yields a predictable market-based return and meets Basel III HQLA criteria.
+
+31.      High-grade, longer-term ṣukūk can be used as collateral in transactions with other institutions or the central bank to obtain liquidity (see Sub-section 3.2 of IFSB GN-7). Short-
+
+
+
+
+17
+and  long-term  ṣukūk may  also  be used in  Sharī`ah-compliant  repo  transactions  in  the interbank market or with the central bank.3
+
+2.3.2  Non-Tradable Instruments
+
+
+32.      Short-term ṣukūk or certificates based on murābaḥah, istisnā’, and salam contracts are considered to be forms of debt and, from a Sharī`ah perspective, are considered non- tradable. Typically, these instruments are issued to provide the issuer with liquid funds, but they produce liquidity for the holder when they mature (for example, a 90-day short-term ṣukūk issued by a central bank). If the remaining maturity is 30 days or less, according to Basel III the instrument may be treated as a short-term cash inflow when calculating the denominator of the liquidity coverage ratio (LCR).
+
+33.      Various  short-term  contracts  are  used  to  permit  institutions  with  surplus  funds (surplus institutions) to park the funds, and permit institutions that are short of funds (deficit institutions) to obtain funds. These contracts include:
+•   commodity murābaḥah transactions (CMT),4  which gives the fund provider a fixed return;
+•   murābaḥah ṣukūk;
+
+•   salam ṣukūk; and
+
+•   Sharī`ah-compliant repo-type transactions.
+
+
+34.      These  instruments  provide  an  Islamic  interbank  market  where  institutions  can exchange liquid funds on a short-term basis, such that the surplus institution receives the funds back with a return at maturity and the deficit institution receives the short-term liquidity it needs. These contracts can also be used for a central bank standing liquidity facility (SLF).5  An SLF gives institutions the means to obtain short-term (overnight or intraday) funds from the central bank against collateral. Institutions can use an SLF when they face a temporary liquidity shortage due to unexpected payment frictions. A wakālah contract can be used in an SLF context, to provide an institution with a short-term deposit facility with the
+central bank. This enables them to place, and earn a return on, their excess liquidity.
+
+
+
+
+
+
+
+
+3 GN-7: Guidance Note on Sharî`ah-Compliant Lender-Of-Last-Resort Facilities (December 2019)
+4 GN-2: Guidance Note in Connection with the Risk Management and Capital Adequacy Standards: Commodity
+Murābaḥah Transactions (December 2010)
+5 An SLF is different from emergency liquidity assistance (ELA).
+
+
+18
+2.4   Tools or Mechanisms to Use in Emergency or “Last Resort” Situations
+
+
+35.      These  mechanisms  are  sometimes  called  emergency  liquidity  assistance  (ELA). Central banks provide ELA to institutions that are facing serious liquidity problems but are considered viable, because they do not face other problems that would make them insolvent (see GN-7 and WP-01, which discuss ELA at length). In addition to the non-tradable instruments mentioned in subsection 2.3.2, qarḍ (interest-free loan) may be used.
+
+36.      In  sub-section  3.8  of  GN-7,  IFSB  suggests  the  following  Sharī’ah-compliant mechanisms that CBs could utilise to provide SLOLR:
+
+•   qarḍ with actual direct costs6 is used for overnight lending;
+
+
+•   collateralised CMT is used for intraday and short-term funding of up to one week;
+
+
+•   collateralised muḍārabah or wakālah are used to provide longer-term liquidity of up to
+
+30 days or longer (a form of mushārakah could also be used for this purpose);
+
+
+•   Sharī’ah-compliant repo can be used for longer-term funding of up to one year.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6  In this situation the IIFS must repay the central bank the amount it borrowed plus any administration fee charged by the central bank. This fee should be no more than the actual and direct administrative costs incurred by the central bank to make SLOLR funds available, and the central bank must not receive any additional benefit or profit from the fee. The fee should not include the opportunity cost or cost of funds. Kindly refer to IFSB GN-7.
+
+
+19
+Section 3: Issues and Challenges with Availability of Sharī`ah
+
+Compliant Liquidity-Risk-Management Tools
+
+
+3.1   Limited Supply of Short-Term Ṣukūk
+
+
+37.      Using ṣukūk is seen as preferable to other liquidity-management tools, such as CMT, as ṣukūk are mostly issued to finance real and specific projects, or are based on real assets. However, the volume of ṣukūk issued is still quite small and, in the case of some ṣukūk such as salam ṣukūk, not generally considered tradable in the secondary market, as this would involve bay’ al-dayn (sale of debt).
+
+38.      Several factors contribute to the relative illiquidity of ṣukūk. Although some ṣukūk are tradable, most are held to maturity because, compared with conventional instruments, they are considered to be in limited supply and offer attractive returns. Also, most of them are not traded on an exchange, but only traded over the counter.
+
+39.      This lack of market liquidity is often seen as the major constraint to developing an integrated Islamic financial system. The limited number of ṣukūk issued, the tendency for them to be held to maturity, their longer maturities, and their trading over-the-counter all make it difficult to have enough available to trade in the market. In addition, most ṣukūk issued by governments or the Islamic Development Bank have long-term maturities, since the projects they finance are mostly medium-term or long-term
+
+40.      It is important that governments or relevant authorities regularly issue a sufficient
+
+volume of Sharī`ah-compliant HQLA to build market liquidity.
+
+
+3.2   Insufficient Tools that Meet High-Quality Liquid Assets Criteria
+
+
+41.      HQLA can be easily converted to cash with little or no loss of value even during times of stress. HQLA are required to have fundamental, market-related characteristics, especially being low-risk, not volatile, and easy to value. HQLA should also be eligible for the intraday and overnight liquidity facilities that a central bank or other authority offers. However, in many jurisdictions IIFS cannot find  enough Sharī`ah-compliant  HQLA to  apply  for their liquidity buffer.
+
+42.      To  meet  Basel  III  LCR  requirements,  an  asset  must  either  be  HQLA  (in  the numerator of the LCR ratio) or have a residual maturity of no more than 30 days (providing a cash inflow to reduce the net cash outflow in the denominator). These criteria render many
+
+
+
+
+20
+SLRMT (such as CMT and interbank deposits of more than 30 days) unable to be used as
+
+HQLA.
+
+
+43.      According to a 2013 qualitative impact survey conducted by the IFSB, although most IIFS could meet the minimum LCR requirements, their HQLA were mainly coins and banknotes, and central-bank reserves (including their required reserves) that the banks’ policies allow them to draw down in times of stress. In some jurisdictions that have a relatively well-developed Islamic capital markets, IIFS may also hold Sharī`ah-compliant securities with zero credit-risk weight, that are issued or guaranteed by the sovereign or central bank. However, these make up a small proportion of the total HQLA, due to the limited supply of Sharī`ah-compliant instruments and – most importantly – the low level of trading in these instruments, even in normal market conditions.7
+
+44.      Even  in  countries  with  advanced  financial  services  industries,  the  conventional banking sector is experiencing a lack of HQLA that meet the stringent Basel III requirements for Level 1 and Level 2 assets. However, conventional banks can perform some activities to create liquid assets that meet the HQLA requirements. For example, they can collateralise both financial and non-financial assets, and undertake conventional repo transactions to generate liquidity,  which  IIFS cannot  do.  Similarly,  there  are  limited Sharī`ah-compliant alternatives to repos, due to several operational issues facing those transactions.
+
+3.3   Possible Excessive Dependence on Commodity Murābaḥah Transactions
+
+
+45.      IIFS use CMT when they have surplus liquidity, to earn a return from the excess cash they hold: they buy a commodity on a spot payment in the commodity market, then sell it on a deferred-payment basis with a markup on the market price. Similarly, IIFS that lack liquidity can buy a commodity in the commodity market on a deferred-payment basis with a markup on the market price, then sell it on a spot payment at market price (see Section 5 for more details of the use of this model).
+
+46.      The survey of market players shows IIFS are dependent on CMT. Responding to a question about which SLRMT they currently use in normal non-stressed conditions, 29 out of
+51 IIFS say they use CMT.
+
+47.      When  a  commodity  is  sold  or  bought  on  a  deferred-payment  basis,  the  asset becomes a debt, which cannot be traded from a Sharī’ah perspective. This lack of tradability
+
+
+
+7 GN-6: Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic
+Financial Services (April 2015)
+
+
+21
+significantly limits how useful the contract is to manage liquidity risk. Ideally, it should be possible to easily buy and sell the instrument on the secondary market to balance the bank’s liquidity position.
+
+3.4   Issues with Interbank Placements
+
+
+48.      The instruments traded in the conventional interbank market are usually short-term and liquid, with maturities ranging from one day to one year. Trading is wholesale and mostly conducted over the counter. An Islamic interbank money market would essentially perform similar functions, except its instruments must comply with Sharī`ah principles. Sharī`ah- compliant instruments that are widely used by IIFS for interbank liquidity management are based on muḍārabah, CMT, or wakālah arrangements. All these contracts are structured as unsecured  wholesale  funding.  However,  this  is  possible  only  in  countries  with  enough Islamic banks in the market.
+
+49.      Islamic  windows  of  conventional  banks  may  participate  in  Islamic  interbank transactions  provided there  is  no commingling  of  Sharī`ah  compliant  and  non-Sharī`ah compliant funds. In addition, Islamic windows of conventional banks can receive liquidity support from the parent bank provided this is done in a Sharī`ah-compliant manner.
+
+50.      The interbank deposit placement is, however, not a preferred way for Islamic banks –
+
+or indeed conventional banks – to manage their liquidity for two reasons:
+
+
+•   Deposits placed in other banks do not meet HQLA criteria (if the placement is for more than 30 days maturity). To meet the LCR set by Basel III, it is crucial to place excess liquidity in HQLA. Since Islamic banks that hold funds also face liquidity problems, interbank deposits are also subject to counterparty risk – the risk that the other Islamic bank cannot meet the obligation when it is due.
+
+•   Banks’ liquidity positions tend to move in a similar  manner, especially  during  a significant macroeconomic event. For example, during a recession most banks will be short of liquidity and interbank deposits will automatically cease to exist, as banks do not have excess funds to deposit.
+
+3.5   Shortage of Sharī`ah-Compliant Foreign-Currency Instruments
+
+51.      According to IFSB-12, studies by the Liquidity Risk Management Working Group show there are too few Sharī`ah-compliant foreign-currency hedging instruments or derivatives. This is a major constraint faced by IIFS wanting to effectively manage their foreign-currency-liquidity risk.
+
+22
+52.      Though a number of IIFS are using Islamic foreign currency swaps as well as forward transactions by way of a unilateral wa`d to hedge their foreign currency exposure, the utilisation of such mitigation tools remains limited. Authorities and IIFS need to focus on ways to design Sharī`ah-compliant alternatives to foreign exchange hedging and risk management arrangements. An IIFS cannot enter into a forward sale/purchase agreement; however, it can enter into a promise agreement to sell/purchase in order to sell/purchase foreign currencies in future.
+
+53.      As per the survey, 49% of IIFS use foreign-currency swaps to access a wider range of liquidity-risk-management tools in the money markets. Almost 50% of IIFS say they do not use swaps because most of these dealings in these markets are not permitted. Other reasons are that swaps are unnecessary, because the banks have sufficient liquidity, or that there are limited numbers of market players interested in such transactions. This means that foreign-exchange swaps are still not generally used, as to do so depends on them being permissible in the jurisdiction, which should ensure that these agreements fulfil Sharī’ah requirements as stipulated by relevant Sharī’ah boards in their jurisdiction.
+
+3.6   Lack of Reliable Sharī`ah-Compliant Lender-of-Last-Resort Facilities
+
+
+54.      IIFS tend to have large holdings of liquid assets because there are few reliable SLOLR facilities. SLOLR is key to helping IIFS meet short-term obligations when liquidity is disrupted. As IIFS continue to become an important part of many jurisdictions’ financial systems,  it  is  becoming  increasingly  important  that  central  banks  or  other  authorities establish reliable SLOLR facilities, to develop a more effective framework for IIFS to manage liquidity and crises.
+
+55.      SLOLR facilities include Sharī`ah-compliant collateralised financing and emergency financing, based on appropriate Sharī`ah-compliant contracts with SLOLR providers. Central banks should also evaluate, and where possible expand, the list of  Sharī`ah-compliant HQLA they consider eligible collateral for their SLOLR facilities. Requiring good collateral to use SLOLR facilities can be a problem for insolvent banks, as often they will have already liquidated these assets or used them to raise cheaper financing in the market. For more on
+SLOLR, see GN-7.
+
+
+
+
+
+
+
+
+
+
+
+
+23
+56.      Sharī`ah-compliant   deposit   insurance8    is   another   area   that   needs   attention. Supervisory authorities need  to improve the “stability” of the deposits and UPSIA, and reduce the risk of withdrawals occurring when there are adverse idiosyncratic or systemic events.
+
+3.7   Lack of Sharī`ah-Compliant Collateral
+
+
+57.     The availability of eligible Sharī`ah-compliant collateral – for SLOLR facilities in emergencies or  normal times  – is closely  linked  to  IIFS seeking  support from  liquidity facilities. In many jurisdictions where IIFS operate, Sharī`ah-compliant instruments, or ṣukūk issued by governments or supervisory authorities, are in short supply or unavailable.
+
+58.      In many cases it is outside the remit of supervisory authorities to issue new Sharī`ah- compliant instruments or ṣukūk, or expand their range and volume. However, supervisory authorities can expand the range of collateral they will accept from IIFS wanting liquidity support. This could include accepting Sharī`ah-compliant instruments or ṣukūk issued by public-sector enterprises, major national corporate bodies, multilateral institutions (such as the Islamic Development Bank), or other sovereigns and central banks.
+
+59.      Sharī’ah permits the financing provider to ask the recipient for a security. In some contracts  (this  includes  muḍārabah,  mushārakah,  and  wakālah),  the  appropriation  of collateral is restricted to negligence, misconduct, and breach of contractual conditions.
+
+3.8   Differing Interpretations of Sharī`ah Rulings
+
+
+60.      Different  interpretations of Sharī`ah rulings, fatāwā, on financial matters  has led jurisdictions to use different methods to structure or package financial instruments, or to not recognise some types of contracts. This affects the development of Islamic money markets, particularly across borders, and it also may affect IIFS with a global presence or subsidiaries in different jurisdictions.
+
+61.      There are differing Sharī`ah opinions on the underlying asset pool needed to trade certain ṣukūk in the secondary market. Some Sharī`ah scholars are comfortable if one-third of the ṣukūk face value is based on physical assets; others require 51-70% of the face value to be physical assets. There are also Sharī`ah issues with selling debt to a third party and
+with securitisation of receivables for debt trading (bay` al-dayn), as in murābaḥah ṣukūk.
+
+
+8 International Association of Deposit Insurers & Islamic Financial Services Board. (2021). Core Principles for Effective Islamic Deposit Insurance Systems. https://www.ifsb.org/download.php?id=6065&lang=English&pg=/published.php
+
+
+24
+Sharī`ah scholars do not generally permit cash debt to be sold for cash or bay` al-dayn, but transferring debt at face value is allowed. It is considered hawālah and not a sale.
+
+3.9   Other Issues and Challenges
+
+
+62.      The survey of regulatory and supervisory authorities (RSA) shows that various types of Sharī`ah-compliant instruments are being used in different jurisdictions. These include wadi`ah; Islamic treasury bills and interbank bills;  sovereign ṣukūk; central-bank ṣukūk, murābaḥah, ijārah ṣukūk, and CMT. Several types of investors purchase government instruments; they come mainly from commercial banks, investment banks, Islamic windows, and insurance companies. Underlying assets (such as projects, commodities, infrastructure, and government buildings and assets) also vary, and the tenor of instruments can be a week to several years. The survey results also showed that usually, the only collateral is that provided by a third party, and that almost all instruments are tradable, although there are Sharī`ah restrictions on debt-based instruments, which are only tradable when they comply with Sharī`ah requirements on trading debt.
+
+63.      The survey results show the main challenges with SLRMT are that interbank, money, and capital markets are absent or too limited, because:
+
+•   the Islamic banking sector is still developing;
+
+
+•   local  instruments  are  not  accepted  in  other  markets  due  to  different  Sharī`ah
+
+opinions;
+
+
+•   there is no robust SLRMT that Islamic banks can use to manage liquidity risk; and
+
+
+•   there are few Islamic instruments that are HQLA, with the required features of being tradable and low-risk, and providing a predictable return.
+
+64.      According  to  the  survey  results,  several  RSAs  plan  to  develop  new  tools, mechanisms, or instruments to manage liquidity risk. These include:
+
+•   issuing sovereign ṣukūk that will act as a capital market instrument;
+
+
+•   issuing liquidity-risk-management tools related to macroprudential regulations;
+
+
+•   continuing to work with the national Sharī`ah board to find alternative  Sharī`ah- compliant instruments;
+
+•   establishing a Sharī`ah-compliant central-bank deposit facility;
+
+25
+•   designing Sharī`ah-compliant financial facilities for Islamic banks; and
+
+
+•   developing Sharī`ah-compliant products and tools to manage liquidity, for Islamic
+
+Banks and windows.
+
+
+65.      In the survey, the IIFS say the main challenges they face with SLRMT are:
+
+
+•   limited or no Sharī`ah-compliant instruments and mechanisms;
+
+
+•   an underdeveloped interbank market for Islamic instruments;
+
+
+•   a shortage of tradable instruments;
+
+
+•   Sharī`ah restrictions on certain concepts and tools; and
+
+•  differences   in   some   Sharī`ah   interpretations,   which   limits   the   number   of counterparties they can deal with (this applies usually to countries with no central Sharī`ah                                                                                                               board).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26
+Section 4: Important Measures for Sharī`ah-Compliant Liquidity- Risk-Management Instruments
+
+4.1   Instruments and Ṣukūk Issued by Governments and Central Banks
+
+
+66.      In TN-1, the IFSB makes these recommendations to develop the Islamic money market:
+
+•  Design simple Islamic money-market and government-financing instruments that are relatively low-risk, regularly issued, widely held, and supported by a robust payment and settlement system.
+
+• Make Islamic government-financing instruments an integral part of the overall programme  for  public  debt  and  financing,  and  foster  an  Islamic  government- securities market.
+
+•   Actively  use  Islamic  government-financing  instruments  in  central  banks’  market- based monetary operations, to manage liquidity in the Islamic money market.
+
+•   Develop efficient trading arrangements, and the associated market microstructure, for Islamic money-market and government-financing instruments, and develop the foreign-exchange markets in parallel.
+
+67.      Governments may sometimes be reluctant to issue ṣukūk, if they do not need to borrow from  the markets  due to  a fiscal surplus,  or  issuing  ṣukūk  has  more  stringent requirements  than  conventional  bonds.  Governments  need  to  be  reminded  that  a government ṣukūk market can play a key role in setting the yardstick for the rest of the Islamic capital market.
+
+4.2    Compatibility with HQLA Requirements
+
+
+68.      GN-6 defines HQLA as assets unencumbered by liens and other transfer restrictions, so they can be easily and immediately converted into cash, with little or no loss of value, including in a stress situation.
+
+69.      Financial instruments are categorised as HQLA based on a combination of qualitative criteria, risk weights, external credit ratings, and the size and activity of the market. To be HQLA, assets should be low-risk, have a low correlation with risky assets, be easy to value, and have low price volatility. Of the proposed SLRMT, more should be classified as HQLA to
+meet Basel III requirements.
+
+27
+70.      In GN-6, the IFSB recommends that governments, or relevant authorities, regularly issue a sufficient volume of Sharī`ah-compliant HQLA to build market liquidity. Most jurisdictions do not incorporate government Sharī`ah-compliant instruments into their regular issuance arrangements. However, as the government is a major issuer, it can, in principle, regularly issue a sufficient volume of financing instruments in standard maturities. This would provide the base for a liquid, deep and active market in these instruments, which would comply with HQLA requirements.9
+
+71.      Ideally, central banks should accept HQLA as collateral from IIFS, when they are seeking short-to-medium-term liquidity facilities. In some instances, and given lack of market maturity and breadth, there may be challenges in maintaining HQLA in local currencies which means the only option for the IIFS is placing a significant balance with the central bank in order to meet LCR requirements on a consolidated level. The other challenge may be  in  maintaining  HQLA  and  especially  Level  I  assets  in  significant  currencies  LCR  if required by the central bank.
+
+Table 1: Types of High-Quality Liquid Assets
+
+
+
+Coins and banknotes
+A. Level 1 Assets:                                                      Factor
+
+Qualifying central bank reserves (including required reserves)
+
+Qualifying ṣukūk and other Sharī`ah-compliant marketable securities issued or guaranteed by sovereigns, central banks, public-sector entities, multilateral development banks, or other relevant international organisations assigned a
+0% risk weighting for credit risk under IFSB-15
+
+Qualifying domestic currency ṣukūk and other Sharī`ah-compliant marketable securities issued by sovereigns or central banks that have a non-0% risk weight
+
+Qualifying foreign-currency ṣukūk and other Sharī`ah-compliant marketable securities issued by sovereigns or central banks that have a non-0% risk weight
+
+B. Level 2 Assets (no more than 40% of HQLA) Level 2A Assets
+Sharī`ah-compliant marketable securities issued or guaranteed by sovereigns,
+central banks, public-sector entities, multilateral development banks or other relevant international organisations that qualify for a 20% risk weighting for
+
+
+
+100%
+credit risk under IFSB-15                                                                                                       85%
+
+Qualifying Sharī`ah-compliant securities (including commercial paper) and
+ṣukūk that satisfy all of the conditions
+
+Level 2B Assets (no more than 15% of HQLA)
+
+Qualifying ṣukūk and other Sharī`ah-compliant securities                                                    75%
+
+
+9 GN-6: Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic
+Financial Services (April 2015)
+
+
+28
+Qualifying Sharī`ah-compliant equity shares                                                                         50%
+
+Qualifying other Sharī`ah-compliant liquidity instruments that are widely
+recognised in the jurisdiction                                                                                                 50%
+
+Total Value of HQLA Stock
+
+4.3   Variety and Diversity of Instruments
+
+
+72.      Liquidity-risk-management instruments are not all the same. They differ in terms of the reason for issue and their issuer, tradability, and duration. The proposed SLRMT are supposed to cover all these aspects (see table 2).
+
+Table 2: Characteristics of Liquidity-Management Instruments
+
+Characteristic                                         Variety of Characteristic
+
+Need or purpose                Investing excess liquidity for a return
+Funding a shortage of liquidity
+
+Maturity                              Overnight
+Less than 30 days Less than 90 days Up to one year
+Issuer                                 Islamic banks (interbank)
+Central banks (open market operations (OMO), SLOLR) Multilateral institutions
+
+Tradability from
+Sharī`ah perspective
+
+Tradable if based on equity-based or ijarah contracts
+Non-tradable (in most jurisdictions) if based on debt contracts
+
+Degree of liquidity              Highly liquid
+Less liquid
+
+Currency                            Local currency
+Foreign currency (Sharī`ah-compliant forex contract) Security                              Secured instruments
+Unsecured instruments
+
+
+
+4.4   A Sharī`ah Perspective on Tradability
+
+
+73.      Certain designs of SLRMTs have limitations in terms of their tradability restricting their use as money market instruments and for open market operations by central banks. Instruments must comply with certain Sharī`ah rules and conditions to be tradable. This includes that the sale of the asset should result in its associated risks and ownership being transferred. The conditions cannot stipulate that the seller will be held liable for risks associated with the asset at any stage of the process except for unapparent defects which
+shall be borne by the seller.
+
+
+
+29
+74.      Tangible assets and other like assets must dominate the total value of the underlying asset pool of the instrument issued. On the issues of the tradability of receivables-based ṣukūk, IFSB-23 states (see paragraph 614):
+
+“While ṣukūk based on receivables are not tradable and cannot be used to issue [tradable] ṣukūk on their own, [financial assets] may be combined in a pool with non-financial assets that can act as a basis for tradable ṣukūk, provided the proportion of non-financial assets (neither debt nor cash) in the pool is not less than a certain acceptable minimum ratio, in accordance with Sharīʻah rules and principles. However, it is important to note that if the securitised portfolio consists of non-monetary and monetary assets and the latter were incidental and commingled with the former in the overall portfolio, the tradability of such ṣukūk is permissible. However, if there is no commingling and the monetary and non- monetary assets were in two separate portfolios that were combined to justify its tradability, then such a practice is not considered Sharīʻah-compliant.”
+
+4.5   Interaction Between Liquidity Risk and Other Risks
+
+
+75.      The proposed SLRMT should consider the interaction between liquidity risk and other risks. IIFS experience various types of risks, which interact with liquidity risk in different ways in normal and stressed conditions. Credit risk can transform into liquidity risk, if the IIFS faces major defaults in its financing and investment asset portfolio. If the quality and creditworthiness of the portfolio (asset quality) are uncertain, it can be difficult for the IIFS to obtain funding from the market or re-sell an eligible asset portfolio to another IIFS.
+
+76.      Across jurisdictions, murābaḥah, or other debt-based modes of financing make a large proportion of IIFS financing portfolios. Therefore, in most jurisdictions these portfolios cannot be resold in the market due to Sharī`ah restrictions on selling debt. In many jurisdictions,  the  lack  of  market  depth  for  Sharī`ah-compliant  instruments  and  ṣukūk increases the market risk for IIFS.
+
+77.      With  regard  to  debt-based  assets,  during  stressed  conditions  an  IIFS  may collateralise such assets in a transaction to generate liquidity, but as such assets are not tradable in most jurisdictions it may have difficulty in finding a counterparty. Likewise, in most jurisdictions an IIFS cannot, from Sharīʻah perspective, sell such assets to generate liquidity. If the IIFS also experiences a reputational problem due to perceived Sharī`ah non- compliance or fiduciary risk, this could result in fund providers (such as current or profit- sharing investment account holders), withdrawing their funds, further increasing the liquidity
+risk for the IIFS. It is crucial that IIFS take this into consideration when rolling out SLRMT, to
+
+
+
+30
+ensure the instruments are more effective in managing other types of risks, beside their main purpose of managing liquidity risk.
+
+78.      While foreign exchange (FX) risk is distinct from liquidity risk, certain liquidity risk tools involve exposure to FX risk. For example, certain Sukuk are denominated in USD, so that their use entails exposure to the risk of holding USD vis-à-vis the domestic currency. These exposures may be hedged using Sharī`ah-compliant methods, explained and illustrated in Sub-section 5.5 below.
+
+4.6   Securitisation of Assets
+
+
+79.      Securitisation of financing and investment assets is an important technique used by financial institutions globally to manage liquidity, free up assets from the balance sheet, raise new funds, and reduce their risk exposure. It also helps financial institutions meet the demands of financing, by creating new financial products that disengage, customise, repackage, and distribute the asset risk to various investors.
+
+80.      Financial institutions can also use securitisation to diversify their funding base, by reducing the credit constraints they face due to capital-adequacy and asset-concentration limits imposed by supervisory authorities. Securitisation helps them transform their assets into instruments that they can place with institutions with a longer risk horizon and greater risk appetite, such as mutual funds, insurance companies, pension funds, and other institutional investors.
+
+81.      Nonetheless, many jurisdictions have not widely adopted securitisation as a funding source.  As  per  the  survey,  49%  of  IIFS  consider  using  Islamic  asset  securitisation techniques for managing their liquidity needs. There are several reasons for this lack of interest by IIFS to securitise their assets:
+
+•  the higher cost of Islamic asset securitisation as compared to its conventional counterpart, due to the involvement of various parties, such as a Sharī`ah advisor, guarantor, and consultant;
+
+•   the lack of an adequate, relevant legal and regulatory framework;
+
+
+•  the high cost to replace securitised assets (for example, if the assets belong to the government);
+
+•   limited tradability, given that a large proportion of their assets are receivables (such as murābaḥah), so securities based on them cannot be traded in most markets; and
+
+31
+•   their extra liquidity (for example, if they already hold cash for liquidity purposes), which minimises any incentive to securitise their assets.
+
+82.      IFSB-12 guiding principles, however, acknowledge that several jurisdictions have improved  the  legal  and  regulatory  framework,  and  tax  regulations.  They  have  also established new IIFS, which may trigger existing organisations to consider securitising their assets, due to the increased number of market players. Securitisation can help IIFS better manage their liquidity and capital needs, and augment liquidity in the financial markets
+where they operate.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+32
+Section 5: Different Models for Sharī`ah-Compliant Liquidity-Risk- Management Tools
+
+83.      Central banks should encourage the issuance of tradable Islamic instruments that are suitable for central banks’ monetary management and IIFS’ liquidity management.
+
+84.      Central banks use OMO to manage liquidity in the market, and to make optimum use of idle funds in the economy. These operations include repos with the central bank, statuary reserve requirements as a predefined percentage of a bank’s deposits, and acceptance of deposits from banks. Banks use these facilities to manage their liquidity and earn a return on these highly liquid facilities. It is crucial that for the purpose of OMO that central banks should  include  Sharī’ah-compliant  instruments  that  can  be  used  in  outright  sale  and purchase transactions. Although most central banks use OMO and OMO-type operations, only some have adapted them to accommodate transactions with IIFS.
+
+85.      In addition to mechanisms that allow IIFS to earn a return on surplus funds through transactions  with  the  central  bank,  other  mechanisms  enable  IIFS  to  obtain  overnight liquidity support from the central bank or an SLF, where the central bank acts as a SLOLR (this is described in GN-7). Providing funds as an SLOLR should be at a rate higher than market rates to ensure that banks see a lender-of-last-resort facility as economically unattractive and use it only when necessary. At the same time, the rate should not be so high that it burdens banks already facing liquidity shortages, which would then become counterproductive.
+
+86.      Section 5 discusses several Sharī’ah-compliant mechanisms that central banks could use to provide SLRMT. This is not intended to be exhaustive coverage of potential SLRMT, or indicate preference for any of the structures and contracts described. It will also provide models used in Islamic interbank instruments, and short term ṣukūk and certificates.
+
+5.1   Models for Deposits with Central Banks
+
+
+87.      This sub-section discusses four deposit models that central banks can offer IIFS to help them manage surplus liquidity.
+
+5.1.1     Qarḍ
+
+88.      By accepting Qarḍ Hasan, a central bank manages liquidity in a surplus-liquidity environment by inviting an IIFS to place its surplus funds with it and applying all Sharī`ah
+
+
+
+
+33
+rulings on qarḍ (see figure 1). The purpose of this transaction is safekeeping the IIFS’
+
+excess funds.
+
+
+Figure 1: Qarḍ
+
+
+Central bank
+
+
+
+
+
+
+IIFS deposits excess funds with central bank
+1
+2
+
+
+Central bank pays back funds to IIFS on maturity date
+
+
+
+
+IIFS
+
+
+
+Flow of funds
+
+
+
+
+
+5.1.2     Wakālah Central Bank Deposit Model
+
+
+89.       A wakālah contract is an agreement between a central bank (the agent or wakil) and the IIFS (the principal, and fund provider or muwakkil) (see figure 2). The central bank can set up a separate Sharī`ah-compliant investment fund to manage and invest wakālah funds. This investment fund is a pool of assets that are regularly defined in terms of their size, yield, and composition. The pool of assets consists of defined ṣukūk, banknotes, and other Sharī`ah-compliant assets. The central bank can offer profit rates equivalent to those it offers conventional banks. The fund is exposed to profit-rate risk, as the ex-post rate of return generated by the pool of ṣukūk can be lower than the ex ante offered rate. The fund can contain ṣukūk that are denominated in local currency or foreign currency (such as USD). Ṣukūk denominated in foreign currency will expose the fund to foreign-exchange risk.
+
+90.      To help calculate the profit earned by the Sharī`ah-compliant fund, ideally it should consist of non-financial assets that have a predictable return, such as ijārah ṣukūk.
+
+
+
+
+
+
+
+
+
+34
+Figure 2: Wakālah Central Bank Deposit Model
+
+
+Sharī`ah-compliant fund
+
+
+
+Central bank sets up Sharī`ah-compliant fund to manage and invest wakālah funds
+
+3
+
+
+
+
+Central bank (wakil)
+
+
+
+IIFS places excess funds with the central bank
+
+2
+
+IIFS appoints central bank as agent (wakil) and pays wakālah fees
+1
+4
+
+On maturity date, central bank pays back funds to IIFS with profit
+
+
+IIFS (muwakkil)
+
+
+
+Flow of funds
+
+Appoint as agent
+
+
+
+
+5.1.3     Wakālah Certificates of Deposit
+
+
+91.      A central bank can issue short-term wakālah certificates of deposit (CD) to absorb liquidity from the market and give IIFS an opportunity to deploy idle funds in an HQLA that will generate a return. Wakālah CD can be tradable between market players, and would help a more liquid money market to develop. A central bank can use the same structure as the Wakālah Central Bank Deposit Model (see figure 2) to issue CD. For CD to be tradable, they must comply with Sharī`ah rules on the sale of debt.
+
+5.1.4     Commodity Murābaḥah Central Bank Deposit Model
+
+92.      In response to the survey, 57% of IIFS say they use CMT to manage liquidity risk. CMT is based on the Tawarruq principle, which is a contract based on murābaḥah (a sale contract with a disclosed cost and profit markup). IIFS can deposit excess funds with the central bank using this Commodity Murābaḥah Central Bank Deposit Model. The model involves trading commodities contracts in a commodity market. The central bank buys a
+
+
+35
+commodity from an IIFS based on a murābaḥah contract that has a disclosed cost and profit markup on a deferred payment. The central bank sells the commodity on spot after it takes real or constructive delivery. On the maturity date, the central bank pays the IIFS as per the agreed murābaḥah terms, which specify the sale price including the profit markup (see figure
+3).10
+
+
+Figure 3: Commodity Murābaḥah Central Bank Deposit Model
+
+
+Broker B
+
+
+3
+
+Central bank sells the
+commodity to Broker B on spot
+
+
+3
+
+
+
+
+
+IIFS sells the commodity to the central bank on a deferred payment basis with a disclosed mark-up
+
+2
+Central bank
+
+
+
+
+4
+
+
+On maturity date, central bank pays back funds to IIFS with mark-up
+
+
+IIFS
+
+
+
+1
+
+IIFS buys a commodity from Broker A on spot
+
+1
+
+
+
+
+Broker A
+
+
+
+
+Flow of funds
+
+Flow of commodity
+
+
+10 For detail information on CMT, please refer to GN-2
+
+
+36
+5.2   Models for Obtaining Funds from a Central Bank
+
+
+93.      There are various models for enabling IIFS to obtain funds from a central bank, such as using Sharī`ah-compliant alternatives to repos. A central bank may offer SLF to IIFS, which provides short-term liquidity funding against unencumbered securities as collateral. These securities can be sovereign ṣukūk, corporate ṣukūk, central bank Treasury bills, and commercial papers.
+
+94.       Repos are generally used to generate liquidity for short periods. Central banks can develop Sharī`ah-compliant alternatives to repos, based on government finance instruments and using Sharī`ah-compliant securities, such as ṣukūk. Central banks can use these instruments for market-based monetary operations, and integrate them into their SLF design.
+
+95.      Sharī`ah-compliant  alternatives  to  repos  could  support  a  secondary  market  for Islamic financial instruments. Developing a secondary market would enhance the liquidity of the instruments and provide IIFS with an additional source of liquidity.
+
+96.      It  should  be  noted  that  using  securities  that  are  HQLA  in  Sharī`ah-compliant alternatives to repos would render such securities encumbered and hence ineligible as HQLA for the duration of the transaction. Thus, securities that are not HQLA are preferable in such transactions.
+
+5.2.1     Commodity Murābaḥah Central Bank Funding Model
+
+
+97.      Central banks can use this model to fund IIFS in their jurisdictions. The model’s structure is similar to the Commodity Murābaḥah Central Bank Deposit Model (see figure 3). The IIFS approaches the central bank for short-term liquidity funding. The central bank sells a commodity to the IIFS based on a murābaḥah contract that has a disclosed cost and profit markup on a deferred payment. The IIFS sells the commodity to a commodity broker to realise cash on spot. On the maturity date, the IIFS pays the central bank on the agreed murābaḥah  terms  (see  figure  4).  Central  banks  should  be  mindful  of  brokerage  fees
+associated with executing CMT, and factor them into their profit mark-ups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+37
+Figure 4: Commodity Murābaḥah Central Bank Funding Model
+
+
+Broker A
+
+
+2
+
+Central bank buys a commodity from Broker A on spot
+
+2
+
+
+
+Central bank
+
+3
+
+Central bank sells the commodity to the
+IIFS on a deferred payment basis with a disclosed mark-up
+
+
+IIFS approaches central bank for funding, and undertakes to purchase a commodity
+
+1
+
+On maturity date, IIFS pays back funds to the central bank with mark-up
+
+5
+
+IIFS
+
+
+
+4
+
+IIFS sells the commodity to Broker B on spot
+
+4
+
+
+
+Broker B
+
+
+Undertaking to purchase
+
+Flow of funds
+
+Flow of commodity
+
+
+
+
+5.2.2     Collateralised Commodity Murābaḥah Central Bank Funding Model
+
+
+98.      Central banks can use collateralised commodity murābaḥah to provide IIFS with short-term funding. The model’s structure is similar to the Commodity Murābaḥah Central Bank  Funding  Model  (see  figure  4),  which  also  provides  IIFS  with  short-term  liquidity
+funding. The main difference is that the IIFS provides the central bank with collateral as
+
+
+38
+security to cover the deferred-payment obligation under the murābaḥah contract (see figure
+
+5). Security can be ṣukūk, or any other eligible securities defined by the central bank. In the event that the IIFS defaults, the central bank may liquidate the securities to recover the selling amount.
+
+Figure 5: Collateralised Commodity Murābaḥah Central Bank Funding Model
+
+
+Broker A
+
+
+2
+
+Central bank buys a commodity from Broker A on spot
+
+2
+
+
+
+Central bank
+
+
+
+3
+
+Central bank sells the commodity to
+
+
+IIFS provides
+the central bank with eligible
+collateral
+
+
+
+IIFS approaches central bank for funding, and undertakes to purchase
+
+
+
+5
+
+Central bank
+On maturity date,
+IIFS pays back funds to the central bank with mark-up
+
+5
+IIFS on a deferred                   3
+payment basis with a
+disclosed mark-up
+a commodity
+
+1
+returns collateral
+to the IIFS
+
+
+
+IIFS
+
+
+
+4
+
+IIFS sells the commodity to Broker B on spot
+
+4
+
+
+
+Broker B
+
+
+Undertaking to purchase
+
+Flow of funds
+
+Flow of commodity
+
+Flow of collateral
+
+
+
+39
+5.2.3     Qarḍ Central Bank Overnight and Intraday Funding Model
+
+
+99.      A central bank can use qarḍ to give IIFS the opportunity to raise cash to fund their intraday or short-term liquidity requirements (see figure 6). Because the IIFS does not pay a return to the central bank on the qarḍ, this mechanism is suitable only for overnight or intraday liquidity relief. The central bank can ask for collateral as security to cover the deferred-payment obligation under the qarḍ contract. Security can be ṣukūk, or any other eligible securities defined by the central bank. In the event that the IIFS defaults, the central bank may liquidate the securities to recover the qard amount.
+
+100.    IFSB GN 7, Paragraph 78 notes:
+
+
+“A qarḍ mechanism is therefore simple to execute, but the implications of its low financial cost to IIFS could render it unsuitable for SLOLR (and particularly for standing facilities). However, it could be necessary to utilize such a mechanism in idiosyncratic situations such as ELA in the absence of alternative structures.”
+
+Figure 6: Qarḍ Central Bank Overnight and Intraday Funding Model
+
+
+Central bank
+
+
+
+
+
+1a
+
+
+Central bank provides funding to IIFS
+
+IIFS provides
+central bank with            2a
+eligible collateral
+
+1b                On maturity date, central bank returns
+collateral to the IIFS
+On maturity date,
+IIFS pays back funds to the central bank
+
+2b
+
+
+
+IIFS
+
+
+
+Flow of funds
+
+Flow of collateral
+
+
+
+
+5.2.4     Sell and Buy Back (Sharī`ah-compliant Repo) Model
+
+101.    In this model, an IIFS that needs to raise short-term liquidity offers to sell securities to the central bank. Security can be ṣukūk, or any other eligible securities defined by the
+
+
+40
+central bank. The IIFS makes a unilateral promise (wa`d) to buy back the security at a later date at a price both parties agree on at the time of repurchase. The sales and buy-back contracts are independent of each other, to prevent bay` al-`īnah-based transactions. When the sales contract concludes, the ownership of the security is transferred to the central bank. On the agreed date, the IIFS executes its promise to buy back the securities under the buy- back contract, using the price agreed to at the time of repurchase (see figure 7).
+
+102.    This instrument can provide an SLOLR facility. In that case the central bank should impose a punitive or dissuasive element, so that the IIFS sees the instrument only as a last resort and not a normal means of funding. This can be achieved by setting a higher-than- normal price for the securities that the IIFS buys back.11
+
+103.    There are certain Sharī`ah conditions on the execution of wa`d to purchase. The seller is permitted to sell and unilaterally make a promise to repurchase, or the buyer is permitted to unilaterally make a promise to sell, if they follow these parameters:
+
+•   The second contract is made after such a time that the asset’s characteristics or
+
+value are usually changed.
+
+
+•   Both the sales and buy-back contracts must be made on spot payment.
+
+
+•   The promise to repurchase or re-sell must be documented separately and linked to the sales contract.
+
+•   The ownership transfer shall be affected at the time of promise execution rather than merely by the promised document.
+
+•   The second party shall not be under any obligation to enter into the second contract by law or customary practice or collaboration, or the like.
+
+•   If either party infringes on their promise to the other party, the promisee has the right to claim compensation for the actual damage incurred as a result of the infringement. The actual damage does not include the loss of profit in the promised price. The
+promisor cannot commit to pay part of the price as a condition of the agreement.
+
+
+
+
+
+
+
+
+11 For more details on SLOLR, refer to GN-7 (subsections 3.5 and 3.7) and diagram 5 in the appendix.
+
+
+41
+Figure 7: Sell and Buy-Back (Sharī`ah-compliant Repo) Model
+
+
+Central bank
+
+
+
+1
+
+IIFS sells a security to the central bank and receives funds
+
+1
+
+
+IIFS promises (wa`d) to buy back the security at a later date using a price agreed by both parties at that time
+
+
+2
+3
+
+On the agreed date, central bank sells the security back to the IIFS at the agreed price
+
+3
+
+IIFS
+
+
+
+
+
+Flow of funds
+
+
+Flow of security
+
+
+Wa`d
+
+
+5.2.5     Wakālah Model for Using Collateral for Central Bank Funding
+
+
+104.    IIFS can use this model to obtain short-term funding from a central bank. The IIFS pledges eligible securities, which the central bank can predefine, as collateral with the central bank to hedge against negligence and misconduct by the IIFS. The central bank (principal, fund provider, and “muwakkil”) and the IIFS (agent and “wakil”) make an agency agreement to invest the funds in Sharī`ah-compliant investments. The central bank then deposits the funds in the IIFS account. The central bank has to pay an agency “wakālah” fee to the IIFS (this would usually be a low fee). When the investment matures, the central bank receives its funds back with profit based on the actual performance of the investment. The IIFS gets its securities back and any profit made on the investment above the expected rate of return if that was stated in the contract (see figure 8). To estimate the return for a shorter period than the IIFS’ accounting period, the return for the accounting period when the investment was made is divided by the duration of the investment period and multiplied by
+the investment amount.
+
+
+
+
+
+
+
+
+42
+Figure 8: Wakālah Model for Using Collateral for Central Bank funding
+
+
+Central bank (muwakkil)
+
+
+
+
+3
+
+Central bank deposits funds with IIFS
+2
+IIFS approaches the central bank for short- term funding and provide securities to be
+pledged
+
+
+4
+
+On maturity date, IIFS
+1
+Central bank appoints the IIFS as agent (wakil) and pays wakālah fee
+pays back funds to the
+central bank with profit, and gets its securities back
+4
+
+
+
+IIFS
+(wakil)
+
+
+Flow of funds
+
+Flow of security
+
+Wakālah agreement
+
+
+
+
+
+
+5.3   Islamic Interbank Instruments
+
+
+105.    Interbank deposits play a vital role in helping IIFS manage liquidity. Due to the small number and size of IIFS, there are currently limited interbank instruments available. The current options include placing or accepting funds with counterparties on a muḍārabah, wakālah bi al-istithmar or CMT basis.
+
+106.    Interbank and financial instruments allow banks that have a surplus of funds to channel their funds to other banks. This maintains the liquidity and funding mechanism needed to keep the banking system stable.
+
+5.3.1     Muḍārabah Model for Interbank Investment
+
+107.    The classic muḍārabah contract can be used for interbank deposits. An IIFS facing a deficit in liquid funds (IIFS A) can request funds from another IIFS with surplus funds (IIFS B), based on a muḍārabah contract. In this case, IIFS A is the investee and manager
+
+
+43
+(muḍārib) and IIFS B is the capital provider (rabb al-māl). The funding can be for a short period. Both IIFS agree on a profit-sharing ratio. The rate of return the investee pays to the capital provider is based on the actual profit made during the investment period. At the end of the investment period, IIFS A returns the capital to IIFS B with its share of profit (see figure 9).
+
+108.    In this model, the same issue of calculating the “actual profit” can arise, as with the Wakālah Model for Using Collateral for Central Bank Funding. In this case, to estimate the return for a shorter period than the IIFS accounting period, the return for the accounting period when the investment was made is divided by the duration of the investment period and multiplied by the investment amount.
+
+Figure 9: Muḍārabah Model for Interbank Investment
+
+
+
+IIFS B (rabb al-māl)
+
+
+
+2
+
+
+IIFS B places capital funds with IIFS A
+
+
+1
+
+IIFS A and B sign a muḍārabah agreement that indicates the investment period and profit- sharing ratio
+
+
+On maturity date, IIFS A pays back funds to IIFS B with its share of profit
+
+3
+
+
+
+
+IIFS A (muḍārib)
+
+
+
+
+Flow of Funds
+
+muḍārabah agreement
+
+
+
+
+5.3.2     Wakālah Model for Interbank Investment
+
+
+109.    A  wakālah  contract  may  be  used  between  Islamic  banks  to  finance  short-term liquidity. An IIFS with excess funds (muwakkil) can appoint the bank that is short of funds as agent (wakil) to invest funds on its behalf for a certain period and for certain wakālah fees. The contract specifies the expected return on the investment that the wakil will pay the muwakkil when the investment matures. The return paid should be based on the actual
+investment profit; if the return exceeds the expected return, it will be paid to the wakil (see
+
+44
+figure 10). When the muwakkil deposits funds with the wakil it is exposed to counterparty credit risk. As per the wakālah contract, it also bears all the risk associated with the wakil’s investment of the funds, except any losses that result from its negligence or misconduct.
+
+110.    In this model, the same issue of calculating the “actual profit” can arise, as with the Wakālah Model for Using Collateral for Central Bank Funding and Muḍārabah Model for Interbank Investment. In this case, to estimate the return for a shorter period than the IIFS accounting period, the return for the accounting period when the investment was made is divided by the duration of the period and multiplied by the investment amount.
+
+Figure 10: Wakālah Model for Interbank Investment
+
+
+IIFS with excess funds
+(muwakkil)
+
+
+
+2
+
+Muwakkil deposits funds with wakil
+
+
+1
+
+Muwakkil appoints wakil
+and pays wakālah fees
+On maturity date, wakil pays back funds muwakkil with expected return
+
+3
+
+
+
+
+IIFS short of funds
+(wakil)
+
+
+Flow of Funds
+
+Flow of Funds
+
+5.3.3     Commodity Murābaḥah Interbank Deposit Model
+
+
+111.    Islamic banks can use this model to mobilise funds between banks. The model involves two different brokers performing the transaction to avoid bay` al-`īnah. The bank that is short of cash (IIFS A) will instruct a bank with excess cash (IIFS B) to buy a commodity for a specific amount on its behalf. IIFS A signs an undertaking to purchase the commodity (wa`d bi shira’) from IIFS B. IIFS B buys the commodity on spot from Broker A and then sells it to IIFS A using a murābaḥah agreement with a disclosed cost and profit markup on a deferred-payment basis. As the new owner of the commodity, IIFS A sells it to Broker B and receives cash. When the investment matures, IIFS A pays the total amount
+due to IIFS B (see figure 11).
+
+
+
+
+
+45
+Figure 11: Commodity Murābaḥah Interbank Deposit Model
+
+
+Broker A
+
+
+2
+
+IIFS B buys commodity from
+Broker A
+2
+
+
+
+IIFS B
+
+IIFS A instructs IIFS B to buy a certain amount of commodity, and signs an undertaking to purchase
+
+1
+
+3
+
+IIFS B sells commodity to IIFS A on a deferred-payment
+basis with a disclosed cost and markup
+
+
+On maturity date, IIFS A pays total amount to IIFS B
+
+5
+
+
+IIFS A
+
+
+4
+
+IIFS A sells commodity on spot to
+Broker B and receives cash
+
+4
+
+
+Broker B
+
+Flow of funds
+
+Flow of commodity
+
+
+Purchase undertaking
+
+
+5.3.4     Muḍārabah Interbank Investment Certificates
+
+
+112.    Muḍārabah Interbank Investment Certificates are money-market instruments that an IIFS can issue if it is facing a shortage of liquidity for 30 to 365 days. These certificates are based on muḍārabah. They can be issued in local currency or foreign currency (such as USD) and can be offered to conventional and Islamic banks. The certificates are tradable before the maturity date. The issuer (IIFS A) specifies the nominal value of the investment
+certificate, the profit-sharing ratio, and the investment maturity. When the certificates mature,
+
+
+
+
+46
+the issuer repays the certificate holder (IIFS B) with a profit share based on the return earned for the investment period and the profit-sharing ratio (see figure 12).
+
+113.    As with other instruments based on profit-sharing contracts, there can be an issue calculating the profit if the investment period is shorter than the issuing bank’s accounting period. In this case, the return for the accounting period when the investment was made is divided by the duration of the investment period and multiplied by the investment amount. However, in some cases the certificate holders, as rabb al māl, may pay the issuing bank (muḍārib) its share of profit monthly. This avoids the need to estimate the profit, as long as the tenor of the certificates is at least one month.
+
+Figure 12: Muḍārabah Interbank Investment Certificates
+
+
+IIFS A (issuer)
+
+
+
+4
+
+
+On maturity date, IIFS A pays back funds to IIFS B with its share of profit
+1
+
+IIFS A issues muḍārabah certificates indicating the nominal certificate value, investment period and profit-sharing ratio
+
+
+
+IIFS B transfers funds to IIFS A
+
+2
+
+
+IIFS B (certificate holder)
+
+
+
+
+3
+
+IIFS B may trade the certificate in the money market
+
+
+
+
+Money market
+
+
+Flow of funds
+
+Issuing muḍārabah certificates
+
+Trading of Certificates
+
+
+5.3.5     Sell and Buy-Back Islamic Interbank Model
+
+114.    IIFS can use a similar model to the Sell and Buy Back (Sharī`ah-compliant Repo) Model (see subsection 5.2.4) to move funds between banks and help manage liquidity. As
+
+
+47
+with the Sell and Buy Back Model, there are certain Sharī`ah conditions on imposing wa`d to repurchase.
+
+Figure 13: Sell and Buy-Back Islamic Interbank Model
+
+
+IIFS A
+
+
+
+1
+
+IIFS A sells a security to IIFS B and
+receives funds
+
+1
+
+
+IIFS A makes a promise (wa`d) to
+buy back the security
+
+2
+3
+
+On maturity date, IIFS B sells the security back to IIFS A at a markup
+
+3
+
+
+
+
+IIFS B
+
+
+
+
+Flow of funds
+
+
+Flow of security
+
+
+Wa`d
+
+
+
+
+5.3.6     Collateralised Commodity Murābaḥah Islamic Interbank Model
+
+
+115.    IIFS can use a similar model to the Collateralised Commodity Murābaḥah Central
+
+Bank Funding Model (see subsection 5.2.2) to move funds between banks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+48
+Figure 14: Collateralised Commodity Murābaḥah Islamic Interbank Model
+
+
+Broker A
+
+
+2
+
+IIFS B purchases commodity from
+Broker A on spot
+
+2
+
+
+
+IIFS B
+
+
+3
+
+IIFS B sells the commodity to IIFS A
+on a deferred-payment
+
+
+IIFS A provides collateral in favour of IIFS B
+
+3
+
+
+
+IIFS A approaches IIFS B for funding, and undertakes to purchase
+a commodity
+
+
+
+
+5
+
+IIFS B returns
+On maturity date, IIFS A pays back funds to IIFS B with markup
+5
+basis with a disclosed markup
+collateral to IIFS A
+1
+
+
+IIFS A
+
+
+
+4
+
+IIFS A sells the commodity to Broker B on spot
+4
+
+
+
+Broker B
+
+
+Undertaking to purchase
+
+Flow of funds
+
+Flow of commodity
+
+Flow of collateral
+
+
+
+
+
+
+
+
+
+
+
+
+49
+5.3.7     Islamic Interbank Qarḍ Model
+
+
+116.    IIFS can use a similar model to the Qarḍ Central Bank Overnight and Short-Term
+
+Funding Model (see subsection 5.2.3) to move funds between banks.
+
+
+Figure 15: Islamic Interbank Qarḍ Model
+
+
+IIFS B
+
+
+
+
+
+
+
+
+
+IIFS B gives finance to
+IIFS A
+1
+IIFS A provides eligible collateral in favour of IIFS B
+
+1
+
+
+
+2
+
+On maturity date, IIFS B returns collateral to IIFS A
+On maturity date, IIFS A pays back funds to IIFS B
+
+2
+
+
+
+IIFS A
+
+
+
+Flow of funds
+
+Flow of collateral
+
+
+
+5.4   Short-Term Ṣukūk and Certificates
+
+
+117.    Government ṣukūk and central-bank Sharī`ah-compliant certificates can be effective and efficient tools to manage short-term liquidity. Governments can use these for fiscal financing and central banks can use them to implement their monetary policies and OMO to absorb excess liquidity from the market. This gives Islamic banks better and more efficient investment opportunities than holding idle funds. Short-term ṣukūk that are tradable can deepen the Islamic money market and be used as collateral to generate liquidity, when needed.
+
+5.4.1     Salam Ṣukūk
+
+118.    Government-issued short-term ṣukūk based on a salam contract can give Islamic banks the opportunity to invest excess funds in a short-term ṣukūk. Salam ṣukūk also give governments (the issuers) access to surplus funds in the market. Salam is a sales contract that covers a specific quantity of a commodity, which is paid for immediately but delivered on a  specified  future  date.  Salam  ṣukūk  are  not  generally  tradable  due  to  the  Sharī`ah
+
+50
+restriction on sales of receivables (bay’ al-dayn). This makes salam ṣukūk illiquid. The holder keeps them until they mature, which is usually between 30 and 90 days, to avoid volatility in the commodity market.
+
+119.    Salam ṣukūk are created and sold by a special purpose vehicle (SPV). The SPV receives an advance – from the funds mobilised from investors – in return for a promise to deliver a commodity at a future date. The SPV can appoint an agent to market the promised commodity when it is delivered, perhaps at a higher price. The SPV’s profit – and therefore the ṣukūk holders’ profit – is the difference between the purchase and sale prices. The profit amount allotted to participants is determined on a pro-rata basis, so all participants receive part of the profit (see figure 16).
+
+Figure 16: Salam Ṣukūk
+
+
+Central bank or Government
+
+1
+
+Central bank sets up SPV to issue salam ṣukūk, and manage the assets and proceeds
+
+
+
+SPV buys commodity from the central bank for immediate payment and deferred delivery
+
+3
+
+
+
+4
+
+
+On delivery date, central
+bank transfers the commodity to SPV
+
+
+
+
+SPV
+
+
+2
+
+IIFS buys salam ṣukūk
+issued by SPV
+
+2
+
+
+5
+
+On delivery date, SPV sells the commodity and transfers proceeds of sale to ṣukūk holders
+
+
+IIFS
+
+
+
+
+
+Flow of funds
+
+
+Flow of commodity
+
+
+Purchase undertaking
+
+
+
+51
+5.4.2     Murābaḥah Ṣukūk
+
+
+120.   Central banks can issue short-term murābaḥah ṣukūk as government-financing instruments (equivalent to conventional Treasury bills). The ṣukūk are issued on the basis of murābaḥah. In most jurisdictions they are not tradable in the secondary market due to the Sharī`ah restriction on sale of receivables (bay’ al-dayn). This makes murābaḥah ṣukūk illiquid, so holders keep them until they mature.
+
+121.    The central bank establishes an SPV to issue murābaḥah ṣukūk and to manage the assets and ṣukūk proceeds. An IIFS can purchase murābaḥah ṣukūk using its excess funds. This model involves trading commodities contracts in a commodity market. The SPV uses proceeds from selling ṣukūk to buy a commodity from Broker A. Then the central bank buys this commodity from the SPV based on a murābaḥah contract that has a disclosed cost and profit markup on a deferred payment. The central bank sells the commodity on spot after it takes real or constructive delivery. On the maturity date, the central bank pays the SPV based on the agreed murābaḥah terms, which specify the sale price including the profit markup. The SPV transfers the funds and proceeds from the sale of the commodity to the
+IIFS (Sukuk holders) (see figure 17).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+52
+Figure 17: Murābaḥah Ṣukūk
+
+
+
+Broker B
+
+
+
+5
+
+Central bank sells the commodity on spot to Broker B
+
+5
+
+
+Central bank / Government                                                        6
+
+
+
+
+1
+
+Central bank sets up SPV to issue ṣukūk, manage the assets and proceeds
+
+
+
+
+SPV sells the commodity to central bank on a deferred- payment basis with a disclosed markup
+
+4
+On maturity date, central bank pays total amount to SPV
+
+
+
+
+
+
+Broker A
+SPV uses
+proceeds from       3
+selling ṣukūk to buy a
+3      commodity from
+Broker A
+
+
+2
+
+
+
+
+SPV
+
+
+
+
+
+
+
+
+7
+
+
+SPV transfers
+SPV issues murābaḥah
+ṣukūk to IIFS
+proceeds from selling the commodity to IIFS
+
+2
+
+
+
+
+IIFS
+
+
+
+
+
+Flow of funds
+
+Flow of commodity
+
+
+SPV set up and ṣukūk
+issuance
+
+
+53
+5.4.3     Ijārah Ṣukūk
+
+
+122.    Ijārah ṣukūk give Islamic banks an opportunity to deploy funds efficiently. The central bank establishes an SPV to manage the funds, buys an asset from the government, and leases the asset back to the government through a contract of ijārah muntahiyah bi al-tamlīk. The ownership of the asset will transfer to the government when the contract matures. The ṣukūk certificates represent shared ownership of the assets that are leased to the government; the assets are typically government buildings or other assets acquired and sold to the SPV, which issues the securities. The ṣukūk holders share the risks associated with the asset ownership. The ṣukūk holders sign an agency agreement (wakālah) to appoint the SPV  to  be  their  agent  (wakil)  and  perform  tasks  for  them.  For  example,  the  SPV  is responsible for collecting periodic rental payments from the government and distributing them to the ṣukūk holders (see figure 18).
+
+123.    The ijārah ṣukūk are tradable from the date they are issued, as the ṣukūk holders own the underlying asset. They can also be used as collateral or security to generate liquidity through repo transactions with the central bank and interbank transactions with other Islamic banks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+54
+Figure 18: Ijārah Ṣukūk
+
+
+Central bank / Government
+
+
+
+1                             3
+Central bank sets                                                                                                                      6
+
+up SPV to issue ṣukūk, and manage the assets and
+SPV buys asset from                      4
+government, and leases it
+back to government on ijārah
+
+On maturity, government or central bank repurchase
+proceeds
+muntahiyyah bit-tamlik
+
+3
+Government pays
+periodic rental for leasing the asset
+the asset
+
+6
+
+
+
+
+SPV
+
+
+
+2
+
+SPV issues ijārah ṣukūk to IIFS
+
+2
+
+5
+
+SPV distributes periodic rental income to IIFS
+
+7
+
+
+SPV transfers the proceeds from the sale to IIFS
+
+
+
+
+IIFS
+
+
+
+
+
+Flow of funds
+
+Flow of asset
+
+
+SPV set up and ṣukūk
+issuance
+
+
+
+
+
+
+
+5.4.4     Mushārakah Ṣukūk
+
+124.    Mushārakah ṣukūk are based on a profit-and-loss-sharing contract. A central bank can issue mushārakah ṣukūk on behalf of the government to generate cash to fund the government’s projects and give the IIFS a way of investing surplus funds. They can be
+
+
+55
+issued against the government’s share in public sector assets having a stable return (the public sector assets could be properties held under ijarah contracts, or Sharī`ah-compliant pools  of  assets  including  ijarah  having  a  stable  return).  The  return  on  the  ṣukūk  is determined by the return on the underlying investment; as partners in the investment, ṣukūk holders receive a pro-rata share of the income stream.
+
+125.    The central bank sets up a SPV to issue mushārakah ṣukūk, and manage the fund of public sector assets. An IIFS can purchase mushārakah ṣukūk using its excess funds. Then the government transfers equity claims to the fund managed by the SPV; the SPV transfers proceeds of ṣukūk to the government. When the investment matures, the government buys back the ṣukūk holders’ shares of the investment, based on their market value at the time (see figure 19). Therefore, ṣukūk holders are exposed to the assets’ market risk.
+
+126.    Mushārakah ṣukūk can be tradable if they meet Sharī`ah requirements on tradability of ṣukūk. They can also be used as collateral or security to generate liquidity through repo transactions with the central bank and interbank transactions with other Islamic banks. The mushārakah contract specifies the profit-sharing ratio. Losses are distributed in proportion to
+the parties’ share of the investment.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+56
+Figure 19: Mushārakah Ṣukūk
+
+
+Central bank / Government
+
+
+1
+
+Central bank sets up SPV to issue ṣukūk, and manage the fund and proceeds
+
+3
+
+
+SPV invest in public sector assets having a stable return
+
+3
+
+
+4
+
+
+On maturity, SPV sells public sector assets back to the government
+
+4
+
+
+
+
+
+SPV (fund manager)
+
+
+
+2
+
+SPV issues mushārakah ṣukūk to IIFS
+
+2
+5
+
+SPV transfers proceeds from sale of the asset to ṣukūk holders
+
+
+
+
+IIFS
+
+
+
+
+Flow of funds
+
+
+Flow of asset
+
+SPV set up and ṣukūk
+issuance
+
+
+
+
+
+5.4.5     Muḍārabah Ṣukūk
+
+127.    A central bank can issue muḍārabah ṣukūk on behalf of the government to generate cash to fund its projects. In this transaction, the central bank that issues ṣukūk is the muḍārib and the IIFS that holds the ṣukūk holders are the rabb al-māl (capital providers). The rabb al-māl own the assets and share the profit with the muḍārib as per the muḍārabah
+
+
+
+57
+agreement. Any losses are borne by the ṣukūk holders, unless there is misconduct, negligence, or breach of contract by the muḍārib.
+
+128.    The central bank sets up a SPV to issue muḍārabah ṣukūk. The SPV transfers the proceeds  (muḍārabah  capital)  to  the  central  bank.  The  proceeds  can  be  invested  in Sharī’ah-compliant public sector assets having a stable return (the public sector assets could be properties held under ijarah contracts, or Sharī`ah-compliant pools of assets including ijarah having a stable return). The SPV distributes any profit generated by the muḍārabah to the rabb al-māl and muḍārib, through periodic payments and according to an agreed upon profit-sharing ratio in a muḍārabah agreement (see figure 20).
+
+129.    Muḍārabah ṣukūk can be tradable if they meet Sharī`ah requirements on tradability of ṣukūk. They can also be used as collateral or security to generate liquidity through repo transactions with the central bank and interbank transactions with other Islamic banks. When ṣukūk matures, the central bank redeems the ṣukūk by buying the muḍārabah assets based on their market value at the time. This means the ṣukūk holders are exposed to the assets’
+market risk.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+58
+Figure 20: Muḍārabah Ṣukūk
+
+
+Central bank / Government (muḍārib)
+
+
+1
+
+Central bank sets up SPV to issue ṣukūk, and manage the fund and proceeds
+
+3
+
+
+SPV invests in public sector assets having a stable return; ownership of the assets is transferred to ṣukūk holders
+
+3
+
+
+5
+
+
+On maturity, SPV sells assets back to the government
+
+5
+
+
+
+
+
+SPV (fund manager)
+
+
+
+2                                                4                                                   6
+
+SPV issues muḍārabah ṣukūk to IIFS
+2
+SPV distributes periodic profits to IIFS, based on profit-sharing ratio set out in a muḍārabah agreement
+SPV transfers proceeds from sale of assets to IIFS
+
+
+
+IIFS (rabb al-māl)
+
+
+
+
+Flow of funds
+
+
+Flow of asset
+
+SPV set up and ṣukūk
+issue
+
+
+
+
+5.4.6     Wakālah Ṣukūk
+
+
+130.    A central bank can issue short-term wakālah ṣukūk on behalf of the government, to help the government fund its expenditure, to absorb excess liquidity from the market, and to give IIFS an opportunity to deploy idle excess funds in an HQLA that will generate a return.
+
+131.    The central bank  sets up an SPV to issue  the  wakālah  ṣukūk, and invest  and manage the funds and proceeds collected from selling ṣukūk to IIFS. The IIFS appoint the
+
+59
+SPV as their agent (wakil) to invest and manage the funds on their behalf, for a certain period and for an agreed upon profit return. The SPV and IIFS agree a wakālah agreement that specifies the SPV’s fee. The SPV holds sovereign ṣukūk and invests in public sector assets having a stable return. (The public sector assets could be properties held under ijarah contracts, or Sharī`ah-compliant pools of assets including ijarah having a stable return).
+
+132.    Wakālah ṣukūk are tradable if they meet Sharī`ah requirements on the tradability of ṣukūk. They can also be used as collateral or security to generate liquidity through repo transactions with the central bank and interbank transactions with other Islamic banks. When ṣukūk matures, the central bank pays back the principal amounts the IIFS invested plus the agreed upon profit, based on the actual profit made during the investment period (see figure
+21).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+60
+Figure 21: Wakālah Ṣukūk
+
+
+Central bank / Government
+
+
+
+
+
+
+
+1
+
+Central bank sets up SPV to issue ṣukūk, manage the fund and ṣukūk proceeds
+3
+
+SPV buys sovereign ṣukūk and invests in public sector assets having a stable return
+
+3
+
+
+
+
+SPV (wakil)
+
+4
+
+On maturity date, SPV sells public sector assets back to the government
+
+4
+
+
+
+
+2
+
+IIFS appoints SPV as agent; SPV issues wakālah ṣukūk to IIFS
+2
+5
+
+On maturity date, SPV transfers the dissolution amount to the IIFS (ṣukūk holders)
+
+
+
+
+IIFS (muwakkil)
+
+
+
+
+Flow of funds
+
+
+Flow of asset
+
+
+SPV set up and ṣukūk
+issuance
+
+
+
+
+
+
+5.5   Sharī`ah-Compliant FX Risk Management Models
+
+133.    As noted in sub-section 4.5, certain liquidity risk tools involve exposure to FX risk. These exposures may be hedged using Sharī`ah-compliant hedging methods.
+
+
+
+
+
+
+
+
+61
+5.5.1   Wa`d Forward Foreign Currency Exchange
+
+
+134.    An IIFS cannot enter into a forward sale/purchase agreement; however, it can enter into a unilateral promise to sell/purchase by agreement in order to sell/purchase foreign currencies at a future date. This method is described and illustrated below.
+
+135.    To hedge a foreign exchange (FX) asset risk, IIFS A has the intention of exchanging the amount of an asset currency (e.g., a receivable) that it is holding in currency A to obtain a corresponding amount of another currency B at a future date. IIFS A will approach IIFS B for the purpose of foreign currency hedging. IIFS A will make a promise to purchase an amount of currency B at a future date and at a certain exchange rate. On the settlement date the promise is converted into a spot currency exchange contract upon agreement of both parties to conclude the transaction based on the promised terms and exchange rate (see figure 22). If IIFS A wishes to hedge a FX liability risk in currency B, it makes a promise to purchase the amount of the currency B it wishes to hedge from the counterparty IIFS B at an agreed upon date.
+
+136.    There are certain Sharī`ah conditions on the use of wa`d:
+
+
+•  Wa`d is a promise, not a contract. The second party shall not be under any obligation to enter into the foreign currency exchange contract by law or customary practice or collaboration, or the like.
+
+•   If the promisor defaults on its promise to the other party, the promisee has the right to claim compensation for the actual damage incurred as a result of the default. The actual damage does not include the loss of profit in the promised price. The promisor cannot commit to pay part of the promised price as a condition of the Wa’d.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+62
+Figure 22: Wa`d Forward Foreign Currency Exchange
+
+
+IIFS B
+
+
+
+
+IIFS A makes a promise (wa`d) to purchase an amount of Currency A at a future date and a certain exchange rate
+
+1
+2
+
+On settlement date, IIFS A and IIFS B execute the currency exchange on
+spot at the agreed terms and exchange rate
+
+2
+
+IIFS A
+
+
+
+Flow of Currency A
+
+
+Flow of Currency B
+
+
+Wa`d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+63
+Section 6: Considerations for Central Banks Setting Up Sharī`ah
+
+Liquidity-Risk-Management Tools
+
+
+137.    Section 5 shows there are a number of SLRMT, including models for interbank transactions and transactions where the central bank provides an SLF or acts as SLOLR. Sections 3 and 4 set out issues affecting the availability of some mechanisms in some jurisdictions.  These  issues  include  Sharī`ah  rulings;  the  state  of  the  local  market  (for example,  a small  number  of  Islamic banks); the  limited  availability  of  suitable tradable instruments; and a dearth of market makers for them, especially for ṣukūk. Some of the mechanisms are also complex and cumbersome to use.
+
+138.    Governments and central banks in these jurisdictions cannot readily overcome these issues. However, IFSB-12, Principle 23 (see paragraph 19 in this TN), shows the steps that authorities can take to facilitate liquidity risk management in their jurisdictions. These are:
+
+•   issuing short-term sovereign ṣukūk;
+
+
+•   facilitating the availability of market makers in such ṣukūk;
+
+
+•  facilitating the provision of Sharī’ah-compliant (i.e., Takāful-based) deposit insurance for current and profit-sharing investment accounts in Islamic banks. The relevant authorities should therefore take steps to introduce Sharī`ah-compliant deposit insurance in jurisdictions where it does not already exist.
+
+139.    In a jurisdiction with very few IIFS there cannot be an effective Islamic interbank market. This makes central bank support even more vital for the liquidity risk management of these few IIFS. It is also recommended to implement the recommendations in IFSB GN-6 regarding the treatment of ṣukūk issued by multilateral institutions as HQLA and eligible collateral.
+
+140.    A  substantially  reduced  “run-off  factor”  applied  to  current  and  profit-sharing investment  accounts,  when  calculating the IIFS  Net  Stable  Funding  Ratio  for  Basel III compliance  purposes (refer to GN-6,  subsection  2.3),  indicates  that  this  would  have  a positive effect on managing liquidity risk when Sharī’ah-compliant deposit insurance for these accounts is provided.
+
+141.    Table 3 shows what central banks should consider when setting up SLRMT using the contracts and structures described in Section 5.
+
+
+
+
+64
+
+
+Table 3: Actions for Central Banks Setting Up Sharī`ah Liquidity-Risk-Management Tools
+
+Action                                                          CMT               Ijārah           Sharī`ah- compliant
+repo
+Muḍārabah     Mushārakah        Salam         Wakālah
+Develop eligibility criteria for having access to SLRMT
+
+Establish:
+•   SLRMT application process;
+•   time of day when SLRMT
+applications should be received;
+•   IIFS officers who are authorised to
+request SLRMT;
+•   steps to execute a Sharī’ah- compliant contract;
+•   role of the central bank, IIFS, and commodity agents or brokers in each step;
+•   duration of the facility.
+
+Establish relationships and agreements with commodity brokers and agents, if any, so they are ready to fulfil orders on short notice
+
+Confirm that the commodities market has the capacity to fulfil orders up to the maximum limit, if any, of the liquidity tools
+
+Make sure commodity brokers and agents, if any, know about, and can meet, Sharī’ah requirements when transferring ownership of commodities
+
+Prepare standardised CMT
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+
+
+
+
+
+
+✓
+
+
+
+✓
+
+
+
+✓
+documentation, including contracts to                   ✓
+
+
+65
+
+
+Action                                                          CMT               Ijārah           Sharī`ah- compliant
+repo
+Muḍārabah     Mushārakah        Salam         Wakālah
+use throughout the transaction and list of commodities that will be used
+
+Prepare standardised documentation, including contracts to be used throughout the transaction and their terms and conditions
+
+Make sure IIFS have the right capacity and systems to determine overnight profit level
+
+List collateral that is acceptable in exchange for liquidity support (This could follow a thorough study of assets held by IIFS in the jurisdiction and the assets
+IIFS are likely to hold when they request
+SLRMT.)
+
+List Sharī’ah-compliant securities that are acceptable in exchange for liquidity support
+
+Calculate and adopt haircuts for each type of acceptable Sharī’ah-compliant collateral
+
+Mare sure systems can process and value collateral and Sharī’ah-compliant securities
+
+Define what events are considered default, and how to react if these events occur
+
+Set appropriate Sharī’ah-compliant measures for early settlement of SLRMT contracts
+
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+66
+
+
+Action                                                          CMT               Ijārah           Sharī`ah- compliant
+repo
+Muḍārabah     Mushārakah        Salam         Wakālah
+Where relevant, establish an agreement with the government to provide indemnities
+
+Establish a disclosure policy outlining what information to disclose (ex ante and ex post) to IIFS in the jurisdiction
+
+Make contingency plans (for example,
+for technical problems with payment and settlement systems, collateral prepositioning, or SLRMT settlement by IIFS)
+
+Obtain approval from the central bank’s Sharī’ah board for all steps, processes, documentation, commodities (if any), Sharī’ah-compliant securities (if any) and SLRMT terms and conditions, and the roles of each party in executing transactions
+
+Make sure appropriate risk-management tools, and internal governance structures and committees are in place, and roles and responsibilities are clearly defined
+
+Make necessary disclosures, according
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+
+
+✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+to the disclosure policy                                          ✓                  ✓                  ✓                  ✓                    ✓                  ✓                 ✓
+
+
+
+
+
+
+
+
+
+
+
+67
+
+
+GAP ASSESSMENT MATRIX
+TECHNICAL NOTE ON SHARĪ’AH-COMPLIANT LIQUIDITY RISK MANAGEMENT TOOLS FOR IIFS
+
+
+Issues             Basel III                                             IFSB Standards                                                          Gap                           TN-5             Reference
+TN-1             IFSB-12             GN-6                GN-7          IFSB-23
+Categories of Sharī`ah-Compliant Liquidity-risk- management Tools
+
+
+
+
+
+
+Sharī`ah-Compliant Tools or Mechanisms to Manage Ongoing Liquidity Risk
+Not addressed
+
+
+
+
+
+
+
+
+Not addressed
+Not addressed
+
+
+
+
+
+
+
+
+Not addressed
+Not addressed
+
+
+
+
+
+
+
+
+Not addressed
+Not addressed
+
+
+
+
+
+
+
+
+Not addressed
+Not addressed
+
+
+
+
+
+
+
+
+Not addressed
+Not addressed
+
+
+
+
+
+
+
+
+Mentioned the use of wakālah and mudarabah
+in placement with the central bank
+and interbank market.
+Differentiation of the different categories of Sharī’ah-compliant liquidity risk management tools
+
+
+
+
+
+Differentiation of the different categories of Sharī’ah-compliant liquidity risk management tools based on tradability
+Differentiation of the different categories of Sharī’ah- compliant liquidity risk management tools based on use of ongoing
+liquidity risk or last resort instruments
+Differentiation of the different categories of Sharī’ah- compliant liquidity risk management tools based on tradability
+Section 2.2
+
+
+
+
+
+
+
+
+
+Section 2.3
+Sharī`ah-Compliant Tools or Mechanisms to Use in Emergency or “Last Resort” Situations
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Provided Sharīʻah- compliant mechanisms that CBs could utilise to provide SLOLR
+Not addressed
+No Gap                               -                                Section 2.4 and 3.6
+Limited Supply of
+Short-Term Ṣukūk
+Not addressed
+Not addressed
+Addressed      Not addressed
+Not addressed
+Not addressed
+No Gap                               -                                Section 3.1
+Insufficient
+Sharī`ah-Compliant Tools that Meet High-Quality Liquid Assets Criteria
+Not addressed
+Not addressed
+Not addressed
+Addressed infrastructure issues in the availability of Sharī`ah- compliant
+Not addressed
+Not addressed
+No Gap                               -                                Section 3.2
+
+68
+
+
+Issues             Basel III                                             IFSB Standards                                                          Gap                           TN-5             Reference
+TN-1             IFSB-12             GN-6                GN-7          IFSB-23
+HQLA
+Possible Excessive Dependence on Commodity Murābaḥah Transactions
+Not addressed
+Not addressed
+Addressed      Not addressed
+Not addressed
+Not addressed
+No Gap                               As per IIFS
+survey results
+57% of IIFS say they use CMT to
+manage liquidity
+risk
+Section 3.3
+Issues with Interbank Placements
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+The issues of interbank placements
+Section 3.4 discussed the issues with interbank placements
+Section 3.4
+Shortage of Sharī`ah-Compliant Foreign-Currency Instruments
+Not addressed
+Not addressed
+Addressed      Not addressed
+Not addressed
+Not addressed
+No Gap                               Section 5.5 of the
+TN provided tools
+that can be used for hedging FX
+risk
+Section 3.5 and 5.5
+Lack of Sharī`ah- Compliant Collateral
+Not addressed
+Addressed        Addressed under Principle
+11: Managing
+Sharī`ah- Compliant Collateral
+Not addressed
+Addressed       Not addressed
+No Gap                               -                                Section 3.7
+Differing Interpretations of Sharī`ah Rulings
+Not addressed
+Addressed under Existing practices and
+infrastructure of Islamic money markets
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+No Gap                               -                                Section 3.8
+Instruments and Ṣukūk Issued by Governments
+Not addressed
+Provided examples of instruments issued by different governments
+Addressed the importance of instruments issued by the
+Not addressed
+Not addressed
+Not addressed
+Provide different types of instruments that can be issued by the government or the CB
+Section 5 has provided different types of instruments or tools that can be used by the government or the
+Section 4.1 and Section
+5
+
+69
+
+
+Issues             Basel III                                             IFSB Standards                                                          Gap                           TN-5             Reference
+TN-1             IFSB-12             GN-6                GN-7          IFSB-23
+
+
+
+
+
+
+Compatibility with HQLA Requirements
+
+
+
+
+
+
+Addressed in Basel
+III: Liquidity
+Coverage
+Ratio and
+Liquidity Risk Monitoring Tools
+
+
+
+
+
+
+Not addressed
+government or the CB
+
+
+
+
+Not addressed
+
+
+
+
+
+
+Addressed        Not addressed
+
+
+
+
+
+
+Not addressed
+CB to enhance liquidity management of IIFS and can be used as sources of funding
+No Gap                               -                                Section 4.2
+Variety and
+Diversity of
+Sharī`ah-Compliant
+Liquidity Risk
+Instruments
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Characteristics of liquidity-management instruments in terms of purpose, maturity, issuer and tradability
+The TN provides characteristics of liquidity- management instruments in terms of purpose, maturity, issuer, tradability, etc.
+Section 4.3
+A Sharī`ah Perspective on Tradability
+Not addressed
+Addressed in some structures
+Addressed under Principle
+11: Managing Sharī`ah- compliant
+Collateral
+Not addressed
+Not addressed
+Addressed the
+tradability  of
+Sukuk
+No Gap                               -                                Section 4.4
+Interaction Between Liquidity Risk and Other Risks
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+The SLRMT should take into consideration the interaction between liquidity risk and other risks
+The proposed SLRMT should consider the interaction between liquidity risk and other risks.
+Section 4.5
+Securitisation of
+Assets
+Not addressed
+Addressed under
+Addressed in details
+Not addressed
+Not addressed
+Section 6: Provides
+No Gap                               -                                Section 4.6
+
+70
+
+
+Issues             Basel III                                             IFSB Standards                                                          Gap                           TN-5             Reference
+TN-1             IFSB-12             GN-6                GN-7          IFSB-23
+
+
+
+
+
+
+
+
+
+Sharī`ah-Compliant Models for Deposits with Central Banks
+
+
+Sharī`ah-Compliant Models for Obtaining Funds
+from a Central Bank
+
+
+Islamic Interbank
+Instruments
+
+
+
+
+Short-Term Ṣukūk
+and Certificates
+
+
+Sharī’ah-Compliant FX Risk Management Models
+
+
+
+
+
+
+
+
+
+Not addressed
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+Not addressed
+Existing practices and
+infrastructure
+of Islamic money markets
+
+
+Provided examples of tools used in different jurisdictions Provided examples of tools used in different jurisdictions
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+Not addressed
+under Principle 7: Diversified Funding Base
+
+
+
+
+Not addressed
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+Not addressed
+
+
+
+
+
+
+
+
+
+Not addressed
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+Not addressed
+
+
+
+
+
+
+
+
+
+Not addressed
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+Not addressed
+enhanced guidance on the capital adequacy treatment of sukūk and securitisation exposures of IIFS
+Not addressed
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+
+
+Not addressed
+
+
+Not addressed
+
+
+
+
+
+
+
+
+
+Sharī`ah-compliant Models for Deposits with Central Banks
+
+
+Sharī`ah-compliant Models for Obtaining Funds from a Central Bank
+
+
+Islamic Interbank
+Instruments
+
+
+
+
+Short-Term Ṣukūk and
+Certificates
+
+
+Sharī’ah-compliant FX Risk Management Models
+
+
+
+
+
+
+
+
+
+The TN provided Sharī`ah- compliant models for deposits with central banks
+The TN provided Sharī`ah- compliant models for obtaining
+funds from a central bank
+The TN provided Sharī`ah- compliant models for obtaining
+funds from a central bank
+Provided models used in short term ṣukūk and certificates Provided models used in Sharī’ah- compliant FX risk management
+
+
+
+
+
+
+
+
+
+Section 5.1
+
+
+
+
+Section 5.2
+
+
+
+
+
+Section 5.3
+
+
+
+
+
+Section 5.4
+
+
+
+Section 5.5
+
+Considerations for Central Banks Setting Up Sharī`ah Liquidity-Risk- Management Tools
+Not addressed
+Not addressed
+Not addressed
+Not addressed
+Addressed for setting
+up Sharī’ah- compliant Lender of Last Resort
+Not addressed
+Considerations for Central Banks Setting Up Sharī`ah Liquidity-
+Risk-Management Tools
+The TN provided central banks consideration when setting up SLRMT using the contracts and
+Section 6
+
+71
+
+
+Issues             Basel III                                             IFSB Standards                                                          Gap                           TN-5             Reference
+TN-1             IFSB-12             GN-6                GN-7          IFSB-23
+structures described in Section 5 of the TN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+72

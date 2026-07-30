@@ -1699,3 +1699,10 @@ html[dir="rtl"] .zone-d {
 }
 .st-dd-item:hover { background: rgba(212,175,55,0.1); color: var(--gold, #D4AF37); }
 .st-dd-item.selected { color: var(--gold, #D4AF37); }
+/* ── FINANCE demo fullscreen — hide the library frame (top + bottom) so the
+   finance page fills the screen. Scoped to the FINANCE tab, so switching tabs
+   auto-restores the frame even if the class lingers. Toggled by #fin-fullscreen-btn. ── */
+body.fin-fullscreen[data-active-tab="FINANCE"] .zone-a,
+body.fin-fullscreen[data-active-tab="FINANCE"] .zone-b,
+body.fin-fullscreen[data-active-tab="FINANCE"] .zone-d { display: none !important; }
+body.fin-fullscreen[data-active-tab="FINANCE"] .zone-c { padding-bottom: 0 !important; }

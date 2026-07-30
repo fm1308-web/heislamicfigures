@@ -924,3 +924,44 @@ body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-saved{
   font-family: Georgia, serif;
 }
 .rel-3d-btn:hover { background: rgba(212,168,74,.10); }
+
+/* ───── Narration chip on figure blocks ─────
+   Same chip look as the HADITHS chip on a TIMELINE profile (.i-tag in
+   timeline.css, which is scoped to body.tl-mounted and so can't be reused
+   directly here). Click opens the figure in MONASTIC. */
+.rl-narr-chip{
+  display:inline-block;
+  margin-top:4px;
+  padding:3px 9px;
+  border-radius:2px;
+  font-family:'Cinzel',serif;
+  font-size:var(--fs-3,10px);
+  letter-spacing:0.07em;
+  border:1px solid rgba(212,175,55,0.5);
+  color:#D4AF37;
+  background:var(--ip-surf,rgba(212,175,55,0.06));
+  cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+.rl-narr-chip:hover{
+  background:rgba(212,175,55,0.15);
+  border-color:rgba(212,175,55,0.8);
+}
+
+/* ───── "VIEW IN TIMELINE" link on figure blocks / child pills ─────
+   Sits under the name; muted until hovered so it never competes with the
+   figure name. Click is stopped in JS so the card underneath still drills. */
+.rl-tl-link{
+  display:inline-block;
+  margin-top:4px;
+  font-size:9px;
+  letter-spacing:0.08em;
+  color:var(--text2,#A0AEC0);
+  opacity:0.6;
+  cursor:pointer;
+}
+.rl-tl-link:hover{
+  color:var(--accent,#D4AF37);
+  opacity:1;
+  text-decoration:underline;
+}

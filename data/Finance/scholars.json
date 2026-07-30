@@ -1,0 +1,1046 @@
+{
+ "_meta": {
+  "type": "scholars",
+  "count": 60,
+  "id_scheme": "S001-S060",
+  "completeness": "complete (60 rows). A few institution/birth/death fields = NEEDS_VERIFICATION.",
+  "source": "Generated in Claude chat session (research-grade). Phase 3.",
+  "warning": "Research-grade biographical data. Verify dates/institutions and controversy notes before publication.",
+  "assurance_note": "verified = web-checked this session; plausible = real known entity, not individually re-searched; needs_check = flagged incomplete/unverified. tradition_tags built only from existing sect/madhhab/institution fields, never guessed.",
+  "change_log": "2026-07-04: 6 rows corrected from live web checks (S003,S013,S017,S021,S033,S055 — all deceased scholars previously mislabelled); S005 downgraded to needs_check (date conflict). Sources in each row's verified_note."
+ },
+ "rows": [
+  {
+   "id": "S001",
+   "name": "Muhammad Taqi Usmani",
+   "birth_year": "1943",
+   "death_year": "living",
+   "nationality": "Pakistani",
+   "madhhab": "Hanafi",
+   "institution": "AAOIFI / Darul Uloom Karachi",
+   "role": "scholar",
+   "key_contribution": "Chaired AAOIFI Shariah Board; 2008 ruling that ~85% of sukuk non-compliant.",
+   "sect": "Sunni",
+   "controversy": "Views on conventional-bank engagement debated.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Hanafi",
+    "Deobandi"
+   ]
+  },
+  {
+   "id": "S002",
+   "name": "Mohammad Nejatullah Siddiqi",
+   "birth_year": "1931",
+   "death_year": "2022",
+   "nationality": "Indian",
+   "madhhab": "non-denominational",
+   "institution": "KAU Jeddah / Aligarh",
+   "role": "economist",
+   "key_contribution": "Two-tier mudarabah banking model; King Faisal Prize 1982.",
+   "sect": "Sunni",
+   "controversy": "Criticized modern Islamic banking as too close to conventional.",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S003",
+   "name": "Muhammad Umer Chapra",
+   "birth_year": "1933",
+   "death_year": 2026,
+   "nationality": "Pakistani/Saudi",
+   "madhhab": "non-denominational",
+   "institution": "IRTI / SAMA",
+   "role": "economist",
+   "key_contribution": "Towards a Just Monetary System; Islamic monetary theory.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ],
+   "verified_note": "web-checked 2026-07-04: Died 13 Jun 2026, Saudi Arabia (IsDBI, Arab News, Wikipedia). Was 'living'."
+  },
+  {
+   "id": "S004",
+   "name": "Monzer Kahf",
+   "birth_year": "1940",
+   "death_year": "living",
+   "nationality": "Syrian/US",
+   "madhhab": "non-denominational",
+   "institution": "IRTI / HBKU",
+   "role": "economist",
+   "key_contribution": "Islamic finance contracts, waqf, zakat economics.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S005",
+   "name": "Sami Hassan Hamoud",
+   "birth_year": "1932",
+   "death_year": "2003",
+   "nationality": "Jordanian",
+   "madhhab": "Hanafi",
+   "institution": "Jordan Islamic Bank",
+   "role": "scholar/banker",
+   "key_contribution": "Pioneered murabaha-to-purchase-orderer banking model.",
+   "sect": "Sunni",
+   "controversy": "His murabaha model later criticized as overused.",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni",
+    "Hanafi"
+   ],
+   "verified_note": "CONFLICT — do not display as fact: this file says 1932-2003; research PDF (saa.pdf p.9,p.11) says d.~2022 with dates undocumented; secondary sources often give b.1936. Role/1976 thesis/murabaha engineering corroborated by web this session. Resolve dates before display."
+  },
+  {
+   "id": "S006",
+   "name": "Wahbah al-Zuhayli",
+   "birth_year": "1932",
+   "death_year": "2015",
+   "nationality": "Syrian",
+   "madhhab": "Shafi'i",
+   "institution": "Damascus University",
+   "role": "scholar",
+   "key_contribution": "al-Fiqh al-Islami wa Adillatuhu; fiqh encyclopedia.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni",
+    "Shafi'i"
+   ]
+  },
+  {
+   "id": "S007",
+   "name": "Yusuf al-Qaradawi",
+   "birth_year": "1926",
+   "death_year": "2022",
+   "nationality": "Egyptian/Qatari",
+   "madhhab": "non-denominational",
+   "institution": "IUMS / Qatar",
+   "role": "scholar",
+   "key_contribution": "Fiqh al-Zakat; permissibility rulings.",
+   "sect": "Sunni",
+   "controversy": "Designated terrorist-linked by several states; politically divisive.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S008",
+   "name": "Mustafa al-Zarqa",
+   "birth_year": "1904",
+   "death_year": "1999",
+   "nationality": "Syrian",
+   "madhhab": "Hanafi",
+   "institution": "Damascus / Jordan",
+   "role": "scholar",
+   "key_contribution": "Modern theory of Islamic contracts and insurance permissibility.",
+   "sect": "Sunni",
+   "controversy": "Pro-takaful stance opposed by some.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Hanafi"
+   ]
+  },
+  {
+   "id": "S009",
+   "name": "Ali al-Khafif",
+   "birth_year": "1891",
+   "death_year": "1978",
+   "nationality": "Egyptian",
+   "madhhab": "Hanafi",
+   "institution": "Cairo University",
+   "role": "scholar",
+   "key_contribution": "Theory of partnerships and contracts in Islamic law.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Hanafi"
+   ]
+  },
+  {
+   "id": "S010",
+   "name": "Muhammad Abu Zahra",
+   "birth_year": "1898",
+   "death_year": "1974",
+   "nationality": "Egyptian",
+   "madhhab": "non-denominational",
+   "institution": "Al-Azhar / Cairo",
+   "role": "scholar",
+   "key_contribution": "Foundational works on Islamic jurisprudence and contracts.",
+   "sect": "Sunni",
+   "controversy": "Opposed some early interest reinterpretations.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Azhari"
+   ]
+  },
+  {
+   "id": "S011",
+   "name": "Mahmoud Abu al-Saud",
+   "birth_year": "1912",
+   "death_year": "1993",
+   "nationality": "Egyptian",
+   "madhhab": "non-denominational",
+   "institution": "NEEDS_VERIFICATION",
+   "role": "economist",
+   "key_contribution": "Early theorist of interest-free economics.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S012",
+   "name": "Ahmad al-Najjar (El Naggar)",
+   "birth_year": "1932",
+   "death_year": "2004",
+   "nationality": "Egyptian",
+   "madhhab": "non-denominational",
+   "institution": "Mit Ghamr / Intl. Assoc. Islamic Banks",
+   "role": "banker",
+   "key_contribution": "Founded Mit Ghamr Savings Bank (1963); 'father of Islamic banking'.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S013",
+   "name": "Saleh Abdullah Kamel",
+   "birth_year": "1941",
+   "death_year": 2020,
+   "nationality": "Saudi",
+   "madhhab": "non-denominational",
+   "institution": "Dallah Al-Baraka",
+   "role": "banker",
+   "key_contribution": "Founded Al-Baraka Group; major industry financier.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ],
+   "verified_note": "web-checked 2026-07-04: Died 18 May 2020, Jeddah (Wikipedia, Arab News). Was '2016'."
+  },
+  {
+   "id": "S014",
+   "name": "Muhammad Baqir al-Sadr",
+   "birth_year": "1935",
+   "death_year": "1980",
+   "nationality": "Iraqi",
+   "madhhab": "Ja'fari",
+   "institution": "Najaf seminary",
+   "role": "scholar",
+   "key_contribution": "Iqtisaduna (Our Economics); Islamic economic doctrine.",
+   "sect": "Shia",
+   "controversy": "Executed by Ba'athist regime 1980.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Shia",
+    "Ja'fari"
+   ]
+  },
+  {
+   "id": "S015",
+   "name": "Ali Khamenei",
+   "birth_year": "1939",
+   "death_year": "living",
+   "nationality": "Iranian",
+   "madhhab": "Ja'fari",
+   "institution": "Iran (Supreme Leader)",
+   "role": "regulator/jurist",
+   "key_contribution": "Fatwas underpinning Iran's usury-free banking framework.",
+   "sect": "Shia",
+   "controversy": "Political role; included only for direct fatwa impact on Iranian banking.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Shia",
+    "Ja'fari"
+   ]
+  },
+  {
+   "id": "S016",
+   "name": "Muhammad Rawas Qal'aji",
+   "birth_year": "1940",
+   "death_year": "2021",
+   "nationality": "Syrian",
+   "madhhab": "non-denominational",
+   "institution": "NEEDS_VERIFICATION",
+   "role": "scholar",
+   "key_contribution": "Mu'jam Lughat al-Fuqaha (dictionary of fiqh terms).",
+   "sect": "Sunni",
+   "controversy": "Birth/death years partially approximate.",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S017",
+   "name": "Rafic al-Misri",
+   "birth_year": 1942,
+   "death_year": 2021,
+   "nationality": "Syrian",
+   "madhhab": "non-denominational",
+   "institution": "KAU Jeddah",
+   "role": "economist",
+   "key_contribution": "Riba theory; Islamic economic thought.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ],
+   "verified_note": "web-checked 2026-07-04: Born 2 Jun 1942; died 19 Jul 2021 (ar.Wikipedia, IsDBI). Was '1940-living'."
+  },
+  {
+   "id": "S018",
+   "name": "Mohammad Hashim Kamali",
+   "birth_year": "1944",
+   "death_year": "living",
+   "nationality": "Afghan",
+   "madhhab": "non-denominational",
+   "institution": "IAIS / IIUM",
+   "role": "scholar",
+   "key_contribution": "Islamic Commercial Law; maqasid and contract theory.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S019",
+   "name": "Sami al-Suwailem",
+   "birth_year": "1965",
+   "death_year": "living",
+   "nationality": "Saudi",
+   "madhhab": "non-denominational",
+   "institution": "IsDB/IRTI",
+   "role": "economist",
+   "key_contribution": "Hedging in Islamic Finance; gharar quantification.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S020",
+   "name": "Nizam Yaquby",
+   "birth_year": "1959",
+   "death_year": "living",
+   "nationality": "Bahraini",
+   "madhhab": "non-denominational",
+   "institution": "Multiple Shariah boards",
+   "role": "scholar",
+   "key_contribution": "Prominent global Shariah board member; sits on many boards.",
+   "sect": "Sunni",
+   "controversy": "Board-concentration / conflict-of-interest debate.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S021",
+   "name": "Abdul Sattar Abu Ghuddah",
+   "birth_year": "1940",
+   "death_year": 2020,
+   "nationality": "Syrian",
+   "madhhab": "non-denominational",
+   "institution": "Al-Baraka / AAOIFI",
+   "role": "scholar",
+   "key_contribution": "Top-cited Shariah board member; Fiqh Encyclopedia (Kuwait).",
+   "sect": "Sunni",
+   "controversy": "Board-concentration debate.",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ],
+   "verified_note": "web-checked 2026-07-04: Died 23 Oct 2020, Canada (DDCAP, IIFA). Was 'living'."
+  },
+  {
+   "id": "S022",
+   "name": "Hussain Hamid Hassan",
+   "birth_year": "1932",
+   "death_year": "2020",
+   "nationality": "Egyptian",
+   "madhhab": "non-denominational",
+   "institution": "Dubai Islamic Bank",
+   "role": "scholar",
+   "key_contribution": "Structured many UAE Islamic banking products.",
+   "sect": "Sunni",
+   "controversy": "Board-concentration debate.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S023",
+   "name": "Ali al-Qaradaghi (Ahmad Muhayyuddin Hassan)",
+   "birth_year": "1949",
+   "death_year": "living",
+   "nationality": "Iraqi/Qatari",
+   "madhhab": "Shafi'i",
+   "institution": "Qatar University / IUMS",
+   "role": "scholar",
+   "key_contribution": "Takaful and contract jurisprudence.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Shafi'i"
+   ]
+  },
+  {
+   "id": "S024",
+   "name": "Mohd Daud Bakar",
+   "birth_year": "1964",
+   "death_year": "living",
+   "nationality": "Malaysian",
+   "madhhab": "Shafi'i",
+   "institution": "Amanie / BNM SAC",
+   "role": "scholar",
+   "key_contribution": "Global Shariah advisor; Malaysian SAC; sukuk structuring.",
+   "sect": "Sunni",
+   "controversy": "Board-concentration debate.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Shafi'i"
+   ]
+  },
+  {
+   "id": "S025",
+   "name": "Asyraf Wajdi Dusuki",
+   "birth_year": "1972",
+   "death_year": "living",
+   "nationality": "Malaysian",
+   "madhhab": "Shafi'i",
+   "institution": "ISRA / politician",
+   "role": "scholar",
+   "key_contribution": "Commodity murabahah (CMP) liquidity research.",
+   "sect": "Sunni",
+   "controversy": "Later political career.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Shafi'i"
+   ]
+  },
+  {
+   "id": "S026",
+   "name": "Abbas Mirakhor",
+   "birth_year": "1945",
+   "death_year": "living",
+   "nationality": "Iranian/US",
+   "madhhab": "non-denominational",
+   "institution": "INCEIF / IMF",
+   "role": "economist",
+   "key_contribution": "IMF Islamic-banking theory; risk-sharing finance.",
+   "sect": "Shia",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Shia"
+   ]
+  },
+  {
+   "id": "S027",
+   "name": "Timur Kuran",
+   "birth_year": "1954",
+   "death_year": "living",
+   "nationality": "American (b. Turkey)",
+   "madhhab": "n/a (secular academic)",
+   "institution": "Duke University",
+   "role": "critic",
+   "key_contribution": "Islam and Mammon; argues IF replicates conventional finance.",
+   "sect": "n/a",
+   "controversy": "Sharp critic; contested by industry.",
+   "assurance": "plausible",
+   "tradition_tags": []
+  },
+  {
+   "id": "S028",
+   "name": "Abdullah Saeed",
+   "birth_year": "1960",
+   "death_year": "living",
+   "nationality": "Maldivian/Australian",
+   "madhhab": "non-denominational",
+   "institution": "University of Melbourne",
+   "role": "critic",
+   "key_contribution": "Islamic Banking and Interest; questions blanket riba=interest.",
+   "sect": "Sunni",
+   "controversy": "Progressive views on riba contested.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S029",
+   "name": "Wael Hallaq",
+   "birth_year": "1955",
+   "death_year": "living",
+   "nationality": "Palestinian/Canadian",
+   "madhhab": "n/a (academic)",
+   "institution": "Columbia University",
+   "role": "legal theory",
+   "key_contribution": "Theorist of Islamic legal history and Sharia.",
+   "sect": "n/a",
+   "controversy": "Critiqued for variability thesis.",
+   "assurance": "plausible",
+   "tradition_tags": []
+  },
+  {
+   "id": "S030",
+   "name": "Mohammad Fadel",
+   "birth_year": "1965",
+   "death_year": "living",
+   "nationality": "American",
+   "madhhab": "Maliki-leaning academic",
+   "institution": "University of Toronto",
+   "role": "scholar",
+   "key_contribution": "Law-and-economics of Islamic law.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Maliki"
+   ]
+  },
+  {
+   "id": "S031",
+   "name": "Mahmoud El-Gamal",
+   "birth_year": "1963",
+   "death_year": "living",
+   "nationality": "Egyptian/US",
+   "madhhab": "non-denominational (academic)",
+   "institution": "Rice University",
+   "role": "critic",
+   "key_contribution": "Coined 'Shari'a arbitrage'; Islamic Finance: Law, Economics, Practice.",
+   "sect": "Sunni",
+   "controversy": "Alienated by industry per his account.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S032",
+   "name": "Mabid Ali al-Jarhi",
+   "birth_year": "1942",
+   "death_year": "living",
+   "nationality": "Egyptian",
+   "madhhab": "non-denominational",
+   "institution": "IRTI / INCEIF",
+   "role": "economist",
+   "key_contribution": "Islamic monetary economics; first IRTI director.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S033",
+   "name": "Khurshid Ahmad",
+   "birth_year": "1932",
+   "death_year": 2025,
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "Islamic Foundation Leicester",
+   "role": "economist",
+   "key_contribution": "Founder of Islamic economics institutions; Studies in Islamic Economics.",
+   "sect": "Sunni",
+   "controversy": "Jamaat-e-Islami political links.",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ],
+   "verified_note": "web-checked 2026-07-04: Died 13 Apr 2025, Leicester (IPS, Islamic Foundation, Salaam Gateway). Was 'living'."
+  },
+  {
+   "id": "S034",
+   "name": "Muhammad Anas Zarqa",
+   "birth_year": "1938",
+   "death_year": "living",
+   "nationality": "Syrian",
+   "madhhab": "non-denominational",
+   "institution": "KAU / academic",
+   "role": "economist",
+   "key_contribution": "Islamic distribution theory and finance.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S035",
+   "name": "Muhammad Akram Khan",
+   "birth_year": "1944",
+   "death_year": "living",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "NEEDS_VERIFICATION",
+   "role": "economist/critic",
+   "key_contribution": "Bibliographies; critical reassessment of Islamic economics.",
+   "sect": "Sunni",
+   "controversy": "Critic of industry overclaims.",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S036",
+   "name": "Ziauddin Ahmad",
+   "birth_year": "1931",
+   "death_year": "1995",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "IIIE Islamabad",
+   "role": "economist",
+   "key_contribution": "Islamic banking and fiscal policy theory.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S037",
+   "name": "Zubair Hasan",
+   "birth_year": "1935",
+   "death_year": "living",
+   "nationality": "Indian",
+   "madhhab": "non-denominational",
+   "institution": "INCEIF",
+   "role": "economist",
+   "key_contribution": "Profit-sharing, growth, IF education.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S038",
+   "name": "Volker Nienhaus",
+   "birth_year": "1951",
+   "death_year": "living",
+   "nationality": "German",
+   "madhhab": "n/a (academic)",
+   "institution": "Univ. of Bochum/Reading",
+   "role": "economist",
+   "key_contribution": "Economics of Islamic banking; regulation.",
+   "sect": "n/a",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": []
+  },
+  {
+   "id": "S039",
+   "name": "Habib Ahmed",
+   "birth_year": "1962",
+   "death_year": "living",
+   "nationality": "Bangladeshi",
+   "madhhab": "non-denominational",
+   "institution": "Durham University",
+   "role": "economist",
+   "key_contribution": "Risk, microfinance, product development.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S040",
+   "name": "Mohamad Nedal Alchaar",
+   "birth_year": "1960",
+   "death_year": "living",
+   "nationality": "Syrian",
+   "madhhab": "non-denominational",
+   "institution": "AAOIFI",
+   "role": "regulator",
+   "key_contribution": "Secretary-General of AAOIFI; standards expansion.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S041",
+   "name": "Hamed Hassan Merah",
+   "birth_year": "1965",
+   "death_year": "living",
+   "nationality": "NEEDS_VERIFICATION",
+   "madhhab": "non-denominational",
+   "institution": "AAOIFI",
+   "role": "regulator",
+   "key_contribution": "Secretary-General of AAOIFI (post-2014).",
+   "sect": "Sunni",
+   "controversy": "Details partially approximate.",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S042",
+   "name": "Javed Ahmad Ghamidi",
+   "birth_year": "1951",
+   "death_year": "living",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "Al-Mawrid",
+   "role": "scholar/critic",
+   "key_contribution": "Reformist views; debates on riba and interest.",
+   "sect": "Sunni",
+   "controversy": "Views opposed by traditional ulama; left Pakistan amid threats.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S043",
+   "name": "Yusuf Talal DeLorenzo",
+   "birth_year": "1950",
+   "death_year": "living",
+   "nationality": "American",
+   "madhhab": "non-denominational",
+   "institution": "Dow Jones / various",
+   "role": "scholar",
+   "key_contribution": "First English compendium of Shariah-board fatawa; sukuk consultant.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S044",
+   "name": "Mohamed Ali Elgari",
+   "birth_year": "1950",
+   "death_year": "living",
+   "nationality": "Saudi",
+   "madhhab": "non-denominational",
+   "institution": "KAU / multiple boards",
+   "role": "scholar",
+   "key_contribution": "Major Shariah board member; index screening.",
+   "sect": "Sunni",
+   "controversy": "Board-concentration debate.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S045",
+   "name": "Muhammad Imran Ashraf Usmani",
+   "birth_year": "1972",
+   "death_year": "living",
+   "nationality": "Pakistani",
+   "madhhab": "Hanafi",
+   "institution": "Meezan Bank",
+   "role": "scholar",
+   "key_contribution": "Meezan Bank's Guide to Islamic Banking.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Hanafi"
+   ]
+  },
+  {
+   "id": "S046",
+   "name": "Abdullah bin Sulaiman al-Manea",
+   "birth_year": "1933",
+   "death_year": "living",
+   "nationality": "Saudi",
+   "madhhab": "Hanbali",
+   "institution": "Saudi senior scholars",
+   "role": "scholar",
+   "key_contribution": "Senior Saudi jurist; Shariah boards.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni",
+    "Hanbali"
+   ]
+  },
+  {
+   "id": "S047",
+   "name": "Ajeel Jasim al-Nashmi",
+   "birth_year": "1944",
+   "death_year": "living",
+   "nationality": "Kuwaiti",
+   "madhhab": "non-denominational",
+   "institution": "Kuwait University",
+   "role": "scholar",
+   "key_contribution": "Fiqh academy member; banking fatwas.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S048",
+   "name": "Abdulaziz Khalifa al-Qassar",
+   "birth_year": "1955",
+   "death_year": "living",
+   "nationality": "Kuwaiti",
+   "madhhab": "non-denominational",
+   "institution": "Kuwait University",
+   "role": "scholar",
+   "key_contribution": "Shariah boards; contract rulings.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S049",
+   "name": "Muhammad Hamidullah",
+   "birth_year": "1908",
+   "death_year": "2002",
+   "nationality": "Indian/French",
+   "madhhab": "non-denominational",
+   "institution": "NEEDS_VERIFICATION",
+   "role": "scholar/economist",
+   "key_contribution": "Early (1930s) writings on Islamic economics & state finance.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S050",
+   "name": "Muhammad Uzair",
+   "birth_year": "1925",
+   "death_year": "2014",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "NEEDS_VERIFICATION",
+   "role": "economist",
+   "key_contribution": "Early (1955) work on interest-free banking.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S051",
+   "name": "Abul A'la Maududi",
+   "birth_year": "1903",
+   "death_year": "1979",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "Jamaat-e-Islami",
+   "role": "scholar/ideologue",
+   "key_contribution": "Foundational Islamic-economics framework; influenced riba debate.",
+   "sect": "Sunni",
+   "controversy": "Islamist political legacy controversial.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S052",
+   "name": "Anwar Iqbal Qureshi",
+   "birth_year": "1910",
+   "death_year": "1991",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "NEEDS_VERIFICATION",
+   "role": "economist",
+   "key_contribution": "Islam and the Theory of Interest (1945).",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "needs_check",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S053",
+   "name": "Fazlur Rahman Malik",
+   "birth_year": "1919",
+   "death_year": "1988",
+   "nationality": "Pakistani/US",
+   "madhhab": "non-denominational",
+   "institution": "Univ. of Chicago",
+   "role": "scholar/critic",
+   "key_contribution": "Modernist riba reinterpretation.",
+   "sect": "Sunni",
+   "controversy": "Forced to leave Pakistan over views.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S054",
+   "name": "Sabahattin Zaim",
+   "birth_year": "1926",
+   "death_year": "2007",
+   "nationality": "Turkish",
+   "madhhab": "non-denominational",
+   "institution": "Istanbul University",
+   "role": "economist",
+   "key_contribution": "Turkish Islamic economics; participation banking.",
+   "sect": "Sunni",
+   "controversy": "Details partially approximate.",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S055",
+   "name": "M.A. Mannan",
+   "birth_year": "1938",
+   "death_year": 2021,
+   "nationality": "Bangladeshi",
+   "madhhab": "non-denominational",
+   "institution": "KAU / SIBL",
+   "role": "economist",
+   "key_contribution": "Islamic Economics: Theory and Practice.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "verified",
+   "tradition_tags": [
+    "Sunni"
+   ],
+   "verified_note": "web-checked 2026-07-04: Died 31 Mar 2021, Dhaka (Financial Express BD, Halal Times). Was 'living'."
+  },
+  {
+   "id": "S056",
+   "name": "Zamir Iqbal",
+   "birth_year": "1962",
+   "death_year": "living",
+   "nationality": "Pakistani/US",
+   "madhhab": "non-denominational",
+   "institution": "World Bank",
+   "role": "economist",
+   "key_contribution": "Co-author Introduction to Islamic Finance (with Mirakhor).",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S057",
+   "name": "Tariqullah Khan",
+   "birth_year": "1956",
+   "death_year": "living",
+   "nationality": "Pakistani",
+   "madhhab": "non-denominational",
+   "institution": "IRTI / HBKU",
+   "role": "economist",
+   "key_contribution": "Risk management and financial engineering.",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  },
+  {
+   "id": "S058",
+   "name": "Rodney Wilson",
+   "birth_year": "1946",
+   "death_year": "living",
+   "nationality": "British",
+   "madhhab": "n/a (academic)",
+   "institution": "Durham University",
+   "role": "economist",
+   "key_contribution": "Pioneered Islamic finance academic study in the West.",
+   "sect": "n/a",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": []
+  },
+  {
+   "id": "S059",
+   "name": "Ibrahim Warde",
+   "birth_year": "1957",
+   "death_year": "living",
+   "nationality": "Lebanese/US",
+   "madhhab": "n/a (academic)",
+   "institution": "Tufts/Fletcher",
+   "role": "economist",
+   "key_contribution": "Islamic Finance in the Global Economy.",
+   "sect": "n/a",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": []
+  },
+  {
+   "id": "S060",
+   "name": "Ungku Abdul Aziz (Ungku Aziz)",
+   "birth_year": "1922",
+   "death_year": "2020",
+   "nationality": "Malaysian",
+   "madhhab": "non-denominational",
+   "institution": "University of Malaya",
+   "role": "economist",
+   "key_contribution": "Conceived Tabung Haji (Pilgrims Fund).",
+   "sect": "Sunni",
+   "controversy": "",
+   "assurance": "plausible",
+   "tradition_tags": [
+    "Sunni"
+   ]
+  }
+ ]
+}

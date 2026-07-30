@@ -1,0 +1,520 @@
+{
+ "_meta": {
+  "type": "standards_kb_star",
+  "generated": "2026-07-17",
+  "built_by": "RV standards STAR batch",
+  "method": "All 8 STAR documents uploaded as .txt by Adam and read verbatim this session. Clause quotes shortened; each entry cites its source filename. Status for tracker: all 8 = [P] processed. | 2026-07-18: remaining 32 AAOIFI SS clause-verified from the split per-standard files. AAOIFI SS layer complete: 54/54 + SS59.",
+  "sources": "8 uploaded files, 2026-07-17 + AAOIFI SS59 PDF (2026-07-18)"
+ },
+ "rows": [
+  {
+   "id": "KB-BNM-MURABAHAH",
+   "regulator": "BNM",
+   "title": "Murabahah Policy Document (BNM/RH/STD 028-4)",
+   "issued": "23 December 2013",
+   "effective": "1 January 2014 (verified in text)",
+   "key_clauses": [
+    "Institution must obtain ownership and assume ownership risk of the asset PRIOR to executing the murabahah contract, regardless of the customer's preceding purchase undertaking (read verbatim)",
+    "Covers murabahah to the purchase orderer (MPO) structure"
+   ],
+   "file": "20131223_S_O_0001.txt",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-BNM-KAFALAH",
+   "regulator": "BNM",
+   "title": "Kafalah Policy Document (revised 17 Apr 2017)",
+   "issued": "17 April 2017",
+   "effective": "1 January 2018 except Part E immediate (verified in text)",
+   "key_clauses": [
+    "8.1 kafalah = guarantor conjoins the guaranteed party in assuming the latter's specified liability",
+    "15.1 the guarantor MAY impose a fee for providing the kafalah service",
+    "15.2 fee may be an agreed fixed amount OR a percentage of the guaranteed amount",
+    "8.2 fee-paid kafalah cannot be dissolved without the guaranteed party's consent"
+   ],
+   "note": "THE fee-permissibility position — contrast AAOIFI SS 5 restrictive stance; exactly the side-by-side the Kafalah demo showcases",
+   "file": "20170417-pd-kafalah_130417-revised.txt",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-BNM-SG-2019",
+   "regulator": "BNM",
+   "title": "Shariah Governance Policy Document 2019",
+   "effective": "1 April 2020 except para 12 (verified in text)",
+   "key_clauses": [
+    "Applies to Islamic banks, takaful/retakaful operators, Islamic-window banks, prescribed DFIs",
+    "Shariah committee accountable for the quality, accuracy and soundness of its own decisions"
+   ],
+   "file": "Shariah_Governance_Policy_Document_2019.txt",
+   "tag": "verified",
+   "supersession_note": "replaces BNM SGF 2010 regime — the tracker's BNM-SG-2019 deep note now has full text on disk"
+  },
+  {
+   "id": "KB-SAMA-SGF-2020",
+   "regulator": "SAMA",
+   "title": "Shariah Governance Framework for Local Banks (Feb 2020)",
+   "key_clauses": [
+    "Art. 7: board forms the Shariah committee on nomination/remuneration committee recommendation",
+    "Independence invalidated if a member owns >=5% of bank stock (article enforced from 01/01/2023 — read verbatim)",
+    "Bank must establish a control mechanism ensuring Islamic operations comply with Shariah at all times"
+   ],
+   "file": "SAMA_EN_2274_VER1.txt",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-CBUAE-SG",
+   "regulator": "CBUAE",
+   "title": "Standard re. Shari'ah Governance for Islamic Financial Institutions",
+   "key_clauses": [
+    "IFIs bound by resolutions, fatwas, regulations and standards issued by the Higher Shari'ah Authority (HSA)",
+    "Internal Shari'ah Supervision Committee (ISSC) required per institution; bilingual standard (AR/EN)"
+   ],
+   "note": "Confirms the UAE two-tier model the compliance demo assumes: AAOIFI adopted + HSA on top",
+   "file": "CBUAE_EN_2825_VER1.txt",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-IFSB-10",
+   "regulator": "IFSB",
+   "title": "IFSB-10 Guiding Principles on Shari'ah Governance Systems",
+   "issued": "December 2009",
+   "key_clauses": [
+    "Principle 1.1: governance structure commensurate and proportionate with size, complexity, nature of business",
+    "Competence: measures for expertise, performance evaluation, professional development of Shari'ah boards",
+    "Independence defined: sound judgement without influence from management or outside interests"
+   ],
+   "file": "IFSB-10-December-2009_En.txt",
+   "tag": "verified",
+   "supersession_note": "joint IFSB-AAOIFI revised SG framework in final stage will supersede — watch item stands"
+  },
+  {
+   "id": "KB-IFSB-17",
+   "regulator": "IFSB",
+   "title": "IFSB-17 Core Principles for Islamic Finance Regulation (Banking) — CPIFR",
+   "issued": "April 2015 (doc), published Dec 2015",
+   "key_clauses": [
+    "33 core principles (CPIFR 1-33), mapped against Basel BCPs",
+    "CPIFR 16: Shari'ah governance framework as a supervisory requirement; CPIFR 32 covers Islamic windows"
+   ],
+   "file": "IFSB-17-...-final__1_.txt",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-IFSB-30",
+   "regulator": "IFSB",
+   "title": "IFSB-30 Revised Guiding Principles on Corporate Governance (Banking)",
+   "issued": "December 2023",
+   "key_clauses": [
+    "Revises IFSB-3 in light of post-GFC global regulatory change (stated in text)",
+    "Principle 1: board holds overall responsibility — strategy, governance framework, corporate culture"
+   ],
+   "file": "IFSB-30-Revised-...-IIFS.txt",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-AAOIFI-SS59",
+   "regulator": "AAOIFI",
+   "title": "SS 59 Sale of Debt",
+   "issued": "29 December 2018 (22 Rabi' al-Akhirah 1440H); endorsed Shari'ah Board 65th meeting, Bahrain (verified in text)",
+   "key_clauses": [
+    "2 debt defined: established, owed asset — money, commodities or usufructs; from loan, commutative contract, or tort",
+    "4/1/1 sale of debt to the DEBTOR permitted subject to no-riba rules (currency substitution allowed at settlement-day rate, possession in session)",
+    "4/1/3/1 extinction of debt in debt (faskh al-dayn) prohibited — no new larger debt replacing the old",
+    "4/1/3/3 anything increasing debt amount against more time = prohibited (riba al-jahiliyyah pattern); 'inah form named",
+    "5/1 NOT permitted to sell a monetary debt to a third party for cash or another monetary debt",
+    "5/2 permitted against a spot commodity, or ascertained usufruct/service",
+    "8/2/2 combined-asset entities: tangibles must exceed 50% to trade freely",
+    "8/2/3 sukuk tradability floor: tangibles never below 33%, else notify holders + delist",
+    "9/1/2 discounting commercial papers not permitted (early-settlement rebate to first creditor allowed)",
+    "9/6/2 factoring on discount not permitted unless against commodity/ascertained usufruct or service",
+    "9/7 no swapping receivables portfolios between institutions"
+   ],
+   "file": "AAOIFI-SS_-No_-59-Sale-of-Debt-Eng.pdf",
+   "tag": "verified"
+  },
+  {
+   "id": "KB-AAOIFI-SS02",
+   "regulator": "AAOIFI",
+   "title": "SS 2 Debit Card, Charge Card and Credit Card",
+   "key_clauses": [
+    "['3/1' revolving credit card described; membership of international card organizations permissible (4/1/1); cash withdrawal within own funds permitted if no interest (5/1)]"
+   ],
+   "scope": "charge/debit permitted; credit card cash advance only interest-free",
+   "file": "SS-02.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS04",
+   "regulator": "AAOIFI",
+   "title": "SS 4 Settlement of Debts by Set-Off (Revised)",
+   "key_clauses": [
+    "[2/1 mandatory set-off needs no consent; 4/1 contractual set-off of future debts by agreement permitted]"
+   ],
+   "scope": "mandatory vs contractual set-off",
+   "file": "SS-04.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS06",
+   "regulator": "AAOIFI",
+   "title": "SS 6 Conversion of a Conventional Bank to an Islamic Bank",
+   "key_clauses": [
+    "[2/1 partial/gradual converter not licensed as Islamic until complete; 3/1 procedures+alternatives to impermissible practices; 4/1 adapt central-bank dealings to Shari'ah]"
+   ],
+   "scope": "conversion rules",
+   "file": "SS-06.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS07",
+   "regulator": "AAOIFI",
+   "title": "SS 7 Hawalah",
+   "key_clauses": [
+    "[3/1 hawalah = independent courtesy contract, not sale; 4/1 offer by transferor + acceptance of muhal and payer; 5/1/1 restricted hawalah permissible]"
+   ],
+   "scope": "debt transfer contract",
+   "file": "SS-07.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS14",
+   "regulator": "AAOIFI",
+   "title": "SS 14 Documentary Credit (Revised)",
+   "key_clauses": [
+    "[2/1 written bank undertaking to seller per buyer's instruction; 4/1 documents-only dealing binding; 5/1 credit must not precede the sale contract. Adopted meeting 10, 3-8 May 2003]"
+   ],
+   "scope": "LC undertaking rules",
+   "file": "SS-14.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS15",
+   "regulator": "AAOIFI",
+   "title": "SS 15 Ju'alah (Revised)",
+   "key_clauses": [
+    "[4/1 ju'alah in principle non-binding before work; 5/1 legal capacity required, worker need not be specified]"
+   ],
+   "scope": "reward-for-result contract",
+   "file": "SS-15.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS16",
+   "regulator": "AAOIFI",
+   "title": "SS 16 Commercial Papers (Revised)",
+   "key_clauses": [
+    "[2/1 bill of exchange defined; 3/1 dealing in the three papers permitted absent Shari'ah contravention. Adopted meeting 10, 3-8 May 2003]"
+   ],
+   "scope": "bills/notes/cheques",
+   "file": "SS-16.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS18",
+   "regulator": "AAOIFI",
+   "title": "SS 18 Possession (Qabd)",
+   "key_clauses": [
+    "[3/1 custom ('urf) determines mode of possession; 4/1 delivery expense rules in commutative contracts; loan delivery expenses on borrower (2/1)]"
+   ],
+   "scope": "possession doctrine",
+   "file": "SS-18.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS20",
+   "regulator": "AAOIFI",
+   "title": "SS 20 Sale of Commodities in Organized Markets",
+   "key_clauses": [
+    "[2/1/1 organized-market contracts defined; 4/1/1 agent buys spot then sells deferred — the tawarruq platform mechanism; derivatives section restricts]"
+   ],
+   "scope": "commodity platform rules",
+   "file": "SS-20.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS21",
+   "regulator": "AAOIFI",
+   "title": "SS 21 Financial Paper (Shares and Bonds)",
+   "key_clauses": [
+    "[2/1 share issuance permitted if objects permissible; 3/13 options on shares impermissible; share = undivided capital share (3/1). Adopted meeting 12, 2004]"
+   ],
+   "scope": "equity rules",
+   "file": "SS-21.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS22",
+   "regulator": "AAOIFI",
+   "title": "SS 22 Concession Contracts",
+   "key_clauses": [
+    "[2/1 survey licences; 5/1 utilization concession defined; permissible absent non-conforming elements (3/1)]"
+   ],
+   "scope": "state concessions",
+   "file": "SS-22.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS24",
+   "regulator": "AAOIFI",
+   "title": "SS 24 Syndicated Financing",
+   "key_clauses": [
+    "[4/1-4/6 permissible modes list (murabaha, ijarah, salam, istisna'a, mudarabah...); 5/1 syndication originally among Islamic institutions]"
+   ],
+   "scope": "multi-bank deals",
+   "file": "SS-24.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS27",
+   "regulator": "AAOIFI",
+   "title": "SS 27 Indices",
+   "key_clauses": [
+    "[5/1 indices usable to measure markets/manager performance; trading INDEX itself as instrument restricted]"
+   ],
+   "scope": "index usage",
+   "file": "SS-27.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS28",
+   "regulator": "AAOIFI",
+   "title": "SS 28 Banking Services in Islamic Banks",
+   "key_clauses": [
+    "[2/1 custody services for fees permitted; 5/1 collection of cheques/dues permitted]"
+   ],
+   "scope": "fee services",
+   "file": "SS-28.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS29",
+   "regulator": "AAOIFI",
+   "title": "SS 29 Stipulations and Ethics of Fatwa",
+   "key_clauses": [
+    "[2/1 fatwa defined; 5/1 board member competence requirements. Adopted meeting 16, 23 Nov 2006]"
+   ],
+   "scope": "SSB fatwa rules",
+   "file": "SS-29.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS32",
+   "regulator": "AAOIFI",
+   "title": "SS 32 Arbitration",
+   "key_clauses": [
+    "[2/1 binding-verdict external party; 4/1 arbitrator fees permitted; 5/1 binding when stipulated/agreed]"
+   ],
+   "scope": "dispute resolution",
+   "file": "SS-32.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS34",
+   "regulator": "AAOIFI",
+   "title": "SS 34 Hiring of Persons",
+   "key_clauses": [
+    "[2/1 pay must be known, fixed or benchmarked; 5/1/1 work must be known, achievable, permissible]"
+   ],
+   "scope": "employment ijarah",
+   "file": "SS-34.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS36",
+   "regulator": "AAOIFI",
+   "title": "SS 36 Impact of Contingent Incidents on Commitments",
+   "key_clauses": [
+    "[4/1 new duties/taxes after signing shift per law/stipulation; 5/1 impossible/useless delivery ends commitment]"
+   ],
+   "scope": "force-majeure effects",
+   "file": "SS-36.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS37",
+   "regulator": "AAOIFI",
+   "title": "SS 37 Credit Agreement",
+   "key_clauses": [
+    "[2/1 cash facilities incl. qard/musharakah; 5/1 traditional interest-bearing facilities impermissible]"
+   ],
+   "scope": "facilities taxonomy",
+   "file": "SS-37.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS38",
+   "regulator": "AAOIFI",
+   "title": "SS 38 Online Financial Dealings",
+   "key_clauses": [
+    "[2/1 commercial websites permitted absent impermissible content; 4/1 audio/visual contracting = physical-presence rules; 5/1 any consent-indicating form]"
+   ],
+   "scope": "e-contracts",
+   "file": "SS-38.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS41",
+   "regulator": "AAOIFI",
+   "title": "SS 41 Islamic Reinsurance",
+   "key_clauses": [
+    "[3/1/1 reinsuring with Islamic reinsurers permissible; traditional reinsurance restricted under necessity conditions (3/2)]"
+   ],
+   "scope": "retakaful",
+   "file": "SS-41.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS42",
+   "regulator": "AAOIFI",
+   "title": "SS 42 Financial Rights and How They Are Exercised and Transferred",
+   "key_clauses": [
+    "[3/1 personal vs 3/2 proprietary rights; 4/1 owner's full disposition; easements (5/1)]"
+   ],
+   "scope": "rights taxonomy",
+   "file": "SS-42.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS43",
+   "regulator": "AAOIFI",
+   "title": "SS 43 Insolvency",
+   "key_clauses": [
+    "[3/1 over-indebted debtor must not harm creditors; staged process (4/1); insolvent's admissions on sequestered assets void (5/1)]"
+   ],
+   "scope": "iflas rules",
+   "file": "SS-43.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS44",
+   "regulator": "AAOIFI",
+   "title": "SS 44 Obtaining and Deploying Liquidity",
+   "key_clauses": [
+    "[2/1 liquidity defined; 4/1 interest-bearing loans prohibited even indirect; 5/1 permissible deployments: cash-buy + deferred-sale, leases, forward leases]"
+   ],
+   "scope": "liquidity toolbox",
+   "file": "SS-44.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS45",
+   "regulator": "AAOIFI",
+   "title": "SS 45 Protection of Capital and Investments",
+   "key_clauses": [
+    "[2/1 takaful cover for investments permitted; 3/2 manager cannot guarantee capital; prohibited: manager liability for loss, third-party indemnity beyond misconduct (5/1-5/2)]"
+   ],
+   "scope": "protection vs guarantee",
+   "file": "SS-45.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS47",
+   "regulator": "AAOIFI",
+   "title": "SS 47 Rules for Calculating Profit in Financial Transactions",
+   "key_clauses": [
+    "[3/1 permissible profit from permissible transaction; 4/1 no upper profit limit with mutual consent]"
+   ],
+   "scope": "profit rules",
+   "file": "SS-47.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS48",
+   "regulator": "AAOIFI",
+   "title": "SS 48 Options to Terminate Due to Breach of Trust",
+   "key_clauses": [
+    "[2/1 revocation right on deception; lapses on destruction/consumption (4/1)]"
+   ],
+   "scope": "khiyar al-taghrir etc.",
+   "file": "SS-48.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS50",
+   "regulator": "AAOIFI",
+   "title": "SS 50 Irrigation Partnership (Musaqat)",
+   "key_clauses": [
+    "[4/1 offer+acceptance, capacity; 5/1 predetermined indivisible produce share. Adopted meeting 34, 3-4 Jan 2013]"
+   ],
+   "scope": "musaqat",
+   "file": "SS-50.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS51",
+   "regulator": "AAOIFI",
+   "title": "SS 51 Options to Revoke Due to Incomplete Performance",
+   "key_clauses": [
+    "[2/1 hidden-defect option; 4/1 breach-of-description option]"
+   ],
+   "scope": "defect/description options",
+   "file": "SS-51.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS52",
+   "regulator": "AAOIFI",
+   "title": "SS 52 Options to Reconsider (Cooling-Off, Either-Or)",
+   "key_clauses": [
+    "[2/1 cooling-off defined; 4/1 option lapses on expiry; ownership suspension rules (5/1)]"
+   ],
+   "scope": "khiyar al-shart family",
+   "file": "SS-52.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS53",
+   "regulator": "AAOIFI",
+   "title": "SS 53 'Arboun (Earnest Money)",
+   "key_clauses": [
+    "[2/1 earnest money with revocation option, kept on revoke, applied to price on confirm; 3/1 permissible where no spot-delivery requirement; no trading in arboun contracts]"
+   ],
+   "scope": "arbun rules",
+   "file": "SS-53.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  },
+  {
+   "id": "KB-AAOIFI-SS54",
+   "regulator": "AAOIFI",
+   "title": "SS 54 Revocation of Contracts by Exercise of a Cooling-Off Option",
+   "key_clauses": [
+    "[4/1 parties may stipulate revocation options for specific situations within Shari'ah]"
+   ],
+   "scope": "stipulated revocation",
+   "file": "SS-54.txt (split from ss volumes)",
+   "tag": "verified",
+   "note": "clause snippets read verbatim from the split standard text, 2026-07-18"
+  }
+ ]
+}

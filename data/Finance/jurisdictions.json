@@ -1,0 +1,253 @@
+{
+ "_meta": {
+  "type": "jurisdictions",
+  "version": 1,
+  "generated": "2026-07-18",
+  "built_by": "RV",
+  "purpose": "Settings-page ruleset scoping: pick a jurisdiction -> app applies the right standards stack. Extends the existing UAE->AAOIFI+CBUAE filter to a full map.",
+  "sources": "AAOIFI official adoption page (aaoifi.com/adoption-of-aaoifi-standards, read 2026-07-18) + documents verified in this project (CBUAE SG standard, SAMA SGF, BNM PDs, SBP compendium reference)",
+  "assurance_note": "tier = mandatory / basis (national standards built on AAOIFI) / voluntary / own_regime. Every entry cites its source. needs_check where unconfirmed.",
+  "ui_rule": "Jurisdiction selection filters WHICH standards vet a document. Default = 'AAOIFI (international)'. Multi-select allowed for cross-border deals."
+ },
+ "rows": [
+  {
+   "id": "J01",
+   "name": "International (AAOIFI baseline)",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI GS",
+    "AAOIFI FAS"
+   ],
+   "tier": "baseline",
+   "note": "Default vetting scope.",
+   "source": "project design",
+   "tag": "verified"
+  },
+  {
+   "id": "J02",
+   "name": "Bahrain",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS",
+    "AAOIFI GS"
+   ],
+   "tier": "mandatory",
+   "note": "AAOIFI home jurisdiction; Shari'ah + accounting + governance mandatory.",
+   "source": "AAOIFI adoption page 2026-07-18",
+   "tag": "verified"
+  },
+  {
+   "id": "J03",
+   "name": "UAE",
+   "stack": [
+    "AAOIFI SS",
+    "CBUAE HSA resolutions",
+    "CBUAE SG Standard"
+   ],
+   "tier": "mandatory",
+   "note": "CBUAE adopted AAOIFI (HSA recommendation, effective Sep 2018); HSA resolutions sit ON TOP — two-tier model, confirmed in CBUAE SG text.",
+   "source": "AAOIFI adoption page + CBUAE_EN_2825 read verbatim + 2018 adoption pronouncement",
+   "tag": "verified"
+  },
+  {
+   "id": "J04",
+   "name": "Saudi Arabia",
+   "stack": [
+    "SAMA SGF 2020",
+    "AAOIFI SS (reference)"
+   ],
+   "tier": "own_regime",
+   "note": "SAMA Shariah Governance Framework governs; AAOIFI followed voluntarily by institutions.",
+   "source": "SAMA_EN_2274 read verbatim + AAOIFI page (voluntary list)",
+   "tag": "verified"
+  },
+  {
+   "id": "J05",
+   "name": "Malaysia",
+   "stack": [
+    "BNM policy documents",
+    "BNM SAC resolutions",
+    "SC Malaysia (capital market)",
+    "IFSB"
+   ],
+   "tier": "own_regime",
+   "note": "BNM SAC rulings binding; own contract PDs (14); SC governs capital market — the bay' al-dayn divergence jurisdiction.",
+   "source": "BNM PDs read verbatim; SC docs pending download",
+   "tag": "verified"
+  },
+  {
+   "id": "J06",
+   "name": "Pakistan",
+   "stack": [
+    "AAOIFI SS (with SBP footnotes)",
+    "SBP directives"
+   ],
+   "tier": "mandatory_adapted",
+   "note": "SBP adopts AAOIFI SS with jurisdiction footnotes (IFPD compendium).",
+   "source": "AAOIFI adoption page + SBP compendium (seen in search, download queued)",
+   "tag": "plausible"
+  },
+  {
+   "id": "J07",
+   "name": "Qatar + QIFC",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS"
+   ],
+   "tier": "mandatory",
+   "note": "",
+   "source": "AAOIFI adoption page",
+   "tag": "verified"
+  },
+  {
+   "id": "J08",
+   "name": "Oman",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS",
+    "AAOIFI GS"
+   ],
+   "tier": "mandatory",
+   "note": "",
+   "source": "AAOIFI adoption page",
+   "tag": "verified"
+  },
+  {
+   "id": "J09",
+   "name": "Jordan",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J10",
+   "name": "Sudan",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J11",
+   "name": "Syria",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J12",
+   "name": "Yemen",
+   "stack": [
+    "AAOIFI SS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J13",
+   "name": "Nigeria",
+   "stack": [
+    "AAOIFI SS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J14",
+   "name": "Kyrgyz Republic",
+   "stack": [
+    "AAOIFI SS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J15",
+   "name": "Mauritius",
+   "stack": [
+    "AAOIFI SS"
+   ],
+   "tier": "mandatory",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J16",
+   "name": "Indonesia",
+   "stack": [
+    "National standards (AAOIFI-basis)",
+    "DSN-MUI fatwas"
+   ],
+   "tier": "basis",
+   "note": "National accounting standards built on AAOIFI; DSN-MUI fatwa body — DSN docs not yet in project.",
+   "source": "AAOIFI adoption page; DSN needs_check",
+   "tag": "plausible"
+  },
+  {
+   "id": "J17",
+   "name": "Kuwait",
+   "stack": [
+    "AAOIFI SS (guideline)"
+   ],
+   "tier": "voluntary",
+   "source": "AAOIFI adoption page (recommended as guidelines)",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J18",
+   "name": "Kazakhstan",
+   "stack": [
+    "National standards (AAOIFI-basis)"
+   ],
+   "tier": "basis",
+   "source": "AAOIFI adoption page",
+   "note": "",
+   "tag": "verified"
+  },
+  {
+   "id": "J19",
+   "name": "DIFC / Labuan / Maldives",
+   "stack": [
+    "AAOIFI FAS (secondary reporting)"
+   ],
+   "tier": "voluntary",
+   "source": "AAOIFI adoption page",
+   "note": "secondary reporting permitted",
+   "tag": "verified"
+  },
+  {
+   "id": "J20",
+   "name": "IsDB Group",
+   "stack": [
+    "AAOIFI SS",
+    "AAOIFI FAS"
+   ],
+   "tier": "mandatory",
+   "note": "multilateral adopter",
+   "source": "AAOIFI page",
+   "tag": "verified"
+  }
+ ]
+}

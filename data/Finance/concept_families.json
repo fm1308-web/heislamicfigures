@@ -1,0 +1,345 @@
+{
+ "_meta": {
+  "type": "concept_families",
+  "count": 18,
+  "id_scheme": "F01-F18",
+  "completeness": "complete (18 families). member_terms reference terms.json ids.",
+  "source": "Generated in Claude chat session. Phase 6. Groupings are EDITORIAL judgement, not an industry standard.",
+  "warning": "Family groupings and colors are editorial. Not every term is assigned; some terms may be unassigned.",
+  "change_log": "2026-07-05: added T201-T214 (Qur'an-layer terms): F13 +4, F16 +1, F18 +3, F12 +5, F02 +1. Adam-approved."
+ },
+ "rows": [
+  {
+   "id": "F01",
+   "family_name": "Profit-sharing partnerships",
+   "color": "#B8860B",
+   "origin_period": "Prophetic/Companion",
+   "current_status": "'Ideal' mode but minority of assets; deposits & some sukuk.",
+   "member_terms": [
+    "T040",
+    "T041",
+    "T049",
+    "T050",
+    "T051",
+    "T052",
+    "T053",
+    "T054",
+    "T142",
+    "T143",
+    "T145"
+   ]
+  },
+  {
+   "id": "F02",
+   "family_name": "Debt-sale / markup instruments",
+   "color": "#CD853F",
+   "origin_period": "early fiqh",
+   "current_status": "Dominant (>50% of financing).",
+   "member_terms": [
+    "T004",
+    "T026",
+    "T032",
+    "T036",
+    "T037",
+    "T089",
+    "T173",
+    "T174",
+    "T175",
+    "T212"
+   ]
+  },
+  {
+   "id": "F03",
+   "family_name": "Liquidity engineering / contested",
+   "color": "#8B4513",
+   "origin_period": "medieval",
+   "current_status": "Heavily used yet most criticized.",
+   "member_terms": [
+    "T001",
+    "T002",
+    "T003",
+    "T060",
+    "T061",
+    "T162",
+    "T163",
+    "T164",
+    "T165"
+   ]
+  },
+  {
+   "id": "F04",
+   "family_name": "Leasing structures",
+   "color": "#DAA520",
+   "origin_period": "early fiqh",
+   "current_status": "Core of asset finance & sukuk.",
+   "member_terms": [
+    "T006",
+    "T044",
+    "T045",
+    "T087",
+    "T146",
+    "T147",
+    "T148"
+   ]
+  },
+  {
+   "id": "F05",
+   "family_name": "Asset-backed securities (sukuk)",
+   "color": "#C19A6B",
+   "origin_period": "modern (classical sakk root)",
+   "current_status": ">US$1tn market.",
+   "member_terms": [
+    "T007",
+    "T008",
+    "T009",
+    "T010",
+    "T086",
+    "T133",
+    "T134",
+    "T135",
+    "T136",
+    "T137",
+    "T138",
+    "T139",
+    "T140"
+   ]
+  },
+  {
+   "id": "F06",
+   "family_name": "Forward & manufacturing sales",
+   "color": "#D2B48C",
+   "origin_period": "Prophetic/early fiqh",
+   "current_status": "Trade, agriculture, project finance.",
+   "member_terms": [
+    "T024",
+    "T025",
+    "T033",
+    "T034",
+    "T092",
+    "T093"
+   ]
+  },
+  {
+   "id": "F07",
+   "family_name": "Risk management / hedging",
+   "color": "#BDB76B",
+   "origin_period": "modern",
+   "current_status": "Growing but limited.",
+   "member_terms": [
+    "T029",
+    "T030",
+    "T031",
+    "T177",
+    "T178",
+    "T179",
+    "T180",
+    "T181"
+   ]
+  },
+  {
+   "id": "F08",
+   "family_name": "Insurance / mutual protection (takaful)",
+   "color": "#E1C16E",
+   "origin_period": "Prophetic (aqilah)",
+   "current_status": ">US$40bn market.",
+   "member_terms": [
+    "T011",
+    "T012",
+    "T079",
+    "T080",
+    "T081",
+    "T185",
+    "T186",
+    "T187",
+    "T188",
+    "T189"
+   ]
+  },
+  {
+   "id": "F09",
+   "family_name": "Agency & fee-based services",
+   "color": "#B5A642",
+   "origin_period": "early fiqh",
+   "current_status": "Pervasive across products.",
+   "member_terms": [
+    "T015",
+    "T027",
+    "T055",
+    "T056",
+    "T144",
+    "T168"
+   ]
+  },
+  {
+   "id": "F10",
+   "family_name": "Guarantee & debt transfer",
+   "color": "#A67B5B",
+   "origin_period": "early fiqh",
+   "current_status": "Trade finance, deposit insurance.",
+   "member_terms": [
+    "T017",
+    "T042",
+    "T043",
+    "T105",
+    "T169"
+   ]
+  },
+  {
+   "id": "F11",
+   "family_name": "Security & pledge",
+   "color": "#8A6D3B",
+   "origin_period": "Qur'anic (2:283)",
+   "current_status": "Islamic pawnbroking, collateral.",
+   "member_terms": [
+    "T016",
+    "T170",
+    "T171"
+   ]
+  },
+  {
+   "id": "F12",
+   "family_name": "Benevolence & social finance",
+   "color": "#CBA135",
+   "origin_period": "Prophetic",
+   "current_status": "Microfinance & social impact.",
+   "member_terms": [
+    "T013",
+    "T014",
+    "T048",
+    "T078",
+    "T079",
+    "T172",
+    "T182",
+    "T183",
+    "T184",
+    "T207",
+    "T208",
+    "T209",
+    "T210",
+    "T214"
+   ]
+  },
+  {
+   "id": "F13",
+   "family_name": "Prohibitions (riba/gharar/maysir)",
+   "color": "#6B4423",
+   "origin_period": "Qur'anic",
+   "current_status": "Bedrock screening principles.",
+   "member_terms": [
+    "T020",
+    "T021",
+    "T022",
+    "T023",
+    "T060",
+    "T071",
+    "T072",
+    "T073",
+    "T082",
+    "T083",
+    "T090",
+    "T091",
+    "T201",
+    "T202",
+    "T204",
+    "T205"
+   ]
+  },
+  {
+   "id": "F14",
+   "family_name": "Options & contractual rights (khiyar)",
+   "color": "#C9AE5D",
+   "origin_period": "Prophetic",
+   "current_status": "Consumer protection & structuring.",
+   "member_terms": [
+    "T018",
+    "T019",
+    "T096",
+    "T097",
+    "T098",
+    "T099",
+    "T177"
+   ]
+  },
+  {
+   "id": "F15",
+   "family_name": "Sources & methodology of law",
+   "color": "#9C7C38",
+   "origin_period": "early fiqh",
+   "current_status": "Product-approval reasoning.",
+   "member_terms": [
+    "T057",
+    "T058",
+    "T065",
+    "T066",
+    "T067",
+    "T068",
+    "T069",
+    "T070",
+    "T108",
+    "T109",
+    "T110",
+    "T111",
+    "T112",
+    "T113",
+    "T114",
+    "T115"
+   ]
+  },
+  {
+   "id": "F16",
+   "family_name": "Higher objectives & ethics",
+   "color": "#D4AF37",
+   "origin_period": "medieval",
+   "current_status": "ESG/maqasid-driven finance.",
+   "member_terms": [
+    "T059",
+    "T116",
+    "T117",
+    "T118",
+    "T119",
+    "T120",
+    "T121",
+    "T122",
+    "T123",
+    "T124",
+    "T203"
+   ]
+  },
+  {
+   "id": "F17",
+   "family_name": "Agricultural partnerships",
+   "color": "#A0784A",
+   "origin_period": "early fiqh",
+   "current_status": "Niche agricultural finance.",
+   "member_terms": [
+    "T062",
+    "T063",
+    "T064",
+    "T100"
+   ]
+  },
+  {
+   "id": "F18",
+   "family_name": "Governance, accounting & screening",
+   "color": "#B98C46",
+   "origin_period": "modern",
+   "current_status": "Institutional infrastructure.",
+   "member_terms": [
+    "T190",
+    "T191",
+    "T192",
+    "T193",
+    "T194",
+    "T195",
+    "T196",
+    "T197",
+    "T198",
+    "T199",
+    "T200",
+    "T206",
+    "T211",
+    "T213"
+   ]
+  }
+ ]
+}

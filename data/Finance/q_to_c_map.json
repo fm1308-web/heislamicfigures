@@ -1,0 +1,230 @@
+{
+ "_meta": {
+  "type": "q_to_c_map",
+  "generated": "2026-07-17",
+  "built_by": "RV (pyramid Task 1)",
+  "method": "For each contract, the Qur'an-stage and tafsir rows of its shipped *_v4 lineage file were cross-referenced against the verse lists in quran_word_filter_map.json. A link is recorded ONLY where a lineage-cited verse appears in that Q word's verse list. Same-verse overlaps that do not represent derivation (e.g. 2:275 sits in both riba and bay' lists) are EXCLUDED and documented below.",
+  "assurance_scale": "established = contract named/directly grounded in the word's verses; plausible = juristic derivation, not named in the Qur'an (noted per link); illustrative = same-verse context, supportive not originating.",
+  "excluded_overlaps": [
+   "C01-Q11 (4:12 shared with inheritance list — co-ownership context, not origin)",
+   "C02-Q10 (73:20 shared with qard list — artifact)",
+   "C03-Q01 (2:275 riba half of the verse — contrast, not origin)",
+   "C03-Q06 (4:29 wrongful-consumption half — covered by Q14)",
+   "C06-Q01 (2:275 overlap artifact)",
+   "C10-Q09 (57:18 shared charity/loan verse — origin stays with Q10)",
+   "C10-Q21 (73:20 overlap artifact)"
+  ],
+  "gaps": [
+   "No contract is left without a Q link, but two are derivations not namings: C02 (mudarabah) and C06 (istisna) — flagged plausible, never upgrade without scholar sign-off."
+  ]
+ },
+ "rows": [
+  {
+   "contract_id": "C01",
+   "contract_name": "Musharakah",
+   "links": [
+    {
+     "quran_word_id": "Q21",
+     "verse_refs": [
+      "38:24",
+      "4:12"
+     ],
+     "assurance": "established",
+     "evidence": "musharakah_v4.json rows MS001 (quran), MS006 + MS007 (tafsir on 38:24)",
+     "note": "khulata'/partners named in 38:24; co-ownership in 4:12."
+    }
+   ]
+  },
+  {
+   "contract_id": "C02",
+   "contract_name": "Mudarabah",
+   "links": [
+    {
+     "quran_word_id": "Q21",
+     "verse_refs": [
+      "73:20"
+     ],
+     "assurance": "plausible",
+     "evidence": "mudarabah_v4.json rows MD001 (quran), MD014 (tafsir al-Tabari)",
+     "note": "HARD CASE, carried honestly: mudarabah is not named in the Qur'an; jurists derive it from 'others travelling the land seeking Allah's bounty' (73:20). Derivation, not naming."
+    },
+    {
+     "quran_word_id": "Q14",
+     "verse_refs": [
+      "2:198",
+      "62:10"
+     ],
+     "assurance": "illustrative",
+     "evidence": "mudarabah_v4.json row MD001 (quran)",
+     "note": "general trade-permission context cited by the lineage, not an origin claim."
+    }
+   ]
+  },
+  {
+   "contract_id": "C03",
+   "contract_name": "Murabaha",
+   "links": [
+    {
+     "quran_word_id": "Q14",
+     "verse_refs": [
+      "2:275",
+      "4:29"
+     ],
+     "assurance": "established",
+     "evidence": "murabaha_v4.json rows MB001 (quran), MB005 + MB008 (tafsir on 2:275), MB009 (tafsir on 4:29)",
+     "note": "murabaha is a bay' subtype; enters law via the trade charter + consent rule."
+    }
+   ]
+  },
+  {
+   "contract_id": "C04",
+   "contract_name": "Ijarah",
+   "links": [
+    {
+     "quran_word_id": "Q18",
+     "verse_refs": [
+      "28:26",
+      "28:27",
+      "65:6",
+      "18:77"
+     ],
+     "assurance": "established",
+     "evidence": "ijarah_v4.json rows IJ001 (quran), IJ007 + IJ008 (tafsir on 28:26)",
+     "note": "hire/wage named across the verse set."
+    }
+   ]
+  },
+  {
+   "contract_id": "C05",
+   "contract_name": "Salam",
+   "links": [
+    {
+     "quran_word_id": "Q15",
+     "verse_refs": [
+      "2:282"
+     ],
+     "assurance": "established",
+     "evidence": "salam_v4.json rows SL001 (quran), SL006 (tafsir al-Tabari)",
+     "note": "classical tafsir connects the debt-documentation verse to salam; the Madinah hadith (SL002-SL004) then standardises the practice."
+    },
+    {
+     "quran_word_id": "Q14",
+     "verse_refs": [],
+     "assurance": "plausible",
+     "evidence": "contracts.json C05 type 'forward sale' + salam_v4 design note",
+     "note": "salam is a bay' subtype by typology; no distinct verse hit — recorded without stretching."
+    }
+   ]
+  },
+  {
+   "contract_id": "C06",
+   "contract_name": "Istisna",
+   "links": [
+    {
+     "quran_word_id": "Q14",
+     "verse_refs": [
+      "2:275"
+     ],
+     "assurance": "plausible",
+     "evidence": "istisna_v4.json row IS001 (quran) + file _meta honesty note",
+     "note": "no istisna verse exists; the contract is fiqh-derived (Hanafi istihsan) resting on the general bay' charter and the Prophetic commissions (IS002-IS004)."
+    }
+   ]
+  },
+  {
+   "contract_id": "C07",
+   "contract_name": "Wakala",
+   "links": [
+    {
+     "quran_word_id": "Q20",
+     "verse_refs": [
+      "18:19",
+      "12:55"
+     ],
+     "assurance": "established",
+     "evidence": "wakala_v4.json rows WK001 (quran), WK006 (tafsir on 18:19)",
+     "note": "delegation pictured in 18:19; stewardship appointment in 12:55."
+    }
+   ]
+  },
+  {
+   "contract_id": "C08",
+   "contract_name": "Kafala",
+   "links": [
+    {
+     "quran_word_id": "Q19",
+     "verse_refs": [
+      "12:72",
+      "12:66",
+      "12:78"
+     ],
+     "assurance": "established",
+     "evidence": "kafalah_v4.json rows K001 (quran), K011 (tafsir)",
+     "note": "za'im (guarantor) named in 12:72."
+    }
+   ]
+  },
+  {
+   "contract_id": "C09",
+   "contract_name": "Rahn",
+   "links": [
+    {
+     "quran_word_id": "Q16",
+     "verse_refs": [
+      "2:283"
+     ],
+     "assurance": "established",
+     "evidence": "rahn_v4.json rows RH001 (quran), RH006 + RH007 (tafsir on 2:283)",
+     "note": "rihanun maqbudah named in the verse."
+    },
+    {
+     "quran_word_id": "Q15",
+     "verse_refs": [
+      "2:283"
+     ],
+     "assurance": "illustrative",
+     "evidence": "rahn_v4.json row RH006",
+     "note": "same verse: the pledge substitutes for the missing written record."
+    },
+    {
+     "quran_word_id": "Q17",
+     "verse_refs": [
+      "2:283"
+     ],
+     "assurance": "illustrative",
+     "evidence": "rahn_v4.json row RH006",
+     "note": "same verse continuation: trust without security as the alternative track."
+    }
+   ]
+  },
+  {
+   "contract_id": "C10",
+   "contract_name": "Qard",
+   "links": [
+    {
+     "quran_word_id": "Q10",
+     "verse_refs": [
+      "2:245",
+      "5:12",
+      "57:11",
+      "57:18",
+      "64:17",
+      "73:20"
+     ],
+     "assurance": "established",
+     "evidence": "qard_v4.json rows QR001 (quran), QR005 + QR007 (tafsir on 2:245)",
+     "note": "qard hasan named across six verses."
+    },
+    {
+     "quran_word_id": "Q15",
+     "verse_refs": [
+      "2:282"
+     ],
+     "assurance": "illustrative",
+     "evidence": "qard_v4.json row QR001",
+     "note": "loans fall under the debt-documentation duty."
+    }
+   ]
+  }
+ ]
+}

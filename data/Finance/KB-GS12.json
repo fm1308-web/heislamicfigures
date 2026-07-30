@@ -1,0 +1,87 @@
+{
+  "id": "KB-GS12",
+  "status": "plausible_review",
+  "source": {
+    "file": "AAOIFI-GS-12-Sukuk-Governance-Final-for-Issuance-CS.pdf",
+    "url": null,
+    "url_status": "needs_check",
+    "issued": "31 December 2019 AD (5 Jumada I 1441H)",
+    "issued_status": "verified",
+    "effective": "1 July 2021 (Sukuk issuances for financial periods beginning on/after this date)",
+    "effective_status": "verified",
+    "paragraph_range": "1-103 + Appendices A-D"
+  },
+  "display_card": {
+    "one_liner": "Governance framework for the entire Sukuk lifecycle \u2014 issuance, continuity, restructuring, and maturity.",
+    "what_it_is": "Sets out 7 governance organs, 11 governance principles, and detailed Shari'ah-supervisory (SSSB), disclosure, audit and Fatwa requirements covering a Sukuk from pre-issuance through termination/liquidation.",
+    "why_it_matters_to_timeline": "First AAOIFI standard to govern Sukuk holistically (vs. SS17's product-level fiqh rules), responding to post-2008 market credibility concerns over asset-transfer authenticity and SSSB independence.",
+    "source_label": "AAOIFI GS12",
+    "source_url": null
+  },
+  "applicability": {
+    "text": "Applies to the originator (IFI, corporate, or government) of a Sukuk or economically similar instrument regardless of nomenclature, for the full lifecycle. In a Sukuk program with multiple tranches, each tranche must independently satisfy the standard.",
+    "para": "3-6",
+    "status": "verified"
+  },
+  "core_machinery": {
+    "text": "7 governance organs (TCWG, management, SSSB, trustee, internal audit, external auditor, external Shari'ah auditor \u2014 para 10). 11 governance principles mapped to 5 institutional pillars: Shari'ah compliance, accountability, fairness, transparency, responsibility (para 8-9). Lifecycle parts: Pre-issuance (C), Continuity (D), Pre-maturity changes (E), Maturity/liquidation (F), Transparency/disclosure (G).",
+    "status": "verified"
+  },
+  "key_rules_for_assurance": [
+    {"rule": "SSSB must be appointed for every Sukuk issuance (existing SSB may double as SSSB with regulatory approval)", "para": "19", "status": "verified"},
+    {"rule": "SSSB has unrestricted right to all information/records/documents from originator, trustee, advisors", "para": "21", "status": "verified"},
+    {"rule": "Provisional Fatwa (initial structure) then Final Fatwa (after final documentation review) \u2014 final Fatwa must review final rating certificates and legal docs", "para": "27-34", "status": "verified"},
+    {"rule": "Fatwa document is mandatory, must be part of legal documentation, and made public via prospectus", "para": "28-29, 31", "status": "verified"},
+    {"rule": "Sukuk assets must be transferred to SPV absolutely \u2014 legal impediment against originator/creditor claims, no originator control/equity stake in SPV", "para": "36(a-c)", "status": "verified"},
+    {"rule": "No recourse to originator for SPV losses unless a Shari'ah-compliant credit-enhancement arrangement is SSSB-approved", "para": "36(d)", "status": "verified"},
+    {"rule": "External Shari'ah audit at least annually", "para": "83", "status": "verified"},
+    {"rule": "SSSB periodic report at least annually, addressed to those charged with governance", "para": "57-59", "status": "verified"},
+    {"rule": "Change of SSSB member requires approval of trustee, Sukuk-holders/reps, and regulator", "para": "62-63", "status": "verified"},
+    {"rule": "Termination must not cause unjustifiable material loss to Sukuk-holders; SSSB approves modus operandi", "para": "67-68", "status": "verified"},
+    {"rule": "Restructuring cannot be initiated merely because the original structure has Shari'ah issues, unless the Fatwa-change process (paras 64-66) is followed first", "para": "74", "status": "verified"}
+  ],
+  "implications": [
+    "Sukuk product cards in-app should surface the Fatwa lifecycle (provisional \u2192 final) and flag structures lacking a genuine/absolute asset transfer to the SPV.",
+    "Mandatory annual external Shari'ah audit + SSSB report gives two independent recurring assurance checkpoints usable as compliance-LLM triggers.",
+    "5-level Shari'ah-principles hierarchy (para 7(l)) is now confirmed across 6 governance standards (GS1, GS9, GS10, GS11, GS22, GS12) \u2014 strong candidate for a standalone cross-cutting timeline node."
+  ],
+  "limitations": [
+    "Must be read alongside Shari'ah Standard 17 'Investment Sukuk' (footnote 1) for product-level fiqh rules \u2014 SS17 is currently SS-blocked (unreadable scan) in this project.",
+    "Transitional provisions mean pre-2021 Sukuk may legitimately not comply with completed lifecycle phases (para 103)."
+  ],
+  "disputes": [
+    {"issue": "Increased cost of issuance vs. conventional bonds due to added Shari'ah/audit expert involvement", "bc_paras": "BC4-BC6", "resolution": "Board accepted added cost as inherent to Sukuk's distinct nature; recommended standardized structures to mitigate cost.", "status": "verified"},
+    {"issue": "Standardization of Sukuk structures might hinder innovation", "bc_paras": "BC7", "resolution": "Board held standardization enables rather than restricts innovation (e.g. hybrid structures).", "status": "verified"},
+    {"issue": "Two-stage Fatwa (provisional + final) seen by some stakeholders as cumbersome/time-consuming", "bc_paras": "BC8-BC9", "resolution": "Board kept both stages, arguing provisional Fatwa saves time overall and reduces late-stage rejection risk.", "status": "verified"},
+    {"issue": "Terminology choice: 'obligor' vs 'issuer' vs 'originator'", "bc_paras": "BC10-BC12", "resolution": "'Originator' adopted as the all-encompassing, non-debt-implying term.", "status": "verified"},
+    {"issue": "Whether Shari'ah advisory firms (not just individual scholars) can serve as SSSB", "bc_paras": "BC13", "resolution": "Permitted if firm has \u22653 Shari'ah board members meeting the standard's requirements.", "status": "verified"},
+    {"issue": "Request to mandate disclosure of SSSB remuneration", "bc_paras": "BC14", "resolution": "Rejected \u2014 treated like legal/rating-agency fees, not required to be disclosed.", "status": "verified"},
+    {"issue": "Mandatory transfer of assets to SPV seen as conflicting with market's asset-based (vs asset-backed) practice, and as disguised privatization for sovereign Sukuk", "bc_paras": "BC15", "resolution": "Board upheld the true-transfer requirement to protect Shari'ah substance over prevailing market practice.", "status": "verified"},
+    {"issue": "Single vs. separate Fatwa for a Sukuk program (multiple tranches)", "bc_paras": "BC16", "resolution": "Left to the discretion of the relevant SSB/SSSB.", "status": "verified"},
+    {"issue": "Depth of SSSB's documentation review before issuing Fatwa", "bc_paras": "BC17", "resolution": "SSSB must confirm in the Fatwa whether full detailed review was performed by each member, and by whom if not.", "status": "verified"},
+    {"issue": "Whether internal Shari'ah audit should be mandatory for frequent non-IFI Sukuk originators (governments/corporates lacking such a function)", "bc_paras": "BC18-BC20", "resolution": "Recommended, not mandated; outsourcing or using general internal audit dept considered acceptable but not preferred.", "status": "verified"}
+  ],
+  "timeline_bridge": {
+    "concept_thread": "5-level Shari'ah-authority hierarchy \u2014 GS12 para 7(l) restates the identical hierarchy already documented in GS1/GS9/GS10/GS11/GS22.",
+    "concept_thread_status": "verified",
+    "quran_anchors": [],
+    "quran_note": "No Qur'an ayat quoted in GS12 text.",
+    "hadith_anchors": [],
+    "hadith_note": "No hadith cited in GS12 text.",
+    "contracts_touched": {"by_c_id": [], "concepts_mentioned": ["Sukuk / Investment Sukuk"], "status": "needs_check - contracts.json not in this session"},
+    "terms_touched": {"concepts_mentioned": ["Sukuk", "SPV", "Fatwa (provisional/final)", "Trustee", "Originator"], "status": "needs_check - terms.json not in this session"},
+    "figures_touched": {"list": [], "status": "not_applicable", "note": "Appendix B lists modern AGEB board/working-group members (e.g. Dr. Ishrat Husain) \u2014 standard-setters, not historical figures; out of scope per Rule 5."}
+  },
+  "related_standards": [
+    {"ref": "Shari'ah Standard No. 17 'Investment Sukuk'", "context": "product-level fiqh rules this standard must be read with", "para": "footnote 1", "status": "verified - SS17 date already in verified list (8 May 2003), but full text SS-blocked"},
+    {"ref": "GS 1 'Shari'ah Supervisory Board: Appointment, Composition and Report'", "context": "SSSB composition and terms of reference baseline", "para": "22, 24", "status": "verified"},
+    {"ref": "GS 2 'Shari'ah Review'", "context": "SSSB terms of reference", "para": "24", "status": "verified"},
+    {"ref": "GS 5 'Independence of the Shari'ah Supervisory Board'", "context": "SSSB independence/ethics", "para": "25", "status": "verified"},
+    {"ref": "GS 11 'Internal Shari'ah Audit'", "context": "recommended internal Shari'ah audit function for Sukuk", "para": "BC18-BC20", "status": "verified"},
+    {"ref": "AAOIFI Shari'ah Standard No. 29 'Stipulations and Ethics of Fatwa'", "context": "Fatwa issuance/change requirements", "para": "27, 65", "status": "verified"},
+    {"ref": "AAOIFI Auditing Standard (AS) 6 'External Shari'ah Audit'", "context": "scope of Sukuk external Shari'ah audit", "para": "85", "status": "verified"},
+    {"ref": "FAS 29 'Sukuk in the books of the originator'", "context": "originator financial reporting", "para": "90", "status": "verified"},
+    {"ref": "FAS 34 'Financial reporting to the Sukuk-holders'", "context": "Sukuk-holder financial reporting", "para": "92", "status": "verified"},
+    {"ref": "IFSB Standard No. 19", "context": "external (non-AAOIFI) disclosure guidance referenced for market products", "para": "78, 94(f)", "status": "verified - note: non-AAOIFI body, flag for Adam's discretion on inclusion"}
+  ]
+}

@@ -1,0 +1,1570 @@
+{
+  "_meta": {
+    "file": "standards_kb.json",
+    "assembled": "2026-07-05",
+    "note_count": 11,
+    "notes_contained": [
+      "KB-GS1",
+      "KB-GS7",
+      "KB-GS8",
+      "KB-GS9",
+      "KB-GS10",
+      "KB-GS11",
+      "KB-GS12",
+      "KB-GS13-GN",
+      "KB-GS15",
+      "KB-GS17",
+      "KB-GS22"
+    ],
+    "purpose": "Feeds app detail cards and a future compliance LLM. Every note is clause-referenced to its AAOIFI PDF.",
+    "tagging": "verified / plausible / needs_check per project Rule 2. URLs tagged plausible (from Adam's AAOIFI list, filename-matched to local inventory, not live-fetched).",
+    "known_open_items": [
+      "GS17 approval-meeting date: internal one-day discrepancy inside the PDF (4-5 vs 5-6 Oct 2023) - needs_check",
+      "Shari'ah Standards (SS series) notes blocked - awaiting readable digital PDF",
+      "contracts_touched / terms_touched cross-links in some notes tagged needs_check (data files not in session when written)"
+    ],
+    "next_step": "Step 3: deepen main data files - ONE sample record for Adam's approval before mass-applying."
+  },
+  "notes": [
+    {
+      "id": "KB-GS1",
+      "source": {
+        "title": "AAOIFI Governance Standard (GS) 1 (Revised 2024) - Shari'ah Governance Framework",
+        "url": "https://aaoifi.com/wp-content/uploads/2024/12/GS-1-Revised-2024-Shariah-Governance-Framework.pdf",
+        "needs_check": false,
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": "GS 1 (Revised 2024): Shari'ah Governance Framework - overarching 14-principle framework covering RSAs, CSB, SSB, compliance function, internal/external Shari'ah audit, TCWG and senior management roles",
+      "applicability": [
+        "Applies to all IFIs, including Islamic finance windows, across all sectors (para 2).",
+        "RSAs may choose to apply to other institutions in their jurisdictions as appropriate; applies insofar as practicable to non-IFI institutions adopting AAOIFI GSs, including social finance institutions (para 2).",
+        "Also applies to external stakeholders of institutions (including RSAs) to the extent of their responsibilities defined in this standard (para 3).",
+        "Acts as centre-point standard complementing multiple other AAOIFI governance standards and guidance (PR5, footnote 1)."
+      ],
+      "core_machinery": [
+        "14 Principles (paras 5-18 summary; detailed at paras 19-81): 1) Shari'ah governance framework; 2) role of RSAs; 3) central Shari'ah board; 4) unique organs (SSB, Shari'ah compliance function, internal Shari'ah audit, external Shari'ah audit); 5) role of TCWG and senior management; 6) SSB; 7) Shari'ah compliance function; 8) internal Shari'ah audit function; 9) external Shari'ah audit; 10) Islamic finance windows; 11) Islamic finance subsidiaries/associates; 12) business model/stakeholder considerations; 13) applicability to different sectors; 14) transparency and disclosure.",
+        "TCWG roles/responsibilities (paras 36-46): policy approval, oversight of CSB/SSB rulings implementation, internal control oversight, senior management performance oversight, corporate culture; capacity development; interaction with SSB; ensuring SSB independence and resourcing; annual SSB performance assessment (administrative only).",
+        "Senior management roles/responsibilities (paras 47-51): implementing framework, management structure/reporting, implementing CSB/SSB rulings, communication policy, capacity building, cooperation with SSB/other organs, SSB secretariat appointment and functions.",
+        "Sector-specific application: Islamic Capital Market (ICM) requirements (paras 68-72), Islamic microfinance/fintech/financial inclusion flexibility (paras 73-75), Takaful-specific disclosures (paras 80-81).",
+        "Transparency and disclosure requirements including Zakah and charity fund disclosures (paras 76-79)."
+      ],
+      "key_rules_for_assurance": [
+        "para 8",
+        "para 13",
+        "para 30",
+        "para 37",
+        "para 44",
+        "para 51",
+        "para 55",
+        "para 56",
+        "para 62",
+        "para 63",
+        "para 70",
+        "para 82"
+      ],
+      "implications": [
+        "Mandatory minimum organs of institutional Shari'ah governance: SSB, Shari'ah compliance function, internal Shari'ah audit function, external Shari'ah audit (para 8).",
+        "External Shari'ah audit (ESA) becomes mandatory for 'public interest institutions' (listed institutions, institutions with publicly traded securities e.g. Sukuk, retail IFIs with >10,000 stakeholders) three years after the effective date; strongly recommended for all others in the interim (paras 55-56, definition para 4h).",
+        "TCWG may perform only administrative assessment of SSB performance/effectiveness - not substantive assessment, and senior management cannot perform SSB assessment at all (para 44 and its explanation).",
+        "CSB establishment remains a 'recommended' (not mandatory or strongly recommended) practice for RSAs/governments (para 7, BC21-23).",
+        "For ICM, SSB must comprise three or more Shari'ah scholars, or be sourced via external Shari'ah consultancy firm meeting fit-and-proper/governance criteria; CSB requirements (where they exist) prevail (para 70).",
+        "Proportionality principle allows flexible application based on institution size, business model, and jurisdictional development stage (para 62)."
+      ],
+      "limitations": [
+        "Institutions may outsource specific components of the Shari'ah governance framework subject to TCWG approval and due diligence (para 63); however GS 9 separately prohibits outsourcing of the SCD specifically.",
+        "Regulatory flexibility permitted for microfinance/fintech/financial-inclusion organizations, e.g. allowing single-member SSBs or shared SSBs (paras 73-75).",
+        "ESA mandate applies only to public interest institutions after a 3-year transition; not universally mandatory (para 56, BC15b-c).",
+        "CSB formation kept as 'recommended' rather than 'strongly recommended' after public consultation pushback (BC22-23)."
+      ],
+      "disputes": [
+        "BC1-BC3: choice of principle-based (with prescriptive elements where needed) vs rule-based standard development approach.",
+        "BC4-BC9: defining the Shari'ah principles and rules hierarchy - debate on whether to centralize the hierarchy vs leaving to RSAs/Ijtihad; concluded a defined hierarchy is essential for global uniformity.",
+        "BC10: inclusion of RSA responsibilities within the standard as an exception, given RSAs' role as key external stakeholders.",
+        "BC11-BC13: balancing quality of Shari'ah governance framework against cost to institutions; proportionality, optional/preferred vs mandatory provisions, and transition periods used to optimize cost.",
+        "BC14-BC15: whether/when external Shari'ah audit (ESA) should be mandatory; concluded mandatory only for public interest institutions after 3-year transition, with minimum requirements retained in this standard despite AAOIFI SOAA 6 covering ESA conduct in detail.",
+        "BC16-BC20: applicability of Shari'ah governance framework to overseas branches/subsidiaries of IFIs, including cases of differing RSA approaches to AAOIFI GS adoption across jurisdictions.",
+        "BC21-BC23: level of emphasis for CSB establishment recommendation - moved from proposed 'strongly recommended' back down to 'recommended' after public consultation and PIMCC feedback.",
+        "BC24: quality assurance of external Shari'ah auditors/service providers - deemed out of scope for this standard, left to respective RSAs."
+      ],
+      "timeline_bridge": {
+        "effective_date": "On or after 1 January 2026 (para 82); earlier application encouraged",
+        "history": "Originated from joint IFSB-AAOIFI exposure draft 'Revised Shari'ah Governance Framework for Institutions Offering Islamic Financial Services' issued 16 Ramadan 1444H / 7 April 2022 (H1); AAOIFI subsequently proceeded independently (H2); AGEB approved working group 28 August 2023 (H3); exposure draft issued 25 December 2023 (H6); public hearings Jan-Jul 2024 (H7); PIMCC review 30 April 2024 (H8); Shari'ah Board's Committee reviews through Nov 2024 (H9); finalised and approved 20-22 May 2024, issued as final 29 December 2024 (H11).",
+        "adoption": "Approved in AAOIFI Governance and Ethics Board meeting No. 37, 12-14 Dhul-Qa'dah 1445H / 20-22 May 2024 (Appendix A)"
+      },
+      "related_standards": [
+        "GS 8 - Central Shari'ah Board",
+        "GS 9 - Shari'ah Compliance Function",
+        "GS 11 - Internal Shari'ah Audit",
+        "AAOIFI SOAA 6 - External Shari'ah Audit",
+        "GS 19 - Shari'ah Supervisory Board: Appointment and Composition",
+        "GS 20 - Shari'ah Supervisory Board: Functions and Operations",
+        "GS 21 - Shari'ah Supervisory Board: Review and Report",
+        "GS 22 - Application of Shari'ah Governance Principles to Islamic Finance Subsidiaries/Associates",
+        "[ED of] GS __ - Application of Shari'ah Governance Principles to Islamic Finance Windows",
+        "GS 4 - Audit and Governance Committee for Islamic Financial Institutions",
+        "GS 6 - Statement on Governance Principles for Islamic Finance Institutions",
+        "GS 5 - Independence of Shari'ah Supervisory Board",
+        "GS 10 - Shari'ah Compliance and Fiduciary Ratings for Islamic Financial Institutions",
+        "GS 12 - Sukuk Governance",
+        "GS 15 - Syndicated Financing",
+        "GS 17 - Shari'ah Compliance and Fiduciary Ratings of Sukuk and Other Islamic Finance Instruments",
+        "GS 18 - Shari'ah Decision-Making Process",
+        "[ED of] GS __ - Governance and Management of Investment Accounts",
+        "AAOIFI FAS 1, 30, 35, 39, 40, 45"
+      ]
+    },
+    {
+      "id": "KB-GS7",
+      "status": "plausible_review",
+      "source": {
+        "file": "AAOIFI-GS-7-Corporate-Social-Responsibility-Conduct-and-Disclosure-for-Islamic-Financial-Institutions.pdf",
+        "url": "https://aaoifi.com/wp-content/uploads/2020/09/AAOIFI-GS-7-Corporate-Social-Responsibility-Conduct-and-Disclosure-for-Islamic-Financial-Institutions.pdf",
+        "url_status": "plausible",
+        "issued": "2 April 2009 AD (6 Rabi' II 1430H) — adopted AAOIFI AASB meeting No. 35",
+        "issued_status": "verified",
+        "effective": "1 January 2010 AD (1 Muharram 1431H)",
+        "effective_status": "verified",
+        "paragraph_range": "1-57 + Appendices A-E",
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "one_liner": "Mandatory and recommended Corporate Social Responsibility conduct and disclosure obligations for Islamic Financial Institutions.",
+        "what_it_is": "AAOIFI's standard defining CSR for IFIs and splitting it into mandatory core conduct (client screening, fair dealing, prohibited earnings, employee welfare, Zakah) and recommended conduct (Qard Hasan, environmental impact, charitable activities, Waqf management, customer service, micro/small business support), plus matching disclosure rules.",
+        "why_it_matters_to_timeline": "First AAOIFI codification linking classical fiqh ethical duties (vicegerency, divine accountability, enjoining good/forbidding evil) to modern IFI governance practice.",
+        "source_label": "AAOIFI GS7",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2020/09/AAOIFI-GS-7-Corporate-Social-Responsibility-Conduct-and-Disclosure-for-Islamic-Financial-Institutions.pdf"
+      },
+      "applicability": {
+        "text": "Applies to all IFIs (incl. Islamic Insurance/Takaful) regardless of legal form, country, or size for mandatory sections; recommended sections apply only where the IFI has the capacity to comply. Charter/law conflicts must be disclosed; Takaful firms may disregard inapplicable provisions.",
+        "para": "2-3",
+        "status": "verified"
+      },
+      "core_machinery": {
+        "text": "Two-tier structure: (1) mandatory conduct with specific required policies (5/2), (2) recommended conduct as discretionary guidance (5/3). Disclosure mirrors this split: mandatory disclosure in a dedicated CSR report within the annual report (6/1), voluntary disclosure for recommended conduct (6/2). Board of directors attests compliance after an independent compliance audit (7/1); management implements (7/2).",
+        "status": "verified"
+      },
+      "key_rules_for_assurance": [
+        {
+          "rule": "Mandatory CSR policy for screening clients, incl. SSB approval of screening criteria",
+          "para": "11",
+          "status": "verified"
+        },
+        {
+          "rule": "Mandatory policy for responsible dealing with clients, incl. SSB screening of contract forms to avoid onerous terms",
+          "para": "14(a)",
+          "status": "verified"
+        },
+        {
+          "rule": "Mandatory policy for earnings/expenditure prohibited by Shari'ah, incl. SSB verdict on necessity of each impermissible transaction",
+          "para": "16(d)",
+          "status": "verified"
+        },
+        {
+          "rule": "Mandatory employee welfare policy (non-discrimination, health & safety, code of ethics)",
+          "para": "18",
+          "status": "verified"
+        },
+        {
+          "rule": "Zakah policy per SS35 / FAS2 §4/6 / FAS9",
+          "para": "20",
+          "status": "verified"
+        },
+        {
+          "rule": "Mandatory CSR disclosure in a dedicated annual-report section",
+          "para": "34-42",
+          "status": "verified"
+        },
+        {
+          "rule": "Board attestation requires prior independent compliance audit",
+          "para": "53",
+          "status": "verified"
+        },
+        {
+          "rule": "Recommended (voluntary) conduct: Qard Hasan, environment, social/development/environmental investment quotas, customer service, micro/small business & social savings, charitable activities, Waqf management",
+          "para": "21-33",
+          "status": "verified"
+        }
+      ],
+      "implications": [
+        "IFIs need a documented due-process trail for impermissible income (description, amount, SSB verdict, disposal plan, remediation strategy) — para 16.",
+        "CSR/ethics sits as a compliance layer on top of contract-level fiqh rules — useful cross-link for any contract or product card in the app.",
+        "Zakah policy disclosure is mandatory but governed by separate FAS/SS references, not this standard directly."
+      ],
+      "limitations": [
+        "No BC-numbered Basis-for-Conclusions section exists in this standard (unlike GS8-GS22) — Appendix C is narrative only, so no dispute paragraphs can be cited.",
+        "Predates the 2024-era governance overhaul (GS1 revised 2024, GS22); does not reference the 5-level Shari'ah hierarchy or the four-organs framework used in later standards."
+      ],
+      "disputes": [],
+      "timeline_bridge": {
+        "concept_thread": "Enjoining-good/forbidding-evil (amr bil ma'ruf) — same root thread flagged plausible for the hisbah/market-discipline link in GS9/GS10 notes; GS7 grounds it explicitly in Qur'anic vicegerency + accountability principles.",
+        "concept_thread_status": "plausible",
+        "quran_anchors": [
+          {
+            "ref": "Al-Baqarah 2:30",
+            "note": "vicegerency of mankind",
+            "status": "verified"
+          },
+          {
+            "ref": "Al-An'am 6:165",
+            "note": "vicegerency, generations succeeding one another",
+            "status": "verified"
+          },
+          {
+            "ref": "Al-Nisa' 4:86",
+            "note": "divine accountability",
+            "status": "verified"
+          },
+          {
+            "ref": "Al-Zalzalah 99:7-8",
+            "note": "atom's-weight accountability",
+            "status": "verified"
+          },
+          {
+            "ref": "Al-Tawbah 9:71",
+            "note": "enjoining good/forbidding evil, mutual believers",
+            "status": "verified"
+          },
+          {
+            "ref": "Al-'Imran 3:110",
+            "note": "best of peoples, enjoining good",
+            "status": "verified"
+          },
+          {
+            "ref": "Al-Baqarah 2:286",
+            "note": "no burden beyond capacity — basis for mandatory/recommended split",
+            "status": "verified"
+          }
+        ],
+        "hadith_anchors": [],
+        "hadith_note": "No hadith cited in GS7 text.",
+        "contracts_touched": {
+          "by_c_id": [],
+          "concepts_mentioned": [
+            "Qard Hasan"
+          ],
+          "status": "needs_check - contracts.json not in this session"
+        },
+        "terms_touched": {
+          "concepts_mentioned": [
+            "Zakah",
+            "Waqf",
+            "Qard Hasan",
+            "Fard Kifayah"
+          ],
+          "status": "needs_check - terms.json not in this session"
+        },
+        "figures_touched": {
+          "list": [],
+          "status": "not_applicable",
+          "note": "No historical figures named; standard-drafting committee members are modern professionals, out of scope per Rule 5."
+        }
+      },
+      "related_standards": [
+        {
+          "ref": "Shari'ah Standard No. 35",
+          "context": "Zakah policy basis",
+          "para": "20",
+          "status": "verified"
+        },
+        {
+          "ref": "FAS 2 §4/6-4/7",
+          "context": "Zakah/Qard Hasan accounting concepts",
+          "para": "20, 22, 49",
+          "status": "verified"
+        },
+        {
+          "ref": "FAS 9",
+          "context": "Zakah",
+          "para": "20, 42",
+          "status": "verified"
+        },
+        {
+          "ref": "FAS 1 §3/6",
+          "context": "disclosure of prohibited earnings/expenditure",
+          "para": "39",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "KB-GS8",
+      "source": {
+        "title": "Governance Standard for Islamic Financial Institutions No. 8 - Central Shari'ah Board",
+        "url": "https://aaoifi.com/wp-content/uploads/2020/09/AAOIFI-GS-8-Central-Shariah-Board.pdf",
+        "needs_check": false,
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": "GS 8: Central Shari'ah Board (CSB) - appointment, composition, functions, independence of jurisdiction-level Shari'ah boards",
+      "applicability": [
+        "Applies to governance for CSBs or similar bodies that oversee and advise on Shari'ah matters to regulators and government authorities (para 3).",
+        "Does NOT apply to Shari'ah supervisory boards (SSBs) or other institution-level boards/committees; those are covered by separate standards (para 4, referencing GSIFI 1 and 4).",
+        "Two CSB types recognized: national Shari'ah board and regulatory Shari'ah board (para 5b, footnotes 2-3).",
+        "Standard encourages but does not mandate creation of CSBs (PR7); does not prefer centralized over non-centralized model (PR5)."
+      ],
+      "core_machinery": [
+        "Appointment: first appointment, subsequent appointments, nomination committee, remuneration, terms of reference (paras 6-13).",
+        "Tenure and re-appointments: recommended 3-5 year term, rotation policy (paras 14-15).",
+        "Composition and selection: scholar vs expert members, minimum member counts, chairman/vice-chairman election, quorum rules, diversity (paras 16-24).",
+        "Removal and termination: grounds and due process (para 25).",
+        "Functions: Fatwas, advisory, regulations, oversight/limited supervision (paras 26-33).",
+        "Other functional provisions: decisions, secretariat, self-evaluation and reporting, confidentiality (paras 34-44).",
+        "Responsibilities of appointing authority/regulator (para 45).",
+        "Fit and proper criteria for Shari'ah scholar members and expert members (paras 46-50).",
+        "Independence: considerations for selection/appointment and for functioning (paras 51-54)."
+      ],
+      "key_rules_for_assurance": [
+        "para 18",
+        "para 19",
+        "para 20",
+        "para 22",
+        "para 23",
+        "para 25",
+        "para 34",
+        "para 35",
+        "para 36",
+        "para 37",
+        "para 51",
+        "para 52"
+      ],
+      "implications": [
+        "Aims to reduce conflicting Fatwas/rulings across IFIs in a jurisdiction, increasing industry credibility and client/investor confidence (PR3, IN3).",
+        "CSBs expected to adopt AAOIFI Shari'ah Standards and follow Shari'ah Standard No. 29 on Fatwa ethics (PR6).",
+        "CSB functions are primarily advisory/reactive; proactive action only when specific conditions in para 31(a-c) are all met.",
+        "Decisions relating to advisory/Fatwa functions, with basis of conclusion, are to be compiled and published regularly subject to legal/regulatory constraints (para 37).",
+        "Annual self-evaluation and performance reporting to appointing authority required (paras 41-42); public disclosure to be mutually agreed (para 43)."
+      ],
+      "limitations": [
+        "Standard encourages but does not mandate formation of CSBs (PR7).",
+        "Does not apply to SSBs or institution-level boards (para 4).",
+        "Does not favor centralized vs non-centralized model (PR5).",
+        "Cooling-off period for re-appointment left to appointing authority's discretion (para 15, confirmed BC7).",
+        "\"Professional misconduct\" (ground for removal) intentionally left undefined (para 25a, BC13)."
+      ],
+      "disputes": [
+        "BC1: rationale for need of a CSB.",
+        "BC2: need for individual SSBs alongside CSB.",
+        "BC3: nomination committee formation as good governance practice.",
+        "BC4: cooling-off period for re-appointments left to appointing authority.",
+        "BC5: engagement of experts and voting rights split (Shari'ah rulings reserved to scholar members; other matters equal voting).",
+        "BC6: functions of the CSB - advisory/Fatwa vs full supervisory role rejected.",
+        "BC7: selection criteria - non-discrimination basis.",
+        "BC8: number of CSB meetings left to each CSB's discretion.",
+        "BC9: removal/termination - \"professional misconduct\" left undefined deliberately.",
+        "BC10: reporting and disclosure - report to appointing authority mandatory.",
+        "BC11: making the report public and disclosing remuneration decided to be mandatory.",
+        "BC12-BC16 (as numbered in Appendix B, e.g. independence exemptions per para 51(c)-(d))."
+      ],
+      "timeline_bridge": {
+        "effective_date": "1 January 2018 (para 55)",
+        "transitional_provision": "Applies to terms of reference, appointment, constitution/reconstitution events occurring on or after effective date (para 56)",
+        "adoption": "Approved in AAOIFI Governance and Ethics Board meeting No. 5, 22-23 Dhul-Qa'dah 1438H / 15-16 August 2017 (Appendix A)"
+      },
+      "related_standards": [
+        "GSIFI 1 - Shari'ah Supervisory Board: Appointment, Composition and Report",
+        "GSIFI 4",
+        "AAOIFI Shari'ah Standard No. 29 - Stipulation and Ethics of Fatwa in the Institutional Framework"
+      ]
+    },
+    {
+      "id": "KB-GS9",
+      "source": {
+        "title": "Governance Standard for Islamic Financial Institutions No. 9 - Shari'ah Compliance Function",
+        "url": "https://aaoifi.com/wp-content/uploads/2023/02/AAOIFI-GS-9-Shariah-Compliance-Function-Final-for-Issuance-CS-1.pdf",
+        "needs_check": false,
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": "GS 9: Shari'ah Compliance Function - management responsibility, Shari'ah Compliance Department (SCD) structure, controls, and reporting",
+      "applicability": [
+        "Sets requirements for establishing/operating the Shari'ah compliance function within IFIs (para 2), covering: (a) the function as integrated part of IFI strategy/processes/people/technology, and (b) establishment, scope and operations of the Shari'ah Compliance Department (SCD) (para 2a-b).",
+        "Applies to IFIs including stand-alone branches, divisions and windows of conventional institutions offering Shari'ah-compliant products (definitions, para 3d).",
+        "Shari'ah compliance function is distinct from, and is a management responsibility, unlike independent organs such as SSB, internal Shari'ah review/audit, external Shari'ah audit (PR2, para 4)."
+      ],
+      "core_machinery": [
+        "Overall Shari'ah compliance function: primary responsibility of management and TCWG (paras 5-10); organizational commitment/culture (paras 11-12); preventive vs detective controls (paras 13-14); function vs department distinction (para 15); SSB oversight role (para 16); key considerations for instituting the function (paras 17-20).",
+        "Controls and processes: objectives/scope aligned to COSO five pillars - control environment, risk assessment, control activities, information and communication, monitoring (paras 21-22); policies/SOPs (paras 23-24); risk assessment and monitoring (paras 25-26); communication protocols (paras 27-29); HR integration - hiring, training, performance appraisals (paras 30-34); technology (paras 35-37); comprehensive control framework adoption (para 38).",
+        "SCD structure, scope and functioning: SCD structure/leadership (paras 39-40); key functions and reporting line, management function list a-m (paras 41-42); additional considerations (paras 43-46); ongoing compliance review process (paras 47-48); dotted-line reporting to SSB (para 49); controls/procedures/methodology and Shari'ah compliance manual (para 50); organizational independence from managerial decision-making, finance, legal, marketing/sales, product development (para 51).",
+        "Secretariat of the SSB: functions/responsibilities (paras 52-54); secretary appointment (para 55); Shari'ah review support (paras 56-57).",
+        "SCD human resources: staffing/hiring (paras 58-61); training/CPD (para 62).",
+        "Compliance techniques/tools (para 63); escalation and follow-up (paras 64-66); compliance report of SCD - contents and frequency (paras 67-70)."
+      ],
+      "key_rules_for_assurance": [
+        "para 39",
+        "para 40",
+        "para 41",
+        "para 42",
+        "para 49",
+        "para 50",
+        "para 51",
+        "para 52",
+        "para 55",
+        "para 58",
+        "para 60",
+        "para 67",
+        "para 68",
+        "para 69"
+      ],
+      "implications": [
+        "Shari'ah compliance is termed backbone of IFI; inconsistencies in approach, reporting lines and controls across IFIs/jurisdictions motivated the standard (IN3).",
+        "SCD reports primarily to senior management (accountable/evaluated by senior management) with a dotted-line to SSB (para 41, para 49) - not the reverse.",
+        "Head of SCD appointment requires SSB concurrence against specimen fit and proper criteria in Appendix B (para 40, Appendix B).",
+        "In resource-constrained IFIs, SCD may also perform the SSB secretariat function, provided no self-review threat results (para 52).",
+        "SCD compliance reports (quarterly/annual) feed into the SSB's annual Shari'ah review report (paras 67-69)."
+      ],
+      "limitations": [
+        "No outsourcing of the SCD function permitted, as it is a management function unique in nature; function may instead be allocated to different organs/departments if needed (BC12).",
+        "SCD's role in product development is input/review only, not final approval, to avoid self-review threat (para 51e, BC6).",
+        "SCD's dual role as SSB secretariat is conditional - only where resources are constrained and no self-review threat arises (para 52, BC8).",
+        "Staffing must be both qualitatively adequate and quantitatively sufficient relative to IFI size (para 58, footnote 6)."
+      ],
+      "disputes": [
+        "BC1: name and scope of standard - 'function' chosen as broader term than 'department'/'unit'.",
+        "BC2: primary responsibility for Shari'ah compliance lies with management, not SSB.",
+        "BC3: use of COSO five pillars as base framework, not mandatory adoption.",
+        "BC4: reporting line debate - resolved as main reporting to management, dotted line to SSB.",
+        "BC5: organizational independence of SCD from managerial decision-making, finance, legal, marketing/sales, product development.",
+        "BC6: product development function - SCD gives input only, not final approval, to avoid self-review threat.",
+        "BC7: role of SSB secretariat vs SCD - secretariat provides logistics; SCD performs research.",
+        "BC8: merging SSB secretariat and SCD functions permitted in resource-constrained institutions absent conflict of interest.",
+        "BC9: pre-approvals of business transactions assigned to SCD due to closer monitoring/understanding of business functions.",
+        "BC10: appointment of Head of SCD - years of experience (10 preferred, min 5 in new markets) and SSB approval of knowledge/skills.",
+        "BC11: frequency and contents of SCD compliance report - quarterly/half-yearly recommended, renamed 'Compliance Report of SCD'.",
+        "BC12: outsourcing the SCD rejected - function is unique management function; reallocation across departments permitted instead."
+      ],
+      "timeline_bridge": {
+        "effective_date": "1 July 2021 (para 71); earlier application encouraged",
+        "adoption": "Approved in AAOIFI Governance and Ethics Board meeting No. 8, 24-25 Shawwal 1439H / 8-9 July 2018 (Appendix A)",
+        "issued": "28 Safar 1440H / 6 November 2018 (Appendix D, H9)"
+      },
+      "related_standards": [
+        "GSIFI No. 2 - Shari'ah Review",
+        "GSIFI No. 3 - Internal Shari'ah Review",
+        "IESBA pronouncement on those charged with governance",
+        "COSO integrated framework"
+      ]
+    },
+    {
+      "id": "KB-GS10",
+      "source": {
+        "file": "AAOIFI-GS-10-Shariah-Compliance-and-Fiduciary-Ratings-for-IFIs-Final-for-Issuance-CS-Clean.pdf",
+        "url": "https://aaoifi.com/wp-content/uploads/2021/01/AAOIFI-GS-10-Shariah-Compliance-and-Fiduciary-Ratings-for-IFIs-Final-for-Issuance-CS-Clean.pdf",
+        "url_tag": "plausible",
+        "issued": "2019-12-31 (5 Jumada I 1441H)",
+        "effective": "2021-07-01 (ratings issued on or after; para 63)",
+        "paragraph_range": "1-63, BC1-BC32, Appendices A-E",
+        "tag": "verified",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "one_liner": "The rulebook for independent agencies that publicly score how Shari'ah-compliant and trustworthy an Islamic bank really is.",
+        "what_it_is": "A non-mandatory standard telling rating agencies how to run a Shari'ah compliance and fiduciary rating of an IFI: six weighted assessment areas, a published methodology, an independent rating committee, and a graded scale (suggested iAAA down to iC).",
+        "why_it_matters_to_timeline": "It turns Shari'ah compliance from an internal pass/fail into a public, comparable market signal. It completes the assurance chain: preventive compliance (GS9) -> internal detective audit (GS11) -> external audit (SOAA 6) -> public scoring (GS10). Audit looks backward; rating looks forward (BC12-13).",
+        "source_label": "AAOIFI GS 10 (2019)",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2021/01/AAOIFI-GS-10-Shariah-Compliance-and-Fiduciary-Ratings-for-IFIs-Final-for-Issuance-CS-Clean.pdf"
+      },
+      "applicability": "Applies to rating agencies conducting these ratings (para 4): either licensed credit rating agencies or dedicated Shari'ah/fiduciary rating agencies with proper capacity (para 8). IFIs are encouraged - not required - to be rated once every three years, preferably annually, and to announce results publicly (para 5). Assessment is at institution level only, not per instrument (para 3). Standard itself is non-mandatory; regulators may adopt it as mandatory (BC31-32).",
+      "core_machinery": "Six benchmarked parameter areas (para 18): (a) compliance with Shari'ah principles and rules, (b) Shari'ah governance framework, (c) corporate governance related to Shari'ah governance, (d) transparency and disclosure, (e) ethics and values, (f) fiduciary responsibility and performance. Suggested weights (para 30): 30-35 / 15-20 / 10-15 / 10-15 / 10-15 / 15-20 percent. Compliance benchmarks use the same 5-level Shari'ah authority hierarchy as GS1/GS9/GS11 (para 20). Nine-step process (para 37): acceptance -> team -> parameters -> initial info -> initial analysis -> due-diligence meetings -> rating committee -> report -> subsequent update. Output = rating score + full report to management + public report (para 61).",
+      "key_rules_for_assurance": [
+        {
+          "rule": "IFIs encouraged to be rated once in 3 years, preferably annually, and publicly announce the rating",
+          "para": "5"
+        },
+        {
+          "rule": "Eligible agencies: licensed credit rating agency, or a dedicated Shari'ah compliance and fiduciary rating agency, both with developed capacity and methodology",
+          "para": "8-9"
+        },
+        {
+          "rule": "Independence: no financial/business/investment ties with the ratee; written independence policies; 12-month cooling-off to clear conflicts",
+          "para": "14-16"
+        },
+        {
+          "rule": "Compliance benchmarks follow the 5-level hierarchy: AAOIFI SS -> regulator -> CSB -> AAOIFI FAS -> institution's SSB",
+          "para": "20"
+        },
+        {
+          "rule": "Overall compliance cannot be concluded without assessing individual material products/instruments",
+          "para": "21"
+        },
+        {
+          "rule": "Weights are independent, but failure in a significant category (e.g. Shari'ah compliance) = overall failure regardless of weighted score",
+          "para": "30 footnote 5; BC24"
+        },
+        {
+          "rule": "Rating scale must be published; suggested 5-10 grades, iAAA (90+) to iC (<50)",
+          "para": "35-36"
+        },
+        {
+          "rule": "Rating committee: generally 5 members, never fewer than 3; at least 33% independent of the agency",
+          "para": "41"
+        },
+        {
+          "rule": "On Shari'ah compliance matters, the majority view of the Shari'ah experts within the committee prevails",
+          "para": "52"
+        },
+        {
+          "rule": "Agency not liable for post-report events, but must consider a revised rating if pre-existing facts surface later",
+          "para": "54"
+        },
+        {
+          "rule": "Report has three components: rating score, full version to management, public report/press release",
+          "para": "61-62"
+        }
+      ],
+      "implications": [
+        "Creates a market-discipline and comparability layer that Shari'ah audit alone cannot provide (PR1, BC2-BC4, BC11-13).",
+        "Ratee-pays model retained deliberately - same logic as external auditors and SSB members being paid by the IFI (BC27-28).",
+        "Tiered / jurisdiction-specific ratings may rearrange the benchmark hierarchy, but must disclose the change and cannot claim AAOIFI conformity (paras 27-28, BC15, BC20-21)."
+      ],
+      "limitations": [
+        "Non-mandatory; uptake depends on regulators and market demand (BC31-32).",
+        "Many jurisdictions lack even a credit-rating licensing regime, so interim fit-and-proper criteria substitute for licensing (BC14, Appendix B).",
+        "Key terms (controversial products, less preferred options, asset management quality, financial viability) deliberately left for agencies/regulators to define (BC29-30).",
+        "AAOIFI explicitly declines the quality-assurance/approval role for rating agencies - that belongs to regulators (BC25-26)."
+      ],
+      "disputes": [
+        {
+          "issue": "Would the industry see ratings as a cost burden in a nascent market?",
+          "resolution": "Board held that investor demand for non-partisan Shari'ah-compliance opinions justifies it; credit ratings faced the same early resistance",
+          "bc": "BC1-BC6"
+        },
+        {
+          "issue": "Name of the standard - is 'rating' confusing vs credit ratings, and is 'fiduciary' the right word?",
+          "resolution": "'Rating' kept for credibility and parity with credit ratings; 'fiduciary' kept as the established IFSB-style term for the trust relationship",
+          "bc": "BC7-BC10"
+        },
+        {
+          "issue": "Should independent committee members be 50% instead of 33%?",
+          "resolution": "Kept at 33% - the agency bears the risk and accountability; the committee's role is process quality",
+          "bc": "BC19"
+        },
+        {
+          "issue": "Does ratee-pays compromise independence?",
+          "resolution": "No - consistent with credit rating, external audit and SSB market practice",
+          "bc": "BC27-BC28"
+        },
+        {
+          "issue": "Mandatory or voluntary?",
+          "resolution": "Issued as good-practice/non-mandatory; regulators may mandate per market maturity",
+          "bc": "BC31-BC32"
+        }
+      ],
+      "timeline_bridge": {
+        "concept_thread": [
+          {
+            "text": "Public grading of market trustworthiness extends the hisbah / market-supervision thread (consistent with the hisbah link recorded in KB-GS9)",
+            "tag": "plausible - analytical link, not in PDF text"
+          },
+          {
+            "text": "Modern rationale stated in the standard itself: market discipline and transparency for stakeholders",
+            "para": "PR1, IN4",
+            "tag": "verified"
+          }
+        ],
+        "quran_anchors": [
+          {
+            "text": "No Qur'an verse is cited anywhere in GS10",
+            "tag": "verified absence"
+          },
+          {
+            "text": "Conceptual amanah link (4:58) inherited from GS8's governance framing",
+            "tag": "plausible"
+          }
+        ],
+        "hadith_anchors": [
+          {
+            "text": "No hadith cited in GS10",
+            "tag": "verified absence"
+          }
+        ],
+        "contracts_touched": [
+          {
+            "text": "Fiduciary capacities named: Wakeel, Mudarib, partner (para 26(b)) - map to Wakalah / Mudarabah / Musharakah C-ids in lineage_v4.json",
+            "tag": "needs_check"
+          }
+        ],
+        "terms_touched": [
+          "fiduciary rating",
+          "benchmarked parameters",
+          "Shari'ah non-compliance",
+          "rating committee",
+          "hisbah (plausible link only)"
+        ],
+        "figures_touched": [
+          {
+            "text": "None historical. Institutional: standard co-developed with the Islamic International Rating Agency (IIRA) (Appendix A, E)",
+            "tag": "verified"
+          }
+        ]
+      },
+      "related_standards": [
+        "GS 1 (2024) - shared hierarchy",
+        "GS 9 - preventive counterpart",
+        "GS 11 - audit vs rating distinction (BC11-13)",
+        "SOAA 6 - external Shari'ah audit",
+        "IFSB governance/disclosure/ethics standards (paras 22-25)",
+        "IOSCO CRA principles 2003 (paras 11, 15)"
+      ]
+    },
+    {
+      "id": "KB-GS11",
+      "source": {
+        "file": "AAOIFI-GS-11-Internal-Shariah-Audit-Final-for-Issuance-CS.pdf",
+        "url": "https://aaoifi.com/wp-content/uploads/2021/01/AAOIFI-GS-11-Internal-Shariah-Audit-Final-for-Issuance-CS.pdf",
+        "url_tag": "plausible",
+        "issued": "2019-12-31 (5 Jumada I 1441H)",
+        "effective": "2021-07-01 (for auditors' reports covering periods beginning on or after; para 65)",
+        "paragraph_range": "1-67, BC1-BC21, Appendices A-D",
+        "supersedes": "GS 3 'Internal Shari'ah Review' (adopted 13-14 June 1999)",
+        "tag": "verified",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "one_liner": "The IFI's in-house detective: an audit team independent of management that periodically checks whether Shari'ah controls actually worked.",
+        "what_it_is": "The framework for the internal Shari'ah audit (ISA) function - the third of the four mandatory governance organs. It gives opinion-form assurance to the audit committee and the SSB that the IFI adhered to Shari'ah principles and rules, upgrading the 1999 'review' concept into a full audit discipline aligned with IIA standards.",
+        "why_it_matters_to_timeline": "Detective counterpart to GS9's preventive compliance function - together they are the day-to-day guard and the periodic inspector inside the same institution. Directly maps to the four-organ structure first captured in GS1 para 8.",
+        "source_label": "AAOIFI GS 11 (2019)",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2021/01/AAOIFI-GS-11-Internal-Shariah-Audit-Final-for-Issuance-CS.pdf"
+      },
+      "applicability": "All IFIs, including standalone branches, divisions and windows of conventional institutions (para 4(e)). Default structure = a separate independent ISA department (para 21). A unit inside internal audit is allowed only for small / new-market IFIs meeting all four conditions of para 22. Outsourcing to a professional firm allowed under para 23; the outsourced head may serve at most 3 IFIs (para 23(b)).",
+      "core_machinery": "Reporting: primary line to the audit committee, dotted line to the SSB; all Shari'ah issues go to the SSB (paras 24-27 + chart). Draft reports are shared with the SSB for Shari'ah conclusions before finalisation (para 25). Annual/periodic plans approved by both SSB and audit committee (para 41). Each audit entity runs a 12-step cycle (para 44 chart): planning -> risk assessment -> materiality -> sampling -> controls assessment -> controls testing -> evaluation of observations -> residual risk -> detailed procedures -> closing meeting -> draft report -> final report and rating. Follow-up: management rectifies; implementation of agreed actions is tracked with the Shari'ah compliance department (para 63).",
+      "key_rules_for_assurance": [
+        {
+          "rule": "ISA assesses adequacy and effectiveness of Shari'ah controls; the compliance function is ongoing monitoring - two distinct organs",
+          "para": "5; BC16-17"
+        },
+        {
+          "rule": "ISA is independent of management but not necessarily of the entity",
+          "para": "13"
+        },
+        {
+          "rule": "Management must give ISA unrestricted access to all documents, reports and systems",
+          "para": "14"
+        },
+        {
+          "rule": "Internal Shari'ah auditors may not perform operational or management functions, including product development and Shari'ah compliance work",
+          "para": "16"
+        },
+        {
+          "rule": "Primary objective: opinion-form assurance to TCWG and the SSB on adherence to Shari'ah principles and rules; plus opinions on governance structure, internal controls, and risk mechanisms",
+          "para": "17-18"
+        },
+        {
+          "rule": "The audit committee owns the existence and oversight of ISA; it appoints the head of ISA",
+          "para": "19, 30"
+        },
+        {
+          "rule": "Charter and manual developed by the head, approved by the audit committee after consulting the SSB",
+          "para": "37-39"
+        },
+        {
+          "rule": "Periodic reports due within 3 months of period end; engagement reports within 1 month; SSB returns comments on drafts within 1 month",
+          "para": "55-56"
+        },
+        {
+          "rule": "A rating mechanism for audit entities is preferred, agreed with the SSB",
+          "para": "62"
+        },
+        {
+          "rule": "Head fit-and-proper: suitable degree, well-versed in Fiqh al-Muamalat and the 5-level hierarchy, preferably 10 years relevant experience (regulator may relax for new markets), SSB-approved",
+          "para": "Appendix B; BC21"
+        },
+        {
+          "rule": "Same 5-level Shari'ah authority hierarchy as GS1/GS9/GS10",
+          "para": "4(k)"
+        }
+      ],
+      "implications": [
+        "Confirms the detective-control role recorded in the four-organ scheme (BC17).",
+        "Routing primary reporting through the audit committee (not the SSB) was a deliberate independence design - the mandate is audit, Shari'ah interpretation stays with the SSB via the dotted line (BC7-BC9).",
+        "Technology explicitly embraced: IT general controls, CAATs, Shari'ah audit software (paras 48, 54, BC18-19)."
+      ],
+      "limitations": [
+        "Internal by nature - independent of management yet inside the entity (para 13); external Shari'ah audit (SOAA 6) exists precisely to close that gap.",
+        "Effectiveness hinges on audit committee commitment and the head's competence (BC7, BC20).",
+        "A detailed internal Shari'ah audit manual was promised 'in due course' (IN3) - whether issued: needs_check."
+      ],
+      "disputes": [
+        {
+          "issue": "Should ISA report primarily to the SSB or the audit committee?",
+          "resolution": "Audit committee, to preserve independence and because the mandate is audit; dotted line to SSB retained",
+          "bc": "BC8"
+        },
+        {
+          "issue": "Should the option of housing ISA inside internal audit exist at all?",
+          "resolution": "Allowed only under the four strict para 22 conditions; AAOIFI states its preference for a separate department",
+          "bc": "BC10-BC13"
+        },
+        {
+          "issue": "Head's minimum experience",
+          "resolution": "Exposure draft said 5 years; raised to 10 after public hearings, with regulator flexibility for new markets",
+          "bc": "BC21"
+        }
+      ],
+      "timeline_bridge": {
+        "concept_thread": [
+          {
+            "text": "Internal accountability / self-examination (muhasabah) institutionalised as a periodic audit organ",
+            "tag": "plausible - analytical link, not in PDF text"
+          },
+          {
+            "text": "Direct institutional descendant of GS 3 'Internal Shari'ah Review' (1999) - a marker of the industry's 20-year professionalisation",
+            "para": "PR1, IN2, para 67",
+            "tag": "verified"
+          }
+        ],
+        "quran_anchors": [
+          {
+            "text": "No Qur'an verse cited in GS11",
+            "tag": "verified absence"
+          }
+        ],
+        "hadith_anchors": [
+          {
+            "text": "No hadith cited in GS11",
+            "tag": "verified absence"
+          }
+        ],
+        "contracts_touched": [
+          {
+            "text": "None specific - audit scope spans all products and transactions",
+            "tag": "verified"
+          }
+        ],
+        "terms_touched": [
+          "internal Shari'ah audit",
+          "Shari'ah non-compliance risk (defined as a sub-set of operational risk, para 4(j))",
+          "SSB",
+          "TCWG",
+          "QAIP",
+          "Fiqh al-Muamalat",
+          "audit committee"
+        ],
+        "figures_touched": [
+          {
+            "text": "None historical. Institutional: drafted with Meezan Bank as a supported project (Appendix A, D H2)",
+            "tag": "verified"
+          }
+        ]
+      },
+      "related_standards": [
+        "GS 9 - preventive counterpart (para 5, BC16-17 explicitly cross-refer)",
+        "GS 1 (2024) - organ 3 of 4",
+        "SOAA 6 - external Shari'ah audit (defined at para 4(a))",
+        "IIA IPPF and QAIP (paras 2, 8)",
+        "GS 3 (1999) - superseded"
+      ],
+      "internal_notes": [
+        {
+          "text": "Para 4(l) cites the OLD GS1 title ('Shari'ah Supervisory Board: Appointment, Composition and Report') - superseded by GS1 (2024) restructuring; SSB detail now lives in GS 19-21. Flag when cross-linking.",
+          "tag": "verified"
+        }
+      ]
+    },
+    {
+      "id": "KB-GS12",
+      "status": "plausible_review",
+      "source": {
+        "file": "AAOIFI-GS-12-Sukuk-Governance-Final-for-Issuance-CS.pdf",
+        "url": "https://aaoifi.com/wp-content/uploads/2023/02/AAOIFI-GS-12-Sukuk-Governance-Final-for-Issuance-CS.pdf",
+        "url_status": "plausible",
+        "issued": "31 December 2019 AD (5 Jumada I 1441H)",
+        "issued_status": "verified",
+        "effective": "1 July 2021 (Sukuk issuances for financial periods beginning on/after this date)",
+        "effective_status": "verified",
+        "paragraph_range": "1-103 + Appendices A-D",
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "one_liner": "Governance framework for the entire Sukuk lifecycle — issuance, continuity, restructuring, and maturity.",
+        "what_it_is": "Sets out 7 governance organs, 11 governance principles, and detailed Shari'ah-supervisory (SSSB), disclosure, audit and Fatwa requirements covering a Sukuk from pre-issuance through termination/liquidation.",
+        "why_it_matters_to_timeline": "First AAOIFI standard to govern Sukuk holistically (vs. SS17's product-level fiqh rules), responding to post-2008 market credibility concerns over asset-transfer authenticity and SSSB independence.",
+        "source_label": "AAOIFI GS12",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2023/02/AAOIFI-GS-12-Sukuk-Governance-Final-for-Issuance-CS.pdf"
+      },
+      "applicability": {
+        "text": "Applies to the originator (IFI, corporate, or government) of a Sukuk or economically similar instrument regardless of nomenclature, for the full lifecycle. In a Sukuk program with multiple tranches, each tranche must independently satisfy the standard.",
+        "para": "3-6",
+        "status": "verified"
+      },
+      "core_machinery": {
+        "text": "7 governance organs (TCWG, management, SSSB, trustee, internal audit, external auditor, external Shari'ah auditor — para 10). 11 governance principles mapped to 5 institutional pillars: Shari'ah compliance, accountability, fairness, transparency, responsibility (para 8-9). Lifecycle parts: Pre-issuance (C), Continuity (D), Pre-maturity changes (E), Maturity/liquidation (F), Transparency/disclosure (G).",
+        "status": "verified"
+      },
+      "key_rules_for_assurance": [
+        {
+          "rule": "SSSB must be appointed for every Sukuk issuance (existing SSB may double as SSSB with regulatory approval)",
+          "para": "19",
+          "status": "verified"
+        },
+        {
+          "rule": "SSSB has unrestricted right to all information/records/documents from originator, trustee, advisors",
+          "para": "21",
+          "status": "verified"
+        },
+        {
+          "rule": "Provisional Fatwa (initial structure) then Final Fatwa (after final documentation review) — final Fatwa must review final rating certificates and legal docs",
+          "para": "27-34",
+          "status": "verified"
+        },
+        {
+          "rule": "Fatwa document is mandatory, must be part of legal documentation, and made public via prospectus",
+          "para": "28-29, 31",
+          "status": "verified"
+        },
+        {
+          "rule": "Sukuk assets must be transferred to SPV absolutely — legal impediment against originator/creditor claims, no originator control/equity stake in SPV",
+          "para": "36(a-c)",
+          "status": "verified"
+        },
+        {
+          "rule": "No recourse to originator for SPV losses unless a Shari'ah-compliant credit-enhancement arrangement is SSSB-approved",
+          "para": "36(d)",
+          "status": "verified"
+        },
+        {
+          "rule": "External Shari'ah audit at least annually",
+          "para": "83",
+          "status": "verified"
+        },
+        {
+          "rule": "SSSB periodic report at least annually, addressed to those charged with governance",
+          "para": "57-59",
+          "status": "verified"
+        },
+        {
+          "rule": "Change of SSSB member requires approval of trustee, Sukuk-holders/reps, and regulator",
+          "para": "62-63",
+          "status": "verified"
+        },
+        {
+          "rule": "Termination must not cause unjustifiable material loss to Sukuk-holders; SSSB approves modus operandi",
+          "para": "67-68",
+          "status": "verified"
+        },
+        {
+          "rule": "Restructuring cannot be initiated merely because the original structure has Shari'ah issues, unless the Fatwa-change process (paras 64-66) is followed first",
+          "para": "74",
+          "status": "verified"
+        }
+      ],
+      "implications": [
+        "Sukuk product cards in-app should surface the Fatwa lifecycle (provisional → final) and flag structures lacking a genuine/absolute asset transfer to the SPV.",
+        "Mandatory annual external Shari'ah audit + SSSB report gives two independent recurring assurance checkpoints usable as compliance-LLM triggers.",
+        "5-level Shari'ah-principles hierarchy (para 7(l)) is now confirmed across 6 governance standards (GS1, GS9, GS10, GS11, GS22, GS12) — strong candidate for a standalone cross-cutting timeline node."
+      ],
+      "limitations": [
+        "Must be read alongside Shari'ah Standard 17 'Investment Sukuk' (footnote 1) for product-level fiqh rules — SS17 is currently SS-blocked (unreadable scan) in this project.",
+        "Transitional provisions mean pre-2021 Sukuk may legitimately not comply with completed lifecycle phases (para 103)."
+      ],
+      "disputes": [
+        {
+          "issue": "Increased cost of issuance vs. conventional bonds due to added Shari'ah/audit expert involvement",
+          "bc_paras": "BC4-BC6",
+          "resolution": "Board accepted added cost as inherent to Sukuk's distinct nature; recommended standardized structures to mitigate cost.",
+          "status": "verified"
+        },
+        {
+          "issue": "Standardization of Sukuk structures might hinder innovation",
+          "bc_paras": "BC7",
+          "resolution": "Board held standardization enables rather than restricts innovation (e.g. hybrid structures).",
+          "status": "verified"
+        },
+        {
+          "issue": "Two-stage Fatwa (provisional + final) seen by some stakeholders as cumbersome/time-consuming",
+          "bc_paras": "BC8-BC9",
+          "resolution": "Board kept both stages, arguing provisional Fatwa saves time overall and reduces late-stage rejection risk.",
+          "status": "verified"
+        },
+        {
+          "issue": "Terminology choice: 'obligor' vs 'issuer' vs 'originator'",
+          "bc_paras": "BC10-BC12",
+          "resolution": "'Originator' adopted as the all-encompassing, non-debt-implying term.",
+          "status": "verified"
+        },
+        {
+          "issue": "Whether Shari'ah advisory firms (not just individual scholars) can serve as SSSB",
+          "bc_paras": "BC13",
+          "resolution": "Permitted if firm has ≥3 Shari'ah board members meeting the standard's requirements.",
+          "status": "verified"
+        },
+        {
+          "issue": "Request to mandate disclosure of SSSB remuneration",
+          "bc_paras": "BC14",
+          "resolution": "Rejected — treated like legal/rating-agency fees, not required to be disclosed.",
+          "status": "verified"
+        },
+        {
+          "issue": "Mandatory transfer of assets to SPV seen as conflicting with market's asset-based (vs asset-backed) practice, and as disguised privatization for sovereign Sukuk",
+          "bc_paras": "BC15",
+          "resolution": "Board upheld the true-transfer requirement to protect Shari'ah substance over prevailing market practice.",
+          "status": "verified"
+        },
+        {
+          "issue": "Single vs. separate Fatwa for a Sukuk program (multiple tranches)",
+          "bc_paras": "BC16",
+          "resolution": "Left to the discretion of the relevant SSB/SSSB.",
+          "status": "verified"
+        },
+        {
+          "issue": "Depth of SSSB's documentation review before issuing Fatwa",
+          "bc_paras": "BC17",
+          "resolution": "SSSB must confirm in the Fatwa whether full detailed review was performed by each member, and by whom if not.",
+          "status": "verified"
+        },
+        {
+          "issue": "Whether internal Shari'ah audit should be mandatory for frequent non-IFI Sukuk originators (governments/corporates lacking such a function)",
+          "bc_paras": "BC18-BC20",
+          "resolution": "Recommended, not mandated; outsourcing or using general internal audit dept considered acceptable but not preferred.",
+          "status": "verified"
+        }
+      ],
+      "timeline_bridge": {
+        "concept_thread": "5-level Shari'ah-authority hierarchy — GS12 para 7(l) restates the identical hierarchy already documented in GS1/GS9/GS10/GS11/GS22.",
+        "concept_thread_status": "verified",
+        "quran_anchors": [],
+        "quran_note": "No Qur'an ayat quoted in GS12 text.",
+        "hadith_anchors": [],
+        "hadith_note": "No hadith cited in GS12 text.",
+        "contracts_touched": {
+          "by_c_id": [],
+          "concepts_mentioned": [
+            "Sukuk / Investment Sukuk"
+          ],
+          "status": "needs_check - contracts.json not in this session"
+        },
+        "terms_touched": {
+          "concepts_mentioned": [
+            "Sukuk",
+            "SPV",
+            "Fatwa (provisional/final)",
+            "Trustee",
+            "Originator"
+          ],
+          "status": "needs_check - terms.json not in this session"
+        },
+        "figures_touched": {
+          "list": [],
+          "status": "not_applicable",
+          "note": "Appendix B lists modern AGEB board/working-group members (e.g. Dr. Ishrat Husain) — standard-setters, not historical figures; out of scope per Rule 5."
+        }
+      },
+      "related_standards": [
+        {
+          "ref": "Shari'ah Standard No. 17 'Investment Sukuk'",
+          "context": "product-level fiqh rules this standard must be read with",
+          "para": "footnote 1",
+          "status": "verified - SS17 date already in verified list (8 May 2003), but full text SS-blocked"
+        },
+        {
+          "ref": "GS 1 'Shari'ah Supervisory Board: Appointment, Composition and Report'",
+          "context": "SSSB composition and terms of reference baseline",
+          "para": "22, 24",
+          "status": "verified"
+        },
+        {
+          "ref": "GS 2 'Shari'ah Review'",
+          "context": "SSSB terms of reference",
+          "para": "24",
+          "status": "verified"
+        },
+        {
+          "ref": "GS 5 'Independence of the Shari'ah Supervisory Board'",
+          "context": "SSSB independence/ethics",
+          "para": "25",
+          "status": "verified"
+        },
+        {
+          "ref": "GS 11 'Internal Shari'ah Audit'",
+          "context": "recommended internal Shari'ah audit function for Sukuk",
+          "para": "BC18-BC20",
+          "status": "verified"
+        },
+        {
+          "ref": "AAOIFI Shari'ah Standard No. 29 'Stipulations and Ethics of Fatwa'",
+          "context": "Fatwa issuance/change requirements",
+          "para": "27, 65",
+          "status": "verified"
+        },
+        {
+          "ref": "AAOIFI Auditing Standard (AS) 6 'External Shari'ah Audit'",
+          "context": "scope of Sukuk external Shari'ah audit",
+          "para": "85",
+          "status": "verified"
+        },
+        {
+          "ref": "FAS 29 'Sukuk in the books of the originator'",
+          "context": "originator financial reporting",
+          "para": "90",
+          "status": "verified"
+        },
+        {
+          "ref": "FAS 34 'Financial reporting to the Sukuk-holders'",
+          "context": "Sukuk-holder financial reporting",
+          "para": "92",
+          "status": "verified"
+        },
+        {
+          "ref": "IFSB Standard No. 19",
+          "context": "external (non-AAOIFI) disclosure guidance referenced for market products",
+          "para": "78, 94(f)",
+          "status": "verified - note: non-AAOIFI body, flag for Adam's discretion on inclusion"
+        }
+      ]
+    },
+    {
+      "id": "KB-GS13-GN",
+      "source": {
+        "file": "Guidance-Note-on-Waqf-Governance-GS-13.pdf",
+        "url": "https://aaoifi.com/wp-content/uploads/2021/02/Guidance-Note-on-Waqf-Governance-GS-13.pdf",
+        "url_tag": "plausible",
+        "issued": "not stated in the provided text - needs_check",
+        "effective": "not stated - guidance note; parent standard GS 13 governs - needs_check",
+        "paragraph_range": "1-78",
+        "reads_with": "GS 13 'Waqf Governance' and Shari'ah Standard (SS) 60 'Waqf'; on conflict, GS 13 prevails (para 2)",
+        "tag": "verified",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "one_liner": "The operating manual for running a Waqf like a well-governed institution: how to select, run, and remove Nazirs, and which policies every endowment needs.",
+        "what_it_is": "A guidance note to GS 13 covering the nature and types of Waqf, the board of Nazirs (selection, functions, termination, committees), nine governance and internal-control policies, and specific provisions for the four Nazir forms (board, individual, juristic person, state).",
+        "why_it_matters_to_timeline": "Waqf is the oldest continuously operating Islamic financial institution type. This note retrofits modern board governance - committees, KPIs, whistle-blowing, ISO standards - onto a centuries-old charitable form: the clearest single bridge in the GS series between classical fiqh institutions and modern governance.",
+        "source_label": "AAOIFI Guidance Note to GS 13",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2021/02/Guidance-Note-on-Waqf-Governance-GS-13.pdf"
+      },
+      "applicability": "All Waqf: charitable, private, joint and family (paras 4-6); all Nazir forms (paras 70-78). Non-binding guidance - the standard prevails on any inconsistency (para 2); jurisdiction law repeatedly overrides.",
+      "core_machinery": "Waqf = making property inalienable and donating its usufruct to beneficiaries (para 3). The Waqf deed is the constitution: the Waqif's purpose and conditions bind the Nazir unless they violate Shari'ah or law (para 14); explicit conditions adhered to, ambiguity resolved by Waqif's intention/custom, conflicts combined or resolved in the Waqf's best interest (para 15); deviation only for imperative need in the Waqf's fundamental interest, never against Shari'ah (para 16). Board of Nazirs is the preferred model (para 70): 3-9 members (para 72), max 5-year terms (para 32), at least 3 meetings/year recommended (para 35), quorum over half (para 37), papers 2-3 weeks ahead (para 36), circulation decisions for emergencies only (para 38). Committees of 3-5 members, majority independent with independent chair (paras 40-43): nomination and remuneration (45), investment and risk (46-47), executive (48-50: at least a third board members, two thirds senior management), governance (51-52).",
+      "key_rules_for_assurance": [
+        {
+          "rule": "A Waqf should have independent juristic personality, financially separate from Waqif, beneficiaries and Nazir",
+          "para": "8"
+        },
+        {
+          "rule": "Waqif must own the assets (legally and per Shari'ah) at creation; assets must be Shari'ah-compliant; asset choice is the Waqif's absolute discretion",
+          "para": "11-13"
+        },
+        {
+          "rule": "Family Waqf must not contradict inheritance principles; recommendation to make it joint with public entities and give beneficiaries a right to view the annual report",
+          "para": "6-7 (links GS 13 para 79)"
+        },
+        {
+          "rule": "Members selected via a standard mechanism per the deed: competence, integrity, time commitment; detailed 12-point criteria list",
+          "para": "17-21"
+        },
+        {
+          "rule": "Membership termination grounds incl. serious breach - decided by court, competent authority, or two-thirds board majority",
+          "para": "26"
+        },
+        {
+          "rule": "Nazir removal grounds: negligence/misconduct/Shari'ah violation, insolvency, incapacitating illness, breach of law or deed; right to be heard before removal",
+          "para": "29-31"
+        },
+        {
+          "rule": "Maximum board term 5 years unless law prescribes otherwise; replacement and rotation policy required",
+          "para": "32"
+        },
+        {
+          "rule": "Changes to Waqf assets (other than corpus) need investment committee recommendation",
+          "para": "39"
+        },
+        {
+          "rule": "Committee majority and chair must be independent (defined: no management role, no business relationship, no interest in Waqf benefits)",
+          "para": "43 + footnote 2"
+        },
+        {
+          "rule": "Nine policies: stakeholder relationship, conflict of interest, whistle-blowing, document archiving, complaints (ISO 10002:2014, compliance officer recommended), external communication, information security (ISO 27001:2013), human resources, code of professional conduct per AAOIFI's Code of Ethics",
+          "para": "55-69"
+        },
+        {
+          "rule": "State Nazir: preferable to form a supplementary board of Nazirs rather than direct state supervision; one supplementary board may manage multiple Waqf",
+          "para": "77-78"
+        }
+      ],
+      "implications": [
+        "Professionalises the Nazir role from a personal trust into an institutional governance office with evaluation, KPIs and succession (paras 53-54).",
+        "Nudges family Waqf toward public benefit and transparency (para 7 - recommendation only).",
+        "Anchors Waqf ethics to AAOIFI's cross-industry Code of Ethics (para 68), tying the charitable sector into the same ethics infrastructure as banks."
+      ],
+      "limitations": [
+        "Guidance note, not a standard - GS 13 prevails (para 2); heavy use of 'recommended' and 'preferable'.",
+        "Jurisdiction law overrides at nearly every structural point (paras 9, 14, 29, 32, 39).",
+        "Note covers governance mechanics only; substantive Waqf fiqh sits in SS 60, which is not yet in hand (SS series blocked)."
+      ],
+      "disputes": [
+        {
+          "issue": "None - the guidance note carries no Basis for Conclusions section",
+          "resolution": "n/a",
+          "bc": "verified absence"
+        }
+      ],
+      "timeline_bridge": {
+        "concept_thread": [
+          {
+            "text": "Sadaqah jariyah (ongoing charity) -> classical Waqf with Umar's Khaybar endowment as the archetype -> centuries of Waqf administration -> modern institutional Waqf governance",
+            "tag": "plausible - classical framing, not stated in the GN text"
+          }
+        ],
+        "quran_anchors": [
+          {
+            "text": "No verse cited in the GN text",
+            "tag": "verified absence"
+          },
+          {
+            "text": "Conceptual anchor 3:92 (you will not attain righteousness until you spend of what you love - classically linked to Abu Talha's endowment of Bayruha')",
+            "tag": "plausible"
+          }
+        ],
+        "hadith_anchors": [
+          {
+            "text": "Sadaqah jariyah hadith (when a person dies, deeds end except three...) and Umar's Khaybar Waqf hadith - the two classical Waqf anchors; NOT cited in the GN text",
+            "tag": "plausible; cross-tag to app hadith file-slug-number per Rule 4",
+            "grading": "use app's own grading - needs_check"
+          }
+        ],
+        "contracts_touched": [
+          {
+            "text": "Waqf itself - check whether Waqf is a C-id, a T-row (like Wadiah T038), or terms-only in lineage_v4.json / terms.json",
+            "tag": "needs_check"
+          }
+        ],
+        "terms_touched": [
+          "Waqf",
+          "Waqif",
+          "Nazir",
+          "Ghallah (yield)",
+          "Waqf deed",
+          "sadaqah jariyah",
+          "board of Nazirs"
+        ],
+        "figures_touched": [
+          {
+            "text": "Umar ibn al-Khattab (Khaybar archetype) and Abu Talha - check app core.json for app_figure_slug; expected present",
+            "tag": "needs_check"
+          }
+        ]
+      },
+      "related_standards": [
+        "GS 13 'Waqf Governance' (parent standard - not yet read in full; note is GN-based only)",
+        "SS 60 'Waqf' (blocked with SS series)",
+        "AAOIFI Code of Ethics for Islamic Finance Professionals (para 68)",
+        "ISO 10002:2014 (para 62)",
+        "ISO 27001:2013 (para 65)"
+      ]
+    },
+    {
+      "id": "KB-GS15",
+      "source": {
+        "title": "AAOIFI Governance Standard (GS) 15: Syndicated Financing",
+        "issuer": "AAOIFI Governance and Ethics Board (AGEB)",
+        "approved": "19-20 July 2023 (AGEB meeting no. 31, 1-2 Muharram 1445H), approved unanimously",
+        "issued": "28 December 2023 (15 Jumada II 1445H)",
+        "effective_date": "Syndicated financing transactions executed on or after 1 July 2024; earlier application encouraged",
+        "url": "https://aaoifi.com/wp-content/uploads/2023/12/GS-15-Syndicated-Financing.pdf",
+        "status": "plausible",
+        "companion_standard": "Must be read in conjunction with AAOIFI Shari'ah Standard (SS) 24 'Syndicated Financing' (2005)",
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "name": "GS 15 — Syndicated Financing",
+        "one_liner": "Governance framework for the full lifecycle of Shari'ah-compliant syndicated financing — from mandate to maturity — including strict segregation rules for hybrid deals with conventional banks.",
+        "paragraph_count": "Standard set out in paragraphs 1-52",
+        "status": "verified (from uploaded PDF)",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2023/12/GS-15-Syndicated-Financing.pdf"
+      },
+      "applicability": {
+        "applies_to": [
+          "Those charged with governance and management of the lead arranger",
+          "Syndicate participants (IFIs and, in hybrid arrangements, CFIs' Shari'ah tranche counterparts)",
+          "The IFI's customers, in their respective capacities"
+        ],
+        "sukuk_carve_out": "Sukuk are excluded from scope, BUT guidance on the awarding-of-mandate phase and transaction-close phase applies mutatis mutandis to listed and unlisted Sukuk issuances insofar as not in conflict with GS 12 'Sukuk Governance' (para 6)",
+        "customer_binding": "Customer is bound to Shari'ah principles and this standard by virtue of signing the mandate and transaction documents (BC22)"
+      },
+      "core_machinery": {
+        "five_pillars": [
+          "Shari'ah compliance",
+          "accountability",
+          "fairness",
+          "transparency",
+          "responsibility"
+        ],
+        "seven_principles": [
+          "Effective Shari'ah compliance structures (minimum: comply with SS 24)",
+          "Fair treatment of and amongst stakeholders",
+          "Equitable and fair treatment amongst syndication participants (fees commensurate with work)",
+          "Transparent interaction amongst syndication participants",
+          "Effective oversight by lead arranger's governance organs",
+          "Transparency and mutual disclosures at all stages",
+          "Code of conduct and ethics (AAOIFI code of ethics + IFSB conduct-of-business principles)"
+        ],
+        "parties": [
+          "Lead arranger",
+          "Arrangers",
+          "Security agent",
+          "Facility agent (optional, roles left to mutual agreement)",
+          "Syndication participants",
+          "Customer"
+        ],
+        "lifecycle_phases": [
+          "1. Awarding of mandate (paras 14-21)",
+          "2. Marketing and negotiations (paras 22-30)",
+          "3. Transaction close (paras 31-37)",
+          "4. Continuity of the transaction (paras 38-42)",
+          "5. Changes before intended maturity (paras 43-49)",
+          "6. Maturity (paras 50-51)"
+        ],
+        "key_documents": {
+          "mandate": "First document; initiates syndication, sets proposed terms, exclusivity, customer's Shari'ah-compliance commitment, authorises arrangers (para 16)",
+          "provisional_fatwa": "Initial Fatwa from lead arranger's SSB approving the basic structure — enables documentation drafting and gives other SSBs early comfort (paras 7(k), 17)",
+          "information_memorandum": "Minimum contents listed in para 23 (a-r): customer profile, feasibility study, pricing, profit/loss-sharing ratios, fees, risks, credit assessment, settlement mechanisms, credit enhancements, dispute resolution, etc.",
+          "inter_financier_agreement": "Term deliberately chosen over 'inter-creditor agreement' (BC15). Minimum contents in para 25 (a-m): rights/responsibilities, security handling per Shari'ah, equitable-treatment terms, information protocols, pre-exit conditions, transfer of shares, dispute resolution. No illustrative format included — IIFM has a documentation project (BC6-BC7)"
+        }
+      },
+      "key_rules_for_assurance": [
+        "Minimum Shari'ah bar: every syndicated transaction must comply with SS 24 plus any other applicable Shari'ah standards (Principle 1)",
+        "Provisional Fatwa from lead arranger's SSB required at mandate stage (para 17)",
+        "Hybrid arrangements: Shari'ah tranche sanctity maintained at all times; arrangers of the Shari'ah tranche must be IFIs only; IFI may NOT lead, arrange or facilitate (incl. as agent) the conventional tranche in any manner (para 21)",
+        "Hybrid arrangements: TWO distinct inter-financier agreements — one for the Shari'ah tranche, one for the conventional tranche; IFIs must not sign the combined one (paras 26-27, BC16-BC18)",
+        "Hybrid entry conditions: overall purpose Shari'ah-compliant, AND either (a) IFIs alone cannot meet the need and the customer alone approaches CFIs, or (b) a CFI already holds the mandate and a separate Shari'ah tranche is created with SSB approvals (para 20)",
+        "Conflict of interest at mandate: transparent negotiation, disclosure of prior relationships/exposures/off-market fees, refusal of mandate if interests would be jeopardised (paras 18-19)",
+        "Transaction close: lead arranger discloses allocation basis, preferential allocations, underwriting details to customer (para 31); customer given reasonable time to evaluate contracts (para 32)",
+        "Non-participating invitees must not counter-propose directly to the customer or divulge non-public information (para 37)",
+        "Continuity: each participant remains responsible for Shari'ah compliance of its own proportionate share — own SSB, Shari'ah compliance function, internal + external Shari'ah audit (para 40)",
+        "Shari'ah issues found by any participant go to lead arranger, who informs all after consulting customer; participants collaborate on a solution (para 41)",
+        "Change of Fatwa by any participant's SSB: follow SS 29 and relevant GS, promptly inform all parties, collaborate on Shari'ah-compliant solution (para 42)",
+        "Early settlement requires SSB approval of modus operandi, due deliberation, fair treatment (paras 43-44)",
+        "Pre-exit by a participant: comply with inter-financier agreement, debt-sale Shari'ah rules where a debt exists, inform customer/participants, NOC and NDA if required (paras 45-46)",
+        "Restructuring/rescheduling: must preserve original objective and initial equilibrium of benefits; reviewed and approved by respective SSBs (paras 48-49)",
+        "At maturity: SSBs supervise liquidation where needed (paras 50-51)"
+      ],
+      "implications": [
+        "Creates the first globally standardised governance (not just fiqh) framework for Islamic syndications — SS 24 covered Shari'ah rules; GS 15 adds control, transparency and conflict-of-interest machinery",
+        "Hybrid deals are permitted but deliberately discouraged and boxed in — the market signal is 'IFI-only syndicates preferred' (BC10-BC12)",
+        "No common/joint SSB per transaction: each IFI's SSB keeps full responsibility; delegation possible but accountability never transfers (BC8-BC9)",
+        "The customer — usually not an IFI — is pulled into the compliance perimeter contractually via the mandate (BC20-BC22)",
+        "Mandate-phase and close-phase rules leak usefully into Sukuk practice via para 6, filling gaps GS 12 does not cover (BC3)"
+      ],
+      "limitations": [
+        "No prescribed format for the inter-financier agreement — left to regulators/IIFM/market practice (footnote 6, BC5-BC7)",
+        "Facility agent's roles not separately defined — left to mutual agreement of participants (para 7(c), BC23-BC24)",
+        "CFIs are not bound by the standard, so in hybrid deals compliance leverage exists only over the IFI side (BC10)",
+        "Exception to the two-agreement rule in hybrids possible via a jurisdiction's central Shari'ah board or an SSB case-by-case (e.g. legal enforceability), but the standard itself refuses to codify that exception (BC19)"
+      ],
+      "disputes": [
+        "Common SSB / shared Shari'ah functions per transaction: proposed for cost and speed, rejected as administratively unworkable and contrary to SSB accountability under existing GSs and regulation (BC8-BC9)",
+        "Whether IFIs should be banned from hybrid syndications entirely: rejected; allowed under strict conditions due to industry needs (BC10-BC12)",
+        "Terminology fight: 'inter-creditor agreement' rejected to avoid implying Islamic finance is credit/borrowing (BC13-BC15)",
+        "Single vs. segregated inter-financier agreement in hybrids: Shari'ah Committee forced segregation late in drafting (2023 amendments) to remove cooperation-in-riba concerns (BC16-BC18, H7)",
+        "How far to impose duties directly on the (non-IFI) customer: resolved by keeping the onus on IFIs and binding the customer via contract (BC20-BC22)"
+      ],
+      "timeline_bridge": {
+        "context": "Modern standard. AGEB project approved 29-30 March 2021; exposure draft 29 December 2021; four public hearings 2022; Shari'ah Committee review June + October 2023; final approval July 2023; issued 28 December 2023; effective 1 July 2024.",
+        "predecessor": "AAOIFI SS 24 'Syndicated Financing' (2005) — the fiqh layer this governance layer sits on",
+        "note_for_app_timeline": "Anchor as 2023 issuance / 2024 effectiveness in the contemporary standards era; no classical-period dating applies"
+      },
+      "related_standards": [
+        "SS 24 Syndicated Financing (mandatory companion)",
+        "GS 12 Sukuk Governance (mandate + close phases apply to Sukuk mutatis mutandis)",
+        "SS 29 Stipulations and Ethics of Fatwa in the Institutional Framework (change-of-Fatwa procedure)",
+        "SS 59 Sale of Debt (relevant to pre-exit where debt is sold)",
+        "AAOIFI Code of Ethics for Islamic Finance Professionals",
+        "IFSB guiding principles on conduct of business",
+        "GS [ED] Shari'ah Decision-Making Process (referenced for Fatwa change, still exposure draft at issuance)"
+      ]
+    },
+    {
+      "id": "KB-GS17",
+      "source": {
+        "title": "AAOIFI Governance Standard (GS) 17: Shari'ah Compliance and Fiduciary Ratings of Sukuk and Other Islamic Finance Instruments",
+        "issuer": "AAOIFI Governance and Ethics Board (AGEB)",
+        "approved": "AGEB meeting no. 33, October 2023 (Appendix A states 4-5 October / 19-20 Rabi' I 1445H; preparation history states 5-6 October / 20-21 Rabi' I 1445H — internal one-day discrepancy in the PDF), approved unanimously",
+        "issued": "22 November 2023 (8 Jumada I 1445H)",
+        "effective_date": "Ratings of instruments issued on or after 1 July 2023 (effective date precedes issuance date — retrospective by design)",
+        "url": "https://aaoifi.com/wp-content/uploads/2024/06/AAOIFI-GS-17-Shariah-Compliance-and-Fiduciary-Ratings-of-Sukuk.pdf",
+        "status": "plausible",
+        "companion_standard": "Continuation of GS 10 'Shari'ah Compliance and Fiduciary Ratings for Islamic Financial Institutions' — GS 17 repeatedly imports GS 10 requirements",
+        "url_tag": "plausible",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "name": "GS 17 — Shari'ah Compliance & Fiduciary Ratings of Sukuk",
+        "one_liner": "Tells rating agencies how to rate Sukuk and other Islamic instruments on Shari'ah compliance and fiduciary performance — not just credit — with instrument-type classification, weighted parameters and a suggested iAAAs-to-iCs scale.",
+        "paragraph_count": "Standard set out in paragraphs 1-60",
+        "status": "verified (from uploaded PDF)",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2024/06/AAOIFI-GS-17-Shariah-Compliance-and-Fiduciary-Ratings-of-Sukuk.pdf"
+      },
+      "applicability": {
+        "applies_to": "Independent rating agencies conducting Shari'ah compliance and fiduciary (SCF) rating engagements on instruments",
+        "instruments_in_scope": [
+          "Sukuk (by IFIs, corporates or governments — anything meeting the Sukuk definition, by whatever name)",
+          "Investment management instruments incl. restricted investment accounts (RIA) not registered as separate legal entities",
+          "Unrestricted investment accounts (URIA) or classes thereof — when offered by a non-IFI, or by an IFI not rated under GS 10, or rated below target",
+          "Any other publicly offered Islamic finance instrument/product (liability, quasi-equity or asset product)"
+        ],
+        "recommended_not_mandatory": "Highly recommended (not mandatory) for all publicly offered instruments except those from IFIs already rated under GS 10; preferably updated annually and announced publicly (para 6, BC21-BC23)",
+        "assessment_level": "Primarily at instrument level; extends to originator / service provider / trustee functions where the instrument's nature requires (para 3)"
+      },
+      "core_machinery": {
+        "eligible_agencies": [
+          "Licensed credit rating agencies that develop GS 10 + GS 17 capacity and methodology",
+          "Specialised SCF rating agencies licensed/recognised, with credit-rating expertise involved (para 8)",
+          "Plus GS 10 ethics, quality control, engagement-acceptance and fit-and-proper requirements (para 9); AAOIFI code of ethics (para 10)"
+        ],
+        "two_sided_rating": {
+          "side_1_shariah_compliance_and_governance": [
+            "a. Compliance with Shari'ah principles and rules",
+            "b. Shari'ah governance framework",
+            "c. Corporate governance practices related to Shari'ah governance",
+            "d. Transparency and disclosure",
+            "e. Ethics and values"
+          ],
+          "side_2_fiduciary_performance_and_capacity": [
+            "f. Asset quality and returns",
+            "g. Creditworthiness of the originator (where applicable)"
+          ],
+          "preferred_practice": "Two separate scores/ratings — one for Shari'ah compliance & governance, one for fiduciary responsibilities & capacity (paras 27, 42)"
+        },
+        "four_instrument_types": {
+          "1_equity_or_quasi_equity_no_guarantee": "Participatory; residual interest; perpetual/convertible; no guarantee or purchase undertaking. Examples: Tier 1 Musharaka/Mudaraba/Wakala Sukuk; off-balance-sheet participatory Sukuk and RIAs; Ijarah Muntahia Bittamleek at fair-value transfer (paras 14-17)",
+          "2_quasi_equity_with_guarantee": "Guarantee or purchase undertaking gives promised redemption; recourse first to originator, asset acts more as security. Examples: guaranteed participatory Sukuk; IMB at pre-promised price/gift; hybrids not meeting equity or liability tests; URIAs with ongoing redemption (paras 18-20)",
+          "3_liability_type": "Murabaha, Tawarruq, Salam, Istisna and hybrids where liability component >50% of underlying assets at par AND/OR liability component supplies >66.67% of returns. Classification is NOT a Shari'ah-compliance verdict (para 21 + explanation, footnote refers to SS 59 paras 8/2/2-8/2/3)",
+          "4_asset_type": "Asset-side financing/investment products offered by unrated or under-target-rated IFIs, or by non-IFI entities (e.g. Shari'ah-compliant housing finance where no IFIs exist) (para 23)"
+        },
+        "benchmark_hierarchies": {
+          "shariah_principles": "1) AAOIFI Shari'ah standards → 2) jurisdiction regulator's Shari'ah regulations → 3) central Shari'ah board rulings → 4) AAOIFI FASs (Shari'ah-related content) → 5) originator's SSB approvals (para 28)",
+          "shariah_governance": "AAOIFI GSs (esp. GS 12) → IFSB Shari'ah governance standards → jurisdiction RSA regulations (para 30)",
+          "corporate_governance": "IFSB corporate governance → AAOIFI GSs → RSA regulations (para 32); assessed at entity level only, not instrument level (para 35)",
+          "transparency_disclosure": "AAOIFI GSs (esp. GS 12) → AAOIFI FASs (esp. FAS 34 'Financial Reporting for Sukuk-holders') → IFSB → IIFM template documents → RSA regulations (para 37)",
+          "ethics_values": "AAOIFI code of ethics → IFSB conduct-of-business → RSA regulations (para 38)"
+        },
+        "suggested_weights_table_para_48": {
+          "shariah_compliance_rules": "30-35% for ALL four types",
+          "shariah_governance_framework": "equity/quasi-eq no guarantee 15-20; quasi-eq with guarantee 10-15; liability 10-15; asset 5-10",
+          "corporate_governance": "10-15 for first three types; asset 5-10",
+          "transparency_disclosure": "10-15 for first three types; asset 5-10",
+          "ethics_values": "equity type 10-15; others 5-10",
+          "asset_quality_returns": "equity/no-guarantee 25-30; with-guarantee 15-20; N/A for liability and asset types",
+          "creditworthiness_of_originator": "N/A for equity/no-guarantee; with-guarantee 15-20; liability 35-45; N/A for asset type",
+          "kill_switch": "Failure in a significant category — particularly compliance with Shari'ah principles and rules — is an OVERALL failure regardless of weighted score (footnote 8, para 53)"
+        },
+        "suggested_rating_scale_para_54": [
+          "iAAAs 90+ Excellent compliance — preferred structure, no controversial elements, excellent governance and fiduciary performance",
+          "iAAs 80-89 Very good — preferred structure, strong governance, strong fiduciary",
+          "iAs 70-79 Good — approved structure free of basic non-compliance, good governance",
+          "iBBs 60-69 Highly satisfactory — less-preferred structure, may include some controversial elements, sound governance",
+          "iBs 50-59 Reasonable — structure not universally considered compliant but approved; certain material non-compliant elements noted",
+          "iCs <50 Unsatisfactory — structure controversial per several international jurists or noteworthy basic non-compliance; weak governance and fiduciary",
+          "Scale span suggested 5-10 grades; denominations left to the agency (para 53, BC18-BC19)"
+        ],
+        "tiered_and_jurisdiction_specific": "Global vs jurisdiction-specific ratings allowed; jurisdiction ratings may amend/drop hierarchy sources but must: publish the amended hierarchy, carry a three-letter jurisdiction suffix, and NOT claim AAOIFI alignment (paras 45-46)"
+      },
+      "key_rules_for_assurance": [
+        "Agency must classify the instrument into one of the four types BEFORE choosing scope, weights and scale (para 13)",
+        "Shari'ah-compliance parameter is never diluted: 30-35% weight for every type and a failure there fails the whole rating (paras 25, 48 fn8, 53)",
+        "For liability and guaranteed quasi-equity types, repayment/returns evaluated via credit-rating-like methodologies (excluding external factors), with fiduciary element reduced/eliminated on the scale (paras 44, 55)",
+        "For asset-type instruments the fiduciary element may be eliminated as irrelevant (para 55)",
+        "Agency must define and PUBLICISE consistent weights (para 47) and the rating scale (para 53)",
+        "Scope limitations that persist after due effort → agency must consider withdrawing (para 49)",
+        "Cannot conclude on suitability of benchmarked parameters → agency MUST withdraw (para 51)",
+        "Missing Shari'ah parameters → develop them in coordination with the Shari'ah supervisor(s) (para 50)",
+        "Agency must identify the correct Shari'ah supervisor(s) of originator/service provider/trustee for Fatwas and rulings (para 52)",
+        "Procedures, documentation, archiving, confidentiality and reporting all imported from GS 10 paras 37-54 and 61-62, suitably amended (paras 57-59)",
+        "Trustee capacity to uphold Shari'ah provisions is itself an assessed item (para 31(f))"
+      ],
+      "implications": [
+        "Formal recognition that conventional credit-rating methodology alone is unsuitable for Sukuk — asset-performance risk and Shari'ah compliance are rating dimensions in their own right (IN5, BC2)",
+        "Asset-backed Sukuk (Shari'ah-preferred but excluded by most credit raters) get a rating pathway (BC2)",
+        "Creates market pressure ('investors' right to know') rather than regulatory compulsion — adoption expected via peer pressure and market discipline (BC5-BC8, BC23)",
+        "Lets an unrated or lower-rated IFI get a single product rated to compete (BC3)",
+        "The classification tests in para 21 (50% asset / 66.67% return) give the app a concrete, checkable rule for tagging hybrid Sukuk as liability-type",
+        "Ratings hierarchy puts AAOIFI Shari'ah standards above national regulators and above the originator's own SSB — a quiet centralisation of benchmark authority (para 28)"
+      ],
+      "limitations": [
+        "Ratings are 'highly recommended', not mandatory — board explicitly deferred mandatory status to the future (BC21-BC23)",
+        "Rating scale and denominations are only suggested; agencies keep discretion (BC18-BC19)",
+        "Jurisdiction-specific ratings may drop AAOIFI sources entirely — they just can't claim AAOIFI alignment (para 46)",
+        "Classification criteria in para 21 are expressly NOT a statement of Shari'ah compliance (para 21 explanation)",
+        "Instrument classification deliberately diverges from AAOIFI FAS classification: quasi-equity is split in two by guarantee/purchase-undertaking existence (BC24-BC27)",
+        "Internal date discrepancy in the PDF for the approval meeting (4-5 vs 5-6 October 2023) — tag needs_check for final assembly"
+      ],
+      "disputes": [
+        "Issue now vs wait for market development: issued now to lead the market (BC1, BC4)",
+        "Market relevance without regulatory push: resolved via peer pressure / market discipline / investors' right to know (BC5-BC8)",
+        "Sukuk-only vs all instruments: single standard covering all types, including asset-side products (BC9-BC10)",
+        "Which agencies are eligible: credit rating agencies included unconditionally (with capacity-building) despite skill-set differences, to widen adoption (BC11-BC13)",
+        "One parameter set for all instruments: rejected — hence the four-type classification (BC14)",
+        "Prescribed vs discretionary rating scale: discretion won; scale in the standard is illustrative only (BC18-BC19)",
+        "Mandatory vs recommended ratings (public-hearing push for mandatory): kept highly recommended — too few service providers exist yet (BC21-BC23)",
+        "Divergence from FAS classifications challenged at public hearing: board kept its split, arguing it is a sub-classification within quasi-equity, not a new taxonomy (BC24-BC27)"
+      ],
+      "timeline_bridge": {
+        "context": "Modern standard. Project approved 24-25 March 2020; preliminary study meetings 2020-2021; exposure draft issued 11 December 2022; four public hearings Feb-Aug 2023; final approval October 2023; issued 22 November 2023; effective retrospectively for instruments issued on/after 1 July 2023.",
+        "predecessor": "GS 10 (institution-level SCF ratings) — GS 17 extends the same rating philosophy from institutions to instruments",
+        "note_for_app_timeline": "Anchor as 2023 in the contemporary standards era; developed with executive input from the Islamic International Rating Agency (IIRA); no classical-period dating applies"
+      },
+      "related_standards": [
+        "GS 10 Shari'ah Compliance and Fiduciary Ratings for IFIs (parent standard — eligibility, quality control, acceptance, procedures, documentation, reporting all imported)",
+        "GS 12 Sukuk Governance (top of Shari'ah-governance and disclosure hierarchies)",
+        "FAS 34 Financial Reporting for the Sukuk-holders (disclosure benchmark)",
+        "SS 59 Sale of Debt (paras 8/2/2-8/2/3 — hybrid tradability/tangibility)",
+        "GS 16 Institutional Framework for the Implementation of Ethics (read with the code of ethics)",
+        "AAOIFI Code of Ethics for Islamic Finance Professionals",
+        "IFSB Shari'ah governance, corporate governance and conduct-of-business standards",
+        "IIFM template documents (disclosure benchmark)"
+      ]
+    },
+    {
+      "id": "KB-GS22",
+      "source": {
+        "file": "GS-22-Islamic-Finance-Subsidiaries-and-Associates.pdf",
+        "url": "https://aaoifi.com/wp-content/uploads/2024/12/GS-22-Islamic-Finance-Subsidiaries-and-Associates.pdf",
+        "url_tag": "plausible",
+        "issued": "2024-12-29 (28 Jumada II 1446H; Appendix C H11)",
+        "effective": "2026-01-01, earlier application encouraged (para 25)",
+        "paragraph_range": "1-25, BC1-BC6, Appendices A-C",
+        "tag": "verified",
+        "url_note": "From Adam's AAOIFI link list 2026-07-05; filename matches local PDF inventory; not live-fetched."
+      },
+      "display_card": {
+        "one_liner": "When a conventional bank owns an Islamic bank, this standard builds the firewall: full Islamic governance inside, strictly limited parental control from outside.",
+        "what_it_is": "A brief by-reference standard implementing principle 11 of GS 1 (2024). Islamic finance subsidiaries/associates of conventional institutions are full IFIs subject to all relevant GSs, plus special rules limiting the conventional parent's influence over boards, information, competition, shared services and money flows.",
+        "why_it_matters_to_timeline": "The newest ring of the governance framework (issued Dec 2024). Its sharpest rule is one-way money (para 23): the Islamic subsidiary may receive parent funds under a Shari'ah-compliant contract, but can never place funds with the parent or any conventional institution - the riba boundary drawn as a governance rule.",
+        "source_label": "AAOIFI GS 22 (2024)",
+        "source_url": "https://aaoifi.com/wp-content/uploads/2024/12/GS-22-Islamic-Finance-Subsidiaries-and-Associates.pdf"
+      },
+      "applicability": "All Islamic finance subsidiaries (control) and associates (significant influence) of conventional financial institutions, irrespective of ownership percentage - 100%, majority or minority - wherever control/significant influence over governance and managerial decision-making exists (paras 2, 5). Control defined per FAS 44; significant influence per FAS 24 (para 3 footnotes). Public interest institutions include listed entities, Sukuk issuers, and retail IFIs with over 10,000 accounts unless the regulator defines otherwise (para 3(f)).",
+      "core_machinery": "Same four governance organs as any IFI: SSB, Shari'ah compliance function, internal Shari'ah audit, external Shari'ah audit (para 6). External Shari'ah audit becomes mandatory for public-interest subsidiaries/associates three years after the effective date - i.e. from 1 Jan 2029, matching the SOAA 6 date already captured; strongly recommended meanwhile and for all others (para 7). All common requirements of relevant AAOIFI GSs apply as full-fledged IFIs (paras 8-9), with the CSB playing its role where one exists (para 10). Special parental-relationship rules occupy paras 11-24.",
+      "key_rules_for_assurance": [
+        {
+          "rule": "The subsidiary/associate shall be and act as an independent IFI without undue interference from the parent's management",
+          "para": "11"
+        },
+        {
+          "rule": "TCWG of the subsidiary bear the entire fiduciary responsibility to its stakeholders (incl. IAHs); it cannot be transferred to the parent's TCWG by virtue of ownership",
+          "para": "13"
+        },
+        {
+          "rule": "Parent influence only at strategic level via board seats, proportional to shareholding",
+          "para": "14"
+        },
+        {
+          "rule": "Parent representatives cannot vote on matters benefiting the parent at stakeholders' cost or creating industry reputational risk",
+          "para": "15"
+        },
+        {
+          "rule": "Parent may NOT appoint its business-function executives to the subsidiary's TCWG; heads of independent functions (compliance, internal audit, risk) and parent non-executive directors are allowed",
+          "para": "16; BC3-BC6"
+        },
+        {
+          "rule": "Dotted-line information reporting from key functions allowed for subsidiaries only (not associates): information rights without decision-making authority, approved by both boards",
+          "para": "17"
+        },
+        {
+          "rule": "Customer-level information sharing and any parent tactics restraining the subsidiary's competition must not harm minority shareholders or IAHs",
+          "para": "18-19"
+        },
+        {
+          "rule": "Shared services: arm's length, approved by both TCWGs and the subsidiary's SSB; parent representatives abstain from the vote; no coerced staff; subsidiary cannot lease its infrastructure or systems to the parent",
+          "para": "20-21"
+        },
+        {
+          "rule": "Co-location must not blur the subsidiary's brand identity in public perception",
+          "para": "22"
+        },
+        {
+          "rule": "ONE-WAY FUNDS: may receive funds from the parent under a Shari'ah-compliant contract; can never place funds with the parent or any conventional financial institution, directly or through a third party",
+          "para": "23"
+        },
+        {
+          "rule": "Segregated related-party disclosures in financial statements per AAOIFI FASs, identifying the nature of paras 20-23 arrangements",
+          "para": "24"
+        }
+      ],
+      "implications": [
+        "Subsidiaries get no governance discount - full IFI status, only proportionality flexibility (paras 8-9, BC2).",
+        "Deliberately drafted as a brief by-reference standard so it never falls out of sync with other GSs (BC1-BC2).",
+        "Driven by market reality: jurisdictions banning Islamic windows force the subsidiary route, and conventional acquisition of IFIs is rising (PR2-PR3)."
+      ],
+      "limitations": [
+        "Leans on FAS 44 / FAS 24 for control and significant influence - accounting definitions doing Shari'ah-governance work.",
+        "Associates face only 'significant influence' - the enforcement grip is inherently softer than for controlled subsidiaries (paras 3(b), 17).",
+        "External Shari'ah audit mandatory only for public-interest entities and only from 2029; recommended otherwise (para 7)."
+      ],
+      "disputes": [
+        {
+          "issue": "Parent executives on the subsidiary's board: some board members called it a pure business / corporate-governance matter that should not be over-regulated in a Shari'ah governance standard",
+          "resolution": "Concern held valid: business-function executives banned; independent-function heads and non-executives allowed; issue also reviewed at length by the Shari'ah committee",
+          "bc": "BC3-BC6"
+        }
+      ],
+      "timeline_bridge": {
+        "concept_thread": [
+          {
+            "text": "Separation of compliant from non-compliant funds - the riba-avoidance boundary expressed as an institutional firewall between Islamic entity and conventional parent",
+            "tag": "plausible - analytical framing; the one-way rule itself is verified at para 23"
+          },
+          {
+            "text": "Implements principle 11 of GS 1 (2024) - direct child of the revised framework",
+            "para": "PR5",
+            "tag": "verified"
+          }
+        ],
+        "quran_anchors": [
+          {
+            "text": "No verse cited in GS22",
+            "tag": "verified absence"
+          }
+        ],
+        "hadith_anchors": [
+          {
+            "text": "No hadith cited in GS22",
+            "tag": "verified absence"
+          }
+        ],
+        "contracts_touched": [
+          {
+            "text": "Para 23 requires a Shari'ah-compliant contract for parent-to-subsidiary funding; typical market practice is Mudarabah / Wakalah / commodity Murabahah placement - practice claim, not in text. Map C-ids",
+            "tag": "plausible + needs_check for C-id mapping"
+          }
+        ],
+        "terms_touched": [
+          "Islamic finance subsidiary",
+          "Islamic finance associate",
+          "conventional parent",
+          "TCWG",
+          "IAH",
+          "public interest institution",
+          "5-level Shari'ah hierarchy (restated at para 3(h))"
+        ],
+        "figures_touched": [
+          {
+            "text": "None historical. Board chaired by Farrukh Raza; unanimous approval (Appendix A)",
+            "tag": "verified"
+          }
+        ]
+      },
+      "related_standards": [
+        "GS 1 (2024) - principle 11 parent (PR5); TCWG appointment rules paras 36-46 (fn 10)",
+        "GS 5, GS 19, GS 20, GS 21 - SSB standards (fn 9)",
+        "GS 8 - CSB role (para 10)",
+        "GS 9 / GS 11 / SOAA 6 - the other three organs",
+        "FAS 24 and FAS 44 - influence/control definitions",
+        "GS 12 'Sukuk Governance' - definitional source (fn 3, 6)"
+      ],
+      "internal_notes": [
+        {
+          "text": "Appendix C H1 dates the joint IFSB-AAOIFI exposure draft '16 Ramadan 1444H, corresponding to 7 April 2022' - 16 Ramadan 1444H actually corresponds to 7 April 2023. Likely a typo in the PDF (Gregorian year).",
+          "tag": "needs_check"
+        },
+        {
+          "text": "Para 7 external-audit deadline (effective 1 Jan 2026 + 3 years = 1 Jan 2029) independently confirms the SOAA 6 date already captured in the KB.",
+          "tag": "verified"
+        }
+      ]
+    }
+  ]
+}

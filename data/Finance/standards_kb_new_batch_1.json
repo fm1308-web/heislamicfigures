@@ -1,0 +1,457 @@
+{
+ "_meta": {
+  "file": "standards_kb_new_batch_1.json",
+  "type": "standards_kb_addition",
+  "built_by": "RV (Research seat)",
+  "generated": "2026-07-25",
+  "batch": "1 of 4 — DEEP NOTE COVERAGE job",
+  "count": 15,
+  "method": "Every note written ONLY from the standard's own text file on disk (paths under bv-app/data/Finance/Standards/). NEVER INVENT held: titles, dates, clause numbers and rules are quoted or closely paraphrased from the source; empty string where the document does not state a fact. Clause ids are the document's own numbering.",
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "notes": [
+ {
+  "id": "KB-AAOIFI-SS01",
+  "standard_id": "SS 1",
+  "standard_code": "SS 1",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (1): Trading in Currencies",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for buying and selling currencies, including when currency trading is allowed and when it is not.",
+   "what_it_is": "This standard explains the Shari'ah rulings relating to trading in currencies, and the conditions and precepts laid down by the Shari'ah as to what is permissible in currency trading and what is not. It covers actual and constructive possession of currencies, use of modern communication means in currency trading, exchange of currencies to settle debts, dealing in money markets, bilateral promises to buy and sell currencies, and deferment of delivery. It does not cover goldsmithery in selling gold and silver, debt transfers with no currency exchange, or discounting of bills of exchange.",
+   "why_it_matters_to_timeline": "The document states it was issued on 27 Safar 1421 A.H., corresponding to 31 May 2000 A.D., and was adopted by the Shari'ah Board in its meeting No. (4). It also notes it explains some of the practices being applied by Islamic financial Institutions.",
+   "source_label": "SS-01.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "27 Safar 1421 A.H., corresponding to 31 May 2000 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": [],
+  "key_rules_for_assurance": [
+   {"rule": "Trading in currencies is permissible provided both parties take possession of the countervalues before dispersing, such possession being either actual or constructive.", "clause": "2/1/1", "tag": "verified"},
+   {"rule": "The countervalues of the same currency must be of equal amount, even if one is in paper money and the other in coin of the same country.", "clause": "2/1/2", "tag": "verified"},
+   {"rule": "The contract shall not contain any conditional option or deferment clause regarding the delivery of one or both countervalues.", "clause": "2/1/3", "tag": "verified"},
+   {"rule": "Currency transactions shall not be carried out on the forward or futures market.", "clause": "2/1/5", "tag": "verified"},
+   {"rule": "It is prohibited to enter into forward currency contracts, whether through exchange of deferred transfers of debt or a deferred contract without concurrent possession of both countervalues.", "clause": "2/2", "tag": "verified"},
+   {"rule": "Dealing in the forward currency market is prohibited even if the purpose is hedging to avoid a loss of profit on a transaction in a currency expected to decline.", "clause": "2/3", "tag": "verified"},
+   {"rule": "Taking possession of one countervalue without the other, or taking partial possession, is not sufficient; partial possession is valid only for the part actually possessed.", "clause": "2/6/2", "tag": "verified"},
+   {"rule": "A bilateral promise to purchase and sell currencies is forbidden if the promise is binding, even for hedging against currency devaluation risk; a promise from one party only is permissible even if binding.", "clause": "2/9/1", "tag": "verified"},
+   {"rule": "It is not permitted for a customer to trade currencies for amounts exceeding what he owns using credit facilities granted by the Institution handling the currency trading.", "clause": "2/12/1", "tag": "verified"},
+   {"rule": "It is not permitted for the Institution to lend the customer money on the condition that currency dealing must be effected with that Institution and not any other.", "clause": "2/12/2", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS03",
+  "standard_id": "SS 3",
+  "standard_code": "SS 3",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (3): Procrastinating Debtor (Revised Standard)",
+  "display_card": {
+   "one_liner": "Explains what an Islamic financial institution may and may not do when a debtor who can pay deliberately delays settling his debt.",
+   "what_it_is": "This standard explains the Shari'ah rulings applicable to transactions of Islamic financial Institutions relating to solvent debtors and/or guarantors procrastinating in settling their obligations, and contractors delaying fulfilment of obligations which invokes a penalty stipulated in the contract. It covers default by a solvent debtor or solvent guarantor and contractors who become debtors by virtue of a penalty clause. It does not cover debtors who are insolvent or bankrupt, or who delay payment for an established Shari'ah reason.",
+   "why_it_matters_to_timeline": "The document states the standard was issued on 27 Safar 1421 A.H., corresponding to 31 May 2000 A.D.; it is labelled a Revised Standard, and its history records that the Shari'ah Board, in meeting No. (38) on 26-28 June 2014 A.D., approved amendments proposed by the Shari'ah Standards Review Committee and adopted the standard in its current amended version.",
+   "source_label": "SS-03.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "27 Safar 1421 A.H., corresponding to 31 May 2000 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Labelled '(Revised Standard)'; per its history, amendments proposed by the Shari'ah Standards Review Committee were approved by the Shari'ah Board in meeting No. (38) (26-28 June 2014 A.D.) and the standard was adopted in its current amended version, revising the original standard adopted in 2000.",
+  "related_standards": ["Shari'ah Standard No. (5) on Guarantees"],
+  "key_rules_for_assurance": [
+   {"rule": "Default in payment by a debtor who is capable of paying the debt is Haram (prohibited).", "clause": "2/1/1", "tag": "verified"},
+   {"rule": "It is not permitted to stipulate any financial compensation, in cash or other consideration, as a penalty clause for a delay by a debtor in settling his debt, whether or not the amount is pre-determined, including for opportunity loss or currency value change.", "clause": "2/1/2", "tag": "verified"},
+   {"rule": "It is not permitted to make a judicial demand on a debtor in default to pay financial compensation for a delay in settling his debt.", "clause": "2/1/3", "tag": "verified"},
+   {"rule": "The procrastinating debtor is liable for legal and other expenses incurred by the creditor in order to recover his debt.", "clause": "2/1/4", "tag": "verified"},
+   {"rule": "Unless failure to pay was caused by force majeure, it is permissible to stipulate that all outstanding instalments become due once the procrastinating debtor fails to pay an instalment, preferably after notifying the debtor and a reasonable period of time.", "clause": "2/1/6", "tag": "verified"},
+   {"rule": "In a Murabahah sale, if the sold asset is still available in its sold condition and the buyer has defaulted and later become bankrupt, the seller (the Institution) is entitled to repossess the asset instead of initiating bankruptcy procedures.", "clause": "2/1/7", "tag": "verified"},
+   {"rule": "In contracts involving indebtedness (such as Murabahah), it is permissible to stipulate an undertaking by the debtor that in case of procrastination he will donate an amount or percentage of the debt to charitable causes through the Institution.", "clause": "2/1/8", "tag": "verified"},
+   {"rule": "It is permissible to include penalty clauses in contracts for construction, Istisna'a and supply contracts; on refusal to pay the amount due, the rulings on default by a debtor apply, and the amount may be deducted from outstanding amounts due to the contractor.", "clause": "2/3", "tag": "verified"},
+   {"rule": "The Institution may stipulate that if the debtor is late in payment, it is entitled to recoup the amount due from any of the customer's accounts with the Institution, current or investment, using the prevailing exchange rate if the currency differs.", "clause": "2/5/3", "tag": "verified"},
+   {"rule": "Default in payment is established when, following a normal demand for payment, a debtor who has not proved that he is insolvent fails to settle the debt on its due date.", "clause": "2/6", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS05",
+  "standard_id": "SS 5",
+  "standard_code": "SS 5",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (5): Guarantees (Revised Standard)",
+  "display_card": {
+   "one_liner": "Sets out which forms of security and guarantee an Islamic financial institution may use to protect debts, and which are prohibited.",
+   "what_it_is": "This standard outlines the Shari'ah rules governing guarantees and clarifies the forms of guarantees that are permissible or prohibited. It covers securities intended to secure obligations and protect debts against procrastination and default, which may take the form of written documents, attestations, personal guarantees, mortgages, cheques and promissory notes, and it distinguishes between liabilities and assets held on trust. It also outlines significant modern applications of guarantees, such as letters of guarantee, documentary credits and security deposits. It does not cover guarantees against torts.",
+   "why_it_matters_to_timeline": "The document states the standard was issued on 29 Safar 1422 A.H., corresponding to 23 May 2001 A.D.; it is labelled a Revised Standard, and its history records that the Shari'ah Board, in meeting No. (38) on 26-28 June 2014 A.D., approved amendments proposed by the Shari'ah Standards Review Committee and the standard was adopted in its current amended version.",
+   "source_label": "SS-05.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "29 Safar 1422 A.H., corresponding to 23 May 2001 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Labelled '(Revised Standard)'; per its history, amendments proposed by the Shari'ah Standards Review Committee were approved by the Shari'ah Board in meeting No. (38) (26-28 June 2014 A.D.) and the standard was adopted in its current amended version, revising the original standard adopted in 2001.",
+  "related_standards": ["Shari'ah Standard No. (39) on Mortgage", "Shari'ah Standard No. (14) on Documentary Credit", "Shari'ah Standard No. (43) on Insolvency"],
+  "key_rules_for_assurance": [
+   {"rule": "It is not permissible to stipulate a personal guarantee or mortgage of security in trust (fiduciary) contracts such as agency or deposit contracts, unless intended to cover misconduct, negligence or breach of conditions; in Mudarabah and Musharakah it is not permitted to require the manager, investment agent or a partner to guarantee the capital or promise a guaranteed profit.", "clause": "2/2/1", "tag": "verified"},
+   {"rule": "It is not permissible to combine agency and personal guarantees in one contract at the same time, because a guarantee given by a party acting as investment agent turns the transaction into an interest-based loan.", "clause": "2/2/2", "tag": "verified"},
+   {"rule": "It is not permissible to take any remuneration whatsoever for providing a personal guarantee per se, or to pay commission for obtaining such a guarantee; the guarantor may only claim expenses actually incurred.", "clause": "3/1/5", "tag": "verified"},
+   {"rule": "A valid guarantee may be given for debts whose exact amount is unknown and for a debt that will arise in the future, though the guarantor may withdraw such a guarantee before the future debt is created after notifying the interested party.", "clause": "3/2", "tag": "verified"},
+   {"rule": "The creditor is entitled to claim the amount of his debt from either the debtor or the guarantor, though the guarantor may stipulate that the creditor shall first claim payment from the principal debtor.", "clause": "3/3/1", "tag": "verified"},
+   {"rule": "It is permissible to include a term that if the debtor defaults on payment of one or more instalments, some or all future instalments fall due immediately, provided the default was not caused by unforeseeable intervening events or force majeure and the debtor has been served a reminder notice after a reasonable period.", "clause": "5/1", "tag": "verified"},
+   {"rule": "It is not permissible to take remuneration for issuing a letter of guarantee, with or without cover, if the remuneration is intended as consideration for the guarantee per se; only administrative expenses may be charged.", "clause": "6/1/1", "tag": "verified"},
+   {"rule": "It is not permitted for the Institution to issue a letter of guarantee in favour of an applicant who will use it to acquire an interest-based loan or to conclude a prohibited transaction.", "clause": "6/1/3", "tag": "verified"},
+   {"rule": "It is permissible to subscribe to Islamic insurance coverage as security for debt obligations, and it is not permissible for debts to be insured on a conventional insurance basis.", "clause": "6/4", "tag": "verified"},
+   {"rule": "A third party, other than the Mudarib, investment agent or one of the partners, may voluntarily undertake to compensate investment losses, provided this guarantee is not linked in any manner to the Mudarabah financing contract or investment agency contract.", "clause": "6/6", "tag": "verified"},
+   {"rule": "Where a customer fails to honour a binding promise, the Institution may not retain the Hamish Jiddiyyah (security deposit) as such; its rights are limited to deducting the amount of any damage actually incurred, namely the difference between the cost of the item and its selling price to a third party.", "clause": "6/8/2", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS08",
+  "standard_id": "SS 8",
+  "standard_code": "SS 8",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (8): Murabahah (Revised Standard)",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for Murabahah, the cost-plus sale where an institution buys an item and resells it to a customer at a disclosed mark-up.",
+   "what_it_is": "This standard explains the Shari'ah basis and rules for a Murabahah transaction, covering the stages of the transaction beginning from the promise through to transferring ownership of the goods to the customer, and the Shari'ah requirements that need to be observed by Islamic financial Institutions. It covers issues relating to guarantees before concluding a Murabahah deal, such as the promise and Hamish Jiddiyyah (security deposit), and guarantees for recovery of the debt created. It does not cover deferred payment sales on a basis other than Murabahah, nor other trust and bargaining sales.",
+   "why_it_matters_to_timeline": "The document states the standard was issued on 4 Rabi' I, 1423 A.H., corresponding to 16 May 2002 A.D., and that it was previously issued under the title 'Shari'ah Rules for Investment and Financing Instruments No. (1) Murabahah to the Purchase Orderer' and reissued as a Shari'ah standard; its history records the Shari'ah Board approved review amendments in meeting No. (39) on 6-8 November 2014 A.D. and adopted the current amended version.",
+   "source_label": "SS-08.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "4 Rabi' I, 1423 A.H., corresponding to 16 May 2002 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "This standard was previously issued by the title 'Shari'ah Rules for Investment and Financing Instruments No. (1) Murabahah to the Purchase Orderer' and was reissued as a Shari'ah standard based on the resolution of the Shari'ah Board to reformat all Shari'ah Rules in the form of Shari'ah Standards; it is also labelled '(Revised Standard)' with amendments adopted per its history.",
+  "related_standards": [],
+  "key_rules_for_assurance": [
+   {"rule": "It is a requirement of Murabahah that any prior contractual relationship between the customer (purchase orderer) and the original supplier be genuinely, not fictitiously, excluded; a contract executed between the customer and the supplier may not be assigned to the Institution.", "clause": "2/2/2", "tag": "verified"},
+   {"rule": "The party from whom the item is bought must be a third party other than the customer or his agent, and may not be wholly or majority (more than 50%) owned by the customer; otherwise the transaction is void as tantamount to 'Inah.", "clause": "2/2/3", "tag": "verified"},
+   {"rule": "It is not permitted to carry out a Murabahah on deferred payment terms where the asset involved is gold, silver or currencies.", "clause": "2/2/6", "tag": "verified"},
+   {"rule": "The document of promise to purchase signed by the customer may not include a bilateral promise binding on both parties (the Institution and the customer).", "clause": "2/3/1", "tag": "verified"},
+   {"rule": "It is not permissible for the Institution to receive a commitment fee from the customer.", "clause": "2/4/1", "tag": "verified"},
+   {"rule": "In case of the customer's breach of his binding promise, the Institution may not retain the Hamish Jiddiyyah as such; it may only deduct actual damage (the difference between the cost of the item and the price at which it is sold to a third party), which may not include the lost Murabahah mark-up (opportunity loss).", "clause": "2/5/4", "tag": "verified"},
+   {"rule": "The Institution shall not sell any item in a Murabahah transaction before it acquires the item; the Murabahah sale may not be concluded before the Institution concludes a purchase contract with the supplier and acquires actual or constructive possession.", "clause": "3/1/1", "tag": "verified"},
+   {"rule": "Both the price of the item and the Institution's profit must be fixed and known to both parties on signature of the contract; it is not permitted to make the price or profit dependent on unknown future variations, such as the rate of LIBOR that will prevail in the future.", "clause": "4/6", "tag": "verified"},
+   {"rule": "Payment may be by short or long term instalments and the selling price becomes a debt; it is not permitted subsequently to demand any extra payment either in consideration of extra time given for payment or for delay in payment.", "clause": "4/8", "tag": "verified"},
+   {"rule": "It is not permissible to stipulate that ownership of the item will not be transferred to the customer until full payment; however, registration of the asset in the customer's name may be postponed as a guarantee of full payment.", "clause": "5/4", "tag": "verified"},
+   {"rule": "It is not permissible to extend the date of payment of the debt in exchange for an additional payment in case of rescheduling, whether the debtor is solvent or insolvent.", "clause": "5/7", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS09",
+  "standard_id": "SS 9",
+  "standard_code": "SS 9",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (9): Ijarah and Ijarah Muntahia Bittamleek (Revised Standard)",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for leasing (Ijarah) and for leases that end with the leased asset's ownership passing to the lessee (Ijarah Muntahia Bittamleek).",
+   "what_it_is": "This standard outlines the basis of the Shari'ah rulings on Ijarah and Ijarah Muntahia Bittamleek, beginning with the rules relating to the promise to lease and concluding with repossession of the leased property in an operating Ijarah or transfer of its ownership in Ijarah Muntahia Bittamleek. It covers operating leases of properties or Ijarah Muntahia Bittamleek, whether the Institution is the lessor or the lessee. It does not cover Sukuk al-Ijarah, which are covered by the Shari'ah Standard on Investment Sukuk, nor the employment of persons (labour contract).",
+   "why_it_matters_to_timeline": "The document states the standard was issued on 4 Rabi' I, 1423 A.H., corresponding to 16 May 2002 A.D., and that it was previously issued under the title 'Shari'ah Rules for Investment and Financing Instruments No. (2) Ijarah and Ijarah Muntahia Bittamleek' and reissued as a Shari'ah standard; its history records the Shari'ah Board approved review amendments in meeting No. (39) on 6-8 November 2014 A.D. and the standard was adopted in its current amended version.",
+   "source_label": "SS-09.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "4 Rabi' I, 1423 A.H., corresponding to 16 May 2002 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "This standard was previously issued by the title 'Shari'ah Rules for Investment and Financing Instruments No. (2) Ijarah and Ijarah Muntahia Bittamleek' and was reissued as a Shari'ah standard based on the resolution of the Shari'ah Board to reformat all Shari'ah Rules in the form of Shari'ah Standards; it is also labelled '(Revised Standard)' with amendments adopted per its history.",
+  "related_standards": ["Shari'ah Standard on Investment Sukuk"],
+  "key_rules_for_assurance": [
+   {"rule": "For the permissibility of an Ijarah contract concerning a specified asset, the lease contract should be preceded by acquisition of either the asset to be leased or the usufruct of that asset.", "clause": "3/1", "tag": "verified"},
+   {"rule": "The lessee may lease the asset back to its owner for a lower, same or higher rental if both rentals are paid on a spot basis, but this is not permissible if it should lead to a contract of 'Inah by varying the rent or the duration.", "clause": "3/4", "tag": "verified"},
+   {"rule": "The lease contract is a binding contract which neither party may terminate or alter without the other's consent.", "clause": "4/1/1", "tag": "verified"},
+   {"rule": "If the lessor fails to deliver the asset on the date specified in the contract, no rental is due for the period between the specified date and actual delivery, and the rental should be reduced accordingly.", "clause": "4/1/3", "tag": "verified"},
+   {"rule": "The leased asset must be capable of being used while preserving the asset, and the benefit from an Ijarah must be permissible by Shari'ah; a house or chattel may not be leased for an impermissible act by the lessee.", "clause": "5/1/1", "tag": "verified"},
+   {"rule": "The lessor may not stipulate that the lessee will undertake the major maintenance of the asset required to keep it in the condition necessary to provide the contractual benefits; the lessee carries out operating or periodical (ordinary) maintenance.", "clause": "5/1/7", "tag": "verified"},
+   {"rule": "The leased asset is the responsibility of the lessor throughout the duration of the Ijarah, unless the lessee commits misconduct or negligence, and insurance expenses must be borne by the lessor.", "clause": "5/1/8", "tag": "verified"},
+   {"rule": "In case of a floating rental, the rental of the first period must be specified in a lump sum; rentals for subsequent periods may be determined according to a certain benchmark based on a clear formula not subject to dispute, subject to a ceiling on both maximum and minimum levels.", "clause": "5/2/3", "tag": "verified"},
+   {"rule": "No increase in the rental due may be stipulated by the lessor in case of delay in payment by the lessee.", "clause": "6/3", "tag": "verified"},
+   {"rule": "In Ijarah Muntahia Bittamleek, the method of transferring title in the leased asset to the lessee must be evidenced in a document separate from the Ijarah contract document, by a promise to sell, a promise of gift, or a promise of gift contingent upon payment of the remaining instalments.", "clause": "8/1", "tag": "verified"},
+   {"rule": "A promise to transfer the ownership is binding on one party only (the lessor), while the other party must have the option not to proceed, to avoid a bilateral promise which is Shari'ah impermissible because it resembles a concluded contract.", "clause": "8/2", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS10",
+  "standard_id": "SS 10",
+  "standard_code": "SS 10",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (10) Salam and Parallel Salam (Revised Standard)",
+  "display_card": {
+   "one_liner": "Rules for Salam sales, where a buyer pays the full price now for goods to be delivered at a set future date, and for back-to-back Parallel Salam deals.",
+   "what_it_is": "The standard explains the rules for and limitations of Salam and Parallel Salam: how the contract is concluded, what the subject matter may be, and what changes are allowed, including situations of ability or inability to deliver. It covers these transactions whether the Institution is the buyer or the seller. It also explains rulings on issuing Salam Sukuk, and expressly does not cover Istisna'a, which has a separate standard.",
+   "why_it_matters_to_timeline": "Issued on 29 Safar 1422 A.H., corresponding to 23 May 2001 A.D., and marked as a Revised Standard: the Shari'ah Board approved amendments proposed by the Shari'ah Standards Review Committee at its meeting No. (39) held 13-15 Muharram 1435 A.H. (6-8 November 2014 A.D.) and adopted the standard in its current amended version.",
+   "source_label": "SS-10.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "29 Safar 1422 A.H., corresponding to 23 May 2001 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Marked '(Revised Standard)'. Appendix (A) records that the Shari'ah Board reformatted the Shari'ah rules for Investment and Financing No. (3) on Salam and Parallel Salam into a Shari'ah Standard, and later adopted the standard 'in its current amended version' after approving amendments in meeting No. (39) (6-8 November 2014 A.D.).",
+  "related_standards": [],
+  "key_rules_for_assurance": [
+   {"rule": "The capital in a Salam contract must be paid immediately at the place where the contract is concluded; as an exception, payment may be delayed for two or three days at most, provided the delay is not equal to or greater than the delivery period for al-Muslam Fihi.", "clause": "3/1/3", "tag": "verified"},
+   {"rule": "It is not permitted that a debt be recognised as the capital of Salam, such as using loans or debts owed by the seller to the Institution from previous transactions.", "clause": "3/1/4", "tag": "verified"},
+   {"rule": "Salam is not permitted for anything specific like 'this car', nor for anything for which the seller may not be held responsible, like land, buildings or trees, nor for articles whose values change according to subjective assessment, like jewellery and antiques; nor may al-Muslam Fihi be stipulated to come from a specific piece of land.", "clause": "3/2/3", "tag": "verified"},
+   {"rule": "It is not permissible for al-Muslam Fihi to be an amount of currency, gold or silver, if the capital of the Salam contract was paid in the form of currency, gold or silver.", "clause": "3/2/4", "tag": "verified"},
+   {"rule": "It is not permitted for the buyer to sell al-Muslam Fihi before taking possession of it.", "clause": "4/1", "tag": "verified"},
+   {"rule": "If the seller fails to perform his obligation owing to insolvency, he should be granted an extension of time for delivery.", "clause": "5/6", "tag": "verified"},
+   {"rule": "It is not permitted to stipulate a penalty clause in respect of delay in the delivery of al-Muslam Fihi.", "clause": "5/7", "tag": "verified"},
+   {"rule": "It is not permissible to link the obligations under the two Salam contracts (Salam and Parallel Salam) so that the execution of the obligations of one contract is contingent on the outcome of the other; both must stand alone in all respects.", "clause": "6/3", "tag": "verified"},
+   {"rule": "It is not permitted to issue tradable Sukuk based on the debt from a Salam contract.", "clause": "7", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS11",
+  "standard_id": "SS 11",
+  "standard_code": "SS 11",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (11) Istisna'a and Parallel Istisna'a (Revised Standard)",
+  "display_card": {
+   "one_liner": "Rules for Istisna'a, a contract to have goods manufactured or buildings constructed to specification, and for back-to-back Parallel Istisna'a arrangements.",
+   "what_it_is": "The standard explains the Shari'ah rulings and limitations applicable to Istisna'a and Parallel Istisna'a: concluding the contract, its subject-matter, changes to the contract, and the execution and supervision of the work. It applies whether the Institution acts as the ultimate purchaser or as a manufacturer or builder for construction.",
+   "why_it_matters_to_timeline": "Issued on 29 Safar 1422 A.H., corresponding to 23 May 2001 A.D., and marked as a Revised Standard: the Shari'ah Board approved amendments proposed by the Shari'ah Standards Review Committee at its meeting held 27-29 Sha'ban 1436 A.H. (14-16 June 2015 A.D.) and adopted the standard in its current amended version.",
+   "source_label": "SS-11.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "29 Safar 1422 A.H., corresponding to 23 May 2001 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Marked '(Revised Standard)'. Appendix (A) records that the Shari'ah Board reformatted the Shari'ah Rules for Investment and Financing No. (4) on Istisna'a and Parallel Istisna'a as Shari'ah Standard No. (11) without any substantial changes, and later adopted the standard 'in its current amended version' after approving amendments in its meeting held 14-16 June 2015 A.D.",
+  "related_standards": ["Shari'ah Standard No. (3) on Procrastinating Debtor"],
+  "key_rules_for_assurance": [
+   {"rule": "It is not permissible that the Institution's role in the Istisna'a be that of a financial intermediary between a buyer and a third party.", "clause": "2/1/3", "tag": "verified"},
+   {"rule": "It is not permitted for the manufacturer to stipulate in the contract of Istisna'a that he is not liable for defects.", "clause": "2/2/3", "tag": "verified"},
+   {"rule": "It is not permissible to conclude Istisna'a contracts in a manner that makes it a legal device for a mere interest-based financing, such as buying items from the contractor on cash and selling them back to the manufacturer on deferred payment at a higher price; this rule is intended to avoid sale and buy back transactions (Bay' al-'Inah).", "clause": "2/2/4", "tag": "verified"},
+   {"rule": "It is not permissible that the subject-matter of an Istisna'a contract be an existing and identified capital asset, because Istisna'a is a sale contract applicable to items that are identified by specification, not by designation.", "clause": "3/1/3", "tag": "verified"},
+   {"rule": "It is a requirement that the price for an Istisna'a contract be known at the conclusion of the contract, and it can be in the form of cash, tangible goods or the usufruct of an asset for a particular duration.", "clause": "3/2/1", "tag": "verified"},
+   {"rule": "It is not permissible for amendments and changes to the contract to be agreed on the basis that an additional sum will be paid in consideration for an extension of the period of payment; however, a rebate for pre-payment is permissible provided it is not stipulated at the conclusion of the contract.", "clause": "4/1/3", "tag": "verified"},
+   {"rule": "It is permissible for the contract of Istisna'a to include a penalty clause compensating the ultimate purchaser if the manufacturer is late in delivering, unless the delay is caused by force majeure; but it is not permitted to stipulate a penalty clause against the ultimate purchaser for default on payment.", "clause": "6/6", "tag": "verified"},
+   {"rule": "It is not permissible to sell the subject-matter prior to taking either actual or constructive possession of it.", "clause": "6/7", "tag": "verified"},
+   {"rule": "It is not permissible to make any contractual link between the obligations under the contract of Istisna'a and the contract of Parallel Istisna'a when they are concluded.", "clause": "7/4", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS12",
+  "standard_id": "SS 12",
+  "standard_code": "SS 12",
+  "regulator": "AAOIFI",
+  "title": "Standard No. (12) Sharikah (Musharakah) and Modern Corporations (Revised Standard)",
+  "display_card": {
+   "one_liner": "Rules for profit-sharing partnerships (Musharakah) and for modern company forms such as stock companies, including diminishing Musharakah.",
+   "what_it_is": "The standard explains the basis and general rulings for Sharikat al-'Aqd (contractual partnership), known today as Musharakah, including joint partnership, reputation (creditworthiness) partnership, vocation partnership, diminishing partnership and modern corporations. It covers definitions, rulings for each partnership and the Shari'ah limitations Islamic financial Institutions must observe. It does not cover ownership partnership, Sharikat al-Mufawadah, Mudarabah, or sharecropping partnerships.",
+   "why_it_matters_to_timeline": "Issued on 4 Rabi' I, 1423 A.H., corresponding to 16 May 2002 A.D., and marked as a Revised Standard: the Shari'ah Board approved amendments proposed by the Shari'ah Standards Review Committee at its meeting No. (41) held 27-29 Sha'ban 1436 A.H. (14-16 June 2015 A.D.) and adopted the standard in its current amended version.",
+   "source_label": "SS-12.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "4 Rabi' I, 1423 A.H., corresponding to 16 May 2002 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Marked '(Revised Standard)'. Appendix (A) records that the Shari'ah Board approved amendments proposed by the Shari'ah Standards Review Committee and the standard was adopted 'in its current amended version' at meeting No. (41) (14-16 June 2015 A.D.).",
+  "related_standards": ["Shari'ah Standard No. (24) on Syndicated Financing", "Shari'ah Standard No. (21) on Financial Paper"],
+  "key_rules_for_assurance": [
+   {"rule": "It is not permitted that debts (receivables) alone be used as a contribution to the Sharikah capital, though debts may form part of the contribution where they are inseparable from other assets.", "clause": "3/1/2/4", "tag": "verified"},
+   {"rule": "All partners maintain the assets of the Sharikah on a trust basis, so no one is liable except in cases of misconduct, negligence or breach of contract; it is not permitted to stipulate that a partner guarantees the capital of another partner.", "clause": "3/1/4/1", "tag": "verified"},
+   {"rule": "A third party may provide a guarantee to make up a loss of capital, provided the guarantor's legal capacity and financial liability are independent from the Sharikah contract and the guarantee is neither provided for consideration nor linked in any manner to the Sharikah contract.", "clause": "3/1/4/3", "tag": "verified"},
+   {"rule": "The allocation of profits must be made in a manner that gives each partner an undivided percentage of profit, not a sum of money or a percentage of the capital.", "clause": "3/1/5/1", "tag": "verified"},
+   {"rule": "It is a requirement that the proportions of losses borne by partners be commensurate with the proportions of their contributions to the Sharikah capital.", "clause": "3/1/5/4", "tag": "verified"},
+   {"rule": "It is not permitted to purchase shares using interest-based loans provided by a broker or any other person in consideration for mortgaging the shares as security.", "clause": "4/1/2/6", "tag": "verified"},
+   {"rule": "It is not permitted to issue preference shares, i.e. shares that have special financial characteristics giving them priority at the date of liquidation of the company or at the date of distribution of profit.", "clause": "4/1/2/14", "tag": "verified"},
+   {"rule": "In diminishing Musharakah, the buying partner may give only a promise to buy, which must be independent of the partnership contract; it is not permitted that one contract be entered into as a condition for concluding the other.", "clause": "5/1", "tag": "verified"},
+   {"rule": "In diminishing Musharakah, it is not permitted to stipulate that the equity share be acquired at its original or face value, as this would constitute a guarantee of the value of one partner's equity by the other partner, which is prohibited by Shari'ah.", "clause": "5/7", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS13",
+  "standard_id": "SS 13",
+  "standard_code": "SS 13",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (13) Mudarabah (Revised Standard)",
+  "display_card": {
+   "one_liner": "Rules for Mudarabah, a partnership in profit where one party provides the money and the other provides the work.",
+   "what_it_is": "The standard explains the Shari'ah rulings for restricted and unrestricted Mudarabah, whether the Islamic financial Institution acts as the Mudarib (entrepreneur) or as the investor. It covers Mudarabah contracts between the Institution and other entities or individuals, including joint and special purpose investment accounts administered on a Mudarabah basis. It does not cover Mudarabah Sukuk or other partnership contracts, which have separate standards.",
+   "why_it_matters_to_timeline": "The document states it was issued on 4 Rabi' I, 1424 A.H., corresponding to 16 May 2002 A.D., and is marked as a Revised Standard: the Shari'ah Board approved amendments proposed by the Shari'ah Standards Review Committee at its 41st meeting held 27-29 Sha'ban 1436 A.H. (14-16 June 2015 A.D.) and adopted the standard in its current amended version.",
+   "source_label": "SS-13.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "4 Rabi' I, 1424 A.H., corresponding to 16 May 2002 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Marked '(Revised Standard)'. Appendix (A) records that the Shari'ah Board approved amendments proposed by the Shari'ah Standards Review Committee and the Standard was adopted 'in its current amended version' at its 41st meeting (14-16 June 2015 A.D.).",
+  "related_standards": [],
+  "key_rules_for_assurance": [
+   {"rule": "A Mudarabah contract is one of the trust-based contracts; the Mudarib is not liable for losses except in case of breach of the requirements of trust, such as misconduct, negligence and breach of the terms of the Mudarabah contract.", "clause": "4/4", "tag": "verified"},
+   {"rule": "The capital provider is permitted to obtain guarantees from the Mudarib that are adequate and enforceable, on condition that they will not be enforced except in cases of misconduct, negligence or breach of contract on the part of the Mudarib.", "clause": "6", "tag": "verified"},
+   {"rule": "In principle, the capital of Mudarabah must be provided in the form of cash; however, it may be presented in the form of tangible assets, in which case the value of the assets is the contribution to the Mudarabah capital.", "clause": "7/1", "tag": "verified"},
+   {"rule": "It is not permissible to use a debt owed by the Mudarib or another party to the capital provider as capital in a Mudarabah contract.", "clause": "7/3", "tag": "verified"},
+   {"rule": "The distribution of profit must be on the basis of an agreed percentage of the profit and not on the basis of a lump sum or a percentage of the capital.", "clause": "8/1", "tag": "verified"},
+   {"rule": "If one of the parties stipulates that he should receive a lump sum of money, the Mudarabah contract shall be void, except where the parties agree that profit over a particular ceiling goes to one of the parties.", "clause": "8/5", "tag": "verified"},
+   {"rule": "No profit can be recognised or claimed unless the capital of the Mudarabah is maintained intact; losses stand to be compensated by the profits of future operations.", "clause": "8/7", "tag": "verified"},
+   {"rule": "The capital provider is not permitted to stipulate that he has a right to work with the entrepreneur (Mudarib) and to be involved in selling and buying activities, or supplying and ordering.", "clause": "9/3", "tag": "verified"},
+   {"rule": "It is not permissible for the Mudarib to make a loan or a gift or a charitable donation out of the Mudarabah funds, nor to waive a right associated with the Mudarabah operation unless the capital provider has consented.", "clause": "9/6", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS17",
+  "standard_id": "SS 17",
+  "standard_code": "SS 17",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (17) Investment Sukuk",
+  "display_card": {
+   "one_liner": "Rules for issuing and trading investment Sukuk, certificates of equal value that represent shared ownership of assets, usufructs, services or investment activities.",
+   "what_it_is": "The standard elaborates the Shari'ah rules for the issuance and trading of investment Sukuk (certificates), their types, characteristics, regulations and conditions for issuance and trading by Islamic financial institutions. It covers Sukuk of ownership of leased assets, usufructs and services, plus Murabahah, Salam, Istisna'a, Mudarabah, Musharakah, investment agency and sharecropping, irrigation and agricultural partnership Sukuk. It does not cover shares of joint stock companies, certificates of funds or investment portfolios.",
+   "why_it_matters_to_timeline": "Issued on 7 Rabi' I, 1424 A.H., corresponding to 8 May 2003 A.D., and adopted by the Shari'ah Board in its 10th meeting held 2-7 Rabi' I, 1424 A.H., corresponding to 3-8 May 2003 A.D.",
+   "source_label": "SS-17.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "7 Rabi' I, 1424 A.H., corresponding to 8 May 2003 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (12) on Sharikah (Musharakah) and Modern Corporations", "Shari'ah Standard No. (5) on Guarantees", "Shari'ah Standard No. (9) on Ijarah and Ijarah Muntahia Bittamleek"],
+  "key_rules_for_assurance": [
+   {"rule": "Investment Sukuk represent a common share in the ownership of the assets made available for investment; these Sukuk do not represent a debt owed to the issuer by the certificate holder.", "clause": "4/2", "tag": "verified"},
+   {"rule": "The owners of the certificates share the return as stated in the subscription prospectus and bear the losses in proportion to the certificates owned by them.", "clause": "4/5", "tag": "verified"},
+   {"rule": "It is permissible to issue certificates for (to securitize) tangible assets, usufructs and services; as for debts owed as a liability, it is not permissible to securitize them for the purpose of trading.", "clause": "5/1/2", "tag": "verified"},
+   {"rule": "The prospectus must explicitly mention the obligation to abide by the rules and principles of the Shari'ah, and that there is a Shari'ah Supervisory Board that approves the procedures of the issues and monitors the implementation of the project.", "clause": "5/1/8/4", "tag": "verified"},
+   {"rule": "The prospectus must not include any statement to the effect that the issuer accepts the liability to compensate the certificate owner up to the nominal value in situations other than torts and negligence, nor that he guarantees a fixed percentage of profit; an independent third party may provide a guarantee free of charge.", "clause": "5/1/8/7", "tag": "verified"},
+   {"rule": "The issuer may undertake, through the prospectus, to purchase at market value any certificate offered to him after completion of the issue, but it is not permissible for the issuer to undertake to purchase the Sukuk at their nominal value.", "clause": "5/2/2", "tag": "verified"},
+   {"rule": "It is not permissible to trade in Salam certificates.", "clause": "5/2/14", "tag": "verified"},
+   {"rule": "It is not permissible to trade in Murabahah certificates after delivery of the Murabahah commodity to the buyer; trading is permissible after purchasing the commodity and before selling it to the buyer.", "clause": "5/2/15", "tag": "verified"},
+   {"rule": "It is permissible to trade in Mudarabah, Musharakah and investment agency certificates after closing of subscription, allotment of the certificates and commencement of activity with respect to the assets and usufructs.", "clause": "5/2/16", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS19",
+  "standard_id": "SS 19",
+  "standard_code": "SS 19",
+  "regulator": "AAOIFI",
+  "title": "Shariah Standard No. (19) Loan (Qard)",
+  "display_card": {
+   "one_liner": "Rules for interest-free loans (Qard), including when any extra benefit to the lender is forbidden as Riba and how banks may charge for loan services.",
+   "what_it_is": "The standard elaborates the Shari'ah rules for loan (Qard), including the rules for a benefit arising from a loan whether or not it is stipulated in the contract. It covers loans and their accompanying benefits or costs whether the institution is a lender or a borrower, and includes modern applications such as current accounts, perquisites in return for loans, service charges for loans, and mutual overdrafts between the institution and its correspondents. It does not cover what is not a loan, like the price in a credit sale and investment accounts.",
+   "why_it_matters_to_timeline": "Issued on 30 Rabi' I, 1425 A.H., corresponding to 19 May 2004 A.D., and adopted by the Shari'ah Board in its meeting No. (12) held 26-30 Rabi' I, 1425 A.H., corresponding to 15-19 May 2004 A.D.",
+   "source_label": "SS-19.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "30 Rabi' I, 1425 A.H., corresponding to 19 May 2004 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (15) on Ju'alah", "Shari'ah Standard No. (2) on Credit and Charge Cards", "Shari'ah Standard No. (1) on Trading in Currencies"],
+  "key_rules_for_assurance": [
+   {"rule": "The stipulation of an excess for the lender in a loan is prohibited and amounts to Riba, whether the excess is in quality or quantity, a tangible thing or a benefit, and whether the stipulation is in writing or part of customary practice.", "clause": "4/1", "tag": "verified"},
+   {"rule": "It is not permissible for the borrower to offer tangible property or extend a benefit to the lender during the period of the Qard when this is done for the sake of Qard, unless such giving was a practice continuing between the parties from before the contract.", "clause": "5/1", "tag": "verified"},
+   {"rule": "An excess over Qard is permissible in quantity or quality at the time of repayment when it is not stipulated and is not part of custom.", "clause": "5/2", "tag": "verified"},
+   {"rule": "It is not permissible to stipulate a contract of Bay' (exchange, sale) or Ijarah or other commutative contract within the contract of Qard.", "clause": "7", "tag": "verified"},
+   {"rule": "A lending institution may charge for services rendered in loans equivalent to the actual amount directly spent on such services; all charges in excess of the actual amount spent are prohibited, and the method of determining the charges must be laid down by the institution's Shari'ah Supervisory Board.", "clause": "9/1", "tag": "verified"},
+   {"rule": "The reality of current accounts is that these are loans and not deposits; the institution comes to own the amounts and a liability to repay is established against it.", "clause": "10/1/1", "tag": "verified"},
+   {"rule": "It is not permitted to the institution to present to the owners of current accounts, in lieu of such accounts, material gifts, financial incentives, services or benefits that are not related to deposits and withdrawals.", "clause": "10/2", "tag": "verified"},
+   {"rule": "Charges imposed on credit cards for cash withdrawals from bank teller machines must be a certain amount within reasonable charges excluding profit from Qard; it is not permissible to link the charge to the amount withdrawn.", "clause": "10/3/2", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS23",
+  "standard_id": "SS 23",
+  "standard_code": "SS 23",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (23): Agency and the Act of an Uncommissioned Agent (Fodooli)",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for when an Islamic financial institution appoints an agent or acts as an agent for others, and for the acts of an uncommissioned agent (Fodooli).",
+   "what_it_is": "It clarifies the Shari'ah rulings that govern Islamic financial institutions in appointing agents or becoming agents of others, whether in arranging contracts, disposing of property, undertaking procedural tasks, or managing and investing funds. It covers the conditions of agency, its various forms, the responsibilities of the principal and the agent, and the rules for someone who acts on another's behalf without authority (Fodooli). It does not cover agency in matters like Zakah, personal affairs, penalty affairs, legal advocacy, or documentary credits, which have separate treatment.",
+   "why_it_matters_to_timeline": "The document states it was issued on 23 Rabi' I, 1426 A.H., corresponding to 30 April 2005 A.D., and was adopted by the Shari'ah Board in its meeting No. (14) held in Dubai on 21-22 Rabi' I, 1426 A.H., corresponding to 30 April - 2 May 2005 A.D.",
+   "source_label": "SS-23.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "23 Rabi' I, 1426 A.H., corresponding to 30 April 2005 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (5) on Guarantees", "Shari'ah Standard No. (8) on Murabahah"],
+  "key_rules_for_assurance": [
+   {"rule": "Agency is the act of one party delegating the other to act on its behalf in what can be a subject matter of delegation and it is, thus, permissible.", "clause": "2/1/1", "tag": "verified"},
+   {"rule": "The subject matter of agency should not involve a Shari'ah-banned practice, like trading in impermissible commodities or committing usurious lending.", "clause": "3/3/3", "tag": "verified"},
+   {"rule": "In absolute agency it is not permissible to sell at less or buy at more than the market price, nor to perform barter and deferred payment sales, except with the prior consent of the principal.", "clause": "4/1/2", "tag": "verified"},
+   {"rule": "The amount payable as remuneration for agency should be known; it is not permissible to leave remuneration undetermined and allow the agent to take an unspecified share from the entitlements of the principal.", "clause": "4/2/3", "tag": "verified"},
+   {"rule": "The agent is a trustee in holding the asset and is not bound to indemnify the principal except when damage results from his own misconduct, negligence or breach of terms; it is not permissible to combine agency and personal guarantees in one contract.", "clause": "5/2", "tag": "verified"},
+   {"rule": "The agent should not act for both parties to the contract.", "clause": "6/1/3", "tag": "verified"},
+   {"rule": "When the agent breaches the contract by purchasing at a price that exceeds both the market price and the price set forth by the principal, he should compensate the principal for the difference between the purchase price and the market price.", "clause": "6/3/2", "tag": "verified"},
+   {"rule": "The agent has no right to appoint a sub-agent except with the permission of the principal.", "clause": "6/4", "tag": "verified"},
+   {"rule": "The approval or denial of a contract concluded by an uncommissioned agent is subject to the discretion of the owner; if the owner does not approve, the act becomes binding to the uncommissioned agent if he did not declare at the time of signing that he had no authority.", "clause": "8/2", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS25",
+  "standard_id": "SS 25",
+  "standard_code": "SS 25",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (25): Combination of Contracts",
+  "display_card": {
+   "one_liner": "Covers transactions that bundle more than one contract together in one set, and when such combining is or is not allowed.",
+   "what_it_is": "It explains the process of combining more than one contract in one arrangement, including its forms, characteristics, Shari'ah status and Shari'ah controls. It also sets out the rulings on Muwata'ah (prior agreement between the parties to combine contracts) and gives guidance on the main applications of combined contracts in Islamic financial institutions, such as Murabahah on Order of Purchase, Ijarah Muntahia Bittamleek and Diminishing Musharakah.",
+   "why_it_matters_to_timeline": "The document states it was issued on 23 Rabi' I, 1426 A.H., corresponding to 2 May 2005 A.D., and was adopted by the Shari'ah Board in its meeting No. (15) held in Makkah Al-Mukarramah on 22-26 Sha'ban 1427 A.H., corresponding to 26 September - 2 October 2005 A.D.",
+   "source_label": "SS-25.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "23 Rabi' I, 1426 A.H., corresponding to 2 May 2005 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (19): Loan (Qard)"],
+  "key_rules_for_assurance": [
+   {"rule": "It is permissible in Shari'ah to combine more than one contract in one set, without imposing one contract as a condition in the other, and provided that each contract is permissible on its own.", "clause": "3", "tag": "verified"},
+   {"rule": "Contracts' combining should not include the cases that are explicitly banned by Shari'ah like combining sale and lending in one contract.", "clause": "4/1", "tag": "verified"},
+   {"rule": "It should not be used as a trick for committing Riba such as agreement between two parties to practice Bay' al-'Inah or Riba al-Fadl.", "clause": "4/2", "tag": "verified"},
+   {"rule": "It should not be used as an excuse for practicing Riba, for example stipulating that the borrower should offer accommodation to the lender, grant him a present, or make excess repayment in quantity or quality.", "clause": "4/3", "tag": "verified"},
+   {"rule": "Combined contracts should not reveal disparity or contradiction with regard to their underlying rulings and ultimate goals, such as combining Mudarabah with lending the Mudarabah capital to the Mudarib, or currency exchange with Ju'alah.", "clause": "4/4", "tag": "verified"},
+   {"rule": "Muwata'ah to form up Riba tricks, in which the two parties agree to practice, for instance, Bay' al-'Inah or its reverse, or Bay' al-Wafa' (Bay' al-Raja), or Riba al-Fadl, is prohibited by Shari'ah and the contract so designed is invalid.", "clause": "6/3/1", "tag": "verified"},
+   {"rule": "Muwata'ah for obtaining Shari'ah Exits, which refers to tricks that do not violate Shari'ah rules, or contradict with Shari'ah objectives, or result in any harm to others, is permissible.", "clause": "6/3/3", "tag": "verified"},
+   {"rule": "The pledges contained in such combined contract sets are binding to their respective parties.", "clause": "7/3", "tag": "verified"},
+   {"rule": "Failure of any of the parties to combined contracts to honor its contractual commitments gives the other party right of claiming indemnity for the actual injury encountered.", "clause": "7/6", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS26",
+  "standard_id": "SS 26",
+  "standard_code": "SS 26",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (26): Islamic Insurance",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for Islamic Insurance and explains how it differs from Conventional Insurance, which the standard states is banned by Shari'ah.",
+   "what_it_is": "It covers Islamic Insurance in terms of its definition, Shari'ah status, characteristics, principles, basic elements and types. Islamic Insurance is described as an agreement among a group of persons to handle injuries from specific risks by paying contributions as donations into an insurance fund with independent financial liability, managed either by selected policyholders or by a joint stock company against a fee. It does not cover social insurance schemes arranged by the state.",
+   "why_it_matters_to_timeline": "The document states it was issued on 23 Rabi' I, 1426 A.H., corresponding to 2 May 2005 A.D., and was adopted by the Shari'ah Board in its meeting No. (16) held in Al-Madinah Al-Munawwarah on 7-12 Jumada I, 1427 A.H., corresponding to 3-9 June 2006 A.D.",
+   "source_label": "SS-26.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "23 Rabi' I, 1426 A.H., corresponding to 2 May 2005 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (12) on Sharikah (Musharakah) and Modern Corporations", "Shari'ah Standard No. (5) on Guarantees", "Shari'ah Standard No. (13) on Mudarabah"],
+  "key_rules_for_assurance": [
+   {"rule": "Conventional Insurance is a Mu'awadah (mutual compensation) contract that seeks to make profit out of the insurance operation itself, involves Gharar (uncertainty), and consequently is banned by Shari'ah.", "clause": "2", "tag": "verified"},
+   {"rule": "It should be stipulated that the participant donates his contribution and the returns thereon to the insurance account for payment of indemnity, and may undertake to bear any deficit that may occur.", "clause": "5/1", "tag": "verified"},
+   {"rule": "The company that arranges the insurance deal should maintain two separate accounts: one for its own rights and liabilities, and the other for the rights and liabilities of the policyholders.", "clause": "5/2", "tag": "verified"},
+   {"rule": "The managing company is not entitled to any share of the surplus; the surplus may be disposed of in ways serving the common interest of the participants, such as accumulation of reserves, reduction of the contribution, charitable donations and partial/full distribution among participants.", "clause": "5/5", "tag": "verified"},
+   {"rule": "When the company is liquidated, all provisions and accumulated reserves pertaining to insurance should be spent on charitable purposes.", "clause": "5/6", "tag": "verified"},
+   {"rule": "A Shari'ah Supervisory Board shall be formulated for issuance of Fatawa that are binding to the company, and an internal unit shall be established for Shari'ah monitoring and auditing.", "clause": "5/9", "tag": "verified"},
+   {"rule": "In case of insurance against death, it should be stipulated that the beneficiary or his inheritor should not be entitled to any compensation when the death is caused by a murder wherein the said beneficiary or inheritor is involved.", "clause": "6/2/1/5", "tag": "verified"},
+   {"rule": "The company should not guarantee the insurance assets except in case of misconduct, negligence or breach of contractual obligations.", "clause": "10/2", "tag": "verified"},
+   {"rule": "When the insurance assets fall short of covering indemnity commitments, the company may cover the deficit from project financing or Qard Hasan (interest-free or benevolent loan) debited to the account of the insurance fund.", "clause": "10/8", "tag": "verified"},
+   {"rule": "The participant shall receive either the loss he incurred because of the injury, or the insurance amount, whichever is less; and he should not receive both the indemnity and compensation from other parties for the same injury.", "clause": "11/1", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS30",
+  "standard_id": "SS 30",
+  "standard_code": "SS 30",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (30): Monetization (Tawarruq)",
+  "display_card": {
+   "one_liner": "Covers Tawarruq — buying a commodity on deferred payment and selling it to a third party for cash — and the conditions that keep it valid.",
+   "what_it_is": "It indicates the essence of Monetization and explains the Shari'ah conditions for its validity and the controls on its application in Islamic financial institutions. Monetization is defined as purchasing a commodity for a deferred price and selling it to a third party for a spot price to obtain cash, and the standard distinguishes it from Bay' al-'Inah, where the commodity is sold back to the same party it was bought from.",
+   "why_it_matters_to_timeline": "The document states it was issued 1 Dhul-Qa'dah 1427 A.H., corresponding to 13 November 2006 A.D., and was adopted by the Shari'ah Board in its meeting No. (17) held in Makkah Al Mukarramah on 26 Shawwal - 1 Dhul-Qa'dah 1427 A.H., corresponding to 18-23 November 2006 A.D.",
+   "source_label": "SS-30.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "1 Dhul-Qa'dah 1427 A.H., corresponding to 13 November 2006 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (8) on Murabahah", "Shari'ah Standard No. (20) on Sale of Commodities in Organized Markets", "Shari'ah Standard No. (18) on Possession (Qabd)", "Shari'ah Standard No. (1) on Trading in Currencies"],
+  "key_rules_for_assurance": [
+   {"rule": "The institution should not perform Monetization for the benefit of conventional banks when it discovers that such banks are going to use the liquidity for interest-based lending instead of Shari'ah-compliant operations.", "clause": "3/2", "tag": "verified"},
+   {"rule": "There shall be a real commodity that the seller owns before selling it; if a binding promise is involved it shall be from only one party; and the commodity sold shall not be gold or silver or any type of currency.", "clause": "4/1", "tag": "verified"},
+   {"rule": "The commodity sold shall be well identified so as to become distinct from the other assets of the seller.", "clause": "4/2", "tag": "verified"},
+   {"rule": "The commodity shall be actually or constructively received by the buyer, and there remains no further condition or procedure for receiving it.", "clause": "4/4", "tag": "verified"},
+   {"rule": "The commodity must be sold to a party other than the one from whom it was purchased on deferred payment basis (third party), so as to avoid 'Inah which is strictly prohibited; the commodity shall not return back to the seller by virtue of prior agreement, collusion, or tradition.", "clause": "4/5", "tag": "verified"},
+   {"rule": "The contract for purchasing the commodity on deferred payment basis, and the contract for selling it for a spot price shall not be linked together in such a way that the client loses his right to receive the commodity.", "clause": "4/6", "tag": "verified"},
+   {"rule": "The client shall not delegate the Institution or its agent to sell, on his behalf, a commodity that he purchased from the same Institution and, similarly, the Institution shall not accept such delegation.", "clause": "4/7", "tag": "verified"},
+   {"rule": "The Institution should not arrange proxy of a third party to sell, on behalf of the client, the commodity that the client purchased from the Institution.", "clause": "4/8", "tag": "verified"},
+   {"rule": "Monetization is not a mode of investment or financing; Institutions shall not use it as a means of mobilizing liquidity for their operations, and shall resort to it only when facing the danger of a liquidity shortage that could interrupt the flow of operations and cause losses for clients.", "clause": "5/1", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ }
+ ]
+}

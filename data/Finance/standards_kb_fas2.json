@@ -1,0 +1,1979 @@
+{
+ "_meta": {
+  "file": "standards_kb_fas2.json",
+  "built": "2026-07-19",
+  "purpose": "Deep clause-verified notes: AAOIFI FAS 38-52 (new generation), AAB Statement 1/2026 FAS 40 scope clarification, and original FAS 13 (2000, superseded)",
+  "jurisdiction": {
+   "code": "INTL",
+   "name": "International",
+   "regulator": "AAOIFI",
+   "authority_basis": "Voluntary/adopted per jurisdiction",
+   "jurisdictions_json_id": "INTL"
+  },
+  "sect_school": "Standards are regulator-level; never madhhab-filtered",
+  "supersession_map_document_sourced": {
+   "FAS 9 -> FAS 39": "FAS 39 PR4",
+   "FAS 18 -> FAS 40": "FAS 40 para 13",
+   "FAS 12 -> FAS 42": "FAS 42 para 15",
+   "FAS 13, FAS 15, FAS 19 -> FAS 43": "FAS 43 IN4, para 136",
+   "FAS 27 -> FAS 45 + FAS 46 jointly": "FAS 45 para 54; FAS 46 para 29",
+   "TR 01/2020 withdrawn": "FAS 45 BC14",
+   "FAS 21 -> FAS 47": "FAS 47 IN2, IN4",
+   "FAS 14 -> FAS 50": "FAS 50 PR3, para 38",
+   "FAS 3, FAS 4 -> FAS 51": "FAS 51 para 76",
+   "FAS 7, FAS 10 -> FAS 52 (jointly with FAS 53 pending issuance)": "FAS 52 PR4, para 39",
+   "FAS 44 takes precedence over FAS 23 control definition": "FAS 44"
+  },
+  "legends": {
+   "tag": "verified = every point carries a document paragraph cite",
+   "status": "processed | superseded"
+  },
+  "notes": [
+   "FAS 37 (Waqf), FAS 3 (Mudaraba), FAS 27 (Investment accounts) and AAB Statement Withdrawal of FAS 26: listed in uploads but files never arrived on disk - awaiting re-upload",
+   "FAS 53 not yet issued (per FAS 52)"
+  ]
+ },
+ "standards": [
+  {
+   "id": "AAOIFI-FAS-38",
+   "source_file": "eb437b53-FAS38WaadKhiyarandTahawwutFinal15December2020clean.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 38 \"Wa'ad, Khiyar and Tahawwut\"",
+   "issued_date": "2020-12-15",
+   "effective_date": "2022-01-01, for financial statements beginning on or after this date; earlier application permitted (para 35)",
+   "supersedes": [],
+   "linked_standards": [
+    "FAS 1 \"General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions\"",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "SS 25 \"Combination of contracts\"",
+    "SS 45 \"Protection of capital and investments\"",
+    "SS 49 \"Unilateral and bilateral promise\"",
+    "SS 52 \"Options to reconsider (cooling-off options, either-or options, and options to revoke due to non-payment)\"",
+    "SS 53 \"Arboun (earnest money)\"",
+    "SS 54 \"Revocation of contracts by exercise of a cooling-off option\"",
+    "SS 58 \"Repurchase Agreements\" (fn1)"
+   ],
+   "applicability": "Applies to accounting and financial reporting for all transactions involving Wa'ad, Khiyar or Tahawwut arrangements carried out under Shari'ah principles and rules by Islamic financial institutions (paras 1-2); to be read together with definitions/Shari'ah principles in the listed AAOIFI Shari'ah Standards and with the Conceptual Framework for Financial Reporting (unnumbered note preceding Preface); no explicit exclusions stated (absent).",
+   "contract_slugs": [
+    "murabaha",
+    "ijarah"
+   ],
+   "term_names": [
+    "Wa'ad (promise)",
+    "binding Wa'ad",
+    "non-binding Wa'ad",
+    "Khiyar (option)",
+    "Tahawwut (hedging) arrangement",
+    "Arboun",
+    "Hamish Jiddiyyah",
+    "Control",
+    "Fair value",
+    "Onerous contract or commitment",
+    "Promisor",
+    "Promisee",
+    "ancillary Wa'ad or Khiyar",
+    "product Wa'ad or Khiyar",
+    "recognised constructive obligation",
+    "recognised constructive right",
+    "Dain",
+    "Ijarah Muntahia Bittamleek",
+    "hedging instrument",
+    "hedged item",
+    "re-purchase option (RePO) transaction"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR3); Introduction - Overview, Rationale for issuing this standard (IN1-IN7); Objective of the standard (para 1); Scope (para 2); Definitions (para 3, a-j incl. binding/non-binding Wa'ad); Types and classification of Wa'ad, Khiyar and Tahawwut arrangements (para 4, ancillary vs product); Accounting for ancillary Wa'ad or Khiyar - Recognition and measurement (paras 5-7), Presentation and disclosure (paras 8-10); Accounting for product Wa'ad or Khiyar - Accounting for obligations (Initial recognition paras 11-12, Subsequent measurement para 13, Derecognition paras 14-15, Presentation and disclosure para 16), Accounting for rights (Initial recognition paras 17-18, Subsequent measurement para 19, Derecognition paras 20-21, Presentation and disclosure para 22), Multiple Wa'ad and Khiyar arrangements (para 23), Assessment of the probability of the flow of economic resources (para 24), Hamish Jiddiyyah and Arboun (paras 25-27); Accounting for Tahawwut (hedging) arrangements (paras 28-34, hedging instrument/hedged item designation, qualifying criteria, fair value hedges, cash flow hedges, discontinuation, recycling); Effective date (para 35); Appendix A: Adoption of the standard (Members of the board, Reservation, Working group members, Executive team); Appendix B: Basis for conclusions (BC1-BC13); Appendix C: Brief history of the preparation of the standard (H1-H10).",
+   "key_points": [
+    "Standard prescribes accounting and reporting principles for recognition, measurement and disclosure of Shari'ah-compliant Wa'ad (promise), Khiyar (option) and Tahawwut (hedging) arrangements for Islamic financial institutions (para 1).",
+    "Scope covers all transactions involving Wa'ad, Khiyar or Tahawwut arrangements carried out under Shari'ah principles and rules (para 2).",
+    "Wa'ad is a unilateral undertaking (constructive obligation) understood to be binding in Shari'ah on the promisor unless a legitimate Shari'ah excuse prevents fulfillment; classified as binding Wa'ad (pending on a cause where the promisee has incurred costs, or expressly made binding by the promisor) or non-binding Wa'ad (para 3.j, i-ii).",
+    "Khiyar (option) is an expressed or implied option within a sale, Ijarah or other contract allowing one party to unilaterally nullify, revoke, or materially amend the contract; Tahawwut (hedging) arrangement mitigates risk of unfavorable future fair value changes or cash flow differentials via a Wa'ad or Khiyar (or series thereof) for a stipulated period (para 3.e, 3.i).",
+    "Other definitions: Control = substantially all risks/rewards of ownership via exposure to variable returns and ability to affect those returns; Fair value = price received to sell an asset/paid to transfer a liability between market participants at the measurement date; Onerous contract or commitment = unavoidable costs exceed expected economic benefits; Promisor/Promisee defined, promisee may incur cost by reason of the promise (para 3.b, 3.c, 3.f, 3.g-h).",
+    "Arboun = security-cum-advance sale payment, forfeitable by the seller on the buyer's revocation of purchase within an agreed period; Hamish Jiddiyyah = a security deposit for fulfillment of a contract/promise, of which only actual damages may be forfeited, applying only to the pre-contracting period and not usable throughout the contract term (para 3.a, 3.d).",
+    "Arrangements are classified as ancillary Wa'ad or Khiyar (tied to the structure of a Shari'ah-compliant arrangement, e.g. a Murabaha purchase-orderer's promise or a post-term purchase promise in Ijarah Muntahia Bittamleek, or the option of inspection) or product Wa'ad or Khiyar (stand-alone, e.g. an FX forward promise, a cancellation option with Arboun, a Shari'ah-compliant alternative to a repurchase (RePO) transaction, or a Tahawwut arrangement) (para 4.a-b).",
+    "An ancillary Wa'ad or Khiyar by itself gives rise to no asset or liability; the institution assesses each reporting period whether it has become an onerous contract or commitment, accounted per FAS 30 \"Impairment, Credit Losses and Onerous Commitments\" (paras 5-7).",
+    "Ancillary Wa'ad or Khiyar: qualitative disclosure of nature required; significant outstanding arrangements disclosed under contingent liabilities/commitments (and assets, if applicable) per FAS 1; onerous items presented/disclosed per FAS 30 (paras 8-10).",
+    "Product Wa'ad or Khiyar obligation recognition: a recognised constructive obligation arises when it is 'more likely than not' that economic resources will flow out and the amount is reliably measurable, initially recorded at a reasonable fair value estimate with corresponding loss to the statement of income (paras 11-12).",
+    "Product Wa'ad or Khiyar right recognition: a recognised constructive right arises only when it is 'highly probable' that resources will flow to the institution, a legal or constructive obligation exists for that flow, and the amount is reliably measurable, recorded at a reasonable fair value estimate of the receivable (paras 17-18).",
+    "Subsequent measurement: carrying amounts of the recognised constructive obligation and recognised constructive right are reviewed each reporting period with gains/losses taken to the statement of income, except amounts pertaining to a Tahawwut arrangement, accounted per paras 28-34 (paras 13, 19).",
+    "Derecognition: the obligation is derecognised on extinguishment, expiry/cancellation, or ceasing to meet the para 11 recognition criteria; the right is derecognised on expiry of contractual rights or ceasing to meet the para 17 criteria; gains/losses on derecognition go to the statement of income (paras 14-15, 20-21).",
+    "Minimum disclosures include accounting policies/judgments and estimates, carrying amounts and movements of recognised obligations/rights, the amount of gain or loss recognised in income (segregating initial recognition from subsequent reassessment effects for rights), and the gain or loss on a Tahawwut (hedge) relationship attributed to the hedged item (paras 16, 22).",
+    "Multiple Wa'ad and Khiyar arrangements - bilateral, parallel, multi-lateral, or series arrangements by independent parties - are accounted for by applying the standard's requirements to each individual Wa'ad or Khiyar separately (para 23).",
+    "Probability-of-flow assessment factors (inter-alia): the legal and regulatory environment; whether the Wa'ad or Khiyar has significant economic incentive for the counterparty; existence of collateral, security, guarantee, margin or variation margin held/placed; industry practice in similar situations; costs incurred in good faith by the counterparty; and public expectation/trust in the institution as an upholder of Shari'ah (para 24.a-f).",
+    "Hamish Jiddiyyah or Arboun received or paid constitutes an asset or liability, accounted per the relevant AAOIFI FAS; it is not netted off against the recognised constructive obligation/right absent a legally enforceable netting right; Arboun paid may be adjusted against the sale consideration once the sale is consummated (paras 25-27).",
+    "Hedge designation requires a hedged item (an asset, liability, firm commitment, or highly probable forecast transaction exposed to fair value or cash flow risk and designated as hedged) and a hedging instrument (a designated Wa'ad or Khiyar, made to a party external to the institution, expected to offset that risk) (para 28.a-b).",
+    "A hedging relationship qualifies for hedge accounting only where formally documented per the institution's risk management objectives and an economic relationship exists between the hedging instrument and the hedged item, and is accounted for only when adequately documented, expected effective, cash-flow exposure is probable (cash flow hedges), effectiveness is reliably measurable, and ongoing high effectiveness is assessed each period (paras 29-30).",
+    "Fair value hedge accounting: the gain or loss from remeasuring the hedging instrument at fair value is recognised in the statement of income; the gain or loss on the hedged item adjusts its carrying amount and is also recognised in the statement of income (para 31.a-b).",
+    "Cash flow hedge accounting: the effective portion of the gain or loss on the hedging instrument is recognised in equity (owners' equity and quasi-equity); the ineffective portion is recognised in the statement of income (para 32.a-b).",
+    "Hedge accounting is discontinued when the hedging instrument expires, is settled, terminated or exercised (with exceptions for mandated clearing-counterparty replacement or documented replacement/renewal/rollover strategies), when the hedge no longer meets the para 29 qualifying criteria, or when the institution revokes the hedge designation (para 33.a-c, i-ii).",
+    "For cash flow hedges other than those in para 32, amounts previously recognised in equity are recycled to the statement of income in the same period(s) the hedged forecast cash flows affect income; the standard is effective for financial statements beginning on or after 1 January 2022, with earlier application permitted (paras 34-35)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV07",
+     "topic": "binding promise/wa'd",
+     "position": "AAOIFI: Wa'ad (promise) is a unilateral undertaking (constructive obligation) assumed by a party, understood to be binding in Shari'ah on the individual who makes it unless a legitimate excuse under Shari'ah arises and prevents its fulfillment; classified as binding Wa'ad (becomes binding by virtue of juristic rules if pending on a cause and the promisee has incurred costs by reason of the promise, or by the promisor expressly making it binding on itself) or non-binding Wa'ad (any Wa'ad other than a binding promise) (para 3.j)",
+     "clauses": [
+      "para 3.j",
+      "para 3.j.i",
+      "para 3.j.ii"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "unilateral undertaking (constructive obligation) assumed by a party to the arrangement",
+     "cite": "para 3.j"
+    },
+    {
+     "quote": "that economic resources will flow out of the institution",
+     "cite": "para 11.a"
+    },
+    {
+     "quote": "that economic resources will flow to the institution",
+     "cite": "para 17.a"
+    },
+    {
+     "quote": "an economic relationship between the hedging instrument and the hedged item",
+     "cite": "para 29.b"
+    },
+    {
+     "quote": "effective for the financial statements beginning on or after 01 January 2022",
+     "cite": "para 35"
+    },
+    {
+     "quote": "probability of more than 90% indicates a very high degree of certainty",
+     "cite": "BC12"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-39",
+   "source_file": "93890a35-FAS39FinancialreportingforZakahcleanjune2022.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 39 \"Financial Reporting for Zakah\"",
+   "issued_date": "2021-12-31",
+   "effective_date": "2023-01-01, for financial periods beginning on or after this date; early adoption permitted (Effective date)",
+   "supersedes": [
+    {
+     "title": "FAS 9 \"Zakah\"",
+     "cite": "PR4"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Shari'ah Standard (SS) 35 \"Zakah\"",
+    "FAS 1 (Revised 2021) \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 9 \"Zakah\" (superseded predecessor)"
+   ],
+   "applicability": "Applies to an institution regarding recognition, presentation and disclosure of Zakah attributable to relevant stakeholders, on both consolidated and separate/stand-alone financial statements (Scope); does not prescribe the method for determining the Zakah base or measuring Zakah due, which institutions must obtain from SS 35 \"Zakah\", regulatory requirements, or their Shari'ah supervisory board (Scope); excludes Zakah on agricultural produce and other non-annual produce, for which the institution develops its own accounting policy and reconciliation disclosures (Scope); creditors, including current account depositors, are not treated as participatory stakeholders and their balances are outside scope (BC12).",
+   "contract_slugs": [
+    "mudarabah",
+    "musharakah",
+    "salam",
+    "istisna",
+    "sukuk",
+    "qard"
+   ],
+   "term_names": [
+    "Zakah",
+    "Advance Zakah",
+    "Annual Zakah base",
+    "Institutions obliged to pay Zakah",
+    "Institutions not obliged to pay Zakah",
+    "Realisable value",
+    "Relevant stakeholders",
+    "Zakatable assets",
+    "Zakah liability",
+    "Zakah rate",
+    "Nisab",
+    "Hawl",
+    "Zakah fund",
+    "Quasi-equity",
+    "Non-Controlling Interest (NCI)",
+    "Participatory stakeholders",
+    "Investment accountholders"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR4); Introduction - Overview, Rationale for issuing this standard, Significant changes from previous standard (IN1-IN6); Objective of the standard; Scope; Definitions (a-j); Institutions obliged to pay Zakah - Recognition of Zakah due and corresponding liability (Recognition of current Zakah due as an expense, Recognition of Zakah as adjustment to equity, Recognition of Zakah liability); Institutions not obliged to pay Zakah; Presentation and disclosure requirements (a-l) incl. Zakah fund; Effective date; Amendments to other standards; Appendix A: Adoption of the standard (Members of the board, Reservation, Working group members, Executive team); Appendix B(i) and B(ii): Illustrative disclosure of calculation and attribution of Zakah; Appendix C: Illustrative disclosure for sources and application of Zakah; Appendix D: Basis for conclusions (BC1-BC17); Appendix E: Brief history of the preparation of the standard (H1-H16).",
+   "key_points": [
+    "Standard establishes principles of financial reporting for Zakah attributable to different stakeholders of an Islamic financial institution (Objective of the standard).",
+    "Standard does not prescribe the method for determining the Zakah base or measuring Zakah due for a period; institutions refer to SS 35 \"Zakah\", regulatory requirements, or their Shari'ah supervisory board (Scope).",
+    "Standard excludes Zakah on agricultural produce and other non-annual produce; institution develops its own accounting policy and discloses reconciliation for such Zakah (Scope).",
+    "Advance Zakah defined as the amount paid over and above the recognised Zakah expense, including excess paid through adjustment to equity for current and prior years (Definitions a).",
+    "Annual Zakah base defined as the total net amount subject to Zakah at the end of an annual period, excluding agriculture or other non-annual produce (Definitions b).",
+    "Institutions not obliged to pay Zakah are those not required to pay on behalf of one or certain classes of stakeholders (Definitions c).",
+    "Institutions obliged to pay Zakah are those meeting one or more of four conditions: law/regulation requirement, constitution documents requirement, shareholders' general assembly resolution, or contractual requirement with stakeholders (Definitions d, i-iv).",
+    "Realisable value defined as the entity-specific value at which the institution is able to sell/convert the asset to cash (Definitions e).",
+    "Zakah defined as a right (a religious responsibility on a Muslim) due on certain wealth, disbursable to eight specific beneficiary categories per Al-Quran At-Tauba:60; may be an institutional expense or an individual stakeholder obligation depending on legal environment (Definitions g, fn3).",
+    "Zakatable assets, Zakah liability (unpaid current and prior years Zakah due), and Zakah rate defined, with Zakah rate per SS 35 paragraph 3/2/4 and Nisab (Zakatable wealth stratum) per SS 35 paragraph 3/2/2 (Definitions h, i, j, fn4).",
+    "Institutions obliged to pay Zakah by law or constitution documents recognise current Zakah due (or reversal) as an expense in profit or loss for the period (Recognition of current Zakah due as an expense).",
+    "Where not legally required and the institution acts as agent, Zakah paid is adjusted against the equity of relevant stakeholders; where distributable reserves are insufficient, the Zakah due is recorded as receivable from those stakeholders (Recognition of Zakah as adjustment to equity).",
+    "Current Zakah due is recognised as a liability; amounts paid in excess of the amount due for current/prior periods are recognised as advance Zakah (Recognition of Zakah liability).",
+    "Institutions not obliged to pay Zakah must disclose the Zakah base, total Zakah due on that base, and Zakah per share/unit for the current period for applicable stakeholders (Institutions not obliged to pay Zakah).",
+    "Minimum disclosure requirements (a-l) include: method for determining the Zakah base and its reconciliation; authoritative guidance used; Zakah per share/unit per pool; reconciliation of Zakah liability/expense between consolidated and subsidiaries' separate financial statements; statement on whether the institution collects/pays Zakah for participatory stakeholders; disclosure where a single recipient receives more than 5% of total Zakah payable; difference between legally required and voluntarily determined Zakah; amount due from participatory stakeholders' equity; and disputes with Zakah authorities (Presentation and disclosure requirements a-l).",
+    "Established Zakah liability and corresponding assets must be transferred immediately to a segregated Zakah fund, treated distinct and separate from the institution, and not available to the institution even in liquidation or bankruptcy (Zakah fund).",
+    "Where the Zakah fund is invested or kept in a current (Qard) account not with the institution itself, per a Shari'ah-board-approved policy aligned with SS 35 paragraphs 2/2 and 10/4, the institution must disclose the amounts, returns earned, and reasons for any delayed Zakah payment (Zakah fund, fn5).",
+    "Standard is effective for financial periods beginning on or after 1 January 2023, with early adoption permitted (Effective date).",
+    "Standard supersedes FAS 9 \"Zakah\" (PR4; Amendments to other standards).",
+    "Appendix B(i)/(ii) illustrate Zakah valuation bases by asset class: cash/cash equivalents at realisable value; receivables at par value less allowance for credit losses; Mudaraba/Musharaka investments preferably at realisable value of net assets subject to Zakah; Salam and Istisna'a receivables at par value; real estate for rent/own use, non-adjustable payables, and provisions treated as N/A or Nil for Zakah purposes (Appendix B(i), B(ii)).",
+    "Appendix C illustrates sources and uses of the Zakah fund, listing the eight Zakah disbursement categories (poor, needy, heart-winning of non-Muslims, freeing of slaves, travellers, trustees of Zakah, heavily indebted, cause of Allah) plus administration and general expenses (Appendix C).",
+    "Creditors, including current account depositors, are not considered participatory stakeholders for purposes of this standard, so Zakah on their balances is out of scope (BC12).",
+    "FAS 9 \"Zakah\" provided two Zakah base determination methods (net assets and net invested funds), while SS 35 \"Zakah\" provides only the net assets method; the standard aligns illustrative disclosure requirements with the net assets method only, without disallowing the net invested funds method (BC13-BC14).",
+    "Standard was approved unanimously at the 26th AAOIFI Accounting Board meeting held 28-29 Rabi' II 1443H, corresponding to 3-4 December 2021, and issued 27 Jumada I 1443H, corresponding to 31 December 2021 (Appendix A; H16)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "\"certain members of the board were of the view that constitution documents are not considered equivalent to the law ... Zakah should be treated as an adjustment to equity\" — board voted and instead upheld expense treatment for Zakah due by virtue of constitution documents (BC5)",
+    "\"after considering public comments in favour of allowing the net invested funds method, the board decided not to specifically disallow the same method\" — reflects divergent industry/public views on the appropriate Zakah base method versus the board's net-assets-only illustration (BC14)"
+   ],
+   "verification_anchors": [
+    {
+     "quote": "Zakah is an important religious duty and one of",
+     "cite": "PR1"
+    },
+    {
+     "quote": "improves upon and supersedes AAOIFI Financial Accounting Standard (FAS) 9",
+     "cite": "IN1"
+    },
+    {
+     "quote": "does not prescribe the method for determining the Zakah base",
+     "cite": "Scope"
+    },
+    {
+     "quote": "the excess shall be recognised as advance Zakah in statement of financial position",
+     "cite": "Recognition of Zakah liability"
+    },
+    {
+     "quote": "shall be effective for the financial periods beginning on or after 1 January 2023",
+     "cite": "Effective date"
+    },
+    {
+     "quote": "the standard was issued on 27 Jumada I 1443H, corresponding to 31",
+     "cite": "H16"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-40",
+   "source_file": "a3952fbf-FAS40FinancialReportingforIslamicWindows.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Reporting for Islamic Finance Windows",
+   "issued_date": "2021-12-31",
+   "effective_date": "2024-01-01, for periods beginning on or after this date (para 12)",
+   "supersedes": [
+    {
+     "title": "FAS 18 \"Islamic Financial Services Offered by Conventional Financial Institutions\"",
+     "cite": "para 13"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting (Revised 2020)",
+    "FAS 1 (Revised 2021) General Presentation and Disclosures in the Financial Statements",
+    "FAS 12 General Presentation and Disclosures in the Financial Statements of Islamic Insurance Companies",
+    "FAS 14 Investment Funds",
+    "FAS 18 Islamic Financial Services Offered by Conventional Financial Institutions",
+    "FAS 34 Financial Reporting for Sukuk-holders",
+    "FAS 37 Financial Reporting by Waqf Institutions",
+    "FAS 39 Financial Reporting for Zakah",
+    "AAOIFI Governance Standards (GS)",
+    "GS 9 Shari'ah Compliance Function"
+   ],
+   "applicability": "Applies to all conventional financial institutions providing Islamic financial services through an Islamic finance window (including a virtual window), provided the institution opts to apply the standard in its entirety (para 2, see paras 5-7); excludes: (a) a conventional institution proclaiming Islamic services without dedicated Shari'ah compliant liabilities, quasi-equity and/or equity allocated against identified Shari'ah compliant assets (para 3(a)); (b) an institution merely managing Shari'ah compliant investment funds without constituting a window, which instead follows FAS 14 'Investment Funds' (para 3(b)); (c) an SPV or virtual Sukuk entity subject to FAS 34 'Financial Reporting for Sukuk-holders' (para 3(c)).",
+   "contract_slugs": [],
+   "term_names": [
+    "Islamic finance window",
+    "conventional financial institution",
+    "Shari'ah principles and rules",
+    "virtual reporting entity",
+    "virtual window",
+    "licensed window",
+    "fund transfer pricing",
+    "Shari'ah non-compliant transactions",
+    "Zakah",
+    "quasi-equity",
+    "summarised financial statements"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (p.3); Introduction - Overview (IN1-IN2), Rationale for issuing this standard (IN3-IN6), Significant changes from previous standard (IN7 a-i); Objective of the standard (para 1); Scope (paras 2-3); Definitions (para 4 a-c); Financial reporting requirements for Islamic finance windows - Financial reporting model for Islamic finance windows (paras 5-7), Selection and application of accounting policies (paras 8-9); Presentation and disclosures requirements (para 10 a-h); Presentation of summarised financial information (para 11 a-g); Effective date (para 12); Amendments to other standards (para 13); Appendix A: Adoption of the standard (board approval, working group, executive team); Appendix B: Basis for conclusions (defining an Islamic finance window and scope; financial reporting model; reclassifications on consolidation; governance structure); Appendix C: Brief history of the preparation of the standard (H1-H12).",
+   "key_points": [
+    "Standard establishes financial reporting requirements for Islamic financial services offered by conventional financial institutions through Islamic finance windows (para 1).",
+    "Applies to conventional financial institutions offering Islamic financial services through an Islamic finance window, only where the institution opts to apply the standard in its entirety (para 2).",
+    "Not applicable to a conventional institution proclaiming to offer Islamic services without dedicated Shari'ah compliant liabilities, quasi-equity and/or equity allocated against identified Shari'ah compliant assets (para 3(a)).",
+    "Not applicable where an institution merely manages Shari'ah compliant investment funds without constituting a window; such funds instead follow FAS 14 'Investment Funds' (para 3(b)).",
+    "Not applicable to a special purpose vehicle (SPV) or virtual Sukuk entity, which is subject to FAS 34 'Financial Reporting for Sukuk-holders' (para 3(c)).",
+    "'Conventional financial institution' is defined as an institution with no explicit statement, by license or constitution, to comply with Shari'ah principles and rules in entirety (para 4(a)).",
+    "'Islamic finance window' is defined as a reporting entity comprising Islamic financial services offered through stand-alone branches and/or divisions; may take the form of a licensed window or a virtual window (para 4(b)).",
+    "'Shari'ah principles and rules' defined via a five-level hierarchy: AAOIFI Shari'ah Standards; the jurisdiction regulator's Shari'ah regulations; rulings of the jurisdiction's central Shari'ah board; Shari'ah-related requirements of AAOIFI FASs; and approvals/rulings of the institution's own Shari'ah supervisory board (para 4(c) i-v).",
+    "A conventional financial institution with an Islamic finance window shall prepare a complete set of financial statements of the window in line with relevant AAOIFI FASs (para 5).",
+    "A summarised set of financial statements of the window may instead be presented, only on the explicit requirement of regulators, attached to the conventional institution's financial statements (para 6).",
+    "Institutions offering Islamic services without a separate branch/division must treat the group of similar Shari'ah compliant transactions and balances as a virtual Islamic finance window and apply this standard; in all cases accounting records of the window must be kept segregated from conventional operations (para 7).",
+    "Accounting policies for recognition, measurement and reporting shall be selected and applied separately from conventional operations, per the hierarchy in the AAOIFI Conceptual Framework for Financial Reporting (Revised 2020) (para 8).",
+    "Materiality for accounting policy selection is determined with reference to the window's quantitative data only and the qualitative characteristics of the Islamic financial services offered (para 9(a)-(b)).",
+    "Full financial statements must follow FAS 1 (Revised 2021) and other relevant AAOIFI FASs, and must disclose the applicable governance framework, the Shari'ah governance structure, and any deviation from the standard's Shari'ah principles hierarchy (para 10(a)).",
+    "Must disclose Shari'ah non-compliant transactions, including commingling of window funds/assets with conventional operations, their movement during the period, and how such non-compliance has been or will be resolved (para 10(b)).",
+    "Must disclose how deficits in capital, solvency and accumulated losses will be covered; the number of physical branches and other channels of the window; and significant risks faced including capital adequacy and solvency (para 10(c)-(e)).",
+    "Must disclose guarantees, undertakings, pledges, charges or other non-monetary support between the window and conventional operations, and receivables/payables/placements/investments with the conventional counterpart including returns and maturity profile; notional fund transfer pricing without a Shari'ah compliant transaction is eliminated from the financial statements (para 10(f)-(g)).",
+    "Must disclose expenses and costs shared between the window and conventional operations, nature of material items, and basis of allocation, e.g., a management agreement, service contract or cost sharing agreement (para 10(h)).",
+    "Summarised financial statements must include primary statements and selected notes with minimum disclosures, an explicit statement confirming the standard was followed in its entirety, and the window's legal and regulatory/licensing status (para 11(a)-(b)).",
+    "Summarised statements must disclose Shari'ah non-compliant income/expenses and their treatment; sources and application of charity funds per FAS 1 paras 60-62; significant accounting policies where different from the conventional institution's; related party transactions including Shari'ah supervisory board members; and Zakah applicable on quasi-equity per FAS 39 'Financial Reporting for Zakah' (para 11(c)-(g)).",
+    "Effective date: periods beginning on or after 01 January 2024; early adoption is permitted, subject to simultaneous adoption of FAS 1 (Revised 2021) (para 12).",
+    "This standard supersedes FAS 18 'Islamic Financial Services Offered by Conventional Financial Institutions' (para 13).",
+    "The standard was presented and unanimously approved at the 26th AAOIFI Accounting Board meeting held 28-29 Rabi' II 1443H, corresponding to 3-4 December 2021 (Appendix A).",
+    "The standard was issued on 27 Jumada I 1443H, corresponding to 31 December 2021, following review for Shari'ah conformity by the committee of the Shari'ah board on 24 Jumada I 1443H, corresponding to 28 December 2021 (H11-H12)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "establish financial reporting requirements for Islamic financial services offered",
+     "cite": "para 1"
+    },
+    {
+     "quote": "reporting entity comprising the Islamic financial services offered by",
+     "cite": "para 4"
+    },
+    {
+     "quote": "shall prepare a complete set of financial statements of",
+     "cite": "para 5"
+    },
+    {
+     "quote": "shall take into consideration the requirements prescribed in FAS 1",
+     "cite": "para 10"
+    },
+    {
+     "quote": "periods beginning on or after 01 January 2024",
+     "cite": "para 12"
+    },
+    {
+     "quote": "This standard supersedes FAS 18",
+     "cite": "para 13"
+    }
+   ]
+  },
+  {
+   "id": "AAB-FAS40-SCOPE",
+   "source_file": "18d13491-AABStatementFAS40FinancialReportingforIslamicFinanceWindowsScopeClarification.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Accounting Board (AAB) Statement 1/2026 — Financial Accounting Standard (FAS) 40 “Financial Reporting for Islamic Finance Windows”: Scope Clarification",
+   "issued_date": "2026-06-30",
+   "effective_date": "immediately upon issuance (Effective date section; fn 5)",
+   "supersedes": [],
+   "linked_standards": [
+    "AAOIFI Financial Accounting Standard (FAS) 40 \"Financial Reporting for Islamic Finance Windows\"",
+    "AAOIFI Governance Standard (GS) 23 \"Application of Shari'ah Governance Principles on Islamic Finance Windows\" (exposure draft stage)"
+   ],
+   "applicability": "Applies to conventional financial institutions (CFIs) that offer limited-scope Islamic financial services or execute certain Islamic finance transactions without an official Islamic finance window license or via a virtual window (a), and to CFIs initiating Shari'ah-compliant products/services on a small scale not exceeding 5% of total assets or net profit for a maximum of five years, in test-phase or normal business without public marketing (b); exclusion is conditional on management assessment, auditor and Shari'ah supervisory board concurrence, and RSA approval where applicable (fn 3).",
+   "contract_slugs": [],
+   "term_names": [
+    "Islamic finance window",
+    "virtual Islamic finance window",
+    "conventional financial institution (CFI)",
+    "Shari'ah-compliant",
+    "Shari'ah supervisory board",
+    "regulatory and supervisory authority (RSA)",
+    "investment advisory",
+    "Sukuk structuring",
+    "syndicated financing",
+    "test-phase",
+    "investment accounts",
+    "AAOIFI Governance and Ethics Board (AGEB)"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (context/footnotes 1-2 on related GS 23 exposure draft); Objective of the statement; Statement of scope clarification — exclusion (a) unlicensed/virtual Islamic finance windows with sub-scenarios (a)(i) structuring/advising Shari'ah-compliant transactions, (a)(ii) limited transactions to selected existing customers without public marketing, plus Explanation note; exclusion (b) small-scale initiation (≤5% assets/net profit, ≤5 years) with sub-scenarios (b)(i) test-phase, (b)(ii) normal course without public marketing of investment accounts; Effect of scope clarification on other standards; Effective date; Appendices — Appendix A: Adoption of the statement (Members of the board, Reservation, Executive team).",
+   "key_points": [
+    "Objective is to clarify and conditionally exclude certain Islamic finance windows from the scope of FAS 40 (Objective of the statement).",
+    "AAB decided that, notwithstanding the generality of the Islamic finance window definition in paragraph 4(b) of FAS 40, certain arrangements may not be considered an Islamic finance window in the specific context of the standard (a).",
+    "Exclusion (a): CFIs offering limited-scope Islamic financial services or executing certain Islamic finance transactions without an official Islamic finance window license, or creating a virtual Islamic finance window — though such practices are not legitimised, encouraged or endorsed by AAOIFI (a).",
+    "Scenario (a)(i): a CFI involved in structuring and advising Shari'ah-compliant transactions, e.g. investment advisory, Sukuk structuring and syndicated financing, including investing in a Shari'ah-compliant tranche of the same (a)(i).",
+    "Scenario (a)(ii): a CFI providing limited Shari'ah-compliant transactions to selected existing customer(s) without generally marketing or claiming to offer Shari'ah-compliant products and services (a)(ii).",
+    "Exclusion (b): CFIs initiating Shari'ah-compliant products and services on a small scale, i.e. not exceeding 5% of the total assets or net profit of the CFI, for a maximum period of five years (b).",
+    "Scenario (b)(i): the small-scale initiation is in a test-phase (b)(i).",
+    "Scenario (b)(ii): the small-scale initiation is in the normal course of business, provided there is no public marketing of such products and services, in particular investment accounts (b)(ii).",
+    "Explanation note: while exercising these scope exclusions, a CFI shall follow the minimum requirements of Shari'ah principles and rules (Explanation).",
+    "Exercise of the scope-exclusion option depends on the assessment of management and the concurrence of auditors and the Shari'ah supervisory board, plus approval of the relevant regulatory and supervisory authority (RSA) where applicable (fn 3).",
+    "Effect on other standards: the requirements of the relevant AAOIFI FASs shall be read in conjunction with the scope clarification provided in this statement (Effect of scope clarification on other standards).",
+    "The relevant FASs referenced are particularly FAS 40 and other relevant AAOIFI FASs (fn 4).",
+    "Effective date: this statement shall be effective immediately (Effective date).",
+    "The board approved the statement at its 46th meeting held 24 Dhul Hijjah 1447 AH, corresponding to 10 June 2026, and it was issued on 15 Muharram 1448 AH, corresponding to 30 June 2026 (fn 5).",
+    "Appendix A confirms the statement was presented for approval at AAB meeting No. 46 held 24 Dhul Hijjah 1447 AH, corresponding to 10 June 2026, and was duly approved (Appendix A).",
+    "Reservation: the statement was approved unanimously by the board (Reservation).",
+    "The proposed AAOIFI Governance Standard (GS) 23 \"Application of Shari'ah Governance Principles on Islamic Finance Windows\", at exposure draft stage, took a similar scoping approach for Islamic finance windows and received similar public-consultation feedback (fn 1).",
+    "A similar pragmatic approach was taken by the AAOIFI Governance and Ethics Board (AGEB) while finalising GS 23 (fn 2)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "clarify and conditionally exclude certain Islamic finance windows",
+     "cite": "Objective of the statement"
+    },
+    {
+     "quote": "notwithstanding the generality of the definition of Islamic finance windows",
+     "cite": "(a)"
+    },
+    {
+     "quote": "without generally marketing or claiming to offer Shari’ah-compliant products and services",
+     "cite": "(a)(ii)"
+    },
+    {
+     "quote": "not exceeding 5% of the total assets or net profit",
+     "cite": "(b)"
+    },
+    {
+     "quote": "shall be read in conjunction with the scope clarification",
+     "cite": "Effect of scope clarification on other standards"
+    },
+    {
+     "quote": "This statement shall be effective immediately",
+     "cite": "Effective date"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-41",
+   "source_file": "5b71cd73-FAS41InterimFinancialReportingv16finalforissuance_clean.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 41 \"Interim Financial Reporting\"",
+   "issued_date": "2022-12-22",
+   "effective_date": "01 January 2023 (para 15)",
+   "supersedes": [],
+   "linked_standards": [
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 12 \"General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies\"",
+    "FAS 27 \"Investment Accounts\"",
+    "FAS 31 \"Al Wakala Bi-Al Istithmar (Investment Agency)\"",
+    "FAS 34 \"Financial Reporting for Sukuk-holders\"",
+    "FAS 36 \"First Time Adoption of AAOIFI Financial Accounting Standards\"",
+    "FAS 37 \"Financial Reporting by Waqf Institutions\"",
+    "FAS 39 \"Financial Reporting for Zakah\"",
+    "FAS 42 \"Presentation and Disclosures in the Financial Statements of Takaful Institutions\"",
+    "AAOIFI Conceptual Framework for Financial Reporting (Revised 2020)"
+   ],
+   "applicability": "Applies to institutions that have adopted AAOIFI FASs and are required to prepare and publish interim financial reports according to applicable law, directions of the respective regulators and/or stock exchanges (para 2); also applies to institutions voluntarily electing to prepare and publish interim financial reports (para 3). No exclusions stated.",
+   "contract_slugs": [
+    "sukuk",
+    "takaful"
+   ],
+   "term_names": [
+    "Interim period",
+    "Interim financial report",
+    "Condensed interim financial statements",
+    "Quasi-equity",
+    "Investment accounts",
+    "Al-Wakala Bi Al-Istithmar",
+    "Off-balance-sheet assets under management",
+    "Shari'ah non-compliant income",
+    "Charity fund",
+    "Zakah fund",
+    "Ghallah",
+    "Participants' Takaful Fund (PTF)",
+    "Participants' Investment Fund (PIF)",
+    "Waqf equity"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR2); Introduction - Overview (IN1-IN4) and Rationale for issuing this standard (IN5-IN6); Objective of the standard (para 1); Scope (paras 2-3); Definitions (para 4); Principles for preparation of interim financial reports - Forms of interim financial reports (paras 5-7); Applicable requirements for all interim financial reports - Accounting policies (paras 8-9), Other significant considerations (para 10), First time adoption (para 11); Minimum components of a condensed interim financial report (paras 12-14); Effective date (para 15); Appendix A: Adoption of the standard (board members, unanimous approval, working group, executive team); Appendix B: Primary statements under various AAOIFI FASs (FAS 1, FAS 34, FAS 37, FAS 42); Appendix C: Basis for conclusions (Primary statements required for interim reporting; Interim financial reporting in case of first time adoption of AAOIFI FASs; Interim reporting for Zakah); Appendix D: Brief history of the preparation of the standard (H1-H11).",
+   "key_points": [
+    "Objective: sets out the principles for interim financial reporting for all institutions having adopted AAOIFI FAS, to be read with other AAOIFI FASs and generally accepted accounting principles applicable in relevant jurisdictions (para 1).",
+    "Scope: applies to institutions that have adopted AAOIFI FASs and are required to prepare and publish interim financial reports under applicable law, regulator directions and/or stock exchange requirements (para 2).",
+    "Scope: also applies to institutions voluntarily electing to prepare and publish interim financial reports (para 3).",
+    "Definition: 'Interim period' is a financial reporting period shorter than a full financial year (para 4a).",
+    "Definition: 'Interim financial report' is a report for an interim period containing either a complete set of interim financial statements per FAS 1, or a set of condensed interim financial statements per this standard (para 4b).",
+    "An institution shall take guidance from generally accepted accounting principles applicable in the relevant jurisdiction for preparing interim financial reports, unless this standard states a contrary requirement (para 5).",
+    "The institution has a choice to prepare interim reports as a complete set per paragraph 4(b)(i) or as condensed interim statements per paragraph 4(b)(ii) (para 6).",
+    "Where condensed interim financial reports (paragraph 4(b)(ii)) are chosen, they must be prepared in line with paragraphs 12-14 of this standard (para 7).",
+    "An institution shall apply the same accounting policies applied to the previous annual financial statements prepared according to FAS 1 (para 8).",
+    "Any change in accounting policy, including one resulting from adoption of a new AAOIFI FAS, follows the policy-selection hierarchy in FAS 1 (para 165, fn 1) and is applied in the same manner as for annual financial statements (para 40, fn 2) (para 9).",
+    "Other significant considerations for interim reports include: judgments in estimates; materiality (including qualitative materiality); impairment/credit losses; PP&E acquisition and disposal including commitments; litigation settlement or significant change in outcome; correction of prior period errors; changes in business/economic circumstances affecting fair value of assets/liabilities; related party transactions; and changes in contingent liabilities and assets (para 10, a-i).",
+    "An institution adopting AAOIFI FASs for the first time shall consider the requirements of FAS 36 'First Time Adoption of AAOIFI Financial Accounting Standards', including the flexibility in paragraph 22 of FAS 36 (para 11, fn 3).",
+    "A condensed interim financial report shall include, at minimum: the primary statements per relevant AAOIFI FASs (listed in Appendix B) and notes covering significant changes in accounting policies and other explanations/movements (para 12).",
+    "Condensed interim reports shall avoid repetition of previously reported information, providing updates on new significant transactions, events and circumstance changes only, but must include at minimum every heading and subtotal from the primary statements in the most recent annual financial statements (para 13).",
+    "Institutions shall specifically consider material disclosures on: quasi-equity/investment accounts (FAS 1, FAS 27, fn 4); Al-Wakala Bi Al-Istithmar (FAS 31, fn 5); off-balance-sheet assets under management including off-balance-sheet investment accounts (FAS 1, FAS 27, fn 6); profit distribution related to the above; Shari'ah non-compliant income (fn 7); charity fund (fn 8); new Shari'ah compliant products/services and related new accounting policies; and Zakah fund per FAS 39 (fn 9) (para 14, a-h).",
+    "Effective date: this standard is effective for financial statements of institutions beginning on or after 01 January 2023 (para 15).",
+    "Appendix B primary statements for Sukuk under FAS 34: for business Sukuk - statement of financial position (balance sheet) and income statement disclosing earnings per Sukuk unit; for non-business Sukuk - statement of net assets with NAV disclosure and statement of changes in net assets (Appendix B).",
+    "Appendix B primary statements for Takaful institutions under FAS 42: statement of financial position, statement of income and OCI, statement of changes in owners' equity, and statement of cash flows of the Takaful institution; plus statement of financial position and statement of financial activities of the managed Participants' Takaful Fund (PTF), separately for general and family operations, and statement of the managed Participants' Investment Fund (PIF) (Appendix B).",
+    "Until FAS 42 becomes effective, Takaful entities shall follow FAS 12 'General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies' (Appendix B, fn 10).",
+    "Basis for conclusions: the board decided the minimum set of primary financial statements stipulated in relevant AAOIFI FASs (fn 11) remains applicable to interim reporting, even for condensed statements, so institutions cannot omit statements reflecting the true business model of Islamic institutions by defaulting to generally accepted accounting principles (Appendix C, Primary statements required for interim reporting).",
+    "Basis for conclusions on first-time adoption: flexibility already provided in paragraph 22 of FAS 36 regarding effective date of transition, financial statements presentation and restatement of comparatives was considered appropriate, with a cross-reference created rather than new flexibility rules (Appendix C, Interim financial reporting in case of first time adoption of AAOIFI FASs).",
+    "Basis for conclusions on Zakah: since Zakah applicability is based on the lunar calendar and becomes due on a specific date, accrual of the Zakah liability over the interim period is not relevant; disclosure related to the Zakah fund is part of minimum interim disclosures, but detailed disclosures are left to management's judgment (Appendix C, Interim reporting for Zakah).",
+    "The standard was presented for approval at the 27th AAOIFI Accounting Board meeting held on 27 Sha'ban 1443H, corresponding to 30-31 March 2022, and was approved unanimously (Appendix A).",
+    "Prior to issuing this standard, AAOIFI had not issued a standard on interim financial reporting; institutions following AAOIFI FASs previously referred to generally accepted accounting principles for guidance (PR2)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "provide an update on the most recent complete set",
+     "cite": "PR1"
+    },
+    {
+     "quote": "sets out the principles for the interim financial reporting",
+     "cite": "para 1"
+    },
+    {
+     "quote": "shall apply the same accounting policies applicable to the previous annual financial statements",
+     "cite": "para 8"
+    },
+    {
+     "quote": "shall avoid repetition of information previously reported",
+     "cite": "para 13"
+    },
+    {
+     "quote": "shall be effective on the financial statements of the institutions beginning",
+     "cite": "para 15"
+    },
+    {
+     "quote": "the standard was issued on 28 Jumada’ I 1444H, corresponding to",
+     "cite": "H11"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-42",
+   "source_file": "288ad25e-FAS42PresentationandDisclosuresintheFinancialStatementsofTakafulInstitutionsfinalclean.txt",
+   "regulator": "AAOIFI",
+   "title": "Presentation and Disclosures in the Financial Statements of Takaful Institutions",
+   "issued_date": "2022-12-31",
+   "effective_date": "2025-01-01 (para 13)",
+   "supersedes": [
+    {
+     "title": "FAS 12 \"General Presentation and Disclosures in the Financial Statements of Islamic Insurance Companies\"",
+     "cite": "para 15"
+    }
+   ],
+   "linked_standards": [
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 43 \"Accounting for Takaful: Recognition and Measurement\"",
+    "FAS 40 \"Financial Reporting for Islamic Finance Windows\"",
+    "FAS 41 \"Interim Financial Reporting\"",
+    "FAS 33 \"Investments in Sukuk, Shares and Similar Instruments\"",
+    "FAS 27 \"Investment Accounts\"",
+    "FAS 39 \"Financial Reporting for Zakah\"",
+    "FAS 31 \"Investment Agency (Al-Wakala Bi Al-Istithmar)\"",
+    "FAS 12 \"General Presentation and Disclosures in the Financial Statements of Islamic Insurance Companies\" (superseded)",
+    "FAS 13 \"Disclosure of Bases for Determining and Allocating Surplus or Deficit in Islamic Insurance Companies\"",
+    "FAS 15 \"Provisions and Reserves in Islamic Insurance Companies\"",
+    "FAS 19 \"Contributions in Islamic Insurance Companies\"",
+    "SS 26 \"Islamic Insurance\"",
+    "SS 41 \"Islamic Reinsurance\"",
+    "AAOIFI Conceptual Framework for Financial Reporting"
+   ],
+   "applicability": "Applies to all Takaful institutions regardless of legal form or size, including Takaful window operations (para 2); applies to both consolidated and stand-alone/separate financial statements (para 3); does not apply to the structure/contents of condensed or summarised interim financial reports (para 4); to be read together with FAS 1 Part 1 general requirements, with this standard's provisions prevailing in case of conflict between the two (para 5).",
+   "contract_slugs": [
+    "mudarabah",
+    "wakala",
+    "qard",
+    "takaful"
+   ],
+   "term_names": [
+    "Takaful",
+    "Takaful institution",
+    "Takaful operator",
+    "Participants' Takaful fund (PTF)",
+    "Participants' investment fund (PIF)",
+    "Qard Hasan",
+    "Re-Takaful",
+    "Wakala",
+    "Al-Wakala Bi Al-Istithmar",
+    "Mudaraba",
+    "Tabarru",
+    "Waqf",
+    "Quasi-equity",
+    "Owners' equity",
+    "Zakah",
+    "Hiba",
+    "Takaful residual margin (TRM)",
+    "Risk adjustment",
+    "Profit equalisation reserve (PER)",
+    "Investment risk reserve (IRR)",
+    "Co-Takaful",
+    "Takaful window",
+    "Shari'ah supervisory board (SSB)",
+    "Shari'ah non-compliant income",
+    "Contractual service margin (CSM)",
+    "Fulfilment cash flow",
+    "Reinsurance"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR4); Introduction: Overview, Rationale for issuing this standard, Significant changes from the previous standard (IN1-IN6); Objective of the standard (para 1); Scope (paras 2-5); Definitions (para 6, items a-i); Structure of Takaful (para 7); Presentation and disclosures in the financial statements: Complete set of financial statements (para 8), Presentation and disclosures in financial statements (paras 9-11), Accounting policies and estimates (para 12); Effective date (para 13); Transitional provisions (para 14); Amendments to other standards (para 15); Appendix A: Adoption of the standard - Members of the board, Reservation, Working group members, Executive team; Appendix B: Minimum components of the financial statements of a Takaful institution - Application and scope (B1-B2), General (B3-B10), Statement of financial position of the Takaful institution: Assets (B11-B12), Liabilities (B13), Quasi-equity (B14), Owners' equity (B15-B16), Statement of income and other comprehensive income of the Takaful institution (B17-B18), Statement of changes in owners' equity of the Takaful institution (B19), Statement of cash flows of the Takaful institution (B20-B22), Statement of financial position of the managed PTF: General considerations (B23), Assets (B24), Liabilities (B25-B26), Net assets of PTF (B27), Statement of financial activities of the managed PTF (B28-B33), Statement of managed PIF (B34-B40); Appendix C: Basis for conclusions (BC1-BC17); Appendix D: Brief history of the preparation of the standard (H1-H20).",
+   "key_points": [
+    "This standard applies to all Takaful institutions regardless of their legal form or size, including Takaful window operations (para 2).",
+    "This standard applies to Takaful institutions when presenting consolidated financial statements and stand-alone or separate financial statements (para 3).",
+    "This standard does not apply to the structure and contents of condensed or summarised financial reports prepared for interim financial reporting (para 4).",
+    "This standard is read in conjunction with FAS 1 \"Part 1: Applicable on all institutions\"; in case of conflict, the provisions of this standard shall apply (para 5).",
+    "Owners' equity is defined as the residual interest in the assets after deducting all liabilities and quasi-equity, representing only the equity related to the Takaful operator/shareholders (para 6(a)).",
+    "PIF (participants'/policyholders' investment fund) is the fund managed by the Takaful institution on behalf of participants collectively to make investments and earn returns, based on Mudaraba or Al-Wakala Bi Al-Istithmar (para 6(b)).",
+    "PTF (participants'/policyholders' Takaful fund) is the fund created by/on behalf of participants to share risk, entitled to contributions and returns subject to expenses, provisions, reserves and the resultant surplus or deficit (para 6(c)).",
+    "Qard Hasan is defined as an interest-free loan; in this standard's specific context it refers to the interest-free loan extended by the Takaful operator to the PTF to temporarily finance a funding deficit in the PTF (para 6(d)).",
+    "Re-Takaful is the arrangement among Takaful institutions to devise a mechanism to avoid part of the risks their PTFs may encounter, formed via contributions from PTFs on the basis of Tabarru; the term may, in dire need and subject to Shari'ah principles, include \"conventional\" reinsurance with adequate disclosure (para 6(f)).",
+    "Takaful is defined (adapted from SS 26) as an arrangement among participants to handle losses via donation-based contributions, establishing a Takaful fund with independent legal/financial status managed for an agreed fee (para 6(g)).",
+    "A Takaful institution is licensed to practise Takaful business, operates under a remunerated Wakala (agency) contract, and also invests fund assets via Mudaraba or investment agency (para 6(h)).",
+    "The Takaful operator represents the residual, shareholder-owned part of the Takaful institution, excluding the PTF and PIF (para 6(i)).",
+    "A complete set of financial statements of a Takaful institution comprises eight components: statement of financial position, statement of income and OCI, statement of changes in owners' equity, statement of cash flows, statement of financial position of the managed PTF (separately for general and family Takaful), statement of financial activities of the managed PTF (separately for general and family Takaful), statement of managed PIF, and notes (para 8(a)-(h)).",
+    "Assets, liabilities, owners' equity, income and expenses of the Takaful operator shall be presented separately from those of the managed PTF or managed PIF (para 10).",
+    "The standard is effective for annual financial statements of Takaful institutions beginning on or after 01 January 2025, with early adoption permitted only if adopted alongside FAS 43 and provided FAS 1 has been (or is simultaneously) adopted (para 13).",
+    "This standard supersedes the earlier FAS 12 \"General Presentation and Disclosures in the Financial Statements of Islamic Insurance Companies\" (para 15).",
+    "Minimum PTF liabilities include provision for Takaful arrangements, distinguishing the remaining-coverage entitlement (including loss component) from the liability for incurred claims for benefits (para B25(a)).",
+    "Minimum PTF assets include the Takaful arrangements asset (negative balance of provision for Takaful arrangements), contributions receivable net of impairment allowance, and re-Takaful arrangements asset (para B24).",
+    "In the statement of financial activities of the managed PTF, Takaful gross margin is calculated as recognised contributions less recognised Takaful costs less re-Takaful net result (para B28(d)).",
+    "Net investment returns of the managed PTF equal income from investments less impairment expense less amortisation of deferred cost plus amortisation of deferred profit (para B28(i)).",
+    "The movement in the profit equalisation reserve (PER) and the investment risk reserve (IRR), if any, shall be disclosed (para B30).",
+    "The statement of managed PIF must disclose the operator's share in investment profits as Mudarib or its fee as investment agent, including fixed fee, variable fee, and performance incentives (para B35(e)).",
+    "Where the managed PIF is based on unrestricted Mudaraba with a right/practice of commingling with the operator's own funds, a rebuttable presumption applies that the funds are under the Takaful operator's control and shall be presented on-balance-sheet as quasi-equity rather than as an off-balance-sheet managed fund (para B39).",
+    "Extent of Shari'ah non-compliant re-insurance arrangements must be disclosed, including a summary of arrangements, justification, and Shari'ah supervisory board (SSB) approval, along with any replacement plans; Shari'ah non-compliant income and related charity fund movements are also to be disclosed (paras B32-B33, B40)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "Board noted only the Wakala model and Wakala-Waqf model of Takaful are accepted by AAOIFI Shari'ah Standards, stating \"the Mudaraba model and cooperative model are not acceptable\" (para BC9)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "This revised AAOIFI FAS supersedes the existing FAS 12",
+     "cite": "PR4"
+    },
+    {
+     "quote": "applies to all Takaful institutions regardless of their legal form or size",
+     "cite": "para 2"
+    },
+    {
+     "quote": "leads to the establishment of a Takaful fund that enjoys the status of a legal entity",
+     "cite": "para 6(g)"
+    },
+    {
+     "quote": "effective on the annual financial statements of the Takaful institutions beginning on",
+     "cite": "para 13"
+    },
+    {
+     "quote": "duly disclosing the fund balance (including seed money / Waqf corpus",
+     "cite": "B27"
+    },
+    {
+     "quote": "decided to develop the standard on the Wakala model and Wakala-Waqf model",
+     "cite": "BC9"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-43",
+   "source_file": "ac8a9e25-FAS43AccountingforTakafulRecognitionandMeasurement_Final_clean.txt",
+   "regulator": "AAOIFI",
+   "title": "Accounting for Takaful: Recognition and Measurement",
+   "issued_date": "2022-12-31",
+   "effective_date": "2025-01-01 (para 134)",
+   "supersedes": [
+    {
+     "title": "FAS 13 \"Disclosure of Bases for Determining and Allocation Surplus or Deficit in Islamic Insurance Companies\"",
+     "cite": "paras IN4(a), 136(a)"
+    },
+    {
+     "title": "FAS 15 \"Provisions and Reserves in Islamic Insurance Companies\"",
+     "cite": "paras IN4(b), 136(b)"
+    },
+    {
+     "title": "FAS 19 \"Contributions in Islamic Insurance Companies\"",
+     "cite": "paras IN4(c), 136(c)"
+    }
+   ],
+   "linked_standards": [
+    "FAS 42 \"Presentation and Disclosures in the Financial Statements of Takaful Institutions\"",
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 40 \"Financial Reporting for Islamic Finance Windows\"",
+    "FAS 21 \"Disclosure on Transfer of Assets\"",
+    "FAS 35 \"Risk Reserves\"",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "FAS 31 \"Investment Agency (Al-Wakala Bi Al-Istithmar)\"",
+    "FAS 13 \"Disclosure of Bases for Determining and Allocation Surplus or Deficit in Islamic Insurance Companies\" (superseded)",
+    "FAS 15 \"Provisions and Reserves in Islamic Insurance Companies\" (superseded)",
+    "FAS 19 \"Contributions in Islamic Insurance Companies\" (superseded)",
+    "SS 26 \"Islamic Insurance\"",
+    "SS 41 \"Islamic Reinsurance\"",
+    "AAOIFI Conceptual Framework for Financial Reporting"
+   ],
+   "applicability": "Applies to Takaful institutions (including in their capacity as Takaful operators) and their managed PTF and PIF in respect of Takaful arrangements (including re-Takaful arrangements issued), re-Takaful arrangements held, investment contracts issued alongside Takaful arrangements, and ancillary transactions related to Takaful operations (para 2); a Takaful institution shall not apply this standard to guarantee contracts unless the issuer has specified them to be in the nature of Takaful arrangements, or to arrangements where the Takaful institution itself is the participant/policyholder unless those arrangements are re-Takaful in nature (para 3); to be read in conjunction with FAS 42 (para 1).",
+   "contract_slugs": [
+    "takaful",
+    "wakala",
+    "mudarabah",
+    "qard",
+    "hibah"
+   ],
+   "term_names": [
+    "Benefit",
+    "Contribution",
+    "Entitlement for benefits",
+    "Entitlement period",
+    "Fair value of future cash flows",
+    "Financial risk",
+    "Liability for incurred claims for benefits",
+    "Onerous arrangement",
+    "Participants' investment fund (PIF)",
+    "Participants' Takaful fund (PTF)",
+    "Provision for remaining entitlement period",
+    "Qard [Qard Hasan]",
+    "Reinsurance",
+    "Re-Takaful",
+    "Risk adjustment for non-financial risk",
+    "Takaful",
+    "Takaful acquisition cash flows",
+    "Takaful acquisition service costs",
+    "Takaful arrangement",
+    "Takaful fulfilment cash flows",
+    "Takaful institution",
+    "Takaful operator",
+    "Takaful residual margin (TRM)",
+    "Wakala (agency)",
+    "Wakala fee (agent's remuneration)",
+    "Mudarib's share",
+    "Hiba",
+    "Contribution allocation approach",
+    "General approach",
+    "Variable fee approach (VFA)",
+    "Loss component",
+    "Deferred cost",
+    "Risk reserves",
+    "Takaful window operation",
+    "Waqf corpus"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR4); Introduction: Overview, Rationale for issuing this standard, Significant changes from the previous standard, incl. statement this standard supersedes FAS 13/15/19 (IN1-IN6); Objective of the standard (para 1); Scope (paras 2-3); Definitions (para 4, items a-y); Part A: Structure of Takaful - Takaful operator, PTF, PIF (paras 5-16); Part B: Accounting for Takaful arrangements under general/variable fee approach - combining/separating components (paras 17-20), level of aggregation and subdivision of groups (paras 21-28), initial recognition and measurement incl. TRM and onerous arrangements (paras 29-42), subsequent measurement of provision, TRM and onerous arrangements (paras 43-58), derecognition (para 59), presentation in statement of financial activities of managed PTF (paras 60-63); Part C: Accounting for Takaful arrangements under contribution allocation approach - application criteria (paras 64-66), initial recognition (paras 67-70), subsequent measurement (paras 71-72), onerous arrangements (paras 73-74); Part D: Accounting for re-Takaful arrangements held by the PTF - general approach, initial recognition, subsequent measurement (paras 75-88), contribution allocation approach for re-Takaful held (paras 89-90); Part E: Accounting for the Takaful operator and significant business-model issues - separation of accounting records (para 91), initial seed money/Hiba (paras 92-94, 117-121), transfer of assets between funds (paras 95-97), surplus/deficit determination and distribution, risk reserves in PTF and PIF (paras 98-108), Qard Hasan in books of PTF and operator (paras 109-116), Wakala fee recognition, Takaful acquisition service cost, Mudarib's share, allocation charges (paras 122-132), taxation for PTF/PIF (para 133); Effective date (para 134); Transitional provisions (para 135); Amendments to other standards - supersession of FAS 13/15/19 (para 136); Appendix A: Adoption of the standard; Appendix B: Basis for conclusions (applicability to different Takaful models, terminology mapping table, discounting, acquisition costs, surplus/TRM, grouping, boundary, seed money, Qard Hasan, Wakala fee, taxation); Appendix C: Brief history of the preparation of the standard (H1-H17).",
+   "key_points": [
+    "This standard supersedes FAS 13 \"Disclosure of Bases for Determining and Allocation Surplus or Deficit in Islamic Insurance Companies\", FAS 15 \"Provisions and Reserves in Islamic Insurance Companies\", and FAS 19 \"Contributions in Islamic Insurance Companies\" (paras IN4, 136).",
+    "Scope: applies to Takaful institutions (as Takaful operators) and their managed PTF/PIF for Takaful arrangements including re-Takaful issued, re-Takaful held, investment contracts issued with Takaful arrangements, and ancillary transactions; excludes guarantee contracts (unless specified as Takaful) and arrangements where the Takaful institution is itself participant/policyholder unless re-Takaful in nature (paras 2-3).",
+    "PTF (participants' Takaful fund) is the fund created by/on behalf of participants to share risk, entitled to contributions and returns subject to direct expenses, provisions and reserves, and the resultant surplus or deficit (para 4(j)).",
+    "PIF (participants' investment fund) is the fund managed by the Takaful institution on behalf of participants collectively to make investments and earn returns, based on Mudaraba or Al-Wakala Bi Al-Istithmar (para 4(i)).",
+    "Takaful residual margin (TRM) is the component of the carrying amount representing unearned surplus, or at times unrecognised net cost (re-Takaful held only), recognised as the PTF provides benefits under the Takaful arrangement (para 4(w)).",
+    "Onerous arrangement is defined as a Takaful arrangement where the unavoidable costs of meeting the obligations exceed the economic benefits expected to be received (para 4(h)).",
+    "Qard [Qard Hasan] in this standard's context refers to the interest-free loan extended by the Takaful operator to the PTF to temporarily finance the funding deficit in the PTF (para 4(l)).",
+    "The Takaful operator manages Takaful operations under a remunerated Wakala contract, acting in a fiduciary agent capacity, does not assume underwriting risks/rewards, is not entitled to PTF surplus, and is not obliged to absorb a PTF loss but may be obligated to temporarily support the PTF via Qard Hasan (paras 6-8).",
+    "The Takaful operator, PTF and PIF are distinct reporting entities, although the PTF and/or PIF are, in most cases, virtual entities (para 9).",
+    "Under the general approach, a Takaful institution recognises a Takaful arrangement at the earlier of the date a participant becomes a PTF member or the date the arrangement becomes onerous (para 29).",
+    "At initial recognition, the provision for a Takaful arrangement is measured as the total of Takaful fulfilment cash flows (gross future cash flows, deferred cost, risk adjustment for non-financial risk) plus the Takaful residual margin (para 30).",
+    "The Takaful residual margin is measured as the difference between the initially recognised Takaful fulfilment cash flows, any cash flows arising at that date, and the derecognition of any previously recognised Takaful acquisition cash flow asset/liability (para 38).",
+    "An arrangement is onerous at initial recognition if the Takaful fulfilment cash flows, previously recognised acquisition cash flows and cash flows arising at that date are, in total, a net outflow; a loss is recognised and the Takaful residual margin is set to zero (paras 39-40).",
+    "The simplified contribution allocation approach may be used if the entitlement period of each Takaful arrangement is one year or less, or if it would not produce a materially different measurement than the general approach; acquisition cash flows may be expensed if the entitlement period at initial recognition is not more than one year (paras 64, 69(a)).",
+    "Re-Takaful arrangements held are accounted for by applying Part B with references to \"onerous\" replaced by \"net gain on initial recognition\"; a re-Takaful arrangement held cannot itself be onerous (paras 75, 88).",
+    "Initial seed money paid by the Takaful operator to set up the PTF is in the nature of Hiba (gift): the operator recognises it as an expense and the PTF recognises it as PTF equity (Waqf corpus if the PTF is Waqf-based) (paras 92-94).",
+    "Takaful surplus or deficit is determined as the net surplus/deficit in the statement of financial activities of the managed PTF after due transfers to/from technical reserves; accumulated deficits and at least five-year surplus projections to compensate for them must be disclosed (paras 98, 101).",
+    "Risk reserves may be created in the PTF out of determined Takaful surplus to manage investment risk or surplus/deficit volatility, with adequate levels determined per FAS 35 \"Risk Reserves\" paragraphs 15-16 (paras 102-104).",
+    "The PTF recognises Qard Hasan received from the Takaful operator as a liability at par value; the Takaful operator recognises the corresponding receivable at par value, subject to periodic expected-credit-loss testing under the relevant AAOIFI FAS (footnote 10: FAS 30) (paras 110, 113, 115).",
+    "Wakala fee revenue is recognised commensurate with service delivery: immediately for services already delivered, over time for services delivered over the entitlement period, and as a provision (deduction) for probable refunds on cancelled/discontinued arrangements (para 123).",
+    "The Takaful operator recognises the Mudarib's share from PTF/PIF investment profits, and fixed/variable/performance-incentive Wakala fee, as revenue, with corresponding costs recognised by the PTF and PIF at the same time (paras 126-129).",
+    "Tax benefits or expenses (including deferred tax) pertaining to the PTF and/or PIF shall be passed on to the respective fund unless the fund is exempt from income taxes (para 133).",
+    "This standard is effective for annual financial reporting periods of the Takaful institution beginning on or after 01 January 2025, with early adoption permitted only if adopted alongside FAS 42 (para 134).",
+    "At first-time adoption, a Takaful institution shall follow one of: a full retrospective approach, a modified retrospective approach, or a fair value approach (para 135)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "Board decided to develop the standard on the Wakala model, noting the Wakala-Waqf model \"is only a variant of the same model and hence is considered to be in compliance with the AAOIFI SSs\", whereas \"the Mudaraba model and the cooperative model are not considered in accordance with the AAOIFI SSs and hence are not included in this standard\" (Appendix B, Applicability to different Takaful models).",
+    "The term re-Takaful \"may include 'conventional' reinsurance in line with the prevailing practices of the Takaful institution in case of dire need (subject to Shari'ah principles and rules) with adequate disclosures\" (para 4(n))."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "This standard supersedes the following FASs",
+     "cite": "IN4"
+    },
+    {
+     "quote": "This standard shall apply to the Takaful institutions",
+     "cite": "para 2"
+    },
+    {
+     "quote": "The Takaful residual margin shall be measured as the difference",
+     "cite": "para 38"
+    },
+    {
+     "quote": "A Takaful arrangement is onerous at the date of initial recognition",
+     "cite": "para 39"
+    },
+    {
+     "quote": "effective on the financial statements of the Takaful institution",
+     "cite": "para 134"
+    },
+    {
+     "quote": "This standard supersedes the following standards",
+     "cite": "para 136"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-44",
+   "source_file": "28cf08fd-FAS44_DeterminingControlofAssetsandBusinessFinal.txt",
+   "regulator": "AAOIFI",
+   "title": "Determining Control of Assets and Business",
+   "issued_date": "2023-12-31",
+   "effective_date": "Effective immediately (para 27)",
+   "supersedes": [],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "FAS 23 \"Consolidation\"",
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 29 \"Sukuk in the Books of the Originator\"",
+    "FAS 31 \"Investment Agency (Al Wakala Bi Al-Istithmar)\"",
+    "FAS 37 \"Financial Reporting by Waqf Institutions\"",
+    "FAS 38 \"Wa'ad, Khiyar and Tahawwut\""
+   ],
+   "applicability": "Applies to all institutions preparing financial statements per AAOIFI Financial Accounting Standards (para 2); also applies to entities being party to Shari'ah compliant transactions and structures, even if not included in the definition of an institution, insofar as allowed by the respective regulatory and reporting framework (para 3).",
+   "contract_slugs": [
+    "mudarabah",
+    "musharakah",
+    "wakala",
+    "sukuk"
+   ],
+   "term_names": [
+    "Control",
+    "Participatory structure",
+    "Quasi-equity",
+    "De facto power",
+    "Variable returns",
+    "Substantive voting rights",
+    "Agency (investment agency)",
+    "Al-Wakala Bi Al-Istithmar",
+    "Mudarib / working partner",
+    "URIA (unrestricted investment accounts)",
+    "RIA (restricted investment accounts)",
+    "PV (participatory ventures)",
+    "Musharaka (Shirkat-ul-Aqd)",
+    "Tabarru",
+    "Hiba",
+    "Ghallah",
+    "Waqf",
+    "Purchase undertaking",
+    "Continuing involvement",
+    "Non-controlling interests"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Introduction: Overview (IN1-IN2), Rationale for issuing this standard (IN3-IN4). Objective of the standard (para 1). Scope (paras 2-3). Definitions (para 4). Control of assets and business (para 5). Control of assets (paras 6-10): Obtaining control of an asset (para 7), Losing control of an asset (paras 8-9). Control of business (paras 11-16): De facto power (para 17). Control of assets and business underlying a participatory structure: Agency concept (paras 18-20, incl. Table 1: Examples of applying principles that establish control for various participatory and agency structures, p.10), Variable returns (paras 21-22), Additional considerations for agency, restricted Mudaraba and similar structures (paras 23-25). Special considerations for Sukuk (para 26). Effective date (para 27). Amendments to other standards (para 28). Appendix A: Adoption of the standard (board approval, members, reservation, working group, executive team). Appendix B: Basis for conclusions (BC1-BC14): Definition of control in FAS 23 (BC1-BC3), Definition of business (BC4), Control by a working partner in URIA/unrestricted Mudaraba without right of commingling funds (BC5-BC7), Waqf (BC8-BC10), Consideration of amendments to other standards (BC11-BC14). Appendix C: Brief history of the preparation of the standard (H1-H12).",
+   "key_points": [
+    "Control of an asset or business exists when an institution has substantially all risks and rewards incidental to ownership, meeting two conditions: exposure/rights to variable returns and the ability to affect those returns through power (para 5).",
+    "Participatory structure is defined as a contractual investment arrangement where investors share/take profit, bear risk of loss, and hold a residual interest in the underlying assets or business (para 4b).",
+    "Quasi-equity is defined as an element of the financial statements representing participatory contributions received by an institution on a profit-sharing or participation basis (para 4c).",
+    "An asset is controlled when the institution has the present ability to direct the use of the asset and obtain economic benefits, or can prevent other parties from using it and obtaining benefits (para 6).",
+    "Control of an asset is generally obtained when the asset is acquired via consummation of a contract, the contract becomes legally binding on both parties, and the consideration (if any) is paid or becomes payable (para 7).",
+    "Control of an asset may be lost when it is sold to a counterparty; given as a gift or other form of Tabarru (e.g., waiver of rights/receivable or Hiba in sharing of profit); lost, destroyed or distributed; or ceases to provide economic benefits (e.g., technological obsolescence or legal restrictions) (para 8).",
+    "An institution originating Sukuk must determine the extent of its control over the underlying assets depending on the structure and contract governing the relationship of the Sukuk-holders, the SPV, and the institution (para 10).",
+    "Control of a business for consolidation purposes requires all three conditions: power over the business; exposure/rights to variable returns from involvement with it; and the ability to use that power to affect the amount of returns (para 11).",
+    "A rebuttable presumption of power over a business exists when the institution directly or indirectly holds more than 50% of the voting rights, or has the rights to direct the business's relevant activities (para 12).",
+    "Control may exist without majority voting rights through agreement with other shareholders or the business itself, other contractual arrangements, de facto power, potential voting rights, or a combination of these (para 13).",
+    "Only substantive voting rights are considered in assessing power: rights must be exercisable when relevant decisions are required and the holder must have the practical ability to exercise them, including current substantive and currently exercisable voting rights (para 14).",
+    "Assessment of control considers voting and other rights from investment funded by the institution itself (owners' equity and liabilities) and by quasi-equity (para 15).",
+    "Any component of a business funded by off-balance-sheet assets under management, including restricted investment accounts, is classified as non-controlling interests (para 16).",
+    "De facto power (and de facto control, if the variable returns condition is met) may exist outside paragraph 13's conditions, e.g., due to widely dispersed or significant dormant shareholding patterns, or significant voting rights held under off-balance-sheet asset management (para 17).",
+    "Control excludes situations where the institution has power over a business exercisable only in a fiduciary capacity that does not translate into variable returns for the institution itself (para 18).",
+    "Where an institution manages funds on an unrestricted Mudaraba/Musharaka basis and commingles (or has an ongoing right to commingle) them with its own funds as quasi-equity, the institution as Mudarib/working partner has both power and exposure to variable returns, and therefore controls the business or its underlying assets (para 19).",
+    "A partnership (Musharaka or Mudaraba based) generally creates joint control, whereas a principal-agent relationship (Wakala or service Ijarah) generally does not, unless other evidence of control exists from a different perspective (para 20).",
+    "Performance incentives receivable by an agent are fiduciary in nature and are not considered variable returns; the contractual/constructive right to variable returns does not give the agent control because the return is not fully variable (no loss exposure) and power is exercised on behalf of the principal (paras 21-22).",
+    "Table 1 sets out control determinations across six participatory/agency structures: URIA/PV with working-partner commingling rights (all Musharaka forms, incl. commingled accrued profits) show absolute decision-making power, profit-and-loss variable returns, and working-partner control = Yes; URIA/PV without commingling rights shows control 'based on judgment (No, as default)'; RIA/restricted Mudaraba and Al-Wakala Bi Al-Istithmar show decision-making 'as per specific guidance only' or 'in fiduciary capacity only', fee-only variable returns, and working-partner control = No (Table 1, p.10; para 20 footnote 3).",
+    "Purchase undertakings are not contracts but future commitments independent of the base contract; making one a condition of the base contract is tantamount to Shari'ah non-compliance; if execution is expected to result in a loss to the agent, a provision against the expected loss must be created (para 25a).",
+    "A Shari'ah-permissible guarantee provided in the capacity of, or by, a third party, independent of the sale/transfer contract and executed after consummation of sale (and not made a condition thereto), does not affect recognition of the sale; a provision is made to the extent of the best estimate of guaranteed losses, per FAS 38 'Wa'ad, Khiyar and Tahawwut' (para 25b, fn 5).",
+    "Management or agency arrangements executed separately from the sale/transfer contract, entailing a principal-agent relationship, do not constitute continuing involvement or control over the underlying assets, since the variable economic benefits remain vested with the principal even though the power to control exists (para 25c).",
+    "Where a Sukuk was assessed as off-balance-sheet due to lack of institutional control, it continues to be treated as off-balance-sheet for the consolidation process (para 26).",
+    "The standard is effective immediately (para 27) and takes precedence over other AAOIFI FASs with regard to the principles of control of assets and/or business specifically described herein (para 28)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV01",
+     "topic": "kafalah/guarantee fee",
+     "position": "AAOIFI: A Shari'ah-permissible guarantee provided in the capacity of, or by, a third party -- independent of the sale/transfer contract, executed after consummation of the sale, and not made a condition of it -- does not affect the recording/recognition of the sale or transfer of assets; a provision is made to the extent of the best estimate of the amount of losses guaranteed, per FAS 38 'Wa'ad, Khiyar and Tahawwut' (para 25b, fn 5).",
+     "clauses": [
+      "para 25b",
+      "fn 5"
+     ],
+     "tag": "verified"
+    },
+    {
+     "topic_id": "DV07",
+     "topic": "binding promise/wa'd",
+     "position": "AAOIFI: A purchase undertaking is not a contract but a future commitment independent of the base contract; if it becomes part of and a condition to the base contract, this is tantamount to Shari'ah non-compliance. If it is expected that executing the undertaking will result in a loss to the agent, a provision against the expected loss shall be created (para 25a).",
+     "clauses": [
+      "para 25a"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "it is directly exposed to, and has rights to, variable returns",
+     "cite": "para 5"
+    },
+    {
+     "quote": "Control does not include situations whereby the institution has the power",
+     "cite": "para 18"
+    },
+    {
+     "quote": "performance incentives receivable by an agent are in a fiduciary capacity",
+     "cite": "para 21"
+    },
+    {
+     "quote": "generally creates a joint control whereas a principal-agent relationship",
+     "cite": "para 20"
+    },
+    {
+     "quote": "This standard shall be effective immediately",
+     "cite": "para 27"
+    },
+    {
+     "quote": "shall take precedence over other AAOIFI FASs with regard to the principles",
+     "cite": "para 28"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-45",
+   "source_file": "af3612b4-FAS45_QuasiequityIncludingInvestmentAccountsFinal.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 45 \"Quasi-Equity (Including Investment Accounts)\"",
+   "issued_date": "2023-12-31",
+   "effective_date": "Financial reporting periods beginning on or after 1 January 2026; early adoption encouraged (para 53)",
+   "supersedes": [
+    {
+     "title": "FAS 27 \"Investment Accounts\" (superseded jointly by this standard together with FAS 46 \"Off-Balance-Sheet Assets Under Management\")",
+     "cite": "para 54"
+    },
+    {
+     "title": "TR 01/2020 \"Implementation guidance for AAOIFI FAS 31 'Investment Agency (Al-Wakala Bi Al-Istithmar)'\" — stands withdrawn as its guidance was incorporated into this standard",
+     "cite": "BC14"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 14 \"Investment Funds\"",
+    "FAS 28 \"Murabaha and Other Deferred Payment Sales\"",
+    "FAS 29 \"Sukuk in the Books for the Originator\" ([Revised ED])",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "FAS 31 \"Investment Agency (Al-Wakala Bi Al-Istithmar)\"",
+    "FAS 32 \"Ijarah\"",
+    "FAS 35 \"Risk Reserves\"",
+    "FAS 42 \"Presentation and Disclosures in the Financial Statements of Takaful Institutions\"",
+    "FAS 44 \"Determining Control of Assets and Business\"",
+    "FAS 46 \"Off-Balance-Sheet Assets Under Management\"",
+    "FAS 47 \"Transfer of Assets Between Investment Pools\"",
+    "SS 46 \"Al-Wakalah Bi Al-Istithmar (Investment Agency)\"",
+    "TR 01/2020 \"Implementation guidance for AAOIFI FAS 31 'Investment Agency (Al-Wakala Bi Al-Istithmar)'\""
+   ],
+   "applicability": "Applies to institutions (IFIs) issuing quasi-equity instruments, not to counterparty holders/investors (BC5) — covering: Mudaraba-based investment accounts incl. short-term liquidity placements (overnight/7-day/1-month) (para 2(a)); Musharaka (Shirkat-ul-Aqd) investment accounts/instruments (para 2(b)); participatory-structure Sukuk not meeting equity or off-balance-sheet definitions (para 2(c)); and investment accounts from commingled Al-Wakala Bi Al-Istithmar funds meeting FAS 31 para 37 / SS 46 paras 12/1, 12/1/1 (para 2(d)). Excludes owners' equity/common share capital (para 3(a)); managed investment funds as separate legal entities (para 3(b)); off-balance-sheet assets under management incl. restricted Mudaraba and Wakala/Al-Wakala Bi Al-Istithmar other than para 2(d) (para 3(c)); and liability-based accounts e.g. current accounts, Murabaha, commodity Murabaha, Tawarruq (para 3(d)). Takaful institutions' participants' investment funds (PIFs) are generally off-balance-sheet unless commingling establishes control, in which case this standard applies; Takaful institutions issuing participatory Sukuk must also follow this standard (BC9-BC11).",
+   "contract_slugs": [
+    "mudarabah",
+    "musharakah",
+    "sukuk",
+    "wakala",
+    "qard",
+    "hibah",
+    "takaful"
+   ],
+   "term_names": [
+    "Agent's remuneration",
+    "Commingled Al-Wakala Bi Al-Istithmar funds",
+    "Control",
+    "Current account (based on Qard)",
+    "Investment agency (Al-Wakala Bi Al-Istithmar)",
+    "Investment pool",
+    "Investment risk reserve (IRR)",
+    "Mudaraba",
+    "On-balance-sheet participatory investment instruments",
+    "Participatory investment instruments",
+    "Profit equalisation reserve (PER)",
+    "Quasi-equity",
+    "Reserve",
+    "Displaced commercial risk",
+    "Rate of return risk",
+    "Constructive liquidation",
+    "Hiba",
+    "Mudarib",
+    "Muwakkil",
+    "Wakeel",
+    "Unrestricted investment accountholders (URIA)",
+    "Participants' investment funds (PIF)",
+    "Shirkat-ul-Aqd"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Objective (para 1); Scope — applies to (para 2(a)-(d)), excluded (para 3(a)-(d)); Definitions (para 4(a)-(m)); Classification of investment accounts on-/off-balance-sheet, control-based judgement (paras 5-9); Allocation of assets to investment pools (paras 10-14); Recognition, measurement and derecognition — Initial recognition (paras 15-17), Accounting for underlying assets (paras 18-21), Accounting subsequent to initial recognition (paras 22-23), Net profit or net loss determination (paras 24-29), Impairment and credit losses (paras 30-32), Derecognition (para 33), Revocation of the contract (paras 34-35); Commingling of Al-Wakala Bi Al-Istithmar (paras 36-38); Quasi-equity Sukuk and other instruments (paras 39-42); Currency for quasi-equity (paras 43-44); Presentation and disclosures (paras 45-52); Effective date (para 53); Amendments to other standards (para 54); Appendix A: Adoption of the standard — board members, reservation, working group, executive team; Appendix B: Basis for conclusions (BC1-BC17); Appendix C: Brief history of preparation of the standard (H1-H14).",
+   "key_points": [
+    "Quasi-equity is defined as participatory contributions with primary equity-like characteristics (no obligation to return lost funds absent negligence/misconduct/breach) plus certain liability-like features such as maturity or a redemption put option (para 4(l)(i)-(iii)).",
+    "Scope applies to Mudaraba- and Musharaka-based investment accounts, participatory-structure Sukuk, and commingled Al-Wakala Bi Al-Istithmar investment accounts; it excludes owners' equity, managed investment funds, off-balance-sheet assets under management, and liability-based accounts e.g. Murabaha and Tawarruq (paras 2(a)-2(d), 3(a)-3(d)).",
+    "Current account (based on Qard) is defined as a non-profit-bearing, guaranteed loan repayable to the institution on demand (para 4(d)).",
+    "Investment pool is defined as a virtual entity — at times a separate reporting entity — comprising the general pool plus other specific pools created by an institution (para 4(f)).",
+    "Investment risk reserve (IRR) is amounts appropriated from participatory investors' income to cushion against credit, market and equity investment risk for residual future losses after impairment (para 4(g)).",
+    "Profit equalisation reserve (PER) is appropriated to maintain a level of return for participatory (and shareholder) stakeholders, managing rate of return risk including displaced commercial risk (para 4(k)).",
+    "On-balance-sheet classification turns on institutional control per FAS 44, judged via: returns generated by available funds, frequent fund/asset transfers with owners' equity, commingling with the institution's own investments, and refunds exceeding cash-equivalent value (para 8(a)-(d)).",
+    "Underlying assets not under the institution's control, and their corresponding instruments, are accounted for off-balance-sheet per FAS 46 (para 9).",
+    "Each investment pool must have distinct assets, liabilities (rare), revenues/gains, expenses/losses, and distinct funding sources including quasi-equity and owners' equity (para 11).",
+    "Initial recognition occurs when cash/cash equivalents are received under an enforceable contract, or funds from another contract are transferred/commingled into quasi-equity, with no other precondition; measured at fair value of consideration on the contract's effective date (paras 15-16).",
+    "An institution may hold cash/cash equivalents in the investment pool to meet regulatory (including liquidity management) requirements (para 21).",
+    "Before allocating profit to the institution as Mudarib, the pool deducts net transfers to profit equalisation/special reserves and to non-presently-distributable fair value reserves (para 25(a)-(b)).",
+    "Net profits are appropriated proportionately to funds invested by quasi-equity vs. owners' equity, then the Mudarib takes its contractual share from quasi-equity's portion; net losses are allocated proportionately to funds invested by each party (paras 26-27).",
+    "IRR set aside from unpaid/undistributed profits remains part of the investment pool until utilised or reversed to the income from which it was created (para 29).",
+    "Losses in an investment pool are absorbed first via IRR reversal, then charged to pool income, then (if inevitable) deducted proportionately from quasi-equity and owners' equity; losses from institutional misconduct/negligence are borne by the institution, not the pool (paras 31-32).",
+    "Derecognition requires the equivalent value of underlying assets to be fully determined, settled/discharged or transferred on the holder's instruction, and the underlying contract terminated with no further enforceable obligations (para 33(a)-(b)).",
+    "If a quasi-equity contract (e.g., Mudaraba) is revoked due to the institution's non-fulfilment of terms, the returned funds become a liability of the institution held on trust, valued per para 33(a) (paras 34-35).",
+    "Commingled Al-Wakala Bi Al-Istithmar funds invested in a Mudaraba-basis pool are treated as the principal's own investment (commingling does not signify institutional control); profit before the Mudarib's share is shared among all investors per SS 46 para 12/1/1 (para 36(a)-(c)).",
+    "There is a rebuttable presumption that Musharaka- and Mudaraba-structured Sukuk are quasi-equity unless they meet equity or off-balance-sheet criteria; Al-Wakala Bi Al-Istithmar Sukuk not meeting off-balance-sheet criteria are on-balance-sheet quasi-equity Sukuk if they meet the para 15 criteria (paras 39-40).",
+    "For multi-currency pools, each investment pool's currency must be identified; foreign-currency underlying assets and quasi-equity are converted to the pool's currency, with periodic translation differences attributable to the pool (paras 43-44).",
+    "Quasi-equity, including investment accounts, is presented in the statement of financial position between owners' equity and liabilities (para 45).",
+    "Required disclosures include the minimum percentage of quasi-equity agreed to be invested to produce returns, the Mudarib's profit percentage, PER and IRR ratios to the total investment pool, and different types of Hiba plus the amount/description of any incentive or Hiba (paras 48(g), 50(a), 50(i), 51(a)).",
+    "Takaful institutions' participants' investment funds (PIFs) are generally treated as off-balance-sheet managed assets since they do not meet control criteria, but may become on-balance-sheet quasi-equity in rare cases of commingling that establish control; Takaful institutions issuing participatory Sukuk must follow this standard (BC9-BC11).",
+    "Effective for financial reporting periods beginning on or after 1 January 2026, with early adoption encouraged; this standard, together with FAS 46 \"Off-Balance-Sheet Assets Under Management,\" supersedes FAS 27 \"Investment Accounts\" (paras 53-54)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "shall apply to all instruments that meet the definition of quasi-equity",
+     "cite": "para 2"
+    },
+    {
+     "quote": "is an element of the financial statements that represents participatory contributions",
+     "cite": "para 4(l)"
+    },
+    {
+     "quote": "cash or cash equivalents have been received by the institution",
+     "cite": "para 15(a)"
+    },
+    {
+     "quote": "part of unpaid or undistributed profits or gains may be set aside",
+     "cite": "para 29"
+    },
+    {
+     "quote": "instruments of quasi-equity other than investment accounts shall be separately disclosed",
+     "cite": "para 42(a)"
+    },
+    {
+     "quote": "This standard along with FAS 46",
+     "cite": "para 54"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-46",
+   "source_file": "4fc37a3c-FAS46_OffBalanceSheetAssetsUnderManagementFinal.txt",
+   "regulator": "AAOIFI",
+   "title": "Off-Balance-Sheet Assets Under Management",
+   "issued_date": "2023-12-31",
+   "effective_date": "Financial periods beginning on or after 1 January 2026; early adoption encouraged; to be adopted concurrently with FAS 45 \"Quasi-Equity (Including Investment Accounts)\" (para 28)",
+   "supersedes": [
+    {
+     "title": "FAS 27 \"Investment Accounts\"",
+     "cite": "para 29"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "FAS 44 \"Determining Control of Assets and Business\"",
+    "FAS 45 \"Quasi-Equity (Including Investment Accounts)\"",
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 14 \"Investment Funds\"",
+    "FAS 27 \"Investment Accounts\"",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "FAS 31 \"Investment Agency (Al-Wakala Bi Al-Istithmar)\"",
+    "FAS 34 \"Financial Reporting for Sukuk-holders\"",
+    "FAS 35 \"Risk Reserves\"",
+    "FAS 40 \"Financial Reporting for Islamic Finance Windows\"",
+    "TR 01/2020 \"Implementation guidance for AAOIFI FAS 31 'Investment Agency (Al-Wakala Bi Al-Istithmar)'\""
+   ],
+   "applicability": "Applies to all Islamic financial institutions preparing financial statements per AAOIFI FASs, with regard to assets managed in a fiduciary capacity without establishing control; excludes (a) a Takaful institution's participants' Takaful fund and/or participants' investment fund, and (b) an investment fund that is itself a separate legal entity subject to financial reporting under the respective AAOIFI FAS, presently FAS 14 \"Investment Funds\" (para 2).",
+   "contract_slugs": [
+    "mudarabah",
+    "wakala"
+   ],
+   "term_names": [
+    "Fiduciary capacity",
+    "Off-balance-sheet assets under management",
+    "Off-balance-sheet participatory investment instruments",
+    "Participatory investment instruments",
+    "Restricted Mudaraba",
+    "Rab-ul-Maal",
+    "Mudarib",
+    "Al-Wakala Bi Al-Istithmar (investment agency)",
+    "Virtual reporting entity",
+    "Quasi-equity",
+    "Onerous commitment",
+    "Risk reserve",
+    "Mudarib's share",
+    "Fixed agency fee",
+    "Variable agency fee",
+    "Incentive fee",
+    "Hiba",
+    "Ring-fencing"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Introduction: Overview, Rationale for issuing, Significant changes from previous standard (a-e, unnumbered narrative). Objective of the standard (para 1). Scope (para 2). Definitions (para 3). Criteria for characterisation as off-balance-sheet AUM (paras 4-5, incl. restricted-Mudaraba test para 5d i-iii). Recognition, measurement and derecognition intro (para 6): Selection and adoption of accounting policies (para 7); Initial recognition - timing (para 8), of investors' managed funds (para 9), of underlying assets acquired (para 10); Subsequent measurement of investors' managed funds (para 11) and of underlying assets/liabilities (para 12); Impairment/ECL/write-offs attributable to underlying assets (para 13); Reserves (paras 14-15); Provision for loss due to institution negligence/misconduct/breach (para 16); Reassessment by the institution (para 17); Institution's exposure to loss under onerous commitments (paras 18-19); Derecognition (para 20). Presentation and disclosures: Disclosure of accounting policies (para 21); Statement of changes in off-balance-sheet AUM - primary presentation (para 22), disclosure by asset-type (para 23), required disclosure items a-g (para 24), disclosures for material/significant virtual reporting entities (paras 25-26); Additional disclosures (para 27). Effective date (para 28). Amendments to other standards / supersession (para 29). Appendix A: Adoption of the standard (board approval, members, reservation, working group, executive team). Appendix B: Illustrative statement of changes in off-balance-sheet AUM. Appendix C: Basis for conclusions (BC1-BC10). Appendix D: Brief history of the preparation of the standard (H1-H12).",
+   "key_points": [
+    "Objective is to establish principles of financial reporting for off-balance-sheet assets under management in line with the AAOIFI Conceptual Framework for Financial Reporting (para 1).",
+    "Applies to all Islamic financial institutions managing assets in a fiduciary capacity without control; excludes participants' Takaful/investment funds of a Takaful institution and separate-legal-entity investment funds reported under other AAOIFI FAS, e.g. FAS 14 (para 2).",
+    "Fiduciary capacity is defined as the capacity to act, in good faith, on behalf of and for the benefit of another party with a duty to preserve trust; off-balance-sheet assets under management are defined as assets held, managed, administered or otherwise dealt with in an arrangement giving the institution fiduciary responsibility but not control (para 3, a-b).",
+    "Participatory investment instruments are defined as instruments (particularly including investment accounts) whereby investors share/take profit, bear risk of loss, and hold a residual interest in the underlying assets or business (an investment pool), per Shari'ah principles (para 3d).",
+    "Participatory investment instruments split into two categories: institution-controlled (classified quasi-equity) versus institution-not-controlling and managed only in a fiduciary capacity (classified off-balance-sheet) (para 4).",
+    "Off-balance-sheet classification requires all five conditions: fiduciary-only management (typically via Al-Wakala Bi Al-Istithmar, restricted Mudaraba or similar); entitlement limited to fee and/or profit share with no residual interest beyond that remuneration; absence of control per the control definition; satisfaction of the restricted-Mudaraba test; and treatment as a separate virtual reporting entity (para 5, a-e).",
+    "A Mudaraba is restricted only if the Rab-ul-Maal has reasonably restricted the Mudarib's independent decision-making, tested against: a separate asset pool without commingling with the institution's own funds/unrestricted Mudaraba; a defined investment boundary (motive, market, platform, risk appetite, assets/asset classes, liquidity profile, currency, geography, customer class); and restricted powers of replacement, transfer and/or reinvestment (para 5d, i-iii).",
+    "Off-balance-sheet assets under management are not recognised by the institution as its own or controlled assets; they are recorded, measured and derecognised within a separate virtual reporting entity (para 6).",
+    "Accounting policies for off-balance-sheet AUM must be consistent with the institution's overall AAOIFI-based policies, unless this causes an accounting mismatch or fails to reflect the business model, in which case an alternative AAOIFI-FAS-consistent policy is used (para 7).",
+    "Initial recognition of investors' managed funds occurs when cash/cash equivalents are received under a legally enforceable contract, or funds/assets are transferred to the virtual reporting entity on the contract's effective date, with no other precondition to effect; recognition is at fair value of consideration received when the contract takes effect (paras 8-9).",
+    "Underlying assets acquired are recognised on acquisition, and subsequently measured (with any related liabilities), per the accounting policies adopted for the off-balance-sheet AUM in line with the relevant AAOIFI FAS; investors' managed funds are subsequently measured to reflect residual interest in net underlying assets (paras 10-12).",
+    "Impairment, expected credit losses and write-offs attributable to underlying assets are recognised per the adopted accounting policies, the respective AAOIFI FAS, Shari'ah principles/rules, and contractual terms (para 13).",
+    "An institution may create risk reserve(s) in the virtual entity per FAS 35 \"Risk Reserves\"; impairment/ECL/write-offs and fair value losses on underlying assets may be set off against such reserves (paras 14-15).",
+    "Loss arising from the institution's own negligence, misconduct and/or breach of contractual terms is borne by the institution and shall not be recorded as a loss for the virtual reporting entity (para 16).",
+    "Where the institution injects its own funds (e.g., bridge financing or partial early put-option exercise), it must reassess whether the funds are: a non-return-bearing receivable/payable with proportionate ownership; an equity investment at par with other investors; or a multi-level arrangement per the respective AAOIFI FAS (para 17, a-c).",
+    "The institution may bear onerous-commitment loss exposure when the underlying asset's life exceeds the instrument's contractual term and the asset's expected reversion value is lower than its current carrying value; such loss must be recognised in a timely manner and charged to the institution's statement of income (paras 18-19).",
+    "Derecognition of investors' managed funds and underlying assets occurs when control transfers (sale, gift, or settlement), no future economic benefits are expected (expiry, surrender, destruction, full impairment), or the contract terminates with no further enforceable obligations (para 20, a-c).",
+    "Accounting policies applied to off-balance-sheet AUM, if different from the institution's own policies, must be identified and disclosed in the notes (para 21).",
+    "The institution must prepare and present a statement of changes in off-balance-sheet AUM as a primary financial statement at each period end, including requirements of the respective AAOIFI FAS (FAS 1, paras 136-139), with off-balance-sheet participatory instruments presented on a combined basis and disclosures provided by asset-type (paras 22-23; fn 11).",
+    "Required statement disclosure items: opening balance; investors' additional capital received; withdrawals/divestments/maturities; net profit/loss (revenues, expenses, fair value gains/losses, impairments/ECL net of reversals, and agency fee/Mudarib's share); transfers to/from risk reserves; profit distributions; and closing balance (para 24, a-g).",
+    "Material virtual reporting entities - net assets exceeding 10% of total equity of off-balance-sheet AUM or 5% of the institution's total equity - require individual statements or detailed note disclosure of the paras 22-24 information; where a separate financial statement is required, it follows FAS 14 or FAS 34 \"Financial Reporting for Sukuk-holders\" depending on asset nature (paras 25-26).",
+    "Additional required note disclosures: provision for onerous commitment on expected losses upon probable reversion of underlying assets; any recourse available to investors against potential loss; details of any ring-fencing arrangement; and details of any Hiba, gift, or waiver of fee by the institution to the virtual reporting entity (para 27, a-d).",
+    "Effective for financial periods beginning on or after 1 January 2026, with early adoption encouraged, and must be adopted at the same time as FAS 45 \"Quasi-Equity (Including Investment Accounts)\" (para 28).",
+    "This standard, together with FAS 45 \"Quasi-Equity (Including Investment Accounts)\", supersedes FAS 27 \"Investment Accounts\" (para 29)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "The objective of this standard is to establish the principles of",
+     "cite": "para 1"
+    },
+    {
+     "quote": "the capacity to act, in good faith, on behalf",
+     "cite": "para 3"
+    },
+    {
+     "quote": "the Rab-ul-Maal has reasonably restricted the independent decision-making powers of the Mudarib",
+     "cite": "para 5"
+    },
+    {
+     "quote": "the underlying asset is expected to have a value lower",
+     "cite": "para 18"
+    },
+    {
+     "quote": "shall prepare and present a statement of changes in",
+     "cite": "para 22"
+    },
+    {
+     "quote": "shall supersede FAS 27 \"Investment Accounts\"",
+     "cite": "para 29"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-47",
+   "source_file": "58b3efac-FAS47_TransferofAssetsbetweenInvestmentPoolsFinal.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 47 – Transfer of Assets Between Investment Pools",
+   "issued_date": "2023-12-31",
+   "effective_date": "2026-01-01 — effective for financial periods beginning on or after 1 January 2026; early adoption encouraged (Effective date)",
+   "supersedes": [
+    {
+     "title": "FAS 21 “Disclosure on Transfer of Assets”",
+     "cite": "Amendments to other standards; see also IN2, IN4"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "FAS 1 ‘General Presentation and Disclosures in the Financial Statements’",
+    "FAS 21 ‘Disclosure on Transfer of Assets’ (superseded)",
+    "FAS 27 ‘Investment Accounts’",
+    "FAS 42 ‘Presentation and Disclosures in the Financial Statements of Takaful Institutions’",
+    "FAS 14 ‘Investment Funds’",
+    "[ED of] FAS __ ‘Financial Reporting for Islamic Investment Institutions (Including Investment Funds)’",
+    "Shari’ah Standard (SS) 59 ‘Sale of Debt’",
+    "Shari’ah Standard (SS) 7 ‘Hawala’"
+   ],
+   "applicability": "Applies to all transfers of assets between investment pools related to (and, where material, between significant categories of) owners’ equity, quasi-equity and off-balance-sheet assets under management, for all institutions irrespective of type or business model (Scope); covers all monetary and non-monetary assets transferred (Scope); presumption that transfers under para 7(b), 7(d) and 7(f) (those involving off-balance-sheet AUM categories) need not have separately developed specific accounting policies since already covered by recognition/derecognition policies under the respective AAOIFI FAS (para 7, following list).",
+   "contract_slugs": [
+    "sukuk"
+   ],
+   "term_names": [
+    "Investment pool",
+    "Monetary assets",
+    "Non-monetary assets",
+    "Shari’ah principles and rules",
+    "Tangibility requirements",
+    "Transfer of assets",
+    "Owners’ equity",
+    "Quasi-equity",
+    "Off-balance-sheet assets under management",
+    "Participants’ Takaful Fund (PTF)",
+    "Participants’ Investment Fund (PIF)",
+    "Hiba",
+    "Hawala",
+    "Sale of Debt (Bay al-Dayn)",
+    "Buy-back"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (p.3, no substantive body text captured in extraction). Introduction: Overview (IN1); Rationale for issuing this standard (IN2-IN3); Key changes from previous standard (IN4, a-e). Objective of the standard. Scope. Definitions (a. Investment pool; b. Monetary assets i-iii; c. Non-monetary assets i-iv; d. Shari’ah principles and rules, fn 2; e. Tangibility requirements, fn 3; f. Transfer of assets). Adoption and consistent application of accounting policy(ies). Presentation and disclosure: General presentation and disclosure requirements; Specific presentation and disclosure requirements (para 7, categories a-f of transfer; significant-aspects disclosure list a-g; cumulative quantitative disclosure list a-d, fn 5). Effective date. Amendments to other standards. Appendices: Appendix A – Adoption of the standard (Members of the board; Reservation – approved unanimously; Working group members; Executive team). Appendix B – Basis for conclusions (Change in the objective and scope of the standard; Valuation of transfer of assets; Value addition by the detailed disclosures; Significant Shari’ah issues – Tangibility requirements, Transfer of assets involving buy-back) — headings only, body text absent from extracted source. Appendix C – Brief history of the preparation of the standard (H1-H11).",
+   "key_points": [
+    "Standard applies to all transfers of assets between investment pools related to owners’ equity, quasi-equity and off-balance-sheet assets under management, of all institutions regardless of type or business model (Scope).",
+    "Assets transferred, for purposes of the standard, include all monetary and non-monetary assets (Scope).",
+    "‘Investment pool’ defined as distinct assets whose risks and rewards (wholly or proportionately) are attributable to funding from respective investors within owners’ equity, quasi-equity and off-balance-sheet AUM; generally a virtual entity, at times a separate reporting entity (Definitions a).",
+    "‘Monetary assets’ defined as: cash; contractual right to receive cash or another monetary asset from another party; or contractual right to exchange a monetary asset with another party (Definitions b, i-iii).",
+    "‘Non-monetary assets’ may include tangible assets (property, plant, equipment, inventory), equity instruments, Sukuk or instruments where the majority of underlying assets are tangible, and intangible assets e.g. right-of-use assets (Definitions c, i-iv).",
+    "‘Shari’ah principles and rules’ is as defined in para 11 of the AAOIFI Conceptual Framework for Financial Reporting, applying a five-level hierarchy: AAOIFI Shari’ah Standards; jurisdiction regulator’s Shari’ah regulations; central Shari’ah board rulings (if any); Shari’ah-related requirements of applicable AAOIFI FASs; and the institution’s own Shari’ah supervisory board approvals (Definitions d, fn 2).",
+    "‘Tangibility requirements’ defined as institution-set requirements, in line with Shari’ah principles and rules, acceptable for transferring an asset (generally not being/including debt) from one investment pool to another (Definitions e).",
+    "Tangibility requirements must specifically observe AAOIFI Shari’ah Standard (SS) 59 ‘Sale of Debt’: a debt, directly or bundled with tangible assets (unless comprising a legal entity), may not be exchanged against cash / debt / monetary assets, per SS 59 paragraphs 8/1-8/4 read with 5/1-5/2 (fn 3).",
+    "Exchange of debt for a commodity (with spot delivery), usufruct, or services is acceptable subject to SS 59 (fn 3).",
+    "A debt transfer may instead take the form of an assignment (Hawala) rather than sale of debt, only at par value, subject to SS 7 ‘Hawala’ (fn 3).",
+    "‘Transfer of assets’ defined as transfer between investment pools (on- or off-balance-sheet) by sale, exchange, investment, clearing or other means (e.g., Hiba) under a contractual arrangement, or through reconstitution of multiple pools immediately following constructive liquidation, per Shari’ah principles and rules (Definitions f).",
+    "Institutions shall adopt and consistently apply accounting policy(ies) for transfer of assets between investment pools, considering business model, regulatory requirements and contractual arrangements with stakeholders (Adoption and consistent application of accounting policy(ies)).",
+    "General presentation and disclosure follows FAS 1 ‘General Presentation and Disclosures in the Financial Statements’ along with other applicable AAOIFI FASs (General presentation and disclosure requirements, fn 4).",
+    "Institutions must disclose accounting policies for six categories of transfer: (a) owners’ equity to/from quasi-equity; (b) owners’ equity to/from off-balance-sheet AUM; (c) within owners’ equity categories; (d) quasi-equity to/from off-balance-sheet AUM; (e) within quasi-equity categories; (f) within off-balance-sheet AUM categories (para 7, a-f).",
+    "Accounting policy disclosures must cover: bases/reasons governing transfers; tangibility requirements/restrictions; restrictions on short-term transfers with expected reversion (to avoid buy-back); restrictions and valuation approaches on monetary-asset transfers; reclassification treatment of Sukuk, shares and similar instruments on transfer; valuation bases used, with rationale if different from fair value; and mutual contractual commitments/restrictions between pool investors (Specific presentation and disclosure requirements, significant-aspects list a-g).",
+    "Institutions must disclose cumulative quantitative information: cumulative transfer amounts at net transfer value and associated gains/losses, plus the difference between net transfer value and fair value where they diverge (quantitative disclosure list a).",
+    "Disclosure required of valuation differences from transfers of assets in foreign currencies and their financial effect (quantitative disclosure list b).",
+    "Disclosure required of the nature/terms of significant transferred assets, their divisibility/separability and applicable Shari’ah principles, including significant assets proportionately divided between pools (quantitative disclosure list c).",
+    "Disclosure required of related-party asset-transfer transactions: nature of relationship, transaction type, total value at period start/end, and recognised/unrecognised financial effect, per FAS 1 paragraphs 99-103 (quantitative disclosure list d, fn 5).",
+    "Standard is effective for financial periods beginning on or after 1 January 2026; early adoption is encouraged (Effective date).",
+    "This standard supersedes the earlier FAS 21 ‘Disclosure on Transfer of Assets’ (Amendments to other standards).",
+    "Standard developed as a limited revision of FAS 21, identified during the 2018 AAOIFI FASs review and revision project and during the revision of FAS 27 ‘Investment Accounts’ (IN2).",
+    "Key changes from FAS 21: expands from disclosure-only requirements to full financial reporting principles plus general/specific disclosures; requires developed, consistently applied and disclosed accounting policies per transfer class; aligns terminology with the AAOIFI Conceptual Framework; improves presentation/disclosure in line with FAS 1; and aligns financial reporting requirements with Shari’ah requirements addressing buy-back and debt-transfer/tangibility issues (IN4, a-e).",
+    "Standard presented and approved unanimously at the 36th AAOIFI Accounting Board meeting held 12-13 Jumada II 1445H, corresponding to 25-26 December 2023, and issued on 18 Jumada II 1445H, corresponding to 31 December 2023 (Appendix A; H10-H11)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV04",
+     "topic": "Bay al-dayn / sale of debt",
+     "position": "AAOIFI: tangibility requirements for inter-pool asset transfers must observe SS 59 ‘Sale of Debt’ — a debt, directly or bundled with tangible assets (unless comprising a legal entity), may not be exchanged against cash, debt, or other monetary assets; exchange of debt against a commodity with spot delivery, usufruct, or services is acceptable subject to SS 59 paragraphs 8/1-8/4 read with 5/1-5/2; alternatively, a debt transfer may take the form of an assignment (Hawala), permissible only at par value under SS 7 ‘Hawala’ (fn 3)",
+     "clauses": [
+      "Tangibility requirements shall be developed in line with the requirements of relevant Shari’ah principles and rules, particularly, considering the requirements of AAOIFI Shari’ah Standard (SS) 59 “Sale of Debt”, whereby a debt directly or through bundling with tangible assets, unless comprising a legal entity, may not be exchanged against cash / debt / monetary assets.",
+      "Subject to the requirements of the said standard, certain transactions of exchange of debt with a commodity (with spot delivery) or usufruct or services are acceptable. (In particular, see paragraphs 8/1-8/4 read with paragraphs 5/1-5/2 of SS 59 “Sale of Debt”).",
+      "In certain situations, a transfer of debt may take the form of an assignment (Hawala) rather than sale of debt, subject to a condition that such assignment may take place at par value only along with other requirements of SS 7 “Hawala”."
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "prescribes the financial reporting principles and disclosure requirements",
+     "cite": "IN1"
+    },
+    {
+     "quote": "FAS 21 “Disclosure on Transfer of Assets” requires a limited revision",
+     "cite": "IN2"
+    },
+    {
+     "quote": "comprises distinct assets whose risks and rewards",
+     "cite": "Definitions a"
+    },
+    {
+     "quote": "may not be exchanged against cash / debt / monetary assets",
+     "cite": "fn 3"
+    },
+    {
+     "quote": "financial periods beginning on or after 1 January 2026",
+     "cite": "Effective date"
+    },
+    {
+     "quote": "supersedes the earlier, FAS 21 “Disclosure on Transfer of Assets”",
+     "cite": "Amendments to other standards"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-48",
+   "source_file": "5954fbb9-FAS48PromotionalGiftsandPrizes1.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 48 “Promotional Gifts and Prizes”",
+   "issued_date": "2024-12-09",
+   "effective_date": "Annual financial reporting periods beginning on or after 01 January 2026; early adoption encouraged (para 17)",
+   "supersedes": [],
+   "linked_standards": [
+    "AAOIFI Shari’ah Standard (SS) 55 “Competitions and Prizes”",
+    "AAOIFI Shari’ah Standard (SS) 61 “Payment Cards”",
+    "FAS 27 “Investment Accounts”",
+    "FAS 45 “Quasi-equity (Including Investment Accounts)”",
+    "FAS 1 “General Presentation and Disclosures in the Financial Statements”",
+    "AAOIFI Conceptual Framework for Financial Reporting"
+   ],
+   "applicability": "Applies to promotional gifts and prizes (including loyalty programs) announced and awarded by an institution, on behalf of the owners and out of amounts attributable to owners' equity, to all or specific customers including quasi-equity and other investment accountholders (para 2). Excludes Hiba provided by the institution on behalf of owners as a profit-smoothening technique during computation of periodic profits and losses of an investment pool at constructive liquidation, which falls within the scope of FAS 45 (para 3).",
+   "contract_slugs": [],
+   "term_names": [
+    "Promotional prize",
+    "Promotional gift",
+    "Loyalty program",
+    "constructive obligation",
+    "quasi-equity",
+    "investment accountholders",
+    "Hiba",
+    "Qard",
+    "investment pool",
+    "owners' equity",
+    "provision",
+    "change in accounting estimate"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR2); Introduction - Overview (IN1), Rationale for issuing the standard (IN2-IN3), non-endorsement note (IN4); Objective of the standard (para 1); Scope (paras 2-3); Definition (para 4: a-c); Types of entitlement (para 5: a-c); Recognition and measurement - Promotional gifts (para 6), Promotional prizes: Initial recognition (paras 7-9), Subsequent measurement (para 10); Loyalty programs: Initial recognition (paras 11-12), Subsequent measurement (para 13); Classification and charging of expenses (paras 14-15); Presentation and disclosures (para 16: a-c); Effective date (para 17); Appendix A: Adoption of the standard - Members of the board, Reservation, Working group members, Executive team; Appendix B: Basis for conclusions - headings only (Need for a separate standard; Perceived impression of endorsement of certain market practices; Promotional gifts and prizes for the Qard-based current accountholders; Timing of recognition of expense relating to promotional prizes due over a longer period of time) - body text absent from source file; Appendix C: Brief history of the preparation of the standard (H1-H10).",
+   "key_points": [
+    "Standard applies to promotional gifts and prizes (including loyalty programs) announced and awarded by an institution to all or specific customers, including quasi-equity and other investment accountholders (para 2).",
+    "Standard does not apply to Hiba provided by the institution as a profit-smoothening technique during computation of periodic profits/losses of an investment pool at constructive liquidation, covered instead by FAS 45 (para 3).",
+    "Promotional prize is defined as a monetary or non-monetary reward used to promote specific products/services or attract investments via a draw, achievement of a defined target, or both, awarded at a given point in time in future (para 4a).",
+    "Promotional gift is defined as a gift used to promote specific products/services or attract investments, awarded by an institution at its sole discretion, from time to time, to certain customers (para 4b).",
+    "Loyalty program is defined as points accumulated by customers against purchase or continued utilisation of products/services (including credit/debit card use) or for maintaining investments, exchangeable for cash, goods or services on a complementary or discounted basis at a future date (para 4c; fn 3).",
+    "Three types of entitlement: promotional gifts with instant entitlement, promotional prizes announced in advance and awarded at a future date mostly contingent on a draw or target, and loyalty programs where obligation accumulates over a period of time (para 5).",
+    "Promotional gifts: an institution shall record an expense as and when incurred (para 6).",
+    "Promotional prizes - initial recognition requires a provision when there is an existing constructive obligation (“more likely than not” that economic resources will flow out) and the obligation is reliably measurable, including cost/expected cost of in-kind prizes (para 7a-b).",
+    "A constructive obligation normally arises when an announcement is clearly communicated (explicit statements or consistent history of past actions) to a specific class of customers (e.g., investment accountholders), creating a valid expectation the institution will honour its commitment (para 8; fn 4 cross-refers para BC5).",
+    "The provision recognised for promotional prizes is charged as an expense, except where the deferred-recognition conditions of paragraph 15 apply (para 9).",
+    "Promotional prize provisions: carrying amount reviewed at the end of each financial reporting period, with changes accounted for as a change in accounting estimate and recognised as expense (or reversal), except where paragraph 15 applies (para 10).",
+    "Loyalty programs - initial recognition: provision recorded based on points accumulated, considering (where significant) probability of expected utilisation and timing of utilisation of points (para 11a-b).",
+    "The amount of provision recognised for loyalty points is charged as an expense (para 12).",
+    "Loyalty program provisions: carrying amount reviewed at the end of each financial reporting period, with changes accounted for as a change in accounting estimate and recognised as expense (or reversal) for the period (para 13).",
+    "Expenses under paragraphs 6, 9-10 and 12-13 are recognised as promotional and marketing expenses, generally charged to owners' equity, unless the scheme relates to asset-side or service-based products funded by an investment pool, in which case it is an expense of that investment pool (para 14).",
+    "Generally, promotional-prize expenses are recognised immediately; however, certain material promotional prizes not yet vested may justify recognising a corresponding asset amortised over time, subject to three conditions (para 15).",
+    "Deferred-asset condition: the promotional prize is part of a marketing/promotion campaign spanning at least 12 months, with the prize awarded at the end of, or over the span of, that period (para 15a).",
+    "Deferred-asset condition: the total obligation in respect of the promotional prize(s) must be material (para 15b).",
+    "Deferred-asset condition: a positive correlation between increased business/revenue and the asset must be demonstrated via projections/financial models, with suitability re-assessed at each financial reporting date (para 15c).",
+    "Disclosures required in addition to FAS 1: description of significant schemes; accounting policies for promotional gifts, prizes and loyalty programs; and the provision, its movement, corresponding expenses, and non-vested provisions not yet expensed (para 16a-c).",
+    "Effective date: annual financial reporting periods beginning on or after 01 January 2026; early adoption is encouraged (para 17).",
+    "The standard must be read in conjunction with AAOIFI Shari’ah Standards generally, and specifically with SS 55 “Competitions and Prizes” and relevant requirements of SS 61 “Payment Cards” (unnumbered introductory note, p.4; para 2).",
+    "The need for the standard emerged during revision of FAS 27 “Investment Accounts”; AAOIFI states it does not intend, by issuing the standard, to encourage the practice of offering promotional prizes (IN2-IN4).",
+    "The standard was deliberated and approved unanimously by the AAOIFI Accounting Board at its 39th meeting (15-16 Safar 1446H / 19-20 August 2024) and formally issued on 8 Jumada II 1446H, corresponding to 9 December 2024 (Appendix A; H8; H10)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "additional benefits, such as promotional gifts or prizes",
+     "cite": "PR1"
+    },
+    {
+     "quote": "prescribe the accounting and financial reporting requirements applicable to",
+     "cite": "para 1"
+    },
+    {
+     "quote": "used to promote specific products or services or to attract investments",
+     "cite": "para 4a"
+    },
+    {
+     "quote": "there is an existing constructive obligation requiring the institution to award",
+     "cite": "para 7a"
+    },
+    {
+     "quote": "material promotional prizes that can justify a recognition of a corresponding asset",
+     "cite": "para 15"
+    },
+    {
+     "quote": "the standard was issued on 8 Jumada II 1446H, corresponding to 9",
+     "cite": "H10"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-49",
+   "source_file": "e9f0c675-FAS49FinancialReportingforInstitutionsOperatinginHyperinflationaryEconomies1.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 49 Financial Reporting for Institutions Operating in Hyperinflationary Economies",
+   "issued_date": "2024-12-19",
+   "effective_date": "2026-01-01, financial periods beginning on or after 1 January 2026, early adoption encouraged (para 42)",
+   "supersedes": [],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "AAOIFI Shari'ah Standards (SSs)",
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 23 \"Consolidation\"",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "FAS 36 \"First-Time Adoption of AAOIFI Financial Accounting Standards\""
+   ],
+   "applicability": "Applies to institutions preparing financial statements per AAOIFI FASs whose functional currency is the currency of a hyperinflationary economy (para 2), and to consolidated financial statements to the extent of impacts relating to subsidiary(ies) whose functional currency(ies) is that of a hyperinflationary economy(ies) (para 3); the standard shall not apply if the relevant regulatory authority does not adopt it (BC11).",
+   "contract_slugs": [
+    "sukuk",
+    "ijarah"
+   ],
+   "term_names": [
+    "Fair value",
+    "Deemed fair value",
+    "Hyperinflationary economy",
+    "Index",
+    "Investment pool",
+    "Measuring units",
+    "Monetary assets",
+    "Monetary liabilities",
+    "Functional currency",
+    "Reporting currency",
+    "Quasi-equity",
+    "Hyperinflationary fair value reserve",
+    "Net hyperinflationary fair value gain (or loss)",
+    "Held-to-maturity (HTM) investments",
+    "Ijarah Muntahia Bittamleek",
+    "Sukuk",
+    "Istisna'a",
+    "Murabaha",
+    "Modified retrospective basis"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR3); Introduction - Overview and Rationale for issuing this standard (IN1-IN4); Objective of the standard (para 1); Scope (paras 2-3); Determination of a hyperinflationary economy - definition (para 4), pertinent factors (para 5), authority of multilateral institution/central bank/government to declare (para 6); Definitions (para 7, items a-g); Financial reporting options - historical cost inappropriate, redetermine functional currency or apply fair value reporting (para 8), redetermination of functional currency (para 9), fair value based financial reporting trigger (para 10); Fair value based financial reporting under hyperinflationary circumstances - statement of financial position remeasurement (para 11), exceptions to fair value model (para 12), treatment of exempted items (para 13), application of fair value/other valuation approaches (para 14), deemed fair value (paras 15-16), impairment and credit losses (para 17), deemed fair value for interim periods (para 18), selection and use of an index (paras 19-21); Statement of income and OCI - no restatement of current period (para 22), gain/loss on remeasurement (para 23); Statement of income and attribution related to quasi-equity (para 24); Statement of cash flows - no adjustments required (para 25); Consolidated financial statements - restatement of hyperinflationary subsidiaries (para 26), non-hyperinflationary subsidiaries (para 27), differing period ends (para 28), restatement of equity-method investees (para 29); Economies ceasing to be hyperinflationary (para 30); Presentation and disclosures (paras 31-37); Accounting policies (para 38); Corresponding and indexed comparative figures, incl. computation (paras 39-41); Effective date (paras 42-43); Transitional provisions - modified retrospective basis (paras 44-46); Appendix A - Adoption of the standard (board members, reservation, working group, executive team); Appendix B - Basis for conclusions (BC1-BC40); Appendix C - Brief history of the preparation of the standard (H1-H16).",
+   "key_points": [
+    "Standard establishes principles of financial reporting for AAOIFI-FAS institutions operating in hyperinflationary economies, duly considering Shari'ah principles/rules and unique business models (para 1).",
+    "Applies to institutions whose functional currency is that of a hyperinflationary economy, and to consolidated statements to the extent of impacts from subsidiaries in hyperinflationary economies (paras 2-3).",
+    "Hyperinflationary economy defined as one where money loses purchasing power at a rate that impedes meaningful comparison of financial reporting across periods (para 4).",
+    "Determination is highly subjective (no fixed criteria); indicative factors: cumulative inflation over 3 years exceeding/approaching 100% with rising trend; benchmark rates/wages/prices linked to an index; prevalent use of a stable foreign currency; prices quoted in stable foreign currency; population preference for stable foreign currency or non-monetary assets (para 5, items a-f).",
+    "An economy may be declared hyperinflationary by a multilateral institution (e.g., the IMF), respective central bank, or government, notwithstanding the para 5 factors (para 6, fn 1).",
+    "Defines fair value (incl. deemed fair value), hyperinflationary economy, index, investment pool, measuring units, monetary assets, and monetary liabilities (para 7, items a-g).",
+    "Institutions must either redetermine functional currency to a stable foreign currency where paras 5(c)/(d)/(e) factors exist and no legal/regulatory restriction applies (para 9), or apply fair value based financial reporting (para 10); historical cost basis is not appropriate in a hyperinflationary economy (para 8).",
+    "Statement of financial position items are remeasured at fair value, except items listed as exceptions (para 11).",
+    "Exceptions to fair value model: monetary assets/liabilities; assets for future delivery at pre-agreed/pre-promised value (e.g., Istisna'a work-in-progress, inventory for Murabaha, Ijarah Muntahia Bittamleek); held-to-maturity investments in Sukuk and similar instruments; index-linked assets/liabilities (with or without caps/floors); and quasi-equity (para 12, items a-e; fn 5).",
+    "Exempted items are reported at carrying value, or agreement-adjusted value, or (for quasi-equity) via fair-value-adjustment effects allocated through profit/loss or reserves (para 13, items a-c).",
+    "Non-exempt items follow tiered treatment: existing fair-value items stay at fair value; cost-basis items restated to fair value via OCI as net hyperinflationary fair value gain/loss; lower-of-cost-or-NRV items to NRV; revaluation-model items revalued at least at year-end; all other items to deemed fair value via an index (para 14, items a-e).",
+    "Deemed fair value applies where fair value is impracticable due to unavailable observable data/inputs or undue cost/effort, by applying an index to the balance (paras 15-16).",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\" applies to restated amounts, especially where deemed fair value under para 16 is used (para 17).",
+    "Deemed fair value determination (paras 15-16) may also be required at interim reporting period-ends, even where year-end fair value is normally used, if the impact within the period is material (para 18).",
+    "Index may be a general price index (or basket) or a stable-foreign-currency-based index reflecting periodic loss of purchasing power; institutions should preferably use the same index as other institutions reporting in the same economy's currency, and assess index appropriateness by asset/liability type (paras 19-21).",
+    "Current period statement of income/OCI is not restated at period end; it reflects actual revenues and expenses incurred and recognised (para 22).",
+    "Net gain or loss from remeasurement under paras 11 and 13 is recognised in OCI, either (a) accumulated as a distinct \"hyperinflationary fair value reserve\" categorised separately for owners' equity and quasi-equity, or (b) allocated as profit or loss for the period (para 23, items a-b).",
+    "No adjustment required to statement of income/attribution for quasi-equity beyond reflecting fair value adjustment effects on underlying assets/liabilities, via profit allocation or reserves (para 24); no adjustments required to the statement of cash flows (para 25).",
+    "Consolidated statements: subsidiaries in hyperinflationary economies must have balances restated under this standard before consolidation, translated at closing FX rates only if reporting currency differs from parent's functional currency (para 26); non-hyperinflationary subsidiaries follow FAS 1/FAS 23 (para 27, fn 6); differing period-end consolidations apply the standard to all balances at the consolidated date (para 28); equity-method investees in hyperinflationary economies are restated similarly, translated at closing rates if in a foreign currency (para 29).",
+    "When an economy ceases to be hyperinflationary, the amounts reported under this standard at the end of the last applicable period become the basis for carrying amounts in subsequent statements (para 30).",
+    "Disclosures required: hyperinflationary functional-currency status and basis applied; fair value reporting basis for current/corresponding figures plus indexed comparative figures; index identity/level/movement; net hyperinflationary fair value gain/loss for the period split (distributable/non-distributable) between quasi-equity and owners' equity; and accumulated reserve amounts attributable to quasi-equity and owners' equity (para 31, items a-e).",
+    "Hyperinflationary fair value reserve classified as recyclable to statement of income (within next 12 months; between 1-3 years; after 3 years) versus not expected to be recycled, with disclosure of expected reversal/distribution timing for quasi-equity portions (paras 32-34) and utilisation plans for non-recyclable balances, plus disclosure of any practical-necessity departures and post-period-end exchange rate/index changes (paras 35-37); accounting policy changes from applying the standard must also be disclosed (para 38).",
+    "A third column of indexed comparative figures must be presented alongside ordinary corresponding figures, computed by applying index changes from prior to current period-end for statement-of-financial-position balances, or from transaction date to current period-end for other items (paras 39-41).",
+    "Effective for financial periods beginning on or after 1 January 2026, early adoption encouraged; institutions in the same hyperinflationary economy encouraged to adopt from the same date for comparability (paras 42-43); transition is on a modified retrospective basis (no restatement of corresponding figures, cumulative effects taken to opening retained earnings/reserves) from the later of the period the economy is concluded hyperinflationary or the period of first adoption, with an additional indexed comparative column still permitted and required disclosure of adjustment attribution to quasi-equity per para 31(e) (paras 44-46)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "Shari'ah committee deemed many generally accepted accounting principle treatments for hyperinflation incompatible with Shari'ah principles, prompting AAOIFI's out-of-the-box fair value approach rather than harmonising with GAAP (BC3-BC4)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "duly considering the relevant Shari'ah principles and rules and their unique business models",
+     "cite": "para 1"
+    },
+    {
+     "quote": "cumulative inflation rate over a three years' period has exceeded 100%",
+     "cite": "para 5"
+    },
+    {
+     "quote": "The following items shall not be measured at fair value",
+     "cite": "para 12"
+    },
+    {
+     "quote": "shall be recognised in the statement of other comprehensive income",
+     "cite": "para 23"
+    },
+    {
+     "quote": "effective for the financial periods beginning on or after 1 January 2026",
+     "cite": "para 42"
+    },
+    {
+     "quote": "the standard was issued on 18 Jumada II 1446H",
+     "cite": "H16"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-50",
+   "source_file": "4f1448f3-FAS50FinancialReportingforIslamicInvestmentInstitutions.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Reporting for Islamic Investment Institutions (Including Investment Funds)",
+   "issued_date": "2024-12-24",
+   "effective_date": "1 January 2027 (para 36)",
+   "supersedes": [
+    {
+     "title": "FAS 14 \"Investment Funds\"",
+     "cite": "PR3; para 38"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "FAS 1 General Presentation and Disclosures in the Financial Statements",
+    "FAS 3 Mudaraba Financing",
+    "FAS 14 Investment Funds",
+    "FAS 28 Murabaha and Other Deferred Payment Sales",
+    "FAS 29 Sukuk in the Books of the Originator",
+    "FAS 31 Investment Agency (Al-Wakala Bi Al-Istithmar)",
+    "FAS 33 Investment in Sukuk, Shares and Similar Instruments",
+    "FAS 34 Financial Reporting for Sukuk-holders",
+    "FAS 37 Financial Reporting by Waqf Institutions",
+    "FAS 41 Interim Financial Reporting",
+    "FAS 42 Presentation and Disclosures in the Financial Statements of Takaful Institutions",
+    "FAS 43 Accounting for Takaful: Recognition and Measurement",
+    "FAS 46 Off-Balance-Sheet Assets Under Management",
+    "ED of FAS \"Participatory Ventures\"",
+    "AAOIFI GS 10 Shari'ah Compliance and Fiduciary Ratings for Islamic Financial Institutions"
+   ],
+   "applicability": "Applies to all Islamic investment institutions (IIIs) (para 2) and to employee retirement benefit funds managed by IFIs for their own employees, in addition to generally accepted accounting principles (para 3); excludes Sukuk-holder/originator reporting (para 4a), off-balance-sheet AUM not forming a separate legal entity (para 4b), Waqf institutions (para 4c), and Takaful participants' investment funds (para 4d); read in conjunction with FAS 1 Part 1, with this standard's specific provisions prevailing in case of conflict (para 5).",
+   "contract_slugs": [
+    "mudarabah",
+    "wakala",
+    "murabaha",
+    "ijarah"
+   ],
+   "term_names": [
+    "Back-end discount",
+    "Back-end fee",
+    "Capital transactions",
+    "Front-end fee",
+    "Front-end premium",
+    "Investment manager",
+    "Investors",
+    "Islamic investment institutions (IIIs)",
+    "Issued value of shares / units",
+    "Net asset value (NAV) differential",
+    "Net asset value (NAV) per share / unit",
+    "Open-ended III",
+    "Quasi-equity",
+    "Shari'ah principles and rules",
+    "Trustee",
+    "Al-Wakala Bi Al-Istithmar",
+    "Mudaraba",
+    "Sub-funds",
+    "Statement of net assets",
+    "Statement of changes in quasi-equity"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR3) introduces IIIs and the revision of FAS14; Introduction (IN1-IN4) covers Overview, Rationale, and Significant changes from FAS14; Objective (para 1); Scope (paras 2-6); Definitions (para 7 a-o); Assessment of business model and accounting policy selection (paras 8-11); Accounting policies for specific matters of IIIs - open-ended III transactions (paras 12-13), trade-date vs settlement-date accounting (para 14), investment manager fee/profit-share recognition (para 15); General presentation of financial statements (paras 16-19), including complete set of financial statements (para 18); Minimum contents and disclosures (paras 20-35) - statement of financial position/net assets (paras 20-21), statement of financial activities (paras 22-23), statement of changes in quasi-equity (paras 24-25), notes on fees (para 26), investments (paras 27-29), sub-funds (para 30), related parties (para 31), risk disclosures (paras 32-35); Effective date (para 36); Transitional provisions (para 37); Amendments to other standards / supersession of FAS14 (para 38); Appendix A: Adoption of the standard - board approval, board members, working group, executive team; Appendix B: Basis for conclusions (BC1-BC38) covering scope, alignment with FAS1, recognition/measurement policy, consolidation exemption, governance, and terminology; Appendix C: Brief history of the standard's preparation (H1-H9).",
+   "key_points": [
+    "Sets out financial reporting principles for Islamic investment institutions (IIIs), prescribing presentation, minimum contents, and recommended structure of financial statements (para 1).",
+    "Applies to all IIIs (para 2) and to employee retirement benefit funds managed by IFIs for their own employees, in addition to generally accepted accounting principles (para 3).",
+    "Excludes Sukuk-holder/originator reporting, off-balance-sheet AUM not forming a separate legal entity, Waqf institutions, and Takaful participants' investment funds from scope (para 4).",
+    "To be read in conjunction with FAS 1 Part 1 'General Presentation and Disclosures in the Financial Statements'; this standard's specific provisions prevail in case of conflict (para 5).",
+    "An III shall not consolidate, nor apply the equity method to, any entity it controls or over which it has significant influence solely for investment purposes (para 6).",
+    "Defines 15 key terms including back-end/front-end fee and premium, capital transactions, investment manager, investors, IIIs, issued value of units, NAV differential, NAV per share/unit, open-ended III, quasi-equity, Shari'ah principles and rules hierarchy, and trustee (para 7).",
+    "Quasi-equity has primary characteristics of equity (no obligation to return lost funds absent negligence/misconduct/breach of contract) combined with liability-like features such as maturity or a put option of redemption (para 7).",
+    "Rebuttable presumption that most IIIs' business model requires fair value measurement of investments, but Shari'ah-prohibited fair valuing (e.g., Murabaha receivables under FAS 28) must not be applied (para 10).",
+    "Open-ended IIIs publishing NAV per unit more frequently than the annual/interim reporting period must apply FAS 41 interim financial reporting requirements insofar as practicable (para 11).",
+    "Rebuttable presumption that units of an open-ended III always qualify as quasi-equity, requiring accounting policies for front-end fee, front-end premium, NAV differential, back-end fee, and back-end discount (para 12).",
+    "NAV differential is generally not recognised as income but forms part of quasi-equity together with the issued value of units (para 13).",
+    "Trade-date vs. settlement-date accounting policy must be developed per Shari'ah principles and rules, consistently applied and disclosed (para 14).",
+    "Investment manager fee/profit-share recognition follows FAS 31 paras 14-17 for Wakala/service Ijarah arrangements, and follows FAS 3 (Mudaraba) for profit-share arrangements, both considering variable, contingent, tiered and incentive components (para 15).",
+    "A complete set of financial statements comprises: statement of financial position/net assets; statement of financial activities/income and OCI; statement of cash flows; statement of changes in owners' equity (where applicable); statement of changes in quasi-equity (where applicable); and notes (para 18).",
+    "NAV per share/unit must be presented on the face of the statement of financial position/net assets for open-ended IIIs, with disclosure of realised/unrealised and distributable/undistributable profit or loss bifurcation (paras 20-21).",
+    "EPS/earnings-per-unit disclosure required for all IIIs except publicly traded open-ended IIIs (para 22).",
+    "Statement of changes in quasi-equity must disclose opening balances, units issued (number, front-end premium, NAV differential), units redeemed (number, back-end discount, NAV differential), net comprehensive income/loss, distributions, and closing balances, with columnar/notes presentation for multiple quasi-equity classes (paras 24-25).",
+    "Each material sub-fund must be disclosed as if it were an operating segment per FAS 1 paras 76-79 (para 30).",
+    "Investment manager and trustee are treated as related parties requiring disclosure per FAS 1 paras 101-103 (para 31).",
+    "Open-ended IIIs holding illiquid investments must disclose the proportion of such investments against total investments and the risk mitigation techniques available, including Shari'ah-compliant financing arrangements for redemptions (para 33).",
+    "Rating of the investment manager, the III, and sub-funds must be disclosed with the rating agency's name and applicable period; a Shari'ah compliance and fiduciary rating per AAOIFI GS 10 is noted as technically more appropriate than a conventional credit rating (para 35, fn 16).",
+    "Effective for annual financial statements of an III beginning on or after 1 January 2027, with early adoption encouraged (para 36).",
+    "IIIs with fixed maturity may continue existing accounting policies if a substantial period to maturity has elapsed and the remaining period is not more than 2 years from the reporting date (para 37).",
+    "This standard supersedes FAS 14 'Investment Funds' (PR3; para 38)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "shall apply to all Islamic investment institutions (IIIs)",
+     "cite": "para 2"
+    },
+    {
+     "quote": "the institution is not liable to return the lost funds",
+     "cite": "para 7"
+    },
+    {
+     "quote": "shall always qualify to be accounted for as quasi-equity",
+     "cite": "para 12"
+    },
+    {
+     "quote": "in case of an investment manager having a Mudaraba based arrangement",
+     "cite": "para 15"
+    },
+    {
+     "quote": "the proportion of such investments against the total investments",
+     "cite": "para 33"
+    },
+    {
+     "quote": "beginning on or after 1 January 2027",
+     "cite": "para 36"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-51",
+   "source_file": "e668fcea-FAS51ParticipatoryVentures.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard (FAS) 51 \"Participatory Ventures\"",
+   "issued_date": "2025-11-10",
+   "effective_date": "2027-01-01 (financial statements of institutions beginning on or after 1 January 2027; early adoption encouraged) (para 74)",
+   "supersedes": [
+    {
+     "title": "FAS 3 \"Mudaraba Financing\"",
+     "cite": "para 76"
+    },
+    {
+     "title": "FAS 4 \"Musharaka Financing\"",
+     "cite": "para 76"
+    }
+   ],
+   "linked_standards": [
+    "AAOIFI Conceptual Framework for Financial Reporting",
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 23 \"Consolidation\"",
+    "FAS 24 \"Investments in Associates\"",
+    "FAS 27 \"Investment Accounts\"",
+    "[ED of] FAS 29 \"Sukuk in the Books of the Originator\"",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "FAS 31 \"Investment Agency (Al-Wakala Bi Al-Istithmar)\"",
+    "FAS 32 \"Ijarah\"",
+    "FAS 33 \"Investment in Sukuk Shares and Similar Instruments\"",
+    "FAS 34 \"Financial Reporting for Sukuk-holders\"",
+    "FAS 35 \"Risk Reserves\"",
+    "FAS 39 \"Financial Reporting for Zakah\"",
+    "FAS 42 \"Presentation and Disclosures in the Financial Statements of Takaful Institutions\"",
+    "FAS 43 \"Accounting for Takaful: Recognition and Measurement\"",
+    "FAS 44 \"Determining Control of Assets and Business\"",
+    "FAS 45 \"Quasi-equity (Including Investment Accounts)\"",
+    "FAS 46 \"Off-Balance-Sheet Assets Under Management\"",
+    "FAS 47 \"Transfer of Assets Between Investment Pools\"",
+    "FAS 50 \"Financial Reporting for Islamic Investment Institutions (Including Investment Funds)\"",
+    "AAOIFI Shari'ah Standard (SS) 12 \"Sharikah (Musharaka) and Modern Corporations\"",
+    "AAOIFI Shari'ah Standard (SS) 13 \"Mudarabah\""
+   ],
+   "applicability": "Applies to accounting and financial reporting by the investor(s), the working partner(s), and the participatory venture itself, for participatory ventures as defined in para 4(e) (para 2). Excludes: investment accounts/similar instruments issued by Islamic banks and similar FIs, governed by other AAOIFI FASs (para 3(a)); investment agency Al-Wakala Bi Al-Istithmar (para 3(b)); co-owned assets based on Shirkat-ul-Milk (para 3(c)); participants' investment funds and similar instruments issued by Takaful institutions to participants (para 3(d)); and investment structures taking the form of a legal entity, including share capital/similar instruments, Sukuk (except originator back-end accounting for Sukuk based on participatory ventures), investment funds/entities with legal-entity status, and investments with parent-subsidiary, associate or joint-venture relationships or via trusts (para 3(e)).",
+   "contract_slugs": [
+    "musharakah",
+    "mudarabah",
+    "sukuk"
+   ],
+   "term_names": [
+    "Control",
+    "Mudaraba",
+    "Musharaka (Shirkat-ul-Aqd)",
+    "Participatory structure",
+    "Participatory venture (PV)",
+    "Pass-through accounting approach",
+    "Net investment in participatory venture accounting approach",
+    "Off-balance-sheet accounting approach",
+    "Quasi-equity accounting approach",
+    "Variable-equity participatory venture",
+    "Working partner",
+    "Mudarib",
+    "Shirkat-ul-Milk (co-ownership)",
+    "Diminishing Musharaka",
+    "Running Musharaka",
+    "Restricted Mudaraba",
+    "Perpetual participatory venture",
+    "Onerous commitment",
+    "Risk reserves",
+    "Sale undertaking / purchase undertaking",
+    "Muzara'a, Musaqa, Mugharasa (Shari'ah-compliant agricultural products)"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (supersession statement, no para no.); Introduction IN1-IN5 (overview, rationale, significant changes from FAS 3/FAS 4); Objective (para 1); Scope (paras 2-3); Definitions (para 4); Assessment of extent of control (paras 5-7); Accounting approaches table for investor/working partner (para 8); Accounting by investor - pass-through approach: initial recognition, subsequent measurement, revenues/expenses, working partner's profit share, presentation (paras 9-20); Accounting by investor - net investment in PV approach: initial recognition, subsequent measurement, presentation (paras 21-30); Accounting by working partner - off-balance-sheet approach: appropriation of P&L, presentation (paras 31-37); Accounting by working partner - quasi-equity approach: initial recognition, subsequent measurement, presentation, additional considerations (paras 38-46); Specific considerations - Perpetual PVs (paras 47-48); Transfer of control incl. forms/timing/recognition (paras 49-55); Onerous commitments for redemption/gradual transfer (paras 56-57); Gradual transfer of ownership (para 58); Variable-equity PV (paras 59-62); Risk reserves (para 63); Summarised financial information by the PV: objective, set of information, accounting-policy selection, general considerations, presentation/disclosures (paras 64-73); Effective date (para 74); Transitional provisions (para 75); Amendments to other standards / supersession (para 76); Appendix A: Adoption of the standard (board approval, members, working group, executive team); Appendix B: Basis for conclusions (BC1-BC35, covering unified-standard rationale, counterparty accounting, scope exclusions, investment vs financing classification, accounting-approach selection, negligence-compensation timing); Appendix C: Brief history of preparation (H1-H14).",
+   "key_points": [
+    "Objective: prescribes accounting/financial reporting principles for recognition, measurement, presentation and disclosure of participatory ventures (para 1).",
+    "Scope: applies to accounting/financial reporting by investor(s), working partner(s), and the participatory venture itself for PVs meeting the para 4(e) definition, except exclusions in para 3 (paras 2-3).",
+    "Scope exclusions: investment accounts of Islamic banks (FAS 50), investment agency/Al-Wakala Bi Al-Istithmar (FAS 31), Shirkat-ul-Milk co-owned assets, Takaful participants' investment funds (FAS 42/43), and legal-entity investment structures incl. Sukuk except originator back-end accounting (para 3).",
+    "Participatory venture (PV) defined as a virtual, not legal, entity constituted on a Shari'ah-compliant participatory structure, including Musharaka and Mudaraba or similar structures irrespective of nomenclature (para 4(e)).",
+    "Control assessed per FAS 44 definition, resulting in three scenarios: investor-controlled, working-partner-controlled, or shared control (paras 5-7).",
+    "Investor accounting choice: pass-through approach if investor(s) solely control the PV (unless impracticable); otherwise net investment in PV approach (para 9).",
+    "Pass-through approach: investor recognises underlying assets/liabilities directly and gross in its books, proportionately if multiple investors, per relevant AAOIFI FASs (paras 10-11).",
+    "Impairment reassessed at each period end under both pass-through and net investment approaches per FAS 30, factoring settlement risk and onerous commitments (paras 12, 27).",
+    "Working partner's profit share recognised as an expense at each period end based on best estimate of amounts payable, with detailed rules for variable/contingent profit recognition (paras 15-16).",
+    "Negligence by working partner: recoverable compensation recognised as income/receivable only once negligence is established and compensation amount determined under Shari'ah principles (para 17).",
+    "Net investment in PV approach: investment initially recognised at cost (fair value if in-kind), subsequently measured at carrying amount adjusted for contributions, withdrawals, distributed profits and net profit/loss share (paras 21, 24-25).",
+    "Working partner accounting choice: off-balance-sheet approach (investor-controlled PV), quasi-equity approach (working-partner-controlled PV), or net investment approach (shared control) (para 31).",
+    "Off-balance-sheet approach: working partner does not recognise underlying assets/liabilities of an investor-controlled PV; derecognition and immediate gain/loss if it previously controlled such assets (paras 32-33).",
+    "Quasi-equity approach: working partner recognises quasi-equity equal to cash received or fair value of in-kind investment; contractually-agreed-value differences amortised over the PV term unless no fixed maturity, then recognised immediately (paras 38-40).",
+    "Perpetual PVs (no fixed maturity date and no investor redemption put option) carry a rebuttable presumption of equity classification: working partner uses quasi-equity approach as a separate equity class; investor uses net investment approach (paras 47-48).",
+    "Transfer of control from investor to working partner occurs via sale/purchase undertaking, gradual sale of ownership units, or partial redemption, recognised at consummation (offer/acceptance documentation or payment against purchase undertaking) (paras 49-50).",
+    "Gradual-transfer-of-ownership PVs (e.g., diminishing Musharaka with Shirkat-ul-Aqd) and variable-equity PVs (e.g., running Musharaka) are restricted to net investment approach for investor and quasi-equity approach for working partner (paras 58-59).",
+    "Variable-equity PV drawdowns/redemptions of quasi-equity accounted at cost (no gain/loss); profit/loss attributed per weighted average outstanding balances and contractual profit-sharing ratios each period end (paras 60-61).",
+    "Onerous commitments for redemption/gradual transfer of ownership require a provision under FAS 30 when an expected loss on redemption arises (paras 56-57).",
+    "Risk reserves accounted per contractual arrangements and FAS 35, with disclosure of balances and movements (para 63).",
+    "Summarised financial information of the PV (financial position, income/expense, explanatory material) prepared by the working partner and shared with investor(s) periodically (paras 64-66).",
+    "Effective date 1 January 2027 for institutions' financial statements beginning on/after that date, early adoption encouraged; prospective transitional application permitted with impact disclosure (paras 74-75).",
+    "Standard supersedes FAS 3 \"Mudaraba Financing\" and FAS 4 \"Musharaka Financing\" (para 76)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV07",
+     "topic": "Binding promise/wa'd - sale and purchase undertakings governing transfer of control of participatory-venture assets",
+     "position": "AAOIFI: transfer of ownership/control from investor(s) to working partner is effected via sale undertaking by investor(s) or purchase undertaking by working partner (executable after PV term-end or on an early-liquidation trigger event), gradual sale of proportionate ownership units, or partial redemption (para 49); accounting recognition of the transfer coincides with consummation - documentation of offer/acceptance, or payment against purchase of units under an already-documented purchase undertaking (para 50); such undertakings/commitments become onerous, requiring a provision under FAS 30, if they result in an expected loss on redemption or gradual transfer (paras 56-57).",
+     "clauses": [
+      "para 49",
+      "para 50",
+      "para 56",
+      "para 57"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "prescribe the principles of accounting and financial reporting for the participatory ventures",
+     "cite": "para 1"
+    },
+    {
+     "quote": "being a virtual entity but not a legal entity",
+     "cite": "para 4"
+    },
+    {
+     "quote": "recognise the investment made as an investment in a participatory venture",
+     "cite": "para 21"
+    },
+    {
+     "quote": "these are not subject to liquidation at a fixed maturity date",
+     "cite": "para 47"
+    },
+    {
+     "quote": "shall be effective on the financial statements of the institutions",
+     "cite": "para 74"
+    },
+    {
+     "quote": "supersedes the earlier FAS 3 \"Mudaraba Financing\" and FAS 4",
+     "cite": "para 76"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-52",
+   "source_file": "4cfa650c-FAS52DeferredDeliverySalesSalamandIstisna.txt",
+   "regulator": "AAOIFI",
+   "title": "AAOIFI Financial Accounting Standard (FAS) 52 “Deferred Delivery Sales: Salam and Istisna”",
+   "issued_date": "2025-12-31 (H10 — issued as final, 11 Rajab 1447H / 31 December 2025)",
+   "effective_date": "financial periods beginning on or after 1 January 2027, early adoption encouraged (para 38)",
+   "supersedes": [
+    {
+     "title": "FAS 7 “Salam and Parallel Salam”",
+     "cite": "PR4; para 39"
+    },
+    {
+     "title": "FAS 10 “Istisna’a and Parallel Istisna’a”",
+     "cite": "PR4; para 39"
+    }
+   ],
+   "linked_standards": [
+    "FAS 1 \"General Presentation and Disclosures in the Financial Statements\"",
+    "FAS 7 \"Salam and Parallel Salam\" (superseded)",
+    "FAS 10 \"Istisna'a and Parallel Istisna'a\" (superseded)",
+    "FAS 28 \"Murabaha and Other Deferred Payment Sales\"",
+    "FAS 30 \"Impairment, Credit Losses and Onerous Commitments\"",
+    "FAS 32 \"Ijarah\"",
+    "FAS 35 \"Risk Reserves\"",
+    "FAS 38 \"Wa'ad, Khiyar and Tahawwut\"",
+    "FAS 53 \"Istisna-Based Development Contracts\" (approved in principle, pending issuance)",
+    "SS 10 \"Salam and Parallel Salam\"",
+    "SS 11 \"Istisna and Parallel Istisna\"",
+    "AAOIFI Conceptual Framework for Financial Reporting"
+   ],
+   "applicability": "Applies to accounting and financial reporting for deferred delivery sales (Salam and Istisna) carried out under Shari'ah principles and rules by Islamic financial institutions and other institutions following AAOIFI FASs (para 2); excludes Istisna-based development contracts, covered by pending FAS 53 (para 3); also excludes Istisna transactions where the institution as buyer intends to lease and eventually sell under Ijarah Muntahia Bittamleek, or intends self-use/self-consumption of the subject-matter (para 4a-4b).",
+   "contract_slugs": [
+    "salam",
+    "istisna"
+   ],
+   "term_names": [
+    "Deferred delivery sales",
+    "Salam",
+    "Salaf",
+    "Istisna",
+    "Istisna-based development contract",
+    "Parallel Salam",
+    "Parallel Istisna",
+    "Investment in Salam contract",
+    "Investment in Istisna contract",
+    "Istisna price payable",
+    "Salam goods deliverable",
+    "Istisna goods deliverable",
+    "Istisna price receivable",
+    "Net realisable value (NRV)",
+    "Hiba",
+    "Ijarah Mawsufa Bil Zimma",
+    "Ijarah Muntahia Bittamleek",
+    "Wa'ad",
+    "Bay",
+    "Riba",
+    "Al-Muslim Fihi",
+    "Profit equalisation reserves"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (PR1-PR4: background, FAS7/FAS10 origins, objective, joint supersession with FAS53); Introduction — Overview (IN1), Rationale for issuing this standard (IN2-IN3), Significant changes from the previous standard (IN4 a-i); Objective of the standard (para 1); Scope (paras 2-4); Definitions (para 5 a-f: deferred delivery sales, Istisna, Istisna-based development contract, Parallel Salam, Parallel Istisna, Salam); Deferred delivery sales in the books of the buyer — Initial recognition: Investment in Salam/Istisna contracts (para 6), Inventory (paras 7-9); Subsequent measurement: Investment (paras 10-12), Inventory (paras 13-16); Derecognition: Investment (para 17), Inventory (para 18); Revenue and profit recognition (paras 19-20); Goods purchased under deferred delivery sale and sold on deferred payment basis (para 21); Presentation and disclosures (paras 22-24); Deferred delivery sales in the books of the seller — Initial recognition: Salam/Istisna goods deliverable (para 25); Subsequent measurement (para 26); Onerous deferred delivery sales contracts (para 27); Inventory (para 28); Revenue and profit recognition (paras 29-30); Presentation and disclosures (paras 31-33); Related accounting treatments — Parallel Salam and parallel Istisna (paras 34-35); Subsequent change of price of the subject-matter with mutual consent (para 36); Change in price of Istisna subject-matter based on performance (para 37); Effective date (para 38); Amendments to other standards — supersession of FAS 7 and FAS 10 jointly with pending FAS 53 (para 39); Appendix A: Adoption of the standard (board approval, board/working group/executive team members); Appendix B: Process flow for deferred delivery sales (illustrative Salam-with-agency and Istisna-with-agency flowcharts); Appendix C: Basis for conclusions (BC1-BC26: rationale for two separate standards, scope/definition of deferred delivery sales, applicability to Ijarah Mawsufa Bil Zimma, naming/terminology, timing of revenue recognition, counter-party accounting, NRV accounting for inventory, treatment of advance payments); Appendix D: Brief history of preparation of the standard (H1-H10).",
+   "key_points": [
+    "Deferred delivery sales are Shari'ah-compliant Salam or Istisna sales where the primary performance obligation is delivery of the subject-matter, excluding sales promised for a future date against a unilateral promise/undertaking to sell or purchase (para 5a).",
+    "Salam (also called Salaf) is the sale of a pre-specified commodity for deferred delivery in exchange for immediate full payment (the Salam capital) at contracting (para 5f, fn 9).",
+    "Istisna is a contract to sell a described, to-be-manufactured/acquired asset with deferred delivery, with price settled in advance, by instalments, or deferred to a specific future time (para 5b).",
+    "Parallel Salam is an independent second Salam contract the seller enters to source matching goods to fulfil the first contract, executed without dependency on the first contract's execution; sequencing of the two contracts may vary (para 5d).",
+    "Parallel Istisna is an independent second Istisna contract entered by the seller/developer to acquire matching goods, permitted only if the first buyer allows it, and executed without dependency on the first contract (para 5e).",
+    "Scope excludes Istisna-based development contracts (covered by pending FAS 53) and excludes Istisna where the buyer intends to lease-then-sell under Ijarah Muntahia Bittamleek or intends self-use/self-consumption (paras 3-4).",
+    "Buyer initially recognises 'investment in Salam contract' equal to cash paid in advance; 'investment in Istisna contract' equals Istisna cost price with a contra liability 'Istisna price payable', presented net (para 6a-6b).",
+    "Buyer recognises inventory once it obtains control (substantially all risks and rewards) of the subject-matter, initially at cost including taxes, transport/handling, related Takaful costs, and agent fees, net of trade discounts/rebates/performance bonus (paras 7-8).",
+    "Buyer's investment in Salam/Istisna is subsequently carried at outstanding amount less impairment allowance per the relevant AAOIFI FAS; seller delay or inability to deliver is objective evidence of impairment (paras 10-12).",
+    "Buyer's inventory is measured after initial recognition at the lower of cost and net realisable value (NRV); non-conforming delivery may trigger NRV reassessment; extra handling/holding costs are expensed as incurred (paras 13-16).",
+    "Buyer derecognises investment in Salam/Istisna on complete delivery (or agreed substitute), on mutually agreed refund when goods are no longer deliverable, when unrecoverable due to seller insolvency, or when the buyer waives the right or gifts it as Hiba (para 17).",
+    "Buyer recognises revenue at gross value only when the subject-matter is sold to the eventual buyer (directly or via agent), coinciding with transfer of control; no revenue/profit before that sale; agency fee is accounted for separately, not netted against gross revenue (paras 19-20).",
+    "Goods bought under a deferred delivery sale and resold to the eventual buyer under Murabaha or another deferred-payment sale follow the revenue recognition requirements of FAS 28 (para 21).",
+    "Buyer's minimum disclosures cover accounting policies, investment in Salam/Istisna and Istisna price payable balances, related liabilities, impairment movements, NRV adjustments, receivables, deferred profit movements, credit losses, and amounts waived/written off (para 22); Salam and Istisna disclosures may be separated where material (para 23).",
+    "Seller initially recognises a liability 'Salam goods deliverable' equal to cash received, or 'Istisna goods deliverable' equal to Istisna cost price with a contra asset 'Istisna price receivable', presented net (para 25a-25b).",
+    "Seller's liability for Salam/Istisna goods deliverable is subsequently measured at its outstanding amount; onerous deferred delivery sales contracts are dealt with per FAS 30 (paras 26-27).",
+    "Seller recognises revenue at gross value only at eventual consummation of sale/transfer of control to the buyer; for Istisna with deferred payment, an appropriate proportion of profit is deferred per FAS 28 (paras 29-30).",
+    "Seller's minimum disclosures cover accounting policies, Salam/Istisna goods deliverable liabilities, Istisna price receivable, inventory classification and holding-period risk, sales revenue/cost/profit, deferred profit movements, and impairment/onerous-commitment allowances (para 31); may be separated by contract type where material (para 32).",
+    "Parallel Salam and Parallel Istisna transactions are accounted for separately as a buyer leg (paras 6-24) and a seller leg (paras 25-33) on a mutually exclusive basis, with balances presented without netting and cross-referenced (paras 24, 33-35).",
+    "Subsequent mutually-agreed changes to price or subject-matter (including Istisna performance-based price changes per a pre-agreed contractual mechanism) are not gain/loss events at the time of change; profit/loss is recognised only at eventual sale, though the event may evidence impairment or need for NRV adjustment (paras 36-37).",
+    "Standard is effective for financial periods beginning on or after 1 January 2027, with early adoption encouraged (para 38).",
+    "This standard, together with FAS 53 'Istisna-Based Development Contracts' (approved by the board in principle, to be issued shortly after completion of due process), supersedes the earlier FAS 7 'Salam and Parallel Salam' and FAS 10 'Istisna'a and Parallel Istisna'a' (PR4, fn 1; para 39).",
+    "Board concluded Salam/Istisna are trade-based sale transactions, not financial instruments; profit is legitimised only once the Bay (sale) takes place, and accrual before that could be tantamount to Riba since the asset is a non-monetary debt (paras BC15-BC16).",
+    "Institutions executing deferred delivery sales are recommended to maintain profit equalisation reserves to smoothen returns to stakeholders, per FAS 35 'Risk Reserves' (para BC18)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV07",
+     "topic": "binding promise/wa'd",
+     "position": "AAOIFI: deferred delivery sales (Salam/Istisna) are scoped separately from unilateral-promise sales — in Salam/Istisna the sale is executed at the contract date with only delivery deferred, whereas a promise-based future sale is executed only on the future date, and the promise itself is either non-binding or binding on only one party while the other party retains the option not to execute; accounting for promises is instead covered in FAS 38 'Wa'ad, Khiyar and Tahawwut' (paras BC4-BC5, fn 22)",
+     "clauses": [
+      "BC4",
+      "BC5"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "supersedes the earlier FAS 7 “Salam and Parallel Salam” and FAS 10",
+     "cite": "PR4"
+    },
+    {
+     "quote": "is a contract to sell a described asset with deferred delivery",
+     "cite": "para 5(b)"
+    },
+    {
+     "quote": "Revenue shall be recognised at gross value at the time of sale",
+     "cite": "para 19"
+    },
+    {
+     "quote": "equivalent to the amount of cash received (i.e., the Salam cost price)",
+     "cite": "para 25(a)"
+    },
+    {
+     "quote": "financial periods beginning on or after 1 January 2027",
+     "cite": "para 38"
+    },
+    {
+     "quote": "their accounting shall be in the nature of a purchase and sale",
+     "cite": "BC15"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-13-ORIGINAL",
+   "source_file": "8393ef90-FiancialAccountingStandardNo.13DisclosureofBasesforDeterminingandAllocatingSurplusorDefificitinIslamicInsuranceCompanies.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (13): Disclosure of Bases for Determining and Allocating Surplus or Deficit in Islamic Insurance Companies",
+   "issued_date": "2000-05-21",
+   "effective_date": "2002-01-01 (financial periods beginning 1 Muharram 1423 A.H.) (para 20)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (9): Zakah",
+    "Financial Accounting Standard No. (12): General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies",
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applicable to all financial statements prepared by Islamic insurance companies and Takaful companies (fn 1), regardless of legal form, country of incorporation, or size (para 1); if requirements conflict with a company's charter or local laws/regulations, that conflict must be disclosed (para 1).",
+   "contract_slugs": [
+    "mudarabah",
+    "wakala",
+    "takaful"
+   ],
+   "term_names": [
+    "Mudaraba",
+    "Mudarib share",
+    "Wakala",
+    "Zakah",
+    "Gharar",
+    "Fatwa",
+    "Takaful",
+    "underwriting surplus",
+    "insurance surplus",
+    "insurance deficit",
+    "policyholders' funds",
+    "shareholders' funds",
+    "technical provisions",
+    "Shari'a Supervisory Board"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (unnumbered); Statement of the Standard: 1. Scope of the Standard (para 1); 2. Disclosure of Significant Accounting Policies (paras 2-5); 3. General Disclosure in the Notes to the Financial Statements (paras 6-18); 4. General Disclosure Requirements (para 19); 5. Effective Date (para 20); Adoption of the Standard (unnumbered, lists AAOIFI Board members); Appendix (A): Brief History of the Preparation of the Standard; Appendix (B): Juristic Rules Relating the Disclosure of Bases for Determining and Allocating Surplus or Deficit in Islamic Insurance Companies; Appendix (C): Reasons for the Standard; Appendix (D): Basis for Conclusions.",
+   "key_points": [
+    "Standard applies to all financial statements of Islamic insurance/Takaful companies regardless of legal form, country of incorporation, or size; if it conflicts with a company's charter or local laws/regulations, that conflict must be disclosed (para 1).",
+    "Disclosure required of the party that bears general and administrative expenses, and whether it bears all or only part; if partial, the basis for determining that part and the approving body must be disclosed (para 2).",
+    "Disclosure required of the basis used to calculate items affecting policyholders' funds: pre-operations expenditures, reserves, cost of assets used in operations, claims and compensations, treatment of commissions from non-Islamic reinsurance companies, and outstanding claims retained for reinsurance companies (para 3).",
+    "Disclosure required of the cash or accrual basis used to determine policyholders' premium contributions, and the policy applied when a policyholder withdraws or defers settlement of a premium contribution (para 4).",
+    "Disclosure required of the basis applied in treating any current and/or cumulative deficit from previous financial periods, and how it will be accounted for in current and subsequent periods (para 5).",
+    "Disclosure required of the bases governing the contractual relationship between policyholders and shareholders for: management of insurance operations, investment of policyholders' funds, investment of shareholders' funds, and the body that approved these bases (para 6).",
+    "Disclosure required of the party managing insurance operations and its remuneration: a specified fee (agency basis), a share of underwriting surplus (Mudaraba basis), or remuneration on other bases (para 7).",
+    "Disclosure required of the party managing investment of policyholders' and shareholders' funds, its remuneration (percentage of investment profit under Mudaraba or specified fee under agency), and the basis for determining that remuneration (paras 8-9).",
+    "Disclosure required of the basis applied in allocating profit generated from investing policyholders' funds and shareholders' funds (para 10).",
+    "Disclosure required of whether the party managing insurance operations or investments amended its Mudarib share or management fees during the period, and the Shari'a procedures followed in implementing the amendment (para 11).",
+    "Disclosure required of deductions (percentage or amount) from the managing party's remuneration and/or expenses it bears, made as a contribution to increase the income of the fund owners or the underwriting surplus, if material (para 12).",
+    "Where the investment manager cannot place all available funds in income-producing investments, disclosure required of whether priority was given to policyholders or shareholders in allocating income-producing investments, and the basis for that priority (para 13).",
+    "Disclosure required of whether the company calculates underwriting surplus attributable to policyholders on a segregated basis per type of insurance, or by treating all types of insurance as one unit (para 14).",
+    "Disclosure required of which method the company applies to allocate underwriting surplus, and the Shari'a basis: (a) pro rata to all policyholders regardless of claims; (b) only to policyholders with no claims; (c) to policyholders after deducting claims paid; (d) between policyholders and shareholders; (e) other methods, with details disclosed (para 15).",
+    "Disclosure required of the basis used to account for underwriting surplus declared but not collected by some or all policyholders (para 16).",
+    "Disclosure required of how any undistributed underwriting surplus would be allocated if the company were liquidated (para 17).",
+    "Disclosure required of the basis applied in determining the Zakah base and its calculation, if the company meets the criteria obliging it to pay Zakah under Financial Accounting Standard No. (9): Zakah (para 18).",
+    "The general disclosure requirements of Financial Accounting Standard No. (12): General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies must be observed (para 19).",
+    "Standard adopted by the AAOIFI Accounting and Auditing Standards Board in meeting No. (19), 17 Safar 1421 A.H./21 May 2000 A.D.; effective for financial periods beginning 1 Muharram 1423 A.H./1 January 2002 A.D. (Adoption of the Standard; para 20).",
+    "Insurance/underwriting surplus is defined as the excess of total premium contributions paid by policyholders during the period over total indemnities paid for claims incurred during the period, net of reinsurance and after deducting expenses and changes in technical provisions (Appendix B).",
+    "Premium contributions are ruled to be amounts wholly or partially donated; the Shari'a ruling on the surplus derives from this donation characterization, and participation implies acceptance of the policy/by-law conditions on disposition of surplus (Appendix B).",
+    "Gharar (uncertainty) in Islamic insurance is forgiven in donation contracts because, according to the Maliki school of thought, Gharar does not invalidate contracts of donation; policyholders have the exclusive right to the surplus per several Fatwas, though some Fatwas permit shareholders to share in it (Appendix B).",
+    "Five methods of allocating insurance surplus are listed, with method (a) — allocation to all policyholders regardless of claims — to be followed by default when the policy/by-laws are silent (Appendix B).",
+    "Methods of covering an insurance deficit include settling it from policyholders' reserves, borrowing from shareholders' funds or others (repaid from future surpluses), asking policyholders to meet the deficit pro rata, or increasing future premium contributions pro rata; after liquidation, undistributed surplus and related reserves should be donated to charity, except for life insurance where funds may be allocated among remaining policyholders (Appendix B)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "\"according to the Maliki school of thought Gharar does not invalidate the contracts of donations\" — doctrinal position attributed to a specific school (Appendix B).",
+    "\"there are some Fatwas issued by Shari'a boards that permit shareholders to share in the underwriting surplus with the policyholders\" — noted as a departure from the general ruling that policyholders have exclusive right to the surplus (Appendix B)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "applicable to all companies regardless of their legal forms",
+     "cite": "para 1"
+    },
+    {
+     "quote": "a share of underwriting surplus on the basis of Mudaraba",
+     "cite": "para 7"
+    },
+    {
+     "quote": "Allocation to all policyholders according to their pro rata share",
+     "cite": "para 15"
+    },
+    {
+     "quote": "obliged to pay Zakah according to Financial Accounting Standard No. (9)",
+     "cite": "para 18"
+    },
+    {
+     "quote": "effective for financial periods beginning 1 Muharram 1423 A.H.",
+     "cite": "para 20"
+    },
+    {
+     "quote": "Gharar (uncertainty) in Islamic insurance is forgiven in the case of donations",
+     "cite": "Appendix (B)"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-43",
+    "evidence": "FAS 43 states it supersedes FAS 13, FAS 15 and FAS 19 (FAS 43 IN4, para 136)"
+   }
+  }
+ ]
+}

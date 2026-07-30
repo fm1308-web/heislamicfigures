@@ -1,0 +1,453 @@
+{
+ "_meta": {
+  "file": "standards_kb_new_batch_3.json",
+  "type": "standards_kb_addition",
+  "built_by": "RV (Research seat)",
+  "generated": "2026-07-25",
+  "batch": "3 of 4 — DEEP NOTE COVERAGE job",
+  "count": 15,
+  "method": "Every note written ONLY from the standard's own text file on disk (paths under bv-app/data/Finance/Standards/). NEVER INVENT held: titles, dates, clause numbers and rules are quoted or closely paraphrased from the source; empty string where the document does not state a fact. Clause ids are the document's own numbering. Long GN/TN documents were read in parts (title, contents, objective/scope, principles/recommendations); notes reflect only text actually read.",
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "notes": [
+ {
+  "id": "KB-IFSB-GN-6",
+  "standard_id": "GN-6",
+  "standard_code": "GN-6",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE ON QUANTITATIVE MEASURES FOR LIQUIDITY RISK MANAGEMENT IN INSTITUTIONS OFFERING ISLAMIC FINANCIAL SERVICES [EXCLUDING ISLAMIC INSURANCE (TAKAFUL) INSTITUTIONS AND ISLAMIC COLLECTIVE INVESTMENT SCHEMES]",
+  "display_card": {
+   "one_liner": "Explains how Islamic banks should apply the two global liquidity ratios - the Liquidity Coverage Ratio (LCR) and the Net Stable Funding Ratio (NSFR) - with adjustments for Islamic finance.",
+   "what_it_is": "A guidance note that adapts the Basel III liquidity standards for institutions offering Islamic financial services (IIFS). It sets out how to calculate the LCR (a 30-day stress buffer of high-quality liquid assets) and the NSFR (a one-year stable funding requirement), gives guidance to supervisors on applying them, and sets disclosure requirements and reporting templates. It aims to provide a level playing field for Islamic banks and their supervisors in applying global liquidity standards.",
+   "why_it_matters_to_timeline": "Issued April 2015; it complements IFSB-12 (Guiding Principles on Liquidity Risk Management for IIFS, March 2012) and builds on the BCBS Basel III liquidity rules. It states the LCR is to be introduced on 1 January 2015 at 60%, rising to 100% by 1 January 2019, and the NSFR implemented on 1 January 2018.",
+   "source_label": "GN-6-GN-on-LRM-April-2015-final.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "April 2015",
+  "timeline_bridge": {"effective_date": "LCR introduced on 1 January 2015 at a minimum level of 60%, increasing 10% each year to 100% by 1 January 2019; NSFR implementation date 1 January 2018"},
+  "supersedes": "",
+  "related_standards": ["IFSB-12: Guiding Principles on Liquidity Risk Management for IIFS, March 2012", "IFSB-15: IFSB Revised Capital Adequacy Standard, December 2013", "IFSB-13: Guiding Principles on Stress Testing for IIFS, March 2012", "TN-1: Technical Note on Issues in Strengthening Liquidity Management of IIFS: The Development of Islamic Money Markets, March 2008", "Basel III: Liquidity Coverage Ratio and Liquidity Risk Monitoring Tools, January 2013", "Basel III: The Net Stable Funding Ratio, October 2014"],
+  "key_rules_for_assurance": [
+   {"rule": "Supervisory authorities may modify or exclude certain components of the LCR and the NSFR, taking account of specific economic conditions and the business model of IIFS, and are expected to provide transparency and appropriate public disclosures in applying these requirements.", "clause": "13", "tag": "verified"},
+   {"rule": "Supervisory authorities shall put into effect the LCR requirement for IIFS in line with the internationally agreed timeline: introduced on 1 January 2015 at a minimum level of 60%, increasing 10% each year until 100% is reached by 1 January 2019.", "clause": "14", "tag": "verified"},
+   {"rule": "The implementation date for the NSFR in line with the internationally agreed timeline is 1 January 2018, with no provision for phasing in the requirements as proposed for the LCR.", "clause": "16", "tag": "verified"},
+   {"rule": "LCR = Stock of Shari`ah-compliant HQLA divided by total net cash outflows over the next 30 calendar days, and must be at least 100%.", "clause": "20", "tag": "verified"},
+   {"rule": "The amount of cash inflows that can offset outflows is capped at 75% of total expected cash outflows, so the IIFS must hold a minimum stock of HQLA equal to 25% of total net cash outflows.", "clause": "21", "tag": "verified"},
+   {"rule": "IIFS are required to maintain the LCR at a level no lower than that required by the supervisory authority in both normal and financial stress times, but may, with approval from the supervisory authority, draw on their stock of HQLA during stress conditions and replenish it afterwards.", "clause": "22", "tag": "verified"},
+   {"rule": "IIFS should develop their own scenarios based on liquidity stress testing of their portfolio, hold more HQLA if stress test results indicate this is necessary, and share the results of these additional stress tests with supervisory authorities.", "clause": "24", "tag": "verified"},
+   {"rule": "HQLA are defined as assets unencumbered by liens and other restrictions on transfer which can be converted into cash easily and immediately, with little or no loss of value, including under the stress scenario.", "clause": "25", "tag": "verified"},
+   {"rule": "NSFR = Available stable funding (ASF) divided by required stable funding (RSF); this ratio should be equal to at least 100% on an ongoing basis.", "clause": "92", "tag": "verified"},
+   {"rule": "RPSIA do not count as ASF, but retail UPSIA may fall into categories mostly receiving ASF factors of 100%, 95% or 90%; Sukuk issued with an effective maturity of one year or more qualify for a 100% ASF.", "clause": "98", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-7",
+  "standard_id": "GN-7",
+  "standard_code": "GN-7",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE ON SHARI'AH-COMPLIANT LENDER-OF-LAST-RESORT FACILITIES",
+  "display_card": {
+   "one_liner": "Guides central banks on setting up emergency liquidity ('lender of last resort') facilities that Islamic banks can use, because conventional interest-based facilities are not open to them.",
+   "what_it_is": "A guidance note offering international benchmark guidelines to regulatory and supervisory authorities for developing and offering Shari'ah-compliant lender-of-last-resort (SLOLR) facilities as part of the financial safety net for Islamic banks. It covers the preconditions for an effective SLOLR framework (including moral hazard and a level playing field with conventional banks), eligibility criteria, collateral, penal rates, and the Shari'ah-compliant contract structures a central bank could use, such as qard, commodity murabahah, mudarabah, musharakah, wakalah and Islamic repurchase agreements. It also recommends disclosures by central banks to promote accountability and fairness.",
+   "why_it_matters_to_timeline": "Dated December 2019; developed under the IFSB's Strategic Performance Plan 2019-2021 to complement existing IFSB publications on SLOLR, including IFSB-1, IFSB-12, IFSB-17, TN-1 and Working Paper WP-01 (April 2014). It addresses the fact that conventional LOLR facilities normally depend on interest-bearing loans and so cannot appropriately be extended to Islamic banks.",
+   "source_label": "GN-7-December-2019_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "December 2019",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-1: Guiding Principles of Risk Management for IIFS (Other than Insurance Institutions) (December 2005)", "IFSB-12: Guiding Principles on Liquidity Risk Management for IIFS [Excluding Islamic Insurance (Takaful) Institutions and Islamic Collective Investment Schemes] (March 2012)", "IFSB-17: Core Principles for Islamic Finance Regulation [Banking Segment] (April 2015)", "TN-1: Issues in Strengthening Liquidity Management of IIFS: The Development of Islamic Money Markets (March 2008)", "WP-01: Strengthening the Financial Safety Net: The Role of Shari`ah-Compliant Lender-of-Last-Resort (SLOLR) Facilities as an Emergency Financing Mechanism (April 2014)", "GN-2: Guidance Note in Connection with the Risk Management and Capital Adequacy Standards: Commodity Murabahah Transactions"],
+  "key_rules_for_assurance": [
+   {"rule": "It is generally accepted that SLOLR facilities should not be available to insolvent banks; the requirement for good collateral has classically been regarded as the main mitigant for this risk.", "clause": "23", "tag": "verified"},
+   {"rule": "The CB's policy approach to SLOLR - in terms of which banks will be eligible, the instruments that will be used, the conditions attached, the kind of collateral that will be accepted, etc. - should be publicly known.", "clause": "25", "tag": "verified"},
+   {"rule": "An SLOLR should be compliant with Shari'ah rules and principles in line with the Shari'ah standards adopted by the jurisdiction; the mechanisms should have been formulated in advance of any crisis and approved by an appropriate body of Shari'ah scholars.", "clause": "27", "tag": "verified"},
+   {"rule": "CBs would need to ensure that their legal framework carries no impediments against providing Shari'ah-compliant emergency liquidity facilities using their chosen mechanism - for example, a CB opting for a qard mechanism must be authorised to lend free of interest, while one choosing commodity murabahah must have the legal capacity to engage in commodity trading.", "clause": "28", "tag": "verified"},
+   {"rule": "Preconditions for the effective operation of an SLOLR include a sound framework for banking supervision (liquidity regime, capital adequacy, stress testing, and an effective recovery and resolution regime); the regime should be defined in advance of need, approved by Shari'ah scholars and published; and assets used as collateral should be Shari'ah-compliant.", "clause": "29", "tag": "verified"},
+   {"rule": "As a general principle and in all SLOLR scenarios, the CB will have to ensure that the IIFS in question is solvent - that is, its net assets are positive - with the added condition of Shari'ah compliance of both the collateral and the mechanism through which the CB provides funds.", "clause": "30", "tag": "verified"},
+   {"rule": "If an Islamic window or Islamic subsidiary of a conventional bank has access to the SLOLR while a conventional member of the same group has access to the conventional counterpart, the penal rates for the two facilities need to be closely aligned; otherwise, the opportunities for arbitrage will be too great.", "clause": "40", "tag": "verified"},
+   {"rule": "The CB must be satisfied that the IIFS requesting idiosyncratic SLOLR support has in fact exhausted all other funding avenues, which could partly be accomplished through the use of an appropriate rate that exceeds market rates.", "clause": "43", "tag": "verified"},
+   {"rule": "In SLOLR, the collateral requirement is intended to mitigate risks faced by the CB and can be in many forms, provided that it is a Shari'ah-compliant asset as determined by the Shari'ah board whose rulings are adopted by the CB.", "clause": "47", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-8",
+  "standard_id": "GN-8",
+  "standard_code": "GN-8",
+  "regulator": "IFSB",
+  "title": "GN-8 GUIDANCE NOTE ON DEEPENING THE ISLAMIC CAPITAL MARKETS",
+  "display_card": {
+   "one_liner": "Gives regulators best practices for growing and deepening Islamic capital markets - the markets for Shari'ah-compliant stocks, sukuk, Islamic funds and related products.",
+   "what_it_is": "A guidance note that aims to provide guidance on, and highlight best practices for, developing and deepening the Islamic capital market (ICM). It seeks to provide international best practices for promoting ICM growth, guidance on deepening liquidity, guidance on strengthening regulatory frameworks and stability, and to promote harmonisation of practices across the ICM. It applies to all ICM products and services, identifies gaps and challenges (such as limited market liquidity, taxation issues and lack of benchmarks), sets out preconditions for development, and makes recommendations covering strategy, investors, liquidity, standardisation, costs, sovereign sukuk benchmarks, sustainability and technology.",
+   "why_it_matters_to_timeline": "Dated 15 December 2022. It notes that liquidity stresses experienced by IIFS due to the disruptions caused by COVID-19 highlighted the need for a wider range of Shari'ah-compliant central bank facilities and instruments, and it builds on other IFSB standards for the ICM including IFSB-6, IFSB-19, IFSB-21, IFSB-24 and IFSB-26.",
+   "source_label": "GN-8_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "15 DECEMBER 2022",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-6: Governance of Islamic Collective Investment Schemes (ICIS)", "IFSB-19: Guiding Principles for Disclosures in the ICM (Sukuk and ICIS)", "IFSB-21: Core Principles for Islamic Finance Regulation (ICM Segment)", "IFSB-24: Guiding Principles on Investor Protection in ICM", "IFSB-26: Core Principles for Islamic Finance Regulation (Financial Market Infrastructure)", "IFSB-12: Guiding Principles on Liquidity Risk Management for IIFS", "TN-1: Technical Note on Issues in Strengthening Liquidity Management of IIFS", "GN-6: Guidance Note on Quantitative Measures for Liquidity Risk Management for IIFS"],
+  "key_rules_for_assurance": [
+   {"rule": "Development of the ICM should be part of the overall strategy for the jurisdiction, alongside the development of the Islamic banking and takaful sectors, including coordination among national authorities, addressing preconditions, implementing international standards, and establishing proper standards of corporate governance and Shari'ah governance.", "clause": "60", "tag": "verified"},
+   {"rule": "To facilitate development of their ICM, jurisdictions may need to review and amend their tax regimes to ensure a level playing field for Islamic finance and that the tax system does not impose an extra burden on Islamic financial transactions.", "clause": "62", "tag": "verified"},
+   {"rule": "To attract greater institutional investor participation, regulators and other public authorities should ensure a level playing field for foreign institutional investors and implement strategies to increase the depth and diversity of the domestic institutional investor base.", "clause": "69", "tag": "verified"},
+   {"rule": "To enhance secondary market liquidity, regulatory and supervisory authorities and/or exchanges should consider introducing market-making mechanisms in the ICM to ensure that large-volume transactions for institutional investors are possible at (essentially) all times.", "clause": "75", "tag": "verified"},
+   {"rule": "Regulators should focus not only on encouraging a higher degree of retail participation in the ICM, but also on attracting informed investors, including through investor education programmes such as investor seminars and roadshows or other awareness-raising programmes.", "clause": "79", "tag": "verified"},
+   {"rule": "Standard-setting bodies, together with regulators, should work to facilitate the convergence of criteria for determining which instruments and transactions are Shari'ah-compliant, as well as to standardise legal documents and procedures, to promote greater certainty for investors.", "clause": "80", "tag": "verified"},
+   {"rule": "Regulators may seek to expedite the approval or registration procedures for primary issuances and streamline offering documentation requirements; tax frameworks would need to reflect that Islamic finance transactions are financing in nature and treat them on a similar basis as conventional financing to create a level playing field between sukuk and conventional bonds.", "clause": "90", "tag": "verified"},
+   {"rule": "The basic building block of a robust domestic sukuk market is a sustainable supply of domestic sukuk from both public and private sectors; key to this is establishing a sovereign benchmark yield curve, which requires the government and government agencies to make available different maturities for sovereign sukuk issues.", "clause": "94", "tag": "verified"},
+   {"rule": "Enabling IIFS to meet their liquidity management needs through short-term sukuk, or to raise funding through Shari'ah-compliant repo markets, requires addressing existing challenges including differences in Shari'ah interpretation, ease of issuance and need for standardisation of contracts, and limitations in the regulatory or legal frameworks.", "clause": "96", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-9",
+  "standard_id": "GN-9",
+  "standard_code": "GN-9",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE - 9: MACROPRUDENTIAL TOOLS FOR INSTITUTIONS OFFERING ISLAMIC FINANCIAL SERVICES (BANKING SEGMENT)",
+  "display_card": {
+   "one_liner": "Helps banking regulators adapt system-wide safety tools (macroprudential policy) so they work properly for Islamic banks, given the special features of Islamic banking.",
+   "what_it_is": "A guidance note for regulators of Islamic banks (called IIFS) covering commercial banks, banking windows, and investment banks. It aims to make macroprudential policy — the tools regulators use to protect the whole financial system — effective for Islamic banks by adjusting existing tools to Islamic banking's specificities ('adaptation'), addressing challenges in spotting system-wide vulnerabilities and calibrating the tools ('implementation'), and improving how these policies are governed ('governance'). It covers tools against excessive credit growth and leverage, liquidity risks, and structural (systemic) risks, and gives 13 recommendations.",
+   "why_it_matters_to_timeline": "Dated December 2024, it builds on previous IFSB work — Working Paper 17 on Effectiveness of Macroprudential Tools for Islamic Banking and IFSB-23 (Revised Capital Adequacy Standard) — and responds to IFSB-17's point that clear macroprudential policy is a prerequisite for effective supervision of Islamic banks.",
+   "source_label": "Approved-Guidance-Note-9-Macroprudential-Tools-for-IIFS-Banking-Segment.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "December 2024",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-17 Core Principles for Islamic Finance Regulation (Banking Segment)", "IFSB-23 Revised Capital Adequacy Standard for Institutions Offering Islamic Financial Services [Banking Segment]", "GN-6 Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic Financial Services", "TN-2 Technical Note on Stress Testing for Institutions Offering Islamic Financial Services (IIFS)", "IFSB-1 Guiding Principles of Risk Management for IIFS", "GN-2: Guidance Note in Connection with the Risk Management and Capital Adequacy Standards: Commodity Murabahah Transactions", "GN-3: Practice of Smoothing the Profits Payout to Investment Account Holders", "GN-4: The Determination of Alpha in the Capital Adequacy Ratio", "Working Paper 17 Effectiveness of Macroprudential Tools for Islamic Banking"],
+  "key_rules_for_assurance": [
+   {"rule": "Authorities may consider the valuation risk from the inventory of underlying asset(s) in exchange-based contracts when applying broad-based tools.", "clause": "Recommendation 1 (Section 3.1.1)", "tag": "verified"},
+   {"rule": "Authorities may consider the level of loss absorption by IAHs and its impact on displaced commercial risk; RSAs need to adequately assess the consistent treatment of DCR across IIFS and its system-wide implications during times of stress.", "clause": "Recommendation 2; paragraph 36", "tag": "verified"},
+   {"rule": "Authorities may consider additional credit risk in partnership contracts when determining the capital charge for these exposures.", "clause": "Recommendation 3; paragraph 39", "tag": "verified"},
+   {"rule": "RSA could consider implementing specific macroprudential measures, such as imposing limits on the use of tawarruq transactions and restricting the use of certain commodities in CMTs, to curb the excessive build-up of leverage.", "clause": "Recommendation 4; paragraph 43", "tag": "verified"},
+   {"rule": "Authorities may design and implement measures that help boost structural liquidity buffers and enhance liquidity risk management, including encouraging the use of HQLA or Alternative Liquidity Approaches (ALA) as set out in GN-6, higher reserve requirements, and a diversified funding mix.", "clause": "Recommendation 5; paragraph 49", "tag": "verified"},
+   {"rule": "RSA should require IIFS to adopt clear and binding profit payout mechanisms to strengthen market confidence and mitigate the potential for redemption pressures during periods of market volatility.", "clause": "Recommendation 8; paragraph 57", "tag": "verified"},
+   {"rule": "Contagion risk from common exposures underscores the need for RSA to define large exposure limits with lower thresholds and higher credit/market risk capital requirements.", "clause": "Recommendation 10; paragraph 62", "tag": "verified"},
+   {"rule": "Authorities need appropriate governance mechanisms to ensure Shari'ah-compliance is considered in formulating macroprudential policy for IIFS; timely access to a Shari'ah Board or authority that can provide advice on Shari'ah considerations is important.", "clause": "Recommendation 12; paragraph 69", "tag": "verified"},
+   {"rule": "Authorities should carefully assess the potential leakage when implementing differential treatment for IIFS and should take steps to address these risks, ensuring tools do not conflict between Islamic and conventional banks in dual banking systems.", "clause": "Recommendation 13; paragraph 75", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-10",
+  "standard_id": "GN-10",
+  "standard_code": "GN-10",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE ON RECOVERY AND RESOLUTION FOR TAKAFUL UNDERTAKINGS",
+  "display_card": {
+   "one_liner": "Tells regulators and Islamic insurance (takaful) companies how to plan for recovery from severe financial stress and how to wind down or rescue a failing takaful undertaking.",
+   "what_it_is": "Application-level guidance on Takaful Core Principles 12 (Exit from The Market and Resolution) and 16 (Enterprise Risk Management for Solvency Purposes), complementing the FSB Key Attributes and IAIS application papers. It covers recovery planning (triggers, recovery options like qard, hibah, surplus retention, portfolio transfer, run-off) and resolution powers and planning (entry into resolution, bridge institutions, bail-ins, safeguards, participant protection schemes). It highlights aspects specific to takaful — such as the segregation of the Participants' Risk Fund from the Shareholders' Fund and the need for Shari'ah governance throughout — that are not covered in the conventional references.",
+   "why_it_matters_to_timeline": "Dated July 2025, with RSAs and resolution authorities encouraged to adopt it from June 2027, allowing a pre-implementation period from the issuance date. It provides application-level guidance on TCPs 12 and 16 of IFSB-27 and complements the FSB Key Attributes and IAIS application papers.",
+   "source_label": "GN-10-Recovery-and-Resolution-for-Takaful-Undertakings.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "July 2025",
+  "timeline_bridge": {"effective_date": "RSAs and resolution authorities encouraged to adopt from June 2027"},
+  "supersedes": "",
+  "related_standards": ["IFSB-27: Core Principles for Islamic Finance Regulation (CPIFR) [Takaful Segment]", "TN-4: Technical Note on Recovery and Resolution for Institutions Offering Islamic Financial Services", "TN-5 Shari'ah-compliant Liquidity Risk Management Tools", "IFSB-10: Guiding Principles on Shari'ah Governance Systems for Institutions offering Islamic Financial Services", "IFSB-25", "IFSB WP-07 Recovery, Resolution and Insolvency Issues for Institutions Offering Islamic Financial Services", "IFSB WP-06: Strengthening the Financial Safety Net: The Role and Mechanisms of Shari'ah Compliant Deposit Insurance Schemes (SCDIS)", "FSB Key Attributes of Effective Resolution Regimes for Financial Institutions", "IAIS Application Paper on Recovery Planning", "IAIS Application Paper on Resolution Powers and Planning"],
+  "key_rules_for_assurance": [
+   {"rule": "The Shari'ah governance function should be involved from the beginning in developing the recovery plan to ensure Shari'ah compliance throughout planning and execution.", "clause": "paragraph 14 (Section 2.1)", "tag": "verified"},
+   {"rule": "Segregated funds may have different risk exposures, solvency levels, contractual obligations, and recovery options; therefore, the trigger points may be tailored to each fund's specific circumstances and needs.", "clause": "paragraph 18 (Section 2.3.2)", "tag": "verified"},
+   {"rule": "RSAs may require the TU to provide qard when the assets of the PRF are insufficient to cover both its liabilities and the required solvency margin, or when a PRF experiences a liquidity shortage preventing the settlement of obligations.", "clause": "paragraph 24 (Section 2.3.3)", "tag": "verified"},
+   {"rule": "Supervisors may evaluate how the recovery plan protects PRF assets from being used to cover SHF liabilities; when assessing the solvency of the TU, the resources of the PRF(s) should be distinguished from the SHF.", "clause": "paragraph 32 (Section 2.3.5)", "tag": "verified"},
+   {"rule": "PONVs need to be set for both the individual fund level and the entity level; the RSAs and/or resolution authority should establish clear standards or suitable indicators of non-viability, including both qualitative guidelines and quantitative (financial) thresholds.", "clause": "paragraph 46 (Section 3.4.1)", "tag": "verified"},
+   {"rule": "Where a takaful window is deemed non-viable, the RSA or resolution authority should require the conventional insurer to refrain from extracting any capital from the takaful window until all entitlements of participants and beneficiaries under takaful contracts have been fully met.", "clause": "paragraph 52 (Section 3.4.1)", "tag": "verified"},
+   {"rule": "Resolution powers must not require or be contingent on the cooperation of the failing TU and should be exercisable by authorities without the consent of the TO, its shareholders, Shari'ah board, creditors, participants, or retakaful operator.", "clause": "paragraph 55 (Section 3.4.2)", "tag": "verified"},
+   {"rule": "Due to the distinct ownership of the PRF(s), the RSAs and/or resolution authority must ensure that such assets are not used to meet the liabilities of the SHF, and in reverse, that specific PRF liabilities are limited to the PRF(s) and the SHF must be safeguarded.", "clause": "paragraph 60 (Section 3.5)", "tag": "verified"},
+   {"rule": "If a single PPS institution has a mandate to manage funds for both the conventional and Islamic segments, the funds should not be commingled to ensure Shari'ah-compliance.", "clause": "paragraph 75 (Section 3.10)", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-11",
+  "standard_id": "GN-11",
+  "standard_code": "GN-11",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE ON CLIMATE-RELATED FINANCIAL RISKS FOR INSTITUTIONS OFFERING ISLAMIC FINANCIAL SERVICES (BANKING SEGMENT)",
+  "display_card": {
+   "one_liner": "Tells regulators how to apply international climate-risk management principles to Islamic banks, taking account of the special features of Islamic banking.",
+   "what_it_is": "A guidance note whose primary objective is to give regulatory and supervisory authorities additional guidance on applying the BCBS Principles for the effective management and supervision of climate-related financial risks to Islamic banks (IIFS). It explains how Islamic finance specificities — financing structures like murabahah, istisna`, salam and partnership contracts, investment assets such as sukuk and real estate, profit-sharing investment accounts, and limited Shari'ah-compliant risk mitigants — change how climate risks reach these banks. It then gives 13 recommendations on governance, internal controls, capital and liquidity, risk management, scenario analysis, and supervision, and is intended for full-fledged Islamic banks and Islamic windows of conventional banks.",
+   "why_it_matters_to_timeline": "Dated December 2025, it complements the BCBS (2022) Principles for the effective management and supervision of climate-related financial risks and should be read alongside other relevant IFSB standards, which remain applicable in the context of managing climate-related financial risks.",
+   "source_label": "GN-11-English-Guidance-Note-on-Climate-Related-Financial-Risks-for-IIFS-Banking-Segment-English.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "DECEMBER 2025",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["BCBS (2022), Principles for the effective management and supervision of climate-related financial risks", "IFSB-23", "IFSB-30: Revised Guiding Principles on Corporate Governance for Institutions Offering Islamic Financial Services (Banking Segment)", "IFSB-17", "GN-6 Guidance Note on Quantitative Measures for Liquidity Risk Management in IIFS", "IFSB Technical Notes 1 and 5", "IFSB Technical Note 2", "IFRS S1: General requirements for disclosure of sustainability-related financial information", "IFRS S2: Climate-related disclosures"],
+  "key_rules_for_assurance": [
+   {"rule": "The Board of Directors (BOD) and senior management should have a clear understanding of the distinctive nature of Islamic finance specificities and climate-related financial risks.", "clause": "Recommendation 1 (BCBS Principle 2)", "tag": "verified"},
+   {"rule": "IIFS should ensure that staff in internal control functions have an adequate understanding of the transmission of climate-related financial risks considering Islamic finance specificities and that these are appropriately addressed within the internal control framework.", "clause": "Recommendation 2 (BCBS Principle 4)", "tag": "verified"},
+   {"rule": "When incorporating climate-related financial risks into ICAAPs and ILAAPs, IIFS should ensure that they reflect the specific risk profile of the IIFS's operations, including a separate analysis of the climate-related financial risks attributable to IAH.", "clause": "Recommendation 3 (BCBS Principle 5); paragraph 24", "tag": "verified"},
+   {"rule": "IIFS' risk management framework should incorporate climate-related financial risks, considering the nature of contracts used, the treatment of PSIAs, and the available Shari'ah-compliant risk mitigation instruments; risks attributable to IAH should be monitored and managed separately.", "clause": "Recommendation 4 (BCBS Principle 6); paragraph 27", "tag": "verified"},
+   {"rule": "IIFS should ensure that their credit risk management systems and processes have adequately considered material climate-related credit risks arising from the specific contracts used, such as capital impairment risk from profit-sharing financing contracts.", "clause": "Recommendation 6 (BCBS Principle 8); paragraph 32", "tag": "verified"},
+   {"rule": "In evaluating and managing the impact of climate-related risk drivers on their liquidity risk profiles, IIFS should take account of risks related to IAH and any limitations in the Shari'ah-compliant liquidity risk management tools available, including assessing the possible impact on IAH run-off rates.", "clause": "Recommendation 8 (BCBS Principle 10); paragraph 36", "tag": "verified"},
+   {"rule": "IIFS should consider, in their operational risk management systems and processes, possible disruptions to commodity markets as a result of climate risks that may affect their ability to conduct certain Islamic finance transactions.", "clause": "Recommendation 9 (BCBS Principle 11)", "tag": "verified"},
+   {"rule": "Where appropriate, IIFS should make use of scenario analysis that appropriately reflects Islamic finance specificities, including the risks related to the various types of Islamic financial contracts used and a separate analysis of the position of IAH.", "clause": "Recommendation 10 (BCBS Principle 12); paragraph 39", "tag": "verified"},
+   {"rule": "Supervisors should determine that IIFS can adequately identify, monitor, and manage material climate-related financial risks, taking proper account of the specific risk profile of the IIFS; at a minimum, the supervisor should ensure that climate-related financial risks are managed at the level of the parent as well as that of the window.", "clause": "Recommendation 11 (BCBS Principle 14); paragraph 42", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-TN-1",
+  "standard_id": "TN-1",
+  "standard_code": "TN-1",
+  "regulator": "IFSB",
+  "title": "TECHNICAL NOTE ON ISSUES IN STRENGTHENING LIQUIDITY MANAGEMENT OF INSTITUTIONS OFFERING ISLAMIC FINANCIAL SERVICES: THE DEVELOPMENT OF ISLAMIC MONEY MARKETS",
+  "display_card": {
+   "one_liner": "Studies how Islamic money markets work today and recommends how countries can develop them so Islamic banks can manage their short-term cash (liquidity) in a Shari`ah-compliant way.",
+   "what_it_is": "The IFSB found there were not enough Shari`ah-compliant money market instruments and that Islamic money markets in member countries were underdeveloped, so its Technical Committee mandated a study of existing practices and infrastructure across countries and proposals to remove the obstacles. The note reports what a dedicated Task Force found - for example, that Islamic banks hold much larger excess cash reserves at central banks than conventional banks because they cannot borrow at interest - and sets out a strategy in five recommendations: well-designed low-risk tradable instruments, Islamic government financing instruments issued regularly, central banks actively using those instruments, efficient trading and settlement arrangements, and supervisory guidance for banks' liquidity management.",
+   "why_it_matters_to_timeline": "Issued March 2008, following a mandate given by the IFSB Technical Committee at its 7th Meeting on 10 May 2005 in Amman; it addresses the lack of adequate Shari`ah-compliant money market instruments for liquidity management and the underdevelopment of Islamic money markets in IFSB member countries.",
+   "source_label": "TN-1-March-2008_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "March 2008",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB Guiding Principles of Risk Management (2005)", "IFSB Capital Adequacy Standard (2005)"],
+  "key_rules_for_assurance": [
+   {"rule": "High priority should be given to the use of market-based monetary operations using tradable Islamic instruments suitable for both monetary management by central banks and for liquidity management by IIFS; central banks should encourage tradable Shari`ah-compliant instruments that carry low risk, can be issued in adequate volume on a regular schedule, and can be held by both Islamic and conventional banks as well as non-banks.", "clause": "20", "tag": "verified"},
+   {"rule": "Develop a regular issuance programme of Government finance instruments in sufficient volume and integrate this into the public debt and financing management framework; as a general principle, it is best to avoid segmenting the market between central bank and Government financing instruments.", "clause": "21", "tag": "verified"},
+   {"rule": "Actively use these Government finance instruments in monetary operations by the central bank, including by developing short-term instruments such as Shari`ah-compliant alternatives to REPOs based on Government finance instruments; differing Shari`ah interpretations of such alternatives need to be resolved and a common design agreed among central banks.", "clause": "22", "tag": "verified"},
+   {"rule": "Adapt the payment and settlement system to accommodate the requirements of Islamic finance, including the settlement of Islamic money and capital market securities and the use of collateral and financing facilities suitable for IIFS in their settlement arrangements.", "clause": "23", "tag": "verified"},
+   {"rule": "Encourage the primary dealer systems and other market-making arrangements for trading in Shari`ah-compliant instruments, and develop a network of financial intermediaries to originate/underwrite Shari`ah-compliant securities.", "clause": "24", "tag": "verified"},
+   {"rule": "Encourage active liquidity management by IIFS, including through supervisory guidance on liquidity risk management; the use of Government finance instruments can be integrated into the liquidity monitoring and liquidity risk management framework.", "clause": "25", "tag": "verified"},
+   {"rule": "A coordinated effort across jurisdictions to promote harmonised approaches to designing and developing Islamic money market instruments should contribute to regionally and internationally integrated Islamic money markets; however, priority should be given to the creation of domestic Islamic money markets.", "clause": "26", "tag": "verified"},
+   {"rule": "The issue of developing Shari`ah-compatible forward and swap contracts in foreign exchange transactions should be addressed to allow for proper asset-liability management by IIFS and to bring about a level playing field in liquidity management by IIFS.", "clause": "28", "tag": "verified"},
+   {"rule": "Implementation of the recommendations will necessarily involve the adaptations of the legal and regulatory framework i.e. the trust laws, the banking and securities laws, the public debt laws, etc. and appropriate adjustments in the tax regime to facilitate the operation of Islamic money and capital markets.", "clause": "30", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-TN-2",
+  "standard_id": "TN-2",
+  "standard_code": "TN-2",
+  "regulator": "IFSB",
+  "title": "TECHNICAL NOTE ON STRESS TESTING FOR INSTITUTIONS OFFERING ISLAMIC FINANCIAL SERVICES (IIFS)",
+  "display_card": {
+   "one_liner": "Gives Islamic banks and their supervisors practical, technical guidance on how to run stress tests - simulations of bad economic scenarios - covering both solvency (capital) and liquidity (cash).",
+   "what_it_is": "Stress tests let a bank and its supervisor check whether the bank could withstand adverse financial and economic shocks, and let the supervisor gauge the impact of such shocks on financial stability. This note aims to facilitate the design and simulation of solvency and liquidity stress tests for institutions offering Islamic financial services (IIFS), to highlight the risk specificities of IIFS (such as Shari`ah non-compliance risk, rate of return risk and the position of investment account holders) and how to capture them, and to provide stylised numerical examples under different shock scenarios. Its scope is limited to the banking sector, covering both institution-level and industry-wide stress tests, and it may be extended to self-contained Islamic 'window' operations.",
+   "why_it_matters_to_timeline": "Dated December 2016; the IFSB Council approved its development at its 23rd meeting in Doha, Qatar, on 10 December 2013, and it operationalises IFSB-13 (which followed a principles-based approach but did not provide technical guidance on how to conduct stress tests in practice) and complements IFSB-17: Core Principles for Islamic Finance Regulation.",
+   "source_label": "TN-2-December-2016_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "December 2016",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-1: Guiding Principles of Risk Management for Institutions (other than Insurance Institutions) offering only Islamic Financial Services (IIFS)", "GN-6: Guidance Note on Quantitative Measures for Liquidity Risk Management of IIFS", "IFSB-12: Guiding Principles on Liquidity Risk Management for IIFS", "IFSB-13: Guiding Principles on Stress Testing for Institutions offering Islamic Financial Services", "IFSB-16: Revised Guidance on Key Elements in the Supervisory Review Process of IIFS", "IFSB-17: Core Principles for Islamic Finance Regulation (Banking Segment) (CPIFR)"],
+  "key_rules_for_assurance": [
+   {"rule": "An effective stress-testing framework relies on five elements: determination of the objectives including risk factors and frequency; selection of meaningful stress scenarios of different levels of impact; translation of those stresses as first-round impacts on financial performance and position; assessment of results and generation of follow-up actions; and taking the results into account in management decision making.", "clause": "19", "tag": "verified"},
+   {"rule": "The principles in IFSB-13 must be applied by IIFS and RSAs to ensure strong governance in stress tests.", "clause": "22", "tag": "verified"},
+   {"rule": "An IIFS must embed stress testing in the organisation and perform such tests as a regular feature of its business; it must clearly fix responsibility for stress testing, allocate appropriate resources, have an organisational structure focused on stress testing which defines roles and responsibilities and reporting lines, and hold people accountable for executing the stress-testing policy.", "clause": "23", "tag": "verified"},
+   {"rule": "Senior management, in consultation with the board of directors, should establish a comprehensive, integrated and effective stress-testing exercise that fits into the broader risk management objectives, and should maintain internal summaries of test results available to the board and RSA.", "clause": "24", "tag": "verified"},
+   {"rule": "Measurement of rate of return risk in the banking book (RRRBB) should be based on outcomes arising from a wide and appropriate range of shock and stress scenarios affecting the benchmark rates of return.", "clause": "126", "tag": "verified"},
+   {"rule": "Supervisory authorities should be particularly attentive to the capital sufficiency of 'outlier IIFS' - as a minimum criterion, outlier IIFS are those whose RRRBB risk in the banking book leads to an economic value decline of 15% of the Tier 1 capital following a standardised benchmark rate shock or its equivalent.", "clause": "131", "tag": "verified"},
+   {"rule": "Liquidity stress-test scenarios and assumptions for IIFS should be carefully analysed by both IIFS and RSAs; in particular, determining the liquidity characteristics of assets of IIFS, including Shari`ah-compliant securities/sukuk for the purpose of a fire sale in the event of liquidity shocks, is one of the key aspects of these tests.", "clause": "173", "tag": "verified"},
+   {"rule": "IIFS and RSAs should consider idiosyncratic and market-wide stress scenarios, including short- and long-term considerations, in their liquidity stress testing; it is valuable to be more conservative while transforming the scenarios into assumptions.", "clause": "184", "tag": "verified"},
+   {"rule": "RSAs and IIFS should calibrate models provided for liquidity stress testing based on the country-specific and/or institution-specific circumstances, taking account of the funding structure, level of competition, development of the market and any other relevant factors.", "clause": "208", "tag": "verified"},
+   {"rule": "Liquidity stress testing results should be evaluated in line with an IIFS's overall strategy and annual planning cycles; results should be refreshed in the event of major strategic decisions, or other decisions that can materially impact capital or liquidity.", "clause": "211", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-TN-3",
+  "standard_id": "TN-3",
+  "standard_code": "TN-3",
+  "regulator": "IFSB",
+  "title": "Technical Note on Financial Inclusion and Islamic Finance",
+  "display_card": {
+   "one_liner": "Guidance on good practices in regulating the financial sector to enhance financial inclusion through Islamic finance, balancing the benefits of regulation against the risks and costs (proportionality).",
+   "what_it_is": "A technical note giving regulators international benchmark guidelines on regulatory and supervisory policies to support financial inclusion initiatives in the Islamic financial services industry, including Islamic microfinance, savings and investment activities. It takes an activities-based approach, with dedicated sections on financing, deposit-taking and investment activities, plus non-prudential regulation (consumer protection, AML/CFT, digital finance) and Islamic social finance instruments such as sadaqah and waqf. It also covers financial inclusion through digital finance and FinTech platforms, excluding crypto-assets and blockchain.",
+   "why_it_matters_to_timeline": "Dated December 2019; the IFSB Council approved preparation of this TN in its 29th meeting on 14 December 2016 as part of the IFSB Work Plan for 2017. It builds upon existing IFSB standards including IFSB-1, IFSB-3, IFSB-9, IFSB-10 and IFSB-12, and benchmarks capital requirements to IFSB-15.",
+   "source_label": "TN-3_-Technical-Note-on-Financial-Inclusion-and-Islamic-Finance_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "December 2019",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-1: Guiding Principles of Risk Management of Institutions offering Islamic Financial Services (IIFS)", "IFSB-3: Guiding Principles on Corporate Governance for IIFS", "IFSB-9: Guiding Principles on Conduct of Business for IIFS", "IFSB-10: Guiding Principles on Shari'ah Governance Systems for IIFS", "IFSB-12: Guiding Principles for Liquidity Risk Management of IIFS", "IFSB-15", "IFSB-16", "IFSB-17: Core Principles for Islamic Finance Regulation - Banking Segment (CPIFR)", "FATF Recommendations (2012)"],
+  "key_rules_for_assurance": [
+   {"rule": "Regulatory/supervisory authorisation of financing activities in Islamic financial inclusion initiatives can only be extended under the condition that the (a) product structure, (b) operational mechanism, and (c) overall objectives of the financing transaction do not contravene the principles of Shari'ah.", "clause": "92", "tag": "verified"},
+   {"rule": "The supervisory authority may require the service provider to seek either approval of its financing products by a centralised approval authority on Shari'ah (e.g. a centralised Shari'ah board), or the opinion of and endorsement by a Shari'ah body, applied on a proportionality basis.", "clause": "93", "tag": "verified"},
+   {"rule": "The service provider must satisfy the supervisory authority that its financing mode and instruments are in conformity with Shari'ah, and that the product disclosure sheet duly clarifies the rights and responsibilities of the contracting parties.", "clause": "100", "tag": "verified"},
+   {"rule": "Service providers which mobilise deposits from the public for the purpose of financing activities should be regulated under both prudential and non-prudential guidelines, with the extent of prudential regulations commensurate with the size, complexity and type of financing activities.", "clause": "106", "tag": "verified"},
+   {"rule": "All service providers in Islamic financial inclusion financing initiatives should have in place appropriate policies, systems and procedures to identify, measure, monitor and control their risk exposures.", "clause": "108", "tag": "verified"},
+   {"rule": "For capital requirements on service providers offering Shari'ah-compliant financial inclusion activities, the TN benchmarks to the minimum capital requirements as set out in Sections II and III of IFSB-15, taking into account both credit risk and market risk.", "clause": "113", "tag": "verified"},
+   {"rule": "The TN encourages implementation of financing limits, commensurate with the specific country, region and sector context, serving as prudential regulations that mitigate concentration risk.", "clause": "121", "tag": "verified"},
+   {"rule": "A proportionate approach to provisioning for financial inclusion-specific financing is recommended, premised on four factors: (i) maturity, (ii) frequency of instalment payments, (iii) collateral, and (iv) probability of default; both a general provision on the whole portfolio and specific provisions based on days overdue should be set aside.", "clause": "127", "tag": "verified"},
+   {"rule": "The service provider is expected to review its total exposures and assess changes in the riskiness of its assets as frequently as every month, and send the supervisory authority, at least once every three months, its schedule of total exposures showing provisions made.", "clause": "133", "tag": "verified"},
+   {"rule": "Credit enhancement mechanisms in Islamic financial inclusion must be Shari'ah-compliant, with a possible approved exception only where a client seeks Shari'ah-compliant financing for a halal activity but possesses only Shari'ah non-compliant collateral.", "clause": "135", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-TN-4",
+  "standard_id": "TN-4",
+  "standard_code": "TN-4",
+  "regulator": "IFSB",
+  "title": "Technical Note on Recovery and Resolution for Institutions Offering Islamic Financial Services",
+  "display_card": {
+   "one_liner": "Guidance to help regulators establish an effective recovery and resolution framework for institutions offering Islamic financial services, in a manner fully compliant with Shari'ah principles.",
+   "what_it_is": "A technical note that helps regulatory, supervisory and resolution authorities set out the essential measures for effective recovery and resolution planning for Islamic banks, support resolvability assessments, and ensure Shari'ah governance of the recovery and resolution framework. It covers fully-fledged Islamic banks (both systemically important and not) and Islamic banking windows of conventional banks. It supplements the FSB's Key Attributes of Effective Resolution Regimes by addressing the idiosyncrasies of Islamic finance, such as the treatment of profit-sharing investment accounts, Shari'ah-compliant bail-in, asset transfers and bridge banks.",
+   "why_it_matters_to_timeline": "Dated June 2022; it addresses the absence of a Shari'ah-based framework for dealing with stressed IIFS, identified as one of the significant gaps in the regulatory regime for the Islamic financial services industry. It adopts a supplementary approach to the FSB's Key Attributes of Effective Resolution Regimes for Financial Institutions, developed after the Global Financial Crisis.",
+   "source_label": "TN-4_-Technical-Note-on-Recovery-and-Resolution-for-Institutions-Offering-Islamic-Financial-Services_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "June 2022",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["FSB's Key Attributes of Effective Resolution Regimes for Financial Institutions", "WP-07: Recovery, Resolution and Insolvency Issues for Institutions offering Islamic Financial Services, December 2017", "IFSB 13: Guiding Principles on Stress Testing for Institutions offering Islamic Financial Services, March 2012", "TN-2: Technical Note on Stress Testing for Institutions offering Islamic Financial Services (IIFS), December 2016", "IFSB-1: Guiding Principles of Risk Management for Institutions (other than Insurance Institutions) Offering Only Islamic Financial Services", "IADI-IFSB standard Core Principles for Effective Islamic Deposit Insurance Systems"],
+  "key_rules_for_assurance": [
+   {"rule": "Any IIFS that could be deemed systemically significant by the relevant RSA or other authorities should be subject to an RR framework meeting the essential elements of this TNRR, extending to holding companies, significant non-regulated operational entities within the group, and branches of foreign IIFS or conventional banks.", "clause": "19", "tag": "verified"},
+   {"rule": "The RR regime established by the RSA should require IIFS to prepare recovery plans, and to be subject to resolution plans that are prepared by the RSAs, including group RRP where applicable and periodic review by the relevant authorities.", "clause": "20", "tag": "verified"},
+   {"rule": "A recovery plan for an IIFS should, at the minimum, contain information on its core business activities, critical functions, critical shared services, business group structures and interrelations with other group entities, early warning indicators, and recovery plan triggers, together with well-defined escalation procedures.", "clause": "24", "tag": "verified"},
+   {"rule": "The RRP framework for the IIFS should ensure that its design, procedures, operations and ongoing monitoring mechanisms are all in continued compliance with Shari'ah principles.", "clause": "26", "tag": "verified"},
+   {"rule": "The Shari'ah board should be independent from the IIFS management so as to be able to resolve and decide any Shari'ah issues and aspects arising from the recovery planning; senior management preparing the recovery plan should be informed and guided by the Shari'ah board.", "clause": "27", "tag": "verified"},
+   {"rule": "The resolution planning framework should include requirements for crisis management groups of an IIFS to coordinate with the respective national Shari'ah council to ensure the resolution plan and its implementation are in full compliance with national and Shari'ah laws.", "clause": "57", "tag": "verified"},
+   {"rule": "Client assets held by an IIFS (for example assets belonging to a pool of restricted PSIAs managed as mudarib) do not belong to the IIFS; their segregation needs to be maintained through a resolution process, and such assets cannot be included as part of the resolution arrangements.", "clause": "62", "tag": "verified"},
+   {"rule": "Provision of temporary funding support to IIFS in resolution should be Shari'ah-compliant and subject to strict conditions minimising moral hazard: an assessment that it is essential to preserve financial stability and that private sources of funding have been exhausted, and all losses shall be borne by equity holders.", "clause": "65", "tag": "verified"},
+   {"rule": "In resolution, secured creditors will be paid up to the amount of their security, followed by unsecured creditors, and creditors who have agreed to delay their right to payment; leftover funds may go to shareholders as residual claimants. Assets in investment accounts based on wakalah and mudarabah belong solely to IAH and not to IIFS.", "clause": "72", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-TN-5",
+  "standard_id": "TN-5",
+  "standard_code": "TN-5",
+  "regulator": "IFSB",
+  "title": "TN-5: Technical Note on Shari`ah-Compliant Liquidity-Risk-Management Tools",
+  "display_card": {
+   "one_liner": "Describes and evaluates the Shari`ah-compliant tools available (or potentially available) to Islamic banks for managing liquidity risk, and gives guidance on how to use them.",
+   "what_it_is": "A technical note whose purpose is to enumerate, describe and evaluate the Shari`ah-compliant liquidity-risk-management tools (SLRMT) available, or potentially available, to institutions offering Islamic financial services, and provide guidance on how to use them. It examines the Shari`ah compliance of liquidity tools and their regulatory implications, proposes illustrative models (central bank deposits, central bank funding, Islamic interbank instruments, short-term sukuk, and FX risk management), and sets out considerations for central banks setting up such tools. Its scope covers all major liquidity-risk-management instruments used in various jurisdictions and by multinational institutions.",
+   "why_it_matters_to_timeline": "Dated August 2023; it aims to consolidate and supplement the IFSB's earlier liquidity guidance, listing TN-1 (March 2008), GN-2 (December 2010), IFSB-12 (March 2012), WP-01 (April 2014), GN-6 (April 2015), GN-7 (December 2019) and IFSB-23 (December 2021), noting the current publications do not deal exhaustively with SLRMT available to IIFS.",
+   "source_label": "Final-TN-5-Technical-Note-on-Shariah-compliant-Liquidity-Management-Tools.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "August 2023",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["TN-1: Technical Note on Issues in Strengthening Liquidity Management of Institutions Offering Islamic Financial Services: The Development of Islamic Money Markets (March 2008)", "GN-2: Guidance Note in Connection with the Risk Management and Capital Adequacy Standards: Commodity Murabahah Transactions (December 2010)", "IFSB-12: Guiding Principles on Liquidity Risk Management for Institutions Offering Islamic Financial Services (March 2012)", "GN-6: Guidance Note on Quantitative Measures for Liquidity Risk Management in Institutions Offering Islamic Financial Services (April 2015)", "GN-7: Guidance Note on Shari`ah-Compliant Lender-Of-Last-Resort Facilities (December 2019)", "IFSB-23: Revised Capital Adequacy Standard for Institutions Offering Islamic Financial Services (Banking Segment) (December 2021)", "WP-01: The Role of Shari`ah-Compliant Lender-of-Last Resort Facilities as an Emergency Financing Mechanism (April 2014)", "GN-8: Guidance Note on Deepening the Islamic Capital Markets (December 2022)", "IFSB-15"],
+  "key_rules_for_assurance": [
+   {"rule": "Quoting IFSB-12 guiding principle 23: supervisory authorities should work closely with other relevant official or public sector bodies to facilitate the issuance of Shari`ah-compliant instruments/sukuk by the government and the provision of Shari`ah-compliant deposit insurance, and should facilitate the availability of market makers in such instruments to develop secondary markets.", "clause": "19", "tag": "verified"},
+   {"rule": "Per GN-6, governments or relevant authorities should regularly issue a sufficient volume of Shari`ah-compliant HQLA to build market liquidity, providing the base for a liquid, deep and active market in these instruments.", "clause": "70", "tag": "verified"},
+   {"rule": "Ideally, central banks should accept HQLA as collateral from IIFS when they are seeking short-to-medium-term liquidity facilities.", "clause": "71", "tag": "verified"},
+   {"rule": "Instruments must comply with certain Shari`ah rules and conditions to be tradable, including that the sale of the asset should result in its associated risks and ownership being transferred; conditions cannot stipulate that the seller remains liable for risks associated with the asset except for unapparent defects.", "clause": "73", "tag": "verified"},
+   {"rule": "Tangible assets and other like assets must dominate the total value of the underlying asset pool of the instrument issued; per IFSB-23 (paragraph 614), sukuk based on receivables are not tradable on their own but may be combined in a pool with non-financial assets subject to a minimum acceptable ratio in accordance with Shari'ah rules.", "clause": "74", "tag": "verified"},
+   {"rule": "Central banks should encourage the issuance of tradable Islamic instruments that are suitable for central banks' monetary management and IIFS' liquidity management.", "clause": "83", "tag": "verified"},
+   {"rule": "Providing funds as a Shari`ah-compliant lender of last resort should be at a rate higher than market rates so banks use the facility only when necessary, but not so high that it burdens banks already facing liquidity shortages.", "clause": "85", "tag": "verified"},
+   {"rule": "Authorities can facilitate liquidity risk management in their jurisdictions by issuing short-term sovereign sukuk, facilitating the availability of market makers in such sukuk, and facilitating the provision of Shari'ah-compliant (Takaful-based) deposit insurance for current and profit-sharing investment accounts, introducing it where it does not already exist.", "clause": "138", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "AAOIFI-FAS-3",
+  "standard_id": "FAS 3",
+  "standard_code": "FAS 3",
+  "regulator": "AAOIFI",
+  "title": "Financial Accounting Standard No. (3): Mudaraba Financing",
+  "display_card": {
+   "one_liner": "Sets the accounting rules an Islamic bank must follow when it provides money to a client under a Mudaraba (profit-sharing) financing arrangement.",
+   "what_it_is": "This standard sets out accounting rules for recognizing, measuring and disclosing Mudaraba financing transactions carried out by Islamic banks and financial institutions as the provider of funds. It covers the capital the bank provides from contract inception to completion, and the bank's share in Mudaraba profits or losses. It also details the juristic (Shari'a) principles behind the chosen accounting treatments.",
+   "why_it_matters_to_timeline": "Adopted by the Board in its meeting No. (10) held 14-16 Ramadan 1416 A.H., corresponding to 3-5 February 1996 A.D., and effective for financial statements for fiscal periods beginning 1 Muharram 1418 A.H., or 1 January 1998 A.D. It governs how Islamic banks account for Mudaraba financing.",
+   "source_label": "Financial-Accounting-Standard-3-Mudaraba-Financing.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "Adopted by the Board in its meeting No. (10) held on 14-16 Ramadan 1416 A.H., corresponding to 3-5 February 1996 A.D.",
+  "timeline_bridge": {"effective_date": "Effective for financial statements for fiscal periods beginning 1 Muharram 1418 A.H., or 1 January 1998 A.D."},
+  "supersedes": "",
+  "related_standards": ["Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions", "Financial Accounting Statement No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions", "Financial Accounting Statement No. (2): Concept of Financial Accounting for Islamic Banks and Financial Institutions"],
+  "key_rules_for_assurance": [
+   {"rule": "Mudaraba financing capital (cash or kind) shall be recognized when it is paid to the Mudarib or placed under his disposition.", "clause": "para. 3", "tag": "verified"},
+   {"rule": "If it is agreed that the capital of a Mudaraba is to be paid in instalments, then each instalment shall be recognized at the time of its payment.", "clause": "para. 4", "tag": "verified"},
+   {"rule": "Mudaraba capital provided in cash by the Islamic bank shall be measured by the amount paid or the amount placed under the disposition of the mudarib.", "clause": "para. 7", "tag": "verified"},
+   {"rule": "Mudaraba capital provided in kind shall be measured at the fair value of the assets (the value agreed upon between the Islamic bank and the client); any difference between fair value and book value is recognized as profit or loss to the Islamic bank itself.", "clause": "para. 8", "tag": "verified"},
+   {"rule": "If a portion of the Mudaraba capital is lost prior to the inception of work without any misconduct or negligence on the part of the Mudarib, such loss shall be deducted from the Mudaraba capital and treated as a loss to the Islamic bank; if the loss occurs after inception of work, it shall not affect the measurement of Mudaraba capital.", "clause": "para. 11", "tag": "verified"},
+   {"rule": "Profits or losses in respect of the Islamic bank's share in Mudaraba financing transactions that commence and end during a single financial period shall be recognized at the time of liquidation.", "clause": "para. 14", "tag": "verified"},
+   {"rule": "For Mudaraba financing continuing for more than one financial period, the bank's share of profits for any period is recognized to the extent the profits are being distributed, and its share of losses to the extent such losses are being deducted from the Mudaraba capital.", "clause": "para. 15", "tag": "verified"},
+   {"rule": "The Mudarib shall bear the losses incurred due to misconduct or negligence on his part; such loss shall be recognized as a receivable due from the Mudarib.", "clause": "para. 18", "tag": "verified"},
+   {"rule": "Disclosure should be made in the notes to the financial statements if the Islamic bank has made during that period a provision for decline in the value of Mudaraba assets.", "clause": "para. 19", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "AAOIFI-FAS-27",
+  "standard_id": "FAS 27",
+  "standard_code": "FAS 27",
+  "regulator": "AAOIFI",
+  "title": "Financial Accounting Standard No. (27): Investment accounts",
+  "display_card": {
+   "one_liner": "Sets the accounting, measurement, presentation and disclosure rules for investment accounts that customers place with Islamic financial institutions.",
+   "what_it_is": "This standard sets out the principles for accounting recognition, measurement, presentation and disclosure of investment accounts, which form an integral part of the financial statements of Islamic Financial Institutions, particularly Islamic Banks. It applies to on-balance sheet and off-balance sheet, unrestricted and restricted investment accounts based on Mudaraba contracts, including short-term interbank deposits used for liquidity management.",
+   "why_it_matters_to_timeline": "Adopted by the Accounting and Auditing Standards Board on 16 Muharram 1436 A.H., corresponding to 9 November 2014 A.D., and effective for financial periods beginning 1 January 2016 A.D. It replaces the previous FAS No. (5) and FAS No. (6), which it combines into one standard in view of the new Conceptual Framework.",
+   "source_label": "Financial-Accounting-Standard-27-Investment-accounts.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "Adopted by the Accounting and Auditing Standards Board on 16 Muharram 1436 A.H., corresponding to 9 November 2014 A.D.",
+  "timeline_bridge": {"effective_date": "Effective for financial periods beginning 1 January 2016 A.D."},
+  "supersedes": "The previous Financial Accounting Standard No. (5): Disclosures of Bases for Profit Allocation Between Owners' Equity and Investment Accountholders and the previous Financial Accounting Standard No. (6): Equity of Investment Accountholders and Their Equivalent have been combined into and replaced by this standard.",
+  "related_standards": ["Financial Accounting Standard No. (5): Disclosures of Bases for Profit Allocation Between Owners' Equity and Investment Accountholders", "Financial Accounting Standard No. (6): Equity of Investment Accountholders and Their Equivalent", "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Financial Institutions", "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions", "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"],
+  "key_rules_for_assurance": [
+   {"rule": "This standard shall apply to on-balance sheet and off-balance sheet, unrestricted and restricted investment accounts managed by Islamic Financial Institutions, including Mudaraba-based accounts representing equity of investment accountholders and short-term interbank deposits for liquidity management.", "clause": "para. 1", "tag": "verified"},
+   {"rule": "Profit sharing Mudaraba based investment accounts that provide authority over decisions with regards to the use of and deployment of the funds received are treated as equity of investment accountholders and presented as an on-balance sheet item.", "clause": "para. 5", "tag": "verified"},
+   {"rule": "When an investment account is recognised initially, the Islamic Financial Institution shall recognise it at the fair value of the consideration received at the date on which the contract becomes effective.", "clause": "para. 10", "tag": "verified"},
+   {"rule": "Investment accounts are recognised when cash or cash equivalent has been received under a legally enforceable Mudaraba or other similar contract and there are no preconditions to the contract becoming valid.", "clause": "para. 11", "tag": "verified"},
+   {"rule": "After initial recognition, subsequent measurement of investment accounts shall take into account undistributed profits, profit equalisation reserves or other special reserves created specifically for the account of investment accountholders less any losses on assets attributable to investment accountholders.", "clause": "para. 15", "tag": "verified"},
+   {"rule": "Unpaid or undistributed profits or gains, after allocation of profits to the Islamic Financial Institution as Mudarib, shall be set aside for future distribution and added to the value of the corresponding investment accounts and shall not be combined with retained earnings belonging to owners.", "clause": "para. 16", "tag": "verified"},
+   {"rule": "Impairment losses attributable to the assets corresponding to the investment accounts shall be taken to the income statement if they are attributable to on-balance sheet investment accounts or to the separate income account of the off-balance sheet investment accounts if they belong to off-balance sheet investment accounts.", "clause": "para. 19", "tag": "verified"},
+   {"rule": "Loss due to misconduct or negligence on the part of the Islamic Financial Institution, based on the opinion of the Shari'a supervisory board, shall be deducted from the Islamic Financial Institution's share in the profits of the jointly financed investment.", "clause": "para. 21", "tag": "verified"},
+   {"rule": "Equity of on-balance sheet investment accountholders shall be presented as an independent category in the statement of financial position of the Islamic Financial Institution between liabilities and owners' equity.", "clause": "para. 22", "tag": "verified"},
+   {"rule": "This standard shall be applied retroactively in accordance with the requirements stated in Financial Accounting Standard No. (1).", "clause": "para. 37", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "AAOIFI-FAS-32",
+  "standard_id": "FAS 32",
+  "standard_code": "FAS 32",
+  "regulator": "AAOIFI",
+  "title": "AAOIFI Financial Accounting Standard 32: Ijarah",
+  "display_card": {
+   "one_liner": "Sets the rules for how Islamic financial institutions classify, record, measure and disclose Ijarah (Islamic lease) transactions, whether they are the lessor or the lessee.",
+   "what_it_is": "The objective of this standard is to set out principles for the classification, recognition, measurement, presentation and disclosure for Ijarah (asset Ijarah, including different forms of Ijarah Muntahia Bittamleek) transactions entered into by Islamic financial institutions on both ends of the transaction, as lessor and lessee. It brings a fundamental shift in accounting for the lessee: instead of the earlier off-balance sheet approach, the lessee now recognises a 'right-of-use asset' and a corresponding Ijarah liability. It does not apply to Ijarah-based Sukuk, natural-resource Ijarah, or service Ijarah transactions.",
+   "why_it_matters_to_timeline": "The standard was presented for approval in the AAOIFI Accounting Board's 16th meeting held on 2-3 Rabi I 1441H, corresponding to 31 October 2019 and 1 November 2019, and was duly approved; it is effective for financial periods beginning on or after 01 January 2021 with early adoption permitted, and supersedes the earlier AAOIFI FAS 8 'Ijarah and Ijarah Muntahia Bittamleek'.",
+   "source_label": "FAS-32-Ijarah-Formatted-2021-clean-April-2023-1.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "Presented for approval in the AAOIFI Accounting Board's 16th meeting held on 2-3 Rabi I 1441H, corresponding to 31 October 2019 and 1 November 2019, and duly approved",
+  "timeline_bridge": {"effective_date": "Effective for the financial periods beginning on or after 01 January 2021. Early adoption is permitted."},
+  "supersedes": "This standard supersedes the earlier AAOIFI FAS 8 'Ijarah and Ijarah Muntahia Bittamleek' (originally issued in 1997).",
+  "related_standards": ["FAS 8 'Ijarah and Ijarah Muntahia Bittamleek'", "FAS 30 'Impairment, Credit Losses and Onerous Commitments'", "FAS 1: 'General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions'", "Conceptual Framework for Financial Reporting as endorsed by AAOIFI", "AAOIFI Shari'ah Standards (SS)"],
+  "key_rules_for_assurance": [
+   {"rule": "At inception of a contract, an institution shall assess whether the contract is, or contains, an Ijarah; a contract is, or contains, an Ijarah if it transfers the usufruct (but not control) of an identified asset for a period of time in exchange for an agreed consideration.", "clause": "paragraph 5", "tag": "verified"},
+   {"rule": "An institution, as lessor or lessee, shall classify each of its Ijarah as an operating Ijarah, or an Ijarah MBT (with expected transfer of ownership after the end of the Ijarah term through a sale or gift, or with gradual transfer during the Ijarah term including Diminishing Musharaka Ijarah).", "clause": "paragraph 12", "tag": "verified"},
+   {"rule": "At the commencement date, a lessee shall recognise a right-of-use (usufruct) asset and a net Ijarah liability comprising the gross Ijarah liability and deferred Ijarah cost (shown as a contra-liability).", "clause": "paragraph 21", "tag": "verified"},
+   {"rule": "At the commencement date, a lessee shall measure the right-of-use asset at cost.", "clause": "paragraph 22", "tag": "verified"},
+   {"rule": "After the commencement date, a lessee shall measure the right-of-use asset at cost, less any accumulated amortisation, less any accumulated impairment losses, adjusted for any effect of Ijarah modification or reassessment.", "clause": "paragraph 33", "tag": "verified"},
+   {"rule": "Deferred Ijarah cost shall be amortised to income over the Ijarah term on a time proportionate basis; it is a rebuttable presumption that for most Ijarah transactions the appropriate method shall be the effective rate of return method.", "clause": "paragraph 42", "tag": "verified"},
+   {"rule": "Underlying asset shall be recognised in the books of the lessor once it controls the underlying asset i.e., the time when it essentially acquires substantially all risks and rewards incidental to ownership of such underlying asset.", "clause": "paragraph 61", "tag": "verified"},
+   {"rule": "Subsequent to initial recognition, the underlying assets shall be measured by the lessor at cost less accumulated depreciation less accumulated impairment, if any.", "clause": "paragraph 66", "tag": "verified"},
+   {"rule": "Ijarah revenue shall be recognised in the income statement of the lessor on an accrual basis, applying either a straight-line basis (preferred method) or another systematic basis.", "clause": "paragraph 74", "tag": "verified"},
+   {"rule": "Any charity payment against defaults and delayed payments by the customer shall not be recognised as an income of the seller and shall be taken directly to charity payable, when received.", "clause": "paragraph 109", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "AAOIFI-FAS-37",
+  "standard_id": "FAS 37",
+  "standard_code": "FAS 37",
+  "regulator": "AAOIFI",
+  "title": "AAOIFI Financial Accounting Standard 37: Financial Reporting by Waqf Institutions",
+  "display_card": {
+   "one_liner": "Sets the financial reporting rules for Waqf institutions (Islamic charitable endowments), covering how they present accounts and value their endowed assets.",
+   "what_it_is": "The objective of this standard is to establish principles of financial reporting by Waqf institutions, which are established and operated in line with Shari'ah principles and rules. It applies to all types of Waqf institutions and other institutions constituted on the concept of Waqf, irrespective of their legal status, including virtual Waqf institutions. It provides comprehensive requirements including general presentation and disclosures, specific presentation requirements (such as the statement of Ghallah, the yield available to beneficiaries) and key accounting treatments for the Waqf corpus.",
+   "why_it_matters_to_timeline": "The standard was presented for approval in the AAOIFI Accounting Board's meeting No. 18 held on 1-2 Dhul-Qa'dah 1441H, corresponding to 22-23 June 2020, approved in principle, and approved by circulation on 15 Rabi' II 1442H, corresponding to 30 November 2020; it is effective on financial statements of Waqf institutions beginning on or after 01 January 2022, with early adoption permitted, and is the final output in completion of the AAOIFI Waqf project initiated in 2016.",
+   "source_label": "FAS-37-Financial-reporting-by-Waqf-institutions-Final-15-December-2020-v2-clean.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "Presented for approval in the AAOIFI Accounting Board's meeting No. 18 held on 1-2 Dhul-Qa'dah 1441H, corresponding to 22-23 June 2020, and approved by circulation on 15 Rabi' II 1442H, corresponding to 30 November 2020",
+  "timeline_bridge": {"effective_date": "Effective on the financial statements of the Waqf institutions beginning on or after 01 January 2022. Early adoption of the standard is permitted. Any new Waqf institution shall apply this standard since inception."},
+  "supersedes": "",
+  "related_standards": ["AAOIFI Shari'ah Standard (SS) 60 'Waqf'", "AAOIFI Governance Standard (GS) 13 'Waqf Governance'", "FAS 1 'General Presentation and Disclosures in the Financial Statements of Islamic Banks and Financial Institutions'", "FAS 30 'Impairment, credit losses and onerous commitments'", "AAOIFI Conceptual Framework for Financial Reporting"],
+  "key_rules_for_assurance": [
+   {"rule": "Assets comprising of the Waqf corpus shall initially be recognised at fair value, with a corresponding amount recognised as Waqf equity.", "clause": "paragraph 10", "tag": "verified"},
+   {"rule": "Assets comprising of the Waqf corpus (excluding cash contribution or contribution of in-kind assets) shall be measured at fair value, with fair value gains and losses recognised directly in Waqf equity, regardless of any requirements of any other AAOIFI FASs; no depreciation or amortisation shall be charged on such assets.", "clause": "paragraph 14", "tag": "verified"},
+   {"rule": "Development of accounting policies by Waqf institutions shall follow a hierarchy: first a FAS specifically addressing the transaction, then a FAS on similar matters, then generally accepted accounting principles insofar as not against the conceptual framework and Shari'ah principles and rules, then management's judgment in line with the same.", "clause": "paragraph 22", "tag": "verified"},
+   {"rule": "The financial statements shall include an explicit statement of compliance that this AAOIFI FAS, along with other applicable AAOIFI FASs, have been followed in their entirety.", "clause": "paragraph 24", "tag": "verified"},
+   {"rule": "The complete set of financial statements required for Waqf institutions shall include: statement of financial position, statement of financial activities, statement of Ghallah, statement of changes in Waqf equity, statement of cash flows, and notes to the financial statements.", "clause": "paragraph 26", "tag": "verified"},
+   {"rule": "The statement of financial position shall reflect different classes of Waqf equity, including the corresponding amount of the Waqf corpus as measured at initial recognition, reserves, unappropriated surplus / accumulated deficit, and fair value adjustments pertaining to assets comprising of the Waqf corpus.", "clause": "paragraph 32", "tag": "verified"},
+   {"rule": "Restricted funds received (distinguishing between Zakah and other significant restricted funds) shall be initially recorded as a liability, with their utilization and other movements adequately disclosed in the notes to the financial statements.", "clause": "paragraph 35", "tag": "verified"},
+   {"rule": "The statement of Ghallah shall present the determination of Ghallah for the period, the opening balance of unappropriated Ghallah, total Ghallah available for distribution, benefits distributed / allocated as payable, and the closing balance of unappropriated Ghallah.", "clause": "paragraph 38", "tag": "verified"},
+   {"rule": "The statement of cash flows shall present cash flows from / used in operating activities, investing activities and financing activities for the period, according to the requirements of FAS 1, insofar as they do not contravene the specific requirements of this standard.", "clause": "paragraph 42", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ }
+ ]
+}

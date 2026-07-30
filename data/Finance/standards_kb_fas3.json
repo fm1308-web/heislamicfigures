@@ -1,0 +1,1662 @@
+{
+ "_meta": {
+  "file": "standards_kb_fas3.json",
+  "built": "2026-07-19",
+  "purpose": "Deep clause-verified notes: legacy AAOIFI FAS 4-26 (superseded standards kept for the timeline chart; active legacy standards FAS 16/22/23/24/25/26)",
+  "jurisdiction": {
+   "code": "INTL",
+   "name": "International",
+   "regulator": "AAOIFI",
+   "authority_basis": "Voluntary/adopted per jurisdiction",
+   "jurisdictions_json_id": "INTL"
+  },
+  "sect_school": "Standards are regulator-level; never madhhab-filtered",
+  "legends": {
+   "tag": "verified = every point carries a document paragraph cite",
+   "status": "processed (active) | superseded"
+  },
+  "notes": [
+   "Superseded-by fields are document-sourced from the superseding standards (see standards_kb_fas2.json supersession map)",
+   "FAS 26 withdrawal statement file missing - awaiting re-upload",
+   "FAS 3 and FAS 27 files never arrived on disk - awaiting re-upload"
+  ]
+ },
+ "standards": [
+  {
+   "id": "AAOIFI-FAS-4",
+   "source_file": "f6e4bb3a-FinancialAccountingStandard4MusharakaFinancing.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (4): Musharaka Financing",
+   "issued_date": "1996-02",
+   "effective_date": "1 Muharram 1418 A.H. / 1 January 1998 A.D. (para. 19)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Financial Accounting Statement No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions (Statement of Objectives)",
+    "Financial Accounting Statement No. (2): Concept of Financial Accounting for Islamic Banks and Financial Institutions (Statement of Concepts)"
+   ],
+   "applicability": "Applies to Musharaka financing transactions carried out by Islamic banks, whether constant (short or long-term) or diminishing Musharaka, whether funded from the bank's own funds, from a pool commingled with unrestricted investment accounts, or from restricted investment accounts, and to the bank's share in Musharaka profits or losses (para. 1); excludes Mudaraba, Participations, Zakah on Musharaka funds, and the accounting treatment of Musharaka transactions in the partner's (client's) books and the Musharaka records (para. 2).",
+   "contract_slugs": [
+    "musharakah"
+   ],
+   "term_names": [
+    "Musharaka",
+    "Constant Musharaka",
+    "Diminishing Musharaka",
+    "Participation",
+    "Mudaraba",
+    "Al-Ghurm Bil-Ghunm",
+    "Al-'Inan partnership",
+    "Al-Mufawada partnership",
+    "Al-A'mal partnership",
+    "Al-Wujuh partnership",
+    "Wadhi'ah",
+    "Holding Partnership",
+    "Contract Partnership",
+    "Musharaka Financing account",
+    "Musharaka receivables account"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (p.231); Statement of the Standard: 1. Scope of the Standard (paras 1-2, p.232); 2. Accounting Treatment of Musharaka Financing (paras 3-16): 2/1 Recognition of the Islamic bank's share in Musharaka capital at contracting (para 3, p.232); 2/2 Measurement at time of contracting (paras 4-6, p.233); 2/3 Measurement after contracting at end of financial period (paras 7-10, p.233-234); 2/4 Recognition of profit/loss (paras 11-16, p.234-235); 2/5 Disclosure requirements (paras 17-18, p.235); 3. Effective Date (para 19, p.235); Adoption of the Standard (p.236, Board meeting No.10); Appendix (A) Brief History of the Preparation of the Standard (p.237-240); Appendix (B) Juristic Rules for Musharaka Financing Transactions (p.241-250): 1. Definition of Musharaka in Fiqh; 1/1 Categories (Al-'Inan, Al-Mufawada, Al-A'mal, Al-Wujuh); 1/2 Elements and conditions; 1/3 Rules (capital, work, profit, loss, termination); Appendix (C) Reasons for the Standard (p.251-252); Appendix (D) Basis for Conclusions (cites para. 36, para. 112, para. 98, Statement of Concepts para. 74, Statement of Objectives para. 33) (p.253-254); Appendix (E) Definitions: Musharaka, Constant Musharaka, Diminishing Musharaka, Participation, Mudaraba (p.255-256).",
+   "key_points": [
+    "Standard applies to Musharaka financing carried out by Islamic banks, whether constant (short or long-term) or diminishing Musharaka (para. 1).",
+    "Applies whether the Islamic bank funds its Musharaka share exclusively from its own funds, from a pool commingled with unrestricted investment accounts, or from restricted investment accounts, and to the bank's share in Musharaka profits or losses (para. 1).",
+    "Any contradiction between the standard and the Islamic bank's charter or the laws/regulations of its operating country must be disclosed (para. 1).",
+    "Standard excludes Mudaraba, Participations, Zakah on Musharaka funds, and accounting treatment of Musharaka transactions in the partner's (client's) books and Musharaka records (para. 2).",
+    "Islamic bank's share in Musharaka capital (cash or kind) is recognized when paid to the partner or made available to him on account of the Musharaka, presented under a Musharaka Financing account (para. 3).",
+    "Cash contribution measured by the amount paid or made available to the partner on account of the Musharaka (para. 4).",
+    "In-kind contribution (trading assets or non-monetary assets) measured at fair value agreed between the partners; difference between fair value and book value recognized as profit or loss to the Islamic bank (para. 5).",
+    "Contracting-procedure expenses (e.g., feasibility studies) are not part of Musharaka capital unless otherwise agreed by both parties (para. 6).",
+    "Islamic bank's share in constant Musharaka capital measured at period end at historical cost (the amount paid or the value of the asset at contracting) (para. 7).",
+    "Islamic bank's share in diminishing Musharaka measured at period end at historical cost less the historical cost of any share transferred to the partner (transfer via sale at fair value); the difference between historical cost and fair value is recognized as profit or loss (para. 8).",
+    "If a diminishing Musharaka is liquidated before complete transfer, the amount recovered is credited to the Musharaka financing account, with any resulting profit or loss (book value vs. recovered amount) recognized in the income statement (para. 9).",
+    "If the Musharaka is terminated or liquidated and the bank's due share remains unpaid at settlement, it is recognized as a receivable due from the partner (para. 10).",
+    "Profits/losses on Musharaka transactions that commence and end within one financial period are recognized at the time of liquidation (para. 11).",
+    "For a constant Musharaka spanning more than one financial period, the bank's profit share is recognized to the extent it is being distributed; loss share is recognized to the extent it is being deducted from the bank's Musharaka capital share (para. 12).",
+    "The same treatment (item 2/4/2) applies to a diminishing Musharaka spanning more than one financial period, after considering the decline in the bank's capital share and its profits/losses (para. 13).",
+    "If the partner does not pay the bank's due share of profits after liquidation or settlement, it is recognized as a receivable due from the partner (para. 14).",
+    "Losses caused by the partner's misconduct or negligence are borne by the partner and recognized as a receivable due from the partner (para. 15).",
+    "Unpaid amounts under items 2/3/4 and 2/4/4 are recorded in a Musharaka receivables account; a provision is made if the receivables are doubtful (para. 16).",
+    "Disclosure required in the notes to financial statements if the Islamic bank made a provision during the period for a loss of its Musharaka capital (para. 17).",
+    "The disclosure requirements of Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions must be observed (para. 18).",
+    "Standard effective for financial statements for fiscal periods beginning 1 Muharram 1418 A.H., corresponding to 1 January 1998 A.D. (para. 19).",
+    "Musharaka defined in fiqh as the commingling of funds for the purpose of sharing in profit; partnerships divide into Holding Partnership and Contract Partnership, with contract partnerships further divided into Al-'Inan, Al-Mufawada, Al-A'mal and Al-Wujuh (Appendix B, 1 and 1/1).",
+    "General rules of profit: profit must be quantifiable, and each partner's profit must be a proportionate share of total partnership profit, not a predetermined fixed amount (Appendix B, 1/3/3(a)).",
+    "Fuqaha agree that losses must be divided strictly in proportion to each partner's capital contribution (\"Wadhi'ah\"), citing Ali Ibn Abu Talib: loss should be proportionate to funds contributed (Appendix B, 1/3/4).",
+    "Neither partner can guarantee the other partner's capital because Musharaka rests on Al-Ghurm Bil-Ghunm (entitlement to return tied to exposure to risk); a partner may still require guarantees against the other's negligence or misconduct (Appendix B, 1/3/1(b))."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "Al-'Inan partnership: \"Hanafis and Hanbalis allow ... profits of the two parties to be divided in proportion to their contributed funds; profits may be divided equally but contributed funds may be different; and profits may be unequally divided, but contributed funds are equal\"; \"Malikis and Shafis make the acceptance of this type of partnership conditional on profits and losses being proportionate to the size of contributions to the overall fund because ... profit ... is considered to be return on capital\" (Appendix B, 1/1/1).",
+    "Commingling of funds: \"Shafis and Malikis argue that the funds provided by partners should be commingled in order that no privilege be given to the share of either of them. However, Hanafis do not stipulate this condition provided the capital is in cash, while the Hanbalis do not require commingling of funds\" (Appendix B, 1/2/2/3(a)).",
+    "Rules of allocating profit among partners, two opinions: \"First: Profit should be divided among the partners in proportion to their contributed capital ... This is the opinion of Malikis and Shafis\"; \"Second: Profit may vary between the partners if it is so provided for in the contract. This is the opinion of Hanafis and Hanbalis\" (Appendix B, 1/3/3(b)).",
+    "Musharaka termination: \"The majority of Fuqaha, except for Malikis, are of the opinion that ... each of the partners is entitled to terminate it whenever he wishes, as is the case with agency contracts\" (Appendix B, 1/3/5).",
+    "Status of Mudaraba as a partnership: \"Fuqaha have differed on whether Mudaraba is a partnership in this sense or not. Some Fuqaha consider Mudaraba to be such a partnership ... Others, however, do not consider Mudaraba to be one of the types of contract partnership\" (Appendix B, 1/1)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "shall apply to Musharaka financing transactions carried out by Islamic banks",
+     "cite": "para. 1"
+    },
+    {
+     "quote": "shall be presented in the Islamic bank’s books under a Musharaka financing account",
+     "cite": "para. 3"
+    },
+    {
+     "quote": "the value agreed between the partners",
+     "cite": "para. 5"
+    },
+    {
+     "quote": "Profits or losses in respect of the Islamic bank’s share",
+     "cite": "para. 11"
+    },
+    {
+     "quote": "shall be effective for financial statements for fiscal periods beginning",
+     "cite": "para. 19"
+    },
+    {
+     "quote": "the commingling of funds for the purpose of sharing in profit",
+     "cite": "Appendix B, 1"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-51",
+    "evidence": "FAS 51 para 76"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-7",
+   "source_file": "540f7cbe-FinancialAccountingStandard7SalamandParallelSalam.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (7): Salam and Parallel Salam",
+   "issued_date": "1997-06",
+   "effective_date": "1999-01-01 (fiscal periods beginning 1 Muharram 1419 A.H. or 1 January 1999 A.D.) (para 21)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to accounting for Salam financing and parallel Salam transactions carried out by Islamic banks and financial institutions, including Ra`s Al-Mal paid/received, receipt and sale/delivery of Al-Muslam Fihi, and related revenues, expenses, gains and losses (para 1). If the standard's requirements conflict with the Islamic bank's charter or the laws/regulations of its country of operation, the point of conflict must be disclosed (para 1).",
+   "contract_slugs": [
+    "salam"
+   ],
+   "term_names": [
+    "Salam",
+    "Salaf",
+    "Al-Muslam Fihi",
+    "Al-Muslam Ileihi",
+    "Al-Muslam",
+    "Ra`s Al-Mal",
+    "Parallel Salam",
+    "Gharar",
+    "Riba",
+    "Ijma'",
+    "Fuqaha"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (aims of standard). Statement of the Standard (paras 1-21): 1. Scope of the Standard (para 1); 2. Accounting Treatments of Salam Financing and Parallel Salam Transactions (paras 2-19), with subsections 2/1 recognition of Salam financing, 2/2 recognition of parallel Salam, 2/3 measurement at contracting, 2/4 measurement at period end, 2/5 receipt of Al-Muslam Fihi (2/5/1-2/5/4), 2/6 substitution, 2/7 post-receipt period-end measurement, 2/8 recognition of result of delivery in parallel Salam; 3. Disclosure Requirements (para 20); 4. Effective Date (para 21). Adoption of the Standard (Board meeting No. 13, 15-16 June 1997). Appendix (A): Brief History of the Preparation of the Standard. Appendix (B): Juristic Rules of Salam and Parallel Salam - 1. Definition; 2. Legitimacy (2/1-2/3); 3. Capital of Salam (3/1-3/2/2); 4. Al-Muslam Fihi (4/1-4/9, incl. 4/8 Sale of Al-Muslam Fihi before receiving it, 4/9 Replacement/substitution); 5. Parallel Salam (5/1-5/2); 6. General Rules - nullification/cancellation (6/1), delivery before/on due date (6/2/1-6/2/5); 7. Options if Al-Muslam Fihi unavailable on due date (7/1-7/2); 8. Transfer/pledge of Al-Muslam Fihi as guarantee. Appendix (C): Reasons for the Standard. Appendix (D): Basis for Conclusions. Appendix (E): Definitions.",
+   "key_points": [
+    "Salam financing is recognized when the capital of Salam (in cash, kind or benefit) is paid or made available to Al-Muslam Ileihi (para 2).",
+    "Parallel Salam transactions are recognized when the Islamic bank receives the capital of Salam in cash, kind, or benefit (para 3).",
+    "At the time of contracting, capital is measured by the amount paid (para 4).",
+    "Capital provided in kind or benefit is measured at the fair value agreed between the Islamic bank and the client (para 5).",
+    "If it is probable Al-Muslam Ileihi will not deliver Al-Muslam Fihi in full or in part, or its value will decline, the Islamic bank makes a provision for the amount of the estimated deficit (para 6).",
+    "Salam financing transactions are presented in the financial statements under the heading 'Salam Financing' (para 7).",
+    "Parallel Salam transactions are presented as a liability under the heading 'Parallel Salam' (para 8).",
+    "Assets constitutive of Al-Muslam Fihi received under the contract are recorded at their historical cost (para 9).",
+    "Where received Al-Muslam Fihi is of different quality but equal market/fair value to the contracted value, it is measured and recorded at book value (para 10).",
+    "Where the market/fair value of received Al-Muslam Fihi is lower than the book value of the contracted Al-Muslam Fihi, it is recorded at market/fair value and the difference is recognized as a loss (para 11).",
+    "If delivery is extended after complete or partial failure to receive Al-Muslam Fihi at the due date, the book value remains as it is (para 12).",
+    "If the Salam contract is completely or partially cancelled and the client does not repay the capital, the amount is recognized as a receivable due from the client (para 13).",
+    "Where failure to deliver is due to the client's misconduct or negligence and the contract is cancelled without repayment, the amount due is recognized as a receivable from the client (para 14).",
+    "Where pledged securities against Al-Muslam Fihi are sold for less than book value, the difference is a receivable from the client; if sold for more, the difference is credited to the client (para 15).",
+    "The client is debited with any additional amounts established in favour of the Islamic bank (para 16).",
+    "Substitution of another kind of goods for Al-Muslam Fihi follows the same loss-recognition treatment as item 2/5/2/2 when the substitute's market/fair value is less than book value (para 17).",
+    "After receipt, at period end, assets acquired through Salam financing are measured at the lower of historical cost and cash equivalent value, with any decline recognized as a loss (para 18).",
+    "Upon delivery of Al-Muslam Fihi by the Islamic bank to the client in a parallel Salam transaction, the difference between the amount paid by the client and the cost of Al-Muslam Fihi is recognized as profit or loss (para 19).",
+    "Disclosure requirements follow Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions (para 20).",
+    "The Standard is effective for financial statements for fiscal periods beginning 1 Muharram 1419 A.H., corresponding to 1 January 1999 A.D. (para 21).",
+    "Salam financing represented about 5% of total finance provided by the Islamic banks participating in the AAOIFI-commissioned empirical study, used mainly in the agriculture sector (Appendix C).",
+    "Salam is defined as purchase of a commodity for deferred delivery in exchange for immediate payment according to specified conditions, or sale of a commodity for deferred delivery in exchange for immediate payment (Appendix E, Definitions)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV04",
+     "topic": "Sale of Al-Muslam Fihi before receiving it",
+     "position": "AAOIFI (Appendix B - Juristic Rules of Salam and Parallel Salam): Al-Muslam Fihi is subject to specification and can be recognized as a debt (Appendix B 4/1). The majority of Fuqaha consider it impermissible to sell Al-Muslam Fihi before receiving it, based on the rule preventing the sale of food and other movable items before receipt, since earning a profit without an obligation to deliver is not permitted (Appendix B 4/8/1). The Malikis agree with the majority on prohibiting sale before receipt only where Al-Muslam Fihi is food; otherwise they permit it subject to conditions: sale back to Al-Muslam Ileihi is permitted at the contract price or lower (Appendix B 4/8/2/1), and sale to a third party is permitted at the contract price (if quality matches) or at a higher/lower price (if quality differs) (Appendix B 4/8/2/2). The Standard's Statement (paras 1-21) does not itself adopt a position on this issue; it is recorded only as a juristic-rules background in Appendix B (absent from the operative accounting rules).",
+     "clauses": [
+      "Appendix B 4/1",
+      "Appendix B 4/8/1",
+      "Appendix B 4/8/2",
+      "Appendix B 4/8/2/1",
+      "Appendix B 4/8/2/2"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [
+    "\"Fuqaha have differed as to the permissibility of payment in the form of trading assets... Malikis have also allowed payment to be in the form of a benefit in kind, such as the benefit of living in a house\" (Appendix B 3/1).",
+    "\"The Malikis have permitted a short delay in making the Salam payment\" (Appendix B 3/2/2).",
+    "\"The Shafis have permitted prompt delivery of Salam\", contrasted with the majority of Fuqaha who require delivery to be deferred (Appendix B 4/3/1-4/3/2).",
+    "\"Fuqaha have differed on the issue of the lack of specificity that is considered permissible with regard to the delivery date of Al-Muslam Fihi\"; the majority require greater specificity, but the Malikis (and one Hanbali version) consider a range of possible delivery dates acceptable, which is the view adopted in this standard (Appendix B 4/4).",
+    "The Shari'a supervisory board of Al Rajhi Banking and Investment Corporation issued Fatwa No. (41) permitting parallel Salam on condition the second contract's execution is not made dependent on the first (Appendix B 5/1).",
+    "\"Some contemporary Fuqaha have prohibited parallel Salam, particularly if it is for the purpose of trading and such a transaction becomes recurrent, as this may be suspected as involving Riba\" (Appendix B 5/2).",
+    "\"The majority of Fuqaha have prohibited the replacement of Al-Muslam Fihi before it is received except by substituting another kind of similar goods\" (Appendix B 4/9/1).",
+    "The Malikis permit replacement of Al-Muslam Fihi by substitution where it is not food, based on their school's view permitting sale of goods before receipt, differing from the majority (Appendix B 4/9/2).",
+    "Some contemporary Fuqaha hold substitution permissible whether or not Al-Muslam Fihi is food, subject to conditions on kind-suitability and quantity (Appendix B 4/9/3).",
+    "\"Fuqaha have differed on whether or not it is considered permissible for Al-Muslam Ileihi to deliver a different type of Al-Muslam Fihi than the one agreed upon\" (Appendix B 6/2/4)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "the receipt and sale of Al-Muslam Fihi in a Salam transaction",
+     "cite": "para 1"
+    },
+    {
+     "quote": "capital of Salam is paid (whether in cash, kind or benefit) to Al-Muslam Ileihi",
+     "cite": "para 2"
+    },
+    {
+     "quote": "measured and recorded at market value (or fair value) at the time of delivery",
+     "cite": "para 11"
+    },
+    {
+     "quote": "effective for financial statements for fiscal periods beginning 1 Muharram 1419",
+     "cite": "para 21"
+    },
+    {
+     "quote": "subject to specification and can be recognized as a debt",
+     "cite": "Appendix B 4/1"
+    },
+    {
+     "quote": "such a transaction becomes recurrent, as this may be suspected as involving Riba",
+     "cite": "Appendix B 5/2"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-52",
+    "evidence": "FAS 52 PR4, para 39 (jointly with FAS 53 pending)"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-9",
+   "source_file": "f8116bf9-FinancialAccountingStandard9Zakah.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (9): Zakah",
+   "issued_date": "1998-06",
+   "effective_date": "1999-01-01 (para 21)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to the accounting treatments related to determination of the Zakah base, measurement of items included in the Zakah base, and disclosure of Zakah in the financial statements of the Islamic bank; Appendix (A) is an integral part of the standard (para 1); the Islamic bank must refer to its Shari'a supervisory board on Zakah issues not covered by the standard (Preface); where the standard's requirements conflict with the bank's charter or the laws/regulations of its country, the point of conflict must be disclosed (para 1).",
+   "contract_slugs": [
+    "mudarabah",
+    "musharakah",
+    "salam",
+    "istisna"
+   ],
+   "term_names": [
+    "Zakah",
+    "Nisab",
+    "Hawl",
+    "Zakah base",
+    "Net Assets Method",
+    "Net Invested Funds Method",
+    "cash equivalent value",
+    "Awsuq",
+    "Fuqaha",
+    "unrestricted investment accountholders",
+    "Shari'a supervisory board",
+    "Zakah and charity fund",
+    "Waqf (endowment)",
+    "Mudaraba financing",
+    "Musharaka financing",
+    "Salam",
+    "Istisna'a",
+    "Ijarah",
+    "minority interest",
+    "Islamic Fiqh Academy"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface. Statement of the Standard (paras 1-21): 1. Scope of the Standard (1); 2. Accounting Treatment of Zakah Base (2-12) - 2/1 Determination of Zakah base (2-8): 2/1/1 Net assets method (3-6), 2/1/2 Net invested funds method (7-8); 2/2 Treatment of Zakah in the financial statements (9-12): 2/2/1 Cases obliged to pay Zakah (9), 2/2/2 Cases not obliged to pay Zakah (10-11), 2/2/3 Presentation in statement of sources and uses of funds in Zakah and charity fund (12); 3. Disclosure Requirements (13-20, items 3/1-3/8); 4. Effective Date (21). Adoption of the Standard. Appendix (A) Example of Items Included in Determining the Zakah Base. Appendix (B) Example Illustrating How to Determine the Zakah Base. Appendix (C) Brief History of the Preparation of the Standard. Appendix (D) Juristic Rules for Zakah (Preface; Definition of Zakah; Conditions for Liability to Zakah; Duplication of Zakah; Tax; Zakah on Unlawful/Suspect Funds; Conditions of Zakah on Trading Assets; Valuation of Trading Assets; Payment from Same Goods or Value; Zakah on Debts Owed by Third Parties; Debt (Liabilities); Zakah on Other Types of Assets; Zakah on Livestock; Zakah on Agricultural and Horticultural Produce; Gains; Methods of Determining the Zakah Base). Appendix (E) Reasons for the Standard. Appendix (F) Basis for Conclusions. Appendix (G) Definitions.",
+   "key_points": [
+    "Standard applies to accounting treatments for determination of the Zakah base, measurement of items in the base, and disclosure of Zakah in financial statements of Islamic banks (para 1).",
+    "Zakah base determined using 2.5% for a lunar calendar year and 2.5775% for a solar calendar year, using either the Net Assets method or the Net Invested Funds method (para 2).",
+    "Net assets method: Zakah base = assets subject to Zakah – (liabilities due to be paid during the year + equity of unrestricted investment accounts + minority interest + equity owned by government, endowment, charity, and not-for-profit organizations excluding individually-owned equity) (para 3).",
+    "Assets subject to Zakah include cash and cash equivalent, receivables net of provisions for doubtful debts, trading assets (inventory, marketable securities, real estate, etc.), and financing assets (Mudaraba, Musharaka, Salam, Istisna'a) net of provisions for fall in value or non-collectability; funds used to acquire fixed assets relating to financing assets are deducted (para 4).",
+    "Assets acquired for trading are measured at their cash equivalent value on the date Zakah is due (para 5).",
+    "For assets available for trading in the form of agricultural products or livestock (camels, cows, sheep, goats), the Shari'a-prescribed rates and Nisab specified for such assets apply (para 6).",
+    "Net invested funds method: Zakah base = paid-up capital + reserves + provisions not deducted from assets + retained earnings + net income + liabilities not due during the year – (net fixed assets + investments not acquired for trading + accumulated losses) (para 7).",
+    "The two methods are strictly equivalent provided items are classified and valued consistently, given the different valuation bases used (paras 2, 8).",
+    "Zakah is treated as a non-operating expense in the income statement when: the law requires payment, the charter/by-laws require it, or the general assembly passes a resolution requiring it; unpaid Zakah is presented as a liability in the statement of financial position (para 9).",
+    "Where shareholders ask the bank to act as agent from distributable profits, Zakah is deducted from the shareholders' share of distributable profits (para 10).",
+    "Where the bank agrees to act as agent even with insufficient distributable profits, the amount paid is recorded as a receivable due from those shareholders (para 11).",
+    "Zakah due from the bank and Zakah received from other sources are presented in the statement of sources and uses of funds in the Zakah and charity fund (para 12).",
+    "Disclosure required in the notes of: the method used to determine the Zakah base and items included (para 13); Shari'a supervisory board rulings on Zakah issues not covered by the standard (para 14); whether the bank as a holding company pays its share of Zakah for subsidiaries (para 15); the amount of Zakah due from each share if the bank does not pay Zakah (para 16); the amount of Zakah due from the equity of investment accountholders (para 17); whether the bank collects/pays Zakah on behalf of investment account holders and others (para 18); restrictions set by the Shari'a supervisory board in determining the Zakah base, e.g. under the net invested funds method total net fixed assets plus non-trading investments should not exceed total paid-up capital plus reserves (para 19); FAS No. (1) disclosure requirements also apply (para 20).",
+    "Standard effective for financial statements for fiscal periods beginning 1 Muharram 1420 A.H. or 1 January 1999 A.D. (para 21).",
+    "Nisab for gold is 85 grams of gold; Nisab for silver is 595 grams of silver; Nisab for cash and trading goods is estimated using their cash equivalent compared to the value of gold (Appendix D, Attainment of the Nisab).",
+    "Hawl is the passing of a lunar calendar year from the day Nisab is attained; decreases during the year are ignored for Nisab purposes; solar-calendar users apply an increased rate of 2.5775% instead of 2.5% to compensate for the calendar difference (Appendix D, Passing of Hawl).",
+    "Nisab for agricultural/horticultural produce is five Awsuq (unit equal to 653 kg of wheat or the like); Zakah rate is 10% (one tenth) where irrigated by natural rainwater, 5% (half of one tenth) where irrigated by machinery, and 7.5% (three quarters of one tenth) where irrigation combines both methods (Appendix D, Zakah on Agricultural and Horticultural Produce).",
+    "Livestock Zakah (camels, cows, sheep, goats) requires attainment of the prescribed Nisab, passing of Hawl, and that the animals not be used as work animals (Appendix D, Zakah on Livestock).",
+    "Debt (Liabilities): the standard adopts the Shafi view that debt payable now or in future should not be deducted from assets subject to Zakah for medium/long-term debt; only debt due to be paid during the year following the statement-of-financial-position date is deducted (Appendix D, Debt (Liabilities)).",
+    "Zakah on receivables (debts owed by third parties): due where the debtor acknowledges and can pay, or evidence shows the debt is due and collectible; where collectability is doubtful, Zakah is payable only on the amount recovered, and only once at the time of recovery, not for the years the amount remained outstanding (Appendix D, Zakah on Debts Owed by Third Parties).",
+    "Trading assets are valued for Zakah at market selling price (cash equivalent value), not historical cost, so the Zakah base includes historical cost plus any holding gains or losses (Appendix D, Valuation of Trading Assets).",
+    "Cash and cash equivalents for Zakah purposes include, in addition to local/foreign currency and on-demand deposits, gold and silver in the form of currencies, bullion and others (Appendix G, Definitions).",
+    "Worked example: Zakah base of $128,094,035 is calculated identically under both methods; Zakah for the period = $128,094,035 x 2.5775% = $3,301,624 (Appendix B)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "\"According to the majority of Fuqaha, debt that is payable during the current or future financial periods should be deducted from assets subject to Zakah. However, the Shafi are of the view that any debt payable whether now or in future should not be deducted...In this standard, we have adopted the view of the Shafi school\" (Appendix D, Debt (Liabilities)).",
+    "\"This is the position of the Hanafi school that was also adopted in the First Conference on Zakah\" — regarding treating the passing of Hawl as a lunar year from the day Nisab is attained (Appendix D, Passing of Hawl (year)).",
+    "\"The Maliki jurists make a distinction between trading assets held for sale at the current market price and those held in expectation of selling them at a specific price in the future...However, the majority of jurists do not make this distinction\" (Appendix D, Conditions of Zakah on Trading Assets).",
+    "\"The majority of jurists have stipulated the condition that animals liable to Zakah should be freely grazing for most of the year, without being fed fodder. The Malikis, however, did not stipulate this condition\" (Appendix D, Zakah on Livestock).",
+    "\"According to the Hanafis, Zakah is payable on all crops that grow on land...Other Schools of Fiqh have their own details and conditions on what is subject to Zakah from agricultural and horticultural produce\" (Appendix D, Zakah on Agricultural and Horticultural Produce).",
+    "\"This is the opinion of the Hanafis, and this is a safe way as a compromise between the divergent views as to the different times when Zakah is due on gains\" (Appendix D, Gains)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "using 2.5% for a lunar calendar year and 2.5775%",
+     "cite": "para 2"
+    },
+    {
+     "quote": "cash and cash equivalent, receivables net of provisions for doubtful debts",
+     "cite": "para 4"
+    },
+    {
+     "quote": "Zakah shall be treated as a (non- operating) expense",
+     "cite": "para 9"
+    },
+    {
+     "quote": "total of net fixed assets and investments not acquired for trading should not exceed",
+     "cite": "para 19"
+    },
+    {
+     "quote": "effective for financial statements for fiscal periods beginning 1 Muharram 1420 A.H.",
+     "cite": "para 21"
+    },
+    {
+     "quote": "The Nisab for gold is 85 grams of gold",
+     "cite": "Appendix D, Attainment of the Nisab"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-39",
+    "evidence": "FAS 39 PR4"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-10",
+   "source_file": "b6e42cb6-FinancialAccountingStandard10IstisnaaandParallelIstisnaa.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (10): Istisna’a and Parallel Istisna’a",
+   "issued_date": "1998-06",
+   "effective_date": "1999-01-01 (or 1 Muharram 1420 A.H.), for fiscal periods beginning on that date (para. 47)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to the accounting treatment by Islamic banks and financial institutions of Istisna’a and parallel Istisna’a transactions, covering measurement, recognition and disclosure of costs, revenues, gains and losses in their financial statements (para. 1; Preface, fn. 1). If the standard's requirements contradict the Islamic bank's charter or the laws/regulations of its operating country and the bank must comply with those requirements, a disclosure of the point of conflict is required (para. 1).",
+   "contract_slugs": [
+    "istisna"
+   ],
+   "term_names": [
+    "Istisna’a",
+    "Parallel Istisna’a",
+    "Al-Sani’",
+    "Al-Mustasni’",
+    "Al-Masnoo’",
+    "Istisna’a work-in-progress account",
+    "Istisna’a costs account",
+    "Istisna’a billings account",
+    "Istisna’a accounts receivable",
+    "Istisna’a accounts payable",
+    "Percentage-of-Completion Method",
+    "Completed-Contract Method",
+    "Deferred profits",
+    "Contract Losses",
+    "Change Orders",
+    "Additional Claims",
+    "performance bonds",
+    "maintenance and warranty allowance account",
+    "Gharar",
+    "Istihsan",
+    "Ijma’",
+    "Qiyas",
+    "Maslaha",
+    "Majallat Al-Ahkam Al-’Adliyyah"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (unnumbered, p.367). Statement of the Standard: 1. Scope of the Standard (para. 1); 2. Accounting Treatment by the Islamic Bank As Al-Sani’ (Seller) — 2/1 Istisna’a costs (paras 2-4), 2/2 Contract costs in parallel Istisna’a (paras 5-6), 2/3 Istisna’a revenue and profit at end of financial period incl. 2/3/1/1 percentage of completion method (paras 8-9), 2/3/1/2 completed contract method (para 10), 2/3/2 Deferred profits (paras 11-13), 2/3/3 Early settlement (paras 14-15), 2/3/4 Parallel Istisna’a revenue and profit (paras 16-18); 2/4 Measurement of Istisna’a work-in-progress/costs and contract losses (paras 19-22); 2/5 Change orders and additional claims (paras 23-26); 2/6 Maintenance and warranty costs (paras 27-28); 3. Accounting Treatment of Istisna’a by the Islamic Bank As Al-Mustasni’ (Buyer) — 3/1 Istisna’a billings of completed jobs (paras 29-30), 3/2 Receipt of Al-Masnoo’ incl. 3/2/1 conforming receipt (paras 31-32), 3/2/2 late delivery (para 33), 3/2/3 non-conforming Al-Masnoo’ (paras 34-35), 3/2/4 Al-Mustasni’ refuses receipt (para 36); 4. Disclosure Requirements — 4/1 financial-statement disclosures (paras 37-41), 4/2 notes disclosures (paras 42-45), 4/3 cross-reference to FAS No.(1) (para 46); 5. Effective Date (para 47). Adoption of the Standard (p.377). Appendix (a): worked numerical examples, non-normative (p.378-385). Appendix (b): brief history of preparation (p.386-387). Appendix (c): Juristic Rules — 1. Characterisation of Istisna’a, 2. Definition, 3. Legitimacy of Istisna’a (3/1-3/3), 4. Conditions for Validity (4/1 Al-Masnoo’, 4/2 Price), 5. Binding Nature of Istisna’a (5/1-5/5), 6. Legal Consequences, 7. Guarantee, 8. Penalty Clause, 9. Options on Non-Compliance, 10. Termination, 11. Parallel Istisna’a, plus Salam/Istisna’a comparison table (p.388-396). Appendix (d): Reasons for the Standard (p.397-398). Appendix (e): Basis for Conclusions (p.399-401). Appendix (f): Definitions (p.402-403).",
+   "key_points": [
+    "Istisna’a costs consist of direct costs (production of Al-Masnoo’) and indirect costs allocated on an objective basis; general/administrative expenses, selling expenses and R&D costs are excluded from contract costs (para 2).",
+    "Istisna’a costs incurred during a period, plus pre-contract costs, are recognized in an Istisna’a work-in-progress account under assets; billed amounts are debited to Istisna’a accounts receivable and credited to an Istisna’a billings account, offset against work-in-progress (para 3).",
+    "Pre-contract costs are recognized as deferred costs when incurred and transferred to the work-in-progress account upon contracting; if no contract is signed and is unlikely to be, they are written off to expense in the current period (para 4).",
+    "Where a parallel Istisna’a exists, contract costs include the price fixed in the parallel contract (direct costs) plus indirect costs; subcontractor billings are debited to an Istisna’a costs account (an asset) and credited to Istisna’a accounts payable (para 5).",
+    "Progress billings to the ultimate purchaser (Al-Mustasni’) are debited to Istisna’a accounts receivable and credited to an Istisna’a billings account, offset against the Istisna’a costs account (para 6).",
+    "Istisna’a revenue is the total price agreed with Al-Mustasni’, including profit margin, recognized under either the percentage of completion or completed contract method (para 7).",
+    "Under the percentage of completion method, revenue commensurate with work performed each period is recognized, and the corresponding portion of the profit margin (cash price to purchaser less estimated total costs) is added to the work-in-progress account (paras 8-9).",
+    "The completed contract method applies only in unusual circumstances where neither percentage of completion nor cost-to-complete can be estimated with reasonable accuracy; no revenue is recognized until the contract is fully completed (para 10).",
+    "Deferred profits (difference between amounts paid during the contract and the total agreed price where price is paid after completion) are offset against Istisna’a accounts receivable, recognized either proportionately over the future credit period (preferred method) or as/when each instalment is received, the latter requiring a Shari’a supervisory board decision or supervisory-authority requirement (paras 11-13).",
+    "On early settlement, if the bank waives part of its profit for advance payment, the waived amount is deducted from both Istisna’a accounts receivable and deferred profits; the same treatment applies where the bank instead reimburses Al-Mustasni’ after receiving the payment (paras 14-15).",
+    "Parallel Istisna’a revenue and profit must be measured only under the percentage of completion method since both costs and revenues are known with reasonable certainty; the recognized profit portion is added to the Istisna’a costs account (paras 16-17).",
+    "Istisna’a work-in-progress (or the costs account in parallel Istisna’a) is measured and reported at a value not exceeding its cash equivalent value (contract price less expected additional cost to complete); any expected loss is recognized in the income statement (paras 19-21).",
+    "Additional costs arising from a subcontractor's failure to honour obligations in a parallel Istisna’a are recognized as losses in valuing the Istisna’a costs account and reported in the income statement, unless recovery is reasonably certain (para 22).",
+    "The value and cost of change orders authorized by the bank and Al-Mustasni’ are added to Istisna’a revenue and costs respectively; qualifying additional claims are recognized as revenue equal to the additional cost caused, while non-qualifying claims are disclosed in the notes (paras 23-26).",
+    "Maintenance and warranty costs of Al-Masnoo’ are accounted for on an accrual basis (estimated and matched against recognized revenue) for a direct Istisna’a contract, but on a cash basis (expensed when incurred) where a parallel Istisna’a exists (paras 27-28).",
+    "As Al-Mustasni’ (buyer), progress billings received are debited to an Istisna’a costs account under assets and credited to Istisna’a accounts payable to Al-Sani’; the same treatment applies when a parallel Istisna’a exists (paras 29-30).",
+    "Al-Masnoo’ received in conformity with specifications is recorded at the historical (book) cost of the Istisna’a costs account; where a parallel Istisna’a exists, on delivery the costs account balance transfers to an asset account reflecting the nature of Al-Masnoo’ (paras 31-32).",
+    "For late delivery due to Al-Sani’'s negligence or fault, compensation is first taken from performance bonds; any shortfall is recognized as Istisna’a accounts receivable, with an allowance for doubtful debts formed if necessary (para 33).",
+    "If the bank declines non-conforming Al-Masnoo’ and cannot recover all progress payments, the balance is recorded as Istisna’a accounts receivable (with a doubtful-debt allowance if needed); if it accepts non-conforming Al-Masnoo’, the asset is measured at the lower of cash equivalent value or historical cost, with any uncompensated loss recognized in income (paras 34-35).",
+    "If Al-Mustasni’ refuses to receive Al-Masnoo’, the Istisna’a assets are measured at the lower of cash equivalent value or historical cost, with any resulting loss recognized in income in the period the loss is realized (para 36).",
+    "Financial-statement disclosures required include: revenues/profits of Istisna’a contracts recognized for the period; accounting methods used; cumulative costs, revenues and profits recognized to date; retention amounts on contracts in progress; and receivable/payable balances presented without offsetting against each other (paras 37-41).",
+    "Notes disclosures required include: unsettled additional claims and contingent penalty-clause fines for delivery delay; the method used to determine percentage of completion; the value and time periods of parallel Istisna’a in progress; and the value and time periods of signed but not-yet-commenced Istisna’a contracts (paras 42-45).",
+    "The disclosure requirements of Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions must also be observed (para 46).",
+    "Effective date: fiscal periods beginning 1 Muharram 1420 A.H., corresponding to 1 January 1999 A.D. (para 47)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "Majority of Hanafi jurists hold Istisna’a is “valid but not binding”: each party may rescind before implementation, and Al-Sani’ need not deliver manufactured goods (Appendix (c), sec. 5/1, 5/1/1-5/1/2).",
+    "Three Hanafi views once Al-Sani’ manufactures Al-Masnoo’ to specification and elects to deliver: (a) preponderant view — binding on Al-Sani’ who waives his option, buyer's option remains (attributed to Abu Hanifah, Abu Yusuf and Muhammad); (b) Abu Hanifah also reported to retain an equal-footing right; (c) Abu Yusuf's second opinion — contract becomes binding on both parties (Appendix (c), sec. 5/1/3).",
+    "“The majority in the Hanafi School opined that the Istisna’a contract is binding once it has been constituted” (Appendix (c), sec. 5/2).",
+    "Provision (392) of Majallat Al-Ahkam Al-’Adliyyah: “Once the contract of Istisna’a is constituted, it becomes binding and no party has the right to revoke it,” subject to Al-Mustasni’'s option to revoke if Al-Masnoo’ does not conform to specifications; per Abu Yousuf, no party may withdraw without the other's consent (Appendix (c), sec. 5/3).",
+    "Civil legislations based on Shari’a (Jordanian, Yemeni, Sudanese laws, and the Unified Arab Law proposed by the League of Arab Countries) treat Istisna’a as a binding contract, following Majallat Al-Ahkam Al-’Adliyyah (Appendix (c), sec. 5/4).",
+    "Islamic Fiqh Academy resolution: “The contract of Istisna’a is binding on its parties provided that certain conditions are fulfilled” (Appendix (c), sec. 5/5, citing 7th Session, Resolution No. 67/3/7, 1412 A.H./1992 A.D.).",
+    "On legitimacy: Hanafis originally held Istisna’a should have been prohibited under strict Qiyas (subject-matter not in existence/possession of seller) but approved it via Istihsan grounded in continuous practice (amounting to Ijma’) and need; some contemporary Fuqaha instead hold it valid directly under Qiyas since non-existence at contracting is compensated by preponderant existence at delivery, removing Gharar (Appendix (c), sec. 3/1, 3/3).",
+    "Three Hanafi opinions on fixing a future delivery date: Abu Hanifah prohibited fixing a date (doing so converts the contract into Salam); Abu Yusuf and Muhammad Ibn Al-Hasan Al-Shaybani accepted fixing a date based on common practice; all three agree that a date not in line with common practice converts Istisna’a into Salam. The standard adopts the two companions' view that fixing a future delivery date is a necessity (Appendix (c), sec. 4/1/3)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "shall be recognized in an Istisna’a work-in-progress account",
+     "cite": "para 3"
+    },
+    {
+     "quote": "shall be recognized as revenue for that period",
+     "cite": "para 8"
+    },
+    {
+     "quote": "These accounts shall not be offset against each other",
+     "cite": "para 41"
+    },
+    {
+     "quote": "This Standard shall be effective for the financial statements",
+     "cite": "para 47"
+    },
+    {
+     "quote": "the Istisna’a contract is binding once it has been constituted",
+     "cite": "Appendix (c), sec. 5/2"
+    },
+    {
+     "quote": "It is a sale contract between Al-Mustasni’ (the buyer)",
+     "cite": "Appendix (f), Definitions"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-52",
+    "evidence": "FAS 52 PR4, para 39 (jointly with FAS 53 pending)"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-12",
+   "source_file": "7ccad9a5-FinancialAccountingStandard12GeneralPresentationandDisclosureintheFinancialStatementsofIslamicInsuranceCompanies.txt",
+   "regulator": "AAOIFI",
+   "title": "General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies",
+   "issued_date": "1999-06",
+   "effective_date": "2000-01-01 (para 79)",
+   "supersedes": [],
+   "linked_standards": [
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to the financial statements prepared by the company (Islamic Insurance company, also called Takaful company, per fn 1) to meet the common information needs of the main users of such statements; applicable to all companies regardless of legal form, country of incorporation, or size; where standard requirements conflict with the company's charter or the laws/regulations of its country, the conflict and its impact on relevant financial statement elements should be disclosed wherever possible (para 1).",
+   "contract_slugs": [
+    "murabaha",
+    "salam",
+    "istisna",
+    "mudarabah",
+    "musharakah",
+    "takaful"
+   ],
+   "term_names": [
+    "Gharar",
+    "Riba",
+    "Takaful",
+    "Zakah",
+    "Shari'a Supervisory Board",
+    "Mudaraba",
+    "Musharaka",
+    "Murabaha",
+    "Salam",
+    "Istisna'a",
+    "Fuqaha",
+    "policyholders' equity"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface. Statement of the Standard (paras 1-79): 1. Scope of the Standard (1); 2. General Provisions (2-6) - 2/1 complete set of financial statements (2), 2/2 comparative amounts (3), 2/3 form/classifications/terminology (4), 2/4 numbering of pages and notes (5), 2/5 notes are integral part of financial statements (6); 3. General Disclosures in the Financial Statements (7-32) - 3/1 through 3/20 covering material information, basic company info, currency, accounting policies, supervisory restrictions, Shari'a-prohibited earnings/expenditure, asset risk concentrations, foreign currency risk, reinsurance recoverables, contingencies, commitments, subsequent events, restricted assets, accounting changes, managing party disclosures, investment party disclosures, surplus allocation, related parties, auditor/Shari'a board transactions, insurance/reinsurance risk concentration; 4. Presentation and Disclosure in Each Statement (33-66) - 4/1 statement of financial position (33-43), 4/2 statement of policyholders' revenues and expenses (44-47), 4/3 income statement (48-54), 4/4 statement of cash flows (55-58), 4/5 statement of changes in owners' equity (59-60), 4/6 statement of policyholders' surplus (or deficit) (61-62), 4/7 statement of sources and uses of funds in the Zakah and charity fund (63-66); 5. Treatment of Changes in Accounting Policies (67-74); 6. Treatment of Changes in Accounting Estimates (75-76); 7. Treatment of a Correction of an Error in Prior Period Financial Statements (77-78); 8. Effective Date (79). Adoption of the Standard. Appendix (A) Brief History of the Preparation of the Standard. Appendix (B) Juristic Rules for General Presentation and Disclosure. Appendix (C) Reasons for the Standard. Appendix (D) Basis for Conclusions. Appendix (E) Definitions. Appendix (F) Example of Financial Statements and Disclosures Therein.",
+   "key_points": [
+    "Standard applies to financial statements of all Islamic insurance (Takaful) companies regardless of legal form, country of incorporation, or size; conflicts with charter or law must be disclosed with impact where possible (para 1).",
+    "Complete set of financial statements comprises: statement of financial position, statement of policyholders' revenues and expenses, income statement, statement of cash flows, statement of changes in owners' equity, statement of policyholders' surplus (or deficit), statement of sources and uses of funds in the Zakah and charity fund, notes, and optional supplementary statements/reports if not contradicting Shari'a rules (para 2).",
+    "Comparative amounts required as a minimum, enabling users to differentiate actual changes in financial position/results/cash flows from accounting changes (para 3).",
+    "Form, classifications, and terminology of the financial statements must ensure clear presentation and user comprehension (para 4).",
+    "Pages and notes must be numbered consecutively; notes given clear distinct titles and cross-referenced to related financial statement items (para 5).",
+    "Notes are an integral part of the financial statements; a specified statement must appear on the bottom of every page containing a financial statement (para 6).",
+    "All material information necessary for the financial statements to be adequate, relevant and reliable must be disclosed (para 7).",
+    "Basic company information disclosure (para 8) includes: name, country of incorporation, formation date/legal form, headquarters/branch locations, authorized activities and major insurance services, consolidated and non-consolidated subsidiaries with ownership percentages, holding company/affiliates, role and authority of the Shari'a supervisory board, supervising regulatory authority, and tax treatment including tax holiday period.",
+    "Disclose currency used for accounting measurement (para 9) and the method used for translating foreign currency balances and transactions (para 10).",
+    "Significant accounting policies disclosed in one note (para 12), covering as a minimum: recognition of earned contributions, outstanding claims and claims incurred but not reported, unearned contributions, insurance business acquisition cost, commission earned from reinsurers, foreign currency translation, development cost amortization, subsidiary consolidation, policies presenting a choice of acceptable alternatives, policies inconsistent with AAOIFI objectives/concepts/standards, other material revenues/gains/losses, and revaluation bases (para 13).",
+    "Disclose unusual supervisory restrictions that restrict management's decision-making ability or prevent authorized activities (para 14).",
+    "Disclose the amount and nature of earnings and expenditures not permitted by Shari'a and how the company intends to dispose of assets generated by prohibited earnings or acquired through prohibited expenditure (para 15).",
+    "Disclose asset risk concentrations by economic sector, by customer (without naming), by domestic geographic area, and by each foreign country (para 16); disclose net foreign-currency asset/liability risk by currency type (para 17).",
+    "Disclose material amounts recoverable from reinsurers or other parties (para 18); material contingencies not recognized in the statement of financial position (para 19); and outstanding material financial commitments that cannot be cancelled without significant cost or penalty (para 20).",
+    "Disclose significant subsequent events that could materially affect financial position or results of operations (para 21); disclose restricted assets or assets mortgaged/pledged as security (para 22).",
+    "Accounting policy changes require description, justification, and effect on policyholders' surplus/deficit, net income, and prior-period retained earnings (para 23); accounting estimate changes require description and effect on current/future period results (para 24); correction of material prior-period errors requires nature and effect on policyholders'/owners' equity for prior and current periods (para 25).",
+    "Disclose the party managing insurance operations and the consideration it receives (para 26); the party investing policyholders' and owners' equity funds and the bases for allocating investment profit (para 27); and the basis for allocating insurance operations surplus and investment profits among policyholders (para 28).",
+    "Related parties defined (para 29) as: board members/general manager and deputies; their relatives to the second degree with vested financial interest; significant voting-unit owners and their relatives; entities commonly controlled; subsidiaries and affiliates; entities the company can influence via ownership. Disclosure of related-party transactions must include relationship nature, transaction terms/amounts (including total claims paid and contribution rate offered), and period-end balances due (para 30).",
+    "Disclose material transactions with external auditors and/or members of the Shari'a supervisory board (para 31); disclose concentration of insurance and reinsurance risk by geographic area, economic sector, and reinsurer (para 32).",
+    "Statement of financial position: assets/liabilities not set off absent a Shar'i, legal right or practice requirement (para 35); items grouped by nature and presented in order of relative liquidity, with no current/noncurrent classification (para 38); asset line items include cash and cash equivalents, contributions receivable, reinsurance receivables, deferred sales receivables (Murabaha, Salam, Istisna'a), investment securities, Mudaraba financing, Musharaka financing, investments in other entities' capital, real estate, leased assets, fixed assets (para 39); liability line items include unearned contributions, outstanding claims, claims incurred but not reported, Zakah and taxes payable (para 40); policyholders' equity shown as a separate item between liabilities and owners' equity (para 41); minority interest in consolidated statements shown separately between policyholders' equity and owners' equity (para 42).",
+    "Statement of policyholders' revenues and expenses discloses gross contributions, reinsurance share, changes in unearned contributions, earned contributions, claims paid and outstanding, acquisition cost, investment income, managing-party remuneration, and technical surplus/deficit (paras 44-47); income statement discloses investment revenue/expense/gains/losses by type, revaluation gains/losses, Zakah and taxes separately, net income, and the Zakah base wherever the company is obligated to pay Zakah (paras 48-53); minority interest shown as a separate item before net income in the consolidated income statement (para 54).",
+    "Statement of cash flows differentiates operating, investing, and financing activities and discloses net cash change plus non-cash transactions (paras 55-58); statement of changes in owners' equity discloses paid-in capital, reserves, retained earnings, capital contributions, net income, and distributions (paras 59-60); statement of policyholders' surplus (or deficit) discloses opening balance, period surplus/deficit, distributions, and closing balance (paras 61-62); statement of sources and uses of funds in the Zakah and charity fund discloses the company's responsibility for Zakah payment on behalf of owners/policyholders and fund disbursements (paras 63-66).",
+    "Effective date: this Standard is effective for financial statements for financial periods beginning 1 Muharram 1421 A.H. or 1 January 2000 A.D. (para 79)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "\"This is in accordance with the Maliki school, but contrary to the opinion of the majority of Fuqaha\" — regarding whether Gharar renders donation-based transactions void (fn 4)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "This standard is applicable to all companies regardless of their legal forms",
+     "cite": "para 1"
+    },
+    {
+     "quote": "Significant accounting policies should be disclosed in one note.",
+     "cite": "para 12"
+    },
+    {
+     "quote": "Policyholders' equity should  be disclosed and presented  in the statement of financial",
+     "cite": "para 41"
+    },
+    {
+     "quote": "The effect of a change in an accounting estimate should be reflected",
+     "cite": "para 75"
+    },
+    {
+     "quote": "This Standard shall be effective for financial statements for financial periods beginning",
+     "cite": "para 79"
+    },
+    {
+     "quote": "Gharar  is the uncertainty  of whether  or not the risk",
+     "cite": "Appendix B"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-42",
+    "evidence": "FAS 42 para 15"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-14",
+   "source_file": "b6d4e408-FinancialAccountingStandard14InvestmentFunds.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (14): Investment Funds",
+   "issued_date": "2000-05-21",
+   "effective_date": "Fiscal periods beginning 1 Muharram 1423 A.H. or 1 January 2002 A.D. (para 68)",
+   "supersedes": [],
+   "linked_standards": [
+    "Governance Standard for Islamic Financial Institutions No. (1): Shari'a Supervisory Board: Appointment, Composition and Report",
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Financial Accounting Standard No. (9): Zakah"
+   ],
+   "applicability": "Applies to funds established and managed per Shari'a rules and principles that are financially independent of the institutions establishing them, whether or not managed by those institutions and whether or not separate legal entities (para 1); does NOT apply to (a) funds accounted for on the statement of financial position of the establishing institution, or (b) funds of restricted investment accounts not in the form of shares/units (para 1); conflicts between the standard and a Fund's charter or the laws of its operating country must be disclosed (para 1).",
+   "contract_slugs": [
+    "murabaha",
+    "salam",
+    "istisna",
+    "mudarabah",
+    "musharakah",
+    "wakala"
+   ],
+   "term_names": [
+    "Fund/Portfolio",
+    "Mudarib",
+    "Mudaraba",
+    "Wakala (agency management)",
+    "Net Assets",
+    "Net Asset Value per Share/Unit",
+    "Capital Contributions",
+    "Distributions to Shareholders/Unitholders",
+    "Capital Transactions",
+    "Investments (for the Purpose of Income and/or Trading)",
+    "Sales",
+    "Financing",
+    "Zakah",
+    "Shari'a Supervisory Board",
+    "Murabaha receivables",
+    "Salam receivables",
+    "Istisna'a receivables",
+    "Musharaka",
+    "Statement of Financial Highlights",
+    "Turnover rate of portfolio investments, receivables and financing",
+    "Real estate assets"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (p.509). Statement of the Standard: 1. Scope of the Standard (para 1); 2. General Provisions (paras 2-6) - 2/1 complete set of financial statements, 2/2 comparative amounts, 2/3 form/classification/terminology, 2/4 numbering of pages/notes, 2/5 notes as integral part; 3. Statement of Net Assets (paras 7-21) - 3/1 composition & NAV disclosure, 3/2 accounting-policy consistency, 3/3 NAV per share/unit, 3/4-3/13 asset categories (cash, investments, receivables, financing, other assets, FX translation, pre-operating expenses), 3/14 liability categories, 3/15 share/unit disclosures; 4. Statement of Portfolio Investments, Receivables and Financing (paras 22-23); 5. Statement of Operations (paras 24-35) - income, expenses, realized/unrealized gains, Mudarib share, dividend/capital-gain/FX recognition, taxes; 6. Statement of Changes in Net Assets or Statement of Cash Flow (paras 36-43); 7. Statement of Financial Highlights (paras 44-47); 8. Disclosure in the Notes to the Financial Statements (paras 48-64) - 8/1-8/17 covering fund type/policies, valuation/income/pre-operating-expense policies, redemption bases, manager/custodian relationships, related-party transactions, Mudarib/agent fee, Shari'a-prohibited earnings, Zakah responsibility, tax provisions, duration/liquidation; 9. Real Estate Funds or Real Estate Assets in Other Funds (paras 65-67); 10. Effective Date (para 68). Adoption of the Standard (p.522, Board meeting No. 19). Appendix A: Brief History of the Preparation of the Standard. Appendix B: Juristic Rules for Investment Funds (Shari'a ruling on Funds, Mudaraba/agency management methods, regulation of Funds, Shari'a governance & prohibited activities, Zakah on Funds, Shari'a supervision). Appendix C: Reasons for the Standard. Appendix D: Basis for Conclusions. Appendix E: Definitions. Appendix F: Illustrative Example of the Financial Statements and Disclosures Therein.",
+   "key_points": [
+    "Standard applies to Shari'a-compliant funds financially independent of their establishing institution; excludes funds shown on the establishing institution's own statement of financial position and restricted investment-account funds not in share/unit form (para 1).",
+    "Complete set of Fund financial statements: Statement of Net Assets, Statement of Portfolio Investments/Receivables/Financing, Statement of Operations, Statement of Changes in Net Assets or Cash Flow, Statement of Financial Highlights, Notes, and the Shari'a Supervisory Board report (para 2).",
+    "Comparative financial statements are required and must let users distinguish actual changes from accounting-policy changes (para 3).",
+    "Form, classification and terminology used must ensure clear, understandable presentation of financial statement content (para 4).",
+    "Pages and notes must be numbered consecutively and cross-referenced to the related financial statement items (para 5).",
+    "Notes are an integral part of the financial statements; every page must carry the notes-range statement (para 6).",
+    "Statement of Net Assets covers all assets/liabilities at period end by main classification, with Fund shares/units and net asset value per share/unit shown at the bottom (para 7).",
+    "Net asset value per share/unit is calculated by dividing net assets by the number of outstanding shares/units (para 9).",
+    "Assets reported consecutively as: cash and cash equivalents; investments (income/trading); receivables (e.g. Murabaha, Salam, Istisna'a receivables); financing; other assets (para 10).",
+    "Investments measured at cash equivalent value, or net book value if unavailable, with gross book value and valuation provisions disclosed (para 12).",
+    "Receivables measured at cash equivalent value = historical cost less provision for doubtful debts and deferred income (para 14).",
+    "Financing measured at cash equivalent value, or net book value if unavailable, with gross value and provisions disclosed (para 16).",
+    "Liabilities reported, if material, as accounts payable, accrued liabilities, and other liabilities (para 20).",
+    "Statement of Portfolio Investments, Receivables and Financing discloses each asset type as a percentage of total assets, indicating adherence to investment objectives (para 22).",
+    "Statement of Operations sections: income from investments/sales/financing; expenses; net income/loss; realized and/or unrealized gains/losses; net gains/losses; net income before the Mudarib share; increase/decrease in net assets after the Mudarib share (para 25).",
+    "Expenses include management fees (agency-managed Funds), professional fees, administrative expenses, registration fees, marketing expenses, and other expenses; material items reported separately (para 27).",
+    "Cash dividend income recognized at the declared amount payable in cash on the date of declaration (para 31).",
+    "Realized capital gains/losses recognized at sale date, measured as sale price less carrying amount plus disposal-related expenses (para 33).",
+    "Statement of Changes in Net Assets is preferable when investments are mostly highly liquid, carried at market value, and the liability-to-total-assets ratio is low (para 37).",
+    "Statement of Changes in Net Assets comprises: increase/decrease from operations, distributions to shareholders/unitholders, share/unit transactions, capital contributions, and net change in net assets (para 39).",
+    "Statement of Financial Highlights covers the three most recent financial periods per share/unit, including NAV, income before/after Mudarib share, distributions, and capital contributions (paras 45-46).",
+    "Notes disclosures required include: Fund type/activities/policies (para 48); redemption bases (para 52); manager and custodian contractual relationships (para 53); related-party transactions per FAS No. (1) (para 57); Mudarib share or agent's fee (para 58); Shari'a-prohibited earnings and their disposal (para 61); whether Zakah is the Fund's or shareholders'/unitholders' responsibility, plus Zakah due per share/unit (para 62); tax provisioning (para 63); Fund duration and liquidation conditions (para 64).",
+    "Real estate assets measured at historical cost plus direct ownership expenses on acquisition, then revalued to cash equivalent value using the latest real estate valuer's valuation (or historical cost if unavailable) (paras 65-66).",
+    "Effective date: fiscal periods beginning 1 Muharram 1423 A.H., corresponding to 1 January 2002 A.D. (para 68)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV04",
+     "topic": "bay al-dayn/sale of debt",
+     "position": "AAOIFI: Fiqh academy resolutions and fatwas prohibit investment in Funds that invest in interest-bearing loans or in Funds whose investments include securitized debt instruments arising from lawful dealings such as Murabaha sales; however, investment in such Funds is permissible if there is a pool of assets in kind and benefits together with cash and Murabaha receivables, provided the assets-in-kind/benefits portion is greater (Appendix B).",
+     "clauses": [
+      "prohibit investment in Funds that invest in interest-bearing loans or in Funds whose investments include securitized debt instruments arising out of lawful dealings, such as Murabaha sales (Appendix B)",
+      "permissible if there is a pool of assets in kind and benefits together with cash and Murabaha receivables provided the amounts of assets in kind and benefits are greater (Appendix B)"
+     ],
+     "tag": "verified"
+    },
+    {
+     "topic_id": "DV07",
+     "topic": "binding promise/wa'd",
+     "position": "AAOIFI: A commitment to underwrite premium contribution amounts must be undertaken without consideration and may only be at nominal value (or, for assets in kind, by buying as a whole at one price and selling at a higher price); any Fund-management agreement to repurchase/redeem shares/units at nominal value or a pre-determined higher value is not permitted, but a third party may enter such a repurchase agreement per Shari'a guidelines provided no commission is charged (Appendix B).",
+     "clauses": [
+      "it is not permissible to pay consideration for such a commitment. Rather, a commitment may be entered into at the nominal value (Appendix B)",
+      "Any agreement by the Fund's management to repurchase or redeem at the nominal value or a pre-determined higher value is not permitted. However, a third party may enter into such an agreement according to Shari'a guidelines...provided no commission is charged (Appendix B)"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [
+    "\"This form is considered permissible by some Fuqaha(2) on the basis that it is analogous to a sale agency fee which is based on a percentage of the price\" — noting a specific fiqh view (not unanimous) on percentage-based agency management fees (Appendix B).",
+    "\"Many rulings have been issued in some Shari'a seminars and by Shari'a supervisory authorities or boards that provide for setting ceilings to limit investment in companies that invest funds in unlawful deposits and/or raise unlawful loans\" — indicating varying Shari'a-board positions on permissible thresholds (Appendix B)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "financially independent of the institutions that establish them",
+     "cite": "para 1"
+    },
+    {
+     "quote": "calculated by dividing net assets by the number of outstanding shares/units",
+     "cite": "para 9"
+    },
+    {
+     "quote": "increase or decrease in net assets from operations after the Mudarib share",
+     "cite": "para 30"
+    },
+    {
+     "quote": "the ratio of liabilities to total assets of the Fund is low",
+     "cite": "para 37"
+    },
+    {
+     "quote": "shall also disclose the Zakah due for each share/unit",
+     "cite": "para 62"
+    },
+    {
+     "quote": "beginning 1 Muharram, 1423 A.H. or 1 January, 2002 A.D.",
+     "cite": "para 68"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-50",
+    "evidence": "FAS 50 PR3, para 38"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-15",
+   "source_file": "2f1cd6f4-FinancialAccountingStandard15ProvisionsandReservesinIslamicInsuranceCompanies.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (15): Provisions and Reserves in Islamic Insurance Companies",
+   "issued_date": "2001-05-02",
+   "effective_date": "2002-01-01 (para 23)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (12): General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies",
+    "Financial Accounting Statement No. (1): Objectives of the Financial Accounting Standards for the Islamic Financial Institutions (Statement of Objectives)",
+    "Financial Accounting Statement No. (2): Concepts of Financial Accounting Standards for the Islamic Financial Institutions (Statement of Concepts)"
+   ],
+   "applicability": "Applies to the main technical provisions established by companies for general insurance (property and casualty) operations, plus the deficit reserve and equalisation reserve set aside from surplus before allocation to policyholders; does not apply to reserves within owners' equity set aside from earnings to meet legal or general requirements, nor to the depreciation provision (para 1).",
+   "contract_slugs": [
+    "takaful"
+   ],
+   "term_names": [
+    "Unearned Contributions",
+    "Unearned Contributions Provision",
+    "Outstanding Claims",
+    "Claims Incurred But Not Reported",
+    "Deficit Reserve",
+    "Equalization Reserve",
+    "Technical Provisions",
+    "Maslahah",
+    "Takaful"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "1. Scope of the Standard (para 1). 2. Technical Provisions: 2/1 Types of technical provisions (paras 2-4); 2/2 Recognition of technical provisions (para 5); 2/3 Measurement of technical provisions (paras 6-8); 2/4 Presentation requirements (paras 9-10); 2/5 Disclosure in the notes to the financial statements (paras 11-13). 3. Reserves: 3/1 Types of reserves (paras 14-15); 3/2 Recognition of reserves (para 16); 3/3 Measurement of reserves (para 17); 3/4 Presentation requirements (paras 18-19); 3/5 Disclosure in the notes to the financial statements (paras 20-22). 4. Effective Date (para 23). Adoption of the Standard. Appendix (A): Brief History of the Preparation of the Standard. Appendix (B): Juristic Rules for Provisions and Reserves in Islamic Insurance Companies. Appendix (C): Reasons for the Standard. Appendix (D): Basis for Conclusions. Appendix (E): Definitions.",
+   "key_points": [
+    "Standard applies to main technical provisions established by companies for general insurance (property and casualty) operations (para 1).",
+    "Standard also applies to the deficit reserve and equalisation reserve set aside by the company from surplus before allocation to policyholders (para 1).",
+    "Standard does not apply to reserves within owners' equity set aside from earnings to meet legal or general requirements, nor to the depreciation provision (para 1).",
+    "Any conflict between the standard's requirements and the company's charter or the laws/regulations of its operating country must be disclosed (para 1).",
+    "Three types of technical provisions for general insurance: unearned contributions provision, outstanding claims, and claims incurred but not reported (paras 2-4).",
+    "Unearned contributions provision is an amount set aside to meet claims related to unearned contributions which may arise in the current or future financial periods (para 2).",
+    "Outstanding claims provision is an amount set aside for claims expected to be paid that were incurred and reported up to period end, including claims handling expenses less settled claims (para 3).",
+    "Claims incurred but not reported (IBNR) provision covers claims that were incurred but not reported until after the end of the current financial period (para 4).",
+    "All technical provisions are recognised when set up at the end of the financial period and recorded as an expense in the 'Statement of Policyholders' Revenue and Expenses' (para 5).",
+    "Unearned contributions provision is measured as a percentage of total unearned contributions, after deducting the reinsurance share, using one of four methods: (a) 40% non-marine/25% marine or another percentage, (b) the 24-month method, (c) the 360-day method, (d) any other method; the method used must be disclosed (para 6).",
+    "Outstanding claims provision is measured as the amount of outstanding claims estimated by the company, sufficient to cover claims incurred and reported to period end, after deducting reinsurance share and settled claims (para 7).",
+    "Claims incurred but not reported provision is measured as the amount estimated by the company based on past experience of recent reported claims and various statistical methods (para 8).",
+    "All technical provisions are presented separately, at period end, under 'technical provisions' on the liabilities side of the statement of financial position (para 9).",
+    "The amount expected to be recovered from reinsurance, related to all technical provisions, is presented on the assets side under 'amount expected to be recovered from reinsurance' (para 10).",
+    "Company must disclose, for each type of technical provision and each insurance business type, the opening balance, amounts added, amounts used, and closing balance for the period (para 11).",
+    "Company must disclose the basis applied in determining each type of technical provision, and any changes made to that basis (para 12).",
+    "Disclosure requirements of Financial Accounting Standard No. (12), General Presentation and Disclosure in the Financial Statements of Islamic Insurance Companies, should also be observed (para 13).",
+    "Two types of reserves: deficit reserve, a cushion against future deficit (para 14), and equalization reserve, to mitigate the effect of exceptionally high loss ratios for classes of insurance with high claims volatility (para 15).",
+    "Deficit reserve and equalization reserve are recognised when the company's management decides to set up these reserves (para 16).",
+    "Reserves are measured at the amount deemed prudent by management; a shortfall to the required level is treated as an appropriation of surplus, and any excess over the prudent amount is deducted from reserves and added back to policyholders' surplus for the period (para 17).",
+    "Deficit reserve is presented separately under policyholders' equity in the statement of financial position (para 18); equalization reserve is likewise presented separately under policyholders' equity (para 19).",
+    "Company must disclose the bases applied in determining and measuring both reserves (para 20), the changes occurring in each reserve during the period, including opening balance, amounts added and used, and closing balance (para 21), and the party that will receive remaining reserve balances in case of liquidation (para 22).",
+    "Standard is effective for financial periods beginning 1 Muharram 1423 A.H. or 1 January 2002 A.D. (para 23)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "for general insurance operations (property and casualty insurance)",
+     "cite": "para 1"
+    },
+    {
+     "quote": "amount set aside to meet claims related to unearned contributions",
+     "cite": "para 2"
+    },
+    {
+     "quote": "measured by the amount calculated as a percentage of the total amount",
+     "cite": "para 6"
+    },
+    {
+     "quote": "recognized when the management of the company decides to set up these reserves",
+     "cite": "para 16"
+    },
+    {
+     "quote": "This Standard shall be effective for financial periods beginning 1 Muharram",
+     "cite": "para 23"
+    },
+    {
+     "quote": "the underwriting surplus belongs solely to the policyholders",
+     "cite": "Appendix B"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-43",
+    "evidence": "FAS 43 IN4, para 136"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-16",
+   "source_file": "2fab4cd0-FinancialAccountingStandard16ForeignCurrencyTransactionsandForeignOperations.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (16): Foreign Currency Transactions and Foreign Operations",
+   "issued_date": "2001-05-02",
+   "effective_date": "2002-01-01 (para. 29)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (9): Zakah",
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Financial Accounting Statement No. (1): Objectives of the Financial Accounting Standards for the Islamic Financial Institutions (Statement of Objectives)",
+    "Financial Accounting Statement No. (2): Concepts of Financial Accounting Standards for Islamic Financial Institutions (Statement of Concepts)"
+   ],
+   "applicability": "Applies to Islamic banks and financial institutions (defined in Preface fn. 1) for recognizing, measuring, presenting and disclosing transactions in currencies other than the reporting currency (assets, liabilities, off-balance sheet items, revenues, expenses, gains or losses), and covers net investments in foreign operations such as branches and subsidiaries preparing statements in a different currency, and foreign currency items in the statement of changes in restricted investments; where the Standard conflicts with the Islamic bank's charter or the laws/regulations of the country of operation, that conflict must be disclosed (para. 1).",
+   "contract_slugs": [
+    "murabaha",
+    "mudarabah",
+    "musharakah"
+   ],
+   "term_names": [
+    "Exchange Rate",
+    "Reporting Currency",
+    "Foreign Currency",
+    "Foreign Operations",
+    "Exchange Difference",
+    "Forward Exchange Rate",
+    "Monetary Asset",
+    "Monetary Liabilities",
+    "Net Investment in Foreign Operation",
+    "Prevailing Rate",
+    "Translation Difference (Measurement)",
+    "Mudaraba",
+    "Musharaka",
+    "Murabaha to the Purchase Orderer",
+    "Musawama",
+    "Zakah",
+    "Riba",
+    "Taqwim",
+    "Maslahah"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "1. Scope of the Standard (para. 1). 2. Accounting Treatment for Foreign Currency Transactions: 2/1 non-Mudaraba/Musharaka transactions (para. 2); 2/2 Mudaraba/Musharaka transactions (paras. 3-6); 2/3 foreign-currency Murabaha to the Purchase Orderer with grace period (para. 7); 2/4 client settlement of Murabaha receivable (paras. 8-9); 2/5 Murabaha converted to Musawama (para. 10). 3. Accounting Treatment for the Purpose of Preparing Financial Statements: 3/1 monetary assets/liabilities translation (para. 11); 3/2 net investment in foreign operation translation differences (para. 12); 3/3 accumulated unrealised gains (para. 13); 3/4 severe devaluation losses (para. 14); 3/5 settlement in another currency (para. 15); 3/6 revenues/expenses translation (para. 16); 3/7 Zakah (para. 17). 4. Presentation Requirements: 4/1 unrestricted investment account FX differences (para. 18); 4/2 owners' equity FX differences (para. 19); 4/3 disposal of foreign operation (para. 20). 5. Disclosure in the Notes to the Financial Statements: 5/1-5/8 (paras. 21-28). 6. Effective Date (para. 29). Adoption of the Standard. Appendix (A): Brief History of the Preparation of the Standard. Appendix (B): Juristic Rules for Foreign Currency Transactions and Foreign Operations. Appendix (C): Reasons for the Standard. Appendix (D): Basis for Conclusions. Appendix (E): Definitions.",
+   "key_points": [
+    "The term 'Islamic bank' or 'Islamic banks' used throughout the Standard refers to Islamic banks and financial institutions undertaking foreign currency transactions and foreign operations (fn 1).",
+    "The Standard sets out rules for recognizing, measuring, presenting and disclosing transactions in currencies other than the reporting currency, covers net investments in foreign operations (branches/subsidiaries reporting in a different currency), applies to restricted investment account statements, and requires disclosure of any conflict with the bank's charter or local laws/regulations (para. 1).",
+    "Foreign currency transactions not based on Mudaraba or Musharaka contracts are recognised on the transaction date by translating them into the reporting currency at the prevailing spot exchange rate (para. 2).",
+    "Mudaraba/Musharaka foreign currency transactions are recognised by translating amounts into the reporting currency at the prevailing spot exchange rate on the date of receipt of the foreign currency (para. 3).",
+    "If the Mudaraba/Musharaka transaction is executed in the reporting currency, the capital shall be remitted -- after addition of profits or deduction of losses -- in the reporting currency (para. 4).",
+    "If executed in a currency other than the reporting currency, gain or loss is determined by retranslating Mudaraba/Musharaka assets into the reporting currency, credited or charged against the Mudaraba/Musharaka fund (para. 5).",
+    "If the provider of funds asks the Islamic bank to retranslate the due amount back to the currency in which the capital was originally received, any resultant translation gain or loss is credited/charged to the client (para. 6).",
+    "A foreign-currency Murabaha to the Purchase Orderer transaction with a grace period from the supplier is measured by translating the foreign-currency amount committed to the supplier at the prevailing spot exchange rate at the time the transaction was concluded with the supplier (para. 7).",
+    "If the client settles the Murabaha receivable in the currency in which the transaction was executed, the resulting profit of the transaction shall initially be recognised in that currency and translated into the reporting currency at the prevailing spot exchange rate on the settlement date (para. 8).",
+    "If the client settles the Murabaha receivable in a currency other than that of the transaction, the amount paid is translated into the reporting currency at the prevailing spot exchange rate on the settlement date, and any resulting foreign exchange gain or loss is the responsibility of the Islamic bank (para. 9).",
+    "If a Murabaha with a grace period is cancelled and re-executed as Musawama with deferred settlement, the client's settlement amount is translated into the reporting currency at the prevailing spot exchange rate on the settlement date, and any resultant gain or loss is recognised in the Islamic bank's income statement (para. 10).",
+    "Monetary assets and liabilities denominated in foreign currencies are translated at the prevailing spot exchange rates at the date of the financial statements; translation differences other than those from net investments in foreign operations are recognised in the income statement (para. 11).",
+    "Foreign exchange differences from retranslating a net investment in a foreign operation are recognised as a separate component of equity in the statement of financial position, split between owners' equity and unrestricted investment accountholders' equity; on disposal, the differences are recognised as a gain or loss in the income statement (para. 12).",
+    "Accumulated unrealised gains from retranslating a net investment in a foreign operation are first credited against any accumulated unrealised losses of prior years charged to the separate equity component; a resulting accumulated gain represents an increase in the carrying amount of the net investment (para. 13).",
+    "Translation losses from severe (non-temporary) devaluation or depreciation of the currency of a net investment in a foreign operation are first charged against any credit balance on the separate equity component, with any remainder recognised as a loss in the income statement (para. 14).",
+    "If receivables or liabilities denominated in a foreign currency are settled fully or partially in another currency, the amount settled is measured at the prevailing spot exchange rate on the settlement date, with any translation difference recognised as a currency exchange gain or loss in the income statement (para. 15).",
+    "At the date of the financial statements, all revenues and expenses of the Islamic bank's foreign operations are translated into the reporting currency using the weighted average method or an acceptable approximation (para. 16).",
+    "Zakah is calculated based on Financial Accounting Standard No. (9): Zakah, at period end, after translating all monetary foreign-currency assets and liabilities into the reporting currency at the prevailing spot exchange rates at the end of the financial period (para. 17).",
+    "Foreign exchange differences attributable to unrestricted investment accounts are presented in the income statement under 'gain or loss on foreign currency transactions for unrestricted investment accounts,' after 'return on unrestricted investment accounts' and before deducting the Islamic bank's share as mudarib (para. 18).",
+    "Gains or losses from revaluation of foreign-currency monetary assets/liabilities attributable to owners' equity are presented under 'gain or loss on foreign currency translation' before 'other revenues,' excluding gains/losses on net investments in foreign operations (para. 19).",
+    "On disposal of a foreign operation, any gain or loss on retranslation of the net investment is presented separately under 'gain or loss on foreign currency translation'; prior-period unrealised amounts previously in the separate equity component are recognised in the income statement in the period of disposal (para. 20).",
+    "Disclosure requirements: reason for using a reporting currency different from the local currency (para. 21); nature, reason and effect of an important change in the classification of foreign operations, with possible exemption in the first implementation year (para. 22); separate disclosure of accumulated unrealised gains and losses on net investments, labeled 'Cumulative unrealised translation gains (losses) on net investment in foreign operations' (para. 23); disclosure of differences from translating Mudaraba/Musharaka transactions held in foreign currencies (para. 24).",
+    "Further disclosure requirements: material differences, gain or loss, from retranslating unrestricted investment accounts (para. 25); foreign exchange differences on restricted investment accounts, disclosed in the statement of changes in restricted investment accounts (para. 26); policies applied by the Islamic bank in translating foreign currencies and in managing foreign currency risk (para. 27); disclosure requirements of Financial Accounting Standard No. (1) must also be observed (para. 28).",
+    "The Standard is effective for financial periods beginning 1 Muharram 1423 A.H., corresponding to 1 January 2002 A.D. (para. 29)."
+   ],
+   "divergence_evidence": [
+    {
+     "topic_id": "DV06",
+     "topic": "currency exchange/gold/forwards",
+     "position": "AAOIFI: currency translation (revaluation) is an accounting procedure distinct from a currency-exchange contract and must use the prevailing spot exchange rate on the relevant date; it is not permissible for any reason to use a future or forward exchange rate to translate an obligation, since this would amount to an unauthorized future currency exchange without set-off; exchanging the currency of an unsettled liability (rescheduling) without simultaneous settlement is Riba and prohibited, but where currency translation coincides exactly with settlement of the liability this constitutes a mutual set-off of liabilities, and possession through set-off is tantamount to actual (constructive) possession, discharging the parties -- a ruling confirmed by International Islamic Fiqh Academy Resolution No. (75) 6/8 (Appendix B).",
+     "clauses": [
+      "'The translation (revaluation) of one currency to another does not refer to a currency exchange transaction involving two currencies, either a spot transaction or a deferred or forward transaction. Instead, translation is an accounting procedure' (Appendix B)",
+      "'it is not permissible for whatever reason to carry out the translation process using a future or forward exchange rate, as this would involve translating an obligation that will be settled in the future' (Appendix B)",
+      "'this would mean the rescheduling of the liability, potentially involving a change in the effective amount to be paid in lieu of time, which is Riba that is prohibited by Shari'a' (Appendix B)",
+      "'if the translation from one currency to another takes place at the same time of the settlement of an obligation, then this is considered as a mutual set-off of liabilities. As a principle, possession through set-off is tantamount to actual possession... the process becomes a currency exchange by virtue of constructive possession that discharges the parties from liability' -- confirmed by International Islamic Fiqh Academy Resolution No. (75) 6/8 (Appendix B, fn 4, fn 5)",
+      "'It is imperative that the transaction be recorded at the prevailing spot exchange rate on the date of execution' (Appendix B)",
+      "'there is no justification for using a future exchange rate as a basis for the currency translation because this involves speculation as no one knows what the future rate will be. Hence, the use of spot exchange rates prevails' (Appendix B)"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "recognizing, measuring, presenting and disclosing transactions in various currencies",
+     "cite": "para 1"
+    },
+    {
+     "quote": "the resulting profit of the transaction shall initially be recognised",
+     "cite": "para 8"
+    },
+    {
+     "quote": "recognized as a separate component of equity in the statement",
+     "cite": "para 12"
+    },
+    {
+     "quote": "Zakah shall be calculated based on Financial Accounting Standard No",
+     "cite": "para 17"
+    },
+    {
+     "quote": "Disclosure shall be made if the reporting currency is different",
+     "cite": "para 21"
+    },
+    {
+     "quote": "policies applied by the Islamic bank in translating foreign currencies",
+     "cite": "para 27"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-18",
+   "source_file": "d8abe34e-FinancialAccountingStandard18IslamicFinancialServicesOfffferedbyConventionalFinancialInstitutions.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (18): Islamic Financial Services Offered by Conventional Financial Institutions",
+   "issued_date": "2002-04-30",
+   "effective_date": "2003-01-01 (para. 17)",
+   "supersedes": [],
+   "linked_standards": [
+    "AAOIFI Financial Accounting Standard No. (14): Investment Funds",
+    "AAOIFI Governance Standards (relating to the Shari'a supervisory board)",
+    "AAOIFI Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "AAOIFI Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "AAOIFI Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to institutions which offer Islamic financial services in addition to their conventional financial services; the standard sets out accounting rules only for the Islamic financial services offered by these institutions, not their conventional business (para. 1). 'Institution/institutions' are defined as financial institutions which do not comply with Shari'a rules and principles in all of their transactions (fn. 1).",
+   "contract_slugs": [],
+   "term_names": [
+    "Islamic financial services",
+    "Shari'a rules and principles",
+    "Shari'a supervisory board",
+    "Shari'a report",
+    "Islamic investment funds",
+    "Islamic financial services units",
+    "commingle"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (objective and disclosure purpose). Statement of the Standard (paras 1-17): 1. Scope of the Standard (para 1); 2. General Provisions — four organizational arrangements 2/1-2/4 (para 2); 3. Institutions Offering Islamic Financial Services Through Branches Either Have Separate or Non-Separate Accounts from Conventional Branches (para 3); 4. Institutions Managing Islamic Investment Funds (para 4); 5. Institutions Offering Islamic Financial Services, Which Have Separate or Non-Separate Accounts, Either Directly Through Conventional Departments or Through Separate Islamic Financial Services Units — sub-items 5/1-5/4 (paras 5-8); 6. General Requirements — 6/1 (a-b) and 6/2 (a-c) (paras 9-10); 7. Disclosure Requirements — 7/1-7/6 (paras 11-16); 8. Effective Date (para 17). Adoption of the Standard (Board meeting No. 23). Appendix (A): Brief History of the Preparation of the Standard. Appendix (B): Reasons for the Standard. Appendix (C): Basis for Conclusions.",
+   "key_points": [
+    "Standard sets out accounting rules for recognizing, measuring and presenting assets managed and funds mobilized on the basis of Shari'a rules and principles by conventional financial institutions offering Islamic financial services, plus related income and disclosures (Preface).",
+    "'Institution/institutions' means financial institutions which do not comply with Shari'a rules and principles in all of their transactions (fn. 1).",
+    "Scope limited to institutions offering Islamic financial services alongside conventional services; sets accounting rules only for the Islamic financial services portion (para 1).",
+    "Four organizational/administrative arrangements recognized: branches with separate or non-separate accounts from conventional branches (2/1); Islamic investment funds (2/2); separate or non-separate Islamic financial services units (2/3); existing conventional units with no separation between the two practices (2/4) (para 2).",
+    "Institutions offering services through branches with separate accounts must group those branches for financial reporting and prepare a consolidated supplementary set of financial statements based on AAOIFI standards, published as an appendix to the notes to the financial statements (para 3).",
+    "Institutions managing Islamic investment funds shall apply AAOIFI accounting standards, particularly Financial Accounting Standard No. (14): Investment Funds (para 4).",
+    "Institutions with separate or non-separate accounts for Islamic services (via conventional departments or separate Islamic units) shall apply AAOIFI income recognition and measurement rules, with detailed disclosure of these rules in the notes (para 5).",
+    "Such institutions shall prepare a separate supplementary statement, published in the notes, showing in detail the funds mobilized according to Shari'a rules and principles and the assets financed by these funds (para 6).",
+    "Such institutions shall prepare a separate supplementary statement, published in the notes, showing in detail the income and expenses (including provisions) related to Islamic financial services offered (para 7).",
+    "Institutions shall disclose accounting policies used for recognition, measurement and presentation of Islamic-service assets/liabilities that are not in accordance with or specified in AAOIFI Financial Accounting Standards, plus the nature of such assets and liabilities (para 8).",
+    "Institutions declaring Shari'a compliance must appoint a Shari'a supervisory board which presents a Shari'a report, and must implement the Governance Standards issued by AAOIFI relating to that board (para 9).",
+    "Exceptional case of no Shari'a Supervisory Board (requires regulatory/supervisory approval): institution must disclose reasons for not appointing a board, how Shari'a compliance is achieved in the services offered, and which body approves those services (para 10).",
+    "Institutions shall disclose whether or not they commingle funds relating to Islamic financial services with funds relating to conventional financial services (para 11).",
+    "Institutions shall disclose in detail the sources and applications of funds mobilized and invested by their Islamic financial services, and the sources of funds used to cover a deficit if one occurs (para 12).",
+    "Institutions shall disclose any revenues or expenditures prohibited by Shari'a rules and principles related to Shari'a-mobilized funds, and the disposition of such revenues as determined by the Shari'a supervisory board (para 13).",
+    "Institutions shall disclose any reserves deducted from Shari'a-mobilized funds, the purposes of such reserves, and to whom the reserves revert if the related activities have ceased (para 14).",
+    "Institutions shall disclose the percentage amount of funds relating to Islamic financial services compared to the percentage amount of funds relating to conventional financial services (para 15).",
+    "Disclosure requirements stated in Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions should also be observed (para 16).",
+    "Effective date: financial periods beginning 1 Muharram, 1424 A.H., or 1 January, 2003 A.D. (para 17).",
+    "Standard adopted by the AAOIFI Accounting and Auditing Standards Board at meeting No. (23) held on 17 Safar, 1423 A.H., corresponding to 30 April, 2002 A.D. (Adoption of the Standard).",
+    "A study sample of five institutions found the percentage of Islamic funds compared to total assets of these institutions ranged between 20% and 40% (Appendix B).",
+    "Study found these institutions had no Shari'a supervisory board of their own, instead relying on Shari'a rulings of other Islamic financial institutions' boards, and did not disclose the Shari'a rules they followed (Appendix B).",
+    "Basis for Conclusions ties the standard's disclosure and recognition requirements to the previous Statement of Financial Accounting No. (1): Objectives, and the previous Statement of Financial Accounting No. (2): Concepts, for Islamic Banks and Financial Institutions (Appendix C).",
+    "Appendix A traces the standard's drafting history: priority given at Board meeting No. (16), 8-9 Ramadan 1419 A.H./26-27 December 1998; consultant commissioned 1 Ramadan 1421 A.H./27 November 2000; reviewed at Accounting Standards Committee meetings No. (27)-(30) and Shari'a Committee meeting No. (6) through 2001; a listening session held in Bahrain on 22 Dhul-Qa'dah 1422 A.H./4 February 2002 with more than 20 participants; adopted at Board meeting No. (23) (Appendix A)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "\"there are differences in the Shari'a rules used by these institutions and that they have no Shari'a supervisory board\" — noted among conventional institutions offering Islamic financial services, who instead rely on rulings of other Islamic institutions' Shari'a boards (Appendix B)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "shall apply to the institutions which offer Islamic financial services",
+     "cite": "para 1"
+    },
+    {
+     "quote": "shall apply the accounting standards issued by AAOIFI",
+     "cite": "para 4"
+    },
+    {
+     "quote": "Appoint a Shari'a supervisory board which shall present a Shari'a report",
+     "cite": "para 9"
+    },
+    {
+     "quote": "shall disclose any revenues or expenditures prohibited by Shari'a rules and principles",
+     "cite": "para 13"
+    },
+    {
+     "quote": "shall be effective for financial periods beginning 1 Muharram, 1424 A.H.",
+     "cite": "para 17"
+    },
+    {
+     "quote": "These institutions differ in the ways, structures, forms and the Shari'a basis",
+     "cite": "Appendix B"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-40",
+    "evidence": "FAS 40 para 13"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-19",
+   "source_file": "bdefa418-FinancialAccountingStandard19ContributionsinIslamicInsuranceCompanies.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (19): Contributions in Islamic Insurance Companies",
+   "issued_date": "2003-06-03",
+   "effective_date": "2004-01-01 (para 16)",
+   "supersedes": [],
+   "linked_standards": [
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to contributions made on the basis of donation by policyholders relating to general (property and casualty) insurance, and to the portion of contributions made on the basis of donation by policyholders relating to insurance on persons (Takaful); does not apply to the portion of contributions relating to investment or saving in insurance on persons; any conflict between the standard and the company's charter or national laws/regulations must be disclosed (para 1).",
+   "contract_slugs": [
+    "takaful"
+   ],
+   "term_names": [
+    "Contributions",
+    "Earned Contributions",
+    "Unearned Contributions",
+    "Contributions receivable",
+    "Reinsurance share",
+    "Reinsurance commissions",
+    "Takaful",
+    "Statement of Policyholders' Revenue and Expenses",
+    "Statement of Financial Position",
+    "policyholders' equity",
+    "actuarial techniques"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface; Statement of the Standard (paras 1-16): 1. Scope of the Standard (para 1); 2. Recognition of Contributions (paras 2-7, sub-items 2/1-2/6); 3. Measurement of Contributions (para 8); 4. Presentation in the Financial Statements (para 9); 5. Disclosure in the Notes to the Financial Statements (paras 10-14, sub-items 5/1-5/5); 6. General Disclosure Requirements (para 15); 7. Effective Date (para 16); Adoption of the Standard; Appendix (A) Brief History of the Preparation of the Standard; Appendix (B) Juristic Rules for Contributions in Islamic Insurance Companies; Appendix (C) Reasons for the Standard; Appendix (D) Basis for Conclusions; Appendix (E) Definitions.",
+   "key_points": [
+    "Standard applies to contributions made on a donation basis by policyholders relating to general insurance, and to the donation-based portion of Takaful contributions for insurance on persons (para 1).",
+    "Standard excludes the investment/saving portion of contributions in insurance on persons (para 1).",
+    "Any conflict between the standard and the company's charter or the laws/regulations of its country of operation must be disclosed (para 1).",
+    "Earned contributions are recognized as a separate item 'Earned contributions' in the Statement of Policyholders' Revenue and Expenses at inception of the policy or of the insured risk (para 2).",
+    "Where contributions are undertaken through intermediaries, the intermediaries' commission is recognized separately as an expense in the Statement of Policyholders' Revenue and Expenses (para 2).",
+    "Unearned contributions relating to subsequent financial periods are recognized as a liability item 'Unearned contributions' in the Statement of Financial Position, at inception of the policy or insured risk (para 3).",
+    "Contributions due to be received at period-end are recognized on the assets side of the Statement of Financial Position under 'Contributions receivable' as an item of policyholders' equity (para 4).",
+    "At period-end the company must estimate changes in contributions for policy types subject to change; increases are recognized once receipt is assured, decreases are recognized once the decrease is assured (para 5).",
+    "Estimated changes in contributions and their effect on the original contributions must reflect the risks attached, and be considered when determining earned/unearned portions at period-end (para 5).",
+    "The reinsurance share of earned contributions is recognized as an expense 'Reinsurance share' in the Statement of Policyholders' Revenue and Expenses at inception of the policy or insured risk (para 6).",
+    "Reinsurance commission due to the company from Islamic reinsurance companies is recognized as revenue 'Reinsurance commissions' at the inception of the reinsurance contract (para 7).",
+    "Contributions are measured at period-end at the amount determined by the company, estimated by the company's actuaries using actuarial techniques and statistical methods, plus international prevailing practices and home-country regulations (para 8).",
+    "Contributions undertaken through intermediaries are measured at the amount underwritten by the intermediary, either the gross amount or the net amount after commission deduction, depending on the transfer obligation (para 8).",
+    "Earned contributions presented in the Statement of Policyholders' Revenue and Expenses must be net of: reinsurance share; change in contributions from policies initiated in prior periods; change in unearned contributions; and intermediary-related contribution changes before period-end (para 9).",
+    "Disclosure required of accounting policies for treatment of contributions from both general insurance and insurance on individuals (para 10).",
+    "Disclosure required of accounting policies for treatment of any changes occurring in contributions during the financial period (para 11).",
+    "Disclosure required of accounting policy for policyholder withdrawal with no eligibility for any part of the contribution (para 12).",
+    "Disclosure required of accounting policy for policyholder withdrawal with eligibility for part of the contribution based on remaining policy period (para 12).",
+    "Disclosure required of accounting policy for cancellation of the policy and its effect on policyholder eligibility for part or whole of the contribution, and any other applicable method (para 12).",
+    "Separate disclosure required of contribution receivables relating to policyholders, other insurance companies, and reinsurance companies (para 13).",
+    "Disclosure required of the breakdown of contributions on the basis of insurance segments and type of insurance (para 14).",
+    "General disclosure requirements stated in other AAOIFI Financial Accounting Standards related to Islamic insurance companies must also be observed (para 15).",
+    "Standard is effective for financial periods beginning 1 Muharram 1425 A.H., corresponding to 1 January 2004 A.D. (para 16).",
+    "Standard was adopted by the Accounting and Auditing Standards Board at meeting No. 25, held 3 Rabi' II 1424 A.H., corresponding to 3 June 2003 A.D. (Adoption of the Standard)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "Appendix B notes a specific school position on the basis for contributions: \"according to the Maliki school of thought, such contributions are considered to be obligatory on the committed party once it undertakes to donate\" (Appendix B)."
+   ],
+   "verification_anchors": [
+    {
+     "quote": "shall apply to the contributions made on the basis of donation",
+     "cite": "para 1"
+    },
+    {
+     "quote": "the commission of the intermediaries shall be recognized separately as an expense",
+     "cite": "para 2"
+    },
+    {
+     "quote": "the company shall estimate the changes in the contributions, if any",
+     "cite": "para 5"
+    },
+    {
+     "quote": "Contributions are estimated by the company’s actuaries based on actuarial techniques",
+     "cite": "para 8"
+    },
+    {
+     "quote": "This Standard shall be effective for financial periods beginning 1",
+     "cite": "para 16"
+    },
+    {
+     "quote": "such contributions are considered to be obligatory on the committed party",
+     "cite": "Appendix B"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-43",
+    "evidence": "FAS 43 IN4, para 136"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-21",
+   "source_file": "f3a8c608-FinancialAccountingStandard21DisclosureonTransferofAssets.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (21): Disclosure on Transfer of Assets",
+   "issued_date": "2004-06",
+   "effective_date": "2005-01-01 (para 15)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Financial Accounting Standard No. (14): Investment Funds",
+    "Statement of Financial Accounting No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Statement of Financial Accounting No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to the operations of transferring assets between different investment accounts conducted by institutions (institution/institutions, including Islamic banks, fn 1), covering: transfers between Unrestricted and Restricted Investment Accounts (para 1/1); transfers between Investment Accounts (Restricted or Unrestricted) and Owners' Equity (para 1/2); transfers between Restricted Investment Accounts, considering differences in restrictions (para 1/3); and transfers between Investment Accounts/Owners' Equity and Investment Funds and/or SPVs (para 1/4); assets to be transferred include all tangible and financial assets (para 1); any conflict between the standard's requirements and the institution's charter or national laws/regulations must be disclosed (para 1).",
+   "contract_slugs": [],
+   "term_names": [
+    "Transfer",
+    "Tangible Assets",
+    "Financial Assets",
+    "Unrestricted Investment Accounts",
+    "Restricted Investment Accounts",
+    "Owners' Equity",
+    "Investment Funds",
+    "Special Purpose Vehicles (SPV)"
+   ],
+   "status": "superseded",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface. Statement of the Standard (paras 1-15): 1. Scope of the Standard, sub-items 1/1-1/4 (para 1); 2. Disclosure Requirements in the Financial Statements, sub-items 2/1-2/11 (paras 2-12); 3. General Disclosure Requirements, sub-items 3/1-3/2 (paras 13-14); 4. Effective Date (para 15). Adoption of the Standard (Board meeting No. 27). Appendix (A): Brief History of the Preparation of the Standard. Appendix (B): Juristic Rules for Disclosure on Transfer of Assets. Appendix (C): Reasons for the Standard. Appendix (D): Basis for Conclusions. Appendix (E): Definitions.",
+   "key_points": [
+    "Standard establishes rules regulating disclosure of transfer of assets operations between different investment accounts conducted by Islamic financial institutions (Preface).",
+    "'Institution/institutions' is defined to include Islamic banks (fn 1).",
+    "Scope covers transfer of assets from Unrestricted Investment Accounts to Restricted Investment Accounts and vice versa (para 1/1).",
+    "Scope covers transfer of assets from Investment Accounts (Restricted or Unrestricted) to Owners' Equity and vice versa (para 1/2).",
+    "Scope covers transfer of assets from Restricted Investment Accounts to other Restricted Investment Accounts, taking into consideration differences in restrictions between the accounts (para 1/3).",
+    "Scope covers transfer of assets from Investment Accounts and Owners' Equity to Investment Funds and/or Special Purpose Vehicles (SPV) and vice versa (para 1/4).",
+    "Assets to be transferred include all tangible and financial assets (para 1).",
+    "Any conflict between the standard's requirements and the institution's charter or the laws/regulations of its country of operation must be disclosed (para 1).",
+    "Disclosure required of accounting policies adopted in the transfer of assets from unrestricted investment accounts to restricted investment accounts and vice versa (para 2).",
+    "Disclosure required of accounting policies adopted in the transfer of assets from investment accounts (restricted or unrestricted) to owners' equity and vice versa (para 3).",
+    "Disclosure required of accounting policies adopted in the transfer of assets between restricted investment accounts (para 4).",
+    "Disclosure required of accounting policies adopted in the transfer of assets from investment accounts and owners' equity to investment funds and/or SPVs and vice versa (para 5).",
+    "Disclosure required of the bases and reasons that govern the transfer of assets between different investment accounts (para 6).",
+    "Disclosure required of the bases applied by the institution in valuing the assets to be transferred (para 7).",
+    "Disclosure required of the valuation differences resulting from the transfer of assets in foreign currencies and the financial effect of these transfers (para 8).",
+    "Disclosure required of the nature and terms of the assets transferred, whether the assets are divisible/separable, and any related provisions applied (para 9).",
+    "Disclosure required of the commitments and restrictions applied by the contractual relationship between investment accountholders and the institution, if any (para 10).",
+    "Disclosure required of the movement of transfer of assets between different investment accounts (including Investment Funds and Owners' Equity), each separately, showing beginning balance, changes during the period, ending balance, and financial effect if any (para 11).",
+    "Disclosure required of all transfer of assets transactions conducted with related parties, indicating nature of relationship, type of transaction, total value at beginning and end of the financial period, and financial effect (para 12).",
+    "General disclosure requirements of FAS No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions must be observed (para 13).",
+    "General disclosure requirements of FAS No. (14): Investment Funds must be observed (para 14).",
+    "Standard is effective for financial periods beginning 1 Muharram 1426 A.H., corresponding to 1 January 2005 A.D. (para 15).",
+    "Standard was adopted by the Accounting and Auditing Standards Board at meeting No. (27), held 20-21 Jumada I 1425 A.H., corresponding to 8, 9 June 2004 A.D. (Adoption of the Standard).",
+    "Definition: 'Transfer' is the movement of assets from one investment account to another (including Investment Funds and SPVs) by way of sale, investment, clearing, or others (Appendix E).",
+    "Definition: 'Tangible Assets' means any asset that is touchable or physical, such as property, plant and equipment (Appendix E).",
+    "Definition: 'Financial Assets' means any asset that is cash, a contractual right to receive cash or another financial asset, a contractual right to exchange financial instruments with another enterprise, or any equity instrument of another enterprise (Appendix E)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "This standard shall apply to the operations of transferring assets",
+     "cite": "para 1"
+    },
+    {
+     "quote": "Disclosure shall be made of the accounting policies adopted",
+     "cite": "para 2"
+    },
+    {
+     "quote": "Disclosure shall be made of the bases and reasons",
+     "cite": "para 6"
+    },
+    {
+     "quote": "Disclosure shall be made of the valuation differences resulting from the transfer",
+     "cite": "para 8"
+    },
+    {
+     "quote": "This Standard shall be effective for financial periods beginning 1 Muharram",
+     "cite": "para 15"
+    },
+    {
+     "quote": "Any asset that is touchable or physical such as property, plants",
+     "cite": "Appendix E"
+    }
+   ],
+   "superseded_by": {
+    "id": "AAOIFI-FAS-47",
+    "evidence": "FAS 47 IN2, IN4"
+   }
+  },
+  {
+   "id": "AAOIFI-FAS-22",
+   "source_file": "9e0842b2-FinancialAccountingStandard22SegmentReporting.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (22): Segment Reporting",
+   "issued_date": "2004-06",
+   "effective_date": "1 Muharram 1426 A.H. / 1 January 2005 A.D. (para 25)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Financial Institutions",
+    "Financial Accounting Statement No. (1): Objectives of Accounting for Islamic Banks and Financial Institutions",
+    "Financial Accounting Statement No. (2): Concepts of Accounting for Islamic Banks and Islamic Financial Institutions (Statement of Concepts)"
+   ],
+   "applicability": "Applies to a set of financial statements (statement of financial position and income statement) prepared and published by Islamic financial institutions (IFIs), regardless of legal form, country of incorporation, or size; applies to parent, subsidiary, and associate separate financial statements, though only consolidated-basis disclosure is needed if both consolidated and separate statements are presented together; applies irrespective of whether securities are publicly traded, privately held, or being issued in a public securities market; a conflict between the standard and an institution's charter or national laws/regulations must be disclosed (para 1).",
+   "contract_slugs": [
+    "mudarabah",
+    "wakala"
+   ],
+   "term_names": [
+    "operating segment",
+    "business segment",
+    "geographic segment",
+    "reportable segment",
+    "chief operating decision maker",
+    "management approach",
+    "quantitative thresholds",
+    "extraordinary items",
+    "revenue from external customers",
+    "rabb al-mal",
+    "mudarib",
+    "Mudaraba",
+    "agency",
+    "investment accountholders"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (objectives, p.671); Statement of the Standard: 1. Scope of the Standard (para 1, p.672); 2. Operating Segment (paras 2-6, p.672-673); 3. Reportable Segment (paras 7-10, p.673-674); 4. Disclosure Requirements (p.674): 4/1 Specific disclosure (paras 11-15, p.674-675), 4/2 General disclosure (paras 16-24, p.675-677); 5. Effective Date (para 25, p.677); Adoption of the Standard (p.678, AAOIFI Board meeting No. 27); Appendix (a) Brief History of the Preparation of the Standard (p.679-680); Appendix (b) Juristic Rules for Segment Reporting (p.681-682); Appendix (c) Reasons for the Standard (p.683-684); Appendix (d) Basis for Conclusions (p.685-686); Appendix (e) Definitions (p.687).",
+   "key_points": [
+    "Scope: applies to financial statements published by IFIs regardless of legal form, country of incorporation, or size; applies to parent/subsidiary/associate separate statements (consolidated-only when both presented); applies regardless of public/private security status; conflicts with charter/law must be disclosed (para 1).",
+    "Operating segment defined as a distinguishable component earning revenue/incurring expense, whose results are regularly reviewed by the chief operating decision maker (board of directors or CEO), and for which discrete financial information is available (para 2).",
+    "An operating segment may exist before earning revenues, e.g. start-up operations (para 3).",
+    "Business segment and Geographic segment defined as distinguishable components with risks/returns that may differ from other segments in the same category (para 4).",
+    "Business segments may be combined into one if substantially similar in the majority of: long-term financial performance, nature of products/services, customer type, distribution method (para 5).",
+    "Geographic segments may be combined into one if substantially similar in the majority of: economic/political conditions, relationships between operations, proximity of operations (para 6).",
+    "Reportable segment = a business/geographic segment (per para 4), possibly aggregated per para 5 or 6, that exceeds the quantitative thresholds in para 8 (para 7).",
+    "Quantitative threshold: reportable segment's revenue is 10% or more of total revenue (para 8).",
+    "Quantitative threshold: reportable segment's result (profit or loss) is 10% or more of the combined result of all segments in profit, or of all segments in loss, whichever is greater in absolute amount (para 8).",
+    "Quantitative threshold: reportable segment's assets are 10% or more of total assets of all segments (para 8).",
+    "Segments not meeting the para 8 thresholds may be combined into a separate reportable segment only if they share a majority of the para 5/6 aggregation criteria (para 9).",
+    "Segments not separately reportable are combined and disclosed in an 'Other' category, separate from other reconciling items (para 10).",
+    "Specific disclosure: segment revenue and expense per reportable segment, classified per Income Statement headings, with external-customer revenue separated from inter-segment revenue (para 11); segment result disclosed for each reportable segment (para 12).",
+    "Specific disclosure: total segment assets and segment liabilities disclosed per Statement of Financial Position headings (para 13); nature and amount of extraordinary segment revenue/expense items disclosed where relevant to explaining performance (para 14).",
+    "Specific disclosure: reconciliation between reportable-segment revenue, expense, assets, and liabilities and the institution's/consolidated totals (para 15).",
+    "General disclosure: factors used to identify reportable segments and basis of organization (products/services, geography, regulatory environment, or combination); a statement is required if discrete financial information is unavailable (para 16).",
+    "General disclosure: types of products and services from which each reportable segment derives its revenues (para 17).",
+    "Institutions are encouraged (not required) to disclose the broad operating objectives set for each segment and comment on the extent achieved (para 18).",
+    "Reclassification rules: a newly identified segment requires reclassification of prior-period comparative data (para 19); a change in segment composition requires reclassification of earlier-period information (para 20); if reclassification is impracticable, both old and new segmentation bases are reported in the year of change (para 21).",
+    "Segment information must be prepared per the accounting policies used for the institution's/consolidated financial statements (para 22); material accounting-policy changes affecting segment reporting must be disclosed (nature, reasons, restatement status, financial effect if determinable), with prior-period data restated unless impracticable (para 23).",
+    "Disclosure requirements of Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Financial Institutions must also be observed (para 24).",
+    "Effective date: financial periods beginning 1 Muharram 1426 A.H. or 1 January 2005 A.D. (para 25).",
+    "Juristic basis (Mudaraba): the financier (rabb al-mal) is entitled to assess and supervise the mudarib's activities and ensure contractual limitations are observed, consistent with the principle of non-interference in the mudarib's work (Appendix B).",
+    "Juristic basis (agency): the principal is entitled to observe investment operations conducted under an agency appointment, since the agent's remuneration is unaffected by the investment outcome, justifying stakeholder awareness of products and services (Appendix B)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "regardless of their legal form, country of incorporation or size",
+     "cite": "para 1"
+    },
+    {
+     "quote": "discrete financial information is available",
+     "cite": "para 2"
+    },
+    {
+     "quote": "is 10% or more of the total revenue",
+     "cite": "para 8"
+    },
+    {
+     "quote": "reconciliation  between information disclosed for reportable segments",
+     "cite": "para 15"
+    },
+    {
+     "quote": "1426 A.H. or 1 January 2005 A.D.",
+     "cite": "para 25"
+    },
+    {
+     "quote": "is entitled to assess and supervise activities of the mudarib",
+     "cite": "Appendix B"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-23",
+   "source_file": "d2560631-FinancialAccountingStandard23Consolidation.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (23): Consolidation",
+   "issued_date": "2009-04-02",
+   "effective_date": "2010-01-01 (para 26)",
+   "supersedes": [
+    {
+     "title": "Financial Accounting Standard No. (23): Consolidation — original version, approved by the Accounting and Auditing Standards Board at meeting No. (32), Manama, Kingdom of Bahrain, 22 Rabi' II 1428 A.H., corresponding to 9 May 2007 A.D.",
+     "cite": "Appendix A"
+    }
+   ],
+   "linked_standards": [
+    "Financial Accounting Standard No. (16): Foreign Currency Transactions and Foreign Operations",
+    "Financial Accounting Statement No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Financial Accounting Statement No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Standard on Investments in Associates (new standard, under concurrent development, referenced unnamed/unnumbered)"
+   ],
+   "applicability": "Applies to consolidated financial statements prepared and presented by an Islamic Financial Institution (IFI), including Islamic banks (fn 1), as a parent entity, and prescribes accounting for investment in subsidiaries by the parent; also applies to Special Purpose Vehicles (SPV) established to carry out specific activities and accomplish specific objectives, EXCEPT where the SPV is established for the benefit of a party or parties other than the IFI (para 1). Any conflict between the standard's requirements and an IFI's charter or the laws/regulations of its country of operation must be disclosed (para 1).",
+   "contract_slugs": [],
+   "term_names": [
+    "Consolidated financial statements",
+    "Control",
+    "Group",
+    "Non-controlling interest",
+    "Parent",
+    "Separate financial statements",
+    "Subsidiary",
+    "Voting rights",
+    "Special Purpose Vehicle (SPV)",
+    "de facto power",
+    "Unrestricted investment accounts",
+    "Restricted investment accounts",
+    "Non-controlling Interests – Restricted Investment Account"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface. Statement of the Standard (paras 1-26): 1. Scope of the Standard (para 1); 2. Definitions (para 2); 3. Determination and Scope of Consolidated Financial Statements — 3/1 control & voting-rights presumption (para 3), 3/2 funding sources considered for control (para 4), 3/3 substantive voting rights (para 5), 3/4 consolidation regardless of nature of activities (para 6), 3/5 cessation of control (para 7); 4. Presentation of Consolidated Financial Statements — 4/1 (para 8), 4/2 (para 9), 4/3 (para 10); 5. Consolidation Procedures — 5/1 line-by-line combination, temporary-control exception (para 11), 5/2 intragroup elimination (para 12), 5/3 investment/equity elimination & goodwill (para 13), 5/4 non-controlling interest reporting (para 14), 5/5 uniform accounting policy (para 15), 5/6 reporting date alignment, 3-month rule (para 16), 5/7 acquisition/disposal accounting (paras 17-18), 5/8 FX cross-reference to FAS (16) (para 19), 5/9 temporary-to-permanent reclassification (para 20); 6. Disclosure Requirements — 6/1 a-d (paras 21-24), 6/2 restricted-investment-account non-controlling interests (para 25); 7. Effective Date (para 26). Adoption of the Standard (unnumbered, p.700). Appendix (A): Brief History of the Preparation of the Standard (unnumbered). Appendix (B): Reasons for the Standard (unnumbered). Appendix (C): Basis for Conclusions (unnumbered).",
+   "key_points": [
+    "Standard applies to consolidated financial statements prepared and presented by an IFI as a parent entity, sets principles for determining entities subject to consolidation, and prescribes accounting for investment in subsidiaries by the parent (para 1).",
+    "Consolidation also applies to Special Purpose Vehicles (SPV) — entities established to carry out specific activities and accomplish specific objectives — except where the SPV is established for the benefit of a party or parties other than the IFI; conflicts between the standard and an IFI's charter or local laws/regulations must be disclosed (para 1).",
+    "'Control' is defined as the power to govern the financial and operating policies of an entity with the objective of obtaining benefits from its operations (para 2).",
+    "'Subsidiary' is defined as an entity controlled by the parent; 'Parent' is the entity that prepares and presents consolidated financial statements, and in this standard the IFI is regarded as the parent; 'Voting rights' are rights for voting at an entity's shareholders' meeting or other similar forums (para 2).",
+    "Control is presumed to exist where an IFI holds, directly or indirectly through its subsidiaries, more than 50% of the voting rights in an entity, unless clearly demonstrated otherwise (para 3).",
+    "Where the IFI has less than majority voting rights, control may still exist through: (I) agreement with the entity's other shareholders or the entity itself; (II) rights arising from other contractual arrangements; (III) the IFI's de facto power via its voting rights; (IV) potential voting rights; or (V) a combination thereof (para 3).",
+    "Control attributable to investments funded by (a) the IFI's owners' equity and liabilities and (b) its unrestricted investment accounts must be considered in determining a subsidiary and requires consolidation by the IFI (para 4).",
+    "Only substantive voting rights are considered in assessing whether the IFI has power over an entity; rights must be exercisable when relevant decisions are required and the holder must have the practical ability to exercise them; determination of voting rights includes current substantive voting rights and currently-exercisable voting rights (para 5).",
+    "Consolidation of a subsidiary is required regardless of the nature of its activities, including where dissimilar to those of the IFI (para 6).",
+    "The IFI ceases to account for investment in a subsidiary once it is no longer able to exercise control; the investment is then accounted for as an associate or investment, as appropriate (para 7).",
+    "An IFI is required to prepare and present consolidated financial statements combining its own separate statements with those of its subsidiaries (para 8); it may also present separate financial statements not consolidating subsidiaries, per local regulation or its own volition (para 9), but such separate statements must be accompanied by the consolidated financial statements (para 10).",
+    "Consolidated statements are prepared by combining like items line by line, except that line-by-line combination is not required where control is intended to be temporary (para 11).",
+    "Intragroup transactions between the IFI and subsidiaries are eliminated; intragroup losses may indicate impairment requiring recognition in the consolidated financial statements (para 12).",
+    "The carrying amount of the IFI's investment in subsidiaries and its portion of equity in those entities is eliminated, with resultant goodwill (para 13).",
+    "Non-controlling interests in the statement of financial position must be identified and reported as part of total equity; net profit or loss attributable to non-controlling interest must be disclosed separately from that attributable to the parent (para 14).",
+    "The same accounting policy must be applied to the parent's, subsidiary's, and consolidated financial statements (para 15).",
+    "Financial statements subject to consolidation must be prepared as at the same reporting date and for the same reporting period; if not practicable, the difference between subsidiary and parent reporting dates must be no more than three months, with significant intervening transactions adjusted in the consolidated statements (para 16).",
+    "Subsidiary income and expenses are consolidated from the date of acquisition; on full or partial disposal, the difference between the carrying amount of the investment and disposal proceeds is recognised in the income statement, corresponding goodwill is derecognised proportionately, and consolidation continues until the date control ceases (paras 17-18).",
+    "Foreign currency transactions and foreign operations in the consolidated financial statements must follow Financial Accounting Standard No. (16): Foreign Currency Transactions and Foreign Operations (para 19).",
+    "If a parent ceases to classify a subsidiary's control as temporary, the subsidiary's financial statements are consolidated on a line-by-line basis for all periods presented, with prior-period amounts restated (para 20).",
+    "Disclosures required: a list of subsidiaries with names, nature of business, country of incorporation, shareholding, level of voting rights, and basis of control (para 21); a list of entities where the IFI will potentially hold more than 50% of voting rights in future via not-yet-exercisable voting rights, with details and the date those rights become exercisable (para 22); significant restrictions on financial/commercial transactions or shareholding relationships among subsidiaries and the IFI (para 23); details of entities where control is intended to be temporary (para 24); and separate identification of non-controlling interests funded by restricted investment accounts, disclosed as 'Non-controlling Interests – Restricted Investment Account' in the notes (para 25).",
+    "This Standard is effective for financial periods beginning 1 Muharram 1431 A.H., corresponding to 1 January 2010 A.D. (para 26).",
+    "The revised Standard was adopted by the Accounting and Auditing Standards Board at meeting No. (35) on 6 Rabi' II 1430 A.H., corresponding to 2 April 2009 A.D.; the original Standard on Consolidation was approved at meeting No. (32) on 22 Rabi' II 1428 A.H., corresponding to 9 May 2007 A.D., with the review decided at meeting No. (33) on 29 May 2008 A.D. alongside development of a new Standard on Investments in Associates (Adoption of the Standard; Appendix A).",
+    "Under the revised Standard it is not mandatory for an IFI to hold more than 50% of shares of the subsidiary to demonstrate control; an IFI holding less than majority voting rights may have de facto power where it holds significantly dominant voting rights giving it practical ability to unilaterally direct financial and operating policies (e.g., a large voting block with the remainder widely dispersed and historical shareholder-meeting attendance/voting patterns showing the IFI holds the majority); temporary control is construed as the parent's intention to dispose of the entity within twelve months from acquisition with management actively seeking a buyer (Appendix C)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "NOTE (document-sourced from FAS 44): FAS 44 control definition takes precedence over the FAS 23 consolidation control definition"
+   ],
+   "verification_anchors": [
+    {
+     "quote": "Consolidation shall also apply in case of Special Purpose Vehicle",
+     "cite": "para 1"
+    },
+    {
+     "quote": "The power to govern the financial and operating policies of an entity",
+     "cite": "para 2"
+    },
+    {
+     "quote": "more than 50% of the voting rights in an entity",
+     "cite": "para 3"
+    },
+    {
+     "quote": "IFI’s voting rights (de facto power)",
+     "cite": "para 3"
+    },
+    {
+     "quote": "shall be no more than three months",
+     "cite": "para 16"
+    },
+    {
+     "quote": "an IFI to hold more than 50% of shares of the subsidiary",
+     "cite": "Appendix C"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-24",
+   "source_file": "cf8592a8-FinancialAccountingStandard24InvestmentsinAssociates.txt",
+   "regulator": "AAOIFI",
+   "title": "Investments in Associates",
+   "issued_date": "2009-04-02",
+   "effective_date": "2010-01-01 (para 32)",
+   "supersedes": [],
+   "linked_standards": [
+    "Financial Accounting Standard No. (23): Consolidation (FAS 23)",
+    "Financial Accounting Statement No. (1): Objectives of Financial Accounting for Islamic Banks and Financial Institutions",
+    "Financial Accounting Statement No. (2): Concepts of Financial Accounting for Islamic Banks and Financial Institutions"
+   ],
+   "applicability": "Applies to financial statements prepared and presented by an Islamic financial institution (IFI), setting out principles for determining entities deemed to be associates and prescribing accounting for investments in associates by the parent/reporting entity; does not apply to investments made by venture capital entities, mutual funds and similar entities; conflicts between the standard and an IFI's charter or the laws/regulations of its country of operation must be disclosed (para 1).",
+   "contract_slugs": [],
+   "term_names": [
+    "Associate",
+    "Consolidated financial statements",
+    "Separate financial statements",
+    "Significant influence",
+    "Voting rights",
+    "Unrestricted investment accounts",
+    "Investment in Associates"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface. Statement of the Standard (paras 1-34): 1. Scope of the Standard (1); 2. Definitions (2); 3. Determination of an Associate (3-7) - 3/1 significant influence presumption at 20% or more voting rights (3), 3/2 significant influence attributable to owners' equity/liabilities or unrestricted investment accounts (4), 3/3 scope of voting rights (5); 4. Accounting Treatment for Investments in an Associate Entity (8-24) - 4/1 initial recognition (6-7), 4/2 initial measurement at cost (8), 4/3 subsequent measurement (9-19) covering share of profit/loss, equity adjustments, dividends, intragroup elimination, loss recognition ceiling, reporting-date alignment, accounting policy alignment, cessation of equity accounting, and disposal-intention associates, 4/4 impairment losses (20), 4/5 separate financial statements (21); 5. Disclosure Requirements (22-31); 6. Effective Date (32). Adoption of the Standard. Appendix (A) Brief History of the Preparation of the Standard. Appendix (B) Reasons for the Standard. Appendix (C) Basis for Conclusions.",
+   "key_points": [
+    "Standard applies to financial statements of an IFI; does not apply to investments made by venture capital entities, mutual funds, and similar entities; conflicts with an IFI's charter or local laws/regulations must be disclosed (para 1).",
+    "\"Associate\" is defined as an entity in which the IFI has significant influence (para 2).",
+    "\"Significant influence\" is defined as the capacity of an entity to substantially affect (but not control) the financial and operating policies of another entity (para 2).",
+    "\"Voting rights\" defined as rights for voting at an entity's shareholders' meeting or other similar forums; \"Consolidated financial statements\" and \"Separate financial statements\" also defined (para 2).",
+    "Significant influence is presumed to exist where an IFI holds, directly or indirectly through its subsidiaries, 20% or more of the voting rights in an entity, unless clearly demonstrated otherwise (para 3).",
+    "Significant influence may also exist below the 20% threshold, through an agreement with the entity's other shareholders or the entity itself, regardless of the IFI's level of shareholding (para 3).",
+    "Significant influence attributable to investments funded by (a) the IFI's owners' equity and liabilities, or (b) unrestricted investment accounts, is considered for determination of an associate (para 4).",
+    "Voting rights include those accorded through shares, other equity or financing instruments, and those obtained through agreement with the entity's other shareholders or the entity itself; determination includes current and currently-exercisable voting rights (para 5).",
+    "Investment in an associate is initially recognized when made, under the heading \"Investment in Associates\"; an investment not initially so classified is included under that heading once it subsequently meets the criteria (paras 6-7).",
+    "Initial measurement of the investment in an associate is at cost (para 8).",
+    "Subsequent measurement is at carrying amount, adjusted to include the IFI's share of the associate's profit or loss after the investment date; the share of profit or loss is based solely on shareholding, not on voting rights (paras 9-10).",
+    "Carrying amount is adjusted for changes in the IFI's proportionate interest arising from unrecognized equity changes in the associate (e.g. asset revaluation) (para 11), and is decreased for dividends or other distributions received (para 12).",
+    "Profit or loss from transactions between the IFI and the associate is eliminated from the IFI's share; intragroup losses indicating impairment are recognized in the financial statements (para 13).",
+    "Where the IFI's share of loss exceeds the carrying amount of its investment plus any long-term participation, further loss recognition is discontinued; a liability is recognized only to the extent of the IFI's legal obligation or payments made on the associate's behalf; subsequent profit is recognized only after that liability is fully offset (para 14).",
+    "The IFI's share of the associate's profit or loss is recognized in the consolidated financial statements as at the reporting date, based on the associate's latest available financial statements (para 15).",
+    "The associate should report as at the same date as the IFI; if impracticable, the gap must not exceed three months, with adjustment for the effect of significant transactions occurring between the two reporting dates (para 16).",
+    "The same accounting policy should be applied to the associate's and the IFI's financial statements; if the associate uses a different policy, adjustments are made in the associate's separate financial statements (para 17).",
+    "The IFI ceases to account for the investment as an associate once it can no longer exercise significant influence (para 18).",
+    "Associates acquired with the intention of disposal within twelve months are accounted for at cost less impairment; if not disposed of within twelve months, the investment is accounted for retrospectively per paras 4/3/1 to 4/3/6 (para 19).",
+    "The IFI must determine impairment in the value of its investment in an associate at each reporting date and recognize any impairment loss in the statement of income (para 20).",
+    "In separate financial statements, investment in associates is accounted for either at cost or fair value (para 21).",
+    "Required disclosures include: list of associates (names, business activity, country of incorporation, IFI's shareholding and voting rights) (para 22); reasons for presumed significant influence where the IFI holds less than 20% of an associate's shares (para 23); summary financial information of associates - total assets, liabilities, revenues and profit or loss (para 24); significant restrictions on financial/commercial transactions or shareholding relationships between associates and the IFI (para 25); fair value of investments in associates with published price quotations (para 26); IFI's contingent liabilities arising from associates' liabilities (para 27) and IFI's share of associates' contingent liabilities (para 29); reasons dissimilar accounting policies could not be adjusted (para 30); and unrecognized share of associate losses, for the period and cumulatively (para 31).",
+    "Standard is effective for financial periods beginning 1 Muharram 1431 A.H. or 1 January 2010 A.D.; earlier adoption is encouraged (para 32)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "sets out the principles for determining entities that are deemed",
+     "cite": "para 1"
+    },
+    {
+     "quote": "An entity in which the IFI has significant influence",
+     "cite": "para 2"
+    },
+    {
+     "quote": "20% or  more  of the  voting  rights",
+     "cite": "para 3"
+    },
+    {
+     "quote": "Intragroup losses indicating impairment losses shall be recognised",
+     "cite": "para 13"
+    },
+    {
+     "quote": "shall determine impairment in the value of investment in associate",
+     "cite": "para 20"
+    },
+    {
+     "quote": "shall be effective for financial periods beginning 1 Muharram",
+     "cite": "para 32"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-25",
+   "source_file": "e9959fa2-FinancialAccountingStandard25InvestmentinSukukSharesandSimilarInstruments.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (25): Investment in Sukuk, Shares and Similar Instruments",
+   "issued_date": "2010-07-22",
+   "effective_date": "Financial periods beginning 1 Muharram 1432 A.H. / 1 January 2011 A.D.; early application permitted with disclosure (para 48)",
+   "supersedes": [
+    {
+     "title": "Financial Accounting Standard No. (17): Investments (first issued 2002 A.D.)",
+     "cite": "Appendix (B); Appendix (D)"
+    }
+   ],
+   "linked_standards": [
+    "Financial Accounting Standard No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "Financial Accounting Standard No. (3): Mudaraba Financing",
+    "Financial Accounting Standard No. (4): Musharaka Financing",
+    "Financial Accounting Standard No. (5): Disclosure of Bases for Profit Allocation between Owners' Equity and Investment Accountholders",
+    "Financial Accounting Standard No. (6): Equity of Investment Accountholders and their Equivalent",
+    "Financial Accounting Standard No. (7): Salam and Parallel Salam",
+    "Financial Accounting Standard No. (10): Istisna'a and Parallel Istisna'a",
+    "Financial Accounting Standard No. (16): Foreign Currency Transactions and Foreign Operations",
+    "Shari'a Standard No. (17): Investment Sukuk"
+   ],
+   "applicability": "Applies to an entity's investment whether as direct investments, investments through structured products, investment funds or investment portfolios, Sukuk, other debt-type instruments, or shares (para 1). Excludes: investment in the entity's own equity instruments; investments requiring special accounting treatment such as consolidation of subsidiaries and equity accounting of associates; investment in real estate; contracts with insurance and discretionary participation features; and contracts/transactions covered by FAS No. (3) Mudaraba Financing, FAS No. (4) Musharaka Financing, FAS No. (7) Salam and Parallel Salam, and FAS No. (10) Istisna'a and Parallel Istisna'a (para 2). Any conflict between the standard and the entity's charter or the laws/regulations of its operating country must be disclosed (para 3).",
+   "contract_slugs": [
+    "sukuk"
+   ],
+   "term_names": [
+    "Sukuk",
+    "Investments Held for Trading Purposes",
+    "Amortised Cost",
+    "Effective Profit Rate",
+    "Fair Value",
+    "Debt-type instruments",
+    "Equity-type instruments",
+    "Investments fair value reserve",
+    "Investment accountholders"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (p.731). Statement of the Standard: 1. Scope of the Standard (paras 1-3); 2. Classification (paras 4-14); 3. Measurement (paras 15-27, covering initial recognition, subsequent measurement, realised gains/losses and dividends); 4. Reclassification (paras 28-29); 5. Presentation Requirements (paras 30-31); 6. Disclosure Requirements (paras 32-47); 7. Effective Date (para 48); 8. Transitional Provisions (paras 49-53). Adoption of the Standard (p.741, Board meeting No. 37). Appendix (A): Brief History of the Preparation of the Standard. Appendix (B): Reasons for the Standard. Appendix (C): Definitions (Sukuk, Investments Held for Trading Purposes, Amortised Cost, Fair Value). Appendix (D): Basis for Conclusions (Scope; Classification and Measurement Approach; Jointly Financed Investments; Impairment Assessment; Reclassification; Disclosures; Transition Guidance). Appendix (E): Application Guidance (Classification of Debt-type Instruments; Explanation of the Definition of Fair Value; Foreign Exchange Differences).",
+   "key_points": [
+    "Standard applies to an entity's investment whether direct, through structured products, investment funds/portfolios, Sukuk, other debt-type instruments, or shares (para 1).",
+    "Standard excludes own equity instruments, investments requiring special treatment (subsidiaries/associates), real estate, insurance contracts with discretionary participation features, and contracts covered by FAS No. (3), (4), (7) and (10) (para 2).",
+    "Conflicts between the standard and the entity's charter or local laws/regulations must be disclosed (para 3).",
+    "Each investment is segregated as a debt-type instrument or an equity-type instrument (para 4).",
+    "Debt-type instruments are investments with terms providing fixed or determinable payments of profits and capital to the holder (para 5).",
+    "Equity-type instruments do not exhibit debt-type features and evidence a residual interest in the entity's assets after deducting liabilities (para 6).",
+    "Debt-type instruments are classified as: investment at fair value through income statement, or investments carried at amortised cost (para 7).",
+    "Equity-type instruments are classified as: investments at fair value through income statement, or investments at fair value through equity (para 8).",
+    "An investment is classified 'held for trading' if acquired/originated principally to generate profit from short-term price fluctuations or dealer's margin, including portfolios with an actual pattern of short-term profit taking (para 10).",
+    "Designation at fair value through income statement is permitted only if it eliminates an accounting mismatch, or the investment is managed and evaluated internally on a fair value basis (para 11).",
+    "A debt-type investment is measured at amortised cost only if managed on a contractual yield basis and not designated at fair value through income statement (para 12).",
+    "All investments are initially recognised at fair value plus transaction costs, except fair-value-through-income-statement investments, whose transaction costs are expensed when incurred (para 16).",
+    "Amortised cost investments are re-measured each reporting period using the effective profit rate method; amortisation, derecognition and impairment gains/losses go to the income statement (para 17).",
+    "Amortised cost investments are tested for impairment each period; impairment is recognised when carrying value exceeds expected recoverable amount, with recoveries recognised through the income statement up to previously recognised losses (para 18).",
+    "Investments held for trading and designated at fair value through income statement are re-measured to fair value each period with gain/loss split between owners' equity and investment accountholders (paras 19-20).",
+    "Investments designated at fair value through equity are re-measured to fair value, with gain/loss recognised in the 'Investments fair value reserve' in equity, split between owners' and investment accountholders' equity (para 21).",
+    "Where fair value of equity instruments cannot be reliably determined on a continuing basis, they are measured at cost until a reliable fair value becomes determinable (para 22).",
+    "A significant or prolonged decline in fair value of an equity instrument below its cost is objective evidence of impairment for fair-value-through-equity investments (para 23).",
+    "Realised gains/losses on sale are measured as the difference between carrying amount and net cash proceeds (or maturity value for debt-type instruments), recognised in the income statement with the owners'/investment-accountholder split (para 26).",
+    "No reclassification into or out of the fair value and amortised cost categories (debt-type) or fair value through income statement and equity categories (equity-type) is permitted after initial designation (paras 28-29).",
+    "Fair value disclosure hierarchy: (a) quoted prices in active markets for identical instruments; (b) directly/indirectly observable inputs; (c) inputs not based on observable market data (para 41).",
+    "Effective date: financial periods beginning 1 Muharram 1432 A.H. / 1 January 2011 A.D.; earlier application permitted with disclosure of early adoption (para 48).",
+    "Standard applied retroactively per FAS No. (1); if retroactive application of the effective profit method or impairment requirements is impracticable, the fair value at the date of initial application becomes the new amortised cost (paras 49, 51).",
+    "This revised standard supersedes the previous FAS No. (17) on Investments (first issued 2002 A.D.), which narrowly covered only Sukuk, equity shares and real estate investment (Appendix B; Appendix D)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [],
+   "verification_anchors": [
+    {
+     "quote": "shall apply to an entity’s investment, whether in the form",
+     "cite": "para 1"
+    },
+    {
+     "quote": "investments that have terms providing fixed or determinable payments",
+     "cite": "para 5"
+    },
+    {
+     "quote": "directly recognized in equity under “Investments fair value reserve”",
+     "cite": "para 21"
+    },
+    {
+     "quote": "shall not be reclassified into or out of the fair value",
+     "cite": "para 28"
+    },
+    {
+     "quote": "effective for financial periods beginning 1 Muharram 1432 A.H.",
+     "cite": "para 48"
+    },
+    {
+     "quote": "Financial Accounting Standard No. (17) on Investments was first issued",
+     "cite": "Appendix (B)"
+    }
+   ]
+  },
+  {
+   "id": "AAOIFI-FAS-26",
+   "source_file": "ebcc4d19-FinancialAccountingStandard26InvestmentinRealEstate.txt",
+   "regulator": "AAOIFI",
+   "title": "Financial Accounting Standard No. (26): Investment in Real Estate",
+   "issued_date": "2012-06-21",
+   "effective_date": "1 January 2013 A.D. / 1 Muharram 1434 A.H.; early application permitted with disclosure (para 9/1)",
+   "supersedes": [
+    {
+     "title": "Financial Accounting Standard No. (17): Investments (real estate provisions separated out; definition largely retained from FAS 17)",
+     "cite": "Appendix B (p.777); Appendix C, Definition (p.778)"
+    }
+   ],
+   "linked_standards": [
+    "FAS No. (1): General Presentation and Disclosure in the Financial Statements of Islamic Banks and Financial Institutions",
+    "FAS No. (6): Equity of Investment Accountholders and their Equivalent",
+    "FAS No. (8): Ijarah and Ijarah Muntahia Bittamleek",
+    "FAS No. (17): Investments",
+    "FAS No. (23): Consolidation",
+    "FAS No. (25)"
+   ],
+   "applicability": "Applies to entities' direct investment in real estate held to earn periodical income and/or for capital appreciation (para 1/1); excludes matters covered by FAS No. (8) — measurement of real estate leased under Ijarah Muntahia Bittamleek, recognition of lease income, and IMB-related disclosures — though subsequent measurement of real estate held to earn periodical consideration under an operating Ijarah must use one of this standard's two measurement methods, applied consistently (para 1/2); does not apply to investment in real estate related to agricultural activities or rights/resources related to mining and exploration (e.g. oil, natural gas) (para 1/3); any conflict between the standard and an entity's charter or the laws/regulations of its country must be disclosed (para 1/4).",
+   "contract_slugs": [
+    "ijarah"
+   ],
+   "term_names": [
+    "Investment in real estate",
+    "Carrying amount",
+    "Cost",
+    "Fair value",
+    "Property fair value reserve",
+    "Held-for-use",
+    "Held-for-sale",
+    "Owner-occupied real estate",
+    "Inventory",
+    "Ijarah Muntahia Bittamleek",
+    "Operating Ijarah",
+    "Equity of investment accountholders",
+    "Revaluation surplus",
+    "Net realisable value",
+    "Discounted cash flow projections",
+    "Arm's length transaction",
+    "Knowledgeable, willing parties",
+    "Impairment",
+    "Depreciation"
+   ],
+   "status": "processed",
+   "tag": "verified",
+   "reading_scope": "full (reader; anchor verification pending)",
+   "structure": "Preface (p.759): purpose statement. Statement of the Standard: 1. Scope of the Standard (1/1-1/4, p.760); 2. Definition (2/1-2/4, p.760-761); 3. Recognition (3/1-3/3, p.761); 4. Measurement (4/1-4/20, p.762-766) — Initial measurement (4/1-4/4), Subsequent measurement policy choice (4/5-4/6), Fair value model (4/7-4/12), Inability to determine fair value reliably (4/13-4/15), Cost model (4/16-4/17), Investment in real estate held-for-sale (4/18-4/20); 5. Transfer (5/1-5/7, p.766-768); 6. Derecognition (6/1-6/2, p.768); 7. Presentation Requirements (7/1-7/3, p.768-769); 8. Disclosure Requirements (8/1-8/5, p.769-772) — general (8/1), fair value model (8/2-8/4), cost model (8/5); 9. Effective Date (9/1, p.772); 10. Transitional Provisions (10/1-10/4, p.772-773). Adoption of the Standard (p.774, meeting No.(40), 21 June 2012). Appendix (A): Brief History of the Preparation of the Standard (p.775-776). Appendix (B): Reasons for the Standard (p.777). Appendix (C): Basis for Conclusions (p.778-781) — Scope, Definition, Jointly Financed Investment, Subsequent Measurement, Investment in Real Estate Under Construction, Investment in Real Estate Held-for-Sale, Disclosures, Transition Provisions. Appendix (D): Application Guidance, stated to be an integral part of the standard (p.782-787) — Definition of Investment in Real Estate with scoped-in/scoped-out examples, Consolidated Financial Statements, Explanation of the Definition of Fair Value, Finance Cost on Assets Under Construction, Impairment.",
+   "key_points": [
+    "Investment in real estate is defined as property held to earn periodical income or for capital appreciation or both, rather than for use in production/supply of goods or services or administrative purposes (owner-occupied) or for sale in the ordinary course of business (inventory) (para 2/4).",
+    "Standard applies to the entity's direct investment in real estate acquired for periodical income and/or capital appreciation (para 1/1).",
+    "Excludes measurement of real estate leased under Ijarah Muntahia Bittamleek, recognition of lease income, and related disclosures, which are covered by FAS No. (8) (para 1/2).",
+    "Real estate held to earn periodical consideration under an operating Ijarah (as defined in FAS No. 8) must nonetheless use one of the two subsequent-measurement methods in this standard, applied consistently in future periods (para 1/2).",
+    "Excludes investment in real estate related to agricultural activities and rights/resources related to mining and exploration such as oil and natural gas (para 1/3).",
+    "Conflict between the standard and the entity's charter or local laws/regulations must be disclosed (para 1/4).",
+    "Recognition requires that future economic benefits are probable and the cost can be measured reliably; day-to-day servicing (repairs and maintenance) costs are expensed, not capitalised (paras 3/1, 3/3).",
+    "Initial measurement is at cost including directly attributable expenditure: purchase price, legal fees, property transfer taxes, other transaction costs for purchased property, or costs to bring a constructed property to its intended operating condition; excludes start-up costs, pre-occupancy operating losses, and abnormal waste (paras 4/1-4/4).",
+    "For held-for-use investments an entity chooses, as accounting policy, either the fair value model (paras 4/7-4/15) or the cost model (paras 4/16-4/17), applied consistently to all its investment in real estate; a voluntary policy change is allowed only if it gives more relevant/reliable information, and a change from fair value to cost is deemed highly unlikely to qualify (paras 4/5-4/6).",
+    "Under the fair value model, unrealised gains are recognised directly in equity under 'property fair value reserve', split between owners' equity and equity of investment accountholders (para 4/8).",
+    "Unrealised losses are charged against the property fair value reserve to the extent of its available balance, with any excess recognised in the income statement; subsequent gains reverse prior income-statement losses first (para 4/9).",
+    "Realised profit/loss on sale equals carrying amount versus net cash proceeds; the result, together with the related property fair value reserve balance, is recognised in the income statement, split between owners' and investment accountholders' equity (para 4/10).",
+    "Investment in real estate under construction is measured at cost until construction is complete, then measured at fair value per paras 4/7-4/10 (paras 4/11-4/12).",
+    "The cost model applies instead of fair value only in exceptional cases with clear evidence that fair value is not reliably determinable on a continuing basis (infrequent comparable market transactions and no reliable alternative estimate available); there is otherwise a rebuttable presumption fair value can be reliably determined, and once fair-valued an asset continues to be fair-valued until disposal even if markets become less active (paras 4/13-4/15).",
+    "Under the cost model, assets are measured at cost less depreciation and impairment provisions; major subsequent expenditure is capitalised only if it increases future economic benefits, otherwise expensed (paras 4/16-4/17).",
+    "Investment in real estate is reclassified as held-for-sale when a sale decision is made and sale is expected within twelve months of period-end; depreciation stops and the asset (if cost-carried) is measured at the lower of carrying value and fair value less costs to sell; fair-value-carried assets continue to be measured at fair value (paras 4/18-4/19).",
+    "If not sold within twelve months (absent uncontrollable delay) or the sale plan is discontinued, the asset reverts to its previous classification and (if cost-carried) is remeasured to the lower of recoverable amount and the amount that would have applied had it never been classified held-for-sale (para 4/20).",
+    "Transfers between investment in real estate, owner-occupied real estate, and inventory require an evidenced change in use (commencement of own use, commencement of development for sale, end of owner-occupation, or commencement of an operating Ijarah); under the cost model transfers do not change the carrying amount, while under the fair value model deemed cost at transfer is fair value with specified property fair value reserve treatment (paras 5/1-5/7).",
+    "Derecognition occurs on disposal or permanent withdrawal with no expected future economic benefits; gain/loss equals net disposal proceeds less carrying amount (adjusted for the property fair value reserve balance where fair-valued), split between owners' and investment accountholders' equity (paras 6/1-6/2).",
+    "Presentation: investment in real estate is a separate line item on the statement of financial position; related gains/losses are shown separately; held-for-sale investment in real estate (within 12 months) is presented separately on the face of both statements (paras 7/1-7/3).",
+    "Disclosure requirements cover: model applied (fair value/cost); judgement used to classify investment in real estate; valuation methods/assumptions and use of an independent valuer; carrying value of under-construction assets; rental income and direct operating expenses split between rent-generating and non-rent-generating property; restrictions, charges/pledges; and reconciliations of opening-to-closing carrying amounts, with additional cost-model disclosures (depreciation methods, useful lives, gross carrying amount and accumulated depreciation) (paras 8/1-8/5).",
+    "Effective for financial periods beginning 1 Muharram 1434 A.H. / 1 January 2013 A.D., with earlier application permitted if disclosed (para 9/1).",
+    "Applied retroactively per FAS No. (1); the entity must disclose the effect of first-time application on investment in real estate, on income/loss from such investments, and on investment accountholders' share of income/loss, for the current and each prior period presented (paras 10/1-10/4).",
+    "The prior FAS No. (17) on Investments (first issued 2002) covered all investment types including real estate; growing diversity and complexity of real estate accounting, plus real estate investments forming a substantial part of Islamic Financial Institutions' financial statements, led the Board to address investment in real estate through a separate, more detailed standard (Appendix B, p.777).",
+    "The definition of investment in real estate is 'largely retained from the previous FAS No. (17)', with further clarification and added application guidance to reduce inconsistency in classification practice (Appendix C, Definition, p.778)."
+   ],
+   "divergence_evidence": [],
+   "divergence_notes": [
+    "NOTE: an AAB Statement withdrawing FAS 26 was listed in uploads but the file never arrived on disk - withdrawal not yet document-verified"
+   ],
+   "verification_anchors": [
+    {
+     "quote": "acquired for the purpose of earning periodical income",
+     "cite": "para 1/1"
+    },
+    {
+     "quote": "held to earn periodical income or for capital appreciation or both",
+     "cite": "para 2/4"
+    },
+    {
+     "quote": "unrealised gains arising from a change in the fair value",
+     "cite": "para 4/8"
+    },
+    {
+     "quote": "fair value of an investment in real estate on a continuing basis",
+     "cite": "para 4/13"
+    },
+    {
+     "quote": "effective for financial periods beginning 1 Muharram 1434 A.H.",
+     "cite": "para 9/1"
+    },
+    {
+     "quote": "there was a need for separation of the accounting standards for these investments",
+     "cite": "Appendix B, p.777"
+    }
+   ]
+  }
+ ]
+}

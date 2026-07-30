@@ -1,0 +1,317 @@
+{
+ "_meta": {
+  "type": "crosslinks",
+  "id_scheme": "references ids in the other files",
+  "source": "Generated in Claude chat session. Phase 7.",
+  "completeness": "Partial. Covers the itemized rows only. Many term->contract links are already inline via terms.json parent_contract; term->family links are inline via concept_families.json member_terms. The tables below are the EXTRA links (books->authors, books->contracts, scholars->events, events->scholars).",
+  "warning": "Cross-links only reference itemized rows. Links to MISSING books/events (B051-B110, E046-E070) do not exist yet.",
+  "change_log": "2026-07-04: added missing mirror link E002->S060 (Tabung Haji -> Ungku Aziz). scholars_to_events already had S060->E002. | 2026-07-04: added books_to_contracts + books_to_terms tables (were in source doc Section 7, never carried into this file); B029 'T020-T026 broad' expanded verbatim; books_to_coauthors added (B040 dual-author confirmed by source doc). | 2026-07-04 (2nd pass): books_to_contracts + books_to_terms transcribed from source doc Section 7 (were never in this file); books_to_secondary_authors added (co-author fix for B040/B042/B055/B063); author links for new B051-B070. | 2026-07-04 (3rd pass): author links for B081-B110 (26 rows) + 3 secondary-author links.",
+  "source_note": "adadsd research doc (text version, Section 7) — Adam-supplied, unvetted"
+ },
+ "books_to_authors": {
+  "B021": "S002",
+  "B022": "S001",
+  "B023": "S003",
+  "B024": "S014",
+  "B025": "S028",
+  "B026": "S019",
+  "B027": "S003",
+  "B028": "S007",
+  "B029": "S006",
+  "B030": "S004",
+  "B031": "S003",
+  "B032": "S031",
+  "B033": "S018",
+  "B034": "S027",
+  "B035": "S027",
+  "B036": "S002",
+  "B037": "S002",
+  "B038": "S045",
+  "B039": "S043",
+  "B040": "S056",
+  "B041": "S033",
+  "B042": "S026",
+  "B043": "S055",
+  "B044": "S052",
+  "B045": "S002",
+  "B046": "S059",
+  "B047": "S016",
+  "B048": "S008",
+  "B051": "S005",
+  "B053": "S039",
+  "B054": "S058",
+  "B055": "S056",
+  "B059": "S002",
+  "B060": "S004",
+  "B061": "S003",
+  "B062": "S001",
+  "B063": "S057",
+  "B064": "S032",
+  "B065": "S018",
+  "B066": "S031",
+  "B067": "S002",
+  "B070": "S001",
+  "B081": "S049",
+  "B082": "S051",
+  "B083": "S050",
+  "B084": "S053",
+  "B085": "S051",
+  "B086": "S014",
+  "B087": "S022",
+  "B088": "S012",
+  "B089": "S005",
+  "B090": "S033",
+  "B091": "S036",
+  "B092": "S036",
+  "B094": "S017",
+  "B095": "S035",
+  "B097": "S004",
+  "B098": "S003",
+  "B100": "S003",
+  "B101": "S039",
+  "B102": "S006",
+  "B103": "S058",
+  "B104": "S001",
+  "B105": "S018",
+  "B106": "S056",
+  "B107": "S024",
+  "B109": "S026",
+  "B110": "S035"
+ },
+ "scholars_to_events": {
+  "S012": [
+   "E001",
+   "E003"
+  ],
+  "S013": [
+   "E005",
+   "E007"
+  ],
+  "S005": [
+   "E009",
+   "E020"
+  ],
+  "S001": [
+   "E021",
+   "E030",
+   "E034"
+  ],
+  "S040": [
+   "E021"
+  ],
+  "S015": [
+   "E012"
+  ],
+  "S026": [
+   "E012",
+   "E029"
+  ],
+  "S033": [
+   "E004",
+   "E013"
+  ],
+  "S051": [
+   "E013"
+  ],
+  "S006": [
+   "E014"
+  ],
+  "S021": [
+   "E014"
+  ],
+  "S060": [
+   "E002"
+  ],
+  "S025": [
+   "E035"
+  ],
+  "S043": [
+   "E025"
+  ],
+  "S044": [
+   "E024",
+   "E025"
+  ],
+  "S002": [
+   "E004"
+  ]
+ },
+ "events_to_scholars": {
+  "E001": [
+   "S012"
+  ],
+  "E003": [
+   "S012"
+  ],
+  "E004": [
+   "S002",
+   "S033"
+  ],
+  "E005": [
+   "S013"
+  ],
+  "E007": [
+   "S013"
+  ],
+  "E009": [
+   "S005"
+  ],
+  "E012": [
+   "S015",
+   "S026"
+  ],
+  "E013": [
+   "S033",
+   "S051"
+  ],
+  "E014": [
+   "S006",
+   "S021"
+  ],
+  "E020": [
+   "S005"
+  ],
+  "E021": [
+   "S001",
+   "S040"
+  ],
+  "E024": [
+   "S044"
+  ],
+  "E025": [
+   "S043",
+   "S044"
+  ],
+  "E029": [
+   "S026"
+  ],
+  "E030": [
+   "S001"
+  ],
+  "E034": [
+   "S001"
+  ],
+  "E035": [
+   "S025"
+  ],
+  "E002": [
+   "S060"
+  ]
+ },
+ "books_to_contracts": {
+  "B001": [
+   "C02",
+   "C03",
+   "C05"
+  ],
+  "B006": [
+   "C01",
+   "C02",
+   "C03"
+  ],
+  "B009": [
+   "C01",
+   "C03",
+   "C09"
+  ],
+  "B014": [
+   "C01",
+   "C03",
+   "C04",
+   "C09"
+  ],
+  "B022": [
+   "C01",
+   "C02",
+   "C03",
+   "C04"
+  ],
+  "B026": [
+   "composite/risk"
+  ],
+  "B031": [
+   "principle"
+  ],
+  "B032": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06"
+  ],
+  "B033": [
+   "C03",
+   "C04"
+  ],
+  "B028": [
+   "principle/zakat"
+  ]
+ },
+ "books_to_terms": {
+  "B017": [
+   "T001"
+  ],
+  "B001": [
+   "T040",
+   "T041",
+   "T024"
+  ],
+  "B009": [
+   "T016",
+   "T026",
+   "T060"
+  ],
+  "B026": [
+   "T020",
+   "T030",
+   "T031"
+  ],
+  "B032": [
+   "T001",
+   "T002",
+   "T060",
+   "T086"
+  ],
+  "B028": [
+   "T116",
+   "T117",
+   "T118",
+   "T119",
+   "T120"
+  ],
+  "B029": [
+   "T020",
+   "T021",
+   "T022",
+   "T023",
+   "T024",
+   "T025",
+   "T026"
+  ],
+  "B022": [
+   "T026",
+   "T005",
+   "T006",
+   "T032"
+  ]
+ },
+ "books_to_coauthors": {
+  "B040": [
+   "S056",
+   "S026"
+  ],
+  "B042": [
+   "S026 (with Mohsin Khan — no S-id)"
+  ]
+ },
+ "books_to_secondary_authors": {
+  "B040": "S026",
+  "B042": "S026",
+  "B055": "S026",
+  "B063": "S039",
+  "B098": "S057",
+  "B100": "S039",
+  "B102": "S031"
+ }
+}

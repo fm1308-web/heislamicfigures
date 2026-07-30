@@ -1,0 +1,25 @@
+{
+  "reference": "SEC-EX-10.51",
+  "title": "Murabaha Agreement for the Sale and Purchase of Commodities (FAB)",
+  "institution": "First Abu Dhabi Bank PJSC / Brooge Petroleum and Gas Investment Company FZC",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1774983/000121390019019088/ff42019ex10-51_broogehold.htm",
+  "real_world_notice": "WORKED EXAMPLE FROM AN OPEN-SOURCE PUBLIC SEC FILING (EXHIBIT 10.51, BROOGE HOLDINGS FORM F-4).",
+  "families_in_scope": ["AAOIFI","CBUAE"],
+  "open_items_from_map": true,
+  "tradition": "Maliki",
+  "jurisdiction": "United Arab Emirates",
+  "clauses": [
+    { "no": 1, "text": "The Seller will, at the request of the Purchaser, purchase commodities from suppliers on immediate delivery and immediate payment terms and will sell such commodities to the Purchaser on immediate delivery and deferred payment terms for specific period in compliance with the principles and rules of Murabaha as defined by the Sharia' Fatwa and Supervisory Board of the Seller." },
+    { "no": 2, "text": "The Seller shall purchase the Commodities from the Supplier in accordance with the terms of the Order to Purchase and shall take delivery of the Commodities physically or constructively." },
+    { "no": 3, "text": "Following the conclusion of Murabaha Contract, the Purchaser shall be entitled (but not obligated) to appoint the Seller as the Purchaser's messenger (without any liability on the Seller) to send to Third Party Purchaser the Offer to Sell to Third Party Purchaser for sale of the Commodities on the same day to Third Party Purchaser at no less than the Cost Price for immediate delivery and payment on that Settlement Date." },
+    { "no": 4, "text": "The Seller shall not be deemed to give to the Purchaser any warranty or representation whatsoever relating to the Commodities whether arising by implication, by law or otherwise and without prejudice to the generality of the foregoing any such warranty or representation is hereby expressly excluded to the extent permitted by law and sanctioned by the Sharia'." },
+    { "no": 5, "text": "If the Purchaser (by way of procrastination) fails to pay any amount due under any Finance Document at the time, in the currency, and in the manner specified herein or therein, then the Purchaser hereby undertakes to donate to charity an amount at the rate of 10% per annum of the overdue amount which shall be handed over to the Seller to be donated on the Purchaser's behalf, after deducting all actual claims, costs and expenses suffered or incurred by the Seller as a consequence of the Purchaser's failure." },
+    { "no": 6, "text": "This Agreement shall be governed in all respects in accordance with the laws of the United Arab Emirates save to the extent these conflict with the rules and principles of the Islamic Sharia', when the latter shall prevail. The parties hereto agree to be bound by the exclusive determination of the Sharia' Fatwa and Supervisory Board of the Seller as to whether any such conflict exists." },
+    { "no": 7, "text": "In the event of the Purchaser's failure to purchase the Commodities pursuant to Murabaha Contract, the Purchaser shall compensate the Seller in respect of all actual costs, claims and expenses of whatsoever nature suffered or incurred by the Seller as a result of such failure including the difference between the Cost Price and the sale price of the Commodities to a third party." },
+    { "no": 8, "text": "The Seller may at any time set-off its obligation to pay amounts due to the Purchaser against the Purchaser's obligation to pay amounts due to the Seller." }
+  ],
+  "excerpt_map": {
+    "K018": [1, 3],
+    "SS 19": [5]
+  }
+}

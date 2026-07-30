@@ -1,0 +1,770 @@
+{
+ "_meta": {
+  "file": "standards_kb_bnm_full.json",
+  "built": "2026-07-19 (RV session, BNM batch 1)",
+  "purpose": "Deep notes for 14 BNM Shariah contract policy documents. Clause-verified from full source texts uploaded by Adam. New fields per Adam 2026-07-19: issued_date, effective_date, adoption_lag_months, supersedes[] — feeds the auto-selection charts (jurisdiction/school/date).",
+  "jurisdiction": {
+   "code": "MY",
+   "name": "Malaysia",
+   "regulator": "BNM (Bank Negara Malaysia)",
+   "authority_basis": "SAC (Shariah Advisory Council) rulings binding under IFSA 2013 s.29",
+   "jurisdictions_json_id": "needs_check — map to J-id in jurisdictions.json when BV wires"
+  },
+  "sect_school": "regulator ruleset (SAC Malaysia). Standards are regulator-filtered, never madhhab-filtered (locked project rule).",
+  "tag_legend": "verified = read from full source text this session; clause ids are the document's own paragraph numbers (S=standard/mandatory, G=guidance).",
+  "reading_note": "All 14 docs: Parts A+B (overview + Shariah requirements) read in full. Mudarabah/Istisna/Ijarah operational Parts C/D read partially (long files) — Shariah clauses below are fully verified; add remaining operational notes on request."
+ },
+ "standards": [
+  {
+   "id": "BNM-PD-MURABAHAH",
+   "regulator": "BNM",
+   "title": "Murabahah Policy Document",
+   "doc_ref": "BNM/RH/STD 028-4",
+   "issued_date": "2013-12-23",
+   "effective_date": "2014-01-01",
+   "adoption_lag_months": 0,
+   "supersedes": [
+    {
+     "title": "Shariah Parameter Reference 1 – Murabahah",
+     "issued": "2009-08-26"
+    }
+   ],
+   "applicability": "Islamic banks, takaful operators, FSA banks with Islamic windows, DFIA prescribed institutions",
+   "contract_slugs": [
+    "murabaha"
+   ],
+   "term_names": [
+    "murabaha",
+    "wa'd",
+    "wakalah",
+    "kafalah",
+    "rahn",
+    "hamish jiddiyah",
+    "'urbun",
+    "ibra'",
+    "ta'widh",
+    "gharamah",
+    "hiwalah",
+    "muqassah"
+   ],
+   "legal_basis": "IFSA 2013 s.29(1),(2); DFIA 2002 s.41, s.129(3)",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "key_rulings": [
+    "10.1 Definition: sale of asset with acquisition cost and mark-up disclosed to purchaser.",
+    "11.1 Binding sale; no unilateral termination.",
+    "13.1 Asset must exist and be owned by seller; 13.3 bans assets under construction and debt-type assets.",
+    "13.4 Ribawi asset rules: no same-type/category murabahah; no deferred same-category different-type.",
+    "13.6-13.8 Ownership transfers on valid contract even without legal registration; possession = qabd haqiqi or hukmi.",
+    "13.11 No multiple simultaneous murabahah on same asset.",
+    "14.2-14.4 Price = disclosed cost + mark-up; mark-up may reference BLR/BFR/KLIBOR/COF but reference rate must be specified.",
+    "14.6 Indirect expenses (rent, wages, utilities) excluded from acquisition cost.",
+    "14.13 Rescheduling allowed with NO increase of remaining debt.",
+    "15.1-15.7 MPO: wa'd binding once seller acts to acquire; wa'd executed separately BEFORE murabahah; breach = compensation for actual costs + disposal shortfall; murabahah must not precede seller's purchase.",
+    "16.2 Wakalah (customer as purchasing agent) must be documented separately from murabahah.",
+    "17.6 Collateral must be Shariah-compliant asset; 17.7 conventional fixed deposit acceptable as collateral valued to principal only.",
+    "17.10-17.14 Hamish jiddiyah: compensate actual loss only, excess returned.",
+    "17.15-17.17 'Urbun: kept by seller if option not exercised.",
+    "18.2 Ibra' clause mandatory when required by authority.",
+    "19.2 Late charges: ta'widh (actual loss, income) + gharamah (penalty, NOT income — to charity).",
+    "App1: legitimacy — Quran 2:275; no direct Sunnah authority (general permissibility of sale); ijma'; qiyas on tawliyah."
+   ]
+  },
+  {
+   "id": "BNM-PD-WAD",
+   "regulator": "BNM",
+   "title": "Wa`d Policy Document",
+   "doc_ref": "BNM/RH/PD 028-38",
+   "issued_date": "2017-02-02",
+   "effective_date": "2019-01-01",
+   "adoption_lag_months": 23,
+   "supersedes": [],
+   "applicability": "Islamic banks, takaful/retakaful operators, FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "murabaha",
+    "ijarah",
+    "musharakah",
+    "mudarabah",
+    "rahn",
+    "kafalah",
+    "qard"
+   ],
+   "term_names": [
+    "wa'd",
+    "muwa'adah",
+    "hamish jiddiyah",
+    "bai al-sarf",
+    "hibah",
+    "tawarruq"
+   ],
+   "legal_basis": "IFSA s.29(1); DFIA s.33E(1)",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "divergence_evidence": [
+    {
+     "topic_id": "DV07",
+     "topic": "binding promise",
+     "position": "Malaysia/BNM: wa'd attached to condition/time/price/conduct/event IS BINDING on promisor from date made (9.2-9.3); promisee may claim ACTUAL loss (12.3-12.4); muwa'adah (bilateral) also binding and enforceable (15.2) but currency muwa'adah only for hedging (15.5).",
+     "clauses": [
+      "9.2",
+      "9.3",
+      "12.3",
+      "12.4",
+      "15.2",
+      "15.5"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "key_rulings": [
+    "8.1 Wa'd = unilateral promise; 9.1 not a contract.",
+    "9.2-9.3 Binding when attached to condition/time/price/conduct/event; binding from the date made.",
+    "11.5 No counter-value (fee) for the wa'd itself.",
+    "12.1-12.4 No unilateral revocation; compensation limited to actual loss, determined by authoritative body or 'urf tijari methodology.",
+    "13.5-13.6 Forward currency exchange via wa'd permissible ONLY for hedging.",
+    "13.11 Qard borrower must not give wa'd of hibah to lender.",
+    "14.3 Revocation only if promisee consents or does not invoke.",
+    "15.1-15.5 Muwa'adah = bilateral promise, binding, not a contract; all wa'd rules apply; currency use = hedging only.",
+    "18.7 IFI shall not impose/pay any consideration for wa'd (fees on accompanying contracts OK, 18.8).",
+    "18.9-18.11 Actual loss floor: principal shortfall vs recoverable value, acquisition-vs-disposal shortfall, direct costs; estimation must use market methodologies + reliable sources.",
+    "18.18-18.19 Currency wa'd (incl. derivatives) must mitigate pre-existing exposure of at least one party; documentary evidence required.",
+    "App1: Quran 17:34, 23:8, 61:2-3, 19:54; hadith Muslim 220 (signs of hypocrite)."
+   ]
+  },
+  {
+   "id": "BNM-PD-KAFALAH",
+   "regulator": "BNM",
+   "title": "Kafalah Policy Document",
+   "doc_ref": "BNM/RH/PD028-4",
+   "issued_date": "2017-04-13",
+   "effective_date": "2018-01-01",
+   "adoption_lag_months": 8,
+   "effective_note": "Part E (submission) immediate; implementation plan due 31 Oct 2016 per 28.2 (date precedes issuance in text — quoted as printed)",
+   "supersedes": [],
+   "applicability": "Islamic banks, takaful/retakaful (Part B only), FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "kafalah",
+    "rahn",
+    "wakala"
+   ],
+   "term_names": [
+    "kafalah",
+    "kafil",
+    "makful lahu",
+    "makful 'anhu",
+    "muqassah",
+    "wa'd"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57(1), 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "divergence_evidence": [
+    {
+     "topic_id": "DV01",
+     "topic": "kafalah fee",
+     "position": "Malaysia/BNM: guarantor MAY impose a fee for the kafalah service — fixed amount or percentage of guaranteed amount (15.1-15.2). If a fee is paid, kafalah cannot be dissolved without guaranteed party's consent (18.2).",
+     "clauses": [
+      "15.1",
+      "15.2",
+      "18.2"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "key_rulings": [
+    "8.1 Definition: guarantor conjoins guaranteed party in assuming specified liability; 9.2 binding on guarantor.",
+    "1.7 Scope limited to financial guarantee (kafalah bi al-mal); kafalah al-nafs/al-wajh excluded.",
+    "13.1 Subject matter must not arise from Shariah non-compliant contracts/activities.",
+    "14.1-14.5 Unrestricted vs restricted kafalah; restricted terms must be consistent with original liability.",
+    "14.6-14.7 Beneficiary may claim from either party; guarantor may stipulate claim-debtor-first condition.",
+    "15.1-15.2 FEE PERMITTED: fixed or % of guaranteed amount.",
+    "16.1-16.5 Recourse against guaranteed party even for voluntary kafalah; capped at amount paid (16.2) but total costs recoverable (16.3); set-off allowed.",
+    "16.7 Defaulting guarantor faces same actions as guaranteed party.",
+    "18.1-18.2 Dissolution by beneficiary discharge; fee-paid kafalah needs guaranteed party consent.",
+    "22.5 Kafalah + wakalah must be independent contracts, effects not interrelated.",
+    "27.3 IFI as beneficiary should claim guaranteed party first before guarantor (G).",
+    "App1: Quran 12:72 (Yusuf); hadith Abu Daud 3343 (Abu Qatadah pays two dinars); ijma' cited via Ibn Qudamah al-Mughni 4:400."
+   ]
+  },
+  {
+   "id": "BNM-PD-TAWARRUQ",
+   "regulator": "BNM",
+   "title": "Tawarruq Policy Document (reissuance)",
+   "doc_ref": "BNM/RH/PD 028-8",
+   "issued_date": "2018-12-28",
+   "effective_date": "2018-12-28",
+   "adoption_lag_months": 0,
+   "supersedes": [
+    {
+     "title": "Tawarruq policy document",
+     "issued": "2015-11-17"
+    }
+   ],
+   "applicability": "Islamic banks, takaful operators (Part B only), FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "murabaha",
+    "wakala",
+    "rahn",
+    "kafalah",
+    "qard"
+   ],
+   "term_names": [
+    "tawarruq",
+    "musawamah",
+    "wa'd",
+    "hamish jiddiyah",
+    "ibra'",
+    "ta'widh",
+    "gharamah",
+    "hiwalah",
+    "muqassah",
+    "amanah"
+   ],
+   "legal_basis": "IFSA s.29, 57(1), 135(1), 155; DFIA s.41(1), 129(3)",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "divergence_evidence": [
+    {
+     "topic_id": "DV02",
+     "topic": "tawarruq / commodity murabahah",
+     "position": "Malaysia/BNM: organised tawarruq PERMITTED and fully regulated (whole PD). Anti-inah guards: purchaser of first sale must not sell back to original seller (11.2, 18.3); no condition restricting delivery or obliging onward sale (15.5); contracts sequenced and separate (12.3, 15.2); no multiple tawarruq on same asset at one time (13.18); gold/silver/currencies excluded as subject (13.4). Bursa Suq Al-Sila' named as asset exchange (25.5).",
+     "clauses": [
+      "9.1",
+      "11.2",
+      "12.3",
+      "13.4",
+      "13.18",
+      "15.2",
+      "15.5",
+      "18.3",
+      "25.5"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "key_rulings": [
+    "9.1 Definition: two sales — deferred sale then cash/spot sale to third party.",
+    "10.3 Each sale may be murabahah or musawamah.",
+    "11.2 Seller in sale 1 must NOT be purchaser in sale 2 (no inah).",
+    "12.3 Strict sequence of offer/acceptance.",
+    "13.4 Excluded assets: gold, silver, currencies; under-construction; debt-type.",
+    "13.8-13.10 Purchaser must take possession (haqiqi/hukmi) before onward sale.",
+    "13.18 Same asset cannot back multiple tawarruq at once.",
+    "14.5 Rescheduling must not increase remaining debt; 14.6-14.7 refinancing new-debt contract only for solvent debtor.",
+    "15.5 No terms restricting delivery or obliging purchaser to sell.",
+    "15.6 No payment of deferred price before contract entered.",
+    "16.15-16.16 Agent holds funds on amanah; qard treatment only by necessity (T+2 processing window per 25.22).",
+    "17.1-17.4 Dual agency permitted with upfront agreed essentials + proper sequence + evidence.",
+    "18.2-18.3 No condition requiring promise to sell to third party or back to original seller.",
+    "25.10 Asset criteria: open-market valuable, contract grade, good condition, active market, not MFRS-intangible.",
+    "25.26 Breach-of-promise loss = direct costs only (no overheads/opportunity costs).",
+    "26.2 Risk framework incl. inventory risk between the two sales.",
+    "App1: Quran 2:275; no direct Sunnah authority — permitted under general permissibility of sale."
+   ]
+  },
+  {
+   "id": "BNM-PD-QARD",
+   "regulator": "BNM",
+   "title": "Qard Policy Document",
+   "doc_ref": "BNM/RH/PD 028-7",
+   "issued_date": "2018-02-26",
+   "effective_date": "2018-07-31",
+   "adoption_lag_months": 5,
+   "supersedes": [
+    {
+     "title": "wadi'ah yad dhamanah products transition — all such products revised to qard by 2018-07-31 (para 22)",
+     "issued": "n/a"
+    }
+   ],
+   "applicability": "Islamic banks, takaful/retakaful, FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "qard",
+    "kafalah",
+    "rahn",
+    "wakala"
+   ],
+   "term_names": [
+    "qard",
+    "hibah",
+    "ujrah",
+    "ibra'",
+    "bai wa salaf",
+    "muqassah",
+    "wa'd mulzim"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57, 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "key_rulings": [
+    "8.1 Definition: lending money; borrower repays equivalent replacement. 8.2 Money incl. cash/gold/silver.",
+    "14.1 NO contractual benefit to lender: bans pre-agreed periodic ibra' linked to qard, wa'd-based incentives, conditional hibah (cash/kind/benefit).",
+    "14.5-14.8 Borrower hibah to lender only fully discretionary; no promotion of indicative rates; historical hibah disclosure allowed with strict disclaimers (20.5).",
+    "14.9 Borrower keeps any benefit/revenue from borrowed money.",
+    "14.11 Repayment in different currency at prevailing/agreed rate ON payment date.",
+    "15.1-15.7 Ujrah only for services unrelated to the qard; direct-cost charges only for qard-related services; no ujrah on loan extension, late repayment, or cash-back exchange.",
+    "15A Bai' wa salaf (qard + exchange contract) prohibited if inter-conditional or gives lender exclusive benefit.",
+    "22 Transition: wadi'ah yad dhamanah → qard by 31 Jul 2018; product names must drop 'wadi'ah'/'safekeeping' terms (22.5).",
+    "App1: Quran 2:245; hadith Ibn Majah 2421, Bukhari 2212; ijma'."
+   ]
+  },
+  {
+   "id": "BNM-PD-HIBAH",
+   "regulator": "BNM",
+   "title": "Hibah Policy Document",
+   "doc_ref": "BNM/RH/PD 028-5",
+   "issued_date": "2016-08-03",
+   "effective_date": "2018-07-31",
+   "adoption_lag_months": 23,
+   "supersedes": [],
+   "applicability": "Islamic banks, takaful/retakaful, FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "ijarah",
+    "mudarabah",
+    "musharakah",
+    "wakala",
+    "qard"
+   ],
+   "term_names": [
+    "hibah",
+    "tabarru'",
+    "wa'd mulzim",
+    "takhliyah",
+    "tamkin",
+    "qabd"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57, 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "key_rulings": [
+    "8.1 Definition: transfer of asset ownership donor→recipient without consideration; 9.1 benevolent (tabarru') contract.",
+    "9.2-9.3 Revocable before possession/condition-fulfilment; father→child hibah revocable anytime except transfer to third party or encumbrance.",
+    "13.2-13.3 Asset must exist and be owned by donor; future-received asset allowed (13.3); minor's asset cannot be hibah (13.4).",
+    "14.4-14.5 Hibah lapses into donor's estate on death before possession, EXCEPT hibah conditional on donor's death → takaful only (15.3).",
+    "14.6 Effect permanent; time-limiting condition void.",
+    "16.1-16.4 With ijarah (IMB): via wa'd mulzim or conditional hibah; hibah documented separately from ijarah.",
+    "17.2/18.2/19.3 With mudarabah/musharakah/wakalah-istithmar: hibah must not come from capital or the other party's profit share, and must not amount to capital/profit guarantee.",
+    "20.2-20.5 With qard: no conditional hibah to lender; discretion-only; no indicative-rate marketing.",
+    "App1: Quran 4:4; hadith al-Baihaqi 11726 ('exchange gifts'); ijma'."
+   ]
+  },
+  {
+   "id": "BNM-PD-WAKALAH",
+   "regulator": "BNM",
+   "title": "Wakalah Policy Document",
+   "doc_ref": "BNM/RH/PD 028-3",
+   "issued_date": "2016-06-24",
+   "effective_date": "2018-07-01",
+   "adoption_lag_months": 24,
+   "supersedes": [],
+   "applicability": "Islamic banks, FSA Islamic-window banks, takaful/retakaful, DFIA prescribed institutions; investment-account use governed by Investment Account PD (2.2)",
+   "contract_slugs": [
+    "wakala",
+    "kafalah",
+    "rahn",
+    "murabaha",
+    "istisna",
+    "ijarah",
+    "musharakah",
+    "mudarabah"
+   ],
+   "term_names": [
+    "wakalah",
+    "wakalah bi al-ujrah",
+    "wakalah bi al-istithmar",
+    "fuduli",
+    "ujrah al-mithl",
+    "amanah"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57(1), 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "key_rulings": [
+    "8.1 Definition: principal authorises agent for delegable task, with or without fee.",
+    "9.2 Binding when: third-party rights involved; fee-based; work commenced with damage on stop; agreed no-termination window.",
+    "11.5/16.1-16.3 Fuduli (unauthorised agent) transactions ratifiable under set conditions; otherwise rescinded.",
+    "14.1-14.2 Disclosed vs undisclosed agency: rights/liabilities fall on principal vs agent respectively (hukm binds principal either way).",
+    "14.3-14.6 Dual agency permitted incl. self-dealing as counterparty (tawarruq deposit/financing) with upfront determination + all principals' consent.",
+    "14.11 Agent liable only on ta'addi/taqsir/mukhalafah al-shurut.",
+    "15.2-15.8 Fee rules; ujrah al-mithl when rate undetermined but work done.",
+    "18.3(c) Agent must not guarantee own performance nor capital/return under wakalah bi al-istithmar.",
+    "20.2-20.7 Investment wakalah: no capital/return guarantee; breach → repay capital + actual profit to breach + compensation; independent third-party (non-related) capital guarantee allowed.",
+    "20.9-20.10 Hibah to cover shortfall vs expected profit allowed but never obligatory.",
+    "21.1 Dissolution events incl. death/loss of capacity/loss of subject matter.",
+    "App1: Quran 18:19; hadith Bukhari 3370 ('Urwah's dinar), Abu Dawud 3148; ijma'."
+   ]
+  },
+  {
+   "id": "BNM-PD-RAHN",
+   "regulator": "BNM",
+   "title": "Rahn Policy Document",
+   "doc_ref": "BNM/RH/PD 028-79",
+   "issued_date": "2018-07-18",
+   "effective_date": "2019-08-01",
+   "adoption_lag_months": 12,
+   "supersedes": [],
+   "applicability": "Islamic banks, takaful/retakaful, FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "rahn",
+    "qard",
+    "murabaha",
+    "istisna",
+    "ijarah",
+    "kafalah",
+    "mudarabah",
+    "musharakah",
+    "wakala"
+   ],
+   "term_names": [
+    "rahn",
+    "marhun",
+    "marhun bih",
+    "rahin",
+    "murtahin",
+    "qabd",
+    "amanah",
+    "bai 'inah",
+    "wa'd"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57, 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "key_rulings": [
+    "8.1 Definition: pledgor pledges asset as collateral to pledgee for obligor's liability in default event; 9.2 binding on pledgor.",
+    "14.1-14.2 Collateral may be physical (even non-Shariah-use) or financial; mixed financial asset needs Shariah-compliant core business; non-compliant financial asset capped at principal value.",
+    "14.4 Future asset may be pledged.",
+    "14.12 Multiple pledgees: pari passu with consent, or ranked with succeeding pledgee's consent.",
+    "15.3 Pledgee may utilise collateral only with owner consent, NOT for qard-sourced liability, terms+period specified.",
+    "16.1-16.3 Maintenance costs on owner; other rahn costs on pledgor unless agreed.",
+    "17.5 Mixed financial asset liquidation: segregable → Shariah-compliant proceeds only.",
+    "17.7-17.9 Shortfall stays obligor's liability; excess returned to owner.",
+    "19.1 Rahn may attach to murabahah, tawarruq, bai' 'inah (noted as permitted arrangement in MY).",
+    "23.1-23.2 In mudarabah/musharakah/wakalah-istithmar: collateral must NOT guarantee capital/profit; liquidation only on misconduct/negligence/breach.",
+    "26.1-26.4 Dissolution events; death does not dissolve — heirs assume.",
+    "31.3(b) Islamic pawnbroking = qard secured by safekept collateral with fee.",
+    "App1: Quran 2:283; hadith Bukhari/Muslim (armour pledged to Jew); ijma' via Ibn Qudamah al-Mughni 4/362."
+   ]
+  },
+  {
+   "id": "BNM-PD-BAI-AL-SARF",
+   "regulator": "BNM",
+   "title": "Bai` al-Sarf (Currency Exchange) Policy Document",
+   "doc_ref": "BNM/RH/PD 028-74",
+   "issued_date": "2018-04-11",
+   "effective_date": "2019-04-01",
+   "adoption_lag_months": 12,
+   "supersedes": [],
+   "applicability": "IFIs offering currency-note/coin exchange (excludes gold/silver, 2.1); money services business: Part B + para 25 only",
+   "contract_slugs": [
+    "wakala"
+   ],
+   "term_names": [
+    "bai al-sarf",
+    "wa'd",
+    "wa'dan",
+    "muwa'adah",
+    "ijarah al-khadamat",
+    "qabd",
+    "khiyar",
+    "hiwalah",
+    "muqassah"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57, 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "divergence_evidence": [
+    {
+     "topic_id": "DV06",
+     "topic": "currency exchange / gold",
+     "position": "Malaysia/BNM: money-for-money exchange must complete delivery+possession within contract session (14.1); same currency at par (14.5); different currency any agreed rate (14.6); extension beyond session only for 'urf-established operational constraint or unexpected disruption (14.4); 'urbun and khiyar al-shart banned in sarf (14.3); wa'd/wa'dan/muwa'adah forward arrangements ONLY for hedging (16.4); debt payable in different currency at rate on payment date, never pre-agreed (18.3).",
+     "clauses": [
+      "14.1",
+      "14.3",
+      "14.4",
+      "14.5",
+      "14.6",
+      "16.4",
+      "18.3"
+     ],
+     "tag": "verified"
+    }
+   ],
+   "key_rulings": [
+    "8.1-8.3 Definition: exchange money for money, same or different type.",
+    "9.1 Binding; no unilateral termination (except khiyar al-'ayb 19.1(b)).",
+    "14.1-14.2 Spot possession within contract session (session ends by disengagement or takhayur waiver).",
+    "14.5 Same currency = par; 14.6 different = agreed rate.",
+    "16.1-16.4 Wa'd / two wa'dan / muwa'adah forwards allowed for hedging only.",
+    "17.1-17.4 May combine with ijarah al-khadamat (remittance etc.) in one document if contracts distinguished; service fee allowed.",
+    "18.1-18.3 Cross-currency debt settlement/set-off at payment-date rate.",
+    "22.7 Ringgit pairs use onshore-fixed reference rate.",
+    "App1: Quran 2:275; hadith Muslim 2970 (six ribawi items) — 'illah thamaniyyah extends gold/silver rules to modern currencies."
+   ]
+  },
+  {
+   "id": "BNM-PD-WADIAH",
+   "regulator": "BNM",
+   "title": "Wadi`ah Policy Document",
+   "doc_ref": "BNM/RH/PD 028-6",
+   "issued_date": "2016-08-03",
+   "effective_date": "2018-07-31",
+   "adoption_lag_months": 23,
+   "supersedes": [],
+   "applicability": "Islamic banks, takaful/retakaful, FSA Islamic-window banks, DFIA prescribed institutions",
+   "contract_slugs": [
+    "qard",
+    "ijarah",
+    "rahn",
+    "wakala"
+   ],
+   "term_names": [
+    "wadi'ah",
+    "wadi'ah yad amanah",
+    "amanah",
+    "mal mithli",
+    "qabd"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57, 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "key_rulings": [
+    "8.1 Definition: asset placed with another party for safekeeping; 9.1 nature = trusteeship (yad amanah), unilaterally terminable.",
+    "14.5 Custodian not liable for loss except own/agents' ta'addi, taqsir, mukhalafah al-shurut.",
+    "14.6-14.8 No third-party custody without depositor permission; breach = full liability.",
+    "15.1-15.3 Charging a safekeeping fee TRANSFORMS the contract into ijarah, with lessor-level liability.",
+    "16.1 KEY: wadi'ah of fungible asset (money) + permission to utilise = CONSTRUED AS QARD, governed by qard rules.",
+    "18.1 Dissolution incl. unilateral termination, death/dissolution, ownership change.",
+    "22.1 Late collection: fee/direct costs chargeable or surrender to authorities.",
+    "27.1-27.2 Transition to qard PD; utilised money placements must be called qard.",
+    "App1: Quran 23:8, 4:58, 2:283; hadith al-Baihaqi 12696, Abu Daud 3535; ijma'."
+   ]
+  },
+  {
+   "id": "BNM-PD-MUDARABAH",
+   "regulator": "BNM",
+   "title": "Mudarabah Policy Document",
+   "doc_ref": "BNM/RH/STD 028-8",
+   "issued_date": "2015-04-20",
+   "effective_date": "2015-04-20",
+   "adoption_lag_months": 0,
+   "effective_note": "Part B immediate on issuance; Parts C/D operational from 2016-06-01",
+   "supersedes": [
+    {
+     "title": "Guidelines on Musharakah and Mudarabah contracts for Islamic Banking Institutions (mudarabah requirements)",
+     "issued": "2007-09-15"
+    },
+    {
+     "title": "Shariah Standard on Mudarabah",
+     "issued": "2012-10-22"
+    }
+   ],
+   "applicability": "Islamic banks, takaful operators (Part B only), FSA Islamic-window banks, DFIA prescribed institutions; excludes sukuk/CIS/equities, interbank investments excluded from Part D",
+   "contract_slugs": [
+    "mudarabah",
+    "musharakah",
+    "wakala",
+    "rahn",
+    "kafalah"
+   ],
+   "term_names": [
+    "mudarabah",
+    "rabbul mal",
+    "mudarib",
+    "PSR",
+    "wadi'ah",
+    "hibah",
+    "wa'd",
+    "mudarib yudarib",
+    "al-tandid"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57(1), 135(1), 277; DFIA s.41(1), 126, 129(3)",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "reading_scope": "Parts A+B + Part C through 25.18 verified; remainder of Part C/D (risk mgmt, Part D rabbul-mal ops, appendices) not yet read — say the word to finish.",
+   "key_rulings": [
+    "10.1 Definition: capital provider + entrepreneur; profit by agreed PSR; losses borne by rabbul mal unless mudarib's ta'addi/taqsir/mukhalafah.",
+    "11.1 Fiduciary (aqd al-amanah); 11.2 unilateral termination barred once work commenced / fixed term agreed.",
+    "11.3 Mutlaqah vs muqayyadah.",
+    "14.4 Mudarib yudarib / agent assignment needs rabbul mal consent; 14.5 rabbul mal excluded from management but has information rights.",
+    "15.4-15.7 Capital cash or in-kind (valued); DEBT cannot be capital; 25.8 operationally capital must be cash only, not encumbered.",
+    "15.10 No capital guarantee by mudarib.",
+    "15.14 Mudarib fund injection → musharakah forms with the venture.",
+    "16.3-16.9 No profit guarantee; PSR at inception, revisable by mutual agreement; no pre-fixed lump profit; profit not a % of capital.",
+    "16.11 Multi-tier mudarabah PSR per tier.",
+    "16.16 Profit recognition: actual liquidation (haqiqi) or constructive (hukmi) with final true-up (16.18).",
+    "17.1-17.5 Loss to rabbul mal up to capital; multiple rabbul mal bear pro-rata.",
+    "18.2-18.3 Collateral liquidation only on misconduct/negligence/breach; independent (non-related) third-party guarantee of capital allowed, separate contract.",
+    "20.2 Hibah by mudarib not from capital/rabbul-mal profit, no guarantee effect.",
+    "21.1-21.2 Wa'd by mudarib to buy mudarabah asset on trigger events; price at market/fair/agreed-at-purchase.",
+    "22.1 Dissolution events incl. death/dissolution, loss of capacity, invalidity."
+   ]
+  },
+  {
+   "id": "BNM-PD-ISTISNA",
+   "regulator": "BNM",
+   "title": "Istisna` Policy Document",
+   "doc_ref": "BNM/RH/PD 028-1",
+   "issued_date": "2015-12-23",
+   "effective_date": "2016-07-01",
+   "adoption_lag_months": 6,
+   "supersedes": [],
+   "applicability": "Islamic banks + takaful operators, FSA Islamic-window banks, DFIA prescribed institutions; IFI as seller or purchaser",
+   "contract_slugs": [
+    "istisna",
+    "kafalah",
+    "rahn",
+    "ijarah",
+    "wakala"
+   ],
+   "term_names": [
+    "istisna",
+    "parallel istisna",
+    "sani'",
+    "mustasni'",
+    "ijarah mawsufah fi al-zimmah",
+    "hamish jiddiyah",
+    "'urbun",
+    "ibra'",
+    "ta'widh",
+    "gharamah",
+    "shart jaza'i",
+    "khiyar al-'ayb",
+    "wa'd mulzim"
+   ],
+   "legal_basis": "IFSA s.29, 57(1), 135(1), 155; DFIA s.41(1), 116, 129(3)",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "reading_scope": "Parts A+B fully verified; Part C read through 35.5; tail (35.6-36 + appendices 3-6) not yet read.",
+   "key_rulings": [
+    "9.1 Definition: sale of asset yet to be constructed/built/manufactured to agreed specs, future delivery, pre-determined price.",
+    "10.2 Binding once specs + price/time/place/mode fixed; 30.1 no unilateral dissolution.",
+    "14.5 An existing identifiable completed asset cannot be the istisna' asset.",
+    "15.1-15.5 Ownership with seller until delivery; purchaser cannot on-sell before possession (except as-is possession agreement 15.6).",
+    "16.1-16.6 Price fixed at inception; revision cases (cost fall/rise, spec change); NO upward revision for payment-period extension (16.6).",
+    "17.7 Late delivery → purchaser claims actual loss.",
+    "17.15-17.17 Non-completion: as-is possession (pay to stage) or dissolve (full refund + compensation).",
+    "17.18/18.1 Seller cannot waive liability for completion or material defects.",
+    "27.2 Late payment charges: ta'widh income-able; gharamah to charity/Baitulmal; 27.4 shart jaza'i (late-delivery charge) may be income to PURCHASER.",
+    "28.1-28.3 Parallel istisna': two separate independent contracts, obligations independent.",
+    "26.1-26.2 Forward lease (ijarah mawsufah fi al-zimmah) on asset under construction — separate contract.",
+    "30.2-30.9 Dissolution options incl. khiyar fawat al-wasf; on seller death purchaser may take as-is or dissolve; purchaser death does NOT dissolve (30.6)."
+   ]
+  },
+  {
+   "id": "BNM-PD-IJARAH",
+   "regulator": "BNM",
+   "title": "Ijarah Policy Document",
+   "doc_ref": "BNM/RH/PD 028-2",
+   "issued_date": "2018-06-29",
+   "effective_date": "2018-08-01",
+   "adoption_lag_months": 1,
+   "supersedes": [],
+   "applicability": "IFIs offering ijarah products other than capital market instruments; takaful operators Part B only; incorporates Hire-Purchase Act 1967 protections for repossession (1.9)",
+   "contract_slugs": [
+    "ijarah",
+    "istisna",
+    "kafalah",
+    "rahn",
+    "wakala"
+   ],
+   "term_names": [
+    "ijarah",
+    "ijarah muntahiyah bi tamlik",
+    "ijarah mawsufah fi zimmah",
+    "ijarah mudafah ila mustaqbal",
+    "sub-lease",
+    "leaseback",
+    "wa'd",
+    "hibah",
+    "hamish jiddiyah",
+    "'urbun",
+    "ta'widh",
+    "gharamah"
+   ],
+   "legal_basis": "IFSA s.29(1),(2), 57, 135(1), 155; DFIA s.33E, 41, 42C(1), 116",
+   "status": "processed_this_session",
+   "tag": "verified",
+   "reading_scope": "Parts A+B fully verified; Part C read through 30.28; Parts C-tail/D/E + appendices not yet read.",
+   "key_rulings": [
+    "8.1 Definition: transfer of usufruct ownership for period for consideration (asset lease; service hire excluded from this PD 9.2).",
+    "9.4 Binding contract.",
+    "13.1 Asset/usufruct: Shariah-recognised, valuable, existing, identifiable, accessible, deliverable, not debt-based, non-perishable; existence waived for mawsufah fi zimmah (13.2).",
+    "13.10 No simultaneous lease of one asset in 2+ ijarah.",
+    "13.12 Sale of leased asset to third party transfers lessor's rights/liabilities; uninformed buyer may rescind.",
+    "14.4 Benchmark-linked rental needs min-max limits; 14.5 no unilateral rental increase.",
+    "16.1-16.2 Ownership risks + maintenance-of-usufruct costs on lessor; usage liabilities on lessee.",
+    "16.3-16.6 Lessee liable only on misconduct/negligence/breach; force majeure restoration on lessor.",
+    "16.7/16.7A Takaful protection mandatory; conventional insurance only if takaful unavailable/rejected/significantly costlier.",
+    "18.1-18.5 Sub-lease allowed unless barred; period within head lease.",
+    "19.3 Lease-leaseback: separate independent contracts, no wa'd to leaseback, no pre-signing, no arranged-sequence references.",
+    "20.1-20.10 Forward ijarah (mawsufah fi zimmah / mudafah ila mustaqbal); non-delivery → all paid rentals returned.",
+    "21.2 Sale-and-leaseback: sale concluded first, separate docs, leaseback not a condition of sale.",
+    "22.1-22.11 IMB: transfer by sale / conditional hibah / wa'd-to-hibah; wa'd-to-purchase triggered only on default or breach (22.5); collateral-liquidation waterfall with excess to lessee (22.10).",
+    "30.4 Early settlement/default ownership-transfer mechanism must be wa'd to purchase by customer.",
+    "26.2-26.4 Ta'widh income-able; gharamah to Baitulmal/charity."
+   ]
+  },
+  {
+   "id": "BNM-PD-SG2019",
+   "regulator": "BNM",
+   "title": "Shariah Governance Policy Document 2019",
+   "doc_ref": "BNM/RH/PD 028-100",
+   "issued_date": "2019-09-20",
+   "effective_date": "2020-04-01",
+   "adoption_lag_months": 6,
+   "effective_note": "para 12.5 (9-year Shariah committee tenure cap) effective 2023-04-01",
+   "supersedes": [
+    {
+     "title": "Shariah Governance Framework for Islamic Financial Institutions",
+     "issued": "2010-10-22"
+    },
+    {
+     "title": "para 11.4 Financial Reporting for Islamic Banking Institutions",
+     "issued": "2018-02-02"
+    },
+    {
+     "title": "para 10.4 Guidelines on Financial Reporting for DFIs",
+     "issued": "2012-12-24"
+    },
+    {
+     "title": "para 13.5 Financial Reporting for Takaful Operators",
+     "issued": "2018-02-02"
+    }
+   ],
+   "applicability": "Islamic banks, takaful/retakaful, FSA Islamic-window banks, DFIA prescribed institutions, Shariah committee members",
+   "contract_slugs": [],
+   "term_names": [
+    "shariah governance",
+    "shariah committee",
+    "SAC",
+    "shariah audit",
+    "shariah review",
+    "shariah risk management"
+   ],
+   "legal_basis": "IFSA s.29(2), 57(1), 155; DFIA s.33E(2), 41, 116",
+   "status": "already_deep_processed_prior_session (standards_kb_star.json); dates+supersession added this session",
+   "tag": "verified",
+   "duplicate_files_note": "Two identical copies on disk: 'Shariah Governance Policy Document 2019.txt' and 'Bank Negra Shariah Governance Policy Document 2019.txt' — same doc (both read; identical content). Archive one.",
+   "key_rulings": [
+    "11.2 Shariah committee meets ≥ once per 2 months (windows/foreign branches ≥2/yr, 11.3).",
+    "12.1-12.2 Member criteria: Muslim, fit & proper, Shariah-qualified (bachelor Shariah w/ Usul Fiqh or Fiqh Muamalat) or supporting expert.",
+    "12.5 Max 9 years same IFI (from 2023-04-01); 12.7 one bank + one takaful + one prescribed institution max; 12.8 no active politicians.",
+    "13.2-13.3 ≥5 members, majority + chairman Shariah-qualified.",
+    "16.3 Control functions: Shariah risk management, Shariah review, Shariah audit.",
+    "22.9 Annual-report Shariah compliance opinion wording prescribed."
+   ]
+  },
+  {
+   "id": "BNM-SG-DUP",
+   "regulator": "BNM",
+   "title": "(duplicate file) Bank Negra Shariah Governance Policy Document 2019",
+   "doc_ref": "BNM/RH/PD 028-100",
+   "issued_date": "2019-09-20",
+   "effective_date": "2020-04-01",
+   "adoption_lag_months": 6,
+   "supersedes": [],
+   "status": "duplicate — see BNM-PD-SG2019; do not load separately",
+   "tag": "verified",
+   "key_rulings": []
+  }
+ ]
+}

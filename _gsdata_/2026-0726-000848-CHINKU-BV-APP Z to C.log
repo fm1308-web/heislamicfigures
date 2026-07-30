@@ -1,0 +1,15 @@
+2026-07-26 00:08:48: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-26 00:08:48: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-26 00:08:48: -- Analysis Started by User Command
+2026-07-26 00:08:48: L: Reading State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 00:08:48: L: State file does not exist: Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 00:08:51: R: Reading State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 00:08:51: R: State file does not exist: C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-26 00:08:51: /data/Finance/standards_files.json: Conflict: New files that differ
+2026-07-26 00:08:51: /data/Finance/standards_lights.json: Conflict: New files that differ
+2026-07-26 00:08:51: /finance.css: Conflict: New files that differ
+2026-07-26 00:08:51: /finance.js: Conflict: New files that differ
+2026-07-26 00:08:51: /shell.js: Conflict: New files that differ
+2026-07-26 00:08:51: Analyze has finished with Conflicts. Resolve Conflicts by selecting the correct sync direction, then click Sync
+2026-07-26 00:08:51: Changes: 5, Conflicts: 5, CopyTime: 0, FixState: 4,509, Errors: 0, All: 4516
+2026-07-26 00:08:51: -- Analysis Complete. Time 00:00:03, Speed: 1,505 files/s

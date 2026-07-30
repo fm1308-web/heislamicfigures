@@ -1,0 +1,1771 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GN-10
+
+
+GUIDANCE NOTE ON RECOVERY AND RESOLUTION FOR TAKĀFUL UNDERTAKINGS
+
+
+
+
+
+
+
+
+
+
+
+
+July 2025
+
+
+
+ABOUT THE ISLAMIC FINANCIAL SERVICES BOARD (IFSB)
+
+
+
+The IFSB is an international standard-setting organisation which was officially inaugurated on 3
+
+November 2002 and started operations on 10 March 2003. The organisation promotes and enhances the soundness and stability of the Islamic financial services industry by issuing global prudential standards and guiding principles for the industry, broadly defined to include the banking, capital markets, and insurance sectors. The standards prepared by the IFSB follow a stringent due process as outlined in its Guidelines and Procedures for the Preparation of Standards/Guidelines, which includes holding several Working Group meetings, issuing exposure drafts, and organising public hearings/webinars and reviews by the IFSB’s Sharīʻah Board and Technical Committee. The IFSB also conducts research and coordinates initiatives on industry-related issues and organises roundtables, seminars, and conferences for regulators and industry stakeholders. Towards this end, the IFSB works closely with relevant international, regional, and national organisations, research/educational institutions, and market players.
+
+
+For more information about the IFSB, please visit  www.ifsb.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+
+TABLE OF CONTENTS
+
+
+ABBREVIATIONS ................................................................................................................................... 4
+
+
+SECTION 1: INTRODUCTION ............................................................................................................... 5
+1.1  Background ..................................................................................................................................... 5
+
+1.2  Scope and Application .................................................................................................................... 5
+1.3  Proportionality ................................................................................................................................. 6
+
+1.4  Implementation Date ....................................................................................................................... 6
+
+
+SECTION 2: RECOVERY PLANNING ................................................................................................... 7
+
+2.1  Sharīʻah Governance and Recovery Planning................................................................................ 7
+2.2  Additional Consideration for Segregated Fund ............................................................................... 7
+
+2.3  Elements of a Recovery Plan.......................................................................................................... 8
+2.3.1    Executive Abstract of the Recovery Plan ........................................................................... 8
+
+2.3.2    Trigger Framework ............................................................................................................. 8
+2.3.3    Recovery Options ............................................................................................................... 9
+
+2.3.4    Communication Strategy .................................................................................................. 12
+2.3.5    Participant’s Interest Consideration.................................................................................. 12
+
+2.4  Matters Specific to Subsidiaries and Windows ............................................................................. 13
+2.5  Supervisory Considerations .......................................................................................................... 13
+
+
+SECTION 3: RESOLUTION POWERS AND PLANNING .................................................................... 14
+
+3.1  Objectives of an Effective Resolution Regime .............................................................................. 14
+3.2  Scope ............................................................................................................................................ 15
+
+3.3  Resolution Authority ...................................................................................................................... 15
+3.4  Resolution Powers ........................................................................................................................ 15
+
+3.4.1    Entry into resolution.......................................................................................................... 15
+3.4.2    General resolution powers................................................................................................ 17
+
+3.4.3    Bridge institutions ............................................................................................................. 17
+3.4.4    Bail-ins .............................................................................................................................. 18
+
+3.5  Safeguards .................................................................................................................................... 18
+3.6  Funding Resolutions ..................................................................................................................... 18
+
+3.7  Cross-border Cooperation............................................................................................................. 19
+3.8  Resolvability Assessments ........................................................................................................... 19
+
+3.9  Resolution Planning ...................................................................................................................... 20
+3.9.1     Resolution Authority Preparing Resolution Plans ........................................................... 20
+
+3.9.2     Key Elements of an RSP ................................................................................................. 21
+3.10 Participants Protection Scheme (PPS) ......................................................................................... 22
+
+3.11 Sharīʻah Governance and Resolution Planning ............................................................................ 23
+
+
+DEFINITIONS ....................................................................................................................................... 24
+GAP ANALYSIS MATRIX ..................................................................................................................... 28
+
+3
+ABBREVIATIONS
+
+
+
+AT1                  Additional Tier 1
+
+
+BOD                 Board of Directors
+
+
+FSB                  Financial Stability Board
+
+
+IAIS                  International Association of Insurance Supervisors
+
+
+IFSB                 Islamic Financial Services Board
+
+
+IFSB-27            Core Principles for Islamic Finance Regulation [Takāful Segment] IIFS                  Institutions Offering Islamic Financial Services
+KA                    Key Attributes of Effective Resolution Regimes for Financial Institutions
+
+
+PIF                   Participants’ Investment Fund
+
+
+PONV               Point Of Non-Viability
+
+
+PPS                  Policyholder/Participant Protection Scheme
+
+
+PRF                  Participants’ Risk Fund
+
+
+RSAs                Regulatory and Supervisory Authorities
+
+
+SHF                  Shareholders’ Fund
+
+
+TCP                  Takāful Core Principle
+
+
+TN-4                 Recovery and Resolution for Institutions Offering Islamic Financial Services
+
+
+TN-5                 Sharīʻah-compliant Liquidity Risk Management Tools
+
+
+TO                    Takāful Operator
+
+
+TU                    Takāful Undertaking
+
+
+
+
+
+
+
+
+4
+Bismillahirrahmanirrahim
+Allahumma salli wasallim ‘ala Sayyidina Muhammad wa’ala alihi wasahbihi
+
+
+
+SECTION 1: INTRODUCTION
+
+
+1.1     Background
+
+
+1.         Regulatory and Supervisory Authorities (RSAs) need to establish Recovery and Resolution frameworks (RRFs) to enable financial institutions to restore viability through their actions and reduce the need for intervention by public authorities (usually using taxpayer funds). These frameworks also empower authorities to implement effective recovery and resolution measures consistent with the principles established by the Financial Stability Board (FSB).
+
+2.         The IFSB Working Paper (WP) -07 “Recovery, Resolution and Insolvency Issues for Institutions Offering Islamic Financial Services” recognises that institutions offering Islamic financial services (IIFS) are not insulated from stress and failure. Furthermore, effective crisis management frameworks, including recovery  and  recapitalisation measures, constitute essential building blocks  of  Islamic financial infrastructure.1 While the overarching goals of RRF remain consistent across conventional and Islamic financial systems, the unique structural and operational characteristics of takāful, as detailed in Appendix 1, create distinct risk profiles that require a tailored regulatory approach.
+
+3.         This Guidance Note (GN) provides application-level guidance on Takāful Core Principles (TCPs) 12 (Exit from The Market and Resolution) and 16 (Enterprise Risk Management for Solvency Purposes)2 and complement the guidance provided by the FSB Key Attributes (KA)3 and the International Association of Insurance Supervisors (IAIS) application papers4. The GN highlights additional aspects of takāful not covered in these references. Guidance equally applicable to both takāful and conventional insurance is not included in this GN, and appropriate references have been made where applicable. This approach aims to ensure, other things being equal, consistent outcomes in  the  supervision  of  recovery  and  resolution  across  insurance  sectors  while  accommodating the specificities of takāful.
+
+1.2     Scope and Application
+
+
+4.         This GN is developed primarily in reference to the takāful model. The provisions also apply to
+
+takāful windows5.
+
+
+
+
+1 IFSB-IsDB-IRTI report on “Islamic Finance and Global Financial Stability” (April 2010)
+2    IFSB-27: Core  Pri nc i pl e s  fo r  Is l a mic  Fi n an ce  Reg u la ti on  (CPIFR)  [T a k āfu l  Se g men t]  . TCP 23: The Group-wide
+Supervisor, and TCP 25: Supervisory Cooperation and Coordination are also relevant.
+3  Key Attributes of Effective Resolution Regimes for Financial Institutions and the Assessment Methodology for
+Insurance Institutions
+4 Application Paper on Recovery Planning and Application Paper on Resolution Powers and Planning
+5 The term “window” means part of a conventional insurer, which may be a branch or a dedicated unit of that
+insurer, that provides takāful services other than purely as an intermediary.
+
+5
+5.         In the case of recovery, this GN is relevant to all takāful undertakings (TUs).6
+
+
+6.         In the case of resolution, the GN applies to all TUs that could be systemically significant or critical if they fail7. It should serve all group entities, if any, of TUs, consistent with the FSB KA 1.1.8
+
+7.        To implement an effective RRF specific to takāful, RSAs need to address some key considerations. This includes developing a robust system of regulation, supervision, and oversight that caters to takāful-specific characteristics and participant protection mechanisms that adhere to Sharīʻah principles.  Additionally, a  strong  accounting, auditing, and  disclosure regime  that  considers  the specificities of takāful is essential. The legal framework, particularly concerning liquidation/bankruptcy regimes, should  accommodate takāful  peculiarities (e.g.  legal  recognition of  segregated funds). Furthermore, the RSAs and resolution authorities should have expertise in the Sharīʻah specificities and the underlying takāful model adopted in their jurisdiction.
+
+1.3     Proportionality
+
+
+8.         This GN should be read in the context of the proportionality principle. RSAs and resolution authorities may tailor their implementation of TCP 12 and TCP 16 and the guidance herein, taking into consideration the nature, scale and complexity of TUs and the risks posed by TUs to participants, the takāful sector, or the overall financial system.
+
+1.4     Implementation Date
+
+
+9.         To  ensure  consistent implementation of  IFSB  standards across  jurisdictions, RSAs  and resolution authorities are encouraged to adopt the GN from June 2027, allowing for a pre- implementation period from the issuance date to integrate the GN into national regulations and guidelines, and where applicable, into supervisory practices.
+
+10.       RSAs and resolution authorities are encouraged to implement the GN earlier than this date when they are able to do so.
+
+11.       The guidance provided in this GN recognises that there are significant differences in the legislative and regulatory frameworks across countries, which may affect the application of certain provisions therein. Each jurisdiction should apply the provisions as the national authorities see fit. In some cases, this may involve legal change. In other cases, a provision may require only a slight
+modification to be implemented.
+
+
+
+
+6 Please see definitions at the end of this document for common terms used in this GN.
+7 See section 3.2 for further discussion on this.
+8 FSB Key Attributes 1.1 stipulates that any financial institution, whose failure could be systemically significant or critical, should be governed by a resolution regime with the specified "Key Attributes." This regime should be transparent and clear about the firms it covers. It should apply to holding companies of a firm, non-regulated operational entities within a financial group or conglomerate that are significant to the business, and branches of
+foreign firms.
+
+6
+SECTION 2: RECOVERY PLANNING
+
+
+12.       Recovery planning enables takāful operators (TOs) to identify risks in severe stress scenarios and develop appropriate responses for both the Shareholders’ Fund (SHF) and the Participants’ Risk Fund (PRF). It is necessary for TOs to implement comprehensive recovery plans as part of their risk management framework9. The detailed guidance in the "Application Paper on Recovery Planning" by IAIS  applies  to  TUs.  The  following  sub-sections provide  additional guidance on  takāful-specific considerations.
+
+2.1   Sharīʻah Governance and Recovery Planning
+
+
+13.       The IAIS Application Paper addresses appropriate governance for insurers' recovery planning, including the roles of the Board of Directors (BOD), Senior Management, and Key Persons in control functions10. For TUs, an additional layer of governance is necessary to ensure that recovery planning incorporates proper oversight addressing Sharīʻah-specific considerations. Therefore, supervisors should require TOs to establish and implement an appropriate Sharīʻah governance framework.11 For detailed guidance on implementing a Sharīʻah governance framework, refer to TCP 8 and IFSB-10.12
+
+14.       The Sharīʻah governance function13 should be involved from the beginning in developing the recovery plan to ensure Sharīʻah compliance throughout planning and execution. This function may:
+
+•   identify pre-positioning measures required for various Islamic contracts to implement
+
+recovery options in a Sharīʻah-compliant manner;
+
+•   provide necessary Sharīʻah opinions, approvals, and clarifications;
+
+•   offer guidance on any other Sharīʻah matters pertinent to the plan's development and
+
+implementation; and
+
+•   conduct a periodic review of the recovery plan to ensure that it remains Sharīʻah-compliant, especially when the regulatory environment changes.
+
+2.2   Additional Consideration for Segregated Funds
+
+15.       TOs  are  responsible for  addressing Enterprise Risk  Management components for  each segregated fund,14  which may necessitate specific recovery considerations at the fund level. Each
+
+
+
+9 TCP 16.15
+10 See Section 4 Governance of the Application Paper.
+11 IFSB-27 defines Sharīʻah governance as a “set of institutional and organisational arrangements that is required to ensure there is effective and independent oversight of Sharīʻah compliance through structures maintained by the legal entity and processes carried out by it or at its direction.”
+12  IFSB-1 0 :  Gui d in g  Prin c ip l es  on  Sh a rīʻ a h  Gov e rna n ce  Sys tem s  fo r I ns ti tu ti on s o ff e ri n g  Is lam i c  F i na n ci a l 
+Services.
+13 Sharīʻah governance function of a TO (based on the jurisdictions approach) may include a Sharīʻah Board/advisor and an internal Sharīʻah compliance unit. These functions collectively verify that the Sharīʻah compliance requirements have been satisfied, and that any non-compliance is recorded, reported, addressed, and rectified.
+14 TCP 16.0.3 and TCP 16.0.4
+
+7
+segregated fund may have a tailored recovery approach that addresses its specific characteristics and risk profile. Supervisors may apply the principle of proportionality when determining whether planning is required at the individual fund level or for the TU as a whole, the number of PRFs and/or Participant’s Investment Funds (PIFs) managed, the risk profile and size of the TO, etc.
+
+16.       Recovery planning may incorporate scenario analysis15 conducted both at the individual fund level and collectively for the TU as a whole. For PRFs, the analysis may include the projection of qarḍ16 utilisation or other forms of support in stressed scenarios, specifying sources and expected repayment patterns.
+
+2.3   Elements of a Recovery Plan
+
+
+2.3.1   Executive Abstract of the Recovery Plan
+
+
+17.       The abstract of the recovery plan may include the mechanisms and processes the TO has put in place to ensure Sharīʻah compliance of the recovery options (e.g. the recovery plan has been reviewed and endorsed by the Sharīʻah governance function). This inclusion serves as a useful aid for supervisors when reviewing and assessing recovery plans, allowing them to evaluate how Sharīʻah governance was incorporated throughout the recovery planning process.
+
+2.3.2   Trigger Framework
+
+
+18.       A well-designed trigger framework is essential for recovery planning to identify and establish pre-defined criteria that prompt the activation of fund-specific recovery plans. Segregated funds may have different risk exposures, solvency levels, contractual obligations, and recovery options. Therefore, the trigger points may be tailored to each fund's specific circumstances and needs. For instance, a severe stress situation may trigger recovery for a specific PRF or business line only. In such cases, the TO should assess recovery measures specifically for the affected PRF or business line while maintaining its obligation to continue normal operations and meet all commitments for other PRFs or business lines.
+
+19.       The IAIS Application Paper provides some quantitative (e.g. solvency, liquidity, and asset quality) and qualitative (e.g. market confidence and operational events) examples of trigger points.17
+For TUs, some additional considerations may be:
+
+•   Potential deterioration in the quantity and quality of capital as well as the capacity to meet liquidity needs in both the PRF(s) and SHF. For example, for a PRF, TUs may consider the
+
+
+15  The IAIS describes scenario analysis as a tool to assess the credibility and feasibility of the recovery plan, including the trigger framework and recovery options. It also gives insurers and supervisors insights into major risk factors and possible impediments to recovery.
+16 RSAs may require a TU to provide qarḍ when the assets of the PRF are insufficient to cover both its liabilities and the required solvency margin, or when a PRF experiences a liquidity shortage preventing settlement of obligations.
+17 See Box 1 of the Application Paper.
+
+8
+frequency of deficits occurring in the PRF and the amount of qarḍ required to sustain the
+
+fund’s solvency.
+
+•   Deterioration in the quality of the asset mix of PRF and PIF reserves, where the TO invests the  funds  on  behalf of  the  participants. This  may  affect the  financial condition and performance of these funds in terms of (i) the amount and frequency of surplus available for distribution to participants and creation of reserves and (ii) the ability and speed of the PRF to repay any qarḍ provided by the SHF.
+
+•   Operational events such as the number of Sharīʻah non-compliance events within a certain period, that may threaten the financial viability or the public confidence in the TU.
+
+•   Changes in fatwas or Sharīʻah resolutions that impact TU operations and financial viability.
+
+For example, a fatwa change leading to product or process revisions could potentially result in non-recognition of income, financial losses, and stress on the TU's profitability and capital position. The extent of operational changes required or the potential financial impact from such developments may serve as trigger points.
+
+
+
+2.3.3   Recovery Options
+
+
+20.       The recovery plan should include a comprehensive menu of recovery options that are identified in advance to facilitate effective recovery during severe stress.  For TUs, the recovery options may fall into three categories:
+•   options primarily aimed at a recapitalisation of the SHF or an enhancement of resources available to the PRF(s);
+
+•   options intended to ensure that the PRF(s) and SHF have adequate access to liquidity to carry on operations and meet obligations as they fall due; and
+
+•   options designed to reduce the TU's risk exposure or restructure its business lines.
+
+21.       The  IAIS  Application  Paper  provides  some  examples  of  recovery  options18.  Additional examples for TUs may include, but are not limited to:
+
+•   suspending surplus distribution to strengthen the capital of the PRF;
+
+•   writing off qarḍ by the parent company in subsidiary TUs to reduce the subsidiary's liability;
+
+
+
+
+
+
+
+
+
+
+
+
+18 See Box 2 of the Application Paper
+
+9
+•   ceding with conventional reinsurers to reduce risk exposure where genuine retakāful is not available in sufficient volume or during a crisis situation,19  applying the principle of al- hājah;20
+
+•  accessing available Sharī`ah-compliant liquidity sources as per the liquidity risk management plan;
+
+•   limiting the wakālah fee temporarily (e.g. based on a limit set by the RSA or actuary) to improve the financial position of the PRF during the recovery period, and;
+
+•   procuring third-party financing to cover the PRF deficit when the TO cannot provide qarḍ to the PRF, either due to stress in the SHF or regulatory solvency requirements.
+
+22.       Some of the recovery options may apply to the participant funds only (PRF and PIF) and require additional consideration. Examples of such recovery options are provided below.
+
+Transfer of portfolio
+
+
+23.       The RSA may evaluate the eligibility of portfolio transfers and the ability of the transferee to uphold Sharīʻah requirements. Principle 6 of IFSB-27 provides detailed conditions for using portfolio transfer as a recovery tool. Additional considerations may include the following:
+
+•   The RSA may only permit such transfer to other TUs.
+
+•   If the TO has received an upfront wakālah fee before portfolio transfer, careful Sharīʻah deliberation is necessary. The TO may be entitled only to a portion of the fee based on tasks performed. The transferor TO may need to transfer the remaining wakālah fee to the transferee TO.
+
+•   Portfolio transfer may require terminating the existing wakālah contract and establishing a new one between participants and the transferee TO. To avoid the need to obtain consent from each individual participant and to simplify the process, the contract could include a clause  permitting transfer  based  on  necessity, situation,  or  regulatory requirements, potentially maintaining existing terms  and  conditions. It  may  also  include a  right  to extraordinary termination.
+
+•   If a PRF has an outstanding qarḍ that needs to be repaid, its treatment during or after the transfer needs to be clarified. For example, the transferee may repay existing qarḍ to the transferor on behalf of the PRF, to be repaid from future surplus, or regulatory requirements
+may require the qarḍ to be written off.
+
+
+
+
+
+19  IFSB-25 recommend disclosing the usage of conventional reinsurance to participants
+20 The concept of “al-hājah” or need and necessity in the absence of a compliant alternative, could be used by
+TUs to justify the use of conventional reinsurance when retakāful is not available, has limited coverage or does not meet all regulatory requirements
+
+10
+Qarḍ
+
+
+24.       RSAs may require the TU to provide qarḍ when the assets of the PRF are insufficient to cover both its liabilities and the required solvency margin, or when a PRF experiences a liquidity shortage preventing the settlement of obligations. This qarḍ will be recovered from future surplus in subsequent periods either in a single payment or multiple instalments. If it is probable that the qarḍ cannot be recovered and the PRF might not be viable if it must repay the qarḍ, regulators may require the qarḍ to be written off. A TO who is unable to provide the qarḍ should be expected to promptly notify the RSA and to take necessary actions (e.g., procuring third-party financing) within a reasonable timeframe.
+
+25.       It is also possible that a stressed TO may need to procure qarḍ or financing from a third party or a group to cover a PRF deficit. However, the financing contract should clarify the SHF's responsibility if the PRF fails to repay. Complications may arise in jurisdictions where the PRF is not recognised as a legal entity, and this might become the liability of the SHF.
+
+Hibah
+
+
+26.       The SHF may provide a hibah21 to the distressed PRF to cover deficits and improve its financial health.  Unlike qarḍ, hibah is not considered a liability of the PRF as it does not require repayment. However, before providing a hibah, the TO may carefully consider the SHF's solvency position and any regulatory requirements.
+
+Surplus
+
+
+27.       In accordance with the takāful contract, the TO may consider retaining the surplus or part of the surplus of a PRF to build a reserve for unforeseen stress events in the future that may affect the particular PRF. Any recovery mechanism utilising the surplus reserves should require approval from the appointed actuary and the Sharīʻah board. Any recovery measures utilising the surplus reserves require the final approval of the RSA to ensure that the surplus reserves remain adequate to support the viability of the business.
+
+Run-off
+
+
+28.       A TO may consider a run-off of a distressed PRF or multiple PRFs either as a voluntary business decision or as mandated by the RSAs. In such cases, the TU would still need to maintain its relationship with existing participants due to the contractual obligation to pay claims or compensate losses under the takāful contract. This relationship may persist for an extended period, as some claims may take a long time to resolve. During this period, the TU should maintain sufficient administrative operations to service the existing contracts. A proper run-off plan may be included in the recovery plan
+and should undergo a Sharīʻah review.
+
+
+
+
+21 The payment of money or transfer of an asset to another party without a consideration.
+
+11
+Group Support
+
+
+29.       A subsidiary or window TU, in a stressed situation, may seek support from its parent group. Where it does so, the TU should consider the nature and type of permissible support structures and contracts. Support can be provided by the parent to the subsidiaries or window through various contracts, subject to its compliance with Sharīʻah rules and principles and the relevant regulations in respective jurisdictions.22
+
+2.3.4   Communication Strategy
+
+
+30.       The  communication  strategy  with  internal  and  external  stakeholders  is  important  for successfully implementing a recovery plan.23 For a TU, participant-related considerations should inform the communication strategy. RSAs should expect TUs to ensure that the information provided to the participants is clear, fair, and not misleading. Where participants - depending on the legal framework in a jurisdiction and terms of the contract - are allowed to participate in the decision-making process on recovery options (either through consultation or consent rights or in some other manner),24 sufficient information should be provided to participants to enable them to make informed decisions.
+
+2.3.5   Participant’s Interest Consideration
+
+
+31.       The TO’s responsibility to consider participants' interests when managing risks25 extends to recovery planning. The recovery plans may include a description of the different roles and responsibilities of the TO towards participants.
+
+32.       The recovery plan may outline the treatment of assets and liabilities during recovery actions, especially where local laws view the TU as a single entity. Supervisors may evaluate how the recovery plan protects PRF assets from being used to cover SHF liabilities. Such clarity is crucial for safeguarding participants' interests. Additionally, when assessing the solvency of the TU, the resources of the PRF(s) should be distinguished from the SHF due to the differing rights and obligations of participants and shareholders.
+
+33.       Recovery options may necessitate a change in the legal form of the TU.26 The process for such a change varies by jurisdiction and may require approval from authorities other than the RSAs, such as courts. Participants may also have voting rights regarding changes in legal form. Additionally, based on the jurisdiction’s legislation, the TO may need to consult or obtain approval from participants for certain
+recovery options, such as a portfolio transfer, run-off of a PRF, or significant policy changes.
+
+
+
+
+
+22 See section 2.4.2, TN-4: Technical Note on Recovery and Resolution for Institutions Offering Islamic Financial
+Services,
+23 See section 5.6 of “Application Paper on Recovery Planning” by IAIS for a detailed explanation
+24 See TCP 6.4.4 of IFSB-27 Core Principles for Islamic Finance Regulation [Takāful Segment]
+25 TCP 9.0.6
+26 For example, from mutual to stock, or changes in ownership etc.
+
+12
+2.4   Matters Specific to Subsidiaries and Windows
+
+
+34.       The group recovery plan describes how the group as a whole can recover from severe stress. For group insurers with takāful subsidiaries and Islamic windows, it is essential to carefully consider the takāful specificities in developing group-wide recovery plans.
+
+35.       For Islamic windows, the principle of proportionality should be applied to ensure regulatory requirements do not overburden the windows, while maintaining effective recovery mechanisms.
+
+36.       Key personnel developing recovery options for subsidiaries or windows should demonstrate an understanding of takāful specificities.
+
+2.5   Supervisory Considerations
+
+
+37.       The supervisor should require TOs  to  provide the  necessary information to  assess the robustness and credibility of any required recovery plan,27 including how it addresses takāful-specific considerations. If material deficiencies are identified (e.g. improper qarḍ arrangements), the supervisor should provide feedback and require TOs to address these deficiencies. Where applicable, supervisors may consider the soundness of the TOs Sharīʻah-compliance assertion related to the recovery planning.
+
+38.       In a group structure, with Islamic windows or subsidiaries, supervisors may evaluate if group- wide recovery plans adequately address takāful-specificities.
+
+39.       Supervisors may evaluate whether they have adequate supervisory capacity, both in terms of quantity and quality (e.g., personnel, understanding of takāful business models, Sharīʻah-compliance, etc.), to effectively carry out their supervisory duties with respect to recovery plans, which may include:
+
+•   reviewing and assessing the recovery plans submitted by the TOs, taking into account the specificities of takāful, and ensuring that such plans are appropriately escalated to and endorsed by the Sharīʻah board of the TO;
+
+•   providing feedback to the TOs on their recovery plans, if any concerns are identified regarding the robustness of the plan (including its adequacy in addressing takāful specificities); and
+
+•   assessing the effectiveness of the recovery plans, considering the limitations TOs might face, such  as  limited  Sharīʻah-compliant instruments,  constraints  on  procuring  financing  from
+conventional parents, difficulties in providing qarḍ from SHF, etc.
+
+
+
+
+
+
+
+
+
+
+27 TCP 16.15.2
+
+13
+SECTION 3: RESOLUTION POWERS AND PLANNING
+
+
+40.       This section supplements the FSB “Key Attributes of Effective Resolution Regimes for Financial
+Institutions” ( KA)  ,28 “Application Paper on Resolution Powers and Planning and IAIS “Issues Paper on roles and functioning of policyholder protection schemes (PPSs)” and expanding on IFSB -27.
+
+
+41.       The  FSB  KA  4,  setting  out  the  detailed standards and  guidance in  respect  of  netting, collateralisation, and  segregation of  client assets, can be  adopted  for  TUs  and  their  resolution framework. This document does not include material relating to ComFrame or IAIGs, therefore, KAs 8 and 9 are not applicable to the takāful resolution framework.29
+
+3.1   Objectives of an Effective Resolution Regime
+
+
+42.       The objectives of an effective resolution regime for insurers are to “make it feasible to resolve an insurer without severe systemic disruption, while protecting vital economic functions through mechanisms that make it possible for shareholders and unsecured creditors to absorb losses in a manner that respects the hierarchy of claims in liquidation. For insurers, the resolution regime should have as specific objective the protection of policyholders, beneficiaries and claimants.”30 The “hierarchy of claims in liquidation” as a constraint and the “protection of policyholders” as a particular objective of a resolution regime for insurers require some clarifications from a takāful perspective:
+
+•   In conventional insurance, policyholders have individual claims against the insurer. In a resolution case, they participate (usually at a high rank in the hierarchy) in the liquidation proceeds of the insurer. In takāful, participants' claims are against the PRF, not the SHF. This is because the PRF bears the ultimate risk, unlike conventional insurance. In jurisdictions that recognise fund segregation, both the PRF's assets (e.g., bank balances, provisions, reserves) and liabilities (including received qarḍ) belong to participants collectively. Therefore, during a TU’s resolution, participants are entitled to the liquidation proceeds of the PRF’s net assets, but not those of the SHF.
+•   The “protection of policyholders” is understood as a protection of the rights and interests of the individual (retail) policyholders. This includes the right to be compensated for insured losses. Where jurisdictions have policyholder protection schemes, they can intervene if liquidation proceeds are insufficient to fully compensate outstanding claims. In aiming to achieve comparable financial outcomes in resolution cases for both conventional policyholders and takāful participants, a Sharīʻah-compliant PPS may be a suitable mechanism. Such a PPS may
+be structured similarly to Sharīʻah-compliant deposit protection schemes in Islamic banking31.
+
+
+
+28 See in general: Preamble and K2.3, specific for insurers: II-Annex 2, 1.1.
+29 See IFSB-27 pages 24 and 25 for the rationale of not including the ComFrame
+30 See II-Annex 2: Resolution of Insurers, Key Attributes of Effective Resolution Regimes for Financial Institutions
+(Revised 2024).
+31 For details see IFSB WP-06:  Stre n g the n in g  th e  Fi n a nc i al  Sa fe ty Ne t:  Th e  Rol e  an d M e cha n i sm s  o f  Sha rīʻa h 
+Compliant Deposit Insurance Schemes (SCDIS).
+
+14
+The PPS should have the discretion to assess the overall circumstances of the resolution case and decide on the level of intervention and protection for participants with unsettled claims.
+
+
+3.2   Scope of Application of the Resolution Regime
+
+
+43.       Resolution regimes are primarily designed to maintain financial stability and prevent severe systemic disruption. While these regimes are mandated for Globally Systemically Important Insurers (G-SIIs), KA 1.1 extends their applicability to "any financial institution that could be systemically critical if it fails".
+
+44.       In markets where only a few TUs operate or where a single TU holds a dominant market share, the failure of one of the dominant entities could cause critical systemic consequences. The appropriate benchmark for the systemic importance of TUs warrants careful consideration.
+
+3.3   Resolution Authority
+
+
+45.       The legal framework may identify one or more resolution authorities and provide a clear mandate.32 This does not necessarily mean a separate resolution authority is needed for the takāful industry, provided the existing resolution authority has sufficient expertise, resources, and a mandate for adequate consideration of takāful specificities as outlined in this GN.
+
+3.4   Resolution Powers
+
+
+3.4.1   Entry into resolution
+
+
+46.       IFSB-27 highlights that no uniform, single, fixed point of non-viability (PONV) can be defined that will be appropriate for the application of resolution measures under all circumstances. Additionally, PONVs need to be set for both the individual fund level and the entity level. In this regard, the RSAs and/or resolution authority should establish clear standards or suitable indicators of non-viability in their assessment frameworks to guide decisions on whether a TU meets the conditions for entry into resolution. These indicators should include both qualitative guidelines, which require a degree of judgment, and quantitative (financial) thresholds. The factual circumstances of the particular resolution scenario will determine whether to apply resolution measures and which type of measures to be implemented (e.g. fund level or entity level measures).
+
+47.       Figure 1 is a stylised illustration of the relationship between solvency, viability, and the nature of actions to be taken. Resolution procedures can be initiated before a TU becomes balance sheet
+insolvent.
+
+
+
+
+
+
+
+32 For the definition of resolution authority, see IFSB-27 TCP 12.0.4.
+
+15
+Figure 1 Relationship between solvency, viability, and actions to be taken.
+
+
+Balance sheet of TU
+Solvent                                                                         Balance Sheet
+Insolvent
+
+
+Viability
+
+Viable
+
+Non-Viable
+
+
+
+
+Risk Appetite and Triggers
+
+
+Targets          Early Warning
+Indicators
+
+
+Recovery
+Triggers
+The point at which the TU is no longer viable or likely to be no longer viable, and has no reasonable prospect of becoming so
+
+Actions to be
+Taken
+
+Business as usual                             Recovery
+
+Resolution
+
+
+
+48.       In jurisdictions where fund segregation is recognised, separate balance sheets and income statements may be prepared to reflect the different capital sources for PRF33 and SHF.34 In cases where a TO manages multiple PRFs, it may be necessary to evaluate their various capital sources and levels independently to determine whether a resolution is triggered primarily by the failure of one or more PRFs or the failure of the SHF. Situations may arise where only one PRF enters resolution while other PRFs and the SHF remain viable, allowing the TU as a whole to avoid resolution procedures. However, where the TO manages only one PRF, the entire TU may enter resolution if either the PRF or SHF fails.
+
+49.       TCP 12  of  IFSB-27 mentions that  legislation should provide criteria for  determining the circumstances when the RSA and/or resolution authority initiates the resolution of a TU. TCP 12.7 provided some examples of the criteria for determining whether resolution processes should be initiated. Additionally, the IAIS application paper sets out illustrative examples of possible resolution conditions in place in various jurisdictions that are applicable to TUs and their resolution planning framework.35
+The triggers referred to may also be applied, mutatis mutandis, at the level of PRFs to determine the viability of a particular fund and its reasonable prospects of becoming so, while the TU is still viable. The viability of a fund should be considered in the context of any qarḍ that has already been provided or any commitment to provide qarḍ by the SHF. Furthermore, Sharīʻah-specific trigger considerations should reflect the unique nature of TUs, such as situations where retakāful agreements are terminated, lapse, or fail to perform as expected, which could expose the TU to unanticipated financial losses beyond its risk retention capacity and potentially justify resolution considerations.
+
+50.       To determine whether a TU meets any resolution triggers, the RSAs and/or the resolution authority may consider establishing their internal governance system. The RSAs and/or resolution authority should consider the level of seniority and takāful expertise necessary for the decision-
+maker(s). The decision-making process of entering a resolution should anticipate potential legal
+
+
+
+33 Participants' contributions and reserves
+34 Shareholder-provided equity capital
+35 See section 3 of Application Paper on Resolution Powers and Planning
+
+16
+challenges, particularly those related to Sharīʻah-compliance and the rights of participants. To mitigate the latter risks, the RSAs and/or resolution authority may consult a relevant Sharīʻah authority.36
+
+51.       The financial condition of a takāful window may diverge from that of the parent company. The window may face financial distress while the conventional operations remain sound, or vice versa. The RSA should assess the viability of the takāful window as a whole, or of specific funds within it, and apply clear criteria to determine when the window or fund is, or is likely to become, non-viable.
+
+52.       Where a takāful window is deemed non-viable, the RSA or resolution authority should require the  conventional insurer to  refrain from extracting any  capital from the  takāful window until all entitlements of participants and beneficiaries under takāful contracts have been fully met.
+
+53.       Where the conventional host is under resolution and the takāful window remains viable, the RSA or resolution authorities may encourage conversion of the takāful window to a full-fledged TU or portfolio transfer.
+
+3.4.2   General resolution powers
+
+
+54.       TCP 12.8 requires legislation to provide appropriate powers to the RSA and/or resolution authority to resolve TUs effectively. Some of these powers have already been mentioned in the context of recovery efforts.  These powers are exercised proportionately and with appropriate flexibility. Each resolution power listed in IFSB-27 (TCP 12), KA 3 and the IAIS application paper can be applied to TUs and their resolution framework. For takāful, an additional consideration should be to restrict the use or distribution of PRF surplus.
+
+55.       Resolution powers must not require or be contingent on the cooperation of the failing TU. These powers should be exercisable by authorities without the consent of the TO, its shareholders, Sharīʻah board, creditors, participants, or retakāful operator (if the TO has any contractual liabilities with the retakāful operator). For effective resolution, it is critical that these powers can be exercised without triggering any third-party rights (such as the rights of a retakāful operator or participant) that could prevent, impede, or interfere with the resolution process. This provision is subject to the safeguards described in subsection 3.5 below.
+
+56.        The resolution powers mentioned in IFSB-27 (TCP 12), the IAIS application paper and KA 3 are not exhaustive, and the RSA and/or resolution authority may choose to apply other available powers when developing and implementing its resolution strategy.
+
+3.4.3   Bridge institutions
+
+57.       Any continuation or alternative arrangement offered by the RSA and/or resolution authority during the resolution of the TU must meet Sharīʻah compliance requirements. If the RSA and/or
+
+
+36 For example, its own Sharīʻah Board or the Central/National Sharīʻah Board (where one exists). See section
+3.11 Sharīʻah Governance Framework and Resolution Planning.
+
+17
+resolution authority decides to use a bridge institution as a resolution tool, a clear mechanism to maintain Sharīʻah compliance by this institution should be established and communicated to all relevant parties.37
+
+3.4.4   Bail-ins
+
+
+58.       The RSA and/or resolution authority should have the legal powers to enforce bail-ins including but not limited to enforcing the conversion of contingent capital instruments, writing down equity, and absorbing losses. From a regulatory capital perspective, some capital-qualifying instruments may already have bail-in features, such as additional Tier 1 (AT1) and Tier 2 (T2) ṣukūk. A clear definition of a PONV and its determination would help to get consent from creditors or AT1 ṣukūk holders even at the time of issuance of such liabilities. Consequently, Sharīʻah-compliant mechanisms for the effective application of bail-in should be defined and clarified as part of the design of the resolution framework.
+
+3.5   Safeguards
+
+
+59.       The safeguards outlined in KA 5 are applicable to TUs, including the "no creditor worse off than in liquidation" principle, flexibility to deviate from pari passu treatment of creditors within the same class, and protection for directors and officers of the institution under resolution when complying with RSA and/or resolution authority decisions. However, it is important to note that deviations from the pari passu principle cannot be directly applied to  takāful participants, as they are not considered creditors. Nevertheless, a functional equivalent can be found in the discretionary powers of a Sharīʻah-compliant PPS regarding unsettled claims in a TU.
+
+60.       Safeguarding assets of the PRF(s) is an additional dimension for the resolution of a TU. Due to the distinct ownership of the PRF(s), the RSAs and/or resolution authority must ensure that such assets are not used to meet the liabilities of the SHF. In reverse, there can be specific liabilities of the PRF(s), such as outstanding participant claims or third-party debt financing. The RSAs and/or resolution authority must consider that these liabilities are limited to the PRF(s) and that the SHF must be safeguarded.
+
+3.6   Funding Resolutions
+
+
+61.       When the funding of resolution measures is necessary, dependence on public funds shall be avoided or, at least, be minimised. As stipulated in TCP 12.2.3, any public funding utilised for the resolution of a TU may, in principle, be transparently recouped from the takāful sector.
+
+62.       When using private funding to finance a resolution, the RSAs and/or resolution authority should
+
+always ensure its compliance with Sharīʻah rules and principles.
+
+
+
+37 See section 3.11 Sharīʻah Governance Framework and Resolution Planning.
+
+18
+63.       Resolution measures for a failing TU (such as a portfolio transfer or regulated run-off) might only be possible with a cash injection38. This option should be used only as a measure of last resort to ensure the continuation of critical takāful coverage (e.g., where no comparable coverage is available in the market through another TU).
+
+3.7   Cross-border Cooperation
+
+
+64.       The forced resolution of a TU that is a member of an international group may have implications beyond the jurisdiction where it operates. The resolution process may differ in the host jurisdiction of the subsidiary from that of the home jurisdiction of the TU or group due to, among other things, different insolvency laws. To ensure Sharīʻah-compliance of cross-border businesses, both home and host authorities should provide information on fatwas or Sharīʻah guidance related to their resolution planning and implementation matters. The aim of these deliberations on Sharīʻah interpretations is (ideally) a shared understanding of both home and host authorities that will underlie the resolution plan and policy in cross-border cases of failing TUs.
+
+3.8   Resolvability Assessments
+
+
+65.       FSB KA  10 (Appendix I:  I-Annex 3)  and  the IAIS  application paper (Section 6)  outline resolvability assessments for systemically relevant insurers. The same procedures should be applied in takāful with the addition of an assessment39 of the ability to maintain Sharīʻah-compliance of contracts and processes throughout the resolution process, as well as its continuation under the new post- resolution structure or entity. Sharīʻah-compliant contracts and processes may include, among others, the transfer of current policies to a new entity, considerations of selling/transfer of different assets of the TU, treatment of qarḍ during resolution, and Sharīʻah-compliant creditors’ hierarchy.
+
+66.       Resolvability assessments for TUs should address:
+
+
+•   the identification of various factors and conditions related to the operation of the TU, primarily the Sharīʻah compliance obligations, which could affect the effective implementation of a chosen resolution action or plan;
+
+•   the ability of other group entities to absorb or unwind the intragroup exposures of the TU or
+window under resolution in a Sharīʻah-compliant manner if group support is envisaged as part of the resolution and the group is dominated by conventional insurers; and
+
+
+
+
+
+
+
+38 During resolution, funding may be provided through cash injection to ensure continuity of critical takāful functions to enable run-off or transfer of business. See IAIS Issues Paper on Policyholder Protection Schemes for further details on the use of cash injections to support insurer resolution.
+39 TU is “resolvable” if it is feasible and credible for the resolution authorities to resolve it in a way that protects
+systemically important functions without severe systemic disruption and without exposing taxpayers to loss.
+
+19
+•   the identification of pre-positioning measures or specific actions required to ensure Sharīʻah compliance with the entire resolution procedure and to sustain the Sharīʻah-compliant nature of the resulting post-resolution entity (e.g., a temporary bridge institution).
+
+3.9   Resolution Planning
+
+
+67.       The content of KA 11 and the IAIS application paper offers detailed guidance for resolution planning and implementation of resolution plans that also apply to TUs and takāful resolution planning frameworks. The following paragraphs provide additional guidance that deals with takāful specificities.
+
+68.       Unlike recovery plans, which are prepared by the TOs and assessed by the RSAs, resolution plans are typically prepared by the RSAs and/or resolution authorities. To ensure compliance with the relevant Sharīʻah rules and principles and reduce the probability of any Sharīʻah non-compliant event during the liquidation, it is crucial to assign and involve a relevant Sharīʻah authority in the resolution planning process.40 The role of TOs is to provide necessary input to the resolution authorities in the preparation of the resolution plan.41 RSAs/resolution authorities should be able to obtain the information needed to develop and implement the resolution strategy and plan. Relevant takāful-specific information may relate to:
+
+•       details of the takāful model adopted by the TO and the segregation of funds;
+
+•       valuation methodology of assets and liabilities for the PRF(s), PIF, and SHF; and
+
+•       relevant intra-group transactions, shared essential functions, and interconnectedness, especially for windows and subsidiaries.
+
+69.       The RSA and/or resolution authority should have sufficient resources and expertise to support the preparation and assessment of resolution plans on an ongoing basis, including experts in takāful and Sharīʻah scholars.
+
+3.9.1   Preparing Resolution Plans
+
+70.       The IAIS application paper42  offers detailed guidance for elements of a resolution plan that also apply to TUs and takāful resolution planning frameworks. In preparing the resolution plan, the resolution
+
+
+
+
+
+40 See paragraph 75, section 3.11 on Sharīʻah governance and resolution planning.
+41 In some cases, a TO may be required to prepare internal contingency plans for foreseeable resolution scenarios
+that should consider, among others, whether the resolution mechanisms available carry implications for Sharīʻah compliance. The TO’s Sharīʻah governance function should be consulted in developing the plan and reviewing the
+TO’s contingency plan before it is adopted by the BOD, in order to identify potential concerns relating to Sharīʻah
+compliance or matters in the foreseeable resolution scenarios where the current understanding of Sharīʻah lacks
+precedents. This process enables any necessary (albeit precautionary) deliberation by the Sharīʻah governance
+function to take place in advance of the scenario occurring, rather than as an emergency amid a crisis. As part of the TO’s contingency planning, the Sharīʻah governance function may advise the TO that a particular resolution action carries a high risk of Sharīʻah non-compliance or recommend modification to the action in order to mitigate the risk.
+42 See paragraph 116.
+
+20
+authority should identify the following additional elements of resolution plans that deals with takāful
+
+specificities:
+
+
+•   regulatory thresholds and legal conditions that provide grounds for the initiation of official actions, specifically the PONV (including particular triggers for entry into a resolution that are relevant to takāful);43
+•   markets and other firms with similar business lines, including TOs, and comparative estimates of losses to be borne by creditors and any premium associated with alternative resolution strategies;
+•   the sources available for Sharīʻah-compliant resolution funding;44
+
+•   the disbursement process by a Sharīʻah-compliant PPS covering the TU concerned and other financial safety nets applicable;
+•   the internal processes and systems necessary to support the continued operation of the
+
+TU’s critical functions, including the Sharīʻah-compliance function;
+
+•   proper communication strategies to all relevant stakeholders (which includes transparent communication with participants regarding the status of their coverage, claims, and fund balances throughout the resolution phase, while clearly outlining expected next steps such as contract transfers, claim prioritisation protocols, or any modifications to terms and conditions);
+•   processes to coordinate communication with  host resolution authorities and  relevant
+
+Sharīʻah authorities; and
+
+•   applicable Sharīʻah contracts that can be applied for the resolution actions forming part of duly approved resolution plans for the TUs in their various markets, for example, Sharīʻah- compliant financial contracts and conditions for portfolio transfers to another party.
+
+
+3.9.2   Key Elements of a Resolution Plan
+
+
+71.       The resolution plan for a TU should add to what is outlined for conventional insurance in FSB KA 11 and II-Annex-2 (section 9) takāful-specific elements and aspects highlighted below.
+
+•   The summary should  clearly articulate how  the  resolution plan  adheres to  Sharīʻah principles, considers the segregation of funds, and protects participant interests. It should include specific details about Sharīʻah-compliant resolution strategies and any potential
+obstacles to their execution. For TUs functioning across borders, the summary should
+
+
+
+
+43  For instance, persistent qarḍ over several periods with an increase in the outstanding debt may be a strong indicator of the inability or unwillingness of a TO to deliver financial services in line with the basic principles of takāful.
+44  Resolution funding is financing used to facilitate prompt resolution actions in order to achieve the orderly resolution of a TU that could be systemically significant or critical if it fails. Resolution funding can come from the internal resources of the failed insurer/TU, private or industry financed resolution funds, or temporary access to government       funds.       See       FSB       Practices       Paper,       Resolution       Funding       for       Insurers,
+https://www.fsb.org/uploads/P100122-1.pdf
+
+21
+outline the coordination mechanisms with relevant authorities and Sharīʻah authorities in other jurisdictions.
+ •    The resolution plan should clearly articulate the triggers for entry into resolution and explain whether the balance sheets and income statements of the SHF and PRF(s) are considered separately or in aggregate for the TU as a whole.
+•   The resolution strategy should explain how Sharīʻah-compliance is ensured, especially regarding the segregation of funds, valuation method of assets and liabilities of PRF(s), PIF and SHF, and ring-fencing of the PRF(s) and PIF. If the resolution is of a group that has takāful operations, the strategy should clearly explain how it considers specificities of the takāful entity and whether separate resolution strategies for conventional insurance and takāful are in place.
+•   The resolution plan  should provide operational details  of  how  the  strategy shall  be implemented. The role of the Sharīʻah authorities such as a National or Central Sharīʻah Board (if there is one), and the Sharīʻah governance function of the TO should be clearly outlined. Additionally, due to the distinct right of the participants, if the Islamic contract law requires a participant's consent for planned changes, the resolution plan should specify how it might be achieved.
+•   The resolution planning process should be governed by a robust structure that ensures the involvement of individuals with technical expertise in takāful operations and Sharīʻah compliance. This is crucial to ensure that the resolution plan is not only technically sound but also adheres to the principles of Sharīʻah. The governance framework should also include effective dispute-resolution mechanisms. These mechanisms are essential to address any disagreements or conflicts that may arise during the planning  process, including those related to Sharīʻah compliance.
+•   The resolution plan should explicitly outline how the resolution authority will exercise its powers  given  under  TCP  12.8.4.    For  example,  this  includes  the  treatment of  any outstanding qard, including defining the conditions for recognition, repayment hierarchy, and distribution of PRF net assets in a manner that is transparent, equitable, and compliant with Sharīʻah.
+
+
+3.10   Participants Protection Scheme (PPS)
+
+
+72.       A PPS is any scheme or fund that protects policyholders or participants from specified losses that they might otherwise incur because of the failure of a TU. This role is essential in enhancing confidence in the financial industry and, therefore, contributes to the stability of the financial system.
+
+73.       A PPS for takāful participants should observe Sharīʻah-compliance in all its activities and processes, which implies that the participants are the ultimate risk bearers in takāful. However, since
+confidence and stability are essential public goods, a PPS can decide to compensate participants’
+
+
+
+
+
+22
+unsettled claims voluntarily, i.e. without a legal or contractual obligation.45    It can also exercise its discretionary power to take into account unique circumstances so that, in the end, all participants will receive a fair but not necessarily the same level of compensation.
+
+74.       As in conventional insurance, protection from losses requires funding, and one possibility is the collection of contributions from all TUs operating in the jurisdiction’s market. Since these contributions are collected from private businesses, the resolution funding from a PPS is considered financing from the private sector, although the PPS itself may be an institution of the public sector.
+
+75.       If a single PPS institution has a mandate to manage funds for both the conventional and Islamic segments, the funds should not be commingled to ensure Sharīʻah-compliance. Operational details between conventional and Islamic funds may differ to accommodate Sharīʻah specificities (for example, prepositioning of contracts, liquidity management, financing the PPS etc.).
+
+76.       Depending on a jurisdiction’s framework, a PPS could fulfil various functions in different stages of resolution. In the event of a TU resolution, a PPS could settle uncovered claims of participants of the resolved TU, but also, for example, facilitate the continuation of takāful contracts in run-off scenarios by providing a cash injection, establishing a bridge institution, or playing the role of a temporary transferee by itself. In other cases, the PPS may only be allowed to fund the transfer to the bridge institution but must not be involved in the management. Whatever role it plays, the PPS is expected to observe Sharīʻah-compliance in all its activities and functions when it operates for the takāful segment.
+
+3.11   Sharīʻah Governance and Resolution Planning
+
+
+77.       RSAs or the designated resolution authority should take into account the express or implied contractual rights of takāful participants to Sharīʻah compliance in their resolution dealings. RSAs or resolution authorities should have an adequate understanding of takāful and the relevant Islamic finance principles.
+
+78.       The RSA or designated resolution authority may have its own Sharīʻah governance function. Where this is not the case, to address any matters relating to Sharīʻah compliance, they should have access to advice from appropriately qualified Sharīʻah scholars, who are independent of the TO under resolution.
+
+79.       Appropriate Sharīʻah governance arrangements should be established for PPS to ensure that
+
+any resolution actions taken under such schemes are consistent with Sharīʻah principles.
+
+
+
+
+
+
+45 The voluntary nature of this compensation stems from the fundamental principle that the PRF is only liable to pay for unsettled claims up to the amount available in the fund. Once this fund is exhausted, no further claims can be made against it, SHF or in this case PPS. Therefore, any additional compensation provided by the PPS goes beyond the contractual obligations of the takāful arrangement and is considered a voluntary act to maintain confidence in the takāful system.
+
+23
+APPENDIX 1: Specificities of Takāful
+
+Concept of Takāful
+
+
+Takāful can be defined as a mutual guarantee, whereby a group of takāful participants agree among themselves to support one another jointly for the losses arising from specified risks, from a fund to which all commit to donate for the purpose. It is the Islamic counterpart to conventional
+insurance existing in both Family (or "Life") and General forms.
+
+
+Takāful is based on two fundamental principles:
+
+•  Ta'awun (mutual assistance): Under this principle, participants agree to compensate each other mutually for losses arising from specified risks.
+•  Tabarru' (donation): Under this  principle, participants commit to  donating specified amounts to a common pool, which is used to fulfil the mutual assistance agreement by
+compensating members for covered losses.
+
+
+In takāful, policyholders are referred to as "participants" because they play a dual role. They are both  individually  the  insured  parties  (contributing  to  the  risk  pool  and  being  entitled  to
+compensation from it) and collectively the insurer (as the risk bearer).
+
+
+Operational Structure
+
+
+Typically, a Takāful undertaking (TU) operates on a two-tier structure:
+
+•  Takāful Operator (TO): This is the entity responsible for managing the takāful business.
+
+The TO is often structured as a commercial company owned by shareholders. Its primary role is to manage the takāful scheme on behalf of the participants, including underwriting, claims management, and investment of funds.
+•  Participants' Collective: This comprises all the participants who have joined the takāful
+
+scheme.
+
+
+This two-tier structure creates a unique hybrid model that combines elements of both mutual and commercial forms of insurance. The TO provides professional management and initial capital,
+while the participants are the collective beneficiaries of the risk pool.
+
+
+Fund Segregation
+
+
+Fund segregation arises from the need to reflect the distinctive rights and obligations of the TO
+
+as a manager, and participants as the beneficiaries of the risk pool.
+
+
+Fund segregation typically involves the separation of three main funds:
+•  Shareholders'  Fund  (SHF):  holds  the  shareholder’s  equity  and  covers  operational expenses.
+
+
+
+
+
+24
+•  Participants' Risk Fund (PRF): receives participants’ contributions and is used to pay
+
+claims and related expenses. Owned collectively by participants and managed by the TO.
+
+•  Participants' Investment Fund (PIF): primarily used in Family takāful, holds the savings or investment portion of participants' contributions. Managed by the TO, often on a profit-
+sharing basis, with returns shared between participants and the TO.
+
+
+Surplus
+
+
+The surplus in the PRF is equivalent to the underwriting profit in conventional insurance. It belongs to the participants collectively unlike conventional insurance where the underwriting profit belongs to the insurer. This distinction reflects the fundamental principle that participants are the
+beneficiaries of the PRF and thus share both the risks and any resulting surplus.
+
+
+Qarḍ (Interest-free loan)
+
+
+Depending on the regulatory requirement, the TO may provide a qarḍ (interest-free loan) to the
+
+PRF when it faces a deficit. The qarḍ is to be repaid from future surpluses in the PRF.
+
+
+Sharīʻah Governance
+
+
+The Sharīʻah governance structure adds a layer of oversight beyond conventional corporate governance to ensure that all aspects of takāful operations comply with Sharīʻah principles. Regular reviews and audits are typically conducted to verify ongoing compliance, with specific
+implementation varying based on regulatory frameworks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+25
+DEFINITIONS
+
+
+Bankruptcy                    A legal declaration of one’s inability to pay debts owed.
+
+
+
+
+
+Insolvency                     A debtor’s inability to pay his or her creditors. The term also refers to an excess of liabilities over assets.
+
+
+
+Participants’ Risk
+Fund (PRF)
+A fund to which a portion of contributions paid by takāful participants is allocated for the purpose of meeting claims by takāful participants on the basis of mutual assistance or protection.
+
+
+Qarḍ                                A loan intended to allow the borrower to use the funds for a period with the understanding that this would be repaid at the end of the period, where no increase in cash or benefit is permitted.
+
+
+Recovery Plan               A plan containing a series of clear and predefined options that will be executed by a financial institution in the face of financial stress. The plan should be integrated into the financial institution’s existing governance framework and processes. It should include regular monitoring of early warning signs and predefined triggers to identify necessary actions and include regular reviews and updates.
+
+Retakāful                        An arrangement whereby a takāful undertaking (the cedant) cedes a portion of its risks on the basis of a treaty or facultative retakāful as a representative of participants under a takāful contract, whereby it would contribute a portion of the contributions received, as tabarru‘ to a common fund to cover against specified loss or damage.
+
+Run-off                           A process by which a TU ceases to write new business and only administers its existing contractual obligations. A “solvent run-off” is the process initiated for a TU that is still able to pay debts to its creditors when the debts fall due. An “insolvent run-off” is the process initiated for a TU that is no longer able to
+pay debts to its creditors when the debts fall due. Runoff may also apply at the level of a single takāful fund.
+
+Shareholders’ fund
+
+(SHF)
+A fund that represents the assets and liabilities of a TU or Retakāful
+Undertaking that are attributable to the shareholders.
+
+
+
+Ṣukūk                             Certificates that represent a proportional undivided ownership right in tangible assets, or a pool of tangible assets and other types of assets that are
+Sharīʻah-compliant.
+
+
+Takāful                           A mutual guarantee, whereby a group of takāful participants agree among themselves to support one another jointly for the losses arising from specified risks, from a fund to which all commit to donate for the purpose.
+
+
+
+
+
+
+26
+Takāful operator
+
+(TO)
+Any establishment or entity that manages a takāful business; usually, though not necessarily, a part of the legal entity in which the takāful participants’ interests are held.
+
+
+Takāful undertaking
+
+(TU)
+An undertaking engaged in takāful business.
+
+
+
+Wakālah                         An agency contract where the customer (principal) appoints the institution offering Islamic financial services as agent (wakīl) to carry out the business on its behalf and where a fee (or no fee) is charged to the principal based on the contract agreement.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+27
+
+
+GAP ANALYSIS MATRIX: RECOVERY AND RESOLUTION FOR TAKĀFUL UNDERTAKINGS
+
+
+Issues                 Conventional Standards and Regulations
+IAIS                              FSB
+
+IFSB Standards                                             Gaps                                                     ED-GN-10
+Sharīʻah governance related to recovery planning
+Additional Consideration for Segregated Fund
+
+Trigger framework for
+
+N/A                               N/A                              -
+
+
+N/A                               N/A                         TCP 16
+
+
+Application Paper on
+•    Role of Sharīʻah governance function in recovery planning
+
+
+•    Fund level recovery planning
+•    Scenario analysis for each fund
+Section 2.1 addresses the issues.
+Section
+2.2addresses the issues
+Section 2.3.2
+recovery plan
+Recovery Planning                   N/A                        TCP 12            •    Examples of takāful-specific triggers
+addresses the
+issues
+
+Recovery options            Application Paper on
+Recovery Planning
+
+TCP 12
+TN-4
+TN-5
+•    Recovery options categories considering segregated funds
+
+•    Recovery options specific to PRF
+
+Section 2.3.3 addresses the issues.
+Communication
+Strategy
+Application Paper on
+Recovery Planning                   N/A                         TCP 12           •    Communication Strategy                                                     Section 2.3.4
+•    Additional information and disclosure to participants
+Participant’s interest
+consideration
+
+Recovery Matters for
+Application Paper on
+Recovery Planning                   N/A
+TCP 6
+TCP 12
+TCP 20
+as owner of the funds
+•    Distinct rights of participants and implications on
+PRF
+Section 2.3.5
+addresses the issues.
+Subsidiaries and
+Windows
+N/A                               N/A                         TCP 26           •    Matters Specific to Subsidiaries and Windows                     Section 2.4
+
+•    Soundness of the TO’s Sharīʻah-compliance
+
+Supervisory
+Consideration
+
+Application Paper on
+Recovery Planning                     N/A                              -
+assertion related to the recovery planning
+
+•    Adequate supervisory capacity to evaluate takāful- specificities in recovery planning
+Section 2.5 addresses the issues
+
+
+Scope of Resolution
+
+
+
+Resolution Authority
+
+Application Paper on Resolution Powers and Planning
+Key Attributes Assessment Methodology for the Insurance Sector Key Attributes Assessment Methodology for the Insurance Sector
+
+
+TN-4              •    Do not address the specific nature of TUs                         Subsection 3.2
+
+
+
+•    Requirement for resolution authorities to adequately
+consider the specific characteristics of takāful.                  Subsection 3.3
+
+
+Issues                 Conventional Standards and Regulations
+IAIS                              FSB
+Application
+
+IFSB Standards                                             Gaps                                                     ED-GN-10
+
+Subsection 3.4
+
+Resolution powers
+Paper on
+Resolution Powers and Planning
+Key Attributes
+Assessment Methodology for the Insurance Sector
+
+TCP 12            •    Restrictions on the use of the surplus.
+•    Sharīʻah-compliance of the bridge institution
+•    Sharīʻah-compliant bail-in
+addresses the issues
+
+
+Entry into resolution and resolution triggers
+Application Paper on Resolution Powers and Planning
+
+Application
+Paper on
+
+Key Attributes Assessment Methodology for the Insurance Sector
+
+Key Attributes
+Assessment
+
+
+TCP 12
+
+•    Consideration of segregated fund
+•    Consideration for potential legal challenges, particularly those related to Sharīʻah-compliance
+and the rights of participants
+
+Subsection 3.4.1 addresses the issues
+Safeguards
+
+
+
+
+Funding resolution
+Resolution Powers and Planning
+Methodology
+for the
+Insurance
+Sector
+Key Attributes Assessment Methodology for the
+Key Attributes
+TCP 12            •    Ring fencing different funds.                                               Subsection 3.5
+
+
+
+
+•    Sharīʻah compliance with private funding for
+resolution                                                                            Subsection 3.6
+
+
+•    Cooperation and coordination with Central Sharīʻah
+
+Cross-border
+Cooperation
+
+
+
+
+Resolvability assessments
+
+
+
+
+
+Resolution plans
+
+
+
+
+
+
+
+
+
+
+
+
+Application Paper on Resolution Powers and Planning
+Assessment
+Methodology for the Insurance Sector
+Key Attributes Assessment Methodology for the Insurance Sector
+Key Attributes Assessment Methodology for the Insurance Sector
+
+
+
+
+
+
+
+
+TN-4
+
+
+
+
+
+TCP 12
+Boards and Sharīʻah governance function.
+•    Coordination between resolution authorities/RSAs with Sharīʻah Boards/Central Sharīʻah Boards (domestically)
+
+•    Consideration of takāful Sharīʻah-compliant contracts and process
+
+•    Pre-positioning measures to ensure Sharīʻah
+compliance of takāful resolution
+
+•    Inclusion of specific information relevant to takāful
+•    Inclusion of the segregation of funds as part of the resolution strategy.
+•    Involvement of Central Sharīʻah Board and Sharīʻah
+governance function of TUs in operationalisation of the resolution strategy
+Subsection 3.7 addresses the issue.
+
+
+
+Subsection 3.8 addresses the issues
+
+
+
+Subsection 3.9 addresses the issues
+
+
+29
+
+
+Issues                 Conventional Standards and Regulations
+IAIS                              FSB
+
+IFSB Standards                                             Gaps                                                     ED-GN-10
+
+•    Consideration to different Sharīʻah interpretations and practices related to resolution approach that may exist and can affect the resolution initiative
+
+
+Role and functions of participants protection schemes (PPS)
+[Draft] Issues Paper on roles and functioning of Policyholder Protection
+Schemes (PPSs)
+Key Attributes Assessment Methodology for the Insurance Sector
+
+
+-                 •    Functions of PPS and how they are implemented within the takāful context
+
+
+•    Availability of takāful experts and Sharīʻah scholars
+
+
+Section 3.10 addresses the issue.
+
+
+
+
+
+Sharīʻah Governance                          -                                    -                       TCP 12
+•    Responsibility of resolution authority towards contractual rights of takāful participants to Sharīʻah compliance
+
+•    Adequate understanding of takāful and the relevant
+Islamic finance principles by resolution authority.
+
+
+
+Subsection 3.11 addresses the issues
+
+•    Sharīʻah Governance Framework in resolution planning.
+
+•    Sharīʻah governance arrangements for PPS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+30
+COUNCIL
+
+Chairman
+
+H.E. Abdellatif Jouahri, Bank Al-Maghrib
+
+Deputy Chairman
+
+H.E. Dr. Perry Warjiyo, Bank Indonesia
+
+Members*
+
+
+
+H.E. Dr. Muhammad Sulaiman                      Islamic Development Bank
+
+
+
+H. E. Dr. Ahsan H. Mansur                            Bangladesh Bank
+
+
+
+H.E. Khalid Ebrahim Humaidan                     Central Bank of Bahrain
+
+
+
+H.E. Rashidah Sabtu                                     Brunei Darussalam Central Bank
+
+
+
+H.E. M. Ahmed Osman Ali                             Banque Centrale de Djibouti
+
+
+
+H.E. Hassan Abdalla                                      Central Bank of Egypt
+
+
+
+H.E. Dr. Mohammad-Reza Farzin                 Central Bank of Islamic Republic of Iran
+
+
+
+H.E. Dr. Ali Mohsen Ismail                             Central Bank of Iraq
+
+
+
+H.E. Dr. Adel Alsharkas                                 Central Bank of Jordan
+
+
+
+H.E. Basel Ahmad Al-Haroon                        Central Bank of Kuwait
+
+
+
+H.E. Naji Mohammed Issa Belqasim             Central Bank of Libya
+
+
+
+H.E. Datuk Shaik Abdul Rasheed Ghaffour   Bank Negara Malaysia
+
+
+
+H.E. Sir Mohamed Lemine Dhehby               Central Bank of Mauritania
+
+
+
+H.E. Dr. Rama Krishna Sithanen G.C.S.K     Bank of Mauritius
+
+H.E. Dr. Olayemi Michael Cardoso                Central Bank of Nigeria
+
+
+
+H.E. Ahmed Al Musalmi                                 Central Bank of Oman
+
+
+
+H.E. JAMEEL AHMAD                                   State Bank of Pakistan
+
+
+H.E.  Sheikh  Bandar  Bin  Mohammed Bin Qatar Central Bank
+Saoud Al-Thani
+
+
+H.E. Ayman Alsayari                                      Saudi Central Bank
+
+
+
+H.E. Buraie Siddig Ali Ahmed                        Central Bank of Sudan
+
+
+
+H.E. Prof. Dr. Şahap Kavcioğlu                     Banking Regulation and Supervision Agency, Türkiye
+
+
+H.E. Khaled Mohamed Balama Al Tameemi Central Bank of United Arab Emirates
+
+* In alphabetical order of the country the member’s organisation represents, except international
+organisations, which are listed first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+32
+TECHNICAL COMMITTEE Chairman
+H.E. Dr. Fahad Ibrahim AlShathri – Saudi Central Bank (until April 2024) Mr. Saud Al Busaidi – Central Bank of Oman (since August 2024) Deputy Chairman
+Mr. Saud Al Busaidi – Central Bank of Oman (until April 2024)
+
+Mr. Mohamed Abou Moussa, Central Bank of Egypt (since August 2024)
+
+Members*
+
+
+
+Mr. Syed Faiq Najeeb                                    Islamic Development Bank
+
+
+
+Mr. Shahriar Siddiqui                                     Bangladesh Bank
+
+
+
+Mrs. Shireen Abdulkarim Al Sayed                Central Bank of Bahrain
+
+
+Mr. Haji Muhammad Shukri bin Haji Ahmad
+(until April 2024)                                             Brunei Darussalam Central Bank
+
+Dr. Mariawati Omar
+(since July 2024)                                            Brunei Darussalam Central Bank
+
+Dr. Jardine Husman
+(until April 2024)                                             Bank Indonesia
+
+Dr. Rifki Ismal
+(since July 2024)
+
+Bank Indonesia
+
+
+Mrs. Nyimas Rohmah                                    Otoritas Jasa Keuangan, Indonesia
+
+
+Dr. Alireza Naserpour
+(until April 2024)                                             Securities and Exchange Organization of Iran
+
+Mr. Ahmed Yousif Kadhim Al-Helli
+(until April 2024)                                             Central Bank of Iraq
+
+Mr. Mustafa Abd Nazzal
+(since July 2024)                                           Central Bank of Iraq
+
+Mr. Mahmoud Ibrahim Moh'd Alsbeihat
+(until April 2024)                                             Central Bank of Jordan
+
+Mr. Anuar Kaliyev
+(until April 2024)                                             Astana Financial Services Authority
+
+
+
+33
+
+Dr. Mohammad Bader Al Khamees               Central Bank of Kuwait
+
+
+
+Dr. Ali Abusalah Elmabrok Amreeghah         Central Bank of Libya
+
+
+
+Mr. Nik Faris Nik Sallahuddin                        Bank Negara Malaysia
+
+
+
+Mrs. Sharifatul Hanizah Bin Said Ali              Securities Commission Malaysia
+
+
+Dr. Mohammed Zougari Laghrari
+(since July 2024)                                            Bank Al-Maghrib
+
+Mr. Muhammad Hamisu Musa
+(until April 2024)                                             Central Bank of Nigeria
+
+Dr. Abdurrahman Abdullahi
+(since July 2024)                                            Central Bank of Nigeria
+
+Mr. Ahmad Usman Kollere
+(since July 2024)                                           National Insurance Commission (NAICOM), Nigeria
+
+Mr. Ghulam Muhammad Abbasi
+(until April 2024)                                             State Bank of Pakistan
+
+Ms. Nighat Tanveer
+(since July 2024)                                           State Bank of Pakistan
+
+
+Mr. Hisham Saleh Al-Mannai                         Qatar Central Bank
+
+
+Mr. Bader Abdulmohsen Alissa
+(until April 2024)                                             Capital Market Authority, Saudi Arabia
+
+Mr. Walid Alzahrani
+(since July 2024)                                           Saudi Central Bank
+
+Dr. Muhammed Habib DOLGUN
+(since July 2024)                                           Central Bank of the Republic of Türkiye
+
+
+Dr. İlker KOÇ's                                               Banking Regulation and Supervision Agency, Türkiye
+
+
+Mrs. Emine Nur Ozturk Alkan
+(until April 2024)
+Insurance and Private Pension Regulation and
+Supervision Agency of Türkiye
+
+Mr. Abdulaziz Saoud Al Mualla                      Central Bank of United Arab Emirates
+
+* In alphabetical order of the country the member’s organisation represents, except international organisations, which are listed first.
+
+
+
+
+
+
+
+34
+WORKING GROUP FOR THE GUIDANCE NOTE ON RECOVERY AND RESOLUTION FOR
+
+TAKĀFUL UNDERTAKINGS Chairman
+Dr. Waziri Mohammed Galadima – Nigeria Deposit Insurance Corporation (Until April 2024) Mr. Ahmad Usman Kollere- National Insurance Commission, Nigeria (Since September 2024) Deputy Chairman
+Ms. Emine Nur Öztürk Alkan- Insurance and Private Pension Regulation and Supervision Agency of
+
+Turkey (IPRSA), Turkey (From October 2023 to April 2024)
+
+
+
+Members*
+
+
+Mr. Yousif Ahmed Mohamed Al
+Hamar                                                    Central Bank of Bahrain
+
+Mr. Alis Subiyantoro                              Otoritas Jasa Keuangan, Indonesia
+
+
+Mr. Haitham Riyadh Jasim                     Central Bank of Iraq
+
+
+Mr. Mohammed Abdulla Alemadi          Qatar Central Bank
+
+
+Mr. Sabiu Bello Abubakar                      National Insurance Commission, Nigeria
+
+
+Mr. Boboev Boburkhon                          National Bank of Tajikistan
+
+
+Dr. Ahmad Al-Razni Al-Shammari         Central Bank of United Arab Emirates
+
+* In alphabetical order of the country the member’s organisation represents, except international organisations, which are listed first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+35
+THE SHARĪʻAH BOARD
+
+
+Chairman
+
+
+Dr. Mohamed Ali Ibrahim Elgari
+
+
+Deputy Chairman
+
+
+Dr. Nizam Muhammad Saleh Yaquby
+
+
+Members
+
+
+Dr. Aznan Hasan                                                Member
+
+
+Mufti Muhammad Hassan Kalim                         Member
+
+
+Dr. Sa’id Adekunle Mikail                                    Member
+
+
+
+
+
+
+
+SECRETARIAT, ISLAMIC FINANCIAL SERVICES BOARD
+
+
+
+Dr. Ghiath Shabsigh                                         Secretary-General
+
+Dr. Bello Lawal Danbatta (until January
+2024)                                                                Secretary-General
+
+Mrs. Aminath Amany Ahmed                            Acting Assistant Secretary-General, Standard
+Development and Research
+
+Mr. Erfanul Alam Siddiquee                              Member of the Secretariat, Standard Development and Research
+
+Mr. Mohamed Omer Mohamed Elamin
+Abbasher
+Member of the Secretariat, Standard Development and Research
+
+Professor Dr. Volker Nienhaus                         Consultant
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+36

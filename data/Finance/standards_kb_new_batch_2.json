@@ -1,0 +1,458 @@
+{
+ "_meta": {
+  "file": "standards_kb_new_batch_2.json",
+  "type": "standards_kb_addition",
+  "built_by": "RV (Research seat)",
+  "generated": "2026-07-25",
+  "batch": "2 of 4 — DEEP NOTE COVERAGE job",
+  "count": 15,
+  "method": "Every note written ONLY from the standard's own text file on disk (paths under bv-app/data/Finance/Standards/). NEVER INVENT held: titles, dates, clause numbers and rules are quoted or closely paraphrased from the source; empty string where the document does not state a fact. Clause ids are the document's own numbering.",
+  "banner": "ILLUSTRATIVE - private preview. Not scholar-certified."
+ },
+ "notes": [
+ {
+  "id": "KB-AAOIFI-SS31",
+  "standard_id": "SS 31",
+  "standard_code": "SS 31",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (31): Controls on Gharar in Financial Transactions",
+  "display_card": {
+   "one_liner": "Defines Gharar (uncertainty) in transactions, sorts it into excessive, medium and minor degrees, and sets the four conditions under which it makes a contract invalid.",
+   "what_it_is": "It aims at defining Gharar, indicating its types and impacts, and emphasizing controls that need to be applied when Gharar is to the extent which nullifies transactions. It covers the impact of excessive, medium and minor Gharar on transactions performed by Islamic financial institutions, in exchange-based contracts including partnerships, in donation contracts, and where Gharar is involved in a contract's condition.",
+   "why_it_matters_to_timeline": "The document states it was issued on 26 Sha'ban 1428 A.H., corresponding to 9 September 2007 A.D., and was adopted by the Shari'ah Board in its meeting No. (19) held on 26-30 Sha'ban 1428 A.H., corresponding to 8-12 September 2007 A.D., in Makkah Al-Mukarramah, Kingdom of Saudi Arabia.",
+   "source_label": "SS-31.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "26 Sha'ban 1428 A.H., corresponding to 9 September 2007 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (5) on Guarantees", "Shari'ah Standard No. (23) on Agency and the Act of an Uncommissioned Agent (Fodooli)"],
+  "key_rules_for_assurance": [
+   {"rule": "It is impermissible in Shari'ah to conclude a contract or stipulate a condition that involves a degree of Gharar which could jeopardize the fulfillment of the contract's stipulations.", "clause": "3", "tag": "verified"},
+   {"rule": "Gharar violates the transaction only when four conditions are satisfied: it is in an exchange-based contract, it is excessive in degree, it relates to the primary subject matter of the contract, and it is not justified by a Shari'ah-recognizable necessity.", "clause": "4", "tag": "verified"},
+   {"rule": "Gharar is excessive when it becomes a dominating and distinctive aspect of the contract and is capable of leading to dispute; examples include selling of fruits before production and signing a lease contract for an unspecified period, which set the contract null and void.", "clause": "4/2/1", "tag": "verified"},
+   {"rule": "Minor Gharar is the degree of Gharar that a contract could hardly avoid and is not sufficient to generate dispute; such Gharar does not affect the contract.", "clause": "4/2/2", "tag": "verified"},
+   {"rule": "Combining two sales in one sale (Bay'atayn Fi Bay'ah) nullifies the contract, for example selling a good for one thousand pounds in cash or two thousands on deferred payment, without concluding any of the two deals.", "clause": "5/1/1", "tag": "verified"},
+   {"rule": "Gharar which relates to failure in delivery nullifies the contract, such as selling of fish in the water, unless it is found in a confined place and does not require fishing.", "clause": "5/4", "tag": "verified"},
+   {"rule": "Gharar relating to sale of a non-owned commodity nullifies the sale contract; Salam and Istisna'a are exceptional cases here (subject to their respective conditions).", "clause": "5/5", "tag": "verified"},
+   {"rule": "A person shall not sell a commodity that he does not guarantee through actual or constructive holding; selling a commodity that one does not own nullifies the sale contract.", "clause": "5/6", "tag": "verified"},
+   {"rule": "Rahn (Mortgage) can permissibly involve a degree of Gharar that is not allowed in sale; for instance, a lost car or a farm that has not yet reached the stage of giving yield can be the object of a mortgage contract.", "clause": "6/1", "tag": "verified"},
+   {"rule": "A contract becomes null and void if it contains a condition that causes Gharar in its form, as when it contains an option without time limit.", "clause": "7", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS33",
+  "standard_id": "SS 33",
+  "standard_code": "SS 33",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (33): Waqf",
+  "display_card": {
+   "one_liner": "Sets the basic Shari'ah rules for Waqf — a charitable endowment where a property is locked against transfer of ownership and its income is donated to beneficiaries.",
+   "what_it_is": "It presents the definition of Waqf and discusses its types, Shari'ah rulings, basic elements, and the conditions pertaining to the Waqf and the Waqif (donor). It also illustrates methods for Waqf utilization, investment, supervision and management, and the role Islamic financial institutions could play in Waqf development. It does not cover other philanthropic institutions such as Irsad (allocation of public property for public utilities) and financial trusts.",
+   "why_it_matters_to_timeline": "The document states it was issued on 28 Jumada II, 1429 A.H., corresponding to 2 July 2008 A.D., and was adopted by the Shari'ah Board in its meeting No. (21) held on 24-28 Jumada II, 1429 A.H., corresponding to 28 June - 2 July 2008 A.D., in Al-Madinah Al-Munawwarah, Kingdom of Saudi Arabia.",
+   "source_label": "SS-33.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "28 Jumada II, 1429 A.H., corresponding to 2 July 2008 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (9) on Ijarah and Ijarah Muntahia Bittamleek", "Shari'ah Standard No. (11) on Istisna'a and Parallel Istisna'a", "Shari'ah Standard No. (12) on Sharikah (Musharakah) and Modern Corporations"],
+  "key_rules_for_assurance": [
+   {"rule": "Waqf is permissible in Shari'ah and is a binding commitment; declaring a property as Waqf would spontaneously deprive its donating owner the right of ownership.", "clause": "2/2", "tag": "verified"},
+   {"rule": "The Waqf property shall be a Shari'ah-accepted property, it shall be known, and the Waqif shall be the sole owner of the property in which nobody else should have a right of disposition at the time of establishing the Waqf.", "clause": "3/4/1", "tag": "verified"},
+   {"rule": "Waqf is permissible in money; the income generated from utilization of the money is to be spent, while retaining the principal amount.", "clause": "3/4/3/2", "tag": "verified"},
+   {"rule": "The Waqif has the right to make his Waqf subject to all conditions which do not contradict with Shari'ah, and his conditions shall be as enforceable as Shari'ah conditions.", "clause": "4/1/1", "tag": "verified"},
+   {"rule": "The Waqf superintendent shall not lease the Waqf to himself or to one of his dependant sons - even if such leasing is at more than the normal rent - except through the judiciary.", "clause": "5/3/2", "tag": "verified"},
+   {"rule": "The Waqf superintendent shall not mortgage the Waqf assets for a debt to be obtained for the Waqf or the beneficiaries.", "clause": "5/3/4", "tag": "verified"},
+   {"rule": "Borrowing for the Waqf is not allowed except in fulfillment of a condition stipulated by the Waqif, or on permission of the legal authorities, and in case of necessity; borrowing should not be for the sake of spending on the beneficiaries of the Waqf.", "clause": "5/3/6", "tag": "verified"},
+   {"rule": "Waqf assets or usufructs should not be leased at less than the rent of similar property.", "clause": "6/2", "tag": "verified"},
+   {"rule": "Spending on maintenance, reparation and renovation of the Waqf assets should precede distribution of the Waqf income among beneficiaries.", "clause": "8/1/1", "tag": "verified"},
+   {"rule": "Istibdal (exchange of Waqf assets) is subject to conditions including that there should be no excessive injustice in the sale price, it should meet the satisfaction and interest of the Waqf, and it should be permitted by the judiciary.", "clause": "9/3", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS35",
+  "standard_id": "SS 35",
+  "standard_code": "SS 35",
+  "regulator": "AAOIFI",
+  "title": "Shari'ah Standard No. (35): Zakah",
+  "display_card": {
+   "one_liner": "Tells Islamic financial institutions how to work out their Zakah base — which assets are zakatable, what may be deducted, the payable rates, and who may receive the funds.",
+   "what_it_is": "It aims to identify the Zakah base for Islamic financial institutions (including Islamic insurance companies) and their subsidiary and mother companies, by identifying which items of the financial statements should or should not be included, and which liabilities and allocations should be deducted from zakatable assets. It also illustrates the payable Zakah rates and the specific heads of Zakah disbursement, including the eight categories of recipients.",
+   "why_it_matters_to_timeline": "The document states it was issued on 30 Dhul-Qa'dah 1429 A.H., corresponding to 28 November 2008 A.D.",
+   "source_label": "SS-35.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "30 Dhul-Qa'dah 1429 A.H., corresponding to 28 November 2008 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (22) on Concession Contracts", "Shari'ah Standard No. (26) on Islamic Insurance"],
+  "key_rules_for_assurance": [
+   {"rule": "Zakah base = Zakatable assets minus liabilities payable during the financial year, installments of liabilities becoming due in the coming period, rights of the holders of non-restricted investment accounts, minority rights, sovereign rights, waqf rights, charitable rights, and rights of non-profit-earning organizations that have no specific owner (the net assets method, on which this standard is based).", "clause": "2/1/1", "tag": "verified"},
+   {"rule": "The institution or the company is committed to pay Zakah in cases of enactment of an enforceable Zakah law, stipulation of commitment to pay Zakah in the articles of association, or issuance of a Zakah commitment resolution by the general assembly.", "clause": "2/2/1", "tag": "verified"},
+   {"rule": "The Nisab for gold regardless of its form is 85 grams of pure gold or its equivalent in currency, and the same Nisab is also applicable to articles of trade after valuation; for silver, the Nisab is 595 grams of pure silver.", "clause": "3/2/2", "tag": "verified"},
+   {"rule": "The rate of Zakah applicable to gold, silver, currencies and articles of trade is 2.5%, whereas the rate applicable to agricultural produce is 10% for non-irrigated lands, 5% for irrigated lands, and 7.5% for partially irrigated lands.", "clause": "3/3", "tag": "verified"},
+   {"rule": "Zakah is not obligatory on operational fixed assets such as the premises of the institution and its equipments, or on intangible assets such as patent rights, trademarks and computer software.", "clause": "4/1", "tag": "verified"},
+   {"rule": "When the Institution obtains interest in current accounts (though it is prohibited) it should pay Zakah from the principal amounts and donate the whole amount of the interest for charitable purposes.", "clause": "5/1/3/1", "tag": "verified"},
+   {"rule": "Articles of trade should be valued at selling market price in the place where they exist, and should not be valued at cost or market price whichever the less.", "clause": "5/2/2", "tag": "verified"},
+   {"rule": "If the debts owed by the Institution have arisen from obtaining current zakatable assets for the purpose of trade they should be deducted from the Zakah base; if they have arisen from obtaining non-zakatable fixed assets, they should not be deducted.", "clause": "6/2/1", "tag": "verified"},
+   {"rule": "Both types of reserves (statutory and voluntary) are not deductable from zakatable assets, because in Shari'ah they are not considered to constitute debt obligations owed by the company.", "clause": "8/2/1", "tag": "verified"},
+   {"rule": "The Zakah payer (institution) cannot discharge of his Zakah commitment by relieving his debtors from their debt obligations.", "clause": "10/1", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS39",
+  "standard_id": "SS 39",
+  "standard_code": "SS 39",
+  "regulator": "AAOIFI",
+  "title": "Mortgage and Its Contemporary Applications",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for using mortgages (pledged assets) to secure debts owed to or by Islamic financial institutions.",
+   "what_it_is": "The standard defines a mortgage as making a financial asset tied to a debt so that the asset or its value is used for repayment of the debt in case of default. It covers mortgages an institution requests to document debts owed to it, mortgages the institution gives to others for debts it owes, and mortgages the institution keeps as a notary or agent for other parties. It also covers mortgaging financial papers and Sukuk, current accounts, cash securities, investment units and accounts, future income, insurance of the mortgaged asset, and Zakah on it.",
+   "why_it_matters_to_timeline": "The document states it was issued on 17 Rabi' I, 1430 A.H., corresponding to 15 March 2009 A.D., and was adopted by the Shari'ah Board in its meeting No. (23) held in the Kingdom of Bahrain on 12-15 March 2009 A.D.",
+   "source_label": "SS-39.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "17 Rabi' I, 1430 A.H., corresponding to 15 March 2009 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (5) on Guarantees", "Shari'ah Standard No. (21) on Financial Paper: Shares and Bonds", "Shari'ah Standard No. (17) on Investment Sukuk", "Shari'ah Standard No. (14) on Documentary Credit", "Shari'ah Standard No. (35) on Zakah"],
+  "key_rules_for_assurance": [
+   {"rule": "The mortgage contract is binding for the mortgagor once it is concluded, and the mortgagor does not have the right to revoke it from his own side, whereas the mortgagee has the right to do so.", "clause": "3/1/1", "tag": "verified"},
+   {"rule": "The mortgagee may stipulate that the mortgagor appoint him or his representative as an agent to sell the mortgaged asset and repay the debt out of its value in case of default, without resorting to judiciary.", "clause": "3/1/4", "tag": "verified"},
+   {"rule": "The mortgaged asset should be a Shari'ah-permissible property, well specified (through pointing, naming or description) and possible to deliver.", "clause": "3/2/1", "tag": "verified"},
+   {"rule": "The mortgaged asset is a trust in the hands of the mortgagee, the notary or the agent, and is still owned by the mortgagor; if it perishes without transgression or negligence, no responsibility rests with the holder and the debt remains valid.", "clause": "3/2/4", "tag": "verified"},
+   {"rule": "The mortgagee has no right at all to enjoy free of charge benefit from the mortgaged asset, with or without the permission of the mortgagor.", "clause": "3/2/9", "tag": "verified"},
+   {"rule": "It is impermissible to stipulate mortgage as a condition in trust-based contracts such as agency, deposit, Musharakah, Mudarabah and leasing contracts, unless it is confined to indemnity in case of transgression, negligence or breach of the contract.", "clause": "3/3/2", "tag": "verified"},
+   {"rule": "The mortgagee does not have the right to stipulate a condition that he should own the asset in case of default, though he may purchase the mortgaged asset from the mortgagor at market value.", "clause": "3/4/2", "tag": "verified"},
+   {"rule": "It is impermissible to mortgage financial papers and Sukuk that should not be issued or transacted according to Shari'ah, such as interest-based bonds, preference shares and enjoyment shares.", "clause": "4/3", "tag": "verified"},
+   {"rule": "When a current account is mortgaged for the benefit of the same institution with which it is opened, the institution should not use the account unless the two parties agree to transfer it to an investment account subject to the rulings on Mudarabah instead of the rulings on loan.", "clause": "5", "tag": "verified"},
+   {"rule": "The owner of the mortgaged asset should pay Zakah if it is payable on the asset and its income; the fact that the owner cannot dispose of the mortgaged asset does not relieve him from payment of Zakah.", "clause": "9/1", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS40",
+  "standard_id": "SS 40",
+  "standard_code": "SS 40",
+  "regulator": "AAOIFI",
+  "title": "Distribution of Profit in Mudarabah-Based Investment Accounts",
+  "display_card": {
+   "one_liner": "Sets the rules for how profits from Mudarabah-based investment accounts are realized, who is entitled to them, and how they are split between an Islamic bank and its account holders.",
+   "what_it_is": "The standard covers investment accounts managed on the basis of Mudarabah and the principles and conditions of realization of and entitlement to profit. It explains how profits are distributed between the institution as Mudarib and the holders of investment accounts as Arbab al-Mal, including which expenses can be charged to the accounts and which allocations and reserves are deducted from profits. It expressly does not cover accounts managed on the basis of investment agency, which require a separate standard.",
+   "why_it_matters_to_timeline": "The document states it was issued on 26 Jumada II, 1430 A.H., corresponding to 19 June 2009 A.D., and was adopted by the Shari'ah Board in its meeting No. (24) held in Al-Madinah Al-Munawwarah on 18-19 June 2009 A.D.",
+   "source_label": "SS-40.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "26 Jumada II, 1430 A.H., corresponding to 19 June 2009 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (19) on Loan (Qard)", "Shari'ah Standard No. (1) on Trading in Currencies", "Shari'ah Standard No. (13) on Mudarabah"],
+  "key_rules_for_assurance": [
+   {"rule": "The institution should guarantee full repayment of the amounts of current accounts to their holders, whereas it should not pay any fixed or variable increment on such accounts, because such payment constitutes usurious interest; the institution is not committed to guarantee investment accounts.", "clause": "2/2/2", "tag": "verified"},
+   {"rule": "Realization of profit in investment accounts does not take place before protecting the capital; any amount of profit distributed before ensuring such protection is considered an advance payment rather than realized profit.", "clause": "3/1/1", "tag": "verified"},
+   {"rule": "Realization of profit requires liquidation of Mudarabah assets, either actual liquidation where all assets are converted into cash and all debts are collected, or constructive liquidation where non-cash assets are valued by experts along with valuation of debts and appropriate allocations for bad debts.", "clause": "3/1/2/1", "tag": "verified"},
+   {"rule": "When loss is incurred in one Mudarabah operation it can be covered from the profits of other operations, and if it exceeds the profits it should be covered from capital; the loss of a certain financial period should not be covered from the profits of another period, except covering losses from reserves.", "clause": "3/2/1", "tag": "verified"},
+   {"rule": "Distribution of profits should be in terms of ratios, and not at all by specifying a lump sum amount or a percentage of the capital for any party.", "clause": "4/1", "tag": "verified"},
+   {"rule": "When the two parties do not specify profit ratios at the time of signing the contract and there is no normal practice to resort to, the Mudarabah contract becomes null and void, the Mudarib is entitled to the wage normally paid for similar work, and the whole profit goes to Rab al-Mal.", "clause": "4/2", "tag": "verified"},
+   {"rule": "When one of the two parties stipulates a lump sum amount for himself the Mudarabah contract becomes null and void.", "clause": "4/4", "tag": "verified"},
+   {"rule": "It is impermissible to earmark the profit of a specific type or portion of the capital, or the profit of a certain financial period or a specific transaction, for one of the two parties.", "clause": "4/5", "tag": "verified"},
+   {"rule": "The scoring method for distribution of profit among participants of general investment accounts can be used, taking into account the amount contributed by each investor and the period of its stay in the investment (currency unit x time unit).", "clause": "5/1", "tag": "verified"},
+   {"rule": "It is permissible to pay advance amounts to the holders of the accounts before actual or constructive liquidation, with the institution committed after liquidation to make necessary additions or deductions so that each holder receives his exact share of the profit.", "clause": "5/3", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS46",
+  "standard_id": "SS 46",
+  "standard_code": "SS 46",
+  "regulator": "AAOIFI",
+  "title": "Al-Wakalah Bi Al-Istithmar (Investment Agency)",
+  "display_card": {
+   "one_liner": "Sets the rules for investment agency, where one party appoints another to invest and grow its wealth, with or without a fee.",
+   "what_it_is": "The standard covers investment agency in various fields, and the powers and responsibilities of the principal and the investment agent. It defines investment agency as appointing another person to invest and grow one's wealth, with or without a fee, and covers the agent's fee, liability, sub-agents, restrictions, and contemporary applications such as co-mingling agency funds with Mudarabah funds and working-capital financing. It does not cover agency in general or the acts of an uncommissioned agent (Fodooli), which are covered by Shari'ah Standard No. (23).",
+   "why_it_matters_to_timeline": "The document states it was issued on 26 Jumada II, 1432 A.H., corresponding to 29 May 2011 A.D.; it adds that on 17 June 2015 A.D. the Shari'ah Standards Review Committee reviewed it, approved necessary amendments, and the Standard was adopted in its current amended version.",
+   "source_label": "SS-46.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "26 Jumada II, 1432 A.H., corresponding to 29 May 2011 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (23) on Agency and the Acts of an Uncommissioned Agent (Fodooli)"],
+  "key_rules_for_assurance": [
+   {"rule": "Investment agency contracts, whether remunerated or unremunerated, are binding on institutions because they are invariably fixed term contracts in which both parties agree not to terminate within a specified period.", "clause": "4/1", "tag": "verified"},
+   {"rule": "If the agency is remunerated, the agent's fee should either be a fixed amount or a percentage of the amount invested; it may be linked to an established index/benchmark known to both parties, but it should be capped and floored.", "clause": "5/1", "tag": "verified"},
+   {"rule": "It is permissible to stipulate that the agent, in addition to his fee, is entitled to all or part of any amount over and above the expected profit as a performance incentive.", "clause": "5/4", "tag": "verified"},
+   {"rule": "The profit in its entirety is the right of the principal unless it is stipulated that the agent shall be entitled to all or part of any excess above the expected profit as a performance incentive in addition to its fixed fee.", "clause": "6/5", "tag": "verified"},
+   {"rule": "The agent acts in a fiduciary capacity in relation to the investment and therefore is not liable for any loss in cases other than willful misconduct, negligence, or breach of contract.", "clause": "7/1", "tag": "verified"},
+   {"rule": "The investment agent is not permitted to appoint a sub-agent for the prescribed investment activities except for activities outside its area of expertise, or what is normally outside the capacity of the agent or its employees, or where the principal grants permission to subcontract.", "clause": "9/1", "tag": "verified"},
+   {"rule": "If the agency is restricted to activities that yield a minimum specified profit margin and the agent invests in lower-yielding transactions, it is liable to compensate the principal for the difference between the profit earned and the average profit prevalent in the market.", "clause": "10/2", "tag": "verified"},
+   {"rule": "It is permissible to co-mingle funds on the basis of Investment Agency with funds from Mudarabah investment accounts; all the profits of the invested funds belong to the principals and the agent is entitled to his fee and any performance incentive stipulated.", "clause": "12/1/1", "tag": "verified"},
+   {"rule": "If the agency expires and the receivables are yet to be collected, the investment agent is required to collect the receivables; it is not permissible for the agent to use such funds received for his personal use or to re-invest them.", "clause": "12/4", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS49",
+  "standard_id": "SS 49",
+  "standard_code": "SS 49",
+  "regulator": "AAOIFI",
+  "title": "Unilateral and Bilateral Promise",
+  "display_card": {
+   "one_liner": "Explains when one-sided and two-sided promises to enter future contracts are allowed and when they become legally binding in Islamic finance.",
+   "what_it_is": "The standard covers promises (unilateral and bilateral) given by certain parties for the purpose of concluding a contract or effecting a disposal. It explains when such instruments are binding and when they are not, the jurisprudential rules that govern them, and the most important contemporary applications of each type in the activities of Islamic financial institutions, such as Murabahah, Ijarah Muntahia Bittamleek and diminishing Musharakah.",
+   "why_it_matters_to_timeline": "The document states it was issued on 21 Safar 1434 A.H., corresponding to 4 January 2013 A.D., and was adopted by the Shari'ah Board in its meeting No. (34) held in the Kingdom of Bahrain on 3-4 January 2013 A.D.",
+   "source_label": "SS-49.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "21 Safar 1434 A.H., corresponding to 4 January 2013 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (37) on Credit Agreement", "Shari'ah Standard No. (8) on Murabahah", "Shari'ah Standard (9) on Ijarah Muntahia Bittamleek", "Shari'ah Standard No. (12) on Sharikah (Musharakah) and Modern Corporations", "Shari'ah Standard No. (20) on Sale of Commodities in Organized Markets"],
+  "key_rules_for_assurance": [
+   {"rule": "Promising to perform an act that is impermissible by the Shari'ah is prohibited, and fulfilling such a promise is also prohibited, such as promises intended to be a ruse to circumvent the prohibition of interest-bearing (Riba) transactions.", "clause": "3/1", "tag": "verified"},
+   {"rule": "Any promise in a loan contract that procures benefit for the lender, over and above the repayment of the debt, is prohibited by the Shari'ah even if the promise is granted in a document separate from the loan contract.", "clause": "3/2", "tag": "verified"},
+   {"rule": "Any promise in a sale contract made by the buyer or the seller that results in a repurchase contract ('Inah) is prohibited by the Shari'ah, whether the promise is part of the sale contract or is given prior or subsequent to it.", "clause": "3/3", "tag": "verified"},
+   {"rule": "A promise is not legally binding except when there is a real need for it to be enforced, such as when the promisor causes the promisee to incur a liability as a result of the promise; the promisor is then required to indemnify the promisee for any actual loss suffered, not including opportunity cost.", "clause": "3/4", "tag": "verified"},
+   {"rule": "A legally binding promise is enforceable only against the promisor and is not enforceable against the promisee, who has the option either to demand performance from the promisor or to waive it.", "clause": "3/5", "tag": "verified"},
+   {"rule": "A bilateral promise to perform an act that is prohibited by the Shari'ah is itself prohibited, such as a bilateral promise to enter into a sale and repurchase ('Inah) contract and a bilateral promise to enter into a sale and a loan.", "clause": "4/1", "tag": "verified"},
+   {"rule": "Fulfilling a bilateral promise to perform a permitted act is a religious obligation but not legally binding, except where an actual commercial transaction is not possible without a binding bilateral promise owing to legal requirements or general commercial custom and the objective is not merely to provide financing, such as documentary credits and supply agreements.", "clause": "4/2", "tag": "verified"},
+   {"rule": "Binding bilateral promises are not future contracts; the promised contract is not effected automatically upon the promised date and must be entered into at the relevant time by exchanging notices of offer and acceptance.", "clause": "4/3", "tag": "verified"},
+   {"rule": "An agreement containing a general framework (a master agreement) is a bilateral promise that does not bind any of the parties to enter into those transactions; each party has an option.", "clause": "4/4", "tag": "verified"},
+   {"rule": "It is impermissible to enter into back-to-back bilateral promises for the purpose of circumventing the prohibition by Shari'ah of certain transactions, such as back-to-back derivatives.", "clause": "6", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS55",
+  "standard_id": "SS 55",
+  "standard_code": "SS 55",
+  "regulator": "AAOIFI",
+  "title": "Competitions and Prizes",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for competitions, prizes, prize draws, and promotional gifts offered or sponsored by Islamic financial institutions.",
+   "what_it_is": "The standard sets out the Shari'ah rulings relating to competitions, prizes, and promotional gifts, and the rulings pertaining to their application or sponsorship by institutions. It covers prize draws, prizes on current and investment accounts, bank cards, discounts, discount cards and coupons, and loyalty point programs. It does not cover incentives to improve performance of clients, employees and directors, job-related competitions, reverse auctions, or Ju'alah in activities other than competitions.",
+   "why_it_matters_to_timeline": "The document states it was issued on 30 Rajab 1437 A.H., corresponding to 7 May 2016 A.D., and was adopted by the Shari'ah Board in its meeting No. (43) held in the Kingdom of Bahrain on 10-12 March 2016 A.D.",
+   "source_label": "SS-55.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "30 Rajab 1437 A.H., corresponding to 7 May 2016 A.D.",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (19) on Loan (Qard)"],
+  "key_rules_for_assurance": [
+   {"rule": "Competitions are permissible if the competition is in a permissible activity such as scientific, cultural and sports competitions.", "clause": "2/3/1/1", "tag": "verified"},
+   {"rule": "In a reward-based competition, the reward must be offered by a third party or one of the competitors; if the reward is offered by more than one competitor, it is not permissible.", "clause": "2/3/2/2", "tag": "verified"},
+   {"rule": "The expenses for a competition organized by the Institution, including the reward, should be covered by the Institution out of its own funds (shareholders' funds), and not from the funds of the investment accounts.", "clause": "2/3/3/1", "tag": "verified"},
+   {"rule": "It is permissible to stipulate the purchase of certain goods or services to qualify for entering into a draw only if the price of those goods and services is not increased vis-a-vis the same goods or services not conferring such a right.", "clause": "3/3/3/1", "tag": "verified"},
+   {"rule": "It is impermissible to charge a fee for entering into the draw, either directly or indirectly, such as increasing phone call rates above the normal tariff.", "clause": "3/3/3/5", "tag": "verified"},
+   {"rule": "It is impermissible to assign prizes exclusively to holders of current accounts.", "clause": "3/5/1", "tag": "verified"},
+   {"rule": "Prizes to holders of investment accounts are not to be paid out of the funds of investment accounts or the profits of investment account holders or charity accounts; they may be paid out of the funds of shareholders.", "clause": "3/5/2/1", "tag": "verified"},
+   {"rule": "The payment of prizes on investment accounts must not lead to guaranteeing the invested capital or a part thereof, such as announcing a prize valued at SR 50,000 for every investment of SR 1 million.", "clause": "3/5/2/2", "tag": "verified"},
+   {"rule": "Prizes on bank cards are permissible provided the cardholders do not incur any charges in return for their participation in the draw, either through direct payment or by debiting their respective accounts.", "clause": "3/5/4/1", "tag": "verified"},
+   {"rule": "A discount card whose subscription fee is exclusively for providing discounts and for no other services is not permissible as it involves Gharar and Jahalah.", "clause": "3/6/2/2/2", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS57",
+  "standard_id": "SS 57",
+  "standard_code": "SS 57",
+  "regulator": "AAOIFI",
+  "title": "Gold and Its Trading Parameters in Shari'ah",
+  "display_card": {
+   "one_liner": "Sets the Shari'ah rules for trading in gold in its various types and forms and for gold-based financial products in Islamic financial institutions.",
+   "what_it_is": "The standard covers the Shari'ah rulings for gold in its various types and forms, the parameters for trading in gold, and the rulings for gold-based financial products in institutions. It treats gold as a fungible item measured by weight and a Ribawi commodity subject to the currency exchange (al-Sarf) rules, and covers gold in sale, Salam, Istisna'a, Ijarah, deposit, pledge and other contracts, as well as gold Sukuk, funds and ETFs. It states it was developed in collaboration with the World Gold Council, and it does not cover precious metals other than gold and silver or currencies.",
+   "why_it_matters_to_timeline": "The document states it was issued on 19 Safar 1438H corresponding to 19 November 2016, and was adopted by the Shari'ah Board in its meeting No. 46 held in the Kingdom of Bahrain from 17-19 November 2016.",
+   "source_label": "SS-57.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "19 Safar 1438H corresponding to 19 November 2016",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Shari'ah Standard No. (1) on Trading in Currencies", "Shari'ah Standard No. (54) on Revocation of Contracts by Exercise of a Cooling-off Option", "Shari'ah Standard No. (8) on al-Murabahah", "Shari'ah Standard No. (14) on Documentary Credit", "Shari'ah Standard No. (23) on Agency and the Act of an Uncommissioned Agent (Fodooli)", "Shari'ah Standard No. (21) on Financial Papers", "Shari'ah Standard No. (25) on Combination of Contracts", "Shari'ah Standard No. (7) on Hawalah", "Shari'ah Standard No. (4) on Settlement of Debt by Set-Off", "Shari'ah Standard No. (49) regarding Unilateral Promise (Wa'd) and Bilateral Promise (Muwa'adah)", "Shari'ah Standard No. (53) on 'Arboun", "Shari'ah Standard No. (35) on Zakat", "Shari'ah Standard No. (2) on Debit Card, Charge Card and Credit Card", "Shari'ah Standard No. (19) on Qard", "Shari'ah Standard No. (45): Protection of the Capital and Investment"],
+  "key_rules_for_assurance": [
+   {"rule": "The sale of gold for gold is permissible provided the counter-values are equal in weight regardless of being new or old, and provided both counter-values are exchanged as required by Shari'ah.", "clause": "3/1/1", "tag": "verified"},
+   {"rule": "Sale of gold for silver is permissible regardless of disparity in the weight of the counter-values, and sale of gold for currencies is permissible at any mutually agreed price; in both cases the counter-values must be exchanged as required by Shari'ah.", "clause": "3/1/3", "tag": "verified"},
+   {"rule": "In case of sale of gold for gold, or silver or currencies, the two counter-values must be delivered during the contracting session, physically or constructively.", "clause": "3/2/1", "tag": "verified"},
+   {"rule": "It is not permissible to stipulate deferment of both the counter-values when selling gold, as in the case of forward or futures contracts.", "clause": "3/2/3", "tag": "verified"},
+   {"rule": "When gold ingots are sold for currencies, constructive possession can be realized by holding a certificate representing ownership of a specified, allocated ingot issued the day the contract is concluded [Trade Date 'T+0']; it is not permissible to sell an unspecified (unallocated) ingot without physical possession.", "clause": "3/4", "tag": "verified"},
+   {"rule": "The use of gold as capital in Musharakah, Mudharabah and Investment Wakalah is permissible provided that gold is valuated and its monetary value in the currency of capital is determined at the contract date by mutual agreement of the contracting parties.", "clause": "4/1", "tag": "verified"},
+   {"rule": "It is permissible to purchase gold through a Salam contract, provided the capital of Salam is not gold, silver or currencies.", "clause": "5/2/2", "tag": "verified"},
+   {"rule": "It is not permissible for the pledgee to stipulate any entitlement to dispose of the pledged gold by way of sale or by using it as pledge in another transaction or by leasing it, even if the pledgee undertook to return it to the pledgor.", "clause": "7/1/4", "tag": "verified"},
+   {"rule": "It is permissible to issue a unilaterally binding promise to sell gold; however, bilaterally binding promises for sale of gold are impermissible.", "clause": "8/1", "tag": "verified"},
+   {"rule": "Investment Sukuk, units of investment funds, and units of exchange-traded funds (ETFs) whose entire assets are gold, shall be also subject to the rulings for gold.", "clause": "10/3", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-AAOIFI-SS60",
+  "standard_id": "SS 60",
+  "standard_code": "SS 60",
+  "regulator": "AAOIFI",
+  "title": "Waqf (The Revised Standard)",
+  "display_card": {
+   "one_liner": "Sets the rules of Waqf (Islamic endowment) — its creation, management, investment, and the role of Islamic financial institutions in overseeing it.",
+   "what_it_is": "The standard deals with the definition of Waqf, its types, rulings, constituting elements and their conditions, expenses of Waqf, means of deriving benefit from it, ways of developing it, rulings on Waqf overseership and management, and what an institution can adopt in developing Waqf sources and investing them. Waqf is defined as appropriation of an asset and donating its benefit. It does not deal with detailed rulings of dynasty Waqf, irsad (state endowment) or financial trust.",
+   "why_it_matters_to_timeline": "The document states it was issued on 30th Jamada al-Akhirah 1440 H, corresponding to 7th March 2019, and its Supervisory Instructions state that whatever is stated in the Standard deems to amend whatever contradicts with it as per the previously issued Shari'ah Standards, with supervisory authorities able to grant institutions a grace period not exceeding one calendar year to implement it for existing transactions.",
+   "source_label": "SS.-60.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "30th Jamada al-Akhirah 1440 H. corresponding to 7th March 2019",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "Per its Supervisory Instructions: \"whatever was stated in the Standard deems to amend whatever contradicts with it as per the previously issued Shari'ah Standards\"; the title page labels it \"The Revised Standard\".",
+  "related_standards": ["Shari'ah Standard (45): Protection of the Capital and Investment", "Shari'ah Standard No. (31): Contracts of Gharar in Financial Transactions", "Shari'ah Standard No. (9) on Ijarah and Ijarah Muntahia Bitamleek", "Shari'ah Standard No. (11): Istisna and Parallel Istisna", "Shari'ah Standard No. (12): Partnership (Musharaka) and Modern Companies", "Shari'ah Standard No. (17): Investment Sukuk", "Shari'ah Standard No. (21): Commercial Papers (Shares and Bonds)", "Shari'ah Standard No. (42): Financial Rights and How They Are Exercised and Transferred"],
+  "key_rules_for_assurance": [
+   {"rule": "In principle, Waqf is a recommended act (mandub), and it is binding upon the Waqif from the instance of the creation of Waqf, and he cannot resile from it.", "clause": "2/3", "tag": "verified"},
+   {"rule": "It is prohibited to create Waqf for a Shari'ah non-compliant purpose; if such a Waqf is created, its purpose must be changed to a Shari'ah compliant one.", "clause": "2/4/1/7", "tag": "verified"},
+   {"rule": "Waqf is an autonomous juridical person with an independent financial liability, separate and independent from the overseer and the Waqf beneficiaries.", "clause": "2/4/2", "tag": "verified"},
+   {"rule": "It is permitted to create Waqf over cash even if it is an outstanding debt; benefiting from it can be either by extending a Shari'ah compliant loan or investing the amount in a Shari'ah compliant manner.", "clause": "2/4/13/1", "tag": "verified"},
+   {"rule": "The overseer has a fiduciary capacity while holding Waqf assets; therefore, he shall not be held liable for other than misconduct, negligence, or breach of Waqif's terms and conditions.", "clause": "3/7/5", "tag": "verified"},
+   {"rule": "Maintenance or repair of the Waqf asset is given priority over other expenditures of Waqf disposal.", "clause": "4/1", "tag": "verified"},
+   {"rule": "For tangible Waqf assets, it is permitted to incur debt through Shari'ah compliant borrowing, purchase with deferred payment, or Shari'ah compliant financing, provided the profit of the financing is at a fair rate and the debt is incurred to preserve and sustain the Waqf asset in the absence of sufficient revenues.", "clause": "5/1", "tag": "verified"},
+   {"rule": "It is not permitted to pledge tangible Waqf assets even when availing a debt against the Waqf.", "clause": "6/1", "tag": "verified"},
+   {"rule": "It is not permitted to lease tangible Waqf assets or usufructs for less than the fair rent unless there is a preferred interest in doing so.", "clause": "8/5", "tag": "verified"},
+   {"rule": "In substitution of Waqf assets, the substituting asset shall not be less in value or lower in revenue generation than the substituted asset based on the evaluation provided by fair experts.", "clause": "10/1/5/3", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-1",
+  "standard_id": "GN-1",
+  "standard_code": "GN-1",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE IN CONNECTION WITH THE CAPITAL ADEQUACY STANDARD: RECOGNITION OF RATINGS BY EXTERNAL CREDIT ASSESSMENT INSTITUTIONS (ECAIs) ON SHARI`AH-COMPLIANT FINANCIAL INSTRUMENTS",
+  "display_card": {
+   "one_liner": "Sets out the criteria the IFSB recommends national supervisors use when deciding which credit rating agencies (ECAIs) may have their ratings used to calculate banks' capital adequacy ratios for Shari`ah-compliant instruments.",
+   "what_it_is": "This note tells national supervisors what to look for before approving a rating agency whose ratings will feed into capital calculations under the IFSB's December 2005 Capital Adequacy Standard. It argues that Shari`ah-compliant financial assets should be treated as a distinct set of asset classes, so an agency competent at rating conventional banks is not automatically competent to rate Islamic instruments. It groups its recognition criteria into four areas: rating process and transparency, analytic competence, accuracy of ratings, and resources and financial condition.",
+   "why_it_matters_to_timeline": "Issued March 2008, it was written in connection with the IFSB's Capital Adequacy Standard (CAS) issued in December 2005, which allows ratings by eligible ECAIs to be used as an input to risk weightings, and it aims to promote wider debate on rating methodology for Shari`ah-compliant instruments.",
+   "source_label": "GN-1-March-2008_En.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "March 2008",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["Capital Adequacy Standard (CAS), issued by the IFSB in December 2005", "Basel II (International Convergence of Capital Measurement and Capital Standards)", "EU Capital Requirements Directive (CRD)", "CEBS Guidelines on the Recognition of External Credit Assessment Institutions, January 2006", "IFSB's Guiding Principles on Corporate Governance for IIFS"],
+  "key_rules_for_assurance": [
+   {"rule": "ECAIs should demonstrate that their rating processes and outcomes are not conditioned by conflicts of interest; or, if a conflict of interest is unavoidable, procedures should be in place to ensure that it does not affect rating decisions.", "clause": "32", "tag": "verified"},
+   {"rule": "ECAIs should demonstrate that they have an independent process for assigning ratings that precludes the ability of external parties to put pressure on the agency or its staff with a view to influencing rating outcomes.", "clause": "33", "tag": "verified"},
+   {"rule": "ECAIs should make their ratings and their rating methodologies publicly available free of charge, and should publicly explain the meaning of their ratings, including the time horizon over which a rating is deemed valid.", "clause": "35", "tag": "verified"},
+   {"rule": "Shari`ah-compliant financial assets should be considered as a distinct set of asset classes, and supervisory authorities should conduct a separate assessment of an ECAI's methodology for Shari`ah-compliant financial assets.", "clause": "37", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should publish a ratings methodology to underpin their analysis of Shari`ah-compliant financial assets, demonstrating how their risk characteristics differ from apparently similar conventional instruments.", "clause": "39", "tag": "verified"},
+   {"rule": "ECAIs should distinguish between ratings that have different meanings, in particular between 'default' and 'capital impairment', so that investors can distinguish one from the other.", "clause": "43", "tag": "verified"},
+   {"rule": "An ECAI seeking recognition should make clear what predicted frequency of default it assigns to a Shari`ah-compliant financial asset when rating it at a certain level, taking into account economic cycles and other factors.", "clause": "59", "tag": "verified"},
+   {"rule": "ECAIs should demonstrate that they have sufficient resources to conduct high-quality analysis, both when assigning ratings for the first time and when maintaining ratings after they have been assigned.", "clause": "62", "tag": "verified"},
+   {"rule": "ECAIs should demonstrate that they have the financial resources to remain in business over the time horizon of their ratings.", "clause": "64", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-2",
+  "standard_id": "GN-2",
+  "standard_code": "GN-2",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE IN CONNECTION WITH THE RISK MANAGEMENT AND CAPITAL ADEQUACY STANDARDS: COMMODITY MURABAHAH TRANSACTIONS",
+  "display_card": {
+   "one_liner": "Highlights the risks of Commodity Murabahah Transactions (CMT), a commodity buy-and-sell tool Islamic banks use to manage liquidity, and what they mean for regulatory capital.",
+   "what_it_is": "Commodity Murabahah is a way for Islamic banks to place or raise short-term funds by buying and selling freely tradable commodities on a cost-plus-profit basis. This note explains the three main uses (CMLF for liquid funds, CMF for financing, and CMOF for obtaining funding), walks through the five main risks involved (market, counterparty credit, liquidity, rate of return and operational risk), and sets out the capital adequacy implications of each structure. It was developed in response to the increasing use of CMT by Islamic banks as a liquidity management tool.",
+   "why_it_matters_to_timeline": "Dated December 2010; the IFSB Council approved its development at its 11th meeting on 22 November 2007, and it complements the IFSB Guiding Principles of Risk Management (IFSB-1) and Capital Adequacy Standard (IFSB-2), both of December 2005.",
+   "source_label": "eng_GN-2_Guidance_Note_on_Commodity_Murabahah.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "December 2010",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-1 (IFSB Guiding Principles of Risk Management, December 2005)", "IFSB-2 (IFSB Capital Adequacy Standard, December 2005)", "IFSB-5 (IFSB Guidance on Key Elements in the Supervisory Review Process, December 2007)", "IFSB-10 (IFSB Guiding Principles on Shari`ah Governance System, December 2009)", "TN-1 (IFSB Technical Note on Issues in Strengthening Liquidity Management of IIFS, March 2008)", "GN-3 (IFSB Guidance Note on the Practice of Smoothing the Profits Payout to Investment Account Holders, December 2010)", "Basel II"],
+  "key_rules_for_assurance": [
+   {"rule": "The risk management framework for CMT should be integrated within an IIFS's overall risk management system and governance framework, consistent with Principle 1 of IFSB-1.", "clause": "14", "tag": "verified"},
+   {"rule": "An IIFS should break down the CMT contractual timeline for managing the risks in each phase, recognising and evaluating the overlapping nature and transformation of risks between the categories of CMT and types of risk.", "clause": "16", "tag": "verified"},
+   {"rule": "With CMLF and CMF on the asset side, market risk transforms into credit risk once the commodities are sold on deferred payment terms; on the liability side an IIFS is exposed to market risk if it holds title to the commodity for any length of time.", "clause": "18", "tag": "verified"},
+   {"rule": "IIFS may manage counterparty credit risk by putting in place appropriate credit policies, applying Takaful coverage, securing the necessary collaterals, and authorising the limits prior to entering into CMT.", "clause": "22", "tag": "verified"},
+   {"rule": "To limit excessive leverage or over-concentration through CMT contributing to systemic risks, IIFS may establish ex-ante caps in terms of intra-day gross turnover and/or cumulative net outstanding positions in CMT at any point in time.", "clause": "25", "tag": "verified"},
+   {"rule": "IIFS should have adequate controls to ensure validity of the contract in CMT, including a proper process for screening commodity suppliers and admitting particular commodities, and an adequate Shari`ah audit.", "clause": "33", "tag": "verified"},
+   {"rule": "Liabilities resulting from CMLF and CMOF need to be clearly distinguished from PSIA; hence all the assets funded by CMLF and CMOF are automatically subject to capital requirements.", "clause": "37", "tag": "verified"},
+   {"rule": "When IIFS use CMT to invest surplus funds under CMLF and extend financing under CMF, the risk weight of the counterparty shall be applied to the resultant receivables; in the absence of a recognised ECAI rating, under the Standardised Approach the RW is 100%.", "clause": "39", "tag": "verified"},
+   {"rule": "Supervisory authorities should determine appropriate capital charges for IIFS for any significant operational risks arising out of CMT consistent with IFSB-5, with discretion to impose additional charges for Shari`ah non-compliance risk.", "clause": "41", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-3",
+  "standard_id": "GN-3",
+  "standard_code": "GN-3",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE ON THE PRACTICE OF SMOOTHING THE PROFITS PAYOUT TO INVESTMENT ACCOUNT HOLDERS",
+  "display_card": {
+   "one_liner": "Examines the widespread practice by Islamic banks of 'smoothing' the returns paid to investment account holders and recommends best practices for supervisors to regulate and standardise it.",
+   "what_it_is": "Islamic banks often top up or stabilise the profits they pay to investment account holders — by giving up part of their own profit share, transferring shareholder profits, or using special reserves (PER and IRR) — so that returns look competitive with market rates. This note identifies the causes and effects of that practice, documents actual industry behaviour from IFSB surveys, and highlights the transparency, corporate governance, liquidation and capital adequacy problems it creates. It stresses that issuing the note is not an endorsement of the practice.",
+   "why_it_matters_to_timeline": "Dated December 2010; it complements earlier IFSB documents (IFSB-1 and IFSB-2 of 2005, IFSB-3 of 2006, IFSB-4 of 2007 and IFSB-6 of 2009) by providing a more holistic perspective on Smoothing, and notes the IFSB will issue a separate Guidance Note on determining alpha.",
+   "source_label": "eng_GN-3_Guidance_Note_on_the_Practice_of_Smoothing.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "December 2010",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-1 (Guiding Principles of Risk Management for IIFS)", "IFSB-2 (Capital Adequacy Standard)", "IFSB-3 (Guiding Principles on Corporate Governance for IIFS)", "IFSB-4 (Disclosures to Promote Transparency and Market Discipline for IIFS)", "IFSB-6 (IFSB Guiding Principles on Governance for Islamic Collective Investment Schemes)", "IFSB-7", "TN-1 (Technical Note on Issues in Strengthening Liquidity Management of IIFS: The Development of Islamic Money Markets)"],
+  "key_rules_for_assurance": [
+   {"rule": "To make any endorsement of Smoothing would be outside the remit of the IFSB, and the issuance of this GN should not be considered as an endorsement of the practice.", "clause": "3", "tag": "verified"},
+   {"rule": "The existence of DCR entails a requirement for an IIFS to allocate adequate capital to cover at least some of the credit and market risk exposures arising from the assets funded by the IAH; the proportion borne by shareholders is represented by the parameter alpha in the Supervisory Discretion formula under IFSB-2.", "clause": "55", "tag": "verified"},
+   {"rule": "Supervisory authorities need to develop and make public an explicit policy as regards Smoothing in general and the use of reserves such as PER and IRR in particular, and may place constraints such as maximum deductions, maximum reserve balances, and treatment of unused balances.", "clause": "63", "tag": "verified"},
+   {"rule": "For PER, the basis for computing the amounts to be appropriated should be pre-defined and applied in accordance with the contractual terms and conditions accepted by the IAH and after formal review and approval by the IIFS's BOD; similarly the terms whereby IRR can be set aside and utilised should be determined and approved by the BOD.", "clause": "67", "tag": "verified"},
+   {"rule": "The BOD should review and approve the policies and strategies for the management of DCR, including limits and tolerance level of DCR and appropriations to reserves in accordance with the agreed contractual terms for IAH.", "clause": "68", "tag": "verified"},
+   {"rule": "The Governance Committee should be mandated to scrutinise the utilisation of reserves such as PER and IRR and to make appropriate recommendations to the BOD, ensuring the interests of IAH are taken into account.", "clause": "71", "tag": "verified"},
+   {"rule": "An IIFS should be transparent to the IAH in respect of any Smoothing practices, in due recognition of the rights of IAH as Rabb-ul-Mal to monitor the performance of IIFS as Mudarib.", "clause": "73", "tag": "verified"},
+   {"rule": "The PSIA's contractual terms and conditions must be transparent, concise and written in a simple manner that can be easily understood by the IAH.", "clause": "77", "tag": "verified"},
+   {"rule": "IIFS should clearly state in the investment contract and make clear to IAH any Smoothing practices that they employ — in particular, if they expect the IAH to forgo their rights to that portion of income which is appropriated for building up reserves such as PER and IRR.", "clause": "79", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-4",
+  "standard_id": "GN-4",
+  "standard_code": "GN-4",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE IN CONNECTION WITH THE IFSB CAPITAL ADEQUACY STANDARD: THE DETERMINATION OF ALPHA IN THE CAPITAL ADEQUACY RATIO FOR INSTITUTIONS (OTHER THAN INSURANCE INSTITUTIONS) OFFERING ONLY ISLAMIC FINANCIAL SERVICES",
+  "display_card": {
+   "one_liner": "Provides a methodology for estimating 'alpha' — the share of investment-account-funded assets that must be counted in an Islamic bank's capital ratio because of displaced commercial risk.",
+   "what_it_is": "Under the IFSB's Capital Adequacy Standard (IFSB-2), supervisors can require Islamic banks that smooth returns to investment account holders to include a proportion (alpha) of the assets funded by those accounts in their capital ratio. This note gives a methodology to estimate that value of alpha and shows how to measure displaced commercial risk — the extra risk shareholders take on to cushion payouts to account holders. It applies to institutions that practise smoothing and therefore use the supervisory discretion formula in IFSB-2.",
+   "why_it_matters_to_timeline": "Dated March 2011; it follows from IFSB-2, issued in December 2005, which proposed the standard and supervisory discretion formulas for calculating capital adequacy ratios, and it refers readers to GN-3 on smoothing for further details.",
+   "source_label": "eng-GN-4-Guidance-Note.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "March 2011",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["IFSB-2 (Capital Adequacy Standard for Institutions offering Islamic Financial Services, December 2005)", "GN-3 (Guidance Note on the Practice of Smoothing the Profits Payout to Investment Account Holders)", "IFSB-3 (Guiding Principles on Corporate Governance for Institutions offering Only Islamic Financial Services)"],
+  "key_rules_for_assurance": [
+   {"rule": "This GN is applicable to IIFS that employ the practice of smoothing profit payouts to their IAH, and to which, therefore, the supervisory discretion formula set out in the IFSB-2 applies in calculating their CARs.", "clause": "4", "tag": "verified"},
+   {"rule": "Under the supervisory discretion formula, a specified proportion (denoted by 'alpha') of the RWA funded by UIAH is included in the denominator of the CAR to reflect the amount of DCR arising out of the IIFS' management of PSIA.", "clause": "13", "tag": "verified"},
+   {"rule": "An IIFS can smooth returns paid to IAH by temporarily reducing its Mudarib share below the contractual share, but this mechanism can only be used for income smoothing in the absence of losses, as investment losses on PSIA funds are to be borne by IAH themselves.", "clause": "20", "tag": "verified"},
+   {"rule": "A loss may be covered only out of the IRR, and if the IRR balance is insufficient to cover the loss entirely, no further amounts may be transferred from the PER in order to make a profit payout to the IAH.", "clause": "22", "tag": "verified"},
+   {"rule": "Alpha is the ratio of actual risk transferred to shareholders — that is, the DCR — to the situation of 'full' risk transfer to shareholders implying the maximum value of DCR.", "clause": "38", "tag": "verified"},
+   {"rule": "To estimate values of alpha commensurate with the actual risk profile of IIFS, regulators and supervisors may use either the IIFS-specific Data Approach or the Panel Data Approach.", "clause": "39", "tag": "verified"},
+   {"rule": "CARs of IIFS are highly sensitive to changes in the value of alpha; supervisory and regulatory authorities should satisfy themselves that the estimated value of alpha and corresponding capital requirements reflect as accurately as possible the true risk profile of IIFS at both institutional and national levels.", "clause": "41", "tag": "verified"},
+   {"rule": "To account for the potentially higher DCR during stressed conditions, supervisors should aim to incorporate historical data from meaningful and significant stressed periods, where available, to reflect the 'stressed' alpha.", "clause": "42", "tag": "verified"},
+   {"rule": "Higher values of alpha may be applicable in jurisdictions where IAH tend to be highly protected; supervisors and regulators should base their judgments on the actual legal status of PSIA in their jurisdictions.", "clause": "43", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ },
+ {
+  "id": "KB-IFSB-GN-5",
+  "standard_id": "GN-5",
+  "standard_code": "GN-5",
+  "regulator": "IFSB",
+  "title": "GUIDANCE NOTE ON THE RECOGNITION OF RATINGS BY EXTERNAL CREDIT ASSESSMENT INSTITUTIONS (ECAIS) ON TAKAFUL AND RETAKAFUL UNDERTAKINGS",
+  "display_card": {
+   "one_liner": "Suggests criteria supervisors and market participants can use to decide which rating agencies' credit ratings on Takaful (Islamic insurance) and ReTakaful firms to rely on.",
+   "what_it_is": "This note aims to facilitate generally accepted criteria for recognising credit ratings on Takaful and ReTakaful undertakings — Islamic insurance structures made up of a Takaful Operator and participants' risk funds. It sets out what rating agencies should explain about the meaning and accuracy of their ratings, and lists the specific analytic areas (such as legal structure, Qard support between funds, Shari`ah compliance, and investment restrictions) where they must demonstrate competence. It stresses that competence at rating conventional insurers does not imply competence at rating Takaful undertakings.",
+   "why_it_matters_to_timeline": "Dated March 2011; it builds on GN-1 (published March 2008), which was prompted by IFSB-2 of December 2005, and forms part of broader IFSB efforts on Takaful alongside IFSB-8 (December 2009) and IFSB-11 (December 2010).",
+   "source_label": "eng-GN-5-Guidance-Note.txt (read verbatim 2026-07-25)"
+  },
+  "issued_date": "March 2011",
+  "timeline_bridge": {"effective_date": ""},
+  "supersedes": "",
+  "related_standards": ["GN-1 (Guidance Note in Connection with the Capital Adequacy Standard: Recognition of Ratings by External Credit Assessment Institutions (ECAIs) on Shari`ah-Compliant Financial Instruments)", "IFSB-2 (Capital Adequacy Standard for Institutions (other than Insurance Institutions) Offering only Islamic Financial Services)", "IFSB-8 (Guiding Principles on Governance for Takaful (Islamic Insurance) Undertakings)", "IFSB-10 (Guiding Principles on Shari`ah Governance Systems for Institutions Offering Islamic Financial Services)", "IFSB-11 (Standard on Solvency Requirements for Takaful (Islamic Insurance) Undertakings)", "IOSCO Code of Conduct Fundamentals for Credit Rating Agencies"],
+  "key_rules_for_assurance": [
+   {"rule": "ECAIs should make reasonable efforts to ensure that different types of rating are clearly distinguishable from one another and that the meaning of each different type of rating is explained in language which can be easily understood by the users of the ratings.", "clause": "25", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should define what they mean by an event of default when assigning ratings which predict the likelihood of default, since the concept of 'default' is more complex in the Islamic financial industry.", "clause": "27", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should make all of their rating methodologies publicly available in a form which is easily accessible and free of charge, and publicly disclose, as promptly as possible, any material changes to their rating methodologies.", "clause": "28", "tag": "verified"},
+   {"rule": "An ECAI should state publicly how the accuracy of its ratings should be assessed and then publish evidence as to whether its ratings have in fact been accurate.", "clause": "29", "tag": "verified"},
+   {"rule": "ECAIs should explain the analytic process through which they will reach a decision on whether support (such as a Qard from the TO to the PRF) is likely to be forthcoming, and the assumptions they have made in doing so.", "clause": "49", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should state how they assess the Shari`ah governance structure of an undertaking, as a way of assessing the likelihood that the undertaking will remain Shari`ah compliant in future.", "clause": "59", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should demonstrate that they understand the Shari`ah investment restrictions to which Islamic financial institutions are subject and state in their rating methodologies what the rating implications of such restrictions are likely to be.", "clause": "65", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should have rating processes that are robust and independent; rating analysts' pay should not be linked to fees received from companies they rate, and an internal review of ratings should be conducted at least annually.", "clause": "81", "tag": "verified"},
+   {"rule": "ECAIs seeking recognition should state whether their codes of conduct conform to the IOSCO Revised Code, provide explanations for any areas with which they do not conform, and provide evidence that their practices comply with their codes of conduct.", "clause": "86", "tag": "verified"}
+  ],
+  "assurance": "verified"
+ }
+ ]
+}
