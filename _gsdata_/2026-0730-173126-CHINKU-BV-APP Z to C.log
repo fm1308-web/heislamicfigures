@@ -1,0 +1,21 @@
+2026-07-30 17:31:31: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-30 17:31:31: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-30 17:31:31: == Sync Started by User Command
+2026-07-30 17:31:31: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-30 17:31:31: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-30 17:31:31: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-30 17:31:31: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-30 17:31:31: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-30 17:31:31: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-30 17:31:31: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-30 17:31:31: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-30 17:31:31: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-30 17:31:31: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-30 17:31:31: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-30 17:31:31: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-30 17:31:31: Copy Over 'Z:/Islamic App/bv-app/index.html' -> 'C:/TEST/bv-app/index.html' (8,915)
+2026-07-30 17:31:31: Copy Over 'Z:/Islamic App/bv-app/shell.js' -> 'C:/TEST/bv-app/shell.js' (60,113)
+2026-07-30 17:31:31: Copy Over 'Z:/Islamic App/bv-app/finance.js' -> 'C:/TEST/bv-app/finance.js' (359,495)
+2026-07-30 17:31:31: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-30 17:31:31: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-30 17:31:31: == Sync Complete. Time: 00:00:00, Speed: 0.00/s, OK: 3, Errors: 0
