@@ -282,8 +282,7 @@ window.FinanceView = (function(){
     // NO lineage_v4 any more: TIMELINE lineage builds ONLY from the per-contract v4 files.
     var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true };
     return Promise.all(files.map(function(f){
-      // Do NOT call window.dataUrl — finance data is not on the CDN; fetch the relative path directly.
-      return fetch('data/Finance/'+f+'.json?dv='+DATA_V)
+      return fetch(window.dataUrl('data/finance/'+f+'.json?dv='+DATA_V))
         .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
         .then(function(j){ return { f:f, j:j }; })
         .catch(function(e){ return { f:f, err:String((e && e.message) || e) }; });
