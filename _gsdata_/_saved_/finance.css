@@ -2867,3 +2867,22 @@ body.fin-fullscreen #usul-fs-logo{
   background:#EDE8DA !important; color:#9AA3B0 !important;
   border:1px solid #D9D0BC !important; opacity:1 !important;
 }
+
+/* ── IVORY PATCH 9 (2026-07-26): library filter dropdowns hidden on the USER pages
+      (SETTINGS / REPORT / ARCHIVE — UPLOAD already hides them). They filter the
+      research timeline, not these pages, so they only confused the header. ── */
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="tradition"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="standards"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="report"] .bv-dd-wrap[data-dd="tradition"],
+#finance-view[data-mode="report"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="report"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="report"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="archive"] .bv-dd-wrap[data-dd="tradition"],
+#finance-view[data-mode="archive"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="archive"] .bv-dd-wrap[data-dd="contract"],
+#finance-view[data-mode="archive"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="standards"] #fin-reset,
+#finance-view[data-mode="report"] #fin-reset,
+#finance-view[data-mode="archive"] #fin-reset{ display:none !important; }

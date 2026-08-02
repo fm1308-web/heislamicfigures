@@ -1,0 +1,33 @@
+{
+ "_meta": {
+  "file": "reliability_log.json",
+  "purpose": "Append-only record of USUL pipeline consistency tests. One entry per scored comparison. Old rows are never edited or deleted.",
+  "owner_seat": "RA - Reliability Auditor (temporary), then App Audit",
+  "created": "2026-07-31",
+  "shown_on": "USUL RELIABILITY MONITOR page (temporary testing dashboard, visible to all users)"
+ },
+ "targets": {
+  "finding_overlap_pct": 90,
+  "severity_agreement_pct": 95,
+  "quote_verification_pct": 100,
+  "citation_grounding_pct": 100,
+  "term_scan_determinism_pct": 100,
+  "ultimate": "Same document + same standards + same model = same report. Every finding traceable to a real quote and a real standard clause. Audit-grade discipline (not a certification claim)."
+ },
+ "brick_status": {
+  "finding_overlap_pct": "measured",
+  "severity_agreement_pct": "measured",
+  "quote_verification_pct": "enforced_in_pipeline",
+  "citation_grounding_pct": "not_built_yet",
+  "term_scan_determinism_pct": "not_built_yet"
+ },
+ "planned_fixes": [
+  {"id": "FIX-1", "name": "In-app scorer + this log + RELIABILITY MONITOR page", "status": "in_build", "api_cost": 0},
+  {"id": "FIX-2", "name": "Deterministic term scan (code, not AI)", "status": "planned", "api_cost": 0},
+  {"id": "FIX-3", "name": "Grounding guard (no citation = dropped)", "status": "planned", "api_cost": 0},
+  {"id": "FIX-4", "name": "Fixed rule checklist (COMPLIANT/NON_COMPLIANT/UNCERTAIN)", "status": "planned", "api_cost": 0},
+  {"id": "FIX-5", "name": "Consensus voting 2-of-3 (only if target missed)", "status": "parked", "api_cost": "triples run cost"},
+  {"id": "FIX-6", "name": "Report-only export (PDF/file) out of the app", "status": "planned_after_monitor", "api_cost": 0}
+ ],
+ "runs": []
+}

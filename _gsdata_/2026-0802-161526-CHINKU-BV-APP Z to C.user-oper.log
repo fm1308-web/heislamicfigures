@@ -1,0 +1,25 @@
+2026-08-02 16:21:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-02 16:21:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-02 16:21:58: == Sync Started by User Command
+2026-08-02 16:21:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-02 16:21:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-02 16:21:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-02 16:21:58: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-02 16:21:58: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-02 16:21:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-02 16:21:58: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-02 16:21:58: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-02 16:21:58: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-02 16:21:58: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-02 16:21:58: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-02 16:21:58: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-02 16:21:59: Copy Over 'C:/TEST/bv-app/finance.js' -> 'Z:/Islamic App/bv-app/finance.js' (431,434) (User Action)
+2026-08-02 16:21:59: Copy Over 'C:/TEST/bv-app/finance.css' -> 'Z:/Islamic App/bv-app/finance.css' (206,909) (User Action)
+2026-08-02 16:21:59: Copy Over 'C:/TEST/bv-app/index.html' -> 'Z:/Islamic App/bv-app/index.html' (8,915)
+2026-08-02 16:22:00: Copy Over 'C:/TEST/bv-app/shell.js' -> 'Z:/Islamic App/bv-app/shell.js' (60,113)
+2026-08-02 16:22:00: Copy New 'C:/TEST/bv-app/data/Finance/FIX_OVERNIGHT_LOG.md' -> 'Z:/Islamic App/bv-app/data/Finance/FIX_OVERNIGHT_LOG.md' (12,922)
+2026-08-02 16:22:00: Copy Over 'C:/TEST/bv-app/data/Finance/reliability_log.json' -> 'Z:/Islamic App/bv-app/data/Finance/reliability_log.json' (4,910)
+2026-08-02 16:22:00: Copy New 'C:/TEST/bv-app/data/Finance/standards_kb_fix4.json' -> 'Z:/Islamic App/bv-app/data/Finance/standards_kb_fix4.json' (234,294)
+2026-08-02 16:22:00: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-02 16:22:00: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-02 16:22:00: == Sync Complete. Time: 00:00:02, Speed: 0.00/s, OK: 7, Errors: 0

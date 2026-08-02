@@ -1,0 +1,41 @@
+{
+ "_meta": {
+  "file": "reliability_log.json",
+  "purpose": "Append-only record of USUL pipeline consistency tests. One entry per scored comparison. Old rows are never edited or deleted.",
+  "owner_seat": "RA - Reliability Auditor (temporary), then App Audit",
+  "created": "2026-07-31",
+  "shown_on": "USUL RELIABILITY MONITOR page (temporary testing dashboard, visible to all users)"
+ },
+ "targets": {
+  "finding_overlap_pct": 90,
+  "severity_agreement_pct": 95,
+  "quote_verification_pct": 100,
+  "citation_grounding_pct": 100,
+  "term_scan_determinism_pct": 100,
+  "ultimate": "Same document + same standards + same model = same report. Every finding traceable to a real quote and a real standard clause. Audit-grade discipline (not a certification claim)."
+ },
+ "brick_status": {
+  "finding_overlap_pct": "measured",
+  "severity_agreement_pct": "measured",
+  "quote_verification_pct": "enforced_in_pipeline",
+  "citation_grounding_pct": "enforced_in_pipeline",
+  "term_scan_determinism_pct": "enforced_in_pipeline"
+ },
+ "planned_fixes": [
+  {"id": "FIX-1", "name": "In-app scorer + this log + RELIABILITY MONITOR page", "status": "in_build", "api_cost": 0},
+  {"id": "FIX-2", "name": "Deterministic term scan (code, not AI)", "status": "planned", "api_cost": 0},
+  {"id": "FIX-3", "name": "Grounding guard (no citation = dropped)", "status": "planned", "api_cost": 0},
+  {"id": "FIX-4", "name": "Fixed rule checklist (COMPLIANT/NON_COMPLIANT/UNCERTAIN)", "status": "planned", "api_cost": 0},
+  {"id": "FIX-5", "name": "Consensus voting 2-of-3 (only if target missed)", "status": "parked", "api_cost": "triples run cost"},
+  {"id": "FIX-6", "name": "Report-only export (PDF/file) out of the app", "status": "planned_after_monitor", "api_cost": 0}
+ ],
+ "runs": [
+  {"date": "2026-08-01", "test": "consistency_pair", "document": "10.70 · Indemnity.pdf", "model_a": "claude-haiku-4-5-20251001", "model_b": "claude-sonnet-4-6", "findings_a": 6, "findings_b": 9, "matched": 3, "finding_overlap_pct": 25, "severity_agreement_pct": 0, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output"], "cost_usd": 0},
+  {"date": "2026-08-01", "test": "consistency_pair", "document": "10.70 · Murahab Broodge .pdf", "model_a": "claude-haiku-4-5-20251001", "model_b": "claude-sonnet-4-6", "findings_a": 9, "findings_b": 9, "matched": 1, "finding_overlap_pct": 5.9, "severity_agreement_pct": 100, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output", "deterministic_term_scan"], "cost_usd": 0},
+  {"date": "2026-08-01", "test": "consistency_pair", "document": "First Abu Dhabi Bank PJSC - Islamic Banking Division Murabaha & Ijarah Facility Offer", "model_a": "claude-haiku-4-5-20251001", "model_b": "claude-haiku-4-5-20251001", "findings_a": 8, "findings_b": 8, "matched": 6, "finding_overlap_pct": 60, "severity_agreement_pct": 50, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output", "deterministic_term_scan"], "cost_usd": 0},
+  {"date": "2026-08-01", "test": "consistency_pair", "document": "First Abu Dhabi Bank PJSC - Islamic Banking Division Murabaha & Ijarah Facility Offer", "model_a": "claude-haiku-4-5-20251001", "model_b": "claude-sonnet-4-6", "findings_a": 8, "findings_b": 9, "matched": 4, "finding_overlap_pct": 30.8, "severity_agreement_pct": 50, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output", "deterministic_term_scan"], "cost_usd": 0},
+  {"date": "2026-08-02", "test": "consistency_pair", "document": "Tier-3 Shari'ah Review — Kafālah / Islamic Guarantee Structures (Financier Perspective)", "model_a": "claude-sonnet-4-6", "model_b": "claude-sonnet-4-6", "findings_a": 8, "findings_b": 6, "matched": 5, "finding_overlap_pct": 55.6, "severity_agreement_pct": 60, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output", "deterministic_term_scan", "finding_cap_removed"], "cost_usd": 0},
+  {"date": "2026-08-02", "test": "consistency_pair", "document": "Tier-3 Shari'ah Review — Kafālah / Islamic Guarantee Structures (Financier Perspective)", "model_a": "claude-sonnet-4-6", "model_b": "claude-haiku-4-5-20251001", "findings_a": 8, "findings_b": 0, "matched": 0, "finding_overlap_pct": 0, "severity_agreement_pct": null, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output", "deterministic_term_scan", "finding_cap_removed"], "cost_usd": 0},
+  {"date": "2026-08-02", "test": "consistency_pair", "document": "Tier-3 Shari'ah Review – Kafālah / Islamic Letter of Credit Financing Structure", "model_a": "claude-sonnet-4-6", "model_b": "claude-sonnet-4-6", "findings_a": 8, "findings_b": 10, "matched": 7, "finding_overlap_pct": 63.6, "severity_agreement_pct": 28.6, "fixes_live": ["temperature_0", "system_slot_rules", "tool_use_structured_output", "deterministic_term_scan", "finding_cap_removed"], "cost_usd": 0}
+ ]
+}

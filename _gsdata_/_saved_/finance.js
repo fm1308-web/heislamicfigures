@@ -215,13 +215,12 @@ window.FinanceView = (function(){
   // ── Live-run model selection — persisted (same plain pattern). Single source of truth for the model list + pricing. ──
   var API_MODEL_LS = 'finance_api_model_v1';
   var LIVE_MODELS = [
-    { value:'claude-fable-5',             label:'Claude Fable 5' },
     { value:'claude-sonnet-4-6',          label:'Claude Sonnet 4.6' },
     { value:'claude-haiku-4-5-20251001',  label:'Claude Haiku 4.5' }
   ];
   var LIVE_MODEL_DEFAULT = 'claude-sonnet-4-6';
-  // Price per MILLION tokens { in, out }. Claude Fable 5 pricing is unknown → intentionally absent
-  // (the cost line then omits the USD figure and points to console.anthropic.com).
+  // Price per MILLION tokens { in, out }. Any model listed above but absent here shows
+  // no USD figure on the cost line — it points to console.anthropic.com instead.
   var LIVE_MODEL_PRICING = {
     'claude-sonnet-4-6':          { in:3, out:15 },
     'claude-haiku-4-5-20251001':  { in:1, out:5 }
@@ -282,8 +281,7 @@ window.FinanceView = (function(){
     // NO lineage_v4 any more: TIMELINE lineage builds ONLY from the per-contract v4 files.
     var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true };
     return Promise.all(files.map(function(f){
-      // Do NOT call window.dataUrl — finance data is not on the CDN; fetch the relative path directly.
-      return fetch('data/Finance/'+f+'.json?dv='+DATA_V)
+      return fetch(window.dataUrl('data/Finance/'+f+'.json'))
         .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
         .then(function(j){ return { f:f, j:j }; })
         .catch(function(e){ return { f:f, err:String((e && e.message) || e) }; });
@@ -2536,7 +2534,7 @@ window.FinanceView = (function(){
     + '=== DOCUMENT START ===\n'
     + String((_liveDoc && _liveDoc.text) || '').slice(0, 100000) + '\n'
     + '=== DOCUMENT END ===';
-    return { model: _apiModelGet(), max_tokens: 50000, messages: [{ role: 'user', content: content }] };
+    return { model: _apiModelGet(), max_tokens: 50000, temperature: 0, system: RECIPE_SYSTEM, messages: [{ role: 'user', content: content }] };
   }
   // Strip accidental ``` fences / prose, then JSON.parse. Returns object or null.
   function _parseLiveJson(txt){
@@ -2782,9 +2780,14 @@ window.FinanceView = (function(){
     };
   })();
 
+  var RECIPE_SYSTEM = 'You are a Shari\'ah compliance analyst. NEVER INVENT: every quote must be copied character-for-character from the provided DOCUMENT; every claim must trace to the DOCUMENT, the provided clauses, or the named standards. If unsure, mark it uncertain rather than guess. Scope: AAOIFI + CBUAE standards as adopted in the UAE. Tradition: Sunni. School: Maliki. Perspective: the financing bank. Respond with ONLY raw JSON matching the requested shape.';
+
   // One browser-direct POST to Anthropic; resolves { status, j }. Rejects { reason } on network failure.
   function _pipeApiCall(key, model, promptText, maxTokens, tools, toolChoice){
-    var body = { model: model, max_tokens: maxTokens, messages: [{ role: 'user', content: promptText }] };
+    var body = { model: model, max_tokens: maxTokens, temperature: 0, messages: [{ role: 'user', content: promptText }] };
+    body.system = tools
+      ? RECIPE_SYSTEM.replace('Respond with ONLY raw JSON matching the requested shape.', 'Return your answer through the provided tool, matching its schema exactly.')
+      : RECIPE_SYSTEM;
     if(tools){ body.tools = tools; if(toolChoice) body.tool_choice = toolChoice; }
     return fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -5768,8 +5771,10 @@ window.FinanceView = (function(){
       + '<li>'+badge('plc','Placeholder')+' — condensed or incomplete; must look provisional, never settled.</li>'
       + '</ul>'
       + '<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 10px">Other tags you will meet: <b>CITED</b> (green, on a TRACE lineage row) — the exact source clause is quoted; <b>needs verification</b> — no source states the link yet, said plainly. PRISM positions carry <b>VERIFIED</b> (read on an official source), <b>plausible</b> (reliable secondary source, upgrade path noted), or <b>needs check</b> (no source read — never silently filled). On HOME, <b>TRACED / PARTIAL</b> shows how far a Qur\'anic word\'s chain to today is complete.</p>'
+      + '<h3 style="color:#D4AF37;font-size:13px;margin:18px 0 6px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Tracing a term (TRACE)</h3>'
+      + '<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 10px">Type any modern term — tawarruq, sukuk, urf. The page shows: TODAY (what the term is now, with its first-recorded date and source), an amber ⚖ bar if scholars differ on it (click → PRISM), STANDARDS TODAY (the clauses that govern it, jurisdiction-scoped, each verified date shown), the DATED HISTORY down the page, and QUR\'ANIC ORIGIN at the bottom — the gold READ pill opens the verses. The right panel holds the term\'s full details: its Qur\'an words, contracts, concept family, clause-verified standards, connections, and — where a source states it — the cited row where the term was born. Narrow everything with the TRADITION, SCHOOL and JURISDICTION dropdowns.</p>'
       + '<h3 style="color:#D4AF37;font-size:13px;margin:18px 0 6px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Tradition tags</h3>'
-      + '<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 10px">Scholars carry tradition tags (sect, school of law, and movements such as Deobandi or Azhari). Use the SECT, SCHOOL and MOVEMENT dropdowns to filter the scholar list; when a tradition filter is active the timeline re-bases to the earliest matching scholar, and books/events narrow to those linked to the filtered scholars.</p>'
+      + '<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 10px">Scholars carry tradition tags (sect, school of law, and movements such as Deobandi or Azhari). On TIMELINE, the single TRADITION dropdown merges sect + school + movement, with coverage counts per option; rows that do not match are greyed — never hidden — and untagged rows are marked as untagged. Standards are never filtered by madhhab (locked rule): jurisdiction and regulator only.</p>'
       + '<h3 style="color:#D4AF37;font-size:13px;margin:18px 0 6px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Concept families</h3>'
       + '<p style="color:#ccc;font-size:13px;line-height:1.6;margin:0 0 10px">The CONCEPTS dropdown turns on any of 18 editorial concept families. Each selected family draws a coloured arc off the stem, from its origin year up to the present, labelled with that origin year (a leading “c.” means the year is approximate). Click an arc to highlight the people, books and events its contracts touch.</p>'
       + '<h3 style="color:#D4AF37;font-size:13px;margin:18px 0 6px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Reading the timeline</h3>'

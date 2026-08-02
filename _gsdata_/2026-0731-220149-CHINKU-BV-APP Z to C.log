@@ -1,0 +1,21 @@
+2026-07-31 22:01:55: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-31 22:01:55: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-31 22:01:55: == Sync Started by User Command
+2026-07-31 22:01:56: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-31 22:01:56: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-31 22:01:56: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-07-31 22:01:56: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-31 22:01:56: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-31 22:01:56: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-07-31 22:01:56: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-31 22:01:56: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-31 22:01:56: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-07-31 22:01:56: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-31 22:01:56: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-31 22:01:56: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-07-31 22:01:56: /finance.js: unresolved conflict results in No Copy
+2026-07-31 22:01:56: Copy Over 'Z:/Islamic App/bv-app/finance.css' -> 'C:/TEST/bv-app/finance.css' (196,532)
+2026-07-31 22:01:57: Copy New 'C:/TEST/bv-app/data/Finance/reliability_log.json' -> 'Z:/Islamic App/bv-app/data/Finance/reliability_log.json' (1,756)
+2026-07-31 22:01:57: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-31 22:01:57: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-07-31 22:01:57: == Sync Complete. Time: 00:00:01, Speed: 0.00/s, OK: 2, Errors: 0, Conflicts: 1

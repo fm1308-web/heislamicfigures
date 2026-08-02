@@ -169,9 +169,35 @@ window.FinanceView = (function(){
     try{ var s = localStorage.getItem(ARCH_KEY); var a = s ? JSON.parse(s) : null; _archive = Array.isArray(a) ? a : []; }
     catch(e){ _archive = []; }           // missing / corrupt → empty archive
   }
+  // Returns true when the archive actually reached localStorage, false when the write
+  // failed (quota exceeded is the realistic case). Callers that ignore the value behave
+  // exactly as before; the archive-time caller surfaces a visible warning.
   function _archSave(list){
     if(list) _archive = list;
-    try{ localStorage.setItem(ARCH_KEY, JSON.stringify(_archive)); }catch(e){}
+    try{ localStorage.setItem(ARCH_KEY, JSON.stringify(_archive)); return true; }
+    catch(e){ return false; }
+  }
+  // Visible failure notice — a silent drop would let a scholar believe a report was filed.
+  function _archWarnFull(canvas){
+    var msg = 'Archive is full — report NOT saved. Export or clear old archive entries.';
+    try{
+      var host = (canvas && canvas.querySelector('.fin-report')) || canvas
+              || document.getElementById('finance-canvas');
+      if(host){
+        var old = host.querySelector('#fin-arch-full');
+        if(old){ old.textContent = msg; return; }   // already showing — never stack duplicates
+        var w = document.createElement('div');
+        w.id = 'fin-arch-full';
+        w.setAttribute('role', 'alert');
+        w.style.cssText = 'margin:12px 0;padding:11px 14px;border:2px solid #B03A2E;'
+          + 'border-radius:6px;background:#FBEDEB;color:#B03A2E;font-weight:700;'
+          + 'font-size:14px;line-height:1.45;font-family:\'Source Sans 3\',system-ui,sans-serif;';
+        w.textContent = msg;
+        host.insertBefore(w, host.firstChild);
+        return;
+      }
+    }catch(e){}
+    try{ alert(msg); }catch(e2){}   // last resort — the user must not miss this
   }
 
   // ── Scholar determinations for the FAB compliance report — persisted to localStorage (same plain pattern) ──
@@ -276,19 +302,28 @@ window.FinanceView = (function(){
   // ── Data load — STOP if any REQUIRED file is missing / unreadable.
   //    'kafalah_v4' is OPTIONAL (richer C08 rows); everything else is REQUIRED. No old lineage.json. ──
   function _load(){
-    var files = ['contracts','terms','scholars','books','events','concept_families','crosslinks','_manifest','quran_finance_layer','new_terms_T201_T214','kafalah_v4','murabaha_v4','qard_v4','musharakah_v4','mudarabah_v4','ijarah_v4','salam_v4','istisna_v4','rahn_v4','wakala_v4','quran_word_filter_map','standards_tracker','standards_kb','standards_kb_multiregulator','standards_kb_IFSB','standards_kb_star','standards_kb_new_batch_1','standards_kb_new_batch_2','standards_kb_new_batch_3','standards_kb_new_batch_4','demo_case_kafalah','demo_case_fab_offer','demo_case_fab_murabaha','demo_case_fab_indemnity','demo_case_mib_guarantee','compliance_reports_all_cases','book_quran_root','enriched_terms_all','q_to_c_map','crosslinks_spine','standards_lights','jurisdictions','tradition_index','standards_files','term_lineage_links_C02_v2'];
+    var files = ['contracts','terms','scholars','books','events','concept_families','crosslinks','_manifest','quran_finance_layer','new_terms_T201_T214','kafalah_v4','murabaha_v4','qard_v4','musharakah_v4','mudarabah_v4','ijarah_v4','salam_v4','istisna_v4','rahn_v4','wakala_v4','quran_word_filter_map','standards_tracker','standards_kb','standards_kb_multiregulator','standards_kb_IFSB','standards_kb_star','standards_kb_fix4','standards_kb_new_batch_1','standards_kb_new_batch_2','standards_kb_new_batch_3','standards_kb_new_batch_4','demo_case_kafalah','demo_case_fab_offer','demo_case_fab_murabaha','demo_case_fab_indemnity','demo_case_mib_guarantee','compliance_reports_all_cases','book_quran_root','enriched_terms_all','q_to_c_map','crosslinks_spine','standards_lights','jurisdictions','tradition_index','standards_files','term_lineage_links_C02_v2','reliability_log'];
     // The 10 per-contract v4 files (kafalah + the 9 new) and the word map are OPTIONAL — console.warn if missing.
     // NO lineage_v4 any more: TIMELINE lineage builds ONLY from the per-contract v4 files.
-    var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true };
+    var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_fix4:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true, reliability_log:true };
+    // OPTIONAL files that must also stay SILENT when absent (not on the CDN yet) — no console noise.
+    var SILENT = { reliability_log:true, standards_kb_fix4:true };
+    // Fetched RELATIVE to the app (no CDN), the same way the Standards .txt full-text
+    // files are loaded. Everything else keeps going through window.dataUrl.
+    var RELATIVE = { reliability_log:true };
+    // Always revalidated (never served from the browser cache) so newly appended log rows
+    // show up on a normal refresh. Applies to the relative-fetch files only.
+    var NOSTORE = { reliability_log:true };
     return Promise.all(files.map(function(f){
-      return fetch(window.dataUrl('data/Finance/'+f+'.json'))
+      var _u = 'data/Finance/'+f+'.json';
+      return fetch(RELATIVE[f] ? _u : window.dataUrl(_u), NOSTORE[f] ? { cache:'no-store' } : undefined)
         .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
         .then(function(j){ return { f:f, j:j }; })
         .catch(function(e){ return { f:f, err:String((e && e.message) || e) }; });
     })).then(function(res){
       var out = {}, errs = [];
       res.forEach(function(x){
-        if(x.err){ if(!OPTIONAL[x.f]) errs.push(x.f+'.json ('+x.err+')'); else console.warn('[finance] optional file not loaded: '+x.f+'.json ('+x.err+')'); }
+        if(x.err){ if(!OPTIONAL[x.f]) errs.push(x.f+'.json ('+x.err+')'); else if(!SILENT[x.f]) console.warn('[finance] optional file not loaded: '+x.f+'.json ('+x.err+')'); }
         else out[x.f] = x.j;
       });
       return errs.length ? { error: errs } : { data: out };
@@ -343,7 +378,9 @@ window.FinanceView = (function(){
         (out.standards_kb_new_batch_1 && out.standards_kb_new_batch_1.notes) || [],
         (out.standards_kb_new_batch_2 && out.standards_kb_new_batch_2.notes) || [],
         (out.standards_kb_new_batch_3 && out.standards_kb_new_batch_3.notes) || [],
-        (out.standards_kb_new_batch_4 && out.standards_kb_new_batch_4.notes) || []
+        (out.standards_kb_new_batch_4 && out.standards_kb_new_batch_4.notes) || [],
+        // FIX-4 clause-verified rule notes (optional file; fail-soft when absent).
+        (out.standards_kb_fix4 && out.standards_kb_fix4.notes) || []
       ),
       // OPTIONAL demo business-case document (clauses + excerpt_map). null when the file did not load.
       demo_case: out.demo_case_kafalah || null
@@ -379,6 +416,8 @@ window.FinanceView = (function(){
     });
     console.log('[finance] tradition tags loaded: ' + Object.keys(D.tradById).length);
     D.stdFiles = out.standards_files || {};   // standard code -> Standards/<path> for the full-text reader
+    // OPTIONAL reliability log — null whenever the file is missing / unreadable / unparseable. Not rendered yet.
+    D.reliability = out.reliability_log || null;
     // Qur'an-root flags for books (glow + root_tag). Whole file on D.bookQuranRoot; lookup by book id.
     D.bookQuranRoot = out.book_quran_root || null;
     D.bookQuranRootById = {};
@@ -1254,6 +1293,7 @@ window.FinanceView = (function(){
     else if(_mode === 'htw')       _renderHtwPage();
     else if(_mode === 'prism')     _renderPrism();
     else if(_mode === 'trace')     _renderTrace();
+    else if(_mode === 'reliability') _renderReliability();
     else                           _render();
   }
   // Reflect the active mode on #finance-view so per-mode CSS can hide filters.
@@ -1262,7 +1302,7 @@ window.FinanceView = (function(){
   function _pageLabel(m){
     var L = { home:'HOME', trace:'TRACE', timeline:'TIMELINE', ladder:'LADDER', prism:'PRISM',
               reader:'STANDARDS', lecture:'LECTURE', htw:'HOW THIS WORKS', upload:'UPLOAD',
-              standards:'SETTINGS', report:'REPORT', archive:'ARCHIVE' };
+              standards:'SETTINGS', report:'REPORT', archive:'ARCHIVE', reliability:'RELIABILITY' };
     return L[m] || String(m || '').toUpperCase();
   }
   function _setMode(m, _fromBack){
@@ -2236,6 +2276,9 @@ window.FinanceView = (function(){
     // PRINT — the print stylesheet already turns the report into a clean white sheet.
     var pb = canvas.querySelector('#fin-rep-print');
     if(pb) pb.addEventListener('click', function(e){ e.stopPropagation(); window.print(); });
+    // FIX-6 — EXPORT: the report sheet ALONE in a clean window, then the print dialog (→ Save as PDF).
+    var xb = canvas.querySelector('#fin-rep-export');
+    if(xb) xb.addEventListener('click', function(e){ e.stopPropagation(); _repExport(canvas); });
     // SIGN OFF & ARCHIVE — snapshot the current sheet into the localStorage archive.
     var ab = canvas.querySelector('#fin-rep-archive');
     if(ab) ab.addEventListener('click', function(e){ e.stopPropagation(); _archiveCurrentReport(canvas); });
@@ -2364,6 +2407,62 @@ window.FinanceView = (function(){
     var rep = (D.compliance_reports || [])[i];
     return LBL[i] || (rep && rep.exhibit ? (rep.exhibit + ' · ' + (rep.case || '')) : ('Report ' + (i+1)));
   }
+  // The report header's business-case name. "<UNKNOWN>" is a PLACEHOLDER some runs produced,
+  // not a real case name — it is truthy, so a plain `fab.case || ''` printed it verbatim in the
+  // header. Same rule as _reliArchDoc: treat it as absent and fall back to the document title.
+  function _repCaseName(fab){
+    if(!fab) return '';
+    var c = String(fab.case == null ? '' : fab.case).trim();
+    if(c && c.toUpperCase() !== '<UNKNOWN>') return c;
+    var alt = String((fab._liveName || fab.title || '')).trim();
+    return (alt && alt.toUpperCase() !== '<UNKNOWN>') ? alt : '';
+  }
+
+  // ══ FIX-6 — REPORT EXPORT ══════════════════════════════════════════════════════════
+  //    Opens the report sheet ALONE in a new window — no app frame, no dashboards, no hub —
+  //    inlines the two report stylesheets, then calls print() so the browser can Save as PDF.
+  //    Entirely local: no server, no library, no network fetch beyond the same-origin CSS
+  //    already loaded by the app. Nothing is written to disk by the app itself.
+  function _repExport(canvas){
+    var sheet = canvas.querySelector('.fin-report');
+    if(!sheet){ console.warn('FIX-6 export — no report sheet on the page.'); return; }
+    var clone = sheet.cloneNode(true);
+    // Same strip list the archive snapshot uses — controls must never reach the printed sheet.
+    ['.fin-rep-actions','#fin-rep-print','#fin-rep-export','#fin-rep-archive','#fin-rep-archived',
+     '.fin-rep-caseselect-wrap','#fin-live-strip','#fin-pipe-extra',
+     '.fin-rep-signoff-hint','#fin-rep-signedoff'].forEach(function(sel){
+      clone.querySelectorAll(sel).forEach(function(el){ if(el.parentNode) el.parentNode.removeChild(el); });
+    });
+    var css = '';
+    try{
+      // Same-origin stylesheets only; a cross-origin sheet throws on cssRules and is skipped.
+      Array.prototype.slice.call(document.styleSheets).forEach(function(ss){
+        var href = ss.href || '';
+        if(href && !/finance\.css|finance-shim\.css/.test(href)) return;
+        try{
+          Array.prototype.slice.call(ss.cssRules).forEach(function(r){ css += r.cssText + '\n'; });
+        }catch(e){}
+      });
+    }catch(e){ css = ''; }
+    var title = 'Shari\'ah Compliance Review';
+    try{
+      var t = clone.querySelector('.fin-rep-h1');
+      if(t && t.textContent) title = t.textContent.trim();
+    }catch(e){}
+    var w = window.open('', '_blank');
+    if(!w){ console.warn('FIX-6 export — the browser blocked the export window (pop-up blocker).'); return; }
+    var doc = '<!doctype html><html><head><meta charset="utf-8"><title>' + _esc(title) + '</title>'
+            + '<style>' + css + '</style>'
+            + '<style>html,body{background:#fff;margin:0;padding:24px;}'
+            + '.fin-report{max-width:900px;margin:0 auto;}'
+            + '@page{margin:14mm;}</style>'
+            + '</head><body>' + clone.outerHTML + '</body></html>';
+    w.document.open(); w.document.write(doc); w.document.close();
+    // Let the inlined CSS apply before the dialog opens; print() is the user's Save-as-PDF path.
+    w.onload = function(){ try{ w.focus(); w.print(); }catch(e){} };
+    setTimeout(function(){ try{ if(w && !w.closed) { w.focus(); w.print(); } }catch(e){} }, 400);
+  }
+
   // Snapshot the live report sheet into the archive: strip controls, freeze traffic lights to static dots.
   function _archiveCurrentReport(canvas){
     var sheet = canvas.querySelector('.fin-report'); if(!sheet) return;
@@ -2372,7 +2471,7 @@ window.FinanceView = (function(){
     // Drop the controls from the frozen copy. The per-item status dot (.fin-oi-dot) is already static — keep as-is.
     // The red AI-GENERATED banner (.fin-live-banner) is deliberately NOT in this list, so it stays in the archived copy.
     // The live-review strip + sign-off hint/confirmation are removed only for the LIVE case (saved cases never carry them).
-    var _archStrip = ['#fin-rep-print','#fin-rep-archive','#fin-rep-archived','.fin-rep-caseselect-wrap'];
+    var _archStrip = ['.fin-rep-actions','#fin-rep-print','#fin-rep-export','#fin-rep-archive','#fin-rep-archived','.fin-rep-caseselect-wrap'];
     if(isLive) _archStrip = _archStrip.concat(['#fin-live-strip','#fin-pipe-extra','.fin-rep-signoff-hint','#fin-rep-signedoff']);
     _archStrip.forEach(function(sel){
       var el = clone.querySelector(sel); if(el && el.parentNode) el.parentNode.removeChild(el);
@@ -2398,14 +2497,44 @@ window.FinanceView = (function(){
     var metaEl  = sheet.querySelector('.fin-rep-meta');
     var savedAt = ''; try{ savedAt = new Date().toLocaleString(); }catch(e){ savedAt = ''; }
     var liveN = isLive ? (((_liveCase && _liveCase.open_items) || []).length) : 0;
+    // The report object this snapshot was taken from — its own findings are frozen into the
+    // entry below so the RELIABILITY scorer compares THIS run, never a shared live object.
+    var _srcRep = null;
+    try{
+      _srcRep = isLive ? (_liveCase || null)
+              : (isFab ? ((D.compliance_reports || [])[_repFabIdx] || null) : _activeCase());
+    }catch(e){ _srcRep = null; }
+    var _srcItems = [];
+    try{
+      if(_srcRep && Array.isArray(_srcRep.open_items))
+        _srcItems = JSON.parse(JSON.stringify(_srcRep.open_items));   // deep copy — later edits can't mutate it
+    }catch(e){ _srcItems = []; }
+    var _srcModel = '';
+    try{ _srcModel = (_srcRep && (_srcRep._liveModel || _srcRep.model)) || ''; }catch(e){ _srcModel = ''; }
+    var _srcDoc = '';
+    try{ _srcDoc = (_srcRep && (_srcRep.case || _srcRep._liveName || _srcRep.title)) || ''; }catch(e){ _srcDoc = ''; }
     _archive.push({
       id:      String(Date.now()),
       savedAt: savedAt,
       title:   isLive ? _liveLabel() : (isFab ? _fabReportLabel(_repFabIdx) : (titleEl ? titleEl.textContent : '')),
       meta:    isLive ? ('LIVE review · ' + liveN + ' open items') : (metaEl ? metaEl.textContent : ''),
-      html:    clone.innerHTML
+      html:    clone.innerHTML,
+      // ── Added for the RELIABILITY scorer. Old entries lack these and stay readable. ──
+      open_items: _srcItems,
+      document:   _srcDoc,
+      model:      _srcModel,
+      // FIX-3 — how many findings the citation guard dropped before this snapshot was taken.
+      // open_items above is already the surviving list, so the count travels with it.
+      dropped_count: Number((_srcRep && _srcRep._citationDropped) || 0),
+      // FIX-4 — the reconciled rule verdicts for this run (empty when no rules were in scope).
+      rules_verdicts: (function(){
+        try{ return (_srcRep && Array.isArray(_srcRep.rules_verdicts))
+          ? JSON.parse(JSON.stringify(_srcRep.rules_verdicts)) : []; }catch(e){ return []; }
+      })()
     });
-    _archSave(_archive);
+    // A failed write means the report is NOT filed — warn instead of confirming.
+    // Drop the just-pushed entry so the in-memory archive matches what actually persisted.
+    if(!_archSave(_archive)){ _archive.pop(); _archWarnFull(canvas); return; }
     if(isLive){
       // Persistent green confirmation line under the SIGN OFF button.
       var g = canvas.querySelector('#fin-rep-signedoff');
@@ -2570,10 +2699,12 @@ window.FinanceView = (function(){
   // The live case's full label used in the dropdown / header: "10.70 · <filename>".
   function _liveLabel(){ return _liveCase ? (_liveCase._liveNum + ' · ' + (_liveCase._liveName || 'document')) : ''; }
   // True only when a live case exists and EVERY open item carries a saved scholar stance.
+  // Zero open items is a valid review result (a fully compliant document), and there is nothing
+  // to decide — so it counts as decided and the report can be signed off straight away.
   function _liveAllDecided(){
     var rep = _liveCase; if(!rep) return false;
     var items = rep.open_items || [];
-    if(!items.length) return false;
+    if(!items.length) return true;
     return items.every(function(it){ var d = _schGet(it.id); return !!(d && d.stance); });
   }
   // Grey cost/usage line for a completed live run (empty until usage is recorded).
@@ -2679,6 +2810,179 @@ window.FinanceView = (function(){
     }).catch(function(){ fail('network blocked'); });
   }
 
+  // ══ FIX-2 — DETERMINISTIC TERM PRE-SCAN (Tier 1) ═════════════════════════════════════
+  //    CODE, not the model, decides which finance terms are candidates in an uploaded
+  //    document. Pure string rules over data already loaded (D.terms — the 214 enriched
+  //    rows — plus D.contracts names). No API call, no invention: the only strings ever
+  //    searched are term_arabic / term_english / contract name as they exist in the data.
+  //    The model may only SELECT and RANK from this list; anything it adds is discarded by
+  //    _tsFilterModelTerms before Tier 2. Same document text → byte-identical list, always.
+  //
+  //    NOTE ON FIELDS: the enriched rows carry no aliases/variants field, so none is read.
+  //    Surface variation is handled by fixed normalisation rules below, not by extra data.
+
+  // Marks treated as OPTIONAL by the matcher — dropped on BOTH the document side and the
+  // term side, so "al-ijarah", "al'ijarah" and "alijarah" collapse to one form.
+  var TS_DROP = /[ʿʾʻʼ‘’'`´‐-―\-_]/;
+  // Interchangeable transliteration endings on the final word (ijara / ijarah / ijaraa).
+  var TS_ENDINGS = ['a', 'ah', 'aa'];
+  var TS_MIN_LEN = 3;   // variants shorter than this are ignored — they match noise
+
+  // Normalise text and keep a per-character map back to ORIGINAL offsets, so a hit can
+  // report first_position in the document the user actually uploaded.
+  //   lowercase · strip combining diacritics · drop TS_DROP marks ·
+  //   every other non-alphanumeric becomes a single space · whitespace collapsed.
+  function _tsNormMap(src){
+    src = String(src == null ? '' : src);
+    var out = [], map = [], lastSpace = true;
+    for(var i = 0; i < src.length; i++){
+      var raw = src.charAt(i);
+      if(TS_DROP.test(raw)) continue;                 // optional mark → contributes nothing
+      var dec = raw;
+      try{ dec = raw.normalize('NFD').replace(/[̀-ͯ]/g, ''); }catch(e){ dec = raw; }
+      dec = dec.toLowerCase();
+      for(var k = 0; k < dec.length; k++){
+        var c = dec.charAt(k);
+        if((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')){ out.push(c); map.push(i); lastSpace = false; }
+        else if(!lastSpace){ out.push(' '); map.push(i); lastSpace = true; }
+      }
+    }
+    while(out.length && out[out.length - 1] === ' '){ out.pop(); map.pop(); }
+    return { text: out.join(''), map: map };
+  }
+  function _tsNorm(s){ return _tsNormMap(s).text; }
+
+  // Every searchable surface form of ONE data string. Two hyphen readings (removed vs
+  // word-break) × the -a/-ah/-aa ending swap on the last word. Deterministic, closed set.
+  function _tsVariants(raw){
+    var s = String(raw == null ? '' : raw).trim();
+    if(!s) return [];
+    var seen = {}, out = [];
+    function add(v){
+      v = _tsNorm(v);
+      if(v && v.length >= TS_MIN_LEN && !seen[v]){ seen[v] = 1; out.push(v); }
+    }
+    var spaced = s.replace(/[‐-―\-_]+/g, ' ');   // hyphen as a word break
+    [s, spaced].forEach(function(base){
+      add(base);
+      var n = _tsNorm(base);
+      var m = /^(.*?)([a-z0-9]+)$/.exec(n);
+      if(!m) return;
+      var head = m[1], last = m[2];
+      var stem = last.replace(/(aa|ah|a)$/, '');
+      if(stem && stem !== last && stem.length >= 2){
+        TS_ENDINGS.forEach(function(e){ add(head + stem + e); });
+      }
+    });
+    return out;
+  }
+
+  // Every whole-word occurrence of a normalised variant — start offsets in the normalised text.
+  function _tsFindAll(hay, needle){
+    var hits = [], from = 0;
+    while(true){
+      var i = hay.indexOf(needle, from);
+      if(i === -1) break;
+      var before = i === 0 ? '' : hay.charAt(i - 1);
+      var end = i + needle.length;
+      var after = end >= hay.length ? '' : hay.charAt(end);
+      if((before === '' || before === ' ') && (after === '' || after === ' ')) hits.push(i);
+      from = i + 1;
+    }
+    return hits;
+  }
+
+  // Canonical display label for a candidate id (term row or contract row).
+  function _tsLabel(id){
+    var t = _idx && _idx.term && _idx.term[id];
+    if(t) return String(t.term_arabic || t.term_english || id);
+    var c = _idx && _idx.contract && _idx.contract[id];
+    if(c) return String(c.name || id);
+    return String(id);
+  }
+
+  // THE PRE-SCAN. Returns the fixed candidate list for a document:
+  //   [{ term_id, matched_variant, count, first_position }] sorted alphabetically.
+  function _tsScanDocument(text){
+    var nm = _tsNormMap(text), hay = nm.text;
+    if(!hay) return [];
+    var sources = [];
+    ((D && D.terms) || []).forEach(function(t){
+      if(t && t.id) sources.push({ id: String(t.id), strings: [t.term_arabic, t.term_english] });
+    });
+    ((D && D.contracts) || []).forEach(function(c){
+      if(c && c.id) sources.push({ id: String(c.id), strings: [c.name] });
+    });
+    // One row per term_id, pooling hits from ALL its variants: a document writing
+    // "Murabaha", "murabahah" and "Murabahaa" reports count 3, not 1. Positions are pooled
+    // in a set, so two spellings that land on the same offset are never double-counted.
+    var acc = {};
+    sources.forEach(function(src){
+      src.strings.forEach(function(raw){
+        _tsVariants(raw).forEach(function(v){
+          var hits = _tsFindAll(hay, v);
+          if(!hits.length) return;
+          var a = acc[src.id] || (acc[src.id] = { pos: {}, best: '' });
+          hits.forEach(function(i){ a.pos[i] = 1; });
+          // Longest hitting variant labels the row; ties broken alphabetically for determinism.
+          if(v.length > a.best.length || (v.length === a.best.length && v < a.best)) a.best = v;
+        });
+      });
+    });
+    var list = Object.keys(acc).map(function(id){
+      var a = acc[id];
+      var pos = Object.keys(a.pos).map(Number).sort(function(x, y){ return x - y; });
+      var first = nm.map[pos[0]];
+      return {
+        term_id: id,
+        matched_variant: a.best,
+        count: pos.length,
+        first_position: (first == null ? pos[0] : first)
+      };
+    });
+    // Plain codepoint compare, NOT localeCompare — locale must never change the output.
+    list.sort(function(a, b){
+      if(a.matched_variant !== b.matched_variant) return a.matched_variant < b.matched_variant ? -1 : 1;
+      return a.term_id < b.term_id ? -1 : (a.term_id > b.term_id ? 1 : 0);
+    });
+    return list;
+  }
+
+  // The candidate block handed to Tier 1 — the model's entire permitted vocabulary.
+  function _tsCandidateBlock(cands){
+    var lines = (cands || []).map(function(c){
+      return '- term_id: ' + c.term_id + ' | term: ' + _tsLabel(c.term_id)
+           + ' | matched as "' + c.matched_variant + '" | occurrences: ' + c.count;
+    });
+    return '=== CANDIDATE TERMS (deterministic code scan — the ONLY terms you may return) ===\n'
+         + (lines.length ? lines.join('\n') : '(none found)')
+         + '\n=== END CANDIDATE TERMS ===';
+  }
+
+  // CODE GATE: drop anything the model returned that is not in the candidate list.
+  function _tsFilterModelTerms(raw, cands){
+    var byId = {}, byVariant = {};
+    (cands || []).forEach(function(c){ byId[c.term_id] = c; byVariant[c.matched_variant] = c; });
+    var kept = [], dropped = [], seen = {};
+    (raw || []).forEach(function(t){
+      if(!t) return;
+      var id = String(t.term_id || '').trim();
+      var name = String(t.term || '').trim();
+      var c = byId[id] || byVariant[_tsNorm(name)] || null;
+      if(!c){   // the model may have echoed another surface form of a real candidate
+        _tsVariants(name).some(function(v){ if(byVariant[v]){ c = byVariant[v]; return true; } return false; });
+      }
+      if(!c){ dropped.push(id || name || '(unnamed)'); return; }
+      if(seen[c.term_id]) return;                      // model repeated a candidate
+      seen[c.term_id] = 1;
+      kept.push({ term_id: c.term_id, term: name || _tsLabel(c.term_id), why_flagged: String(t.why_flagged || '').trim() });
+    });
+    if(dropped.length){
+      console.warn('Tier 1 — dropped ' + dropped.length + ' term(s) not in the code-scan candidate list:', dropped);
+    }
+    return { kept: kept.slice(0, 20), dropped: dropped };
+  }
+
   // ══ TIERED LIVE-REVIEW PIPELINE — Tier 1 → Tier 2 → Tier 3 ═══════════════════════════
   //    Replaces the single-pass path on the RUN button. _liveExample() + _installLiveCase()
   //    are shared with the pipeline (schema + assembly); _buildLivePrompt / _runLiveReview
@@ -2686,6 +2990,131 @@ window.FinanceView = (function(){
 
   // RECIPE MODULE — the single home for every tier's instruction text. Assembled at runtime
   // from fragments (never stored as one readable block). All tiers read from here.
+  // ══ FIX-4 — FIXED RULE CHECKLIST ═══════════════════════════════════════════════════
+  //    The rule list is built by CODE from the loaded clause-verified deep notes
+  //    (standards_kb_fix4.json → D.kb entries whose key_clauses carry a rule_id).
+  //    Selection is deterministic: a note is in scope when its topic words appear in the
+  //    document text. No model decides which rules apply. Every rule keeps a stable id
+  //    (e.g. "SS5-6/1/1"), its clause ref, and the verbatim standard quote behind it.
+  var FIX4_MAX_RULES = 40;      // prompt-size cap; anything dropped is logged, never silent
+  var _fix4Dropped   = 0;       // rules cut by the cap on the last build
+
+  // Topic words per standard — matched against the document text to decide scope.
+  var FIX4_TOPICS = {
+    'SS3':  ['late payment','default','overdue','penalty','procrastinat','arrears','charity'],
+    'SS5':  ['guarantee','kafalah','surety','letter of guarantee','indemnit','security deposit','hamish'],
+    'SS8':  ['murabaha','murabahah','cost-plus','purchase orderer','mark-up','markup'],
+    'SS9':  ['ijarah','lease','lessor','lessee','rental','ijara'],
+    'SS10': ['salam'],
+    'SS11': ['istisna','manufactur'],
+    'SS12': ['musharak','partnership','sharikah','joint venture'],
+    'SS13': ['mudarab','profit-sharing','profit sharing'],
+    'SS23': ['wakala','wakalah','agency','agent'],
+    'SS30': ['tawarruq','monetization','monetisation','commodity murabaha']
+  };
+
+  // Every rule the loaded notes define, flattened. Read-only; safe when the file is absent.
+  function _fix4AllRules(){
+    var out = [];
+    (D.kb || []).forEach(function(note){
+      if(!note || !Array.isArray(note.key_clauses)) return;
+      var code = String(note.id || '').replace(/^KB-AAOIFI-/, '').replace(/^SS0*/, 'SS');
+      note.key_clauses.forEach(function(kc){
+        // The first FIX-4 note (SS 5) was written before rule_id existed — derive it from the
+        // clause ref so those rules are not silently invisible to the checklist.
+        if(!kc || !kc.quote || !kc.clause) return;
+        var rid = kc.rule_id || (code + '-' + kc.clause);
+        out.push({ rule_id: rid, code: code, clause: kc.clause, quote: kc.quote,
+                   gloss: kc.gloss || '', standard: note.title || code });
+      });
+    });
+    return out;
+  }
+  // The fixed list for THIS document: rules from standards whose topic words appear in the text.
+  function _fix4RulesFor(docText){
+    var text = String(docText || '').toLowerCase();
+    var all = _fix4AllRules();
+    if(!all.length){ _fix4Dropped = 0; return []; }
+    var inScope = {};
+    Object.keys(FIX4_TOPICS).forEach(function(code){
+      var hit = FIX4_TOPICS[code].some(function(w){ return text.indexOf(w) !== -1; });
+      if(hit) inScope[code] = 1;
+    });
+    var picked = all.filter(function(r){ return inScope[r.code]; });
+    // Round-robin across the in-scope standards when capping, so a large standard cannot crowd
+    // every other one out — a murabaha document must still get its late-payment rules tested.
+    var byCode = {}, order = [];
+    picked.forEach(function(r){
+      if(!byCode[r.code]){ byCode[r.code] = []; order.push(r.code); }
+      byCode[r.code].push(r);
+    });
+    var sel = [], i = 0;
+    while(sel.length < FIX4_MAX_RULES){
+      var added = false;
+      for(var k = 0; k < order.length && sel.length < FIX4_MAX_RULES; k++){
+        var list = byCode[order[k]];
+        if(i < list.length){ sel.push(list[i]); added = true; }
+      }
+      if(!added) break;
+      i++;
+    }
+    _fix4Dropped = Math.max(0, picked.length - sel.length);
+    if(_fix4Dropped){
+      console.warn('FIX-4 — ' + picked.length + ' rules in scope across ' + order.length
+                 + ' standard(s), sending ' + sel.length + ' (round-robin); '
+                 + _fix4Dropped + ' not tested this run (prompt-size cap).');
+    }
+    sel.sort(function(a, b){ return a.rule_id.localeCompare(b.rule_id, undefined, { numeric: true }); });
+    return sel;
+  }
+  // The rules block appended to the Tier-3 prompt.
+  function _fix4Block(rules){
+    if(!rules.length) return '';
+    var lines = rules.map(function(r){
+      return '- rule_id: ' + r.rule_id + '\n  standard: ' + r.code + ' clause ' + r.clause
+           + '\n  rule_text: ' + r.quote;
+    });
+    return '=== FIXED RULE CHECKLIST (test EVERY rule) ===\n'
+         + 'For EVERY rule_id below return one verdict in rules_verdicts:\n'
+         + '  COMPLIANT     — the document satisfies the rule, or the rule is not engaged by this document.\n'
+         + '  NON_COMPLIANT — the document breaches the rule. You MUST give document_quote, copied\n'
+         + '                  character-for-character from the DOCUMENT/CLAUSES, showing the breach.\n'
+         + '  UNCERTAIN     — the document does not give you enough to decide. Use this rather than guess.\n'
+         + 'Return a verdict for every rule_id, and NEVER invent a rule_id that is not listed here.\n'
+         + lines.join('\n') + '\n=== END RULE CHECKLIST ===';
+  }
+  // CODE GATE — the model never gets the last word on the checklist.
+  //   * a verdict citing a rule_id not in the fixed list is DROPPED and logged
+  //   * a rule the model skipped is filled in as UNCERTAIN by code
+  //   * NON_COMPLIANT without a document quote is downgraded to UNCERTAIN (nothing to show a scholar)
+  function _fix4Reconcile(rules, raw){
+    var byId = {}; rules.forEach(function(r){ byId[r.rule_id] = r; });
+    var seen = {}, dropped = [], out = [];
+    (Array.isArray(raw) ? raw : []).forEach(function(v){
+      var id = v && String(v.rule_id || '').trim();
+      if(!id || !byId[id]){ dropped.push(id || '(no rule_id)'); return; }
+      if(seen[id]) return;
+      seen[id] = 1;
+      var verdict = String((v.verdict || '')).toUpperCase().replace(/[^A-Z_]/g, '');
+      if(['COMPLIANT','NON_COMPLIANT','UNCERTAIN'].indexOf(verdict) === -1) verdict = 'UNCERTAIN';
+      var q = String(v.document_quote || '').trim();
+      if(verdict === 'NON_COMPLIANT' && !q) verdict = 'UNCERTAIN';
+      out.push({ rule_id: id, code: byId[id].code, clause: byId[id].clause, rule_text: byId[id].quote,
+                 verdict: verdict, document_quote: q, note: String(v.note || '').trim() });
+    });
+    rules.forEach(function(r){
+      if(seen[r.rule_id]) return;
+      out.push({ rule_id: r.rule_id, code: r.code, clause: r.clause, rule_text: r.quote,
+                 verdict: 'UNCERTAIN', document_quote: '', note: 'No verdict returned — filled in by code.' });
+    });
+    if(dropped.length) console.warn('FIX-4 rule gate — dropped ' + dropped.length
+      + ' verdict(s) citing unknown rule id(s): ' + dropped.join(', '));
+    var filled = out.length - (Array.isArray(raw) ? raw.length : 0) + dropped.length;
+    if(filled > 0) console.warn('FIX-4 rule gate — ' + filled + ' rule(s) had no verdict; filled in as UNCERTAIN.');
+    out.sort(function(a, b){ return a.rule_id.localeCompare(b.rule_id, undefined, { numeric: true }); });
+    return { verdicts: out, dropped: dropped.length };
+  }
+
   var _pipelineRecipe = (function(){
     var _scope = [
       'Scope: AAOIFI + CBUAE standards as adopted in the United Arab Emirates.',
@@ -2697,13 +3126,16 @@ window.FinanceView = (function(){
     ];
     var _t1Task = [
       'You are a Shari\'ah compliance analyst performing TIER 1 of a tiered review — a fast scan.',
-      'Read the DOCUMENT below and identify every Islamic-finance-relevant term, instrument, and risk word actually present in it',
-      '(e.g. profit benchmarks, indices, floors, guarantees, indemnities, agency roles, late-payment devices, tawarruq / commodity mechanics).',
-      'List at most 20, most material first. Include ONLY terms genuinely present in the document text.'
+      'A deterministic code scan has ALREADY identified every candidate term present in the DOCUMENT.',
+      'That CANDIDATE TERMS list is authoritative and closed. Your ONLY job is to SELECT and RANK from it:',
+      'keep the candidates that are materially relevant to Shari\'ah compliance in this DOCUMENT, most material first.',
+      'You MUST NOT add, invent, rename, generalise, or infer any term that is not in the CANDIDATE TERMS list.',
+      'Copy term_id exactly as given. Any term you return that is not in the list is discarded automatically by code.',
+      'Return at most 20. If a candidate is not relevant here, simply omit it.'
     ];
     var _t1Shape = [
       'Return ONLY this JSON object (same keys):',
-      '{ "terms": [ { "term": "...", "why_flagged": "one line" } ] }'
+      '{ "terms": [ { "term_id": "T001", "term": "tawarruq", "why_flagged": "one line" } ] }'
     ];
     var _t2Task = [
       'You are a Shari\'ah compliance analyst performing TIER 2 of a tiered review — verbatim clause extraction.',
@@ -2729,7 +3161,7 @@ window.FinanceView = (function(){
     var _t3Task = [
       'You are a Shari\'ah compliance analyst performing TIER 3 of a tiered review — testing the extracted clauses against the standards.',
       'You are given the CLAUSES extracted and verbatim-checked in Tier 2.',
-      'For each clause where a genuine Shari\'ah issue exists, produce one open item. Produce between 3 and 9 open items in total — fewer strong items beat forced weak ones, but never return an empty list when any listed clause raises a genuine question.',
+      'Report EVERY clause that carries a genuine Shari\'ah issue — one open item per issue. There is NO minimum and NO maximum: return as many open items as the document genuinely raises, and no more. Never pad the list to reach a count, and never drop a real issue to stay under one. If the document is fully compliant, an empty open_items array is a valid and correct answer.',
       'Prefer clauses whose quote was verbatim-confirmed; a clause flagged "unverified quote" may be used but is weaker evidence.'
     ];
     var _t3Rules = [
@@ -2739,12 +3171,14 @@ window.FinanceView = (function(){
       '- Every principle.tag MUST be exactly "plausible".',
       '- Respond with ONLY raw JSON. No markdown, no code fences, no commentary before or after.',
       'Return ONLY the JSON object. Do not write any text before or after it. Do not use markdown code fences.',
-      'The JSON MUST match EXACTLY this shape (same keys). open_items is an array of 6 to 9 items, each shaped like the single example item shown:'
+      'The JSON MUST match EXACTLY this shape (same keys). open_items is an array holding ONE item per genuine issue found — however many that is — each shaped like the single example item shown:'
     ];
-    // Amended brief for the automatic retry after a truncated (max_tokens) response — fewer, shorter items.
+    // Amended brief for the automatic retry after a truncated (max_tokens) response — shorter prose,
+    // and severity-ordered so a cut-off response still leads with the most serious issues.
     var _t3Tight = [
-      'TIGHTER BRIEF (the previous response was too long and was cut off — this overrides the item count above):',
-      '- Produce AT MOST 6 open items.',
+      'TIGHTER BRIEF (the previous response was too long and was cut off — this overrides the length guidance above):',
+      '- Order the open items by severity, most severe FIRST, and include as many as fit within the response limit.',
+      '- Do not invent or omit issues to hit a count; the ordering is what matters here.',
       '- principle.text must be at most 60 words.',
       '- issue_summary must be at most 60 words.'
     ];
@@ -2763,8 +3197,11 @@ window.FinanceView = (function(){
       return '=== TIER-2 CLAUSES ===\n' + lines.join('\n') + '\n=== END CLAUSES ===';
     }
     return {
-      // Tier 1 — term / instrument / risk-word scan.
-      tier1: function(text){ return _join([].concat(_t1Task, _scope, _t1Shape, _jsonOnly)) + '\n' + _doc(text); },
+      // Tier 1 — select/rank from the deterministic code-scan candidate list (never free-form).
+      tier1: function(text, cands){
+        return _join([].concat(_t1Task, _scope, _t1Shape, _jsonOnly))
+             + '\n' + _tsCandidateBlock(cands) + '\n' + _doc(text);
+      },
       // Tier 2 — verbatim clause extraction, chained on Tier 1's terms.
       // tight=true appends the amended brief used for the automatic retry after a truncated response.
       tier2: function(text, terms, tight){
@@ -2774,8 +3211,11 @@ window.FinanceView = (function(){
       // Tier 3 — issue-finding against standards; open items must reuse Tier-2 quotes EXACTLY.
       // Uses _liveExample() so the JSON shape is byte-for-byte the existing live-report schema.
       // tight=true appends the amended brief used for the automatic retry after a truncated response.
-      tier3: function(clauses, tight){
-        return _join([].concat(_t3Task, (tight ? _t3Tight : []), _scope, _t3Rules)) + '\n' + JSON.stringify(_liveExample()) + '\n' + _clauseBlock(clauses);
+      // fix4Rules (optional) appends the fixed rule checklist; empty list → prompt byte-identical to before.
+      tier3: function(clauses, tight, fix4Rules){
+        var base = _join([].concat(_t3Task, (tight ? _t3Tight : []), _scope, _t3Rules)) + '\n' + JSON.stringify(_liveExample()) + '\n' + _clauseBlock(clauses);
+        var rb = _fix4Block(fix4Rules || []);
+        return rb ? (base + '\n' + rb) : base;
       }
     };
   })();
@@ -2819,6 +3259,11 @@ window.FinanceView = (function(){
   function _normQuote(s){
     return _normText(s).replace(/^(?:["'…\s]|\.{2,})+/, '').replace(/(?:["'…\s]|\.{2,})+$/, '').trim();
   }
+  // Tier-1 UI line for the deterministic pre-scan. States what CODE found, not what the AI chose.
+  function _tsScanCount(pipe){
+    var n = (pipe && pipe.scan && pipe.scan.candidates || []).length;
+    return n + ' candidate term' + (n === 1 ? '' : 's') + ' found by code scan';
+  }
   // Progress strip — one segment per tier. Amber while running, green ✓ on complete, red + plain reason on failure.
   function _pipeStripHtml(pipe){
     if(!pipe) return '';
@@ -2829,9 +3274,11 @@ window.FinanceView = (function(){
       segs.push(fail(1, pipe.error));
     } else if(pipe.tier1){
       var n1 = (pipe.tier1.terms || []).length;
-      segs.push('<span class="fin-pipe-seg green">TIER 1 &#10003; ' + n1 + ' term' + (n1 === 1 ? '' : 's') + '</span>');
+      segs.push('<span class="fin-pipe-seg green">TIER 1 &#10003; ' + n1 + ' term' + (n1 === 1 ? '' : 's')
+              + '<span class="fin-pipe-scan"> · ' + _tsScanCount(pipe) + '</span></span>');
     } else {
-      segs.push('<span class="fin-pipe-seg amber">TIER 1 — scanning terms…</span>');
+      segs.push('<span class="fin-pipe-seg amber">TIER 1 — scanning terms…'
+              + '<span class="fin-pipe-scan"> · ' + _tsScanCount(pipe) + '</span></span>');
     }
     // TIER 2 — shown once Tier 1 has completed (or Tier 2 itself failed).
     if(pipe.error && pipe.errorTier === 2){
@@ -2905,7 +3352,8 @@ window.FinanceView = (function(){
   }
   // TIER 1 — scan the document for Islamic-finance terms. Stores terms + token usage on _pipe.
   function _pipeTier1(key, model){
-    var promptText = _pipelineRecipe.tier1((_liveDoc && _liveDoc.text) || '');
+    var cands = (_pipe && _pipe.scan && _pipe.scan.candidates) || [];
+    var promptText = _pipelineRecipe.tier1((_liveDoc && _liveDoc.text) || '', cands);
     return _pipeApiCall(key, model, promptText, 2000).then(function(res){
       if(res.status !== 200){
         throw { reason: (res.j && res.j.error && res.j.error.message) ? res.j.error.message : ('HTTP ' + res.status) };
@@ -2918,11 +3366,9 @@ window.FinanceView = (function(){
         console.error('Tier 1 — raw AI response (could not be parsed as JSON):\n', txt);   // console only, never the UI
         throw { reason: 'the term-scan response could not be read' };
       }
-      var terms = parsed.terms
-        .filter(function(t){ return t && String(t.term || '').trim(); })
-        .slice(0, 20)
-        .map(function(t){ return { term: String(t.term).trim(), why_flagged: String(t.why_flagged || '').trim() }; });
-      _pipe.tier1 = { terms: terms };
+      // CODE GATE — the model may only select from the pre-scan list; extras never reach Tier 2.
+      var gated = _tsFilterModelTerms(parsed.terms, cands);
+      _pipe.tier1 = { terms: gated.kept, dropped: gated.dropped };
       var u = (res.j && res.j.usage) || {};
       _pipe.usage.push({ tier: 'tier1', model: model, input_tokens: u.input_tokens || 0, output_tokens: u.output_tokens || 0 });
       _pipePaint();
@@ -3005,6 +3451,134 @@ window.FinanceView = (function(){
       }
     });
   }
+
+  // ══ FIX-3 — CITATION GROUNDING GUARD ═══════════════════════════════════════════════
+  //    A CODE check that runs AFTER Tier 3 has been parsed and BEFORE the case is installed,
+  //    so nothing unverified can reach the render or the archive. It is a post-check only:
+  //    it never edits an item, never rewrites a citation, and never touches the prompts,
+  //    the tiers, or any scoring. An item either survives untouched or is dropped whole.
+  //      PASS — cites at least one standard code that EXISTS in the loaded standards, and
+  //             every long quoted span it attributes to a standard is found in the loaded
+  //             standard content (whitespace/case normalised).
+  //      FAIL — no standard citation at all; or every cited code is unknown to the loaded
+  //             standards; or a quoted span appears nowhere in the loaded standard content.
+  //    Zero failures → the surviving list is the parsed list, unchanged.
+  var _cgCorpus = null;   // built once per session from the loaded standards; null until first use
+
+  // Normalise a code for matching: upper-case, drop everything that is not A–Z/0–9 ("SS 27" → "SS27").
+  function _cgNormCode(s){ return String(s == null ? '' : s).toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+  // Normalise prose for containment testing: shared quote/whitespace normalisation, then lower-case
+  // and reduce every run of non-alphanumerics to ONE space, so punctuation can never decide a match.
+  function _cgNormProse(s){ return _normText(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+  // Walk any nested note value and collect its strings — deep notes hold arrays of prose.
+  function _cgCollect(v, out){
+    if(v == null) return;
+    if(typeof v === 'string'){ out.push(v); return; }
+    if(Array.isArray(v)){ v.forEach(function(x){ _cgCollect(x, out); }); return; }
+    if(typeof v === 'object'){ Object.keys(v).forEach(function(k){ _cgCollect(v[k], out); }); }
+  }
+  // Index of what is ACTUALLY loaded: every tracker standard code, the normalised content of every
+  // deep note matched to its code, and one all-notes corpus for the "appears nowhere" test.
+  function _cgBuildCorpus(){
+    if(_cgCorpus) return _cgCorpus;
+    var codes = {}, content = {}, allParts = [];
+    Object.keys(_idx.standard || {}).forEach(function(code){
+      var norm = _cgNormCode(code);
+      if(!norm) return;
+      codes[norm] = code;
+      var r = _idx.standard[code] || {};
+      content[norm] = _cgNormProse(r.title || '');   // title always available; note text appended below
+    });
+    (D.kb || []).forEach(function(note){
+      if(!note) return;
+      var parts = []; _cgCollect(note, parts);
+      var text = _cgNormProse(parts.join(' '));
+      if(text) allParts.push(text);
+      // Tie the note to its code: note ids read KB-GS1 / KB-AAOIFI-SS36 / KB-IFSB-28, so a note
+      // belongs to a code when its normalised id ENDS WITH the normalised code on a non-digit boundary.
+      var idNorm = _cgNormCode(note.id || '');
+      if(!idNorm) return;
+      Object.keys(codes).forEach(function(norm){
+        if(idNorm.length < norm.length || idNorm.slice(-norm.length) !== norm) return;
+        var prev = idNorm.charAt(idNorm.length - norm.length - 1);
+        if(prev && /[0-9]/.test(prev)) return;      // "SS5" must not claim the note for "SS35"
+        content[norm] = ((content[norm] || '') + ' ' + text).trim();
+      });
+    });
+    _cgCorpus = { codes: codes, content: content, all: allParts.join(' ') };
+    return _cgCorpus;
+  }
+  // Every standard code an item cites: the affected_standards codes plus any code written into the
+  // principle's own clause_ref / text (the saved reports cite there too, e.g. "SS 27 (Indices…)").
+  function _cgItemCodes(it){
+    var out = [], seen = {};
+    function add(c){
+      var code = _normText(c || '');
+      if(!code) return;
+      var norm = _cgNormCode(code);
+      if(!norm || seen[norm]) return;
+      seen[norm] = 1; out.push(code);
+    }
+    ((it && it.affected_standards) || []).forEach(function(a){ if(a) add(a.code); });
+    var p = (it && it.principle) || {};
+    var scan = _normText(p.clause_ref || '') + ' ' + _normText(p.text || '');
+    (scan.match(/\b(?:SS|FAS|GS|SOAA)\s+\d+\b/g) || []).forEach(add);
+    return out;
+  }
+  // Quoted spans the item attributes to a standard: straight/smart double-quoted runs inside
+  // principle.text. Short spans (< 6 words) are ordinary terminology ("gharar", "riba") rather than
+  // a quotation of standard text, so only longer spans are treated as quoted standard text.
+  function _cgItemQuotes(it){
+    var p = (it && it.principle) || {};
+    var src = _normText(p.text || '');
+    var out = [];
+    (src.match(/"[^"]{12,}"/g) || []).forEach(function(q){
+      var span = _cgNormProse(q);
+      if(span && span.split(' ').length >= 6) out.push({ raw: q, norm: span });
+    });
+    return out;
+  }
+  // The guard itself. Returns { kept: [...], dropped: [{ item, title, reason }] } and mutates nothing.
+  function _cgGuard(items){
+    var C = _cgBuildCorpus();
+    var kept = [], dropped = [];
+    (items || []).forEach(function(it){
+      var cited = _cgItemCodes(it);
+      var title = _normText((it && it.title) || '(untitled finding)');
+      if(!cited.length){ dropped.push({ item: it, title: title, reason: 'no standard citation at all' }); return; }
+      var known = cited.filter(function(c){ return !!C.codes[_cgNormCode(c)]; });
+      if(!known.length){
+        dropped.push({ item: it, title: title, reason: 'cited standard not in the loaded standards: ' + cited.join(', ') });
+        return;
+      }
+      // Quoted standard text must be findable — first in the cited standards' own loaded content,
+      // then anywhere in the loaded standards. Only text found NOWHERE fails the item.
+      var citedText = known.map(function(c){ return C.content[_cgNormCode(c)] || ''; }).join(' ');
+      var bad = null;
+      _cgItemQuotes(it).forEach(function(q){
+        if(bad) return;
+        if(citedText.indexOf(q.norm) !== -1) return;
+        if(C.all.indexOf(q.norm) !== -1) return;
+        bad = q.raw;
+      });
+      if(bad){
+        dropped.push({ item: it, title: title, reason: 'quoted standard text found nowhere in the loaded standards: ' + bad });
+        return;
+      }
+      kept.push(it);
+    });
+    return { kept: kept, dropped: dropped };
+  }
+  // Never silent: every dropped finding is named in the console with the citation that failed.
+  function _cgReport(res){
+    (res.dropped || []).forEach(function(d){
+      console.warn('FIX-3 citation grounding — DROPPED "' + d.title + '" — ' + d.reason);
+    });
+    if(res.dropped && res.dropped.length){
+      console.warn('FIX-3 citation grounding — ' + res.dropped.length + ' of ' + (res.kept.length + res.dropped.length)
+                 + ' finding(s) dropped before render/archive; ' + res.kept.length + ' kept.');
+    }
+  }
   // TIER 3 — test the Tier-2 clauses against the standards → the live-report schema, then install the case.
   // Shrink the Tier-2 clause pool for Tier 3: all verbatim-confirmed clauses + at most 3 flagged unverified ones.
   function _t3SendClauses(){
@@ -3018,7 +3592,11 @@ window.FinanceView = (function(){
     attempt = attempt || 1;                             // demo-proofing: up to 3 automatic attempts before failing
     var sendClauses = _t3SendClauses();                 // fewer, better-grounded clauses (item 2)
     var fullPool    = (_pipe && _pipe.tier2 && _pipe.tier2.clauses) || [];   // match quotes against the whole pool
-    var promptText  = _pipelineRecipe.tier3(sendClauses, !!tight);
+    // FIX-4 — the fixed rule list is chosen by CODE from the loaded clause-verified notes.
+    // No rules in scope → rulesFor is empty, the prompt and the tool schema stay exactly as before.
+    var fix4Rules   = _fix4RulesFor((_liveDoc && _liveDoc.text) || '');
+    var promptText  = _pipelineRecipe.tier3(sendClauses, !!tight, fix4Rules);
+    if(fix4Rules.length) console.info('FIX-4 — ' + fix4Rules.length + ' fixed rule(s) sent for verdict.');
     // One retry path for every recoverable Tier-3 outcome (empty items / unreadable response):
     // silently re-ask with the tighter brief instead of failing the whole run.
     function _t3RetryOrFail(msg){
@@ -3029,7 +3607,18 @@ window.FinanceView = (function(){
       }
       throw { reason: msg + ' (3 attempts made). Run again or pick a saved case' };
     }
-    var _t3Tool = [{ name:'emit_review', description:'Return the Tier-3 Shari\'ah review as structured JSON.', input_schema:{ type:'object', properties:{ report_id:{type:'string'}, case:{type:'string'}, provenance_statement:{type:'string'}, open_items:{ type:'array', minItems:1, items:{ type:'object', properties:{ from_document:{ type:'object', properties:{ clause_ref:{type:'string'}, quoted_text:{type:'string'} }, required:['quoted_text'] } }, required:['from_document'] } } }, required:['open_items'] } }];
+    var _t3Tool = [{ name:'emit_review', description:'Return the Tier-3 Shari\'ah review as structured JSON.', input_schema:{ type:'object', properties:{ report_id:{type:'string'}, case:{type:'string'}, provenance_statement:{type:'string'}, open_items:{ type:'array', minItems:0, items:{ type:'object', properties:{ from_document:{ type:'object', properties:{ clause_ref:{type:'string'}, quoted_text:{type:'string'} }, required:['quoted_text'] } }, required:['from_document'] } } }, required:['open_items'] } }];
+    // FIX-4 — rules_verdicts is added to the schema ONLY when rules are in scope, so a run with no
+    // rules sends byte-identical tool JSON to before.
+    if(fix4Rules.length){
+      _t3Tool[0].input_schema.properties.rules_verdicts = { type:'array', minItems:0, items:{ type:'object', properties:{
+        rule_id:{ type:'string' },
+        verdict:{ type:'string', enum:['COMPLIANT','NON_COMPLIANT','UNCERTAIN'] },
+        document_quote:{ type:'string' },
+        note:{ type:'string' }
+      }, required:['rule_id','verdict'] } };
+      _t3Tool[0].input_schema.required = ['open_items','rules_verdicts'];
+    }
     return _pipeApiCall(key, model, promptText, 50000, _t3Tool, { type:'tool', name:'emit_review' }).then(function(res){
       var stop   = res.j && res.j.stop_reason;
       var outTok = (res.j && res.j.usage && res.j.usage.output_tokens) || 0;
@@ -3053,9 +3642,30 @@ window.FinanceView = (function(){
         return _t3RetryOrFail('could not read the AI response.');
       }
       _t3EnforceQuotes(report, fullPool);   // overwrite each quote with the Tier-2 verbatim text
-      var items = Array.isArray(report.open_items) ? report.open_items.filter(function(it){ return it && it.from_document && String(it.from_document.quoted_text || '').trim(); }) : [];
-      if(!items.length){ return _t3RetryOrFail('no quotable open items were returned.'); }
+      var rawItems = Array.isArray(report.open_items) ? report.open_items : [];
+      var items = rawItems.filter(function(it){ return it && it.from_document && String(it.from_document.quoted_text || '').trim(); });
+      // Zero items is now a VALID result — a fully compliant document, matching the Tier-3 brief.
+      // But if the model DID return items and none survived the quote check, that is still a real
+      // failure (invented or unquotable clauses) and must retry exactly as before.
+      if(rawItems.length && !items.length){ return _t3RetryOrFail('no quotable open items were returned.'); }
       report.open_items = items;   // keep only quote-backed items — drop any stragglers without a clause quote
+      // FIX-3 — citation grounding guard. Runs on the parsed Tier-3 result, before _installLiveCase
+      // (the only path to the render and the archive). Zero failures → open_items is untouched.
+      var _cgRes = _cgGuard(report.open_items);
+      _cgReport(_cgRes);
+      report.open_items      = _cgRes.kept;
+      report._citationDropped = _cgRes.dropped.length;
+      // FIX-4 — reconcile the rule verdicts against the fixed list built in code. Unknown rule ids
+      // are dropped, skipped rules are filled in as UNCERTAIN. No rules in scope → nothing attached
+      // and the report object is exactly what it was before FIX-4.
+      if(fix4Rules.length){
+        var _rv = _fix4Reconcile(fix4Rules, report.rules_verdicts);
+        report.rules_verdicts  = _rv.verdicts;
+        report._rulesDropped   = _rv.dropped;
+        report._rulesNotTested = _fix4Dropped;
+      } else {
+        delete report.rules_verdicts;
+      }
       _pipe.tier3 = { report: report };
       var u = (res.j && res.j.usage) || {};
       _pipe.usage.push({ tier: 'tier3', model: model, input_tokens: u.input_tokens || 0, output_tokens: u.output_tokens || 0 });
@@ -3065,8 +3675,83 @@ window.FinanceView = (function(){
       report._liveModel = model;
       report._liveUsage = { input_tokens: totalIn, output_tokens: totalOut };
       report._liveTiers = 3;
-      _installLiveCase(report);   // 10.7x numbering, red UNVERIFIED banner, rich renderer, scholar boxes, archive gating
+      return _t3Deliver(report, key, model);   // FIX-5 aware; with the flag off this installs immediately
     }).catch(function(err){ throw { tier: 3, reason: _pipeReason(err) }; });
+  }
+
+  // ══ FIX-5 — CONSENSUS VOTING (BUILT, OFF BY DEFAULT) ═══════════════════════════════
+  //    RELI_CONSENSUS === false (the default) → _t3Deliver installs the single Tier-3 report
+  //    immediately, so behaviour, token cost and output are EXACTLY as before FIX-5.
+  //    RELI_CONSENSUS === true  → Tier 3 runs 3 times and CODE keeps only what appears in at
+  //    least 2 of the 3 runs: rule verdicts matched by rule_id, free-form findings matched with
+  //    the existing quote-similarity matcher used by the reliability scorer. 3x the API cost —
+  //    do not enable without deciding to pay for it.
+  var RELI_CONSENSUS = false;
+  var RELI_CONSENSUS_RUNS = 3;
+
+  function _t3Deliver(report, key, model){
+    if(!RELI_CONSENSUS){ _installLiveCase(report); return; }
+    if(!_pipe._consensus) _pipe._consensus = [];
+    _pipe._consensus.push(report);
+    var done = _pipe._consensus.length;
+    if(done < RELI_CONSENSUS_RUNS){
+      if(_pipe) _pipe.tier3Notice = 'TIER 3 — consensus run ' + (done + 1) + ' of ' + RELI_CONSENSUS_RUNS + '…';
+      _pipePaint();
+      return _pipeTier3(key, model, false, 1);
+    }
+    if(_pipe) _pipe.tier3Notice = null;
+    _installLiveCase(_t3Consensus(_pipe._consensus));
+  }
+
+  // Majority merge across the collected runs. Returns a report object shaped exactly like a
+  // single-run report, so every downstream consumer (render, guard, archive) is unchanged.
+  function _t3Consensus(runs){
+    var need = Math.floor(runs.length / 2) + 1;          // 2 of 3
+    var base = runs[0];
+    // ── rule verdicts: same rule_id must carry the same verdict in >= need runs, else UNCERTAIN.
+    var seenIds = {}, merged = [];
+    runs.forEach(function(r){
+      (r.rules_verdicts || []).forEach(function(v){ if(v && v.rule_id) seenIds[v.rule_id] = 1; });
+    });
+    Object.keys(seenIds).forEach(function(id){
+      var votes = {}, sample = null;
+      runs.forEach(function(r){
+        var v = (r.rules_verdicts || []).filter(function(x){ return x && x.rule_id === id; })[0];
+        if(!v) return;
+        votes[v.verdict] = (votes[v.verdict] || 0) + 1;
+        if(v.verdict === 'NON_COMPLIANT' && v.document_quote && !sample) sample = v;
+        if(!sample) sample = v;
+      });
+      var win = null;
+      Object.keys(votes).forEach(function(k){ if(votes[k] >= need && (!win || votes[k] > votes[win])) win = k; });
+      var out = sample ? JSON.parse(JSON.stringify(sample)) : { rule_id: id };
+      if(!win){ out.verdict = 'UNCERTAIN'; out.note = 'No 2-of-' + runs.length + ' agreement across consensus runs.'; }
+      else out.verdict = win;
+      merged.push(out);
+    });
+    merged.sort(function(a, b){ return String(a.rule_id).localeCompare(String(b.rule_id), undefined, { numeric: true }); });
+    // ── free-form findings: keep an item only when >= need runs contain a matching finding.
+    //    Matching reuses the reliability scorer's own quote/title similarity pair-scorer.
+    var keep = [];
+    (base.open_items || []).forEach(function(it, i){
+      var a = _reliPrep(it, i), hits = 1;
+      for(var r = 1; r < runs.length; r++){
+        var other = (runs[r].open_items || []).map(_reliPrep);
+        var found = other.some(function(b){ var s = _reliPairScore(a, b); return s && s.ok; });
+        if(found) hits++;
+      }
+      if(hits >= need) keep.push(it);
+    });
+    var dropped = (base.open_items || []).length - keep.length;
+    console.warn('FIX-5 consensus — ' + runs.length + ' runs; kept ' + keep.length + ' of '
+               + (base.open_items || []).length + ' findings (' + dropped + ' without ' + need + '-of-'
+               + runs.length + ' agreement); ' + merged.length + ' rule verdict(s) merged.');
+    var out = base;
+    out.open_items = keep;
+    if(merged.length) out.rules_verdicts = merged;
+    out._consensusRuns = runs.length;
+    out._consensusDropped = dropped;
+    return out;
   }
   // RUN → tiered pipeline: Tier 1 → Tier 2 → Tier 3, then the assembled live case.
   function _runPipeline(){
@@ -3074,7 +3759,11 @@ window.FinanceView = (function(){
     if(!key || !_liveDoc || !_liveDoc.text) return;
     var model = _apiModelGet();   // captured at request time so the cost line matches what was sent
     var btn = document.getElementById('fin-live-run');
-    _pipe = { doc: _liveDoc, tier1: null, tier2: null, tier3: null, usage: [], error: null, errorTier: 0, tier2Notice: null, tier3Notice: null };
+    _pipe = { doc: _liveDoc, tier1: null, tier2: null, tier3: null, usage: [], error: null, errorTier: 0, tier2Notice: null, tier3Notice: null, scan: null };
+    // FIX-2 — deterministic code scan runs BEFORE any API call; it fixes the term universe.
+    _pipe.scan = { candidates: _tsScanDocument(_liveDoc.text || '') };
+    console.info('FIX-2 term pre-scan — ' + _pipe.scan.candidates.length + ' candidate term(s) found by code scan:',
+                 _pipe.scan.candidates.map(function(c){ return c.term_id + ':' + c.matched_variant + '×' + c.count; }));
     if(btn) btn.disabled = true;
     _pipePaint();   // TIER 1 — scanning terms… (amber)
     _pipeTier1(key, model)
@@ -3107,23 +3796,30 @@ window.FinanceView = (function(){
 
     var h = '<div class="fin-report">';
 
-    // PRINT — top-right of the sheet; hidden in the print stylesheet so it never appears on paper. Not in blank state.
-    if(_repFabIdx !== null){
-      h += '<button type="button" id="fin-rep-print" class="fin-rep-print">PRINT</button>';
-    }
-    // SIGN OFF & ARCHIVE — stores a static, read-only snapshot of this sheet; also print-hidden.
+    // Report actions — ONE flex row: SIGN OFF & ARCHIVE, EXPORT, PRINT. These used to be three
+    // separately absolute-positioned elements pinned to the same corner, so adding EXPORT made them
+    // land on top of each other. The row now lays them out with real spacing and wraps to a second
+    // line when the sheet is narrow, instead of overlapping. All three are print-hidden as before.
     // Shown for every selected case (saved + live); hidden only in the blank-start state.
-    // On a LIVE case it stays disabled (with a grey hint) until every open item has a saved scholar stance.
+    // On a LIVE case SIGN OFF stays disabled (with a grey hint) until every open item has a stance.
     if(_repFabIdx !== null){
-      if(_repFabIdx === 'live'){
-        var allDecided = _liveAllDecided();
-        h += '<button type="button" id="fin-rep-archive" class="fin-rep-print"'+(allDecided ? '' : ' disabled')+'>SIGN OFF &amp; ARCHIVE</button>';
+      var isLiveRep  = (_repFabIdx === 'live');
+      var allDecided = isLiveRep ? _liveAllDecided() : true;
+      h += '<div class="fin-rep-actions">';
+      h += '<button type="button" id="fin-rep-archive" class="fin-rep-print"'
+         + ((isLiveRep && !allDecided) ? ' disabled' : '') + '>SIGN OFF &amp; ARCHIVE</button>';
+      // FIX-6 — EXPORT: opens the report ALONE in a clean window and calls the print dialog,
+      // so the user can "Save as PDF". Self-contained: no server, no library, no network.
+      h += '<button type="button" id="fin-rep-export" class="fin-rep-print">EXPORT</button>';
+      h += '<button type="button" id="fin-rep-print" class="fin-rep-print">PRINT</button>';
+      // Hint / confirmation lines take their own full-width line beneath the buttons.
+      if(isLiveRep){
         if(!allDecided) h += '<span class="fin-rep-signoff-hint">Decide all open items to sign off</span>';
         h += '<span id="fin-rep-signedoff" class="fin-rep-signedoff" style="display:none">Signed off — stored in ARCHIVE</span>';
       } else {
-        h += '<button type="button" id="fin-rep-archive" class="fin-rep-print">SIGN OFF &amp; ARCHIVE</button>';
         h += '<span id="fin-rep-archived" class="fin-rep-archived" style="display:none">Archived &#10003;</span>';
       }
+      h += '</div>';
     }
 
     var ac = _activeCase();
@@ -3197,7 +3893,10 @@ window.FinanceView = (function(){
             if(c && !_liveSeen[c]){ _liveSeen[c] = 1; applied.push(c); }
           });
         });
-        if(!applied.length && Array.isArray(fab.applied_standards)) applied = fab.applied_standards.slice();
+        // Fallback ONLY when the run actually raised items. With zero items there is nothing to
+        // attribute, so echoing the AI's applied_standards would show standards as if they had
+        // raised findings — the list stays empty and the Standard cell prints "—".
+        if(fitems.length && !applied.length && Array.isArray(fab.applied_standards)) applied = fab.applied_standards.slice();
       } else {
         applied = fab.applied_standards || [];
       }
@@ -3212,7 +3911,7 @@ window.FinanceView = (function(){
       h += '<div class="fin-rep-demo">'+_esc(fmeta.banner || 'ILLUSTRATIVE')+'</div>';
       // Business-case header — case, exhibit reference, institution (— when unnamed). source_url on its own line.
       h += '<div class="fin-rep-casebox">'
-         + '<div class="fin-rep-caserow"><span class="fin-rep-casek">Business case</span><span class="fin-rep-casev">'+_esc(fab.case || '')+'</span></div>'
+         + '<div class="fin-rep-caserow"><span class="fin-rep-casek">Business case</span><span class="fin-rep-casev">'+_esc(_repCaseName(fab))+'</span></div>'
          + '<div class="fin-rep-caserow"><span class="fin-rep-casek">Exhibit reference</span><span class="fin-rep-casev">'+_esc(fab.exhibit || '—')+'</span></div>'
          + '<div class="fin-rep-caserow"><span class="fin-rep-casek">Institution</span><span class="fin-rep-casev">'+_esc(fab.institution || '—')+'</span></div>'
          + '</div>';
@@ -3252,7 +3951,44 @@ window.FinanceView = (function(){
              + '</li>';
         });
         h += '</ul>';
-      } else { h += '<div class="fin-rep-open-none">No open items.</div>'; }
+      } else {
+        // Zero open items is a real result, not a blank section — say so plainly, and keep the
+        // same UNVERIFIED caveat that applies to every other live finding.
+        h += '<div class="fin-rep-open-none">This review found no open items — no clause in the document raised a Shari\'ah issue against the standards in scope. Not a certification of compliance; the review itself is unverified.</div>';
+      }
+      // FIX-3 — dropping is never silent: one plain grey line when the citation guard removed findings.
+      var _cgN = Number(fab._citationDropped || 0);
+      if(_cgN > 0){
+        h += '<div class="fin-rep-cg-dropped">'+_cgN+' finding'+(_cgN === 1 ? '' : 's')+' dropped — cited standard could not be verified</div>';
+      }
+
+      // FIX-4 — Rule checklist: one row per fixed rule, verdict badge, clause ref, and the document
+      // quote where the model gave one. Absent for saved cases and for any run with no rules in scope,
+      // so the existing sections render exactly as before.
+      var _rules = Array.isArray(fab.rules_verdicts) ? fab.rules_verdicts : [];
+      if(_rules.length){
+        var _rc = { COMPLIANT:0, NON_COMPLIANT:0, UNCERTAIN:0 };
+        _rules.forEach(function(r){ if(_rc[r.verdict] != null) _rc[r.verdict]++; });
+        h += '<div class="fin-rep-sec-rules"><h2 class="fin-rep-h2">Rule checklist</h2>';
+        h += '<div class="fin-rep-meta">'+_rules.length+' fixed rules tested · '
+           + _rc.COMPLIANT+' compliant · '+_rc.NON_COMPLIANT+' non-compliant · '+_rc.UNCERTAIN+' uncertain'
+           + ' · rules built in code from clause-verified standards</div>';
+        var _nt = Number(fab._rulesNotTested || 0), _rd = Number(fab._rulesDropped || 0);
+        if(_nt > 0) h += '<div class="fin-rep-rule-note">'+_nt+' further rule'+(_nt === 1 ? '' : 's')+' in scope were not tested this run (prompt-size cap).</div>';
+        if(_rd > 0) h += '<div class="fin-rep-rule-note">'+_rd+' verdict'+(_rd === 1 ? '' : 's')+' dropped — cited a rule id that is not in the fixed list.</div>';
+        h += '<table class="fin-rep-table fin-rep-rules"><thead><tr><th>Rule</th><th>Standard</th><th>Result</th><th>Document quote</th></tr></thead><tbody>';
+        _rules.forEach(function(r){
+          var cls = (r.verdict === 'COMPLIANT') ? 'fin-rep-ok'
+                  : (r.verdict === 'NON_COMPLIANT') ? 'fin-fab-badge-amber' : 'fin-fab-badge-grey';
+          var word = (r.verdict === 'COMPLIANT') ? 'COMPLIANT'
+                   : (r.verdict === 'NON_COMPLIANT') ? 'NON-COMPLIANT' : 'UNCERTAIN';
+          h += '<tr class="fin-rep-row"><td class="fin-rep-num">'+_esc(r.rule_id)+'</td>'
+             + '<td class="fin-rep-check">'+_esc(r.code || '')+' clause '+_esc(r.clause || '')+'</td>'
+             + '<td class="fin-rep-stat"><span class="fin-rep-status '+cls+'">'+word+'</span></td>'
+             + '<td class="fin-rep-check">'+(r.document_quote ? '&#8220;'+_esc(r.document_quote)+'&#8221;' : '<span class="fin-rep-rule-none">—</span>')+'</td></tr>';
+        });
+        h += '</tbody></table></div>';
+      }
 
       // Section 3 — Checklist: applied → amber "REVIEWED"; remaining in-scope by status; out-of-scope families greyed.
       h += '<div class="fin-rep-sec3"><h2 class="fin-rep-h2">3 · Checklist</h2>';
@@ -3261,11 +3997,16 @@ window.FinanceView = (function(){
       var inFams = { AAOIFI:1, CBUAE:1 };
       var appliedSet = {}; applied.forEach(function(c){ appliedSet[c] = 1; });
       var fRow = 0;
-      // 1) Applied standards — one amber row.
+      // 1) Applied standards — the RESULT reports the FINAL open-item count (fitems is the list
+      //    after the FIX-3 grounding guard), never a fixed phrase. Zero is a real, green result.
       fRow++;
+      var _oiN = fitems.length;
+      var _oiBadge = _oiN
+        ? '<span class="fin-rep-status fin-fab-badge-amber">REVIEWED — '+_oiN+' OPEN ITEM'+(_oiN === 1 ? '' : 'S')+' RAISED</span>'
+        : '<span class="fin-rep-status fin-rep-ok">REVIEWED — NO OPEN ITEMS</span>';
       h += '<tr class="fin-rep-row"><td class="fin-rep-num">'+fRow+'</td>'
          + '<td class="fin-rep-check">'+(applied.length ? applied.map(function(c){ return _esc(c); }).join(', ') : '—')+'</td>'
-         + '<td class="fin-rep-stat"><span class="fin-rep-status fin-fab-badge-amber">REVIEWED — OPEN ITEM RAISED</span></td></tr>';
+         + '<td class="fin-rep-stat">'+_oiBadge+'</td></tr>';
       // 2) Remaining in-scope (AAOIFI + CBUAE, not applied) grouped by data status — existing badges.
       var remOrder = [], remMap = {};
       fabAllRows.forEach(function(r){
@@ -5566,7 +6307,7 @@ window.FinanceView = (function(){
        + '<span class="fin-pages-wrap">'
        +   '<span class="fin-ruler-btn" id="fin-pages-btn">PAGES ▾</span>'
        +   '<div class="bv-dd-panel fin-pages-panel" id="fin-pages-panel">'
-       +     _modeBtn('trace','TRACE') + _modeBtn('timeline','TIMELINE') + _modeBtn('ladder','LADDER') + _modeBtn('prism','PRISM') + _modeBtn('reader','STANDARDS') + _modeBtn('lecture','LECTURE') + '<div class="fin-pages-div"></div>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-htw" data-mode="htw">How this works</span>'
+       +     _modeBtn('trace','TRACE') + _modeBtn('timeline','TIMELINE') + _modeBtn('ladder','LADDER') + _modeBtn('prism','PRISM') + _modeBtn('reader','STANDARDS') + _modeBtn('lecture','LECTURE') + '<div class="fin-pages-div"></div>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-htw" data-mode="htw">How this works</span>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-rel'+(_mode==='reliability'?' on':'')+'" data-mode="reliability">RELIABILITY</span>'
        +   '</div>'
        + '</span>'
        + '<span id="fin-cur-page">' + _pageLabel(_mode) + '</span>'
@@ -5782,6 +6523,563 @@ window.FinanceView = (function(){
       + '<p style="color:#999;font-size:12px;margin-top:16px">Demonstration data · unverified · not certified</p>';
     canvas.innerHTML = '';
     canvas.appendChild(box);
+    _renderHub();
+  }
+
+  // ── RELIABILITY MONITOR page (mode=reliability) ──
+  //    Temporary testing dashboard. EVERY value is read from D.reliability; a metric
+  //    that was not measured is never printed as a number. Renders safely when the
+  //    log is absent (D.reliability == null) — see the guard in _renderReliability.
+  //    Five numeric/status bricks in fixed order + the ultimate-target brick.
+  //    reliability_log.json keys carry the _pct suffix (finding_overlap_pct, …) in
+  //    BOTH targets and brick_status; the bare key is accepted as a fallback.
+  var _RELI_BRICKS = [
+    { key:'finding_overlap',       label:'Finding overlap',      runField:'finding_overlap_pct' },
+    { key:'severity_agreement',    label:'Severity agreement',   runField:'severity_agreement_pct' },
+    { key:'quote_verification',    label:'Quote verification' },
+    { key:'citation_grounding',    label:'Citation grounding' },
+    { key:'term_scan_determinism', label:'Term-scan determinism' }
+  ];
+  function _reliLookup(obj, key){
+    if(!obj) return null;
+    return (obj[key + '_pct'] != null) ? obj[key + '_pct'] : obj[key];
+  }
+  function _reliStatus(R, key){ return _reliLookup((R && R.brick_status) || null, key); }
+  // targets values may be a number (90) or already-worded text ("90%+").
+  // A numeric target below 100 is a floor, so it reads "90%+"; 100 is absolute.
+  function _reliTarget(v){
+    if(v == null || v === '') return '';
+    if(typeof v === 'number') return 'target ' + v + '%' + (v < 100 ? '+' : '');
+    var s = String(v);
+    return /^target/i.test(s) ? s : 'target ' + s;
+  }
+  // A run cell: missing / empty → em dash. Never invents a value.
+  function _reliCell(v){ return (v == null || v === '') ? '—' : String(v); }
+  function _reliPct(v){
+    if(v == null || v === '') return '—';
+    var n = Number(v);
+    return isNaN(n) ? String(v) : (Math.round(n * 10) / 10) + '%';
+  }
+  // Trend of the NEWEST run against the one before it — deliberately separate from the
+  // big number, which is an average. Green ▲ higher, red ▼ lower, grey ▬ when equal,
+  // when there is only one run, or when either value is unusable.
+  function _reliArrow(cur, prev){
+    var flat = ' <span class="fin-reli-arrow flat">▬</span>';
+    if(cur == null || prev == null || cur === '' || prev === '') return flat;
+    var a = Number(cur), b = Number(prev);
+    if(isNaN(a) || isNaN(b)) return flat;
+    if(a > b) return ' <span class="fin-reli-arrow up">▲</span>';
+    if(a < b) return ' <span class="fin-reli-arrow down">▼</span>';
+    return flat;
+  }
+  // Simple average of a numeric run field across the last up-to-maxN rows (all rows when
+  // fewer). Rows whose field is missing or non-numeric are SKIPPED, never counted as zero,
+  // so n is the real number of runs behind the figure. Returns { avg, n }.
+  function _reliAvgLastN(runs, field, maxN){
+    var vals = [];
+    (runs || []).slice(-maxN).forEach(function(r){
+      var v = r && r[field];
+      if(v == null || v === '') return;
+      var n = Number(v);
+      if(!isNaN(n)) vals.push(n);
+    });
+    if(!vals.length) return { avg: null, n: 0 };
+    var sum = 0;
+    vals.forEach(function(v){ sum += v; });
+    return { avg: Math.round(sum / vals.length), n: vals.length };
+  }
+  // ── COMPARE TWO REPORTS — deterministic, pure-JS scorer. No API calls. ──
+  //    Reads the EXISTING archive store (_archive) read-only; archiving is unchanged.
+  //    Archive entries hold a frozen HTML snapshot ({id,savedAt,title,meta,html}), so the
+  //    structured open_items are resolved back from data already in memory:
+  //      1. entry.open_items / entry.report.open_items  (if a writer ever stores them)
+  //      2. the saved compliance report whose label matches entry.title
+  //      3. the current session's live case, when its label matches
+  //    Anything else is unscoreable → the "(old format)" line. Never throws.
+  var _reliSelA = null, _reliSelB = null;
+
+  function _reliNorm(s){
+    return String(s == null ? '' : s).toLowerCase()
+      .replace(/[^a-z0-9\s]+/g, ' ')     // strip punctuation
+      .replace(/\s+/g, ' ').trim();      // collapse spaces
+  }
+  // Words longer than 2 characters, de-duplicated.
+  function _reliToks(s){
+    var out = {}, w = _reliNorm(s).split(' ');
+    for(var i = 0; i < w.length; i++) if(w[i].length > 2) out[w[i]] = 1;
+    return Object.keys(out);
+  }
+  function _reliJaccard(a, b){
+    if(!a.length || !b.length) return 0;
+    var setB = {}, inter = 0, i;
+    for(i = 0; i < b.length; i++) setB[b[i]] = 1;
+    for(i = 0; i < a.length; i++) if(setB[a[i]]) inter++;
+    var uni = a.length + b.length - inter;
+    return uni ? inter / uni : 0;
+  }
+  function _reliCodes(it){
+    var out = [], arr = (it && it.affected_standards) || [];
+    if(!Array.isArray(arr)) return out;
+    arr.forEach(function(s){
+      var c = _reliNorm(s && (s.code != null ? s.code : s));
+      if(c && out.indexOf(c) === -1) out.push(c);
+    });
+    return out;
+  }
+  function _reliQuote(it){ return (it && it.from_document && it.from_document.quoted_text) || ''; }
+  function _reliTitle(it){ return (it && it.title) || ''; }
+  function _reliSev(it){ var s = _reliNorm(it && it.severity); return s || '—'; }
+  // Precompute the comparable shape once per item.
+  function _reliPrep(it, i){
+    return { i:i, raw:it, id:(it && it.id) || ('#' + (i + 1)),
+             title:_reliTitle(it), sev:_reliSev(it),
+             qt:_reliToks(_reliQuote(it)), tt:_reliToks(_reliTitle(it)), codes:_reliCodes(it) };
+  }
+  function _reliShareCode(a, b){
+    for(var i = 0; i < a.codes.length; i++) if(b.codes.indexOf(a.codes[i]) !== -1) return true;
+    return false;
+  }
+  // MATCH when: quote>=0.35 AND a shared standard code; OR quote>=0.7 alone;
+  //             OR a shared code AND title>=0.5.
+  function _reliPairScore(a, b){
+    var q = _reliJaccard(a.qt, b.qt), t = _reliJaccard(a.tt, b.tt), sc = _reliShareCode(a, b);
+    var ok = (q >= 0.35 && sc) || (q >= 0.7) || (sc && t >= 0.5);
+    return { ok:ok, q:q, t:t, code:sc, score:(q * 0.7) + (t * 0.3) + (sc ? 0.05 : 0) };
+  }
+  // Greedy one-to-one pairing: best score first, each item used once. Deterministic —
+  // ties break on the original A index then B index, so the same input always pairs the same way.
+  function _reliPairAll(A, B){
+    var cand = [];
+    A.forEach(function(a){
+      B.forEach(function(b){
+        var s = _reliPairScore(a, b);
+        if(s.ok) cand.push({ a:a, b:b, s:s });
+      });
+    });
+    cand.sort(function(x, y){
+      if(y.s.score !== x.s.score) return y.s.score - x.s.score;
+      if(x.a.i !== y.a.i) return x.a.i - y.a.i;
+      return x.b.i - y.b.i;
+    });
+    var usedA = {}, usedB = {}, pairs = [];
+    cand.forEach(function(c){
+      if(usedA[c.a.i] || usedB[c.b.i]) return;
+      usedA[c.a.i] = 1; usedB[c.b.i] = 1;
+      pairs.push(c);
+    });
+    return { pairs:pairs, usedA:usedA, usedB:usedB };
+  }
+
+  // ── Archive access (read-only) ──
+  function _reliArchList(){ return Array.isArray(_archive) ? _archive : []; }
+  function _reliArchById(id){
+    var L = _reliArchList();
+    for(var i = 0; i < L.length; i++) if(String(L[i].id) === String(id)) return L[i];
+    return null;
+  }
+  // Resolve an archive entry to ITS OWN stored open_items, or null.
+  // Deliberately no title/_liveCase fallback: two entries sharing a title must never
+  // resolve to the same live object, which would score a report against itself.
+  // An EMPTY array is a valid present result — a run that found nothing is scoreable.
+  // Only a genuinely MISSING (or non-array) open_items means "saved before the fix".
+  function _reliArchItems(e){
+    if(!e) return null;
+    var own = e.open_items;
+    return Array.isArray(own) ? own : null;
+  }
+  // The model this entry recorded at archive time, when known.
+  function _reliArchModel(e){
+    var m = e && e.model;
+    return m ? String(m) : '(not stated)';
+  }
+  // The document/case this entry recorded, falling back to its display title.
+  // "<UNKNOWN>" is a PLACEHOLDER some entries stored, not a real document name. It is
+  // truthy, so a plain `e.document || e.title` let it beat a perfectly good title and
+  // wrote <UNKNOWN> into reliability_log.json. Treat it as absent, like '' or missing.
+  function _tsIsRealDoc(v){
+    var s = String(v == null ? '' : v).trim();
+    return !!s && s.toUpperCase() !== '<UNKNOWN>';
+  }
+  function _reliArchDoc(e){
+    if(!e) return '';
+    if(_tsIsRealDoc(e.document)) return String(e.document).trim();
+    if(_tsIsRealDoc(e.title))    return String(e.title).trim();
+    return '';
+  }
+  function _reliArchLabel(e){
+    var parts = [];
+    if(e.savedAt) parts.push(String(e.savedAt));
+    if(e.title)   parts.push(String(e.title));
+    var m = _reliArchModel(e);
+    if(m !== '(not stated)') parts.push(m);
+    return parts.join(' · ') || ('report ' + e.id);
+  }
+  // Archive-time epoch for ordering. entry.id is String(Date.now()) at archive time, so it
+  // is the reliable key; savedAt is a locale display string and only a fallback.
+  function _reliArchTime(e){
+    var n = Number(e && e.id);
+    if(isFinite(n) && n > 0) return n;
+    var t = Date.parse((e && e.savedAt) || '');
+    return isNaN(t) ? 0 : t;
+  }
+  // Newest-first COPY of the archive for the compare dropdowns. Never sorts _archive in
+  // place — the ARCHIVE list and every other dropdown keep their existing order.
+  function _reliArchSorted(){
+    return _reliArchList().slice().sort(function(a, b){ return _reliArchTime(b) - _reliArchTime(a); });
+  }
+
+  // ── "Log prompt copied" set — persisted so the tick survives a reload ──
+  // HONEST LABEL: this records only that COPY LOG PROMPT was pressed for an entry. It does
+  // NOT verify the row reached reliability_log.json. Never present it as proof of filing.
+  var RELI_LOGGED_KEY = 'fin_reli_logged';   // JSON array of archive-entry ids
+  var _reliLogged = null;                    // id → 1, lazily loaded
+  function _reliLoggedAll(){
+    if(_reliLogged) return _reliLogged;
+    _reliLogged = {};
+    try{
+      var a = JSON.parse(localStorage.getItem(RELI_LOGGED_KEY) || '[]');
+      if(Array.isArray(a)) a.forEach(function(id){ _reliLogged[String(id)] = 1; });
+    }catch(e){ _reliLogged = {}; }           // missing / corrupt → empty set
+    return _reliLogged;
+  }
+  function _reliIsLogged(id){ return !!_reliLoggedAll()[String(id)]; }
+  function _reliMarkLogged(ids){
+    var m = _reliLoggedAll();
+    (ids || []).forEach(function(id){ if(id != null) m[String(id)] = 1; });
+    try{ localStorage.setItem(RELI_LOGGED_KEY, JSON.stringify(Object.keys(m))); }catch(e){}
+  }
+  // Dropdown label + the tick suffix when this entry's log prompt has been copied.
+  function _reliSelLabel(e){
+    return _reliArchLabel(e) + (_reliIsLogged(e.id) ? ' ✓ logged' : '');
+  }
+  // Repaint option labels in place so a fresh tick shows without re-rendering the page.
+  function _reliRefreshSelLabels(){
+    try{
+      document.querySelectorAll('[data-reli-sel] option').forEach(function(o){
+        var e = _reliArchById(o.value);
+        if(e) o.textContent = _reliSelLabel(e);
+      });
+    }catch(e){}
+  }
+
+  function _reliScorePair(eA, eB, rawA, rawB){
+    var A = rawA.map(_reliPrep), B = rawB.map(_reliPrep);
+    var res = _reliPairAll(A, B);
+    var matched = res.pairs.length;
+    var union = A.length + B.length - matched;
+    // Empty-case rules. Two clean reports AGREE completely, so that is 100% overlap — not the
+    // 0% a bare matched/union would give (union is 0 there). One clean + one with findings is
+    // total disagreement, 0%. Severity agreement is only meaningful over matched findings, so
+    // with nothing matched it is null ("not applicable"), never a flattering 100.
+    var bothEmpty = (A.length === 0 && B.length === 0);
+    var overlap = bothEmpty ? 100 : (union > 0 ? (matched / union) * 100 : 0);
+    var agree = 0;
+    res.pairs.forEach(function(p){ if(p.a.sev === p.b.sev) agree++; });
+    var sevPct = matched ? (agree / matched) * 100 : null;
+    return {
+      entryA:eA, entryB:eB,
+      countA:A.length, countB:B.length, matched:matched,
+      overlap:Math.round(overlap * 10) / 10,
+      severity:(sevPct == null) ? null : Math.round(sevPct * 10) / 10,
+      pairs:res.pairs,
+      onlyA:A.filter(function(a){ return !res.usedA[a.i]; }),
+      onlyB:B.filter(function(b){ return !res.usedB[b.i]; })
+    };
+  }
+  // >= target → green; within 15 points → amber; else red. No target → neutral.
+  function _reliTone(v, target){
+    if(target == null || isNaN(Number(target))) return 'neutral';
+    var t = Number(target);
+    if(v >= t) return 'good';
+    if(v >= t - 15) return 'warn';
+    return 'bad';
+  }
+  function _reliToday(){
+    try{
+      var d = new Date(), p = function(n){ return (n < 10 ? '0' : '') + n; };
+      return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    }catch(e){ return ''; }
+  }
+  // The Claude Code prompt that appends this run to reliability_log.json.
+  function _reliLogPrompt(res){
+    var row = {
+      date: _reliToday(), test: 'consistency_pair',
+      document: _reliArchDoc(res.entryA),
+      model_a: _reliArchModel(res.entryA), model_b: _reliArchModel(res.entryB),
+      findings_a: res.countA, findings_b: res.countB, matched: res.matched,
+      finding_overlap_pct: res.overlap, severity_agreement_pct: res.severity,
+      fixes_live: ['temperature_0', 'system_slot_rules', 'tool_use_structured_output', 'deterministic_term_scan', 'finding_cap_removed'],
+      cost_usd: 0
+    };
+    return 'Run without pausing for confirmations. In '
+      + 'the app folder\'s data\\Finance\\reliability_log.json append this object to the END of the "runs" array, '
+      + 'changing nothing else in the file, then print the last 3 entries of runs:\n'
+      + JSON.stringify(row) + '\n'
+      + 'DO NOT CHANGE ANYTHING ELSE';
+  }
+  function _reliCopy(text, btn){
+    function done(){
+      var n = document.getElementById('fin-reli-copied');
+      if(n){ n.textContent = 'Copied.'; n.style.display = ''; }
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, function(){ _reliCopyFallback(text, done); });
+      } else _reliCopyFallback(text, done);
+    }catch(e){ _reliCopyFallback(text, done); }
+  }
+  function _reliCopyFallback(text, done){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta); done();
+    }catch(e){}
+  }
+
+  // ── Section markup ──
+  function _reliCompareHtml(){
+    var L = _reliArchSorted();   // newest first
+    var h = '<div class="fin-reli-cmp">'
+          + '<h2 class="fin-reli-h2">COMPARE TWO REPORTS</h2>';
+    if(L.length < 2){
+      h += '<p class="fin-reli-note">Need at least two archived reports of the same document to compare.</p></div>';
+      return h;
+    }
+    if(_reliSelA == null || !_reliArchById(_reliSelA)) _reliSelA = L[0].id;
+    if(_reliSelB == null || !_reliArchById(_reliSelB)) _reliSelB = L[1].id;
+    function sel(which, cur){
+      var s = '<label class="fin-reli-cmp-lbl">Report ' + which
+            + '<select class="fin-reli-sel" data-reli-sel="' + which + '">';
+      L.forEach(function(e){
+        s += '<option value="' + _esc(e.id) + '"' + (String(e.id) === String(cur) ? ' selected' : '') + '>'
+           + _esc(_reliSelLabel(e)) + '</option>';
+      });
+      return s + '</select></label>';
+    }
+    h += '<div class="fin-reli-cmp-row">' + sel('A', _reliSelA) + sel('B', _reliSelB)
+       + '<button type="button" class="fin-reli-scorebtn" id="fin-reli-score">SCORE</button>'
+       + '</div>'
+       + '<div class="fin-reli-result" id="fin-reli-result"></div>'
+       + '</div>';
+    return h;
+  }
+  function _reliListHtml(cls, title, items, fmt){
+    var h = '<div class="fin-reli-col"><div class="fin-reli-col-h ' + cls + '">' + _esc(title)
+          + ' (' + items.length + ')</div>';
+    if(!items.length) h += '<div class="fin-reli-col-none">none</div>';
+    else {
+      h += '<ul class="fin-reli-col-list">';
+      items.forEach(function(x){ h += '<li>' + fmt(x) + '</li>'; });
+      h += '</ul>';
+    }
+    return h + '</div>';
+  }
+  function _reliResultHtml(res){
+    var T = (D && D.reliability && D.reliability.targets) || {};
+    var tO = _reliLookup(T, 'finding_overlap'), tS = _reliLookup(T, 'severity_agreement');
+    var h = '<div class="fin-reli-scores">'
+          + '<div class="fin-reli-score ' + _reliTone(res.overlap, tO) + '">'
+          +   '<div class="fin-reli-score-n">' + res.overlap + '%</div>'
+          +   '<div class="fin-reli-score-l">Finding overlap</div></div>'
+          // null severity = not applicable (nothing matched) — show an em dash, and stay neutral
+          // rather than scoring it red against the target.
+          + '<div class="fin-reli-score ' + (res.severity == null ? 'neutral' : _reliTone(res.severity, tS)) + '">'
+          +   '<div class="fin-reli-score-n">' + _reliPct(res.severity) + '</div>'
+          +   '<div class="fin-reli-score-l">Severity agreement</div></div>'
+          + '<div class="fin-reli-counts">findings A ' + res.countA
+          +   ' / B ' + res.countB + ' / matched ' + res.matched + '</div>'
+          + '</div>';
+    h += '<div class="fin-reli-cols">'
+       + _reliListHtml('m', 'Matched', res.pairs, function(p){
+           var ag = (p.a.sev === p.b.sev);
+           return '<span class="fin-reli-pt">' + _esc(p.a.title || p.a.id) + '</span>'
+                + ' <span class="fin-reli-arrow2">&#8596;</span> '
+                + '<span class="fin-reli-pt">' + _esc(p.b.title || p.b.id) + '</span>'
+                + '<span class="fin-reli-sev">' + _esc(p.a.sev) + ' / ' + _esc(p.b.sev) + '</span>'
+                + '<span class="fin-reli-agree ' + (ag ? 'yes' : 'no') + '">' + (ag ? 'agree yes' : 'agree no') + '</span>';
+         })
+       + _reliListHtml('a', 'Only in A', res.onlyA, function(x){
+           return '<span class="fin-reli-pt">' + _esc(x.title || x.id) + '</span>'
+                + '<span class="fin-reli-sev">' + _esc(x.sev) + '</span>'; })
+       + _reliListHtml('b', 'Only in B', res.onlyB, function(x){
+           return '<span class="fin-reli-pt">' + _esc(x.title || x.id) + '</span>'
+                + '<span class="fin-reli-sev">' + _esc(x.sev) + '</span>'; })
+       + '</div>';
+    h += '<div class="fin-reli-copyrow">'
+       + '<button type="button" class="fin-reli-copybtn" id="fin-reli-copy">COPY LOG PROMPT</button>'
+       + '<span class="fin-reli-copied" id="fin-reli-copied" style="display:none"></span>'
+       + '</div>'
+       // Says "copied", never "filed" — the row only lands once the prompt is actually run.
+       + '<div class="fin-reli-loggednote" id="fin-reli-loggednote" style="display:none"></div>';
+    return h;
+  }
+  var _reliLastRes = null;
+  function _reliRunScore(){
+    var out = document.getElementById('fin-reli-result'); if(!out) return;
+    try{
+      var eA = _reliArchById(_reliSelA), eB = _reliArchById(_reliSelB);
+      if(!eA || !eB){ out.innerHTML = '<p class="fin-reli-note">Pick two archived reports.</p>'; return; }
+      var IA = _reliArchItems(eA), IB = _reliArchItems(eB);
+      if(!IA || !IB){
+        out.innerHTML = '<p class="fin-reli-note">This archived report can\'t be scored (saved before the fix).</p>'; return;
+      }
+      // Self-compare guard — same entry, or two entries backed by the SAME items object.
+      if(eA === eB || String(eA.id) === String(eB.id) || IA === IB){
+        out.innerHTML = '<p class="fin-reli-note">Same report selected twice &#8212; pick two different runs.</p>'; return;
+      }
+      _reliLastRes = _reliScorePair(eA, eB, IA, IB);
+      out.innerHTML = _reliResultHtml(_reliLastRes);
+      var cb = document.getElementById('fin-reli-copy');
+      if(cb) cb.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(!_reliLastRes) return;
+        _reliCopy(_reliLogPrompt(_reliLastRes), this);
+        // Tick both entries of the scored pair, then repaint labels and the honest note.
+        _reliMarkLogged([_reliLastRes.entryA && _reliLastRes.entryA.id,
+                         _reliLastRes.entryB && _reliLastRes.entryB.id]);
+        _reliRefreshSelLabels();
+        var ln = document.getElementById('fin-reli-loggednote');
+        if(ln){
+          ln.textContent = 'Marked as logged — paste the prompt into Claude Code to file it.';
+          ln.style.display = '';
+        }
+      });
+    }catch(err){
+      out.innerHTML = '<p class="fin-reli-note">This archived report can\'t be scored (saved before the fix).</p>';
+    }
+  }
+  function _wireReliability(canvas){
+    canvas.querySelectorAll('[data-reli-sel]').forEach(function(s){
+      s.addEventListener('change', function(){
+        if(this.getAttribute('data-reli-sel') === 'A') _reliSelA = this.value; else _reliSelB = this.value;
+        var n = document.getElementById('fin-reli-copied'); if(n) n.style.display = 'none';
+      });
+    });
+    var b = canvas.querySelector('#fin-reli-score');
+    if(b) b.addEventListener('click', function(e){ e.stopPropagation(); _reliRunScore(); });
+  }
+
+  function _renderReliability(){
+    var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
+    var ro = document.getElementById('finance-readout');
+    canvas.style.height = '';
+    var R = (D && D.reliability) || null;
+    var h = '<div class="fin-reli-page">'
+          + '<div class="fin-reli-banner">TESTING DASHBOARD &#8212; internal reliability monitoring. Not part of the final app.</div>'
+          + '<div class="fin-reli-body">'
+          + '<h1 class="fin-reli-h1">RELIABILITY MONITOR</h1>'
+          + '<p class="fin-reli-sub">Temporary monitoring dashboard &#8212; measuring report consistency during testing. Not a certification.</p>';
+
+    // Log absent → title + subtitle + one honest line. Never an error, never a number.
+    if(!R){
+      h += '<p class="fin-reli-empty">Reliability log not loaded.</p></div></div>';
+      canvas.innerHTML = h;
+      if(ro) ro.textContent = '';
+      _renderHub();
+      return;
+    }
+
+    var T    = R.targets || {};
+    var runs = Array.isArray(R.runs) ? R.runs : [];
+    var last = runs.length     ? runs[runs.length - 1] : null;
+    var prev = runs.length > 1 ? runs[runs.length - 2] : null;
+
+    // ── TOP ROW — six cards (flex-wrap). Card order: name → BIG value (+arrow) → target. ──
+    h += '<div class="fin-reli-cards">';
+    _RELI_BRICKS.forEach(function(b){
+      var val, sub = '';
+      if(b.runField){
+        // Measured metric — BIG number is the average of the last up-to-10 runs; the arrow
+        // is the newest run vs the one before it. Average and trend are different things
+        // and are labelled as such, so neither can be read as the other.
+        var av = runs.length ? _reliAvgLastN(runs, b.runField, 10) : { avg: null, n: 0 };
+        if(!runs.length || !av.n){
+          val = '<span class="fin-reli-cval fin-reli-none">no runs yet</span>';
+        } else {
+          val = '<span class="fin-reli-cval">' + av.avg + '%</span>'
+              + _reliArrow(last[b.runField], prev ? prev[b.runField] : null);
+          sub = '<div class="fin-reli-cavg">avg of last ' + av.n + ' run' + (av.n === 1 ? '' : 's') + '</div>';
+          // Severity only: a 100% built on one matched finding must not read as strong.
+          if(b.key === 'severity_agreement'){
+            var mt = last && last.matched;
+            if(mt != null && mt !== '' && !isNaN(Number(mt))){
+              var mn = Number(mt);
+              sub += '<div class="fin-reli-cavg">latest run matched ' + mn + ' finding' + (mn === 1 ? '' : 's') + '</div>';
+            }
+          }
+        }
+      } else {
+        // Status-only card — print the declared status, never an unmeasured number.
+        var st = _reliStatus(R, b.key);
+        if(st === 'enforced_in_pipeline')
+          val = '<span class="fin-reli-cval fin-reli-ok">ENFORCED</span>';
+        else if(st === 'not_built_yet')
+          val = '<span class="fin-reli-cval fin-reli-none">NOT BUILT YET</span>';
+        else
+          val = '<span class="fin-reli-cval fin-reli-none">NOT MEASURED</span>';
+      }
+      h += '<div class="fin-reli-card">'
+         + '<div class="fin-reli-cname">' + _esc(b.label) + '</div>'
+         + '<div class="fin-reli-cvalrow">' + val + '</div>'
+         + sub
+         + '<div class="fin-reli-ctarget">' + _esc(_reliTarget(_reliLookup(T, b.key))) + '</div>'
+         + '</div>';
+    });
+    // Sixth card — the ultimate target: wider, sentence in small italic text.
+    h += '<div class="fin-reli-card fin-reli-card-ult">'
+       + '<div class="fin-reli-cname">Ultimate</div>'
+       + '<div class="fin-reli-cult">' + _esc(T.ultimate == null || T.ultimate === '' ? '—' : String(T.ultimate)) + '</div>'
+       + '</div>';
+    h += '</div>';
+
+    // ── Plain-language definitions — fixed editorial copy, not data-driven. ──
+    h += '<div class="fin-reli-defs">'
+       + '<h2 class="fin-reli-defs-h">What these mean</h2>'
+       + '<ul class="fin-reli-defs-list">'
+       + '<li><b>Finding overlap</b> &#8212; when the same document is checked twice, how many findings the two reports share.</li>'
+       + '<li><b>Severity agreement</b> &#8212; of the shared findings, how many received the same high / medium / low rating.</li>'
+       + '<li><b>Quote verification</b> &#8212; every quote must exist word-for-word in the document; fake quotes are rejected automatically.</li>'
+       + '<li><b>Citation grounding</b> &#8212; every finding must point to a real paragraph in the loaded standards, or it is dropped.</li>'
+       + '<li><b>Term-scan determinism</b> &#8212; the term search is done by fixed code, not AI, so it finds the same terms every time.</li>'
+       + '<li><b>Ultimate goal</b> &#8212; same document + same standards + same AI model = the same report, every run.</li>'
+       + '</ul></div>';
+
+    // ── COMPARE TWO REPORTS — the deterministic scorer (archive-driven) ──
+    h += _reliCompareHtml();
+
+    // ── BELOW — comparison history, first run = #1, newest last ──
+    h += '<h2 class="fin-reli-h2">Comparison history</h2>';
+    if(!runs.length){
+      h += '<p class="fin-reli-empty">No comparison runs recorded yet.</p>';
+    } else {
+      h += '<div class="fin-reli-tablewrap"><table class="fin-reli-table"><thead><tr>'
+         + '<th>#</th><th>date</th><th>document</th><th>model A</th><th>model B</th>'
+         + '<th>findings A/B</th><th>matched</th><th>overlap %</th><th>severity %</th><th>fixes live</th>'
+         + '</tr></thead><tbody>';
+      runs.forEach(function(r, i){
+        r = r || {};
+        var fa = r.findings_a, fb = r.findings_b, fx = r.fixes_live;
+        h += '<tr>'
+           + '<td class="fin-reli-num">' + (i + 1) + '</td>'
+           + '<td>' + _esc(_reliCell(r.date)) + '</td>'
+           + '<td>' + _esc(_reliCell(r.document)) + '</td>'
+           + '<td>' + _esc(_reliCell(r.model_a)) + '</td>'
+           + '<td>' + _esc(_reliCell(r.model_b)) + '</td>'
+           + '<td class="fin-reli-num">' + _esc(_reliCell(fa) + ' / ' + _reliCell(fb)) + '</td>'
+           + '<td class="fin-reli-num">' + _esc(_reliCell(r.matched)) + '</td>'
+           + '<td class="fin-reli-num">' + _esc(_reliPct(r.finding_overlap_pct)) + '</td>'
+           + '<td class="fin-reli-num">' + _esc(_reliPct(r.severity_agreement_pct)) + '</td>'
+           + '<td>' + _esc(Array.isArray(fx) ? (fx.length ? fx.join(', ') : '—') : _reliCell(fx)) + '</td>'
+           + '</tr>';
+      });
+      h += '</tbody></table></div>';
+    }
+    h += '</div></div>';
+    canvas.innerHTML = h;
+    _wireReliability(canvas);
+    if(ro) ro.textContent = runs.length + (runs.length === 1 ? ' comparison run' : ' comparison runs');
     _renderHub();
   }
 

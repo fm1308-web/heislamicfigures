@@ -1,0 +1,12 @@
+2026-08-02 16:14:25: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-02 16:14:25: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-02 16:14:25: -- Analysis Started by User Command
+2026-08-02 16:14:25: L: Reading State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-02 16:14:30: R: Reading State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-02 16:14:30: /finance.css: L:TimeSize<>; R:TimeSize<>; Conflict: File Modified on Both Sides
+2026-08-02 16:14:30: /finance.js: L:TimeSize<>; R:TimeSize<>; Conflict: File Modified on Both Sides
+2026-08-02 16:14:30: Do Not Propagate Deletions in 2-way job is not allowed and therefore ignored, as Deletions are always propagated in 2-way jobs
+2026-08-02 16:14:30: Analyze has finished with Conflicts. Resolve Conflicts by selecting the correct sync direction, then click Sync
+2026-08-02 16:14:30: Changes: 7, Conflicts: 2, CopyTime: 0, FixState: 0, Errors: 0, All: 4523
+2026-08-02 16:14:30: Right to Left: Copy File: 5 
+2026-08-02 16:14:30: -- Analysis Complete. Time 00:00:05, Speed: 904 files/s
