@@ -499,6 +499,9 @@ function render(){
   // keeps its drill-down behaviour and the two don't fight.
   var tlLinks = ROOT.querySelectorAll('.rl-tl-link[data-tl]');
   for(var tl=0; tl<tlLinks.length; tl++){ tlLinks[tl].addEventListener('click', onTimelineLinkClick); }
+  // Wire "OPEN PROFILE" links (A2) — same stopPropagation rule as the TIMELINE link.
+  var oneLinks = ROOT.querySelectorAll('.rl-one-link[data-one]');
+  for(var ol=0; ol<oneLinks.length; ol++){ oneLinks[ol].addEventListener('click', onOneLinkClick); }
   // Wire narration chips — same stopPropagation rule so the card still drills.
   var narrChips = ROOT.querySelectorAll('.rl-narr-chip[data-mon]');
   for(var nc=0; nc<narrChips.length; nc++){ narrChips[nc].addEventListener('click', onNarrChipClick); }
@@ -580,6 +583,12 @@ function onTimelineLinkClick(e){
   e.stopPropagation();
   var name = e.currentTarget.getAttribute('data-tl');
   if(name) goToTimeline(name);
+}
+
+function onOneLinkClick(e){
+  e.stopPropagation();
+  var name = e.currentTarget.getAttribute('data-one');
+  if(name) goToOne(name);
 }
 
 function onNodeClick(e){
@@ -795,6 +804,15 @@ function _tlLinkHtml(f){
   return '<div class="rl-tl-link" data-tl="' + escapeHtml(name) + '">VIEW IN TIMELINE →</div>';
 }
 
+// A2 — second exit on the drilled figure: "OPEN PROFILE →" opens the figure in
+// ONE. Same .rl-tl-link look so the two sit together; empty string when the
+// figure isn't in core (ONE keys by `famous`, exactly as TIMELINE does).
+function _oneLinkHtml(f){
+  var name = _coreNameOf(f);
+  if(!name) return '';
+  return '<div class="rl-tl-link rl-one-link" data-one="' + escapeHtml(name) + '">OPEN PROFILE →</div>';
+}
+
 // Small narration chip: "1,234 narrations". Clicking it opens the figure in
 // MONASTIC. Zero narrations → no chip.
 function _narrChipHtml(f){
@@ -829,8 +847,11 @@ function goToMonastic(name){
 // _exClickFigure: click the TIMELINE tab, then poll until timeline.js has
 // mounted and exposed its real focusPersonInTimeline / jumpTo (view modules are
 // lazy-loaded, and other views install short stubs under the same names).
+// A1-REVISED / A2 — routes through the shared shell helper so the drilled figure's
+// own card opens (focusPersonInTimeline left the card on the previous figure).
 function goToTimeline(name){
   if(!name) return;
+  if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(name); return; }
   try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], [data-tab="TIMELINE"], .tab-timeline');
   for(var i=0;i<c.length;i++){
@@ -843,15 +864,43 @@ function goToTimeline(name){
   var tries = 0;
   var iv = setInterval(function(){
     tries++;
-    var fn = (typeof window.focusPersonInTimeline === 'function' && window.focusPersonInTimeline.toString().length > 60)
-      ? window.focusPersonInTimeline
-      : window.jumpTo;
+    var fn = (typeof window.jumpTo === 'function' && window.jumpTo.toString().length > 60)
+      ? window.jumpTo
+      : window.focusPersonInTimeline;
     if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
       try { fn(name); } catch(e){}
       clearInterval(iv);
       return;
     }
     if(tries > 60){ clearInterval(iv); console.warn('[relations] TIMELINE not ready for', name); }
+  }, 80);
+}
+
+// A2 — cross-view jump to ONE. Same pattern as BOOKS' _booksOpenAuthor and the
+// goToTimeline above: click the ONE tab, then poll until one.js has mounted and
+// exposed the REAL _oneClickName. timeline.js installs a no-op stub under that
+// same name, so the length check is what tells the real one from the stub.
+function goToOne(name){
+  if(!name) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="one"], [data-tab="ONE"], .tab-one');
+  for(var i=0;i<c.length;i++){
+    var el = c[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv = el.getAttribute('data-view')||'';
+    var dt = el.getAttribute('data-tab')||'';
+    if(txt === 'ONE' || dv === 'one' || dt === 'ONE'){ el.click(); break; }
+  }
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var fn = window._oneClickName;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try { fn(name); } catch(e){}
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[relations] ONE not ready for', name); }
   }, 80);
 }
 
@@ -960,6 +1009,7 @@ function renderBlock(f, seq, lvl, connKind){
     +   (ar ? '<div class="rl-nm-ar">' + ar + '</div>' : '')
     +   _narrChipHtml(f)
     +   _tlLinkHtml(f)
+    +   (isActive ? _oneLinkHtml(f) : '')
     +   nodesHtml
     + '</div>';
 }

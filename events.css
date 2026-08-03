@@ -96,6 +96,10 @@
 .ev-fig-role{font-size:var(--fs-3);font-style:normal;color:var(--muted);padding-left:4px;line-height:1.3}
 
 .ev-sources{font-size:var(--fs-3);color:var(--muted);margin-top:8px;font-style:normal;line-height:1.4}
+/* A4 — a source that has a Wikipedia URL. Same gold/underline-on-hover treatment
+   as .map-wiki-link; sources without a URL stay plain .ev-sources text. */
+.ev-src-link{color:rgba(212,175,55,.75);text-decoration:none;transition:color .15s}
+.ev-src-link:hover{color:rgba(212,175,55,1);text-decoration:underline}
 
 .ev-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .ev-tag{display:inline-block;padding:1px 8px;border-radius:8px;font-size:var(--fs-3);letter-spacing:0.04em;background:rgba(212,175,55,.04);color:var(--muted);border:1px solid rgba(212,175,55,.06)}

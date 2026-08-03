@@ -172,6 +172,24 @@ function _onePTypes(p){ if(Array.isArray(p.types)&&p.types.length) return p.type
 function _onePTrads(p){ if(Array.isArray(p.traditions)&&p.traditions.length) return p.traditions; return p.tradition ? [p.tradition] : []; }
 function _oneClassifStr(p){ if(Array.isArray(p.classif)) return p.classif.join(', '); return p.classif || ''; }
 
+// A10 — tradition chip colour. Reads the shared window.TRAD_COLORS map (config.js).
+// Returns null for a tradition with no entry so the chip keeps the plain gold
+// 'one-tag hi' styling it has always had. Never invent an entry here.
+function _tradColor(t){
+  if(!t) return null;
+  var M=window.TRAD_COLORS;
+  return (M && M[t]) ? M[t] : null;
+}
+
+// Tradition chip markup: coloured when known, unchanged plain gold otherwise.
+function _oneTradChip(t){
+  if(!t) return '';
+  var c=_tradColor(t);
+  return c
+    ? '<span class="one-tag one-trad-chip" style="--tc:'+c+'">'+_e(t)+'</span>'
+    : '<span class="one-tag hi">'+_e(t)+'</span>';
+}
+
 function _getUniqueTypes(){ var s=new Set(); PEOPLE.forEach(function(p){ _onePTypes(p).forEach(function(t){if(t)s.add(t);}); }); return Array.from(s).sort(); }
 function _getUniqueTrads(){ var s=new Set(); PEOPLE.forEach(function(p){ _onePTrads(p).forEach(function(t){if(t)s.add(t);}); }); return Array.from(s).sort(); }
 function _getUniqueCities(){ var s=new Set(); PEOPLE.forEach(function(p){ if(p.city) s.add(p.city); }); return Array.from(s).sort(); }
@@ -537,7 +555,7 @@ async function _renderPerson(p,container){
   if(p.primaryTitle) h+='<div class="one-primary">'+_e(p.primaryTitle)+'</div>';
   h+='<div class="one-chips-row">';
   if(p.type) h+='<span class="one-tag hi">'+_e(p.type)+'</span>';
-  if(p.tradition) h+='<span class="one-tag hi">'+_e(p.tradition)+'</span>';
+  if(p.tradition) h+=_oneTradChip(p.tradition);
   if(p.city) h+='<span class="one-tag">📍 '+_e(p.city)+'</span>';
   if(p.lang) h+='<span class="one-tag">🌐 '+_e(p.lang)+'</span>';
   if(_oneClassifStr(p)) h+='<span class="one-tag">'+_e(_oneClassifStr(p))+'</span>';
@@ -863,7 +881,7 @@ async function _renderPerson(p,container){
     plH+='<a href="'+_e(p.archive_org_url)+'" target="_blank" rel="noopener" class="one-ext-link">Browse on Archive.org ↗</a>';
   }
   plH+='<a href="https://scholar.google.com/scholar?q='+encodeURIComponent(p.famous)+'" target="_blank" rel="noopener" class="one-ext-link">𝒮 Google Scholar</a>';
-  plH+='<span class="one-ext-link" onclick="if(typeof focusPersonInTimeline===\'function\')focusPersonInTimeline(\''+_safe(p.famous)+'\')">VIEW IN TIMELINE →</span>';
+  plH+='<span class="one-ext-link" onclick="if(typeof window._gaGoTimeline===\'function\')window._gaGoTimeline(\''+_safe(p.famous)+'\');else if(typeof focusPersonInTimeline===\'function\')focusPersonInTimeline(\''+_safe(p.famous)+'\')">VIEW IN TIMELINE →</span>';
   plH+='</div>';
   h+=_sec('🔗','Public Links',0,plH,false);
 

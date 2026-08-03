@@ -252,3 +252,34 @@
   color: var(--text-dim);
   font-size: 12px;
 }
+
+/* A14 — [travel] rows open that figure's journey in FOLLOW. The gold name alone
+   read as inert text, so the row carries a small "FOLLOW →" tag. Type matches
+   the ERAS/RELATIONS exits (.era-exit / .rl-tl-link): Cinzel, 9px, .08em. */
+#year-view .yr-travel-link {
+  color: var(--gold, #c9a961);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+#year-view .yr-travel-link:hover {
+  text-decoration: underline;
+}
+#year-view .yr-travel-name {
+  color: var(--gold, #c9a961);
+  font-weight: 500;
+}
+#year-view .yr-follow-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--gold, #c9a961);
+  opacity: 0.65;
+  margin-left: 6px;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+}
+#year-view .yr-travel-link:hover .yr-follow-tag {
+  opacity: 1;
+}

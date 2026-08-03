@@ -358,6 +358,13 @@ function _evInjectStyles(){
   .era-row.hi{background:rgba(212,175,55,.16);box-shadow:inset 3px 0 0 var(--gold,#D4AF37)}
   .era-row-main{text-align:right}
   .era-row-title{font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);line-height:1.2}
+  /* A15 — two exits per figure row. Rows are a fixed height, so the exits only
+     appear on hover (and the row lifts its overflow/z-index while hovered). */
+  .era-row-exits{display:none;gap:10px;justify-content:flex-end;margin-top:2px}
+  .era-row:hover{overflow:visible;z-index:9}
+  .era-row:hover .era-row-exits{display:flex}
+  .era-exit{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;color:var(--text2,#A0AEC0);opacity:.75;cursor:pointer;white-space:nowrap}
+  .era-exit:hover{color:var(--gold,#D4AF37);opacity:1;text-decoration:underline}
   .era-wiki{display:inline-block;margin-left:4px;color:rgba(212,175,55,.8);text-decoration:none;font-size:var(--fs-3);font-family:'Cinzel',serif}
   .era-wiki:hover{color:var(--gold,#D4AF37)}
   .era-year-chip{position:absolute;transform:translateY(-50%);text-align:right;font-family:'Source Sans 3',sans-serif;font-size:var(--fs-3);color:#6B7280;letter-spacing:.02em;z-index:5;white-space:nowrap;pointer-events:none}
@@ -498,7 +505,12 @@ function _evBuildCanvas(){
     const yrTxt=_evFmtYear(dob);
 
     html+='<div class="era-row" data-slug="'+_evEsc(p.slug)+'" data-name="'+_evEsc(p.famous)+'" data-year="'+(dob==null?'':dob)+'" style="top:'+y+'px;height:'+_EV_ROW_H+'px">';
-    html+='<div class="era-row-main"><div class="era-row-title" style="color:'+nameCol+'">'+_evEsc(_evFigName(p))+_evWiki(p)+'</div></div>';
+    html+='<div class="era-row-main"><div class="era-row-title" style="color:'+nameCol+'">'+_evEsc(_evFigName(p))+_evWiki(p)+'</div>'
+        + '<div class="era-row-exits">'
+        +   '<span class="era-exit" data-exit="tl" data-name="'+_evEsc(p.famous)+'">VIEW IN TIMELINE →</span>'
+        +   '<span class="era-exit" data-exit="one" data-name="'+_evEsc(p.famous)+'">OPEN PROFILE →</span>'
+        + '</div>'
+        + '</div>';
     html+='</div>';
     html+='<div class="era-year-chip" style="top:'+midY+'px;left:'+(_EV_STEM_X-46)+'px;width:40px;'+(_evShowCE?'':'display:none')+'">'+yrTxt+'</div>';
     var _hij=_evCeToHijri(dob);
@@ -526,6 +538,32 @@ function _evBuildCanvas(){
       } else if(typeof window.jumpTo === 'function'){
         window.jumpTo(name);
       }
+    });
+  });
+  // A15 — the two explicit exits, same pattern as RELATIONS A2: stopPropagation so
+  // the row underneath keeps its own click, and both reuse existing globals
+  // (jumpTo for TIMELINE, _oneClickName for ONE). Stubs are filtered by length.
+  canvas.querySelectorAll('.era-exit').forEach(ex=>{
+    ex.addEventListener('click',function(e){
+      e.stopPropagation();
+      var name=this.getAttribute('data-name');
+      var kind=this.getAttribute('data-exit');
+      if(!name) return;
+      // TIMELINE exit goes through the shared shell helper (name resolution +
+      // jumpTo preference) so the figure's own card opens. ONE exit unchanged.
+      if(kind!=='one' && typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(name); return; }
+      try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(err){}
+      if(typeof window.setActiveTab === 'function') window.setActiveTab(kind==='one'?'ONE':'TIMELINE');
+      var tries=0;
+      var iv=setInterval(function(){
+        tries++;
+        var fn = (kind==='one') ? window._oneClickName : window.jumpTo;
+        if(typeof fn==='function' && fn.toString().length>60 && (window.PEOPLE||[]).length){
+          try { fn(name); } catch(err){}
+          clearInterval(iv); return;
+        }
+        if(tries>60){ clearInterval(iv); console.warn('[eras] '+kind+' not ready for', name); }
+      },80);
     });
   });
   canvas.querySelectorAll('.era-ruler-btn').forEach(btn=>{

@@ -1,0 +1,74 @@
+/* ─────────────────────────────────────────────────────────────
+   STUDY view — lifted from bv-app/styles.css
+   Only #studyRoomView and .sr-* selectors. No globals, no body{}.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --bg:      #1B2631;
+  --surface: #222D3A;
+  --surface2:#2D3748;
+  --border:  #2D3748;
+  --border2: #2D3748;
+  --accent:  #D4AF37;
+  --muted:   #A0AEC0;
+  --text:    #FFFFFF;
+  --text2:   #A0AEC0;
+  --fs-1:    20px;
+  --fs-2:    16px;
+  --fs-3:    13px;
+}
+
+#zoneC #studyRoomView {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Lato','Crimson Pro',Georgia,serif;
+  font-size: var(--fs-2);
+}
+
+#studyRoomView{display:none;width:100%;height:100%;background:var(--bg)}
+#studyRoomView.active{display:grid;grid-template-columns:220px 1fr}
+
+#sr-left{background:var(--bg);border-right:1px solid var(--border);overflow-y:auto;padding:12px}
+#sr-right{padding:24px 28px;overflow-y:auto}
+
+.sr-card{padding:10px 12px;padding-left:24px;border-radius:6px;cursor:pointer;margin-bottom:0;border:1.5px solid transparent;background:rgba(212,175,55,.04);transition:border-color .15s,background .15s;position:relative}
+.sr-card-chevron{position:absolute;left:8px;top:12px;font-size:var(--fs-3);color:var(--muted);transition:transform .15s}
+.sr-card-fav{position:absolute;top:10px;right:10px;font-size:var(--fs-3);color:var(--muted);cursor:pointer;transition:color .12s}
+.sr-card-fav.active{color:var(--accent)}
+.sr-card-fav:hover{color:var(--accent)}
+.sr-card:hover{background:rgba(212,175,55,.08)}
+.sr-card.sel{border-color:var(--accent);background:rgba(212,175,55,.1)}
+.sr-card-name{font-family:'Cinzel',serif;font-size:var(--fs-3);font-weight:600;color:var(--accent);letter-spacing:.03em}
+.sr-card-date{font-size:var(--fs-3);color:var(--muted);margin-top:2px}
+
+.sr-book-dropdown{max-height:0;overflow:hidden;transition:max-height .25s ease;margin-bottom:8px}
+.sr-book-dropdown.open{max-height:600px}
+.sr-book-item{padding:6px 8px 8px 20px;border-left:2px solid rgba(212,175,55,.15);margin-left:12px;margin-bottom:4px}
+.sr-book-title{font-family:'Crimson Pro','Lato',serif;font-size:var(--fs-3);color:var(--text2);font-style:normal;margin-bottom:5px;line-height:1.4}
+.sr-book-btns{display:flex;flex-wrap:wrap;gap:4px}
+.sr-book-tab{padding:4px 10px;font-size:var(--fs-3)}
+.sr-book-loading,.sr-book-empty{font-size:var(--fs-3);color:var(--muted);padding:8px 20px;font-style:normal}
+
+#sr-heading{font-family:'Cinzel',serif;font-size:var(--fs-1);font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:.04em;line-height:1.4}
+
+.sr-tab{padding:7px 14px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.08em;color:var(--muted);background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.18);border-radius:4px;cursor:pointer;transition:all .12s;margin-right:6px;margin-bottom:6px}
+.sr-tab:hover{color:var(--text);background:rgba(212,175,55,.1)}
+.sr-tab.active{color:var(--accent);background:rgba(212,175,55,.1);border-color:var(--accent)}
+.sr-tab[data-type="slides"]{color:#517CE1;border-color:rgba(81,124,225,.35);background:rgba(81,124,225,.08)}
+.sr-tab[data-type="slides"]:hover{background:rgba(81,124,225,.15)}
+.sr-tab[data-type="slides"].active{color:#fff;background:#517CE1;border-color:#517CE1}
+.sr-tab[data-type="summary"]{color:#50B178;border-color:rgba(80,177,120,.35);background:rgba(80,177,120,.08)}
+.sr-tab[data-type="summary"]:hover{background:rgba(80,177,120,.15)}
+.sr-tab[data-type="summary"].active{color:#fff;background:#50B178;border-color:#50B178}
+.sr-tab[data-type="video"]{color:#A36DB1;border-color:rgba(163,109,177,.35);background:rgba(163,109,177,.08)}
+.sr-tab[data-type="video"]:hover{background:rgba(163,109,177,.15)}
+.sr-tab[data-type="video"].active{color:#fff;background:#A36DB1;border-color:#A36DB1}
+
+#sr-body{margin-top:16px;min-height:400px;font-style:normal;color:rgba(212,175,55,.7);font-size:var(--fs-3);line-height:1.6}
+
+.sr-study-badge{font-size:var(--fs-2);color:#D4AF37;cursor:pointer;margin-left:5px;opacity:.85;transition:opacity .12s}
+.sr-study-badge:hover{opacity:1}

@@ -2905,6 +2905,7 @@ function init(){
       e.stopPropagation();
       var famous = tag.getAttribute('data-famous');
       if(!famous) return;
+      if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(famous); return; }
       _monClickTab(['TIMELINE'], 'timeline');
       var ntries = 0;
       var niv = setInterval(function(){

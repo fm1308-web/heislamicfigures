@@ -445,15 +445,24 @@ window.YearView = (function(){
     for(var j=0;j<books.length;j++){
       html += '<div class="yr-row"><span class="yr-item-tag">[book]</span> ' + _bookChip(books[j]) + '</div>';
     }
-    // [travel] — person in gold to signal clickability later; non-clickable for now.
+    // A14 — [travel] person opens that figure's journey in FOLLOW. These rows are
+    // built FROM journey files, so a row with a slug always has a journey; rows
+    // without one stay plain text rather than becoming a dead click.
     for(var t=0;t<journeys.length;t++){
       var jr = journeys[t];
       var person = _esc(jr.person || 'Unknown');
       var loc = _esc(jr.location || '');
       var evt = _esc(jr.event || '');
       var locBit = loc ? ' <span style="color:#9aa3b2">&middot; ' + loc + '</span>' : '';
+      var canFollow = !!(jr.slug && typeof window._followShowFigure === 'function');
+      // The "FOLLOW →" tag sits inside the anchor so it shares the click target
+      // and hover state — without it the gold name reads as inert text.
+      var personHtml = canFollow
+        ? '<a class="yr-travel-link" href="#follow" data-follow-slug="' + _esc(jr.slug) + '">' +
+          person + '<span class="yr-follow-tag">FOLLOW &rarr;</span></a>'
+        : '<span class="yr-travel-name">' + person + '</span>';
       html += '<div class="yr-row"><span class="yr-item-tag">[travel]</span> ' +
-              '<span style="color:var(--gold,#c9a961);font-weight:500">' + person + '</span>' +
+              personHtml +
               locBit +
               (evt ? ' <span style="color:#cfd2d6">&mdash; ' + evt + '</span>' : '') +
               '</div>';
@@ -568,6 +577,18 @@ window.YearView = (function(){
             try { window.jumpTo(name); } catch(err){ console.warn('[YEAR] jumpTo failed:', err); }
           }
         }, 120);
+      });
+    }
+
+    // A14 — [travel] row opens that figure's journey in FOLLOW.
+    var trvLinks = _zoneC.querySelectorAll('.yr-travel-link');
+    for(var i=0;i<trvLinks.length;i++){
+      trvLinks[i].addEventListener('click', function(e){
+        e.preventDefault();
+        var slug = e.currentTarget.getAttribute('data-follow-slug');
+        if(slug && typeof window._followShowFigure === 'function'){
+          window._followShowFigure(slug);
+        }
       });
     }
 
@@ -984,8 +1005,24 @@ window.YearView = (function(){
 
   function unmount(){ _zoneC = null; }
 
+  // A7 — was a raw alert(); now the standard How-this-works overlay the other
+  // views use (same markup as _showStudyMethodology). Text is unchanged.
   function showHtw(){
-    alert('YEAR view\n\nPick a year with the slider. Spine UP back in time, DOWN forward. Click a figure name to open TIMELINE with their lifeline centered. Click an event to open EVENTS view. Click an era label to jump to ERAS.');
+    if(document.getElementById('yr-method-overlay')) return;
+    var ov=document.createElement('div');
+    ov.id='yr-method-overlay';
+    ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+    var box=document.createElement('div');
+    box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+    box.innerHTML='<button id="yr-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
+      +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+      +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Pick a year with the slider. Spine UP back in time, DOWN forward. Click a figure name to open TIMELINE with their lifeline centered. Click an event to open EVENTS view. Click an era label to jump to ERAS.</p>'
+      +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
+    ov.appendChild(box);
+    document.body.appendChild(ov);
+    document.getElementById('yr-method-close').addEventListener('click',function(){ov.remove();});
+    ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+    document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
   }
 
   return { mount: mount, unmount: unmount, showHtw: showHtw };

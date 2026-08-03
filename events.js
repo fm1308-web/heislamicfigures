@@ -265,6 +265,41 @@ function _ensureEventHadithChips(){
     .catch(function(){ _eventHadithChips = {}; return _eventHadithChips; });
   return _eventHadithChipsLoading;
 }
+// ── A4 — Source links ──
+// event_sources.json: { "<eventId>": [ {label, url|null}, … ] }. Loaded the same
+// way as the hadith chips, and fail-soft: any error leaves the map empty and every
+// event keeps rendering its plain-text sources exactly as before.
+var _evSources = null;
+var _evSourcesLoading = null;
+function _ensureEventSources(){
+  if(_evSources) return Promise.resolve(_evSources);
+  if(_evSourcesLoading) return _evSourcesLoading;
+  _evSourcesLoading = fetch(dataUrl('data/islamic/events/event_sources.json'))
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(d){ _evSources = d || {}; return _evSources; })
+    .catch(function(){ _evSources = {}; return _evSources; });
+  return _evSourcesLoading;
+}
+
+// URL for one already-displayed source string, or '' when there isn't one.
+// Matched by exact label (index first, then anywhere in the event's list), so the
+// text on screen never changes — a link is only ever added to a string that is
+// already there. Only http(s) is accepted.
+function _evSourceUrl(eventId, label, idx){
+  var list = _evSources && _evSources[eventId];
+  if(!list || !list.length) return '';
+  var hit = null;
+  if(list[idx] && list[idx].label === label) hit = list[idx];
+  if(!hit){
+    for(var i=0;i<list.length;i++){
+      if(list[i] && list[i].label === label){ hit = list[i]; break; }
+    }
+  }
+  var u = hit && hit.url;
+  if(!u || typeof u !== 'string') return '';
+  return /^https?:\/\//i.test(u) ? u : '';
+}
+
 function _populateEventHadithChips(){
   _ensureEventHadithChips().then(function(chips){
     var slots = document.querySelectorAll('.ev-hadith-chip-slot');
@@ -344,7 +379,14 @@ function _buildRow(ev,showYear,spanCount){
   }
 
   var src=ev.sources||[];
-  if(src.length) h+='<div class="ev-sources">'+src.map(function(s){return esc(s);}).join(' · ')+'</div>';
+  if(src.length) h+='<div class="ev-sources">'+src.map(function(s,i){
+    // A4 — link the source when event_sources.json has a URL for it; otherwise
+    // leave it as the plain text it has always been.
+    var u=_evSourceUrl(ev.id, s, i);
+    if(!u) return esc(s);
+    return '<a class="ev-src-link" href="'+escAttr(u)+'" target="_blank" rel="noopener noreferrer"'
+         + ' onclick="event.stopPropagation()">'+esc(s)+'</a>';
+  }).join(' · ')+'</div>';
   if(ev.outcome) h+='<div class="ev-outcome">'+esc(ev.outcome)+'</div>';
 
   h+='<span class="ev-hadith-chip-slot" data-eid="'+escAttr(ev.id||'')+'" data-etitle="'+escAttr(ev.title||'')+'"></span>';
@@ -846,8 +888,9 @@ function _showEventsMethodology(){
             return arr;
           });
     var p3 = _ensureEventHadithChips();
+    var p4 = _ensureEventSources();   // A4 — source links; resolves to {} on failure
 
-    Promise.all([p1, p2, p3]).then(function(){
+    Promise.all([p1, p2, p3, p4]).then(function(){
       initEvents();
       _wireZoneB(zoneBEl);
       if(window._evJumpId){

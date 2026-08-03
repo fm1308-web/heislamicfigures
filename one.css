@@ -215,6 +215,14 @@
 .one-tag.hi{color:var(--gold);border-color:#2D3748}
 .one-tag.gold{color:var(--accent2);font-size:var(--fs-3)}
 
+/* A10 — tradition chip. --tc is set inline from window.TRAD_COLORS; a tradition
+   with no entry never gets this class and keeps the plain gold .one-tag.hi. */
+.one-trad-chip{
+  color:var(--tc,var(--gold));
+  border-color:color-mix(in srgb, var(--tc,var(--gold)) 55%, transparent);
+  background:color-mix(in srgb, var(--tc,var(--gold)) 12%, transparent);
+}
+
 .one-dates{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
 .one-date{font-size:var(--fs-3);color:var(--text2)}
 .one-dl{

@@ -115,6 +115,22 @@
 .map-wd-occupations:empty{display:none}
 .map-wd-occ{padding:2px 8px;border-radius:10px;font-size:var(--fs-3);letter-spacing:.03em;border:1px solid var(--ip-brd);color:var(--ip-muted);background:rgba(255,255,255,.04)}
 
+/* ── A10 — tradition chip (tooltip + figure panel). --tc is set inline from
+      window.TRAD_COLORS. A tradition with no entry gets .map-trad-chip-gold
+      instead and keeps plain gold styling. ── */
+.map-trad-chip{
+  display:inline-block;padding:2px 8px;border-radius:2px;
+  font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;
+  color:var(--tc,var(--gold));
+  border:1px solid color-mix(in srgb, var(--tc,var(--gold)) 55%, transparent);
+  background:color-mix(in srgb, var(--tc,var(--gold)) 12%, transparent);
+}
+.map-trad-chip-gold{
+  color:var(--gold);
+  border-color:var(--ip-brd);
+  background:rgba(255,255,255,.04);
+}
+
 /* ── Leaflet theme overrides (scoped to leaflet's auto-injected classes) ── */
 .leaflet-popup-content-wrapper{background:var(--ip-bg);color:var(--text);border-radius:4px;border:1.5px solid var(--border2);font-family:'Crimson Pro',serif}
 .leaflet-popup-tip{background:var(--ip-bg)}

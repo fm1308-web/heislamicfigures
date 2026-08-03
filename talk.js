@@ -128,6 +128,58 @@ function _getTradColor(tradition){
   return TRADITION_COLORS[tradition] || TRADITION_COLORS.scholar;
 }
 
+// A8a — book-count pill → BOOKS, searched for this scholar. Uses the BOOKS
+// entry the app already has: click the BOOKS tab, then drive the shell search
+// input (#search) that books.js wires in _wireZoneB. Nothing new is invented.
+window._talkOpenBooksFor = function(name, ev){
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  if(!name) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="books"], [data-tab="BOOKS"], .tab-books');
+  for(var i=0;i<c.length;i++){
+    var el = c[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv  = el.getAttribute('data-view')||'';
+    var dt  = el.getAttribute('data-tab')||'';
+    if(txt === 'BOOKS' || dv === 'books' || dt === 'BOOKS'){ el.click(); break; }
+  }
+  // BOOKS is lazy-loaded; wait for its search box to be wired before typing.
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var inp = document.getElementById('search');
+    if(inp && /book/i.test(inp.placeholder||'')){
+      inp.value = name;
+      inp.dispatchEvent(new Event('input', { bubbles:true }));
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[talk] BOOKS search not ready for', name); }
+  }, 80);
+};
+
+// A8b — standard How-this-works overlay (same markup the other views use).
+// Text describes only what TALK does TODAY: it is a preview with sample
+// exchanges; the live AI conversation is not built yet.
+function _talkShowHtw(){
+  if(document.getElementById('talk-method-overlay')) return;
+  var ov=document.createElement('div');
+  ov.id='talk-method-overlay';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  var box=document.createElement('div');
+  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
+  box.innerHTML='<button id="talk-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
+    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A preview of the TALK view. Pick one of the listed scholars to see sample exchanges showing how answers would be presented, each labelled with the work it refers to.</p>'
+    +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin-top:12px">The conversation feature is not live yet — the exchanges shown are fixed examples, not generated answers. The book count on each card opens BOOKS searched for that scholar.</p>'
+    +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  document.getElementById('talk-method-close').addEventListener('click',function(){ov.remove();});
+  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
+  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
+}
+
 function initTalk(){
   var ct = document.getElementById('talk-view');
   if(!ct) return;
@@ -157,7 +209,7 @@ function _renderSelection(ct){
     h += '<div class="talk-card-death">'+_e(s.death)+'</div>';
     h += '<div class="talk-card-field">'+_e(s.field)+'</div>';
     h += '</div>';
-    h += '<span class="talk-book-pill" style="background:'+tc.bg+';color:'+tc.text+';border-color:'+tc.border+'">'+s.books+' books</span>';
+    h += '<span class="talk-book-pill talk-book-pill-link" onclick="window._talkOpenBooksFor(\''+_e(s.name).replace(/'/g,"\\'")+'\', event)" title="Find this scholar in BOOKS" style="background:'+tc.bg+';color:'+tc.text+';border-color:'+tc.border+'">'+s.books+' books</span>';
     h += '</div>';
   });
   h += '</div>';
@@ -318,5 +370,5 @@ window._talkBack = function(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, initTalk: initTalk };
+  return { mount: mount, unmount: unmount, initTalk: initTalk, showHtw: _talkShowHtw };
 })();

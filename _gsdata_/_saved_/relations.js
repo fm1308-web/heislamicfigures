@@ -48,6 +48,15 @@ function narrationTotal(f){
   return n;
 }
 
+// Narration count as getDummyCounts uses it: the per-book totals, raised by the
+// Arees enrichment count when that one is higher.
+function narrationCount(f){
+  var n = narrationTotal(f);
+  var e = getEnrich(f && f.slug);
+  if(e && typeof e.narration_count === 'number' && e.narration_count > n) n = e.narration_count;
+  return n;
+}
+
 // Extract a clean year from the verbose Arees death string, e.g.
 // "11 AH/632 CE (12th Rabi' awwal (Medina)[ Natural ]" -> "632 CE".
 function trimYear(s){
@@ -486,6 +495,13 @@ function render(){
   // Wire figure-block clicks (browse pills + drill-chain ancestor pills; NOT child pills)
   var blocks = ROOT.querySelectorAll('.rl-block[data-slug]:not(.rl-child-pill)');
   for(var k=0;k<blocks.length;k++){ blocks[k].addEventListener('click', onBlockClick); }
+  // Wire "VIEW IN TIMELINE" links — stopPropagation so the card underneath
+  // keeps its drill-down behaviour and the two don't fight.
+  var tlLinks = ROOT.querySelectorAll('.rl-tl-link[data-tl]');
+  for(var tl=0; tl<tlLinks.length; tl++){ tlLinks[tl].addEventListener('click', onTimelineLinkClick); }
+  // Wire narration chips — same stopPropagation rule so the card still drills.
+  var narrChips = ROOT.querySelectorAll('.rl-narr-chip[data-mon]');
+  for(var nc=0; nc<narrChips.length; nc++){ narrChips[nc].addEventListener('click', onNarrChipClick); }
   // Wire relation-node clicks
   var nodes = ROOT.querySelectorAll('.rl-node');
   for(var nn=0;nn<nodes.length;nn++){ nodes[nn].addEventListener('click', onNodeClick); }
@@ -552,6 +568,18 @@ function onBlockClick(e){
   if(DRILL.length && DRILL[0].slug === slug){ DRILL = []; }
   else { DRILL = [{ slug: slug, kind: null }]; }
   syncLegacy(); render();
+}
+
+function onNarrChipClick(e){
+  e.stopPropagation();
+  var name = e.currentTarget.getAttribute('data-mon');
+  if(name) goToMonastic(name);
+}
+
+function onTimelineLinkClick(e){
+  e.stopPropagation();
+  var name = e.currentTarget.getAttribute('data-tl');
+  if(name) goToTimeline(name);
 }
 
 function onNodeClick(e){
@@ -737,6 +765,96 @@ function _relSourceHtml(it){
        + escapeHtml(s) + ')</span>';
 }
 
+// Core slug (F-NNNN) for any figure shown in this view — blocks can hold Arees
+// figures as well as core ones. Returns null when the figure has no verified
+// core counterpart (never guessed).
+function _coreSlugOf(f){
+  if(!f) return null;
+  if(f.linked_core_slug) return f.linked_core_slug;
+  var sl = f.slug || null;
+  if(sl && CORE_BY_SLUG && CORE_BY_SLUG[sl]) return sl;
+  var asl = f.arees_slug || sl;
+  if(asl && AREES2CORE && AREES2CORE[asl]) return AREES2CORE[asl];
+  return null;
+}
+
+// Other views key a figure by their core `famous` name — TIMELINE's
+// focusPersonInTimeline and MONASTIC's narrator filter both take it.
+// Returns '' when this figure has no core record.
+function _coreNameOf(f){
+  var slug = _coreSlugOf(f);
+  var cf = (slug && CORE_BY_SLUG) ? CORE_BY_SLUG[slug] : null;
+  return (cf && cf.famous) ? cf.famous : '';
+}
+
+// Small "VIEW IN TIMELINE →" affordance — the same wording ONE uses on a figure
+// profile. Empty string when the figure isn't in core (nothing to open).
+function _tlLinkHtml(f){
+  var name = _coreNameOf(f);
+  if(!name) return '';
+  return '<div class="rl-tl-link" data-tl="' + escapeHtml(name) + '">VIEW IN TIMELINE →</div>';
+}
+
+// Small narration chip: "1,234 narrations". Clicking it opens the figure in
+// MONASTIC. Zero narrations → no chip.
+function _narrChipHtml(f){
+  var n = narrationCount(f);
+  if(!(n > 0)) return '';
+  var name = _coreNameOf(f) || figEn(f);
+  return '<div class="rl-narr-chip" data-mon="' + escapeHtml(name) + '">'
+       + n.toLocaleString() + ' narrations</div>';
+}
+
+// Cross-view jump to MONASTIC filtered by narrator — ONE's _oneJumpToHadiths
+// (one.js) is this exact pattern, so use it when ONE has been loaded; otherwise
+// do the same two steps here: park the name for MONASTIC's
+// _monHandlePendingNarrator to pick up on mount, then click the MONASTIC tab.
+function goToMonastic(name){
+  if(!name) return;
+  if(typeof window._oneJumpToHadiths === 'function'){ window._oneJumpToHadiths(name); return; }
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  window._stPendingNarrator = name;
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="monastic"], [data-tab="MONASTIC"], .tab-monastic');
+  for(var i=0;i<c.length;i++){
+    var el = c[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv = el.getAttribute('data-view')||'';
+    var dt = el.getAttribute('data-tab')||'';
+    if(txt === 'MONASTIC' || dv === 'monastic' || dt === 'MONASTIC'){ el.click(); return; }
+  }
+  if(typeof window.setView === 'function') window.setView('monastic');
+}
+
+// Cross-view jump, same pattern as BOOKS' _booksGoToTimeline and EXPLAIN's
+// _exClickFigure: click the TIMELINE tab, then poll until timeline.js has
+// mounted and exposed its real focusPersonInTimeline / jumpTo (view modules are
+// lazy-loaded, and other views install short stubs under the same names).
+function goToTimeline(name){
+  if(!name) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], [data-tab="TIMELINE"], .tab-timeline');
+  for(var i=0;i<c.length;i++){
+    var el = c[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv = el.getAttribute('data-view')||'';
+    var dt = el.getAttribute('data-tab')||'';   // this shell's tabs carry data-tab; label is i18n-translated
+    if(txt === 'TIMELINE' || dv === 'timeline' || dt === 'TIMELINE'){ el.click(); break; }
+  }
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var fn = (typeof window.focusPersonInTimeline === 'function' && window.focusPersonInTimeline.toString().length > 60)
+      ? window.focusPersonInTimeline
+      : window.jumpTo;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try { fn(name); } catch(e){}
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[relations] TIMELINE not ready for', name); }
+  }, 80);
+}
+
 function renderChildGrid(f, kind, lvl){
   var labels = { parent:'Parents', teacher:'Teachers', student:'Students', family:'Family', sibling:'Siblings' };
   var figs = getRelationFigures(f, kind);
@@ -752,15 +870,18 @@ function renderChildGrid(f, kind, lvl){
       var it = figs[i];
       if(it.slug && !ancestors[it.slug]){
         body += '<div class="rl-block rl-child-pill" data-slug="' + escapeHtml(it.slug) + '" data-drill="' + lvl + '">'
-              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div>'
+              + _tlLinkHtml(it.fig || { slug: it.slug }) + '</div>';
       } else if(it.areesId != null && it.fig){
         body += '<div class="rl-block rl-child-pill" data-arees="' + escapeHtml(String(it.areesId)) + '" data-drill="' + lvl + '">'
-              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div>'
+              + _tlLinkHtml(it.fig) + '</div>';
       } else if(it.slug){
         // Back-reference to an ancestor in the path: shown but NOT drillable (no data-slug),
         // so the existing child-pill click handler skips it and the chain can't loop.
         body += '<div class="rl-block rl-child-pill rl-backref">'
-              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div></div>';
+              + '<div class="rl-nm-en">' + escapeHtml(figEn(it.fig) || it.name) + _relSourceHtml(it) + '</div>'
+              + _tlLinkHtml(it.fig || { slug: it.slug }) + '</div>';
       } else {
         body += '<div class="rl-block rl-child-pill rl-unlinked" data-drill="' + lvl + '">'
               + '<div class="rl-nm-en">' + escapeHtml(it.name) + _relSourceHtml(it) + '</div></div>';
@@ -796,7 +917,6 @@ function renderBlock(f, seq, lvl, connKind){
   var en = escapeHtml(figEn(f));
   var ar = escapeHtml(figAr(f));
   var year = escapeHtml(figYear(f));
-  var nt = narrationTotal(f);
 
   var slug = blockSlug(f);
   // Drill-chain pills (lvl provided) always render their chips; browse pills don't.
@@ -838,7 +958,8 @@ function renderBlock(f, seq, lvl, connKind){
     + '<div class="rl-block' + activeCls + prophetCls + connCls + areesCls + '" data-slug="' + escapeHtml(slug) + '"' + (seq != null ? ' data-seq="' + seq + '"' : '') + '>'
     +   '<div class="rl-nm-en">' + en + '</div>'
     +   (ar ? '<div class="rl-nm-ar">' + ar + '</div>' : '')
-    +   (nt > 0 ? '<div class="rl-yr">' + nt.toLocaleString() + ' narrations</div>' : '')
+    +   _narrChipHtml(f)
+    +   _tlLinkHtml(f)
     +   nodesHtml
     + '</div>';
 }
@@ -920,7 +1041,7 @@ function getDummyCounts(f){
   if(Array.isArray(f.students)){
     for(var u=0;u<f.students.length;u++) students.push(f.students[u]);
   }
-  narrCount = narrationTotal(f);
+  narrCount = narrationCount(f);
   if(f && f.arees_id != null){
     var atc = areesRelEntries(f, 'teacher'); for(var aq=0;aq<atc.length;aq++) teachers.push(atc[aq].name);
     var asc = areesRelEntries(f, 'student'); for(var aw=0;aw<asc.length;aw++) students.push(asc[aw].name);
@@ -933,9 +1054,6 @@ function getDummyCounts(f){
     if(Array.isArray(e.teachers)) for(var et=0;et<e.teachers.length;et++) teachers.push(e.teachers[et]);
     if(Array.isArray(e.students)) for(var es=0;es<e.students.length;es++) students.push(e.students[es]);
     if(Array.isArray(e.family))   for(var ef=0;ef<e.family.length;ef++)   family.push(e.family[ef]);
-    if(typeof e.narration_count === 'number' && e.narration_count > narrCount){
-      narrCount = e.narration_count;
-    }
   }
 
   // Reverse teacher link: anyone who names f as a teacher is f's student.

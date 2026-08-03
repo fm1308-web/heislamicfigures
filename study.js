@@ -130,6 +130,51 @@ function _buildStudySidebar(){
     card.appendChild(dateDiv);
     card.appendChild(star);
 
+    // ── A17 — profile link + tradition chip ──────────────────────────────
+    // _SR_SCHOLARS is keyed by the real figure slug, so resolve the figure from
+    // PEOPLE. If there is no matching figure, neither affordance is rendered —
+    // nothing is guessed. Tradition comes from that figure's own record.
+    var _srFig = (window.PEOPLE || []).filter(function(p){ return p && p.slug === slug; })[0] || null;
+    if(_srFig){
+      var _srMeta = document.createElement('div');
+      _srMeta.className = 'sr-card-meta';
+
+      if(_srFig.tradition){
+        // Same rule as MAP/ONE (A10): colour from window.TRAD_COLORS when the
+        // tradition has an entry, otherwise plain gold. Never invent a colour.
+        var _srCol = (window.TRAD_COLORS && window.TRAD_COLORS[_srFig.tradition]) || null;
+        var _srChip = document.createElement('span');
+        _srChip.className = 'sr-trad-chip' + (_srCol ? '' : ' sr-trad-chip-gold');
+        if(_srCol) _srChip.style.setProperty('--tc', _srCol);
+        _srChip.textContent = _srFig.tradition;
+        _srMeta.appendChild(_srChip);
+      }
+
+      var _srProfile = document.createElement('span');
+      _srProfile.className = 'sr-card-profile';
+      _srProfile.textContent = 'OPEN PROFILE →';
+      _srProfile.title = 'Open ' + _srFig.famous + ' in ONE';
+      _srProfile.onclick = function(e){
+        e.stopPropagation();   // keep the card's own expand behaviour intact
+        try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(err){}
+        if(typeof window.setActiveTab === 'function') window.setActiveTab('ONE');
+        var _t = 0;
+        var _iv = setInterval(function(){
+          _t++;
+          var fn = window._oneClickName;
+          if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+            try { fn(_srFig.famous); } catch(err){}
+            clearInterval(_iv); return;
+          }
+          if(_t > 60){ clearInterval(_iv); console.warn('[study] ONE not ready for', _srFig.famous); }
+        }, 80);
+      };
+      _srMeta.appendChild(_srProfile);
+      card.appendChild(_srMeta);
+    } else {
+      console.warn('[study] A17: no PEOPLE record for scholar slug', slug, '— profile link and tradition chip skipped.');
+    }
+
     var dropdown=document.createElement('div');
     dropdown.className='sr-book-dropdown';
     dropdown.dataset.slug=slug;

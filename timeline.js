@@ -549,7 +549,32 @@ window.TimelineView = (function(){
   // skipped, but 'W' (Wiki) is computed for real: a figure earns it when its
   // profile actually renders a Wikipedia source link, i.e. p.source is an http(s)
   // URL on a wikipedia host — the same test the info card's .i-source block uses.
-  // S / F / B / T are still not computed here, so those options behave as before.
+  // S / F / B / T cannot be computed here — each letter's source data lives in a
+  // different lazy-loaded view module (study.js, talk.js, books.json, the journey
+  // files), so TIMELINE would have to load all of them just to filter. They are
+  // precomputed instead into data/islamic/figure_badges.json by
+  // "STage 2 audit files/gen_figure_badges.py" and merged in below.
+  // Fail soft: if that file is missing or malformed the map stays empty and the
+  // HAS filter behaves exactly as it did before it existed.
+  var _tlBadgeMap = null;
+  function _tlLoadBadges(){
+    var url = (typeof window.dataUrl === 'function')
+      ? window.dataUrl('data/islamic/figure_badges.json')
+      : 'data/islamic/figure_badges.json';
+    return fetch(url)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        _tlBadgeMap = (j && typeof j === 'object') ? j : {};
+        console.log('[TIMELINE] figure_badges.json:',
+                    Object.keys(_tlBadgeMap).length, 'figures with precomputed badges');
+        return _tlBadgeMap;
+      })
+      .catch(function(e){
+        _tlBadgeMap = {};
+        console.warn('[TIMELINE] figure_badges.json unavailable — S/F/B/T disabled', e);
+        return _tlBadgeMap;
+      });
+  }
   function _isWikiUrl(s){
     if(typeof s !== 'string' || !/^https?:\/\//.test(s)) return false;
     try {
@@ -583,7 +608,15 @@ window.TimelineView = (function(){
         if(c && ((slug && c.slug === slug) || (famous && c.famous === famous))){ p = c; break; }
       }
     }
-    return _tlWikiUrl(p) ? ['W'] : [];
+    // Precomputed S/F/B/T for this slug, plus the live 'W' test.
+    var out = [];
+    var key = (p && p.slug) || slug;
+    if(key && _tlBadgeMap){
+      var pre = _tlBadgeMap[key];
+      if(pre && pre.length) out = out.concat(pre);
+    }
+    if(_tlWikiUrl(p)) out.push('W');
+    return out;
   }
   // pushFigureHistory — back/forward not wired in sandbox.
   function pushFigureHistory(){}
@@ -1869,7 +1902,10 @@ function _populateFigureHadithChip(p){
   _ensureFigureHadithChips().then(function(chips){
     var ids = chips[p.slug];
     if(!ids || !ids.length) return;
-    slot.innerHTML = '<span class="i-tag" id="figHadithChip" style="cursor:pointer;border-color:rgba(212,175,55,.5);color:#D4AF37">HADITHS</span>';
+    // A12 — show the count that is already in the loaded chip data. No count
+    // data (empty ids) → the chip is not rendered at all, per the early return above.
+    slot.innerHTML = '<span class="i-tag" id="figHadithChip" style="cursor:pointer;border-color:rgba(212,175,55,.5);color:#D4AF37">'
+      + ids.length.toLocaleString() + ' HADITHS</span>';
     var chip = document.getElementById('figHadithChip');
     if(chip){
       chip.onclick = function(ev){
@@ -2721,12 +2757,15 @@ function _showTimelineMethodology(){
     var p2 = fetch(dataUrl('data/islamic/name_variants.json'))
       .then(function(r){ return r.ok ? r.json() : {}; })
       .catch(function(){ return {}; });
+    // Precomputed S/F/B/T badges for the HAS filter. Loaded alongside the rest so
+    // the first render already has them; _tlLoadBadges never rejects.
+    var p3 = _tlLoadBadges();
 
     _ensureCrossTraditionData().then(function(){
       if(activePerson) renderInfoWithDetails(activePerson);
     });
 
-    Promise.all([p1, p2]).then(function(results){
+    Promise.all([p1, p2, p3]).then(function(results){
       PEOPLE = results[0] || [];
       window.PEOPLE = PEOPLE;
       window._NAME_VARIANTS = results[1] || {};

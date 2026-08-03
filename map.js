@@ -239,6 +239,25 @@ function _markerTypeColor(p){
   return '#2ecc9b';
 }
 
+// A10 — tradition chip colour. Reads the shared window.TRAD_COLORS map (config.js).
+// Returns null for a tradition with no entry so callers keep the plain gold styling.
+// Never invent an entry here.
+function _tradColor(t){
+  if(!t) return null;
+  const M=window.TRAD_COLORS;
+  return (M && M[t]) ? M[t] : null;
+}
+
+// Tradition chip markup shared by the MAP tooltip and the figure panel.
+// Coloured when the tradition is known, plain gold otherwise.
+function _tradChip(t){
+  if(!t) return '';
+  const c=_tradColor(t);
+  return c
+    ? `<span class="map-trad-chip" style="--tc:${c}">${esc(t)}</span>`
+    : `<span class="map-trad-chip map-trad-chip-gold">${esc(t)}</span>`;
+}
+
 const MAP_LEGEND=[
   {label:'Prophet / Lineage', color:'#D4AF37'},
   {label:'Companions',        color:'#d4784a'},
@@ -345,7 +364,7 @@ function _mapTTContent(p, pinned){
   const hint=pinned?`<span style="font-size:var(--fs-3);opacity:.5;margin-left:5px">→ CLICK AGAIN FOR FULL INFO</span>`:'';
   return `<div style="color:${col};font-family:'Cinzel',serif;font-weight:700;font-size:var(--fs-3);margin-bottom:2px">${esc(p.famous)}${hint}</div>`+
     `<div style="font-family:'Crimson Pro',serif;font-size:var(--fs-3);color:var(--text2);font-style:normal;margin-bottom:4px">${esc(p.primaryTitle||p.tradition||'')}</div>`+
-    `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` · ${esc(p.tradition)}`:''}</div>`+
+    `<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;color:var(--muted)">${dob_s}${p.tradition?` ${_tradChip(p.tradition)}`:''}</div>`+
     (nT||nS?`<div style="font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;color:rgba(212,175,55,.55);margin-top:3px">`+
       (nT?`↑ ${nT} teacher${nT>1?'s':''}  `:'')+( nS?`↓ ${nS} student${nS>1?'s':''}`:'')+`</div>`:'');
 }
@@ -450,7 +469,7 @@ function _openMapCard(p, cx, cy){
 
   let html=`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
     <span style="padding:2px 8px;border-radius:2px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;border:1px solid ${col}55;color:${col}">${esc(p.type||'')}</span>
-    <span style="padding:2px 8px;border-radius:2px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;border:1px solid var(--ip-brd);color:var(--ip-muted)">${esc(p.tradition||'')}</span>
+    ${_tradChip(p.tradition||'')}
     ${p.city?`<span style="padding:2px 8px;border-radius:2px;font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.06em;border:1px solid var(--ip-brd);color:var(--ip-muted)">📍 ${esc(p.city)}</span>`:''}
   </div>
   ${(()=>{if(!window._wikidata||!window._wikidata[p.slug]||!window._wikidata[p.slug].occupations||!window._WD_OCC_LABELS) return '';const chips=window._wikidata[p.slug].occupations.slice(0,5).map(q=>window._WD_OCC_LABELS[q]).filter(Boolean);if(!chips.length) return '';return '<div class="map-wd-occupations">'+chips.map(l=>'<span class="map-wd-occ">'+esc(l)+'</span>').join('')+'</div>';})()}
@@ -496,7 +515,12 @@ function _openMapCard(p, cx, cy){
   }
   document.getElementById('mcBody').innerHTML=html;
   document.getElementById('mcScroll').scrollTop=0;
-  document.getElementById('mcTimelineBtn').onclick=()=>{ _closeMapCard(); _unpinMapTT(); window.focusPersonInTimeline(p.famous); };
+  document.getElementById('mcTimelineBtn').onclick=()=>{
+    _closeMapCard(); _unpinMapTT();
+    // shared shell helper opens the figure's own card; direct focusPersonInTimeline did not
+    if(typeof window._gaGoTimeline === 'function') window._gaGoTimeline(p.famous);
+    else window.focusPersonInTimeline(p.famous);
+  };
   var _mtChip = document.querySelector('#mcBody .map-tafsir-chip');
   if(_mtChip){
     _mtChip.onclick = function(e){

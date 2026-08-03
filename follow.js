@@ -194,6 +194,9 @@ function initFollow() {
   _fwLoadAll(function() {
     _fwAssignColors();
     _fwBuildLeftRail();
+    // An external "follow their life" click can land before the journeys have
+    // finished loading; apply it here instead of defaulting to the first figure.
+    if (window._fwPendingFigure && window._fwApplyPendingFigure()) return;
     if (_fwSelectedCount() === 0 && _fwIndex.length > 0) {
       _fwSelected[_fwIndex[0].file] = true;
     }
@@ -256,6 +259,12 @@ function _fwExposeCache(){
     var d = _fwFigures[item.file];
     if(d && d.slug) _slugToFile[d.slug] = item.file;
   });
+  // Share the same map the shell/ONE/TIMELINE/YEAR use to gate follow buttons.
+  // Loading is untouched — this only publishes what was already computed here.
+  window._journeySlugToFile = _slugToFile;
+  var _figs = new Set();
+  for(var _s in _slugToFile){ if(_slugToFile.hasOwnProperty(_s)) _figs.add(_s); }
+  window._journeyFigures = _figs;
   window._getJourneyLocation = function(slug, year){
     var file = _slugToFile[slug];
     if(!file) return null;
@@ -457,6 +466,57 @@ function _fwUpdateFollowingList() {
 }
 
 // ═══════════════════════════════════════════════════════════
+// EXTERNAL ENTRY — "Follow their life" from ONE / TIMELINE / YEAR
+// ═══════════════════════════════════════════════════════════
+// shell.js parks the figure on window._fwPendingFigure and switches to FOLLOW;
+// this consumes it. Accepts an F-code slug or a journey/person name. Selecting
+// only the requested figure is what "follow THEIR life" implies — it goes
+// through the same _fwSelected + _fwRebuild machinery a dropdown click uses.
+// Returns true when a journey was found and shown, false when it wasn't
+// (caller stays put rather than showing an error).
+function _fwResolveToFile(slugOrName){
+  if(!slugOrName) return null;
+  var key = String(slugOrName);
+  // 1. F-code slug — the reliable path.
+  var map = window._journeySlugToFile || {};
+  if(map[key]) return map[key];
+  for(var f in _fwFigures){
+    if(_fwFigures.hasOwnProperty(f) && _fwFigures[f] && _fwFigures[f].slug === key) return f;
+  }
+  // 2. Filename, as FOLLOW's own selection uses.
+  if(_fwFigures[key]) return key;
+  // 3. Name — exact first, then normalised, and ONLY when unambiguous.
+  var n = _fwNorm(key), hits = [];
+  for(var i = 0; i < _fwIndex.length; i++){
+    var item = _fwIndex[i];
+    var d = _fwFigures[item.file];
+    if(item.name === key || (d && d.person === key)) return item.file;
+    var nm = _fwNorm(item.name), pn = d ? _fwNorm(d.person) : '';
+    if(nm === n || (pn && pn === n)){ if(hits.indexOf(item.file) < 0) hits.push(item.file); }
+  }
+  return hits.length === 1 ? hits[0] : null;   // ambiguous → no guess
+}
+
+window._fwApplyPendingFigure = function(){
+  var want = window._fwPendingFigure;
+  if(!want) return false;
+  // Journeys still in flight — retry once they land rather than failing.
+  if(!_fwIndex.length || !Object.keys(_fwFigures).length) return false;
+  window._fwPendingFigure = null;
+  var file = _fwResolveToFile(want);
+  if(!file){ console.warn('[FOLLOW] no journey for', want); return false; }
+  _fwSelected = {};
+  _fwSelected[file] = true;
+  _fwUpdateDDChecks();
+  _fwUpdateFollowingList();
+  _fwAnimStopFull();
+  _fwYear = null;
+  _fwYearIdx = -1;
+  _fwRebuild();
+  return true;
+};
+
+// ═══════════════════════════════════════════════════════════
 // REBUILD — called when selection changes
 // ═══════════════════════════════════════════════════════════
 function _fwRebuild() {
@@ -541,6 +601,18 @@ function _fwBuildFeed() {
     html += '<div class="fw-feed-desc">' + (e.event || '') + '</div>';
     html += '<div class="fw-feed-source">' + (e.source || '') + '</div>';
     html += '<div class="fw-feed-meta">' + _fwPrecLabel(e.precision) + '</div>';
+    // A13 — exits. (a) the figure's TIMELINE card and ONE profile;
+    // (b) this stop's place, opened in EVENTS search. Place link only when the
+    // entry actually carries a location — nothing is invented.
+    var _fwNm = String(item.name || '').replace(/'/g, "\\'");
+    var _fwLoc = String(e.location || '').replace(/'/g, "\\'");
+    html += '<div class="fw-feed-exits">';
+    html += '<span class="fw-feed-exit" onclick="window._fwGoTimeline(\'' + _fwNm + '\', event)">TIMELINE</span>';
+    html += '<span class="fw-feed-exit" onclick="window._fwGoProfile(\'' + _fwNm + '\', event)">PROFILE</span>';
+    if(e.location){
+      html += '<span class="fw-feed-exit" onclick="window._fwGoEvents(\'' + _fwLoc + '\', event)">EVENTS HERE</span>';
+    }
+    html += '</div>';
     html += '</div>';
     html += '</div>';
   });
@@ -553,6 +625,97 @@ function _fwBuildFeed() {
   _fwExpandedIdx = -1;
   _fwUpdateFeedActive();
 }
+
+// ── A13 — exits from a journey stop ────────────────────────────────────────
+// All three reuse the app's existing entry points: a tab click, then poll for
+// the real view function (view modules are lazy-loaded and other views install
+// short stubs under the same names — hence the toString length check).
+function _fwClickTab(labels){
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a');
+  for(var i=0;i<c.length;i++){
+    var el = c[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv  = (el.getAttribute('data-view')||'').toUpperCase();
+    var dt  = (el.getAttribute('data-tab')||'').toUpperCase();
+    if(labels.indexOf(txt)>=0 || labels.indexOf(dv)>=0 || labels.indexOf(dt)>=0){ el.click(); return true; }
+  }
+  return false;
+}
+// FOLLOW's journey names don't always match core's `famous` character-for-character
+// ("Abd al-Qadir al-Jazairi" vs "Abd al-Qadir al-Jaza'iri"), and both TIMELINE's
+// focusPersonInTimeline and ONE's _oneClickName match on `famous` exactly — an
+// unresolved name lands on the wrong figure. Resolve against real PEOPLE entries
+// using the same normalisation relations.js uses; only accept an UNAMBIGUOUS hit,
+// otherwise pass the name through untouched. Nothing is invented.
+function _fwNorm(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+function _fwResolveName(name){
+  var people = window.PEOPLE || [];
+  if(!name || !people.length) return name;
+  for(var i=0;i<people.length;i++){ if(people[i] && people[i].famous === name) return name; }
+  var n = _fwNorm(name), hits = [];
+  for(var j=0;j<people.length;j++){
+    if(people[j] && _fwNorm(people[j].famous) === n){ hits.push(people[j].famous); if(hits.length>1) break; }
+  }
+  return hits.length === 1 ? hits[0] : name;
+}
+
+// (a) figure → their TIMELINE card.
+// This behaviour now lives in shell.js as window._gaGoTimeline so every view's
+// timeline exit shares one implementation; this stays as FOLLOW's entry point.
+window._fwGoTimeline = function(name, ev){
+  if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(name, ev); return; }
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  if(!name) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  _fwClickTab(['TIMELINE']);
+  var t=0, iv=setInterval(function(){
+    t++;
+    // jumpTo is preferred: verified 2026-08-03 that focusPersonInTimeline switches
+    // to TIMELINE but leaves the INFORMATION card on the previous figure, whereas
+    // jumpTo opens the figure's card. focusPersonInTimeline stays as the fallback.
+    var fn = (typeof window.jumpTo === 'function' && window.jumpTo.toString().length > 60)
+      ? window.jumpTo : window.focusPersonInTimeline;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try { fn(_fwResolveName(name)); } catch(e){}
+      clearInterval(iv); return;
+    }
+    if(t > 60){ clearInterval(iv); console.warn('[follow] TIMELINE not ready for', name); }
+  }, 80);
+};
+// (a) figure → ONE profile
+window._fwGoProfile = function(name, ev){
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  if(!name) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  _fwClickTab(['ONE']);
+  var t=0, iv=setInterval(function(){
+    t++;
+    var fn = window._oneClickName;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try { fn(_fwResolveName(name)); } catch(e){}
+      clearInterval(iv); return;
+    }
+    if(t > 60){ clearInterval(iv); console.warn('[follow] ONE not ready for', name); }
+  }, 80);
+};
+// (b) stop → EVENTS searched for that place, via the shell search input that
+// events.js wires in its _wireZoneB.
+window._fwGoEvents = function(place, ev){
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  if(!place) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  _fwClickTab(['EVENTS']);
+  var t=0, iv=setInterval(function(){
+    t++;
+    var inp = document.getElementById('search');
+    if(inp && /event/i.test(inp.placeholder||'')){
+      inp.value = place;
+      inp.dispatchEvent(new Event('input', { bubbles:true }));
+      clearInterval(iv); return;
+    }
+    if(t > 60){ clearInterval(iv); console.warn('[follow] EVENTS search not ready for', place); }
+  }, 80);
+};
 
 function _fwFeedClick(idx) {
   var item = _fwFeedEntries[idx];

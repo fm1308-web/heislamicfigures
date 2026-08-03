@@ -44,6 +44,23 @@
 .sr-card.sel{border-color:var(--accent);background:rgba(212,175,55,.1)}
 .sr-card-name{font-family:'Cinzel',serif;font-size:var(--fs-3);font-weight:600;color:var(--accent);letter-spacing:.03em}
 .sr-card-date{font-size:var(--fs-3);color:var(--muted);margin-top:2px}
+/* A17 — tradition chip + profile exit on a scholar card. The chip takes --tc
+   inline from window.TRAD_COLORS; a tradition with no entry gets
+   .sr-trad-chip-gold and stays plain gold. */
+.sr-card-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:4px}
+.sr-trad-chip{
+  display:inline-block;padding:1px 7px;border-radius:2px;
+  font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.05em;
+  color:var(--tc,#D4AF37);
+  border:1px solid color-mix(in srgb, var(--tc,#D4AF37) 55%, transparent);
+  background:color-mix(in srgb, var(--tc,#D4AF37) 12%, transparent);
+}
+.sr-trad-chip-gold{color:#D4AF37;border-color:rgba(212,175,55,.45);background:rgba(212,175,55,.06)}
+.sr-card-profile{
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;
+  color:var(--text2,#A0AEC0);opacity:.7;cursor:pointer;
+}
+.sr-card-profile:hover{color:#D4AF37;opacity:1;text-decoration:underline}
 
 .sr-book-dropdown{max-height:0;overflow:hidden;transition:max-height .25s ease;margin-bottom:8px}
 .sr-book-dropdown.open{max-height:600px}

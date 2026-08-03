@@ -396,6 +396,7 @@ window._exClickFigure = function(famous){
   try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   if(!famous) return;
   window._tlPendingFocus = famous;
+  if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(famous); return; }
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], .tab-timeline');
   for(var i=0;i<c.length;i++){
     var el=c[i];

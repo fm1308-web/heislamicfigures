@@ -251,6 +251,14 @@
   word-wrap: break-word; overflow-wrap: break-word;
 }
 .fw-feed-meta { font-size: var(--fs-3); color: var(--muted); }
+/* A13 — exits on an expanded journey stop. Same muted-until-hover gold treatment
+   as the RELATIONS .rl-tl-link affordance. */
+.fw-feed-exits { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.fw-feed-exit {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .08em;
+  color: var(--text2, #A0AEC0); opacity: .65; cursor: pointer;
+}
+.fw-feed-exit:hover { color: #D4AF37; opacity: 1; text-decoration: underline; }
 .fw-feed-empty {
   color: var(--muted); font-size: var(--fs-3);
   text-align: center; padding: 40px 10px; line-height: 1.6;

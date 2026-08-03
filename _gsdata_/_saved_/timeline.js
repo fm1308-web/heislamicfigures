@@ -543,9 +543,48 @@ window.TimelineView = (function(){
   // canShowImage / fetchWikiImage — Wikipedia thumb fetch skipped in sandbox.
   function canShowImage(p){ return false; }
   function fetchWikiImage(){}
-  // _renderBadgesHtml + getFigureBadges — TIMELINE row badges (S/W/F/B/T) skipped.
+  // _renderBadgesHtml — TIMELINE row badges (S/W/F/B/T) skipped.
   function _renderBadgesHtml(slug, famous, context){ return ''; }
-  function getFigureBadges(slug, famous){ return []; }
+  // getFigureBadges — feeds the HAS filter in getFiltered(). Row badges stay
+  // skipped, but 'W' (Wiki) is computed for real: a figure earns it when its
+  // profile actually renders a Wikipedia source link, i.e. p.source is an http(s)
+  // URL on a wikipedia host — the same test the info card's .i-source block uses.
+  // S / F / B / T are still not computed here, so those options behave as before.
+  function _isWikiUrl(s){
+    if(typeof s !== 'string' || !/^https?:\/\//.test(s)) return false;
+    try {
+      return new URL(s).hostname.replace(/^www\./,'').indexOf('wikipedia') !== -1;
+    } catch(_){ return false; }
+  }
+  // The Wikipedia URL a figure's profile links to: the Sources URL when that is a
+  // Wikipedia article, else the separate wiki_url field — prophets and others whose
+  // Sources line is plain text ("Quran / Tarikh al-Tabari") carry their article
+  // there. '' when the data holds none; never invented. Shared by the info card
+  // and the HAS→Wiki badge so the filter and the profile can't drift apart.
+  function _tlWikiUrl(p){
+    if(!p) return '';
+    if(_isWikiUrl(p.source)) return p.source;
+    if(_isWikiUrl(p.wiki_url)) return p.wiki_url;
+    return '';
+  }
+  // <a> for a Wikipedia URL, labelled the way the info card already labels one.
+  function _tlWikiAnchor(url){
+    var label = 'Wikipedia ↗';
+    try {
+      var name = decodeURIComponent(new URL(url).pathname.split('/').pop()||'').replace(/_/g,' ');
+      if(name) label = 'Wikipedia — ' + name + ' ↗';
+    } catch(_){}
+    return '<a href="'+esc(url)+'" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">'+esc(label)+'</a>';
+  }
+  function getFigureBadges(slug, famous, p){
+    if(!p && (slug || famous) && Array.isArray(window.PEOPLE)){
+      for(var i=0;i<window.PEOPLE.length;i++){
+        var c = window.PEOPLE[i];
+        if(c && ((slug && c.slug === slug) || (famous && c.famous === famous))){ p = c; break; }
+      }
+    }
+    return _tlWikiUrl(p) ? ['W'] : [];
+  }
   // pushFigureHistory — back/forward not wired in sandbox.
   function pushFigureHistory(){}
   // jumpTo — wrapper used by info-card chip clicks; redirected to local jumpTo
@@ -1035,7 +1074,7 @@ function getFiltered(){
     }
     /* Badge filter */
     if(selBadge){
-      var badges=getFigureBadges(p.slug,p.famous);
+      var badges=getFigureBadges(p.slug,p.famous,p);
       if(badges.indexOf(selBadge)===-1) return false;
     }
     return true;
@@ -2098,8 +2137,9 @@ function renderInfo(p){
         <span style="font-size:var(--fs-3);">𝒮</span> ${_tlT('SCHOLARSHIP')}
       </a>
     </div>
-    ${p.source?`<div class="i-source">${_tlT('Sources')}: ${(()=>{
-      const s=_tlFigField(p,'source')||p.source;
+    ${(p.source||_tlWikiUrl(p))?`<div class="i-source">${_tlT('Sources')}: ${(()=>{
+      const s=_tlFigField(p,'source')||p.source||'';
+      let out='';
       if(/^https?:\/\//.test(s)){
         try{
           const u=new URL(s);
@@ -2113,10 +2153,17 @@ function renderInfo(p){
           } else {
             label=host+' ↗';
           }
-          return '<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">'+esc(label)+'</a>';
-        }catch(_){return esc(s);}
+          out='<a href="'+esc(s)+'" target="_blank" rel="noopener" style="color:#D4AF37;text-decoration:none">'+esc(label)+'</a>';
+        }catch(_){out=esc(s);}
+      } else if(s){
+        out=esc(s);
       }
-      return esc(s);
+      // Figures whose Sources line is plain text (prophets: "Quran / Tarikh al-Tabari")
+      // keep their article in wiki_url — append it so the profile shows the link the
+      // HAS→Wiki filter selects on. Text only; no image.
+      const w=_tlWikiUrl(p);
+      if(w && w!==s) out += (out?' · ':'') + _tlWikiAnchor(w);
+      return out;
     })()}</div>`:''}
   `;
 

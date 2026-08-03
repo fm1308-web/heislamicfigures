@@ -1,0 +1,4051 @@
+/* ─────────────────────────────────────────────────────────────
+   MONASTIC view — verbatim lift from bv-app/monastic.js
+   The inner `window.Monastic = (function(){…})()` IIFE remains
+   intact (sets up Monastic.init/openWizard/showHadiths/onEnter/
+   onLeave). This outer wrapper exposes window.MonasticView with
+   the standard mount/unmount lifecycle the sandbox shell expects.
+
+   Fetch URLs already swapped to dataUrl() (3 sites).
+   ───────────────────────────────────────────────────────────── */
+(function(){
+'use strict';
+
+// ═══════════════════════════════════════════════════════════
+// STUBBED EXTERNALS (mirror timeline.js stub style)
+// ═══════════════════════════════════════════════════════════
+// stub: VIEW global
+window.VIEW = 'monastic';
+// stub: APP namespace
+window.APP = window.APP || { Favorites:null, filterFavsOnly:false, _lang:'en',
+  getDisplayName: function(p){ return p ? (p.famous || '') : ''; } };
+// stub: setView — sandbox shell uses setActiveTab. Monastic.showHadiths()
+// calls setView('monastic') on entry; we provide a logging stub.
+if(typeof window.setView !== 'function') window.setView = function(v){ console.log('[monastic] setView (stub):', v); };
+// stub: focusPersonInTimeline — narrator-pill click → TIMELINE jump.
+if(typeof window.focusPersonInTimeline !== 'function') window.focusPersonInTimeline = function(name){ console.log('[monastic] focusPersonInTimeline (stub):', name); };
+// stub: jumpTo — xref figure-chip click.
+if(typeof window.jumpTo !== 'function') window.jumpTo = function(name){ console.log('[monastic] jumpTo (stub):', name); };
+// stub: openStartAtVerse — xref verse-chip click → START view.
+if(typeof window.openStartAtVerse !== 'function') window.openStartAtVerse = function(s,v,e){ console.log('[monastic] openStartAtVerse (stub):', s, v, e); };
+// stub: _stXrefJumpEvent — xref event-chip click → EVENTS view.
+if(typeof window._stXrefJumpEvent !== 'function') window._stXrefJumpEvent = function(eid){ console.log('[monastic] _stXrefJumpEvent (stub):', eid); };
+// Shared cache key (per CLAUDE.md). Already set by START in bv-app; we initialise
+// here so the lifted code can populate it without a typeof guard.
+if(typeof window._hadithXrefCache === 'undefined') window._hadithXrefCache = {};
+// stub: PEOPLE — populated by core.json fetch in mount(). The lifted code's
+// _buildPeopleIndex reads PEOPLE without typeof, so we ensure a default.
+if(typeof window.PEOPLE === 'undefined') window.PEOPLE = [];
+
+// ═══════════════════════════════════════════════════════════
+// ▼▼▼ VERBATIM LIFTED CODE FROM bv-app/monastic.js ▼▼▼
+// (Sets up window.Monastic = { init, toggleDD, ddClearAll,
+//  openWizard, showHadiths, onEnter, onLeave }.)
+// ═══════════════════════════════════════════════════════════
+
+window.Monastic = (function(){
+'use strict';
+
+var COLLECTIONS = [
+  // Canonical Six (Kutub al-Sittah)
+  {key:'bukhari',         label:'Sahih Bukhari',           group:'canonical', file:'data/islamic/hadith/sahih-bukhari.json'},
+  {key:'muslim',          label:'Sahih Muslim',            group:'canonical', file:'data/islamic/hadith/sahih-muslim.json'},
+  {key:'abudawud',        label:"Sunan Abi Da'ud",         group:'canonical', file:'data/islamic/hadith/abu-dawood.json'},
+  {key:'tirmidhi',        label:"Jami' al-Tirmidhi",       group:'canonical', file:'data/islamic/hadith/al-tirmidhi.json'},
+  {key:'nasai',           label:"Sunan an-Nasa'i",         group:'canonical', file:'data/islamic/hadith/sunan-nasai.json'},
+  {key:'ibnmajah',        label:'Sunan Ibn Majah',         group:'canonical', file:'data/islamic/hadith/ibn-e-majah.json'},
+  // Sunni — Other
+  {key:'muwatta',         label:'Muwatta Malik',           group:'sunni_other', file:'data/islamic/hadith/muwatta-malik.json'},
+  {key:'musnad-ahmad',    label:'Musnad Ahmad',            group:'sunni_other', file:'data/islamic/hadith/musnad-ahmad.json'},
+  {key:'darimi',          label:'Sunan ad-Darimi',         group:'sunni_other', file:'data/islamic/hadith/sunan-ad-darimi.json'},
+  {key:'riyad',           label:'Riyad as-Salihin',        group:'sunni_other', file:'data/islamic/hadith/riyad-as-salihin.json'},
+  {key:'shamail',         label:'Shamail al-Muhammadiyah', group:'sunni_other', file:'data/islamic/hadith/shamail-al-muhammadiyah.json'},
+  {key:'bulugh',          label:'Bulugh al-Maram',         group:'sunni_other', file:'data/islamic/hadith/bulugh-al-maram.json'},
+  {key:'adab-mufrad',     label:'al-Adab al-Mufrad',       group:'sunni_other', file:'data/islamic/hadith/al-adab-al-mufrad.json'},
+  {key:'mishkat',         label:'Mishkat al-Masabih',      group:'sunni_other', file:'data/islamic/hadith/mishkat-al-masabih.json'},
+  {key:'40-nawawi',       label:'40 Hadith Nawawi',        group:'sunni_other', file:'data/islamic/hadith/40-hadith-nawawi.json'},
+  {key:'40-qudsi',        label:'40 Hadith Qudsi',         group:'sunni_other', file:'data/islamic/hadith/40-hadith-qudsi.json'},
+  {key:'40-shahwaliullah',label:'40 Hadith Shah Waliullah',group:'sunni_other', file:'data/islamic/hadith/40-hadith-shahwaliullah.json'},
+  // Shia
+  {key:'amali-mufid',     label:"al-Amali (al-Mufid)",     group:'shia', file:'data/islamic/hadith/al-amali-mufid.json'},
+  {key:'amali-saduq',     label:"al-Amali (al-Saduq)",     group:'shia', file:'data/islamic/hadith/al-amali-saduq.json'},
+  {key:'kafi',            label:'al-Kafi (Kulayni)',       group:'shia', files:[
+        'data/islamic/hadith/al-kafi-volume-1-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-2-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-3-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-4-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-5-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-6-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-7-kulayni.json',
+        'data/islamic/hadith/al-kafi-volume-8-kulayni.json'
+      ]},
+  {key:'khisal',          label:'al-Khisal (al-Saduq)',    group:'shia', file:'data/islamic/hadith/al-khisal-saduq.json'},
+  {key:'tawhid',          label:'al-Tawhid (al-Saduq)',    group:'shia', file:'data/islamic/hadith/al-tawhid-saduq.json'},
+  {key:'fadail-shia',     label:'Fadail al-Shia',          group:'shia', file:'data/islamic/hadith/fadail-al-shia-saduq.json'},
+  {key:'kamal-din',       label:"Kamal al-Din wa Tamam al-Ni'ma", group:'shia', file:'data/islamic/hadith/kamal-al-din-wa-tamam-al-nima-saduq.json'},
+  {key:'kamil-ziyarat',   label:'Kamil al-Ziyarat',        group:'shia', file:'data/islamic/hadith/kamil-al-ziyarat-qummi.json'},
+  {key:'ghayba-numani',   label:"Kitab al-Ghayba (al-Nu'mani)", group:'shia', file:'data/islamic/hadith/kitab-al-ghayba-numani.json'},
+  {key:'mumin-ahwazi',    label:"Kitab al-Mu'min",         group:'shia', file:'data/islamic/hadith/kitab-al-mumin-ahwazi.json'},
+  {key:'zuhd-ahwazi',     label:'Kitab al-Zuhd',           group:'shia', file:'data/islamic/hadith/kitab-al-zuhd-ahwazi.json'},
+  {key:'faqih',           label:'Man La Yahduruh al-Faqih', group:'shia', files:[
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-1-saduq.json',
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-2-saduq.json',
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-3-saduq.json',
+        'data/islamic/hadith/man-la-yahduruh-al-faqih-volume-4-saduq.json'
+      ]}
+];
+
+// Map Arabic chapter-name topics to their English equivalents so the Topic
+// dropdown reads in English and filters work uniformly. Applied at:
+//   (a) topic_index.json load — Arabic buckets fold into their English bucket
+//   (b) fetchCollection — each hadith's `topic` field is rewritten via map
+// Unmapped Arabic topics fall back to 'Other'.
+var ARABIC_TOPIC_MAP = {
+  'الأَشْرِبَة': 'Drinks',
+  'الأَضَاحِىِّ': 'Sacrifices',
+  'الأَطْعِمَة': 'Food',
+  'الاسْتِئْذَان': 'Seeking Permission',
+  'الْبُيُوع': 'Commerce',
+  'الْجِهَاد': 'Jihad',
+  'الْحُدُود': 'Legal Punishments',
+  'الدِّيَات': 'Blood Money',
+  'الرُّؤْيَا': 'Dreams',
+  'الرِّقَاق': 'Heart-Softening',
+  'الزَّكَاة': 'Zakat',
+  'السِّيَر': 'Military Campaigns',
+  'الصَّلاَة': 'Prayer',
+  'الصَّوْم': 'Fasting',
+  'الصَّيْد': 'Hunting',
+  'الطَّلاَق': 'Divorce',
+  'الطَّهَارَة': 'Purification',
+  'الفَرَائِض': 'Inheritance',
+  'الْمَنَاسِك': 'Hajj',
+  'النُّذُور وَالأَيْمَان': 'Vows and Oaths',
+  'النِّكَّاح': 'Marriage',
+  'الْوَصَايَا': 'Bequests'
+};
+
+// Strip Arabic diacritics so visually-equivalent strings (with or without
+// fatha/kasra/damma marks) hit the same key in the map.
+function _stripDiacritics(s){
+  return String(s || '').replace(/[ً-ْٰـ]/g, '');
+}
+
+// Build a diacritic-stripped lookup once.
+var _ARABIC_TOPIC_LOOKUP = (function(){
+  var out = {};
+  Object.keys(ARABIC_TOPIC_MAP).forEach(function(k){
+    out[_stripDiacritics(k)] = ARABIC_TOPIC_MAP[k];
+  });
+  return out;
+})();
+
+// Resolve any topic string to its canonical form. English passes through;
+// known Arabic translates; unknown Arabic → 'Other'.
+function _resolveTopic(t){
+  if(!t) return 'Other';
+  var hasArabic = /[؀-ۿ]/.test(t);
+  if(!hasArabic) return t;
+  var stripped = _stripDiacritics(t);
+  return _ARABIC_TOPIC_LOOKUP[stripped] || 'Other';
+}
+
+
+// Maps monastic.js internal collection key → hadith_xref file basename.
+// Original 6 (legacy xref schema). Keep for fallback path.
+var XREF_COLL_MAP = {
+  bukhari:  'sahih-bukhari',
+  muslim:   'sahih-muslim',
+  abudawud: 'sunan-abi-daud',
+  tirmidhi: 'jami-al-tirmidhi',
+  nasai:    'sunan-an-nasai',
+  ibnmajah: 'sunan-ibn-majah'
+};
+
+// Reverse map: xref-style slug → monastic internal key.
+// Auto-built from COLLECTIONS so every book in the new dropdown is reachable.
+var XREF_TO_MON_KEY = {};
+// Start with the canonical 6
+Object.keys(XREF_COLL_MAP).forEach(function(k){ XREF_TO_MON_KEY[XREF_COLL_MAP[k]] = k; });
+// Add ALL COLLECTIONS by deriving the xref slug from their file path
+COLLECTIONS.forEach(function(c){
+  // Extract trailing filename basename from single-file OR multi-file entries.
+  var allFiles = Array.isArray(c.files) ? c.files : (c.file ? [c.file] : []);
+  allFiles.forEach(function(f){
+    var m = (f || '').match(/\/([^\/]+)\.json$/);
+    if(m){
+      var slug = m[1];
+      if(!XREF_TO_MON_KEY[slug]) XREF_TO_MON_KEY[slug] = c.key;
+    }
+  });
+  // Also map the collection's own key to itself
+  XREF_TO_MON_KEY[c.key] = c.key;
+});
+
+var MON_PERIODS = [
+  {id:'early_makkan', label:'Early Makkan',  years:'610\u2013622 CE', span:12, color:'#8B6F47', rgb:'139,111,71'},
+  {id:'madinan',      label:'Madinan',       years:'622\u2013632 CE', span:10, color:'#D4AF37', rgb:'212,175,55'},
+  {id:'post_prophet', label:'Post-Prophet',  years:'632\u2013661 CE', span:29, color:'#6B8E6B', rgb:'107,142,107'},
+  {id:'successor',    label:'Successor Era', years:'661\u2013700 CE', span:39, color:'#5C7A8C', rgb:'92,122,140'}
+];
+
+var CONF_STYLES = {
+  high:        {bg:'#D4AF37', text:'#0E1621', label:'HIGH'},
+  medium:      {bg:'#3FA7A0', text:'#FFFFFF', label:'MEDIUM'},
+  low:         {bg:'#8A95A0', text:'#FFFFFF', label:'LOW'},
+  period_only: {bg:'#666',    text:'#FFFFFF', label:'PERIOD ONLY'}
+};
+
+var _inited = false;
+var _cache = {};
+var MAX_ROWS = 500;
+var _currentPage = 0;
+
+var _resultsEl, _loadingEl, _countEl, _bandEl;
+var _periodTotals = null;
+var _narratorIndex = [];
+var _narratorCleanList = null;
+var _topicList = null;
+var _topicMap = {};
+var _clickBound = false;
+var _peopleIndex = null;
+var _pinnedHadiths = null;
+
+var _monSel = {
+  period:     new Set(),
+  topic:      new Set(),
+  narrator:   new Set(),
+  collection: new Set(),
+  volume:     new Set(),
+  concept:    new Set()
+};
+var _monDDBound = false;
+var _monSearchBoxPrev = null;
+
+function _monHandlePendingNarrator(){
+  var name = window._stPendingNarrator;
+  if(!name) return;
+  window._stPendingNarrator = null;
+  _monSel.period.clear();
+  _monSel.topic.clear();
+  _monSel.narrator.clear();
+  _monSel.collection.clear();
+  _monSel.narrator.add(name);
+  _applyAllFilters();
+  try { window.scrollTo({top:0, behavior:'auto'}); } catch(e){ window.scrollTo(0,0); }
+}
+
+function _monHandlePendingPinned(){
+  var pp = window._stPendingPinned;
+  if(!pp || !pp.ids || !pp.ids.length){
+    return false;
+  }
+  console.log('[MON] pending pinned received', pp.ids.length, 'ids; label:', pp.label);
+  window._stPendingPinned = null;
+  _pinnedHadiths = { ids: pp.ids.slice(), label: pp.label || '' };
+  // Wait for _resultsEl to mount, then process.
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(_resultsEl && typeof _processPinnedHadiths === 'function'){
+      clearInterval(iv);
+      try { _processPinnedHadiths(); }
+      catch(e){ console.warn('[MON] _processPinnedHadiths threw', e); }
+    } else if(tries > 50){
+      clearInterval(iv);
+      console.warn('[MON] _resultsEl never appeared for pin set');
+    }
+  }, 80);
+  return true;
+}
+
+function _monHandlePendingHadith(){
+  var p = window._stPendingHadith;
+  if(!p || !p.col || !p.num){
+    console.log('[MON] no pending hadith', p);
+    return;
+  }
+  console.log('[MON] pending hadith received', p);
+  window._stPendingHadith = null;
+
+  // Resolve incoming xref col → monastic internal key.
+  // p.col may already BE a monastic key (sandbox flow), or a xref slug.
+  var monKey = null;
+  if(XREF_TO_MON_KEY[p.col]) monKey = XREF_TO_MON_KEY[p.col];
+  else if(XREF_COLL_MAP[p.col]) monKey = p.col;     // already a monastic key
+  else {
+    // Last resort: substring match
+    var lower = String(p.col||'').toLowerCase();
+    Object.keys(XREF_COLL_MAP).forEach(function(k){
+      if(monKey) return;
+      if(lower.indexOf(k) >= 0 || lower.indexOf(XREF_COLL_MAP[k]) >= 0) monKey = k;
+    });
+  }
+  if(!monKey){
+    console.warn('[MON] could not resolve collection key for', p.col,
+      '— XREF_TO_MON_KEY=', XREF_TO_MON_KEY, 'XREF_COLL_MAP=', XREF_COLL_MAP);
+    return;
+  }
+  console.log('[MON] resolved to monKey', monKey, 'num', p.num);
+
+  // Wait for filter state machine to be ready before applying picks.
+  var setupAttempts = 0;
+  var setupTick = setInterval(function(){
+    setupAttempts++;
+    if(_monSel && _monSel.collection && typeof _applyAllFilters === 'function'){
+      clearInterval(setupTick);
+      _monSel.period.clear();
+      _monSel.topic.clear();
+      _monSel.narrator.clear();
+      _monSel.collection.clear();
+      _monSel.collection.add(monKey);
+      // Sync the dropdown UI selection
+      if(typeof _monSyncDD === 'function'){
+        try{ _monSyncDD('collection'); }catch(e){}
+      }
+      _applyAllFilters();
+      try { window.scrollTo({top:0, behavior:'auto'}); } catch(e){ window.scrollTo(0,0); }
+      document.querySelectorAll('.mon-row-pinned').forEach(function(r){ r.classList.remove('mon-row-pinned'); });
+
+      // Find row + scroll. Allow up to ~7s for hadith collection to load + render.
+      // BV57 fix: hadiths beyond MAX_ROWS (500) live on later pages. After
+      // _lastFiltered populates, locate the target index, compute its page,
+      // and re-render that page before searching the DOM.
+      var attempts = 0;
+      var pageSwitched = false;
+      var targetNum = parseInt(p.num, 10);
+      var tick = setInterval(function(){
+        attempts++;
+        // Step 1: once filtered set exists, jump to correct page.
+        if(!pageSwitched && _lastFiltered && _lastFiltered.length){
+          var idx = -1;
+          for(var k = 0; k < _lastFiltered.length; k++){
+            var n = parseInt(getNumber(_lastFiltered[k]), 10);
+            if(n === targetNum){ idx = k; break; }
+          }
+          if(idx >= 0){
+            var targetPage = Math.floor(idx / MAX_ROWS);
+            if(targetPage !== _currentPage){
+              console.log('[MON] hadith on page', targetPage + 1, '— switching from page', _currentPage + 1);
+              _renderRows(_lastFiltered, _lastColKey, targetPage);
+            } else {
+              console.log('[MON] hadith on current page', targetPage + 1);
+            }
+          } else {
+            console.warn('[MON] hadith num', p.num, 'not found in filtered set of', _lastFiltered.length);
+          }
+          pageSwitched = true;
+        }
+        // Step 2: find row in current DOM.
+        var row = _resultsEl && _resultsEl.querySelector('.mon-row[data-hcol="'+monKey+'"][data-hnum="'+p.num+'"]');
+        if(row){
+          clearInterval(tick);
+          console.log('[MON] hadith row found, scrolling');
+          // Use instant scroll (auto) not smooth — smooth scrolling fires
+          // scroll events while in flight which races with the dismiss
+          // listener below and kills both the pin and the scroll mid-jump.
+          // Wrap in two requestAnimationFrames so layout is fully settled
+          // after the page-switch _renderRows() before we measure offsets.
+          requestAnimationFrame(function(){
+            requestAnimationFrame(function(){
+              row.scrollIntoView({behavior:'auto', block:'center'});
+              row.classList.add('mon-row-pinned');
+              var dismiss = function(){
+                row.classList.remove('mon-row-pinned');
+                document.removeEventListener('click', dismiss, true);
+                if(_resultsEl) _resultsEl.removeEventListener('scroll', dismiss);
+              };
+              // 1500ms — long enough that the instant scroll's own one-shot
+              // scroll event has fired and settled before we listen.
+              setTimeout(function(){
+                document.addEventListener('click', dismiss, true);
+                if(_resultsEl) _resultsEl.addEventListener('scroll', dismiss);
+              }, 1500);
+            });
+          });
+        } else if(attempts > 70){
+          console.warn('[MON] hadith row never appeared. Looking for', monKey, p.num,
+            '— resultsEl=', !!_resultsEl,
+            '— rows in dom=', _resultsEl ? _resultsEl.querySelectorAll('.mon-row').length : 'n/a',
+            '— filtered=', _lastFiltered ? _lastFiltered.length : 'null');
+          clearInterval(tick);
+        }
+      }, 100);
+    } else if(setupAttempts > 80){
+      clearInterval(setupTick);
+      console.warn('[MON] filter state never ready');
+    }
+  }, 100);
+}
+var MON_GLOSSARY = {
+  'thiqah':           {def:'Trustworthy. Highest reliability rating for a narrator.', src:'Classical rijal'},
+  'thiqah thiqah':    {def:'Doubly trustworthy. Emphatic reliability; used for the most reliable narrators.', src:'Classical rijal'},
+  'sadooq':           {def:'Truthful. Reliable but a step below thiqah; may make minor errors.', src:'Classical rijal'},
+  'hasan al-hadith':  {def:'Good in hadith. Narrations are acceptable but not top-tier.', src:'Classical rijal'},
+  'saduq hasan':      {def:'Truthful and good. Acceptable reliability.', src:'Classical rijal'},
+  'maqbul':           {def:'Acceptable. Reliable when corroborated by others.', src:'Classical rijal'},
+  'layyin':           {def:'Soft. Mild weakness in memory or precision.', src:'Classical rijal'},
+  'daif':             {def:'Weak. Narration falls below the threshold of acceptance.', src:'Classical rijal'},
+  "da'if":            {def:'Weak. Narration falls below the threshold of acceptance.', src:'Classical rijal'},
+  'matruk':           {def:'Abandoned. Narrator discarded due to serious defects.', src:'Classical rijal'},
+  'kadhdhab':         {def:'Liar. Accused of fabricating hadith.', src:'Classical rijal'},
+  'majhool':          {def:'Unknown. Identity or reliability not established.', src:'Classical rijal'},
+  'unknown-majhool':  {def:'Unknown. Narrator whose identity or character is unclear.', src:'Classical rijal'},
+  'companion':        {def:'Sahabi. Met the Prophet as a Muslim and died believing.', src:'Hadith sciences'},
+  "tabi'i":           {def:'Follower. Met a Companion; second generation.', src:'Hadith sciences'},
+  "taba' tabi'i":     {def:'Successor of the Follower. Third generation.', src:'Hadith sciences'}
+};
+
+function _glossKey(s){
+  if(!s) return null;
+  var k = String(s).toLowerCase().replace(/\s*\(\d+(st|nd|rd|th)\s*gen\)\s*$/, '').trim();
+  return MON_GLOSSARY[k] ? k : null;
+}
+
+function _glossWrap(label){
+  var k = _glossKey(label);
+  if(!k) return esc(label);
+  var g = MON_GLOSSARY[k];
+  return '<span class="mon-gloss" tabindex="0">' + esc(label) +
+         '<span class="mon-gloss-pop"><span class="mon-gloss-def">' + esc(g.def) + '</span>' +
+         '<span class="mon-gloss-src">' + esc(g.src) + '</span></span></span>';
+}
+
+var _drillOn = false;
+var _drillEl = null;
+var _drillPicks = { period:[], topic:[], narrator:[], collection:[] };
+var _drillAllHadith = null;
+
+var DRILL_YEAR_MIN = 590;
+var DRILL_YEAR_MAX = 700;
+var DRILL_COLLAPSED_TICKS = [590, 610, 622, 632, 661, 700];
+var _drillExpanded = false;
+var _drillYearRow = 22;
+var _drillMarkerRow = 60;
+var _drillActiveTiers = { T1:true, T2:false, T3:false, T4:false, T5:false };
+var _drillPath = [];  // Each step: {sourceColumn, sourceTileKey:'earliest-latest', splitBy:'topic', value:'Prayer'}
+var _drillSplitMenu = null;
+
+function _drillFetch(){
+  if(_drillAllHadith) return Promise.resolve(_drillAllHadith);
+  return fetchAll().then(function(all){ _drillAllHadith = all; return all; });
+}
+
+function _drillTierOf(h){
+  var d = h.dating || {};
+  var r = d.range_best || d.range_safe || d.range;
+  if(!r || r.earliest == null || r.latest == null) return 'T5';
+  var span = r.latest - r.earliest;
+  if(span <= 3) return 'T1';
+  if(span <= 10) return 'T2';
+  if(span <= 25) return 'T3';
+  return 'T4';
+}
+
+function _drillPeriodRange(periodId){
+  var pi = _monPeriodInfo(periodId);
+  if(!pi) return null;
+  var m = /(\d+)\D+(\d+)/.exec(pi.years);
+  if(!m) return null;
+  return { earliest: parseInt(m[1],10), latest: parseInt(m[2],10) };
+}
+
+function _drillHadithRange(h){
+  var d = h.dating || {};
+  var r = d.range_best || d.range_safe || d.range;
+  if(r && r.earliest != null && r.latest != null) return { earliest:r.earliest, latest:r.latest };
+  return _drillPeriodRange(h.period);
+}
+
+function _drillClassify(list){
+  var buckets = { T1:[], T2:[], T3:[], T4:[], T5:[] };
+  list.forEach(function(h){ buckets[_drillTierOf(h)].push(h); });
+  return buckets;
+}
+
+function _drillApplyPath(list){
+  _drillPath.forEach(function(step){
+    list = list.filter(function(h){
+      if(step.splitBy === 'topic')      return h.topic === step.value;
+      if(step.splitBy === 'collection') return h._colKey === step.value;
+      if(step.splitBy === 'narrator'){
+        var n = (getNarrator(h) || '').toLowerCase();
+        return n.indexOf(step.value.toLowerCase()) !== -1;
+      }
+      return true;
+    });
+  });
+  return list;
+}
+
+function _drillUsedSplits(){
+  return _drillPath.map(function(s){ return s.splitBy; });
+}
+
+function _drillAvailableSplits(){
+  var used = _drillUsedSplits();
+  return ['topic','narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
+}
+
+function _drillSplitLabel(k){
+  if(k === 'topic') return 'Topic';
+  if(k === 'narrator') return 'Narrator';
+  if(k === 'collection') return 'Collection';
+  return k;
+}
+
+function _drillValueLabel(splitBy, value){
+  if(splitBy === 'collection') return _wizardCollectionLabel(value);
+  return value;
+}
+
+function _drillCloseUI(){
+  _drillOn = false;
+  var drillBtn = document.getElementById('mon-drill-btn');
+  if(drillBtn){
+    drillBtn.classList.remove('active');
+    drillBtn.style.background = 'rgba(212,175,55,0.25)';
+    drillBtn.style.borderColor = 'rgba(212,175,55,0.8)';
+    drillBtn.style.color = '#FFFFFF';
+  }
+  if(_resultsEl) _resultsEl.style.display = '';
+  if(_drillEl)   _drillEl.style.display = 'none';
+  var cnt = document.getElementById('mon-count'); if(cnt) cnt.style.display = '';
+  document.body.classList.remove('mon-drill-on');
+  _drillExpanded = false;
+}
+
+function _drillTimescaleHtml(){
+  var totalH = _drillExpanded
+    ? (DRILL_YEAR_MAX - DRILL_YEAR_MIN) * _drillYearRow
+    : (DRILL_COLLAPSED_TICKS.length - 1) * _drillMarkerRow + 20;
+
+  var ticks = '';
+  if(_drillExpanded){
+    for(var y = DRILL_YEAR_MIN; y <= DRILL_YEAR_MAX; y++){
+      var top = (y - DRILL_YEAR_MIN) * _drillYearRow;
+      var isMajor = (y % 10 === 0) || y === 622 || y === 632;
+      var isHijra = y === 622;
+      var isDeath = y === 632;
+      var labelColor = isHijra ? '#D4AF37' : (isDeath ? '#B45454' : 'rgba(160,174,192,0.7)');
+      var fontSize = isMajor ? '11px' : '9px';
+      var fontWeight = (isHijra || isDeath) ? '600' : '400';
+      ticks +=
+        '<div style="position:absolute;top:' + top + 'px;left:0;width:10px;height:1px;background:' + (isMajor ? labelColor : 'rgba(212,175,55,0.2)') + '"></div>' +
+        (isMajor ? '<div style="position:absolute;top:' + (top - 6) + 'px;right:14px;font-family:\'Cinzel\',serif;font-size:' + fontSize + ';color:' + labelColor + ';font-weight:' + fontWeight + ';white-space:nowrap">' + (isHijra ? 'HIJRA 622' : (isDeath ? 'PROPHET D. 632' : y + ' CE')) + '</div>' : '');
+    }
+  } else {
+    DRILL_COLLAPSED_TICKS.forEach(function(y, i){
+      var top = i * _drillMarkerRow + 10;
+      var isHijra = y === 622;
+      var isDeath = y === 632;
+      var labelColor = isHijra ? '#D4AF37' : (isDeath ? '#B45454' : 'rgba(160,174,192,0.8)');
+      var fontWeight = (isHijra || isDeath) ? '600' : '400';
+      ticks +=
+        '<div style="position:absolute;top:' + top + 'px;left:0;width:10px;height:1px;background:' + labelColor + '"></div>' +
+        '<div style="position:absolute;top:' + (top - 7) + 'px;right:14px;font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:' + labelColor + ';font-weight:' + fontWeight + ';white-space:nowrap">' + (isHijra ? 'HIJRA 622' : (isDeath ? 'PROPHET D. 632' : y + ' CE')) + '</div>';
+    });
+  }
+
+  var toggleIcon = _drillExpanded ? '−' : '+';
+  var toggleLabel = _drillExpanded ? 'Collapse' : 'Expand years';
+
+  return '' +
+    '<div style="flex:none;width:140px;padding-right:12px">' +
+      '<button id="mon-drill-time-toggle" type="button" style="display:block;margin:0 0 12px auto;padding:3px 8px;background:transparent;border:1px solid rgba(212,175,55,0.4);border-radius:2px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">' + toggleIcon + ' ' + toggleLabel + '</button>' +
+      '<div id="mon-drill-stem" style="position:relative;height:' + totalH + 'px;border-right:1.5px solid rgba(212,175,55,0.5)">' +
+        ticks +
+      '</div>' +
+    '</div>';
+}
+
+function _drillBindTimescale(){
+  var toggle = document.getElementById('mon-drill-time-toggle');
+  if(toggle){
+    toggle.onclick = function(){
+      _drillExpanded = !_drillExpanded;
+      _drillRender();
+    };
+  }
+}
+
+function _drillRender(){
+  if(!_drillEl) return;
+  _drillEl.innerHTML = '<div style="padding:40px;text-align:center;color:#6B7280">Loading\u2026</div>';
+  _drillFetch().then(function(all){
+    var buckets = _drillClassify(all);
+    var total = all.length;
+    var tight = buckets.T1.length + buckets.T2.length + buckets.T3.length + buckets.T4.length;
+    var tightPct = (tight / total * 100).toFixed(1);
+
+    var TIER_META = [
+      { key:'T1', label:'Year',        span:'\u22643y',    color:'#D4AF37', sub:'Named dated event' },
+      { key:'T2', label:'Decade',      span:'4\u201310y',  color:'#8FC8A6', sub:'Multiple clues' },
+      { key:'T3', label:'Era',         span:'11\u201325y', color:'#6BA0C4', sub:'Period-level' },
+      { key:'T4', label:'Broad',       span:'>25y',         color:'#A07CB0', sub:'Narrator lifespan' },
+      { key:'T5', label:'Period only', span:'period',       color:'#7A7A7A', sub:'L1 fallback' }
+    ];
+
+    var chips = '';
+    TIER_META.forEach(function(m){
+      var n = buckets[m.key].length;
+      var on = _drillActiveTiers[m.key];
+      var bg = on ? 'rgba(' + _drillHexToRgb(m.color) + ',0.3)' : 'transparent';
+      var bd = on ? m.color : 'rgba(255,255,255,0.15)';
+      var tc = on ? m.color : 'rgba(160,174,192,0.5)';
+      chips +=
+        '<button class="mon-drill-tier-chip" data-tier="' + m.key + '" type="button" style="' +
+          'flex:1;min-width:130px;padding:6px 12px;background:' + bg + ';border:1px solid ' + bd + ';border-radius:3px;' +
+          'color:' + tc + ';font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;' +
+          'cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">' +
+          '<span style="width:10px;height:10px;background:' + m.color + ';border-radius:50%;' + (on ? '' : 'opacity:0.25') + '"></span>' +
+          '<span>' + m.key + ' ' + esc(m.label) + '</span>' +
+          '<span style="font-weight:700">' + n.toLocaleString() + '</span>' +
+        '</button>';
+    });
+
+    var activeHadiths = [];
+    var tierColorFor = {};
+    TIER_META.forEach(function(m){
+      if(_drillActiveTiers[m.key]){
+        buckets[m.key].forEach(function(h){
+          activeHadiths.push(h);
+          tierColorFor[h.id || h] = m.color;
+        });
+      }
+    });
+
+    var primaryMeta = TIER_META.find(function(m){ return _drillActiveTiers[m.key]; }) || TIER_META[0];
+
+    _drillEl.innerHTML =
+      '<div style="padding:20px 24px 20px 24px;box-sizing:border-box">' +
+        '<div style="display:flex;align-items:baseline;gap:18px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(212,175,55,0.15);flex-wrap:wrap">' +
+          '<div><span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,0.8);text-transform:uppercase">Total</span> <span style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);color:#D4AF37;font-weight:600;margin-left:6px">' + total.toLocaleString() + '</span></div>' +
+          '<div style="font-size:var(--fs-3);color:rgba(229,231,235,0.75);line-height:1.4">All 34,441 placed by broad period \u00B7 <span style="color:#D4AF37">' + tight.toLocaleString() + '</span> (' + tightPct + '%) have extra dating layers. Toggle tiers below to include/exclude.</div>' +
+        '</div>' +
+        '<div id="mon-drill-chip-row" style="display:flex;gap:8px;margin-bottom:14px;position:sticky;top:0;z-index:5;background:#0E1621;padding:6px 0">' + chips + '</div>' +
+        '<div id="mon-drill-body" style="display:flex;gap:12px;align-items:flex-start;overflow-x:auto;overflow-y:visible;padding:0 48px 12px 0;width:100%;box-sizing:border-box">' +
+          _drillAllColumnsHtml(activeHadiths, tierColorFor, primaryMeta) +
+          '<div id="mon-drill-inline-panel" style="display:none"></div>' +
+        '</div>' +
+      '</div>';
+
+    _drillBindTierChips();
+    _drillBindTileActions();
+    _drillAdjustConnectors();
+  });
+}
+
+function _drillAllColumnsHtml(col1Hadiths, tierColorMap, primaryMeta){
+  var html = '';
+
+  html += '<div data-drill-col="0" style="flex:none;width:240px">' + _drillColumnHeader(0) + _drillColumnHtml(primaryMeta, col1Hadiths, tierColorMap) + '</div>';
+
+  var sourceHadiths = col1Hadiths;
+
+  _drillPath.forEach(function(step, i){
+    var inTile = sourceHadiths.filter(function(h){
+      var r = _drillHadithRange(h);
+      return r && r.earliest === step.sourceEarliest && r.latest === step.sourceLatest;
+    });
+
+    if(step.value === null){
+      var tileAccent = step.sourceAccent || '#D4AF37';
+      html += '<div data-drill-col="' + (i+1) + '" data-picker="1" style="flex:none;width:240px">' +
+                _drillColumnHeader(i+1) +
+                _drillExpandColumnHtml(step, inTile, tileAccent) +
+              '</div>';
+      return;
+    }
+
+    var matched = inTile.filter(function(h){
+      if(step.splitBy === 'topic')      return h.topic === step.value;
+      if(step.splitBy === 'collection') return h._colKey === step.value;
+      if(step.splitBy === 'narrator'){
+        var n = (getNarrator(h) || '').toLowerCase();
+        return n.indexOf(step.value.toLowerCase()) !== -1;
+      }
+      return true;
+    });
+
+    var tileAccent = step.sourceAccent || '#D4AF37';
+    html += '<div data-drill-col="' + (i+1) + '" data-picker="1" style="flex:none;width:240px">' +
+              _drillColumnHeader(i+1) +
+              _drillExpandColumnHtml(step, inTile, tileAccent) +
+            '</div>';
+    sourceHadiths = matched;
+  });
+
+  return html;
+}
+
+function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
+  var rangeLabel = step.sourceEarliest === step.sourceLatest
+    ? (step.sourceEarliest + ' CE')
+    : (step.sourceEarliest + '\u2013' + step.sourceLatest + ' CE');
+
+  var counts = {};
+  sourceHadiths.forEach(function(h){
+    var v;
+    if(step.splitBy === 'topic') v = h.topic || 'Other';
+    else if(step.splitBy === 'collection') v = h._colKey;
+    else if(step.splitBy === 'narrator') v = _stripArabic((getNarrator(h) || '').split('(')[0].trim()) || 'Unknown';
+    if(v) counts[v] = (counts[v] || 0) + 1;
+  });
+  var options = Object.keys(counts).map(function(k){ return { value:k, count:counts[k] }; });
+  options.sort(function(a,b){ return b.count - a.count; });
+
+  var totalSum = options.reduce(function(s, o){ return s + o.count; }, 0);
+
+  accentColor = accentColor || '#D4AF37';
+  var rgbAccent = _drillHexToRgb(accentColor);
+
+  var header =
+    '<div style="margin-bottom:10px;font-size:var(--fs-3);color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(' + rgbAccent + ',0.1);display:flex;align-items:baseline;gap:8px">' +
+      '<span>' + sourceHadiths.length.toLocaleString() + ' hadiths \u00B7 ' + options.length + ' ' + esc(_drillSplitLabel(step.splitBy).toLowerCase()) + 's</span>' +
+      '<button class="mon-drill-step-close" data-step-index="' + step.sourceColumn + '" type="button" style="margin-left:auto;padding:2px 8px;background:transparent;border:1px solid rgba(' + rgbAccent + ',0.4);border-radius:2px;color:' + accentColor + ';font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">\u2715</button>' +
+    '</div>';
+
+  var warn = '';
+  if(totalSum !== sourceHadiths.length){
+    warn = '<div style="font-size:var(--fs-3);color:#B45454;margin-bottom:6px">Note: ' + (sourceHadiths.length - totalSum) + ' hadiths have no ' + esc(step.splitBy) + ' value.</div>';
+  }
+
+  var ROW_H = 76;
+  var TILE_H = 68;
+  var TILE_GAP = 8;
+
+  var tilesHtml = '';
+  var columnIsCommitted = (step.value !== null);
+  var canExpandFurther = _drillAvailableSplits().filter(function(k){ return k !== step.splitBy; }).length > 0;
+  options.forEach(function(o, i){
+    var top = i * ROW_H + 4;
+    var isSelected = step.value === o.value;
+    var isDim = columnIsCommitted && !isSelected;
+    var selectedGlow = isSelected ? 'box-shadow:0 0 0 3px ' + accentColor + ', 0 0 28px 4px rgba(' + rgbAccent + ',0.75), inset 0 0 14px rgba(' + rgbAccent + ',0.28);' : '';
+    var dimStyle = isDim ? 'opacity:0.22;filter:saturate(0.4);' : '';
+    var viewFlex = canExpandFurther ? '1' : '1 1 100%';
+    var expandBtnHtml = canExpandFurther
+      ? '<button class="mon-drill-pick-expand-btn" data-val="' + esc(o.value) + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;border-top:1px solid rgba(' + rgbAccent + ',0.25);border-left:1px solid rgba(' + rgbAccent + ',0.25);color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Expand \u25BE</button>'
+      : '';
+    tilesHtml +=
+      '<div class="mon-drill-tile' + (isSelected ? ' mon-drill-tile-source' : '') + '" data-val="' + esc(o.value) + '" style="' +
+        'position:absolute;top:' + top + 'px;left:0;right:0;height:' + TILE_H + 'px;' +
+        'background:transparent;border:3px solid ' + accentColor + ';border-radius:3px;overflow:hidden;display:flex;flex-direction:column;' + selectedGlow + dimStyle + '">' +
+        '<div style="padding:4px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex:1">' +
+          '<span style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);color:#E5E7EB;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(_drillValueLabel(step.splitBy, o.value)) + '</span>' +
+          '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#FFFFFF;font-weight:700;flex:none">' + o.count.toLocaleString() + '</span>' +
+        '</div>' +
+        '<div style="display:flex;gap:0;flex:none;border-top:1px solid rgba(' + rgbAccent + ',0.25)">' +
+          '<button class="mon-drill-pick-view" data-val="' + esc(o.value) + '" type="button" style="flex:' + viewFlex + ';padding:3px 6px;background:transparent;border:none;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">View</button>' +
+          expandBtnHtml +
+        '</div>' +
+      '</div>';
+  });
+
+  var totalH = Math.max(options.length * ROW_H, 200);
+
+  var ROW_H_LOCAL = 56;
+  var firstTileY = 4 + 24;
+  var lastTileY = (options.length - 1) * ROW_H_LOCAL + 4 + 24;
+  var bracketSvg =
+    '<svg width="24" height="' + totalH + '" style="position:absolute;top:0;left:0;overflow:visible">' +
+      '<path d="M22,' + firstTileY + ' Q10,' + firstTileY + ' 10,' + (firstTileY + 10) + ' L10,' + (lastTileY - 10) + ' Q10,' + lastTileY + ' 22,' + lastTileY + '" stroke="' + accentColor + '" stroke-width="1.5" fill="none" opacity="0.8"/>';
+  bracketSvg += '</svg>';
+
+  var bracketMidY = (firstTileY + lastTileY) / 2;
+  var connectorSvg =
+    '<svg class="mon-drill-connector-svg" width="40" height="' + totalH + '" style="position:absolute;top:0;left:-40px;overflow:visible;pointer-events:none">' +
+      '<line class="mon-drill-connector-line" x1="0" y1="' + bracketMidY + '" x2="40" y2="' + bracketMidY + '" stroke="' + accentColor + '" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>' +
+      '<circle class="mon-drill-connector-dot" cx="40" cy="' + bracketMidY + '" r="3" fill="' + accentColor + '"/>' +
+    '</svg>';
+
+  return header + warn +
+    '<div style="position:relative;display:flex;gap:0;align-items:flex-start">' +
+      '<div style="flex:none;width:24px;position:relative;height:' + totalH + 'px">' + connectorSvg + bracketSvg + '</div>' +
+      '<div style="flex:none;width:200px;position:relative;height:' + totalH + 'px">' + tilesHtml + '</div>' +
+    '</div>';
+}
+
+function _drillColumnHeader(columnIndex){
+  if(columnIndex === 0){
+    return '<div style="margin-bottom:8px;height:20px;display:flex;align-items:center;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.8);text-transform:uppercase">Years</div>';
+  }
+  var step = _drillPath[columnIndex - 1];
+  if(!step) return '';
+  var rangeLabel = step.sourceEarliest === step.sourceLatest ? (step.sourceEarliest + ' CE') : (step.sourceEarliest + '\u2013' + step.sourceLatest + ' CE');
+  var valuePart = step.value !== null ? ': ' + esc(_drillValueLabel(step.splitBy, step.value)) : '';
+  return '<div style="margin-bottom:8px;height:20px;display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap">' +
+    '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.8);text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1" title="' + esc(_drillSplitLabel(step.splitBy) + valuePart.replace(/^: /, ': ')) + '">' + esc(_drillSplitLabel(step.splitBy)) + valuePart + '</span>' +
+    '<span style="font-size:var(--fs-3);color:rgba(160,174,192,0.55);flex:none">' + esc(rangeLabel) + '</span>' +
+    '</div>';
+}
+
+function _drillBindTileActions(){
+  if(!_drillEl) return;
+
+  _drillEl.querySelectorAll('.mon-drill-col-close').forEach(function(btn){
+    btn.onclick = function(){
+      var idx = parseInt(btn.getAttribute('data-col'), 10);
+      _drillPath = _drillPath.slice(0, idx - 1);
+      _drillRender();
+    };
+  });
+
+  _drillEl.querySelectorAll('.mon-drill-expand').forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var available = _drillAvailableSplits();
+      if(!available.length){
+        alert('All filters used. No further splits possible.');
+        return;
+      }
+      var colWrapper = btn.closest('[data-drill-col]');
+      var columnIndex = colWrapper ? parseInt(colWrapper.getAttribute('data-drill-col'), 10) : 0;
+      var groupKey = btn.getAttribute('data-group-key');
+      var tile = btn.closest('.mon-drill-tile');
+      var tColor = tile ? tile.getAttribute('data-tile-color') : null;
+      _drillShowSplitMenu(btn, columnIndex, groupKey, available, null, tColor);
+    };
+  });
+
+  _drillEl.querySelectorAll('.mon-drill-view').forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var groupKey = btn.getAttribute('data-group-key');
+      var parts = groupKey.split('-');
+      var earliest = parseInt(parts[0], 10);
+      var latest = parseInt(parts[1], 10);
+      _drillOpenTileInMain(earliest, latest);
+    };
+  });
+
+  _drillEl.querySelectorAll('.mon-drill-step-close').forEach(function(btn){
+    btn.onclick = function(){
+      var idx = parseInt(btn.getAttribute('data-step-index'), 10);
+      _drillPath = _drillPath.slice(0, idx);
+      _drillRender();
+    };
+  });
+
+  _drillEl.querySelectorAll('.mon-drill-pick-view').forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var val = btn.getAttribute('data-val');
+      var colWrapper = btn.closest('[data-drill-col]');
+      var columnIndex = colWrapper ? parseInt(colWrapper.getAttribute('data-drill-col'), 10) : 0;
+      var stepIndex = columnIndex - 1;
+      if(stepIndex < 0 || !_drillPath[stepIndex]) return;
+      _drillPath = _drillPath.slice(0, stepIndex + 1);
+      _drillPath[stepIndex].value = val;
+      _drillOpenPathInMain();
+    };
+  });
+
+  _drillEl.querySelectorAll('.mon-drill-pick-expand-btn').forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var val = btn.getAttribute('data-val');
+      var colWrapper = btn.closest('[data-drill-col]');
+      var columnIndex = colWrapper ? parseInt(colWrapper.getAttribute('data-drill-col'), 10) : 0;
+      var stepIndex = columnIndex - 1;
+      if(stepIndex < 0 || !_drillPath[stepIndex]) return;
+      _drillPath = _drillPath.slice(0, stepIndex + 1);
+      _drillPath[stepIndex].value = val;
+      var available = _drillAvailableSplits();
+      if(!available.length){
+        alert('All filters used. No further splits possible.');
+        _drillRender();
+        return;
+      }
+      var chainAccent = _drillPath[stepIndex] ? _drillPath[stepIndex].sourceAccent : null;
+      if(!chainAccent){
+        for(var ci = stepIndex; ci >= 0; ci--){ if(_drillPath[ci] && _drillPath[ci].sourceAccent){ chainAccent = _drillPath[ci].sourceAccent; break; } }
+      }
+      _drillShowSplitMenu(btn, -1, '', available, function(splitBy){
+        var srcStep = _drillPath[stepIndex];
+        var srcKey = srcStep.sourceEarliest + '-' + srcStep.sourceLatest;
+        _drillAdvanceToSplitValue(_drillPath.length, srcKey, splitBy, chainAccent);
+      });
+    };
+  });
+}
+
+function _drillAdjustConnectors(){
+  if(!_drillEl) return;
+  var cols = _drillEl.querySelectorAll('[data-drill-col]');
+  cols.forEach(function(col){
+    var colIdx = parseInt(col.getAttribute('data-drill-col'), 10);
+    if(colIdx === 0) return;
+    var step = _drillPath[colIdx - 1];
+    if(!step) return;
+    var priorCol = _drillEl.querySelector('[data-drill-col="' + (colIdx - 1) + '"]');
+    if(!priorCol) return;
+    var sourceTile = null;
+    if(step.sourceColumn === 0){
+      sourceTile = priorCol.querySelector('[data-group-key="' + step.sourceEarliest + '-' + step.sourceLatest + '"]');
+    } else {
+      var priorStep = _drillPath[colIdx - 2];
+      if(priorStep && priorStep.value !== null){
+        sourceTile = priorCol.querySelector('[data-val="' + (priorStep.value + '').replace(/"/g, '\\"') + '"]');
+      }
+    }
+    if(!sourceTile) return;
+    var svg = col.querySelector('.mon-drill-connector-svg');
+    var line = col.querySelector('.mon-drill-connector-line');
+    var dot = col.querySelector('.mon-drill-connector-dot');
+    if(!svg || !line) return;
+    var svgRect = svg.getBoundingClientRect();
+    var tileRect = sourceTile.getBoundingClientRect();
+    var sourceY = (tileRect.top + tileRect.height/2) - svgRect.top;
+    line.setAttribute('y1', sourceY);
+    if(dot){
+      // keep the dot on the bracket side where the line currently ends
+      // (existing y2 already equals bracketMidY — leave as is)
+    }
+  });
+}
+
+function _drillShowSplitMenu(anchorBtn, columnIndex, groupKey, available, onPick, tileColor){
+  var prior = document.getElementById('mon-drill-splitmenu');
+  if(prior) prior.remove();
+
+  var menu = document.createElement('div');
+  menu.id = 'mon-drill-splitmenu';
+  menu.style.cssText = 'position:absolute;background:#1A2332;border:1px solid rgba(212,175,55,0.5);border-radius:4px;padding:6px;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,0.6);display:flex;flex-direction:column;gap:4px;min-width:140px';
+
+  var headerDiv = document.createElement('div');
+  headerDiv.style.cssText = 'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:rgba(212,175,55,0.7);text-transform:uppercase;padding:4px 8px 2px';
+  headerDiv.textContent = 'Split by';
+  menu.appendChild(headerDiv);
+
+  available.forEach(function(k){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.style.cssText = 'padding:6px 12px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-align:left';
+    b.textContent = _drillSplitLabel(k);
+    b.onmouseenter = function(){ b.style.background = 'rgba(212,175,55,0.15)'; };
+    b.onmouseleave = function(){ b.style.background = 'transparent'; };
+    b.onclick = function(){
+      menu.remove();
+      if(typeof onPick === 'function'){
+        onPick(k);
+      } else {
+        _drillAdvanceToSplitValue(columnIndex, groupKey, k, tileColor);
+      }
+    };
+    menu.appendChild(b);
+  });
+
+  document.body.appendChild(menu);
+  var rect = anchorBtn.getBoundingClientRect();
+  menu.style.left = (rect.left + window.scrollX) + 'px';
+  menu.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+
+  var closer = function(ev){
+    if(!menu.contains(ev.target)){
+      menu.remove();
+      document.removeEventListener('click', closer, true);
+    }
+  };
+  setTimeout(function(){ document.addEventListener('click', closer, true); }, 10);
+}
+
+function _drillAdvanceToSplitValue(columnIndex, groupKey, splitBy, sourceAccent){
+  var parts = groupKey.split('-');
+  var earliest = parseInt(parts[0], 10);
+  var latest = parseInt(parts[1], 10);
+
+  _drillPath = _drillPath.slice(0, columnIndex);
+  _drillPath.push({
+    sourceColumn: columnIndex,
+    sourceTileKey: groupKey,
+    sourceEarliest: earliest,
+    sourceLatest: latest,
+    splitBy: splitBy,
+    value: null,
+    sourceAccent: sourceAccent || null
+  });
+  _drillRender();
+}
+
+function _drillShowValuePicker(splitBy, options, earliest, latest, columnIndex){
+  var prior = document.getElementById('mon-drill-valuepicker');
+  if(prior) prior.remove();
+
+  if(!options.length){
+    alert('No distinct values to split by.');
+    return;
+  }
+
+  var overlay = document.createElement('div');
+  overlay.id = 'mon-drill-valuepicker';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px';
+
+  var card = document.createElement('div');
+  card.style.cssText = 'background:#1A2332;border:1px solid rgba(212,175,55,0.5);border-radius:6px;max-width:520px;width:100%;max-height:80vh;display:flex;flex-direction:column;padding:20px';
+
+  var title = document.createElement('div');
+  title.style.cssText = 'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:#D4AF37;text-transform:uppercase;margin-bottom:4px';
+  title.textContent = 'Pick a ' + _drillSplitLabel(splitBy);
+  card.appendChild(title);
+
+  var sub = document.createElement('div');
+  sub.style.cssText = 'font-size:var(--fs-3);color:rgba(160,174,192,0.75);margin-bottom:14px';
+  sub.textContent = (earliest === latest ? earliest + ' CE' : earliest + '\u2013' + latest + ' CE') + ' \u00B7 ' + options.length + ' options';
+  card.appendChild(sub);
+
+  var list = document.createElement('div');
+  list.style.cssText = 'overflow-y:auto;display:flex;flex-direction:column;gap:4px;flex:1';
+  options.forEach(function(o){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:3px;color:#E5E7EB;font-size:var(--fs-3);cursor:pointer;text-align:left';
+    b.innerHTML = '<span>' + esc(_drillValueLabel(splitBy, o.value)) + '</span><span style="font-weight:600;color:rgba(160,174,192,0.85)">' + o.count.toLocaleString() + '</span>';
+    b.onmouseenter = function(){ b.style.background = 'rgba(212,175,55,0.1)'; b.style.borderColor = 'rgba(212,175,55,0.5)'; };
+    b.onmouseleave = function(){ b.style.background = 'rgba(255,255,255,0.03)'; b.style.borderColor = 'rgba(212,175,55,0.2)'; };
+    b.onclick = function(){
+      overlay.remove();
+      _drillPath = _drillPath.slice(0, columnIndex);
+      _drillPath.push({ splitBy: splitBy, value: o.value });
+      _drillRender();
+    };
+    list.appendChild(b);
+  });
+  card.appendChild(list);
+
+  var cancel = document.createElement('button');
+  cancel.type = 'button';
+  cancel.textContent = 'Cancel';
+  cancel.style.cssText = 'margin-top:12px;padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;align-self:flex-end';
+  cancel.onclick = function(){ overlay.remove(); };
+  card.appendChild(cancel);
+
+  overlay.appendChild(card);
+  overlay.onclick = function(ev){ if(ev.target === overlay) overlay.remove(); };
+  document.body.appendChild(overlay);
+}
+
+function _drillOpenTileInMain(earliest, latest){
+  _drillShowInlineHadiths(earliest, latest);
+}
+
+function _drillOpenPathInMain(){
+  _drillShowInlineHadiths(null, null);
+}
+
+function _drillShowInlineHadiths(earliest, latest){
+  var panel = document.getElementById('mon-drill-inline-panel');
+  if(!panel) return;
+  var drillBody = document.getElementById('mon-drill-body');
+  var col0El = null;
+  if(drillBody){
+    drillBody.querySelectorAll('[data-drill-col]').forEach(function(el){
+      var idx = parseInt(el.getAttribute('data-drill-col'), 10);
+      if(idx === 0) col0El = el;
+      else el.style.display = 'none';
+    });
+  }
+  _drillFetch().then(function(all){
+    var filtered = [];
+    var buckets = _drillClassify(all);
+    Object.keys(_drillActiveTiers).forEach(function(k){
+      if(_drillActiveTiers[k]) filtered = filtered.concat(buckets[k]);
+    });
+    var rangeE = earliest, rangeL = latest;
+    if((rangeE == null || rangeL == null) && _drillPath.length > 0){
+      rangeE = _drillPath[0].sourceEarliest;
+      rangeL = _drillPath[0].sourceLatest;
+    }
+    if(rangeE != null && rangeL != null){
+      filtered = filtered.filter(function(h){
+        var r = _drillHadithRange(h);
+        return r && r.earliest === rangeE && r.latest === rangeL;
+      });
+    }
+    filtered = _drillApplyPath(filtered);
+    var hasColFilter = _drillPath.some(function(s){ return s.splitBy === 'collection' && s.value !== null; });
+    var hasNarFilter = _drillPath.some(function(s){ return s.splitBy === 'narrator' && s.value !== null; });
+    var hasTopicFilter = _drillPath.some(function(s){ return s.splitBy === 'topic' && s.value !== null; });
+
+    var html = '';
+    html += '<div class="mon-drill-compact-row">';
+    var yearLabel = '';
+    if(earliest != null && latest != null){
+      yearLabel = (earliest === latest) ? (earliest + ' CE') : (earliest + '\u2013' + latest + ' CE');
+    } else if(_drillPath.length > 0){
+      var s0 = _drillPath[0];
+      yearLabel = (s0.sourceEarliest === s0.sourceLatest) ? (s0.sourceEarliest + ' CE') : (s0.sourceEarliest + '\u2013' + s0.sourceLatest + ' CE');
+    }
+    if(yearLabel){
+      html += '<div class="mon-drill-compact-tile" style="border-color:#D4AF37">' +
+        '<button class="mon-drill-compact-x" data-remove="years" type="button">\u2715</button>' +
+        '<div class="mon-drill-compact-label">Years</div>' +
+        '<div class="mon-drill-compact-value">' + esc(yearLabel) + '</div>' +
+      '</div>';
+    }
+    _drillPath.forEach(function(step, idx){
+      if(step.value === null) return;
+      var accent = step.sourceAccent || '#D4AF37';
+      html += '<div class="mon-drill-compact-tile" style="border-color:' + accent + '">' +
+        '<button class="mon-drill-compact-x" data-remove-step="' + idx + '" type="button">\u2715</button>' +
+        '<div class="mon-drill-compact-label">' + esc(_drillSplitLabel(step.splitBy)) + '</div>' +
+        '<div class="mon-drill-compact-value">' + esc(_drillValueLabel(step.splitBy, step.value)) + '</div>' +
+      '</div>';
+    });
+    html += '<div class="mon-drill-compact-tile mon-drill-compact-count" style="border-color:#D4AF37">' +
+      '<div class="mon-drill-compact-label">Hadiths</div>' +
+      '<div class="mon-drill-compact-value">' + filtered.length.toLocaleString() + '</div>' +
+    '</div>';
+    html += '</div>';
+
+    if(!filtered.length){
+      html += '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">No hadiths match this drill path.</div>';
+    } else {
+      html += '<div class="mon-drill-inline-row mon-drill-inline-row-hdr">' +
+        '<div class="mon-drill-inline-col-a">Source</div>' +
+        '<div class="mon-drill-inline-col-b">Hadith</div>' +
+      '</div>';
+      var limit = Math.min(filtered.length, MAX_ROWS);
+      for(var i = 0; i < limit; i++){
+        var h = filtered[i];
+        var label = getLabel(h._colKey || '');
+        var num = getNumber(h);
+        var text = getText(h);
+        var _drBmKey  = 'h:' + (h._colKey || '') + ':' + num;
+        var _drBmAuth = window.GoldArkAuth;
+        var _drBmFilled = !!(_drBmAuth && _drBmAuth.isSignedIn && _drBmAuth.isSignedIn() && _drBmAuth.hasBookmarkKey && _drBmAuth.hasBookmarkKey(_drBmKey));
+        var _drBmTitle = _drBmAuth && _drBmAuth.isSignedIn && _drBmAuth.isSignedIn()
+          ? (_drBmFilled ? 'Remove bookmark' : 'Add bookmark')
+          : 'Sign in to bookmark';
+        var _drBmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_drBmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+        var colA = '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px">' +
+          '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + '</div>' +
+          '<button class="mon-drill-bmk-btn" data-bmkey="' + _drBmKey + '" title="' + _drBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _drBmRibbon + '</button>' +
+          '</div>';
+        if(!hasTopicFilter && h.topic){
+          colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Topic</span><span class="mon-drill-src-val">' + esc(h.topic) + '</span></div>';
+        }
+        if(!hasColFilter){
+          colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Book</span><span class="mon-drill-src-val">' + esc(label) + '</span></div>';
+        }
+        if(!hasNarFilter){
+          var termNar = getNarrator(h) || '';
+          termNar = _stripArabic((termNar + '').split('(')[0].trim());
+          if(termNar){
+            colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Narrator</span><span class="mon-drill-src-val">' + esc(termNar) + '</span></div>';
+          }
+        }
+        colA += '<div class="mon-narrator-chainonly" style="margin-top:8px">' + _chainOnlyBlock(h) + '</div>';
+        var xrefColl = XREF_COLL_MAP[h._colKey] || '';
+        var xrefSlot = '';
+        if(xrefColl && num != null && num !== ''){
+          var hkey = xrefColl + '-' + num;
+          xrefSlot = '<div class="hadith-xref-slot" data-hkey="' + esc(hkey) + '" data-hcoll="' + esc(xrefColl) + '"></div>';
+        }
+        html += '<div class="mon-drill-inline-row">' +
+          '<div class="mon-drill-inline-col-a">' + colA + xrefSlot + '</div>' +
+          '<div class="mon-drill-inline-col-b">' +
+            '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.55">' + esc(text) + '</div>' +
+            _datingLine(h) +
+          '</div>' +
+        '</div>';
+      }
+      if(filtered.length > MAX_ROWS){
+        html += '<div style="text-align:center;padding:12px;color:#D4AF37;font-size:var(--fs-3);letter-spacing:.06em;border-top:1px solid #2D3748">\u2026 ' + (filtered.length - MAX_ROWS) + ' more results truncated.</div>';
+      }
+    }
+
+    panel.innerHTML = html;
+    panel.style.display = 'block';
+    _populateXrefSlots(panel);
+
+    panel.querySelectorAll('.mon-drill-compact-x').forEach(function(btn){
+      btn.onclick = function(ev){
+        ev.stopPropagation();
+        var stepAttr = btn.getAttribute('data-remove-step');
+        var removeYears = btn.getAttribute('data-remove') === 'years';
+        if(col0El){ col0El.style.transform = ''; col0El.style.transition = ''; }
+        if(removeYears){
+          _drillPath = [];
+          _drillRender();
+          return;
+        }
+        if(stepAttr !== null){
+          var idx = parseInt(stepAttr, 10);
+          _drillPath = _drillPath.slice(0, idx);
+        }
+        _drillRender();
+      };
+    });
+
+    if(col0El && rangeE != null && rangeL != null){
+      col0El.style.transform = '';
+      var tileKey = rangeE + '-' + rangeL;
+      var srcTile = col0El.querySelector('[data-group-key="' + tileKey + '"]');
+      var yearLabelEl = null;
+      var yearTargets = ['' + rangeE + ' CE', 'HIJRA ' + rangeE, 'PROPHET D. ' + rangeE];
+      var allDivs = col0El.querySelectorAll('div');
+      for(var di = 0; di < allDivs.length; di++){
+        var d = allDivs[di];
+        if(d.children.length !== 0) continue;
+        var txt = (d.textContent || '').trim();
+        if(yearTargets.indexOf(txt) !== -1){ yearLabelEl = d; break; }
+      }
+      var col0Rect = col0El.getBoundingClientRect();
+      var topY = null;
+      if(srcTile){
+        var tr = srcTile.getBoundingClientRect();
+        topY = tr.top - col0Rect.top;
+      }
+      if(yearLabelEl){
+        var yr = yearLabelEl.getBoundingClientRect();
+        var yTop = yr.top - col0Rect.top;
+        if(topY === null || yTop < topY) topY = yTop;
+      }
+      if(topY !== null){
+        var offset = topY - 8;
+        if(offset < 0) offset = 0;
+        col0El.style.transform = 'translateY(' + (-offset) + 'px)';
+        col0El.style.transition = 'transform 0.3s ease';
+      }
+    }
+    panel.querySelectorAll('.mon-chain-toggle').forEach(function(btn){
+      btn.onclick = function(){
+        var chain = btn.parentNode.querySelector('.mon-chain');
+        if(!chain) return;
+        chain.style.display = (chain.style.display !== 'none') ? 'none' : 'block';
+      };
+    });
+    // Wire bookmark buttons on drill hadith cards.
+    panel.querySelectorAll('.mon-drill-bmk-btn').forEach(function(btn){
+      btn.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var key = btn.getAttribute('data-bmkey');
+        if(!key) return;
+        var doToggle = function(){
+          var a = window.GoldArkAuth;
+          if(!a || !a.isSignedIn()) return;
+          var was = a.hasBookmarkKey(key);
+          var p = was ? a.removeBookmarkKey(key) : a.addBookmarkKey(key);
+          Promise.resolve(p).then(function(){
+            var nowOn = !was;
+            btn.innerHTML = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (nowOn?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+            btn.title = nowOn ? 'Remove bookmark' : 'Add bookmark';
+          }).catch(function(err){ console.warn('[drill-bmk] toggle failed', err); });
+        };
+        if(window.GoldArkAuth && window.GoldArkAuth.isSignedIn()){
+          doToggle();
+        } else if(typeof window.requireTester === 'function'){
+          window.requireTester('bookmark', doToggle);
+        }
+      });
+    });
+  });
+}
+
+function _drillHexToRgb(hex){
+  var h = hex.replace('#','');
+  var r = parseInt(h.substr(0,2),16);
+  var g = parseInt(h.substr(2,2),16);
+  var b = parseInt(h.substr(4,2),16);
+  return r + ',' + g + ',' + b;
+}
+
+function _drillLaneHeight(){
+  return _drillExpanded
+    ? (DRILL_YEAR_MAX - DRILL_YEAR_MIN) * _drillYearRow
+    : (DRILL_COLLAPSED_TICKS.length - 1) * _drillMarkerRow + 20;
+}
+
+function _drillYearToPx(year){
+  if(year < DRILL_YEAR_MIN) year = DRILL_YEAR_MIN;
+  if(year > DRILL_YEAR_MAX) year = DRILL_YEAR_MAX;
+  if(_drillExpanded){
+    return (year - DRILL_YEAR_MIN) * _drillYearRow;
+  }
+  for(var i = 0; i < DRILL_COLLAPSED_TICKS.length - 1; i++){
+    var a = DRILL_COLLAPSED_TICKS[i], b = DRILL_COLLAPSED_TICKS[i+1];
+    if(year >= a && year <= b){
+      var t = (year - a) / (b - a);
+      return (i + t) * _drillMarkerRow + 10;
+    }
+  }
+  return 0;
+}
+
+function _drillJitterPct(h, bound){
+  var s = (h.id || '') + '';
+  var hash = 0;
+  for(var i=0;i<s.length;i++){ hash = (hash * 31 + s.charCodeAt(i)) & 0xffffffff; }
+  var norm = (Math.abs(hash) % 1000) / 1000;
+  return bound.min + norm * (bound.max - bound.min);
+}
+
+function _drillDecadeCounts(hadiths){
+  var DEC_MIN = Math.floor(DRILL_YEAR_MIN / 10) * 10;
+  var DEC_MAX = Math.ceil(DRILL_YEAR_MAX / 10) * 10;
+  var decades = [];
+  for(var y = DEC_MIN; y < DEC_MAX; y += 10) decades.push(y);
+  var counts = {};
+  decades.forEach(function(y){ counts[y] = 0; });
+
+  hadiths.forEach(function(h){
+    var r = _drillHadithRange(h);
+    if(!r) return;
+    var first = Math.max(DEC_MIN, Math.floor(r.earliest / 10) * 10);
+    var last  = Math.min(DEC_MAX - 10, Math.floor(r.latest / 10) * 10);
+    if(last < first) last = first;
+    var n = ((last - first) / 10) + 1;
+    var share = 1 / n;
+    for(var d = first; d <= last; d += 10){
+      if(counts[d] != null) counts[d] += share;
+    }
+  });
+  return { decades: decades, counts: counts };
+}
+
+function _drillTierLaneHtml(meta, hadiths){
+  var laneH = _drillLaneHeight();
+  var rgb = _drillHexToRgb(meta.color);
+
+  var marks = '';
+
+  if(meta.key === 'T1' || meta.key === 'T2'){
+    hadiths.forEach(function(h){
+      var r = _drillHadithRange(h);
+      if(!r) return;
+      var topA = _drillYearToPx(r.earliest);
+      var topB = _drillYearToPx(r.latest);
+      if(topB < topA){ var t = topA; topA = topB; topB = t; }
+      var barH = Math.max(2, topB - topA);
+      var leftPct = _drillJitterPct(h, {min:12, max:88});
+
+      if(meta.key === 'T1'){
+        marks += '<div title="' + esc(h.id||'') + ' \u00B7 ' + r.earliest + (r.latest !== r.earliest ? '\u2013' + r.latest : '') + ' CE" style="position:absolute;top:' + topA + 'px;left:' + leftPct + '%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:' + meta.color + ';opacity:0.85"></div>';
+      } else {
+        marks += '<div title="' + esc(h.id||'') + ' \u00B7 ' + r.earliest + '\u2013' + r.latest + ' CE" style="position:absolute;top:' + topA + 'px;left:' + leftPct + '%;transform:translateX(-50%);width:3px;height:' + barH + 'px;background:' + meta.color + ';opacity:0.7;border-radius:1px"></div>';
+      }
+    });
+  } else {
+    var dc = _drillDecadeCounts(hadiths);
+    var maxC = 0;
+    dc.decades.forEach(function(y){ if(dc.counts[y] > maxC) maxC = dc.counts[y]; });
+    if(maxC === 0) maxC = 1;
+
+    dc.decades.forEach(function(y){
+      var c = dc.counts[y];
+      if(c === 0) return;
+      var topA = _drillYearToPx(y);
+      var topB = _drillYearToPx(y + 10);
+      var h = Math.max(3, topB - topA);
+      var alpha = 0.15 + 0.75 * (c / maxC);
+      marks += '<div title="' + y + 's: ' + c.toFixed(1) + ' hadiths" style="position:absolute;top:' + topA + 'px;left:6%;right:6%;height:' + h + 'px;background:rgba(' + rgb + ',' + alpha.toFixed(3) + ');border-top:1px solid rgba(' + rgb + ',0.35)"></div>' +
+        '<div style="position:absolute;top:' + (topA + h/2 - 6) + 'px;left:0;right:0;text-align:center;font-size:var(--fs-3);color:rgba(229,231,235,0.85);font-weight:600;pointer-events:none">' + Math.round(c).toLocaleString() + '</div>';
+    });
+  }
+
+  return '' +
+    '<div style="flex:1;min-width:140px;max-width:220px">' +
+      '<div style="margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(' + rgb + ',0.3)">' +
+        '<div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap">' +
+          '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:' + meta.color + ';text-transform:uppercase;font-weight:600">' + meta.key + ' \u00B7 ' + esc(meta.label) + '</div>' +
+          '<div style="font-size:var(--fs-3);color:#E5E7EB;font-weight:600">' + hadiths.length.toLocaleString() + '</div>' +
+        '</div>' +
+        '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.65);margin-top:2px">' + esc(meta.sub) + ' \u00B7 ' + esc(meta.span) + '</div>' +
+      '</div>' +
+      '<div style="position:relative;height:' + laneH + 'px;background:rgba(' + rgb + ',0.03);border-radius:2px">' + marks + '</div>' +
+    '</div>';
+}
+
+function _drillColumnHtml(meta, hadiths, tierColorMap){
+  if(!hadiths.length){
+    return '<div style="padding:40px;text-align:center;color:rgba(160,174,192,0.7)">No hadiths in this tier.</div>';
+  }
+
+  var CONNECTOR_PALETTE = ['#5CAA9E','#A06C6C','#7C6CA0','#C97B5C','#6CA09C','#A09C6C','#9E5C8B','#8BA05C'];
+
+  var groups = {};
+  hadiths.forEach(function(h){
+    var r = _drillHadithRange(h);
+    if(!r) return;
+    var key = r.earliest + '-' + r.latest;
+    if(!groups[key]){ groups[key] = { earliest:r.earliest, latest:r.latest, hadiths:[] }; }
+    groups[key].hadiths.push(h);
+  });
+  var groupList = Object.keys(groups).map(function(k){ return groups[k]; });
+  if(!groupList.length){
+    return '<div style="padding:40px;text-align:center;color:rgba(160,174,192,0.7)">No dated hadiths in this tier.</div>';
+  }
+  groupList.sort(function(a,b){
+    if(a.earliest !== b.earliest) return a.earliest - b.earliest;
+    return (a.latest - a.earliest) - (b.latest - b.earliest);
+  });
+
+  var sourceTileKeys = {};
+  _drillPath.forEach(function(step){
+    sourceTileKeys[step.sourceEarliest + '-' + step.sourceLatest] = true;
+  });
+
+  var ROW_H = 76;
+  var rows = [];
+  var yearAnchored = {};
+
+  groupList.forEach(function(g){
+    var anchor = null;
+    if(g.earliest === g.latest){
+      if(!yearAnchored[g.earliest]) anchor = g.earliest;
+    } else {
+      for(var y = g.earliest; y <= g.latest; y++){
+        if(!yearAnchored[y]){ anchor = y; break; }
+      }
+    }
+    var shaded = (anchor === null);
+    var rowIdx = rows.length;
+    rows.push({ group: g, labelYear: anchor, shaded: shaded, rowIndex: rowIdx });
+    if(anchor !== null) yearAnchored[anchor] = rowIdx;
+  });
+
+  var totalH = rows.length * ROW_H;
+
+  var sourceYearSet = {};
+  if(_drillPath.length > 0){
+    for(var sk in sourceTileKeys){
+      var sp = sk.split('-');
+      var sE = parseInt(sp[0],10), sL = parseInt(sp[1],10);
+      for(var sy = sE; sy <= sL; sy++) sourceYearSet[sy] = true;
+    }
+  }
+
+  var yearCol = '';
+  rows.forEach(function(r){
+    if(r.labelYear === null) return;
+    var top = r.rowIndex * ROW_H;
+    var y = r.labelYear;
+    var isHijra = y === 622;
+    var isDeath = y === 632;
+    var isSourceYear = !!sourceYearSet[y];
+    var drillActive = _drillPath.length > 0;
+    var labelColor, fontWeight, tickBg;
+    if(isSourceYear){
+      labelColor = '#D4AF37';
+      fontWeight = '700';
+      tickBg = '#D4AF37';
+    } else if(isHijra){
+      labelColor = drillActive ? 'rgba(212,175,55,0.3)' : '#D4AF37';
+      fontWeight = '600';
+      tickBg = drillActive ? 'rgba(160,174,192,0.15)' : 'rgba(160,174,192,0.5)';
+    } else if(isDeath){
+      labelColor = drillActive ? 'rgba(180,84,84,0.3)' : '#B45454';
+      fontWeight = '600';
+      tickBg = drillActive ? 'rgba(160,174,192,0.15)' : 'rgba(160,174,192,0.5)';
+    } else {
+      labelColor = drillActive ? 'rgba(160,174,192,0.2)' : 'rgba(160,174,192,0.75)';
+      fontWeight = '400';
+      tickBg = drillActive ? 'rgba(160,174,192,0.1)' : 'rgba(160,174,192,0.5)';
+    }
+    var label = isHijra ? 'HIJRA 622' : (isDeath ? 'PROPHET D. 632' : y + ' CE');
+    yearCol +=
+      '<div style="position:absolute;top:' + (top + ROW_H/2 - 7) + 'px;left:0;right:14px;text-align:right;font-family:\'Cinzel\',serif;font-size:' + (isSourceYear ? '11px' : '10px') + ';color:' + labelColor + ';font-weight:' + fontWeight + ';white-space:nowrap">' + label + '</div>' +
+      '<div style="position:absolute;top:' + (top + ROW_H/2) + 'px;right:0;width:' + (isSourceYear ? '14px' : '8px') + ';height:' + (isSourceYear ? '2px' : '1px') + ';background:' + tickBg + '"></div>';
+  });
+
+  var SPINE_X = 6;
+  var spineOpacity = _drillPath.length > 0 ? '0.15' : '0.6';
+  var braceSvg = '<line x1="' + SPINE_X + '" y1="0" x2="' + SPINE_X + '" y2="' + totalH + '" stroke="#D4AF37" stroke-width="1.5" opacity="' + spineOpacity + '"/>';
+  var BRACE_W = 40;
+  var TIP_X   = BRACE_W;
+  var multiIdx = 0;
+
+  rows.forEach(function(r){
+    r._connectorColor = null;
+    if(r.group.earliest === r.group.latest) return;
+    var color = CONNECTOR_PALETTE[multiIdx % CONNECTOR_PALETTE.length];
+    multiIdx++;
+    r._connectorColor = color;
+    var tileY = r.rowIndex * ROW_H + ROW_H/2;
+
+    var firstY = null, lastY = null;
+    for(var y = r.group.earliest; y <= r.group.latest; y++){
+      if(yearAnchored[y] != null){
+        if(firstY === null) firstY = y;
+        lastY = y;
+      }
+    }
+    if(firstY === null){ firstY = r.group.earliest; lastY = r.group.latest; }
+    var topY = (yearAnchored[firstY] != null ? yearAnchored[firstY] * ROW_H + ROW_H/2 : r.rowIndex * ROW_H + ROW_H/2);
+    var botY = (yearAnchored[lastY]  != null ? yearAnchored[lastY]  * ROW_H + ROW_H/2 : r.rowIndex * ROW_H + ROW_H/2);
+
+    var lineOpacity = (_drillPath.length > 0 && !sourceTileKeys[r.group.earliest + '-' + r.group.latest]) ? '0.15' : '0.95';
+    if(topY === botY){
+      braceSvg += '<line x1="' + SPINE_X + '" y1="' + topY + '" x2="' + TIP_X + '" y2="' + tileY + '" stroke="' + color + '" stroke-width="2" opacity="' + lineOpacity + '"/>';
+    } else {
+      braceSvg += '<line x1="' + SPINE_X + '" y1="' + topY + '" x2="' + TIP_X + '" y2="' + tileY + '" stroke="' + color + '" stroke-width="2" opacity="' + lineOpacity + '"/>';
+      braceSvg += '<line x1="' + SPINE_X + '" y1="' + botY + '" x2="' + TIP_X + '" y2="' + tileY + '" stroke="' + color + '" stroke-width="2" opacity="' + lineOpacity + '"/>';
+    }
+    braceSvg += '<circle cx="' + SPINE_X + '" cy="' + topY + '" r="3" fill="' + color + '" opacity="' + lineOpacity + '"/>';
+    if(topY !== botY){
+      braceSvg += '<circle cx="' + SPINE_X + '" cy="' + botY + '" r="3" fill="' + color + '" opacity="' + lineOpacity + '"/>';
+    }
+  });
+
+  rows.forEach(function(r){
+    if(!sourceTileKeys[r.group.earliest + '-' + r.group.latest]) return;
+    if(r.group.earliest !== r.group.latest) return;
+    var tileY = r.rowIndex * ROW_H + ROW_H/2;
+    braceSvg += '<line x1="' + SPINE_X + '" y1="' + tileY + '" x2="' + TIP_X + '" y2="' + tileY + '" stroke="#D4AF37" stroke-width="2.5" opacity="0.95"/>';
+    braceSvg += '<circle cx="' + SPINE_X + '" cy="' + tileY + '" r="3.5" fill="#D4AF37"/>';
+  });
+
+  var tilesHtml = '';
+  rows.forEach(function(r){
+    var g = r.group;
+    var tileTierColor = null;
+    if(tierColorMap){
+      var colorCounts = {};
+      g.hadiths.forEach(function(h){
+        var c = tierColorMap[h.id || h] || meta.color;
+        colorCounts[c] = (colorCounts[c] || 0) + 1;
+      });
+      var topC = null, topN = 0;
+      for(var c in colorCounts){ if(colorCounts[c] > topN){ topN = colorCounts[c]; topC = c; } }
+      tileTierColor = topC;
+    }
+    var tileColor = r._connectorColor || tileTierColor || meta.color;
+    var rgb = _drillHexToRgb(tileColor);
+    var top = r.rowIndex * ROW_H + 4;
+    var tileH = ROW_H - 8;
+    var rangeLabel = g.earliest === g.latest ? (g.earliest + ' CE') : (g.earliest + '\u2013' + g.latest + ' CE');
+    tilesHtml +=
+      (function(){
+        var isSource = !!sourceTileKeys[g.earliest + '-' + g.latest];
+        var anyDrillActive = _drillPath.length > 0;
+        var isDim = anyDrillActive && !isSource;
+        var ringShadow = isSource ? 'box-shadow:0 0 0 3px ' + tileColor + ', 0 0 28px 4px rgba(' + rgb + ',0.75), inset 0 0 14px rgba(' + rgb + ',0.28);' : '';
+        var dimStyle = isDim ? 'opacity:0.22;filter:saturate(0.4);' : '';
+        return '<div class="mon-drill-tile' + (isSource ? ' mon-drill-tile-source' : '') + '" data-group-key="' + g.earliest + '-' + g.latest + '" data-tile-color="' + tileColor + '" style="' +
+          'position:absolute;top:' + top + 'px;left:0;right:0;height:' + tileH + 'px;' +
+          'background:transparent;border:3px solid ' + tileColor + ';border-radius:3px;overflow:hidden;display:flex;flex-direction:column;' + ringShadow + dimStyle + '">';
+      })() +
+        '<div style="padding:4px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex:1">' +
+          '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#FFFFFF;font-weight:700">' + g.hadiths.length.toLocaleString() + '</span>' +
+          '<span style="font-size:var(--fs-3);color:#E5E7EB;font-family:\'Lato\',sans-serif">' + esc(rangeLabel) + '</span>' +
+        '</div>' +
+        '<div style="display:flex;gap:0;flex:none;border-top:1px solid rgba(' + rgb + ',0.25)">' +
+          '<button class="mon-drill-view" data-group-key="' + g.earliest + '-' + g.latest + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">View</button>' +
+          '<button class="mon-drill-expand" data-group-key="' + g.earliest + '-' + g.latest + '" type="button" style="flex:1;padding:3px 6px;background:transparent;border:none;border-left:1px solid rgba(' + rgb + ',0.25);color:#E5E7EB;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Expand</button>' +
+        '</div>' +
+      '</div>';
+  });
+
+  var headerHtml =
+    '<div style="margin-bottom:10px;font-size:var(--fs-3);color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(212,175,55,0.1)">' +
+      hadiths.length.toLocaleString() + ' hadiths \u00B7 ' + groupList.length + ' date groups' +
+    '</div>';
+
+  var body =
+    '<div>' + headerHtml +
+      '<div style="display:flex;gap:0;align-items:flex-start">' +
+        '<div style="flex:none;width:60px;position:relative;height:' + totalH + 'px;margin-right:8px">' + yearCol + '</div>' +
+        '<div style="flex:none;width:40px;position:relative;height:' + totalH + 'px;margin-right:-2px">' +
+          '<svg width="40" height="' + totalH + '" style="position:absolute;inset:0;overflow:visible">' + braceSvg + '</svg>' +
+        '</div>' +
+        '<div style="flex:none;position:relative;width:130px;height:' + totalH + 'px">' + tilesHtml + '</div>' +
+      '</div>' +
+    '</div>';
+
+  return body;
+}
+
+function _drillBindTierChips(){
+  _drillEl.querySelectorAll('.mon-drill-tier-chip').forEach(function(btn){
+    btn.onclick = function(){
+      var k = btn.getAttribute('data-tier');
+      _drillActiveTiers[k] = !_drillActiveTiers[k];
+      var anyOn = Object.keys(_drillActiveTiers).some(function(kk){ return _drillActiveTiers[kk]; });
+      if(!anyOn) _drillActiveTiers[k] = true;
+      _drillRender();
+    };
+  });
+}
+var _wizardState = null;
+var _wizardAllHadith = null;
+
+function esc(s){
+  var d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+
+function truncate(s, max){
+  if(!s) return '';
+  return s.length > max ? s.substring(0, max) + '\u2026' : s;
+}
+
+function getField(obj, names){
+  for(var i = 0; i < names.length; i++){
+    if(obj[names[i]] != null && obj[names[i]] !== '') return obj[names[i]];
+  }
+  return '';
+}
+
+function getNumber(h){ return getField(h, ['hadith_no','hadithNumber','number','id']); }
+var _monLang = 'en';
+function getText(h){
+  if(_monLang === 'ar') return getField(h, ['hadithArabic','matn_ar','text_ar','arabic','arabic_text']);
+  if(_monLang === 'ur') return getField(h, ['hadithUrdu','matn_ur','text_ur','urdu','urdu_text']);
+  return getField(h, ['matn_en','hadithEnglish','text','english','body','hadith_text']);
+}
+function getNarrator(h){
+  var narrs = h.narrators;
+  if(Array.isArray(narrs) && narrs.length){
+    var last = narrs[narrs.length - 1];
+    var name = (last.name || '').split('(')[0].trim();
+    if(name) return name;
+  }
+  var raw = getField(h, ['narrator','chain','narrated_by','englishNarrator']);
+  if(typeof raw === 'string' && raw.indexOf(',') !== -1){
+    var parts = raw.split(',');
+    return parts[parts.length - 1].trim();
+  }
+  if(typeof raw === 'string' && raw.indexOf('|') !== -1){
+    var parts2 = raw.split('|');
+    return parts2[parts2.length - 1].trim();
+  }
+  return raw;
+}
+function getLabel(key){
+  for(var i = 0; i < COLLECTIONS.length; i++){
+    if(COLLECTIONS[i].key === key) return COLLECTIONS[i].label;
+  }
+  return key;
+}
+
+function _monPeriodInfo(id){
+  for(var i = 0; i < MON_PERIODS.length; i++){
+    if(MON_PERIODS[i].id === id) return MON_PERIODS[i];
+  }
+  return null;
+}
+
+function _normName(s){
+  return (s||'').toLowerCase().replace(/[^a-z ]/g,'').replace(/\s+/g,' ').trim();
+}
+function _buildPeopleIndex(){
+  if(_peopleIndex && Object.keys(_peopleIndex).length) return;
+  var arr = (typeof PEOPLE !== 'undefined' && PEOPLE && PEOPLE.length) ? PEOPLE : null;
+  if(!arr){ _peopleIndex = null; return; }
+  _peopleIndex = {};
+  arr.forEach(function(p){
+    var n = _normName(p.famous);
+    if(n) _peopleIndex[n] = p.famous;
+    var s = _normName(p.slug);
+    if(s) _peopleIndex[s] = p.famous;
+  });
+}
+var _nameToSlugIdx = null;
+function _buildNameToSlugIdx(){
+  if(_nameToSlugIdx !== null) return _nameToSlugIdx;
+  _nameToSlugIdx = {};
+  try{
+    var nv = (typeof window !== 'undefined') ? window._NAME_VARIANTS : null;
+    if(!nv) return _nameToSlugIdx;
+    var slugs = Object.keys(nv);
+    for(var i = 0; i < slugs.length; i++){
+      var slug = slugs[i];
+      var entry = nv[slug];
+      if(!entry) continue;
+      var names = [];
+      if(Array.isArray(entry)){
+        names = entry;
+      } else {
+        if(Array.isArray(entry.spellings)) names = names.concat(entry.spellings);
+        if(Array.isArray(entry.titles)) names = names.concat(entry.titles);
+      }
+      for(var j = 0; j < names.length; j++){
+        var nm = String(names[j]).trim().toLowerCase();
+        if(nm && !_nameToSlugIdx[nm]) _nameToSlugIdx[nm] = slug;
+      }
+    }
+  }catch(e){}
+  return _nameToSlugIdx;
+}
+function _matchNarrator(name){
+  if(!name) return null;
+  // Try name_variants first — handles Imam names, kunyas, common variants.
+  try{
+    var idx = _buildNameToSlugIdx();
+    if(idx){
+      var key = String(name).trim().toLowerCase();
+      var slug = idx[key];
+      if(slug && typeof PEOPLE !== 'undefined' && PEOPLE && PEOPLE.length){
+        for(var j = 0; j < PEOPLE.length; j++){
+          if(PEOPLE[j].slug === slug) return PEOPLE[j].famous;
+        }
+      }
+    }
+  }catch(e){}
+  // Fallback: legacy fuzzy match against PEOPLE famous + slug.
+  _buildPeopleIndex();
+  if(!_peopleIndex || !Object.keys(_peopleIndex).length) return null;
+  var n = _normName(name);
+  if(!n) return null;
+  if(_peopleIndex[n]) return _peopleIndex[n];
+  var keys2 = Object.keys(_peopleIndex);
+  for(var i2 = 0; i2 < keys2.length; i2++){
+    var k = keys2[i2];
+    if(k.length < 4 || n.length < 4) continue;
+    if(k === n) return _peopleIndex[k];
+    if((' '+k+' ').indexOf(' '+n+' ') !== -1) return _peopleIndex[k];
+    if((' '+n+' ').indexOf(' '+k+' ') !== -1) return _peopleIndex[k];
+    if(k.indexOf(n) !== -1) return _peopleIndex[k];
+    if(n.indexOf(k) !== -1) return _peopleIndex[k];
+  }
+  return null;
+}
+
+function showLoading(on){
+  if(_loadingEl) _loadingEl.style.display = on ? 'block' : 'none';
+  if(_resultsEl) _resultsEl.style.display = on ? 'none' : 'block';
+}
+
+function fetchCollection(key){
+  if(_cache[key]) return Promise.resolve(_cache[key]);
+  var col = null;
+  for(var i = 0; i < COLLECTIONS.length; i++){
+    if(COLLECTIONS[i].key === key){ col = COLLECTIONS[i]; break; }
+  }
+  if(!col) return Promise.resolve([]);
+
+  // Multi-file book: fetch all files in parallel and concatenate.
+  var fileList = Array.isArray(col.files) ? col.files : (col.file ? [col.file] : []);
+  if(!fileList.length){
+    _cache[key] = [];
+    return Promise.resolve([]);
+  }
+
+  return Promise.all(fileList.map(function(f){
+    return fetch(dataUrl(f)).then(function(r){
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function(data){
+      if(data && !Array.isArray(data) && Array.isArray(data.hadiths)) data = data.hadiths;
+      if(!Array.isArray(data)) data = [];
+      return data;
+    }).catch(function(e){
+      console.warn('Failed to load ' + f + ':', e);
+      return [];
+    });
+  })).then(function(arrays){
+    var merged = [];
+    arrays.forEach(function(arr){ merged = merged.concat(arr); });
+    // Normalize topics: Arabic chapter labels → English via map.
+    merged.forEach(function(h){
+      if(h && typeof h.topic === 'string') h.topic = _resolveTopic(h.topic);
+    });
+    _cache[key] = merged;
+    return merged;
+  });
+}
+
+function fetchAll(){
+  var promises = COLLECTIONS.map(function(c){ return fetchCollection(c.key); });
+  return Promise.all(promises).then(function(results){
+    var all = [];
+    results.forEach(function(arr, i){
+      arr.forEach(function(h){ h._colKey = COLLECTIONS[i].key; });
+      all = all.concat(arr);
+    });
+    return all;
+  });
+}
+
+function _stripArabic(s){
+  return String(s || '').replace(/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function _narratorCell(name){
+  name = _stripArabic(name);
+  if(!name) return '';
+  var matched = _matchNarrator(name);
+  if(matched){
+    return '<span class="mon-narrator-tag" data-famous="' + esc(matched) + '" style="cursor:pointer;padding:2px 8px;border:1px solid rgba(212,175,55,0.4);border-radius:3px;background:rgba(212,175,55,0.08);color:#D4AF37;font-weight:500;font-size:var(--fs-3)">' + esc(name) + '</span>';
+  }
+  return '<span style="color:rgba(229,231,235,0.75)">' + esc(name) + '</span>';
+}
+
+function _gradeShort(g){
+  if(!g) return '';
+  var s = String(g), m;
+  if(s.indexOf('Comp.(RA)') !== -1) return 'Companion';
+  if((m = s.match(/Follower\(Tabi'\)\s*\[(\d+)(st|nd|rd|th)\s*Generation\]/i))) return "Tabi'i (" + m[1] + m[2] + ' gen)';
+  if((m = s.match(/Succ\.\s*\(Taba'\s*Tabi'\)\s*\[(\d+)(st|nd|rd|th)\s*generation\]/i))) return "Taba' Tabi'i (" + m[1] + m[2] + ' gen)';
+  if((m = s.match(/(\d+)(st|nd|rd|th)\s*Century\s*AH/i))) return m[1] + m[2] + ' century AH';
+  return s;
+}
+
+function _chainOnlyBlock(h){
+  var narrs = Array.isArray(h.narrators) ? h.narrators : [];
+  if(!narrs.length){
+    return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Chain omitted)</div>';
+  }
+  var N = narrs.length;
+  var toggle = '<button class="mon-chain-toggle" type="button" style="display:inline-flex;align-items:center;gap:4px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;padding:3px 8px;color:rgba(212,175,55,0.85);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
+  var rows = '';
+  for(var i = N - 1, pos = 1; i >= 0; i--, pos++){
+    var nr = narrs[i];
+    var nm = _stripArabic((nr.name || '').split('(')[0].trim()) || '(unknown)';
+    var isTerm = (pos === 1);
+    var grade = isTerm ? 'Companion' : _gradeShort(nr.grade);
+    var dy = (nr.death_year != null && nr.death_year !== '') ? ' \u00B7 d. ' + String(nr.death_year) : '';
+    var gradeHtml = _glossWrap(grade) + esc(dy);
+    rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
+              '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
+              '<div style="flex:1">' +
+                '<div style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</div>' +
+                '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + gradeHtml + '</div>' +
+              '</div>' +
+            '</div>';
+  }
+  var panel = '<div class="mon-chain" style="display:none;margin-top:6px;padding:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:3px">' + rows + '</div>';
+  return toggle + panel;
+}
+
+// Strip verbal cruft from englishNarrator strings to expose just the name.
+// Examples:
+//   "It was narrated from Abu Bakr:"        -> "Abu Bakr"
+//   "Ali said:"                             -> "Ali"
+//   "Shuraih narrated that Umar said:"      -> "Umar"
+function _findCleanNameIn(messy){
+  if(!_narratorCleanList || !_narratorCleanList.length) return '';
+  var s = String(messy);
+  var best = '';
+  var bestPos = -1;
+  for(var i = 0; i < _narratorCleanList.length; i++){
+    var name = _narratorCleanList[i];
+    var pos = s.indexOf(name);
+    if(pos === -1) continue;
+    // earliest match wins; on tie keep the longer (we hit longer first).
+    if(bestPos === -1 || pos < bestPos){
+      best = name;
+      bestPos = pos;
+    }
+  }
+  return best;
+}
+
+function _cleanNarratorString(s){
+  if(!s) return '';
+  // First try: match against the known clean narrator names.
+  var hit = _findCleanNameIn(s);
+  if(hit) return hit;
+  var n = String(s).trim();
+  if(!n) return '';
+  n = n.replace(/[:;,.\s]+$/, '');
+  // "X narrated that Y said" -> Y (deeper source)
+  var m = n.match(/\b(?:narrated|reported|said|told)\s+that\s+(.+?)\s+(?:said|reported|narrated|told)\b/i);
+  if(m && m[1]) return _trimNarratorBits(m[1]);
+  // "[It was] narrated [by/from] X" -> X
+  m = n.match(/\b(?:narrated|reported|told|heard|on the authority of)\s+(?:(?:that|from|by)\s+)?(.+)$/i);
+  if(m && m[1]) return _trimNarratorBits(m[1]);
+  // "X said/reported" -> X
+  m = n.match(/^(.+?)\s+(?:said|reported|narrated|stated|asked|replied|told|wrote)\b/i);
+  if(m && m[1]) return _trimNarratorBits(m[1]);
+  return _trimNarratorBits(n);
+}
+function _trimNarratorBits(s){
+  if(!s) return '';
+  return String(s)
+    .replace(/^\s*(?:that|the)\s+/i, '')
+    .replace(/[:;,.\s]+$/, '')
+    .trim();
+}
+
+function _narratorBlock(h){
+  var narrs = Array.isArray(h.narrators) ? h.narrators : [];
+  if(!narrs.length){
+    // Shia books + Sunni "Others" don't have structured narrators[] arrays.
+    // They store the end-of-chain narrator as a plain string in englishNarrator.
+    var en = (h && h.englishNarrator) ? String(h.englishNarrator).trim() : '';
+    if(en){
+      var cleaned = _cleanNarratorString(en);
+      return _narratorCell(cleaned || en);
+    }
+    return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Chain omitted in source)</div>';
+  }
+  var terminal = narrs[narrs.length - 1];
+  var termName = _stripArabic((terminal.name || '').split('(')[0].trim());
+  var termCell = _narratorCell(termName);
+  var N = narrs.length;
+  var toggle = '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
+  var rows = '';
+  for(var i = N - 1, pos = 1; i >= 0; i--, pos++){
+    var nr = narrs[i];
+    var nm = _stripArabic((nr.name || '').split('(')[0].trim()) || '(unknown)';
+    var isTerm = (pos === 1);
+    var isComp = (i === 0);
+    var grade = isTerm ? 'Companion' : _gradeShort(nr.grade);
+    var dy = (nr.death_year != null && nr.death_year !== '') ? ' \u00B7 d. ' + String(nr.death_year) : '';
+    var gradeHtml = _glossWrap(grade) + esc(dy);
+    var relHtml = nr.reliability_grade ? ' <span style="color:rgba(212,175,55,0.8)">\u00B7 ' + _glossWrap(String(nr.reliability_grade)) + '</span>' : '';
+    var tail = isTerm
+      ? '<div style="color:rgba(212,175,55,0.65);font-size:var(--fs-3);font-style:normal;margin-top:2px">\u2191 heard from the Prophet</div>'
+      : (isComp ? '<div style="color:rgba(160,174,192,0.6);font-size:var(--fs-3);font-style:normal;margin-top:2px">(compiler\'s direct source)</div>' : '');
+    rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
+              '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
+              '<div style="flex:1">' +
+                '<div style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</div>' +
+                '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + gradeHtml + relHtml + '</div>' +
+                tail +
+              '</div>' +
+            '</div>';
+  }
+  var panel = '<div class="mon-chain" style="display:none;margin-top:8px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:4px">' +
+                '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.85);text-transform:uppercase;margin-bottom:6px">Chain of Narration</div>' +
+                rows +
+              '</div>';
+  return termCell + toggle + panel;
+}
+
+// ── Dating line builder ──
+// Reads RV55 shape: dating.range_best, dating.range_safe, dating.confidence
+// ('high'|'medium'|'low'). Falls back to legacy dating.range, then period-only.
+function _datingLine(h){
+  var rangeText, confidence;
+
+  if(h && h.dating && (h.dating.range_best || h.dating.range_safe || h.dating.range)){
+    var rb = h.dating.range_best || h.dating.range_safe || h.dating.range;
+    rangeText = '~' + rb.earliest + '\u2013' + rb.latest + ' CE';
+    confidence = h.dating.confidence || 'low';
+  } else {
+    var pi = _monPeriodInfo(h && h.period);
+    rangeText = pi ? (pi.label + ' Era \u00B7 ' + pi.years) : 'Unknown period';
+    confidence = 'period_only';
+  }
+
+  var cs = CONF_STYLES[confidence] || CONF_STYLES.period_only;
+
+  return '<div class="mon-dating" style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;color:rgba(160,174,192,0.8)">' +
+    '<span>Tentative Dating</span>' +
+    '<span style="color:rgba(255,255,255,0.3)">\u00B7</span>' +
+    '<span>' + esc(rangeText) + '</span>' +
+    '<span class="mon-conf-badge" style="padding:2px 7px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:' + cs.bg + ';color:' + cs.text + '">' + cs.label + '</span>' +
+    '</div>';
+}
+
+// ── Timeline band ── (REMOVED — hidden always per user rule)
+function _buildBand(){
+  if(_bandEl){ _bandEl.style.display = 'none'; }
+  return;
+  // Original code kept below but unreachable:
+  if(!_bandEl) return;
+  var html = '';
+  MON_PERIODS.forEach(function(p, i){
+    var br = (i < MON_PERIODS.length - 1) ? 'border-right:1px solid rgba(0,0,0,0.35);' : '';
+    html += '<div class="mon-period-seg" data-period="' + p.id + '" data-rgb="' + p.rgb + '" style="' +
+      'position:relative;flex:' + p.span + ';background:rgba(' + p.rgb + ',0.55);' +
+      'display:flex;align-items:center;justify-content:center;' +
+      'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;font-weight:600;' +
+      'color:#FFFFFF;text-shadow:0 1px 2px rgba(0,0,0,0.85),0 0 3px rgba(0,0,0,0.6);' +
+      'transition:background .2s;' + br + '">' +
+      '<span>' + esc(p.label) + '</span>' +
+      '<span class="mon-period-count" data-period="' + p.id + '" style="' +
+        'position:absolute;right:6px;bottom:2px;' +
+        'font-family:\'Lato\',sans-serif;font-size:var(--fs-3);font-weight:400;letter-spacing:.04em;text-transform:none;' +
+        'color:rgba(255,255,255,0.55);text-shadow:0 1px 2px rgba(0,0,0,0.7);' +
+        '"></span>' +
+      '</div>';
+  });
+  _bandEl.style.cssText = 'display:flex;width:100%;height:34px;margin:12px 0 8px;border-radius:3px;overflow:hidden;border:1px solid rgba(255,255,255,0.12)';
+  _bandEl.innerHTML = html;
+  _paintBandCounts();
+}
+
+function _paintBandCounts(){
+  if(!_bandEl || !_periodTotals) return;
+  _bandEl.querySelectorAll('.mon-period-count').forEach(function(el){
+    var n = _periodTotals[el.dataset.period] || 0;
+    el.textContent = n ? n.toLocaleString() : '';
+  });
+}
+
+function _computePeriodTotals(){
+  if(_periodTotals) { _paintBandCounts(); return; }
+  fetchAll().then(function(all){
+    var out = {};
+    MON_PERIODS.forEach(function(p){ out[p.id] = 0; });
+    all.forEach(function(h){ if(out[h.period] != null) out[h.period]++; });
+    _periodTotals = out;
+    _paintBandCounts();
+  });
+}
+
+function _syncBand(){
+  if(!_bandEl) return;
+  var sel = _monSel.period;
+  _bandEl.querySelectorAll('.mon-period-seg').forEach(function(seg){
+    var rgb = seg.dataset.rgb;
+    if(!sel || sel.size === 0){
+      seg.style.background = 'rgba(' + rgb + ',0.55)';
+    } else if(sel.has(seg.dataset.period)){
+      seg.style.background = 'rgba(' + rgb + ',0.95)';
+    } else {
+      seg.style.background = 'rgba(' + rgb + ',0.18)';
+    }
+  });
+}
+
+
+// ── Methodology modal ──
+function _openMethodology(e){
+  if(e && e.stopPropagation) e.stopPropagation();
+  if(document.getElementById('mon-modal')) return;
+
+  var overlay = document.createElement('div');
+  overlay.id = 'mon-modal';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+
+  overlay.innerHTML =
+    '<div style="background:#1A2332;border:1px solid rgba(212,175,55,0.3);border-radius:6px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:28px 32px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB">' +
+      '<button id="mon-modal-close" style="position:absolute;top:10px;right:14px;background:transparent;border:none;color:#A0AEC0;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>' +
+      '<h2 style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);letter-spacing:.12em;color:#D4AF37;margin:0 0 16px">TENTATIVE DATING \u2014 METHODOLOGY</h2>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Hadiths are reports about events from the Prophet\u2019s life (610\u2013632 CE) and after. None carry an exact date. What you see here is a best-effort reconstruction built by layering evidence. This is tentative by design and will keep improving as we connect more sources.</p>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">CONFIDENCE LEVELS</h3>' +
+      '<div style="font-size:var(--fs-3);line-height:1.7">' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#D4AF37;color:#0E1621;margin-right:8px">HIGH</span>Hadith text names a specific dated event (e.g. Battle of Badr, 624 CE). Range typically 1\u20133 years.</p>' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#6B8E6B;color:#FFFFFF;margin-right:8px">MEDIUM</span>Multiple contextual clues line up (companion mentioned, location cue, surah cited). Range typically 5\u201315 years.</p>' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#5C7A8C;color:#FFFFFF;margin-right:8px">LOW</span>Only one weak clue beyond narrator period. Range usually covers most of the narrator\u2019s active life.</p>' +
+        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#666;color:#FFFFFF;margin-right:8px">PERIOD ONLY</span>No clues in the text itself \u2014 dating falls back to the narrator\u2019s broad period.</p>' +
+      '</div>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">LAYERS CURRENTLY APPLIED</h3>' +
+      '<div style="font-size:var(--fs-3);line-height:1.6">' +
+        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L1 \u2014 Narrator period (100% coverage)</strong><br>The last narrator in the chain is the companion who heard it from the Prophet. Their known lifespan gives a broad window.</p>' +
+        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L2 \u2014 Named dated event (4.4%)</strong><br>The hadith text names a specific event with a known year \u2014 Battle of Badr (624), Treaty of Hudaybiyyah (628), etc. Highest confidence.</p>' +
+        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L3 \u2014 Book of Maghazi (1.7%)</strong><br>Hadith is in the Military Expeditions section of a collection, which scholars organized around the Madinan period.</p>' +
+        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L4 \u2014 Named companion (20.8%)</strong><br>Text mentions a companion other than the narrator, whose lifespan narrows the window.</p>' +
+        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L5 \u2014 Location clue (2.6%)</strong><br>Text mentions Madinah, Ansar, Muhajirun etc. \u2014 implies post-Hijrah.</p>' +
+        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L6 \u2014 Quranic surah cited (13.4%)</strong><br>Makkan surahs point to 610\u2013622; Madinan surahs to 622\u2013632.</p>' +
+      '</div>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">PLANNED LAYERS</h3>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0;padding-left:20px">' +
+        '<li>Sunnah.com expedition cross-references</li>' +
+        '<li>Manual scholar review for high-traffic hadiths</li>' +
+        '<li>Cross-collection corroboration</li>' +
+      '</ul>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:20px 0 0;font-style:normal">This is not precise dating. Treat all ranges as approximate.</p>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">CROSS-REFERENCE CHIPS</h3>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:0 0 12px">Each hadith row shows related items from across the app. Click a chip to jump to that view.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-3);line-height:1.5">' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-fig">Figure</span><span>Person mentioned in the hadith (87% coverage). Click \u2192 info card.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-verse">2:183</span><span>Quran verse with shared wording (89% coverage). Click \u2192 START view at verse.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-place xref-chip-inactive">Place</span><span>Place referenced (33% coverage). Click wiring pending.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-event">Event</span><span>Historical event match (0.6% coverage). Click \u2192 Events view.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-book">Book</span><span>Scholarly commentary on this hadith. Click → BOOKS view.</span></div>' +
+      '</div>' +
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:24px 0 10px">CONCEPT TAG SCORES (1-5)</h3>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:0 0 12px">Concept tags on Quran verses carry a 1-5 strength score. Brighter gold means stronger match.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-3);line-height:1.5">' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:rgba(212,175,55,0.45)">1</span><span>Single shared word — weakest match.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:rgba(212,175,55,0.7)">2</span><span>Two-token overlap.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#d4af37">3</span><span>Solid phrase match — most common.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#e8c547;font-weight:600">4</span><span>Strong multi-word match.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#f5d24a;font-weight:700">5</span><span>Exact phrase — strongest, rare.</span></div>' +
+      '</div>' +
+      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags currently cover the six canonical collections (28,889 hadith tagged) and are inherited from the Quran verses each hadith shares wording with, using the same Level 3 concept list as the Quran tags. The hadith-to-verse link is word-overlap, not meaning-checked, so treat these chips as exploratory, not a citation.</p>' +
+
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">NARRATOR FILTER</h3>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Narrator dropdown lists every distinct narrator who appears as the end of a hadith chain across all Sunni and Shia books on file.</p>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">Names ending with <em>"Unknown Scholar"</em> or showing <em>"Being checked"</em> mean the chain end was either not recorded or has not yet been matched to a known figure. These are listed at the bottom so the known names sort cleanly.</p>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">Counts shown next to each name = number of hadiths attributed to that narrator across the corpus.</p>' +
+
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">TOPIC FILTER (PAUSED)</h3>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Topic dropdown is temporarily hidden. Only 26% of hadiths in the corpus currently carry a topic field, and the topics that exist are skewed toward theology rather than the practical chapters readers expect. A full re-tagging pass is in progress.</p>' +
+
+      // ── AI methodology disclosure ──
+      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:32px 0 10px">HOW CROSS-REFERENCES ARE BUILT</h3>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">This app uses AI (Claude by Anthropic) to link concepts to Quran verses, hadiths, and tafsir entries. The method differs by source.</p>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">QURAN VERSES — NEW (LEVEL 3 METHOD)</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>475 concepts, each with a written summary.</li>' +
+        '<li>Step 1: filter Quran to verses where the concept\'s Arabic root word appears (root match).</li>' +
+        '<li>Step 2: AI reads each candidate verse against the concept summary and answers YES or NO.</li>' +
+        '<li>Only YES verses kept. Result: 4,311 verse links across 205 concepts. Every chip survived all three filters.</li>' +
+        '<li>Limit: a verse that teaches a concept without using its specific Arabic root is not tagged here. Surah Ikhlas (112) teaches tawhid but its text does not contain the root و-ح-د, so no tawhid chip. We chose narrow and provable over wide and loose.</li>' +
+        '<li>Confidence stamp: medium_ai. AI judged YES under a clear rule. Human review in progress.</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">HADITH AND TAFSIR — OLDER (KEYWORD MATCH)</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>Hadith and tafsir concept chips were built before the new Level 3 method.</li>' +
+        '<li>They are keyword-match tags. Wider net, lower quality than Quran chips.</li>' +
+        '<li>Useful for discovery, not for citation.</li>' +
+        '<li>Upgrade to the Level 3 method for hadith and tafsir is planned for a future release.</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">WHAT AI DOES NOT DO</h4>' +
+      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
+        '<li>Decide which texts are authoritative — those are pre-set canonical sources (Bukhari, Muslim, Quran, etc.)</li>' +
+        '<li>Translate the Quran or hadith — those use established human translations from Tanzil, fawazahmed0, AhmedBaset, Thaqalayn</li>' +
+        '<li>Create or invent figures, events, or biographies — those come from Wikipedia, Wikidata, and primary historical sources</li>' +
+        '<li>Generate sectarian rulings or fatwas — this is a study tool, not a source of religious guidance</li>' +
+      '</ul>' +
+
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">INDEPENDENT VERIFICATION RECOMMENDED</h4>' +
+      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 14px">For any serious scholarly use, verify the source text yourself. The AI helps you find connections faster — it does not replace reading the primary source.</p>' +
+
+      '<div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-3);line-height:1.5;margin-top:14px;padding:12px 14px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:5px">' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-high">AI</span><span><strong style="color:#d4af37">High confidence</strong> (score 4–5) — gold solid badge. Reliable for citation.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-med">AI</span><span><strong style="color:#bca066">Medium confidence</strong> (score 3) — dim gold badge. Clear reference.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-low">AI</span><span><strong style="color:#9aa3b2">Low confidence</strong> (score 1–2) — faint badge. Exploratory only.</span></div>' +
+        '<div style="margin-top:6px;color:#A0AEC0;font-size:11px;font-style:italic">Source text itself (Quran, hadith, tafsir text) and figure data (Wikipedia / Wikidata) are not AI-generated and carry no badge.</div>' +
+      '</div>' +
+    '</div>';
+
+  document.body.appendChild(overlay);
+
+  function _close(){ var m = document.getElementById('mon-modal'); if(m) m.remove(); }
+  overlay.querySelector('#mon-modal-close').addEventListener('click', _close);
+  overlay.addEventListener('click', function(ev){ if(ev.target === overlay) _close(); });
+  document.addEventListener('keydown', function _esc(ev){
+    if(ev.key === 'Escape'){ _close(); document.removeEventListener('keydown', _esc); }
+  });
+}
+
+// ── Filter + render ──
+function _applyAllFilters(){
+  _syncBand();
+
+  var colSet = _monSel.collection;
+  var periodSet = _monSel.period;
+  var topicSet = _monSel.topic;
+  var narSet = _monSel.narrator;
+  var volSet = _monSel.volume;
+
+  // Empty-state gate: only render the prompt when literally nothing is picked.
+  // Periods / Topics / Narrators all operate over the full 34k corpus, so any
+  // filter selection (not just Collection) must trigger a load.
+  if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0 && volSet.size === 0 && _monSel.concept.size === 0){
+    showLoading(false);
+    _lastFiltered = [];
+    _lastColKey = '';
+    if(_resultsEl){
+      _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">Pick a filter above (Periods, Topics, Narrators, or Collections) to load hadiths</div>';
+    }
+    if(_countEl) _countEl.textContent = '';
+    return;
+  }
+
+  showLoading(true);
+
+  // Pick which collections to load. If user picked Collections explicitly,
+  // load only those. Otherwise (only Periods / Topics / Narrators picked),
+  // we need to scan the whole corpus, so load all 6 in parallel.
+  // fetchCollection caches in _cache[key] so re-selecting is instant.
+  var keys = colSet.size > 0 ? Array.from(colSet) : COLLECTIONS.map(function(c){ return c.key; });
+  var promise = Promise.all(keys.map(function(k){
+    return fetchCollection(k).then(function(data){
+      data.forEach(function(h){ h._colKey = k; });
+      return data;
+    });
+  })).then(function(arrs){
+    var all = []; arrs.forEach(function(a){ all = all.concat(a); });
+    return all;
+  });
+
+  promise.then(function(hadiths){
+    if(periodSet.size > 0){
+      hadiths = hadiths.filter(function(h){ return periodSet.has(h.period); });
+    }
+    if(topicSet.size > 0){
+      hadiths = hadiths.filter(function(h){
+        var clean = _topicMap[h.topic] || 'Other';
+        return topicSet.has(clean);
+      });
+    }
+    if(narSet.size > 0){
+      var narLowers = Array.from(narSet).map(function(s){ return s.toLowerCase(); });
+      hadiths = hadiths.filter(function(h){
+        var n = (getNarrator(h) || '').toLowerCase();
+        for(var i = 0; i < narLowers.length; i++){
+          if(n.indexOf(narLowers[i]) !== -1) return true;
+        }
+        return false;
+      });
+    }
+    if(volSet.size > 0){
+      hadiths = hadiths.filter(function(h){ return volSet.has(h.volume); });
+    }
+    if(_monSel.concept.size > 0){
+      var GC = window.GoldArkConcepts;
+      if(GC && typeof GC.getForHadith === 'function'){
+        hadiths = hadiths.filter(function(h){
+          var coll = h._colKey;
+          var num  = getNumber(h);
+          if(!coll || num == null) return false;
+          var concepts = GC.getForHadith(coll, String(num)) || [];
+          for(var i = 0; i < concepts.length; i++){
+            if(_monSel.concept.has(concepts[i].slug)) return true;
+          }
+          return false;
+        });
+      } else {
+        hadiths = [];
+      }
+    }
+
+    showLoading(false);
+    _renderRows(hadiths, colSet.size === 1 ? Array.from(colSet)[0] : '');
+  });
+}
+
+var _lastFiltered = null, _lastColKey = null;
+function _renderRows(filtered, colKey, page){
+  _lastFiltered = filtered;
+  _lastColKey = colKey;
+  _resultsEl.innerHTML = '';
+  _countEl.textContent = filtered.length + ' hadith' + (filtered.length !== 1 ? 's' : '') + ' found';
+
+  var totalPages = Math.max(1, Math.ceil(filtered.length / MAX_ROWS));
+  if(typeof page !== 'number') page = 0;
+  if(page < 0) page = 0;
+  if(page >= totalPages) page = totalPages - 1;
+  _currentPage = page;
+  var startIdx = page * MAX_ROWS;
+
+  if(!filtered.length){
+    // Render only after the load promise resolved — at this point a fetch
+    // attempt was made, so "0 hadiths match" is the truthful state.
+    _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">No hadiths match these filters.</div>';
+    return;
+  }
+
+  var frag = document.createDocumentFragment();
+
+  if(totalPages > 1){
+    var pageNav = document.createElement('div');
+    pageNav.className = 'mon-page-nav';
+    pageNav.style.cssText = 'position:sticky;top:0;z-index:10;background:#1B2631;width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #2D3748;box-sizing:border-box';
+    var prevDis = page === 0;
+    var nextDis = page === totalPages - 1;
+    pageNav.innerHTML =
+      '<button onclick="window._monNavPage(\'prev\')" ' + (prevDis?'disabled':'') + ' style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:'+(prevDis?'not-allowed':'pointer')+';opacity:'+(prevDis?'0.4':'1')+';font-family:Lato,sans-serif" title="Previous page">◀  PREV PAGE</button>' +
+      '<span style="font-family:\'Cinzel\',serif;font-size:13px;letter-spacing:.08em;color:#9aa3b2;text-transform:uppercase">Page ' + (page + 1) + ' / ' + totalPages + ' · ' + filtered.length.toLocaleString() + ' hadiths</span>' +
+      '<button onclick="window._monNavPage(\'next\')" ' + (nextDis?'disabled':'') + ' style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:'+(nextDis?'not-allowed':'pointer')+';opacity:'+(nextDis?'0.4':'1')+';font-family:Lato,sans-serif" title="Next page">NEXT PAGE  ▶</button>';
+    frag.appendChild(pageNav);
+  }
+
+  var hdr = document.createElement('div');
+  hdr.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(160,174,192,0.7)';
+  hdr.innerHTML = '<div>Source</div><div>Narrator</div><div>Hadith</div>';
+  frag.appendChild(hdr);
+
+  var endIdx = Math.min(filtered.length, startIdx + MAX_ROWS);
+  for(var i = startIdx; i < endIdx; i++){
+    var h = filtered[i];
+    var label = getLabel(h._colKey || colKey || '');
+    var num = getNumber(h);
+    var narrator = getNarrator(h);
+    var text = getText(h);
+    var topic = h.topic ? String(h.topic) : '';
+
+    var topicHtml = topic
+      ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;color:#FFFFFF;margin-top:16px">' + esc(topic) + '</div>'
+      : '';
+
+    var _pi = _monPeriodInfo(h.period);
+    var periodLabel = _pi ? _pi.label : '';
+    var periodColor = _pi ? _pi.color : 'rgba(160,174,192,0.75)';
+    var periodHtml = periodLabel
+      ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:' + periodColor + ';margin-top:3px">' + esc(periodLabel) + '</div>'
+      : '';
+
+    // Resolve xref file basename:
+    // 1. Original 6 use the legacy XREF_COLL_MAP
+    // 2. The 11 'others' derive from COLLECTIONS[].file basename (e.g. "muwatta-malik")
+    var _xColl = XREF_COLL_MAP[h._colKey || colKey] || '';
+    if(!_xColl){
+      var _ck = h._colKey || colKey;
+      var _cobj = COLLECTIONS.find(function(c){ return c.key === _ck; });
+      if(_cobj && _cobj.file){
+        var _m = _cobj.file.match(/\/([^\/]+)\.json$/);
+        if(_m) _xColl = _m[1];
+      }
+    }
+    var xrefSlotHtml = '';
+    if(_xColl && num != null && num !== ''){
+      var _xKey = _xColl + '-' + num;
+      xrefSlotHtml = '<div class="hadith-xref-slot" data-hkey="' + esc(_xKey) + '" data-hcoll="' + esc(_xColl) + '"></div>';
+    }
+
+    var row = document.createElement('div');
+    row.className = 'mon-row';
+    row.setAttribute('data-hcol', h._colKey || colKey || '');
+    row.setAttribute('data-hnum', String(num));
+    row.style.cssText = 'display:grid;grid-template-columns:160px 180px 1fr;gap:14px;align-items:start;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);';
+    var _bmKey = 'h:' + (h._colKey || colKey || '') + ':' + num;
+    var _bmAuth = window.GoldArkAuth;
+    var _bmFilled = !!(_bmAuth && _bmAuth.isSignedIn && _bmAuth.isSignedIn() && _bmAuth.hasBookmarkKey && _bmAuth.hasBookmarkKey(_bmKey));
+    var _bmTitle = _bmAuth && _bmAuth.isSignedIn && _bmAuth.isSignedIn()
+      ? (_bmFilled ? 'Remove bookmark' : 'Add bookmark')
+      : 'Sign in to bookmark';
+    var _bmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_bmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+    row.innerHTML =
+      '<div><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px">' +
+        '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + '</span>' +
+        '<button class="mon-bmk-btn" data-bmkey="' + esc(_bmKey) + '" title="' + esc(_bmTitle) + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _bmRibbon + '</button>' +
+      '</div>' +
+      '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
+      topicHtml + periodHtml + xrefSlotHtml + '</div>' +
+      '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
+      '<div style="font-size:' + (_monLang==='ar'?'20px':(_monLang==='ur'?'18px':'var(--fs-3)')) + ';color:#E5E7EB;line-height:' + (_monLang==='en'?'1.5':'2') + ';' + (_monLang==='ar'||_monLang==='ur'?'direction:rtl;text-align:right;font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;':'') + '">' + esc(text || '(no '+_monLang.toUpperCase()+' text)') + _datingLine(h) + '</div>';
+    frag.appendChild(row);
+  }
+
+  _resultsEl.appendChild(frag);
+  _populateXrefSlots(_resultsEl);
+
+  // Wire hadith bookmark buttons.
+  _resultsEl.querySelectorAll('.mon-bmk-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var key = btn.getAttribute('data-bmkey');
+      if(!key) return;
+      var doToggle = function(){
+        var a = window.GoldArkAuth;
+        if(!a || !a.isSignedIn()) return;
+        var was = a.hasBookmarkKey(key);
+        var p = was ? a.removeBookmarkKey(key) : a.addBookmarkKey(key);
+        Promise.resolve(p).then(function(){
+          var nowOn = !was;
+          btn.innerHTML = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (nowOn?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
+          btn.title = nowOn ? 'Remove bookmark' : 'Add bookmark';
+        }).catch(function(err){ console.warn('[mon-bmk] toggle failed', err); });
+      };
+      if(window.GoldArkAuth && window.GoldArkAuth.isSignedIn()){
+        doToggle();
+      } else if(typeof window.requireTester === 'function'){
+        window.requireTester('bookmark', doToggle);
+      }
+    });
+  });
+
+}
+
+window._monNavPage = function(dir){
+  if(!_lastFiltered) return;
+  var totalPages = Math.max(1, Math.ceil(_lastFiltered.length / MAX_ROWS));
+  var newPage = _currentPage + (dir === 'next' ? 1 : -1);
+  if(newPage < 0 || newPage >= totalPages) return;
+  _renderRows(_lastFiltered, _lastColKey, newPage);
+  if(_resultsEl) _resultsEl.scrollTop = 0;
+};
+
+// ── Multi-select dropdown helpers ──
+// 'chapter' kind aliases to 'chapters' in DOM ids (HTML uses plural).
+function _monKindKey(kind){ return kind === 'chapter' ? 'chapters' : kind; }
+function _monPanelId(kind){ return 'mon-' + _monKindKey(kind) + 'Panel'; }
+function _monBtnId(kind){   return 'mon-' + _monKindKey(kind) + 'Btn'; }
+function _monCountId(kind){ return 'mon-' + _monKindKey(kind) + 'Count'; }
+function _monDotId(kind){   return 'mon-' + _monKindKey(kind) + 'Dot'; }
+function _monAllCkId(kind){ return 'mon-' + _monKindKey(kind) + 'AllCk'; }
+
+// Cascade rebuilder: triggered when Collection selection changes.
+// Loads the single picked book's hadiths and populates the Volume panel.
+function _refreshVolumeChapterCascade(){
+  var picked = Array.from(_monSel.collection || []);
+  var volBtn = document.getElementById('mon-volumeBtn');
+  function setInactive(btn, hint){
+    if(!btn) return;
+    btn.disabled = true;
+    btn.style.opacity = '0.45';
+    btn.style.pointerEvents = 'none';
+    btn.title = hint || 'Pick exactly one Collection to enable';
+  }
+  function setActive(btn){
+    if(!btn) return;
+    btn.disabled = false;
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+    btn.title = '';
+  }
+
+  // Reset volume panel.
+  _monSel.volume.clear();
+  _monBuildPanel('volume', []);
+
+  if(picked.length !== 1){
+    setInactive(volBtn);
+    return;
+  }
+
+  var key = picked[0];
+  fetchCollection(key).then(function(data){
+    var volCounts = {};
+    data.forEach(function(h){
+      var v = h && h.volume;
+      if(v){ volCounts[v] = (volCounts[v] || 0) + 1; }
+    });
+    var volKeys = Object.keys(volCounts).sort();
+    _monBuildPanel('volume', volKeys.map(function(v){
+      return { value: v, label: v + ' (' + volCounts[v].toLocaleString() + ')' };
+    }));
+    if(volKeys.length > 1) setActive(volBtn); else setInactive(volBtn, 'This book has only one volume');
+  });
+}
+
+function _monBuildPanel(kind, entries){
+  var panel = document.getElementById(_monPanelId(kind));
+  if(!panel) return;
+  panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){ el.remove(); });
+  var oldSearch = panel.querySelector('.dd-search');
+  if(oldSearch) oldSearch.remove();
+
+  var si = document.createElement('input');
+  si.type = 'text'; si.className = 'dd-search'; si.placeholder = 'Search...';
+  si.oninput = function(){
+    var q = si.value.toLowerCase();
+    panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(el){
+      el.style.display = el.innerText.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+    });
+  };
+  panel.appendChild(si);
+
+  entries.forEach(function(entry){
+    if(entry.groupHeader){
+      var hdr = document.createElement('div');
+      hdr.className = 'dd-group-header';
+      hdr.style.cssText = 'padding:8px 12px;color:rgba(212,175,55,0.7);font-family:Cinzel,serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid rgba(212,175,55,0.15);background:rgba(212,175,55,0.04);';
+      hdr.textContent = entry.groupHeader;
+      panel.appendChild(hdr);
+      return;
+    }
+    var el = document.createElement('div');
+    el.className = 'dd-item';
+    el.dataset.val = entry.value;
+    el.innerHTML = '<div class="dd-checkbox"></div><span>' + esc(entry.label) + '</span>';
+    el.onclick = function(){ _monDDToggleItem(kind, entry.value); };
+    panel.appendChild(el);
+  });
+}
+
+function _monSyncDD(kind){
+  if(kind === 'collection'){
+    try { _refreshVolumeChapterCascade(); } catch(e){ console.warn('[MON] cascade failed', e); }
+  }
+  var sel = _monSel[kind];
+  var panel = document.getElementById(_monPanelId(kind));
+  var btn   = document.getElementById(_monBtnId(kind));
+  var cnt   = document.getElementById(_monCountId(kind));
+  var dot   = document.getElementById(_monDotId(kind));
+  var allCk = document.getElementById(_monAllCkId(kind));
+  if(!panel || !btn) return;
+
+  panel.querySelectorAll('.dd-item:not(.dd-all)').forEach(function(item){
+    var on = sel.has(item.dataset.val);
+    item.classList.toggle('selected', on);
+    var ck = item.querySelector('.dd-checkbox');
+    if(ck) ck.textContent = on ? '\u2713' : '';
+  });
+  if(allCk) allCk.textContent = sel.size === 0 ? '\u2713' : '';
+
+  if(sel.size > 0){
+    if(cnt){ cnt.textContent = sel.size; cnt.style.display = ''; }
+    btn.classList.add('filtered');
+    if(dot) dot.style.display = 'inline-block';
+  } else {
+    if(cnt) cnt.style.display = 'none';
+    btn.classList.remove('filtered');
+    if(dot) dot.style.display = 'none';
+  }
+}
+
+function _monDDToggleItem(kind, v){
+  var sel = _monSel[kind];
+  if(sel.has(v)) sel.delete(v); else sel.add(v);
+  _monSyncDD(kind);
+  _applyAllFilters();
+}
+
+function _monToggleDD(kind){
+  var panel = document.getElementById(_monPanelId(kind));
+  var btn   = document.getElementById(_monBtnId(kind));
+  if(!panel || !btn) return;
+  var wasOpen = panel.classList.contains('open');
+  document.querySelectorAll('#mon-filters .dd-panel.open').forEach(function(p){ p.classList.remove('open'); });
+  document.querySelectorAll('#mon-filters .dd-btn.open').forEach(function(b){ b.classList.remove('open'); });
+  if(!wasOpen){
+    panel.classList.add('open'); btn.classList.add('open');
+    var si = panel.querySelector('.dd-search');
+    if(si){ si.value = ''; si.dispatchEvent(new Event('input')); si.focus(); }
+  }
+}
+
+function _monDDClearAll(kind){
+  _monSel[kind].clear();
+  _monSyncDD(kind);
+  _applyAllFilters();
+}
+
+// ── Pinned hadith mode (cross-view chip target) ──
+function _parseHadithId(id){
+  var i = String(id).lastIndexOf('-');
+  if(i < 0) return null;
+  var xref = id.substring(0, i);
+  var num  = id.substring(i + 1);
+  return { xref: xref, monKey: XREF_TO_MON_KEY[xref] || null, num: num };
+}
+
+function _processPinnedHadiths(){
+  if(!_pinnedHadiths) return;
+  console.log('[MON process start]', _pinnedHadiths);
+  var ids = _pinnedHadiths.ids;
+  var needed = {};
+  var orderMap = {};
+  var skipped = [];
+  for(var i = 0; i < ids.length; i++){
+    var p = _parseHadithId(ids[i]);
+    if(!p || !p.monKey){
+      skipped.push(ids[i]);
+      continue;
+    }
+    needed[p.monKey] = true;
+    orderMap[p.monKey + '-' + p.num] = i;
+  }
+  if(skipped.length){
+    console.warn('[MON] skipped', skipped.length, 'hadiths with no monKey:', skipped.slice(0,5));
+  }
+  var keys = Object.keys(needed);
+  if(!keys.length){
+    console.warn('[MON] no resolvable hadiths in pin set; rendering empty.');
+    _renderPinned([]);
+    return;
+  }
+  showLoading(true);
+  Promise.all(keys.map(function(k){ return fetchCollection(k); }))
+    .then(function(arrays){
+      var matched = [];
+      arrays.forEach(function(arr, idx){
+        var key = keys[idx];
+        arr.forEach(function(h){
+          h._colKey = key;
+          var k = key + '-' + String(getNumber(h));
+          if(orderMap.hasOwnProperty(k)){
+            h._sortIdx = orderMap[k];
+            matched.push(h);
+          }
+        });
+      });
+      matched.sort(function(a,b){ return a._sortIdx - b._sortIdx; });
+      showLoading(false);
+      console.log('[MON matched]', matched.length, 'of', ids.length, 'requested');
+      _renderPinned(matched);
+    })
+    .catch(function(e){
+      console.warn('showHadiths load failed', e);
+      showLoading(false);
+      _renderPinned([]);
+    });
+}
+
+function _renderPinned(matched){
+  if(_drillEl) _drillEl.style.display = 'none';
+  _renderPinBanner(_pinnedHadiths ? _pinnedHadiths.label : '', matched.length);
+  _renderRows(matched, '');
+  try {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    var mv = document.getElementById('monastic-view');
+    if(mv) mv.scrollTop = 0;
+    var sr = document.getElementById('infoScroll');
+    if(sr) sr.scrollTop = 0;
+  } catch(e){}
+}
+
+function _renderPinBanner(label, count){
+  var existing = document.getElementById('mon-pin-banner');
+  if(existing) existing.remove();
+  if(!_pinnedHadiths) return;
+  // User can hide the banner for the rest of the browser session via the
+  // "don't show this session" link below. Filter stays pinned; only the
+  // visual banner is suppressed.
+  try {
+    if(sessionStorage.getItem('mon-pin-banner-hidden') === '1') return;
+  } catch(e){}
+  var banner = document.createElement('div');
+  banner.id = 'mon-pin-banner';
+  banner.style.cssText = "padding:4px 10px;background:rgba(212,175,55,.10);border:1px solid rgba(212,175,55,.32);border-radius:4px;color:#D4AF37;font-size:12px;margin:0 0 8px;display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;letter-spacing:.04em;line-height:1.3";
+  banner.innerHTML = '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(label || '') + ' \u2014 ' + count + ' hadith' + (count !== 1 ? 's' : '') + '</span>' +
+    '<a href="#" id="mon-pin-hide-session" style="color:#9aa3b2;font-size:11px;text-decoration:underline;font-family:Lato,sans-serif;letter-spacing:0;text-transform:none;font-weight:400">Don\u2019t show this session</a>' +
+    '<span id="mon-pin-clear" title="Clear pinned filter" style="cursor:pointer;opacity:.85;padding:1px 8px;border:1px solid rgba(212,175,55,.5);border-radius:3px;font-size:11px">Clear filter</span>' +
+    '<span id="mon-pin-dismiss" title="Hide banner (keep filter)" style="cursor:pointer;opacity:.7;padding:0 6px;font-size:14px;line-height:1">\u2715</span>';
+  if(_resultsEl && _resultsEl.parentNode){
+    _resultsEl.parentNode.insertBefore(banner, _resultsEl);
+  }
+  var btn = document.getElementById('mon-pin-clear');
+  if(btn) btn.onclick = function(){ _clearPinned(); };
+  var dismiss = document.getElementById('mon-pin-dismiss');
+  if(dismiss) dismiss.onclick = function(){ banner.remove(); };
+  var hideSession = document.getElementById('mon-pin-hide-session');
+  if(hideSession) hideSession.onclick = function(e){
+    e.preventDefault();
+    try { sessionStorage.setItem('mon-pin-banner-hidden', '1'); } catch(err){}
+    banner.remove();
+  };
+}
+
+function _clearPinned(){
+  _pinnedHadiths = null;
+  var b = document.getElementById('mon-pin-banner');
+  if(b) b.remove();
+  if(typeof _applyAllFilters === 'function') _applyAllFilters();
+}
+
+// ── Init ──
+function init(){
+  if(_inited) return;
+  _inited = true;
+
+  _resultsEl = document.getElementById('mon-results');
+
+  // (HTW button + lang group now live in shell zone B — see _wireZoneB)
+
+  _drillEl = document.createElement('div');
+  _drillEl.id = 'mon-drill';
+  _drillEl.style.cssText = 'display:none;width:100%;box-sizing:border-box;padding:0;color:#E5E7EB;font-size:var(--fs-3);max-height:calc(100vh - 260px);overflow-y:auto;overflow-x:hidden';
+  if(_resultsEl && _resultsEl.parentNode){
+    _resultsEl.parentNode.insertBefore(_drillEl, _resultsEl.nextSibling);
+  }
+  _loadingEl = document.getElementById('mon-loading');
+  _countEl   = document.getElementById('mon-count');
+  _bandEl    = document.getElementById('mon-timeline-band');
+
+  // Populate period panel
+  _monBuildPanel('period', MON_PERIODS.map(function(p){
+    return { value: p.id, label: p.label + ' (' + p.years + ')' };
+  }));
+
+  // Populate collection panel — grouped: Canonical Six, Sunni Other, Shia
+  var _canonicalEntries = COLLECTIONS.filter(function(c){ return c.group==='canonical'; })
+    .map(function(c){ return { value: c.key, label: c.label }; });
+  var _sunniOtherEntries = COLLECTIONS.filter(function(c){ return c.group==='sunni_other'; })
+    .map(function(c){ return { value: c.key, label: c.label }; });
+  var _shiaEntries = COLLECTIONS.filter(function(c){ return c.group==='shia'; })
+    .map(function(c){ return { value: c.key, label: c.label }; });
+  var _grouped = []
+    .concat([{ groupHeader: 'Canonical Six' }])
+    .concat(_canonicalEntries)
+    .concat([{ groupHeader: 'Sunni — Other' }])
+    .concat(_sunniOtherEntries)
+    .concat([{ groupHeader: 'Shia' }])
+    .concat(_shiaEntries);
+  _monBuildPanel('collection', _grouped);
+
+  // Initial cascade — both pills start inactive (no collection picked yet).
+  try { _refreshVolumeChapterCascade(); } catch(e){}
+
+  // Narrator filter — loads from clean index built across all Sunni and Shia books on R2.
+  // File shape: { _meta:{...}, narrators:[{name,count}, ...] }.
+  // "Unknown Scholar" sorts to the END of the list (not alphabetical).
+  fetch(dataUrl('data/islamic/hadith/support/narrator_index.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    var arr = (data && Array.isArray(data.narrators)) ? data.narrators : [];
+    if(!arr.length) throw new Error('empty');
+    var known = [];
+    var unknown = [];
+    arr.forEach(function(n){
+      var clean = _stripArabic(n.name || '');
+      clean = clean.replace(/\(\s*\)/g, '');
+      clean = clean.replace(/^[\s,()]+|[\s,()]+$/g, '');
+      clean = clean.replace(/\s+/g, ' ').trim();
+      if(!clean) return;
+      var entry = { name: clean, count: n.count };
+      if(/^unknown\b/i.test(clean)) unknown.push(entry);
+      else known.push(entry);
+    });
+    known.sort(function(a, b){
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+    });
+    _narratorIndex = known.concat(unknown);
+    // Build a length-sorted name list for substring matching against messy
+    // englishNarrator strings. Longest first so "Abu Bakr as-Siddeeq" wins
+    // over "Abu Bakr" when both appear.
+    _narratorCleanList = _narratorIndex
+      .map(function(n){ return n.name; })
+      .filter(function(nm){
+        if(!nm || nm.length < 4) return false;
+        if(/^unknown\b/i.test(nm)) return false;
+        if(/^being\s+checked/i.test(nm)) return false;
+        return true;
+      })
+      .sort(function(a, b){ return b.length - a.length; });
+    _monBuildPanel('narrator', _narratorIndex.map(function(n){
+      return { value: n.name, label: n.name + ' (' + n.count.toLocaleString() + ')' };
+    }));
+    // Add disclosure note at top of dropdown panel.
+    var panel = document.getElementById('mon-narratorPanel');
+    if(panel && !panel.querySelector('.mon-narr-note')){
+      var note = document.createElement('div');
+      note.className = 'mon-narr-note';
+      note.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
+      note.textContent = 'Built from the last narrator in each hadith chain across all Sunni and Shia books. "Unknown Scholar" or "Being checked" = chain end not yet matched. Listed at the bottom.';
+      panel.insertBefore(note, panel.firstChild);
+    }
+  }).catch(function(e){
+    console.warn('narrator_index.json not available:', e);
+  });
+
+  // Topic dropdown — needs BOTH topic_index.json (raw labels + counts) and
+  // topic_mapping.json (fold raw → clean bucket). Wait for both, then build.
+  var _rawTopicData = null;
+  var _topicMapLoaded = false;
+  function _buildFoldedTopicDropdown(){
+    if(!_rawTopicData || !_topicMapLoaded) return;
+    var arrRaw = _rawTopicData;
+    var byBucket = {};
+    arrRaw.forEach(function(t){
+      var nm = (t.name || '').trim();
+      if(!nm) return;
+      // Step 1: resolve Arabic → English if needed.
+      var resolved = _resolveTopic(nm);
+      // Step 2: fold via topic_mapping. If no mapping, bucket as "Other".
+      var bucket = _topicMap[resolved] || _topicMap[nm] || 'Other';
+      if(!byBucket[bucket]){
+        byBucket[bucket] = { name: bucket, count: 0, books: [] };
+      }
+      byBucket[bucket].count += (t.count || 0);
+      (t.books || []).forEach(function(b){
+        if(byBucket[bucket].books.indexOf(b) === -1) byBucket[bucket].books.push(b);
+      });
+    });
+    var arr = Object.keys(byBucket).map(function(k){ return byBucket[k]; });
+    // Sort: clean buckets alphabetical, "Other"/"Unclassified" pushed to bottom.
+    var primary = [], trailing = [];
+    arr.forEach(function(t){
+      if(/^(other|unclassified)$/i.test(t.name)) trailing.push(t);
+      else primary.push(t);
+    });
+    primary.sort(function(a,b){ return a.name.toLowerCase().localeCompare(b.name.toLowerCase()); });
+    trailing.sort(function(a,b){ return a.name.toLowerCase().localeCompare(b.name.toLowerCase()); });
+    var combined = primary.concat(trailing);
+    _topicList = combined.map(function(t){ return t.name; });
+    _monBuildPanel('topic', combined.map(function(t){
+      return { value: t.name, label: t.name + ' (' + (t.count || 0).toLocaleString() + ')' };
+    }));
+    var topicPanel = document.getElementById('mon-topicPanel');
+    if(topicPanel && !topicPanel.querySelector('.mon-topic-note')){
+      var tnote = document.createElement('div');
+      tnote.className = 'mon-topic-note';
+      tnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
+      tnote.textContent = 'Topics under review — refining continuously. Hadiths whose chapter labels don’t fit a clean topic sit under "Other" for now.';
+      topicPanel.insertBefore(tnote, topicPanel.firstChild);
+    }
+  }
+
+  fetch(dataUrl('data/islamic/hadith/support/topic_index.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    var arrRaw = (data && Array.isArray(data.topics)) ? data.topics : [];
+    if(!arrRaw.length) throw new Error('empty');
+    _rawTopicData = arrRaw;
+    _buildFoldedTopicDropdown();
+  }).catch(function(e){
+    console.warn('topic_index.json not available:', e);
+  });
+
+  fetch(dataUrl('data/islamic/hadith/support/topic_mapping.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    _topicMap = (data && typeof data === 'object') ? data : {};
+    _topicMapLoaded = true;
+    _buildFoldedTopicDropdown();
+  }).catch(function(e){
+    _topicMap = {};
+    _topicMapLoaded = true;
+    _buildFoldedTopicDropdown();
+    console.warn('topic_mapping.json not available:', e);
+  });
+
+  // Concept filter — populate dropdown from GoldArkConcepts module.
+  // The module loads its data lazily; poll until hadithByConcept is ready.
+  // Source: data/islamic/concepts/concept_reverse_hadith_wordmatch.json
+  (function _loadConceptDD(){
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      if(window.GoldArkConcepts && typeof window.GoldArkConcepts.loadHadithReverse === 'function'){
+        clearInterval(iv);
+        window.GoldArkConcepts.loadHadithReverse(function(){
+          window.GoldArkConcepts.loadSummaries(function(){
+            try{
+              var reverse = (window.GoldArkConcepts.cache && window.GoldArkConcepts.cache.hadithByConcept) || {};
+              var slugs = Object.keys(reverse);
+              if(!slugs.length){ console.warn('[MON] no concepts loaded'); return; }
+              var arr = slugs.map(function(slug){
+                var hits = Array.isArray(reverse[slug]) ? reverse[slug].length : 0;
+                var summary = window.GoldArkConcepts.getSummary(slug);
+                var title = (summary && (summary.title || summary.name)) || slug;
+                return { slug: slug, title: title, count: hits };
+              });
+              // Hide zero-count concepts (286 of 484 have no hits in hadith corpus).
+              arr = arr.filter(function(x){ return x.count > 0; });
+              // Sort: most-used first, then alphabetical.
+              arr.sort(function(a, b){
+                if(b.count !== a.count) return b.count - a.count;
+                return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
+              });
+              _monBuildPanel('concept', arr.map(function(c){
+                return { value: c.slug, label: c.title + ' (' + c.count.toLocaleString() + ')' };
+              }));
+              // Disclosure note at top of panel.
+              var panel = document.getElementById('mon-conceptPanel');
+              if(panel && !panel.querySelector('.mon-concept-note')){
+                var cnote = document.createElement('div');
+                cnote.className = 'mon-concept-note';
+                cnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
+                cnote.textContent = 'Hadith concept tags currently cover the six canonical collections (28,889 hadith tagged) and are inherited from the Quran verses each hadith shares wording with, using the same Level 3 concept list as the Quran tags. The hadith-to-verse link is word-overlap, not meaning-checked, so treat these chips as exploratory, not a citation.';
+                panel.insertBefore(cnote, panel.firstChild);
+              }
+            }catch(e){ console.warn('[MON] concept dropdown build failed', e); }
+          });
+        });
+      } else if(tries > 80){
+        clearInterval(iv);
+        console.warn('[MON] GoldArkConcepts never ready');
+      }
+    }, 100);
+  })();
+
+  _buildBand();
+  _syncBand();
+  _computePeriodTotals();
+
+  var methBtn = document.getElementById('mon-methodology-btn');
+  if(methBtn){ methBtn.style.display='none'; methBtn.addEventListener('click', _openMethodology); }
+
+  var drillBtn = document.getElementById('mon-drill-btn');
+  if(drillBtn){
+    drillBtn.addEventListener('click', function(){
+      var backBtn = document.getElementById('mon-back-to-drill');
+      var inDrillFlow = _drillOn || !!backBtn;
+
+      if(inDrillFlow){
+        _drillOn = false;
+        drillBtn.classList.remove('active');
+        drillBtn.style.background = '';
+        drillBtn.style.borderColor = '';
+        drillBtn.style.color = '';
+        if(_drillEl) _drillEl.style.display = 'none';
+        var cnt = document.getElementById('mon-count'); if(cnt) cnt.style.display = '';
+        document.body.classList.remove('mon-drill-on');
+
+        _drillPicks = { period:[], topic:[], narrator:[], collection:[] };
+        _drillExpanded = false;
+        if(backBtn) backBtn.remove();
+
+        _monSel.topic.clear();
+        _monSel.period.clear();
+        _monSel.narrator.clear();
+        _monSel.collection.clear();
+        _monSyncDD('topic');
+        _monSyncDD('period');
+        _monSyncDD('narrator');
+        _monSyncDD('collection');
+
+        if(_resultsEl){
+          _resultsEl.style.display = '';
+          _resultsEl.innerHTML = '';
+        }
+        if(cnt) cnt.textContent = '';
+        return;
+      }
+
+      _drillOn = true;
+      drillBtn.classList.add('active');
+      drillBtn.style.background = '#D4AF37';
+      drillBtn.style.borderColor = '#D4AF37';
+      drillBtn.style.color = '#0E1621';
+      if(_resultsEl) _resultsEl.style.display = 'none';
+      if(_drillEl)   _drillEl.style.display = 'block';
+      var cnt2 = document.getElementById('mon-count'); if(cnt2) cnt2.style.display = 'none';
+      document.body.classList.add('mon-drill-on');
+      _drillExpanded = false;
+      _drillRender();
+    });
+  }
+
+  // Delegated narrator-pill click (existing Timeline jump)
+  if(!_clickBound){
+    _clickBound = true;
+    _resultsEl.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){ e.stopPropagation(); return; }
+      var toggle = e.target.closest('.mon-chain-toggle');
+      if(toggle){
+        e.stopPropagation();
+        var cell = toggle.parentElement;
+        var panel = cell ? cell.querySelector('.mon-chain') : null;
+        if(!panel) return;
+        var open = panel.style.display !== 'none';
+        _resultsEl.querySelectorAll('.mon-chain').forEach(function(p){ p.style.display = 'none'; });
+        _resultsEl.querySelectorAll('.mon-chain-toggle').forEach(function(t){
+          t.textContent = t.textContent.replace('\u25B2', '\u25BC');
+        });
+        if(!open){
+          panel.style.display = 'block';
+          toggle.textContent = toggle.textContent.replace('\u25BC', '\u25B2');
+        }
+        return;
+      }
+      var tag = e.target.closest('.mon-narrator-tag');
+      if(!tag) return;
+      e.stopPropagation();
+      var famous = tag.getAttribute('data-famous');
+      if(!famous) return;
+      _monClickTab(['TIMELINE'], 'timeline');
+      var ntries = 0;
+      var niv = setInterval(function(){
+        ntries++;
+        var fn = window.focusPersonInTimeline || window.jumpTo;
+        var src = (typeof fn === 'function') ? String(fn) : '';
+        if(src && src.indexOf('(stub)') === -1 && src.length > 80){
+          try { fn(famous); } catch(err){ console.warn('[mon] narrator jump failed', err); }
+          clearInterval(niv); return;
+        }
+        if(ntries > 60){ clearInterval(niv); console.warn('[mon] narrator jump never ready'); }
+      }, 80);
+    });
+  }
+
+  // Close any open mon panel on outside click
+  if(!_monDDBound){
+    _monDDBound = true;
+    document.addEventListener('click', function(e){
+      if(e.target.closest('#mon-filters')) return;
+      document.querySelectorAll('#mon-filters .dd-panel.open').forEach(function(p){ p.classList.remove('open'); });
+      document.querySelectorAll('#mon-filters .dd-btn.open').forEach(function(b){ b.classList.remove('open'); });
+    });
+  }
+
+  // Hide global search box while Monastic is visible; restore on leave
+  var _monSearchBox = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
+  if(_monSearchBox && !_monSearchBoxPrev){
+    _monSearchBoxPrev = _monSearchBox.style.display || '';
+  }
+
+  // Initial empty state — instructs the user to pick a collection rather than
+  // dumping all 6 corpora (~110 MB) on mount.
+  _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">Pick a filter above (Periods, Topics, Narrators, or Collections) to load hadiths</div>';
+}
+
+var _WIZARD_STEPS_ALL = [
+  { key:'topic',      label:'Topic',    prompt:'Which topic interests you?' },
+  { key:'period',     label:'Period',   prompt:'From which period?' },
+  { key:'narrator',   label:'Narrator', prompt:'Narrated by whom?' },
+  { key:'collection', label:'Book',     prompt:'From which collection?' }
+];
+
+function _wizardStepsFrom(startKey){
+  var keys = ['topic','period','narrator','collection'];
+  var i = keys.indexOf(startKey);
+  if(i < 0) i = 0;
+  var order = keys.slice(i).concat(keys.slice(0, i));
+  return order.map(function(k){
+    for(var j = 0; j < _WIZARD_STEPS_ALL.length; j++){
+      if(_WIZARD_STEPS_ALL[j].key === k) return _WIZARD_STEPS_ALL[j];
+    }
+  });
+}
+
+function _wizardOptionsFor(stepKey){
+  if(stepKey === 'topic'){
+    return (_topicList || []).map(function(t){ return { value: t, label: t }; });
+  }
+  if(stepKey === 'period'){
+    return MON_PERIODS.map(function(p){ return { value: p.id, label: p.label + ' (' + p.years + ')' }; });
+  }
+  if(stepKey === 'narrator'){
+    return (_narratorIndex || []).slice(0, 150).map(function(n){
+      return { value: n.name, label: n.name };
+    });
+  }
+  if(stepKey === 'collection'){
+    return COLLECTIONS.map(function(c){ return { value: c.key, label: c.label }; });
+  }
+  return [];
+}
+
+function _wizardApplyPicksExcept(excludeKey){
+  if(!_wizardAllHadith) return null;
+  var picks = _wizardState.picks;
+  var list = _wizardAllHadith;
+  if(excludeKey !== 'collection' && picks.collection.length){
+    list = list.filter(function(h){ return picks.collection.indexOf(h._colKey) !== -1; });
+  }
+  if(excludeKey !== 'period' && picks.period.length){
+    list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; });
+  }
+  if(excludeKey !== 'topic' && picks.topic.length){
+    list = list.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return picks.topic.indexOf(clean) !== -1; });
+  }
+  if(excludeKey !== 'narrator' && picks.narrator.length){
+    var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
+    list = list.filter(function(h){
+      var n = (getNarrator(h) || '').toLowerCase();
+      for(var i=0;i<qs.length;i++){ if(n.indexOf(qs[i]) !== -1) return true; }
+      return false;
+    });
+  }
+  if(excludeKey !== 'volume' && picks.volume && picks.volume.length){
+    list = list.filter(function(h){ return picks.volume.indexOf(h.volume) !== -1; });
+  }
+  return list;
+}
+
+function _wizardCountForValue(stepKey, value){
+  var base = _wizardApplyPicksExcept(stepKey);
+  if(!base) return 0;
+  if(stepKey === 'collection') return base.filter(function(h){ return h._colKey === value; }).length;
+  if(stepKey === 'period')     return base.filter(function(h){ return h.period === value; }).length;
+  if(stepKey === 'topic')      return base.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return clean === value; }).length;
+  if(stepKey === 'narrator'){
+    var q = String(value).toLowerCase();
+    return base.filter(function(h){
+      var n = (getNarrator(h) || '').toLowerCase();
+      return n.indexOf(q) !== -1;
+    }).length;
+  }
+  return 0;
+}
+
+function _wizardCount(){
+  if(!_wizardAllHadith) return null;
+  var picks = _wizardState.picks;
+  var list = _wizardAllHadith;
+  if(picks.collection.length){ list = list.filter(function(h){ return picks.collection.indexOf(h._colKey) !== -1; }); }
+  if(picks.period.length){     list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; }); }
+  if(picks.topic.length){      list = list.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return picks.topic.indexOf(clean) !== -1; }); }
+  if(picks.narrator.length){
+    var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
+    list = list.filter(function(h){
+      var n = (getNarrator(h) || '').toLowerCase();
+      for(var i=0;i<qs.length;i++){ if(n.indexOf(qs[i]) !== -1) return true; }
+      return false;
+    });
+  }
+  return list.length;
+}
+
+function _wizardOpen(){
+  var prior = document.getElementById('mon-wizard'); if(prior) prior.remove();
+
+  _wizardState = {
+    step: -1,
+    picks: { topic:[], period:[], narrator:[], collection:[] },
+    steps: _wizardStepsFrom('topic')
+  };
+
+  var overlay = document.createElement('div');
+  overlay.id = 'mon-wizard';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;font-family:\'Lato\',sans-serif';
+  overlay.innerHTML =
+    '<div id="mon-wizard-card" style="background:#1A2332;border:1px solid rgba(212,175,55,0.4);border-radius:6px;width:520px;max-width:92vw;max-height:86vh;display:flex;flex-direction:column;color:#E5E7EB;box-shadow:0 12px 40px rgba(0,0,0,0.6)">' +
+      '<div style="padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between">' +
+        '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.12em;color:#D4AF37;text-transform:uppercase">Guided Search</div>' +
+        '<div id="mon-wizard-close" style="cursor:pointer;color:#9CA3AF;font-size:var(--fs-1);line-height:1;padding:0 6px">\u00D7</div>' +
+      '</div>' +
+      '<div id="mon-wizard-body" style="padding:18px;overflow-y:auto;flex:1"></div>' +
+      '<div style="padding:12px 18px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">' +
+        '<div id="mon-wizard-count" style="flex:1;min-width:0"></div>' +
+        '<div style="display:flex;gap:8px">' +
+          '<button id="mon-wizard-back" style="padding:6px 14px;background:transparent;border:1px solid rgba(255,255,255,0.25);border-radius:3px;color:#E5E7EB;font-size:var(--fs-3);cursor:pointer">Back</button>' +
+          '<button id="mon-wizard-next" style="padding:6px 14px;background:rgba(212,175,55,0.18);border:1px solid rgba(212,175,55,0.6);border-radius:3px;color:#D4AF37;font-size:var(--fs-3);cursor:pointer;font-weight:600">Next \u25B8</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  document.getElementById('mon-wizard-close').onclick = _wizardClose;
+  overlay.addEventListener('click', function(ev){ if(ev.target === overlay) _wizardClose(); });
+  document.getElementById('mon-wizard-back').onclick = function(){
+    if(_wizardState.step > 0){ _wizardState.step--; _wizardRender(); }
+    else if(_wizardState.step === 0){ _wizardState.step = -1; _wizardRender(); }
+  };
+  document.getElementById('mon-wizard-next').onclick = function(){
+    if(_wizardState.step < _wizardState.steps.length - 1){ _wizardState.step++; _wizardRender(); }
+    else { _wizardApply(); }
+  };
+  document.addEventListener('keydown', _wizardKey);
+
+  var prep = Promise.resolve();
+  prep.then(function(){
+    if(!_wizardAllHadith){
+      return fetchAll().then(function(all){ _wizardAllHadith = all; });
+    }
+  }).then(function(){
+    _wizardRender();
+  });
+
+  document.getElementById('mon-wizard-body').innerHTML = '<div style="text-align:center;padding:40px;color:rgba(160,174,192,0.7);font-size:var(--fs-3)">Loading\u2026</div>';
+  document.getElementById('mon-wizard-count').textContent = '';
+}
+
+function _wizardKey(ev){ if(ev.key === 'Escape') _wizardClose(); }
+
+function _wizardClose(){
+  var el = document.getElementById('mon-wizard'); if(el) el.remove();
+  document.removeEventListener('keydown', _wizardKey);
+  _wizardState = null;
+}
+
+function _wizardCollectionLabel(key){
+  for(var i = 0; i < COLLECTIONS.length; i++){
+    if(COLLECTIONS[i].key === key) return COLLECTIONS[i].label;
+  }
+  return key;
+}
+
+function _wizardPeriodLabel(id){
+  var pi = _monPeriodInfo(id);
+  return pi ? pi.label : id;
+}
+
+function _wizardBreadcrumb(){
+  if(!_wizardState) return '';
+  var p = _wizardState.picks;
+  var parts = [];
+
+  if(p.narrator.length) parts.push('<span style="color:rgba(160,174,192,0.7)">Narrated by</span> <span style="color:#D4AF37">' + p.narrator.map(esc).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                  parts.push('<span style="color:rgba(160,174,192,0.5)">Any narrator</span>');
+
+  if(p.topic.length)    parts.push('<span style="color:rgba(160,174,192,0.7)">on</span> <span style="color:#D4AF37">' + p.topic.map(esc).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                  parts.push('<span style="color:rgba(160,174,192,0.5)">any topic</span>');
+
+  if(p.period.length)   parts.push('<span style="color:rgba(160,174,192,0.7)">from</span> <span style="color:#D4AF37">' + p.period.map(function(x){ return esc(_wizardPeriodLabel(x)); }).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                  parts.push('<span style="color:rgba(160,174,192,0.5)">any period</span>');
+
+  if(p.collection.length) parts.push('<span style="color:rgba(160,174,192,0.7)">in</span> <span style="color:#D4AF37">' + p.collection.map(function(x){ return esc(_wizardCollectionLabel(x)); }).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
+  else                    parts.push('<span style="color:rgba(160,174,192,0.5)">any book</span>');
+
+  return parts.join(' <span style="color:rgba(255,255,255,0.2)">\u00B7</span> ');
+}
+
+function _wizardPeriodBreakdown(){
+  var base = _wizardApplyPicksExcept('period');
+  if(!base) return null;
+  var out = {};
+  MON_PERIODS.forEach(function(p){ out[p.id] = 0; });
+  base.forEach(function(h){ if(out[h.period] != null) out[h.period]++; });
+  return out;
+}
+
+function _wizardRender(){
+  if(!_wizardState) return;
+  var body = document.getElementById('mon-wizard-body');
+  var backBtn = document.getElementById('mon-wizard-back');
+  var nextBtn = document.getElementById('mon-wizard-next');
+  var countEl = document.getElementById('mon-wizard-count');
+
+  if(_wizardState.step === -1){
+    var startOpts = [
+      { key:'topic',      label:'Topic',    desc:'Start by subject matter (e.g. Marriage, Hajj, Jihad)' },
+      { key:'period',     label:'Period',   desc:'Start by era (e.g. Madinan, Post-Prophet)' },
+      { key:'narrator',   label:'Narrator', desc:'Start by companion (e.g. Abu Hurairah, \'Aisha)' },
+      { key:'collection', label:'Book',     desc:'Start by collection (e.g. Bukhari, Muslim)' }
+    ];
+
+    var html = '';
+    html += '<div style="font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Begin</div>';
+    html += '<div style="font-size:var(--fs-2);color:#E5E7EB;margin-bottom:14px">Where do you want to begin?</div>';
+    html += '<div style="display:flex;flex-direction:column;gap:8px">';
+    startOpts.forEach(function(o){
+      html += '<div class="mon-wiz-start" data-key="' + o.key + '" style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:3px;cursor:pointer;background:transparent;transition:background .15s,border-color .15s">' +
+        '<div style="font-size:var(--fs-3);color:#E5E7EB;font-weight:600;margin-bottom:3px">' + esc(o.label) + '</div>' +
+        '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.8)">' + esc(o.desc) + '</div>' +
+        '</div>';
+    });
+    html += '</div>';
+    body.innerHTML = html;
+
+    body.querySelectorAll('.mon-wiz-start').forEach(function(el){
+      el.onmouseenter = function(){ el.style.background='rgba(212,175,55,0.08)'; el.style.borderColor='rgba(212,175,55,0.4)'; };
+      el.onmouseleave = function(){ el.style.background='transparent'; el.style.borderColor='rgba(255,255,255,0.12)'; };
+      el.onclick = function(){
+        var k = el.getAttribute('data-key');
+        _wizardState.steps = _wizardStepsFrom(k);
+        _wizardState.step = 0;
+        _wizardRender();
+      };
+    });
+
+    backBtn.disabled = true;
+    backBtn.style.opacity = '0.3';
+    backBtn.style.cursor = 'not-allowed';
+    nextBtn.style.display = 'none';
+    countEl.innerHTML = _wizardAllHadith
+      ? '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-2);color:#D4AF37;letter-spacing:.08em">TOTAL ' + _wizardAllHadith.length.toLocaleString() + '</div>'
+      : 'Loading\u2026';
+    return;
+  }
+
+  nextBtn.style.display = '';
+  var stepDef = _wizardState.steps[_wizardState.step];
+  var opts = _wizardOptionsFor(stepDef.key);
+  var currentArr = _wizardState.picks[stepDef.key];
+
+  var baseList = _wizardApplyPicksExcept(stepDef.key);
+  var anyTotal = baseList ? baseList.length : null;
+
+  var optsWithCounts = opts.map(function(o){
+    return { value: o.value, label: o.label, n: _wizardCountForValue(stepDef.key, o.value) };
+  });
+  optsWithCounts = optsWithCounts.filter(function(o){ return o.n > 0; });
+  optsWithCounts.sort(function(a,b){ return b.n - a.n; });
+
+  var html = '';
+  html += '<div style="font-size:var(--fs-3);line-height:1.55;margin-bottom:14px;padding:10px 12px;background:rgba(212,175,55,0.04);border-left:2px solid rgba(212,175,55,0.4);border-radius:2px">' + _wizardBreadcrumb() + '</div>';
+  html += '<div style="font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Step ' + (_wizardState.step + 1) + ' of ' + _wizardState.steps.length + ' \u00B7 ' + stepDef.label + '</div>';
+  html += '<div style="font-size:var(--fs-2);color:#E5E7EB;margin-bottom:14px">' + esc(stepDef.prompt) + '</div>';
+  html += '<div style="display:flex;flex-direction:column;gap:6px">';
+
+  var anySelected = (currentArr.length === 0);
+  var anyCountStr = (anyTotal === null) ? '\u2026' : anyTotal.toLocaleString();
+  html += '<div class="mon-wiz-opt" data-val="__any__" style="padding:8px 12px;border:1px solid ' + (anySelected ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)') + ';border-radius:3px;cursor:pointer;background:' + (anySelected ? 'rgba(212,175,55,0.10)' : 'transparent') + ';font-size:var(--fs-3);color:' + (anySelected ? '#D4AF37' : '#E5E7EB') + ';font-style:normal;display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+    '<span>Any (skip this filter)</span>' +
+    '<span style="font-style:normal;font-size:var(--fs-3);color:rgba(160,174,192,0.85);white-space:nowrap">' + anyCountStr + '</span>' +
+    '</div>';
+
+  optsWithCounts.forEach(function(o){
+    var on = (currentArr.indexOf(o.value) !== -1);
+    var borderCol = on ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)';
+    var bg        = on ? 'rgba(212,175,55,0.10)' : 'transparent';
+    var textCol   = on ? '#D4AF37' : '#E5E7EB';
+    html += '<div class="mon-wiz-opt" data-val="' + esc(o.value) + '" style="padding:8px 12px;border:1px solid ' + borderCol + ';border-radius:3px;cursor:pointer;background:' + bg + ';font-size:var(--fs-3);color:' + textCol + ';display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+      '<span>' + esc(o.label) + '</span>' +
+      '<span style="font-size:var(--fs-3);font-weight:600;color:' + (on ? '#D4AF37' : '#E5E7EB') + ';white-space:nowrap">' + o.n.toLocaleString() + '</span>' +
+      '</div>';
+  });
+  if(optsWithCounts.length === 0){
+    html += '<div style="padding:16px;text-align:center;color:rgba(160,174,192,0.7);font-size:var(--fs-3);font-style:normal">No ' + esc(stepDef.label.toLowerCase()) + ' has any match. Use "Any" to skip, or Back to change a prior pick.</div>';
+  }
+  html += '</div>';
+
+  body.innerHTML = html;
+
+  body.querySelectorAll('.mon-wiz-opt').forEach(function(el){
+    el.onclick = function(){
+      var v = el.getAttribute('data-val');
+      var arr = _wizardState.picks[stepDef.key];
+      if(v === '__any__'){
+        _wizardState.picks[stepDef.key] = [];
+      } else {
+        var idx = arr.indexOf(v);
+        if(idx === -1) arr.push(v); else arr.splice(idx, 1);
+      }
+      _wizardRender();
+    };
+  });
+
+  backBtn.disabled = false;
+  backBtn.style.opacity = '1';
+  backBtn.style.cursor = 'pointer';
+  var isLast = _wizardState.step === _wizardState.steps.length - 1;
+  nextBtn.textContent = isLast ? 'Show me \u25B8' : 'Next \u25B8';
+
+  var n = _wizardCount();
+  var totalStr = (n === null) ? '\u2026' : n.toLocaleString();
+  var breakdown = _wizardPeriodBreakdown();
+  var breakdownHtml = '';
+  if(breakdown){
+    var parts = MON_PERIODS.map(function(p){
+      return '<span style="color:' + p.color + '">' + p.label.toUpperCase() + '</span> <span style="color:#E5E7EB;font-weight:600">' + (breakdown[p.id] || 0).toLocaleString() + '</span>';
+    });
+    breakdownHtml = '<div style="font-size:var(--fs-3);letter-spacing:.05em;color:rgba(160,174,192,0.85);margin-top:4px;display:flex;flex-wrap:wrap;gap:10px">' + parts.join('<span style="color:rgba(255,255,255,0.25)">\u00B7</span>') + '</div>';
+  }
+  countEl.innerHTML =
+    '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);color:#D4AF37;letter-spacing:.1em;font-weight:600">TOTAL ' + totalStr + '</div>' +
+    breakdownHtml;
+}
+
+function _wizardApply(){
+  if(!_wizardState) return;
+  var picks = _wizardState.picks;
+
+  _monSel.topic.clear();
+  _monSel.period.clear();
+  _monSel.narrator.clear();
+  _monSel.collection.clear();
+  picks.topic.forEach(function(v){ _monSel.topic.add(v); });
+  picks.period.forEach(function(v){ _monSel.period.add(v); });
+  picks.narrator.forEach(function(v){ _monSel.narrator.add(v); });
+  picks.collection.forEach(function(v){ _monSel.collection.add(v); });
+
+  _monSyncDD('topic');
+  _monSyncDD('period');
+  _monSyncDD('narrator');
+  _monSyncDD('collection');
+
+  _wizardClose();
+  _applyAllFilters();
+}
+
+// ═══════════════════════════════════════════════════════════
+// HADITH CROSS-REFERENCE (figures / verses / places / events / books)
+// Lazy-loads per-collection xref file on first expand.
+// ═══════════════════════════════════════════════════════════
+window._hadithXrefCache = window._hadithXrefCache || {};
+window._monShowBookConcept = function(hcoll, slug){
+  if(!slug) return;
+  var monKey = XREF_TO_MON_KEY[hcoll] || hcoll;
+  function apply(){
+    if(!(_monSel && _monSel.collection && typeof _applyAllFilters === 'function')) return false;
+    _monSel.period.clear();
+    _monSel.topic.clear();
+    _monSel.narrator.clear();
+    _monSel.volume.clear();
+    _monSel.collection.clear();
+    _monSel.concept.clear();
+    if(monKey) _monSel.collection.add(monKey);
+    _monSel.concept.add(slug);
+    if(typeof _monSyncDD === 'function'){
+      try{ _monSyncDD('collection'); }catch(e){}
+      try{ _monSyncDD('concept'); }catch(e){}
+    }
+    _applyAllFilters();
+    try{ window.scrollTo({top:0, behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
+    return true;
+  }
+  if(!apply()){
+    if(typeof _monClickTab === 'function') _monClickTab(['MONASTIC'], 'monastic');
+    var tries = 0;
+    var iv = setInterval(function(){ tries++; if(apply() || tries > 80) clearInterval(iv); }, 80);
+  }
+};
+
+window._loadHadithXref = async function(collection){
+  if(window._hadithXrefCache[collection]) return window._hadithXrefCache[collection];
+  // v2 merged file not yet deployed on R2 — go straight to per-collection files.
+  // Books without xref data return empty silently; this is expected and not an error.
+  try{
+    var res = await fetch(dataUrl('data/islamic/hadith/support/xref/' + collection + '.json'));
+    if(!res.ok){ window._hadithXrefCache[collection] = {}; return {}; }
+    var data = await res.json();
+    window._hadithXrefCache[collection] = data.hadith_index || {};
+    return window._hadithXrefCache[collection];
+  } catch(e){ window._hadithXrefCache[collection] = {}; return {}; }
+};
+
+function _buildXrefPanel(entry){
+  if(!entry) return '';
+  var groups = [];
+  var figs = (entry.figures || []).filter(function(f){
+    var nm = (f && f.name) ? String(f.name).toLowerCase() : '';
+    var sl = (f && f.slug) ? String(f.slug) : '';
+    if(sl === 'F1132') return false;
+    if(nm === 'prophet muhammad') return false;
+    if(nm === 'muhammad') return false;
+    if(nm.indexOf('prophet muhammad') === 0) return false;
+    return true;
+  }).slice(0, 10);
+  if(figs.length){
+    var chips = figs.map(function(f){
+      var nm = esc(f.name || '');
+      var sl = esc(f.slug || '');
+      return '<span class="xref-chip xref-fig" data-slug="' + sl + '" data-name="' + nm + '">' + nm + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Figures:</span>' + chips + '</div>');
+  }
+  var allVerses = entry.quran_verses || [];
+  if(allVerses.length){
+    var chips2 = allVerses.map(function(v){
+      var lbl = v.surah + ':' + v.verse;
+      return '<span class="xref-chip xref-verse" data-surah="' + v.surah + '" data-verse="' + v.verse + '">' + lbl + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Verses:</span>' + chips2 + '</div>');
+  }
+  var places = entry.places || [];
+  if(places.length){
+    var chips3 = places.map(function(p){
+      return '<span class="xref-chip xref-place" data-name="' + esc(p.name || '') + '" title="Find events in ' + esc(p.name || '') + '">' + esc(p.name || '') + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Places:</span>' + chips3 + '</div>');
+  }
+  var events = entry.events || [];
+  if(events.length){
+    var chips4 = events.map(function(ev){
+      return '<span class="xref-chip xref-event" data-id="' + esc(ev.id || '') + '">' + esc(ev.title || (window._eventNameLookup && window._eventNameLookup[ev.id]) || ev.id || '') + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Events:</span>' + chips4 + '</div>');
+  }
+  var books = entry.books || [];
+  if(books.length){
+    var chips5 = books.map(function(b){
+      var disp = b.label || b.title || '';
+      var srch = b.title || b.label || '';
+      return '<span class="xref-chip xref-book" data-title="' + esc(srch) + '" title="Open in BOOKS — ' + esc(srch) + '">' + esc(disp) + '</span>';
+    }).join('');
+    groups.push('<div class="xref-group"><span class="xref-label">Books:</span>' + chips5 + '</div>');
+  }
+  // Concepts (word-matched) — neutral chips with M badge
+  try {
+    if(window.GoldArkConcepts && window.GoldArkConcepts.cache && window.GoldArkConcepts.cache.hadithByKey && entry && entry._hkey){
+      // _hkey format: "<coll>-<num>" — split on the LAST dash
+      var idx = entry._hkey.lastIndexOf('-');
+      var coll = idx > 0 ? entry._hkey.slice(0, idx) : '';
+      var num  = idx > 0 ? entry._hkey.slice(idx + 1) : '';
+      var ccs2 = window.GoldArkConcepts.getForHadith(coll, num) || [];
+      if(ccs2.length){
+        var chipsCC = ccs2.slice(0, 6).map(function(c){
+          var lbl = c.slug.replace(/-/g, ' ');
+          return '<span class="ga-concept-chip ga-cc-h" data-concept="' + c.slug + '" title="Keyword-matched concept">' + lbl + '<span class="ga-cc-sup">M</span></span>';
+        }).join('');
+        groups.push('<div class="xref-group"><span class="xref-label">Concepts:</span>' + chipsCC + '</div>');
+      }
+    }
+  } catch(e){}
+  if(!groups.length) return '';
+  return groups.join('');
+}
+
+async function _populateXrefSlots(container){
+  if(!container) return;
+  var slots = container.querySelectorAll('.hadith-xref-slot');
+  if(!slots.length) return;
+  // Group slots by collection so we do one fetch per collection.
+  var byColl = {};
+  slots.forEach(function(slot){
+    var c = slot.dataset.hcoll;
+    if(!c) return;
+    (byColl[c] = byColl[c] || []).push(slot);
+  });
+  var colls = Object.keys(byColl);
+  // Wait for the hadith concept-tag file to finish loading before
+  // building panels, else the Concepts row is silently skipped on
+  // first render.
+  await new Promise(function(res){
+    if(window.GoldArkConcepts && typeof window.GoldArkConcepts.loadHadithTags === 'function'){
+      window.GoldArkConcepts.loadHadithTags(function(){ res(); });
+    } else { res(); }
+  });
+  for(var i = 0; i < colls.length; i++){
+    var c = colls[i];
+    var idx = await window._loadHadithXref(c);
+    byColl[c].forEach(function(slot){
+      var key = slot.dataset.hkey;
+      var entry = idx[key] || {};
+      entry._hkey = key;
+      var html = _buildXrefPanel(entry);
+      slot.innerHTML = html || '';
+    });
+  }
+}
+
+// One-time delegated click on document for xref chip targets.
+// Uses tab-click + poll-retry pattern (cf. explain.js:_exJumpToStart) so
+// that the real openStartAtVerse / figure-jump are ready before we call.
+function _monClickTab(matchTexts, dataView){
+  var sels = '#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="'+dataView+'"], .tab-'+dataView;
+  var els = document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el = els[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv = el.getAttribute('data-view')||'';
+    if(matchTexts.indexOf(txt) !== -1 || dv === dataView){ el.click(); return true; }
+  }
+  return false;
+}
+
+function _monJumpToStartVerse(s, v){
+  // Stub-overwrite check: monastic.js installs a stub at module top. Only
+  // start.js's real implementation rewrites it — detect by stringifying.
+  function isReal(fn){
+    if(typeof fn !== 'function') return false;
+    var src = String(fn);
+    return src.indexOf('(stub)') === -1;
+  }
+  // Update URL hash for back/forward + deep-link.
+  // (hash is set inside openStartAtVerse AFTER the surah jump commits — see start.js)
+  _monClickTab(['START'], 'start');
+  if(typeof window.setView === 'function' && !document.querySelector('[data-view="start"]')){
+    try { window.setView('start'); } catch(e){}
+  }
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(isReal(window.openStartAtVerse)){
+      try { window.openStartAtVerse(s, v, v); } catch(e){}
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 50){ clearInterval(iv); console.warn('[monastic] openStartAtVerse never ready'); }
+  }, 80);
+}
+
+function _monJumpToFigure(slug, name){
+  if(!name) return;
+  // Click the TIMELINE tab — shell.setActiveTab handles hash update.
+  _monClickTab(['TIMELINE'], 'timeline');
+  // Poll for window.jumpTo to be timeline.js's real function (not undefined / not a stub).
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var fn = window.jumpTo;
+    var src = (typeof fn === 'function') ? String(fn) : '';
+    if(src && src.indexOf('(stub)') === -1 && src.length > 80){
+      try { fn(name); } catch(e){ console.warn('[mon] jumpTo failed', e); }
+      clearInterval(iv);
+      return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[mon] jumpTo never ready'); }
+  }, 80);
+}
+
+if(typeof document !== 'undefined' && !window._hadithXrefDelegated){
+  window._hadithXrefDelegated = true;
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest) return;
+    var fig = t.closest('.xref-fig');
+    if(fig && !fig.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var nm = fig.dataset.name || '';
+      var sl = fig.dataset.slug || '';
+      _monJumpToFigure(sl, nm);
+      return;
+    }
+    var vs = t.closest('.xref-verse');
+    if(vs && !vs.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var s = +vs.dataset.surah, v = +vs.dataset.verse;
+      if(s && v) _monJumpToStartVerse(s, v);
+      return;
+    }
+    var evn = t.closest('.xref-event');
+    if(evn && !evn.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var eid = evn.dataset.id;
+      if(!eid) return;
+      _monClickTab(['EVENTS'], 'events');
+      var etries = 0;
+      var eiv = setInterval(function(){
+        etries++;
+        if(typeof window._stXrefJumpEvent === 'function'){
+          try { window._stXrefJumpEvent(eid); } catch(err){}
+          clearInterval(eiv); return;
+        }
+        if(etries > 60){ clearInterval(eiv); console.warn('[mon] event jump never ready'); }
+      }, 80);
+      return;
+    }
+    var pl = t.closest('.xref-place');
+    if(pl && !pl.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var pname = pl.dataset.name || '';
+      if(!pname) return;
+      _monClickTab(['EVENTS'], 'events');
+      var ptries = 0;
+      var piv = setInterval(function(){
+        ptries++;
+        var sb = document.getElementById('search');
+        if(sb && typeof window._eventsApplySearch === 'function'){
+          sb.value = pname;
+          window.searchQ = pname;
+          try { window._eventsApplySearch(); } catch(err){}
+          clearInterval(piv); return;
+        }
+        if(ptries > 60){ clearInterval(piv); console.warn('[mon] place jump never ready'); }
+      }, 80);
+      return;
+    }
+    var bk = t.closest('.xref-book');
+    if(bk && !bk.classList.contains('xref-chip-inactive')){
+      e.stopPropagation();
+      var btitle = bk.dataset.title || '';
+      if(!btitle) return;
+      _monClickTab(['BOOKS'], 'books');
+      var btries = 0;
+      var biv = setInterval(function(){
+        btries++;
+        var sb2 = document.getElementById('search');
+        if(sb2 && typeof window._booksBuildCanvas === 'function'){
+          sb2.value = btitle;
+          sb2.dispatchEvent(new Event('input', { bubbles: true }));
+          clearInterval(biv); return;
+        }
+        if(btries > 60){ clearInterval(biv); console.warn('[mon] book jump never ready'); }
+      }, 80);
+      return;
+    }
+    var sa = t.closest('.xref-verse-seeall');
+    if(sa){
+      e.stopPropagation();
+      e.preventDefault();
+      var raw = (sa.dataset.verses || '').split(',').filter(function(x){ return x; });
+      if(!raw.length) return;
+      var pinList = raw.map(function(p){
+        var bits = p.split(':');
+        var s = +bits[0], v = +bits[1];
+        return (s && v) ? { surah:s, verse:v, score:null } : null;
+      }).filter(function(x){ return x; });
+      if(!pinList.length) return;
+      window._stPendingPinnedVerses = { slug: '', label: sa.dataset.label || 'Linked verses', verses: pinList };
+      var stabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start');
+      for(var si=0;si<stabs.length;si++){
+        var sel=stabs[si];
+        var stxt=(sel.textContent||'').trim().toUpperCase();
+        var sdv=sel.getAttribute('data-view')||'';
+        if(stxt==='START' || sdv==='start'){ sel.click(); return; }
+      }
+      if(typeof window.setView === 'function') window.setView('start');
+      return;
+    }
+  });
+}
+
+return {
+  init: init,
+  toggleDD: _monToggleDD,
+  ddClearAll: _monDDClearAll,
+  applyFilters: function(){ try { _applyAllFilters(); } catch(e){ console.warn('[MON] applyFilters failed', e); } },
+  syncAllDDs: function(){ try { ['period','topic','narrator','collection','volume'].forEach(function(k){ _monSyncDD(k); }); } catch(e){ console.warn('[MON] syncAllDDs failed', e); } },
+  openWizard: _wizardOpen,
+  showHadiths: function(hadithIds, label){
+    _pinnedHadiths = { ids: (hadithIds || []).slice(), label: label || '' };
+
+    // DOM-click the real MONASTIC tab. setView is a stub in sandbox.
+    var clicked = false;
+    var candidates = document.querySelectorAll(
+      '#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="monastic"], .tab-monastic'
+    );
+    for(var i=0;i<candidates.length;i++){
+      var el = candidates[i];
+      var txt = (el.textContent||'').trim().toUpperCase();
+      var dv = el.getAttribute('data-view')||'';
+      if(txt === 'MONASTIC' || dv === 'monastic'){ el.click(); clicked = true; break; }
+    }
+    if(!clicked && typeof setView === 'function') setView('monastic');
+
+    // Make sure init runs even if shell didn't fire onEnter
+    setTimeout(function(){
+      try{ init(); }catch(e){}
+      // Force the pinned processor to run after init
+      var tries = 0;
+      var iv = setInterval(function(){
+        tries++;
+        if(_resultsEl){
+          clearInterval(iv);
+          try{ _processPinnedHadiths(); }catch(e){ console.warn('[MON] _processPinnedHadiths failed', e); }
+        } else if(tries > 50){ clearInterval(iv); console.warn('[MON] _resultsEl never appeared'); }
+      }, 80);
+    }, 60);
+  },
+  onEnter: function(){
+    var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
+    if(box){ if(_monSearchBoxPrev === null) _monSearchBoxPrev = box.style.display || ''; box.style.display = 'none'; }
+    // Run pending handlers in priority order
+    var hadPinned = _monHandlePendingPinned();
+    if(!hadPinned){
+      _monHandlePendingHadith();
+      _monHandlePendingNarrator();
+      if(_pinnedHadiths) _processPinnedHadiths();
+    }
+  },
+  onLeave: function(){
+    var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
+    if(box){ box.style.display = (_monSearchBoxPrev === null ? '' : _monSearchBoxPrev); }
+  },
+  // Called by MonasticView.unmount() to clear all stateful refs that init()
+  // captures. Without this, a remount sees _inited === true and returns early
+  // while _resultsEl still points to the previous (destroyed) DOM, leaving
+  // the new mount blank.
+  reset: function(){
+    _inited = false;
+    _resultsEl = null;
+    _loadingEl = null;
+    _countEl   = null;
+    _bandEl    = null;
+    _drillEl   = null;
+    _clickBound = false;
+    _pinnedHadiths = null;
+    _drillOn = false;
+    _drillPicks = { period:[], topic:[], narrator:[], collection:[] };
+    _drillExpanded = false;
+    if(_monSel){
+      if(_monSel.collection) _monSel.collection.clear();
+      if(_monSel.period)     _monSel.period.clear();
+      if(_monSel.topic)      _monSel.topic.clear();
+      if(_monSel.narrator)   _monSel.narrator.clear();
+    }
+  },
+  _exportSel: function(){
+    if(!_monSel) return null;
+    function arr(s){ if(!s || typeof s.values !== 'function') return []; var out=[]; var it=s.values(); for(var step=it.next(); !step.done; step=it.next()) out.push(step.value); return out; }
+    return {
+      collection: arr(_monSel.collection),
+      period: arr(_monSel.period),
+      topic: arr(_monSel.topic),
+      narrator: arr(_monSel.narrator)
+    };
+  },
+  _importSel: function(snap){
+    if(!_monSel || !snap) return;
+    function load(set, keys){ if(!set) return; if(typeof set.clear === 'function') set.clear(); (keys||[]).forEach(function(k){ set.add(k); }); }
+    load(_monSel.collection, snap.collection);
+    load(_monSel.period,     snap.period);
+    load(_monSel.topic,      snap.topic);
+    load(_monSel.narrator,   snap.narrator);
+  }
+};
+})();
+
+// ═══════════════════════════════════════════════════════════
+// ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
+// ═══════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════
+// MonasticView — sandbox mount/unmount wrapper
+// ═══════════════════════════════════════════════════════════
+window.MonasticView = (function(){
+  'use strict';
+
+  // Lifted Monastic-view scaffold (verbatim from bv-app/index.html).
+  // Monastic.init() looks up #mon-results, #mon-loading, #mon-count,
+  // #mon-timeline-band, #mon-filters and the four dropdown buttons by id.
+  function _injectScaffold(zoneCEl){
+    if(!document.getElementById('mon-hide-body-row')){
+      var st = document.createElement('style');
+      st.id = 'mon-hide-body-row';
+      st.textContent =
+        '#mon-header-row{display:none !important}'+
+        '#mon-filters{position:absolute;left:-99999px;top:-99999px;width:0;height:0;overflow:visible !important}'+
+        '#mon-filters .dd-panel{position:fixed !important;left:auto;top:auto}'+
+        '#mon-how-btn,#mon-lang-group,#mon-methodology-btn,#mon-guided-btn,#mon-drill-btn{display:none !important}';
+      document.head.appendChild(st);
+    }
+    zoneCEl.innerHTML =
+      '<div id="monastic-view" style="display:flex;flex-direction:column;flex:1">' +
+        '<div style="padding:20px 24px;width:100%;box-sizing:border-box">' +
+          '<div id="mon-header-row" style="display:none"></div>' +
+          '<button id="mon-methodology-btn" style="display:none"></button>' +
+          '<button id="mon-guided-btn" onclick="Monastic.openWizard()" style="display:none"></button>' +
+          '<button id="mon-drill-btn" type="button" style="display:none"></button>' +
+          '<div style="display:none" id="mon-filters">' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-periodBtn" onclick="Monastic.toggleDD(\'period\')">' +
+                '<span>Periods</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-periodDot"></span>' +
+                  '<span class="dd-count" id="mon-periodCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-periodPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'period\')">' +
+                  '<div class="dd-checkbox" id="mon-periodAllCk">✓</div><span>All Periods</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-topicBtn" onclick="Monastic.toggleDD(\'topic\')">' +
+                '<span>Topics</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-topicDot"></span>' +
+                  '<span class="dd-count" id="mon-topicCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-topicPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'topic\')">' +
+                  '<div class="dd-checkbox" id="mon-topicAllCk">✓</div><span>All Topics</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-narratorBtn" onclick="Monastic.toggleDD(\'narrator\')">' +
+                '<span>Narrators</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-narratorDot"></span>' +
+                  '<span class="dd-count" id="mon-narratorCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-narratorPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'narrator\')">' +
+                  '<div class="dd-checkbox" id="mon-narratorAllCk">✓</div><span>All Narrators</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-collectionBtn" onclick="Monastic.toggleDD(\'collection\')">' +
+                '<span>Collections</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-collectionDot"></span>' +
+                  '<span class="dd-count" id="mon-collectionCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-collectionPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'collection\')">' +
+                  '<div class="dd-checkbox" id="mon-collectionAllCk">✓</div><span>All Collections</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-volumeBtn" onclick="Monastic.toggleDD(\'volume\')">' +
+                '<span>Volume</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-volumeDot"></span>' +
+                  '<span class="dd-count" id="mon-volumeCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-volumePanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'volume\')">' +
+                  '<div class="dd-checkbox" id="mon-volumeAllCk">✓</div><span>All Volumes</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-conceptBtn" onclick="Monastic.toggleDD(\'concept\')">' +
+                '<span>Concepts</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-conceptDot"></span>' +
+                  '<span class="dd-count" id="mon-conceptCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-conceptPanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'concept\')">' +
+                  '<div class="dd-checkbox" id="mon-conceptAllCk">✓</div><span>All Concepts</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div id="mon-timeline-band"></div>' +
+          '<div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>' +
+          '<div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em">Loading hadiths…</div>' +
+          '<div id="mon-results" class="content-body" style="max-height:70vh;overflow-y:auto;border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>' +
+          '<div style="text-align:center;margin-top:20px;font-size:var(--fs-3);color:#4B5563;font-style:normal">Data source: sahih-explorer dataset</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  // Wire shell's Zone B controls — MONASTIC spec:
+  // { search:true, filters:[Collection select, DRILL pill], actions:[], htw:true }
+  function _wireZoneB(zoneBEl){
+    var searchInp = document.getElementById('search');
+    if(searchInp){
+      searchInp.placeholder = 'Search hadiths…';
+      searchInp.addEventListener('input', function(){
+        var q = (searchInp.value || '').toLowerCase();
+        var rows = document.querySelectorAll('#mon-results .mon-row');
+        rows.forEach(function(r){
+          var hay = (r.textContent || '').toLowerCase();
+          r.style.display = !q || hay.indexOf(q) !== -1 ? '' : 'none';
+        });
+      });
+    }
+    if(!zoneBEl) return;
+
+    function _wireSelect(btn, ddKey, panelId){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(!(window.Monastic && typeof window.Monastic.toggleDD === 'function')) return;
+        ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel','mon-conceptPanel'].forEach(function(pid){
+          if(pid === panelId) return;
+          var op = document.getElementById(pid);
+          if(op){ op.classList.remove('open'); op.style.display='none'; }
+        });
+        window.Monastic.toggleDD(ddKey);
+        var p = document.getElementById(panelId);
+        if(!p) return;
+        var isOpen = p.classList.contains('open');
+        if(p.parentElement && p.parentElement.id !== 'mon-portal'){
+          var portal = document.getElementById('mon-portal');
+          if(!portal){ portal = document.createElement('div'); portal.id='mon-portal'; document.body.appendChild(portal); }
+          portal.appendChild(p);
+        }
+        if(isOpen){
+          var r = btn.getBoundingClientRect();
+          var panelLeft = Math.min(r.left, Math.max(8, window.innerWidth - 480));
+          p.style.cssText = 'position:fixed !important;top:'+(r.bottom+4)+'px;left:'+panelLeft+'px;z-index:10000;display:block !important;background:#1a1a2e;border:1px solid rgba(212,175,55,0.55);border-radius:6px;width:460px;max-width:calc(100vw - 16px);max-height:60vh;overflow-y:auto;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.6);word-break:break-word';
+          // Inject one-time close-X button at top-right of the panel.
+          if(!p.querySelector('.dd-close-x')){
+            var x = document.createElement('button');
+            x.className = 'dd-close-x';
+            x.type = 'button';
+            x.textContent = '✕';
+            x.setAttribute('aria-label','Close');
+            x.style.cssText = 'position:sticky;top:0;float:right;margin:2px 6px 0 0;background:transparent;border:none;color:#D4AF37;font-size:18px;line-height:1;cursor:pointer;padding:4px 6px;z-index:2';
+            x.addEventListener('click', function(ev){
+              ev.stopPropagation();
+              p.classList.remove('open');
+              p.style.display = 'none';
+            });
+            p.insertBefore(x, p.firstChild);
+          }
+          // Ensure dd-item labels wrap rather than forcing panel-wide rows.
+          p.querySelectorAll('.dd-item').forEach(function(it){
+            it.style.whiteSpace = 'normal';
+            it.style.wordBreak = 'break-word';
+            it.style.lineHeight = '1.35';
+            it.style.paddingTop = '6px';
+            it.style.paddingBottom = '6px';
+          });
+        } else {
+          p.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('click', function(e){
+      ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel','mon-conceptPanel'].forEach(function(pid){
+        var p = document.getElementById(pid);
+        if(!p || p.style.display === 'none') return;
+        if(p.contains(e.target)) return;
+        var sels = (zoneBEl.querySelectorAll('.zb-select')||[]);
+        var inSel = false;
+        sels.forEach(function(s){ if(s.contains(e.target)) inSel = true; });
+        if(!inSel){ p.classList.remove('open'); p.style.display='none'; }
+      });
+    });
+
+    var row2 = zoneBEl.querySelector('.zb-row2');
+    if(row2){
+      var selects = row2.querySelectorAll('.zb-select');
+      selects.forEach(function(b){
+        var t = (b.textContent||'').trim().toUpperCase();
+        if(t.indexOf('TOPIC') !== -1)            _wireSelect(b, 'topic',      'mon-topicPanel');
+        else if(t.indexOf('NARRATOR') !== -1)    _wireSelect(b, 'narrator',   'mon-narratorPanel');
+        else if(t.indexOf('COLLECTION') !== -1)  _wireSelect(b, 'collection', 'mon-collectionPanel');
+        else if(t.indexOf('VOLUME') !== -1)      _wireSelect(b, 'volume',     'mon-volumePanel');
+        else if(t.indexOf('CONCEPT') !== -1)     _wireSelect(b, 'concept',    'mon-conceptPanel');
+      });
+    }
+
+    var allPills = zoneBEl.querySelectorAll('.zb-pill');
+    allPills.forEach(function(p){
+      var t = (p.textContent||'').trim().toUpperCase();
+      if(t.indexOf('GUIDED') !== -1){
+        p.addEventListener('click', function(){
+          if(window.Monastic && typeof window.Monastic.openWizard === 'function') window.Monastic.openWizard();
+        });
+      } else if(t.indexOf('DRILL') !== -1){
+        p.addEventListener('click', function(){
+          var btn = document.getElementById('mon-drill-btn');
+          if(btn) btn.click();
+          else if(window.Monastic && typeof window.Monastic.toggleDrill === 'function') window.Monastic.toggleDrill();
+        });
+      }
+    });
+  }
+
+  var _mounted = false;
+
+  function mount(zoneCEl, zoneBEl){
+    if(_mounted) return;
+    _mounted = true;
+
+    document.body.classList.add('mn-mounted');
+    _injectScaffold(zoneCEl);
+
+    // Eager core.json fetch (used by narrator-pill matcher). Hadith collection
+    // JSONs and xref files are lazy-loaded by Monastic.init / applyFilters.
+    var p1 = (window.PEOPLE && window.PEOPLE.length)
+      ? Promise.resolve(window.PEOPLE)
+      : fetch(dataUrl('data/islamic/core.json'))
+          .then(function(r){ return r.ok ? r.json() : []; })
+          .catch(function(){ return []; })
+          .then(function(arr){ window.PEOPLE = arr || []; return arr; });
+
+    Promise.all([p1]).then(function(){
+      if(window.Monastic && typeof window.Monastic.init === 'function'){
+        window.Monastic.init();
+      }
+      // onEnter handles the pending-hadith handshake (window._stPendingHadith)
+      // and pinned-hadith processing — per CLAUDE.md spec.
+      if(window.Monastic && typeof window.Monastic.onEnter === 'function'){
+        window.Monastic.onEnter();
+      }
+      _wireZoneB(zoneBEl);
+      // Restore filters + drill if user is returning to MONASTIC after navigating away.
+      if(window._monLastView){
+        var snap2 = window._monLastView;
+        setTimeout(function(){
+          try {
+            if(window.Monastic && typeof window.Monastic._importSel === 'function'){
+              window.Monastic._importSel(snap2);
+            }
+            if(window.Monastic && typeof window.Monastic.syncAllDDs === 'function'){
+              window.Monastic.syncAllDDs();
+            }
+            if(typeof window.Monastic.applyFilters === 'function') window.Monastic.applyFilters();
+            if(snap2.drillOn){
+              setTimeout(function(){
+                var dbtn = document.getElementById('mon-drill-btn');
+                if(dbtn && !document.body.classList.contains('mon-drill-on')) dbtn.click();
+              }, 100);
+            }
+            // Best-effort UI refresh — re-run any function that re-paints filter dropdowns.
+            ['_buildAllFilterDDs','_refreshFilterDDs','_paintFilterChips','_refreshDDs'].forEach(function(fn){
+              if(typeof window.Monastic[fn] === 'function'){ try{ window.Monastic[fn](); }catch(_){} }
+            });
+          } catch(e){ console.warn('[MON] restore failed', e); }
+        }, 250);
+      }
+    });
+  }
+
+  function unmount(){
+    if(!_mounted) return;
+    _mounted = false;
+
+    document.body.classList.remove('mn-mounted');
+    document.body.classList.remove('mon-drill-on');
+
+    if(window.Monastic && typeof window.Monastic.onLeave === 'function'){
+      try { window.Monastic.onLeave(); } catch(e) {}
+    }
+
+    // Drop floating menus/overlays appended to document.body by inner module.
+    var sm = document.getElementById('mon-drill-splitmenu');     if(sm) sm.remove();
+    var vp = document.getElementById('mon-drill-valuepicker');   if(vp) vp.remove();
+    var mo = document.getElementById('mon-methodology-overlay'); if(mo) mo.remove();
+    var pt = document.getElementById('mon-portal');              if(pt) pt.remove();
+
+    var zb = document.getElementById('zoneB');
+    var zc = document.getElementById('zoneC');
+    if(zb) zb.innerHTML = '';
+    if(zc) zc.innerHTML = '';
+
+    // Snapshot filter selections + drill UI state so a remount can restore.
+    try {
+      var snap = { collection: [], period: [], topic: [], narrator: [], drillOn: document.body.classList.contains('mon-drill-on') };
+      if(window.Monastic && window.Monastic._exportSel){
+        var raw = window.Monastic._exportSel();
+        if(raw) snap = Object.assign(snap, raw);
+      }
+      window._monLastView = snap;
+    } catch(e){ console.warn('[MON] snapshot failed', e); }
+    // Clear inner-module state. Without this, a remount sees _inited === true
+    // and returns early while DOM refs still point to dead nodes.
+    if(window.Monastic && typeof window.Monastic.reset === 'function'){
+      try { window.Monastic.reset(); } catch(e) { console.warn('[MON] reset failed', e); }
+    }
+  }
+
+  return {
+    mount: mount,
+    unmount: unmount,
+    showHtw: function(){
+      var btn = document.getElementById('mon-methodology-btn');
+      if(btn){ btn.style.display=''; btn.click(); btn.style.display='none'; return; }
+      if(window.Monastic && typeof window.Monastic.openMethodology === 'function') window.Monastic.openMethodology();
+    }
+  };
+})();
+
+})(); // close outer MonasticView wrapper

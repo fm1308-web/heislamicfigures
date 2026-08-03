@@ -1,3 +1,4 @@
+// ORPHAN FILE — do not edit. The live copy of this code is inlined inside start.js. Editing this file does nothing.
 // ══════════════════════════════════════════════════════════
 // HARD CONTRACT — DO NOT VIOLATE
 // ══════════════════════════════════════════════════════════
