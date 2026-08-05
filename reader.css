@@ -1,0 +1,158 @@
+/* ═══════════════════════════════════════════════════════════
+   FOCUS READER — shared full-screen book mode (B4/B5)
+   Used by START / MONASTIC / EXPLAIN via reader.js
+   Internet-Archive style: one top bar, book only, one bottom bar.
+   ═══════════════════════════════════════════════════════════ */
+
+#fr-overlay{
+  position:fixed; inset:0; z-index:6000;
+  background:var(--bg-navy,#0E1621);
+  display:flex; flex-direction:column;
+  font-family:'Source Sans 3',Lato,sans-serif;
+}
+
+/* ── Top bar ── */
+#fr-top{
+  flex:0 0 52px; display:flex; align-items:center; gap:12px;
+  padding:0 16px; background:#0e1420;
+  border-bottom:1px solid rgba(212,175,55,0.4);
+}
+.fr-round{
+  width:36px; height:36px; border-radius:50%; flex:0 0 auto;
+  background:rgba(212,175,55,0.12); border:1px solid rgba(212,175,55,0.55);
+  color:#c9a961; font-size:16px; line-height:1; padding:0; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.fr-round:hover{ background:rgba(212,175,55,0.25); }
+#fr-title{
+  flex:1; min-width:0; text-align:center;
+  font-family:Cinzel,serif; font-size:15px; letter-spacing:.08em;
+  color:#D4AF37; text-transform:uppercase;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.fr-font-btn{
+  background:rgba(212,175,55,0.15); color:#c9a961;
+  border:1px solid #c9a961; border-radius:16px;
+  padding:5px 12px; font-size:13px; font-weight:700; cursor:pointer;
+  font-family:Lato,sans-serif; flex:0 0 auto;
+}
+.fr-font-btn:hover{ background:rgba(212,175,55,0.28); }
+
+/* ── Middle: the book ── */
+#fr-viewport{
+  flex:1; overflow-y:auto; overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold-dim,#6B5A1F) rgba(255,255,255,0.04);
+}
+#fr-host{ max-width:1100px; margin:0 auto; padding:18px 20px 60px; }
+
+/* ── Bottom bar ── */
+#fr-bottom{
+  flex:0 0 50px; display:flex; align-items:center; gap:12px;
+  padding:0 16px; background:#0e1420;
+  border-top:1px solid rgba(212,175,55,0.4);
+}
+#fr-page{
+  font-family:Cinzel,serif; font-size:12px; letter-spacing:.08em;
+  color:#c9a961; min-width:120px; text-align:center; white-space:nowrap;
+}
+#fr-bmk.fr-bmk-on svg{ fill:#D4AF37; }
+#fr-bmk-chip{
+  background:rgba(212,175,55,0.10); color:#c9a961;
+  border:1px solid rgba(212,175,55,0.4); border-radius:14px;
+  padding:4px 10px; font-size:11px; cursor:pointer; white-space:nowrap;
+  font-family:Lato,sans-serif;
+}
+#fr-bmk-chip:hover{ background:rgba(212,175,55,0.22); }
+#fr-exit{
+  background:rgba(212,175,55,0.22); color:#c9a961;
+  border:1px solid #c9a961; border-radius:18px;
+  padding:6px 18px; font-size:12px; font-weight:700; letter-spacing:.06em;
+  cursor:pointer; font-family:Lato,sans-serif;
+}
+#fr-exit:hover{ background:rgba(212,175,55,0.35); }
+.fr-spacer{ flex:1; }
+
+/* ── Menu panel (holds the view's own filter bar, moved in) ── */
+#fr-menu-panel{
+  position:absolute; top:58px; left:10px; z-index:6050;
+  background:#0e1420; border:1px solid rgba(212,175,55,0.55); border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  width:min(820px,94vw); max-height:72vh; overflow-y:auto;
+  padding:10px 12px; display:none;
+}
+#fr-menu-panel.open{ display:block; }
+#fr-menu-panel .fr-menu-hdr{
+  font-family:Cinzel,serif; font-size:11px; letter-spacing:.10em;
+  color:rgba(212,175,55,0.7); text-transform:uppercase; margin:2px 0 8px;
+}
+#fr-menu-panel .zone-b{
+  position:static !important; display:block !important;
+  width:auto !important; height:auto !important;
+  background:transparent !important; border:none !important;
+  padding:0 !important; margin:0 !important;
+}
+#fr-menu-panel .zb-row1,
+#fr-menu-panel .zb-row2{
+  display:flex !important; flex-wrap:wrap; gap:8px; align-items:center;
+  padding:6px 2px; height:auto !important;
+}
+#fr-menu-panel .fr-read-pill{ display:none !important; }
+
+/* ── Info bubble + user panel ── */
+#fr-info-bubble{
+  position:absolute; bottom:58px; right:12px; z-index:6050;
+  background:#0e1420; border:1px solid rgba(212,175,55,0.55); border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  padding:10px 16px; max-width:min(420px,90vw);
+  color:#9aa3b2; font-size:12px; display:none;
+}
+#fr-info-bubble.open{ display:block; }
+#fr-user-panel{
+  position:absolute; top:58px; right:10px; z-index:6050;
+  background:#0e1420; border:1px solid rgba(212,175,55,0.55); border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  padding:12px 16px; min-width:180px; display:none;
+}
+#fr-user-panel.open{ display:block; }
+#fr-user-panel .fr-user-name{ color:#E5E7EB; font-size:13px; margin-bottom:8px; }
+#fr-user-panel .fr-user-signout{
+  background:transparent; color:#c9a961; border:1px solid rgba(212,175,55,0.5);
+  border-radius:14px; padding:4px 12px; font-size:11px; cursor:pointer;
+}
+
+/* ── READ pill in Zone B (all 3 views) ── */
+.fr-read-pill{
+  border-color:#D4AF37 !important; color:#D4AF37 !important; font-weight:700;
+}
+
+/* ── While reader is open ── */
+/* Shell/view dropdown panels are portaled to <body> position:fixed —
+   lift them above the overlay so the menu's dropdowns still open. */
+body.fr-active .dd-panel{ z-index:7000 !important; }
+/* Belt-and-braces: nothing may hide the filter bar while it sits in the
+   reader menu (MY VIEW's CSS used to blank it). */
+body.fr-active #fr-menu-panel #zoneB{ display:block !important; }
+
+/* Paragraph gap markers (inserted by reader.js in all 3 views).
+   Outside the reader these spans are empty inline = invisible. */
+#fr-host .fr-para-brk{ display:block; height:14px; }
+
+/* ── Per-view overrides inside the reader: the book only ── */
+/* START — hide sticky header strips, let the outer viewport scroll */
+#fr-host #st-body{ display:block !important; overflow:visible !important; }
+#fr-host #st-reader{
+  overflow:visible !important; max-height:none !important;
+  padding:12px 10px 40px !important;
+}
+#fr-host #st-fixed-hdr, #fr-host #st-fixed-cols{ display:none !important; }
+/* MONASTIC — release the inner scroll box */
+#fr-host #mon-results{
+  max-height:none !important; overflow:visible !important;
+  border:none !important;
+}
+/* EXPLAIN — whole #explain-view wrapper is moved in; release its inner
+   scroll box and use the reader column's full width */
+#fr-host #explain-view{ display:block !important; }
+#fr-host #explain-view .ex-body{ overflow:visible !important; flex:none !important; }
+#fr-host #explain-view .ex-main{ max-width:none !important; padding:0 0 40px !important; }

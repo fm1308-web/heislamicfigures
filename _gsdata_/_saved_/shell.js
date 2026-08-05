@@ -76,6 +76,159 @@ window._navCaptureCurrent = function(){
   } catch(e){}
 };
 
+// ── Shared "VIEW IN TIMELINE" exit ─────────────────────────────────────────
+// One implementation for every view. Lifted verbatim from follow.js's
+// _fwGoTimeline, which is the version verified to work: focusPersonInTimeline
+// switches to TIMELINE but leaves the INFORMATION card on the PREVIOUS figure,
+// whereas jumpTo actually opens the figure's card. jumpTo is therefore preferred
+// and focusPersonInTimeline is kept only as the fallback.
+// Views must route their timeline exits through this — do not fork a second copy.
+function _gaTlClickTab(labels){
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a');
+  for(var i=0;i<c.length;i++){
+    var el = c[i];
+    var txt = (el.textContent||'').trim().toUpperCase();
+    var dv  = (el.getAttribute('data-view')||'').toUpperCase();
+    var dt  = (el.getAttribute('data-tab')||'').toUpperCase();
+    if(labels.indexOf(txt)>=0 || labels.indexOf(dv)>=0 || labels.indexOf(dt)>=0){ el.click(); return true; }
+  }
+  return false;
+}
+function _gaTlNorm(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+
+// A view's own label for a figure doesn't always match core's `famous`
+// character-for-character ("Abd al-Qadir al-Jazairi" vs "Abd al-Qadir al-Jaza'iri"),
+// and TIMELINE matches on `famous` exactly — an unresolved name lands on the wrong
+// figure. Resolve against real PEOPLE entries and accept ONLY an unambiguous hit;
+// anything ambiguous passes through untouched. Nothing is invented or guessed.
+window._gaResolveFigureName = function(name){
+  var people = window.PEOPLE || [];
+  if(!name || !people.length) return name;
+  for(var i=0;i<people.length;i++){ if(people[i] && people[i].famous === name) return name; }
+  var n = _gaTlNorm(name), hits = [];
+  for(var j=0;j<people.length;j++){
+    if(people[j] && _gaTlNorm(people[j].famous) === n){ hits.push(people[j].famous); if(hits.length>1) break; }
+  }
+  return hits.length === 1 ? hits[0] : name;
+};
+
+// name → switch to TIMELINE and open THAT figure's card. Polls until timeline.js
+// has mounted and exposed its real jumpTo (other views install short stubs under
+// the same names, so toString length is what tells the real one from a stub).
+window._gaGoTimeline = function(name, ev){
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  if(!name) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  if(!_gaTlClickTab(['TIMELINE'])){
+    try { if(typeof window.setActiveTab === 'function') window.setActiveTab('TIMELINE'); } catch(e){}
+  }
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var fn = (typeof window.jumpTo === 'function' && window.jumpTo.toString().length > 60)
+      ? window.jumpTo : window.focusPersonInTimeline;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try { fn(window._gaResolveFigureName(name)); } catch(e){}
+      clearInterval(iv); return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[shell] TIMELINE not ready for', name); }
+  }, 80);
+};
+
+// ── Shared "FOLLOW their life" exit (A14) ──────────────────────────────────
+// FOLLOW is lazy-loaded, but ONE / TIMELINE / YEAR need to (a) know which
+// figures HAVE a journey before FOLLOW is ever mounted, so they can decide
+// whether to render the button at all, and (b) hand a figure to FOLLOW from a
+// cold start. Both live here because shell.js is the only always-loaded file.
+//
+// index.json carries only {file, name} — the F-code slug lives INSIDE each
+// journey file, so the slug -> file lookup has to come from the journey data
+// itself. That is exactly what follow.js already builds in _fwExposeCache();
+// this preload mirrors it for the pre-FOLLOW case and reuses FOLLOW's cache
+// whenever FOLLOW has already populated it. FOLLOW's own loading is untouched.
+window._journeyFigures    = window._journeyFigures    || null;  // Set of slugs
+window._journeySlugToFile = window._journeySlugToFile || null;  // slug -> filename
+var _gaJourneyPreload = null;
+
+// Build slug -> file from a {file: journeyData} cache. Index order decides ties:
+// 7 slugs have TWO journey files each, and last-wins is the rule _fwExposeCache
+// already uses for _getJourneyLocation, so MAP and FOLLOW stay consistent.
+function _gaBuildJourneyMaps(index, byFile){
+  var slugToFile = {}, figures = new Set();
+  (index || []).forEach(function(item){
+    var d = byFile[item.file];
+    if(d && d.slug){ slugToFile[d.slug] = item.file; figures.add(d.slug); }
+  });
+  window._journeySlugToFile = slugToFile;
+  window._journeyFigures = figures;
+  return figures;
+}
+
+window._preloadJourneyIndex = function(){
+  if(window._journeyFigures && typeof window._journeyFigures.size !== 'undefined'){
+    return Promise.resolve(window._journeyFigures);
+  }
+  if(_gaJourneyPreload) return _gaJourneyPreload;
+  var url = function(p){ return (typeof window.dataUrl === 'function') ? window.dataUrl(p) : p; };
+  _gaJourneyPreload = fetch(url('data/islamic/journeys/index.json'))
+    .then(function(r){ return r.json(); })
+    .then(function(index){
+      // FOLLOW already loaded everything — reuse it rather than refetching.
+      var cache = window._journeyCache;
+      if(cache && Object.keys(cache).length >= index.length){
+        return _gaBuildJourneyMaps(index, cache);
+      }
+      return Promise.all(index.map(function(item){
+        return fetch(url('data/islamic/journeys/' + item.file))
+          .then(function(r){ return r.json(); })
+          .catch(function(){ return null; });
+      })).then(function(all){
+        var byFile = {};
+        index.forEach(function(item, i){ if(all[i]) byFile[item.file] = all[i]; });
+        var figures = _gaBuildJourneyMaps(index, byFile);
+        console.log('[shell] journey index ready:', figures.size, 'figures with a journey');
+        return figures;
+      });
+    })
+    .catch(function(e){
+      // Fail soft: an empty Set means "no follow buttons", never a broken view.
+      console.warn('[shell] journey index unavailable', e);
+      window._journeyFigures = window._journeyFigures || new Set();
+      window._journeySlugToFile = window._journeySlugToFile || {};
+      return window._journeyFigures;
+    });
+  return _gaJourneyPreload;
+};
+
+// Does this figure have a journey? Callers use this to decide whether to render
+// a follow affordance at all — no dead clicks.
+window._hasJourney = function(slug){
+  return !!(slug && window._journeyFigures && window._journeyFigures.has
+            && window._journeyFigures.has(slug));
+};
+
+// Public entry point used by ONE (x2), TIMELINE and YEAR. Works whether or not
+// FOLLOW has been mounted yet: park the figure, switch to FOLLOW, and let
+// follow.js apply it (on mount, or immediately when already mounted).
+window._followShowFigure = function(slugOrName, ev){
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  if(!slugOrName) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  window._fwPendingFigure = slugOrName;
+  if(!_gaTlClickTab(['FOLLOW'])){
+    try { if(typeof window.setActiveTab === 'function') window.setActiveTab('FOLLOW'); } catch(e){}
+  }
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(typeof window._fwApplyPendingFigure === 'function'){
+      try { window._fwApplyPendingFigure(); } catch(e){}
+      clearInterval(iv); return;
+    }
+    if(tries > 60){ clearInterval(iv); console.warn('[shell] FOLLOW not ready for', slugOrName); }
+  }, 80);
+};
+
 window.userTier = 'visitor';
 window.userRole = 'user';
 
@@ -234,7 +387,7 @@ function loadAndMountView(name){
     return true;
   }
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=154';
+  var _cb = '?v=172';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -367,7 +520,7 @@ var FILTER_SPECS = {
     actions: [],
     hint: 'Talk to a scholar',
     hintInRow2: true,
-    htw: false
+    htw: true   // A8b — TalkView.showHtw() now exists
   },
   ONE: {
     search: true,
@@ -401,7 +554,9 @@ var FILTER_SPECS = {
     bookmarks: true,
     hint: 'Hadith — 29 books across Sunni and Shia traditions',
     hintInRow2: false,
-    htw: false
+    // A6 — was false, so the shell never built the HOW THIS WORKS pill even though
+    // MonasticView.showHtw() and its methodology modal (_openMethodology) both exist.
+    htw: true
   },
   EXPLAIN: {
     search: true,
@@ -1578,6 +1733,9 @@ function bindFontScale(){
 // ---------- Boot ----------
 document.addEventListener('DOMContentLoaded', function(){
   buildTabs();
+  // Journey index is needed by ONE / TIMELINE / YEAR to decide whether a figure
+  // gets a follow affordance, so warm it at boot (matches FOLLOW's eager model).
+  try { window._preloadJourneyIndex(); } catch(e){}
   // Wire HOW TO USE button — opens the tour modal directly.
   // PRE-DEPLOY TODO: tour content needs review and improvement before launch.
   var _htuBtn = document.getElementById('howToUseBtn');

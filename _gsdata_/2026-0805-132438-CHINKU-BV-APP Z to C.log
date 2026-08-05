@@ -1,0 +1,24 @@
+2026-08-05 13:24:45: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-05 13:24:45: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-05 13:24:45: == Sync Started by User Command
+2026-08-05 13:24:45: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-05 13:24:45: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-05 13:24:45: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-05 13:24:45: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-05 13:24:45: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-05 13:24:45: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-05 13:24:45: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-05 13:24:45: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-05 13:24:45: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-05 13:24:45: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-05 13:24:45: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-05 13:24:45: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-05 13:24:46: Copy New 'C:/TEST/bv-app/reader.css' -> 'Z:/Islamic App/bv-app/reader.css' (6,683)
+2026-08-05 13:24:46: Copy New 'C:/TEST/bv-app/reader.js' -> 'Z:/Islamic App/bv-app/reader.js' (18,201)
+2026-08-05 13:24:46: Copy Over 'C:/TEST/bv-app/monastic.js' -> 'Z:/Islamic App/bv-app/monastic.js' (199,377)
+2026-08-05 13:24:46: Copy Over 'C:/TEST/bv-app/index.html' -> 'Z:/Islamic App/bv-app/index.html' (9,003)
+2026-08-05 13:24:47: Copy Over 'C:/TEST/bv-app/shell.js' -> 'Z:/Islamic App/bv-app/shell.js' (68,208)
+2026-08-05 13:24:47: Copy Over 'C:/TEST/bv-app/start.js' -> 'Z:/Islamic App/bv-app/start.js' (294,819)
+2026-08-05 13:24:47: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-05 13:24:47: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-05 13:24:48: == Sync Complete. Time: 00:00:03, Speed: 0.00/s, OK: 6, Errors: 0

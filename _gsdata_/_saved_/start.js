@@ -5396,12 +5396,23 @@ window.StartView = (function(){
       });
     });
 
-    // MY VIEW pills REMOVED (Adam, 2026-08-04) — FOCUS READER (reader.js)
-    // replaces MY VIEW. The MY VIEW engine code below stays dormant.
-    // SEARCH pill kept.
-    if(row1 && !row1.querySelector('.st-search-btn')){
+    // MY VIEW toggle button + edit pill (left side of row 1)
+    if(row1 && !row1.querySelector('.st-myview-btn')){
       var mvWrap = document.createElement('div');
       mvWrap.style.cssText = 'display:flex;gap:4px;margin-right:10px;align-items:center';
+      var mvBtn = document.createElement('button');
+      mvBtn.className = 'zb-pill st-myview-btn';
+      mvBtn.textContent = 'MY VIEW';
+      mvBtn.title = 'Toggle My View on/off';
+      mvBtn.addEventListener('click', function(){ if(typeof window._stMyViewToggle === 'function') window._stMyViewToggle(); });
+      var mvEdit = document.createElement('button');
+      mvEdit.className = 'zb-pill st-myview-edit';
+      mvEdit.textContent = '✎';
+      mvEdit.title = 'Edit My View preferences';
+      mvEdit.style.cssText = 'min-width:32px;padding:0 8px';
+      mvEdit.addEventListener('click', function(e){ e.stopPropagation(); if(typeof window._stOpenPrefs === 'function') window._stOpenPrefs(); });
+      mvWrap.appendChild(mvBtn);
+      mvWrap.appendChild(mvEdit);
       var srchBtn = document.createElement('button');
       srchBtn.className = 'zb-pill st-search-btn';
       srchBtn.textContent = 'SEARCH';
@@ -5409,6 +5420,7 @@ window.StartView = (function(){
       srchBtn.addEventListener('click', function(){ if(typeof window._stSearchToggle === 'function') window._stSearchToggle(); });
       mvWrap.appendChild(srchBtn);
       row1.insertBefore(mvWrap, row1.firstChild);
+      setTimeout(_stRefreshMyViewBtn, 50);
     }
     // Row 1 pills.
     if(row1){
