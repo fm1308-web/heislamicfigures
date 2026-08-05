@@ -829,7 +829,7 @@ window.FinanceView = (function(){
   //  the QUR'AN READ pill only, and stay undated everywhere.)
 
   function _buildEntries(){
-    // Tradition filter greys non-matching rows (see _tradState); it no longer hides.
+    // Tradition filter HIDES non-matching rows (filtered at the end of this fn); untagged rows stay.
     var schOk = D.scholars.filter(function(s){ return _confOk(s.assurance); });
     var entries = [];
     if(F.show.has('scholars')){
@@ -870,6 +870,10 @@ window.FinanceView = (function(){
       _lineageDated(_taken).forEach(function(en){ entries.push(en); });
     }
     entries.sort(function(a,b){ if(a.yr!==b.yr) return a.yr-b.yr; return String(a.title||'').localeCompare(String(b.title||'')); });
+    // Tradition filter now HIDES non-matching rows (Adam, 2026-08-05) so the
+    // timeline visibly shortens — was greyed (fin-row-tdim). Untagged rows
+    // stay visible and marked, per the locked rule (never hidden).
+    entries = entries.filter(function(en){ return en.tradState !== 'off'; });
     return entries;
   }
 
@@ -1198,28 +1202,25 @@ window.FinanceView = (function(){
           var _laneBase = LANE0 + ci * LANE_STEP;
           var _fallbackY = _myTiles.length ? _myTiles[0].attachY : _finYrToY(rows[0].yr, rows, totalH);
           var _trunkTop = _earliestYForC(cid, _fallbackY);
-          var _laneX = function(yy){ return _laneBase + 8 * Math.sin((yy - _trunkTop) / 70); };
-
-          var _P = [{ x: STEM_RIGHT, y: _trunkTop }], _prevY = _trunkTop;
-          _myTiles.forEach(function(tile){
-            var _midY = (_prevY + tile.tileY) / 2;
-            _P.push({ x: _laneX(_midY), y: _midY });        // back in the lane between tiles
-            _P.push({ x: BRANCH_END,   y: tile.tileY });    // outward peak at the shared tile column
-            _prevY = tile.tileY;
-          });
-          var _lastMid = (_prevY + _lifeBot) / 2;
-          _P.push({ x: _laneX(_lastMid), y: _lastMid });
-          _P.push({ x: _laneX(_lifeBot), y: _lifeBot });     // down to today
-
-          var _weaveD = 'M ' + _P[0].x.toFixed(1) + ' ' + _P[0].y.toFixed(1);
-          for(var _i = 0; _i < _P.length - 1; _i++){
-            var _q0 = _P[_i-1] || _P[_i], _q1 = _P[_i], _q2 = _P[_i+1], _q3 = _P[_i+2] || _P[_i+1];
-            var _c1x = _q1.x + (_q2.x - _q0.x) / 6, _c1y = _q1.y + (_q2.y - _q0.y) / 6;
-            var _c2x = _q2.x - (_q3.x - _q1.x) / 6, _c2y = _q2.y - (_q3.y - _q1.y) / 6;
-            _weaveD += ' C ' + _c1x.toFixed(1) + ' ' + _c1y.toFixed(1) + ', ' + _c2x.toFixed(1) + ' ' + _c2y.toFixed(1) + ', ' + _q2.x.toFixed(1) + ' ' + _q2.y.toFixed(1);
+          // Ladder-style lifeline (Adam 2026-08-05): a smooth, near-vertical lane
+          // curve with a gentle sway. Tiles are reached by short branch stubs —
+          // the line itself never zigzags out to the tile column and back.
+          var _laneX = function(yy){ return _laneBase + 8 * Math.sin((yy - _trunkTop) / 260); };
+          var _pts = [{ x: STEM_RIGHT, y: _trunkTop }];
+          for(var _yy = _trunkTop + 100; _yy < _lifeBot; _yy += 140){ _pts.push({ x: _laneX(_yy), y: _yy }); }
+          _pts.push({ x: _laneX(_lifeBot), y: _lifeBot });
+          var _lifeD = 'M ' + _pts[0].x.toFixed(1) + ' ' + _pts[0].y.toFixed(1);
+          for(var _pi = 1; _pi < _pts.length; _pi++){
+            var _p0 = _pts[_pi-1], _p1 = _pts[_pi], _cy = ((_p0.y + _p1.y) / 2).toFixed(1);
+            _lifeD += ' C ' + _p0.x.toFixed(1) + ' ' + _cy + ', ' + _p1.x.toFixed(1) + ' ' + _cy + ', ' + _p1.x.toFixed(1) + ' ' + _p1.y.toFixed(1);
           }
-          _svgInner += '<path d="'+_weaveD+'" fill="none" stroke="'+_trunkCol+'" stroke-width="3" stroke-opacity="0.9"/>'
+          _svgInner += '<path d="'+_lifeD+'" fill="none" stroke="'+_trunkCol+'" stroke-width="3" stroke-opacity="0.9"/>'
                      + '<circle cx="'+STEM_RIGHT+'" cy="'+_trunkTop.toFixed(1)+'" r="3" fill="'+_trunkCol+'"/>';   // ruler touch-point
+          // Branch stubs: lane → each of this contract's tiles.
+          _myTiles.forEach(function(tile){
+            _svgInner += '<path d="M ' + _laneX(tile.tileY).toFixed(1) + ' ' + tile.tileY.toFixed(1) + ' L ' + BRANCH_END + ' ' + tile.tileY.toFixed(1) + '"'
+                       + ' fill="none" stroke="' + tile.col + '" stroke-width="1.5" stroke-opacity="0.55"/>';
+          });
           if(D.qToCById && D.qToCById[cid]){
             var _tipTop = Math.max(pillY, _trunkTop - 80);
             if(_tipTop < _trunkTop - 2){
@@ -1247,6 +1248,45 @@ window.FinanceView = (function(){
                        + '</span>';
                 }).join('')
               + '</div></div>';
+      }
+    }
+
+    // ── Tradition lifelines (Adam 2026-08-05) — books-style weaving line per
+    //    picked tradition, right of the spine, own colour + name chip. The
+    //    rows on each line are the visible rows tagged with that tradition.
+    var _trdPicks = [];
+    F.sect.forEach(function(v){ _trdPicks.push(v); });
+    F.school.forEach(function(v){ _trdPicks.push(v); });
+    F.movement.forEach(function(v){ _trdPicks.push(v); });
+    if(_trdPicks.length){
+      var TRD0 = (_hasTerms && typeof TILE_LEFT !== 'undefined' && TILE_LEFT) ? (TILE_LEFT + 190) : 560;
+      var _trdM = Math.max(6, _trdPicks.length);
+      var _trdSvg = '', _trdChips = '';
+      _trdPicks.forEach(function(val, ti){
+        var col = 'hsl(' + Math.round((ti * 360) / _trdM) + ', 60%, 38%)';
+        var ys = [];
+        layoutRows.forEach(function(en){
+          if(en.kind !== 'lineage' && en.kind !== 'scholar') return;
+          var labels = _rowTradLabels(en.kind, en.id);
+          if(labels.indexOf(val) !== -1) ys.push(en.y + ROW_H/2);
+        });
+        if(!ys.length) return;
+        ys.sort(function(a, b){ return a - b; });
+        var lx = TRD0 + ti * 30;
+        var pxs = ys.map(function(y, yi){ return { x: lx + (yi % 2 ? 8 : 0), y: y }; });
+        var d = 'M ' + pxs[0].x + ' ' + pxs[0].y.toFixed(1);
+        for(var yi = 1; yi < pxs.length; yi++){
+          var p0 = pxs[yi-1], p1 = pxs[yi], cy = ((p0.y + p1.y) / 2).toFixed(1);
+          d += ' C ' + p0.x + ' ' + cy + ', ' + p1.x + ' ' + cy + ', ' + p1.x + ' ' + p1.y.toFixed(1);
+        }
+        var dots = pxs.map(function(pt){ return '<circle cx="'+pt.x+'" cy="'+pt.y.toFixed(1)+'" r="3.5" fill="'+col+'"/>'; }).join('');
+        _trdSvg += '<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="2.5" stroke-opacity="0.85"/>' + dots;
+        _trdChips += '<div class="fin-trd-chip" style="left:'+(lx + 12)+'px;top:'+(ys[0] - 26 - (ti % 3) * 18)+'px;border-color:'+col+';color:'+col+'">'+_esc(String(val).toUpperCase())+' ('+ys.length+')</div>';
+      });
+      if(_trdSvg){
+        html += '<svg class="fin-trd-lifelines-svg" width="1400" height="'+totalH+'" '
+              + 'style="position:absolute;left:0;top:0;pointer-events:none;z-index:3;overflow:visible">'+_trdSvg+'</svg>'
+              + _trdChips;
       }
     }
 
@@ -2064,6 +2104,28 @@ window.FinanceView = (function(){
     _renderHub();
     if(ro) ro.textContent = rows.length + ' standards';
   }
+  // ── Standards full-text readability (Adam 2026-08-05) ──
+  // Collapse runs of blank lines (page-layout dead space) — text itself is
+  // never altered — and give the user an A−/A+ size control shared by both
+  // readers via the --usul-rdr-fs CSS variable.
+  function _stdTxtClean(t){
+    return String(t || '').replace(/\r/g, '')
+      .replace(/\n[ \t]*\n(?:[ \t]*\n)+/g, '\n\n')
+      .replace(/^\s*\n+/, '');
+  }
+  var _stdRdrFsVal = null;
+  function _stdRdrFs(){
+    if(_stdRdrFsVal == null){
+      var v = NaN; try { v = parseFloat(localStorage.getItem('usul_rdr_fs')); } catch(e){}
+      _stdRdrFsVal = (v >= 11 && v <= 26) ? v : 15;
+    }
+    return _stdRdrFsVal;
+  }
+  function _stdRdrFsSet(v){
+    _stdRdrFsVal = Math.min(26, Math.max(11, v));
+    try { localStorage.setItem('usul_rdr_fs', String(_stdRdrFsVal)); } catch(e){}
+    try { document.documentElement.style.setProperty('--usul-rdr-fs', _stdRdrFsVal + 'px'); } catch(e){}
+  }
   var _stdRdrEsc = function(e){ if(e.key === 'Escape') _closeStandardText(); };
   function _openStandardText(code){
     _closeStandardText();
@@ -2074,17 +2136,22 @@ window.FinanceView = (function(){
     ov.innerHTML = '<div class="fin-rdr-box">'
       + '<div class="fin-rdr-head"><span class="fin-rdr-code">' + _esc(code) + '</span>'
       + '<span class="fin-rdr-title">' + _esc(title) + '</span>'
+      + '<button type="button" class="fin-rdr-x" id="fin-rdr-fm" title="Smaller text" style="width:auto;padding:0 10px">A−</button>'
+      + '<button type="button" class="fin-rdr-x" id="fin-rdr-fp" title="Larger text" style="width:auto;padding:0 10px">A+</button>'
       + '<button type="button" class="fin-rdr-x" id="fin-rdr-x">&#10005;</button></div>'
       + '<div class="fin-rdr-body" id="fin-rdr-body">Loading…</div></div>';
     document.body.appendChild(ov);
     ov.addEventListener('click', function(e){ if(e.target === ov) _closeStandardText(); });
     document.getElementById('fin-rdr-x').addEventListener('click', _closeStandardText);
+    _stdRdrFsSet(_stdRdrFs());
+    document.getElementById('fin-rdr-fm').addEventListener('click', function(){ _stdRdrFsSet(_stdRdrFs() - 1); });
+    document.getElementById('fin-rdr-fp').addEventListener('click', function(){ _stdRdrFsSet(_stdRdrFs() + 1); });
     document.addEventListener('keydown', _stdRdrEsc);
     var body = document.getElementById('fin-rdr-body');
     if(!rel){ body.textContent = 'Full text not held for this standard yet.'; return; }
     fetch('data/Finance/Standards/' + rel.split('/').map(encodeURIComponent).join('/'))
       .then(function(x){ if(!x.ok) throw new Error('HTTP ' + x.status); return x.text(); })
-      .then(function(t){ var b = document.getElementById('fin-rdr-body'); if(b) b.textContent = t; })
+      .then(function(t){ var b = document.getElementById('fin-rdr-body'); if(b) b.textContent = _stdTxtClean(t); })
       .catch(function(e){ var b = document.getElementById('fin-rdr-body'); if(b) b.textContent = 'Could not load the file (' + e.message + ').'; });
   }
   function _closeStandardText(){ document.removeEventListener('keydown', _stdRdrEsc); var o = document.getElementById('fin-rdr'); if(o) o.remove(); }
@@ -2101,13 +2168,19 @@ window.FinanceView = (function(){
         + '<div class="fin-reader-head">'
         +   '<button type="button" id="fin-reader-back" class="fin-reader-back">← Back</button>'
         +   '<label class="fin-reader-lbl">Standard</label>'
-        +   '<select id="fin-reader-sel" class="fin-reader-sel">'+opts+'</select></div>'
+        +   '<select id="fin-reader-sel" class="fin-reader-sel">'+opts+'</select>'
+        +   '<button type="button" id="fin-reader-fm" class="fin-reader-back" title="Smaller text">A−</button>'
+        +   '<button type="button" id="fin-reader-fp" class="fin-reader-back" title="Larger text">A+</button></div>'
         + '<div class="fin-reader-body" id="fin-reader-body"><div class="fin-reader-empty">Choose a standard above to read its full text.</div></div>'
         + '</div>';
       var sel = document.getElementById('fin-reader-sel');
       sel.addEventListener('change', function(){ _readerLoad(this.value); });
       var _rback = document.getElementById('fin-reader-back');
       if(_rback) _rback.addEventListener('click', function(e){ e.stopPropagation(); _setMode(_readerReturn || 'standards'); });
+      _stdRdrFsSet(_stdRdrFs());
+      var _rfm = document.getElementById('fin-reader-fm'), _rfp = document.getElementById('fin-reader-fp');
+      if(_rfm) _rfm.addEventListener('click', function(){ _stdRdrFsSet(_stdRdrFs() - 1); });
+      if(_rfp) _rfp.addEventListener('click', function(){ _stdRdrFsSet(_stdRdrFs() + 1); });
       if(_readerCode){ sel.value = _readerCode; _readerLoad(_readerCode); }
       _renderHub();
     }
@@ -2122,7 +2195,7 @@ window.FinanceView = (function(){
       body.innerHTML = '<div class="fin-reader-ttl">'+_esc(code)+' — '+_esc(r.title||'')+'</div><pre class="fin-reader-text" id="fin-reader-text">Loading…</pre>';
       fetch('data/Finance/Standards/' + rel.split('/').map(encodeURIComponent).join('/'))
         .then(function(x){ if(!x.ok) throw new Error('HTTP '+x.status); return x.text(); })
-        .then(function(t){ var b=document.getElementById('fin-reader-text'); if(b) b.textContent = t; })
+        .then(function(t){ var b=document.getElementById('fin-reader-text'); if(b) b.textContent = _stdTxtClean(t); })
         .catch(function(e){ var b=document.getElementById('fin-reader-text'); if(b) b.textContent = 'Could not load the file ('+e.message+').'; });
     }
     function openReader(code){
@@ -5142,9 +5215,10 @@ window.FinanceView = (function(){
     var etag = _entityLabel(r.entity_type);
     var selCls = (_ladSel === r.id) ? ' sel' : '';
     var nx = (r.__x != null) ? r.__x : LAD_BASE_X;
+    var _cchip = r.__cchip ? '<span class="fin-tag" style="color:'+r.__cchip.color+';border:1px solid '+r.__cchip.color+'">'+_esc(r.__cchip.label)+'</span>' : '';
     var h = '<div class="fin-ladder-node'+selCls+'" data-lid="'+_esc(r.id)+'" style="left:'+nx+'px;top:'+r.__y+'px;background:'+sc+'"></div>';
     h += '<div class="fin-ladder-node-label'+selCls+'" data-lid="'+_esc(r.id)+'" style="top:'+r.__y+'px;'+(labelStyle||'')+'">';
-    h += '<div class="fin-ladder-node-title">'+_esc(title)
+    h += '<div class="fin-ladder-node-title">'+_esc(title) + _cchip
        + (etag ? '<span class="fin-tag">'+etag+'</span>' : '')
        + '<span class="fin-badge fin-badge-'+conf.key+'">'+conf.label+'</span>'
        + (r.stage === 'current_status' ? '<span class="fin-ladder-today">Today</span>' : '')
@@ -5362,130 +5436,129 @@ window.FinanceView = (function(){
     var lin = (D && D.lineage) || [];
     _ladSel = null;
 
-    // The CONTRACT dropdown is the selector; need exactly one C-contract chosen.
-    var chosen = (F.contract.size === 1) ? Array.from(F.contract)[0] : null;
-    if(!chosen || !/^C\d{2}$/.test(chosen)){
+    // CONTRACT dropdown is the selector — one or MORE contracts. ONE shared
+    // timescale (Adam, 2026-08-05): each ticked contract weaves its OWN
+    // coloured lifeline down the single fixed scale, so the user follows a
+    // colour down to its origin. No duplicated timescale per contract.
+    var chosenList = Array.from(F.contract).filter(function(id){ return /^C\d{2}$/.test(id); }).sort();
+    if(!chosenList.length){
       canvas.style.height = '';
       if(ro) ro.textContent = '';
-      canvas.innerHTML = '<div class="fin-empty">Choose one contract above to see its evidence ladder.</div>';
+      canvas.innerHTML = '<div class="fin-empty">Tick one or more contracts above to see their evidence ladders.</div>';
       _renderHub();
       return;
     }
 
-    var c    = _idx.contract[chosen] || {};
-    var rows = lin.filter(function(r){ return r.contract === chosen; });
-    // Every row is a node (v4 has no evidentiary_tier header row).
-    var nodeRows = rows;
-
-    // FIX 3 — centre the ladder: put the gold stem at 46% of the canvas width so the assembly uses the
-    // dead right half. Fall back to the fixed x when the width is unknown (0). DX offsets everything that
-    // sits on/right of the stem; the left-side labels keep left:0 and simply GAIN width up to the stem.
+    var n = chosenList.length, LANE = 26;
     var _cw   = canvas.clientWidth || 0;
     var stemX = _cw ? Math.round(_cw * 0.46) : LAD_STEM_X;
     var DX    = stemX - LAD_STEM_X;
-    var baseX = LAD_BASE_X + DX, gapX = LAD_GAP_X + DX, noteXbase = 458 + DX;
-    var yrX   = 470 + DX, hijX = 582 + DX, eraX = 506 + DX;
-    var labelW = Math.max(160, stemX - 48);                 // left labels: right edge stays next to the stem
-    var _labelStyle = 'width:'+labelW+'px;';                // node labels keep left:0, widen as the stem moves
+    var baseX = LAD_BASE_X + DX, noteXbase = 458 + DX;
+    var yrX   = 470 + DX;
+    var hijX  = 582 + DX + (n - 1) * LANE;      // AH column clears the extra lanes
+    var eraX  = 506 + DX + (n - 1) * LANE;      // era tint/labels clear the lanes
+    var labelW = Math.max(160, stemX - 48);
+    var _labelStyle = 'width:' + labelW + 'px;';
 
-    // Header band — mirror TIMELINE's arrangement: CE/هـ toggle up top, then the QUR'AN pill + READ
-    // side by side below it, with clear vertical spacing so nothing overlaps at any zoom.
-    var rulerY = 60;                  // CE/هـ toggle, clear of the sticky contract header
-    var pillY  = 118;                 // QUR'AN pill + READ, clear gap below the toggle
+    var rulerY = 60, pillY = 118;
 
-    // Bucket rows. The Qur'an row (stage 'quran', undated by rule) is the START of every lineage —
-    // pin it at the TOP, directly under the pill, never in the bottom undated shelf. Note rows
-    // (no_direct_verse / no_direct_hadith) stay pinned beside the pill; everything dated weaves in.
-    var notes = [], dated = [], undated = [], quranTops = [];
-    nodeRows.forEach(function(r){
-      if(r.stage === 'quran'){ quranTops.push(r); return; }
-      if(r.position === 'no_direct_verse' || r.position === 'no_direct_hadith'){ notes.push(r); return; }
-      var yr = (r.stage === 'current_status') ? LAD_TODAY_YR : (r.timeline_year != null ? r.timeline_year : null);
-      if(yr == null){ undated.push(r); } else { r.__yr = yr; dated.push(r); }
+    // Per-contract buckets on the SHARED scale.
+    var per = chosenList.map(function(cid, ci){
+      var c = _idx.contract[cid] || {};
+      var rowsC = lin.filter(function(r){ return r.contract === cid; });
+      var notes = [], dated = [], undated = [], quranTops = [];
+      rowsC.forEach(function(r){
+        r.__lane = ci;
+        if(r.stage === 'quran'){ quranTops.push(r); return; }
+        if(r.position === 'no_direct_verse' || r.position === 'no_direct_hadith'){ notes.push(r); return; }
+        var yr = (r.stage === 'current_status') ? LAD_TODAY_YR : (r.timeline_year != null ? r.timeline_year : null);
+        if(yr == null){ undated.push(r); } else { r.__yr = yr; dated.push(r); }
+      });
+      dated.sort(function(a, b){ return a.__yr - b.__yr; });
+      var color = CONTRACT_COLORS[cid] || _contractColor(cid);
+      return { cid: cid, ci: ci, c: c, rows: rowsC, notes: notes, dated: dated, undated: undated, quranTops: quranTops, color: color };
     });
-    dated.sort(function(a,b){ return a.__yr - b.__yr; });
+    // Contract chip on every node label (n>1) so interleaved rows stay attributable.
+    per.forEach(function(p){
+      p.rows.forEach(function(r){ r.__cchip = (n > 1) ? { label: p.c.name || p.cid, color: p.color } : null; });
+    });
 
-    var quranTopY  = pillY + 44;                             // Qur'an node(s) directly under the pill
-    var quranSlotH = quranTops.length ? (quranTops.length * 48 + 12) : 0;
-    var firstNodeY = pillY + 62 + quranSlotH;                // first dated node sits below the pill (+ Qur'an slot)
+    var allDated = [];
+    per.forEach(function(p){ allDated = allDated.concat(p.dated); });
+    allDated.sort(function(a, b){ return (a.__yr - b.__yr) || (a.__lane - b.__lane); });
+    var allQuran = [];
+    per.forEach(function(p){ allQuran = allQuran.concat(p.quranTops); });
 
-    // ── Adaptive piecewise scale: gap ∝ year-gap, clamped [64,220]px. ──
+    var quranTopY  = pillY + 44;
+    var quranSlotH = allQuran.length ? (allQuran.length * 48 + 12) : 0;
+    var firstNodeY = pillY + 62 + quranSlotH;
+
+    // ── ONE adaptive piecewise scale over the merged years ──
     var years = [];
-    dated.forEach(function(r){ if(years.indexOf(r.__yr) < 0) years.push(r.__yr); });
-    years.sort(function(a,b){ return a - b; });
+    allDated.forEach(function(r){ if(years.indexOf(r.__yr) < 0) years.push(r.__yr); });
+    years.sort(function(a, b){ return a - b; });
     var anchorY = {}, yacc = firstNodeY;
     years.forEach(function(yr, i){
       if(i === 0){ anchorY[yr] = yacc; }
       else { var g = yr - years[i-1]; yacc += Math.max(LAD_MIN_GAP, Math.min(LAD_MAX_GAP, g)); anchorY[yr] = yacc; }
     });
-    // Map ANY year through the same anchors (piecewise-linear, extrapolate at ends).
     function mapYear(q){
       if(!years.length) return firstNodeY;
       if(years.length === 1) return anchorY[years[0]];
-      var n = years.length;
+      var m = years.length;
       if(q <= years[0]){
         var s0 = (anchorY[years[1]] - anchorY[years[0]]) / (years[1] - years[0]);
         return anchorY[years[0]] + s0 * (q - years[0]);
       }
-      if(q >= years[n-1]){
-        var s1 = (anchorY[years[n-1]] - anchorY[years[n-2]]) / (years[n-1] - years[n-2]);
-        return anchorY[years[n-1]] + s1 * (q - years[n-1]);
+      if(q >= years[m-1]){
+        var s1 = (anchorY[years[m-1]] - anchorY[years[m-2]]) / (years[m-1] - years[m-2]);
+        return anchorY[years[m-1]] + s1 * (q - years[m-1]);
       }
-      for(var i=1;i<n;i++){
+      for(var i=1;i<m;i++){
         if(years[i] >= q){ var a = years[i-1], b = years[i];
           return anchorY[a] + (anchorY[b] - anchorY[a]) * (q - a) / (b - a); }
       }
-      return anchorY[years[n-1]];
+      return anchorY[years[m-1]];
     }
 
-    // Node Y from its year anchor, then nudge duplicate-year collisions.
-    // 58px minimum — a row label is up to 3 lines (title+badge, READ pill, meta); 30px caused overlap.
-    dated.forEach(function(r){ r.__y = anchorY[r.__yr]; });
+    // Node Y from the shared year anchor, then ONE global collision nudge
+    // across all contracts (labels are up to 3 lines — 58px minimum).
+    allDated.forEach(function(r){ r.__y = anchorY[r.__yr]; });
     var prevY = -1e9;
-    dated.forEach(function(r){ if(r.__y < prevY + 58) r.__y = prevY + 58; prevY = r.__y; });
+    var _minGap = (n > 1) ? 92 : 58;   // multi-contract labels carry an extra chip line
+    allDated.forEach(function(r){ if(r.__y < prevY + _minGap) r.__y = prevY + _minGap; prevY = r.__y; });
 
-    // All dated rows are lifeline nodes (sway x). Note rows are pinned by the pill. (baseX carries DX.)
-    dated.forEach(function(r, i){ r.__x = baseX + (i % 2 ? LAD_SWAY : 0); });
-    var noteX = noteXbase;
-    notes.forEach(function(r, i){ r.__x = noteX; r.__y = pillY + (i - (notes.length - 1) / 2) * 16; });
-    // Qur'an origin node(s) pinned at the top, on the lifeline, before the first dated node.
-    quranTops.forEach(function(r, i){ r.__y = quranTopY + i * 48; r.__x = baseX; });
-    var lastQuranY = quranTops.length ? quranTops[quranTops.length-1].__y : 0;
+    // Lane X per contract; gentle alternate sway inside the lane.
+    per.forEach(function(p){
+      var lx = baseX + p.ci * LANE;
+      p.dated.forEach(function(r, i){ r.__x = lx + (i % 2 ? 8 : 0); });
+      p.notes.forEach(function(r, i){ r.__x = noteXbase - p.ci * 14; r.__y = pillY + (i - (p.notes.length - 1) / 2) * 16; });
+    });
+    allQuran.forEach(function(r, i){ r.__y = quranTopY + i * 48; r.__x = baseX + (r.__lane || 0) * LANE; });
+    var lastQuranY = allQuran.length ? allQuran[allQuran.length-1].__y : 0;
 
-    var lastDatedY = dated.length ? dated[dated.length-1].__y : (pillY + 30);
+    var lastDatedY = allDated.length ? allDated[allDated.length-1].__y : (pillY + 30);
     var shelfTop = lastDatedY + 90;
-    undated.forEach(function(r, i){ r.__y = shelfTop + i * 32; r.__x = baseX; });
+    var allUndated = [];
+    per.forEach(function(p){ allUndated = allUndated.concat(p.undated); });
+    allUndated.forEach(function(r, i){ r.__y = shelfTop + i * 32; r.__x = baseX + (r.__lane || 0) * LANE; });
 
-    var color = _contractColor(chosen);
-    var drawLife = dated.length > 0;
-    var hasNotes = notes.length > 0;
-    var hasQuran = quranTops.length > 0;
-
-    // Curve points. The Qur'an node is the lifeline ORIGIN when present; otherwise (no notes) the
-    // lifeline starts at the pill. With notes but no Qur'an origin, a dashed connector spans pill → node.
-    var pts = [];
-    if(hasQuran) quranTops.forEach(function(r){ pts.push({ x: r.__x, y: r.__y }); });
-    else if(drawLife && !hasNotes) pts.push({ x: stemX, y: pillY });
-    dated.forEach(function(r){ pts.push({ x: r.__x, y: r.__y }); });
-    var gap = (hasNotes && drawLife && !hasQuran) ? { y1: pillY, y2: dated[0].__y } : null;
-
-    // Stem + lifeline END at the last dated node (TODAY). Nothing past it. Reach the Qur'an node too.
     var stemTop = pillY - 16;
-    var stemBot = dated.length ? lastDatedY : Math.max(pillY + 30, lastQuranY + 12);
-    var lowest  = Math.max(stemBot, lastQuranY, undated.length ? (shelfTop + (undated.length - 1) * 32) : 0);
+    var stemBot = allDated.length ? lastDatedY : Math.max(pillY + 30, lastQuranY + 12);
+    var lowest  = Math.max(stemBot, lastQuranY, allUndated.length ? (shelfTop + (allUndated.length - 1) * 32) : 0);
     var totalH  = lowest + 120;
 
     var html = '';
-    // Sticky header strip: contract name only (the Qur'an pill on the spine is the sole header element).
-    html += '<div class="fin-ladder-header"><span class="fin-ladder-contract">'+_esc(c.name || chosen)+'</span></div>';
+    // Sticky header: every ticked contract, each in its lifeline colour.
+    html += '<div class="fin-ladder-header">' + per.map(function(p){
+      return '<span class="fin-ladder-contract" style="color:' + p.color + '">' + _esc(p.c.name || p.cid) + '</span>';
+    }).join('') + '</div>';
 
-    // Era bands through the adaptive mapping, clamped to the content.
+    // Era bands (once, on the shared scale).
     FIN_ERAS.forEach(function(era){
       var y1 = Math.max(0, mapYear(era.start));
       var y2 = Math.min(stemBot, mapYear(era.end));
       var bandH = y2 - y1; if(bandH <= 0) return;
-      // FIX 4 — era label sits just right of the lifeline lane (~120px right of the stem), vertically
-      // centred, 11px. Background tint stays full-width to the right of the stem (shifted with it).
       html += '<div class="fin-era-band fin-era-band-lad" style="left:'+eraX+'px;top:'+y1+'px;height:'+bandH+'px;background:linear-gradient(to right,transparent 15%,rgba('+era.glow+',0.04) 50%,rgba('+era.glow+',0.10) 100%)">';
       if(bandH >= 20){
         html += '<span class="fin-era-band-label" style="color:rgba('+era.glow+',0.85)">'+_esc(era.name)+'</span>';
@@ -5495,70 +5568,71 @@ window.FinanceView = (function(){
     });
 
     html += '<div class="fin-stem" style="left:'+stemX+'px;top:'+stemTop+'px;height:'+(stemBot - stemTop)+'px"></div>';
-    // CE/هـ ruler toggle — pinned above the QUR'AN pill (matches TIMELINE), replacing the old CE cap
-    // that overlapped the pill. The pill + READ sit clearly below it (see pillY).
     html += '<div class="fin-ruler-toggle" style="left:'+stemX+'px;top:'+rulerY+'px">'
           + '<span class="fin-ruler-btn'+(_showCE?' on':'')+'" data-ruler="ce">CE</span>'
           + '<span class="fin-ruler-sep">│</span>'
           + '<span class="fin-ruler-btn'+(_showHijri?' on':'')+'" data-ruler="hij">هـ</span></div>';
 
-    // Dashed "derived" connector — line only, no text.
-    if(gap){
-      html += '<div class="fin-ladder-gap" style="left:'+gapX+'px;top:'+gap.y1+'px;height:'+Math.max(2, gap.y2 - gap.y1)+'px"></div>';
-    }
-
-    // Curved contract lifeline (SVG). Nodes sit exactly on it.
-    if(pts.length >= 2){
-      var d = 'M '+pts[0].x+' '+pts[0].y.toFixed(1);
-      for(var pi=1; pi<pts.length; pi++){
+    // Lifelines — one coloured curve per contract, all starting at the QUR'AN pill.
+    per.forEach(function(p){
+      var pts = [{ x: stemX, y: pillY }];
+      p.quranTops.forEach(function(r){ pts.push({ x: r.__x, y: r.__y }); });
+      p.dated.forEach(function(r){ pts.push({ x: r.__x, y: r.__y }); });
+      if(pts.length < 2) return;
+      var d = 'M ' + pts[0].x + ' ' + pts[0].y.toFixed(1);
+      for(var pi = 1; pi < pts.length; pi++){
         var p0 = pts[pi-1], p1 = pts[pi], cy = ((p0.y + p1.y) / 2).toFixed(1);
-        d += ' C '+p0.x+' '+cy+', '+p1.x+' '+cy+', '+p1.x+' '+p1.y.toFixed(1);
+        d += ' C ' + p0.x + ' ' + cy + ', ' + p1.x + ' ' + cy + ', ' + p1.x + ' ' + p1.y.toFixed(1);
       }
-      html += '<svg class="fin-ladder-life-svg" width="'+Math.max(720, stemX + 260)+'" height="'+totalH+'" '
+      html += '<svg class="fin-ladder-life-svg" width="' + Math.max(720, stemX + 260 + n * LANE) + '" height="' + totalH + '" '
             + 'style="position:absolute;left:0;top:0;pointer-events:none;z-index:2;overflow:visible">'
-            + '<path d="'+d+'" fill="none" stroke="'+color+'" stroke-width="3" stroke-linecap="round"/></svg>';
-    }
+            + '<path d="' + d + '" fill="none" stroke="' + p.color + '" stroke-width="3" stroke-linecap="round"/></svg>';
+    });
 
-    // Spine header — fixed gold QUR'AN pill + a SEPARATE READ pill (identical to TIMELINE).
-    // READ is live only when the quran-stage row actually cites verses; else pale/non-clickable.
-    var quranRow = rows.filter(function(r){ return r.stage === 'quran'; })[0];
-    var _ladV    = quranRow && quranRow.crosstag && quranRow.crosstag.quran_verses;
-    var _ladRead = (_ladV && _ladV.length)
+    // Spine header — gold QUR'AN pill + READ (first quran row that cites verses).
+    var quranRow = null;
+    per.forEach(function(p){
+      if(quranRow) return;
+      quranRow = p.rows.filter(function(r){ return r.stage === 'quran' && r.crosstag && r.crosstag.quran_verses && r.crosstag.quran_verses.length; })[0] || null;
+    });
+    var _ladRead = quranRow
       ? '<span class="fin-qread" data-read-quran="'+_esc(quranRow.id)+'">READ</span>'
       : '<span class="fin-qread fin-qread-off">READ</span>';
     html += '<div class="fin-qpill-wrap" style="left:'+stemX+'px;top:'+pillY+'px"><span class="fin-qpill">QUR\'AN</span>'+_ladRead+'</div>';
 
-    // Year marks (CE left of stem, AH right) — ONE label per year GROUP (first row only), so a cluster of
-    // same-year rows reads as a single tight block. `dated` is year-sorted, so tracking the last year does it.
-    // Visibility follows the CE/هـ toggle.
+    // Year marks — ONE label per merged year group across all contracts.
     var _lastYrLabel = null;
-    dated.forEach(function(r){
+    allDated.forEach(function(r){
       if(r.__yr === _lastYrLabel) return;
       _lastYrLabel = r.__yr;
-      var n = r.__yr, hij = _ceToHijri(n);
-      html += '<div class="fin-yr-mark" style="left:'+yrX+'px;top:'+r.__y+'px;'+(_showCE?'':'display:none')+'">'+Math.abs(n)+'<span class="year-era">'+(n<0?'BCE':'CE')+'</span></div>';
+      var yv = r.__yr, hij = _ceToHijri(yv);
+      html += '<div class="fin-yr-mark" style="left:'+yrX+'px;top:'+r.__y+'px;'+(_showCE?'':'display:none')+'">'+Math.abs(yv)+'<span class="year-era">'+(yv<0?'BCE':'CE')+'</span></div>';
       html += '<div class="fin-hij-mark fin-ladder-hij" style="left:'+hijX+'px;top:'+r.__y+'px;'+(_showHijri?'':'display:none')+'">'+(hij<0?Math.abs(hij)+'<span class="year-era">ق.هـ</span>':hij+'<span class="year-era">هـ</span>')+'</div>';
     });
 
     // Nodes.
-    dated.forEach(function(r){ html += _ladderNodeHtml(r, _labelStyle); });
-    // Qur'an origin node(s) pinned at the TOP, directly under the pill, before the first dated node.
-    quranTops.forEach(function(r){ html += _ladderNodeHtml(r, _labelStyle); });
+    allDated.forEach(function(r){ html += _ladderNodeHtml(r, _labelStyle); });
+    allQuran.forEach(function(r){ html += _ladderNodeHtml(r, _labelStyle); });
 
     // Note-dots (no direct verse/hadith) pinned beside the pill, clickable.
-    notes.forEach(function(r){
-      html += '<div class="fin-ladder-note'+(_ladSel === r.id ? ' sel' : '')+'" data-lid="'+_esc(r.id)+'" '
-            + 'style="left:'+r.__x+'px;top:'+r.__y+'px" title="'+_esc(r.stage_label || r.stage)+'"></div>';
+    per.forEach(function(p){
+      p.notes.forEach(function(r){
+        html += '<div class="fin-ladder-note'+(_ladSel === r.id ? ' sel' : '')+'" data-lid="'+_esc(r.id)+'" '
+              + 'style="left:'+r.__x+'px;top:'+r.__y+'px" title="'+_esc(r.stage_label || r.stage)+'"></div>';
+      });
     });
 
-    // Undated shelf (now empty for all contracts — render nothing when empty).
-    if(undated.length){
+    // Undated shelf (merged).
+    if(allUndated.length){
       html += '<div class="fin-ladder-shelf" style="width:'+labelW+'px;top:'+(shelfTop - 26)+'px">Undated</div>';
-      undated.forEach(function(r){ html += _ladderNodeHtml(r, _labelStyle); });
+      allUndated.forEach(function(r){ html += _ladderNodeHtml(r, _labelStyle); });
     }
 
     canvas.style.height = totalH + 'px';
     canvas.innerHTML = html;
+
+    var rows = [];
+    per.forEach(function(p){ rows = rows.concat(p.rows); });
 
     // CE/هـ ruler toggle → show/hide the year marks (same behaviour as TIMELINE).
     canvas.querySelectorAll('.fin-ruler-btn').forEach(function(btn){
@@ -5597,7 +5671,7 @@ window.FinanceView = (function(){
     });
 
     _renderHub();
-    if(ro) ro.textContent = nodeRows.length + ' lineage rows';
+    if(ro) ro.textContent = rows.length + ' lineage rows';
   }
 
   // ── Canvas interactions ──
@@ -6478,7 +6552,7 @@ window.FinanceView = (function(){
       + '<li><b>HOME</b> — the 24 financial words of the Qur\'an, in three tiers; every trace starts here. READ opens the verses.</li>'
       + '<li><b>TRACE</b> — search any of the 214 modern terms and follow it back to its Qur\'anic origin: today\'s usage, parent contract, standards, dated history, and (where cited) the exact row where the term was born. All 214 terms are routed to the 24 words.</li>'
       + '<li><b>TIMELINE</b> — the full evidence spine per contract: Qur\'an at top, hadith, tafsir, law schools, modern standards; term tiles and lifelines to the right.</li>'
-      + '<li><b>LADDER</b> — one contract\'s chain as a single climbing lifeline with READ links into the library.</li>'
+      + '<li><b>LADDER</b> — one contract\'s chain as a single climbing lifeline with READ links into Gold Ark.</li>'
       + '<li><b>PRISM</b> — where the traditions differ: 18 comparison topics, each showing every authority\'s and school\'s position verbatim, tagged verified / plausible / pending citation. Amber ⚖ chips elsewhere jump here.</li>'
       + '<li><b>STANDARDS</b> — full-text reader for the standards held on disk; every standard code shown anywhere is one click from its text.</li>'
       + '<li><b>LECTURE</b> — the master course: read a topic top-to-bottom as a document.</li>'

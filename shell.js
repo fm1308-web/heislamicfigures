@@ -2,7 +2,10 @@
 'use strict';
 
 var TABS_ROW1 = ['TIMELINE','RELATIONS','FOLLOW','STUDY','BOOKS','ERAS','EVENTS','YEAR'];
-var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START','FINANCE'];
+var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START'];
+// USUL (internal id FINANCE) removed from the tab rows (Adam, 2026-08-05):
+// it is a separate commercial prototype with its own page — usul.html.
+// VIEW_REGISTRY/FILTER_SPECS entries stay so nothing else breaks.
 var ALL_TABS = TABS_ROW1.concat(TABS_ROW2);
 
 var _tabFocused = false;
@@ -609,6 +612,8 @@ function showShell(){
   // Deep-link: if the address names a real view, open THAT view (not TIMELINE).
   var _raw = (location.hash || '').replace(/^#/, '');
   var _viewPart = _raw.split('?')[0].split('&')[0].toLowerCase();
+  // USUL is no longer a tab — old #finance links go to its own page.
+  if(_viewPart === 'finance'){ location.replace('usul.html'); return; }
   var _target = '';
   for(var _i = 0; _i < ALL_TABS.length; _i++){
     if(ALL_TABS[_i].toLowerCase() === _viewPart){ _target = ALL_TABS[_i]; break; }
@@ -788,6 +793,13 @@ function setActiveTab(name, opts){
   syncZoneD();
   if(!opts.skipHistory){
     var _h = '#' + name.toLowerCase();
+    // Inbound deep links (e.g. usul.html opens #start?surah=2&verse=275): if the
+    // address already targets THIS view with params, keep them — start.js /
+    // explain.js consume them on mount. In-app tab clicks still write the plain hash.
+    try {
+      var _curH = location.hash || '';
+      if(_curH.toLowerCase().indexOf(_h + '?') === 0) _h = _curH;
+    } catch(e){}
     if(_isNewFwd){
       _gaSeq++; _gaCurrent = _gaSeq;
       try { history.pushState({ga:_gaSeq}, '', _h); } catch(e){ location.hash = name.toLowerCase(); }
@@ -1617,6 +1629,8 @@ function _hideEntryDoor(){
   // Deep-link: if the address names a real view, open THAT view (not TIMELINE).
   var _raw = (location.hash || '').replace(/^#/, '');
   var _viewPart = _raw.split('?')[0].split('&')[0].toLowerCase();
+  // USUL is no longer a tab — old #finance links go to its own page.
+  if(_viewPart === 'finance'){ location.replace('usul.html'); return; }
   var _target = '';
   for(var _i = 0; _i < ALL_TABS.length; _i++){
     if(ALL_TABS[_i].toLowerCase() === _viewPart){ _target = ALL_TABS[_i]; break; }

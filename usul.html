@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USUL — Commercial Prototype</title>
+<link rel="icon" type="image/png" href="assets/Usul-Eng-Logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shell.css?v=8">
+<link rel="stylesheet" href="finance-shim.css?v=1">
+<link rel="stylesheet" href="finance.css?v=4">
+<script src="config.js?v=2"></script>
+<!-- Shared Gold Ark account system — same Firebase auth + tester gating -->
+<script type="module" src="auth.js"></script>
+<script src="gate.js"></script>
+<style>
+/* ── USUL standalone page (visual split only — same repo/data).
+   IDENTITY: USUL = the logo's light→deep blue. Gold appears ONLY on the
+   Gold Ark Library link, so the user always knows which app they are in. ── */
+body.usul-standalone{
+  margin:0; min-height:100vh; display:flex; flex-direction:column;
+  background:#F3F7FB; font-family:'Source Sans 3',Lato,sans-serif;
+}
+/* Top strip — light→deep blue, white text */
+#usul-topbar{
+  flex:0 0 auto; display:flex; align-items:center; gap:16px;
+  padding:10px 18px;
+  background:linear-gradient(90deg,#2E86C1 0%,#1B4F72 55%,#102A43 100%);
+  border-bottom:1px solid rgba(255,255,255,0.18);
+}
+#usul-topbar .usul-tag{
+  font-family:Cinzel,serif; font-size:11px; letter-spacing:.12em;
+  color:rgba(255,255,255,0.88); text-transform:uppercase; white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis;
+}
+#usul-topbar .usul-sp{ flex:1; }
+/* gate.js injects the SIGN IN / user pill into this anchor — visible here */
+#hdrRow1Disclosures{ display:flex; align-items:center; gap:10px; }
+/* The ONE gold element — the Gold Ark Library link, with its logo */
+.usul-ext-link{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#0E1621; color:#D4AF37; border:1px solid #D4AF37;
+  border-radius:18px; padding:6px 16px; font-family:Cinzel,serif; font-size:11px;
+  letter-spacing:.08em; cursor:pointer; white-space:nowrap;
+}
+.usul-ext-link:hover{ background:#1a2635; }
+.usul-ext-link img{ height:15px; display:block; }
+/* Entry screen — near-white so the logo card blends in */
+#usulEntry{
+  flex:1; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:22px; padding:30px 20px; text-align:center;
+  background:linear-gradient(180deg,#FFFFFF 0%,#EDF4FA 70%,#DCE9F2 100%);
+}
+#usulEntry .usul-logo-big{
+  max-width:min(440px,82vw); height:auto;
+  mix-blend-mode:multiply;   /* white logo card melts into the light page */
+}
+#usulEntry .usul-notice{
+  max-width:560px; border:1px solid rgba(46,134,193,0.45); border-radius:8px;
+  background:rgba(46,134,193,0.06); padding:16px 22px;
+  color:#26415C; font-size:14px; line-height:1.65; text-align:left;
+}
+#usulEntry .usul-notice b{ color:#1B4F72; font-weight:600; }
+#usulEntry .usul-enter{
+  background:linear-gradient(90deg,#2E86C1,#1B4F72); color:#fff; border:none;
+  border-radius:24px; padding:12px 38px; font-family:Cinzel,serif; font-size:14px;
+  font-weight:700; letter-spacing:.1em; cursor:pointer;
+  box-shadow:0 4px 14px rgba(27,79,114,0.35);
+}
+#usulEntry .usul-enter:hover{ filter:brightness(1.1); }
+#usulEntry .usul-back{ background:none; border:none; color:#3E5C76; font-size:12px; cursor:pointer; text-decoration:underline; }
+#usulEntry .usul-back:hover{ color:#1B4F72; }
+/* App area */
+#usulApp{ flex:1; display:none; flex-direction:column; min-height:0; }
+#usulApp.on{ display:flex; }
+#usulApp .zone-c{ flex:1; overflow-y:auto; padding-bottom:20px; background:#FFFFFF; }
+#zoneB{ display:none; }
+/* Old in-app banner + FULLSCREEN button retired: the top strip replaces the
+   banner and the page is already full screen. finance.js untouched. */
+#finance-notice{ display:none !important; }
+#fin-fullscreen-btn{ display:none !important; }
+/* Current-page chip + RESET only appear once the user leaves HOME. */
+#finance-view[data-mode="home"] #fin-cur-page{ display:none !important; }
+#finance-view[data-mode="home"] #fin-reset{ display:none !important; }
+/* Leaving-USUL modal — USUL blue, light card */
+#usul-leave{
+  position:fixed; inset:0; z-index:99998; display:none;
+  align-items:center; justify-content:center; background:rgba(16,42,67,0.62);
+}
+#usul-leave.on{ display:flex; }
+#usul-leave .usul-leave-box{
+  background:#FFFFFF; border:1px solid #2E86C1; border-radius:10px;
+  padding:26px 30px; max-width:440px; width:92%;
+  box-shadow:0 12px 50px rgba(16,42,67,0.45); text-align:center;
+}
+#usul-leave h3{ font-family:Cinzel,serif; color:#1B4F72; letter-spacing:.08em; margin:0 0 10px; font-size:16px; }
+#usul-leave p{ color:#26415C; font-size:13.5px; line-height:1.6; margin:0 0 18px; }
+#usul-leave .usul-leave-row{ display:flex; gap:12px; justify-content:center; }
+#usul-leave .usul-go{ background:linear-gradient(90deg,#2E86C1,#1B4F72); color:#fff; border:none; border-radius:18px; padding:8px 22px; font-family:Cinzel,serif; font-size:12px; font-weight:700; letter-spacing:.06em; cursor:pointer; }
+#usul-leave .usul-stay{ background:transparent; color:#3E5C76; border:1px solid #9FB3C8; border-radius:18px; padding:8px 22px; font-size:12px; cursor:pointer; }
+</style>
+</head>
+<body class="usul-standalone" data-active-tab="FINANCE">
+
+<!-- Top strip (no logo top-left — the entry logo carries the brand) -->
+<div id="usul-topbar">
+  <span class="usul-tag">USUL · Commercial Prototype · Demo &amp; Testing · AI demonstration data — not scholar-certified</span>
+  <span class="usul-sp"></span>
+  <div id="hdrRow1Disclosures"></div>
+</div>
+
+<!-- Entry screen -->
+<div id="usulEntry">
+  <img class="usul-logo-big" src="assets/Usul-Eng-Logo - Full.png" alt="USUL" onerror="this.src='assets/Usul-Eng-Logo.png'">
+  <div class="usul-notice">
+    <b>USUL is a separate commercial prototype.</b> It is built by the Gold Ark
+    team and cross-links into the Gold Ark Library, but it is a product of its
+    own — for <b>demonstration and testing only</b>.<br><br>
+    USUL is <b>not part of the Gold Ark Library subscription</b> ($100/yr).
+    Sign-in is required. Content is AI-generated demonstration data —
+    not scholar-certified — independently verify.<br><br>
+    Links marked ↗ leave USUL and open the Gold Ark Library in a new tab.
+  </div>
+  <button class="usul-enter" id="usul-enter-btn" type="button">ENTER USUL</button>
+  <button class="usul-back" id="usul-back-btn" type="button">← Back to Gold Ark Library</button>
+</div>
+
+<!-- App area -->
+<div id="usulApp">
+  <div id="zoneB"></div>
+  <main class="zone-c" id="zoneC"></main>
+</div>
+
+<!-- Leaving-USUL modal -->
+<div id="usul-leave">
+  <div class="usul-leave-box">
+    <h3>Leaving USUL</h3>
+    <p id="usul-leave-text">This opens the Gold Ark Library in a new tab. The Library is the free
+    scholarly app; USUL stays open here. USUL is a separate commercial
+    prototype and is not part of the Library subscription.</p>
+    <div class="usul-leave-row">
+      <button class="usul-go" id="usul-leave-go" type="button">CONTINUE</button>
+      <button class="usul-stay" id="usul-leave-stay" type="button">STAY IN USUL</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── USUL standalone bootstrap ─────────────────────────────────
+// Visual split only: same repo, same data, same Gold Ark sign-in.
+// The library address below is relative for localhost + direct hosting;
+// WV can point it at the public Gold Ark page later.
+window.USUL_LIBRARY_URL = window.USUL_LIBRARY_URL || 'index.html';
+
+(function(){
+'use strict';
+var _leaveUrl = null;
+
+function leaveTo(url){
+  _leaveUrl = url;
+  document.getElementById('usul-leave').classList.add('on');
+}
+document.getElementById('usul-leave-go').addEventListener('click', function(){
+  document.getElementById('usul-leave').classList.remove('on');
+  if(_leaveUrl) window.open(_leaveUrl, '_blank');
+  _leaveUrl = null;
+});
+document.getElementById('usul-leave-stay').addEventListener('click', function(){
+  document.getElementById('usul-leave').classList.remove('on');
+  _leaveUrl = null;
+});
+
+// finance.js calls these when a verse / concept link is clicked.
+// Standalone: they become external-style jumps into the Library (new tab).
+window.openStartAtVerse = function(s, v, e){
+  var S = +s, V = +v;
+  if(!S || !V) return;
+  leaveTo(window.USUL_LIBRARY_URL + '#start?surah=' + S + '&verse=' + V);
+};
+window.openStartConcept = function(name, verses){
+  var v0 = (verses && verses[0]) || null;
+  if(v0 && v0.surah && v0.verse){
+    leaveTo(window.USUL_LIBRARY_URL + '#start?surah=' + v0.surah + '&verse=' + v0.verse);
+  } else {
+    leaveTo(window.USUL_LIBRARY_URL + '#start');
+  }
+};
+
+// Entry link to Gold Ark.
+document.getElementById('usul-back-btn').addEventListener('click', function(){
+  leaveTo(window.USUL_LIBRARY_URL);
+});
+
+// ENTER — same tester gate as before (gate.js requireTester, untouched).
+var _started = false;
+function startApp(){
+  if(_started) return;
+  _started = true;
+  document.getElementById('usulEntry').style.display = 'none';
+  document.getElementById('usulApp').classList.add('on');
+  if(window.FinanceView && typeof window.FinanceView.mount === 'function'){
+    window.FinanceView.mount(document.getElementById('zoneC'), document.getElementById('zoneB'));
+  } else {
+    document.getElementById('zoneC').innerHTML =
+      '<div style="padding:60px;text-align:center;color:#1B4F72;font-family:Cinzel,serif">USUL failed to load — refresh the page.</div>';
+  }
+}
+document.getElementById('usul-enter-btn').addEventListener('click', function(){
+  if(typeof window.requireTester === 'function') window.requireTester('USUL prototype', startApp);
+  else startApp();
+});
+})();
+</script>
+<script src="finance.js?v=4"></script>
+</body>
+</html>

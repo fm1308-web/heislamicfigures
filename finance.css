@@ -1420,7 +1420,7 @@ body.fin-fullscreen #usul-fs-logo{
 .fin-verse-read::after,
 .fin-mon-open::after,
 [data-read-hadith]::after{
-  content:" ↗ library";
+  content:" ↗ read in Gold Ark";
   font-size:9px;
   letter-spacing:.04em;
   text-transform:uppercase;
@@ -1733,7 +1733,7 @@ body.fin-fullscreen #usul-fs-logo{
 
 /* LEGEND — one small line under the filter row (pure CSS; wraps to its own line). */
 .fin-trace-filters::after{
-  content:"Gold = Qur'an \00B7  \2696  amber = scholars differ \00B7  teal = opens library";
+  content:"Gold = Qur'an \00B7  \2696  amber = scholars differ \00B7  teal = opens Gold Ark";
   flex-basis:100%; width:100%; margin-top:2px;
   font-family:'Source Sans 3',sans-serif; font-size:12px; color:#9FB0C3; letter-spacing:.01em; }
 
@@ -3263,3 +3263,40 @@ body.fin-fullscreen #usul-fs-logo{
 .fin-rep-rule-none{ color:#8B95A5; }
 .fin-report .fin-rep-rule-note, .fin-report .fin-rep-rule-none{ color:#5A5A5A; }
 #finance-view .fin-rep-rule-note, #finance-view .fin-rep-rule-none{ color:#5A5A5A; }
+
+/* ══ 2026-08-05 (Adam) — readability + lifeline additions ══ */
+/* PAGES dropdown: the active page was white-on-pale — unreadable. */
+#fin-pages-panel .fin-mode-btn.on,
+#finance-view #fin-pages-panel .fin-mode-btn.on{
+  background:#0E6B63 !important; color:#FFFFFF !important;
+  border-bottom-color:transparent !important;
+}
+/* Tradition lifeline name chips (TIMELINE, right of the spine) */
+.fin-trd-chip{
+  position:absolute; z-index:4; font-family:'Cinzel',serif; font-size:11px;
+  letter-spacing:.08em; padding:3px 10px; border:1.5px solid; border-radius:3px;
+  background:#FFFFFF; white-space:nowrap;
+}
+/* LADDER header lists one contract per lifeline colour */
+.fin-ladder-header .fin-ladder-contract{ margin-right:18px; font-size:17px; }
+
+/* ══ 2026-08-05b (Adam) — standards reader readability ══ */
+/* Both readers share one user-set size via --usul-rdr-fs (A−/A+). Appended
+   last so it wins the earlier !important sizes. Centred column, breathing
+   line-height, no monospace. */
+.fin-rdr-body{
+  font-size:var(--usul-rdr-fs,15px) !important; line-height:1.7 !important;
+  max-width:880px; margin:0 auto;
+}
+#finance-view .fin-reader-text, .fin-reader-text{
+  font-size:var(--usul-rdr-fs,15px) !important; line-height:1.7 !important;
+  max-width:860px; margin:0 auto; display:block; padding:14px 22px;
+}
+.fin-reader-body{ padding:18px 10px; }
+
+/* "no verse" pill on HOME was white-on-white (the READ recolour at line ~2312
+   hit the off state too). Visible grey chip, matches the FROM HADITH tag. */
+#finance-view .fin-home .fin-word-read.fin-read-off{
+  color:#6B7B8C !important; background:#F1EEE6 !important;
+  border:1px solid #C9C2B2 !important; box-shadow:none !important;
+}
