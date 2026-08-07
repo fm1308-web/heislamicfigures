@@ -99,7 +99,8 @@ function open(tab){
     +   '<span class="fr-spacer"></span>'
     +   '<span id="fr-page">Page 1 of 1</span>'
     +   '<span class="fr-spacer"></span>'
-    +   '<button class="fr-round" id="fr-bmk" type="button" title="My Bookmarks — tap a verse\'s own flag to save it">' + FLAG_SVG + '</button>'
+    +   '<button class="fr-round" id="fr-bmk" type="button" title="Bookmark this page">' + FLAG_SVG + '</button>'
+    +   '<button id="fr-bmk-chip" type="button" style="display:none"></button>'
     +   '<button class="fr-round" id="fr-info" type="button" title="About this text">ⓘ</button>'
     +   '<button id="fr-exit" type="button" title="Exit reader (Esc)">EXIT</button>'
     + '</div>'
@@ -199,19 +200,16 @@ function _wire(){
     userPanel.classList.remove('open');
     infoBubble.classList.toggle('open');
   });
-  q('#fr-bmk').addEventListener('click', function(e){
-    e.stopPropagation();
-    menuPanel.classList.remove('open');
-    infoBubble.classList.remove('open');
-    userPanel.classList.remove('open');
-    // ONE bookmark list everywhere (Adam 2026-08-06): this opens the SAME
-    // "My Bookmarks" popup as every other bookmark button in the app.
-    // Saving happens on the verse/hadith rows' own flag buttons.
-    if(typeof window._stBmkPopup === 'function'){ window._stBmkPopup(); return; }
-    var sc = document.createElement('script');
-    sc.src = 'start.js?v=' + Date.now();
-    sc.onload = function(){ if(typeof window._stBmkPopup === 'function') window._stBmkPopup(); };
-    document.head.appendChild(sc);
+  q('#fr-bmk').addEventListener('click', function(){
+    var b = _bmarks();
+    if(b[_bmkKey] === _pages.cur) delete b[_bmkKey];
+    else b[_bmkKey] = _pages.cur;
+    _bmarksSave(b);
+    _refreshBmk();
+  });
+  q('#fr-bmk-chip').addEventListener('click', function(){
+    var b = _bmarks();
+    if(b[_bmkKey]) _goto(b[_bmkKey]);
   });
 
   // User icon — initial from the shell's user pill.
@@ -362,17 +360,20 @@ function _refreshTitle(){
 }
 function _refreshBmk(){
   if(!_overlay) return;
+  var b = _bmarks();
+  var saved = b[_bmkKey];
   var btn = _overlay.querySelector('#fr-bmk');
-  if(!btn) return;
-  // Fill the flag when the topmost visible verse is bookmarked (START only).
-  var on = false;
-  try {
-    if(_tab === 'START' && window._stReaderBmk){
-      var cur = window._stReaderBmk.currentVerse();
-      on = window._stReaderBmk.has(cur.surah, cur.verse);
+  var chip = _overlay.querySelector('#fr-bmk-chip');
+  if(btn) btn.classList.toggle('fr-bmk-on', saved === _pages.cur);
+  if(chip){
+    if(saved){
+      chip.style.display = '';
+      chip.textContent = '↦ p.' + saved;
+      chip.title = 'Go to bookmarked page ' + saved;
+    } else {
+      chip.style.display = 'none';
     }
-  } catch(e){}
-  btn.classList.toggle('fr-bmk-on', on);
+  }
 }
 
 // ── READ pill injection + tab-change handling ───────────────

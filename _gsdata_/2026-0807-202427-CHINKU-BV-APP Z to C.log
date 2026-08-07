@@ -1,0 +1,23 @@
+2026-08-07 20:24:52: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-07 20:24:52: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-07 20:24:52: == Sync Started by User Command
+2026-08-07 20:24:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-07 20:24:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-07 20:24:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-07 20:24:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-07 20:24:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-07 20:24:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-07 20:24:53: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-07 20:24:53: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-07 20:24:53: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-07 20:24:53: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-07 20:24:53: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-07 20:24:53: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-07 20:24:53: Copy Over 'C:/TEST/bv-app/reader.css' -> 'Z:/Islamic App/bv-app/reader.css' (8,810)
+2026-08-07 20:24:53: Copy Over 'C:/TEST/bv-app/reader.js' -> 'Z:/Islamic App/bv-app/reader.js' (18,507)
+2026-08-07 20:24:54: Copy Over 'C:/TEST/bv-app/index.html' -> 'Z:/Islamic App/bv-app/index.html' (9,003)
+2026-08-07 20:24:54: Copy Over 'C:/TEST/bv-app/shell.js' -> 'Z:/Islamic App/bv-app/shell.js' (69,083)
+2026-08-07 20:24:54: Copy Over 'C:/TEST/bv-app/start.js' -> 'Z:/Islamic App/bv-app/start.js' (297,967)
+2026-08-07 20:24:54: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-07 20:24:54: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-07 20:24:55: == Sync Complete. Time: 00:00:02, Speed: 0.00/s, OK: 5, Errors: 0
