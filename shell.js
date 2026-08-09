@@ -390,7 +390,7 @@ function loadAndMountView(name){
     return true;
   }
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=174';
+  var _cb = '?v=179';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -548,12 +548,9 @@ var FILTER_SPECS = {
     ],
     actions: [
       { type:'pill', label:'✦ Guided' },
-      { type:'pill', label:'⛭ DRILL' },
-      { type:'pill', label:'EN' },
-      { type:'pill', label:'AR' },
-      { type:'pill', label:'UR' }
+      { type:'pill', label:'⛭ DRILL' }
     ],
-    actionsInRow1: true,
+    actionsInRow1: false,
     bookmarks: true,
     hint: 'Hadith — 29 books across Sunni and Shia traditions',
     hintInRow2: false,
@@ -1132,11 +1129,16 @@ function _renderShellBookmarkPill(viewName){
   if(!zb) return;
   var row1 = zb.querySelector('.zb-row1');
   if(!row1) return;
-  var slot = row1.querySelector('.zb-slot-search');
+  var slot;
+  if(viewName === 'MONASTIC'){
+    var _r2 = zb.querySelector('.zb-row2');
+    if(_r2){ _r2.classList.remove('is-empty'); slot = _r2; }
+  }
+  if(!slot) slot = row1.querySelector('.zb-slot-saved') || row1.querySelector('.zb-slot-search');
   if(!slot) return;
 
-  // Avoid duplicate (start.js may inject its own pill on START view).
-  if(slot.querySelector('#ga-shell-bmk')) return;
+  // Avoid duplicate (start.js / TIMELINE may inject their own pill).
+  if(slot.querySelector('#ga-shell-bmk') || row1.querySelector('#zbBookmarksPill')) return;
 
   var btn = document.createElement('button');
   btn.id = 'ga-shell-bmk';
