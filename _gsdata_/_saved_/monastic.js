@@ -3608,6 +3608,8 @@ if(typeof document !== 'undefined' && !window._hadithXrefDelegated){
 
 return {
   init: init,
+  // FOCUS READER (reader.js) reads this for the top-bar book title.
+  collectionLabel: getLabel,
   toggleDD: _monToggleDD,
   ddClearAll: _monDDClearAll,
   applyFilters: function(){ try { _applyAllFilters(); } catch(e){ console.warn('[MON] applyFilters failed', e); } },
