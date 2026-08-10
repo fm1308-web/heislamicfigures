@@ -147,13 +147,3 @@ svg.tk-concept-tags{opacity:0.7}
 .tk-conf-pill.tk-conf-h{opacity:1}
 .tk-conf-pill.tk-conf-m{opacity:0.65}
 .tk-conf-pill.tk-conf-l{opacity:0.40}
-
-/* ══ SHOW BOOKS add-on (2026-08-10, reworked same day) ══
-   Pill lives in Zone B next to HIGH (plain zb-pill, not gold).
-   Books render as rows on the central timescale — no table. */
-#tk-books-pill{ letter-spacing:.08em; white-space:nowrap; opacity:.5; transition:opacity .15s; }
-#tk-books-pill.zb-active{ opacity:1; }
-
-/* Figure names are cross-tags to TIMELINE — show it. */
-.tk-fig-row[data-slug] .tk-fig-title{ cursor:pointer; }
-.tk-fig-row[data-slug]:hover .tk-fig-title{ text-decoration:underline; text-underline-offset:3px; }

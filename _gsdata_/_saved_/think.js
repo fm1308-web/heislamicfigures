@@ -1334,6 +1334,10 @@ function _renderCanvas(){
           if(PEOPLE[i].slug === slug){ famous = PEOPLE[i].famous; break; }
         }
       }
+      // This passed `slug` to focusPersonInTimeline, which keys on `famous` — so the
+      // jump never matched. Use the shared shell helper with the resolved name; it
+      // switches tab and opens that figure's card. Old path stays for the no-name case.
+      if(famous && typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(famous); return; }
       // switch to TIMELINE
       try {
         if(typeof window.setActiveTab === 'function'){

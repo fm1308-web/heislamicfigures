@@ -8,6 +8,20 @@ var TABS_ROW2 = ['THINK','MAP','TALK','ONE','MONASTIC','EXPLAIN','START'];
 // VIEW_REGISTRY/FILTER_SPECS entries stay so nothing else breaks.
 var ALL_TABS = TABS_ROW1.concat(TABS_ROW2);
 
+// DEEP-AUDIT FIX (2026-08-07): a REAL global setView. Every view's inline
+// cross-jumps call setView('<view>'); until now only console-log stubs
+// existed (installed by whichever view loaded first), so ALL those jumps
+// were silent no-ops — ONE's "View in RELATIONS/BOOKS/EVENTS", THINK's book
+// links, BOOKS' author/tafsir jumps, EVENTS/MAP tafsir links, etc.
+// setActiveTab handles gating, history and mounting. Views' own
+// "if(typeof window.setView !== 'function')" guards now keep their stubs off.
+window.setView = function(v){
+  var name = String(v || '').toUpperCase();
+  if(name === 'STUDYROOM') name = 'STUDY';
+  if(ALL_TABS.indexOf(name) === -1) return;
+  setActiveTab(name);
+};
+
 var _tabFocused = false;
 var state = {
   tier: 'visitor',
@@ -390,7 +404,7 @@ function loadAndMountView(name){
     return true;
   }
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=179';
+  var _cb = '?v=181';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';

@@ -675,6 +675,7 @@ function _renderCanvas(){
   if(_selConceptSlugs.size===0){
     canvas.innerHTML='<div class="think-empty">Pick a concept above to see its journey through history.</div>';
     if(defEl) defEl.style.display='none';
+    _tkBooksAddon([]);
     var s=_data.stats||{};if(statsEl) statsEl.textContent=(s.concepts_with_figures||0)+' concepts / '+(s.figures_tagged||0)+' tagged';
     return;
   }
@@ -687,6 +688,7 @@ function _renderCanvas(){
       defEl.style.fontFamily=_tkFontBody();
       var _fallback=_tkDef(concept)||'';
       defEl.innerHTML='<span class="tk-def-title">'+(_tkName(concept)||concept.slug||'Concept')+'</span><span class="tk-def-body tk-def-fallback">'+(_fallback||'Loading summary…')+'</span>';
+      _tkBooksAddon(Array.from(_selConceptSlugs));
       (function(slug, fallback){
         _tkLoadSummaries(function(map){
           if(defEl && _selConceptSlugs.has(slug)){
@@ -697,6 +699,7 @@ function _renderCanvas(){
         });
       })(concept.slug, _fallback);
     } else if(selConcepts.length>1){
+      _tkBooksAddon(Array.from(_selConceptSlugs));
       defEl.style.display='';
       defEl.classList.remove('tk-def-expanded');
       defEl.dir='ltr';
@@ -821,14 +824,26 @@ function _renderCanvas(){
       });
     });
   }
+  // SHOW BOOKS: concept-tagged books merge into the SAME timescale (no table).
+  // One row per (book, selected concept) tag, filtered by the HIGH/MED/LOW pill.
+  if(_tkBkOpen && _tkBkInv){
+    selConcepts.forEach(function(sc){
+      var _bl=(_tkBkInv[sc.slug])||[];
+      _bl.forEach(function(r,bi){
+        if(!_tkBandAllows(_tkBkBand(r.confidence))) return;
+        var _bm=_tkBkMeta(r.id);
+        events.push({type:'tagbook', yr:(_bm&&_bm.year)||9999, tb:r, bmeta:_bm, concept:sc, idx:3000+bi});
+      });
+    });
+  }
 
   var ROW_H=44,PAD=30,STEM_X=500,DOT_X=16,LEFT_W=STEM_X-40;
   // Keep start rows first, then order fig + tafsir rows together by year.
   var _starts=events.filter(function(e){return e.type==='start';});
   var _timed=events.filter(function(e){return e.type!=='start';});
   _timed.sort(function(a,b){
-    var ya=(a.type==='tafsir'||a.type==='hadithbook')?a.yr:(a.f&&a.f._book?a.f._book.year:(a.f?a.f.dob:9999))||9999;
-    var yb=(b.type==='tafsir'||b.type==='hadithbook')?b.yr:(b.f&&b.f._book?b.f._book.year:(b.f?b.f.dob:9999))||9999;
+    var ya=(a.type==='tafsir'||a.type==='hadithbook'||a.type==='tagbook')?a.yr:(a.f&&a.f._book?a.f._book.year:(a.f?a.f.dob:9999))||9999;
+    var yb=(b.type==='tafsir'||b.type==='hadithbook'||b.type==='tagbook')?b.yr:(b.f&&b.f._book?b.f._book.year:(b.f?b.f.dob:9999))||9999;
     return ya-yb;
   });
   events=_starts.concat(_timed);
@@ -869,6 +884,7 @@ function _renderCanvas(){
   var _connectedYrs={};
   events.forEach(function(ev){
     if(ev.type==='start') return;  // skip start rows from year axis
+    if(ev.type==='tagbook' && (!ev.yr || ev.yr>=9999)) return;  // undated tagged book — no axis mark
     var yr=ev.yr;
     if(!_connectedYrs[yr]) _connectedYrs[yr]={count:0,midY:ev.y+ROW_H/2};
     _connectedYrs[yr].count++;
@@ -984,6 +1000,28 @@ function _renderCanvas(){
     html+='<div style="position:absolute;left:'+(STEM_X+120)+'px;top:'+(ev.y+9)+'px;display:flex;align-items:center;flex-wrap:wrap">'+hpills+'</div>';
   });
 
+  // SHOW BOOKS rows — author + year on left of the stem (like tafsir writers);
+  // book title + READ pill on the right. Evidence text on hover.
+  events.forEach(function(ev){
+    if(ev.type!=='tagbook') return;
+    var _bm=ev.bmeta;
+    var _btitle=(_bm&&_bm.title)||ev.tb.id;
+    var _bauthor=_tkBkAuthor(_bm, ev.tb.id);
+    var _byr=(_bm&&_bm.year&&_bm.year<9999)?(_tkNum(_bm.year)+' '+_tkUI('CE')):'';
+    var midY=ev.y+ROW_H/2;
+    var _tip=_esc((ev.tb.evidence?ev.tb.evidence+' · ':'')+'AI-tagged from book metadata · independently verify');
+    html+='<div class="tk-fig-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px" title="'+_tip+'">';
+    html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(_bauthor||'—')+'</div>'+(_byr?'<div class="tk-fig-meta">'+_byr+'</div>':'')+'</div>';
+    html+='</div>';
+    html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:#4FD1C5"></div>';
+    html+='<div class="tk-dash-left tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px"></div>';
+    var _tct=(ev.concept&&(ev.concept.title||ev.concept.name||ev.concept.slug))||'';
+    var tpills='<span style="color:#9aa3b2;font-family:Lato,sans-serif;font-size:11px;margin-right:8px;font-style:italic">'+_esc(_tct)+'</span>';
+    tpills+='<span style="color:#4FD1C5;font-family:\'Cinzel\',serif;font-size:12px;letter-spacing:.06em;margin-right:8px">'+_esc(_btitle)+'</span>';
+    tpills+='<button class="tk-tagbook-read" data-bk-title="'+_esc(_btitle)+'" style="background:rgba(79,209,197,0.12);color:#4FD1C5;border:1px solid rgba(79,209,197,0.55);border-radius:12px;padding:2px 10px;font-size:11px;font-family:Lato,sans-serif;cursor:pointer;margin:0 4px 0 0">READ</button>';
+    html+='<div style="position:absolute;left:'+(STEM_X+120)+'px;top:'+(ev.y+9)+'px;display:flex;align-items:center;flex-wrap:wrap">'+tpills+'</div>';
+  });
+
   var BOOK_ROW_H=ROW_H;
   events.forEach(function(ev){
     if(ev.type!=='fig') return;
@@ -1066,6 +1104,29 @@ function _renderCanvas(){
             clearInterval(iv); return;
           }
           if(tries>80){ clearInterval(iv); }
+        }, 80);
+      });
+    });
+  }, 50);
+
+  // Bind SHOW BOOKS READ pill clicks: open BOOKS with the title in search.
+  setTimeout(function(){
+    document.querySelectorAll('.tk-tagbook-read').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var t=this.getAttribute('data-bk-title')||'';
+        if(typeof window.setView==='function') window.setView('books');
+        var tries=0;
+        var iv=setInterval(function(){
+          tries++;
+          var sb=document.getElementById('search');
+          if(sb && typeof window._booksBuildCanvas==='function'){
+            sb.value=t;
+            sb.dispatchEvent(new Event('input',{bubbles:true}));
+            clearInterval(iv); return;
+          }
+          if(tries>60) clearInterval(iv);
         }, 80);
       });
     });
@@ -1317,52 +1378,59 @@ function _renderCanvas(){
       ln.style.opacity=ln.getAttribute('data-author')===slug?'':'0.2';
     });
   }
+  function _tkGoTimeline(slug){
+    if(!slug) return;
+    // resolve famous English name from PEOPLE for DOM scroll fallback
+    var famous = null;
+    if(typeof PEOPLE !== 'undefined' && PEOPLE && PEOPLE.length){
+      for(var i=0;i<PEOPLE.length;i++){
+        if(PEOPLE[i].slug === slug){ famous = PEOPLE[i].famous; break; }
+      }
+    }
+    // Use the shared shell helper with the resolved name; it switches tab and
+    // opens that figure's card. Old path stays for the no-name case.
+    if(famous && typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(famous); return; }
+    // switch to TIMELINE
+    try {
+      if(typeof window.setActiveTab === 'function'){
+        window.setActiveTab('TIMELINE');
+      } else if(typeof setView === 'function'){
+        setView('timeline');
+      }
+    } catch(err){}
+    // scroll + focus after timeline mounts
+    setTimeout(function(){
+      try {
+        if(typeof window.focusPersonInTimeline === 'function'){
+          window.focusPersonInTimeline(slug);
+          return;
+        }
+      } catch(err){}
+      if(famous){
+        var row = document.querySelector('.tc-famous[data-name="'+famous.replace(/"/g,'\\"')+'"]');
+        if(row){
+          row.scrollIntoView({block:'center', behavior:'smooth'});
+          row.classList.add('tc-pulse');
+          setTimeout(function(){ row.classList.remove('tc-pulse'); }, 1800);
+        }
+      }
+    }, 380);
+  }
   canvas.querySelectorAll('.tk-fig-row').forEach(function(el){
     el.addEventListener('click',function(e){
       e.stopPropagation();
+      // Cross-tag (Adam 2026-08-10): single click on the figure NAME jumps to
+      // TIMELINE. Clicking elsewhere in the row keeps the highlight/trace.
+      if(el.dataset.slug && e.target.closest('.tk-fig-title')){
+        _tkGoTimeline(el.dataset.slug);
+        return;
+      }
       _highlightAuthor(el.dataset.slug);
     });
     el.addEventListener('dblclick',function(e){
       e.stopPropagation();
       e.preventDefault();
-      var slug = el.dataset.slug;
-      if(!slug) return;
-      // resolve famous English name from PEOPLE for DOM scroll fallback
-      var famous = null;
-      if(typeof PEOPLE !== 'undefined' && PEOPLE && PEOPLE.length){
-        for(var i=0;i<PEOPLE.length;i++){
-          if(PEOPLE[i].slug === slug){ famous = PEOPLE[i].famous; break; }
-        }
-      }
-      // This passed `slug` to focusPersonInTimeline, which keys on `famous` — so the
-      // jump never matched. Use the shared shell helper with the resolved name; it
-      // switches tab and opens that figure's card. Old path stays for the no-name case.
-      if(famous && typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(famous); return; }
-      // switch to TIMELINE
-      try {
-        if(typeof window.setActiveTab === 'function'){
-          window.setActiveTab('TIMELINE');
-        } else if(typeof setView === 'function'){
-          setView('timeline');
-        }
-      } catch(err){}
-      // scroll + focus after timeline mounts
-      setTimeout(function(){
-        try {
-          if(typeof window.focusPersonInTimeline === 'function'){
-            window.focusPersonInTimeline(slug);
-            return;
-          }
-        } catch(err){}
-        if(famous){
-          var row = document.querySelector('.tc-famous[data-name="'+famous.replace(/"/g,'\\"')+'"]');
-          if(row){
-            row.scrollIntoView({block:'center', behavior:'smooth'});
-            row.classList.add('tc-pulse');
-            setTimeout(function(){ row.classList.remove('tc-pulse'); }, 1800);
-          }
-        }
-      }, 380);
+      _tkGoTimeline(el.dataset.slug);
     });
   });
   canvas.addEventListener('click',function(e){
@@ -1470,6 +1538,85 @@ function thinkSelectConceptBySlug(slug){
   return true;
 }
 window.thinkSelectConceptBySlug = thinkSelectConceptBySlug;
+
+// ═══ SHOW BOOKS add-on (Adam, 2026-08-10; reworked 2026-08-10 pm) ═══════
+// Wires concept_reverse_books.json into THINK. The "SHOW BOOKS (n)" pill
+// lives in Zone B next to the HIGH pill. Toggling it merges the tagged
+// books into the SAME central timescale as figures/tafsir/hadith rows —
+// author on the left, book title + READ pill on the right. Works with any
+// number of selected concepts; rows respect the HIGH/MED/LOW filter.
+// Nothing invented: every row is a tag already in the data plus fields
+// from books.json / core.json.
+var _tkBkInv = null, _tkBkLoading = false, _tkBkOpen = false;
+function _tkBkBand(c){ return c==='high'?'h':(c==='medium'?'m':'l'); }
+function _tkBooksLoadInv(cb){
+  if(_tkBkInv){ cb(_tkBkInv); return; }
+  if(_tkBkLoading){ setTimeout(function(){ _tkBooksLoadInv(cb); }, 200); return; }
+  _tkBkLoading = true;
+  fetch(dataUrl('data/islamic/xref/concept_reverse_books.json'))
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .catch(function(){ return {}; })
+    .then(function(map){
+      var inv = {};
+      Object.keys(map || {}).forEach(function(bid){
+        (map[bid] || []).forEach(function(t){
+          if(!t || !t.concept_slug) return;
+          (inv[t.concept_slug] = inv[t.concept_slug] || []).push({
+            id: bid, confidence: t.confidence || '', evidence: t.evidence || ''
+          });
+        });
+      });
+      _tkBkInv = inv; _tkBkLoading = false; cb(inv);
+    });
+}
+function _tkBkMeta(bid){
+  var arr = _booksData || window._BOOKS_DATA || [];
+  var list = Array.isArray(arr) ? arr : (arr.books || []);
+  for(var i = 0; i < list.length; i++){ if(String(list[i].id) === String(bid)) return list[i]; }
+  return null;
+}
+function _tkBkAuthor(b, bid){
+  if(b && b.author_name) return b.author_name;
+  var f = String(bid || '').split('-')[0];
+  try {
+    var P = window.PEOPLE || [];
+    for(var i = 0; i < P.length; i++){ if(P[i].slug === f) return P[i].famous || ''; }
+  } catch(e){}
+  return '';
+}
+function _tkBkCount(slugs){
+  var n = 0;
+  slugs.forEach(function(s){
+    ((_tkBkInv && _tkBkInv[s]) || []).forEach(function(r){
+      if(_tkBandAllows(_tkBkBand(r.confidence))) n++;
+    });
+  });
+  return n;
+}
+function _tkBooksAddon(slugs){
+  // Legacy host from the table version — remove if still around.
+  var oldHost = document.getElementById('tk-books-addon');
+  if(oldHost) oldHost.remove();
+  var pill = document.getElementById('tk-books-pill');
+  if(!pill) return;
+  slugs = slugs || [];
+  if(!slugs.length){ pill.style.display = 'none'; return; }
+  var wasReady = !!_tkBkInv;
+  _tkBooksLoadInv(function(inv){
+    // Bail if selection changed while loading.
+    var same = slugs.length === _selConceptSlugs.size
+            && slugs.every(function(s){ return _selConceptSlugs.has(s); });
+    if(!same) return;
+    var n = _tkBkCount(slugs);
+    if(!n){ pill.style.display = 'none'; return; }
+    pill.style.display = '';
+    pill.textContent = '📚 SHOW BOOKS (' + n + ')';
+    pill.classList.toggle('zb-active', _tkBkOpen);   // highlighted = on, dimmed = off
+    // If the toggle was already open but the canvas rendered before the
+    // inventory arrived, re-render once so the rows appear.
+    if(_tkBkOpen && !wasReady && typeof _renderCanvas === 'function') _renderCanvas();
+  });
+}
 
   // ═══════════════════════════════════════════════════════════
   // ▲▲▲ END VERBATIM LIFTED CODE ▲▲▲
@@ -1599,14 +1746,23 @@ function _gaSyncLangBtn(btn){
     if(!zoneBEl) return;
     var row2 = zoneBEl.querySelector('.zb-row2');
     if(!row2) return;
+    // Role labels removed (Adam 2026-08-10): colors already live in the
+    // canvas role bands + background text. The legend slot now holds the
+    // four controls, moved up one line from row 2:
+    // [Concept] [Languages] [HIGH] [SHOW BOOKS]
     var legSlot = document.getElementById('think-shell-legend');
     if(legSlot){
-      var lh = '';
-      Object.keys(ROLE_COLORS).forEach(function(role){
-        var label = role.charAt(0).toUpperCase() + role.slice(1);
-        lh += '<span style="display:inline-flex;align-items:center;gap:5px"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+ROLE_COLORS[role]+'"></span>'+label+'</span>';
-      });
-      legSlot.innerHTML = lh;
+      legSlot.innerHTML = '';
+      legSlot.style.justifyContent = 'flex-start';
+      legSlot.style.flexWrap = 'nowrap';
+      legSlot.style.gap = '10px';
+    }
+    // The empty 380px search slot pushed the buttons toward the middle —
+    // hide it so the row starts at the left edge.
+    var _row1 = zoneBEl.querySelector('.zb-row1');
+    if(_row1){
+      var _sSlot = _row1.querySelector('.zb-slot-search');
+      if(_sSlot && !_sSlot.childNodes.length) _sSlot.style.display = 'none';
     }
     var allSel = row2.querySelectorAll('.zb-select');
     var conceptBtn = null, langBtn = null;
@@ -1615,6 +1771,30 @@ function _gaSyncLangBtn(btn){
       if(t.indexOf('LANG') !== -1) langBtn = b;
       else conceptBtn = b;
     });
+    if(legSlot){
+      if(conceptBtn) legSlot.appendChild(conceptBtn);
+      if(langBtn) legSlot.appendChild(langBtn);
+      var _confMove = document.getElementById('thinkConfPill');
+      if(_confMove) legSlot.appendChild(_confMove);
+      // SHOW BOOKS pill — plain zb-pill (NOT gold), hidden until a selected
+      // concept has tagged books. Click merges books into the timescale.
+      var bkPill = document.getElementById('tk-books-pill');
+      if(!bkPill){
+        bkPill = document.createElement('button');
+        bkPill.type = 'button';
+        bkPill.id = 'tk-books-pill';
+        bkPill.className = 'zb-pill';
+        bkPill.style.display = 'none';
+        bkPill.title = 'AI-tagged from book metadata · not scholar-certified · independently verify';
+        bkPill.addEventListener('click', function(e){
+          e.stopPropagation();
+          _tkBkOpen = !_tkBkOpen;
+          if(typeof _renderCanvas === 'function') _renderCanvas();
+        });
+      }
+      legSlot.appendChild(bkPill);
+      _tkBooksAddon(Array.from(_selConceptSlugs));
+    }
     if(conceptBtn){
       window._thShellBtn = conceptBtn;
       conceptBtn.addEventListener('click', function(e){
