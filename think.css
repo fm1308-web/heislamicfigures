@@ -154,6 +154,8 @@ svg.tk-concept-tags{opacity:0.7}
 #tk-books-pill{ letter-spacing:.08em; white-space:nowrap; opacity:.5; transition:opacity .15s; }
 #tk-books-pill.zb-active{ opacity:1; }
 
-/* Figure names are cross-tags to TIMELINE — show it. */
-.tk-fig-row[data-slug] .tk-fig-title{ cursor:pointer; }
-.tk-fig-row[data-slug]:hover .tk-fig-title{ text-decoration:underline; text-underline-offset:3px; }
+/* Figure / author names are cross-tags to TIMELINE — show it. */
+.tk-fig-row[data-slug] .tk-fig-title,
+.tk-fig-row[data-tlname] .tk-fig-title{ cursor:pointer; }
+.tk-fig-row[data-slug]:hover .tk-fig-title,
+.tk-fig-row[data-tlname]:hover .tk-fig-title{ text-decoration:underline; text-underline-offset:3px; }

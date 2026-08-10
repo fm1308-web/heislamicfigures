@@ -966,12 +966,26 @@ function _renderCanvas(){
     html+='<div class="tk-dash-left tk-anim-el" data-slug="'+_esc(f.slug)+'" data-y="'+midY+'" style="top:'+midY+'px'+(f._bookless?';opacity:0.75':'')+'"></div>';
   });
 
+  // Author name → canonical famous name in core.json (case-insensitive exact
+  // match only — no fuzzy guessing). Null when the "author" is a committee or
+  // any name not in the data.
+  function _tkTlName(name){
+    if(!name) return null;
+    var P=window.PEOPLE||[];
+    var n=String(name).trim().toLowerCase();
+    for(var i=0;i<P.length;i++){
+      var fm=P[i]&&P[i].famous;
+      if(fm&&String(fm).trim().toLowerCase()===n) return fm;
+    }
+    return null;
+  }
   // Tafsir rows — author + year on left; "Tafsir" label + language pills on right.
   events.forEach(function(ev){
     if(ev.type!=='tafsir') return;
     var t=ev.taf;
     var midY=ev.y+ROW_H/2;
-    html+='<div class="tk-fig-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
+    var _tfTl=_tkTlName(t.author);
+    html+='<div class="tk-fig-row tk-anim-el"'+(_tfTl?' data-tlname="'+_esc(_tfTl)+'"':'')+' data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
     html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(t.author)+'</div><div class="tk-fig-meta">'+_tkNum(t.year)+' '+_tkUI('CE')+'</div></div>';
     html+='</div>';
     html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:#c9a961"></div>';
@@ -989,7 +1003,8 @@ function _renderCanvas(){
     if(ev.type!=='hadithbook') return;
     var hb=ev.hb;
     var midY=ev.y+ROW_H/2;
-    html+='<div class="tk-fig-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
+    var _hbTl=_tkTlName(hb.author);
+    html+='<div class="tk-fig-row tk-anim-el"'+(_hbTl?' data-tlname="'+_esc(_hbTl)+'"':'')+' data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px">';
     html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(hb.author)+'</div><div class="tk-fig-meta">'+_tkNum(hb.year)+' '+_tkUI('CE')+'</div></div>';
     html+='</div>';
     html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:#8ab4d4"></div>';
@@ -1010,7 +1025,8 @@ function _renderCanvas(){
     var _byr=(_bm&&_bm.year&&_bm.year<9999)?(_tkNum(_bm.year)+' '+_tkUI('CE')):'';
     var midY=ev.y+ROW_H/2;
     var _tip=_esc((ev.tb.evidence?ev.tb.evidence+' · ':'')+'AI-tagged from book metadata · independently verify');
-    html+='<div class="tk-fig-row tk-anim-el" data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px" title="'+_tip+'">';
+    var _tbTl=_tkTlName(_bauthor);
+    html+='<div class="tk-fig-row tk-anim-el"'+(_tbTl?' data-tlname="'+_esc(_tbTl)+'"':'')+' data-y="'+midY+'" style="top:'+ev.y+'px;height:'+ROW_H+'px" title="'+_tip+'">';
     html+='<div class="tk-fig-main"><div class="tk-fig-title">'+_esc(_bauthor||'—')+'</div>'+(_byr?'<div class="tk-fig-meta">'+_byr+'</div>':'')+'</div>';
     html+='</div>';
     html+='<div class="tk-role-dot tk-anim-el" data-y="'+midY+'" style="top:'+midY+'px;background:#4FD1C5"></div>';
@@ -1419,11 +1435,16 @@ function _renderCanvas(){
   canvas.querySelectorAll('.tk-fig-row').forEach(function(el){
     el.addEventListener('click',function(e){
       e.stopPropagation();
-      // Cross-tag (Adam 2026-08-10): single click on the figure NAME jumps to
-      // TIMELINE. Clicking elsewhere in the row keeps the highlight/trace.
-      if(el.dataset.slug && e.target.closest('.tk-fig-title')){
-        _tkGoTimeline(el.dataset.slug);
-        return;
+      // Cross-tag (Adam 2026-08-10): single click on the NAME jumps to
+      // TIMELINE. Figure rows jump by slug; tafsir/hadith/tagged-book author
+      // rows jump by canonical name (only when that person is in core.json).
+      // Clicking elsewhere in the row keeps the highlight/trace.
+      if(e.target.closest('.tk-fig-title')){
+        if(el.dataset.slug){ _tkGoTimeline(el.dataset.slug); return; }
+        if(el.dataset.tlname){
+          if(typeof window._gaGoTimeline==='function') window._gaGoTimeline(el.dataset.tlname);
+          return;
+        }
       }
       _highlightAuthor(el.dataset.slug);
     });
