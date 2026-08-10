@@ -1034,7 +1034,11 @@ function _renderCanvas(){
     var _tct=(ev.concept&&(ev.concept.title||ev.concept.name||ev.concept.slug))||'';
     var tpills='<span style="color:#9aa3b2;font-family:Lato,sans-serif;font-size:11px;margin-right:8px;font-style:italic">'+_esc(_tct)+'</span>';
     tpills+='<span style="color:#4FD1C5;font-family:\'Cinzel\',serif;font-size:12px;letter-spacing:.06em;margin-right:8px">'+_esc(_btitle)+'</span>';
-    tpills+='<button class="tk-tagbook-read" data-bk-title="'+_esc(_btitle)+'" style="background:rgba(79,209,197,0.12);color:#4FD1C5;border:1px solid rgba(79,209,197,0.55);border-radius:12px;padding:2px 10px;font-size:11px;font-family:Lato,sans-serif;cursor:pointer;margin:0 4px 0 0">READ</button>';
+    // READ = external link only (same rule as BOOKS view): show the pill
+    // only when the book has a free external URL, and open it in a new tab.
+    if(_bm && _bm.is_free && _bm.url){
+      tpills+='<a class="tk-book-read" href="'+_esc(_bm.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="margin:0 4px 0 0">READ</a>';
+    }
     html+='<div style="position:absolute;left:'+(STEM_X+120)+'px;top:'+(ev.y+9)+'px;display:flex;align-items:center;flex-wrap:wrap">'+tpills+'</div>';
   });
 
@@ -1125,28 +1129,7 @@ function _renderCanvas(){
     });
   }, 50);
 
-  // Bind SHOW BOOKS READ pill clicks: open BOOKS with the title in search.
-  setTimeout(function(){
-    document.querySelectorAll('.tk-tagbook-read').forEach(function(el){
-      el.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var t=this.getAttribute('data-bk-title')||'';
-        if(typeof window.setView==='function') window.setView('books');
-        var tries=0;
-        var iv=setInterval(function(){
-          tries++;
-          var sb=document.getElementById('search');
-          if(sb && typeof window._booksBuildCanvas==='function'){
-            sb.value=t;
-            sb.dispatchEvent(new Event('input',{bubbles:true}));
-            clearInterval(iv); return;
-          }
-          if(tries>60) clearInterval(iv);
-        }, 80);
-      });
-    });
-  }, 50);
+  // SHOW BOOKS READ pills are plain external links now — no binding needed.
 
   // Bind START pill clicks: pin verses for the concept and switch to START view.
   setTimeout(function(){
