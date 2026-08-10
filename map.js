@@ -1154,6 +1154,7 @@ function _mapAnimStop(){
       searchInp.placeholder = 'Search figures…';
       searchInp.addEventListener('input', function(){
         window.searchQ = searchInp.value || '';
+        // (deep-audit 2026-08-07) — see pending-place consumption below.
         _renderMarkers();
       });
     }
@@ -1505,4 +1506,26 @@ return {
     }
   }
 };
+})();
+
+// DEEP-AUDIT FIX (2026-08-07): EXPLAIN's place chips set window._mapPendingPlace
+// and open MAP — but nothing ever read it, so the map opened unfocused.
+// Consume it here: poll briefly after load/tab-switch, put the place into the
+// shell search box and fire the existing search pipeline.
+(function(){
+  function _consumePendingPlace(){
+    var q = window._mapPendingPlace;
+    if(!q) return;
+    var inp = document.getElementById('search');
+    if(!inp) return;               // MAP not mounted yet — keep polling
+    window._mapPendingPlace = null;
+    inp.value = q;
+    window.searchQ = q;
+    try { inp.dispatchEvent(new Event('input', { bubbles: true })); } catch(e){}
+  }
+  setInterval(function(){
+    if(!window._mapPendingPlace) return;
+    if((document.body.getAttribute('data-active-tab') || '') !== 'MAP') return;
+    _consumePendingPlace();
+  }, 300);
 })();

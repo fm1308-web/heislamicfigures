@@ -2194,11 +2194,60 @@ function _applyAllFilters(){
     }
 
     showLoading(false);
+    _monBaseRows = hadiths;
     _renderRows(hadiths, colSet.size === 1 ? Array.from(colSet)[0] : '');
+    if(_monSearchQuery) _applySearch();
   });
 }
 
 var _lastFiltered = null, _lastColKey = null;
+var _monBaseRows = null, _monSearchQuery = '', _monSearchTimer = null;
+function _monNorm(s){
+  return String(s==null?'':s).toLowerCase()
+    .replace(/[\u2018\u2019\u201C\u201D]/g,"'")
+    .replace(/[\u064B-\u0652\u0670]/g,'')
+    .replace(/[^\p{L}\p{N}\s]/gu,' ')
+    .replace(/\s+/g,' ').trim();
+}
+function _applySearch(){
+  if(!_monBaseRows || !_monBaseRows.length) return;
+  var q = _monNorm(_monSearchQuery);
+  if(!q){ _renderRows(_monBaseRows, _lastColKey, 0); return; }
+  var matches = _monBaseRows.filter(function(h){
+    var hay = _monNorm((getText(h)||'') + ' ' + (getNarrator(h)||'') + ' ' + (getNumber(h)||'') + ' ' + (h.topic||''));
+    return hay.indexOf(q) !== -1;
+  });
+  _renderRows(matches, _lastColKey, 0);
+  try {
+    var res = document.getElementById('mon-results');
+    if(res){
+      var bar = document.createElement('div');
+      bar.style.cssText = 'background:#1B2631;color:#D4AF37;font-family:Cinzel,serif;font-size:13px;letter-spacing:.06em;padding:8px 14px;border-bottom:1px solid rgba(212,175,55,.4)';
+      bar.textContent = matches.length + ' result' + (matches.length!==1?'s':'') + ' for "' + (_monSearchQuery||'') + '"';
+      res.insertBefore(bar, res.firstChild);
+      res.scrollTop = 0;
+      _monHighlight(_monSearchQuery);
+    }
+  } catch(e){}
+}
+function _monHighlight(raw){
+  var term = String(raw||'').trim();
+  if(!term) return;
+  var rx = new RegExp('('+term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+  document.querySelectorAll('#mon-results .mon-row').forEach(function(row){
+    var w = document.createTreeWalker(row, NodeFilter.SHOW_TEXT, null);
+    var hits = [], n;
+    while(n = w.nextNode()){ if(n.nodeValue && n.nodeValue.search(rx) !== -1) hits.push(n); }
+    hits.forEach(function(tn){
+      var span = document.createElement('span');
+      span.innerHTML = tn.nodeValue.replace(rx, '<mark style="background:#D4AF37;color:#111;padding:0 1px;border-radius:2px">$1</mark>');
+      tn.parentNode.replaceChild(span, tn);
+    });
+  });
+}
+// Bridge: MonasticView is a separate IIFE and cannot see these locals. Expose entry points on window.
+window._monRunSearch = function(val){ _monSearchQuery = val || ''; _applySearch(); };
+window._monDebSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer) clearTimeout(_monSearchTimer); _monSearchTimer = setTimeout(_applySearch, 180); };
 function _renderRows(filtered, colKey, page){
   _lastFiltered = filtered;
   _lastColKey = colKey;
@@ -3841,14 +3890,13 @@ window.MonasticView = (function(){
   function _wireZoneB(zoneBEl){
     var searchInp = document.getElementById('search');
     if(searchInp){
-      searchInp.placeholder = 'Search hadiths…';
+      searchInp.placeholder = 'Search the selected book — pick a book first';
+      searchInp.setAttribute('data-i18n-placeholder', 'Search the selected book — pick a book first');
       searchInp.addEventListener('input', function(){
-        var q = (searchInp.value || '').toLowerCase();
-        var rows = document.querySelectorAll('#mon-results .mon-row');
-        rows.forEach(function(r){
-          var hay = (r.textContent || '').toLowerCase();
-          r.style.display = !q || hay.indexOf(q) !== -1 ? '' : 'none';
-        });
+        if(window._monDebSearch) window._monDebSearch(searchInp.value);
+      });
+      searchInp.addEventListener('keydown', function(e){
+        if(e.key === 'Enter'){ e.preventDefault(); if(window._monRunSearch) window._monRunSearch(searchInp.value); }
       });
     }
     if(!zoneBEl) return;

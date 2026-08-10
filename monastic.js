@@ -3579,6 +3579,15 @@ if(typeof document !== 'undefined' && !window._hadithXrefDelegated){
       var eid = evn.dataset.id;
       if(!eid) return;
       _monClickTab(['EVENTS'], 'events');
+      // DEEP-AUDIT FIX (2026-08-07): the scroll helper lives in start.js — if the
+      // user never opened START, it does not exist and the chip only switched tabs.
+      // Lazy-load start.js once (same pattern shell.js uses for the bookmarks popup).
+      if(typeof window._stXrefJumpEvent !== 'function' && !window._monStartJsLoading){
+        window._monStartJsLoading = true;
+        var _sjs = document.createElement('script');
+        _sjs.src = 'start.js?v=' + Date.now();
+        document.head.appendChild(_sjs);
+      }
       var etries = 0;
       var eiv = setInterval(function(){
         etries++;

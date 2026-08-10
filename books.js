@@ -1391,6 +1391,10 @@ function _showBooksMethodology(){
   };
 })();
 
+// DEEP-AUDIT FIX (2026-08-07): MONASTIC's book chips poll for this export
+// before applying their search — it was never on window, so the search never ran.
+window._booksBuildCanvas = _booksBuildCanvas;
+
 window._booksOpenAuthor = function(name){
   if(!name) return;
   // Click the ONE tab in top nav

@@ -2777,6 +2777,72 @@ function _stBmkRender(){
 window._stBmkRender=_stBmkRender;
 
 // ══════════════════════════════════════════════════════════
+// READER BOOKMARK BRIDGE (Adam 2026-08-05)
+// The Focus Reader (reader.js) uses this so its flag button saves the
+// CURRENT VERSE to the SAME account bookmark store as the per-verse flags
+// — so reader saves also appear in the normal "My Bookmarks" popup.
+// Everything traces to GoldArkAuth; nothing invented.
+// ══════════════════════════════════════════════════════════
+window._stReaderBmk = {
+  // Topmost fully/partly visible verse in whatever scroll container is live
+  // (the reader viewport when open, else the page).
+  currentVerse: function(){
+    var rows = document.querySelectorAll('.st-verse');
+    var vp = document.getElementById('fr-viewport');
+    var refTop = vp ? vp.getBoundingClientRect().top : 0;
+    for(var i=0;i<rows.length;i++){
+      var r = rows[i].getBoundingClientRect();
+      if(r.bottom > refTop + 48){
+        var v = parseInt(rows[i].getAttribute('data-verse-id'),10);
+        if(v) return { surah: window._stCurrentSurah||1, verse: v };
+      }
+    }
+    return { surah: window._stCurrentSurah||1, verse: 1 };
+  },
+  has: function(s,v){ var a=window.GoldArkAuth; return !!(a&&a.hasBookmark&&a.hasBookmark(s,v)); },
+  signedIn: function(){ var a=window.GoldArkAuth; return !!(a&&a.isSignedIn&&a.isSignedIn()); },
+  toggle: function(s,v,cb){
+    if(typeof window.requireTester!=='function'){ if(cb) cb(); return; }
+    window.requireTester('bookmark', function(){
+      var a=window.GoldArkAuth;
+      var pr = a.hasBookmark(s,v) ? a.removeBookmark(s,v) : a.addBookmark(s,v);
+      pr.then(function(){
+        try{ _stBmkRender(); }catch(e){}
+        try{ if(window._stShellBmkRefresh) window._stShellBmkRefresh(); }catch(e){}
+        if(cb) cb();
+      }).catch(function(e){ console.error(e); if(cb) cb(); });
+    });
+  },
+  remove: function(s,v,cb){
+    var a=window.GoldArkAuth;
+    if(!(a&&a.removeBookmark)){ if(cb) cb(); return; }
+    a.removeBookmark(s,v).then(function(){
+      try{ _stBmkRender(); }catch(e){}
+      try{ if(window._stShellBmkRefresh) window._stShellBmkRefresh(); }catch(e){}
+      if(cb) cb();
+    }).catch(function(e){ console.error(e); if(cb) cb(); });
+  },
+  list: function(){
+    var a=window.GoldArkAuth;
+    var raw=(a&&a.getBookmarks)?a.getBookmarks():[];
+    var out=[];
+    raw.forEach(function(k){
+      var m = String(k).match(/^q:(\d+):(\d+)$/);
+      if(m) out.push({ surah:parseInt(m[1],10), verse:parseInt(m[2],10) });
+    });
+    out.sort(function(a,b){ return a.surah-b.surah || a.verse-b.verse; });
+    return out;
+  },
+  jump: function(s,v){
+    if(typeof _stSelectSurah==='function' && s && s!==window._stCurrentSurah) _stSelectSurah(s);
+    setTimeout(function(){
+      var el=document.querySelector('.st-verse[data-verse-id="'+v+'"]');
+      if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }, s && s!==window._stCurrentSurah ? 450 : 60);
+  }
+};
+
+// ══════════════════════════════════════════════════════════
 // READING PROGRESS — last read + furthest-reached per surah
 // ══════════════════════════════════════════════════════════
 var _stProgressTimer = null;

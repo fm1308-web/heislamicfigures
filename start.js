@@ -1660,7 +1660,15 @@ window._stXrefPinAllHadiths=_stXrefPinAllHadiths;
 
 function _stXrefJumpEvent(eventId){
   var pop=document.getElementById('st-xref-popup');if(pop)pop.remove();
-  if(typeof setView==='function')setView('events');
+  // DEEP-AUDIT FIX (2026-08-07): setView() does not exist in the shell — the
+  // EVENTS tab never opened. DOM-click it like every working jump does.
+  var _evTabs = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="events"], .tab-events');
+  for(var _e=0;_e<_evTabs.length;_e++){
+    var _el=_evTabs[_e];
+    var _txt=(_el.textContent||'').trim().toUpperCase();
+    var _dv=_el.getAttribute('data-view')||'';
+    if(_txt==='EVENTS'||_dv==='events'){ _el.click(); break; }
+  }
 
   // Retry loop: handles first-time init of events view + late layout.
   // Root cause being fixed: .ev-row has display:contents, so el.offsetTop
@@ -1880,24 +1888,37 @@ window._stFigPopup=_stFigPopup;
 
 function _stXrefJumpFigure(slug,name){
   var pop=document.getElementById('st-xref-popup');if(pop)pop.remove();
-  if(typeof PEOPLE==='undefined'||!PEOPLE.length){if(typeof setView==='function')setView('timeline');return;}
-  var p=null;
-  for(var i=0;i<PEOPLE.length;i++){
-    if(PEOPLE[i].slug===slug){p=PEOPLE[i];break;}
-  }
-  if(!p&&name){
-    for(var j=0;j<PEOPLE.length;j++){
-      if(PEOPLE[j].famous===name){p=PEOPLE[j];break;}
+  // DEEP-AUDIT FIX (2026-08-07): old body relied on setView(), which does not
+  // exist in the shell — clicking a linked figure did NOTHING. Now the
+  // app-standard TIMELINE jump (same pattern as explain.js _exClickFigure).
+  var famous = name || '';
+  try {
+    var P = window.PEOPLE || [];
+    for(var i=0;i<P.length;i++){ if(P[i].slug===slug){ famous = P[i].famous || famous; break; } }
+    if(famous === (name||'') && name){
+      for(var j=0;j<P.length;j++){ if(P[j].famous===name){ famous = P[j].famous; break; } }
     }
+  } catch(e){}
+  if(!famous) return;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], .tab-timeline');
+  for(var k=0;k<c.length;k++){
+    var el=c[k];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='TIMELINE'||dv==='timeline'){ el.click(); break; }
   }
-  if(p&&typeof setView==='function'){
-    setView('timeline');
-    setTimeout(function(){
-      if(typeof jumpTo==='function')jumpTo(p.famous);
-    },800);
-  } else {
-    if(typeof setView==='function')setView('timeline');
-  }
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    var fn = (typeof window.focusPersonInTimeline === 'function' && window.focusPersonInTimeline.toString().length > 60)
+      ? window.focusPersonInTimeline : window.jumpTo;
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+      try{ fn(famous); }catch(e){}
+      clearInterval(iv); return;
+    }
+    if(tries>60) clearInterval(iv);
+  },80);
 }
 window._stXrefJumpFigure=_stXrefJumpFigure;
 
@@ -4473,9 +4494,18 @@ function _dvReadChip(id, surah, verse){
 }
 
 function _dvOpenExplain(id, surah, verse){
-  if(typeof setView !== 'function') return;
+  // DEEP-AUDIT FIX (2026-08-07): the setView guard made this a no-op in the
+  // shell. Set the deep-link hash, then DOM-click the EXPLAIN tab (explain.js
+  // consumes #explain?tafsir=…&surah=…&verse=… on mount).
   location.hash = '#explain?tafsir='+encodeURIComponent(id)+'&surah='+surah+'&verse='+verse;
-  setView('explain');
+  var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="explain"], .tab-explain');
+  for(var i=0;i<c.length;i++){
+    var el=c[i];
+    var txt=(el.textContent||'').trim().toUpperCase();
+    var dv=el.getAttribute('data-view')||'';
+    if(txt==='EXPLAIN'||dv==='explain'){ el.click(); return; }
+  }
+  if(typeof setView === 'function') setView('explain');
 }
 window._dvOpenExplain = _dvOpenExplain;
 
@@ -4744,8 +4774,11 @@ function renderQuranRef(ref){
 // Jump to START view at surah:ayah
 window._qlJump=function(surah,ayah,ev){
   if(ev){ev.preventDefault();ev.stopPropagation();}
+  // DEEP-AUDIT FIX (2026-08-07): setView() does not exist in the shell, so
+  // qref links from other views never switched to START. openStartAtVerse is
+  // the proven jump (tab click + pending-verse + scroll + flash).
+  if(typeof window.openStartAtVerse === 'function'){ window.openStartAtVerse(surah, ayah, ayah); return; }
   history.replaceState(null,'','#quran/'+surah+'/'+ayah);
-  if(typeof setView==='function')setView('start');
   _qlScrollTo(surah,ayah);
 };
 

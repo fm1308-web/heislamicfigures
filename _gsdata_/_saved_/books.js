@@ -1417,6 +1417,7 @@ window._booksOpenAuthor = function(name){
 
 window._booksGoToTimeline = function(name){
   if(!name) return;
+  if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(name); return; }
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="timeline"], .tab-timeline');
   for(var i=0;i<c.length;i++){
     var el = c[i];
