@@ -1,9 +1,0 @@
-2026-07-30 13:26:54: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
-2026-07-30 13:26:54: Got Creds for NetServer=smbd://mirza User=Faheem
-2026-07-30 13:26:54: -- Analysis Started by User Command
-2026-07-30 13:26:54: L: Reading State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
-2026-07-30 13:26:56: R: Reading State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
-2026-07-30 13:26:56: Do Not Propagate Deletions in 2-way job is not allowed and therefore ignored, as Deletions are always propagated in 2-way jobs
-2026-07-30 13:26:56: Changes: 4, Conflicts: 0, CopyTime: 0, FixState: 0, Errors: 0, All: 4520
-2026-07-30 13:26:56: Right to Left: Copy File: 4 
-2026-07-30 13:26:56: -- Analysis Complete. Time 00:00:02, Speed: 2,260 files/s

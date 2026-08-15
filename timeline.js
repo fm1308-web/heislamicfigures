@@ -689,6 +689,38 @@ window.TimelineView = (function(){
     return html;
   };
 
+  // Presentation-only bio paragraphing (Adam 2026-08-10). Long bios were one
+  // wall of text. Splits into <p> blocks: at the text's own newlines when it
+  // has them, otherwise every ~4 sentences (same rule as the Focus Reader).
+  // Sentence ends only count when followed by a capital/quote — so "c. 1144"
+  // or "vol. ii" never split. THE DATA IS NEVER CHANGED — display only.
+  function _tlBioParas(txt, useEsc){
+    if(!txt) return '';
+    var t = String(txt);
+    var blocks;
+    if(/\n/.test(t)){
+      blocks = t.split(/\n+/);
+    } else if(t.length >= 500){
+      blocks = [];
+      var start = 0, count = 0;
+      var re = /[.!?](?=\s+["'“(]?[A-Z])|[؟۔](?=\s)/g, m;
+      while((m = re.exec(t))){
+        count++;
+        if(count >= 4){ blocks.push(t.slice(start, m.index + 1)); start = m.index + 1; count = 0; }
+      }
+      blocks.push(t.slice(start));
+    } else {
+      blocks = [t];
+    }
+    var out = '';
+    for(var i = 0; i < blocks.length; i++){
+      var s = blocks[i].trim();
+      if(!s) continue;
+      out += '<p>' + _linkifyQuranRefs(useEsc ? esc(s) : s) + '</p>';
+    }
+    return out;
+  }
+
   // Globals the lifted code reads as bare names (not via window.).
   // SL_* are declared inside the lifted body (lines 766-771).
   // We need IH_SUBLANE_ORDER + _IH_SUBLANE_REV in scope — relations.js defines
@@ -2145,8 +2177,8 @@ function renderInfo(p){
               }
             } catch(e){}
             var srcLine = srcs.length ? '<div style="margin-top:8px;font-size:11px;color:var(--ip-muted);font-style:italic">'+_tlT('Sources')+': '+srcs.map(esc).join(' · ')+'</div>' : '';
-            var paneTxt = _linkifyQuranRefs(esc(txt).replace(/\n+/g,'<br>'));
-            return '<div class="i-ct-pane" data-tab="'+esc(k)+'" style="display:'+(i===0?'block':'none')+'"><p>'+paneTxt+'</p>'+srcLine+'<div style="margin-top:6px;font-size:10px;color:var(--ip-muted)">'+_tlT('AI-generated · independently verify')+'</div></div>';
+            var paneTxt = _tlBioParas(txt, true);
+            return '<div class="i-ct-pane" data-tab="'+esc(k)+'" style="display:'+(i===0?'block':'none')+'">'+paneTxt+srcLine+'<div style="margin-top:6px;font-size:10px;color:var(--ip-muted)">'+_tlT('AI-generated · independently verify')+'</div></div>';
           }).join('');
           return '<div class="i-sec i-ct-wrap"><div class="i-sl">'+_tlT('Biography')+'</div>'+tabBar+panes+'</div>' + nvHtml;
         }
@@ -2155,7 +2187,7 @@ function renderInfo(p){
       var _bf = _tlFigBio(p) || p.bio_full;
       if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf = null;
       var _bio = _bf || (p.famous==='Prophet Muhammad' ? (p.school||'The Last Prophet') : (p.bio||p.school));
-      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">'+_tlT('Biography')+'</div><p>'+_linkifyQuranRefs(_bio)+'</p></div>' : '';
+      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">'+_tlT('Biography')+'</div>'+_tlBioParas(_bio, false)+'</div>' : '';
       return legacyBio + nvHtml;
     })()}
     ${p.titles?`<div class="i-sec"><div class="i-sl">${_tlT('Titles & Epithets')}</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(_tlT(t))}</span>`).join('')}</div></div>`:''}

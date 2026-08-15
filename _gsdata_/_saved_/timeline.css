@@ -363,8 +363,7 @@ body.tl-mounted #zoneC .i-di .ds{font-size:var(--fs-3);color:var(--ip-muted);fon
 body.tl-mounted #zoneC .i-sec{margin-bottom:15px}
 body.tl-mounted #zoneC .i-sl{font-family:'Cinzel',serif;font-size:var(--fs-3);letter-spacing:.14em;color:var(--ip-muted);display:flex;align-items:center;gap:7px;margin-bottom:6px}
 body.tl-mounted #zoneC .i-sl::after{content:'';flex:1;height:1px;background:var(--ip-brd)}
-body.tl-mounted #zoneC .i-sec p{font-size:var(--fs-2);line-height:1.65;color:var(--ip-text);margin:0 0 13px}
-body.tl-mounted #zoneC .i-sec p:last-of-type{margin-bottom:0}
+body.tl-mounted #zoneC .i-sec p{font-size:var(--fs-2);line-height:1.65;color:var(--ip-text)}
 body.tl-mounted #zoneC .i-books{display:flex;flex-direction:column;gap:7px}
 body.tl-mounted #zoneC .i-book{display:flex;align-items:flex-start;gap:7px;font-size:var(--fs-3);color:var(--ip-text)}
 body.tl-mounted #zoneC .i-book a{color:#D4AF37;text-decoration:none;transition:color .12s;flex:1}
