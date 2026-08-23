@@ -1,0 +1,27 @@
+2026-08-23 12:37:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-23 12:37:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-23 12:37:53: == Sync Started by User Command
+2026-08-23 12:37:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-23 12:37:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-23 12:37:53: GetServerPath: look up Creds for: NetShareUrl=smbd://mirza/home Dir=/home NetServerUrl=smbd://mirza
+2026-08-23 12:37:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-23 12:37:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-23 12:37:53: Got Creds for NetServer=smbd://mirza User=Faheem
+2026-08-23 12:37:53: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-23 12:37:53: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-23 12:37:53: ConnectCloned connected to file:///Z:/Islamic App/bv-app
+2026-08-23 12:37:53: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-23 12:37:53: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-23 12:37:53: ConnectCloned connected to file:///C:/TEST/bv-app
+2026-08-23 12:37:54: Copy Over 'Z:/Islamic App/bv-app/shell.js' -> 'C:/TEST/bv-app/shell.js' (69,917)
+2026-08-23 12:37:54: Copy Over 'Z:/Islamic App/bv-app/index.html' -> 'C:/TEST/bv-app/index.html' (9,003)
+2026-08-23 12:37:54: Copy Over 'Z:/Islamic App/bv-app/config.js' -> 'C:/TEST/bv-app/config.js' (4,674)
+2026-08-23 12:37:54: Copy Over 'Z:/Islamic App/bv-app/think.js' -> 'C:/TEST/bv-app/think.js' (99,754)
+2026-08-23 12:37:54: Copy Over 'Z:/Islamic App/bv-app/data/islamic/cross_tradition_bios.json' -> 'C:/TEST/bv-app/data/islamic/cross_tradition_bios.json' (122,103) (User Action)
+2026-08-23 12:37:54: Copy New 'Z:/Islamic App/bv-app/data/islamic/cross_tradition_bios.json.bak' -> 'C:/TEST/bv-app/data/islamic/cross_tradition_bios.json.bak' (112,719)
+2026-08-23 12:37:54: Copy New 'C:/TEST/bv-app/data/islamic/cross_tradition_bios.json.bak-20260819' -> 'Z:/Islamic App/bv-app/data/islamic/cross_tradition_bios.json.bak-20260819' (112,719)
+2026-08-23 12:37:54: Copy Over 'C:/TEST/bv-app/data/islamic/concepts/concept_tags_quran.json' -> 'Z:/Islamic App/bv-app/data/islamic/concepts/concept_tags_quran.json' (34,975)
+2026-08-23 12:37:54: Copy Over 'C:/TEST/bv-app/data/islamic/concepts/concept_reverse_quran.json' -> 'Z:/Islamic App/bv-app/data/islamic/concepts/concept_reverse_quran.json' (25,234)
+2026-08-23 12:37:55: Save State File Z:/Islamic App/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-23 12:37:55: Save State File C:/TEST/bv-app/_gsdata_/_file_state_v4._gs
+2026-08-23 12:37:55: == Sync Complete. Time: 00:00:02, Speed: 0.00/s, OK: 9, Errors: 0
