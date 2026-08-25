@@ -21,7 +21,7 @@ var MATCHES = null; var MATCHES_STATE = 'idle';
 var CORE   = null; var CORE_STATE   = 'idle';
 var ENRICH = null; var ENRICH_STATE = 'idle';  // map keyed by core_slug (F-NNNN)
 
-var R2_BASE    = 'https://gold-ark-data.hooman-92b.workers.dev/data/islamic/';
+var R2_BASE    = (window.GOLD_ARK_CONFIG && window.GOLD_ARK_CONFIG.USE_CDN) ? (window.GOLD_ARK_CONFIG.CDN_BASE + '/data/islamic/') : 'data/islamic/';
 var AREES_URL  = R2_BASE + 'arees/arees_figures.json';
 var MATCHES_URL = R2_BASE + 'arees/arees_to_core_matches.json';
 var CORE_URL   = R2_BASE + 'core.json';

@@ -1,0 +1,1969 @@
+{
+  "version": "wave_b_2026-05-29",
+  "description": "core slug -> arees slug. Confirmed matches only. Never name-matched.",
+  "count": 392,
+  "lookup": {
+    "F0002": "arees-1806-abbad-bin-bashr-bin-waqash",
+    "F0004": "arees-281-abbad-bin-qays-bin-aysha",
+    "F0005": "arees-1907-abbad-bin-sahl-b-mukhrama",
+    "F0006": "arees-100-al-abbas-ibn-abd-al-muttalib",
+    "F0007": "arees-12318-abdul-malik-bin-marwan",
+    "F0008": "arees-9990-abd-al-muttalib-b-hashim-b-abd-manaf",
+    "F0010": "arees-8-abdur-rahman-ibn-awf",
+    "F0040": "arees-1048-abdullah-bin-unays-al-juhani",
+    "F0050": "arees-1129-al-jadd-bin-qays-bin-sakhr",
+    "F0058": "arees-1994-abdullah-bin-mirba-bin-qayzi",
+    "F0063": "arees-1996-abdullah-bin-qayzi-bin-qays",
+    "F0067": "arees-1812-abdullah-bin-sahl-bin-zayd",
+    "F0068": "arees-1725-abdullah-bin-salma-bin-malik",
+    "F0069": "arees-782-abdullah-bin-sufyan",
+    "F0074": "arees-1945-abdullah-bin-yazid-bin-zayd",
+    "F0076": "arees-605-abdullah-bin-zayd-mazni",
+    "F0077": "arees-1000-abdullah-ibn-amr-bin-haram",
+    "F0078": "arees-17-ibn-abbas",
+    "F0079": "arees-9991-abdullah-ibn-abd-al-muttalib",
+    "F0081": "arees-204-abdullah-ibn-hudhafah-as-sahmi",
+    "F0088": "arees-1993-abdur-rahman-bin-mirba-bin-qayzi",
+    "F0089": "arees-1997-abdur-rahman-bin-qayzi-bin-qays",
+    "F0098": "arees-1817-abu-abs-bin-jabir",
+    "F0099": "arees-359-abu-amra-bin-amr-bin-mihsan",
+    "F0100": "arees-1240-abu-ubayda-bin-amr-bin-mihsan",
+    "F0101": "arees-358-abu-akhzam-ahzam-bin-atik",
+    "F0103": "arees-37-abu-al-darda",
+    "F0108": "arees-553-abu-al-rome-ibn-umair",
+    "F0110": "arees-1034-abu-ayman-client-amr-bin-al-jamuh",
+    "F0111": "arees-33-abu-ayyub-al-ansari",
+    "F0114": "arees-2-abu-bakr-as-siddique",
+    "F0119": "arees-23-abu-dharr-al-ghaffari",
+    "F0120": "arees-111-abu-dujana-simak-bin-aus-bin-kharasha",
+    "F0122": "arees-1325-abu-habba-bin-ghaziyah-bin-amr",
+    "F0124": "arees-1744-abu-hannah-hayyah-habba",
+    "F0126": "arees-1217-abu-hubayra-bin-al-harith",
+    "F0127": "arees-120-abu-hudhayfah-ibn-utbah",
+    "F0129": "arees-13-abu-hurairah",
+    "F0133": "arees-636-abu-kalab-bin-abi-sa-sa-a",
+    "F0134": "arees-337-abu-khuzayma-bin-aws-bin-zayd",
+    "F0139": "arees-804-abu-marthad-al-ghanvi",
+    "F0142": "arees-41-abu-musa-al-asha-ari",
+    "F0147": "arees-1926-qays-bin-al-harith",
+    "F0148": "arees-479-abu-rafi",
+    "F0151": "arees-38-abu-sa-id-al-khudri",
+    "F0156": "arees-223-abu-sibrah-bin-abi-ruhm",
+    "F0158": "arees-1718-abu-sufyan-bin-al-harith-bin-qays",
+    "F0159": "arees-117-abu-sufyan-ibn-al-harith",
+    "F0161": "arees-229-abu-talha-ansari",
+    "F0165": "arees-4048-abu-umama-al-bahili",
+    "F0171": "arees-1815-abul-haytham-bin-al-tayyihan",
+    "F0175": "arees-345-adi-bin-al-zaghba",
+    "F0196": "arees-1511-aidh-bin-ma-is-b-qays",
+    "F0199": "arees-53-aisha-bint-abi-bakr",
+    "F0200": "arees-2752-aisha-bint-al-harith-bin-khalid",
+    "F0203": "arees-10504-aisha-bint-talha",
+    "F0206": "arees-1435-al-abbas-bin-ubada-bin-nadla",
+    "F0211": "arees-11054-al-aswad-bin-yazid",
+    "F0218": "arees-400-al-bara-bin-azib-bin-al-harith",
+    "F0219": "arees-1014-al-bara-bin-ma-rur-bin-sakhr",
+    "F0220": "arees-385-al-bara-bin-malik",
+    "F0239": "arees-1909-al-habab-bin-qayzi-bin-amr",
+    "F0244": "arees-1944-al-harith-bin-adi-bin-kharasha",
+    "F0248": "arees-356-al-harith-bin-al-samma",
+    "F0249": "arees-1705-al-harith-bin-hatib-bin-amr",
+    "F0254": "arees-638-al-harith-bin-sahal-bin-abi-sa-sa-a",
+    "F0255": "arees-360-haritha-bin-suraqa",
+    "F0257": "arees-1803-al-harith-ibn-anas-ibn-rafi",
+    "F0258": "arees-1802-al-harith-ibn-aws-ibn-mua-dh",
+    "F0259": "arees-216-al-harith-ibn-nawfal-ibn-al-harith",
+    "F0261": "arees-679-al-hubab-bin-jaz",
+    "F0262": "arees-44-al-hubab-ibn-al-mundhir",
+    "F0272": "arees-66-al-khansa",
+    "F0283": "arees-163-al-miqdad-ibn-al-aswad",
+    "F0285": "arees-166-al-mughira-ibn-shu-ba",
+    "F0287": "arees-262-al-mujadhar-bin-ziyad-b-amr",
+    "F0288": "arees-112-al-mundhir-bin-amr-b-khunays",
+    "F0291": "arees-1333-al-mundhir-bin-qays-bin-amr",
+    "F0301": "arees-374-al-nu-man-bin-abdu-amr-bin-mas-ud",
+    "F0304": "arees-1733-al-nu-man-bin-asar",
+    "F0306": "arees-274-al-nu-man-bin-bashir-ibn-sa-d",
+    "F0307": "arees-3122-al-nu-man-bin-maqrn-al-mazni",
+    "F0325": "arees-752-al-sa-ib-bin-al-harith",
+    "F0326": "arees-121-uthman-bin-maz-un",
+    "F0329": "arees-439-al-saib-bin-al-awwam-bin-khuwaylid",
+    "F0331": "arees-450-al-sakran-bin-amr-b-abd-shams",
+    "F0348": "arees-3200-al-taufayl-bin-amr-al-dausi",
+    "F0350": "arees-1020-al-tufayl-bin-al-nu-man-bin-khansa",
+    "F0351": "arees-505-al-tufayl-ibn-al-harith",
+    "F0352": "arees-11950-al-walid-bin-abdul-malik-bin-marwan",
+    "F0355": "arees-1834-al-yaman-bin-jabir",
+    "F0366": "arees-5-ali-ibn-abi-talib",
+    "F0375": "arees-11017-alqama-bin-qays",
+    "F0379": "arees-708-amir-bin-rabi-a-bin-malik",
+    "F0381": "arees-365-amir-bin-umayya-bin-zayd",
+    "F0392": "arees-176-amra-bint-mas-ud-4",
+    "F0403": "arees-18946-muhammad-bin-ammar-bin-yasir",
+    "F0408": "arees-1013-amr-bin-al-jamuh-bin-zayd",
+    "F0410": "arees-1436-amr-bin-iyas",
+    "F0413": "arees-1218-amr-bin-mutarrif-bin-alqama",
+    "F0414": "arees-469-amr-bin-qays-bin-zayd",
+    "F0417": "arees-1839-amr-bin-thabit-bin-waqash",
+    "F0419": "arees-28-amr-bin-al-aas",
+    "F0420": "arees-1801-amr-ibn-mua-dh",
+    "F0421": "arees-736-amr-ibn-sa-id-ibn-al-aas",
+    "F0438": "arees-386-anas-bin-al-nadr-b-damdam",
+    "F0439": "arees-350-anas-bin-mua-dh-bin-anas",
+    "F0440": "arees-11035-ibn-sirin",
+    "F0446": "arees-1042-antara-mawla-salim-bin-amr",
+    "F0449": "arees-165-aqeel-ibn-abi-talib",
+    "F0450": "arees-800-aqil-bin-al-bukayr",
+    "F0458": "arees-426-arwa-bint-kuraiz-bin-rabi-a",
+    "F0461": "arees-1200-as-ad-bin-zurara",
+    "F0462": "arees-585-as-sa-bah-bint-al-hadrami",
+    "F0468": "arees-1710-asim-bin-thabit-ibn-abi-al-aflah",
+    "F0471": "arees-253-asma-bin-ri-ab-bin-hunayf",
+    "F0472": "arees-70-asma-bint-abi-bakr",
+    "F0474": "arees-69-asma-bint-umays",
+    "F0475": "arees-84-asma-bint-yazid-bin-al-sakan",
+    "F0482": "arees-11029-ata-bin-abi-rabah",
+    "F0483": "arees-1938-atik-b-qays-b-haysha",
+    "F0486": "arees-995-abdur-rahman-bin-attab-bin-usayd",
+    "F0487": "arees-611-auf-bin-afra",
+    "F0490": "arees-170-aus-bin-as-samit",
+    "F0491": "arees-351-aus-bin-thabit",
+    "F0492": "arees-1609-aus-anas-bin-arqam",
+    "F0493": "arees-315-aws-bin-khawli",
+    "F0494": "arees-793-ayadh-bin-zuhayr-b-abi-shaddad",
+    "F0496": "arees-191-ayman-bin-ubiad",
+    "F0498": "arees-2900-ayyadh-bin-ghanm-bin-zuhayr",
+    "F0499": "arees-776-ayyash-bin-abi-rabi-a",
+    "F0520": "arees-1734-basheer-bin-atik",
+    "F0521": "arees-681-basheer-bin-unbus-bin-zayd",
+    "F0535": "arees-1015-bishr-bin-bara-bin-ma-rur-bin-sakhr",
+    "F0548": "arees-138-damra-bin-ka-b-bin-amr",
+    "F0556": "arees-1505-dhakwan-bin-abdu-qays-bin-khalada",
+    "F0558": "arees-828-dhu-l-shimalyn-umair-bin-abd-amr",
+    "F0569": "arees-1935-fadala-bin-ubaid-bin-naqid",
+    "F0570": "arees-1157-fadalah-wife-of-abdullah-bin-unays",
+    "F0571": "arees-135-fadl-ibn-al-abbas",
+    "F0593": "arees-77-fatima-bint-asad",
+    "F0604": "arees-748-firas-bin-al-nadr-b-al-harith",
+    "F0621": "arees-781-habbar-bin-sufyan",
+    "F0623": "arees-1241-habib-bin-amr-bin-mihsan",
+    "F0626": "arees-604-habib-bin-zaid-mazni",
+    "F0629": "arees-203-habiba-bint-kharijah-ibn-zayd",
+    "F0642": "arees-11039-hafsa-bint-sirin",
+    "F0643": "arees-54-hafsa-bint-umar",
+    "F0652": "arees-20-hamza-ibn-abd-al-muttalib",
+    "F0653": "arees-1715-hanzala-bin-abi-amir-al-rahib",
+    "F0656": "arees-493-haram-bin-milhan",
+    "F0658": "arees-633-harith-bin-abi-sa-sa-a",
+    "F0659": "arees-1501-harith-bin-qays-bin-khalid",
+    "F0674": "arees-425-hatib-bin-abi-balta-ah",
+    "F0680": "arees-4114-hdhyfh-bin-asyd",
+    "F0693": "arees-74-hind-bint-utba-b-rabi-a-b-abd-shams",
+    "F0697": "arees-144-hisham-ibn-al-aas",
+    "F0700": "arees-145-hudhayfah-ibn-al-yaman",
+    "F0739": "arees-11107-ibn-ishaq",
+    "F0772": "arees-11001-abu-hanifa",
+    "F0778": "arees-20001-imam-maalik",
+    "F0780": "arees-123-imran-bin-husain",
+    "F0794": "arees-802-iyas-bin-al-bukayr",
+    "F0795": "arees-1216-iyyas-bin-adi-al-ansari",
+    "F0796": "arees-1890-iyyas-bin-aus-bin-atik",
+    "F0801": "arees-1026-jabbar-bin-sakhr-bin-umayya",
+    "F0804": "arees-635-jabir-bin-abi-sa-sa-a",
+    "F0806": "arees-723-jabir-bin-sufyan-bin-ma-mar",
+    "F0808": "arees-34-jabir-ibn-abdullah",
+    "F0811": "arees-21-ja-far-ibn-abi-talib",
+    "F0829": "arees-724-junadah-bin-sufyan-bin-ma-mar",
+    "F0836": "arees-377-ka-b-bin-zayd-bin-qays-bin-malik",
+    "F0838": "arees-3019-awn-bin-umays",
+    "F0858": "arees-149-khabbab-ibn-al-aratt",
+    "F0859": "arees-817-khabbab-mawla-utbah-bin-ghazwan",
+    "F0862": "arees-51-khadijah",
+    "F0866": "arees-801-khalid-bin-al-bukayr",
+    "F0867": "arees-659-khalid-bin-al-nu-man-bin-al-harith",
+    "F0868": "arees-150-khalid-bin-sa-id-ibn-al-as",
+    "F0869": "arees-656-khalid-bin-thabit-bin-al-nu-man",
+    "F0870": "arees-22-khalid-bin-al-walid",
+    "F0876": "arees-1008-khallad-bin-amr-bin-al-jamuh",
+    "F0878": "arees-276-khallad-ibn-suwayd-b-tha-laba",
+    "F0882": "arees-11006-kharija-ibn-zayd-ibn-thabit",
+    "F0901": "arees-1930-khaythama-b-al-harith",
+    "F0905": "arees-396-khubayb-bin-adi",
+    "F0906": "arees-285-khubayb-bin-isaf",
+    "F0911": "arees-152-khunays-ibn-hudhaifa",
+    "F0912": "arees-410-khuzayma-bin-thabit",
+    "F0950": "arees-235-ma-mar-bin-harith-bin-ma-mar",
+    "F0953": "arees-797-ma-mur-amr-bin-abu-sarh",
+    "F0954": "arees-1721-ma-n-bin-adiy-bin-al-jadd",
+    "F0968": "arees-11066-makhul-al-shami-al-damashiqi",
+    "F0971": "arees-816-malik-bin-amr",
+    "F0972": "arees-835-malik-bin-abi-khauliy",
+    "F0973": "arees-1223-malik-bin-iyyas-al-ansari",
+    "F0974": "arees-1732-malik-bin-numayla",
+    "F0976": "arees-42-malik-bin-sinan",
+    "F0985": "arees-805-marthad-bin-abi-marthad-al-ghanvi",
+    "F0987": "arees-2517-mas-ud-bin-al-aswad",
+    "F0988": "arees-336-mas-ud-bin-aws-bin-zayd",
+    "F0990": "arees-829-mas-ud-bin-rabi-a-b-amr-of-al-qara",
+    "F0991": "arees-1512-mas-ud-bin-sa-d-b-qays",
+    "F1002": "arees-870-mihja-bin-salah",
+    "F1012": "arees-823-mistah-bin-uthatha-b-abbad-b-al-mutt",
+    "F1019": "arees-1006-mu-adh-bin-amr-bin-al-jamuh",
+    "F1020": "arees-1510-mu-adh-bin-ma-is-b-qays",
+    "F1023": "arees-669-mu-attib-bin-ubaid",
+    "F1024": "arees-27-mu-awiya-ibn-abu-sufyan",
+    "F1025": "arees-613-mu-awwidh-bin-afra",
+    "F1027": "arees-747-mu-ayqayb-bin-abi-fatima-al-dausi",
+    "F1029": "arees-32-mu-adh-ibn-jabal",
+    "F1031": "arees-1700-mubashshir-bin-abdul-mundhir",
+    "F1046": "arees-713-muhammad-bin-hatib-bin-al-harith",
+    "F1054": "arees-167-muhammad-ibn-maslama",
+    "F1055": "arees-11013-al-zuhri",
+    "F1059": "arees-362-muhriz-bin-amir-bin-malik",
+    "F1060": "arees-811-muhriz-bin-nadla-al-asadi",
+    "F1075": "arees-12-mus-ab-ibn-umair",
+    "F1077": "arees-2701-musa-bin-al-harith-bin-khalid",
+    "F1108": "arees-173-naufal-bin-abdullah-bin-nadla",
+    "F1109": "arees-177-nawfal-ibn-al-harith",
+    "F1117": "arees-148-nu-man-bin-malik",
+    "F1136": "arees-10530-abdur-rahman-bin-al-qasim",
+    "F1137": "arees-233-qatada-ibn-al-nu-man",
+    "F1143": "arees-468-qays-bin-amr-bin-qays",
+    "F1146": "arees-367-qays-bin-al-sakan-bin-qays",
+    "F1148": "arees-371-qays-bin-mukhallad",
+    "F1154": "arees-381-qubta-bin-abdu-amr-bin-mas-ud",
+    "F1155": "arees-470-qudamah-bin-maz-un",
+    "F1162": "arees-1003-qutba-bin-amir-bin-hadida",
+    "F1166": "arees-812-rabi-a-bin-aktham-al-asadi",
+    "F1167": "arees-174-rabi-ah-ibn-al-harith",
+    "F1171": "arees-338-rafi-bin-al-harith-bin-sawad",
+    "F1174": "arees-321-rafi-bin-malik-bin-al-ajlan",
+    "F1175": "arees-1808-rafi-ibn-yazid-bin-al-sakan",
+    "F1182": "arees-771-rayta-bint-al-harith-bin-jabala",
+    "F1185": "arees-1838-rifa-bin-waqash",
+    "F1186": "arees-1701-rifa-a-bin-abdul-mundhir",
+    "F1187": "arees-312-rifa-a-bin-amr-bin-zayd",
+    "F1195": "arees-1702-s-ad-bin-ubaid-al-qa-ri",
+    "F1197": "arees-1322-sa-d-bin-habban-bin-munqidh",
+    "F1198": "arees-1476-sa-d-bin-khalifa",
+    "F1199": "arees-796-sa-d-bin-khaula",
+    "F1200": "arees-1745-sa-d-bin-khaythama",
+    "F1202": "arees-9-sa-d-ibn-abi-waqqas",
+    "F1204": "arees-46-sa-d-ibn-mua-dh",
+    "F1205": "arees-35-sa-d-ibn-ubadah",
+    "F1208": "arees-755-sa-id-bin-amr-al-tamimi",
+    "F1212": "arees-1610-sa-id-bin-suwayd-bin-qays",
+    "F1213": "arees-11002-sa-id-ibn-al-musayyib",
+    "F1214": "arees-11-sa-id-bin-zayd",
+    "F1218": "arees-1737-saalam-bin-umayr",
+    "F1223": "arees-85-safiyya-bint-abd-al-muttalib",
+    "F1227": "arees-60-safiyya-bint-huyayy",
+    "F1230": "arees-799-safwan-bin-bayda",
+    "F1234": "arees-339-sahl-bin-rafi",
+    "F1235": "arees-403-sahl-bin-hunayf",
+    "F1236": "arees-1041-sahl-bin-qays-bin-abi-ka-b",
+    "F1237": "arees-399-sahl-bin-sa-d-bin-malik",
+    "F1241": "arees-775-salama-bin-hisham",
+    "F1247": "arees-462-saleet-bin-amr",
+    "F1248": "arees-733-saleet-bin-saleet-bin-amr",
+    "F1250": "arees-1036-salim-bin-amr-bin-hadida",
+    "F1252": "arees-180-salim-mawla-abu-hudhayfah",
+    "F1253": "arees-363-salit-bin-qays-bin-amr",
+    "F1255": "arees-1811-salma-bin-aslam",
+    "F1256": "arees-1807-salma-bin-thabit-bin-waqash",
+    "F1265": "arees-394-samra-bin-jundub",
+    "F1274": "arees-52-sawda-bint-zam-a",
+    "F1276": "arees-1908-sayfi-bin-qayzi-bin-amr",
+    "F1307": "arees-472-shuja-bin-wahb-al-asadi",
+    "F1310": "arees-721-hasana",
+    "F1315": "arees-810-sinan-bin-abu-sinan-bin-mihsan-al-asadi",
+    "F1325": "arees-20012-sufyan-bin-sa-id-ath-thawri",
+    "F1326": "arees-685-sufyan-bin-hatib-bin-umayya",
+    "F1327": "arees-720-sufyan-bin-ma-mar",
+    "F1329": "arees-20005-sufyan-bin-uyaynah",
+    "F1331": "arees-182-suhayb-bin-sinan-ar-rumi",
+    "F1332": "arees-335-suhayl-bin-rafi",
+    "F1335": "arees-221-suhyal-bin-bayda",
+    "F1339": "arees-378-sulaym-bin-al-harith-bin-tha-laba",
+    "F1340": "arees-495-sulaym-bin-milhan",
+    "F1341": "arees-334-sulaym-bin-qays-bin-qahd",
+    "F1343": "arees-11005-sulayman-ibn-yasar",
+    "F1349": "arees-89-sumayyah-bint-khayyat",
+    "F1355": "arees-608-suraqa-bin-amr-mazni",
+    "F1356": "arees-332-suraqa-bin-ka-b-bin-amr",
+    "F1358": "arees-1924-suwayd-bin-al-nu-man",
+    "F1365": "arees-382-tamim-al-dari",
+    "F1368": "arees-754-tamim-bishr-bin-al-harith",
+    "F1372": "arees-11053-tawus-bin-kaysan",
+    "F1374": "arees-355-tha-laba-bin-amr-bin-mihsan",
+    "F1375": "arees-1037-tha-laba-bin-anma-ibn-adi",
+    "F1377": "arees-1465-sa-d-bin-malik",
+    "F1378": "arees-343-thabit-bin-amr-bin-zayd",
+    "F1379": "arees-1901-al-dahhak-bin-khalifa",
+    "F1380": "arees-658-thabit-bin-al-nu-man-bin-al-harith",
+    "F1381": "arees-1723-thabit-bin-aqram",
+    "F1382": "arees-254-thabit-bin-hazzal",
+    "F1385": "arees-1009-thabit-bin-tha-laba-bin-zayd",
+    "F1386": "arees-1837-thabit-bin-waqash",
+    "F1387": "arees-239-thabit-bin-qays-b-shammas",
+    "F1389": "arees-814-thaqf-bin-amr",
+    "F1390": "arees-1468-thaqf-bin-farwa-bin-al-badi",
+    "F1399": "arees-197-tulayb-bin-umayr",
+    "F1401": "arees-1242-ubada-bin-amr-bin-mihsan",
+    "F1402": "arees-263-ubada-bin-al-hashas-b-amr",
+    "F1403": "arees-40-ubada-bin-as-samit",
+    "F1406": "arees-1816-ubaid-bin-al-tayyihan",
+    "F1410": "arees-183-ubaydah-ibn-al-harith",
+    "F1411": "arees-133-ubaydallah-bin-al-abbas",
+    "F1412": "arees-39-ubayy-ibn-ka-b",
+    "F1413": "arees-349-ubbay-bin-mua-dh-bin-anas",
+    "F1415": "arees-808-ukkasha-bin-mihsan-al-asadi",
+    "F1418": "arees-1002-umair-bin-humam-bin-al-jamuh",
+    "F1433": "arees-3-umar-ibn-al-khattab",
+    "F1434": "arees-331-umara-bin-hazm-ibn-zayd",
+    "F1448": "arees-759-umayr-bin-ri-ab-bin-hudhayfa",
+    "F1449": "arees-822-umayr-ibn-abi-waqqas",
+    "F1450": "arees-764-umayr-amr-bin-auf",
+    "F1483": "arees-156-umm-fadl-lubaba-bint-al-harith",
+    "F1499": "arees-202-umm-ayman-barakah",
+    "F1508": "arees-136-umm-habib-bint-jahsh",
+    "F1511": "arees-59-umm-habibah-bint-abi-sufyan",
+    "F1512": "arees-9997-umm-hakim-bint-abd-al-muttalib",
+    "F1520": "arees-209-umm-haram-bint-milhan",
+    "F1551": "arees-827-umm-qays-bint-mihsan-al-asadi",
+    "F1556": "arees-91-umm-ruman",
+    "F1557": "arees-1233-sa-d-bin-al-harith-bin-al-samma",
+    "F1568": "arees-56-umm-salamah",
+    "F1591": "arees-1214-zayd-bin-suraqa-bin-ka-b-bin-amr",
+    "F1594": "arees-1720-unays-bin-qatada",
+    "F1605": "arees-189-uqba-bin-amir-al-juhayni",
+    "F1606": "arees-1004-uqba-bin-amir-bin-nabi",
+    "F1608": "arees-1911-uqba-bin-qayzi-bin-qays",
+    "F1612": "arees-10511-urwa-ibn-al-zubayr",
+    "F1613": "arees-45-usaid-bin-hudair-bin-sammak",
+    "F1614": "arees-50-usamah-ibn-zayd",
+    "F1620": "arees-1709-utba-bin-uwyam-bin-sa-ida",
+    "F1623": "arees-1611-utba-bin-rabi-bin-rafi",
+    "F1624": "arees-765-utba-ibn-mas-ud",
+    "F1625": "arees-206-utbah-ibn-ghazwan",
+    "F1629": "arees-4-uthman-ibn-affaan",
+    "F1631": "arees-1703-uwyam-bin-sa-ida",
+    "F1634": "arees-4009-wahb-bin-qabous-al-mazni",
+    "F1635": "arees-867-wahb-bin-sa-d-bin-abi-sarh",
+    "F1636": "arees-20032-waki-bin-al-jarrah",
+    "F1641": "arees-1321-wasay-bin-habban-bin-munqidh",
+    "F1642": "arees-260-wazfah-waraqa-bin-iyas-b-amr",
+    "F1656": "arees-1035-yazid-bin-amir-bin-hadida",
+    "F1657": "arees-282-yazid-bin-al-harith-ibn-qays",
+    "F1659": "arees-813-yazid-bin-ruqaysh-al-asadi",
+    "F1662": "arees-761-yazid-bin-zama-a-bin-al-aswad",
+    "F1664": "arees-19183-yazid-bin-mu-awiya",
+    "F1676": "arees-395-zayd-bin-al-dathinna",
+    "F1678": "arees-686-zayd-bin-hatib-bin-umayya",
+    "F1680": "arees-1340-zayd-bin-milhan",
+    "F1682": "arees-114-zayd-ibn-al-khattab",
+    "F1684": "arees-384-zayd-bin-arqam",
+    "F1685": "arees-15-zayd-ibn-harithah",
+    "F1686": "arees-11803-zayd-bin-zayd-ibn-thabit",
+    "F1687": "arees-244-zaynab-bint-abi-salamah",
+    "F1688": "arees-2751-zaynab-bint-al-harith-bin-khalid",
+    "F1691": "arees-98-zaynab-bint-ali-bin-abi-talib",
+    "F1692": "arees-57-zaynab-bint-jahsh",
+    "F1694": "arees-55-zaynab-bint-khazeemah",
+    "F1711": "arees-7-zubayr-ibn-al-awwam",
+    "F1831": "arees-11271-jabir-bin-zayd-al-azdi",
+    "F1857": "arees-11114-abu-al-aswad-al-du-ali",
+    "F1979": "arees-90-thuwaybah",
+    "F1982": "arees-20022-hammad-bin-zayd",
+    "F1983": "arees-11065-hisham-bin-urwa",
+    "F1984": "arees-20115-ma-mar-bin-rashid",
+    "F1985": "arees-11070-ibn-jurayj",
+    "F1988": "arees-11081-amr-bin-dinar",
+    "F1989": "arees-20318-hammad-bin-usamah",
+    "F1990": "arees-11051-ibrahim-al-nakha-i",
+    "F1991": "arees-20295-hisham-bin-abi-abdullah-al-dastawa-i",
+    "F1992": "arees-11050-sa-id-bin-jubayr",
+    "F1993": "arees-20472-yazid-bin-harun",
+    "F1994": "arees-11062-yahya-bin-sa-id-al-ansari",
+    "F1995": "arees-20150-ibrahim-bin-sa-d-bin-ibrahim",
+    "F1997": "arees-20377-amr-bin-al-harith-bin-ya-qub",
+    "F1998": "arees-20021-hammad-bin-salama",
+    "F1999": "arees-11080-asim-al-ahwal",
+    "F2004": "arees-11069-al-hakam-bin-utayba",
+    "F2006": "arees-11289-sulaiman-bin-tarkhan-al-taymi",
+    "F2008": "arees-11411-yazid-bin-abi-habib",
+    "F2009": "arees-11073-sa-id-bin-abi-aruba",
+    "F2010": "arees-11063-sa-d-bin-ibrahim",
+    "F2012": "arees-22016-ishaq-bin-ibrahim-al-hunaini"
+  },
+  "detail": {
+    "F0002": {
+      "arees_slug": "arees-1806-abbad-bin-bashr-bin-waqash",
+      "source": "auto_t1"
+    },
+    "F0004": {
+      "arees_slug": "arees-281-abbad-bin-qays-bin-aysha",
+      "source": "auto_t1"
+    },
+    "F0005": {
+      "arees_slug": "arees-1907-abbad-bin-sahl-b-mukhrama",
+      "source": "auto_t1"
+    },
+    "F0006": {
+      "arees_slug": "arees-100-al-abbas-ibn-abd-al-muttalib",
+      "source": "original_strong"
+    },
+    "F0007": {
+      "arees_slug": "arees-12318-abdul-malik-bin-marwan",
+      "source": "original_strong"
+    },
+    "F0008": {
+      "arees_slug": "arees-9990-abd-al-muttalib-b-hashim-b-abd-manaf",
+      "source": "auto_t2"
+    },
+    "F0010": {
+      "arees_slug": "arees-8-abdur-rahman-ibn-awf",
+      "source": "manual_t2"
+    },
+    "F0040": {
+      "arees_slug": "arees-1048-abdullah-bin-unays-al-juhani",
+      "source": "auto_t1"
+    },
+    "F0050": {
+      "arees_slug": "arees-1129-al-jadd-bin-qays-bin-sakhr",
+      "source": "auto_t1"
+    },
+    "F0058": {
+      "arees_slug": "arees-1994-abdullah-bin-mirba-bin-qayzi",
+      "source": "auto_t1"
+    },
+    "F0063": {
+      "arees_slug": "arees-1996-abdullah-bin-qayzi-bin-qays",
+      "source": "auto_t1"
+    },
+    "F0067": {
+      "arees_slug": "arees-1812-abdullah-bin-sahl-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0068": {
+      "arees_slug": "arees-1725-abdullah-bin-salma-bin-malik",
+      "source": "auto_t1"
+    },
+    "F0069": {
+      "arees_slug": "arees-782-abdullah-bin-sufyan",
+      "source": "auto_t1"
+    },
+    "F0074": {
+      "arees_slug": "arees-1945-abdullah-bin-yazid-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0076": {
+      "arees_slug": "arees-605-abdullah-bin-zayd-mazni",
+      "source": "auto_t1"
+    },
+    "F0077": {
+      "arees_slug": "arees-1000-abdullah-ibn-amr-bin-haram",
+      "source": "auto_t1"
+    },
+    "F0078": {
+      "arees_slug": "arees-17-ibn-abbas",
+      "source": "auto_t1"
+    },
+    "F0079": {
+      "arees_slug": "arees-9991-abdullah-ibn-abd-al-muttalib",
+      "source": "auto_t1"
+    },
+    "F0081": {
+      "arees_slug": "arees-204-abdullah-ibn-hudhafah-as-sahmi",
+      "source": "auto_t1"
+    },
+    "F0088": {
+      "arees_slug": "arees-1993-abdur-rahman-bin-mirba-bin-qayzi",
+      "source": "auto_t1"
+    },
+    "F0089": {
+      "arees_slug": "arees-1997-abdur-rahman-bin-qayzi-bin-qays",
+      "source": "auto_t1"
+    },
+    "F0098": {
+      "arees_slug": "arees-1817-abu-abs-bin-jabir",
+      "source": "auto_t1"
+    },
+    "F0099": {
+      "arees_slug": "arees-359-abu-amra-bin-amr-bin-mihsan",
+      "source": "auto_t1"
+    },
+    "F0100": {
+      "arees_slug": "arees-1240-abu-ubayda-bin-amr-bin-mihsan",
+      "source": "auto_t1"
+    },
+    "F0101": {
+      "arees_slug": "arees-358-abu-akhzam-ahzam-bin-atik",
+      "source": "auto_t1"
+    },
+    "F0103": {
+      "arees_slug": "arees-37-abu-al-darda",
+      "source": "original_strong"
+    },
+    "F0108": {
+      "arees_slug": "arees-553-abu-al-rome-ibn-umair",
+      "source": "auto_t1"
+    },
+    "F0110": {
+      "arees_slug": "arees-1034-abu-ayman-client-amr-bin-al-jamuh",
+      "source": "original_strong"
+    },
+    "F0111": {
+      "arees_slug": "arees-33-abu-ayyub-al-ansari",
+      "source": "original_strong"
+    },
+    "F0114": {
+      "arees_slug": "arees-2-abu-bakr-as-siddique",
+      "source": "manual_t2"
+    },
+    "F0119": {
+      "arees_slug": "arees-23-abu-dharr-al-ghaffari",
+      "source": "manual_t2"
+    },
+    "F0120": {
+      "arees_slug": "arees-111-abu-dujana-simak-bin-aus-bin-kharasha",
+      "source": "original_strong"
+    },
+    "F0122": {
+      "arees_slug": "arees-1325-abu-habba-bin-ghaziyah-bin-amr",
+      "source": "auto_t1"
+    },
+    "F0124": {
+      "arees_slug": "arees-1744-abu-hannah-hayyah-habba",
+      "source": "auto_t1"
+    },
+    "F0126": {
+      "arees_slug": "arees-1217-abu-hubayra-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F0127": {
+      "arees_slug": "arees-120-abu-hudhayfah-ibn-utbah",
+      "source": "original_strong"
+    },
+    "F0129": {
+      "arees_slug": "arees-13-abu-hurairah",
+      "source": "auto_t1"
+    },
+    "F0133": {
+      "arees_slug": "arees-636-abu-kalab-bin-abi-sa-sa-a",
+      "source": "auto_t1"
+    },
+    "F0134": {
+      "arees_slug": "arees-337-abu-khuzayma-bin-aws-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0139": {
+      "arees_slug": "arees-804-abu-marthad-al-ghanvi",
+      "source": "auto_t1"
+    },
+    "F0142": {
+      "arees_slug": "arees-41-abu-musa-al-asha-ari",
+      "source": "manual_t2"
+    },
+    "F0147": {
+      "arees_slug": "arees-1926-qays-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F0148": {
+      "arees_slug": "arees-479-abu-rafi",
+      "source": "auto_t1"
+    },
+    "F0151": {
+      "arees_slug": "arees-38-abu-sa-id-al-khudri",
+      "source": "original_strong"
+    },
+    "F0156": {
+      "arees_slug": "arees-223-abu-sibrah-bin-abi-ruhm",
+      "source": "auto_t1"
+    },
+    "F0158": {
+      "arees_slug": "arees-1718-abu-sufyan-bin-al-harith-bin-qays",
+      "source": "auto_t1"
+    },
+    "F0159": {
+      "arees_slug": "arees-117-abu-sufyan-ibn-al-harith",
+      "source": "auto_t1"
+    },
+    "F0161": {
+      "arees_slug": "arees-229-abu-talha-ansari",
+      "source": "original_strong"
+    },
+    "F0165": {
+      "arees_slug": "arees-4048-abu-umama-al-bahili",
+      "source": "auto_t1"
+    },
+    "F0171": {
+      "arees_slug": "arees-1815-abul-haytham-bin-al-tayyihan",
+      "source": "auto_t1"
+    },
+    "F0175": {
+      "arees_slug": "arees-345-adi-bin-al-zaghba",
+      "source": "auto_t1"
+    },
+    "F0196": {
+      "arees_slug": "arees-1511-aidh-bin-ma-is-b-qays",
+      "source": "manual_t1"
+    },
+    "F0199": {
+      "arees_slug": "arees-53-aisha-bint-abi-bakr",
+      "source": "auto_t1"
+    },
+    "F0200": {
+      "arees_slug": "arees-2752-aisha-bint-al-harith-bin-khalid",
+      "source": "auto_t1"
+    },
+    "F0203": {
+      "arees_slug": "arees-10504-aisha-bint-talha",
+      "source": "auto_t1"
+    },
+    "F0206": {
+      "arees_slug": "arees-1435-al-abbas-bin-ubada-bin-nadla",
+      "source": "auto_t1"
+    },
+    "F0211": {
+      "arees_slug": "arees-11054-al-aswad-bin-yazid",
+      "source": "original_strong"
+    },
+    "F0218": {
+      "arees_slug": "arees-400-al-bara-bin-azib-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F0219": {
+      "arees_slug": "arees-1014-al-bara-bin-ma-rur-bin-sakhr",
+      "source": "auto_t1"
+    },
+    "F0220": {
+      "arees_slug": "arees-385-al-bara-bin-malik",
+      "source": "auto_t1"
+    },
+    "F0239": {
+      "arees_slug": "arees-1909-al-habab-bin-qayzi-bin-amr",
+      "source": "auto_t1"
+    },
+    "F0244": {
+      "arees_slug": "arees-1944-al-harith-bin-adi-bin-kharasha",
+      "source": "auto_t1"
+    },
+    "F0248": {
+      "arees_slug": "arees-356-al-harith-bin-al-samma",
+      "source": "auto_t1"
+    },
+    "F0249": {
+      "arees_slug": "arees-1705-al-harith-bin-hatib-bin-amr",
+      "source": "auto_t1"
+    },
+    "F0254": {
+      "arees_slug": "arees-638-al-harith-bin-sahal-bin-abi-sa-sa-a",
+      "source": "auto_t1"
+    },
+    "F0255": {
+      "arees_slug": "arees-360-haritha-bin-suraqa",
+      "source": "manual_t1"
+    },
+    "F0257": {
+      "arees_slug": "arees-1803-al-harith-ibn-anas-ibn-rafi",
+      "source": "auto_t1"
+    },
+    "F0258": {
+      "arees_slug": "arees-1802-al-harith-ibn-aws-ibn-mua-dh",
+      "source": "auto_t1"
+    },
+    "F0259": {
+      "arees_slug": "arees-216-al-harith-ibn-nawfal-ibn-al-harith",
+      "source": "auto_t1"
+    },
+    "F0261": {
+      "arees_slug": "arees-679-al-hubab-bin-jaz",
+      "source": "auto_t1"
+    },
+    "F0262": {
+      "arees_slug": "arees-44-al-hubab-ibn-al-mundhir",
+      "source": "auto_t1"
+    },
+    "F0272": {
+      "arees_slug": "arees-66-al-khansa",
+      "source": "auto_t1"
+    },
+    "F0283": {
+      "arees_slug": "arees-163-al-miqdad-ibn-al-aswad",
+      "source": "original_strong"
+    },
+    "F0285": {
+      "arees_slug": "arees-166-al-mughira-ibn-shu-ba",
+      "source": "auto_t1"
+    },
+    "F0287": {
+      "arees_slug": "arees-262-al-mujadhar-bin-ziyad-b-amr",
+      "source": "manual_t1"
+    },
+    "F0288": {
+      "arees_slug": "arees-112-al-mundhir-bin-amr-b-khunays",
+      "source": "manual_t1"
+    },
+    "F0291": {
+      "arees_slug": "arees-1333-al-mundhir-bin-qays-bin-amr",
+      "source": "auto_t1"
+    },
+    "F0301": {
+      "arees_slug": "arees-374-al-nu-man-bin-abdu-amr-bin-mas-ud",
+      "source": "original_strong"
+    },
+    "F0304": {
+      "arees_slug": "arees-1733-al-nu-man-bin-asar",
+      "source": "auto_t1"
+    },
+    "F0306": {
+      "arees_slug": "arees-274-al-nu-man-bin-bashir-ibn-sa-d",
+      "source": "auto_t1"
+    },
+    "F0307": {
+      "arees_slug": "arees-3122-al-nu-man-bin-maqrn-al-mazni",
+      "source": "auto_t1"
+    },
+    "F0325": {
+      "arees_slug": "arees-752-al-sa-ib-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F0326": {
+      "arees_slug": "arees-121-uthman-bin-maz-un",
+      "source": "auto_t1"
+    },
+    "F0329": {
+      "arees_slug": "arees-439-al-saib-bin-al-awwam-bin-khuwaylid",
+      "source": "auto_t1"
+    },
+    "F0331": {
+      "arees_slug": "arees-450-al-sakran-bin-amr-b-abd-shams",
+      "source": "manual_t1"
+    },
+    "F0348": {
+      "arees_slug": "arees-3200-al-taufayl-bin-amr-al-dausi",
+      "source": "auto_t1"
+    },
+    "F0350": {
+      "arees_slug": "arees-1020-al-tufayl-bin-al-nu-man-bin-khansa",
+      "source": "auto_t1"
+    },
+    "F0351": {
+      "arees_slug": "arees-505-al-tufayl-ibn-al-harith",
+      "source": "auto_t1"
+    },
+    "F0352": {
+      "arees_slug": "arees-11950-al-walid-bin-abdul-malik-bin-marwan",
+      "source": "manual_t1"
+    },
+    "F0355": {
+      "arees_slug": "arees-1834-al-yaman-bin-jabir",
+      "source": "auto_t1"
+    },
+    "F0366": {
+      "arees_slug": "arees-5-ali-ibn-abi-talib",
+      "source": "original_strong"
+    },
+    "F0375": {
+      "arees_slug": "arees-11017-alqama-bin-qays",
+      "source": "auto_t1"
+    },
+    "F0379": {
+      "arees_slug": "arees-708-amir-bin-rabi-a-bin-malik",
+      "source": "auto_t1"
+    },
+    "F0381": {
+      "arees_slug": "arees-365-amir-bin-umayya-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0392": {
+      "arees_slug": "arees-176-amra-bint-mas-ud-4",
+      "source": "manual_t2"
+    },
+    "F0403": {
+      "arees_slug": "arees-18946-muhammad-bin-ammar-bin-yasir",
+      "source": "auto_t1"
+    },
+    "F0408": {
+      "arees_slug": "arees-1013-amr-bin-al-jamuh-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0410": {
+      "arees_slug": "arees-1436-amr-bin-iyas",
+      "source": "auto_t1"
+    },
+    "F0413": {
+      "arees_slug": "arees-1218-amr-bin-mutarrif-bin-alqama",
+      "source": "auto_t1"
+    },
+    "F0414": {
+      "arees_slug": "arees-469-amr-bin-qays-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0417": {
+      "arees_slug": "arees-1839-amr-bin-thabit-bin-waqash",
+      "source": "auto_t1"
+    },
+    "F0419": {
+      "arees_slug": "arees-28-amr-bin-al-aas",
+      "source": "manual_t1"
+    },
+    "F0420": {
+      "arees_slug": "arees-1801-amr-ibn-mua-dh",
+      "source": "auto_t1"
+    },
+    "F0421": {
+      "arees_slug": "arees-736-amr-ibn-sa-id-ibn-al-aas",
+      "source": "auto_t1"
+    },
+    "F0438": {
+      "arees_slug": "arees-386-anas-bin-al-nadr-b-damdam",
+      "source": "auto_t1"
+    },
+    "F0439": {
+      "arees_slug": "arees-350-anas-bin-mua-dh-bin-anas",
+      "source": "auto_t1"
+    },
+    "F0440": {
+      "arees_slug": "arees-11035-ibn-sirin",
+      "source": "auto_t1"
+    },
+    "F0446": {
+      "arees_slug": "arees-1042-antara-mawla-salim-bin-amr",
+      "source": "original_strong"
+    },
+    "F0449": {
+      "arees_slug": "arees-165-aqeel-ibn-abi-talib",
+      "source": "auto_t1"
+    },
+    "F0450": {
+      "arees_slug": "arees-800-aqil-bin-al-bukayr",
+      "source": "auto_t1"
+    },
+    "F0458": {
+      "arees_slug": "arees-426-arwa-bint-kuraiz-bin-rabi-a",
+      "source": "auto_t1"
+    },
+    "F0461": {
+      "arees_slug": "arees-1200-as-ad-bin-zurara",
+      "source": "auto_t1"
+    },
+    "F0462": {
+      "arees_slug": "arees-585-as-sa-bah-bint-al-hadrami",
+      "source": "auto_t1"
+    },
+    "F0468": {
+      "arees_slug": "arees-1710-asim-bin-thabit-ibn-abi-al-aflah",
+      "source": "auto_t1"
+    },
+    "F0471": {
+      "arees_slug": "arees-253-asma-bin-ri-ab-bin-hunayf",
+      "source": "auto_t1"
+    },
+    "F0472": {
+      "arees_slug": "arees-70-asma-bint-abi-bakr",
+      "source": "auto_t1"
+    },
+    "F0474": {
+      "arees_slug": "arees-69-asma-bint-umays",
+      "source": "auto_t1"
+    },
+    "F0475": {
+      "arees_slug": "arees-84-asma-bint-yazid-bin-al-sakan",
+      "source": "manual_t1"
+    },
+    "F0482": {
+      "arees_slug": "arees-11029-ata-bin-abi-rabah",
+      "source": "auto_t1"
+    },
+    "F0483": {
+      "arees_slug": "arees-1938-atik-b-qays-b-haysha",
+      "source": "auto_t1"
+    },
+    "F0486": {
+      "arees_slug": "arees-995-abdur-rahman-bin-attab-bin-usayd",
+      "source": "auto_t1"
+    },
+    "F0487": {
+      "arees_slug": "arees-611-auf-bin-afra",
+      "source": "auto_t1"
+    },
+    "F0490": {
+      "arees_slug": "arees-170-aus-bin-as-samit",
+      "source": "auto_t1"
+    },
+    "F0491": {
+      "arees_slug": "arees-351-aus-bin-thabit",
+      "source": "auto_t1"
+    },
+    "F0492": {
+      "arees_slug": "arees-1609-aus-anas-bin-arqam",
+      "source": "auto_t1"
+    },
+    "F0493": {
+      "arees_slug": "arees-315-aws-bin-khawli",
+      "source": "auto_t1"
+    },
+    "F0494": {
+      "arees_slug": "arees-793-ayadh-bin-zuhayr-b-abi-shaddad",
+      "source": "manual_t1"
+    },
+    "F0496": {
+      "arees_slug": "arees-191-ayman-bin-ubiad",
+      "source": "auto_t1"
+    },
+    "F0498": {
+      "arees_slug": "arees-2900-ayyadh-bin-ghanm-bin-zuhayr",
+      "source": "auto_t1"
+    },
+    "F0499": {
+      "arees_slug": "arees-776-ayyash-bin-abi-rabi-a",
+      "source": "auto_t1"
+    },
+    "F0520": {
+      "arees_slug": "arees-1734-basheer-bin-atik",
+      "source": "auto_t1"
+    },
+    "F0521": {
+      "arees_slug": "arees-681-basheer-bin-unbus-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0535": {
+      "arees_slug": "arees-1015-bishr-bin-bara-bin-ma-rur-bin-sakhr",
+      "source": "original_strong"
+    },
+    "F0548": {
+      "arees_slug": "arees-138-damra-bin-ka-b-bin-amr",
+      "source": "auto_t1"
+    },
+    "F0556": {
+      "arees_slug": "arees-1505-dhakwan-bin-abdu-qays-bin-khalada",
+      "source": "original_strong"
+    },
+    "F0558": {
+      "arees_slug": "arees-828-dhu-l-shimalyn-umair-bin-abd-amr",
+      "source": "original_strong"
+    },
+    "F0569": {
+      "arees_slug": "arees-1935-fadala-bin-ubaid-bin-naqid",
+      "source": "auto_t1"
+    },
+    "F0570": {
+      "arees_slug": "arees-1157-fadalah-wife-of-abdullah-bin-unays",
+      "source": "auto_t1"
+    },
+    "F0571": {
+      "arees_slug": "arees-135-fadl-ibn-al-abbas",
+      "source": "auto_t1"
+    },
+    "F0593": {
+      "arees_slug": "arees-77-fatima-bint-asad",
+      "source": "auto_t1"
+    },
+    "F0604": {
+      "arees_slug": "arees-748-firas-bin-al-nadr-b-al-harith",
+      "source": "manual_t1"
+    },
+    "F0621": {
+      "arees_slug": "arees-781-habbar-bin-sufyan",
+      "source": "auto_t1"
+    },
+    "F0623": {
+      "arees_slug": "arees-1241-habib-bin-amr-bin-mihsan",
+      "source": "auto_t1"
+    },
+    "F0626": {
+      "arees_slug": "arees-604-habib-bin-zaid-mazni",
+      "source": "auto_t1"
+    },
+    "F0629": {
+      "arees_slug": "arees-203-habiba-bint-kharijah-ibn-zayd",
+      "source": "original_strong"
+    },
+    "F0642": {
+      "arees_slug": "arees-11039-hafsa-bint-sirin",
+      "source": "auto_t1"
+    },
+    "F0643": {
+      "arees_slug": "arees-54-hafsa-bint-umar",
+      "source": "auto_t1"
+    },
+    "F0652": {
+      "arees_slug": "arees-20-hamza-ibn-abd-al-muttalib",
+      "source": "original_strong"
+    },
+    "F0653": {
+      "arees_slug": "arees-1715-hanzala-bin-abi-amir-al-rahib",
+      "source": "auto_t1"
+    },
+    "F0656": {
+      "arees_slug": "arees-493-haram-bin-milhan",
+      "source": "auto_t1"
+    },
+    "F0658": {
+      "arees_slug": "arees-633-harith-bin-abi-sa-sa-a",
+      "source": "auto_t1"
+    },
+    "F0659": {
+      "arees_slug": "arees-1501-harith-bin-qays-bin-khalid",
+      "source": "auto_t1"
+    },
+    "F0674": {
+      "arees_slug": "arees-425-hatib-bin-abi-balta-ah",
+      "source": "auto_t1"
+    },
+    "F0680": {
+      "arees_slug": "arees-4114-hdhyfh-bin-asyd",
+      "source": "auto_t1"
+    },
+    "F0693": {
+      "arees_slug": "arees-74-hind-bint-utba-b-rabi-a-b-abd-shams",
+      "source": "original_strong"
+    },
+    "F0697": {
+      "arees_slug": "arees-144-hisham-ibn-al-aas",
+      "source": "auto_t1"
+    },
+    "F0700": {
+      "arees_slug": "arees-145-hudhayfah-ibn-al-yaman",
+      "source": "manual_t1"
+    },
+    "F0739": {
+      "arees_slug": "arees-11107-ibn-ishaq",
+      "source": "auto_t1"
+    },
+    "F0772": {
+      "arees_slug": "arees-11001-abu-hanifa",
+      "source": "original_strong"
+    },
+    "F0778": {
+      "arees_slug": "arees-20001-imam-maalik",
+      "source": "manual_t1"
+    },
+    "F0780": {
+      "arees_slug": "arees-123-imran-bin-husain",
+      "source": "auto_t1"
+    },
+    "F0794": {
+      "arees_slug": "arees-802-iyas-bin-al-bukayr",
+      "source": "auto_t1"
+    },
+    "F0795": {
+      "arees_slug": "arees-1216-iyyas-bin-adi-al-ansari",
+      "source": "auto_t1"
+    },
+    "F0796": {
+      "arees_slug": "arees-1890-iyyas-bin-aus-bin-atik",
+      "source": "auto_t1"
+    },
+    "F0801": {
+      "arees_slug": "arees-1026-jabbar-bin-sakhr-bin-umayya",
+      "source": "auto_t1"
+    },
+    "F0804": {
+      "arees_slug": "arees-635-jabir-bin-abi-sa-sa-a",
+      "source": "auto_t1"
+    },
+    "F0806": {
+      "arees_slug": "arees-723-jabir-bin-sufyan-bin-ma-mar",
+      "source": "auto_t1"
+    },
+    "F0808": {
+      "arees_slug": "arees-34-jabir-ibn-abdullah",
+      "source": "manual_t2"
+    },
+    "F0811": {
+      "arees_slug": "arees-21-ja-far-ibn-abi-talib",
+      "source": "original_strong"
+    },
+    "F0829": {
+      "arees_slug": "arees-724-junadah-bin-sufyan-bin-ma-mar",
+      "source": "auto_t1"
+    },
+    "F0836": {
+      "arees_slug": "arees-377-ka-b-bin-zayd-bin-qays-bin-malik",
+      "source": "original_strong"
+    },
+    "F0838": {
+      "arees_slug": "arees-3019-awn-bin-umays",
+      "source": "auto_t1"
+    },
+    "F0858": {
+      "arees_slug": "arees-149-khabbab-ibn-al-aratt",
+      "source": "auto_t1"
+    },
+    "F0859": {
+      "arees_slug": "arees-817-khabbab-mawla-utbah-bin-ghazwan",
+      "source": "original_strong"
+    },
+    "F0862": {
+      "arees_slug": "arees-51-khadijah",
+      "source": "manual_t1"
+    },
+    "F0866": {
+      "arees_slug": "arees-801-khalid-bin-al-bukayr",
+      "source": "auto_t1"
+    },
+    "F0867": {
+      "arees_slug": "arees-659-khalid-bin-al-nu-man-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F0868": {
+      "arees_slug": "arees-150-khalid-bin-sa-id-ibn-al-as",
+      "source": "auto_t1"
+    },
+    "F0869": {
+      "arees_slug": "arees-656-khalid-bin-thabit-bin-al-nu-man",
+      "source": "auto_t1"
+    },
+    "F0870": {
+      "arees_slug": "arees-22-khalid-bin-al-walid",
+      "source": "original_strong"
+    },
+    "F0876": {
+      "arees_slug": "arees-1008-khallad-bin-amr-bin-al-jamuh",
+      "source": "auto_t1"
+    },
+    "F0878": {
+      "arees_slug": "arees-276-khallad-ibn-suwayd-b-tha-laba",
+      "source": "manual_t1"
+    },
+    "F0882": {
+      "arees_slug": "arees-11006-kharija-ibn-zayd-ibn-thabit",
+      "source": "auto_t1"
+    },
+    "F0901": {
+      "arees_slug": "arees-1930-khaythama-b-al-harith",
+      "source": "auto_t1"
+    },
+    "F0905": {
+      "arees_slug": "arees-396-khubayb-bin-adi",
+      "source": "auto_t1"
+    },
+    "F0906": {
+      "arees_slug": "arees-285-khubayb-bin-isaf",
+      "source": "auto_t1"
+    },
+    "F0911": {
+      "arees_slug": "arees-152-khunays-ibn-hudhaifa",
+      "source": "auto_t1"
+    },
+    "F0912": {
+      "arees_slug": "arees-410-khuzayma-bin-thabit",
+      "source": "auto_t1"
+    },
+    "F0950": {
+      "arees_slug": "arees-235-ma-mar-bin-harith-bin-ma-mar",
+      "source": "auto_t1"
+    },
+    "F0953": {
+      "arees_slug": "arees-797-ma-mur-amr-bin-abu-sarh",
+      "source": "auto_t1"
+    },
+    "F0954": {
+      "arees_slug": "arees-1721-ma-n-bin-adiy-bin-al-jadd",
+      "source": "auto_t1"
+    },
+    "F0968": {
+      "arees_slug": "arees-11066-makhul-al-shami-al-damashiqi",
+      "source": "auto_t1"
+    },
+    "F0971": {
+      "arees_slug": "arees-816-malik-bin-amr",
+      "source": "auto_t1"
+    },
+    "F0972": {
+      "arees_slug": "arees-835-malik-bin-abi-khauliy",
+      "source": "auto_t1"
+    },
+    "F0973": {
+      "arees_slug": "arees-1223-malik-bin-iyyas-al-ansari",
+      "source": "auto_t1"
+    },
+    "F0974": {
+      "arees_slug": "arees-1732-malik-bin-numayla",
+      "source": "auto_t1"
+    },
+    "F0976": {
+      "arees_slug": "arees-42-malik-bin-sinan",
+      "source": "auto_t1"
+    },
+    "F0985": {
+      "arees_slug": "arees-805-marthad-bin-abi-marthad-al-ghanvi",
+      "source": "auto_t1"
+    },
+    "F0987": {
+      "arees_slug": "arees-2517-mas-ud-bin-al-aswad",
+      "source": "auto_t1"
+    },
+    "F0988": {
+      "arees_slug": "arees-336-mas-ud-bin-aws-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F0990": {
+      "arees_slug": "arees-829-mas-ud-bin-rabi-a-b-amr-of-al-qara",
+      "source": "original_strong"
+    },
+    "F0991": {
+      "arees_slug": "arees-1512-mas-ud-bin-sa-d-b-qays",
+      "source": "auto_t1"
+    },
+    "F1002": {
+      "arees_slug": "arees-870-mihja-bin-salah",
+      "source": "auto_t1"
+    },
+    "F1012": {
+      "arees_slug": "arees-823-mistah-bin-uthatha-b-abbad-b-al-mutt",
+      "source": "original_strong"
+    },
+    "F1019": {
+      "arees_slug": "arees-1006-mu-adh-bin-amr-bin-al-jamuh",
+      "source": "auto_t1"
+    },
+    "F1020": {
+      "arees_slug": "arees-1510-mu-adh-bin-ma-is-b-qays",
+      "source": "manual_t1"
+    },
+    "F1023": {
+      "arees_slug": "arees-669-mu-attib-bin-ubaid",
+      "source": "auto_t1"
+    },
+    "F1024": {
+      "arees_slug": "arees-27-mu-awiya-ibn-abu-sufyan",
+      "source": "manual_t1"
+    },
+    "F1025": {
+      "arees_slug": "arees-613-mu-awwidh-bin-afra",
+      "source": "auto_t1"
+    },
+    "F1027": {
+      "arees_slug": "arees-747-mu-ayqayb-bin-abi-fatima-al-dausi",
+      "source": "auto_t1"
+    },
+    "F1029": {
+      "arees_slug": "arees-32-mu-adh-ibn-jabal",
+      "source": "manual_t1"
+    },
+    "F1031": {
+      "arees_slug": "arees-1700-mubashshir-bin-abdul-mundhir",
+      "source": "auto_t1"
+    },
+    "F1046": {
+      "arees_slug": "arees-713-muhammad-bin-hatib-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F1054": {
+      "arees_slug": "arees-167-muhammad-ibn-maslama",
+      "source": "auto_t1"
+    },
+    "F1055": {
+      "arees_slug": "arees-11013-al-zuhri",
+      "source": "auto_t1"
+    },
+    "F1059": {
+      "arees_slug": "arees-362-muhriz-bin-amir-bin-malik",
+      "source": "auto_t1"
+    },
+    "F1060": {
+      "arees_slug": "arees-811-muhriz-bin-nadla-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1075": {
+      "arees_slug": "arees-12-mus-ab-ibn-umair",
+      "source": "manual_t1"
+    },
+    "F1077": {
+      "arees_slug": "arees-2701-musa-bin-al-harith-bin-khalid",
+      "source": "auto_t1"
+    },
+    "F1108": {
+      "arees_slug": "arees-173-naufal-bin-abdullah-bin-nadla",
+      "source": "auto_t1"
+    },
+    "F1109": {
+      "arees_slug": "arees-177-nawfal-ibn-al-harith",
+      "source": "auto_t1"
+    },
+    "F1117": {
+      "arees_slug": "arees-148-nu-man-bin-malik",
+      "source": "auto_t1"
+    },
+    "F1136": {
+      "arees_slug": "arees-10530-abdur-rahman-bin-al-qasim",
+      "source": "auto_t1"
+    },
+    "F1137": {
+      "arees_slug": "arees-233-qatada-ibn-al-nu-man",
+      "source": "manual_t1"
+    },
+    "F1143": {
+      "arees_slug": "arees-468-qays-bin-amr-bin-qays",
+      "source": "auto_t1"
+    },
+    "F1146": {
+      "arees_slug": "arees-367-qays-bin-al-sakan-bin-qays",
+      "source": "auto_t1"
+    },
+    "F1148": {
+      "arees_slug": "arees-371-qays-bin-mukhallad",
+      "source": "auto_t1"
+    },
+    "F1154": {
+      "arees_slug": "arees-381-qubta-bin-abdu-amr-bin-mas-ud",
+      "source": "original_strong"
+    },
+    "F1155": {
+      "arees_slug": "arees-470-qudamah-bin-maz-un",
+      "source": "auto_t1"
+    },
+    "F1162": {
+      "arees_slug": "arees-1003-qutba-bin-amir-bin-hadida",
+      "source": "auto_t1"
+    },
+    "F1166": {
+      "arees_slug": "arees-812-rabi-a-bin-aktham-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1167": {
+      "arees_slug": "arees-174-rabi-ah-ibn-al-harith",
+      "source": "auto_t1"
+    },
+    "F1171": {
+      "arees_slug": "arees-338-rafi-bin-al-harith-bin-sawad",
+      "source": "auto_t1"
+    },
+    "F1174": {
+      "arees_slug": "arees-321-rafi-bin-malik-bin-al-ajlan",
+      "source": "auto_t1"
+    },
+    "F1175": {
+      "arees_slug": "arees-1808-rafi-ibn-yazid-bin-al-sakan",
+      "source": "auto_t1"
+    },
+    "F1182": {
+      "arees_slug": "arees-771-rayta-bint-al-harith-bin-jabala",
+      "source": "auto_t1"
+    },
+    "F1185": {
+      "arees_slug": "arees-1838-rifa-bin-waqash",
+      "source": "auto_t1"
+    },
+    "F1186": {
+      "arees_slug": "arees-1701-rifa-a-bin-abdul-mundhir",
+      "source": "auto_t1"
+    },
+    "F1187": {
+      "arees_slug": "arees-312-rifa-a-bin-amr-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F1195": {
+      "arees_slug": "arees-1702-s-ad-bin-ubaid-al-qa-ri",
+      "source": "auto_t1"
+    },
+    "F1197": {
+      "arees_slug": "arees-1322-sa-d-bin-habban-bin-munqidh",
+      "source": "auto_t1"
+    },
+    "F1198": {
+      "arees_slug": "arees-1476-sa-d-bin-khalifa",
+      "source": "auto_t1"
+    },
+    "F1199": {
+      "arees_slug": "arees-796-sa-d-bin-khaula",
+      "source": "auto_t1"
+    },
+    "F1200": {
+      "arees_slug": "arees-1745-sa-d-bin-khaythama",
+      "source": "auto_t1"
+    },
+    "F1202": {
+      "arees_slug": "arees-9-sa-d-ibn-abi-waqqas",
+      "source": "auto_t1"
+    },
+    "F1204": {
+      "arees_slug": "arees-46-sa-d-ibn-mua-dh",
+      "source": "original_strong"
+    },
+    "F1205": {
+      "arees_slug": "arees-35-sa-d-ibn-ubadah",
+      "source": "auto_t1"
+    },
+    "F1208": {
+      "arees_slug": "arees-755-sa-id-bin-amr-al-tamimi",
+      "source": "auto_t1"
+    },
+    "F1212": {
+      "arees_slug": "arees-1610-sa-id-bin-suwayd-bin-qays",
+      "source": "auto_t1"
+    },
+    "F1213": {
+      "arees_slug": "arees-11002-sa-id-ibn-al-musayyib",
+      "source": "auto_t1"
+    },
+    "F1214": {
+      "arees_slug": "arees-11-sa-id-bin-zayd",
+      "source": "original_strong"
+    },
+    "F1218": {
+      "arees_slug": "arees-1737-saalam-bin-umayr",
+      "source": "auto_t1"
+    },
+    "F1223": {
+      "arees_slug": "arees-85-safiyya-bint-abd-al-muttalib",
+      "source": "manual_t1"
+    },
+    "F1227": {
+      "arees_slug": "arees-60-safiyya-bint-huyayy",
+      "source": "auto_t1"
+    },
+    "F1230": {
+      "arees_slug": "arees-799-safwan-bin-bayda",
+      "source": "auto_t1"
+    },
+    "F1234": {
+      "arees_slug": "arees-339-sahl-bin-rafi",
+      "source": "manual_t2"
+    },
+    "F1235": {
+      "arees_slug": "arees-403-sahl-bin-hunayf",
+      "source": "auto_t1"
+    },
+    "F1236": {
+      "arees_slug": "arees-1041-sahl-bin-qays-bin-abi-ka-b",
+      "source": "auto_t1"
+    },
+    "F1237": {
+      "arees_slug": "arees-399-sahl-bin-sa-d-bin-malik",
+      "source": "auto_t1"
+    },
+    "F1241": {
+      "arees_slug": "arees-775-salama-bin-hisham",
+      "source": "auto_t1"
+    },
+    "F1247": {
+      "arees_slug": "arees-462-saleet-bin-amr",
+      "source": "auto_t1"
+    },
+    "F1248": {
+      "arees_slug": "arees-733-saleet-bin-saleet-bin-amr",
+      "source": "auto_t1"
+    },
+    "F1250": {
+      "arees_slug": "arees-1036-salim-bin-amr-bin-hadida",
+      "source": "auto_t1"
+    },
+    "F1252": {
+      "arees_slug": "arees-180-salim-mawla-abu-hudhayfah",
+      "source": "original_strong"
+    },
+    "F1253": {
+      "arees_slug": "arees-363-salit-bin-qays-bin-amr",
+      "source": "auto_t1"
+    },
+    "F1255": {
+      "arees_slug": "arees-1811-salma-bin-aslam",
+      "source": "auto_t1"
+    },
+    "F1256": {
+      "arees_slug": "arees-1807-salma-bin-thabit-bin-waqash",
+      "source": "auto_t1"
+    },
+    "F1265": {
+      "arees_slug": "arees-394-samra-bin-jundub",
+      "source": "manual_t2"
+    },
+    "F1274": {
+      "arees_slug": "arees-52-sawda-bint-zam-a",
+      "source": "manual_t1"
+    },
+    "F1276": {
+      "arees_slug": "arees-1908-sayfi-bin-qayzi-bin-amr",
+      "source": "auto_t1"
+    },
+    "F1307": {
+      "arees_slug": "arees-472-shuja-bin-wahb-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1310": {
+      "arees_slug": "arees-721-hasana",
+      "source": "auto_t1"
+    },
+    "F1315": {
+      "arees_slug": "arees-810-sinan-bin-abu-sinan-bin-mihsan-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1325": {
+      "arees_slug": "arees-20012-sufyan-bin-sa-id-ath-thawri",
+      "source": "manual_t1"
+    },
+    "F1326": {
+      "arees_slug": "arees-685-sufyan-bin-hatib-bin-umayya",
+      "source": "auto_t1"
+    },
+    "F1327": {
+      "arees_slug": "arees-720-sufyan-bin-ma-mar",
+      "source": "auto_t1"
+    },
+    "F1329": {
+      "arees_slug": "arees-20005-sufyan-bin-uyaynah",
+      "source": "auto_t1"
+    },
+    "F1331": {
+      "arees_slug": "arees-182-suhayb-bin-sinan-ar-rumi",
+      "source": "auto_t1"
+    },
+    "F1332": {
+      "arees_slug": "arees-335-suhayl-bin-rafi",
+      "source": "auto_t1"
+    },
+    "F1335": {
+      "arees_slug": "arees-221-suhyal-bin-bayda",
+      "source": "auto_t1"
+    },
+    "F1339": {
+      "arees_slug": "arees-378-sulaym-bin-al-harith-bin-tha-laba",
+      "source": "auto_t1"
+    },
+    "F1340": {
+      "arees_slug": "arees-495-sulaym-bin-milhan",
+      "source": "auto_t1"
+    },
+    "F1341": {
+      "arees_slug": "arees-334-sulaym-bin-qays-bin-qahd",
+      "source": "auto_t1"
+    },
+    "F1343": {
+      "arees_slug": "arees-11005-sulayman-ibn-yasar",
+      "source": "auto_t1"
+    },
+    "F1349": {
+      "arees_slug": "arees-89-sumayyah-bint-khayyat",
+      "source": "auto_t1"
+    },
+    "F1355": {
+      "arees_slug": "arees-608-suraqa-bin-amr-mazni",
+      "source": "auto_t1"
+    },
+    "F1356": {
+      "arees_slug": "arees-332-suraqa-bin-ka-b-bin-amr",
+      "source": "auto_t1"
+    },
+    "F1358": {
+      "arees_slug": "arees-1924-suwayd-bin-al-nu-man",
+      "source": "auto_t1"
+    },
+    "F1365": {
+      "arees_slug": "arees-382-tamim-al-dari",
+      "source": "auto_t1"
+    },
+    "F1368": {
+      "arees_slug": "arees-754-tamim-bishr-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F1372": {
+      "arees_slug": "arees-11053-tawus-bin-kaysan",
+      "source": "auto_t1"
+    },
+    "F1374": {
+      "arees_slug": "arees-355-tha-laba-bin-amr-bin-mihsan",
+      "source": "auto_t1"
+    },
+    "F1375": {
+      "arees_slug": "arees-1037-tha-laba-bin-anma-ibn-adi",
+      "source": "auto_t1"
+    },
+    "F1377": {
+      "arees_slug": "arees-1465-sa-d-bin-malik",
+      "source": "auto_t1"
+    },
+    "F1378": {
+      "arees_slug": "arees-343-thabit-bin-amr-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F1379": {
+      "arees_slug": "arees-1901-al-dahhak-bin-khalifa",
+      "source": "auto_t1"
+    },
+    "F1380": {
+      "arees_slug": "arees-658-thabit-bin-al-nu-man-bin-al-harith",
+      "source": "auto_t1"
+    },
+    "F1381": {
+      "arees_slug": "arees-1723-thabit-bin-aqram",
+      "source": "auto_t1"
+    },
+    "F1382": {
+      "arees_slug": "arees-254-thabit-bin-hazzal",
+      "source": "auto_t1"
+    },
+    "F1385": {
+      "arees_slug": "arees-1009-thabit-bin-tha-laba-bin-zayd",
+      "source": "auto_t1"
+    },
+    "F1386": {
+      "arees_slug": "arees-1837-thabit-bin-waqash",
+      "source": "auto_t1"
+    },
+    "F1387": {
+      "arees_slug": "arees-239-thabit-bin-qays-b-shammas",
+      "source": "auto_t1"
+    },
+    "F1389": {
+      "arees_slug": "arees-814-thaqf-bin-amr",
+      "source": "auto_t1"
+    },
+    "F1390": {
+      "arees_slug": "arees-1468-thaqf-bin-farwa-bin-al-badi",
+      "source": "auto_t1"
+    },
+    "F1399": {
+      "arees_slug": "arees-197-tulayb-bin-umayr",
+      "source": "auto_t1"
+    },
+    "F1401": {
+      "arees_slug": "arees-1242-ubada-bin-amr-bin-mihsan",
+      "source": "auto_t1"
+    },
+    "F1402": {
+      "arees_slug": "arees-263-ubada-bin-al-hashas-b-amr",
+      "source": "manual_t1"
+    },
+    "F1403": {
+      "arees_slug": "arees-40-ubada-bin-as-samit",
+      "source": "auto_t1"
+    },
+    "F1406": {
+      "arees_slug": "arees-1816-ubaid-bin-al-tayyihan",
+      "source": "auto_t1"
+    },
+    "F1410": {
+      "arees_slug": "arees-183-ubaydah-ibn-al-harith",
+      "source": "auto_t1"
+    },
+    "F1411": {
+      "arees_slug": "arees-133-ubaydallah-bin-al-abbas",
+      "source": "auto_t1"
+    },
+    "F1412": {
+      "arees_slug": "arees-39-ubayy-ibn-ka-b",
+      "source": "auto_t1"
+    },
+    "F1413": {
+      "arees_slug": "arees-349-ubbay-bin-mua-dh-bin-anas",
+      "source": "auto_t1"
+    },
+    "F1415": {
+      "arees_slug": "arees-808-ukkasha-bin-mihsan-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1418": {
+      "arees_slug": "arees-1002-umair-bin-humam-bin-al-jamuh",
+      "source": "auto_t1"
+    },
+    "F1433": {
+      "arees_slug": "arees-3-umar-ibn-al-khattab",
+      "source": "auto_t1"
+    },
+    "F1434": {
+      "arees_slug": "arees-331-umara-bin-hazm-ibn-zayd",
+      "source": "auto_t1"
+    },
+    "F1448": {
+      "arees_slug": "arees-759-umayr-bin-ri-ab-bin-hudhayfa",
+      "source": "auto_t1"
+    },
+    "F1449": {
+      "arees_slug": "arees-822-umayr-ibn-abi-waqqas",
+      "source": "auto_t1"
+    },
+    "F1450": {
+      "arees_slug": "arees-764-umayr-amr-bin-auf",
+      "source": "auto_t1"
+    },
+    "F1483": {
+      "arees_slug": "arees-156-umm-fadl-lubaba-bint-al-harith",
+      "source": "original_strong"
+    },
+    "F1499": {
+      "arees_slug": "arees-202-umm-ayman-barakah",
+      "source": "auto_t1"
+    },
+    "F1508": {
+      "arees_slug": "arees-136-umm-habib-bint-jahsh",
+      "source": "auto_t1"
+    },
+    "F1511": {
+      "arees_slug": "arees-59-umm-habibah-bint-abi-sufyan",
+      "source": "auto_t1"
+    },
+    "F1512": {
+      "arees_slug": "arees-9997-umm-hakim-bint-abd-al-muttalib",
+      "source": "auto_t1"
+    },
+    "F1520": {
+      "arees_slug": "arees-209-umm-haram-bint-milhan",
+      "source": "auto_t1"
+    },
+    "F1551": {
+      "arees_slug": "arees-827-umm-qays-bint-mihsan-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1556": {
+      "arees_slug": "arees-91-umm-ruman",
+      "source": "auto_t1"
+    },
+    "F1557": {
+      "arees_slug": "arees-1233-sa-d-bin-al-harith-bin-al-samma",
+      "source": "manual_t1"
+    },
+    "F1568": {
+      "arees_slug": "arees-56-umm-salamah",
+      "source": "auto_t1"
+    },
+    "F1591": {
+      "arees_slug": "arees-1214-zayd-bin-suraqa-bin-ka-b-bin-amr",
+      "source": "manual_t1"
+    },
+    "F1594": {
+      "arees_slug": "arees-1720-unays-bin-qatada",
+      "source": "auto_t1"
+    },
+    "F1605": {
+      "arees_slug": "arees-189-uqba-bin-amir-al-juhayni",
+      "source": "auto_t1"
+    },
+    "F1606": {
+      "arees_slug": "arees-1004-uqba-bin-amir-bin-nabi",
+      "source": "auto_t1"
+    },
+    "F1608": {
+      "arees_slug": "arees-1911-uqba-bin-qayzi-bin-qays",
+      "source": "auto_t1"
+    },
+    "F1612": {
+      "arees_slug": "arees-10511-urwa-ibn-al-zubayr",
+      "source": "auto_t1"
+    },
+    "F1613": {
+      "arees_slug": "arees-45-usaid-bin-hudair-bin-sammak",
+      "source": "auto_t1"
+    },
+    "F1614": {
+      "arees_slug": "arees-50-usamah-ibn-zayd",
+      "source": "auto_t1"
+    },
+    "F1620": {
+      "arees_slug": "arees-1709-utba-bin-uwyam-bin-sa-ida",
+      "source": "auto_t1"
+    },
+    "F1623": {
+      "arees_slug": "arees-1611-utba-bin-rabi-bin-rafi",
+      "source": "auto_t1"
+    },
+    "F1624": {
+      "arees_slug": "arees-765-utba-ibn-mas-ud",
+      "source": "auto_t1"
+    },
+    "F1625": {
+      "arees_slug": "arees-206-utbah-ibn-ghazwan",
+      "source": "original_strong"
+    },
+    "F1629": {
+      "arees_slug": "arees-4-uthman-ibn-affaan",
+      "source": "auto_t1"
+    },
+    "F1631": {
+      "arees_slug": "arees-1703-uwyam-bin-sa-ida",
+      "source": "auto_t1"
+    },
+    "F1634": {
+      "arees_slug": "arees-4009-wahb-bin-qabous-al-mazni",
+      "source": "auto_t1"
+    },
+    "F1635": {
+      "arees_slug": "arees-867-wahb-bin-sa-d-bin-abi-sarh",
+      "source": "auto_t1"
+    },
+    "F1636": {
+      "arees_slug": "arees-20032-waki-bin-al-jarrah",
+      "source": "auto_t1"
+    },
+    "F1641": {
+      "arees_slug": "arees-1321-wasay-bin-habban-bin-munqidh",
+      "source": "auto_t1"
+    },
+    "F1642": {
+      "arees_slug": "arees-260-wazfah-waraqa-bin-iyas-b-amr",
+      "source": "original_strong"
+    },
+    "F1656": {
+      "arees_slug": "arees-1035-yazid-bin-amir-bin-hadida",
+      "source": "auto_t1"
+    },
+    "F1657": {
+      "arees_slug": "arees-282-yazid-bin-al-harith-ibn-qays",
+      "source": "auto_t1"
+    },
+    "F1659": {
+      "arees_slug": "arees-813-yazid-bin-ruqaysh-al-asadi",
+      "source": "auto_t1"
+    },
+    "F1662": {
+      "arees_slug": "arees-761-yazid-bin-zama-a-bin-al-aswad",
+      "source": "auto_t1"
+    },
+    "F1664": {
+      "arees_slug": "arees-19183-yazid-bin-mu-awiya",
+      "source": "manual_t1"
+    },
+    "F1676": {
+      "arees_slug": "arees-395-zayd-bin-al-dathinna",
+      "source": "auto_t1"
+    },
+    "F1678": {
+      "arees_slug": "arees-686-zayd-bin-hatib-bin-umayya",
+      "source": "auto_t1"
+    },
+    "F1680": {
+      "arees_slug": "arees-1340-zayd-bin-milhan",
+      "source": "auto_t1"
+    },
+    "F1682": {
+      "arees_slug": "arees-114-zayd-ibn-al-khattab",
+      "source": "auto_t1"
+    },
+    "F1684": {
+      "arees_slug": "arees-384-zayd-bin-arqam",
+      "source": "auto_t1"
+    },
+    "F1685": {
+      "arees_slug": "arees-15-zayd-ibn-harithah",
+      "source": "original_strong"
+    },
+    "F1686": {
+      "arees_slug": "arees-11803-zayd-bin-zayd-ibn-thabit",
+      "source": "auto_t1"
+    },
+    "F1687": {
+      "arees_slug": "arees-244-zaynab-bint-abi-salamah",
+      "source": "auto_t1"
+    },
+    "F1688": {
+      "arees_slug": "arees-2751-zaynab-bint-al-harith-bin-khalid",
+      "source": "auto_t1"
+    },
+    "F1691": {
+      "arees_slug": "arees-98-zaynab-bint-ali-bin-abi-talib",
+      "source": "auto_t1"
+    },
+    "F1692": {
+      "arees_slug": "arees-57-zaynab-bint-jahsh",
+      "source": "auto_t1"
+    },
+    "F1694": {
+      "arees_slug": "arees-55-zaynab-bint-khazeemah",
+      "source": "auto_t1"
+    },
+    "F1711": {
+      "arees_slug": "arees-7-zubayr-ibn-al-awwam",
+      "source": "auto_t1"
+    },
+    "F1831": {
+      "arees_slug": "arees-11271-jabir-bin-zayd-al-azdi",
+      "source": "auto_t1"
+    },
+    "F1857": {
+      "arees_slug": "arees-11114-abu-al-aswad-al-du-ali",
+      "source": "auto_t1"
+    },
+    "F1979": {
+      "arees_slug": "arees-90-thuwaybah",
+      "source": "auto_t1"
+    },
+    "F1982": {
+      "arees_slug": "arees-20022-hammad-bin-zayd",
+      "source": "original_strong"
+    },
+    "F1983": {
+      "arees_slug": "arees-11065-hisham-bin-urwa",
+      "source": "original_strong"
+    },
+    "F1984": {
+      "arees_slug": "arees-20115-ma-mar-bin-rashid",
+      "source": "original_strong"
+    },
+    "F1985": {
+      "arees_slug": "arees-11070-ibn-jurayj",
+      "source": "auto_t1"
+    },
+    "F1988": {
+      "arees_slug": "arees-11081-amr-bin-dinar",
+      "source": "auto_t1"
+    },
+    "F1989": {
+      "arees_slug": "arees-20318-hammad-bin-usamah",
+      "source": "manual_t2"
+    },
+    "F1990": {
+      "arees_slug": "arees-11051-ibrahim-al-nakha-i",
+      "source": "original_strong"
+    },
+    "F1991": {
+      "arees_slug": "arees-20295-hisham-bin-abi-abdullah-al-dastawa-i",
+      "source": "manual_t2"
+    },
+    "F1992": {
+      "arees_slug": "arees-11050-sa-id-bin-jubayr",
+      "source": "auto_t1"
+    },
+    "F1993": {
+      "arees_slug": "arees-20472-yazid-bin-harun",
+      "source": "auto_t1"
+    },
+    "F1994": {
+      "arees_slug": "arees-11062-yahya-bin-sa-id-al-ansari",
+      "source": "manual_t1"
+    },
+    "F1995": {
+      "arees_slug": "arees-20150-ibrahim-bin-sa-d-bin-ibrahim",
+      "source": "original_strong"
+    },
+    "F1997": {
+      "arees_slug": "arees-20377-amr-bin-al-harith-bin-ya-qub",
+      "source": "original_strong"
+    },
+    "F1998": {
+      "arees_slug": "arees-20021-hammad-bin-salama",
+      "source": "auto_t1"
+    },
+    "F1999": {
+      "arees_slug": "arees-11080-asim-al-ahwal",
+      "source": "auto_t2"
+    },
+    "F2004": {
+      "arees_slug": "arees-11069-al-hakam-bin-utayba",
+      "source": "auto_t1"
+    },
+    "F2006": {
+      "arees_slug": "arees-11289-sulaiman-bin-tarkhan-al-taymi",
+      "source": "auto_t2"
+    },
+    "F2008": {
+      "arees_slug": "arees-11411-yazid-bin-abi-habib",
+      "source": "auto_t1"
+    },
+    "F2009": {
+      "arees_slug": "arees-11073-sa-id-bin-abi-aruba",
+      "source": "auto_t1"
+    },
+    "F2010": {
+      "arees_slug": "arees-11063-sa-d-bin-ibrahim",
+      "source": "auto_t1"
+    },
+    "F2012": {
+      "arees_slug": "arees-22016-ishaq-bin-ibrahim-al-hunaini",
+      "source": "manual_t1"
+    }
+  }
+}

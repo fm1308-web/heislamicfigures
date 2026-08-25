@@ -4,7 +4,7 @@
 // non-English buckets are fetched from the translations CDN.
 // ═══════════════════════════════════════════════════════════
 (function(){
-  var CDN_BASE = 'https://gold-ark-data.hooman-92b.workers.dev/data/islamic/translations';
+  var CDN_BASE = ((window.GOLD_ARK_CONFIG && window.GOLD_ARK_CONFIG.USE_CDN) ? (window.GOLD_ARK_CONFIG.CDN_BASE + '/') : '') + 'data/islamic/translations';
   var MANIFEST_URL = CDN_BASE + '/manifest.json';
   var DB_NAME = 'gold-ark-translations';
   var STORE = 'buckets';

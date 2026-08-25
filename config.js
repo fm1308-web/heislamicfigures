@@ -2,7 +2,7 @@
 // Single source of truth for data origin. Flip USE_CDN to switch between R2 and local fixture.
 window.GOLD_ARK_CONFIG = {
   CDN_BASE: 'https://gold-ark-data.hooman-92b.workers.dev',
-  USE_CDN: true,
+  USE_CDN: (location.search.indexOf('cdn=1') >= 0) || (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'),
   FIXTURE_VERSION: 'fixture8'
 };
 
