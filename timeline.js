@@ -808,11 +808,23 @@ window._restoreState_timeline=function(s){
 };
 
 // ── Figure history stack (in-app back navigation) ──
+// Entries are {key, narrator, slug, famous} so narrators (identified by slug)
+// and core figures (identified by famous name) share one stack. Purely
+// in-app — the browser history / popstate is deliberately not involved.
 var _figureHistory=[];
 var _figureHistoryMax=20;
-function pushFigureHistory(name){
-  if(_figureHistory.length&&_figureHistory[_figureHistory.length-1]===name) return;
-  _figureHistory.push(name);
+function _figKey(p){
+  if(!p) return '';
+  return p._narrator ? ('n:'+(p.slug||'')) : ('f:'+(p.famous||''));
+}
+function pushFigureHistory(p){
+  if(!p) return;
+  // Back-compat: older call sites passed a bare famous-name string.
+  if(typeof p === 'string') p={famous:p};
+  var key=_figKey(p);
+  if(!key||key==='f:') return;
+  if(_figureHistory.length&&_figureHistory[_figureHistory.length-1].key===key) return;
+  _figureHistory.push({key:key,narrator:!!p._narrator,slug:p.slug||'',famous:p.famous||''});
   if(_figureHistory.length>_figureHistoryMax) _figureHistory.shift();
   _updateBackBtn();
 }
@@ -826,6 +838,18 @@ function popFigureHistory(){
 function _updateBackBtn(){
   var btn=document.getElementById('figureBackBtn');
   if(btn) btn.style.display=_figureHistory.length>1?'inline-flex':'none';
+}
+// In-app figure back: step to the previously viewed figure. Re-selecting it
+// pushes the same key, which pushFigureHistory dedupes, so the stack stays put.
+function _tlFigureBack(){
+  var prev=popFigureHistory();
+  if(!prev) return;
+  if(prev.narrator){
+    if(window.GA_Narrators) window.GA_Narrators.focusNarrator(prev.slug);
+  } else {
+    var p=PEOPLE.find(function(x){return x.famous===prev.famous;});
+    if(p) _tlFocusFigure(p);
+  }
 }
 let CW=[0,6,7]; // Default: PRE-ISLAMIC | 6TH C. | 7TH C.
 let centIdx=1; // Index of 6 in ALL_CENTS=[0,6,7,...]
@@ -898,9 +922,20 @@ async function _ensureDetails(p){
 
 // Wrapper functions — use these instead of calling renderInfo / openRelationsCard / _openMapCard directly from click handlers
 async function renderInfoWithDetails(p){
+  // NARRATORS: route to the narrator card here, at the single choke point every
+  // caller goes through. Several call sites re-render `activePerson` on their
+  // own schedule (detail chunks landing, cross-tradition data, i18n bucket,
+  // remount) and would otherwise push a narrator through renderInfo(), which
+  // emits a "NARRATOR" type chip plus an empty tradition chip and no tier
+  // sticker. That was the missing-badge bug.
+  if(p && p._narrator){
+    if(window.GA_Narrators) window.GA_Narrators.openCard(p);
+    pushFigureHistory(p);
+    return;
+  }
   await _ensureDetails(p);
   renderInfo(p);
-  pushFigureHistory(p.famous);
+  pushFigureHistory(p);
 }
 async function openRelationsCardWithDetails(p,cx,cy){
   await _ensureDetails(p);
@@ -1398,6 +1433,19 @@ function _syncSliderUI(){
 // ═══════════════════════════════════════════════════════════
 function renderAll(filtered){
   if(!filtered) filtered=getFiltered();
+  // NARRATORS (localhost-gated, lazy): merge dated Tier-B/C narrators into the
+  // row list at render time only. They never enter PEOPLE, so every other view
+  // is untouched. First call returns [] and kicks off the load; the callback
+  // re-renders once, after which timelineRows() serves from cache.
+  if(window.GA_Narrators && window.GA_Narrators.enabled()){
+    var _nrows = window.GA_Narrators.timelineRows(_tlNarratorsReady);
+    if(_nrows.length){
+      filtered = filtered.concat(window.GA_Narrators.applyFilters(_nrows,{
+        types: selTypes, trads: selTrads, q: searchQ,
+        favsOnly: !!(APP.filterFavsOnly && APP.Favorites), badge: selBadge
+      }));
+    }
+  }
   // YEAR FILTER: when slider is active (and not animating), keep only figures alive at activeYear.
   if(activeYear !== null && !_animActive){
     filtered = filtered.filter(function(p){
@@ -1423,12 +1471,38 @@ function renderAll(filtered){
     window._tlColorMap[p.famous] = isGold ? '#D4AF37' : TL_PALETTE[vi % TL_PALETTE.length];
   });
   renderRows(sorted);
+  _tlUpdateFigCount(sorted.length);
   _tlRenderCenter(visible);
   if(activePerson){
-    const still=sorted.find(p=>p.famous===activePerson.famous);
-    if(still) renderInfoWithDetails(still); else{activePerson=null;showEmptyInfo();}
+    const still=activePerson._narrator
+      ? sorted.find(p=>p._narrator&&p.slug===activePerson.slug)
+      : sorted.find(p=>!p._narrator&&p.famous===activePerson.famous);
+    if(still){ renderInfoWithDetails(still); }
+    else {activePerson=null;showEmptyInfo();}
   }
   if(VIEW==='relations') updateRelationsHighlight();
+}
+
+// "Showing X of Y figures" — Y is every figure the app currently holds
+// (core + loaded narrators), X is what survives the active filters.
+function _tlUpdateFigCount(shownCount){
+  var el=document.getElementById('tlFigCount');
+  if(!el) return;
+  var narrators=0;
+  if(window.GA_Narrators && window.GA_Narrators.enabled()){
+    var nr=window.GA_Narrators.timelineRows();
+    narrators=(nr&&nr.length)||0;
+  }
+  var total=(PEOPLE?PEOPLE.length:0)+narrators;
+  var shown=(typeof shownCount==='number')?shownCount:(_lastSortedPeople?_lastSortedPeople.length:0);
+  if(!total){ el.textContent=''; return; }
+  el.textContent='Showing '+shown.toLocaleString()+' of '+total.toLocaleString()+' figures';
+}
+
+// Re-render once the narrator listing lands. timelineRows() is cached by then,
+// so this cannot recurse.
+function _tlNarratorsReady(){
+  try { renderAll(); } catch(e){ console.warn('[narrators] re-render failed', e); }
 }
 
 // Sacred-rule single source of truth (retained post-wipe for the left-list name colour).
@@ -1829,7 +1903,7 @@ function renderRows(filtered){
     html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="background:${era.bg}">
       <div class="tc-name${isSacred?' is-sacred':''}">
         <div class="tc-texts">
-          <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}</div>
+          <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}${p._narrator&&window.GA_Narrators?window.GA_Narrators.tierChip(p.tier)+window.GA_Narrators.rowYear(p):''}</div>
           <div class="tc-sub">${esc(_tlFigSubtitle(p) || _tlClassifStr(p))}</div>
         </div>
         <div class="tc-dot" style="background:${col}${isProphet?';box-shadow:0 0 8px '+col+'90':''}"></div>
@@ -1862,11 +1936,59 @@ function renderRows(filtered){
 
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
+// ── Cross-link target: FULL figure selection ──────────────────────────────
+// Does exactly what clicking the row in the left list does — scroll the row
+// into view, pulse it, then selectRow() (which highlights it, draws the
+// lifeline in the centre column and renders the info card). Works for core
+// figures and narrators alike. Returns false when the figure isn't in the
+// current filtered list, in which case the card alone is rendered.
+function _tlFocusFigure(person){
+  if(!person) return false;
+  var idx = person._narrator
+    ? _lastSortedPeople.findIndex(function(p){ return p._narrator && p.slug===person.slug; })
+    : _lastSortedPeople.findIndex(function(p){ return !p._narrator && p.famous===person.famous; });
+  if(idx === -1){
+    activePerson = person;
+    renderInfoWithDetails(person);
+    return false;
+  }
+  var target=null, rows=document.querySelectorAll('.tl-row');
+  for(var i=0;i<rows.length;i++){ if(parseInt(rows[i].dataset.idx)===idx){ target=rows[i]; break; } }
+  if(target){
+    var sc=document.getElementById('rowsScroll');
+    if(sc){
+      var tr=target.getBoundingClientRect(), cr=sc.getBoundingClientRect();
+      sc.scrollTo({top: sc.scrollTop+(tr.top-cr.top)-(cr.height/2)+(tr.height/2), behavior:'smooth'});
+    } else {
+      target.scrollIntoView({block:'center', behavior:'smooth'});
+    }
+    target.classList.remove('tl-jump-pulse');
+    void target.offsetWidth;
+    target.classList.add('tl-jump-pulse');
+    setTimeout(function(){ target.classList.remove('tl-jump-pulse'); }, 1500);
+  }
+  selectRow(idx);
+  return true;
+}
+window._tlFocusFigure = _tlFocusFigure;
+// Slug-addressed variant — core figures first, then loaded narrators.
+window._tlFocusFigureBySlug = function(slug){
+  if(!slug) return false;
+  for(var i=0;i<PEOPLE.length;i++){ if(PEOPLE[i] && PEOPLE[i].slug===slug) return _tlFocusFigure(PEOPLE[i]); }
+  for(var j=0;j<_lastSortedPeople.length;j++){
+    var q=_lastSortedPeople[j];
+    if(q && q._narrator && q.slug===slug) return _tlFocusFigure(q);
+  }
+  return false;
+};
+
 function selectRow(idx){
   // FIX: use _lastSortedPeople (the sorted array that renderRows used to assign data-idx)
   // Previously used getFiltered() which returns unsorted JSON order — causing 577/611 wrong selections
   const p=_lastSortedPeople[idx]; if(!p)return;
-  if(activePerson && activePerson.famous === p.famous && tlFocusName === p.famous){
+  if(activePerson && activePerson.famous === p.famous && tlFocusName === p.famous
+     && !!activePerson._narrator === !!p._narrator
+     && (!p._narrator || activePerson.slug === p.slug)){
     _tlExitFocus();
     return;
   }
@@ -2552,7 +2674,14 @@ function _showTimelineMethodology(){
           '</div>' +
         '</div>' +
         '<div id="infoPanel">' +
-          '<div id="infoHdr">'+_tlT('INFORMATION')+'</div>' +
+          '<div id="infoHdr">'+_tlT('INFORMATION')+
+            '<button id="figureBackBtn" type="button" title="Back to previous figure" ' +
+              'style="display:none;align-items:center;gap:5px;float:right;' +
+              'background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;' +
+              'color:var(--ip-muted);font-family:inherit;font-size:11px;letter-spacing:.08em;' +
+              'padding:2px 9px;cursor:pointer;transition:color .12s,border-color .12s">' +
+              '← BACK</button>' +
+          '</div>' +
           '<div id="infoScroll">' +
             '<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">'+_tlT('Click a name to explore')+'</div></div>' +
           '</div>' +
@@ -2598,6 +2727,42 @@ function _showTimelineMethodology(){
   // Wire shell's Zone B controls — TIMELINE spec:
   // { search:true, filters:[TYPE, TRADITION, HAS], slider:true, htw:true, saved-pill }
   function _wireZoneB(zoneBEl){
+    // In-app figure back button (info panel header). Uses the internal
+    // _figureHistory stack only — never window.history.
+    var _fbb = document.getElementById('figureBackBtn');
+    if(_fbb && !_fbb._bound){
+      _fbb._bound = true;
+      _fbb.addEventListener('click', function(e){ e.stopPropagation(); _tlFigureBack(); });
+      _fbb.addEventListener('mouseenter', function(){ _fbb.style.color='var(--ip-text)'; _fbb.style.borderColor='var(--ip-muted)'; });
+      _fbb.addEventListener('mouseleave', function(){ _fbb.style.color='var(--ip-muted)'; _fbb.style.borderColor='var(--ip-brd)'; });
+    }
+    _updateBackBtn();
+
+    // Live figure count, centred in the filter row. The row already carries a
+    // flex-grow:1 .zb-slot-spacer that soaks up all free space, so the count
+    // is centred *inside that spacer* — auto margins on a sibling would have
+    // nothing left to distribute and would pin it to the right edge.
+    if(zoneBEl && !document.getElementById('tlFigCount')){
+      var _r2 = zoneBEl.querySelector('.zb-row2');
+      if(_r2){
+        var _fc = document.createElement('span');
+        _fc.id = 'tlFigCount';
+        _fc.style.cssText = 'white-space:nowrap;font-size:11px;letter-spacing:.06em;' +
+          'color:var(--ip-muted,#8A95A0);opacity:.85';
+        // Centred on the bar itself, not on the leftover space after the
+        // filter buttons (which is what any flex-flow placement gives).
+        // pointer-events:none so it can never intercept a filter click.
+        _r2.style.position = 'relative';
+        _fc.style.position      = 'absolute';
+        _fc.style.left          = '50%';
+        _fc.style.top           = '50%';
+        _fc.style.transform     = 'translate(-50%,-50%)';
+        _fc.style.pointerEvents = 'none';
+        _r2.appendChild(_fc);
+      }
+    }
+    _tlUpdateFigCount();
+
     // Search input — has id="search"
     var searchInp = document.getElementById('search');
     if(searchInp){

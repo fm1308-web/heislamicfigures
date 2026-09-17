@@ -1,9 +1,14 @@
 // Gold Ark — sandbox v2 runtime config
 // Single source of truth for data origin. Flip USE_CDN to switch between R2 and local fixture.
 window.GOLD_ARK_CONFIG = {
-  CDN_BASE: 'https://gold-ark-data.hooman-92b.workers.dev',
+  CDN_BASE: 'https://data.hoomanlibrary.com',
+  // FALLBACK: old workers.dev URL kept for 30 days
+  // CDN_BASE: 'https://gold-ark-data.hooman-92b.workers.dev',
   USE_CDN: (location.search.indexOf('cdn=1') >= 0) || (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'),
-  FIXTURE_VERSION: 'fixture8'
+  FIXTURE_VERSION: 'fixture8',
+  // Tier-B/C narrator figures. Localhost only for now — data loads lazily
+  // (never at boot, never into core.json). See narrators.js.
+  NARRATORS_ON: (location.hostname === 'localhost')
 };
 
 // dataUrl(relPath) — builds the final URL for a data fetch.

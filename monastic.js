@@ -209,6 +209,14 @@ var _topicMap = {};
 var _clickBound = false;
 var _peopleIndex = null;
 var _pinnedHadiths = null;
+// Generation token for the pinned (cross-link) results pane. Bumped every time
+// a pin is applied or cleared; any async render that started under an older
+// token must not paint, or a slow collection load lands on top of the pin.
+var _pinSeq = 0;
+// True while a cross-link handoff is pending or its results are on screen.
+// Nothing may render the default empty state, or restore a stale filter
+// snapshot, while this holds.
+function _pinActive(){ return !!(window._stPendingPinned || _pinnedHadiths || window._monPinnedLast); }
 
 var _monSel = {
   period:     new Set(),
@@ -1763,9 +1771,57 @@ function _stripArabic(s){
   return String(s || '').replace(/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g, '').replace(/\s+/g, ' ').trim();
 }
 
-function _narratorCell(name){
+// ── Chain → figure cross-links ────────────────────────────────────────────
+// A chain entry's numeric arees id is resolved through the narrator loader's
+// id→slug map (exact lookup; unknown ids are left as plain text — never
+// guessed). Resolved names render as the app's standard relation chip and
+// navigate to TIMELINE with the full figure selection.
+var _chainLinksReady = false;
+
+function _chainLinksOn(){
+  return !!(window.GA_Narrators && window.GA_Narrators.enabled &&
+            window.GA_Narrators.enabled() && _chainLinksReady);
+}
+
+// Loads the id map once, then repaints the current rows so names become chips.
+function _ensureChainLinks(){
+  if(_chainLinksReady) return;
+  var GN = window.GA_Narrators;
+  if(!GN || !GN.enabled || !GN.enabled() || typeof GN.ensureIdMap !== 'function') return;
+  if(_ensureChainLinks._started) return;
+  _ensureChainLinks._started = true;
+  GN.ensureIdMap().then(function(){
+    _chainLinksReady = true;
+    try {
+      if(_lastFiltered && _lastFiltered.length) _renderRows(_lastFiltered, _lastColKey, _currentPage);
+    } catch(e){ console.warn('[MON] chain-link repaint failed', e); }
+  });
+}
+
+// Relation-chip styling, matching timeline.css's .i-teacher (those rules are
+// scoped to body.tl-mounted, so the values are inlined here).
+var _FIG_CHIP_CSS = 'display:inline-block;padding:3px 10px;background:#222d3a;' +
+  'border:1px solid #2d3748;border-radius:2px;color:#E5E7EB;font-size:var(--fs-3);' +
+  'cursor:pointer;transition:border-color .12s,color .12s';
+
+// name + the raw chain entry (for its id) -> chip when resolvable, else plain.
+function _figLink(name, nr){
+  var plain = '<span style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(name) + '</span>';
+  if(!_chainLinksOn() || !nr || nr.id == null) return plain;
+  var slug = window.GA_Narrators.slugForId(nr.id);
+  if(!slug) return plain;                       // unresolved -> plain text
+  return '<span class="mon-fig-link" data-nslug="' + esc(slug) + '" ' +
+    'title="' + (/^F/.test(slug) ? 'Open figure in TIMELINE' : 'Open narrator in TIMELINE') + '" ' +
+    'style="' + _FIG_CHIP_CSS + '">' + esc(name) + '</span>';
+}
+
+function _narratorCell(name, nr){
   name = _stripArabic(name);
   if(!name) return '';
+  // Prefer the exact id cross-link; fall back to the legacy name match.
+  if(_chainLinksOn() && nr && nr.id != null && window.GA_Narrators.slugForId(nr.id)){
+    return _figLink(name, nr);
+  }
   var matched = _matchNarrator(name);
   if(matched){
     return '<span class="mon-narrator-tag" data-famous="' + esc(matched) + '" style="cursor:pointer;padding:2px 8px;border:1px solid rgba(212,175,55,0.4);border-radius:3px;background:rgba(212,175,55,0.08);color:#D4AF37;font-weight:500;font-size:var(--fs-3)">' + esc(name) + '</span>';
@@ -1801,7 +1857,7 @@ function _chainOnlyBlock(h){
     rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
               '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
               '<div style="flex:1">' +
-                '<div style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</div>' +
+                '<div style="font-size:var(--fs-3)">' + _figLink(nm, nr) + '</div>' +
                 '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + gradeHtml + '</div>' +
               '</div>' +
             '</div>';
@@ -1874,7 +1930,7 @@ function _narratorBlock(h){
   }
   var terminal = narrs[narrs.length - 1];
   var termName = _stripArabic((terminal.name || '').split('(')[0].trim());
-  var termCell = _narratorCell(termName);
+  var termCell = _narratorCell(termName, terminal);
   var N = narrs.length;
   var toggle = '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>';
   var rows = '';
@@ -1893,7 +1949,7 @@ function _narratorBlock(h){
     rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
               '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
               '<div style="flex:1">' +
-                '<div style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</div>' +
+                '<div style="font-size:var(--fs-3)">' + _figLink(nm, nr) + '</div>' +
                 '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + gradeHtml + relHtml + '</div>' +
                 tail +
               '</div>' +
@@ -2113,6 +2169,7 @@ function _openMethodology(e){
 
 // ── Filter + render ──
 function _applyAllFilters(){
+  var _seq = _pinSeq;
   _syncBand();
 
   var colSet = _monSel.collection;
@@ -2125,6 +2182,12 @@ function _applyAllFilters(){
   // Periods / Topics / Narrators all operate over the full 34k corpus, so any
   // filter selection (not just Collection) must trigger a load.
   if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0 && volSet.size === 0 && _monSel.concept.size === 0){
+    // A pinned cross-link owns the results pane — never replace it with the
+    // default prompt. This is what wiped narrator→MONASTIC links: the revisit
+    // filter-restore fires applyFilters() on an empty snapshot ~250ms after
+    // mount, landing here. _clearPinned() nulls _pinnedHadiths before it calls
+    // us, so clearing the filter still reaches the default state below.
+    if(_pinActive()){ showLoading(false); return; }
     showLoading(false);
     _lastFiltered = [];
     _lastColKey = '';
@@ -2193,6 +2256,9 @@ function _applyAllFilters(){
       }
     }
 
+    // A pin was applied (or cleared) while these collections were loading —
+    // this result is stale, drop it rather than paint over the pinned view.
+    if(_seq !== _pinSeq) return;
     showLoading(false);
     _monBaseRows = hadiths;
     _renderRows(hadiths, colSet.size === 1 ? Array.from(colSet)[0] : '');
@@ -2249,6 +2315,7 @@ function _monHighlight(raw){
 window._monRunSearch = function(val){ _monSearchQuery = val || ''; _applySearch(); };
 window._monDebSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer) clearTimeout(_monSearchTimer); _monSearchTimer = setTimeout(_applySearch, 180); };
 function _renderRows(filtered, colKey, page){
+  _ensureChainLinks();
   _lastFiltered = filtered;
   _lastColKey = colKey;
   _resultsEl.innerHTML = '';
@@ -2547,6 +2614,8 @@ function _parseHadithId(id){
 function _processPinnedHadiths(){
   if(!_pinnedHadiths) return;
   console.log('[MON process start]', _pinnedHadiths);
+  // Claim the results pane: invalidates any filter load already in flight.
+  var _mySeq = ++_pinSeq;
   var ids = _pinnedHadiths.ids;
   var needed = {};
   var orderMap = {};
@@ -2585,6 +2654,8 @@ function _processPinnedHadiths(){
         });
       });
       matched.sort(function(a,b){ return a._sortIdx - b._sortIdx; });
+      // Superseded by a newer pin, or cleared while loading — don't paint.
+      if(_mySeq !== _pinSeq || !_pinnedHadiths) return;
       showLoading(false);
       console.log('[MON matched]', matched.length, 'of', ids.length, 'requested');
       _renderPinned(matched);
@@ -2627,14 +2698,17 @@ function _renderPinBanner(label, count){
   banner.innerHTML = '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(label || '') + ' \u2014 ' + count + ' hadith' + (count !== 1 ? 's' : '') + '</span>' +
     '<a href="#" id="mon-pin-hide-session" style="color:#9aa3b2;font-size:11px;text-decoration:underline;font-family:Lato,sans-serif;letter-spacing:0;text-transform:none;font-weight:400">Don\u2019t show this session</a>' +
     '<span id="mon-pin-clear" title="Clear pinned filter" style="cursor:pointer;opacity:.85;padding:1px 8px;border:1px solid rgba(212,175,55,.5);border-radius:3px;font-size:11px">Clear filter</span>' +
-    '<span id="mon-pin-dismiss" title="Hide banner (keep filter)" style="cursor:pointer;opacity:.7;padding:0 6px;font-size:14px;line-height:1">\u2715</span>';
+    '<span id="mon-pin-dismiss" title="Clear pinned filter" style="cursor:pointer;opacity:.7;padding:0 6px;font-size:14px;line-height:1">\u2715</span>';
   if(_resultsEl && _resultsEl.parentNode){
     _resultsEl.parentNode.insertBefore(banner, _resultsEl);
   }
   var btn = document.getElementById('mon-pin-clear');
   if(btn) btn.onclick = function(){ _clearPinned(); };
+  // ✕ clears the pinned filter and returns MONASTIC to its default state —
+  // same as "Clear filter". (Previously it hid the banner but left the filter
+  // pinned, which left no way back to the default from the banner itself.)
   var dismiss = document.getElementById('mon-pin-dismiss');
-  if(dismiss) dismiss.onclick = function(){ banner.remove(); };
+  if(dismiss) dismiss.onclick = function(){ _clearPinned(); };
   var hideSession = document.getElementById('mon-pin-hide-session');
   if(hideSession) hideSession.onclick = function(e){
     e.preventDefault();
@@ -2645,6 +2719,11 @@ function _renderPinBanner(label, count){
 
 function _clearPinned(){
   _pinnedHadiths = null;
+  // Drop any handoff still queued and the cross-mount stash, and invalidate
+  // in-flight pinned loads, so nothing re-pins after the user has cleared.
+  window._stPendingPinned = null;
+  window._monPinnedLast = null;
+  _pinSeq++;
   var b = document.getElementById('mon-pin-banner');
   if(b) b.remove();
   if(typeof _applyAllFilters === 'function') _applyAllFilters();
@@ -2949,6 +3028,18 @@ function init(){
         }
         return;
       }
+      // Chain / narrator cross-link resolved by arees id — hand off to the
+      // narrator loader, which switches to TIMELINE and runs the full figure
+      // selection (row highlight, lifeline, info card, figure history).
+      var fig = e.target.closest('.mon-fig-link');
+      if(fig){
+        e.stopPropagation();
+        var nslug = fig.getAttribute('data-nslug');
+        if(nslug && window.GA_Narrators && typeof window.GA_Narrators.gotoFigure === 'function'){
+          window.GA_Narrators.gotoFigure(nslug);
+        }
+        return;
+      }
       var tag = e.target.closest('.mon-narrator-tag');
       if(!tag) return;
       e.stopPropagation();
@@ -2984,6 +3075,24 @@ function init(){
   var _monSearchBox = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
   if(_monSearchBox && !_monSearchBoxPrev){
     _monSearchBoxPrev = _monSearchBox.style.display || '';
+  }
+
+  // LAST STEP OF INIT. A cross-link handoff (window._stPendingPinned, set by a
+  // narrator card's hadith row) wins over the default empty state, however the
+  // view was entered — first load, remount or revisit. Applying it here rather
+  // than letting init finish with the prompt is what stops the pinned results
+  // being wiped a moment after they appear.
+  if(_pinActive()){
+    if(window._stPendingPinned){
+      _monHandlePendingPinned();
+    } else {
+      // Returning to MONASTIC after navigating away: reset() cleared the
+      // module local, so restore the pin from the cross-mount stash. It
+      // persists like any other filter until Clear filter / ✕.
+      if(!_pinnedHadiths && window._monPinnedLast) _pinnedHadiths = window._monPinnedLast;
+      _processPinnedHadiths();
+    }
+    return;
   }
 
   // Initial empty state — instructs the user to pick a collection rather than
@@ -3703,6 +3812,9 @@ return {
       }, 80);
     }, 60);
   },
+  // True while a cross-link pin is showing — the outer MonasticView IIFE
+  // cannot see module locals, so it asks through this.
+  hasPinned: function(){ return !!_pinnedHadiths; },
   onEnter: function(){
     var box = document.querySelector('#searchBox, #globalSearch, input[placeholder*="Search figures"]');
     if(box){ if(_monSearchBoxPrev === null) _monSearchBoxPrev = box.style.display || ''; box.style.display = 'none'; }
@@ -3730,6 +3842,9 @@ return {
     _bandEl    = null;
     _drillEl   = null;
     _clickBound = false;
+    // Stash the pin so it survives the remount (init restores it). Cleared
+    // only by _clearPinned().
+    if(_pinnedHadiths) window._monPinnedLast = _pinnedHadiths;
     _pinnedHadiths = null;
     _drillOn = false;
     _drillPicks = { period:[], topic:[], narrator:[], collection:[] };
@@ -4032,9 +4147,14 @@ window.MonasticView = (function(){
       }
       _wireZoneB(zoneBEl);
       // Restore filters + drill if user is returning to MONASTIC after navigating away.
-      if(window._monLastView){
+      // Skipped entirely when a cross-link pin is pending or showing: this
+      // delayed applyFilters() on a stale (usually empty) snapshot was what
+      // replaced the pinned hadiths with the default empty state.
+      if(window._monLastView && !(window._stPendingPinned || (window.Monastic && window.Monastic.hasPinned && window.Monastic.hasPinned()))){
         var snap2 = window._monLastView;
         setTimeout(function(){
+          if(window._stPendingPinned) return;
+          if(window.Monastic && window.Monastic.hasPinned && window.Monastic.hasPinned()) return;
           try {
             if(window.Monastic && typeof window.Monastic._importSel === 'function'){
               window.Monastic._importSel(snap2);
