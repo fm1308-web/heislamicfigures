@@ -1,0 +1,111 @@
+/* information.css — INFORMATION panel (information.js). Uses shell.css tokens;
+   the view text moved in from the old HOW THIS WORKS modals carries inline
+   light-on-dark styles, so the panel stays on the navy background. */
+
+.info-btn.active {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+  background: var(--gold-faint);
+}
+
+#information-panel {
+  position: fixed;
+  top: 36px;                  /* below top-bar row 1, so INFORMATION / TOOLS / VISITOR stay clickable */
+  right: 0;
+  width: min(760px, 60vw);
+  height: calc(100vh - 36px);
+  display: flex;
+  background: var(--bg-navy-2);
+  border-left: 1px solid var(--gold-dim);
+  box-shadow: -8px 0 32px rgba(0,0,0,0.5);
+  z-index: 9000;              /* under view modals (9999) opened from inside a view */
+  color: var(--text);
+  font-family: var(--sans);
+}
+#information-panel[hidden] { display: none !important; }
+
+.info-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  z-index: 1;
+}
+.info-close:hover { color: var(--gold); }
+
+.info-sidebar {
+  flex: 0 0 190px;
+  overflow-y: auto;
+  padding: 18px 10px;
+  background: var(--bg-navy);
+  border-right: 1px solid var(--border);
+}
+.info-sidebar-title {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  padding: 0 10px 12px;
+}
+.info-nav { display: flex; flex-direction: column; gap: 2px; }
+.info-nav hr { border: none; border-top: 1px solid var(--border); margin: 10px 6px; width: calc(100% - 12px); }
+.info-nav-btn {
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  text-align: left;
+  padding: 7px 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+}
+.info-nav-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.info-nav-btn.active { color: var(--gold); border-left-color: var(--gold); background: var(--gold-faint); }
+
+.info-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 24px 32px 40px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.info-content > h2 {
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin: 0 40px 16px 0;
+}
+.info-lede { color: var(--text-dim); margin: 0 0 16px; }
+
+/* Plain-markup view text (e.g. RELATIONS) — same look as the old modals */
+.info-view-body h3 { font-family: var(--display); color: var(--gold); font-size: 15px; margin: 22px 0 8px; letter-spacing: 0.04em; }
+.info-view-body p { margin: 0 0 10px; }
+.info-view-body ul { margin: 0 0 10px; padding-left: 22px; }
+.info-view-body li { margin-bottom: 5px; }
+.info-view-body strong { color: var(--gold); font-weight: 600; }
+
+.info-stats { width: 100%; border-collapse: collapse; }
+.info-stats td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+.info-stat { font-weight: 700; color: var(--gold); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.info-src { color: var(--text-faint); font-size: 12px; padding-left: 14px !important; }
+
+@media (max-width: 900px) {
+  #information-panel { width: 85vw; }
+  .info-sidebar { flex-basis: 150px; }
+}
+@media (max-width: 600px) {
+  #information-panel { width: 100vw; flex-direction: column; }
+  .info-sidebar { flex: 0 0 auto; max-height: 34vh; border-right: none; border-bottom: 1px solid var(--border); padding: 12px 8px; }
+  .info-content { padding: 16px 16px 32px; }
+}

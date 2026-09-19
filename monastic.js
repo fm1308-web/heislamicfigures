@@ -2051,18 +2051,9 @@ function _syncBand(){
 }
 
 
-// ── Methodology modal ──
-function _openMethodology(e){
-  if(e && e.stopPropagation) e.stopPropagation();
-  if(document.getElementById('mon-modal')) return;
-
-  var overlay = document.createElement('div');
-  overlay.id = 'mon-modal';
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
-
-  overlay.innerHTML =
-    '<div style="background:#1A2332;border:1px solid rgba(212,175,55,0.3);border-radius:6px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:28px 32px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB">' +
-      '<button id="mon-modal-close" style="position:absolute;top:10px;right:14px;background:transparent;border:none;color:#A0AEC0;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>' +
+// ── Methodology content (rendered by the shell INFORMATION panel) ──
+function _monInfoHtml(){
+  return '' +
       '<h2 style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);letter-spacing:.12em;color:#D4AF37;margin:0 0 16px">TENTATIVE DATING \u2014 METHODOLOGY</h2>' +
       '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Hadiths are reports about events from the Prophet\u2019s life (610\u2013632 CE) and after. None carry an exact date. What you see here is a best-effort reconstruction built by layering evidence. This is tentative by design and will keep improving as we connect more sources.</p>' +
       '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">CONFIDENCE LEVELS</h3>' +
@@ -2154,17 +2145,7 @@ function _openMethodology(e){
         '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-med">AI</span><span><strong style="color:#bca066">Medium confidence</strong> (score 3) — dim gold badge. Clear reference.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-low">AI</span><span><strong style="color:#9aa3b2">Low confidence</strong> (score 1–2) — faint badge. Exploratory only.</span></div>' +
         '<div style="margin-top:6px;color:#A0AEC0;font-size:11px;font-style:italic">Source text itself (Quran, hadith, tafsir text) and figure data (Wikipedia / Wikidata) are not AI-generated and carry no badge.</div>' +
-      '</div>' +
-    '</div>';
-
-  document.body.appendChild(overlay);
-
-  function _close(){ var m = document.getElementById('mon-modal'); if(m) m.remove(); }
-  overlay.querySelector('#mon-modal-close').addEventListener('click', _close);
-  overlay.addEventListener('click', function(ev){ if(ev.target === overlay) _close(); });
-  document.addEventListener('keydown', function _esc(ev){
-    if(ev.key === 'Escape'){ _close(); document.removeEventListener('keydown', _esc); }
-  });
+      '</div>';
 }
 
 // ── Filter + render ──
@@ -2952,8 +2933,6 @@ function init(){
   _syncBand();
   _computePeriodTotals();
 
-  var methBtn = document.getElementById('mon-methodology-btn');
-  if(methBtn){ methBtn.style.display='none'; methBtn.addEventListener('click', _openMethodology); }
 
   var drillBtn = document.getElementById('mon-drill-btn');
   if(drillBtn){
@@ -3866,6 +3845,7 @@ return {
       narrator: arr(_monSel.narrator)
     };
   },
+  infoHtml: function(){ return _monInfoHtml(); },
   _importSel: function(snap){
     if(!_monSel || !snap) return;
     function load(set, keys){ if(!set) return; if(typeof set.clear === 'function') set.clear(); (keys||[]).forEach(function(k){ set.add(k); }); }
@@ -3898,14 +3878,13 @@ window.MonasticView = (function(){
         '#mon-header-row{display:none !important}'+
         '#mon-filters{position:absolute;left:-99999px;top:-99999px;width:0;height:0;overflow:visible !important}'+
         '#mon-filters .dd-panel{position:fixed !important;left:auto;top:auto}'+
-        '#mon-how-btn,#mon-lang-group,#mon-methodology-btn,#mon-guided-btn,#mon-drill-btn{display:none !important}';
+        '#mon-how-btn,#mon-lang-group,#mon-guided-btn,#mon-drill-btn{display:none !important}';
       document.head.appendChild(st);
     }
     zoneCEl.innerHTML =
       '<div id="monastic-view" style="display:flex;flex-direction:column;flex:1">' +
         '<div style="padding:20px 24px;width:100%;box-sizing:border-box">' +
           '<div id="mon-header-row" style="display:none"></div>' +
-          '<button id="mon-methodology-btn" style="display:none"></button>' +
           '<button id="mon-guided-btn" onclick="Monastic.openWizard()" style="display:none"></button>' +
           '<button id="mon-drill-btn" type="button" style="display:none"></button>' +
           '<div style="display:none" id="mon-filters">' +
@@ -4220,10 +4199,8 @@ window.MonasticView = (function(){
   return {
     mount: mount,
     unmount: unmount,
-    showHtw: function(){
-      var btn = document.getElementById('mon-methodology-btn');
-      if(btn){ btn.style.display=''; btn.click(); btn.style.display='none'; return; }
-      if(window.Monastic && typeof window.Monastic.openMethodology === 'function') window.Monastic.openMethodology();
+    infoHtml: function(){
+      return (window.Monastic && typeof window.Monastic.infoHtml === 'function') ? window.Monastic.infoHtml() : '';
     }
   };
 })();

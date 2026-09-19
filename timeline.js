@@ -513,11 +513,6 @@ window.TimelineView = (function(){
         renderInfoWithDetails(activePerson);
       }
     } catch(e){}
-    // Re-open methodology modal if visible
-    var openModal = document.querySelector('.tl-htw-modal, #tlHtwModal, .htw-modal');
-    if(openModal && openModal.style.display !== 'none'){
-      try { _showTimelineMethodology(); } catch(e){}
-    }
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -2602,15 +2597,8 @@ function focusPersonInTimeline(name){
   });});
 }
 
-function _showTimelineMethodology(){
-  if(document.getElementById('tl-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='tl-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="tl-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">'+_tlT('How This Works')+'</h2>'
+function _timelineInfoHtml(){
+  return ''
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What You Are Seeing</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Every figure arranged chronologically, grouped by century. Use the type and tradition filters to narrow the view. Click any figure to open their info card. Use the year slider to highlight who was alive at a specific moment.</p>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Figure Types (row dot colour)</h3>'
@@ -2626,11 +2614,6 @@ function _showTimelineMethodology(){
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Data & Disclaimers</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 12px">Biographical data from classical Islamic sources including al-Dhahabi and Ibn Sa\u2019d, cross-referenced with Wikipedia. Dates marked \u2248 are approximate. Dates marked \u25B3 are estimated for visual placement and not historically confirmed \u2014 typically legendary figures, figures with no recorded dates, or rough century estimates (e.g. \u201Cc. 800 CE\u201D). When a death year is missing, it is sometimes estimated from the birth year using an average life span. Tradition classifications are simplified.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin:0">'+_tlT('AI-generated \u00B7 independently verify')+'</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('tl-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
 
 
@@ -3083,6 +3066,6 @@ function _showTimelineMethodology(){
     animatePause:    _animPause,
     animateStop:     _animStop,
     animateSetSpeed: _animSetSpeed,
-    showHtw:         _showTimelineMethodology
+    infoHtml:        _timelineInfoHtml
   };
 })();

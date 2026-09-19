@@ -347,8 +347,8 @@ var ZONE_D_RULES = {
 };
 
 // ---------- Filter specs (slot model) ----------
-// Universal Zone B layout: [SEARCH 240px] [filters...] [spacer] [actions...] [HOW THIS WORKS]
-// Each view declares: { search, filters, actions, htw }
+// Universal Zone B layout: [SEARCH 240px] [filters...] [spacer] [actions...]
+// Each view declares: { search, filters, actions }
 // ---------- View registry (lazy-loaded view modules) ----------
 var VIEW_REGISTRY = {
   TIMELINE: { script: 'timeline.js', css: 'timeline.css', api: 'TimelineView' },
@@ -399,12 +399,22 @@ function loadAndMountView(name){
     }
     _updateNavButtons();
   }
-  if(_loadedViews[name]){
-    doMount();
-    return true;
-  }
+  _ensureViewScript(name, doMount);
+  return true;
+}
+
+// Load a view's script + CSS once, without mounting it. Used by the mount path
+// above and by the INFORMATION panel (information.js), which reads a view's
+// infoHtml() even when that view hasn't been opened yet.
+var _viewLoadWaiters = {};  // name -> callbacks while the script is in flight
+function _ensureViewScript(name, cb){
+  var cfg = VIEW_REGISTRY[name];
+  if(!cfg){ cb(null); return; }
+  if(_loadedViews[name]){ cb(window[cfg.api]); return; }
+  if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
+  _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=197';
+  var _cb = '?v=198';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -415,14 +425,16 @@ function loadAndMountView(name){
   s.src = cfg.script + _cb;
   s.onload = function(){
     _loadedViews[name] = true;
-    doMount();
+    var waiting = _viewLoadWaiters[name] || [];
+    delete _viewLoadWaiters[name];
+    waiting.forEach(function(fn){ fn(window[cfg.api]); });
   };
   document.head.appendChild(s);
-  return true;
 }
+window._gaEnsureViewScript = _ensureViewScript;
 
 var FILTER_SPECS = {
-  FINANCE: { search:false, filters:[], actions:[], hint:'', htw:false },
+  FINANCE: { search:false, filters:[], actions:[], hint:'' },
   YEAR: {
     search: false,
     slider: true,
@@ -434,8 +446,7 @@ var FILTER_SPECS = {
       { type:'pill', label:'± 50', id:'yrRange50' }
     ],
     hint: 'Pick a year — see what happened in and around it',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   TIMELINE: {
     search: true,
@@ -444,30 +455,26 @@ var FILTER_SPECS = {
       { type:'select', label:'TRADITION' },
       { type:'select', label:'HAS' }
     ],
-    actions: [],
-    htw: true
+    actions: []
   },
   RELATIONS: {
     search: true,
     filters: [],
     actions: [],
     hint: 'Search for names, traditions, or types above · or click a category below',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   FOLLOW: {
     search: false,
     filters: [],
-    actions: [],
-    htw: true
+    actions: []
   },
   STUDY: {
     search: true,
     filters: [],
     actions: [],
     hint: 'Browse slide decks, summaries, and curated video content',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   BOOKS: {
     search: true,
@@ -480,8 +487,7 @@ var FILTER_SPECS = {
       { type:'pill', label:'+ ANCIENT' }
     ],
     hint: 'Books timeline · explore free reads',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   ERAS: {
     search: false,
@@ -493,8 +499,7 @@ var FILTER_SPECS = {
     ],
     actions: [],
     hint: 'Explore the time lines individually',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   EVENTS: {
     search: true,
@@ -504,8 +509,7 @@ var FILTER_SPECS = {
     ],
     actions: [ { type:'pill', label:'Show next 100' } ],
     hint: 'Important historical events',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   THINK: {
     search: false,
@@ -516,8 +520,7 @@ var FILTER_SPECS = {
     ],
     actions: [],
     hint: 'Follow a concept through history',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   MAP: {
     search: true,
@@ -528,16 +531,14 @@ var FILTER_SPECS = {
     ],
     actions: [ { type:'pill', label:'Empires' }, { type:'pill', label:'Recenter' } ],
     hint: 'See the people on the maps at the same time',
-    hintInRow2: true,
-    htw: true
+    hintInRow2: true
   },
   TALK: {
     search: false,
     filters: [],
     actions: [],
     hint: 'Talk to a scholar',
-    hintInRow2: true,
-    htw: true   // A8b — TalkView.showHtw() now exists
+    hintInRow2: true
   },
   ONE: {
     search: true,
@@ -548,8 +549,7 @@ var FILTER_SPECS = {
       { type:'select', label:'Type' },
       { type:'select', label:'Tradition' }
     ],
-    actions: [ { type:'pill', label:'+ Compare' } ],
-    htw: false
+    actions: [ { type:'pill', label:'+ Compare' } ]
   },
   MONASTIC: {
     search: true,
@@ -567,10 +567,7 @@ var FILTER_SPECS = {
     actionsInRow1: false,
     bookmarks: true,
     hint: 'Hadith — 29 books across Sunni and Shia traditions',
-    hintInRow2: false,
-    // A6 — was false, so the shell never built the HOW THIS WORKS pill even though
-    // MonasticView.showHtw() and its methodology modal (_openMethodology) both exist.
-    htw: true
+    hintInRow2: false
   },
   EXPLAIN: {
     search: true,
@@ -581,8 +578,7 @@ var FILTER_SPECS = {
     actions: [],
     bookmarks: true,
     hint: 'Tafsir Collection — The Explanation',
-    hintInRow2: true,
-    htw: false
+    hintInRow2: true
   },
   START: {
     search: false,
@@ -606,8 +602,7 @@ var FILTER_SPECS = {
     ],
     actionsInRow1: true,
     hint: 'READ THE QURAN',
-    hintInRow2: false,
-    htw: false
+    hintInRow2: false
   }
 };
 
@@ -802,6 +797,7 @@ function setActiveTab(name, opts){
 
   _renderShellBookmarkPill(name);
   syncZoneD();
+  if(window.InformationPanel) window.InformationPanel.setCurrentView(name);
   if(!opts.skipHistory){
     var _h = '#' + name.toLowerCase();
     // Inbound deep links (e.g. usul.html opens #start?surah=2&verse=275): if the
@@ -827,7 +823,7 @@ function setActiveTab(name, opts){
 function renderZoneB(viewName){
   var zb = document.getElementById('zoneB');
   zb.innerHTML = '';
-  var spec = FILTER_SPECS[viewName] || { search:false, filters:[], actions:[], htw:true };
+  var spec = FILTER_SPECS[viewName] || { search:false, filters:[], actions:[] };
 
   // ── ROW 1 ──
   var row1 = document.createElement('div');
@@ -963,44 +959,31 @@ function renderZoneB(viewName){
   }
   row1.appendChild(savedSlot);
 
-  // HTW (always far right)
-  if(spec.htw !== false){
-    if(viewName === 'BOOKS'){
-      var frPill = document.createElement('button');
-      frPill.className = 'zb-pill';
-      frPill.id = 'shell-btn-free-reads';
-      frPill.type = 'button';
-      frPill.textContent = 'FREE LIBRARY';
-      frPill.addEventListener('click', function(){
-        if(typeof window._bvOpenFreeLibrary === 'function') window._bvOpenFreeLibrary();
-      });
-      row1.appendChild(frPill);
-    }
-    if(viewName === 'RELATIONS'){
-      var rel3d = document.createElement('button');
-      rel3d.className = 'zb-pill rel-3d-btn';
-      rel3d.id = 'shell-btn-rel-3d';
-      rel3d.type = 'button';
-      rel3d.textContent = 'VIEW IN 3D';
-      rel3d.addEventListener('click', function(){
-        if(window.Relations3D && window.RelationsView){
-          var _s = window.RelationsView.getState();
-          Relations3D.open(_s.currentSlug, _s);
-        }
-      });
-      row1.appendChild(rel3d);
-    }
-    var htw = document.createElement('button');
-    htw.className = 'zb-pill zb-slot-htw';
-    htw.id = 'zbHtwPill';
-    htw.type = 'button';
-    htw.textContent = (window.GoldArkI18n && window.GoldArkI18n.tt) ? window.GoldArkI18n.tt('How This Works') : 'How This Works';
-    htw.setAttribute('data-i18n', 'How This Works');
-    htw.addEventListener('click', function(){
-      var api = _activeViewApi;
-      if(api && typeof api.showHtw === 'function') api.showHtw();
+  // View-specific pills at the far right of row 1
+  if(viewName === 'BOOKS'){
+    var frPill = document.createElement('button');
+    frPill.className = 'zb-pill';
+    frPill.id = 'shell-btn-free-reads';
+    frPill.type = 'button';
+    frPill.textContent = 'FREE LIBRARY';
+    frPill.addEventListener('click', function(){
+      if(typeof window._bvOpenFreeLibrary === 'function') window._bvOpenFreeLibrary();
     });
-    row1.appendChild(htw);
+    row1.appendChild(frPill);
+  }
+  if(viewName === 'RELATIONS'){
+    var rel3d = document.createElement('button');
+    rel3d.className = 'zb-pill rel-3d-btn';
+    rel3d.id = 'shell-btn-rel-3d';
+    rel3d.type = 'button';
+    rel3d.textContent = 'VIEW IN 3D';
+    rel3d.addEventListener('click', function(){
+      if(window.Relations3D && window.RelationsView){
+        var _s = window.RelationsView.getState();
+        Relations3D.open(_s.currentSlug, _s);
+      }
+    });
+    row1.appendChild(rel3d);
   }
 
   zb.appendChild(row1);
@@ -1438,9 +1421,7 @@ function bindTools(){
       }
 
       if(act === 'tour'){
-        if(window.GoldArkTour && typeof window.GoldArkTour.open === 'function'){
-          window.GoldArkTour.open();
-        }
+        if(window.InformationPanel) window.InformationPanel.open(state.activeTab);
       } else if(act === 'updates'){
         openModal('Updates', 'Updates feed placeholder.');
       } else if(act === 'community'){
@@ -1476,129 +1457,6 @@ function bindTools(){
       }
     });
   });
-}
-
-// ---------- Language switcher ----------
-function _ensureFontLoaded(font){
-  if(!font) return;
-  var id = 'gafont-' + font.replace(/\s+/g, '-').toLowerCase();
-  if(document.getElementById(id)) return;
-  var link = document.createElement('link');
-  link.id = id;
-  link.rel = 'stylesheet';
-  var fam = font.replace(/\s+/g, '+');
-  link.href = 'https://fonts.googleapis.com/css2?family=' + fam +
-              ':wght@400;600;700&display=swap';
-  document.head.appendChild(link);
-}
-
-function _applyLangDirAndFont(code){
-  var I = window.GoldArkI18n;
-  if(!I) return;
-  var langs = I.getAvailableLangs();
-  var entry = null;
-  for(var i=0;i<langs.length;i++){ if(langs[i].code === code){ entry = langs[i]; break; } }
-  if(!entry) entry = { code: code, dir: 'ltr', font: null };
-  var docEl = document.documentElement;
-  docEl.setAttribute('dir', entry.dir || 'ltr');
-  docEl.setAttribute('lang', code);
-  // Replace any prior app-lang-* class
-  var cls = (docEl.className || '').split(/\s+/).filter(function(c){ return c && !/^app-lang-/.test(c); });
-  cls.push('app-lang-' + code);
-  docEl.className = cls.join(' ');
-  _ensureFontLoaded(entry.font);
-}
-
-function _renderLangDropdown(){
-  var I = window.GoldArkI18n; if(!I) return;
-  var dd = document.getElementById('langDropdown'); if(!dd) return;
-  var current = I.getLang();
-  var langs = I.getAvailableLangs();
-  var html = '';
-  for(var i=0;i<langs.length;i++){
-    var L = langs[i];
-    var active = (L.code === current);
-    html += '<button class="menu-item' + (active ? ' is-active' : '') +
-            '" data-lang="' + L.code + '">' +
-            '<span class="lang-name">' + (L.name || L.code) + '</span>' +
-            '<span class="lang-check">' + (active ? '✓' : '') + '</span>' +
-            '</button>';
-  }
-  dd.innerHTML = html;
-  dd.querySelectorAll('.menu-item').forEach(function(item){
-    item.addEventListener('click', function(){
-      dd.hidden = true;
-      var code = item.getAttribute('data-lang');
-      if(!code) return;
-      // Urdu is only fully translated on TIMELINE and RELATIONS today.
-      // On every other view, intercept the click and show a friendly
-      // "translation in progress" notice instead of switching.
-      // Allowlist grows as RV ships UR buckets per view.
-      var UR_READY_VIEWS = ['TIMELINE','RELATIONS'];
-      if(code.toLowerCase() === 'ur' && UR_READY_VIEWS.indexOf(state.activeTab) === -1){
-        alert('Urdu translation in progress for this view.\nAvailable in a few days.');
-        return;
-      }
-      I.setLang(code);
-    });
-  });
-}
-
-function _renderLangBtnLabel(code){
-  var btn = document.getElementById('langBtn');
-  if(btn) btn.textContent = '🌐 ' + (code || 'EN').toUpperCase();
-}
-
-function _renderEntryLangPills(){
-  var I = window.GoldArkI18n; if(!I) return;
-  var box = document.getElementById('entryLangOptions'); if(!box) return;
-  var current = I.getLang();
-  var langs = I.getAvailableLangs();
-  var html = '';
-  for(var i=0;i<langs.length;i++){
-    var L = langs[i];
-    var active = (L.code === current);
-    html += '<button class="entry-lang-pill' + (active ? ' is-active' : '') +
-            '" data-lang="' + L.code + '">' + (L.name || L.code) + '</button>';
-  }
-  box.innerHTML = html;
-  box.querySelectorAll('.entry-lang-pill').forEach(function(item){
-    item.addEventListener('click', function(){
-      var code = item.getAttribute('data-lang');
-      if(code) I.setLang(code);
-    });
-  });
-}
-
-function bindLanguage(){
-  var btn = document.getElementById('langBtn');
-  var dd  = document.getElementById('langDropdown');
-  if(btn && dd){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      dd.hidden = !dd.hidden;
-      var td = document.getElementById('toolsDropdown'); if(td) td.hidden = true;
-      var ud = document.getElementById('userDropdown'); if(ud) ud.hidden = true;
-    });
-    document.addEventListener('click', function(e){
-      if(!dd.hidden && !dd.contains(e.target) && e.target !== btn) dd.hidden = true;
-    });
-  }
-
-  function _syncAll(){
-    var code = (window.GoldArkI18n && window.GoldArkI18n.getLang()) || 'en';
-    _renderLangBtnLabel(code);
-    _applyLangDirAndFont(code);
-    _renderLangDropdown();
-    _renderEntryLangPills();
-  }
-
-  if(window.GoldArkI18n && window.GoldArkI18n.getAvailableLangs().length > 1){
-    _syncAll();
-  } else {
-    document.addEventListener('gold-ark-i18n-ready', _syncAll, { once: true });
-  }
-  document.addEventListener('gold-ark-lang-changed', _syncAll);
 }
 
 // ---------- Modals ----------
@@ -1766,22 +1624,18 @@ document.addEventListener('DOMContentLoaded', function(){
   // Journey index is needed by ONE / TIMELINE / YEAR to decide whether a figure
   // gets a follow affordance, so warm it at boot (matches FOLLOW's eager model).
   try { window._preloadJourneyIndex(); } catch(e){}
-  // Wire HOW TO USE button — opens the tour modal directly.
-  // PRE-DEPLOY TODO: tour content needs review and improvement before launch.
-  var _htuBtn = document.getElementById('howToUseBtn');
-  if(_htuBtn){
-    _htuBtn.addEventListener('click', function(){
-      if(window.GoldArkTour && typeof window.GoldArkTour.open === 'function'){
-        window.GoldArkTour.open();
-      } else {
-        openModal('How to use Gold Ark', 'Tour content loading…');
-      }
+  // INFORMATION button (beside the logo) — opens the panel on the active view's page.
+  var _infoBtn = document.getElementById('infoBtn');
+  if(_infoBtn){
+    _infoBtn.addEventListener('click', function(){
+      if(window.InformationPanel) window.InformationPanel.toggle(state.activeTab);
     });
   }
+  // The welcome tour is gone; clear its one-time flag left in returning browsers.
+  try { localStorage.removeItem('gold-ark-tour-seen'); } catch(e){}
   bindEntry();
   bindUserPill();
   bindTools();
-  bindLanguage();
   document.addEventListener('gold-ark-lang-changed', function(){
     _renderUserPill();
     // DO NOT rebuild Zone B — it destroys buttons that views (e.g. start.js)
@@ -1803,13 +1657,5 @@ document.addEventListener('DOMContentLoaded', function(){
   bindModal();
   bindZoneD();
   bindFontScale();
-  // First-time-user welcome modal — fires once unless dismissed.
-  setTimeout(function(){
-    try {
-      if(window.GoldArkTour && window.GoldArkTour.shouldAutoOpen()){
-        window.GoldArkTour.open();
-      }
-    } catch(e){}
-  }, 1000);
 });
 })();

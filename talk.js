@@ -161,23 +161,11 @@ window._talkOpenBooksFor = function(name, ev){
 // A8b — standard How-this-works overlay (same markup the other views use).
 // Text describes only what TALK does TODAY: it is a preview with sample
 // exchanges; the live AI conversation is not built yet.
-function _talkShowHtw(){
-  if(document.getElementById('talk-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='talk-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="talk-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+function _talkInfoHtml(){
+  return ''
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A preview of the TALK view. Pick one of the listed scholars to see sample exchanges showing how answers would be presented, each labelled with the work it refers to.</p>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin-top:12px">The conversation feature is not live yet — the exchanges shown are fixed examples, not generated answers. The book count on each card opens BOOKS searched for that scholar.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('talk-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
 
 function initTalk(){
@@ -370,5 +358,5 @@ window._talkBack = function(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, initTalk: initTalk, showHtw: _talkShowHtw };
+  return { mount: mount, unmount: unmount, initTalk: initTalk, infoHtml: _talkInfoHtml };
 })();

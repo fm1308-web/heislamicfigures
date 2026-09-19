@@ -1005,25 +1005,12 @@ window.YearView = (function(){
 
   function unmount(){ _zoneC = null; }
 
-  // A7 — was a raw alert(); now the standard How-this-works overlay the other
-  // views use (same markup as _showStudyMethodology). Text is unchanged.
-  function showHtw(){
-    if(document.getElementById('yr-method-overlay')) return;
-    var ov=document.createElement('div');
-    ov.id='yr-method-overlay';
-    ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-    var box=document.createElement('div');
-    box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-    box.innerHTML='<button id="yr-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-      +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+  // Content for the INFORMATION panel (shell.js) — same markup as the other views.
+  function _yearInfoHtml(){
+    return ''
       +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Pick a year with the slider. Spine UP back in time, DOWN forward. Click a figure name to open TIMELINE with their lifeline centered. Click an event to open EVENTS view. Click an era label to jump to ERAS.</p>'
       +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
-    ov.appendChild(box);
-    document.body.appendChild(ov);
-    document.getElementById('yr-method-close').addEventListener('click',function(){ov.remove();});
-    ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-    document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
   }
 
-  return { mount: mount, unmount: unmount, showHtw: showHtw };
+  return { mount: mount, unmount: unmount, infoHtml: _yearInfoHtml };
 })();

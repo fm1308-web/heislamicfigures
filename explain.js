@@ -1682,16 +1682,17 @@ function _exBuildDOM(container){
     if(zc) zc.innerHTML = '';
   }
 
-  function _exShowHtw(){
+  // Content for the INFORMATION panel (shell.js).
+  function _exInfoHtml(){
     var body =
       'EXPLAIN — Tafsir Collection · The Explanation.\n\n' +
       'Browse 28 tafsir editions across 21 works in 6 languages (Arabic, English, Urdu, Bengali, Kurdish, Russian).\n\n' +
       'Filter by Tafsir or Language. Click any work card to read.\n\n' +
       'CONCEPT TAGS ON TAFSIR ENTRIES\n\n' +
       'Some tafsir entries show concept chips. These are an older keyword-match tagging done before our new method launched. ' +
-      'They are useful for discovery but not vetted at the same level as Quran verse tags (see START view\'s How This Works for the new method).\n\n' +
+      'They are useful for discovery but not vetted at the same level as Quran verse tags (see the START page under INFORMATION for the new method).\n\n' +
       'Upgrade to the new three-level method for tafsir is planned for a future release. Until then, treat tafsir concept chips as exploratory only.';
-    if(typeof window.openModal === 'function') window.openModal('How This Works — EXPLAIN', body);
+    return '<div style="white-space:pre-wrap">' + String(body).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
   }
 
   function _exCaptureState(){
@@ -1791,5 +1792,5 @@ function _exRenderConceptPins(){
   }, 60);
 }
 
-  return { mount: _exMount, unmount: _exUnmount, showHtw: _exShowHtw, captureState: _exCaptureState, restoreState: _exRestoreState };
+  return { mount: _exMount, unmount: _exUnmount, infoHtml: _exInfoHtml, captureState: _exCaptureState, restoreState: _exRestoreState };
 })();

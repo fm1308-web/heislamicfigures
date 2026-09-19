@@ -1738,17 +1738,8 @@ function drillIntoFigureFromSearch(hit){
   }, 80);
 }
 
-function showHtw(){
-  var existing = document.getElementById('rl-htw-modal');
-  if(existing){ existing.remove(); return; }
-
-  var html = ''
-    + '<div id="rl-htw-modal" class="rl-htw-modal" role="dialog" aria-modal="true">'
-    + '  <div class="rl-htw-backdrop"></div>'
-    + '  <div class="rl-htw-panel">'
-    + '    <button type="button" class="rl-htw-close" aria-label="Close">×</button>'
-    + '    <h2>How RELATIONS Works</h2>'
-
+function _relationsInfoHtml(){
+  return ''
     + '    <p>RELATIONS is the connecting tissue of Gold Ark. Every figure in the database '
     + '    is linked to every other figure they touched in life — by blood, by marriage, by '
     + '    teaching, by narration. This view lets you walk those connections.</p>'
@@ -1815,26 +1806,13 @@ function showHtw(){
     + '      source data, it does not appear here.</li>'
     + '    </ul>'
 
-    + '  </div>'
-    + '</div>';
-
-  var wrap = document.createElement('div');
-  wrap.innerHTML = html;
-  var modal = wrap.firstElementChild;
-  document.body.appendChild(modal);
-
-  function close(){ modal.remove(); }
-  modal.querySelector('.rl-htw-close').addEventListener('click', close);
-  modal.querySelector('.rl-htw-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function esc(e){
-    if(e.key === 'Escape'){ close(); document.removeEventListener('keydown', esc); }
-  });
+    ;
 }
 
 window.RelationsView = {
   mount: mount,
   unmount: unmount,
-  showHtw: showHtw,
+  infoHtml: _relationsInfoHtml,
   getState: function(){
     return {
       core:        CORE,

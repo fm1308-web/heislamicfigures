@@ -1056,8 +1056,6 @@ async function initBooks(){
       onSpeedChange: function(ms){ _booksAnim.speedMs = ms; if(_booksAnim.timer){ clearInterval(_booksAnim.timer); _booksAnim.timer = setInterval(_booksAnim.tick, ms); } }
     });
   }
-  var _bvHowBtn=document.getElementById('bv-how-btn');
-  if(_bvHowBtn) _bvHowBtn.addEventListener('click',function(e){e.stopPropagation();_showBooksMethodology();});
   async function _openFreeLibrary(){
     var panel = document.getElementById('bv-fr-panel');
     if(panel){ panel.classList.toggle('fr-open'); return; }
@@ -1170,22 +1168,10 @@ async function initBooks(){
   _booksInited=true;
 }
 
-function _showBooksMethodology(){
-  if(document.getElementById('bv-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='bv-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="bv-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+function _booksInfoHtml(){
+  return ''
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">A visual timeline of books by Islamic authors, drawn as leaf shapes positioned at their year of composition. Books with free online links are highlighted — click to read them.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('bv-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
 
   // ═══════════════════════════════════════════════════════════
@@ -1379,7 +1365,7 @@ function _showBooksMethodology(){
   return {
     mount: mount,
     unmount: unmount,
-    showHtw: _showBooksMethodology,
+    infoHtml: _booksInfoHtml,
     animateStart: _booksAnimPlay,
     animatePause: _booksAnimPause,
     animateStop:  _booksAnimStop,

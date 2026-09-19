@@ -375,22 +375,10 @@ const _SR_BADGE_NAMES=new Set(['Al-Hallaj','Al-Farabi','Firdowsi','Al-Biruni','A
 const _SR_SLUG_MAP={'Al-Hallaj':'F0241','Al-Farabi':'F0229','Firdowsi':'F0605','Al-Biruni':'F0222','Ali al-Hujwiri':'F0363','Ibn Arabi':'F0728','Al-Qushayri':'F0316','Al-Ghazali':'F0238','Umar Ibn al-Farid':'F1432','Ibn Rushd':'F0751','Ibn Tufayl':'F0756','Farid ud-Din Attar':'F0580','Abdul Qadir al-Jilani':'F0031','Fakhr al-Din Iraqi':'F0574','Ibn Taymiyya':'F0755','Ibn al-Qayyim':'F0727','Ibn Hazm':'F0737','Ibn Khaldun':'F0743','Jalal ad-Din Rumi':'F0814','Rabia al-Basri':'F1168','Saadi Shirazi':'F1217'};
 window._SR_SLUG_MAP = _SR_SLUG_MAP;
 
-function _showStudyMethodology(){
-  if(document.getElementById('sr-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='sr-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="sr-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+function _studyInfoHtml(){
+  return ''
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Curated educational content — slide decks, visual summaries, and video lectures about key Islamic scholars.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('sr-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
 
   // ═══════════════════════════════════════════════════════════
@@ -492,5 +480,5 @@ function _showStudyMethodology(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, showHtw: _showStudyMethodology };
+  return { mount: mount, unmount: unmount, infoHtml: _studyInfoHtml };
 })();

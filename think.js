@@ -619,20 +619,13 @@ function _findRelations(slugSet){
   return lines;
 }
 
-function _showThinkMethodology(){
-  if(document.getElementById('think-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='think-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+function _thinkInfoHtml(){
   var roles={originator:['#2ECC71','Originated or founded the concept'],developer:['#3B82F6','Expanded, refined, or systematized the concept'],critic:['#E24B4A','Challenged, opposed, or refuted the concept'],reviver:['#F59E0B','Revived or renewed interest in the concept'],synthesizer:['#14B8A6','Combined elements from multiple traditions'],transmitter:['#38BDF8','Passed on the concept through teaching or writing']};
   var rb='';
   Object.keys(roles).forEach(function(r){
     rb+='<div style="display:flex;align-items:center;gap:10px;margin:6px 0"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+roles[r][0]+';flex-shrink:0"></span><span style="color:#D4AF37;font-weight:600;min-width:100px">'+r.charAt(0).toUpperCase()+r.slice(1)+'</span><span style="color:#A0AEC0">'+roles[r][1]+'</span></div>';
   });
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="think-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+  return ''
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Each concept shows every historical figure who engaged with that idea, plotted on a timeline by their lifespan. Figures are color-coded by the role they played.</p>'
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">Role Definitions</h3>'
     +rb
@@ -663,10 +656,6 @@ function _showThinkMethodology(){
     +'<h3 style="color:#D4AF37;font-size:var(--fs-3);margin:20px 0 8px;font-family:\'Cinzel\',serif;letter-spacing:.04em">What this is not</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">This is not a list of every verse that teaches a concept. It is a list of verses where the concept\'s Arabic root word appears AND the verse passes a meaning check. Use it as a starting point for study, not as a complete index of Quranic teaching on the concept.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('think-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
 }
 
 function _renderCanvas(){
@@ -1915,7 +1904,7 @@ function _gaSyncLangBtn(btn){
   return {
     mount: mount,
     unmount: unmount,
-    showHtw: _showThinkMethodology,
+    infoHtml: _thinkInfoHtml,
     animateStart: _thinkAnimPlay,
     animatePause: _thinkAnimPause,
     animateStop:  _thinkAnimStop,

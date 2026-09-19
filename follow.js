@@ -1223,21 +1223,9 @@ function _fwAnimStopFull() {
 // ═══════════════════════════════════════════════════════════
 // METHODOLOGY MODAL
 // ═══════════════════════════════════════════════════════════
-function _showFollowMethodology(){
-  if(document.getElementById('fw-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='fw-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="fw-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">How This Works</h2>'
+function _followInfoHtml(){
+  return ''
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">An animated map tracing a historical figure’s life journey. Events appear chronologically in the side feed, synchronized with the map.</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('fw-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
 
   // ═══════════════════════════════════════════════════════════
@@ -1384,7 +1372,7 @@ function _showFollowMethodology(){
   return {
     mount: mount,
     unmount: unmount,
-    showHtw: _showFollowMethodology,
+    infoHtml: _followInfoHtml,
     animateStart: _fwAnimPlay,
     animatePause: _fwAnimPause,
     animateStop:  _fwAnimStopFull,

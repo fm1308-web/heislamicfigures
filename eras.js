@@ -905,8 +905,6 @@ function initEras(){
     _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions');
     _evBuildTypePanel(); _evBuildTradPanel(); _evBuildCanvas(); _evAnimStop();
   });
-  var _evHowBtn=document.getElementById('era-how-btn');
-  if(_evHowBtn) _evHowBtn.addEventListener('click',function(e){e.stopPropagation();_showErasMethodology();});
 
   const animMount=document.getElementById('era-anim-mount');
   if(animMount && window.AnimControls){
@@ -920,15 +918,8 @@ function initEras(){
   _EV_INITED=true;
 }
 
-function _showErasMethodology(){
-  if(document.getElementById('eras-method-overlay')) return;
-  var ov=document.createElement('div');
-  ov.id='eras-method-overlay';
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-  var box=document.createElement('div');
-  box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:12px;max-width:560px;width:90%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;font-family:system-ui,sans-serif;';
-  box.innerHTML='<button id="eras-method-close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">×</button>'
-    +'<h2 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-1);margin:0 0 20px;letter-spacing:.06em">'+_evT('How This Works')+'</h2>'
+function _erasInfoHtml(){
+  return ''
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">'+_evT('A vertical timeline where each figure appears as a leaf shape spanning their lifespan. Filter by type and tradition to see how groups overlapped across centuries.')+'</p>'
     +'<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-2);margin:20px 0 8px;letter-spacing:.06em">Confidence band</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">Every figure now carries multiple type and tradition tags, each rated for evidence strength.</p>'
@@ -943,11 +934,6 @@ function _showErasMethodology(){
     +'<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-2);margin:20px 0 8px;letter-spacing:.06em">AND vs OR</h3>'
     +'<p style="color:#ccc;font-size:var(--fs-3);line-height:1.6">The pill between TYPE and TRADITION toggles logic. <b>AND</b> requires the figure to match a selected type AND a selected tradition. <b>OR</b> shows figures matching either side. Useful for narrowing or broadening together.</p>'
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">'+_evT('AI-generated · independently verify')+'</p>';
-  ov.appendChild(box);
-  document.body.appendChild(ov);
-  document.getElementById('eras-method-close').addEventListener('click',function(){ov.remove();});
-  ov.addEventListener('click',function(e){if(e.target===ov)ov.remove();});
-  document.addEventListener('keydown',function _esc(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',_esc);}});
 }
 
   // ═══════════════════════════════════════════════════════════
@@ -1098,14 +1084,12 @@ function _showErasMethodology(){
     try { _evBuildCanvas(); } catch(e){}
     try { _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types'); } catch(e){}
     try { _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions'); } catch(e){}
-    var ov = document.getElementById('eras-method-overlay');
-    if(ov){ ov.remove(); _showErasMethodology(); }
   });
 
   return {
     mount: mount,
     unmount: unmount,
-    showHtw: _showErasMethodology,
+    infoHtml: _erasInfoHtml,
     animateStart: _evAnimPlay,
     animatePause: _evAnimPause,
     animateStop:  _evAnimStop,

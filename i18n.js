@@ -15,6 +15,11 @@
   // BV54 kill-switch — Urdu disabled app-wide while RV redoes data pass.
   // Flip to true to re-enable UR. Bucket data on CDN is untouched.
   var UR_ENABLED = true;
+  // English-only interface (2026-09-19): the language switchers were removed, so
+  // every session starts in English and non-English setLang calls (e.g. a signed-in
+  // user's saved Firestore appLang) are ignored. Flip to false to bring languages back.
+  var ENGLISH_ONLY = true;
+  if (ENGLISH_ONLY) { try { localStorage.removeItem('gold-ark-app-lang'); } catch(e){} }
 
   // BV54 — per-view UR shipping whitelist.
   // Add view name (as passed to tForView) when that view is fully wired for UR.
@@ -616,6 +621,7 @@
   }
 
   function _resolveInitialLang(){
+    if (ENGLISH_ONLY) return 'en';
     var u = window._gaUser;
     if (u && u.appLang && _isAvailable(u.appLang) && !(u.appLang === 'ur' && !UR_ENABLED)) return u.appLang;
     try {
@@ -823,6 +829,7 @@
   }
 
   function setLang(lang){
+    if (ENGLISH_ONLY && lang !== 'en') return Promise.resolve();
     _urToastShownFor = {};
     setTimeout(function(){ if (lang === 'ur') _checkViewForToast(); }, 50);
     if (lang === 'ur' && !UR_ENABLED) {

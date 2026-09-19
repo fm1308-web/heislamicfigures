@@ -233,7 +233,7 @@
 .rl-n-narration{ border-left-color:#c87a9a; color:#c87a9a; }
 
 /* When Relations is the active tab, stretch the search bar full-width
-   up to the How This Works button. Overrides shell.css zone-B widths. */
+   up to the pills at the right. Overrides shell.css zone-B widths. */
 body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-search,
 body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-search{
   flex:1 1 auto !important;
@@ -834,59 +834,6 @@ body[data-active-tab="RELATIONS"] #zoneB .zb-row1 .zb-slot-saved{
   box-shadow: 0 0 0 2px rgba(217,122,122,0.55) !important;
   background: rgba(217,122,122,0.10) !important;
 }
-
-/* ─── HOW THIS WORKS modal for Relations view ─── */
-.rl-htw-modal{
-  position: fixed; inset: 0; z-index: 9999;
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px;
-}
-.rl-htw-backdrop{
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(3px);
-}
-.rl-htw-panel{
-  position: relative;
-  max-width: 760px;
-  max-height: 85vh;
-  overflow-y: auto;
-  background: var(--bg-navy, #0c1a2b);
-  border: 1.5px solid rgba(212,175,55,0.55);
-  border-radius: 14px;
-  padding: 28px 36px 32px;
-  color: var(--text, #e8e8e8);
-  font-family: var(--sans);
-  line-height: 1.55;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-}
-.rl-htw-panel h2{
-  font-family: 'Cinzel', serif;
-  color: var(--accent, #D4AF37);
-  font-size: 22px;
-  margin: 0 0 14px;
-  letter-spacing: 0.04em;
-}
-.rl-htw-panel h3{
-  font-family: 'Cinzel', serif;
-  color: var(--accent, #D4AF37);
-  font-size: 15px;
-  margin: 22px 0 8px;
-  letter-spacing: 0.04em;
-}
-.rl-htw-panel p{ margin: 0 0 10px; font-size: 14px; }
-.rl-htw-panel ul{ margin: 0 0 10px; padding-left: 22px; }
-.rl-htw-panel li{ margin-bottom: 5px; font-size: 14px; }
-.rl-htw-panel strong{ color: var(--accent, #D4AF37); font-weight: 600; }
-.rl-htw-panel em{ color: rgba(212,175,55,0.85); font-style: normal; }
-.rl-htw-close{
-  position: absolute; top: 10px; right: 14px;
-  background: transparent; border: none;
-  color: var(--accent, #D4AF37);
-  font-size: 28px; line-height: 1;
-  cursor: pointer; padding: 4px 10px;
-}
-.rl-htw-close:hover{ color: #fff; }
 
 /* Drill view: left-align locked pill + its relation-tile row to the left,
    keeping the right side free for the connector line and relation labels. */

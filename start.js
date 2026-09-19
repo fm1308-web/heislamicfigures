@@ -5597,7 +5597,8 @@ window.StartView = (function(){
   }
   function animateSetSpeed(label){ /* surah play has no speed concept — no-op */ }
 
-  function showHtw(){
+  // Content for the INFORMATION panel (shell.js).
+  function _stInfoHtml(){
     var body =
       'START — Read the Quran.\n\n' +
       'Use Surah / Juz / Hizb / Manzil to navigate. Reciter picks the audio voice. ' +
@@ -5616,7 +5617,7 @@ window.StartView = (function(){
       'The method is anchored on the concept\'s Arabic root word. If a verse teaches a concept without using its specific root, it will not appear here — even if the verse is widely understood to teach that concept. Example: Surah Ikhlas (112) teaches tawhid clearly but its Arabic text does not contain the root و-ح-د, so it shows no tawhid chip. This is the deliberate limit of a defensible method. We chose narrow and provable over wide and loose. Use the chips as a starting point for study, not as a complete index.\n\n' +
       'Every chip carries the confidence stamp medium_ai — AI judged YES under a clear rule, human review in progress. Use feedback to flag wrong matches.\n\n' +
       'Sources: tanzil.net · Saheeh International · qurancomplex.gov.sa';
-    if(typeof window.openModal === 'function') window.openModal('How This Works — START', body);
+    return '<div style="white-space:pre-wrap">' + String(body).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
   }
 
   var _mounted = false;
@@ -5683,7 +5684,7 @@ window.StartView = (function(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, animateStart: animateStart, animatePause: animatePause, animateSetSpeed: animateSetSpeed, showHtw: showHtw };
+  return { mount: mount, unmount: unmount, animateStart: animateStart, animatePause: animatePause, animateSetSpeed: animateSetSpeed, infoHtml: _stInfoHtml };
 })();
 
 /* Translation-only RTL detection: toggle body.st-trans-rtl based on the
