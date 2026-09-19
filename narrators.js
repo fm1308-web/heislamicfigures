@@ -2,8 +2,9 @@
    NARRATORS — Tier-B/C narrator figures (lazy, localhost-gated)
 
    Data: data/islamic/narrators/
-     narrators_index.json   {version, count, shards{file:n}, slug_to_shard{}}
-     narrators_001..004.json  flat arrays of records (500 each, 1956 total)
+     narrators_index.json   {version, count, shards{file:n}} (slug_to_shard{} pre-batch-2)
+     narrators_001..007.json  flat arrays of records (3,425 total)
+     narrator_id_to_slug.json arees id -> narrator slug (4,197)
 
    RULES (see feature spec):
    - Nothing is fetched at boot. The index loads on first use; a shard loads
@@ -11,7 +12,7 @@
    - Narrators NEVER enter core.json or the global PEOPLE array. They are
      merged into the Timeline row list at render time only.
    - NO images for any narrator, ever. This file renders no <img>.
-   - Gated by window.GOLD_ARK_CONFIG.NARRATORS_ON (localhost only for now).
+   - Gated by window.GOLD_ARK_CONFIG.NARRATORS_ON (live for all visitors).
    ───────────────────────────────────────────────────────────── */
 window.GA_Narrators = (function(){
   'use strict';
@@ -96,14 +97,21 @@ window.GA_Narrators = (function(){
     return _shardP[file];
   }
 
-  // Single-narrator path: resolve slug -> shard via the index, load that shard only.
+  // Single-narrator path: resolve slug -> shard via the index, load that shard
+  // only. The batch-2 index (2026-09-19) dropped slug_to_shard, so when it is
+  // absent we fall back to ensureListing(), which loads every shard and fills
+  // _bySlug. Still lazy — on first use, never at boot — and cached after.
   function ensureBySlug(slug){
     if(!slug) return Promise.resolve(null);
     if(_bySlug[slug]) return Promise.resolve(_bySlug[slug]);
     return ensureIndex().then(function(idx){
-      var file = idx && idx.slug_to_shard ? idx.slug_to_shard[slug] : null;
-      if(!file) return null;
-      return ensureShard(file).then(function(){ return _bySlug[slug] || null; });
+      var map = idx && idx.slug_to_shard;
+      if(map){
+        var file = map[slug];
+        if(!file) return null;
+        return ensureShard(file).then(function(){ return _bySlug[slug] || null; });
+      }
+      return ensureListing().then(function(){ return _bySlug[slug] || null; });
     });
   }
 
@@ -214,16 +222,16 @@ window.GA_Narrators = (function(){
   }
 
   // ── AREES ID → SLUG (hadith chain cross-links) ────────────
-  // NOTE: data/islamic/narrators/narrator_id_to_slug.json does NOT exist in
-  // this repo (checked project-wide). The map below is derived from two files
-  // that do exist, by exact id — no name-matching, no guessing:
-  //   narrators_index.json          every narrator slug is "arees-<arees_id>-…";
-  //                                 verified prefix === arees_id for all 1,956.
+  // Batch 2 (2026-09-19) ships the real map, so it is now the primary source:
+  //   narrators/narrator_id_to_slug.json  {'11579':'arees-11579-…'} — 4,197 ids,
+  //                                 exact id → narrator slug, no name-matching.
   //   arees/core_to_arees_slug.json {lookup:{F0002:'arees-1806-…'}}, self-
   //                                 described "Confirmed matches only. Never
   //                                 name-matched." — 392 core figures.
-  // Core "F" slugs take precedence over narrator slugs (today no id is in both).
-  // Swap _buildIdMap's sources for the real file if it is ever generated.
+  // Core "F" slugs still take precedence over narrator slugs.
+  // narrators_index.json is kept as a fallback source for the id map so a
+  // pre-batch-2 index (which carried slug_to_shard) still resolves.
+  var ID_MAP_URL = 'narrator_id_to_slug.json';
   var CORE_MAP_URL = 'data/islamic/arees/core_to_arees_slug.json';
   var _idMap = null, _idMapP = null;
 
@@ -239,15 +247,23 @@ window.GA_Narrators = (function(){
       ensureIndex(),
       fetch(window.dataUrl(CORE_MAP_URL))
         .then(function(r){ return r.ok ? r.json() : null; })
-        .catch(function(){ return null; })
+        .catch(function(){ return null; }),
+      _getJson(ID_MAP_URL).catch(function(){ return null; })
     ]).then(function(res){
-      var idx = res[0] || {}, core = res[1];
+      var idx = res[0] || {}, core = res[1], ids = res[2];
       var map = {};
-      // Narrators first…
-      Object.keys((idx && idx.slug_to_shard) || {}).forEach(function(slug){
-        var id = _areesIdOf(slug);
-        if(id) map[id] = slug;
-      });
+      // Narrators first — the shipped id→slug map, else a legacy index…
+      if(ids && typeof ids === 'object'){
+        Object.keys(ids).forEach(function(id){
+          var slug = ids[id];
+          if(id && typeof slug === 'string') map[String(id).trim()] = slug;
+        });
+      } else {
+        Object.keys((idx && idx.slug_to_shard) || {}).forEach(function(slug){
+          var id = _areesIdOf(slug);
+          if(id) map[id] = slug;
+        });
+      }
       // …then core figures, which win.
       var lookup = (core && core.lookup) || null;
       if(lookup){
