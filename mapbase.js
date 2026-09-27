@@ -6,9 +6,12 @@
 var _mbGeoEmpData = null;
 var _mbGeoEmpCenturies = [];
 
+// ── CARTO basemap API key (CARTO now requires a key on tile requests) ──
+window.CARTO_KEY = 'cb1_3zvx_1_679b2f0b1c971e7e1a9dd618';
+
 // ── Dark Tile URLs ──
-var _MB_DARK_TILES = 'https://{s}.basemaps.cartocdn.com/positron_no_labels/{z}/{x}/{y}{r}.png';
-var _MB_LABEL_TILES = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
+var _MB_DARK_TILES = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=' + window.CARTO_KEY;
+var _MB_LABEL_TILES = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=' + window.CARTO_KEY;
 var _MB_BORDERS_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson';
 
 // ═══════════════════════════════════════════════════════════

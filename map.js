@@ -49,8 +49,10 @@ window.MapView = (function(){
 
   var _mbGeoEmpData = null;
   var _mbGeoEmpCenturies = [];
-  var _MB_DARK_TILES = 'https://{s}.basemaps.cartocdn.com/positron_no_labels/{z}/{x}/{y}{r}.png';
-  var _MB_LABEL_TILES = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
+  // CARTO basemap API key — defined once on window in mapbase.js (loads first).
+  var CARTO_KEY = window.CARTO_KEY;
+  var _MB_DARK_TILES = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY;
+  var _MB_LABEL_TILES = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY;
   var _MB_BORDERS_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson';
 
   function _mbCreateMap(elementId, opts){
@@ -1019,7 +1021,7 @@ function _doRenderMap(){
       center:[30,45],zoom:3,zoomControl:true,minZoom:2,maxZoom:10,
       maxBounds:[[-85,-180],[85,180]],maxBoundsViscosity:1.0
     });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png',{
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY,{
       subdomains:'abcd',
       attribution:'© <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom:19
@@ -1030,7 +1032,7 @@ function _doRenderMap(){
         if(!_lMap) return;
         L.geoJSON(geo,{style:{color:'#7a8a72',weight:0.8,fillOpacity:0,opacity:0.8}}).addTo(_lMap);
       }).catch(()=>{});
-    _labTile=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',{
+    _labTile=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY,{
       subdomains:'abcd',maxZoom:19,opacity:1
     });
     _lMap.on('moveend zoomend', _updateArrows);
