@@ -1032,9 +1032,13 @@ function _doRenderMap(){
         if(!_lMap) return;
         L.geoJSON(geo,{style:{color:'#7a8a72',weight:0.8,fillOpacity:0,opacity:0.8}}).addTo(_lMap);
       }).catch(()=>{});
-    _labTile=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY,{
-      subdomains:'abcd',maxZoom:19,opacity:1
-    });
+    // Labels pane: above empire polygons (overlayPane 400); pointer-events off so it never blocks clicks.
+    var _labPane=_lMap.createPane('labels');
+    _labPane.style.zIndex=650;
+    _labPane.style.pointerEvents='none';
+    _labTile=L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY,{
+      subdomains:'abcd',maxZoom:19,opacity:0.55,pane:'labels'
+    }).addTo(_lMap);
     _lMap.on('moveend zoomend', _updateArrows);
     // Zoom triggers a full re-render (markers + label spread).
     _lMap.on('zoomend', function(){ try { _renderMarkers(); } catch(e){} });
@@ -1468,6 +1472,7 @@ return {
           .catch(function(){ return []; })
           .then(function(arr){ window.PEOPLE = arr || []; return arr; });
     p1.then(function(){
+      PEOPLE = window.PEOPLE || [];
       renderMap();
       _mapWireZoneB(zoneBEl);
       setTimeout(function(){ _setMapHeight(); }, 100);
