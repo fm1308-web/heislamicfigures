@@ -259,7 +259,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=18477",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=18477",
-"http://hadith.islam-db.com/narrators/4094/عامر-بن-جشيب"
+"http://hadith.islam-db.com/narrators/4094/عامر-بن-جشيب",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=17203",
+"https://hadithtransmitters.hawramani.com/عامر-بن-جشيب/"
 ],
 "book_refs": [
 {
@@ -285,11 +287,14 @@
 "research_teachers": [
 "Khalid ibn Ma'dan al-Kila'i",
 "Sulaym ibn Amir al-Kila'i",
-"Zur'a ibn Thawb al-Qadi"
+"Zur'a ibn Thawb al-Qadi",
+"Abu Umama",
+"Khalid ibn Ma'dan"
 ],
 "research_students": [
 "Bahir ibn Sa'd",
-"Luqman ibn Amir"
+"Luqman ibn Amir",
+"Mu'awiya ibn Salih"
 ],
 "research_evidence": "Page states no death year; identity matched on the rare full name عامر بن جشيب with kunya أبو خالد, Homs/al-Sham locale, and role as a Follower-era hadith narrator, with no competing candidate.",
 "dod": 743,
@@ -307,7 +312,18 @@
 "Lqman bin 'Amir al-Wsaby": "arees-18888-lqman-bin-amir-al-wsaby",
 "Muhammad bin al-Walid al-Zubaidi": "arees-20459-muhammad-bin-al-walid-al-zubaidi",
 "Mu'awiya bin Salah bin Hadayr": "arees-20675-mu-awiya-bin-salah-bin-hadayr"
+},
+"merged_from": [
+"arees-17203-amir-bin-jshyb"
+],
+"also_listed_as": [
+{
+"slug": "arees-17203-amir-bin-jshyb",
+"name": "'Amir bin Jshyb",
+"generation": "Follower(Tabi')",
+"source": "https://hadithtransmitters.hawramani.com/عامر-بن-جشيب/"
 }
+]
 },
 {
 "slug": "arees-18494-abbas-bin-abdur-rahman",
@@ -530,7 +546,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=18651",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=18651",
-"https://www.islamweb.net/ar/library/content/131/1355/%D9%85%D8%A7-%D8%B1%D9%88%D8%A7%D9%87-%D8%B9%D9%86-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D8%A7%D8%B6-%D8%A8%D9%86-%D8%B3%D8%A7%D8%B1%D9%8A%D8%A9-%D9%88%D8%BA%D9%8A%D8%B1%D9%87"
+"https://www.islamweb.net/ar/library/content/131/1355/%D9%85%D8%A7-%D8%B1%D9%88%D8%A7%D9%87-%D8%B9%D9%86-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D8%A7%D8%B6-%D8%A8%D9%86-%D8%B3%D8%A7%D8%B1%D9%8A%D8%A9-%D9%88%D8%BA%D9%8A%D8%B1%D9%87",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=16749",
+"https://shamela.ws/book/3722/9001"
 ],
 "book_refs": [
 {
@@ -559,10 +577,17 @@
 "research_teachers": [
 "al-Irbad ibn Sariya",
 "Amr ibn Abasa",
-"Abu Umama"
+"Abu Umama",
+"Jubayr ibn Nufayr al-Hadrami",
+"Abu Umama Sudayy ibn Ajlan al-Bahili",
+"al-Miqdam ibn Ma'dikarib",
+"Abu Rashid al-Hubrani",
+"Abu Udhba al-Hadrami al-Himsi"
 ],
 "research_students": [
-"Safwan ibn Amr"
+"Safwan ibn Amr",
+"Thawr ibn Yazid",
+"Hariz ibn Uthman"
 ],
 "research_evidence": "Page (Hilyat al-Awliya entry عبد الرحمن بن ميسرة الحضرمي) states no death year; identity matched on the distinctive full name and role as a Follower narrating from late Companions (al-Irbad ibn Sariya, Amr ibn Abasa, Abu Umama), with no competing candidate.",
 "dod": 733,
@@ -581,7 +606,19 @@
 "Huraiz bin 'Uthman bin Jabir": "arees-11684-huraiz-bin-uthman-bin-jabir",
 "Safwan bin 'Amr bin Harm al-Saksaki": "arees-10921-safwan-bin-amr-bin-harm-al-saksaki",
 "Thaur bin Yazid al-Rahbi": "arees-20415-thaur-bin-yazid-al-rahbi"
+},
+"merged_from": [
+"arees-16749-abdur-rahman-bin-maysra-al-hadrami"
+],
+"also_listed_as": [
+{
+"slug": "arees-16749-abdur-rahman-bin-maysra-al-hadrami",
+"name": "'Abdur Rahman bin Maysra al-Hadrami",
+"generation": "Follower(Tabi')",
+"source": "https://shamela.ws/book/3722/9001"
 }
+],
+"city": "Homs"
 },
 {
 "slug": "arees-18710-uthman-bin-abi-swd-h",
@@ -2138,7 +2175,9 @@
 ],
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19946",
 "sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=19946"
+"http://muslimscholars.info/manage.php?submit=scholar&ID=19946",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=19027",
+"https://hadithtransmitters.hawramani.com/المغيرة-بن-أبي-بردة/"
 ],
 "book_refs": [
 {
@@ -2172,7 +2211,24 @@
 "al-Jlah Abu Kathir al-Amwy Mwlahm": "arees-10852-al-jlah-abu-kathir-al-amwy-mwlahm",
 "'Abdullah bin Abi Salah al-Saman": "arees-11867-abdullah-bin-abi-salah-al-saman",
 "Yazid bin Muhammad bin Qays": "arees-11546-yazid-bin-muhammad-bin-qays"
+},
+"merged_from": [
+"arees-19027-al-mughira-bin-abi-brd-h"
+],
+"also_listed_as": [
+{
+"slug": "arees-19027-al-mughira-bin-abi-brd-h",
+"name": "al-Mughira bin Abi Brd'h",
+"generation": "Follower(Tabi') [ 3rd Generation ]",
+"source": "https://hadithtransmitters.hawramani.com/المغيرة-بن-أبي-بردة/"
 }
+],
+"research_students": [
+"Safwan ibn Sulaym",
+"Yahya ibn Sa'id al-Ansari"
+],
+"bio": "Ibn Sa'd (al-Tabaqat al-Kubra) places him in Banu 'Abd al-Dar ibn Qusayy. Ahmad ibn Hanbal's rijal material records that Safwan ibn Sulaym and Yahya ibn Sa'id al-Ansari narrated from him. Al-'Iraqi's Dhayl Mizan al-I'tidal notes that al-Nasa'i declared him reliable and Ibn Hibban listed him in al-Thiqat.",
+"bio_full_source": "https://hadithtransmitters.hawramani.com/المغيرة-بن-أبي-بردة/"
 },
 {
 "slug": "arees-19965-nubiya-bin-wahb-bin-uthman",
@@ -7191,7 +7247,7 @@
 "type": "Narrator",
 "relations": [],
 "full": "Mujma' bin Yazid bin Jariyya(Hartha) b. 'Amir b. Mujma' b. al-'Attaf b. Dubaya' b. Zayd",
-"full_name_ar": "عبد الرحمن بن يزيد بن جارية الأنصاري ( رضي الله عنه",
+"full_name_ar": "",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "death_date_hijri": 93,
 "teachers": [
@@ -7268,7 +7324,8 @@
 "students_links": {
 "al-Qasim ibn Muhammad": "F1136",
 "al-Zuhri": "F1995"
-}
+},
+"_ar_removed": "Arabic name belonged to a relative/neighbouring entry (FT dup review 3 Oct 2026)"
 },
 {
 "slug": "arees-2080-ja-dah-bin-hubayra-bin-abi-wahb",
@@ -16877,7 +16934,8 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=17506",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=17506",
-"https://en.wikipedia.org/wiki/Khalid_ibn_Yazid"
+"https://en.wikipedia.org/wiki/Khalid_ibn_Yazid",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=4354"
 ],
 "book_refs": [
 {
@@ -16932,7 +16990,18 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
+},
+"merged_from": [
+"arees-4354-khalid-bin-yazid-bin-mua-wiya"
+],
+"also_listed_as": [
+{
+"slug": "arees-4354-khalid-bin-yazid-bin-mua-wiya",
+"name": "Khalid bin Yazid bin Mua'wiya",
+"generation": "Comp.(RA)",
+"source": "https://en.wikipedia.org/wiki/Khalid_ibn_Yazid"
 }
+]
 },
 {
 "slug": "arees-17555-ya-aish-bin-al-walid-bin-hisham",
@@ -18160,7 +18229,9 @@
 ],
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=18500",
 "sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=18500"
+"http://muslimscholars.info/manage.php?submit=scholar&ID=18500",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=9183",
+"https://shamela.ws/book/9767/2388"
 ],
 "book_refs": [
 {
@@ -18190,7 +18261,20 @@
 },
 "students_links": {
 "S'aid bin 'Abdur Rahman bin Raqaysh": "arees-12740-s-aid-bin-abdur-rahman-bin-raqaysh"
+},
+"merged_from": [
+"arees-9183-abdullah-bin-abi-ahmed-bin-jhsh"
+],
+"also_listed_as": [
+{
+"slug": "arees-9183-abdullah-bin-abi-ahmed-bin-jhsh",
+"name": "'Abdullah bin Abi Ahmed bin Jhsh",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/2388"
 }
+],
+"bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 6177) quotes Ibn Sa'd that he saw the Prophet (ru'ya). Ibn Mandah reports that his father brought him to the Prophet when he was born and the Prophet named him Abdullah.",
+"bio_full_source": "https://shamela.ws/book/9767/2388"
 },
 {
 "slug": "arees-18649-abdur-rahman-bin-mrzwq",
@@ -19352,7 +19436,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19839",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=19839",
-"https://shamela.ws/narrator/898"
+"https://shamela.ws/narrator/898",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=18074",
+"https://shamela.ws/book/3722/1558"
 ],
 "book_refs": [
 {
@@ -19402,7 +19488,32 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"merged_from": [
+"arees-18074-brd-bin-snan"
+],
+"also_listed_as": [
+{
+"slug": "arees-18074-brd-bin-snan",
+"name": "Brd bin Snan",
+"generation": "Follower(Tabi') [ 5th generation ]",
+"source": "https://shamela.ws/book/3722/1558"
+}
+],
+"research_teachers": [
+"إسحاق بن قبيصة بن ذؤيب الخزاعي",
+"بديل بن ميسرة العقيلي",
+"بكير بن فيروز الرهاوي"
+],
+"research_students": [
+"إسماعيل بن علية",
+"إسماعيل بن عياش",
+"بشر بن المفضل",
+"بقية بن الوليد",
+"حاتم بن وردان",
+"حفص بن غياث",
+"حماد بن زيد"
+]
 },
 {
 "slug": "arees-19872-abdullah-bin-al-khlyl",
@@ -29194,7 +29305,9 @@
 ],
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=11182",
 "sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=11182"
+"http://muslimscholars.info/manage.php?submit=scholar&ID=11182",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=16608",
+"https://shamela.ws/book/5816/1554"
 ],
 "book_refs": [
 {
@@ -29229,7 +29342,26 @@
 "Ibn Ishaq": "F0739",
 "Bukayr bin 'Abdullah bin al-Ashj": "arees-11154-bukayr-bin-abdullah-bin-al-ashj",
 "Yazid bin 'Abdullah bin Usama B. al-Haad": "arees-11234-yazid-bin-abdullah-bin-usama-b-al-haad"
+},
+"merged_from": [
+"arees-16608-abdullah-bin-khbab"
+],
+"also_listed_as": [
+{
+"slug": "arees-16608-abdullah-bin-khbab",
+"name": "'Abdullah bin Khbab",
+"generation": "Follower(Tabi')",
+"source": "https://shamela.ws/book/5816/1554"
 }
+],
+"research_teachers": [
+"Ubayy ibn Ka'b"
+],
+"research_students": [
+"Abd al-Rahman ibn Abza"
+],
+"bio": "Ibn Hibban's Kitab al-Thiqat (vol. 5, p. 37, chapter of 'Ayn) lists Abdullah ibn Khabbab as narrating from Ubayy ibn Ka'b, with Abd al-Rahman ibn Abza narrating from him.",
+"bio_full_source": "https://shamela.ws/book/5816/1554"
 },
 {
 "slug": "arees-11228-hisham-bin-zayd-bin-anas",
@@ -30007,7 +30139,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=11659",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=11659",
-"https://shamela.ws/narrator/6524"
+"https://shamela.ws/narrator/6524",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=7856",
+"https://shamela.ws/book/9767/3299"
 ],
 "book_refs": [
 {
@@ -30069,7 +30203,18 @@
 "Ali ibn Abi Talib": "F0366",
 "ibn Mas'ud": "F0082"
 },
-"students_links": {}
+"students_links": {},
+"merged_from": [
+"arees-7856-al-nzal-bin-sbrh"
+],
+"also_listed_as": [
+{
+"slug": "arees-7856-al-nzal-bin-sbrh",
+"name": "al-Nzal bin Sbrh",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/3299"
+}
+]
 },
 {
 "slug": "arees-11695-talha-bin-abdul-malik",
@@ -34712,7 +34857,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=15560",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=15560",
-"https://shamela.ws/narrator/6396"
+"https://shamela.ws/narrator/6396",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=12528",
+"https://hdith.com/encyclopedia/rawi/p-6396"
 ],
 "book_refs": [
 {
@@ -34745,7 +34892,8 @@
 "muezzin"
 ],
 "research_teachers": [
-"Abu 'Uthman (his father)"
+"Abu 'Uthman (his father)",
+"Abu 'Uthman al-Tabban"
 ],
 "research_students": [
 "Malik bin Mighwal",
@@ -34767,7 +34915,18 @@
 "students_links": {
 "Malik bin Mghwl": "arees-20358-malik-bin-mghwl",
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
+},
+"merged_from": [
+"arees-12528-musa-bin-abi-uthman"
+],
+"also_listed_as": [
+{
+"slug": "arees-12528-musa-bin-abi-uthman",
+"name": "Musa bin Abi 'Uthman",
+"generation": "Follower(Tabi') [ 6th generation ]",
+"source": "https://hdith.com/encyclopedia/rawi/p-6396"
 }
+]
 },
 {
 "slug": "arees-15565-mysrh-bin-y-aqub-abu",
@@ -37116,11 +37275,16 @@
 "teachers": [
 "al-Hasan al-Basri",
 "Talha bin Nafi' Abi Sufyan al-Askaf",
-"Habib bin Salm al-Ansari"
+"Habib bin Salm al-Ansari",
+"Prophet Muhammad(saw)",
+"'Umar ibn al-Khattab"
 ],
 "students": [
 "Qatada",
-"Wasl Mwla Abi Ayynh"
+"Wasl Mwla Abi Ayynh",
+"Abu 'Uthman al-Nahdi",
+"Abu Ishaq al-Sabay'ai'",
+"'Abdullah bin Ysar"
 ],
 "chain_to_prophet": [
 "arees-1-prophet-muhammad-saw",
@@ -37147,7 +37311,8 @@
 ],
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=18242",
 "sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=18242"
+"http://muslimscholars.info/manage.php?submit=scholar&ID=18242",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=5012"
 ],
 "book_refs": [
 {
@@ -37163,20 +37328,32 @@
 "ref": "189"
 }
 ],
-"citations_in_chains": 7,
-"dod": 753,
-"_dodFromGeneration": true,
+"citations_in_chains": 12,
+"dod": 684,
 "dod_s": "c. 753 CE (estimated from generation — no recorded date survives)",
-"dob": 688,
+"dob": 619,
 "_dobFromDod": true,
-"dob_s": "c. 688 CE (estimated)",
+"dob_s": "c. 619 CE (estimated)",
 "teachers_links": {
 "Talha bin Nafi' Abi Sufyan al-Askaf": "arees-11249-talha-bin-nafi-abi-sufyan-al-askaf",
 "Habib bin Salm al-Ansari": "arees-11837-habib-bin-salm-al-ansari"
 },
 "students_links": {
 "Wasl Mwla Abi Ayynh": "arees-11729-wasl-mwla-abi-ayynh"
+},
+"merged_from": [
+"arees-5012-khalid-bin-artafa"
+],
+"also_listed_as": [
+{
+"slug": "arees-5012-khalid-bin-artafa",
+"name": "Khalid bin 'Artafa",
+"generation": "Comp.(RA) [ 1st Generation ]",
+"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5012"
 }
+],
+"death_date_hijri": 64,
+"_dodFromAH": true
 },
 {
 "slug": "arees-18261-khlyfh-bin-husayn-bin-qays",

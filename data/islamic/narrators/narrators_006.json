@@ -19,7 +19,11 @@
 "al-Nadr bin Shumayl al-Maazni",
 "Waki' bin al-Jarrah",
 "al-Hasan bin Yahya bin Kathir",
-"Ruh bin 'Ubada bin al-'Ala'"
+"Ruh bin 'Ubada bin al-'Ala'",
+"Hrmlh bin Yahya bin",
+"'Abdullah bin Wahb",
+"Yahya bin Hsan",
+"Yahya bin Salah al-Wahadi"
 ],
 "chain_to_prophet": [
 "arees-1-prophet-muhammad-saw",
@@ -29,7 +33,8 @@
 ],
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=24263",
 "sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=24263"
+"http://muslimscholars.info/manage.php?submit=scholar&ID=24263",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=20659"
 ],
 "book_refs": [
 {
@@ -49,7 +54,7 @@
 "ref": "357"
 }
 ],
-"citations_in_chains": 7,
+"citations_in_chains": 11,
 "dod": 777,
 "_dodFromGeneration": true,
 "dod_s": "c. 777 CE (estimated from generation — no recorded date survives)",
@@ -64,7 +69,18 @@
 "al-Nadr bin Shumayl al-Maazni": "arees-20291-al-nadr-bin-shumayl-al-maazni",
 "Waki' bin al-Jarrah": "F1636",
 "Ruh bin 'Ubada bin al-'Ala'": "arees-20229-ruh-bin-ubada-bin-al-ala"
+},
+"merged_from": [
+"arees-20659-abdul-aziz-bin-al-rabi"
+],
+"also_listed_as": [
+{
+"slug": "arees-20659-abdul-aziz-bin-al-rabi",
+"name": "'Abdul 'Aziz bin al-Rabi'",
+"generation": "Succ. (Taba' Tabi') [ 7th generation ]",
+"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=20659"
 }
+]
 },
 {
 "slug": "arees-24280-abdul-malik-bin-abi-nadhra",
@@ -12360,7 +12376,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=15531",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=15531",
-"https://islamic-content.com/t/27429"
+"https://islamic-content.com/t/27429",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=7831",
+"https://shamela.ws/book/9767/3198"
 ],
 "book_refs": [
 {
@@ -12406,7 +12424,27 @@
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai",
 "Abu Idrys": "arees-15655-abu-idrys"
+},
+"merged_from": [
+"arees-7831-al-msyb-bin-njbh"
+],
+"also_listed_as": [
+{
+"slug": "arees-7831-al-msyb-bin-njbh",
+"name": "al-Msyb bin Njbh",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/3198"
 }
+],
+"research_teachers": [
+"Hudhayfa",
+"'Ali ibn Abi Talib"
+],
+"research_students": [
+"Abu Ishaq al-Sabi'i",
+"'Ubayd al-Muktib",
+"Abu Idris al-Murhibi"
+]
 },
 {
 "slug": "arees-15566-mysrh-abu-salah",
@@ -22757,7 +22795,7 @@
 "teachers_links": {},
 "students_links": {
 "Aslam Client Of 'Umar": "arees-11416-aslam-client-of-umar",
-"'Abdullah bin 'Utba": "arees-4145-abdullah-bin-utba",
+"'Abdullah bin 'Utba": "arees-16566-abdullah-bin-utba-bin-mas-ud",
 "'Urwa ibn al-Zubayr": "F1612"
 }
 },
@@ -23201,7 +23239,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=4062",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=4062",
-"https://www.taraajem.com/persons/22010/%D8%A3%D8%A8%D9%8A-%D8%A8%D9%86-%D8%B9%D9%85%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%A3%D9%86%D8%B5%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D9%85%D8%AF%D9%86%D9%8A"
+"https://www.taraajem.com/persons/22010/%D8%A3%D8%A8%D9%8A-%D8%A8%D9%86-%D8%B9%D9%85%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%A3%D9%86%D8%B5%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D9%85%D8%AF%D9%86%D9%8A",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=3481",
+"https://shamela.ws/book/9767/164"
 ],
 "book_refs": [
 {
@@ -23236,7 +23276,18 @@
 "students_links": {
 "Ayoub bin Qtn": "arees-18069-ayoub-bin-qtn",
 "'Aabadh bin Nsy": "arees-19893-aabadh-bin-nsy"
+},
+"merged_from": [
+"arees-3481-ubayy-ibn-ammarah"
+],
+"also_listed_as": [
+{
+"slug": "arees-3481-ubayy-ibn-ammarah",
+"name": "Ubayy ibn Ammarah",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/164"
 }
+]
 },
 {
 "slug": "arees-4103-al-harith-bin-hasan",
@@ -23451,78 +23502,6 @@
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
 "students_links": {}
-},
-{
-"slug": "arees-5012-khalid-bin-artafa",
-"tier": "C",
-"arees_id": 5012,
-"famous": "Khalid bin 'Artafa",
-"type": "Narrator",
-"relations": [],
-"full": "Khalid bin 'Artafa b. Abraha b. Sinan b. Sayfi b. al-Ha'ila b. 'Abdullah b. Ghilan ....b. 'Uzra",
-"full_name_ar": "خالد بن عرفطة ( رضي الله عنه",
-"generation": "Comp.(RA) [ 1st Generation ]",
-"death_date_hijri": 64,
-"teachers": [
-"Prophet Muhammad(saw)",
-"'Umar ibn al-Khattab"
-],
-"students": [
-"Abu 'Uthman al-Nahdi",
-"Abu Ishaq al-Sabay'ai'",
-"'Abdullah bin Ysar"
-],
-"chain_to_prophet": [
-"arees-1-prophet-muhammad-saw",
-"arees-5012-khalid-bin-artafa"
-],
-"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5012",
-"sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=5012"
-],
-"book_refs": [
-{
-"source": "Thiqat",
-"ref": "Vol:3"
-},
-{
-"source": "Tarikh-ul Kabir",
-"ref": ""
-},
-{
-"source": "Tabaqat",
-"ref": "Vol:4"
-},
-{
-"source": "Tabaqat",
-"ref": "Vol:6"
-},
-{
-"source": "Tahdheeb al-Tahdheeb",
-"ref": "Vol:3"
-},
-{
-"source": "Taqrib al-Tahdheeb",
-"ref": "189"
-}
-],
-"possible_duplicate_of": {
-"core_slug": "F1317",
-"core_famous": "Sinan bin Sayfi b Sakhr"
-},
-"citations_in_chains": 5,
-"dod": 684,
-"_dodFromAH": true,
-"dob": 619,
-"_dobFromDod": true,
-"dob_s": "c. 619 CE (estimated)",
-"teachers_links": {
-"'Umar ibn al-Khattab": "F1433"
-},
-"students_links": {
-"Abu 'Uthman al-Nahdi": "arees-11113-abu-uthman-al-nahdi",
-"Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
-}
 },
 {
 "slug": "arees-5013-khafaf-bin-aiama-bin-rahda",
@@ -31658,7 +31637,8 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=14038",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=14038",
-"https://hdith.com/encyclopedia/rawi/p-9825"
+"https://hdith.com/encyclopedia/rawi/p-9825",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=12027"
 ],
 "book_refs": [
 {
@@ -31690,7 +31670,8 @@
 ],
 "research_teachers": [
 "Thabit bin Anas bin Zuhayr al-Ansari",
-"Sa'da bint Thabit"
+"Sa'da bint Thabit",
+"Thabit ibn Anas ibn Zuhayr al-Ansari"
 ],
 "research_evidence": "بشير بن ثابت الأنصاري — الطبقة: السادسة — بشير بن ثابت ، وقيل: حسين بن ثابت",
 "dod": 753,
@@ -31705,7 +31686,19 @@
 "students_links": {
 "Ja'far bin Iyas (Abi Wahshiyya)": "arees-11419-ja-far-bin-iyas-abi-wahshiyya",
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
+},
+"merged_from": [
+"arees-12027-basheer-bin-thabit-al-ansari"
+],
+"also_listed_as": [
+{
+"slug": "arees-12027-basheer-bin-thabit-al-ansari",
+"name": "Basheer bin Thabit al-Ansari",
+"generation": "Follower(Tabi') [ 6th generation ]",
+"source": "https://hdith.com/encyclopedia/rawi/p-9825"
 }
+],
+"city": "Medina"
 },
 {
 "slug": "arees-14046-twbh-abu-sdqh-al-ansari",

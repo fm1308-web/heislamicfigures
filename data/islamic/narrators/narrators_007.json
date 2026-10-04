@@ -3593,7 +3593,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=20523",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=20523",
-"https://hadithtransmitters.hawramani.com/%D8%A7%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D8%A7%D9%84%D8%B9%D8%AF%D9%88%D9%8A/"
+"https://hadithtransmitters.hawramani.com/%D8%A7%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D8%A7%D9%84%D8%B9%D8%AF%D9%88%D9%8A/",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=22251",
+"https://www.taraajem.com/persons/118558/%D8%A3%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D9%85%D9%88%D9%84%D9%89-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%84%D9%87-%D8%A8%D9%86-%D8%B9%D9%85%D8%B1"
 ],
 "book_refs": [
 {
@@ -3617,7 +3619,7 @@
 "ref": "624"
 }
 ],
-"citations_in_chains": 5,
+"citations_in_chains": 9,
 "city": "Medina",
 "bio": "Abu Bakr bin Nafi' al-'Adawi was a Medinan narrator, a client (mawla) of Ibn 'Umar and a son of Nafi'. Ahmad ibn Hanbal, as transmitted by his son 'Abdullah, called him 'a Medinan from the most reliable of Nafi's children', though other transmitted assessments criticized him, and biographical literature shows some confusion with other narrators named Abu Bakr bin Nafi'.",
 "bio_full_source": "https://hadithtransmitters.hawramani.com/%D8%A7%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D8%A7%D9%84%D8%B9%D8%AF%D9%88%D9%8A/",
@@ -3635,7 +3637,30 @@
 "Salim bin 'Abdullah bin 'Umar": "F1251",
 "Abu Bakr bin Muhammad bin 'Amr bin Hazm": "arees-11239-abu-bakr-bin-muhammad-bin-amr-bin-hazm"
 },
-"students_links": {}
+"students_links": {},
+"merged_from": [
+"arees-22251-abu-bakr-bin-nafi-al-adwi"
+],
+"also_listed_as": [
+{
+"slug": "arees-22251-abu-bakr-bin-nafi-al-adwi",
+"name": "Abu Bakr bin Nafi' al-'Adwi",
+"generation": "Succ. (Taba' Tabi') [ 8th generation ]",
+"source": "https://www.taraajem.com/persons/118558/%D8%A3%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D9%85%D9%88%D9%84%D9%89-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%84%D9%87-%D8%A8%D9%86-%D8%B9%D9%85%D8%B1"
+}
+],
+"students": [
+"Abu 'Amir al-'Aqdi",
+"Sa'id bin 'Abd al-Jabbar al-karabaysi",
+"Qutayba bin Sa'id bin Jamil",
+"Muhammad bin al-Sbah bin Sufyan"
+],
+"research_teachers": [
+"Nafi' mawla Ibn 'Umar"
+],
+"research_students": [
+"Malik"
+]
 },
 {
 "slug": "arees-20625-abdur-rahman-bin-salman",
@@ -7706,7 +7731,9 @@
 ],
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=1798",
 "sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=1798"
+"http://muslimscholars.info/manage.php?submit=scholar&ID=1798",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=9976",
+"https://shamela.ws/book/9767/3523"
 ],
 "book_refs": [
 {
@@ -7755,7 +7782,20 @@
 "teachers_links": {},
 "students_links": {
 "al-Hakam bin Myna'a al-Ansari Mwlahm": "arees-11840-al-hakam-bin-myna-a-al-ansari-mwlahm"
+},
+"merged_from": [
+"arees-9976-yazid-bin-jaryh"
+],
+"also_listed_as": [
+{
+"slug": "arees-9976-yazid-bin-jaryh",
+"name": "Yazid bin Jaryh",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/3523"
 }
+],
+"bio": "Ibn Hajar's al-Isaba (entry 9454, in the fourth section for those wrongly listed as Companions) lists Yazid ibn Jariya as mentioned by Ibn Qani' and added by Ibn al-Dabbagh to Ibn Abd al-Barr's list. Ibn Hajar says Ibn al-Dabbagh erred, because Ibn Abd al-Barr had already listed him correctly under another name, and al-Baghawi, Ibn al-Sakan and al-Tabarani gave his lineage correctly. A separate first-section entry of the same name (9261-9262) also exists in al-Isaba. No death year is given.",
+"bio_full_source": "https://shamela.ws/book/9767/3523"
 },
 {
 "slug": "arees-1902-thabit-bin-al-dahhak-bin-khalifa",
@@ -8134,7 +8174,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=2280",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=2280",
-"https://hadithtransmitters.hawramani.com/%D8%AC%D8%A8%D9%84%D8%A9-%D8%A8%D9%86-%D8%AD%D8%A7%D8%B1%D8%AB%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D8%A8%D9%8A/"
+"https://hadithtransmitters.hawramani.com/%D8%AC%D8%A8%D9%84%D8%A9-%D8%A8%D9%86-%D8%AD%D8%A7%D8%B1%D8%AB%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D8%A8%D9%8A/",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=2180",
+"https://shamela.ws/book/3722/2011"
 ],
 "book_refs": [
 {
@@ -8158,7 +8200,7 @@
 "core_slug": "F1685",
 "core_famous": "Zayd ibn Harithah"
 },
-"citations_in_chains": 4,
+"citations_in_chains": 5,
 "bio": "The page identifies Jabala bin Haritha al-Kalbi as a Companion and the brother of Zayd bin Haritha, who came to the Prophet with his father Haritha. It states he was older than his brother Zayd, that his mother was from the tribe of Tayy, and that per Ibn 'Abd al-Barr, Abu Ishaq al-Sabi'i and Abu 'Amr al-Shaybani transmitted from him. No death year is given.",
 "bio_full_source": "https://hadithtransmitters.hawramani.com/%D8%AC%D8%A8%D9%84%D8%A9-%D8%A8%D9%86-%D8%AD%D8%A7%D8%B1%D8%AB%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D8%A8%D9%8A/",
 "classif": [
@@ -8166,7 +8208,9 @@
 ],
 "research_students": [
 "Abu Ishaq al-Sabi'i",
-"Abu 'Amr al-Shaybani"
+"Abu 'Amr al-Shaybani",
+"Abu 'Amr Sa'id bin Iyas al-Shaybani",
+"Farwa bin Nawfal"
 ],
 "research_evidence": "جَبَلَةُ بْنُ حَارِثَةَ الْكَلْبِيُّ أَخُو زَيْدِ بْنِ حَارِثَةَ",
 "dod": 680,
@@ -8179,7 +8223,25 @@
 "students_links": {
 "Sulaiman bin Abi Sulaiman": "arees-11352-sulaiman-bin-abi-sulaiman",
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
+},
+"merged_from": [
+"arees-2180-jabla-bin-harithah"
+],
+"also_listed_as": [
+{
+"slug": "arees-2180-jabla-bin-harithah",
+"name": "Jabla bin Harithah",
+"generation": "Comp.(RA) [ 1st Generation ]",
+"source": "https://shamela.ws/book/3722/2011"
 }
+],
+"teachers": [
+"Zayd ibn Harithah"
+],
+"research_teachers": [
+"the Prophet (peace be upon him)",
+"Zayd bin Haritha"
+]
 },
 {
 "slug": "arees-2750-umayma-bint-ruqayqa",
@@ -12987,14 +13049,16 @@
 "Talha bin 'Abdullah bin 'Awf"
 ],
 "research_evidence": "عبد الرحمن بن عمرو بن سهل ... الأنصاري، المدني ... هو ثقة معروف",
-"dod": 723,
-"_dodFromGeneration": true,
-"dod_s": "c. 723 CE (estimated from generation — no recorded date survives)",
-"dob": 658,
+"dod": 683,
+"dod_s": "Died at: Battle of al-Harra — 63 AH / c. 683 CE (year of the event)",
+"dob": 618,
 "_dobFromDod": true,
-"dob_s": "c. 658 CE (estimated)",
+"dob_s": "c. 618 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"death_date_hijri": 63,
+"_dodFromEvent": true,
+"death_event": "Battle of al-Harra"
 },
 {
 "slug": "arees-11528-umar-bin-abdullah-bin-al-arqam",
@@ -13042,7 +13106,7 @@
 "Subay'a bint al-Harith al-Aslamiyya": "arees-869-subay-a-bint-al-harith-al-aslamiyya"
 },
 "students_links": {
-"'Abdullah bin 'Utba": "arees-4145-abdullah-bin-utba",
+"'Abdullah bin 'Utba": "arees-16566-abdullah-bin-utba-bin-mas-ud",
 "'Ubaydullah bin 'Abdullah bin 'Utba": "arees-11004-ubaydullah-bin-abdullah-bin-utba"
 }
 },
@@ -30166,57 +30230,6 @@
 }
 },
 {
-"slug": "arees-20659-abdul-aziz-bin-al-rabi",
-"tier": "C",
-"arees_id": 20659,
-"famous": "'Abdul 'Aziz bin al-Rabi'",
-"type": "Narrator",
-"relations": [],
-"full": "'Abdul 'Aziz bin al-Rabi'",
-"full_name_ar": "عبد العزيز بن الربيع بن سبرة",
-"generation": "Succ. (Taba' Tabi') [ 7th generation ]",
-"students": [
-"Hrmlh bin Yahya bin",
-"'Abdullah bin Wahb",
-"Yahya bin Hsan",
-"Yahya bin Salah al-Wahadi"
-],
-"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=20659",
-"sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=20659"
-],
-"book_refs": [
-{
-"source": "Thiqat",
-"ref": "Vol:7"
-},
-{
-"source": "Tarikh-ul Kabir",
-"ref": ""
-},
-{
-"source": "Tahdheeb al-Tahdheeb",
-"ref": "Vol:6"
-},
-{
-"source": "Taqrib al-Tahdheeb",
-"ref": "356"
-}
-],
-"citations_in_chains": 4,
-"dod": 777,
-"_dodFromGeneration": true,
-"dod_s": "c. 777 CE (estimated from generation — no recorded date survives)",
-"dob": 712,
-"_dobFromDod": true,
-"dob_s": "c. 712 CE (estimated)",
-"teachers_links": {},
-"students_links": {
-"'Abdullah bin Wahb": "arees-20029-abdullah-bin-wahb",
-"Yahya bin Salah al-Wahadi": "arees-20470-yahya-bin-salah-al-wahadi"
-}
-},
-{
 "slug": "arees-20670-isa-bin-slym-al-hmsy",
 "tier": "C",
 "arees_id": 20670,
@@ -31382,70 +31395,6 @@
 "teachers_links": {},
 "students_links": {
 "Yahya bin al-Mutawakl": "arees-22233-yahya-bin-al-mutawakl"
-}
-},
-{
-"slug": "arees-22251-abu-bakr-bin-nafi-al-adwi",
-"tier": "C",
-"arees_id": 22251,
-"famous": "Abu Bakr bin Nafi' al-'Adwi",
-"type": "Narrator",
-"relations": [],
-"full": "Abu Bakr bin Nafi' al-'Adwi, the client of B.'Adi",
-"full_name_ar": "أبو بكر بن نافع العدوي",
-"kunya": "Abu Bakr",
-"generation": "Succ. (Taba' Tabi') [ 8th generation ]",
-"students": [
-"Abu 'Amir al-'Aqdi",
-"Sa'id bin 'Abd al-Jabbar al-karabaysi",
-"Qutayba bin Sa'id bin Jamil",
-"Muhammad bin al-Sbah bin Sufyan"
-],
-"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=22251",
-"sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=22251",
-"https://www.taraajem.com/persons/118558/%D8%A3%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D9%85%D9%88%D9%84%D9%89-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%84%D9%87-%D8%A8%D9%86-%D8%B9%D9%85%D8%B1"
-],
-"book_refs": [
-{
-"source": "Lisan al-Mizan",
-"ref": "Vol:7"
-},
-{
-"source": "Tahdheeb al-Tahdheeb",
-"ref": "Vol:12"
-},
-{
-"source": "Mezan al-A'tadal",
-"ref": "Vol:4"
-},
-{
-"source": "Taqrib al-Tahdheeb",
-"ref": "624"
-}
-],
-"citations_in_chains": 4,
-"bio": "Yahya bin Ma'in said of him 'laysa bihi ba's' (acceptable). Malik transmitted from him, which the compiler cites as evidence of reliability since Malik narrated only from trustworthy narrators. He transmitted hadiths through his father Nafi', the mawla of Abdullah bin Umar.",
-"bio_full_source": "https://www.taraajem.com/persons/118558/%D8%A3%D8%A8%D9%88-%D8%A8%D9%83%D8%B1-%D8%A8%D9%86-%D9%86%D8%A7%D9%81%D8%B9-%D9%85%D9%88%D9%84%D9%89-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%84%D9%87-%D8%A8%D9%86-%D8%B9%D9%85%D8%B1",
-"classif": [
-"hadith narrator"
-],
-"research_teachers": [
-"Nafi' mawla Ibn 'Umar"
-],
-"research_students": [
-"Malik"
-],
-"research_evidence": "أبو بكر بن نافع مولى عبد الله بن عمر",
-"dod": 796,
-"_dodFromGeneration": true,
-"dod_s": "c. 796 CE (estimated from generation — no recorded date survives)",
-"dob": 731,
-"_dobFromDod": true,
-"dob_s": "c. 731 CE (estimated)",
-"teachers_links": {},
-"students_links": {
-"Abu 'Amir al-'Aqdi": "arees-20443-abu-amir-al-aqdi"
 }
 },
 {
@@ -34484,7 +34433,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=1844",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=1844",
-"http://hadithtransmitters.hawramani.com/%D8%A7%D8%A8%D9%88-%D8%B3%D8%B9%D9%8A%D8%AF-%D8%A7%D9%84%D8%A7%D9%86%D8%B5%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D8%B2%D8%B1%D9%82%D9%8A/"
+"http://hadithtransmitters.hawramani.com/%D8%A7%D8%A8%D9%88-%D8%B3%D8%B9%D9%8A%D8%AF-%D8%A7%D9%84%D8%A7%D9%86%D8%B5%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D8%B2%D8%B1%D9%82%D9%8A/",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=5351",
+"https://shamela.ws/book/9767/3676"
 ],
 "book_refs": [
 {
@@ -34508,7 +34459,8 @@
 "hadith narrator"
 ],
 "research_students": [
-"Firas al-Sha'bani"
+"Firas al-Sha'bani",
+"Yunus ibn Maysara"
 ],
 "research_evidence": "أبو سعيد الأنصاري، الزرقي: توضأوا مما مست النار، روى عنه فراس الشعباني",
 "dod": 680,
@@ -34520,7 +34472,18 @@
 "teachers_links": {},
 "students_links": {
 "Yonus bin Maysra bin Halbus": "arees-19201-yonus-bin-maysra-bin-halbus"
+},
+"merged_from": [
+"arees-5351-abu-sa-id-al-zurqi"
+],
+"also_listed_as": [
+{
+"slug": "arees-5351-abu-sa-id-al-zurqi",
+"name": "Abu Sa'id al-Zurqi",
+"generation": "Comp.(RA) [ 1st Generation ]",
+"source": "https://shamela.ws/book/9767/3676"
 }
+]
 },
 {
 "slug": "arees-1875-fatima-bint-al-yaman",
