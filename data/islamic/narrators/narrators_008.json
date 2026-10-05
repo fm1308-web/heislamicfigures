@@ -58,7 +58,11 @@
 },
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 15400 at muslimscholars.info."
 },
 {
 "slug": "arees-19090-nfy-mkatb-umm-salmah",
@@ -109,7 +113,11 @@
 },
 "students_links": {
 "Sa'id ibn al-Musayyib": "F1213"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19090 at muslimscholars.info."
 },
 {
 "slug": "arees-19374-abu-muslim-al-bjly",
@@ -169,7 +177,11 @@
 },
 "students_links": {
 "Da'ud al-Tfawy": "arees-23740-da-ud-al-tfawy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19374 at muslimscholars.info."
 },
 {
 "slug": "arees-3183-umm-subayya-al-juhayniyya",
@@ -243,7 +255,10 @@
 "teachers_links": {},
 "students_links": {
 "Sawda bint Abi Dubays al-Juhayniyya": "arees-3184-sawda-bint-abi-dubays-al-juhayniyya"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-3214-aus-bin-aus-al-thaqafi",
@@ -258,9 +273,9 @@
 "death_date_hijri": 63,
 "hadith_narrations_count": 6,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -308,7 +323,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 618 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 6,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 6 hadith across 3 collections (Abu Dawud, Tirmidhi, Ibn Majah). Listed among the Companions. Death year recorded as 63 AH. Entry 3214 at muslimscholars.info."
 },
 {
 "slug": "arees-3256-amr-bin-ghilan-al-thaqafi",
@@ -372,7 +390,10 @@
 "teachers_links": {
 "ibn Mas'ud": "F0082"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-3600-al-nawas-bin-sam-an-al-kalabi",
@@ -390,10 +411,10 @@
 ],
 "hadith_narrations_count": 10,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Muslim",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -473,7 +494,9 @@
 "students_links": {
 "Abu Idrees al-Khulani": "arees-11027-abu-idrees-al-khulani",
 "Jubayr bin Nufayr al-Hadrami": "arees-4097-jubayr-bin-nufayr-al-hadrami"
-}
+},
+"hadith_chain_count": 10,
+"hadith_narrated_count": 9
 },
 {
 "slug": "arees-3681-abu-uzra-bin-shahab",
@@ -517,7 +540,11 @@
 "teachers_links": {},
 "students_links": {
 "Tariq bin Shahab": "arees-3680-tariq-bin-shahab"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 3681 at muslimscholars.info."
 },
 {
 "slug": "arees-3691-ma-n-bin-yazid-bin-al-akhnas",
@@ -536,9 +563,7 @@
 "S'hyl bin Dhra' Abu"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Sahih Bukhari"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Sahih Bukhari",
@@ -606,7 +631,9 @@
 "students_links": {
 "Hatan bin Khafaf Abu al-Jwariyya": "arees-11685-hatan-bin-khafaf-abu-al-jwariyya",
 "S'hyl bin Dhra' Abu": "arees-15219-s-hyl-bin-dhra-abu"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-4024-buhaysa-al-fazariyya",
@@ -680,7 +707,10 @@
 },
 "students_links": {
 "Siyar bin Manzur bin Siyar": "arees-14174-siyar-bin-manzur-bin-siyar"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-4051-abu-rafa-a-al-advi",
@@ -774,7 +804,10 @@
 "teachers_links": {},
 "students_links": {
 "Hameed bin Hilal": "arees-11281-hameed-bin-hilal"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-4063-abaydh-bin-hammal",
@@ -843,7 +876,10 @@
 "students_links": {
 "Sa'id bin 'Ubaid bin Hamal": "arees-18348-sa-id-bin-ubaid-bin-hamal",
 "Shmyr bin Abd al-Mdan": "arees-18423-shmyr-bin-abd-al-mdan"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-4069-al-aswad-bin-sari",
@@ -902,7 +938,11 @@
 "students_links": {
 "al-Ahnaf bin Qays": "arees-11112-al-ahnaf-bin-qays",
 "'Abdur Rahman bin Abi Bakra": "arees-11294-abdur-rahman-bin-abi-bakra"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 42 AH. Entry 4069 at muslimscholars.info."
 },
 {
 "slug": "arees-4081-bashr-bin-sahaym",
@@ -924,8 +964,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -971,7 +1011,10 @@
 "teachers_links": {
 "Ali ibn Abi Talib": "F0366"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 2 hadith across 2 collections (Ibn Majah, Nasa'i). Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 4081 at muslimscholars.info."
 },
 {
 "slug": "arees-4091-bilal-bin-al-harith-al-mazni",
@@ -996,7 +1039,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -1056,7 +1099,9 @@
 "'Umar ibn al-Khattab": "F1433",
 "ibn Mas'ud": "F0082"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-4102-al-harith-bin-al-harith-al-ash-ry",
@@ -1112,7 +1157,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-4111-hiban-bin-zayd-al-shr-by",
@@ -1139,7 +1187,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -1197,7 +1245,9 @@
 "teachers_links": {},
 "students_links": {
 "Huraiz bin 'Uthman bin Jabir": "arees-11684-huraiz-bin-uthman-bin-jabir"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-4133-tha-lba-bin-al-hakam",
@@ -1220,7 +1270,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -1264,7 +1314,10 @@
 "teachers_links": {
 "ibn Abbas": "F0078"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Ibn Majah). Listed among the Companions. Death year recorded as 80 AH. Entry 4133 at muslimscholars.info."
 },
 {
 "slug": "arees-5002-tha-laba-bin-zahdam-al-hanzali",
@@ -1287,8 +1340,8 @@
 ],
 "hadith_narrations_count": 6,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -1351,7 +1404,9 @@
 "ibn Mas'ud": "F0082",
 "Abu Hudhayfah ibn 'Utbah": "F0127"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 6,
+"hadith_narrated_count": 6
 },
 {
 "slug": "arees-5048-saba-bin-thabit",
@@ -1370,10 +1425,10 @@
 ],
 "hadith_narrations_count": 7,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -1449,7 +1504,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 7,
+"hadith_narrated_count": 5
 },
 {
 "slug": "arees-5049-sbrh-bin-al-fak-h",
@@ -1502,7 +1559,10 @@
 "teachers_links": {},
 "students_links": {
 "'Ammara bin Khuzayma bin Thabit": "arees-19817-ammara-bin-khuzayma-bin-thabit"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5057-sa-d-bin-damayra",
@@ -1557,7 +1617,10 @@
 "teachers_links": {},
 "students_links": {
 "Ziyad / Zayd bin Sa'd bin Damayra": "arees-18310-ziyad-zayd-bin-sa-d-bin-damayra"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5067-salman-bin-rabi-ya-bin-yazid",
@@ -1572,7 +1635,7 @@
 "generation": "Comp.(RA) [ 1st Generation ]",
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -1629,7 +1692,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-5070-salmah-bin-qays-al-ashj-y",
@@ -1647,9 +1712,9 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -1721,7 +1786,9 @@
 "students_links": {
 "Hilal bin Yasaf": "arees-10835-hilal-bin-yasaf",
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
-}
+},
+"hadith_chain_count": 4,
+"hadith_narrated_count": 4
 },
 {
 "slug": "arees-5078-sinan-bin-sunnah-al-aslami",
@@ -1793,7 +1860,10 @@
 "teachers_links": {},
 "students_links": {
 "Hkym bin Abi Hrh al-Aslmy": "arees-11687-hkym-bin-abi-hrh-al-aslmy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5089-sakhar-bin-al-ayla-bin-abdullah",
@@ -1853,7 +1923,10 @@
 "teachers_links": {},
 "students_links": {
 "Abu Hazam bin Sakhar bin al-Ayla": "arees-19235-abu-hazam-bin-sakhar-bin-al-ayla"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5097-damayra-al-aslami",
@@ -1902,7 +1975,11 @@
 "students_links": {
 "Sa'd bin Damayra": "arees-5057-sa-d-bin-damayra",
 "Ziyad / Zayd bin Sa'd bin Damayra": "arees-18310-ziyad-zayd-bin-sa-d-bin-damayra"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 5097 at muslimscholars.info."
 },
 {
 "slug": "arees-5110-aabad-bin-shyban-al-ansari",
@@ -1920,7 +1997,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -1966,7 +2043,9 @@
 "students_links": {
 "Shyban Abu Yahya al-Ansari": "arees-6895-shyban-abu-yahya-al-ansari",
 "Yahya bin 'Aabad bin Shayban": "arees-10840-yahya-bin-aabad-bin-shayban"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-5131-abdullah-bin-ady",
@@ -1984,7 +2063,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -2037,7 +2116,9 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Jubayr bin Mut'im": "arees-11058-muhammad-bin-jubayr-bin-mut-im"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-5149-abdur-rahman-bin-aa-ish",
@@ -2110,7 +2191,10 @@
 "Khalid bin al-Lajlaj al-Amiri": "arees-18248-khalid-bin-al-lajlaj-al-amiri",
 "Mamtur Abu Salam al-Aswad": "arees-10968-mamtur-abu-salam-al-aswad",
 "Rabi'a bin Yazid al-Damashqi": "arees-11414-rabi-a-bin-yazid-al-damashqi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5162-ubaidullah-bin-muslim",
@@ -2128,7 +2212,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -2162,7 +2246,10 @@
 "students_links": {
 "Qays bin Muslim al-Jadli": "arees-11386-qays-bin-muslim-al-jadli",
 "Yahya bin 'Ubaidullah bin Muhab": "arees-12580-yahya-bin-ubaidullah-bin-muhab"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Ibn Majah). Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 5162 at muslimscholars.info."
 },
 {
 "slug": "arees-5238-qurrah-bin-iyas",
@@ -2186,10 +2273,10 @@
 ],
 "hadith_narrations_count": 9,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -2259,7 +2346,9 @@
 "teachers_links": {},
 "students_links": {
 "Mua'wiya bin Qurrah bin Iyas": "arees-11306-mua-wiya-bin-qurrah-bin-iyas"
-}
+},
+"hadith_chain_count": 8,
+"hadith_narrated_count": 8
 },
 {
 "slug": "arees-5239-qutba-bin-malik-al-tha-labi",
@@ -2335,7 +2424,10 @@
 },
 "students_links": {
 "Ziyad bin 'Alaqa": "arees-11339-ziyad-bin-alaqa"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5249-kathir-bin-al-sa-ib",
@@ -2353,7 +2445,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -2417,7 +2509,9 @@
 "teachers_links": {},
 "students_links": {
 "Ibn Ishaq": "F0739"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-5257-lajlaj-al-amari",
@@ -2503,7 +2597,10 @@
 "students_links": {
 "Khalid bin al-Lajlaj al-Amiri": "arees-18248-khalid-bin-al-lajlaj-al-amiri",
 "al-'Ala' bin al-Ljlaj": "arees-17050-al-ala-bin-al-ljlaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5273-mjald-bin-mas-ud-al-slmy",
@@ -2528,7 +2625,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Bukhari"
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -2600,7 +2697,9 @@
 "teachers_links": {},
 "students_links": {
 "Abu 'Uthman al-Nahdi": "arees-11113-abu-uthman-al-nahdi"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-5301-mu-awiya-bin-hayda-bin-mu-awiya",
@@ -2670,7 +2769,10 @@
 "teachers_links": {},
 "students_links": {
 "'Urwa bin Ruwaym al-Lakhmi": "arees-18724-urwa-bin-ruwaym-al-lakhmi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5310-nabaysha-al-hadhli",
@@ -2694,8 +2796,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -2761,7 +2863,9 @@
 "teachers_links": {},
 "students_links": {
 "Abu al-Malih ('Amir) bin Usama": "arees-11453-abu-al-malih-amir-bin-usama"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-5315-nqad-h-bin-abdullah-bin-khlf",
@@ -2821,7 +2925,11 @@
 "teachers_links": {},
 "students_links": {
 "al-Bra'a al-Slyty": "arees-18072-al-bra-a-al-slyty"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 5315 at muslimscholars.info."
 },
 {
 "slug": "arees-5329-yazid-bin-salmah-bin-yazid",
@@ -2885,7 +2993,10 @@
 "students_links": {
 "Wa'il bin Hujr al-Kundi al-Hadrami": "arees-3045-wa-il-bin-hujr-al-kundi-al-hadrami",
 "'Alqama bin Wa'il bin Hjr": "arees-10801-alqama-bin-wa-il-bin-hjr"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-5363-abu-abdur-rahman-al-juhni",
@@ -2910,7 +3021,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -2951,7 +3062,10 @@
 "teachers_links": {},
 "students_links": {
 "Marthad bin 'Abdullah al-Yazni": "arees-11410-marthad-bin-abdullah-al-yazni"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Ibn Majah). Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 5363 at muslimscholars.info."
 },
 {
 "slug": "arees-5395-umm-y-aqub",
@@ -3000,7 +3114,11 @@
 },
 "students_links": {
 "'Abdur Rahman bin 'Abis al-Nakha'i": "arees-11638-abdur-rahman-bin-abis-al-nakha-i"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 5395 at muslimscholars.info."
 },
 {
 "slug": "arees-10583-umar-bin-uthman",
@@ -3070,7 +3188,11 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 10583 at muslimscholars.info."
 },
 {
 "slug": "arees-10618-musa-bin-abi-tmym",
@@ -3094,8 +3216,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -3154,7 +3276,9 @@
 "teachers_links": {},
 "students_links": {
 "Sulaiman bin Bilal al-Taymi": "arees-20160-sulaiman-bin-bilal-al-taymi"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10626-yazid-bin-abi-sa-id",
@@ -3228,7 +3352,10 @@
 "teachers_links": {
 "'Umar bin ‘Abdul-‘Aziz": "arees-12392-umar-bin-abdul-aziz"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-10645-abdur-rahman-bin-aymn",
@@ -3289,7 +3416,11 @@
 "ibn Umar": "F0024",
 "Abu Sa'id al-Khudri": "F0151"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 10645 at muslimscholars.info."
 },
 {
 "slug": "arees-10687-swad-h-bin-hnzlh",
@@ -3308,9 +3439,9 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"al-tirmidhi",
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -3379,7 +3510,9 @@
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj",
 "Muhammad bin Sulaym": "arees-19857-muhammad-bin-sulaym",
 "Hmam bin Yahya bin Dinar": "arees-20297-hmam-bin-yahya-bin-dinar"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10699-abdullah-bin-yazid-rdy",
@@ -3404,8 +3537,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -3479,7 +3612,9 @@
 },
 "students_links": {
 "Abu Qalaba, 'Abdullah bin Zayd al-Jarmi": "arees-11047-abu-qalaba-abdullah-bin-zayd-al-jarmi"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10717-muslim-bin-abi-bakra",
@@ -3534,7 +3669,11 @@
 "teachers_links": {
 "Abu Bakra al-Thaqafi": "arees-3229-abu-bakra-al-thaqafi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. Death year recorded as 90 AH. Entry 10717 at muslimscholars.info."
 },
 {
 "slug": "arees-10718-muslim-bin-mukhraq-al-abdi",
@@ -3557,7 +3696,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -3641,7 +3780,9 @@
 "teachers_links": {},
 "students_links": {
 "Swad'h bin Abi al-Aswad al-Qatan": "arees-20549-swad-h-bin-abi-al-aswad-al-qatan"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10723-musa-bin-salmah-bin-al-mahbaq",
@@ -3720,7 +3861,10 @@
 },
 "students_links": {
 "Yazid bin Hameed, Abu Tiyah": "arees-11317-yazid-bin-hameed-abu-tiyah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-10733-abu-asam-al-mazni",
@@ -3775,7 +3919,11 @@
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj",
 "'Abdul Warith bin Sa'id bin Dhakwan": "arees-20258-abdul-warith-bin-sa-id-bin-dhakwan"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 10733 at muslimscholars.info."
 },
 {
 "slug": "arees-10779-amir-bin-abda",
@@ -3801,7 +3949,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -3872,7 +4020,9 @@
 },
 "students_links": {
 "al-Musayb bin Rafa'i al-Asadi": "arees-11394-al-musayb-bin-rafa-i-al-asadi"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10800-uqba-bin-hryth-al-tghlby",
@@ -3899,8 +4049,8 @@
 ],
 "hadith_narrations_count": 5,
 "hadith_source_collections": [
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -3961,7 +4111,9 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 5,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10827-mus-ab-bin-slym-al-asady",
@@ -3975,8 +4127,8 @@
 "generation": "Follower(Tabi') [ 5th generation ]",
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sahih Muslim",
-"Sunan Abi Da'ud"
+"abu-dawood",
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -4020,7 +4172,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 3 hadith across 2 collections (Abu Dawud, Muslim). Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 10827 at muslimscholars.info."
 },
 {
 "slug": "arees-10829-al-mughira-bin-abdullah",
@@ -4040,7 +4195,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -4100,7 +4255,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10836-al-walid-bin-hrb-al-ash-ry",
@@ -4126,9 +4283,7 @@
 "arees-10836-al-walid-bin-hrb-al-ash-ry"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Sahih Muslim"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Sahih Muslim",
@@ -4185,7 +4340,9 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10847-abu-bakr-bin-umara",
@@ -4250,7 +4407,10 @@
 "teachers_links": {
 "'Ammarah bin Ruwaybah": "arees-5196-ammarah-bin-ruwaybah"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-10907-khalid-bin-ghlaq",
@@ -4336,7 +4496,10 @@
 "students_links": {
 "Sa'id bin Iyas al-Jariri": "arees-11286-sa-id-bin-iyas-al-jariri",
 "Durayb bin Nufayr, Abu al-Salayl al-Qays": "arees-10922-durayb-bin-nufayr-abu-al-salayl-al-qays"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-10931-abdullah-bin-abdullah-bin-al-asm",
@@ -4360,7 +4523,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -4408,7 +4571,9 @@
 "teachers_links": {
 "Yazid bin al-Asm": "arees-10842-yazid-bin-al-asm"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10946-ubaidullah-bin-abdullah-bin-al-asm",
@@ -4431,9 +4596,9 @@
 ],
 "hadith_narrations_count": 6,
 "hadith_source_collections": [
-"Sahih Muslim",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"ibn-e-majah",
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -4498,7 +4663,9 @@
 "teachers_links": {
 "Yazid bin al-Asm": "arees-10842-yazid-bin-al-asm"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 5,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10953-amr-bin-muslim-al-jndy",
@@ -4518,11 +4685,10 @@
 ],
 "hadith_narrations_count": 8,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Muslim",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"ibn-e-majah",
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -4609,7 +4775,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 6,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-10963-muslim-bin-qrzh",
@@ -4635,7 +4803,7 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -4703,7 +4871,9 @@
 },
 "students_links": {
 "Rabi'a bin Yazid al-Damashqi": "arees-11414-rabi-a-bin-yazid-al-damashqi"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-11502-husayn-bin-muhammad-al-ansari",
@@ -4769,7 +4939,10 @@
 "teachers_links": {},
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11512-talha-bin-abdullah",
@@ -4843,7 +5016,10 @@
 },
 "students_links": {
 "Abu 'Imran al-Jauni": "arees-11296-abu-imran-al-jauni"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11561-ubaid-bin-abi-maryam",
@@ -4923,7 +5099,10 @@
 },
 "students_links": {
 "'Abdullah bin 'Ubaidullah b. Abi Mulayka": "arees-11090-abdullah-bin-ubaidullah-b-abi-mulayka"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11635-abdullah-bin-sa-id-bin-jubayr",
@@ -4949,10 +5128,10 @@
 ],
 "hadith_narrations_count": 7,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Bukhari",
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"al-tirmidhi",
+"sahih-bukhari",
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -5029,7 +5208,9 @@
 "teachers_links": {
 "Sa'id bin Jubayr": "F1992"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 6,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-11639-abdul-malik-bin-sa-id",
@@ -5100,7 +5281,10 @@
 "teachers_links": {
 "Sa'id bin Jubayr": "F1992"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11680-jwyryh-bin-qdamh",
@@ -5125,7 +5309,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Bukhari"
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -5174,7 +5358,9 @@
 },
 "students_links": {
 "Nasr bin 'Imran bin Isam": "arees-11309-nasr-bin-imran-bin-isam"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-11691-salm-bin-ajlan-al-aftas",
@@ -5199,8 +5385,8 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Sahih Bukhari",
-"Sunan Ibn Majah"
+"ibn-e-majah",
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -5264,7 +5450,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 685 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 4,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-11712-umar-bin-muhammad-bin-jbyr",
@@ -5290,7 +5478,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sahih Bukhari"
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -5349,7 +5537,9 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-11726-nubhan-abu-salah-al-madni",
@@ -5415,7 +5605,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11734-hind-bint-al-harith-al-farasiyya",
@@ -5440,11 +5633,11 @@
 ],
 "hadith_narrations_count": 15,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Bukhari",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sahih-bukhari",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -5523,7 +5716,9 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 14,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-11815-umar-bin-abdullah-ibn-umar",
@@ -5589,7 +5784,10 @@
 "ibn Umar": "F0024",
 "'Umar ibn al-Khattab": "F1433"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11838-habib-al-a-wr-al-madni-mwla",
@@ -5654,7 +5852,10 @@
 "students_links": {
 "al-Zuhri": "F1995",
 "al-Dahhak bin 'Uthman bin 'Abdullah": "arees-20504-al-dahhak-bin-uthman-bin-abdullah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11843-khbab-al-madni-sahb-al-mqswrh",
@@ -5720,7 +5921,10 @@
 },
 "students_links": {
 "'Amir bin Sa'd ibn Abi Waqqas": "arees-10554-amir-bin-sa-d-ibn-abi-waqqas"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11849-rabi-ya-bin-ata-a-al-zhry",
@@ -5794,7 +5998,10 @@
 },
 "students_links": {
 "Bukayr bin 'Abdullah bin al-Ashj": "arees-11154-bukayr-bin-abdullah-bin-al-ashj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11892-ata-a-bin-y-aqub-al-madni",
@@ -5870,7 +6077,10 @@
 "students_links": {
 "al-Zuhri": "F1995",
 "Muhammad bin Muslim bin Tadras": "arees-11263-muhammad-bin-muslim-bin-tadras"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-11895-umar-bin-ishaq-al-madni",
@@ -5893,8 +6103,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Muslim"
+"al-tirmidhi",
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -5956,7 +6166,9 @@
 "students_links": {
 "Hameed bin Ziyad": "arees-11841-hameed-bin-ziyad",
 "Usamah bin Zayd al-Lythy": "arees-20500-usamah-bin-zayd-al-lythy"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-12013-isma-il-bin-basheer",
@@ -5976,7 +6188,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -6035,7 +6247,9 @@
 },
 "students_links": {
 "Yahya bin Sulaym bin Zayd": "arees-19147-yahya-bin-sulaym-bin-zayd"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-12015-isma-il-bin-abdullah-bin-abi-talha",
@@ -6109,7 +6323,10 @@
 "'Abdullah bin Abi Talha": "F0044",
 "Anas bin Malik": "F0440"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12019-asha-th-bin-ishaq-bin-sa-d-b-abi-waqqas",
@@ -6192,7 +6409,10 @@
 "students_links": {
 "'Abdur Rahman bin Harmaz al-A'araj": "arees-11197-abdur-rahman-bin-harmaz-al-a-araj",
 "Muhammad bin 'Amr bin 'Alqama": "arees-11220-muhammad-bin-amr-bin-alqama"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12023-ayoub-bin-habib-al-zhry",
@@ -6246,7 +6466,11 @@
 "teachers_links": {},
 "students_links": {
 "Falayh bin Suliaman": "arees-20169-falayh-bin-suliaman"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 131 AH. Entry 12023 at muslimscholars.info."
 },
 {
 "slug": "arees-12055-al-husain-bin-al-sa-ib-bin-aby",
@@ -6312,7 +6536,10 @@
 "teachers_links": {},
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12089-rafa-i-bin-ishaq",
@@ -6338,7 +6565,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -6402,7 +6629,9 @@
 },
 "students_links": {
 "Ishaq bin 'Abdullah bin Abi Talha": "arees-11151-ishaq-bin-abdullah-bin-abi-talha"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-12112-zayd-bin-al-hasan-bin-ali",
@@ -6485,7 +6714,10 @@
 "ibn Abbas": "F0078",
 "Jabir ibn 'Abdullah": "F0808"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12130-sa-id-bin-ziyad-al-ansari",
@@ -6551,7 +6783,10 @@
 },
 "students_links": {
 "Sa'id bin Abi Hilal": "arees-11169-sa-id-bin-abi-hilal"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12132-sa-id-bin-abi-sa-id",
@@ -6611,7 +6846,10 @@
 },
 "students_links": {
 "Musa bin 'Ubaida bin Nashayt": "arees-12527-musa-bin-ubaida-bin-nashayt"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12139-sa-id-bin-uthman-al-blwy",
@@ -6685,7 +6923,10 @@
 },
 "students_links": {
 "'Isa bin Yonus bin Abi Ishaq": "arees-20347-isa-bin-yonus-bin-abi-ishaq"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12152-salmah-bin-abdullah-ubaidullah",
@@ -6750,7 +6991,10 @@
 "teachers_links": {
 "'Abdullah/'Ubaidullah bin Muhsin": "arees-5139-abdullah-ubaidullah-bin-muhsin"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12157-sulaiman-bin-al-jhm-bin-aby",
@@ -6813,7 +7057,10 @@
 "teachers_links": {},
 "students_links": {
 "Matruf bin Tarayf al-Harithi": "arees-11395-matruf-bin-tarayf-al-harithi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12158-sulaiman-bin-kharjh-bin-zayd",
@@ -6874,7 +7121,11 @@
 "teachers_links": {},
 "students_links": {
 "al-Walid bin Abi al-Walid": "arees-10623-al-walid-bin-abi-al-walid"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12158 at muslimscholars.info."
 },
 {
 "slug": "arees-12169-shdad-bin-abi-amr",
@@ -6898,7 +7149,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -6948,7 +7199,9 @@
 "teachers_links": {},
 "students_links": {
 "Abu al-Yaman al-Rahal al-Madni": "arees-22261-abu-al-yaman-al-rahal-al-madni"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-12179-salah-bin-dinar-al-tamar-al-madni",
@@ -7013,7 +7266,11 @@
 },
 "students_links": {
 "Da'ud bin Salah bin Dinar al-Tamar": "arees-12083-da-ud-bin-salah-bin-dinar-al-tamar"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12179 at muslimscholars.info."
 },
 {
 "slug": "arees-12180-salah-bin-rabi-ya-bin-al-hdyr",
@@ -7038,7 +7295,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -7079,7 +7336,10 @@
 "teachers_links": {
 "'Aisha bint Abi Bakr": "F0199"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Abu Dawud). Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12180 at muslimscholars.info."
 },
 {
 "slug": "arees-12228-abdullah-bin-abdur-rahman-bin-azhar",
@@ -7134,7 +7394,11 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 12228 at muslimscholars.info."
 },
 {
 "slug": "arees-12231-abdullah-bin-abdur-rahman-b-abd-qari",
@@ -7185,7 +7449,11 @@
 "teachers_links": {
 "'Umar ibn al-Khattab": "F1433"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 12231 at muslimscholars.info."
 },
 {
 "slug": "arees-12254-abdullah-bin-mknf",
@@ -7240,7 +7508,11 @@
 "students_links": {
 "Ibn Ishaq": "F0739",
 "al-Mswr bin Rfa'h bin Aby": "arees-19000-al-mswr-bin-rfa-h-bin-aby"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12254 at muslimscholars.info."
 },
 {
 "slug": "arees-12311-abdul-aziz-bin-abd-bin-abdullah",
@@ -7307,7 +7579,11 @@
 },
 "students_links": {
 "'Abdullah bin 'Abdul 'Aziz bin 'Abdullah": "arees-22100-abdullah-bin-abdul-aziz-bin-abdullah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12311 at muslimscholars.info."
 },
 {
 "slug": "arees-12316-abdul-malik-bin-amr",
@@ -7375,7 +7651,10 @@
 "teachers_links": {
 "Hrmy bin 'Abdullah": "arees-19107-hrmy-bin-abdullah"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12337-ubaid-bin-nastas-al-madni",
@@ -7427,7 +7706,11 @@
 "students_links": {
 "Usamah bin Zayd al-Lythy": "arees-20500-usamah-bin-zayd-al-lythy",
 "Sa'id bin Muslim bin Bank": "arees-12143-sa-id-bin-muslim-bin-bank"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12337 at muslimscholars.info."
 },
 {
 "slug": "arees-12387-umar-bin-khld-h",
@@ -7491,7 +7774,11 @@
 "students_links": {
 "Abu al-Ma'tmr bin 'Amr": "arees-12642-abu-al-ma-tmr-bin-amr",
 "Rabi'ya bin Abi 'Abdur Rahman (Farrukh)": "arees-11162-rabi-ya-bin-abi-abdur-rahman-farrukh"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 12387 at muslimscholars.info."
 },
 {
 "slug": "arees-12451-muhammad-bin-jabir-bin-abdullah",
@@ -7551,7 +7838,11 @@
 "teachers_links": {
 "Jabir ibn 'Abdullah": "F0808"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12451 at muslimscholars.info."
 },
 {
 "slug": "arees-12460-muhammad-bin-sulaiman-bin-abi-hathma",
@@ -7606,7 +7897,11 @@
 "students_links": {
 "Ibn Ishaq": "F0739",
 "Hajjaj bin Artah": "arees-20580-hajjaj-bin-artah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12460 at muslimscholars.info."
 },
 {
 "slug": "arees-12484-muhammad-bin-abi-muhammad",
@@ -7657,7 +7952,11 @@
 },
 "students_links": {
 "Ibn Ishaq": "F0739"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12484 at muslimscholars.info."
 },
 {
 "slug": "arees-12486-muhammad-bin-muslim-bin-aa-idh",
@@ -7741,7 +8040,10 @@
 },
 "students_links": {
 "Suhayl bin Abi Salah": "arees-11173-suhayl-bin-abi-salah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12532-musa-bin-muhammad-bin-ibrahim",
@@ -7763,8 +8065,8 @@
 ],
 "hadith_narrations_count": 5,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -7821,7 +8123,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 703 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 4,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-12549-nhar-bin-abdullah",
@@ -7888,7 +8192,11 @@
 "students_links": {
 "'Abdullah bin 'Abdur Rahman bin Ma'mar": "arees-11186-abdullah-bin-abdur-rahman-bin-ma-mar",
 "Muhammad bin Yahya bin Hiban": "arees-11222-muhammad-bin-yahya-bin-hiban"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12549 at muslimscholars.info."
 },
 {
 "slug": "arees-12552-nawful-bin-masahiq-bin-abdullah",
@@ -7909,7 +8217,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -7963,7 +8271,10 @@
 },
 "students_links": {
 "'Abdul Malik bin Nawful": "arees-12319-abdul-malik-bin-nawful"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Abu Dawud). A narrator of the 3rd Islamic century. Death year recorded as 70 AH. Entry 12552 at muslimscholars.info."
 },
 {
 "slug": "arees-12561-hilal-bin-abi-hilal-al-madni",
@@ -8041,7 +8352,10 @@
 },
 "students_links": {
 "Muhammad bin Hilal bin Aby": "arees-12489-muhammad-bin-hilal-bin-aby"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12576-yahya-bin-abi-salah",
@@ -8104,7 +8418,11 @@
 },
 "students_links": {
 "al-Khlyl bin Mrh al-Db'y": "arees-24121-al-khlyl-bin-mrh-al-db-y"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12576 at muslimscholars.info."
 },
 {
 "slug": "arees-12607-yusuf-bin-mas-ud-bin-al-hakam",
@@ -8166,7 +8484,11 @@
 "teachers_links": {},
 "students_links": {
 "'Ubaidullah bin 'Umar bin Hafs": "arees-11201-ubaidullah-bin-umar-bin-hafs"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 12607 at muslimscholars.info."
 },
 {
 "slug": "arees-12637-abu-al-mthna-al-jhny-al-madni",
@@ -8239,7 +8561,10 @@
 "students_links": {
 "Ayoub bin Habib al-Zhry": "arees-12023-ayoub-bin-habib-al-zhry",
 "Muhammad bin Abi Yahya": "arees-12491-muhammad-bin-abi-yahya"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12642-abu-al-ma-tmr-bin-amr",
@@ -8311,7 +8636,10 @@
 },
 "students_links": {
 "Muhammad bin 'Abdur Rahman b. Abi Dh'ab": "arees-20177-muhammad-bin-abdur-rahman-b-abi-dh-ab"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-12736-ziyad-bin-abdullah-bin-zayd",
@@ -8364,7 +8692,11 @@
 },
 "students_links": {
 "Kathir bin Ja'far bin Abi Kathir": "arees-23595-kathir-bin-ja-far-bin-abi-kathir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12736 at muslimscholars.info."
 },
 {
 "slug": "arees-12739-s-aid-bin-qays-bin-qahd",
@@ -8384,7 +8716,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -8425,7 +8757,10 @@
 "teachers_links": {
 "Qays bin Qahd": "arees-1219-qays-bin-qahd"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Ibn Majah). Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12739 at muslimscholars.info."
 },
 {
 "slug": "arees-12780-syfa-abu-ziyad-mwla-aflah",
@@ -8440,8 +8775,8 @@
 "generation": "Follower(Tabi')",
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -8498,7 +8833,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 672 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-12894-alaqah-bin-abdullah-bin-zayd",
@@ -8551,7 +8888,11 @@
 },
 "students_links": {
 "Kathir bin Ja'far bin Abi Kathir": "arees-23595-kathir-bin-ja-far-bin-abi-kathir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12894 at muslimscholars.info."
 },
 {
 "slug": "arees-12903-muhammad-bin-ali-bin-abdullah",
@@ -8608,7 +8949,11 @@
 "ibn Abbas": "F0078",
 "'Aisha bint Abi Bakr": "F0199"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12903 at muslimscholars.info."
 },
 {
 "slug": "arees-12952-yahya-bin-sahl-bin-abi-hathama",
@@ -8679,7 +9024,10 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Yahya bin Sahl": "arees-12917-muhammad-bin-yahya-bin-sahl"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-13069-abdur-rahman-bin-alqama",
@@ -8736,7 +9084,11 @@
 "ibn Abbas": "F0078",
 "ibn Umar": "F0024"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13069 at muslimscholars.info."
 },
 {
 "slug": "arees-13085-atab-bin-hnyn",
@@ -8754,7 +9106,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -8811,7 +9163,9 @@
 "teachers_links": {},
 "students_links": {
 "Yahya bin 'Abdullah bin Muhammad": "arees-11448-yahya-bin-abdullah-bin-muhammad"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-13127-nafid-abu-ma-bad-client-of-ibn-abbas",
@@ -8835,12 +9189,12 @@
 ],
 "hadith_narrations_count": 32,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Bukhari",
-"Sahih Muslim",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sahih-bukhari",
+"sahih-muslim",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -8929,7 +9283,9 @@
 "teachers_links": {
 "ibn Abbas": "F0078"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 30,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-13371-ya-fur-bin-al-mughira-bin-shu-ba",
@@ -8992,7 +9348,11 @@
 },
 "students_links": {
 "Isma'il bin 'Abdur Rahman al-Saddi": "arees-10743-isma-il-bin-abdur-rahman-al-saddi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13371 at muslimscholars.info."
 },
 {
 "slug": "arees-13510-rdad-al-lythy-wqal-b-d-hm-abu",
@@ -9064,7 +9424,10 @@
 "teachers_links": {
 "'Abdur Rahman Ibn 'Awf": "F0010"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-13514-sufyan-bin-abi-al-wja-a",
@@ -9090,7 +9453,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -9141,7 +9504,9 @@
 },
 "students_links": {
 "al-Harith bin Fadayl al-Ansari": "arees-11835-al-harith-bin-fadayl-al-ansari"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-13522-tarq-bin-mhasn",
@@ -9193,7 +9558,11 @@
 "students_links": {
 "Bryd'h bin Sufyan": "arees-12025-bryd-h-bin-sufyan",
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 13522 at muslimscholars.info."
 },
 {
 "slug": "arees-13524-asim-bin-umar",
@@ -9254,7 +9623,11 @@
 },
 "students_links": {
 "'Amr bin Saleem bin Khalada": "arees-1544-amr-bin-saleem-bin-khalada"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 13524 at muslimscholars.info."
 },
 {
 "slug": "arees-13526-abdullah-bin-abdur-rahman-al-ansari",
@@ -9324,7 +9697,11 @@
 },
 "students_links": {
 "'Amr bin 'Amr, Abu al-Za'ra'": "arees-15410-amr-bin-amr-abu-al-za-ra"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 13526 at muslimscholars.info."
 },
 {
 "slug": "arees-13530-abdullah-bin-malik-bin-hudhafa",
@@ -9347,8 +9724,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -9413,7 +9790,9 @@
 "teachers_links": {
 "al-Aaliya bin Sabay'": "arees-19499-al-aaliya-bin-sabay"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-13532-abdullah-bin-yonus-hijazi",
@@ -9498,7 +9877,10 @@
 },
 "students_links": {
 "Yazid bin 'Abdullah bin Usama B. al-Haad": "arees-11234-yazid-bin-abdullah-bin-usama-b-al-haad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-13537-athym-bsyghh-al-tsghyr",
@@ -9549,7 +9931,10 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Muslim al-Jusaq": "arees-22876-muhammad-bin-muslim-al-jusaq"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-13547-isa-bin-ma-ql-bin-aby",
@@ -9609,7 +9994,11 @@
 "students_links": {
 "Musa bin 'Uqba": "arees-11106-musa-bin-uqba",
 "Ibn Ishaq": "F0739"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13547 at muslimscholars.info."
 },
 {
 "slug": "arees-13552-muhammad-bin-imran-al-hjby",
@@ -9628,7 +10017,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -9671,7 +10060,10 @@
 "Marwan bin Mua'wiya al-Fazari": "arees-20201-marwan-bin-mua-wiya-al-fazari",
 "Waki' bin al-Jarrah": "F1636",
 "al-Dahhak bin Mukhlad Abu 'Asim al-Nabil": "arees-20241-al-dahhak-bin-mukhlad-abu-asim-al-nabil"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Abu Dawud). Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13552 at muslimscholars.info."
 },
 {
 "slug": "arees-13553-mjald-bin-awf",
@@ -9697,8 +10089,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -9760,7 +10152,9 @@
 },
 "students_links": {
 "Abu al-Zanad": "arees-11061-abu-al-zanad"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-13560-aus-bin-abi-aws",
@@ -9830,7 +10224,10 @@
 "teachers_links": {
 "Abu Hurairah": "F0129"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-13645-ash-ath-bin-abi-khalid",
@@ -9880,7 +10277,11 @@
 },
 "students_links": {
 "Isma'il bin Abi Khalid al-Ahmsi": "arees-11418-isma-il-bin-abi-khalid-al-ahmsi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13645 at muslimscholars.info."
 },
 {
 "slug": "arees-13756-bdyh-mwla-abdullah-bin-ja-far",
@@ -9918,7 +10319,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13756 at muslimscholars.info."
 },
 {
 "slug": "arees-13930-hamza-bin-abdullah-bin-al-zubair",
@@ -9982,7 +10387,10 @@
 "teachers_links": {
 "'Abdullah ibn al-Zubayr": "F0019"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14066-habib-bin-abi-habib-al-bajli",
@@ -10049,7 +10457,11 @@
 },
 "students_links": {
 "'Amr bin Muhammad al-Anqazi": "arees-20597-amr-bin-muhammad-al-anqazi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 14066 at muslimscholars.info."
 },
 {
 "slug": "arees-14091-hamza-bin-sfynh-al-abbassri",
@@ -10128,7 +10540,10 @@
 "teachers_links": {},
 "students_links": {
 "Abu Sa'id Mwla al-Mhry": "arees-10992-abu-sa-id-mwla-al-mhry"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14096-hyan-bin-bstam-al-hdhly-al-bsry",
@@ -10151,7 +10566,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -10193,7 +10608,10 @@
 "ibn Umar": "F0024",
 "Abu Hurairah": "F0129"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Ibn Majah). A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 14096 at muslimscholars.info."
 },
 {
 "slug": "arees-14103-khdash-bin-ayash-al-bdy",
@@ -10263,7 +10681,10 @@
 },
 "students_links": {
 "Muhammad bin Thabit al-Bdy": "arees-24390-muhammad-bin-thabit-al-bdy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14118-rja-a-bin-abi-rja-a-al-bahali",
@@ -10336,7 +10757,10 @@
 },
 "students_links": {
 "'Abdullah bin Shaqayq al-Aqayli": "arees-10694-abdullah-bin-shaqayq-al-aqayli"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14136-zayd-bin-drhm",
@@ -10407,7 +10831,10 @@
 "teachers_links": {
 "Anas bin Malik": "F0440"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14155-slm-bin-abdur-rahman",
@@ -10458,7 +10885,11 @@
 "Salmah bin Rja'a": "arees-20325-salmah-bin-rja-a",
 "Muhammad bin Hmran": "arees-24395-muhammad-bin-hmran",
 "Marjji bin Raja'a": "arees-24420-marjji-bin-raja-a"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 14155 at muslimscholars.info."
 },
 {
 "slug": "arees-14203-abdullah-bin-abi-ishaq",
@@ -10520,7 +10951,10 @@
 "Anas bin Malik": "F0440",
 "'Uthman bin Mwhb": "arees-18716-uthman-bin-mwhb"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14225-abdullah-bin-matraf-bin-abdullah",
@@ -10594,7 +11028,10 @@
 "students_links": {
 "Hameed bin Hilal": "arees-11281-hameed-bin-hilal",
 "Atyh al-Sraj": "arees-23786-atyh-al-sraj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14244-abdul-aziz-bin-bashyr",
@@ -10644,7 +11081,11 @@
 "teachers_links": {},
 "students_links": {
 "'Amr bin 'Isa bin Suwayd": "arees-20562-amr-bin-isa-bin-suwayd"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 14244 at muslimscholars.info."
 },
 {
 "slug": "arees-14257-ubaidullah-bin-umar",
@@ -10687,7 +11128,11 @@
 "teachers_links": {
 "Rqyh bint 'Umar": "arees-19477-rqyh-bint-umar"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 14257 at muslimscholars.info."
 },
 {
 "slug": "arees-14264-ati-bin-damra-al-tamimi",
@@ -10765,7 +11210,10 @@
 "Ubayy ibn Ka'b": "F1412",
 "ibn Mas'ud": "F0082"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14297-imran-bin-asam-al-daba-i",
@@ -10812,7 +11260,11 @@
 "students_links": {
 "al-Muthna bin Sa'id al-Daba'i": "arees-11304-al-muthna-bin-sa-id-al-daba-i",
 "Yazid bin Hameed, Abu Tiyah": "arees-11317-yazid-bin-hameed-abu-tiyah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 83 AH. Entry 14297 at muslimscholars.info."
 },
 {
 "slug": "arees-14302-al-ala-bin-bashyr-al-mzny",
@@ -10838,7 +11290,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -10903,7 +11355,9 @@
 },
 "students_links": {
 "Ma'la bin Ziyad al-Qrdwsy": "arees-20569-ma-la-bin-ziyad-al-qrdwsy"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-14305-al-ala-bin-abdullah",
@@ -10979,7 +11433,10 @@
 "students_links": {
 "Darar bin Marra, Abu Sinan": "arees-10776-darar-bin-marra-abu-sinan",
 "Sa'id bin Abi 'Aruba": "F2009"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14315-fdyl-bin-fdalh",
@@ -11059,7 +11516,10 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14319-qbys-h-bin-hryth",
@@ -11085,9 +11545,9 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -11145,7 +11605,10 @@
 "teachers_links": {
 "Salmah bin al-Mahbaq": "arees-5071-salmah-bin-al-mahbaq"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 3 hadith across 3 collections (Abu Dawud, Ibn Majah, Nasa'i). A narrator of the 3rd Islamic century. Death year recorded as 67 AH. Entry 14319 at muslimscholars.info."
 },
 {
 "slug": "arees-14324-qrh-bin-musa-al-hjymy",
@@ -11216,7 +11679,10 @@
 "teachers_links": {},
 "students_links": {
 "Qurrah bin Khalid al-Sadusi": "arees-11301-qurrah-bin-khalid-al-sadusi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14336-klyb-bin-mnf-h-al-hnfy",
@@ -11233,7 +11699,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -11289,7 +11755,9 @@
 "teachers_links": {},
 "students_links": {
 "Dmdm bin 'Amr al-Hnfy": "arees-24216-dmdm-bin-amr-al-hnfy"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-14379-manzur-bin-siyar-al-fazari",
@@ -11311,7 +11779,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -11375,7 +11843,9 @@
 "teachers_links": {},
 "students_links": {
 "Siyar bin Manzur bin Siyar": "arees-14174-siyar-bin-manzur-bin-siyar"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-14413-wahb-bin-ma-anws-balnwn",
@@ -11441,7 +11911,10 @@
 },
 "students_links": {
 "Ibrahim bin Nafi' al-Makhzumi": "arees-20189-ibrahim-bin-nafi-al-makhzumi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14419-yahya-bin-muslim",
@@ -11468,7 +11941,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -11518,7 +11991,9 @@
 },
 "students_links": {
 "Abd al-Mn'm bin N'ym": "arees-24282-abd-al-mn-m-bin-n-ym"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-14458-muslim-abu-al-alaniyya-al-mara-i",
@@ -11594,7 +12069,10 @@
 "students_links": {
 "Ibn Sirin": "F0754",
 "'Abdul Karim bin Abi al-Mukharaq": "arees-10648-abdul-karim-bin-abi-al-mukharaq"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14460-abu-ghalb-al-bahly-mwlahm",
@@ -11665,7 +12143,10 @@
 "students_links": {
 "Hmam bin Yahya bin Dinar": "arees-20297-hmam-bin-yahya-bin-dinar",
 "'Abdul Warith bin Sa'id bin Dhakwan": "arees-20258-abdul-warith-bin-sa-id-bin-dhakwan"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14621-s-hyl-bin-asim-al-fqymy",
@@ -11740,7 +12221,10 @@
 "Qays bin 'Asim bin Snan": "arees-5242-qays-bin-asim-bin-snan",
 "'Abdur Rahman bin Hujayrah": "arees-10866-abdur-rahman-bin-hujayrah"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-14735-hilal-bin-yazid-al-maazni-abu-mus-ab",
@@ -11794,7 +12278,11 @@
 "teachers_links": {
 "Abu Hurairah": "F0129"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 14735 at muslimscholars.info."
 },
 {
 "slug": "arees-14810-khalid-bin-zayd-bin-jariya",
@@ -11866,7 +12354,10 @@
 "teachers_links": {
 "ibn Umar": "F0024"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15042-bkyr-bin-shhab-al-kwfy",
@@ -11940,7 +12431,10 @@
 },
 "students_links": {
 "Muburak bin Sa‘id Ath-Thawri": "arees-20014-muburak-bin-sa-id-ath-thawri"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15056-thabit-bin-qays-al-nakha-i",
@@ -12004,7 +12498,10 @@
 "teachers_links": {},
 "students_links": {
 "Yazid bin Aws": "arees-15634-yazid-bin-aws"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15057-thabit-bin-hurmuz",
@@ -12021,9 +12518,7 @@
 "'Amr bin Thabit (Abi al-Miqdam)"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Sunan Ibn Majah"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Sunan Ibn Majah",
@@ -12089,7 +12584,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15081-habib-bin-abi-mulayka",
@@ -12173,7 +12670,10 @@
 "students_links": {
 "Han'i bin Qays al-Kwfy": "arees-15584-han-i-bin-qays-al-kwfy",
 "Sa'id bin Fyrwz Abu al-Bakhtari al-Tai'i": "arees-11347-sa-id-bin-fyrwz-abu-al-bakhtari-al-tai-i"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15083-hjaj-bin-asim-al-mharby",
@@ -12244,7 +12744,10 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15089-al-hasan-bin-al-hakam-al-nkh-y",
@@ -12266,9 +12769,8 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -12308,7 +12810,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 654 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 3 hadith across 2 collections (Abu Dawud, Ibn Majah). Listed among the Successors (Tabi'un). Death year recorded as 100 AH. Entry 15089 at muslimscholars.info."
 },
 {
 "slug": "arees-15098-husayn-bin-abdur-rahman-al-harithi",
@@ -12376,7 +12881,11 @@
 "students_links": {
 "Isma'il bin Abi Khalid al-Ahmsi": "arees-11418-isma-il-bin-abi-khalid-al-ahmsi",
 "Hajjaj bin Artah": "arees-20580-hajjaj-bin-artah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 139 AH. Entry 15098 at muslimscholars.info."
 },
 {
 "slug": "arees-15104-hakeem-bin-sharik-bin-namla",
@@ -12455,7 +12964,10 @@
 "teachers_links": {
 "Sharayk bin Namla": "arees-15233-sharayk-bin-namla"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15116-kharjh-bin-al-slt-al-brjmy",
@@ -12480,7 +12992,7 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -12539,7 +13051,9 @@
 },
 "students_links": {
 "'Amir al-Sha'bi": "arees-11052-amir-al-sha-bi"
-}
+},
+"hadith_chain_count": 4,
+"hadith_narrated_count": 4
 },
 {
 "slug": "arees-15124-khalifa-bin-sa-ad-al-ashja-i",
@@ -12587,7 +13101,11 @@
 "'Abdullah ibn al-Zubayr": "F0019",
 "Asma' bint Abi Bakr": "F0472"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 15124 at muslimscholars.info."
 },
 {
 "slug": "arees-15151-za-id-h-bin-nshyt",
@@ -12659,7 +13177,10 @@
 },
 "students_links": {
 "Fatr bin Khalifa": "arees-11718-fatr-bin-khalifa"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15156-zara-bin-abdur-rahman-bin-jarhad",
@@ -12733,7 +13254,10 @@
 "students_links": {
 "Salm Abi al-Nadr": "arees-11164-salm-abi-al-nadr",
 "Abu al-Zanad": "arees-11061-abu-al-zanad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15158-ziyad-bin-abi-al-ja-d",
@@ -12755,8 +13279,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan an-Nasa'i"
+"al-tirmidhi",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -12823,7 +13347,9 @@
 "teachers_links": {},
 "students_links": {
 "'Ubaid bin Abi al-Ja'd": "arees-18694-ubaid-bin-abi-al-ja-d"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15187-sa-id-bin-zayd-bin-uqba",
@@ -12897,7 +13423,10 @@
 "Abu Harun al-Ghanvi": "arees-11733-abu-harun-al-ghanvi",
 "Hajjaj bin Artah": "arees-20580-hajjaj-bin-artah",
 "Mas'ar bin Kadam": "arees-20359-mas-ar-bin-kadam"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15198-sa-id-bin-wahb-al-thwry",
@@ -12971,7 +13500,10 @@
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai",
 "Yonus bin Abi Ishaq": "arees-10846-yonus-bin-abi-ishaq"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15217-sm-an-bin-mshnj",
@@ -13049,7 +13581,10 @@
 "teachers_links": {},
 "students_links": {
 "'Amir al-Sha'bi": "arees-11052-amir-al-sha-bi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15226-shadad-bin-ma-qal",
@@ -13123,7 +13658,10 @@
 },
 "students_links": {
 "'Abdul 'Aziz bin Rafi'": "arees-11257-abdul-aziz-bin-rafi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15228-shryh-bin-artah",
@@ -13188,7 +13726,10 @@
 "students_links": {
 "'Alqama bin Qays": "F0375",
 "Ibrahim al-Nakha'i": "arees-18012-ibrahim-al-nakha-i"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15260-asim-al-dwy",
@@ -13212,8 +13753,8 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan an-Nasa'i"
+"al-tirmidhi",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -13268,7 +13809,9 @@
 "students_links": {
 "'Amir al-Sha'bi": "arees-11052-amir-al-sha-bi",
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15263-aa-ish-bin-anas-al-bakry-al-kwfy",
@@ -13340,7 +13883,10 @@
 },
 "students_links": {
 "'Ata' bin Abi Rabah": "F0482"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15265-aabad-bin-abdullah",
@@ -13422,7 +13968,10 @@
 },
 "students_links": {
 "al-Minhal bin 'Amr al-Asadi": "arees-11656-al-minhal-bin-amr-al-asadi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15277-abdullah-bin-al-rqym",
@@ -13488,7 +14037,10 @@
 "Ali ibn Abi Talib": "F0366",
 "Sa'd ibn Abi Waqqas": "F1202"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15315-abd-al-akram-bin-abi-hanifa",
@@ -13564,7 +14116,10 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15317-abdur-rahman-bin-al-akhns",
@@ -13589,8 +14144,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -13648,7 +14202,9 @@
 "teachers_links": {},
 "students_links": {
 "al-Hur bin al-Sabah": "arees-15085-al-hur-bin-al-sabah"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15333-abdur-rahman-al-msly-al-kwfy-wmslyh",
@@ -13670,8 +14226,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -13724,7 +14280,9 @@
 "teachers_links": {
 "Ash'uth bin Qays": "arees-485-ash-uth-bin-qays"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15376-uqba-bin-alqama-al-yshkry",
@@ -13782,7 +14340,10 @@
 "teachers_links": {},
 "students_links": {
 "'Abdullah bin 'Abdullah al-Razi": "arees-15287-abdullah-bin-abdullah-al-razi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15377-uqba-bin-wahb",
@@ -13876,7 +14437,10 @@
 "source": "https://shamela.ws/book/9767/2178"
 }
 ],
-"kunya": "Abu Sinan"
+"kunya": "Abu Sinan",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15386-ali-bin-alqama-al-anmary",
@@ -13946,7 +14510,10 @@
 "Ali ibn Abi Talib": "F0366",
 "ibn Mas'ud": "F0082"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15389-ali-abu-al-aswad",
@@ -14014,7 +14581,10 @@
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj",
 "Sulaiman al-A'mash": "arees-11060-sulaiman-al-a-mash"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15453-qabus-bin-abi-al-makharq-al-makharq",
@@ -14034,10 +14604,10 @@
 ],
 "hadith_narrations_count": 7,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -14121,7 +14691,9 @@
 "teachers_links": {},
 "students_links": {
 "Smak bin Hrb bin Aws": "arees-10770-smak-bin-hrb-bin-aws"
-}
+},
+"hadith_chain_count": 7,
+"hadith_narrated_count": 3
 },
 {
 "slug": "arees-15462-qabaysa-bin-al-halb",
@@ -14197,7 +14769,10 @@
 },
 "students_links": {
 "Smak bin Hrb bin Aws": "arees-10770-smak-bin-hrb-bin-aws"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15488-muhammad-bin-abdullah-bin-abbad-kufi",
@@ -14223,7 +14798,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -14285,7 +14860,9 @@
 },
 "students_links": {
 "Falayh bin Suliaman": "arees-20169-falayh-bin-suliaman"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15501-malik-bin-al-harith-al-hamdani",
@@ -14355,7 +14932,11 @@
 },
 "students_links": {
 "Muhammad bin Qays al-Hmdany": "arees-15497-muhammad-bin-qays-al-hmdany"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. Death year recorded as 95 AH. Entry 15501 at muslimscholars.info."
 },
 {
 "slug": "arees-15528-muslim-bin-al-mathna-mahran",
@@ -14437,7 +15018,10 @@
 "students_links": {
 "Isma'il bin Abi Khalid al-Ahmsi": "arees-11418-isma-il-bin-abi-khalid-al-ahmsi",
 "Hajjaj bin Artah": "arees-20580-hajjaj-bin-artah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15529-muslim-bin-nadhir",
@@ -14511,7 +15095,10 @@
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai",
 "Ziyad bin Fyad al-Khza'y": "arees-10764-ziyad-bin-fyad-al-khza-y"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15547-mqatl-bin-bashyr-al-jly",
@@ -14537,7 +15124,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -14596,7 +15183,9 @@
 },
 "students_links": {
 "Malik bin Mghwl": "arees-20358-malik-bin-mghwl"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15551-mnswr-bin-abi-al-aswad",
@@ -14616,9 +15205,9 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -14683,7 +15272,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-15601-wa-il-bin-mhanh-al-tymy",
@@ -14767,7 +15358,10 @@
 },
 "students_links": {
 "Dhar bin 'Abdullah al-Marhabi": "arees-11423-dhar-bin-abdullah-al-marhabi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15627-yahya-bin-kathir-al-kahly",
@@ -14838,7 +15432,10 @@
 },
 "students_links": {
 "Marwan bin Mua'wiya al-Fazari": "arees-20201-marwan-bin-mua-wiya-al-fazari"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15657-abu-ishaq-al-kwfy",
@@ -14912,7 +15509,10 @@
 },
 "students_links": {
 "al-Hasan bin Abi Ja'far": "arees-24081-al-hasan-bin-abi-ja-far"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15679-abu-aazb",
@@ -14976,7 +15576,10 @@
 "students_links": {
 "Jabir bin Yazid bin al-Harith": "arees-15060-jabir-bin-yazid-bin-al-harith",
 "al-Harith bin Ziyad": "arees-17011-al-harith-bin-ziyad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-15683-abu-al-adbus-al-asha-ri",
@@ -15045,7 +15648,10 @@
 },
 "students_links": {
 "'Asim bin Abu al-Najud (Bahdla)": "arees-11358-asim-bin-abu-al-najud-bahdla"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16014-habib-bin-aws",
@@ -15121,7 +15727,10 @@
 },
 "students_links": {
 "Rashid bin Jndl al-Yaf'y": "arees-16030-rashid-bin-jndl-al-yaf-y"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16033-ziyad-bin-ubaid-bin-nmran",
@@ -15179,7 +15788,11 @@
 "Ruwayfi' bin Thabit al-Ansari": "arees-1225-ruwayfi-bin-thabit-al-ansari",
 "'Uqba bin 'Amir al-Juhayni": "F1605"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 16033 at muslimscholars.info."
 },
 {
 "slug": "arees-16034-ziyad-bin-naf",
@@ -15199,7 +15812,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Bukhari"
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -15249,7 +15862,9 @@
 "teachers_links": {},
 "students_links": {
 "Bakr bin Swad'h bin Thmamh": "arees-10849-bakr-bin-swad-h-bin-thmamh"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-16042-sulaiman-bin-rashid-al-msry",
@@ -15321,7 +15936,10 @@
 "teachers_links": {},
 "students_links": {
 "Sa'id bin Abi Hilal": "arees-11169-sa-id-bin-abi-hilal"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16053-abdullah-bin-tha-lbah",
@@ -15347,7 +15965,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -15405,7 +16023,9 @@
 },
 "students_links": {
 "'Abdur Rahman bin Sharih": "arees-20438-abdur-rahman-bin-sharih"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-16057-abdullah-bin-abd",
@@ -15461,7 +16081,11 @@
 "students_links": {
 "Khalid bin Yazid": "arees-11408-khalid-bin-yazid",
 "Ibrahim bin Nshyt": "arees-16000-ibrahim-bin-nshyt"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 100 AH. Entry 16057 at muslimscholars.info."
 },
 {
 "slug": "arees-16061-abdullah-bin-al-walid-bin-qays",
@@ -15529,7 +16153,10 @@
 "teachers_links": {
 "al-Walid bin Qays bin al-Akhram": "arees-16110-al-walid-bin-qays-bin-al-akhram"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16083-isa-bin-hilal",
@@ -15550,9 +16177,9 @@
 ],
 "hadith_narrations_count": 5,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -15612,7 +16239,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 5,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-16084-fadayl-bin-iyyad-bin-al-sahl",
@@ -15661,7 +16290,11 @@
 "teachers_links": {},
 "students_links": {
 "Musa bin Ayoub bin 'Amir": "arees-16104-musa-bin-ayoub-bin-amir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 120 AH. Entry 16084 at muslimscholars.info."
 },
 {
 "slug": "arees-16102-mansur-bin-wardan-al-masri",
@@ -15726,7 +16359,10 @@
 "teachers_links": {
 "Salim bin 'Abdullah bin 'Umar": "F1251"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16103-manqadh-bin-qays",
@@ -15777,7 +16413,10 @@
 "teachers_links": {},
 "students_links": {
 "Sufyan bin Manqadh bin Qays": "arees-16038-sufyan-bin-manqadh-bin-qays"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16123-abu-amir-al-hjry",
@@ -15839,7 +16478,10 @@
 "students_links": {
 "'Abdul Malik bin Abd": "arees-24276-abdul-malik-bin-abd",
 "al-Hythm bin Shfy": "arees-16107-al-hythm-bin-shfy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16127-abu-isa-al-khurasani",
@@ -15860,7 +16502,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -15934,7 +16576,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-16129-abu-al-hythm",
@@ -15985,7 +16629,11 @@
 "teachers_links": {},
 "students_links": {
 "Ka'b bin 'Alqama bin Ka'b": "arees-10872-ka-b-bin-alqama-bin-ka-b"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 16129 at muslimscholars.info."
 },
 {
 "slug": "arees-16243-s-aid-bin-abi-maryam",
@@ -16038,7 +16686,11 @@
 },
 "students_links": {
 "Yahya bin Ishaq bin 'Abdullah": "arees-12571-yahya-bin-ishaq-bin-abdullah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 16243 at muslimscholars.info."
 },
 {
 "slug": "arees-16470-salah-bin-hujayr",
@@ -16107,7 +16759,10 @@
 },
 "students_links": {
 "Thabit bin Aslam Albanani": "arees-11269-thabit-bin-aslam-albanani"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16521-al-dahhak-bin-sharhbayl-al-mashraqi",
@@ -16173,7 +16828,10 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16555-abdullah-bin-al-ashj",
@@ -16233,7 +16891,10 @@
 },
 "students_links": {
 "Bukayr bin 'Abdullah bin al-Ashj": "arees-11154-bukayr-bin-abdullah-bin-al-ashj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16697-abdur-rahman-bin-salmah",
@@ -16288,7 +16949,11 @@
 },
 "students_links": {
 "Shaqayq bin Salmah al-Asadi": "arees-11353-shaqayq-bin-salmah-al-asadi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 16697 at muslimscholars.info."
 },
 {
 "slug": "arees-16764-abdul-malik-bin-abdullah-b-abi-sufyan",
@@ -16354,7 +17019,10 @@
 "teachers_links": {
 "'Amr bin Abi Sufyan": "arees-11531-amr-bin-abi-sufyan"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-16836-umar-bin-abdullah-bin-al-zubair",
@@ -16407,7 +17075,11 @@
 "teachers_links": {
 "'Abdullah ibn al-Zubayr": "F0019"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 16836 at muslimscholars.info."
 },
 {
 "slug": "arees-17012-al-harith-bin-ubaidullah",
@@ -16466,7 +17138,11 @@
 },
 "students_links": {
 "al-Walid bin Muslim al-Quraishi": "arees-20733-al-walid-bin-muslim-al-quraishi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 17012 at muslimscholars.info."
 },
 {
 "slug": "arees-17022-al-zubair-bin-al-walid-al-shamy",
@@ -16491,7 +17167,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -16556,7 +17232,9 @@
 },
 "students_links": {
 "Sharyh bin 'Ubaid": "arees-18414-sharyh-bin-ubaid"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-17058-malik-bin-abi-maryam",
@@ -16578,8 +17256,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -16646,7 +17324,9 @@
 "teachers_links": {},
 "students_links": {
 "Hatm bin Hryth al-Ta'iy": "arees-18138-hatm-bin-hryth-al-ta-iy"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-17063-abu-hind-al-bajli-shami",
@@ -16717,7 +17397,10 @@
 "teachers_links": {},
 "students_links": {
 "'Abdur Rahman bin Abi 'Auf al-Jershy": "arees-18639-abdur-rahman-bin-abi-auf-al-jershy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-17068-al-mhlb-bin-hjr",
@@ -16737,7 +17420,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -16795,7 +17478,9 @@
 "teachers_links": {
 "Dba'h bint al-Mqdad bin": "arees-19497-dba-h-bint-al-mqdad-bin"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-17074-nhar-al-bdy-shamy",
@@ -16820,7 +17505,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -16879,7 +17564,9 @@
 },
 "students_links": {
 "Thaur bin Yazid al-Rahbi": "arees-20415-thaur-bin-yazid-al-rahbi"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-17075-nhyk-bin-yrym-al-awza-y-shamy",
@@ -16905,7 +17592,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -16957,7 +17644,9 @@
 "teachers_links": {
 "Mghyth bin Smy al-Awza'y Abu": "arees-17062-mghyth-bin-smy-al-awza-y-abu"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-17080-al-walid-bin-sufyan-bin-aby",
@@ -16981,9 +17670,9 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -17043,7 +17732,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-17090-abu-ziyad-al-shami-al-ghassani",
@@ -17097,7 +17788,11 @@
 "students_links": {
 "Huraiz bin 'Uthman bin Jabir": "arees-11684-huraiz-bin-uthman-bin-jabir",
 "Safwan bin 'Amr bin Harm al-Saksaki": "arees-10921-safwan-bin-amr-bin-harm-al-saksaki"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 17090 at muslimscholars.info."
 },
 {
 "slug": "arees-17303-al-ala-bin-ammar-bin-yasar",
@@ -17140,7 +17835,11 @@
 "teachers_links": {},
 "students_links": {
 "Mu'adh bin al-'Ala' bin 'Ammar": "arees-24517-mu-adh-bin-al-ala-bin-ammar"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 17303 at muslimscholars.info."
 },
 {
 "slug": "arees-17421-fadala-bin-abi-umayya",
@@ -17188,7 +17887,11 @@
 "teachers_links": {
 "'Umar ibn al-Khattab": "F1433"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 17421 at muslimscholars.info."
 },
 {
 "slug": "arees-17509-zufar-bin-wthayma",
@@ -17269,7 +17972,10 @@
 },
 "students_links": {
 "Muhammad bin 'Abdullah bin al-Muhajir": "arees-20741-muhammad-bin-abdullah-bin-al-muhajir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-17517-talha-bin-abi-qnan",
@@ -17336,7 +18042,10 @@
 "teachers_links": {},
 "students_links": {
 "al-Walid bin Sulaiman bin Aby": "arees-19130-al-walid-bin-sulaiman-bin-aby"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-17538-kathir-bin-al-harith",
@@ -17411,7 +18120,10 @@
 "students_links": {
 "Khalid bin Ma'dan": "arees-11422-khalid-bin-ma-dan",
 "Mu'awiya bin Salah bin Hadayr": "arees-20675-mu-awiya-bin-salah-bin-hadayr"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-17544-musa-bin-sulaiman-bin-musa",
@@ -17487,7 +18199,10 @@
 },
 "students_links": {
 "Mu'awiya bin Salah bin Hadayr": "arees-20675-mu-awiya-bin-salah-bin-hadayr"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-17551-yazid-bin-abdur-rahman-bin-abi-malik",
@@ -17511,7 +18226,7 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -17569,7 +18284,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 683 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 2 hadith across 1 collection (Ibn Majah). Listed among the Successors (Tabi'un). Death year recorded as 130 AH. Entry 17551 at muslimscholars.info."
 },
 {
 "slug": "arees-17559-abu-uthman-bin-snh",
@@ -17642,7 +18360,10 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-17738-muslim-client-of-ali-bin-abi-talib",
@@ -17703,7 +18424,11 @@
 },
 "students_links": {
 "al-Qasim bin Muslim, Client of 'Ali": "arees-22849-al-qasim-bin-muslim-client-of-ali"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 17738 at muslimscholars.info."
 },
 {
 "slug": "arees-18008-ibrahim-bin-muhammad-bin-ali",
@@ -17766,7 +18491,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18012-ibrahim-al-nakha-i",
@@ -17841,7 +18569,17 @@
 },
 "students_links": {
 "Zubayd bin al-Harith": "arees-11335-zubayd-bin-al-harith"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 30,
+"hadith_source_collections": [
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sahih-bukhari",
+"sahih-muslim",
+"sunan-nasai"
+]
 },
 {
 "slug": "arees-18039-isma-il-bin-abi-khalid-al-faki",
@@ -17907,7 +18645,10 @@
 },
 "students_links": {
 "'Ikrama bin 'Ammar": "arees-10704-ikrama-bin-ammar"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18048-isma-il-bin-muslim-bin-aby",
@@ -17931,9 +18672,9 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -17993,7 +18734,9 @@
 "Salm Abu al-Ghyth al-Madni": "arees-11165-salm-abu-al-ghyth-al-madni",
 "Thur bin Zayd al-Dayli": "arees-11155-thur-bin-zayd-al-dayli"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 4,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18061-umayya-bin-amr-bin-sa-id-bin-al-aas",
@@ -18067,7 +18810,10 @@
 },
 "students_links": {
 "Isma'il bin Umayya bin 'Amr": "arees-11417-isma-il-bin-umayya-bin-amr"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18066-ayoub-bin-abdullah-bin-makraz",
@@ -18152,7 +18898,10 @@
 },
 "students_links": {
 "Sharyh bin 'Ubaid": "arees-18414-sharyh-bin-ubaid"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18080-bashr-bin-asim-al-lythy",
@@ -18222,7 +18971,10 @@
 },
 "students_links": {
 "Hameed bin Hilal": "arees-11281-hameed-bin-hilal"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18115-jbr-bin-ubaid-h",
@@ -18248,7 +19000,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -18305,16 +19057,18 @@
 },
 "students_links": {
 "Siyar Abu al-Hakam al-Anzi": "arees-11429-siyar-abu-al-hakam-al-anzi"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18134-jnyd-no-identity",
-"tier": "C",
+"tier": "C-thin",
 "arees_id": 18134,
-"famous": "Jnyd (no Identity)",
+"famous": "Jnyd (name only)",
 "type": "Narrator",
 "relations": [],
-"full": "Jnyd (no Identity)",
+"full": "Jnyd (name only)",
 "full_name_ar": "جنيد غير منسوب",
 "generation": "Follower(Tabi') [ 5th generation ]",
 "teachers": [
@@ -18370,7 +19124,12 @@
 "students_links": {
 "Malik bin Mghwl": "arees-20358-malik-bin-mghwl",
 "Muhammad bin Khazim al-Darir": "arees-20354-muhammad-bin-khazim-al-darir"
-}
+},
+"hidden": true,
+"hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18148-hadr-bin-al-mhajr-abu-isa",
@@ -18447,7 +19206,10 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18159-hajjaj-bin-hajjaj-bin-malik",
@@ -18522,7 +19284,10 @@
 "al-Hajjaj bin Malik al-Aslami": "arees-4113-al-hajjaj-bin-malik-al-aslami",
 "Abu Hurairah": "F0129"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18171-al-hr-bin-mskyn",
@@ -18595,7 +19360,10 @@
 "teachers_links": {
 "Hzyl bin Shrhbyl al-Awdy al-Kwfy": "arees-11660-hzyl-bin-shrhbyl-al-awdy-al-kwfy"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18173-harb-bin-whashy-bin-hrab",
@@ -18670,7 +19438,10 @@
 "teachers_links": {
 "Wahshy ibn Harb": "arees-242-wahshy-ibn-harb"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18174-harmala-bin-iyas-iyas-bin-harmala",
@@ -18756,7 +19527,10 @@
 "teachers_links": {},
 "students_links": {
 "Salah bin Abi Maryam": "arees-11291-salah-bin-abi-maryam"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18189-al-husain-bin-qays-al-rhby",
@@ -18778,7 +19552,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -18839,7 +19613,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18190-hashraj-bin-ziyad-al-ashja-i",
@@ -18911,7 +19687,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18194-husayn-bin-mus-ab",
@@ -18981,7 +19760,10 @@
 },
 "students_links": {
 "'Umar bin Hamza bin 'Abdullah": "arees-11899-umar-bin-hamza-bin-abdullah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18197-husayn-wald-da-ud",
@@ -19043,7 +19825,10 @@
 "Jabir ibn 'Abdullah": "F0808",
 "Abu Rafi'": "F0148"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18236-khalid-bin-aslam-al-quraishi",
@@ -19121,7 +19906,10 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18248-khalid-bin-al-lajlaj-al-amiri",
@@ -19145,9 +19933,8 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -19219,7 +20006,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18263-khlad-bin-al-sa-ib-al-jhny",
@@ -19287,7 +20076,10 @@
 "students_links": {
 "al-Zuhri": "F1995",
 "Hafs bin Hashim bin 'Utba": "arees-18203-hafs-bin-hashim-bin-utba"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18266-da-ud-bin-mdrk",
@@ -19313,7 +20105,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -19365,7 +20157,9 @@
 },
 "students_links": {
 "Musa bin 'Ubaida bin Nashayt": "arees-12527-musa-bin-ubaida-bin-nashayt"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18267-al-dkhyl-bin-iyas-bin-nwh",
@@ -19432,7 +20226,10 @@
 "teachers_links": {
 "Hilal bin Sraj": "arees-19119-hilal-bin-sraj"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18320-zayd-bin-aymn",
@@ -19458,7 +20255,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -19519,7 +20316,9 @@
 },
 "students_links": {
 "Sa'id bin Abi Hilal": "arees-11169-sa-id-bin-abi-hilal"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18336-al-sa-ib-bin-hbysh",
@@ -19545,8 +20344,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -19625,7 +20424,9 @@
 "generation": "Follower(Tabi')",
 "source": "https://hadithtransmitters.hawramani.com/السائب-بن-حبيش/"
 }
-]
+],
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18341-sa-d-bin-mabad",
@@ -19649,9 +20450,7 @@
 "arees-18341-sa-d-bin-mabad"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Sunan Ibn Majah"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Sunan Ibn Majah",
@@ -19710,7 +20509,9 @@
 },
 "students_links": {
 "al-Hasan bin Sa'd bin Ma'bad": "arees-10754-al-hasan-bin-sa-d-bin-ma-bad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18343-sa-d-mwla-aal-aby",
@@ -19775,7 +20576,10 @@
 "'Abdullah ibn al-Zubayr": "F0019",
 "al-Qasim ibn Muhammad": "F1136"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18358-sa-id-bin-abi-karb",
@@ -19851,7 +20655,10 @@
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai",
 "Abu 'Isa al-Khurasani": "arees-16127-abu-isa-al-khurasani"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18359-sa-id-bin-al-mhajr",
@@ -19934,7 +20741,10 @@
 },
 "students_links": {
 "Abu al-Jaudi": "arees-17088-abu-al-jaudi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18361-sa-id-bin-yusuf-al-rhby",
@@ -20005,7 +20815,10 @@
 },
 "students_links": {
 "Isma'il bin Ayyash bin Saleem": "arees-20736-isma-il-bin-ayyash-bin-saleem"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18375-slym-bin-blj",
@@ -20080,7 +20893,10 @@
 },
 "students_links": {
 "Abu Balj al-Farazi": "arees-19887-abu-balj-al-farazi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18383-sulaiman-bin-abi-sulaiman",
@@ -20105,8 +20921,8 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -20174,7 +20990,9 @@
 },
 "students_links": {
 "al-'Awwam bin Hushab": "arees-11441-al-awwam-bin-hushab"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18386-sulaiman-bin-abdullah",
@@ -20249,7 +21067,10 @@
 "students_links": {
 "Ibn Ishaq": "F0739",
 "'Abdur Rahman bin Abi al-Zanad": "arees-20509-abdur-rahman-bin-abi-al-zanad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18388-sulaiman-bin-abi-abdullah",
@@ -20329,7 +21150,10 @@
 "Abu Hurairah": "F0129",
 "Suhayb bin Sinan ar-Rumi": "F1331"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18392-suliaman-al-mnbhy",
@@ -20354,7 +21178,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -20415,7 +21239,9 @@
 },
 "students_links": {
 "Hameed al-Shamy al-Hmsy": "arees-17018-hameed-al-shamy-al-hmsy"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18395-smak-bin-al-fadl-al-khwlany",
@@ -20435,8 +21261,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud"
+"abu-dawood",
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -20509,7 +21335,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18423-shmyr-bin-abd-al-mdan",
@@ -20579,7 +21407,10 @@
 },
 "students_links": {
 "Smy bin Qays al-Ymany": "arees-18397-smy-bin-qays-al-ymany"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18424-shyban-bin-mhzm",
@@ -20640,7 +21471,10 @@
 },
 "students_links": {
 "Maymun bin Mahran": "arees-11012-maymun-bin-mahran"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18432-al-sabah-bin-abdullah",
@@ -20708,7 +21542,10 @@
 "teachers_links": {},
 "students_links": {
 "Musa bin Isma'il al-Munqari al-Tabudhaki": "arees-20040-musa-bin-isma-il-al-munqari-al-tabudhaki"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18444-s-hyb-mwla-al-abbas",
@@ -20783,7 +21620,10 @@
 },
 "students_links": {
 "Dhakwan Abu Salah al-Saman al-Ziyat": "arees-11161-dhakwan-abu-salah-al-saman-al-ziyat"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18445-suhaib-client-of-al-atwarayn",
@@ -20860,7 +21700,10 @@
 },
 "students_links": {
 "Na'eem bin 'Abdullah al-Majmar": "arees-11225-na-eem-bin-abdullah-al-majmar"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18467-talha-bin-ubaidullah",
@@ -20922,7 +21765,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18471-asim-bin-hameed-al-skwny",
@@ -20941,7 +21787,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -21007,7 +21853,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18489-aabad-bin-abi-sa-id",
@@ -21033,9 +21881,9 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -21098,7 +21946,9 @@
 },
 "students_links": {
 "Sa'id bin Abi Sa'id (Kaysan)": "arees-11168-sa-id-bin-abi-sa-id-kaysan"
-}
+},
+"hadith_chain_count": 4,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18502-abdullah-bin-aws",
@@ -21115,7 +21965,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -21174,7 +22024,9 @@
 "teachers_links": {},
 "students_links": {
 "Isma'il bin Suliaman al-Khal al-Dby": "arees-24019-isma-il-bin-suliaman-al-khal-al-dby"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18534-abdullah-bin-abdur-rahman-bin-al-hubab",
@@ -21259,7 +22111,10 @@
 },
 "students_links": {
 "Musa bin Jbyr al-Madni Mwla": "arees-21181-musa-bin-jbyr-al-madni-mwla"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18541-abdullah-bin-aruk-atiq",
@@ -21325,7 +22180,10 @@
 },
 "students_links": {
 "Ibn Sirin": "F0754"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18549-abdullah-bin-ali",
@@ -21342,8 +22200,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -21398,7 +22256,9 @@
 "teachers_links": {},
 "students_links": {
 "al-Zubair bin Sa'id bin Sulaiman": "arees-22058-al-zubair-bin-sa-id-bin-sulaiman"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18560-abdullah-bin-anbs-h",
@@ -21423,7 +22283,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -21486,7 +22346,9 @@
 },
 "students_links": {
 "Rabi'ya bin Abi 'Abdur Rahman (Farrukh)": "arees-11162-rabi-ya-bin-abi-abdur-rahman-farrukh"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18561-abdullah-bin-ghabir-abu-amir-al-alhani",
@@ -21574,7 +22436,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18569-abdullah-bin-klyb",
@@ -21633,7 +22498,10 @@
 "teachers_links": {},
 "students_links": {
 "al-Hakam bin Atyh al-Yshy": "arees-24092-al-hakam-bin-atyh-al-yshy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18578-abdullah-bin-marrah-abi-marrah",
@@ -21653,9 +22521,9 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -21726,7 +22594,9 @@
 "teachers_links": {},
 "students_links": {
 "'Abdullah bin Rashid": "arees-16054-abdullah-bin-rashid"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 3
 },
 {
 "slug": "arees-18588-abdullah-bin-wahb",
@@ -21790,7 +22660,10 @@
 "teachers_links": {},
 "students_links": {
 "Da'ud bin Qays al-Fra'a": "arees-11845-da-ud-bin-qays-al-fra-a"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18595-abdul-al-a-ala-bin-adi-al-bahrani",
@@ -21837,7 +22710,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18595 at muslimscholars.info."
 },
 {
 "slug": "arees-18598-abdul-hameed-bin-bhram",
@@ -21857,8 +22734,8 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -21921,7 +22798,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18600-abdul-hameed-bin-salm",
@@ -21948,7 +22827,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -22008,7 +22887,9 @@
 },
 "students_links": {
 "al-Zubair bin Sa'id bin Sulaiman": "arees-22058-al-zubair-bin-sa-id-bin-sulaiman"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18620-abdur-rahman-bin-al-sa-ib-al-sa-iba",
@@ -22066,7 +22947,11 @@
 "'Abdur Rahman bin S'ad": "arees-18623-abdur-rahman-bin-s-ad",
 "Abu Hurairah": "F0129"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18620 at muslimscholars.info."
 },
 {
 "slug": "arees-18627-abdur-rahman-bin-smyr",
@@ -22123,7 +23008,11 @@
 },
 "students_links": {
 "Awn bin Abi Juhayfa": "arees-11383-awn-bin-abi-juhayfa"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18627 at muslimscholars.info."
 },
 {
 "slug": "arees-18631-abdur-rahman-bin-asim",
@@ -22196,7 +23085,10 @@
 "teachers_links": {},
 "students_links": {
 "'Ata' bin Abi Rabah": "F0482"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18634-abdur-rahman-bin-abddllah-al-ghafiqi",
@@ -22221,7 +23113,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -22267,7 +23159,9 @@
 },
 "students_links": {
 "'Abdul 'Aziz bin 'Umar bin 'Abdul-'Aziz": "arees-20166-abdul-aziz-bin-umar-bin-abdul-aziz"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18638-abdur-rahman-bin-ali",
@@ -22321,7 +23215,11 @@
 "students_links": {
 "'Abdullah bin Bdr bin 'Umayrh": "arees-19919-abdullah-bin-bdr-bin-umayrh",
 "W'lh bin Abd": "arees-19125-w-lh-bin-abd"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18638 at muslimscholars.info."
 },
 {
 "slug": "arees-18640-abdur-rahman-bin-frwkh",
@@ -22380,7 +23278,11 @@
 "teachers_links": {
 "Nafi' bin al-Harith al-Thaqafi": "arees-3231-nafi-bin-al-harith-al-thaqafi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18640 at muslimscholars.info."
 },
 {
 "slug": "arees-18643-abdur-rahman-bin-abi-karima",
@@ -22406,8 +23308,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -22451,7 +23352,10 @@
 },
 "students_links": {
 "Isma'il bin 'Abdur Rahman al-Saddi": "arees-10743-isma-il-bin-abdur-rahman-al-saddi"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Abu Dawud). A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18643 at muslimscholars.info."
 },
 {
 "slug": "arees-18661-abdul-malik-bin-ubaid",
@@ -22477,7 +23381,7 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -22531,7 +23435,9 @@
 },
 "students_links": {
 "Isma'il bin Umayya bin 'Amr": "arees-11417-isma-il-bin-umayya-bin-amr"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18715-uthman-bin-muslim-bin-hrmz",
@@ -22610,7 +23516,10 @@
 "students_links": {
 "'Abdur Rahman bin 'Abdullah bin 'Utba": "arees-20724-abdur-rahman-bin-abdullah-bin-utba",
 "Mas'ar bin Kadam": "arees-20359-mas-ar-bin-kadam"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18723-arfjh-bin-abd-al-wahd",
@@ -22686,7 +23595,10 @@
 },
 "students_links": {
 "Suhayl bin Abi Salah": "arees-11173-suhayl-bin-abi-salah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18759-ali-bin-majd-h",
@@ -22753,7 +23665,10 @@
 },
 "students_links": {
 "al-Ala' bin 'Abdur Rahman bin Ya'qub": "arees-10606-al-ala-bin-abdur-rahman-bin-ya-qub"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18774-umar-bin-safina",
@@ -22780,8 +23695,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud"
+"abu-dawood",
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -22851,7 +23766,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18796-amr-bin-sufyan-al-thqfy",
@@ -22930,7 +23847,10 @@
 },
 "students_links": {
 "al-Aswad bin Qays al-Bdy": "arees-11323-al-aswad-bin-qays-al-bdy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18838-isa-bin-abdur-rahman",
@@ -22982,7 +23902,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 654 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 100 AH. Entry 18838 at muslimscholars.info."
 },
 {
 "slug": "arees-18841-al-ghryf-bin-ayash-bin-fyrwz",
@@ -23052,7 +23976,10 @@
 },
 "students_links": {
 "Ibrahim bin Abi Ablh": "arees-11667-ibrahim-bin-abi-ablh"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18854-al-qasim-bin-muh-bin-abdur-rahman",
@@ -23125,7 +24052,10 @@
 },
 "students_links": {
 "Habib bin Abi Thabit": "arees-11331-habib-bin-abi-thabit"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18859-qhafh-bin-rabi-ya",
@@ -23196,7 +24126,10 @@
 "Zubayr ibn al-Awwam": "F1711",
 "Abu Umama al-Bahili": "F0165"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18892-muhammad-bin-aflah",
@@ -23287,7 +24220,10 @@
 ],
 "research_students": [
 "'Uthman bin Hakim al-Ansari"
-]
+],
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18901-muhammad-bin-hamza-bin-yusuf",
@@ -23353,7 +24289,10 @@
 "students_links": {
 "'Abdullah bin Salm al-Asha'ri": "arees-20432-abdullah-bin-salm-al-asha-ri",
 "al-Walid bin Muslim al-Quraishi": "arees-20733-al-walid-bin-muslim-al-quraishi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18916-muhammad-bin-aabad-bin-abdullah",
@@ -23417,7 +24356,10 @@
 "'Aabad bin 'Abdullah bin al-Zubair": "arees-11250-aabad-bin-abdullah-bin-al-zubair",
 "Asma' bint Abi Bakr": "F0472"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18917-muhammad-bin-abdullah",
@@ -23474,7 +24416,11 @@
 "'Umar ibn al-Khattab": "F1433",
 "ibn Mas'ud": "F0082"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18917 at muslimscholars.info."
 },
 {
 "slug": "arees-18925-muhammad-bin-abdullah-bin-ayyad",
@@ -23494,8 +24440,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -23545,7 +24491,10 @@
 "teachers_links": {
 "'Uthman bin Abi al-'Aas al-Thaqafi": "arees-3210-uthman-bin-abi-al-aas-al-thaqafi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 2 hadith across 2 collections (Abu Dawud, Ibn Majah). A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18925 at muslimscholars.info."
 },
 {
 "slug": "arees-18958-muhammad-bin-muhammad-bin-al-aswad",
@@ -23603,7 +24552,11 @@
 "students_links": {
 "'Abdullah bin 'Awn bin Artaban": "arees-11071-abdullah-bin-awn-bin-artaban",
 "Hisham bin Ziyad (Abi Hisham)": "arees-12556-hisham-bin-ziyad-abi-hisham"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18958 at muslimscholars.info."
 },
 {
 "slug": "arees-18959-muhammad-bin-abi-musa",
@@ -23642,7 +24595,11 @@
 "teachers_links": {},
 "students_links": {
 "Sa'id bin al-Mrzban al-Bsy": "arees-15196-sa-id-bin-al-mrzban-al-bsy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18959 at muslimscholars.info."
 },
 {
 "slug": "arees-18966-malik-bin-marthad-al-zamani",
@@ -23660,8 +24617,7 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -23721,7 +24677,9 @@
 "teachers_links": {
 "Marthad bin 'Abdullah al-Zamani": "arees-18973-marthad-bin-abdullah-al-zamani"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18968-al-mthna-bin-abdur-rahman",
@@ -23786,7 +24744,10 @@
 },
 "students_links": {
 "Jabir bin Sbh": "arees-24050-jabir-bin-sbh"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18973-marthad-bin-abdullah-al-zamani",
@@ -23807,8 +24768,7 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -23872,7 +24832,9 @@
 "teachers_links": {},
 "students_links": {
 "Malik bin Marthad al-Zamani": "arees-18966-malik-bin-marthad-al-zamani"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18980-mzyd-h-bin-jabir-aakhr",
@@ -23923,7 +24885,11 @@
 "students_links": {
 "Muhammad bin 'Abdur Rahman bin Abi Layla": "arees-20727-muhammad-bin-abdur-rahman-bin-abi-layla",
 "Hajjaj bin Artah": "arees-20580-hajjaj-bin-artah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18980 at muslimscholars.info."
 },
 {
 "slug": "arees-18988-muslim-bin-salam-al-hanfi",
@@ -23941,8 +24907,8 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud"
+"abu-dawood",
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -24006,7 +24972,9 @@
 "teachers_links": {
 "'Ali bin Talq bin al-Mundhir": "arees-5194-ali-bin-talq-bin-al-mundhir"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18993-muslim-bin-mkhraq-mwla",
@@ -24083,7 +25051,10 @@
 "students_links": {
 "'Abdullah bin Shryk": "arees-15285-abdullah-bin-shryk",
 "Abd al-A'la bin 'Amir": "arees-19873-abd-al-a-la-bin-amir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18999-al-maswar-bin-ibrahim",
@@ -24149,7 +25120,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 660 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19002-msh-th-bin-tryf-qady-hrah",
@@ -24230,7 +25204,10 @@
 },
 "students_links": {
 "Abu 'Imran al-Jauni": "arees-11296-abu-imran-al-jauni"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19032-al-mughira-bin-sa-d-bin-al-akhrm",
@@ -24294,7 +25271,10 @@
 "Shamr bin 'Atiyya": "arees-15238-shamr-bin-atiyya",
 "Yazid bin Hameed, Abu Tiyah": "arees-11317-yazid-bin-hameed-abu-tiyah",
 "'Abdur Rahman bin (Abi) 'Abdullah": "arees-10702-abdur-rahman-bin-abi-abdullah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19051-musa-bin-muhammad-bin-ibrahim",
@@ -24364,7 +25344,10 @@
 },
 "students_links": {
 "al-Waqidi": "arees-20120-al-waqidi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19058-mysrh-mwla-fdalh-bin-ubaid",
@@ -24390,7 +25373,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -24449,7 +25432,9 @@
 },
 "students_links": {
 "Isma'il bin 'Ubaidullah bin Abi Muhajir": "arees-11670-isma-il-bin-ubaidullah-bin-abi-muhajir"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19077-nasayr-client-mua-wiya",
@@ -24520,7 +25505,10 @@
 "students_links": {
 "Sulaiman bin Musa al-Ashdaq": "arees-10880-sulaiman-bin-musa-al-ashdaq",
 "Mrwan bin Jnah": "arees-15516-mrwan-bin-jnah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19112-hisham-bin-yusuf-al-salmi",
@@ -24597,7 +25585,10 @@
 "students_links": {
 "Sufyan bin Hussain bin al-Hasan": "arees-20655-sufyan-bin-hussain-bin-al-hasan",
 "Hashaym bin Bashayr bin al-Qasim": "arees-20468-hashaym-bin-bashayr-bin-al-qasim"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19120-hilal-client-of-rab-i-bin-harash",
@@ -24669,7 +25660,10 @@
 },
 "students_links": {
 "'Abdul Malik bin 'Umayr al-Qabti": "arees-11368-abdul-malik-bin-umayr-al-qabti"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19132-al-walid-bin-abd-h-bfth-al-ba-a",
@@ -24737,7 +25731,10 @@
 "teachers_links": {
 "Qays ibn Sa'd ibn 'Ubadah": "arees-172-qays-ibn-sa-d-ibn-ubadah"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19158-yahya-bin-al-mukhtar-al-sn-any",
@@ -24802,7 +25799,10 @@
 "teachers_links": {},
 "students_links": {
 "Yusuf bin Y'aqub al-Sadusi al-Sal'ai": "arees-20305-yusuf-bin-y-aqub-al-sadusi-al-sal-ai"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19161-yahya-bin-al-waleed-bin-ubada",
@@ -24819,7 +25819,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -24882,7 +25882,9 @@
 "teachers_links": {},
 "students_links": {
 "Jblh bin Atyh al-Flstyny": "arees-18116-jblh-bin-atyh-al-flstyny"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19184-yazid-bin-maqsam-dabba",
@@ -24902,7 +25904,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -24962,7 +25964,9 @@
 },
 "students_links": {
 "'Abdullah bin Yazid bin Dabba/Maqsam": "arees-24248-abdullah-bin-yazid-bin-dabba-maqsam"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19206-abu-isra-il-al-jashmi",
@@ -25021,7 +26025,10 @@
 },
 "students_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19213-abu-bashr-mu-dhn-msjd",
@@ -25096,7 +26103,10 @@
 },
 "students_links": {
 "Mu'awiya bin Salah bin Hadayr": "arees-20675-mu-awiya-bin-salah-bin-hadayr"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19228-abu-al-jrah-mwla-am",
@@ -25167,7 +26177,10 @@
 },
 "students_links": {
 "Salim bin 'Abdullah bin 'Umar": "F1251"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19237-abu-habibh-al-ta-iy",
@@ -25194,7 +26207,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -25252,7 +26265,9 @@
 },
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19253-abu-khalid-al-bajli-al-ahamsi",
@@ -25279,10 +26294,10 @@
 ],
 "hadith_narrations_count": 7,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -25364,7 +26379,9 @@
 },
 "students_links": {
 "Isma'il bin Abi Khalid al-Ahmsi": "arees-11418-isma-il-bin-abi-khalid-al-ahmsi"
-}
+},
+"hadith_chain_count": 7,
+"hadith_narrated_count": 5
 },
 {
 "slug": "arees-19265-abu-zayd-mwla-biny",
@@ -25382,7 +26399,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -25428,7 +26445,9 @@
 "teachers_links": {},
 "students_links": {
 "'Amr bin Yahya bin 'Ammara": "arees-11210-amr-bin-yahya-bin-ammara"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19277-abu-salman-al-mu-dhn-qyl",
@@ -25497,7 +26516,10 @@
 },
 "students_links": {
 "Abu Ja'far al-Fra'a al-Kwfy": "arees-15664-abu-ja-far-al-fra-a-al-kwfy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19282-abu-sahlah-maula-uthman",
@@ -25520,9 +26542,7 @@
 "arees-19282-abu-sahlah-maula-uthman"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Jami' al-Tirmidhi"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Jami' al-Tirmidhi",
@@ -25573,7 +26593,9 @@
 "teachers_links": {
 "'Aisha bint Abi Bakr": "F0199"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19288-sami-al-ziyyat",
@@ -25652,7 +26674,10 @@
 },
 "students_links": {
 "Hmad bin Abi Sulaiman": "arees-10756-hmad-bin-abi-sulaiman"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19290-abu-salah-client-of-talha",
@@ -25678,7 +26703,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -25731,7 +26756,9 @@
 },
 "students_links": {
 "Maymun Abu Hamza al-A'wr": "arees-19060-maymun-abu-hamza-al-a-wr"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19320-abu-utba",
@@ -25780,7 +26807,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19324-abu-uthman-al-tban",
@@ -25841,7 +26871,10 @@
 "students_links": {
 "Mansur bin al-Ma'tamar al-Salmi": "arees-11067-mansur-bin-al-ma-tamar-al-salmi",
 "al-Mughira bin Maqsam": "arees-11072-al-mughira-bin-maqsam"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19335-abu-ali-al-azdi",
@@ -25859,9 +26892,9 @@
 ],
 "hadith_narrations_count": 5,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -25932,7 +26965,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 5,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19356-abu-kathir-client-of-family-of-jahsh",
@@ -26002,7 +27037,10 @@
 "Sa'd ibn Abi Waqqas": "F1202",
 "Muhammad bin 'Abdullah bin Jahsh": "arees-413-muhammad-bin-abdullah-bin-jahsh"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19365-abu-muhammad-mwla-umar-bin-al-khtab",
@@ -26065,7 +27103,10 @@
 "teachers_links": {},
 "students_links": {
 "al-'Awwam bin Hushab": "arees-11441-al-awwam-bin-hushab"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19367-abu-mdlh",
@@ -26135,7 +27176,10 @@
 },
 "students_links": {
 "Sa'd Abu Mjahd al-Ta'iy": "arees-11628-sa-d-abu-mjahd-al-ta-iy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19389-abu-al-mndhr-mwla-aby",
@@ -26195,7 +27239,10 @@
 },
 "students_links": {
 "Ishaq bin 'Abdullah bin Abi Talha": "arees-11151-ishaq-bin-abdullah-bin-abi-talha"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19396-abu-al-njyb-al-umary",
@@ -26260,7 +27307,10 @@
 },
 "students_links": {
 "Bakr bin Swad'h bin Thmamh": "arees-10849-bakr-bin-swad-h-bin-thmamh"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19409-abu-al-haytham-bin-nasr",
@@ -26328,7 +27378,10 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Ibrahim bin al-Harith": "arees-11213-muhammad-bin-ibrahim-bin-al-harith"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19441-son-of-brother-of-safiyya-bint-huyayy",
@@ -26378,7 +27431,11 @@
 "teachers_links": {
 "Safiyya bint Huyayy": "F1227"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19441 at muslimscholars.info."
 },
 {
 "slug": "arees-19444-hakima-bint-umayma",
@@ -26398,8 +27455,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -26461,7 +27518,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19454-asma-a-bint-abis-bin-rabi-a",
@@ -26529,7 +27588,10 @@
 },
 "students_links": {
 "al-Hasan bin al-Hakam al-Nkh'y": "arees-15089-al-hasan-bin-al-hakam-al-nkh-y"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19467-hafsa-bint-abi-kathir",
@@ -26553,7 +27615,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -26610,7 +27672,9 @@
 "Abu Kathir": "arees-19466-abu-kathir",
 "Umm Salamah": "F1568"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19469-hkymh-bint-umayya-bin",
@@ -26635,7 +27699,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -26689,7 +27753,9 @@
 },
 "students_links": {
 "Yahya bin Abi Sufyan": "arees-12574-yahya-bin-abi-sufyan"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19472-hamayda-bint-yasar",
@@ -26709,7 +27775,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -26764,7 +27830,9 @@
 "teachers_links": {},
 "students_links": {
 "Han'i bin 'Uthman": "arees-15583-han-i-bin-uthman"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19482-zaynab-bint-muhammad-bin-abdullah",
@@ -26836,7 +27904,10 @@
 },
 "students_links": {
 "'Amr bin Shu'aib bin Muhammad": "arees-19934-amr-bin-shu-aib-bin-muhammad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19484-sara-bint-maqsam-dabba",
@@ -26898,7 +27969,10 @@
 },
 "students_links": {
 "'Abdullah bin Yazid bin Dabba/Maqsam": "arees-24248-abdullah-bin-yazid-bin-dabba-maqsam"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19487-slma-amh-abdur-rahman",
@@ -26957,7 +28031,10 @@
 "students_links": {
 "'Abdur Rahman bin Abi Rafi'": "arees-19924-abdur-rahman-bin-abi-rafi",
 "al-Q'qa' bin Hkym al-Knany": "arees-10612-al-q-qa-bin-hkym-al-knany"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19494-sfyh-bint-asmh",
@@ -26982,8 +28059,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -27041,7 +28118,9 @@
 },
 "students_links": {
 "Mty' bin Maymun al-Nbry": "arees-24433-mty-bin-maymun-al-nbry"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19499-al-aaliya-bin-sabay",
@@ -27066,7 +28145,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -27124,7 +28203,9 @@
 },
 "students_links": {
 "'Abdullah bin Malik bin Hudhafa": "arees-13530-abdullah-bin-malik-bin-hudhafa"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19510-fusayla-bint-wa-ila",
@@ -27198,7 +28279,10 @@
 "teachers_links": {
 "Wathla bin al-'Asqa'": "arees-4049-wathla-bin-al-asqa"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19516-krymh-bint-hmam",
@@ -27216,8 +28300,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -27272,7 +28356,9 @@
 "teachers_links": {},
 "students_links": {
 "'Ali bin al-Mubark al-Hna'iy": "arees-20449-ali-bin-al-mubark-al-hna-iy"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19518-kaysa-bint-abi-bakra",
@@ -27334,7 +28420,10 @@
 "teachers_links": {
 "Abu Bakra al-Thaqafi": "arees-3229-abu-bakra-al-thaqafi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19527-munyah-bint-ubaid-bin-abi-burzah",
@@ -27360,7 +28449,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -27411,7 +28500,9 @@
 "teachers_links": {
 "Abu Burzah al-Aslami": "arees-227-abu-burzah-al-aslami"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19528-maymuna-bint-al-walid",
@@ -27437,8 +28528,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -27490,7 +28581,10 @@
 },
 "students_links": {
 "'Abdullah bin 'Ubaidullah b. Abi Mulayka": "arees-11090-abdullah-bin-ubaidullah-b-abi-mulayka"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 2 hadith across 2 collections (Abu Dawud, Ibn Majah). A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19528 at muslimscholars.info."
 },
 {
 "slug": "arees-19534-umm-abiha-bint-abdullah-bin-ja-far",
@@ -27557,7 +28651,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19535-umm-bakr-bint-al-miswar-bin-makhrama",
@@ -27621,7 +28718,10 @@
 "teachers_links": {},
 "students_links": {
 "'Abdullah bin Ja'far bin 'Abdur Rahman": "arees-20505-abdullah-bin-ja-far-bin-abdur-rahman"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19553-umm-abdul-malik",
@@ -27678,7 +28778,10 @@
 "teachers_links": {
 "Abu Mahdhura al-Jumhi": "arees-2416-abu-mahdhura-al-jumhi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19554-umm-amr-bint-abdullah",
@@ -27701,7 +28804,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Bukhari"
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -27746,7 +28849,9 @@
 "teachers_links": {},
 "students_links": {
 "Mu'adhah bint 'Abdullah": "arees-11456-mu-adhah-bint-abdullah"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19558-barka-umm-muhammad-bin-al-sa-ib",
@@ -27822,7 +28927,10 @@
 },
 "students_links": {
 "Muhammad bin al-Sa'ib bin Barka": "arees-13107-muhammad-bin-al-sa-ib-bin-barka"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19804-zayd-abu-ayyash",
@@ -27848,7 +28956,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -27916,7 +29024,9 @@
 },
 "students_links": {
 "'Abdullah bin Yazid al-Makhzumi": "arees-11189-abdullah-bin-yazid-al-makhzumi"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19806-sam-an-abu-yahya-al-aslami",
@@ -27935,7 +29045,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -27995,7 +29105,9 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Abi Yahya": "arees-12491-muhammad-bin-abi-yahya"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19819-amr-bin-abdullah",
@@ -28021,7 +29133,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -28083,7 +29195,9 @@
 },
 "students_links": {
 "Yazid bin 'Abdullah bin Khusayfa": "arees-11235-yazid-bin-abdullah-bin-khusayfa"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19824-nabhan-abu-yahya-al-makhzumi",
@@ -28158,7 +29272,10 @@
 "students_links": {
 "al-Zuhri": "F1995",
 "Muhammad bin 'Abdur Rahman bin 'Ubaid": "arees-10818-muhammad-bin-abdur-rahman-bin-ubaid"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19827-abu-ja-far",
@@ -28224,7 +29341,10 @@
 "teachers_links": {
 "Abu Hurairah": "F0129"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19833-amr-bin-abdullah",
@@ -28250,10 +29370,10 @@
 ],
 "hadith_narrations_count": 6,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -28328,7 +29448,9 @@
 },
 "students_links": {
 "al-Zuhri": "F1995"
-}
+},
+"hadith_chain_count": 6,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19842-juriyya-bin-kulaib-al-sadusi-al-nahdi",
@@ -28405,7 +29527,10 @@
 "Ali ibn Abi Talib": "F0366",
 "Basheer bin Ma'bad/al-Khasasiyya": "arees-4082-basheer-bin-ma-bad-al-khasasiyya"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19879-mry-bin-qtry-al-kwfy",
@@ -28430,10 +29555,10 @@
 ],
 "hadith_narrations_count": 5,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -28512,7 +29637,9 @@
 "teachers_links": {},
 "students_links": {
 "Smak bin Hrb bin Aws": "arees-10770-smak-bin-hrb-bin-aws"
-}
+},
+"hadith_chain_count": 5,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19882-han-i-bin-han-i-al-hmdany",
@@ -28537,8 +29664,7 @@
 ],
 "hadith_narrations_count": 4,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -28613,7 +29739,9 @@
 },
 "students_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19902-thabit-bin-sa-id-bin-ubaid",
@@ -28676,7 +29804,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19910-sa-id-bin-salmah-al-mkhzwmy",
@@ -28736,7 +29867,10 @@
 "students_links": {
 "Safwan bin Slym al-Madni": "arees-11177-safwan-bin-slym-al-madni",
 "al-Jlah Abu Kathir al-Amwy Mwlahm": "arees-10852-al-jlah-abu-kathir-al-amwy-mwlahm"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19916-asim-bin-lqyt-bin-sbrh",
@@ -28761,10 +29895,10 @@
 ],
 "hadith_narrations_count": 9,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -28838,7 +29972,9 @@
 },
 "students_links": {
 "Isma'il bin Kathir": "arees-19829-isma-il-bin-kathir"
-}
+},
+"hadith_chain_count": 9,
+"hadith_narrated_count": 6
 },
 {
 "slug": "arees-19923-abdullah-bin-naf",
@@ -28864,8 +30000,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -28930,7 +30066,9 @@
 },
 "students_links": {
 "'Abdullah bin lahya'a bin 'Uqba": "arees-20624-abdullah-bin-lahya-a-bin-uqba"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19953-abu-al-badah",
@@ -28954,10 +30092,10 @@
 ],
 "hadith_narrations_count": 5,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"abu-dawood",
+"al-tirmidhi",
+"ibn-e-majah",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -29038,7 +30176,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 5,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19956-abu-al-matwas",
@@ -29065,7 +30205,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -29122,7 +30262,9 @@
 },
 "students_links": {
 "Habib bin Abi Thabit": "arees-11331-habib-bin-abi-thabit"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-20207-asbat-abu-al-yas-a-al-basri",
@@ -29151,7 +30293,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Bukhari"
+"sahih-bukhari"
 ],
 "hadith_narrated": [
 {
@@ -29207,7 +30349,9 @@
 "teachers_links": {
 "Shu'bah bin al-Hajjaj": "arees-20020-shu-bah-bin-al-hajjaj"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-20266-umar-bin-al-ala-bin-ammar",
@@ -29276,7 +30420,10 @@
 "students_links": {
 "'Abdullah bin Raja' bin 'Umar": "arees-20245-abdullah-bin-raja-bin-umar",
 "Yahya bin Kathir bin Darham": "arees-20302-yahya-bin-kathir-bin-darham"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20549-swad-h-bin-abi-al-aswad-al-qatan",
@@ -29299,7 +30446,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sahih Muslim"
+"sahih-muslim"
 ],
 "hadith_narrated": [
 {
@@ -29362,7 +30509,9 @@
 "teachers_links": {
 "Muslim bin Mukhraq al-Abdi": "arees-10718-muslim-bin-mukhraq-al-abdi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-20652-sa-id-bin-abdur-rahman",
@@ -29410,7 +30559,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 712 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 20652 at muslimscholars.info."
 },
 {
 "slug": "arees-20664-abdul-malik-bin-ma-n",
@@ -29464,7 +30617,11 @@
 "teachers_links": {
 "Sulaiman al-A'mash": "arees-11060-sulaiman-al-a-mash"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 20664 at muslimscholars.info."
 },
 {
 "slug": "arees-20673-muhammad-bin-amr-al-yafa-i",
@@ -29524,7 +30681,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 751 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 20673 at muslimscholars.info."
 },
 {
 "slug": "arees-20709-ja-far-bin-khalid-bin-sarah",
@@ -29594,7 +30755,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21109-yazid-bin-mrdanbh-al-quraishi-al-tajr",
@@ -29695,7 +30859,10 @@
 "generation": "Follower(Tabi')",
 "source": "https://hadithtransmitters.hawramani.com/يزيد-بن-مردانبه/"
 }
-]
+],
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21262-zufr-bin-al-hadhayl-bin-qays",
@@ -29784,7 +30951,10 @@
 "teachers_links": {
 "Abu Hanifa": "F0772"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21300-shdad-bin-abi-al-alih-mwla",
@@ -29834,7 +31004,11 @@
 },
 "students_links": {
 "Fadayl bin Ghazwan bin Jarir": "arees-20349-fadayl-bin-ghazwan-bin-jarir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21300 at muslimscholars.info."
 },
 {
 "slug": "arees-21314-al-slt-bin-bhram-kwfa-azyz",
@@ -29901,7 +31075,11 @@
 "Shaqayq bin Salmah al-Asadi": "arees-11353-shaqayq-bin-salmah-al-asadi",
 "Zayd bin Wahb al-Jhny": "arees-11341-zayd-bin-wahb-al-jhny"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21314 at muslimscholars.info."
 },
 {
 "slug": "arees-21315-al-slt-bin-al-hjaj-kwfa",
@@ -29957,7 +31135,11 @@
 "'Ata' bin Abi Rabah": "F0482",
 "Mujalid bin Sa'id bin 'Umayr": "arees-10820-mujalid-bin-sa-id-bin-umayr"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21315 at muslimscholars.info."
 },
 {
 "slug": "arees-21335-abdullah-bin-mbshr",
@@ -30016,7 +31198,11 @@
 },
 "students_links": {
 "al-Fadl bin Dakayn, Abu Na'eem": "arees-20348-al-fadl-bin-dakayn-abu-na-eem"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21335 at muslimscholars.info."
 },
 {
 "slug": "arees-21338-abdur-rahman-bin-zubayd-bin-al-harith",
@@ -30078,7 +31264,11 @@
 "teachers_links": {
 "Zubayd bin al-Harith": "arees-11335-zubayd-bin-al-harith"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. Death year recorded as 147 AH. Entry 21338 at muslimscholars.info."
 },
 {
 "slug": "arees-21357-abu-mwdwd-al-madni-asmh-abd",
@@ -30101,9 +31291,7 @@
 "arees-21357-abu-mwdwd-al-madni-asmh-abd"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Jami' al-Tirmidhi"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Jami' al-Tirmidhi",
@@ -30150,7 +31338,9 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Ka'b bin Sulaym al-Qarzi": "arees-11221-muhammad-bin-ka-b-bin-sulaym-al-qarzi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-21452-jmyl-bin-abi-maymunh",
@@ -30205,7 +31395,11 @@
 },
 "students_links": {
 "Ibn Ishaq": "F0739"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21452 at muslimscholars.info."
 },
 {
 "slug": "arees-21601-ishaq-bin-abi-ishaq",
@@ -30274,7 +31468,11 @@
 "teachers_links": {
 "Abu Ishaq al-Sabay'ai'": "arees-11049-abu-ishaq-al-sabay-ai"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21601 at muslimscholars.info."
 },
 {
 "slug": "arees-22015-ishaq-bin-ibrahim-bin-sa-id",
@@ -30355,7 +31553,10 @@
 "teachers_links": {
 "Safwan bin Slym al-Madni": "arees-11177-safwan-bin-slym-al-madni"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22017-ishaq-bin-abi-bakr",
@@ -30433,7 +31634,10 @@
 },
 "students_links": {
 "Abu 'Amir al-'Aqdi": "arees-20443-abu-amir-al-aqdi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22039-al-husain-bin-ali-bin-al-husain",
@@ -30502,7 +31706,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 712 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22057-rfa-h-bin-yahya-bin-abd",
@@ -30573,7 +31780,10 @@
 },
 "students_links": {
 "'Abdul 'Aziz bin 'Imarn bin 'Abdul 'Aziz": "arees-22130-abdul-aziz-bin-imarn-bin-abdul-aziz"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22062-zayd-bin-abdul-hameed-al-advi",
@@ -30659,7 +31869,10 @@
 },
 "students_links": {
 "Da'ud bin Ata'a al-Mazni": "arees-22054-da-ud-bin-ata-a-al-mazni"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22067-sa-id-bin-sufyan-al-aslmy",
@@ -30747,7 +31960,10 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Abi Fadayk": "arees-20172-muhammad-bin-abi-fadayk"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22108-abdullah-bin-musa",
@@ -30804,7 +32020,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22122-abdur-rahman-bin-aby",
@@ -30872,7 +32091,10 @@
 },
 "students_links": {
 "'Abdul 'Aziz bin Muhammad al-Daruradi": "arees-20167-abdul-aziz-bin-muhammad-al-daruradi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22132-abdul-aziz-bin-muslim",
@@ -30941,7 +32163,10 @@
 "students_links": {
 "Mu'awiya bin Salah bin Hadayr": "arees-20675-mu-awiya-bin-salah-bin-hadayr",
 "Ibn Ishaq": "F0739"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22144-ubaid-bin-maymun",
@@ -31016,7 +32241,10 @@
 "Muhammad bin Ja'far bin Abi Kathir": "arees-20173-muhammad-bin-ja-far-bin-abi-kathir",
 "Muhammad bin Hilal bin Aby": "arees-12489-muhammad-bin-hilal-bin-aby"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22192-muhammad-bin-abdur-rahman-bin-mahran",
@@ -31092,7 +32320,10 @@
 "students_links": {
 "Marwan bin Mua'wiya al-Fazari": "arees-20201-marwan-bin-mua-wiya-al-fazari",
 "Abu 'Amir al-'Aqdi": "arees-20443-abu-amir-al-aqdi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22204-muhammad-bin-n-ym",
@@ -31166,7 +32397,10 @@
 "teachers_links": {},
 "students_links": {
 "al-Waqidi": "arees-20120-al-waqidi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22205-al-mthna-bin-yazid",
@@ -31227,7 +32461,10 @@
 },
 "students_links": {
 "'Asim bin Muhammad bin Zayd": "arees-20163-asim-bin-muhammad-bin-zayd"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22213-al-munkdar-bin-muhammad-bin-al-munkdar",
@@ -31252,7 +32489,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -31311,7 +32548,9 @@
 "Muhammad bin al-Munkdar bin 'Abdullah": "arees-11048-muhammad-bin-al-munkdar-bin-abdullah",
 "al-Zuhri": "F1995"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-22227-yahya-bin-bashyr-bin-khlad",
@@ -31369,7 +32608,10 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Abi Fadayk": "arees-20172-muhammad-bin-abi-fadayk"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22239-y-aqub-bin-ja-far-bin-abi-kathir",
@@ -31436,7 +32678,10 @@
 "teachers_links": {
 "Musa bin Y'aqub bin 'Abdullah bin Wahb": "arees-20706-musa-bin-y-aqub-bin-abdullah-bin-wahb"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22244-y-la-bin-abi-yahya",
@@ -31507,7 +32752,10 @@
 },
 "students_links": {
 "Mus'ab bin Muhammad": "arees-13121-mus-ab-bin-muhammad"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22249-abu-bakr-bin-muhammad-bin-zayd",
@@ -31559,7 +32807,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 702 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22254-abu-al-jawayriyya",
@@ -31635,7 +32886,10 @@
 },
 "students_links": {
 "Hmad bin Khalid al-Khyat": "arees-20537-hmad-bin-khalid-al-khyat"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-22737-yahya-bin-abdullah-bin-abdur-rahman",
@@ -31690,7 +32944,11 @@
 },
 "students_links": {
 "Ibn Ishaq": "F0739"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 22737 at muslimscholars.info."
 },
 {
 "slug": "arees-22782-amr-bin-muslim-sahb-al-mqswrh",
@@ -31760,7 +33018,10 @@
 "students_links": {
 "Muhammad bin Khazim al-Darir": "arees-20354-muhammad-bin-khazim-al-darir",
 "'Abdullah bin Muhammad bin 'Abdullah": "arees-20508-abdullah-bin-muhammad-bin-abdullah"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-23011-al-hasan-bin-muhammad-bin-ubaidullah",
@@ -31787,8 +33048,8 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan Ibn Majah"
+"al-tirmidhi",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -31846,7 +33107,9 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Yazid bin Khnys": "arees-23059-muhammad-bin-yazid-bin-khnys"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-23025-abdullah-bin-al-harith",
@@ -31902,7 +33165,10 @@
 },
 "students_links": {
 "'Abdur Rahman bin 'Abdullah bin 'Ubaid": "arees-20195-abdur-rahman-bin-abdullah-bin-ubaid"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-23051-muhammad-bin-hnzlh-bin-muhammad",
@@ -31981,7 +33247,10 @@
 "teachers_links": {
 "Ma'rwf bin Mshkan": "arees-23064-ma-rwf-bin-mshkan"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-23055-muhammad-bin-abdul-malik-bin-jurauj",
@@ -32060,7 +33329,10 @@
 "teachers_links": {},
 "students_links": {
 "Ruh bin 'Ubada bin al-'Ala'": "arees-20229-ruh-bin-ubada-bin-al-ala"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-23056-muhammad-bin-abdul-malik-bin-abi-mahdhu",
@@ -32084,7 +33356,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -32144,7 +33416,9 @@
 "teachers_links": {
 "'Abdul Malik bin Abi Mahdhura": "arees-18665-abdul-malik-bin-abi-mahdhura"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-23072-yahya-bin-abdullah-bin-ubaidullah",
@@ -32168,7 +33442,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -32219,7 +33493,9 @@
 "teachers_links": {
 "'Abdullah bin 'Ubaidullah b. Abi Mulayka": "arees-11090-abdullah-bin-ubaidullah-b-abi-mulayka"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-23507-salah-bin-ajalan-hijazi",
@@ -32237,8 +33513,8 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Abi Da'ud",
-"Sunan Ibn Majah"
+"abu-dawood",
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -32320,7 +33596,9 @@
 "students_links": {
 "Falayh bin Suliaman": "arees-20169-falayh-bin-suliaman",
 "Sulaiman bin Bilal al-Taymi": "arees-20160-sulaiman-bin-bilal-al-taymi"
-}
+},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24006-ibrahim-bin-sdqh-al-basri",
@@ -32348,7 +33626,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -32409,7 +33687,9 @@
 "teachers_links": {
 "Sufyan bin Hussain bin al-Hasan": "arees-20655-sufyan-bin-hussain-bin-al-hasan"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24017-isma-il-bin-ibrahim-al-krabysy",
@@ -32488,7 +33768,10 @@
 "teachers_links": {
 "'Abdullah bin 'Awn bin Artaban": "arees-11071-abdullah-bin-awn-bin-artaban"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24022-ash-th-bin-abdur-rahman",
@@ -32514,7 +33797,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -32567,7 +33850,9 @@
 "teachers_links": {
 "Abu Qalaba, 'Abdullah bin Zayd al-Jarmi": "arees-11047-abu-qalaba-abdullah-bin-zayd-al-jarmi"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24031-bstam-bin-hryth",
@@ -32591,7 +33876,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -32655,7 +33940,9 @@
 "teachers_links": {
 "Asha'th bin 'Abdullah bin Jabir": "arees-19837-asha-th-bin-abdullah-bin-jabir"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24078-haraysh-bin-al-kharrayt",
@@ -32730,7 +34017,10 @@
 },
 "students_links": {
 "Muslim bin Ibrahim al-Azdy": "arees-20285-muslim-bin-ibrahim-al-azdy"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24132-rb-y-bin-abdullah",
@@ -32750,7 +34040,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -32798,7 +34088,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24210-sard-bin-abi-al-manazil",
@@ -32824,7 +34116,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -32885,7 +34177,9 @@
 "teachers_links": {
 "Habib bin Abi Fadalan/Fadala": "arees-14069-habib-bin-abi-fadalan-fadala"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24226-aabad-bin-musa-bin-shdad",
@@ -32952,7 +34246,10 @@
 "teachers_links": {
 "Yonus bin 'Ubaid bin Dinar": "arees-11075-yonus-bin-ubaid-bin-dinar"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24234-abdullah-bin-sawar-bin-abdullah",
@@ -33024,7 +34321,10 @@
 "teachers_links": {
 "Sawar bin 'Abdullah bin Qadama": "arees-24191-sawar-bin-abdullah-bin-qadama"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24237-abdullah-bin-tryf",
@@ -33078,7 +34378,11 @@
 "teachers_links": {
 "Abd al-Krym bin al-Harith": "arees-10869-abd-al-krym-bin-al-harith"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 24237 at muslimscholars.info."
 },
 {
 "slug": "arees-24279-abdul-malik-bin-mysrh",
@@ -33129,7 +34433,11 @@
 },
 "students_links": {
 "Sulaiman bin Da'ud bin al-Jarud": "arees-20547-sulaiman-bin-da-ud-bin-al-jarud"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 24279 at muslimscholars.info."
 },
 {
 "slug": "arees-24364-al-fadl-bin-abi-al-hakam",
@@ -33197,7 +34505,10 @@
 "Abu 'Amir al-'Aqdi": "arees-20443-abu-amir-al-aqdi",
 "Y'aqub bin Ishaq bin Zayd": "arees-20679-y-aqub-bin-ishaq-bin-zayd",
 "Sulaiman bin Da'ud bin al-Jarud": "arees-20547-sulaiman-bin-da-ud-bin-al-jarud"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24384-muhammad-bin-ibrahim-bin-al-mtlb",
@@ -33256,7 +34567,10 @@
 "teachers_links": {
 "Zhrh bin 'Amr bin Mnqdh": "arees-23419-zhrh-bin-amr-bin-mnqdh"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24389-muhammad-bin-thabit-bin-aslam-al-banani",
@@ -33279,7 +34593,7 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -33324,7 +34638,9 @@
 "teachers_links": {
 "Thabit bin Aslam Albanani": "arees-11269-thabit-bin-aslam-albanani"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24397-muhammad-bin-dhkwan",
@@ -33344,7 +34660,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -33384,7 +34700,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 712 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-24406-muhammad-bin-abdullah-al-ami",
@@ -33472,7 +34790,10 @@
 },
 "students_links": {
 "Hashim bin al-Qasim bin Muslim": "arees-20390-hashim-bin-al-qasim-bin-muslim"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24452-maymun-bin-aban",
@@ -33544,7 +34865,10 @@
 "students_links": {
 "Zayd bin al-Habab al-'Akli": "arees-20650-zayd-bin-al-habab-al-akli",
 "al-Dahhak bin Mukhlad Abu 'Asim al-Nabil": "arees-20241-al-dahhak-bin-mukhlad-abu-asim-al-nabil"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24481-al-walid-bin-yazid-al-hadadi",
@@ -33615,7 +34939,10 @@
 "teachers_links": {
 "Abu 'Abd al-Da'im": "arees-24516-abu-abd-al-da-im"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-24516-abu-abd-al-da-im",
@@ -33685,7 +35012,10 @@
 "teachers_links": {
 "Abu al-Malih ('Amir) bin Usama": "arees-11453-abu-al-malih-amir-bin-usama"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-82-faree-ah-bint-malik",
@@ -33743,7 +35073,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-105-abdullah-bin-abi-hadrad-al-aslami",
@@ -33801,7 +35134,11 @@
 "teachers_links": {
 "'Umar ibn al-Khattab": "F1433"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 71 AH. Entry 105 at muslimscholars.info."
 },
 {
 "slug": "arees-333-haritha-bin-al-nu-man",
@@ -33852,7 +35189,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 595 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 40 AH. Entry 333 at muslimscholars.info."
 },
 {
 "slug": "arees-392-samra-b-junada",
@@ -33921,7 +35262,10 @@
 "teachers_links": {},
 "students_links": {
 "Jabir bin Samra": "arees-393-jabir-bin-samra"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-408-abu-amir-al-asha-ari",
@@ -33940,9 +35284,7 @@
 "'Amir bin Abi 'Amir"
 ],
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Jami' al-Tirmidhi"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Jami' al-Tirmidhi",
@@ -33983,7 +35325,10 @@
 "teachers_links": {},
 "students_links": {
 "'Amir bin Abi 'Amir": "arees-18480-amir-bin-abi-amir"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 8 AH. Entry 408 at muslimscholars.info."
 },
 {
 "slug": "arees-431-zaynab-bint-al-awwam-bin-khuwaylid",
@@ -34019,7 +35364,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-442-ai-sha-bint-qudamah-bin-maz-un",
@@ -34090,7 +35438,10 @@
 "'Amr ibn Husayn"
 ],
 "bio": "Ibn Hibban's al-Thiqat (vol. 5, p. 289, Tabi'in section, shamela) says 'A'isha bint Qudama ibn Maz'un al-Jumahi narrated from her father and that Qudama ibn Ibrahim ibn Muhammad ibn Hatib and 'Amr ibn Husayn narrated from her.",
-"bio_full_source": "https://shamela.ws/book/5816/1806"
+"bio_full_source": "https://shamela.ws/book/5816/1806",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-488-abdur-rahman-bin-safwan-bin-umayyah",
@@ -34172,7 +35523,10 @@
 "teachers_links": {},
 "students_links": {
 "'Abdullah bin 'Ubaidullah b. Abi Mulayka": "arees-11090-abdullah-bin-ubaidullah-b-abi-mulayka"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-606-tameem-bin-zayd-ghaziya-mazni",
@@ -34189,9 +35543,9 @@
 ],
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sahih Bukhari",
-"Sunan Ibn Majah",
-"Sunan an-Nasa'i"
+"ibn-e-majah",
+"sahih-bukhari",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -34252,7 +35606,9 @@
 "teachers_links": {},
 "students_links": {
 "'Abbad bin Tameem Mazni": "arees-639-abbad-bin-tameem-mazni"
-}
+},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-612-mu-adh-bin-afra",
@@ -34309,7 +35665,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 595 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 40 AH. Entry 612 at muslimscholars.info."
 },
 {
 "slug": "arees-665-muhammad-bin-anas-bin-fadala",
@@ -34359,7 +35719,11 @@
 "Anas bin Fadala bin 'Adi bin Haram": "arees-663-anas-bin-fadala-bin-adi-bin-haram",
 "Fadala bin 'Adi bin Haram": "arees-662-fadala-bin-adi-bin-haram"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 665 at muslimscholars.info."
 },
 {
 "slug": "arees-711-fatima-bint-al-mujallal",
@@ -34430,7 +35794,10 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin Hatib bin al-Harith": "F1046"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-712-al-harith-bin-hatib-bin-al-harith",
@@ -34496,7 +35863,11 @@
 "teachers_links": {},
 "students_links": {
 "Yusuf bin Sa'd al-Jumahi": "arees-14434-yusuf-bin-sa-d-al-jumahi"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 66 AH. Entry 712 at muslimscholars.info."
 },
 {
 "slug": "arees-726-al-aswad-bin-khalaf-bin-abd-yakhuth",
@@ -34548,7 +35919,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-727-muhammad-bin-al-aswad-bin-khalaf",
@@ -34591,7 +35965,11 @@
 "teachers_links": {
 "al-Aswad bin Khalaf bin 'Abd Yakhuth": "arees-726-al-aswad-bin-khalaf-bin-abd-yakhuth"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 727 at muslimscholars.info."
 },
 {
 "slug": "arees-906-abd-al-muttalib-b-rabi-ah-b-al-harith",
@@ -34617,8 +35995,7 @@
 ],
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -34697,7 +36074,9 @@
 "teachers_links": {
 "Ali ibn Abi Talib": "F0366"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-923-al-qasim-bin-makhrama",
@@ -34725,7 +36104,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 923 at muslimscholars.info."
 },
 {
 "slug": "arees-940-rukanah-bin-abd-yazid-bin-hashim",
@@ -34785,7 +36168,10 @@
 "teachers_links": {},
 "students_links": {
 "Nafi' b. 'Ujayr b. 'Abd Yazid b. Hashim": "arees-947-nafi-b-ujayr-b-abd-yazid-b-hashim"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-945-ujayr-bin-abd-yazid-bin-hashim",
@@ -34803,7 +36189,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -34843,7 +36229,10 @@
 "teachers_links": {},
 "students_links": {
 "Nafi' b. 'Ujayr b. 'Abd Yazid b. Hashim": "arees-947-nafi-b-ujayr-b-abd-yazid-b-hashim"
-}
+},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Abu Dawud). Listed among the Companions. Death year recorded as 41 AH. Entry 945 at muslimscholars.info."
 },
 {
 "slug": "arees-961-judhama-bint-jandal-al-asadiyya",
@@ -34907,7 +36296,10 @@
 "teachers_links": {},
 "students_links": {
 "'Aisha bint Abi Bakr": "F0199"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1029-abdur-rahman-bin-al-hubab-bin-amr",
@@ -34964,7 +36356,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1205-yahya-bin-as-ad-bin-zurara",
@@ -35011,7 +36406,11 @@
 "teachers_links": {},
 "students_links": {
 "Muhammad bin 'Abdur Rahman bin Sa'd": "arees-11219-muhammad-bin-abdur-rahman-bin-sa-d"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 1205 at muslimscholars.info."
 },
 {
 "slug": "arees-1222-al-rabi-bin-ubayy-ibn-ka-b",
@@ -35075,7 +36474,10 @@
 "teachers_links": {
 "Ubayy ibn Ka'b": "F1412"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1268-kabsha-bint-bint-thabit",
@@ -35122,7 +36524,11 @@
 "teachers_links": {},
 "students_links": {
 "'Abdur Rahman bin Abi 'Amra": "arees-1238-abdur-rahman-bin-abi-amra"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 1268 at muslimscholars.info."
 },
 {
 "slug": "arees-1294-umm-al-ala-al-ansariyya",
@@ -35189,7 +36595,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1295-the-aunt-of-husayn-bin-mihsan",
@@ -35232,7 +36641,11 @@
 "teachers_links": {},
 "students_links": {
 "al-Kilabiyya": "arees-4035-al-kilabiyya"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 1295 at muslimscholars.info."
 },
 {
 "slug": "arees-1335-malik-bin-sa-sa-a",
@@ -35249,10 +36662,9 @@
 ],
 "hadith_narrations_count": 8,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi",
-"Sahih Bukhari",
-"Sahih Muslim",
-"Sunan an-Nasa'i"
+"al-tirmidhi",
+"sahih-bukhari",
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -35322,7 +36734,9 @@
 "teachers_links": {},
 "students_links": {
 "Anas bin Malik": "F0440"
-}
+},
+"hadith_chain_count": 6,
+"hadith_narrated_count": 6
 },
 {
 "slug": "arees-1399-umm-malik-al-ansariyya",
@@ -35380,7 +36794,10 @@
 "teachers_links": {},
 "students_links": {
 "Jabir ibn 'Abdullah": "F0808"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1515-ziyad-bin-labid",
@@ -35406,7 +36823,7 @@
 ],
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -35452,7 +36869,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 596 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0,
+"bio_auto": "Named as a transmitter in 1 hadith across 1 collection (Ibn Majah). Listed among the Companions. Death year recorded as 41 AH. Entry 1515 at muslimscholars.info."
 },
 {
 "slug": "arees-1727-thabit-bin-wadi-a",
@@ -35530,7 +36950,10 @@
 "students_links": {
 "al-Bara' bin Azib bin al-Harith": "F0218",
 "Zayd bin Wahb al-Jhny": "arees-11341-zayd-bin-wahb-al-jhny"
-}
+},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1892-thabit-bin-al-samit-al-ansari",
@@ -35587,7 +37010,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1893-abdur-rahman-bin-thabit",
@@ -35656,7 +37082,10 @@
 "teachers_links": {
 "Thabit bin al-Samit al-Ansari": "arees-1892-thabit-bin-al-samit-al-ansari"
 },
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1985-khadij-bin-rafi",
@@ -35701,7 +37130,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-1987-zuhayr-bin-rafi",
@@ -35765,7 +37197,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-2005-umm-harith-bint-ayyash-bin-abi-rabi-a",
@@ -35799,7 +37234,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 615 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 2005 at muslimscholars.info."
 },
 {
 "slug": "arees-2011-al-harith-bin-hisham",
@@ -35857,6 +37296,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 575 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. Death year recorded as 18 AH. Entry 2011 at muslimscholars.info."
 }
 ]

@@ -1,6 +1,7 @@
 {
- "version": "batch12-dupclean-20261003",
- "count": 18117,
+ "version": "batch13-quality-20261005",
+ "count": 18087,
+ "hidden": 184,
  "shards": {
   "narrators_001.json": 500,
   "narrators_002.json": 499,
@@ -41,8 +42,8 @@
   "narrators_037.json": 499,
   "narrators_038.json": 499,
   "narrators_039.json": 435,
-  "narrators_040.json": 500,
-  "narrators_041.json": 500,
+  "narrators_040.json": 485,
+  "narrators_041.json": 485,
   "narrators_042.json": 31
  }
 }

@@ -51,7 +51,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18647-abdur-rahman-bin-muhammad",
@@ -96,7 +99,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18653-abdur-rahman-bin-yazid",
@@ -147,7 +153,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18654-abdul-aziz-akhw-hdhyfh",
@@ -196,7 +205,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18658-abdul-malik-bin-sl",
@@ -256,7 +268,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18660-abdul-malik-bin-ubaid",
@@ -294,7 +309,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18660 at muslimscholars.info."
 },
 {
 "slug": "arees-18662-abdul-malik-bin-alaq",
@@ -308,7 +327,7 @@
 "generation": "Follower(Tabi') [ 5th generation ]",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Jami' al-Tirmidhi"
+"al-tirmidhi"
 ],
 "hadith_narrated": [
 {
@@ -353,7 +372,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18668-abdul-malik-al-zubairi",
@@ -401,7 +422,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18669-abdul-malik-al-qaysy-mjhwl",
@@ -438,7 +462,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18677-ubaidullah-bin-salman",
@@ -488,7 +515,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18682-ubaidullah-bin-abd",
@@ -530,7 +560,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18682 at muslimscholars.info."
 },
 {
 "slug": "arees-18685-ubaidullah-bin-ali",
@@ -582,7 +616,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18690-ubaidullah-bin-yazid",
@@ -640,16 +677,19 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18691-ubaidullah-no-identity",
-"tier": "C",
+"tier": "C-thin",
 "arees_id": 18691,
-"famous": "'Ubaidullah (no Identity)",
+"famous": "'Ubaidullah (name only)",
 "type": "Narrator",
 "relations": [],
-"full": "'Ubaidullah (no Identity)",
+"full": "'Ubaidullah (name only)",
 "full_name_ar": "عبيد الله غير منسوب",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=18691",
@@ -687,7 +727,12 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hidden": true,
+"hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18693-ubaid-bin-t-la",
@@ -746,7 +791,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18695-ubaid-bin-al-khshkhash",
@@ -796,7 +844,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 654 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. Death year recorded as 100 AH. Entry 18695 at muslimscholars.info."
 },
 {
 "slug": "arees-18701-ubaid-mwla-al-sa-ib",
@@ -856,7 +908,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18707-uthman-bin-al-harith-abu-al-ruwa",
@@ -909,7 +964,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18722-arfjh-bin-abdullah",
@@ -968,7 +1026,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18727-urwa-bin-muhammad-bin-atyh",
@@ -1010,7 +1071,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 673 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 120 AH. Entry 18727 at muslimscholars.info."
 },
 {
 "slug": "arees-18728-urwa-al-mzny",
@@ -1063,7 +1128,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18729-azrh-bin-yahya",
@@ -1094,7 +1162,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18729 at muslimscholars.info."
 },
 {
 "slug": "arees-18731-ata-a-bin-abi-alqama",
@@ -1142,7 +1214,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18735-ata-a-mwla-abi-ahmed",
@@ -1194,7 +1269,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18741-afyf-bin-amr-bin-al-msyb",
@@ -1257,7 +1335,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18744-uqba-al-aqili",
@@ -1305,7 +1386,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18762-ali-bin-yazid-bin-rkanh",
@@ -1367,7 +1451,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18763-amar-bin-rzyq-al-umary",
@@ -1413,7 +1500,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18763 at muslimscholars.info."
 },
 {
 "slug": "arees-18785-amr-bin-jrad-al-tmymy",
@@ -1467,7 +1558,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18788-amr-bin-hrysh",
@@ -1524,7 +1618,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18810-amr-bin-wabs-h-bin-ma-bd",
@@ -1580,7 +1677,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18812-amr-bin-al-walid",
@@ -1632,7 +1732,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18815-imran-bin-husayn-al-dby",
@@ -1666,7 +1769,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18815 at muslimscholars.info."
 },
 {
 "slug": "arees-18830-al-ala-bin-khathir-al-iskandarani",
@@ -1732,7 +1839,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 696 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18847-al-fadl-bin-atyh-bin-amr",
@@ -1790,7 +1900,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18848-fdyl-bin-ayad-al-khwlany",
@@ -1842,7 +1955,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18849-fdyl-al-najy-mjhwl-w-nh-hafs",
@@ -1886,7 +2002,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18862-qrh-bin-bashr-al-klby",
@@ -1939,7 +2058,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18869-qays-bin-mas-ud",
@@ -1994,7 +2116,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18871-qays-al-bdy-wald-al-aswad",
@@ -2058,7 +2183,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18874-kathir-bin-abi-kathir",
@@ -2107,7 +2235,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18877-kurdus-bin-al-abbas-or-amr-al-tha-labi",
@@ -2182,7 +2313,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18880-ka-b-al-amwy-mwla",
@@ -2227,7 +2361,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18884-kinana-bin-al-abbas-bin-mardas",
@@ -2287,7 +2424,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18886-klab-bin-ali-al-hnfy",
@@ -2325,7 +2465,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18886 at muslimscholars.info."
 },
 {
 "slug": "arees-18890-muhammad-bin-ibrahim",
@@ -2364,7 +2508,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18890 at muslimscholars.info."
 },
 {
 "slug": "arees-18891-muhammad-bin-isma-il-bin-mhajr",
@@ -2409,7 +2557,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18894-muhammad-bin-thabit-bin-sba",
@@ -2466,7 +2617,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18898-muhammad-bin-habib",
@@ -2534,7 +2688,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18904-muhammad-bin-khthym",
@@ -2595,7 +2752,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18909-muhammad-bin-zayd",
@@ -2633,7 +2793,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18909 at muslimscholars.info."
 },
 {
 "slug": "arees-18914-muhammad-bin-shrhbyl",
@@ -2671,7 +2835,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18914 at muslimscholars.info."
 },
 {
 "slug": "arees-18931-muhammad-bin-ar-bin-abi-zabab",
@@ -2701,7 +2869,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18931 at muslimscholars.info."
 },
 {
 "slug": "arees-18936-muhammad-bin-atiyya-bin-urwa",
@@ -2747,7 +2919,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 654 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. Death year recorded as 100 AH. Entry 18936 at muslimscholars.info."
 },
 {
 "slug": "arees-18949-muhammad-bin-amr-bin-jabla",
@@ -2792,7 +2968,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18951-muhammad-bin-umayr",
@@ -2852,7 +3031,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18954-muhammad-bin-qays",
@@ -2882,7 +3064,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 18954 at muslimscholars.info."
 },
 {
 "slug": "arees-18957-muhammad-bin-malik-al-jwzjany",
@@ -2928,7 +3114,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18961-muhammad-bin-yazid-bin-rkanh",
@@ -2977,7 +3166,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18963-malik-bin-tha-laba-bin-abi-malik",
@@ -3035,7 +3227,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18964-malik-bin-zbyd",
@@ -3096,7 +3291,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18969-mhdwj-al-dhhly",
@@ -3109,9 +3307,7 @@
 "full_name_ar": "محدوج الذهلي",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "hadith_narrations_count": 1,
-"hadith_source_collections": [
-"Sunan Ibn Majah"
-],
+"hadith_source_collections": [],
 "hadith_narrated": [
 {
 "book": "Sunan Ibn Majah",
@@ -3162,7 +3358,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-18985-muslim-bin-jbyr",
@@ -3222,7 +3420,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18990-muslim-bin-abdullah-bin-khubayb",
@@ -3273,7 +3474,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18991-ubaidullah-bin-muslim-al-qarshi",
@@ -3332,16 +3536,19 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-18996-muslim-no-identity",
-"tier": "C",
+"tier": "C-thin",
 "arees_id": 18996,
-"famous": "Muslim (no Identity)",
+"famous": "Muslim (name only)",
 "type": "Narrator",
 "relations": [],
-"full": "Muslim (no Identity)",
+"full": "Muslim (name only)",
 "full_name_ar": "مسلم غير منسوب",
 "generation": "Follower(Tabi') [ 3rd Generation ]",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=18996",
@@ -3366,7 +3573,13 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hidden": true,
+"hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 18996 at muslimscholars.info."
 },
 {
 "slug": "arees-19005-musbah-musfah-al-amiri",
@@ -3422,7 +3635,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19009-mtyr-bin-slym-al-wady",
@@ -3479,7 +3695,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19012-mua-dh-bin-sa-d",
@@ -3517,7 +3736,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19012 at muslimscholars.info."
 },
 {
 "slug": "arees-19018-ma-bad-bin-khalid-bin-anas",
@@ -3570,7 +3793,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19025-mghyth-hjazy",
@@ -3623,16 +3849,19 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19056-musa-no-identity",
-"tier": "C",
+"tier": "C-thin",
 "arees_id": 19056,
-"famous": "Musa (no Identity)",
+"famous": "Musa (name only)",
 "type": "Narrator",
 "relations": [],
-"full": "Musa (no Identity)",
+"full": "Musa (name only)",
 "full_name_ar": "موسى غير منسوب",
 "generation": "Follower(Tabi')",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19056",
@@ -3653,7 +3882,13 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hidden": true,
+"hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19056 at muslimscholars.info."
 },
 {
 "slug": "arees-19069-naf",
@@ -3691,16 +3926,20 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19069 at muslimscholars.info."
 },
 {
 "slug": "arees-19071-nbyt-no-identity",
-"tier": "C",
+"tier": "C-thin",
 "arees_id": 19071,
-"famous": "Nbyt (no Identity)",
+"famous": "Nbyt (name only)",
 "type": "Narrator",
 "relations": [],
-"full": "Nbyt (no Identity)",
+"full": "Nbyt (name only)",
 "full_name_ar": "نبيط غير منسوب",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19071",
@@ -3739,7 +3978,12 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hidden": true,
+"hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19074-ndhyr-msghr-mjhwl",
@@ -3785,7 +4029,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19074 at muslimscholars.info."
 },
 {
 "slug": "arees-19078-al-nadr-bin-sufyan",
@@ -3827,7 +4075,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19078 at muslimscholars.info."
 },
 {
 "slug": "arees-19085-n-ym",
@@ -3857,7 +4109,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19085 at muslimscholars.info."
 },
 {
 "slug": "arees-19091-nmran-bin-jaryh-bin-zfr",
@@ -3871,7 +4127,7 @@
 "generation": "Follower(Tabi') [ 4th generation ]",
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -3932,7 +4188,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19092-nmran-bin-utba-al-dhmary",
@@ -3993,7 +4251,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19094-nmylh-al-fzary",
@@ -4049,7 +4310,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19098-harun-bin-salah-al-hmdany",
@@ -4106,7 +4370,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19100-harun",
@@ -4136,7 +4403,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19100 at muslimscholars.info."
 },
 {
 "slug": "arees-19105-hdhym-bin-abdullah",
@@ -4189,7 +4460,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19116-hnyd-h-binwn-msghr",
@@ -4213,7 +4487,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19116 at muslimscholars.info."
 },
 {
 "slug": "arees-19152-yahya-bin-ubaid",
@@ -4247,7 +4525,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19152 at muslimscholars.info."
 },
 {
 "slug": "arees-19153-yahya-bin-afyf-al-kndy",
@@ -4307,7 +4589,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19155-yahya-bin-flan",
@@ -4349,7 +4634,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19155 at muslimscholars.info."
 },
 {
 "slug": "arees-19156-yahya-bin-qays",
@@ -4387,7 +4676,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19156 at muslimscholars.info."
 },
 {
 "slug": "arees-19163-yahya",
@@ -4417,7 +4710,15 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 1641,
+"hadith_source_collections": [
+"musnad-ahmad",
+"muwatta-malik",
+"sahih-muslim"
+],
+"bio_auto": "Named as a transmitter in 1,641 hadith across 3 collections (Musnad Ahmad, Muwatta Malik, Muslim). Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19163 at muslimscholars.info."
 },
 {
 "slug": "arees-19172-yazid-bin-abi-sumiyya",
@@ -4496,7 +4797,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19180-yazid-bin-kysan",
@@ -4557,7 +4861,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19185-yazid-bin-abi-nshbh",
@@ -4609,7 +4916,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19188-ysar-bin-zayd-abu",
@@ -4675,7 +4985,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19189-ysyr-bin-amylh",
@@ -4740,7 +5053,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19205-abu-ishaq-al-dwsy-mwla",
@@ -4795,7 +5111,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19207-abu-asma-a-al-syql",
@@ -4852,7 +5171,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19211-abu-al-bzry",
@@ -4891,7 +5213,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 673 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). Death year recorded as 120 AH. Entry 19211 at muslimscholars.info."
 },
 {
 "slug": "arees-19214-abu-bashr",
@@ -4930,7 +5256,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19214 at muslimscholars.info."
 },
 {
 "slug": "arees-19224-abu-bakr-al-nsy-aakhr",
@@ -4976,7 +5306,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19226-abu-balj-younger",
@@ -5037,7 +5370,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19229-abu-jrw",
@@ -5091,7 +5427,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19233-abu-al-jwyryh-al-bdy-aakhr",
@@ -5130,7 +5469,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19233 at muslimscholars.info."
 },
 {
 "slug": "arees-19236-abu-habib-bin-y-la",
@@ -5187,7 +5530,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19239-abu-hryz",
@@ -5226,7 +5572,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19239 at muslimscholars.info."
 },
 {
 "slug": "arees-19243-abu-al-hasan",
@@ -5261,7 +5611,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19243 at muslimscholars.info."
 },
 {
 "slug": "arees-19244-abu-al-hasan",
@@ -5296,7 +5650,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19244 at muslimscholars.info."
 },
 {
 "slug": "arees-19245-abu-hafs-h-mwla-aa-ishh",
@@ -5349,7 +5707,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19246-abu-al-hakam-al-bjly",
@@ -5384,7 +5745,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19246 at muslimscholars.info."
 },
 {
 "slug": "arees-19247-abu-al-hakam-mwla-biny",
@@ -5437,7 +5802,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19250-abu-hameed-mwla-msaf",
@@ -5486,7 +5854,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19251-abu-humal-or-abu-harmal",
@@ -5528,7 +5899,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19252-abu-al-hwyrth",
@@ -5563,7 +5937,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19252 at muslimscholars.info."
 },
 {
 "slug": "arees-19255-abu-khalid",
@@ -5602,7 +5980,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19255 at muslimscholars.info."
 },
 {
 "slug": "arees-19256-abu-khrash",
@@ -5641,7 +6023,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19256 at muslimscholars.info."
 },
 {
 "slug": "arees-19258-abu-khalaf-al-ami",
@@ -5707,7 +6093,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19259-abu-rashid",
@@ -5746,7 +6135,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19259 at muslimscholars.info."
 },
 {
 "slug": "arees-19261-abu-rja-a-client-of-abu-bakr-siddique",
@@ -5781,7 +6174,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19261 at muslimscholars.info."
 },
 {
 "slug": "arees-19262-abu-rfy",
@@ -5832,7 +6229,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19263-abu-zr-h",
@@ -5871,7 +6271,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19263 at muslimscholars.info."
 },
 {
 "slug": "arees-19266-abu-zayd",
@@ -5910,7 +6314,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19266 at muslimscholars.info."
 },
 {
 "slug": "arees-19269-abu-sa-d-al-hmyry-al-hmsy",
@@ -5969,7 +6377,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19270-abu-sa-d-al-sa-dy",
@@ -6022,7 +6433,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19276-abu-sufyan",
@@ -6065,7 +6479,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19276 at muslimscholars.info."
 },
 {
 "slug": "arees-19279-abu-salmah-al-himsi",
@@ -6114,7 +6532,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19280-abu-smyh",
@@ -6168,7 +6589,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19281-abu-sahl",
@@ -6207,7 +6631,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19281 at muslimscholars.info."
 },
 {
 "slug": "arees-19283-abu-al-swda-a",
@@ -6242,7 +6670,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19283 at muslimscholars.info."
 },
 {
 "slug": "arees-19284-abu-shryh",
@@ -6277,7 +6709,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19284 at muslimscholars.info."
 },
 {
 "slug": "arees-19285-abu-al-shmal",
@@ -6330,7 +6766,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19286-abu-shayba",
@@ -6365,7 +6804,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19286 at muslimscholars.info."
 },
 {
 "slug": "arees-19287-abu-salah-al-harithy-wqyl",
@@ -6419,7 +6862,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19289-abu-salah-al-khwzy",
@@ -6472,7 +6918,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19292-abu-salah-mwla-dba-h",
@@ -6526,7 +6975,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19293-abu-al-slt-al-thqfy",
@@ -6575,7 +7027,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19294-abu-al-slt",
@@ -6614,7 +7069,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19294 at muslimscholars.info."
 },
 {
 "slug": "arees-19296-abu-al-dhak",
@@ -6668,7 +7127,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19303-abu-asim-al-ghnwy",
@@ -6707,7 +7169,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19303 at muslimscholars.info."
 },
 {
 "slug": "arees-19305-abu-aa-ishh-al-amwy-mwlahm",
@@ -6763,7 +7229,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19308-abu-abdullah-al-jshmy",
@@ -6817,7 +7286,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19312-abu-abdur-rahman",
@@ -6856,7 +7328,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19312 at muslimscholars.info."
 },
 {
 "slug": "arees-19313-abu-abdul-aziz",
@@ -6895,7 +7371,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19313 at muslimscholars.info."
 },
 {
 "slug": "arees-19319-abu-ubaid-h",
@@ -6930,7 +7410,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19319 at muslimscholars.info."
 },
 {
 "slug": "arees-19321-abu-uthman-bin-yazid",
@@ -6977,7 +7461,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19325-abu-uthman",
@@ -7012,7 +7499,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19325 at muslimscholars.info."
 },
 {
 "slug": "arees-19326-abu-uthman",
@@ -7047,7 +7538,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19326 at muslimscholars.info."
 },
 {
 "slug": "arees-19328-abu-adhrh",
@@ -7107,7 +7602,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19332-abu-atyh",
@@ -7132,7 +7630,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19332 at muslimscholars.info."
 },
 {
 "slug": "arees-19333-abu-uqba",
@@ -7171,7 +7673,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19333 at muslimscholars.info."
 },
 {
 "slug": "arees-19334-abu-aqyl-mwla-umar",
@@ -7220,7 +7726,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19339-abu-amr-bin-muhammad-bin-harayth",
@@ -7272,7 +7781,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19340-abu-amr-al-saybani",
@@ -7287,7 +7799,7 @@
 "generation": "Follower(Tabi') [ 2nd Generation ]",
 "hadith_narrations_count": 3,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -7344,7 +7856,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 3,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19343-abu-ghalb",
@@ -7379,7 +7893,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19343 at muslimscholars.info."
 },
 {
 "slug": "arees-19344-abu-ghalb",
@@ -7414,7 +7932,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19344 at muslimscholars.info."
 },
 {
 "slug": "arees-19347-abu-fras-al-nhdy",
@@ -7467,7 +7989,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19349-abu-qabws",
@@ -7524,7 +8049,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19350-abu-qtybh",
@@ -7559,7 +8087,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19350 at muslimscholars.info."
 },
 {
 "slug": "arees-19354-abu-kabsha",
@@ -7590,7 +8122,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19354 at muslimscholars.info."
 },
 {
 "slug": "arees-19360-abu-majda",
@@ -7643,7 +8179,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19361-abu-al-muburak",
@@ -7698,7 +8237,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19364-abu-muhammad-al-hdhly",
@@ -7751,7 +8293,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19366-abu-al-mkharq",
@@ -7804,7 +8349,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19368-abu-mrawh",
@@ -7839,7 +8387,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19368 at muslimscholars.info."
 },
 {
 "slug": "arees-19369-abu-mrzwq",
@@ -7878,7 +8430,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19369 at muslimscholars.info."
 },
 {
 "slug": "arees-19372-abu-maryum-al-raqqi",
@@ -7921,7 +8477,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19377-abu-mshj-h-bin-rb-y",
@@ -7972,7 +8531,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19379-abu-mtr",
@@ -8026,7 +8588,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19381-abu-mua-dh",
@@ -8077,7 +8642,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19383-abu-mua-wiya",
@@ -8108,7 +8676,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19383 at muslimscholars.info."
 },
 {
 "slug": "arees-19384-abu-ma-ql",
@@ -8123,7 +8695,7 @@
 "generation": "Follower(Tabi') [ 5th generation ]",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -8172,7 +8744,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19385-abu-ma-n",
@@ -8203,7 +8777,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19385 at muslimscholars.info."
 },
 {
 "slug": "arees-19386-abu-al-mughira",
@@ -8242,7 +8820,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19386 at muslimscholars.info."
 },
 {
 "slug": "arees-19387-abu-al-mughira-tab-y-mjhwl",
@@ -8277,7 +8859,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19387 at muslimscholars.info."
 },
 {
 "slug": "arees-19390-abu-al-mndhr",
@@ -8312,7 +8898,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19390 at muslimscholars.info."
 },
 {
 "slug": "arees-19391-abu-musa-al-hilaly",
@@ -8370,7 +8960,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19392-abu-musa",
@@ -8409,7 +9002,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19392 at muslimscholars.info."
 },
 {
 "slug": "arees-19393-abu-musa",
@@ -8444,7 +9041,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19393 at muslimscholars.info."
 },
 {
 "slug": "arees-19395-abu-maymun",
@@ -8497,7 +9098,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19398-abu-nsr-al-hilaly",
@@ -8550,7 +9154,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19399-abu-nsr-al-hilaly-arsl",
@@ -8599,7 +9206,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19402-abu-al-n-man",
@@ -8652,7 +9262,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19410-abu-wqas",
@@ -8702,7 +9315,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19411-abu-al-walid",
@@ -8741,7 +9357,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19411 at muslimscholars.info."
 },
 {
 "slug": "arees-19414-abu-ysar",
@@ -8784,7 +9404,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19414 at muslimscholars.info."
 },
 {
 "slug": "arees-19416-bin-al-hajjaj-al-tai-i",
@@ -8832,7 +9456,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19417-bin-hjyr",
@@ -8884,7 +9511,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19418-bin-hrshf-al-azdy",
@@ -8935,7 +9565,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19419-bin-hasanh-al-jhny",
@@ -8986,7 +9619,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19420-bin-abi-al-hakam-al-ghfary",
@@ -9037,7 +9673,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19421-bin-hyan",
@@ -9088,7 +9727,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19423-bin-shabl",
@@ -9140,7 +9782,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19426-bin-abi-abdullah-al-zurqi",
@@ -9187,7 +9832,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19427-bin-abi-ubaid-al-zurqi",
@@ -9231,7 +9879,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19429-bin-asam-al-mazni",
@@ -9278,7 +9929,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19430-bin-umar-bin",
@@ -9329,7 +9983,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19431-bin-al-ala-bin-al-hadrami",
@@ -9376,7 +10033,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19443-al-sa-dy",
@@ -9423,7 +10083,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19445-al-njrany",
@@ -9474,7 +10137,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19446-ibrahim-bin-abi-asyd",
@@ -9508,7 +10174,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19446 at muslimscholars.info."
 },
 {
 "slug": "arees-19448-ayoub-bin-bashyr-bin",
@@ -9542,7 +10212,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19448 at muslimscholars.info."
 },
 {
 "slug": "arees-19449-zhrh-bin",
@@ -9572,7 +10246,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19449 at muslimscholars.info."
 },
 {
 "slug": "arees-19451-salah-bin-kysan",
@@ -9606,7 +10284,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19451 at muslimscholars.info."
 },
 {
 "slug": "arees-19452-qays-bin-wahb",
@@ -9644,7 +10326,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19452 at muslimscholars.info."
 },
 {
 "slug": "arees-19453-musa-bin-ubaid-h",
@@ -9682,7 +10368,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19453 at muslimscholars.info."
 },
 {
 "slug": "arees-19456-umayya-bint",
@@ -9712,7 +10402,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19456 at muslimscholars.info."
 },
 {
 "slug": "arees-19457-umayya-bint",
@@ -9742,7 +10436,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19457 at muslimscholars.info."
 },
 {
 "slug": "arees-19458-anis-h",
@@ -9797,7 +10495,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19463-jmylh-bint-aabad-rwt",
@@ -9811,7 +10512,7 @@
 "generation": "Follower(Tabi') [ 3rd Generation ]",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -9860,7 +10561,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19465-hasana-a-bint-mua-wiya-bin-slym",
@@ -9916,7 +10619,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19479-rmythh",
@@ -9965,7 +10671,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19481-rhm-bint-al-aswad-amh-ash-th",
@@ -10013,7 +10722,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19483-zaynab-bint-nasr",
@@ -10027,7 +10739,7 @@
 "generation": "Follower(Tabi') [ 3rd Generation ]",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -10076,7 +10788,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19493-sfyh-bint-jryr",
@@ -10090,7 +10804,7 @@
 "generation": "Follower(Tabi') [ 3rd Generation ]",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -10139,7 +10853,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19505-umarh",
@@ -10181,7 +10897,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19505 at muslimscholars.info."
 },
 {
 "slug": "arees-19507-fitima-bint-ubaidullah",
@@ -10223,7 +10943,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 688 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19509-fitima-bint-abi-lyth",
@@ -10275,7 +10998,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19514-kabsha-bint-abi-maryam",
@@ -10331,7 +11057,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19517-klthm",
@@ -10373,7 +11102,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19520-lyla-mwlah-umm-amarh",
@@ -10421,7 +11153,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19526-mughira-bint",
@@ -10467,7 +11202,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19530-hind-bint-al-harith-khuthaymayya",
@@ -10520,7 +11258,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19532-hnyd-h-baltsghyr",
@@ -10572,7 +11313,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19533-umm-aban-bint-al-waz",
@@ -10629,7 +11373,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19537-umm-bilal-bint-hilal",
@@ -10686,7 +11433,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 649 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19539-umm-habibh-bint-al-arbad",
@@ -10738,7 +11488,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19541-umm-al-hryr",
@@ -10790,7 +11543,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19542-umm-al-hakam-bint-al-nu-man-bin-s-hban",
@@ -10839,7 +11595,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 678 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19543-umm-hameed",
@@ -10888,7 +11647,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19544-umm-khtab",
@@ -10936,7 +11698,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19548-umm-sa-id-bint-mrh-al-fhryh",
@@ -10985,7 +11750,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19562-umm-msawr-al-hmyryh",
@@ -11030,7 +11798,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19563-umm-maskayn",
@@ -11081,7 +11852,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19564-umm-mnbwdh",
@@ -11129,7 +11903,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19565-umm-al-mhajr",
@@ -11175,7 +11952,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19567-binh-mhys-h",
@@ -11213,7 +11993,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19571-wife-of-rabi-bin-harash",
@@ -11251,7 +12034,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the 3rd Islamic century. No recorded death year survives; the timeline position is an estimate. Entry 19571 at muslimscholars.info."
 },
 {
 "slug": "arees-19572-zuhyr-bin",
@@ -11281,7 +12068,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19572 at muslimscholars.info."
 },
 {
 "slug": "arees-19574-al-qasim-bin",
@@ -11311,7 +12102,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19574 at muslimscholars.info."
 },
 {
 "slug": "arees-19575-al-walid-bin",
@@ -11341,7 +12136,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19575 at muslimscholars.info."
 },
 {
 "slug": "arees-19576-bin-jd-an",
@@ -11371,7 +12170,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19576 at muslimscholars.info."
 },
 {
 "slug": "arees-19577-sfyh-bint",
@@ -11401,7 +12204,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19577 at muslimscholars.info."
 },
 {
 "slug": "arees-19578-umm-al-hasan",
@@ -11431,7 +12238,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19578 at muslimscholars.info."
 },
 {
 "slug": "arees-19579-umm-hkym",
@@ -11461,7 +12272,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19579 at muslimscholars.info."
 },
 {
 "slug": "arees-19580-umm-hisham",
@@ -11491,7 +12306,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19580 at muslimscholars.info."
 },
 {
 "slug": "arees-19581-umm-wld",
@@ -11521,7 +12340,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 19581 at muslimscholars.info."
 },
 {
 "slug": "arees-19590-ibrahim-bin-abdullah-bin-al-harith",
@@ -11567,7 +12390,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19591-bashyr-bin-k-ab-bin-ajrh",
@@ -11615,7 +12441,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19592-jbyr-bin-abi-salah",
@@ -11663,7 +12492,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19593-zayd-h-bint-qylh-bint-mkhrmh",
@@ -11708,7 +12540,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 663 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19816-umara-bin-akima-al-lathi",
@@ -11778,7 +12613,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 655 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19851-abdullah-al-hanfi",
@@ -11832,7 +12670,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19888-abu-hyh-bin-qays",
@@ -11847,7 +12688,7 @@
 "generation": "Follower(Tabi') [ 3rd Generation ]",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan Abi Da'ud"
+"abu-dawood"
 ],
 "hadith_narrated": [
 {
@@ -11896,7 +12737,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-19945-al-mtws-btshdyd-al-waw",
@@ -11942,7 +12785,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-19952-abu-al-ahws-mwla-biny",
@@ -11999,7 +12845,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 658 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20015-hamza-bin-masrooq-ath-thawri",
@@ -12063,7 +12912,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20101-ziyad-b-abdullah-al-bakkai",
@@ -12104,7 +12956,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 734 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20104-abda-b-sulayman",
@@ -12127,7 +12982,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 20104 at muslimscholars.info."
 },
 {
 "slug": "arees-20106-yahya-b-said-al-umawi",
@@ -12170,7 +13029,10 @@
 ],
 "research_evidence": "يحيى بْن سعيد بْن أبان بْن سعيد بْن العاص بن سَعِيد بْن العاص بْن أمية بْن عَبْد شمس بن عبد مناف، أبو أيوب القرشي ثم الأموي",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20108-harun-b-abu-isa",
@@ -12208,7 +13070,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20109-salama-b-al-fadl-al-abrash",
@@ -12239,7 +13104,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 741 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20112-sa-id-b-bazi",
@@ -12276,7 +13144,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20113-uthman-b-saj",
@@ -12313,7 +13184,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20114-muhammad-b-salama-al-harrani",
@@ -12354,7 +13228,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 741 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20116-abu-mikhnaf-lut-bin-yahya-al-azdi",
@@ -12424,7 +13301,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 709 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20353-muhammad-bin-al-hasan",
@@ -12454,7 +13334,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 751 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. Death year recorded as 200 AH. Entry 20353 at muslimscholars.info."
 },
 {
 "slug": "arees-20403-y-aqub",
@@ -12492,7 +13376,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 20403 at muslimscholars.info."
 },
 {
 "slug": "arees-20538-khalid-bin-abdullah",
@@ -12548,7 +13436,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 712 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20555-abdur-rahman-bin-abdullah-al-siraj",
@@ -12602,7 +13493,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20589-sdqh-bin-abi-imran",
@@ -12664,7 +13558,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20615-yahya-bin-isa",
@@ -12679,7 +13576,7 @@
 "death_date_hijri": 201,
 "hadith_narrations_count": 2,
 "hadith_source_collections": [
-"Sunan Ibn Majah"
+"ibn-e-majah"
 ],
 "hadith_narrated": [
 {
@@ -12738,7 +13635,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 752 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 2,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-20620-abu-amr-al-shaybani",
@@ -12806,7 +13705,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 760 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-20661-abdul-malik-bin-abi-bakr-bin-muhammad",
@@ -12864,7 +13766,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 728 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21100-al-ys-bin-qays-al-bahla",
@@ -12919,7 +13824,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21101-yonus-bin-abd-rbh",
@@ -12974,7 +13882,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21102-y-aqub-bin-jbyr-abu-yusuf",
@@ -13033,7 +13944,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21103-y-aqub-bin-khalid-bin-al-msyb",
@@ -13089,7 +14003,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21104-yusuf-bin-y-aqub-bin-ibrahim",
@@ -13150,7 +14067,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 703 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21105-yusuf-bin-yonus-bin-hmas",
@@ -13210,7 +14130,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21106-yusuf-bin-abdullah-abu",
@@ -13267,7 +14190,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21107-yazid-bin-y-fr",
@@ -13322,7 +14248,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21108-yazid-bin-y-aqub-al-ma-afry",
@@ -13378,7 +14307,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21110-yazid-bin-uqba-abu-muhammad",
@@ -13441,7 +14373,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21111-yazid-bin-umar-al-tmymy",
@@ -13496,7 +14431,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21112-yazid-abu-sulaiman",
@@ -13549,7 +14487,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21113-yazid-bin-s-hyl-bin-muslim",
@@ -13605,7 +14546,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21114-yazid-bin-husayn-bin-nmyr",
@@ -13665,7 +14609,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21115-yahya-bin-qays-al-kndy",
@@ -13719,7 +14666,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21116-yahya-bin-abd-al-wahd-al-thqfa",
@@ -13778,7 +14728,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21117-yahya-bin-salam-al-bdy",
@@ -13837,7 +14790,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21118-yahya-bin-jrjh",
@@ -13897,7 +14853,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21119-yahya-bin-yazid-bin-abd",
@@ -13939,7 +14898,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21119 at muslimscholars.info."
 },
 {
 "slug": "arees-21120-yahya-bin-al-mndhr-bin-khalid",
@@ -13989,7 +14952,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 704 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21121-harun-bin-rashid",
@@ -14050,7 +15016,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21122-harun-bin-abi-ibrahim-al-brbry",
@@ -14110,7 +15079,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21123-harun-abu-qz-h",
@@ -14163,7 +15135,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21124-al-hythm-bin-ubaid",
@@ -14224,7 +15199,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21125-al-hythm-bin-bdr",
@@ -14283,7 +15261,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21126-hilal-bin-n-ym",
@@ -14342,7 +15323,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21127-hisham-bin-qhdhm-bin-salman",
@@ -14399,7 +15383,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21128-hisham-abu-klyb",
@@ -14460,7 +15447,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21129-hisham-bin-lahq-shykh-nsra",
@@ -14519,7 +15509,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21130-wast-bin-al-harith-bin-hwshb",
@@ -14581,7 +15574,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21131-al-walid-bin-isa-bin-wahub",
@@ -14641,7 +15637,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21132-al-walid-bin-ziyad-mwla-uthman",
@@ -14700,7 +15699,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21133-al-walid-bin-abi-zynb-yrwy",
@@ -14755,7 +15757,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21134-al-walid-bin-ubaid-bin-aba",
@@ -14810,7 +15815,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21135-ndyr-bin-qays-wqd-qyl",
@@ -14863,7 +15871,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21136-njm-bin-frqd-abu-amir",
@@ -14924,7 +15935,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21137-njm-bin-dinar-abu-ata-a",
@@ -14984,7 +15998,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21138-nhshl-bin-abdur-rahman-al-bsry",
@@ -15044,7 +16061,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21139-nsr-bin-hajb-al-quraishi",
@@ -15108,7 +16128,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21140-nsr-bin-njyh-al-ash-ry",
@@ -15169,7 +16192,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21141-nsr-bin-abi-maryam",
@@ -15225,7 +16251,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21142-al-nadr-bin-ma-bd-abu-qhdhm",
@@ -15286,7 +16315,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21143-al-nadr-bin-asim-abu-aabad",
@@ -15343,7 +16375,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21144-naf-bin-khalid-al-khza-y",
@@ -15396,7 +16431,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21145-mhbwb-bin-hilal-al-mzny",
@@ -15451,7 +16489,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21147-ma-tmr-bin-naf-al-hdhla",
@@ -15511,7 +16552,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21149-mtwkl-bin-ada",
@@ -15566,7 +16610,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21150-mstwrd-bin-aabad-al-bdy",
@@ -15617,7 +16664,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21151-mkhld-bin-hazm-akhw-jryr",
@@ -15677,7 +16727,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21152-mswr-bin-mrzwq",
@@ -15736,7 +16789,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21153-mtr-bin-abi-mtr",
@@ -15791,7 +16847,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21154-mtrf-bin-ma-ql-abu-bakr",
@@ -15852,7 +16911,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21155-ma-la-bin-maymun-al-mjash-y-akhw",
@@ -15907,7 +16969,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21156-ma-ql-bin-abdullah",
@@ -15967,7 +17032,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21157-mukhtar-bin-s-ad-mwla-bina",
@@ -16022,7 +17090,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21158-ma-mr-bin-zayd",
@@ -16081,7 +17152,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21159-mrwan-bin-nhyk",
@@ -16142,7 +17216,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21160-mua-dh-abu-zhrh-al-dby",
@@ -16195,7 +17272,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21161-mrwan-bin-khaqan",
@@ -16247,7 +17327,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21162-mndhr-bin-s-ad",
@@ -16299,7 +17382,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21163-mndhr-bin-al-mughira",
@@ -16354,7 +17440,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21164-mus-ab-bin-nwh-al-ansari",
@@ -16410,7 +17499,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21165-mus-ab-bin-mus-ab-bin-abd",
@@ -16469,7 +17561,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21166-mnswr-bin-dinar-al-dby",
@@ -16529,7 +17624,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21167-maymun-bin-ajlan-al-rb-y",
@@ -16584,7 +17682,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21168-maymun-bin-njyh-abu-al-hasan",
@@ -16643,7 +17744,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21169-maymun-abu-talha",
@@ -16699,7 +17803,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21170-maymun-abu-kathir",
@@ -16755,7 +17862,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21171-mua-wiya-bin-abdur-rahman",
@@ -16797,7 +17907,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21171 at muslimscholars.info."
 },
 {
 "slug": "arees-21172-mua-wiya-bin-abi-ayash-al-zrqy",
@@ -16854,7 +17968,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21173-mughira-bin-habib-khtn-malik",
@@ -16911,7 +18028,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21174-malik-bin-abi-al-hasan",
@@ -16966,7 +18086,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21175-malik-bin-al-hasan-bin-malik",
@@ -17025,7 +18148,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21176-malik-bin-ubaid-h-bin-msaf",
@@ -17084,7 +18210,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21177-malik-bin-abi-al-mu-ml",
@@ -17144,7 +18273,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21178-malik-bin-dmrh-al-najy",
@@ -17196,7 +18328,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21179-musa-bin-muhammad-al-ansari-abu",
@@ -17253,7 +18388,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21182-musa-bin-abi-ishaq-al-ansari",
@@ -17308,7 +18446,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21183-musa-bin-imran-bin-mnah",
@@ -17367,7 +18508,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21184-musa-bin-mnah",
@@ -17422,7 +18566,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21185-muslim-bin-ata-a",
@@ -17468,7 +18615,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21185 at muslimscholars.info."
 },
 {
 "slug": "arees-21186-muslim-bin-sh-bh",
@@ -17516,7 +18667,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21187-muslim-bin-atyh-al-fqymy",
@@ -17571,7 +18725,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21189-muhammad-bin-umar-bin-aba",
@@ -17627,7 +18784,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21190-muhammad-bin-sulaiman-bin-msmwl",
@@ -17684,7 +18844,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21191-muhammad-bin-abd-al-wahd-bin-qays",
@@ -17737,7 +18900,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21192-muhammad-bin-al-mundhir-bin-al-zubiar",
@@ -17803,7 +18969,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21193-muhammad-bin-mghyth",
@@ -17862,7 +19031,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21194-muhammad-bin-sulaiman-abu-dmrh",
@@ -17929,7 +19101,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21195-muhammad-bin-abi-al-nwar",
@@ -17998,7 +19173,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21196-muhammad-bin-nsyr-abu-nsyr",
@@ -18055,7 +19233,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21197-muhammad-bin-abi-maryam-al-ta-ify",
@@ -18111,7 +19292,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21198-muhammad-bin-ala-al-slmy",
@@ -18167,7 +19351,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21200-muhammad-bin-s-aid",
@@ -18219,7 +19406,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21201-muhammad-bin-s-aid",
@@ -18261,7 +19451,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21201 at muslimscholars.info."
 },
 {
 "slug": "arees-21202-muhammad-bin-musa-bin-abd",
@@ -18303,7 +19497,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21202 at muslimscholars.info."
 },
 {
 "slug": "arees-21203-muhammad-bin-amr-bin-thabit",
@@ -18371,7 +19569,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21204-muhammad-bin-abi-asim-shykh",
@@ -18423,7 +19624,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21205-muhammad-bin-rashid-bin-aba",
@@ -18479,7 +19683,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21206-muhammad-bin-al-rabi-y-bin-k-ab",
@@ -18534,7 +19741,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21207-muhammad-bin-salam-al-khza-y",
@@ -18589,7 +19799,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21208-muhammad-bin-khwt",
@@ -18649,7 +19862,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21209-muhammad-bin-al-khtab-bin-jbyr",
@@ -18715,7 +19931,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21210-muhammad-bin-hdhyfh-bin-d-ab",
@@ -18776,7 +19995,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21211-muhammad-bin-frwkh-abu-sahl",
@@ -18833,7 +20055,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21212-muhammad-bin-arfth-al-ta-iy",
@@ -18893,7 +20118,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21213-muhammad-bin-abdullah-bin-aflah",
@@ -18953,7 +20181,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21214-muhammad-bin-abi-twyl",
@@ -19009,7 +20240,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21215-muhammad-bin-abi-al-blat-abu",
@@ -19069,7 +20303,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21216-muhammad-bin-smyr-al-r-yny-knyt-h",
@@ -19122,7 +20359,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21217-muhammad-bin-isma-il-bin-sa-d",
@@ -19178,7 +20418,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21218-muhammad-bin-isma-il-bin-mjm",
@@ -19235,7 +20478,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21219-muhammad-bin-abi-jmylh-al-nsra",
@@ -19291,7 +20537,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21220-muhammad-bin-abdur-rahman-abu",
@@ -19352,7 +20601,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21221-muhammad-bin-al-hjaj",
@@ -19394,7 +20646,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21221 at muslimscholars.info."
 },
 {
 "slug": "arees-21222-muhammad-bin-qays-al-nkh-y",
@@ -19451,7 +20707,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21223-muhammad-bin-abi-bakr",
@@ -19493,7 +20752,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21223 at muslimscholars.info."
 },
 {
 "slug": "arees-21224-muhammad-bin-sulaiman-bin-ala",
@@ -19544,7 +20807,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 724 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21226-muhammad-bin-bilal-al-quraishi",
@@ -19599,7 +20865,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21227-muhammad-bin-khalid-abu-yahya",
@@ -19652,7 +20921,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21228-muhammad-bin-bstam-abu-hafs",
@@ -19710,7 +20982,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21230-lwdhan-bin-sulaiman",
@@ -19766,7 +21041,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21231-k-ab-abu-al-ma-la",
@@ -19822,7 +21100,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21232-khultum-bin-ziyad-abu-amr",
@@ -19888,7 +21169,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21234-kathir-bin-habaysh",
@@ -19947,7 +21231,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21235-qrzh-bin-artah",
@@ -20002,7 +21289,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21236-al-qasim-bin-ghsn",
@@ -20067,7 +21357,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21237-qays-bin-abi-muslim",
@@ -20129,7 +21422,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21238-fyad-bin-ghzwan",
@@ -20189,7 +21485,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21239-frqd-bin-al-hjaj-al-quraishi-al-bsry",
@@ -20248,7 +21547,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21240-frat-bin-salman-mwla-bin-aqyl",
@@ -20305,7 +21607,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 702 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21241-fdalh-bin-husayn-al-tar-bsra",
@@ -20365,7 +21670,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21242-al-fadl-bin-ma-dan-al-hdany-bsra",
@@ -20421,7 +21729,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21243-fdyl-bin-talha-al-basri-abu",
@@ -20479,7 +21790,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21244-ghwth-bin-sulaiman-bin-ziyad",
@@ -20530,7 +21844,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 720 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21245-ghwth-bin-jabir-bin-ghylan",
@@ -20589,7 +21906,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21246-azrh-bin-dinar",
@@ -20643,7 +21963,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21247-asmh-bin-bashyr-al-brjmy",
@@ -20698,7 +22021,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21249-ada-bin-abi-amarh-al-dhar",
@@ -20756,7 +22082,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21250-anbs-h-bin-hbyrh-bin-al-n-man",
@@ -20813,7 +22142,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21252-urwa-bin-zuhyr-al-jly",
@@ -20872,7 +22204,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21253-urwa-bin-s-aid",
@@ -20931,7 +22266,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21254-amar-bin-hkym",
@@ -20990,7 +22328,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21255-amar-bin-yazid",
@@ -21046,7 +22387,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21256-ayad-bin-abdur-rahman-al-hjby",
@@ -21101,7 +22445,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21257-awn-bin-musa-abu-rwh",
@@ -21161,7 +22508,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21258-awn-bin-y-aqub",
@@ -21216,7 +22566,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21260-zakaria-bin-hkym",
@@ -21275,7 +22628,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21261-zuhyr-bin-abi-thabit-al-asady",
@@ -21331,7 +22687,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21263-zr-h-bin-ibrahim-al-dmshqy-al-zbydy",
@@ -21393,7 +22752,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21264-s-aid-bin-abi-bakr-bin-hafs",
@@ -21448,7 +22810,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21266-s-aid-bin-ajlan",
@@ -21503,7 +22868,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21267-s-aid-bin-dinar",
@@ -21558,7 +22926,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21268-s-aid-bin-smak-bin-hrb",
@@ -21613,7 +22984,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21269-s-aid-bin-ghnym-al-kla-y-knyt-h",
@@ -21667,7 +23041,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21270-s-aid-bin-abdul-malik-bin-mrwan",
@@ -21731,7 +23108,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21271-s-aid-bin-mrthd",
@@ -21787,7 +23167,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21272-s-aid-bin-musa-bin-wrdan",
@@ -21847,7 +23230,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21273-s-ad-bin-shrah-al-ma-afry",
@@ -21903,7 +23289,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21274-sulaiman-bin-shhab-al-bsy",
@@ -21966,7 +23355,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21275-sulaiman-mwla-al-hasan-bin-ala",
@@ -21980,7 +23372,7 @@
 "generation": "Succ. (Taba' Tabi')",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
-"Sunan an-Nasa'i"
+"sunan-nasai"
 ],
 "hadith_narrated": [
 {
@@ -22036,7 +23428,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 1,
+"hadith_narrated_count": 0
 },
 {
 "slug": "arees-21276-sulaiman-bin-rzyn",
@@ -22091,7 +23485,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21281-salmah-bin-habib",
@@ -22150,7 +23547,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21282-salmah-bin-hrb-bin-ziyad",
@@ -22205,7 +23605,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21283-salmah-bin-sabwr",
@@ -22264,7 +23667,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21284-salmah-bin-al-sa-ib-al-klby",
@@ -22319,7 +23725,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21285-sufyan-bin-amir-shykh",
@@ -22387,7 +23796,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21286-salm-bin-hilal-al-najy",
@@ -22446,7 +23858,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21288-salm-bin-salah-bin-ibrahim",
@@ -22513,7 +23928,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21289-salm-bin-mkhraq-abu-al-zrqa-a",
@@ -22567,7 +23985,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21291-slym-bin-uthman-abu-uthman",
@@ -22624,7 +24045,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21292-salam-bin-abdullah-abu",
@@ -22685,7 +24109,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21293-syf-bin-abdul-hameed-bin-mhmwd",
@@ -22740,7 +24167,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21294-smy-bin-zadhan",
@@ -22795,7 +24225,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21295-al-syd-bin-isa-shykh",
@@ -22851,7 +24284,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21296-srwr-bin-al-mughira-bin-zadhan",
@@ -22913,7 +24349,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21297-suh-aib-abu-isra-iyl-mwla-bina",
@@ -22970,7 +24409,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21299-suh-aib-bin-rashid-al-kwfa",
@@ -23030,7 +24472,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21301-shhab-bin-shrnfh-al-mjash-y-al-abd",
@@ -23091,7 +24536,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21302-shayba-bin-n-amh-abu-n-amh",
@@ -23155,7 +24603,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21303-sh-bh-bin-ajlan-al-iskaf-abu",
@@ -23216,7 +24667,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21304-shqyq-bin-abdullah-al-dby",
@@ -23271,7 +24725,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21305-shrqy-bin-qtamy",
@@ -23330,7 +24787,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21306-shmr-bin-akrmh-bin-s-s-h",
@@ -23386,7 +24846,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21308-salah-bin-srj-al-shny",
@@ -23441,7 +24904,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21309-salah-bin-al-walid-al-ryahy",
@@ -23500,7 +24966,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21310-sdqh-abu-al-hdhyl",
@@ -23552,7 +25021,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21311-sdqh-bin-sahl",
@@ -23607,7 +25079,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21312-safwan-bin-qbys-h-abu-qbys-h",
@@ -23667,7 +25142,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21313-al-slt-bin-muslim",
@@ -23722,7 +25200,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21316-al-slt-bin-salm",
@@ -23781,7 +25262,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21317-skhr-bin-al-walid-al-fzary-kwfa",
@@ -23834,7 +25318,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21318-sa-d-bin-muhammad",
@@ -23889,7 +25376,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21319-sa-d-bin-muslim",
@@ -23949,7 +25439,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21320-al-dhak-bin-maymun-al-thqfa",
@@ -24005,7 +25498,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 743 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21321-al-dhak-bin-ysar",
@@ -24067,7 +25563,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21322-talha-bin-abdullah-al-kndy",
@@ -24119,7 +25618,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21323-al-tyb-bin-muhammad",
@@ -24178,7 +25680,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21324-al-tyb-bin-zban-al-knany",
@@ -24231,7 +25736,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21325-abdullah-bin-iyas-bin-aba",
@@ -24286,7 +25794,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21328-abdullah-bin-al-hjaj",
@@ -24337,7 +25848,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21329-abdullah-bin-ata-a-bin-ibrahim",
@@ -24392,7 +25906,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21330-abdullah-bin-abdur-rahman",
@@ -24444,7 +25961,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21331-abdullah-bin-muhammad-bin-syryn",
@@ -24497,7 +26017,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 692 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21333-abdullah-bin-mhajr-al-sh-ythy",
@@ -24552,7 +26075,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21334-abdullah-bin-al-qasim-abu",
@@ -24607,7 +26133,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21334 at muslimscholars.info."
 },
 {
 "slug": "arees-21337-abdullah-bin-yazid-bin-rabi-yah",
@@ -24660,7 +26190,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21339-abdur-rahman-bin-jndb",
@@ -24712,7 +26245,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21340-abdur-rahman-bin-isa",
@@ -24754,7 +26290,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21340 at muslimscholars.info."
 },
 {
 "slug": "arees-21341-abdur-rahman-bin-bhyr",
@@ -24796,7 +26336,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21341 at muslimscholars.info."
 },
 {
 "slug": "arees-21342-abdur-rahman-bin-arak-bin-malik",
@@ -24848,7 +26392,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21343-abdur-rahman-bin-qays-al-arhba",
@@ -24900,7 +26447,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21344-abdur-rahman-bin-abi-zayd",
@@ -24951,7 +26501,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21345-abdur-rahman-bin-yahya-bin-khlad",
@@ -25003,7 +26556,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21346-abdur-rahman-bin-abi-qays",
@@ -25058,7 +26614,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21347-abdul-malik-bin-abi-jm-h",
@@ -25115,7 +26674,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21348-abdul-malik-bin-abd-rabbah",
@@ -25164,7 +26726,10 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 },
 {
 "slug": "arees-21349-abdul-malik-bin-abi-zuhyr",
@@ -25206,7 +26771,11 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": [],
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. No recorded death year survives; the timeline position is an estimate. Entry 21349 at muslimscholars.info."
 },
 {
 "slug": "arees-21350-abdul-malik-bin-sulaiman-bin-yasar",
@@ -25261,6 +26830,9 @@
 "_dobFromDod": true,
 "dob_s": "c. 731 CE (estimated)",
 "teachers_links": {},
-"students_links": {}
+"students_links": {},
+"hadith_chain_count": 0,
+"hadith_narrated_count": 0,
+"hadith_source_collections": []
 }
 ]
