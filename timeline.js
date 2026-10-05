@@ -2762,9 +2762,8 @@ function _timelineInfoHtml(){
         narrPill.classList.add('zb-pill');
         narrPill.classList.toggle('zb-active', on);
       };
-      narrPill.title = 'Core figures are the curated library. Narrators (slate edge) are hadith ' +
-        'transmitters added from the chain registers: Tier B = key facts verified, ' +
-        'Tier C = name, era and chain data only.';
+      narrPill.title = 'Adds 17,900 hadith narrators. Tier B = linked (their hadith are in this app). ' +
+        'Tier C = register only (none of their hadith held here).';
       _syncNarrPill();
       narrPill.addEventListener('click', function(){
         window.GA_Narrators.setTierC(!window.GA_Narrators.tierCOn());

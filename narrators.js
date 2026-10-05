@@ -125,8 +125,10 @@ window.GA_Narrators = (function(){
       var files = Object.keys((idx && idx.shards) || {});
       if(!files.length) files = ['narrators_001.json','narrators_002.json',
                                  'narrators_003.json','narrators_004.json'];
-      return Promise.all(files.map(ensureShard));
+      // Tag definitions ride along so row tier chips carry them on first paint.
+      return Promise.all(files.map(ensureShard).concat([ensureTagDefs()]));
     }).then(function(all){
+      all = all.slice(0, -1);
       var out = [];
       all.forEach(function(recs){
         recs.forEach(function(r){
@@ -195,7 +197,8 @@ window.GA_Narrators = (function(){
     var isB = (tier === 'B');
     // Same sticker palette as the card badge — never gold.
     var col = isB ? 'rgba(127,168,165,.85)' : 'rgba(154,163,173,.75)';
-    return '<span class="nr-tier-chip" title="' + _esc(tierText(tier)) + '" ' +
+    var td = _tagDef('Tier ' + tier);
+    return '<span class="nr-tier-chip" title="' + _esc(td ? td.def : tierText(tier)) + '" ' +
       'style="display:inline-block;margin-left:6px;padding:0 4px;border-radius:2px;' +
       'border:1px solid ' + col + ';color:' + col + ';font-family:' + STICKER_FONT + ';' +
       'font-size:9px;font-weight:700;line-height:13px;letter-spacing:.08em;' +
@@ -225,9 +228,61 @@ window.GA_Narrators = (function(){
   }
 
   function tierText(tier){
-    if(tier === 'B') return 'Verified record — key facts confirmed against listed sources';
-    if(tier === 'C') return 'Limited record — name, era and chain data only';
+    if(tier === 'B') return 'Linked narrator — appears in hadith held here; narrations cross-tagged';
+    if(tier === 'C') return 'Register narrator — listed in the classical registers; no hadith held here';
     return '';
+  }
+
+  // ── TAG DEFINITIONS ───────────────────────────────────────
+  // tag_definitions.json {tags:{label:definition}} — lazy, cached, fail-soft.
+  var _tagDefs = null, _tagDefsP = null;
+
+  function ensureTagDefs(){
+    if(_tagDefs) return Promise.resolve(_tagDefs);
+    if(_tagDefsP) return _tagDefsP;
+    _tagDefsP = _getJson('tag_definitions.json').then(function(j){
+      _tagDefs = (j && j.tags && typeof j.tags === 'object') ? j.tags : {};
+      _tagDefsP = null;
+      return _tagDefs;
+    }).catch(function(e){
+      console.warn('[narrators] tag definitions load failed', e);
+      _tagDefs = {};
+      _tagDefsP = null;
+      return _tagDefs;
+    });
+    return _tagDefsP;
+  }
+
+  // {label, def} for a chip's text: exact label (case-insensitive), else the
+  // longest tag that is a prefix of the chip text. null when nothing matches.
+  function _tagDef(text){
+    if(!_tagDefs || !text) return null;
+    var t = String(text).toLowerCase(), best = null;
+    for(var k in _tagDefs){
+      var kl = k.toLowerCase();
+      if(kl === t) return { label:k, def:_tagDefs[k] };
+      if(t.indexOf(kl) === 0 && (!best || k.length > best.label.length)) best = { label:k, def:_tagDefs[k] };
+    }
+    return best;
+  }
+
+  // Chip click: show "<Label> — <definition>" under the chips row; clicking the
+  // same chip again hides it, another chip replaces it.
+  function toggleTagNote(el){
+    if(!el) return;
+    var box = document.getElementById('nrTagNote');
+    if(!box) return;
+    var key = el.getAttribute('data-tag') || '';
+    var m = _tagDef(key);
+    if(!m) return;
+    if(box.style.display !== 'none' && box.getAttribute('data-for') === key){
+      box.style.display = 'none';
+      box.setAttribute('data-for', '');
+      return;
+    }
+    box.textContent = m.label + ' — ' + m.def;
+    box.setAttribute('data-for', key);
+    box.style.display = 'block';
   }
 
   // ── AREES ID → SLUG (hadith chain cross-links) ────────────
@@ -438,7 +493,9 @@ window.GA_Narrators = (function(){
     var edge   = isB ? 'rgba(127,168,165,.55)' : 'rgba(154,163,173,.5)';
     var fill   = isB ? 'rgba(127,168,165,.10)' : 'rgba(154,163,173,.08)';
     var tilt   = isB ? '-1.1deg' : '0.9deg';
-    return '<div class="nr-tier-sticker nr-tier-' + tier + '" ' +
+    var td     = _tagDef('Tier ' + tier);
+    return '<div class="nr-tier-sticker nr-tier-' + tier + '"' +
+      (td ? ' title="' + _esc(td.def) + '"' : '') + ' ' +
       'style="display:inline-block;margin:2px 0 16px;padding:7px 12px 8px;' +
       'font-family:' + STICKER_FONT + ';font-size:12px;line-height:1.4;' +
       'color:var(--ip-text);background:' + fill + ';' +
@@ -587,9 +644,19 @@ window.GA_Narrators = (function(){
         sub + '</div>';
     }
 
+    // Note box — same look as estNote.
+    function _noteBox(text, extra){
+      return '<div style="display:flex;align-items:flex-start;gap:5px;margin:-4px 0 12px;padding:5px 9px;' +
+        'background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;' +
+        'font-size:var(--fs-3);color:var(--ip-muted);line-height:1.45' + (extra || '') + '">' +
+        '<span>' + _esc(text) + '</span></div>';
+    }
+
+    // death_note sits full-width directly under the dates (BORN/DIED wrap row).
     var dateRows =
       _dateRow('BORN', p.dob_s, p.dob, p.birth_date_hijri) +
-      _dateRow('DIED', p.dod_s, p.dod, p.death_date_hijri);
+      _dateRow('DIED', p.dod_s, p.dod, p.death_date_hijri) +
+      (p.death_note ? _noteBox('Death date: ' + p.death_note, ';flex-basis:100%;margin:0') : '');
 
     // Estimated-placement note when the birth year was derived from the death year.
     var estNote = p._dobFromDod
@@ -604,16 +671,29 @@ window.GA_Narrators = (function(){
     var roles = Array.isArray(p.classif) ? p.classif.filter(Boolean) : [];
     var tags = '';
     if(roles.length || p.city || p.generation){
+      // Chips with a tag definition get it as a title and toggle the
+      // definition line (#nrTagNote) on click.
+      var _chip = function(cls, text, shown){
+        var m = _tagDef(text);
+        if(!m) return '<span class="' + cls + '">' + shown + '</span>';
+        return '<span class="' + cls + '" data-tag="' + _esc(text) + '" title="' + _esc(m.def) + '" ' +
+          'style="cursor:help" onclick="event.stopPropagation();' +
+          'window.GA_Narrators.toggleTagNote(this)">' + shown + '</span>';
+      };
       tags = '<div class="i-tags">' +
-        roles.map(function(r){ return '<span class="i-tag hi">' + _esc(r) + '</span>'; }).join('') +
-        (p.city ? '<span class="i-tag">📍 ' + _esc(p.city) + '</span>' : '') +
-        '</div>';
+        roles.map(function(r){ return _chip('i-tag hi', r, _esc(r)); }).join('') +
+        (p.city ? _chip('i-tag', p.city, '📍 ' + _esc(p.city)) : '') +
+        '</div>' +
+        '<div id="nrTagNote" data-for="" style="display:none;margin:6px 0 12px;padding:5px 9px;' +
+        'background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;' +
+        'font-size:var(--fs-3);color:var(--ip-muted);line-height:1.45"></div>';
     }
 
     var genHtml = p.generation
       ? _sec('Generation', '<div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">' +
              _esc(p.generation) + '</div>')
       : '';
+    if(p.companion_note) genHtml += _noteBox('Companion status: ' + p.companion_note);
 
     var bioHtml = p.bio
       ? _sec('Biography', '<div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">' +
@@ -625,6 +705,7 @@ window.GA_Narrators = (function(){
                'Auto-generated from the chain data and narrator registers held in this app — ' +
                'no biography text survives for this person.</div>')
         : '';
+    if(p.register_note) bioHtml += _noteBox(p.register_note);
 
     // Hadith narrated — identical table for every tier. A row becomes a link
     // when the hadith index holds numbers for this narrator in that book;
@@ -737,11 +818,11 @@ window.GA_Narrators = (function(){
     if(!el || !p) return;
     _shownSlug = p.slug || null;
     el.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>';
-    // First card opened is the first use of the hadith index: fetch it, then
-    // re-render so its rows become links. Cached thereafter, so this is a
-    // one-time second paint and never re-fetches.
-    if(!_hidx){
-      ensureHadithIndex().then(function(){
+    // First card opened is the first use of the hadith index and the tag
+    // definitions: fetch them, then re-render so rows become links and chips
+    // get their definitions. Cached thereafter — a one-time second paint.
+    if(!_hidx || !_tagDefs){
+      Promise.all([ensureHadithIndex(), ensureTagDefs()]).then(function(){
         if(_shownSlug !== (p.slug || null)) return;   // user moved on
         var el2 = document.getElementById('infoScroll');
         if(el2) el2.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>';
@@ -768,6 +849,8 @@ window.GA_Narrators = (function(){
     applyFilters: applyFilters,
     tierChip: tierChip,
     tierText: tierText,
+    ensureTagDefs: ensureTagDefs,
+    toggleTagNote: toggleTagNote,
     tierSticker: tierSticker,
     rowYear: rowYear,
     isEstimatedDod: isEstimatedDod,

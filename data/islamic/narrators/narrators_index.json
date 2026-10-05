@@ -1,5 +1,5 @@
 {
- "version": "batch14-decisions-20261005",
+ "version": "batch15-retier-20261005",
  "count": 18074,
  "hidden": 184,
  "shards": {
@@ -45,5 +45,10 @@
   "narrators_040.json": 485,
   "narrators_041.json": 485,
   "narrators_042.json": 31
+ },
+ "tiers": {
+  "B": 3710,
+  "C": 14180,
+  "C-thin": 184
  }
 }
