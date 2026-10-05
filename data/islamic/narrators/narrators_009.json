@@ -3164,7 +3164,7 @@
 "relations": [],
 "full": "Al-Sanabah bin al-A'sar",
 "full_name_ar": "الصنابح بن الأعسر ( رضي الله عنه",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "students": [
 "Qays bin Abi Hazim"
 ],
@@ -3200,7 +3200,7 @@
 "bio": "The hdith.com narrator encyclopedia gives him as Sunabih ibn al-A'sar al-Bajali al-Ahmasi, Abu 'Abdullah, a Kufan companion. Citing al-Dhahabi's al-Kashif, Tahdhib al-Tahdhib, al-Isaba and Ibn Abi Hatim's al-Jarh wa-l-Ta'dil, it stresses he must be distinguished from al-Sunabihi, a Hijazi who had no companionship, and records Ibn al-Sakan's remark that only one hadith is soundly established for him. Qays ibn Abi Hazim is his only known transmitter. No death year is given.",
 "bio_full_source": "https://hdith.com/encyclopedia/rawi/p-2931",
 "classif": [
-"companion",
+"Successor (did not meet the Prophet)",
 "hadith narrator"
 ],
 "research_students": [
@@ -3219,7 +3219,10 @@
 },
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5096-al-dahhak-bin-sufyan-al-kalabi",

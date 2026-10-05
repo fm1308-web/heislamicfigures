@@ -1676,7 +1676,8 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_note": "Ibn Hajar notes conflicting reports that he died at Uhud (3 AH), but he is named among the weepers at Tabuk (9 AH); possibly confused with 'Umayr ibn al-Humam."
 },
 {
 "slug": "arees-1111-abdullah-bin-atik-bin-qays",
@@ -3487,7 +3488,7 @@
 "relations": [],
 "full": "Thabit b. al-Mandhur b. Haram b. 'Amr b. Zayd Manat b. 'Adi b. 'Amr b. Malik b. al-Najjar",
 "full_name_ar": "ثابت بن المنذر بن حرام ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=1243",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=1243",
@@ -3511,7 +3512,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-1244-abdur-rahman-bin-thabit",
@@ -8884,17 +8891,20 @@
 "companion"
 ],
 "research_evidence": "وأخوه لأبويه: هلال بن المعلّى",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 624,
+"dod_s": "Died at: Battle of Badr — 2 AH / c. 624 CE (year of the event)",
+"dob": 559,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 559 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 2,
+"_dodFromEvent": true,
+"death_event": "Battle of Badr",
+"death_note": "Later of the reported dates used. One account only (al-Dimyati); other sources say he left descendants."
 },
 {
 "slug": "arees-1533-rashid-bin-al-mu-alla",
@@ -10534,7 +10544,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=1604",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=1604",
-"https://shamela.ws/book/9767/645"
+"https://shamela.ws/book/9767/645",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=7484",
+"https://shamela.ws/book/9767/646"
 ],
 "possible_duplicate_of": {
 "core_slug": "F0158",
@@ -10559,7 +10571,18 @@
 "death_event": "Battle of Uhud",
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"merged_from": [
+"arees-7484-al-harith-bin-thabit-bin-abdullah"
+],
+"also_listed_as": [
+{
+"slug": "arees-7484-al-harith-bin-thabit-bin-abdullah",
+"name": "al-Harith bin Thabit bin 'Abdullah",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/646"
+}
+]
 },
 {
 "slug": "arees-1605-kulayb-bin-isaf",
@@ -12271,17 +12294,20 @@
 "companion"
 ],
 "research_evidence": "ثعلبة بن حاطب بن عمرو بن عبيد بن أمية بن زيد بن مالك بن عوف بن عمرو بن مالك بن الأوس الأنصاري. ذكره موسى بن عقبة وابن إسحاق في البدريين",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 624,
+"dod_s": "Died at: Battle of Uhud — 3 AH / c. 624 CE (year of the event)",
+"dob": 559,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 559 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 3,
+"_dodFromEvent": true,
+"death_event": "Battle of Uhud",
+"death_note": "Later of the reported dates used. Per Ibn al-Kalbi (al-Isaba 930); possibly confused with the Tha'laba of Masjid al-Dirar."
 },
 {
 "slug": "arees-1706-rafi-bin-unjunda",
@@ -21079,7 +21105,7 @@
 "full": "'Abdullah bin al-Harith bin Abi Rabi'a b. al-Mughirah b. 'Abdullah b. 'Umar b. Makhzum b. Yaqazah",
 "full_name_ar": "عبد الله بن الحارث بن أبي ربيعة ( رضي الله عنه",
 "kunya": "Abu 'Abdur Rahman",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "birth_date_hijri": 8,
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=2010",
 "sources": [
@@ -21094,7 +21120,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba lists him (entry 6603) in the fourth section, reserved for people mentioned among the companions by mistake. It cites Ibn 'Abd al-Barr's mention of a narration via 'Abdullah bin Abi Umayya from him, and Ibn Hajar suggests he is probably 'Abdullah bin al-Harith bin 'Abdullah bin 'Ayyash bin Abi Rabi'a, in which case his hadith is undoubtedly mursal. His companionship is therefore doubtful according to this source.",
 "bio_full_source": "https://shamela.ws/book/9767/2523",
 "classif": [
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_students": [
 "'Abdullah bin Abi Umayya"
@@ -21110,7 +21137,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-2012-abu-sa-d-sa-id-bin-al-harith-bin-hisham",
@@ -21429,17 +21459,20 @@
 "martyr"
 ],
 "research_evidence": "٤٦٦٤ ز- عبد اللَّه بن خالد بن الوليد بن المغيرة المخزومي ... ذكره الزّبير بن بكّار أنه استشهد مع أبيه في وقعة اليرموك",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 636,
+"dod_s": "Died at: Battle of Yarmuk — 15 AH / c. 636 CE (year of the event)",
+"dob": 571,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 571 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 15,
+"_dodFromEvent": true,
+"death_event": "Battle of Yarmuk",
+"death_note": "Later of the reported dates used. Per al-Zubayr ibn Bakkar (al-Isaba 4664)."
 },
 {
 "slug": "arees-2024-suliaman-bin-khalid-bin-al-walid",
@@ -21649,7 +21682,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=2030",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=2030",
-"https://shamela.ws/book/9767/3449"
+"https://shamela.ws/book/9767/3449",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=2031",
+"https://shamela.ws/book/9767/1966"
 ],
 "book_refs": [
 {
@@ -21686,45 +21721,18 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
-},
+"hadith_source_collections": [],
+"merged_from": [
+"arees-2031-al-walid-bin-al-walid-bin-al-walid"
+],
+"also_listed_as": [
 {
 "slug": "arees-2031-al-walid-bin-al-walid-bin-al-walid",
-"tier": "C",
-"arees_id": 2031,
-"famous": "al-Walid bin al-Walid bin al-Walid",
-"type": "Narrator",
-"relations": [],
-"full": "al-Walid/A'bdullah bin al-Walid b. al-Walid b. al-Mughira b. 'Abdullah b. 'Umar b. Makhzum b. Yaqaza",
-"full_name_ar": "الوليد بن الوليد بن المغيرة ( رضي الله عنه",
+"name": "al-Walid bin al-Walid bin al-Walid",
 "generation": "Comp.(RA)",
-"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=2031",
-"sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=2031",
-"https://shamela.ws/book/9767/1966"
-],
-"possible_duplicate_of": {
-"core_slug": "F0591",
-"core_famous": "Fatima bint al-Walid b. al-Mughirah"
-},
-"citations_in_chains": 0,
-"bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 5039, listed under 'Abdullah) says his name was al-Walid and it is reported the Prophet changed it to 'Abdullah, saying 'you have taken al-Walid as a name of endearment; he is 'Abdullah'; the entry also cites Umm Salama's elegy for al-Walid bin al-Walid. Sources named include al-Zubayr bin Bakkar, Ibn 'Abd al-Barr, Ibn Manda and al-Harbi's Gharib al-Hadith, and Ibn Hajar notes one chain contains al-Nadr bin Salama, called a liar. In the waw section (entry 9203, shamela 9767/3458) Ibn Hajar lists an al-Walid bin al-Walid of the al-Mughira line among those born in the Prophet's lifetime and refers back to the entries of those named 'Abdullah.",
-"bio_full_source": "https://shamela.ws/book/9767/1966",
-"classif": [
-"companion"
-],
-"research_evidence": "٥٠٣٩- عبد اللَّه بن الوليد بن المغيرة: كان اسمه الوليد. ويقال: إن النبيّ صلى اللَّه عليه وسلّم غيّره",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
-"_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
-"teachers_links": {},
-"students_links": {},
-"hadith_chain_count": 0,
-"hadith_narrated_count": 0,
-"hadith_source_collections": []
+"source": "https://shamela.ws/book/9767/1966"
+}
+]
 },
 {
 "slug": "arees-2032-hurmila-bin-al-walid",

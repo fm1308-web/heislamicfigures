@@ -3290,72 +3290,6 @@
 "hadith_source_collections": []
 },
 {
-"slug": "arees-19495-safya-bint-atiya",
-"tier": "C",
-"arees_id": 19495,
-"famous": "Safya bint 'Atiya",
-"type": "Narrator",
-"relations": [],
-"full": "Safya bint 'Atiya",
-"full_name_ar": "صفية بنت عطيه",
-"generation": "Follower(Tabi') [ 3rd Generation ]",
-"teachers": [
-"'Aisha bint Abi Bakr"
-],
-"students": [
-"Atab bin 'Abdul 'Aziz"
-],
-"chain_to_prophet": [
-"arees-1-prophet-muhammad-saw",
-"arees-53-aisha-bint-abi-bakr",
-"arees-19495-safya-bint-atiya"
-],
-"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19495",
-"sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=19495",
-"https://shamela.ws/book/3722/18817"
-],
-"book_refs": [
-{
-"source": "Tahdheeb al-Tahdheeb",
-"ref": "Vol:12"
-},
-{
-"source": "Taqrib al-Tahdheeb",
-"ref": "749"
-}
-],
-"citations_in_chains": 2,
-"bio": "Tahdhib al-Kamal (entry 7877) gives Safiyya bint 'Atiyya as the grandmother of 'Attab ibn 'Abd al-'Aziz al-Himmani. She narrated from 'Aisha, Mother of the Believers, and 'Attab ibn 'Abd al-'Aziz narrated from her. Abu Dawud recorded her hadith, in which she entered with women of 'Abd al-Qays who asked 'Aisha about dates and raisins. No death year is given.",
-"bio_full_source": "https://shamela.ws/book/3722/18817",
-"classif": [
-"tabi'i",
-"hadith narrator"
-],
-"research_teachers": [
-"'Aisha"
-],
-"research_students": [
-"'Attab ibn 'Abd al-'Aziz al-Himmani"
-],
-"research_evidence": "صفية بنت عطية، جدة عتاب بن عبد العزيز الحماني",
-"dod": 723,
-"_dodFromGeneration": true,
-"dod_s": "c. 723 CE (estimated from generation — no recorded date survives)",
-"dob": 658,
-"_dobFromDod": true,
-"dob_s": "c. 658 CE (estimated)",
-"teachers_links": {
-"'Aisha bint Abi Bakr": "F0199"
-},
-"students_links": {
-"Atab bin 'Abdul 'Aziz": "arees-24300-atab-bin-abdul-aziz"
-},
-"hadith_chain_count": 0,
-"hadith_narrated_count": 0,
-"hadith_source_collections": []
-},
-{
 "slug": "arees-19497-dba-h-bint-al-mqdad-bin",
 "tier": "C",
 "arees_id": 19497,
@@ -4205,10 +4139,12 @@
 "full_name_ar": "العالية بنت سبيع",
 "generation": "Follower(Tabi')",
 "teachers": [
-"'Aisha bint Abi Bakr"
+"'Aisha bint Abi Bakr",
+"Maymuna bint al-Harith"
 ],
 "students": [
-"Yonus bin Abi Ishaq"
+"Yonus bin Abi Ishaq",
+"'Abdullah bin Malik bin Hudhafa"
 ],
 "chain_to_prophet": [
 "arees-1-prophet-muhammad-saw",
@@ -4218,7 +4154,8 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19750",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=19750",
-"https://shamela.ws/book/3722/18826"
+"https://shamela.ws/book/3722/18826",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=19499"
 ],
 "book_refs": [
 {
@@ -4234,7 +4171,7 @@
 "ref": ""
 }
 ],
-"citations_in_chains": 2,
+"citations_in_chains": 5,
 "city": "Medina",
 "bio": "Tahdhib al-Kamal (entry 7884) gives al-'Aliya bint Subay' as the mother of 'Abdullah ibn Malik ibn Hudhafa. She narrated from Maymuna bint al-Harith, wife of the Prophet, and her son 'Abdullah ibn Malik ibn Hudhafa narrated from her. Al-'Ijli called her a trustworthy Medinan tabi'iyya. Abu Dawud and al-Nasa'i recorded her hadith, about people of Quraysh dragging a sheep 'like a donkey' before the Prophet. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/3722/18826",
@@ -4263,7 +4200,20 @@
 },
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [
+"abu-dawood"
+],
+"merged_from": [
+"arees-19499-al-aaliya-bin-sabay"
+],
+"also_listed_as": [
+{
+"slug": "arees-19499-al-aaliya-bin-sabay",
+"name": "al-Aaliya bin Sabay'",
+"generation": "Follower(Tabi') [ 3rd Generation ]",
+"source": "https://shamela.ws/book/3722/18826"
+}
+]
 },
 {
 "slug": "arees-19810-abdullah-bin-shdad",
@@ -12294,12 +12244,11 @@
 "core_famous": "Mandwas bint Khallad bin Suwayd"
 },
 "citations_in_chains": 1,
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 626,
+"dod_s": "Died at: Banu Qurayza — 5 AH / c. 626 CE (year of the event)",
+"dob": 561,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 561 CE (estimated)",
 "teachers_links": {},
 "students_links": {
 "Sulayman ibn Yasar": "F1343"
@@ -12307,7 +12256,11 @@
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
 "hadith_source_collections": [],
-"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 278 at muslimscholars.info."
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 278 at muslimscholars.info.",
+"death_date_hijri": 5,
+"_dodFromEvent": true,
+"death_event": "Banu Qurayza",
+"death_note": "Later of the reported dates used. Only the muslimscholars.info record states this; no other source found."
 },
 {
 "slug": "arees-288-unaysa-bint-khubayb-bin-isaf",
@@ -15826,18 +15779,21 @@
 "core_famous": "Zaynab bint Qays bin Makhrama"
 },
 "citations_in_chains": 1,
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 633,
+"dod_s": "Died at: Battle of al-Yamama — 12 AH / c. 633 CE (year of the event)",
+"dob": 568,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 568 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
 "hadith_source_collections": [],
-"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 2610 at muslimscholars.info."
+"bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Companions. No recorded death year survives; the timeline position is an estimate. Entry 2610 at muslimscholars.info.",
+"death_date_hijri": 12,
+"_dodFromEvent": true,
+"death_event": "Battle of al-Yamama",
+"death_note": "Later of the reported dates used. Only the muslimscholars.info record states this; no other source found."
 },
 {
 "slug": "arees-2804-mus-ub-bin-shayba",
@@ -16129,7 +16085,7 @@
 "full": "Aqeel bin 'Amr b. Maqrn b. 'Ayadh b. Mija b. Hujayr b. Nasr b. Habshiya b. Ka'b b. 'Abd b. Thoor",
 "full_name_ar": "عقيل بن مقرن المزني ( رضي الله عنه",
 "kunya": "Abu Hakim, Abu Hatim",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "hadith_narrations_count": 1,
 "hadith_source_collections": [
 "al-tirmidhi"
@@ -16172,7 +16128,7 @@
 "bio": "The hdith.com narrator entry lists him as Abu Hatim al-Muzani al-Hijazi, whose name is said to be 'Aqil bin Muqarrin. His companion status is disputed: it says he is a companion with a hadith, though some say he had no companionship (Abu Zur'a questioned it, while al-Tirmidhi, Ibn Hibban and Ibn al-Sakan accepted his report). He has four narrations, including the well-known hadith on accepting a suitor of acceptable religion and character. Sources cited include al-Thiqat, al-Kashif, al-Isaba, Tahdhib al-Kamal and Taqrib al-Tahdhib.",
 "bio_full_source": "https://hdith.com/encyclopedia/rawi/p-4449",
 "classif": [
-"companion",
+"Successor (did not meet the Prophet)",
 "hadith narrator"
 ],
 "research_evidence": "أبو حاتم , قيل: اسمه عقيل بن مقرن ... المزني , الحجازي",
@@ -16185,7 +16141,10 @@
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 1,
-"hadith_narrated_count": 0
+"hadith_narrated_count": 0,
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3140-abi-laham-al-ghafari",
@@ -22462,7 +22421,7 @@
 "full": "Abu Sakina al-Himsi (Mahlam)",
 "full_name_ar": "أبو سكينة الحمصي ( رضي الله عنه",
 "kunya": "Abu Skynh",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "students": [
 "Bilal bin Sa'd bin Tamim"
 ],
@@ -22490,7 +22449,7 @@
 "bio": "Abu Sakina al-Himsi, of Homs in Syria, is a narrator whose given name is disputed (Mihlam bin Sawwar or Ziyad bin Malik) and whose companionship is disputed: al-Dhahabi calls him a companion, while Ali ibn al-Madini says no companionship is known for him, Abu Hatim says he is not named and has no companionship, Abu Zur'a says he does not know his name, and Ibn Abd al-Barr says no certain name or lineage is known. Bilal bin Sa'd, Jamil bin Abdullah and Ja'far bin Burqan narrated from him. No death year is given.",
 "bio_full_source": "https://shamela.ws/narrator/5437",
 "classif": [
-"companion",
+"Successor (did not meet the Prophet)",
 "hadith narrator"
 ],
 "research_students": [
@@ -22511,7 +22470,10 @@
 },
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5357-abu-shhm",
@@ -24684,19 +24646,22 @@
 "Zakariyya ibn Isma'il al-Ansari"
 ],
 "research_evidence": "Ismail ibn Zayd al-Ansari — إسماعيل بن زيد الأنصاري ... Ismail ibn Zayd ibn Thabit ... Abu al-Mus`ab",
-"dod": 728,
-"_dodFromGeneration": true,
-"dod_s": "c. 728 CE (estimated from generation — no recorded date survives)",
-"dob": 663,
+"dod": 683,
+"dod_s": "Died at: Battle of al-Harra — 63 AH / c. 683 CE (year of the event)",
+"dob": 618,
 "_dobFromDod": true,
-"dob_s": "c. 663 CE (estimated)",
+"dob_s": "c. 618 CE (estimated)",
 "teachers_links": {
 "Zayd ibn Thabit": "F1686"
 },
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 63,
+"_dodFromEvent": true,
+"death_event": "Battle of al-Harra",
+"death_note": "Later of the reported dates used. Only the muslimscholars.info record states this; no other source found."
 },
 {
 "slug": "arees-11551-abu-mrawh-al-ghfary",

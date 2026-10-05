@@ -1491,7 +1491,11 @@ function _tlUpdateFigCount(shownCount){
   var total=(PEOPLE?PEOPLE.length:0)+narrators;
   var shown=(typeof shownCount==='number')?shownCount:(_lastSortedPeople?_lastSortedPeople.length:0);
   if(!total){ el.textContent=''; return; }
-  el.textContent='Showing '+shown.toLocaleString()+' of '+total.toLocaleString()+' figures';
+  var narrOn=!!(window.GA_Narrators && window.GA_Narrators.tierCOn && window.GA_Narrators.tierCOn());
+  var noun=narrOn?' figures':' core figures';
+  el.textContent=(shown===total)
+    ? 'Showing '+total.toLocaleString()+noun
+    : 'Showing '+shown.toLocaleString()+' of '+total.toLocaleString()+noun;
 }
 
 // Re-render once the narrator listing lands. timelineRows() is cached by then,
@@ -1895,11 +1899,11 @@ function renderRows(filtered){
     // Step 2.8 — sacred rule: only type:'Prophet' figures (and Adam explicitly) get the gold treatment.
     const isSacred = _tlIsSacred(p);
 
-    html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="background:${era.bg}">
+    html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}${p._narrator?' tl-narr':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="${p._narrator?`background:linear-gradient(rgba(70,110,150,.30),rgba(70,110,150,.30)),${era.bg};border-left:4px solid rgba(130,165,200,.9);`:`background:${era.bg}`}">
       <div class="tc-name${isSacred?' is-sacred':''}">
         <div class="tc-texts">
           <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}${p._narrator&&window.GA_Narrators?window.GA_Narrators.tierChip(p.tier)+window.GA_Narrators.rowYear(p):''}</div>
-          <div class="tc-sub">${esc(_tlFigSubtitle(p) || _tlClassifStr(p))}</div>
+          <div class="tc-sub"${p._narrator?' style="color:rgba(150,180,205,.9)"':''}>${esc(_tlFigSubtitle(p) || _tlClassifStr(p))}</div>
         </div>
         <div class="tc-dot" style="background:${col}${isProphet?';box-shadow:0 0 8px '+col+'90':''}"></div>
       </div>
@@ -2745,6 +2749,31 @@ function _timelineInfoHtml(){
       }
     }
     _tlUpdateFigCount();
+
+    // "+ NARRATORS" add-on pill — adds all narrators (Tier B + C) to the Timeline.
+    // State lives in GA_Narrators, so it survives tab switches.
+    var narrPill = document.getElementById('tlNarrPill');
+    if(narrPill && window.GA_Narrators){
+      var _syncNarrPill = function(){
+        var on = window.GA_Narrators.tierCOn();
+        // Same zb-pill styling as the BOOKMARKS button; on = shell's zb-active.
+        // Set explicitly so the shell's own toggle can never drift out of step.
+        narrPill.textContent = on ? '− REMOVE NARRATORS' : '+ ADD NARRATORS';
+        narrPill.classList.add('zb-pill');
+        narrPill.classList.toggle('zb-active', on);
+      };
+      narrPill.title = 'Core figures are the curated library. Narrators (slate edge) are hadith ' +
+        'transmitters added from the chain registers: Tier B = key facts verified, ' +
+        'Tier C = name, era and chain data only.';
+      _syncNarrPill();
+      narrPill.addEventListener('click', function(){
+        window.GA_Narrators.setTierC(!window.GA_Narrators.tierCOn());
+        _syncNarrPill();
+        applyFilterAndFocus();
+        var rows = window.GA_Narrators.timelineRows();
+        console.log('[narrators] pill', window.GA_Narrators.tierCOn(), rows.length);
+      });
+    }
 
     // Search input — has id="search"
     var searchInp = document.getElementById('search');

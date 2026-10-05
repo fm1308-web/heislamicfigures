@@ -130,8 +130,9 @@ window.GA_Narrators = (function(){
       var out = [];
       all.forEach(function(recs){
         recs.forEach(function(r){
-          // Undated narrators never appear in the Timeline.
-          if(r && typeof r.dod === 'number') out.push(r);
+          // Undated narrators never appear in the Timeline. Hidden (name-only)
+          // records stay off the list but remain reachable by direct link.
+          if(r && typeof r.dod === 'number' && r.hidden !== true) out.push(r);
         });
       });
       out.sort(function(a,b){ return a.dob - b.dob; });
@@ -149,8 +150,16 @@ window.GA_Narrators = (function(){
 
   // Returns the dated narrators if already loaded, else [] and kicks off the
   // load, calling onReady(rows) once when it lands.
+  // "+ NARRATORS" pill: off = no narrators on the Timeline, on = all of them
+  // (Tier B and Tier C). The listing still loads lazily, only once it's on.
+  var _tierCOn = false;
+
+  function setTierC(on){ _tierCOn = !!on; }
+  function tierCOn(){ return _tierCOn; }
+
   function timelineRows(onReady){
     if(!enabled()) return [];
+    if(!_tierCOn) return [];
     if(_listing) return _listing;
     ensureListing().then(function(rows){
       if(rows.length && typeof onReady === 'function') onReady(rows);
@@ -554,6 +563,14 @@ window.GA_Narrators = (function(){
 
     var badge = tierSticker(tier);
 
+    var hiddenNote = p.hidden === true
+      ? '<div style="display:flex;align-items:flex-start;gap:5px;margin:-4px 0 12px;padding:5px 9px;' +
+        'background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.35);border-radius:3px;' +
+        'font-size:var(--fs-3);color:var(--ip-muted);line-height:1.45">' +
+        '<span>Name-only entry: the classical registers give one name and no lineage, ' +
+        'so this person is kept off the Timeline list.</span></div>'
+      : '';
+
     // Dates — the record's own display strings (dob_s / dod_s) are shown
     // verbatim when present; they already carry their "c." and their
     // provenance ("converted from 129 AH" / "estimated from generation").
@@ -601,7 +618,13 @@ window.GA_Narrators = (function(){
     var bioHtml = p.bio
       ? _sec('Biography', '<div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">' +
              _esc(p.bio) + '</div>')
-      : '';
+      : (typeof p.bio_auto === 'string' && p.bio_auto.trim())
+        ? _sec('Biography', '<div style="font-size:var(--fs-3);color:var(--ip-text);line-height:1.7">' +
+               _esc(p.bio_auto) + '</div>' +
+               '<div style="margin-top:6px;font-size:var(--fs-3);color:var(--ip-muted);font-style:italic">' +
+               'Auto-generated from the chain data and narrator registers held in this app — ' +
+               'no biography text survives for this person.</div>')
+        : '';
 
     // Hadith narrated — identical table for every tier. A row becomes a link
     // when the hadith index holds numbers for this narrator in that book;
@@ -641,7 +664,36 @@ window.GA_Narrators = (function(){
         ? '<div style="margin-top:6px;font-size:var(--fs-3);color:var(--ip-muted)">Total narrations: ' +
           p.hadith_narrations_count + '</div>' : '';
       hadHtml = _sec('Hadith Narrated', rows + total);
-    } else if(typeof p.hadith_narrations_count === 'number'){
+    }
+    // No hadith_narrated list: build the table from the loaded hadith index,
+    // one linked row per source collection that has numbers for this narrator.
+    var idxRows = '', idxTotal = 0;
+    if(!hn.length){
+      (p.hadith_source_collections || []).forEach(function(bookSlug){
+        var nums = hadithNums(p.slug, bookSlug);
+        if(!nums.length) return;
+        var book = bookSlug;
+        for(var k in BOOK_SLUG){ if(BOOK_SLUG[k] === bookSlug){ book = k; break; } }
+        var rowStyle = 'display:flex;justify-content:space-between;gap:10px;' +
+          'align-items:baseline;padding:4px 0;border-bottom:1px dotted var(--ip-brd);';
+        var label = (p.famous || p.slug) + ' — ' + book;
+        idxTotal += nums.length;
+        idxRows += '<a href="#monastic" class="nr-hadith-row nr-hadith-link" ' +
+          'onclick="event.stopPropagation();event.preventDefault();' +
+          'window.GA_Narrators.openHadiths(\'' + _jsq(p.slug) + '\',\'' +
+          _jsq(bookSlug) + '\',\'' + _jsq(label) + '\');return false;" ' +
+          'title="Open these ' + nums.length + ' hadiths in MONASTIC" ' +
+          'style="' + rowStyle + 'text-decoration:none;color:var(--ip-text);cursor:pointer">' +
+          '<span style="font-size:var(--fs-3)">' + _esc(book) + '</span>' +
+          '<span style="font-size:var(--fs-3);color:' + accent + ';' +
+          'font-variant-numeric:tabular-nums;white-space:nowrap">' + nums.length + '</span></a>';
+      });
+    }
+    if(idxRows){
+      hadHtml = _sec('Hadith Narrated', idxRows +
+        '<div style="margin-top:6px;font-size:var(--fs-3);color:var(--ip-muted)">Total in this app: ' +
+        idxTotal + '</div>');
+    } else if(!hn.length && typeof p.hadith_narrations_count === 'number'){
       hadHtml = _sec('Hadith Narrated',
         '<div style="font-size:var(--fs-3);color:var(--ip-text)">Total narrations: ' +
         p.hadith_narrations_count + '</div>');
@@ -666,6 +718,7 @@ window.GA_Narrators = (function(){
 
     return '' +
       badge +
+      hiddenNote +
       namesHtml +
       '<div class="i-dates">' + dateRows + '</div>' +
       estNote +
@@ -683,7 +736,7 @@ window.GA_Narrators = (function(){
     var el = document.getElementById('infoScroll');
     if(!el || !p) return;
     _shownSlug = p.slug || null;
-    el.innerHTML = cardHtml(p);
+    el.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>';
     // First card opened is the first use of the hadith index: fetch it, then
     // re-render so its rows become links. Cached thereafter, so this is a
     // one-time second paint and never re-fetches.
@@ -691,7 +744,7 @@ window.GA_Narrators = (function(){
       ensureHadithIndex().then(function(){
         if(_shownSlug !== (p.slug || null)) return;   // user moved on
         var el2 = document.getElementById('infoScroll');
-        if(el2) el2.innerHTML = cardHtml(p);
+        if(el2) el2.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>';
       });
     }
   }
@@ -710,6 +763,8 @@ window.GA_Narrators = (function(){
     ensureBySlug: ensureBySlug,
     ensureListing: ensureListing,
     timelineRows: timelineRows,
+    setTierC: setTierC,
+    tierCOn: tierCOn,
     applyFilters: applyFilters,
     tierChip: tierChip,
     tierText: tierText,

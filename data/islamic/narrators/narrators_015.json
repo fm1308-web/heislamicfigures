@@ -2362,7 +2362,7 @@
 "relations": [],
 "full": "'Amir bin Mas'ud bin Umayyah b. Khalaf b. Wahb b. Hudhafah b. Jumah b. 'Amr b. Husays b. Ka'b",
 "full_name_ar": "عامر بن مسعود بن أمية ( رضي الله عنه",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=2407",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=2407",
@@ -2388,7 +2388,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/1720",
 "classif": [
 "hadith narrator",
-"governor"
+"governor",
+"Successor (did not meet the Prophet)"
 ],
 "research_students": [
 "Numayr b. Gharib"
@@ -2404,7 +2405,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-2408-abu-ghaliz-bin-mas-ud-bin-umayyah",
@@ -2963,7 +2967,7 @@
 "relations": [],
 "full": "al-Muthlam bin Hudhayfa/Hadhafa b. Ghanm b. 'Amir b. 'Abdullah b. 'Ubaid b. 'Uwaij b. 'Adi b. Ka'b",
 "full_name_ar": "المثلم بن حذافة بن غانم ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=2510",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=2510",
@@ -2977,7 +2981,7 @@
 "bio": "Al-Isaba (Ibn Hajar, entry 7735) lists al-Muthallam b. Hudhafa b. Ghanim al-Qurashi al-'Adawi. It says al-Marzubani included him in Mu'jam al-Shu'ara' and called him a mukhadram (someone who lived before and after Islam). Ibn Hajar reasons that he was therefore a Companion, since every Qurashi left in Mecca at the end of the Prophet's life had become Muslim. It adds that al-Marzubani told a story about him and Ubayy b. Khalaf.",
 "bio_full_source": "https://shamela.ws/book/9767/2950",
 "classif": [
-"companion",
+"Successor (did not meet the Prophet)",
 "poet"
 ],
 "research_evidence": "المثلّم بن حذافة: بن غانم بن عامر بن عبد اللَّه بن عبيد بن عويج بن عديّ بن كعب القرشي العدوي. ذكره المرزبانيّ في «معجم الشّعراء» وقال: مخضرم.",
@@ -2991,7 +2995,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-2511-nasr-bin-ghanm-b-amir",
@@ -3932,17 +3939,20 @@
 "poet"
 ],
 "research_evidence": "ضرار بن الخطّاب: بن مرداس بن كثير بن عمرو بن شيبان بن محارب بن فهر",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 637,
+"dod_s": "Died at: after the conquest of al-Mada'in — 16 AH / c. 637 CE (year of the event)",
+"dob": 572,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 572 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 16,
+"_dodFromEvent": true,
+"death_event": "after the conquest of al-Mada'in",
+"death_note": "Later of the reported dates used. Al-Khatib reports he lived to see the conquest of al-Mada'in (16 AH); Ibn Sa'd says he was killed earlier, at al-Yamama (12 AH)."
 },
 {
 "slug": "arees-2940-junayd-bin-amr",
@@ -4290,7 +4300,7 @@
 "relations": [],
 "full": "al-Saib bin al-Harith bin Hazn b. Bujair b. al-Hizm b. Ru'ayba b. 'Abdullah b. Hilal b. 'Amir",
 "full_name_ar": "السائب بن الحارث بن حزن الهلالي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3013",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3013",
@@ -4314,7 +4324,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3014-qatn-bin-al-harith",
@@ -9599,7 +9615,7 @@
 "relations": [],
 "full": "al-Mukhtar bin Abi 'Ubaid bin Mas'ud b. 'Amr b. 'Umayr b. 'Auf b. 'Uqdah b. Ghira b. 'Ubda b. Thaqif",
 "full_name_ar": "المختار بن أبي عبيد بن مسعود الثقفي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3270",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3270",
@@ -9624,7 +9640,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3300-al-ahws-bin-mas-ud",
@@ -10171,7 +10193,7 @@
 "relations": [],
 "full": "Al Aswad bin Abdul Asad",
 "full_name_ar": "الأسودبن عبدالأسد ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3318",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3318",
@@ -10206,7 +10228,13 @@
 ],
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3320-al-aswad-bin-asram",
@@ -10255,7 +10283,7 @@
 "relations": [],
 "full": "Al Aswad bin Halal",
 "full_name_ar": "الأسودبن هلال المحاربي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3321",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3321",
@@ -10267,7 +10295,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/326",
 "classif": [
 "mukhadram",
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_teachers": [
 "Mu'adh ibn Jabal"
@@ -10283,7 +10312,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3322-al-aswad-bin-hazim",
@@ -11903,7 +11935,7 @@
 "relations": [],
 "full": "Aseed bin Karz",
 "full_name_ar": "أسيدبن كرزالقسري ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3378",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3378",
@@ -11913,7 +11945,7 @@
 "bio": "Ibn Hajar lists him in al-Isaba (section 4, names recorded in error), entry 537. He states the form Usayd ibn Kurz al-Qasri occurs in al-Baghawi's work, but the correct name is Asad (ibn Kurz).",
 "bio_full_source": "https://shamela.ws/book/9767/359",
 "classif": [
-"companion"
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "أسيد بن كرز القسري كذا وقع عند البغويّ. وصوابه أسد- بفتح الهمزة والمهملة.",
 "dod": 680,
@@ -11926,7 +11958,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3379-aseed-bin-sa-ya",
@@ -12265,7 +12300,9 @@
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3391",
 "https://shamela.ws/book/1110/105",
 "http://muslimscholars.info/manage.php?submit=scholar&ID=7163",
-"https://shamela.ws/book/9767/201"
+"https://shamela.ws/book/9767/201",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=7323",
+"https://shamela.ws/book/9767/354"
 ],
 "citations_in_chains": 0,
 "bio": "Entry 116 of Ibn al-Athir's Usd al-Ghaba fi Ma'rifat al-Sahaba: Aslam al-Ra'i al-Aswad (the black shepherd). Ibn Manda gives his kunya as Abu Salma and says he was martyred at Khaybar. Abu Nu'aym disputes this, saying the shepherd's name was not Aslam and rejecting the Khaybar account. A hadith beginning 'Bakh, bakh, for five things' about deeds heavy on the scales is attributed to him.",
@@ -12274,16 +12311,16 @@
 "companion"
 ],
 "research_evidence": "أسلم الراعي الأسود قال ابن منده: أسلم الراعي الأسود يكنى أبا سلمى، استشهد بخيبر.",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 628,
+"dod_s": "Died at: Khaybar — 7 AH / c. 628 CE (year of the event)",
+"dob": 563,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 563 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "merged_from": [
-"arees-7163-aslm-al-ra-y-al-aswad"
+"arees-7163-aslm-al-ra-y-al-aswad",
+"arees-7323-aslm-al-ra-y-abu-slma"
 ],
 "also_listed_as": [
 {
@@ -12291,11 +12328,21 @@
 "name": "Aslm al-Ra'y al-'Aswad",
 "generation": "Comp.(RA)",
 "source": "https://shamela.ws/book/9767/201"
+},
+{
+"slug": "arees-7323-aslm-al-ra-y-abu-slma",
+"name": "Aslm al-Ra'y Abu Slma",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/354"
 }
 ],
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 7,
+"_dodFromEvent": true,
+"death_event": "Khaybar",
+"death_note": "Later of the reported dates used. Per Ibn Manda; Abu Nu'aym disputes both the name and the Khaybar account."
 },
 {
 "slug": "arees-3392-aslam-bin-ameera",
@@ -12743,7 +12790,7 @@
 "relations": [],
 "full": "Azaaz Mard",
 "full_name_ar": "أزاذ مرد ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3410",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3410",
@@ -12753,7 +12800,8 @@
 "bio": "Ibn Hajar lists him in al-Isaba (section 3, the mukhadramun who lived into Islam without meeting the Prophet), entry 439, as Azad Mard ibn Hurmuz al-Farisi. He cites Ibn Mandah's report via Ikrimah ibn Ibrahim al-Azdi that he had reached the time of Islam and had been one of the cavalry guards (asawira) of Kisra, and relates an anecdote of a miraculous event he witnessed.",
 "bio_full_source": "https://shamela.ws/book/9767/321",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "أزاد مرد بن هرمز الفارسيّ. ذكره ابن مندة، وروى من طريق عكرمة بن إبراهيم الأزدي عن جرير بن يزيد",
 "dod": 680,
@@ -12766,7 +12814,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3412-azhar-bin-munqir",
@@ -12828,7 +12879,7 @@
 "relations": [],
 "full": "Azhar bin Qais",
 "full_name_ar": "أزهر بن قيس ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3413",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3413",
@@ -12838,7 +12889,8 @@
 "bio": "Ibn Hajar lists him in al-Isaba (section 4, those wrongly counted as companions), entry 516, noting he was mentioned by al-Baghawi, Ibn Shahin, Ibn Abd al-Barr and Abu Musa. Ibn Hajar argues a chain error: the hadith on seeking refuge from the trials of the West belongs to a different companion, with Azhar (ibn Abdullah al-Harazi) only an intermediate narrator. He cites al-Bukhari's Tarikh, Ibn Sa'd, Ibn Abi Asim, al-Tabarani and Abu Nu'aym.",
 "bio_full_source": "https://shamela.ws/book/9767/351",
 "classif": [
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "عن أبي الوليد أزهر بن قيس صاحب النبيّ",
 "dod": 680,
@@ -12851,7 +12903,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3414-azynah-bin-haarith",
@@ -12971,7 +13026,7 @@
 "relations": [],
 "full": "Ibrahim al ansari",
 "full_name_ar": "إبراهيم الأنصاري ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3434",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3434",
@@ -12985,7 +13040,8 @@
 "bio": "Ibn Hajar lists him in al-Isaba (section 4, those wrongly counted as companions), entry 507. He cites al-Bukhari that a report via his son Isma'il ibn Ibrahim al-Ansari, in which he heard the Prophet on wiping over leather socks, is not established. Ibn Hajar explains the companion link dropped out of the chain and that Muhammad ibn Abi Humayd is very weak.",
 "bio_full_source": "https://shamela.ws/book/9767/349",
 "classif": [
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_students": [
 "Isma'il ibn Ibrahim al-Ansari"
@@ -13001,7 +13057,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3435-ibrahim-al-ashhali",
@@ -13124,7 +13183,7 @@
 "relations": [],
 "full": "Ibrahim ibn Abd ul Rahmaan al Azri",
 "full_name_ar": "إبراهيم بن عبد الرحمن العذري ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3439",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3439",
@@ -13137,7 +13196,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/348",
 "classif": [
 "tabi'i",
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "إبراهيم بن عبد الرحمن العذري، تابعي. أرسل حديثا فذكره ابن مندة وغيره في الصّحابة",
 "dod": 680,
@@ -13165,7 +13225,10 @@
 "city": "Damascus",
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3440-ibrahim-ibn-abd-ul-rahmaan-al",
@@ -14558,7 +14621,7 @@
 "relations": [],
 "full": "Akthum bin Saifi",
 "full_name_ar": "أكثم بن صيفي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3587",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3587",
@@ -14570,7 +14633,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/335",
 "classif": [
 "mukhadram",
-"disputed companion"
+"disputed companion",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "أكثم بن صيفي بن رباح بن الحارث بن مخاشن بن معاوية بن شريف بن جروة بن أسيد بن عمرو بن تميم التميميّ الحكيم المشهور",
 "dod": 680,
@@ -14594,7 +14658,10 @@
 ],
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3589-akydur-bin-abdul-malik",
@@ -14605,7 +14672,7 @@
 "relations": [],
 "full": "Akydur bin Abdul Malik",
 "full_name_ar": "أكيدربن عبدالملك ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3589",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3589",
@@ -14617,7 +14684,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/363",
 "classif": [
 "ruler of Dumat al-Jandal",
-"disputed companion"
+"disputed companion",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "هو أكيدر بن عبد الملك بن عبد الجن بن أعيا بن الحارث بن معاوية بن خلاوة بن أبامة بن سلمة بن شكامة بن شبيب بن السّكون",
 "dod": 680,
@@ -14630,7 +14698,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3590-al-aagher-al-ghifari",
@@ -15031,7 +15102,7 @@
 "relations": [],
 "full": "Laith bin Juthama bin Qays b. Rabi'a b. 'Abdullah b. Ya'mr b. 'Auf b. Ka'b b. 'Amir b. Laith b. Bakr",
 "full_name_ar": "ليث بن جثامة ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3663",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3663",
@@ -15045,7 +15116,7 @@
 "bio": "Ibn Hajar's al-Isaba (entry 7580) lists Layth ibn Jaththama al-Kinani al-Laythi, brother of al-Sa'b ibn Jaththama. Al-Marzubani's Mu'jam al-Shu'ara' calls him a mukhadram. Ibn Hajar quotes a marginal note citing Yahya ibn Thawban's genealogy of Egypt: Jaththama ibn Qays fathered Sa'b, Layth and Muhallim, whose mother was Fakhita bint Harb, sister of Abu Sufyan, and they witnessed Khaybar with the Prophet.",
 "bio_full_source": "https://shamela.ws/book/9767/2894",
 "classif": [
-"companion",
+"Successor (did not meet the Prophet)",
 "poet",
 "mukhadram"
 ],
@@ -15060,7 +15131,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3664-ghalib-bin-abdullah-bin-fadala-al-laith",
@@ -15663,7 +15737,7 @@
 "relations": [],
 "full": "Thabit bin Yazid Abu Asyd al-Ansari",
 "full_name_ar": "ثابت بن يزيد أبو أسيد الأنصاري ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3805",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3805",
@@ -15677,7 +15751,7 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1000) places 'Thabit bin Yazid, Abu Usayd al-Ansari' in the fourth section of the letter Tha', the section for names listed by mistake. It says Ibn Manda listed him under this name, but the well-known view is that his name is 'Abdullah bin Thabit, who has his own entry. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/522",
 "classif": [
-"companion"
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1000- ثابت بن يزيد: أبو أسيد الأنصاري ذكره ابن مندة، والمعروف أن اسمه عبد اللَّه بن ثابت كما سيأتي في موضعه",
 "dod": 680,
@@ -15690,7 +15764,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3806-jabir-bin-al-n-uman-bin-umayr-bin-malik",
@@ -16055,7 +16132,7 @@
 "relations": [],
 "full": "Jrad bin Thyh bin Rabi'yah bin al-Whyd",
 "full_name_ar": "جراد بن طهية بن ربيعة بن الوحيد ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3816",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3816",
@@ -16065,7 +16142,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1279) names him Jarad bin Tahiyya bin Rabi'a bin al-Wahid bin Ka'b bin 'Amir bin Kilab al-Kilabi al-Wahidi. He appears in the third section, for people who lived in both the pre-Islamic and Islamic eras but are not reported to have seen the Prophet. The entry goes on to mention his son, citing al-Marzubani. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/618",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1279- جراد بن طهية بن ربيعة بن الوحيد بن كعب بن عامر بن كلاب الكلابيّ الوحيديّ. مخضرم أدرك الجاهليّة والإسلام",
 "dod": 680,
@@ -16078,7 +16156,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3817-jz-a-bin-drar-al-ghtfany",
@@ -16089,7 +16170,7 @@
 "relations": [],
 "full": "Jz'a bin Drar al-Ghtfany",
 "full_name_ar": "جزء بن ضرار الغطفاني ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3817",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3817",
@@ -16100,7 +16181,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/620",
 "classif": [
 "poet",
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1288- جزء بن ضرار الغطفانيّ. ذكره المرزبانيّ في معجمه وقال: شاعر مخضرم",
 "dod": 680,
@@ -16113,7 +16195,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3818-jabir-bin-abdullah-al-ashhly-whm",
@@ -16124,7 +16209,7 @@
 "relations": [],
 "full": "Jabir bin 'Abdullah al-'Ashhly Whm",
 "full_name_ar": "جابر بن عبد الله الأشهلي وهم ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3818",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3818",
@@ -16134,7 +16219,7 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1315) lists 'Jabir bin 'Abdullah al-Ashhali' in its fourth section, for names recorded by mistake. It says Ibn Manda made an error here and the correct person is Jabir bin Khalid bin Mas'ud, who has an earlier entry. Ibn Hajar explains the error came from his descent from Banu 'Abd al-Ashhal, which was garbled into 'Abdullah al-Ashhali'. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/626",
 "classif": [
-"companion"
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1315- جابر بن عبد اللَّه الأشهليّ. وهم فيه ابن مندة، وصوابه جابر بن خالد بن مسعود. وقد تقدم.",
 "dod": 680,
@@ -16147,7 +16232,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3819-jryj-bin-salamh-abu-shah",
@@ -16158,7 +16246,7 @@
 "relations": [],
 "full": "Jryj bin Salamh Abu Shah",
 "full_name_ar": "جريج بن سلامة أبو شاه ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3819",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3819",
@@ -16168,7 +16256,7 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1337) lists 'Jurayj bin Salama, Abu Shah' in its fourth section, for names recorded by mistake. It says Ibn Shahin misspelled both his name and his kunya, and that the correct name is Hudayj, spelled with Ha' and Dal. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/631",
 "classif": [
-"companion"
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1337- جريج بن سلامة أبو شاه ذكره ابن شاهين فصحّف اسمه وكنيته، هو حديج- بمهملة ودال.",
 "dod": 680,
@@ -16181,7 +16269,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3820-jfshysh-bin-al-aswad-al-kndy",
@@ -16226,7 +16317,7 @@
 "relations": [],
 "full": "Jndb bin Zuhyr al-'Umary Frq bin Fthwn",
 "full_name_ar": "جندب بن زهير العامري فرق بن فتحون ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3821",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3821",
@@ -16236,7 +16327,7 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1351, marked as an addition) lists 'Jundub bin Zuhayr al-'Amiri' in its fourth section, for names recorded by mistake. It says Ibn Fathun, in his supplement (al-Dhayl), treated him as a different person from Jundub bin Zuhayr al-Azdi, but they are one and the same. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/635",
 "classif": [
-"companion"
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1351 ز- جندب بن زهير العامري فرّق ابن فتحون في الذيل بينه وبين جندب ابن زهير الأزديّ، وهما واحد،",
 "dod": 680,
@@ -16249,7 +16340,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3822-hajb-bin-zayd-bin-tym-bin-umayya",
@@ -16513,7 +16607,7 @@
 "relations": [],
 "full": "Hjr bin Malik bin Hdhyfh bin Bdr",
 "full_name_ar": "حجر بن مالك بن حذيفة بن بدر ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3829",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3829",
@@ -16523,7 +16617,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1963) lists Hujr bin Malik of the line of Badr al-Fazari, a cousin of 'Uyayna bin Hisn, in its third section. That section covers people who lived through the Prophet's lifetime (idrak) but are not reported to have seen him. It notes that al-Marzubani mentioned him in his Mu'jam. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/835",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1963- حجر بن مالك بن بدر الفزاري، ابن عم عيينة بن حصن. له إدراك. وذكره المرزبانيّ في «معجمه»",
 "dod": 680,
@@ -16536,7 +16631,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3830-hjyl-bin-qdamh-al-yrbw-y",
@@ -16547,7 +16645,7 @@
 "relations": [],
 "full": "Hjyl bin Qdamh al-Yrbw'y",
 "full_name_ar": "حجيل بن قدامة اليربوعي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3830",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3830",
@@ -16557,7 +16655,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1965) lists Hujayl bin Qudama al-Yarbu'i in its third section, for people who lived through the Prophet's lifetime but are not reported to have seen him. It cites al-Umawi's al-Maghazi as saying he fought with Khalid bin al-Walid against the apostates (Ridda) and was present at the killing of Malik bin Nuwayra. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/835",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1965- حجيل بن قدامة اليربوعي: ذكر الأمويّ في المغازي أنه كان مع خالد بن الوليد في قتال أهل الردّة، وشهد مقتل مالك بن نويرة",
 "dod": 680,
@@ -16570,7 +16669,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3831-hdhyfh-bin-ubaid-al-mrady",
@@ -16581,7 +16683,7 @@
 "relations": [],
 "full": "Hdhyfh bin Ubaid al-Mrady",
 "full_name_ar": "حذيفة بن عبيد المرادي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3831",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3831",
@@ -16591,7 +16693,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1967) lists Hudhayfa bin 'Ubayd al-Muradi in its third section. It says he lived in the pre-Islamic era and was present at the conquest of Egypt, and that no narration from him is known, citing Ibn Yunus. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/835",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1967- حذيفة بن عبيد المرادي: أدرك الجاهلية وشهد فتح مصر، ولا يعرف له رواية",
 "dod": 680,
@@ -16604,7 +16707,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3832-hdhyfh-al-barqy-al-azdy",
@@ -16615,7 +16721,7 @@
 "relations": [],
 "full": "Hdhyfh al-Barqy al-Azdy",
 "full_name_ar": "حذيفة البارقي الأزدي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3832",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3832",
@@ -16625,7 +16731,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1968) lists Hudhayfa al-Bariqi al-Azdi in its third section, for people who lived through the Prophet's lifetime but are not reported to have seen him. It quotes Ibn Manda as saying he is mentioned among those who lived in the Prophet's time, and notes that al-Waqidi related a hadith from him with a garbled chain (maqlub). No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/835",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "1968- حذيفة البارقي الأزديّ قال ابن مندة: له ذكر فيمن أدرك النبيّ صلّى اللَّه عليه وسلّم",
 "dod": 680,
@@ -16638,7 +16745,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3833-husayn-bin-hrym-al-tamimy",
@@ -16649,7 +16759,7 @@
 "relations": [],
 "full": "Husayn bin Hrym al-Tamimy",
 "full_name_ar": "حصين بن هريم التميمي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3833",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3833",
@@ -16659,7 +16769,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 1991) lists him in the third section of the letter Ha, among those who lived in the Prophet's time but did not see him. Citing Wathima's book on the Ridda wars, it says al-Zibriqan ibn Badr sent him to Muhakkam ibn al-Tufayl to forbid him from apostasy and call him back to Islam.",
 "bio_full_source": "https://shamela.ws/book/9767/840",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "حصين بن هريم التميمي: ذكره وثيمة في الردة، وقال: بعثه الزبرقان بن بدر إلى محكم بن الطفيل ينهاه عن الارتداد",
 "dod": 680,
@@ -16672,7 +16783,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3834-hameed-bin-hwra-a-al-zbydy-whwra-a-amh",
@@ -16683,7 +16797,7 @@
 "relations": [],
 "full": "Hameed bin Hwra'a al-Zbydy Whwra'a Amh",
 "full_name_ar": "حميد بن حوراء الزبيدي وحوراء أمه ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3834",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3834",
@@ -16694,7 +16808,8 @@
 "bio_full_source": "https://shamela.ws/book/9767/845",
 "classif": [
 "mukhadram",
-"poet"
+"poet",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "حميد بن حوراء الزبيدي: وحوراء أمّه. مخضرم، ذكره المرزباني أيضا، وأنشد له شعرا يقول فيه يخاطب عمر",
 "dod": 680,
@@ -16707,7 +16822,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3835-hnzlh-bin-al-tfyl-bin-malik-bin-ja-far",
@@ -16718,7 +16836,7 @@
 "relations": [],
 "full": "Hnzlh bin al-Tfyl bin Malik bin Ja'far",
 "full_name_ar": "حنظلة بن الطفيل بن مالك بن جعفر ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3835",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3835",
@@ -16728,7 +16846,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 2017, an addition by Ibn Hajar) lists him in the third section of the letter Ha, among those who lived in the Prophet's time but did not see him. It says he was of Kilab, lived in the Prophet's era, and was the grandfather of Layla bint Suhayl ibn al-Tufayl, mother of Umm al-Banin bint al-Walid, wife of Umar ibn Abd al-Aziz, citing al-Zubayr ibn Bakkar.",
 "bio_full_source": "https://shamela.ws/book/9767/847",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "حنظلة بن الطفيل بن مالك بن جعفر بن كلاب. له إدراك. وهو جدّ ليلى بنت سهيل بن الطفيل",
 "dod": 680,
@@ -16741,7 +16860,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3838-hrash-bin-umayya-al-k-aby",
@@ -16752,7 +16874,7 @@
 "relations": [],
 "full": "Hrash bin Umayya al-K'aby",
 "full_name_ar": "حراش بن أمية الكعبي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3838",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3838",
@@ -16772,7 +16894,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3839-hryth-bin-shyban-wald-bakr-bin-wa-il",
@@ -16783,7 +16911,7 @@
 "relations": [],
 "full": "Hryth bin Shyban Wald Bakr bin Wa'il",
 "full_name_ar": "حريث بن شيبان والد بكر بن وائل ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3839",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3839",
@@ -16803,7 +16931,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3840-husayn-bin-rabi-yah-al-ahmsy-abu-artah",
@@ -16814,7 +16948,7 @@
 "relations": [],
 "full": "Husayn bin Rabi'yah al-Ahmsy Abu Artah",
 "full_name_ar": "حسين بن ربيعة الأحمسي أبو أرطاة ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3840",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3840",
@@ -16834,7 +16968,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3841-hamza-bin-malik-bin-dhy-msh-ar",
@@ -16845,7 +16985,7 @@
 "relations": [],
 "full": "Hamza bin Malik bin Dhy Msh'ar",
 "full_name_ar": "حمزة بن مالك بن ذي مشعار ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3841",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3841",
@@ -16865,7 +17005,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3842-hyan-bin-abi-jblh",
@@ -16876,7 +17022,7 @@
 "relations": [],
 "full": "Hyan bin Abi Jblh",
 "full_name_ar": "حيان بن أبي جبلة ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3842",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3842",
@@ -16886,7 +17032,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 2131) places him in the fourth section of the letter Ha, for people wrongly listed as companions. It says Abdan listed him among the companions by mistake, and that he is actually a Successor (tabi'i).",
 "bio_full_source": "https://shamela.ws/book/9767/877",
 "classif": [
-"tabi'i"
+"tabi'i",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "حيّان بن أبي جبلة: ذكره عبدان في الصّحابة فوهم، وإنما هو تابعي",
 "dod": 680,
@@ -16899,7 +17046,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3843-khalid-bin-isaf-al-jhny",
@@ -16923,17 +17073,20 @@
 "companion"
 ],
 "research_evidence": "خالد بن إساف: الجهنيّ. قال ابن شاهين: سمعت ابن أبي داود يقول: شهد فتح مكّة",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 636,
+"dod_s": "Died at: Battle of al-Qadisiyya — 15 AH / c. 636 CE (year of the event)",
+"dob": 571,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 571 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"death_date_hijri": 15,
+"_dodFromEvent": true,
+"death_event": "Battle of al-Qadisiyya",
+"death_note": "Later of the reported dates used. Per al-'Adawi; Banu al-Harith ibn al-Khazraj claimed he fell earlier, at the Battle of the Bridge (13 AH)."
 },
 {
 "slug": "arees-3845-khalid-al-ahdb-al-harithy",
@@ -17157,7 +17310,7 @@
 "relations": [],
 "full": "Khrzad bin Bzrj al-Farsy al-Sn'any",
 "full_name_ar": "خرزاد بن بزرج الفارسي الصنعاني ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3851",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3851",
@@ -17168,7 +17321,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 2335, an addition by Ibn Hajar) lists him in the third section of the letter Kha, among those who lived in the Prophet's time but did not see him. It says he was one of those who killed al-Aswad, who claimed prophethood in Yemen during the Prophet's lifetime.",
 "bio_full_source": "https://shamela.ws/book/9767/992",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "خرّزاد بن بزرج الفارسيّ الصنعاني، أحد من قتل الأسود",
 "dod": 680,
@@ -17181,7 +17335,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3852-khryt-bin-rashid-al-shamy",
@@ -17192,7 +17349,7 @@
 "relations": [],
 "full": "Khryt bin Rashid al-Shamy",
 "full_name_ar": "خريت بن راشد الشامي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3852",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3852",
@@ -17202,7 +17359,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 2337, an addition by Ibn Hajar) lists him in the third section of the letter Kha, among those who lived in the Prophet's time but did not see him. It says he was chief of his people, fought alongside Ali in his wars, left him after the arbitration, and that Ali then sent Ma'qil al-Riyahi of Banu Yarbu', who attacked them.",
 "bio_full_source": "https://shamela.ws/book/9767/993",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "خريت بن راشد الشاميّ. له إدراك، وكان رئيس قومه، شهد مع علي حروبه، ثم فارقه لما وقع التحكيم",
 "dod": 680,
@@ -17215,7 +17373,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3853-khbab-bin-al-mundhir-bin-amr-bin-al-jmw",
@@ -17226,7 +17387,7 @@
 "relations": [],
 "full": "Khbab bin al-Mundhir bin 'Amr bin al-Jmwh",
 "full_name_ar": "خباب بن المنذر بن عمرو بن الجموح ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3853",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3853",
@@ -17250,7 +17411,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3854-khlad-bin-yazid-bin-mua-wiya",
@@ -17261,7 +17428,7 @@
 "relations": [],
 "full": "Khlad bin Yazid bin Mua'wiya",
 "full_name_ar": "خلاد بن يزيد بن معاوية ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3854",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3854",
@@ -17288,7 +17455,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3855-djajh-bin-rabi-yah-bin-amir-bin-malik",
@@ -17299,7 +17472,7 @@
 "relations": [],
 "full": "Djajh bin Rabi'yah bin 'Amir bin Malik",
 "full_name_ar": "دجاجة بن ربيعة بن عامر بن مالك ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3855",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3855",
@@ -17309,7 +17482,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 2424) lists him in the third section of the letter Dal, among those who lived in the Prophet's time but did not see him. It identifies him as al-Amiri al-Ja'fari, brother of the poet Labid, and says his son Abd Allah was among the notables of Kufa, citing Ibn al-Kalbi.",
 "bio_full_source": "https://shamela.ws/book/9767/1023",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "دجاجة بن ربيعة بن عامر بن مالك بن كلاب العامريّ ثم الجعفريّ، أخو لبيد الشاعر. له إدراك",
 "dod": 680,
@@ -17322,7 +17496,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3856-dhw-mnahb-wdhw-mnadh-wdhw-mhdm",
@@ -18800,7 +18977,7 @@
 "relations": [],
 "full": "Slyl bin Zayd bin Malik bin al-M'ala",
 "full_name_ar": "سليل بن زيد بن مالك بن المعلى ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3900",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3900",
@@ -18814,7 +18991,8 @@
 "bio": "Entry 3710 in the third section (mukhadramun, those who lived in the Prophet's era without meeting him) of Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba. It says he was of Tayy then Sinbis, took part in the conquest of Iraq, and drowned in the Tigris on the day the Muslims crossed to al-Mada'in, the only one to drown. Ibn Hajar cites Ibn al-Kalbi.",
 "bio_full_source": "https://shamela.ws/book/9767/1446",
 "classif": [
-"mukhadram"
+"mukhadram",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "سليل بن زيد: بن مالك بن المعلّى الطّائي ثم السّنبسيّ. له إدراك، وشهد فتوح العراق",
 "dod": 680,
@@ -18827,7 +19005,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3901-s-aid-bzyad-h-ya-a-bin-ahmed-bin-mua-wiy",
@@ -18838,7 +19019,7 @@
 "relations": [],
 "full": "S'aid Bzyad'h Ya'a bin Ahmed bin Mua'wiya",
 "full_name_ar": "سعيد بزيادة ياء بن أحمد بن معاوية ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3901",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3901",
@@ -18858,7 +19039,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3902-sufyan-bin-qays-al-kndy",
@@ -18869,7 +19056,7 @@
 "relations": [],
 "full": "Sufyan bin Qays al-Kndy",
 "full_name_ar": "سفيان بن قيس الكندي ( رضي الله عنه",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=3902",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=3902",
@@ -18893,6 +19080,12 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 }
 ]

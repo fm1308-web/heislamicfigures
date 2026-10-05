@@ -19301,7 +19301,7 @@
 "relations": [],
 "full": "Yazid bin 'Umayra al-Zubaydi",
 "full_name_ar": "يزيد بن عميرة الزبيدي ( رضي الله عنه",
-"generation": "Comp.(RA) [ 2nd Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "teachers": [
 "Abu Bakr As-Siddique",
 "'Umar ibn al-Khattab",
@@ -19355,7 +19355,8 @@
 "bio_full_source": "https://shamela.ws/narrator/7111",
 "classif": [
 "hadith transmitter",
-"companion of Mu'adh ibn Jabal"
+"companion of Mu'adh ibn Jabal",
+"Successor (did not meet the Prophet)"
 ],
 "research_teachers": [
 "Mu'adh ibn Jabal",
@@ -19389,7 +19390,10 @@
 },
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 2nd Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5004-tha-laba-bin-abi-malik",
@@ -42757,7 +42761,7 @@
 "full": "'Abdur Rahman bin Yazid bin Jariyya(Hartha) b. 'Amir b. Mujma' b. al-'Attaf b. Dubaya' b. Zayd",
 "full_name_ar": "عبد الرحمن بن يزيد بن جارية الأنصاري ( رضي الله عنه",
 "kunya": "Abu Muhammad",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "death_date_hijri": 93,
 "teachers": [
 "Mujma' bin Jariyya",
@@ -42825,7 +42829,8 @@
 "bio": "An Ansari of Banu Amr ibn Awf, born during the lifetime of the Prophet, and the brother of Mujamma ibn Jariya. He is counted among the Successors, though some scholars listed him among the Companions. He transmitted hadith from various Companions and was recognized for his piety and knowledge.",
 "bio_full_source": "https://hadithtransmitters.hawramani.com/%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%B1%D8%AD%D9%85%D9%86-%D8%A8%D9%86-%D9%8A%D8%B2%D9%8A%D8%AF-%D8%A8%D9%86-%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9/",
 "classif": [
-"hadith transmitter"
+"hadith transmitter",
+"Successor (did not meet the Prophet)"
 ],
 "research_teachers": [
 "Mujamma ibn Jariya"
@@ -42852,7 +42857,10 @@
 "'Asim bin 'Ubaidullah": "arees-19808-asim-bin-ubaidullah"
 },
 "hadith_chain_count": 1,
-"hadith_narrated_count": 0
+"hadith_narrated_count": 0,
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-2206-abdur-rahman-bin-al-aswad",

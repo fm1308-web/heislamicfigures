@@ -1489,7 +1489,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=141",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=141",
-"https://shamela.ws/book/9767/4212"
+"https://shamela.ws/book/9767/4212",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=17635",
+"https://shamela.ws/book/5816/1863"
 ],
 "book_refs": [
 {
@@ -1522,7 +1524,21 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [
+"abu-dawood",
+"ibn-e-majah"
+],
+"merged_from": [
+"arees-17635-lbabh-bint-al-harith-trwa-an"
+],
+"also_listed_as": [
+{
+"slug": "arees-17635-lbabh-bint-al-harith-trwa-an",
+"name": "Lbabh bint al-Harith Trwa An",
+"generation": "Follower(Tabi')",
+"source": "https://shamela.ws/book/5816/1863"
+}
+]
 },
 {
 "slug": "arees-142-ziyad-bin-ka-b-bin-amr",

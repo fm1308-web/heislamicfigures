@@ -1685,16 +1685,19 @@
 "'Umar ibn al-Khattab"
 ],
 "research_evidence": "سيرة سلمان بن ربيعة الباهلي، المعروف بسلمان الخيل، أحد كبار التابعين وأول قاضٍ في الكوفة",
-"dod": 680,
-"_dodFromGeneration": true,
-"dod_s": "c. 680 CE (estimated from generation — no recorded date survives)",
-"dob": 615,
+"dod": 653,
+"dod_s": "Died at: Battle of Balanjar — 32 AH / c. 653 CE (year of the event)",
+"dob": 588,
 "_dobFromDod": true,
-"dob_s": "c. 615 CE (estimated)",
+"dob_s": "c. 588 CE (estimated)",
 "teachers_links": {},
 "students_links": {},
 "hadith_chain_count": 2,
-"hadith_narrated_count": 0
+"hadith_narrated_count": 0,
+"death_date_hijri": 32,
+"_dodFromEvent": true,
+"death_event": "Battle of Balanjar",
+"death_note": "Later of the reported dates used. Tahdhib al-Kamal gives c. 25 AH; the battle is usually dated 32 AH."
 },
 {
 "slug": "arees-5070-salmah-bin-qays-al-ashj-y",
@@ -9788,7 +9791,7 @@
 "_dobFromDod": true,
 "dob_s": "c. 668 CE (estimated)",
 "teachers_links": {
-"al-Aaliya bin Sabay'": "arees-19499-al-aaliya-bin-sabay"
+"al-Aaliya bin Sabay'": "arees-19750-al-aaliya-bint-ayfa"
 },
 "students_links": {},
 "hadith_chain_count": 2,
@@ -28120,91 +28123,6 @@
 "Mty' bin Maymun al-Nbry": "arees-24433-mty-bin-maymun-al-nbry"
 },
 "hadith_chain_count": 2,
-"hadith_narrated_count": 0
-},
-{
-"slug": "arees-19499-al-aaliya-bin-sabay",
-"tier": "C",
-"arees_id": 19499,
-"famous": "al-Aaliya bin Sabay'",
-"type": "Narrator",
-"relations": [],
-"full": "al-Aaliya bin Sabay'",
-"full_name_ar": "العالية بنت سبيع",
-"generation": "Follower(Tabi') [ 3rd Generation ]",
-"teachers": [
-"Maymuna bint al-Harith"
-],
-"students": [
-"'Abdullah bin Malik bin Hudhafa"
-],
-"chain_to_prophet": [
-"arees-1-prophet-muhammad-saw",
-"arees-61-maymuna-bint-al-harith",
-"arees-19499-al-aaliya-bin-sabay"
-],
-"hadith_narrations_count": 1,
-"hadith_source_collections": [
-"abu-dawood"
-],
-"hadith_narrated": [
-{
-"book": "Sunan Abi Da'ud",
-"count": 1,
-"url": "http://qaalaRasulAllah.com/hadith.php?ID=2&Rows=1&SID=19499&head=Sunan Abi Da'ud [Narrated by al-Aaliya bin Sabay' العالية بنت سبيع]"
-}
-],
-"source": "http://muslimscholars.info/manage.php?submit=scholar&ID=19499",
-"sources": [
-"http://muslimscholars.info/manage.php?submit=scholar&ID=19499",
-"https://shamela.ws/book/3722/18826"
-],
-"book_refs": [
-{
-"source": "Thiqat",
-"ref": "Vol:5"
-},
-{
-"source": "Lisan al-Mizan",
-"ref": "Vol:7"
-},
-{
-"source": "Tahdheeb al-Tahdheeb",
-"ref": "Vol:12"
-},
-{
-"source": "Taqrib al-Tahdheeb",
-"ref": "750"
-}
-],
-"citations_in_chains": 3,
-"city": "Medina",
-"bio": "Tahdhib al-Kamal (al-Mizzi) lists al-'Aliya bint Subay', mother of 'Abdullah bin Malik bin Hudhafa. She narrated from Maymuna bint al-Harith, wife of the Prophet, and her son 'Abdullah bin Malik bin Hudhafa narrated from her. Ahmad bin 'Abdullah al-'Ijli described her as a Medinan tabi'i, trustworthy (thiqa). Cited by Abu Dawud and al-Nasa'i. No death year is given.",
-"bio_full_source": "https://shamela.ws/book/3722/18826",
-"classif": [
-"hadith narrator",
-"tabi'i"
-],
-"research_teachers": [
-"Maymuna bint al-Harith"
-],
-"research_students": [
-"'Abdullah bin Malik bin Hudhafa"
-],
-"research_evidence": "العالية بنت سبيع، والدة عبد الله بن مالك ابن حذافة",
-"dod": 723,
-"_dodFromGeneration": true,
-"dod_s": "c. 723 CE (estimated from generation — no recorded date survives)",
-"dob": 658,
-"_dobFromDod": true,
-"dob_s": "c. 658 CE (estimated)",
-"teachers_links": {
-"Maymuna bint al-Harith": "F0997"
-},
-"students_links": {
-"'Abdullah bin Malik bin Hudhafa": "arees-13530-abdullah-bin-malik-bin-hudhafa"
-},
-"hadith_chain_count": 1,
 "hadith_narrated_count": 0
 },
 {

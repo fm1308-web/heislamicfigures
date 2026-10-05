@@ -7971,7 +7971,7 @@
 "full": "Yazid bin Jariyya(Hartha) b. 'Amir b. Mujma' b. al-'Attaf b. Dubaya' b. Zayd b. Malik b. 'Auf",
 "full_name_ar": "يزيد بن جارية ( رضي الله عنه",
 "kunya": "Abu 'Abdur Rahman",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "death_date_hijri": 50,
 "teachers": [
 "Mu'awiya ibn Abu Sufyan"
@@ -8054,7 +8054,13 @@
 "bio_full_source": "https://shamela.ws/book/9767/3523",
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-1902-thabit-bin-al-dahhak-bin-khalifa",

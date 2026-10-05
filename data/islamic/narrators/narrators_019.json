@@ -348,9 +348,11 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5732",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5732",
-"https://shamela.ws/book/9767/4128"
+"https://shamela.ws/book/9767/4128",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=19495",
+"https://shamela.ws/book/3722/18817"
 ],
-"citations_in_chains": 0,
+"citations_in_chains": 2,
 "bio": "Entry 11415 in Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba. Ghiyath ibn 'Abd al-'Aziz, her grandson, narrated from her, and her hadith (concerning dates and raisins) is in Abu Dawud.",
 "bio_full_source": "https://shamela.ws/book/9767/4128",
 "classif": [
@@ -371,7 +373,24 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"merged_from": [
+"arees-19495-safya-bint-atiya"
+],
+"also_listed_as": [
+{
+"slug": "arees-19495-safya-bint-atiya",
+"name": "Safya bint 'Atiya",
+"generation": "Follower(Tabi') [ 3rd Generation ]",
+"source": "https://shamela.ws/book/3722/18817"
+}
+],
+"teachers": [
+"'Aisha bint Abi Bakr"
+],
+"students": [
+"Atab bin 'Abdul 'Aziz"
+]
 },
 {
 "slug": "arees-5733-sfyh-bint-umar-bin-al-khtab-al-quraishi",
@@ -570,7 +589,7 @@
 "relations": [],
 "full": "al-S'hba'a bint Rabi'yah bin Bhyr bin Abd",
 "full_name_ar": "الصهباء بنت ربيعة بن بحير بن عبد ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5738",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5738",
@@ -590,7 +609,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5739-sfyh-no-identity-h",
@@ -601,7 +626,7 @@
 "relations": [],
 "full": "Sfyh (name only)",
 "full_name_ar": "صفية غير منسوبة ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5739",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5739",
@@ -626,7 +651,13 @@
 "hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5740-sfyh-no-identity-h",
@@ -637,7 +668,7 @@
 "relations": [],
 "full": "Sfyh (name only)",
 "full_name_ar": "صفية غير منسوبة ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5740",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5740",
@@ -662,7 +693,13 @@
 "hidden_reason": "name-only entry (ghayr mansub): one word, no lineage, no recorded dates",
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5741-al-dyznh-bint-abi-qays-aslmt-whajrt",
@@ -707,7 +744,7 @@
 "relations": [],
 "full": "Dba'h bint al-Harith al-Ansariah Akht Am",
 "full_name_ar": "ضباعة بنت الحارث الأنصارية أخت أم ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5742",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5742",
@@ -727,7 +764,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5743-al-dhak-bint-mas-ud-akht-hwys-h-dhkrha",
@@ -738,7 +781,7 @@
 "relations": [],
 "full": "al-Dhak bint Mas'ud Akht Hwys'h Dhkrha",
 "full_name_ar": "الضحاك بنت مسعود أخت حويصة ذكرها ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5743",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5743",
@@ -758,7 +801,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5744-al-tahrh-bint-khwyld-akht-khdyjh-akht",
@@ -940,7 +989,7 @@
 "relations": [],
 "full": "T'ymh bint Jr",
 "full_name_ar": "طعيمة بنت جر ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5749",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5749",
@@ -960,7 +1009,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5750-zbyh-bint-al-n-uman-bin-thabit-bin-aby",
@@ -2254,7 +2309,7 @@
 "relations": [],
 "full": "'Umarh bint Dryd bin al-Smh Qalt",
 "full_name_ar": "عمرة بنت دريد بن الصمة قالت ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5787",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5787",
@@ -2264,7 +2319,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba lists her in the third section (al-qism al-thalith) of the women under the letter 'Ayn, not among the confirmed companions. It quotes her elegy for her father Durayd ibn al-Simma, who was killed by Rabi'a ibn Rufay', known as Ibn al-Dughunna.",
 "bio_full_source": "https://shamela.ws/book/9767/4167",
 "classif": [
-"poet"
+"poet",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "عمرة بنت دريد بن الصّمّة: قالت ترثي أباها، وكان ربيعة بن رفيع المعروف بابن الدغنّة",
 "dod": 680,
@@ -2277,7 +2333,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5788-ghathnh-bmthlthh-b-d-al-alf-wqbl-al-nwn",
@@ -2931,7 +2990,7 @@
 "relations": [],
 "full": "Frwh Z'ir al-Nby Sla al-Lh 'Alih",
 "full_name_ar": "فروة ظئر النبي صلى الله عليه ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5808",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5808",
@@ -2951,7 +3010,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5809-fry-h-umm-ibrahim-bin-nbyt-lha",
@@ -2962,7 +3027,7 @@
 "relations": [],
 "full": "Fry'h Umm Ibrahim bin Nbyt Lha",
 "full_name_ar": "فريعة أم إبراهيم بن نبيط لها ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5809",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5809",
@@ -2982,7 +3047,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5810-qtylh-bint-al-rbad",
@@ -3237,7 +3308,7 @@
 "relations": [],
 "full": "Qrybh bint al-Harith al-Twaryh Akhrj Hdythha",
 "full_name_ar": "قريبة بنت الحارث العتوارية أخرج حديثها ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5817",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5817",
@@ -3257,7 +3328,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5818-kbyrh-wqyl-balmthlthh-bdl-al-mwhd-h-dhkr",
@@ -3655,7 +3732,7 @@
 "relations": [],
 "full": "Kabsha bint Mkshwh al-Mradyh Akht Qays",
 "full_name_ar": "كبشة بنت مكشوح المرادية أخت قيس ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5829",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5829",
@@ -3669,7 +3746,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 11696, section three, vol. 8 p. 298) says Kabsha bint Makshuh al-Muradiyya was the sister of the famous horseman Qays. Ibn Shahin mentioned her in the entry on Aban ibn Sa'id ibn al-As: she was known for her beauty, and her brother married her to Aban when Aban governed Yemen under Abu Bakr. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/4211",
 "classif": [
-"contemporary of the Prophet"
+"contemporary of the Prophet",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "كبشة بنت مكشوح المرادية: أخت قيس الفارس المشهور",
 "dod": 680,
@@ -3682,7 +3760,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5830-kabsha-bint-brthn-wqyl-ythrby-al-nbryh",
@@ -3693,7 +3774,7 @@
 "relations": [],
 "full": "Kabsha bint Brthn Wqyl Ythrby al-Nbryh",
 "full_name_ar": "كبشة بنت برثن وقيل يثربي العنبرية ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5830",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5830",
@@ -3713,7 +3794,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5831-lbybh-jaryh-biny-al-mu-ml-bin-habib",
@@ -4212,7 +4299,7 @@
 "relations": [],
 "full": "Lyla bint al-Jwdy bin Ady bin 'Amr",
 "full_name_ar": "ليلى بنت الجودي بن عدي بن عمرو ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5845",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5845",
@@ -4223,7 +4310,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 11737, section three, vol. 8 p. 309) says Layla bint al-Judi al-Ghassani lived in the Prophet's time and was the wife of Abd al-Rahman ibn Abi Bakr. Citing al-Zubayr ibn Bakkar, it says Abd al-Rahman saw her in Damascus before Islam and loved her, and when Damascus was conquered Umar had her given to him; he took her to Medina and later returned her to her family. Umar ibn Shabba's version says Abu Bakr gave her to him. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/4222",
 "classif": [
-"contemporary of the Prophet"
+"contemporary of the Prophet",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "ليلى بنت الجوديّ بن عديّ بن عمرو بن أبي عمرو الغساني. زوج عبد الرحمن بن أبي بكر الصديق",
 "dod": 680,
@@ -4236,7 +4324,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5846-lyla-bint-habs-al-tamimyh-akht-al-aqr",
@@ -4247,7 +4338,7 @@
 "relations": [],
 "full": "Lyla bint Habs al-Tamimyh Akht al-Aqr'",
 "full_name_ar": "ليلى بنت حابس التميمية أخت الأقرع ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5846",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5846",
@@ -4257,7 +4348,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 11738, section three, vol. 8 p. 310) says Layla bint Habis al-Tamimiyya was the sister of the companion al-Aqra' ibn Habis and mother of Ghalib ibn Sa'sa'a, father of the poet al-Farazdaq. She lived in the Prophet's time, and al-Farazdaq mentioned her in his elegy for his father. No death year is given.",
 "bio_full_source": "https://shamela.ws/book/9767/4223",
 "classif": [
-"contemporary of the Prophet"
+"contemporary of the Prophet",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "ليلى بنت حابس التميميّة: أخت الأقرع بن حابس الصّحابيّ المشهور، هي: أم غالب بن صعصعة بن معاوية، والد الفرزدق الشاعر المشهور",
 "dod": 680,
@@ -4270,7 +4362,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5847-lyla-bint-hkym",
@@ -4281,7 +4376,7 @@
 "relations": [],
 "full": "Lyla bint Hkym",
 "full_name_ar": "ليلى بنت حكيم ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5847",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5847",
@@ -4301,7 +4396,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5848-al-mard-h-lha",
@@ -5705,7 +5806,7 @@
 "relations": [],
 "full": "Nbyshh bint K'ab Shfh B'd'hm Bmwhd'h",
 "full_name_ar": "نبيشة بنت كعب صحفه بعضهم بموحدة ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5889",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5889",
@@ -5725,7 +5826,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5890-hryrh-bint-zm-h-al-quraishih-al-asadyh",
@@ -6093,7 +6200,7 @@
 "relations": [],
 "full": "Hnd 'Umar'ah Bilal",
 "full_name_ar": "هند امرأة بلال ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5900",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5900",
@@ -6103,7 +6210,7 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 11872) lists Hind, wife of Bilal, in the first section only as a cross-reference, saying her full entry comes in the third section. That fuller entry (11877, Hind al-Khawlaniyya) is on the following page.",
 "bio_full_source": "https://shamela.ws/book/9767/4262",
 "classif": [
-"companion"
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "هند: امرأة بلال. تأتي في القسم الثالث.",
 "dod": 680,
@@ -6116,7 +6223,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5901-hnd-al-jhnyh-dhkrha-abu-musa",
@@ -6269,7 +6379,7 @@
 "relations": [],
 "full": "Hnyd'h bint S's'h bin Najyh al-Tamimyh",
 "full_name_ar": "هنيدة بنت صعصعة بن ناجية التميمية ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5906",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5906",
@@ -6279,7 +6389,8 @@
 "bio": "Ibn Hajar's al-Isaba fi Tamyiz al-Sahaba (entry 11878) identifies Hunayda bint Sa'sa'a ibn Najiya al-Tamimiyya al-Mujashi'iyya, sister of Ghalib the father of al-Farazdaq and wife of al-Zibriqan ibn Badr. It says she lived in the Prophet's lifetime (laha idrak), is mentioned in the story of al-Hutay'a and al-Zibriqan during Abu Bakr's caliphate, and was called Dhat al-Khimar.",
 "bio_full_source": "https://shamela.ws/book/9767/4264",
 "classif": [
-"contemporary of the Prophet (mukhadrama)"
+"contemporary of the Prophet (mukhadrama)",
+"Successor (did not meet the Prophet)"
 ],
 "research_evidence": "هنيدة بنت صعصعة بن ناجية التميميّة المجاشعيّة، أخت غالب والد الفرزدق، وهي زوج الزبرقان بن بدر",
 "dod": 680,
@@ -6292,7 +6403,10 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5907-hjymh-wqyl-khyrh-umm-al-drda-a",
@@ -6303,7 +6417,7 @@
 "relations": [],
 "full": "Hjymh Wqyl Khyrh Umm al-Drda'a",
 "full_name_ar": "هجيمة وقيل خيرة أم الدرداء ( رضي الله عنها",
-"generation": "Comp.(RA)",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=5907",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=5907",
@@ -6323,7 +6437,13 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA)",
+"classif": [
+"Successor (did not meet the Prophet)"
+],
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5908-wsna-a-bint-al-slt-al-slmyh",

@@ -440,7 +440,9 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=13403",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=13403",
-"https://hadithtransmitters.hawramani.com/ابو-عتبة-الكندي/"
+"https://hadithtransmitters.hawramani.com/ابو-عتبة-الكندي/",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=17263",
+"https://hadithtransmitters.hawramani.com/أبو-عتبة-الكندي/"
 ],
 "book_refs": [
 {
@@ -477,7 +479,18 @@
 "students_links": {},
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"merged_from": [
+"arees-17263-abu-utba-al-kndy"
+],
+"also_listed_as": [
+{
+"slug": "arees-17263-abu-utba-al-kndy",
+"name": "Abu 'Utba al-Kndy",
+"generation": "Follower(Tabi')",
+"source": "https://hadithtransmitters.hawramani.com/أبو-عتبة-الكندي/"
+}
+]
 },
 {
 "slug": "arees-13404-abu-falj-al-anmara",

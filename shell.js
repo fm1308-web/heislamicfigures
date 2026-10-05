@@ -414,7 +414,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=198';
+  var _cb = '?v=203';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -455,7 +455,7 @@ var FILTER_SPECS = {
       { type:'select', label:'TRADITION' },
       { type:'select', label:'HAS' }
     ],
-    actions: []
+    actions: [ { type:'pill', label:'+ NARRATORS', id:'tlNarrPill' } ]
   },
   RELATIONS: {
     search: true,

@@ -7809,7 +7809,7 @@
 "relations": [],
 "full": "Zaynab bint Nabayt b. Jabir b. Malik b. 'Ady b. Zayd Manat b. 'Ady b. 'Amr b. Malik b. Najjar",
 "full_name_ar": "زينب بنت نبيط ( رضي الله عنها",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "teachers": [
 "Anas bin Malik",
 "Jabir ibn 'Abdullah",
@@ -7856,7 +7856,8 @@
 "bio": "Zaynab bint Nabayt bin Jabir was an early female narrator; Ibn Hajar records that she was said to have had companionship with the Prophet though he judged it more likely she was not a companion, grading her 'maqbul' (acceptable), while al-Dhahabi called her trustworthy. She has one hadith in Sunan Ibn Majah, transmitted by seventh-generation narrators Muhammad bin Ammara and Kathir bin Zayd.",
 "bio_full_source": "https://islamicurdubooks.com/hadith/rawy-details.php?rawyid=3171",
 "classif": [
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_students": [
 "Muhammad bin Ammara",
@@ -7880,7 +7881,10 @@
 },
 "hadith_chain_count": 0,
 "hadith_narrated_count": 0,
-"hadith_source_collections": []
+"hadith_source_collections": [],
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-3204-jundub-al-azdi",

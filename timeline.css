@@ -819,3 +819,9 @@ body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary:hover .i-sl,
 body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary:hover .i-nv-arrow{
   color:var(--ip-acc);
 }
+
+/* Narrator rows (Tier B/C) — slate edge + cool tint over the era colour. */
+.tl-row.tl-narr::after { content:""; position:absolute; inset:0; background:rgba(70,110,150,.22); pointer-events:none; }
+/* Prefixed to beat body.tl-mounted #zoneC .tc-sub (timeline.css:283). */
+body.tl-mounted #zoneC .tl-row.tl-narr .tc-sub { color: rgba(150,180,205,.85); }
+.nr-card-wrap { background:rgba(70,110,150,.16); border-left:4px solid rgba(130,165,200,.85); margin:-4px -6px 0; padding:6px 10px 10px; border-radius:3px; }

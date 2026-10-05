@@ -20078,7 +20078,11 @@
 "source": "http://muslimscholars.info/manage.php?submit=scholar&ID=11047",
 "sources": [
 "http://muslimscholars.info/manage.php?submit=scholar&ID=11047",
-"https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D9%88_%D9%82%D9%84%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D8%AC%D8%B1%D9%85%D9%8A"
+"https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D9%88_%D9%82%D9%84%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D8%AC%D8%B1%D9%85%D9%8A",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=8844",
+"https://shamela.ws/book/9767/1829",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=9332",
+"https://shamela.ws/book/9767/2528"
 ],
 "book_refs": [
 {
@@ -20165,7 +20169,18 @@
 "Ghaylan bin Jarir": "arees-11300-ghaylan-bin-jarir"
 },
 "hadith_chain_count": 279,
-"hadith_narrated_count": 39
+"hadith_narrated_count": 39,
+"merged_from": [
+"arees-8844-abdullah-bin-zayd-bin-amr"
+],
+"also_listed_as": [
+{
+"slug": "arees-8844-abdullah-bin-zayd-bin-amr",
+"name": "'Abdullah bin Zayd bin 'Amr",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/1829"
+}
+]
 },
 {
 "slug": "arees-20102-abdullah-bin-idris-bin-yazid-al-audi",
@@ -33545,7 +33560,7 @@
 "full": "Jubayr bin Nufayr bin Malik bin 'AMir",
 "full_name_ar": "جبير بن نفير الحضرمي ( رضي الله عنه",
 "kunya": "Abu 'Abdur Rahman",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "death_date_hijri": 80,
 "teachers": [
 "Abu Bakr As-Siddique",
@@ -33676,7 +33691,10 @@
 "ibn Umar": "F0024"
 },
 "hadith_chain_count": 50,
-"hadith_narrated_count": 15
+"hadith_narrated_count": 15,
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5115-abdullah-bin-abi-awfa",

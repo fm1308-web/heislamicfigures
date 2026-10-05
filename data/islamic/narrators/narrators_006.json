@@ -12818,7 +12818,8 @@
 "http://muslimscholars.info/manage.php?submit=scholar&ID=15531",
 "https://islamic-content.com/t/27429",
 "http://muslimscholars.info/manage.php?submit=scholar&ID=7831",
-"https://shamela.ws/book/9767/3198"
+"https://shamela.ws/book/9767/3198",
+"http://muslimscholars.info/manage.php?submit=scholar&ID=7832"
 ],
 "book_refs": [
 {
@@ -12866,11 +12867,18 @@
 "Abu Idrys": "arees-15655-abu-idrys"
 },
 "merged_from": [
-"arees-7831-al-msyb-bin-njbh"
+"arees-7831-al-msyb-bin-njbh",
+"arees-7832-al-msyb-bin-njbh"
 ],
 "also_listed_as": [
 {
 "slug": "arees-7831-al-msyb-bin-njbh",
+"name": "al-Msyb bin Njbh",
+"generation": "Comp.(RA)",
+"source": "https://shamela.ws/book/9767/3198"
+},
+{
+"slug": "arees-7832-al-msyb-bin-njbh",
 "name": "al-Msyb bin Njbh",
 "generation": "Comp.(RA)",
 "source": "https://shamela.ws/book/9767/3198"
@@ -24735,7 +24743,7 @@
 "relations": [],
 "full": "'Abdur Rahman bin Bujayd",
 "full_name_ar": "عبد الرحمن بن بجيد ( رضي الله عنه",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Mukhadram / Successor — lived in the Prophet's era but is not recorded as having met him",
 "teachers": [
 "Prophet Muhammad(saw)"
 ],
@@ -24806,7 +24814,8 @@
 "bio": "The page states he lived in the Prophet's time but did not hear from him directly ('وهو ممن أدرك النبي صلى الله عليه وسلم ولم يسمع عنه'), and that his grandmother Umm Bujayd (also called Hawwa') was among the women who pledged allegiance to the Prophet. He narrated from his grandmother, and Sa'id al-Maqburi, Zayd bin Aslam and Muhammad ibn Ibrahim al-Taymi narrated from him. No death year is given on the page.",
 "bio_full_source": "https://hadithtransmitters.hawramani.com/%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%B1%D8%AD%D9%85%D9%86-%D8%A8%D9%86-%D8%A8%D8%AC%D9%8A%D8%AF/",
 "classif": [
-"hadith narrator"
+"hadith narrator",
+"Successor (did not meet the Prophet)"
 ],
 "research_teachers": [
 "his grandmother Umm Bujayd"
@@ -24829,7 +24838,10 @@
 "Sa'id bin Abi Sa'id (Kaysan)": "arees-11168-sa-id-bin-abi-sa-id-kaysan"
 },
 "hadith_chain_count": 4,
-"hadith_narrated_count": 4
+"hadith_narrated_count": 4,
+"companion_status": "not_companion",
+"generation_source_label": "Comp.(RA) [ 1st Generation ]",
+"companion_note": "The source lists him/her among the Companions only in the doubtful sections (al-Isaba section 3/4) or states that he/she never met the Prophet; this app therefore does not count this person as a Companion."
 },
 {
 "slug": "arees-5153-abdur-rahman-bin-aby",
