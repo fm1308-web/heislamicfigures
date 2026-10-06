@@ -177,8 +177,9 @@ window.GA_Narrators = (function(){
     var types = o.types, q = (o.q || '').toLowerCase();
     if(o.trads && o.trads.size > 0) return [];
     if(o.favsOnly) return [];
-    if(o.badge) return [];
+    if(o.badge && o.badge !== 'H') return [];
     return rows.filter(function(r){
+      if(o.badge === 'H' && r.tier !== 'B') return false;
       if(types && types.size > 0 && !types.has('Narrator')) return false;
       if(q){
         var hay = [r.famous, r.full, r.full_name_ar, r.kunya, r.city,
@@ -452,6 +453,15 @@ window.GA_Narrators = (function(){
       return na - nb;
     });
     return out;
+  }
+
+  // True when the loaded hadith index lists at least one book for this slug
+  // (chain or narrated). False until the index has loaded.
+  function hasHadith(slug){
+    if(!_hidx || !slug) return false;
+    var c = _hidx.chain && _hidx.chain[slug];
+    var n = _hidx.narrated && _hidx.narrated[slug];
+    return !!((c && Object.keys(c).length) || (n && Object.keys(n).length));
   }
 
   // Open MONASTIC pinned to exactly these hadiths. Mirrors the proven
@@ -797,7 +807,16 @@ window.GA_Narrators = (function(){
       (p.kunya ? '<div class="i-primary" style="opacity:.8">' + _esc(p.kunya) + '</div>' : '') +
       tags;
 
+    var _pkKey = 's:' + p.slug;
+    var _pk = !!(window._tlIsPickedKey && window._tlIsPickedKey(_pkKey));
+    var pickBtn = '<button id="cardPickBtn" title="Pick / unpick" ' +
+      'onclick="event.stopPropagation();window._tlTogglePickKey(\'' + _jsq(_pkKey) + '\')" ' +
+      'style="background:none;border:none;cursor:pointer;float:right;margin-left:10px;padding:2px;line-height:1;' +
+      'color:' + (_pk ? '#fff' : 'rgba(255,255,255,.35)') + '">' +
+      '<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+
     return '' +
+      pickBtn +
       badge +
       hiddenNote +
       namesHtml +
@@ -856,6 +875,7 @@ window.GA_Narrators = (function(){
     isEstimatedDod: isEstimatedDod,
     ensureHadithIndex: ensureHadithIndex,
     hadithNums: hadithNums,
+    hasHadith: hasHadith,
     ensureIdMap: ensureIdMap,
     slugForId: slugForId,
     gotoFigure: gotoFigure,

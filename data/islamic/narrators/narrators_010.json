@@ -1126,10 +1126,10 @@
 "slug": "arees-19204-abu-idrys-al-skwny-al-hmsy",
 "tier": "B",
 "arees_id": 19204,
-"famous": "Abu Idrys al-Skwny al-Hmsy",
+"famous": "Abu Idris al-Sakuni al-Himsi",
 "type": "Narrator",
 "relations": [],
-"full": "Abu Idrys al-Skwny al-Hmsy",
+"full": "Abu Idris al-Sakuni al-Himsi",
 "full_name_ar": "أبو إدريس السكوني الحمصي",
 "kunya": "Abu Idrys",
 "generation": "Follower(Tabi') [ 6th generation ]",
@@ -1198,7 +1198,9 @@
 "hadith_chain_count": 1,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "Abu Idrys al-Skwny al-Hmsy",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-19218-abu-bakr-bin-abi-shyakh",
@@ -1469,10 +1471,10 @@
 "slug": "arees-19240-abu-hzrh-al-madni-aakhr-asmh",
 "tier": "C",
 "arees_id": 19240,
-"famous": "Abu Hzrh al-Madni Aakhr Asmh",
+"famous": "Abu Hazra al-Madani",
 "type": "Narrator",
 "relations": [],
-"full": "Abu Hzrh al-Madni Aakhr Asmh",
+"full": "Abu Hazra al-Madani",
 "full_name_ar": "أبو حزرة المدني",
 "kunya": "Abu Hzrh",
 "generation": "Follower(Tabi') [ 6th generation ]",
@@ -1532,7 +1534,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Abu Hzrh al-Madni Aakhr Asmh",
+"name_respelled": "from Arabic, high confidence — dropped junk \"Aakhr Asmh\""
 },
 {
 "slug": "arees-19257-abu-al-khattab-shaikh-of-laith",
@@ -2638,10 +2642,10 @@
 "slug": "arees-19363-abu-muhammad-al-hdrmy-ghlam",
 "tier": "C",
 "arees_id": 19363,
-"famous": "Abu Muhammad al-Hdrmy Ghlam",
+"famous": "Abu Muhammad al-Hadrami Ghulam",
 "type": "Narrator",
 "relations": [],
-"full": "Abu Muhammad al-Hdrmy Ghlam",
+"full": "Abu Muhammad al-Hadrami Ghulam",
 "full_name_ar": "أبو محمد الحضرمي غلام",
 "kunya": "Abu Muhammad",
 "generation": "Follower(Tabi') [ 3rd Generation ]",
@@ -2709,7 +2713,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Abu Muhammad al-Hdrmy Ghlam",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-19373-abu-mazrad",
@@ -4453,10 +4459,10 @@
 "slug": "arees-19815-uthman-bin-ishaq-bin-khrshh",
 "tier": "B",
 "arees_id": 19815,
-"famous": "'Uthman bin Ishaq bin Khrshh",
+"famous": "'Uthman bin Ishaq bin Kharasha",
 "type": "Narrator",
 "relations": [],
-"full": "'Uthman bin Ishaq bin Khrshh",
+"full": "'Uthman bin Ishaq bin Kharasha",
 "full_name_ar": "عثمان بن إسحاق بن خرشة",
 "generation": "Follower(Tabi') [ 5th generation ]",
 "students": [
@@ -4549,7 +4555,9 @@
 "hadith_chain_count": 2,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "'Uthman bin Ishaq bin Khrshh",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-19821-ayad-bin-hilal-wqyl",
@@ -5743,7 +5751,7 @@
 "slug": "arees-20513-umar-bin-muhammad-bin-al-mnkdr",
 "tier": "B",
 "arees_id": 20513,
-"famous": "'Umar bin Muhammad bin al-Mnkdr",
+"famous": "'Umar bin Muhammad bin al-Munkadir",
 "type": "Narrator",
 "relations": [],
 "full": "'Umar bin Muhammad bin al-Munkdar bin 'Abdullah bin al-Hudayr bin 'Abdul 'Uzza b. 'Amir b. al-Harith",
@@ -5841,7 +5849,9 @@
 "hadith_chain_count": 3,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "'Umar bin Muhammad bin al-Mnkdr",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-20515-muhammad-bin-abdur-rahman-bin-ghanaj",
@@ -9455,10 +9465,10 @@
 "slug": "arees-23517-frwh-bin-qays-hjazy",
 "tier": "C",
 "arees_id": 23517,
-"famous": "Frwh bin Qays Hjazy",
+"famous": "Farwa bin Qays Hijazi",
 "type": "Narrator",
 "relations": [],
-"full": "Frwh bin Qays Hjazy",
+"full": "Farwa bin Qays Hijazi",
 "full_name_ar": "فروة بن قيس حجازي",
 "generation": "Succ. (Taba' Tabi') [ 7th generation ]",
 "students": [
@@ -9517,7 +9527,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Frwh bin Qays Hjazy",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-23520-muhammad-bin-abdullah-bin-amr-bin-hish",
@@ -11169,10 +11181,10 @@
 "slug": "arees-24347-amr-bin-mnswr-al-qaysy",
 "tier": "C",
 "arees_id": 24347,
-"famous": "'Amr bin Mnswr al-Qaysy",
+"famous": "'Amr bin Mansur al-Qaysi al-Basri al-Qaddah",
 "type": "Narrator",
 "relations": [],
-"full": "'Amr bin Mnswr al-Qaysy",
+"full": "'Amr bin Mansur al-Qaysi al-Basri al-Qaddah",
 "full_name_ar": "عمرو بن منصور القيسي البصري القداح",
 "kunya": "Abu 'Uthman",
 "generation": "Succ. (Taba' Tabi') [ 9th generation ]",
@@ -11245,7 +11257,9 @@
 "hadith_source_collections": [],
 "tier_research": "B",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "'Amr bin Mnswr al-Qaysy",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-24353-awn-bin-kahmus-bin-al-hasan",
@@ -11411,10 +11425,10 @@
 "slug": "arees-24369-fd-h-abu-mwdwd-al-basri-qdm",
 "tier": "C",
 "arees_id": 24369,
-"famous": "Fd'h Abu Mwdwd al-Basri Qdm",
+"famous": "Fidda Abu Mawdud al-Basri",
 "type": "Narrator",
 "relations": [],
-"full": "Fd'h Abu Mwdwd al-Basri Qdm",
+"full": "Fidda Abu Mawdud al-Basri",
 "full_name_ar": "فضة أبو مودود البصري",
 "kunya": "Abu Mwdwd",
 "generation": "Succ. (Taba' Tabi') [ 8th generation ]",
@@ -11476,16 +11490,18 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Fd'h Abu Mwdwd al-Basri Qdm",
+"name_respelled": "from Arabic, low confidence — Fidda vs Fadda; dropped junk \"Qdm\""
 },
 {
 "slug": "arees-24378-kaml-bin-talha-al-jhdry",
 "tier": "C",
 "arees_id": 24378,
-"famous": "Kaml bin Talha al-Jhdry",
+"famous": "Kamil bin Talha al-Jahdari Abu Yahya al-Basri",
 "type": "Narrator",
 "relations": [],
-"full": "Kaml bin Talha al-Jhdry",
+"full": "Kamil bin Talha al-Jahdari Abu Yahya al-Basri",
 "full_name_ar": "كامل بن طلحة الجحدري أبو يحيى البصري",
 "kunya": "Abu Yahya",
 "generation": "Succ. (Taba' Tabi') [ 9th generation ]",
@@ -11545,7 +11561,9 @@
 "bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. A narrator of the generation after the Successors. Death year recorded as 132 AH. Entry 24378 at muslimscholars.info.",
 "tier_research": "C",
 "bio_sourced": false,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Kaml bin Talha al-Jhdry",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-24400-muhammad-bin-salm-al-rb-y",
@@ -11778,10 +11796,10 @@
 "slug": "arees-24448-musa-bin-khlf-al-my",
 "tier": "B",
 "arees_id": 24448,
-"famous": "Musa bin Khlf al-My",
+"famous": "Musa bin Khalaf al-'Ammi",
 "type": "Narrator",
 "relations": [],
-"full": "Musa bin Khlf al-My",
+"full": "Musa bin Khalaf al-'Ammi",
 "full_name_ar": "موسى بن خلف العمي",
 "kunya": "Abu Khlf",
 "generation": "Succ. (Taba' Tabi') [ 7th generation ]",
@@ -11868,7 +11886,9 @@
 "hadith_chain_count": 1,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "Musa bin Khlf al-My",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-24464-harun-bin-muslim",
@@ -20712,10 +20732,10 @@
 "slug": "arees-5090-skhr-bin-wda-h",
 "tier": "C",
 "arees_id": 5090,
-"famous": "Skhr bin Wda'h",
+"famous": "Sakhr bin Wada'a",
 "type": "Narrator",
 "relations": [],
-"full": "Skhr bin Wda'h",
+"full": "Sakhr bin Wada'a",
 "full_name_ar": "صخر بن وداعة ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "students": [
@@ -20763,13 +20783,15 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Skhr bin Wda'h",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5105-amir-bin-shhr-al-hmdany",
 "tier": "B",
 "arees_id": 5105,
-"famous": "'Amir bin Shhr al-Hmdany",
+"famous": "'Amir bin Shahr al-Hamdani Abu al-Kanud",
 "type": "Narrator",
 "relations": [],
 "full": "'Amir bin Shhr Al-Hmdany",
@@ -20836,13 +20858,15 @@
 "hadith_chain_count": 2,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "'Amir bin Shhr al-Hmdany",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5109-aabad-bin-shrhbyl-al-yshkry",
 "tier": "C",
 "arees_id": 5109,
-"famous": "'Aabad bin Shrhbyl al-Yshkry",
+"famous": "'Abbad bin Shurahbil al-Yashkuri",
 "type": "Narrator",
 "relations": [],
 "full": "'Aabad bin Shrhbyl Al-Yshkry",
@@ -20895,7 +20919,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "'Aabad bin Shrhbyl al-Yshkry",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5127-abdullah-bin-sa-d",
@@ -21495,10 +21521,10 @@
 "slug": "arees-5175-arfjh-bin-shryh",
 "tier": "B",
 "arees_id": 5175,
-"famous": "Arfjh bin Shryh",
+"famous": "'Arfaja bin Shurayh",
 "type": "Narrator",
 "relations": [],
-"full": "Arfjh bin Shryh",
+"full": "'Arfaja bin Shurayh",
 "full_name_ar": "عرفجة بن شريح ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "hadith_narrations_count": 2,
@@ -21561,7 +21587,9 @@
 "hadith_chain_count": 2,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "Arfjh bin Shryh",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5205-amr-bin-kharija",
@@ -21721,10 +21749,10 @@
 "slug": "arees-5223-fjy-bjym-msghr",
 "tier": "C",
 "arees_id": 5223,
-"famous": "Fjy' Bjym Msghr",
+"famous": "Fujay'",
 "type": "Narrator",
 "relations": [],
-"full": "Fjy' Bjym Msghr",
+"full": "Fujay'",
 "full_name_ar": "فجيع بجيم مصغر ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "students": [
@@ -21781,7 +21809,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Fjy' Bjym Msghr",
+"name_respelled": "from Arabic, high confidence — dropped vowelling note (bi-jim musaghghar)"
 },
 {
 "slug": "arees-5224-frat-bin-hyan-balthtanyh",
@@ -21862,10 +21892,10 @@
 "slug": "arees-5243-qays-bin-abi-ghrzh",
 "tier": "C",
 "arees_id": 5243,
-"famous": "Qays bin Abi Ghrzh",
+"famous": "Qays bin Abi Gharaza",
 "type": "Narrator",
 "relations": [],
-"full": "Qays bin Abi Ghrzh",
+"full": "Qays bin Abi Gharaza",
 "full_name_ar": "قيس بن أبي غرزة ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "students": [
@@ -21922,7 +21952,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Qays bin Abi Ghrzh",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5248-qays-al-klaby-wald-atyh",
@@ -22061,7 +22093,7 @@
 "slug": "arees-5255-knaz-btshdyd-al-nwn",
 "tier": "C",
 "arees_id": 5255,
-"famous": "Knaz Btshdyd al-Nwn",
+"famous": "Kannaz",
 "type": "Narrator",
 "relations": [],
 "full": "Knaz Btshdyd Al-Nwn",
@@ -22113,16 +22145,18 @@
 "hadith_source_collections": [],
 "tier_research": "B",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Knaz Btshdyd al-Nwn",
+"name_respelled": "from Arabic, high confidence — dropped vowelling note (bi-tashdid al-nun)"
 },
 {
 "slug": "arees-5276-muhajjjn-bin-abi-muhajjjn",
 "tier": "C",
 "arees_id": 5276,
-"famous": "Muhajjjn bin Abi Muhajjjn",
+"famous": "Mihjan bin Abi Mihjan al-Dili",
 "type": "Narrator",
 "relations": [],
-"full": "Muhajjjn bin Abi Muhajjjn",
+"full": "Mihjan bin Abi Mihjan al-Dili",
 "full_name_ar": "محجن بن أبي محجن الديلي ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "teachers": [
@@ -22172,16 +22206,18 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Muhajjjn bin Abi Muhajjjn",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5284-mrhb-aw-abu-mrhb",
 "tier": "C",
 "arees_id": 5284,
-"famous": "Mrhb Aw Abu Mrhb",
+"famous": "Marhab or Abu Marhab",
 "type": "Narrator",
 "relations": [],
-"full": "Mrhb Aw Abu Mrhb",
+"full": "Marhab or Abu Marhab",
 "full_name_ar": "مرحب أو أبو مرحب ( رضي الله عنه",
 "kunya": "Abu Mrhb",
 "generation": "Comp.(RA) [ 1st Generation ]",
@@ -22238,7 +22274,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Mrhb Aw Abu Mrhb",
+"name_respelled": "from Arabic, low confidence — Arabic gives two alternatives"
 },
 {
 "slug": "arees-5285-mardas-bin-malik-al-aslami",
@@ -22487,7 +22525,7 @@
 "slug": "arees-5295-al-mtlb-bin-abi-wda-h",
 "tier": "B",
 "arees_id": 5295,
-"famous": "al-Mtlb bin Abi Wda'h",
+"famous": "al-Muttalib bin Abi Wada'a al-Harith",
 "type": "Narrator",
 "relations": [],
 "full": "Al-Mtlb bin Abi Wda'h",
@@ -22576,7 +22614,9 @@
 "hadith_chain_count": 6,
 "hadith_narrated_count": 4,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "al-Mtlb bin Abi Wda'h",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5299-mu-awiyya-bin-jahma-bin-al-abbas",
@@ -22736,7 +22776,7 @@
 "slug": "arees-5305-al-mndhr-bin-aa-idh-bin-al-mndhr",
 "tier": "C",
 "arees_id": 5305,
-"famous": "al-Mndhr bin Aa'idh bin al-Mndhr",
+"famous": "al-Mundhir bin 'A'idh bin al-Mundhir bin al-Harith",
 "type": "Narrator",
 "relations": [],
 "full": "Al-Mndhr bin Aa'idh bin Al-Mndhr",
@@ -22796,16 +22836,18 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "al-Mndhr bin Aa'idh bin al-Mndhr",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5306-mhajr-bin-qnfdh",
 "tier": "C",
 "arees_id": 5306,
-"famous": "Mhajr bin Qnfdh",
+"famous": "Muhajir bin Qunfudh",
 "type": "Narrator",
 "relations": [],
-"full": "Mhajr bin Qnfdh",
+"full": "Muhajir bin Qunfudh",
 "full_name_ar": "مهاجر بن قنفذ ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "students": [
@@ -22875,7 +22917,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Mhajr bin Qnfdh",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5312-nsr-bin-d-hr-bin-al-akhrm",
@@ -23075,10 +23119,10 @@
 "slug": "arees-5326-wahb-bin-khnbsh",
 "tier": "C",
 "arees_id": 5326,
-"famous": "Wahb bin Khnbsh",
+"famous": "Wahb bin Khanbash",
 "type": "Narrator",
 "relations": [],
-"full": "Wahb bin Khnbsh",
+"full": "Wahb bin Khanbash",
 "full_name_ar": "وهب بن خنبش ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "students": [
@@ -23127,7 +23171,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Wahb bin Khnbsh",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5328-yazid-bin-al-aswad-al-khuza-i",
@@ -23442,10 +23488,10 @@
 "slug": "arees-5357-abu-shhm",
 "tier": "C",
 "arees_id": 5357,
-"famous": "Abu Shhm",
+"famous": "Abu Shahm",
 "type": "Narrator",
 "relations": [],
-"full": "Abu Shhm",
+"full": "Abu Shahm",
 "full_name_ar": "أبو شهم ( رضي الله عنه",
 "kunya": "Abu Shhm",
 "generation": "Comp.(RA) [ 1st Generation ]",
@@ -23493,7 +23539,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Abu Shhm",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-5366-abu-aqrab-khuwaylid-bin-khalid",
@@ -24300,7 +24348,7 @@
 "slug": "arees-6903-abdullah-bin-al-tfyl-bin-skhbrh",
 "tier": "C",
 "arees_id": 6903,
-"famous": "'Abdullah bin al-Tfyl bin Skhbrh",
+"famous": "'Abdullah bin al-Tufayl bin Sakhbara",
 "type": "Narrator",
 "relations": [],
 "full": "'Abdullah bin Al-Tfyl bin Skhbrh",
@@ -24341,7 +24389,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "'Abdullah bin al-Tfyl bin Skhbrh",
+"name_respelled": "from Arabic, high confidence — bin Sakhbara kept from existing English"
 },
 {
 "slug": "arees-6929-aabad-al-bdy-wald-th-albah-bin-aabad",
@@ -25260,10 +25310,10 @@
 "slug": "arees-10936-abdullah-bin-kathir-bin-al-mtlb",
 "tier": "B",
 "arees_id": 10936,
-"famous": "'Abdullah bin Kathir bin al-Mtlb",
+"famous": "'Abdullah bin Kathir bin al-Muttalib",
 "type": "Narrator",
 "relations": [],
-"full": "'Abdullah bin Kathir bin al-Mtlb",
+"full": "'Abdullah bin Kathir bin al-Muttalib",
 "full_name_ar": "عبد الله بن كثير بن المطلب",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "death_date_hijri": 122,
@@ -25338,7 +25388,9 @@
 "hadith_chain_count": 1,
 "hadith_narrated_count": 0,
 "tier_research": "B",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "'Abdullah bin Kathir bin al-Mtlb",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-10960-muhammad-bin-abdur-rahman-client",
@@ -27137,10 +27189,10 @@
 "slug": "arees-12131-sa-id-bin-ziyad-al-mktb",
 "tier": "B",
 "arees_id": 12131,
-"famous": "Sa'id bin Ziyad al-Mktb",
+"famous": "Sa'id bin Ziyad al-Mukattib al-Mu'adhdhin",
 "type": "Narrator",
 "relations": [],
-"full": "Sa'id bin Ziyad al-Mktb",
+"full": "Sa'id bin Ziyad al-Mukattib al-Mu'adhdhin",
 "full_name_ar": "سعيد بن زياد المكتب المؤذن",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "chain_to_prophet": [
@@ -27214,7 +27266,9 @@
 "hadith_chain_count": 1,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "Sa'id bin Ziyad al-Mktb",
+"name_respelled": "from Arabic, low confidence — al-Mukattib vs al-Muktib"
 },
 {
 "slug": "arees-12161-sulaiman-bin-abdur-rahman-bin-thauban",
@@ -27285,10 +27339,10 @@
 "slug": "arees-12171-shrhbyl-bin-sa-id-bin-sa-d",
 "tier": "C",
 "arees_id": 12171,
-"famous": "Shrhbyl bin Sa'id bin Sa'd",
+"famous": "Shurahbil bin Sa'id bin Sa'd bin 'Ubada",
 "type": "Narrator",
 "relations": [],
-"full": "Shrhbyl bin Sa'id bin Sa'd",
+"full": "Shurahbil bin Sa'id bin Sa'd bin 'Ubada",
 "full_name_ar": "شرحبيل بن سعيد بن سعد بن عبادة",
 "generation": "Follower(Tabi') [ 5th generation ]",
 "students": [
@@ -27333,7 +27387,9 @@
 "bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 12171 at muslimscholars.info.",
 "tier_research": "C",
 "bio_sourced": false,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Shrhbyl bin Sa'id bin Sa'd",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-12174-suh-aib-bin-amr-bin-slym",
@@ -28514,10 +28570,10 @@
 "slug": "arees-12480-muhammad-bin-qrzh",
 "tier": "C",
 "arees_id": 12480,
-"famous": "Muhammad bin Qrzh",
+"famous": "Muhammad bin Qaraza",
 "type": "Narrator",
 "relations": [],
-"full": "Muhammad bin Qrzh",
+"full": "Muhammad bin Qaraza",
 "full_name_ar": "محمد بن قرظة",
 "generation": "Follower(Tabi') [ 4th generation ]",
 "students": [
@@ -28572,7 +28628,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Muhammad bin Qrzh",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-12505-muslim-bin-al-sa-ib-bin-khbab",
@@ -28707,10 +28765,10 @@
 "slug": "arees-12513-ma-bd-bin-hrmz",
 "tier": "C",
 "arees_id": 12513,
-"famous": "Ma'bd bin Hrmz",
+"famous": "Ma'bad bin Hurmuz",
 "type": "Narrator",
 "relations": [],
-"full": "Ma'bd bin Hrmz",
+"full": "Ma'bad bin Hurmuz",
 "full_name_ar": "معبد بن هرمز",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "students": [
@@ -28776,7 +28834,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Ma'bd bin Hrmz",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-12515-al-mughira-bin-al-dahhak-b-abdullah",
@@ -30670,10 +30730,10 @@
 "slug": "arees-13037-sa-id-bin-kathir-bin-al-mtlb",
 "tier": "C",
 "arees_id": 13037,
-"famous": "Sa'id bin Kathir bin al-Mtlb",
+"famous": "Sa'id bin Kathir bin al-Muttalib",
 "type": "Narrator",
 "relations": [],
-"full": "Sa'id bin Kathir bin al-Mtlb",
+"full": "Sa'id bin Kathir bin al-Muttalib",
 "full_name_ar": "سعيد بن كثير بن المطلب",
 "kunya": "Abu Isma'il",
 "generation": "Follower(Tabi') [ 6th generation ]",
@@ -30743,7 +30803,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Sa'id bin Kathir bin al-Mtlb",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-13066-abdur-rahman-bin-tarq",
@@ -30889,10 +30951,10 @@
 "slug": "arees-13104-kathir-bin-al-mtlb-bin-aby",
 "tier": "B",
 "arees_id": 13104,
-"famous": "Kathir bin al-Mtlb bin Aby",
+"famous": "Kathir bin al-Muttalib bin Abi Wada'a",
 "type": "Narrator",
 "relations": [],
-"full": "Kathir bin al-Mtlb bin Aby",
+"full": "Kathir bin al-Muttalib bin Abi Wada'a",
 "full_name_ar": "كثير بن المطلب بن أبي وداعة",
 "kunya": "Abu Sa'id",
 "generation": "Follower(Tabi') [ 3rd Generation ]",
@@ -30964,16 +31026,18 @@
 "hadith_chain_count": 3,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"famous_register": "Kathir bin al-Mtlb bin Aby",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-13123-mnbwdh-bin-abi-suliaman-al-mky",
 "tier": "C",
 "arees_id": 13123,
-"famous": "Mnbwdh bin Abi Suliaman al-Mky",
+"famous": "Manbudh bin Abi Sulaiman al-Makki",
 "type": "Narrator",
 "relations": [],
-"full": "Mnbwdh bin Abi Suliaman al-Mky",
+"full": "Manbudh bin Abi Sulaiman al-Makki",
 "full_name_ar": "منبوذ بن أبي سليمان المكي",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "chain_to_prophet": [
@@ -31035,7 +31099,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Mnbwdh bin Abi Suliaman al-Mky",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-13132-al-walid-bin-abdullah",
@@ -31492,10 +31558,10 @@
 "slug": "arees-13408-abu-al-zubair-mu-dhn-byt-al-mqds",
 "tier": "C",
 "arees_id": 13408,
-"famous": "Abu al-Zubair Mu'dhn Byt al-Mqds",
+"famous": "Abu al-Zubair Mu'adhdhin Bayt al-Maqdis",
 "type": "Narrator",
 "relations": [],
-"full": "Abu al-Zubair Mu'dhn Byt al-Mqds",
+"full": "Abu al-Zubair Mu'adhdhin Bayt al-Maqdis",
 "full_name_ar": "أبو الزبير مؤذن بيت المقدس",
 "kunya": "Abu al-Zubair(أبو الزبير)",
 "generation": "Follower(Tabi')",
@@ -31528,7 +31594,9 @@
 "bio_auto": "Recorded in the classical narrator registers; none of his hadith appear in the 39 collections held here. Listed among the Successors (Tabi'un). No recorded death year survives; the timeline position is an estimate. Entry 13408 at muslimscholars.info.",
 "tier_research": "C",
 "bio_sourced": false,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Abu al-Zubair Mu'dhn Byt al-Mqds",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-13439-abu-isa-al-haritha-al-aswara",
@@ -31898,10 +31966,10 @@
 "slug": "arees-13518-skhr-bin-ishaq-mwla",
 "tier": "C",
 "arees_id": 13518,
-"famous": "Skhr bin Ishaq Mwla",
+"famous": "Sakhr bin Ishaq Mawla Bani Ghifar Hijazi",
 "type": "Narrator",
 "relations": [],
-"full": "Skhr bin Ishaq Mwla",
+"full": "Sakhr bin Ishaq Mawla Bani Ghifar Hijazi",
 "full_name_ar": "صخر بن إسحاق مولى بني غفار حجازي",
 "generation": "Follower(Tabi') [ 6th generation ]",
 "teachers": [
@@ -31964,7 +32032,9 @@
 "hadith_source_collections": [],
 "tier_research": "C",
 "bio_sourced": true,
-"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers."
+"register_note": "None of this person's narrations appear in the 39 hadith collections held here; the entry comes from the classical narrator registers.",
+"famous_register": "Skhr bin Ishaq Mwla",
+"name_respelled": "from Arabic, high confidence"
 },
 {
 "slug": "arees-13540-amarh-bin-maymun",

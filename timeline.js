@@ -788,10 +788,14 @@ let PEOPLE=[],VIEW='timeline',activeYear=null,activePerson=null;
 let tlFocusName = null;
 let _viewYears={timeline:null,relations:null,map:null};
 let selTypes=new Set(),selTrads=new Set(),searchQ='',selBadge='';
+// PICKED — names ticked on the rows; _tlPickOnly shows only those.
+var _tlPicked = new Set();   // keys
+var _tlPickOnly = false;
+function _tlPickKey(p){ return p._narrator ? ('s:'+p.slug) : ('n:'+p.famous); }
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
 
 window._captureState_timeline=function(){
-  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear};
+  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear,picked:Array.from(_tlPicked),pickOnly:_tlPickOnly};
 };
 window._restoreState_timeline=function(s){
   if(!s) return;
@@ -799,7 +803,9 @@ window._restoreState_timeline=function(s){
   searchQ=s.search||'';
   var box=document.getElementById('search');if(box) box.value=searchQ;
   if(s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
-  syncDD('type');syncDD('trad');applyFilterAndFocus();
+  syncDD('type');syncDD('trad');
+  _tlPicked=new Set(s.picked||[]); _tlPickOnly=!!s.pickOnly && _tlPicked.size>0; _tlUpdatePickPill();
+  applyFilterAndFocus();
 };
 
 // ── Figure history stack (in-app back navigation) ──
@@ -997,6 +1003,10 @@ function _badgeSelect(val){
   selBadge=val;
   _syncBadgeDD();
   applyFilterAndFocus();
+  // Core figures are checked against the hadith index — re-filter once it's in.
+  if(val==='H' && window.GA_Narrators){
+    window.GA_Narrators.ensureHadithIndex().then(function(){ applyFilterAndFocus(); });
+  }
   document.querySelectorAll('.dd-panel.open').forEach(function(p){p.classList.remove('open');});
   document.querySelectorAll('.dd-btn.open').forEach(function(b){b.classList.remove('open');});
 }
@@ -1011,7 +1021,7 @@ function _syncBadgeDD(){
   });
   var labelSpan=btn.querySelector('span');
   if(selBadge){
-    var labels={'S':'Study','W':'Wiki','F':'Follow','B':'Books','T':'Talk'};
+    var labels={'S':'Study','W':'Wiki','F':'Follow','B':'Books','T':'Talk','H':'Hadith here'};
     if(labelSpan) labelSpan.textContent=labels[selBadge]||'HAS';
     btn.classList.add('filtered');
     var oldX=btn.querySelector('.dd-clear-x');
@@ -1072,7 +1082,7 @@ function updateFilterSummary(){
   const parts=[];
   if(selTypes.size>0) parts.push([...selTypes].join(', '));
   if(selTrads.size>0) parts.push([...selTrads].join(', '));
-  if(selBadge) parts.push('Has: '+{S:'Study',W:'Wiki',F:'Follow',B:'Books',T:'Talk'}[selBadge]);
+  if(selBadge) parts.push('Has: '+{S:'Study',W:'Wiki',F:'Follow',B:'Books',T:'Talk',H:'Hadith here'}[selBadge]);
   const sumEl=document.getElementById('filterSummary');
   const clrEl=document.getElementById('filterClearAll');
   if(parts.length>0){
@@ -1168,7 +1178,9 @@ function getFiltered(){
       if(!APP.Favorites.has(p.famous)) return false;
     }
     /* Badge filter */
-    if(selBadge){
+    if(selBadge === 'H'){
+      if(!(window.GA_Narrators && window.GA_Narrators.hasHadith(p.slug))) return false;
+    } else if(selBadge){
       var badges=getFigureBadges(p.slug,p.famous,p);
       if(badges.indexOf(selBadge)===-1) return false;
     }
@@ -1441,6 +1453,13 @@ function renderAll(filtered){
       }));
     }
   }
+  // PICKED only: ignore TYPE / TRADITION / HAS / SAVED / search; the year
+  // slider below still applies.
+  if(_tlPickOnly && _tlPicked.size){
+    var _pool = PEOPLE.slice();
+    if(window.GA_Narrators && window.GA_Narrators.enabled()) _pool = _pool.concat(window.GA_Narrators.timelineRows(_tlNarratorsReady));
+    filtered = _pool.filter(function(p){ return _tlPicked.has(_tlPickKey(p)); });
+  }
   // YEAR FILTER: when slider is active (and not animating), keep only figures alive at activeYear.
   if(activeYear !== null && !_animActive){
     filtered = filtered.filter(function(p){
@@ -1493,10 +1512,26 @@ function _tlUpdateFigCount(shownCount){
   if(!total){ el.textContent=''; return; }
   var narrOn=!!(window.GA_Narrators && window.GA_Narrators.tierCOn && window.GA_Narrators.tierCOn());
   var noun=narrOn?' figures':' core figures';
+  if(_tlPickOnly){ el.textContent='Showing '+shown.toLocaleString()+' picked figures'; return; }
   el.textContent=(shown===total)
     ? 'Showing '+total.toLocaleString()+noun
     : 'Showing '+shown.toLocaleString()+' of '+total.toLocaleString()+noun;
 }
+
+// PICKED pill: hidden while nothing is picked; label carries the count;
+// zb-active mirrors _tlPickOnly.
+function _tlUpdatePickPill(){
+  var b=document.getElementById('tlPickPill');
+  if(!b) return;
+  b.style.display=_tlPicked.size?'inline-flex':'none';
+  var lbl=b.querySelector('.tl-pick-lbl');
+  if(lbl) lbl.textContent='PICKED '+_tlPicked.size;
+  b.classList.toggle('zb-active',_tlPickOnly);
+}
+
+window._tlTogglePickKey = function(k){ if(_tlPicked.has(k)) _tlPicked.delete(k); else _tlPicked.add(k); if(_tlPickOnly && !_tlPicked.size) _tlPickOnly=false; _tlUpdatePickPill(); renderAll(); var b=document.getElementById('cardPickBtn'); if(b) b.style.color=_tlPicked.has(k)?'#fff':'rgba(255,255,255,.35)'; };
+window._tlIsPickedKey = function(k){ return _tlPicked.has(k); };
+window._tlTogglePick = function(i){ var p=_lastSortedPeople[i]; if(!p) return; var k=_tlPickKey(p); if(_tlPicked.has(k)) _tlPicked.delete(k); else _tlPicked.add(k); if(_tlPickOnly && _tlPicked.size===0) _tlPickOnly=false; _tlUpdatePickPill(); renderAll(); };
 
 // Re-render once the narrator listing lands. timelineRows() is cached by then,
 // so this cannot recurse.
@@ -1899,13 +1934,14 @@ function renderRows(filtered){
     // Step 2.8 — sacred rule: only type:'Prophet' figures (and Adam explicitly) get the gold treatment.
     const isSacred = _tlIsSacred(p);
 
-    html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}${p._narrator?' tl-narr':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="${p._narrator?`background:linear-gradient(rgba(70,110,150,.30),rgba(70,110,150,.30)),${era.bg};border-left:4px solid rgba(130,165,200,.9);`:`background:${era.bg}`}">
+    html+=`<div class="tl-row${isSel?' sel':''}${isProphet?' prophet-row':''}${p._narrator?' tl-narr':''}${_tlPicked.has(_tlPickKey(p))?' picked':''}" data-idx="${i}" data-era-bg="${era.bg}" onclick="selectRow(${i})" style="${p._narrator?`background:linear-gradient(rgba(70,110,150,.30),rgba(70,110,150,.30)),${era.bg};border-left:4px solid rgba(130,165,200,.9);`:`background:${era.bg}`}">
       <div class="tc-name${isSacred?' is-sacred':''}">
         <div class="tc-texts">
           <div class="tc-famous" data-name="${esc(p.famous)}">${esc(_tlFigName(p))}${_renderBadgesHtml(p.slug,p.famous,'tl')}${p._narrator&&window.GA_Narrators?window.GA_Narrators.tierChip(p.tier)+window.GA_Narrators.rowYear(p):''}</div>
           <div class="tc-sub"${p._narrator?' style="color:rgba(150,180,205,.9)"':''}>${esc(_tlFigSubtitle(p) || _tlClassifStr(p))}</div>
         </div>
         <div class="tc-dot" style="background:${col}${isProphet?';box-shadow:0 0 8px '+col+'90':''}"></div>
+        <div class="tc-pick${_tlPicked.has(_tlPickKey(p))?' on':''}" title="Pick / unpick" onclick="event.stopPropagation();_tlTogglePick(${i})"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>`;
   });
@@ -2181,6 +2217,8 @@ function renderInfo(p){
 
   var _bmAuth = window.GoldArkAuth;
   var _isFav = (_bmAuth && _bmAuth.hasBookmarkKey && p.slug) ? _bmAuth.hasBookmarkKey('f:' + p.slug) : false;
+  var _pk = _tlPicked.has(p._narrator ? 's:'+p.slug : 'n:'+p.famous);
+  var _pickHTML = '<button id="cardPickBtn" title="Pick / unpick" style="background:none;border:none;cursor:pointer;float:right;margin-left:10px;padding:2px;line-height:1;color:'+(_pk?'#fff':'rgba(255,255,255,.35)')+'">' + '<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' + '</button>';
   var _starHTML = '<button id="favToggleBtn" data-name="' + esc(p.famous) + '" data-slug="' + esc(p.slug || '') + '" '
     + 'title="' + (_isFav ? _tlT('Remove from bookmarks') : _tlT('Bookmark this figure')) + '" '
     + 'style="background:none;border:none;cursor:pointer;font-size:var(--fs-1);'
@@ -2214,6 +2252,7 @@ function renderInfo(p){
 
   document.getElementById('infoScroll').innerHTML=`
     ${locateBtn}
+    ${_pickHTML}
     ${_starHTML}
     ${canShowImage(p) ? `
     <div id="wikiImgWrap" style="float:right;margin:0 0 12px 14px;max-width:120px;text-align:center">
@@ -2362,6 +2401,17 @@ function renderInfo(p){
     var capEl = document.getElementById('wikiImgCaption');
     if (imgEl) fetchWikiImage(p.source, imgEl, capEl);
   }
+
+  // Wire pick (✓) button — same toggle as the row ticks.
+  (function() {
+    var pb = document.getElementById('cardPickBtn');
+    if (!pb) return;
+    var k = p._narrator ? 's:'+p.slug : 'n:'+p.famous;
+    pb.addEventListener('click', function(event) {
+      event.stopPropagation();
+      window._tlTogglePickKey(k);
+    });
+  })();
 
   // Wire star button click handler — bookmarks via GoldArkAuth (no APP.Favorites dependency).
   (function() {
@@ -2704,6 +2754,7 @@ function _timelineInfoHtml(){
             '<div class="dd-item" data-val="F" onclick="_badgeSelect(\'F\')"><div class="dd-checkbox"></div><span>'+_tlT('Follow Journey')+'</span></div>' +
             '<div class="dd-item" data-val="B" onclick="_badgeSelect(\'B\')"><div class="dd-checkbox"></div><span>'+_tlT('Books')+'</span></div>' +
             '<div class="dd-item" data-val="T" onclick="_badgeSelect(\'T\')"><div class="dd-checkbox"></div><span>'+_tlT('Talk')+'</span></div>' +
+            '<div class="dd-item" data-val="H" onclick="_badgeSelect(\'H\')"><div class="dd-checkbox"></div><span>'+_tlT('Hadith here')+'</span></div>' +
           '</div>' +
         '</div>' +
         '<span id="filterSummary"></span>' +
@@ -2772,6 +2823,32 @@ function _timelineInfoHtml(){
         var rows = window.GA_Narrators.timelineRows();
         console.log('[narrators] pill', window.GA_Narrators.tierCOn(), rows.length);
       });
+    }
+
+    // PICKED pill — created once, next to the SAVED pill if present, else
+    // after the "+ NARRATORS" pill (TIMELINE has no SAVED pill in FILTER_SPECS).
+    if(!document.getElementById('tlPickPill')){
+      var _pickAnchor = document.getElementById('zbSavedPill') || document.getElementById('tlNarrPill');
+      if(_pickAnchor && _pickAnchor.parentNode){
+        var pickPill = document.createElement('button');
+        pickPill.type = 'button';
+        pickPill.id = 'tlPickPill';
+        pickPill.className = _pickAnchor.className.replace(/\bzb-active\b/g, '').trim();
+        pickPill.style.cssText = _pickAnchor.id === 'zbSavedPill' ? _pickAnchor.style.cssText : '';
+        pickPill.style.display = 'none';
+        pickPill.innerHTML = '<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tl-pick-lbl" style="margin-left:6px">PICKED 0</span><span class="tl-pick-x" title="Clear picks">×</span>';
+        pickPill.addEventListener('click', function(){
+          _tlPickOnly = !_tlPickOnly;
+          pickPill.classList.toggle('zb-active', _tlPickOnly);
+          renderAll();
+        });
+        pickPill.querySelector('.tl-pick-x').addEventListener('click', function(e){
+          e.stopPropagation();
+          _tlPicked.clear(); _tlPickOnly = false;
+          _tlUpdatePickPill(); renderAll();
+        });
+        _pickAnchor.parentNode.insertBefore(pickPill, _pickAnchor.nextSibling);
+      }
     }
 
     // Search input — has id="search"
@@ -2858,6 +2935,7 @@ function _timelineInfoHtml(){
       };
       document.addEventListener('click', window._tlOutsideClickHandler);
     }
+    _tlUpdatePickPill();
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -2887,6 +2965,11 @@ function _timelineInfoHtml(){
 
   function _getAnimVisible(){
     var filtered = (typeof getFiltered === 'function') ? getFiltered() : PEOPLE;
+    if(_tlPickOnly && _tlPicked.size){
+      var _pool = PEOPLE.slice();
+      if(window.GA_Narrators && window.GA_Narrators.enabled()) _pool = _pool.concat(window.GA_Narrators.timelineRows(_tlNarratorsReady));
+      filtered = _pool.filter(function(p){ return _tlPicked.has(_tlPickKey(p)); });
+    }
     return [].concat(filtered).sort(function(a,b){ return _dobOf(a) - _dobOf(b); })
                               .filter(function(p){ return _dobOf(p) != null; });
   }

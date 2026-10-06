@@ -825,3 +825,18 @@ body.tl-mounted #zoneC .i-nv-details summary.i-nv-summary:hover .i-nv-arrow{
 /* Prefixed to beat body.tl-mounted #zoneC .tc-sub (timeline.css:283). */
 body.tl-mounted #zoneC .tl-row.tl-narr .tc-sub { color: rgba(150,180,205,.85); }
 .nr-card-wrap { background:rgba(70,110,150,.16); border-left:4px solid rgba(130,165,200,.85); margin:-4px -6px 0; padding:6px 10px 10px; border-radius:3px; }
+
+/* PICKED — checkmark on each row (right of the colour dot) + picked-row edge. */
+.tc-pick { width:22px; height:22px; margin-left:6px; margin-right:10px; flex:0 0 22px; cursor:pointer; color:rgba(255,255,255,.35); display:flex; align-items:center; justify-content:center; border-radius:4px; border:1px solid rgba(255,255,255,.18); box-sizing:border-box }
+.tc-pick svg { display:block; width:16px; height:16px }
+.tc-pick:hover { border-color:rgba(255,255,255,.5); color:rgba(255,255,255,.8) }
+.tc-pick.on { color:#fff; background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.6) }
+/* Dot keeps margin-inline-start:auto (dot + tick stay right). Cancel the dot's
+   18px end margin and the row's 8px flex gap so dot→tick = the tick's 6px, and
+   drop the cell's 10px end padding so tick→edge = the tick's 10px. */
+body.tl-mounted #zoneC .tc-name:has(.tc-pick){ padding-inline-end:0 }
+body.tl-mounted #zoneC .tc-name .tc-dot:has(+ .tc-pick),
+body[dir="rtl"].tl-mounted #zoneC .tc-name .tc-dot:has(+ .tc-pick){ margin-inline-end:-8px }
+.tl-row.picked { box-shadow: inset 3px 0 0 rgba(255,255,255,.7) }
+#tlPickPill svg { vertical-align:middle }
+.tl-pick-x { margin-left:6px; opacity:.7 } .tl-pick-x:hover { opacity:1 }
