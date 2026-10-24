@@ -93,10 +93,12 @@ window.FinanceView = (function(){
   var _repCase = null;      // REPORT: the business case currently selected in the CASE dropdown (null → default D.demo_case)
   var _repFabIdx = null;    // REPORT: index into D.compliance_reports of the selected FAB per-document report (null → none)
   var _fabSel  = null;      // REPORT/FAB: index of the FAB open item drilled into the panel (null → none)
+  var _ruleSel = null;      // REPORT/FAB: rule_id of the rule-checklist row drilled into the panel (null → none)
   var _liveDoc = null;      // UPLOAD: { name, pages, text } of the extracted PDF — session only, never stored/sent
   var _docHighlight = null; // UPLOAD: quote to highlight + scroll to when jumping from a report
-  var _liveCase = null;     // REPORT: AI-generated live report object (session only; replaced on each run; gone on refresh)
-  var _liveSeqNext = 0;     // REPORT: session counter for live-case numbering (0 → 10.70, 1 → 10.71, …); resets on refresh
+  var _liveCase = null;     // REPORT: AI-generated live report object (replaced on each run; kept in localStorage until archived)
+  var _liveSeqNext = 0;     // REPORT: counter for live-case numbering (0 → 10.70, 1 → 10.71, …); restored with the stored live case
+  var _runTick = null;      // REPORT: setInterval id of the live-run timer (cleared on success / failure / unmount)
   var _pipe = null;         // REPORT: tiered live-review pipeline state { doc, tier1, tier2, tier3, usage:[], error, errorTier } — session only, reset per document
   var _famOpen = new Set(); // SETTINGS: family names currently expanded (accordion)
   var _famPillar = {};      // SETTINGS: { familyName: Set of selected pillars } — empty/missing Set = show all
@@ -169,6 +171,24 @@ window.FinanceView = (function(){
     try{ var s = localStorage.getItem(ARCH_KEY); var a = s ? JSON.parse(s) : null; _archive = Array.isArray(a) ? a : []; }
     catch(e){ _archive = []; }           // missing / corrupt → empty archive
   }
+  // ── Last live case — kept across a refresh until it is archived (report object only; the document text is never stored) ──
+  var LIVE_KEY = 'finance_live_case_v1';      // JSON { savedAt, seqNext, report }
+  var LIVE_MAX_AGE = 7 * 24 * 60 * 60 * 1000; // older than 7 days → ignored and removed
+  function _liveSave(){
+    if(!_liveCase) return;
+    try{ localStorage.setItem(LIVE_KEY, JSON.stringify({ savedAt: Date.now(), seqNext: _liveSeqNext, report: _liveCase })); }catch(e){}
+  }
+  function _liveClear(){ try{ localStorage.removeItem(LIVE_KEY); }catch(e){} }
+  function _liveRestore(){
+    try{
+      var s = localStorage.getItem(LIVE_KEY); if(!s) return;
+      var o = JSON.parse(s);
+      if(!o || !o.report || typeof o.report !== 'object' || !(Date.now() - Number(o.savedAt || 0) <= LIVE_MAX_AGE)){ _liveClear(); return; }
+      o.report._live = true;
+      _liveCase = o.report;
+      _liveSeqNext = Number(o.seqNext || 0);
+    }catch(e){ _liveClear(); }          // corrupt → drop it
+  }
   // Returns true when the archive actually reached localStorage, false when the write
   // failed (quota exceeded is the realistic case). Callers that ignore the value behave
   // exactly as before; the archive-time caller surfaces a visible warning.
@@ -229,6 +249,7 @@ window.FinanceView = (function(){
     }
     _schDet[k] = cur;
     _schSave();
+    if(_repFabIdx === 'live') _liveSave();   // keep the stored live case in step with its stances
     return cur;
   }
 
@@ -238,35 +259,148 @@ window.FinanceView = (function(){
   function _apiKeySave(k){ try{ if(k) localStorage.setItem(API_KEY_LS, k); else localStorage.removeItem(API_KEY_LS); }catch(e){} }
   function _apiKeyClear(){ try{ localStorage.removeItem(API_KEY_LS); }catch(e){} }
 
-  // ── Live-run model selection — persisted (same plain pattern). Single source of truth for the model list + pricing. ──
-  var API_MODEL_LS = 'finance_api_model_v1';
-  var LIVE_MODELS = [
-    { value:'claude-sonnet-4-6',          label:'Claude Sonnet 4.6' },
-    { value:'claude-haiku-4-5-20251001',  label:'Claude Haiku 4.5' }
-  ];
-  var LIVE_MODEL_DEFAULT = 'claude-sonnet-4-6';
+  // ── Live-run provider + model selection — persisted (same plain pattern). Single source of truth for providers, models + pricing. ──
+  var API_PROVIDER_LS = 'finance_api_provider_v1';
+  var API_MODEL_LS = 'finance_api_model_v1';              // Anthropic keeps the original key; other providers append '_<provider>'
+  var API_MODEL_CUSTOM_LS = 'finance_api_model_custom_v1_'; // + provider — typed model id, used instead of the list when non-empty
+  var PROVIDERS = {
+    anthropic: { label:'Claude (Anthropic)', def:'claude-sonnet-4-6', models:[
+      { value:'claude-sonnet-4-6',          label:'Claude Sonnet 4.6' },
+      { value:'claude-haiku-4-5-20251001',  label:'Claude Haiku 4.5' }
+    ] },
+    gemini:    { label:'Google Gemini', def:'gemini-2.5-flash', models:[
+      { value:'gemini-2.5-flash',           label:'Gemini 2.5 Flash' },
+      { value:'gemini-2.5-pro',             label:'Gemini 2.5 Pro' }
+    ] },  // no pricing — the cost line shows tokens only
+    // OpenAI-compatible providers (baseUrl set) share one request path in _aiCall.
+    // cap = output-token ceiling sent as tokenParam; a typed model id uses capDefault. No pricing — tokens + costNote.
+    openai:    { label:'OpenAI', def:'gpt-4.1', baseUrl:'https://api.openai.com/v1/chat/completions', tokenParam:'max_completion_tokens',
+                 capDefault:16384, costNote:'· pricing: see your OpenAI account', models:[
+      { value:'gpt-4.1',                    label:'GPT-4.1',      cap:32768 },
+      { value:'gpt-4.1-mini',               label:'GPT-4.1 mini', cap:32768 },
+      { value:'gpt-4o',                     label:'GPT-4o',       cap:16384 }
+    ] },
+    mistral:   { label:'Mistral', def:'mistral-large-latest', baseUrl:'https://api.mistral.ai/v1/chat/completions', tokenParam:'max_tokens',
+                 capDefault:32768, costNote:'· pricing: see your Mistral account', models:[
+      { value:'mistral-large-latest',       label:'Mistral Large', cap:32768 },
+      { value:'mistral-small-latest',       label:'Mistral Small', cap:32768 }
+    ] },
+    deepseek:  { label:'DeepSeek', def:'deepseek-chat', baseUrl:'https://api.deepseek.com/chat/completions', tokenParam:'max_tokens',
+                 capDefault:8192, costNote:'· pricing: see your DeepSeek account', models:[
+      { value:'deepseek-chat',              label:'DeepSeek Chat', cap:8192 }
+    ] }
+  };
   // Price per MILLION tokens { in, out }. Any model listed above but absent here shows
   // no USD figure on the cost line — it points to console.anthropic.com instead.
   var LIVE_MODEL_PRICING = {
     'claude-sonnet-4-6':          { in:3, out:15 },
     'claude-haiku-4-5-20251001':  { in:1, out:5 }
   };
-  function _apiModelGet(){ try{ var m = localStorage.getItem(API_MODEL_LS); return (m && LIVE_MODELS.some(function(x){ return x.value === m; })) ? m : LIVE_MODEL_DEFAULT; }catch(e){ return LIVE_MODEL_DEFAULT; } }
-  function _apiModelSave(m){ try{ if(m) localStorage.setItem(API_MODEL_LS, m); }catch(e){} }
-  function _modelLabel(v){ for(var i=0;i<LIVE_MODELS.length;i++){ if(LIVE_MODELS[i].value === v) return LIVE_MODELS[i].label; } return v || ''; }
+  function _apiProviderGet(){ try{ var p = localStorage.getItem(API_PROVIDER_LS); return (p && PROVIDERS[p]) ? p : 'anthropic'; }catch(e){ return 'anthropic'; } }
+  function _apiProviderSave(p){ try{ if(p && PROVIDERS[p]) localStorage.setItem(API_PROVIDER_LS, p); }catch(e){} }
+  function _apiProviderLabel(p){ return (PROVIDERS[p] || PROVIDERS.anthropic).label; }
+  function _apiModelLs(p){ return (p === 'anthropic') ? API_MODEL_LS : (API_MODEL_LS + '_' + p); }
+  function _apiModelCustomGet(p){ p = p || _apiProviderGet(); try{ return String(localStorage.getItem(API_MODEL_CUSTOM_LS + p) || '').trim(); }catch(e){ return ''; } }
+  function _apiModelCustomSave(m, p){ p = p || _apiProviderGet(); try{ m = String(m || '').trim(); if(m) localStorage.setItem(API_MODEL_CUSTOM_LS + p, m); else localStorage.removeItem(API_MODEL_CUSTOM_LS + p); }catch(e){} }
+  // The model picked from the list for a provider (ignores the custom box).
+  function _apiModelListGet(p){
+    p = p || _apiProviderGet(); var P = PROVIDERS[p] || PROVIDERS.anthropic;
+    try{ var m = localStorage.getItem(_apiModelLs(p)); return (m && P.models.some(function(x){ return x.value === m; })) ? m : P.def; }catch(e){ return P.def; }
+  }
+  // The model actually sent: the typed custom id when non-empty, else the list choice.
+  function _apiModelGet(p){ return _apiModelCustomGet(p) || _apiModelListGet(p); }
+  function _apiModelSave(m, p){ p = p || _apiProviderGet(); try{ if(m) localStorage.setItem(_apiModelLs(p), m); }catch(e){} }
+  function _modelLabel(v){
+    for(var k in PROVIDERS){ var ms = PROVIDERS[k].models; for(var i=0;i<ms.length;i++){ if(ms[i].value === v) return ms[i].label; } }
+    return v || '';
+  }
   // Map a failed test to a short plain message — NEVER echoes the key.
   function _apiPlainErr(msg, status){
-    if(status === 401 || status === 403) return 'invalid key';
-    if(msg) return String(msg).slice(0, 140);
+    msg = String(msg || '');
+    if(status === 401 || status === 403 || (status === 400 && /API key/i.test(msg))) return 'invalid key';
+    if(status === 404) return 'model not found — check the model id';
+    if(status === 400 && /parameter|field|temperature|max_completion_tokens|max_tokens|response_format|unsupported/i.test(msg)) return ('the model rejected a setting: ' + msg).slice(0, 180);
+    if(status === 429) return 'rate limited — wait a minute and retry';
+    if(msg) return msg.slice(0, 140);
     return 'error (HTTP ' + status + ')';
   }
-  // TEST CONNECTION — minimal browser-direct POST to Anthropic; 200 → green, anything else → red plain error.
-  function _apiTestConnection(inputEl, setStatus){
-    var key = inputEl ? String(inputEl.value || '').trim() : _apiKeyGet();
-    if(inputEl) _apiKeySave(key);          // persist whatever is currently typed before testing
-    if(!key){ setStatus('red', 'no key entered'); return; }
-    setStatus('grey', 'testing…');
-    fetch('https://api.anthropic.com/v1/messages', {
+  // ONE provider call. opts = { system, user, maxTokens, tools, toolChoice }.
+  // Resolves { status, j } with j in Anthropic's shape (content[] text / tool_use, stop_reason, usage, error.message).
+  // Rejects { reason:'network blocked' } when the request never reaches the provider.
+  function _aiCall(provider, key, model, opts){
+    opts = opts || {};
+    function _net(){ throw { reason: 'network blocked' }; }
+    function _read(r){ return r.json().then(function(j){ return { status: r.status, j: j }; }).catch(function(){ return { status: r.status, j: null }; }); }
+    if(provider === 'gemini'){
+      // No responseSchema — the prompts carry the exact JSON shape; a schema would strip unlisted fields.
+      // Output floor of 8192 so Gemini's thinking tokens can never starve a small call (Tier 1 asks 2,000).
+      var _gBody = {
+        contents: [{ role:'user', parts:[{ text: String(opts.user || '') }] }],
+        generationConfig: { temperature: 0, maxOutputTokens: (opts.system ? Math.min(Math.max(opts.maxTokens || 0, 8192), 65536) : opts.maxTokens), responseMimeType: 'application/json' }   // no system = the TEST ping → its own 10
+      };
+      if(opts.system) _gBody.systemInstruction = { parts:[{ text: opts.system }] };
+      var _gConvert = function(res){
+        var g = res.j || {};
+        if(res.status !== 200){
+          return { status: res.status, j: { error: { message: (g.error && g.error.message) ? g.error.message : ('HTTP ' + res.status) } } };
+        }
+        var c = (g.candidates || [])[0] || {};
+        var txt = ((c.content && c.content.parts) || []).map(function(p){ return p.text || ''; }).join('');
+        var content = [{ type:'text', text: txt }];
+        if(opts.tools){ try{ var parsed = JSON.parse(txt); if(parsed && typeof parsed === 'object') content = [{ type:'tool_use', input: parsed }]; }catch(e){} }
+        var um = g.usageMetadata || {};
+        return { status: 200, j: {
+          content: content,
+          stop_reason: (c.finishReason === 'MAX_TOKENS') ? 'max_tokens' : 'end_turn',
+          usage: { input_tokens: um.promptTokenCount || 0, output_tokens: (um.candidatesTokenCount || 0) + (um.thoughtsTokenCount || 0) }   // thinking billed as output
+        } };
+      };
+      return fetch('https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(String(model).replace(/^models\//, '')) + ':generateContent', {
+        method: 'POST',
+        headers: { 'x-goog-api-key': key, 'content-type': 'application/json' },   // key in a header, never in the URL
+        body: JSON.stringify(_gBody)
+      }).then(_read, _net).then(_gConvert);
+    }
+    // OpenAI-compatible path (OpenAI, Mistral, DeepSeek) — endpoint, token param + caps come from PROVIDERS.
+    var _oP = PROVIDERS[provider];
+    if(_oP && _oP.baseUrl){
+      var _oMsgs = [];
+      if(opts.system) _oMsgs.push({ role:'system', content: opts.system });
+      _oMsgs.push({ role:'user', content: String(opts.user || '') });
+      var _oCap = _oP.capDefault;
+      _oP.models.forEach(function(m){ if(m.value === model) _oCap = m.cap; });
+      var _oBody = { model: model, temperature: 0 };
+      _oBody[_oP.tokenParam] = Math.min(opts.maxTokens || 0, _oCap);
+      _oBody.messages = _oMsgs;
+      // json_object mode needs the word "JSON" in the messages — every live prompt has it; the TEST 'ping' does not.
+      if(/json/i.test((opts.system || '') + ' ' + (opts.user || ''))) _oBody.response_format = { type:'json_object' };
+      var _oConvert = function(res){
+        var o = res.j || {};
+        if(res.status !== 200){
+          return { status: res.status, j: { error: { message: (o.error && o.error.message) ? o.error.message : ('HTTP ' + res.status) } } };
+        }
+        var ch = (o.choices || [])[0] || {};
+        var txt = String((ch.message && ch.message.content) || '');
+        var content = [{ type:'text', text: txt }];
+        if(opts.tools){ try{ var parsed = JSON.parse(txt); if(parsed && typeof parsed === 'object') content = [{ type:'tool_use', input: parsed }]; }catch(e){} }
+        var ou = o.usage || {};
+        return { status: 200, j: {
+          content: content,
+          stop_reason: (ch.finish_reason === 'length') ? 'max_tokens' : 'end_turn',
+          usage: { input_tokens: ou.prompt_tokens || 0, output_tokens: ou.completion_tokens || 0 }
+        } };
+      };
+      return fetch(_oP.baseUrl, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json' },
+        body: JSON.stringify(_oBody)
+      }).then(_read, _net).then(_oConvert);
+    }
+    // anthropic — the original browser-direct POST, unchanged.
+    var body = { model: model, max_tokens: opts.maxTokens, messages: [{ role: 'user', content: opts.user }] };
+    if(opts.system){ body.temperature = 0; body.system = opts.system; }   // live runs; the TEST ping sends neither (as before)
+    if(opts.tools){ body.tools = opts.tools; if(opts.toolChoice) body.tool_choice = opts.toolChoice; }
+    return fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'x-api-key': key,
@@ -274,14 +408,21 @@ window.FinanceView = (function(){
         'anthropic-dangerous-direct-browser-access': 'true',
         'content-type': 'application/json'
       },
-      body: JSON.stringify({ model: _apiModelGet(), max_tokens: 10, messages: [{ role:'user', content:'ping' }] })
-    }).then(function(r){
-      if(r.status === 200){ setStatus('green', 'Connected — live demo ready'); return; }
-      return r.json().then(function(j){
-        var m = (j && j.error && j.error.message) ? j.error.message : '';
-        setStatus('red', _apiPlainErr(m, r.status));
-      }).catch(function(){ setStatus('red', _apiPlainErr('', r.status)); });
-    }).catch(function(){ setStatus('red', 'network blocked'); });
+      body: JSON.stringify(body)
+    }).then(_read, _net);
+  }
+  // TEST CONNECTION — minimal 'ping' to the chosen provider; 200 → green, anything else → red plain error.
+  function _apiTestConnection(inputEl, setStatus){
+    var key = inputEl ? String(inputEl.value || '').trim() : _apiKeyGet();
+    if(inputEl) _apiKeySave(key);          // persist whatever is currently typed before testing
+    if(!key){ setStatus('red', 'no key entered'); return; }
+    setStatus('grey', 'testing…');
+    var prov = _apiProviderGet();
+    _aiCall(prov, key, _apiModelGet(prov), { user:'ping', maxTokens:10 }).then(function(res){
+      if(res.status === 200){ setStatus('green', 'Connected — live demo ready'); return; }
+      var m = (res.j && res.j.error && res.j.error.message) ? res.j.error.message : '';
+      setStatus('red', _apiPlainErr(m, res.status));
+    }, function(){ setStatus('red', 'network blocked, or this provider does not allow calls from a browser'); });
   }
 
   // ── Small helpers ──
@@ -902,10 +1043,10 @@ window.FinanceView = (function(){
     return last.y + ROW_H;
   }
 
-  function _eraBandsHtml(rows, totalH){
+  function _eraBandsHtml(rows, totalH, minY){
     var h = '';
     FIN_ERAS.forEach(function(era){
-      var y1 = Math.max(0, _finYrToY(era.start, rows, totalH));
+      var y1 = Math.max(minY, _finYrToY(era.start, rows, totalH));
       var y2 = Math.min(totalH, _finYrToY(era.end, rows, totalH));
       if(y2 - y1 <= 0) return;
       var bandH = y2 - y1;
@@ -1011,14 +1152,20 @@ window.FinanceView = (function(){
       var _pillV = _pillRow && _pillRow.crosstag && _pillRow.crosstag.quran_verses;
       // QUR'AN pill always shows for a chosen contract; READ is live only when verses are actually cited.
       _pill = { active:!!(_pillV && _pillV.length), row:_pillRow };
-    } else if(!_pill && startConcepts.length){
-      var _pillSc = startConcepts[0];
-      _pill = { active:true, row:{ stage:'quran', stage_label:_pillSc.fm.family_name,
-                crosstag:{ quran_verses:_pillSc.verses.map(function(v){ return v.surah+':'+v.ayah; }) } } };
     }
+    // Row-0 name label (shown only beside concept rows): the qword's English name, else the ticked contract's name.
+    var _pillName = _qwSel ? (_qwSel.english || _qwSel.arabic || '')
+                  : (_pill && _pillC && _idx.contract[_pillC] ? (_idx.contract[_pillC].name || _pillC) : '');
+    // Concept rows: synthetic quran-verses row per concept → same Verses panel as the row-0 READ.
+    var _conceptRows = {};
+    startConcepts.forEach(function(s){
+      _conceptRows[s.fm.id] = { stage:'quran', stage_label:s.fm.family_name,
+        crosstag:{ quran_verses:s.verses.map(function(v){ return v.surah+':'+v.ayah; }) } };
+    });
 
-    var PILL_BAND = 64;                                       // reserved band above the first dated row — clears title/era text
-    var pillY  = PAD + startN*ROW_H + PILL_BAND/2;            // pill centre, in its own clear band
+    var PILL_ROW  = 40;                                       // one stacked pill row (row 0 = contract, rows 1..n = concepts)
+    var PILL_BAND = (1 + startN) * PILL_ROW + 24;             // reserved band above the first dated row — clears title/era text
+    var pillY  = PAD + PILL_ROW/2;                            // row-0 (contract) pill centre
 
     // ── Term buckets — run for ONE OR MORE ticked contracts. Three-way split on the FINAL enriched date
     //    rules (see _termOriginYear), computed PER ticked contract (a term belongs to a contract when its
@@ -1055,7 +1202,7 @@ window.FinanceView = (function(){
     // Estimate wrapped height from the chip count (~6 chips/row); corrected by measurement after render.
     var _qbCount = _qUnion.length;
     var QBLOCK_BAND = _qbCount ? (30 + Math.ceil(_qbCount / 6) * 28) : 0;
-    var topPad = PAD + startN*ROW_H + PILL_BAND + QBLOCK_BAND;   // dated spine begins below pill (+ qblock band)
+    var topPad = PAD + PILL_BAND + QBLOCK_BAND;   // dated spine begins below pill (+ qblock band)
 
     // Left flow is the real dated `entries` only. Plotted term origins are NOT woven in here — they
     // render as coloured tiles on the RIGHT of the stem (see below). Era bands, concept arcs and year
@@ -1076,12 +1223,22 @@ window.FinanceView = (function(){
     html += '<div class="fin-qpill-wrap" style="top:'+pillY+'px">'
           + '<span class="fin-qpill">QUR\'AN</span>'
           + '<span class="fin-qread'+(_pillActive ? '' : ' fin-qread-off')+'"'+(_pillActive ? ' data-fin-pill-read="1"' : '')+'>READ</span>'
+          + ((startN && _pillName) ? '<span class="fin-qpill-name" style="color:var(--muted,#6B7B8C)">'+_esc(_pillName)+'</span>' : '')
           + '</div>';
+    // Concept pill rows — identical QUR'AN + READ pills stacked under row 0, family name to the right.
+    startConcepts.forEach(function(s, idx){
+      var y = PAD + (idx+1)*PILL_ROW + PILL_ROW/2, n = s.verses.length;
+      html += '<div class="fin-qpill-wrap" style="top:'+y+'px">'
+            + '<span class="fin-qpill">QUR\'AN</span>'
+            + '<span class="fin-qread" data-fin-concept-read="'+_esc(s.fm.id)+'">READ</span>'
+            + '<span class="fin-qpill-name" data-fam="'+_esc(s.fm.id)+'" title="'+n+' cited verse'+(n===1?'':'s')+'" style="color:'+(s.fm.color || '#D4AF37')+'">'+_esc(s.fm.family_name)+'</span>'
+            + '</div>';
+    });
 
     // QUR'AN-BLOCK terms — undated by the Qur'an block rule. Chip strip directly below the gold pill,
     // in the qblock band reserved above. Chips route to the term details panel (data-term-chip → _selectTerm).
     if(_qUnion.length){
-      var _qbTop = PAD + startN*ROW_H + PILL_BAND - 8;
+      var _qbTop = PAD + PILL_BAND - 8;
       html += '<div class="fin-term-qblock" id="fin-term-qblock" style="top:'+_qbTop+'px">'
             + '<div class="fin-term-qblock-head">QUR\'ANIC-ERA TERMS · undated ('+_qUnion.length+')</div>'
             + '<div class="fin-term-qblock-chips">'
@@ -1089,13 +1246,6 @@ window.FinanceView = (function(){
             + '</div></div>';
     }
 
-    // Qur'an READ rows near the spine (mirror THINK's stacked READ pills).
-    startConcepts.forEach(function(s, idx){
-      var y = PAD + idx*ROW_H, v = s.verses[0], color = s.fm.color || '#D4AF37';
-      html += '<span class="fin-start-tag" style="top:'+y+'px;height:'+ROW_H+'px">QUR\'AN ('+s.verses.length+')</span>';
-      html += '<a class="fin-start-read" href="#start?surah='+v.surah+'&verse='+v.ayah+'" data-fam="'+_esc(s.fm.id)+'" data-s="'+v.surah+'" data-a="'+v.ayah+'" style="top:'+(y+8)+'px">READ</a>';
-      html += '<span class="fin-start-label" data-fam="'+_esc(s.fm.id)+'" style="top:'+y+'px;height:'+ROW_H+'px;color:'+color+'">'+_esc(s.fm.family_name)+'</span>';
-    });
 
     var shown = {};
     entries.forEach(function(en){
@@ -1115,13 +1265,13 @@ window.FinanceView = (function(){
           + '<span class="fin-ruler-sep">│</span>'
           + '<span class="fin-ruler-btn'+(_showHijri?' on':'')+'" data-ruler="hij">هـ</span></div>';
 
-    html += _eraBandsHtml(rows, totalH);
+    html += _eraBandsHtml(rows, totalH, stemTop);
 
     // ORIGIN 610–632 band — labels the top origin rows. The main dated spine begins at 632; rows ≥632
     // flow normally. Neutral stone tone (gold stays reserved). Its label is pushed DOWN (margin-top)
     // so it never collides with the "Prophetic Era / Before 632 CE" era label pinned at the band top.
     if(rows.some(function(r){ return r.yr >= 610 && r.yr <= 632; })){
-      var _oy1 = Math.max(0, _finYrToY(610, rows, totalH));
+      var _oy1 = Math.max(stemTop, _finYrToY(610, rows, totalH));
       var _oy2 = Math.min(totalH, _finYrToY(632, rows, totalH));
       if(_oy2 - _oy1 > 4){
         html += '<div class="fin-era-band" style="top:'+_oy1+'px;height:'+(_oy2-_oy1)+'px;background:linear-gradient(to right,transparent 15%,rgba(201,191,168,0.05) 50%,rgba(201,191,168,0.12) 100%)">'
@@ -1305,6 +1455,9 @@ window.FinanceView = (function(){
       var _pr = canvas.querySelector('[data-fin-pill-read]');
       if(_pr) _pr.addEventListener('click', function(e){ e.stopPropagation(); _renderQuranVersesHub(_pill.row); });
     }
+    canvas.querySelectorAll('[data-fin-concept-read]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _renderQuranVersesHub(_conceptRows[el.getAttribute('data-fin-concept-read')]); });
+    });
 
     // Reapply any active selection after a re-render.
     if(_sel){
@@ -1829,10 +1982,20 @@ window.FinanceView = (function(){
 
     var h = '<div class="fin-std">';
     // ── LIVE DEMO — API CONNECTION panel (top of SETTINGS). Key value is set in JS, never inlined into this string. ──
+    function _apiModelOptionsHtml(p){
+      var cur = _apiModelListGet(p);
+      return PROVIDERS[p].models.map(function(m){ return '<option value="'+_esc(m.value)+'"'+((cur === m.value) ? ' selected' : '')+'>'+_esc(m.label)+'</option>'; }).join('');
+    }
     h += '<div class="fin-api">'
        + '<div class="fin-api-title">LIVE DEMO — API CONNECTION</div>'
        + '<div class="fin-api-row">'
-       +   '<label class="fin-api-lbl" for="fin-api-key">Anthropic API key</label>'
+       +   '<label class="fin-api-lbl" for="fin-api-provider">Provider</label>'
+       +   '<select id="fin-api-provider" class="fin-api-input fin-api-model">'
+       +     Object.keys(PROVIDERS).map(function(p){ return '<option value="'+_esc(p)+'"'+((_apiProviderGet() === p) ? ' selected' : '')+'>'+_esc(PROVIDERS[p].label)+'</option>'; }).join('')
+       +   '</select>'
+       + '</div>'
+       + '<div class="fin-api-row">'
+       +   '<label class="fin-api-lbl" for="fin-api-key">API key</label>'
        +   '<input type="password" id="fin-api-key" class="fin-api-input" placeholder="paste key — stored on this device only" autocomplete="off" spellcheck="false">'
        +   '<button type="button" id="fin-api-test" class="fin-api-btn">TEST CONNECTION</button>'
        +   '<button type="button" id="fin-api-clear" class="fin-api-btn fin-api-clear">CLEAR</button>'
@@ -1840,8 +2003,9 @@ window.FinanceView = (function(){
        + '<div class="fin-api-row">'
        +   '<label class="fin-api-lbl" for="fin-api-model">Model for live runs</label>'
        +   '<select id="fin-api-model" class="fin-api-input fin-api-model">'
-       +     LIVE_MODELS.map(function(m){ return '<option value="'+_esc(m.value)+'"'+((_apiModelGet() === m.value) ? ' selected' : '')+'>'+_esc(m.label)+'</option>'; }).join('')
+       +     _apiModelOptionsHtml(_apiProviderGet())
        +   '</select>'
+       +   '<input type="text" id="fin-api-model-custom" class="fin-api-input" placeholder="or type a model id" autocomplete="off" spellcheck="false">'
        + '</div>'
        + '<div class="fin-api-status grey" id="fin-api-status">not connected</div>'
        + '<div class="fin-api-note">Key stays in this browser. Do not use on a public site.</div>'
@@ -1966,9 +2130,29 @@ window.FinanceView = (function(){
     // Model for live runs — restore saved selection; persist on change. Used by TEST CONNECTION + RUN LIVE REVIEW.
     var apiModel = canvas.querySelector('#fin-api-model');
     if(apiModel){
-      apiModel.value = _apiModelGet();
+      apiModel.value = _apiModelListGet();
       apiModel.addEventListener('click', function(e){ e.stopPropagation(); });
       apiModel.addEventListener('change', function(e){ e.stopPropagation(); _apiModelSave(this.value); });
+    }
+    // Typed model id (per provider) — overrides the list when non-empty.
+    var apiModelCustom = canvas.querySelector('#fin-api-model-custom');
+    if(apiModelCustom){
+      apiModelCustom.value = _apiModelCustomGet();
+      apiModelCustom.addEventListener('click', function(e){ e.stopPropagation(); });
+      apiModelCustom.addEventListener('change', function(e){ e.stopPropagation(); _apiModelCustomSave(this.value); });
+    }
+    // Provider — refill the model list + custom box for that provider; the old status no longer applies.
+    var apiProvider = canvas.querySelector('#fin-api-provider');
+    if(apiProvider){
+      apiProvider.value = _apiProviderGet();
+      apiProvider.addEventListener('click', function(e){ e.stopPropagation(); });
+      apiProvider.addEventListener('change', function(e){
+        e.stopPropagation();
+        _apiProviderSave(this.value);
+        if(apiModel){ apiModel.innerHTML = _apiModelOptionsHtml(this.value); apiModel.value = _apiModelListGet(this.value); }
+        if(apiModelCustom) apiModelCustom.value = _apiModelCustomGet(this.value);
+        _apiSetStatus('grey', 'not connected');
+      });
     }
     var runBtn = canvas.querySelector('#fin-run-report');
     if(runBtn) runBtn.addEventListener('click', function(e){ e.stopPropagation(); _setMode('report'); });
@@ -2365,10 +2549,10 @@ window.FinanceView = (function(){
       csel.addEventListener('change', function(e){ e.stopPropagation();
         var v = this.value;
         // Blank-start placeholder — stay in the blank state; clear any panel selection so no stale item shows.
-        if(v === 'blank'){ _repFabIdx = null; _fabSel = null; _repSel = null; _renderReport(); return; }
-        if(v === 'live'){ _repFabIdx = 'live'; _fabSel = null; _renderReport(); return; }
+        if(v === 'blank'){ _repFabIdx = null; _fabSel = null; _ruleSel = null; _repSel = null; _renderReport(); return; }
+        if(v === 'live'){ _repFabIdx = 'live'; _fabSel = null; _ruleSel = null; _renderReport(); return; }
         if(v.indexOf('fab') === 0){
-          _repFabIdx = parseInt(v.slice(3), 10); _fabSel = null;   // FAB report has its own panel state; leave _repActions/_repSel untouched
+          _repFabIdx = parseInt(v.slice(3), 10); _fabSel = null; _ruleSel = null;   // FAB report has its own panel state; leave _repActions/_repSel untouched
           _renderReport();
           return;
         }
@@ -2424,11 +2608,32 @@ window.FinanceView = (function(){
       el.addEventListener('click', function(e){ e.stopPropagation(); _setMode('standards'); });
     });
     // ── FAB compliance report wiring ──
+    // Rule checklist "→ open item OI-n": scroll to that item and flash it.
+    canvas.querySelectorAll('[data-goto-oi]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.stopPropagation();
+        var li = document.querySelector('#finance-canvas .fin-fab-item[data-fabidx="'+this.getAttribute('data-goto-oi')+'"]'); if(!li) return;
+        li.scrollIntoView({ behavior:'smooth', block:'center' });
+        li.classList.add('fin-flash'); setTimeout(function(){ li.classList.remove('fin-flash'); }, 1600);
+      });
+    });
     // Row → open its panel in the hub.
     canvas.querySelectorAll('.fin-fab-item').forEach(function(li){
       li.addEventListener('click', function(e){
         _fabSel = parseInt(this.getAttribute('data-fabidx'), 10);
-        canvas.querySelectorAll('.fin-fab-item').forEach(function(x){ x.classList.remove('sel'); });
+        _ruleSel = null;
+        canvas.querySelectorAll('.fin-fab-item, .fin-rule-row').forEach(function(x){ x.classList.remove('sel'); });
+        this.classList.add('sel');
+        _renderHub();
+      });
+    });
+    // Rule checklist row → its detail card in the panel (replaces any open-item card).
+    canvas.querySelectorAll('.fin-rule-row[data-rule-id]').forEach(function(tr){
+      tr.addEventListener('click', function(e){
+        e.stopPropagation();
+        _ruleSel = this.getAttribute('data-rule-id');
+        _fabSel = null;
+        canvas.querySelectorAll('.fin-fab-item, .fin-rule-row').forEach(function(x){ x.classList.remove('sel'); });
         this.classList.add('sel');
         _renderHub();
       });
@@ -2608,6 +2813,7 @@ window.FinanceView = (function(){
     // A failed write means the report is NOT filed — warn instead of confirming.
     // Drop the just-pushed entry so the in-memory archive matches what actually persisted.
     if(!_archSave(_archive)){ _archive.pop(); _archWarnFull(canvas); return; }
+    if(isLive) _liveClear();      // archived → the stored live case is no longer needed
     if(isLive){
       // Persistent green confirmation line under the SIGN OFF button.
       var g = canvas.querySelector('#fin-rep-signedoff');
@@ -2788,6 +2994,14 @@ window.FinanceView = (function(){
     var tin = u.input_tokens || 0, tout = u.output_tokens || 0;
     var tierSeg = rep._liveTiers ? (' · ' + rep._liveTiers + ' tiers') : '';   // tiered pipeline → "· 3 tiers"
     var s = 'Live review · ' + _modelLabel(model) + tierSeg + ' · ' + tin + ' in + ' + tout + ' out tokens';
+    // Measured run time + exact provider-reported token total (old archived reports have no _liveSeconds → unchanged).
+    if(typeof rep._liveSeconds === 'number'){
+      var ntok = (typeof rep._liveTokens === 'number') ? rep._liveTokens : (tin + tout);
+      s = 'Took ' + _fmtMSS(rep._liveSeconds) + ' · about ' + ntok.toLocaleString('en-US') + ' tokens · ' + s;
+    }
+    if(rep._liveProvider === 'gemini') return s + ' · pricing: see your Google AI Studio account';   // tokens only
+    var _cp = PROVIDERS[rep._liveProvider];
+    if(_cp && _cp.costNote) return s + ' ' + _cp.costNote;                                              // OpenAI-compatible: tokens only
     var pr = LIVE_MODEL_PRICING[model];
     if(pr){ var usd = (tin / 1e6) * pr.in + (tout / 1e6) * pr.out; return s + ' ≈ $' + usd.toFixed(2) + ' USD'; }
     return s + ' · pricing: see console.anthropic.com';   // Fable 5 — pricing unknown
@@ -2823,16 +3037,24 @@ window.FinanceView = (function(){
       it.principle.tag = 'plausible';   // guardrail
       it.scholar_determination = { stance:'', rationale:'', scholar_name:'', date:'' };
     });
+    if(_pipe && _pipe.startedAt){
+      if(!_pipe.endedAt){ _pipe.endedAt = Date.now(); _pipe.timerState = 'done'; }
+      report._liveSeconds = Math.round((_pipe.endedAt - _pipe.startedAt) / 1000);
+    }
+    if(report._liveUsage) report._liveTokens = (report._liveUsage.input_tokens || 0) + (report._liveUsage.output_tokens || 0);
+    if(_liveDoc){ report._livePages = _liveDoc.pages; report._liveChars = (_liveDoc.text || '').length; }
     report._live = true;
     _liveCase = report;           // replaces any previous live case
+    _liveSave();                  // …and the stored copy (survives a refresh until archived)
     _repFabIdx = 'live';
-    _fabSel = null;
+    _fabSel = null; _ruleSel = null;
     _renderReport();
   }
   function _runLiveReview(){
     var key = _apiKeyGet();
     if(!key || !_liveDoc || !_liveDoc.text) return;
-    var model = _apiModelGet();   // captured at request time so the cost line matches what was actually sent
+    var provider = _apiProviderGet();
+    var model = _apiModelGet(provider);   // captured at request time so the cost line matches what was actually sent
     var statusEl = document.getElementById('fin-live-status');
     var btn = document.getElementById('fin-live-run');
     function setStatus(cls, txt){ if(statusEl){ statusEl.className = 'fin-live-status ' + cls; statusEl.textContent = txt; } }
@@ -2841,19 +3063,9 @@ window.FinanceView = (function(){
       var b = document.getElementById('fin-live-run'); if(b) b.disabled = false;
     }
     if(btn) btn.disabled = true;
-    setStatus('amber', 'Reviewing document with Claude — this takes 1–2 minutes...');
-    fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': key,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(_buildLivePrompt())
-    }).then(function(r){
-      return r.json().then(function(j){ return { status: r.status, j: j }; }).catch(function(){ return { status: r.status, j: null }; });
-    }).then(function(res){
+    setStatus('amber', 'Reviewing document with ' + _apiProviderLabel(provider) + ' — this takes 1–2 minutes...');
+    var _lp = _buildLivePrompt();
+    _aiCall(provider, key, model, { system: _lp.system, user: _lp.messages[0].content, maxTokens: _lp.max_tokens }).then(function(res){
       if(res.status !== 200){
         fail((res.j && res.j.error && res.j.error.message) ? res.j.error.message : ('HTTP ' + res.status));
         return;
@@ -2878,6 +3090,7 @@ window.FinanceView = (function(){
       // Record the model + token usage for the cost line (carried into the live case + its archive).
       var usage = (res.j && res.j.usage) || {};
       report._liveModel = model;
+      report._liveProvider = provider;
       report._liveUsage = { input_tokens: usage.input_tokens || 0, output_tokens: usage.output_tokens || 0 };
       _installLiveCase(report);
     }).catch(function(){ fail('network blocked'); });
@@ -3295,25 +3508,12 @@ window.FinanceView = (function(){
 
   var RECIPE_SYSTEM = 'You are a Shari\'ah compliance analyst. NEVER INVENT: every quote must be copied character-for-character from the provided DOCUMENT; every claim must trace to the DOCUMENT, the provided clauses, or the named standards. If unsure, mark it uncertain rather than guess. Scope: AAOIFI + CBUAE standards as adopted in the UAE. Tradition: Sunni. School: Maliki. Perspective: the financing bank. Respond with ONLY raw JSON matching the requested shape.';
 
-  // One browser-direct POST to Anthropic; resolves { status, j }. Rejects { reason } on network failure.
+  // One browser-direct POST to the chosen provider (via _aiCall); resolves { status, j }. Rejects { reason } on network failure.
   function _pipeApiCall(key, model, promptText, maxTokens, tools, toolChoice){
-    var body = { model: model, max_tokens: maxTokens, temperature: 0, messages: [{ role: 'user', content: promptText }] };
-    body.system = tools
+    var system = tools
       ? RECIPE_SYSTEM.replace('Respond with ONLY raw JSON matching the requested shape.', 'Return your answer through the provided tool, matching its schema exactly.')
       : RECIPE_SYSTEM;
-    if(tools){ body.tools = tools; if(toolChoice) body.tool_choice = toolChoice; }
-    return fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': key,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    }).then(function(r){
-      return r.json().then(function(j){ return { status: r.status, j: j }; }).catch(function(){ return { status: r.status, j: null }; });
-    }, function(){ throw { reason: 'network blocked' }; });
+    return _aiCall(_apiProviderGet(), key, model, { system: system, user: promptText, maxTokens: maxTokens, tools: tools, toolChoice: toolChoice });
   }
   function _pipeReason(err){
     if(err && err.reason)  return String(err.reason).slice(0, 140);
@@ -3405,7 +3605,7 @@ window.FinanceView = (function(){
             h += '<span class="fin-pipe-clause-quote"' + (c.quoted_text ? ' title="' + _esc(c.quoted_text) + '"' : '') + '>&ldquo;' + _esc(_clip(c.quoted_text, 120)) + '&rdquo;</span>'
                + (c.unverified_quote
                     ? '<span class="fin-pipe-clause-flag">unverified quote</span>'
-                    : '<span class="fin-pipe-clause-ok">&#10003; verbatim</span>');
+                    : '<span class="fin-pipe-clause-ok">&#10003; verbatim' + (c.loose_match ? ' (joined)' : '') + '</span>');
           }
           h += '</div>';
         });
@@ -3415,6 +3615,23 @@ window.FinanceView = (function(){
       }
     }
     return h;
+  }
+  // Live-run timer — measured wall-clock time only. M:SS from whole seconds.
+  function _fmtMSS(sec){ sec = Math.max(0, sec | 0); var s = sec % 60; return Math.floor(sec / 60) + ':' + (s < 10 ? '0' : '') + s; }
+  function _runTimerSecs(p){ return Math.round(((p.endedAt || Date.now()) - p.startedAt) / 1000); }
+  function _runTimerClass(p){ return 'fin-run-timer' + ((p && p.startedAt) ? (' ' + (p.timerState || 'running')) : ''); }
+  function _runTimerText(p){ return (p && p.startedAt) ? ('⏱ ' + _fmtMSS(_runTimerSecs(p))) : ''; }
+  // Paint the timer into its own span (never into #fin-live-status, which _pipePaint rewrites).
+  function _runTimerPaint(){
+    var el = document.getElementById('fin-run-timer'); if(!el) return;
+    el.className = _runTimerClass(_pipe); el.textContent = _runTimerText(_pipe);
+  }
+  function _runTimerStop(state){
+    if(_runTick){ clearInterval(_runTick); _runTick = null; }
+    if(_pipe && _pipe.startedAt && (!_pipe.timerState || _pipe.timerState === 'running')){
+      _pipe.endedAt = Date.now(); _pipe.timerState = state;
+    }
+    _runTimerPaint();
   }
   // Repaint strip + extra block from current _pipe state (during a run, between full _renderReport calls).
   function _pipePaint(){
@@ -3476,6 +3693,20 @@ window.FinanceView = (function(){
         throw { reason: 'the clause response could not be read' };
       }
       var normDoc = _normText((_liveDoc && _liveDoc.text) || '');
+      // Second, looser pass (only when the verbatim pass fails): drop soft hyphens, join words split by a hyphen
+      // at a line break, straighten quotes, then keep letters/digits only — on BOTH sides. `map` points back into
+      // the prepared document text so the console can show what was matched.
+      var _loosePrep = function(s){ return _normText(String(s || '').replace(/­/g, '').replace(/-[ \t]*\r?\n[ \t]*/g, '')); };
+      var _looseStrip = function(s){ var out = '', map = []; for(var i = 0; i < s.length; i++){ var ch = s.charAt(i); if(/[\p{L}\p{N}]/u.test(ch)){ out += ch; map.push(i); } } return { s: out, map: map }; };
+      var _looseDocText = null, _looseDoc = null;
+      var _looseFind = function(rawQuote){
+        var q = _looseStrip(_loosePrep(rawQuote)).s;
+        if(q.length < 20) return null;
+        if(!_looseDoc){ _looseDocText = _loosePrep((_liveDoc && _liveDoc.text) || ''); _looseDoc = _looseStrip(_looseDocText); }
+        var at = _looseDoc.s.indexOf(q);
+        if(at === -1) return null;
+        return _looseDocText.slice(_looseDoc.map[at], _looseDoc.map[at + q.length - 1] + 1);
+      };
       var clauses = parsed.clauses
         .filter(function(c){ return c && (String(c.term || '').trim() || String(c.quoted_text || '').trim()); })
         .slice(0, 15)
@@ -3484,7 +3715,15 @@ window.FinanceView = (function(){
           var noClause    = (c.no_clause === true) || !cleanQuote;
           // VERBATIM GUARD — code-side, not trust: the cleaned quote must actually appear in the document.
           var verified = (!noClause && cleanQuote) ? (normDoc.indexOf(cleanQuote) !== -1) : false;
-          return {
+          var loose = false;
+          if(!verified && !noClause && cleanQuote){
+            var hit = _looseFind(c.quoted_text);
+            if(hit != null){
+              verified = true; loose = true;
+              console.info('Tier 2 loose match — quote: "' + cleanQuote.slice(0, 120) + '" · document: "' + _normText(hit).slice(0, 120) + '"');
+            }
+          }
+          var out = {
             term: String(c.term || '').trim(),
             clause_ref: String(c.clause_ref || '').trim(),
             quoted_text: cleanQuote,
@@ -3492,6 +3731,8 @@ window.FinanceView = (function(){
             no_clause: noClause,
             unverified_quote: (!noClause && cleanQuote) ? !verified : false
           };
+          if(loose) out.loose_match = true;
+          return out;
         });
       var verbatimN = clauses.filter(function(c){ return !c.no_clause && c.quoted_text && !c.unverified_quote; }).length;
       _pipe.tier2 = { clauses: clauses, verbatim_ok: verbatimN };
@@ -3583,6 +3824,16 @@ window.FinanceView = (function(){
   }
   // Every standard code an item cites: the affected_standards codes plus any code written into the
   // principle's own clause_ref / text (the saved reports cite there too, e.g. "SS 27 (Indices…)").
+  // One pattern for every written form: "AAOIFI SS 8 2/2/8", "SS-8", "ss8 clause 3/1" → "SS 8" (clause suffix dropped);
+  // "IFSB-28" → "IFSB 28"; "SG Std" stays "SG Std". A bare "SG" / "CBUAE-SG" maps through _STD_ALIAS.
+  var _CG_CODE_RE = /\b(?:(AAOIFI|CBUAE|IFSB)\s*)?(SS|FAS|GS|SOAA|IFSB|SG)\s*[-–]?\s*(Std|\d+)/gi;
+  function _cgCodesIn(s){
+    s = _normText(s || ''); if(!s) return [];
+    if(/^(?:CBUAE\s*[-–]?\s*)?SG$/i.test(s)) return [_stdCode('CBUAE-SG')];
+    var out = [], m; _CG_CODE_RE.lastIndex = 0;
+    while((m = _CG_CODE_RE.exec(s))){ out.push(m[2].toUpperCase() + ' ' + (/^std$/i.test(m[3]) ? 'Std' : m[3])); }
+    return out;
+  }
   function _cgItemCodes(it){
     var out = [], seen = {};
     function add(c){
@@ -3592,10 +3843,14 @@ window.FinanceView = (function(){
       if(!norm || seen[norm]) return;
       seen[norm] = 1; out.push(code);
     }
-    ((it && it.affected_standards) || []).forEach(function(a){ if(a) add(a.code); });
+    // affected_standards entries: an object (code || standard || id) or a plain string
+    ((it && it.affected_standards) || []).forEach(function(a){
+      if(!a) return;
+      var raw = (typeof a === 'string') ? a : (a.code || a.standard || a.id || '');
+      _cgCodesIn(raw).forEach(add);
+    });
     var p = (it && it.principle) || {};
-    var scan = _normText(p.clause_ref || '') + ' ' + _normText(p.text || '');
-    (scan.match(/\b(?:SS|FAS|GS|SOAA)\s+\d+\b/g) || []).forEach(add);
+    [p.clause_ref, p.text, it && it.issue_summary].forEach(function(s){ _cgCodesIn(s).forEach(add); });
     return out;
   }
   // Quoted spans the item attributes to a standard: straight/smart double-quoted runs inside
@@ -3615,9 +3870,15 @@ window.FinanceView = (function(){
   function _cgGuard(items){
     var C = _cgBuildCorpus();
     var kept = [], dropped = [];
+    // Diagnostics (console only): what the guard compares against, and what each item cites.
+    console.info('FIX-3 diagnostics — ' + Object.keys(C.codes).length + ' loaded standard codes; first 20 of _idx.standard:',
+                 Object.keys(_idx.standard || {}).slice(0, 20));
     (items || []).forEach(function(it){
       var cited = _cgItemCodes(it);
       var title = _normText((it && it.title) || '(untitled finding)');
+      var rawAS = ''; try{ rawAS = JSON.stringify(it && it.affected_standards); }catch(e){ rawAS = String(it && it.affected_standards); }
+      console.info('FIX-3 item "' + title + '" · affected_standards = ' + rawAS + ' · codes: ' +
+                   (cited.length ? cited.map(function(c){ return c + ' ' + (C.codes[_cgNormCode(c)] ? 'KNOWN' : 'UNKNOWN'); }).join(', ') : '(none)'));
       if(!cited.length){ dropped.push({ item: it, title: title, reason: 'no standard citation at all' }); return; }
       var known = cited.filter(function(c){ return !!C.codes[_cgNormCode(c)]; });
       if(!known.length){
@@ -3680,7 +3941,15 @@ window.FinanceView = (function(){
       }
       throw { reason: msg + ' (3 attempts made). Run again or pick a saved case' };
     }
-    var _t3Tool = [{ name:'emit_review', description:'Return the Tier-3 Shari\'ah review as structured JSON.', input_schema:{ type:'object', properties:{ report_id:{type:'string'}, case:{type:'string'}, provenance_statement:{type:'string'}, open_items:{ type:'array', minItems:0, items:{ type:'object', properties:{ from_document:{ type:'object', properties:{ clause_ref:{type:'string'}, quoted_text:{type:'string'} }, required:['quoted_text'] } }, required:['from_document'] } } }, required:['open_items'] } }];
+    var _t3Tool = [{ name:'emit_review', description:'Return the Tier-3 Shari\'ah review as structured JSON.', input_schema:{ type:'object', properties:{ report_id:{type:'string'}, case:{type:'string'}, provenance_statement:{type:'string'}, open_items:{ type:'array', minItems:0, items:{ type:'object', properties:{
+      // Full open-item shape (same keys as _liveExample). A forced tool call returns only what the schema lists,
+      // so title / severity / affected_standards / principle must be here or FIX-3 drops every finding as uncited.
+      id:{type:'string'}, severity:{ type:'string', enum:['high','medium','low'] }, title:{type:'string'},
+      from_document:{ type:'object', properties:{ case:{type:'string'}, clause_ref:{type:'string'}, quoted_text:{type:'string'} }, required:['quoted_text'] },
+      affected_standards:{ type:'array', items:{ type:'object', properties:{ code:{type:'string'}, name:{type:'string'}, status:{type:'string'} }, required:['code'] } },
+      principle:{ type:'object', properties:{ text:{type:'string'}, clause_ref:{type:'string'}, tag:{type:'string'} } },
+      issue_summary:{type:'string'}
+    }, required:['from_document','title','severity','affected_standards','principle'] } } }, required:['open_items'] } }];
     // FIX-4 — rules_verdicts is added to the schema ONLY when rules are in scope, so a run with no
     // rules sends byte-identical tool JSON to before.
     if(fix4Rules.length){
@@ -3714,6 +3983,9 @@ window.FinanceView = (function(){
         console.error('Tier 3 — could not read the AI response. Raw:', res.j);
         return _t3RetryOrFail('could not read the AI response.');
       }
+      // Raw Tier-3 items, as the model returned them, kept for diagnosis before any filter or guard runs.
+      var _t3Raw = []; try{ _t3Raw = JSON.parse(JSON.stringify(Array.isArray(report.open_items) ? report.open_items : [])); }catch(e){ _t3Raw = []; }
+      if(_pipe) _pipe.tier3 = { rawItems: _t3Raw };
       _t3EnforceQuotes(report, fullPool);   // overwrite each quote with the Tier-2 verbatim text
       var rawItems = Array.isArray(report.open_items) ? report.open_items : [];
       var items = rawItems.filter(function(it){ return it && it.from_document && String(it.from_document.quoted_text || '').trim(); });
@@ -3728,6 +4000,11 @@ window.FinanceView = (function(){
       _cgReport(_cgRes);
       report.open_items      = _cgRes.kept;
       report._citationDropped = _cgRes.dropped.length;
+      // Dropped findings stay visible: listed under the open items as NEEDS MANUAL REFERENCE (no determination box).
+      report._manualRef = _cgRes.dropped.map(function(d){
+        var fd = (d.item && d.item.from_document) || {};
+        return { title: d.title, quoted_text: fd.quoted_text || '', clause_ref: fd.clause_ref || '', cited: _cgItemCodes(d.item), reason: d.reason };
+      });
       // FIX-4 — reconcile the rule verdicts against the fixed list built in code. Unknown rule ids
       // are dropped, skipped rules are filled in as UNCERTAIN. No rules in scope → nothing attached
       // and the report object is exactly what it was before FIX-4.
@@ -3739,13 +4016,14 @@ window.FinanceView = (function(){
       } else {
         delete report.rules_verdicts;
       }
-      _pipe.tier3 = { report: report };
+      _pipe.tier3 = { report: report, rawItems: _t3Raw };
       var u = (res.j && res.j.usage) || {};
       _pipe.usage.push({ tier: 'tier3', model: model, input_tokens: u.input_tokens || 0, output_tokens: u.output_tokens || 0 });
       // Combined cost line — sum usage across all three tiers, carried into the live case + its archive.
       var totalIn = 0, totalOut = 0;
       _pipe.usage.forEach(function(x){ totalIn += x.input_tokens || 0; totalOut += x.output_tokens || 0; });
       report._liveModel = model;
+      report._liveProvider = _apiProviderGet();
       report._liveUsage = { input_tokens: totalIn, output_tokens: totalOut };
       report._liveTiers = 3;
       return _t3Deliver(report, key, model);   // FIX-5 aware; with the flag off this installs immediately
@@ -3833,6 +4111,10 @@ window.FinanceView = (function(){
     var model = _apiModelGet();   // captured at request time so the cost line matches what was sent
     var btn = document.getElementById('fin-live-run');
     _pipe = { doc: _liveDoc, tier1: null, tier2: null, tier3: null, usage: [], error: null, errorTier: 0, tier2Notice: null, tier3Notice: null, scan: null };
+    _pipe.startedAt = Date.now(); _pipe.timerState = 'running';
+    if(_runTick) clearInterval(_runTick);
+    _runTick = setInterval(_runTimerPaint, 1000);
+    _runTimerPaint();
     // FIX-2 — deterministic code scan runs BEFORE any API call; it fixes the term universe.
     _pipe.scan = { candidates: _tsScanDocument(_liveDoc.text || '') };
     console.info('FIX-2 term pre-scan — ' + _pipe.scan.candidates.length + ' candidate term(s) found by code scan:',
@@ -3842,10 +4124,11 @@ window.FinanceView = (function(){
     _pipeTier1(key, model)
       .then(function(){ return _pipeTier2(key, model); })   // Tier 2 chains on Tier 1's terms
       .then(function(){ return _pipeTier3(key, model); })   // Tier 3 chains on Tier 2's clauses → installs the case
-      .then(function(){ if(btn) btn.disabled = false; })
+      .then(function(){ _runTimerStop('done'); if(btn) btn.disabled = false; })
       .catch(function(err){
         if(_pipe){ _pipe.error = _pipeReason(err); _pipe.errorTier = (err && err.tier) || 1; }
         _pipePaint();
+        _runTimerStop('failed');
         if(btn) btn.disabled = false;
       });
   }
@@ -3875,25 +4158,30 @@ window.FinanceView = (function(){
     // line when the sheet is narrow, instead of overlapping. All three are print-hidden as before.
     // Shown for every selected case (saved + live); hidden only in the blank-start state.
     // On a LIVE case SIGN OFF stays disabled (with a grey hint) until every open item has a stance.
+    var _actH = '', _cselH = '';
     if(_repFabIdx !== null){
       var isLiveRep  = (_repFabIdx === 'live');
       var allDecided = isLiveRep ? _liveAllDecided() : true;
-      h += '<div class="fin-rep-actions">';
-      h += '<button type="button" id="fin-rep-archive" class="fin-rep-print"'
+      _actH += '<div class="fin-rep-actions">';
+      _actH += '<button type="button" id="fin-rep-archive" class="fin-rep-print"'
          + ((isLiveRep && !allDecided) ? ' disabled' : '') + '>SIGN OFF &amp; ARCHIVE</button>';
       // FIX-6 — EXPORT: opens the report ALONE in a clean window and calls the print dialog,
       // so the user can "Save as PDF". Self-contained: no server, no library, no network.
-      h += '<button type="button" id="fin-rep-export" class="fin-rep-print">EXPORT</button>';
-      h += '<button type="button" id="fin-rep-print" class="fin-rep-print">PRINT</button>';
+      _actH += '<button type="button" id="fin-rep-export" class="fin-rep-print">EXPORT</button>';
+      _actH += '<button type="button" id="fin-rep-print" class="fin-rep-print">PRINT</button>';
       // Hint / confirmation lines take their own full-width line beneath the buttons.
       if(isLiveRep){
-        if(!allDecided) h += '<span class="fin-rep-signoff-hint">Decide all open items to sign off</span>';
-        h += '<span id="fin-rep-signedoff" class="fin-rep-signedoff" style="display:none">Signed off — stored in ARCHIVE</span>';
+        if(!allDecided) _actH += '<span class="fin-rep-signoff-hint">Decide all open items to sign off</span>';
+        _actH += '<span id="fin-rep-signedoff" class="fin-rep-signedoff" style="display:none">Signed off — stored in ARCHIVE</span>';
       } else {
-        h += '<span id="fin-rep-archived" class="fin-rep-archived" style="display:none">Archived &#10003;</span>';
+        _actH += '<span id="fin-rep-archived" class="fin-rep-archived" style="display:none">Archived &#10003;</span>';
       }
-      h += '</div>';
+      _actH += '</div>';
     }
+    // Header row (CASE dropdown left, buttons right) is filled in at this spot once the dropdown is built below.
+    // ZONE 1 — APP (header row, live strip, red banner, run summary); closed after the run summary below.
+    h += '<section class="fin-zone fin-zone-app"><span class="fin-zone-tag">App</span>';
+    h += '<!--fin-rep-head-->';
 
     var ac = _activeCase();
     // LIVE-REVIEW strip — shown whenever an extracted PDF is loaded; sits above the CASE dropdown.
@@ -3904,12 +4192,14 @@ window.FinanceView = (function(){
          + '<button type="button" id="fin-live-run" class="fin-live-run"'+(hasKey ? '' : ' disabled')+'>RUN LIVE REVIEW →</button>'
          + (hasKey ? '' : '<span class="fin-live-hint">Connect your API key in SETTINGS first</span>')
          + '<span class="fin-live-status" id="fin-live-status">'+_pipeStripHtml(_pipe)+'</span>'
+         + '<span id="fin-run-timer" class="'+_runTimerClass(_pipe)+'">'+_esc(_runTimerText(_pipe))+'</span>'
          + '</div>';
       // Tiered-pipeline extra block — Tier-1 term chips + "next build step" note, painted from _pipe.
       h += '<div class="fin-pipe-extra" id="fin-pipe-extra">'+_pipeExtraHtml(_pipe)+'</div>';
       // Cost/usage line for the completed live run — grey, small; sits directly under the strip.
       // Only on the LIVE report view, so it stays with the live case (and its archive), not saved cases.
-      var costLine = (_repFabIdx === 'live') ? _liveCostLine(_liveCase) : '';
+      // Runs with a measured time get the RUN SUMMARY card under the red banner instead of this grey line.
+      var costLine = (_repFabIdx === 'live' && !(_liveCase && typeof _liveCase._liveSeconds === 'number')) ? _liveCostLine(_liveCase) : '';
       if(costLine) h += '<div class="fin-live-cost" id="fin-live-cost">'+_esc(costLine)+'</div>';
     }
     // CASE selector — REPORT lists ONLY the three rich compliance reports (the five demo cases are unreachable here).
@@ -3934,11 +4224,14 @@ window.FinanceView = (function(){
         csel += '<option value="live"'+((_repFabIdx === 'live') ? ' selected' : '')+'>'+_esc(_liveLabel())+'</option>';
       }
       csel += '</select></div>';
-      h += csel;
+      _cselH = csel;
     }
+    // ONE header row: CASE + dropdown on the left, SIGN OFF / EXPORT / PRINT (+ hint line) on the right; wraps, never overlaps.
+    h = h.replace('<!--fin-rep-head-->', (_cselH || _actH) ? ('<div class="fin-rep-head">' + _cselH + _actH + '</div>') : '');
 
     // ── Blank-start state — live doc loaded, nothing run/selected yet: empty body, just a grey prompt line. ──
     if(_repFabIdx === null){
+      h += '</section>';   // close ZONE 1
       h += '<div class="fin-live-blank" style="color:#5A5A5A;font-size:13px;margin:18px 0 0">Run the live review, or pick a saved case from the dropdown.</div>';
       h += '</div>';   // close .fin-report
       canvas.style.height = '';
@@ -3977,11 +4270,31 @@ window.FinanceView = (function(){
       var sevC = { high:0, medium:0, low:0 };
       fitems.forEach(function(oi){ if(sevC[oi.severity] != null) sevC[oi.severity]++; });
 
-      // Live-case guardrail banner — sits ABOVE the ILLUSTRATIVE banner.
-      if(isLive){
-        h += '<div class="fin-live-banner">AI-GENERATED — UNVERIFIED. Produced live by Claude. Not reviewed, not a ruling.</div>';
+      // ONE guardrail banner (red) for every case — live names the provider, saved cases say demonstration mapping.
+      h += '<div class="fin-live-banner">AI-GENERATED — UNVERIFIED. '
+         + (isLive ? ('Produced live by ' + _esc(_apiProviderLabel(fab._liveProvider || 'anthropic')) + '.') : 'Demonstration mapping.')
+         + ' Not reviewed, not a ruling, not scholar-certified.</div>';
+      // RUN SUMMARY — measured values stored on the live report (time, provider-reported tokens, price-table cost, pages).
+      if(isLive && typeof fab._liveSeconds === 'number'){
+        var _n = function(x){ return Number(x || 0).toLocaleString('en-US'); };
+        var _u = fab._liveUsage || {}, _tin = _u.input_tokens || 0, _tout = _u.output_tokens || 0;
+        var _tok = (typeof fab._liveTokens === 'number') ? fab._liveTokens : (_tin + _tout);
+        var _pr = LIVE_MODEL_PRICING[fab._liveModel || ''];
+        var _cost = _pr ? ('≈ $' + ((_tin / 1e6) * _pr.in + (_tout / 1e6) * _pr.out).toFixed(2) + ' USD') : 'see provider account';
+        var _fig = function(k, v){ return '<div><div class="k">' + k + '</div><div class="v">' + _esc(v) + '</div></div>'; };
+        h += '<div class="fin-run-summary">'
+           + _fig('Time', _fmtMSS(fab._liveSeconds))
+           + _fig('Tokens', 'about ' + _n(_tok))
+           + _fig('Cost', _cost)
+           + _fig('Document', (fab._livePages != null ? _n(fab._livePages) : '—') + ' pages')
+           + '<div class="line">' + _esc((fab._liveName || 'document') + ' · ' + _n(fab._liveChars) + ' characters · '
+             + _modelLabel(fab._liveModel || '') + ' (' + _apiProviderLabel(fab._liveProvider || 'anthropic') + ') · '
+             + (fab._liveTiers || 3) + ' tiers · ' + _n(_tin) + ' in + ' + _n(_tout) + ' out tokens') + '</div>'
+           + '</div>';
       }
-      h += '<div class="fin-rep-demo">'+_esc(fmeta.banner || 'ILLUSTRATIVE')+'</div>';
+      h += '</section>';   // close ZONE 1 — APP
+      // ZONE 2 — COMPLIANCE FRAMEWORK (case box, title, Provenance)
+      h += '<section class="fin-zone fin-zone-fw"><span class="fin-zone-tag">Compliance framework</span>';
       // Business-case header — case, exhibit reference, institution (— when unnamed). source_url on its own line.
       h += '<div class="fin-rep-casebox">'
          + '<div class="fin-rep-caserow"><span class="fin-rep-casek">Business case</span><span class="fin-rep-casev">'+_esc(_repCaseName(fab))+'</span></div>'
@@ -4010,6 +4323,9 @@ window.FinanceView = (function(){
          + 'Each open item ties a clause in this document to a specific standard parameter and states the potential issue. '
          + 'Standards not yet processed are flagged for manual reference.</p>';
 
+      h += '</section>';   // close ZONE 2
+      // ZONE 3 — FOR THE SCHOLAR (open items + Needs manual reference)
+      h += '<section class="fin-zone fin-zone-sch"><span class="fin-zone-tag">For the scholar</span>';
       // Section 2 — Open items (all rows: OI-n — title + severity chip + saved-stance dot).
       h += '<h2 class="fin-rep-h2">2 · Open items for the scholar</h2>';
       if(fitems.length){
@@ -4029,12 +4345,50 @@ window.FinanceView = (function(){
         // same UNVERIFIED caveat that applies to every other live finding.
         h += '<div class="fin-rep-open-none">This review found no open items — no clause in the document raised a Shari\'ah issue against the standards in scope. Not a certification of compliance; the review itself is unverified.</div>';
       }
-      // FIX-3 — dropping is never silent: one plain grey line when the citation guard removed findings.
-      var _cgN = Number(fab._citationDropped || 0);
-      if(_cgN > 0){
-        h += '<div class="fin-rep-cg-dropped">'+_cgN+' finding'+(_cgN === 1 ? '' : 's')+' dropped — cited standard could not be verified</div>';
+      // FIX-3 — dropping is never silent: findings the citation guard removed are listed for manual reference.
+      // Not open items: no determination box, not counted in "N open items". Inside .fin-report, so the archive keeps it.
+      // Rule checklist ↔ open items: each NON-COMPLIANT rule is matched to an open item by clause ref
+      // (_normText equal) or by quote (_normQuote, either contains the other). Unmatched rules are listed for
+      // manual reference — never turned into open items (only a scholar raises those).
+      var _ruleOI = {};
+      var _rv = Array.isArray(fab.rules_verdicts) ? fab.rules_verdicts : [];
+      if(_rv.some(function(r){ return r && r.verdict === 'NON_COMPLIANT'; })){
+        var _fixedById = {}; _fix4AllRules().forEach(function(fr){ _fixedById[fr.rule_id] = fr; });
+        if(!Array.isArray(fab._manualRef)) fab._manualRef = [];
+        _rv.forEach(function(r){
+          if(!r || r.verdict !== 'NON_COMPLIANT') return;
+          var hit = _ruleMatchItem(r, fitems);
+          _ruleOI[r.rule_id] = hit;
+          if(hit === -1 && !fab._manualRef.some(function(m){ return m.rule_id === r.rule_id; })){
+            var fr = _fixedById[r.rule_id] || {};
+            fab._manualRef.push({ rule_id: r.rule_id, title: r.rule_id + ' — ' + (fr.gloss || fr.standard || r.code || ''),
+                                  quoted_text: r.document_quote || '', clause_ref: '', cited: r.code ? [r.code] : [],
+                                  reason: 'rule marked NON-COMPLIANT by the review; no open item raised' });
+          }
+        });
+      }
+      var _mr = Array.isArray(fab._manualRef) ? fab._manualRef : [];
+      if(_mr.length){
+        var _mrWhy = function(r){
+          r = String(r || '');
+          if(/^no standard citation/i.test(r)) return 'no standard cited';
+          if(/^cited standard not in the loaded standards/i.test(r)) return 'standard not loaded in this app';
+          if(/^quoted standard text found nowhere/i.test(r)) return 'quoted standard text not found in the loaded standards';
+          return r;
+        };
+        h += '<div class="fin-rep-manual"><h2 class="fin-rep-h2 fin-rep-manual-title">Needs manual reference ('+_mr.length+')</h2>'
+           + '<div class="fin-rep-meta">Standards not yet processed in this app are flagged for manual reference — these findings could not be checked against a loaded standard.</div>';
+        _mr.forEach(function(m){
+          h += '<div class="fin-rep-manual-row"><div class="fin-fab-title">'+_esc(m.title || '(untitled finding)')+'</div>'
+             + (m.quoted_text ? '<div class="fin-rep-quote">'+_esc(m.quoted_text)+'</div>' : '')
+             + '<div class="fin-fab-sub">'+(m.clause_ref ? _esc(m.clause_ref)+' · ' : '')+'cites: '+_esc((m.cited && m.cited.length) ? m.cited.join(', ') : 'none')+' · '+_esc(_mrWhy(m.reason))+'</div></div>';
+        });
+        h += '</div>';
       }
 
+      h += '</section>';   // close ZONE 3
+      // ZONE 2 (continued) — COMPLIANCE FRAMEWORK (Rule checklist + 3 · Checklist)
+      h += '<section class="fin-zone fin-zone-fw"><span class="fin-zone-tag">Compliance framework</span>';
       // FIX-4 — Rule checklist: one row per fixed rule, verdict badge, clause ref, and the document
       // quote where the model gave one. Absent for saved cases and for any run with no rules in scope,
       // so the existing sections render exactly as before.
@@ -4049,16 +4403,13 @@ window.FinanceView = (function(){
         var _nt = Number(fab._rulesNotTested || 0), _rd = Number(fab._rulesDropped || 0);
         if(_nt > 0) h += '<div class="fin-rep-rule-note">'+_nt+' further rule'+(_nt === 1 ? '' : 's')+' in scope were not tested this run (prompt-size cap).</div>';
         if(_rd > 0) h += '<div class="fin-rep-rule-note">'+_rd+' verdict'+(_rd === 1 ? '' : 's')+' dropped — cited a rule id that is not in the fixed list.</div>';
-        h += '<table class="fin-rep-table fin-rep-rules"><thead><tr><th>Rule</th><th>Standard</th><th>Result</th><th>Document quote</th></tr></thead><tbody>';
+        // RULE | STANDARD | RESULT — each row opens its detail (rule text, document quote, open-item link) in the panel.
+        h += '<table class="fin-rep-table fin-rep-rules"><thead><tr><th>Rule</th><th>Standard</th><th>Result</th></tr></thead><tbody>';
         _rules.forEach(function(r){
-          var cls = (r.verdict === 'COMPLIANT') ? 'fin-rep-ok'
-                  : (r.verdict === 'NON_COMPLIANT') ? 'fin-fab-badge-amber' : 'fin-fab-badge-grey';
-          var word = (r.verdict === 'COMPLIANT') ? 'COMPLIANT'
-                   : (r.verdict === 'NON_COMPLIANT') ? 'NON-COMPLIANT' : 'UNCERTAIN';
-          h += '<tr class="fin-rep-row"><td class="fin-rep-num">'+_esc(r.rule_id)+'</td>'
-             + '<td class="fin-rep-check">'+_esc(r.code || '')+' clause '+_esc(r.clause || '')+'</td>'
-             + '<td class="fin-rep-stat"><span class="fin-rep-status '+cls+'">'+word+'</span></td>'
-             + '<td class="fin-rep-check">'+(r.document_quote ? '&#8220;'+_esc(r.document_quote)+'&#8221;' : '<span class="fin-rep-rule-none">—</span>')+'</td></tr>';
+          var rv = _ruleVerdictChip(r.verdict);
+          h += '<tr class="fin-rep-row fin-rule-row'+(_ruleSel === r.rule_id ? ' sel' : '')+'" data-rule-id="'+_esc(r.rule_id)+'"><td class="fin-rep-num">'+_esc(r.rule_id)+'</td>'
+             + '<td class="fin-rep-check">'+_esc(_stdLoadedId(r.code))+'</td>'
+             + '<td class="fin-rep-stat"><span class="fin-rep-status '+rv.cls+'">'+rv.word+'</span></td></tr>';
         });
         h += '</tbody></table></div>';
       }
@@ -4112,6 +4463,7 @@ window.FinanceView = (function(){
            + '<td class="fin-rep-stat"><span class="fin-rep-status fin-fab-badge-grey">OUT OF SCOPE FOR THIS JURISDICTION</span></td></tr>';
       });
       h += '</tbody></table>';
+      h += '</section>';   // close ZONE 2 (continued)
       // Sign-off + footer.
       h += '<div class="fin-rep-signoff">'
          + '<div class="fin-rep-sig"><div class="fin-rep-sigline"></div><div class="fin-rep-siglabel">Scholar 1</div></div>'
@@ -4127,9 +4479,10 @@ window.FinanceView = (function(){
       return;
     }
 
+    h += '</section>';   // close ZONE 1 (older demo-case layout below is not zoned)
     // Report head — banner shows the case's real-world notice when present, else the demonstration line.
-    var bannerText = (ac && ac.real_world_notice) ? ac.real_world_notice : 'DEMONSTRATION REPORT — ILLUSTRATIVE MAPPING, NOT A RULING. NOT SCHOLAR-CERTIFIED.';
-    h += '<div class="fin-rep-demo">'+_esc(bannerText)+'</div>';
+    // ONE guardrail banner (red), same wording as the saved compliance reports.
+    h += '<div class="fin-live-banner">AI-GENERATED — UNVERIFIED. Demonstration mapping. Not reviewed, not a ruling, not scholar-certified.</div>';
     var dateStr = ''; try { dateStr = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }); } catch(e){ dateStr = ''; }
     // Business-case header — identifies which case this report covers; fields read from the active case.
     var caseTitle = (ac && ac.title)       ? ac.title       : 'Letter of Guarantee (Kafalah) facility';
@@ -6262,6 +6615,53 @@ window.FinanceView = (function(){
        + '</div>';
     return h;
   }
+  // ── Rule checklist helpers ──
+  function _ruleVerdictChip(v){
+    return (v === 'COMPLIANT') ? { cls:'fin-rep-ok', word:'COMPLIANT' }
+         : (v === 'NON_COMPLIANT') ? { cls:'fin-fab-badge-amber', word:'NON-COMPLIANT' } : { cls:'fin-fab-badge-grey', word:'UNCERTAIN' };
+  }
+  // A rule's standard code written exactly as the loaded standard id reads ("SS3" → "SS 3"); unchanged when not loaded.
+  function _stdLoadedId(code){
+    var n = _cgNormCode(code || ''); if(!n) return code || '';
+    var keys = Object.keys(_idx.standard || {});
+    for(var i = 0; i < keys.length; i++){ if(_cgNormCode(keys[i]) === n) return keys[i]; }
+    return code || '';
+  }
+  // The open item a rule points at: same clause ref (_normText) or quotes that contain one another (_normQuote). -1 = none.
+  function _ruleMatchItem(r, items){
+    var rc = _normText(r.clause_ref || r.clause || ''), rq = _normQuote(r.document_quote || '');
+    var hit = -1;
+    (items || []).forEach(function(it, i){
+      if(hit !== -1) return;
+      var fd = (it && it.from_document) || {};
+      var ic = _normText(fd.clause_ref || ''), iq = _normQuote(fd.quoted_text || '');
+      if((rc && ic && rc === ic) || (rq && iq && (iq.indexOf(rq) !== -1 || rq.indexOf(iq) !== -1))) hit = i;
+    });
+    return hit;
+  }
+  // Panel card for one rule-checklist row (same section styling as an open item's card).
+  function _ruleHubCard(r, items){
+    var rv = _ruleVerdictChip(r.verdict);
+    var fixed = null; _fix4AllRules().forEach(function(fr){ if(!fixed && fr.rule_id === r.rule_id) fixed = fr; });
+    var sid = _stdLoadedId(r.code), srow = _idx.standard[sid] || {};
+    var stdTitle = srow.title || srow.name || (fixed && fixed.standard) || '';
+    var h = '<div class="fin-hub-head"><span class="fin-hub-title">RULE '+_esc(r.rule_id)+' · <span class="fin-rep-status '+rv.cls+'">'+rv.word+'</span></span></div>';
+    h += '<div class="fin-hub-sec">Standard</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(sid)+(stdTitle ? ' — '+_esc(stdTitle) : '')+'</span></div>';
+    h += '<div class="fin-hub-sec">The standard says</div>';
+    var rt = r.rule_text || (fixed && fixed.quote) || '';
+    h += rt ? '<div class="fin-hub-field"><span class="fin-hub-v">'+_esc(rt)+'</span></div>' : '<div class="fin-hub-hint">No rule text in the fixed rule list.</div>';
+    if(r.clause) h += '<div class="fin-fab-clausetag">'+_esc(sid)+' clause '+_esc(r.clause)+'</div>';
+    h += '<div class="fin-hub-sec">From the document</div>';
+    if(r.document_quote){
+      var found = (_liveDoc && _liveDoc.text) ? _docFindRange(_liveDoc.text, r.document_quote) : null;
+      if(found) h += '<div class="fin-rep-quote fin-rep-quote-jump" data-q="'+_esc(r.document_quote)+'">'+_esc(r.document_quote)+'<span class="fin-doc-jump-tag">→ open in document</span></div>';
+      else      h += '<div class="fin-rep-quote">'+_esc(r.document_quote)+'</div>';
+    } else h += '<div class="fin-hub-hint">No document quote for this rule</div>';
+    var oi = _ruleMatchItem(r, items);
+    if(oi !== -1) h += '<div style="margin-top:10px"><span class="fin-rule-oi-link" data-goto-oi="'+oi+'">→ open item '+_esc((items[oi] && items[oi].id) || ('OI-' + (oi + 1)))+'</span></div>';
+    else h += '<div class="fin-rule-oi-none" style="margin-top:10px">No open item raised for this clause'+(r.verdict === 'NON_COMPLIANT' ? ' — listed under Needs manual reference' : '')+'</div>';
+    return h;
+  }
   function _renderHub(){
     if(!_mounted) return;
     var hub = document.getElementById('finance-hub'); if(!hub) return;
@@ -6272,7 +6672,10 @@ window.FinanceView = (function(){
         var fitems = (frep && frep.open_items) || [];
         var flabel = (_repFabIdx === 'live') ? ((frep && frep._liveNum) ? frep._liveNum : 'LIVE') : (frep && frep.exhibit ? ('Ex ' + frep.exhibit) : 'FAB report');
         var frh;
-        if(_fabSel === null || !fitems[_fabSel]){
+        var _selRule = _ruleSel ? (((frep && frep.rules_verdicts) || []).filter(function(r){ return r && r.rule_id === _ruleSel; })[0] || null) : null;
+        if(_selRule){
+          frh = _ruleHubCard(_selRule, fitems);
+        } else if(_fabSel === null || !fitems[_fabSel]){
           frh = '<div class="fin-rep-hub-count">'+fitems.length+' open item'+(fitems.length === 1 ? '' : 's')+' — '+_esc(flabel)+'</div>'
               + '<div class="fin-hub-hint">Select an open item to inspect it.</div>';
         } else {
@@ -7195,7 +7598,14 @@ window.FinanceView = (function(){
     // Close any open filter panel when clicking outside the toolbar.
     _docClick = function(){ var tb=document.getElementById('finance-toolbar'); if(tb) tb.querySelectorAll('.bv-dd-panel.open').forEach(function(p){ p.classList.remove('open'); }); };
     document.addEventListener('click', _docClick);
-    _docKey = function(e){ if(e.key === 'Escape'){ document.querySelectorAll('.bv-dd-panel.open').forEach(function(p){ p.classList.remove('open'); }); } };
+    _docKey = function(e){ if(e.key === 'Escape'){
+      document.querySelectorAll('.bv-dd-panel.open').forEach(function(p){ p.classList.remove('open'); });
+      if(_mode === 'report' && _ruleSel){   // close a rule card → back to the open-items count
+        _ruleSel = null;
+        document.querySelectorAll('#finance-canvas .fin-rule-row.sel').forEach(function(x){ x.classList.remove('sel'); });
+        _renderHub();
+      }
+    } };
     document.addEventListener('keydown', _docKey);
 
     _load().then(function(res){
@@ -7204,6 +7614,7 @@ window.FinanceView = (function(){
       _ingest(res.data);
       _vetInit();               // restore report-vetting scope from localStorage (or default: all standards)
       _archInit();              // restore signed-off report archive from localStorage (or empty)
+      _liveRestore();           // restore the last live case (until archived; 7-day limit) — no document text
       _schInit();               // restore FAB scholar determinations from localStorage (or empty)
       _buildToolbar();
       _applyModeAttr();
@@ -7214,6 +7625,7 @@ window.FinanceView = (function(){
   function unmount(){
     if(!_mounted) return;
     _mounted = false;
+    if(_runTick){ clearInterval(_runTick); _runTick = null; }
     if(_docClick){ document.removeEventListener('click', _docClick); _docClick = null; }
     if(_docKey){ document.removeEventListener('keydown', _docKey); _docKey = null; }
     // The hub lives inside zoneC and is cleared with it below; no floating nodes remain.

@@ -531,6 +531,7 @@ svg.fin-concept-arcs{ opacity:0.8; }
    Both carry solid backings and sit above the era bands so no title/label shows through. */
 .fin-qpill-wrap{ position:absolute; left:500px; transform:translate(-50%,-50%);
   display:inline-flex; align-items:center; gap:7px; z-index:7; white-space:nowrap; }
+.fin-qpill-name{ position:absolute; left:100%; top:50%; transform:translateY(-50%); margin-left:10px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.10em; text-transform:uppercase; white-space:nowrap; max-width:260px; overflow:hidden; text-overflow:ellipsis; cursor:pointer; }
 
 /* Fixed gold header pill — the page's only glow (gold is reserved for the Qur'an pill + spine). */
 .fin-qpill{ font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:.14em;
@@ -3300,3 +3301,164 @@ body.fin-fullscreen #usul-fs-logo{
   color:#6B7B8C !important; background:#F1EEE6 !important;
   border:1px solid #C9C2B2 !important; box-shadow:none !important;
 }
+#finance-toolbar{ position:relative; z-index:20; }
+/* Live-run timer — right end of the live strip */
+.fin-run-timer{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.08em; margin-left:auto; white-space:nowrap; }
+.fin-run-timer.running{ color:#B8860B; }
+.fin-run-timer.done{ color:#0E6B63; }
+.fin-run-timer.failed{ color:#B23A3A; }
+/* NEEDS MANUAL REFERENCE — findings the citation guard dropped; listed, not open items (no buttons) */
+.fin-rep-manual{ margin-top:18px; }
+#finance-view .fin-rep-manual-title{ color:#B8860B !important; }
+.fin-rep-manual-row{ padding:8px 8px 8px 12px; border-radius:3px; border-left:3px solid #B8860B; margin:8px 0; font-size:14px; line-height:1.65; color:#22303F; }
+/* Rule checklist ↔ open items — line under each NON-COMPLIANT rule */
+.fin-rep-rule-sub td{ padding-top:0 !important; border-top:none !important; font-size:12.5px; }
+.fin-rule-oi-link{ color:#0E6B63; cursor:pointer; text-decoration:underline; }
+.fin-rule-oi-none{ color:#B8860B; }
+/* RUN SUMMARY card — live report, under the red banner */
+.fin-run-summary{ border:2px solid #0E6B63; border-radius:8px; padding:14px 18px; margin:12px 0 18px; background:#F3FAF8; display:flex; gap:28px; flex-wrap:wrap; }
+.fin-run-summary .k{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#0E6B63; }
+.fin-run-summary .v{ font-size:28px; font-weight:700; color:#22303F; line-height:1.1; }
+.fin-run-summary .line{ flex-basis:100%; font-size:12.5px; color:#5B6B7C; margin-top:6px; }
+/* Rule checklist rows — clickable; selected row matches a selected open item */
+.fin-rule-row{ cursor:pointer; }
+.fin-rule-row:hover td{ background:#F6F3EC; }
+.fin-report .fin-rule-row.sel td{ background:#FAF8F3; box-shadow:inset 0 1px 0 #D8D2C4, inset 0 -1px 0 #D8D2C4; }
+
+/* ════════════════════════════════════════════════════════════════════════
+   FONT SYSTEM (24 Oct 2026) — three families, one per category, across the USUL view.
+   APP chrome = Cinzel · COMPLIANCE FRAMEWORK = Source Sans 3 · SCHOLAR text = Playfair Display.
+   Sizes: app 12 labels / 11 chips / 14 buttons · framework 13.5 body / 12 small / 15 heading ·
+   scholar 15.5 body (lh 1.65) / 13 small / 17 heading. Fonts and sizes only — no colour, spacing or layout.
+   !important because the earlier "#finance-view …" type rules already carry it.
+   ════════════════════════════════════════════════════════════════════════ */
+#finance-view, #usul-topbar{ --font-app:'Cinzel',serif; --font-fw:'Source Sans 3',sans-serif; --font-sch:'Playfair Display',serif; }
+
+/* ── APP chrome — Cinzel ── */
+#usul-topbar, #usul-topbar .usul-tag,
+#finance-view .fin-mode-btn, #finance-view .bv-dd-btn, #finance-view #fin-back-btn,
+#finance-view .fin-qpill, #finance-view .fin-qread, #finance-view .fin-qpill-name,
+#finance-view .fin-live-run, #finance-view .fin-rep-actions button, #finance-view #fin-rep-archive,
+#finance-view #fin-rep-export, #finance-view #fin-rep-print, #finance-view .fin-arch-open-btn,
+#finance-view .fin-upload-continue, #finance-view .fin-oi-dbtn, #finance-view .fin-api-btn, #finance-view .fin-api-title,
+#finance-view .fin-live-banner, #finance-view .fin-run-summary .k, #finance-view .fin-rep-table th,
+#finance-view .fin-rep-status, #finance-view .fin-fab-sev, #finance-view .fin-fab-conf,
+#finance-view .fin-rep-hub-count{ font-family:var(--font-app) !important; }
+/* labels 12px */
+#usul-topbar .usul-tag, #finance-view .fin-run-summary .k, #finance-view .fin-rep-table th,
+#finance-view .fin-api-title, #finance-view .fin-rep-hub-count, #finance-view .fin-qpill-name{ font-size:12px !important; }
+/* chips 11px */
+#finance-view .fin-rep-status, #finance-view .fin-fab-sev, #finance-view .fin-fab-conf,
+#finance-view .fin-qpill, #finance-view .fin-qread{ font-size:11px !important; }
+/* buttons 14px */
+#finance-view .fin-mode-btn, #finance-view .bv-dd-btn, #finance-view #fin-back-btn, #finance-view .fin-live-run,
+#finance-view .fin-rep-actions button, #finance-view #fin-rep-archive, #finance-view #fin-rep-export, #finance-view #fin-rep-print,
+#finance-view .fin-arch-open-btn, #finance-view .fin-upload-continue, #finance-view .fin-oi-dbtn, #finance-view .fin-api-btn,
+#finance-view .fin-live-banner{ font-size:14px !important; }
+
+/* ── COMPLIANCE FRAMEWORK — Source Sans 3 ── */
+#finance-view .fin-rep-sec-rules, #finance-view .fin-rep-sec-rules *, #finance-view .fin-rep-sec3, #finance-view .fin-rep-sec3 *,
+#finance-view .fin-rep-prov, #finance-view .fin-rep-prov *, #finance-view .fin-rep-casebox, #finance-view .fin-rep-casebox *,
+#finance-view .fin-std, #finance-view .fin-std *, #finance-view .fin-cov, #finance-view .fin-cov *,
+#finance-view .fin-arch-title, #finance-view .fin-arch-metaline, #finance-view .fin-arch-date,
+#finance-view .fin-run-summary .line, #finance-view .fin-run-summary .v,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-field,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-v,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-hint,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-fab-clausetag,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-sec,
+#finance-view .fin-upload-preview, #finance-view .fin-reli-page, #finance-view .fin-reli-sel{ font-family:var(--font-fw) !important; }
+/* result chips, headers and buttons inside framework areas stay app chrome */
+#finance-view .fin-rep-sec-rules .fin-rep-status, #finance-view .fin-rep-sec3 .fin-rep-status,
+#finance-view .fin-rep-sec-rules th, #finance-view .fin-rep-sec3 th,
+#finance-view .fin-std .fin-api-btn, #finance-view .fin-std .fin-api-title{ font-family:var(--font-app) !important; }
+/* body 13.5px */
+#finance-view .fin-rep-sec-rules td, #finance-view .fin-rep-sec3 td, #finance-view .fin-rep-prov, #finance-view .fin-rep-casebox,
+#finance-view .fin-sr, #finance-view .fin-sr-ttl, #finance-view .fin-cov-row, #finance-view .fin-arch-title,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-v{ font-size:13.5px !important; }
+/* small 12px */
+#finance-view .fin-rep-sec-rules .fin-rep-meta, #finance-view .fin-rep-rule-note, #finance-view .fin-rep-sec3 .fin-rep-meta,
+#finance-view .fin-sr-id, #finance-view .fin-grp-n, #finance-view .fin-iss-n, #finance-view .fin-std-totals, #finance-view .fin-vet-count,
+#finance-view .fin-cov-foot, #finance-view .fin-arch-metaline, #finance-view .fin-arch-date, #finance-view .fin-run-summary .line,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-fab-clausetag,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-hint{ font-size:12px !important; }
+/* headings 15px — own family, uppercase, .10em */
+#finance-view .fin-rep-sec-rules .fin-rep-h2, #finance-view .fin-rep-sec3 .fin-rep-h2, #finance-view .fin-rep-h2:has(+ .fin-rep-prov),
+#finance-view .fin-std-title, #finance-view .fin-std-head, #finance-view .fin-vet-title, #finance-view .fin-grp-name, #finance-view .fin-cov-label,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-sec{
+  font-family:var(--font-fw) !important; font-size:15px !important; text-transform:uppercase !important; letter-spacing:.10em !important; font-variant:normal !important; }
+
+/* ── SCHOLAR text — Playfair Display ── */
+#finance-view .fin-rep-open, #finance-view .fin-rep-open *, #finance-view .fin-rep-open-none,
+#finance-view .fin-rep-manual, #finance-view .fin-rep-manual *,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-title, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-sec,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-field, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-v,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-rep-quote, #finance-view #finance-hub:has(.fin-fab-det) .fin-fab-sub,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-chip, #finance-view #finance-hub:has(.fin-fab-det) .fin-fab-stdstatus,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-fab-clausetag, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-hint,
+#finance-view .fin-fab-rationale, #finance-view .fin-fab-name, #finance-view .fin-fab-signk, #finance-view .fin-fab-date{ font-family:var(--font-sch) !important; }
+/* chips inside the scholar areas stay app chrome */
+#finance-view .fin-rep-open .fin-fab-sev, #finance-view .fin-rep-open .fin-rep-status,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-fab-sev, #finance-view #finance-hub:has(.fin-fab-det) .fin-fab-conf{ font-family:var(--font-app) !important; }
+/* body 15.5px / 1.65 */
+#finance-view .fin-rep-open li, #finance-view .fin-fab-title, #finance-view .fin-rep-open-none, #finance-view .fin-rep-manual-row,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-v, #finance-view #finance-hub:has(.fin-fab-det) .fin-rep-quote,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-chip, #finance-view .fin-fab-rationale{ font-size:15.5px !important; line-height:1.65 !important; }
+/* small 13px */
+#finance-view .fin-rep-oinum, #finance-view .fin-rep-manual .fin-rep-meta, #finance-view .fin-rep-manual-row .fin-fab-sub,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-fab-sub, #finance-view #finance-hub:has(.fin-fab-det) .fin-fab-stdstatus,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-fab-clausetag, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-hint,
+#finance-view .fin-fab-name, #finance-view .fin-fab-signk, #finance-view .fin-fab-date{ font-size:13px !important; }
+/* headings 17px — own family, uppercase, .10em */
+#finance-view .fin-rep-h2:has(+ .fin-rep-open), #finance-view .fin-rep-h2:has(+ .fin-rep-open-none), #finance-view .fin-rep-manual-title,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-title, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-sec{
+  font-family:var(--font-sch) !important; font-size:17px !important; text-transform:uppercase !important; letter-spacing:.10em !important; font-variant:normal !important; }
+
+/* ── Off-system families elsewhere in USUL (Crimson Pro text) → scholar family ── */
+#finance-view .fin-row-title, #finance-view .fin-prism-q, #finance-view .fin-prism-text, #finance-view .fin-prism-term,
+#finance-view .fin-ladder-node-title, #finance-view .fin-word-ar, #finance-view .fin-lec-body, #finance-view .fin-lec-tierdesc,
+#finance-view .fin-lec-desc, #finance-view .fin-lec-work, #finance-view .fin-lec-link, #finance-view .fin-trace-res-ar,
+#finance-view .fin-trace-term-ar, #finance-view [style*="Crimson Pro"]{ font-family:var(--font-sch) !important; }
+
+/* FONT SYSTEM — weights. Scholar + framework text 400; bold only where listed. App chrome unchanged. */
+/* framework: 400, 600 only on rule ids and standard codes */
+#finance-view .fin-rep-sec-rules, #finance-view .fin-rep-sec-rules *:not(.fin-rep-status):not(th):not(.fin-api-btn):not(.fin-api-title), #finance-view .fin-rep-sec3, #finance-view .fin-rep-sec3 *:not(.fin-rep-status):not(th):not(.fin-api-btn):not(.fin-api-title),
+#finance-view .fin-rep-prov, #finance-view .fin-rep-prov *, #finance-view .fin-rep-casebox, #finance-view .fin-rep-casebox *,
+#finance-view .fin-std, #finance-view .fin-std *:not(.fin-rep-status):not(th):not(.fin-api-btn):not(.fin-api-title), #finance-view .fin-cov, #finance-view .fin-cov *,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-field,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-v,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-hub-sec,
+#finance-view #finance-hub:has(.fin-hub-title > .fin-rep-status) .fin-fab-clausetag{ font-weight:400 !important; }
+#finance-view .fin-rep-sec-rules td.fin-rep-num, #finance-view .fin-rep-sec-rules td.fin-rep-check,
+#finance-view .fin-sr-id{ font-weight:600 !important; }
+/* scholar: 400 body */
+#finance-view .fin-rep-open li, #finance-view .fin-rep-open-none, #finance-view .fin-rep-oinum,
+#finance-view .fin-rep-manual, #finance-view .fin-rep-manual *,
+#finance-view .fin-rep-h2:has(+ .fin-rep-open), #finance-view .fin-rep-h2:has(+ .fin-rep-open-none),
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-field, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-v,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-rep-quote, #finance-view #finance-hub:has(.fin-fab-det) .fin-fab-sub,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-chip, #finance-view #finance-hub:has(.fin-fab-det) .fin-fab-stdstatus,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-fab-clausetag, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-hint,
+#finance-view .fin-fab-rationale, #finance-view .fin-fab-name, #finance-view .fin-fab-signk, #finance-view .fin-fab-date{ font-weight:400 !important; }
+/* scholar: 700 only on list titles, panel title, panel section headings, stance buttons */
+#finance-view .fin-rep-open .fin-fab-title,
+#finance-view #finance-hub:has(.fin-fab-det) .fin-hub-title, #finance-view #finance-hub:has(.fin-fab-det) .fin-hub-sec,
+#finance-view .fin-oi-dbtn{ font-weight:700 !important; }
+/* REPORT header row — CASE dropdown left, SIGN OFF / EXPORT / PRINT right; wraps below, never overlaps */
+.fin-rep-head{ display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin:0 0 12px; }
+.fin-report .fin-rep-head .fin-rep-caseselect-wrap{ position:static; margin:0; flex:0 1 420px; max-width:420px; min-width:0; }
+.fin-report .fin-rep-head .fin-rep-caseselect{ max-width:100%; min-width:0; flex:1 1 auto; }
+.fin-rep-head .fin-rep-actions{ position:static; top:auto; left:auto; right:auto; margin-left:auto; pointer-events:auto; }
+/* REPORT ZONES — APP / COMPLIANCE FRAMEWORK / FOR THE SCHOLAR (inside .fin-report: they print and go to the archive) */
+.fin-zone{ position:relative; border-radius:8px; padding:12px 16px 14px; margin-bottom:16px; }
+.fin-zone-tag{ position:absolute; top:-7px; right:12px; padding:0 6px; background:#FFFFFF; line-height:14px; font-size:10px; text-transform:uppercase; pointer-events:none; }   /* sits on the top border — never over the header buttons */
+.fin-zone-app{ border:1px solid #C9D2DE; background:#F7F9FB; }
+#finance-view .fin-zone-app > .fin-zone-tag{ font-family:var(--font-app) !important; letter-spacing:.14em; color:#75849A; }
+.fin-zone-fw{ border:1px solid #D9D0BC; background:#FBF8F1; }
+#finance-view .fin-zone-fw > .fin-zone-tag{ font-family:var(--font-fw) !important; letter-spacing:.10em; color:#8A6A12; }
+.fin-zone-sch{ border:none; border-left:3px solid #0E6B63; border-radius:0; background:#FFFFFF; padding-left:16px; }
+#finance-view .fin-zone-sch > .fin-zone-tag{ font-family:var(--font-sch) !important; letter-spacing:.10em; color:#0E6B63; }
+/* the right-hand panel in REPORT carries the scholar bar + tag */
+#finance-view[data-mode="report"] #finance-hub{ border-left:3px solid #0E6B63; }
+#finance-view[data-mode="report"] #finance-hub::before{ content:"For the scholar"; display:block; text-align:right; margin:0 0 6px; font-family:var(--font-sch); font-size:10px; letter-spacing:.10em; text-transform:uppercase; color:#0E6B63; }
+@media print{ .fin-zone{ -webkit-print-color-adjust:exact; print-color-adjust:exact; break-inside:auto; } }
