@@ -2114,6 +2114,7 @@ function renderInfo(p){
   const dob_s=_dobMain!=null?(_dobMain<0?`${Math.abs(_dobMain)} ${_tlT('BCE')}`:`${_dobMain} ${_tlT('CE')}`):'Unknown';
   const dod_s=_dodMain!=null?(_dodMain<0?`${Math.abs(_dodMain)} ${_tlT('BCE')}`:`${_dodMain} ${_tlT('CE')}`):'Unknown';
   const _ab=_isAssumedDate(p)?_assumedBadge:'';
+  const _dodSL=(p.dod_s||'').toLowerCase(), _isLiving=_dodSL==='living', _isDisap=_dodSL.startsWith('disappeared');
 
 
   // Quran references section — verified xref wins; legacy strings only render
@@ -2277,7 +2278,7 @@ function renderInfo(p){
     ${window._journeyFigures&&window._journeyFigures.has(p.slug)?`<a class="info-follow-link" href="#follow" onclick="event.preventDefault();window._followShowFigure('${p.slug}');return false;">&#9654; ${_tlT('Follow their life on the map')}</a>`:''}
     <div class="i-dates">
       <div class="i-di"><span class="dl">${_tlT('BORN')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dob_s}</span>${_ab}${p.dob_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dob_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
-      <div class="i-di"><span class="dl">${_tlT('DIED')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${dod_s}</span>${_ab}${p.dod_s?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dod_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
+      <div class="i-di"><span class="dl">${_tlT(_isLiving?'LIVING':_isDisap?'DISAPPEARED':'DIED')}</span><span style="white-space:nowrap"><span class="dv" style="color:${col}">${_isLiving?'—':_isDisap?`${dod_s} · ${_tlT('fate unknown')}`:dod_s}</span>${_ab}${p.dod_s&&!_isLiving&&!_isDisap?`<span style="font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-left:6px">${esc(_tlT(p.dod_s))}</span>`:''}</span>${p.dating_source?`<span class="ds" style="font-style:normal;opacity:.75;display:block;margin-top:2px">${esc(_tlFigField(p,'dating_source')||p.dating_source)}</span>`:''}</div>
       ${p.dob>0&&p.dod?`<div class="i-di"><span class="dl">${_tlT('CENTURY')}</span><span class="dv" style="color:${col}">${centLabel(gc(p.dob))} C.</span></div>`:''}
     </div>
     ${((p.dob_s||'')+(p.dod_s||'')).toLowerCase().includes('legendary')?`<div style="font-size:var(--fs-3);color:rgba(160,174,192,.55);margin:-4px 0 10px 2px;line-height:1.4">${_tlT('Source:')} ${_tlT('Ibn Ishaq, Sirat Rasul Allah; al-Tabari, Tarikh al-Rusul wa al-Muluk')}</div>`:''}

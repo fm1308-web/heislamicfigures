@@ -523,8 +523,10 @@ async function _renderPerson(p,container){
   var _realDob = (p.dob_academic!=null) ? p.dob_academic : null;
   var _realDod = (p.dod_academic!=null) ? p.dod_academic : null;
   var dob_s = (_realDob!=null) ? (_realDob<0?Math.abs(_realDob)+' BCE':_realDob+' CE') : (p.dob_s || '—');
-  var dod_s = (_realDod!=null) ? (_realDod<0?Math.abs(_realDod)+' BCE':_realDod+' CE') : (p.dod_s || '—');
-  var age = (_realDob!=null && _realDod!=null) ? (_realDod - _realDob) : null;
+  var _dodSL = (p.dod_s||'').toLowerCase(), _isLiving = _dodSL==='living', _isDisap = _dodSL.indexOf('disappeared')===0;
+  var _disY = (_realDod!=null) ? _realDod : p.dod;
+  var dod_s = _isLiving ? '—' : _isDisap ? ((_disY!=null ? (_disY<0?Math.abs(_disY)+' BCE':_disY+' CE') : '—')+' · fate unknown') : (_realDod!=null) ? (_realDod<0?Math.abs(_realDod)+' BCE':_realDod+' CE') : (p.dod_s || '—');
+  var age = (_realDob!=null && _realDod!=null && !_isLiving && !_isDisap) ? (_realDod - _realDob) : null;
   var cent = (_realDob!=null) ? _centStr(Math.ceil(_realDob/100)) : (p.dob!=null ? _centStr(Math.ceil(p.dob/100)) : '');
   var isFav=APP.Favorites?APP.Favorites.has(p.famous):false;
 
@@ -567,7 +569,7 @@ async function _renderPerson(p,container){
   }
   h+='<div class="one-dates">';
   h+='<span class="one-date"><span class="one-dl">BORN</span><span class="one-dv" style="color:'+col+'">'+dob_s+'</span></span>';
-  h+='<span class="one-date"><span class="one-dl">DIED</span><span class="one-dv" style="color:'+col+'">'+dod_s+'</span></span>';
+  h+='<span class="one-date"><span class="one-dl">'+(_isLiving?'LIVING':_isDisap?'DISAPPEARED':'DIED')+'</span><span class="one-dv" style="color:'+col+'">'+dod_s+'</span></span>';
   if(age!==null) h+='<span class="one-date"><span class="one-dl">AGE</span><span class="one-dv">'+age+'</span></span>';
   if(cent) h+='<span class="one-date"><span class="one-dl">CENTURY</span><span class="one-dv">'+cent+'</span></span>';
   h+='</div>';
