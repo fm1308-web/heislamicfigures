@@ -2348,7 +2348,17 @@ function renderInfo(p){
       var _bf = _tlFigBio(p) || p.bio_full;
       if(_bf && /\bmay refer to:/i.test(_bf.slice(0,120))) _bf = null;
       var _bio = _bf || (p.famous==='Prophet Muhammad' ? (p.school||'The Last Prophet') : (p.bio||p.school));
-      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">'+_tlT('Biography')+'</div>'+_tlBioParas(_bio, false)+'</div>' : '';
+      var _bnSty = 'font-size:var(--fs-3);color:rgba(160,174,192,.75);margin-top:6px';
+      var _bioExtra = '';
+      if(Array.isArray(p.bio_sources) && p.bio_sources.length){
+        _bioExtra += '<div style="'+_bnSty+'">'+_tlT('Sources')+': '+p.bio_sources.map(function(s){
+          var t = esc((s && s.title) || (s && s.url) || '');
+          return (s && s.url) ? '<a href="'+esc(s.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+t+'</a>' : t;
+        }).join(' · ')+'</div>';
+      }
+      if(p.bio_full_limited === true) _bioExtra += '<div style="'+_bnSty+'">'+_tlT('Sources limited — biography is as long as the sources allow.')+'</div>';
+      if(p.bio_note && !p.bio_full) _bioExtra += '<div style="'+_bnSty+'">'+esc(p.bio_note)+'</div>';
+      var legacyBio = _bio ? '<div class="i-sec"><div class="i-sl">'+_tlT('Biography')+'</div>'+_tlBioParas(_bio, false)+_bioExtra+'</div>' : '';
       return legacyBio + nvHtml;
     })()}
     ${p.titles?`<div class="i-sec"><div class="i-sl">${_tlT('Titles & Epithets')}</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(_tlT(t))}</span>`).join('')}</div></div>`:''}

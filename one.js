@@ -658,13 +658,24 @@ async function _renderPerson(p,container){
     }
   } else if(bio){
     var bioBody2 = '<div class="one-bio">'+window._linkifyQuranRefs(bio)+'</div>';
-    if(_bf && p.bio_full_source){
+    if(Array.isArray(p.bio_sources) && p.bio_sources.length){
+      bioBody2 += '<div style="margin-top:8px;font-size:11px;color:#6B7280">Sources: '+p.bio_sources.map(function(s){
+        var t = _e((s && s.title) || (s && s.url) || '');
+        return (s && s.url) ? '<a href="'+_e(s.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+t+'</a>' : t;
+      }).join(' · ')+'</div>';
+    } else if(_bf && p.bio_full_source){
       var srcLbl2 = _e(p.bio_full_source);
       if(p.bio_full_url){
         bioBody2 += '<a class="one-bio-cite" href="'+_e(p.bio_full_url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+srcLbl2+' ↗</a>';
       } else {
         bioBody2 += '<span class="one-bio-cite">'+srcLbl2+'</span>';
       }
+    }
+    if(p.bio_full_limited === true){
+      bioBody2 += '<div style="margin-top:6px;font-size:11px;color:#6B7280">Sources limited — biography is as long as the sources allow.</div>';
+    }
+    if(p.bio_note && !p.bio_full){
+      bioBody2 += '<div style="margin-top:6px;font-size:11px;color:#6B7280">'+_e(p.bio_note)+'</div>';
     }
     h+=_sec('📜','Biography',0,bioBody2,true);
   }
