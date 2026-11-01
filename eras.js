@@ -480,8 +480,17 @@ function _evFiltered(){
   return out;
 }
 
+var _erNavLast = '', _erNavSnap = null;
+function _erNavState(){ return { types: Array.from(_EV_FILTER.types), trads: Array.from(_EV_FILTER.trads), search: _EV_FILTER.search || '', conf: _EV_CONF, logic: _EV_LOGIC }; }
 function _evBuildCanvas(){
   _evSyncClearBtn();
+  // NAV: a different filter set is a step the Back button must return to.
+  try {
+    var _k = JSON.stringify(_erNavState());
+    if(_erNavLast && _k !== _erNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_erNavSnap);
+    _erNavLast = _k;
+    _erNavSnap = _erNavState();
+  } catch(e){}
   const canvas=document.getElementById('era-canvas');
   if(!canvas) return;
   const people=_evFiltered();
@@ -1015,9 +1024,29 @@ function _erasInfoHtml(){
   // ═══════════════════════════════════════════════════════════
   var _mounted = false;
 
+  function captureState(){ return _erNavState(); }
+  function restoreState(s){
+    if(!s || !window._navWhen) return;
+    window._navWhen(function(){ return _EV_INITED && document.getElementById('era-canvas'); }, function(){
+      _EV_FILTER.types = new Set(s.types || []);
+      _EV_FILTER.trads = new Set(s.trads || []);
+      _EV_FILTER.search = s.search || '';
+      if(s.conf) _EV_CONF = s.conf;
+      if(s.logic) _EV_LOGIC = s.logic;
+      _erNavLast = JSON.stringify(_erNavState()); _erNavSnap = _erNavState();
+      try { var si = document.getElementById('search'); if(si && si.value !== _EV_FILTER.search) si.value = _EV_FILTER.search; } catch(e){}
+      try { _evSyncConfBtn(); _evSyncLogicBtn(); } catch(e){}
+      try { _evRebuildTagIndex(); } catch(e){}
+      try { _evBuildTypePanel(); _evBuildTradPanel(); } catch(e){}
+      try { _evSyncBtnLabel('era-type-btn',_EV_FILTER.types,_evT('— SELECT A TYPE —'),'types'); _evSyncBtnLabel('era-trad-btn',_EV_FILTER.trads,_evT('— SELECT A TRADITION —'),'traditions'); } catch(e){}
+      _evBuildCanvas();
+    }, 8000);
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _erNavLast = ''; _erNavSnap = null;
 
     document.body.classList.add('er-mounted');
 
@@ -1090,6 +1119,8 @@ function _erasInfoHtml(){
     mount: mount,
     unmount: unmount,
     infoHtml: _erasInfoHtml,
+    captureState: captureState,
+    restoreState: restoreState,
     animateStart: _evAnimPlay,
     animatePause: _evAnimPause,
     animateStop:  _evAnimStop,

@@ -766,7 +766,10 @@ function _stSelectSurah(id){
   if(window._stPendingJump && typeof window._stPendingJump.surah === 'number' && window._stPendingJump.surah > 0 && window._stPendingJump.surah !== id){
     id = window._stPendingJump.surah;
   }
+  // NAV: a new surah is a step the Back button must return to.
+  if(_stInited && id !== _stSurah && window._navCaptureCurrent) { try { window._navCaptureCurrent(); } catch(e){} }
   _stSurah=id;
+  try { _stNavHashWrite(); } catch(e){}
   _stPreloadActiveTrans();
   _stRenderSurah();
   _stBuildSurahDD();
@@ -1822,8 +1825,9 @@ window._stXrefJumpEvent=_stXrefJumpEvent;
 
 function _stXrefJumpTafsir(tafsirId, surah, verse){
   var pop=document.getElementById('st-xref-popup'); if(pop)pop.remove();
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
   var newHash = '#explain?tafsir='+encodeURIComponent(tafsirId)+'&surah='+surah+'&verse='+verse;
-  try { history.replaceState(null,'',newHash); } catch(e){ location.hash = newHash; }
+  try { (window._navSetHash ? window._navSetHash(newHash) : history.replaceState(null,'',newHash)); } catch(e){}
   var candidates = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="explain"], .tab-explain');
   var clicked = false;
   for(var i=0;i<candidates.length;i++){
@@ -1949,8 +1953,7 @@ window.openStartAtVerse = function(surah, vstart, vend){
       window._stPendingJump = null;
       try {
         var newHash = '#start?surah=' + S + '&verse=' + V;
-        if(history.replaceState) history.replaceState(null, '', newHash);
-        else location.hash = newHash;
+        (window._navSetHash ? window._navSetHash(newHash) : history.replaceState(null,'',newHash));
       } catch(e){}
       try {
         if(typeof _stSelectSurah === 'function') _stSelectSurah(S);
@@ -1980,6 +1983,9 @@ window.openStartAtVerse = function(surah, vstart, vend){
 function _stConceptJump(slug,ev){
   if(ev)ev.stopPropagation();
   var pop=document.getElementById('st-xref-popup'); if(pop) pop.remove();
+  // NAV: hand the concept to THINK before it opens, so its first draw already
+  // shows this concept (and is not recorded as an extra Back step).
+  try { window._thPendingConcept = slug; } catch(e){}
 
   // Find and click the real THINK tab in top nav.
   var tabClicked = false;
@@ -4497,7 +4503,9 @@ function _dvOpenExplain(id, surah, verse){
   // DEEP-AUDIT FIX (2026-08-07): the setView guard made this a no-op in the
   // shell. Set the deep-link hash, then DOM-click the EXPLAIN tab (explain.js
   // consumes #explain?tafsir=…&surah=…&verse=… on mount).
-  location.hash = '#explain?tafsir='+encodeURIComponent(id)+'&surah='+surah+'&verse='+verse;
+  try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
+  var _h = '#explain?tafsir='+encodeURIComponent(id)+'&surah='+surah+'&verse='+verse;
+  (window._navSetHash ? window._navSetHash(_h) : history.replaceState(null,'',_h));
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="explain"], .tab-explain');
   for(var i=0;i<c.length;i++){
     var el=c[i];
@@ -4778,7 +4786,7 @@ window._qlJump=function(surah,ayah,ev){
   // qref links from other views never switched to START. openStartAtVerse is
   // the proven jump (tab click + pending-verse + scroll + flash).
   if(typeof window.openStartAtVerse === 'function'){ window.openStartAtVerse(surah, ayah, ayah); return; }
-  history.replaceState(null,'','#quran/'+surah+'/'+ayah);
+  (window._navSetHash ? window._navSetHash('#quran/'+surah+'/'+ayah) : history.replaceState(null,'','#quran/'+surah+'/'+ayah));
   _qlScrollTo(surah,ayah);
 };
 
@@ -5622,9 +5630,54 @@ window.StartView = (function(){
 
   var _mounted = false;
 
+  // ── NAV memory (Back/Forward) ──────────────────────────────────────────
+  // The verse nearest the middle of the reading box.
+  function _stNavCenterVerse(){
+    var r = document.getElementById('st-reader'); if(!r) return null;
+    var rect = r.getBoundingClientRect(), mid = rect.top + rect.height / 2;
+    var rows = r.querySelectorAll('.st-verse[data-verse-id]');
+    var best = null, bestD = Infinity;
+    for(var i = 0; i < rows.length; i++){
+      var b = rows[i].getBoundingClientRect();
+      if(b.bottom < rect.top || b.top > rect.bottom) continue;
+      var d = Math.abs((b.top + b.bottom) / 2 - mid);
+      if(d < bestD){ bestD = d; best = parseInt(rows[i].getAttribute('data-verse-id'), 10); }
+    }
+    return best;
+  }
+  // Keep the address bar at #start?surah=S&verse=V while reading.
+  window._stNavHashWrite = function(){
+    if(!_mounted || !window._navSetHash) return;
+    var v = _stNavCenterVerse();
+    window._navSetHash('#start?surah=' + _stSurah + (v ? '&verse=' + v : ''));
+  };
+  var _stNavScrollT = null;
+  function _stNavOnScroll(e){
+    if(!e || !e.target || e.target.id !== 'st-reader') return;
+    if(_stNavScrollT) clearTimeout(_stNavScrollT);
+    _stNavScrollT = setTimeout(function(){ try { window._stNavHashWrite(); } catch(er){} }, 350);
+  }
+  function captureState(){
+    return { surah: _stSurah, juz: _stJuz, hizb: _stHizb, manzil: _stManzil, verse: _stNavCenterVerse(), dive: document.body.classList.contains('st-dive-on') };
+  }
+  function restoreState(s){
+    if(!s || !s.surah) return;
+    window._navWhen(function(){
+      return _stIndex && _stText && document.querySelector('#st-reader .st-verse');
+    }, function(){
+      if(_stSurah !== s.surah){
+        window._stSuppressDivReset = true;
+        try { _stSelectSurah(s.surah); } finally { window._stSuppressDivReset = false; }
+      }
+      try { if(s.dive && typeof _dvSetMode === 'function' && !document.body.classList.contains('st-dive-on')) _dvSetMode(true); } catch(e){}
+      try { window._stNavHashWrite(); } catch(e){}
+    }, 6000);
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    zoneCEl.addEventListener('scroll', _stNavOnScroll, true);
     document.body.classList.add('st-mounted');
     zoneCEl.innerHTML = '<div id="start-view" style="display:flex;flex-direction:column;flex:1"></div>';
     if(typeof _stInited !== 'undefined') _stInited = false;
@@ -5648,6 +5701,7 @@ window.StartView = (function(){
   function unmount(){
     if(!_mounted) return;
     _mounted = false;
+    try { var _zc = document.getElementById('zoneC'); if(_zc) _zc.removeEventListener('scroll', _stNavOnScroll, true); } catch(e){}
 
     document.body.classList.remove('st-mounted');
     document.body.classList.remove('st-active');
@@ -5684,7 +5738,7 @@ window.StartView = (function(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, animateStart: animateStart, animatePause: animatePause, animateSetSpeed: animateSetSpeed, infoHtml: _stInfoHtml };
+  return { mount: mount, unmount: unmount, animateStart: animateStart, animatePause: animatePause, animateSetSpeed: animateSetSpeed, infoHtml: _stInfoHtml, captureState: captureState, restoreState: restoreState };
 })();
 
 /* Translation-only RTL detection: toggle body.st-trans-rtl based on the

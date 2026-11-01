@@ -42,7 +42,7 @@ function renderQuranRef(ref){
 // Jump to START view at surah:ayah
 window._qlJump=function(surah,ayah,ev){
   if(ev){ev.preventDefault();ev.stopPropagation();}
-  history.replaceState(null,'','#quran/'+surah+'/'+ayah);
+  (window._navSetHash ? window._navSetHash('#quran/'+surah+'/'+ayah) : history.replaceState(null,'','#quran/'+surah+'/'+ayah));
   if(typeof setView==='function')setView('start');
   _qlScrollTo(surah,ayah);
 };

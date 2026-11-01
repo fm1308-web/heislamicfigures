@@ -536,8 +536,33 @@ window.YearView = (function(){
     return bgHtml + lblHtml + cHtml;
   }
 
+  // NAV: a new year / range is a step the Back button must return to. The
+  // slider fires many times per second while dragging, so one drag counts as
+  // one step: the snapshot is only refreshed after 1.2 s of rest.
+  var _yrNavLast = '', _yrNavSnap = null, _yrNavTimer = null;
+  function _yrNavStep(){
+    try {
+      var key = state.year + '|' + state.range;
+      if(!_yrNavLast){ _yrNavSnap = { year: state.year, range: state.range }; }
+      else if(key !== _yrNavLast){
+        if(!_yrNavTimer && window._navCaptureCurrent) window._navCaptureCurrent(_yrNavSnap);
+        if(_yrNavTimer) clearTimeout(_yrNavTimer);
+        _yrNavTimer = setTimeout(function(){ _yrNavTimer = null; _yrNavSnap = { year: state.year, range: state.range }; }, 1200);
+      }
+      _yrNavLast = key;
+    } catch(e){}
+  }
+  function captureState(){ return { year: state.year, range: state.range }; }
+  function restoreState(s){
+    if(!s || !s.year) return;
+    state.year = s.year; state.range = s.range || state.range;
+    _yrNavLast = state.year + '|' + state.range; _yrNavSnap = { year: state.year, range: state.range };
+    _render();
+    try { var sl = document.getElementById('yearSlider') || document.querySelector('#zoneB input[type="range"]'); if(sl) sl.value = state.year; } catch(e){}
+  }
   function _render(){
     if(!_zoneC) return;
+    _yrNavStep();
     var y = state.year, r = state.range;
     var html = '<div id="year-view"><div class="yr-grid">';
     html += '<div class="yr-col yr-col-left">' + _renderLeft(y) + '</div>';
@@ -998,6 +1023,7 @@ window.YearView = (function(){
 
   function mount(zoneC, zoneB){
     _zoneC = zoneC;
+    _yrNavLast = ''; _yrNavSnap = null; if(_yrNavTimer){ clearTimeout(_yrNavTimer); _yrNavTimer = null; }
     _wireZoneB();
     _render();
     _loadData();
@@ -1012,5 +1038,5 @@ window.YearView = (function(){
       +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
   }
 
-  return { mount: mount, unmount: unmount, infoHtml: _yearInfoHtml };
+  return { mount: mount, unmount: unmount, infoHtml: _yearInfoHtml, captureState: captureState, restoreState: restoreState };
 })();

@@ -129,6 +129,7 @@ var GROUP_BY_KEY = {};
 
 function mount(zoneC, zoneB){
   ROOT = zoneC;
+  _rlNavLast = ''; _rlNavSnap = null;
   ensureSource('arees');
   ensureSource('core');           // make sure CORE is loaded for search
   ensureMatches();
@@ -434,8 +435,34 @@ function syncLegacy(){
     ? { blockSlug: DRILL[0].slug, nodeKind: DRILL[0].kind } : null;
 }
 
+// NAV: a different category or drill path is a step the Back button must return to.
+var _rlNavLast = '', _rlNavSnap = null;
+function _rlNavState(){
+  var groups = [];
+  try { Object.keys(GROUP_BY_KEY || {}).forEach(function(k){ if(GROUP_BY_KEY[k] && GROUP_BY_KEY[k].expanded) groups.push(k); }); } catch(e){}
+  return { cat: ACTIVE_CAT, drill: JSON.parse(JSON.stringify(DRILL || [])), rowExpanded: !!ROW_EXPANDED, groups: groups };
+}
+function _rlCaptureState(){ return _rlNavState(); }
+function _rlRestoreState(st){
+  if(!st || !window._navWhen) return;
+  window._navWhen(function(){ return ROOT && AREES_STATE === 'ready'; }, function(){
+    ACTIVE_CAT = st.cat || null;
+    DRILL = JSON.parse(JSON.stringify(st.drill || []));
+    ROW_EXPANDED = !!st.rowExpanded;
+    try { Object.keys(GROUP_BY_KEY || {}).forEach(function(k){ if(GROUP_BY_KEY[k]) GROUP_BY_KEY[k].expanded = (st.groups || []).indexOf(k) >= 0; }); } catch(e){}
+    syncLegacy();
+    _rlNavLast = JSON.stringify(_rlNavState()); _rlNavSnap = _rlNavState();
+    render();
+  }, 10000);
+}
 function render(){
   if(!ROOT) return;
+  try {
+    var _k = JSON.stringify(_rlNavState());
+    if(_rlNavLast && _k !== _rlNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_rlNavSnap);
+    _rlNavLast = _k;
+    _rlNavSnap = _rlNavState();
+  } catch(e){}
   ensureEnrich();
 
   // If a figure is locked via search-drill, show the drill chain even when
@@ -1813,6 +1840,8 @@ window.RelationsView = {
   mount: mount,
   unmount: unmount,
   infoHtml: _relationsInfoHtml,
+  captureState: _rlCaptureState,
+  restoreState: _rlRestoreState,
   getState: function(){
     return {
       core:        CORE,

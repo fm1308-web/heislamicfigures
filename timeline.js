@@ -795,7 +795,15 @@ function _tlPickKey(p){ return p._narrator ? ('s:'+p.slug) : ('n:'+p.famous); }
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
 
 window._captureState_timeline=function(){
-  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear,picked:Array.from(_tlPicked),pickOnly:_tlPickOnly};
+  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear,picked:Array.from(_tlPicked),pickOnly:_tlPickOnly,person:(activePerson&&activePerson.famous)||null};
+};
+// NAV: wait for the rows to exist, put filters back, then reopen the figure card.
+window._restoreState_timeline_nav=function(s){
+  if(!s||!window._navWhen) return;
+  window._navWhen(function(){ return PEOPLE.length && document.querySelector('.tl-row'); }, function(){
+    try { window._restoreState_timeline(s); } catch(e){}
+    if(s.person){ setTimeout(function(){ try { jumpTo(s.person); } catch(e){} }, 80); }
+  }, 8000);
 };
 window._restoreState_timeline=function(s){
   if(!s) return;
@@ -923,6 +931,10 @@ async function _ensureDetails(p){
 
 // Wrapper functions — use these instead of calling renderInfo / openRelationsCard / _openMapCard directly from click handlers
 async function renderInfoWithDetails(p){
+  // NAV: opening a different figure's card is a step the Back button must return to.
+  try {
+    if(p && activePerson && activePerson.famous !== p.famous && window._navCaptureCurrent) window._navCaptureCurrent();
+  } catch(e){}
   // NARRATORS: route to the narrator card here, at the single choke point every
   // caller goes through. Several call sites re-render `activePerson` on their
   // own schedule (detail chunks landing, cross-tradition data, i18n bucket,
@@ -3188,6 +3200,8 @@ function _timelineInfoHtml(){
     animatePause:    _animPause,
     animateStop:     _animStop,
     animateSetSpeed: _animSetSpeed,
-    infoHtml:        _timelineInfoHtml
+    infoHtml:        _timelineInfoHtml,
+    captureState:    function(){ return window._captureState_timeline(); },
+    restoreState:    function(s){ return window._restoreState_timeline_nav(s); }
   };
 })();

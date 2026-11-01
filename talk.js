@@ -258,15 +258,27 @@ function _renderChat(ct, scholar){
   ct.innerHTML = h;
 }
 
-window._talkSelectScholar = function(id){
+// NAV: opening a scholar, or going back to the grid, is a step the Back button must return to.
+function _tkCaptureState(){ return { scholar: _activeScholar ? _activeScholar.id : null }; }
+function _tkRestoreState(st){
+  if(!st || !window._navWhen) return;
+  window._navWhen(function(){ return document.getElementById('talk-view'); }, function(){
+    var cur = _activeScholar ? _activeScholar.id : null;
+    if(st.scholar && st.scholar !== cur){ window._talkSelectScholar(st.scholar, true); }
+    else if(!st.scholar && cur){ window._talkBack(true); }
+  }, 5000);
+}
+window._talkSelectScholar = function(id, _noStep){
   var scholar = TALK_SCHOLARS.find(function(s){ return s.id === id; });
   if(!scholar) return;
+  if(!_noStep && window._navCaptureCurrent && (!_activeScholar || _activeScholar.id !== id)) { try { window._navCaptureCurrent(); } catch(e){} }
   _activeScholar = scholar;
   var ct = document.getElementById('talk-view');
   if(ct) _renderChat(ct, scholar);
 };
 
-window._talkBack = function(){
+window._talkBack = function(_noStep){
+  if(!_noStep && _activeScholar && window._navCaptureCurrent) { try { window._navCaptureCurrent(); } catch(e){} }
   _activeScholar = null;
   var ct = document.getElementById('talk-view');
   if(ct) _renderSelection(ct);
@@ -358,5 +370,5 @@ window._talkBack = function(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, initTalk: initTalk, infoHtml: _talkInfoHtml };
+  return { mount: mount, unmount: unmount, initTalk: initTalk, infoHtml: _talkInfoHtml, captureState: _tkCaptureState, restoreState: _tkRestoreState };
 })();

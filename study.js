@@ -277,7 +277,47 @@ function _highlightBtn(container, btn){
   btn.classList.add('active');
 }
 
+// NAV: opening a different book / type is a step the Back button must return to.
+var _srNavCur = null, _srNavSnap = null;
+function _srNavState(){ return { scholar: _srOpenScholar, cur: _srNavCur ? { slug: _srNavCur.slug, type: _srNavCur.type, bookId: _srNavCur.bookId, title: _srNavCur.title } : null }; }
+function _srCaptureState(){ return _srNavState(); }
+function _srRestoreState(st){
+  if(!st || !st.scholar || !window._navWhen) return;
+  window._navWhen(function(){ var p = document.getElementById('sr-left'); return p && p.querySelector('.sr-card'); }, function(){
+    if(_srOpenScholar !== st.scholar) selectStudyScholar(st.scholar);
+    if(!st.cur) return;
+    window._navWhen(function(){ return _srBookData[st.scholar] && _srBookData[st.scholar].length; }, function(){
+      var books = _srBookData[st.scholar] || [];
+      var book = null;
+      for(var i = 0; i < books.length; i++){ if((st.cur.bookId != null && books[i].book_id === st.cur.bookId) || books[i].title === st.cur.title){ book = books[i]; break; } }
+      if(!book || !book.types || !book.types[st.cur.type]) return;
+      setTimeout(function(){
+        _loadBookContent(st.scholar, st.cur.type, book);
+        try {
+          var dd = document.querySelector('.sr-card[data-slug="' + st.scholar + '"] + .sr-book-dropdown') || document.querySelector('.sr-book-dropdown.open');
+          if(dd){
+            var items = dd.querySelectorAll('.sr-book-item');
+            items.forEach(function(it){
+              var t = it.querySelector('.sr-book-title');
+              if(t && t.textContent === book.title){
+                var b = it.querySelector('[data-type="' + st.cur.type + '"]');
+                if(b){ dd.querySelectorAll('.sr-book-tab.active, .sr-book-btns .active').forEach(function(x){ x.classList.remove('active'); }); b.classList.add('active'); }
+              }
+            });
+          }
+        } catch(e){}
+      }, 120);
+    }, 8000);
+  }, 8000);
+}
 function _loadBookContent(slug, type, book){
+  try {
+    var _nk = slug + '|' + type + '|' + (book && (book.book_id != null ? book.book_id : book.title));
+    var _ok = _srNavCur ? (_srNavCur.slug + '|' + _srNavCur.type + '|' + (_srNavCur.bookId != null ? _srNavCur.bookId : _srNavCur.title)) : '';
+    if(_ok && _nk !== _ok && window._navCaptureCurrent) window._navCaptureCurrent(_srNavSnap);
+    _srNavCur = { slug: slug, type: type, bookId: book ? book.book_id : null, title: book ? book.title : '' };
+    _srNavSnap = _srNavState();
+  } catch(e){}
   var body=document.getElementById('sr-body');
   body.querySelectorAll('iframe').forEach(function(f){f.src='about:blank';});
   body.innerHTML='';
@@ -441,6 +481,7 @@ function _studyInfoHtml(){
     // Reset transient state so re-mount rebuilds cleanly.
     _srOpenScholar = null;
     _srActive = null;
+    _srNavCur = null; _srNavSnap = null;
 
     // Eagerly load core.json (used by jump-to-figure cross-view chips) and the three
     // studyroom manifest categories for the first scholar so the auto-load is instant
@@ -480,5 +521,5 @@ function _studyInfoHtml(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, infoHtml: _studyInfoHtml };
+  return { mount: mount, unmount: unmount, infoHtml: _studyInfoHtml, captureState: _srCaptureState, restoreState: _srRestoreState };
 })();

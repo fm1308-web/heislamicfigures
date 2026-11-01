@@ -777,8 +777,46 @@ function _hideHoverChip(){
   if(_mapLabelHoverEl){ _mapLabelHoverEl.remove(); _mapLabelHoverEl = null; }
 }
 
+// NAV: year / search / empires-overlay changes are steps the Back button must
+// return to. The year slider fires continuously while dragging, so one drag
+// counts as one step (snapshot refreshed only after 1.2 s of rest). Map pan and
+// zoom are remembered but are not steps.
+var _mpNavLast = '', _mpNavSnap = null, _mpNavTimer = null;
+function _mpNavState(){
+  var c = null, z = null;
+  try { if(_lMap){ var cc = _lMap.getCenter(); c = [cc.lat, cc.lng]; z = _lMap.getZoom(); } } catch(e){}
+  return { year: _mapYear, search: (window.searchQ || ''), emp: !!_geoEmpOn, center: c, zoom: z };
+}
+function _mpNavStep(){
+  try {
+    var key = JSON.stringify([_mapYear, window.searchQ || '', !!_geoEmpOn]);
+    if(!_mpNavLast){ _mpNavSnap = _mpNavState(); }
+    else if(key !== _mpNavLast){
+      if(!_mpNavTimer && window._navCaptureCurrent) window._navCaptureCurrent(_mpNavSnap);
+      if(_mpNavTimer) clearTimeout(_mpNavTimer);
+      _mpNavTimer = setTimeout(function(){ _mpNavTimer = null; _mpNavSnap = _mpNavState(); }, 1200);
+    } else if(!_mpNavTimer){ _mpNavSnap = _mpNavState(); }
+    _mpNavLast = key;
+  } catch(e){}
+}
+function _mpCaptureState(){ return _mpNavState(); }
+function _mpRestoreState(st){
+  if(!st || !window._navWhen) return;
+  window._navWhen(function(){ return _lMap && _mrkLayer && document.getElementById('leafletMap'); }, function(){
+    try { window.searchQ = st.search || ''; var si = document.getElementById('search'); if(si && si.value !== window.searchQ) si.value = window.searchQ; } catch(e){}
+    try {
+      if(st.year != null && typeof window._setSliderYear === 'function') window._setSliderYear(st.year);
+      else if(st.year == null){ _mapYear = null; var yc = document.getElementById('yearClearBtn'); if(yc && yc.classList.contains('active')) yc.click(); }
+    } catch(e){}
+    try { if(!!_geoEmpOn !== !!st.emp){ var b = document.getElementById('geoEmpToggle'); if(b) b.click(); } } catch(e){}
+    try { if(st.center && st.zoom != null) _lMap.setView(st.center, st.zoom, { animate: false }); } catch(e){}
+    try { _renderMarkers(); } catch(e){}
+    _mpNavLast = JSON.stringify([_mapYear, window.searchQ || '', !!_geoEmpOn]); _mpNavSnap = _mpNavState();
+  }, 10000);
+}
 function _renderMarkers(){
   if(!_lMap) return;
+  _mpNavStep();
   if(_mrkLayer){_lMap.removeLayer(_mrkLayer);_mrkLayer=null;}
   _hideHoverChip();
 
@@ -1458,7 +1496,10 @@ function _mapInfoHtml(){
 }
 
 return {
+  captureState: _mpCaptureState,
+  restoreState: _mpRestoreState,
   mount: function(zoneCEl, zoneBEl){
+    _mpNavLast = ''; _mpNavSnap = null; if(_mpNavTimer){ clearTimeout(_mpNavTimer); _mpNavTimer = null; }
     document.body.classList.add('map-mounted');
     _ensureMapTafsirXref();
     zoneCEl.innerHTML = '<div id="mapView" style="display:flex;flex-direction:column;height:100%;width:100%;overflow:hidden">'

@@ -519,7 +519,47 @@ window._fwApplyPendingFigure = function(){
 // ═══════════════════════════════════════════════════════════
 // REBUILD — called when selection changes
 // ═══════════════════════════════════════════════════════════
+// NAV: a different set of followed figures is a step; a year change by scrubber
+// or feed click is a step (one drag = one step; animation ticks are not steps).
+var _fwNavLast = '', _fwNavSnap = null, _fwNavTimer = null;
+function _fwNavState(){ return { files: Object.keys(_fwSelected).filter(function(k){ return _fwSelected[k]; }).sort(), year: _fwYear }; }
+function _fwNavSelStep(){
+  try {
+    var key = _fwNavState().files.join('|');
+    if(_fwNavLast && key !== _fwNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_fwNavSnap);
+    _fwNavLast = key;
+    _fwNavSnap = _fwNavState();
+  } catch(e){}
+}
+function _fwNavYearStep(){
+  try {
+    if(_fwPlaying || !_fwNavLast) return;
+    if(!_fwNavTimer && window._navCaptureCurrent) window._navCaptureCurrent(_fwNavSnap);
+    if(_fwNavTimer) clearTimeout(_fwNavTimer);
+    _fwNavTimer = setTimeout(function(){ _fwNavTimer = null; _fwNavSnap = _fwNavState(); }, 1200);
+  } catch(e){}
+}
+function _fwCaptureState(){ return _fwNavState(); }
+function _fwRestoreState(st){
+  if(!st) return;
+  if(st.files && st.files.length){
+    _fwSelected = {};
+    st.files.forEach(function(f){ _fwSelected[f] = true; });
+  }
+  _fwNavLast = (st.files || []).slice().sort().join('|'); _fwNavSnap = { files: (st.files || []).slice().sort(), year: st.year };
+  if(!window._navWhen) return;
+  window._navWhen(function(){ return _fwMap && _fwAllYears.length && document.getElementById('follow-view'); }, function(){
+    var want = (st.files || []).slice().sort().join('|');
+    if(want && want !== _fwNavState().files.join('|')){
+      _fwSelected = {}; st.files.forEach(function(f){ _fwSelected[f] = true; });
+      _fwUpdateDDChecks(); _fwUpdateFollowingList(); _fwRebuild();
+    }
+    if(st.year != null && st.year !== _fwYear){ _fwGoToYear(st.year); }
+    _fwNavLast = want; _fwNavSnap = _fwNavState();
+  }, 10000);
+}
 function _fwRebuild() {
+  _fwNavSelStep();
   _fwComputeYearRange();
   if (_fwYear === null && _fwAllYears.length > 0) {
     _fwYear = _fwYearMin;
@@ -1146,6 +1186,7 @@ function _fwUpdateScrubberUI() {
 // NAVIGATION
 // ═══════════════════════════════════════════════════════════
 function _fwGoToYear(year) {
+  if(year !== _fwYear) _fwNavYearStep();
   _fwYear = year;
   for (var i = 0; i < _fwAllYears.length; i++) {
     if (_fwAllYears[i] >= year) { _fwYearIdx = i; break; }
@@ -1287,6 +1328,7 @@ function _followInfoHtml(){
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _fwNavLast = ''; _fwNavSnap = null; if(_fwNavTimer){ clearTimeout(_fwNavTimer); _fwNavTimer = null; }
 
     document.body.classList.add('fw-mounted');
 
@@ -1373,6 +1415,8 @@ function _followInfoHtml(){
     mount: mount,
     unmount: unmount,
     infoHtml: _followInfoHtml,
+    captureState: _fwCaptureState,
+    restoreState: _fwRestoreState,
     animateStart: _fwAnimPlay,
     animatePause: _fwAnimPause,
     animateStop:  _fwAnimStopFull,

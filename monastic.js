@@ -2295,8 +2295,18 @@ function _monHighlight(raw){
 // Bridge: MonasticView is a separate IIFE and cannot see these locals. Expose entry points on window.
 window._monRunSearch = function(val){ _monSearchQuery = val || ''; _applySearch(); };
 window._monDebSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer) clearTimeout(_monSearchTimer); _monSearchTimer = setTimeout(_applySearch, 180); };
+var _monNavLast = '', _monNavSnap = null;
 function _renderRows(filtered, colKey, page){
   _ensureChainLinks();
+  // NAV: a different filter set / page / search is a step the Back button must return to.
+  try {
+    var _sel = (window.Monastic && window.Monastic._exportSel) ? window.Monastic._exportSel() : null;
+    var _pg = (typeof page === 'number' ? page : 0);
+    var _key = JSON.stringify([_sel, _pg, _monSearchQuery || '', _pinnedHadiths ? _pinnedHadiths.ids : null]);
+    if(_monNavLast && _key !== _monNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_monNavSnap);
+    _monNavLast = _key;
+    _monNavSnap = { sel: _sel, nav: { page: _pg, search: _monSearchQuery || '', pinned: _pinnedHadiths ? { ids: _pinnedHadiths.ids.slice(), label: _pinnedHadiths.label || '' } : null, drillOn: !!_drillOn } };
+  } catch(e){}
   _lastFiltered = filtered;
   _lastColKey = colKey;
   _resultsEl.innerHTML = '';
@@ -3835,6 +3845,18 @@ return {
       if(_monSel.narrator)   _monSel.narrator.clear();
     }
   },
+  _navState: function(){
+    return {
+      page: _currentPage,
+      search: _monSearchQuery || '',
+      pinned: _pinnedHadiths ? { ids: _pinnedHadiths.ids.slice(), label: _pinnedHadiths.label || '' } : null,
+      drillOn: !!_drillOn
+    };
+  },
+  _navApplyPage: function(p){
+    if(_lastFiltered && typeof p === 'number' && p !== _currentPage) _renderRows(_lastFiltered, _lastColKey, p);
+  },
+  _navResetKey: function(){ _monNavLast = ''; },
   _exportSel: function(){
     if(!_monSel) return null;
     function arr(s){ if(!s || typeof s.values !== 'function') return []; var out=[]; var it=s.values(); for(var step=it.next(); !step.done; step=it.next()) out.push(step.value); return out; }
@@ -4099,9 +4121,37 @@ window.MonasticView = (function(){
 
   var _mounted = false;
 
+  function captureState(){
+    var M = window.Monastic || {};
+    var out = { sel: null, nav: null };
+    try { out.sel = M._exportSel ? M._exportSel() : null; } catch(e){}
+    try { out.nav = M._navState ? M._navState() : null; } catch(e){}
+    return out;
+  }
+  function restoreState(s){
+    if(!s) return;
+    var M = window.Monastic || {};
+    // 1. Filters: mount's own restore reads window._monLastView shortly after init.
+    if(s.sel){
+      window._monLastView = Object.assign({ collection: [], period: [], topic: [], narrator: [], drillOn: !!(s.nav && s.nav.drillOn) }, s.sel);
+    }
+    // 2. Pinned hadiths (cross-link pins) go through the existing pending handshake.
+    if(s.nav && s.nav.pinned && s.nav.pinned.ids && s.nav.pinned.ids.length){
+      window._stPendingPinned = { ids: s.nav.pinned.ids.slice(), label: s.nav.pinned.label || '' };
+    }
+    // 3. Search text and page, once the rows exist.
+    if(s.nav && window._navWhen){
+      window._navWhen(function(){ var r = document.getElementById('mon-results'); return r && r.children.length > 0; }, function(){
+        try { if(s.nav.search && typeof window._monRunSearch === 'function') window._monRunSearch(s.nav.search); } catch(e){}
+        setTimeout(function(){ try { if(M._navApplyPage) M._navApplyPage(s.nav.page || 0); } catch(e){} }, 150);
+      }, 8000);
+    }
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    try { if(window.Monastic && window.Monastic._navResetKey) window.Monastic._navResetKey(); } catch(e){}
 
     document.body.classList.add('mn-mounted');
     _injectScaffold(zoneCEl);
@@ -4199,6 +4249,8 @@ window.MonasticView = (function(){
   return {
     mount: mount,
     unmount: unmount,
+    captureState: captureState,
+    restoreState: restoreState,
     infoHtml: function(){
       return (window.Monastic && typeof window.Monastic.infoHtml === 'function') ? window.Monastic.infoHtml() : '';
     }

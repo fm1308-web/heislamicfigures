@@ -137,7 +137,8 @@ function _dvReadChip(id, surah, verse){
 
 function _dvOpenExplain(id, surah, verse){
   if(typeof setView !== 'function') return;
-  location.hash = '#explain?tafsir='+encodeURIComponent(id)+'&surah='+surah+'&verse='+verse;
+  var _h = '#explain?tafsir='+encodeURIComponent(id)+'&surah='+surah+'&verse='+verse;
+  (window._navSetHash ? window._navSetHash(_h) : history.replaceState(null,'',_h));
   setView('explain');
 }
 window._dvOpenExplain = _dvOpenExplain;

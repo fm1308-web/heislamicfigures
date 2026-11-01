@@ -519,8 +519,20 @@ function _booksFiltered(){
   return out;
 }
 
+var _bkNavLast = '', _bkNavSnap = null;
+function _bkNavState(){
+  return { source: Array.from(_booksFilter.source), theme: Array.from(_booksFilter.theme), author: Array.from(_booksFilter.author), search: _booksFilter.search || '', ancient: !!_ancientOn, freeOnly: !!(typeof _bvFreeOnly !== 'undefined' && _bvFreeOnly) };
+}
+function _bkNavKey(){ return JSON.stringify(_bkNavState()); }
 function _booksBuildCanvas(){
   _booksSyncClearBtn();
+  // NAV: a different filter set is a step the Back button must return to.
+  try {
+    var _k = _bkNavKey();
+    if(_bkNavLast && _k !== _bkNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_bkNavSnap);
+    _bkNavLast = _k;
+    _bkNavSnap = _bkNavState();
+  } catch(e){}
   const canvas = document.getElementById('bv-canvas');
   if(!canvas) return;
   const islamicBooks = _booksFiltered();
@@ -1278,9 +1290,29 @@ function _booksInfoHtml(){
   // ═══════════════════════════════════════════════════════════
   var _mounted = false;
 
+  function captureState(){ return _bkNavState(); }
+  function restoreState(s){
+    if(!s || !window._navWhen) return;
+    window._navWhen(function(){ return _booksInited && document.getElementById('bv-canvas'); }, function(){
+      _booksFilter.source = new Set(s.source || []);
+      _booksFilter.theme  = new Set(s.theme || []);
+      _booksFilter.author = new Set(s.author || []);
+      _booksFilter.search = s.search || '';
+      _ancientOn = !!s.ancient;
+      _bvFreeOnly = !!s.freeOnly;
+      _bkNavLast = _bkNavKey(); _bkNavSnap = _bkNavState();
+      try { var si = document.querySelector('#zoneB input[type="text"]'); if(si && si.value !== _booksFilter.search) si.value = _booksFilter.search; } catch(e){}
+      try { _bvSyncBtnLabel('bv-source-btn',_booksFilter.source,'— SELECT A SOURCE —','sources'); _bvSyncBtnLabel('bv-theme-btn',_booksFilter.theme,'— SELECT A THEME —','themes'); _bvSyncBtnLabel('bv-author-btn',_booksFilter.author,'— SELECT AN AUTHOR —','authors'); } catch(e){}
+      try { _booksBuildSourcePanel(); _booksBuildThemePanel(); _booksBuildAuthorPanel(); } catch(e){}
+      try { var ab = document.getElementById('bv-ancient-banner'); if(ab) ab.style.display = _ancientOn ? '' : 'none'; } catch(e){}
+      _booksBuildCanvas();
+    }, 8000);
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _bkNavLast = '';
 
     document.body.classList.add('bk-mounted');
     _ensureBooksTafsirXref();
@@ -1366,6 +1398,8 @@ function _booksInfoHtml(){
     mount: mount,
     unmount: unmount,
     infoHtml: _booksInfoHtml,
+    captureState: captureState,
+    restoreState: restoreState,
     animateStart: _booksAnimPlay,
     animatePause: _booksAnimPause,
     animateStop:  _booksAnimStop,
@@ -1432,7 +1466,7 @@ window._booksGoToTimeline = function(name){
 window._booksReadTafsir = function(tafsirId){
   if(!tafsirId) return;
   var newHash = '#explain?tafsir='+encodeURIComponent(tafsirId)+'&surah=1&verse=1';
-  try { history.replaceState(null,'',newHash); } catch(e){ location.hash = newHash; }
+  try { (window._navSetHash ? window._navSetHash(newHash) : history.replaceState(null,'',newHash)); } catch(e){}
   var c = document.querySelectorAll('#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="explain"], .tab-explain');
   for(var i=0;i<c.length;i++){
     var el = c[i];

@@ -38,8 +38,94 @@ var _gaSeq = 0;     // browser-history sequence counter
 var _gaCurrent = 0; // ga of the state currently shown
 var _pendingRestore = null;
 
-function _captureCurrent(){
+// ── Scroll memory (generic, every view) ─────────────────────────────────────
+// Each view scrolls inside its own box (START #st-reader, EXPLAIN .ex-body,
+// TIMELINE #rowsScroll + #infoScroll, ONE #one-main ...). We record EVERY
+// scrolled box inside zoneC, keyed by id (or tag.class + index), and put them
+// back after the view has drawn again. Views do not need to know about it.
+function _navScrollKey(el, idx){
+  if(el.id) return '#' + el.id;
+  var cls = (el.className && typeof el.className === 'string') ? el.className.trim().split(/\s+/).slice(0,2).join('.') : '';
+  return el.tagName.toLowerCase() + (cls ? '.' + cls : '') + '@' + idx;
+}
+function _navCaptureScrolls(){
+  var out = [];
   var zc = document.getElementById('zoneC');
+  if(!zc) return out;
+  if(zc.scrollTop > 0) out.push({ key: '#zoneC', top: zc.scrollTop });
+  var all = zc.querySelectorAll('*');
+  var seen = {};
+  for(var i = 0; i < all.length; i++){
+    var el = all[i];
+    if(el.scrollTop > 0 && el.scrollHeight > el.clientHeight){
+      var base = el.id ? ('#' + el.id) : (el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).slice(0,2).join('.') : ''));
+      var n = seen[base] || 0; seen[base] = n + 1;
+      out.push({ key: el.id ? ('#' + el.id) : (base + '@' + n), top: el.scrollTop });
+    }
+  }
+  return out;
+}
+function _navFindByKey(key){
+  if(key.charAt(0) === '#' && key.indexOf('@') < 0) return document.getElementById(key.slice(1));
+  var at = key.lastIndexOf('@');
+  var sel = key.slice(0, at), idx = parseInt(key.slice(at + 1), 10) || 0;
+  var zc = document.getElementById('zoneC');
+  if(!zc) return null;
+  var tag = sel.split('.')[0];
+  var classes = sel.split('.').slice(1);
+  var cands = zc.querySelectorAll(tag);
+  var n = 0;
+  for(var i = 0; i < cands.length; i++){
+    var el = cands[i];
+    var ok = true;
+    for(var c = 0; c < classes.length; c++){ if(!el.classList.contains(classes[c])){ ok = false; break; } }
+    if(!ok) continue;
+    if(n === idx) return el;
+    n++;
+  }
+  return null;
+}
+// Views draw asynchronously (data loads, two-frame renders), so one attempt is
+// never enough. Keep re-applying for a few seconds until each box has content
+// tall enough to hold the saved position.
+function _navRestoreScrolls(list){
+  if(!list || !list.length) return;
+  var delays = [0, 120, 300, 600, 1000, 1500, 2200, 3000, 4000, 5500];
+  delays.forEach(function(d){
+    setTimeout(function(){
+      list.forEach(function(it){
+        if(it.done) return;
+        var el = _navFindByKey(it.key);
+        if(!el) return;
+        if(el.scrollHeight - el.clientHeight >= it.top - 2){
+          el.scrollTop = it.top;
+          it.done = true;
+        }
+      });
+    }, d);
+  });
+}
+
+// Wait until cond() is true, then run fn(). Used by views' restoreState.
+window._navWhen = function(cond, fn, maxMs){
+  var t0 = Date.now(), lim = maxMs || 5000;
+  (function tick(){
+    var ok = false;
+    try { ok = !!cond(); } catch(e){}
+    if(ok){ try { fn(); } catch(e){ console.warn('[nav] restore step failed', e); } return; }
+    if(Date.now() - t0 > lim) return;
+    setTimeout(tick, 100);
+  })();
+};
+
+// The address the app believes it is showing. The browser changes
+// location.hash BEFORE popstate fires, so inside Back/Forward handling
+// location.hash already belongs to the destination. Every hash write goes
+// through _navSetHash / setActiveTab / navBack / navForward, which keep this.
+var _navCurHash = '';
+window._navLog = [];
+function _navTrace(m){ try { window._navLog.push(Date.now() % 100000 + ' ' + m); if(window._navLog.length > 60) window._navLog.shift(); } catch(e){} }
+function _captureCurrent(){
   var vs = null;
   try {
     if(_activeViewApi && typeof _activeViewApi.captureState === 'function'){
@@ -48,11 +134,23 @@ function _captureCurrent(){
   } catch(e){}
   return {
     tab: state.activeTab,
-    hash: location.hash || '',
-    scroll: zc ? zc.scrollTop : 0,
+    hash: _navCurHash || location.hash || '',
+    scrolls: _navCaptureScrolls(),
     viewState: vs
   };
 }
+
+// Views write the address through here, never through history.replaceState(null, ...)
+// or location.hash = ... directly. Both of those erase the step number (ga) on
+// the current browser entry; a later Back then reads it as step 0 and unwinds
+// the whole trail to TIMELINE.
+window._navSetHash = function(h){
+  if(!h) return;
+  if(h.charAt(0) !== '#') h = '#' + h;
+  _navCurHash = h;
+  try { history.replaceState({ga:_gaCurrent}, '', h); }
+  catch(e){ try { location.replace(h); } catch(e2){} }
+};
 
 function _updateNavButtons(){
   var b = document.getElementById('zdBack');
@@ -63,10 +161,15 @@ function _updateNavButtons(){
 
 function navBack(){
   if(navHistory.back.length === 0) return;
+  window._navRestoring = true;   // no view may record a step while we move
+  if(window._navRestoreT) clearTimeout(window._navRestoreT);
+  window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 6000);
   navHistory.forward.push(_captureCurrent());
   if(navHistory.forward.length > NAV_MAX) navHistory.forward.shift();
   var entry = navHistory.back.pop();
+  _navTrace('back -> ' + entry.tab + ' ' + entry.hash);
   if(entry.hash){
+    _navCurHash = entry.hash;
     try { history.replaceState({ga:_gaCurrent}, '', entry.hash); } catch(e){ location.hash = entry.hash; }
   }
   setActiveTab(entry.tab, { skipHistory: true, restoreData: entry });
@@ -74,21 +177,46 @@ function navBack(){
 
 function navForward(){
   if(navHistory.forward.length === 0) return;
+  window._navRestoring = true;
+  if(window._navRestoreT) clearTimeout(window._navRestoreT);
+  window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 6000);
   navHistory.back.push(_captureCurrent());
   if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
   var entry = navHistory.forward.pop();
+  _navTrace('fwd -> ' + entry.tab + ' ' + entry.hash);
   if(entry.hash){
+    _navCurHash = entry.hash;
     try { history.replaceState({ga:_gaCurrent}, '', entry.hash); } catch(e){ location.hash = entry.hash; }
   }
   setActiveTab(entry.tab, { skipHistory: true, restoreData: entry });
 }
-window._navCaptureCurrent = function(){
+
+// Record "where I am now" as a step. Called by views before an in-view move
+// (new surah, new tafsir, new figure, new concept) and before cross-view jumps.
+// Guards: never while a step is being restored; never twice within 600 ms
+// (a jump often calls this and then clicks a tab, which would record again);
+// never in the first 2.5 s after a view opened (the opening itself is not a
+// user step — the step before it was already recorded).
+var _navLastCaptureAt = 0;
+var _navMountedAt = 0;
+window._navRestoring = false;
+window._navCaptureCurrent = function(prevViewState){
   try {
-    navHistory.back.push(_captureCurrent());
+    if(window._navRestoring) return;
+    var now = Date.now();
+    if(now - _navLastCaptureAt < 600) return;
+    if(now - _navMountedAt < 2500) return;
+    var entry = _captureCurrent();
+    // Views that detect a change at draw time have already changed their
+    // state; they pass the snapshot taken at the previous draw.
+    if(prevViewState) entry.viewState = prevViewState;
+    navHistory.back.push(entry);
     if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
     navHistory.forward = [];
-    _gaSeq++; _gaCurrent = _gaSeq;
-    try { history.pushState({ga:_gaSeq}, '', location.hash || ''); } catch(e){}
+    _gaCurrent = _gaCurrent + 1; _gaSeq = _gaCurrent;
+    _navTrace('step ' + _gaSeq + ' from ' + state.activeTab + ' ' + _navCurHash);
+    try { history.pushState({ga:_gaSeq}, '', _navCurHash || location.hash || ''); } catch(e){}
+    _navLastCaptureAt = now;
     _updateNavButtons();
   } catch(e){}
 };
@@ -384,18 +512,17 @@ function loadAndMountView(name){
     if(_activeViewApi && typeof _activeViewApi.mount === 'function'){
       _activeViewApi.mount(zoneC, zoneB);
     }
+    _navMountedAt = Date.now();
     if(_pendingRestore){
       var rd = _pendingRestore;
       _pendingRestore = null;
-      try {
-        var zc = document.getElementById('zoneC');
-        if(zc && typeof rd.scroll === 'number'){
-          setTimeout(function(){ zc.scrollTop = rd.scroll; }, 0);
-        }
-      } catch(e){}
+      window._navRestoring = true;
+      if(window._navRestoreT) clearTimeout(window._navRestoreT);
+      window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 6000);
       if(rd.viewState && _activeViewApi && typeof _activeViewApi.restoreState === 'function'){
-        try { _activeViewApi.restoreState(rd.viewState); } catch(e){}
+        try { _activeViewApi.restoreState(rd.viewState); } catch(e){ console.warn('[nav] restoreState failed', e); }
       }
+      _navRestoreScrolls(rd.scrolls);
     }
     _updateNavButtons();
   }
@@ -414,7 +541,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=211';
+  var _cb = '?v=217';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -626,6 +753,7 @@ function showShell(){
   }
   if(_target){
     // Valid deep link — keep the full address intact, route to that view.
+    _navCurHash = location.hash;
     try { history.replaceState({ga:0}, '', location.hash); } catch(e){}
     state.activeTab = _target;
     setActiveTab(_target, { skipHistory: true });
@@ -752,6 +880,10 @@ function setActiveTab(name, opts){
   }
   opts = opts || {};
   var _isNewFwd = (!opts.skipHistory && _activeViewApi && state.activeTab !== name);
+  // A view that called _navCaptureCurrent() just before switching tab has
+  // already recorded this step. Do not record it twice.
+  var _justCaptured = (Date.now() - _navLastCaptureAt) < 600;
+  if(_isNewFwd && _justCaptured){ _isNewFwd = false; }
   // Push outgoing state onto back stack ONLY for user-driven new tab clicks
   if(_isNewFwd){
     navHistory.back.push(_captureCurrent());
@@ -807,8 +939,10 @@ function setActiveTab(name, opts){
       var _curH = location.hash || '';
       if(_curH.toLowerCase().indexOf(_h + '?') === 0) _h = _curH;
     } catch(e){}
+    _navCurHash = _h;
     if(_isNewFwd){
-      _gaSeq++; _gaCurrent = _gaSeq;
+      _gaCurrent = _gaCurrent + 1; _gaSeq = _gaCurrent;
+      _navTrace('tab ' + _gaSeq + ' -> ' + name);
       try { history.pushState({ga:_gaSeq}, '', _h); } catch(e){ location.hash = name.toLowerCase(); }
     } else {
       try { history.replaceState({ga:_gaCurrent}, '', _h); } catch(e){ location.hash = name.toLowerCase(); }
@@ -1305,7 +1439,15 @@ function bindZoneD(){
   window.addEventListener('popstate', function(e){
     var sh = document.getElementById('appShell');
     if(!sh || sh.hidden) return;
-    var target = (e.state && typeof e.state.ga === 'number') ? e.state.ga : 0;
+    if(!(e.state && typeof e.state.ga === 'number')){
+      // Entry with no step number (written by old code or an outside link).
+      // Never treat it as "step 0" — that unwinds the whole trail to TIMELINE.
+      // Re-stamp it as the current step and stay where we are.
+      try { history.replaceState({ga:_gaCurrent}, '', location.hash || ''); } catch(e2){}
+      return;
+    }
+    var target = e.state.ga;
+    _navTrace('pop ' + _gaCurrent + ' -> ' + target + ' back=' + navHistory.back.length + ' fwd=' + navHistory.forward.length);
     var steps;
     if(target < _gaCurrent){
       steps = _gaCurrent - target; _gaCurrent = target;
@@ -1510,6 +1652,7 @@ function _hideEntryDoor(){
     if(ALL_TABS[_i].toLowerCase() === _viewPart){ _target = ALL_TABS[_i]; break; }
   }
   if(_target){
+    _navCurHash = location.hash;
     try { history.replaceState({ga:0}, '', location.hash); } catch(e){}
     state.activeTab = _target;
     setActiveTab(_target, { skipHistory: true });

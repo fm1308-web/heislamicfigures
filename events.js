@@ -182,7 +182,22 @@ function _evGoToFigure(name){
 }
 window._evGoToFigure=_evGoToFigure;
 
+var _evNavTag = '';
+var _evNavLast = '', _evNavSnap = null;
+function _evNavState(){ return { start: _startYear, end: _endYear, search: (window.searchQ||''), tag: _evNavTag || '' }; }
+function _evNavKey(){ return JSON.stringify(_evNavState()); }
+function _evNavStep(){
+  // NAV: a different year range / search / category is a step the Back button must return to.
+  try {
+    var _k = _evNavKey();
+    if(_evNavLast && _k !== _evNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_evNavSnap);
+    _evNavLast = _k;
+    _evNavSnap = _evNavState();
+  } catch(e){}
+}
 function _evFilterByTag(tag){
+  _evNavTag = tag || '';
+  _evNavStep();
   var data=window.eventsData||[];
   var filtered=data.filter(function(e){
     return e.year>=_startYear&&e.year<=_endYear&&(e.tags||[]).indexOf(tag)!==-1;
@@ -427,6 +442,8 @@ function _buildRow(ev,showYear,spanCount){
 }
 
 function _renderRange(data,startYr,endYr){
+  _evNavTag = '';
+  _evNavStep();
   _evStopAnimate();
 
   var filtered=(data||[]).filter(function(e){return e.year>=startYr&&e.year<=endYr;});
@@ -846,9 +863,34 @@ function _eventsInfoHtml(){
   // ═══════════════════════════════════════════════════════════
   var _mounted = false;
 
+  function captureState(){ return _evNavState(); }
+  function restoreState(s){
+    if(!s || !window._navWhen) return;
+    window._navWhen(function(){ return _inited && document.getElementById('evScroll'); }, function(){
+      _startYear = s.start || 500; _endYear = s.end || 2025;
+      window.searchQ = s.search || '';
+      try { var si = document.getElementById('search'); if(si && si.value !== window.searchQ) si.value = window.searchQ; } catch(e){}
+      try {
+        var zb = document.getElementById('zoneB');
+        if(zb){
+          zb.querySelectorAll('button').forEach(function(b){
+            var t = (b.textContent||'').trim().toUpperCase();
+            if(t === 'CENTURY' || /^\d{3,4}[–-]\d{3,4}$/.test(t)) b.textContent = (_startYear === 500 && _endYear === 2025) ? 'CENTURY' : (_startYear+'–'+_endYear);
+            if(t === 'CATEGORY' && s.tag) b.textContent = s.tag;
+          });
+        }
+      } catch(e){}
+      _evNavTag = s.tag || '';
+      _evNavLast = _evNavKey(); _evNavSnap = _evNavState();
+      if(s.tag) _evFilterByTag(s.tag); else _renderRange(window.eventsData, _startYear, _endYear);
+      _evNavLast = _evNavKey(); _evNavSnap = _evNavState();
+    }, 8000);
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _evNavLast = ''; _evNavTag = '';
     _ensureEvTafsirXref();
 
     document.body.classList.add('ev-mounted');
@@ -941,6 +983,8 @@ function _eventsInfoHtml(){
     mount: mount,
     unmount: unmount,
     infoHtml: _eventsInfoHtml,
+    captureState: captureState,
+    restoreState: restoreState,
     animateStart: _evAnimPlay,
     animatePause: _evAnimPause,
     animateStop:  _evStopAnimate,

@@ -483,9 +483,18 @@ function _loadCrossTraditionBios(){
   });
 }
 
+var _oneNavLast = '', _oneNavSnap = null;
 function _renderMain(){
   var main=document.getElementById('one-main');
   if(!main) return;
+  // NAV: a different figure (or set of figures) is a step the Back button must return to.
+  try {
+    var _key = _selected.join('|');
+    if(_oneNavLast && _key !== _oneNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_oneNavSnap);
+    _oneNavLast = _key;
+    _oneNavSnap = (typeof captureState === 'function') ? captureState() : null;
+    if(_selected.length === 1 && window._navSetHash) window._navSetHash('#one/' + encodeURIComponent(_selected[0]));
+  } catch(e){}
 
   if(!_selected.length){
     main.className='';
@@ -1321,9 +1330,49 @@ function _oneInfoHtml(){
       .catch(function(e){ console.warn('[ONE] tafsir xref load failed', e); _oneTafsirLoading = false; });
   }
 
+  function captureState(){
+    var open = [];
+    try {
+      document.querySelectorAll('#one-main .one-col, #one-main').forEach(function(col, ci){
+        col.querySelectorAll(':scope > .one-section.open, :scope .one-section.open').forEach(function(sec){
+          var t = sec.querySelector('.one-sec-title');
+          if(t) open.push(ci + ':' + t.textContent.trim());
+        });
+      });
+    } catch(e){}
+    return { selected: _selected.slice(), open: open };
+  }
+  function restoreState(s){
+    if(!s || !s.selected || !s.selected.length || !window._navWhen) return;
+    window._navWhen(function(){ return PEOPLE && PEOPLE.length && document.getElementById('one-main'); }, function(){
+      if(_selected.join('|') !== s.selected.join('|')){
+        _selected = s.selected.slice();
+        _oneNavLast = _selected.join('|');
+        _oneNavSnap = { selected: _selected.slice(), open: s.open || [] };
+        _syncUI();
+        _renderMain();
+      }
+      window._navWhen(function(){ return document.querySelector('#one-main .one-section'); }, function(){
+        try {
+          var cols = document.querySelectorAll('#one-main .one-col');
+          var scope = cols.length ? cols : [document.getElementById('one-main')];
+          (s.open || []).forEach(function(k){
+            var ci = parseInt(k.split(':')[0], 10) || 0, title = k.slice(k.indexOf(':') + 1);
+            var col = scope[ci] || scope[0]; if(!col) return;
+            col.querySelectorAll('.one-section').forEach(function(sec){
+              var t = sec.querySelector('.one-sec-title');
+              if(t && t.textContent.trim() === title) sec.classList.add('open');
+            });
+          });
+        } catch(e){}
+      }, 6000);
+    }, 8000);
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _oneNavLast = '';
 
     document.body.classList.add('on-mounted');
     _ensureOneTafsirXref();
@@ -1404,7 +1453,7 @@ function _oneInfoHtml(){
     if(zc) zc.innerHTML = '';
   }
 
-  return { mount: mount, unmount: unmount, infoHtml: _oneInfoHtml };
+  return { mount: mount, unmount: unmount, infoHtml: _oneInfoHtml, captureState: captureState, restoreState: restoreState };
 })();
 
 // Click handler for "Hadith Narrations" block — opens MONASTIC filtered by narrator

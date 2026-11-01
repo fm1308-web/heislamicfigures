@@ -658,7 +658,15 @@ function _thinkInfoHtml(){
     +'<p style="color:#999;font-size:var(--fs-3);font-style:normal;margin-top:16px">AI-generated · independently verify</p>';
 }
 
+var _thNavLast = '', _thNavSnap = null;
 function _renderCanvas(){
+  // NAV: a different set of selected concepts is a step the Back button must return to.
+  try {
+    var _key = Array.from(_selConceptSlugs).sort().join('|');
+    if(_thNavLast && _key !== _thNavLast && window._navCaptureCurrent) window._navCaptureCurrent(_thNavSnap);
+    _thNavLast = _key;
+    _thNavSnap = { concepts: Array.from(_selConceptSlugs), books: !!_tkBkOpen };
+  } catch(e){}
   var canvas=document.getElementById('think-canvas'),defEl=document.getElementById('think-definition'),statsEl=document.getElementById('think-stats');
   if(!canvas) return;
   if(_selConceptSlugs.size===0){
@@ -1855,9 +1863,29 @@ function _gaSyncLangBtn(btn){
   // ═══════════════════════════════════════════════════════════
   var _mounted = false;
 
+  function captureState(){
+    return { concepts: Array.from(_selConceptSlugs), books: !!_tkBkOpen };
+  }
+  function restoreState(s){
+    if(!s || !s.concepts || !window._navWhen) return;
+    window._navWhen(function(){ return _data && _data.concepts && document.getElementById('think-canvas-wrap'); }, function(){
+      var want = s.concepts.slice().sort().join('|');
+      var have = Array.from(_selConceptSlugs).sort().join('|');
+      if(want !== have){
+        _selConceptSlugs = new Set(s.concepts);
+        _thNavLast = want;
+        _thNavSnap = { concepts: s.concepts.slice(), books: !!s.books };
+        try { _syncConceptBtn(); } catch(e){}
+        try { _buildConceptPanel(); } catch(e){}
+        _renderCanvas();
+      }
+    }, 8000);
+  }
+
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _thNavLast = '';
 
     document.body.classList.add('th-mounted');
 
@@ -1905,6 +1933,8 @@ function _gaSyncLangBtn(btn){
     mount: mount,
     unmount: unmount,
     infoHtml: _thinkInfoHtml,
+    captureState: captureState,
+    restoreState: restoreState,
     animateStart: _thinkAnimPlay,
     animatePause: _thinkAnimPause,
     animateStop:  _thinkAnimStop,

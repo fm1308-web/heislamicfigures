@@ -999,7 +999,7 @@ function _exScrollToVerse(v){
 // setView is a sandbox stub, so we navigate via the actual tab DOM.
 window._exJumpToStart = function(s, v){
   try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
-  location.hash = '#start?surah=' + s + '&verse=' + v;
+  (window._navSetHash ? window._navSetHash('#start?surah=' + s + '&verse=' + v) : history.replaceState(null,'','#start?surah=' + s + '&verse=' + v));
   var clicked = false;
   var candidates = document.querySelectorAll(
     '#tabRow1 button, #tabRow1 a, #tabRow2 button, #tabRow2 a, [data-view="start"], .tab-start'
@@ -1024,9 +1024,17 @@ window._exJumpToStart = function(s, v){
   }, 80);
 };
 
+var _exNavMountedAt = 0;
 function _exOpenTafsir(id, surah, verse){
   var ed = EX_TAFSIR_REGISTRY.find(function(t){ return t.id === id; });
   if(!ed) { _exRenderBlank(); return; }
+  // NAV: a different tafsir or surah is a step the Back button must return to.
+  try {
+    if(_mounted && _exState.edition && (Date.now() - _exNavMountedAt) > 2500 && window._navCaptureCurrent
+       && (_exState.edition.id !== ed.id || (surah && _exState.surah !== surah))){
+      window._navCaptureCurrent();
+    }
+  } catch(e){}
   var langSel = document.getElementById('ex-langSel');
   var pref = langSel ? langSel.value : '';
   if(pref && pref !== ed.lang){
@@ -1182,7 +1190,7 @@ function _exHashWrite(){
   if(_exState.surah)   parts.push('surah=' + _exState.surah);
   if(_exState.verse)   parts.push('verse=' + _exState.verse);
   var newHash = parts.length ? ('#explain?' + parts.join('&')) : '#explain';
-  if(location.hash !== newHash) history.replaceState(null, '', newHash);
+  if(location.hash !== newHash) (window._navSetHash ? window._navSetHash(newHash) : history.replaceState(null,'',newHash));
 }
 
 function _exPopulateFilters(){
@@ -1541,6 +1549,7 @@ function _exBuildDOM(container){
   function _exMount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    _exNavMountedAt = Date.now();
     document.body.classList.add('ex-mounted');
 
     var view = document.getElementById('explain-view');
@@ -1698,6 +1707,8 @@ function _exBuildDOM(container){
   function _exCaptureState(){
     var body = document.querySelector('#explain-view .ex-body');
     return {
+      editionId: _exState.edition ? _exState.edition.id : null,
+      surah: _exState.surah || null,
       scroll: body ? body.scrollTop : 0,
       pinEntries: _pinnedTafsirs ? _pinnedTafsirs.entries.slice() : null,
       pinLabel: _pinnedTafsirs ? _pinnedTafsirs.label : ''
@@ -1705,6 +1716,15 @@ function _exBuildDOM(container){
   }
   function _exRestoreState(s){
     if(!s) return;
+    // NAV: reopen the same tafsir + surah if the address did not already do it.
+    if(s.editionId && window._navWhen){
+      window._navWhen(function(){ return _exInited && window.EX_TAFSIR_REGISTRY && document.getElementById('explain-view'); }, function(){
+        var cur = _exState.edition ? _exState.edition.id : null;
+        if(cur !== s.editionId || (s.surah && _exState.surah !== s.surah)){
+          _exOpenTafsir(s.editionId, s.surah || 1, null);
+        }
+      }, 6000);
+    }
     if(s.pinEntries && s.pinEntries.length){
       _pinnedTafsirs = { entries: s.pinEntries.slice(), label: s.pinLabel || '' };
       setTimeout(function(){
