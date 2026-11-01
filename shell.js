@@ -541,7 +541,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=217';
+  var _cb = '?v=218';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';

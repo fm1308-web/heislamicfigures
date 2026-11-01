@@ -706,12 +706,17 @@ body[data-tab-mode="focused"] .tab-arrow-next { right: 28px; }
 }
 
 /* --- ZONE C --- */
+/* Zone D (bottom bar) is position:fixed, 56px tall. Zone C stops exactly at
+   its top edge (margin-bottom), so every view's own scroll boxes end above
+   the bar instead of running underneath it. (Was padding-bottom:64px, which
+   only helped views that scroll zoneC itself, not views with inner boxes.) */
 .zone-c {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   background: var(--bg-navy);
   padding: 0;
-  padding-bottom: 64px;
+  margin-bottom: 56px;
 }
 
 .view-placeholder {
@@ -1617,4 +1622,21 @@ html[dir="rtl"] .zone-d {
 body.fin-fullscreen[data-active-tab="FINANCE"] .zone-a,
 body.fin-fullscreen[data-active-tab="FINANCE"] .zone-b,
 body.fin-fullscreen[data-active-tab="FINANCE"] .zone-d { display: none !important; }
-body.fin-fullscreen[data-active-tab="FINANCE"] .zone-c { padding-bottom: 0 !important; }
+body.fin-fullscreen[data-active-tab="FINANCE"] .zone-c { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+
+/* ── ONE SCROLLBAR STYLE FOR THE WHOLE APP (shell rule, every view) ──────────
+   Fixed, generous width in CSS pixels, so it grows with browser zoom like the
+   rest of the page (native/overlay scrollbars stay thin and shrink relative to
+   zoomed content). Small widgets that set their own scrollbar (dropdowns,
+   filter rows, reader) keep theirs: their rules are more specific. */
+.app-shell ::-webkit-scrollbar { width: 14px; height: 14px; }
+.app-shell ::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+.app-shell ::-webkit-scrollbar-thumb {
+  background-color: var(--gold-dim);
+  border-radius: 7px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  min-height: 48px;
+}
+.app-shell ::-webkit-scrollbar-thumb:hover { background-color: var(--gold); }
+.app-shell ::-webkit-scrollbar-corner { background: transparent; }

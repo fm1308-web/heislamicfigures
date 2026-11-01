@@ -2273,6 +2273,7 @@ function _applySearch(){
       bar.textContent = matches.length + ' result' + (matches.length!==1?'s':'') + ' for "' + (_monSearchQuery||'') + '"';
       res.insertBefore(bar, res.firstChild);
       res.scrollTop = 0;
+      var _mv = document.getElementById('monastic-view'); if(_mv) _mv.scrollTop = 0;
       _monHighlight(_monSearchQuery);
     }
   } catch(e){}
@@ -2445,6 +2446,8 @@ window._monNavPage = function(dir){
   if(newPage < 0 || newPage >= totalPages) return;
   _renderRows(_lastFiltered, _lastColKey, newPage);
   if(_resultsEl) _resultsEl.scrollTop = 0;
+  // One scroller for the whole view now (results box no longer scrolls on its own).
+  var _mv = document.getElementById('monastic-view'); if(_mv) _mv.scrollTop = 0;
 };
 
 // ── Multi-select dropdown helpers ──
@@ -4004,7 +4007,7 @@ window.MonasticView = (function(){
           '<div id="mon-timeline-band"></div>' +
           '<div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>' +
           '<div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em">Loading hadiths…</div>' +
-          '<div id="mon-results" class="content-body" style="max-height:70vh;overflow-y:auto;border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>' +
+          '<div id="mon-results" class="content-body" style="border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>' +
           '<div style="text-align:center;margin-top:20px;font-size:var(--fs-3);color:#4B5563;font-style:normal">Data source: sahih-explorer dataset</div>' +
         '</div>' +
       '</div>';
