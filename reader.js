@@ -94,10 +94,14 @@ function open(tab){
     + '</div>'
     + '<div id="fr-viewport"><div id="fr-host"></div></div>'
     + '<div id="fr-bottom">'
-    +   '<button class="fr-round" id="fr-prev" type="button" title="Previous page">◀</button>'
-    +   '<button class="fr-round" id="fr-next" type="button" title="Next page">▶</button>'
+    // App Back / Forward — same buttons, same look as the main bottom bar.
+    // (The page arrows used to be gold ◀ ▶ here too and were mistaken for Back.)
+    +   '<button class="zd-nav" id="fr-nav-back" type="button" aria-label="Back" title="Back — to where you were before">◀</button>'
+    +   '<button class="zd-nav" id="fr-nav-fwd" type="button" aria-label="Forward" title="Forward">▶</button>'
     +   '<span class="fr-spacer"></span>'
+    +   '<button class="fr-round" id="fr-prev" type="button" title="Previous page (scroll up)">▲</button>'
     +   '<span id="fr-page">Page 1 of 1</span>'
+    +   '<button class="fr-round" id="fr-next" type="button" title="Next page (scroll down)">▼</button>'
     +   '<span class="fr-spacer"></span>'
     +   '<button class="fr-round" id="fr-bmk" type="button" title="My Bookmarks — tap a verse\'s own flag to save it">' + FLAG_SVG + '</button>'
     +   '<button class="fr-round" id="fr-info" type="button" title="About this text">ⓘ</button>'
@@ -189,6 +193,9 @@ function _wire(){
     menuPanel.classList.toggle('open');
   });
   q('#fr-exit').addEventListener('click', close);
+  q('#fr-nav-back').addEventListener('click', function(){ var b = document.getElementById('zdBack'); if(b && !b.disabled) b.click(); });
+  q('#fr-nav-fwd').addEventListener('click', function(){ var b = document.getElementById('zdForward'); if(b && !b.disabled) b.click(); });
+  _syncNavBtns();
   q('#fr-prev').addEventListener('click', function(){ _goto(_pages.cur - 1); });
   q('#fr-next').addEventListener('click', function(){ _goto(_pages.cur + 1); });
   q('#fr-font-m').addEventListener('click', function(){ _setScale(_scale - 0.1); });
@@ -339,6 +346,15 @@ function _recalc(){
   if(lbl) lbl.textContent = 'Page ' + cur + ' of ' + total;
   _refreshTitle();
   _refreshBmk();
+  _syncNavBtns();
+}
+function _syncNavBtns(){
+  if(!_overlay) return;
+  var pairs = [['#fr-nav-back','zdBack'],['#fr-nav-fwd','zdForward']];
+  pairs.forEach(function(p){
+    var mine = _overlay.querySelector(p[0]), app = document.getElementById(p[1]);
+    if(mine) mine.disabled = !app || app.disabled;
+  });
 }
 function _deferRecalc(){ if(_rt) clearTimeout(_rt); _rt = setTimeout(_recalc, 150); }
 function _onScroll(){ if(_rt) clearTimeout(_rt); _rt = setTimeout(_recalc, 80); }
@@ -420,7 +436,8 @@ function _refreshPill(){
   if(btn) btn.style.display = ok ? '' : 'none';
   // Follow-through: reopen the reader on the destination view when ready.
   if(_reopen){
-    if(tab !== _reopen.tab || Date.now() > _reopen.until){ _reopen = null; }
+    if(window._navRestoring){ _reopen = null; }
+    else if(tab !== _reopen.tab || Date.now() > _reopen.until){ _reopen = null; }
     else if(ok && document.querySelector(cfg.content)){
       var t = _reopen.tab; _reopen = null;
       open(t);
@@ -438,10 +455,38 @@ function _boot(){
   if(zb){
     try { new MutationObserver(_ensurePill).observe(zb, { childList: true }); } catch(e){}
   }
-  setInterval(_refreshPill, 800);
+  setInterval(function(){ _refreshPill(); _syncNavBtns(); }, 800);
 }
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _boot);
 else _boot();
 
-window.FocusReader = { open: open, close: close, isOpen: function(){ return _open; } };
+// ── Back/Forward support (shell.js) ─────────────────────────
+// state(): what to remember for a step. restore(): reopen READ mode on the
+// view once its book is back, and (optionally) put the reader's scroll back.
+function state(){ return _open ? { tab: _tab, scroll: _viewport ? _viewport.scrollTop : 0 } : null; }
+function cancelReopen(){ _reopen = null; }
+function restore(st, pixel){
+  if(!st || !st.tab || !VIEWS[st.tab]) return;
+  _reopen = null;
+  var cfg = VIEWS[st.tab], t0 = Date.now();
+  (function wait(){
+    var tab = document.body.getAttribute('data-active-tab') || '';
+    if(tab !== st.tab) return;                       // user moved on
+    var ok = false;
+    try { ok = !!cfg.ready() && !!document.querySelector(cfg.content); } catch(e){}
+    if(!ok){ if(Date.now() - t0 < 10000) setTimeout(wait, 150); return; }
+    if(!_open) open(st.tab);
+    if(!pixel) return;
+    var t1 = Date.now(), seq0 = window._navInputSeq ? window._navInputSeq() : 0;
+    (function put(){
+      if(!_viewport) return;
+      if(window._navInputSeq && window._navInputSeq() !== seq0) return;   // user took over
+      if(_viewport.scrollHeight - _viewport.clientHeight >= st.scroll - 2){
+        if(Math.abs(_viewport.scrollTop - st.scroll) > 1) _viewport.scrollTop = st.scroll;
+      }
+      if(Date.now() - t1 < 5000) setTimeout(put, 250);   // keep it there while the page settles
+    })();
+  })();
+}
+window.FocusReader = { open: open, close: close, isOpen: function(){ return _open; }, state: state, restore: restore, cancelReopen: cancelReopen };
 })();

@@ -282,19 +282,23 @@ var _srNavCur = null, _srNavSnap = null;
 function _srNavState(){ return { scholar: _srOpenScholar, cur: _srNavCur ? { slug: _srNavCur.slug, type: _srNavCur.type, bookId: _srNavCur.bookId, title: _srNavCur.title } : null }; }
 function _srCaptureState(){ return _srNavState(); }
 function _srRestoreState(st){
-  if(!st || !st.scholar || !window._navWhen) return;
+  // The book on screen (st.cur) is what matters; the scholar's list may have
+  // been folded shut (st.scholar null) while the book stayed open.
+  var who = st && (st.cur ? st.cur.slug : st.scholar);
+  if(!st || !who || !window._navWhen) return;
   window._navWhen(function(){ var p = document.getElementById('sr-left'); return p && p.querySelector('.sr-card'); }, function(){
-    if(_srOpenScholar !== st.scholar) selectStudyScholar(st.scholar);
+    if(st.scholar && _srOpenScholar !== st.scholar) selectStudyScholar(st.scholar);
     if(!st.cur) return;
-    window._navWhen(function(){ return _srBookData[st.scholar] && _srBookData[st.scholar].length; }, function(){
-      var books = _srBookData[st.scholar] || [];
+    if(!_srBookData[who]){ try { _fetchScholarBooks(who); } catch(e){} }
+    window._navWhen(function(){ return _srBookData[who] && _srBookData[who].length; }, function(){
+      var books = _srBookData[who] || [];
       var book = null;
       for(var i = 0; i < books.length; i++){ if((st.cur.bookId != null && books[i].book_id === st.cur.bookId) || books[i].title === st.cur.title){ book = books[i]; break; } }
       if(!book || !book.types || !book.types[st.cur.type]) return;
       setTimeout(function(){
-        _loadBookContent(st.scholar, st.cur.type, book);
+        _loadBookContent(who, st.cur.type, book);
         try {
-          var dd = document.querySelector('.sr-card[data-slug="' + st.scholar + '"] + .sr-book-dropdown') || document.querySelector('.sr-book-dropdown.open');
+          var dd = document.querySelector('.sr-card[data-slug="' + who + '"] + .sr-book-dropdown') || document.querySelector('.sr-book-dropdown.open');
           if(dd){
             var items = dd.querySelectorAll('.sr-book-item');
             items.forEach(function(it){

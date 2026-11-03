@@ -795,14 +795,19 @@ function _tlPickKey(p){ return p._narrator ? ('s:'+p.slug) : ('n:'+p.famous); }
 let _lastSortedPeople=[]; // tracks exactly the sorted array used in the last renderRows call
 
 window._captureState_timeline=function(){
-  return{types:Array.from(selTypes),trads:Array.from(selTrads),search:searchQ,year:activeYear,picked:Array.from(_tlPicked),pickOnly:_tlPickOnly,person:(activePerson&&activePerson.famous)||null};
+  return{types:Array.from(selTypes),trads:Array.from(selTrads),badge:selBadge||'',search:searchQ,year:activeYear,picked:Array.from(_tlPicked),pickOnly:_tlPickOnly,person:(activePerson&&activePerson.famous)||null};
 };
 // NAV: wait for the rows to exist, put filters back, then reopen the figure card.
 window._restoreState_timeline_nav=function(s){
   if(!s||!window._navWhen) return;
   window._navWhen(function(){ return PEOPLE.length && document.querySelector('.tl-row'); }, function(){
     try { window._restoreState_timeline(s); } catch(e){}
-    if(s.person){ setTimeout(function(){ try { jumpTo(s.person); } catch(e){} }, 80); }
+    // Reopen the figure card WITHOUT scrolling the list to it (jumpTo scrolls);
+    // the list's own scroll position is put back separately by the shell.
+    if(s.person){ setTimeout(function(){ try {
+      var p = PEOPLE.find(function(pp){ return pp.famous === s.person; });
+      if(p && (!activePerson || activePerson.famous !== p.famous)){ activePerson = p; renderInfoWithDetails(p); }
+    } catch(e){} }, 80); }
   }, 8000);
 };
 window._restoreState_timeline=function(s){
@@ -812,6 +817,7 @@ window._restoreState_timeline=function(s){
   var box=document.getElementById('search');if(box) box.value=searchQ;
   if(s.year!=null&&typeof _setSliderYear==='function') _setSliderYear(s.year);
   syncDD('type');syncDD('trad');
+  selBadge=s.badge||''; try{ _syncBadgeDD(); }catch(e){}
   _tlPicked=new Set(s.picked||[]); _tlPickOnly=!!s.pickOnly && _tlPicked.size>0; _tlUpdatePickPill();
   applyFilterAndFocus();
 };
@@ -932,8 +938,16 @@ async function _ensureDetails(p){
 // Wrapper functions — use these instead of calling renderInfo / openRelationsCard / _openMapCard directly from click handlers
 async function renderInfoWithDetails(p){
   // NAV: opening a different figure's card is a step the Back button must return to.
+  // Callers set activePerson BEFORE calling here, so compare with the figure
+  // whose card was last drawn, and save the state from that previous draw.
   try {
-    if(p && activePerson && activePerson.famous !== p.famous && window._navCaptureCurrent) window._navCaptureCurrent();
+    var _nk = p ? _tlPickKey(p) : '';
+    if(window._tlNavShown && _nk && _nk !== window._tlNavShown && window._navCaptureCurrent) window._navCaptureCurrent(window._tlNavSnap || null);
+    if(_nk){
+      window._tlNavShown = _nk;
+      window._tlNavSnap = window._captureState_timeline ? window._captureState_timeline() : null;
+      if(window._tlNavSnap) window._tlNavSnap.person = p.famous || null;
+    }
   } catch(e){}
   // NARRATORS: route to the narrator card here, at the single choke point every
   // caller goes through. Several call sites re-render `activePerson` on their
@@ -3048,6 +3062,7 @@ function _timelineInfoHtml(){
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    window._tlNavShown = ''; window._tlNavSnap = null;
 
     document.body.classList.add('tl-mounted');
     _injectMainShell(zoneCEl);

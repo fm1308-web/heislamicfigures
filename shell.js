@@ -49,18 +49,28 @@ function _navScrollKey(el, idx){
   return el.tagName.toLowerCase() + (cls ? '.' + cls : '') + '@' + idx;
 }
 function _navCaptureScrolls(){
+  // Every box that can scroll — including ones at the top (0), so a view that
+  // jumps somewhere on its own while reopening is put back to the top too.
+  // Index counting matches _navFindByKey (all elements with that tag+classes).
   var out = [];
   var zc = document.getElementById('zoneC');
   if(!zc) return out;
-  if(zc.scrollTop > 0) out.push({ key: '#zoneC', top: zc.scrollTop });
+  if(zc.scrollHeight > zc.clientHeight + 1) out.push({ key: '#zoneC', top: zc.scrollTop });
   var all = zc.querySelectorAll('*');
   var seen = {};
   for(var i = 0; i < all.length; i++){
     var el = all[i];
-    if(el.scrollTop > 0 && el.scrollHeight > el.clientHeight){
-      var base = el.id ? ('#' + el.id) : (el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).slice(0,2).join('.') : ''));
-      var n = seen[base] || 0; seen[base] = n + 1;
-      out.push({ key: el.id ? ('#' + el.id) : (base + '@' + n), top: el.scrollTop });
+    var base = null;
+    if(!el.id){
+      var cls = (typeof el.className === 'string' && el.className.trim()) ? '.' + el.className.trim().split(/\s+/).slice(0,2).join('.') : '';
+      base = el.tagName.toLowerCase() + cls;
+      seen[base] = (seen[base] || 0) + 1;
+    }
+    if(el.scrollHeight > el.clientHeight + 1 && el.clientHeight > 40){
+      var oy = getComputedStyle(el).overflowY;
+      if(oy === 'auto' || oy === 'scroll'){
+        out.push({ key: el.id ? ('#' + el.id) : (base + '@' + (seen[base] - 1)), top: el.scrollTop });
+      }
     }
   }
   return out;
@@ -88,18 +98,26 @@ function _navFindByKey(key){
 // Views draw asynchronously (data loads, two-frame renders), so one attempt is
 // never enough. Keep re-applying for a few seconds until each box has content
 // tall enough to hold the saved position.
+var _navInputSeq = 0;   // bumps on any real user input (incl. wheel/touch scroll)
+['wheel','touchmove','pointerdown','keydown'].forEach(function(ev){
+  document.addEventListener(ev, function(e){ if(e.isTrusted || window.__navTestInput) _navInputSeq++; }, true);
+});
+window._navInputSeq = function(){ return _navInputSeq; };
 function _navRestoreScrolls(list){
   if(!list || !list.length) return;
+  // Re-apply for ~6 s: views redraw late and some scroll themselves (e.g. to
+  // a figure's row) while reopening. Stop the moment the user touches anything.
+  var seq0 = _navInputSeq;
   var delays = [0, 120, 300, 600, 1000, 1500, 2200, 3000, 4000, 5500];
   delays.forEach(function(d){
     setTimeout(function(){
+      if(_navInputSeq !== seq0) return;
       list.forEach(function(it){
-        if(it.done) return;
         var el = _navFindByKey(it.key);
         if(!el) return;
-        if(el.scrollHeight - el.clientHeight >= it.top - 2){
-          el.scrollTop = it.top;
-          it.done = true;
+        var target = Math.min(it.top, Math.max(0, el.scrollHeight - el.clientHeight));
+        if(el.scrollHeight - el.clientHeight >= it.top - 2 || d >= 3000){
+          if(Math.abs(el.scrollTop - target) > 1) el.scrollTop = target;
         }
       });
     }, d);
@@ -132,12 +150,29 @@ function _captureCurrent(){
       vs = _activeViewApi.captureState();
     }
   } catch(e){}
+  var rdr = null;
+  try {
+    if(window.FocusReader && window.FocusReader.isOpen() && typeof window.FocusReader.state === 'function'){
+      rdr = window.FocusReader.state();   // { tab, scroll }
+    }
+  } catch(e){}
   return {
     tab: state.activeTab,
     hash: _navCurHash || location.hash || '',
     scrolls: _navCaptureScrolls(),
-    viewState: vs
+    viewState: vs,
+    reader: rdr
   };
+}
+// READ mode: Back/Forward leave the reader first (its content is moved out of
+// the view while open). The entry being restored says whether to reopen it.
+function _navCloseReader(){
+  try {
+    if(window.FocusReader){
+      if(typeof window.FocusReader.cancelReopen === 'function') window.FocusReader.cancelReopen();
+      if(window.FocusReader.isOpen()) window.FocusReader.close();
+    }
+  } catch(e){}
 }
 
 // Views write the address through here, never through history.replaceState(null, ...)
@@ -164,8 +199,10 @@ function navBack(){
   window._navRestoring = true;   // no view may record a step while we move
   if(window._navRestoreT) clearTimeout(window._navRestoreT);
   window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 6000);
+  _navBlocked = true;
   navHistory.forward.push(_captureCurrent());
   if(navHistory.forward.length > NAV_MAX) navHistory.forward.shift();
+  _navCloseReader();
   var entry = navHistory.back.pop();
   _navTrace('back -> ' + entry.tab + ' ' + entry.hash);
   if(entry.hash){
@@ -180,8 +217,10 @@ function navForward(){
   window._navRestoring = true;
   if(window._navRestoreT) clearTimeout(window._navRestoreT);
   window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 6000);
+  _navBlocked = true;
   navHistory.back.push(_captureCurrent());
   if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
+  _navCloseReader();
   var entry = navHistory.forward.pop();
   _navTrace('fwd -> ' + entry.tab + ' ' + entry.hash);
   if(entry.hash){
@@ -193,23 +232,66 @@ function navForward(){
 
 // Record "where I am now" as a step. Called by views before an in-view move
 // (new surah, new tafsir, new figure, new concept) and before cross-view jumps.
-// Guards: never while a step is being restored; never twice within 600 ms
-// (a jump often calls this and then clicks a tab, which would record again);
-// never in the first 2.5 s after a view opened (the opening itself is not a
-// user step — the step before it was already recorded).
+// Guards:
+//  - BLOCKED from the moment a view opens, or Back/Forward starts, until the
+//    user next presses a key / mouse / finger. Anything a view changes on its
+//    own while opening or restoring is not a user step. (Replaces the old
+//    fixed 2.5 s / 6 s timers, which also swallowed real clicks made quickly.)
+//  - never twice within 600 ms (a jump often calls this and then clicks a tab).
+//  - typing in a search box is ONE step, not one per letter.
 var _navLastCaptureAt = 0;
 var _navMountedAt = 0;
+var _navBlocked = false;
+var _navLastKeyAt = 0, _navLastStepWasTyping = false;
 window._navRestoring = false;
+// Snapshot of the screen taken at the instant of every user press/tap/key,
+// BEFORE the app reacts to it. If that press leads to a step, this is what the
+// step saves — exactly what the user was looking at, including filters, picks
+// and scroll that are not steps themselves.
+var _navPre = null;
+function _navTakePre(e){
+  try {
+    if(!_activeViewApi) return;
+    var now = Date.now();
+    if(e.type === 'keydown' && _navPre && now - _navPre.at < 400) return;   // typing: don't rescan per letter
+    if(e.target && e.target.closest && e.target.closest('#zoneD, #fr-bottom')) return; // Back/Forward bar
+    _navPre = { at: now, entry: _captureCurrent() };
+  } catch(err){ _navPre = null; }
+}
+function _navUserInput(e){
+  if(!e || !(e.isTrusted || window.__navTestInput)) return;
+  if(!_navBlocked && !window._navRestoring) _navTakePre(e);
+  else _navPre = null;
+  _navBlocked = false;
+  window._navRestoring = false;
+  if(e.type === 'keydown'){
+    var t = e.target;
+    if(t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) _navLastKeyAt = Date.now();
+  }
+}
+['pointerdown','mousedown','touchstart','keydown'].forEach(function(ev){
+  document.addEventListener(ev, _navUserInput, true);
+});
+window._navIsBlocked = function(){ return _navBlocked; };
+window._navDebug = function(){ return { back: navHistory.back, forward: navHistory.forward, ga: _gaCurrent, blocked: _navBlocked, restoring: window._navRestoring }; };   // test/diagnostics only
 window._navCaptureCurrent = function(prevViewState){
   try {
-    if(window._navRestoring) return;
+    if(_navBlocked || window._navRestoring) return;
     var now = Date.now();
     if(now - _navLastCaptureAt < 600) return;
-    if(now - _navMountedAt < 2500) return;
-    var entry = _captureCurrent();
-    // Views that detect a change at draw time have already changed their
-    // state; they pass the snapshot taken at the previous draw.
-    if(prevViewState) entry.viewState = prevViewState;
+    var typing = (now - _navLastKeyAt) < 1500;
+    if(typing && _navLastStepWasTyping) return;   // still the same search
+    _navLastStepWasTyping = typing;
+    var entry;
+    if(_navPre && now - _navPre.at < 10000 && _navPre.entry.tab === state.activeTab){
+      entry = _navPre.entry;            // the screen as it was when the user pressed
+    } else {
+      entry = _captureCurrent();
+      // Views that detect a change at draw time have already changed their
+      // state; they pass the snapshot taken at the previous draw.
+      if(prevViewState) entry.viewState = prevViewState;
+    }
+    _navPre = null;
     navHistory.back.push(entry);
     if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
     navHistory.forward = [];
@@ -513,16 +595,23 @@ function loadAndMountView(name){
       _activeViewApi.mount(zoneC, zoneB);
     }
     _navMountedAt = Date.now();
+    _navBlocked = true;
     if(_pendingRestore){
       var rd = _pendingRestore;
       _pendingRestore = null;
       window._navRestoring = true;
       if(window._navRestoreT) clearTimeout(window._navRestoreT);
-      window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 6000);
+      window._navRestoreT = setTimeout(function(){ window._navRestoring = false; }, 8000);
+      var owns = false;
       if(rd.viewState && _activeViewApi && typeof _activeViewApi.restoreState === 'function'){
-        try { _activeViewApi.restoreState(rd.viewState); } catch(e){ console.warn('[nav] restoreState failed', e); }
+        try { owns = _activeViewApi.restoreState(rd.viewState) === true; } catch(e){ console.warn('[nav] restoreState failed', e); }
       }
-      _navRestoreScrolls(rd.scrolls);
+      // A view that returns true puts its own reading position back
+      // (START: by verse, which survives READ mode and font size changes).
+      if(!owns) _navRestoreScrolls(rd.scrolls);
+      if(rd.reader && rd.reader.tab === name && window.FocusReader && typeof window.FocusReader.restore === 'function'){
+        try { window.FocusReader.restore(rd.reader, !owns); } catch(e){ console.warn('[nav] reader restore failed', e); }
+      }
     }
     _updateNavButtons();
   }
@@ -541,7 +630,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=218';
+  var _cb = '?v=227';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -889,7 +978,12 @@ function setActiveTab(name, opts){
     navHistory.back.push(_captureCurrent());
     if(navHistory.back.length > NAV_MAX) navHistory.back.shift();
     navHistory.forward = [];
+    _navPre = null;
+    _navLastCaptureAt = Date.now();
   }
+  // From here until the user next presses something, nothing the views do
+  // while closing / opening counts as a step (the tab switch IS the step).
+  if(VIEW_REGISTRY[name] && state.activeTab !== name || _isNewFwd || opts.skipHistory) _navBlocked = true;
   if(opts.restoreData){ _pendingRestore = opts.restoreData; }
   try { document.body.setAttribute('data-active-tab', String(name).toUpperCase()); } catch(e){}
   state.activeTab = name;

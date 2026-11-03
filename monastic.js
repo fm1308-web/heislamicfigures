@@ -233,6 +233,7 @@ function _monHandlePendingNarrator(){
   var name = window._stPendingNarrator;
   if(!name) return;
   window._stPendingNarrator = null;
+  window._monJumpAt = Date.now();
   _monSel.period.clear();
   _monSel.topic.clear();
   _monSel.narrator.clear();
@@ -274,6 +275,7 @@ function _monHandlePendingHadith(){
   }
   console.log('[MON] pending hadith received', p);
   window._stPendingHadith = null;
+  window._monJumpAt = Date.now();   // a jump owns the screen: no stale-filter restore
 
   // Resolve incoming xref col → monastic internal key.
   // p.col may already BE a monastic key (sandbox flow), or a xref slug.
@@ -4182,10 +4184,12 @@ window.MonasticView = (function(){
       // Skipped entirely when a cross-link pin is pending or showing: this
       // delayed applyFilters() on a stale (usually empty) snapshot was what
       // replaced the pinned hadiths with the default empty state.
-      if(window._monLastView && !(window._stPendingPinned || (window.Monastic && window.Monastic.hasPinned && window.Monastic.hasPinned()))){
+      var _jumping = window._monJumpAt && (Date.now() - window._monJumpAt) < 3000;
+      if(window._monLastView && !_jumping && !(window._stPendingPinned || (window.Monastic && window.Monastic.hasPinned && window.Monastic.hasPinned()))){
         var snap2 = window._monLastView;
         setTimeout(function(){
           if(window._stPendingPinned) return;
+          if(window._monJumpAt && (Date.now() - window._monJumpAt) < 3000) return;
           if(window.Monastic && window.Monastic.hasPinned && window.Monastic.hasPinned()) return;
           try {
             if(window.Monastic && typeof window.Monastic._importSel === 'function'){

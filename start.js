@@ -766,10 +766,7 @@ function _stSelectSurah(id){
   if(window._stPendingJump && typeof window._stPendingJump.surah === 'number' && window._stPendingJump.surah > 0 && window._stPendingJump.surah !== id){
     id = window._stPendingJump.surah;
   }
-  // NAV: a new surah is a step the Back button must return to.
-  if(_stInited && id !== _stSurah && window._navCaptureCurrent) { try { window._navCaptureCurrent(); } catch(e){} }
   _stSurah=id;
-  try { _stNavHashWrite(); } catch(e){}
   _stPreloadActiveTrans();
   _stRenderSurah();
   _stBuildSurahDD();
@@ -1067,6 +1064,15 @@ function _stUpdateTransLabel(){
 // RENDER SURAH
 // ═══════════════════════════════════════════════════════════
 function _stRenderSurah(){
+  // NAV: a different surah / juz / hizb / manzil / revelation filter is a step.
+  // The step saved is the reading position BEFORE this change (_stNavSnap is
+  // refreshed while the user scrolls).
+  try {
+    var _nk = [_stSurah, _stJuz, _stHizb, _stManzil, _stType].join('|');
+    if(window._stNavLastKey && _nk !== window._stNavLastKey && window._navCaptureCurrent) window._navCaptureCurrent(window._stNavSnap || null);
+    window._stNavLastKey = _nk;
+    setTimeout(function(){ try { if(window._stNavRefreshSnap) window._stNavRefreshSnap(); } catch(e){} }, 0);
+  } catch(e){}
   try { _stLoadWbw(_stSurah); _stInitWbwTooltip(); _stLoadGrammarLabels(); } catch(e){}
   var reader=document.getElementById('st-reader');
   if(!reader||!_stIndex||!_stText)return;
@@ -5396,6 +5402,9 @@ window.StartView = (function(){
   }
 
   function _stShellScrollToVerse(v){
+    // NAV: jumping to a verse with the Verse picker is a step (Back returns to
+    // where you were reading).
+    try { if(window._navCaptureCurrent) window._navCaptureCurrent(window._stNavSnap || null); } catch(e){}
     var row = document.querySelector('.st-verse[data-verse-id="'+v+'"]');
     if(row && row.scrollIntoView) row.scrollIntoView({behavior:'smooth', block:'start'});
   }
@@ -5631,11 +5640,31 @@ window.StartView = (function(){
   var _mounted = false;
 
   // ── NAV memory (Back/Forward) ──────────────────────────────────────────
-  // The verse nearest the middle of the reading box.
+  // Reading position = a verse and how far it sits from the top of the box
+  // that is scrolling: #st-reader normally, #fr-viewport in READ mode (the
+  // verses are moved there). Restored by verse, not by pixels, so it survives
+  // READ mode, font size and layout changes.
+  function _stNavScroller(){
+    var vp = document.getElementById('fr-viewport');
+    if(vp && vp.querySelector('#st-verses')) return vp;
+    return document.getElementById('st-reader');
+  }
+  function _stNavAnchor(){
+    var sc = _stNavScroller(); if(!sc) return null;
+    var rect = sc.getBoundingClientRect();
+    var rows = sc.querySelectorAll('.st-verse[data-verse-id]');
+    for(var i = 0; i < rows.length; i++){
+      var b = rows[i].getBoundingClientRect();
+      if(b.bottom > rect.top + 4){
+        return { verse: parseInt(rows[i].getAttribute('data-verse-id'), 10), offset: Math.round(b.top - rect.top) };
+      }
+    }
+    return null;
+  }
   function _stNavCenterVerse(){
-    var r = document.getElementById('st-reader'); if(!r) return null;
-    var rect = r.getBoundingClientRect(), mid = rect.top + rect.height / 2;
-    var rows = r.querySelectorAll('.st-verse[data-verse-id]');
+    var sc = _stNavScroller(); if(!sc) return null;
+    var rect = sc.getBoundingClientRect(), mid = rect.top + rect.height / 2;
+    var rows = sc.querySelectorAll('.st-verse[data-verse-id]');
     var best = null, bestD = Infinity;
     for(var i = 0; i < rows.length; i++){
       var b = rows[i].getBoundingClientRect();
@@ -5651,33 +5680,69 @@ window.StartView = (function(){
     var v = _stNavCenterVerse();
     window._navSetHash('#start?surah=' + _stSurah + (v ? '&verse=' + v : ''));
   };
+  window._stNavRefreshSnap = function(){ if(_mounted) window._stNavSnap = captureState(); };
   var _stNavScrollT = null;
   function _stNavOnScroll(e){
-    if(!e || !e.target || e.target.id !== 'st-reader') return;
+    var id = e && e.target && e.target.id;
+    if(id !== 'st-reader' && id !== 'fr-viewport') return;
     if(_stNavScrollT) clearTimeout(_stNavScrollT);
-    _stNavScrollT = setTimeout(function(){ try { window._stNavHashWrite(); } catch(er){} }, 350);
+    _stNavScrollT = setTimeout(function(){
+      try { window._stNavHashWrite(); } catch(er){}
+      try { window._stNavRefreshSnap(); } catch(er){}
+    }, 250);
   }
   function captureState(){
-    return { surah: _stSurah, juz: _stJuz, hizb: _stHizb, manzil: _stManzil, verse: _stNavCenterVerse(), dive: document.body.classList.contains('st-dive-on') };
+    var a = _stNavAnchor();
+    return { surah: _stSurah, juz: _stJuz, hizb: _stHizb, manzil: _stManzil, type: _stType,
+             verse: a ? a.verse : null, offset: a ? a.offset : 0,
+             dive: document.body.classList.contains('st-dive-on') };
+  }
+  function _stNavApplyAnchor(s){
+    var sc = _stNavScroller(); if(!sc || !s.verse) { if(sc && !s.verse) sc.scrollTop = 0; return; }
+    var row = sc.querySelector('.st-verse[data-verse-id="' + s.verse + '"]');
+    if(!row) return;
+    var d = (row.getBoundingClientRect().top - sc.getBoundingClientRect().top) - (s.offset || 0);
+    if(Math.abs(d) > 1) sc.scrollTop = sc.scrollTop + d;
   }
   function restoreState(s){
-    if(!s || !s.surah) return;
+    if(!s || !s.surah) return false;
     window._navWhen(function(){
-      return _stIndex && _stText && document.querySelector('#st-reader .st-verse');
+      return _stIndex && _stText && document.querySelector('#st-verses .st-verse');
     }, function(){
-      if(_stSurah !== s.surah){
+      var divChanged = (s.juz||0) !== _stJuz || (s.hizb||0) !== _stHizb || (s.manzil||0) !== _stManzil || (s.type||'') !== _stType;
+      if(divChanged){
+        _stJuz = s.juz||0; _stHizb = s.hizb||0; _stManzil = s.manzil||0; _stType = s.type||'';
+        try { _stBuildJuzDD(); _stUpdateJuzLabel(); } catch(e){}
+        try { _stBuildHizbDD(); _stUpdateHizbLabel(); } catch(e){}
+        try { _stBuildManzilBar(); } catch(e){}
+        try { _stBuildTypeDD(); _stUpdateTypeLabel(); } catch(e){}
+      }
+      window._stPendingJump = null;
+      if(_stSurah !== s.surah || divChanged){
         window._stSuppressDivReset = true;
         try { _stSelectSurah(s.surah); } finally { window._stSuppressDivReset = false; }
       }
+      window._stNavLastKey = [_stSurah, _stJuz, _stHizb, _stManzil, _stType].join('|');
       try { if(s.dive && typeof _dvSetMode === 'function' && !document.body.classList.contains('st-dive-on')) _dvSetMode(true); } catch(e){}
-      try { window._stNavHashWrite(); } catch(e){}
-    }, 6000);
+      // Put the verse back, several times: layout settles late (fonts, word-by-
+      // word, READ mode re-opening and moving the verses).
+      var _seq0 = window._navInputSeq ? window._navInputSeq() : 0;
+      [0, 120, 350, 700, 1200, 2000, 3000, 4500].forEach(function(ms){
+        setTimeout(function(){
+          if(window._navInputSeq && window._navInputSeq() !== _seq0) return;   // user took over
+          try { _stNavApplyAnchor(s); } catch(e){}
+        }, ms);
+      });
+      setTimeout(function(){ try { window._stNavHashWrite(); window._stNavRefreshSnap(); } catch(e){} }, 3100);
+    }, 8000);
+    return true;   // START restores its own reading position
   }
 
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
-    zoneCEl.addEventListener('scroll', _stNavOnScroll, true);
+    document.addEventListener('scroll', _stNavOnScroll, true);
+    window._stNavLastKey = ''; window._stNavSnap = null;
     document.body.classList.add('st-mounted');
     zoneCEl.innerHTML = '<div id="start-view" style="display:flex;flex-direction:column;flex:1"></div>';
     if(typeof _stInited !== 'undefined') _stInited = false;
@@ -5701,7 +5766,7 @@ window.StartView = (function(){
   function unmount(){
     if(!_mounted) return;
     _mounted = false;
-    try { var _zc = document.getElementById('zoneC'); if(_zc) _zc.removeEventListener('scroll', _stNavOnScroll, true); } catch(e){}
+    try { document.removeEventListener('scroll', _stNavOnScroll, true); } catch(e){}
 
     document.body.classList.remove('st-mounted');
     document.body.classList.remove('st-active');

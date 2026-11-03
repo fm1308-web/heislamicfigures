@@ -522,7 +522,7 @@ window._fwApplyPendingFigure = function(){
 // NAV: a different set of followed figures is a step; a year change by scrubber
 // or feed click is a step (one drag = one step; animation ticks are not steps).
 var _fwNavLast = '', _fwNavSnap = null, _fwNavTimer = null;
-function _fwNavState(){ return { files: Object.keys(_fwSelected).filter(function(k){ return _fwSelected[k]; }).sort(), year: _fwYear }; }
+function _fwNavState(){ return { files: Object.keys(_fwSelected).filter(function(k){ return _fwSelected[k]; }).sort(), year: _fwYear, expanded: (typeof _fwExpandedIdx === 'number' ? _fwExpandedIdx : -1) }; }
 function _fwNavSelStep(){
   try {
     var key = _fwNavState().files.join('|');
@@ -555,6 +555,8 @@ function _fwRestoreState(st){
       _fwUpdateDDChecks(); _fwUpdateFollowingList(); _fwRebuild();
     }
     if(st.year != null && st.year !== _fwYear){ _fwGoToYear(st.year); }
+    // the opened (expanded) stop in the feed
+    if(typeof st.expanded === 'number' && st.expanded !== _fwExpandedIdx){ _fwExpandedIdx = st.expanded; try { _fwApplyExpanded(); } catch(e){} }
     _fwNavLast = want; _fwNavSnap = _fwNavState();
   }, 10000);
 }
