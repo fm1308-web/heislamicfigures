@@ -528,8 +528,9 @@ function _refreshToolsLocks(){
       locked = (tier === 'visitor');
     }
     item.classList.toggle('locked', locked);
-    var base = item.textContent.replace(/\s*🔒\s*$/, '').trim();
-    item.textContent = locked ? (base + ' 🔒') : base;
+    // The 🔒 is drawn by CSS (.menu-item.locked::after) — the label itself is
+    // re-written by the translation layer, which used to drop a typed emoji.
+    item.textContent = item.textContent.replace(/\s*🔒\s*$/, '').trim();
   });
 }
 window.setUserTier = setUserTier;
@@ -630,7 +631,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=227';
+  var _cb = '?v=229';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -1609,16 +1610,8 @@ function bindTools(){
       var unlocked = false;
       if(key === 'correction'){ unlocked = isContrib; }
       else { unlocked = signedIn; } // share / snapshot / feedback unlock at any signed-in tier
-      if(unlocked){
-        item.classList.remove('locked');
-        // Strip trailing lock emoji from label.
-        item.textContent = item.textContent.replace(/\s*🔒\s*$/, '').trim();
-      } else {
-        if(!/🔒\s*$/.test(item.textContent)){
-          item.textContent = item.textContent.replace(/\s*$/, '') + ' 🔒';
-        }
-        item.classList.add('locked');
-      }
+      item.classList.toggle('locked', !unlocked);
+      item.textContent = item.textContent.replace(/\s*🔒\s*$/, '').trim();   // 🔒 comes from CSS
     });
   }
   _refreshToolsLockState();
@@ -1646,9 +1639,8 @@ function bindTools(){
               }
               return;
             }
-            // Free-account features — placeholders until built out
-            console.log('[tools] ' + key + ' — feature placeholder, build pending');
-            openModal(actionLabel, actionLabel + ' — feature coming soon.');
+            // Signed in now — run the tool they asked for.
+            _runTool(act, key);
           });
         } else {
           openModal('Sign in required', 'Please sign in to use ' + actionLabel + '.');
@@ -1656,10 +1648,28 @@ function bindTools(){
         return;
       }
 
+      _runTool(act, key);
+    });
+  });
+  function _runTool(act, key){
       if(act === 'tour'){
         if(window.InformationPanel) window.InformationPanel.open(state.activeTab);
       } else if(act === 'updates'){
-        openModal('Updates', 'Updates feed placeholder.');
+        // Real feed: data/updates.json (written by the Study Room upload script).
+        openModal('Updates', 'Loading…');
+        fetch(dataUrl('data/updates.json')).then(function(r){ return r.ok ? r.json() : []; }).catch(function(){ return []; })
+          .then(function(list){
+            var mb = document.getElementById('modalBody'); if(!mb) return;
+            if(!Array.isArray(list) || !list.length){ mb.textContent = 'No updates yet.'; return; }
+            mb.textContent = '';
+            list.slice().reverse().forEach(function(u){
+              var row = document.createElement('div');
+              row.style.cssText = 'padding:6px 0;border-bottom:1px solid rgba(212,175,55,0.15)';
+              var d = document.createElement('span'); d.style.cssText = 'color:var(--gold);margin-right:10px;font-size:12px'; d.textContent = u.date || '';
+              var t = document.createElement('span'); t.textContent = u.text || '';
+              row.appendChild(d); row.appendChild(t); mb.appendChild(row);
+            });
+          });
       } else if(act === 'community'){
         window.open('https://goldark.discourse.group', '_blank', 'noopener');
       } else {
@@ -1687,12 +1697,13 @@ function bindTools(){
           } else {
             console.warn('[tools] share not loaded');
           }
+        } else if(act === 'print' || key === 'print'){
+          if(window.GoldArkPrint && typeof window.GoldArkPrint.open === 'function') window.GoldArkPrint.open();
         } else {
           console.log('[tools] ' + (act || key));
         }
       }
-    });
-  });
+  }
 }
 
 // ---------- Modals ----------

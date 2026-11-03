@@ -812,7 +812,8 @@ function _exRenderCards(list){
       : ('Surah ' + _exState.surah + ' : Verses ' + start + '–' + end);
     var chipLabel = '→ Verse ' + _exState.surah + ':' + start;
 
-    var _exBmKey  = 't:' + _exState.edition + ':' + _exState.surah + ':' + start;
+    // Tafsir id, not the edition object (which made every key "t:[object Object]:…").
+    var _exBmKey  = 't:' + (_exState.edition && _exState.edition.id ? _exState.edition.id : '') + ':' + _exState.surah + ':' + start;
     var _exBmAuth = window.GoldArkAuth;
     var _exBmFilled = !!(_exBmAuth && _exBmAuth.isSignedIn && _exBmAuth.isSignedIn() && _exBmAuth.hasBookmarkKey && _exBmAuth.hasBookmarkKey(_exBmKey));
     var _exBmTitle = _exBmAuth && _exBmAuth.isSignedIn && _exBmAuth.isSignedIn()

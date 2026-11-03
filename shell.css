@@ -302,6 +302,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .menu-item:hover { background: var(--gold-faint); }
 .menu-item.locked { color: var(--text-faint); }
+.menu-item.locked::after { content: ' \1F512'; }
 
 /* Browse mode default: both rows visible, full color, no arrows. */
 body[data-tab-mode="browse"] .zone-a { height: auto; }

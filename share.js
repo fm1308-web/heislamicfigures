@@ -26,34 +26,37 @@ function _currentView(){
   return h || 'timeline';
 }
 
-function _buildShareURL(){
-  var view = _currentView();
-  var url = location.origin + location.pathname + '#' + view;
+// The app runs inside the page www.hoomanlibrary.com/gold-ark (in a frame), so
+// links point there. On a local test server they point at the local copy.
+var PUBLIC_BASE = 'https://www.hoomanlibrary.com/gold-ark';
+function _isLocal(){ return /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname); }
 
-  // Pick up additional state from common globals if present
-  var extras = [];
+// The address bar already holds the exact place (Back/Forward keeps it up to
+// date): #start?surah=18&verse=66, #explain?tafsir=…&surah=…&verse=…,
+// #one/<figure>. TIMELINE with a figure card open shares that figure's profile.
+function _buildShareURL(){
+  var hash = location.hash || '';
   try {
-    if(view === 'start' && typeof window._stSurah !== 'undefined' && window._stSurah){
-      extras.push('surah=' + window._stSurah);
-    }
-    if((view === 'timeline' || view === 'relations' || view === 'map' || view === 'eras' || view === 'events') && window.activeYear){
-      extras.push('year=' + window.activeYear);
-    }
-    if((view === 'one' || view === 'follow') && window.activePerson && window.activePerson.slug){
-      extras.push('slug=' + window.activePerson.slug);
+    var tab = document.body.getAttribute('data-active-tab') || '';
+    if(tab === 'TIMELINE' && window.TimelineView && typeof window.TimelineView.captureState === 'function'){
+      var st = window.TimelineView.captureState();
+      if(st && st.person) hash = '#one/' + encodeURIComponent(st.person);
     }
   } catch(e){}
-
-  if(extras.length) url += '?' + extras.join('&');
-  return url;
+  if(!hash) hash = '#' + _currentView();
+  var base = _isLocal() ? (location.origin + location.pathname) : PUBLIC_BASE;
+  return base + hash;
 }
 
 function _copyToClipboard(text){
-  // Prefer modern API
+  // Prefer modern API. Inside the website's frame it can be refused, so fall
+  // back to the older copy method when it fails (not only when it is missing).
   if(navigator.clipboard && navigator.clipboard.writeText){
-    return navigator.clipboard.writeText(text);
+    return navigator.clipboard.writeText(text).catch(function(){ return _copyOld(text); });
   }
-  // Fallback: hidden textarea + execCommand
+  return _copyOld(text);
+}
+function _copyOld(text){
   return new Promise(function(resolve, reject){
     try {
       var ta = document.createElement('textarea');
@@ -95,6 +98,7 @@ function _open(){
   });
 }
 
-window.GoldArkShare = { open: _open };
+window.GoldArkShare = { open: _open, copy: _copyToClipboard, toast: _toast,
+  base: function(){ return _isLocal() ? (location.origin + location.pathname) : PUBLIC_BASE; } };
 
 })();

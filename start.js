@@ -3066,18 +3066,54 @@ function _stBmkPopup(){
     var tafsir = entries.filter(function(e){ return e.type==='t'; });
     var figures = entries.filter(function(e){ return e.type==='f'; })
       .sort(function(a,b){ return a.slug<b.slug?-1:1; });
-    function _figLabel(slug){
+    function _figName(slug){
       try {
         if(window.PEOPLE && window.PEOPLE.length){
           var p = window.PEOPLE.find(function(x){ return x.slug === slug; });
-          if(p) return p.famous + ' (' + slug + ')';
+          if(p) return p.famous;
         }
       } catch(e){}
-      return 'Figure ' + slug;
+      return null;
+    }
+    function _figLabel(slug){ return _figName(slug) || ('Figure ' + slug); }
+    function _surahName(n){
+      try { if(_stIndex) for(var i = 0; i < _stIndex.length; i++){ if(_stIndex[i].id === n) return _stIndex[i].name_en || ''; } } catch(e){}
+      return '';
+    }
+    function _verseLabel(e){ var nm = _surahName(e.surah); return (nm ? nm + ' ' : 'Surah ') + e.surah + ':' + e.verse; }
+    function _tafsirName(slug){
+      try {
+        var r = (window.EX_TAFSIR_REGISTRY || []).find(function(t){ return t.id === slug; });
+        if(r) return r.work + (r.lang ? ' (' + r.lang + ')' : '');
+      } catch(e){}
+      return null;
+    }
+    // Edition known? (Older saves wrote "[object Object]" instead of the edition.)
+    function _tafsirKnown(slug){ return !!slug && slug.indexOf('[object') !== 0; }
+    function _tafsirLabel(e){
+      // The edition list loads with EXPLAIN; before that, just say "Tafsir".
+      var nm = _tafsirName(e.slug) || (_tafsirKnown(e.slug) ? 'Tafsir' : 'Tafsir (edition not recorded)');
+      return nm + ' · ' + _verseLabel(e);
+    }
+    // Plain-text list + links, for Copy / Download.
+    function _listText(){
+      var base = (window.GoldArkShare && window.GoldArkShare.base) ? window.GoldArkShare.base() : (location.origin + location.pathname);
+      var L = ['Gold Ark — My Bookmarks', new Date().toLocaleDateString(), ''];
+      function sec(title, list, fmt){ if(!list.length) return; L.push(title.toUpperCase()); list.forEach(function(e){ L.push('- ' + fmt(e)); }); L.push(''); }
+      sec('Verses (Quran)', quran, function(e){ return _verseLabel(e) + '  ' + base + '#start?surah=' + e.surah + '&verse=' + e.verse; });
+      sec('Hadiths', hadith, function(e){ return _hadithLabel(e.col) + ' · Hadith #' + e.num; });
+      sec('Tafsir', tafsir, function(e){ return _tafsirLabel(e) + (_tafsirKnown(e.slug) ? '  ' + base + '#explain?tafsir=' + encodeURIComponent(e.slug) + '&surah=' + e.surah + '&verse=' + e.verse : ''); });
+      sec('Figures', figures, function(e){ var n = _figName(e.slug); return (n || ('Figure ' + e.slug)) + (n ? '  ' + base + '#one/' + encodeURIComponent(n) : ''); });
+      L.push('hoomanlibrary.com/gold-ark · AI-generated · independently verify');
+      return L.join('\n');
     }
 
     var h='<button id="st-bmk-close" style="position:absolute;top:14px;right:18px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1;width:28px;height:28px;border-radius:50%">×</button>';
-    h+='<h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-2);margin:0 0 16px;letter-spacing:.06em">My Bookmarks</h3>';
+    h+='<h3 style="color:#D4AF37;font-family:Cinzel,serif;font-size:var(--fs-2);margin:0 0 10px;letter-spacing:.06em">My Bookmarks</h3>';
+    if(entries.length){
+      var _btnCss = 'background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.45);color:#D4AF37;padding:5px 12px;border-radius:14px;cursor:pointer;font-family:Lato,sans-serif;font-size:12px';
+      h+='<div style="display:flex;gap:8px;margin:0 0 12px"><button id="st-bmk-copy" type="button" style="' + _btnCss + '" title="Copy the list with links">⧉ Copy list</button><button id="st-bmk-dl" type="button" style="' + _btnCss + '" title="Save the list as a text file">⤓ Download list</button></div>';
+    }
 
     if(!entries.length){
       h+='<div style="color:#888;font-style:italic">No bookmarks yet. Use the bookmark icon next to any verse or hadith to save it.</div>';
@@ -3088,9 +3124,9 @@ function _stBmkPopup(){
         sec += '<div style="display:flex;flex-direction:column;gap:6px">';
         list.forEach(function(e){
           var label = '';
-          if(e.type==='q')      label = 'Surah ' + e.surah + ' : Verse ' + e.verse;
+          if(e.type==='q')      label = _verseLabel(e);
           else if(e.type==='h') label = _hadithLabel(e.col) + ' · Hadith #' + e.num;
-          else if(e.type==='t') label = 'Tafsir ' + e.slug + ' · ' + e.surah + ':' + e.verse;
+          else if(e.type==='t') label = _tafsirLabel(e);
           else if(e.type==='f') label = _figLabel(e.slug);
           sec += '<div class="st-bmk-row" style="display:flex;align-items:stretch;gap:6px">'
             + '<button class="st-bmk-item" data-key="' + e.key + '" data-type="' + e.type + '" style="flex:1;text-align:left;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.3);color:#E5E7EB;padding:8px 12px;border-radius:4px;cursor:pointer;font-family:Lato,sans-serif;font-size:var(--fs-3)">' + label + '</button>'
@@ -3108,6 +3144,24 @@ function _stBmkPopup(){
 
     box.innerHTML=h;
     document.getElementById('st-bmk-close').onclick=function(){ overlay.remove(); };
+    var _cp = document.getElementById('st-bmk-copy');
+    if(_cp) _cp.onclick = function(){
+      var t = _listText();
+      var S = window.GoldArkShare;
+      var p = (S && S.copy) ? S.copy(t) : (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject());
+      Promise.resolve(p).then(function(){ _cp.textContent = '✓ Copied'; setTimeout(function(){ _cp.textContent = '⧉ Copy list'; }, 1600); })
+        .catch(function(){ _cp.textContent = 'Could not copy'; });
+    };
+    var _dl = document.getElementById('st-bmk-dl');
+    if(_dl) _dl.onclick = function(){
+      var blob = new Blob([_listText()], { type: 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var d = new Date(), pad = function(n){ return n < 10 ? '0' + n : '' + n; };
+      var a = document.createElement('a');
+      a.href = url; a.download = 'gold-ark-bookmarks-' + d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate()) + '.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); }, 200);
+    };
 
     // Remove handler
     box.querySelectorAll('.st-bmk-x').forEach(function(xBtn){
@@ -3151,9 +3205,14 @@ function _stBmkPopup(){
           return;
         }
         if(entry.type === 't'){
-          // Tafsir entry — open EXPLAIN view (deep-link not yet wired in modal).
-          var expBtn = document.querySelector('.tab-btn[data-tab="EXPLAIN"]');
-          if(expBtn) expBtn.click();
+          // Tafsir entry — open that tafsir at that verse (same route as the
+          // verse Tafsir chips). Old keys saved without the edition just open EXPLAIN.
+          if(_tafsirKnown(entry.slug) && typeof window._stXrefJumpTafsir === 'function'){
+            window._stXrefJumpTafsir(entry.slug, entry.surah, entry.verse);
+          } else {
+            var expBtn = document.querySelector('.tab-btn[data-tab="EXPLAIN"]');
+            if(expBtn) expBtn.click();
+          }
           return;
         }
         if(entry.type === 'f'){
