@@ -3011,6 +3011,52 @@ window.FinanceView = (function(){
     return s + ' · pricing: see console.anthropic.com';   // Fable 5 — pricing unknown
   }
   // Normalise a parsed report and install it as the live case, then re-render selected.
+  // ── RUN HISTORY (8 Nov 2026) — every finished live run is kept automatically in this browser
+  //    (newest 40), so RELIABILITY can compare any two runs of the same document without a sign-off.
+  //    Measured values only: copied from the finished report, nothing estimated.
+  var RUNS_KEY = 'usul_run_history_v1';
+  var _runHist = null;
+  function _runHistAll(){
+    if(_runHist) return _runHist;
+    try{ var a = JSON.parse(localStorage.getItem(RUNS_KEY) || '[]'); _runHist = Array.isArray(a) ? a : []; }catch(e){ _runHist = []; }
+    return _runHist;
+  }
+  function _runHistSave(){
+    var L = _runHistAll();
+    while(L.length > 40) L.shift();
+    for(var tries = 0; tries < 40; tries++){
+      try{ localStorage.setItem(RUNS_KEY, JSON.stringify(L)); return true; }
+      catch(e){ if(L.length <= 1) return false; L.shift(); }   // storage full → drop the oldest and retry
+    }
+    return false;
+  }
+  function _runHistAdd(report){
+    try{
+      var u = report._liveUsage || {}, tin = u.input_tokens || 0, tout = u.output_tokens || 0;
+      var pr = LIVE_MODEL_PRICING[report._liveModel || ''];
+      var rv = Array.isArray(report.rules_verdicts) ? report.rules_verdicts : [];
+      var rc = { total: rv.length, COMPLIANT:0, NON_COMPLIANT:0, UNCERTAIN:0, NOT_APPLICABLE:0 };
+      rv.forEach(function(r){ if(rc[r.verdict] != null) rc[r.verdict]++; });
+      var sev = { high:0, medium:0, low:0 };
+      (report.open_items || []).forEach(function(it){ var s = String(it.severity || '').toLowerCase(); if(sev[s] != null) sev[s]++; });
+      var doc = report._liveName || report.case || 'Live document';
+      var ts = Date.now();
+      _runHistAll().push({
+        id: 'run-' + ts, kind: 'run', savedAt: new Date(ts).toISOString(),
+        title: 'RUN · ' + doc, document: doc, model: report._liveModel || '', provider: report._liveProvider || '',
+        seconds: (typeof report._liveSeconds === 'number') ? report._liveSeconds : null,
+        tokens_in: tin, tokens_out: tout,
+        cost_usd: pr ? Math.round(((tin / 1e6) * pr.in + (tout / 1e6) * pr.out) * 100) / 100 : null,
+        pages: report._livePages != null ? report._livePages : null, chars: report._liveChars || null,
+        rules: rc, rules_not_tested: Number(report._rulesNotTested || 0),
+        open_count: (report.open_items || []).length, severity: sev,
+        scope: report._scope ? { frameworks: report._scope.frameworks, jurisdiction: report._scope.jurisdiction, tradition: report._scope.tradition, school: report._scope.school } : null,
+        open_items: JSON.parse(JSON.stringify(report.open_items || []))
+      });
+      _runHistSave();
+    }catch(e){ console.warn('[USUL] run history not saved', e); }
+  }
+
   function _installLiveCase(report){
     // Fresh, unique id per live run — NEVER reuse the id the AI echoes from the example ('LIVE-REPORT-ID').
     // Scholar determinations are keyed report_id + '::' + item id, so a shared id would let one document
@@ -3050,6 +3096,7 @@ window.FinanceView = (function(){
     report._live = true;
     _liveCase = report;           // replaces any previous live case
     _liveSave();                  // …and the stored copy (survives a refresh until archived)
+    _runHistAdd(report);          // RUN HISTORY — kept automatically for RELIABILITY
     _repFabIdx = 'live';
     _fabSel = null; _ruleSel = null;
     _renderReport();
@@ -4550,7 +4597,9 @@ window.FinanceView = (function(){
       h += '<div class="fin-rep-sec3"><h2 class="fin-rep-h2">3 · Checklist</h2>';
       h += '<table class="fin-rep-table"><thead><tr><th>#</th><th>Standard</th><th>Result</th></tr></thead><tbody>';
       var fabAllRows = (D.tracker && D.tracker.rows) || [];
-      var inFams = { AAOIFI:1, CBUAE:1 };
+      // In scope = the regulators this report was run against (live: SETTINGS at run time; saved cases: AAOIFI + CBUAE).
+      // Was keyed by regulator name but tested against r.family ('SS', 'GS'…), so every family showed out of scope.
+      var inRegs = {}; String(_sc.frameworks || '').split(/\s*\+\s*/).forEach(function(x){ if(x) inRegs[x] = 1; });
       var appliedSet = {}; applied.forEach(function(c){ appliedSet[c] = 1; });
       var fRow = 0;
       // 1) Applied standards — the RESULT reports the FINAL open-item count (fitems is the list
@@ -4566,7 +4615,7 @@ window.FinanceView = (function(){
       // 2) Remaining in-scope (AAOIFI + CBUAE, not applied) grouped by data status — existing badges.
       var remOrder = [], remMap = {};
       fabAllRows.forEach(function(r){
-        if(inFams[r.family] && !appliedSet[r.code]){
+        if(inRegs[r.regulator] && !appliedSet[r.code]){
           var s = r.status_in_project;
           if(!remMap[s]){ remMap[s] = 0; remOrder.push(s); }
           remMap[s]++;
@@ -4575,15 +4624,15 @@ window.FinanceView = (function(){
       remOrder.forEach(function(s){
         fRow++;
         var ok = (s === 'processed_deep_note');
-        var word = ok ? 'Deep note ready' : _stdStatus(s).word;
+        var word = ok ? 'Full text held' : _stdStatus(s).word;
         h += '<tr class="fin-rep-row"><td class="fin-rep-num">'+fRow+'</td>'
-           + '<td class="fin-rep-check"><strong>AAOIFI + CBUAE</strong> — '+remMap[s]+' standard'+(remMap[s] === 1 ? '' : 's')+'</td>'
+           + '<td class="fin-rep-check"><strong>'+_esc(_sc.frameworks)+'</strong> — '+remMap[s]+' standard'+(remMap[s] === 1 ? '' : 's')+'</td>'
            + '<td class="fin-rep-stat"><span class="fin-rep-status'+(ok ? ' fin-rep-ok' : '')+'">'+_esc(word)+'</span></td></tr>';
       });
       // 3) Out-of-scope families (IFSB / BNM / SAMA / SC) — greyed row per family.
       var outOrder = [], outMap = {};
       fabAllRows.forEach(function(r){
-        if(r.family && !inFams[r.family]){
+        if(r.family && !inRegs[r.regulator]){
           if(!outMap[r.family]){ outMap[r.family] = 0; outOrder.push(r.family); }
           outMap[r.family]++;
         }
@@ -4592,7 +4641,7 @@ window.FinanceView = (function(){
         fRow++;
         h += '<tr class="fin-rep-row fin-fab-greyrow"><td class="fin-rep-num">'+fRow+'</td>'
            + '<td class="fin-rep-check"><strong>'+_esc(fam)+'</strong> — '+outMap[fam]+' standard'+(outMap[fam] === 1 ? '' : 's')+'</td>'
-           + '<td class="fin-rep-stat"><span class="fin-rep-status fin-fab-badge-grey">OUT OF SCOPE FOR THIS JURISDICTION</span></td></tr>';
+           + '<td class="fin-rep-stat"><span class="fin-rep-status fin-fab-badge-grey">NOT IN THIS RUN\'S SCOPE</span></td></tr>';
       });
       h += '</tbody></table>';
       h += '</section>';   // close ZONE 2 (continued)
@@ -7280,7 +7329,7 @@ window.FinanceView = (function(){
   }
 
   // ── Archive access (read-only) ──
-  function _reliArchList(){ return Array.isArray(_archive) ? _archive : []; }
+  function _reliArchList(){ return (Array.isArray(_archive) ? _archive : []).concat(_runHistAll()); }   // archived reports + automatic run history
   function _reliArchById(id){
     var L = _reliArchList();
     for(var i = 0; i < L.length; i++) if(String(L[i].id) === String(id)) return L[i];
@@ -7417,7 +7466,8 @@ window.FinanceView = (function(){
       model_a: _reliArchModel(res.entryA), model_b: _reliArchModel(res.entryB),
       findings_a: res.countA, findings_b: res.countB, matched: res.matched,
       finding_overlap_pct: res.overlap, severity_agreement_pct: res.severity,
-      fixes_live: ['temperature_0', 'system_slot_rules', 'tool_use_structured_output', 'deterministic_term_scan', 'finding_cap_removed'],
+      fixes_live: ['temperature_0', 'system_slot_rules', 'tool_use_structured_output', 'deterministic_term_scan', 'finding_cap_removed']
+        .concat((res.entryA && res.entryA.kind === 'run' && res.entryB && res.entryB.kind === 'run') ? ['all_rules_tested', 'not_applicable_verdict', 'settings_scope', 'fix5_rule_lists'] : []),
       cost_usd: 0
     };
     return 'Run without pausing for confirmations. In '
@@ -7453,7 +7503,7 @@ window.FinanceView = (function(){
     var h = '<div class="fin-reli-cmp">'
           + '<h2 class="fin-reli-h2">COMPARE TWO REPORTS</h2>';
     if(L.length < 2){
-      h += '<p class="fin-reli-note">Need at least two archived reports of the same document to compare.</p></div>';
+      h += '<p class="fin-reli-note">Need at least two runs (or archived reports) of the same document to compare. Every live run is now kept automatically.</p></div>';
       return h;
     }
     if(_reliSelA == null || !_reliArchById(_reliSelA)) _reliSelA = L[0].id;
@@ -7657,6 +7707,31 @@ window.FinanceView = (function(){
 
     // ── COMPARE TWO REPORTS — the deterministic scorer (archive-driven) ──
     h += _reliCompareHtml();
+
+    // ── RUN HISTORY — every live run kept in this browser (measured values only) ──
+    (function(){
+      var RH = _runHistAll().slice().reverse();
+      h += '<h2 class="fin-reli-h2">Run history (this browser)</h2>';
+      if(!RH.length){ h += '<p class="fin-reli-empty">No live runs kept yet. Every live run from now on is saved here automatically.</p>'; return; }
+      var fmt = function(n){ return (n == null) ? '—' : Number(n).toLocaleString('en-US'); };
+      h += '<div class="fin-reli-tablewrap"><table class="fin-reli-table"><thead><tr>'
+         + '<th>date</th><th>document</th><th>model</th><th>time</th><th>tokens</th><th>cost</th>'
+         + '<th>rules tested</th><th>compliant / non / uncertain / n.a.</th><th>open items (H/M/L)</th><th>scope</th>'
+         + '</tr></thead><tbody>';
+      RH.forEach(function(r){
+        var d = new Date(r.savedAt); var ds = isNaN(d) ? String(r.savedAt) : d.toLocaleString();
+        var R2 = r.rules || {};
+        h += '<tr><td>' + _esc(ds) + '</td><td>' + _esc(r.document) + '</td><td>' + _esc(r.model || '—') + '</td>'
+           + '<td>' + (r.seconds != null ? _esc(_fmtMSS(r.seconds)) : '—') + '</td>'
+           + '<td>' + fmt((r.tokens_in || 0) + (r.tokens_out || 0)) + '</td>'
+           + '<td>' + (r.cost_usd != null ? '$' + r.cost_usd.toFixed(2) : '—') + '</td>'
+           + '<td>' + fmt(R2.total) + (r.rules_not_tested ? ' (+' + r.rules_not_tested + ' not tested)' : '') + '</td>'
+           + '<td>' + fmt(R2.COMPLIANT) + ' / ' + fmt(R2.NON_COMPLIANT) + ' / ' + fmt(R2.UNCERTAIN) + ' / ' + fmt(R2.NOT_APPLICABLE) + '</td>'
+           + '<td>' + r.open_count + ' (' + (r.severity ? r.severity.high + '/' + r.severity.medium + '/' + r.severity.low : '—') + ')</td>'
+           + '<td>' + _esc(r.scope ? (r.scope.frameworks + ' · ' + r.scope.jurisdiction) : '—') + '</td></tr>';
+      });
+      h += '</tbody></table></div>';
+    })();
 
     // ── BELOW — comparison history, first run = #1, newest last ──
     h += '<h2 class="fin-reli-h2">Comparison history</h2>';
