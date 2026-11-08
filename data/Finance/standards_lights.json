@@ -4,7 +4,7 @@
   "version": 1,
   "generated": "2026-07-25 (BV: 8 lights flipped green per RV picklist; GS 16 have_file corrected) | 2026-07-26: (stray)+(2nd) phantom rows deleted, (joint) renamed IFSB-AAOIFI SGF | duplicate GS 1 row removed (RV picklist item C)",
   "built_by": "RV",
-  "purpose": "THE single standards file for BV. Coverage board + report both read this. green = deep-processed clause-level and ready in kb_file; red = not held/not processed. Includes every standard incl. superseded/withdrawn (feeds timeline chart). Replaces standards_tracker.json.",
+  "purpose": "THE single standards file for BV. Coverage board + report both read this. green = full text held (opens in the STANDARDS reader); red = no text held yet. Clause-level checking rules exist only for the standards in standards_kb_fix4.json (corrected 2026-11-08, USUL Factory 1). Includes every standard incl. superseded/withdrawn (feeds timeline chart). Replaces standards_tracker.json.",
   "schema": "standards[] each: regulator, standard_id, title, family, light, status_code, have_file, kb_file, superseded_or_withdrawn",
   "legend": {
    "light": "green | red",

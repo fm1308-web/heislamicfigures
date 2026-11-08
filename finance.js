@@ -1965,11 +1965,13 @@ window.FinanceView = (function(){
     // counts under counts.by_status / counts.by_family; fall back to the old flat shape.
     var bs = counts.by_status || counts;
     var famCount = counts.by_family ? Object.keys(counts.by_family).length : famsAll.length;
+    // Truthful labels: green = full text held (opens in the reader); red = no text held yet.
+    var _held = 0, _noText = 0;
+    rows.forEach(function(r){ if(r.light === 'green') _held++; else if(r.light === 'red') _noText++; });
     var totals = [
       (counts.total_rows || rows.length) + ' standards',
-      (bs.processed_deep_note || 0) + ' deep notes',
-      (bs.pdf_on_disk_unprocessed || 0) + ' on disk',
-      (bs.missing || 0) + ' missing',
+      _held + ' full text held',
+      _noText + ' no text yet',
       (bs.superseded || 0) + ' superseded',
       famCount + ' families'
     ].join(' · ');
@@ -3353,6 +3355,16 @@ window.FinanceView = (function(){
     sel.sort(function(a, b){ return a.rule_id.localeCompare(b.rule_id, undefined, { numeric: true }); });
     return sel;
   }
+  // FIX-2 (8 Nov 2026) — EVERY in-scope rule, no cap. The first Tier-3 call still carries the
+  // first 40 (chosen by _fix4RulesFor); the rest are tested in extra rule-only rounds of 40.
+  function _fix4AllInScope(docText){
+    var text = String(docText || '').toLowerCase();
+    var inScope = {};
+    Object.keys(FIX4_TOPICS).forEach(function(code){
+      if(FIX4_TOPICS[code].some(function(w){ return text.indexOf(w) !== -1; })) inScope[code] = 1;
+    });
+    return _fix4AllRules().filter(function(r){ return inScope[r.code]; });
+  }
   // The rules block appended to the Tier-3 prompt.
   function _fix4Block(rules){
     if(!rules.length) return '';
@@ -3498,6 +3510,15 @@ window.FinanceView = (function(){
       // Uses _liveExample() so the JSON shape is byte-for-byte the existing live-report schema.
       // tight=true appends the amended brief used for the automatic retry after a truncated response.
       // fix4Rules (optional) appends the fixed rule checklist; empty list → prompt byte-identical to before.
+      // FIX-2 — extra rule-only round: same clauses, same scope, a further batch of fixed rules.
+      rulesOnly: function(clauses, rules){
+        return _join([
+          'You are a Shari\'ah compliance analyst performing an EXTRA ROUND of TIER 3 — rule checking only.',
+          'You are given the CLAUSES extracted and verbatim-checked in Tier 2, and a further batch of fixed rules.',
+          'Do NOT write open items. Return ONLY rules_verdicts, one verdict for every rule_id listed.',
+          'Every document_quote MUST be copied character-for-character from the CLAUSES below.'
+        ].concat(_scope)) + '\n' + _clauseBlock(clauses) + '\n' + _fix4Block(rules || []);
+      },
       tier3: function(clauses, tight, fix4Rules){
         var base = _join([].concat(_t3Task, (tight ? _t3Tight : []), _scope, _t3Rules)) + '\n' + JSON.stringify(_liveExample()) + '\n' + _clauseBlock(clauses);
         var rb = _fix4Block(fix4Rules || []);
@@ -3922,6 +3943,44 @@ window.FinanceView = (function(){
     var unverified = usable.filter(function(c){ return c.unverified_quote; }).slice(0, 3);
     return confirmed.concat(unverified);
   }
+  // FIX-2 — run the remaining in-scope rules in rounds of FIX4_MAX_RULES. Each round retries
+  // up to 2 more times. Resolves { raw: [verdicts...], untested: [rules whose round failed] }.
+  // A failed round never stops the report; its rules are counted as NOT tested, never guessed.
+  function _fix4ExtraRounds(key, model, clauses, rest){
+    var raw = [], untested = [], batches = [];
+    for(var i = 0; i < rest.length; i += FIX4_MAX_RULES) batches.push(rest.slice(i, i + FIX4_MAX_RULES));
+    var tool = [{ name:'emit_rule_verdicts', description:'Return the rule verdicts as structured JSON.', input_schema:{ type:'object', properties:{
+      rules_verdicts:{ type:'array', minItems:0, items:{ type:'object', properties:{
+        rule_id:{ type:'string' },
+        verdict:{ type:'string', enum:['COMPLIANT','NON_COMPLIANT','UNCERTAIN'] },
+        document_quote:{ type:'string' },
+        note:{ type:'string' }
+      }, required:['rule_id','verdict'] } }
+    }, required:['rules_verdicts'] } }];
+    function oneRound(b, attempt){
+      if(_pipe){ _pipe.tier3Notice = 'TIER 3 — checking more rules: round ' + (b + 2) + ' of ' + (batches.length + 1) + (attempt > 1 ? ' (retry ' + attempt + ' of 3)' : '') + '…'; _pipePaint(); }
+      var prompt = _pipelineRecipe.rulesOnly(clauses, batches[b]);
+      return _pipeApiCall(key, model, prompt, 16000, tool, { type:'tool', name:'emit_rule_verdicts' }).then(function(res){
+        if(res.status !== 200 || (res.j && res.j.stop_reason === 'max_tokens')) throw { reason: 'round failed' };
+        var out = null;
+        try{ var tu = (res.j.content || []).filter(function(c){ return c && c.type === 'tool_use'; })[0]; if(tu) out = tu.input; }catch(e){}
+        if(!out){ var txt = ''; try{ txt = (res.j.content || []).map(function(c){ return c.text || ''; }).join(''); }catch(e){} out = _parseTier3Json(txt); }
+        if(!out || !Array.isArray(out.rules_verdicts)) throw { reason: 'unreadable round' };
+        var u = (res.j && res.j.usage) || {};
+        if(_pipe) _pipe.usage.push({ tier: 'tier3-rules', model: model, input_tokens: u.input_tokens || 0, output_tokens: u.output_tokens || 0 });
+        raw = raw.concat(out.rules_verdicts);
+      }).catch(function(err){
+        if(err && err.reason === 'network blocked') throw err;
+        if(attempt < 3) return oneRound(b, attempt + 1);
+        console.warn('FIX-2 — rule round ' + (b + 2) + ' failed after 3 attempts; ' + batches[b].length + ' rule(s) NOT tested.');
+        untested = untested.concat(batches[b]);
+      });
+    }
+    var chain = Promise.resolve();
+    batches.forEach(function(_, b){ chain = chain.then(function(){ return oneRound(b, 1); }); });
+    return chain.then(function(){ if(_pipe) _pipe.tier3Notice = null; return { raw: raw, untested: untested }; });
+  }
+
   function _pipeTier3(key, model, tight, attempt){
     attempt = attempt || 1;                             // demo-proofing: up to 3 automatic attempts before failing
     var sendClauses = _t3SendClauses();                 // fewer, better-grounded clauses (item 2)
@@ -4008,17 +4067,24 @@ window.FinanceView = (function(){
       // FIX-4 — reconcile the rule verdicts against the fixed list built in code. Unknown rule ids
       // are dropped, skipped rules are filled in as UNCERTAIN. No rules in scope → nothing attached
       // and the report object is exactly what it was before FIX-4.
+      var u = (res.j && res.j.usage) || {};
+      _pipe.usage.push({ tier: 'tier3', model: model, input_tokens: u.input_tokens || 0, output_tokens: u.output_tokens || 0 });
+      // FIX-2 — no more 40-rule cap: every in-scope rule beyond the first 40 is tested in extra rounds.
+      var _firstIds = {}; fix4Rules.forEach(function(r){ _firstIds[r.rule_id] = 1; });
+      var _rest = fix4Rules.length ? _fix4AllInScope((_liveDoc && _liveDoc.text) || '').filter(function(r){ return !_firstIds[r.rule_id]; }) : [];
+      var _extra = _rest.length ? _fix4ExtraRounds(key, model, sendClauses, _rest) : Promise.resolve({ raw: [], untested: [] });
+      return _extra.then(function(ex){
       if(fix4Rules.length){
-        var _rv = _fix4Reconcile(fix4Rules, report.rules_verdicts);
+        var _untestedIds = {}; ex.untested.forEach(function(r){ _untestedIds[r.rule_id] = 1; });
+        var _tested = fix4Rules.concat(_rest.filter(function(r){ return !_untestedIds[r.rule_id]; }));
+        var _rv = _fix4Reconcile(_tested, [].concat(report.rules_verdicts || [], ex.raw));
         report.rules_verdicts  = _rv.verdicts;
         report._rulesDropped   = _rv.dropped;
-        report._rulesNotTested = _fix4Dropped;
+        report._rulesNotTested = ex.untested.length;
       } else {
         delete report.rules_verdicts;
       }
       _pipe.tier3 = { report: report, rawItems: _t3Raw };
-      var u = (res.j && res.j.usage) || {};
-      _pipe.usage.push({ tier: 'tier3', model: model, input_tokens: u.input_tokens || 0, output_tokens: u.output_tokens || 0 });
       // Combined cost line — sum usage across all three tiers, carried into the live case + its archive.
       var totalIn = 0, totalOut = 0;
       _pipe.usage.forEach(function(x){ totalIn += x.input_tokens || 0; totalOut += x.output_tokens || 0; });
@@ -4027,6 +4093,7 @@ window.FinanceView = (function(){
       report._liveUsage = { input_tokens: totalIn, output_tokens: totalOut };
       report._liveTiers = 3;
       return _t3Deliver(report, key, model);   // FIX-5 aware; with the flag off this installs immediately
+      });   // FIX-2 — end of extra rule rounds
     }).catch(function(err){ throw { tier: 3, reason: _pipeReason(err) }; });
   }
 
@@ -4401,7 +4468,7 @@ window.FinanceView = (function(){
            + _rc.COMPLIANT+' compliant · '+_rc.NON_COMPLIANT+' non-compliant · '+_rc.UNCERTAIN+' uncertain'
            + ' · rules built in code from clause-verified standards</div>';
         var _nt = Number(fab._rulesNotTested || 0), _rd = Number(fab._rulesDropped || 0);
-        if(_nt > 0) h += '<div class="fin-rep-rule-note">'+_nt+' further rule'+(_nt === 1 ? '' : 's')+' in scope were not tested this run (prompt-size cap).</div>';
+        if(_nt > 0) h += '<div class="fin-rep-rule-note">'+_nt+' further rule'+(_nt === 1 ? '' : 's')+' in scope were not tested this run (the AI did not answer for them — run again).</div>';
         if(_rd > 0) h += '<div class="fin-rep-rule-note">'+_rd+' verdict'+(_rd === 1 ? '' : 's')+' dropped — cited a rule id that is not in the fixed list.</div>';
         // RULE | STANDARD | RESULT — each row opens its detail (rule text, document quote, open-item link) in the panel.
         h += '<table class="fin-rep-table fin-rep-rules"><thead><tr><th>Rule</th><th>Standard</th><th>Result</th></tr></thead><tbody>';
@@ -6945,7 +7012,6 @@ window.FinanceView = (function(){
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Tier 1 — Word-level vetting: individual contract terms checked against the loaded standards vocabulary.</li>'
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Tier 2 — Sentence-level vetting: each clause sentence read against the applicable standard\'s parameters.</li>'
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Tier 3 — Concept/standard-level vetting: main terms and structures tested against each in-scope standard (AAOIFI + CBUAE for UAE cases).</li>'
-      + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Jurisdiction filter applied first: only standards adopted in the document\'s jurisdiction are in scope; others are greyed out.</li>'
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Reviewer role declared: the review reads the document from the financier/bank side.</li>'
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Human scholar layer: every open item carries an empty SCHOLAR DETERMINATION box — no stance is pre-filled; certification requires a qualified Shari\'ah board.</li>'
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Nothing here is a ruling. Demonstration mapping only.</li>'

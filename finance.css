@@ -1419,8 +1419,7 @@ body.fin-fullscreen #usul-fs-logo{
 .fin-start-read::after,
 .fin-q-read[data-s]::after,
 .fin-verse-read::after,
-.fin-mon-open::after,
-[data-read-hadith]::after{
+.fin-mon-open::after{
   content:" ↗ read in Gold Ark";
   font-size:9px;
   letter-spacing:.04em;

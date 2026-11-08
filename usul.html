@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shell.css?v=8">
 <link rel="stylesheet" href="finance-shim.css?v=1">
-<link rel="stylesheet" href="finance.css?v=16">
+<link rel="stylesheet" href="finance.css?v=17">
 <script src="config.js?v=3"></script>
 <!-- Shared Gold Ark account system — same Firebase auth + tester gating -->
 <script type="module" src="auth.js"></script>
@@ -101,6 +101,14 @@ body.usul-standalone{
 #usul-leave p{ color:#26415C; font-size:13.5px; line-height:1.6; margin:0 0 18px; }
 #usul-leave .usul-leave-row{ display:flex; gap:12px; justify-content:center; }
 #usul-leave .usul-go{ background:linear-gradient(90deg,#2E86C1,#1B4F72); color:#fff; border:none; border-radius:18px; padding:8px 22px; font-family:Cinzel,serif; font-size:12px; font-weight:700; letter-spacing:.06em; cursor:pointer; }
+/* Right-hand panel resize bar (scholar / details panel). Drag to widen; double-click to reset. */
+#usul-hub-drag{ flex:0 0 8px; cursor:col-resize; background:#E3EBF2; border-left:1px solid #C9D6E2;
+  position:relative; touch-action:none; }
+#usul-hub-drag::after{ content:''; position:absolute; left:2px; top:50%; width:3px; height:44px;
+  margin-top:-22px; border-radius:2px; background:#8FA9C0; }
+#usul-hub-drag:hover, #usul-hub-drag.on{ background:#CFE0EE; }
+#usul-hub-drag:hover::after, #usul-hub-drag.on::after{ background:#1B4F72; }
+body.usul-dragging{ cursor:col-resize !important; user-select:none !important; }
 #usul-leave .usul-stay{ background:transparent; color:#3E5C76; border:1px solid #9FB3C8; border-radius:18px; padding:8px 22px; font-size:12px; cursor:pointer; }
 </style>
 </head>
@@ -120,7 +128,7 @@ body.usul-standalone{
     <b>USUL is a separate commercial prototype.</b> It is built by the Gold Ark
     team and cross-links into the Gold Ark Library, but it is a product of its
     own — for <b>demonstration and testing only</b>.<br><br>
-    USUL is <b>not part of the Gold Ark Library subscription</b> ($100/yr).
+    USUL is <b>not part of the Hooman Library subscription</b>.
     Sign-in is required. Content is AI-generated demonstration data —
     not scholar-certified — independently verify.<br><br>
     Links marked ↗ leave USUL and open the Gold Ark Library in a new tab.
@@ -139,9 +147,9 @@ body.usul-standalone{
 <div id="usul-leave">
   <div class="usul-leave-box">
     <h3>Leaving USUL</h3>
-    <p id="usul-leave-text">This opens the Gold Ark Library in a new tab. The Library is the free
-    scholarly app; USUL stays open here. USUL is a separate commercial
-    prototype and is not part of the Library subscription.</p>
+    <p id="usul-leave-text">This opens the Gold Ark Library in a new tab. USUL stays open here.
+    USUL is a separate commercial prototype and is not part of the
+    Hooman Library subscription.</p>
     <div class="usul-leave-row">
       <button class="usul-go" id="usul-leave-go" type="button">CONTINUE</button>
       <button class="usul-stay" id="usul-leave-stay" type="button">STAY IN USUL</button>
@@ -152,9 +160,9 @@ body.usul-standalone{
 <script>
 // ── USUL standalone bootstrap ─────────────────────────────────
 // Visual split only: same repo, same data, same Gold Ark sign-in.
-// The library address below is relative for localhost + direct hosting;
-// WV can point it at the public Gold Ark page later.
-window.USUL_LIBRARY_URL = window.USUL_LIBRARY_URL || 'index.html';
+// The public Gold Ark page. Verse links add '#start?surah=..&verse=..'; the Gold Ark
+// Squarespace page passes that on to the app (WV code injection, 8 Nov 2026).
+window.USUL_LIBRARY_URL = window.USUL_LIBRARY_URL || 'https://www.hoomanlibrary.com/gold-ark';
 
 (function(){
 'use strict';
@@ -195,6 +203,50 @@ document.getElementById('usul-back-btn').addEventListener('click', function(){
   leaveTo(window.USUL_LIBRARY_URL);
 });
 
+// Right-hand panel: drag bar to resize. REPORT gets its own width (wider by default),
+// every other page shares one width. Widths are remembered in this browser.
+function wireHubResize(){
+  var main = document.getElementById('finance-main');
+  var hub  = document.getElementById('finance-hub');
+  var view = document.getElementById('finance-view');
+  if(!main || !hub || !view || document.getElementById('usul-hub-drag')) return;
+  var DEF = { report: 540, other: 360 }, MIN = 300;
+  var bar = document.createElement('div');
+  bar.id = 'usul-hub-drag';
+  bar.title = 'Drag to resize this panel · double-click to reset';
+  main.insertBefore(bar, hub);
+  function group(){ return view.getAttribute('data-mode') === 'report' ? 'report' : 'other'; }
+  function key(){ return 'usul_hub_w_' + group(); }
+  function maxW(){ return Math.max(MIN, main.getBoundingClientRect().width - 320); }
+  function saved(){ var v = 0; try{ v = parseInt(localStorage.getItem(key()), 10) || 0; }catch(e){} return v || DEF[group()]; }
+  function setW(w){ w = Math.round(Math.min(maxW(), Math.max(MIN, w))); hub.style.flex = '0 0 ' + w + 'px'; return w; }
+  function sync(){
+    setW(saved());
+    bar.style.display = (getComputedStyle(hub).display === 'none') ? 'none' : '';
+  }
+  var dragging = false, lastW = 0;
+  bar.addEventListener('pointerdown', function(e){
+    dragging = true; bar.classList.add('on'); document.body.classList.add('usul-dragging');
+    try{ bar.setPointerCapture(e.pointerId); }catch(err){}
+    e.preventDefault();
+  });
+  bar.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    lastW = setW(main.getBoundingClientRect().right - e.clientX);
+  });
+  function stop(){
+    if(!dragging) return;
+    dragging = false; bar.classList.remove('on'); document.body.classList.remove('usul-dragging');
+    if(lastW){ try{ localStorage.setItem(key(), String(lastW)); }catch(err){} }
+  }
+  bar.addEventListener('pointerup', stop);
+  bar.addEventListener('pointercancel', stop);
+  bar.addEventListener('dblclick', function(){ try{ localStorage.removeItem(key()); }catch(err){} sync(); });
+  new MutationObserver(sync).observe(view, { attributes:true, attributeFilter:['data-mode'] });
+  window.addEventListener('resize', sync);
+  sync();
+}
+
 // ENTER — same tester gate as before (gate.js requireTester, untouched).
 var _started = false;
 function startApp(){
@@ -204,6 +256,7 @@ function startApp(){
   document.getElementById('usulApp').classList.add('on');
   if(window.FinanceView && typeof window.FinanceView.mount === 'function'){
     window.FinanceView.mount(document.getElementById('zoneC'), document.getElementById('zoneB'));
+    wireHubResize();
   } else {
     document.getElementById('zoneC').innerHTML =
       '<div style="padding:60px;text-align:center;color:#1B4F72;font-family:Cinzel,serif">USUL failed to load — refresh the page.</div>';
@@ -215,6 +268,6 @@ document.getElementById('usul-enter-btn').addEventListener('click', function(){
 });
 })();
 </script>
-<script src="finance.js?v=23"></script>
+<script src="finance.js?v=25"></script>
 </body>
 </html>
