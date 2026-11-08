@@ -443,12 +443,12 @@ window.FinanceView = (function(){
   // ── Data load — STOP if any REQUIRED file is missing / unreadable.
   //    'kafalah_v4' is OPTIONAL (richer C08 rows); everything else is REQUIRED. No old lineage.json. ──
   function _load(){
-    var files = ['contracts','terms','scholars','books','events','concept_families','crosslinks','_manifest','quran_finance_layer','new_terms_T201_T214','kafalah_v4','murabaha_v4','qard_v4','musharakah_v4','mudarabah_v4','ijarah_v4','salam_v4','istisna_v4','rahn_v4','wakala_v4','quran_word_filter_map','standards_tracker','standards_kb','standards_kb_multiregulator','standards_kb_IFSB','standards_kb_star','standards_kb_fix4','standards_kb_new_batch_1','standards_kb_new_batch_2','standards_kb_new_batch_3','standards_kb_new_batch_4','demo_case_kafalah','demo_case_fab_offer','demo_case_fab_murabaha','demo_case_fab_indemnity','demo_case_mib_guarantee','compliance_reports_all_cases','book_quran_root','enriched_terms_all','q_to_c_map','crosslinks_spine','standards_lights','jurisdictions','tradition_index','standards_files','term_lineage_links_C02_v2','reliability_log'];
+    var files = ['contracts','terms','scholars','books','events','concept_families','crosslinks','_manifest','quran_finance_layer','new_terms_T201_T214','kafalah_v4','murabaha_v4','qard_v4','musharakah_v4','mudarabah_v4','ijarah_v4','salam_v4','istisna_v4','rahn_v4','wakala_v4','quran_word_filter_map','standards_tracker','standards_kb','standards_kb_multiregulator','standards_kb_IFSB','standards_kb_star','standards_kb_fix4','standards_kb_fix5','standards_kb_new_batch_1','standards_kb_new_batch_2','standards_kb_new_batch_3','standards_kb_new_batch_4','demo_case_kafalah','demo_case_fab_offer','demo_case_fab_murabaha','demo_case_fab_indemnity','demo_case_mib_guarantee','compliance_reports_all_cases','book_quran_root','enriched_terms_all','q_to_c_map','crosslinks_spine','standards_lights','jurisdictions','tradition_index','standards_files','term_lineage_links_C02_v2','reliability_log'];
     // The 10 per-contract v4 files (kafalah + the 9 new) and the word map are OPTIONAL — console.warn if missing.
     // NO lineage_v4 any more: TIMELINE lineage builds ONLY from the per-contract v4 files.
-    var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_fix4:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true, reliability_log:true };
+    var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_fix4:true, standards_kb_fix5:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true, reliability_log:true };
     // OPTIONAL files that must also stay SILENT when absent (not on the CDN yet) — no console noise.
-    var SILENT = { reliability_log:true, standards_kb_fix4:true };
+    var SILENT = { reliability_log:true, standards_kb_fix4:true, standards_kb_fix5:true };
     // Fetched RELATIVE to the app (no CDN), the same way the Standards .txt full-text
     // files are loaded. Everything else keeps going through window.dataUrl.
     var RELATIVE = { reliability_log:true };
@@ -521,7 +521,9 @@ window.FinanceView = (function(){
         (out.standards_kb_new_batch_3 && out.standards_kb_new_batch_3.notes) || [],
         (out.standards_kb_new_batch_4 && out.standards_kb_new_batch_4.notes) || [],
         // FIX-4 clause-verified rule notes (optional file; fail-soft when absent).
-        (out.standards_kb_fix4 && out.standards_kb_fix4.notes) || []
+        (out.standards_kb_fix4 && out.standards_kb_fix4.notes) || [],
+        // FIX-5 — every numbered rule of every AAOIFI Shari'ah Standard held as text (optional; fail-soft).
+        (out.standards_kb_fix5 && out.standards_kb_fix5.notes) || []
       ),
       // OPTIONAL demo business-case document (clauses + excerpt_map). null when the file did not load.
       demo_case: out.demo_case_kafalah || null
@@ -3306,7 +3308,7 @@ window.FinanceView = (function(){
     var out = [];
     (D.kb || []).forEach(function(note){
       if(!note || !Array.isArray(note.key_clauses)) return;
-      var code = String(note.id || '').replace(/^KB-AAOIFI-/, '').replace(/^SS0*/, 'SS');
+      var code = note.code || String(note.id || '').replace(/^KB-AAOIFI-/, '').replace(/^SS0*/, 'SS');
       note.key_clauses.forEach(function(kc){
         // The first FIX-4 note (SS 5) was written before rule_id existed — derive it from the
         // clause ref so those rules are not silently invisible to the checklist.
@@ -3319,16 +3321,64 @@ window.FinanceView = (function(){
     return out;
   }
   // The fixed list for THIS document: rules from standards whose topic words appear in the text.
+  // FIX-5 — topic words: the 10 original standards above, plus every rule note that carries its own
+  // `topics` list (standards_kb_fix5.json). A standard is in scope when one of its words is in the document.
+  function _fix4Topics(){
+    var t = {};
+    Object.keys(FIX4_TOPICS).forEach(function(c){ t[c] = FIX4_TOPICS[c].slice(); });
+    (D.kb || []).forEach(function(note){
+      if(!note || !note.code || !Array.isArray(note.topics)) return;
+      t[note.code] = (t[note.code] || []).concat(note.topics.map(function(w){ return String(w).toLowerCase(); }));
+    });
+    return t;
+  }
+
+  // FIX-3 (8 Nov 2026) — the live run uses what the user chose in SETTINGS:
+  // jurisdiction chips (JURIS), standards ticked (VET.standards), tradition/school chips (VET.traditions).
+  function _liveScope(){
+    var ORDER = ['AAOIFI','IFSB','BNM','CBUAE','SAMA','SC'];
+    var regs = {};
+    ((D.tracker && D.tracker.rows) || []).forEach(function(r){ if(VET.standards.has(r.code) && r.regulator) regs[r.regulator] = 1; });
+    var regList = ORDER.filter(function(x){ return regs[x]; }).concat(Object.keys(regs).filter(function(x){ return ORDER.indexOf(x) === -1; }));
+    var juris = (typeof _traceJurisNames === 'function' ? _traceJurisNames() : '') || 'International (AAOIFI baseline)';
+    var picks = Array.from(VET.traditions);
+    var sects = picks.filter(function(t){ return SECTS.indexOf(t) !== -1; });
+    var schools = picks.filter(function(t){ return SCHOOLS.indexOf(t) !== -1; });
+    var moves = picks.filter(function(t){ return SECTS.indexOf(t) === -1 && SCHOOLS.indexOf(t) === -1; });
+    var s = {
+      frameworks:   regList.length ? regList.join(' + ') : 'no standards selected',
+      jurisdiction: juris,
+      tradition:    sects.length ? sects.join(', ') : 'unrestricted',
+      school:       schools.length ? schools.join(', ') + (moves.length ? ' (also: ' + moves.join(', ') + ')' : '') : (moves.length ? moves.join(', ') : 'unrestricted'),
+      standardsN:   VET.standards.size
+    };
+    s.lines = [
+      'Scope: ' + s.frameworks + ' standards (' + s.standardsN + ' selected by the user) as adopted in: ' + s.jurisdiction + '.',
+      'Tradition: ' + (sects.length ? sects.join(', ') : 'not restricted — where Sunni and Shia positions differ, say so') + '. '
+        + 'School: ' + (schools.length ? schools.join(', ') : 'not restricted — where the schools differ, say so')
+        + (moves.length ? '. Also consider: ' + moves.join(', ') : '') + '.',
+      'You review from the perspective of the financing bank (the financier).'
+    ];
+    return s;
+  }
+  // A fixed rule is used only when the user has its standard ticked in SETTINGS.
+  function _fix4UserAllows(code){
+    var n = _cgNormCode(code);
+    var ok = false;
+    VET.standards.forEach(function(c){ if(!ok && _cgNormCode(c) === n) ok = true; });
+    return ok;
+  }
+
   function _fix4RulesFor(docText){
     var text = String(docText || '').toLowerCase();
     var all = _fix4AllRules();
     if(!all.length){ _fix4Dropped = 0; return []; }
-    var inScope = {};
-    Object.keys(FIX4_TOPICS).forEach(function(code){
-      var hit = FIX4_TOPICS[code].some(function(w){ return text.indexOf(w) !== -1; });
+    var inScope = {}, TOP = _fix4Topics();
+    Object.keys(TOP).forEach(function(code){
+      var hit = TOP[code].some(function(w){ return text.indexOf(w) !== -1; });
       if(hit) inScope[code] = 1;
     });
-    var picked = all.filter(function(r){ return inScope[r.code]; });
+    var picked = all.filter(function(r){ return inScope[r.code] && _fix4UserAllows(r.code); });
     // Round-robin across the in-scope standards when capping, so a large standard cannot crowd
     // every other one out — a murabaha document must still get its late-payment rules tested.
     var byCode = {}, order = [];
@@ -3359,11 +3409,11 @@ window.FinanceView = (function(){
   // first 40 (chosen by _fix4RulesFor); the rest are tested in extra rule-only rounds of 40.
   function _fix4AllInScope(docText){
     var text = String(docText || '').toLowerCase();
-    var inScope = {};
-    Object.keys(FIX4_TOPICS).forEach(function(code){
-      if(FIX4_TOPICS[code].some(function(w){ return text.indexOf(w) !== -1; })) inScope[code] = 1;
+    var inScope = {}, TOP = _fix4Topics();
+    Object.keys(TOP).forEach(function(code){
+      if(TOP[code].some(function(w){ return text.indexOf(w) !== -1; })) inScope[code] = 1;
     });
-    return _fix4AllRules().filter(function(r){ return inScope[r.code]; });
+    return _fix4AllRules().filter(function(r){ return inScope[r.code] && _fix4UserAllows(r.code); });
   }
   // The rules block appended to the Tier-3 prompt.
   function _fix4Block(rules){
@@ -3374,10 +3424,12 @@ window.FinanceView = (function(){
     });
     return '=== FIXED RULE CHECKLIST (test EVERY rule) ===\n'
          + 'For EVERY rule_id below return one verdict in rules_verdicts:\n'
-         + '  COMPLIANT     — the document satisfies the rule, or the rule is not engaged by this document.\n'
-         + '  NON_COMPLIANT — the document breaches the rule. You MUST give document_quote, copied\n'
-         + '                  character-for-character from the DOCUMENT/CLAUSES, showing the breach.\n'
-         + '  UNCERTAIN     — the document does not give you enough to decide. Use this rather than guess.\n'
+         + '  COMPLIANT      — the rule is engaged by this document and the document satisfies it.\n'
+         + '  NOT_APPLICABLE — the rule is not engaged: its subject does not arise in this document.\n'
+         + '  NON_COMPLIANT  — the document breaches the rule. You MUST give document_quote, copied\n'
+         + '                   character-for-character from the DOCUMENT/CLAUSES, showing the breach.\n'
+         + '  UNCERTAIN      — the rule IS engaged but the document does not give you enough to decide.\n'
+         + '                   Use this rather than guess.\n'
          + 'Return a verdict for every rule_id, and NEVER invent a rule_id that is not listed here.\n'
          + lines.join('\n') + '\n=== END RULE CHECKLIST ===';
   }
@@ -3394,7 +3446,7 @@ window.FinanceView = (function(){
       if(seen[id]) return;
       seen[id] = 1;
       var verdict = String((v.verdict || '')).toUpperCase().replace(/[^A-Z_]/g, '');
-      if(['COMPLIANT','NON_COMPLIANT','UNCERTAIN'].indexOf(verdict) === -1) verdict = 'UNCERTAIN';
+      if(['COMPLIANT','NON_COMPLIANT','UNCERTAIN','NOT_APPLICABLE'].indexOf(verdict) === -1) verdict = 'UNCERTAIN';
       var q = String(v.document_quote || '').trim();
       if(verdict === 'NON_COMPLIANT' && !q) verdict = 'UNCERTAIN';
       out.push({ rule_id: id, code: byId[id].code, clause: byId[id].clause, rule_text: byId[id].quote,
@@ -3414,11 +3466,8 @@ window.FinanceView = (function(){
   }
 
   var _pipelineRecipe = (function(){
-    var _scope = [
-      'Scope: AAOIFI + CBUAE standards as adopted in the United Arab Emirates.',
-      'Tradition: Sunni. School: Maliki.',
-      'You review from the perspective of the financing bank (the financier).'
-    ];
+    // FIX-3 — scope read from SETTINGS at the moment each prompt is built (was fixed to UAE / Sunni / Maliki).
+    function _scope(){ return _liveScope().lines; }
     var _jsonOnly = [
       'Respond with ONLY raw JSON. No markdown, no code fences, no commentary before or after.'
     ];
@@ -3497,14 +3546,14 @@ window.FinanceView = (function(){
     return {
       // Tier 1 — select/rank from the deterministic code-scan candidate list (never free-form).
       tier1: function(text, cands){
-        return _join([].concat(_t1Task, _scope, _t1Shape, _jsonOnly))
+        return _join([].concat(_t1Task, _scope(), _t1Shape, _jsonOnly))
              + '\n' + _tsCandidateBlock(cands) + '\n' + _doc(text);
       },
       // Tier 2 — verbatim clause extraction, chained on Tier 1's terms.
       // tight=true appends the amended brief used for the automatic retry after a truncated response.
       tier2: function(text, terms, tight){
         var listStr = (terms || []).map(function(t){ return '- ' + t.term + (t.why_flagged ? ' — ' + t.why_flagged : ''); }).join('\n');
-        return _join([].concat(_t2Task, (tight ? _t2Tight : []), _scope, _t2Shape, _jsonOnly)) + '\n' + _terms(listStr) + '\n' + _doc(text);
+        return _join([].concat(_t2Task, (tight ? _t2Tight : []), _scope(), _t2Shape, _jsonOnly)) + '\n' + _terms(listStr) + '\n' + _doc(text);
       },
       // Tier 3 — issue-finding against standards; open items must reuse Tier-2 quotes EXACTLY.
       // Uses _liveExample() so the JSON shape is byte-for-byte the existing live-report schema.
@@ -3517,10 +3566,10 @@ window.FinanceView = (function(){
           'You are given the CLAUSES extracted and verbatim-checked in Tier 2, and a further batch of fixed rules.',
           'Do NOT write open items. Return ONLY rules_verdicts, one verdict for every rule_id listed.',
           'Every document_quote MUST be copied character-for-character from the CLAUSES below.'
-        ].concat(_scope)) + '\n' + _clauseBlock(clauses) + '\n' + _fix4Block(rules || []);
+        ].concat(_scope())) + '\n' + _clauseBlock(clauses) + '\n' + _fix4Block(rules || []);
       },
       tier3: function(clauses, tight, fix4Rules){
-        var base = _join([].concat(_t3Task, (tight ? _t3Tight : []), _scope, _t3Rules)) + '\n' + JSON.stringify(_liveExample()) + '\n' + _clauseBlock(clauses);
+        var base = _join([].concat(_t3Task, (tight ? _t3Tight : []), _scope(), _t3Rules)) + '\n' + JSON.stringify(_liveExample()) + '\n' + _clauseBlock(clauses);
         var rb = _fix4Block(fix4Rules || []);
         return rb ? (base + '\n' + rb) : base;
       }
@@ -3952,13 +4001,13 @@ window.FinanceView = (function(){
     var tool = [{ name:'emit_rule_verdicts', description:'Return the rule verdicts as structured JSON.', input_schema:{ type:'object', properties:{
       rules_verdicts:{ type:'array', minItems:0, items:{ type:'object', properties:{
         rule_id:{ type:'string' },
-        verdict:{ type:'string', enum:['COMPLIANT','NON_COMPLIANT','UNCERTAIN'] },
+        verdict:{ type:'string', enum:['COMPLIANT','NON_COMPLIANT','UNCERTAIN','NOT_APPLICABLE'] },
         document_quote:{ type:'string' },
         note:{ type:'string' }
       }, required:['rule_id','verdict'] } }
     }, required:['rules_verdicts'] } }];
     function oneRound(b, attempt){
-      if(_pipe){ _pipe.tier3Notice = 'TIER 3 — checking more rules: round ' + (b + 2) + ' of ' + (batches.length + 1) + (attempt > 1 ? ' (retry ' + attempt + ' of 3)' : '') + '…'; _pipePaint(); }
+      if(_pipe && attempt > 1){ _pipe.tier3Notice = 'TIER 3 — retrying a rule round (attempt ' + attempt + ' of 3)…'; _pipePaint(); }
       var prompt = _pipelineRecipe.rulesOnly(clauses, batches[b]);
       return _pipeApiCall(key, model, prompt, 16000, tool, { type:'tool', name:'emit_rule_verdicts' }).then(function(res){
         if(res.status !== 200 || (res.j && res.j.stop_reason === 'max_tokens')) throw { reason: 'round failed' };
@@ -3976,9 +4025,21 @@ window.FinanceView = (function(){
         untested = untested.concat(batches[b]);
       });
     }
-    var chain = Promise.resolve();
-    batches.forEach(function(_, b){ chain = chain.then(function(){ return oneRound(b, 1); }); });
-    return chain.then(function(){ if(_pipe) _pipe.tier3Notice = null; return { raw: raw, untested: untested }; });
+    // FIX-5 — up to 3 rounds run at the same time (each still retries on its own), so a document
+    // that touches many standards does not wait for every round one after another.
+    var next = 0, done = 0, PAR = 3;
+    function worker(){
+      if(next >= batches.length) return Promise.resolve();
+      var b = next++;
+      return oneRound(b, 1).then(function(){
+        done++;
+        if(_pipe){ _pipe.tier3Notice = 'TIER 3 — checking more rules: ' + done + ' of ' + batches.length + ' extra rounds done…'; _pipePaint(); }
+        return worker();
+      });
+    }
+    var workers = [];
+    for(var w = 0; w < Math.min(PAR, batches.length); w++) workers.push(worker());
+    return Promise.all(workers).then(function(){ if(_pipe) _pipe.tier3Notice = null; return { raw: raw, untested: untested }; });
   }
 
   function _pipeTier3(key, model, tight, attempt){
@@ -4014,7 +4075,7 @@ window.FinanceView = (function(){
     if(fix4Rules.length){
       _t3Tool[0].input_schema.properties.rules_verdicts = { type:'array', minItems:0, items:{ type:'object', properties:{
         rule_id:{ type:'string' },
-        verdict:{ type:'string', enum:['COMPLIANT','NON_COMPLIANT','UNCERTAIN'] },
+        verdict:{ type:'string', enum:['COMPLIANT','NON_COMPLIANT','UNCERTAIN','NOT_APPLICABLE'] },
         document_quote:{ type:'string' },
         note:{ type:'string' }
       }, required:['rule_id','verdict'] } };
@@ -4092,6 +4153,7 @@ window.FinanceView = (function(){
       report._liveProvider = _apiProviderGet();
       report._liveUsage = { input_tokens: totalIn, output_tokens: totalOut };
       report._liveTiers = 3;
+      report._scope = _liveScope();   // FIX-3 — what the run actually used, shown on the report
       return _t3Deliver(report, key, model);   // FIX-5 aware; with the flag off this installs immediately
       });   // FIX-2 — end of extra rule rounds
     }).catch(function(err){ throw { tier: 3, reason: _pipeReason(err) }; });
@@ -4373,13 +4435,15 @@ window.FinanceView = (function(){
       }
       h += '<h1 class="fin-rep-h1">Shari\'ah Compliance Review — '+_esc(isLive ? _liveLabel() : (fab.case || ''))+'</h1>';
       // Counts line under the title (severities computed above).
-      h += '<div class="fin-rep-meta">'+fitems.length+' open items · '+sevC.high+' high · '+sevC.medium+' medium · '+sevC.low+' low · scope: AAOIFI + CBUAE (UAE)</div>';
-      // Header strip: reviewer role (fixed short label) + UAE scope line.
-      h += '<div class="fin-rep-meta">Reviewer acting as: <strong>Financier / Bank</strong> &nbsp;·&nbsp; Scope: AAOIFI + CBUAE (UAE-adopted) &nbsp;·&nbsp; '+_esc(fdateStr)+'</div>';
+      // FIX-3 — a live run shows the scope it actually used; saved cases keep their locked UAE scope.
+      var _sc = (isLive && fab._scope) ? fab._scope : { frameworks:'AAOIFI + CBUAE', jurisdiction:'United Arab Emirates', tradition:'Sunni', school:'Maliki' };
+      h += '<div class="fin-rep-meta">'+fitems.length+' open items · '+sevC.high+' high · '+sevC.medium+' medium · '+sevC.low+' low · scope: '+_esc(_sc.frameworks)+' ('+_esc(_sc.jurisdiction)+')</div>';
+      // Header strip: reviewer role (fixed short label) + scope line.
+      h += '<div class="fin-rep-meta">Reviewer acting as: <strong>Financier / Bank</strong> &nbsp;·&nbsp; Scope: '+_esc(_sc.frameworks)+' ('+_esc(_sc.jurisdiction)+') &nbsp;·&nbsp; '+_esc(fdateStr)+'</div>';
 
       // Section 1 — Provenance (built from variables; key values in the gold-tint fin-prov-hl highlight, print-safe).
       // Locked madhab mapping for the FAB/UAE documents — same across all three reports.
-      var pvFrameworks = 'AAOIFI + CBUAE', pvJurisdiction = 'United Arab Emirates', pvTradition = 'Sunni', pvSchool = 'Maliki';
+      var pvFrameworks = _sc.frameworks, pvJurisdiction = _sc.jurisdiction, pvTradition = _sc.tradition, pvSchool = _sc.school;
       function pvHl(v){ return '<span class="fin-prov-hl">'+_esc(v)+'</span>'; }
       h += '<h2 class="fin-rep-h2">1 · Provenance</h2>';
       h += '<p class="fin-rep-prov">This review was prepared under the following vetting scope: '
@@ -4444,7 +4508,7 @@ window.FinanceView = (function(){
           return r;
         };
         h += '<div class="fin-rep-manual"><h2 class="fin-rep-h2 fin-rep-manual-title">Needs manual reference ('+_mr.length+')</h2>'
-           + '<div class="fin-rep-meta">Standards not yet processed in this app are flagged for manual reference — these findings could not be checked against a loaded standard.</div>';
+           + '<div class="fin-rep-meta">A scholar must look these up by hand. Each one either cites a standard this app has not loaded, or is a rule the review marked non-compliant without raising an open item.</div>';
         _mr.forEach(function(m){
           h += '<div class="fin-rep-manual-row"><div class="fin-fab-title">'+_esc(m.title || '(untitled finding)')+'</div>'
              + (m.quoted_text ? '<div class="fin-rep-quote">'+_esc(m.quoted_text)+'</div>' : '')
@@ -4461,11 +4525,12 @@ window.FinanceView = (function(){
       // so the existing sections render exactly as before.
       var _rules = Array.isArray(fab.rules_verdicts) ? fab.rules_verdicts : [];
       if(_rules.length){
-        var _rc = { COMPLIANT:0, NON_COMPLIANT:0, UNCERTAIN:0 };
+        var _rc = { COMPLIANT:0, NON_COMPLIANT:0, UNCERTAIN:0, NOT_APPLICABLE:0 };
         _rules.forEach(function(r){ if(_rc[r.verdict] != null) _rc[r.verdict]++; });
         h += '<div class="fin-rep-sec-rules"><h2 class="fin-rep-h2">Rule checklist</h2>';
         h += '<div class="fin-rep-meta">'+_rules.length+' fixed rules tested · '
            + _rc.COMPLIANT+' compliant · '+_rc.NON_COMPLIANT+' non-compliant · '+_rc.UNCERTAIN+' uncertain'
+           + (_rc.NOT_APPLICABLE ? ' · '+_rc.NOT_APPLICABLE+' not applicable' : '')
            + ' · rules built in code from clause-verified standards</div>';
         var _nt = Number(fab._rulesNotTested || 0), _rd = Number(fab._rulesDropped || 0);
         if(_nt > 0) h += '<div class="fin-rep-rule-note">'+_nt+' further rule'+(_nt === 1 ? '' : 's')+' in scope were not tested this run (the AI did not answer for them — run again).</div>';
@@ -6685,7 +6750,8 @@ window.FinanceView = (function(){
   // ── Rule checklist helpers ──
   function _ruleVerdictChip(v){
     return (v === 'COMPLIANT') ? { cls:'fin-rep-ok', word:'COMPLIANT' }
-         : (v === 'NON_COMPLIANT') ? { cls:'fin-fab-badge-amber', word:'NON-COMPLIANT' } : { cls:'fin-fab-badge-grey', word:'UNCERTAIN' };
+         : (v === 'NON_COMPLIANT') ? { cls:'fin-fab-badge-amber', word:'NON-COMPLIANT' }
+         : (v === 'NOT_APPLICABLE') ? { cls:'fin-fab-badge-grey', word:'NOT APPLICABLE' } : { cls:'fin-fab-badge-grey', word:'UNCERTAIN' };
   }
   // A rule's standard code written exactly as the loaded standard id reads ("SS3" → "SS 3"); unchanged when not loaded.
   function _stdLoadedId(code){
