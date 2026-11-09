@@ -1,0 +1,89 @@
+/* GOLD LIVE overlay — GOLD LIVE FACTORY 1, 9 Nov 2026. All rules scoped to #gl-overlay. */
+#gl-overlay{position:fixed;inset:0;z-index:1200;display:flex;flex-direction:column;background:#0b1119;color:#E8E2D0;font-family:inherit}
+#gl-overlay .gl-head{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid rgba(212,175,55,0.35)}
+#gl-overlay .gl-head-t{font-family:'Cinzel',serif;color:#D4AF37;font-size:20px;letter-spacing:.12em}
+#gl-overlay .gl-head-t span{font-family:inherit;color:#A0AEC0;font-size:13px;letter-spacing:.02em;text-transform:none}
+#gl-overlay #gl-close{background:transparent;border:1px solid #4A5568;color:#CBD5E0;font-size:16px;line-height:1;padding:6px 10px;border-radius:4px;cursor:pointer}
+#gl-overlay #gl-close:hover{background:rgba(255,255,255,0.08)}
+#gl-overlay .gl-draft{padding:6px 20px;font-size:12px;color:#A0AEC0;background:rgba(212,175,55,0.06);border-bottom:1px solid #1F2A37}
+#gl-overlay .gl-body{flex:1;display:flex;min-height:0}
+#gl-overlay .gl-loading{margin:auto;color:#CBD5E0;font-family:'Cinzel',serif;letter-spacing:.06em}
+
+/* left 20% — gold time bar */
+#gl-overlay .gl-left{flex:0 0 20%;max-width:20%;display:flex;flex-direction:column;border-right:1px solid #1F2A37;padding:14px 10px 14px 16px;box-sizing:border-box}
+#gl-overlay .gl-legend{display:flex;flex-direction:column;gap:4px;font-size:11px;color:#A0AEC0;margin-bottom:12px}
+#gl-overlay .gl-legend span{display:flex;align-items:center;gap:6px}
+#gl-overlay .gl-legend-note{font-style:italic;color:#6B7280}
+#gl-overlay .gl-bar{position:relative;flex:1;margin:14px 0 14px 0;cursor:pointer;touch-action:none;user-select:none}
+#gl-overlay .gl-bar-line{position:absolute;left:36%;top:0;bottom:0;width:8px;margin-left:-4px;border-radius:4px;background:linear-gradient(#8a6d1f,#D4AF37 30%,#F3D77A 55%,#D4AF37 80%,#8a6d1f)}
+#gl-overlay .gl-knob{position:absolute;left:36%;top:0;width:26px;height:26px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFF3C4,#F3D77A 35%,#D4AF37 70%,#8a6d1f);box-shadow:0 0 0 3px rgba(212,175,55,0.25),0 0 16px rgba(212,175,55,0.8);cursor:grab;z-index:3}
+#gl-overlay .gl-bar.gl-dragging .gl-knob{cursor:grabbing;box-shadow:0 0 0 5px rgba(212,175,55,0.35),0 0 22px rgba(243,215,122,1)}
+#gl-overlay .gl-slab-wrap{position:absolute;left:calc(36% + 12px);right:0;top:14%;display:flex;flex-direction:column;align-items:center;cursor:default;z-index:2}
+#gl-overlay .gl-slab{width:138px;height:138px;border-radius:50%;box-sizing:border-box;border:2px solid #D4AF37;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;line-height:1.2;transition:background .2s,color .2s}
+#gl-overlay .gl-ms{position:absolute;left:0;width:calc(36% + 9px);transform:translateY(-50%);display:flex;align-items:center;justify-content:flex-end;gap:6px;background:none;border:none;padding:0;cursor:pointer;z-index:2}
+#gl-overlay .gl-ms-lbl{font-size:10px;line-height:1.15;color:#E8E2D0;text-align:right;text-transform:uppercase;letter-spacing:.05em}
+#gl-overlay .gl-ms:hover .gl-ms-lbl{color:#fff}
+#gl-overlay .gl-ms-tick{order:2;flex:0 0 18px;height:3px;background:#F3D77A;border-radius:2px;box-shadow:0 0 6px rgba(243,215,122,0.8)}
+#gl-overlay .gl-slab-cal{font-size:9px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+#gl-overlay .gl-slab-dm{font-size:13px;font-weight:700;line-height:1.15}
+#gl-overlay .gl-slab-yr{font-size:14px;font-weight:700;white-space:nowrap;line-height:1.2}
+#gl-overlay .gl-slab-yr.gl-dim{font-size:10px;font-weight:400;font-style:italic;opacity:.75;white-space:normal}
+#gl-overlay .gl-slab-sep{display:block;width:60%;height:1px;margin:5px 0 4px;background:currentColor;opacity:.35}
+#gl-overlay .gl-slab-differ{margin-top:5px;font-size:11px;color:#A0AEC0;font-style:italic;min-height:13px}
+#gl-overlay .gl-slab-title{margin-top:4px;font-size:12px;color:#E2E8F0;text-align:center;line-height:1.3;max-width:100%}
+#gl-overlay .gl-t-day{background:#D4AF37;color:#111}
+#gl-overlay .gl-t-month{background:rgba(212,175,55,0.45);color:#fff}
+#gl-overlay .gl-t-year{background:#0b1119;color:#F5F0E8}
+#gl-overlay .gl-t-none{background:#0b1119;color:#6B7280;border-style:dashed}
+#gl-overlay .gl-mark-key{display:inline-block;width:11px;height:11px;border-radius:50%;border:2px solid #D4AF37;box-sizing:border-box}
+
+/* middle 70% + right 10% — one scroller, each row = 7fr | 1fr */
+#gl-overlay .gl-scroll{flex:1 1 80%;overflow-y:auto;padding:0 16px 30px 16px;box-sizing:border-box}
+#gl-overlay .gl-colhd{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:7fr 1fr;gap:12px;padding:10px 0 8px;background:#0b1119;border-bottom:1px solid #1F2A37;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:.08em}
+#gl-overlay .gl-row{display:grid;grid-template-columns:7fr 1fr;gap:12px;padding:16px 0;border-bottom:1px solid #1F2A37;scroll-margin-top:40px;transition:background .4s}
+#gl-overlay .gl-row.gl-flash{background:rgba(212,175,55,0.08)}
+#gl-overlay .gl-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+#gl-overlay .gl-title{font-family:'Cinzel',serif;color:#D4AF37;font-size:16px;letter-spacing:.03em}
+#gl-overlay .gl-desc{margin:4px 0 8px 0;color:#CBD5E0;font-size:13px;line-height:1.45}
+#gl-overlay .gl-op{margin:6px 0 0 0;padding:8px 10px;border-left:2px solid #4A5568;background:#111B27;border-radius:0 4px 4px 0}
+#gl-overlay .gl-op-none{color:#6B7280;font-style:italic}
+#gl-overlay .gl-op-hd{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#gl-overlay .gl-op-label{color:#F5F0E8;font-size:13px;font-weight:600}
+#gl-overlay .gl-tag{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#CBD5E0;border:1px solid #4A5568;border-radius:10px;padding:1px 7px}
+#gl-overlay .gl-prec{font-size:10px;text-transform:uppercase;letter-spacing:.06em;border-radius:10px;padding:1px 7px;border:1px solid #4A5568;color:#A0AEC0}
+#gl-overlay .gl-prec.gl-p-day{background:#4A5568;color:#fff}
+#gl-overlay .gl-prec.gl-p-month{background:rgba(160,174,192,0.18)}
+#gl-overlay .gl-op-cal{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:4px;font-size:12px;color:#E2E8F0}
+#gl-overlay .gl-cal-k{color:#6B7280;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-right:3px}
+#gl-overlay .gl-src{margin-top:5px;font-size:12px;line-height:1.45;color:#A0AEC0}
+#gl-overlay .gl-quote{font-style:italic;color:#CBD5E0}
+#gl-overlay .gl-src-a{color:#CBD5E0;text-decoration:none;border-bottom:1px dotted rgba(203,213,224,0.6)}
+#gl-overlay .gl-src-a:hover{color:#fff}
+#gl-overlay .gl-src-sec{color:#6B7280}
+#gl-overlay .gl-notes{margin:6px 0 0 0;font-size:12px;color:#A0AEC0}
+#gl-overlay .gl-notes summary{cursor:pointer;color:#6B7280}
+#gl-overlay .gl-notes div{margin-top:4px;line-height:1.45}
+#gl-overlay .gl-tags{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding-top:2px}
+#gl-overlay .gl-tags-none{color:#4A5568}
+#gl-overlay .gl-chip{font-size:10px;letter-spacing:.06em;padding:2px 7px;border-radius:10px;cursor:pointer;background:transparent;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+#gl-overlay .gl-chip-ev{border:1px solid #718096;color:#CBD5E0}
+#gl-overlay .gl-chip-q{border:1px solid #718096;color:#CBD5E0}
+#gl-overlay .gl-chip-h{border:1px solid #718096;color:#CBD5E0}
+#gl-overlay .gl-chip:hover{background:rgba(255,255,255,0.06)}
+#gl-overlay .gl-foot{margin-top:20px;font-size:11px;color:#6B7280;text-align:center}
+
+#gl-overlay .gl-scroll{position:relative}
+
+@media (max-width: 760px){
+  #gl-overlay .gl-left{display:none}
+  #gl-overlay .gl-row,#gl-overlay .gl-colhd{grid-template-columns:1fr}
+  #gl-overlay .gl-tags{flex-direction:row;flex-wrap:wrap}
+}
+#gl-overlay .gl-legend-t{font-family:'Cinzel',serif;color:#CBD5E0;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+#gl-overlay .gl-slab-txt{font-size:13px;font-weight:700;line-height:1.2;padding:0 4px}
+#gl-overlay .gl-none-txt{font-size:11px;font-weight:400;font-style:italic;opacity:.8}
+#gl-overlay .gl-op-sub{font-size:11px;color:#A0AEC0;margin-top:2px}
+#gl-overlay .gl-readline{position:fixed;height:1px;background:linear-gradient(90deg,rgba(212,175,55,0.75),rgba(212,175,55,0.15) 60%,rgba(212,175,55,0));pointer-events:none;z-index:4}
+#gl-overlay .gl-ar{font-family:'Amiri','Traditional Arabic','Scheherazade New',serif;font-size:17px;line-height:1.7;color:#F5F0E8;font-style:normal;text-align:right;margin:4px 0 2px}
+#gl-overlay .gl-quote-en{font-size:12px;color:#A0AEC0;font-style:italic;margin-bottom:2px}
+#gl-overlay .gl-est{color:#CBD5E0;font-style:italic}

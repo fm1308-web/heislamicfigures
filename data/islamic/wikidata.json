@@ -924,18 +924,6 @@
     "gnd_id": "118646435",
     "_match_path": "B"
   },
-  "F0053": {
-    "qid": "Q138096749",
-    "labels": {
-      "en": "Abdullah Bin Jahsh Mosque"
-    },
-    "descriptions": {
-      "en": "Mosque in Saudi Arabia",
-      "ar": "مسجد في السعودية"
-    },
-    "wikipedia": {},
-    "_match_path": "B"
-  },
   "F0054": {
     "qid": "Q116187806",
     "labels": {
@@ -990,13 +978,6 @@
       "ar": "عبد الله بن سراقة",
       "ur": "عبد اللہ بن سراقہ"
     },
-    "_match_path": "B"
-  },
-  "F0075": {
-    "qid": "Q116187995",
-    "labels": {},
-    "descriptions": {},
-    "wikipedia": {},
     "_match_path": "B"
   },
   "F0078": {
@@ -7384,34 +7365,6 @@
     "gnd_id": "119498278",
     "_match_path": "B"
   },
-  "F0513": {
-    "qid": "Q136354895",
-    "labels": {
-      "en": "Bali Efendi the Sot",
-      "tr": "Sarhoş Bali Efendi"
-    },
-    "descriptions": {
-      "en": "Ottoman religious scholar and writer (d. 1573)",
-      "tr": "Halvetiyye tarikatının Ramazâniyye koluna mensup mutasavvıf-şair."
-    },
-    "wikipedia": {},
-    "death_date": "+1573-00-00T00:00:00Z",
-    "birth_place": [
-      "Q630533"
-    ],
-    "death_place": [
-      "Q406"
-    ],
-    "burial_place": [
-      "Q136363265"
-    ],
-    "occupations": [
-      "Q36180",
-      "Q37226",
-      "Q1234713"
-    ],
-    "_match_path": "B"
-  },
   "F0522": {
     "qid": "Q124744455",
     "labels": {
@@ -13650,49 +13603,6 @@
     "gnd_id": "118638335",
     "_match_path": "B"
   },
-  "F0863": {
-    "qid": "Q42034",
-    "labels": {
-      "en": "Khadija bint Khuwaylid",
-      "ar": "خديجة بنت خويلد",
-      "fa": "خدیجه",
-      "ur": "خدیجہ بنت خویلد",
-      "tr": "Hatice"
-    },
-    "descriptions": {
-      "en": "first wife of Muhammad",
-      "ar": "الزوجة الأولى للنبي محمد، و أول من أسلم من النساء (68–3ق.هـ / 556–619م)",
-      "fa": "نخستین همسر محمد (۵۵۵–۶۱۹ م.)",
-      "tr": "Muhammed'in ilk eşi"
-    },
-    "wikipedia": {
-      "en": "Khadija bint Khuwaylid",
-      "ar": "خديجة بنت خويلد",
-      "fa": "خدیجه",
-      "ur": "خدیجہ بنت خویلد",
-      "tr": "Hatice bint Hüveylid"
-    },
-    "birth_date": "+0557-00-00T00:00:00Z",
-    "death_date": "+0619-00-00T00:00:00Z",
-    "birth_place": [
-      "Q5806"
-    ],
-    "death_place": [
-      "Q5806"
-    ],
-    "burial_place": [
-      "Q42004"
-    ],
-    "occupations": [
-      "Q43845",
-      "Q29051324",
-      "Q215536"
-    ],
-    "viaf_id": "3836302",
-    "loc_id": "n82251178",
-    "gnd_id": "118638335",
-    "_match_path": "B"
-  },
   "F0864": {
     "qid": "Q4308836",
     "labels": {
@@ -14115,27 +14025,6 @@
     ],
     "death_place": [
       "Q5806"
-    ],
-    "_match_path": "B"
-  },
-  "F0952": {
-    "qid": "Q12517319",
-    "labels": {
-      "en": "Sultan Ma'mun Al Rashid Perkasa Alamyah"
-    },
-    "descriptions": {
-      "en": "sultan of Deli"
-    },
-    "wikipedia": {
-      "en": "Sultan Ma'mun Al Rashid Perkasa Alamsyah"
-    },
-    "birth_date": "+1853-00-00T00:00:00Z",
-    "death_date": "+1924-09-09T00:00:00Z",
-    "birth_place": [
-      "Q12493359"
-    ],
-    "death_place": [
-      "Q5972"
     ],
     "_match_path": "B"
   },
@@ -15893,44 +15782,6 @@
     "_match_path": "B"
   },
   "F1075": {
-    "qid": "Q1110691",
-    "labels": {
-      "en": "Mus`ab ibn `Umair",
-      "ar": "مصعب بن عمير",
-      "fa": "مصعب بن عمیر",
-      "ur": "مصعب بن عمیر",
-      "tr": "Musab b. Umeyr"
-    },
-    "descriptions": {
-      "en": "companion (Sahabi) of Muhammad",
-      "ar": "صحابي",
-      "ur": "مصعب بن عمیر (صحابی رسول صلی اللہ علیہ وسلم)",
-      "tr": "Muhammed'le sohbet etmiş Müslüman (sahabe)"
-    },
-    "wikipedia": {
-      "en": "Mus'ab ibn Umayr",
-      "ar": "مصعب بن عمير",
-      "fa": "مصعب بن عمیر",
-      "ur": "مصعب بن عمیر",
-      "tr": "Mus'ab bin Umeyr"
-    },
-    "birth_date": "+0585-01-01T00:00:00Z",
-    "death_date": "+0625-00-00T00:00:00Z",
-    "birth_place": [
-      "Q5806"
-    ],
-    "death_place": [
-      "Q1436040"
-    ],
-    "occupations": [
-      "Q432386",
-      "Q1759959"
-    ],
-    "viaf_id": "62952528",
-    "loc_id": "n84148931",
-    "_match_path": "B"
-  },
-  "F1078": {
     "qid": "Q1110691",
     "labels": {
       "en": "Mus`ab ibn `Umair",
@@ -22098,43 +21949,6 @@
     "viaf_id": "242793568",
     "_match_path": "B"
   },
-  "F1717": {
-    "qid": "Q12222083",
-    "labels": {
-      "en": "'A'isha al-Ba'uniyya",
-      "ar": "عائشة الباعونية",
-      "fa": "عایشه باعونیه",
-      "ur": "عائشہ الباعونیہ",
-      "tr": "Bauniye"
-    },
-    "descriptions": {
-      "en": "medieval Arabic Sufi master and poet",
-      "ar": "أديبة وشاعرة صوفية دمشقية عاشت خلال أواخر العصر المملوكي"
-    },
-    "wikipedia": {
-      "en": "'A'isha al-Ba'uniyya",
-      "ar": "عائشة الباعونية",
-      "fa": "عایشه باعونیه",
-      "ur": "عائشہ باعونیہ"
-    },
-    "birth_date": "+1460-01-01T00:00:00Z",
-    "death_date": "+1516-12-21T00:00:00Z",
-    "birth_place": [
-      "Q3766"
-    ],
-    "death_place": [
-      "Q3766"
-    ],
-    "occupations": [
-      "Q6673651",
-      "Q49757",
-      "Q36180"
-    ],
-    "viaf_id": "284813922",
-    "loc_id": "nr92001781",
-    "gnd_id": "119537842",
-    "_match_path": "B"
-  },
   "F1718": {
     "qid": "Q4663759",
     "labels": {
@@ -22530,56 +22344,6 @@
     "viaf_id": "23022635",
     "loc_id": "n2009074191",
     "gnd_id": "122413016",
-    "_match_path": "B"
-  },
-  "F1729": {
-    "qid": "Q488200",
-    "labels": {
-      "en": "Fethullah Gülen",
-      "ar": "فتح الله كولن",
-      "fa": "فتح‌الله گولن",
-      "ur": "فتح اللہ گولن",
-      "tr": "Fethullah Gülen"
-    },
-    "descriptions": {
-      "en": "Turkish preacher and imam (1941–2024)",
-      "ar": "مفكر إسلامي وداعية تركي",
-      "fa": "سخنران، نویسنده و مدرس اهل ترکیه (۱۹۴۱–۲۰۲۴)",
-      "tr": "Vatan Haini(1941–2024)"
-    },
-    "wikipedia": {
-      "en": "Fethullah Gülen",
-      "ar": "فتح الله كولن",
-      "fa": "فتح‌الله گولن",
-      "ur": "فتح اللہ گولن",
-      "tr": "Fethullah Gülen"
-    },
-    "birth_date": "+1941-04-27T00:00:00Z",
-    "death_date": "+2024-10-20T00:00:00Z",
-    "birth_place": [
-      "Q2744950"
-    ],
-    "death_place": [
-      "Q130605514"
-    ],
-    "burial_place": [
-      "Q1896048"
-    ],
-    "occupations": [
-      "Q8359428",
-      "Q36180",
-      "Q432386",
-      "Q58968",
-      "Q6051619",
-      "Q125482",
-      "Q2911636"
-    ],
-    "notable_works": [
-      "Q125958769"
-    ],
-    "viaf_id": "84312808",
-    "loc_id": "nr96036931",
-    "gnd_id": "122500148",
     "_match_path": "B"
   },
   "F1730": {

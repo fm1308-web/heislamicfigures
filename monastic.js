@@ -4122,6 +4122,44 @@ window.MonasticView = (function(){
         });
       }
     });
+    // GOLD LIVE pill — GOLD LIVE FACTORY 1, 9 Nov 2026.
+    _addGoldLivePill(zoneBEl);
+  }
+
+  // ── GOLD LIVE (Prophet's life by date) — loads goldlive.js/.css on first click ──
+  var GL_VER = '11';
+  var _glLoading = false;
+  function _loadGoldLive(cb){
+    if(window.GoldLive){ cb(); return; }
+    if(_glLoading) return;
+    _glLoading = true;
+    if(!document.getElementById('gl-css')){
+      var l = document.createElement('link');
+      l.id = 'gl-css'; l.rel = 'stylesheet'; l.href = 'goldlive.css?v=' + GL_VER;
+      document.head.appendChild(l);
+    }
+    var s = document.createElement('script');
+    s.src = 'goldlive.js?v=' + GL_VER;
+    s.onload = function(){ _glLoading = false; if(window.GoldLive) cb(); };
+    s.onerror = function(){ _glLoading = false; var gb = document.getElementById('mon-btn-goldlive'); if(gb) gb.textContent = 'FOLLOW THE LIFE'; console.warn('[MON] goldlive.js failed to load'); };
+    document.head.appendChild(s);
+  }
+  function _addGoldLivePill(zoneBEl){
+    if(!zoneBEl || document.getElementById('mon-btn-goldlive')) return;
+    var row1 = zoneBEl.querySelector('.zb-row1');
+    if(!row1) return;
+    var b = document.createElement('button');
+    b.className = 'zb-pill';
+    b.id = 'mon-btn-goldlive';
+    b.type = 'button';
+    b.textContent = 'FOLLOW THE LIFE';
+    b.style.cssText = 'background:#D4AF37;color:#111;border-color:#D4AF37;font-weight:700';
+    b.title = 'The life of the Prophet Muhammad, birth to death, by date';
+    b.addEventListener('click', function(){
+      if(!window.GoldLive) b.textContent = 'LOADING\u2026';
+      _loadGoldLive(function(){ b.textContent = 'FOLLOW THE LIFE'; window.GoldLive.open(); });
+    });
+    row1.appendChild(b);
   }
 
   var _mounted = false;
@@ -4231,6 +4269,7 @@ window.MonasticView = (function(){
     var vp = document.getElementById('mon-drill-valuepicker');   if(vp) vp.remove();
     var mo = document.getElementById('mon-methodology-overlay'); if(mo) mo.remove();
     var pt = document.getElementById('mon-portal');              if(pt) pt.remove();
+    try { if(window.GoldLive) window.GoldLive.close(); } catch(e) {}
 
     var zb = document.getElementById('zoneB');
     var zc = document.getElementById('zoneC');

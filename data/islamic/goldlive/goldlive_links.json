@@ -1,0 +1,145 @@
+{
+ "note": "GOLD LIVE entry -> existing Gold Ark event ids (events/master.json). Matched by GOLD LIVE FACTORY by event title; for Adam to check. Chips shown are ONLY links already in Gold Ark: the event's quranRef verses and event_hadith_chips.json.",
+ "skip_quranRef": {
+  "E0629-01": "quranRef text says '(Khaybar)' but the event is Umrat al-Qada — not shown, flagged",
+  "E0630-03": "quranRef text says '(Tabuk expedition)' but the event is the Siege of Ta'if — not shown, flagged"
+ },
+ "map": {
+  "GL-A-01": [
+   "E0569-01"
+  ],
+  "GL-A-02": [
+   "E0570-01"
+  ],
+  "GL-A-03": [
+   "E0571-01"
+  ],
+  "GL-A-04": [
+   "E0576-01"
+  ],
+  "GL-A-05": [
+   "E0578-01"
+  ],
+  "GL-A-06": [
+   "E0580-01"
+  ],
+  "GL-A-07": [
+   "E0585-01"
+  ],
+  "GL-A-08": [
+   "E0590-01"
+  ],
+  "GL-A-09": [
+   "E0594-01",
+   "E0595-01"
+  ],
+  "GL-A-10": [
+   "E0605-01"
+  ],
+  "GL-B-01": [
+   "E0610-01"
+  ],
+  "GL-B-02": [
+   "E0613-01"
+  ],
+  "GL-B-03": [
+   "E0615-01"
+  ],
+  "GL-B-04": [
+   "E0616-01"
+  ],
+  "GL-B-05": [
+   "E0616-01"
+  ],
+  "GL-B-06": [
+   "E0617-01"
+  ],
+  "GL-B-08": [
+   "E0619-01"
+  ],
+  "GL-B-09": [
+   "E0619-01"
+  ],
+  "GL-B-11": [
+   "E0620-01"
+  ],
+  "GL-B-12": [
+   "E0621-01"
+  ],
+  "GL-B-13": [
+   "E0622-02"
+  ],
+  "GL-B-14": [
+   "E0622-01"
+  ],
+  "GL-B-15": [
+   "E0622-01"
+  ],
+  "GL-B-16": [
+   "E0622-01"
+  ],
+  "GL-C-02": [
+   "E0623-01"
+  ],
+  "GL-C-03": [
+   "E0623-02"
+  ],
+  "GL-C-04": [
+   "E0624-02"
+  ],
+  "GL-C-06": [
+   "E0624-01"
+  ],
+  "GL-C-10": [
+   "E0625-01"
+  ],
+  "GL-C-11": [
+   "E0626-01"
+  ],
+  "GL-C-14": [
+   "E0627-01"
+  ],
+  "GL-C-15": [
+   "E0627-02"
+  ],
+  "GL-D-01": [
+   "E0628-01"
+  ],
+  "GL-D-02": [
+   "E0628-02"
+  ],
+  "GL-D-03": [
+   "E0628-03"
+  ],
+  "GL-D-04": [
+   "E0629-01"
+  ],
+  "GL-D-05": [
+   "E0629-02"
+  ],
+  "GL-D-06": [
+   "E0630-01"
+  ],
+  "GL-D-07": [
+   "E0630-02"
+  ],
+  "GL-D-08": [
+   "E0630-03"
+  ],
+  "GL-D-10": [
+   "E0631-02"
+  ],
+  "GL-E-01": [
+   "E0631-01"
+  ],
+  "GL-E-02": [
+   "E0632-01"
+  ],
+  "GL-E-03": [
+   "E0632-01"
+  ],
+  "GL-E-08": [
+   "E0632-02"
+  ]
+ }
+}
