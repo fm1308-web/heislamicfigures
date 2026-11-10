@@ -6966,7 +6966,7 @@ window.FinanceView = (function(){
        + '<span class="fin-pages-wrap">'
        +   '<span class="fin-ruler-btn" id="fin-pages-btn">PAGES ▾</span>'
        +   '<div class="bv-dd-panel fin-pages-panel" id="fin-pages-panel">'
-       +     _modeBtn('trace','TRACE') + _modeBtn('timeline','TIMELINE') + _modeBtn('ladder','LADDER') + _modeBtn('prism','PRISM') + _modeBtn('reader','STANDARDS') + _modeBtn('lecture','LECTURE') + '<div class="fin-pages-div"></div>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-htw" data-mode="htw">How this works</span>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-rel'+(_mode==='reliability'?' on':'')+'" data-mode="reliability">RELIABILITY</span>'
+       +     _modeBtn('trace','TRACE') + _modeBtn('timeline','TIMELINE') + _modeBtn('ladder','LADDER') + _modeBtn('prism','PRISM') + _modeBtn('reader','STANDARDS') + _modeBtn('lecture','LECTURE') + '<div class="fin-pages-div"></div>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-htw" data-mode="htw">How this works</span>'
        +   '</div>'
        + '</span>'
        + '<span id="fin-cur-page">' + _pageLabel(_mode) + '</span>'
