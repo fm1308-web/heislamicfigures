@@ -582,6 +582,7 @@ function _drillRender(){
   if(!_drillEl) return;
   _drillEl.innerHTML = '<div style="padding:40px;text-align:center;color:#6B7280">Loading\u2026</div>';
   _drillFetch().then(function(all){
+    if(!_drillEl || !document.body.contains(_drillEl)) return;
     var buckets = _drillClassify(all);
     var total = all.length;
     var tight = buckets.T1.length + buckets.T2.length + buckets.T3.length + buckets.T4.length;
@@ -1718,7 +1719,17 @@ function showLoading(on){
   if(_resultsEl) _resultsEl.style.display = on ? 'none' : 'block';
 }
 
+// One download per book: callers that ask while it is still loading share it.
+var _fcInflight = {};
 function fetchCollection(key){
+  if(_cache[key]) return Promise.resolve(_cache[key]);
+  if(_fcInflight[key]) return _fcInflight[key];
+  var p = _fetchCollectionRaw(key);
+  _fcInflight[key] = p;
+  p.then(function(){ delete _fcInflight[key]; }, function(){ delete _fcInflight[key]; });
+  return p;
+}
+function _fetchCollectionRaw(key){
   if(_cache[key]) return Promise.resolve(_cache[key]);
   var col = null;
   for(var i = 0; i < COLLECTIONS.length; i++){
@@ -2027,6 +2038,9 @@ function _paintBandCounts(){
 }
 
 function _computePeriodTotals(){
+  // The period band is hidden (see _buildBand), so these counts are never shown.
+  // Counting them downloaded every hadith book (~300 MB) each time MONASTIC opened.
+  return;
   if(_periodTotals) { _paintBandCounts(); return; }
   fetchAll().then(function(all){
     var out = {};
@@ -2300,6 +2314,8 @@ window._monRunSearch = function(val){ _monSearchQuery = val || ''; _applySearch(
 window._monDebSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer) clearTimeout(_monSearchTimer); _monSearchTimer = setTimeout(_applySearch, 180); };
 var _monNavLast = '', _monNavSnap = null;
 function _renderRows(filtered, colKey, page){
+  // MONASTIC was left (its boxes were removed): a late load or search must not draw.
+  if(!_resultsEl || !_countEl || !document.body.contains(_resultsEl)) return;
   _ensureChainLinks();
   // NAV: a different filter set / page / search is a step the Back button must return to.
   try {
@@ -3091,6 +3107,7 @@ function init(){
 
   // Initial empty state — instructs the user to pick a collection rather than
   // dumping all 6 corpora (~110 MB) on mount.
+  if(!_resultsEl) return;
   _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">Pick a filter above (Periods, Topics, Narrators, or Collections) to load hadiths</div>';
 }
 
@@ -3301,6 +3318,7 @@ function _wizardRender(){
   var backBtn = document.getElementById('mon-wizard-back');
   var nextBtn = document.getElementById('mon-wizard-next');
   var countEl = document.getElementById('mon-wizard-count');
+  if(!body || !backBtn || !nextBtn || !countEl) return;
 
   if(_wizardState.step === -1){
     var startOpts = [
@@ -3829,6 +3847,8 @@ return {
   // while _resultsEl still points to the previous (destroyed) DOM, leaving
   // the new mount blank.
   reset: function(){
+    try { _wizardClose(); } catch(e){}
+    if(_monSearchTimer){ clearTimeout(_monSearchTimer); _monSearchTimer = null; }
     _inited = false;
     _resultsEl = null;
     _loadingEl = null;
@@ -4127,7 +4147,7 @@ window.MonasticView = (function(){
   }
 
   // ── GOLD LIVE (Prophet's life by date) — loads goldlive.js/.css on first click ──
-  var GL_VER = '14';
+  var GL_VER = '15';
   var _glLoading = false;
   function _loadGoldLive(cb){
     if(window.GoldLive){ cb(); return; }

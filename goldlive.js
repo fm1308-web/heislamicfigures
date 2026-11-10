@@ -1,6 +1,5 @@
 /* ─────────────────────────────────────────────────────────────
    GOLD LIVE — day-level life of the Prophet Muhammad (MONASTIC tab)
-   GOLD LIVE FACTORY 1, 9 Nov 2026.
    Opened by the GOLD LIVE pill that monastic.js adds to Zone B.
    Layout: left 20% gold time bar · middle 70% entries · right 10% chips.
    Data:  data/islamic/goldlive/sira-chronology.json (dates as quoted)
@@ -256,7 +255,7 @@ function opinionHtml(o){
   if(dl) h += '<div class="gl-op-cal">' + dl + '</div>';
   (o.sources || []).forEach(function(s){
     h += '<div class="gl-src">';
-    if(s.quote && s.lang === 'ar') h += '<div class="gl-quote gl-ar" dir="rtl" lang="ar">' + esc(s.quote) + '</div>' + (s.quote_en ? '<div class="gl-quote-en">English (Factory, not checked by a scholar): ' + esc(s.quote_en) + '</div>' : '');
+    if(s.quote && s.lang === 'ar') h += '<div class="gl-quote gl-ar" dir="rtl" lang="ar">' + esc(s.quote) + '</div>' + (s.quote_en ? '<div class="gl-quote-en">' + esc(s.quote_en) + '</div>' : '');
     else if(s.quote) h += '<span class="gl-quote">“' + esc(s.quote) + '”</span> ';
     if(s.books_tab) h += '<button type="button" class="gl-src-a gl-book" data-book="' + esc(s.books_tab) + '" title="Open this book in BOOKS">' + esc(s.label || s.books_tab) + '</button>';
     else h += '<a class="gl-src-a" href="' + esc(s.url) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(s.label || s.url) + '</a>';
@@ -559,7 +558,7 @@ function open(opts){
       '<div class="gl-head-t">FOLLOW THE LIFE <span>· The life of the Prophet Muhammad, birth to death</span></div>' +
       '<button type="button" id="gl-close" aria-label="Close">✕</button>' +
     '</div>' +
-    '<div class="gl-draft">Draft for review. Dates are shown only as the linked public sources state them; differing views are listed side by side, in no order of preference.</div>' +
+    '<div class="gl-draft">Dates are shown only as the linked public sources state them; differing views are listed side by side, in no order of preference.</div>' +
     '<div class="gl-body"><div class="gl-loading">Loading…</div></div>';
   document.body.appendChild(ov);
   document.body.classList.add('gl-open');
@@ -579,7 +578,7 @@ function open(opts){
       '<div class="gl-scroll">' +
         '<div class="gl-colhd"><div>' + esc(headline(C)) + '</div><div>Links</div></div>' +
         rows +
-        '<div class="gl-foot">' + esc(C.entries.length) + ' entries · sources: Ibn Hisham al-Sira al-Nabawiyya, Ibn Sa\'d al-Tabaqat al-Kubra, Ibn Kathir al-Bidaya wa al-Nihaya, Ibn Qayyim Zad al-Ma\'ad, al-Tirmidhi al-Shama\'il (Arabic, OpenITI); al-Tabrisi I\'lam al-Wara, Tabataba\'i Sunan al-Nabi, Makarim al-Akhlaq (English translations), Wikipedia, WikiShia, al-islam.org, sunnah.com, islamqa · summaries and English renderings by Gold Ark (Factory) · (est.) = year estimated by Gold Ark (AI)</div>' +
+        '<div class="gl-foot">' + esc(C.entries.length) + ' entries · sources: Ibn Hisham al-Sira al-Nabawiyya, Ibn Sa\'d al-Tabaqat al-Kubra, Ibn Kathir al-Bidaya wa al-Nihaya, Ibn Qayyim Zad al-Ma\'ad, al-Tirmidhi al-Shama\'il (Arabic, OpenITI); al-Tabrisi I\'lam al-Wara, Tabataba\'i Sunan al-Nabi, Makarim al-Akhlaq (English translations), Wikipedia, WikiShia, al-islam.org, sunnah.com, islamqa · (est.) = year estimated by Gold Ark (AI)</div>' +
       '</div>';
     setupSlider(ov);
     if(opts.row && _api){
