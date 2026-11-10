@@ -1552,9 +1552,8 @@ function bindZoneD(){
       while(steps-- > 0 && navHistory.forward.length){ navForward(); }
     }
   });
-  document.getElementById('zdTip').addEventListener('click', function(){
-    openModal('Tip for ' + state.activeTab, 'Placeholder tip body for ' + state.activeTab + '. Real tips will be authored per view.');
-  });
+  // Tips for each view are not written yet: hide the button so no placeholder text shows (10 Nov 2026).
+  var _zdTip = document.getElementById('zdTip'); if(_zdTip) _zdTip.style.display = 'none';
 }
 
 // ---------- User pill (Sign out dropdown) ----------
