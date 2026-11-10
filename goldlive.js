@@ -24,6 +24,7 @@ var TRAD_LABEL = { sunni:'Sunni', shia:'Shia', general:'General', 'western-acade
 var _cache = null;
 var _keyHandler = null;
 var _resizeHandler = null;
+var _api = null;
 
 function esc(s){
   return String(s == null ? '' : s)
@@ -47,8 +48,10 @@ function load(){
       entries: doc.entries.slice().sort(function(a,b){ return (a.order||0) - (b.order||0); }),
       links: r[1] || { map:{}, skip_quranRef:{} },
       events: evById,
-      hchips: r[3] || {}
+      hchips: r[3] || {},
+      byId: {}
     };
+    doc.entries.forEach(function(e){ _cache.byId[e.id] = e; });
     return _cache;
   });
 }
@@ -183,7 +186,13 @@ function versesFromRef(txt){
 // ── chips (existing Gold Ark links only) ──
 function chipsFor(entry){
   var C = _cache;
-  var evIds = (C.links.map && C.links.map[entry.id]) || [];
+  var evIds = [];
+  var cur = entry, guard = 0;
+  while(cur && guard++ < 12){
+    var own = (C.links.map && C.links.map[cur.id]) || [];
+    if(own.length){ evIds = own; break; }
+    cur = cur.parent ? C.byId[cur.parent] : null;
+  }
   var skip = C.links.skip_quranRef || {};
   var html = '';
   var seenV = {}, hadith = [], seenH = {};
@@ -202,6 +211,24 @@ function chipsFor(entry){
   });
   if(hadith.length){
     html += '<button type="button" class="gl-chip gl-chip-h" data-gl="' + esc(entry.id) + '" title="Hadith already linked to this event in Gold Ark (word match). Opens in MONASTIC.">HADITH ' + hadith.length.toLocaleString() + '</button>';
+  }
+  // BOOKS: classical books quoted in this entry (open in the BOOKS tab)
+  var books = [], seenB = {};
+  (entry.opinions || []).forEach(function(o){ (o.sources || []).forEach(function(s){
+    if(s.books_tab && !seenB[s.books_tab]){ seenB[s.books_tab] = 1; books.push(s.books_tab); }
+  }); });
+  if(books.length){
+    html += '<button type="button" class="gl-chip gl-chip-list" data-list="b" title="Books quoted here. Opens in BOOKS.">BOOKS ' + books.length + '</button>';
+    html += '<div class="gl-list gl-list-b">' + books.map(function(b){ return '<button type="button" class="gl-li gl-book" data-book="' + esc(b) + '">' + esc(b) + '</button>'; }).join('') + '</div>';
+  }
+  // FIGURES: people named in this event, then the authors and narrators of its sources
+  var figs = entry.figures || [], sfigs = entry.figures_src || [];
+  if(figs.length || sfigs.length){
+    html += '<button type="button" class="gl-chip gl-chip-list" data-list="f" title="People named here. Opens their profile in TIMELINE.">FIGURES ' + (figs.length + sfigs.length) + '</button>';
+    html += '<div class="gl-list gl-list-f">' +
+      (figs.length ? '<div class="gl-li-h">In this event</div>' + figs.map(function(n){ return '<button type="button" class="gl-li gl-fig" data-fig="' + esc(n) + '">' + esc(n) + '</button>'; }).join('') : '') +
+      (sfigs.length ? '<div class="gl-li-h">Authors and narrators</div>' + sfigs.map(function(n){ return '<button type="button" class="gl-li gl-fig" data-fig="' + esc(n) + '">' + esc(n) + '</button>'; }).join('') : '') +
+      '</div>';
   }
   return { html: html, hadith: hadith };
 }
@@ -231,8 +258,13 @@ function opinionHtml(o){
     h += '<div class="gl-src">';
     if(s.quote && s.lang === 'ar') h += '<div class="gl-quote gl-ar" dir="rtl" lang="ar">' + esc(s.quote) + '</div>' + (s.quote_en ? '<div class="gl-quote-en">English (Factory, not checked by a scholar): ' + esc(s.quote_en) + '</div>' : '');
     else if(s.quote) h += '<span class="gl-quote">“' + esc(s.quote) + '”</span> ';
-    h += '<a class="gl-src-a" href="' + esc(s.url) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(s.label || s.url) + '</a>';
+    if(s.books_tab) h += '<button type="button" class="gl-src-a gl-book" data-book="' + esc(s.books_tab) + '" title="Open this book in BOOKS">' + esc(s.label || s.books_tab) + '</button>';
+    else h += '<a class="gl-src-a" href="' + esc(s.url) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(s.label || s.url) + '</a>';
     if(s.section) h += '<span class="gl-src-sec"> · ' + esc(s.section) + '</span>';
+    var fl = [];
+    if(s.author_fig) fl.push('<button type="button" class="gl-fig gl-fig-in" data-fig="' + esc(s.author_fig) + '" title="Author: open profile in TIMELINE">' + esc(s.author_fig) + '</button>');
+    (s.narrator_figs || []).forEach(function(n){ if(n !== s.author_fig) fl.push('<button type="button" class="gl-fig gl-fig-in" data-fig="' + esc(n) + '" title="Named in this source: open profile in TIMELINE">' + esc(n) + '</button>'); });
+    if(fl.length) h += '<span class="gl-src-figs"> · ' + fl.join(' ') + '</span>';
     h += '</div>';
   });
   return h + '</div>';
@@ -286,7 +318,31 @@ function _clickTab(label, dataView){
   }
   return false;
 }
+function _step(){ try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){} }
+function goFigure(name){
+  _step();
+  close();
+  if(typeof window._gaGoTimeline === 'function') window._gaGoTimeline(name);
+}
+function goBook(title){
+  _step();
+  close();
+  _clickTab('BOOKS', 'books');
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    var sb = document.getElementById('search');
+    // wait until BOOKS has wired its search box (it sets this placeholder when it does)
+    if(sb && /book/i.test(sb.placeholder || '') && document.body.getAttribute('data-active-tab') === 'BOOKS'){
+      sb.value = title;
+      sb.dispatchEvent(new Event('input', { bubbles: true }));
+      clearInterval(iv); return;
+    }
+    if(tries > 375){ clearInterval(iv); console.warn('[goldlive] book jump never ready'); }
+  }, 80);
+}
 function jumpEvent(eid){
+  _step();
   close();
   _clickTab('EVENTS', 'events');
   if(typeof window._stXrefJumpEvent !== 'function' && !window._monStartJsLoading){
@@ -305,6 +361,7 @@ function jumpEvent(eid){
   }, 80);
 }
 function jumpVerse(s, v, ve){
+  _step();
   close();
   if(typeof window.openStartAtVerse === 'function') window.openStartAtVerse(s, v, ve);
 }
@@ -313,6 +370,11 @@ function showHadith(glId){
   (_cache.entries || []).forEach(function(x){ if(x.id === glId) e = x; });
   if(!e) return;
   var ids = chipsFor(e).hadith;
+  _step();
+  // MONASTIC redraws its list a moment later; that redraw is part of this jump, not a new Back step.
+  window._navRestoring = true;
+  if(window._glNavT) clearTimeout(window._glNavT);
+  window._glNavT = setTimeout(function(){ window._navRestoring = false; }, 20000);
   close();
   if(ids.length && window.Monastic && typeof window.Monastic.showHadiths === 'function'){
     window.Monastic.showHadiths(ids, 'Hadith linked to: ' + e.title);
@@ -326,6 +388,15 @@ function bind(ov){
     var ce = t.closest('.gl-chip-ev'); if(ce){ ev.stopPropagation(); jumpEvent(ce.getAttribute('data-ev')); return; }
     var cq = t.closest('.gl-chip-q');  if(cq){ ev.stopPropagation(); jumpVerse(+cq.getAttribute('data-s'), +cq.getAttribute('data-v'), +cq.getAttribute('data-ve')); return; }
     var ch = t.closest('.gl-chip-h');  if(ch){ ev.stopPropagation(); showHadith(ch.getAttribute('data-gl')); return; }
+    var cf = t.closest('.gl-fig');     if(cf){ ev.stopPropagation(); goFigure(cf.getAttribute('data-fig')); return; }
+    var cb = t.closest('.gl-book');    if(cb){ ev.stopPropagation(); goBook(cb.getAttribute('data-book')); return; }
+    var cl = t.closest('.gl-chip-list');
+    if(cl){
+      ev.stopPropagation();
+      var box = cl.parentNode.querySelector('.gl-list-' + cl.getAttribute('data-list'));
+      if(box){ var on = !box.classList.contains('gl-list-on'); box.classList.toggle('gl-list-on', on); cl.classList.toggle('gl-chip-on', on); }
+      return;
+    }
   });
   _keyHandler = function(e){ if(e.key === 'Escape') close(); };
   document.addEventListener('keydown', _keyHandler);
@@ -450,18 +521,39 @@ function setupSlider(ov){
   bar.addEventListener('pointerup', stop);
   bar.addEventListener('pointercancel', stop);
   sc.addEventListener('scroll', sync, { passive: true });
-  _resizeHandler = function(){ layout(); placePhases(); sync(); };
+  // The circle sits just below the HIJRA label (labels are on the right of the line).
+  var wrap = ov.querySelector('.gl-slab-wrap');
+  function placeSlab(){
+    if(!wrap) return;
+    var hj = null;
+    ov.querySelectorAll('.gl-ms').forEach(function(p){ if(/hijra/i.test(p.textContent || '')) hj = p; });
+    var y = bar.clientHeight * 0.14;
+    if(hj){
+      var lbl = hj.querySelector('.gl-ms-lbl') || hj;
+      var br = bar.getBoundingClientRect(), lr = lbl.getBoundingClientRect();
+      y = Math.max(y, lr.bottom - br.top + 14);
+    }
+    y = Math.min(y, Math.max(0, bar.clientHeight - wrap.offsetHeight));
+    wrap.style.top = Math.round(y) + 'px';
+  }
+  function relayout(){ placePhases(); placeSlab(); layout(); placePhases(); sync(); }
+  _api = {
+    goTo: function(id){ var r = document.getElementById('gl-row-' + id); if(r){ sc.scrollTop = scrollFor(r); sync(); } },
+    current: function(){ var r = topRow(); return r ? r.getAttribute('data-gl') : null; }
+  };
+  _resizeHandler = relayout;
   window.addEventListener('resize', _resizeHandler);
-  layout();
-  placePhases();
-  sync();
-  setTimeout(function(){ layout(); placePhases(); sync(); }, 300);
+  relayout();
+  // the list can still be settling (fonts, a view mounting behind): measure again
+  [300, 1000, 2500].forEach(function(ms){ setTimeout(function(){ if(document.getElementById('gl-overlay') === ov) relayout(); }, ms); });
 }
 
-function open(){
+function open(opts){
+  opts = opts || {};
   close();
   var ov = document.createElement('div');
   ov.id = 'gl-overlay';
+  try { var zd = document.getElementById('zoneD'); if(zd && zd.offsetHeight) ov.style.bottom = zd.offsetHeight + 'px'; } catch(e){}
   ov.innerHTML =
     '<div class="gl-head">' +
       '<div class="gl-head-t">FOLLOW THE LIFE <span>· The life of the Prophet Muhammad, birth to death</span></div>' +
@@ -485,12 +577,36 @@ function open(){
     body.innerHTML =
       '<div class="gl-left">' + legendHtml() + '<div class="gl-bar">' + barHtml(C.entries) + '</div></div>' +
       '<div class="gl-scroll">' +
-        '<div class="gl-colhd"><div>Entries in date order</div><div>Links</div></div>' +
+        '<div class="gl-colhd"><div>' + esc(headline(C)) + '</div><div>Links</div></div>' +
         rows +
-        '<div class="gl-foot">' + esc(C.entries.length) + ' entries · sources: Ibn Hisham al-Sira al-Nabawiyya, Ibn Sa\'d al-Tabaqat al-Kubra, Ibn Kathir al-Bidaya wa al-Nihaya, Ibn Qayyim Zad al-Ma\'ad, al-Tirmidhi al-Shama\'il (Arabic, OpenITI), Wikipedia, WikiShia, al-islam.org, sunnah.com, islamqa · summaries and English renderings by Gold Ark (Factory) · (est.) = year estimated by Gold Ark (AI)</div>' +
+        '<div class="gl-foot">' + esc(C.entries.length) + ' entries · sources: Ibn Hisham al-Sira al-Nabawiyya, Ibn Sa\'d al-Tabaqat al-Kubra, Ibn Kathir al-Bidaya wa al-Nihaya, Ibn Qayyim Zad al-Ma\'ad, al-Tirmidhi al-Shama\'il (Arabic, OpenITI); al-Tabrisi I\'lam al-Wara, Tabataba\'i Sunan al-Nabi, Makarim al-Akhlaq (English translations), Wikipedia, WikiShia, al-islam.org, sunnah.com, islamqa · summaries and English renderings by Gold Ark (Factory) · (est.) = year estimated by Gold Ark (AI)</div>' +
       '</div>';
     setupSlider(ov);
+    if(opts.row && _api){
+      var touched = false;
+      ['wheel','pointerdown','keydown','touchstart'].forEach(function(t){ ov.addEventListener(t, function(){ touched = true; }, { passive: true, once: true }); });
+      _api.goTo(opts.row);
+      [450, 1100, 2600].forEach(function(ms){ setTimeout(function(){ if(_api && !touched && document.getElementById('gl-overlay') === ov) _api.goTo(opts.row); }, ms); });
+    }
   });
+}
+
+// For the app's Back / Forward: which row is at the reading line.
+function state(){
+  if(!document.getElementById('gl-overlay')) return null;
+  return { open: true, row: _api ? _api.current() : null };
+}
+
+// "1,168 events of the Prophet Muhammad's life from 14 sources (8 books, 6 websites)"
+function headline(C){
+  var books = {}, sites = {};
+  C.entries.forEach(function(e){ (e.opinions || []).forEach(function(o){ (o.sources || []).forEach(function(s){
+    if(s.kind === 'classical-book'){ if(s.book) books[s.book] = 1; return; }
+    var m = /^https?:\/\/(?:www\.|beta\.)?([^\/]+)/.exec(s.url || '');
+    if(m) sites[m[1]] = 1;
+  }); }); });
+  var nb = Object.keys(books).length, ns = Object.keys(sites).length;
+  return C.entries.length.toLocaleString() + ' events of the Prophet Muhammad\u2019s life from ' + (nb + ns) + ' sources (' + nb + ' books, ' + ns + ' websites)';
 }
 
 function close(){
@@ -498,8 +614,9 @@ function close(){
   if(_resizeHandler){ window.removeEventListener('resize', _resizeHandler); _resizeHandler = null; }
   var ov = document.getElementById('gl-overlay');
   if(ov) ov.remove();
+  _api = null;
   document.body.classList.remove('gl-open');
 }
 
-window.GoldLive = { open: open, close: close };
+window.GoldLive = { open: open, close: close, state: state };
 })();

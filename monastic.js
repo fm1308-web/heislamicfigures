@@ -4127,7 +4127,7 @@ window.MonasticView = (function(){
   }
 
   // ── GOLD LIVE (Prophet's life by date) — loads goldlive.js/.css on first click ──
-  var GL_VER = '11';
+  var GL_VER = '14';
   var _glLoading = false;
   function _loadGoldLive(cb){
     if(window.GoldLive){ cb(); return; }
@@ -4156,6 +4156,8 @@ window.MonasticView = (function(){
     b.style.cssText = 'background:#D4AF37;color:#111;border-color:#D4AF37;font-weight:700';
     b.title = 'The life of the Prophet Muhammad, birth to death, by date';
     b.addEventListener('click', function(){
+      // Back returns from FOLLOW THE LIFE to this hadith list.
+      try { if(window._navCaptureCurrent) window._navCaptureCurrent(); } catch(e){}
       if(!window.GoldLive) b.textContent = 'LOADING\u2026';
       _loadGoldLive(function(){ b.textContent = 'FOLLOW THE LIFE'; window.GoldLive.open(); });
     });
@@ -4169,11 +4171,20 @@ window.MonasticView = (function(){
     var out = { sel: null, nav: null };
     try { out.sel = M._exportSel ? M._exportSel() : null; } catch(e){}
     try { out.nav = M._navState ? M._navState() : null; } catch(e){}
+    try { out.gl = (window.GoldLive && window.GoldLive.state) ? window.GoldLive.state() : null; } catch(e){}
     return out;
   }
   function restoreState(s){
     if(!s) return;
     var M = window.Monastic || {};
+    // 0. FOLLOW THE LIFE was open: open it again at the same event.
+    if(s.gl && s.gl.open){
+      var _glRow = s.gl.row;
+      setTimeout(function(){
+        if(!_mounted) return;
+        _loadGoldLive(function(){ var gb = document.getElementById('mon-btn-goldlive'); if(gb) gb.textContent = 'FOLLOW THE LIFE'; window.GoldLive.open({ row: _glRow }); });
+      }, 0);
+    }
     // 1. Filters: mount's own restore reads window._monLastView shortly after init.
     if(s.sel){
       window._monLastView = Object.assign({ collection: [], period: [], topic: [], narrator: [], drillOn: !!(s.nav && s.nav.drillOn) }, s.sel);
