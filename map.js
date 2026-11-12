@@ -1522,7 +1522,8 @@ return {
   unmount: function(){
     document.body.classList.remove('map-mounted');
     try { _mapAnimStop(); } catch(e){}
-    if(_lMap){ try { _lMap.remove(); } catch(e){} _lMap = null; _empLayer = null; _mrkLayer = null; _labTile = null; }
+    // 12 Nov 2026: stop any zoom/pan still moving before removing the map (Leaflet threw "_zoom of null" in the next view).
+    if(_lMap){ try { _lMap.stop(); } catch(e){} try { _lMap.remove(); } catch(e){} _lMap = null; _empLayer = null; _mrkLayer = null; _labTile = null; }
     var zb = document.getElementById('zoneB'); if(zb) zb.innerHTML = '';
     var zc = document.getElementById('zoneC'); if(zc) zc.innerHTML = '';
   },

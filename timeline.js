@@ -2066,7 +2066,9 @@ function selectRow(idx){
 // INFO PANEL
 // ═══════════════════════════════════════════════════════════
 function showEmptyInfo(){
-  document.getElementById('infoScroll').innerHTML=
+  // 12 Nov 2026: the info card may be gone (another view is open) — then there is nothing to draw.
+  var _ie=document.getElementById('infoScroll'); if(!_ie) return;
+  _ie.innerHTML=
     `<div class="i-empty"><div class="ie-icon">☽</div><div class="ie-msg">${_tlT('Click a name to explore')}</div></div>`;
 }
 
@@ -2277,7 +2279,9 @@ function renderInfo(p){
   }
 
 
-  document.getElementById('infoScroll').innerHTML=`
+  // 12 Nov 2026: a figure can finish loading after the user left TIMELINE; the card is gone then.
+  var _infoEl=document.getElementById('infoScroll'); if(!_infoEl) return;
+  _infoEl.innerHTML=`
     ${locateBtn}
     ${_pickHTML}
     ${_starHTML}
@@ -3062,6 +3066,7 @@ function _timelineInfoHtml(){
   function mount(zoneCEl, zoneBEl){
     if(_mounted) return;
     _mounted = true;
+    window._tlReady = false; // 12 Nov 2026: set true once TIMELINE's own figures are drawn (see _gaGoTimeline)
     window._tlNavShown = ''; window._tlNavSnap = null;
 
     document.body.classList.add('tl-mounted');
@@ -3171,6 +3176,7 @@ function _timelineInfoHtml(){
         renderInfoWithDetails(activePerson);
       }
       renderAll();
+      window._tlReady = true;
       _wireZoneB(zoneBEl);
 
       // Kick off non-EN figures bucket and re-render when it lands.
@@ -3191,6 +3197,7 @@ function _timelineInfoHtml(){
   function unmount(){
     if(!_mounted) return;
     _mounted = false;
+    window._tlReady = false;
 
     _animStop();
     document.body.classList.remove('tl-mounted');

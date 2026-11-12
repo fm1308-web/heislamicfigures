@@ -36,16 +36,31 @@ function _capture(){
   var shell = document.getElementById('appShell');
   var target = shell || document.body;
   _toast('Capturing snapshot…');
+  // 12 Nov 2026: picture only what is on screen. Before, it copied the whole long
+  // page (TIMELINE / EXPLAIN hold ~1 million characters) and the tab froze for minutes.
+  var vw = window.innerWidth, vh = window.innerHeight;
+  var box = target.getBoundingClientRect();
+  var W = Math.max(1, Math.round(Math.min(box.width || vw, vw)));
+  var H = Math.max(1, Math.round(Math.min(box.height || vh, vh)));
+  var k = (window.devicePixelRatio > 1 ? 2 : 1);
   var opts = {
     bgcolor: '#0E1621',
     cacheBust: true,
-    width: target.scrollWidth * (window.devicePixelRatio > 1 ? 2 : 1),
-    height: target.scrollHeight * (window.devicePixelRatio > 1 ? 2 : 1),
+    width: W * k,
+    height: H * k,
+    // Skip anything wholly off screen (and everything inside it).
+    filter: function(node){
+      if(!node || node.nodeType !== 1 || !node.getBoundingClientRect) return true;
+      var r = node.getBoundingClientRect();
+      if(r.width === 0 && r.height === 0) return true;
+      return !(r.bottom < 0 || r.top > vh || r.right < 0 || r.left > vw);
+    },
     style: {
-      transform: 'scale(' + (window.devicePixelRatio > 1 ? 2 : 1) + ')',
+      transform: 'scale(' + k + ')',
       transformOrigin: 'top left',
-      width: target.scrollWidth + 'px',
-      height: target.scrollHeight + 'px'
+      width: W + 'px',
+      height: H + 'px',
+      overflow: 'hidden'
     }
   };
   window.domtoimage.toBlob(target, opts).then(function(blob){

@@ -315,6 +315,8 @@ function _srRestoreState(st){
   }, 8000);
 }
 function _loadBookContent(slug, type, book){
+  // 12 Nov 2026: STUDY is no longer on screen (user moved to another view) — nothing to fill.
+  if(!document.getElementById('sr-body')) return;
   try {
     var _nk = slug + '|' + type + '|' + (book && (book.book_id != null ? book.book_id : book.title));
     var _ok = _srNavCur ? (_srNavCur.slug + '|' + _srNavCur.type + '|' + (_srNavCur.bookId != null ? _srNavCur.bookId : _srNavCur.title)) : '';

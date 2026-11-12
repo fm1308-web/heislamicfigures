@@ -232,7 +232,7 @@ function _exBuildLinkChipsHtml(edition, surah, verse){
     figs.forEach(function(f){
       var info = _exNameForFigure(f);
       if(!info.name) return;
-      html += '<span class="ex-c-link-chip ex-c-link-fig" onclick="window._exClickFigure(\''+_exEsc(info.name)+'\')" title="'+_exEsc(info.name)+'">'+_exEsc(info.name)+'</span>';
+      html += '<span class="ex-c-link-chip ex-c-link-fig" onclick="window._exClickFigure(\''+_exEsc(String(info.name).replace(/\\/g,'\\\\').replace(/'/g,"\\'"))+'\')" title="'+_exEsc(info.name)+'">'+_exEsc(info.name)+'</span>';
     });
   }
   if(events.length){
@@ -246,7 +246,7 @@ function _exBuildLinkChipsHtml(edition, surah, verse){
     places.forEach(function(pl){
       var name = (typeof pl === 'object') ? (pl.name || pl.label || '') : String(pl||'');
       if(!name) return;
-      html += '<span class="ex-c-link-chip ex-c-link-place" onclick="window._exClickPlace(\''+_exEsc(name)+'\')" title="'+_exEsc(name)+'">'+_exEsc(name)+'</span>';
+      html += '<span class="ex-c-link-chip ex-c-link-place" onclick="window._exClickPlace(\''+_exEsc(String(name).replace(/\\/g,'\\\\').replace(/'/g,"\\'"))+'\')" title="'+_exEsc(name)+'">'+_exEsc(name)+'</span>';
     });
   }
   if(books.length){

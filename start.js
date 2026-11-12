@@ -1588,7 +1588,7 @@ function _stXrefPopup(surah,verse,ev){
   if(figures.length){
     h+='<div style="font-size:var(--fs-3);color:#D4AF37;text-transform:uppercase;letter-spacing:.08em;margin:12px 0 6px;font-family:\'Cinzel\',serif">Linked Figures</div>';
     figures.forEach(function(f){
-      h+='<div class="st-xref-row" onclick="_stXrefJumpFigure(\''+_stEsc(f.slug||'')+'\',\''+_stEsc(f.name||'')+'\')"><span>'+_stEsc(f.name)+'</span></div>';
+      h+='<div class="st-xref-row" onclick="_stXrefJumpFigure(\''+_stEsc(f.slug||'')+'\',\''+_stEsc(String(f.name||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'"))+'\')"><span>'+_stEsc(f.name)+'</span></div>';
     });
   }
 
@@ -1884,7 +1884,7 @@ function _stFigPopup(surah,ev){
   var h='<button onclick="document.getElementById(\'st-xref-popup\').remove()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:var(--fs-1);cursor:pointer;line-height:1">\u00D7</button>';
   h+='<h3 style="color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);margin:0 0 16px;letter-spacing:.06em">Figures Referenced in This Surah</h3>';
   figs.forEach(function(f){
-    h+='<div class="st-xref-row" onclick="_stXrefJumpFigure(\''+_stEsc(f.slug||'')+'\',\''+_stEsc(f.name||'')+'\')"><span>'+_stEsc(f.name)+'</span></div>';
+    h+='<div class="st-xref-row" onclick="_stXrefJumpFigure(\''+_stEsc(f.slug||'')+'\',\''+_stEsc(String(f.name||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'"))+'\')"><span>'+_stEsc(f.name)+'</span></div>';
   });
   var box=document.createElement('div');
   box.style.cssText='background:#1a1a2e;border:1px solid #D4AF37;border-radius:8px;max-width:440px;width:90%;max-height:70vh;overflow-y:auto;padding:24px;position:relative;font-family:\'Lato\',sans-serif;color:#E5E7EB;font-size:var(--fs-3)';
@@ -3064,8 +3064,13 @@ function _stBmkPopup(){
     var hadith = entries.filter(function(e){ return e.type==='h'; })
       .sort(function(a,b){ if(a.col!==b.col) return a.col<b.col?-1:1; return a.num-b.num; });
     var tafsir = entries.filter(function(e){ return e.type==='t'; });
-    var figures = entries.filter(function(e){ return e.type==='f'; })
+    // 12 Nov 2026: one bookmark list is shared with The-O. Figures saved there (codes like
+    // TH0001, JU0040) are not in Gold Ark, so count them instead of showing their codes.
+    function _isGaFig(slug){ return /^F\d+$/.test(slug); }
+    var figures = entries.filter(function(e){ return e.type==='f' && _isGaFig(e.slug); })
       .sort(function(a,b){ return a.slug<b.slug?-1:1; });
+    var theoFigCount = entries.filter(function(e){ return e.type==='f' && !_isGaFig(e.slug); }).length;
+    var THEO_URL = 'https://the-o.hoomanlibrary.com/';
     function _figName(slug){
       try {
         if(window.PEOPLE && window.PEOPLE.length){
@@ -3104,6 +3109,7 @@ function _stBmkPopup(){
       sec('Hadiths', hadith, function(e){ return _hadithLabel(e.col) + ' · Hadith #' + e.num; });
       sec('Tafsir', tafsir, function(e){ return _tafsirLabel(e) + (_tafsirKnown(e.slug) ? '  ' + base + '#explain?tafsir=' + encodeURIComponent(e.slug) + '&surah=' + e.surah + '&verse=' + e.verse : ''); });
       sec('Figures', figures, function(e){ var n = _figName(e.slug); return (n || ('Figure ' + e.slug)) + (n ? '  ' + base + '#one/' + encodeURIComponent(n) : ''); });
+      if(theoFigCount){ L.push(theoFigCount + (theoFigCount === 1 ? ' more figure' : ' more figures') + ' saved in The-O  ' + THEO_URL); L.push(''); }
       L.push('hoomanlibrary.com/gold-ark · AI-generated · independently verify');
       return L.join('\n');
     }
@@ -3140,6 +3146,11 @@ function _stBmkPopup(){
       h += _section('Hadiths', hadith);
       h += _section('Tafsir', tafsir);
       h += _section('Figures', figures);
+      if(theoFigCount){
+        h += '<div style="margin:14px 0 0;color:#9CA3AF;font-family:Lato,sans-serif;font-size:var(--fs-3)">'
+          + theoFigCount + (theoFigCount === 1 ? ' more figure' : ' more figures') + ' saved in The-O. '
+          + '<a href="' + THEO_URL + '" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#D4AF37">Open The-O</a></div>';
+      }
     }
 
     box.innerHTML=h;
@@ -5830,6 +5841,10 @@ window.StartView = (function(){
     document.body.classList.remove('st-mounted');
     document.body.classList.remove('st-active');
     document.body.classList.remove('st-dive-on');
+    // 12 Nov 2026: leave search mode when START closes. Before, the search panel was hidden
+    // on the next view but search mode stayed on, so START came back blank.
+    try { if(_stSearchOn && typeof window._stSearchToggle === 'function') window._stSearchToggle(); } catch(e){}
+    document.body.classList.remove('st-search-active');
 
     // Pause any in-flight audio so playback stops with the view.
     try {

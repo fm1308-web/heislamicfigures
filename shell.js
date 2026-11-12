@@ -354,11 +354,13 @@ window._gaGoTimeline = function(name, ev){
     tries++;
     var fn = (typeof window.jumpTo === 'function' && window.jumpTo.toString().length > 60)
       ? window.jumpTo : window.focusPersonInTimeline;
-    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length){
+    // 12 Nov 2026: other views also fill window.PEOPLE, so wait for TIMELINE's own
+    // ready flag; otherwise the jump ran too early and the card fell back to Adam.
+    if(typeof fn === 'function' && fn.toString().length > 60 && (window.PEOPLE||[]).length && window._tlReady === true){
       try { fn(window._gaResolveFigureName(name)); } catch(e){}
       clearInterval(iv); return;
     }
-    if(tries > 60){ clearInterval(iv); console.warn('[shell] TIMELINE not ready for', name); }
+    if(tries > 250){ clearInterval(iv); console.warn('[shell] TIMELINE not ready for', name); }
   }, 80);
 };
 
@@ -591,6 +593,9 @@ function loadAndMountView(name){
   // Clear Zone C only — Zone B is owned by shell renderZoneB; the view wires handlers to its existing DOM.
   zoneC.innerHTML = '';
   function doMount(){
+    // 12 Nov 2026: the user moved to another view while this one was still loading.
+    // Do not draw it over the view they are on now (that left views blank later).
+    if(state.activeTab !== name) return;
     _activeViewApi = window[cfg.api];
     if(_activeViewApi && typeof _activeViewApi.mount === 'function'){
       _activeViewApi.mount(zoneC, zoneB);
@@ -631,7 +636,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=247';
+  var _cb = '?v=256';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -958,6 +963,23 @@ function makeTab(name){
   });
   return b;
 }
+// 12 Nov 2026: menus, filter lists and name labels that a view adds to the page
+// stayed open after the user changed view (auto-test: MAP name label, ONE / EVENTS /
+// THINK / MAP filter lists, EXPLAIN tafsir list, START search panel). Close them on every view change.
+function _closeLeftoverPanels(){
+  Array.prototype.forEach.call(document.body.children, function(p){
+    var id = p.id || '';
+    if(id === 'appShell' || id === 'information-panel') return;
+    // dropdown lists kept inside a holder on the page body (EXPLAIN tafsir / surah / verse lists)
+    p.querySelectorAll('.dd-panel.open').forEach(function(d){
+      d.classList.remove('open');
+      if(d.style.display && d.style.display !== 'none') d.style.display = 'none';
+    });
+    if(!/(-panel|-tip|-tt)$|^st-dd-/.test(id)) return;
+    p.classList.remove('open');
+    if(p.style.display && p.style.display !== 'none') p.style.display = 'none';
+  });
+}
 function setActiveTab(name, opts){
   if(name === 'FINANCE' && !window._finUnlocked){
     if(typeof window.requireTester === 'function'){
@@ -969,6 +991,7 @@ function setActiveTab(name, opts){
     }
   }
   opts = opts || {};
+  if(state.activeTab !== name){ try { _closeLeftoverPanels(); } catch(e){} }
   var _isNewFwd = (!opts.skipHistory && _activeViewApi && state.activeTab !== name);
   // A view that called _navCaptureCurrent() just before switching tab has
   // already recorded this step. Do not record it twice.
@@ -1002,6 +1025,13 @@ function setActiveTab(name, opts){
   if(_activeViewApi && typeof _activeViewApi.unmount === 'function'){
     try { _activeViewApi.unmount(); } catch(e) {}
     _activeViewApi = null;
+  }
+  // 12 Nov 2026: if the view being opened is still marked open from an earlier switch
+  // (it was never closed), close it first so it draws again instead of staying blank.
+  var _tCfg = VIEW_REGISTRY[name];
+  if(_tCfg && _loadedViews[name]){
+    var _tApi = window[_tCfg.api];
+    if(_tApi && typeof _tApi.unmount === 'function'){ try { _tApi.unmount(); } catch(e) {} }
   }
 
   // Always render Zone B from spec (universal row 1 + view-specific row 2)
@@ -1632,7 +1662,7 @@ function bindTools(){
             // Contributor-gated action — needs role check
             if(key === 'correction'){
               if(window.GoldArkAuth && window.GoldArkAuth.isContributor()){
-                console.log('[tools] correction — open correction modal in ONE view');
+                _runTool(act, key);
               } else {
                 openModal('Contributor access', 'Suggest Correction is open to contributors. Contact us via Feedback to request contributor access.');
               }
@@ -1698,6 +1728,23 @@ function bindTools(){
           }
         } else if(act === 'print' || key === 'print'){
           if(window.GoldArkPrint && typeof window.GoldArkPrint.open === 'function') window.GoldArkPrint.open();
+        } else if(key === 'correction'){
+          // Suggest Correction (12 Nov 2026): opens the correction form for the figure on screen.
+          var _au = window.GoldArkAuth;
+          if(!(_au && typeof _au.isContributor === 'function' && _au.isContributor())){
+            openModal('Contributor access', 'Suggest Correction is open to contributors. Contact us via Feedback to request contributor access.');
+            return;
+          }
+          var _vis = function(el){ return !!(el && el.offsetParent !== null); };
+          var _oneBtn = document.querySelector('.one-correction-btn');
+          var _star = document.getElementById('favToggleBtn');
+          if(_vis(_oneBtn)){
+            _oneBtn.click();
+          } else if(_vis(_star) && _star.dataset.slug && typeof window._gaOpenCorrectionModal === 'function'){
+            window._gaOpenCorrectionModal({ figureSlug: _star.dataset.slug, figureName: _star.dataset.name || '' });
+          } else {
+            openModal('Suggest Correction', 'Open a figure first (a card on TIMELINE, or a page in ONE), then choose Suggest Correction.');
+          }
         } else {
           console.log('[tools] ' + (act || key));
         }

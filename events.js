@@ -128,6 +128,8 @@ function getEra(yr){
 }
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function escAttr(s){return esc(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
+// For text placed inside '...' in an onclick: escape for JavaScript first (12 Nov 2026).
+function escJs(s){return esc(String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")).replace(/"/g,'&quot;');}
 function figName(f){return typeof f==='string'?f:(f&&f.name?f.name:'');}
 function figRole(f){return(typeof f==='object'&&f&&f.role)?f.role:'';}
 
@@ -177,10 +179,28 @@ if(typeof document !== 'undefined' && !window._evFigLinkDelegated){
 
 function _evGoToFigure(name){
   if(!name) return;
-  // Sandbox: cross-view jumps not wired — log and bail.
+  // 12 Nov 2026: open the figure on TIMELINE with the shared helper (same as BOOKS / THINK / MAP).
+  // Before, this only called jumpTo, which does nothing unless TIMELINE is already open.
+  if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(name); return; }
   if(typeof window.jumpTo === 'function') window.jumpTo(name);
 }
 window._evGoToFigure=_evGoToFigure;
+// 12 Nov 2026: is this EVENTS name a Gold Ark figure? (about half the names, e.g. Justinian I,
+// are not, and clicking them used to open TIMELINE on the wrong card). If figures are not
+// loaded yet, answer yes so the chip keeps working as before.
+// Same matching rule as shell.js _gaResolveFigureName: exact name, or one single
+// figure whose name matches ignoring case, spaces and punctuation.
+var _evFigSet=null,_evFigNorm=null,_evFigSetN=-1;
+function _evNorm(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+function _evIsFig(nm){
+  var P=window.PEOPLE||[]; if(!P.length) return true;
+  if(_evFigSetN!==P.length){
+    _evFigSet=new Set(); _evFigNorm={};
+    P.forEach(function(p){ if(!p||!p.famous) return; _evFigSet.add(p.famous); var k=_evNorm(p.famous); _evFigNorm[k]=(_evFigNorm[k]||0)+1; });
+    _evFigSetN=P.length;
+  }
+  return _evFigSet.has(nm) || _evFigNorm[_evNorm(nm)]===1;
+}
 
 var _evNavTag = '';
 var _evNavLast = '', _evNavSnap = null;
@@ -386,7 +406,8 @@ function _buildRow(ev,showYear,spanCount){
       var nm=figName(f),rl=figRole(f);
       if(!nm) return;
       h+='<div class="ev-fig-wrap">';
-      h+='<span class="ev-fig-chip" onclick="window._evGoToFigure(\''+escAttr(nm)+'\')">'+esc(nm)+'</span>';
+      if(_evIsFig(nm)) h+='<span class="ev-fig-chip" onclick="window._evGoToFigure(\''+escJs(nm)+'\')">'+esc(nm)+'</span>';
+      else h+='<span class="ev-fig-chip" style="cursor:default;pointer-events:none;opacity:.75">'+esc(nm)+'</span>';
       if(rl) h+='<span class="ev-fig-role">'+esc(rl)+'</span>';
       h+='</div>';
     });
@@ -413,9 +434,9 @@ function _buildRow(ev,showYear,spanCount){
     tags.forEach(function(t){
       var isFig=typeof PEOPLE!=='undefined'&&PEOPLE.some(function(p){return p.famous===t;});
       if(isFig){
-        h+='<span class="ev-tag ev-tag-link" onclick="window._evGoToFigure(\''+escAttr(t)+'\')" title="View in Timeline">'+esc(t)+'</span>';
+        h+='<span class="ev-tag ev-tag-link" onclick="window._evGoToFigure(\''+escJs(t)+'\')" title="View in Timeline">'+esc(t)+'</span>';
       } else {
-        h+='<span class="ev-tag ev-tag-filter" onclick="window._evFilterByTag(\''+escAttr(t)+'\')" title="Filter by tag">'+esc(t)+'</span>';
+        h+='<span class="ev-tag ev-tag-filter" onclick="window._evFilterByTag(\''+escJs(t)+'\')" title="Filter by tag">'+esc(t)+'</span>';
       }
     });
     h+='</div>';

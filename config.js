@@ -5,7 +5,7 @@ window.GOLD_ARK_CONFIG = {
   // FALLBACK: old workers.dev URL kept for 30 days
   // CDN_BASE: 'https://gold-ark-data.hooman-92b.workers.dev',
   USE_CDN: (location.search.indexOf('cdn=1') >= 0) || (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'),
-  FIXTURE_VERSION: 'fixture12',
+  FIXTURE_VERSION: 'fixture13',
   // Tier-B/C narrator figures. LIVE for every visitor (batch 2, 2026-09-19).
   // Data still loads lazily (never at boot, never into core.json). See narrators.js.
   NARRATORS_ON: true

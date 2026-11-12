@@ -599,7 +599,7 @@ function _booksBuildCanvas(){
       else if(!b.author_hidden){
         var _aName = b.author_name||'';
         if(_aName){
-          metaTxt='<a class="bv-author-link" href="#timeline" onclick="event.stopPropagation();window._booksGoToTimeline(\''+_booksEscape(_aName)+'\');return false;">'+_booksEscape(_aName)+'</a>';
+          metaTxt='<a class="bv-author-link" href="#timeline" onclick="event.stopPropagation();window._booksGoToTimeline(\''+_booksEscape(String(_aName).replace(/\\/g,'\\\\').replace(/'/g,"\\'"))+'\');return false;">'+_booksEscape(_aName)+'</a>';
         }
       }
       let badgeHtml='';
@@ -642,7 +642,8 @@ function _booksBuildCanvas(){
       if(row.classList.contains('bv-row-ancient')) return;
       const name=row.getAttribute('data-name');
       if(!name) return;
-      // sandbox: TIMELINE jump not wired — log only
+      // 12 Nov 2026: open the author on TIMELINE (shared helper); jumpTo alone did nothing from BOOKS.
+      if(typeof window._gaGoTimeline === 'function'){ window._gaGoTimeline(name); return; }
       if(typeof window.jumpTo === 'function'){ window.jumpTo(name); }
     });
   });
@@ -1402,6 +1403,7 @@ function _booksInfoHtml(){
     restoreState: restoreState,
     animateStart: _booksAnimPlay,
     animatePause: _booksAnimPause,
+    buildCanvas: _booksBuildCanvas,
     animateStop:  _booksAnimStop,
     animateSetSpeed: function(label){
       var map = { '0.5x':2400, '1x':1200, '2x':600, '4x':300 };
@@ -1413,7 +1415,9 @@ function _booksInfoHtml(){
 
 // DEEP-AUDIT FIX (2026-08-07): MONASTIC's book chips poll for this export
 // before applying their search — it was never on window, so the search never ran.
-window._booksBuildCanvas = _booksBuildCanvas;
+// 12 Nov 2026: this line sat outside the IIFE and threw, which stopped every line below it
+// (author links, Read buttons). Export through BooksView instead.
+window._booksBuildCanvas = window.BooksView && window.BooksView.buildCanvas;
 
 window._booksOpenAuthor = function(name){
   if(!name) return;
