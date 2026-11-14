@@ -18,8 +18,24 @@ var _MB_BORDERS_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@
 // CREATE BASE MAP — dark tiles + borders + labels-on-top
 // ═══════════════════════════════════════════════════════════
 // Returns { map, labTile } so caller can manage label z-order
+// 14 Nov 2026: Leaflet 1.9.4 finishes a zoom 250 ms after it starts. If the
+// map was closed in between (user zooms, then changes view), that late step
+// threw "_leaflet_pos of undefined". Make the late step do nothing when the
+// map is already gone. Applied once, to every map in the app.
+function _mbLeafletGuard() {
+  if (typeof L === 'undefined' || !L.Map || L.Map.prototype._gaZoomGuard) return;
+  var orig = L.Map.prototype._onZoomTransitionEnd;
+  if (typeof orig !== 'function') return;
+  L.Map.prototype._onZoomTransitionEnd = function () {
+    if (!this._mapPane) return;
+    return orig.apply(this, arguments);
+  };
+  L.Map.prototype._gaZoomGuard = true;
+}
+
 function _mbCreateMap(elementId, opts) {
   opts = opts || {};
+  _mbLeafletGuard();
   var el = document.getElementById(elementId);
   if (!el) return null;
 
@@ -229,6 +245,7 @@ if (typeof _removeEmpLegendFor === 'undefined') {
 }
 
 // Expose globally
+window._mbLeafletGuard = _mbLeafletGuard;
 window._mbCreateMap = _mbCreateMap;
 window._mbLoadGeoEmpires = _mbLoadGeoEmpires;
 window._mbRenderEmpires = _mbRenderEmpires;

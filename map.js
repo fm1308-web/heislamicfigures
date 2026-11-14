@@ -1055,6 +1055,7 @@ function renderMap(){
 function _doRenderMap(){
   _setMapHeight();
   if(!_lMap){
+    if(window._mbLeafletGuard) window._mbLeafletGuard();
     _lMap=L.map('leafletMap',{
       center:[30,45],zoom:3,zoomControl:true,minZoom:2,maxZoom:10,
       maxBounds:[[-85,-180],[85,180]],maxBoundsViscosity:1.0

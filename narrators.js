@@ -825,9 +825,330 @@ window.GA_Narrators = (function(){
       genHtml +
       bioHtml +
       hadHtml +
+      '<div class="nr-graph-slot" style="display:none"></div>' +
       teachHtml +
       studHtml +
       _sourcesHtml(p);
+  }
+
+  // ── TEACHERS & STUDENTS GRAPH ─────────────────────────────
+  // Drawn ONLY from narrator_chain_links.json {id:{teachers:[ids],students:[ids]}}.
+  // No link is guessed or added. Old slugs are mapped through
+  // narrator_redirects.json first so one person never appears twice.
+  // A person who is both teacher and student is drawn once, one line with
+  // arrows at both ends. No images. No colour by grade.
+  var GRAPH_FIRST = 30;                 // per side, then "show all N"
+  var _links = null, _linksP = null, _redir = {};
+  var _graphOpen = {};                  // slug -> {t:bool, s:bool} "show all" state
+
+  function ensureLinks(){
+    if(_links) return Promise.resolve(_links);
+    if(_linksP) return _linksP;
+    _linksP = Promise.all([
+      _getJson('narrator_chain_links.json'),
+      _getJson('narrator_redirects.json').catch(function(){ return {}; })
+    ]).then(function(res){
+      _links = (res[0] && typeof res[0] === 'object') ? res[0] : {};
+      _redir = (res[1] && typeof res[1] === 'object') ? res[1] : {};
+      _linksP = null;
+      return _links;
+    }).catch(function(e){
+      console.warn('[narrators] links load failed', e);
+      _links = {};
+      _linksP = null;
+      return _links;
+    });
+    return _linksP;
+  }
+
+  function _canon(id){
+    var n = 0;
+    while(id && _redir[id] && _redir[id] !== id && n < 10){ id = _redir[id]; n++; }
+    return id;
+  }
+
+  // Teacher / student id lists for one person, redirects applied, de-duplicated,
+  // self removed. File order kept. Entries filed under an old slug are merged in.
+  function _graphLists(slug){
+    if(!_links || !slug) return null;
+    var me = _canon(slug);
+    var keys = [me];
+    if(slug !== me) keys.push(slug);
+    Object.keys(_redir).forEach(function(old){
+      if(_canon(old) === me && keys.indexOf(old) === -1) keys.push(old);
+    });
+    var t = [], s = [], seenT = {}, seenS = {};
+    keys.forEach(function(k){
+      var e = _links[k];
+      if(!e) return;
+      (e.teachers || []).forEach(function(id){
+        id = _canon(id);
+        if(id && id !== me && !seenT[id]){ seenT[id] = 1; t.push(id); }
+      });
+      (e.students || []).forEach(function(id){
+        id = _canon(id);
+        if(id && id !== me && !seenS[id]){ seenS[id] = 1; s.push(id); }
+      });
+    });
+    if(!t.length && !s.length) return null;
+    return { me: me, t: t, s: s, both: seenT, inS: seenS };
+  }
+
+  // The record behind an id: core figure (F…) or narrator. null = not found.
+  function _personRec(id){
+    if(/^F/.test(id)) return _coreBySlug(id);
+    return _bySlug[id] || null;
+  }
+
+  function _deathText(r){
+    if(!r) return '';
+    if(typeof r.death_date_hijri === 'number') return 'd. ' + r.death_date_hijri + ' AH';
+    if(typeof r.dod === 'number') return 'd. ' + (isEstimatedDod(r) ? 'c. ' : '') + r.dod + ' CE';
+    return '';
+  }
+
+  function _personTitle(r){
+    if(!r) return '';
+    var bits = [r.famous || r.full || r.slug];
+    if(r.full_name_ar) bits.push(r.full_name_ar);
+    if(r.dod_s) bits.push('Died: ' + r.dod_s);
+    else if(typeof r.death_date_hijri === 'number') bits.push('Died: ' + r.death_date_hijri + ' AH');
+    if(r.generation) bits.push(r.generation);
+    if(typeof r.reliability_grade === 'string' && r.reliability_grade.trim()) bits.push('Grade: ' + r.reliability_grade);
+    return bits.join(' · ');
+  }
+
+  function _openCall(id){
+    return /^F/.test(id)
+      ? "window.GA_Narrators.openCoreFigure('" + _jsq(id) + "')"
+      : "window.GA_Narrators.focusNarrator('" + _jsq(id) + "')";
+  }
+
+  function _graphCss(){
+    if(document.getElementById('nr-graph-css')) return;
+    var st = document.createElement('style');
+    st.id = 'nr-graph-css';
+    st.textContent =
+      '.nr-graph{margin:4px 0 2px}' +
+      '.nr-g-body{position:relative;display:grid;grid-template-columns:1fr 34px 1fr;align-items:start}' +
+      '.nr-g-lines{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}' +
+      '.nr-g-mid{grid-column:1 / -1;grid-row:1;display:flex;justify-content:center;margin-bottom:22px;position:relative;z-index:1}' +
+      '.nr-g-me{max-width:78%;padding:7px 12px;text-align:center;border:1px solid ' + CARD_ACCENT + ';' +
+        'border-radius:3px;background:rgba(143,179,176,.10);color:var(--ip-text);font-size:var(--fs-3);' +
+        'line-height:1.3;word-break:break-word}' +
+      '.nr-g-head{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ip-muted);margin-bottom:2px}' +
+      '.nr-g-col{grid-row:2;display:flex;flex-direction:column;gap:5px;position:relative;z-index:1;min-width:0}' +
+      '.nr-g-t{grid-column:1}.nr-g-s{grid-column:3}' +
+      '.nr-g-s .nr-g-head{text-align:end}' +
+      '.nr-g-node{display:block;width:100%;box-sizing:border-box;text-align:start;padding:4px 7px;' +
+        'background:var(--ip-surf);border:1px solid var(--ip-brd);border-radius:2px;color:var(--ip-text);' +
+        'font:inherit;font-size:var(--fs-3);line-height:1.25;cursor:pointer;min-width:0}' +
+      '.nr-g-node:hover,.nr-g-node:focus{border-color:#D4AF37;color:var(--ip-acc);outline:none}' +
+      '.nr-g-nm{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}' +
+      '.nr-g-ar{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.75;font-size:11px}' +
+      '.nr-g-sub{display:block;font-size:10px;color:var(--ip-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}' +
+      '.nr-g-both{color:' + CARD_ACCENT + ';margin-inline-end:3px}' +
+      '.nr-g-more{margin-top:6px;padding:3px 8px;background:none;border:1px dashed var(--ip-brd);' +
+        'border-radius:2px;color:var(--ip-muted);font:inherit;font-size:10px;letter-spacing:.06em;cursor:pointer;width:100%}' +
+      '.nr-g-more:hover{border-color:#D4AF37;color:var(--ip-acc)}' +
+      '.nr-g-key{margin-top:8px;font-size:10px;color:var(--ip-muted);line-height:1.5}' +
+      '.nr-g-list{margin-top:8px;font-size:var(--fs-3);color:var(--ip-text)}' +
+      '.nr-g-list summary{cursor:pointer;color:var(--ip-muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}' +
+      '.nr-g-list ol{margin:6px 0 8px;padding-inline-start:22px;line-height:1.55}' +
+      '.nr-g-list a{color:var(--ip-text);text-decoration:none;cursor:pointer}' +
+      '.nr-g-list a:hover{color:var(--ip-acc)}' +
+      '.nr-g-src{margin-top:8px;font-size:10px;color:var(--ip-muted);font-style:italic}';
+    document.head.appendChild(st);
+  }
+
+  function _nodeHtml(id, kind, both){
+    var r = _personRec(id);
+    var nm = r ? (r.famous || r.full || r.full_name_ar || id) : id;
+    var ar = (r && r.full_name_ar && r.full_name_ar !== nm) ? r.full_name_ar : '';
+    var grade = (r && typeof r.reliability_grade === 'string' && r.reliability_grade.trim()) ? r.reliability_grade : '';
+    var sub = [_deathText(r), grade].filter(Boolean).join(' · ');
+    return '<button type="button" class="nr-g-node" data-id="' + _esc(id) + '" data-kind="' + kind + '"' +
+      (both ? ' data-both="1"' : '') +
+      ' title="' + _esc(_personTitle(r)) + '"' +
+      ' onclick="event.stopPropagation();' + _openCall(id) + '">' +
+      '<span class="nr-g-nm" dir="auto">' + (both ? '<span class="nr-g-both" aria-label="both teacher and student">⇄</span>' : '') +
+      _esc(nm) + '</span>' +
+      (ar ? '<span class="nr-g-ar" dir="rtl" lang="ar">' + _esc(ar) + '</span>' : '') +
+      (sub ? '<span class="nr-g-sub">' + _esc(sub) + '</span>' : '') +
+      '</button>';
+  }
+
+  function _listHtml(ids, label){
+    if(!ids.length) return '';
+    return '<div><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ip-muted);margin-top:6px">' +
+      _esc(label) + ' (' + ids.length + ')</div><ol>' +
+      ids.map(function(id){
+        var r = _personRec(id);
+        var nm = r ? (r.famous || r.full || r.full_name_ar || id) : id;
+        var extra = [r && r.full_name_ar && r.full_name_ar !== nm ? '<span dir="rtl" lang="ar">' + _esc(r.full_name_ar) + '</span>' : '',
+                     _esc(_deathText(r))].filter(Boolean).join(' · ');
+        return '<li><a href="#" dir="auto" onclick="event.stopPropagation();event.preventDefault();' +
+          _openCall(id) + ';return false;">' + _esc(nm) + '</a>' + (extra ? ' <span style="color:var(--ip-muted)">— ' + extra + '</span>' : '') + '</li>';
+      }).join('') + '</ol></div>';
+  }
+
+  // Adam, 14 Nov 2026 (answer "1B"): leave out links whose recorded dates
+  // cannot be true — the student's recorded death (death_date_hijri) is more
+  // than 80 years before the teacher's recorded death. Both values must be
+  // recorded; estimates are never used. List sent to research for checking.
+  var IMPOSSIBLE_GAP = 80;
+  // Research decisions 14 Nov 2026 (goldark-narrator-link-decisions.json):
+  // links checked and KEPT are always shown; links on HOLD are always hidden.
+  var GRAPH_SHOW = { 'F0482|F1061': 1, 'F1629|arees-448-abdur-rahman-ibn-al-harith': 1 };
+  var GRAPH_HOLD = { 'F1433|F1711': 1 };   // F1711 holds two people; split first
+  function _datesImpossible(teacherId, studentId){
+    var key = teacherId + '|' + studentId;
+    if(GRAPH_SHOW[key]) return false;
+    if(GRAPH_HOLD[key]) return true;
+    var t = _personRec(teacherId), s = _personRec(studentId);
+    var td = t && t.death_date_hijri, sd = s && s.death_date_hijri;
+    if(typeof td !== 'number' || typeof sd !== 'number') return false;
+    return sd < td - IMPOSSIBLE_GAP;
+  }
+
+  function _graphHtml(p, g){
+    var me = _personRec(g.me) || p;
+    var tFound = g.t.filter(function(id){ return !!_personRec(id); });
+    var sFound = g.s.filter(function(id){ return !!_personRec(id); });
+    var missing = (g.t.length - tFound.length) + (g.s.length - sFound.length);
+    var tAll = tFound.filter(function(id){ return !_datesImpossible(id, g.me); });
+    var sAll = sFound.filter(function(id){ return !_datesImpossible(g.me, id); });
+    var dropped = (tFound.length - tAll.length) + (sFound.length - sAll.length);
+    // Mutual pairs: drawn once, on the teachers side.
+    var inT = {}, inS = {};
+    tAll.forEach(function(id){ inT[id] = 1; });
+    sAll.forEach(function(id){ inS[id] = 1; });
+    var mutual = tAll.filter(function(id){ return inS[id]; });
+    var sOnly  = sAll.filter(function(id){ return !inT[id]; });
+    var st = _graphOpen[g.me] || {};
+    var tShow = st.t ? tAll : tAll.slice(0, GRAPH_FIRST);
+    var sShow = st.s ? sOnly : sOnly.slice(0, GRAPH_FIRST);
+    var meName = me.famous || me.full || me.full_name_ar || g.me;
+    var meGrade = (typeof me.reliability_grade === 'string' && me.reliability_grade.trim()) ? me.reliability_grade : '';
+    var MIDHTML =
+        '<div class="nr-g-mid"><div class="nr-g-me" dir="auto">' + _esc(meName) +
+          (me.full_name_ar && me.full_name_ar !== meName ? '<span class="nr-g-ar" dir="rtl" lang="ar" style="white-space:normal">' + _esc(me.full_name_ar) + '</span>' : '') +
+          (meGrade ? '<span class="nr-g-sub">' + _esc(meGrade) + '</span>' : '') +
+        '</div></div>';
+    var html = '<div class="nr-graph" data-slug="' + _esc(g.me) + '">' +
+      '<div class="nr-g-body">' +
+        '<svg class="nr-g-lines" aria-hidden="true"></svg>' +
+        MIDHTML +
+        '<div class="nr-g-col nr-g-t"><div class="nr-g-head">Teachers ' + tAll.length + '</div>' + tShow.map(function(id){ return _nodeHtml(id, 't', !!inS[id]); }).join('') +
+          (tAll.length > GRAPH_FIRST
+            ? '<button type="button" class="nr-g-more" onclick="event.stopPropagation();window.GA_Narrators._graphToggle(\'' +
+              _jsq(g.me) + '\',\'t\')">' + (st.t ? 'Show first ' + GRAPH_FIRST : 'Show all ' + tAll.length) + '</button>' : '') +
+        '</div>' +
+        '<div class="nr-g-col nr-g-s"><div class="nr-g-head">Students ' + sAll.length + '</div>' + sShow.map(function(id){ return _nodeHtml(id, 's', false); }).join('') +
+          (sOnly.length > GRAPH_FIRST
+            ? '<button type="button" class="nr-g-more" onclick="event.stopPropagation();window.GA_Narrators._graphToggle(\'' +
+              _jsq(g.me) + '\',\'s\')">' + (st.s ? 'Show first ' + GRAPH_FIRST : 'Show all ' + sAll.length + (mutual.length ? ' (' + mutual.length + ' ⇄ on teachers side)' : '')) + '</button>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="nr-g-key">Arrows run teacher → student. Tap a name to open that person.' +
+        (mutual.length ? ' ⇄ ' + mutual.length + (mutual.length === 1 ? ' person is' : ' people are') +
+          ' both teacher and student — drawn once, on the teachers side.' : '') +
+        (missing ? ' ' + missing + ' listed ' + (missing === 1 ? 'link is' : 'links are') +
+          ' not shown: no record for that person in the app.' : '') +
+        (dropped ? ' ' + dropped + ' listed ' + (dropped === 1 ? 'link is' : 'links are') +
+          ' not shown: the recorded dates do not fit (being checked).' : '') +
+      '</div>' +
+      '<details class="nr-g-list"><summary>Full list as text</summary>' +
+        _listHtml(tAll, 'Teachers') + _listHtml(sAll, 'Students') +
+      '</details>' +
+      '<div class="nr-g-src">Links: teacher/student lists from the app\'s narrator data (muslimscholars.info).</div>' +
+      '</div>';
+    return html;
+  }
+
+  // Lines: from each node's inner edge to the centre box. Curved, arrowheads
+  // via markers. Redrawn on resize and after "show all".
+  function _drawLines(root){
+    if(!root) return;
+    var body = root.querySelector('.nr-g-body');
+    var svg = root.querySelector('.nr-g-lines');
+    var meEl = root.querySelector('.nr-g-me');
+    if(!body || !svg || !meEl) return;
+    var b = body.getBoundingClientRect();
+    if(!b.width || !b.height) return;
+    var m = meEl.getBoundingClientRect();
+    var col = 'rgba(160,174,192,.45)';
+    var acc = 'rgba(143,179,176,.9)';
+    var parts = ['<defs>' +
+      '<marker id="nrgA" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">' +
+      '<path d="M0,0 L8,4 L0,8 z" fill="' + acc + '"/></marker></defs>'];
+    var mcx = m.left - b.left + m.width / 2, my = m.bottom - b.top;
+    root.querySelectorAll('.nr-g-node').forEach(function(n){
+      var r = n.getBoundingClientRect();
+      var y = r.top - b.top + Math.min(r.height / 2, 14);
+      var kind = n.getAttribute('data-kind');
+      var both = n.getAttribute('data-both') === '1';
+      // Lines drop from under the centre box down the middle gutter, then
+      // turn into the side of the node that faces the gutter.
+      var nodeLeft = (r.left + r.width / 2) < (m.left + m.width / 2);
+      var x1 = nodeLeft ? (r.right - b.left) : (r.left - b.left);
+      var sx = mcx + (nodeLeft ? -6 : 6);
+      var d = 'M' + sx + ',' + my + ' C' + sx + ',' + y + ' ' + sx + ',' + y + ' ' + x1 + ',' + y;
+      // Path runs centre -> node. Student: arrow at node end. Teacher: arrow at centre end.
+      var mk = both ? ' marker-start="url(#nrgA)" marker-end="url(#nrgA)"'
+             : (kind === 's' ? ' marker-end="url(#nrgA)"' : ' marker-start="url(#nrgA)"');
+      parts.push('<path d="' + d + '" fill="none" stroke="' + (both ? acc : col) + '" stroke-width="1"' + mk + '/>');
+    });
+    svg.setAttribute('viewBox', '0 0 ' + b.width + ' ' + b.height);
+    svg.setAttribute('width', b.width);
+    svg.setAttribute('height', b.height);
+    svg.innerHTML = parts.join('');
+  }
+
+  var _graphRO = null;
+  function _watchGraph(root){
+    if(!root) return;
+    requestAnimationFrame(function(){ _drawLines(root); });
+    if(typeof ResizeObserver === 'function'){
+      if(_graphRO) _graphRO.disconnect();
+      _graphRO = new ResizeObserver(function(){ _drawLines(root); });
+      _graphRO.observe(root);
+    }
+  }
+
+  // Load any narrator shards the names need (normally already loaded — the
+  // card itself is opened through the same loader).
+  function _ensureGraphPeople(g){
+    var need = g.t.concat(g.s).filter(function(id){ return !/^F/.test(id) && !_bySlug[id]; });
+    if(!need.length) return Promise.resolve();
+    return ensureBySlug(need[0]).then(function(){});
+  }
+
+  function _fillGraph(p){
+    var slot = document.querySelector('#infoScroll .nr-graph-slot');
+    if(!slot || !p || !p.slug) return;
+    var slug = p.slug;
+    ensureLinks().then(function(){
+      var g = _graphLists(slug);
+      if(!g) return null;
+      return _ensureGraphPeople(g).then(function(){ return g; });
+    }).then(function(g){
+      if(_shownSlug !== slug) return;           // user moved on
+      var s2 = document.querySelector('#infoScroll .nr-graph-slot');
+      if(!s2) return;
+      if(!g){ s2.innerHTML = ''; s2.style.display = 'none'; return; }  // no links: nothing shown
+      _graphCss();
+      s2.style.display = '';
+      s2.innerHTML = _sec('TEACHERS & STUDENTS', _graphHtml(p, g));
+      _watchGraph(s2.querySelector('.nr-graph'));
+    });
+  }
+
+  function _graphToggle(slug, side){
+    var st = _graphOpen[slug] || (_graphOpen[slug] = {});
+    st[side] = !st[side];
+    var rec = _bySlug[_shownSlug] || null;
+    if(rec) _fillGraph(rec);
   }
 
   var _shownSlug = null;
@@ -837,6 +1158,7 @@ window.GA_Narrators = (function(){
     if(!el || !p) return;
     _shownSlug = p.slug || null;
     el.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>';
+    _fillGraph(p);
     // First card opened is the first use of the hadith index and the tag
     // definitions: fetch them, then re-render so rows become links and chips
     // get their definitions. Cached thereafter — a one-time second paint.
@@ -844,7 +1166,7 @@ window.GA_Narrators = (function(){
       Promise.all([ensureHadithIndex(), ensureTagDefs()]).then(function(){
         if(_shownSlug !== (p.slug || null)) return;   // user moved on
         var el2 = document.getElementById('infoScroll');
-        if(el2) el2.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>';
+        if(el2){ el2.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>'; _fillGraph(p); }
       });
     }
   }
@@ -884,6 +1206,8 @@ window.GA_Narrators = (function(){
     cardHtml: cardHtml,
     openCard: openCard,
     openCardBySlug: openCardBySlug,
-    focusNarrator: focusNarrator
+    focusNarrator: focusNarrator,
+    ensureLinks: ensureLinks,
+    _graphToggle: _graphToggle
   };
 })();

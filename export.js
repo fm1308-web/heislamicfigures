@@ -157,7 +157,8 @@ function _run(mode, bd){
           useCORS: true,
           logging: false,
           windowWidth: node.scrollWidth,
-          windowHeight: node.scrollHeight
+          windowHeight: node.scrollHeight,
+          onclone: function(doc){ _fixModernColors(doc); }
         }).then(function(canvas){
           node.remove();
           var view = _currentView();
@@ -230,6 +231,36 @@ function _run(mode, bd){
       }, 60);
     });
   });
+}
+
+// 14 Nov 2026: html2canvas 1.4.1 cannot read colours written as color-mix()
+// (study.css tradition chips, shell.css tabs); the browser reports them as
+// "color(srgb r g b / a)" and the export failed with "unsupported color
+// function". In html2canvas's own copy of the page only, rewrite those
+// values as plain rgba(). The real page is not touched.
+var _COLOR_PROPS = ['color','backgroundColor','borderTopColor','borderRightColor',
+  'borderBottomColor','borderLeftColor','outlineColor','textDecorationColor',
+  'boxShadow','textShadow','backgroundImage','fill','stroke','caretColor','columnRuleColor'];
+function _srgbToRgba(v){
+  return String(v).replace(/color\(srgb\s+([-\d.e]+)\s+([-\d.e]+)\s+([-\d.e]+)(?:\s*\/\s*([-\d.e]+%?))?\s*\)/g,
+    function(_m, r, g, b, a){
+      function c(x){ return Math.max(0, Math.min(255, Math.round(parseFloat(x) * 255))); }
+      var al = (a == null) ? 1 : (/%$/.test(a) ? parseFloat(a) / 100 : parseFloat(a));
+      return 'rgba(' + c(r) + ',' + c(g) + ',' + c(b) + ',' + al + ')';
+    });
+}
+function _fixModernColors(doc){
+  try {
+    var win = doc.defaultView || window;
+    var els = doc.body ? doc.body.getElementsByTagName('*') : [];
+    for(var i = 0; i < els.length; i++){
+      var el = els[i], cs = win.getComputedStyle(el);
+      for(var k = 0; k < _COLOR_PROPS.length; k++){
+        var p = _COLOR_PROPS[k], v = cs[p];
+        if(v && v.indexOf('color(') !== -1) el.style[p] = _srgbToRgba(v);
+      }
+    }
+  } catch(e){ console.warn('[export] colour fix skipped', e); }
 }
 
 function _download(blob, name){

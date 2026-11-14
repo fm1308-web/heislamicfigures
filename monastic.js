@@ -2185,6 +2185,8 @@ function _applyAllFilters(){
     // mount, landing here. _clearPinned() nulls _pinnedHadiths before it calls
     // us, so clearing the filter still reaches the default state below.
     if(_pinActive()){ showLoading(false); return; }
+    // Nothing picked but words typed: search all books (search index).
+    if(_hsHasQuery()){ _applySearch(); return; }
     showLoading(false);
     _lastFiltered = [];
     _lastColKey = '';
@@ -2272,46 +2274,477 @@ function _monNorm(s){
     .replace(/[^\p{L}\p{N}\s]/gu,' ')
     .replace(/\s+/g,' ').trim();
 }
-function _applySearch(){
-  if(!_monBaseRows || !_monBaseRows.length) return;
-  var q = _monNorm(_monSearchQuery);
-  if(!q){ _renderRows(_monBaseRows, _lastColKey, 0); return; }
-  var matches = _monBaseRows.filter(function(h){
-    var hay = _monNorm((getText(h)||'') + ' ' + (getNarrator(h)||'') + ' ' + (getNumber(h)||'') + ' ' + (h.topic||''));
-    return hay.indexOf(q) !== -1;
-  });
-  _renderRows(matches, _lastColKey, 0);
-  try {
-    var res = document.getElementById('mon-results');
-    if(res){
-      var bar = document.createElement('div');
-      bar.style.cssText = 'background:#1B2631;color:#D4AF37;font-family:Cinzel,serif;font-size:13px;letter-spacing:.06em;padding:8px 14px;border-bottom:1px solid rgba(212,175,55,.4)';
-      bar.textContent = matches.length + ' result' + (matches.length!==1?'s':'') + ' for "' + (_monSearchQuery||'') + '"';
-      res.insertBefore(bar, res.firstChild);
-      res.scrollTop = 0;
-      var _mv = document.getElementById('monastic-view'); if(_mv) _mv.scrollTop = 0;
-      _monHighlight(_monSearchQuery);
-    }
-  } catch(e){}
+// ── HADITH SEARCH (14 Nov 2026) ─────────────────────────────────────────
+// Rules: words = all must appear; "exact phrase"; OR; -word / NOT word;
+// word* = word start. Arabic: vowel marks, tatweel, hamza-on-alif forms,
+// ى/ي and ة/ه are ignored INSIDE the search only — shown text never changes.
+// English: capitals, punctuation, ﷺ / (saw) / (rad) ignored.
+// The word rules MUST stay identical to norm_words() in
+// factory-scripts/build_hadith_search_index.py (the search index builder).
+//   • A book / narrator / other filter picked → search runs on those hadith.
+//   • Nothing picked → search runs on ALL books through the search index
+//     (data/islamic/hadith/search/), loading only the books whose hadith are
+//     on the page shown.
+var _HS_HONOR = /\((?:saw|saws|s\.a\.w\.?|s\.a\.w\.s\.?|pbuh|p\.b\.u\.h\.?|rad|ra|r\.a\.?|as|a\.s\.?|swt|sws|ﷺ)\)/gi;
+var _HS_POSS  = /['’]s(?![a-z0-9])/g;
+var _HS_APOS  = /['‘’ʼʿʾ′`]/g;
+var _HS_MARKS = /[̀-ͯؐ-ًؚ-ٰٟۖ-ۭـ]/g;
+var _HS_MAP = {
+  'à':'a','á':'a','â':'a','ã':'a','ä':'a','å':'a','ā':'a','ă':'a',
+  'è':'e','é':'e','ê':'e','ë':'e','ē':'e',
+  'ì':'i','í':'i','î':'i','ï':'i','ī':'i','ı':'i',
+  'ò':'o','ó':'o','ô':'o','õ':'o','ö':'o','ō':'o',
+  'ù':'u','ú':'u','û':'u','ü':'u','ū':'u',
+  'ḥ':'h','ṣ':'s','ḍ':'d','ṭ':'t','ẓ':'z','ñ':'n','ç':'c','ğ':'g','ş':'s',
+  'أ':'ا','إ':'ا','آ':'ا','ٱ':'ا','ى':'ي','ة':'ه',
+  '٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9',
+  '۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9',
+  'ﷺ':' ','ﷻ':' '
+};
+var _HS_MAP_RX = new RegExp('[' + Object.keys(_HS_MAP).join('') + ']', 'g');
+function _hsNorm(s){
+  s = String(s == null ? '' : s).replace(_HS_HONOR, ' ').toLowerCase()
+    .replace(_HS_POSS, '').replace(_HS_APOS, '').replace(_HS_MARKS, '')
+    .replace(_HS_MAP_RX, function(c){ return _HS_MAP[c]; });
+  return s.match(/[\p{L}\p{N}]+/gu) || [];
 }
-function _monHighlight(raw){
-  var term = String(raw||'').trim();
-  if(!term) return;
-  var rx = new RegExp('('+term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
-  document.querySelectorAll('#mon-results .mon-row').forEach(function(row){
-    var w = document.createTreeWalker(row, NodeFilter.SHOW_TEXT, null);
-    var hits = [], n;
-    while(n = w.nextNode()){ if(n.nodeValue && n.nodeValue.search(rx) !== -1) hits.push(n); }
-    hits.forEach(function(tn){
-      var span = document.createElement('span');
-      span.innerHTML = tn.nodeValue.replace(rx, '<mark style="background:#D4AF37;color:#111;padding:0 1px;border-radius:2px">$1</mark>');
-      tn.parentNode.replaceChild(span, tn);
+// Words of one hadith, space-joined: English ~ Arabic ~ narrators ~ number.
+function _hsDocStr(h){
+  if(h && typeof h._hsS === 'string') return h._hsS;
+  var out = [], n = 0;
+  ['hadithEnglish','hadithArabic','englishNarrator','narrator','hadithNumber'].forEach(function(f){
+    var v = h ? h[f] : null;
+    if(typeof v === 'number') v = String(v);
+    if(typeof v === 'string' && v.trim()){
+      if(n++) out.push('~');            // field break: a phrase never runs across fields
+      out.push.apply(out, _hsNorm(v));
+    }
+  });
+  var s = ' ' + out.join(' ') + ' ';
+  try { if(h) Object.defineProperty(h, '_hsS', { value: s, writable: true, configurable: true, enumerable: false }); } catch(e){}
+  return s;
+}
+
+// Query → { groups: [[term,…],…] (all groups needed; any term in a group),
+//           nots: [term,…], plain: bool, error: '' }
+// term = { k:'w'|'p'|'ph', w:[{v, pre}] }
+function _hsParse(raw){
+  // Curly / other quote marks (phones, Word, copy-paste) count as " too.
+  var q = String(raw || '').replace(/[\u201C\u201D\u201E\u201F\u00AB\u00BB\u2033\uFF02]/g, '"').trim();
+  var out = { groups: [], nots: [], plain: true, error: '' };
+  if(!q) return out;
+  var rx = /(-?)"([^"]*)"?|(\S+)/g, m, items = [];
+  while((m = rx.exec(q))){
+    if(m[2] != null){ items.push({ neg: m[1] === '-', phrase: m[2] }); continue; }
+    var t = m[3];
+    if(t === 'OR' || t === '|'){ items.push({ op: 'OR' }); continue; }
+    if(t === 'NOT'){ items.push({ op: 'NOT' }); continue; }
+    var neg = false;
+    if(t.length > 1 && t.charAt(0) === '-'){ neg = true; t = t.slice(1); }
+    items.push({ neg: neg, word: t });
+  }
+  var pendingNot = false, pendingOr = false;
+  items.forEach(function(it){
+    if(it.op === 'OR'){ pendingOr = true; out.plain = false; return; }
+    if(it.op === 'NOT'){ pendingNot = true; out.plain = false; return; }
+    var term = null;
+    if(it.phrase != null){
+      var pw = _hsNorm(it.phrase);
+      if(!pw.length) return;
+      term = { k: pw.length > 1 ? 'ph' : 'w', w: pw.map(function(v){ return { v: v, pre: false }; }) };
+      out.plain = false;
+    } else {
+      var star = /\*+$/.test(it.word);
+      var ws = _hsNorm(it.word.replace(/\*+$/, ''));
+      if(!ws.length) return;
+      if(star) out.plain = false;
+      var el = ws.map(function(v, i){ return { v: v, pre: star && i === ws.length - 1 }; });
+      term = { k: el.length > 1 ? 'ph' : (el[0].pre ? 'p' : 'w'), w: el };
+    }
+    var neg = it.neg || pendingNot;
+    if(it.neg) out.plain = false;
+    if(neg){ out.nots.push(term); pendingNot = false; pendingOr = false; return; }
+    if(pendingOr && out.groups.length){ out.groups[out.groups.length - 1].push(term); }
+    else out.groups.push([term]);
+    pendingOr = false;
+  });
+  if(!out.groups.length && out.nots.length) out.error = 'Add at least one word to look for, not only words to leave out.';
+  return out;
+}
+
+function _hsTermHit(s, term){
+  if(term.k === 'w') return s.indexOf(' ' + term.w[0].v + ' ') !== -1;
+  if(term.k === 'p') return s.indexOf(' ' + term.w[0].v) !== -1;
+  var str = ' ' + term.w.map(function(e){ return e.v; }).join(' ');
+  var last = term.w[term.w.length - 1];
+  return s.indexOf(last.pre ? str : str + ' ') !== -1;
+}
+function _hsMatchStr(s, P){
+  for(var g = 0; g < P.groups.length; g++){
+    var any = false;
+    for(var t = 0; t < P.groups[g].length; t++){ if(_hsTermHit(s, P.groups[g][t])){ any = true; break; } }
+    if(!any) return false;
+  }
+  for(var n = 0; n < P.nots.length; n++){ if(_hsTermHit(s, P.nots[n])) return false; }
+  return true;
+}
+
+// ── search index (all books) ──
+var _HS_BASE = 'data/islamic/hadith/search/';
+var _hsMan = null, _hsManP = null, _hsShard = {}, _hsText = {};
+function _hsGetJson(rel){
+  return fetch(dataUrl(_HS_BASE + rel)).then(function(r){
+    if(!r.ok) throw new Error(rel + ' ' + r.status);
+    return r.json();
+  });
+}
+function _hsManifest(){
+  if(_hsMan) return Promise.resolve(_hsMan);
+  if(_hsManP) return _hsManP;
+  _hsManP = _hsGetJson('manifest.json').then(function(m){
+    // The index must describe the same books, in the same order, as COLLECTIONS.
+    var keys = (m && m.books || []).map(function(b){ return b.key; }).join('|');
+    var mine = COLLECTIONS.map(function(c){ return c.key; }).join('|');
+    if(keys !== mine) throw new Error('search index book list does not match MONASTIC');
+    _hsMan = m; _hsManP = null; return m;
+  }).catch(function(e){ _hsManP = null; throw e; });
+  return _hsManP;
+}
+function _hsShardIdx(tok){
+  var sh = _hsMan.shards, lo = 0, hi = sh.length - 1;
+  while(lo < hi){
+    var mid = (lo + hi + 1) >> 1;
+    if(sh[mid].first <= tok) lo = mid; else hi = mid - 1;
+  }
+  return lo;
+}
+function _hsLoadShard(i){
+  var f = _hsMan.shards[i].f;
+  if(!_hsShard[f]) _hsShard[f] = _hsGetJson(f);
+  return _hsShard[f];
+}
+function _hsDecode(str){
+  var parts = str.split(','), out = new Array(parts.length), prev = 0;
+  for(var i = 0; i < parts.length; i++){ prev += parseInt(parts[i], 36); out[i] = prev; }
+  return out;
+}
+function _hsUnion(a, b){
+  var o = [], i = 0, j = 0;
+  while(i < a.length && j < b.length){
+    if(a[i] === b[j]){ o.push(a[i]); i++; j++; }
+    else if(a[i] < b[j]) o.push(a[i++]); else o.push(b[j++]);
+  }
+  while(i < a.length) o.push(a[i++]);
+  while(j < b.length) o.push(b[j++]);
+  return o;
+}
+function _hsInter(a, b){
+  var o = [], i = 0, j = 0;
+  while(i < a.length && j < b.length){
+    if(a[i] === b[j]){ o.push(a[i]); i++; j++; }
+    else if(a[i] < b[j]) i++; else j++;
+  }
+  return o;
+}
+function _hsMinus(a, b){
+  var o = [], i = 0, j = 0;
+  while(i < a.length){
+    while(j < b.length && b[j] < a[i]) j++;
+    if(j < b.length && b[j] === a[i]){ i++; continue; }
+    o.push(a[i++]);
+  }
+  return o;
+}
+// Hadith positions holding one word (exact) or any word starting with it.
+function _hsPostings(v, pre){
+  var a = _hsShardIdx(v), b = pre ? _hsShardIdx(v + '￿') : a, list = [];
+  for(var i = a; i <= b; i++) list.push(i);
+  return Promise.all(list.map(_hsLoadShard)).then(function(shards){
+    var acc = [];
+    shards.forEach(function(sh){
+      if(!pre){ if(sh[v]) acc = _hsUnion(acc, _hsDecode(sh[v])); return; }
+      for(var k in sh){ if(k.lastIndexOf(v, 0) === 0) acc = _hsUnion(acc, _hsDecode(sh[k])); }
+    });
+    return acc;
+  });
+}
+function _hsTermPostings(term){
+  return Promise.all(term.w.map(function(e){ return _hsPostings(e.v, e.pre); })).then(function(ls){
+    var acc = ls[0];
+    for(var i = 1; i < ls.length; i++) acc = _hsInter(acc, ls[i]);
+    return acc;
+  });
+}
+var _HS_VERIFY_MAX = 3000;
+function _hsGlobalIds(P){
+  return _hsManifest().then(function(){
+    return Promise.all(P.groups.map(function(g){
+      return Promise.all(g.map(_hsTermPostings)).then(function(ls){
+        var acc = []; ls.forEach(function(l){ acc = _hsUnion(acc, l); }); return acc;
+      });
+    }));
+  }).then(function(gl){
+    var ids = gl[0];
+    for(var i = 1; i < gl.length; i++) ids = _hsInter(ids, gl[i]);
+    var simpleNots = P.nots.filter(function(t){ return t.k !== 'ph'; });
+    return Promise.all(simpleNots.map(_hsTermPostings)).then(function(nl){
+      nl.forEach(function(l){ ids = _hsMinus(ids, l); });
+      var needVerify = P.nots.some(function(t){ return t.k === 'ph'; }) ||
+        P.groups.some(function(g){ return g.some(function(t){ return t.k === 'ph'; }); });
+      if(!needVerify || !ids.length) return ids;
+      if(ids.length > _HS_VERIFY_MAX){
+        var err = new Error('too-common'); err.hsCount = ids.length; throw err;
+      }
+      // Exact phrase: check the words of each possible hadith, in order.
+      var per = _hsMan.textChunk, chunks = {};
+      ids.forEach(function(id){ chunks[Math.floor(id / per)] = 1; });
+      return Promise.all(Object.keys(chunks).map(function(c){
+        var f = 't' + ('00' + c).slice(-3) + '.json';
+        if(!_hsText[f]) _hsText[f] = _hsGetJson(f);
+        return _hsText[f].then(function(arr){ return [+c, arr]; });
+      })).then(function(res){
+        var byChunk = {};
+        res.forEach(function(r){ byChunk[r[0]] = r[1]; });
+        return ids.filter(function(id){
+          var arr = byChunk[Math.floor(id / per)];
+          var s = arr ? ' ' + arr[id % per] + ' ' : '';
+          return _hsMatchStr(s, P);
+        });
+      });
     });
   });
 }
+function _hsBookOf(id){
+  var bs = _hsMan.books;
+  for(var i = 0; i < bs.length; i++){ if(id >= bs[i].start && id < bs[i].start + bs[i].count) return bs[i]; }
+  return null;
+}
+
+// ── highlight the matched words in the shown text ──
+var _HS_MK = '[\\u0610-\\u061a\\u064b-\\u065f\\u0670\\u06d6-\\u06ed\\u0640]*';
+function _hsWordRx(v, pre){
+  var ar = /[؀-ۿ]/.test(v), src = '';
+  for(var i = 0; i < v.length; i++){
+    var c = v.charAt(i), cls;
+    if(c === 'ا') cls = '[اأإآٱ]';
+    else if(c === 'ي') cls = '[يى]';
+    else if(c === 'ه') cls = '[هة]';
+    else cls = c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    src += cls + (ar ? _HS_MK : "['’ʼʿʾ]?");
+  }
+  var tail = pre ? (ar ? '[\\p{L}\\p{N}\\u0610-\\u061a\\u064b-\\u065f\\u0670\\u0640]*' : "[\\p{L}\\p{N}'’]*")
+                 : (ar ? '' : "(?:['’]s)?");
+  return '(?<![\\p{L}\\p{N}])' + src + tail + '(?![\\p{L}\\p{N}])';
+}
+function _hsHighlight(P){
+  var pats = [];
+  // A phrase is marked as one piece (its words in order); single words alone.
+  // Very short single words (is, of, في …) are not marked on their own: they
+  // are everywhere and hide the real matches. Inside a phrase they are marked.
+  P.groups.forEach(function(g){ g.forEach(function(t){
+    if(t.k === 'w' && t.w[0].v.length < 3) return;
+    pats.push(t.w.map(function(e){ return _hsWordRx(e.v, e.pre); }).join('[^\\p{L}\\p{N}]+'));
+  }); });
+  if(!pats.length) return;
+  var rx;
+  try { rx = new RegExp('(' + pats.join('|') + ')', 'giu'); } catch(e){ return; }
+  document.querySelectorAll('#mon-results .mon-row').forEach(function(row){
+    var w = document.createTreeWalker(row, NodeFilter.SHOW_TEXT, null), hits = [], n;
+    while((n = w.nextNode())){ rx.lastIndex = 0; if(n.nodeValue && rx.test(n.nodeValue)) hits.push(n); }
+    hits.forEach(function(tn){
+      // Split the text node into plain text + <mark> pieces (no HTML parsing).
+      var txt = tn.nodeValue, frag = document.createDocumentFragment(), last = 0, mm;
+      rx.lastIndex = 0;
+      while((mm = rx.exec(txt))){
+        if(!mm[0]){ rx.lastIndex++; continue; }
+        if(mm.index > last) frag.appendChild(document.createTextNode(txt.slice(last, mm.index)));
+        var mk = document.createElement('mark');
+        mk.style.cssText = 'background:#D4AF37;color:#111;padding:0 1px;border-radius:2px';
+        mk.textContent = mm[0];
+        frag.appendChild(mk);
+        last = mm.index + mm[0].length;
+      }
+      if(last < txt.length) frag.appendChild(document.createTextNode(txt.slice(last)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  });
+}
+
+// What the search looked for, in plain words, for the result bar.
+function _hsDescribe(P){
+  function term(t){
+    var w = t.w.map(function(e){ return e.v + (e.pre ? '…' : ''); }).join(' ');
+    return t.k === 'ph' ? '"' + w + '"' : w;
+  }
+  var parts = P.groups.map(function(g){ return g.map(term).join(' or '); });
+  var s = parts.length > 1 ? 'all of: ' + parts.join(', ') : (parts[0] || '');
+  if(P.nots.length) s += ' — without: ' + P.nots.map(term).join(', ');
+  return s;
+}
+function _hsResultBar(text, note){
+  var res = document.getElementById('mon-results');
+  if(!res) return;
+  var bar = document.createElement('div');
+  bar.className = 'mon-search-bar';
+  bar.style.cssText = 'background:#1B2631;color:#D4AF37;font-family:Cinzel,serif;font-size:13px;letter-spacing:.06em;padding:8px 14px;border-bottom:1px solid rgba(212,175,55,.4)';
+  bar.textContent = text;
+  if(note){
+    var nd = document.createElement('div');
+    nd.style.cssText = 'font-family:Lato,sans-serif;font-size:12px;letter-spacing:0;color:#9aa3b2;margin-top:3px';
+    nd.textContent = note;
+    bar.appendChild(nd);
+  }
+  res.insertBefore(bar, res.firstChild);
+  res.scrollTop = 0;
+  var _mv = document.getElementById('monastic-view'); if(_mv) _mv.scrollTop = 0;
+}
+function _hsArabicNote(){
+  return (/[؀-ۿ]/.test(_monSearchQuery || '') && _monLang !== 'ar')
+    ? 'Arabic words are marked when the Arabic text is shown.' : '';
+}
+function _hsHasQuery(){
+  var P = _hsParse(_monSearchQuery);
+  return !!(P.groups.length || P.nots.length);
+}
+function _monNoFilters(){
+  return _monSel.collection.size === 0 && _monSel.period.size === 0 && _monSel.topic.size === 0 &&
+    _monSel.narrator.size === 0 && _monSel.volume.size === 0 && _monSel.concept.size === 0 && !_pinActive();
+}
+function _hsMessage(html){
+  _hsView = null;
+  if(!_resultsEl) return;
+  showLoading(false);
+  _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#9aa3b2;font-size:var(--fs-3);line-height:1.6">' + html + '</div>';
+  if(_countEl) _countEl.textContent = '';
+}
+
+var _hsSeq = 0, _hsGlobal = null;   // last all-books result {q, P, ids, page}
+function _applySearch(){
+  var seq = ++_hsSeq;
+  var P = _hsParse(_monSearchQuery);
+  var empty = !P.groups.length && !P.nots.length;
+  if(_monNoFilters()){
+    _hsGlobal = null;
+    if(empty){ _applyAllFilters(); return; }
+    if(P.error){ _hsMessage(esc(P.error)); return; }
+    _hsRunGlobal(P, seq, 0);
+    return;
+  }
+  _hsGlobal = null;
+  if(!_monBaseRows || !_monBaseRows.length) return;
+  if(empty){ _renderRows(_monBaseRows, _lastColKey, 0); return; }
+  if(P.error){ _hsMessage(esc(P.error)); return; }
+  var matches = _monBaseRows.filter(function(h){ return _hsMatchStr(_hsDocStr(h), P); });
+  _hsView = { list: matches, P: P,
+    bar: matches.length.toLocaleString() + ' result' + (matches.length !== 1 ? 's' : '') + ' with ' + _hsDescribe(P),
+    note: [_hsArabicNote(), (P.groups.length > 1 && !P.groups.some(function(g){ return g.some(function(t){ return t.k === 'ph'; }); }))
+      ? 'Words in any order. Put words in quotes for an exact phrase.' : ''].filter(Boolean).join(' ') };
+  _renderRows(matches, _lastColKey, 0);
+}
+// Search bar, page buttons and word marks are re-added every time the result
+// rows are drawn again (the rows are redrawn e.g. when narrator links finish
+// loading), so they never disappear.
+var _hsView = null;
+function _hsDecorate(filtered){
+  var V = _hsView;
+  if(!V || filtered !== V.list) return;
+  try {
+    if(V.count && _countEl) _countEl.textContent = V.count;
+    _hsResultBar(V.bar, V.note);
+    if(V.nav) V.nav();
+    _hsHighlight(V.P);
+  } catch(e){ console.warn('[monastic] search marks', e); }
+}
+function _hsRunGlobal(P, seq, page){
+  showLoading(true);
+  _hsGlobalIds(P).then(function(ids){
+    if(seq !== _hsSeq) return;
+    _hsGlobal = { q: _monSearchQuery, P: P, ids: ids, page: 0 };
+    _hsShowGlobalPage(page || 0, seq);
+  }).catch(function(e){
+    if(seq !== _hsSeq) return;
+    if(e && e.message === 'too-common'){
+      _hsMessage('This exact phrase is too common to check across all books (' + e.hsCount.toLocaleString() +
+        ' hadith hold all its words).<br>Pick a book above, or add another word.');
+    } else {
+      console.warn('[monastic] search index', e);
+      _hsMessage('Search across all books is not available right now.<br>Pick a book above to search inside it.');
+    }
+  });
+}
+function _hsShowGlobalPage(page, seq){
+  var G = _hsGlobal;
+  if(!G) return;
+  var total = G.ids.length;
+  if(!total){
+    _hsMessage('No hadith found for "' + esc(G.q) + '" in any book.');
+    return;
+  }
+  var pages = Math.max(1, Math.ceil(total / MAX_ROWS));
+  if(page < 0) page = 0;
+  if(page >= pages) page = pages - 1;
+  G.page = page;
+  var slice = G.ids.slice(page * MAX_ROWS, (page + 1) * MAX_ROWS);
+  var need = {};
+  slice.forEach(function(id){ var b = _hsBookOf(id); if(b) need[b.key] = b; });
+  showLoading(true);
+  Promise.all(Object.keys(need).map(function(k){
+    return fetchCollection(k).then(function(data){
+      data.forEach(function(h){ h._colKey = k; });
+      return [k, data];
+    });
+  })).then(function(loaded){
+    if(seq !== _hsSeq || _hsGlobal !== G) return;
+    var data = {}, stale = false;
+    loaded.forEach(function(x){ data[x[0]] = x[1]; if(x[1].length !== need[x[0]].count) stale = true; });
+    if(stale){
+      _hsMessage('The search index is out of date for these books.<br>Pick a book above to search inside it.');
+      console.warn('[monastic] search index out of date — rebuild with factory-scripts/build_hadith_search_index.py');
+      return;
+    }
+    var recs = slice.map(function(id){ var b = _hsBookOf(id); return data[b.key][id - b.start]; }).filter(Boolean);
+    showLoading(false);
+    var books = {};
+    G.ids.forEach(function(id){ var b = _hsBookOf(id); if(b) books[b.key] = 1; });
+    var nb = Object.keys(books).length;
+    _hsView = { list: recs, P: G.P,
+      count: total.toLocaleString() + ' hadith' + (total !== 1 ? 's' : '') + ' found',
+      bar: total.toLocaleString() + ' result' + (total !== 1 ? 's' : '') + ' with ' + _hsDescribe(G.P) + ' — in ' + nb +
+        ' book' + (nb !== 1 ? 's' : '') + (pages > 1 ? ' — page ' + (page + 1) + ' of ' + pages : ''),
+      note: [_hsArabicNote(), (G.P.groups.length > 1 && !G.P.groups.some(function(g){ return g.some(function(t){ return t.k === 'ph'; }); }))
+        ? 'Words in any order. Put words in quotes for an exact phrase.' : '', 'Pick a book or narrator above to search only there.'].filter(Boolean).join(' '),
+      nav: pages > 1 ? function(){ _hsPageNav(page, pages); } : null };
+    _renderRows(recs, '', 0);
+  }).catch(function(e){
+    if(seq !== _hsSeq) return;
+    console.warn('[monastic] search page load failed', e);
+    _hsMessage('Could not load these hadith. Please try again.');
+  });
+}
+function _hsPageNav(page, pages){
+    if(pages > 1){
+      var res = document.getElementById('mon-results');
+      var nav = document.createElement('div');
+      nav.className = 'mon-page-nav';
+      nav.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid #2D3748;background:#1B2631';
+      var btn = function(dir, label, dis){
+        return '<button onclick="window._hsGlobalPage(\'' + dir + '\')" ' + (dis ? 'disabled' : '') +
+          ' style="background:rgba(212,175,55,0.10);color:#c9a961;border:1px solid rgba(212,175,55,0.55);border-radius:18px;padding:6px 18px;font-size:13px;cursor:' +
+          (dis ? 'not-allowed' : 'pointer') + ';opacity:' + (dis ? '0.4' : '1') + ';font-family:Lato,sans-serif">' + label + '</button>';
+      };
+      nav.innerHTML = btn('prev', '◀  PREV PAGE', page === 0) + btn('next', 'NEXT PAGE  ▶', page === pages - 1);
+      if(res && res.firstChild) res.insertBefore(nav, res.firstChild.nextSibling);
+    }
+}
+window._hsGlobalPage = function(dir){
+  if(!_hsGlobal) return;
+  _hsShowGlobalPage(_hsGlobal.page + (dir === 'next' ? 1 : -1), _hsSeq);
+};
 // Bridge: MonasticView is a separate IIFE and cannot see these locals. Expose entry points on window.
-window._monRunSearch = function(val){ _monSearchQuery = val || ''; _applySearch(); };
-window._monDebSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer) clearTimeout(_monSearchTimer); _monSearchTimer = setTimeout(_applySearch, 180); };
+window._monRunSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer){ clearTimeout(_monSearchTimer); _monSearchTimer = null; } _applySearch(); };
+window._monDebSearch = function(val){ _monSearchQuery = val || ''; if(_monSearchTimer) clearTimeout(_monSearchTimer); _monSearchTimer = setTimeout(_applySearch, _monNoFilters() ? 400 : 180); };
+// Test hooks (no effect on the page).
+window._hsTest = { norm: _hsNorm, parse: _hsParse, ids: function(q){ return _hsGlobalIds(_hsParse(q)); }, book: function(id){ return _hsBookOf(id); } };
 var _monNavLast = '', _monNavSnap = null;
 function _renderRows(filtered, colKey, page){
   // MONASTIC was left (its boxes were removed): a late load or search must not draw.
@@ -2342,6 +2775,7 @@ function _renderRows(filtered, colKey, page){
     // Render only after the load promise resolved — at this point a fetch
     // attempt was made, so "0 hadiths match" is the truthful state.
     _resultsEl.innerHTML = '<div style="text-align:center;padding:40px;color:#6B7280;font-size:var(--fs-3)">No hadiths match these filters.</div>';
+    _hsDecorate(filtered);
     return;
   }
 
@@ -2455,6 +2889,7 @@ function _renderRows(filtered, colKey, page){
     });
   });
 
+  _hsDecorate(filtered);
 }
 
 window._monNavPage = function(dir){
@@ -4040,8 +4475,51 @@ window.MonasticView = (function(){
   function _wireZoneB(zoneBEl){
     var searchInp = document.getElementById('search');
     if(searchInp){
-      searchInp.placeholder = 'Search the selected book — pick a book first';
-      searchInp.setAttribute('data-i18n-placeholder', 'Search the selected book — pick a book first');
+      searchInp.placeholder = 'Search hadith — all books, or the books you pick';
+      searchInp.setAttribute('data-i18n-placeholder', 'Search hadith — all books, or the books you pick');
+      // "?" — the search rules, one short line each.
+      var _sLbl = searchInp.parentElement;
+      if(_sLbl && !document.getElementById('mon-search-help')){
+        var hb = document.createElement('button');
+        hb.type = 'button';
+        hb.id = 'mon-search-help';
+        hb.textContent = '?';
+        hb.title = 'How to search';
+        hb.style.cssText = 'position:absolute;right:6px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;' +
+          'border:1px solid rgba(212,175,55,0.65);background:rgba(17,27,39,0.6);color:#D4AF37;font:600 13px/1 Lato,sans-serif;cursor:pointer;padding:0';
+        searchInp.style.paddingRight = '30px';
+        _sLbl.appendChild(hb);
+        hb.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          var old = document.getElementById('mon-search-help-tip');
+          if(old){ old.remove(); return; }
+          var tip = document.createElement('div');
+          tip.id = 'mon-search-help-tip';
+          var r = hb.getBoundingClientRect();
+          tip.style.cssText = 'position:fixed;z-index:9999;top:' + Math.round(r.bottom + 8) + 'px;left:' + Math.max(8, Math.round(r.right - 300)) + 'px;width:300px;' +
+            'background:#131c2a;border:1px solid rgba(212,175,55,0.55);border-radius:8px;padding:12px 14px;color:#E5E7EB;font:13px/1.55 Lato,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.5)';
+          tip.innerHTML =
+            '<div style="font-family:Cinzel,serif;color:#D4AF37;letter-spacing:.08em;margin-bottom:6px">HOW TO SEARCH</div>' +
+            '<div><b>two words</b> — hadith with both words</div>' +
+            '<div><b>"exact words"</b> — those words together, in that order</div>' +
+            '<div><b>prayer OR salah</b> — either word</div>' +
+            '<div><b>fasting -ramadan</b> — leave out a word</div>' +
+            '<div><b>pray*</b> — word start: pray, prayer, prayed</div>' +
+            '<div style="margin-top:6px;color:#9aa3b2">Arabic: vowel marks and hamza forms do not matter. Nothing picked above = all books.</div>';
+          document.body.appendChild(tip);
+          var close = function(ev){
+            if(ev && ev.type === 'keydown' && ev.key !== 'Escape') return;
+            if(ev && ev.type === 'click' && (tip.contains(ev.target) || ev.target === hb)) return;
+            tip.remove();
+            document.removeEventListener('click', close, true);
+            document.removeEventListener('keydown', close, true);
+          };
+          setTimeout(function(){
+            document.addEventListener('click', close, true);
+            document.addEventListener('keydown', close, true);
+          }, 0);
+        });
+      }
       searchInp.addEventListener('input', function(){
         if(window._monDebSearch) window._monDebSearch(searchInp.value);
       });
