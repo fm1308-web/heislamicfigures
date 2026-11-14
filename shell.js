@@ -636,7 +636,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=262';
+  var _cb = '?v=266';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -788,7 +788,7 @@ var FILTER_SPECS = {
     ],
     actionsInRow1: false,
     bookmarks: true,
-    hint: 'Hadith — 29 books across Sunni and Shia traditions',
+    hint: 'Hadith — 29 collections across Sunni and Shia traditions',
     hintInRow2: false
   },
   EXPLAIN: {

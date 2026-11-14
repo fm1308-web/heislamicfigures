@@ -180,6 +180,34 @@ COLLECTIONS.forEach(function(c){
   // Also map the collection's own key to itself
   XREF_TO_MON_KEY[c.key] = c.key;
 });
+window._monXrefToKey = XREF_TO_MON_KEY;
+
+// Concept-tag key for a hadith (14 Nov 2026). Multi-volume books (al-Kafi, al-Faqih)
+// restart numbering in each volume, so their number is "<volume>.<number>".
+function _monIsMulti(colKey){
+  for(var i = 0; i < COLLECTIONS.length; i++){ if(COLLECTIONS[i].key === colKey) return Array.isArray(COLLECTIONS[i].files); }
+  return false;
+}
+function _conceptNum(h, num){
+  if(h && _monIsMulti(h._colKey)){
+    var m = /(\d+)\s*$/.exec(String(h.volume || ''));
+    if(m) return m[1] + '.' + num;
+  }
+  return String(num);
+}
+// Where a hadith's cross-reference + concept panel comes from: [coll, key].
+function _xrefSlotFor(h, colKey, num){
+  var ck = (h && h._colKey) || colKey;
+  var xc = XREF_COLL_MAP[ck] || '';
+  if(!xc){
+    var cobj = null;
+    for(var i = 0; i < COLLECTIONS.length; i++){ if(COLLECTIONS[i].key === ck){ cobj = COLLECTIONS[i]; break; } }
+    if(cobj && cobj.file){ var mm = cobj.file.match(/\/([^\/]+)\.json$/); if(mm) xc = mm[1]; }
+    else if(cobj) xc = ck;   // multi-volume book: no cross-reference file, concept chips only
+  }
+  if(!xc || num == null || num === '') return '';
+  return '<div class="hadith-xref-slot" data-hkey="' + esc(xc + '-' + _conceptNum(h, num)) + '" data-hcoll="' + esc(xc) + '"></div>';
+}
 
 var MON_PERIODS = [
   {id:'early_makkan', label:'Early Makkan',  years:'610\u2013622 CE', span:12, color:'#8B6F47', rgb:'139,111,71'},
@@ -195,6 +223,33 @@ var CONF_STYLES = {
   period_only: {bg:'#666',    text:'#FFFFFF', label:'PERIOD ONLY'}
 };
 
+// Honest dating labels (14 Nov 2026). Says WHAT the date rests on, not how wide it is.
+// Data unchanged; label worked out from dating.layers_applied / evidence.
+var DATE_KIND_STYLES = {
+  event:    {bg:'#D4AF37', text:'#0E1621', label:'DATED BY EVENT'},
+  narrator: {bg:'#3FA7A0', text:'#FFFFFF', label:'DATED BY NARRATOR'},
+  clue:     {bg:'#5C7A8C', text:'#FFFFFF', label:'TEXT CLUE ONLY'},
+  none:     {bg:'#555',    text:'#E5E7EB', label:'NOT DATED'}
+};
+function _monDateKind(h){
+  var d = (h && h.dating) || {};
+  var rb = d.range_best || d.range_safe || d.range;
+  if(!rb || rb.earliest == null || rb.latest == null) return 'none';
+  var L = d.layers_applied || [];
+  var ev = d.evidence || [];
+  for(var i = 0; i < ev.length; i++){
+    var e = ev[i];
+    if(e && e.layer === 'L2' && e.earliest != null && e.latest != null &&
+       !(e.latest < rb.earliest || e.earliest > rb.latest)) return 'event';
+  }
+  if(L.indexOf('L1') !== -1 || L.indexOf('L12') !== -1) return 'narrator';
+  for(var j = 0; j < L.length; j++){
+    if(L[j] === 'L2' || L[j] === 'L3' || L[j] === 'L4' || L[j] === 'L5' || L[j] === 'L6') return 'clue';
+  }
+  return 'none';
+}
+window._monDateKind = _monDateKind;
+
 var _inited = false;
 var _cache = {};
 var MAX_ROWS = 500;
@@ -206,6 +261,20 @@ var _narratorIndex = [];
 var _narratorCleanList = null;
 var _topicList = null;
 var _topicMap = {};
+// Chapter → topic for hadith whose own label folds to "Other" (chapter_topic_map.json, 14 Nov 2026).
+var _chapterTopicMap = {};
+var _chapterTopicCounts = null;
+// ONE clean-topic function: Topic filter, DRILL, row label and counts all use this.
+function _cleanTopic(h){
+  if(!h) return 'Other';
+  var t = _topicMap[h.topic] || 'Other';
+  if(t === 'Other'){
+    var m = _chapterTopicMap[h._colKey];
+    if(m && h.chapter && m[h.chapter]) return m[h.chapter];
+  }
+  return t;
+}
+window._monCleanTopic = _cleanTopic;
 var _clickBound = false;
 var _peopleIndex = null;
 var _pinnedHadiths = null;
@@ -444,6 +513,7 @@ function _drillTierOf(h){
   var d = h.dating || {};
   var r = d.range_best || d.range_safe || d.range;
   if(!r || r.earliest == null || r.latest == null) return 'T5';
+  if(_monDateKind(h) === 'none') return 'T5';
   var span = r.latest - r.earliest;
   if(span <= 3) return 'T1';
   if(span <= 10) return 'T2';
@@ -475,7 +545,7 @@ function _drillClassify(list){
 function _drillApplyPath(list){
   _drillPath.forEach(function(step){
     list = list.filter(function(h){
-      if(step.splitBy === 'topic')      return h.topic === step.value;
+      if(step.splitBy === 'topic')      return _cleanTopic(h) === step.value;
       if(step.splitBy === 'collection') return h._colKey === step.value;
       if(step.splitBy === 'narrator'){
         var n = (getNarrator(h) || '').toLowerCase();
@@ -589,11 +659,11 @@ function _drillRender(){
     var tightPct = (tight / total * 100).toFixed(1);
 
     var TIER_META = [
-      { key:'T1', label:'Year',        span:'\u22643y',    color:'#D4AF37', sub:'Named dated event' },
-      { key:'T2', label:'Decade',      span:'4\u201310y',  color:'#8FC8A6', sub:'Multiple clues' },
-      { key:'T3', label:'Era',         span:'11\u201325y', color:'#6BA0C4', sub:'Period-level' },
-      { key:'T4', label:'Broad',       span:'>25y',         color:'#A07CB0', sub:'Narrator lifespan' },
-      { key:'T5', label:'Period only', span:'period',       color:'#7A7A7A', sub:'L1 fallback' }
+      { key:'T1', label:'Year',        span:'\u22643y',    color:'#D4AF37', sub:'Range 3 years or less' },
+      { key:'T2', label:'Decade',      span:'4\u201310y',  color:'#8FC8A6', sub:'Range 4\u201310 years' },
+      { key:'T3', label:'Era',         span:'11\u201325y', color:'#6BA0C4', sub:'Range 11\u201325 years' },
+      { key:'T4', label:'Broad',       span:'>25y',         color:'#A07CB0', sub:'Range over 25 years' },
+      { key:'T5', label:'Not dated',   span:'none',         color:'#7A7A7A', sub:'No real dating evidence' }
     ];
 
     var chips = '';
@@ -631,7 +701,7 @@ function _drillRender(){
       '<div style="padding:20px 24px 20px 24px;box-sizing:border-box">' +
         '<div style="display:flex;align-items:baseline;gap:18px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(212,175,55,0.15);flex-wrap:wrap">' +
           '<div><span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.12em;color:rgba(212,175,55,0.8);text-transform:uppercase">Total</span> <span style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);color:#D4AF37;font-weight:600;margin-left:6px">' + total.toLocaleString() + '</span></div>' +
-          '<div style="font-size:var(--fs-3);color:rgba(229,231,235,0.75);line-height:1.4">All 34,441 placed by broad period \u00B7 <span style="color:#D4AF37">' + tight.toLocaleString() + '</span> (' + tightPct + '%) have extra dating layers. Toggle tiers below to include/exclude.</div>' +
+          '<div style="font-size:var(--fs-3);color:rgba(229,231,235,0.75);line-height:1.4"><span style="color:#D4AF37">' + tight.toLocaleString() + '</span> (' + tightPct + '%) have real dating evidence \u00B7 ' + buckets.T5.length.toLocaleString() + ' are not dated (T5). Toggle tiers below to include/exclude.</div>' +
         '</div>' +
         '<div id="mon-drill-chip-row" style="display:flex;gap:8px;margin-bottom:14px;position:sticky;top:0;z-index:5;background:#0E1621;padding:6px 0">' + chips + '</div>' +
         '<div id="mon-drill-body" style="display:flex;gap:12px;align-items:flex-start;overflow-x:auto;overflow-y:visible;padding:0 48px 12px 0;width:100%;box-sizing:border-box">' +
@@ -669,7 +739,7 @@ function _drillAllColumnsHtml(col1Hadiths, tierColorMap, primaryMeta){
     }
 
     var matched = inTile.filter(function(h){
-      if(step.splitBy === 'topic')      return h.topic === step.value;
+      if(step.splitBy === 'topic')      return _cleanTopic(h) === step.value;
       if(step.splitBy === 'collection') return h._colKey === step.value;
       if(step.splitBy === 'narrator'){
         var n = (getNarrator(h) || '').toLowerCase();
@@ -697,7 +767,7 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
   var counts = {};
   sourceHadiths.forEach(function(h){
     var v;
-    if(step.splitBy === 'topic') v = h.topic || 'Other';
+    if(step.splitBy === 'topic') v = _cleanTopic(h);
     else if(step.splitBy === 'collection') v = h._colKey;
     else if(step.splitBy === 'narrator') v = _stripArabic((getNarrator(h) || '').split('(')[0].trim()) || 'Unknown';
     if(v) counts[v] = (counts[v] || 0) + 1;
@@ -1134,7 +1204,7 @@ function _drillShowInlineHadiths(earliest, latest){
           '<button class="mon-drill-bmk-btn" data-bmkey="' + _drBmKey + '" title="' + _drBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _drBmRibbon + '</button>' +
           '</div>';
         if(!hasTopicFilter && h.topic){
-          colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Topic</span><span class="mon-drill-src-val">' + esc(h.topic) + '</span></div>';
+          colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Topic</span><span class="mon-drill-src-val">' + esc(_cleanTopic(h)) + '</span></div>';
         }
         if(!hasColFilter){
           colA += '<div class="mon-drill-src-field"><span class="mon-drill-src-label">Book</span><span class="mon-drill-src-val">' + esc(label) + '</span></div>';
@@ -1147,12 +1217,7 @@ function _drillShowInlineHadiths(earliest, latest){
           }
         }
         colA += '<div class="mon-narrator-chainonly" style="margin-top:8px">' + _chainOnlyBlock(h) + '</div>';
-        var xrefColl = XREF_COLL_MAP[h._colKey] || '';
-        var xrefSlot = '';
-        if(xrefColl && num != null && num !== ''){
-          var hkey = xrefColl + '-' + num;
-          xrefSlot = '<div class="hadith-xref-slot" data-hkey="' + esc(hkey) + '" data-hcoll="' + esc(xrefColl) + '"></div>';
-        }
+        var xrefSlot = _xrefSlotFor(h, h._colKey, num);
         html += '<div class="mon-drill-inline-row">' +
           '<div class="mon-drill-inline-col-a">' + colA + xrefSlot + '</div>' +
           '<div class="mon-drill-inline-col-b">' +
@@ -1729,6 +1794,18 @@ function fetchCollection(key){
   p.then(function(){ delete _fcInflight[key]; }, function(){ delete _fcInflight[key]; });
   return p;
 }
+// Dating corrections (data/islamic/hadith/support/dating_corrections.json, 14 Nov 2026):
+// replaces h.dating for a few hadith whose dating was proven wrong. Hadith files unchanged.
+var _datingFixP = null;
+function _loadDatingFixes(){
+  if(!_datingFixP){
+    _datingFixP = fetch(dataUrl('data/islamic/hadith/support/dating_corrections.json'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ return (j && j.fixes) ? j.fixes : {}; })
+      .catch(function(){ return {}; });
+  }
+  return _datingFixP;
+}
 function _fetchCollectionRaw(key){
   if(_cache[key]) return Promise.resolve(_cache[key]);
   var col = null;
@@ -1763,8 +1840,14 @@ function _fetchCollectionRaw(key){
     merged.forEach(function(h){
       if(h && typeof h.topic === 'string') h.topic = _resolveTopic(h.topic);
     });
-    _cache[key] = merged;
-    return merged;
+    return _loadDatingFixes().then(function(fx){
+      merged.forEach(function(h){
+        var f = h && fx[key + '|' + String(h.hadithNumber)];
+        if(f) h.dating = f;
+      });
+      _cache[key] = merged;
+      return merged;
+    });
   });
 }
 
@@ -1929,17 +2012,52 @@ function _trimNarratorBits(s){
     .trim();
 }
 
+// Shia books keep the chain as Arabic names (narrator_chain), not matched to narrator
+// records yet. Shown honestly "as in source". Text fragments after the names are cut.
+function _rawChainNames(h){
+  var arr = (h && Array.isArray(h.narrator_chain)) ? h.narrator_chain : [];
+  var out = [];
+  for(var i = 0; i < arr.length; i++){
+    var raw = String(arr[i] || '').trim();
+    if(/[.\u061F!]$/.test(raw) && i > 0) break;   // sentence end = hadith text, not a name
+    var t = raw.replace(/^[\d\s.\-]+/, '');
+    t = t.split('(')[0].split(' قال ')[0].split('«')[0].split(':')[0].trim();
+    if(!t || t.split(/\s+/).length > 8) continue;
+    if(/\u0627\u0633\u0646\u0627\u062F|\u0642\u0648\u0644/.test(t)) continue;   // "by the same chain" / "the saying of" = not a name
+    out.push(t);
+  }
+  return out;
+}
+function _rawChainHtml(h){
+  var names = _rawChainNames(h);
+  if(!names.length) return '';
+  var rows = '';
+  for(var i = 0; i < names.length; i++){
+    rows += '<div style="padding:3px 0;display:flex;gap:8px;align-items:baseline">' +
+      '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + (i + 1) + '.</span>' +
+      '<span style="font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;font-size:16px;direction:rtl;color:rgba(229,231,235,0.85)">' + esc(names[i]) + '</span></div>';
+  }
+  return '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">▼ CHAIN AS IN SOURCE (' + names.length + ')</button>' +
+    '<div class="mon-chain" style="display:none;margin-top:8px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:4px">' +
+      '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.85);text-transform:uppercase;margin-bottom:4px">Chain as written in the Arabic</div>' +
+      '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.7);margin-bottom:6px">Compiler’s source first. Names are not yet matched to narrator records, so no dates or grades.</div>' +
+      rows +
+    '</div>';
+}
+
 function _narratorBlock(h){
   var narrs = Array.isArray(h.narrators) ? h.narrators : [];
   if(!narrs.length){
     // Shia books + Sunni "Others" don't have structured narrators[] arrays.
     // They store the end-of-chain narrator as a plain string in englishNarrator.
     var en = (h && h.englishNarrator) ? String(h.englishNarrator).trim() : '';
-    if(en){
+    var rawChain = _rawChainHtml(h);
+    if(en && en !== 'Being checked' && en !== 'Unknown'){
       var cleaned = _cleanNarratorString(en);
-      return _narratorCell(cleaned || en);
+      return _narratorCell(cleaned || en) + rawChain;
     }
-    return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Chain omitted in source)</div>';
+    var why = en ? 'Narrator not yet identified' : (rawChain ? 'Narrator not yet identified' : 'No chain of narration in this source');
+    return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(' + why + ')</div>' + rawChain;
   }
   var terminal = narrs[narrs.length - 1];
   var termName = _stripArabic((terminal.name || '').split('(')[0].trim());
@@ -1976,28 +2094,26 @@ function _narratorBlock(h){
 }
 
 // ── Dating line builder ──
-// Reads RV55 shape: dating.range_best, dating.range_safe, dating.confidence
-// ('high'|'medium'|'low'). Falls back to legacy dating.range, then period-only.
+// Honest labels: DATED BY EVENT / DATED BY NARRATOR / TEXT CLUE ONLY / NOT DATED.
+// NOT DATED = only the broad fallback or the chain ceiling applied, so no range is
+// shown; only the latest date it must have existed by (the compiler's death).
 function _datingLine(h){
-  var rangeText, confidence;
-
-  if(h && h.dating && (h.dating.range_best || h.dating.range_safe || h.dating.range)){
-    var rb = h.dating.range_best || h.dating.range_safe || h.dating.range;
-    rangeText = '~' + rb.earliest + '\u2013' + rb.latest + ' CE';
-    confidence = h.dating.confidence || 'low';
+  var kind = _monDateKind(h);
+  var ks = DATE_KIND_STYLES[kind];
+  var d = (h && h.dating) || {};
+  var parts;
+  if(kind === 'none'){
+    var by = d.must_exist_by;
+    parts = by ? '<span>Written down by ' + esc(String(by)) + ' CE</span>' : '';
   } else {
-    var pi = _monPeriodInfo(h && h.period);
-    rangeText = pi ? (pi.label + ' Era \u00B7 ' + pi.years) : 'Unknown period';
-    confidence = 'period_only';
+    var rb = d.range_best || d.range_safe || d.range;
+    parts = '<span>Tentative dating</span>' +
+      '<span style="color:rgba(255,255,255,0.3)">\u00B7</span>' +
+      '<span>' + esc('~' + rb.earliest + '\u2013' + rb.latest + ' CE') + '</span>';
   }
-
-  var cs = CONF_STYLES[confidence] || CONF_STYLES.period_only;
-
   return '<div class="mon-dating" style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;color:rgba(160,174,192,0.8)">' +
-    '<span>Tentative Dating</span>' +
-    '<span style="color:rgba(255,255,255,0.3)">\u00B7</span>' +
-    '<span>' + esc(rangeText) + '</span>' +
-    '<span class="mon-conf-badge" style="padding:2px 7px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:' + cs.bg + ';color:' + cs.text + '">' + cs.label + '</span>' +
+    parts +
+    '<span class="mon-conf-badge" title="What this date rests on. See the INFORMATION page." style="padding:2px 7px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:' + ks.bg + ';color:' + ks.text + '">' + ks.label + '</span>' +
     '</div>';
 }
 
@@ -2069,59 +2185,103 @@ function _syncBand(){
 
 // ── Methodology content (rendered by the shell INFORMATION panel) ──
 function _monInfoHtml(){
+  // Rewritten 14 Nov 2026 (LIB FACTORY 2). Counts are from the data on file that day.
+  var H2 = function(t){ return '<h2 style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);letter-spacing:.12em;color:#D4AF37;margin:0 0 16px">' + t + '</h2>'; };
+  var H3 = function(t){ return '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">' + t + '</h3>'; };
+  var P  = function(t){ return '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">' + t + '</p>'; };
+  var LI = function(arr){ return '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' + arr.map(function(x){ return '<li style="margin-bottom:4px">' + x + '</li>'; }).join('') + '</ul>'; };
+  var B  = function(k){ var st = DATE_KIND_STYLES[k]; return '<span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:' + st.bg + ';color:' + st.text + ';margin-right:8px">' + st.label + '</span>'; };
+  var G  = function(t){ return '<strong style="color:#D4AF37">' + t + '</strong>'; };
   return '' +
-      '<h2 style="font-family:\'Cinzel\',serif;font-size:var(--fs-1);letter-spacing:.12em;color:#D4AF37;margin:0 0 16px">TENTATIVE DATING \u2014 METHODOLOGY</h2>' +
-      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 16px">Hadiths are reports about events from the Prophet\u2019s life (610\u2013632 CE) and after. None carry an exact date. What you see here is a best-effort reconstruction built by layering evidence. This is tentative by design and will keep improving as we connect more sources.</p>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">CONFIDENCE LEVELS</h3>' +
+      H2('HOW THIS VIEW WORKS') +
+      P('76,849 hadith from 29 collections: 17 Sunni (50,878 hadith) and 12 Shia (25,971 hadith). The text and translations come from established editions. Everything below — dating, topics, links — is our own study layer on top of the text, and this page says exactly how strict each part is.') +
+
+      H3('TENTATIVE DATING — WHAT THE LABEL MEANS') +
+      P('No hadith carries a date. We build a possible date range from evidence. The label on each hadith tells you <em>what the range rests on</em>. It is not a grade of the hadith.') +
       '<div style="font-size:var(--fs-3);line-height:1.7">' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#D4AF37;color:#0E1621;margin-right:8px">HIGH</span>Hadith text names a specific dated event (e.g. Battle of Badr, 624 CE). Range typically 1\u20133 years.</p>' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#6B8E6B;color:#FFFFFF;margin-right:8px">MEDIUM</span>Multiple contextual clues line up (companion mentioned, location cue, surah cited). Range typically 5\u201315 years.</p>' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#5C7A8C;color:#FFFFFF;margin-right:8px">LOW</span>Only one weak clue beyond narrator period. Range usually covers most of the narrator\u2019s active life.</p>' +
-        '<p style="margin:0 0 8px"><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:#666;color:#FFFFFF;margin-right:8px">PERIOD ONLY</span>No clues in the text itself \u2014 dating falls back to the narrator\u2019s broad period.</p>' +
+        P(B('event') + G('1,477 hadith (1.9%).') + ' The text names an event with a known year (Badr 624, Hudaybiyyah 628, the Hijrah 622) and the range sits on that event. Strongest.') +
+        P(B('narrator') + G('54,833 (71.4%).') + ' The range is the lifetime or active years of the person speaking at the end of the chain — the companion, or in Shia books the Imam. It tells you when it <em>could</em> have been said, not the moment.') +
+        P(B('clue') + G('4,292 (5.6%).') + ' No speaker window. The range comes only from a clue in the text: a Maghazi or Revelation chapter, a named companion, a Madinah/Ansar place word, or a surah cited. Weakest real evidence.') +
+        P(B('none') + G('16,247 (21.1%).') + ' No real evidence. We show no range, only “written down by” the year the compiler died — the latest date the hadith must have existed by.') +
       '</div>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">LAYERS CURRENTLY APPLIED</h3>' +
+      P('The era tag on a row (Early Makkan, Madinan, Post-Prophet, Successor Era) and the Period filter come from the book data. On a NOT DATED hadith the row says \u201cera tag only\u201d: it is a broad placement, not a date.') +
+      P('Range width is a separate thing. A narrow range only means the clues overlap tightly; it is not proof. In DRILL, tiers T1–T4 sort by width (3 years or less, 4–10, 11–25, over 25). T5 holds every hadith that is NOT DATED; if you switch T5 on, they are laid out by their broad placement window, which is not a date.') +
+
+      H3('WHAT WE LEAVE OUT, AND WHY') +
+      LI([
+        G('No guessing.') + ' If a hadith has no speaker window and no clue, it is NOT DATED. We do not fill the gap.',
+        G('The broad fallback is never shown as a date.') + ' Internally a NOT DATED hadith still sits in a wide window (Sunni 610–700, Shia 610–874) so it can be placed on the timeline, but it is labelled NOT DATED everywhere.',
+        G('The chain ceiling only caps.') + ' The latest death in the chain can cut a range short. On its own it never dates a hadith.',
+        G('Where the gaps are.') + ' Most NOT DATED hadith sit in books whose chains we do not have as narrator records yet: Sunan ad-Darimi (all 3,406), Mishkat (2,251), Man La Yahduruh al-Faqih (1,969), al-Kafi (1,516), Bulugh al-Maram (930), Muwatta (891), Riyad as-Salihin (679).'
+      ]) +
+
+      H3('DATING LAYERS IN USE') +
       '<div style="font-size:var(--fs-3);line-height:1.6">' +
-        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L1 \u2014 Narrator period (100% coverage)</strong><br>The last narrator in the chain is the companion who heard it from the Prophet. Their known lifespan gives a broad window.</p>' +
-        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L2 \u2014 Named dated event (4.4%)</strong><br>The hadith text names a specific event with a known year \u2014 Battle of Badr (624), Treaty of Hudaybiyyah (628), etc. Highest confidence.</p>' +
-        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L3 \u2014 Book of Maghazi (1.7%)</strong><br>Hadith is in the Military Expeditions section of a collection, which scholars organized around the Madinan period.</p>' +
-        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L4 \u2014 Named companion (20.8%)</strong><br>Text mentions a companion other than the narrator, whose lifespan narrows the window.</p>' +
-        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L5 \u2014 Location clue (2.6%)</strong><br>Text mentions Madinah, Ansar, Muhajirun etc. \u2014 implies post-Hijrah.</p>' +
-        '<p style="margin:0 0 10px"><strong style="color:#D4AF37">L6 \u2014 Quranic surah cited (13.4%)</strong><br>Makkan surahs point to 610\u2013622; Madinan surahs to 622\u2013632.</p>' +
+        P(G('L1 — Speaker window (55,969 · 72.8%).') + '<br>Lifetime of the person speaking at the end of the chain. For Shia books this is the Imam’s life (the L12 rule).') +
+        P(G('L2 — Named dated event (1,813 · 2.4%).') + '<br>Badr, Uhud, Khandaq, Hudaybiyyah, Khaybar, the Conquest of Makkah, the Farewell Hajj, and others with a known year.') +
+        P(G('L3 — Chapter context (570 · 0.7%).') + '<br>The hadith sits in a Maghazi (expeditions) or Revelation chapter.') +
+        P(G('L4 — Named companion (16,311 · 21.2%).') + '<br>Another companion named in the text; their lifetime narrows the range.') +
+        P(G('L5 — Place word (2,322 · 3.0%).') + '<br>Madinah, Ansar, Muhajirun and similar — means after the Hijrah.') +
+        P(G('L6 — Surah cited (1,893 · 2.5%).') + '<br>A Makkan surah points to 610–622, a Madinan one to 622–632.') +
+        P(G('L8 — Chain ceiling (31,612 · 41.1%).') + '<br>Latest death in the chain. Caps a range only.') +
+        P(G('L11 — Compiler’s death (all 76,849).') + '<br>The “written down by” year.') +
+        P(G('L14 — Broad fallback (16,161 · 21.0%).') + '<br>Placement only. Never shown as a date.') +
       '</div>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:20px 0 10px">PLANNED LAYERS</h3>' +
-      '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0;padding-left:20px">' +
-        '<li>Sunnah.com expedition cross-references</li>' +
-        '<li>Manual scholar review for high-traffic hadiths</li>' +
-        '<li>Cross-collection corroboration</li>' +
-      '</ul>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:20px 0 0;font-style:normal">This is not precise dating. Treat all ranges as approximate.</p>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">CROSS-REFERENCE CHIPS</h3>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:0 0 12px">Each hadith row shows related items from across the app. Click a chip to jump to that view.</p>' +
+      P('<span style="color:#A0AEC0">Planned:</span> L7 borrow the end narrator from the hadith before it in the same chapter when it is missing · L9 finer years for each Tabi’i · L10 caliph names in the text · L13 Shia rijal books to place each chain figure with an Imam.') +
+
+      H3('CHAIN OF NARRATION') +
+      LI([
+        G('Full chain, matched (31,639 · 41.2%).') + ' Click CHAIN to see each narrator with grade and death year. Matched names open TIMELINE.',
+        G('Chain as written in the Arabic (23,710 · 30.9%).') + ' Mostly the Shia books. The names are shown exactly as in the source but are not yet matched to narrator records, so they carry no dates or grades.',
+        G('No chain in this source (21,500 · 28.0%).') + ' The edition gives the text without its chain — common in compilations such as Riyad as-Salihin, Mishkat, Bulugh al-Maram and the Forty collections.',
+        G('“Narrator not yet identified”') + ' means the end of the chain has not been matched to a known person. The Narrator filter lists these at the bottom.'
+      ]) +
+      P(G('Grades') + ' (sahih, hasan, da’if) are shown only where the source edition gives one: 34,172 hadith, mostly the six main Sunni books. No grade shown is not a judgment either way.') +
+
+      H3('NARRATOR FILTER') +
+      P('Every distinct end-of-chain narrator across all Sunni and Shia books, with the number of hadith for each. “Unknown Scholar” and “Being checked” = not yet matched; listed at the bottom.') +
+
+      H3('TOPIC FILTER') +
+      P('Each hadith takes its topic from the chapter it sits in, folded into 40 clean topics. On 14 Nov 2026 the 1,212 chapters that had no clean topic were read by AI (chapter title and book) and given one, adding 9 topics: Life of the Prophet, Ziyarah, History and Companions, Imam Husayn and Karbala, Destiny (Qadar), Prophets and Earlier Nations, Tafsir, Illness and Visiting the Sick, Remembrance of Allah.') +
+      P('“Other” fell from 15,027 to 5,000. What is left is chapters that name no single subject: Musnad Ahmad (arranged by companion), “Miscellany” chapters, whole-book chapters such as Sunan ad-Darimi. Fixing those needs each hadith read one by one.') +
+
+      H3('HOW TO SEARCH') +
+      LI([
+        G('Words') + ' — every word must appear, any order.',
+        G('"Exact phrase"') + ' — put it in quotes.',
+        G('OR') + ' — either word. ' + G('-word') + ' or ' + G('NOT word') + ' — leave it out. ' + G('word*') + ' — any word starting with it.',
+        G('Where it searches.') + ' Nothing picked = all 29 collections. Pick a book or narrator first to search only there.',
+        G('Arabic.') + ' Vowel marks, tatweel and hamza forms are ignored inside the search only; the text shown never changes.',
+        'The bar above the results says exactly what was searched and how many matched.'
+      ]) +
+
+      H3('VIEWS') +
+      LI([
+        G('LIST') + ' — the rows, with filters, search and bookmarks (sign in to save).',
+        G('GUIDED') + ' — a few questions, then the hadith that fit.',
+        G('DRILL') + ' — split the hadith by book, topic, narrator or period, and by dating tier T1–T5.',
+        G('GOLD LIVE') + ' — the Prophet’s life by date, with the hadith tied to each moment.',
+        'EN / AR / UR switches the text language where the book has it.'
+      ]) +
+
+      H3('CROSS-REFERENCE CHIPS') +
+      P('<span style="color:#A0AEC0">The six main Sunni books only (34,373 hadith). Other books have no chips yet.</span>') +
       '<div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-3);line-height:1.5">' +
-        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-fig">Figure</span><span>Person mentioned in the hadith (87% coverage). Click \u2192 info card.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-verse">2:183</span><span>Quran verse with shared wording (89% coverage). Click \u2192 START view at verse.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-place xref-chip-inactive">Place</span><span>Place referenced (33% coverage). Click wiring pending.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-event">Event</span><span>Historical event match (0.6% coverage). Click \u2192 Events view.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-book">Book</span><span>Scholarly commentary on this hadith. Click → BOOKS view.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-fig">Figure</span><span>Person named in the hadith (87%). Click → info card.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-verse">2:183</span><span>Quran verse with shared wording (89%). Word overlap, not meaning-checked. Click → START at that verse.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-place">Place</span><span>Place named (33%). Click → EVENTS in that place.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-event">Event</span><span>Historical event (0.6%). Click → EVENTS.</span></div>' +
+        '<div style="display:flex;align-items:center;gap:10px"><span class="xref-chip xref-book">Book</span><span>Scholarly book discussing this hadith (6.7%). Click → BOOKS.</span></div>' +
       '</div>' +
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:24px 0 10px">CONCEPT TAG SCORES (1-5)</h3>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:0 0 12px">Concept tags on Quran verses carry a 1-5 strength score. Brighter gold means stronger match.</p>' +
-      '<div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-3);line-height:1.5">' +
-        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:rgba(212,175,55,0.45)">1</span><span>Single shared word — weakest match.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:rgba(212,175,55,0.7)">2</span><span>Two-token overlap.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#d4af37">3</span><span>Solid phrase match — most common.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#e8c547;font-weight:600">4</span><span>Strong multi-word match.</span></div>' +
-        '<div style="display:flex;align-items:center;gap:10px"><span style="display:inline-block;min-width:22px;text-align:center;color:#f5d24a;font-weight:700">5</span><span>Exact phrase — strongest, rare.</span></div>' +
-      '</div>' +
-      '<p style="font-size:var(--fs-3);color:#A0AEC0;margin:12px 0 0;font-style:italic">Hadith concept tags currently cover the six canonical collections (28,889 hadith tagged) and are inherited from the Quran verses each hadith shares wording with, using the same Level 3 concept list as the Quran tags. The hadith-to-verse link is word-overlap, not meaning-checked, so treat these chips as exploratory, not a citation.</p>' +
 
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">NARRATOR FILTER</h3>' +
-      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Narrator dropdown lists every distinct narrator who appears as the end of a hadith chain across all Sunni and Shia books on file.</p>' +
-      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">Names ending with <em>"Unknown Scholar"</em> or showing <em>"Being checked"</em> mean the chain end was either not recorded or has not yet been matched to a known figure. These are listed at the bottom so the known names sort cleanly.</p>' +
-      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">Counts shown next to each name = number of hadiths attributed to that narrator across the corpus.</p>' +
-
-      '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:28px 0 10px">TOPIC FILTER (PAUSED)</h3>' +
-      '<p style="font-size:var(--fs-3);line-height:1.6;margin:0 0 10px">The Topic dropdown is temporarily hidden. Only 26% of hadiths in the corpus currently carry a topic field, and the topics that exist are skewed toward theology rather than the practical chapters readers expect. A full re-tagging pass is in progress.</p>' +
+      H3('CONCEPT CHIPS') +
+      P('Every hadith in all 29 collections now carries at least one concept. The small badge on each chip says how it was made:') +
+      LI([
+        G('R') + ' \u2014 read one by one by AI against the concept list (40 Hadith Nawawi, Riyad as-Salihin, and hadith in chapters with no single subject).',
+        G('C') + ' \u2014 taken from the chapter the hadith sits in: AI read the chapter title and tagged the chapter, and its hadith inherit it.',
+        G('M') + ' \u2014 older word match (six main Sunni books). Known to give odd chips; being replaced.'
+      ]) +
+      P('35 concepts were added on 14 Nov 2026 for everyday practice and ethics the list lacked: prayer, fasting, Hajj, purity, charity, du\u2019a, funerals, trade, food, dress, parents, kin, neighbours, truthfulness, modesty, anger, good character, Paradise, Hell, hypocrisy, signs of the Hour, the Prophet\u2019s life and others. A full one-by-one re-check of every hadith is next.') +
 
       // ── AI methodology disclosure ──
       '<h3 style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:#D4AF37;margin:32px 0 10px">HOW CROSS-REFERENCES ARE BUILT</h3>' +
@@ -2142,7 +2302,7 @@ function _monInfoHtml(){
         '<li>Hadith and tafsir concept chips were built before the new Level 3 method.</li>' +
         '<li>They are keyword-match tags. Wider net, lower quality than Quran chips.</li>' +
         '<li>Useful for discovery, not for citation.</li>' +
-        '<li>Upgrade to the Level 3 method for hadith and tafsir is planned for a future release.</li>' +
+        '<li>Hadith: Level 3 rebuild started (pilot: 40 Hadith Nawawi and Riyad as-Salihin). Tafsir: planned.</li>' +
       '</ul>' +
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">WHAT AI DOES NOT DO</h4>' +
@@ -2220,7 +2380,7 @@ function _applyAllFilters(){
     }
     if(topicSet.size > 0){
       hadiths = hadiths.filter(function(h){
-        var clean = _topicMap[h.topic] || 'Other';
+        var clean = _cleanTopic(h);
         return topicSet.has(clean);
       });
     }
@@ -2244,7 +2404,7 @@ function _applyAllFilters(){
           var coll = h._colKey;
           var num  = getNumber(h);
           if(!coll || num == null) return false;
-          var concepts = GC.getForHadith(coll, String(num)) || [];
+          var concepts = GC.getForHadith(coll, _conceptNum(h, num)) || [];
           for(var i = 0; i < concepts.length; i++){
             if(_monSel.concept.has(concepts[i].slug)) return true;
           }
@@ -2806,7 +2966,7 @@ function _renderRows(filtered, colKey, page){
     var num = getNumber(h);
     var narrator = getNarrator(h);
     var text = getText(h);
-    var topic = h.topic ? String(h.topic) : '';
+    var topic = h.topic ? _cleanTopic(h) : '';
 
     var topicHtml = topic
       ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;color:#FFFFFF;margin-top:16px">' + esc(topic) + '</div>'
@@ -2815,6 +2975,8 @@ function _renderRows(filtered, colKey, page){
     var _pi = _monPeriodInfo(h.period);
     var periodLabel = _pi ? _pi.label : '';
     var periodColor = _pi ? _pi.color : 'rgba(160,174,192,0.75)';
+    // NOT DATED hadith: the era tag is not a date, so say so (honest labels, 14 Nov 2026).
+    if(periodLabel && _monDateKind(h) === 'none'){ periodLabel += ' \u00B7 era tag only'; periodColor = 'rgba(160,174,192,0.6)'; }
     var periodHtml = periodLabel
       ? '<div style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:' + periodColor + ';margin-top:3px">' + esc(periodLabel) + '</div>'
       : '';
@@ -2822,20 +2984,7 @@ function _renderRows(filtered, colKey, page){
     // Resolve xref file basename:
     // 1. Original 6 use the legacy XREF_COLL_MAP
     // 2. The 11 'others' derive from COLLECTIONS[].file basename (e.g. "muwatta-malik")
-    var _xColl = XREF_COLL_MAP[h._colKey || colKey] || '';
-    if(!_xColl){
-      var _ck = h._colKey || colKey;
-      var _cobj = COLLECTIONS.find(function(c){ return c.key === _ck; });
-      if(_cobj && _cobj.file){
-        var _m = _cobj.file.match(/\/([^\/]+)\.json$/);
-        if(_m) _xColl = _m[1];
-      }
-    }
-    var xrefSlotHtml = '';
-    if(_xColl && num != null && num !== ''){
-      var _xKey = _xColl + '-' + num;
-      xrefSlotHtml = '<div class="hadith-xref-slot" data-hkey="' + esc(_xKey) + '" data-hcoll="' + esc(_xColl) + '"></div>';
-    }
+    var xrefSlotHtml = _xrefSlotFor(h, colKey, num);
 
     var row = document.createElement('div');
     row.className = 'mon-row';
@@ -3276,8 +3425,9 @@ function init(){
   // topic_mapping.json (fold raw → clean bucket). Wait for both, then build.
   var _rawTopicData = null;
   var _topicMapLoaded = false;
+  var _chapterMapLoaded = false;
   function _buildFoldedTopicDropdown(){
-    if(!_rawTopicData || !_topicMapLoaded) return;
+    if(!_rawTopicData || !_topicMapLoaded || !_chapterMapLoaded) return;
     var arrRaw = _rawTopicData;
     var byBucket = {};
     arrRaw.forEach(function(t){
@@ -3295,6 +3445,11 @@ function init(){
         if(byBucket[bucket].books.indexOf(b) === -1) byBucket[bucket].books.push(b);
       });
     });
+    // Counts after the chapter mapping (same rule as _cleanTopic), worked out when the file was built.
+    if(_chapterTopicCounts){
+      byBucket = {};
+      Object.keys(_chapterTopicCounts).forEach(function(k){ byBucket[k] = { name:k, count:_chapterTopicCounts[k], books:[] }; });
+    }
     var arr = Object.keys(byBucket).map(function(k){ return byBucket[k]; });
     // Sort: clean buckets alphabetical, "Other"/"Unclassified" pushed to bottom.
     var primary = [], trailing = [];
@@ -3314,7 +3469,7 @@ function init(){
       var tnote = document.createElement('div');
       tnote.className = 'mon-topic-note';
       tnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
-      tnote.textContent = 'Topics under review — refining continuously. Hadiths whose chapter labels don’t fit a clean topic sit under "Other" for now.';
+      tnote.textContent = 'Topic comes from the chapter each hadith sits in. "Other" = the chapter title names no single subject (for example Musnad Ahmad, arranged by companion, or a "Miscellany" chapter).';
       topicPanel.insertBefore(tnote, topicPanel.firstChild);
     }
   }
@@ -3329,6 +3484,21 @@ function init(){
     _buildFoldedTopicDropdown();
   }).catch(function(e){
     console.warn('topic_index.json not available:', e);
+  });
+
+  fetch(dataUrl('data/islamic/hadith/support/chapter_topic_map.json')).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function(data){
+    _chapterTopicMap = (data && data.map) ? data.map : {};
+    _chapterTopicCounts = (data && data.bucket_counts) ? data.bucket_counts : null;
+    _chapterMapLoaded = true;
+    _buildFoldedTopicDropdown();
+  }).catch(function(e){
+    _chapterTopicMap = {};
+    _chapterMapLoaded = true;
+    _buildFoldedTopicDropdown();
+    console.warn('chapter_topic_map.json not available:', e);
   });
 
   fetch(dataUrl('data/islamic/hadith/support/topic_mapping.json')).then(function(r){
@@ -3363,7 +3533,7 @@ function init(){
               var arr = slugs.map(function(slug){
                 var hits = Array.isArray(reverse[slug]) ? reverse[slug].length : 0;
                 var summary = window.GoldArkConcepts.getSummary(slug);
-                var title = (summary && (summary.title || summary.name)) || slug;
+                var title = (summary && (summary.label || summary.title || summary.name)) || slug;
                 return { slug: slug, title: title, count: hits };
               });
               // Hide zero-count concepts (286 of 484 have no hits in hadith corpus).
@@ -3382,7 +3552,7 @@ function init(){
                 var cnote = document.createElement('div');
                 cnote.className = 'mon-concept-note';
                 cnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
-                cnote.textContent = 'Hadith concept tags currently cover the six canonical collections (28,889 hadith tagged) and are inherited from the Quran verses each hadith shares wording with, using the same Level 3 concept list as the Quran tags. The hadith-to-verse link is word-overlap, not meaning-checked, so treat these chips as exploratory, not a citation.';
+                cnote.textContent = 'Every hadith now has at least one concept. Badge R = read one by one by AI; C = taken from the chapter the hadith sits in; M = older word match. Being re-checked hadith by hadith; treat as a guide, not a citation.';
                 panel.insertBefore(cnote, panel.firstChild);
               }
             }catch(e){ console.warn('[MON] concept dropdown build failed', e); }
@@ -3594,7 +3764,7 @@ function _wizardApplyPicksExcept(excludeKey){
     list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; });
   }
   if(excludeKey !== 'topic' && picks.topic.length){
-    list = list.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return picks.topic.indexOf(clean) !== -1; });
+    list = list.filter(function(h){ var clean = _cleanTopic(h); return picks.topic.indexOf(clean) !== -1; });
   }
   if(excludeKey !== 'narrator' && picks.narrator.length){
     var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
@@ -3615,7 +3785,7 @@ function _wizardCountForValue(stepKey, value){
   if(!base) return 0;
   if(stepKey === 'collection') return base.filter(function(h){ return h._colKey === value; }).length;
   if(stepKey === 'period')     return base.filter(function(h){ return h.period === value; }).length;
-  if(stepKey === 'topic')      return base.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return clean === value; }).length;
+  if(stepKey === 'topic')      return base.filter(function(h){ var clean = _cleanTopic(h); return clean === value; }).length;
   if(stepKey === 'narrator'){
     var q = String(value).toLowerCase();
     return base.filter(function(h){
@@ -3632,7 +3802,7 @@ function _wizardCount(){
   var list = _wizardAllHadith;
   if(picks.collection.length){ list = list.filter(function(h){ return picks.collection.indexOf(h._colKey) !== -1; }); }
   if(picks.period.length){     list = list.filter(function(h){ return picks.period.indexOf(h.period) !== -1; }); }
-  if(picks.topic.length){      list = list.filter(function(h){ var clean = _topicMap[h.topic] || 'Other'; return picks.topic.indexOf(clean) !== -1; }); }
+  if(picks.topic.length){      list = list.filter(function(h){ var clean = _cleanTopic(h); return picks.topic.indexOf(clean) !== -1; }); }
   if(picks.narrator.length){
     var qs = picks.narrator.map(function(s){ return s.toLowerCase(); });
     list = list.filter(function(h){
@@ -4004,9 +4174,13 @@ function _buildXrefPanel(entry){
       var num  = idx > 0 ? entry._hkey.slice(idx + 1) : '';
       var ccs2 = window.GoldArkConcepts.getForHadith(coll, num) || [];
       if(ccs2.length){
+        // Badge = how the tag was made: R read one by one by AI, C from the chapter, M old word match.
+        var SRC = { r:['R','Read one by one by AI'], c:['C','From the chapter this hadith sits in'], w:['M','Old word match'] };
         var chipsCC = ccs2.slice(0, 6).map(function(c){
-          var lbl = c.slug.replace(/-/g, ' ');
-          return '<span class="ga-concept-chip ga-cc-h" data-concept="' + c.slug + '" title="Keyword-matched concept">' + lbl + '<span class="ga-cc-sup">M</span></span>';
+          var sm = window.GoldArkConcepts.getSummary ? window.GoldArkConcepts.getSummary(c.slug) : null;
+          var lbl = (sm && sm.label) ? String(sm.label).split(' (')[0] : c.slug.replace(/-/g, ' ');
+          var sb = SRC[c.src] || SRC.w;
+          return '<span class="ga-concept-chip ga-cc-h" data-concept="' + esc(c.slug) + '" title="' + esc(sb[1]) + '">' + esc(lbl) + '<span class="ga-cc-sup">' + sb[0] + '</span></span>';
         }).join('');
         groups.push('<div class="xref-group"><span class="xref-label">Concepts:</span>' + chipsCC + '</div>');
       }
@@ -4033,7 +4207,10 @@ async function _populateXrefSlots(container){
   // first render.
   await new Promise(function(res){
     if(window.GoldArkConcepts && typeof window.GoldArkConcepts.loadHadithTags === 'function'){
-      window.GoldArkConcepts.loadHadithTags(function(){ res(); });
+      window.GoldArkConcepts.loadHadithTags(function(){
+        if(typeof window.GoldArkConcepts.loadSummaries === 'function') window.GoldArkConcepts.loadSummaries(function(){ res(); });
+        else res();
+      });
     } else { res(); }
   });
   for(var i = 0; i < colls.length; i++){
@@ -4465,7 +4642,6 @@ window.MonasticView = (function(){
           '<div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>' +
           '<div id="mon-loading" style="display:none;text-align:center;padding:40px;color:#D4AF37;font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em">Loading hadiths…</div>' +
           '<div id="mon-results" class="content-body" style="border:1px solid #2D3748;border-radius:4px;background:#111B27"></div>' +
-          '<div style="text-align:center;margin-top:20px;font-size:var(--fs-3);color:#4B5563;font-style:normal">Data source: sahih-explorer dataset</div>' +
         '</div>' +
       '</div>';
   }

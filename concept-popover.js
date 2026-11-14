@@ -59,7 +59,7 @@ function _open(slug, anchorEl){
       _ensureThinkSlugs(function(){
         var summary = GC.getSummary(slug);
         var verses  = (GC.getVersesForConcept(slug) || []).slice();
-        var title   = (summary && (summary.title || summary.name)) || slug;
+        var title   = (summary && (summary.label || summary.title || summary.name)) || slug;
         var inThink = THINK_SLUGS.has(slug);
         var _hslot  = (anchorEl && anchorEl.closest) ? anchorEl.closest('.hadith-xref-slot') : null;
         var _hcoll  = _hslot ? (_hslot.getAttribute('data-hcoll') || '') : '';
