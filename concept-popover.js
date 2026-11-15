@@ -67,6 +67,16 @@ function _open(slug, anchorEl){
         var html = '<button class="gcp-close" type="button">×</button>';
         html += '<div class="gcp-title' + (inThink ? '' : ' gcp-title-dim') + '">' + _esc(title) + '</div>';
         html += '<div class="gcp-meta">' + _esc(slug) + (inThink ? '' : ' · not in THINK') + '</div>';
+        // Summary + hadith count (15 Nov 2026)
+        if(summary && summary.summary){
+          var _sm = String(summary.summary);
+          if(_sm.length > 320){ var _cut = _sm.lastIndexOf('. ', 320); _sm = _sm.slice(0, _cut > 120 ? _cut + 1 : 320) + (_cut > 120 ? '' : '\u2026'); }
+          html += '<div class="gcp-summary" style="font-size:12px;line-height:1.5;color:rgba(229,231,235,0.85);margin:6px 0 8px">' + _esc(_sm) + '</div>';
+        }
+        var _hbc = (GC.cache && GC.cache.hadithByConcept) ? GC.cache.hadithByConcept[slug] : null;
+        if(_hbc && _hbc.length){
+          html += '<div class="gcp-section-hdr">Hadith (' + _hbc.length.toLocaleString() + ')</div>';
+        }
 
         if(verses.length){
           html += '<div class="gcp-section-hdr">Quran Links (' + verses.length + ')</div>';

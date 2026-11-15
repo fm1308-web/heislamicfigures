@@ -59,7 +59,8 @@ function getForVerse(surah, verse){
 
 // Look up concepts for a hadith (14 Nov 2026 file concept_tags_hadith.json).
 // Key = "<MONASTIC collection key>-<number>" (al-Kafi / al-Faqih: "<volume>.<number>").
-// Each item: {s: slug, m: how made} — m: r = read one by one by AI, c = from the chapter, w = old word match.
+// Each item: {s: slug, m: how made, c: strength 3–5 (optional), via: optional} — m: r = read one by one by AI (two readings),
+// c = from the chapter title, p = same text as the hadith before, w = old word match.
 // Any book name form (xref slug, file name, MONASTIC key) is mapped to the MONASTIC key.
 var H_COLL_ALIAS = {"bukhari":"bukhari","sahih-bukhari":"bukhari","muslim":"muslim","sahih-muslim":"muslim","abudawud":"abudawud","abu-dawood":"abudawud","tirmidhi":"tirmidhi","al-tirmidhi":"tirmidhi","nasai":"nasai","sunan-nasai":"nasai","ibnmajah":"ibnmajah","ibn-e-majah":"ibnmajah","muwatta":"muwatta","muwatta-malik":"muwatta","musnad-ahmad":"musnad-ahmad","darimi":"darimi","sunan-ad-darimi":"darimi","riyad":"riyad","riyad-as-salihin":"riyad","shamail":"shamail","shamail-al-muhammadiyah":"shamail","bulugh":"bulugh","bulugh-al-maram":"bulugh","adab-mufrad":"adab-mufrad","al-adab-al-mufrad":"adab-mufrad","mishkat":"mishkat","mishkat-al-masabih":"mishkat","40-nawawi":"40-nawawi","40-hadith-nawawi":"40-nawawi","40-qudsi":"40-qudsi","40-hadith-qudsi":"40-qudsi","40-shahwaliullah":"40-shahwaliullah","40-hadith-shahwaliullah":"40-shahwaliullah","amali-mufid":"amali-mufid","al-amali-mufid":"amali-mufid","amali-saduq":"amali-saduq","al-amali-saduq":"amali-saduq","kafi":"kafi","al-kafi-volume-1-kulayni":"kafi","al-kafi-volume-2-kulayni":"kafi","al-kafi-volume-3-kulayni":"kafi","al-kafi-volume-4-kulayni":"kafi","al-kafi-volume-5-kulayni":"kafi","al-kafi-volume-6-kulayni":"kafi","al-kafi-volume-7-kulayni":"kafi","al-kafi-volume-8-kulayni":"kafi","khisal":"khisal","al-khisal-saduq":"khisal","tawhid":"tawhid","al-tawhid-saduq":"tawhid","fadail-shia":"fadail-shia","fadail-al-shia-saduq":"fadail-shia","kamal-din":"kamal-din","kamal-al-din-wa-tamam-al-nima-saduq":"kamal-din","kamil-ziyarat":"kamil-ziyarat","kamil-al-ziyarat-qummi":"kamil-ziyarat","ghayba-numani":"ghayba-numani","kitab-al-ghayba-numani":"ghayba-numani","mumin-ahwazi":"mumin-ahwazi","kitab-al-mumin-ahwazi":"mumin-ahwazi","zuhd-ahwazi":"zuhd-ahwazi","kitab-al-zuhd-ahwazi":"zuhd-ahwazi","faqih":"faqih","man-la-yahduruh-al-faqih-volume-1-saduq":"faqih","man-la-yahduruh-al-faqih-volume-2-saduq":"faqih","man-la-yahduruh-al-faqih-volume-3-saduq":"faqih","man-la-yahduruh-al-faqih-volume-4-saduq":"faqih","sunan-abi-daud":"abudawud","jami-al-tirmidhi":"tirmidhi","sunan-an-nasai":"nasai","sunan-ibn-majah":"ibnmajah"};
 function getForHadith(coll, num){
@@ -70,7 +71,7 @@ function getForHadith(coll, num){
   if(!raw || !Array.isArray(raw)) return [];
   return raw.map(function(item){
     if(typeof item === 'string') return { slug: item };
-    return { slug: item.s || item.slug || item.id || item.concept, src: item.m || item.src };
+    return { slug: item.s || item.slug || item.id || item.concept, src: item.m || item.src, strength: item.c, via: item.via };
   }).filter(function(x){ return x.slug; });
 }
 

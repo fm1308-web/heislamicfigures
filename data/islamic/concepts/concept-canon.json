@@ -1,15 +1,15 @@
 {
   "version": 1,
-  "total_concepts": 486,
+  "total_concepts": 474,
   "duplicates_removed": 13,
   "category_counts": {
-    "theology": 91,
-    "philosophy": 69,
+    "theology": 89,
+    "philosophy": 67,
     "law": 74,
-    "mysticism": 84,
-    "politics": 37,
-    "science": 61,
-    "language": 70
+    "mysticism": 81,
+    "politics": 34,
+    "science": 60,
+    "language": 69
   },
   "concepts": [
     {
@@ -1228,24 +1228,6 @@
       "contested": false
     },
     {
-      "slug": "tawhid-al-wujud",
-      "name": "Wahdat al-wujud (oneness of being)",
-      "category": "theology",
-      "definition": "Sufi metaphysics asserting that all existence is one reality manifesting God.",
-      "era_start": 13,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Ibn Arabi",
-        "Sadr al-Din al-Qunawi",
-        "Al-Jami",
-        "Mulla Sadra"
-      ],
-      "subschools": [
-        "Sufi"
-      ],
-      "contested": true
-    },
-    {
       "slug": "wahdat-al-shuhud",
       "name": "Wahdat al-shuhud (oneness of witnessing)",
       "category": "theology",
@@ -1325,23 +1307,6 @@
         "Al-Junayd",
         "Al-Qushayri",
         "Ibn Arabi"
-      ],
-      "subschools": [
-        "Sufi"
-      ],
-      "contested": false
-    },
-    {
-      "slug": "al-insan-al-kamil",
-      "name": "Al-insan al-kamil (the perfect human)",
-      "category": "theology",
-      "definition": "Sufi metaphysical archetype embodying the fullness of divine attributes.",
-      "era_start": 13,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Ibn Arabi",
-        "Abd al-Karim al-Jili",
-        "Aziz Nasafi"
       ],
       "subschools": [
         "Sufi"
@@ -1711,26 +1676,6 @@
       "contested": true
     },
     {
-      "slug": "wajib-al-wujud",
-      "name": "Wajib al-wujud (necessary existence)",
-      "category": "philosophy",
-      "definition": "Avicenna's proof of God as the being whose existence is necessary in itself versus contingent beings.",
-      "era_start": 11,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Ibn Sina",
-        "Al-Tusi",
-        "Mulla Sadra",
-        "Al-Suhrawardi"
-      ],
-      "subschools": [
-        "Falsafa",
-        "Illuminationist",
-        "Twelver"
-      ],
-      "contested": false
-    },
-    {
       "slug": "mumkin-al-wujud",
       "name": "Mumkin al-wujud (contingent existence)",
       "category": "philosophy",
@@ -2072,23 +2017,6 @@
       "contested": false
     },
     {
-      "slug": "mayl",
-      "name": "Mayl (impressed inclination)",
-      "category": "philosophy",
-      "definition": "Theory of impressed force in projectiles, anticipating impetus theory.",
-      "era_start": 11,
-      "era_end": 15,
-      "key_figures_hint": [
-        "Ibn Sina",
-        "Abu'l-Barakat al-Baghdadi",
-        "Al-Razi"
-      ],
-      "subschools": [
-        "Falsafa"
-      ],
-      "contested": true
-    },
-    {
       "slug": "void-khala",
       "name": "Khala' (the void)",
       "category": "philosophy",
@@ -2162,7 +2090,7 @@
     },
     {
       "slug": "nafs",
-      "name": "Nafs (the soul)",
+      "name": "Nafs (the soul and its stages)",
       "category": "philosophy",
       "definition": "Definition of the soul as substance, form, or perfection of the body.",
       "era_start": 9,
@@ -4110,7 +4038,7 @@
     },
     {
       "slug": "jihad",
-      "name": "Jihad (legal doctrine of armed struggle)",
+      "name": "Jihad (armed struggle and inner striving)",
       "category": "law",
       "definition": "Legal classification, conditions, and limits of religiously sanctioned warfare.",
       "era_start": 8,
@@ -4678,23 +4606,6 @@
       "contested": false
     },
     {
-      "slug": "nafs-ammara",
-      "name": "Nafs (stages of the lower self)",
-      "category": "mysticism",
-      "definition": "The sevenfold ascent from the commanding self to the soul at peace with God.",
-      "era_start": 9,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Al-Tustari",
-        "Najm al-Din Razi",
-        "Sirhindi"
-      ],
-      "subschools": [
-        "Sufi"
-      ],
-      "contested": false
-    },
-    {
       "slug": "ruh",
       "name": "Ruh (the spirit)",
       "category": "mysticism",
@@ -4905,23 +4816,6 @@
         "Al-Muhasibi",
         "Al-Ghazali",
         "Ibn Arabi"
-      ],
-      "subschools": [
-        "Sufi"
-      ],
-      "contested": false
-    },
-    {
-      "slug": "mujahada",
-      "name": "Mujahada (inner struggle)",
-      "category": "mysticism",
-      "definition": "The greater jihad against the lower self as the engine of spiritual transformation.",
-      "era_start": 9,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Al-Junayd",
-        "Al-Ghazali",
-        "Ibn Ata Allah"
       ],
       "subschools": [
         "Sufi"
@@ -5468,24 +5362,6 @@
       "contested": false
     },
     {
-      "slug": "alam-mithal",
-      "name": "'Alam al-mithal (imaginal world)",
-      "category": "mysticism",
-      "definition": "Intermediate realm of subtle forms where visions and dreams are objectively real.",
-      "era_start": 12,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Al-Suhrawardi",
-        "Ibn Arabi",
-        "Mulla Sadra"
-      ],
-      "subschools": [
-        "Sufi",
-        "Illuminationist"
-      ],
-      "contested": false
-    },
-    {
       "slug": "khayal",
       "name": "Khayal (creative imagination)",
       "category": "mysticism",
@@ -5769,26 +5645,6 @@
       "contested": true
     },
     {
-      "slug": "imama-shia",
-      "name": "Imama (Shia imamate)",
-      "category": "politics",
-      "definition": "Doctrine that political and spiritual authority belongs to divinely designated imams from Ali's line.",
-      "era_start": 8,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Hisham ibn al-Hakam",
-        "Al-Mufid",
-        "Al-Tusi",
-        "Al-Hilli"
-      ],
-      "subschools": [
-        "Twelver",
-        "Isma'ili",
-        "Zaydi"
-      ],
-      "contested": true
-    },
-    {
       "slug": "bayah",
       "name": "Bay'a (oath of allegiance)",
       "category": "politics",
@@ -5965,23 +5821,6 @@
       ],
       "subschools": [
         "Sunni"
-      ],
-      "contested": false
-    },
-    {
-      "slug": "madina-fadila",
-      "name": "Al-madina al-fadila (virtuous city)",
-      "category": "politics",
-      "definition": "Farabi's philosophical ideal of a polity ruled by a philosopher-prophet for human perfection.",
-      "era_start": 10,
-      "era_end": 17,
-      "key_figures_hint": [
-        "Al-Farabi",
-        "Ibn Bajja",
-        "Ibn Rushd"
-      ],
-      "subschools": [
-        "Falsafa"
       ],
       "contested": false
     },
@@ -6205,25 +6044,6 @@
       ],
       "subschools": [
         "Sunni"
-      ],
-      "contested": true
-    },
-    {
-      "slug": "jihad-political",
-      "name": "Jihad (political-military doctrine)",
-      "category": "politics",
-      "definition": "The legal theory of warfare authorized and regulated by legitimate Muslim authority.",
-      "era_start": 8,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Al-Shaybani",
-        "Al-Mawardi",
-        "Ibn Rushd",
-        "Ibn Taymiyya"
-      ],
-      "subschools": [
-        "Sunni",
-        "Shia"
       ],
       "contested": true
     },
@@ -7204,7 +7024,7 @@
     },
     {
       "slug": "mathematical-geography",
-      "name": "Mathematical geography",
+      "name": "Mathematical geography and physics",
       "category": "science",
       "definition": "Determination of latitudes, longitudes, and coordinates for cities and landmarks.",
       "era_start": 9,
@@ -7414,25 +7234,6 @@
         "Encyclopedism"
       ],
       "contested": false
-    },
-    {
-      "slug": "mathematization-nature",
-      "name": "Mathematization of physics",
-      "category": "science",
-      "definition": "Programmatic insistence that optical and mechanical problems admit geometrical proof.",
-      "era_start": 9,
-      "era_end": 14,
-      "key_figures_hint": [
-        "Al-Kindi",
-        "Ibn al-Haytham",
-        "Al-Biruni",
-        "Kamal al-Din al-Farisi"
-      ],
-      "subschools": [
-        "Mathematics",
-        "Optics"
-      ],
-      "contested": true
     },
     {
       "slug": "naturalism-tabi",
@@ -7892,26 +7693,6 @@
         "Falsafa",
         "Kalam",
         "Usul"
-      ],
-      "contested": true
-    },
-    {
-      "slug": "haqiqa-majaz-linguistic",
-      "name": "Haqiqa and majaz (literal and figurative)",
-      "category": "language",
-      "definition": "Distinction between a word's original meaning and extended or metaphorical uses.",
-      "era_start": 9,
-      "era_end": 21,
-      "key_figures_hint": [
-        "Al-Jurjani",
-        "Al-Zamakhshari",
-        "Al-Razi",
-        "Ibn Taymiyya"
-      ],
-      "subschools": [
-        "Balagha",
-        "Usul",
-        "Atharist"
       ],
       "contested": true
     },

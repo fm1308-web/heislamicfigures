@@ -433,7 +433,7 @@
     "related": [
       "taklif",
       "maqasid-al-shariah",
-      "al-insan-al-kamil"
+      "insan-kamil"
     ]
   },
   "lutf": {
@@ -665,7 +665,7 @@
     ],
     "opposite": null,
     "related": [
-      "al-insan-al-kamil",
+      "insan-kamil",
       "haqiqa-muhammadiyya",
       "nur-muhammadi"
     ]
@@ -786,7 +786,7 @@
   },
   "nass": {
     "label": "Nass (designation)",
-    "parent": "imama-shia",
+    "parent": "imamate-shia",
     "children": [],
     "siblings": [
       "khariji-imamate",
@@ -879,7 +879,7 @@
   },
   "wilayat-al-faqih": {
     "label": "Wilayat al-faqih (guardianship of the jurist)",
-    "parent": "imama-shia",
+    "parent": "imamate-shia",
     "children": [],
     "siblings": [
       "ghayba",
@@ -950,7 +950,7 @@
     ],
     "opposite": null,
     "related": [
-      "alam-mithal",
+      "alam-al-mithal",
       "mahdi",
       "raja",
       "nafs"
@@ -1090,9 +1090,8 @@
     "children": [],
     "siblings": [
       "fitra",
-      "al-insan-al-kamil",
-      "nubuwwa",
-      "al-mithaq"
+      "insan-kamil",
+      "nubuwwa"
     ],
     "opposite": null,
     "related": [
@@ -1231,33 +1230,7 @@
     "opposite": "mumkin-al-wujud",
     "related": [
       "tawhid",
-      "dalil-al-huduth",
-      "wajib-al-wujud"
-    ]
-  },
-  "tawhid-al-wujud": {
-    "label": "Wahdat al-wujud (oneness of being)",
-    "parent": "tasawwuf",
-    "children": [
-      "fana",
-      "baqa",
-      "hulul",
-      "tajalli",
-      "al-insan-al-kamil"
-    ],
-    "siblings": [
-      "wahdat-al-shuhud",
-      "tawhid-al-wujud",
-      "ittihad",
-      "maarifa",
-      "shariah-tariqah-haqiqah"
-    ],
-    "opposite": "wahdat-al-shuhud",
-    "related": [
-      "tawhid",
-      "wujub-al-wujud",
-      "ittihad-aqil-maqul",
-      "fayd"
+      "dalil-al-huduth"
     ]
   },
   "wahdat-al-shuhud": {
@@ -1268,10 +1241,9 @@
       "tawhid-al-uluhiyya",
       "tawhid-al-rububiyya",
       "tawhid-al-asma-wa-sifat",
-      "tawhid-al-wujud",
       "wahdat-al-wujud"
     ],
-    "opposite": "tawhid-al-wujud",
+    "opposite": "wahdat-al-wujud",
     "related": [
       "fana",
       "baqa",
@@ -1285,7 +1257,7 @@
     "children": [],
     "siblings": [
       "ittihad",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "wahdat-al-shuhud",
       "fana",
       "baqa"
@@ -1294,7 +1266,7 @@
     "related": [
       "tashbih",
       "tatil",
-      "al-insan-al-kamil",
+      "insan-kamil",
       "haqiqa-muhammadiyya"
     ]
   },
@@ -1311,12 +1283,11 @@
       "fana",
       "baqa",
       "wahdat-al-wujud",
-      "tawhid-al-wujud",
       "hulul"
     ],
     "opposite": "hulul",
     "related": [
-      "al-insan-al-kamil",
+      "insan-kamil",
       "tajalli",
       "maqamat-ahwal",
       "sayr-fi-allah"
@@ -1328,7 +1299,7 @@
     "children": [],
     "siblings": [
       "baqa",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "wahdat-al-shuhud",
       "ittihad",
       "hulul"
@@ -1360,36 +1331,12 @@
       "maqamat-ahwal"
     ]
   },
-  "al-insan-al-kamil": {
-    "label": "Al-insan al-kamil (the perfect human)",
-    "parent": "tasawwuf",
-    "children": [
-      "haqiqa-muhammadiyya",
-      "nur-muhammadi",
-      "tajalli",
-      "insan-kamil"
-    ],
-    "siblings": [
-      "wahdat-al-wujud",
-      "fana",
-      "baqa",
-      "maarifa",
-      "tajalli"
-    ],
-    "opposite": null,
-    "related": [
-      "hadarat-khams",
-      "ittihad-aqil-maqul",
-      "aql-faal",
-      "khilafa"
-    ]
-  },
   "haqiqa-muhammadiyya": {
     "label": "Al-haqiqa al-muhammadiyya (Muhammadan reality)",
     "parent": "tawhid",
     "children": [
       "nur-muhammadi",
-      "al-insan-al-kamil"
+      "insan-kamil"
     ],
     "siblings": [
       "ayan-thabita",
@@ -1411,7 +1358,7 @@
     "children": [],
     "siblings": [
       "haqiqa-muhammadiyya",
-      "al-insan-al-kamil",
+      "insan-kamil",
       "ayan-thabita",
       "tajalli",
       "fayd"
@@ -1426,7 +1373,7 @@
   },
   "ayan-thabita": {
     "label": "Al-a'yan al-thabita (immutable entities)",
-    "parent": "tawhid-al-wujud",
+    "parent": "wahdat-al-wujud",
     "children": [],
     "siblings": [
       "tajalli",
@@ -1448,11 +1395,11 @@
     "parent": "tawhid-al-asma-wa-sifat",
     "children": [
       "hadarat-khams",
-      "alam-mithal",
+      "alam-al-mithal",
       "khayal"
     ],
     "siblings": [
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "wahdat-al-shuhud",
       "fayd"
     ],
@@ -1771,7 +1718,7 @@
       "shura"
     ],
     "siblings": [
-      "imama-shia",
+      "imamate-shia",
       "imama-sunni",
       "khariji-imamate",
       "zaydi-imamate",
@@ -1785,45 +1732,22 @@
       "ulama-state"
     ]
   },
-  "wajib-al-wujud": {
-    "label": "Wajib al-wujud (necessary existence)",
-    "parent": null,
-    "children": [
-      "essence-existence-distinction",
-      "asalat-al-wujud",
-      "tashkik-al-wujud"
-    ],
-    "siblings": [
-      "mumkin-al-wujud",
-      "hudus-al-alam",
-      "dalil-al-huduth",
-      "wujub-al-wujud",
-      "divine-simplicity",
-      "tawhid"
-    ],
-    "opposite": "mumkin-al-wujud",
-    "related": [
-      "basit-al-haqiqa",
-      "fayd",
-      "causality-falsafa"
-    ]
-  },
   "mumkin-al-wujud": {
     "label": "Mumkin al-wujud (contingent existence)",
     "parent": null,
     "children": [],
     "siblings": [
-      "wajib-al-wujud",
+      "wujub-al-wujud",
       "essence-existence-distinction",
       "asalat-al-wujud",
       "tashkik-al-wujud"
     ],
-    "opposite": "wajib-al-wujud",
+    "opposite": "wujub-al-wujud",
     "related": [
       "hudus-al-alam",
       "dalil-al-huduth",
       "causality-falsafa",
-      "tawhid-al-wujud"
+      "wahdat-al-wujud"
     ]
   },
   "essence-existence-distinction": {
@@ -1844,7 +1768,7 @@
     "related": [
       "basit-al-haqiqa",
       "wujub-al-wujud",
-      "tawhid-al-wujud"
+      "wahdat-al-wujud"
     ]
   },
   "asalat-al-wujud": {
@@ -1858,12 +1782,12 @@
     "siblings": [
       "divine-simplicity",
       "ittihad-aqil-maqul",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "ten-intellects"
     ],
     "related": [
       "mumkin-al-wujud",
-      "wajib-al-wujud",
+      "wujub-al-wujud",
       "basit-al-haqiqa"
     ]
   },
@@ -1878,7 +1802,7 @@
       "asalat-al-wujud"
     ],
     "related": [
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "divine-simplicity",
       "basit-al-haqiqa"
     ]
@@ -1896,7 +1820,7 @@
     ],
     "opposite": null,
     "related": [
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "wujub-al-wujud",
       "fayd",
       "occasionalism"
@@ -1917,7 +1841,7 @@
     "related": [
       "ittihad",
       "fana",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "ilm-huduri"
     ]
   },
@@ -1970,7 +1894,7 @@
     ],
     "siblings": [
       "wujub-al-wujud",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "hudus-dahri",
       "ibda",
       "causality-falsafa"
@@ -1995,7 +1919,7 @@
     "opposite": "qidam-al-alam",
     "related": [
       "wujub-al-wujud",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "fayd",
       "ten-intellects"
     ]
@@ -2143,7 +2067,7 @@
     "related": [
       "tasawwur-tasdiq",
       "dalala",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "logic-vs-grammar"
     ]
   },
@@ -2154,7 +2078,7 @@
     "siblings": [
       "void-khala",
       "makan",
-      "mayl",
+      "dynamics-mayl",
       "causality-falsafa"
     ],
     "opposite": null,
@@ -2162,24 +2086,6 @@
       "hyle-sura",
       "jawhar-arad",
       "naturalism-tabi"
-    ]
-  },
-  "mayl": {
-    "label": "Mayl (impressed inclination)",
-    "parent": "tabiiyyat",
-    "children": [],
-    "siblings": [
-      "dynamics-mayl",
-      "specific-gravity",
-      "balance-wisdom",
-      "natural-place"
-    ],
-    "opposite": null,
-    "related": [
-      "occasionalism",
-      "sababiyya",
-      "naturalism-tabi",
-      "khalq-jadid"
     ]
   },
   "void-khala": {
@@ -2235,10 +2141,9 @@
     ]
   },
   "nafs": {
-    "label": "Nafs (the soul)",
+    "label": "Nafs (the soul and its stages)",
     "parent": "falsafa-shariah",
     "children": [
-      "nafs-ammara",
       "ruh",
       "intellect-stages",
       "immortality-soul"
@@ -2328,7 +2233,7 @@
     "opposite": null,
     "related": [
       "barzakh",
-      "al-insan-al-kamil",
+      "insan-kamil",
       "ilm-huduri"
     ]
   },
@@ -2358,7 +2263,6 @@
       "prophetic-imagination"
     ],
     "siblings": [
-      "alam-mithal",
       "hyle-sura",
       "ten-intellects"
     ],
@@ -2420,8 +2324,7 @@
     "siblings": [
       "tahafut",
       "natural-theology",
-      "hikmat-ishraq",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "ten-intellects"
     ],
     "opposite": null,
@@ -2670,8 +2573,7 @@
     "label": "Al-madina al-fadila (virtuous city)",
     "parent": "falsafa-shariah",
     "children": [
-      "philosopher-king",
-      "madina-fadila"
+      "philosopher-king"
     ],
     "siblings": [
       "siyasa-madaniyya",
@@ -2698,7 +2600,7 @@
     ],
     "opposite": "virtuous-city",
     "related": [
-      "madina-fadila",
+      "virtuous-city",
       "siyasa-madaniyya",
       "ihsan",
       "maarifa"
@@ -2779,8 +2681,8 @@
       "natural-theology",
       "tahafut",
       "hikmat-ishraq",
-      "tawhid-al-wujud",
-      "al-insan-al-kamil"
+      "wahdat-al-wujud",
+      "insan-kamil"
     ],
     "opposite": null,
     "related": [
@@ -2824,7 +2726,7 @@
       "first-intellect",
       "ismaili-tawil",
       "ismaili-imamate",
-      "tawhid-al-wujud"
+      "wahdat-al-wujud"
     ]
   },
   "first-intellect": {
@@ -2859,7 +2761,7 @@
     "opposite": "mead-jismani",
     "related": [
       "nafs",
-      "alam-mithal",
+      "alam-al-mithal",
       "falsafa-shariah",
       "hulul"
     ]
@@ -2870,7 +2772,7 @@
     "children": [],
     "siblings": [
       "wujub-al-wujud",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "hudus-al-alam",
       "qidam-al-alam",
       "fayd"
@@ -2890,7 +2792,7 @@
       "tahdhib-akhlaq",
       "mean-virtue",
       "muhasaba",
-      "mujahada"
+      "jihad"
     ],
     "siblings": [
       "ihsan",
@@ -2901,7 +2803,7 @@
     ],
     "opposite": null,
     "related": [
-      "nafs-ammara",
+      "nafs",
       "taklif",
       "riyada",
       "practical-intellect"
@@ -2974,7 +2876,6 @@
     "children": [
       "philosopher-king",
       "virtuous-city",
-      "madina-fadila",
       "happiness-saada",
       "circle-of-justice"
     ],
@@ -3045,7 +2946,7 @@
     ],
     "siblings": [
       "wujub-al-wujud",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "ten-intellects",
       "ittihad-aqil-maqul"
     ],
@@ -3063,13 +2964,13 @@
     "siblings": [
       "wujub-al-wujud",
       "divine-simplicity",
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "essence-existence-distinction",
       "asalat-al-wujud"
     ],
     "opposite": null,
     "related": [
-      "al-insan-al-kamil",
+      "insan-kamil",
       "tajalli",
       "haqiqa-muhammadiyya",
       "fayd"
@@ -3691,7 +3592,6 @@
     "parent": "usul-al-fiqh",
     "children": [
       "tawil",
-      "haqiqa-majaz-linguistic",
       "kinaya",
       "istiara",
       "majaz-mursal"
@@ -4300,7 +4200,7 @@
     ],
     "opposite": null,
     "related": [
-      "imama-shia",
+      "imamate-shia",
       "wilayat-al-faqih",
       "ijma-ahl-bayt"
     ]
@@ -4367,10 +4267,9 @@
     ]
   },
   "jihad": {
-    "label": "Jihad (legal doctrine of armed struggle)",
+    "label": "Jihad (armed struggle and inner striving)",
     "parent": "siyar",
     "children": [
-      "jihad-political",
       "aman",
       "khuruj"
     ],
@@ -4401,7 +4300,7 @@
     "opposite": null,
     "related": [
       "dar-al-islam",
-      "jihad-political",
+      "jihad",
       "siyasa-shariyya"
     ]
   },
@@ -4492,7 +4391,7 @@
     "related": [
       "taqiyya",
       "ijma",
-      "imama-shia"
+      "imamate-shia"
     ]
   },
   "farai-inheritance": {
@@ -4565,7 +4464,7 @@
       "ikhlas",
       "muhasaba",
       "muraqaba",
-      "mujahada"
+      "jihad"
     ],
     "siblings": [
       "zuhd",
@@ -4640,7 +4539,7 @@
     "opposite": "riya",
     "related": [
       "muhasaba",
-      "mujahada",
+      "jihad",
       "maqamat-ahwal",
       "ikhlas"
     ]
@@ -4658,7 +4557,7 @@
     ],
     "opposite": null,
     "related": [
-      "mujahada",
+      "jihad",
       "maqamat-ahwal",
       "ihsan",
       "taklif"
@@ -4737,7 +4636,7 @@
       "qadar",
       "tawba",
       "ikhlas",
-      "mujahada"
+      "jihad"
     ]
   },
   "mahabba": {
@@ -4873,7 +4772,6 @@
     "label": "Wahdat al-wujud (oneness of being)",
     "parent": "tasawwuf",
     "children": [
-      "tawhid-al-wujud",
       "hulul",
       "ittihad",
       "fana",
@@ -4882,7 +4780,7 @@
     "siblings": [
       "wahdat-al-shuhud",
       "baqa",
-      "al-insan-al-kamil",
+      "insan-kamil",
       "haqiqa-muhammadiyya",
       "shariah-tariqah-haqiqah"
     ],
@@ -4902,14 +4800,14 @@
       "qalb",
       "ruh",
       "sirr",
-      "nafs-ammara"
+      "nafs"
     ],
     "siblings": [
       "maqamat-ahwal",
       "sayr-suluk",
       "wahdat-al-wujud",
       "insan-kamil",
-      "alam-mithal"
+      "alam-al-mithal"
     ],
     "opposite": null,
     "related": [
@@ -4925,8 +4823,7 @@
     "children": [
       "haqiqa-muhammadiyya",
       "nur-muhammadi",
-      "tajalli",
-      "al-insan-al-kamil"
+      "tajalli"
     ],
     "siblings": [
       "wahdat-al-wujud",
@@ -4937,7 +4834,7 @@
     ],
     "opposite": null,
     "related": [
-      "tawhid-al-wujud",
+      "wahdat-al-wujud",
       "hadarat-khams",
       "maarifa",
       "ittihad"
@@ -4952,7 +4849,7 @@
       "sirr"
     ],
     "siblings": [
-      "nafs-ammara",
+      "nafs",
       "ruh",
       "qalb",
       "sirr",
@@ -4971,42 +4868,23 @@
     "label": "Qalb (the spiritual heart)",
     "parent": "tasawwuf",
     "children": [
-      "nafs-ammara",
+      "nafs",
       "ruh",
       "sirr"
     ],
     "siblings": [
       "latifa",
-      "nafs-ammara",
+      "nafs",
       "ruh",
       "sirr",
       "khatir"
     ],
-    "opposite": "nafs-ammara",
+    "opposite": "nafs",
     "related": [
       "maarifa",
       "kashf",
       "tajalli",
       "ihsan"
-    ]
-  },
-  "nafs-ammara": {
-    "label": "Nafs (stages of the lower self)",
-    "parent": "tasawwuf",
-    "children": [],
-    "siblings": [
-      "qalb",
-      "ruh",
-      "sirr",
-      "maqamat-ahwal",
-      "muraqaba"
-    ],
-    "opposite": null,
-    "related": [
-      "mujahada",
-      "muhasaba",
-      "tawba",
-      "fana"
     ]
   },
   "ruh": {
@@ -5019,12 +4897,12 @@
     ],
     "siblings": [
       "qalb",
-      "nafs-ammara",
+      "nafs",
       "sirr",
       "latifa",
       "khatir"
     ],
-    "opposite": "nafs-ammara",
+    "opposite": "nafs",
     "related": [
       "fana",
       "baqa",
@@ -5062,7 +4940,7 @@
     ],
     "opposite": null,
     "related": [
-      "nafs-ammara",
+      "nafs",
       "ruh",
       "sirr",
       "tawajjuh"
@@ -5074,14 +4952,14 @@
     "children": [],
     "siblings": [
       "muraqaba",
-      "mujahada",
+      "jihad",
       "riyada",
       "tawba",
       "ikhlas"
     ],
     "opposite": "riya",
     "related": [
-      "nafs-ammara",
+      "nafs",
       "qalb",
       "taklif",
       "adab"
@@ -5096,7 +4974,7 @@
       "dhikr",
       "khalwa",
       "riyada",
-      "mujahada"
+      "jihad"
     ],
     "opposite": null,
     "related": [
@@ -5118,7 +4996,7 @@
       "khalwa",
       "sama",
       "muhasaba",
-      "mujahada"
+      "jihad"
     ],
     "opposite": "sukut",
     "related": [
@@ -5196,8 +5074,7 @@
       "muraqaba",
       "muhasaba",
       "dhikr",
-      "mujahada",
-      "khalwa"
+      "jihad"
     ],
     "opposite": null,
     "related": [
@@ -5214,7 +5091,7 @@
       "khalwa",
       "muhasaba",
       "muraqaba",
-      "mujahada",
+      "jihad",
       "dhikr"
     ],
     "opposite": null,
@@ -5229,7 +5106,7 @@
     "label": "Riyada (spiritual training)",
     "parent": "tasawwuf",
     "children": [
-      "mujahada",
+      "jihad",
       "muhasaba",
       "muraqaba"
     ],
@@ -5238,36 +5115,13 @@
       "zuhd",
       "wara",
       "tawba",
-      "mujahada"
+      "jihad"
     ],
     "opposite": null,
     "related": [
-      "nafs-ammara",
+      "nafs",
       "tadbir-al-mutawahhid",
       "tahdhib-akhlaq"
-    ]
-  },
-  "mujahada": {
-    "label": "Mujahada (inner struggle)",
-    "parent": "tasawwuf",
-    "children": [
-      "riyada",
-      "muhasaba",
-      "nafs-ammara",
-      "mujahada"
-    ],
-    "siblings": [
-      "riyada",
-      "muraqaba",
-      "tawba",
-      "ikhlas",
-      "tahdhib-akhlaq"
-    ],
-    "opposite": null,
-    "related": [
-      "nafs-ammara",
-      "maqamat-ahwal",
-      "sayr-suluk"
     ]
   },
   "tariqa": {
@@ -5352,7 +5206,7 @@
       "tariqa",
       "maqamat-ahwal",
       "riyada",
-      "mujahada",
+      "jihad",
       "khalwa"
     ],
     "opposite": null,
@@ -5375,7 +5229,7 @@
       "suhba",
       "tariqa",
       "riyada",
-      "mujahada",
+      "jihad",
       "adab",
       "himma"
     ],
@@ -5489,7 +5343,7 @@
     "parent": "tasawwuf",
     "children": [],
     "siblings": [
-      "mujahada",
+      "jihad",
       "riyada",
       "muraqaba",
       "tawakkul",
@@ -5498,7 +5352,7 @@
     "opposite": null,
     "related": [
       "qalb",
-      "nafs-ammara",
+      "nafs",
       "kashf",
       "tajalli"
     ]
@@ -5520,7 +5374,7 @@
     "related": [
       "maarifa",
       "tajalli",
-      "al-insan-al-kamil",
+      "insan-kamil",
       "sayr-suluk"
     ]
   },
@@ -5800,7 +5654,7 @@
       "sayr-fi-allah",
       "qaws-nuzul-suud",
       "kashf",
-      "alam-mithal"
+      "alam-al-mithal"
     ],
     "opposite": null,
     "related": [
@@ -5831,7 +5685,7 @@
       "muhasaba",
       "muraqaba",
       "dhikr",
-      "mujahada"
+      "jihad"
     ]
   },
   "sayr-fi-allah": {
@@ -5876,30 +5730,8 @@
     "opposite": null,
     "related": [
       "khalq-jadid",
-      "alam-mithal",
-      "tawhid-al-wujud",
-      "isra-miraj"
-    ]
-  },
-  "alam-mithal": {
-    "label": "'Alam al-mithal (imaginal world)",
-    "parent": "tasawwuf",
-    "children": [
-      "khayal",
-      "ruya-sadiqa",
-      "alam-al-mithal"
-    ],
-    "siblings": [
-      "hadarat-khams",
-      "tajalli",
-      "sayr-suluk",
-      "qaws-nuzul-suud"
-    ],
-    "opposite": null,
-    "related": [
-      "kashf",
-      "ilham",
-      "prophetic-imagination",
+      "alam-al-mithal",
+      "wahdat-al-wujud",
       "isra-miraj"
     ]
   },
@@ -5908,7 +5740,7 @@
     "parent": "tasawwuf",
     "children": [
       "ruya-sadiqa",
-      "alam-mithal",
+      "alam-al-mithal",
       "prophetic-imagination"
     ],
     "siblings": [
@@ -5933,7 +5765,7 @@
       "kashf",
       "ilham",
       "khayal",
-      "alam-mithal"
+      "alam-al-mithal"
     ],
     "opposite": null,
     "related": [
@@ -5972,7 +5804,7 @@
       "tafsir-ishari",
       "science-of-letters",
       "khayal",
-      "alam-mithal"
+      "alam-al-mithal"
     ],
     "siblings": [
       "shariah-tariqah-haqiqah",
@@ -5999,7 +5831,7 @@
     "siblings": [
       "tafsir-ishari",
       "khayal",
-      "alam-mithal",
+      "alam-al-mithal",
       "ilham",
       "kashf"
     ],
@@ -6060,13 +5892,13 @@
     "siblings": [
       "tasawwuf",
       "hikmat-ishraq",
-      "tawhid-al-wujud",
-      "al-insan-al-kamil",
+      "wahdat-al-wujud",
+      "insan-kamil",
       "fana"
     ],
     "opposite": null,
     "related": [
-      "imama-shia",
+      "imamate-shia",
       "nass",
       "ghayba",
       "bada",
@@ -6090,7 +5922,7 @@
     ],
     "opposite": null,
     "related": [
-      "al-insan-al-kamil",
+      "insan-kamil",
       "tajalli",
       "ghayba",
       "khatm-al-awliya"
@@ -6130,7 +5962,7 @@
     "opposite": null,
     "related": [
       "ihsan",
-      "mujahada",
+      "jihad",
       "riyada",
       "khalwa"
     ]
@@ -6206,8 +6038,8 @@
     "opposite": "ikhlas",
     "related": [
       "muraqaba",
-      "nafs-ammara",
-      "mujahada"
+      "nafs",
+      "jihad"
     ]
   },
   "imama-sunni": {
@@ -6221,7 +6053,7 @@
       "imama-sunni"
     ],
     "siblings": [
-      "imama-shia",
+      "imamate-shia",
       "khariji-imamate",
       "zaydi-imamate",
       "ismaili-imamate",
@@ -6233,30 +6065,6 @@
       "nasiha",
       "siyasa-shariyya",
       "ulama-state"
-    ]
-  },
-  "imama-shia": {
-    "label": "Imama (Shia imamate)",
-    "parent": "imama-sunni",
-    "children": [
-      "nass",
-      "ghayba",
-      "wilayat-al-faqih",
-      "ismaili-imamate",
-      "zaydi-imamate"
-    ],
-    "siblings": [
-      "imama-sunni",
-      "khilafa",
-      "shura",
-      "ahl-al-hall-wal-aqd"
-    ],
-    "opposite": null,
-    "related": [
-      "walaya-shia",
-      "ismah",
-      "nubuwwa",
-      "irfan"
     ]
   },
   "bayah": {
@@ -6310,14 +6118,14 @@
     "opposite": null,
     "related": [
       "ijma",
-      "imama-shia",
+      "imamate-shia",
       "philosopher-king",
       "circle-of-justice"
     ]
   },
   "nass-designation": {
     "label": "Nass (designation of successor)",
-    "parent": "imama-shia",
+    "parent": "imamate-shia",
     "children": [],
     "siblings": [
       "quraysh-condition",
@@ -6348,7 +6156,7 @@
     "related": [
       "khilafa",
       "bayah",
-      "imama-shia",
+      "imamate-shia",
       "taghallub"
     ]
   },
@@ -6359,7 +6167,7 @@
     "siblings": [
       "zaydi-imamate",
       "ismaili-imamate",
-      "imama-shia",
+      "imamate-shia",
       "quraysh-condition"
     ],
     "opposite": "nass-designation",
@@ -6372,7 +6180,7 @@
   },
   "zaydi-imamate": {
     "label": "Zaydi qualified imamate",
-    "parent": "imama-shia",
+    "parent": "imamate-shia",
     "children": [],
     "siblings": [
       "khariji-imamate",
@@ -6409,7 +6217,7 @@
   },
   "ghayba-political": {
     "label": "Ghayba (occultation and political authority)",
-    "parent": "imama-shia",
+    "parent": "imamate-shia",
     "children": [
       "wilayat-al-faqih",
       "mahdi",
@@ -6449,33 +6257,9 @@
       "zulm"
     ]
   },
-  "madina-fadila": {
-    "label": "Al-madina al-fadila (virtuous city)",
-    "parent": "siyasa-madaniyya",
-    "children": [
-      "philosopher-king",
-      "virtuous-city",
-      "circle-of-justice",
-      "adl-political"
-    ],
-    "siblings": [
-      "siyasa-shariyya",
-      "imama-sunni",
-      "imama-shia",
-      "akhlaq-adab-genre",
-      "natural-theology"
-    ],
-    "opposite": "zulm",
-    "related": [
-      "al-insan-al-kamil",
-      "happiness-saada",
-      "tahdhib-akhlaq",
-      "falsafa-shariah"
-    ]
-  },
   "philosopher-king": {
     "label": "Ra'is al-madina (philosopher-ruler)",
-    "parent": "madina-fadila",
+    "parent": "virtuous-city",
     "children": [
       "siyasa-shariyya",
       "nasiha",
@@ -6483,7 +6267,7 @@
     ],
     "siblings": [
       "imama-sunni",
-      "imama-shia",
+      "imamate-shia",
       "circle-of-justice",
       "akhlaq-adab-genre"
     ],
@@ -6511,7 +6295,6 @@
     ],
     "opposite": "zulm",
     "related": [
-      "madina-fadila",
       "virtuous-city",
       "tahdhib-akhlaq",
       "hakimiyya"
@@ -6524,7 +6307,6 @@
     "siblings": [
       "philosopher-king",
       "virtuous-city",
-      "madina-fadila",
       "adl-political",
       "akhlaq-adab-genre"
     ],
@@ -6546,7 +6328,7 @@
     ],
     "siblings": [
       "imama-sunni",
-      "imama-shia",
+      "imamate-shia",
       "khilafa",
       "sultanate",
       "akhlaq-adab-genre"
@@ -6554,7 +6336,7 @@
     "opposite": "zulm",
     "related": [
       "maqasid-al-shariah",
-      "madina-fadila",
+      "virtuous-city",
       "obedience-unjust-ruler"
     ]
   },
@@ -6609,7 +6391,7 @@
       "fitna",
       "obedience-unjust-ruler",
       "amr-bil-maruf-political",
-      "jihad-political"
+      "jihad"
     ],
     "opposite": "obedience-unjust-ruler",
     "related": [
@@ -6649,7 +6431,7 @@
     "siblings": [
       "dar-al-islam",
       "dhimma-political",
-      "jihad-political",
+      "jihad",
       "obedience-unjust-ruler",
       "fitna"
     ],
@@ -6666,11 +6448,11 @@
     "children": [
       "dar-al-sulh",
       "dhimma-political",
-      "jihad-political"
+      "jihad"
     ],
     "siblings": [
       "siyar",
-      "jihad-political",
+      "jihad",
       "aman",
       "bughat"
     ],
@@ -6689,7 +6471,7 @@
       "dar-al-islam",
       "dhimma-political",
       "aman",
-      "jihad-political"
+      "jihad"
     ],
     "opposite": null,
     "related": [
@@ -6706,7 +6488,7 @@
       "jizya",
       "dar-al-islam",
       "dar-al-sulh",
-      "jihad-political",
+      "jihad",
       "aman"
     ],
     "opposite": null,
@@ -6716,33 +6498,12 @@
       "adl-political"
     ]
   },
-  "jihad-political": {
-    "label": "Jihad (political-military doctrine)",
-    "parent": "siyar",
-    "children": [
-      "aman",
-      "bughat"
-    ],
-    "siblings": [
-      "siyar",
-      "dar-al-islam",
-      "dar-al-sulh",
-      "dhimma-political"
-    ],
-    "opposite": null,
-    "related": [
-      "hakimiyya",
-      "khuruj",
-      "fitna",
-      "amr-bil-maruf-political"
-    ]
-  },
   "bughat": {
     "label": "Bughat (legal rebels)",
     "parent": "siyar",
     "children": [],
     "siblings": [
-      "jihad-political",
+      "jihad",
       "khuruj",
       "fitna",
       "aman",
@@ -6785,7 +6546,7 @@
     ],
     "siblings": [
       "imama-sunni",
-      "imama-shia",
+      "imamate-shia",
       "khilafa",
       "sultanate",
       "circle-of-justice",
@@ -6807,7 +6568,7 @@
     ],
     "siblings": [
       "khilafa",
-      "imama-shia",
+      "imamate-shia",
       "shura",
       "ahl-al-hall-wal-aqd"
     ],
@@ -6887,7 +6648,7 @@
       "hisba-political"
     ],
     "siblings": [
-      "imama-shia",
+      "imamate-shia",
       "khilafa",
       "sultanate",
       "siyasa-shariyya",
@@ -6911,7 +6672,7 @@
     ],
     "siblings": [
       "imama-sunni",
-      "imama-shia",
+      "imamate-shia",
       "sultanate",
       "taghallub",
       "siyasa-madaniyya"
@@ -6932,7 +6693,7 @@
       "siyasa-madaniyya",
       "khilafa",
       "imama-sunni",
-      "imama-shia",
+      "imamate-shia",
       "philosopher-king"
     ],
     "opposite": "taghallub",
@@ -6950,12 +6711,12 @@
       "dar-al-islam",
       "dar-al-sulh",
       "dhimma-political",
-      "jihad-political",
+      "jihad",
       "hakimiyya"
     ],
     "siblings": [
       "imama-sunni",
-      "imama-shia",
+      "imamate-shia",
       "khilafa",
       "siyasa-shariyya",
       "shura"
@@ -6985,7 +6746,7 @@
     "related": [
       "occasionalism",
       "sababiyya",
-      "mathematization-nature",
+      "mathematical-geography",
       "scientific-observatory"
     ]
   },
@@ -7002,7 +6763,7 @@
       "optics-manazir",
       "intromission-theory",
       "dynamics-mayl",
-      "mathematization-nature"
+      "mathematical-geography"
     ],
     "opposite": null,
     "related": [
@@ -7023,7 +6784,7 @@
     "opposite": null,
     "related": [
       "tabiiyyat",
-      "mathematization-nature",
+      "mathematical-geography",
       "classification-sciences"
     ]
   },
@@ -7042,7 +6803,7 @@
     "opposite": null,
     "related": [
       "scientific-method-ibn-haytham",
-      "mathematization-nature",
+      "mathematical-geography",
       "astrolabe"
     ]
   },
@@ -7088,7 +6849,7 @@
     ],
     "opposite": null,
     "related": [
-      "mathematization-nature"
+      "mathematical-geography"
     ]
   },
   "shukuk-ptolemy": {
@@ -7105,7 +6866,7 @@
     "related": [
       "falsafa-shariah",
       "tahafut",
-      "mathematization-nature"
+      "mathematical-geography"
     ]
   },
   "tusi-couple": {
@@ -7204,7 +6965,7 @@
     "opposite": null,
     "related": [
       "cosmology-falak",
-      "mathematization-nature",
+      "mathematical-geography",
       "scientific-method-ibn-haytham"
     ]
   },
@@ -7286,7 +7047,7 @@
     ],
     "opposite": null,
     "related": [
-      "mathematization-nature",
+      "mathematical-geography",
       "classification-sciences"
     ]
   },
@@ -7304,7 +7065,7 @@
     ],
     "opposite": null,
     "related": [
-      "mathematization-nature",
+      "mathematical-geography",
       "asl-far"
     ]
   },
@@ -7321,7 +7082,7 @@
     ],
     "opposite": null,
     "related": [
-      "mathematization-nature",
+      "mathematical-geography",
       "scientific-method-ibn-haytham",
       "zij"
     ]
@@ -7342,7 +7103,7 @@
     "related": [
       "binomial-theorem",
       "classification-sciences",
-      "mathematization-nature"
+      "mathematical-geography"
     ]
   },
   "binomial-theorem": {
@@ -7360,13 +7121,13 @@
     "opposite": null,
     "related": [
       "algebra-jabr",
-      "mathematization-nature",
+      "mathematical-geography",
       "classification-sciences"
     ]
   },
   "parallel-postulate": {
     "label": "Parallel postulate investigations",
-    "parent": "mathematization-nature",
+    "parent": "mathematical-geography",
     "children": [],
     "siblings": [
       "trigonometry",
@@ -7428,7 +7189,7 @@
     "related": [
       "sababiyya",
       "naturalism-tabi",
-      "mathematization-nature",
+      "mathematical-geography",
       "khalq-jadid"
     ]
   },
@@ -7443,7 +7204,7 @@
     ],
     "opposite": null,
     "related": [
-      "mathematization-nature",
+      "mathematical-geography",
       "scientific-method-ibn-haytham",
       "mineralogy",
       "pharmacology-adwiya"
@@ -7656,7 +7417,7 @@
     "opposite": null,
     "related": [
       "naturalism-tabi",
-      "mathematization-nature"
+      "mathematical-geography"
     ]
   },
   "geography-masalik": {
@@ -7681,7 +7442,7 @@
     ]
   },
   "mathematical-geography": {
-    "label": "Mathematical geography",
+    "label": "Mathematical geography and physics",
     "parent": "geography-masalik",
     "children": [
       "qibla-determination",
@@ -7818,7 +7579,7 @@
     "related": [
       "trepidation",
       "homocentric-andalusi",
-      "mathematization-nature",
+      "mathematical-geography",
       "scientific-observatory"
     ]
   },
@@ -7858,7 +7619,7 @@
     "label": "Classification of the sciences",
     "parent": null,
     "children": [
-      "mathematization-nature",
+      "mathematical-geography",
       "tabiiyyat",
       "nahw",
       "mantiq-lugha"
@@ -7876,28 +7637,6 @@
       "five-arts"
     ]
   },
-  "mathematization-nature": {
-    "label": "Mathematization of physics",
-    "parent": "tabiiyyat",
-    "children": [
-      "optics-manazir",
-      "dynamics-mayl",
-      "balance-wisdom",
-      "trigonometry"
-    ],
-    "siblings": [
-      "scientific-method-ibn-haytham",
-      "induction-istiqra",
-      "classification-sciences",
-      "naturalism-tabi"
-    ],
-    "opposite": "naturalism-tabi",
-    "related": [
-      "algebra-jabr",
-      "automata",
-      "scientific-observatory"
-    ]
-  },
   "naturalism-tabi": {
     "label": "Naturalism (tab') vs occasionalism",
     "parent": "tabiiyyat",
@@ -7907,7 +7646,7 @@
       "sababiyya",
       "causality-falsafa",
       "khalq-jadid",
-      "mayl"
+      "dynamics-mayl"
     ],
     "opposite": "occasionalism",
     "related": [
@@ -7928,7 +7667,7 @@
     "siblings": [
       "scientific-method-ibn-haytham",
       "optics-manazir",
-      "mathematization-nature",
+      "mathematical-geography",
       "classification-sciences"
     ],
     "opposite": null,
@@ -7945,7 +7684,7 @@
     "children": [],
     "siblings": [
       "scientific-method-ibn-haytham",
-      "mathematization-nature",
+      "mathematical-geography",
       "naturalism-tabi",
       "critique-astrology",
       "classification-sciences"
@@ -8027,7 +7766,7 @@
     "related": [
       "ishtiqaq",
       "dalala",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "tafsir-lughawi"
     ]
   },
@@ -8088,7 +7827,7 @@
     "related": [
       "ishtiqaq",
       "dalala",
-      "haqiqa-majaz-linguistic"
+      "haqiqa-majaz"
     ]
   },
   "sama-qiyas": {
@@ -8363,7 +8102,7 @@
     "parent": "lugha",
     "children": [
       "dalala",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "ishtiqaq",
       "taraduf"
     ],
@@ -8386,7 +8125,7 @@
     "label": "Dalala (signification)",
     "parent": "lugha",
     "children": [
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "kinaya",
       "mushtarak",
       "taraduf",
@@ -8407,29 +8146,6 @@
       "haqiqa-majaz"
     ]
   },
-  "haqiqa-majaz-linguistic": {
-    "label": "Haqiqa and majaz (literal and figurative)",
-    "parent": "balagha",
-    "children": [
-      "kinaya",
-      "istiara",
-      "majaz-mursal"
-    ],
-    "siblings": [
-      "tashbih-balagha",
-      "maani",
-      "bayan",
-      "badi",
-      "nazm"
-    ],
-    "opposite": null,
-    "related": [
-      "ijaz-al-quran-linguistic",
-      "tafsir-lughawi",
-      "dalala",
-      "haqiqa-majaz"
-    ]
-  },
   "kinaya": {
     "label": "Kinaya (allusive indirect speech)",
     "parent": "balagha",
@@ -8439,7 +8155,7 @@
       "istiara",
       "majaz-mursal"
     ],
-    "opposite": "haqiqa-majaz-linguistic",
+    "opposite": "haqiqa-majaz",
     "related": [
       "dalala",
       "maani",
@@ -8471,9 +8187,9 @@
       "tashbih-balagha",
       "kinaya",
       "majaz-mursal",
-      "haqiqa-majaz-linguistic"
+      "haqiqa-majaz"
     ],
-    "opposite": "haqiqa-majaz-linguistic",
+    "opposite": "haqiqa-majaz",
     "related": [
       "balagha",
       "ijaz-al-quran-linguistic",
@@ -8482,14 +8198,14 @@
   },
   "majaz-mursal": {
     "label": "Majaz mursal (metonymy)",
-    "parent": "haqiqa-majaz-linguistic",
+    "parent": "haqiqa-majaz",
     "children": [],
     "siblings": [
       "istiara",
       "tashbih-balagha",
       "kinaya"
     ],
-    "opposite": "haqiqa-majaz-linguistic",
+    "opposite": "haqiqa-majaz",
     "related": [
       "balagha",
       "bayan",
@@ -8556,7 +8272,7 @@
       "ijaz-al-quran-linguistic",
       "nazm",
       "lafz-mana",
-      "haqiqa-majaz-linguistic"
+      "haqiqa-majaz"
     ]
   },
   "badi": {
@@ -8649,7 +8365,7 @@
       "bayan",
       "maani",
       "qiraat",
-      "haqiqa-majaz-linguistic"
+      "haqiqa-majaz"
     ]
   },
   "gharib-al-quran": {
@@ -8699,7 +8415,7 @@
     ],
     "opposite": "mushtarak",
     "related": [
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "dalala",
       "furuq-lughawiyya"
     ]
@@ -8940,7 +8656,7 @@
     "related": [
       "logic-vs-grammar",
       "dalala",
-      "haqiqa-majaz-linguistic"
+      "haqiqa-majaz"
     ]
   },
   "logic-vs-grammar": {
@@ -8979,7 +8695,7 @@
     "siblings": [
       "amm-khass",
       "logic-vs-grammar",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "dalala"
     ],
     "opposite": "logic-vs-grammar",
@@ -8999,7 +8715,7 @@
       "mutlaq-muqayyad",
       "mujmal-mubayyan",
       "nass-zahir",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "mushtarak"
     ],
     "opposite": null,
@@ -9023,7 +8739,7 @@
     "opposite": "taraduf",
     "related": [
       "dalala",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "amm-khass-ling"
     ]
   },
@@ -9040,7 +8756,7 @@
     ],
     "opposite": "mushtarak",
     "related": [
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "lafz-mana",
       "logic-vs-grammar",
       "furuq"
@@ -9059,7 +8775,7 @@
     "opposite": "taraduf",
     "related": [
       "dalala",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "logic-vs-grammar"
     ]
   },
@@ -9076,7 +8792,7 @@
     "opposite": null,
     "related": [
       "dalala",
-      "haqiqa-majaz-linguistic",
+      "haqiqa-majaz",
       "dictionary-ayn"
     ]
   },
