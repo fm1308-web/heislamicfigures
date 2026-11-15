@@ -380,7 +380,9 @@ window.GA_Narrators = (function(){
       if(!document.getElementById('rowsScroll')) return false;
       // For a narrator the listing must be in the row list, or the focus call
       // would fall back to an info-panel-only render.
-      if(!isCore && !(_listing && _listing.length)) return false;
+      // Only needed while the + NARRATORS pill is on; with it off narrators
+      // are not rows, the card opens on its own (listing never loads then).
+      if(!isCore && _tierCOn && !(_listing && _listing.length)) return false;
       return true;
     };
     var go = function(){
@@ -1147,7 +1149,7 @@ window.GA_Narrators = (function(){
   function _graphToggle(slug, side){
     var st = _graphOpen[slug] || (_graphOpen[slug] = {});
     st[side] = !st[side];
-    var rec = _bySlug[_shownSlug] || null;
+    var rec = _shownSlug ? _personRec(_shownSlug) : null;
     if(rec) _fillGraph(rec);
   }
 
@@ -1169,6 +1171,14 @@ window.GA_Narrators = (function(){
         if(el2){ el2.innerHTML = '<div class="nr-card-wrap">' + cardHtml(p) + '</div>'; _fillGraph(p); }
       });
     }
+  }
+
+  // Main-figure (F…) card: same TEACHERS & STUDENTS graph, drawn into the
+  // .nr-graph-slot that timeline.js renderInfo() leaves on the card.
+  function fillCoreGraph(p){
+    if(!p || !p.slug || p._narrator) return;
+    _shownSlug = p.slug;
+    _fillGraph(p);
   }
 
   function openCardBySlug(slug){
@@ -1208,6 +1218,7 @@ window.GA_Narrators = (function(){
     openCardBySlug: openCardBySlug,
     focusNarrator: focusNarrator,
     ensureLinks: ensureLinks,
-    _graphToggle: _graphToggle
+    _graphToggle: _graphToggle,
+    fillCoreGraph: fillCoreGraph
   };
 })();

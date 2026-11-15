@@ -1775,7 +1775,12 @@ function _tlRenderCenter(visible){
   _tlSyncScroll();
 
   // If focus is active, re-apply after re-render (scroll/filter rebuilds arcs).
-  if(tlFocusName) _tlApplyFocus();
+  // If the focused figure is no longer in the list, leave focus mode so the
+  // rows are not all dimmed with no one highlighted.
+  if(tlFocusName){
+    if(visible.some(pp => pp.famous === tlFocusName)) _tlApplyFocus();
+    else _tlExitFocus();
+  }
 }
 
 // Scroll handler — updates era title + tint from the 4th row visible on-screen.
@@ -2392,7 +2397,7 @@ function renderInfo(p){
       return legacyBio + nvHtml;
     })()}
     ${p.titles?`<div class="i-sec"><div class="i-sl">${_tlT('Titles & Epithets')}</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${p.titles.split('·').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="i-badge">${esc(_tlT(t))}</span>`).join('')}</div></div>`:''}
-    ${quranHtml}${quranChipsHtml}${teachHtml}${studHtml}${relHtml}${booksHtml}
+    ${quranHtml}${quranChipsHtml}${teachHtml}${studHtml}<div class="nr-graph-slot" style="display:none"></div>${relHtml}${booksHtml}
     ${quotesHtml}
     <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--ip-brd);display:flex;gap:8px;flex-wrap:wrap;">
       <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(p.famous)}" target="_blank" rel="noopener"
@@ -2435,6 +2440,9 @@ function renderInfo(p){
       return out;
     })()}</div>`:''}
   `;
+
+  // TEACHERS & STUDENTS graph (same as narrator cards); shows only when links exist.
+  try { if(window.GA_Narrators && window.GA_Narrators.fillCoreGraph) window.GA_Narrators.fillCoreGraph(p); } catch(e){}
 
   // Fetch Wikipedia image if eligible
   if (canShowImage(p)) {
@@ -2898,6 +2906,8 @@ function _timelineInfoHtml(){
       searchInp.placeholder = _tlT('Search figures…');
       searchInp.addEventListener('input', function(){
         searchQ = searchInp.value.trim();
+        // Adam 15 Nov 2026: typing a search ends focus mode, so every row stays full bright.
+        if(tlFocusName) _tlExitFocus();
         applyFilterAndFocus();
       });
     }
