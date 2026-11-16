@@ -2211,7 +2211,7 @@ function renderInfo(p){
   }
   let teachHtml='';
   if(p.famous!=='Prophet Muhammad'&&p.teachers?.length){
-    teachHtml=`<div class="i-sec"><div class="i-sl">${_tlT('TEACHERS')}</div>
+    teachHtml=`<div class="i-sec nr-small-ts"><div class="i-sl">${_tlT('TEACHERS')}</div>
       <div class="i-teachers">
         ${p.teachers.map(t=>{const _tp=PEOPLE.find(pp=>pp.famous===t);return `<span class="i-teacher" onclick="jumpTo('${t.replace(/'/g,"\\'")}')">⟵ ${esc(_tp?_tlFigName(_tp):t)}</span>`;}).join('')}
       </div></div>`;
@@ -2221,7 +2221,7 @@ function renderInfo(p){
   const studentsOf=PEOPLE.filter(s=>s.teachers?.includes(p.famous));
   let studHtml='';
   if(p.famous!=='Prophet Muhammad'&&studentsOf.length){
-    studHtml=`<div class="i-sec"><div class="i-sl">${_tlT('STUDENTS')} (${studentsOf.length})</div>
+    studHtml=`<div class="i-sec nr-small-ts"><div class="i-sl">${_tlT('STUDENTS')} (${studentsOf.length})</div>
       <div class="i-teachers">
         ${studentsOf.map(s=>`<span class="i-student" onclick="jumpTo('${s.famous.replace(/'/g,"\\'")}')">▶ ${esc(_tlFigName(s))}</span>`).join('')}
       </div></div>`;

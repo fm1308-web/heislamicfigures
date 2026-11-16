@@ -255,3 +255,11 @@ body.mon-drill-on #mon-filters { display: none !important; }
 
 .ga-cc-seeall { display: inline-block; margin-left: 4px; padding: 2px 9px; font-size: 11px; font-family: 'Cinzel', serif; letter-spacing: .06em; color: #0E1621; background: #D4AF37; border: 1px solid #D4AF37; border-radius: 3px; cursor: pointer; font-weight: 600; }
 .ga-cc-seeall:hover { background: #E8C977; border-color: #E8C977; }
+
+/* Adam 16 Nov 2026: chain names that open a card light up gold on hover */
+.mon-fig-link:hover,
+.mon-fig-link:focus-visible {
+  border-color: #D4AF37 !important;
+  color: #F5D97A !important;
+  background: rgba(212,175,55,0.12) !important;
+}

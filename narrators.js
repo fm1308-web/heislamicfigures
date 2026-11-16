@@ -378,6 +378,9 @@ window.GA_Narrators = (function(){
     var ready = function(){
       if(typeof window._tlFocusFigureBySlug !== 'function') return false;
       if(!document.getElementById('rowsScroll')) return false;
+      // TIMELINE must have finished mounting, or its default (Adam) card
+      // lands on top of ours.
+      if(window._tlReady !== true) return false;
       // For a narrator the listing must be in the row list, or the focus call
       // would fall back to an info-panel-only render.
       // Only needed while the + NARRATORS pill is on; with it off narrators
@@ -389,7 +392,7 @@ window.GA_Narrators = (function(){
       if(isCore) window._tlFocusFigureBySlug(slug);
       else focusNarrator(slug);
     };
-    if(ready()){ go(); return; }
+    if(ready() && /^#?timeline/i.test(location.hash || '')){ go(); return; }
     _clickTab('TIMELINE');
     var tries = 0;
     var iv = setInterval(function(){
@@ -794,6 +797,9 @@ window.GA_Narrators = (function(){
 
     var teachHtml = _sec('TEACHERS', _peopleList(p.teachers, p.teachers_links, 'teacher'));
     var studHtml  = _sec('STUDENTS', _peopleList(p.students, p.students_links, 'student'));
+    // Hidden once the TEACHERS & STUDENTS graph is drawn (one list only).
+    if(teachHtml) teachHtml = '<div class="nr-small-ts">' + teachHtml + '</div>';
+    if(studHtml)  studHtml  = '<div class="nr-small-ts">' + studHtml + '</div>';
 
     // Fixed section order, identical for Tier B and Tier C:
     //   badge · names · dates · generation · biography (if any) ·
@@ -892,6 +898,27 @@ window.GA_Narrators = (function(){
         if(id && id !== me && !seenS[id]){ seenS[id] = 1; s.push(id); }
       });
     });
+    // Main figures: also take the teacher list already on TIMELINE cards, so
+    // the graph is the only teacher/student list (e.g. the Prophet as teacher
+    // of a Companion). Nothing added for the Prophet himself.
+    var core = /^F/.test(me) ? _coreBySlug(me) : null;
+    if(core && core.famous !== 'Prophet Muhammad'){
+      var P = window.PEOPLE || [];
+      (core.teachers || []).forEach(function(nm){
+        for(var i = 0; i < P.length; i++){
+          if(P[i] && P[i].famous === nm && P[i].slug){
+            var id = _canon(P[i].slug);
+            if(id && id !== me && !seenT[id]){ seenT[id] = 1; t.push(id); }
+            break;
+          }
+        }
+      });
+      P.forEach(function(q){
+        if(!q || !q.slug || !Array.isArray(q.teachers) || q.teachers.indexOf(core.famous) === -1) return;
+        var id = _canon(q.slug);
+        if(id && id !== me && !seenS[id]){ seenS[id] = 1; s.push(id); }
+      });
+    }
     if(!t.length && !s.length) return null;
     return { me: me, t: t, s: s, both: seenT, inS: seenS };
   }
@@ -902,19 +929,35 @@ window.GA_Narrators = (function(){
     return _bySlug[id] || null;
   }
 
+  // Adam 16 Nov 2026: one date style everywhere — CE first, AH in brackets.
+  function _ahToCe(h){ return Math.round(h * 0.970229 + 621.5643); }
+  function _ceDod(r){
+    if(!r) return null;
+    if(typeof r.dod === 'number') return r.dod;
+    if(typeof r.death_date_hijri === 'number') return _ahToCe(r.death_date_hijri);
+    return null;
+  }
+  function _ceDob(r){
+    if(!r) return null;
+    if(typeof r.dob === 'number') return r.dob;
+    return null;
+  }
+  function _deathCore(r){
+    var ce = _ceDod(r);
+    if(ce == null) return '';
+    var h = (r && typeof r.death_date_hijri === 'number') ? ' (' + r.death_date_hijri + ' AH)' : '';
+    return ((isEstimatedDod(r) && !h) ? 'c. ' : '') + ce + ' CE' + h;
+  }
   function _deathText(r){
-    if(!r) return '';
-    if(typeof r.death_date_hijri === 'number') return 'd. ' + r.death_date_hijri + ' AH';
-    if(typeof r.dod === 'number') return 'd. ' + (isEstimatedDod(r) ? 'c. ' : '') + r.dod + ' CE';
-    return '';
+    var t = _deathCore(r);
+    return t ? 'd. ' + t : '';
   }
 
   function _personTitle(r){
     if(!r) return '';
     var bits = [r.famous || r.full || r.slug];
     if(r.full_name_ar) bits.push(r.full_name_ar);
-    if(r.dod_s) bits.push('Died: ' + r.dod_s);
-    else if(typeof r.death_date_hijri === 'number') bits.push('Died: ' + r.death_date_hijri + ' AH');
+    if(_deathCore(r)) bits.push('Died: ' + _deathCore(r));
     if(r.generation) bits.push(r.generation);
     if(typeof r.reliability_grade === 'string' && r.reliability_grade.trim()) bits.push('Grade: ' + r.reliability_grade);
     return bits.join(' · ');
@@ -974,7 +1017,7 @@ window.GA_Narrators = (function(){
       ' title="' + _esc(_personTitle(r)) + '"' +
       ' onclick="event.stopPropagation();' + _openCall(id) + '">' +
       '<span class="nr-g-nm" dir="auto">' + (both ? '<span class="nr-g-both" aria-label="both teacher and student">⇄</span>' : '') +
-      _esc(nm) + '</span>' +
+      _esc(nm) + (r && !/^F/.test(id) ? tierChip(r.tier) : '') + '</span>' +
       (ar ? '<span class="nr-g-ar" dir="rtl" lang="ar">' + _esc(ar) + '</span>' : '') +
       (sub ? '<span class="nr-g-sub">' + _esc(sub) + '</span>' : '') +
       '</button>';
@@ -1009,8 +1052,43 @@ window.GA_Narrators = (function(){
     if(GRAPH_HOLD[key]) return true;
     var t = _personRec(teacherId), s = _personRec(studentId);
     var td = t && t.death_date_hijri, sd = s && s.death_date_hijri;
-    if(typeof td !== 'number' || typeof sd !== 'number') return false;
-    return sd < td - IMPOSSIBLE_GAP;
+    if(typeof td === 'number' && typeof sd === 'number' && sd < td - IMPOSSIBLE_GAP) return true;
+    // Adam 16 Nov 2026 lifespan check (CE years; some birth years are estimates):
+    // hide when the teacher died before the student was born, or the student
+    // died before the teacher was 15. Hidden links go to research for checking.
+    // Only recorded years are used; years worked out by formula (e.g. "dob+40",
+    // birth from death) are skipped, as they made good links look impossible.
+    var tDod = _firmDod(t), sDob = _firmDob(s);
+    if(tDod != null && sDob != null && tDod < sDob) return true;
+    // Adam 16 Nov 2026 (research point 2): student died before the teacher was 25.
+    var sDod = _firmDod(s), tDob = _firmDob(t);
+    if(sDod != null && tDob != null && sDod < tDob + 25) return true;
+    // Adam 16 Nov 2026 (research point 4): Companion teacher with a Taba' Tabi'i
+    // or later student — a generation skipped, whatever the estimated years say.
+    if(_genClass(t) === 'C' && _genClass(s) === 'TT') return true;
+    return false;
+  }
+  // Generation from the record's own label only (no guessing):
+  // 'C' = Companion, 'TT' = Taba' Tabi'i or later, null = anything else / not given.
+  function _genClass(r){
+    if(!r) return null;
+    var g = (typeof r.generation === 'string') ? r.generation : '';
+    if(/^Comp\./.test(g) || g === 'Sahabi' || r.type === 'Sahaba' || r.type === 'Sahabiyya') return 'C';
+    if(/^Succ\. \(Taba/.test(g) || /^3rd Century/.test(g) || g === "Tabi' al-Tabi'in" || g === 'later') return 'TT';
+    return null;
+  }
+  function _firmDob(r){
+    if(!r) return null;
+    if(typeof r.dob === 'number' && r.dob > 0 && !r._dobFromDod && !/estimat|legend|BCE/i.test(r.dob_s || '')) return r.dob;
+    // Hijri birth years are not used: some records hold years BEFORE the
+    // Hijra as plain numbers, so they cannot be read safely.
+    return null;
+  }
+  function _firmDod(r){
+    if(!r) return null;
+    if(typeof r.death_date_hijri === 'number') return _ahToCe(r.death_date_hijri);
+    if(typeof r.dod !== 'number' || r.dod <= 0 || r._dodFromGeneration || /estimat|legend|BCE/i.test(r.dod_s || '') || /legend/i.test(r.dob_s || '')) return null;
+    return r.dod;
   }
 
   function _graphHtml(p, g){
@@ -1052,7 +1130,7 @@ window.GA_Narrators = (function(){
               _jsq(g.me) + '\',\'s\')">' + (st.s ? 'Show first ' + GRAPH_FIRST : 'Show all ' + sAll.length + (mutual.length ? ' (' + mutual.length + ' ⇄ on teachers side)' : '')) + '</button>' : '') +
         '</div>' +
       '</div>' +
-      '<div class="nr-g-key">Arrows run teacher → student. Tap a name to open that person.' +
+      '<div class="nr-g-key">Arrows run teacher → student. Tap a name to open that person. B / C = hadith narrator, not a main figure.' +
         (mutual.length ? ' ⇄ ' + mutual.length + (mutual.length === 1 ? ' person is' : ' people are') +
           ' both teacher and student — drawn once, on the teachers side.' : '') +
         (missing ? ' ' + missing + ' listed ' + (missing === 1 ? 'link is' : 'links are') +
@@ -1063,7 +1141,7 @@ window.GA_Narrators = (function(){
       '<details class="nr-g-list"><summary>Full list as text</summary>' +
         _listHtml(tAll, 'Teachers') + _listHtml(sAll, 'Students') +
       '</details>' +
-      '<div class="nr-g-src">Links: teacher/student lists from the app\'s narrator data (muslimscholars.info).</div>' +
+      '<div class="nr-g-src">Links: the muslimscholars.info narrator register, plus the teacher lists on main-figure cards. Dates in CE, AH in brackets.</div>' +
       '</div>';
     return html;
   }
@@ -1142,6 +1220,7 @@ window.GA_Narrators = (function(){
       _graphCss();
       s2.style.display = '';
       s2.innerHTML = _sec('TEACHERS & STUDENTS', _graphHtml(p, g));
+      document.querySelectorAll('#infoScroll .nr-small-ts').forEach(function(e){ e.style.display = 'none'; });
       _watchGraph(s2.querySelector('.nr-graph'));
     });
   }
@@ -1219,6 +1298,8 @@ window.GA_Narrators = (function(){
     focusNarrator: focusNarrator,
     ensureLinks: ensureLinks,
     _graphToggle: _graphToggle,
-    fillCoreGraph: fillCoreGraph
+    fillCoreGraph: fillCoreGraph,
+    _datesImpossible: _datesImpossible,
+    _graphLists: _graphLists
   };
 })();
