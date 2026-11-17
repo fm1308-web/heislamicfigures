@@ -2243,9 +2243,9 @@ function _monInfoHtml(){
 
       H3('TOPIC FILTER') +
       P('Each hadith takes its topic from the chapter it sits in, folded into 43 topics. On 14 Nov 2026 the 1,212 chapters that had no clean topic were read by AI (chapter title and book) and given one, adding 9 topics: Life of the Prophet, Ziyarah, History and Companions, Imam Husayn and Karbala, Destiny (Qadar), Prophets and Earlier Nations, Tafsir, Illness and Visiting the Sick, Remembrance of Allah.') +
-      P('“Other” fell from 15,027 to 4,827. In the six main Sunni books no hadith is left in “Other”: a chapter with no single subject shows its own chapter title (Introduction, al-Bay`ah, Parables). What is left is chapters that name no single subject: Musnad Ahmad (arranged by companion), “Miscellany” chapters, whole-book chapters such as Sunan ad-Darimi. Fixing those needs each hadith read one by one.') +
+      P('“Other” fell from 15,027 to 4,827 (14 Nov 2026), then to 0 (17 Nov 2026): a chapter whose title names no single subject (for example Musnad Ahmad, arranged by companion, or the Assemblies of al-Amali) shows its own chapter title as its topic.') +
 
-      P('In the six main books each hadith\u2019s topic is the title of the book section it sits in, as given in the source edition. Topic names that meant the same thing (for example \u201cPrayer\u201d and \u201cPrayers\u201d) were merged into one name, in all collections; two AI readers chose the merges and only merges both agreed on were made. The Topic filter groups these titles into the broader topics listed.') +
+      P('In every collection each hadith\u2019s topic is the title of its chapter or book section, as given in the source edition; a hadith never shows the topic \u201cOther\u201d. Topic names that meant the same thing (for example \u201cPrayer\u201d and \u201cPrayers\u201d) were merged into one name, in all collections; two AI readers chose the merges and only merges both agreed on were made. The Topic filter groups these titles into the broader topics listed.') +
 
       H3('HOW TO SEARCH') +
       LI([
@@ -2313,8 +2313,13 @@ function _monInfoHtml(){
       ]) +
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">OTHER COLLECTIONS</h4>' +
       LI([
-        'The other 23 collections (42,677 hadith) keep their older tags from 14 Nov 2026, with no strength badge: R = read one by one by AI, one reading only (5,318 hadith); C = from the chapter the hadith sits in (37,359 hadith have only C chips).',
-        'They will move to the two-reading method collection by collection.'
+        'The other 23 collections (al-Kafi, Man La Yahduruhu al-Faqih, Mishkat al-Masabih, Sunan al-Darimi, Muwatta Malik, Riyad as-Salihin, Bulugh al-Maram, Musnad Ahmad, al-Adab al-Mufrad, al-Khisal, al-Amali of al-Saduq and of al-Mufid, Kamal al-Din, Kamil al-Ziyarat, al-Tawhid, al-Ghayba of al-Numani, Kitab al-Zuhd, Kitab al-Mumin, al-Shamail, Fadail al-Shia and the three Forty Hadith books: 42,677 hadith) were tagged the same way as the six main books, with the same 611 concepts.',
+        'Every hadith in these collections carries at least one concept.',
+        'R chips: every hadith was read twice by separate AI readers (Claude by Anthropic), a third reading decided where they disagreed. 39,994 hadith have R chips.',
+        'Agreement between the two readings: 96.9% overall. Lowest: Kitab al-Mumin 72.1%, Fadail al-Shia 91.1%, Kitab al-Zuhd 93.4%, Kamil al-Ziyarat 94.0%. All others 94.7% or higher.',
+        'P chips: 204 hadith whose entry has no text of its own show the R chips of the hadith before them.',
+        'C chips: every hadith also carries the concept of its chapter title (two AI readers, third reading where they differed).',
+        '2,479 hadith have only C chips. For 1,575 of these neither the text nor the chapter title matched a concept, so the title of the book section was used (956 hadith); where the section title says nothing (for example \u201cContent\u201d or \u201cPart 3: On Three-Numbered Characteristics\u201d), one concept naming what the whole book is about was used (619 hadith, for example the Occultation for Kamal al-Din). These are the weakest chips: they say what the section or book is about, not what the hadith says. Book-rule chips always show the Low badge.'
       ]) +
 
       // ── AI methodology disclosure ──
@@ -3506,7 +3511,7 @@ function init(){
       var tnote = document.createElement('div');
       tnote.className = 'mon-topic-note';
       tnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
-      tnote.textContent = 'Topic comes from the chapter each hadith sits in. "Other" = the chapter title names no single subject (for example Musnad Ahmad, arranged by companion, or a "Miscellany" chapter).';
+      tnote.textContent = 'Topic comes from the chapter each hadith sits in. A chapter whose title names no single subject (for example Musnad Ahmad, arranged by companion) shows its own title.';
       topicPanel.insertBefore(tnote, topicPanel.firstChild);
     }
   }
