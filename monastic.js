@@ -268,6 +268,7 @@ var _chapterTopicCounts = null;
 function _cleanTopic(h){
   if(!h) return 'Other';
   var t = _topicMap[h.topic] || 'Other';
+  if(t === 'Other' && h._topicSrc && _topicMap[h._topicSrc]) t = _topicMap[h._topicSrc];
   if(t === 'Other'){
     var m = _chapterTopicMap[h._colKey];
     if(m && h.chapter && m[h.chapter]) return m[h.chapter];
@@ -1838,7 +1839,8 @@ function _fetchCollectionRaw(key){
     arrays.forEach(function(arr){ merged = merged.concat(arr); });
     // Normalize topics: Arabic chapter labels → English via map.
     merged.forEach(function(h){
-      if(h && typeof h.topic === 'string') h.topic = _resolveTopic(h.topic);
+      // 17 Nov 2026: keep the source topic too (Darimi Introduction section titles are Arabic + English).
+      if(h && typeof h.topic === 'string'){ h._topicSrc = h.topic; h.topic = _resolveTopic(h.topic); }
     });
     return _loadDatingFixes().then(function(fx){
       merged.forEach(function(h){

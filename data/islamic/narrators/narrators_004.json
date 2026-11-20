@@ -1891,7 +1891,7 @@
 "full": "Hamza bin Malik bin Rabi'a b. Badiy(al-badan) b. 'Amir b. 'Auf b. Haritha b. 'Amr b. al-Khazraj",
 "full_name_ar": "حمزة بن أبي أسيد الساعدي ( رضي الله عنه",
 "kunya": "Abu Malik",
-"generation": "Comp.(RA) [ 3rd Generation ]",
+"generation": "Follower(Tabi') [ 3rd Generation ]",
 "death_date_hijri": 80,
 "teachers": [
 "Abu Usayd Malik bin Rabi'a",
@@ -9803,7 +9803,7 @@
 "full": "'Ubaid bin Abi Umayya ('Abdur Rahman Or Isma'il) Tanafasi",
 "full_name_ar": "عبيد بن أبي أمية الطنافسي الحنفي",
 "kunya": "Abu al-Fadl",
-"generation": "Follower(Tabi') [ 6th generation ]",
+"generation": "6th generation (Taqrib: من السادسة; طبقة عاصروا الخامسة، لكن لم يثبت لهم لقاء أحد من الصحابة) - not a Tabi'i",
 "teachers": [
 "Ya'la bin Marrah al-Kufi",
 "Abu Burda bin Niyar",
@@ -13940,7 +13940,7 @@
 "full_name_ar": "معاوية بن عمرو بن المهلب بن عمرو",
 "kunya": "Abu 'Amr",
 "generation": "Succ. (Taba' Tabi') [ 9th generation ]",
-"death_date_hijri": 214,
+"death_date_hijri": 213,
 "teachers": [
 "Za'ida bin Qadama al-Thaqifi",
 "'Abdur Rahman bin 'Abdullah bin 'Utba",
@@ -14041,8 +14041,8 @@
 "hafiz"
 ],
 "research_evidence": "قال ابن حبان: 213 هـ. وقال ابن سعد: 214 هـ، أو 215 هـ (Ibn Hibban: died 213 AH; Ibn Sa'd: 214 or 215 AH)",
-"dod": 829,
-"dod_s": "c. 829 CE (converted from 214 AH)",
+"dod": 828,
+"dod_s": "c. 828 CE (converted from 213 AH)",
 "_dodFromAH": true,
 "dob": 764,
 "dob_s": "c. 764 CE (estimated)",
@@ -18360,7 +18360,7 @@
 "full_name_ar": "أبو محذورة الجمحي ( رضي الله عنه",
 "kunya": "Abu Mahdhura",
 "generation": "Comp.(RA) [ 1st Generation ]",
-"death_date_hijri": 59,
+"death_date_hijri": 58,
 "students": [
 "Umm 'Abdul Malik",
 "'Abdul Malik bin Abi Mahdhura",
@@ -30966,7 +30966,8 @@
 "hadith_chain_count": 8,
 "hadith_narrated_count": 0,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"death_date_hijri": 118
 },
 {
 "slug": "arees-19826-yahya-bin-aabad-bin-abdullah-b-zubair",
@@ -32609,7 +32610,7 @@
 "full_name_ar": "نوح بن قيس بن",
 "kunya": "Abu Rwh",
 "generation": "Succ. (Taba' Tabi') [ 8th generation ]",
-"death_date_hijri": 184,
+"death_date_hijri": 183,
 "chain_to_prophet": [
 "arees-1-prophet-muhammad-saw",
 "arees-19-anas-bin-malik",
@@ -32694,8 +32695,8 @@
 "hadith narrator"
 ],
 "research_evidence": "Death Year: \"183هـ، أو: 184هـ\" (183 or 184 AH); Kunya: أبو روح; eighth generation",
-"dod": 800,
-"dod_s": "c. 800 CE (converted from 184 AH)",
+"dod": 799,
+"dod_s": "c. 799 CE (converted from 183 AH)",
 "_dodFromAH": true,
 "dob": 735,
 "dob_s": "c. 735 CE (estimated)",

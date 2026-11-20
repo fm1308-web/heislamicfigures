@@ -1045,6 +1045,41 @@ window.GA_Narrators = (function(){
   // Research decisions 14 Nov 2026 (goldark-narrator-link-decisions.json):
   // links checked and KEPT are always shown; links on HOLD are always hidden.
   var GRAPH_SHOW = { 'F0482|F1061': 1, 'F1629|arees-448-abdur-rahman-ibn-al-harith': 1 };
+  // Research decisions 17 Nov 2026 (goldark-narrator-link-decisions-6.json): 33 real links with a long gap
+  // (young teacher, long-lived student), checked twice - always shown. 2 are disputed (mursal); Gold Ark has no disputed mark.
+  GRAPH_SHOW['arees-5311-nbyt-bin-shryt-al-ashj-y-al-kwfy|arees-15207-salma-bin-nabayt'] = 1;
+  GRAPH_SHOW['arees-20706-musa-bin-y-aqub-bin-abdullah-bin-wahb|arees-30581-muhammad-bin-khalid-bin-athmh'] = 1;
+  GRAPH_SHOW['F1403|arees-12201-ubada-bin-al-waleed-bin-ubada'] = 1;
+  GRAPH_SHOW['F1029|arees-3660-abu-al-tufayl-amir-bin-wathla'] = 1;
+  GRAPH_SHOW['arees-20252-abdul-aziz-bin-al-mukhtar|arees-30450-ibn-abi-al-shuwarab'] = 1;
+  GRAPH_SHOW['F0571|arees-18496-abbas-bin-ubaidullah-bin-al-abbas'] = 1;
+  GRAPH_SHOW['arees-213-ibn-umm-maktum|arees-17331-atiya-bin-abi-atiya'] = 1;
+  GRAPH_SHOW['arees-20744-al-hythm-bin-hameed-al-ghsany|arees-30335-al-rabi-bin-nafi-abu-tawba-al-halbi'] = 1;
+  GRAPH_SHOW['F0649|F0769'] = 1;
+  GRAPH_SHOW['arees-12319-abdul-malik-bin-nawful|F1329'] = 1;
+  GRAPH_SHOW['arees-11323-al-aswad-bin-qays-al-bdy|F1329'] = 1;
+  GRAPH_SHOW['arees-5206-amr-bin-salmah-bin-qays|F1999'] = 1;
+  GRAPH_SHOW['arees-1461-hamza-bin-abi-usayd-al-sa-idi|arees-11517-abdur-rahman-bin-sulaiman-ibn-al-ghasil'] = 1;
+  GRAPH_SHOW['arees-11861-dmrh-bin-sa-id-bin-aby|F1329'] = 1;
+  GRAPH_SHOW['arees-11540-muslim-bin-abi-maryam|F1329'] = 1;
+  GRAPH_SHOW['arees-20588-suh-aib-bin-safwan-bin-al-rabi|arees-20387-ali-bin-hujr-bin-iyas-bin-maqatil'] = 1;
+  GRAPH_SHOW['F1358|arees-11810-bashayr-bin-al-yasar-al-harithi-al-ansar'] = 1;
+  GRAPH_SHOW['arees-11430-shbyb-bin-ghrqd-h|F1329'] = 1;
+  GRAPH_SHOW['arees-10696-abdullah-bin-mutar-abu-rayhana|arees-20208-isma-il-bin-ibrahim-ibn-aliya'] = 1;
+  GRAPH_SHOW['F0366|arees-11049-abu-ishaq-al-sabay-ai'] = 1;
+  GRAPH_SHOW['arees-11525-uthman-bin-abdur-rahman-bin-uthman|arees-20169-falayh-bin-suliaman'] = 1;
+  GRAPH_SHOW['arees-24061-al-harith-bin-nbhan-al-jrmy|arees-38091-azhar-bin-mrwan-al-rqashy'] = 1;
+  GRAPH_SHOW['arees-466-sa-sa-a-bin-sohan|arees-11049-abu-ishaq-al-sabay-ai'] = 1;
+  GRAPH_SHOW['arees-11855-sulaiman-bin-sahaym|F1329'] = 1;
+  GRAPH_SHOW['arees-3245-abdullah-bin-sarjis-al-mazni|F1999'] = 1;
+  GRAPH_SHOW['arees-19871-asim-bin-dmrh-al-slwly|arees-25249-kathir-bin-zadhan-al-nkh-y'] = 1;
+  GRAPH_SHOW['F0164|arees-14212-abdullah-bin-saraqa-al-azdi'] = 1;
+  GRAPH_SHOW['arees-11560-abd-al-wahd-bin-aymn|arees-20191-khallad-bin-yahya-bin-safwan'] = 1;
+  GRAPH_SHOW['arees-28624-al-walid-bin-mazyad|arees-38288-al-abbas-bin-al-walid-bin-mazyad'] = 1;
+  GRAPH_SHOW['arees-617-ar-rubbayi-bint-mu-awwidh-bin-afra|arees-11158-khalid-bin-dhkwan'] = 1;
+  GRAPH_SHOW['arees-15223-shbyb-bin-bashr|arees-20241-al-dahhak-bin-mukhlad-abu-asim-al-nabil'] = 1;
+  GRAPH_SHOW['arees-11041-malik-al-ashtar|arees-10730-abu-hsan-al-a-rj'] = 1;
+  GRAPH_SHOW['arees-10793-abd-h-bin-abi-lbabh|F1329'] = 1;
   var GRAPH_HOLD = { 'F1433|F1711': 1 };   // F1711 holds two people; split first
   function _datesImpossible(teacherId, studentId){
     var key = teacherId + '|' + studentId;

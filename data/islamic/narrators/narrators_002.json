@@ -274,7 +274,7 @@
 "full_name_ar": "مقاتل بن حيان النبطي",
 "kunya": "Abu Bstam",
 "generation": "Follower(Tabi') [ 6th generation ]",
-"death_date_hijri": 100,
+"death_date_hijri": 150,
 "teachers": [
 "Sa'id ibn al-Musayyib",
 "Abu Barda bin Abi Musa al-Asha'ari",
@@ -362,8 +362,8 @@
 }
 ],
 "citations_in_chains": 26,
-"dod": 719,
-"dod_s": "c. 719 CE (converted from 100 AH)",
+"dod": 767,
+"dod_s": "c. 767 CE (converted from 150 AH)",
 "_dodFromAH": true,
 "dob": 654,
 "dob_s": "c. 654 CE (estimated)",
@@ -1926,7 +1926,7 @@
 "full_name_ar": "خصيف بن عبد الرحمن",
 "kunya": "Abu Awn",
 "generation": "Follower(Tabi') [ 5th generation ]",
-"death_date_hijri": 137,
+"death_date_hijri": 136,
 "teachers": [
 "'Ata' bin Abi Rabah",
 "'Ikrama",
@@ -2025,7 +2025,7 @@
 ],
 "research_evidence": "وفاته: 136 هـ، او: 137 هـ، او: 138 هـ، او: 139 هـ، وقيل 132 هـ، او: 133 هـ",
 "dod": 754,
-"dod_s": "c. 754 CE (converted from 137 AH)",
+"dod_s": "c. 754 CE (converted from 136 AH)",
 "_dodFromAH": true,
 "dob": 689,
 "dob_s": "c. 689 CE (estimated)",
@@ -3082,7 +3082,7 @@
 "full_name_ar": "الجراح بن مليح بن عدي",
 "kunya": "Abu Waki'",
 "generation": "Succ. (Taba' Tabi') [ 7th generation ]",
-"death_date_hijri": 181,
+"death_date_hijri": 175,
 "teachers": [
 "Abu Ishaq al-Sabay'ai'",
 "Ata'a bin al-Sa'ib al-Thaqifi",
@@ -3171,9 +3171,9 @@
 "core_famous": "Waki ibn al-Jarrah"
 },
 "citations_in_chains": 26,
-"dod": 797,
-"dod_s": "c. 797 CE (converted from 181 AH)",
-"_dodFromAH": true,
+"dod": 791,
+"dod_s": "c. 791 CE (converted from 175 AH)",
+"_dodFromAH": false,
 "dob": 732,
 "dob_s": "c. 732 CE (estimated)",
 "_dobFromDod": true,
@@ -7869,9 +7869,9 @@
 "dod": 797,
 "dod_s": "c. 797 CE (converted from 181 AH)",
 "_dodFromAH": true,
-"dob": 732,
-"dob_s": "c. 732 CE (estimated)",
-"_dobFromDod": true,
+"dob": 710,
+"dob_s": "c. 710 CE",
+"_dobFromDod": false,
 "teachers_links": {
 "Isma'il bin Abi Khalid al-Ahmsi": "arees-11418-isma-il-bin-abi-khalid-al-ahmsi",
 "Sa'd bin Tariq, Abu Malik": "arees-10766-sa-d-bin-tariq-abu-malik",
@@ -7886,7 +7886,8 @@
 "tier_research": "B",
 "bio_sourced": true,
 "famous_register": "Khlf bin Khlyfh",
-"name_respelled": "from Arabic, high confidence"
+"name_respelled": "from Arabic, high confidence",
+"birth_date_hijri": 91
 },
 {
 "slug": "arees-20672-muhammad-bin-salmah",
@@ -7898,7 +7899,7 @@
 "full": "Muhammad bin Salmah bin Abd",
 "full_name_ar": "محمد بن سلمة بن عبد الله الباهلي",
 "generation": "Succ. (Taba' Tabi') [ 9th generation ]",
-"death_date_hijri": 191,
+"death_date_hijri": 171,
 "teachers": [
 "Ibn Ishaq",
 "Khsyf bin 'Abdur Rahman al-Jzry",
@@ -8024,9 +8025,9 @@
 "'Amr bin Hisham"
 ],
 "research_evidence": "توفي في نهاية سنة 191 هـ",
-"dod": 807,
-"dod_s": "c. 807 CE (converted from 191 AH)",
-"_dodFromAH": true,
+"dod": 787,
+"dod_s": "c. 787 CE (converted from 171 AH)",
+"_dodFromAH": false,
 "dob": 742,
 "dob_s": "c. 742 CE (estimated)",
 "_dobFromDod": true,
@@ -18305,7 +18306,7 @@
 "full": "Nadla bin 'Ubaid/'Aidh/'Amr or Khalid/'Abdullah bin Nadla",
 "full_name_ar": "أبو برزة الأسلمي ( رضي الله عنه",
 "generation": "Comp.(RA) [ 1st Generation ]",
-"death_date_hijri": 65,
+"death_date_hijri": 60,
 "teachers": [
 "Abu Bakr As-Siddique"
 ],
@@ -18434,8 +18435,8 @@
 "al-Azraq ibn Qays"
 ],
 "research_evidence": "\"He eventually died in Merv where he was on a trip for a battle in Khorasan\"; the biographical box lists his death as 64/683-4",
-"dod": 685,
-"dod_s": "c. 685 CE (converted from 65 AH)",
+"dod": 680,
+"dod_s": "c. 680 CE (converted from 60 AH)",
 "_dodFromAH": true,
 "dob": 620,
 "dob_s": "c. 620 CE (estimated)",
@@ -22224,7 +22225,7 @@
 "full": "'Ali bin Bdhymh",
 "full_name_ar": "علي بن بذيمة",
 "generation": "Follower(Tabi') [ 6th generation ]",
-"death_date_hijri": 130,
+"death_date_hijri": 133,
 "teachers": [
 "Abu 'Ubaida bin 'Abdullah bin Mas'ud",
 "'Amir al-Sha'bi",
@@ -22302,8 +22303,8 @@
 }
 ],
 "citations_in_chains": 22,
-"dod": 748,
-"dod_s": "c. 748 CE (converted from 130 AH)",
+"dod": 751,
+"dod_s": "c. 751 CE (converted from 133 AH)",
 "_dodFromAH": true,
 "dob": 683,
 "dob_s": "c. 683 CE (estimated)",
@@ -25388,7 +25389,7 @@
 "full_name_ar": "شداد بن أوس بن ثابت ( رضي الله عنه",
 "kunya": "Abu Ya'la, Abu 'Abdur Rahman",
 "generation": "Comp.(RA) [ 1st Generation ]",
-"death_date_hijri": 58,
+"death_date_hijri": 41,
 "teachers": [
 "Ka'b al-Ahbar"
 ],
@@ -25503,8 +25504,8 @@
 "Shurahbil ibn Kulayb"
 ],
 "research_evidence": "توفي ٦٤ هـ; the page also records the alternative reported death years 41 AH and 58 AH. He died in Jerusalem at age 75.",
-"dod": 678,
-"dod_s": "c. 678 CE (converted from 58 AH)",
+"dod": 661,
+"dod_s": "c. 661 CE (converted from 41 AH)",
 "_dodFromAH": true,
 "dob": 613,
 "dob_s": "c. 613 CE (estimated)",
@@ -25683,7 +25684,7 @@
 "full": "'Abdur Rahman bin Ka'b bin Malik bin Abi Ka'b b. al-Qayn b. Ka'b b. Sawad b. Ghanm b. Ka'b b. Salima",
 "full_name_ar": "عبد الرحمن بن كعب بن مالك السلمي ( رضي الله عنه",
 "kunya": "Abu Khattab",
-"generation": "Comp.(RA) [ 2nd Generation ]",
+"generation": "Follower(Tabi') [ 2nd Generation ]",
 "teachers": [
 "Ka'b bin Malik bin Abi Ka'b",
 "'Abdullah bin Ka'b bin Malik b. Abi Ka'b",
@@ -25806,7 +25807,8 @@
 "hadith_chain_count": 30,
 "hadith_narrated_count": 7,
 "tier_research": "C",
-"bio_sourced": true
+"bio_sourced": true,
+"death_date_hijri": 96
 },
 {
 "slug": "arees-3242-abdullah-bin-mughfal-al-mazni",
@@ -29651,7 +29653,7 @@
 "full_name_ar": "مالك بن دينار السامي الناجي",
 "kunya": "Abu Yahya",
 "generation": "Follower(Tabi') [ 5th generation ]",
-"death_date_hijri": 130,
+"death_date_hijri": 123,
 "chain_to_prophet": [
 "arees-1-prophet-muhammad-saw",
 "arees-19-anas-bin-malik",
@@ -34855,7 +34857,7 @@
 "full_name_ar": "عمرو بن ميمون بن مهران الجزري",
 "kunya": "Abu 'Abdullah,Abu 'AbdurRahman",
 "generation": "Follower(Tabi') [ 6th generation ]",
-"death_date_hijri": 147,
+"death_date_hijri": 145,
 "teachers": [
 "Maymun bin Mahran",
 "Sulayman ibn Yasar",
@@ -34963,8 +34965,8 @@
 "hadith transmitter"
 ],
 "research_evidence": "147 هـ، وقيل 145 هـ، وقيل 148 (died 147 AH; also said 145 or 148)",
-"dod": 764,
-"dod_s": "c. 764 CE (converted from 147 AH)",
+"dod": 762,
+"dod_s": "c. 762 CE (converted from 145 AH)",
 "_dodFromAH": true,
 "dob": 699,
 "dob_s": "c. 699 CE (estimated)",
@@ -37564,7 +37566,7 @@
 "kunya": "Abu Muhammad, Abu 'Abdullah",
 "generation": "Comp.(RA) [ 1st Generation ]",
 "dod": 677,
-"death_date_hijri": 58,
+"death_date_hijri": 53,
 "teachers": [
 "Abu Bakr As-Siddique"
 ],
@@ -42034,7 +42036,7 @@
 "full_name_ar": "عبد العزيز بن المطلب بن عبد الله",
 "kunya": "Abu Talb",
 "generation": "Succ. (Taba' Tabi') [ 7th generation ]",
-"death_date_hijri": 100,
+"death_date_hijri": 158,
 "teachers": [
 "Musa bin 'Uqba",
 "'Abdullah bin Abi Bakr bin Muh. b. 'Amr",
@@ -42120,8 +42122,8 @@
 }
 ],
 "citations_in_chains": 19,
-"dod": 719,
-"dod_s": "c. 719 CE (converted from 100 AH)",
+"dod": 775,
+"dod_s": "c. 775 CE (converted from 158 AH)",
 "_dodFromAH": true,
 "dob": 654,
 "dob_s": "c. 654 CE (estimated)",
@@ -42276,7 +42278,7 @@
 "full_name_ar": "عبد الوهاب بن عطاء الخفاف أبو نصر",
 "kunya": "Abu Nsr",
 "generation": "Succ. (Taba' Tabi') [ 9th generation ]",
-"death_date_hijri": 210,
+"death_date_hijri": 204,
 "teachers": [
 "Sulaiman bin Tarkhan al-Taymi",
 "Hameed bin Abi Hameed",
@@ -42367,8 +42369,8 @@
 }
 ],
 "citations_in_chains": 19,
-"dod": 825,
-"dod_s": "c. 825 CE (converted from 210 AH)",
+"dod": 819,
+"dod_s": "c. 819 CE (converted from 204 AH)",
 "_dodFromAH": true,
 "dob": 760,
 "dob_s": "c. 760 CE (estimated)",
@@ -47825,7 +47827,7 @@
 "full_name_ar": "عمير بن سعيد النخعي الصهباني",
 "kunya": "Abu Yahya",
 "generation": "Follower(Tabi') [ 3rd Generation ]",
-"death_date_hijri": 122,
+"death_date_hijri": 107,
 "teachers": [
 "Ali ibn Abi Talib",
 "Abu Musa al-Asha'ari",
@@ -47909,8 +47911,8 @@
 }
 ],
 "citations_in_chains": 18,
-"dod": 740,
-"dod_s": "c. 740 CE (converted from 122 AH)",
+"dod": 725,
+"dod_s": "c. 725 CE (converted from 107 AH)",
 "_dodFromAH": true,
 "dob": 675,
 "dob_s": "c. 675 CE (estimated)",
@@ -51006,7 +51008,7 @@
 "full_name_ar": "يزيد بن أبي حكيم",
 "kunya": "Abu 'Abdullah",
 "generation": "Succ. (Taba' Tabi') [ 9th generation ]",
-"death_date_hijri": 120,
+"death_date_hijri": 220,
 "teachers": [
 "'Ataf bin Khalid bin 'Abdullah",
 "'Umar bin S'hban",
@@ -51080,9 +51082,9 @@
 }
 ],
 "citations_in_chains": 18,
-"dod": 738,
-"dod_s": "c. 738 CE (converted from 120 AH)",
-"_dodFromAH": true,
+"dod": 835,
+"dod_s": "c. 835 CE (converted from 220 AH)",
+"_dodFromAH": false,
 "dob": 673,
 "dob_s": "c. 673 CE (estimated)",
 "_dobFromDod": true,
@@ -53226,9 +53228,9 @@
 "dod": 670,
 "dod_s": "c. 670 CE (converted from 50 AH)",
 "_dodFromAH": true,
-"dob": 605,
-"dob_s": "c. 605 CE (estimated)",
-"_dobFromDod": true,
+"dob": 624,
+"dob_s": "c. 624 CE",
+"_dobFromDod": false,
 "teachers_links": {
 "Zayd ibn Thabit": "F1686",
 "Muhammad Ibn Maslama": "F1054"
@@ -53256,7 +53258,7 @@
 "full_name_ar": "شرحبيل بن السمط ( رضي الله عنه",
 "kunya": "Abu Yazid",
 "generation": "Comp.(RA)",
-"death_date_hijri": 40,
+"death_date_hijri": 36,
 "teachers": [
 "Prophet Muhammad(saw)",
 "'Umar ibn al-Khattab",
@@ -54491,7 +54493,7 @@
 "full_name_ar": "المغيرة بن عبد الرحمن بن الحارث",
 "kunya": "Abu Hashim",
 "generation": "Follower(Tabi') [ 5th generation ]",
-"death_date_hijri": 62,
+"death_date_hijri": 186,
 "teachers": [
 "Khalid bin al-Walid",
 "'Abdur Rahman ibn al-Harith",
@@ -54571,12 +54573,12 @@
 "core_famous": "Suada bint 'Auf al-Murriya"
 },
 "citations_in_chains": 17,
-"dod": 682,
-"dod_s": "c. 682 CE (converted from 62 AH)",
-"_dodFromAH": true,
-"dob": 617,
-"dob_s": "c. 617 CE (estimated)",
-"_dobFromDod": true,
+"dod": 802,
+"dod_s": "c. 802 CE (converted from 186 AH)",
+"_dodFromAH": false,
+"dob": 741,
+"dob_s": "c. 741 CE",
+"_dobFromDod": false,
 "teachers_links": {
 "Khalid bin al-Walid": "F0870",
 "'Abdur Rahman ibn al-Harith": "arees-448-abdur-rahman-ibn-al-harith",
@@ -63050,7 +63052,7 @@
 "full": "'Abdullah bin Feroz al-Dayli",
 "full_name_ar": "عبد الله بن فيروز الديلمي ( رضي الله عنه",
 "kunya": "Abu Bashr, Abu Basr",
-"generation": "Comp.(RA) [ 1st Generation ]",
+"generation": "Follower(Tabi') [ 2nd generation ] (senior Successor)",
 "teachers": [
 "Fyrwz al-Dylmy",
 "Ubayy ibn Ka'b",
