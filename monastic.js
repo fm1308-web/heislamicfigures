@@ -1829,6 +1829,11 @@ function _fetchCollectionRaw(key){
     }).then(function(data){
       if(data && !Array.isArray(data) && Array.isArray(data.hadiths)) data = data.hadiths;
       if(!Array.isArray(data)) data = [];
+      // 21 Nov 2026: remember which file each hadith came from, so its grade tags can be found.
+      var _gfBase = String(f).split('/').pop();
+      data.forEach(function(h){
+        if(h && typeof h === 'object'){ try { Object.defineProperty(h, '_gf', { value: _gfBase, writable: true, configurable: true, enumerable: false }); } catch(e){} }
+      });
       return data;
     }).catch(function(e){
       console.warn('Failed to load ' + f + ':', e);
@@ -2119,6 +2124,85 @@ function _datingLine(h){
     '</div>';
 }
 
+// ── Hadith grade tags (21 Nov 2026) ─────────────────────────────────────
+// Grades are never made up here. Each tag is one named scholar's own grade,
+// copied from a public source, with the book (and number or page) it is in.
+// Files: data/islamic/hadith/grades/index.json (scholars, list of files) and
+// data/islamic/hadith/grades/<book file>.json  { g: { <hadith id>: [[key, text as written, short label, source], ...] } }
+var _GR_BASE = 'data/islamic/hadith/grades/';
+var _grIdxP = null, _grFileP = {};
+function _grIndex(){
+  if(!_grIdxP){
+    _grIdxP = fetch(dataUrl(_GR_BASE + 'index.json')).then(function(r){
+      if(!r.ok) throw new Error('grades index ' + r.status);
+      return r.json();
+    }).catch(function(e){ console.warn('[grades] index not loaded', e); _grIdxP = null; return null; });
+  }
+  return _grIdxP;
+}
+function _grFile(f){
+  if(!_grFileP[f]){
+    _grFileP[f] = fetch(dataUrl(_GR_BASE + f)).then(function(r){
+      if(!r.ok) throw new Error('grades ' + f + ' ' + r.status);
+      return r.json();
+    }).catch(function(e){ console.warn('[grades] file not loaded', f, e); delete _grFileP[f]; return null; });
+  }
+  return _grFileP[f];
+}
+function _gradeSlot(h){
+  if(!h || !h._gf) return '';
+  var id = (h.id != null) ? String(h.id) : '';
+  return '<div class="mon-grade-slot" data-gf="' + esc(h._gf) + '" data-gid="' + esc(id) + '" style="direction:ltr;text-align:left"></div>';
+}
+function _gradeLineHtml(name, label, text, src){
+  var shown = label ? esc(label) : '';
+  var ar = text ? '<span dir="auto" style="font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;font-size:15px;color:#E5E7EB;text-transform:none;letter-spacing:0">' + esc(text) + '</span>' : '';
+  return '<div style="margin-top:3px;line-height:1.6">' +
+    '<span style="color:#D4AF37;font-weight:600">' + esc(name) + ':</span> ' +
+    (shown ? '<span style="color:#FFFFFF;font-weight:600">' + shown + '</span> ' : '') +
+    ar +
+    (src ? ' <span style="color:rgba(160,174,192,0.75)">· ' + esc(src) + '</span>' : '') +
+    '</div>';
+}
+function _populateGradeSlots(container){
+  if(!container) return;
+  var slots = container.querySelectorAll('.mon-grade-slot');
+  if(!slots.length) return;
+  _grIndex().then(function(ix){
+    if(!ix) return;
+    var have = {}; (ix.files || []).forEach(function(f){ have[f] = true; });
+    var byFile = {};
+    slots.forEach(function(s){
+      var f = s.getAttribute('data-gf');
+      if(ix.books && ix.books[f]) {
+        s.innerHTML = _gradeBox(ix.books[f].map(function(b){
+          return _gradeLineHtml((ix.bookgraders && ix.bookgraders[b[0]]) || b[0], b[2], b[1], b[3]);
+        }).join(''));
+        return;
+      }
+      if(have[f]) (byFile[f] = byFile[f] || []).push(s);
+    });
+    Object.keys(byFile).forEach(function(f){
+      _grFile(f).then(function(d){
+        if(!d || !d.g) return;
+        byFile[f].forEach(function(s){
+          var list = d.g[s.getAttribute('data-gid')];
+          if(!list || !list.length) return;
+          s.innerHTML = _gradeBox(list.map(function(t){
+            var gr = (ix.graders && ix.graders[t[0]]) || {};
+            return _gradeLineHtml(gr.n || t[0], t[2], t[1], t[3]);
+          }).join(''));
+        });
+      });
+    });
+  });
+}
+function _gradeBox(inner){
+  return '<div style="margin-top:8px;padding:6px 10px;border-left:2px solid rgba(212,175,55,0.45);font-family:\'Lato\',sans-serif;font-size:var(--fs-3);color:rgba(229,231,235,0.9)">' +
+    '<div style="font-family:\'Cinzel\',serif;letter-spacing:.1em;color:rgba(212,175,55,0.8)">GRADES · <span style="font-family:\'Lato\',sans-serif;letter-spacing:.02em;color:rgba(160,174,192,0.8);text-transform:none">each scholar’s own grade, with its source</span></div>' +
+    inner + '</div>';
+}
+
 // ── Timeline band ── (REMOVED — hidden always per user rule)
 function _buildBand(){
   if(_bandEl){ _bandEl.style.display = 'none'; }
@@ -2238,7 +2322,23 @@ function _monInfoHtml(){
         G('No chain in this source (21,867 · 28.5%).') + ' The edition gives the text without its chain — common in compilations such as Riyad as-Salihin, Mishkat, Bulugh al-Maram and the Forty collections.',
         G('“Narrator not yet identified”') + ' means the end of the chain has not been matched to a known person. The Narrator filter lists these at the bottom.'
       ]) +
-      P(G('Hadith grades') + ' (sahih, hasan, da\u2019if) are not shown in this view yet. The source data carries one for 34,172 hadith, all in the six main Sunni books. The ratings inside CHAIN are about the narrators (generation and reliability), not about the hadith.') +
+      H3('HADITH GRADES (21 NOV 2026)') +
+      P('Under a hadith, GRADES shows how named scholars graded it. We never make up a grade and never merge grades into one. Each line is one scholar\u2019s own grade, copied from a public source, with the book and number or page it is in. When scholars differ, every grade is shown.') +
+      LI([
+        G('al-Bukhari and Muslim.') + ' Each named his whole book \u201cSahih\u201d (al-Jami\u2019 al-Sahih, al-Musnad al-Sahih). That is the author\u2019s own claim for the book, shown on every hadith in it.',
+        G('al-Tirmidhi') + ' (d. 892) graded most hadith himself, in his own words after the hadith (for example \u201chasan sahih\u201d). We copy those words from the Arabic text: 2,319 hadith.',
+        G('al-Albani') + ' (d. 1999): Sunan Abi Dawud, al-Tirmidhi, al-Nasa\u2019i and Ibn Majah, from his books Sahih wa Da\u2019if Sunan \u2026 (al-Maktaba al-Shamila): 18,562 grades.',
+        G('Zubair Ali Za\u2019i') + ' (d. 2013): the same four books and Mishkat al-Masabih, from the editions he checked (zubairalizai.com; sunnah.com shows these as \u201cDarussalam\u201d): 22,322 grades.',
+        G('Darussalam edition') + ': Musnad Ahmad, the grades printed with the Darussalam English edition, as shown on sunnah.com, which does not name the scholar who made them. Copied word for word: 1,255 grades.',
+        G('al-Majlisi') + ' (d. 1699): al-Kafi, from his Mir\u2019at al-\u2019Uqul, chain by chain: 13,894 grades.',
+        G('al-Behbudi') + ': al-Kafi and Man La Yahduruh al-Faqih. His books Sahih al-Kafi and Sahih al-Faqih keep only what he judged Sahih; a hadith he left out shows \u201cNot included\u201d: 20,099 grades.',
+        G('al-Mohseni and Hadi al-Najafi') + ': a few hadith in al-Kafi, al-Khisal, al-Tawhid, al-Amali (al-Mufid) and Kitab al-Zuhd: 102 grades.',
+        'The Shia grades come from Thaqalayn.net (its open data). The al-Albani and Za\u2019i grades are their own Arabic and Urdu words; the copies we used are kept at github.com/fawazahmed0/maktaba-grades-backup. The Musnad Ahmad grades are copied from sunnah.com.'
+      ]) +
+      P(G('Not graded yet.') + ' Sunni: Muwatta Malik, Sunan ad-Darimi, Riyad as-Salihin, Shama\u2019il, Bulugh al-Maram, al-Adab al-Mufrad and the three Forty collections. Shia: al-Amali (al-Saduq), Fada\u2019il al-Shia, Kamal al-Din, Kamil al-Ziyarat, Kitab al-Ghayba and Kitab al-Mu\u2019min; al-Khisal, al-Tawhid, al-Amali (al-Mufid) and Kitab al-Zuhd have only a few. For these we have not yet found named grades that we could check against the scholar\u2019s own book, so they show none. A hadith with no GRADES line is not graded here; that says nothing about its strength.') +
+      P(G('How a grade was matched to a hadith.') + ' Every grade was matched by comparing the Arabic text of the hadith, not by number alone. Where the text did not match, no grade was added.') +
+      P(G('Grade words.') + ' Sahih = sound. Hasan = good. Da\u2019if = weak. Da\u2019if jiddan = very weak. Mawdu\u2019 = made up. Munkar = rejected. Shadh = goes against stronger reports. Gharib = comes by one chain only (al-Tirmidhi\u2019s word; not a weakness on its own). Muwaththaq = reliable chain with a non-Twelver narrator (Shia grading). Majhul = a narrator is unknown. Mursal = a link in the chain is missing. Marfu\u2019 (in al-Majlisi) = the chain is cut. Mu\u2019tabar = reliable. \u201cChain\u201d = the grade is for the chain only. Agreed upon = in both Bukhari and Muslim. Where a grade has no short label, read the scholar\u2019s own words shown beside it.') +
+      P('The ratings inside CHAIN are about the narrators (generation and reliability), not about the hadith.') +
 
       H3('NARRATOR FILTER') +
       P('Every distinct end-of-chain narrator across all Sunni and Shia books, with the number of hadith for each. “Unknown Scholar” and “Being checked” = not yet matched; listed at the bottom.') +
@@ -3050,12 +3150,13 @@ function _renderRows(filtered, colKey, page){
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
       topicHtml + periodHtml + xrefSlotHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
-      '<div style="font-size:' + (_monLang==='ar'?'20px':(_monLang==='ur'?'18px':'var(--fs-3)')) + ';color:#E5E7EB;line-height:' + (_monLang==='en'?'1.5':'2') + ';' + (_monLang==='ar'||_monLang==='ur'?'direction:rtl;text-align:right;font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;':'') + '">' + esc(text || '(no '+_monLang.toUpperCase()+' text)') + _datingLine(h) + '</div>';
+      '<div style="font-size:' + (_monLang==='ar'?'20px':(_monLang==='ur'?'18px':'var(--fs-3)')) + ';color:#E5E7EB;line-height:' + (_monLang==='en'?'1.5':'2') + ';' + (_monLang==='ar'||_monLang==='ur'?'direction:rtl;text-align:right;font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;':'') + '">' + esc(text || '(no '+_monLang.toUpperCase()+' text)') + _datingLine(h) + _gradeSlot(h) + '</div>';
     frag.appendChild(row);
   }
 
   _resultsEl.appendChild(frag);
   _populateXrefSlots(_resultsEl);
+  _populateGradeSlots(_resultsEl);
 
   // Wire hadith bookmark buttons.
   _resultsEl.querySelectorAll('.mon-bmk-btn').forEach(function(btn){
