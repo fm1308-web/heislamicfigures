@@ -241,7 +241,8 @@ function _monDateKind(h){
   if(!rb || rb.earliest == null || rb.latest == null) return 'none';
   var L = d.layers_applied || [];
   // The date was worked out with the hidden chain (layers L1 / L12): show "not dated" instead.
-  if(_narrHidden(h) && (L.indexOf('L1') !== -1 || L.indexOf('L12') !== -1)) return 'none';
+  // REPAIR v2: every six-book hadith (it carries narrator_chain_full) waits for a dating rebuild.
+  if((_narrHidden(h) || Array.isArray(h.narrator_chain_full)) && (L.indexOf('L1') !== -1 || L.indexOf('L12') !== -1)) return 'none';
   var ev = d.evidence || [];
   for(var i = 0; i < ev.length; i++){
     var e = ev[i];
@@ -1229,7 +1230,7 @@ function _drillShowInlineHadiths(earliest, latest){
           : 'Sign in to bookmark';
         var _drBmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_drBmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
         var colA = '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px">' +
-          '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + '</div>' +
+          '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + _secondNumHtml(h) + '</div>' +
           '<button class="mon-drill-bmk-btn" data-bmkey="' + _drBmKey + '" title="' + _drBmTitle + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _drBmRibbon + '</button>' +
           '</div>';
         if(!hasTopicFilter && h.topic){
@@ -1694,13 +1695,40 @@ function getField(obj, names){
 }
 
 function getNumber(h){ return getField(h, ['hadith_no','hadithNumber','number','id']); }
+// Six main Sunni books (22 Nov 2026): the number the same hadith has on sunnah.com, found by matching the
+// Arabic text. Shown only when it is not one of our own numbers (Bukhari joins numbers, e.g. "272, 273").
+var _SUNNAH_SLUG = { bukhari:'bukhari', muslim:'muslim', abudawud:'abudawud', tirmidhi:'tirmidhi', nasai:'nasai', ibnmajah:'ibnmajah' };
+function _secondNumHtml(h){
+  var s = (h && h.sunnah_com_number != null) ? String(h.sunnah_com_number).trim() : '';
+  if(!s) return '';
+  var ours = String(getNumber(h) == null ? '' : getNumber(h)).split(/[,\s]+/);
+  if(ours.indexOf(s) !== -1) return '';
+  var slug = _SUNNAH_SLUG[h._colKey || ''];
+  var txt = 'sunnah.com ' + esc(s);
+  var st = 'font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:0;color:rgba(160,174,192,0.85);text-decoration:none';
+  return ' <span style="' + st + '">\u00B7 ' +
+    (slug ? '<a href="https://sunnah.com/' + slug + ':' + encodeURIComponent(s) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="' + st + ';border-bottom:1px dotted rgba(160,174,192,0.5)" title="The same hadith on sunnah.com (opens in a new tab)">' + txt + '</a>' : txt) +
+    '</span>';
+}
 var _monLang = 'en';
 function getText(h){
   if(_monLang === 'ar') return getField(h, ['hadithArabic','matn_ar','text_ar','arabic','arabic_text']);
   if(_monLang === 'ur') return getField(h, ['hadithUrdu','matn_ur','text_ur','urdu','urdu_text']);
   return getField(h, ['matn_en','hadithEnglish','text','english','body','hadith_text']);
 }
+// Clean list names for the end narrator of the six main books, by record id (narrator_index.json id_names).
+var _narrEndNames = {};
+function _narrIsComp(e){ return !!(e && e.id != null && /Comp\./.test(String(e.grade || ''))); }
 function getNarrator(h){
+  if(Array.isArray(h.narrator_chain_full)){
+    // Six main Sunni books, repaired chain: the end of the chain counts only when it is a Companion record.
+    // Never the stored `narrator` text (it came from the old wrong chains).
+    var fc = h.narrator_chain_full, fe = fc.length ? fc[fc.length - 1] : null;
+    if(_narrIsComp(fe)) return _narrEndNames[String(fe.id)] || _stripArabic(String(fe.name || '').split('(')[0]).trim();
+    var en1 = h.englishNarrator ? String(h.englishNarrator).trim() : '';
+    if(!en1 || en1 === 'Being checked' || en1 === 'Unknown') return '';
+    return _cleanNarratorString(en1) || en1;
+  }
   if(_narrHidden(h)){
     // Same rule as the NARRATOR column: the source's own end-narrator field, or nothing.
     var en0 = h.englishNarrator ? String(h.englishNarrator).trim() : '';
@@ -1977,6 +2005,7 @@ function _gradeShort(g){
 }
 
 function _chainOnlyBlock(h){
+  if(Array.isArray(h.narrator_chain_full) && h.narrator_chain_full.length) return _fullChainHtml(h, false);
   var narrs = Array.isArray(h.narrators) ? h.narrators : [];
   if(!narrs.length){
     return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Chain omitted)</div>';
@@ -2086,7 +2115,57 @@ function _rawChainHtml(h){
     '</div>';
 }
 
+// Six main Sunni books, repaired chain (22 Nov 2026). narrator_chain_full = every name of the hadith's
+// own Arabic chain, compiler's source first: an entry with a narrator record, or the name as written
+// ("unmatched"). Shown end of chain first, like the old panel. "Companion" and "heard from the Prophet"
+// only where the record itself is a Companion (some chains are cut short by the chain/text split).
+function _fullChainHtml(h, withTerm){
+  var full = h.narrator_chain_full, N = full.length;
+  var rows = '';
+  for(var i = N - 1, pos = 1; i >= 0; i--, pos++){
+    var nr = full[i], body;
+    if(nr.id == null){
+      body = '<div style="font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;font-size:16px;direction:rtl;text-align:left;color:rgba(229,231,235,0.85)">' + esc(String(nr.as_written || '')) + '</div>' +
+             '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">not matched to a narrator record</div>';
+    } else {
+      var nm = _stripArabic((nr.name || '').split('(')[0].trim()) || '(unknown)';
+      var dy = (nr.death_year != null && nr.death_year !== '') ? ' \u00B7 d. ' + String(nr.death_year) : '';
+      var relHtml = (withTerm && nr.reliability_grade) ? ' <span style="color:rgba(212,175,55,0.8)">\u00B7 ' + _glossWrap(String(nr.reliability_grade)) + '</span>' : '';
+      var tail = !withTerm ? '' : ((pos === 1 && _narrIsComp(nr))
+        ? '<div style="color:rgba(212,175,55,0.65);font-size:var(--fs-3);font-style:normal;margin-top:2px">\u2191 heard from the Prophet</div>'
+        : (i === 0 ? '<div style="color:rgba(160,174,192,0.6);font-size:var(--fs-3);font-style:normal;margin-top:2px">(compiler\'s direct source)</div>' : ''));
+      body = '<div style="font-size:var(--fs-3)">' + _figLink(nm, nr) + '</div>' +
+             '<div style="color:rgba(160,174,192,0.7);font-size:var(--fs-3);margin-top:2px">' + _glossWrap(_gradeShort(nr.grade)) + esc(dy) + relHtml + '</div>' + tail;
+    }
+    rows += '<div style="padding:4px 0;display:flex;gap:8px;align-items:baseline">' +
+              '<span style="color:rgba(212,175,55,0.7);font-size:var(--fs-3);min-width:18px">' + pos + '.</span>' +
+              '<div style="flex:1">' + body + '</div>' +
+            '</div>';
+  }
+  var noteLine = '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.7);margin-bottom:6px">Names checked one by one; unmatched names are shown as written.</div>';
+  if(!withTerm){
+    return '<button class="mon-chain-toggle" type="button" style="display:inline-flex;align-items:center;gap:4px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;padding:3px 8px;color:rgba(212,175,55,0.85);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>' +
+      '<div class="mon-chain" style="display:none;margin-top:6px;padding:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:3px">' + noteLine + rows + '</div>';
+  }
+  var last = full[N - 1], termCell;
+  if(_narrIsComp(last)){
+    termCell = _narratorCell(_stripArabic((last.name || '').split('(')[0].trim()), last);
+  } else {
+    var en = h.englishNarrator ? String(h.englishNarrator).trim() : '';
+    termCell = (en && en !== 'Being checked' && en !== 'Unknown')
+      ? _narratorCell(_cleanNarratorString(en) || en)
+      : '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Narrator not yet identified)</div>';
+  }
+  return termCell +
+    '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>' +
+    '<div class="mon-chain" style="display:none;margin-top:8px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:4px">' +
+      '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.1em;color:rgba(212,175,55,0.85);text-transform:uppercase;margin-bottom:4px">Chain of Narration</div>' +
+      noteLine + rows +
+    '</div>';
+}
+
 function _narratorBlock(h){
+  if(Array.isArray(h.narrator_chain_full) && h.narrator_chain_full.length) return _fullChainHtml(h, true);
   var narrs = Array.isArray(h.narrators) ? h.narrators : [];
   if(!narrs.length){
     // Shia books + Sunni "Others" don't have structured narrators[] arrays.
@@ -2643,6 +2722,8 @@ function _monInfoHtml(){
       '</div>' +
       P('<span style="color:#A0AEC0">Planned:</span> L7 borrow the end narrator from the hadith before it in the same chapter when it is missing · L9 finer years for each Tabi’i · L10 caliph names in the text · L13 Shia rijal books to place each chain figure with an Imam.') +
 
+      P('Hadith numbers. Books number hadith in different ways. Our Sahih Muslim uses a running number (1 to 7,563); sunnah.com uses the Abd al-Baqi number, for example our #5582 is Sahih Muslim 2128. Our Sunan an-Nasa\u2019i numbers run up to 31 ahead of sunnah.com. Where they differ we show both, for example \u201c#5582 \u00B7 sunnah.com 2128\u201d, and a search finds either. The second number was found by matching the Arabic text with the open dataset fawazahmed0/hadith-api, checked against sunnah.com.') +
+
       H3('CHAIN OF NARRATION') +
       LI([
         G('Full chain, matched (31,639 · 41.2%).') + ' Click CHAIN to see each narrator with grade and death year. Matched names open TIMELINE.',
@@ -2650,7 +2731,7 @@ function _monInfoHtml(){
         G('No chain in this source (21,867 · 28.5%).') + ' The edition gives the text without its chain — common in compilations such as Riyad as-Salihin, Mishkat, Bulugh al-Maram and the Forty collections.',
         G('“Narrator not yet identified”') + ' means the end of the chain has not been matched to a known person. The Narrator filter lists these at the bottom.'
       ]) +
-      P('Six main Sunni books: we found that most stored narrator chains had been attached to the wrong hadith (a numbering mismatch between two sources). For 21,363 hadith the stored chain is now hidden and the chain is shown as written in the hadith\u2019s own Arabic text, without narrator dates or grades. 10,276 hadith keep their stored chain because it matches their text (a machine check, not yet a human check). The full repair is in progress.') +
+      P('Six main Sunni books, narrator chains. The narrator lists we first used came from another source that numbers the hadith differently, so most lists sat on the wrong hadith. We rebuilt every chain from the hadith\u2019s own Arabic text and matched each name to a narrator record. Then AI (Claude by Anthropic) checked every match, one chain at a time: 11,780 of 142,000 matches were wrong or doubtful and were removed. 137,206 of 188,983 names now have a record; the rest are shown as written in the Arabic. A fresh blind AI check of the result found 3 wrong and 7 doubtful out of 818 names (about 1 in 100). These checks are by AI, not yet by a human scholar.') +
       H3('HADITH GRADES') +
       P('Under a hadith, GRADES shows how named scholars graded it. We never make up a grade and never merge grades into one. Each line is one scholar\u2019s own grade, copied from a public source, with the book and number or page it is in. When scholars differ, every grade is shown.') +
       LI([
@@ -2981,7 +3062,11 @@ function _hsNorm(s){
 function _hsDocStr(h){
   if(h && typeof h._hsS === 'string') return h._hsS;
   var out = [], n = 0;
-  ['hadithEnglish','hadithArabic','englishNarrator','narrator','hadithNumber'].forEach(function(f){
+  // MUST stay identical to doc_words() in factory-scripts/build_hadith_search_index.py.
+  // Six main Sunni books (they carry narrator_chain_full): the stored `narrator` text is not a search word.
+  var _six = !!(h && Array.isArray(h.narrator_chain_full));
+  ['hadithEnglish','hadithArabic','englishNarrator','narrator','hadithNumber','sunnah_com_number'].forEach(function(f){
+    if(f === 'narrator' && _six) return;
     var v = h ? h[f] : null;
     if(typeof v === 'number') v = String(v);
     if(typeof v === 'string' && v.trim()){
@@ -3509,7 +3594,7 @@ function _renderRows(filtered, colKey, page){
     var _bmRibbon = '<svg width="12" height="16" viewBox="0 0 12 16" fill="' + (_bmFilled?'#D4AF37':'none') + '" stroke="#D4AF37" stroke-width="1.4"><path d="M1 1 L1 15 L6 11 L11 15 L11 1 Z"/></svg>';
     row.innerHTML =
       '<div><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px">' +
-        '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + '</span>' +
+        '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:rgba(212,175,55,0.85);letter-spacing:.06em">#' + esc(String(num)) + _secondNumHtml(h) + '</span>' +
         '<button class="mon-bmk-btn" data-bmkey="' + esc(_bmKey) + '" title="' + esc(_bmTitle) + '" style="background:none;border:none;cursor:pointer;padding:2px 4px;line-height:1">' + _bmRibbon + '</button>' +
       '</div>' +
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
@@ -3922,6 +4007,7 @@ function init(){
   }).then(function(data){
     var arr = (data && Array.isArray(data.narrators)) ? data.narrators : [];
     if(!arr.length) throw new Error('empty');
+    _narrEndNames = (data && data.id_names) || {};
     var known = [];
     var unknown = [];
     arr.forEach(function(n){
