@@ -2663,8 +2663,8 @@ function _monInfoHtml(){
       P('Every distinct end-of-chain narrator across all Sunni and Shia books, with the number of hadith for each. “Unknown Scholar” and “Being checked” = not yet matched; listed at the bottom.') +
 
       H3('TOPIC FILTER') +
-      P('Each hadith takes its topic from the chapter it sits in, folded into 43 topics. On 14 Nov 2026 the 1,212 chapters that had no clean topic were read by AI (chapter title and book) and given one, adding 9 topics: Life of the Prophet, Ziyarah, History and Companions, Imam Husayn and Karbala, Destiny (Qadar), Prophets and Earlier Nations, Tafsir, Illness and Visiting the Sick, Remembrance of Allah.') +
-      P('“Other” fell from 15,027 to 4,827 (14 Nov 2026), then to 0 (17 Nov 2026): a chapter whose title names no single subject (for example Musnad Ahmad, arranged by companion, or the Assemblies of al-Amali) shows its own chapter title as its topic.') +
+      P('Each hadith takes its topic from the chapter it sits in, folded into 43 topics. The 1,212 chapters that had no clean topic were read by AI (chapter title and book) and given one, adding 9 topics: Life of the Prophet, Ziyarah, History and Companions, Imam Husayn and Karbala, Destiny (Qadar), Prophets and Earlier Nations, Tafsir, Illness and Visiting the Sick, Remembrance of Allah.') +
+      P('“Other” fell from 15,027 to 4,827, then to 0: a chapter whose title names no single subject (for example Musnad Ahmad, arranged by companion, or the Assemblies of al-Amali) shows its own chapter title as its topic.') +
 
       P('In every collection each hadith\u2019s topic is the title of its chapter or book section, as given in the source edition; a hadith never shows the topic \u201cOther\u201d. Topic names that meant the same thing (for example \u201cPrayer\u201d and \u201cPrayers\u201d) were merged into one name, in all collections; two AI readers chose the merges and only merges both agreed on were made. The Topic filter groups these titles into the broader topics listed.') +
 
@@ -2701,7 +2701,7 @@ function _monInfoHtml(){
       P('<span style="color:#A0AEC0">Six main Sunni books (Bukhari, Muslim, Nasa\u2019i, Abu Dawud, Ibn Majah, Tirmidhi: 34,172 hadith).</span>') +
       LI([
         'Every hadith carries at least one concept.',
-        'The concept list has 611 concepts: 498 original and 113 added on 15 Nov 2026 for chapter topics that the list did not cover. Each concept has a short written summary. The 113 added concepts were approved by the app\u2019s editor; their summaries were written by AI and checked by a second AI reading.',
+        'The concept list has 611 concepts: 498 original and 113 added for chapter topics that the list did not cover. Each concept has a short written summary. The 113 added concepts were approved by the app\u2019s editor; their summaries were written by AI and checked by a second AI reading.',
         'Each chip has a letter showing how it was made:'
       ]) +
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">R (READ ONE BY ONE, TWICE)</h4>' +
@@ -2710,11 +2710,11 @@ function _monInfoHtml(){
         'It gives 1\u20133 concepts the hadith is clearly about, most specific first. A passing word does not count.',
         'Every hadith is read twice by separate AI readers who do not see each other\u2019s answers. A chip is shown only where both agree. Where they disagree, a third reading decides.',
         'Agreement between the two readings: Bukhari 91.4%, Muslim 95.7%, Nasa\u2019i 97.1%, Abu Dawud 94.4%, Ibn Majah 95.9%, Tirmidhi 96.4%.',
-        '26,855 hadith have R chips.'
+        '26,761 hadith have R chips.'
       ]) +
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">P (SAME TEXT AS THE HADITH BEFORE)</h4>' +
       LI([
-        'Some hadith repeat the hadith before them with another chain, and their own entry has no text, or only \u201cthe same as above\u201d. These 1,671 hadith show the R chips of the hadith they repeat, with the same strength.'
+        'Some hadith repeat the hadith before them with another chain, and their own entry has no text, or only \u201cthe same as above\u201d. These 1,649 hadith show the R chips of the hadith they repeat, with the same strength.'
       ]) +
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">L3 (ROOT WORD + YES/NO)</h4>' +
       LI([
@@ -2724,8 +2724,8 @@ function _monInfoHtml(){
         'Step 3: AI (Claude by Anthropic) read each candidate against the concept\u2019s summary and answered YES or NO. YES only if the hadith is about the concept or clearly teaches, commands, forbids, describes or illustrates it. A passing word gets NO.',
         'Every candidate was read by two separate AI readers who did not see each other\u2019s answers. Where they differed, a third reading decided.',
         '854,175 hadith\u2013concept pairs were read. The two readings agreed on 98.8% (every collection between 98.1% and 100%).',
-        'Result: 85,783 L3 chips on 52,332 hadith. Strong = both readings said YES (79,391). Low = a third reading decided (6,392).',
-        'Compared with the chips shown before: 49,527 old chips were confirmed, 36,256 chips are new. 596 old chips (559 R, 37 P) were removed because both readers said NO; the editor approved this on 22 Nov 2026. An old chip that only one reader rejected was kept. C chips were not touched. 72 hadith had lost their only chip; 49 of these were given the concept of their chapter title as a C chip (two AI readers, a third where they differed), the same way as all other C chips. For the next 23, whose chapter title names no concept, the hadith text was read again by two AI readers (a third where they differed): 15 got R chips this way; 4 got a Low C chip from the title of their book section. For the last 4 (three in al-Kafi volume 8, al-Rawda, and one in Riyad as-Salihin) neither the text read again, nor the chapter title, nor the book-section title gave a concept, so their old R chip was kept.',
+        'Result: 85,783 YES answers on 52,332 hadith. Strong = both readings said YES (79,391). Low = a third reading decided (6,392). 49,527 of them confirm a chip that was already shown (that chip keeps its letter). 36,256 are new chips, shown with the letter L3, on 23,785 hadith (six main books 11,513, other collections 12,272).',
+        'Compared with the chips shown before: 49,527 old chips were confirmed, 36,256 chips are new. 596 old chips (559 R, 37 P) were removed because both readers said NO; the editor approved this. An old chip that only one reader rejected was kept. C chips were not touched. 72 hadith had lost their only chip; 49 of these were given the concept of their chapter title as a C chip (two AI readers, a third where they differed), the same way as all other C chips. For the next 23, whose chapter title names no concept, the hadith text was read again by two AI readers (a third where they differed): 15 got R chips this way; 4 got a Low C chip from the title of their book section. For the last 4 (three in al-Kafi volume 8, al-Rawda, and one in Riyad as-Salihin) neither the text read again, nor the chapter title, nor the book-section title gave a concept, so their old R chip was kept.',
         'Check: an independent AI reading of 100 random answers (50 YES, 50 NO) agreed on 93.',
         'Limits:' +
           '<ul style="margin:4px 0 0;padding-left:20px">' +
@@ -2740,8 +2740,12 @@ function _monInfoHtml(){
         'The compilers and their classical editors arranged these books by chapter, and each chapter title names its subject. Every hadith also carries the concept of its chapter title.',
         'Two AI readers matched each chapter title to the concept list on their own; where they differed, a third reading decided. Where the chapter title matched nothing, the title of the book section was used instead.',
         'A C chip says what the chapter is about. It does not mean the hadith itself was read for that concept.',
-        '5,646 hadith have only C chips. For these, either no concept on the list fitted the text when it was read, or the entry has no text of its own.',
+        '3,527 hadith have only C chips (no R, P or L3 chip). For these, neither the reading nor the L3 check found a concept in the text, or the entry has no text of its own.',
         'Some C chips are a broader concept added because a narrower one sits under it (for example Trade and contracts above Sharecropping).'
+      ]) +
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">M (OLD WORD MATCH)</h4>' +
+      LI([
+        'An older English word-match left 9,134 tags in Bukhari, Tirmidhi, Muslim and Abu Dawud. They sat on 927 hadith numbers that this edition does not use, so they were never shown under a hadith, but they were counted in the concept filter. They have been removed.'
       ]) +
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">STRENGTH BADGE</h4>' +
       LI([
@@ -2755,11 +2759,11 @@ function _monInfoHtml(){
       LI([
         'The other 23 collections (al-Kafi, Man La Yahduruhu al-Faqih, Mishkat al-Masabih, Sunan al-Darimi, Muwatta Malik, Riyad as-Salihin, Bulugh al-Maram, Musnad Ahmad, al-Adab al-Mufrad, al-Khisal, al-Amali of al-Saduq and of al-Mufid, Kamal al-Din, Kamil al-Ziyarat, al-Tawhid, al-Ghayba of al-Numani, Kitab al-Zuhd, Kitab al-Mumin, al-Shamail, Fadail al-Shia and the three Forty Hadith books: 42,677 hadith) were tagged the same way as the six main books, with the same 611 concepts.',
         'Every hadith carries at least one concept.',
-        'R chips: every hadith was read twice by separate AI readers (Claude by Anthropic), a third reading decided where they disagreed. 39,994 hadith have R chips.',
+        'R chips: every hadith was read twice by separate AI readers (Claude by Anthropic), a third reading decided where they disagreed. 39,913 hadith have R chips.',
         'Agreement between the two readings: 96.9% overall. Lowest: Kitab al-Mumin 72.1%, Fadail al-Shia 91.1%, Kitab al-Zuhd 93.4%, Kamil al-Ziyarat 94.0%. All others 94.7% or higher.',
-        'P chips: 204 hadith whose entry has no text of its own show the R chips of the hadith before them.',
+        'P chips: 202 hadith whose entry has no text of its own show the R chips of the hadith before them.',
         'C chips: every hadith also carries the concept of its chapter title (two AI readers, third reading where they differed).',
-        '2,479 hadith have only C chips. For 1,575 of these neither the text nor the chapter title matched a concept, so the title of the book section was used (956 hadith); where the section title says nothing (for example \u201cContent\u201d or \u201cPart 3: On Three-Numbered Characteristics\u201d), one concept naming what the whole book is about was used (619 hadith, for example the Occultation for Kamal al-Din). These are the weakest chips: they say what the section or book is about, not what the hadith says. Book-rule chips always show the Low badge.'
+        '1,902 hadith have only C chips (no R, P or L3 chip). For 1,167 of these neither the text nor the chapter title matched a concept, so the title of the book section was used (726 hadith); where the section title says nothing (for example \u201cContent\u201d or \u201cPart 3: On Three-Numbered Characteristics\u201d), one concept naming what the whole book is about was used (441 hadith, for example the Occultation for Kamal al-Din). These are the weakest chips: they say what the section or book is about, not what the hadith says. Book-rule chips always show the Low badge.'
       ]) +
 
       // ── AI methodology disclosure ──
@@ -2768,17 +2772,17 @@ function _monInfoHtml(){
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">QURAN VERSES — NEW (LEVEL 3 METHOD)</h4>' +
       '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
-        '<li>475 concepts (list as of August 2026), each with a written summary.</li>' +
+        '<li>475 concepts (the list when this was done), each with a written summary.</li>' +
         '<li>Step 1: filter Quran to verses where the concept\'s Arabic root word appears (root match).</li>' +
         '<li>Step 2: AI reads each candidate verse against the concept summary and answers YES or NO.</li>' +
-        '<li>Only YES verses kept. Result: 1,446 verse links across 121 concepts (1,163 verses), after the 15 Nov 2026 merges of duplicate concepts. Every chip passed both steps.</li>' +
+        '<li>Only YES verses kept. Result: 1,446 verse links across 121 concepts (1,163 verses), after the merges of duplicate concepts. Every chip passed both steps.</li>' +
         '<li>Limit: a verse that teaches a concept without using its specific Arabic root is not tagged here. Surah Ikhlas (112) teaches tawhid but its text does not contain the root و-ح-د, so no tawhid chip. We chose narrow and provable over wide and loose.</li>' +
         '<li>Confidence stamp: medium_ai \u2014 one AI judgement under a clear rule. Not yet reviewed by a human scholar.</li>' +
       '</ul>' +
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">HADITH</h4>' +
       '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
-        '<li>Hadith chips come in four kinds: R (each hadith read whole, twice), L3 (root word + YES/NO, the same method as the Quran, 22 Nov 2026), C (chapter title) and P (copied from the hadith before). See CONCEPT CHIPS above.</li>' +
+        '<li>Hadith chips come in four kinds: R (each hadith read whole, twice), L3 (root word + YES/NO, the same method as the Quran), C (chapter title) and P (copied from the hadith before). See CONCEPT CHIPS above.</li>' +
       '</ul>' +
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">TAFSIR</h4>' +
@@ -2801,7 +2805,7 @@ function _monInfoHtml(){
         '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-high">AI</span><span><strong style="color:#d4af37">High confidence</strong> (score 4–5) — gold solid badge. Strong match — both AI readings agreed.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-med">AI</span><span><strong style="color:#bca066">Medium confidence</strong> (score 3) — dim gold badge. Settled by a third AI reading.</span></div>' +
         '<div style="display:flex;align-items:center;gap:10px"><span class="ai-flag ai-flag-low">AI</span><span><strong style="color:#9aa3b2">Low confidence</strong> (score 1–2) — faint badge. Exploratory.</span></div>' +
-        '<div style="margin-top:6px;color:#A0AEC0;font-size:11px;line-height:1.5">Where the score comes from \u2014 Quran: one AI judgement (medium_ai). Hadith, six main books: the STRENGTH BADGE above (R, P and C chips). Hadith, other collections: no score (the chip shows only its letter).</div>' +
+        '<div style="margin-top:6px;color:#A0AEC0;font-size:11px;line-height:1.5">Where the score comes from \u2014 Quran: one AI judgement (medium_ai). Hadith: the STRENGTH BADGE above (R, L3, P and C chips).</div>' +
         '<div style="margin-top:6px;color:#A0AEC0;font-size:11px;font-style:italic">Source text itself (Quran, hadith, tafsir text) and figure data (Wikipedia / Wikidata) are not AI-generated and carry no badge.</div>' +
       '</div>';
 }
@@ -4081,7 +4085,7 @@ function init(){
                 var cnote = document.createElement('div');
                 cnote.className = 'mon-concept-note';
                 cnote.style.cssText = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
-                cnote.textContent = 'Every hadith has at least one concept. Letter R = read one by one by AI (six main books: twice); C = from the chapter title; P = same text as the hadith before. Six main books also show strength: Strong, Medium, Low. A guide, not a citation.';
+                cnote.textContent = 'Every hadith has at least one concept. Letter R = read one by one by AI, twice; L3 = root word + AI YES/NO, two readings; C = from the chapter title; P = same text as the hadith before. Chips also show strength: Strong, Medium, Low. A guide, not a citation.';
                 panel.insertBefore(cnote, panel.firstChild);
               }
             }catch(e){ console.warn('[MON] concept dropdown build failed', e); }
