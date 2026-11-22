@@ -1245,7 +1245,7 @@ function _drillShowInlineHadiths(earliest, latest){
           '<div class="mon-drill-inline-col-a">' + colA + xrefSlot + '</div>' +
           '<div class="mon-drill-inline-col-b">' +
             '<div style="font-size:var(--fs-3);color:#E5E7EB;line-height:1.55">' + esc(text) + '</div>' +
-            _datingLine(h) +
+            _addedBox(_datingLine(h)) +
           '</div>' +
         '</div>';
       }
@@ -2126,6 +2126,12 @@ function _narratorBlock(h){
 // Honest labels: DATED BY EVENT / DATED BY NARRATOR / TEXT CLUE ONLY / NOT DATED.
 // NOT DATED = only the broad fallback or the chain ceiling applied, so no range is
 // shown; only the latest date it must have existed by (the compiler's death).
+// Added notes under a hadith (22 Nov 2026): dating and grades sit in ONE block with a
+// thin line on top and on the left, so they read apart from the hadith text itself.
+// Two text styles only: grey (labels, sources) and _AD_V (values). No capitals.
+var _AD_BOX = 'margin-top:10px;padding:6px 0 2px 10px;border-top:1px solid rgba(160,174,192,0.35);border-left:1px solid rgba(160,174,192,0.35);direction:ltr;text-align:left;font-family:\'Lato\',sans-serif;font-size:calc(var(--fs-3) * 0.92);line-height:1.6;letter-spacing:0;text-transform:none;font-weight:400;color:rgba(160,174,192,0.85)';
+var _AD_V = 'color:#E5E7EB;font-weight:600';
+function _addedBox(inner){ return '<div class="mon-added" style="' + _AD_BOX + '">' + inner + '</div>'; }
 function _datingLine(h){
   var kind = _monDateKind(h);
   var ks = DATE_KIND_STYLES[kind];
@@ -2133,16 +2139,17 @@ function _datingLine(h){
   var parts;
   if(kind === 'none'){
     var by = d.must_exist_by;
-    parts = by ? '<span>Written down by ' + esc(String(by)) + ' CE</span>' : '';
+    parts = by ? 'Written down by <span style="' + _AD_V + '">' + esc(String(by)) + ' CE</span> \u00B7 ' : '';
   } else {
     var rb = d.range_best || d.range_safe || d.range;
-    parts = '<span>Tentative dating</span>' +
-      '<span style="color:rgba(255,255,255,0.3)">\u00B7</span>' +
-      '<span>' + esc('~' + rb.earliest + '\u2013' + rb.latest + ' CE') + '</span>';
+    parts = 'Tentative dating \u00B7 <span style="' + _AD_V + '">' + esc('~' + rb.earliest + '\u2013' + rb.latest + ' CE') + '</span> \u00B7 ';
   }
-  return '<div class="mon-dating" style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:\'Lato\',sans-serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;color:rgba(160,174,192,0.8)">' +
+  var kl = ks.label.charAt(0) + ks.label.slice(1).toLowerCase();
+  return '<div class="mon-dating">' +
     parts +
-    '<span class="mon-conf-badge" title="What this date rests on. See the INFORMATION page." style="padding:2px 7px;border-radius:3px;font-size:var(--fs-3);font-weight:600;letter-spacing:.08em;background:' + ks.bg + ';color:' + ks.text + '">' + ks.label + '</span>' +
+    '<span class="mon-conf-badge" title="What this date rests on. See the INFORMATION page." style="white-space:nowrap">' +
+      '<span style="display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;background:' + ks.bg + '"></span>' +
+      '<span style="' + _AD_V + '">' + kl + '</span></span>' +
     '</div>';
 }
 
@@ -2178,12 +2185,11 @@ function _gradeSlot(h){
 }
 function _gradeLineHtml(name, label, text, src){
   var shown = label ? esc(label) : '';
-  var ar = text ? '<span dir="auto" style="font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;font-size:15px;color:#E5E7EB;text-transform:none;letter-spacing:0">' + esc(text) + '</span>' : '';
-  return '<div style="margin-top:3px;line-height:1.6">' +
-    '<span style="color:#D4AF37;font-weight:600">' + esc(name) + ':</span> ' +
-    (shown ? '<span style="color:#FFFFFF;font-weight:600">' + shown + '</span> ' : '') +
+  var ar = text ? '<span dir="auto" style="font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;font-size:1.1em;color:#E5E7EB">' + esc(text) + '</span>' : '';
+  return '<div>' +
+    '<span style="' + _AD_V + '">' + esc(name) + ':' + (shown ? ' ' + shown : '') + '</span> ' +
     ar +
-    (src ? ' <span style="color:rgba(160,174,192,0.75)">· ' + esc(src) + '</span>' : '') +
+    (src ? ' \u00B7 ' + esc(src) : '') +
     '</div>';
 }
 function _populateGradeSlots(container){
@@ -2220,8 +2226,8 @@ function _populateGradeSlots(container){
   });
 }
 function _gradeBox(inner){
-  return '<div style="margin-top:8px;padding:6px 10px;border-left:2px solid rgba(212,175,55,0.45);font-family:\'Lato\',sans-serif;font-size:var(--fs-3);color:rgba(229,231,235,0.9)">' +
-    '<div style="font-family:\'Cinzel\',serif;letter-spacing:.1em;color:rgba(212,175,55,0.8)">GRADES · <span style="font-family:\'Lato\',sans-serif;letter-spacing:.02em;color:rgba(160,174,192,0.8);text-transform:none">each scholar’s own grade, with its source</span></div>' +
+  return '<div style="margin-top:4px">' +
+    '<div>Grades \u00B7 each scholar\u2019s own grade, with its source</div>' +
     inner + '</div>';
 }
 
@@ -3492,7 +3498,7 @@ function _renderRows(filtered, colKey, page){
       '<div style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;text-transform:uppercase;color:rgba(212,175,55,0.65)">' + esc(label) + '</div>' +
       topicHtml + periodHtml + xrefSlotHtml + '</div>' +
       '<div class="mon-narrator">' + _narratorBlock(h) + '</div>' +
-      '<div style="font-size:' + (_monLang==='ar'?'20px':(_monLang==='ur'?'18px':'var(--fs-3)')) + ';color:#E5E7EB;line-height:' + (_monLang==='en'?'1.5':'2') + ';' + (_monLang==='ar'||_monLang==='ur'?'direction:rtl;text-align:right;font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;':'') + '">' + esc(text || '(no '+_monLang.toUpperCase()+' text)') + _datingLine(h) + _gradeSlot(h) + '</div>';
+      '<div style="font-size:' + (_monLang==='ar'?'20px':(_monLang==='ur'?'18px':'var(--fs-3)')) + ';color:#E5E7EB;line-height:' + (_monLang==='en'?'1.5':'2') + ';' + (_monLang==='ar'||_monLang==='ur'?'direction:rtl;text-align:right;font-family:\'Noto Naskh Arabic\',\'Amiri\',serif;':'') + '">' + esc(text || '(no '+_monLang.toUpperCase()+' text)') + _addedBox(_datingLine(h) + _gradeSlot(h)) + '</div>';
     frag.appendChild(row);
   }
 
