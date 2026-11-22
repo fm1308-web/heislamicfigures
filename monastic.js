@@ -231,11 +231,17 @@ var DATE_KIND_STYLES = {
   clue:     {bg:'#5C7A8C', text:'#FFFFFF', label:'TEXT CLUE ONLY'},
   none:     {bg:'#555',    text:'#E5E7EB', label:'NOT DATED'}
 };
+// Six main Sunni books (22 Nov 2026): the stored narrator chain of many hadith sat on the
+// wrong hadith (numbering mismatch between two sources). Those lists are kept in the data as
+// narrators_unverified and are NOT used: no chain rows, no end narrator, no narrator dating.
+function _narrHidden(h){ return !!(h && Array.isArray(h.narrators_unverified) && h.narrators_unverified.length); }
 function _monDateKind(h){
   var d = (h && h.dating) || {};
   var rb = d.range_best || d.range_safe || d.range;
   if(!rb || rb.earliest == null || rb.latest == null) return 'none';
   var L = d.layers_applied || [];
+  // The date was worked out with the hidden chain (layers L1 / L12): show "not dated" instead.
+  if(_narrHidden(h) && (L.indexOf('L1') !== -1 || L.indexOf('L12') !== -1)) return 'none';
   var ev = d.evidence || [];
   for(var i = 0; i < ev.length; i++){
     var e = ev[i];
@@ -1695,6 +1701,12 @@ function getText(h){
   return getField(h, ['matn_en','hadithEnglish','text','english','body','hadith_text']);
 }
 function getNarrator(h){
+  if(_narrHidden(h)){
+    // Same rule as the NARRATOR column: the source's own end-narrator field, or nothing.
+    var en0 = h.englishNarrator ? String(h.englishNarrator).trim() : '';
+    if(!en0 || en0 === 'Being checked' || en0 === 'Unknown') return '';
+    return _cleanNarratorString(en0) || en0;
+  }
   var narrs = h.narrators;
   if(Array.isArray(narrs) && narrs.length){
     var last = narrs[narrs.length - 1];
@@ -2638,6 +2650,7 @@ function _monInfoHtml(){
         G('No chain in this source (21,867 · 28.5%).') + ' The edition gives the text without its chain — common in compilations such as Riyad as-Salihin, Mishkat, Bulugh al-Maram and the Forty collections.',
         G('“Narrator not yet identified”') + ' means the end of the chain has not been matched to a known person. The Narrator filter lists these at the bottom.'
       ]) +
+      P('Six main Sunni books: we found that most stored narrator chains had been attached to the wrong hadith (a numbering mismatch between two sources). For 21,363 hadith the stored chain is now hidden and the chain is shown as written in the hadith\u2019s own Arabic text, without narrator dates or grades. 10,276 hadith keep their stored chain because it matches their text (a machine check, not yet a human check). The full repair is in progress.') +
       H3('HADITH GRADES') +
       P('Under a hadith, GRADES shows how named scholars graded it. We never make up a grade and never merge grades into one. Each line is one scholar\u2019s own grade, copied from a public source, with the book and number or page it is in. When scholars differ, every grade is shown.') +
       LI([
