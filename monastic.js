@@ -507,7 +507,9 @@ var _drillSplitMenu = null;
 
 function _drillFetch(){
   if(_drillAllHadith) return Promise.resolve(_drillAllHadith);
-  return fetchAll().then(function(all){ _drillAllHadith = all; return all; });
+  return fetchAll().then(function(all){
+    return _grLoadAll().then(function(){ _drillAllHadith = all; return all; });
+  });
 }
 
 function _drillTierOf(h){
@@ -552,6 +554,7 @@ function _drillApplyPath(list){
         var n = (getNarrator(h) || '').toLowerCase();
         return n.indexOf(step.value.toLowerCase()) !== -1;
       }
+      if(step.splitBy.indexOf('grade:') === 0) return step.value !== null && _grHas(h, step.splitBy.slice(6), step.value);
       return true;
     });
   });
@@ -564,13 +567,18 @@ function _drillUsedSplits(){
 
 function _drillAvailableSplits(){
   var used = _drillUsedSplits();
-  return ['topic','narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
+  var out = ['topic','narrator','collection'].filter(function(k){ return used.indexOf(k) === -1; });
+  // Grade: one scholar per path (22 Nov 2026).
+  if(_grStats && !used.some(function(k){ return String(k).indexOf('grade:') === 0; })) out.push('grade');
+  return out;
 }
 
 function _drillSplitLabel(k){
   if(k === 'topic') return 'Topic';
   if(k === 'narrator') return 'Narrator';
   if(k === 'collection') return 'Collection';
+  if(k === 'grade') return 'Grade';
+  if(k && String(k).indexOf('grade:') === 0) return 'Grade \u00B7 ' + _grName(String(k).slice(6));
   return k;
 }
 
@@ -746,6 +754,7 @@ function _drillAllColumnsHtml(col1Hadiths, tierColorMap, primaryMeta){
         var n = (getNarrator(h) || '').toLowerCase();
         return n.indexOf(step.value.toLowerCase()) !== -1;
       }
+      if(step.splitBy.indexOf('grade:') === 0) return _grHas(h, step.splitBy.slice(6), step.value);
       return true;
     });
 
@@ -766,8 +775,10 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
     : (step.sourceEarliest + '\u2013' + step.sourceLatest + ' CE');
 
   var counts = {};
+  var _isG = step.splitBy.indexOf('grade:') === 0, _gWho = _isG ? step.splitBy.slice(6) : '';
   sourceHadiths.forEach(function(h){
     var v;
+    if(_isG){ _grWordsOf(h, _gWho).forEach(function(w){ counts[w] = (counts[w] || 0) + 1; }); return; }
     if(step.splitBy === 'topic') v = _cleanTopic(h);
     else if(step.splitBy === 'collection') v = h._colKey;
     else if(step.splitBy === 'narrator') v = _stripArabic((getNarrator(h) || '').split('(')[0].trim()) || 'Unknown';
@@ -783,12 +794,15 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
 
   var header =
     '<div style="margin-bottom:10px;font-size:var(--fs-3);color:rgba(160,174,192,0.75);padding-bottom:6px;border-bottom:1px solid rgba(' + rgbAccent + ',0.1);display:flex;align-items:baseline;gap:8px">' +
-      '<span>' + sourceHadiths.length.toLocaleString() + ' hadiths \u00B7 ' + options.length + ' ' + esc(_drillSplitLabel(step.splitBy).toLowerCase()) + 's</span>' +
+      '<span>' + sourceHadiths.length.toLocaleString() + ' hadiths \u00B7 ' + options.length + ' ' + (_isG ? 'grade words' : esc(_drillSplitLabel(step.splitBy).toLowerCase()) + 's') + '</span>' +
       '<button class="mon-drill-step-close" data-step-index="' + step.sourceColumn + '" type="button" style="margin-left:auto;padding:2px 8px;background:transparent;border:1px solid rgba(' + rgbAccent + ',0.4);border-radius:2px;color:' + accentColor + ';font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.06em;text-transform:uppercase;cursor:pointer">\u2715</button>' +
     '</div>';
 
   var warn = '';
-  if(totalSum !== sourceHadiths.length){
+  if(_isG){
+    var _gNone = sourceHadiths.filter(function(h){ return !_grHas(h, _gWho, null); }).length;
+    if(_gNone) warn = '<div style="font-size:var(--fs-3);color:#B45454;margin-bottom:6px">Note: ' + _gNone.toLocaleString() + (_gWho === _GR_NONE ? ' hadiths here have a GRADES line.' : ' hadiths here have no grade by ' + esc(_grName(_gWho)) + '.') + '</div>';
+  } else if(totalSum !== sourceHadiths.length){
     warn = '<div style="font-size:var(--fs-3);color:#B45454;margin-bottom:6px">Note: ' + (sourceHadiths.length - totalSum) + ' hadiths have no ' + esc(step.splitBy) + ' value.</div>';
   }
 
@@ -814,7 +828,7 @@ function _drillExpandColumnHtml(step, sourceHadiths, accentColor){
         'position:absolute;top:' + top + 'px;left:0;right:0;height:' + TILE_H + 'px;' +
         'background:transparent;border:3px solid ' + accentColor + ';border-radius:3px;overflow:hidden;display:flex;flex-direction:column;' + selectedGlow + dimStyle + '">' +
         '<div style="padding:4px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex:1">' +
-          '<span style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);color:#E5E7EB;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(_drillValueLabel(step.splitBy, o.value)) + '</span>' +
+          '<span style="font-family:\'Lato\',sans-serif;font-size:var(--fs-3);color:#E5E7EB;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="' + esc(_drillValueLabel(step.splitBy, o.value)) + '">' + esc(_drillValueLabel(step.splitBy, o.value)) + '</span>' +
           '<span style="font-family:\'Cinzel\',serif;font-size:var(--fs-3);color:#FFFFFF;font-weight:700;flex:none">' + o.count.toLocaleString() + '</span>' +
         '</div>' +
         '<div style="display:flex;gap:0;flex:none;border-top:1px solid rgba(' + rgbAccent + ',0.25)">' +
@@ -1008,6 +1022,14 @@ function _drillShowSplitMenu(anchorBtn, columnIndex, groupKey, available, onPick
     b.onmouseenter = function(){ b.style.background = 'rgba(212,175,55,0.15)'; };
     b.onmouseleave = function(){ b.style.background = 'transparent'; };
     b.onclick = function(){
+      if(k === 'grade'){
+        _drillGradeMenu(menu, function(k2){
+          menu.remove();
+          if(typeof onPick === 'function') onPick(k2);
+          else _drillAdvanceToSplitValue(columnIndex, groupKey, k2, tileColor);
+        });
+        return;
+      }
       menu.remove();
       if(typeof onPick === 'function'){
         onPick(k);
@@ -2203,6 +2225,294 @@ function _gradeBox(inner){
     inner + '</div>';
 }
 
+// ── Grades in filters, GUIDED and DRILL (22 Nov 2026) ───────────────────
+// One scholar at a time. A "word" is that scholar's short grade label exactly
+// as the GRADES box shows it. Lines with no short label are one choice per
+// scholar ("Own words only"); "Not graded here" = no GRADES line at all.
+// Words of different scholars are never put together, and nothing is ranked.
+var _grAllP = null, _grIx = null, _grData = {}, _grStats = null, _grFailed = false;
+var _monGrade = { who: null, words: new Set() };
+var _GR_OWN = 'Own words only (no short label)';
+var _GR_NONE = '__none__', _GR_NONE_LABEL = 'Not graded here';
+// The short label; a line with no short label counts under the one choice _GR_OWN (Adam, 22 Nov 2026).
+// Exact wordings counted under one choice (grades/word_groups.json; decided wording by wording, 22 Nov 2026).
+// Anything not listed there stays as written. The GRADES box always shows the wording as written.
+var _grGroups = {};
+function _grLoadGroups(){
+  return fetch(dataUrl(_GR_BASE + 'word_groups.json')).then(function(r){
+    if(!r.ok) throw new Error('word_groups ' + r.status);
+    return r.json();
+  }).then(function(j){ _grGroups = (j && j.groups) || {}; })
+    .catch(function(e){ console.warn('[grades] word_groups.json not loaded; wordings listed as written', e); _grGroups = {}; });
+}
+function _grWord(t){
+  if(!t) return '';
+  if(t[2]){ var gm = _grGroups[t[0]]; return (gm && gm[t[2]]) || t[2]; }
+  return t[1] ? _GR_OWN : '';
+}
+function _grLoadAll(){
+  if(!_grAllP){
+    _grAllP = _grIndex().then(function(ix){
+      if(!ix){ _grAllP = null; return null; }
+      return _grLoadGroups().then(function(){ return Promise.all((ix.files || []).map(function(f){
+        return _grFile(f).then(function(d){ return { f: f, g: (d && d.g) || null }; });
+      })); }).then(function(parts){
+        var data = {}, by = {}, order = [], missing = 0;
+        function slot(key, name){
+          if(!by[key]){ by[key] = { key: key, n: name, files: {}, total: 0, words: {}, book: false, src: '' }; order.push(key); }
+          return by[key];
+        }
+        Object.keys(ix.books || {}).forEach(function(f){
+          (ix.books[f] || []).forEach(function(b){
+            var s = slot(b[0], (ix.bookgraders && ix.bookgraders[b[0]]) || b[0]);
+            s.book = true; s.total = null; s.src = b[3] || ''; s.files[f] = true; s.words[_grWord(b)] = null;
+          });
+        });
+        Object.keys(ix.graders || {}).forEach(function(k){ slot(k, ix.graders[k].n || k); });
+        parts.forEach(function(p){
+          if(!p.g){ missing++; return; }
+          data[p.f] = p.g;
+          Object.keys(p.g).forEach(function(id){
+            var seenWho = {}, seenWord = {};
+            (p.g[id] || []).forEach(function(t){
+              var s = slot(t[0], t[0]);
+              if(s.book) return;
+              s.files[p.f] = true;
+              if(!seenWho[t[0]]){ seenWho[t[0]] = true; s.total++; }
+              var w = _grWord(t), wk = t[0] + '\u0001' + w;
+              if(w && !seenWord[wk]){ seenWord[wk] = true; s.words[w] = (s.words[w] || 0) + 1; }
+            });
+          });
+        });
+        // A grade file that did not load would make every count wrong: show nothing instead.
+        if(missing){ console.warn('[grades] ' + missing + ' grade file(s) not loaded; Grades filter not shown'); _grAllP = null; return null; }
+        _grIx = ix; _grData = data;
+        _grStats = { by: by, order: order.filter(function(k){ return by[k].book || by[k].total > 0; }) };
+        return _grStats;
+      });
+    });
+  }
+  return _grAllP;
+}
+function _grLines(h){
+  if(!h || !h._gf || !_grIx) return null;
+  if(_grIx.books && _grIx.books[h._gf]) return _grIx.books[h._gf];
+  var g = _grData[h._gf];
+  return g ? (g[(h.id != null) ? String(h.id) : ''] || null) : null;
+}
+// words: null = any grade by this scholar; a string = that word; a Set = any of those words (empty Set = any).
+function _grHas(h, who, words){
+  var l = _grLines(h);
+  if(who === _GR_NONE) return !l || !l.length;
+  if(!l) return false;
+  for(var i = 0; i < l.length; i++){
+    if(l[i][0] !== who) continue;
+    if(words == null) return true;
+    var w = _grWord(l[i]);
+    if(typeof words === 'string'){ if(w === words) return true; }
+    else if(words.size === 0 || words.has(w)) return true;
+  }
+  return false;
+}
+function _grWordsOf(h, who){
+  var l = _grLines(h), out = [];
+  if(who === _GR_NONE) return (!l || !l.length) ? [_GR_NONE_LABEL] : out;
+  if(!l) return out;
+  for(var i = 0; i < l.length; i++){
+    if(l[i][0] !== who) continue;
+    var w = _grWord(l[i]);
+    if(w && out.indexOf(w) === -1) out.push(w);
+  }
+  return out;
+}
+function _grName(who){ return who === _GR_NONE ? _GR_NONE_LABEL : ((_grStats && _grStats.by[who] && _grStats.by[who].n) || who); }
+function _grActive(){ return !!_monGrade.who; }
+// Books that hold grades by this scholar (so a Grades pick does not download every book).
+function _grColKeys(who){
+  if(who === _GR_NONE){
+    // Every book except those graded as a whole book by their author.
+    var wb = (_grIx && _grIx.books) || {};
+    return COLLECTIONS.filter(function(c){
+      var fl0 = Array.isArray(c.files) ? c.files : (c.file ? [c.file] : []);
+      return !fl0.length || !fl0.every(function(f){ return !!wb[String(f).split('/').pop()]; });
+    }).map(function(c){ return c.key; });
+  }
+  var s = _grStats && _grStats.by[who];
+  if(!s) return [];
+  return COLLECTIONS.filter(function(c){
+    var fl = Array.isArray(c.files) ? c.files : (c.file ? [c.file] : []);
+    return fl.some(function(f){ return !!s.files[String(f).split('/').pop()]; });
+  }).map(function(c){ return c.key; });
+}
+function _grSyncBtn(){
+  var on = _grActive();
+  var btn = document.getElementById('mon-gradeBtn');
+  var cnt = document.getElementById('mon-gradeCount');
+  var dot = document.getElementById('mon-gradeDot');
+  var allCk = document.getElementById('mon-gradeAllCk');
+  if(btn) btn.classList.toggle('filtered', on);
+  if(cnt){ cnt.textContent = on ? String(_monGrade.words.size || 1) : ''; cnt.style.display = on ? '' : 'none'; }
+  if(dot) dot.style.display = on ? 'inline-block' : 'none';
+  if(allCk) allCk.textContent = on ? '' : '\u2713';
+  document.querySelectorAll('.zb-select').forEach(function(b){
+    if(b.getAttribute('data-i18n') === 'Grades') b.classList.toggle('filtered', on);
+  });
+}
+function _grClear(apply){
+  _monGrade.who = null;
+  _monGrade.words.clear();
+  _grBuildPanel();
+  _grSyncBtn();
+  if(apply) _applyAllFilters();
+}
+var _GR_ITEM_CSS = 'white-space:normal;word-break:break-word;line-height:1.35;padding-top:6px;padding-bottom:6px';
+var _GR_NOTE_CSS = 'padding:8px 12px;font-size:11px;line-height:1.45;color:#A0AEC0;background:rgba(212,175,55,0.05);border-bottom:1px solid rgba(212,175,55,0.15);font-family:Lato,sans-serif';
+function _grBuildPanel(){
+  var panel = document.getElementById('mon-gradePanel');
+  if(!panel) return;
+  panel.querySelectorAll('.mon-gr-el').forEach(function(el){ el.remove(); });
+  function add(el){ el.classList.add('mon-gr-el'); panel.appendChild(el); return el; }
+  function note(txt){
+    var d = document.createElement('div');
+    d.style.cssText = _GR_NOTE_CSS;
+    d.textContent = txt;
+    return add(d);
+  }
+  function item(label, on, fn){
+    var el = document.createElement('div');
+    el.className = 'dd-item' + (on ? ' selected' : '');
+    el.style.cssText = _GR_ITEM_CSS;
+    el.innerHTML = '<div class="dd-checkbox">' + (on ? '\u2713' : '') + '</div><span dir="auto">' + esc(label) + '</span>';
+    // stopPropagation: the list is rebuilt on click, and the outside-click closers must not see a detached target.
+    el.onclick = function(ev){ ev.stopPropagation(); fn(el); };
+    return add(el);
+  }
+  function mark(el, on){
+    el.classList.toggle('selected', on);
+    var ck = el.querySelector('.dd-checkbox');
+    if(ck) ck.textContent = on ? '\u2713' : '';
+  }
+  if(!_grStats){
+    note(_grFailed ? 'Grades could not be loaded. Close this list and open it again.' : 'Loading grades\u2026');
+    return;
+  }
+  if(!_monGrade.who){
+    note('Pick one scholar, then that scholar\u2019s grade words. Each word is the scholar\u2019s own grade, as shown in the GRADES box under a hadith. Grades of different scholars are never mixed. Hadith the scholar did not grade are left out.');
+    _grStats.order.forEach(function(k){
+      var s = _grStats.by[k];
+      item(s.n + (s.total != null ? ' (' + s.total.toLocaleString() + ')' : ' (whole book)'), false, function(){
+        _monGrade.who = k;
+        _monGrade.words.clear();
+        _grBuildPanel();
+        _grSyncBtn();
+        _applyAllFilters();
+      });
+    });
+    item(_GR_NONE_LABEL + ' (hadith with no GRADES line)', false, function(){
+      _monGrade.who = _GR_NONE;
+      _monGrade.words.clear();
+      _grBuildPanel();
+      _grSyncBtn();
+      _applyAllFilters();
+    });
+    return;
+  }
+  if(_monGrade.who === _GR_NONE){
+    item('\u2190 Other scholars', false, function(){ _grClear(true); });
+    note('Hadith that have no GRADES line. That says nothing about their strength. With no book picked this reads every book except Sahih al-Bukhari and Sahih Muslim, so the first time is slow.');
+    item(_GR_NONE_LABEL, true, function(){});
+    return;
+  }
+  var who = _monGrade.who, s = _grStats.by[who];
+  if(!s){ _monGrade.who = null; _monGrade.words.clear(); _grBuildPanel(); return; }
+  item('\u2190 Other scholars', false, function(){ _grClear(true); });
+  note(s.book
+    ? (s.n + ' \u2014 ' + s.src + '. Shown on every hadith in the book.')
+    : ('Grade words of ' + s.n + ', as shown in the GRADES box. Tick one or more. Nothing ticked = every hadith graded by ' + s.n + '.' + (s.words[_GR_OWN] ? ' \u201C' + _GR_OWN + '\u201D = grades with no short label; the words themselves are in the GRADES box.' : '') + (_grGroups[who] ? ' Wordings that differ only in typing are one choice here; the GRADES box shows each as written.' : '')));
+  var si = document.createElement('input');
+  si.type = 'text'; si.className = 'dd-search'; si.placeholder = 'Search...';
+  si.onclick = function(ev){ ev.stopPropagation(); };
+  si.oninput = function(){
+    var q = si.value.toLowerCase();
+    panel.querySelectorAll('.mon-gr-word').forEach(function(el){
+      el.style.display = el.innerText.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+    });
+  };
+  add(si);
+  var anyEl = item('Any grade by ' + s.n + (s.total != null ? ' (' + s.total.toLocaleString() + ')' : ''), _monGrade.words.size === 0, function(){
+    _monGrade.words.clear();
+    panel.querySelectorAll('.mon-gr-word').forEach(function(el){ mark(el, false); });
+    mark(anyEl, true);
+    _grSyncBtn();
+    _applyAllFilters();
+  });
+  var ws = Object.keys(s.words).map(function(w){ return { w: w, n: s.words[w] }; });
+  ws.sort(function(a, b){
+    if((b.n || 0) !== (a.n || 0)) return (b.n || 0) - (a.n || 0);
+    return a.w.localeCompare(b.w);
+  });
+  ws.forEach(function(o){
+    var el = item(o.w + (o.n != null ? ' (' + o.n.toLocaleString() + ')' : ''), _monGrade.words.has(o.w), function(self){
+      if(_monGrade.words.has(o.w)) _monGrade.words.delete(o.w); else _monGrade.words.add(o.w);
+      mark(self, _monGrade.words.has(o.w));
+      mark(anyEl, _monGrade.words.size === 0);
+      _grSyncBtn();
+      _applyAllFilters();
+    });
+    el.classList.add('mon-gr-word');
+  });
+}
+function _grEnsurePanel(){
+  var panel = document.getElementById('mon-gradePanel');
+  if(!panel) return;
+  if(_grStats){ if(!panel.querySelector('.mon-gr-el')) _grBuildPanel(); return; }
+  _grFailed = false;
+  _grBuildPanel();
+  _grLoadAll().then(function(st){ _grFailed = !st; _grBuildPanel(); });
+}
+// GUIDED, Grade step: scholars first (who = null), then that scholar's words. One pass over the list.
+function _wizardGradeOpts(base, who){
+  if(!base || !_grStats) return [];
+  var counts = {};
+  base.forEach(function(h){
+    var l = _grLines(h);
+    if(!l || !l.length){ if(!who) counts[_GR_NONE] = (counts[_GR_NONE] || 0) + 1; return; }
+    if(who === _GR_NONE) return;
+    var seen = {};
+    for(var i = 0; i < l.length; i++){
+      var k = who ? (l[i][0] === who ? _grWord(l[i]) : '') : l[i][0];
+      if(k && !seen[k]){ seen[k] = true; counts[k] = (counts[k] || 0) + 1; }
+    }
+  });
+  return Object.keys(counts).map(function(k){ return { value: k, label: who ? k : _grName(k), n: counts[k] }; });
+}
+// DRILL, "Split by Grade": second menu, one scholar.
+function _drillGradeMenu(menu, cb){
+  while(menu.firstChild) menu.removeChild(menu.firstChild);
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;color:rgba(212,175,55,0.7);text-transform:uppercase;padding:4px 8px 2px';
+  hd.textContent = 'Grade by';
+  menu.appendChild(hd);
+  ((_grStats && _grStats.order) || []).forEach(function(k){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.style.cssText = 'padding:6px 12px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;color:#E5E7EB;font-family:\'Lato\',sans-serif;font-size:var(--fs-3);cursor:pointer;text-align:left';
+    b.textContent = _grName(k);
+    b.onmouseenter = function(){ b.style.background = 'rgba(212,175,55,0.15)'; };
+    b.onmouseleave = function(){ b.style.background = 'transparent'; };
+    b.onclick = function(){ cb('grade:' + k); };
+    menu.appendChild(b);
+  });
+  var nb = document.createElement('button');
+  nb.type = 'button';
+  nb.style.cssText = 'padding:6px 12px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;color:#E5E7EB;font-family:\'Lato\',sans-serif;font-size:var(--fs-3);cursor:pointer;text-align:left';
+  nb.textContent = _GR_NONE_LABEL;
+  nb.onmouseenter = function(){ nb.style.background = 'rgba(212,175,55,0.15)'; };
+  nb.onmouseleave = function(){ nb.style.background = 'transparent'; };
+  nb.onclick = function(){ cb('grade:' + _GR_NONE); };
+  menu.appendChild(nb);
+}
+
 // ── Timeline band ── (REMOVED — hidden always per user rule)
 function _buildBand(){
   if(_bandEl){ _bandEl.style.display = 'none'; }
@@ -2322,7 +2632,7 @@ function _monInfoHtml(){
         G('No chain in this source (21,867 · 28.5%).') + ' The edition gives the text without its chain — common in compilations such as Riyad as-Salihin, Mishkat, Bulugh al-Maram and the Forty collections.',
         G('“Narrator not yet identified”') + ' means the end of the chain has not been matched to a known person. The Narrator filter lists these at the bottom.'
       ]) +
-      H3('HADITH GRADES (21 NOV 2026)') +
+      H3('HADITH GRADES') +
       P('Under a hadith, GRADES shows how named scholars graded it. We never make up a grade and never merge grades into one. Each line is one scholar\u2019s own grade, copied from a public source, with the book and number or page it is in. When scholars differ, every grade is shown.') +
       LI([
         G('al-Bukhari and Muslim.') + ' Each named his whole book \u201cSahih\u201d (al-Jami\u2019 al-Sahih, al-Musnad al-Sahih). That is the author\u2019s own claim for the book, shown on every hadith in it.',
@@ -2338,6 +2648,9 @@ function _monInfoHtml(){
       P(G('Not graded yet.') + ' Sunni: Muwatta Malik, Sunan ad-Darimi, Riyad as-Salihin, Shama\u2019il, Bulugh al-Maram, al-Adab al-Mufrad and the three Forty collections. Shia: al-Amali (al-Saduq), Fada\u2019il al-Shia, Kamal al-Din, Kamil al-Ziyarat, Kitab al-Ghayba and Kitab al-Mu\u2019min; al-Khisal, al-Tawhid, al-Amali (al-Mufid) and Kitab al-Zuhd have only a few. For these we have not yet found named grades that we could check against the scholar\u2019s own book, so they show none. A hadith with no GRADES line is not graded here; that says nothing about its strength.') +
       P(G('How a grade was matched to a hadith.') + ' Every grade was matched by comparing the Arabic text of the hadith, not by number alone. Where the text did not match, no grade was added.') +
       P(G('Grade words.') + ' Sahih = sound. Hasan = good. Da\u2019if = weak. Da\u2019if jiddan = very weak. Mawdu\u2019 = made up. Munkar = rejected. Shadh = goes against stronger reports. Gharib = comes by one chain only (al-Tirmidhi\u2019s word; not a weakness on its own). Muwaththaq = reliable chain with a non-Twelver narrator (Shia grading). Majhul = a narrator is unknown. Mursal = a link in the chain is missing. Marfu\u2019 (in al-Majlisi) = the chain is cut. Mu\u2019tabar = reliable. \u201cChain\u201d = the grade is for the chain only. Agreed upon = in both Bukhari and Muslim. Where a grade has no short label, read the scholar\u2019s own words shown beside it.') +
+      P(G('Grades filter.') + ' Pick one scholar, then one or more of that scholar\u2019s own grade words. The list then shows the hadith that scholar graded with those words. Grades of different scholars are never mixed, and nothing is ranked or sorted by grade.') +
+      P('The same choice is a step in GUIDED and a split in DRILL. Grades that have no short label sit under one choice for that scholar, \u201COwn words only\u201D; the words themselves are in the GRADES box. \u201CNot graded here\u201D lists the hadith that have no GRADES line.') +
+      P('Darussalam edition: its grades are typed in many ways. Wordings that differ only in typing (for example \u201CSahih\u201D, \u201CSahih .\u201D and \u201CSahih Hadeeth\u201D) are one choice in the filter, and \u201CSahih\u201D followed only by an al-Bukhari or Muslim number is one choice. Every other wording is listed as written. The GRADES box always shows the wording as written.') +
       P('The ratings inside CHAIN are about the narrators (generation and reliability), not about the hadith.') +
 
       H3('NARRATOR FILTER') +
@@ -2381,7 +2694,7 @@ function _monInfoHtml(){
       H3('CONCEPT CHIPS') +
       P('<span style="color:#A0AEC0">Six main Sunni books (Bukhari, Muslim, Nasa\u2019i, Abu Dawud, Ibn Majah, Tirmidhi: 34,172 hadith).</span>') +
       LI([
-        'Every hadith in the six main Sunni books carries at least one concept.',
+        'Every hadith carries at least one concept.',
         'The concept list has 611 concepts: 498 original and 113 added on 15 Nov 2026 for chapter topics that the list did not cover. Each concept has a short written summary. The 113 added concepts were approved by the app\u2019s editor; their summaries were written by AI and checked by a second AI reading.',
         'Each chip has a letter showing how it was made:'
       ]) +
@@ -2396,6 +2709,25 @@ function _monInfoHtml(){
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">P (SAME TEXT AS THE HADITH BEFORE)</h4>' +
       LI([
         'Some hadith repeat the hadith before them with another chain, and their own entry has no text, or only \u201cthe same as above\u201d. These 1,671 hadith show the R chips of the hadith they repeat, with the same strength.'
+      ]) +
+      '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">L3 (ROOT WORD + YES/NO)</h4>' +
+      LI([
+        'All 29 collections. Same method as the Quran concept chips.',
+        'Step 1: every Arabic word of every hadith was given its root, base word and word type by a computer tool: CAMeL Tools 1.6.0 (New York University Abu Dhabi, MIT licence) with its word database calima-msa-r13 (GPL v2). Roots are spelled as in the Quranic Arabic Corpus the app already uses. The chain of narrators and the book\u2019s own notes were split from the hadith text; only the text was used.',
+        'Step 2: a hadith became a candidate for a concept only if its text has a word with the concept\u2019s Arabic root. 345 of the 611 concepts have a root; the other 266 cannot be found this way.',
+        'Step 3: AI (Claude by Anthropic) read each candidate against the concept\u2019s summary and answered YES or NO. YES only if the hadith is about the concept or clearly teaches, commands, forbids, describes or illustrates it. A passing word gets NO.',
+        'Every candidate was read by two separate AI readers who did not see each other\u2019s answers. Where they differed, a third reading decided.',
+        '854,175 hadith\u2013concept pairs were read. The two readings agreed on 98.8% (every collection between 98.1% and 100%).',
+        'Result: 85,783 L3 chips on 52,332 hadith. Strong = both readings said YES (79,391). Low = a third reading decided (6,392).',
+        'Compared with the chips shown before: 49,527 old chips were confirmed, 36,256 chips are new. 596 old chips (559 R, 37 P) were removed because both readers said NO; the editor approved this on 22 Nov 2026. An old chip that only one reader rejected was kept. C chips were not touched. 72 hadith had lost their only chip; 49 of these were given the concept of their chapter title as a C chip (two AI readers, a third where they differed), the same way as all other C chips. For the next 23, whose chapter title names no concept, the hadith text was read again by two AI readers (a third where they differed): 15 got R chips this way; 4 got a Low C chip from the title of their book section. For the last 4 (three in al-Kafi volume 8, al-Rawda, and one in Riyad as-Salihin) neither the text read again, nor the chapter title, nor the book-section title gave a concept, so their old R chip was kept.',
+        'Check: an independent AI reading of 100 random answers (50 YES, 50 NO) agreed on 93.',
+        'Limits:' +
+          '<ul style="margin:4px 0 0;padding-left:20px">' +
+            '<li style="margin-bottom:4px">A hadith that teaches a concept without using its root word gets no L3 chip (the same limit as the Quran).</li>' +
+            '<li style="margin-bottom:4px">The word tool is machine-made, not hand-checked like the Quran corpus. On a hand-check of 580 words from Sunni and Shia books it gave the wrong root for 5.0% of words and the wrong word type for 2.8%. About 4.5% of words were put on the wrong side of the chain/text split.</li>' +
+            '<li style="margin-bottom:4px">Very long hadith were read in shortened form (at most about 3,200 characters around the matching words).</li>' +
+            '<li style="margin-bottom:4px">AI output is not a citation source. Not yet reviewed by a human scholar.</li>' +
+          '</ul>'
       ]) +
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">C (FROM THE CHAPTER TITLE)</h4>' +
       LI([
@@ -2416,7 +2748,7 @@ function _monInfoHtml(){
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">OTHER COLLECTIONS</h4>' +
       LI([
         'The other 23 collections (al-Kafi, Man La Yahduruhu al-Faqih, Mishkat al-Masabih, Sunan al-Darimi, Muwatta Malik, Riyad as-Salihin, Bulugh al-Maram, Musnad Ahmad, al-Adab al-Mufrad, al-Khisal, al-Amali of al-Saduq and of al-Mufid, Kamal al-Din, Kamil al-Ziyarat, al-Tawhid, al-Ghayba of al-Numani, Kitab al-Zuhd, Kitab al-Mumin, al-Shamail, Fadail al-Shia and the three Forty Hadith books: 42,677 hadith) were tagged the same way as the six main books, with the same 611 concepts.',
-        'Every hadith in these collections carries at least one concept.',
+        'Every hadith carries at least one concept.',
         'R chips: every hadith was read twice by separate AI readers (Claude by Anthropic), a third reading decided where they disagreed. 39,994 hadith have R chips.',
         'Agreement between the two readings: 96.9% overall. Lowest: Kitab al-Mumin 72.1%, Fadail al-Shia 91.1%, Kitab al-Zuhd 93.4%, Kamil al-Ziyarat 94.0%. All others 94.7% or higher.',
         'P chips: 204 hadith whose entry has no text of its own show the R chips of the hadith before them.',
@@ -2440,7 +2772,7 @@ function _monInfoHtml(){
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">HADITH</h4>' +
       '<ul style="font-size:var(--fs-3);line-height:1.6;margin:0 0 12px;padding-left:20px;color:#E5E7EB">' +
-        '<li>See CONCEPT CHIPS above: letters R, P and C, the strength badge, and the older tags in the other collections.</li>' +
+        '<li>Hadith chips come in four kinds: R (each hadith read whole, twice), L3 (root word + YES/NO, the same method as the Quran, 22 Nov 2026), C (chapter title) and P (copied from the hadith before). See CONCEPT CHIPS above.</li>' +
       '</ul>' +
 
       '<h4 style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.1em;color:#D4AF37;margin:14px 0 6px">TAFSIR</h4>' +
@@ -2472,6 +2804,7 @@ function _monInfoHtml(){
 function _applyAllFilters(){
   var _seq = _pinSeq;
   _syncBand();
+  _monSyncZB();
 
   var colSet = _monSel.collection;
   var periodSet = _monSel.period;
@@ -2482,7 +2815,7 @@ function _applyAllFilters(){
   // Empty-state gate: only render the prompt when literally nothing is picked.
   // Periods / Topics / Narrators all operate over the full 34k corpus, so any
   // filter selection (not just Collection) must trigger a load.
-  if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0 && volSet.size === 0 && _monSel.concept.size === 0){
+  if(colSet.size === 0 && periodSet.size === 0 && topicSet.size === 0 && narSet.size === 0 && volSet.size === 0 && _monSel.concept.size === 0 && !_grActive()){
     // A pinned cross-link owns the results pane — never replace it with the
     // default prompt. This is what wiped narrator→MONASTIC links: the revisit
     // filter-restore fires applyFilters() on an empty snapshot ~250ms after
@@ -2507,13 +2840,18 @@ function _applyAllFilters(){
   // load only those. Otherwise (only Periods / Topics / Narrators picked),
   // we need to scan the whole corpus, so load all 6 in parallel.
   // fetchCollection caches in _cache[key] so re-selecting is instant.
-  var keys = colSet.size > 0 ? Array.from(colSet) : COLLECTIONS.map(function(c){ return c.key; });
-  var promise = Promise.all(keys.map(function(k){
-    return fetchCollection(k).then(function(data){
-      data.forEach(function(h){ h._colKey = k; });
-      return data;
-    });
-  })).then(function(arrs){
+  var _grPre = _grActive() ? _grLoadAll() : Promise.resolve(null);
+  var promise = _grPre.then(function(){
+    var keys = colSet.size > 0 ? Array.from(colSet) : COLLECTIONS.map(function(c){ return c.key; });
+    // Grades picked and no book picked: load only the books that scholar graded.
+    if(colSet.size === 0 && _grActive() && _grStats) keys = _grColKeys(_monGrade.who);
+    return Promise.all(keys.map(function(k){
+      return fetchCollection(k).then(function(data){
+        data.forEach(function(h){ h._colKey = k; });
+        return data;
+      });
+    }));
+  }).then(function(arrs){
     var all = []; arrs.forEach(function(a){ all = all.concat(a); });
     return all;
   });
@@ -2557,6 +2895,10 @@ function _applyAllFilters(){
       } else {
         hadiths = [];
       }
+    }
+    if(_grActive()){
+      var _gw = _monGrade.who, _gs = _monGrade.words;
+      hadiths = _grStats ? hadiths.filter(function(h){ return _grHas(h, _gw, _gs); }) : [];
     }
 
     // A pin was applied (or cleared) while these collections were loading —
@@ -2912,7 +3254,7 @@ function _hsHasQuery(){
 }
 function _monNoFilters(){
   return _monSel.collection.size === 0 && _monSel.period.size === 0 && _monSel.topic.size === 0 &&
-    _monSel.narrator.size === 0 && _monSel.volume.size === 0 && _monSel.concept.size === 0 && !_pinActive();
+    _monSel.narrator.size === 0 && _monSel.volume.size === 0 && _monSel.concept.size === 0 && !_grActive() && !_pinActive();
 }
 function _hsMessage(html){
   _hsView = null;
@@ -3231,6 +3573,7 @@ function _refreshVolumeChapterCascade(){
   _monBuildPanel('volume', []);
 
   if(picked.length !== 1){
+    _monVolWant = null;
     setInactive(volBtn);
     return;
   }
@@ -3247,6 +3590,13 @@ function _refreshVolumeChapterCascade(){
       return { value: v, label: v + ' (' + volCounts[v].toLocaleString() + ')' };
     }));
     if(volKeys.length > 1) setActive(volBtn); else setInactive(volBtn, 'This book has only one volume');
+    if(_monVolWant){
+      var want = _monVolWant; _monVolWant = null;
+      if(_monSel.collection.size === 1 && _monSel.collection.has(key)){
+        want.forEach(function(v){ if(volCounts[v]) _monSel.volume.add(v); });
+        if(_monSel.volume.size){ _monSyncDD('volume'); _applyAllFilters(); }
+      }
+    }
   });
 }
 
@@ -3285,6 +3635,30 @@ function _monBuildPanel(kind, entries){
   });
 }
 
+// The filter buttons on screen: lit and counted whenever that filter has a pick
+// (22 Nov 2026). Before this a pick (for example a Concept) could filter the list
+// with no button showing it.
+function _monSyncZB(){
+  if(!document.body.classList.contains('mn-mounted')) return;
+  var n = {
+    Collections: _monSel.collection.size, Narrators: _monSel.narrator.size, Topics: _monSel.topic.size,
+    Volume: _monSel.volume.size, Concepts: _monSel.concept.size,
+    Grades: _grActive() ? (_monGrade.words.size || 1) : 0
+  };
+  document.querySelectorAll('.zb-select').forEach(function(b){
+    var k = b.getAttribute('data-i18n');
+    if(!Object.prototype.hasOwnProperty.call(n, k)) return;
+    b.classList.toggle('filtered', n[k] > 0);
+    var s = b.querySelector('.mon-zb-n');
+    if(n[k] > 0){
+      if(!s){ s = document.createElement('span'); s.className = 'mon-zb-n'; s.style.cssText = 'margin-left:6px;font-weight:700'; b.appendChild(s); }
+      s.textContent = '(' + n[k] + ')';
+    } else if(s){ s.remove(); }
+  });
+}
+// Volume picks to put back once the book's volume list has loaded (set by _importSel).
+var _monVolWant = null;
+
 function _monSyncDD(kind){
   if(kind === 'collection'){
     try { _refreshVolumeChapterCascade(); } catch(e){ console.warn('[MON] cascade failed', e); }
@@ -3314,6 +3688,7 @@ function _monSyncDD(kind){
     btn.classList.remove('filtered');
     if(dot) dot.style.display = 'none';
   }
+  _monSyncZB();
 }
 
 function _monDDToggleItem(kind, v){
@@ -3324,6 +3699,7 @@ function _monDDToggleItem(kind, v){
 }
 
 function _monToggleDD(kind){
+  if(kind === 'grade') _grEnsurePanel();
   var panel = document.getElementById(_monPanelId(kind));
   var btn   = document.getElementById(_monBtnId(kind));
   if(!panel || !btn) return;
@@ -3338,6 +3714,7 @@ function _monToggleDD(kind){
 }
 
 function _monDDClearAll(kind){
+  if(kind === 'grade'){ _grClear(true); return; }
   _monSel[kind].clear();
   _monSyncDD(kind);
   _applyAllFilters();
@@ -3691,6 +4068,7 @@ function init(){
               _monBuildPanel('concept', arr.map(function(c){
                 return { value: c.slug, label: c.title + ' (' + c.count.toLocaleString() + ')' };
               }));
+              _monSyncDD('concept');
               // Disclosure note at top of panel.
               var panel = document.getElementById('mon-conceptPanel');
               if(panel && !panel.querySelector('.mon-concept-note')){
@@ -3743,6 +4121,7 @@ function init(){
         _monSyncDD('period');
         _monSyncDD('narrator');
         _monSyncDD('collection');
+        _grClear(false);
 
         if(_resultsEl){
           _resultsEl.style.display = '';
@@ -3865,11 +4244,12 @@ var _WIZARD_STEPS_ALL = [
   { key:'topic',      label:'Topic',    prompt:'Which topic interests you?' },
   { key:'period',     label:'Period',   prompt:'From which period?' },
   { key:'narrator',   label:'Narrator', prompt:'Narrated by whom?' },
-  { key:'collection', label:'Book',     prompt:'From which collection?' }
+  { key:'collection', label:'Book',     prompt:'From which collection?' },
+  { key:'grade',      label:'Grade',    prompt:'Graded by which scholar?' }
 ];
 
 function _wizardStepsFrom(startKey){
-  var keys = ['topic','period','narrator','collection'];
+  var keys = ['topic','period','narrator','collection','grade'];
   var i = keys.indexOf(startKey);
   if(i < 0) i = 0;
   var order = keys.slice(i).concat(keys.slice(0, i));
@@ -3922,6 +4302,10 @@ function _wizardApplyPicksExcept(excludeKey){
   if(excludeKey !== 'volume' && picks.volume && picks.volume.length){
     list = list.filter(function(h){ return picks.volume.indexOf(h.volume) !== -1; });
   }
+  if(excludeKey !== 'grade' && picks.gradeWho){
+    var gset = picks.grade.length ? new Set(picks.grade) : null;
+    list = list.filter(function(h){ return _grHas(h, picks.gradeWho, gset); });
+  }
   return list;
 }
 
@@ -3956,6 +4340,10 @@ function _wizardCount(){
       return false;
     });
   }
+  if(picks.gradeWho){
+    var gset = picks.grade.length ? new Set(picks.grade) : null;
+    list = list.filter(function(h){ return _grHas(h, picks.gradeWho, gset); });
+  }
   return list.length;
 }
 
@@ -3964,7 +4352,7 @@ function _wizardOpen(){
 
   _wizardState = {
     step: -1,
-    picks: { topic:[], period:[], narrator:[], collection:[] },
+    picks: { topic:[], period:[], narrator:[], collection:[], grade:[], gradeWho:null },
     steps: _wizardStepsFrom('topic')
   };
 
@@ -4005,6 +4393,8 @@ function _wizardOpen(){
     if(!_wizardAllHadith){
       return fetchAll().then(function(all){ _wizardAllHadith = all; });
     }
+  }).then(function(){
+    return _grLoadAll();
   }).then(function(){
     _wizardRender();
   });
@@ -4050,6 +4440,10 @@ function _wizardBreadcrumb(){
   if(p.collection.length) parts.push('<span style="color:rgba(160,174,192,0.7)">in</span> <span style="color:#D4AF37">' + p.collection.map(function(x){ return esc(_wizardCollectionLabel(x)); }).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') + '</span>');
   else                    parts.push('<span style="color:rgba(160,174,192,0.5)">any book</span>');
 
+  if(p.gradeWho === _GR_NONE) parts.push('<span style="color:#D4AF37">not graded here</span>');
+  else if(p.gradeWho) parts.push('<span style="color:rgba(160,174,192,0.7)">graded by</span> <span style="color:#D4AF37">' + esc(_grName(p.gradeWho)) + (p.grade.length ? ': ' + p.grade.map(esc).join(' <span style="color:rgba(160,174,192,0.5)">or</span> ') : '') + '</span>');
+  else           parts.push('<span style="color:rgba(160,174,192,0.5)">no grade filter</span>');
+
   return parts.join(' <span style="color:rgba(255,255,255,0.2)">\u00B7</span> ');
 }
 
@@ -4075,7 +4469,8 @@ function _wizardRender(){
       { key:'topic',      label:'Topic',    desc:'Start by subject matter (e.g. Marriage, Hajj, Jihad)' },
       { key:'period',     label:'Period',   desc:'Start by era (e.g. Madinan, Post-Prophet)' },
       { key:'narrator',   label:'Narrator', desc:'Start by companion (e.g. Abu Hurairah, \'Aisha)' },
-      { key:'collection', label:'Book',     desc:'Start by collection (e.g. Bukhari, Muslim)' }
+      { key:'collection', label:'Book',     desc:'Start by collection (e.g. Bukhari, Muslim)' },
+      { key:'grade',      label:'Grade',    desc:'Start by one scholar\u2019s own grades (one scholar at a time)' }
     ];
 
     var html = '';
@@ -4120,7 +4515,9 @@ function _wizardRender(){
   var baseList = _wizardApplyPicksExcept(stepDef.key);
   var anyTotal = baseList ? baseList.length : null;
 
-  var optsWithCounts = opts.map(function(o){
+  var isGrade = (stepDef.key === 'grade');
+  var gWho = isGrade ? _wizardState.picks.gradeWho : null;
+  var optsWithCounts = isGrade ? _wizardGradeOpts(baseList, gWho) : opts.map(function(o){
     return { value: o.value, label: o.label, n: _wizardCountForValue(stepDef.key, o.value) };
   });
   optsWithCounts = optsWithCounts.filter(function(o){ return o.n > 0; });
@@ -4129,15 +4526,25 @@ function _wizardRender(){
   var html = '';
   html += '<div style="font-size:var(--fs-3);line-height:1.55;margin-bottom:14px;padding:10px 12px;background:rgba(212,175,55,0.04);border-left:2px solid rgba(212,175,55,0.4);border-radius:2px">' + _wizardBreadcrumb() + '</div>';
   html += '<div style="font-size:var(--fs-3);letter-spacing:.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;margin-bottom:6px">Step ' + (_wizardState.step + 1) + ' of ' + _wizardState.steps.length + ' \u00B7 ' + stepDef.label + '</div>';
-  html += '<div style="font-size:var(--fs-2);color:#E5E7EB;margin-bottom:14px">' + esc(stepDef.prompt) + '</div>';
+  html += '<div style="font-size:var(--fs-2);color:#E5E7EB;margin-bottom:14px">' + esc(gWho && gWho !== _GR_NONE ? 'Which grade words of ' + _grName(gWho) + '?' : stepDef.prompt) + '</div>';
+  if(isGrade) html += '<div style="font-size:var(--fs-3);color:rgba(160,174,192,0.8);margin:-8px 0 12px">One scholar at a time. Each word is the scholar\u2019s own grade. Grades of different scholars are never mixed.</div>';
   html += '<div style="display:flex;flex-direction:column;gap:6px">';
 
-  var anySelected = (currentArr.length === 0);
+  var anySelected = isGrade ? !gWho : (currentArr.length === 0);
   var anyCountStr = (anyTotal === null) ? '\u2026' : anyTotal.toLocaleString();
   html += '<div class="mon-wiz-opt" data-val="__any__" style="padding:8px 12px;border:1px solid ' + (anySelected ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)') + ';border-radius:3px;cursor:pointer;background:' + (anySelected ? 'rgba(212,175,55,0.10)' : 'transparent') + ';font-size:var(--fs-3);color:' + (anySelected ? '#D4AF37' : '#E5E7EB') + ';font-style:normal;display:flex;justify-content:space-between;align-items:center;gap:10px">' +
     '<span>Any (skip this filter)</span>' +
     '<span style="font-style:normal;font-size:var(--fs-3);color:rgba(160,174,192,0.85);white-space:nowrap">' + anyCountStr + '</span>' +
     '</div>';
+
+  if(gWho){
+    var gAllOn = (currentArr.length === 0);
+    var gAllN = baseList ? baseList.filter(function(h){ return _grHas(h, gWho, null); }).length : 0;
+    html += '<div class="mon-wiz-opt" data-val="__who_any__" style="padding:8px 12px;border:1px solid ' + (gAllOn ? 'rgba(212,175,55,0.6)' : 'rgba(255,255,255,0.12)') + ';border-radius:3px;cursor:pointer;background:' + (gAllOn ? 'rgba(212,175,55,0.10)' : 'transparent') + ';font-size:var(--fs-3);color:' + (gAllOn ? '#D4AF37' : '#E5E7EB') + ';display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+      '<span>' + (gWho === _GR_NONE ? esc(_GR_NONE_LABEL) : 'Any grade by ' + esc(_grName(gWho))) + '</span>' +
+      '<span style="font-size:var(--fs-3);color:rgba(160,174,192,0.85);white-space:nowrap">' + gAllN.toLocaleString() + '</span>' +
+      '</div>';
+  }
 
   optsWithCounts.forEach(function(o){
     var on = (currentArr.indexOf(o.value) !== -1);
@@ -4145,11 +4552,11 @@ function _wizardRender(){
     var bg        = on ? 'rgba(212,175,55,0.10)' : 'transparent';
     var textCol   = on ? '#D4AF37' : '#E5E7EB';
     html += '<div class="mon-wiz-opt" data-val="' + esc(o.value) + '" style="padding:8px 12px;border:1px solid ' + borderCol + ';border-radius:3px;cursor:pointer;background:' + bg + ';font-size:var(--fs-3);color:' + textCol + ';display:flex;justify-content:space-between;align-items:center;gap:10px">' +
-      '<span>' + esc(o.label) + '</span>' +
+      '<span dir="auto">' + esc(o.label) + '</span>' +
       '<span style="font-size:var(--fs-3);font-weight:600;color:' + (on ? '#D4AF37' : '#E5E7EB') + ';white-space:nowrap">' + o.n.toLocaleString() + '</span>' +
       '</div>';
   });
-  if(optsWithCounts.length === 0){
+  if(optsWithCounts.length === 0 && gWho !== _GR_NONE){
     html += '<div style="padding:16px;text-align:center;color:rgba(160,174,192,0.7);font-size:var(--fs-3);font-style:normal">No ' + esc(stepDef.label.toLowerCase()) + ' has any match. Use "Any" to skip, or Back to change a prior pick.</div>';
   }
   html += '</div>';
@@ -4160,6 +4567,15 @@ function _wizardRender(){
     el.onclick = function(){
       var v = el.getAttribute('data-val');
       var arr = _wizardState.picks[stepDef.key];
+      if(isGrade){
+        var gp = _wizardState.picks;
+        if(v === '__any__'){ gp.gradeWho = null; gp.grade = []; }
+        else if(v === '__who_any__'){ gp.grade = []; }
+        else if(!gp.gradeWho){ gp.gradeWho = v; gp.grade = []; }
+        else { var gi = gp.grade.indexOf(v); if(gi === -1) gp.grade.push(v); else gp.grade.splice(gi, 1); }
+        _wizardRender();
+        return;
+      }
       if(v === '__any__'){
         _wizardState.picks[stepDef.key] = [];
       } else {
@@ -4208,6 +4624,11 @@ function _wizardApply(){
   _monSyncDD('period');
   _monSyncDD('narrator');
   _monSyncDD('collection');
+  _monGrade.who = picks.gradeWho || null;
+  _monGrade.words.clear();
+  if(_monGrade.who) picks.grade.forEach(function(v){ _monGrade.words.add(v); });
+  _grBuildPanel();
+  _grSyncBtn();
 
   _wizardClose();
   _applyAllFilters();
@@ -4322,7 +4743,7 @@ function _buildXrefPanel(entry){
         // Letter = how the tag was made: R read one by one by AI (two readings), C from the chapter title,
         // P same text as the hadith before, M old word match. Strength badge (15 Nov 2026): 5 Strong (solid),
         // 4 Medium, 3 Low (dim). Tags without a strength (C/M from 14 Nov, other collections) show no badge.
-        var SRC = { r:['R','Read one by one by AI, twice'], c:['C','From the chapter title'], p:['P','Same text as the hadith before'], w:['M','Old word match'] };
+        var SRC = { r:['R','Read one by one by AI, twice'], c:['C','From the chapter title'], p:['P','Same text as the hadith before'], l3:['L3','Root word + AI YES/NO, two readings'], w:['M','Old word match'] };
         var STR = { 5:['Strong','both AI readings agreed','background:#D4AF37;color:#0E1621;opacity:1'],
                     4:['Medium','the two readings shared this concept','background:rgba(212,175,55,0.35);color:#F5E6B8;opacity:1'],
                     3:['Low','a third AI reading decided','background:rgba(160,174,192,0.25);color:#A0AEC0;opacity:0.75'] };
@@ -4557,7 +4978,8 @@ return {
   toggleDD: _monToggleDD,
   ddClearAll: _monDDClearAll,
   applyFilters: function(){ try { _applyAllFilters(); } catch(e){ console.warn('[MON] applyFilters failed', e); } },
-  syncAllDDs: function(){ try { ['period','topic','narrator','collection','volume'].forEach(function(k){ _monSyncDD(k); }); } catch(e){ console.warn('[MON] syncAllDDs failed', e); } },
+  syncZB: function(){ try { _monSyncZB(); } catch(e){} },
+  syncAllDDs: function(){ try { ['period','topic','narrator','collection','volume','concept'].forEach(function(k){ _monSyncDD(k); }); } catch(e){ console.warn('[MON] syncAllDDs failed', e); } },
   openWizard: _wizardOpen,
   showHadiths: function(hadithIds, label){
     _pinnedHadiths = { ids: (hadithIds || []).slice(), label: label || '' };
@@ -4634,6 +5056,8 @@ return {
       if(_monSel.topic)      _monSel.topic.clear();
       if(_monSel.narrator)   _monSel.narrator.clear();
     }
+    _monGrade.who = null;
+    _monGrade.words.clear();
   },
   _navState: function(){
     return {
@@ -4654,7 +5078,9 @@ return {
       collection: arr(_monSel.collection),
       period: arr(_monSel.period),
       topic: arr(_monSel.topic),
-      narrator: arr(_monSel.narrator)
+      narrator: arr(_monSel.narrator),
+      volume: arr(_monSel.volume),
+      concept: arr(_monSel.concept)
     };
   },
   infoHtml: function(){ return _monInfoHtml(); },
@@ -4665,6 +5091,8 @@ return {
     load(_monSel.period,     snap.period);
     load(_monSel.topic,      snap.topic);
     load(_monSel.narrator,   snap.narrator);
+    load(_monSel.concept,    snap.concept);
+    _monVolWant = (snap.volume && snap.volume.length) ? snap.volume.slice() : null;
   }
 };
 })();
@@ -4790,6 +5218,21 @@ window.MonasticView = (function(){
                 '</div>' +
               '</div>' +
             '</div>' +
+            '<div class="dd-wrap">' +
+              '<button class="dd-btn" id="mon-gradeBtn" onclick="Monastic.toggleDD(\'grade\')">' +
+                '<span>Grades</span>' +
+                '<div style="display:flex;align-items:center;gap:4px">' +
+                  '<span class="dd-dot" id="mon-gradeDot"></span>' +
+                  '<span class="dd-count" id="mon-gradeCount"></span>' +
+                  '<span class="dd-caret">▾</span>' +
+                '</div>' +
+              '</button>' +
+              '<div class="dd-panel" id="mon-gradePanel">' +
+                '<div class="dd-item dd-all" onclick="Monastic.ddClearAll(\'grade\')">' +
+                  '<div class="dd-checkbox" id="mon-gradeAllCk">✓</div><span>All Grades (no grade filter)</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
           '</div>' +
           '<div id="mon-timeline-band"></div>' +
           '<div id="mon-count" style="font-size:var(--fs-3);color:#6B7280;margin-bottom:8px;text-align:right"></div>' +
@@ -4862,7 +5305,7 @@ window.MonasticView = (function(){
       btn.addEventListener('click', function(e){
         e.stopPropagation();
         if(!(window.Monastic && typeof window.Monastic.toggleDD === 'function')) return;
-        ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel','mon-conceptPanel'].forEach(function(pid){
+        ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel','mon-conceptPanel','mon-gradePanel'].forEach(function(pid){
           if(pid === panelId) return;
           var op = document.getElementById(pid);
           if(op){ op.classList.remove('open'); op.style.display='none'; }
@@ -4910,7 +5353,7 @@ window.MonasticView = (function(){
     }
 
     document.addEventListener('click', function(e){
-      ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel','mon-conceptPanel'].forEach(function(pid){
+      ['mon-topicPanel','mon-narratorPanel','mon-collectionPanel','mon-volumePanel','mon-conceptPanel','mon-gradePanel'].forEach(function(pid){
         var p = document.getElementById(pid);
         if(!p || p.style.display === 'none') return;
         if(p.contains(e.target)) return;
@@ -4931,6 +5374,7 @@ window.MonasticView = (function(){
         else if(t.indexOf('COLLECTION') !== -1)  _wireSelect(b, 'collection', 'mon-collectionPanel');
         else if(t.indexOf('VOLUME') !== -1)      _wireSelect(b, 'volume',     'mon-volumePanel');
         else if(t.indexOf('CONCEPT') !== -1)     _wireSelect(b, 'concept',    'mon-conceptPanel');
+        else if(t.indexOf('GRADE') !== -1)       _wireSelect(b, 'grade',      'mon-gradePanel');
       });
     }
 
@@ -5056,6 +5500,7 @@ window.MonasticView = (function(){
         window.Monastic.onEnter();
       }
       _wireZoneB(zoneBEl);
+      try { if(window.Monastic && window.Monastic.syncZB) window.Monastic.syncZB(); } catch(e){}
       // Restore filters + drill if user is returning to MONASTIC after navigating away.
       // Skipped entirely when a cross-link pin is pending or showing: this
       // delayed applyFilters() on a stale (usually empty) snapshot was what

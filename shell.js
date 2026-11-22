@@ -636,7 +636,7 @@ function _ensureViewScript(name, cb){
   if(_viewLoadWaiters[name]){ _viewLoadWaiters[name].push(cb); return; }
   _viewLoadWaiters[name] = [cb];
   // load CSS once (with cache-bust to defeat browser caching during dev)
-  var _cb = '?v=274';
+  var _cb = '?v=281';
   if(cfg.css){
     var l = document.createElement('link');
     l.rel = 'stylesheet';
@@ -780,7 +780,8 @@ var FILTER_SPECS = {
       { type:'select', label:'Narrators' },
       { type:'select', label:'Topics' },
       { type:'select', label:'Volume' },
-      { type:'select', label:'Concepts' }
+      { type:'select', label:'Concepts' },
+      { type:'select', label:'Grades' }
     ],
     actions: [
       { type:'pill', label:'✦ Guided' },
