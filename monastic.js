@@ -1719,15 +1719,27 @@ function getText(h){
 // Clean list names for the end narrator of the six main books, by record id (narrator_index.json id_names).
 var _narrEndNames = {};
 function _narrIsComp(e){ return !!(e && e.id != null && /Comp\./.test(String(e.grade || ''))); }
+// Six main Sunni books (23 Nov 2026): the end narrator comes ONLY from the field end_narrator
+// ({id, name, sure} or null). Never englishNarrator (often the whole English chain) and never the
+// stored `narrator` text (it came from the old wrong chains).
+function _endNarrName(h){
+  var en = h ? h.end_narrator : null;
+  if(!en) return '';
+  if(en.id != null) return _narrEndNames[String(en.id)] || _stripArabic(String(en.name || '').split('(')[0]);
+  return _stripArabic(String(en.name || ''));
+}
+function _endNarrCell(h){
+  var en = h ? h.end_narrator : null, nm = _endNarrName(h);
+  if(!en || !nm) return '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Narrator not yet identified)</div>';
+  var cell = (en.id != null)
+    ? (_narratorCell(nm, en) || '<span style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</span>')
+    : '<span style="color:#E5E7EB;font-size:var(--fs-3)">' + esc(nm) + '</span>';
+  var unsure = (en.sure === false) ? '<span style="color:rgba(160,174,192,0.7);font-size:var(--fs-3)">(not certain)</span>' : '';
+  return '<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px">' + cell + unsure + '</div>';
+}
 function getNarrator(h){
   if(Array.isArray(h.narrator_chain_full)){
-    // Six main Sunni books, repaired chain: the end of the chain counts only when it is a Companion record.
-    // Never the stored `narrator` text (it came from the old wrong chains).
-    var fc = h.narrator_chain_full, fe = fc.length ? fc[fc.length - 1] : null;
-    if(_narrIsComp(fe)) return _narrEndNames[String(fe.id)] || _stripArabic(String(fe.name || '').split('(')[0]).trim();
-    var en1 = h.englishNarrator ? String(h.englishNarrator).trim() : '';
-    if(!en1 || en1 === 'Being checked' || en1 === 'Unknown') return '';
-    return _cleanNarratorString(en1) || en1;
+    return _endNarrName(h);
   }
   if(_narrHidden(h)){
     // Same rule as the NARRATOR column: the source's own end-narrator field, or nothing.
@@ -2147,15 +2159,8 @@ function _fullChainHtml(h, withTerm){
     return '<button class="mon-chain-toggle" type="button" style="display:inline-flex;align-items:center;gap:4px;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:2px;padding:3px 8px;color:rgba(212,175,55,0.85);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>' +
       '<div class="mon-chain" style="display:none;margin-top:6px;padding:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:3px">' + noteLine + rows + '</div>';
   }
-  var last = full[N - 1], termCell;
-  if(_narrIsComp(last)){
-    termCell = _narratorCell(_stripArabic((last.name || '').split('(')[0].trim()), last);
-  } else {
-    var en = h.englishNarrator ? String(h.englishNarrator).trim() : '';
-    termCell = (en && en !== 'Being checked' && en !== 'Unknown')
-      ? _narratorCell(_cleanNarratorString(en) || en)
-      : '<div style="color:rgba(160,174,192,0.7);font-style:normal;font-size:var(--fs-3)">(Narrator not yet identified)</div>';
-  }
+  var termCell = _endNarrCell(h);
+  if(!N) return termCell + _rawChainHtml(h);      // no chain found in the text: the end narrator only
   return termCell +
     '<button class="mon-chain-toggle" type="button" style="display:block;margin-top:6px;background:transparent;border:none;padding:0;color:rgba(212,175,55,0.7);font-family:\'Cinzel\',serif;font-size:var(--fs-3);letter-spacing:.08em;cursor:pointer">\u25BC CHAIN (' + N + ')</button>' +
     '<div class="mon-chain" style="display:none;margin-top:8px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:4px">' +
@@ -2165,7 +2170,7 @@ function _fullChainHtml(h, withTerm){
 }
 
 function _narratorBlock(h){
-  if(Array.isArray(h.narrator_chain_full) && h.narrator_chain_full.length) return _fullChainHtml(h, true);
+  if(Array.isArray(h.narrator_chain_full)) return _fullChainHtml(h, true);
   var narrs = Array.isArray(h.narrators) ? h.narrators : [];
   if(!narrs.length){
     // Shia books + Sunni "Others" don't have structured narrators[] arrays.
@@ -2732,6 +2737,7 @@ function _monInfoHtml(){
         G('“Narrator not yet identified”') + ' means the end of the chain has not been matched to a known person. The Narrator filter lists these at the bottom.'
       ]) +
       P('Six main Sunni books, narrator chains. The narrator lists we first used came from another source that numbers the hadith differently, so most lists sat on the wrong hadith. We rebuilt every chain from the hadith\u2019s own Arabic text and matched each name to a narrator record. Then AI (Claude by Anthropic) checked every match, one chain at a time: 11,780 of 142,000 matches were wrong or doubtful and were removed. 137,206 of 188,983 names now have a record; the rest are shown as written in the Arabic. A fresh blind AI check of the result found 3 wrong and 7 doubtful out of 818 names (about 1 in 100). These checks are by AI, not yet by a human scholar.') +
+      P('End narrator: for every hadith of the six books the end narrator (usually the Companion who heard the Prophet) is shown. Where the chain did not end on a checked record, AI read the chain and named him; a check of 200 found none wrong. \u201c(not certain)\u201d marks the 1,272 where it could not be sure.') +
       H3('HADITH GRADES') +
       P('Under a hadith, GRADES shows how named scholars graded it. We never make up a grade and never merge grades into one. Each line is one scholar\u2019s own grade, copied from a public source, with the book and number or page it is in. When scholars differ, every grade is shown.') +
       LI([
