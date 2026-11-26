@@ -3461,3 +3461,103 @@ body.fin-fullscreen #usul-fs-logo{
 #finance-view[data-mode="report"] #finance-hub{ border-left:3px solid #0E6B63; }
 #finance-view[data-mode="report"] #finance-hub::before{ content:"For the scholar"; display:block; text-align:right; margin:0 0 6px; font-family:var(--font-sch); font-size:10px; letter-spacing:.10em; text-transform:uppercase; color:#0E6B63; }
 @media print{ .fin-zone{ -webkit-print-color-adjust:exact; print-color-adjust:exact; break-inside:auto; } }
+
+/* ── PEOPLE + BOOKS pages (26 Nov 2026) ── */
+#finance-view[data-mode="people"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="people"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="books"] .bv-dd-wrap[data-dd="show"],
+#finance-view[data-mode="books"] .bv-dd-wrap[data-dd="concepts"],
+#finance-view[data-mode="books"] .bv-dd-wrap[data-dd="tradition"]{ display:none; }
+#finance-view .fin-pl{ max-width:1000px; margin:0 auto; padding:24px 28px 60px; }
+#finance-view .fin-pl-search{ width:100%; max-width:420px; box-sizing:border-box; padding:8px 12px; margin:0 0 8px;
+  border:1px solid #D9D0BC; border-radius:6px; background:#FFFFFF; color:#1A2432; font-size:14px; font-family:'Source Sans 3',sans-serif; }
+#finance-view .fin-pl-count{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#5B6B7C; margin:0 0 14px; }
+#finance-view .fin-pl-century{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.10em; text-transform:uppercase; color:#8A6A12;
+  border-bottom:1px solid #D9D0BC; padding:16px 0 4px; margin:6px 0 10px; }
+#finance-view .fin-pl-card{ background:#FFFFFF; border:1px solid #D9D0BC; border-left:5px solid #8A94A2; border-radius:8px;
+  padding:10px 14px; margin:0 0 10px; cursor:pointer; }
+#finance-view .fin-pl-card:hover{ border-color:#8A6A12; }
+#finance-view .fin-pl-card.fin-selected{ box-shadow:0 0 0 2px #D4AF37; }
+#finance-view .fin-bk-card{ border-left-color:#8A6A12; }
+#finance-view .fin-pl-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
+#finance-view .fin-pl-name{ font-family:'Playfair Display',serif; font-size:17px; color:#1A2432; }
+#finance-view .fin-pl-years{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#5B6B7C; white-space:nowrap; }
+#finance-view .fin-pl-sub{ font-family:'Source Sans 3',sans-serif; font-size:13px; font-style:italic; color:#22303F; }
+#finance-view .fin-pl-role{ font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:#22303F; margin-top:2px; }
+#finance-view .fin-pl-trad{ color:#5B6B7C; margin-left:6px; }
+#finance-view .fin-pl-desc{ font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:#22303F; margin-top:4px; line-height:1.45; }
+#finance-view .fin-pl-chips{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:6px; }
+#finance-view .fin-pl-chip{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#0E6B63; border:1px solid #0E6B63; border-radius:12px;
+  padding:1px 9px; cursor:pointer; background:#FFFFFF; }
+#finance-view .fin-pl-chip:hover{ background:#E6F2F0; }
+#finance-view .fin-pl-tag{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#5B6B7C; border:1px solid #D9D0BC; border-radius:12px; padding:1px 9px; }
+#finance-view .fin-pl-gold{ color:#8A6A12; border-color:#D4AF37; }
+#finance-view .fin-pl-bio{ font-family:'Source Sans 3',sans-serif; font-size:14px; line-height:1.55; color:#22303F; margin:0 0 10px; }
+#finance-view .fin-pl-src{ font-size:12px; color:#0E6B63; }
+#finance-view .fin-pl-step{ border-left:3px solid #D9D0BC; padding:4px 10px; margin:0 0 8px; cursor:pointer; }
+#finance-view .fin-pl-step:hover{ border-left-color:#8A6A12; }
+#finance-view .fin-pl-step-h{ font-family:'Source Sans 3',sans-serif; font-size:12.5px; font-weight:600; color:#8A6A12; }
+#finance-view .fin-pl-step-t{ font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:#22303F; line-height:1.45; }
+#finance-view .fin-pl-link{ color:#0E6B63; cursor:pointer; text-decoration:underline; }
+
+/* Reader text + Source buttons (26 Nov 2026) */
+.fin-para{margin:0 0 10px;line-height:1.6;font-size:13px;color:inherit}
+.fin-src-row{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}
+.fin-src-btn{display:inline-block;padding:3px 10px;border:1px solid #B8860B;border-radius:12px;font-size:11px;color:#8A6508;text-decoration:none;background:rgba(212,175,55,.08)}
+.fin-src-btn:hover{background:rgba(212,175,55,.2)}
+
+/* PEOPLE + BOOKS timescale layout (26 Nov 2026) */
+#finance-view .fin-pl-tl{ padding-bottom:6px; }
+#finance-view .fin-tl{ margin:8px 0 40px; }
+#finance-view .fin-tl-row{ position:absolute; left:0; display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  text-align:right; padding-right:10px; box-sizing:border-box; cursor:pointer; border-radius:4px; overflow:hidden; }
+#finance-view .fin-tl-row:hover{ background:rgba(201,162,39,.08); }
+#finance-view .fin-tl-row.fin-selected{ background:rgba(201,162,39,.18); }
+#finance-view .fin-tl-name{ font-family:'Playfair Display',serif; font-size:15px; color:#1A2432; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+#finance-view .fin-tl-sub{ font-family:'Source Sans 3',sans-serif; font-size:12px; color:#5B6573; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+#finance-view .fin-tl-sub .fin-pl-link{ color:#8A6A12; }
+#finance-view .fin-tl-sub .fin-read-pill{ margin-left:6px; }
+#finance-view .fin-tl-yr{ position:absolute; width:54px; display:flex; align-items:center; justify-content:flex-end; font-size:12px; font-weight:600; color:#8A6A12; font-family:'Source Sans 3',sans-serif; }
+#finance-view .fin-tl-ah{ position:absolute; display:flex; align-items:center; font-size:11px; color:#9A8F7A; font-family:'Source Sans 3',sans-serif; }
+#finance-view .fin-tl-dot{ position:absolute; width:10px; height:10px; border-radius:50%; border:2px solid #FBF8F1; box-sizing:content-box; margin:-2px 0 0 -2px; }
+#finance-view .fin-tl-lanelbl{ user-select:none; }
+
+/* Filter buttons only on the pages that use them (audit 26 Nov 2026):
+   TIMELINE: tradition, contract, concepts · LADDER: tradition, contract · PEOPLE: tradition · BOOKS: tradition, contract
+   SETTINGS: family, pillar · every other page: none (RESET hidden too). */
+#finance-view[data-mode="people"] #finance-toolbar .bv-dd-wrap[data-dd="contract"]{ display:none !important; }
+#finance-view[data-mode="books"] #finance-toolbar .bv-dd-wrap[data-dd="tradition"]{ display:inline-block !important; }
+#finance-view[data-mode="home"] #fin-reset, #finance-view[data-mode="prism"] #fin-reset, #finance-view[data-mode="reader"] #fin-reset,
+#finance-view[data-mode="lecture"] #fin-reset, #finance-view[data-mode="trace"] #fin-reset, #finance-view[data-mode="htw"] #fin-reset,
+#finance-view[data-mode="upload"] #fin-reset, #finance-view[data-mode="reliability"] #fin-reset{ display:none !important; }
+
+/* Panel text: keep life stories inside the panel with the same side margins as the fields */
+#finance-view #finance-hub .fin-pl-bio, #finance-view #finance-hub .fin-para{ padding:0 16px; overflow-wrap:anywhere; }
+#finance-view #finance-hub .fin-src-row{ padding:0 16px; }
+#finance-view .fin-tl-yr{ flex-direction:column; align-items:flex-end; line-height:1.2; }
+#finance-view .fin-tl-yr .fin-tl-ah{ position:static; display:block; font-weight:400; }
+
+/* Contract family trees + term origins (usul_branches / usul_term_origins), 26 Nov 2026 */
+#finance-view #finance-hub .fin-ft-hint{ padding:0 16px 6px; color:#8B95A5; font-size:11px; font-style:italic; }
+#finance-view #finance-hub .fin-ft-ul{ list-style:none; margin:0; padding:0 0 0 14px; border-left:1px solid rgba(212,175,55,0.35); }
+#finance-view #finance-hub .fin-ft-root{ margin:0 16px 8px; padding-left:0; border-left:none; }
+#finance-view #finance-hub .fin-ft-li{ margin:4px 0; position:relative; }
+#finance-view #finance-hub .fin-ft-node > summary{ cursor:pointer; list-style:none; padding:5px 8px; border:1px solid rgba(212,175,55,0.25); border-radius:4px; background:rgba(212,175,55,0.04); display:flex; flex-wrap:wrap; gap:2px 8px; align-items:baseline; }
+#finance-view #finance-hub .fin-ft-node > summary::-webkit-details-marker{ display:none; }
+#finance-view #finance-hub .fin-ft-node > summary::before{ content:'▸'; color:#D4AF37; font-size:10px; }
+#finance-view #finance-hub .fin-ft-node[open] > summary::before{ content:'▾'; }
+#finance-view #finance-hub .fin-ft-node[open] > summary{ border-color:rgba(212,175,55,0.6); }
+#finance-view #finance-hub .fin-ft-flash > summary{ box-shadow:0 0 0 2px #D4AF37; }
+#finance-view #finance-hub .fin-ft-yr{ color:#D4AF37; font-weight:700; font-size:11px; white-space:nowrap; }
+#finance-view #finance-hub .fin-ft-name{ color:#E5E7EB; font-size:12px; flex:1 1 60%; }
+#finance-view #finance-hub .fin-ft-who{ color:#C9A961; font-size:11px; width:100%; padding-left:14px; }
+#finance-view #finance-hub .fin-ft-trad{ color:#9FB7D8; font-size:10px; border:1px solid rgba(159,183,216,0.4); border-radius:3px; padding:0 4px; margin-left:14px; }
+#finance-view #finance-hub .fin-ft-body{ padding:6px 4px 8px 12px; }
+#finance-view #finance-hub .fin-ft-body .fin-para, #finance-view #finance-hub .fin-ft-origin .fin-para{ padding:0; }
+#finance-view #finance-hub .fin-ft-origin{ padding:0 16px; }
+#finance-view #finance-hub .fin-ft-k{ color:#D4AF37; font-size:10px; letter-spacing:.08em; text-transform:uppercase; margin:8px 0 3px; }
+#finance-view #finance-hub .fin-ft-v{ color:#ccc; font-size:12px; line-height:1.5; margin:2px 0; overflow-wrap:anywhere; }
+#finance-view #finance-hub .fin-ft-src{ margin:0 0 6px; font-size:11px; overflow-wrap:anywhere; }
+#finance-view #finance-hub .fin-ft-link{ color:#9FB7D8; text-decoration:underline; }
+#finance-view #finance-hub .fin-ft-quote{ color:#A0AEC0; font-style:italic; margin-top:2px; }
+#finance-view #finance-hub .fin-ft-goto{ color:#D4AF37; cursor:pointer; text-decoration:underline; }

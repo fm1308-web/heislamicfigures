@@ -44,6 +44,144 @@ window.FinanceView = (function(){
   // Apostrophes here are ASCII (') to match the data's tradition_tags exactly.
   var SCHOOLS = ['Hanafi','Maliki','Shafi\'i','Hanbali','Ja\'fari'];
 
+  // ── Tradition-category colors: Global framework vs Madhab/tradition ──
+  // Global framework (AAOIFI, IFSB, etc.) = neutral, cross-madhab
+  // Madhab/school = distinct colors for each school
+  // Movement/tradition_app = secondary tradition indicator
+  var TRAD_COLORS = {
+    'global-framework':  '#8A94A2',  // neutral gray — regulators, standards bodies
+    'sunni-hanafi':      '#6366F1',  // indigo
+    'sunni-maliki':      '#8B5CF6',  // violet
+    'sunni-shafi':       '#D946EF',  // fuchsia
+    'sunni-hanbali':     '#EC4899',  // pink
+    'shia-jafari':       '#14B8A6',  // teal — Ja'fari/Shia
+    'revelation':        '#D1D5DB',  // light gray — Qur'an, hadith, untagged
+    'other':             '#6B7280',  // medium gray — movements, tradition_app without madhab
+    'sunni':             '#B45309'   // amber-brown — Sunni, school not stated (PEOPLE/BOOKS lines, 26 Nov 2026)
+  };
+
+  function _tradCategory(r){
+    // Determine which tradition-color category a row belongs to.
+    // Returns a key from TRAD_COLORS.
+    if(!r) return 'revelation';
+    var sect = r.sect || '', school = r.school || '', movement = r.movement || '';
+
+    // Global framework (institution with no sect/school/movement tags)
+    if(r.entity_type === 'institution') return 'global-framework';
+
+    // Revelation/untagged (Qur'an, hadith, no tradition tags)
+    if(r.entity_type === 'revelation') return 'revelation';
+    if(!sect && !school && !movement && !(r.tradition_app||'')) return 'revelation';
+
+    // Madhab schools (sect="Sunni" with school tag)
+    if(sect === 'Sunni'){
+      if(school === 'Hanafi') return 'sunni-hanafi';
+      if(school === 'Maliki') return 'sunni-maliki';
+      if(school === 'Shafi\'i') return 'sunni-shafi';
+      if(school === 'Hanbali') return 'sunni-hanbali';
+    }
+
+    // Shia / Ja'fari
+    if(sect === 'Shia' || school === 'Ja\'fari') return 'shia-jafari';
+
+    // Movement or tradition_app (without a madhab)
+    if(movement || (r.tradition_app && sect !== 'Sunni')) return 'other';
+
+    // Default
+    return 'revelation';
+  }
+
+  // Display-only cleaning: hides our own record notes (file names, "in app", check dates) from readers.
+  // The data files are NOT changed. Tested on all rows: factory-scripts\usul_clean_text_test_20261126.js
+  var _PUB_INTERNAL = /\.txt|\.pdf|\.json|Standards\/|\bin (the )?app\b|\bapp file\b|this session|earlier session|\bfile\b|^\d{4}-\d{2}-\d{2}$/i;
+  var _PUB_CODE = /F\d{4}|\.json|\.txt|\.pdf|TK_|batch\d|extract\b|_extract|this session|\bAdam (asked|said|wants|approved|decided|supplied)\b|project rule|\bthe app\b|\bin app\b|\bL\d{3}\b|\bDV\d{2}\b/i;
+  var _LINK_RE = /(?:https?:\/\/|www\.)[^\s;,<>"'()\]]+|\b(?:[a-z0-9-]+\.)+[a-z]{2,6}\/[^\s;,<>"'()\]]*/gi;
+  function _pubClean(s){
+    return String(s==null?'':s)
+      .replace(/\s*[—–-]+\s*both in the app/gi,'')
+      .replace(/\s*\(([^()]*)\)/g,function(m,inner){
+        if(!_PUB_INTERNAL.test(inner) && !/\.txt|\.pdf|\.json|\d{4}-\d{2}-\d{2}/i.test(inner)) return m;
+        var keep=inner.split(/\s*;\s*|,\s+/).filter(function(p){ return p && !_PUB_INTERNAL.test(p) && !/\d{4}-\d{2}-\d{2}/.test(p); });
+        return keep.length ? ' ('+keep.join(', ')+')' : '';
+      })
+      .replace(/\s*[-—–]?\s*full text in \S+\.(txt|pdf|json)\b/gi,'')
+      .replace(/\s+(from|in)\s+\S+\.(txt|pdf|json)\b/gi,'')
+      .replace(/\s+on disk\b/gi,'')
+      .replace(/,?\s*read( verbatim)?\s+\d{4}-\d{2}-\d{2}\.?/gi,'')
+      .replace(/\s+\d{4}-\d{2}-\d{2}\b/g,'')
+      // web addresses never sit inside reader text — they become Source buttons (_srcBtns)
+      .replace(_LINK_RE, '').replace(/\(\s*\)/g,'').replace(/\s+(at|see|via)\s*([.;,)]|$)/gi,'$2')
+      // record codes: drop brackets holding only codes, then turn any other code into its name (exact lookup only)
+      .replace(/\s*\((?:links\s+)?(?:[BSET]\d{3}|C\d{2}|F\d{4})(?:(?:,\s*|\s+|\s*\/\s*)(?:[BSET]\d{3}|C\d{2}|F\d{4}))*\)/g,'')
+      .replace(/\b(?:[BSET]\d{3}|C\d{2})\b/g, function(m){ return _idName(m) || m; })
+      .replace(/\s{2,}/g,' ').replace(/\s+([,.;:])/g,'$1').trim();
+  }
+  function _idName(id){
+    try {
+      var c = id.charAt(0), x;
+      if(c === 'S') x = _idx.scholar[id] && _idx.scholar[id].name;
+      else if(c === 'B') x = _idx.book[id] && (_idx.book[id].title_english || _idx.book[id].title_original);
+      else if(c === 'E') x = _idx.event[id] && _idx.event[id].event;
+      else if(c === 'C') x = _idx.contract[id] && _idx.contract[id].name;
+      else if(c === 'T') x = _idx.term[id] && _idx.term[id].term_english;
+      return x || '';
+    } catch(e){ return ''; }
+  }
+  // Long text: same cleaning, then drop any sentence that still names a file or record code.
+  function _pubLong(s){
+    // Split only at a sentence end followed by a space, so "3.5" or "U.S." stay whole (26 Nov: the old
+    // match() pattern silently dropped "3." from "3.5 billion").
+    var parts=_pubClean(s).split(/(?<=[.!?])\s+/);
+    return parts.filter(function(p){ return p && !_PUB_CODE.test(p); }).join(' ').trim();
+  }
+  // Long text as short book-style paragraphs (3 sentences each). Cleaned first with _pubLong.
+  function _paras(s, cls){
+    var t = _pubLong(s); if(!t || /^not found\.?$/i.test(t)) return '';
+    var ss = t.split(/(?<!\b(?:Dr|Mr|Mrs|St|vol|Vol|vols|no|No|ed|eds|pp|cf|[A-Za-z])\.)(?<=[.!?]["”')\]]?)\s+(?=["“(]?[A-Z؀-ۿ])/);
+    var out = [];
+    for(var i = 0; i < ss.length; i += 3) out.push(ss.slice(i, i + 3).join(' '));
+    return out.map(function(p){ return '<p class="'+(cls || 'fin-para')+'">'+_esc(p)+'</p>'; }).join('');
+  }
+  // Web links held in a record's own notes, shown ONLY as "Source" buttons (the notes text itself is never shown).
+  function _srcBtns(){
+    var s = Array.prototype.slice.call(arguments).map(function(x){ return x == null ? '' : String(x); }).join(' \n ');
+    var re = new RegExp(_LINK_RE.source, 'gi'), m, seen = {}, out = [];
+    while((m = re.exec(s))){
+      var u = m[0].replace(/[.:]+$/, '');
+      if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
+      if(seen[u]) continue; seen[u] = 1;
+      var host = ''; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch(e){ continue; }
+      if(/localhost|r2\.dev|workers\.dev|pages\.dev|goldark/i.test(host)) continue;
+      seen[host] = (seen[host] || 0) + 1;
+      if(seen[host] > 1) host += ' (' + seen[host] + ')';
+      var tg = s.slice(Math.max(0, m.index - 50), m.index).match(/\[([A-Za-z][A-Za-z \/&-]{1,38})\]\s*(?:::)?\s*$/);
+      out.push('<a class="fin-src-btn" href="'+_esc(u)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Source ↗ '
+             + _esc(host) + (tg ? ' · ' + _esc(tg[1].trim()) : '') + '</a>');
+    }
+    return out.length ? '<div class="fin-src-row">'+out.join('')+'</div>' : '';
+  }
+  // Story block for any record: paragraphs + Source buttons at the end.
+  function _storyHtml(rec, head){
+    // A person's life story (bio_full) with its own listed sources; the record's notes are not used for it.
+    if(rec && rec.bio_full && !rec.detail_long){
+      var bp = String(rec.bio_full).split(/\n\s*\n/).map(function(x){ return _paras(x.trim()); }).join('');
+      var bl = (rec.bio_sources || []).map(function(x){ return x && x.url; }).filter(Boolean);
+      if(!bl.length && rec.bio_full_url) bl = [rec.bio_full_url];
+      var bb = _srcBtns(bl.join(' '));
+      return (bp || bb) ? ((head ? '<div class="fin-hub-sec">Life</div>' : '') + bp + bb) : '';
+    }
+    var p = _paras(rec && rec.detail_long), b = _srcBtns(rec && rec.internal_ref, rec && rec.detail_long, rec && rec.detail, rec && rec.significance, rec && rec.description);
+    if(!p && !b) return '';
+    return (head ? '<div class="fin-hub-sec">'+head+'</div>' : '') + p + b;
+  }
+  // Books written as this row's own work: exact title match, or the row's finance scholar id. No guessing by name.
+  function _rowBooks(r){
+    var bs = (D && D.books) || [], wt = String(r.work_title||'').trim(), fid = r.finance_scholar_id || '';
+    return bs.filter(function(b){
+      return (wt && (b.title_original === wt || b.title_english === wt)) || (fid && b.author_id === fid) || (r.book_id && b.id === r.book_id);
+    });
+  }
+
   var NOTICE = 'Private preview — demonstration data. Nothing here is independently checked. '
              + 'Illustrative only. Qualified Shariah-scholar review is a separate, later stage. Not certified.';
 
@@ -443,10 +581,10 @@ window.FinanceView = (function(){
   // ── Data load — STOP if any REQUIRED file is missing / unreadable.
   //    'kafalah_v4' is OPTIONAL (richer C08 rows); everything else is REQUIRED. No old lineage.json. ──
   function _load(){
-    var files = ['contracts','terms','scholars','books','events','concept_families','crosslinks','_manifest','quran_finance_layer','new_terms_T201_T214','kafalah_v4','murabaha_v4','qard_v4','musharakah_v4','mudarabah_v4','ijarah_v4','salam_v4','istisna_v4','rahn_v4','wakala_v4','quran_word_filter_map','standards_tracker','standards_kb','standards_kb_multiregulator','standards_kb_IFSB','standards_kb_star','standards_kb_fix4','standards_kb_fix5','standards_kb_new_batch_1','standards_kb_new_batch_2','standards_kb_new_batch_3','standards_kb_new_batch_4','demo_case_kafalah','demo_case_fab_offer','demo_case_fab_murabaha','demo_case_fab_indemnity','demo_case_mib_guarantee','compliance_reports_all_cases','book_quran_root','enriched_terms_all','q_to_c_map','crosslinks_spine','standards_lights','jurisdictions','tradition_index','standards_files','term_lineage_links_C02_v2','reliability_log'];
+    var files = ['people_goldark','contracts','terms','scholars','books','events','concept_families','crosslinks','_manifest','quran_finance_layer','new_terms_T201_T214','kafalah_v4','murabaha_v4','qard_v4','musharakah_v4','mudarabah_v4','ijarah_v4','salam_v4','istisna_v4','rahn_v4','wakala_v4','quran_word_filter_map','standards_tracker','standards_kb','standards_kb_multiregulator','standards_kb_IFSB','standards_kb_star','standards_kb_fix4','standards_kb_fix5','standards_kb_new_batch_1','standards_kb_new_batch_2','standards_kb_new_batch_3','standards_kb_new_batch_4','demo_case_kafalah','demo_case_fab_offer','demo_case_fab_murabaha','demo_case_fab_indemnity','demo_case_mib_guarantee','compliance_reports_all_cases','book_quran_root','enriched_terms_all','q_to_c_map','crosslinks_spine','standards_lights','jurisdictions','tradition_index','standards_files','term_lineage_links_C02_v2','reliability_log','usul_branches','usul_term_origins'];
     // The 10 per-contract v4 files (kafalah + the 9 new) and the word map are OPTIONAL — console.warn if missing.
     // NO lineage_v4 any more: TIMELINE lineage builds ONLY from the per-contract v4 files.
-    var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_fix4:true, standards_kb_fix5:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true, reliability_log:true };
+    var OPTIONAL = { kafalah_v4:true, murabaha_v4:true, qard_v4:true, musharakah_v4:true, mudarabah_v4:true, ijarah_v4:true, salam_v4:true, istisna_v4:true, rahn_v4:true, wakala_v4:true, quran_word_filter_map:true, demo_case_kafalah:true, demo_case_fab_offer:true, demo_case_fab_murabaha:true, demo_case_fab_indemnity:true, demo_case_mib_guarantee:true, compliance_reports_all_cases:true, book_quran_root:true, enriched_terms_all:true, q_to_c_map:true, crosslinks_spine:true, standards_kb_star:true, standards_kb_fix4:true, standards_kb_fix5:true, standards_kb_new_batch_1:true, standards_kb_new_batch_2:true, standards_kb_new_batch_3:true, standards_kb_new_batch_4:true, standards_lights:true, jurisdictions:true, tradition_index:true, standards_files:true, term_lineage_links_C02_v2:true, reliability_log:true, people_goldark:true, usul_branches:true, usul_term_origins:true };
     // OPTIONAL files that must also stay SILENT when absent (not on the CDN yet) — no console noise.
     var SILENT = { reliability_log:true, standards_kb_fix4:true, standards_kb_fix5:true };
     // Fetched RELATIVE to the app (no CDN), the same way the Standards .txt full-text
@@ -500,7 +638,12 @@ window.FinanceView = (function(){
       contracts: (out.contracts && out.contracts.rows) || [],
       terms:     (out.terms && out.terms.rows) || [],
       scholars:  (out.scholars && out.scholars.rows) || [],
-      books:     (out.books && out.books.rows) || [],
+      // Display copies: a title/year the data marks "Not found" is shown as absent (the file is not changed).
+      books:     ((out.books && out.books.rows) || []).map(function(b){
+                   var c = Object.assign({}, b);
+                   ['title_english','year_ce','year_ah','language'].forEach(function(k){ if(/^not found\.?$/i.test(String(c[k] || '').trim())) c[k] = ''; });
+                   return c;
+                 }),
       events:    (out.events && out.events.rows) || [],
       families:  (out.concept_families && out.concept_families.rows) || [],
       crosslinks:(out.crosslinks) || {},
@@ -534,6 +677,10 @@ window.FinanceView = (function(){
     // RV term-lineage links (C02 pilot) — born_at_row / status per term, verbatim citations only.
     D.lineageLinks = {};
     (((out.term_lineage_links_C02_v2 || {}).links) || []).forEach(function(L){ if(L && L.term_id) D.lineageLinks[L.term_id] = L; });
+    // Contract family trees (usul_branches) + term origins (usul_term_origins). 26 Nov 2026.
+    D.branches = ((out.usul_branches || {}).rows) || [];
+    D.branchById = {}; D.branches.forEach(function(r){ D.branchById[r.id] = r; });
+    D.termOrigin = {}; (((out.usul_term_origins || {}).rows) || []).forEach(function(r){ D.termOrigin[r.id] = r; });
     // FAB per-document compliance reports (3) — extra CASE options, rendered separately (NOT part of D.demo_cases).
     D.compliance_reports      = (out.compliance_reports_all_cases && out.compliance_reports_all_cases.reports) || [];
     D.compliance_reports_meta = (out.compliance_reports_all_cases && out.compliance_reports_all_cases._meta) || {};
@@ -559,6 +706,9 @@ window.FinanceView = (function(){
     });
     console.log('[finance] tradition tags loaded: ' + Object.keys(D.tradById).length);
     D.stdFiles = out.standards_files || {};   // standard code -> Standards/<path> for the full-text reader
+    // PEOPLE page: Gold Ark records (word-for-word copies) of the people the ladders name by slug.
+    D.peopleGold = {};
+    (((out.people_goldark || {}).rows) || []).forEach(function(p){ if(p && p.slug) D.peopleGold[p.slug] = p; });
     // OPTIONAL reliability log — null whenever the file is missing / unreadable / unparseable. Not rendered yet.
     D.reliability = out.reliability_log || null;
     // Qur'an-root flags for books (glow + root_tag). Whole file on D.bookQuranRoot; lookup by book id.
@@ -644,6 +794,7 @@ window.FinanceView = (function(){
     var x = (D.crosslinks.books_to_authors && D.crosslinks.books_to_authors[b.id]) || '';
     if(x) return x;
     if(b.author_id && /^S\d+/.test(b.author_id)) return b.author_id;
+    if(b.author_person_id && /^S\d+/.test(b.author_person_id)) return b.author_person_id;
     return '';
   }
   function _bookAuthorLabel(b){
@@ -1403,44 +1554,8 @@ window.FinanceView = (function(){
       }
     }
 
-    // ── Tradition lifelines (Adam 2026-08-05) — books-style weaving line per
-    //    picked tradition, right of the spine, own colour + name chip. The
-    //    rows on each line are the visible rows tagged with that tradition.
-    var _trdPicks = [];
-    F.sect.forEach(function(v){ _trdPicks.push(v); });
-    F.school.forEach(function(v){ _trdPicks.push(v); });
-    F.movement.forEach(function(v){ _trdPicks.push(v); });
-    if(_trdPicks.length){
-      var TRD0 = (_hasTerms && typeof TILE_LEFT !== 'undefined' && TILE_LEFT) ? (TILE_LEFT + 190) : 560;
-      var _trdM = Math.max(6, _trdPicks.length);
-      var _trdSvg = '', _trdChips = '';
-      _trdPicks.forEach(function(val, ti){
-        var col = 'hsl(' + Math.round((ti * 360) / _trdM) + ', 60%, 38%)';
-        var ys = [];
-        layoutRows.forEach(function(en){
-          if(en.kind !== 'lineage' && en.kind !== 'scholar') return;
-          var labels = _rowTradLabels(en.kind, en.id);
-          if(labels.indexOf(val) !== -1) ys.push(en.y + ROW_H/2);
-        });
-        if(!ys.length) return;
-        ys.sort(function(a, b){ return a - b; });
-        var lx = TRD0 + ti * 30;
-        var pxs = ys.map(function(y, yi){ return { x: lx + (yi % 2 ? 8 : 0), y: y }; });
-        var d = 'M ' + pxs[0].x + ' ' + pxs[0].y.toFixed(1);
-        for(var yi = 1; yi < pxs.length; yi++){
-          var p0 = pxs[yi-1], p1 = pxs[yi], cy = ((p0.y + p1.y) / 2).toFixed(1);
-          d += ' C ' + p0.x + ' ' + cy + ', ' + p1.x + ' ' + cy + ', ' + p1.x + ' ' + p1.y.toFixed(1);
-        }
-        var dots = pxs.map(function(pt){ return '<circle cx="'+pt.x+'" cy="'+pt.y.toFixed(1)+'" r="3.5" fill="'+col+'"/>'; }).join('');
-        _trdSvg += '<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="2.5" stroke-opacity="0.85"/>' + dots;
-        _trdChips += '<div class="fin-trd-chip" style="left:'+(lx + 12)+'px;top:'+(ys[0] - 26 - (ti % 3) * 18)+'px;border-color:'+col+';color:'+col+'">'+_esc(String(val).toUpperCase())+' ('+ys.length+')</div>';
-      });
-      if(_trdSvg){
-        html += '<svg class="fin-trd-lifelines-svg" width="1400" height="'+totalH+'" '
-              + 'style="position:absolute;left:0;top:0;pointer-events:none;z-index:3;overflow:visible">'+_trdSvg+'</svg>'
-              + _trdChips;
-      }
-    }
+    // Tradition lifelines removed 26 Nov 2026 (Adam): the lines floated far right with nothing joining them to
+    // their rows. The tradition colour bar on each row label already shows the tradition.
 
     canvas.style.height = totalH+'px';
     canvas.innerHTML = html;
@@ -1487,6 +1602,8 @@ window.FinanceView = (function(){
     else if(_mode === 'reader')    _renderStandardsReader();
     else if(_mode === 'htw')       _renderHtwPage();
     else if(_mode === 'prism')     _renderPrism();
+    else if(_mode === 'people')    _renderPeople();
+    else if(_mode === 'books')     _renderBooks();
     else if(_mode === 'trace')     _renderTrace();
     else if(_mode === 'reliability') _renderReliability();
     else                           _render();
@@ -1495,7 +1612,7 @@ window.FinanceView = (function(){
   function _applyModeAttr(){ var fv = document.getElementById('finance-view'); if(fv) fv.setAttribute('data-mode', _mode); }
   // Always-visible name of the page the user is on (shown as a chip in the toolbar).
   function _pageLabel(m){
-    var L = { home:'HOME', trace:'TRACE', timeline:'TIMELINE', ladder:'LADDER', prism:'PRISM',
+    var L = { home:'HOME', trace:'TRACE', timeline:'TIMELINE', ladder:'LADDER', prism:'PRISM', people:'PEOPLE', books:'BOOKS',
               reader:'STANDARDS', lecture:'LECTURE', htw:'HOW THIS WORKS', upload:'UPLOAD',
               standards:'SETTINGS', report:'REPORT', archive:'ARCHIVE', reliability:'RELIABILITY' };
     return L[m] || String(m || '').toUpperCase();
@@ -1556,12 +1673,10 @@ window.FinanceView = (function(){
     var dat = _lecDatingLine(hm.dating_app);
     var parts = [];
     if(dat) parts.push(_esc(dat));
-    if(!opts.skipBasis && r.timeline_year_basis) parts.push(_esc(r.timeline_year_basis));
+    // timeline_year_basis and internal_ref are our own record notes — not shown to readers.
     if(parts.length) h += '<div class="fin-lec-mbasis">' + parts.join(' · ') + '</div>';
     if(!opts.skipEvidence && r.evidence_display)
-      h += '<div class="fin-lec-mevi">Evidence: ' + _linkifyStandards(r.evidence_display) + '</div>';
-    if(r.internal_ref)   // provenance footnote — the record-source line (display only)
-      h += '<div class="fin-lec-msrc">' + _esc(r.internal_ref) + '</div>';
+      h += '<div class="fin-lec-mevi">Evidence: ' + _linkifyStandards(_pubClean(r.evidence_display)) + '</div>';
     if(r.id) h += '<div class="fin-lec-mid">' + _esc(r.id) + '</div>';
     return h;
   }
@@ -1678,8 +1793,8 @@ window.FinanceView = (function(){
       if(verses.length){
         h += '<div class="fin-lec-chips">' + verses.map(function(v){ return '<span class="fin-lec-vchip">'+_esc(v)+'</span>'; }).join('') + '</div>';
       }
-      if(r.detail)      h += '<p class="fin-lec-body">'+_esc(r.detail)+'</p>';
-      if(r.detail_long) h += '<p class="fin-lec-body">'+_esc(r.detail_long)+'</p>';
+      if(r.detail)      h += '<p class="fin-lec-body">'+_esc(_pubClean(r.detail))+'</p>';
+      if(r.detail_long) h += _paras(r.detail_long, 'fin-lec-body') + _srcBtns(r.internal_ref, r.detail, r.detail_long, r.evidence_display);
       h += '<div class="fin-lec-badgeline">'+_lecBadge(r.assurance)+'</div>';
       h += _lecMeta(r);
     });
@@ -1695,8 +1810,8 @@ window.FinanceView = (function(){
     if(coll) h += '<div class="fin-lec-cite">'+coll+num+'</div>';
     if(hm.grading_app) h += '<div><span class="fin-lec-grade">'+_esc(hm.grading_app)+'</span></div>';
     if(hm.narrator)    h += '<div class="fin-lec-narr">Narrator: '+_esc(hm.narrator)+'</div>';
-    var body = r.detail_long || r.detail;
-    if(body) h += '<p class="fin-lec-body">'+_esc(body)+'</p>';
+    var body = _pubLong(r.detail_long) || _pubClean(r.detail);
+    if(body) h += (_pubLong(r.detail_long) ? _paras(r.detail_long, 'fin-lec-body') : '<p class="fin-lec-body">'+_esc(body)+'</p>') + _srcBtns(r.internal_ref, r.detail, r.detail_long, r.evidence_display);
     h += _lecMeta(r, { skipGrading:true });
     h += '</div>';
     return h;
@@ -1707,7 +1822,7 @@ window.FinanceView = (function(){
     var rest      = rows.filter(function(r){ return r.position !== 'no_direct_hadith'; });
     var main      = rest.filter(function(r){ return !_lecHadithIsDaeef(r); });
     var support   = rest.filter(_lecHadithIsDaeef);
-    noHadith.forEach(function(r){ h += '<div class="fin-lec-honesty">'+_esc(r.detail_long || r.detail || 'No direct hadith')+'</div>'; });
+    noHadith.forEach(function(r){ h += '<div class="fin-lec-honesty">'+_esc(_pubLong(r.detail_long) || _pubClean(r.detail) || 'No direct hadith')+'</div>'; });
     main.forEach(function(r){ h += _lecHadithEntry(r, false); });
     if(support.length){
       h += '<h3 class="fin-lec-h3">Supporting narrations only</h3>';
@@ -1730,10 +1845,9 @@ window.FinanceView = (function(){
       h += '<div class="fin-lec-entry">';
       h += '<div class="fin-lec-subtitle">'+_esc(r.name || '')+yr+' '+_lecEntityTag(r.entity_type)+' '+_lecBadge(r.assurance)+'</div>';
       if(r.work_title) h += '<div class="fin-lec-work"><em>'+_esc(r.work_title)+'</em></div>';
-      var body = r.detail_long || r.detail;
-      if(body) h += '<p class="fin-lec-body">'+_esc(body)+'</p>';
-      if(r.evidence_display) h += '<p class="fin-lec-evidence"><em>'+_linkifyStandards(r.evidence_display)+'</em></p>';
-      if(r.timeline_year_basis) h += '<div class="fin-lec-basis">date basis: '+_esc(r.timeline_year_basis)+'</div>';
+      var body = _pubLong(r.detail_long) || _pubClean(r.detail);
+      if(body) h += (_pubLong(r.detail_long) ? _paras(r.detail_long, 'fin-lec-body') : '<p class="fin-lec-body">'+_esc(body)+'</p>') + _srcBtns(r.internal_ref, r.detail, r.detail_long, r.evidence_display);
+      if(r.evidence_display) h += '<p class="fin-lec-evidence"><em>'+_linkifyStandards(_pubClean(r.evidence_display))+'</em></p>';
       h += _lecMeta(r, { skipEvidence:true, skipBasis:true });
       h += '</div>';
     });
@@ -1743,7 +1857,7 @@ window.FinanceView = (function(){
   function _lecTodaySection(rows){
     var h = '';
     rows.forEach(function(r){
-      var body = r.detail_long || r.detail;
+      var body = _pubLong(r.detail_long) || _pubClean(r.detail);
       h += '<div class="fin-lec-entry">';
       if(body) h += '<p class="fin-lec-body">'+_esc(body)+' '+_lecBadge(r.assurance)+'</p>';
       else     h += '<div class="fin-lec-badgeline">'+_lecBadge(r.assurance)+'</div>';
@@ -1772,7 +1886,7 @@ window.FinanceView = (function(){
     if(vr.length){
       vr.forEach(function(v){
         h += '<div class="fin-lec-entry"><div class="fin-lec-subtitle">'+_esc(v.ref)+' '+_lecBadge(v.tag)+_finVerseTag(v.ref)+'</div>';
-        if(v.gist) h += '<p class="fin-lec-body">'+_esc(v.gist)+'</p>';
+        if(v.gist) h += '<p class="fin-lec-body">'+_esc(_pubLong(v.gist))+'</p>';
         h += '</div>';
       });
     } else {
@@ -1781,17 +1895,17 @@ window.FinanceView = (function(){
 
     // Meaning.
     if(w.meaning_summary && w.meaning_summary.text){
-      h += '<h2 class="fin-lec-h2">Meaning</h2><p class="fin-lec-body">'+_esc(w.meaning_summary.text)+' '+_lecBadge(w.meaning_summary.tag)+'</p>';
+      h += '<h2 class="fin-lec-h2">Meaning</h2><p class="fin-lec-body">'+_esc(_pubLong(w.meaning_summary.text))+' '+_lecBadge(w.meaning_summary.tag)+'</p>';
     }
     // Developed into.
     if(w.developed_into){
-      h += '<h2 class="fin-lec-h2">Developed into</h2><p class="fin-lec-body">'+_esc(w.developed_into)+'</p>';
+      h += '<h2 class="fin-lec-h2">Developed into</h2><p class="fin-lec-body">'+_esc(_pubLong(w.developed_into))+'</p>';
     }
     // Where it lands in the standards.
     var sl = w.standard_landing || [];
     if(sl.length){
       h += '<h2 class="fin-lec-h2">Where it lands in the standards</h2>';
-      sl.forEach(function(s){ h += '<p class="fin-lec-body">'+_linkifyStandards(s.ref)+' '+_lecBadge(s.tag)+'</p>'; });
+      sl.forEach(function(s){ h += '<p class="fin-lec-body">'+_linkifyStandards(_pubLong(s.ref))+' '+_lecBadge(s.tag)+'</p>'; });
     }
     // Covered by terms — resolved term-name chips.
     var termChips = (w.existing_term_ids || []).map(function(tid){
@@ -1803,9 +1917,10 @@ window.FinanceView = (function(){
     }
     // Honesty box for gap (same style as HOME).
     var honesty = '';
-    if(w.gap && w.gap.note) honesty += '<div class="fin-honesty-line">'+_esc(w.gap.note)+'</div>';
-    if(w.origin_flag)       honesty += '<div class="fin-honesty-line">'+_esc(w.origin_flag)+'</div>';
+    if(w.gap && w.gap.note) honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.gap.note))+'</div>';
+    if(w.origin_flag)       honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.origin_flag))+'</div>';
     if(honesty) h += '<div class="fin-honesty">'+honesty+'</div>';
+    h += _storyHtml(w, 'In depth');
 
     // SPECIAL CASE — qard: append the worked example "One word's journey".
     var we = D.qlayer && D.qlayer.worked_example_qard_hasan;
@@ -1815,8 +1930,8 @@ window.FinanceView = (function(){
       (we.chain || []).forEach(function(item){
         var sname = _stageName(item.stage);   // maps known stages; falls back to underscores→spaces
         h += '<div class="fin-lec-entry"><div class="fin-lec-subtitle">'+_esc(sname)+' '+(item.tag ? _lecBadge(item.tag) : '')+'</div>';
-        if(item.content) h += '<p class="fin-lec-body">'+_esc(item.content)+'</p>';
-        if(item.source)  h += '<div class="fin-lec-basis">'+_esc(item.source)+'</div>';
+        if(item.content) h += '<p class="fin-lec-body">'+_esc(_pubLong(item.content))+'</p>';
+        if(item.source && !_PUB_CODE.test(_pubClean(item.source))) h += '<div class="fin-lec-basis">'+_esc(_pubClean(item.source))+'</div>';
         h += '</div>';
       });
     }
@@ -5037,12 +5152,22 @@ window.FinanceView = (function(){
     var h = '<div class="fin-prism-col"><div class="fin-prism-collabel">'+_esc(label)+'</div>';
     list.forEach(function(p){
       var pend = (p.tag !== 'verified');
+      var notSourceable = (p.sourcing === 'not_sourceable');
+      var tagHtml = '';
+      if(!pend && !notSourceable){
+        tagHtml = '<span class="fin-badge fin-badge-est">verified</span>';
+      } else if(notSourceable){
+        tagHtml = '<span class="fin-tag" style="background:#E5E7EB;color:#374151;border:1px solid #D1D5DB">not sourceable</span>';
+      } else {
+        tagHtml = '<span class="fin-tag fin-tag-untagged">needs check</span>';
+      }
       h += '<div class="fin-prism-pos'+(pend ? ' fin-prism-pending' : '')+'">'
          + '<div class="fin-prism-auth">'+_esc(p.authority || p.tradition || '')
-         + (pend ? '<span class="fin-tag fin-tag-untagged">needs check</span>'
-                 : '<span class="fin-badge fin-badge-est">verified</span>')+'</div>'
+         + tagHtml+'</div>'
          + '<div class="fin-prism-text">'+_esc(p.position || '')+'</div>'
-         + (p.basis ? '<div class="fin-prism-basis">'+_esc(p.basis)+'</div>' : '')
+         + (p.basis ? '<div class="fin-prism-basis">'+_esc(_pubClean(p.basis))+'</div>' : '')
+         + _paras(p.detail_long)
+         + _srcBtns(p.basis, p.internal_ref, p.detail_long)
          + '</div>';
     });
     return h + '</div>';
@@ -5067,10 +5192,10 @@ window.FinanceView = (function(){
         var _cName = (t.contract && _idx.contract[t.contract]) ? _idx.contract[t.contract].name : '';
         h += '<section class="fin-prism-topic" data-prism-topic="'+_esc(t.topic_id||'')+'">'
            + '<div class="fin-prism-q">'+_esc(t.topic || t.topic_id || '')+'</div>'
-           + (t.why_it_matters ? '<div class="fin-prism-why">'+_esc(t.why_it_matters)+'</div>' : '')
+           + (t.why_it_matters ? '<div class="fin-prism-why">'+_esc(_pubClean(t.why_it_matters))+'</div>' : '')
            + '<div class="fin-prism-summary">'+_poss.length+' positions &#183; '+_ver+' verified &#183; '+(_poss.length-_ver)+' pending citation</div>'
            + '<div class="fin-prism-refs">'
-           +   (t.contract ? '<span class="fin-prism-ref fin-prism-cx" data-prism-c="'+_esc(t.contract)+'">&#8594; '+_esc(_cName || t.contract)+' ('+_esc(t.contract)+')</span>' : '')
+           +   (t.contract ? '<span class="fin-prism-ref fin-prism-cx" data-prism-c="'+_esc(t.contract)+'">&#8594; '+_esc(_cName || t.contract)+'</span>' : '')
            +   (t.standard_refs||[]).map(function(s){ return '<span class="fin-prism-ref">'+_linkifyStandards(s)+'</span>'; }).join('')
            + '</div>'
            + ((t.term_refs && t.term_refs.length) ? '<div class="fin-prism-terms">'+t.term_refs.map(_prismTermChip).join('')+'</div>' : '')
@@ -5097,6 +5222,474 @@ window.FinanceView = (function(){
       if(_ft && _ft.scrollIntoView) _ft.scrollIntoView({ behavior:'smooth', block:'start' });
       _prismFocus = null;
     }
+  }
+
+  // ── PEOPLE + BOOKS pages ─────────────────────────────────────────────────────
+  //    PEOPLE = every person USUL names, on one year timeline (century headers, like the Gold Ark timeline).
+  //    Sources, joined by exact ids/names only: ladder rows (entity_type 'scholar'), scholars.json (S###),
+  //    people_goldark.json (word-for-word Gold Ark records, by app_figure_slug). Nothing is written here.
+  //    BOOKS = all books.json rows by year. No images anywhere (Prophets/Companions rule).
+  var _plQuery = '', _bkQuery = '', _people = null;
+  function _ordinal(n){ var s = ['th','st','nd','rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+  function _centuryLabel(y){ return (y == null) ? 'Year not known' : (_ordinal(Math.floor((y - 1) / 100) + 1) + ' century CE'); }
+  function _yr(v){ var n = parseInt(v, 10); return isNaN(n) ? null : n; }
+  // Year in CE from a data value: "1943" -> 1943; "362 AH (972/973 CE)" -> 972; "Not found" -> null; AH-only -> null.
+  function _yrCE(v){
+    var s = String(v == null ? '' : v), m = s.match(/(\d{3,4})(?:\/\d{1,4})?\s*CE/);
+    if(m) return +m[1];
+    if(/\bAH\b/.test(s)) return null;
+    return _yr(s.replace(/^\s*c\.\s*/i, ''));   // "c. 1949" -> 1949
+  }
+  // ── Placing people with no birth year (Adam, 26 Nov 2026): no year is shown or guessed. Each is placed
+  //    beside the dated person with the SAME kind of dated record closest in time: year of death, else first
+  //    degree, master's, doctorate, else a book in our list. Records come only from each person's own
+  //    life story / death year / books; for dated people only records inside their own lifetime count.
+  var _PL_KINDS = [
+    { k:'death',    say:'died' },
+    { k:'bachelor', say:'took a first degree', re:/\bbachelor|\bfirst degree|\blaw degree|\bgraduated\b/i },
+    { k:'master',   say:'took a master’s degree', re:/\bmaster/i },
+    { k:'doctor',   say:'completed a doctorate', re:/\bdoctorate|\bPh\.?D\b/i },
+    { k:'book',     say:'wrote a book in our list' }
+  ];
+  function _plRecords(p){
+    var out = {};
+    if(p.dod != null && !p.living) out.death = { year:p.dod, text:'' };
+    var bio = String((p.gold && (p.gold.bio_full || p.gold.bio)) || (p.fin && p.fin.bio_full) || '');
+    bio.split(/(?<=[.!?])\s+/).forEach(function(s){
+      if(/\b(born|birth)\b/i.test(s)) return;
+      var m = s.match(/\b(1[0-9]{3}|20[0-9]{2})\b(?!\s*AH)/); if(!m) return;
+      var y = +m[1];
+      if(p.dob != null && y < p.dob + 15) return;
+      if(p.dod != null && y > p.dod) return;
+      _PL_KINDS.forEach(function(K){
+        if(!K.re || !K.re.test(s)) return;
+        if(!out[K.k] || y < out[K.k].year) out[K.k] = { year:y, text:s.trim() };
+      });
+    });
+    (p.books || []).forEach(function(b){
+      var y = _yr(b.year_ce);
+      if(y != null && (!out.book || y < out.book.year)) out.book = { year:y, text:(b.title_english || b.title_original || '') };
+    });
+    return out;
+  }
+  function _plPlace(out){
+    var dated = out.filter(function(p){ return p.dob != null; }).map(function(p){ return { p:p, r:_plRecords(p) }; });
+    out.forEach(function(p){
+      p.place = null;
+      if(p.dob != null) return;
+      var mine = _plRecords(p);
+      for(var i = 0; i < _PL_KINDS.length; i++){
+        var K = _PL_KINDS[i], r = mine[K.k]; if(!r) continue;
+        var best = null;
+        dated.forEach(function(d){ var a = d.r[K.k]; if(!a) return; var gap = Math.abs(a.year - r.year); if(!best || gap < best.gap) best = { gap:gap, d:d, a:a }; });
+        if(!best) continue;
+        p.place = { kind:K, rec:r, anchor:best.d.p, anchorRec:best.a, after:(r.year >= best.a.year) };
+        return;
+      }
+    });
+  }
+  function _buildPeople(){
+    if(_people) return _people;
+    var byKey = {}, order = [], nameKey = {};
+    function get(key){ if(!byKey[key]){ byKey[key] = { key:key, rows:[], gold:null, fin:null, name:'' }; order.push(key); } return byKey[key]; }
+    var lin = (D.lineage || []).filter(function(r){ return r.entity_type === 'scholar' && !/^Classical consensus/i.test(r.name || ''); });
+    lin.forEach(function(r){ if(r.app_figure_slug) nameKey[r.name] = 'G:' + r.app_figure_slug; });
+    lin.forEach(function(r){
+      var key = r.app_figure_slug ? 'G:' + r.app_figure_slug
+              : r.finance_scholar_id ? 'S:' + r.finance_scholar_id
+              : (nameKey[r.name] || 'N:' + r.name);
+      var p = get(key); p.rows.push(r);
+      if(!p.name) p.name = r.name;
+      if(r.app_figure_slug && D.peopleGold && D.peopleGold[r.app_figure_slug]) p.gold = D.peopleGold[r.app_figure_slug];
+    });
+    // A scholars.json person joins the ladder person who is the same person: same Gold Ark id, else exactly the same name.
+    (D.scholars || []).forEach(function(s){
+      var key = (s.figure_id && byKey['G:' + s.figure_id]) ? 'G:' + s.figure_id
+              : byKey['N:' + s.name] ? 'N:' + s.name
+              : (nameKey[s.name] && byKey[nameKey[s.name]]) ? nameKey[s.name]
+              : 'S:' + s.id;
+      var p = get(key); p.fin = s; if(!p.name) p.name = s.name;
+    });
+    var out = order.map(function(k){
+      var p = byKey[k], r0 = p.rows[0] || {};
+      if(p.gold && p.gold.famous) p.name = p.gold.famous;
+      var _fb = p.fin ? _yrCE(p.fin.birth_year) : null, _fd = p.fin ? _yrCE(p.fin.death_year) : null;
+      p.dob = p.gold ? _yr(p.gold.dob) : (_fb != null ? _fb : _yr(r0.dob));
+      p.dod = p.gold ? _yr(p.gold.dod) : (_fd != null ? _fd : _yr(r0.dod));
+      p.living = !!(p.fin && /living/i.test(String(p.fin.death_year || '')));
+      p.sort = (p.dob != null) ? p.dob : p.dod;
+      var _nf = function(v){ return (v && !/^not found\.?$/i.test(String(v).trim())) ? v : ''; };
+      p.sect = r0.sect || _nf(p.fin && p.fin.sect) || '';
+      p.school = r0.school || _nf(p.fin && p.fin.madhhab) || '';
+      p.movement = r0.movement || '';
+      var bk = {}, cs = {};
+      p.rows.forEach(function(r){ if(r.contract) cs[r.contract] = 1; _rowBooks(r).forEach(function(b){ bk[b.id] = b; }); });
+      if(p.fin) (D.books || []).forEach(function(b){ if(_bookAuthorId(b) === p.fin.id) bk[b.id] = b; });
+      var _gid = (k.indexOf('G:') === 0) ? k.slice(2) : (p.fin && p.fin.figure_id) || '';
+      if(_gid) (D.books || []).forEach(function(b){ if(b.author_figure_id === _gid) bk[b.id] = b; });
+      p.books = Object.keys(bk).map(function(id){ return bk[id]; });
+      p.books.forEach(function(b){ (b.contracts_covered || []).forEach(function(c){ cs[c] = 1; }); });
+      p.contracts = Object.keys(cs).sort();
+      return p;
+    });
+    out.sort(function(a, b){
+      if(a.sort == null && b.sort == null) return a.name.localeCompare(b.name);
+      if(a.sort == null) return 1; if(b.sort == null) return -1;
+      return (a.sort - b.sort) || a.name.localeCompare(b.name);
+    });
+    _plPlace(out);
+    _people = out;
+    return out;
+  }
+  function _personTradOk(p){
+    if(!(F.sect.size || F.school.size || F.movement.size)) return true;
+    var st = p.rows.map(function(r){ return _tradState('lineage', r.id); });
+    if(p.fin) st.push(_tradState('scholar', p.fin.id));
+    return st.some(function(s){ return s !== 'off'; });
+  }
+  function _contractOk(list){
+    if(!F.contract.size) return true;
+    return (list || []).some(function(c){ return F.contract.has(c); });
+  }
+  function _yearsText(p){
+    if(p.dob != null && p.living) return p.dob + ' – living';
+    if(p.dob != null && p.dod != null) return p.dob + ' – ' + p.dod + ' CE';
+    if(p.dod != null) return 'd. ' + p.dod + ' CE';
+    if(p.dob != null) return 'b. ' + p.dob + ' CE';
+    return 'dates not known';
+  }
+  function _personRole(p){
+    if(p.gold && p.gold.primaryTitle) return p.gold.primaryTitle;
+    if(p.fin) return [p.fin.role, p.fin.institution].filter(function(v){ return v && !/^not found\.?$/i.test(String(v).trim()); }).join(' · ');
+    var r0 = p.rows[0] || {};
+    return [r0.type_app, r0.tradition_app].filter(Boolean).join(' · ');
+  }
+  function _cChips(list){
+    return (list || []).map(function(c){
+      if(!_idx.contract[c]) return '<span class="fin-pl-tag">'+_esc(c)+'</span>';   // not a contract id (e.g. 'principle') — plain word, not a link
+      return '<span class="fin-pl-chip" data-pl-contract="'+_esc(c)+'" title="Open this contract in LADDER">'+_esc(_idx.contract[c].name || c)+'</span>';
+    }).join('');
+  }
+  // Author for reading: "(classical: Abu Yusuf)" -> "Abu Yusuf"; "(Ottoman commission)" -> "Ottoman commission".
+  function _bookAuthorPlain(b){
+    var s = String(_bookAuthorLabel(b) || '').replace(/^\(\s*(classical:\s*)?/i, '').replace(/\)\s*$/, '').trim();
+    s = s.replace(/\s*[—–-]+\s*not in scholars\.json/i, '');
+    if(/^per source doc:/i.test(s)) s = s.replace(/^per source doc:\s*/i, '').replace(/\s*[—–-]+\s*verify\s*$/i, '') + ' (not confirmed)';
+    return s;
+  }
+  function _searchBox(id, val, ph){
+    return '<input class="fin-pl-search" id="'+id+'" type="search" placeholder="'+_esc(ph)+'" value="'+_esc(val)+'">';
+  }
+  function _wirePlCommon(root){
+    root.querySelectorAll('[data-pl-contract]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.stopPropagation();
+        F.contract = new Set([this.getAttribute('data-pl-contract')]); _syncAllDD(); _setMode('ladder');
+      });
+    });
+    root.querySelectorAll('a[target="_blank"]').forEach(function(a){ a.addEventListener('click', function(e){ e.stopPropagation(); }); });
+  }
+
+  // ── Timescale list (PEOPLE + BOOKS) — same idea as the Gold Ark timelines: one row per item, names left,
+  //    the year spine (CE · AH) in the middle, tradition lines on the right. A tradition line starts THICK at the
+  //    first person of that tradition (birth year) and runs down; every later member joins it with a THIN line.
+  //    People with no tradition stated sit on a grey dashed line and stay visible under every tradition filter.
+  var TL_ROW = 46, TL_LEFT = 430, TL_LANE0 = 70, TL_LANE_W = 30;
+  var _TL_SCHOOL_KEY = { 'Hanafi':'sunni-hanafi', 'Maliki':'sunni-maliki', "Shafi'i":'sunni-shafi', 'Hanbali':'sunni-hanbali' };
+  // Tradition of a person for the lines: school first, then Shia, then any other school/movement, then Sunni, else none.
+  // Values in the data that say "no tradition" (e.g. "Non-denominational", "N/A (academic)") are not a tradition line.
+  var _TL_NONE = /^(n\/a|non-denominational|not found|none|unknown)\b/i;
+  function _tlVal(v){ v = String(v || '').trim(); return (v && !_TL_NONE.test(v)) ? v : ''; }
+  function _plCat(p){
+    var sect = _tlVal(p && p.sect), school = _tlVal(p && p.school), mv = _tlVal(p && p.movement);
+    if(_TL_SCHOOL_KEY[school]) return { id:school, label:school, color:TRAD_COLORS[_TL_SCHOOL_KEY[school]] };
+    if(sect === 'Shia' || /ja.?fari/i.test(school)) return { id:'Shia', label:'Shia', color:TRAD_COLORS['shia-jafari'] };
+    if(school) return { id:school, label:school, color:TRAD_COLORS.other };
+    if(mv) return { id:mv, label:mv, color:TRAD_COLORS.other };
+    if(sect === 'Sunni') return { id:'Sunni', label:'Sunni (school not stated)', color:TRAD_COLORS.sunni };
+    return { id:'', label:'No tradition stated', color:'#9CA3AF', none:true };
+  }
+  function _plLabels(p){ return [_tlVal(p && p.sect), _tlVal(p && p.school), _tlVal(p && p.movement)].filter(Boolean); }
+  // TRADITION filter for these pages: no pick = all; else a person matches any picked sect/school/movement.
+  // People with no tradition stated always stay (Adam, 26 Nov 2026).
+  function _plTradOk(p){
+    var picks = [].concat(Array.from(F.sect), Array.from(F.school), Array.from(F.movement));
+    if(!picks.length) return true;
+    var L = _plLabels(p);
+    if(!L.length) return true;
+    return L.some(function(v){ return picks.indexOf(v) !== -1; });
+  }
+  // Click on a tradition line = pick / unpick that tradition in the TRADITION filter.
+  function _plToggleLane(id){
+    if(!id) return;
+    var set = _tradSet(id);
+    if(set.has(id)) set.delete(id); else set.add(id);
+    _syncAllDD();
+    _renderMode();
+  }
+  function _tlYears(y){
+    if(y == null) return { ce:'', ah:'' };
+    return { ce: y + ' CE', ah: (y >= 622) ? (_ceToHijri(y) + ' AH') : '' };
+  }
+  // items: [{ key, year, html (left label), cat, sel }] in display order. Returns {html, height}.
+  function _tlBuild(items, attr, opts){
+    opts = opts || {};
+    var lanes = [], laneBy = {};
+    items.forEach(function(it, i){
+      var k = it.cat.none ? '__none' : it.cat.id;
+      if(!laneBy[k]){ laneBy[k] = { key:k, cat:it.cat, first:i, rows:[] }; lanes.push(laneBy[k]); }
+      laneBy[k].rows.push(i);
+    });
+    // Named traditions left to right by first appearance; the grey "none" line last.
+    lanes.sort(function(a, b){ return (a.key === '__none') - (b.key === '__none') || a.first - b.first; });
+    if(opts.noNoneLane) lanes = lanes.filter(function(L){ return L.key !== '__none'; });   // PEOPLE: no grey line (Adam, 26 Nov 2026)
+    lanes.forEach(function(L, li){ L.x = TL_LEFT + TL_LANE0 + li * TL_LANE_W; });
+    var top = 30, H = top + items.length * TL_ROW + 40, W = TL_LEFT + TL_LANE0 + lanes.length * TL_LANE_W + 40;
+    var yOf = function(i){ return top + i * TL_ROW + TL_ROW / 2; };
+    var svg = '<svg class="fin-tl-svg" width="'+W+'" height="'+H+'" style="position:absolute;left:0;top:0;overflow:visible">';
+    svg += '<line x1="'+TL_LEFT+'" y1="'+(top - 10)+'" x2="'+TL_LEFT+'" y2="'+(H - 20)+'" stroke="#C9A227" stroke-width="5" stroke-linecap="round"/>';
+    lanes.forEach(function(L){
+      var c = L.cat.color, y0 = yOf(L.first), dash = L.key === '__none' ? ' stroke-dasharray="5 5"' : '';
+      var thick = L.key === '__none' ? 2 : 5;
+      // first member: thick from the spine, round the corner, down to the end
+      svg += '<path d="M '+(TL_LEFT+8)+' '+y0+' L '+(L.x-14)+' '+y0+' Q '+L.x+' '+y0+' '+L.x+' '+(y0+14)+' L '+L.x+' '+(H-20)+'" fill="none" stroke="'+c+'" stroke-width="'+thick+'"'+dash+' stroke-linecap="round"/>';
+      L.rows.slice(1).forEach(function(i){
+        var y = yOf(i);
+        svg += '<path d="M '+(TL_LEFT+8)+' '+y+' L '+(L.x-10)+' '+y+' Q '+L.x+' '+y+' '+L.x+' '+(y+10)+'" fill="none" stroke="'+c+'" stroke-width="1.5" stroke-opacity=".8"/>';
+      });
+      // wide invisible hit line + rotated name along the thick line
+      svg += '<path class="fin-tl-lane" data-tl-lane="'+_esc(L.cat.id)+'" d="M '+L.x+' '+y0+' L '+L.x+' '+(H-20)+'" stroke="transparent" stroke-width="18" fill="none" style="cursor:'+(L.cat.none?'default':'pointer')+'"><title>'+_esc(L.cat.label)+(L.cat.none?'':' — click to show only this tradition')+'</title></path>';
+      svg += '<text x="'+(L.x+6)+'" y="'+(y0+22)+'" transform="rotate(90 '+(L.x+6)+' '+(y0+22)+')" fill="'+c+'" font-family="Cinzel,serif" font-size="11" letter-spacing=".08em" font-weight="700" class="fin-tl-lanelbl" data-tl-lane="'+_esc(L.cat.id)+'" style="cursor:'+(L.cat.none?'default':'pointer')+'">'+_esc(L.cat.label.toUpperCase())+' ('+L.rows.length+')</text>';
+    });
+    svg += '</svg>';
+    var rows = '';
+    items.forEach(function(it, i){
+      var y = top + i * TL_ROW, yr = _tlYears(it.year);
+      rows += '<div class="fin-tl-row'+(it.sel ? ' fin-selected' : '')+'" '+attr+'="'+_esc(it.key)+'" style="top:'+y+'px;height:'+TL_ROW+'px;width:'+(TL_LEFT-70)+'px">'+it.html+'</div>'
+            + '<div class="fin-tl-yr" style="top:'+y+'px;left:'+(TL_LEFT-66)+'px;height:'+TL_ROW+'px">'+_esc(yr.ce)+(yr.ah ? '<span class="fin-tl-ah">'+_esc(yr.ah)+'</span>' : '')+'</div>'
+            + '<span class="fin-tl-dot" style="top:'+(yOf(i)-5)+'px;left:'+(TL_LEFT-5)+'px;background:'+it.cat.color+'"></span>';
+    });
+    return { html:'<div class="fin-tl" style="position:relative;height:'+H+'px;min-width:'+W+'px">'+svg+rows+'</div>', height:H };
+  }
+  function _tlWire(canvas){
+    canvas.querySelectorAll('[data-tl-lane]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _plToggleLane(this.getAttribute('data-tl-lane')); });
+    });
+  }
+  function _tlPicked(){
+    var p = [].concat(Array.from(F.sect), Array.from(F.school), Array.from(F.movement));
+    return p.length ? '<div class="fin-pl-count">Showing: '+_esc(p.join(', '))+' + people with no tradition stated. Click a line again, or RESET, to show all.</div>' : '';
+  }
+
+  function _renderPeople(){
+    var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
+    var ro = document.getElementById('finance-readout');
+    var all = _buildPeople(), q = _plQuery.trim().toLowerCase();
+    var list = all.filter(function(p){
+      return _plTradOk(p) && (!q || p.name.toLowerCase().indexOf(q) !== -1 || _personRole(p).toLowerCase().indexOf(q) !== -1);
+    });
+    // Birth year only (Adam). No birth year: placed beside the nearest dated person (_plPlace), no year shown;
+    // with no dated record at all: at the end.
+    var _k = function(p){
+      if(p.dob != null) return [p.dob, 0];
+      if(p.place) return [p.place.anchor.dob, p.place.after ? 1 : -1];
+      return [Infinity, 0];
+    };
+    list = list.slice().sort(function(a, b){
+      var ka = _k(a), kb = _k(b);
+      if(ka[0] === Infinity && kb[0] === Infinity) return a.name.localeCompare(b.name);
+      return (ka[0] - kb[0]) || (ka[1] - kb[1]) || a.name.localeCompare(b.name);
+    });
+    var items = list.map(function(p){
+      var role = _personRole(p);
+      return { key:p.key, year:p.dob, cat:_plCat(p), sel:!!(_sel && _sel.type==='person' && _sel.id===p.key),
+               html:'<div class="fin-tl-name">'+_esc(p.name)+'</div>'+(role ? '<div class="fin-tl-sub">'+_esc(role)+'</div>' : '') };
+    });
+    var tl = _tlBuild(items, 'data-pl-person', { noNoneLane:true });
+    var h = '<div class="fin-pl fin-pl-tl">'
+          + '<h1 class="fin-prism-h1">PEOPLE &#8212; who shaped Islamic finance</h1>'
+          + _searchBox('fin-pl-q', _plQuery, 'search a name…')
+          + '<div class="fin-pl-count">'+list.length+' of '+all.length+' people</div>' + _tlPicked()
+          + '</div>' + (list.length ? tl.html : '<div class="fin-prism-empty">No one matches these filters.</div>');
+    canvas.style.height = '';
+    canvas.innerHTML = h;
+    var qi = document.getElementById('fin-pl-q');
+    if(qi) qi.addEventListener('input', function(){ _plQuery = this.value; var pos = this.selectionStart; _renderPeople(); var n = document.getElementById('fin-pl-q'); if(n){ n.focus(); n.setSelectionRange(pos, pos); } });
+    canvas.querySelectorAll('[data-pl-person]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _selectPerson(this.getAttribute('data-pl-person')); });
+    });
+    _tlWire(canvas);
+    _wirePlCommon(canvas);
+    _renderHub();
+    if(ro) ro.textContent = list.length + ' people';
+  }
+  function _selectPerson(key){
+    _sel = { type:'person', id:key };
+    document.querySelectorAll('#finance-canvas [data-pl-person]').forEach(function(el){ el.classList.toggle('fin-selected', el.getAttribute('data-pl-person') === key); });
+    _renderHub();
+  }
+  function _personHub(p){
+    var trad = [p.sect, p.school, p.movement].filter(Boolean).join(' · ');
+    var h = '<div class="fin-hub-head"><span class="fin-hub-title">'+_esc(p.name)+'</span></div>';
+    var g = p.gold, f = p.fin;
+    // Years as the data words them ("1904 or 1907 (sources disagree)", "362 AH (972/973 CE)"); "Not found" stays visible.
+    var _fy = function(v){ return (v == null || v === '') ? '' : String(v); };
+    var _pl = function(v){ return v && !/^not found\.?$/i.test(String(v).trim()) ? String(v) : ''; };
+    // Only what is known is shown: a "Not found" birth or death year is left out (Adam, 26 Nov 2026).
+    var _lp = [];
+    if(f && _pl(_fy(f.birth_year))) _lp.push('Born: ' + _fy(f.birth_year));
+    if(f && _pl(_fy(f.death_year))) _lp.push(/^living$/i.test(_fy(f.death_year)) ? 'Living' : 'Died: ' + _fy(f.death_year));
+    var yrs = g ? [g.dob_s, g.dod_s].filter(Boolean).join(' — ')
+            : _lp.length ? _lp.join(' · ')
+            : (!f && (p.dob != null || p.dod != null)) ? _yearsText(p) : '';
+    if(yrs) h += '<div class="fin-hub-field"><span class="fin-hub-k">Life</span><span class="fin-hub-v">'+_esc(yrs)+'</span></div>';
+    if(p.dob == null && p.place){
+      var _pr = p.place.rec, _ar = p.place.anchorRec, _K = p.place.kind;
+      h += '<div class="fin-hub-field"><span class="fin-hub-v" style="font-style:italic;opacity:.85">No year of birth was found in the sources read, so none is shown. '
+         + 'Placed on the PEOPLE timeline beside ' + _esc(p.place.anchor.name) + ': both ' + _esc(_K.say) + ' close in time ('
+         + _esc(p.place.anchor.name) + ': ' + _ar.year + '; this person: ' + _pr.year
+         + (_K.k === 'book' ? ', “' + _esc(_pr.text) + '”' : '') + ').</span></div>';
+    } else if(p.dob == null) h += '<div class="fin-hub-field"><span class="fin-hub-v" style="font-style:italic;opacity:.8">Listed at the end of the PEOPLE timeline: no year of birth was found in the sources read, and no dated record was found in our data.</span></div>';
+    if(f && _pl(f.birth_place)) h += '<div class="fin-hub-field"><span class="fin-hub-k">Born in</span><span class="fin-hub-v">'+_esc(f.birth_place)+'</span></div>';
+    if(f && _pl(f.death_place)) h += '<div class="fin-hub-field"><span class="fin-hub-k">Died in</span><span class="fin-hub-v">'+_esc(f.death_place)+'</span></div>';
+    var role = _personRole(p);
+    if(role) h += '<div class="fin-hub-field"><span class="fin-hub-k">Known as</span><span class="fin-hub-v">'+_esc(role)+'</span></div>';
+    if(trad) h += '<div class="fin-hub-field"><span class="fin-hub-k">Tradition</span><span class="fin-hub-v">'+_esc(trad)+'</span></div>';
+    if(g && g.city) h += '<div class="fin-hub-field"><span class="fin-hub-k">Place</span><span class="fin-hub-v">'+_esc(g.city)+'</span></div>';
+    if(f && _pl(f.nationality)) h += '<div class="fin-hub-field"><span class="fin-hub-k">Country</span><span class="fin-hub-v">'+_esc(f.nationality)+'</span></div>';
+    if(f && _pl(f.key_contribution)) h += '<div class="fin-hub-sec">Contribution</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(_pubClean(f.key_contribution))+'</span></div>';
+    if(f && _pl(f.controversy)) h += '<div class="fin-hub-sec">Debated</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(_pubClean(f.controversy))+'</span></div>';
+    var bio = g ? (g.bio_full || g.bio) : '';
+    if(!bio && f && _pl(f.bio_full)){
+      bio = f.bio_full;
+      h += '<div class="fin-hub-sec">Biography' + (f.figure_id ? ' <span class="fin-pl-tag fin-pl-gold">also in Gold Ark</span>' : '') + '</div>';
+      String(bio).split(/\n\s*\n/).forEach(function(par){ if(par.trim()) h += _paras(par.trim(), 'fin-pl-bio'); });
+      var _bs = (f.bio_sources || []).filter(function(x){ return x && /^https?:\/\//i.test(x.url || ''); });
+      if(!_bs.length && /^https?:\/\//i.test(f.bio_full_url || '')) _bs = [{ url: f.bio_full_url, title: '' }];
+      if(_bs.length) h += '<div class="fin-src-row">' + _bs.map(function(x){
+        var host = ''; try { host = new URL(x.url).hostname.replace(/^www\./, ''); } catch(e){}
+        return '<a class="fin-src-btn" href="'+_esc(x.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="'+_esc(_pubClean(x.title || ''))+'">Source ↗ '+_esc(host)+'</a>';
+      }).join('') + '</div>';
+    } else if(bio){
+      h += '<div class="fin-hub-sec">Biography</div>';
+      String(bio).split(/\n\s*\n/).forEach(function(par){ if(par.trim()) h += '<p class="fin-pl-bio">'+_esc(par.trim())+'</p>'; });
+      var src = g.bio_full_url || g.wiki_url || '';
+      if(/^https?:\/\//i.test(src)) h += '<div class="fin-hub-field"><a class="fin-pl-src" href="'+_esc(src)+'" target="_blank" rel="noopener">Source ↗</a></div>';
+    }
+    if(p.rows.length){
+      h += '<div class="fin-hub-sec">Where USUL names them</div>';
+      p.rows.forEach(function(r){
+        var cn = (_idx.contract[r.contract] && _idx.contract[r.contract].name) || r.contract;
+        h += '<div class="fin-pl-step" data-pl-contract="'+_esc(r.contract)+'" title="Open this contract in LADDER">'
+           + '<div class="fin-pl-step-h">'+_esc(cn)+' · '+_esc(r.stage_label || '')+(r.timeline_year != null ? ' · '+_esc(String(r.timeline_year)) : '')+'</div>'
+           + '<div class="fin-pl-step-t">'+_esc(_pubClean(r.detail))+'</div></div>';
+      });
+    }
+    if(p.books.length) h += '<div class="fin-hub-sec">Books</div>' + p.books.map(_bookLineHtml).join('');
+    if(!bio && !(f && f.key_contribution) && !p.rows.length) h += '<div class="fin-hub-none">No further information held yet.</div>';
+    return h;
+  }
+  function _bookLineHtml(b){
+    var t = (b.title_english && b.title_original && b.title_english !== b.title_original)
+          ? _esc(b.title_original) + ' <span style="opacity:.7">(' + _esc(b.title_english) + ')</span>'
+          : _esc(b.title_original || b.title_english || '');
+    return '<div class="fin-hub-field"><span class="fin-hub-v">' + t + (b.year_ce ? ' <span style="opacity:.7">· '+_esc(b.year_ce)+'</span>' : '') + '</span> '
+         + (/^https?:\/\//i.test(b.public_url || '')
+            ? '<a class="fin-read-pill" href="'+_esc(b.public_url)+'" target="_blank" rel="noopener">READ</a>'
+            : '<span class="fin-hub-chip" style="opacity:.6">no free copy found</span>')
+         + '</div>';
+  }
+
+  // The PEOPLE entry that wrote a book (exact ids only): USUL person id, else Gold Ark author id.
+  function _bookPerson(b){
+    var aid = _bookAuthorId(b), ppl = _buildPeople();
+    for(var i = 0; i < ppl.length; i++){
+      var p = ppl[i];
+      if(aid && p.fin && p.fin.id === aid) return p;
+      if(b.author_figure_id && (p.key === 'G:' + b.author_figure_id || (p.fin && p.fin.figure_id === b.author_figure_id))) return p;
+    }
+    return null;
+  }
+  function _renderBooks(){
+    var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
+    var ro = document.getElementById('finance-readout');
+    var all = (D.books || []).slice(), q = _bkQuery.trim().toLowerCase();
+    all.sort(function(a, b){
+      var ya = _yr(a.year_ce), yb = _yr(b.year_ce);
+      if(ya == null && yb == null) return 0; if(ya == null) return 1; if(yb == null) return -1;
+      return ya - yb;
+    });
+    var list = all.filter(function(b){
+      var hay = [b.title_original, b.title_english, _bookAuthorPlain(b)].join(' ').toLowerCase();
+      var per = _bookPerson(b);
+      return _contractOk(b.contracts_covered) && _plTradOk(per || {}) && (!q || hay.indexOf(q) !== -1);
+    });
+    var free = all.filter(function(b){ return /^https?:\/\//i.test(b.public_url || ''); }).length;
+    var items = list.map(function(b){
+      var per = _bookPerson(b), t = b.title_original || b.title_english || b.id;
+      var sub = (b.title_english && b.title_english !== t) ? b.title_english : '';
+      var who = per ? '<span class="fin-pl-link" data-pl-goto="'+_esc(per.key)+'">'+_esc(per.name)+'</span>' : _esc(_bookAuthorPlain(b));
+      var read = /^https?:\/\//i.test(b.public_url || '') ? ' <a class="fin-read-pill" href="'+_esc(b.public_url)+'" target="_blank" rel="noopener">READ</a>' : '';
+      return { key:b.id, year:_yr(b.year_ce), cat:_plCat(per || {}), sel:!!(_sel && _sel.type==='book' && _sel.id===b.id),
+               html:'<div class="fin-tl-name" title="'+_esc(sub)+'">'+_esc(t)+'</div><div class="fin-tl-sub">'+who+read+'</div>' };
+    });
+    var tl = _tlBuild(items, 'data-bk-book', { noNoneLane:true });
+    var h = '<div class="fin-pl fin-pl-tl">'
+          + '<h1 class="fin-prism-h1">BOOKS &#8212; the written record of Islamic finance</h1>'
+          + '<p class="fin-prism-intro">Classical fiqh works, modern studies and standards, in order of writing. '
+          + 'The coloured lines are the tradition of each author. READ opens a free copy in a new tab where one was found ('+free+' of '+all.length+').</p>'
+          + _searchBox('fin-bk-q', _bkQuery, 'search a title or author…')
+          + '<div class="fin-pl-count">'+list.length+' of '+all.length+' books</div>' + _tlPicked()
+          + '</div>' + (list.length ? tl.html : '<div class="fin-prism-empty">No book matches these filters.</div>');
+    canvas.style.height = '';
+    canvas.innerHTML = h;
+    var qi = document.getElementById('fin-bk-q');
+    if(qi) qi.addEventListener('input', function(){ _bkQuery = this.value; var pos = this.selectionStart; _renderBooks(); var n = document.getElementById('fin-bk-q'); if(n){ n.focus(); n.setSelectionRange(pos, pos); } });
+    canvas.querySelectorAll('[data-bk-book]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _selectBook(this.getAttribute('data-bk-book')); });
+    });
+    canvas.querySelectorAll('[data-pl-goto]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); var k = this.getAttribute('data-pl-goto'); _setMode('people'); _selectPerson(k); });
+    });
+    _tlWire(canvas);
+    _wirePlCommon(canvas);
+    _renderHub();
+    if(ro) ro.textContent = list.length + ' books';
+  }
+  function _selectBook(id){
+    _sel = { type:'book', id:id };
+    document.querySelectorAll('#finance-canvas [data-bk-book]').forEach(function(el){ el.classList.toggle('fin-selected', el.getAttribute('data-bk-book') === id); });
+    _renderHub();
+  }
+  function _bookHub(b){
+    var h = '<div class="fin-hub-head"><span class="fin-hub-title">'+_esc(b.title_original || b.title_english || b.id)+'</span></div>';
+    if(b.title_english && b.title_english !== b.title_original) h += '<div class="fin-hub-field"><span class="fin-hub-v" style="font-style:italic">'+_esc(b.title_english)+'</span></div>';
+    var aid = _bookAuthorId(b);
+    var person = aid ? _buildPeople().filter(function(p){ return p.fin && p.fin.id === aid; })[0] : null;
+    if(!person && b.author_figure_id) person = _buildPeople().filter(function(p){
+      return p.key === 'G:' + b.author_figure_id || (p.fin && p.fin.figure_id === b.author_figure_id);
+    })[0] || null;
+    h += '<div class="fin-hub-field"><span class="fin-hub-k">Author</span><span class="fin-hub-v">'
+       + (person ? '<span class="fin-pl-link" data-pl-goto="'+_esc(person.key)+'">'+_esc(person.name)+' →</span>' : _esc(_bookAuthorPlain(b)))
+       + '</span></div>';
+    var when = [b.year_ce ? b.year_ce+' CE' : '', b.year_ah ? b.year_ah+' AH' : ''].filter(Boolean).join(' / ');
+    if(when) h += '<div class="fin-hub-field"><span class="fin-hub-k">Written</span><span class="fin-hub-v">'+_esc(when)+'</span></div>';
+    if(b.language) h += '<div class="fin-hub-field"><span class="fin-hub-k">Language</span><span class="fin-hub-v">'+_esc(b.language)+'</span></div>';
+    if(b.significance) h += '<div class="fin-hub-sec">Why it matters</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(_pubClean(b.significance))+'</span></div>';
+    h += _storyHtml(b, 'About this book');
+    if(b.contracts_covered && b.contracts_covered.length) h += '<div class="fin-hub-sec">Contracts</div><div class="fin-pl-chips">'+_cChips(b.contracts_covered)+'</div>';
+    if(b.quran_refs && b.quran_refs.length){
+      h += '<div class="fin-hub-sec">Qur\'an in this book</div>';
+      b.quran_refs.forEach(function(qr){
+        h += '<div class="fin-hub-field"><span class="fin-hub-v">'+_esc(qr.verse)+_finVerseTag(qr.verse)+(qr.where ? '<br><span style="opacity:.75">'+_esc(qr.where)+'</span>' : '')+'</span></div>';
+      });
+    }
+    h += '<div class="fin-hub-sec">Read</div>' + (/^https?:\/\//i.test(b.public_url || '')
+          ? '<div class="fin-hub-field"><a class="fin-read-pill" href="'+_esc(b.public_url)+'" target="_blank" rel="noopener">READ</a></div>'
+          : '<div class="fin-hub-none">No free copy found yet.</div>');
+    var conf = _conf(b.assurance);
+    h += '<div class="fin-hub-sec">Confidence</div><div class="fin-hub-chips"><span class="fin-badge fin-badge-'+conf.key+'">'+conf.label+'</span></div>';
+    return h;
   }
 
   // ── TRACE mode — "from today back to the Qur'an" ──────────────────────────
@@ -5662,7 +6255,7 @@ window.FinanceView = (function(){
         var cf = _conf(v.tag);
         h += '<div class="fin-q-card">'
            + '<div class="fin-q-ref">'+_esc(v.ref)+'<span class="fin-badge fin-badge-'+cf.key+'">'+cf.label+'</span>'+_finVerseTag(v.ref)+'</div>'
-           + '<div class="fin-q-cited">'+_esc(v.gist)+'</div></div>';
+           + '<div class="fin-q-cited">'+_esc(_pubLong(v.gist))+'</div></div>';
       });
     } else {
       h += '<div class="fin-hub-none">No Qur\'an verse in this layer — see the origin note below.</div>';
@@ -5672,13 +6265,13 @@ window.FinanceView = (function(){
     if(w.meaning_summary && w.meaning_summary.text){
       var mcf = _conf(w.meaning_summary.tag);
       h += '<div class="fin-hub-sec">Meaning</div><div class="fin-hub-field"><span class="fin-hub-v">'
-         + _esc(w.meaning_summary.text)+' <span class="fin-badge fin-badge-'+mcf.key+'">'+mcf.label+'</span></span></div>';
+         + _esc(_pubLong(w.meaning_summary.text))+' <span class="fin-badge fin-badge-'+mcf.key+'">'+mcf.label+'</span></span></div>';
     }
 
     // Developed into.
     if(w.developed_into){
       h += '<div class="fin-hub-sec">Developed into</div><div class="fin-hub-field"><span class="fin-hub-v">'
-         + _esc(w.developed_into)+'</span></div>';
+         + _esc(_pubLong(w.developed_into))+'</span></div>';
     }
 
     // Where it lands in the standards.
@@ -5687,7 +6280,7 @@ window.FinanceView = (function(){
       h += '<div class="fin-hub-sec">Where it lands in the standards</div>';
       sl.forEach(function(s){
         var scf = _conf(s.tag);
-        h += '<div class="fin-hub-field"><span class="fin-hub-v">'+_linkifyStandards(s.ref)
+        h += '<div class="fin-hub-field"><span class="fin-hub-v">'+_linkifyStandards(_pubLong(s.ref))
            + ' <span class="fin-badge fin-badge-'+scf.key+'">'+scf.label+'</span></span></div>';
       });
     }
@@ -5703,9 +6296,10 @@ window.FinanceView = (function(){
 
     // Honesty box (amber) — gap.note and/or a non-Qur'an origin flag, both verbatim. Nothing invented.
     var honesty = '';
-    if(w.gap && w.gap.note) honesty += '<div class="fin-honesty-line">'+_esc(w.gap.note)+'</div>';
-    if(w.origin_flag)       honesty += '<div class="fin-honesty-line">'+_esc(w.origin_flag)+'</div>';
+    if(w.gap && w.gap.note) honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.gap.note))+'</div>';
+    if(w.origin_flag)       honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.origin_flag))+'</div>';
     if(honesty) h += '<div class="fin-honesty">'+honesty+'</div>';
+    h += _storyHtml(w, 'In depth');
 
     // trace_status chip at the bottom.
     if(w.trace_status) h += '<div class="fin-hub-chips" style="padding-top:8px">'+_traceChip(w.trace_status)+'</div>';
@@ -5750,8 +6344,11 @@ window.FinanceView = (function(){
     var selCls = (_ladSel === r.id) ? ' sel' : '';
     var nx = (r.__x != null) ? r.__x : LAD_BASE_X;
     var _cchip = r.__cchip ? '<span class="fin-tag" style="color:'+r.__cchip.color+';border:1px solid '+r.__cchip.color+'">'+_esc(r.__cchip.label)+'</span>' : '';
-    var h = '<div class="fin-ladder-node'+selCls+'" data-lid="'+_esc(r.id)+'" style="left:'+nx+'px;top:'+r.__y+'px;background:'+sc+'"></div>';
-    h += '<div class="fin-ladder-node-label'+selCls+'" data-lid="'+_esc(r.id)+'" style="top:'+r.__y+'px;'+(labelStyle||'')+'">';
+    var tradCat = _tradCategory(r);
+    var tradColor = TRAD_COLORS[tradCat] || TRAD_COLORS.revelation;
+    // Add tradition-category class and color (left border on label)
+    var h = '<div class="fin-ladder-node'+selCls+' fin-trad-'+tradCat+'" data-lid="'+_esc(r.id)+'" style="left:'+nx+'px;top:'+r.__y+'px;background:'+sc+'"></div>';
+    h += '<div class="fin-ladder-node-label'+selCls+' fin-trad-'+tradCat+'" data-lid="'+_esc(r.id)+'" style="top:'+r.__y+'px;border-left:4px solid '+tradColor+';'+(labelStyle||'')+'">';
     h += '<div class="fin-ladder-node-title">'+_esc(title) + _cchip
        + (etag ? '<span class="fin-tag">'+etag+'</span>' : '')
        + '<span class="fin-badge fin-badge-'+conf.key+'">'+conf.label+'</span>'
@@ -5778,14 +6375,17 @@ window.FinanceView = (function(){
     // Cross-mode hook → read the same contract as a lecture.
     if(r.contract) h += '<div class="fin-hub-lecline"><a class="fin-lec-cross" data-lad-lecture="'+_esc(r.contract)+'">Read as lecture →</a></div>';
 
-    // Detail
-    h += '<div class="fin-hub-sec">Detail</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(r.detail)+'</span></div>';
+    // Detail — the short line, then the longer description already in the data (cleaned of our record notes).
+    var _dShort = _pubClean(r.detail), _dLong = _pubLong(r.detail_long);
+    h += '<div class="fin-hub-sec">Detail</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(_dShort)+'</span></div>';
+    if(_dLong && _dLong !== _dShort) h += _paras(r.detail_long);
+    h += _srcBtns(r.internal_ref, r.detail, r.detail_long, r.evidence_display);
 
     // Substantive note (display_note, e.g. "Da'eef — supporting only") as a small chip — NOT dating text.
     if(r.display_note) h += '<div class="fin-hub-chips"><span class="fin-hub-chip">'+_esc(r.display_note)+'</span></div>';
 
     // Work (v4 work_title)
-    if(r.work_title) h += '<div class="fin-hub-field"><span class="fin-hub-k">Work</span><span class="fin-hub-v">'+_esc(r.work_title)+'</span></div>';
+    if(r.work_title && !_rowBooks(r).length) h += '<div class="fin-hub-field"><span class="fin-hub-k">Work</span><span class="fin-hub-v">'+_esc(r.work_title)+'</span></div>';
 
     // Citation from v4 hadith_meta (collection_label · number + grading chip)
     if(r.hadith_meta && (r.hadith_meta.collection_label || r.hadith_meta.number)){
@@ -5817,11 +6417,13 @@ window.FinanceView = (function(){
     // Position chip
     if(r.position) h += '<div class="fin-hub-chips"><span class="fin-ladder-pos">'+_esc(r.position)+'</span></div>';
 
-    // Date basis (timeline_year_basis), muted
-    if(r.timeline_year_basis) h += '<div class="fin-hub-anchor">date basis: '+_esc(r.timeline_year_basis)+'</div>';
+    // Date basis (timeline_year_basis) is our own record note — not shown to readers.
 
-    // Evidence — evidence_display ONLY; when empty, render nothing.
-    if(r.evidence_display) h += '<div class="fin-hub-field"><span class="fin-hub-k">Evidence</span><span class="fin-hub-v" style="font-style:italic">'+_linkifyStandards(r.evidence_display)+'</span></div>';
+    // Evidence — hidden when it only repeats the Work or the hadith Citation already shown above.
+    var _ev = _pubClean(r.evidence_display), _evL = _ev.toLowerCase();
+    var _evRepeat = (r.work_title && _evL.indexOf(String(r.work_title).toLowerCase()) === 0)
+                 || (r.hadith_meta && r.hadith_meta.collection_label && _evL.indexOf(String(r.hadith_meta.collection_label).toLowerCase()) === 0);
+    if(_ev && !_evRepeat) h += '<div class="fin-hub-field"><span class="fin-hub-k">Evidence</span><span class="fin-hub-v" style="font-style:italic">'+_linkifyStandards(_ev)+'</span></div>';
 
     // Confidence — assurance badge + the raw confidence grade (high/medium/low/period_only)
     h += '<div class="fin-hub-sec">Confidence</div><div class="fin-hub-chips"><span class="fin-badge fin-badge-'+conf.key+'">'+conf.label+'</span>'
@@ -5833,6 +6435,28 @@ window.FinanceView = (function(){
     if(r.finance_scholar_id && _idx.scholar[r.finance_scholar_id]) linkChips.push('<span class="fin-hub-chip fin-ladder-link">'+_esc(_idx.scholar[r.finance_scholar_id].name)+'</span>');
     if(/^https?:\/\//i.test(r.source_link || '')) linkChips.push('<a class="fin-hub-chip fin-ladder-link" href="'+_esc(r.source_link)+'" target="_blank" rel="noopener">Source ↗</a>');
     if(linkChips.length) h += '<div class="fin-hub-sec">Links</div><div class="fin-hub-chips">'+linkChips.join('')+'</div>';
+
+    // This scholar's own book(s) — exact matches only (see _rowBooks). READ opens the free copy in a new tab.
+    var _own = _rowBooks(r);
+    if(_own.length){
+      h += '<div class="fin-hub-sec">Book</div>' + _own.map(function(b){
+        var t = b.title_english && b.title_original && b.title_english !== b.title_original
+              ? _esc(b.title_original) + ' <span style="opacity:.7">(' + _esc(b.title_english) + ')</span>'
+              : _esc(b.title_original || b.title_english || '');
+        var row = '<div class="fin-hub-field"><span class="fin-hub-v">' + t + '</span> ';
+        if(/^https?:\/\//i.test(b.public_url || ''))
+          row += '<a class="fin-read-pill" href="'+_esc(b.public_url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">READ</a>';
+        else
+          row += '<span class="fin-hub-chip" style="opacity:.6">no free copy found</span>';
+        row += '</div>';
+        if(b.quran_refs && b.quran_refs.length)
+          row += '<div class="fin-hub-field"><span class="fin-hub-k">Qur\'an in this book</span><span class="fin-hub-v">'
+               + b.quran_refs.map(function(q){ return _esc(q.verse) + (q.where ? ' <span style="opacity:.7">— '+_esc(q.where)+'</span>' : ''); }).join('<br>')
+               + '</span></div>';
+        return row;
+      }).join('');
+    }
+
     h += _reportBackTag(r.id, r.contract);
     hub.innerHTML = h;
     var lecLink = hub.querySelector('[data-lad-lecture]');
@@ -5879,8 +6503,9 @@ window.FinanceView = (function(){
     } else {
       h += '<div class="fin-hub-none">No verses recorded for this row.</div>';
     }
-    var story = r.detail_long || r.detail;
-    if(story) h += '<div class="fin-hub-field" style="padding-top:8px"><span class="fin-hub-v" style="font-style:italic">'+_esc(story)+'</span></div>';
+    var story = _pubLong(r.detail_long) || _pubClean(r.detail);
+    if(story) h += (r.detail_long && _pubLong(r.detail_long)) ? _paras(r.detail_long) : '<div class="fin-hub-field" style="padding-top:8px"><span class="fin-hub-v" style="font-style:italic">'+_esc(story)+'</span></div>';
+    h += _srcBtns(r.internal_ref, r.detail, r.detail_long, r.evidence_display);
     hub.innerHTML = h;
     _wireFinJumps(hub);   // verse "→ read" affordances in the ladder Qur'an-pill Verses panel
   }
@@ -5958,8 +6583,9 @@ window.FinanceView = (function(){
     if(hm.narrator) h += '<div class="fin-hub-field"><span class="fin-hub-v">Narrator: '+_esc(hm.narrator)+'</span></div>';
     var topics = (hm.topics_app || []).join(' · ');
     if(topics) h += '<div class="fin-hub-field"><span class="fin-hub-v" style="color:#8B95A5">'+_esc(topics)+'</span></div>';
-    var story = r.detail_long || r.detail;
-    if(story) h += '<div class="fin-hub-sec">Story</div><div class="fin-hub-field"><span class="fin-hub-v">'+_esc(story)+'</span></div>';
+    var story = _pubLong(r.detail_long) || _pubClean(r.detail);
+    if(story) h += '<div class="fin-hub-sec">Story</div>' + ((r.detail_long && _pubLong(r.detail_long)) ? _paras(r.detail_long) : '<div class="fin-hub-field"><span class="fin-hub-v">'+_esc(story)+'</span></div>');
+    h += _srcBtns(r.internal_ref, r.detail, r.detail_long, r.evidence_display);
     h += '<div class="fin-hub-anchor" style="margin-top:8px">Citation reference — full text is not stored in this prototype.</div>';
     hub.innerHTML = h;
     _wireFinJumps(hub);   // "→ open in Monastic" link (IN_APP)
@@ -5999,7 +6625,10 @@ window.FinanceView = (function(){
     // Per-contract buckets on the SHARED scale.
     var per = chosenList.map(function(cid, ci){
       var c = _idx.contract[cid] || {};
-      var rowsC = lin.filter(function(r){ return r.contract === cid; });
+      // Tradition filter (26 Nov 2026): LADDER read every row for the contract, unlike TIMELINE
+      // (fixed 2026-08-05), so ticking Sect/School/Movement here visibly did nothing. Same rule
+      // as TIMELINE: 'off' rows are hidden, 'untagged' rows always stay (never hidden).
+      var rowsC = lin.filter(function(r){ return r.contract === cid && _tradState('lineage', r.id) !== 'off'; });
       var notes = [], dated = [], undated = [], quranTops = [];
       rowsC.forEach(function(r){
         r.__lane = ci;
@@ -6372,6 +7001,28 @@ window.FinanceView = (function(){
     });
     return h;
   }
+  // Reader panel fields — ONLY these, with plain names. Ids, codes, true/false, check notes and
+  // internal notes are never shown (they were, via _allFieldsHtml, until 26 Nov 2026).
+  var _READER_FIELDS = {
+    book:     [['title_original','Original title'],['year_ce','Written (CE)'],['year_ah','Written (AH)'],['language','Language'],['significance','Why it matters']],
+    scholar:  [['birth_year','Born'],['death_year','Died'],['nationality','Country'],['madhhab','School'],['institution','Institution'],['role','Role'],['key_contribution','Contribution'],['controversy','Debated']],
+    event:    [['year','Year'],['type','Kind'],['country','Country'],['description','What happened']],
+    contract: [['type','Type'],['description','What it is']],
+    term:     [['category','Category'],['definition','Meaning'],['earliest_source','Earliest source'],['earliest_date_ce','Earliest date'],['modern_usage','Today']],
+    family:   [['origin_period','Origin'],['current_status','Today']]
+  };
+  function _readerFields(kind, rec){
+    var h = '';
+    (_READER_FIELDS[kind] || []).forEach(function(f){
+      var v = rec[f[0]];
+      if(v == null || typeof v === 'object' || typeof v === 'boolean') return;
+      v = _pubClean(String(v)).replace(/_/g, ' ');
+      if(!v || _isUnresolved(v) || _PUB_CODE.test(v) || /https?:\/\//i.test(v)) return;
+      if(/^not found\.?$/i.test(v) && !/year/.test(f[0])) return;
+      h += '<div class="fin-hub-field"><span class="fin-hub-k">'+_esc(f[1])+'</span><span class="fin-hub-v">'+_esc(v)+'</span></div>';
+    });
+    return h + _storyHtml(rec, 'Story');
+  }
   function _selChips(items){
     if(!items.length) return '<span class="fin-hub-none">none</span>';
     return items.map(function(it){
@@ -6470,8 +7121,8 @@ window.FinanceView = (function(){
     var rec = _idx[kind][id]; if(!rec) return '';
     var title = (kind==='scholar') ? rec.name : (kind==='book') ? (rec.title_english||rec.title_original||rec.id) : rec.event;
     var h = _hubHeader(_esc(title), _conf(rec.assurance), null);
-    h += '<div class="fin-hub-sec">Details</div>';
-    h += _allFieldsHtml(rec, (kind==='scholar')?['name']:(kind==='book')?['title_english']:['event']);
+    h += '<div class="fin-hub-sec">About</div>';
+    h += _readerFields(kind, (kind==='book' && rec.title_original === title) ? Object.assign({}, rec, {title_original: null}) : rec);
 
     var cs = Array.from(_rowContracts(kind, id));
     if(kind==='scholar'){
@@ -6481,7 +7132,7 @@ window.FinanceView = (function(){
       h += '<div class="fin-hub-sec">Linked events</div><div class="fin-hub-chips">'+_selChips(evs)+'</div>';
     } else if(kind==='book'){
       var a = _bookAuthorId(rec);
-      var authHtml = (a && _idx.scholar[a]) ? _selChips([{kind:'scholar', id:a, label:_idx.scholar[a].name}]) : '<span class="fin-hub-none">'+_esc(_bookAuthorLabel(rec))+'</span>';
+      var authHtml = (a && _idx.scholar[a]) ? _selChips([{kind:'scholar', id:a, label:_idx.scholar[a].name}]) : '<span class="fin-hub-none">'+_esc(_bookAuthorPlain(rec))+'</span>';
       h += '<div class="fin-hub-sec">Author</div><div class="fin-hub-chips">'+authHtml+'</div>';
       if(rec.public_url) h += '<div class="fin-hub-sec">Read</div><a class="fin-q-read" href="'+_esc(rec.public_url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">READ ↗</a>';
     } else {
@@ -6533,11 +7184,110 @@ window.FinanceView = (function(){
     });
     return h;
   }
+  // ── Family tree of a contract (usul_branches). Root = <cid>-B00; children by from_version,
+  //    dated first by year_ce, undated after in file order. Never shows ids, traces, trace_audit or short_note.
+  function _nfv(v){ return v == null || v === '' || /^not found/i.test(String(v)); }
+  function _ftTrad(t){
+    if(!t || typeof t !== 'object') return '';
+    var p = [t.sect, t.school].filter(function(x){ return !_nfv(x); });
+    if(p.length === 2 && p[0] === 'all' && p[1] === 'all') return 'All schools';
+    return p.filter(function(x, i){ return p.indexOf(x) === i; }).join(' · ');
+  }
+  function _ftWho(v){
+    if(v === 'all') return 'All schools';
+    if(Array.isArray(v)) return v.filter(function(x){ return !_nfv(x); }).join('; ');
+    return _nfv(v) ? '' : String(v);
+  }
+  function _ftSources(list){
+    var h = '';
+    (list || []).forEach(function(s){
+      if(!s) return;
+      h += '<div class="fin-ft-src">'
+         + (s.url ? '<a class="fin-ft-link" href="'+_esc(s.url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+_esc(s.title || s.url)+' ↗</a>' : _esc(s.title || ''))
+         + (s.quote ? '<div class="fin-ft-quote">&#8220;'+_esc(s.quote)+'&#8221;</div>' : '')
+         + '</div>';
+    });
+    return h ? '<div class="fin-ft-k">Sources</div>' + h : '';
+  }
+  function _ftKids(cid){
+    var kids = {};
+    D.branches.forEach(function(r, i){
+      if(r.contract_id !== cid || !r.from_version || r.from_version === 'none') return;
+      (kids[r.from_version] = kids[r.from_version] || []).push({ r:r, i:i });
+    });
+    Object.keys(kids).forEach(function(k){
+      kids[k].sort(function(a, b){
+        var ay = typeof a.r.year_ce === 'number', by = typeof b.r.year_ce === 'number';
+        if(ay && by) return a.r.year_ce - b.r.year_ce || a.i - b.i;
+        if(ay !== by) return ay ? -1 : 1;
+        return a.i - b.i;
+      });
+    });
+    return kids;
+  }
+  function _ftNode(r, kids){
+    var yr = (typeof r.year_ce === 'number') ? (r.year_ce + ' CE') : 'year not known';
+    var tr = _ftTrad(r.tradition);
+    var h = '<li class="fin-ft-li"><details class="fin-ft-node" data-ft-node="'+_esc(r.id)+'">'
+          + '<summary class="fin-ft-sum"><span class="fin-ft-yr">'+_esc(yr)+'</span>'
+          + '<span class="fin-ft-name">'+_esc(r.new_version_name || '')+'</span>'
+          + (_nfv(r.scholar) ? '' : '<span class="fin-ft-who">'+_esc(r.scholar)+'</span>')
+          + (tr ? '<span class="fin-ft-trad">'+_esc(tr)+'</span>' : '')
+          + '</summary><div class="fin-ft-body">';
+    if(!_nfv(r.what_changed)) h += '<div class="fin-ft-k">What changed</div>' + _paras(r.what_changed);
+    if(!_nfv(r.why)) h += '<div class="fin-ft-k">Why</div>' + _paras(r.why);
+    var ac = _ftWho(r.accepted_by), rj = _ftWho(r.rejected_by);
+    if(ac) h += '<div class="fin-ft-k">Accepted by</div><div class="fin-ft-v">'+_esc(ac)+'</div>';
+    if(rj) h += '<div class="fin-ft-k">Rejected by</div><div class="fin-ft-v">'+_esc(rj)+'</div>';
+    h += _ftSources(r.sources) + '</div></details>';
+    var ch = kids[r.id] || [];
+    if(ch.length){ h += '<ul class="fin-ft-ul">'; ch.forEach(function(k){ h += _ftNode(k.r, kids); }); h += '</ul>'; }
+    return h + '</li>';
+  }
+  function _familyTreeHtml(cid){
+    var root = D.branchById && D.branchById[cid + '-B00'];
+    if(!root) return '';
+    var n = D.branches.filter(function(r){ return r.contract_id === cid; }).length;
+    return '<div class="fin-hub-sec">Family tree ('+n+' steps)</div>'
+         + '<div class="fin-ft-hint">From the Qur\'an word to today\'s forms. Open a step to see what changed and the sources.</div>'
+         + '<ul class="fin-ft-ul fin-ft-root">' + _ftNode(root, _ftKids(cid)) + '</ul>';
+  }
+  // ── Origin of a term (usul_term_origins).
+  function _termOriginHtml(tid){
+    var o = D.termOrigin && D.termOrigin[tid];
+    if(!o) return '';
+    var h = '<div class="fin-hub-sec">Origin</div><div class="fin-ft-origin">';
+    if(!_nfv(o.plain_meaning)) h += _paras(o.plain_meaning);
+    var fy = (typeof o.first_year_ce === 'number')
+      ? 'First seen: ' + o.first_year_ce + ' CE' + (_nfv(o.year_how_known) ? '' : ' (' + o.year_how_known + ')')
+      : 'First seen: not found';
+    h += '<div class="fin-ft-v">'+_esc(fy)+'</div>';
+    var cb = o.created_by || {};
+    h += '<div class="fin-ft-v">'+(_nfv(cb.name) ? 'Created by: not found' : 'Created by: '+_esc(cb.name)+(_nfv(cb.kind) ? '' : ' ('+_esc(cb.kind)+')'))+'</div>';
+    var br = (o.branch_id && o.branch_id !== 'none') ? D.branchById[o.branch_id] : null;
+    if(br){
+      var cn = (_idx.contract[br.contract_id] || {}).name || br.contract || '';
+      h += '<div class="fin-ft-v">In the family tree: <span class="fin-ft-goto" data-ft-goto="'+_esc(br.id)+'">'+_esc(cn)+' — '+_esc(br.new_version_name || '')+' ›</span></div>';
+    }
+    h += _ftSources(o.sources);
+    return h + '</div>';
+  }
+  // Open one tree step: select its contract, then open + scroll to the step.
+  function _ftGoto(bid){
+    var br = D.branchById[bid]; if(!br) return;
+    _selectContract(br.contract_id);
+    var el = document.querySelector('[data-ft-node="'+bid+'"]');
+    if(!el) return;
+    var p = el; while(p){ if(p.tagName === 'DETAILS') p.open = true; p = p.parentElement; }
+    el.classList.add('fin-ft-flash');
+    el.scrollIntoView({ block:'center' });
+  }
   function _hubContract(c){
     if(!c) return '';
     var h = _hubHeader(_esc(c.name), _conf(c.assurance), null);
-    h += '<div class="fin-hub-sec">Details</div>' + _allFieldsHtml(c, ['name']);
+    h += '<div class="fin-hub-sec">About</div>' + _readerFields('contract', c);
     h += _qcOriginHtml(c.id);   // Qur'anic origin — after Details, before Terms
+    h += _familyTreeHtml(c.id);   // Family tree — how the contract split into versions
     var terms = D.terms.filter(function(t){ return _termContracts(t).indexOf(c.id)!==-1; });
     h += '<div class="fin-hub-sec">Terms under this contract ('+terms.length+')</div>';
     terms.forEach(function(t){ h += _termCardHtml(t); });
@@ -6601,7 +7351,8 @@ window.FinanceView = (function(){
     var h = _hubHeader(_esc(t.term_english || t.id), _conf(t.assurance), null);
     if(t.term_arabic) h += '<div class="fin-hub-field"><span class="fin-hub-k">Arabic</span><span class="fin-hub-v" style="direction:rtl;text-align:right">'+_esc(t.term_arabic)+'</span></div>';
     // Details — every field except the ones already shown (english/arabic/assurance) and the enrichment object.
-    h += '<div class="fin-hub-sec">Details</div>' + _allFieldsHtml(t, ['term_english','term_arabic','assurance','enrichment']);
+    h += '<div class="fin-hub-sec">About</div>' + _readerFields('term', t);
+    h += _termOriginHtml(t.id);   // Origin — first seen, created by, its step in the family tree
     var en = t.enrichment;
     if(en && typeof en === 'object'){
       h += '<div class="fin-hub-sec">Links</div>' + _termEnrichHtml(en);   // reuse existing enrichment renderer
@@ -6627,7 +7378,7 @@ window.FinanceView = (function(){
     if(!fm) return '';
     var orig = _familyOrigin(fm);
     var h = _hubHeader(_esc(fm.family_name), null, fm.color);
-    h += '<div class="fin-hub-sec">Details</div>' + _allFieldsHtml(fm, ['family_name','member_terms','color']);
+    h += '<div class="fin-hub-sec">About</div>' + _readerFields('family', fm);
     h += '<div class="fin-hub-field"><span class="fin-hub-k">Origin (year)</span><span class="fin-hub-v">'+(orig.approx?'c.':'')+orig.year+' CE</span></div>';
     var terms = (fm.member_terms||[]).map(function(tid){ return _idx.term[tid]; }).filter(Boolean);
     h += '<div class="fin-hub-sec">Member terms ('+terms.length+')</div>';
@@ -6897,6 +7648,20 @@ window.FinanceView = (function(){
     }
     // lineage rows → the same rich lineage panel LADDER uses (sets hub.innerHTML + wires itself).
     if(_sel.type==='qword'){ var _qw = _qwordById(_sel.id); if(_qw){ _renderQwordHub(_qw); return; } }
+    if(_sel.type==='person' || _sel.type==='book'){
+      var _pb = (_sel.type==='person')
+        ? _buildPeople().filter(function(p){ return p.key === _sel.id; })[0]
+        : (D.books || []).filter(function(b){ return b.id === _sel.id; })[0];
+      if(_pb){
+        hub.innerHTML = (_sel.type==='person') ? _personHub(_pb) : _bookHub(_pb);
+        _wirePlCommon(hub);
+        _wireFinJumps(hub);
+        hub.querySelectorAll('[data-pl-goto]').forEach(function(el){
+          el.addEventListener('click', function(e){ e.stopPropagation(); var k = this.getAttribute('data-pl-goto'); _setMode('people'); _selectPerson(k); });
+        });
+        return;
+      }
+    }
     if(_sel.type==='row' && _sel.kind==='lineage'){
       var _lr = _idx.lineage[_sel.id];
       if(_lr){ _renderLadderHub(_lr); return; }
@@ -6912,6 +7677,10 @@ window.FinanceView = (function(){
     // Connections T### chips → open that term's details (contract chips use the [data-sel-kind] wiring above).
     hub.querySelectorAll('[data-spine-term]').forEach(function(el){
       el.addEventListener('click', function(e){ e.stopPropagation(); _selectTerm(el.getAttribute('data-spine-term')); });
+    });
+    // Term Origin → its step in the contract family tree.
+    hub.querySelectorAll('[data-ft-goto]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _ftGoto(el.getAttribute('data-ft-goto')); });
     });
     hub.querySelectorAll('.fin-q-read').forEach(function(a){
       if(!a.hasAttribute('data-s')) return;   // skip the external book "READ ↗" link
@@ -6966,7 +7735,7 @@ window.FinanceView = (function(){
        + '<span class="fin-pages-wrap">'
        +   '<span class="fin-ruler-btn" id="fin-pages-btn">PAGES ▾</span>'
        +   '<div class="bv-dd-panel fin-pages-panel" id="fin-pages-panel">'
-       +     _modeBtn('trace','TRACE') + _modeBtn('timeline','TIMELINE') + _modeBtn('ladder','LADDER') + _modeBtn('prism','PRISM') + _modeBtn('reader','STANDARDS') + _modeBtn('lecture','LECTURE') + '<div class="fin-pages-div"></div>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-htw" data-mode="htw">How this works</span>'
+       +     _modeBtn('trace','TRACE') + _modeBtn('timeline','TIMELINE') + _modeBtn('ladder','LADDER') + _modeBtn('prism','PRISM') + _modeBtn('people','PEOPLE') + _modeBtn('books','BOOKS') + _modeBtn('reader','STANDARDS') + _modeBtn('lecture','LECTURE') + '<div class="fin-pages-div"></div>' + '<span class="fin-ruler-btn fin-mode-btn fin-pages-htw" data-mode="htw">How this works</span>'
        +   '</div>'
        + '</span>'
        + '<span id="fin-cur-page">' + _pageLabel(_mode) + '</span>'
@@ -7131,6 +7900,7 @@ window.FinanceView = (function(){
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Human scholar layer: every open item carries an empty SCHOLAR DETERMINATION box — no stance is pre-filled; certification requires a qualified Shari\'ah board.</li>'
       + '<li style="margin:0 0 7px"><span style="color:#2ECC71;font-weight:700;margin-right:8px">✓</span>Nothing here is a ruling. Demonstration mapping only.</li>'
       + '</ul>'
+      + '<p style="color:#ccc;font-size:13px;line-height:1.6;margin:6px 0 10px">'+_esc('Family trees of the contracts: AI readers (Claude by Anthropic) traced how each of the ten contracts split into versions, from the Qur\'an word to today\'s banking forms. Every sentence comes from a web page that was opened and quoted word for word; the quote and link are shown under each step. Where no page gave an answer we write "not found". A second AI reader opened the pages again: all 80 quotes it checked were on their pages, and after a full sentence-by-sentence re-check, 59 of 60 sampled sentences were fully backed by their quotes (the last one was corrected). Compliance standards (such as AAOIFI) are not part of these trees.')+'</p>'
       + '<h3 style="color:#D4AF37;font-size:13px;margin:18px 0 6px;font-family:\'Cinzel\',serif;letter-spacing:.04em">THE PAGES</h3>'
       + '<ul style="color:#ccc;font-size:13px;line-height:1.7;padding-left:18px;margin:6px 0 10px">'
       + '<li><b>HOME</b> — the 24 financial words of the Qur\'an, in three tiers; every trace starts here. READ opens the verses.</li>'
