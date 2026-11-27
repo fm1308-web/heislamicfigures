@@ -1617,9 +1617,36 @@ window.FinanceView = (function(){
               standards:'SETTINGS', report:'REPORT', archive:'ARCHIVE', reliability:'RELIABILITY' };
     return L[m] || String(m || '').toUpperCase();
   }
+  // ── Page history (27 Nov 2026). Each step = { m: mode, t: lecture topic }. In-app ← BACK and the
+  //    browser's back / forward buttons walk the same list; the browser stays inside USUL. ──
+  var _fwdStack = [];
+  function _histOK(){ try{ return !!(window.history && history.pushState); }catch(e){ return false; } }
+  function _pushNav(){
+    _navStack.push({ m:_mode, t:_lecTopic }); if(_navStack.length > 40) _navStack.shift();
+    _fwdStack = [];
+    if(_histOK()){ try{ history.pushState({ usulDepth:_navStack.length }, ''); }catch(e){} }
+  }
+  function _restore(s){
+    _lecTopic = s.t || { kind:'master' };
+    if(s.m === _mode){ _clearSelection(); _renderMode(); _syncBackBtn(); }
+    else _setMode(s.m, true);
+  }
+  function _stepBack(){ if(!_navStack.length) return; _fwdStack.push({ m:_mode, t:_lecTopic }); _restore(_navStack.pop()); }
+  function _stepFwd(){ if(!_fwdStack.length) return; _navStack.push({ m:_mode, t:_lecTopic }); _restore(_fwdStack.pop()); }
+  function _onPop(e){
+    if(!_mounted) return;
+    var d = e && e.state && typeof e.state.usulDepth === 'number' ? e.state.usulDepth : 0;
+    while(d < _navStack.length) _stepBack();
+    while(d > _navStack.length && _fwdStack.length) _stepFwd();
+  }
+  // Open a lecture topic from anywhere, as ONE history step.
+  function _goLecture(topic){
+    if(_mode === 'lecture'){ _setLecTopic(topic); return; }
+    _pushNav(); _lecTopic = topic || { kind:'master' }; _setMode('lecture', true);
+  }
   function _setMode(m, _fromBack){
     if(m === _mode) return;
-    if(!_fromBack){ _navStack.push(_mode); if(_navStack.length > 40) _navStack.shift(); }
+    if(!_fromBack) _pushNav();
     _mode = m;
     var _pc = document.getElementById('fin-cur-page'); if(_pc) _pc.textContent = _pageLabel(m);
     _applyModeAttr();
@@ -1631,7 +1658,12 @@ window.FinanceView = (function(){
     _renderMode();
     _syncBackBtn();
   }
-  function _goBack(){ if(_navStack.length){ _setMode(_navStack.pop(), true); } }
+  function _goBack(){
+    if(!_navStack.length) return;
+    // Let the browser do the step when its history is ours, so browser back / forward stay in step.
+    if(_histOK() && history.state && history.state.usulDepth === _navStack.length){ history.back(); return; }
+    _stepBack();
+  }
   function _syncBackBtn(){ var b = document.getElementById('fin-back-btn'); if(b) b.disabled = (_navStack.length === 0); }
 
   // ── LECTURE mode — the "elevator ride": read a topic top-to-bottom as a document ──
@@ -1680,7 +1712,12 @@ window.FinanceView = (function(){
     if(r.id) h += '<div class="fin-lec-mid">' + _esc(r.id) + '</div>';
     return h;
   }
-  function _setLecTopic(topic){ _lecTopic = topic || { kind:'master' }; _renderLecture(); }
+  function _setLecTopic(topic){
+    topic = topic || { kind:'master' };
+    if(_lecTopic && _lecTopic.kind === topic.kind && _lecTopic.id === topic.id){ _renderLecture(); return; }
+    _pushNav();   // each lecture topic is its own BACK step (e.g. shirkah → Mudarabah → BACK → shirkah)
+    _lecTopic = topic; _renderLecture(); _syncBackBtn();
+  }
 
   function _renderLecture(){
     var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
@@ -2647,7 +2684,7 @@ window.FinanceView = (function(){
     _reportToLadderStage(rec ? rec.stage : null);   // open that record's stage in the C08 ladder
   }
   function _reportToWord(qid){ _setMode('home'); _selectQWord(qid); }
-  function _reportToLecture(){ _lecTopic = { kind:'contract', id:'C08' }; _setMode('lecture'); }
+  function _reportToLecture(){ _goLecture({ kind:'contract', id:'C08' }); }
   function _wireReport(canvas){
     // PRINT — the print stylesheet already turns the report into a clean white sheet.
     var pb = canvas.querySelector('#fin-rep-print');
@@ -6462,8 +6499,7 @@ window.FinanceView = (function(){
     var lecLink = hub.querySelector('[data-lad-lecture]');
     if(lecLink) lecLink.addEventListener('click', function(e){
       e.stopPropagation();
-      _lecTopic = { kind:'contract', id:this.getAttribute('data-lad-lecture') };
-      _setMode('lecture');
+      _goLecture({ kind:'contract', id:this.getAttribute('data-lad-lecture') });
     });
     _wireStdLinks(hub);
     _wireFinJumps(hub);   // verse "→ read" chips + hadith "→ open in Monastic" link
@@ -8584,6 +8620,9 @@ window.FinanceView = (function(){
       }
     } };
     document.addEventListener('keydown', _docKey);
+    // Browser back / forward walk USUL's own page history (see _pushNav).
+    if(_histOK()){ try{ history.replaceState({ usulDepth:0 }, ''); }catch(e){} }
+    window.addEventListener('popstate', _onPop);
 
     _load().then(function(res){
       if(!_mounted) return;
@@ -8605,6 +8644,7 @@ window.FinanceView = (function(){
     if(_runTick){ clearInterval(_runTick); _runTick = null; }
     if(_docClick){ document.removeEventListener('click', _docClick); _docClick = null; }
     if(_docKey){ document.removeEventListener('keydown', _docKey); _docKey = null; }
+    window.removeEventListener('popstate', _onPop);
     // The hub lives inside zoneC and is cleared with it below; no floating nodes remain.
     var ov = document.getElementById('fin-htw-overlay'); if(ov) ov.remove();
     _sel = null;
