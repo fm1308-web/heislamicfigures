@@ -1762,6 +1762,9 @@ window.FinanceView = (function(){
 
     var h = '<div class="fin-lecture">';
     h += '<h1 class="fin-lec-h1">Master course — Islamic finance from the Qur\'an down</h1>';
+    // Depth labels (27 Nov 2026): tell the reader which lectures are short today and which carry a full chain.
+    h += '<p class="fin-lec-statkey"><span class="fin-lec-stat fin-lec-stat-full">FULL CHAIN</span> step-by-step from the Qur\'an to today\'s standards &nbsp; '
+       + '<span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span> short version now; the full study is being researched and checked</p>';
 
     // Chapters 1–3 = tiers A/B/C: heading + tier description + word list.
     ['A','B','C'].forEach(function(tier){
@@ -1771,7 +1774,8 @@ window.FinanceView = (function(){
       if(tiers[tier]) h += '<p class="fin-lec-tierdesc">'+_esc(tiers[tier])+'</p>';
       h += '<ul class="fin-lec-list">';
       tw.forEach(function(w){
-        h += '<li><a class="fin-lec-link" data-lec-word="'+_esc(w.id)+'">'+_esc(w.arabic)+' — '+_esc(w.english)+'</a></li>';
+        h += '<li><a class="fin-lec-link" data-lec-word="'+_esc(w.id)+'">'+_esc(w.arabic)+' — '+_esc(w.english)+'</a>'
+           + ' <span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span></li>';
       });
       h += '</ul>';
     });
@@ -1780,7 +1784,10 @@ window.FinanceView = (function(){
     h += '<h2 class="fin-lec-h2">Chapter 4 · The ten contracts</h2><ul class="fin-lec-list">';
     D.contracts.forEach(function(c){
       if(!/^C\d{2}$/.test(c.id)) return;
-      h += '<li><a class="fin-lec-link" data-lec-contract="'+_esc(c.id)+'">'+_esc(c.name)+' — '+_esc(c.description||'')+'</a></li>';
+      var nSteps = (D.lineage_v4 || []).filter(function(r){ return r.contract === c.id; }).length;
+      h += '<li><a class="fin-lec-link" data-lec-contract="'+_esc(c.id)+'">'+_esc(c.name)+' — '+_esc(c.description||'')+'</a>'
+         + (nSteps ? ' <span class="fin-lec-stat fin-lec-stat-full">FULL CHAIN · '+nSteps+' STEPS</span>'
+                   : ' <span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span>') + '</li>';
     });
     h += '</ul></div>';
 
@@ -1905,91 +1912,197 @@ window.FinanceView = (function(){
     return h;
   }
 
-  // ── Word lecture — from D.qlayer row ──
-  function _renderLectureWord(qid){
-    var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
-    var ro = document.getElementById('finance-readout');
-    var w = ((D.qlayer && D.qlayer.rows) || []).filter(function(x){ return x.id === qid; })[0];
-    if(!w){ canvas.innerHTML = '<div class="fin-empty">Word not found.</div>'; return; }
-
-    var h = '<div class="fin-lecture">';
-    h += '<a class="fin-lec-back" data-lec-master="1">← Master course</a>';
-    h += '<h1 class="fin-lec-h1">'+_esc(w.arabic)+' — '+_esc(w.english)+'</h1>';
-    h += '<p class="fin-lec-banner">'+_esc(NOTICE)+'</p>';
-
-    // In the Qur'an (undated).
-    var vr = w.verse_refs || [];
-    h += '<h2 class="fin-lec-h2">In the Qur\'an (undated)</h2>';
-    if(vr.length){
-      vr.forEach(function(v){
-        h += '<div class="fin-lec-entry"><div class="fin-lec-subtitle">'+_esc(v.ref)+' '+_lecBadge(v.tag)+_finVerseTag(v.ref)+'</div>';
-        if(v.gist) h += '<p class="fin-lec-body">'+_esc(_pubLong(v.gist))+'</p>';
-        h += '</div>';
-      });
-    } else {
-      h += '<p class="fin-lec-body">No Qur\'an verse in this layer — see the origin note below.</p>';
+  // ── Word lecture — from D.qlayer row (rebuilt 27 Nov 2026 as a lecture / manual: parts, headings,
+  //    paragraphs, the verses in Arabic and English, no record codes or catalogue notes). ──
+  var _wlSurah = {};   // surah number -> Promise of the Gold Ark Qur'an file
+  function _wlLoadSurah(n){
+    if(!_wlSurah[n]){
+      var u = 'data/islamic/quran/surah-' + ('00' + n).slice(-3) + '.json';
+      _wlSurah[n] = fetch(window.dataUrl ? window.dataUrl(u) : u)
+        .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .catch(function(e){ console.warn('[USUL] verse text not loaded', n, e); delete _wlSurah[n]; return null; });
     }
-
-    // Meaning.
-    if(w.meaning_summary && w.meaning_summary.text){
-      h += '<h2 class="fin-lec-h2">Meaning</h2><p class="fin-lec-body">'+_esc(_pubLong(w.meaning_summary.text))+' '+_lecBadge(w.meaning_summary.tag)+'</p>';
-    }
-    // Developed into.
-    if(w.developed_into){
-      h += '<h2 class="fin-lec-h2">Developed into</h2><p class="fin-lec-body">'+_esc(_pubLong(w.developed_into))+'</p>';
-    }
-    // Where it lands in the standards.
-    var sl = w.standard_landing || [];
-    if(sl.length){
-      h += '<h2 class="fin-lec-h2">Where it lands in the standards</h2>';
-      sl.forEach(function(s){ h += '<p class="fin-lec-body">'+_linkifyStandards(_pubLong(s.ref))+' '+_lecBadge(s.tag)+'</p>'; });
-    }
-    // Covered by terms — resolved term-name chips.
-    var termChips = (w.existing_term_ids || []).map(function(tid){
-      var t = _idx.term[tid]; if(!t) return '';
-      return '<span class="fin-hub-chip fin-ladder-link" title="'+_esc(tid)+'">'+_esc(t.term_english || t.term_arabic || tid)+'</span>';
-    }).filter(Boolean);
-    if(termChips.length){
-      h += '<h2 class="fin-lec-h2">Covered by terms</h2><div class="fin-lec-chips">'+termChips.join('')+'</div>';
-    }
-    // Honesty box for gap (same style as HOME).
-    var honesty = '';
-    if(w.gap && w.gap.note) honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.gap.note))+'</div>';
-    if(w.origin_flag)       honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.origin_flag))+'</div>';
-    if(honesty) h += '<div class="fin-honesty">'+honesty+'</div>';
-    h += _storyHtml(w, 'In depth');
-
-    // SPECIAL CASE — qard: append the worked example "One word's journey".
-    var we = D.qlayer && D.qlayer.worked_example_qard_hasan;
-    if(we && /^qard/i.test(String(w.arabic || ''))){
-      h += '<h2 class="fin-lec-h2">One word\'s journey</h2>';
-      if(we.headline) h += '<div class="fin-lec-subtitle">'+_esc(we.headline)+'</div>';
-      (we.chain || []).forEach(function(item){
-        var sname = _stageName(item.stage);   // maps known stages; falls back to underscores→spaces
-        h += '<div class="fin-lec-entry"><div class="fin-lec-subtitle">'+_esc(sname)+' '+(item.tag ? _lecBadge(item.tag) : '')+'</div>';
-        if(item.content) h += '<p class="fin-lec-body">'+_esc(_pubLong(item.content))+'</p>';
-        if(item.source && !_PUB_CODE.test(_pubClean(item.source))) h += '<div class="fin-lec-basis">'+_esc(_pubClean(item.source))+'</div>';
-        h += '</div>';
-      });
-    }
-
-    // Link chips → contract lectures, when a covering term points at a C-id contract.
+    return _wlSurah[n];
+  }
+  function _wlParseRef(ref){
+    var m = String(ref || '').match(/^(\d+):(\d+)(?:\s*[-–]\s*(\d+))?$/);
+    return m ? { s:+m[1], a:+m[2], b:+(m[3] || m[2]) } : null;
+  }
+  // Reader text only: the usual cleaning, then drop any sentence that still carries a record code or a catalogue note.
+  var _WL_INTERNAL = /\b(?:NT|MS|Q|F)\d{2,4}\b|\bT\d{3}\b|terms\.json|\bLevel \d\b|\bStep [A-Z]\b|starting block|honest about it|\bstub\b|\benrich\b/i;
+  function _wlText(s){
+    s = String(s == null ? '' : s).replace(/\s*\bfamily\s+F\d{1,2}\b/gi, '').replace(/\(\s*\)/g, '');
+    return _pubLong(s).split(/(?<=[.!?])\s+/).filter(function(p){ return p && !_WL_INTERNAL.test(p); }).join(' ').trim();
+  }
+  function _wlOrder(){
+    var rows = (D.qlayer && D.qlayer.rows) || [], out = [];
+    ['A','B','C'].forEach(function(t){ rows.forEach(function(w){ if(w.tier === t) out.push(w); }); });
+    return out;
+  }
+  function _wlContracts(w){
     var cset = {};
     (w.existing_term_ids || []).forEach(function(tid){
       var t = _idx.term[tid]; if(!t) return;
       _termContracts(t).forEach(function(cc){ cset[cc] = 1; });
     });
-    var cids = Object.keys(cset).filter(function(cc){ return _idx.contract[cc]; }).sort();
-    if(cids.length){
-      h += '<h2 class="fin-lec-h2">Full chain</h2><div class="fin-lec-chips">';
-      cids.forEach(function(cc){ h += '<a class="fin-lec-cchip" data-lec-contract="'+_esc(cc)+'">Full chain: '+_esc(_idx.contract[cc].name)+'</a>'; });
-      h += '</div>';
+    return Object.keys(cset).filter(function(cc){ return _idx.contract[cc]; }).sort();
+  }
+  function _wlJoin(a){ return a.length < 2 ? (a[0] || '') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
+  // The one-line promise under the LECTURE button — names only what the lecture really holds.
+  function _wlTagline(w){
+    var parts = [];
+    parts.push((w.verse_refs || []).length ? 'the Qur\'an verses in full' : 'where the idea comes from');
+    if(w.meaning_summary && w.meaning_summary.text) parts.push('what the word means');
+    if(String(w.developed_into || '').split(/\s*(?:->|→)\s*/).some(function(x){ return _wlText(x); })) parts.push('how the idea grew');
+    if((w.standard_landing || []).length) parts.push('where it stands in today\'s standards');
+    var cn = _wlContracts(w).map(function(cc){ return _idx.contract[cc].name; });
+    var s = 'Follow the lecture for ' + _wlJoin(parts);
+    if(cn.length) s += ' - then the full chain of hadith, tafsir, scholars\' views and current standards behind ' + _wlJoin(cn);
+    return s + '.';
+  }
+
+  function _renderLectureWord(qid){
+    var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
+    var ro = document.getElementById('finance-readout');
+    var w = ((D.qlayer && D.qlayer.rows) || []).filter(function(x){ return x.id === qid; })[0];
+    if(!w){ canvas.innerHTML = '<div class="fin-empty">Word not found.</div>'; return; }
+    var CHAP = { A:'Chapter 1', B:'Chapter 2', C:'Chapter 3' };
+    var vr = w.verse_refs || [], cids = _wlContracts(w), sl = w.standard_landing || [];
+    var steps = String(w.developed_into || '').split(/\s*(?:->|→)\s*/).map(function(x){ return _wlText(x); }).filter(Boolean);
+    var origin = w.origin_flag ? _wlText(w.origin_flag) : '';
+    var we = (D.qlayer && D.qlayer.worked_example_qard_hasan && /^qard/i.test(String(w.arabic || ''))) ? D.qlayer.worked_example_qard_hasan : null;
+
+    // Parts of this lecture, in order (only the ones that have content).
+    var parts = [];
+    parts.push({ id:'quran', title: vr.length ? 'What the Qur\'an says' : 'Where the idea comes from' });
+    if(w.meaning_summary && w.meaning_summary.text) parts.push({ id:'meaning', title:'What the word means' });
+    if(steps.length) parts.push({ id:'grew', title:'How the idea grew' });
+    if(we) parts.push({ id:'journey', title:'One word\'s journey' });
+    if(cids.length) parts.push({ id:'chain', title:'From the Qur\'an to the contracts' });
+    if(sl.length) parts.push({ id:'today', title:'Where it stands today' });
+    var num = {}; parts.forEach(function(p, i){ num[p.id] = i + 1; });
+    function partHead(id){ return '<h2 class="fin-wl-part" id="fin-wl-'+id+'"><span class="fin-wl-pnum">Part '+num[id]+'</span>'+_esc(parts[num[id]-1].title)+'</h2>'; }
+
+    var h = '<article class="fin-lecture fin-wl">';
+    h += '<a class="fin-lec-back" data-lec-master="1">← Master course</a>';
+    h += '<div class="fin-wl-kicker">Master course · '+_esc(CHAP[w.tier] || '')+' · Tier '+_esc(w.tier || '')+'</div>';
+    h += '<h1 class="fin-wl-title">'+_esc(w.arabic)+'</h1>';
+    h += '<div class="fin-wl-sub">'+_esc(w.english)+'</div>';
+    h += '<p class="fin-lec-statnote"><span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span> '
+       + 'This is the short version. A full study of this word - every scholar\'s reading, who held it, and his own words - is being researched and checked. It will appear here once it passes checking.</p>';
+
+    // Introduction + contents.
+    h += '<p class="fin-wl-lead">This lecture follows <i>'+_esc(w.arabic)+'</i> ('+_esc(w.english)+') '
+       + (vr.length ? 'from the verses of the Qur\'an where it stands' : 'from where the idea begins')
+       + ' to the place it holds in Islamic finance today. It is set out in '+parts.length+' part'+(parts.length === 1 ? '' : 's')+'.</p>';
+    h += '<nav class="fin-wl-toc"><div class="fin-wl-toc-h">In this lecture</div><ol>';
+    parts.forEach(function(p){ h += '<li><a data-wl-jump="fin-wl-'+p.id+'">'+_esc(p.title)+'</a></li>'; });
+    h += '</ol></nav>';
+
+    // Part — the Qur'an.
+    h += '<section class="fin-wl-sec">' + partHead('quran');
+    if(vr.length){
+      h += '<p class="fin-wl-p">'+(vr.length === 1 ? 'The word stands in one passage' : 'The word stands in '+vr.length+' passages')
+         + ' of the Qur\'an. Each is given below in Arabic with an English translation, followed by a short note on what it says.</p>';
+      vr.forEach(function(v){
+        h += '<div class="fin-wl-verse" data-wl-ref="'+_esc(v.ref)+'">'
+           + '<h3 class="fin-wl-h3">'+_esc(v.ref)+'<span class="fin-wl-surah" data-wl-surah></span>'+_finVerseTag(v.ref)+'</h3>'
+           + '<div class="fin-wl-ayat"><div class="fin-wl-loading">Loading the verse…</div></div>';
+        var g = _wlText(v.gist);
+        if(g) h += '<p class="fin-wl-p fin-wl-gist"><span class="fin-wl-label">In short</span> '+_esc(g)+' '+_lecBadge(v.tag)+'</p>';
+        h += '</div>';
+      });
+    } else {
+      h += '<p class="fin-wl-p">This word does not stand in the Qur\'an itself as a financial term.</p>';
+    }
+    if(origin) h += '<div class="fin-wl-note"><div class="fin-wl-note-h">Where this idea comes from</div><p class="fin-wl-p">'+_esc(origin)+'</p></div>';
+    h += '</section>';
+
+    // Part — meaning.
+    if(num.meaning){
+      h += '<section class="fin-wl-sec">' + partHead('meaning')
+         + '<p class="fin-wl-p">'+_esc(_wlText(w.meaning_summary.text))+' '+_lecBadge(w.meaning_summary.tag)+'</p></section>';
+    }
+    // Part — how the idea grew (one step per arrow in the record).
+    if(num.grew){
+      h += '<section class="fin-wl-sec">' + partHead('grew');
+      h += '<p class="fin-wl-p">Over the centuries the idea in this word was carried forward step by step:</p><ol class="fin-wl-steps">';
+      steps.forEach(function(s){ h += '<li>'+_esc(s.charAt(0).toUpperCase() + s.slice(1))+'</li>'; });
+      h += '</ol></section>';
+    }
+    // Part — the worked example (qard only).
+    if(num.journey){
+      h += '<section class="fin-wl-sec">' + partHead('journey');
+      if(we.headline) h += '<p class="fin-wl-p">'+_esc(_wlText(we.headline))+'</p>';
+      (we.chain || []).forEach(function(item){
+        var c = _wlText(item.content); if(!c) return;
+        h += '<h3 class="fin-wl-h3">'+_esc(_stageName(item.stage))+' '+(item.tag ? _lecBadge(item.tag) : '')+'</h3><p class="fin-wl-p">'+_esc(c)+'</p>';
+      });
+      h += '</section>';
+    }
+    // Part — the contracts this word shaped (each opens its full chain lecture).
+    if(num.chain){
+      h += '<section class="fin-wl-sec">' + partHead('chain');
+      h += '<p class="fin-wl-p">This word sits at the root of '+(cids.length === 1 ? 'one contract' : cids.length+' contracts')
+         + ' in this course. Each has its own lecture that walks the full chain: the hadith, the commentaries on the Qur\'an, the classical scholars, the modern codifications and where the contract stands today.</p>';
+      var SL = { hadith:'hadith', tafsir:'tafsir', classical_fiqh:'classical scholars', modern_codification:'modern standards' };
+      cids.forEach(function(cc){
+        var c = _idx.contract[cc], rows = (D.lineage_v4 || []).filter(function(r){ return r.contract === cc; });
+        var cnt = Object.keys(SL).map(function(st){ var n = rows.filter(function(r){ return r.stage === st; }).length; return n ? n+' '+SL[st] : ''; }).filter(Boolean);
+        h += '<div class="fin-wl-card"><h3 class="fin-wl-h3">'+_esc(c.name)+'</h3>';
+        if(c.description) h += '<p class="fin-wl-p">'+_esc(_wlText(c.description))+'</p>';
+        if(cnt.length) h += '<div class="fin-wl-meta">'+_esc(cnt.join(' · '))+'</div>';
+        h += '<a class="fin-wl-btn" data-lec-contract="'+_esc(cc)+'">Follow the full chain →</a></div>';
+      });
+      h += '</section>';
+    }
+    // Part — today's standards.
+    if(num.today){
+      h += '<section class="fin-wl-sec">' + partHead('today');
+      h += '<p class="fin-wl-p">In today\'s Islamic finance standards the word is carried by:</p><ul class="fin-wl-list">';
+      sl.forEach(function(s){ var t = _wlText(s.ref); if(t) h += '<li>'+_linkifyStandards(t)+' '+_lecBadge(s.tag)+'</li>'; });
+      h += '</ul></section>';
     }
 
-    h += '</div>';
+    // Next / previous word, so the course reads like a book.
+    var ord = _wlOrder(), at = -1;
+    ord.forEach(function(x, i){ if(x.id === w.id) at = i; });
+    var prev = at > 0 ? ord[at-1] : null, next = (at >= 0 && at < ord.length - 1) ? ord[at+1] : null;
+    h += '<nav class="fin-wl-pager">'
+       + (prev ? '<a data-lec-word="'+_esc(prev.id)+'">← '+_esc(prev.arabic)+'</a>' : '<span></span>')
+       + '<a data-lec-master="1">Master course</a>'
+       + (next ? '<a data-lec-word="'+_esc(next.id)+'">'+_esc(next.arabic)+' →</a>' : '<span></span>')
+       + '</nav>';
+    h += '<p class="fin-lec-banner">'+_esc(NOTICE)+'</p>';
+    h += '</article>';
+
     canvas.innerHTML = h;
     _wireLecture(canvas);
+    _wireStdLinks(canvas);
+    _wireFinJumps(canvas);
+    canvas.querySelectorAll('[data-wl-jump]').forEach(function(a){
+      a.addEventListener('click', function(e){ e.stopPropagation(); var t = document.getElementById(this.getAttribute('data-wl-jump')); if(t) t.scrollIntoView({ behavior:'smooth', block:'start' }); });
+    });
     if(ro) ro.textContent = 'Lecture · ' + (w.arabic || '');
+
+    // Fill each passage with its Arabic and English from the Gold Ark Qur'an files.
+    canvas.querySelectorAll('[data-wl-ref]').forEach(function(box){
+      var p = _wlParseRef(box.getAttribute('data-wl-ref')), slot = box.querySelector('.fin-wl-ayat');
+      if(!p){ slot.innerHTML = ''; return; }
+      _wlLoadSurah(p.s).then(function(d){
+        if(!slot.isConnected) return;
+        if(!d){ slot.innerHTML = ''; return; }
+        var nm = box.querySelector('[data-wl-surah]'); if(nm && d.name_en) nm.textContent = ' · Surah ' + d.surah + ', ' + d.name_en;
+        var by = {}; (d.verses || []).forEach(function(v){ by[+v.ayah] = v; });
+        var o = '';
+        for(var a = p.a; a <= p.b; a++){
+          var v = by[a]; if(!v) continue;
+          o += '<div class="fin-wl-ayah"><div class="fin-wl-ar" dir="rtl" lang="ar">'+_esc(v.arabic)+' <span class="fin-wl-anum">('+a+')</span></div>'
+             + (v.english ? '<div class="fin-wl-en">'+_esc(v.english)+' <span class="fin-wl-anum">('+p.s+':'+a+')</span></div>' : '') + '</div>';
+        }
+        slot.innerHTML = o;
+      });
+    });
   }
 
   // ── STANDARDS mode — AAOIFI coverage board (D.tracker) + deep notes (D.kb) ──
@@ -2629,11 +2742,9 @@ window.FinanceView = (function(){
     });
   }
   // Small back-tag chip, returned only when one of the given ids/codes is in REPORT_REFS.
-  function _reportBackTag(){
-    for(var i=0;i<arguments.length;i++){ if(arguments[i] && REPORT_REFS.indexOf(arguments[i]) !== -1)
-      return '<div class="fin-hub-chips" style="padding-top:6px"><span class="fin-report-backtag" data-goto-report="1">Cited in demo report →</span></div>'; }
-    return '';
-  }
+  // 27 Nov 2026 (Adam): HOME and the PAGES are the app's permanent reference and belong to no user;
+  // they must not point to a user's own reports. The "Cited in demo report" chip is switched off everywhere.
+  function _reportBackTag(){ return ''; }
 
   // ── LADDER "Standards coverage" strip — shown in the hub when no node is selected ──
   function _coverageStripHtml(){
@@ -6211,8 +6322,7 @@ window.FinanceView = (function(){
            + '<div class="fin-word-count">'+n+' verse'+(n === 1 ? '' : 's')+'</div>'
            + readPill
            + _traceChip(w.trace_status)
-           + '<div class="fin-word-id">'+_esc(w.id)+'</div>'
-           + '</div>';
+           + '</div>';   // word code (Q01…) no longer shown to readers (Adam, 27 Nov 2026)
       });
       h += '</div></div>';
     });
@@ -6298,6 +6408,10 @@ window.FinanceView = (function(){
       h += '<div class="fin-hub-none">No Qur\'an verse in this layer — see the origin note below.</div>';
     }
 
+    // LECTURE button + one-line promise of what the lecture holds (27 Nov 2026).
+    h += '<div class="fin-hub-lecbox"><button type="button" class="fin-hub-lecbtn" data-hub-lecture="'+_esc(w.id)+'">LECTURE →</button>'
+       + '<div class="fin-hub-lectag">'+_esc(_wlTagline(w))+'</div></div>';
+
     // Meaning.
     if(w.meaning_summary && w.meaning_summary.text){
       var mcf = _conf(w.meaning_summary.tag);
@@ -6317,7 +6431,7 @@ window.FinanceView = (function(){
       h += '<div class="fin-hub-sec">Where it lands in the standards</div>';
       sl.forEach(function(s){
         var scf = _conf(s.tag);
-        h += '<div class="fin-hub-field"><span class="fin-hub-v">'+_linkifyStandards(_pubLong(s.ref))
+        h += '<div class="fin-hub-field"><span class="fin-hub-v">'+_linkifyStandards(_wlText(s.ref))
            + ' <span class="fin-badge fin-badge-'+scf.key+'">'+scf.label+'</span></span></div>';
       });
     }
@@ -6333,8 +6447,9 @@ window.FinanceView = (function(){
 
     // Honesty box (amber) — gap.note and/or a non-Qur'an origin flag, both verbatim. Nothing invented.
     var honesty = '';
-    if(w.gap && w.gap.note) honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.gap.note))+'</div>';
-    if(w.origin_flag)       honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.origin_flag))+'</div>';
+    var _gn = (w.gap && w.gap.note) ? _wlText(w.gap.note) : '';   // catalogue notes (proposed term codes) are not reader text
+    if(_gn)           honesty += '<div class="fin-honesty-line">'+_esc(_gn)+'</div>';
+    if(w.origin_flag) honesty += '<div class="fin-honesty-line">'+_esc(_pubLong(w.origin_flag))+'</div>';
     if(honesty) h += '<div class="fin-honesty">'+honesty+'</div>';
     h += _storyHtml(w, 'In depth');
 
@@ -6345,6 +6460,8 @@ window.FinanceView = (function(){
     hub.innerHTML = h;
     _wireStdLinks(hub);
     _wireFinJumps(hub);   // HOME word verse "→ read"
+    var _lb = hub.querySelector('[data-hub-lecture]');
+    if(_lb) _lb.addEventListener('click', function(e){ e.stopPropagation(); _goLecture({ kind:'word', id:this.getAttribute('data-hub-lecture') }); });
   }
 
   // ── LADDER mode — a real vertical timeline for one contract ──

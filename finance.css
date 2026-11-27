@@ -2100,6 +2100,13 @@ body.fin-fullscreen #usul-fs-logo{
 #finance-view .fin-lec-link:hover{ color:#8A6A12 !important; }
 #finance-view .fin-lec-cchip{ color:#8A6A12 !important; }
 #finance-view .fin-lec-cchip:hover{ color:#22303F !important; }
+/* Lecture depth labels (27 Nov 2026) */
+#finance-view .fin-lec-stat{ display:inline-block; font-family:'Source Sans 3',sans-serif; font-size:10.5px; letter-spacing:.06em;
+  padding:1px 7px; margin-left:6px; border-radius:3px; border:1px solid; vertical-align:middle; white-space:nowrap; }
+#finance-view .fin-lec-stat-full{ color:#2E6B4F !important; border-color:#7FB79A; background:#EAF5EE; }
+#finance-view .fin-lec-stat-soon{ color:#8A6A12 !important; border-color:#E0C27A; background:#FBF3DF; }
+#finance-view .fin-lec-statkey,#finance-view .fin-lec-statnote{ font-family:'Source Sans 3',sans-serif; font-size:13px; line-height:1.9; color:#22303F !important; margin:4px 0 12px; }
+#finance-view .fin-lec-statkey .fin-lec-stat,#finance-view .fin-lec-statnote .fin-lec-stat{ margin-left:0; }
 #finance-view .fin-lec-back{ color:#2F5F8F !important; }
 #finance-view .fin-lec-back:hover{ color:#8A6A12 !important; }
 #finance-view .fin-lec-cross{ color:#8A6A12 !important; }
@@ -3561,3 +3568,55 @@ body.fin-fullscreen #usul-fs-logo{
 #finance-view #finance-hub .fin-ft-link{ color:#9FB7D8; text-decoration:underline; }
 #finance-view #finance-hub .fin-ft-quote{ color:#A0AEC0; font-style:italic; margin-top:2px; }
 #finance-view #finance-hub .fin-ft-goto{ color:#D4AF37; cursor:pointer; text-decoration:underline; }
+
+/* ── 27 Nov 2026: word LECTURE pages as a lecture / manual + LECTURE button in the HOME info panel ── */
+#finance-view .fin-hub-lecbox{ margin:10px 12px 4px; padding:12px 14px; border:1px solid #E0C27A; background:#FBF3DF; border-radius:4px; }
+#finance-view .fin-hub-lecbtn{ display:inline-block; font-family:'Cinzel',serif; font-size:13px; letter-spacing:.14em; font-weight:700;
+  color:#FFFFFF !important; background:#B8860B; border:0; border-radius:3px; padding:7px 16px; cursor:pointer; box-shadow:0 1px 2px rgba(0,0,0,.15); }
+#finance-view .fin-hub-lecbtn:hover{ background:#8A6A12; }
+#finance-view .fin-hub-lectag{ margin-top:8px; font-family:'Crimson Pro','Lato',serif; font-size:14.5px; line-height:1.45; font-style:italic; color:#5A4A1E !important; }
+
+#finance-view .fin-wl{ max-width:780px; margin:36px auto 0; padding:0 28px 90px; }
+#finance-view .fin-wl-kicker{ font-family:'Source Sans 3',sans-serif; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:#8A6A12 !important; margin:18px 0 6px; }
+#finance-view .fin-wl-title{ font-family:'Cinzel',serif; font-size:38px; line-height:1.15; font-weight:600; letter-spacing:.02em; color:#1A2432 !important; margin:0; }
+#finance-view .fin-wl-sub{ font-family:'Crimson Pro','Lato',serif; font-size:22px; font-style:italic; color:#5B6573 !important; margin:4px 0 14px; padding-bottom:16px; border-bottom:2px solid #D4AF37; }
+#finance-view .fin-wl-lead{ font-family:'Crimson Pro','Lato',serif; font-size:19.5px; line-height:1.7; color:#22303F !important; margin:18px 0 14px; }
+#finance-view .fin-wl-toc{ background:#FFFFFF; border:1px solid #E5DCC5; border-left:4px solid #D4AF37; border-radius:3px; padding:12px 18px; margin:0 0 26px; }
+#finance-view .fin-wl-toc-h{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.14em; color:#8A6A12 !important; margin-bottom:4px; }
+#finance-view .fin-wl-toc ol{ margin:0; padding-left:22px; }
+#finance-view .fin-wl-toc li{ font-family:'Crimson Pro','Lato',serif; font-size:17px; line-height:1.7; color:#22303F !important; }
+#finance-view .fin-wl-toc a{ color:#2F5F8F !important; cursor:pointer; text-decoration:none; }
+#finance-view .fin-wl-toc a:hover{ text-decoration:underline; }
+#finance-view .fin-wl-sec{ margin:30px 0 0; }
+#finance-view .fin-wl-part{ font-family:'Cinzel',serif; font-size:23px; font-weight:600; letter-spacing:.03em; color:#1A2432 !important; margin:0 0 10px; padding-top:6px; scroll-margin-top:16px; }
+#finance-view .fin-wl-pnum{ display:block; font-family:'Source Sans 3',sans-serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#B8860B !important; margin-bottom:2px; }
+#finance-view .fin-wl-h3{ font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:700; color:#1A2432 !important; margin:18px 0 8px; }
+#finance-view .fin-wl-surah{ font-weight:400; color:#5B6573 !important; }
+#finance-view .fin-wl-p{ font-family:'Crimson Pro','Lato',serif; font-size:18.5px; line-height:1.75; color:#22303F !important; margin:0 0 12px; }
+#finance-view .fin-wl-verse{ margin:0 0 20px; }
+#finance-view .fin-wl-ayat{ background:#FFFFFF; border:1px solid #E5DCC5; border-radius:4px; padding:4px 18px; }
+#finance-view .fin-wl-ayah{ padding:12px 0; border-bottom:1px dashed #E5DCC5; }
+#finance-view .fin-wl-ayah:last-child{ border-bottom:0; }
+#finance-view .fin-wl-ar{ font-family:'Amiri','Traditional Arabic','Scheherazade New','Noto Naskh Arabic',serif; font-size:25px; line-height:2; color:#1A2432 !important; text-align:right; }
+#finance-view .fin-wl-en{ font-family:'Crimson Pro','Lato',serif; font-size:18px; line-height:1.6; font-style:italic; color:#33414F !important; margin-top:6px; }
+#finance-view .fin-wl-anum{ font-family:'Source Sans 3',sans-serif; font-style:normal; font-size:12px; color:#8A6A12 !important; }
+#finance-view .fin-wl-loading{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#8B95A5 !important; padding:10px 0; }
+#finance-view .fin-wl-gist{ margin-top:10px; }
+#finance-view .fin-wl-label{ font-family:'Source Sans 3',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:#8A6A12 !important; margin-right:6px; }
+#finance-view .fin-wl-steps{ margin:4px 0 12px; padding-left:0; list-style:none; counter-reset:wls; }
+#finance-view .fin-wl-steps li{ counter-increment:wls; position:relative; padding:8px 0 8px 46px; font-family:'Crimson Pro','Lato',serif; font-size:18px; line-height:1.6; color:#22303F !important; border-left:2px solid #E0C27A; margin-left:14px; }
+#finance-view .fin-wl-steps li::before{ content:counter(wls); position:absolute; left:-15px; top:8px; width:28px; height:28px; border-radius:50%;
+  background:#B8860B; color:#fff; font-family:'Source Sans 3',sans-serif; font-size:13px; font-weight:700; text-align:center; line-height:28px; }
+#finance-view .fin-wl-list{ margin:0 0 12px; padding-left:22px; }
+#finance-view .fin-wl-list li{ font-family:'Crimson Pro','Lato',serif; font-size:18px; line-height:1.7; color:#22303F !important; margin-bottom:6px; }
+#finance-view .fin-wl-card{ background:#FFFFFF; border:1px solid #E5DCC5; border-radius:4px; padding:4px 18px 16px; margin:0 0 14px; }
+#finance-view .fin-wl-meta{ font-family:'Source Sans 3',sans-serif; font-size:13px; color:#5B6573 !important; margin:-4px 0 12px; }
+#finance-view .fin-wl-btn{ display:inline-block; font-family:'Cinzel',serif; font-size:12px; letter-spacing:.12em; font-weight:700; color:#FFFFFF !important;
+  background:#1A2432; border-radius:3px; padding:6px 14px; cursor:pointer; text-decoration:none; }
+#finance-view .fin-wl-btn:hover{ background:#2F5F8F; }
+#finance-view .fin-wl-note{ background:#FBF3DF; border:1px solid #E0C27A; border-radius:4px; padding:10px 16px 2px; margin:10px 0 0; }
+#finance-view .fin-wl-note-h{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.12em; color:#8A6A12 !important; margin-bottom:4px; }
+#finance-view .fin-wl-pager{ display:flex; justify-content:space-between; gap:12px; margin:40px 0 18px; padding-top:16px; border-top:2px solid #D4AF37; }
+#finance-view .fin-wl-pager a{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.06em; color:#2F5F8F !important; cursor:pointer; }
+#finance-view .fin-wl-pager a:hover{ text-decoration:underline; }
+@media (max-width:600px){ #finance-view .fin-wl{ padding:0 16px 60px; } #finance-view .fin-wl-title{ font-size:28px; } #finance-view .fin-wl-ar{ font-size:21px; } }
