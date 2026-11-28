@@ -1,0 +1,3517 @@
+{
+ "_meta": {
+  "type": "usul_course",
+  "contract": "C01",
+  "built": "2026-11-28",
+  "built_by": "Factory Code window",
+  "from": "research-drops/usul-master-lectures/musharakah/lecture-musharakah.md",
+  "edition": 7,
+  "qa": "Independent QA rounds v1-v7 (QA-REPORT-20261128-musharakah-*); v7 PASS WITH MINOR, 0 MAJOR (QA-REPORT-20261128-musharakah-v7-SUMMARY.md); Adam: happy with it, 28 Nov 2026",
+  "words": 28239
+ },
+ "contract": "C01",
+ "title": "Musharakah: A Teacher's Manual",
+ "subtitle": [
+  "From the first definition to the governance rules. Master course, edition 7 (2026).",
+  "One of the core contracts of Islamic finance."
+ ],
+ "blocks": [
+  {
+   "t": "h",
+   "l": 2,
+   "x": "How to use this manual",
+   "id": "crs-1"
+  },
+  {
+   "t": "p",
+   "x": "**Who it is for.** A teacher who will explain musharakah to people who work in finance but know no Arabic and nothing of Islamic law. The manual assumes no prior knowledge. Every Arabic word is explained the first time it appears and is listed in the glossary (Part 8)."
+  },
+  {
+   "t": "p",
+   "x": "**How it is built.** Eight parts, each building on the last:"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "The word and the idea",
+    "Musharakah in academic terms: what kind of contract it is, and why it is allowed",
+    "The rules, with every school's position",
+    "Musharakah in practice: how it is used today",
+    "Governance: what the regulators and standard-setters say",
+    "Teaching aids: worked cases, review questions, common mistakes",
+    "The scholars and works quoted",
+    "Glossary"
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**How sources are shown.** Every rule carries its source in brackets: the author and the page, or the standard and the clause. For example \"(Usmani, p. 24)\" or \"(AAOIFI SS 12, 3/1/5/4)\". **Hadith** (reports of what the Prophet Muhammad said, did or approved) are cited by collection and report number. Quotations from al-Kafi, Tanwir al-Miqbas and Ma'arif al-Qur'an are from English translations. Where a report's grade is given, it is the grade in the edition used, unless a grader is named. Quotations from Arabic books with no English edition named are this manual's own translations. Where a quotation is this manual's own translation although an English edition exists, it is marked \"this manual's translation\". Where the scholars or schools disagree, every view is given with the name of the person or school who holds it. No view is presented as \"the\" answer. Where an author gives his own opinion, it is marked as his."
+  },
+  {
+   "t": "p",
+   "x": "**Words used throughout.** *Shari'ah* is Islamic law as a whole; *fiqh* is that law as the jurists work it out. The *Sunnah* is the Prophet's example, known through hadith. The *Companions* are the people who knew the Prophet and followed him. A *caliph* is a leader of the Muslim community after the Prophet. *Sunni* and *Shia* are the two main branches of Islam. In the Shia branch, an *Imam* is one of the leaders from the Prophet's family whose reports carry authority. Among Sunnis, *Imam* is also a title of respect for a leading scholar, as in \"Imam Malik\" or \"Imam Ahmad\". A *dirham* was a silver coin and a *dinar* a gold coin; the classical books state cash amounts in them. *Fulus* were copper coins. Dates are given in the common era (CE) unless marked **AH**: years of the Islamic lunar calendar, counted from the Prophet's emigration to Medina in 622 CE."
+  },
+  {
+   "t": "p",
+   "x": "**The schools named in this manual.** Islamic law has several schools (in Arabic *madhhab*, plural *madhahib*). Four are Sunni and are named after early jurists: the **Hanafi** (Abu Hanifah, d. 767), **Maliki** (Malik ibn Anas, d. 795), **Shafi'i** (al-Shafi'i, d. 820) and **Hanbali** (Ahmad ibn Hanbal, d. 855). The main Shia school is the **Ja'fari** or **Imami** school (from *Imam*, because it follows the Imams of the Prophet's family), named after Ja'far al-Sadiq (d. 765). Ibn Hazm (d. 1064), a defender of the **Zahiri** (\"literalist\") school, is named where he holds a view. The Qur'an commentator al-Tabari (d. 923) is known as an independent jurist (*mujtahid*), and is named for his reading of a verse. He is often said to have founded a school of his own, the **Jariri** (from his name, Ibn Jarir), though this is not certain."
+  },
+  {
+   "t": "p",
+   "x": "**Suggested teaching plan.** Six sessions of about 90 minutes:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Session",
+    "Parts",
+    "Goal"
+   ],
+   "r": [
+    [
+     "1",
+     "1 and 2.1-2.2",
+     "The idea, the names, the two kinds of sharing"
+    ],
+    [
+     "2",
+     "2.3-2.5",
+     "The evidence, the pillars, the kinds of partnership"
+    ],
+    [
+     "3",
+     "3.1-3.5",
+     "Partners, capital, profit, loss, liability"
+    ],
+    [
+     "4",
+     "3.6-3.11",
+     "Guarantees, management, ending, the special kinds"
+    ],
+    [
+     "5",
+     "4",
+     "Bank finance, diminishing musharakah, criticism, musharakah sukuk"
+    ],
+    [
+     "6",
+     "5 and 6",
+     "The frameworks; cases and review"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**By the end of the course a learner should be able to:**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "define musharakah in one sentence and tell it apart from mudarabah;",
+    "explain the difference between owning something together and running a business together;",
+    "state the loss rule (loss follows capital) and the reasons the sources give for it;",
+    "state at least four questions on which the schools disagree, with who holds which view;",
+    "explain why a partner may not guarantee another partner's capital, and the routes the standards allow instead;",
+    "describe diminishing musharakah and the different rules on the buy-out price;",
+    "describe musharakah sukuk, and how the frameworks differ on protecting the holders' capital;",
+    "name the main rule in each framework that has musharakah rules (AAOIFI, IFSB, Bank Negara Malaysia, the Securities Commission Malaysia)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**What Part 5 covers.** Six frameworks. In full: AAOIFI, the IFSB, Bank Negara Malaysia and the Securities Commission Malaysia (for musharakah *sukuk*, Islamic investment certificates). The Central Bank of the UAE and the Saudi Central Bank are covered for their Shari'ah governance texts, which have no musharakah-specific rules. Musharakah sukuk themselves are explained in 4.10."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 1. The word and the idea",
+   "id": "crs-2"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.1 The problem musharakah solves",
+   "id": "crs-3"
+  },
+  {
+   "t": "p",
+   "x": "A person with money has two honest choices, in Usmani's account. If he wants to **help** someone, he can lend and take back only what he lent. If he wants to **earn** from someone's business, he can join it as a partner, and then he shares in its losses as well as its profits (Usmani, p. 18)."
+  },
+  {
+   "t": "p",
+   "x": "What he may not do is lend and ask for a fixed extra. That extra is **riba** (\"increase\"), which Islamic law forbids. Usmani argues that a fixed return is unfair both ways: if the business loses, the lender still takes his fixed amount; if it makes a large profit, the lender gets only a small fixed share of it (Usmani, p. 17). In the Islamic system, he writes, the person who puts money into a business bears the risk of loss and is entitled to \"a proportionate share in the actual profit\" (Usmani, p. 14)."
+  },
+  {
+   "t": "p",
+   "x": "Musharakah is the contract for that second choice: two or more people put money into one business and share what it actually earns."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.2 The names",
+   "id": "crs-4"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Shirkah** (also read *sharikah*): \"sharing\" or \"partnership\". This is the word the classical books use for the whole subject. The Shafi'i commentary *Mukhtasar Tuhfat al-Muhtaj* says that in the language the word means mixing (*Mukhtasar Tuhfat* 2:251). Ibn Qudamah (Hanbali, d. 1223) gives the legal meaning: \"coming together in a right to something, or in dealing with it\" (*al-Mughni* 5:3).",
+    "**Musharakah.** Usmani notes that \"the term 'musharakah' is not found in the books of Fiqh\". Writers on Islamic finance brought it in, and they normally use it for one kind of shirkah: the partnership in capital, where two or more people invest in a joint business. Sometimes it also covers the partnership in services (Usmani, p. 20). This manual uses the word in that sense.",
+    "**Sharik** (plural *shuraka'*): a partner.",
+    "The Malaysian central bank spells the word **musyarakah**, and notes that \"the terms of shirkah, sharikah and sharkah are synonymous to musyarakah\" (BNM PD Musyarakah 2015, 10.1 and note 1)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** when learners meet \"shirkah\" in a classical book and \"musharakah\" in a bank's term sheet, the bank is using one branch of the classical subject."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.3 The people in a musharakah",
+   "id": "crs-5"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Role",
+    "Who",
+    "Source"
+   ],
+   "r": [
+    [
+     "**Partner** (*sharik*)",
+     "Anyone who puts capital into the venture",
+     "AAOIFI SS 12, 3/1; BNM 1.4, 12.1"
+    ],
+    [
+     "**Managing partner**",
+     "One, some or all of the partners who run the venture",
+     "BNM 14.1(a); AAOIFI SS 12, 3/1/3/2"
+    ],
+    [
+     "**Sleeping partner**",
+     "A partner who is excluded by the contract from all work",
+     "Usmani, pp. 24, 28; AAOIFI SS 12, 3/1/5/3"
+    ],
+    [
+     "**Third-party manager**",
+     "An outsider hired to run the venture",
+     "BNM 14.1(b); AAOIFI SS 12, 3/1/3/3"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.4 Definitions side by side",
+   "id": "crs-6"
+  },
+  {
+   "t": "p",
+   "x": "A good class exercise is to read definitions from different centuries and find what they share."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Source",
+    "Definition (in English)"
+   ],
+   "r": [
+    [
+     "Ibn Qudamah, Hanbali, d. 1223",
+     "Partnership is \"coming together in a right to something, or in dealing with it\" (*al-Mughni* 5:3)"
+    ],
+    [
+     "Al-Kasani, Hanafi, d. 1191",
+     "Partnership in property is \"that two persons share in a capital\" (*Bada'i'* 6:56)"
+    ],
+    [
+     "AAOIFI",
+     "A contractual partnership is \"an agreement between two or more parties to combine their assets, labour or liabilities for the purpose of making profits\" (AAOIFI SS 12, 2/1)"
+    ],
+    [
+     "Bank Negara Malaysia, 2015",
+     "Musyarakah \"refers to a partnership between two or more parties, whereby all parties will share the profit and bear the loss from the partnership\" (BNM 10.1)"
+    ],
+    [
+     "AAOIFI accounting, effective 2027",
+     "A partnership \"whereby two or more parties agree to combine their assets, labour, entrepreneurship, financial commitments and / or goodwill for the purpose of making profit\" (FAS 51, para. 4(c), which opens: \"in the specific context of this standard, is a partnership based on Shirkat-ul-Aqd\")"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**What they share:** two or more parties, something put in by each, and a shared result. In this manual's reading, Ibn Qudamah's definition is the widest, because \"a right to something\" covers owning a thing together as well as dealing together. AAOIFI's definition adds labour and liabilities, and the accounting standard adds labour, entrepreneurship, financial commitments and goodwill, so both cover partnerships with no cash capital (3.10). The accounting standard limits itself to partnership by contract."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.5 A first picture",
+   "id": "crs-7"
+  },
+  {
+   "t": "q",
+   "x": "Amina puts in 60,000 and Bilal puts in 40,000 to open a shop. Bilal will run it. They agree to split the profit 50/50. - If the shop makes a profit of 20,000, each takes 10,000. - If the shop loses 10,000, Amina bears 6,000 and Bilal 4,000: loss follows the money each put in, whatever the profit split. - Is the 50/50 profit split valid, when Bilal put in only 40%? The schools disagree. Some say profit must follow capital; others allow any agreed split. See 3.3."
+  },
+  {
+   "t": "p",
+   "x": "*(The names and numbers are an illustration made for this manual. The rules they show are set out with their sources in Part 3.)*"
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 2. Musharakah in academic terms",
+   "id": "crs-8"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.1 Two kinds of sharing: owning and contracting",
+   "id": "crs-9"
+  },
+  {
+   "t": "p",
+   "x": "The classical books divide shirkah into two kinds. Al-Kasani writes: \"partnership in principle is of two kinds: partnership in things owned, and partnership by contract\" (*Bada'i'* 6:56). Ibn Qudamah makes the same division (*al-Mughni* 5:3)."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Kind",
+    "What it is",
+    "How it comes about",
+    "Sources"
+   ],
+   "r": [
+    [
+     "**Shirkat al-milk** (\"partnership in ownership\")",
+     "Two or more people own one thing together. It is ownership, not yet a business",
+     "By an act, such as buying, receiving a gift, a bequest or a charity together; or with no act, such as heirs who inherit together",
+     "Al-Kasani, *Bada'i'* 6:56; Usmani, pp. 19-20"
+    ],
+    [
+     "**Shirkat al-'aqd** (\"partnership by contract\")",
+     "People agree to run a business together for profit",
+     "By a contract",
+     "Al-Kasani, *Bada'i'* 6:56; Usmani, p. 20 (\"joint commercial enterprise\")"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "The difference matters in law. Bank Negara Malaysia states that in shirkat al-milk \"each partner's ownership is mutually exclusive\", so one partner cannot deal with the other's share without consent, while in shirkat al-'aqd each partner is an agent for the others (BNM 11.1). AAOIFI's standard does not cover ownership partnership at all (AAOIFI SS 12, clause 1), and AAOIFI's new accounting standard leaves co-owned assets out of its scope too (FAS 51, para. 3(c)). The distinction comes back in diminishing musharakah (4.8), where a house bought jointly is a partnership in ownership."
+  },
+  {
+   "t": "p",
+   "x": "**The kinds of contract partnership, by source.** The books list them differently:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Source",
+    "Kinds listed",
+    "Which are valid"
+   ],
+   "r": [
+    [
+     "Ibn Qudamah (Hanbali)",
+     "Five: *'inan*, *abdan*, *wujuh*, *mudarabah* and *mufawadah*",
+     "All five are discussed as kinds; one form of mufawadah is invalid (3.10) (*al-Mughni* 5:3, 5:22)"
+    ],
+    [
+     "Al-Kasani (Hanafi)",
+     "Three: in property, in work, and *wujuh*; each may be *'inan* or *mufawadah*",
+     "All valid for the Hanafis, \"whether 'inan or mufawadah\" (*Bada'i'* 6:56-57)"
+    ],
+    [
+     "Al-Nawawi's *Minhaj* (Shafi'i), with its commentary",
+     "Four: *abdan*, *mufawadah*, *wujuh* and *'inan*",
+     "Only *'inan*; the text rules each of the other three void in turn (*Mukhtasar Tuhfat* 2:251-252)"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "Partnership only \"in actual property\"",
+     "Partnership of work is void (*al-Muhalla* 6:412, 6:414)"
+    ],
+    [
+     "Usmani",
+     "Three: in capital (*amwal*), in services (*a'mal*), and *wujuh*",
+     "(He describes them; see 3.10) (Usmani, p. 20)"
+    ],
+    [
+     "AAOIFI",
+     "*'Inan*, *wujuh* (or *dhimam*) and *a'mal*, plus modern companies",
+     "Covers these; leaves out *mufawadah* because its \"practical application ... is rare\" (AAOIFI SS 12, 2/2/1 and clause 1)"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "In capital, in work, and *wujuh* (under shirkat al-'aqd)",
+     "(BNM 11.1, note 2)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**The words, briefly** (each is treated in 3.10):"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "***'Inan***: the ordinary partnership in which each partner puts in a set amount of money. AAOIFI calls it \"the most important\" type (AAOIFI SS 12, App. B), and the modern musharakah is built on it.",
+    "***Mufawadah***: a partnership of full equality, in which each partner also stands surety for the other. Al-Kasani says the name means equality (in capital, profit and dealing), or comes from *tafwid*, handing over authority (*Bada'i'* 6:58).",
+    "***Abdan*** (\"bodies\") or ***a'mal*** (\"works\"): partners pool their work and share their earnings, for example two tailors. Usmani adds the names *taqabbul* and *sana'* (Usmani, p. 20).",
+    "***Wujuh*** (\"faces\"): partners with no capital buy on credit on the strength of their standing, sell, and share the gain. Usmani labels it \"Partnership in goodwill\" in his table of the kinds of shirkah (Usmani, pp. 20, 22). The Shafi'i commentary describes it as \"two men of standing\" buying on credit (*Mukhtasar Tuhfat* 2:251)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.2 The legal nature: agency and trust",
+   "id": "crs-10"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Feature",
+    "What follows",
+    "Source"
+   ],
+   "r": [
+    [
+     "**Agency** (*wakalah*)",
+     "Each partner acts for himself and, for the rest, as the agent of the others; what one does in the normal course of business binds all",
+     "AAOIFI SS 12, App. B (\"The general basis of Sharikah is agency\"); BNM 11.1(b); Usmani, p. 28"
+    ],
+    [
+     "**Trust** (*amanah*)",
+     "A partner who holds the assets is not liable for a loss unless he is at fault",
+     "AAOIFI SS 12, 3/1/4/1 (\"on a trust basis\"); BNM 14.5, 17.3"
+    ],
+    [
+     "**Not binding by default**",
+     "Any partner may end the partnership; the Shafi'i text says \"each may cancel it whenever he wishes\"",
+     "*Mukhtasar Tuhfat* 2:254; Usmani, p. 28; AAOIFI SS 12, 3/1/6/1"
+    ],
+    [
+     "**Mufawadah adds surety**",
+     "Mufawadah combines agency with *kafalah* (each guarantees the other's dealings)",
+     "AAOIFI SS 12, App. B; al-Kasani, *Bada'i'* 6:58"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "*(The table is this manual's summary of the cited sources. It is a teaching aid, not a quotation from any one book.)*"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.3 Why it is allowed: the evidence",
+   "id": "crs-11"
+  },
+  {
+   "t": "p",
+   "x": "The sources agree that partnership is allowed in general. They differ on how strong each piece of evidence is, and on which kinds are allowed."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.1 The Qur'an",
+   "id": "crs-12"
+  },
+  {
+   "t": "p",
+   "x": "Ibn Qudamah and Bank Negara Malaysia cite two verses, 4:12 and 38:24 (*al-Mughni* 5:3; BNM App. 1). AAOIFI cites only 38:24 (AAOIFI SS 12, App. B)."
+  },
+  {
+   "t": "p",
+   "x": "**Qur'an 4:12** is on inheritance: brothers and sisters through the mother who inherit together \"share the third of the estate\" (BNM App. 1, quoting the verse). The Arabic uses the word *shuraka'* (\"partners\"). Bank Negara Malaysia notes that the verse \"specifically underlines the rule of Islamic inheritance\", but that jurists have read it as showing a general permission for partnership (BNM App. 1, para. 2)."
+  },
+  {
+   "t": "p",
+   "x": "**Qur'an 38:24** comes in the story of the Prophet David (*Dawud*), who judges a dispute between two men over sheep. He says, in this manual's translation: \"many of the *khulata'* wrong one another, except those who believe and do good works, and they are few.\" Another English rendering has \"many associates oppress one another\". The commentators differ on what *khulata'* means here:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Commentator",
+    "Reading of *khulata'*",
+    "Source"
+   ],
+   "r": [
+    [
+     "Al-Tabari (d. 923)",
+     "**Partners.** He explains the phrase as \"many of the partners (*shuraka'*) transgress against one another\"",
+     "*Jami' al-Bayan*, on 38:24"
+    ],
+    [
+     "Ibn Qudamah (Hanbali)",
+     "**Partners.** He cites the verse as evidence for partnership and glosses *khulata'* as partners",
+     "*al-Mughni* 5:3"
+    ],
+    [
+     "*Tanwir al-Miqbas*, a commentary attributed to Ibn Abbas",
+     "**Partners and brothers**: \"many partners and brothers ... transgress against one another\"",
+     "*Tanwir al-Miqbas*, on 38:24 (English)"
+    ],
+    [
+     "*Ma'arif al-Qur'an* (Mufti Muhammad Shafi')",
+     "**Partners.** \"And many partners oppress one another\", under the heading \"Partnership in transactions needs great caution\"",
+     "*Ma'arif al-Qur'an*, on 38:24 (English)"
+    ],
+    [
+     "Al-Qurtubi (Maliki, d. 1273)",
+     "**Two senses are given: companions, or partners.** He comments: \"calling the *khulata'* partners is far-fetched\". He reports that most scholars take *khulata'* to be owners who keep their own sheep but join them under one shepherd, one bucket and one pen",
+     "*al-Jami' li-Ahkam al-Qur'an*, on 38:24"
+    ],
+    [
+     "Tawus and Ata' (early jurists), as reported by al-Qurtubi",
+     "**Partners only**: \"the *khulata'* are none but partners\". Al-Qurtubi rejects this, saying it goes against the hadith on mixed herds for the alms tax",
+     "Al-Qurtubi, *al-Jami'*, on 38:24"
+    ],
+    [
+     "AAOIFI; Bank Negara Malaysia",
+     "**Partners**, in their English renderings of the verse",
+     "AAOIFI SS 12, App. B; BNM App. 1"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** al-Qurtubi's point is about a technical term. In the law of the alms tax (*zakat*), *khultah* (\"mixing\") means separately owned herds kept together. On that reading the verse is about owners who keep their herds together, not partners who share ownership."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.2 The Prophet and the Companions",
+   "id": "crs-13"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Report",
+    "Wording",
+    "Grade as given",
+    "Source"
+   ],
+   "r": [
+    [
+     "The \"third partner\" report (a *hadith qudsi*: the Prophet reporting God's words), from Abu Hurayrah",
+     "In the English of the Abu Dawud edition used here: \"I make a third with two partners as long as one of them does not cheat the other, but when he cheats him, I depart from them.\"",
+     "**Sahih** (sound), the grade in the edition of Abu Dawud used here. Al-Albani: **Da'if** (weak) (*Sahih wa Da'if Sunan Abi Dawud*, no. 3383). Zubair Ali Za'i: **chain hasan** (a good chain) (his checked edition of *Sunan Abi Dawud*, no. 3383). In *Bulugh al-Maram*, Ibn Hajar notes that al-Hakim graded it sound; the edition's note grades it **weak**, for two defects: one narrator is unknown, and there is disagreement on whether its chain is connected or broken",
+     "Abu Dawud 3383; Bulugh al-Maram 1013; also in *al-Mughni* 5:3; BNM App. 1 cites it as Abu Daud no. 2936"
+    ],
+    [
+     "A second wording, quoted by Ibn Qudamah",
+     "\"God's hand is over the two partners as long as they do not betray each other\"",
+     "(Ibn Qudamah does not name its source)",
+     "*al-Mughni* 5:3"
+    ],
+    [
+     "Al-Sa'ib ibn Abi al-Sa'ib, the Prophet's business partner (during the Ignorance period before Islam, in Ibn Majah; before the Prophet's mission, in *Bulugh al-Maram*; \"at the beginning of Islam\", in AAOIFI's wording)",
+     "In AAOIFI's version, the Prophet greets him on the day Mecca was taken: \"Welcome my brother and my partner\", and praises him. In Ibn Majah 2287, al-Sa'ib says to the Prophet, in the English of the edition used here: \"You were my partner during the Ignorance period and you were the best of partners, you did not contend or dispute.\" (The \"Ignorance period\" is the time before Islam.)",
+     "AAOIFI: al-Hakim graded it authentic and al-Dhahabi agreed. Ibn Majah 2287, in the edition used: **Da'eef** (weak). Al-Albani: **Sahih** (sound) (*Sahih wa Da'if Sunan Ibn Majah*, no. 2287). Zubair Ali Za'i: **Da'if** (weak) (his checked edition of *Sunan Ibn Majah*, no. 2287). *Bulugh al-Maram* edition note: **hasan** (good) in the wording of Ahmad's *Musnad* (3:425); its attribution in that wording to Abu Dawud (4836) and Ibn Majah (2287) \"is not precise\"",
+     "AAOIFI SS 12, App. B; Ibn Majah 2287; Bulugh al-Maram 1014; BNM App. 1 (al-Hakim, *al-Mustadrak*)"
+    ],
+    [
+     "Al-Sa'ib, in the version of Abu Dawud 4836",
+     "In the English of the Abu Dawud edition used here, al-Sa'ib says: \"I came to the Prophet ... The people began to praise me and make a mention of me.\" The Prophet says he knows him, and al-Sa'ib says: \"you were my partner and how good a partner; you neither disputed nor quarrelled.\"",
+     "**Da`eef** (weak), the grade in the edition used. Al-Albani: **Sahih** (sound) (*Sahih wa Da'if Sunan Abi Dawud*, no. 4836). Zubair Ali Za'i: **Da'if** (weak) (his checked edition of *Sunan Abi Dawud*, no. 4836)",
+     "Abu Dawud 4836"
+    ],
+    [
+     "Al-Bara' ibn 'Azib and Zayd ibn Arqam",
+     "Ibn Qudamah cites, as evidence for partnership, a report that the two bought silver partly for cash and partly on credit; the Prophet said, in Ibn Qudamah's wording, \"what was for cash, allow it; what was on credit, return it\"",
+     "(not given)",
+     "*al-Mughni* 5:3. BNM cites al-Bukhari no. 2317 for a report in similar terms: \"Take what was from hand to hand and leave what was on credit\". The same report, with the Prophet's words in the same English, is nos. 2497-2498 in the edition of al-Bukhari used here"
+    ],
+    [
+     "The report on non-Muslim partners",
+     "\"The Messenger of Allah has prohibited concluding partnership with Jews and Christians unless the selling and buying is in the hands of the Muslim\"",
+     "(not given)",
+     "AAOIFI SS 12, App. B, citing the *Musannaf* of Ibn Abi Shaybah 6:9. Ibn Qudamah gives a report to this effect through al-Khallal, from Ata' (*al-Mughni* 5:3)"
+    ],
+    [
+     "Ali ibn Abi Talib (fourth caliph)",
+     "\"Profit distribution is according to agreement of the partners and loss must be borne in proportion to the contribution in the capital\"",
+     "(not given)",
+     "AAOIFI SS 12, App. B, citing the *Musannaf* of Ibn Abi Shaybah 4:268"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** the two most often cited reports carry different grades in different places. Al-Albani and Zubair Ali Za'i reverse each other on them: al-Albani grades the \"third partner\" report weak and the al-Sa'ib report sound; Za'i grades the first report's chain good and the second report weak. A teacher should give the grade with its grader and source, as above, and not call either report simply \"authentic\" or \"weak\". The al-Sa'ib report also differs on who praised whom: in AAOIFI's version the Prophet praises al-Sa'ib; in Ibn Majah, al-Sa'ib praises the Prophet; in Abu Dawud 4836, the people praise al-Sa'ib and he praises the Prophet. (The al-Albani grades are as given in al-Maktaba al-Shamila, and the Za'i grades as published on zubairalizai.com.)"
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.3 The Shia (Ja'fari) reports",
+   "id": "crs-14"
+  },
+  {
+   "t": "p",
+   "x": "Al-Kulayni's *al-Kafi* (vol. 5) has chapters on partnership. The reports used in this manual come from Imam Ja'far al-Sadiq, one of them through him from Imam Ali (in the English translation used here):"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Partnership with a non-Muslim who pays the poll tax (*dhimmi*): \"It is not proper for a Muslim man to become a partner of al-Dhimmiy\" (al-Kafi 5, no. 1090).",
+    "Imam Ali \"did not like partnership with Jews, Christians, al-Majusiy [Zoroastrians], unless it was a hand in hand business deal in the presence of the Muslim\" (al-Kafi 5, no. 1091).",
+    "A farming partnership with *al-'ilj* (which the English translation glosses as \"a great non-Muslim person\"), one side giving land, seed and the bull and the other the work, for a share of the crop: \"It is not unlawful\" (al-Kafi 5, no. 1013).",
+    "A settlement between two partners on leaving (3.8) (al-Kafi 5, no. 971)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Grades.** Two Shia hadith scholars graded these reports. Al-Majlisi (d. 1699), in *Mir'at al-'Uqul*: no. 1013 **sahih** (19/347); no. 1090 **sahih** (given as 9/382); no. 971 **hasan** (19/328); no grade from him is given for no. 1091. Al-Behbudi, whose *Sahih al-Kafi* keeps only the reports he judged sound, includes no. 1013 (vol. 2, p. 371) and no. 1090 (vol. 2, pp. 382-383), and does not include nos. 971 and 1091. (These grades are as given by the Thaqalayn hadith library.)"
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.4 Consensus",
+   "id": "crs-15"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Ibn Qudamah: \"The Muslims agree that partnership is allowed in general\", though they differ on some of its kinds (*al-Mughni* 5:3).",
+    "The Shafi'i commentary calls *'inan* valid \"by consensus\" (*Mukhtasar Tuhfat* 2:252).",
+    "Al-Kasani: *'inan* is allowed \"by the consensus of the jurists of the cities\". For the partnerships of work and of *wujuh*, which al-Shafi'i rejected, he argues that people have practised them in every age without objection (*Bada'i'* 6:57-58).",
+    "AAOIFI calls the long practice of partnership \"a practical consensus\" (AAOIFI SS 12, App. B).",
+    "Bank Negara Malaysia quotes Ibn al-Mundhir's book *al-Ijma'* (\"Consensus\"): the jurists \"agree on the validity of partnership where each of the two partners contributes capital in dinar or dirham, and commingles the two capitals to form a single property which is indistinguishable\", trades with it, and shares the surplus and the deficit (BNM App. 1, para. 7, as quoted)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**What the consensus covers:** partnership in general, and *'inan* in cash. It does not cover the other kinds, or goods as capital, on which the schools differ (3.2, 3.10)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.4 The building blocks (pillars)",
+   "id": "crs-16"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Pillar (*rukn*)",
+    "What it means",
+    "Sources"
+   ],
+   "r": [
+    [
+     "The parties",
+     "Two or more partners, each with legal capacity",
+     "Ibn Qudamah: each partner must be legally able to deal (*al-Mughni* 5:3); BNM 12.1"
+    ],
+    [
+     "The capital",
+     "What each puts in",
+     "*Mukhtasar Tuhfat* 2:252; AAOIFI SS 12, 3/1/2"
+    ],
+    [
+     "The work",
+     "The trading the partners do",
+     "*Mukhtasar Tuhfat* 2:252"
+    ],
+    [
+     "The form of words (*sighah*)",
+     "Offer and acceptance",
+     "AAOIFI SS 12, 3/1/1/1; BNM 13.1-13.2 (verbally, in writing or by other methods)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "The Shafi'i commentary counts **five pillars**: \"two contracting parties, the subject of the contract, the work, and the form of words\" (*Mukhtasar Tuhfat* 2:252). The table has four rows because the two contracting parties count as two pillars. The commentary adds a point on the words: they must show **permission to deal**. If the partners only say \"we have become partners\", that is not enough \"in the sounder view\" (*al-asahh*) of the school, because the words may only report that a partnership exists; but if both partners meant permission by them, it is enough (*Mukhtasar Tuhfat* 2:252)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.5 Where musharakah sits next to mudarabah",
+   "id": "crs-17"
+  },
+  {
+   "t": "p",
+   "x": "Usmani sets out five differences between the two (Usmani, pp. 31-32):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Point",
+    "Musharakah",
+    "Mudarabah"
+   ],
+   "r": [
+    [
+     "Who puts in money",
+     "All partners",
+     "The investor only"
+    ],
+    [
+     "Who manages",
+     "Any or all partners",
+     "The manager only; the investor may not take part"
+    ],
+    [
+     "Who bears a money loss",
+     "All partners, by their share of capital",
+     "The investor only, unless the manager was negligent or dishonest"
+    ],
+    [
+     "Liability for debts",
+     "\"Normally unlimited\"",
+     "Limited to the investor's money, unless he allowed borrowing in his name"
+    ],
+    [
+     "Who owns the assets",
+     "All partners jointly, as soon as the capital is pooled; each gains from a rise in value even before a sale",
+     "The investor; the manager earns only from profit when goods are sold"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "The standard-setters put the same contrast in banking terms. The IFSB writes that in mudarabah the bank invests \"as silent partners\", while in musharakah the bank \"may be silent partners, or may participate in management\" (IFSB-1, para. 48)."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 3. The rules, with every school's position",
+   "id": "crs-18"
+  },
+  {
+   "t": "p",
+   "x": "This part takes the contract apart one question at a time. Each section first gives what the sources agree on, then any disagreement, with its holders. A summary table of all disagreements is at 3.11."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.1 Who may be a partner",
+   "id": "crs-19"
+  },
+  {
+   "t": "p",
+   "x": "**Agreed:** each partner must have legal capacity. Ibn Qudamah requires that each be legally able to deal with property (*al-Mughni* 5:3). Bank Negara Malaysia allows a natural person or a legal entity with capacity, and lets a partner act through an agent (BNM 12.1-12.2)."
+  },
+  {
+   "t": "p",
+   "x": "**Disputed: partnership with non-Muslims.** The worry in the classical books is that the non-Muslim partner may deal in riba or in goods Islam forbids, such as wine and pork."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Imam Ahmad (Hanbali)",
+     "**Allowed** with Jews and Christians, provided the non-Muslim is not left alone with the capital and the Muslim does the dealing, because they deal in riba",
+     "*al-Mughni* 5:3"
+    ],
+    [
+     "Al-Hasan (usually taken to be al-Hasan al-Basri, though this is not certain) and al-Thawri",
+     "**Agree with Ahmad**",
+     "*al-Mughni* 5:3"
+    ],
+    [
+     "Al-Shafi'i",
+     "**Disliked** it in all cases, citing Ibn Abbas and the view that their wealth is impure because they sell wine and deal in riba",
+     "*al-Mughni* 5:3"
+    ],
+    [
+     "Ibn Abbas (Companion)",
+     "**Disliked** it: \"I dislike that a Muslim should be the partner of a Jew\". In a report through al-Athram he **forbids** it: \"Do not take a Jew, a Christian or a Magian [Zoroastrian] as a partner, because they deal in riba\"",
+     "*al-Mughni* 5:3-4"
+    ],
+    [
+     "Imam Ahmad, on Magians",
+     "**Disliked** partnership and dealings with a Magian. Hanbal reports from him: \"Do not take him as a partner, and do not give him money in mudarabah\"",
+     "*al-Mughni* 5:4"
+    ],
+    [
+     "Ibn Qudamah's own view, on Jews and Christians",
+     "**Allowed, as Ahmad holds.** He cites a report through al-Khallal, from Ata': \"The Messenger of God forbade partnership with the Jew and the Christian, unless the buying and selling is in the hand of the Muslim\", and argues that the reason for the dislike (riba, wine and pork) falls away when the Muslim is present or does the dealing. He reads Ibn Abbas's saying in that light, calls it the saying of one Companion that is not shown to have spread, and rejects the claim that their wealth is impure, because the Prophet dealt with Jews. If wine or pork is bought with the joint capital, the purchase is void and the partner who made it is liable",
+     "*al-Mughni* 5:3-4"
+    ],
+    [
+     "Ibn Qudamah's own view, on Magians",
+     "**Better avoided, but valid if made.** He reads Ahmad's dislike as a recommendation",
+     "*al-Mughni* 5:4"
+    ],
+    [
+     "Imam al-Sadiq (Ja'fari)",
+     "**Not proper** for a Muslim to be the partner of a *dhimmi*",
+     "al-Kafi 5, no. 1090"
+    ],
+    [
+     "Imam Ali, as reported by al-Sadiq (Ja'fari)",
+     "**Disliked** partnership \"with Jews, Christians, al-Majusiy\" (Magians), \"unless it was a hand in hand business deal in the presence of the Muslim\"",
+     "al-Kafi 5, no. 1091"
+    ],
+    [
+     "AAOIFI",
+     "**Allowed** with non-Muslims or conventional banks for permissible operations, with guarantees that Shari'ah rules will be observed, unless their funds are evidently from forbidden sources. AAOIFI reads the report on non-Muslim partners (2.3.2) as aimed at the fear of riba, which is absent where such guarantees exist",
+     "AAOIFI SS 12, 3/1/1/2 and App. B"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.2 The capital",
+   "id": "crs-20"
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.2.1 Cash or goods?",
+   "id": "crs-21"
+  },
+  {
+   "t": "p",
+   "x": "**Agreed:** cash may be the capital. In the classical books this means dirhams and dinars. Al-Kasani says the capital must be money for \"the general body of scholars\" (*'ammat al-'ulama'*) (*Bada'i'* 6:59), and the consensus quoted from Ibn al-Mundhir is about capital \"in dinar or dirham\" (BNM App. 1, para. 7)."
+  },
+  {
+   "t": "p",
+   "x": "**Disputed:** may a partner put in goods (Arabic *'urud*: trade goods or other non-cash assets)?"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Reason given",
+    "Source"
+   ],
+   "r": [
+    [
+     "Al-Kasani (Hanafi), for \"the general body of scholars\" (*'ammat al-'ulama'*)",
+     "**No** partnership in goods; al-Kasani calls this \"the correct view\" against Malik",
+     "Goods are valued by estimate, so the profit becomes unknown and leads to disputes; a partner would take profit on something that was never at his risk; agency is not valid in goods",
+     "*Bada'i'* 6:59"
+    ],
+    [
+     "Imam Abu Hanifah and Imam Ahmad, as reported by Usmani",
+     "**No** contribution in kind",
+     "Each partner's goods stay his own, so no pool forms; and at the end the goods may have been sold or changed in value, so the capital cannot be returned fairly",
+     "Usmani, pp. 25-26, citing *Bada'i'* 6:59 and *al-Mughni* 5:124-25"
+    ],
+    [
+     "Imam Malik, in the *Mudawwana*",
+     "**Yes, at their value.** Asked whether partners may bring goods, even of different kinds, \"at their value, in Malik's view\", the answer is \"Yes\"",
+     "Valuing them is treated as each partner selling half his goods for half of the other's",
+     "*al-Mudawwana* 3:605"
+    ],
+    [
+     "Imam Malik, as reported by al-Kasani",
+     "**Yes.** Cash \"is not a condition\", and partnership in goods is valid; al-Kasani rejects this",
+     "(not given)",
+     "*Bada'i'* 6:59"
+    ],
+    [
+     "Imam Malik, as reported by Usmani; also \"some Hanbali jurists\"",
+     "**Yes**, valued at the market price on the date of the contract",
+     "(not given)",
+     "Usmani, p. 25, citing *al-Mughni* 5:125"
+    ],
+    [
+     "Imam Ahmad, the main position of the Hanbali school (*zahir al-madhhab*), in the narrations of Abu Talib and Harb; Ibn al-Mundhir also reports it from him",
+     "**No** partnership in goods",
+     "Goods have no exact equivalent to return at the end; a rise or fall in one partner's goods could give him all the profit or make the other share in his property; values are uncertain and lead to disputes",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Ibn Sirin, Yahya ibn Abi Kathir, al-Thawri, al-Shafi'i, Ishaq, Abu Thawr and \"the people of opinion\" (the Hanafis), as reported by Ibn Qudamah",
+     "**Disliked** partnership in goods",
+     "(as above)",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Imam Ahmad, a second narration; adopted by the Hanbali jurists Abu Bakr and Abu al-Khattab",
+     "**Yes.** \"Partnership and mudarabah are permitted with goods\"; their value at the time of the contract becomes the capital. Al-Athram reports Ahmad calling mudarabah with goods \"permissible\"",
+     "The aim of partnership (both partners dealing in both properties, and sharing their profit) is met with goods as with money; each takes back the value of his goods at the time of the contract",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Malik and Ibn Abi Layla, as reported by Ibn Qudamah",
+     "**Yes**: after the second narration from Ahmad, Ibn Qudamah writes \"it is the view of Malik and Ibn Abi Layla\"",
+     "(as above)",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Tawus, al-Awza'i and Hammad ibn Abi Sulayman, as reported by Ibn Qudamah",
+     "**Yes, in mudarabah**",
+     "(as above)",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Al-Shafi'i, as reported by Ibn Qudamah",
+     "**Fungible goods only** (such as grains and oils), \"in one of the two views\" in his school",
+     "They resemble money and can be returned in kind",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Al-Nawawi's *Minhaj* (Shafi'i), with its commentary",
+     "**Only fungible goods** (*mithli*: goods replaceable by the same kind and amount, such as wheat), not goods valued one by one. A second view in the school (*wa-qila*, \"it is also said\") limits it to minted coin",
+     "Goods valued one by one stay distinguishable (\"because their items are distinct\")",
+     "*Mukhtasar Tuhfat* 2:252; Usmani, pp. 26-27"
+    ],
+    [
+     "Imam Abu Hanifah, as reported by Usmani",
+     "**Fungible goods only if mixed**, so that no one can tell whose is whose; goods valued one by one, never",
+     "Answers the objection that each partner's goods stay distinguishable",
+     "Usmani, p. 27, citing al-Kasani"
+    ],
+    [
+     "AAOIFI",
+     "**Yes, after valuation.** Cash \"in principle\"; tangible assets with the agreement of all partners, once their money value is fixed. AAOIFI says this is \"the view of the Maliki and the Hanbali scholars\"",
+     "The aim of partnership is profit, which goods can bring as well as cash",
+     "AAOIFI SS 12, 3/1/2/1 and App. B"
+    ],
+    [
+     "Bank Negara Malaysia, 2015",
+     "**Yes.** \"The capital may be in the form of cash or in-kind, including intangible assets\"; in-kind capital is valued in money by the partners' agreement or by a third party, \"which may include experts, valuers, or any other qualified person\", at the time of contracting",
+     "(not given)",
+     "BNM 15.2-15.3"
+    ],
+    [
+     "Usmani's own view",
+     "**Malik's view** \"is more simple and reasonable and meets the needs of the modern business\", so it \"can be acted upon\"",
+     "Modern needs",
+     "Usmani, p. 27, citing Ashraf Ali Thanawi, *Imdad al-Fatawa*"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher: two points to discuss.**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "*The Hanbali position is reported two ways.* Usmani presents refusal as Imam Ahmad's view and notes that \"some Hanbali jurists\" allow goods (p. 25). Ibn Qudamah gives two narrations from Ahmad, one each way (*al-Mughni* 5:13). This manual does not settle which is Ahmad's position.",
+    "*Fungible goods after mixing.* Usmani reports Abu Hanifah allowing fungible goods if they are mixed (p. 27). Al-Kasani gives the Hanafi detail differently (*Bada'i'* 6:60). Fungible goods (things measured, weighed or counted alike) cannot be partnership capital before mixing, \"in the view of all of them\", and goods of two different kinds cannot be either. For goods of one kind after mixing, Abu Yusuf says the partnership is not valid and they become only a partnership in ownership, while Muhammad says it is valid. So if two partners mix equal amounts of wheat and agree to split profit in thirds, Abu Yusuf divides the profit by the amounts and Muhammad by the agreement. Al-Kasani also gives a way round on Abu Yusuf's view: mix the goods so they are owned jointly, then make the partnership contract over them. The two accounts name different holders; this manual does not settle them."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Copper coins (*fulus*).** Al-Kasani reports three Hanafi views. In the well-known narration from Abu Hanifah and Abu Yusuf, coins in circulation count as goods, so partnership in them is invalid. Muhammad (usually taken to be al-Shaybani, though this is not certain) holds it valid, because circulating copper coins function as money. A narration from Abu Yusuf allows partnership in them but not mudarabah (*Bada'i'* 6:59)."
+  },
+  {
+   "t": "p",
+   "x": "**The workaround.** Both Hanafi and Shafi'i texts describe the same way round the rule: each owner sells half (or part) of his goods for half of the other's, so that they own all the goods jointly, and then they make the partnership (*Bada'i'* 6:59; *Mukhtasar Tuhfat* 2:253). The Shafi'i text adds that the sale must not be made conditional on the partnership, and that partners who already own fungible property jointly, for example by inheritance or purchase, complete a partnership simply by giving each other permission to trade with it (*Mukhtasar Tuhfat* 2:253)."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.2.2 Debts as capital",
+   "id": "crs-22"
+  },
+  {
+   "t": "p",
+   "x": "**A debt is not capital** for al-Kasani, AAOIFI and Bank Negara Malaysia. Al-Kasani requires the capital to be \"present property\", not a debt and not property that is absent, because profit comes from dealing and one cannot deal with a debt; the Hanafis require it to be present at the time of buying, not at the time of the contract (*Bada'i'* 6:60). AAOIFI does not allow capital made up of receivables alone, but allows debts that are an inseparable part of the assets put in (AAOIFI SS 12, 3/1/2/4). Its reason: debts owed to a partner \"cannot actually be used in partnership operations, as they are not assets in possession\" (AAOIFI SS 12, App. B). Bank Negara Malaysia: \"All forms of debts shall not qualify as capital, including all account receivables and payments due from other partners or third parties\" (BNM 15.5)."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.2.3 Mixing the capital",
+   "id": "crs-23"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Al-Kasani's \"our three companions\" (usually taken to mean Abu Hanifah, Abu Yusuf and Muhammad, though this is not certain)",
+     "**Mixing is not a condition.** So a partnership is valid where one partner brings dirhams and the other dinars, or whole and broken coins, or white and black dirhams. Their reasons, as al-Kasani gives them: partnership contains agency, and agency over the two sums is valid before they are mixed, so partnership is too; the mixing that the word \"partnership\" implies may be a mixing of the profit, which happens even when each partner buys with his own money; and a loss before mixing falls on its owner alone because the partnership is complete only once something is bought",
+     "*Bada'i'* 6:60"
+    ],
+    [
+     "Zufar (Hanafi), as reported by al-Kasani",
+     "**Mixing is a condition**; \"al-Shafi'i took this view\". A narration from Zufar makes it a condition in *mufawadah* only, not in *'inan*, but al-Tahawi reports Zufar requiring it in both. Zufar's reasons: partnership means mixing, which does not happen while the two sums stay distinct; and in a partnership a loss falls on both properties, while a loss from one sum before mixing falls on its owner alone",
+     "*Bada'i'* 6:60"
+    ],
+    [
+     "Al-Nawawi's *Minhaj* (Shafi'i), with its commentary",
+     "**Mixing is required**, so that the two sums cannot be told apart. Mixing is not enough if they differ in kind or in quality (such as whole and broken coins), or if they can still be told apart, \"even with difficulty\"",
+     "*Mukhtasar Tuhfat* 2:252-253"
+    ],
+    [
+     "Ibn al-Mundhir, as quoted by Bank Negara Malaysia",
+     "The consensus he reports is on capital where each partner contributes, and \"commingles the two capitals to form a single property which is indistinguishable\"",
+     "BNM App. 1, para. 7"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "**If the capital is not mixed**, what each partner buys with his own money stays his; jointly bought goods are owned by the partners' shares",
+     "*al-Muhalla* 6:415"
+    ],
+    [
+     "Usmani, for the Hanafi school",
+     "The Hanafi school does not require the partners' money to be mixed; **once the pool exists, all its profit belongs to all partners**, whosever money was used in a given deal",
+     "Usmani, pp. 49-50, citing *Bada'i'* 6:54, 60 (4.6)"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "\"The capital either in cash or in-kind shall form a common and undivided interest of all partners\"",
+     "BNM 15.13"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.2.4 Must the amounts be known, or equal?",
+   "id": "crs-24"
+  },
+  {
+   "t": "p",
+   "x": "**Known amounts.** AAOIFI requires each partner's share of the capital to be determined (AAOIFI SS 12, 3/1/2/3), and Bank Negara Malaysia requires it at the signing of the contract (BNM 15.8). The classical sources differ:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "The Hanafis, as stated by al-Kasani",
+     "**Not a condition** at the time of the contract; ignorance of the amount matters only if it leads to a dispute",
+     "*Bada'i'* 6:63; Usmani, pp. 50-51"
+    ],
+    [
+     "Al-Shafi'i, as reported by al-Kasani and by Usmani",
+     "**A condition**",
+     "*Bada'i'* 6:63; Usmani, p. 50"
+    ],
+    [
+     "The Shafi'i commentary on the *Minhaj*",
+     "**Not required at the time of the contract**, \"in the sounder view\" (*al-asahh*) of the school. The word *al-asahh* marks that another view within the school does require it",
+     "*Mukhtasar Tuhfat* 2:253"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** the Hanafi al-Kasani reports al-Shafi'i as requiring known amounts, while a modern Shafi'i text gives \"not required at the time of the contract\" as the school's sounder view, which implies a second Shafi'i view that does require it. A learner should check a school's own books before relying on another school's report of it."
+  },
+  {
+   "t": "p",
+   "x": "**Equal amounts.** Not required for an ordinary partnership: \"it is not a condition that the two amounts be equal\" (*Mukhtasar Tuhfat* 2:253). Abu Hanifah requires equal capital for the special kind called *mufawadah* (*al-Mughni* 5:22; see 3.10)."
+  },
+  {
+   "t": "p",
+   "x": "**Different currencies.** AAOIFI: capital paid in a different currency is valued at the current exchange rate on the day of payment (AAOIFI SS 12, 3/1/2/2)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.3 The profit",
+   "id": "crs-25"
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.3.1 What all the sources agree on",
+   "id": "crs-26"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**The ratio is set at the start.** \"If no such proportion has been determined, the contract is not valid in Shari'ah\" (Usmani, p. 23). AAOIFI: the profit percentage must be fixed when the contract is made, though the partners may agree to change it on the date of distribution, and a partner may give up part of his share then (AAOIFI SS 12, 3/1/5/2).",
+    "**A share of actual profit, not a fixed sum or a percentage of capital.** Usmani's examples of invalid terms: \"A shall be given Rs 10,000/- per month\", or \"A will get 15% of his investment\" (Usmani, p. 23). AAOIFI requires \"an undivided percentage of profit, not a sum of money or a percentage of the capital\" (AAOIFI SS 12, 3/1/5/1). Bank Negara Malaysia bans \"a pre-determined fixed amount of profit to any partners which may deprive the profit share of the other partners\" (BNM 16.5). The International Islamic Fiqh Academy says the same for diminishing musharakah (IIFA Resolution 136).",
+    "**The classical basis.** Ibn Qudamah: a partner may not be given an extra fixed number of dirhams. He quotes Ibn al-Mundhir: everyone whose view he knew \"agrees on the invalidity of qirad [mudarabah] if one or both of them stipulates for himself a known number of dirhams\", and names Malik, al-Awza'i, al-Shafi'i, Abu Thawr and \"the people of opinion\" (the Hanafis) (*al-Mughni* 5:28).",
+    "**Drawings on account.** A partner may draw a fixed sum during the term only as an advance, to be set against his real share at the end and repaid if the profit falls short (Usmani, p. 23). AAOIFI allows such payments on account (AAOIFI SS 12, 3/1/5/11). Bank Negara Malaysia allows an expected return as a percentage of capital only \"in the form of indicative profit rate\" (BNM 16.6).",
+    "**No profit until the capital is intact.** Costs and expenses come first, because \"there is no profit unless the capital is maintained intact\" (AAOIFI SS 12, 3/1/5/6 and App. B)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.3.2 Must the profit ratio follow the capital ratio?",
+   "id": "crs-27"
+  },
+  {
+   "t": "p",
+   "x": "This is a central disagreement in the law of partnership."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Reason given",
+    "Source"
+   ],
+   "r": [
+    [
+     "Al-Khiraqi's text, with Ibn Qudamah (Hanbali)",
+     "**Any agreed ratio.** \"The profit is as they agree\", in every kind of partnership",
+     "Work also earns profit, and one partner may be \"more skilled in trade and stronger at work\"",
+     "*al-Mughni* 5:23"
+    ],
+    [
+     "Imam Abu Hanifah, as reported by Ibn Qudamah",
+     "**Any agreed ratio**, as the Hanbalis: \"This is also the view of Abu Hanifah\"",
+     "(as above)",
+     "*al-Mughni* 5:23"
+    ],
+    [
+     "Imam Ahmad, as reported by Usmani",
+     "**May differ** from the capital ratio, if the partners freely agree",
+     "(not given)",
+     "Usmani, p. 24, citing *al-Mughni* 5:140"
+    ],
+    [
+     "Al-Kasani, for the Hanafis",
+     "**Equal or unequal.** Where both partners work, the profit is as stipulated, \"on the view of our three companions\" (usually taken to mean Abu Hanifah, Abu Yusuf and Muhammad al-Shaybani, though this is not certain). Profit is earned \"either by property, or by work, or by bearing liability\" (*daman*). If the contract puts the work on one partner only, a larger share for him is valid; a larger share for the partner who does not work is invalid, because nothing (no capital, work or liability) stands behind the extra",
+     "Profit can be earned by work, as in mudarabah, and by liability, citing the hadith \"entitlement to gain goes with liability for loss\" (*al-kharaj bi-l-daman*)",
+     "*Bada'i'* 6:62-63"
+    ],
+    [
+     "Imam Abu Hanifah, as summarised by Usmani",
+     "**A middle view.** Unequal shares are allowed \"in normal conditions\", but a partner who has expressly agreed never to work (a sleeping partner) may not take a larger share of profit than his share of capital",
+     "(not given)",
+     "Usmani, p. 24, citing *Bada'i'* in his note as 6:162-63"
+    ],
+    [
+     "Zufar (Hanafi)",
+     "**No.** A partner may not be given more than the profit of his own capital. Al-Kasani adds: \"al-Shafi'i took this view\"",
+     "Profit is the growth of property, so it follows the property",
+     "*Bada'i'* 6:62"
+    ],
+    [
+     "Imam Malik, in the *Mudawwana* (Maliki)",
+     "**Profit follows capital.** On two partners who bring 100 and 200 and agree to share profit, loss and work equally, Malik said: \"Loss is according to their capitals, and profit is according to their capitals\", and the partner with 100 is given the wage of someone like him for the help he gave the other partner with the extra 100. The *Mudawwana* then explains the steps. (1) The extra is not treated as a loan: the partner with 200 gave it \"so that he would be his partner\". (2) If it were a loan, the partner with 100 would have the profit of the fifty he was given and be liable for it, and the partnership would be invalid, \"because it is a partnership and a loan\" (*sharikah wa-salaf*). (3) Malik is then reported: \"I think he lent him the fifty on condition that he helped him with the work\", so \"I think it is rescinded\", with no liability on him for the fifty; the liability for the fifty, its profit and its loss stay with the partner with 200, who owes the other his wage for his help",
+     "The extra capital is not a loan; a partnership joined to a loan would be invalid",
+     "*al-Mudawwana* 3:605"
+    ],
+    [
+     "Malik and al-Shafi'i, as reported by Ibn Qudamah",
+     "**Profit follows capital.** For them it is a condition of validity that \"profit and loss are according to the two capitals\"",
+     "Profit in this partnership follows the capital (as shown by the contract being valid when the profit split is left unstated), so it may not be changed by a stipulation, just as loss may not",
+     "*al-Mughni* 5:23"
+    ],
+    [
+     "Malik and al-Shafi'i, as reported by Usmani",
+     "**Profit follows capital**: \"each partner gets the profit exactly in the proportion of his investment\"",
+     "(not given)",
+     "Usmani, p. 24"
+    ],
+    [
+     "Al-Nawawi's *Minhaj* (Shafi'i), with its commentary",
+     "**Profit follows capital**: \"profit and loss are according to the two capitals\", by value, whether the work is equal or not. If the partners stipulate otherwise, \"the contract is invalid\", and each may claim a wage for his work from the other",
+     "A different split goes against the nature of partnership",
+     "*Mukhtasar Tuhfat* 2:254"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "**Profit follows the shares.** Any stipulation otherwise \"is all void and rejected\"",
+     "It is \"a condition not in the Book of God\", so it is void",
+     "*al-Muhalla* 6:415"
+    ],
+    [
+     "AAOIFI",
+     "**Proportional in principle; may differ.** The extra may not go to a sleeping partner. A partner who has not stipulated that he is a sleeping partner may take an extra share \"even if he did not work\". AAOIFI says this is \"the opinion of the Hanafi and Hanbali schools\"",
+     "A share of profit is earned by funds, work or risk borne",
+     "AAOIFI SS 12, 3/1/5/3 and App. B"
+    ],
+    [
+     "Bank Negara Malaysia, 2015",
+     "**Proportional, unless agreed otherwise at the start.** \"The profit sharing ratio (PSR) in the musyarakah shall be proportionate to the capital contribution of each partner unless mutually agreed otherwise at the time of entering into the musyarakah contract\"",
+     "(not given)",
+     "BNM 16.2"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher.** The sources do not report Abu Hanifah in exactly the same way. Ibn Qudamah puts him with the Hanbalis; al-Kasani gives the Hanafi detail about a partner who does not work; Usmani calls it a middle view. Read together, the question that decides the case is whether the contract shuts the partner out of the work. AAOIFI's wording turns on the same point. Malik and the Shafi'i texts stand apart: for them, profit follows capital whatever is agreed."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.3.3 Other profit clauses",
+   "id": "crs-28"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Changing ratios.** Partners may amend the terms, including the profit ratio, at any time; loss still follows capital (AAOIFI SS 12, 3/1/1/4). They may set different ratios for different periods or levels of profit, provided no partner is likely to be shut out of the profit (AAOIFI SS 12, 3/1/5/5). Bank Negara Malaysia allows revision by mutual agreement or by an agreed benchmark, and ratios that vary by period, amount or early withdrawal if agreed at signing (BNM 16.3, 16.7).",
+    "**Co-owned animals.** Al-Kasani reports consensus that where animals are owned jointly, one owner may not stipulate for himself more of the offspring or milk than his share (*Bada'i'* 6:62).",
+    "**Ceilings and thresholds.** Profit above a set ceiling may go to one partner (AAOIFI SS 12, 3/1/5/8). Bank Negara Malaysia allows a ratio based on a profit threshold: profit above it may be \"(i) distributed based on a different PSR agreed by the partners; or (ii) paid to any of the partners as agreed\" (BNM 16.4).",
+    "**Partnership of *wujuh*.** Ibn Qudamah reports two Hanbali readings: al-Khiraqi's general wording means the profit is as agreed; \"al-Qadi\" (not named further by Ibn Qudamah) says it follows each partner's share in what they buy, since that profit is earned by liability (*al-Mughni* 5:23). AAOIFI lets the partners fix both a profit percentage and a liability percentage, which may differ (AAOIFI SS 12, 3/2/1)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.4 Loss",
+   "id": "crs-29"
+  },
+  {
+   "t": "p",
+   "x": "**Loss is borne in proportion to capital.** Each holder below gives this rule:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Source",
+    "Statement",
+    "Reference"
+   ],
+   "r": [
+    [
+     "Al-Khiraqi's text, with Ibn Qudamah (Hanbali)",
+     "\"Loss is according to the capital\": with equal capital, in halves; with thirds, in thirds. \"We know of no disagreement on this among the people of knowledge\"; it is the view of Abu Hanifah, al-Shafi'i and others. The reason: loss is a reduction of capital, and capital belongs to its owner",
+     "*al-Mughni* 5:27-28"
+    ],
+    [
+     "Al-Kasani (Hanafi)",
+     "\"Loss is according to the two capitals\"",
+     "*Bada'i'* 6:62"
+    ],
+    [
+     "Imam Malik",
+     "\"Loss is according to their capitals\"",
+     "*al-Mudawwana* 3:605"
+    ],
+    [
+     "Al-Nawawi's *Minhaj* (Shafi'i)",
+     "\"Profit and loss are according to the two capitals\"",
+     "*Mukhtasar Tuhfat* 2:254"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "A stipulation of unequal loss is void",
+     "*al-Muhalla* 6:415"
+    ],
+    [
+     "Ali ibn Abi Talib, as quoted by AAOIFI",
+     "\"Loss must be borne in proportion to the contribution in the capital\"",
+     "AAOIFI SS 12, App. B, citing the *Musannaf* of Ibn Abi Shaybah 4:268"
+    ],
+    [
+     "Usmani",
+     "\"All the Muslim jurists are unanimous\" on it, and the maxim: \"Profit is based on the agreement of the parties, but loss is always subject to the ratio of investment\"",
+     "Usmani, pp. 24-25, citing *al-Mughni* 5:147"
+    ],
+    [
+     "AAOIFI",
+     "Losses must match capital shares; a clause putting all or more of the loss on one partner is not allowed. But a partner may, \"without any prior condition\", choose to bear a loss when it happens",
+     "AAOIFI SS 12, 3/1/5/4"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "\"Any loss incurred by the musyarakah shall be borne by the partners proportionate to their capital contribution\"; a loss is defined as \"depletion from the value of capital\"",
+     "BNM 17.1 and note 5"
+    ],
+    [
+     "International Islamic Fiqh Academy",
+     "Each party bears his share of any loss \"commensurate to his share in the capital\"",
+     "IIFA Resolution 136"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Two exceptions in the details:**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Partnership of *wujuh*:** loss follows each partner's share in what was bought, whether or not the profit does (*al-Mughni* 5:28). AAOIFI: loss follows the agreed liability ratio (AAOIFI SS 12, 3/2).",
+    "**Fault:** a partner who causes a loss by misconduct, negligence or breach bears it himself (AAOIFI SS 12, 3/1/4/1; BNM 17.3; FAS 4, para. 15)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.5 Liability for the partnership's debts",
+   "id": "crs-30"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Usmani",
+     "**Normally unlimited.** If the debts exceed the assets, all partners bear the excess pro rata. If the partners agreed that no one would borrow, a partner who borrows anyway bears the excess alone",
+     "Usmani, pp. 31-32"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "**May be limited by agreement**: \"the partners may agree that the liability of the partnership is limited to the value of capital contributed\"",
+     "BNM 17.2"
+    ],
+    [
+     "AAOIFI, for modern companies",
+     "**May be limited to paid-up capital** \"if this is made public\", so that those who deal with the company know its position",
+     "AAOIFI SS 12, 4/1/2/9"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.6 Guarantees: can one partner make another's capital safe?",
+   "id": "crs-31"
+  },
+  {
+   "t": "p",
+   "x": "**Agreed in the standards:** no."
+  },
+  {
+   "t": "ul",
+   "i": [
+    "AAOIFI: \"It is not permitted to stipulate that a partner in a Sharikah contract guarantees the capital of another partner\" (AAOIFI SS 12, 3/1/4/1).",
+    "Bank Negara Malaysia: \"Partners in musyarakah shall not guarantee the capital and/or profit\" (BNM 18.1); \"The capital invested shall not be guaranteed by any of the partners and/or the managers\" (BNM 15.14); and any mechanism \"which will effectively cause a partner to guarantee the principal amount upfront is prohibited\" (BNM 27.36).",
+    "IFSB: \"A partner in mushārakah cannot guarantee the capital of another partner\" (IFSB-23, para. 393(c)(ii), in section 4.3.2.4)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**What is allowed instead:**"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Route",
+    "Conditions",
+    "Source"
+   ],
+   "r": [
+    [
+     "Security for fault",
+     "AAOIFI: a partner may require another to give a personal guarantee or a mortgage, to cover misconduct, negligence or breach only. BNM: each partner may be required to provide \"collateral under the terms that it shall only be liquidated in the event of a misconduct (ta`addi) or negligence (taqsir) or breach of specified terms\"",
+     "AAOIFI SS 12, 3/1/4/2; BNM 18.2(a)"
+    ],
+    [
+     "A third-party guarantee",
+     "AAOIFI: (I) the guarantor is legally and financially independent of the partnership; (II) the guarantee is given without payment and not linked to the partnership contract; (III) the guarantor does not own more than half of the guaranteed entity; (IV) the guaranteed entity does not own more than half of the guarantor. If the guarantor fails, the partner who benefits cannot claim that the partnership is void",
+     "AAOIFI SS 12, 3/1/4/3; App. B cites a resolution of the International Islamic Fiqh Academy for it"
+    ],
+    [
+     "A third-party guarantee (Malaysia)",
+     "In a separate contract; covering loss or depletion of capital; the guarantor independent and not a related party, meaning neither (i) a partner with majority ownership or control of the guarantor, nor (ii) a guarantor that owns or controls the venture",
+     "BNM 18.3"
+    ],
+    [
+     "A third-party undertaking (capital rules)",
+     "The undertaking should be free of charge, as *kafalah* or a promise to donate; a fee is not compliant unless it covers actual direct costs",
+     "IFSB-23, para. 206, note 97"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.7 Management, powers and pay",
+   "id": "crs-32"
+  },
+  {
+   "t": "p",
+   "x": "**Who manages.** \"The normal principle of musharakah is that every partner has a right to take part in its management.\" The partners may agree that only one works; then the others are sleeping partners, with the profit limit in 3.3.2. When all work, each is the agent of the others (Usmani, p. 28). AAOIFI and Bank Negara Malaysia allow management by one, some or all partners, or by a third party (AAOIFI SS 12, 3/1/3/2-3/1/3/3; BNM 14.1)."
+  },
+  {
+   "t": "p",
+   "x": "**A different view: Ibn Hazm.** Ibn Hazm does not allow the partners to stipulate \"that one of them works and not the other\"; such a stipulation \"is all void and rejected\", as \"a condition not in the Book of God\". A partner may work more than the other, or alone, as a volunteer without any stipulation. If he will not volunteer, he is owed only the usual wage for that work, whether there is profit or loss (*al-Muhalla* 6:415)."
+  },
+  {
+   "t": "p",
+   "x": "**What a partner may do.** AAOIFI lists the ordinary acts of trade each partner may do, starting with \"spot or deferred sales\", but not gifts or loans unless all partners agree; small short-term loans of the usual kind are allowed (AAOIFI SS 12, 3/1/3/1). The Shafi'i text adds limits: a partner may deal only where it does no harm. So he may not sell on credit (the commentary's reason: \"because of the uncertainty\"), or for a currency other than the local one, though the commentary gives as the sounder view that this is allowed where it brings benefit (*Mukhtasar Tuhfat* 2:253). Nor may he sell at a gross undervalue, travel with the goods, or send them with someone else to trade with, \"without his permission\"; in the commentary on that phrase, \"without his permission\" is called \"a restriction on all\", that is, on the whole list, which runs from selling on credit and in another currency (2:253) to sending the goods with someone else (2:254). A sale of any of these kinds is valid in his own share only; if he travels with the goods or sends them with someone else, he is liable (*Mukhtasar Tuhfat* 2:254). So on selling on credit the two texts differ: AAOIFI allows it as an ordinary act of a partner, while the Shafi'i text bars it without the other partner's permission."
+  },
+  {
+   "t": "p",
+   "x": "**Pay for a managing partner.**"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "AAOIFI, general rule",
+     "**No fixed pay** in the partnership contract for a partner who manages or gives other services such as accounting; he may instead be given a larger share of profit",
+     "AAOIFI SS 12, 3/1/3/4. AAOIFI's reason: fixed pay \"may lead to guaranteeing the capital of this partner, or to his not being exposed to risk of loss\" in proportion to his capital (App. B)"
+    ],
+    [
+     "AAOIFI, separate contract",
+     "**Allowed**: a partner may be appointed under a contract independent of the partnership, so he can be dismissed as manager without changing the partnership. \"In this case, the appointed partner may earn a specific remuneration\"",
+     "AAOIFI SS 12, 3/1/3/5"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "**Allowed** in addition to his profit share, \"provided that the appointment of the manager is executed in a separate contract\"",
+     "BNM 14.4"
+    ],
+    [
+     "Outside manager",
+     "A fixed fee, treated as an expense, plus a profit incentive. If he is given a percentage of profit from the start, he becomes a *mudarib* (the manager in a mudarabah)",
+     "AAOIFI SS 12, 3/1/3/3"
+    ],
+    [
+     "Manager under a separate contract (Malaysia)",
+     "A third-party manager is appointed under a separate contract (14.2); the appointment may be made by agency (*wakalah*), an employment contract (*ijarah al-ashkhas*) or mudarabah (14.3)",
+     "BNM 14.2-14.3"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.8 Ending the partnership, leaving it, and keeping it going",
+   "id": "crs-33"
+  },
+  {
+   "t": "p",
+   "x": "**How it ends.**"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Event",
+    "Rule",
+    "Source"
+   ],
+   "r": [
+    [
+     "A partner gives notice",
+     "Each partner may end it: \"each may cancel it whenever he wishes\" (Shafi'i). AAOIFI requires due notice and says the remaining partners' partnership continues",
+     "*Mukhtasar Tuhfat* 2:254; Usmani, p. 28; AAOIFI SS 12, 3/1/6/1"
+    ],
+    [
+     "A partner dies",
+     "The contract ends for him (Shafi'i text; Usmani). BNM: the contract \"is dissolved\" on the \"demise or dissolution of partners\" (24.1(c)), but the remaining partners may agree to continue (24.2). Usmani: his heirs may take out his share or continue",
+     "*Mukhtasar Tuhfat* 2:254; Usmani, p. 29; BNM 24.1-24.2"
+    ],
+    [
+     "A partner becomes insane or otherwise incapable",
+     "The partnership ends; the Shafi'i text adds fainting. BNM: dissolved on \"loss of legal capacity\" (24.1(d)), though the remaining partners may agree to continue (24.2)",
+     "*Mukhtasar Tuhfat* 2:254; Usmani, p. 29; BNM 24.1(d), 24.2"
+    ],
+    [
+     "Other events (Malaysia)",
+     "Mutual agreement, expiry, one partner acquiring all the shares, or invalidity",
+     "BNM 24.1"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Dividing the assets.** Cash is divided pro rata. For other assets, if one partner wants them sold and the other wants them divided, division wins, because after the end each is a co-owner and may ask for his part; things that cannot be divided, such as machinery, are sold (Usmani, p. 28, citing *al-Mughni* 5:133-34). On liquidation at expiry, AAOIFI sets the order: liquidation expenses, then liabilities, then the rest by capital shares (AAOIFI SS 12, 3/1/6/3; also BNM 24.5). AAOIFI also allows a *constructive liquidation*: the assets are valued instead of sold, and treated as the capital of a new partnership (AAOIFI SS 12, 3/1/6/3)."
+  },
+  {
+   "t": "p",
+   "x": "**One partner leaves, the business goes on.** The others may buy his share; the price is agreed, and if they cannot agree, the leaving partner may insist on liquidation or division (Usmani, p. 29, citing *al-Fatawa al-Hindiyyah* 2:335-36). AAOIFI allows a partner to give a binding promise to buy the partnership's assets \"as per their market value or as per agreement at the date of buying\", but not \"on the basis of face value\" (AAOIFI SS 12, 3/1/6/2). Bank Negara Malaysia allows a promise (*wa'd*) to buy or sell shares on a specified event (BNM 19.1)."
+  },
+  {
+   "t": "p",
+   "x": "**Can the partners agree, at the start, that one partner cannot force a close?**"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "\"Most of the traditional books of Islamic Fiqh\"",
+     "Silent, in Usmani's reading",
+     "Usmani, p. 29"
+    ],
+    [
+     "\"Some Hanbali jurists\"",
+     "Expressly allow it",
+     "Usmani, p. 30, citing al-Mardawi, *al-Insaf* 5:423"
+    ],
+    [
+     "Usmani's own view",
+     "**Allowed.** Modern business needs continuity, and one partner closing a young project could ruin the others. He cites the hadith that Muslims are bound by their conditions, \"except a condition which allows what is prohibited or prohibits what is lawful\"",
+     "Usmani, pp. 29-30"
+    ],
+    [
+     "AAOIFI",
+     "**Allowed**: partners may give a binding promise to continue the partnership for a period",
+     "AAOIFI SS 12, 3/1/6/1"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**A Ja'fari exit settlement.** Two partners made a profit; the partnership was owed debts and owed debts itself. One said to the other, in this manual's translation: \"Give me the capital; the profit is yours, and what is lost (*al-tawa*) is on you.\" Imam al-Sadiq replied that there is no harm in it \"if they stipulated it; but if a condition goes against the Book of God, it is referred back to the Book of God\" (al-Kafi 5, no. 971). The English translation used here renders the bargain differently (\"give him the capital in exchange for the profit and payment of loan\"), so a teacher using that edition should read the Arabic with it."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.9 If the partnership is invalid",
+   "id": "crs-34"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "Result",
+    "Source"
+   ],
+   "r": [
+    [
+     "Imam Malik, in the *Mudawwana*, on the 100 and 200 case",
+     "Profit and loss follow capital; the partner with 100 gets the wage of someone like him for his help with the other partner's extra capital. If the extra fifty was in fact lent to him on condition that he helped with the work, Malik holds the contract rescinded; the fifty, with its profit and loss, stays with the partner with 200",
+     "*al-Mudawwana* 3:605"
+    ],
+    [
+     "Abu Yusuf and Muhammad (Hanafi), as reported by al-Kasani",
+     "In an invalid partnership to gather free goods, what one partner gathers is his; a partner who only helped gets the wage of someone like him. Abu Yusuf: not more than the share agreed for him (a half, a third and so on). Muhammad: the full usual wage, \"however much it comes to\"",
+     "*Bada'i'* 6:63"
+    ],
+    [
+     "Al-Nawawi's *Minhaj* (Shafi'i), with its commentary",
+     "Each partner may claim a wage for his work from the other's property; the dealings stand, and profit follows capital. Exception: where the capitals are equal, the work unequal, and the smaller share was stipulated for the partner who works more, he cannot claim the excess if he knew the contract was invalid and that nothing is due under it",
+     "*Mukhtasar Tuhfat* 2:254"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "The contract is void and binds no one; in a partnership of work, each keeps what he earned",
+     "*al-Muhalla* 6:412, 6:415"
+    ],
+    [
+     "AAOIFI",
+     "A clause giving a partner a fixed profit or a percentage of capital is void; profit is then shared by capital shares, unless the partners amend the clause before profit appears",
+     "AAOIFI SS 12, 3/1/5/7"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.10 The other kinds of partnership",
+   "id": "crs-35"
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.10.1 *Mufawadah*: the partnership of full equality",
+   "id": "crs-36"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Ibn Qudamah (Hanbali)",
+     "**Two kinds.** (1) A partnership that combines all the kinds (*'inan*, *wujuh*, *abdan*): **valid**. (2) A partnership in which the partners share everything each gains, even an inheritance, a find of buried treasure or lost property picked up, and each bears the other's liabilities, such as for injury, wrongful taking, damage or surety: **invalid**",
+     "*al-Mughni* 5:22"
+    ],
+    [
+     "Al-Shafi'i",
+     "**Invalid**",
+     "*al-Mughni* 5:22; al-Kasani reports his reason: it is a surety \"for something unknown\" (*Bada'i'* 6:58); the Shafi'i text calls it void for its many kinds of uncertainty (*Mukhtasar Tuhfat* 2:251)"
+    ],
+    [
+     "Al-Thawri, al-Awza'i and Abu Hanifah",
+     "**Allowed**",
+     "*al-Mughni* 5:22"
+    ],
+    [
+     "Imam Malik",
+     "Reported both ways. Ibn Qudamah: allowing it \"is reported from Malik\". Al-Kasani: Malik said \"I do not know mufawadah\", and al-Kasani gives two possible meanings of that remark",
+     "*al-Mughni* 5:22; *Bada'i'* 6:58"
+    ],
+    [
+     "Abu Hanifah's conditions, as reported by Ibn Qudamah",
+     "Both partners free (not slaves) and Muslim; equal capital; and all their money of a kind that can be partnership capital",
+     "*al-Mughni* 5:22"
+    ],
+    [
+     "The Hanafis' evidence, in al-Kasani",
+     "The hadith \"Make mufawadah, for it brings greater blessing\"; and mufawadah combines agency and surety, each valid on its own",
+     "*Bada'i'* 6:58"
+    ],
+    [
+     "Ibn Qudamah's reply",
+     "On the hadith \"If you make mufawadah, do it well\": \"we do not know the report, and the authors of the Sunan did not narrate it\"; and even so, nothing in it shows it means this contract, since it may mean mufawadah in discussion (one version adds \"and do not dispute\"). He adds that the second kind is not valid between non-Muslims, or between a non-Muslim and a Muslim, has no model in the law, and is full of uncertainty (*gharar*)",
+     "*al-Mughni* 5:22"
+    ],
+    [
+     "AAOIFI",
+     "**Not covered**, because its practical use \"is rare\"; for it, \"reference should be made to Fiqh books\"",
+     "AAOIFI SS 12, clause 1"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.10.2 *Abdan* or *a'mal*: the partnership in work",
+   "id": "crs-37"
+  },
+  {
+   "t": "p",
+   "x": "Ibn Qudamah's definition: two or more people share in \"what they earn with their hands\" (*al-Mughni* 5:4)."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Imam Ahmad (narration of Abu Talib)",
+     "**Allowed**, including in gathering free natural goods such as firewood, grass and minerals; \"there is no harm\" in people sharing with their bodies when they have no money, \"like hunters, carriers and porters\". Ibn Qudamah cites a report that the Prophet \"made Ammar, Sa'd and Ibn Mas'ud partners\", and that Sa'd brought two captives while the other two brought nothing. Ibn Hazm's version differs: Ibn Mas'ud himself says \"I, Ammar ibn Yasir and Sa'd ibn Abi Waqqas became partners in what we would take on the day of Badr\", with no mention of the Prophet making them partners. Ahmad explained the report as partners sharing the gear taken from enemies they kill. Ibn Qudamah then writes \"Malik holds this view\", and goes straight on to Abu Hanifah's view that the partnership is valid in crafts but not in gathering free goods; the text does not say whether \"this view\" is the ruling on partnership in work or Ahmad's explanation of the spoils",
+     "*al-Mughni* 5:4; *al-Muhalla* 6:414"
+    ],
+    [
+     "Imam Abu Hanifah",
+     "**Allowed in crafts**, whether the same or different, in one place or two, and an absent or sick partner still shares; **not** in gathering free goods, such as gathering grass and taking spoils (Ibn Qudamah's examples) or hunting and gathering wood (Ibn Hazm's), because the agency that partnership implies is not valid there",
+     "*al-Mughni* 5:4; *al-Muhalla* 6:413"
+    ],
+    [
+     "Imam Malik, as reported by Ibn Hazm",
+     "**Allowed** in gathering wood or ambergris in one place; in hunting with dogs or falcons, each partner having his own, working together on the same game; in teaching in one place (the text adds: \"if they are in two sittings, there is no harm in it\"); and in one craft in one shop; **not** for carriers or porters on animals, or for two different crafts such as a smith and a fuller",
+     "*al-Muhalla* 6:413"
+    ],
+    [
+     "Al-Shafi'i",
+     "**Not allowed**: \"the partnerships of work and of *wujuh* are not allowed at all\"",
+     "*Bada'i'* 6:57; the Shafi'i text calls it void for uncertainty and ignorance (*Mukhtasar Tuhfat* 2:251)"
+    ],
+    [
+     "Al-Layth, Abu Sulayman (usually taken to be Dawud al-Zahiri, though this is not certain), al-Shafi'i and Abu Thawr, as reported by Ibn Hazm",
+     "**Not allowed**: Ibn Hazm names them as holding his view",
+     "*al-Muhalla* 6:414"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "**Void** in all cases. He cites \"no soul earns except against itself\" (Qur'an 6:164) and \"God does not burden a soul beyond its capacity; it has what it earned and against it what it earned\" (Qur'an 2:286, this manual's translation), and calls the Hanafi and Maliki distinctions baseless. He gives four answers to the report on Ammar, Sa'd and Ibn Mas'ud: its chain is broken, because its narrator Abu Ubaydah, the son of Ibn Mas'ud, \"recalls nothing from his father\"; even if sound, it would count against his opponents, who also hold such a partnership in spoils invalid; the partnership was never carried out, since God revealed \"Say: the spoils are for God and the Messenger\" (Qur'an 8:1, this manual's translation); and the Hanafis do not allow partnership in hunting, nor the Malikis work in two places, so the report does not fit their own views",
+     "*al-Muhalla* 6:412-414"
+    ],
+    [
+     "Usmani",
+     "Describes it (tailors pooling fees); musharakah \"sometimes\" includes it",
+     "Usmani, p. 20"
+    ],
+    [
+     "AAOIFI",
+     "**Allowed** as a service partnership: no money capital, profit by an agreed ratio",
+     "AAOIFI SS 12, 3/3"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "3.10.3 *Wujuh*: the partnership on credit and standing",
+   "id": "crs-38"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "The Hanafis",
+     "**Valid**",
+     "*Bada'i'* 6:57"
+    ],
+    [
+     "Ibn Qudamah (Hanbali)",
+     "**One of the five kinds**; profit and loss rules as in 3.3.3 and 3.4",
+     "*al-Mughni* 5:3, 5:23, 5:28"
+    ],
+    [
+     "Al-Shafi'i",
+     "**Not allowed** at all. Al-Kasani gives his reasoning: partnership means mixing, which happens only with money, and here there is no capital to grow",
+     "*Bada'i'* 6:57-58; *Mukhtasar Tuhfat* 2:251"
+    ],
+    [
+     "AAOIFI",
+     "**Allowed**, as a partnership \"to buy assets on credit on the basis of their reputation\"; it \"has no monetary capital\"",
+     "AAOIFI SS 12, 3/2/1-3/2/2"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.11 Summary: where the sources differ",
+   "id": "crs-39"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Question",
+    "Main positions (holders)",
+    "See"
+   ],
+   "r": [
+    [
+     "Partnership with non-Muslims",
+     "Jews and Christians: allowed if the Muslim deals (Ahmad, al-Hasan, al-Thawri, Ibn Qudamah); disliked (al-Shafi'i; Ibn Abbas, who also forbids it, with Jews, Christians and Magians, in al-Athram's report); not proper, or disliked unless the Muslim is present (Ja'fari reports from al-Sadiq and Ali); allowed with guarantees (AAOIFI). Magians: disliked (Ahmad); better avoided but valid if made (Ibn Qudamah); disliked unless the deal is hand in hand in the Muslim's presence (the Ja'fari report from Ali, which covers Jews, Christians and Magians)",
+     "3.1"
+    ],
+    [
+     "Goods as capital",
+     "No (al-Kasani for the general body of scholars; Ahmad in the main narration; Abu Hanifah and Ahmad per Usmani); disliked (Ibn Sirin, Yahya ibn Abi Kathir, al-Thawri, al-Shafi'i, Ishaq, Abu Thawr, the Hanafis, per Ibn Qudamah); yes at value (Malik in the *Mudawwana*, and per al-Kasani, Ibn Qudamah and Usmani; Ibn Abi Layla; Ahmad's second narration, with Abu Bakr and Abu al-Khattab; some Hanbalis per Usmani; Tawus, al-Awza'i and Hammad in mudarabah; AAOIFI; BNM; Usmani's own view, following Malik); fungible goods only (al-Shafi'i in one of two views, per Ibn Qudamah; the Shafi'i *Minhaj*; Abu Hanifah with mixing, per Usmani); fungible goods of one kind after mixing (valid for Muhammad; only joint ownership for Abu Yusuf, per al-Kasani)",
+     "3.2.1"
+    ],
+    [
+     "Must the capital be mixed?",
+     "No (al-Kasani's \"three companions\", usually taken to be Abu Hanifah, Abu Yusuf and Muhammad, though this is not certain; the Hanafi school, per Usmani); yes (Zufar, and al-Shafi'i with him, per al-Kasani; the Shafi'i *Minhaj*, where the sums cannot be told apart); a condition in *mufawadah* only (a narration from Zufar). Ibn Hazm: unmixed money stays each partner's own",
+     "3.2.3"
+    ],
+    [
+     "Copper coins",
+     "Invalid (Abu Hanifah and Abu Yusuf, well-known narration); valid (Muhammad); valid for partnership, not mudarabah (a narration from Abu Yusuf)",
+     "3.2.1"
+    ],
+    [
+     "Must amounts be known?",
+     "No (Hanafis; the Shafi'i school's sounder view per *Mukhtasar Tuhfat*); yes (al-Shafi'i, as reported by al-Kasani and Usmani; the other view within the Shafi'i school, which the *Mukhtasar*'s word \"sounder\" implies)",
+     "3.2.4"
+    ],
+    [
+     "Profit ratio different from capital ratio",
+     "Allowed (Hanbalis; Abu Hanifah per Ibn Qudamah; Ahmad per Usmani); allowed except extra to a non-working partner (al-Kasani for the Hanafis; Usmani's reading of Abu Hanifah; AAOIFI); proportional unless agreed at the start (BNM); not allowed (Zufar; Malik; al-Shafi'i and his school; Ibn Hazm)",
+     "3.3.2"
+    ],
+    [
+     "Profit in *wujuh*",
+     "As agreed (al-Khiraqi's wording); by ownership share (al-Qadi)",
+     "3.3.3"
+    ],
+    [
+     "Liability for debts",
+     "Unlimited (Usmani); may be limited by agreement (BNM) or for a public company (AAOIFI)",
+     "3.5"
+    ],
+    [
+     "Conditions for a third-party guarantee of a partner's capital",
+     "Guarantor legally and financially independent; given without payment and not linked to the partnership contract; neither side owns more than half of the other (AAOIFI SS 12, 3/1/4/3); in a separate contract, covering loss or depletion of capital, guarantor not a related party by majority ownership or control, with no fee condition stated (BNM 18.3); an undertaking free of charge, a fee being compliant only if it covers actual direct costs (IFSB-23, para. 206, note 97)",
+     "3.6"
+    ],
+    [
+     "A clause that only one partner works",
+     "Allowed, the other then being a sleeping partner (Usmani; AAOIFI; BNM); void, though a partner may volunteer (Ibn Hazm)",
+     "3.7"
+    ],
+    [
+     "Selling on credit",
+     "An ordinary power of each partner (AAOIFI 3/1/3/1); not without the other partner's permission (the Shafi'i text, *Mukhtasar Tuhfat* 2:253-254)",
+     "3.7"
+    ],
+    [
+     "Pay for the managing partner",
+     "Not in the partnership contract (AAOIFI 3/1/3/4); allowed under a separate contract (AAOIFI 3/1/3/5; BNM 14.4)",
+     "3.7"
+    ],
+    [
+     "A clause that no partner can force a close",
+     "Silent (most classical books, per Usmani); allowed (some Hanbalis; Usmani; AAOIFI)",
+     "3.8"
+    ],
+    [
+     "Result of an invalid partnership",
+     "Profit by capital, with a wage for the extra work (Malik; the Shafi'i text, with an exception); the helper's wage capped at his agreed share (Abu Yusuf) or not capped (Muhammad); void, each keeps his own earnings (Ibn Hazm); where the extra fifty was lent on condition of help with the work, the contract rescinded and the fifty, with its profit and loss, left with its owner (Malik); a fixed-profit clause void, profit then by capital shares unless the clause is amended before profit appears (AAOIFI 3/1/5/7)",
+     "3.9"
+    ],
+    [
+     "*Mufawadah*",
+     "Valid (al-Thawri, al-Awza'i, Abu Hanifah; reported from Malik); the all-inclusive kind invalid (Ibn Qudamah; al-Shafi'i); \"I do not know it\" (Malik, per al-Kasani); not covered (AAOIFI)",
+     "3.10.1"
+    ],
+    [
+     "Partnership in work",
+     "Allowed, including gathering free goods (Ahmad); \"Malik holds this view\" (per Ibn Qudamah, see 3.10.2); in crafts only (Abu Hanifah); with conditions (Malik, per Ibn Hazm); not allowed (al-Shafi'i; Ibn Hazm, with al-Layth, Abu Sulayman and Abu Thawr); allowed (AAOIFI)",
+     "3.10.2"
+    ],
+    [
+     "*Wujuh*",
+     "Valid (Hanafis; Hanbalis; AAOIFI); not allowed (al-Shafi'i)",
+     "3.10.3"
+    ],
+    [
+     "Meaning of *khulata'* in Qur'an 38:24",
+     "Partners (al-Tabari, Ibn Qudamah, *Ma'arif al-Qur'an*, AAOIFI, BNM; partners only: Tawus and Ata'); partners and brothers (*Tanwir al-Miqbas*); owners of herds kept together, \"partners\" being far-fetched (al-Qurtubi, reporting most scholars)",
+     "2.3.1"
+    ],
+    [
+     "Buy-out price in diminishing musharakah",
+     "At market value or a price agreed at the time of each purchase (AAOIFI; Fiqh Academy); at market value or as agreed at the date of contracting (IFSB, para. 393(c)(iii)); at fair value at the date of transfer, or a price agreed at the start (IFSB, para. 206(a)); for an asset, at market value, fair value or any price agreed by the partners (BNM 22.5), and in asset financing fixed at the start on the purchase price (BNM 32.3); for a venture, at market value, fair value or a price agreed at the time of purchase, whether gradual or accelerated (BNM 23.2, 23.4); for a house, better at market value but a price fixed in the promise also allowed, and for a business not fixed in the promise to purchase, by valuation at each purchase or a second option he allows but calls not feasible (Usmani). Not at original, face or nominal value (AAOIFI; Fiqh Academy; IFSB); no buy-out of a venture that results in a guarantee of capital (BNM 23.3)",
+     "4.8.4"
+    ],
+    [
+     "Protecting the capital of musharakah sukuk holders",
+     "No promise by the issuer to buy back at nominal value, though he may promise to buy at market value; no compensation up to nominal value except for torts and negligence; a guarantee from an independent third party, free of charge; security from the issuer for its own wrongful acts or negligence (AAOIFI SS 17); no buy-back at nominal value by the mudarib, partner or agent, and the manager's guarantee of capital on negligence, mala fides or non-compliance with stated conditions (the AAOIFI 2008 statement, as quoted by Coats and Motani); no advance buy-back at nominal or par value, purchase at net asset, market or fair value or a price agreed at the time, and the manager guarantees capital at nominal value on negligence or misconduct (IFSB); a third party, a company with common shareholders or an associate company (as the accounting standards define \"associate\") may guarantee capital and profit, with or without a fee, while the issuer's parent or subsidiary may not guarantee capital and profit but may guarantee amounts due on dissolution and compensation, fees and expenses; a conventional guarantee where an Islamic one cannot be obtained (the Securities Commission Malaysia's Guidelines, \"SC Guidelines\"); purchase undertakings allowed, exercise price by agreed formula or at the sale (the Securities Commission's Shariah Advisory Council, \"SC SAC\")",
+     "4.10"
+    ],
+    [
+     "Grades of the two main hadith",
+     "See the table in 2.3.2",
+     "2.3.2"
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 4. Musharakah in practice",
+   "id": "crs-40"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.1 Why it is called an ideal tool",
+   "id": "crs-41"
+  },
+  {
+   "t": "p",
+   "x": "Usmani gives an example of what goes wrong with interest. Owners put in 10% of a project's money; the other 90% comes from a bank lending its depositors' money. If the project does very well, the depositors get only a small fixed interest, and almost all the profit goes to the owners. If it fails, most of the loss falls on the bank and its depositors. Musharakah would pass a fair share of the real profit to the depositors through the bank (Usmani, pp. 17-18)."
+  },
+  {
+   "t": "p",
+   "x": "Usmani also writes that other Islamic tools, such as *murabahah* (a sale at cost plus an agreed profit) and leasing, \"are not ideal modes of financing\" and should be used only where musharakah and mudarabah cannot work (Usmani, pp. 12-13). Islamic financing, he adds, is always tied to real assets: swapping money for more money of the same currency is riba, so profit must come from something with real use (Usmani, p. 12)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.2 The four principles for bank financing",
+   "id": "crs-42"
+  },
+  {
+   "t": "p",
+   "x": "The classical books mostly picture a venture that starts, trades and is wound up. Modern businesses run on while partners come and go. Usmani's point is that the details may change as long as four principles stay (Usmani, pp. 37-38):"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "**Financing is not lending.** It is joining the business and owning part of its assets in line with the money put in.",
+    "**The financier shares in loss** up to the amount he financed.",
+    "**Profit ratios are agreed freely** and may differ from capital shares, but a partner excluded from all work may not take more than his capital share.",
+    "**Loss is always shared exactly by capital.**"
+   ]
+  },
+  {
+   "t": "p",
+   "x": "Principle 3 matches the rule AAOIFI attributes to the Hanafi and Hanbali schools (3.3.2). The Maliki and Shafi'i texts quoted in 3.3.2 require profit to follow capital."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.3 Financing a project, and how the bank gets out",
+   "id": "crs-43"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Both sides put in money: **musharakah**.",
+    "The bank pays for the whole project: **mudarabah** (see the mudarabah manual).",
+    "Both put in money but only one manages: **musharakah and mudarabah combined**."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "Because the partnership starts on day one, there is no problem valuing the capital, and profit can be counted by normal accounting (Usmani, p. 38)."
+  },
+  {
+   "t": "p",
+   "x": "**The exit.** The client may buy the bank's share at an agreed price. If he cannot pay all at once, the bank's share is divided into smaller **units**, sold one at a time, until the bank is out. The bank's share may also be sold to a new partner (Usmani, pp. 38-39). The IFSB asks banks to define their exit routes for equity investments in advance (IFSB-1, Principle 3.3)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.4 Musharakah certificates",
+   "id": "crs-44"
+  },
+  {
+   "t": "p",
+   "x": "A large project can raise money from the public. Each subscriber gets a **musharakah certificate** showing his share in the project's assets. A bond is a loan that must be repaid, usually with interest; a certificate is a share of ownership (Usmani, p. 39)."
+  },
+  {
+   "t": "p",
+   "x": "Can the certificates be traded above face value? It depends on what the project holds (Usmani, pp. 39-41):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "What the project holds",
+    "Trading above face value"
+   ],
+   "r": [
+    [
+     "Only cash, or money owed to it",
+     "**Not allowed.** The certificate stands for money, and selling money for more money is riba. Only at face value"
+    ],
+    [
+     "Mainly real assets (land, buildings, machines, stock)",
+     "**Allowed** at any agreed price, like any goods"
+    ],
+    [
+     "A mix of cash and real assets",
+     "**The scholars differ** (below)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "On the mixed case, as Usmani reports it:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**The traditional Shafi'i view:** not saleable unless the real assets are separated and sold on their own.",
+    "**The Hanafi view:** saleable, if the price is **more than** the cash part. Example: a Rs 100 certificate stands for Rs 60 of cash and Rs 40 of machines. It may be sold for any price above Rs 60; sold for Rs 110, Rs 60 pays for the cash and Rs 50 for the machines.",
+    "**\"Most of the contemporary scholars\", including Shafi'is:** trading is allowed only if real assets are \"more than 50%\" of the total. For trading \"acceptable to all schools\", real assets should be above that level; on the Hanafi view a smaller share is enough, but it \"should not be negligible\" (Usmani, p. 41)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.5 Financing a single deal: imports and exports",
+   "id": "crs-45"
+  },
+  {
+   "t": "p",
+   "x": "**Imports.** An importer asks a bank to finance one shipment. Banks usually support it with a **letter of credit** (a bank's promise to pay the foreign seller once the shipping papers are in order). The bank owns its share of the goods until they are sold, and the proceeds are split by the agreed ratio (Usmani, p. 42). If the goods are not sold by an agreed date, the importer may buy the bank's share, but at the market price on that day or a price agreed on that day, not a price fixed at the start (Usmani, p. 42)."
+  },
+  {
+   "t": "p",
+   "x": "**Exports.** The exporter has an order at a known price, so the expected profit is clear. The bank may require that the exporter alone bears a loss caused by his own mistakes in the shipping papers; other losses are shared, because the bank is a partner (Usmani, pp. 42-43)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.6 Financing the working capital of a running business",
+   "id": "crs-46"
+  },
+  {
+   "t": "p",
+   "x": "**Method 1: value the business, then share the growth** (Usmani, pp. 43-45). The parties agree a value for the existing business; that value is the owner's capital (following Malik's view that capital need not be cash, 3.2.1). The bank's money is its capital. At the end of an agreed term the business is valued again and the gain is shared. Classically, profit is known only once everything is sold; Usmani's view is that an agreed valuation can count as a \"constructive liquidation\", since nothing in the law forbids it."
+  },
+  {
+   "t": "p",
+   "x": "Usmani's worked example (pp. 43-44): the owner A's business is worth 30 units; the bank B adds 20 units, so A owns 60% and B 40%. They agree that B gets 20% of the profit."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Case",
+    "What happens",
+    "B's share is worth"
+   ],
+   "r": [
+    [
+     "The business grows to 100 units (a gain of 50)",
+     "The gain follows the profit ratio, 20/80: B gets 10",
+     "20 + 10 = **30 units**"
+    ],
+    [
+     "The business falls to 40 units (a loss of 10)",
+     "The loss follows the capital ratio, 40/60: B bears 4",
+     "20 - 4 = **16 units**"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "B is a non-working partner who takes less profit than his capital share. The views in 3.3.2 that require profit to follow capital would not allow this split; the others would."
+  },
+  {
+   "t": "p",
+   "x": "**Method 2: share gross profit only** (Usmani, pp. 46-47). Valuing a whole factory is hard and leads to disputes. The partners may instead share **gross profit**: income less only the **direct** costs of the deal (raw material, direct labour, power used). The owner carries the **indirect** costs (building, machinery wear, office staff) himself, because he uses them for his other business too. In return he may take a higher share of the profit, or an agreed rent for his building and machines."
+  },
+  {
+   "t": "p",
+   "x": "**Method 3: a running account, profit by \"daily products\"** (Usmani, pp. 47-52). Banks often let a business draw and repay money at any time. Usmani proposes treating such an account as a musharakah: each partner's capital is counted by the money he had in the pool each day, and profit is worked out per unit of money per day. He adds that \"this suggestion needs further consideration and research by the experts of Islamic jurisprudence\" (Usmani, p. 48)."
+  },
+  {
+   "t": "ul",
+   "i": [
+    "*First objection:* this is an estimate, not the real profit each person earned. *Usmani's answer:* once a pool exists, all its profit belongs to all partners, whosever money was used. His Hanafi example: A and B agree to put Rs 50,000 each into a 50/50 partnership; B buys and sells air-conditioners at a Rs 10,000 profit before A's money comes in; A's money then buys refrigerators sold at a Rs 2,000 loss. The total profit is Rs 8,000, and A still gets Rs 4,000 (Usmani, pp. 49-50).",
+    "*Second objection:* in a running account no one knows the capital in advance. *Usmani's answer:* the Hanafis do not require it (al-Shafi'i does), and al-Kasani says uncertainty spoils a contract only if it leads to disputes (Usmani, pp. 50-51; see 3.2.4)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "AAOIFI's newer accounting standard treats this \"running Musharaka\" as the most common form of a \"variable-equity\" venture, which its older standards did not cover (FAS 51, definitions (g) and IN5(c))."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.7 Common worries, and Usmani's answers",
+   "id": "crs-47"
+  },
+  {
+   "t": "p",
+   "x": "Usmani accepts that musharakah is harder to run than a loan, and answers each worry (Usmani, pp. 52-56):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Worry",
+    "Usmani's answer"
+   ],
+   "r": [
+    [
+     "**Risk of loss.** Depositors will avoid banks that may lose their money",
+     "Banks already study a business before lending; with musharakah they study it harder. A bank holds many partnerships, so losses in some are covered by profits in others. Profit is the reward for bearing some risk"
+    ],
+    [
+     "**Dishonesty.** Clients may hide profit",
+     "Strong audit; sharing gross profit (4.6) to leave less room for disputes; penalties for proven cheats. Banks can start with clients of known honesty, and with exports, where prices and costs are clear"
+    ],
+    [
+     "**Business secrets.** A bank partner may learn them",
+     "The client can require that the bank stays out of management and shares nothing without permission"
+    ],
+    [
+     "**Clients will not share profit**, and some fear the tax office will learn their true profit",
+     "Clients should be persuaded that \"borrowing on interest is a cardinal sin, unless there is a dire necessity\", and that expanding a business is not such a necessity; banks and clients should press for fair tax rates"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "He adds that Islamic banks were set up to build a new system, not only to make money, and should start using true musharakah, at least \"on a selective basis\" with clients of known integrity (Usmani, p. 55)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.8 Diminishing musharakah",
+   "id": "crs-48"
+  },
+  {
+   "t": "p",
+   "x": "In a **diminishing musharakah** the bank and the client own something together, and the client buys the bank's share bit by bit until he owns all of it (Usmani, pp. 57-64). The bank's share is divided into units, bought on a schedule."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "4.8.1 Three examples (Usmani, pp. 57-59)",
+   "id": "crs-49"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**House.** The client pays 20% of the price and the bank 80%. The client lives in the house and pays rent for the bank's share. The bank's share is cut into 8 units; every 3 months the client buys one, and the rent falls with each purchase. After 2 years he owns the house.",
+    "**Taxi.** A pays 20% and B 80%. The fares are split by ownership; as A buys B's units, A's share of the fares grows.",
+    "**Business.** A puts in 40% and the financier B 60% of a garments business. B's share is cut into 6 units, which A buys over two years while profit is shared."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "4.8.2 The pieces of a house deal",
+   "id": "crs-50"
+  },
+  {
+   "t": "p",
+   "x": "Usmani breaks a house deal into separate steps: a joint purchase; the bank leasing its share to the client; the client's promise to buy the units; each purchase on its own date; and a lower rent as the bank's share falls (Usmani, pp. 59-60)."
+  },
+  {
+   "t": "p",
+   "x": "**Joint purchase** is a partnership in ownership (2.1). **Leasing a share to the partner** is allowed by all the jurists, Usmani writes. Leasing an undivided share to an outsider (a third party) is disputed: he reports that Abu Hanifah and Zufar do not allow it, while Malik, al-Shafi'i, Abu Yusuf and Muhammad ibn al-Hasan (usually taken to be al-Shaybani, though this is not certain) do (Usmani, p. 60). The standards allow either partner to rent the other's share (AAOIFI SS 12, 5/9; IIFA Resolution 136; BNM 22.4)."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "4.8.3 The key rule: no contract may be a condition of another",
+   "id": "crs-51"
+  },
+  {
+   "t": "p",
+   "x": "Each step is allowed on its own, but it is \"a well settled rule\", Usmani writes, \"that one transaction cannot be made a pre-condition for another\", so the steps must not be tied together (Usmani, p. 60). The way round it is a **one-sided promise**: the client promises to rent the bank's share and to buy the units later. Is such a promise binding? Usmani reports that many hold a promise to be only a moral duty, while some Maliki and Hanafi jurists let a court enforce it in cases of need, especially in trade; the Hanafis applied this to a sale with a separate promise to sell back, called *bay' bil-wafa* (Usmani, pp. 60-62). AAOIFI settles the point for this product in its standard on promises: the bank's promise to lease its share to the client, and the client's promise to buy units of the bank's share at stipulated intervals, \"are legally binding\" (AAOIFI SS 49, section 5, the clause on diminishing musharakah). A legally binding promise is enforceable only against the one who made it; the other party may demand performance or waive it (SS 49, 3/5). Bank Negara Malaysia's policy document on promises gives a worked example for diminishing musharakah: the customer promises to buy the bank's share gradually during the financing and wholly on default, and the bank promises to sell its share to the customer on early settlement (BNM PD Wa'd 2017, Example 3; also para. 13.7)."
+  },
+  {
+   "t": "p",
+   "x": "All the standards keep the pieces apart:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "AAOIFI: the buying and selling \"should not be stipulated in the partnership contract\"; the buying partner gives \"only a promise to buy\" (AAOIFI SS 12, 5/1).",
+    "The International Islamic Fiqh Academy: the contracts and commitments \"should be kept independent from each other\" (IIFA Resolution 136).",
+    "IFSB: the customer's binding promise is \"in a separate document\", and each buy-out is \"in accordance with a separate contract of sale entered at that time\" (IFSB-23, para. 205)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "4.8.4 The buy-out price: the sources differ",
+   "id": "crs-52"
+  },
+  {
+   "t": "p",
+   "x": "This is the point most often tested in practice."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "Rule on the price of each unit",
+    "Source"
+   ],
+   "r": [
+    [
+     "Usmani, for a house",
+     "**Better** at the market value on the date of each purchase, but a price fixed in the client's promise is **also allowed**",
+     "Usmani, p. 62"
+    ],
+    [
+     "Usmani, for a business",
+     "**Not fixed in the promise to purchase**: \"the price of units of the financier cannot be fixed in the promise to purchase\", because a price \"fixed before hand at the time of entering into musharakah\" would mean that the client \"has ensured the principal invested by the financier\". He gives two options: (1) the price comes from valuing the business at each purchase, by experts agreed when the promise is signed; (2) \"the financier allows the client to sell these units to any body else at whatever price he can, but at the same time he offers a specific price to the client\", at a price \"fixed by him before hand\". (As printed, the second option does not make fully clear which party sells to which.) He writes that \"both these options are available according to the principles of Shari'ah\", but the second \"does not seem to be feasible for the financier\", because it would bring new partners in, so \"only the first option is practical\"",
+     "Usmani, pp. 63-64"
+    ],
+    [
+     "AAOIFI",
+     "\"According to the market value or a price agreed at the time of acquisition\"; not \"their original or face value\", which would be a guarantee of the bank's capital",
+     "AAOIFI SS 12, 5/7"
+    ],
+    [
+     "International Islamic Fiqh Academy, 2004",
+     "\"At market value, or a price mutually agreed upon, on the same day of concluding the sale transaction\"; the promise \"should not be for purchasing the shares of the other party at par value\", which would amount to a guarantee",
+     "IIFA Resolution 136"
+    ],
+    [
+     "IFSB, 2021 (Shari'ah rules section)",
+     "\"Only ... as per the market value or as per an agreement entered into at the date of contracting\"; not \"at its nominal value based on the capital originally contributed\"",
+     "IFSB-23, para. 393(c)(iii), in section 4.3.2.4"
+    ],
+    [
+     "IFSB, 2021 (capital rules section)",
+     "The selling price is \"either on the fair value of that share at the date of the partial transfer of ownership ... or at a price agreed upon at the time of entering into the contract\"",
+     "IFSB-23, para. 206(a)"
+    ],
+    [
+     "Bank Negara Malaysia, 2015",
+     "For an asset: the promise may be to buy \"at market value, fair value or any price to be agreed by the partners\" (22.5). In *musyarakah mutanaqisah* financing of an asset, the price \"shall be fixed\" at the time of the contract, \"based on purchase price during inception and not based on future market price at the point of redemption\", and the documents must set a formula for each redemption amount (32.3-32.4, note 50). For a venture: the promise to buy is \"at market value, fair value or at an agreed price by the parties at the time of purchase\" (23.2); the gradual buy-out \"shall not result in a guarantee of capital\" (23.3); if the buy-out is accelerated, the price is market value, fair value or an agreed price \"at the time of purchase\"",
+     "BNM 22.5, 23.2-23.4, 32.3-32.4"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher.** AAOIFI, the Fiqh Academy and the IFSB all ban a buy-out at the original, face or nominal value; Bank Negara Malaysia bars a buy-out of a venture that results in a guarantee of capital. They differ on **when** an agreed price may be fixed. AAOIFI and the Fiqh Academy speak of a price agreed at the time of each purchase. The IFSB speaks of a price agreed at the date of contracting. Bank Negara Malaysia allows \"any price to be agreed\" for an asset, and for asset financing requires the price to be fixed at the start on the purchase price; for a venture it speaks of a price agreed at the time of purchase (23.2, 23.4). Usmani allows a price fixed in the promise for a house; for a business he says the price cannot be fixed in the promise to purchase, allows two options, and finds only valuation at each purchase practical. This manual does not settle the point; a product must meet the rule of the framework that governs it."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "4.8.5 Other rules on diminishing musharakah",
+   "id": "crs-53"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "AAOIFI does not allow a clause that one partner bears all the cost of insurance or maintenance because he will end up owning the asset (AAOIFI SS 12, 5/3); where either partner rents the other's share, each stays responsible for the periodic maintenance of his own share (5/9). The Fiqh Academy says such costs \"should be charged to the Mushārakah account\", by the partners' shares (IIFA Resolution 136).",
+    "The profit ratio may differ from the ownership ratio, and may be kept or changed as the shares change, but loss always follows the ownership shares (AAOIFI SS 12, 5/5); loss is borne periodically as the bank's share falls and the client's rises (5/4).",
+    "No clause may give a party the right to take back his capital (AAOIFI SS 12, 5/2; IIFA Resolution 136).",
+    "The rent falls with the bank's share (IFSB-23, para. 206(b)). In Malaysia, the formula for the bank's profit may use \"a relevant pricing benchmark\", such as the current rental rate, or \"an Islamic reference rate\", such as the Kuala Lumpur Islamic Reference Rate (BNM 32.5 and notes 52-53).",
+    "If the client breaks his promise to buy, Bank Negara Malaysia's rules depend on what the diminishing musharakah is for.",
+    "**For an asset** (such as a house), the partners may agree at the start that if a partner \"breaches his promise to acquire the musyarakah asset as agreed or fails to pay his rental\", the other \"may sell the asset to that partner or to a third party\" (BNM 22.9). In a sale to a third party after a breach of the promise, under Approach 1, the partners sell jointly; the proceeds are shared by ownership at the point of sale, either after deducting the costs of selling the asset or with those costs deducted from the client's share only; the bank may claim \"the rental due (if any)\" and \"a compensation amount\" from the client's share of the proceeds, the compensation being \"the difference between the agreed purchase price (as promised) and the realised proceeds portion allocated for the promisee\"; if the client's share is not enough, the bank may demand the remaining difference from him; if the bank's share of the proceeds reaches the promised price, there is no compensation, and any excess may be shared with the client. Under Approach 2, the bank sells its remaining share to the client \"on credit based on a price agreed by both parties\", and may take the asset as collateral; if it sells the collateral, it may claim \"the rental due, the purchase price as agreed in the promise to purchase and c osts related to liquidation of the collateral\" (as printed), may demand any shortfall, and any excess \"shall belong to the promisor\" (22.10). For an asset still under construction, the bank may compel the client to buy \"based on the price agreed in the promise\", and rent that the client paid under a forward lease (*ijarah mawsufah fi zimmah*) may be set off against the purchase price (22.12); once construction is complete, 22.9 applies (22.11).",
+    "**For a venture** (a business), the bank may \"invoke the promise and compel the promisor to purchase the share at market value or fair value\", or \"sell the share to a third party and claim any actual cost incurred in the process from the promisor\" (BNM 23.5).",
+    "**On default in musharakah financing**, the customer \"shall have the first right of refusal to purchase the asset\"; any sale to a third party must follow Shari'ah; the bank \"shall not redeem such shortfall from the customer until the loss is realised\"; and where the diminishing musharakah is arranged with ijarah, the bank may claim accrued rent only \"if the customer is still enjoying the usufruct\" (BNM 32.9)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.9 A critical view",
+   "id": "crs-54"
+  },
+  {
+   "t": "p",
+   "x": "Islamic finance has critics from within, and a teacher should present them alongside the industry's view."
+  },
+  {
+   "t": "p",
+   "x": "**Mahmoud El-Gamal**, an economist at Rice University, argues that much of the industry practises \"Shari'a arbitrage\", a kind of regulatory arbitrage in which lawyers offer \"a reengineered version\" of conventional products (El-Gamal, \"Limits and Dangers of Shari'a Arbitrage\"). His example is home finance in the United States. He notes that providers \"explicitly warn customers\" that their documents may use the words \"mortgage\", \"loan\", \"interest\", \"borrower\" and \"note\", and that customers receive the tax form for mortgage interest so that they can deduct the \"markup\" or \"rent\" as interest. In that paper the banks he describes use murabahah or leasing (*ijarah*); he does not discuss musharakah there. A teacher can use it to ask learners to compare the documents and cash flows of a diminishing musharakah home finance product with those of a conventional mortgage, using the Malaysian rules on a price fixed at the start and on pricing benchmarks (4.8.4-4.8.5)."
+  },
+  {
+   "t": "p",
+   "x": "**The other side.** The standard-setters treat diminishing musharakah as a real partnership with real rules: no buy-out at face value, no guarantee of capital, costs shared by ownership (4.8.4-4.8.5). Usmani prefers true musharakah and asks banks to use it at least on a selective basis (Usmani, p. 55), while allowing diminishing musharakah under strict conditions (Usmani, pp. 57-64)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.10 Musharakah sukuk",
+   "id": "crs-55"
+  },
+  {
+   "t": "p",
+   "x": "**What they are.** *Sukuk* (singular *sakk*) are certificates of equal value, each representing \"undivided shares in ownership of tangible assets, usufruct and services or (in the ownership of) the assets of particular projects or special investment activity\"; AAOIFI adds that this is true \"after receipt of the value of the Sukuk, the closing of subscription and the employment of funds received for the purpose for which the Sukuk were issued\" (AAOIFI SS 17, clause 2). In musharakah sukuk the venture is a partnership. AAOIFI describes them as certificates issued to use the money raised for a new project, an existing project or a business activity \"on the basis of any of partnership contracts\", so that the holders \"become the owners of the project or the assets of the activity as per their respective shares\". The venture may be run as a partnership, as a mudarabah or by an investment agent (AAOIFI SS 17, 3/6). The issuer invites the subscribers into a partnership with him; the subscribers are the partners, the money they pay is their share of the capital, and they own the partnership assets \"with the accompanying profits and losses\" (SS 17, 5/1/5/6). The IFSB describes them as \"the direct proportionate ownership shares of the holders in the assets of a private commercial enterprise or project\" (IFSB-23, para. 650). The holders' money may buy fixed assets such as real estate, while the originator (the company raising the money) \"can contribute specific assets or management skills\" (para. 604). The Securities Commission Malaysia defines them as certificates \"evidencing the certificate holder’s undivided ownership in the musharakah venture\" (SC Guidelines on Islamic Capital Market Products and Services, para. 3.01)."
+  },
+  {
+   "t": "p",
+   "x": "Compare the musharakah certificates in 4.4. AAOIFI states that it is \"permissible to trade in Mudarabah, Musharakah and investment agency certificates after closing of subscription, allotment of the certificates and commencement of activity with respect to the assets and usufructs\" (SS 17, 5/2/16). On trading or redemption before the activity begins, the full sentence reads: \"As for trading or redemption prior to the commencement af activity, it is necessary to observe the rules of the contract of Sarf (currency exchange) along with the rules for debts (receivables) when liquidation is complete and the assets are receivables er when the assets represented by the Suk:uk are sold for a deferred price\" (5/2/1, as printed). The sentence can be read in two ways: the two \"when\" cases may belong to the rule before the activity begins, or they may be cases in which the debt rules apply whenever they arise. This manual does not choose between the readings. This manual adds a comparison of its own, which SS 17 does not make (SS 17 does not mention face value): in Usmani's table in 4.4, certificates that stand only for cash or money owed trade at face value."
+  },
+  {
+   "t": "p",
+   "x": "**The basic partnership rules still apply, but not always in the same words.** AAOIFI: the prospectus must state that each holder shares in profit and bears loss in proportion to the value of his certificates (SS 17, 5/1/8/6). That clause opens \"Taking into account item 3/1/5 of the Shari'ah Standard No. (12)\", and in SS 12 profit \"may be in proportion\" to each partner's capital, but \"the partners may agree to make profit-sharing not proportionate to their contributions to capital, provided the additional percentage of profit over the percentage of contribution to the capital is not in favour of a sleeping partner\" (SS 12, 3/1/5/3). The Securities Commission's rules for sukuk musharakah: capital in cash, in kind, or both (26.51); at least two partners to form the musharakah, but \"no minimum number of musharakah partners (i.e. investors) in the secondary market\" (26.52); profit by the pre-agreed ratio, while \"any loss must be shared among the partners according to their respective capital contribution\" (26.53); and the venture may be managed by \"one of the partners or issuers or a third party\" (26.54). So the texts on profit read differently: SS 17 ties the holders' profit to the value of their certificates, while referring to the SS 12 item that allows an agreed ratio; the Securities Commission allows a pre-agreed ratio, which may later be revised (26.63). This manual does not settle how SS 17, 5/1/8/6 and SS 12, 3/1/5/3 fit together for sukuk. The Shariah Advisory Council also recognises two forms (SC SAC Resolutions, 2023, pp. 124-126). In the first, the issuer and the investors are partners, and the issuer is also the manager. In the second, the partnership is among the investors only (at least two); \"Normally sukuk issuer will only act as a manager on behalf of the investors\"; and \"If the issuance of sukuk musharakah is made in tranches and under separate musharakah contracts, then each musharakah contract shall has at least two investors or more at all times\" (p. 125, as printed)."
+  },
+  {
+   "t": "p",
+   "x": "**The key question: can the holders' capital be protected?** Here the frameworks differ."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "Rule",
+    "Source"
+   ],
+   "r": [
+    [
+     "AAOIFI, 2003",
+     "The prospectus may not say that the issuer will compensate the holder \"up to the nominal value\" except for wrongful acts and negligence, nor that he guarantees a fixed percentage of profit. An independent third party may give a guarantee \"free of charge\", and the issuer may give security against its own wrongful acts or negligence",
+     "AAOIFI SS 17, 5/1/8/7"
+    ],
+    [
+     "AAOIFI, 2003",
+     "For tradable sukuk, the issuer may promise to buy any certificate offered to him \"at market value\", but \"it is not permissible for the issuer to undertake to purchase the Sukuk at their nominal value\"",
+     "AAOIFI SS 17, 5/2/2"
+    ],
+    [
+     "AAOIFI's Shari'ah Board, February 2008",
+     "It is not permissible for the *mudarib*, *sharik* (partner) or *wakil* (agent) \"to agree to purchase assets from Sukuk holders or from whoever represents them for a nominal value of those assets\" when the sukuk end. The manager does guarantee the capital at its nominal value \"in cases of negligence or mala fides or non-compliance with stated conditions\"",
+     "AAOIFI, \"Statement in Relation to Sukuk\" (February 2008), as quoted by Coats and Motani (2010)"
+    ],
+    [
+     "IFSB, 2021",
+     "A partner may not \"undertake in advance to repurchase the assets at maturity ... for their nominal or par value\"; a purchase \"on the basis of the net value of assets, their market value, or fair value, or a price to be agreed at the time of purchase\" is allowed. On negligence or misconduct the manager must guarantee the capital \"at the nominal value of the issuance\". A musharakah sukuk may use a repurchase undertaking only on these terms",
+     "IFSB-23, paras. 603-604"
+    ],
+    [
+     "Securities Commission Malaysia, 2022 (revised 2026)",
+     "Guarantees in sukuk musharakah are limited by who gives them. A third party, or a company with common shareholders with the issuer, or an associate company of the issuer, may guarantee \"the capital and profit amount\", or the amounts due on dissolution, or compensation, fees and expenses. A parent company or subsidiary of the issuer may guarantee only the amounts due on dissolution, or compensation, fees and expenses. A guarantee (*kafalah*) may be given \"with or without the imposition of fee\", must be executed separately from the sukuk contract, and may be a conventional guarantee where an Islamic one cannot be obtained",
+     "SC Guidelines, paras. 26.18-26.20, 26.22"
+    ],
+    [
+     "Securities Commission Malaysia's Shariah Advisory Council",
+     "The Council notes that purchase and sale undertakings are \"common features\" in sukuk based on musharakah, mudharabah, wakalah bi al-istithmar and ijarah, and resolved that \"purchase and sale undertaking s are permissible\" (as printed). They are a binding promise on the promisor (*wa`d mulzim*); undertakings tied to events such as default, dissolution, early redemption and maturity \"are permissible based on wa`d mu ` allaq\" (as printed: *wa`d mu`allaq*, a promise tied to a condition); and they are \"not considered as a condition\" in the sukuk contract, because they sit outside it. \"The exercise price may be determined in the purchase undertaking or sale undertaking based on mutually agreed calculation formula or it may be determined upon the execution of an asset sale and purchase contract.\" The resolution does not speak of nominal or market value",
+     "SC SAC, *Resolutions of the Shariah Advisory Council of the Securities Commission Malaysia* (31 December 2023), \"Purchase and Sale Undertakings in Sukuk Structuring\", pp. 129-130"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher.** None of the guarantee rules above lets the issuer itself guarantee the holders' capital, in line with the rule in 3.6 that a partner does not guarantee another partner's capital; AAOIFI and the IFSB make the issuer or manager liable for his own wrongful acts or negligence. They differ on the rest. AAOIFI and the IFSB bar a promise by the partner to buy back at nominal value, and AAOIFI allows a guarantee from an independent third party only free of charge. The Securities Commission's Shariah Advisory Council allows purchase undertakings and leaves the exercise price to an agreed formula or to the sale contract; its resolution does not speak of market or nominal value. The Securities Commission does not let the issuer's parent or subsidiary guarantee the capital, but lets a third party, a company with common shareholders, or an associate company (as the accounting standards define \"associate\") guarantee \"the capital and profit amount\", with or without a fee. A learner should be able to say which rule a given sukuk follows. This manual does not settle which approach is right."
+  },
+  {
+   "t": "p",
+   "x": "**Other Malaysian rules for sukuk musharakah.**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "*Compensation* (*ta`widh*) is allowed if the issuer or obligor fails to pay out realised profit on the agreed date, or is late in paying what is due on dissolution; it \"does not apply to the failure to pay expected profit\" (SC Guidelines, 26.16).",
+    "*Waiver* (*tanazul*): a partner or holder may give up his right to a profit payment (26.25).",
+    "The profit-sharing ratio, the expected profit rate and the maturity date may be changed by a supplemental contract agreed by all the contracting parties (26.61, 26.63, 26.65).",
+    "A sukuk built on musharakah alone \"must be named sukuk musharakah\" (26.32).",
+    "The venture must comply with Shari'ah, and the proceeds must be used for Shari'ah-compliant purposes only (26.06, 26.08)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Capital for a bank that holds them.** The IFSB treats a musharakah sakk as \"a profit- and loss-sharing instrument\", with an exposure \"of the nature of an equity position in the banking book\" (IFSB-23, para. 650). The risk weight then follows what the venture does. A trading venture is weighted like the assets it trades, and a business venture or project like an equity holding. Joint ownership of an asset leased to a third party carries the lessee's risk weight, and joint ownership with murabahah contracts carries the murabahah risk weight; but \"such sukuk are not tradable from a Sharīʻah perspective\" (paras. 651-653)."
+  },
+  {
+   "t": "p",
+   "x": "**Governance of sukuk.** AAOIFI's Governance Standard 12 on sukuk governance is effective on sukuk issuances for financial periods beginning on or after 1 July 2021 (GS 12, para. 102). Among its rules: sukuk assets must be transferred from the originator \"free of any legal impediments\", and \"at a fair market value, or a value reasonably close thereto\" (GS 12, para. 46(c)-(d)). AAOIFI's newer Shari'ah Standard 62 on sukuk is a draft: AAOIFI's press release of 28 April 2025 quotes the chairman of its Board of Trustees saying the standard \"is still in the draft stage\". It is not used in this manual."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 5. Governance: what six frameworks require",
+   "id": "crs-56"
+  },
+  {
+   "t": "p",
+   "x": "This part covers six regulatory frameworks and shows, for each, what it says about musharakah. Where a framework has no musharakah-specific text, that is stated."
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Framework",
+    "Who",
+    "Musharakah texts used here"
+   ],
+   "r": [
+    [
+     "1",
+     "**AAOIFI**",
+     "Accounting and Auditing Organization for Islamic Financial Institutions (Bahrain)",
+     "SS 12 Sharikah (Musharakah) and Modern Corporations (issued 16 May 2002; current amended version adopted June 2015); SS 49 Unilateral and Bilateral Promise (issued 4 January 2013); FAS 4 Musharaka Financing (effective 1998); FAS 51 Participatory Ventures (effective 2027); SS 17 Investment Sukuk (issued 8 May 2003); GS 12 Sukuk Governance (effective 1 July 2021)"
+    ],
+    [
+     "2",
+     "**IFSB**",
+     "Islamic Financial Services Board (Kuala Lumpur)",
+     "IFSB-1 Risk Management (2005); IFSB-23 Revised Capital Adequacy (2021), including its sukuk sections"
+    ],
+    [
+     "3",
+     "**BNM**",
+     "Bank Negara Malaysia",
+     "Policy Document on Musyarakah (issued 20 April 2015); Policy Document on Wa`d (issued 2 February 2017); Shariah Governance Policy Document (issued 20 September 2019)"
+    ],
+    [
+     "4",
+     "**CBUAE**",
+     "Central Bank of the UAE",
+     "Standard re. Shari'ah Governance for Islamic Financial Institutions (issued 21 April 2020; no musharakah-specific text)"
+    ],
+    [
+     "5",
+     "**SAMA**",
+     "Saudi Central Bank",
+     "Shariah Governance Framework for Local Banks (February 2020) (no musharakah-specific text)"
+    ],
+    [
+     "6",
+     "**SC**",
+     "Securities Commission Malaysia",
+     "Guidelines on Islamic Capital Market Products and Services, SC-GL/1-2022 (issued 28 November 2022; revised 30 March 2026), Chapter 26, Ringgit-Denominated Sukuk"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**A note on the Fiqh Academy.** The International Islamic Fiqh Academy (IIFA) of the Organisation of Islamic Cooperation is not a regulator, but its resolutions are cited by the standard-setters. Its Resolution 136 (2/15) on diminishing musharakah was adopted at its 15th session in Muscat, Oman, on 14-19 Muharram 1425 AH (6-11 March 2004), and is used in 4.8."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.1 AAOIFI",
+   "id": "crs-57"
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 12, Sharikah (Musharakah) and Modern Corporations.** Issued on 4 Rabi' I 1423 AH (16 May 2002), after its adoption at the Shari'ah Board's meeting no. 8 in Medina, 11-16 May 2002 (AAOIFI SS 12, clause 6 and adoption note). AAOIFI's review committee reviewed it in March 2012, and the Shari'ah Board adopted \"its current amended version\" at its meeting no. 41 in Medina, 14-16 June 2015 (App. A). The clauses quoted in this manual are from that amended text. It covers the contract partnerships ('inan, wujuh, services), modern companies and diminishing musharakah. It does not cover ownership partnership, mufawadah, mudarabah (\"this form of partnership has a separate standard\") or sharecropping (clause 1). Its rules are used throughout Part 3. The clauses most often tested in practice:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Clause",
+    "Rule"
+   ],
+   "r": [
+    [
+     "2/1",
+     "Definition of contractual partnership"
+    ],
+    [
+     "3/1/1/2",
+     "Partnership with non-Muslims or conventional banks, with guarantees"
+    ],
+    [
+     "3/1/2/1-3/1/2/5",
+     "Capital: cash in principle; assets after valuation; currencies at current rates; no receivables alone"
+    ],
+    [
+     "3/1/3/1-3/1/3/5",
+     "Powers; management by some partners or an outsider; no fixed pay for a managing partner except under a separate contract"
+    ],
+    [
+     "3/1/4/1-3/1/4/3",
+     "Trust basis; no partner guarantees another's capital; security for fault; third-party guarantee conditions"
+    ],
+    [
+     "3/1/5/1-3/1/5/14",
+     "Profit: a percentage of profit, fixed at the start; the sleeping-partner limit; loss by capital; capital first; valuation; reserves"
+    ],
+    [
+     "3/1/6/1-3/1/6/3",
+     "Withdrawal with notice; promise to buy assets \"as per their market value or as per agreement at the date of buying\", not face value; liquidation order"
+    ],
+    [
+     "3/2, 3/3",
+     "Partnerships of creditworthiness (*wujuh*) and of services"
+    ],
+    [
+     "4",
+     "Modern companies: for example, limited liability allowed if made public (4/1/2/9)"
+    ],
+    [
+     "5/1-5/9",
+     "Diminishing musharakah: separate promise; no right to withdraw capital; no clause putting all insurance or maintenance costs on one partner (5/3); price at market value or agreed at the time of acquisition (5/7); leasing a share (5/9)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 49, Unilateral and Bilateral Promise** (issued 4 January 2013) sets AAOIFI's rule on promises (*wa'd*), which matters for the client's promise to buy units (4.8.3). Keeping a promise is a religious duty, but a promise binds in law only \"when there is a real need for it to be enforced, such as when the promisor causes the promisee to incur a liability\" (SS 49, 3/4). For diminishing musharakah the standard has its own clause: the bank's promise to lease its share and the client's promise to buy units \"are legally binding\" (SS 49, section 5; see 4.8.3)."
+  },
+  {
+   "t": "p",
+   "x": "**Financial Accounting Standard 4, Musharaka Financing** (effective for periods beginning 1 January 1998; FAS 4, para. 19) tells the bank how to book its share:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Capital is recognised when paid or made available to the partner; cash at the amount paid; capital in kind at fair value, \"the value agreed between the partners\", with any difference from book value booked as the bank's own profit or loss (FAS 4, paras. 3-5).",
+    "A **constant** musharakah is carried at historical cost (para. 7). In a **diminishing** musharakah, the bank's share is carried at historical cost less the cost of the units transferred, each transfer being a sale at fair value; the difference is profit or loss (para. 8).",
+    "Losses caused by the partner's misconduct or negligence are borne by him and booked as a receivable from him (para. 15)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Financial Accounting Standard 51, Participatory Ventures** is effective for financial statements beginning on or after **1 January 2027** (FAS 51, para. 74) and supersedes FAS 3 and FAS 4 (para. 76). **Teachers should check which standard applies to the period being taught.** Points specific to musharakah:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "FAS 51 defines musharakah, \"in the specific context of this standard\", as a partnership based on *shirkat al-'aqd* (definitions (c)).",
+    "Co-owned assets based on *shirkat al-milk* are **outside its scope** (para. 3(c)). AAOIFI's basis for conclusions explains that diminishing musharakah based on co-ownership is common, and that it is left to the standards for the contracts it is combined with (FAS 51, BC12-14).",
+    "A diminishing musharakah built on a contract partnership falls under a **rebuttable presumption** (the standard's default, unless shown otherwise): the investor uses the net investment approach, and the working partner the quasi-equity approach (para. 58). For a running musharakah (a \"variable-equity\" venture) the same two approaches are required, not presumed: \"only the following accounting approach shall be applied\" (para. 59).",
+    "A commitment to transfer units at a promised value or at fair value is assessed, and a provision made if it is onerous (paras. 56-57).",
+    "AAOIFI's introduction says that running musharakah and diminishing musharakah \"were not covered under the existing standards\" (FAS 51, IN5(c)). Its basis for conclusions says the opposite for one form: FAS 4 \"also addresses diminishing Musharaka\", under a contract-partnership structure (FAS 51, BC12), and FAS 4 itself measures the bank's share in a diminishing musharakah (FAS 4, para. 8). The two statements are left as AAOIFI wrote them."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 17, Investment Sukuk.** Issued on 7 Rabi' I 1424 AH (8 May 2003) (SS 17, clause 6). It covers musharakah sukuk among other kinds (clause 1), and its rules are given in 4.10: the definition (clause 2, 3/6, 5/1/5/6), profit and loss in proportion to the certificates (5/1/8/6), no guarantee of nominal value by the issuer except for torts and negligence, a free guarantee by an independent third party, and security from the issuer for its own wrongful acts or negligence (5/1/8/7), no promise by the issuer to buy at nominal value (5/2/2), and trading after the closing of subscription, allotment and the start of activity (5/2/16), with the rules of currency exchange and debts for trading or redemption before the activity begins, in the cases 5/2/1 names (5/2/1; see 4.10). AAOIFI's Governance Standard 12 on sukuk governance and its draft Shari'ah Standard 62 are also noted in 4.10."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.2 IFSB",
+   "id": "crs-58"
+  },
+  {
+   "t": "p",
+   "x": "**Risk management (IFSB-1, 2005).** Banks need strategies, risk management and reporting for equity investments, \"including Mudarabah and Musharakah investments\" (Principle 3.1); valuation methods that are appropriate and consistent (Principle 3.2); and exit strategies defined in advance (Principle 3.3). The IFSB notes that in musharakah the bank \"may be silent partners, or may participate in management\" (para. 48)."
+  },
+  {
+   "t": "p",
+   "x": "**Capital adequacy (IFSB-23, December 2021).**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Equity risk weights.** A bank applies a **250% risk weight** to musharakah or mudarabah investments in commercial enterprises, or **400%** to short-term unlisted equity exposures (IFSB-23, para. 204). In plain words: the bank bears loss like a shareholder, so it holds much more capital against a musharakah than against an ordinary loan.",
+    "**Capital is at risk.** IFSB-23 treats the capital invested in a musharakah as exposed to impairment (paras. 201-202).",
+    "**Diminishing musharakah.** The bank has two exposures. (a) The amounts the partner owes to buy out the units on their dates are a credit risk; the credit exposure is the remaining balance of the amount invested, at historical cost, less specific provisions (para. 206(a)). (b) The bank's share of the income from the asset, such as lease rentals, is also a credit risk, for non-payment of the rentals; the rent \"is adjusted periodically to reflect the IIFS's remaining ownership share\" (para. 206(b)). If a third party gives an undertaking, its risk weight may be used, and the undertaking should be free of charge (note 97). The default clause may let the bank end the partnership and require the partner to buy the whole remaining share, though a partner in distress may be unable to (note 96).",
+    "**Diminishing musharakah on a leased asset.** Treated like a musharakah with a leasing subcontract: the lessee's risk weight, plus 100% on the residual value (para. 207).",
+    "**The three uses of musharakah** in IFSB-23: trading in foreign exchange, shares or commodities (market-risk charges, for example 16%, equivalent to a 200% risk weight, for quoted shares); a business venture (simple risk weight, 400% for shares not publicly traded); and joint ownership of an asset with a leasing or murabahah subcontract (the customer's risk weight) (paras. 532-535).",
+    "**Shari'ah rules repeated.** A partner cannot guarantee another's capital, and the buy-out price may not be the nominal value (para. 393(c)(ii)-(iii), in section 4.3.2.4; 4.8.4).",
+    "**Musharakah sukuk.** No advance promise by a partner to buy back at nominal or par value; purchase at net asset value, market value, fair value or a price agreed at the time of purchase is allowed (para. 603); a musharakah sukuk may use a repurchase undertaking on those terms (para. 604). Holdings are treated as equity-like positions, with risk weights by what the venture does (paras. 650-654; see 4.10)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.3 Bank Negara Malaysia",
+   "id": "crs-59"
+  },
+  {
+   "t": "p",
+   "x": "The Policy Document on Musyarakah (BNM/RH/STD 028-7) was issued on 20 April 2015 and \"comes into effect on 1 June 2016\" (BNM 6.1). It is published on Bank Negara Malaysia's website (accessed 2026)."
+  },
+  {
+   "t": "p",
+   "x": "**How to read it.** Each paragraph is marked **S**, \"a standard, requirement or specification that must be complied with\", where failure may lead to enforcement action, or **G**, guidance that industry is \"encouraged\" to adopt (BNM 7.2). It has four parts: A, overview; B, Shari'ah requirements and optional practices (paras. 10-24); C, operational requirements for a musharakah venture (25-30); D, musharakah financing (31-34); and appendices, including the Shari'ah evidence (App. 1, \"Legitimacy of musyarakah\") and a glossary (App. 2)."
+  },
+  {
+   "t": "p",
+   "x": "**Main Shari'ah rules (Part B)**, all used in Part 3 and 4.8. Many of them are **G** (guidance), not **S** (requirements): 12.2, 13.2, 14.1, 14.3-14.4, 15.2, 15.6, 15.10-15.12, 16.3-16.4, 16.7, 17.2, 18.2, 19.1, 21.1, 22.1-22.6, 22.8-22.12, 23.2, 23.5 and 24.2-24.4 are marked G; the rest of those listed here are S. The rules: definition (10.1); the two types, ownership and contract (11.1); capacity (12.1); offer and acceptance (13.1-13.2); management and the managing partner's pay under a separate contract (14.1-14.4); capital, including in-kind and intangible capital, no debts, and no guarantee of capital (15.2-15.14); profit, proportional unless agreed otherwise, with no fixed amount and only an indicative rate (16.2-16.7); loss by capital, with limited liability by agreement (17.1-17.2); no guarantee of capital or profit, and the third-party guarantee conditions (18.1-18.3); promises (19.1); diminishing musharakah, which for an asset \"must be governed by the principle of shirkah al-milk\" and for a venture by \"shirkah al-`aqd\" (21.2-21.3), with separate rules for an asset (22) and a venture (23); dissolution (24). Part D adds rules for musharakah financing: in asset financing the price is fixed at the start on the purchase price, with a formula for each redemption (32.3-32.4); profit formulas may use a pricing benchmark or an Islamic reference rate (32.5, marked G); and the steps on default: the customer's first right of refusal, a Shari'ah-compliant sale to any third party, no claim on a shortfall until the loss is realised, and accrued rent only while the customer still has the use of the asset where the arrangement is with ijarah (32.9)."
+  },
+  {
+   "t": "p",
+   "x": "**A point to discuss.** For a musharakah venture, paragraph 27.36 (in Part C) prohibits \"any mechanism which will effectively cause a partner to guarantee the principal amount upfront\"; its note 25 gives as examples an \"upfront waiver on loss absorption or wa’d to purchase assets or rights at price equivalent to capital provided\". For financing an asset, paragraph 32.3 (in Part D) fixes the price at the start on the purchase price. Ask learners how the document separates the two cases (22-23, 32), and compare AAOIFI SS 12, 5/7."
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah governance.** BNM's Shariah Governance Policy Document (issued 20 September 2019; in force from 1 April 2020, except para. 12.5, in force from 1 April 2023; paras. 4.1-4.2) applies to the whole of an Islamic financial institution's business, musharakah included. Its main rules:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "The board must put in place a sound Shari'ah governance framework (8.1) and have due regard to the decisions and advice of the Shariah committee (9.1).",
+    "Where BNM's Shariah Advisory Council (SAC) has made no ruling on a matter, or the committee cannot reach a decision, the institution refers it to the SAC (10.6).",
+    "Three control functions manage the risk of Shari'ah non-compliance: Shariah risk management, Shariah review and Shariah audit (16.3). They must be independent of the business lines and take no part in revenue-generating work (16.6).",
+    "Shariah review regularly assesses whether operations comply with Shari'ah requirements (18.1). Shariah audit gives an independent assessment of internal control, risk management, governance and overall compliance (19.1)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.4 Central Bank of the UAE",
+   "id": "crs-60"
+  },
+  {
+   "t": "p",
+   "x": "The CBUAE's Standard re. Shari'ah Governance for Islamic Financial Institutions was issued in Abu Dhabi on 21 April 2020. It contains no rules specific to musharakah. Its structure:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Who decides.** Compliance with Shari'ah means compliance with the resolutions, fatwas (juristic opinions), regulations and standards of the **Higher Shari'ah Authority** (HSA), the Central Bank's own Shari'ah authority for financial and banking activities, and with the resolutions of the institution's Internal Shari'ah Supervision Committee (ISSC), provided these do not contradict the HSA's (Article 4, definitions (e) and (r)).",
+    "**The committee.** The general assembly appoints the ISSC members on the board's nomination, after the HSA's approval (7.2). The ISSC's annual Shari'ah report goes to the HSA for review and approval before it is shared with shareholders (6.6).",
+    "**Controls.** Internal Shari'ah controls follow three independent lines of defence: the business line, an internal Shari'ah control function, and internal Shari'ah audit (9.1). An institution may also appoint an external body for Shari'ah audit (12.1)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "The standard names AAOIFI only as a source of professional certificates for the heads of Shari'ah control and audit (Articles 10 and 11). Separately, AAOIFI reports that the United Arab Emirates adopts its Shari'ah standards \"as mandatory regulatory requirements\" (AAOIFI, \"Adoption of AAOIFI Standards\" web page). **On that report, a UAE musharakah product would be tested against AAOIFI SS 12 (5.1), within the CBUAE governance structure and the HSA's rulings.**"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.5 Saudi Central Bank (SAMA)",
+   "id": "crs-61"
+  },
+  {
+   "t": "p",
+   "x": "SAMA's Shariah Governance Framework for Local Banks Operating in Saudi Arabia was issued in February 2020. It covers the duties of the board and executive management, the Shariah committee (formation, membership, duties, independence), internal control, Islamic window operations and the process for developing Shariah-compliant products. It contains no rules specific to musharakah and does not name a contract standard for it. **A Saudi musharakah product is therefore reviewed by the bank's own Shariah committee under this framework.**"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.6 Securities Commission Malaysia",
+   "id": "crs-62"
+  },
+  {
+   "t": "p",
+   "x": "**Who it is.** Bank Negara Malaysia's policy document (5.3) applies to Islamic financial institutions such as Islamic banks (BNM 4.1, 7.2). It covers products structured on musyarakah \"except for : (i) sukuk, collective investment schemes and equities; and (ii) interbank investments , which are excluded from Part C and D\" (BNM 4.1(b)). A sukuk issuer must lodge (file) the sukuk with the Securities Commission, after first obtaining its Shariah Advisory Council's endorsement (SC Guidelines, 26.01). The Commission's Shariah Advisory Council (SAC) was set up on 16 May 1996 and, under the Securities Commission Malaysia Act 1993, is the authority on how Shari'ah principles apply to Islamic capital market business (SC website, \"Members of the Shariah Advisory Council\")."
+  },
+  {
+   "t": "p",
+   "x": "**The text used here.** The Guidelines on Islamic Capital Market Products and Services (SC-GL/1-2022), first issued on 28 November 2022 and revised on 8 February 2024 and 30 March 2026. Chapter 26 sets the Shari'ah requirements for ringgit-denominated sukuk, including musharakah sukuk."
+  },
+  {
+   "t": "p",
+   "x": "**Key requirements (Chapter 26).**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Endorsement.** An issuer must get the endorsement of the SAC before lodging a sukuk with the Commission (26.01), and again for any change to the principal terms and conditions (the main terms of the issue) that has a Shari'ah implication (26.02).",
+    "**Shariah adviser.** The adviser must issue a Shariah pronouncement giving its reasoning for the structure, confirming that the proceeds are for Shari'ah-compliant purposes, and naming the rulings and concepts used (26.05).",
+    "**Proceeds and venture.** The proceeds must be used for Shari'ah-compliant purposes only (26.06); in sukuk musharakah, \"the ventures or investment must comply with Shariah\" (26.08).",
+    "**Partnership rules for sukuk musharakah.** Capital in cash, in kind or both (26.51); at least two partners (26.52); profit by the agreed ratio and loss by capital (26.53); a partner, the issuer or a third party as manager (26.54).",
+    "**Guarantees.** Who may guarantee what, and the fee rule (26.18-26.20, 26.22); set out against AAOIFI and the IFSB in 4.10.",
+    "**Purchase undertakings.** The Shariah Advisory Council allows them, as a binding promise outside the sukuk contract, with the exercise price set by an agreed formula or at the sale (SAC Resolutions, 2023, pp. 129-130; see 4.10).",
+    "**Compensation, waiver, revisions and naming** (26.16, 26.25, 26.61, 26.63, 26.65, 26.32): see 4.10."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.7 A compliance checklist for a musharakah product",
+   "id": "crs-63"
+  },
+  {
+   "t": "p",
+   "x": "A teaching tool: give learners a draft term sheet and have them test it line by line."
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Check",
+    "AAOIFI",
+    "BNM",
+    "IFSB"
+   ],
+   "r": [
+    [
+     "1",
+     "Each partner has legal capacity",
+     "",
+     "12.1",
+     ""
+    ],
+    [
+     "2",
+     "Offer and acceptance are recorded",
+     "SS 12, 3/1/1/1",
+     "13.1-13.2",
+     ""
+    ],
+    [
+     "3",
+     "Each partner's capital is determined",
+     "SS 12, 3/1/2/3",
+     "15.8",
+     ""
+    ],
+    [
+     "4",
+     "Capital in kind is valued in money at the start",
+     "SS 12, 3/1/2/1",
+     "15.3",
+     ""
+    ],
+    [
+     "5",
+     "Capital is not made up of debts or receivables",
+     "SS 12, 3/1/2/4",
+     "15.5",
+     ""
+    ],
+    [
+     "6",
+     "Profit is a percentage of actual profit, fixed at the start",
+     "SS 12, 3/1/5/1-3/1/5/2",
+     "16.2, 16.5",
+     ""
+    ],
+    [
+     "7",
+     "No fixed sum and no percentage of capital as profit",
+     "SS 12, 3/1/5/7",
+     "16.5-16.6",
+     ""
+    ],
+    [
+     "8",
+     "Any extra profit share does not go to a sleeping partner",
+     "SS 12, 3/1/5/3",
+     "16.2 (agreed at the start)",
+     ""
+    ],
+    [
+     "9",
+     "Loss follows capital",
+     "SS 12, 3/1/5/4",
+     "17.1",
+     ""
+    ],
+    [
+     "10",
+     "No partner guarantees another's capital; no guarantee of profit either",
+     "SS 12, 3/1/4/1 (capital)",
+     "15.14, 18.1 (capital and profit), 27.36",
+     "IFSB-23, para. 393(c)(ii)"
+    ],
+    [
+     "11",
+     "Security is for misconduct, negligence or breach only",
+     "SS 12, 3/1/4/2",
+     "18.2(a)",
+     ""
+    ],
+    [
+     "12",
+     "Any third-party guarantee is independent and separate (AAOIFI and IFSB: also free of charge; BNM: its own independence tests and excluded guarantors)",
+     "SS 12, 3/1/4/3",
+     "18.3, 27.42",
+     "IFSB-23, para. 206, note 97"
+    ],
+    [
+     "13",
+     "A managing partner's pay, if any, is under a separate contract",
+     "SS 12, 3/1/3/4-3/1/3/5",
+     "14.4",
+     ""
+    ],
+    [
+     "14",
+     "Liability is unlimited, or a limit is agreed and disclosed",
+     "SS 12, 4/1/2/9",
+     "17.2",
+     ""
+    ],
+    [
+     "15",
+     "Exit route defined; any promise to buy is not at face value",
+     "SS 12, 3/1/6/2",
+     "19.1 (promise allowed); 27.36 and note 25 (venture: no promise to buy at a price equal to the capital)",
+     "IFSB-1, Principle 3.3"
+    ],
+    [
+     "16",
+     "Diminishing musharakah: buying and selling not stipulated in the partnership contract",
+     "SS 12, 5/1",
+     "",
+     "IFSB-23, para. 205"
+    ],
+    [
+     "17",
+     "Diminishing musharakah: unit price set by the rule of the governing framework (market value, fair value or a permitted agreed price; in Malaysian asset financing, fixed at the start)",
+     "SS 12, 5/7",
+     "22.5, 23.3-23.4, 32.3-32.4",
+     "IFSB-23, paras. 206(a), 393(c)(iii)"
+    ],
+    [
+     "18",
+     "Diminishing musharakah: insurance and maintenance not put on one partner alone; each maintains his own share when renting",
+     "SS 12, 5/3, 5/9",
+     "",
+     ""
+    ],
+    [
+     "19",
+     "Diminishing musharakah: rent adjusted to the bank's remaining share",
+     "",
+     "",
+     "IFSB-23, para. 206(b)"
+    ],
+    [
+     "20",
+     "Diminishing musharakah: loss by ownership shares as they change; any profit ratio clearly set",
+     "SS 12, 5/4-5/5",
+     "",
+     ""
+    ],
+    [
+     "21",
+     "Diminishing musharakah: the lease and buy-out promises, who may enforce them, and the remedy if the client breaks the promise",
+     "SS 49, 3/5 and section 5",
+     "PD Wa'd 2017, 13.7; remedies 22.9-22.12 (asset), 23.5 (venture)",
+     ""
+    ],
+    [
+     "22",
+     "Capital charge applied",
+     "",
+     "",
+     "IFSB-23, paras. 204, 207, 535"
+    ],
+    [
+     "23",
+     "Accounting standard for the period identified",
+     "FAS 4 or FAS 51",
+     "",
+     ""
+    ],
+    [
+     "24",
+     "The Shariah committee's decision or advice is obtained, the board has due regard to it, and Shariah review and audit are in place",
+     "",
+     "SG PD 2019, 9.1, 16.3",
+     ""
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Extra checks for a musharakah sukuk** (see 4.10):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Check",
+    "AAOIFI",
+    "IFSB",
+    "SC Malaysia"
+   ],
+   "r": [
+    [
+     "25",
+     "AAOIFI: holders share profit and bear loss in proportion to their certificates. SC: profit by the pre-agreed ratio, loss by capital contribution",
+     "SS 17, 5/1/8/6",
+     "",
+     "26.53"
+    ],
+    [
+     "26",
+     "No promise by the issuer or partner to buy back at nominal value",
+     "SS 17, 5/2/2",
+     "IFSB-23, paras. 603-604",
+     "SAC Resolutions 2023, pp. 129-130: undertakings allowed; exercise price by agreed formula or at the sale; no nominal-value rule stated"
+    ],
+    [
+     "27",
+     "Any guarantee of capital comes only from a party the framework allows, on its fee rule",
+     "SS 17, 5/1/8/7",
+     "",
+     "26.18-26.20, 26.22"
+    ],
+    [
+     "28",
+     "Trading after the closing of subscription, allotment and the start of activity; for trading or redemption before the activity begins, the rules of *Sarf* and the rules for debts, \"when liquidation is complete and the assets are receivables er when the assets represented by the Suk:uk are sold for a deferred price\" (as printed; the two readings in 4.10)",
+     "SS 17, 5/2/1, 5/2/16",
+     "",
+     ""
+    ],
+    [
+     "29",
+     "SAC endorsement before lodgement; Shariah pronouncement issued",
+     "",
+     "",
+     "26.01, 26.05"
+    ],
+    [
+     "30",
+     "Sukuk named correctly",
+     "",
+     "",
+     "26.32"
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 6. Teaching aids",
+   "id": "crs-64"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "6.1 Case studies",
+   "id": "crs-65"
+  },
+  {
+   "t": "p",
+   "x": "*All five cases are illustrations made for this manual.*"
+  },
+  {
+   "t": "p",
+   "x": "**Case 1: The guaranteed partner.** A bank puts 600,000 into a trading business as a musharakah partner, alongside the owner's 400,000. The term sheet says: \"The owner guarantees the return of the bank's capital in all cases.\""
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Is the clause valid? What can the bank ask for instead?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* No partner may guarantee another's capital (AAOIFI SS 12, 3/1/4/1; BNM 15.14, 18.1, 27.36; IFSB-23, para. 393(c)(ii)). The bank may take security for misconduct, negligence or breach (AAOIFI SS 12, 3/1/4/2; BNM 18.2(a)), or an independent third-party guarantee (AAOIFI SS 12, 3/1/4/3, which also requires it to be free of charge; BNM 18.3, which requires a separate contract, use to cover loss or depletion of capital, and a guarantor who is not a related party). Compare the two sets of independence tests, and BNM's list of excluded guarantors in Part C (27.42)."
+  },
+  {
+   "t": "p",
+   "x": "**Case 2: The silent partner's share.** Amina puts in 60% and Bilal 40% of a venture. The contract says Amina will never work and takes 70% of the profit."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Which sources allow the 70% share? Would the answer change if the contract were silent about Amina's work?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* Not valid where profit must follow capital (Malik in the *Mudawwana*; the Shafi'i texts; Zufar; Ibn Hazm). For the Hanafis, al-Kasani holds a larger share for the non-working partner invalid (*Bada'i'* 6:63), and Usmani gives Abu Hanifah's sleeping-partner limit (p. 24); Ibn Qudamah, by contrast, reports Abu Hanifah as allowing any agreed ratio (*al-Mughni* 5:23). AAOIFI bans the extra for a sleeping partner but allows it for a partner who has not stipulated that he will not work (SS 12, 3/1/5/3). The Hanbalis allow any agreed ratio (*al-Mughni* 5:23). BNM: proportional unless agreed otherwise at the start (16.2). See 3.3.2."
+  },
+  {
+   "t": "p",
+   "x": "**Case 3: The machinery as capital.** A factory owner wants to put his machines into a musharakah as his capital; the bank puts in cash."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Which schools allow it? How should the machines be valued? Is there a workaround for those who refuse?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* 3.2.1 in full. Malik (*Mudawwana* 3:605); Ahmad's two narrations (*al-Mughni* 5:13); al-Kasani for \"the general body of scholars\" (*Bada'i'* 6:59); the Shafi'i rule on fungible goods (*Mukhtasar Tuhfat* 2:252). AAOIFI (3/1/2/1) and BNM (15.2-15.3) on valuation. The workaround of selling halves to each other (*Bada'i'* 6:59; *Mukhtasar Tuhfat* 2:253). Usmani's working-capital method 1, which values the existing business as the owner's capital (pp. 43-45)."
+  },
+  {
+   "t": "p",
+   "x": "**Case 4: The home finance buy-out.** A bank and a client buy a house 80/20 under diminishing musharakah. The draft promise says the client will buy each unit \"at one-eighth of the bank's original contribution\"."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Is that price allowed under AAOIFI, the Fiqh Academy, the IFSB and BNM? What does Usmani say?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* AAOIFI, the Fiqh Academy and the IFSB ban a buy-out at original, face or nominal value (AAOIFI SS 12, 5/7; IIFA Resolution 136; IFSB-23, para. 393(c)(iii)). BNM bars a gradual buy-out of a venture that results in a guarantee of capital, and sets its price at market value, fair value or a price agreed at the time of purchase (23.2-23.3). For an asset it allows \"any price to be agreed by the partners\" (22.5), and in asset financing it requires the price to be fixed at the start, based on the purchase price, with a formula for each redemption (32.3-32.4). If the client breaks the promise, BNM's remedies also differ for an asset (22.9-22.12) and for a venture (23.5) (4.8.5). The frameworks also differ on when an agreed price may be fixed (4.8.4). Usmani allows a price fixed in the promise for a house (p. 62); for a business he says the price \"cannot be fixed in the promise to purchase\", allows two options, and finds only valuation at each purchase practical (pp. 63-64). AAOIFI makes the client's promise to buy units legally binding (SS 49, section 5). Ask learners whether \"one-eighth of the original contribution\" is a face-value price."
+  },
+  {
+   "t": "p",
+   "x": "**Case 5: The overdraft as partnership.** A bank lets a trader draw and repay at will, and proposes to share profit by \"daily products\"."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* What are the two objections, and how does Usmani answer them? Which accounting standard covers it?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* Usmani, pp. 47-52 (4.6). The capital-knowledge debate (3.2.4): Hanafis and the Shafi'i \"sounder view\" versus al-Shafi'i as reported by al-Kasani. FAS 51 on running musharakah (definitions (g), para. 59)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "6.2 Review questions (with answers)",
+   "id": "crs-66"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "**What is the difference between shirkat al-milk and shirkat al-'aqd?** The first is owning something together; the second is a business partnership made by contract (*Bada'i'* 6:56; BNM 11.1).",
+    "**Is the word \"musharakah\" found in the classical law books?** No; Usmani says writers on Islamic finance brought it in (p. 20). The books use *shirkah*.",
+    "**How is loss shared?** By capital, for every holder in 3.4. Usmani: \"loss is always subject to the ratio of investment\" (p. 25).",
+    "**Which schools allow a profit ratio different from the capital ratio?** The Hanbalis; Abu Hanifah, as reported by Ibn Qudamah (any agreed ratio); the Hanafis as stated by al-Kasani, and Abu Hanifah as summarised by Usmani (with the limit on a non-working partner); AAOIFI and BNM. Not Malik, al-Shafi'i, Zufar or Ibn Hazm.",
+    "**Is \"A gets 15% of his investment\" valid?** No: profit must be a percentage of actual profit, not of capital (Usmani, p. 23; AAOIFI SS 12, 3/1/5/1).",
+    "**May a partner guarantee another partner's capital?** No (AAOIFI SS 12, 3/1/4/1; BNM 18.1; IFSB-23, para. 393(c)(ii)).",
+    "**Which four kinds of contract partnership do the classical books discuss, besides mudarabah?** *'Inan*, *mufawadah*, *abdan* (work) and *wujuh*.",
+    "**Which kind does the Shafi'i school accept?** Only *'inan* (*Mukhtasar Tuhfat* 2:252).",
+    "**What does al-Qurtubi say about reading *khulata'* in Qur'an 38:24 as \"partners\"?** That it is \"far-fetched\"; most scholars, he reports, take it to mean owners whose herds are kept together.",
+    "**Can a managing partner be paid a salary?** Not under the partnership contract itself (AAOIFI SS 12, 3/1/3/4), but yes under a separate contract (AAOIFI SS 12, 3/1/3/5; BNM 14.4).",
+    "**What risk weight does IFSB-23 give a musharakah investment in a commercial enterprise?** 250%; 400% for a short-term unlisted equity exposure (para. 204).",
+    "**When does FAS 51 replace FAS 4?** For financial statements beginning on or after 1 January 2027 (FAS 51, paras. 74, 76).",
+    "**May the issuer of a musharakah sukuk promise to buy the certificates back at their nominal value?** Not under AAOIFI (SS 17, 5/2/2; the 2008 statement) or the IFSB (IFSB-23, para. 603). The Securities Commission's Shariah Advisory Council allows purchase undertakings, with the exercise price set by an agreed formula or at the sale, and does not speak of nominal value; the Commission's guidelines set out who may guarantee the capital (SC Guidelines, 26.22) (4.10)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "6.3 Common mistakes",
+   "id": "crs-67"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Mistake",
+    "Correction"
+   ],
+   "r": [
+    [
+     "\"Musharakah is a loan with profit-sharing.\"",
+     "It is a partnership. The bank owns part of the assets and bears loss by its capital (Usmani, p. 38)."
+    ],
+    [
+     "\"Loss is shared by the profit ratio.\"",
+     "Loss follows capital, for every holder in 3.4."
+    ],
+    [
+     "\"All schools allow any profit split.\"",
+     "Malik, al-Shafi'i's school, Zufar and Ibn Hazm require profit to follow capital (3.3.2)."
+    ],
+    [
+     "\"All schools forbid goods as capital.\"",
+     "Malik, Ibn Abi Layla, a narration from Ahmad, some Hanbalis, AAOIFI and BNM allow goods at their value; the Shafi'i *Minhaj*, and al-Shafi'i in one view, allow fungible goods; Usmani reports Abu Hanifah allowing fungible goods if mixed; al-Kasani reports Muhammad allowing fungible goods of one kind after mixing; Usmani himself prefers Malik's view (3.2.1). Tawus, al-Awza'i and Hammad are not listed here because they allow goods in mudarabah only."
+    ],
+    [
+     "\"The bank can ask the client to guarantee its capital, since both agree.\"",
+     "No partner may guarantee another's capital (3.6)."
+    ],
+    [
+     "\"In diminishing musharakah, the client can promise to buy the units at the bank's original price.\"",
+     "AAOIFI, the Fiqh Academy and the IFSB ban a buy-out at face or nominal value. BNM fixes the price at the start for asset financing (32.3) but bars a guarantee of capital in a venture (23.3). Check the framework that applies (4.8.4)."
+    ],
+    [
+     "\"Musharakah sukuk are bonds: the holders always get their money back.\"",
+     "The holders are partners who own the venture's assets and bear its losses (AAOIFI SS 17, 5/1/5/6; SC Guidelines, 26.53). Whether, and by whom, their capital may be guaranteed depends on the framework (4.10)."
+    ],
+    [
+     "\"Diminishing musharakah is one contract.\"",
+     "It is several steps (joint purchase, lease, promise, separate sales) that must not be made conditions of each other (4.8.3)."
+    ],
+    [
+     "\"Everyone agrees Qur'an 38:24 is about partners.\"",
+     "Al-Qurtubi calls that reading far-fetched (2.3.1)."
+    ],
+    [
+     "\"The 'third partner' hadith is authentic.\"",
+     "Its grade differs by source: sound in the edition of Abu Dawud used here; weak for al-Albani; a good chain for Zubair Ali Za'i; weak in the *Bulugh al-Maram* edition's note, where Ibn Hajar reports al-Hakim grading it sound (2.3.2)."
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 7. Scholars and works quoted",
+   "id": "crs-68"
+  },
+  {
+   "t": "p",
+   "x": "Each entry gives the person, the work quoted and the sections where it is used."
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Scholar",
+    "Dates",
+    "School",
+    "Work quoted",
+    "Used in"
+   ],
+   "r": [
+    [
+     "1",
+     "Ibn al-Qasim, in the *Mudawwana* compiled by Sahnun, with Malik's statements",
+     "Malik 711-795; Ibn al-Qasim 745-806; Sahnun 776-854",
+     "Maliki",
+     "*al-Mudawwana*, Book of Partnership, 3:605",
+     "3.2.1, 3.3.2, 3.4, 3.9, 3.11, 6.1"
+    ],
+    [
+     "2",
+     "Al-Kasani",
+     "d. 1191",
+     "Hanafi",
+     "*Bada'i' al-Sana'i'* 6:56-60, 6:62-63; \"6:162-63\" and 6:59, 6:63 as cited by Usmani",
+     "1.4, 2.1, 2.2, 2.3.4, 3.2.1, 3.2.4, 3.3.2, 3.3.3, 3.4, 3.10, 3.11, 6.1, 6.2"
+    ],
+    [
+     "3",
+     "Ibn Qudamah",
+     "1147-1223",
+     "Hanbali",
+     "*al-Mughni* 5:3-4, 5:13, 5:22-23, 5:27-28; 5:124-25, 5:133-34, 5:140, 5:147 as cited by Usmani",
+     "1.2, 1.4, 2.1, 2.3, 2.4, 3.1-3.4, 3.8, 3.10, 3.11, 6.1"
+    ],
+    [
+     "4",
+     "Al-Nawawi, with Mustafa ibn Hamid ibn Sumayt",
+     "Al-Nawawi 1233-1277; Ibn Sumayt (modern; edition 2008)",
+     "Shafi'i",
+     "*Minhaj al-Talibin*, Book of Partnership, in *Mukhtasar Tuhfat al-Muhtaj bi-Sharh al-Minhaj* (an abridgement of Ibn Hajar al-Haytami's commentary *Tuhfat al-Muhtaj*) 2:251-254",
+     "1.2, 2.1, 2.2, 2.3.4, 2.4, 3.2-3.4, 3.7-3.11, 6.1, 6.2"
+    ],
+    [
+     "5",
+     "Ibn Hazm",
+     "994-1064",
+     "Zahiri",
+     "*al-Muhalla* 6:412-415",
+     "2.1, 3.2.3, 3.3.2, 3.4, 3.9, 3.10.2, 3.11"
+    ],
+    [
+     "6",
+     "Al-Kulayni, reporting Imams al-Sadiq and Ali",
+     "c. 864-941",
+     "Ja'fari",
+     "*al-Kafi*, vol. 5, nos. 971, 1013, 1090-1091",
+     "2.3.3, 3.1, 3.8, 3.11"
+    ],
+    [
+     "7",
+     "Al-Tabari",
+     "839-923",
+     "Independent jurist",
+     "*Jami' al-Bayan*, on Qur'an 38:24",
+     "2.3.1, 3.11"
+    ],
+    [
+     "8",
+     "Al-Qurtubi",
+     "c. 1214-1273",
+     "Maliki",
+     "*al-Jami' li-Ahkam al-Qur'an*, on Qur'an 38:24",
+     "2.3.1, 3.11, 6.2, 6.3"
+    ],
+    [
+     "9",
+     "Ibn Abbas (*Tanwir al-Miqbas* is attributed to him)",
+     "d. 686",
+     "(Companion)",
+     "*Tanwir al-Miqbas*, on Qur'an 38:24 (English); his sayings on non-Muslim partners in *al-Mughni* 5:3-4",
+     "2.3.1, 3.1"
+    ],
+    [
+     "10",
+     "Mufti Muhammad Shafi'",
+     "d. 1976",
+     "(commentator)",
+     "*Ma'arif al-Qur'an*, on Qur'an 38:24 (English)",
+     "2.3.1"
+    ],
+    [
+     "11",
+     "Ibn Hajar al-Asqalani",
+     "d. 1449",
+     "(hadith scholar)",
+     "*Bulugh al-Maram* 1013-1014, with the edition's notes",
+     "2.3.2, 6.3"
+    ],
+    [
+     "12",
+     "Ibn al-Mundhir",
+     "—",
+     "(jurist)",
+     "*al-Ijma'* p. 137, as quoted by BNM; his report of consensus, as quoted in *al-Mughni* 5:28",
+     "2.3.4, 3.2.1, 3.2.3, 3.3.1"
+    ],
+    [
+     "13",
+     "Muhammad Taqi Usmani",
+     "b. 1943",
+     "Hanafi",
+     "*An Introduction to Islamic Finance*",
+     "throughout"
+    ],
+    [
+     "14",
+     "Mahmoud A. El-Gamal",
+     "b. 1963",
+     "(economist)",
+     "\"Limits and Dangers of Shari'a Arbitrage\"",
+     "4.9"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Early figures named in reports:** the Prophet Muhammad; the Prophet David (*Dawud*), in Qur'an 38; Ali ibn Abi Talib (fourth caliph), whose saying on loss AAOIFI quotes from the *Musannaf* of Ibn Abi Shaybah; Abu Hurayrah; al-Sa'ib ibn Abi al-Sa'ib; al-Bara' ibn 'Azib; Zayd ibn Arqam; Ammar ibn Yasir, Sa'd ibn Abi Waqqas, Abdullah ibn Mas'ud and his son Abu Ubaydah (in the report on the spoils of Badr); and Abu Hanifah, Malik, al-Shafi'i and Ahmad ibn Hanbal as school founders."
+  },
+  {
+   "t": "p",
+   "x": "**Others named in reports, as given by the authors above, include:** Abu Yusuf, Muhammad (usually taken to be al-Shaybani, though this is not certain) and Zufar (Hanafi); al-Khiraqi (the Hanbali author of the short text on which *al-Mughni* comments), \"al-Qadi\", al-Khallal, al-Athram, Abu Talib and Harb (narrators from Ahmad), Abu Bakr and Abu al-Khattab (Hanbali); al-Hasan (usually taken to be al-Hasan al-Basri, though this is not certain), al-Thawri, al-Awza'i, Abu Thawr, Tawus and Ata' (early jurists); Ibn Abi Layla, Ibn Sirin, Yahya ibn Abi Kathir, Hammad ibn Abi Sulayman and Ishaq, named by Ibn Qudamah on goods as capital; Hanbal (a narrator from Ahmad); al-Tahawi (Hanafi), named by al-Kasani; al-Layth and Abu Sulayman (usually taken to be Dawud al-Zahiri, though this is not certain), named by Ibn Hazm; al-Mardawi (*al-Insaf*), Ashraf Ali Thanawi (*Imdad al-Fatawa*) and *al-Fatawa al-Hindiyyah*, as cited by Usmani; al-Hakim and al-Dhahabi (hadith graders), as cited by AAOIFI and Ibn Hajar; and al-Mirghinani (*al-Hidayah*), Ibn Muflih (*al-Mubdi'*) and Ibn Abi Shaybah (*al-Musannaf*), as cited by AAOIFI."
+  },
+  {
+   "t": "p",
+   "x": "**Hadith graders cited:** al-Albani (d. 1999) and Zubair Ali Za'i (d. 2013), and the Shia graders al-Majlisi (d. 1699) and al-Behbudi, for their grades in 2.3.2-2.3.3 and 6.3. Their grades are given as published (al-Maktaba al-Shamila, zubairalizai.com and the Thaqalayn hadith library)."
+  },
+  {
+   "t": "p",
+   "x": "**Hadith collections used:** Sunan Abi Dawud, Sunan Ibn Majah, Bulugh al-Maram, al-Kafi and Sahih al-Bukhari (nos. 2497-2498), in the editions used here; al-Bukhari no. 2317, Abu Dawud no. 2936 and al-Hakim's *al-Mustadrak*, as cited by BNM."
+  },
+  {
+   "t": "p",
+   "x": "**Institutions:** AAOIFI, IFSB, Bank Negara Malaysia, Central Bank of the UAE, Saudi Central Bank, Securities Commission Malaysia and its Shariah Advisory Council, International Islamic Fiqh Academy."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 8. Glossary",
+   "id": "crs-69"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Word",
+    "Plain meaning"
+   ],
+   "r": [
+    [
+     "Abdan / a'mal",
+     "\"Bodies\" / \"works\": the partnership in which partners pool their work and share their earnings"
+    ],
+    [
+     "AH",
+     "A year of the Islamic lunar calendar, counted from the Prophet's emigration to Medina in 622 CE"
+    ],
+    [
+     "Amanah",
+     "Trust"
+    ],
+    [
+     "'Ammat al-'ulama'",
+     "\"The general body of scholars\": the majority view, as a writer reports it"
+    ],
+    [
+     "Amwal",
+     "\"Properties\": in *shirkat al-amwal*, the partnership in capital"
+    ],
+    [
+     "'Aqd",
+     "A contract"
+    ],
+    [
+     "Al-asahh",
+     "\"The sounder\": the term the Shafi'i text uses for the view it prefers within the school"
+    ],
+    [
+     "Bay' bil-wafa",
+     "A sale with a separate promise to sell back; used by Hanafi jurists to show that a promise can be enforced"
+    ],
+    [
+     "Caliph",
+     "A leader of the Muslim community after the Prophet"
+    ],
+    [
+     "Companions",
+     "The people who knew the Prophet and followed him"
+    ],
+    [
+     "Constructive liquidation",
+     "Treating a business as if it were sold, by an agreed valuation, to work out profit"
+    ],
+    [
+     "Da'if (Da'eef)",
+     "Weak: a grading of a hadith report"
+    ],
+    [
+     "Daily products",
+     "Counting each investor's money by how much was in the pool on each day"
+    ],
+    [
+     "Daman",
+     "Bearing liability for loss"
+    ],
+    [
+     "Dhimam",
+     "Another name for the *wujuh* partnership in AAOIFI's list, which calls it a partnership of liability"
+    ],
+    [
+     "Dhimmi",
+     "A non-Muslim who pays the poll tax under Muslim rule (al-Kafi's English: \"non-Muslim tax payer\")"
+    ],
+    [
+     "Diminishing musharakah",
+     "A partnership in which the client buys the financier's share unit by unit until he owns it all"
+    ],
+    [
+     "Dirham / dinar",
+     "A silver coin / a gold coin: the cash of the classical books"
+    ],
+    [
+     "Fiqh",
+     "Islamic law as the jurists work it out"
+    ],
+    [
+     "Fulus",
+     "Copper coins"
+    ],
+    [
+     "Gharar",
+     "Harmful uncertainty in a contract; forbidden"
+    ],
+    [
+     "Gross profit",
+     "Income less only the direct costs of the deal"
+    ],
+    [
+     "Hadith",
+     "A report of what the Prophet Muhammad said, did or approved"
+    ],
+    [
+     "Hadith qudsi",
+     "A report in which the Prophet relates words of God"
+    ],
+    [
+     "Hanafi, Maliki, Shafi'i, Hanbali",
+     "The four Sunni schools of law, named after Abu Hanifah, Malik, al-Shafi'i and Ahmad ibn Hanbal"
+    ],
+    [
+     "Hasan",
+     "Good: a grading of a hadith report"
+    ],
+    [
+     "Ijarah",
+     "Leasing; also the hiring of services"
+    ],
+    [
+     "Ijarah al-ashkhas",
+     "The hire of persons: an employment contract (BNM 14.3)"
+    ],
+    [
+     "Ijarah mawsufah fi zimmah",
+     "A \"Forward lease\": a lease contract \"where the asset will be delivered in the future\" (SC Guidelines, 26.43-26.44); the term is used in BNM 22.12(b)"
+    ],
+    [
+     "Ijma'",
+     "Consensus of the jurists"
+    ],
+    [
+     "'Ilj",
+     "A word used in al-Kafi 5, no. 1013, which the English translation glosses as \"a great non-Muslim person\""
+    ],
+    [
+     "Imam",
+     "Among Shia Muslims, one of the leaders from the Prophet's family whose reports carry authority; among Sunnis, also a title of respect for a leading scholar"
+    ],
+    [
+     "'Inan",
+     "The ordinary partnership in which each partner puts in a set amount of money; the basis of modern musharakah"
+    ],
+    [
+     "Ja'fari / Imami",
+     "The main Shia school of law, named after Ja'far al-Sadiq"
+    ],
+    [
+     "Jahiliyyah",
+     "\"Ignorance\": the period before Islam"
+    ],
+    [
+     "Jariri",
+     "A school that al-Tabari (Ibn Jarir) is often said to have founded, named after him, though this is not certain"
+    ],
+    [
+     "Kafalah",
+     "Surety: guaranteeing another's obligation"
+    ],
+    [
+     "Al-kharaj bi-l-daman",
+     "\"Entitlement to gain goes with liability for loss\": a hadith cited by al-Kasani"
+    ],
+    [
+     "Khulata' / khultah",
+     "In Qur'an 38:24, rendered \"associates\" in one English translation and read as \"partners\" (al-Tabari and others), \"companions\" or \"partners\" (the two senses al-Qurtubi gives; he calls \"partners\" far-fetched), \"partners and brothers\" (*Tanwir al-Miqbas*), or owners whose herds are kept together (the majority reading al-Qurtubi reports); in the alms-tax law, *khultah* is separately owned herds kept together"
+    ],
+    [
+     "Lodge (Malaysia)",
+     "To file with the Securities Commission (SC Guidelines, 26.01)"
+    ],
+    [
+     "Madhhab",
+     "A school of law"
+    ],
+    [
+     "Majusi (plural Majus)",
+     "A Magian, that is, a Zoroastrian"
+    ],
+    [
+     "Mithli",
+     "Fungible: goods replaceable by the same kind and amount, such as wheat"
+    ],
+    [
+     "Mudarabah",
+     "One side gives money, the other works; profit is shared, money losses fall on the investor"
+    ],
+    [
+     "Mudarib",
+     "The manager in a mudarabah"
+    ],
+    [
+     "Mufawadah",
+     "A partnership of full equality in which each partner also stands surety for the other"
+    ],
+    [
+     "Mujtahid",
+     "An independent jurist"
+    ],
+    [
+     "Murabahah",
+     "A sale at cost plus an agreed profit"
+    ],
+    [
+     "Musharakah (Malay: musyarakah)",
+     "A modern word for the partnership in capital; sometimes it also covers the partnership in services (Usmani)"
+    ],
+    [
+     "Musharakah certificate",
+     "A paper showing a share of ownership in a project's assets"
+    ],
+    [
+     "Musyarakah mutanaqisah",
+     "Bank Negara Malaysia's term for diminishing musharakah"
+    ],
+    [
+     "Riba",
+     "\"Increase\": a fixed extra on money lent, or money exchanged for more money of the same kind; forbidden"
+    ],
+    [
+     "Rukn (plural arkan)",
+     "\"Pillar\": a part without which a contract does not exist"
+    ],
+    [
+     "Sahih",
+     "Sound: a grading of a hadith report"
+    ],
+    [
+     "Sakk (plural sukuk)",
+     "A certificate of equal value standing for a share in assets or a venture; in musharakah sukuk, a share in a partnership"
+    ],
+    [
+     "Sana'",
+     "Another name for the partnership in work (Usmani)"
+    ],
+    [
+     "Sarf",
+     "Currency exchange"
+    ],
+    [
+     "Shari'ah",
+     "Islamic law as a whole"
+    ],
+    [
+     "Sharikah wa-salaf",
+     "\"A partnership and a loan\": the *Mudawwana*'s reason why a partnership joined to a loan would be invalid"
+    ],
+    [
+     "Sharik (plural shuraka')",
+     "A partner"
+    ],
+    [
+     "Shirkah (sharikah)",
+     "Sharing; the classical name for the whole law of partnership"
+    ],
+    [
+     "Shirkat al-'aqd",
+     "Partnership made by a contract: a joint business"
+    ],
+    [
+     "Shirkat al-milk",
+     "Joint ownership of a thing, by an act (buying together) or with none (inheriting)"
+    ],
+    [
+     "Sighah",
+     "The form of words: offer and acceptance"
+    ],
+    [
+     "Sleeping partner",
+     "A partner excluded by contract from all work"
+    ],
+    [
+     "Sukuk",
+     "Islamic investment certificates; see *sakk*"
+    ],
+    [
+     "Sunnah",
+     "The Prophet's example, known through hadith"
+    ],
+    [
+     "Sunni / Shia",
+     "The two main branches of Islam"
+    ],
+    [
+     "Tafwid",
+     "Handing over authority; one explanation of the word *mufawadah*"
+    ],
+    [
+     "Tanazul",
+     "Waiver: giving up a right, such as a right to a profit payment"
+    ],
+    [
+     "Taqabbul",
+     "Another name for the partnership in work (Usmani)"
+    ],
+    [
+     "Al-tawa",
+     "What is lost (in al-Kafi 5, no. 971, in a settlement between partners)"
+    ],
+    [
+     "Ta`widh",
+     "Compensation. In Malaysian sukuk musharakah and mudharabah, for failing to distribute realised profit on the agreed date (not for failing to pay expected profit) or for late payment of amounts due on dissolution (26.16); in sukuk bai` bithaman ajil, murabahah, istisna` and ijarah, only for late payment of amounts due (26.15); in sukuk wakalah bi al-istithmar, for the agent's breach of its fiduciary duty by failing to distribute realised profit on the agreed date, or for late payment of amounts due on dissolution (26.17) (SC Guidelines)"
+    ],
+    [
+     "'Urud",
+     "Trade goods or other non-cash assets"
+    ],
+    [
+     "Wa'd",
+     "A promise. In sukuk, the originator's one-sided binding promise to buy the assets is called a repurchase undertaking (IFSB-23, note 195)"
+    ],
+    [
+     "Wa`d mu`allaq",
+     "A promise tied to a condition or event"
+    ],
+    [
+     "Wa`d mulzim",
+     "A promise that binds the one who makes it"
+    ],
+    [
+     "Wakalah",
+     "Agency"
+    ],
+    [
+     "Wakil",
+     "An agent"
+    ],
+    [
+     "Wa-qila",
+     "\"It is also said\": the Shafi'i text's mark for a second view in the school"
+    ],
+    [
+     "Wujuh",
+     "\"Faces\": the partnership in which partners with no capital buy on credit on the strength of their standing"
+    ],
+    [
+     "Zahir al-madhhab",
+     "\"The apparent position of the school\": its main, most widely known position"
+    ],
+    [
+     "Zahiri",
+     "\"Literalist\": the school Ibn Hazm defended"
+    ],
+    [
+     "Zakat",
+     "The alms tax"
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Sources",
+   "id": "crs-70"
+  },
+  {
+   "t": "p",
+   "x": "**Books and articles**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Muhammad Taqi Usmani, *An Introduction to Islamic Finance*, PDF copy with no publisher's imprint; foreword signed Karachi, 29 June 1998 (pages as printed on the page footers; other printings may differ by a page).",
+    "Sahnun, *al-Mudawwana al-Kubra*, from Ibn al-Qasim from Malik, Book of Partnership, vol. 3, p. 605.",
+    "Al-Kasani, *Bada'i' al-Sana'i' fi Tartib al-Shara'i'*, first edition 1327-1328 AH; vol. 6, pp. 56-60 and 62-63.",
+    "Ibn Qudamah, *al-Mughni*, Maktabat al-Qahirah, 1388-1389 AH; vol. 5, pp. 3-4, 13, 22-23 and 27-28. Also vol. 5, pp. 124-25, 133-34, 140 and 147 in the edition cited by Usmani (Beirut: Dar al-Kitab al-Arabi, 1972).",
+    "Mustafa ibn Hamid ibn Sumayt, *Mukhtasar Tuhfat al-Muhtaj bi-Sharh al-Minhaj*, Markaz al-Nur, first edition 1429 AH / 2008; vol. 2, pp. 251-254 (with the *Minhaj* text).",
+    "Ibn Hazm, *al-Muhalla bi-l-Athar*, vol. 6, pp. 412-415.",
+    "Al-Kulayni, *al-Kafi*, vol. 5, nos. 971, 1013, 1090 and 1091, in English translation, with the Arabic.",
+    "Al-Tabari, *Jami' al-Bayan*, on Qur'an 38:24.",
+    "Al-Qurtubi, *al-Jami' li-Ahkam al-Qur'an*, on Qur'an 38:24.",
+    "*Tanwir al-Miqbas min Tafsir Ibn 'Abbas* (attributed to Ibn Abbas), on Qur'an 38:24, in English translation.",
+    "Mufti Muhammad Shafi', *Ma'arif al-Qur'an*, on Qur'an 38:24, in English translation.",
+    "Ibn Hajar al-Asqalani, *Bulugh al-Maram*, nos. 1013-1014, with the edition's notes.",
+    "Hadith: Sunan Abi Dawud 3383 and 4836; Sunan Ibn Majah 2287; Sahih al-Bukhari 2497-2498. Al-Bukhari no. 2317, Abu Daud no. 2936 and al-Hakim's *al-Mustadrak* are named as cited by Bank Negara Malaysia.",
+    "Hadith grades: Muhammad Nasir al-Din al-Albani, *Sahih wa Da'if Sunan Abi Dawud* and *Sahih wa Da'if Sunan Ibn Majah* (as given in al-Maktaba al-Shamila); Hafiz Zubair Ali Za'i, his checked editions of *Sunan Abi Dawud* and *Sunan Ibn Majah* (as published on zubairalizai.com); Muhammad Baqir al-Majlisi, *Mir'at al-'Uqul*, and Muhammad Baqir al-Behbudi, *Sahih al-Kafi* (as given by the Thaqalayn hadith library).",
+    "Andrew Coats and Habib Motani, \"Purchase Undertakings in Recent Sukuk Issuances: Different Objectives and Approaches\", in S. Nazim Ali (ed.), *Islamic Finance: Innovation and Authenticity* (Harvard Law School, Islamic Finance Project, 2010), pp. 193-211, https://ibir-api.hbku.edu.qa/sites/default/files/2019-10/Motani-and-Coats-Purcase-undertakings-in-recent-sukuk-issuances.pdf (for the AAOIFI statement of February 2008).",
+    "Mahmoud A. El-Gamal, \"Limits and Dangers of Shari'a Arbitrage\", course copy at https://www.la.utexas.edu/users/chenry/polec/2005coursemats/Limits%20and%20Dangers%20of%20Shari.htm (no date or page numbers on that copy)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Standards and regulators**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "AAOIFI Shari'ah Standard 12, Sharikah (Musharakah) and Modern Corporations (issued 16 May 2002; current amended version adopted 14-16 June 2015).",
+    "AAOIFI Shari'ah Standard 49, Unilateral and Bilateral Promise (issued 4 January 2013).",
+    "AAOIFI Shari'ah Standard 17, Investment Sukuk (issued 8 May 2003).",
+    "AAOIFI Governance Standard 12, Sukuk Governance (effective for financial periods beginning on or after 1 July 2021).",
+    "AAOIFI, press release regarding draft Shari'ah Standard No. 62, 28 April 2025, https://aaoifi.com/announcement/press-release-from-the-accounting-and-auditing-organisation-for-islamic-financial-institutions-aaoifi-regarding-draft-shariah-standard-no-62/?lang=en.",
+    "AAOIFI Financial Accounting Standards 4, Musharaka Financing (effective 1 January 1998; replaced by FAS 51 for financial statements beginning on or after 1 January 2027); 51, Participatory Ventures (effective 1 January 2027).",
+    "AAOIFI, \"Adoption of AAOIFI Standards\", https://aaoifi.com/adoption-of-aaoifi-standards/?lang=en.",
+    "IFSB-1 Guiding Principles of Risk Management (2005); IFSB-23 Revised Capital Adequacy Standard (2021).",
+    "Bank Negara Malaysia, Policy Document on Musyarakah, BNM/RH/STD 028-7, issued 20 April 2015, https://www.bnm.gov.my/media/e4migted/musyarakah.pdf.",
+    "Bank Negara Malaysia, Policy Document on Wa`d, issued 2 February 2017.",
+    "Bank Negara Malaysia, Policy Document on Shariah Governance, BNM/RH/PD 028-100, issued 20 September 2019.",
+    "Central Bank of the UAE, Standard re. Shari'ah Governance for Islamic Financial Institutions, issued 21 April 2020.",
+    "Saudi Central Bank, Shariah Governance Framework for Local Banks Operating in Saudi Arabia, February 2020.",
+    "Securities Commission Malaysia, *Resolutions of the Shariah Advisory Council of the Securities Commission Malaysia*, 31 December 2023, pp. 124-130, https://www.sc.com.my/development/icm/shariah/resolutions-of-the-shariah-advisory-council-of-the-sc.",
+    "Securities Commission Malaysia, Guidelines on Islamic Capital Market Products and Services, SC-GL/1-2022 (R2-2026), first issued 28 November 2022, revised 30 March 2026, https://www.sc.com.my/regulation/guidelines/islamic-capital-market-products-and-services; and \"Members of the Shariah Advisory Council\", https://www.sc.com.my/development/icm/shariah/members-of-the-shariah-advisory-council.",
+    "International Islamic Fiqh Academy, Resolution No. 136 (2/15), Diminishing Musharakah and its Shariah Criteria, Muscat, 6-11 March 2004, https://iifa-aifi.org/en/32878.html."
+   ]
+  }
+ ]
+}

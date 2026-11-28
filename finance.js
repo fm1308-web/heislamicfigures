@@ -1739,7 +1739,7 @@ window.FinanceView = (function(){
   // ── Lecture levels (28 Nov 2026, Adam): BASICS (Qur'an words, chapters 1-3), CHAIN (development steps
   //    per contract, chapter 4), COURSE (the full professional manual per contract, only once it has passed QA).
   //    A contract is listed here ONLY when its file data/Finance/courses/<id>.json is built from a QA-passed manual.
-  var COURSE_IDS = { C02:true };
+  var COURSE_IDS = { C01:true, C02:true };
   var _lecLevel = 'basics';
   var _courseCache = {};
 
@@ -1906,7 +1906,7 @@ window.FinanceView = (function(){
   // ── COURSE — the full manual for one contract, from data/Finance/courses/<id>.json (blocks built by
   //    factory-scripts/usul_course_build_20261128.py from the QA-passed manual; text copied as-is). ──
   function _crsInline(s){
-    return _esc(s).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*\s][^*]*)\*/g, '<i>$1</i>');
+    return _esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\*([^*\s][^*]*)\*/g, '<i>$1</i>');
   }
   function _crsLoad(cid){
     if(!_courseCache[cid]){
