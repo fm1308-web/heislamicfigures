@@ -3620,3 +3620,14 @@ body.fin-fullscreen #usul-fs-logo{
 #finance-view .fin-wl-pager a{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.06em; color:#2F5F8F !important; cursor:pointer; }
 #finance-view .fin-wl-pager a:hover{ text-decoration:underline; }
 @media (max-width:600px){ #finance-view .fin-wl{ padding:0 16px 60px; } #finance-view .fin-wl-title{ font-size:28px; } #finance-view .fin-wl-ar{ font-size:21px; } }
+
+/* ── Family-tree lifelines on the TIMELINE (28 Nov 2026): name tags on the branching contract lines,
+      and the SPLIT / CHANGE badges on family-tree rows at the left. ── */
+#finance-view .fin-br-tag{ position:absolute; z-index:4; padding:2px 8px; font-size:13px; line-height:18px;
+  background:#FFFDF7; color:#22303F; border:1px solid #E2D9C2; border-left:3px solid #B8860B; border-radius:4px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+#finance-view .fin-br-tag:hover{ background:#FBF3DF; }
+#finance-view .fin-br-tag.fin-selected{ background:#FBF3DF; border-color:#B8860B; font-weight:600; }
+#finance-view .fin-br-tag-und{ font-style:italic; color:#5D6876; }
+#finance-view .fin-badge-split{ color:#1F4E7A !important; background:#E6EEF7; border:1px solid #2F5F8F; }
+#finance-view .fin-badge-chg{ color:#4A5A6A !important; background:#EEF1F4; border:1px solid #8A94A2; }

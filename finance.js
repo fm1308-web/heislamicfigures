@@ -93,7 +93,7 @@ window.FinanceView = (function(){
 
   // Display-only cleaning: hides our own record notes (file names, "in app", check dates) from readers.
   // The data files are NOT changed. Tested on all rows: factory-scripts\usul_clean_text_test_20261126.js
-  var _PUB_INTERNAL = /\.txt|\.pdf|\.json|Standards\/|\bin (the )?app\b|\bapp file\b|this session|earlier session|\bfile\b|^\d{4}-\d{2}-\d{2}$/i;
+  var _PUB_INTERNAL = /\.txt|\.pdf|\.json|\b[TB]\d{3}\b|Standards\/|\bin (the )?app\b|\bapp file\b|this session|earlier session|\bfile\b|^\d{4}-\d{2}-\d{2}$/i;
   var _PUB_CODE = /F\d{4}|\.json|\.txt|\.pdf|TK_|batch\d|extract\b|_extract|this session|\bAdam (asked|said|wants|approved|decided|supplied)\b|project rule|\bthe app\b|\bin app\b|\bL\d{3}\b|\bDV\d{2}\b/i;
   var _LINK_RE = /(?:https?:\/\/|www\.)[^\s;,<>"'()\]]+|\b(?:[a-z0-9-]+\.)+[a-z]{2,6}\/[^\s;,<>"'()\]]*/gi;
   function _pubClean(s){
@@ -914,6 +914,7 @@ window.FinanceView = (function(){
     var cs = new Set();
     if(kind==='book'){ ((_idx.book[id]||{}).contracts_covered||[]).forEach(function(c){ cs.add(c); }); }
     else if(kind==='event'){ ((_idx.event[id]||{}).linked_contracts||[]).forEach(function(c){ cs.add(c); }); }
+    else if(kind==='branch'){ var _br = D.branchById && D.branchById[id]; if(_br && _br.contract_id) cs.add(_br.contract_id); }
     else if(kind==='scholar'){
       _eventsForScholar(id).forEach(function(eid){ ((_idx.event[eid]||{}).linked_contracts||[]).forEach(function(c){ cs.add(c); }); });
       _booksForScholar(id).forEach(function(bid){ ((_idx.book[bid]||{}).contracts_covered||[]).forEach(function(c){ cs.add(c); }); });
@@ -1122,6 +1123,20 @@ window.FinanceView = (function(){
   // (Qur'an rows are timeline_order 0 / stage 'quran' — they are NEVER spine rows; their verses feed
   //  the QUR'AN READ pill only, and stay undated everywhere.)
 
+  // ── Family-tree steps on the timeline (28 Nov 2026). Names shortened to the part before ':' (full name in the panel).
+  var BR_SPLIT = { key:'split', label:'SPLIT', color:'#2f5f8f' }, BR_CHANGE = { key:'chg', label:'CHANGE', color:'#2f5f8f' };
+  function _brShort(r){
+    var n = String(r.new_version_name || ''), i = n.indexOf(':'), s = (i > 0 ? n.slice(0, i) : n).trim();
+    return (s.indexOf(' ') === -1) ? n.trim() : s;   // a one-word head ("Root") says nothing alone → keep the full name
+  }
+  function _brTitle(r){
+    var s = _brShort(r), cn = String(r.contract || '');
+    return (cn && s.toLowerCase().indexOf(cn.toLowerCase()) === -1) ? cn + ' · ' + s : s;
+  }
+  function _brIsSplit(r){
+    if(!r.from_version || r.from_version === 'none') return false;
+    return D.branches.filter(function(x){ return x.from_version === r.from_version; }).length > 1;
+  }
   function _buildEntries(){
     // Tradition filter HIDES non-matching rows (filtered at the end of this fn); untagged rows stay.
     var schOk = D.scholars.filter(function(s){ return _confOk(s.assurance); });
@@ -1162,6 +1177,15 @@ window.FinanceView = (function(){
       var _taken = {};
       entries.forEach(function(en){ _taken[String(en.title||'').trim().toLowerCase()+'@'+en.yr] = true; });
       _lineageDated(_taken).forEach(function(en){ entries.push(en); });
+    }
+    // Family-tree steps (usul_branches) that have a year → rows on the left, for each ticked contract
+    // (28 Nov 2026, Adam: the moments a contract changed or split sit on the timeline like events).
+    // Badge SPLIT when the step's parent has more than one child in the tree, else CHANGE. Undated steps never get a row.
+    if(F.contract.size && D.branches){
+      D.branches.forEach(function(r){
+        if(typeof r.year_ce !== 'number' || !F.contract.has(r.contract_id)) return;
+        entries.push({ kind:'branch', id:r.id, yr:r.year_ce, title:_brTitle(r), meta:'', conf:(_brIsSplit(r) ? BR_SPLIT : BR_CHANGE) });
+      });
     }
     entries.sort(function(a,b){ if(a.yr!==b.yr) return a.yr-b.yr; return String(a.title||'').localeCompare(String(b.title||'')); });
     // Tradition filter now HIDES non-matching rows (Adam, 2026-08-05) so the
@@ -1450,11 +1474,7 @@ window.FinanceView = (function(){
     //    contract gets its OWN weaving lifeline (own lane, colour, earliest-evidence start, dashed cap) in a
     //    SHARED tile column. PLOTTED → tiles + veins; QUR'AN-BLOCK / PENDING → union strips. 0 ticked → none.
     if(_hasTerms){
-      var TILE_H = 80, STEM_RIGHT = 506, LANE0 = 545, LANE_STEP = 26, _lifeBot = totalH - PAD;
-      var _nTicked = _cids.length;
-      var TILE_LEFT = 605 + (_nTicked - 1) * LANE_STEP;   // shift tiles right so the last lane never runs under them
-      var BRANCH_END = TILE_LEFT - 2;                      // veins peak at the tile column's left edge
-      var _tileHtml = '', _svg = '';
+      var STEM_RIGHT = 506, LANE0 = 545, _lifeBot = totalH - PAD;
 
       // A left-spine entry's contracts: books/events/scholars via _rowContracts; lineage via _idx.lineage.
       var _entryHasC = function(en, cid){
@@ -1467,77 +1487,74 @@ window.FinanceView = (function(){
         return fallbackY;
       };
 
-      // Collect ALL plotted tiles across ticked contracts; ONE global nudge pass (by year) so tiles from
-      // different contracts never overlap. Each tile keeps its contract index (lane) and its own colour.
-      var _allTiles = [];
-      _tByC.forEach(function(b, ci){
-        b.plotted.forEach(function(d){
-          _allTiles.push({ ci:ci, cid:b.cid, t:d.t, yr:d.yr, approx:!!d.approx, col:_termColor(d.t), attachY:_finYrToY(d.yr, rows, totalH) });
-        });
-      });
-      _allTiles.sort(function(a, b){ return (a.attachY - b.attachY) || (a.yr - b.yr); });
-      var _prevTileY = -1e9;
-      _allTiles.forEach(function(tile){ var y = tile.attachY; if(y < _prevTileY + TILE_H) y = _prevTileY + TILE_H; _prevTileY = y; tile.tileY = y; });
-
-      if(_allTiles.length){
-        // Tiles (shared column). Border colour, badge, click unchanged. APPROX tiles (rough/period dates,
-        // plotted at the END of their period) get a dashed border + a small "by ~<yr>" first line — the one
-        // exception to the no-year rule, since the position alone would overstate precision.
-        _allTiles.forEach(function(tile){
-          var t = tile.t, cf = CONF[t.assurance];
-          var badge = (cf && cf.key !== 'plc') ? '<span class="fin-badge fin-badge-'+cf.key+'">'+cf.label+'</span>' : '';
-          _tileHtml += '<div class="fin-term-tile'+(tile.approx ? ' fin-term-tile-approx' : '')+'" data-term-origin="'+_esc(t.id)+'" style="top:'+tile.tileY+'px;left:'+TILE_LEFT+'px;border-left-color:'+tile.col+'"'
-                     + ' title="'+_esc((t.term_english||t.id)+(tile.approx ? ' — by ~'+tile.yr+' CE (approx)' : ' — origin '+tile.yr+' CE'))+'">'
-                     + (tile.approx ? '<div class="fin-tile-approx-yr">by ~'+tile.yr+'</div>' : '')
-                     + '<div class="fin-tile-en">'+_esc(t.term_english || t.id)+'</div>'
-                     + (t.term_arabic ? '<div class="fin-tile-ar">'+_esc(t.term_arabic)+'</div>' : '')
-                     + badge
-                     + '</div>';
-        });
-
-        // One weaving vein PER ticked contract — its own lane (545 + i*26), colour, earliest-evidence start,
-        // dashed Qur'anic cap, weaving out to touch ITS OWN tiles at their final nudged Ys, down to today.
-        var _svgInner = '';
-        _tByC.forEach(function(b, ci){
-          var cid = b.cid;
-          var _myTiles = _allTiles.filter(function(x){ return x.ci === ci; });   // year-sorted (from the global pass)
-          var _trunkCol = CONTRACT_COLORS[cid] || (b.plotted[0] ? _termColor(b.plotted[0].t) : '#D4AF37');
-          var _laneBase = LANE0 + ci * LANE_STEP;
-          var _fallbackY = _myTiles.length ? _myTiles[0].attachY : _finYrToY(rows[0].yr, rows, totalH);
-          var _trunkTop = _earliestYForC(cid, _fallbackY);
-          // Ladder-style lifeline (Adam 2026-08-05): a smooth, near-vertical lane
-          // curve with a gentle sway. Tiles are reached by short branch stubs —
-          // the line itself never zigzags out to the tile column and back.
-          var _laneX = function(yy){ return _laneBase + 8 * Math.sin((yy - _trunkTop) / 260); };
-          var _pts = [{ x: STEM_RIGHT, y: _trunkTop }];
-          for(var _yy = _trunkTop + 100; _yy < _lifeBot; _yy += 140){ _pts.push({ x: _laneX(_yy), y: _yy }); }
-          _pts.push({ x: _laneX(_lifeBot), y: _lifeBot });
-          var _lifeD = 'M ' + _pts[0].x.toFixed(1) + ' ' + _pts[0].y.toFixed(1);
-          for(var _pi = 1; _pi < _pts.length; _pi++){
-            var _p0 = _pts[_pi-1], _p1 = _pts[_pi], _cy = ((_p0.y + _p1.y) / 2).toFixed(1);
-            _lifeD += ' C ' + _p0.x.toFixed(1) + ' ' + _cy + ', ' + _p1.x.toFixed(1) + ' ' + _cy + ', ' + _p1.x.toFixed(1) + ' ' + _p1.y.toFixed(1);
+      // ── Contract lifelines as FAMILY TREES (28 Nov 2026, Adam). The floating term boxes are gone. Each ticked
+      //    contract's line starts at its earliest left row and follows its family tree (usul_branches): where a step
+      //    has more than one child the line SPLITS; the child that starts last carries on the main lane, the others
+      //    branch off on new lanes. A dated step sits at its own year (its row is on the left); an undated step sits
+      //    just below its parent (no year shown or guessed). Lines with no further child run on to today.
+      //    Only a small name tag sits beside each step; everything else opens in the details panel on click.
+      var _svgInner = '', _tagHtml = '', LANE_W = 30, UND_STEP = 26, TAG_W = 230, _blockX = LANE0;
+      _cids.forEach(function(cid){
+        var col = CONTRACT_COLORS[cid] || '#D4AF37';
+        var _fbY = rows.length ? _finYrToY(rows[0].yr, rows, totalH) : topPad;
+        var _trunkTop = _earliestYForC(cid, _fbY);
+        var root = D.branchById && D.branchById[cid + '-B00'];
+        if(D.qToCById && D.qToCById[cid]){
+          var _tipTop = Math.max(pillY, _trunkTop - 80);
+          if(_tipTop < _trunkTop - 2){
+            _svgInner += '<path d="M '+STEM_RIGHT+' '+_trunkTop.toFixed(1)+' L '+STEM_RIGHT+' '+_tipTop.toFixed(1)+'"'
+                       + ' fill="none" stroke="'+col+'" stroke-width="2" stroke-opacity="0.7" stroke-dasharray="4 4"/>';
           }
-          _svgInner += '<path d="'+_lifeD+'" fill="none" stroke="'+_trunkCol+'" stroke-width="3" stroke-opacity="0.9"/>'
-                     + '<circle cx="'+STEM_RIGHT+'" cy="'+_trunkTop.toFixed(1)+'" r="3" fill="'+_trunkCol+'"/>';   // ruler touch-point
-          // Branch stubs: lane → each of this contract's tiles.
-          _myTiles.forEach(function(tile){
-            _svgInner += '<path d="M ' + _laneX(tile.tileY).toFixed(1) + ' ' + tile.tileY.toFixed(1) + ' L ' + BRANCH_END + ' ' + tile.tileY.toFixed(1) + '"'
-                       + ' fill="none" stroke="' + tile.col + '" stroke-width="1.5" stroke-opacity="0.55"/>';
+        }
+        var x0 = _blockX;
+        _svgInner += '<circle cx="'+STEM_RIGHT+'" cy="'+_trunkTop.toFixed(1)+'" r="3" fill="'+col+'"/>'
+                   + '<path d="M '+STEM_RIGHT+' '+_trunkTop.toFixed(1)+' C '+(STEM_RIGHT+20)+' '+_trunkTop.toFixed(1)+', '+x0+' '+(_trunkTop+4).toFixed(1)+', '+x0+' '+(_trunkTop+18).toFixed(1)+'"'
+                   + ' fill="none" stroke="'+col+'" stroke-width="3" stroke-opacity="0.9"/>';
+        if(!root){   // no family tree for this contract: one plain line, as before
+          _svgInner += '<path d="M '+x0+' '+(_trunkTop+18).toFixed(1)+' L '+x0+' '+_lifeBot+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-opacity="0.9"/>';
+          _blockX += LANE_W + 40;
+          return;
+        }
+        var kids = _ftKids(cid), nodes = [], laneN = 0;
+        var place = function(r, y, lane, parent){
+          var n = { r:r, y:y, lane:lane, parent:parent }; nodes.push(n);
+          var ch = (kids[r.id] || []).map(function(k){ return k.r; });
+          var und = 0;
+          var cy = ch.map(function(c){
+            return (typeof c.year_ce === 'number') ? Math.max(_finYrToY(c.year_ce, rows, totalH), y + 12) : y + UND_STEP * (++und);
           });
-          if(D.qToCById && D.qToCById[cid]){
-            var _tipTop = Math.max(pillY, _trunkTop - 80);
-            if(_tipTop < _trunkTop - 2){
-              _svgInner += '<path d="M '+STEM_RIGHT+' '+_trunkTop.toFixed(1)+' L '+STEM_RIGHT+' '+_tipTop.toFixed(1)+'"'
-                         + ' fill="none" stroke="'+_trunkCol+'" stroke-width="2" stroke-opacity="0.7" stroke-dasharray="4 4"/>';
-            }
+          var last = ch.length ? Math.max.apply(null, cy) : _lifeBot;
+          n.end = ch.length ? last : _lifeBot;
+          var lastI = cy.indexOf(last);
+          ch.forEach(function(c, i){ place(c, cy[i], (i === lastI) ? lane : ++laneN, n); });
+        };
+        place(root, _trunkTop + 18, 0, null);
+        var xOf = function(lane){ return x0 + lane * LANE_W; };
+        nodes.forEach(function(n){
+          var x = xOf(n.lane);
+          if(n.parent && n.parent.lane !== n.lane){
+            var xp = xOf(n.parent.lane), ys = Math.max(n.parent.y, n.y - 34);
+            _svgInner += '<path d="M '+xp+' '+ys.toFixed(1)+' C '+xp+' '+(ys + (n.y - ys) * 0.6).toFixed(1)+', '+x+' '+(n.y - (n.y - ys) * 0.5).toFixed(1)+', '+x+' '+n.y.toFixed(1)+'"'
+                       + ' fill="none" stroke="'+col+'" stroke-width="3" stroke-opacity="0.9"/>';
           }
-          // Junction dots at this contract's outward peaks (tile colour ties tile to its vein).
-          _myTiles.forEach(function(tile){ _svgInner += '<circle cx="'+BRANCH_END+'" cy="'+tile.tileY.toFixed(1)+'" r="3" fill="'+tile.col+'"/>'; });
+          _svgInner += '<path d="M '+x+' '+n.y.toFixed(1)+' L '+x+' '+n.end.toFixed(1)+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-opacity="0.9"/>'
+                     + '<circle cx="'+x+'" cy="'+n.y.toFixed(1)+'" r="4" fill="#fff" stroke="'+col+'" stroke-width="2"/>';
         });
-        _svg = '<svg class="fin-term-lifelines-svg" width="1300" height="'+totalH+'" style="position:absolute;left:0;top:0;pointer-events:none;z-index:3;overflow:visible">'
-             + _svgInner + '</svg>';
-      }
-      html += _svg + _tileHtml;   // weaving-vein SVG (z3, pointer-events:none) + tiles (z4)
+        // Name tags: one column to the right of this contract's lanes, nudged so they never overlap,
+        // each joined to its step by a faint dotted leader.
+        var tagX = xOf(laneN) + 22, prevY = -1e9;
+        nodes.slice().sort(function(a, b){ return a.y - b.y; }).forEach(function(n){
+          var ty = Math.max(n.y - 11, prevY + 24); prevY = ty;
+          var yrTxt = (typeof n.r.year_ce === 'number') ? n.r.year_ce + ' CE' : 'year not known';
+          _svgInner += '<path d="M '+(xOf(n.lane) + 5)+' '+n.y.toFixed(1)+' L '+(tagX - 2)+' '+(ty + 11).toFixed(1)+'" fill="none" stroke="'+col+'" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="2 3"/>';
+          _tagHtml += '<div class="fin-br-tag'+(typeof n.r.year_ce === 'number' ? '' : ' fin-br-tag-und')+'" data-br-tag="'+_esc(n.r.id)+'"'
+                    + ' style="top:'+ty.toFixed(1)+'px;left:'+tagX+'px;max-width:'+TAG_W+'px;border-left-color:'+col+'"'
+                    + ' title="'+_esc(_brShort(n.r)+' — '+yrTxt)+'">'+_esc(_brShort(n.r))+'</div>';
+        });
+        _blockX = tagX + TAG_W + 30;
+      });
+      html += '<svg class="fin-term-lifelines-svg" width="'+Math.max(1300, _blockX)+'" height="'+totalH+'" style="position:absolute;left:0;top:0;pointer-events:none;z-index:3;overflow:visible">'
+            + _svgInner + '</svg>' + _tagHtml;
 
       if(_pUnion.length){
         html += '<div class="fin-term-undated" id="fin-term-undated" style="top:'+totalH+'px">'
@@ -5916,7 +5933,7 @@ window.FinanceView = (function(){
        +   '<span class="fin-badge fin-badge-'+conf.key+'">'+conf.label+'</span>'
        + '</div>'
        + '<div class="fin-trace-first">first recorded: '+_esc(t.earliest_date_ce==null?'—':t.earliest_date_ce)+' CE</div>'
-       + ((t.earliest_source && !_isUnresolved(t.earliest_source)) ? '<div class="fin-trace-src">'+_esc(t.earliest_source)+'</div>' : '')
+       + ((t.earliest_source && !_isUnresolved(t.earliest_source)) ? '<div class="fin-trace-src">'+_esc(_pubClean(t.earliest_source))+'</div>' : '')
        + '</section>';
     // 3) PARENT CONTRACT — parse a C## out of the (messy) parent_contract string.
     h += '<section class="fin-trace-sec fin-trace-parent"><div class="fin-trace-sec-h">PARENT CONTRACT</div>';
@@ -6040,8 +6057,8 @@ window.FinanceView = (function(){
           var _estCss = (a === 'established') ? 'color:#2ECC71;border-color:rgba(46,204,113,0.5);background:rgba(46,204,113,0.08);' : '';
           var _css = _estCss + (qw ? 'cursor:pointer;' : '');
           var _qAttr = qw ? ' data-trace-qword="'+_esc(lk.quran_word_id)+'"' : '';
-          h += '<div class="fin-hub-chips"><span class="'+cls+'"'+_qAttr+(_css?' style="'+_css+'"':'')+' title="'+_esc(lk.note||'')+'">'+_esc(lab||lk.quran_word_id)+'</span></div>';
-          if((a === 'plausible' || a === 'illustrative') && lk.note){ h += '<div class="fin-qc-note">'+_esc(lk.note)+'</div>'; }
+          h += '<div class="fin-hub-chips"><span class="'+cls+'"'+_qAttr+(_css?' style="'+_css+'"':'')+' title="'+_esc(_qcNote(lk.note))+'">'+_esc(lab||lk.quran_word_id)+'</span></div>';
+          if((a === 'plausible' || a === 'illustrative') && lk.note){ h += '<div class="fin-qc-note">'+_esc(_qcNote(lk.note))+'</div>'; }
           var _vhtml = '';
           ((qw && qw.verse_refs) || []).forEach(function(v){
             var ref = (v && v.ref != null) ? String(v.ref) : String(v);
@@ -7023,6 +7040,10 @@ window.FinanceView = (function(){
     canvas.querySelectorAll('[data-term-chip]').forEach(function(el){
       el.addEventListener('click', function(e){ e.stopPropagation(); _selectTerm(el.getAttribute('data-term-chip')); });
     });
+    // Family-tree name tags on the lifelines → that step in the details panel (same as its row on the left).
+    canvas.querySelectorAll('[data-br-tag]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _selectRow('branch', el.getAttribute('data-br-tag')); });
+    });
     canvas.addEventListener('click', function(){ _clearSelection(); });
   }
 
@@ -7060,6 +7081,9 @@ window.FinanceView = (function(){
       el.classList.toggle('fin-selected', !!(_sel && el.getAttribute('data-id')===_sel.id && _sel.type==='row'));
     });
     canvas.querySelectorAll('.fin-conf-dot').forEach(function(el){ el.classList.toggle('fin-dimmed', !keepIds.has(el.getAttribute('data-id'))); });
+    canvas.querySelectorAll('[data-br-tag]').forEach(function(el){
+      el.classList.toggle('fin-selected', !!(_sel && _sel.type==='row' && _sel.kind==='branch' && el.getAttribute('data-br-tag')===_sel.id));
+    });
     canvas.querySelectorAll('[data-fam]').forEach(function(el){
       if(!keepFams){ el.classList.remove('fin-dimmed'); return; }
       el.classList.toggle('fin-dimmed', !keepFams.has(el.getAttribute('data-fam')));
@@ -7189,7 +7213,7 @@ window.FinanceView = (function(){
     return '<div class="fin-term-card">'
       + '<div class="fin-term-ar">'+_esc(t.term_arabic||'')+'</div>'
       + '<div class="fin-term-en">'+_esc(t.term_english||'')+' <span class="fin-badge fin-badge-'+_conf(t.assurance).key+'">'+_conf(t.assurance).label+'</span></div>'
-      + ((t.earliest_source && !_isUnresolved(t.earliest_source))?'<div class="fin-term-src">'+_esc(t.earliest_source)+'</div>':'')
+      + ((t.earliest_source && !_isUnresolved(t.earliest_source))?'<div class="fin-term-src">'+_esc(_pubClean(t.earliest_source))+'</div>':'')
       + (hasEn ? ('<span class="fin-term-links-toggle" data-term-enrich-toggle="1">▸ links</span>'
                  + '<div class="fin-term-enrich">' + _termEnrichHtml(en) + '</div>') : '')
       + '</div>';
@@ -7305,6 +7329,13 @@ window.FinanceView = (function(){
   // nothing here is derived by verse matching. Assurance drives chip weight: established (green) >
   // plausible (amber) > illustrative (muted, dashed). Juristic-derivation notes (plausible/illustrative)
   // show as a visible muted line, not hover-only.
+  // Reader text of a Qur'an-to-contract note: drop internal wording and row codes (board US-009, 28 Nov 2026).
+  function _qcNote(s){
+    return String(s || '').replace(/^\s*HARD CASE,?\s*carried honestly:\s*/i, '')
+      .replace(/\s*\(\s*[A-Z]{1,3}\d{2,4}(?:\s*[-\u2013+,]\s*[A-Z]{1,3}\d{2,4})*\s*\)/g, '')
+      .replace(/\s*[\u2014\u2013\uFFFD-]\s*recorded without stretching\.?/i, '.')
+      .replace(/^./, function(c){ return c.toUpperCase(); }).trim();
+  }
   function _qcOriginHtml(cid){
     var row = (D.qToCById && D.qToCById[cid]) || null;
     if(!row) return '';   // no Q→C data (or file not loaded) → no section
@@ -7320,10 +7351,10 @@ window.FinanceView = (function(){
       var cls = 'fin-hub-chip' + (a === 'plausible' ? ' fin-qc-plausible' : (a === 'illustrative' ? ' fin-qc-illustrative' : ''));
       // 'established' → existing green treatment (matches the Established assurance colour used across the view).
       var est = (a === 'established') ? ' style="color:#2ECC71;border-color:rgba(46,204,113,0.5);background:rgba(46,204,113,0.08)"' : '';
-      h += '<div class="fin-hub-chips"><span class="'+cls+'"'+est+' title="'+_esc(lk.note||'')+'">'+_esc(lab)+'</span></div>';
+      h += '<div class="fin-hub-chips"><span class="'+cls+'"'+est+' title="'+_esc(_qcNote(lk.note))+'">'+_esc(lab)+'</span></div>';
       // Juristic-derivation caveat visible (not hover-only) for the softer assurances.
       if((a === 'plausible' || a === 'illustrative') && lk.note){
-        h += '<div class="fin-qc-note">'+_esc(lk.note)+'</div>';
+        h += '<div class="fin-qc-note">'+_esc(_qcNote(lk.note))+'</div>';
       }
       // verse_refs → the existing fin-q-card READ pattern (wired by the hub's .fin-q-read handler, which stopPropagation()s).
       (lk.verse_refs || []).forEach(function(vs){
@@ -7333,7 +7364,7 @@ window.FinanceView = (function(){
           + '<a class="fin-q-read" href="#start?surah='+_esc(S)+'&verse='+_esc(A)+'" data-s="'+_esc(S)+'" data-a="'+_esc(A)+'">READ</a>'
           + '</div></div>';
       });
-      if(lk.evidence){ h += '<div class="fin-qc-evidence">'+_esc(lk.evidence)+'</div>'; }
+      // lk.evidence is not shown: it holds only internal file names and row codes (board US-009, 28 Nov 2026).
     });
     return h;
   }
@@ -7397,6 +7428,32 @@ window.FinanceView = (function(){
     if(ch.length){ h += '<ul class="fin-ft-ul">'; ch.forEach(function(k){ h += _ftNode(k.r, kids); }); h += '</ul>'; }
     return h + '</li>';
   }
+  // One family-tree step in the details panel (timeline row or name tag clicked). 28 Nov 2026.
+  // Same fields as the tree (never ids, traces, trace_audit or short_note), plus where it came from and what it became.
+  function _hubBranch(r){
+    var col = CONTRACT_COLORS[r.contract_id] || null;
+    var yr = (typeof r.year_ce === 'number') ? r.year_ce + ' CE' : 'Year not known';
+    var h = _hubHeader(_esc(r.new_version_name || ''), _brIsSplit(r) ? BR_SPLIT : BR_CHANGE, col);
+    h += '<div class="fin-ft-v"><b>'+_esc(yr)+'</b>'+(_nfv(r.year_how_known) ? '' : ' — '+_esc(r.year_how_known))+'</div>';
+    if(!_nfv(r.scholar)) h += '<div class="fin-ft-k">Who</div><div class="fin-ft-v">'+_esc(r.scholar)+'</div>';
+    var tr = _ftTrad(r.tradition);
+    if(tr) h += '<div class="fin-ft-k">School</div><div class="fin-ft-v">'+_esc(tr)+'</div>';
+    var link = function(x){ return '<span class="fin-ft-goto" data-br-goto="'+_esc(x.id)+'">'+_esc(_brShort(x))+(typeof x.year_ce === 'number' ? ' ('+x.year_ce+' CE)' : '')+' ›</span>'; };
+    var par = (r.from_version && r.from_version !== 'none') ? D.branchById[r.from_version] : null;
+    if(par) h += '<div class="fin-ft-k">Grew out of</div><div class="fin-ft-v">'+link(par)+'</div>';
+    var ch = (_ftKids(r.contract_id)[r.id] || []).map(function(k){ return k.r; });
+    if(ch.length) h += '<div class="fin-ft-k">'+(ch.length > 1 ? 'Split into' : 'Became')+'</div>'
+                     + ch.map(function(x){ return '<div class="fin-ft-v">'+link(x)+'</div>'; }).join('');
+    if(!_nfv(r.what_changed)) h += '<div class="fin-hub-sec">What changed</div>' + _paras(r.what_changed);
+    if(!_nfv(r.why)) h += '<div class="fin-hub-sec">Why</div>' + _paras(r.why);
+    var ac = _ftWho(r.accepted_by), rj = _ftWho(r.rejected_by);
+    if(ac) h += '<div class="fin-ft-k">Accepted by</div><div class="fin-ft-v">'+_esc(ac)+'</div>';
+    if(rj) h += '<div class="fin-ft-k">Rejected by</div><div class="fin-ft-v">'+_esc(rj)+'</div>';
+    h += _ftSources(r.sources);
+    var cn = (_idx.contract[r.contract_id] || {}).name || r.contract || '';
+    if(cn) h += '<div class="fin-hub-sec">Whole family tree</div><div class="fin-hub-chips">'+_selChips([{ kind:'contract', id:r.contract_id, label:cn }])+'</div>';
+    return h;
+  }
   function _familyTreeHtml(cid){
     var root = D.branchById && D.branchById[cid + '-B00'];
     if(!root) return '';
@@ -7444,7 +7501,7 @@ window.FinanceView = (function(){
     var terms = D.terms.filter(function(t){ return _termContracts(t).indexOf(c.id)!==-1; });
     h += '<div class="fin-hub-sec">Terms under this contract ('+terms.length+')</div>';
     terms.forEach(function(t){ h += _termCardHtml(t); });
-    var bks = D.books.filter(function(b){ return (b.contracts_covered||[]).indexOf(c.id)!==-1; }).map(function(b){ return {kind:'book', id:b.id, label:b.title_english||b.id}; });
+    var bks = D.books.filter(function(b){ return (b.contracts_covered||[]).indexOf(c.id)!==-1; }).map(function(b){ return {kind:'book', id:b.id, label:((b.title_english && !/^not found/i.test(b.title_english)) ? b.title_english : (b.title_original || b.id))}; });
     var evs = D.events.filter(function(e){ return (e.linked_contracts||[]).indexOf(c.id)!==-1; }).map(function(e){ return {kind:'event', id:e.id, label:e.event}; });
     h += '<div class="fin-hub-sec">Books</div><div class="fin-hub-chips">'+_selChips(bks)+'</div>';
     h += '<div class="fin-hub-sec">Events</div><div class="fin-hub-chips">'+_selChips(evs)+'</div>';
@@ -7811,6 +7868,19 @@ window.FinanceView = (function(){
         _wireFinJumps(hub);
         hub.querySelectorAll('[data-pl-goto]').forEach(function(el){
           el.addEventListener('click', function(e){ e.stopPropagation(); var k = this.getAttribute('data-pl-goto'); _setMode('people'); _selectPerson(k); });
+        });
+        return;
+      }
+    }
+    if(_sel.type==='row' && _sel.kind==='branch'){
+      var _brr = D.branchById && D.branchById[_sel.id];
+      if(_brr){
+        hub.innerHTML = _hubBranch(_brr);
+        hub.querySelectorAll('[data-br-goto]').forEach(function(el){
+          el.addEventListener('click', function(e){ e.stopPropagation(); _selectRow('branch', el.getAttribute('data-br-goto')); });
+        });
+        hub.querySelectorAll('[data-sel-kind]').forEach(function(el){
+          el.addEventListener('click', function(e){ e.stopPropagation(); _select(el.getAttribute('data-sel-kind'), el.getAttribute('data-sel-id')); });
         });
         return;
       }
