@@ -3631,3 +3631,57 @@ body.fin-fullscreen #usul-fs-logo{
 #finance-view .fin-br-tag-und{ font-style:italic; color:#5D6876; }
 #finance-view .fin-badge-split{ color:#1F4E7A !important; background:#E6EEF7; border:1px solid #2F5F8F; }
 #finance-view .fin-badge-chg{ color:#4A5A6A !important; background:#EEF1F4; border:1px solid #8A94A2; }
+
+/* ── Lecture levels BASICS / CHAIN / COURSE + COURSE page (28 Nov 2026) ── */
+#finance-view .fin-lec-levels{ display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+#finance-view .fin-lec-lvbtn{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.14em; font-weight:700; cursor:pointer;
+  padding:9px 18px; border-radius:3px; border:1.5px solid #D4AF37; background:#FFFFFF; color:#8A6A12 !important; }
+#finance-view .fin-lec-lvbtn:hover{ background:#FBF3DF; }
+#finance-view .fin-lec-lvbtn.on{ background:#1A2432; border-color:#1A2432; color:#FFFFFF !important; }
+#finance-view .fin-lec-lvcnt{ font-family:'Source Sans 3',sans-serif; font-size:11px; letter-spacing:.04em; font-weight:600; opacity:.8; margin-left:4px; }
+#finance-view .fin-lec-lvbtn.on .fin-lec-lvcnt{ color:#FFFFFF !important; }
+#finance-view .fin-lec-lvdesc{ font-family:'Crimson Pro','Lato',serif; font-size:17px; line-height:1.6; color:#33414F !important; margin:4px 0 14px; }
+#finance-view .fin-lec-crsbtn{ display:inline-block; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.12em; font-weight:700; cursor:pointer;
+  padding:3px 10px; margin-left:6px; border-radius:3px; border:1px solid #1F4E7A; background:#1F4E7A; color:#FFFFFF !important; vertical-align:middle; }
+#finance-view .fin-lec-crsbtn:hover{ background:#2F5F8F; }
+#finance-view .fin-lec-nolink{ font-family:'Crimson Pro','Lato',serif; font-size:17px; color:#5D6876 !important; }
+#finance-view .fin-lec-cross-row{ margin:10px 0 18px; }
+#finance-view .fin-crs-sub2{ font-size:17px; border-bottom:0; padding-bottom:0; margin-top:-8px; }
+#finance-view .fin-crs-h1{ margin-top:34px; padding-top:14px; border-top:2px solid #D4AF37; }
+#finance-view .fin-crs-h2{ font-family:'Cinzel',serif; font-size:18px; font-weight:600; letter-spacing:.02em; color:#1A2432 !important; margin:26px 0 8px; scroll-margin-top:16px; }
+#finance-view .fin-crs .fin-wl-h3{ scroll-margin-top:16px; }
+#finance-view .fin-crs-q{ margin:0 0 14px; padding:8px 18px; border-left:3px solid #D4AF37; background:#FFFDF6;
+  font-family:'Crimson Pro','Lato',serif; font-size:18px; line-height:1.7; color:#22303F !important; }
+#finance-view .fin-crs-hr{ border:0; border-top:1px solid #E5DCC5; margin:24px 0; }
+#finance-view .fin-crs-tblwrap{ overflow-x:auto; margin:0 0 16px; }
+#finance-view .fin-crs-tbl{ border-collapse:collapse; width:100%; background:#FFFFFF; font-family:'Source Sans 3',sans-serif; font-size:14.5px; line-height:1.5; }
+#finance-view .fin-crs-tbl th{ text-align:left; background:#FBF3DF; color:#5A4A12 !important; font-weight:700; border:1px solid #E5DCC5; padding:7px 9px; vertical-align:bottom; }
+#finance-view .fin-crs-tbl td{ border:1px solid #E5DCC5; padding:7px 9px; vertical-align:top; color:#22303F !important; }
+@media print{
+  #finance-view[data-mode="lecture"] .fin-lec-levels,
+  #finance-view[data-mode="lecture"] .fin-lec-crsbtn{ display:none !important; }
+}
+
+/* ── LECTURE pages (28 Nov 2026, Adam): no info panel - the canvas takes the full width.
+      Each level has its own colour: BASICS green, CHAIN gold, COURSE blue. ── */
+#finance-view[data-mode="lecture"] #finance-hub{ display:none !important; }
+#finance-view .fin-lv-basics{ --lv:#2E6B4F; --lv-bg:#EAF5EE; }
+#finance-view .fin-lv-chain{  --lv:#8A6A12; --lv-bg:#FBF3DF; }
+#finance-view .fin-lv-course{ --lv:#1F4E7A; --lv-bg:#E6EEF7; }
+#finance-view .fin-lec-lvbtn.fin-lv-basics,#finance-view .fin-lec-lvbtn.fin-lv-chain,#finance-view .fin-lec-lvbtn.fin-lv-course{ border-color:var(--lv); color:var(--lv) !important; }
+#finance-view .fin-lec-lvbtn.fin-lv-basics:hover,#finance-view .fin-lec-lvbtn.fin-lv-chain:hover,#finance-view .fin-lec-lvbtn.fin-lv-course:hover{ background:var(--lv-bg); }
+#finance-view .fin-lec-lvbtn.fin-lv-basics.on,#finance-view .fin-lec-lvbtn.fin-lv-chain.on,#finance-view .fin-lec-lvbtn.fin-lv-course.on{ background:var(--lv); border-color:var(--lv); color:#FFFFFF !important; }
+#finance-view .fin-lv-basics .fin-lec-lvdesc,#finance-view .fin-lv-chain .fin-lec-lvdesc,#finance-view .fin-lv-course .fin-lec-lvdesc{ border-left:4px solid var(--lv); background:var(--lv-bg); padding:8px 14px; border-radius:2px; }
+#finance-view .fin-lv-tag{ display:inline-block; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.14em; font-weight:700; color:#FFFFFF !important; background:var(--lv,#8A6A12); padding:1px 8px; border-radius:2px; margin-right:6px; vertical-align:middle; }
+#finance-view .fin-lv-basics .fin-lec-h2,#finance-view .fin-lv-chain .fin-lec-h2,#finance-view .fin-lv-course .fin-lec-h2{ color:var(--lv) !important; }
+#finance-view .fin-lv-basics .fin-wl-kicker,#finance-view .fin-lv-chain .fin-wl-kicker,#finance-view .fin-lv-course .fin-wl-kicker{ color:var(--lv) !important; font-weight:700; }
+#finance-view .fin-lv-basics .fin-wl-sub,#finance-view .fin-lv-course .fin-wl-sub{ border-bottom-color:var(--lv); }
+#finance-view .fin-lv-course .fin-crs-sub2{ border-bottom:0; }
+#finance-view .fin-lv-chain .fin-lec-h1{ border-bottom:2px solid var(--lv); padding-bottom:10px; }
+#finance-view .fin-lv-course .fin-crs-h1{ border-top-color:var(--lv); }
+#finance-view .fin-lv-course .fin-crs-h2{ color:var(--lv) !important; }
+#finance-view .fin-lv-course .fin-wl-toc{ border-left-color:var(--lv); }
+#finance-view .fin-lv-course .fin-wl-toc-h{ color:var(--lv) !important; }
+#finance-view .fin-lv-course .fin-crs-tbl th{ background:var(--lv-bg); color:var(--lv) !important; }
+#finance-view .fin-lv-basics .fin-wl-toc{ border-left-color:var(--lv); }
+#finance-view .fin-lv-basics .fin-wl-toc-h{ color:var(--lv) !important; }

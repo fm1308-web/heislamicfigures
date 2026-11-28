@@ -1736,11 +1736,19 @@ window.FinanceView = (function(){
     _lecTopic = topic; _renderLecture(); _syncBackBtn();
   }
 
+  // ── Lecture levels (28 Nov 2026, Adam): BASICS (Qur'an words, chapters 1-3), CHAIN (development steps
+  //    per contract, chapter 4), COURSE (the full professional manual per contract, only once it has passed QA).
+  //    A contract is listed here ONLY when its file data/Finance/courses/<id>.json is built from a QA-passed manual.
+  var COURSE_IDS = { C02:true };
+  var _lecLevel = 'basics';
+  var _courseCache = {};
+
   function _renderLecture(){
     var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
     if(!_lecTopic) _lecTopic = { kind:'master' };
     canvas.style.height = '';
-    if(_lecTopic.kind === 'contract')  _renderLectureContract(_lecTopic.id);
+    if(_lecTopic.kind === 'course')    _renderLectureCourse(_lecTopic.id);
+    else if(_lecTopic.kind === 'contract')  _renderLectureContract(_lecTopic.id);
     else if(_lecTopic.kind === 'word') _renderLectureWord(_lecTopic.id);
     else                               _renderLectureMaster();
     var wrap = document.getElementById('finance-canvas-wrap'); if(wrap) wrap.scrollTop = 0;
@@ -1756,6 +1764,18 @@ window.FinanceView = (function(){
     });
     canvas.querySelectorAll('[data-lec-master]').forEach(function(el){
       el.addEventListener('click', function(e){ e.stopPropagation(); _setLecTopic({ kind:'master' }); });
+    });
+    canvas.querySelectorAll('[data-lec-course]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.stopPropagation(); _setLecTopic({ kind:'course', id:this.getAttribute('data-lec-course') }); });
+    });
+    canvas.querySelectorAll('[data-lec-level]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.stopPropagation(); _lecLevel = this.getAttribute('data-lec-level');
+        if(_lecTopic && _lecTopic.kind === 'master') _renderLecture(); else _setLecTopic({ kind:'master' });
+      });
+    });
+    canvas.querySelectorAll('[data-crs-jump]').forEach(function(a){
+      a.addEventListener('click', function(e){ e.stopPropagation(); var t = document.getElementById(this.getAttribute('data-crs-jump')); if(t) t.scrollIntoView({ behavior:'smooth', block:'start' }); });
     });
     canvas.querySelectorAll('[data-lec-ladder]').forEach(function(el){
       el.addEventListener('click', function(e){ e.stopPropagation(); _openLadderForContract(this.getAttribute('data-lec-ladder')); });
@@ -1777,14 +1797,45 @@ window.FinanceView = (function(){
     var ql = D.qlayer || {}, words = ql.rows || [], tiers = ql.tiers || {};
     var CHAP = { A:'Chapter 1', B:'Chapter 2', C:'Chapter 3' };
 
-    var h = '<div class="fin-lecture">';
+    var h = '<div class="fin-lecture fin-lv-'+_lecLevel+'">';
     h += '<h1 class="fin-lec-h1">Master course — Islamic finance from the Qur\'an down</h1>';
     // Depth labels (27 Nov 2026): tell the reader which lectures are short today and which carry a full chain.
+    // Three levels, each with its own button.
+    var LV = [
+      { k:'basics', b:'BASICS', d:'The Qur\'an words behind Islamic finance: what each word means and where it stands (chapters 1-3).' },
+      { k:'chain',  b:'CHAIN',  d:'Each contract step by step: from the Qur\'an and hadith through the scholars to today\'s standards (chapter 4).' },
+      { k:'course', b:'COURSE', d:'The full professional manual for each contract: every school\'s position with its source, practice and governance, at exam level.' }
+    ];
+    var nCourse = Object.keys(COURSE_IDS).length;
+    h += '<div class="fin-lec-levels">';
+    LV.forEach(function(l){
+      var cnt = l.k === 'course' ? ' <span class="fin-lec-lvcnt">'+nCourse+' / 10</span>' : '';
+      h += '<button type="button" class="fin-lec-lvbtn fin-lv-'+l.k+(_lecLevel === l.k ? ' on' : '')+'" data-lec-level="'+l.k+'">'+l.b+cnt+'</button>';
+    });
+    h += '</div>';
+    LV.forEach(function(l){ if(l.k === _lecLevel) h += '<p class="fin-lec-lvdesc"><span class="fin-lv-tag">'+l.b+'</span> '+_esc(l.d)+'</p>'; });
+
+    if(_lecLevel === 'course'){
+      h += '<h2 class="fin-lec-h2">Courses · The ten contracts</h2><ul class="fin-lec-list">';
+      D.contracts.forEach(function(c){
+        if(!/^C\d{2}$/.test(c.id)) return;
+        if(COURSE_IDS[c.id]) h += '<li><a class="fin-lec-link" data-lec-course="'+_esc(c.id)+'">'+_esc(c.name)+' — '+_esc(c.description||'')+'</a>'
+                                + ' <button type="button" class="fin-lec-crsbtn" data-lec-course="'+_esc(c.id)+'">COURSE →</button></li>';
+        else h += '<li><span class="fin-lec-nolink">'+_esc(c.name)+' — '+_esc(c.description||'')+'</span>'
+                + ' <span class="fin-lec-stat fin-lec-stat-soon">COURSE COMING</span></li>';
+      });
+      h += '</ul></div>';
+      canvas.innerHTML = h;
+      _wireLecture(canvas);
+      if(ro) ro.textContent = 'Master course · COURSE';
+      return;
+    }
+
     h += '<p class="fin-lec-statkey"><span class="fin-lec-stat fin-lec-stat-full">FULL CHAIN</span> step-by-step from the Qur\'an to today\'s standards &nbsp; '
        + '<span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span> short version now; the full study is being researched and checked</p>';
 
     // Chapters 1–3 = tiers A/B/C: heading + tier description + word list.
-    ['A','B','C'].forEach(function(tier){
+    if(_lecLevel === 'basics') ['A','B','C'].forEach(function(tier){
       var tw = words.filter(function(w){ return w.tier === tier; });
       if(!tw.length) return;
       h += '<h2 class="fin-lec-h2">'+CHAP[tier]+' · Tier '+tier+'</h2>';
@@ -1798,19 +1849,24 @@ window.FinanceView = (function(){
     });
 
     // Chapter 4 — the ten contracts.
-    h += '<h2 class="fin-lec-h2">Chapter 4 · The ten contracts</h2><ul class="fin-lec-list">';
-    D.contracts.forEach(function(c){
-      if(!/^C\d{2}$/.test(c.id)) return;
-      var nSteps = (D.lineage_v4 || []).filter(function(r){ return r.contract === c.id; }).length;
-      h += '<li><a class="fin-lec-link" data-lec-contract="'+_esc(c.id)+'">'+_esc(c.name)+' — '+_esc(c.description||'')+'</a>'
-         + (nSteps ? ' <span class="fin-lec-stat fin-lec-stat-full">FULL CHAIN · '+nSteps+' STEPS</span>'
-                   : ' <span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span>') + '</li>';
-    });
-    h += '</ul></div>';
+    if(_lecLevel === 'chain'){
+      h += '<h2 class="fin-lec-h2">Chapter 4 · The ten contracts</h2><ul class="fin-lec-list">';
+      D.contracts.forEach(function(c){
+        if(!/^C\d{2}$/.test(c.id)) return;
+        var nSteps = (D.lineage_v4 || []).filter(function(r){ return r.contract === c.id; }).length;
+        h += '<li><a class="fin-lec-link" data-lec-contract="'+_esc(c.id)+'">'+_esc(c.name)+' — '+_esc(c.description||'')+'</a>'
+           + (nSteps ? ' <span class="fin-lec-stat fin-lec-stat-full">FULL CHAIN · '+nSteps+' STEPS</span>'
+                     : ' <span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span>')
+           + (COURSE_IDS[c.id] ? ' <button type="button" class="fin-lec-crsbtn" data-lec-course="'+_esc(c.id)+'">COURSE →</button>' : '')
+           + '</li>';
+      });
+      h += '</ul>';
+    }
+    h += '</div>';
 
     canvas.innerHTML = h;
     _wireLecture(canvas);
-    if(ro) ro.textContent = 'Master course';
+    if(ro) ro.textContent = 'Master course · ' + (_lecLevel === 'chain' ? 'CHAIN' : 'BASICS');
   }
 
   // ── Contract lecture — built ONLY from D.lineage_v4 rows, grouped by fixed stage order ──
@@ -1820,12 +1876,14 @@ window.FinanceView = (function(){
     var c = _idx.contract[cid] || {};
     var rows = (D.lineage_v4 || []).filter(function(r){ return r.contract === cid; });
 
-    var h = '<div class="fin-lecture">';
+    var h = '<div class="fin-lecture fin-lv-chain">';
     h += '<a class="fin-lec-back" data-lec-master="1">← Master course</a>';
+    h += '<div class="fin-wl-kicker">Master course · CHAIN · '+_esc(c.name || cid)+'</div>';
     h += '<h1 class="fin-lec-h1">'+_esc(c.name || cid)+'</h1>';
     if(c.description) h += '<p class="fin-lec-desc">'+_esc(c.description)+'</p>';
     h += '<p class="fin-lec-banner">'+_esc(NOTICE)+'</p>';
     h += '<a class="fin-lec-cross" data-lec-ladder="'+_esc(cid)+'">View ladder →</a>';
+    if(COURSE_IDS[cid]) h += ' <button type="button" class="fin-lec-crsbtn" data-lec-course="'+_esc(cid)+'">COURSE →</button>';
 
     // One section per stage that has rows, in the fixed elevator order. Skip empties.
     LEC_STAGE_ORDER.forEach(function(stage){
@@ -1845,6 +1903,76 @@ window.FinanceView = (function(){
     _wireLecture(canvas);
     if(ro) ro.textContent = 'Lecture · ' + (c.name || cid);
   }
+  // ── COURSE — the full manual for one contract, from data/Finance/courses/<id>.json (blocks built by
+  //    factory-scripts/usul_course_build_20261128.py from the QA-passed manual; text copied as-is). ──
+  function _crsInline(s){
+    return _esc(s).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*\s][^*]*)\*/g, '<i>$1</i>');
+  }
+  function _crsLoad(cid){
+    if(!_courseCache[cid]){
+      var u = 'data/Finance/courses/' + cid + '.json';
+      _courseCache[cid] = fetch(window.dataUrl ? window.dataUrl(u) : u)
+        .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+        .catch(function(e){ delete _courseCache[cid]; throw e; });
+    }
+    return _courseCache[cid];
+  }
+  function _renderLectureCourse(cid){
+    var canvas = document.getElementById('finance-canvas'); if(!canvas) return;
+    var ro = document.getElementById('finance-readout');
+    var c = _idx.contract[cid] || {};
+    var head = '<article class="fin-lecture fin-wl fin-crs fin-lv-course">'
+             + '<a class="fin-lec-back" data-lec-master="1">← Master course</a>'
+             + '<div class="fin-wl-kicker">Master course · COURSE · '+_esc(c.name || cid)+'</div>';
+    if(!COURSE_IDS[cid]){
+      canvas.innerHTML = head + '<p class="fin-wl-p">The course for this contract is not ready yet.</p></article>';
+      _wireLecture(canvas); return;
+    }
+    canvas.innerHTML = head + '<div class="fin-wl-loading">Loading the course…</div></article>';
+    _wireLecture(canvas);
+    if(ro) ro.textContent = 'Course · ' + (c.name || cid);
+    _crsLoad(cid).then(function(J){
+      if(!(_mode === 'lecture' && _lecTopic && _lecTopic.kind === 'course' && _lecTopic.id === cid)) return;
+      var bl = J.blocks || [];
+      var h = head;
+      h += '<h1 class="fin-wl-title">'+_crsInline(J.title || c.name || cid)+'</h1>';
+      (J.subtitle || []).forEach(function(s, i){ h += '<div class="fin-wl-sub'+(i ? ' fin-crs-sub2' : '')+'">'+_crsInline(s)+'</div>'; });
+      h += '<p class="fin-lec-cross-row"><a class="fin-lec-cross" data-lec-contract="'+_esc(cid)+'">Read the CHAIN lecture →</a></p>';
+      // Contents: the top-level parts.
+      var toc = bl.filter(function(b){ return b.t === 'h' && b.l <= 2 && (b.l === 1 || /^How to use/.test(b.x)); });
+      h += '<nav class="fin-wl-toc"><div class="fin-wl-toc-h">In this course</div><ol>';
+      toc.forEach(function(b){ h += '<li><a data-crs-jump="'+_esc(b.id)+'">'+_crsInline(b.x)+'</a></li>'; });
+      h += '</ol></nav>';
+      bl.forEach(function(b){
+        if(b.t === 'h'){
+          var cls = b.l === 1 ? 'fin-wl-part fin-crs-h1' : (b.l === 2 ? 'fin-crs-h2' : 'fin-wl-h3');
+          var tag = b.l === 1 ? 'h2' : (b.l === 2 ? 'h3' : 'h4');
+          h += '<'+tag+' class="'+cls+'" id="'+_esc(b.id)+'">'+_crsInline(b.x)+'</'+tag+'>';
+        }
+        else if(b.t === 'p')  h += '<p class="fin-wl-p">'+_crsInline(b.x)+'</p>';
+        else if(b.t === 'q')  h += '<blockquote class="fin-crs-q">'+_crsInline(b.x)+'</blockquote>';
+        else if(b.t === 'hr') h += '<hr class="fin-crs-hr">';
+        else if(b.t === 'ul' || b.t === 'ol'){
+          h += '<'+b.t+' class="fin-wl-list">' + (b.i || []).map(function(x){ return '<li>'+_crsInline(x)+'</li>'; }).join('') + '</'+b.t+'>';
+        }
+        else if(b.t === 'table'){
+          h += '<div class="fin-crs-tblwrap"><table class="fin-crs-tbl"><thead><tr>'
+             + (b.h || []).map(function(x){ return '<th>'+_crsInline(x)+'</th>'; }).join('') + '</tr></thead><tbody>'
+             + (b.r || []).map(function(r){ return '<tr>' + r.map(function(x){ return '<td>'+_crsInline(x)+'</td>'; }).join('') + '</tr>'; }).join('')
+             + '</tbody></table></div>';
+        }
+      });
+      h += '<p class="fin-lec-cross-row"><a class="fin-lec-back" data-lec-master="1">← Master course</a></p></article>';
+      canvas.innerHTML = h;
+      _wireLecture(canvas);
+    }).catch(function(e){
+      if(!(_mode === 'lecture' && _lecTopic && _lecTopic.kind === 'course' && _lecTopic.id === cid)) return;
+      canvas.innerHTML = head + '<p class="fin-wl-p">The course could not be loaded. Please try again.</p></article>';
+      _wireLecture(canvas);
+      console.warn('[finance] course not loaded: '+cid+' ('+((e && e.message) || e)+')');
+    });
+  }
+
   // Qur'an section — never a year. Verse chips + detail + detail_long + badge.
   function _lecQuranSection(rows){
     var h = '';
@@ -2000,9 +2128,9 @@ window.FinanceView = (function(){
     var num = {}; parts.forEach(function(p, i){ num[p.id] = i + 1; });
     function partHead(id){ return '<h2 class="fin-wl-part" id="fin-wl-'+id+'"><span class="fin-wl-pnum">Part '+num[id]+'</span>'+_esc(parts[num[id]-1].title)+'</h2>'; }
 
-    var h = '<article class="fin-lecture fin-wl">';
+    var h = '<article class="fin-lecture fin-wl fin-lv-basics">';
     h += '<a class="fin-lec-back" data-lec-master="1">← Master course</a>';
-    h += '<div class="fin-wl-kicker">Master course · '+_esc(CHAP[w.tier] || '')+' · Tier '+_esc(w.tier || '')+'</div>';
+    h += '<div class="fin-wl-kicker">Master course · BASICS · '+_esc(CHAP[w.tier] || '')+' · Tier '+_esc(w.tier || '')+'</div>';
     h += '<h1 class="fin-wl-title">'+_esc(w.arabic)+'</h1>';
     h += '<div class="fin-wl-sub">'+_esc(w.english)+'</div>';
     h += '<p class="fin-lec-statnote"><span class="fin-lec-stat fin-lec-stat-soon">SHORT · FULL STUDY COMING</span> '

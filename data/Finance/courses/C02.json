@@ -1,0 +1,2847 @@
+{
+ "_meta": {
+  "type": "usul_course",
+  "contract": "C02",
+  "built": "2026-11-28",
+  "built_by": "Factory Code window",
+  "from": "research-drops/usul-master-lectures/mudarabah/lecture-mudarabah.md",
+  "edition": 7,
+  "qa": "Independent QA rounds v2-v7 (QA-REPORT-20261128-mudarabah-*); v6 0 MAJOR; v7 see QA-REPORT-20261128-mudarabah-v7.md",
+  "words": 19907
+ },
+ "contract": "C02",
+ "title": "Mudarabah: A Teacher's Manual",
+ "subtitle": [
+  "From the first definition to the governance rules. Master course, edition 7 (2026).",
+  "One of the core contracts of Islamic finance."
+ ],
+ "blocks": [
+  {
+   "t": "h",
+   "l": 2,
+   "x": "How to use this manual",
+   "id": "crs-1"
+  },
+  {
+   "t": "p",
+   "x": "**Who it is for.** A teacher who will explain mudarabah to people who work in finance but know no Arabic and nothing of Islamic law. The manual assumes no prior knowledge. Every Arabic word is explained the first time it appears and is listed in the glossary (Part 8)."
+  },
+  {
+   "t": "p",
+   "x": "**How it is built.** Eight parts, each building on the last:"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "The word and the idea",
+    "Mudarabah in academic terms: what kind of contract it is, and why it is allowed",
+    "The rules, with every school's position",
+    "Mudarabah in practice: how it is used today",
+    "Governance: what the six regulatory frameworks require",
+    "Teaching aids: worked cases, review questions, common mistakes",
+    "The scholars and works quoted",
+    "Glossary"
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**How sources are shown.** Every rule carries its source in brackets: the author and the page, or the standard and the clause. For example \"(Usmani, p. 34)\" or \"(AAOIFI SS 13, 4/4)\". **Hadith** (reports of what the Prophet Muhammad said, did or approved) are cited by collection and report number. Quotations from the Muwatta of Malik and from al-Kafi are from English translations. Where a report's grade is given, it is the grade in the edition used, unless a grader is named. Quotations from Arabic books with no English edition named are this manual's own translations. Where the scholars or schools disagree, every view is given with the name of the person or school who holds it. No view is presented as \"the\" answer. Where an author gives his own opinion, it is marked as his."
+  },
+  {
+   "t": "p",
+   "x": "**Words used throughout.** *Shari'ah* is Islamic law as a whole; *fiqh* is that law as the jurists work it out. The *Sunnah* is the Prophet's example, known through hadith. The *Companions* are the people who knew the Prophet and followed him. A *caliph* is a leader of the Muslim community after the Prophet; Umar and Uthman, named below, were the second and third caliphs. *Sunni* and *Shia* are the two main branches of Islam. In the Shia branch, an *Imam* is one of the leaders from the Prophet's family whose reports carry authority. Among Sunnis, *Imam* is also a title of respect for a leading scholar, as in \"Imam Malik\" or \"Imam Ahmad\". A *dirham* was a silver coin and a *dinar* a gold coin; the classical books state cash amounts in them. Dates are given in the common era (CE) unless marked **AH**: years of the Islamic lunar calendar, counted from the Prophet's emigration to Medina in 622 CE."
+  },
+  {
+   "t": "p",
+   "x": "**The schools named in this manual.** Islamic law has several schools (in Arabic *madhhab*, plural *madhahib*). Four are Sunni and are named after early jurists: the **Hanafi** (Abu Hanifah, d. 767), **Maliki** (Malik ibn Anas, d. 795), **Shafi'i** (al-Shafi'i, d. 820) and **Hanbali** (Ahmad ibn Hanbal, d. 855). The main Shia school is the **Ja'fari** or **Imami** school (from *Imam*, because it follows the Imams of the Prophet's family), named after Ja'far al-Sadiq (d. 765). A few jurists from schools that did not last are named where they hold a view, such as Ibn Hazm (d. 1064) of the **Zahiri** (\"literalist\") school, which kept to the plain wording of the texts. The Qur'an commentator al-Tabari (d. 923) also had a school of his own, the **Jariri** (from his name, Ibn Jarir), which did not last either."
+  },
+  {
+   "t": "p",
+   "x": "**Suggested teaching plan.** Six sessions of about 90 minutes:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Session",
+    "Parts",
+    "Goal"
+   ],
+   "r": [
+    [
+     "1",
+     "1 and 2.1-2.2",
+     "The idea, the names, the definitions"
+    ],
+    [
+     "2",
+     "2.3-2.5",
+     "Legal nature and the basis for allowing it"
+    ],
+    [
+     "3",
+     "3.1-3.7",
+     "Capital, profit, loss, guarantees, pay"
+    ],
+    [
+     "4",
+     "3.8-3.13",
+     "Restrictions, term, mixing funds, ending"
+    ],
+    [
+     "5",
+     "4",
+     "Bank finance, deposit accounts, criticism"
+    ],
+    [
+     "6",
+     "5 and 6",
+     "The six frameworks; cases and review"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**By the end of the course a learner should be able to:**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "define mudarabah in one sentence and name its two parties;",
+    "explain why the manager does not repay lost capital, and the three cases where he does;",
+    "tell a valid profit-sharing clause from an invalid one;",
+    "state at least four questions on which the schools disagree, with who holds which view;",
+    "describe how a bank uses mudarabah on both sides of its balance sheet;",
+    "name the main rule in each regulatory framework that governs a mudarabah product."
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 1. The word and the idea",
+   "id": "crs-2"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.1 The problem mudarabah solves",
+   "id": "crs-3"
+  },
+  {
+   "t": "p",
+   "x": "Some people have money but not the time, health or skill to run a business. Other people have the skill and energy but no money. Mudarabah joins the two: one side brings the money, the other side brings the work, and they share the profit."
+  },
+  {
+   "t": "p",
+   "x": "The standard-setter AAOIFI gives this as the reason the contract is allowed: some people are rich but lack business know-how, and others have the know-how but lack money (AAOIFI SS 13, Appendix B). It also notes a second reason: money cannot grow unless it is joined with work, and lending money for a fixed periodic payment would be a debt with *riba* (AAOIFI SS 13, Appendix B)."
+  },
+  {
+   "t": "p",
+   "x": "**Riba** means \"increase\". In a loan, it is any increase over the amount lent: AAOIFI calls a \"fixed or variable increment\" on a current account (which is a loan to the bank) \"usurious interest\" (AAOIFI SS 40, 2/2/1-2/2/2). Islamic law forbids it. Usmani explains the choice this leaves a person with money: if you want to help someone, lend and take back only what you lent; if you want to earn from his business, join it, and then share in its losses as well as its profits (Usmani, p. 18)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.2 The names",
+   "id": "crs-4"
+  },
+  {
+   "t": "p",
+   "x": "The same contract has three names in the classical books seen for this manual:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Mudarabah.** From the Arabic root *d-r-b* (the three consonants the word is built on), \"to strike\", used in the phrase *al-darb fi al-ard*, \"striking out across the land\", that is, travelling for trade. Ibn Qudamah (d. 1223) says this is the name used by the people of Iraq (Ibn Qudamah, *al-Mughni* 5:19). Al-Sarakhsi (d. 1090) explains the name by saying the manager earns his share of the profit through his effort and his work (al-Sarakhsi, *al-Mabsut* 22:17-18).",
+    "**Qirad** and **muqaradah.** The name used in the Hijaz (Mecca and Medina). Al-Sarakhsi says the people of Medina call it *muqaradah*, and that this is reported from the caliph Uthman (al-Sarakhsi, *al-Mabsut* 22:17-18). The Muwatta of Malik (Maliki) and the *Minhaj* of al-Nawawi (Shafi'i) use *qirad* as their chapter title.",
+    "AAOIFI adds that the contract may be made with the words *mudarabah*, *qirad* or *mu'amalah* (\"dealing\") (AAOIFI SS 13, 4/1). The Malaysian central bank notes that *muqaradah* and *qirad* mean the same as mudarabah (BNM PD Mudarabah 2015, note 2)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** when learners meet \"qirad\" in one book and \"mudarabah\" in another, it is the same contract."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.3 The two parties",
+   "id": "crs-5"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Arabic",
+    "Plain English",
+    "Brings"
+   ],
+   "r": [
+    [
+     "**Rabb al-mal** (also *rabbul mal*)",
+     "\"Owner of the money\": the investor",
+     "All the capital"
+    ],
+    [
+     "**Mudarib** (also *'amil*, \"worker\", or *muqarid*, \"the one who takes the qirad\")",
+     "The manager or entrepreneur",
+     "The work and skill"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "(AAOIFI SS 13, clause 2 and Appendix B; BNM PD Mudarabah 2015, 10.1)"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.4 Definitions side by side",
+   "id": "crs-6"
+  },
+  {
+   "t": "p",
+   "x": "A good class exercise is to read four definitions from four different centuries and find what they share."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Source",
+    "Definition (in English)"
+   ],
+   "r": [
+    [
+     "Ibn Qudamah, Hanbali, d. 1223",
+     "A man hands over his wealth to another who trades with it for him, on the basis that whatever profit results is shared between them as they stipulate (*al-Mughni* 5:19)"
+    ],
+    [
+     "Al-Nawawi, Shafi'i, d. 1277",
+     "Qirad exists between two persons, one of whom supplies funds to the other to trade with, for a share of the profit (*Minhaj al-Talibin*, Book 19, in E. C. Howard's English, about p. 210)"
+    ],
+    [
+     "AAOIFI, 2002 (revised 2015)",
+     "A partnership in profit whereby one party provides capital and the other party provides labour (AAOIFI SS 13, clause 2)"
+    ],
+    [
+     "Bank Negara Malaysia, 2015",
+     "A contract under which the capital provider gives capital to be managed by the entrepreneur; profit is shared by an agreed ratio, while financial losses are borne by the capital provider, provided they are not due to the entrepreneur's misconduct, negligence or breach of specified terms (BNM PD Mudarabah 2015, 10.1)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**What they share:** money from one side, work from the other, profit shared by agreement. Bank Negara Malaysia's definition adds the loss rule. AAOIFI states it in a separate clause (AAOIFI SS 13, 4/4). The two classical definitions leave it to later chapters."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "1.5 A first picture",
+   "id": "crs-7"
+  },
+  {
+   "t": "q",
+   "x": "Amina has 100,000 in savings. Bilal is a skilled cloth trader with no capital. Amina gives Bilal the 100,000. They agree that Bilal will trade in cloth and that any profit will be split 60% to Amina and 40% to Bilal. - If Bilal makes a profit of 20,000, Amina gets her 100,000 back plus 12,000; Bilal gets 8,000. - If Bilal makes no profit, Amina gets her 100,000 back and Bilal gets nothing for his work. - If, without any fault of Bilal's, the business loses 10,000, Amina gets 90,000 back. Bilal gets nothing for his work but does not repay the 10,000."
+  },
+  {
+   "t": "p",
+   "x": "*(The names and numbers are an illustration made for this manual. The rules they show are set out with their sources in Part 3.)*"
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 2. Mudarabah in academic terms",
+   "id": "crs-8"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.1 Where mudarabah sits in Islamic contract law",
+   "id": "crs-9"
+  },
+  {
+   "t": "p",
+   "x": "Islamic law sorts contracts into families, and the books do not all place mudarabah in the same one. Ibn Qudamah (Hanbali) places it inside his book on partnership (**shirkah**, \"sharing\") as its third kind: \"a body and wealth share\", meaning one partner brings his person (work) and the other brings wealth (*al-Mughni* 5:19). The Muwatta of Malik and the *Minhaj* of al-Nawawi give qirad a book of its own, apart from partnership. AAOIFI's definitions appendix sets out how a mudarabah is distinguished from a partnership (AAOIFI SS 13, App. C). The contract most often compared with it in finance is **musharakah**, where every partner brings money."
+  },
+  {
+   "t": "p",
+   "x": "Usmani sets out five differences between the two (Usmani, pp. 31-32):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Point",
+    "Musharakah",
+    "Mudarabah"
+   ],
+   "r": [
+    [
+     "Who puts in money",
+     "All partners",
+     "The investor only"
+    ],
+    [
+     "Who manages",
+     "Any or all partners",
+     "The manager only; the investor may not take part"
+    ],
+    [
+     "Who bears a money loss",
+     "All partners, by their share of capital",
+     "The investor only, unless the manager was negligent or dishonest"
+    ],
+    [
+     "Liability for debts",
+     "Normally unlimited",
+     "Limited to the investor's money, unless he allowed borrowing in his name"
+    ],
+    [
+     "Who owns the goods bought",
+     "All partners jointly",
+     "The investor; the manager earns only from profit when goods are sold"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "On the last row, Usmani reports a different view: \"some jurists\" count natural growth of the capital as profit. His example, citing al-Nawawi's *Rawdat al-Talibin* 5:125, is sheep that give birth to lambs, which would then be shared by the agreed ratio. Usmani calls this \"a minority view\" (Usmani, p. 32, note 1)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.2 The legal nature: one contract, several roles",
+   "id": "crs-10"
+  },
+  {
+   "t": "p",
+   "x": "Mudarabah is unusual because the manager's legal position changes as the business moves on. The sources give the pieces; together they make a useful teaching device:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Stage",
+    "The manager's role",
+    "What follows",
+    "Source"
+   ],
+   "r": [
+    [
+     "He holds the money",
+     "**Trustee** (*amin*, \"trustworthy one\")",
+     "Not liable for loss unless he breaches the trust",
+     "AAOIFI SS 13, 4/4; BNM 11.1"
+    ],
+    [
+     "He buys and sells",
+     "**Agent** (*wakil*) of the investor",
+     "Acts in the investor's name within his mandate",
+     "AAOIFI SS 13, App. B (\"each party acts as an agent of the other\")"
+    ],
+    [
+     "A profit appears",
+     "**Partner** in the profit",
+     "Owns his agreed share of the profit",
+     "AAOIFI SS 13, clause 2 (\"a partnership in profit\"); 8/8"
+    ],
+    [
+     "He breaks the terms",
+     "**Liable** for the capital",
+     "Must make good the loss",
+     "AAOIFI SS 13, 4/4; BNM 11.1; al-Kafi 5, no. 890"
+    ],
+    [
+     "The contract turns out to be invalid",
+     "**Hired worker**",
+     "Gets a market wage for his work, not a profit share",
+     "AAOIFI SS 13, 8/4; Muwatta 1455 (\"it becomes hire\")"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "*(The table is this manual's summary of the cited sources. It is a teaching aid, not a quotation from any one book.)*"
+  },
+  {
+   "t": "p",
+   "x": "Two key terms appear in all the modern texts. AAOIFI calls mudarabah \"one of the trust-based contracts\" (AAOIFI SS 13, 4/4). Bank Negara Malaysia calls it a contract based on a fiduciary relationship, *'aqd al-amanah* (\"contract of trust\") (BNM PD Mudarabah 2015, 11.1)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.3 Why it is allowed: the evidence and the debate",
+   "id": "crs-11"
+  },
+  {
+   "t": "p",
+   "x": "Mudarabah is accepted by every school. But the scholars disagree about **what the permission rests on**. Teaching this question well shows learners how Islamic law reasons."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.1 The jurists' admission: strict reasoning would forbid it",
+   "id": "crs-12"
+  },
+  {
+   "t": "p",
+   "x": "Al-Kasani (Hanafi, d. 1191) admits that if one applied strict analogy (*qiyas*) the contract would not be allowed. His reason: it hires a person for an unknown wage, indeed for a wage that may never exist, and for unknown work. \"But we left analogy,\" he says, because of the Qur'an, the Sunnah and consensus (al-Kasani, *Bada'i' al-Sana'i'* 6:79)."
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** this is a good moment to explain that Islamic law does not run on analogy alone. Where a practice is approved by the sources and by consensus, the jurists keep it even when analogy points the other way."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.2 Is there a verse of the Qur'an?",
+   "id": "crs-13"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View"
+   ],
+   "r": [
+    [
+     "Al-Sarakhsi (Hanafi)",
+     "Cites Qur'an 73:20, which speaks of others travelling in the land seeking the bounty of God, reading it as travel for trade; he says the permission is known by the Sunnah and consensus (*al-Mabsut* 22:18)"
+    ],
+    [
+     "Al-Kasani (Hanafi)",
+     "Cites the same verse and says the manager is one who travels in the land seeking God's bounty (*Bada'i'* 6:79)"
+    ],
+    [
+     "AAOIFI",
+     "Lists Qur'an 73:20 first among the proofs, read as travel for trade and lawful income (AAOIFI SS 13, App. B)"
+    ],
+    [
+     "Al-Tabari (d. 923), Qur'an commentator",
+     "Reads 73:20 as people travelling for trade and earning, but draws no contract ruling from it (*Jami' al-Bayan*, on 73:20)"
+    ],
+    [
+     "Ibn Hazm (Zahiri, d. 1064)",
+     "Rests qirad on the Prophet's approval of a pre-Islamic practice and on the unbroken practice of Muslims without dispute; the page cites no verse (*al-Muhalla* 7:96, issue 1367)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "The word *mudarabah* itself does not appear in the Qur'an. The verse shares its root (*d-r-b*), and the jurists above read it in different ways: as support, or as wording only."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.3 The Prophet and the Companions",
+   "id": "crs-14"
+  },
+  {
+   "t": "p",
+   "x": "Besides the verse, the books cite the practice of the Prophet's time and of his Companions. For Ibn Hazm, this practice is the whole basis (2.3.2)."
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Before Islam.** Ibn Hazm says qirad existed before Islam, when the Quraysh (the Prophet's tribe in Mecca) gave capital to traders for a share of the profit, and that the Prophet approved it and himself traded with the wealth of Khadijah (later his wife) (*al-Muhalla* 7:96).",
+    "**A hadith naming it.** A report in Sunan Ibn Majah lists *muqaradah* among three things that carry blessing. It is graded weak (*da'if*) in the edition used, so it is support rather than proof (Ibn Majah 2289). Mishkat al-Masabih gives the same report; its translator adds a note defining muqaradah as trading with someone's property with profit shared and \"any loss falling on the property\" (Mishkat 2815).",
+    "**Al-'Abbas's conditions.** The Prophet's uncle al-'Abbas is reported to have set conditions on his manager: not to cross the sea with the money, not to go down into a valley, not to buy animals with it; if he did, he would be liable. The report says the Prophet heard of it and approved (al-Sarakhsi, *al-Mabsut* 22:18; al-Kasani, *Bada'i'* 6:79; AAOIFI SS 13, App. B, citing al-Bayhaqi). **Its grade:** al-Bayhaqi records it (*al-Sunan al-Kubra*, Dar al-Kutub al-'Ilmiyya edition, 6:184, nos. 11611-11612) and says only one narrator carries it, Abu al-Jarud Ziyad ibn al-Mundhir, \"a weak Kufan\" (from Kufa, a city in Iraq). He adds that the hadith critic Yahya ibn Ma'in called him a liar and that the other critics called him weak. Al-Daraqutni, who also records the report, says Abu al-Jarud is weak (as given in the Dorar Encyclopedia of Hadith, dorar.net). The report is therefore weak by its own collector's judgement, and is support rather than proof.",
+    "**Hakim ibn Hizam's conditions.** A Companion who set the same kind of conditions and said that if they were broken, the manager would guarantee the money. Ibn Hajar, the compiler of Bulugh al-Maram, notes that al-Daraqutni recorded it and that its narrators are trustworthy (Bulugh al-Maram 1043).",
+    "**Umar's sons.** Two sons of the caliph Umar, Abdullah and Ubaydullah, were lent public money in Basra, traded with it and made a profit. Umar ruled the loan had been given only because of who they were. A man sitting with him suggested he treat it as a qirad. Umar did: the treasury took the capital and half the profit, and the sons kept half (Muwatta 1450).",
+    "**Uthman.** The caliph Uthman gave money as qirad on condition that the profit be shared (Muwatta 1451).",
+    "**An orphan's money.** Ibn Qudamah reports that Umar gave an orphan's wealth as mudarabah, to be traded in Iraq (*al-Mughni* 5:19).",
+    "**An early judge.** Ibn Sirin said he knew of the judge Shurayh ruling on mudarabah disputes in only two ways: the manager must prove a calamity to be excused; the investor must prove betrayal, otherwise the manager's oath is enough (Sunan al-Nasa'i 3967, graded *sahih*, \"sound\", in the edition used)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.4 The Shia (Ja'fari) reports",
+   "id": "crs-15"
+  },
+  {
+   "t": "p",
+   "x": "The Ja'fari school relies on reports from the Imams of the Prophet's family. Al-Kulayni's *al-Kafi* (compiled before 941) has a chapter titled \"Liability for Profit Sharing, Its Profit and Expenses (al-Mudarabah)\". In it, Imam Ja'far al-Sadiq says the working partner takes his share of the profit but is not liable for loss \"unless he violates the instructions of the owner of the assets\" (al-Kafi 5, no. 890). The same chapter gives rules on breach, debt as capital, expenses and guarantees, used in Part 3 below."
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** the Sunni and Shia sources reach the same core rule by separate chains of reports: profit is shared, loss falls on the capital, and the manager is liable only for breach."
+  },
+  {
+   "t": "h",
+   "l": 3,
+   "x": "2.3.5 Consensus",
+   "id": "crs-16"
+  },
+  {
+   "t": "p",
+   "x": "Ibn Qudamah reports that \"the people of knowledge agreed on the permissibility of mudaraba in general\", citing Ibn al-Mundhir (*al-Mughni* 5:19). AAOIFI repeats this (AAOIFI SS 13, App. B). Ibn Hazm calls it a practice that Muslims followed with certainty and without any disagreement (*al-Muhalla* 7:96)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.4 The building blocks (pillars)",
+   "id": "crs-17"
+  },
+  {
+   "t": "p",
+   "x": "The jurists analyse a contract into its \"pillars\" (*arkan*), the parts without which it does not exist. They do not all count the same pillars."
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Al-Kasani (Hanafi):** \"As for the pillar of the contract, it is offer and acceptance\" (*Bada'i'* 6:79). He then treats the parties, the capital and the profit as conditions of that pillar, not as pillars: some conditions relate to the two parties, some to the capital and some to the profit (*Bada'i'* 6:81).",
+    "**A Shafi'i commentary:** \"Its pillars are six: the two contracting parties, work, profit, capital and the formula\" (the formula is the offer and acceptance; the two parties count as two pillars) (*Mukhtasar Tuhfat al-Muhtaj* 2:381, a modern abridgement, prepared by Mustafa ibn Sumayt, of the commentary *Tuhfat al-Muhtaj* by Ibn Hajar al-Haytami on al-Nawawi's *Minhaj*; he is a different person from the Ibn Hajar who compiled *Bulugh al-Maram*).",
+    "**A modern comparative study** reports that the majority, the Malikis, Shafi'is and Hanbalis, count five pillars (the two parties, the formula, the capital, the work and the profit), and that the Hanafis count one, the formula (Fahd ibn Abd al-Rahman al-Dahmash, \"al-Mudarabah: dirasah muqaranah li-l-shurut al-mufsidah li-l-'aqd wa-tatbiqatuha al-qada'iyyah\", *Majallat al-Dirasat al-'Arabiyyah*, Minya University, vol. 51, no. 1, January 2025, pp. 247-276, abstract). This manual does not quote the Maliki and Hanbali books themselves on this point.",
+    "**The modern standards** set the contract out in parts. Bank Negara Malaysia groups them as the \"components of mudarabah\": the contracting parties, offer and acceptance, management, capital, profit and loss (BNM 12-17)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "A teaching outline adapted from these layouts:"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "**The parties:** an investor and a manager, each able to appoint an agent and to act as one (AAOIFI SS 13, 4/2; BNM 12.2).",
+    "**The words of the contract:** an offer and an acceptance, which may be spoken, written, or made by any other method that can be shown by a document or record (BNM 13.1-13.2). Al-Kasani adds a principle that matters here: in contracts, what counts is the meaning, not the form of the words (*Bada'i'* 6:80).",
+    "**The capital:** see 3.1-3.3.",
+    "**The work (management):** see 3.3 and 3.8.",
+    "**The profit:** see 3.4.",
+    "**The loss:** see 3.5."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "2.5 Restricted and unrestricted",
+   "id": "crs-18"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Type",
+    "Arabic",
+    "Meaning",
+    "Source"
+   ],
+   "r": [
+    [
+     "Unrestricted",
+     "*al-mudarabah al-mutlaqah*",
+     "The manager may invest as he sees fit, within the customs of his trade",
+     "AAOIFI SS 13, 5/1; BNM 11.3(a)"
+    ],
+    [
+     "Restricted",
+     "*al-mudarabah al-muqayyadah*",
+     "The investor limits the place, the time, the type of business, or the mixing of funds",
+     "AAOIFI SS 13, 5/2; BNM 11.3(b)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "AAOIFI adds a limit on restrictions: they must not \"unduly constrain\" the manager (AAOIFI SS 13, 5/2). The parties may switch from one type to the other by agreement (BNM 11.4)."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 3. The rules, with every school's position",
+   "id": "crs-19"
+  },
+  {
+   "t": "p",
+   "x": "This part takes the contract apart one question at a time. Each section first gives what the sources agree on, then any disagreement, with its holders. A summary table of all disagreements is at 3.14."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.1 The capital: cash only, or goods too?",
+   "id": "crs-20"
+  },
+  {
+   "t": "p",
+   "x": "**Agreed:** cash (in the classical books, gold and silver coin: dirhams and dinars) may be the capital. Ibn Qudamah writes that there is \"no disagreement\" that dirhams and dinars may serve as capital in a partnership (*al-Mughni* 5:12)."
+  },
+  {
+   "t": "p",
+   "x": "**Disputed:** may the investor hand over goods (Arabic *'urud*, trade goods or other non-cash assets) as the capital?"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Reason given",
+    "Source"
+   ],
+   "r": [
+    [
+     "Al-Kasani, for the Hanafis and the general body of scholars (*'ammat al-'ulama'*)",
+     "**No.** Capital must be dirhams or dinars",
+     "Goods are valued by estimate, and valuers differ, so the profit becomes unknown at division, which leads to disputes",
+     "*Bada'i'* 6:82"
+    ],
+    [
+     "Malik, as recorded in the Muwatta",
+     "**No.** \"Qirad loan is only good in gold or silver coin and it is never permitted in any kind of wares or goods or articles\"",
+     "Goods given out and returned at a different price make the deal uncertain",
+     "Muwatta 1453, 1456"
+    ],
+    [
+     "Malik, as reported by al-Kasani",
+     "**Yes.** Al-Kasani writes that according to Malik, liquid capital is not a condition and mudarabah with goods is allowed; al-Kasani rejects this",
+     "(not given)",
+     "*Bada'i'* 6:82"
+    ],
+    [
+     "Al-Shafi'i",
+     "**No.** Only dirhams and dinars",
+     "Goods make it impossible to return the same capital and may give one side all the profit",
+     "*al-Majmu'* 14:362"
+    ],
+    [
+     "Imam Ahmad, the main position of the Hanbali school (*zahir al-madhhab*)",
+     "**No** partnership in goods, in the narrations of Abu Talib and Harb",
+     "(not given on this point)",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Imam Ahmad, a second narration; adopted by the Hanbali jurists Abu Bakr and Abu al-Khattab",
+     "**Yes.** \"Partnership and mudarabah are permitted with goods\"; the value of the goods at the time of the contract becomes the capital",
+     "(not given on this point)",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Malik and Ibn Abi Layla, as reported by Ibn Qudamah",
+     "**Yes.** After giving Ahmad's second narration (\"partnership and mudarabah are permitted with goods\"), Ibn Qudamah writes: \"it is the view of Malik and Ibn Abi Layla\"",
+     "(not given on this point)",
+     "*al-Mughni* 5:13"
+    ],
+    [
+     "Tawus, al-Awza'i and Hammad ibn Abi Sulayman (early jurists)",
+     "**Yes**, in mudarabah",
+     "",
+     "Reported in *al-Mughni* 5:13"
+    ],
+    [
+     "Tawus, al-Awza'i and Ibn Abi Layla",
+     "**Yes.** Goods are like coins for this purpose",
+     "Any contract valid with coins is valid with goods",
+     "Reported in *al-Majmu'* 14:362, which rejects it"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "**No.** Qirad is valid only with dinars and dirhams; he names al-Shafi'i, Malik and Abu Hanifah, among others, as holding this",
+     "",
+     "*al-Muhalla* 7:96, issue 1368"
+    ],
+    [
+     "AAOIFI, 2002/2015",
+     "**Yes, at agreed value.** \"In principle\" cash, but tangible assets may be given; their value, set by experts or by agreement, becomes the capital",
+     "Profit can be made with goods as well as cash. AAOIFI says this follows \"the view of the Maliki and the Hanbali jurists\"",
+     "AAOIFI SS 13, 7/1 and App. B"
+    ],
+    [
+     "Bank Negara Malaysia, 2015",
+     "**Yes, valued in money.** Capital may be cash or in-kind, \"including intangible assets\", valued when the contract is made",
+     "(not given)",
+     "BNM 15.4-15.5"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "On partnership in goods (the related contract), Ibn Qudamah names Ibn Sirin, Yahya ibn Abi Kathir, al-Thawri, al-Shafi'i, Ishaq, Abu Thawr and the Hanafis (\"the people of opinion\") as disliking it. He reports that al-Shafi'i, in one of two views, allowed partnership in goods that have exact equivalents, such as grains and oils, but never in other goods (*al-Mughni* 5:13)."
+  },
+  {
+   "t": "p",
+   "x": "*Al-Majmu'* is al-Nawawi's commentary; volume 14 belongs to the \"second completion\" (*al-Takmilah al-Thaniyah*) added to it by a later scholar."
+  },
+  {
+   "t": "p",
+   "x": "**A related question: \"sell the goods and trade with the price\".** Suppose the investor hands over goods and tells the manager to sell them and then trade with the cash price as mudarabah."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Al-Kasani (Hanafi)",
+     "**Allowed.** The mudarabah attaches to the cash price, not to the goods. If the goods are sold for wheat or barley instead of cash, Abu Hanifah lets the sale stand but holds the mudarabah invalid, while his students Abu Yusuf and Muhammad hold the sale itself invalid",
+     "*Bada'i'* 6:82"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "**Allowed.** The owner may order the goods sold for a known price; the manager then works with that price as qirad",
+     "*al-Muhalla* 7:96, issue 1368"
+    ],
+    [
+     "A later Hanbali manual",
+     "**Valid**: if the investor says \"sell this item and make a mudarabah with its price\", the contract is valid",
+     "Al Husayn, *al-Zawa'id 'ala Zad al-Mustaqni'*, p. 465"
+    ],
+    [
+     "Malik",
+     "**Not good**, because the investor gains from the selling, and the deal is uncertain. If it has already happened, the manager is paid the wage of a qirad agent for selling, and the money is qirad from the day it became cash",
+     "Muwatta 1456"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher: a real puzzle about Malik's view.** The Muwatta records Malik (d. 795) himself forbidding qirad in goods. Two later writers from other schools report the opposite. Al-Kasani (Hanafi, d. 1191) says that for Malik, mudarabah with goods is allowed (*Bada'i'* 6:82). Ibn Qudamah (Hanbali, d. 1223) names Malik, with Ibn Abi Layla, as holding that partnership and mudarabah are both allowed with goods (*al-Mughni* 5:13). AAOIFI cites \"the Maliki and the Hanbali jurists\" for its rule. Usmani, for his part, reports Malik allowing goods as capital in a partnership (musharakah), valued at market price on the day of the contract (Usmani, p. 25, citing *al-Mughni* 5:125). The sources seen do not explain the gap between the Muwatta and these reports, and this manual does not settle the question. It shows learners why a reader should check what a school says in its own books before relying on a report of it in another school's book."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.2 May a debt be turned into capital?",
+   "id": "crs-21"
+  },
+  {
+   "t": "p",
+   "x": "Suppose the manager already owes the investor money. Can the investor say \"keep it, and trade with it as mudarabah\"?"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Malik",
+     "Disapproved until the creditor first takes his money back; then he may give it as qirad. His reason: the debtor may be in difficulty and want to delay repayment, which would add to what he owes",
+     "Muwatta 1453, 1463"
+    ],
+    [
+     "Ali ibn Abi Talib, reported by Imam Ja'far al-Sadiq (Ja'fari)",
+     "\"It is not valid until he takes possession\"",
+     "al-Kafi 5, no. 887"
+    ],
+    [
+     "Ibn Qudamah (Hanbali)",
+     "**Not valid.** He says Imam Ahmad stated this, that it is the view of most scholars, and that he knows of no one who disagrees. He quotes Ibn al-Mundhir's report of consensus, which names Ata', al-Hakam, Hammad, Malik, al-Thawri, Ishaq, Abu Thawr, the Hanafis (\"the people of opinion\") and al-Shafi'i",
+     "*al-Mughni* 5:190, as quoted in the compilation *Fiqh al-Mu'amalat*"
+    ],
+    [
+     "The Hanbali school, as stated in a later manual",
+     "**Not valid.** The manual's note calls this \"the madhhab\" and names Ata', Malik, al-Thawri, Ishaq, Abu Thawr, the Hanafis and al-Shafi'i",
+     "Al Husayn, *al-Zawa'id 'ala Zad al-Mustaqni'*, p. 465 and note 2"
+    ],
+    [
+     "Imam Ahmad, a second narration",
+     "**Valid.** The same note reports it and says the Hanbali scholar Ibn al-Qayyim argued for it in his *I'lam*",
+     "Al Husayn, p. 465, note 2"
+    ],
+    [
+     "Ibn al-Qayyim; also Ashhab (Maliki), one view in the Shafi'i school and some Hanbalis",
+     "**Valid.** Ibn al-Qayyim's reasons, as reported: no evidence forbids it, it involves no riba, gambling or uncertainty, and allowing it fits the merits of the Shari'ah",
+     "Reported in the Dorar Encyclopedia of Fiqh (dorar.net), citing *I'lam al-Muwaqqi'in* 3:262"
+    ],
+    [
+     "AAOIFI",
+     "Not permissible to use a debt owed by the manager or by anyone else as capital",
+     "AAOIFI SS 13, 7/3"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "\"All forms of debts shall not qualify as capital\", including receivables",
+     "BNM 15.7"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "AAOIFI explains the danger: capital must be available to use at once, and a creditor may extend a debt in return for extra gain \"under the name of mudarabah\", which would be riba (AAOIFI SS 13, App. B)."
+  },
+  {
+   "t": "p",
+   "x": "**The reports conflict.** Ibn Qudamah knows of no one who disagrees, while the later Hanbali manual records a second narration from Ahmad that allows it, and Ibn al-Qayyim is reported as arguing for it. This manual does not settle the question."
+  },
+  {
+   "t": "p",
+   "x": "**A debt owed by someone else.** Al-Kasani (Hanafi) allows the investor to say \"collect what so-and-so owes me and work with it as mudarabah\": the mudarabah then attaches to the money once received, so the capital is cash, not a debt (*Bada'i'* 6:83, as quoted in *Fiqh al-Mu'amalat*). The later Hanbali manual gives a similar case, \"or collect my debt\", in the same sentence as the goods case (Al Husayn, p. 465). AAOIFI's text, by contrast, forbids using as capital a debt owed by the manager or by anyone else (AAOIFI SS 13, 7/3)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.3 Handing over the capital and the investor's hands-off rule",
+   "id": "crs-22"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "The capital must be known in amount and kind (AAOIFI SS 13, 7/2) and put at the manager's disposal, wholly or partly (AAOIFI SS 13, 7/4; BNM 15.3).",
+    "The investor may not stipulate that he will work alongside the manager or take part in buying and selling (AAOIFI SS 13, 9/3).",
+    "He does keep a right to reasonable information about the venture (BNM 14.5).",
+    "Capital in another currency is valued in a currency the parties agree when the contract is made (BNM 15.6).",
+    "The contract may let the investor withdraw capital gradually during its term, unless it says otherwise (BNM 15.11, marked G).",
+    "With the investor's consent, the manager may mix the capital with other investment funds, keeping to the agreed terms (BNM 15.12-15.13)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.4 The profit share",
+   "id": "crs-23"
+  },
+  {
+   "t": "p",
+   "x": "**Agreed by all sources seen:**"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "The share, called the **profit-sharing ratio** (PSR), must be **a fraction of the actual profit**, agreed at the start: a half, a third, 60/40, anything the parties choose (Muwatta 1454, 1455; Usmani, p. 33; AAOIFI SS 13, 8/1, 8/3; BNM 16.4-16.5).",
+    "It may **not** be a fixed sum, or a percentage of the capital. Malik says a stipulation of even one dirham of profit for one side alone \"is not the qirad of the Muslims\" (Muwatta 1454). AAOIFI makes such a contract void (AAOIFI SS 13, 8/5); BNM forbids both forms (BNM 16.8-16.9).",
+    "One side may not take the profit of one deal, one period or one part of the money while the other takes the rest (AAOIFI SS 13, 8/6)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Worked check for learners** (with capital of 100,000):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Clause",
+    "Valid?",
+    "Why"
+   ],
+   "r": [
+    [
+     "\"Profit split 40% manager, 60% investor\"",
+     "Yes",
+     "A share of actual profit"
+    ],
+    [
+     "\"The manager gets 10,000 of the profit\"",
+     "No",
+     "A fixed sum"
+    ],
+    [
+     "\"The investor gets 20% of the capital each year\"",
+     "No",
+     "A percentage of capital: a fixed return"
+    ],
+    [
+     "\"The investor gets 1,000 first, then the rest is split 50/50\"",
+     "No",
+     "One side takes a fixed amount alone (Muwatta 1454)"
+    ],
+    [
+     "\"50% if you trade in wheat, 33% if you trade in flour\"",
+     "Yes",
+     "Different shares for different cases (Usmani, p. 33, citing al-Kasani, *Bada'i'* 6:99)"
+    ],
+    [
+     "\"30% in your town, 50% in another town\"",
+     "Yes",
+     "Same reason (Usmani, p. 33, citing al-Kasani, *Bada'i'* 6:99)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "*(The amounts in this table are this manual's illustration of the cited rules.)*"
+  },
+  {
+   "t": "p",
+   "x": "**A modern addition: the profit threshold.** AAOIFI allows a clause that profit up to a set level is shared by the agreed ratio and profit above it goes to one party (AAOIFI SS 13, 8/5; SS 40, 4/4). BNM allows the excess to be shared by a different ratio or paid to one party (BNM 16.13). This is used to reward a manager for strong performance."
+  },
+  {
+   "t": "p",
+   "x": "**Changing the ratio.** AAOIFI allows the parties to change the ratio at any time and to set how long the new ratio lasts (AAOIFI SS 13, 8/3). BNM allows a revision during the contract if both sides agree (BNM 16.6-16.7)."
+  },
+  {
+   "t": "p",
+   "x": "**Several managers.** With more than one manager in a single contract, the investor and all the managers agree one common ratio, and the managers share the managers' portion as agreed (BNM 16.15)."
+  },
+  {
+   "t": "p",
+   "x": "**Early withdrawal.** The parties may agree that an investor who withdraws capital before maturity receives lower profit or none (BNM 16.26, marked G)."
+  },
+  {
+   "t": "p",
+   "x": "**If no ratio was agreed.** AAOIFI says to follow local custom; if there is none, the contract is void and the manager gets a market wage for his work (AAOIFI SS 13, 8/4)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.5 Loss",
+   "id": "crs-24"
+  },
+  {
+   "t": "p",
+   "x": "**The core rule, agreed by all sources seen:** a money loss falls on the capital, that is, on the investor. The manager loses his unpaid work. He repays nothing unless the loss came from his own fault."
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Malik: if the capital does not grow or there is a loss, the manager does not have to make it good; \"that falls to the investor from the principal\" (Muwatta 1455).",
+    "Imam Ja'far al-Sadiq: the manager is not liable for loss unless he violates the owner's instructions (al-Kafi 5, no. 890).",
+    "AAOIFI: the manager is not liable \"except in case of breach of the requirements of trust\", namely misconduct, negligence, or breach of the contract terms (AAOIFI SS 13, 4/4).",
+    "Bank Negara Malaysia uses the same three Arabic terms: **ta'addi** (misconduct), **taqsir** (negligence), **mukhalafat al-shurut** (breach of specified terms) (BNM 11.1, 17.2)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Profit first covers loss.** If some deals make a profit and others a loss, the profit first makes good the loss, and only the rest is shared (Usmani, p. 34, citing *al-Mughni* 5:168). Malik gives the case of capital partly lost before the manager starts: the manager cannot treat the remainder as the new capital; the capital is restored from profit first (Muwatta 1453). AAOIFI: no profit can be claimed unless the capital is intact, and losses carried forward are set against future profits (AAOIFI SS 13, 8/7)."
+  },
+  {
+   "t": "p",
+   "x": "**Who must prove what.** The judge Shurayh put the burden on the manager to prove a calamity, and on the investor to prove betrayal; otherwise the manager's oath was enough (Sunan al-Nasa'i 3967). The modern equivalent: BNM requires the manager to give the reason for any loss (BNM 17.3)."
+  },
+  {
+   "t": "p",
+   "x": "**Several investors.** Each bears loss in proportion to his capital (BNM 17.4)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.6 Guarantees: can the investor make the capital safe?",
+   "id": "crs-25"
+  },
+  {
+   "t": "p",
+   "x": "This is the question learners most often get wrong. The rule is simple: **the manager cannot guarantee the capital or the profit.** If he did, the investor would have the profit of a partner and the safety of a lender, which is the shape of an interest-bearing loan."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Malik",
+     "An investor may not stipulate a guarantee from the manager. If the capital is lost, the manager owes nothing, \"because the stipulation of guarantees in qirad is null and void\"; the profit is shared as if no guarantee had been made",
+     "Muwatta 1455"
+    ],
+    [
+     "Imam al-Baqir (Ja'fari), in a report that opens with a saying of Ali ibn Abi Talib",
+     "\"One who holds a merchant responsible he can only have his capital and has no share in the profit.\" (In this manual's words: an investor who makes the manager guarantee the money is treated like a lender.)",
+     "al-Kafi 5, no. 886"
+    ],
+    [
+     "The case of Umar's sons",
+     "The sons argued that because they would have guaranteed the money, the profit was theirs; the settlement as qirad gave half the profit to the money's owner",
+     "Muwatta 1450"
+    ],
+    [
+     "AAOIFI",
+     "The investor may take guarantees from the manager, but may enforce them **only** in case of misconduct, negligence or breach",
+     "AAOIFI SS 13, 6"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "The manager shall not guarantee capital or profit (15.10, 16.3, 18.1). Two safeguards are allowed: collateral that can be sold only on misconduct, negligence or breach; or a guarantee from an **independent third party**, in a separate contract, not related by ownership or control to the manager",
+     "BNM 18.2-18.3"
+    ],
+    [
+     "IFSB (2005 text)",
+     "A third party may guarantee mudarabah capital on the basis of a donation (*tabarru'*); the guarantee \"relates only to the Mudarabah capital, not to the return\"",
+     "IFSB-2, paras. 185 and 39"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** link this to Part 1. The whole difference between mudarabah and a loan sits in this one rule."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.7 The manager's pay and expenses",
+   "id": "crs-26"
+  },
+  {
+   "t": "p",
+   "x": "**No salary.** Apart from his profit share, the manager may not take a salary, fee or other pay for the work of the mudarabah. Usmani reports that \"all the schools of Islamic Fiqh are unanimous on this point\" (Usmani, pp. 33-34, citing al-Sarakhsi, *al-Mabsut* 22:149-150). Malik explains why: if one side takes a fixed advantage, \"it becomes hire, and hire is only good with known and fixed terms\" (Muwatta 1455). AAOIFI and BNM allow one exception: a **separate** contract, for a fee, for work that is not by custom part of the mudarabah (AAOIFI SS 13, 8/2; BNM 16.21-16.22)."
+  },
+  {
+   "t": "p",
+   "x": "**Pay for helpers is a different matter.** Malik allows a manager with a large capital, who cannot do all the work himself, to hire someone from the capital to do it (Muwatta 1459; in the Arabic, *wa yasta'jira min al-mal idha kana kathiran la yaqwa 'alayhi ba'da man yakfihi ba'da ma'unatihi*: \"and he may hire from the capital, when it is large and he cannot manage it, someone to spare him part of the burden\"). This is a wage for a helper, not pay for the manager."
+  },
+  {
+   "t": "p",
+   "x": "**Disputed: may the manager charge his living expenses to the business?** The books call these expenses *nafaqah* (\"maintenance\"): food, clothing, lodging and travel."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "At home",
+    "On a business journey",
+    "Source"
+   ],
+   "r": [
+    [
+     "Hanafi: al-Sarakhsi; Usmani for the Hanafi jurists",
+     "No",
+     "Yes. Al-Sarakhsi: expenses come from the capital when he travels to trade. Usmani: \"personal expenses, accommodation, food, etc.\" on a business trip outside his own city",
+     "*al-Mabsut* 22:62; Usmani, p. 34, citing al-Kasani, *Bada'i'* 6:109"
+    ],
+    [
+     "Maliki: Malik",
+     "No",
+     "Yes: food and clothing \"according to the amount of capital\", when the capital can bear it",
+     "Muwatta 1452, 1459"
+    ],
+    [
+     "Malik, as reported by Ibn Hazm",
+     "A small meal from it, a few coppers' worth (*bi-l-aflus*)",
+     "(see the next row)",
+     "*al-Muhalla* 7:97, issue 1371"
+    ],
+    [
+     "Abu Hanifah and Malik, as reported by Ibn Hazm",
+     "No (apart from Malik's small meal)",
+     "Yes: he may eat, dress and ride from it, reasonably, when the capital is large; Ibn Hazm rejects this view",
+     "*al-Muhalla* 7:97, issue 1371"
+    ],
+    [
+     "Maliki: Ibn al-Qasim, in Sahnun's *Mudawwana*",
+     "No",
+     "Yes, going and returning; reports from earlier Medina scholars allow food, clothing and mounts within reason, if the capital can bear it",
+     "*al-Mudawwana* 3:634"
+    ],
+    [
+     "Shafi'i: the *Minhaj*",
+     "No",
+     "No, in the more apparent view (*al-azhar*), because expenses may swallow the profit and more",
+     "*Minhaj* text in *Mukhtasar Tuhfat al-Muhtaj* 2:389"
+    ],
+    [
+     "Al-Shafi'i, as reported by Ibn Qudamah",
+     "Even a stipulation for expenses at home is invalid",
+     "",
+     "*al-Mughni* 5:50"
+    ],
+    [
+     "Hanbali: the school's position as stated in a later Hanbali manual",
+     "No, unless stipulated",
+     "No, unless stipulated, as with an agent. The manual's note calls this \"the madhhab\" and names Ibn Sirin, Hammad and al-Shafi'i as holding it. If the investor takes back his money, now in cash, in the town of the journey, the manager has no expenses for the trip home, because his right lasts only while the qirad lasts",
+     "Al Husayn, *al-Zawa'id 'ala Zad al-Mustaqni'*, p. 467 and notes 1-2"
+    ],
+    [
+     "A scholar the same note calls \"the Shaykh\" (not named on the page)",
+     "No, except by stipulation or by custom",
+     "Same",
+     "Al Husayn, p. 467, note 1, which says he put custom in the place of a stipulation and calls this \"strong in reasoning\""
+    ],
+    [
+     "Hanbali: Ibn Qudamah",
+     "If the manager stipulates his expenses, the stipulation is valid \"whether at home or on travel\"",
+     "(same)",
+     "*al-Mughni* 5:50"
+    ],
+    [
+     "Hanbali: Imam Ahmad, as reported by Usmani",
+     "Allowed his daily expenses of food only",
+     "(Usmani's report covers food only)",
+     "Usmani, p. 34, citing *al-Mughni*"
+    ],
+    [
+     "Al-Hasan al-Basri, al-Nakha'i, Malik, al-Awza'i, Ishaq, Abu Thawr and the Hanafis (\"the people of opinion\")",
+     "",
+     "Yes, from the capital, when he leaves his town with it, \"because his travel is for the money\"",
+     "Listed in the same Hanbali manual, p. 467, note 1"
+    ],
+    [
+     "Zahiri: Ibn Hazm",
+     "No",
+     "No: the manager may not eat or wear anything from the capital, whether travelling or at home. He says this is the view of al-Shafi'i, Ahmad and Abu Sulayman (usually taken to be Dawud al-Zahiri)",
+     "*al-Muhalla* 7:97, issue 1371"
+    ],
+    [
+     "Ibn Sirin, as reported by Ibn Hazm (from Abd al-Razzaq)",
+     "\"What the manager eats is a debt he owes\"",
+     "(the report does not separate home and travel)",
+     "*al-Muhalla* 7:97, issue 1371"
+    ],
+    [
+     "Ibrahim (al-Nakha'i, by the usual reading) and al-Hasan al-Basri, as reported by Ibn Hazm",
+     "His maintenance comes from the whole capital; Ibrahim adds his clothing, which Ibn Sirin denies",
+     "(the report does not separate home and travel)",
+     "*al-Muhalla* 7:97, issue 1371"
+    ],
+    [
+     "Ja'fari: Imam Ali, Imam al-Kazim",
+     "From his own share",
+     "From the whole capital",
+     "al-Kafi 5, nos. 888 and 892"
+    ],
+    [
+     "AAOIFI",
+     "Living expenses as agreed with the investor; if nothing is agreed, by custom and reason",
+     "Travel expenses by custom and reason",
+     "AAOIFI SS 13, 9/7"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "Mudarabah expenditure may be charged to the capital if it is a direct expense, identifiable and measurable for a specific investment activity",
+     "(same rule)",
+     "BNM 15.15-15.16"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**The reports conflict.** For Malik, the Muwatta gives no expenses at home, while Ibn Hazm reports that Malik allowed a small meal at home. For Imam Ahmad, Usmani reports daily food, Ibn Qudamah reports that a stipulated allowance is valid at home or on travel, and Ibn Hazm reports Ahmad as allowing no expenses at all. For al-Shafi'i, the *Minhaj* gives no travel expenses in the more apparent view (so another view exists), Ibn Qudamah reports that even a stipulation for expenses at home is invalid, and Ibn Hazm reports no expenses at all. On the trip home, the *Mudawwana* allows expenses going and returning, while the Hanbali manual gives none once the investor has taken back his money at the destination. This manual sets the reports side by side and does not choose between them."
+  },
+  {
+   "t": "p",
+   "x": "In Shafi'i books, *al-azhar* (\"the more apparent\") marks the stronger of two opinions of al-Shafi'i, where the other opinion is also strong. Al-Nawawi explains his own terms this way in the introduction to *Rawdat al-Talibin* (1:6). So a second Shafi'i opinion exists on travel expenses."
+  },
+  {
+   "t": "p",
+   "x": "Malik adds a practical rule: if the manager travels with qirad money and his own money, expenses are split between the two in proportion (Muwatta 1459)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.8 What the manager may and may not do",
+   "id": "crs-27"
+  },
+  {
+   "t": "p",
+   "x": "**In an unrestricted mudarabah** the manager may do what traders in his field normally do. AAOIFI lists examples: choose fields and markets, do the work himself or appoint someone for part of it, keep the funds with a trustworthy custodian, buy and sell on credit (AAOIFI SS 13, 9/1)."
+  },
+  {
+   "t": "p",
+   "x": "**Things he may not do** without the investor's consent: lend, give gifts or charity from the funds, or waive a right of the business (AAOIFI SS 13, 9/6); sell below or buy above market price without a clear business reason (9/5). Malik says he may not give any of the money away, even to a beggar (Muwatta 1460)."
+  },
+  {
+   "t": "p",
+   "x": "**Work he must do himself.** The manager must do the work any similar manager would do by custom. If he hires someone for that work, he pays from his own pocket; he may hire at the business's cost only for work outside the custom of his role (AAOIFI SS 13, 9/4). Malik gives examples of work outside the role: collecting debts, transporting goods, loading (Muwatta 1459)."
+  },
+  {
+   "t": "p",
+   "x": "**Restrictions.** The earliest examples are the conditions of al-'Abbas and Hakim ibn Hizam (2.3.3): no sea travel, no valley camps, no livestock. Later rules:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Malik: an investor may forbid certain goods. He may require the manager to buy only certain goods only if those goods are plentiful and do not run out in winter or summer (Muwatta 1454). AAOIFI repeats this condition: goods named in a restriction must not be scarce or seasonal (AAOIFI SS 13, 9/2).",
+    "Malik: an investor may not require the manager to buy only from a named man, because that would make him a hired worker (Muwatta 1455).",
+    "Al-Kasani: a restriction to one market in a city is treated as meaningless unless the investor expressly forbids working outside it; then breaking it makes the manager liable (*Bada'i'* 6:99)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Breach of a restriction.** Imam Ja'far al-Sadiq: if the investor told the manager to \"go to so and so city and not beyond it\" and the manager went beyond, he is liable if the money is lost, but if there is profit it is shared (al-Kafi 5, no. 884). A second report, from one of the two Imams al-Baqir or al-Sadiq, gives the same answer for a manager who was forbidden to take the money out with him and did so (al-Kafi 5, no. 885)."
+  },
+  {
+   "t": "p",
+   "x": "**Breach: is the manager liable for loss?** Ibn Qudamah reports that most scholars make the breaching manager liable for the capital, naming among others Abu Hurayrah, Hakim ibn Hizam, al-Sha'bi, al-Nakha'i, Malik, al-Shafi'i and the Hanafis (*al-Mughni* 5:39). The Ja'fari reports above say the same (al-Kafi 5, nos. 884-885). Ibn Qudamah also reports a saying of Ali ibn Abi Talib: \"There is no liability on one who is made a partner in the profit\", and adds that the same meaning is reported from al-Hasan and al-Zuhri. He answers that the saying does not cover this case: \"we do not say that he shares in the profit\", because he treats a manager who breaches the terms like one who takes another's property without right (*al-Mughni* 5:39)."
+  },
+  {
+   "t": "p",
+   "x": "**Breach: who gets the profit?** After these views, Ibn Qudamah writes that \"the first\" view is the school's position, stated by Ahmad in al-Athram's report; the page does not say which of the views he lists on that page he means (*al-Mughni* 5:39)."
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "Profit after a breach",
+    "Source"
+   ],
+   "r": [
+    [
+     "Ja'fari: Imam al-Sadiq (no. 884); one of the two Imams al-Baqir or al-Sadiq (no. 885)",
+     "Shared as agreed",
+     "al-Kafi 5, nos. 884-885"
+    ],
+    [
+     "Malik",
+     "For a manager who borrowed qirad money and bought goods for himself: profit is divided by the qirad terms, and he is liable for any loss. In a second passage on the same case, the investor chooses: share in the goods under the qirad, or take back all his capital; \"That is what is done with some one who oversteps\"",
+     "Muwatta 1458"
+    ],
+    [
+     "Malik and Iyas ibn Mu'awiya, as reported by Ibn Qudamah",
+     "The profit follows the agreed terms",
+     "*al-Mughni* 5:39"
+    ],
+    [
+     "Imam Ahmad (stated by him), with Abu Qilabah and Nafi', as reported by Ibn Qudamah",
+     "The profit goes to the investor",
+     "*al-Mughni* 5:39"
+    ],
+    [
+     "Al-Qadi, as reported by Ibn Qudamah",
+     "If the manager bought on credit and then paid with the investor's money, the profit goes to the investor. If he bought with the investor's money itself, the purchase is void in one of two narrations; in the other it waits on the owner's approval, valid if he approves and void if not",
+     "*al-Mughni* 5:39"
+    ],
+    [
+     "A second narration from Ahmad; also al-Sha'bi, al-Nakha'i, al-Hakam and Hammad, as reported by Ibn Qudamah",
+     "Both give the profit in charity. A Hanbali jurist Ibn Qudamah calls \"al-Qadi\" (\"the judge\") reads Ahmad's words as a matter of piety, the profit belonging to the investor in a court ruling; Ibn Qudamah adds that this is the view of al-Awza'i",
+     "*al-Mughni* 5:39"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.9 Fixed term and ending the contract",
+   "id": "crs-28"
+  },
+  {
+   "t": "p",
+   "x": "**Agreed:** without a special clause, either side may end the contract, after notice (Usmani, p. 34). If the assets are not yet cash, the manager is given time to sell them so the real profit can be known (Usmani, p. 34). Malik gives the same rule: neither side can force an end while the money is in goods; the goods are sold first (Muwatta 1455)."
+  },
+  {
+   "t": "p",
+   "x": "**Disputed: may the contract be limited to a fixed term, ending by itself?**"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Hanafi school",
+     "Yes. Al-Kasani: \"take this money as mudarabah for a year\" is valid, because mudarabah is a form of agency and agency can be limited in time",
+     "al-Kasani, *Bada'i'* 6:99; Usmani, p. 34"
+    ],
+    [
+     "Hanbali school: two narrations",
+     "Abu al-Khattab reports two narrations: valid (\"the view of Abu Hanifah\") and invalid (\"the view of al-Shafi'i and Malik\"). Abu Hafs al-Ukbari chose invalidity. Ibn Qudamah holds it valid, because a contract that can be limited to one kind of goods can be limited in time. Imam Ahmad, in Muhanna's report, said that when the month is over the money becomes a loan",
+     "*al-Mughni* 5:50; Usmani, p. 34"
+    ],
+    [
+     "Hanbali school, as stated in a later manual",
+     "Valid; the manual's note calls this \"the correct view of the school\" and one of two narrations",
+     "Al Husayn, *al-Zawa'id 'ala Zad al-Mustaqni'*, p. 465 and note 1"
+    ],
+    [
+     "Al-Shafi'i",
+     "No: such a mudarabah is invalid",
+     "Reported in al-Kasani, *Bada'i'* 6:99; *al-Mughni* 5:50; Usmani, pp. 34-35"
+    ],
+    [
+     "Malik",
+     "No: the investor may not stipulate that the money stay for a set number of years, \"because the qirad is not for a term\"",
+     "Muwatta 1455; Usmani, pp. 34-35"
+    ],
+    [
+     "Ibn Hazm (Zahiri)",
+     "No: qirad for a fixed term is not allowed at all",
+     "*al-Muhalla* 7:96, issue 1369"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Disputed: may the parties agree a minimum term before which neither may end it?** Usmani writes: \"No express answer to this question is found in the books of Islamic Fiqh, but it appears from the general principles enumerated therein that no such limit can be fixed, and each party is at liberty to terminate the contract whenever he wishes.\" His own view is that such a clause is allowed today, because modern projects need time and an early exit could ruin the manager's effort. He relies on the hadith that Muslims are bound by their conditions, except a condition that makes the forbidden allowed or the allowed forbidden (Usmani, p. 35)."
+  },
+  {
+   "t": "p",
+   "x": "**Modern standards.** AAOIFI makes the contract binding in two cases: once the manager has started work (until actual or constructive liquidation), and when the parties have agreed a duration, which then cannot be ended early except by mutual agreement. It cites a resolution of the International Islamic Fiqh Academy (AAOIFI SS 13, 4/3 and App. B). BNM adds a third case: the parties agreed not to terminate within a set time (BNM 11.2)."
+  },
+  {
+   "t": "p",
+   "x": "**Ways the contract ends** (AAOIFI SS 13, 10/1; BNM 22.1): one side ends it where allowed; both agree; the agreed term expires; the capital is used up or lost; the manager dies or the managing institution is wound up. BNM also lists termination for misconduct, negligence or breach by the other side, and the death or dissolution of the investor."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.10 When the manager adds his own money",
+   "id": "crs-29"
+  },
+  {
+   "t": "p",
+   "x": "If the manager, with the investor's permission, adds his own money, the deal becomes **mudarabah and musharakah combined** (Usmani, pp. 35-36; AAOIFI SS 13, 8/9; BNM 15.14)."
+  },
+  {
+   "t": "p",
+   "x": "Usmani's example (pp. 35-36):"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "A gives B 100,000 as mudarabah. B adds 50,000 of his own. Capital is 150,000: A owns two-thirds, B one-third.",
+    "In Usmani's words, the \"normal basis\" is that B takes one-third of the actual profit for his money, \"and the remaining two thirds of the profit shall be distributed between them equally\" (p. 36).",
+    "\"However, the parties may agree on any other proportion\", with one limit: A does no work, so A \"cannot allocate for himself more than two thirds of the total profit\" (p. 36).",
+    "**Loss** follows capital only: A would bear two-thirds, B one-third. Usmani's general principle: \"The loss suffered by each partner must be exactly in the proportion of his investment\" (Usmani, p. 38); BNM states the same for a mudarabah combined with musharakah (BNM 17.5)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "Malik discusses a related case: a manager who paid more for goods than the qirad money and covered the extra himself. The investor may choose to take the goods and repay the manager the extra. If the manager refuses, the investor is a partner for his share of the price in gain and loss (Muwatta 1458)."
+  },
+  {
+   "t": "p",
+   "x": "AAOIFI also lets a manager take mudarabah money from a second investor, if this will not harm his work for the first (AAOIFI SS 13, 9/1/6)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.11 Passing the money to another manager",
+   "id": "crs-30"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Malik",
+     "A manager who gives the money to another as qirad without the investor's consent is responsible for any loss. If there is profit, the investor takes his stipulated share, and the first manager takes his stipulated share of what remains",
+     "Muwatta 1458"
+    ],
+    [
+     "Hanafi: Abu Hanifah, in one narration, as reported by Ghanim al-Baghdadi",
+     "Without the investor's permission: the first manager is not liable for handing the money over, nor for the second manager's dealings, until the second manager makes a profit; once he does, the first manager is liable to the investor",
+     "*Majma' al-Damanat*, p. 304"
+    ],
+    [
+     "Hanafi: Abu Yusuf, as reported in the same book",
+     "The first manager is liable once the second manager works with the money, whether or not there is profit; the book calls this the apparent narration (*zahir al-riwayah*)",
+     "*Majma' al-Damanat*, p. 304"
+    ],
+    [
+     "Hanafi: Zufar, as reported in the same book (also a narration from Abu Yusuf)",
+     "The first manager is liable on handing the money over, whether or not the second manager works with it",
+     "*Majma' al-Damanat*, p. 304"
+    ],
+    [
+     "The second manager's liability, as reported in the same book",
+     "The book it refers to (\"the book\", not named on the page) makes the first manager liable and says nothing of the second. \"It is said\" that the second should not be liable for Abu Hanifah, while for \"the two\" (not named on the page) he is liable, following their dispute over a depositee who deposits the property with someone else. \"It is also said\" that the investor may choose to hold either the first or the second manager liable; the book adds that this holds \"by consensus\" and calls it the well-known view (*al-mashhur*)",
+     "*Majma' al-Damanat*, p. 304"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "Allowed with the investor's consent (*mudarib yudarib*, \"the manager makes a mudarabah\")",
+     "BNM 14.4"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.12 When the manager's profit share becomes his",
+   "id": "crs-31"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "View",
+    "Source"
+   ],
+   "r": [
+    [
+     "Malik",
+     "The manager may take nothing of the profit unless the investor is present and has first received his capital in full; anything taken earlier is at the manager's risk until the final account",
+     "Muwatta 1464"
+    ],
+    [
+     "AAOIFI",
+     "The manager is entitled to his share once a profit appears, but this right is not final, because interim profits may be held back to protect the capital. It becomes final only on distribution after actual or constructive valuation. Payments on account are allowed and corrected later",
+     "AAOIFI SS 13, 8/8"
+    ],
+    [
+     "Bank Negara Malaysia",
+     "Profit is recognised on a realised basis (actual sale of assets, *al-tandid al-haqiqi*) or a constructive basis (valuation, *al-tandid al-hukmi*), with a final adjustment",
+     "BNM 16.16-16.18"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.13 If the contract is invalid",
+   "id": "crs-32"
+  },
+  {
+   "t": "p",
+   "x": "The sources seen give these outcomes:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Holder",
+    "Outcome of an invalid mudarabah",
+    "Source"
+   ],
+   "r": [
+    [
+     "Malik",
+     "A stipulated fixed advantage \"becomes hire, and hire is only good with known and fixed terms\"",
+     "Muwatta 1455"
+    ],
+    [
+     "Malik, for the \"sell the goods\" case",
+     "The manager is paid the wage of a qirad agent for the selling; the money is qirad from the day it became cash",
+     "Muwatta 1456"
+    ],
+    [
+     "Hanbali, as stated in a later manual",
+     "\"The profit belongs to the investor, and the worker gets the wage of his like\", whether there was profit or loss",
+     "Al Husayn, *al-Zawa'id 'ala Zad al-Mustaqni'*, p. 465"
+    ],
+    [
+     "Hanafi: Ghanim al-Baghdadi (d. 1030 AH)",
+     "The manager gets the wage of his like and the profit goes to the investor; \"this is the ruling in every case where the mudarabah is not valid\". The wage may not exceed the share that was stipulated, and in the narration of *al-Asl* it is due even if there is no profit",
+     "*Majma' al-Damanat*, p. 304"
+    ],
+    [
+     "Hanafi: Abu Yusuf, as reported in the same book",
+     "No wage is due if there is no profit, \"by analogy with a valid mudarabah\"",
+     "*Majma' al-Damanat*, p. 304"
+    ],
+    [
+     "Shafi'i: the *Minhaj* of al-Nawawi",
+     "Where the permission to trade still stands and the one who gave the money owns it, the manager's dealings stand; the profit is the owner's, and the owner owes the manager the wage of his like for his work. The commentary adds: even if no profit was made; but if the manager knew the contract was invalid and that he would get no wage, he gets nothing. A note says this last point agrees with *Sharh al-Rawd*, *al-Bahjah* and *al-Manhaj* and differs from \"the two\" (not named on the page)",
+     "*Mukhtasar Tuhfat al-Muhtaj* 2:386 and note 3"
+    ],
+    [
+     "Shafi'i: the *Minhaj*, an exception",
+     "If the owner said \"I give you qirad, and all the profit is mine\", the manager gets nothing, \"in the sounder view\" (*al-asahh*), so another view exists within the school. The commentary adds that if he did not know this, thinking it did not cut off his right to profit or a wage, and his situation shows it, he gets the wage of his like; a note marks this as against \"them\" (not named on the page)",
+     "*Mukhtasar Tuhfat al-Muhtaj* 2:387 and note 1"
+    ],
+    [
+     "AAOIFI",
+     "Where no ratio was agreed and there is no custom, the contract is void and the manager receives a market price for his services",
+     "AAOIFI SS 13, 8/4"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "3.14 Summary: where the sources differ",
+   "id": "crs-33"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Question",
+    "Positions (with holders)"
+   ],
+   "r": [
+    [
+     "Goods as capital",
+     "No: Hanafis and the general body (al-Kasani); Malik in the Muwatta; al-Shafi'i; Imam Ahmad's main position; Ibn Hazm. Yes: Ahmad's second narration (Abu Bakr, Abu al-Khattab); Malik and Ibn Abi Layla as reported by Ibn Qudamah (partnership and mudarabah); Malik as reported by al-Kasani; Tawus, al-Awza'i, Hammad ibn Abi Sulayman, Ibn Abi Layla (as reported); AAOIFI (at agreed value); BNM (cash or in-kind)"
+    ],
+    [
+     "\"Sell the goods and trade with the price\"",
+     "Allowed: al-Kasani; Ibn Hazm; a later Hanbali manual. Not good: Malik (if done, a selling wage, then qirad from the cash)"
+    ],
+    [
+     "Debt owed by the manager as capital",
+     "Not valid: Malik; Ali (Ja'fari report); Ibn Qudamah, with Ibn al-Mundhir's list (Ata', al-Hakam, Hammad, Malik, al-Thawri, Ishaq, Abu Thawr, the Hanafis, al-Shafi'i); the Hanbali school as stated in a later manual; AAOIFI; BNM. Valid: a second narration from Ahmad; Ibn al-Qayyim (as reported); Ashhab, one Shafi'i view and some Hanbalis (as reported by the Dorar Encyclopedia of Fiqh)"
+    ],
+    [
+     "Debt owed by a third party",
+     "Collect it, then trade with it: allowed by al-Kasani and the later Hanbali manual. Not allowed as capital: AAOIFI"
+    ],
+    [
+     "Manager's expenses at home",
+     "No: Hanafi (al-Sarakhsi), Maliki (Malik in the Muwatta, Ibn al-Qasim), Shafi'i (*Minhaj*), Ibn Hazm, and al-Shafi'i and Ahmad as reported by Ibn Hazm; Ja'fari (from his own share). A small meal: Malik as reported by Ibn Hazm. A debt on the manager: Ibn Sirin. From the whole capital: Ibrahim (al-Nakha'i, by the usual reading) and al-Hasan (as reported by Ibn Hazm). Only if stipulated: the Hanbali school as stated in a later manual; valid if stipulated: Ibn Qudamah; stipulation invalid: al-Shafi'i as reported by Ibn Qudamah. By stipulation or custom: \"the Shaykh\" in the Hanbali manual's note. Daily food: Imam Ahmad, as reported by Usmani. By agreement or custom: AAOIFI"
+    ],
+    [
+     "Manager's expenses on travel",
+     "Yes: Hanafi, Maliki, Ja'fari, AAOIFI; also al-Hasan, al-Nakha'i, al-Awza'i, Ishaq, Abu Thawr (as listed in a Hanbali manual). Only if the capital is large: Abu Hanifah and Malik as reported by Ibn Hazm. Only if stipulated: the Hanbali school as stated in that manual. No: the more apparent Shafi'i view (*Minhaj*); Ibn Hazm; al-Shafi'i and Ahmad as reported by Ibn Hazm. Trip home: allowed by the *Mudawwana*; none once the money is taken back at the destination (Hanbali manual)"
+    ],
+    [
+     "Liability for loss after a breach",
+     "Liable: most scholars (Ibn Qudamah's list); Ja'fari reports. Ali's saying \"no liability on one who is made a partner in the profit\", with the same meaning reported from al-Hasan and al-Zuhri; Ibn Qudamah says it does not cover a breaching manager"
+    ],
+    [
+     "Passing the money to another manager without permission",
+     "First manager liable for loss: Malik. First manager liable once the second makes a profit: Abu Hanifah (one narration). Once the second works with it: Abu Yusuf (apparent narration). On handing over: Zufar. Second manager: not liable for Abu Hanifah, liable for \"the two\" (\"it is said\"); or the investor chooses whom to hold liable (\"it is also said\"; called the well-known view, by consensus) (all Hanafi views from *Majma' al-Damanat*). With the investor's consent: allowed (BNM)"
+    ],
+    [
+     "Purchase outside the authority with the investor's money itself",
+     "Void (one narration) or valid only if the owner approves (the other): al-Qadi, as reported by Ibn Qudamah"
+    ],
+    [
+     "Profit after a breach",
+     "Shared as agreed: Ja'fari reports; Malik (Muwatta); Malik and Iyas ibn Mu'awiya (as reported by Ibn Qudamah). Investor chooses to share or take back his capital: Malik (Muwatta 1458). To the investor: Imam Ahmad, Abu Qilabah, Nafi' (as reported by Ibn Qudamah). Given in charity: a second narration from Ahmad; al-Sha'bi, al-Nakha'i, al-Hakam, Hammad (read as piety by al-Qadi, with al-Awza'i)"
+    ],
+    [
+     "Fixed term",
+     "Yes: Hanafi; Ibn Qudamah and one Hanbali narration (called the correct view of the school in a later manual); AAOIFI; BNM. No: al-Shafi'i; Malik; another Hanbali narration (chosen by Abu Hafs al-Ukbari); Ibn Hazm"
+    ],
+    [
+     "Minimum term",
+     "No direct classical text; the general rules suggest no minimum can be fixed and either side may end it (Usmani's reading). Allowed: Usmani (his own view), AAOIFI, BNM"
+    ],
+    [
+     "Natural growth (e.g. lambs) as profit",
+     "\"Some jurists\" (Usmani, citing al-Nawawi's *Rawdat al-Talibin* 5:125), which Usmani calls a minority view; the usual view counts profit only on sale"
+    ],
+    [
+     "Outcome of an invalid contract",
+     "\"It becomes hire\": Malik (fixed advantage). Wage of his like, profit to the investor: the Hanbali manual; Hanafi (*Majma' al-Damanat*, wage capped at the stipulated share, due even without profit in the narration of *al-Asl*); Shafi'i (*Minhaj*, even without profit). No wage without profit: Abu Yusuf. No wage at all: Shafi'i, if the manager knew of the invalidity and that he would get no wage (a point an editor's note marks as disputed by \"the two\", not named), and, in the sounder view, if the owner said all the profit was his, unless the manager did not know this (the commentary, also marked as disputed). Market price for services: AAOIFI (no ratio and no custom). Selling wage, then valid qirad: Malik (goods case)"
+    ],
+    [
+     "Basis in the Qur'an",
+     "Cited as support: al-Sarakhsi, al-Kasani, AAOIFI (73:20). Practice and consensus, no verse cited: Ibn Hazm. No ruling drawn from the verse: al-Tabari"
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 4. Mudarabah in practice",
+   "id": "crs-34"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.1 Where it fits in a modern bank",
+   "id": "crs-35"
+  },
+  {
+   "t": "p",
+   "x": "Usmani calls musharakah and mudarabah \"the real and ideal instruments of financing\" in Islamic law, because money given on these terms must turn into real assets, and profit comes from selling them (Usmani, p. 12). He also says that in the current economic set-up there are \"certain practical difficulties\" in using them in some areas of financing, which is why scholars have allowed murabahah (a cost-plus sale) under conditions, as a step on the way and not an ideal instrument (Usmani, p. 72)."
+  },
+  {
+   "t": "p",
+   "x": "A bank can stand on either side of a mudarabah:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "The bank is",
+    "Its customer is",
+    "Typical product"
+   ],
+   "r": [
+    [
+     "**Investor** (*rabb al-mal*)",
+     "Manager (*mudarib*)",
+     "Mudarabah financing of a business, project or trade deal (4.2)"
+    ],
+    [
+     "**Manager** (*mudarib*)",
+     "Investor: the depositor",
+     "Investment accounts, also called profit-sharing investment accounts (4.3)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "When it does both at once, it is a **multi-tier** mudarabah: depositors invest with the bank as manager, and the bank invests those funds with businesses as investor. BNM describes this: in the first tier the investor and manager agree one ratio; in the second tier the first manager, now acting as investor, agrees another ratio with a new manager (BNM 16.11). BNM also allows a manager, with the investor's consent, to place the funds with another manager (BNM 14.4)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.2 The bank as investor: financing",
+   "id": "crs-36"
+  },
+  {
+   "t": "p",
+   "x": "Usmani sets out four principles for any bank finance on these terms (Usmani, pp. 37-38):"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "Financing is not lending money. It is joining the business.",
+    "The financier shares in loss, up to what he financed.",
+    "Profit ratios are agreed freely, but \"the partner who has expressly excluded himself from the responsibility of work for the business cannot claim more than the ratio of his investment\".",
+    "Loss is always shared exactly by capital."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Uses Usmani describes:**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**A whole project.** The bank pays for the project and the client runs it: the bank is investor, the client manager (Usmani, p. 38).",
+    "**A single import.** An importer's bank usually opens a *letter of credit* (L/C), its undertaking to pay the foreign supplier. If the L/C is opened \"without any margin\" (no deposit from the importer), mudarabah can be used; if it is opened \"with some margin\", musharakah or the combination of 3.10 (Usmani, p. 42).",
+    "**Exports.** Usmani says musharakah \"will be even easier\" here, and that the financier may use musharakah or mudarabah. The exporter already has an order at a known price, so the profit can be estimated. The financier may require the exporter to ship in full conformity with the L/C; if \"discrepancies\" are found in the documents, the exporter alone is responsible, while other losses are shared (Usmani, pp. 42-43)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Project finance, as the IFSB describes it.** A bank advances funds to a construction company as manager. The company is paid in stages by its own customer. The bank can require those stage payments to go into a \"repayment account\" at the bank, from which the manager may not withdraw without the bank's permission. The bank shares the profit of the project but bears 100% of any loss (IFSB-2, para. 188(c))."
+  },
+  {
+   "t": "p",
+   "x": "**Exit.** The IFSB asks banks to set out in advance how they will leave a mudarabah or musharakah investment, including extension and redemption terms, \"subject to the approval of the institution's Shari'ah Board\" (IFSB-1, Principle 3.3). BNM allows the manager to promise (*wa'd*) to buy the mudarabah assets at market value, fair value or a price agreed at the time of purchase (BNM 21.1-21.2). Note what is not allowed: a promise that works as a guarantee of the capital (3.6)."
+  },
+  {
+   "t": "p",
+   "x": "**A worked example for class** *(illustration made for this manual)*:"
+  },
+  {
+   "t": "q",
+   "x": "A bank gives a trading company 1,000,000 as mudarabah for one year, profit 30% to the bank and 70% to the company. - **Year profit 200,000.** Bank: 60,000. Company: 140,000. Bank gets its 1,000,000 back. - **No profit.** Bank gets 1,000,000 back. Company earns nothing for its year of work. - **Loss of 150,000, no fault.** Bank gets 850,000 back and bears the loss. Company earns nothing. - **Loss of 150,000 because the company broke a restriction** (it traded in goods the contract excluded). The company must make good the 150,000 (3.5, 3.8)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.3 The bank as manager: investment accounts",
+   "id": "crs-37"
+  },
+  {
+   "t": "p",
+   "x": "Here the depositors are the investors and the bank is the manager."
+  },
+  {
+   "t": "p",
+   "x": "**Two kinds of account** (AAOIFI SS 40, 2/1):"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Unrestricted investment accounts:** the bank may invest the money as it sees fit.",
+    "**Restricted investment accounts:** the money goes into a named project or programme."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**How they differ from a current account.** A current account is a loan to the bank: the bank guarantees repayment and may pay no fixed or variable increase, because that would be riba. An investment account is not guaranteed; the bank only distributes the profit actually earned (AAOIFI SS 40, 2/2/1-2/2/2)."
+  },
+  {
+   "t": "p",
+   "x": "**Profit to the depositors: the rules of AAOIFI SS 40.**"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "No profit before the capital is protected. A payout before that is an advance, not profit (3/1/1).",
+    "Profit is known only after actual liquidation (assets sold) or constructive liquidation (assets valued by experts, debts valued with provisions) (3/1/2/1).",
+    "Costs the bank must bear as manager, such as its investment department, may not be charged to depositors (3/1/2/2).",
+    "Losses of one operation may be covered by profits of others in the same period; a loss of one period may not be covered by profit of another, except through reserves (3/2/1).",
+    "Profit among depositors may be shared by a **points method**: amount of money multiplied by the time it stayed invested (5/1).",
+    "The bank may announce an **expected rate of return**, but it is not binding; final payout follows the actual profit (5/2).",
+    "Advances on account are allowed and corrected after liquidation (5/3).",
+    "If the bank, as manager, gives up part of its own profit share to depositors after the accounts are drawn up, it must disclose this (5/6)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Usmani's \"daily products\".** Usmani proposes a similar method, which he frames as a running *musharakah* account: each investor's capital is his average daily balance, and the average profit per unit of money per day is multiplied by each investor's money-days. He says the classical books give no express answer, and that his suggestion \"needs further consideration and research by the experts of Islamic jurisprudence\" (Usmani, pp. 47-48). He reports two objections and answers each:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Objection, with its holder",
+    "Usmani's answer"
+   ],
+   "r": [
+    [
+     "\"Some contemporary scholars\" reject the method as \"just a conjectural method\" that does not reflect the profit each partner really earned, since a partner may have had little money in the pool when large profits were made (pp. 48-49)",
+     "Once a pool exists, its profits are earned by all participants, whether or not their own money was used in a given deal; the Hanafi school does not require the partners' money to be mixed (pp. 49-50, citing al-Kasani, *Bada'i'* 6:54, 60)"
+    ],
+    [
+     "The capital of each partner is unknown when the contract is made. Usmani reports, quoting al-Kasani, that knowing the capital is a condition \"according to Imam Shafi'i\" (p. 50)",
+     "For the Hanafis it is not a condition; what matters is that the profit is not uncertain at distribution, which daily products achieve (pp. 50-51, citing al-Kasani, *Bada'i'* 6:63)"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "He adds that without daily products, no one could deposit or withdraw except on fixed start dates, an arrangement he calls \"totally impracticable on the deposits side of the banks\" (pp. 51-52)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.4 Smoothing and reserves",
+   "id": "crs-38"
+  },
+  {
+   "t": "p",
+   "x": "Depositors compare a bank's payout with its competitors' and may leave if it is lower. Banks therefore try to keep payouts steady. The IFSB calls the pressure **displaced commercial risk**: a bank under market pressure may pay depositors more than the assets earned, for example by giving up part or all of its own manager's share (IFSB-1, para. 104). The IFSB adds a limit: this does not extend to covering an overall loss of the depositors by moving profit from shareholders, which it says Shari'ah rules do not permit (IFSB-2, para. 76)."
+  },
+  {
+   "t": "p",
+   "x": "Two reserves are used (IFSB-2, para. 80; IFSB-1, paras. 105-106):"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Reserve",
+    "Taken from",
+    "Purpose"
+   ],
+   "r": [
+    [
+     "**Profit equalisation reserve (PER)**",
+     "Gross income of the mudarabah, **before** the bank's manager share",
+     "To smooth returns paid to depositors and shareholders"
+    ],
+    [
+     "**Investment risk reserve (IRR)**",
+     "The depositors' income, **after** the bank's manager share",
+     "To meet future losses on investments funded by depositors"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "AAOIFI fixes the order: reserves for bad debts and for rate of return come out of gross profit; the reserve for investment risks comes out after the manager's share (AAOIFI SS 40, 3/1/2/3). BNM: a reserve may be made only from profit, and only the investor's part of it may be used to make up lost capital, so that the reserve does not become a capital guarantee by the manager (BNM 16.23-16.25 and note 6). The IFSB sets out the practice in a separate guidance note on smoothing (IFSB GN-3, December 2010)."
+  },
+  {
+   "t": "p",
+   "x": "**For the teacher:** reserves are where practice comes closest to the forbidden guarantee. Ask learners: at what point does a smoothed, \"expected\" return become a fixed return in substance?"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "4.5 A critical view",
+   "id": "crs-39"
+  },
+  {
+   "t": "p",
+   "x": "Islamic finance has its own critics from within, and a teacher should present them alongside the industry's view."
+  },
+  {
+   "t": "p",
+   "x": "**Mahmoud El-Gamal**, an economist at Rice University, argues that \"investment-account holders have neither the protection of being creditors of the Islamic financial institution\" nor the protection of being \"equity holders with representation on those institutions' boards of directors\" (El-Gamal 2007, p. 212). He notes that one industry leader, Sheikh Kamel, prefers to call customers \"partner\" rather than \"customer or depositor\" (p. 211). He sees a risk that \"account holders will withdraw their funds for fear of excessive risk taking\" (p. 212). His proposed remedy is mutualisation, making depositors the owners of the institution; he says \"the mutuality structure ... would solve one of the most difficult regulatory and governance issues raised by these institutions\" (p. 212). More widely, he writes that \"Shari'a arbitrage is a particular form of regulatory arbitrage\", in which lawyers offer clients \"a reengineered version\" of conventional products (El-Gamal, \"Limits and Dangers of Shari'a Arbitrage\")."
+  },
+  {
+   "t": "p",
+   "x": "**The other side.** The standard-setters treat the investment account as a real mudarabah with real rules. AAOIFI requires that no profit be paid before capital is protected and that expected rates are not binding (SS 40, 3/1/1, 5/2). The IFSB recognises depositors' rights to monitor their investments and requires that smoothing be transparent (IFSB-30, Principles 14 and 15). Usmani, while preferring mudarabah and musharakah, accepts other contracts in a transition, under strict conditions (Usmani, pp. 12, 72)."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 5. Governance: what the six frameworks require",
+   "id": "crs-40"
+  },
+  {
+   "t": "p",
+   "x": "This part covers six regulatory frameworks and shows, for each, what it says about mudarabah. Where a framework has no mudarabah-specific text, that is stated."
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Framework",
+    "Who",
+    "Mudarabah texts used here"
+   ],
+   "r": [
+    [
+     "1",
+     "**AAOIFI**",
+     "Accounting and Auditing Organization for Islamic Financial Institutions (Bahrain)",
+     "SS 13 Mudarabah (issued 2002, current text 2015); SS 17 Investment Sukuk (issued 2003); SS 40 Profit in Mudarabah Investment Accounts (issued 2009); SS 49 Unilateral and Bilateral Promise (issued 4 January 2013); FAS 3 Mudaraba Financing (effective 1998); FAS 45 Quasi-Equity (effective 2026); FAS 51 Participatory Ventures (effective 2027)"
+    ],
+    [
+     "2",
+     "**IFSB**",
+     "Islamic Financial Services Board (Kuala Lumpur)",
+     "IFSB-1 Risk Management (2005); IFSB-2 Capital Adequacy (2005); IFSB-23 Revised Capital Adequacy (2021); IFSB-30 Corporate Governance (2023); GN-3 Smoothing (2010) (issue years)"
+    ],
+    [
+     "3",
+     "**BNM**",
+     "Bank Negara Malaysia",
+     "Policy Document on Mudarabah (issued 20 April 2015); Shariah Governance Policy Document (issued 20 September 2019)"
+    ],
+    [
+     "4",
+     "**CBUAE**",
+     "Central Bank of the UAE",
+     "Standard re. Shari'ah Governance for Islamic Financial Institutions (issued 21 April 2020; no mudarabah-specific text)"
+    ],
+    [
+     "5",
+     "**SAMA**",
+     "Saudi Central Bank",
+     "Shariah Governance Framework for Local Banks (February 2020) (no mudarabah-specific text)"
+    ],
+    [
+     "6",
+     "**SC**",
+     "Securities Commission Malaysia",
+     "Not covered in this edition"
+    ]
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.1 AAOIFI",
+   "id": "crs-41"
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 13, Mudarabah.** Issued 2002; reviewed 2012; the current text was adopted at the Shari'ah Board's 41st meeting, 14-16 June 2015 (AAOIFI SS 13, App. A). Its rules are used throughout Part 3. The clauses most often tested in practice:"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Clause",
+    "Rule"
+   ],
+   "r": [
+    [
+     "3/1-3/3",
+     "A framework agreement (memorandum of understanding) may govern later mudarabah deals"
+    ],
+    [
+     "4/3",
+     "Not binding, except after work starts or when a duration is agreed"
+    ],
+    [
+     "4/4",
+     "Trust contract: manager liable only for misconduct, negligence, breach"
+    ],
+    [
+     "6",
+     "Guarantees from the manager enforceable only on misconduct, negligence, breach"
+    ],
+    [
+     "7/1-7/4",
+     "Capital: cash in principle, assets at agreed value; known; no debt; handed over"
+    ],
+    [
+     "8/1-8/9",
+     "Profit: a share of profit, no lump sum, no fee on top, threshold allowed, capital first, entitlement on valuation, commingling"
+    ],
+    [
+     "9/1-9/7",
+     "Manager's powers, investor's restrictions, no lending or gifts, expenses"
+    ],
+    [
+     "10/1",
+     "Ways the contract ends"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 40, Distribution of Profit in Mudarabah-Based Investment Accounts.** Issued 19 June 2009. See 4.3."
+  },
+  {
+   "t": "p",
+   "x": "**Financial Accounting Standard 3, Mudaraba Financing** (effective 1 January 1998) tells the bank, as investor, how to book a mudarabah:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Capital is recognised when paid to the manager or put at his disposal; capital in kind is measured at fair value as agreed (FAS 3, paras. 3, 7-8).",
+    "Capital lost before work begins, without the manager's fault, reduces the capital and is the bank's loss (para. 11).",
+    "For a mudarabah that starts and ends in one financial period, the bank's share of profit or loss is recognised at liquidation (para. 14). For one that runs over several periods, profit is recognised to the extent it is distributed (para. 15). Losses on liquidation reduce the capital (para. 17).",
+    "Loss caused by the manager's misconduct or negligence is booked as a receivable from him (para. 18)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Financial Accounting Standard 51, Participatory Ventures** is effective for financial statements beginning on or after **1 January 2027** (FAS 51, para. 74) and supersedes FAS 3 and FAS 4 (para. 76). An institution may choose to apply it only to transactions made on or after that date, and must then disclose the impact (para. 75). It must be read with SS 12 and SS 13. **Teachers should check which standard applies to the period being taught.**"
+  },
+  {
+   "t": "p",
+   "x": "**What FAS 51 changes.** It treats mudarabah and musharakah as \"participatory ventures\": business ventures on a Shari'ah-compliant participatory basis, \"a virtual entity but not a legal entity\" (FAS 51, definitions). It does not apply to investment accounts issued by Islamic banks or to sukuk, except for the originator's own accounting (FAS 51, para. 3(a) and 3(e)(ii)). For investment accounts, FAS 51's footnote points to FAS 50, Financial Reporting for Islamic Investment Institutions, while FAS 45 states that it covers \"the investment accounts based on Mudaraba contracts\" (FAS 45, Scope (a)). The accounting depends on who controls the venture:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**The investor** uses a *pass-through* approach (it books the venture's underlying assets and liabilities directly) when the investor alone controls the venture, unless that is impracticable; in all other cases it uses a *net investment* approach (para. 9). Under that approach the investment is first recognised at cost, or at fair value for capital in kind (paras. 21-22).",
+    "**The working partner** (the manager) keeps the venture *off balance sheet* when the investor controls it, uses a *quasi-equity* approach when it controls the venture itself, and uses the net investment approach under shared control (para. 31).",
+    "Under pass-through, the working partner's profit share is booked as an expense at each period end on a best estimate (para. 15). A loss the working partner must make good for negligence is booked as income and a receivable once the negligence is established and the amount is fixed (para. 17).",
+    "AAOIFI says the old standards did not cover the working partner's books, and did not cover some structures with gradual transfer of ownership, such as restricted mudarabah (FAS 51, IN5 (a) and (c))."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 17, Investment Sukuk** (issued 8 May 2003) covers *sukuk* (investment certificates) based on mudarabah: certificates that represent projects or activities managed on a mudarabah basis (SS 17, 3/6/2). The issuer is the manager, the subscribers are the investors and the funds raised are the mudarabah capital; the holders own the mudarabah assets, take the agreed share of the profit and bear any loss (5/1/5/7). Mudarabah certificates may be traded once subscription has closed, the certificates have been allotted and activity has begun (5/2/16)."
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah Standard 49, Unilateral and Bilateral Promise** (issued 4 January 2013) sets AAOIFI's rule on promises (*wa'd*), which matters for the manager's promise to buy assets (4.2). Keeping a promise is a religious duty, but a promise binds in law only \"when there is a real need for it to be enforced, such as when the promisor causes the promisee to incur a liability\" (SS 49, 3/4). A benevolent promise, such as a promise of a gift, is not legally binding unless it is conditional on the promisee doing something that makes him incur a liability (3/6)."
+  },
+  {
+   "t": "p",
+   "x": "**FAS 45, Quasi-Equity (Including Investment Accounts)** deals with how investment accounts are presented. It is effective for financial reporting periods beginning on or after 1 January 2026 and, with FAS 46, supersedes FAS 27 on investment accounts (FAS 45, Effective date)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.2 IFSB",
+   "id": "crs-42"
+  },
+  {
+   "t": "p",
+   "x": "The IFSB writes prudential standards for supervisors. Its texts on mudarabah fall into three areas."
+  },
+  {
+   "t": "p",
+   "x": "**Risk management (IFSB-1, 2005).**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Principle 3.1: banks need strategies, risk management and reporting for equity investments, \"including Mudarabah and Musharakah investments\".",
+    "Principle 3.2: valuation methods must be appropriate, consistent and agreed with the partner.",
+    "Principle 3.3: exit strategies must be defined in advance, subject to the approval of the institution's Shari'ah Board.",
+    "Principles 6.1-6.2: rate-of-return risk and displaced commercial risk (4.4).",
+    "Principle 7.2: where depositors' funds are mixed with the bank's own, the basis for allocating assets, income, expenses and profit must be set out."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Capital adequacy.** IFSB-2 (2005) set the earlier capital charge. The current text is IFSB-23 (December 2021), which revised IFSB-15 (2013). Under IFSB-23, a bank applies a **250% risk weight** to its mudarabah or musharakah investments in commercial enterprises, or **400%** if the investment is a short-term unlisted equity exposure (IFSB-23, para. 204). In plain words: because the bank bears the loss like a shareholder, it must hold much more capital against a mudarabah than against an ordinary loan. Para. 204 adds that a bank may use eligible Shari'ah-compliant risk mitigation in profit-sharing financing to reduce the credit exposure, and that this is taken into account in the capital requirement. IFSB-23's general rules on third-party guarantees let the part covered by an eligible guarantee take the guarantor's risk weight, while \"the RW applicable to the uncovered portion will remain that of the underlying counterparty\" (para. 253). To qualify, a guarantee must, among other conditions, be a direct claim on the guarantor, irrevocable, unconditional and explicitly documented (para. 252); a \"blanket\" guarantee of an unknown amount does not qualify (para. 251). **The mudarabah rule.** IFSB-23 keeps a rule written for mudarabah itself. A placement of funds under a mudarabah may carry a Shari'ah-compliant undertaking from a third party; the undertaking covers only the mudarabah capital, not the return. The capital is then treated as subject to credit risk with the third party's risk weight, provided it is lower than the manager's; otherwise the manager's risk weight applies, that is, the weight for \"equity exposure in banking book\" (IFSB-23, section 4.1.5.4, para. 278). In project finance, the progress payments of the end customers may also be collateralised, for example through a repayment account, against poor performance by the manager (para. 279). The same rules are in the 2005 text (IFSB-2, paras. 39-40). IFSB-23 adds that a bank placing short-term mudarabah funds with a central bank or another Islamic bank may, for risk-weighting purposes, apply the risk weight of the manager as a counterparty (para. 280). IFSB-23 also repeats the Shari'ah rule that a manager may not guarantee the capital of the mudarabah (IFSB-23, section 4.3.2.4)."
+  },
+  {
+   "t": "p",
+   "x": "**Investment account holders.** IFSB-2 introduced a supervisory adjustment, written \"alpha\". Where a bank has smoothed depositors' income in a way that shifts risk onto its own capital, or where supervisors judge that banks are obliged to do so for competitive reasons, the supervisor may require part of the assets funded by investment accounts to count in the capital ratio (IFSB-2, paras. 77-79). IFSB-23 keeps this: under its \"supervisory discretion formula\", a proportion of the risk-weighted assets funded by unrestricted investment accounts, called alpha, is included in the denominator of the capital ratio, and the national supervisor sets its value (IFSB-23, paras. 408, 415). An alpha near zero reflects an investment-like product in which the account holder bears the commercial risk; an alpha near 1 reflects a deposit-like product (para. 414). IFSB GN-4 (March 2011) gives a method for estimating alpha (para. 415). IFSB-30 (December 2023), which builds on IFSB-3 (2006), gives the governance principles: depositors' right to monitor their investments (Principle 14); an investment strategy aligned with their risk and return expectations, and transparency in smoothing (Principle 15); transparency of governance (Principle 16); adequate and timely disclosure on the investment accounts (Principle 18)."
+  },
+  {
+   "t": "p",
+   "x": "**Smoothing.** IFSB GN-3 (December 2010) covers the practice of smoothing payouts, including the use of PER and IRR."
+  },
+  {
+   "t": "p",
+   "x": "**Sukuk.** IFSB-23 states that a mudarabah manager of sukuk may not undertake in advance to buy back the assets at maturity at their nominal value. He may undertake to buy them at net asset value, market value, fair value or a price agreed at the time of purchase, and he must guarantee the capital at nominal value only in case of his negligence or misconduct (IFSB-23, para. 603)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.3 Bank Negara Malaysia",
+   "id": "crs-43"
+  },
+  {
+   "t": "p",
+   "x": "The Policy Document on Mudarabah was issued on 20 April 2015; Bank Negara Malaysia's website lists it among its standards and guidelines (seen 2026). Part B (Shari'ah requirements) took effect on issue; Parts C and D (operational requirements) on 1 June 2016. It replaced the mudarabah parts of the 2007 Guidelines on Musharakah and Mudarabah and the 2012 Shariah Standard on Mudarabah (BNM 6.1, 9.1)."
+  },
+  {
+   "t": "p",
+   "x": "**How to read it.** Each paragraph is marked **S** (a standard that must be met; failure may lead to enforcement) or **G** (guidance, encouraged) (BNM 7.2)."
+  },
+  {
+   "t": "p",
+   "x": "**Key Shari'ah requirements (Part B)**, all used in Part 3: definition (10.1); fiduciary nature and the three breaches (11.1); when it becomes binding (11.2); the investor stays out of management but may get information (14.5); capital rules, including no debts (15.1-15.10); profit rules, including no fixed amount and no percentage of capital (16.1-16.26); loss rules (17.1-17.5); guarantees only via collateral for breach or an independent third party (18.1-18.3); gifts (*hibah*) from the manager may not come from the capital or the investor's profit and may not amount to a guarantee (20.1-20.2); promises to buy assets (21.1-21.2); dissolution (22.1)."
+  },
+  {
+   "t": "p",
+   "x": "**A point to discuss.** BNM allows the profit actually earned to be expressed afterwards as a percentage yield on the capital (BNM 16.10, marked G). It is a description after the event, not a promise."
+  },
+  {
+   "t": "p",
+   "x": "**Operational requirements.** Parts C and D cover governance and oversight, structuring, risk management, financial reporting and business and market conduct. Part C applies where the bank is the manager and/or the investor; Part D adds specific requirements where the bank is the investor (BNM 3.2). For the bank as manager, BNM refers to its separate Investment Account policy document (BNM 29.1), which is not covered in this edition."
+  },
+  {
+   "t": "p",
+   "x": "**Shari'ah governance.** BNM's Shariah Governance Policy Document (issued 20 September 2019; in force from 1 April 2020, except para. 12.5, in force from 1 April 2023; paras. 4.1-4.2) applies to the whole of an Islamic financial institution's business, mudarabah included. Its main rules:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "The board must put in place a sound Shari'ah governance framework (8.1) and have due regard to the decisions and advice of the Shariah committee (9.1).",
+    "Where BNM's Shariah Advisory Council (SAC) has made no ruling on a matter, or the committee cannot reach a decision, the institution refers it to the SAC (10.6).",
+    "Three control functions manage the risk of Shari'ah non-compliance: Shariah risk management, Shariah review and Shariah audit (16.3). They must be independent of the business lines and take no part in revenue-generating work (16.6).",
+    "Shariah review regularly assesses whether operations comply with Shari'ah requirements (18.1). Shariah audit gives an independent assessment of internal control, risk management, governance and overall compliance (19.1)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.4 Central Bank of the UAE",
+   "id": "crs-44"
+  },
+  {
+   "t": "p",
+   "x": "The CBUAE's Standard re. Shari'ah Governance for Islamic Financial Institutions was issued in Abu Dhabi on 21 April 2020. It contains no rules specific to mudarabah. Its structure:"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "**Who decides.** Compliance with Shari'ah means compliance with the resolutions, fatwas (juristic opinions), regulations and standards of the **Higher Shari'ah Authority** (HSA), the Central Bank's own Shari'ah authority for financial and banking activities, and with the resolutions of the institution's Internal Shari'ah Supervision Committee (ISSC), provided these do not contradict the HSA's (Article 4, definitions (e) and (r)).",
+    "**The committee.** The general assembly appoints the ISSC members on the board's nomination, after the HSA's approval (7.2). The ISSC's annual Shari'ah report goes to the HSA for review and approval before it is shared with shareholders (6.6).",
+    "**Controls.** Internal Shari'ah controls follow three independent lines of defence: the business line, an internal Shari'ah control function, and internal Shari'ah audit (9.1). An institution may also appoint an external body for Shari'ah audit (12.1)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "The standard names AAOIFI only as a source of professional certificates for the heads of Shari'ah control and audit (Articles 10 and 11). Separately, AAOIFI reports that the United Arab Emirates adopts its Shari'ah standards \"as mandatory regulatory requirements\" (AAOIFI, \"Adoption of AAOIFI Standards\" web page). **On that report, a UAE mudarabah product would be tested against AAOIFI SS 13 and SS 40 (5.1), within the CBUAE governance structure and the HSA's rulings.**"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.5 Saudi Central Bank (SAMA)",
+   "id": "crs-45"
+  },
+  {
+   "t": "p",
+   "x": "SAMA's Shariah Governance Framework for Local Banks Operating in Saudi Arabia was issued in February 2020. It covers the duties of the board and executive management, the Shariah committee (formation, membership, duties, independence), internal control, Islamic window operations and the process for developing Shariah-compliant products. It contains no rules specific to mudarabah and does not name a contract standard for it. **A Saudi mudarabah product is therefore reviewed by the bank's own Shariah committee under this framework.**"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.6 Securities Commission Malaysia",
+   "id": "crs-46"
+  },
+  {
+   "t": "p",
+   "x": "The Securities Commission governs Malaysia's Islamic capital market, including *sukuk* (Islamic investment certificates) based on mudarabah. Its guidelines are not covered in this edition of the manual."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "5.7 A compliance checklist for a mudarabah product",
+   "id": "crs-47"
+  },
+  {
+   "t": "p",
+   "x": "A teaching tool: give learners a draft term sheet and have them test it line by line."
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Check",
+    "AAOIFI",
+    "BNM",
+    "IFSB"
+   ],
+   "r": [
+    [
+     "1",
+     "Investor and manager both have legal capacity",
+     "SS 13, 4/2",
+     "12.2",
+     ""
+    ],
+    [
+     "2",
+     "Capital is known, available and handed over",
+     "SS 13, 7/2, 7/4",
+     "15.3",
+     ""
+    ],
+    [
+     "3",
+     "Capital is not a debt owed to the investor",
+     "SS 13, 7/3",
+     "15.7",
+     ""
+    ],
+    [
+     "4",
+     "Capital in kind is valued at the start",
+     "SS 13, 7/1",
+     "15.5",
+     ""
+    ],
+    [
+     "5",
+     "Profit is a ratio of actual profit, set at the start",
+     "SS 13, 8/1, 8/3",
+     "16.4-16.5",
+     ""
+    ],
+    [
+     "6",
+     "No fixed sum, no percentage of capital",
+     "SS 13, 8/1, 8/5",
+     "16.8-16.9",
+     ""
+    ],
+    [
+     "7",
+     "No fee to the manager for core work",
+     "SS 13, 8/2",
+     "16.21",
+     ""
+    ],
+    [
+     "8",
+     "Loss on capital; manager liable only for misconduct, negligence, breach",
+     "SS 13, 4/4",
+     "11.1, 17.1-17.2",
+     "IFSB-2, para. 182"
+    ],
+    [
+     "9",
+     "No guarantee of capital or profit by the manager",
+     "SS 13, 6",
+     "15.10, 18.1",
+     "IFSB-2, para. 185"
+    ],
+    [
+     "10",
+     "Any third-party guarantee is independent and separate",
+     "",
+     "18.3",
+     "IFSB-2, para. 185"
+    ],
+    [
+     "11",
+     "Restrictions do not unduly constrain the manager",
+     "SS 13, 5/2, 9/2",
+     "",
+     ""
+    ],
+    [
+     "12",
+     "Investor does not take part in management",
+     "SS 13, 9/3",
+     "14.5",
+     ""
+    ],
+    [
+     "13",
+     "Expenses charged are allowed and identifiable",
+     "SS 13, 9/7",
+     "15.15-15.16",
+     ""
+    ],
+    [
+     "14",
+     "Profit only after capital is intact",
+     "SS 13, 8/7; SS 40, 3/1/1",
+     "",
+     ""
+    ],
+    [
+     "15",
+     "Reserves built from profit only",
+     "SS 40, 3/1/2/3",
+     "16.23-16.25",
+     "IFSB-2, para. 80"
+    ],
+    [
+     "16",
+     "Exit route defined",
+     "",
+     "21.1-21.2",
+     "IFSB-1, Principle 3.3"
+    ],
+    [
+     "17",
+     "Capital charge applied",
+     "",
+     "",
+     "IFSB-23, para. 204"
+    ],
+    [
+     "18",
+     "Disclosure to investment account holders",
+     "SS 40, 5/6",
+     "",
+     "IFSB-30, Principle 18"
+    ],
+    [
+     "19",
+     "Any change to the profit ratio is agreed by both sides",
+     "SS 13, 8/3",
+     "16.6-16.7",
+     ""
+    ],
+    [
+     "20",
+     "With several managers, one common ratio is agreed",
+     "",
+     "16.15",
+     ""
+    ],
+    [
+     "21",
+     "Capital in another currency is valued in an agreed currency at the start",
+     "",
+     "15.6",
+     ""
+    ],
+    [
+     "22",
+     "Commingling with other funds only with the investor's consent",
+     "",
+     "15.12-15.13",
+     ""
+    ],
+    [
+     "23",
+     "Any reduced profit on early withdrawal is agreed in the contract",
+     "",
+     "16.26",
+     ""
+    ],
+    [
+     "24",
+     "Any promise by the manager to buy the assets is at market value, fair value or a price agreed at the time of purchase",
+     "",
+     "21.1-21.2",
+     "IFSB-23, para. 603 (sukuk: not at nominal value)"
+    ],
+    [
+     "25",
+     "A third-party undertaking covers the capital only, and meets the conditions for capital relief",
+     "",
+     "18.3",
+     "IFSB-23, para. 278 (mudarabah rule); paras. 252-253 (general conditions)"
+    ],
+    [
+     "26",
+     "The Shariah committee's decision or advice is obtained, the board has due regard to it, and Shariah review and audit are in place",
+     "",
+     "SG PD 2019, 8.1(e), 9.1, 10.2, 16.3",
+     ""
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 6. Teaching aids",
+   "id": "crs-48"
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "6.1 Case studies",
+   "id": "crs-49"
+  },
+  {
+   "t": "p",
+   "x": "*All five cases are illustrations made for this manual.*"
+  },
+  {
+   "t": "p",
+   "x": "**Case 1: The guaranteed partner.** An investor gives 500,000 to a builder as mudarabah, profit 50/50. The contract adds: \"The builder guarantees return of the capital in all cases.\" The project loses 100,000 through a market fall; the builder did nothing wrong."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Is the guarantee valid? What does the investor receive?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* The manager may not guarantee the capital (3.6). Malik: the stipulation of guarantees in qirad is void, and the profit is shared as if there were no guarantee (Muwatta 1455); the builder owes nothing for the loss. The Ja'fari report in al-Kafi 5, no. 886 takes a different route: \"One who holds a merchant responsible he can only have his capital and has no share in the profit\" (in this manual's words, the investor is treated like a lender). AAOIFI: guarantees can be enforced only for misconduct, negligence or breach (SS 13, 6). Ask learners to compare the classical outcomes."
+  },
+  {
+   "t": "p",
+   "x": "**Case 2: The restricted trader.** An investor gives 200,000 for trade \"in textiles only, in Karachi only\". The manager makes a profitable trade in electronics in Lahore."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Who gets the profit? Who would have borne a loss?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* Two Ja'fari reports: if the manager goes beyond the place set, he is liable for loss, but profit is shared (al-Kafi 5, nos. 884-885). Al-Kasani on restrictions that are expressly forbidden (*Bada'i'* 6:99). Hakim ibn Hizam's conditions (Bulugh al-Maram 1043). On the profit, compare the holders in 3.8: shared as agreed, the investor's choice (Malik), to the investor (Imam Ahmad), or given in charity. On liability, Ali's saying and Ibn Qudamah's answer (*al-Mughni* 5:39)."
+  },
+  {
+   "t": "p",
+   "x": "**Case 3: The fixed-term fund.** A bank raises money for a five-year mudarabah fund and wants investors locked in for three years."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Which schools allow a term? Is a lock-in allowed?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* On a fixed term: Hanafi yes; Hanbali two narrations; Malik, al-Shafi'i and Ibn Hazm no (3.9). On the lock-in: Usmani's own view (p. 35), AAOIFI SS 13, 4/3/2, BNM 11.2(c)."
+  },
+  {
+   "t": "p",
+   "x": "**Case 4: The smoothed account.** A bank's investment pool earns 2% this year. Competitors pay 4%. The bank pays depositors 4% by drawing on its profit equalisation reserve and giving up its own manager share."
+  },
+  {
+   "t": "p",
+   "x": "*Questions:* Is this allowed? What must the bank disclose? What does it mean for capital?"
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* SS 40, 3/1/2/3 and 5/6; IFSB-1, paras. 104-105; IFSB-2, paras. 76-80; El-Gamal's critique (4.5)."
+  },
+  {
+   "t": "p",
+   "x": "**Case 5: The debt rollover.** A trader owes a merchant 50,000 and cannot pay. The merchant says: \"Keep it as mudarabah capital and give me half your profit.\""
+  },
+  {
+   "t": "p",
+   "x": "*Discussion points:* Malik (Muwatta 1453, 1463), al-Kafi 5, no. 887, Ibn Qudamah (*al-Mughni* 5:190, as quoted in *Fiqh al-Mu'amalat*), AAOIFI SS 13, 7/3, BNM 15.7. Why most sources see riba in it. The other side: the second narration from Ahmad and Ibn al-Qayyim, as reported (3.2)."
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "6.2 Review questions (with answers)",
+   "id": "crs-50"
+  },
+  {
+   "t": "ol",
+   "i": [
+    "**Name the two parties in Arabic and English.** *Rabb al-mal*, the investor; *mudarib*, the manager.",
+    "**Name two other words for mudarabah.** *Qirad* and *muqaradah* (also *mu'amalah* in AAOIFI SS 13, 4/1).",
+    "**Who bears a money loss?** The investor, up to his capital. The manager loses his work.",
+    "**Name the three faults that make the manager liable.** Misconduct (*ta'addi*), negligence (*taqsir*), breach of terms (*mukhalafat al-shurut*).",
+    "**Is \"the manager gets 10% of the capital as profit\" valid?** No: profit must be a share of actual profit, not of capital.",
+    "**Can the manager draw a salary?** No, apart from his profit share; a separate fee is allowed only for work outside his role (AAOIFI SS 13, 8/2). Expenses are a separate question: AAOIFI allows agreed or customary living expenses and travel expenses (SS 13, 9/7), and the schools differ (3.7).",
+    "**Which schools allow a fixed term?** The Hanafis, and the Hanbalis in one of two narrations. Malik, al-Shafi'i and Ibn Hazm do not.",
+    "**What does al-Kasani say strict analogy would conclude, and why was it set aside?** That mudarabah is invalid (unknown wage, unknown work); it was set aside because of the Qur'an, Sunnah and consensus (*Bada'i'* 6:79).",
+    "**What happens if a manager adds his own money?** It becomes mudarabah and musharakah combined; he takes profit for his money, then the mudarabah split applies; loss follows capital.",
+    "**What is the difference between PER and IRR?** PER is taken before the manager's share, to smooth returns; IRR is taken from depositors' income after the manager's share, to meet future losses.",
+    "**What risk weight does IFSB-23 give a mudarabah investment in a commercial enterprise?** 250%; 400% if it is a short-term unlisted equity exposure.",
+    "**When does FAS 51 replace FAS 3?** For financial statements beginning on or after 1 January 2027; an institution may choose to apply it only to transactions made on or after that date (FAS 51, paras. 74-76)."
+   ]
+  },
+  {
+   "t": "h",
+   "l": 2,
+   "x": "6.3 Common mistakes",
+   "id": "crs-51"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Mistake",
+    "Correction"
+   ],
+   "r": [
+    [
+     "\"Mudarabah is a loan with profit-sharing.\"",
+     "It is not a loan. The investor bears loss; a lender does not."
+    ],
+    [
+     "\"The manager shares losses by the profit ratio.\"",
+     "Money loss falls on capital only. The manager loses his work."
+    ],
+    [
+     "\"A guarantee of capital by the manager is fine if both agree.\"",
+     "Malik: the guarantee is void. Al-Kafi 5, no. 886: the investor then has only his capital and no share of profit. AAOIFI and BNM forbid it except for fault."
+    ],
+    [
+     "\"All schools forbid goods as capital.\"",
+     "The sources differ. A narration from Imam Ahmad, Malik as reported by al-Kasani and by Ibn Qudamah, some early jurists, AAOIFI and BNM allow goods at their value. Full list in 3.1 and 3.14."
+    ],
+    [
+     "\"All schools forbid expenses.\"",
+     "The Hanafis, Malikis and Ja'fari reports allow travel expenses; the Hanbali school allows them if stipulated; Usmani reports Imam Ahmad allowing daily food. The reports on Malik, Ahmad and al-Shafi'i conflict (3.7)."
+    ],
+    [
+     "\"Everyone agrees a debt cannot become capital.\"",
+     "Most sources say so, but a narration from Ahmad, Ibn al-Qayyim and others are reported as allowing a debt owed by the manager (3.2)."
+    ],
+    [
+     "\"An expected return on an investment account is a promise.\"",
+     "It is not binding (AAOIFI SS 40, 5/2)."
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 7. Scholars and works quoted",
+   "id": "crs-52"
+  },
+  {
+   "t": "p",
+   "x": "Each entry gives the person, the work quoted and the sections where it is used."
+  },
+  {
+   "t": "table",
+   "h": [
+    "#",
+    "Scholar",
+    "Dates",
+    "School",
+    "Work quoted",
+    "Used in"
+   ],
+   "r": [
+    [
+     "1",
+     "Malik ibn Anas",
+     "711-795",
+     "Maliki (founder)",
+     "*al-Muwatta*, Book of Qirad (nos. 1450-1465)",
+     "1.2, 2.1, 2.2, 2.3, 3.1-3.14, 6.1-6.3"
+    ],
+    [
+     "2",
+     "Ibn al-Qasim, in the *Mudawwana* compiled by Sahnun",
+     "Ibn al-Qasim 745-806; Sahnun 776-854",
+     "Maliki",
+     "*al-Mudawwana*, Book of Qirad, 3:634",
+     "3.7, 3.14"
+    ],
+    [
+     "3",
+     "Al-Sarakhsi",
+     "c. 1009-1090",
+     "Hanafi",
+     "*al-Mabsut* 22:17-18, 22:62",
+     "1.2, 2.3, 3.7, 3.14"
+    ],
+    [
+     "4",
+     "Al-Kasani",
+     "d. 1191",
+     "Hanafi",
+     "*Bada'i' al-Sana'i'* 6:79-82, 6:99; 6:83 as quoted in *Fiqh al-Mu'amalat*; 6:54, 60, 63 and 6:109 as cited by Usmani",
+     "2.3, 2.4, 3.1, 3.2, 3.4, 3.7, 3.8, 3.9, 3.14, 4.3, 6.1-6.3"
+    ],
+    [
+     "5",
+     "Ibn Qudamah",
+     "1147-1223",
+     "Hanbali",
+     "*al-Mughni* 5:12-13, 5:19, 5:39, 5:50; 5:190 as quoted in *Fiqh al-Mu'amalat*; 5:125 and 5:168 as cited by Usmani",
+     "1.2, 1.4, 2.1, 2.3, 3.1, 3.2, 3.5, 3.7, 3.8, 3.9, 3.14, 6.1, 6.3"
+    ],
+    [
+     "6",
+     "Al-Nawawi",
+     "1233-1277",
+     "Shafi'i",
+     "*Minhaj al-Talibin*, Book 19 (Qirad); *Rawdat al-Talibin* 1:6",
+     "1.2, 1.4, 2.1, 3.7, 3.13, 3.14, 8"
+    ],
+    [
+     "7",
+     "Mustafa ibn Hamid ibn Sumayt",
+     "(modern; edition 2008)",
+     "Shafi'i",
+     "*Mukhtasar Tuhfat al-Muhtaj bi-Sharh al-Minhaj* (an abridgement of Ibn Hajar al-Haytami's commentary *Tuhfat al-Muhtaj*) 2:381, 2:386-387, 2:389",
+     "2.4, 3.7, 3.13, 3.14"
+    ],
+    [
+     "8",
+     "Al-Shafi'i, as reported in *al-Majmu'*",
+     "767-820",
+     "Shafi'i (founder)",
+     "*al-Majmu'* 14:362",
+     "3.1, 3.14"
+    ],
+    [
+     "9",
+     "Ibn Hazm",
+     "994-1064",
+     "Zahiri",
+     "*al-Muhalla* 7:96-97, issues 1367-1371",
+     "front matter, 2.3, 3.1, 3.7, 3.9, 3.14, 6.1, 6.2"
+    ],
+    [
+     "10",
+     "Al-Kulayni, reporting Imams Ali, al-Baqir, al-Sadiq and al-Kazim",
+     "c. 864-941",
+     "Ja'fari",
+     "*al-Kafi*, vol. 5, chapter on Mudarabah, nos. 884-892",
+     "2.2, 2.3, 3.2, 3.5-3.8, 3.14, 6.1, 6.3"
+    ],
+    [
+     "11",
+     "Al-Tabari",
+     "839-923",
+     "Jariri",
+     "*Jami' al-Bayan*, on Qur'an 73:20",
+     "front matter, 2.3, 3.14"
+    ],
+    [
+     "12",
+     "Al-Bayhaqi",
+     "384-458 AH",
+     "(hadith collector)",
+     "*al-Sunan al-Kubra*, Dar al-Kutub al-'Ilmiyya edition, 6:184, nos. 11611-11612",
+     "2.3"
+    ],
+    [
+     "13",
+     "Ghanim ibn Muhammad al-Baghdadi",
+     "d. 1030 AH",
+     "Hanafi",
+     "*Majma' al-Damanat*, p. 304 (with the views of Abu Hanifah, Abu Yusuf and Zufar)",
+     "3.11, 3.13, 3.14"
+    ],
+    [
+     "14",
+     "Muhammad ibn Abdullah Al Husayn",
+     "(modern)",
+     "Hanbali",
+     "*al-Zawa'id 'ala Zad al-Mustaqni'*, pp. 465, 467",
+     "3.1, 3.2, 3.7, 3.9, 3.13, 3.14"
+    ],
+    [
+     "15",
+     "Ibn al-Qayyim, as reported",
+     "d. 1350",
+     "Hanbali",
+     "*I'lam al-Muwaqqi'in* 3:262, as cited by al-Zawa'id and dorar.net",
+     "3.2, 3.14, 6.1, 6.3"
+    ],
+    [
+     "16",
+     "Muhammad Taqi Usmani",
+     "b. 1943",
+     "Hanafi",
+     "*An Introduction to Islamic Finance*",
+     "throughout"
+    ],
+    [
+     "17",
+     "Mahmoud A. El-Gamal",
+     "b. 1963",
+     "(economist)",
+     "\"A Simple Fiqh-and-Economics Rationale for Mutualization in Islamic Financial Intermediation\" (2007); \"Limits and Dangers of Shari'a Arbitrage\"",
+     "4.5, 6.1"
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Early figures named in reports:** the caliphs Umar ibn al-Khattab and Uthman ibn Affan; Umar's sons Abdullah and Ubaydullah; al-'Abbas ibn 'Abd al-Muttalib; Hakim ibn Hizam; Khadijah bint Khuwaylid; the judge Shurayh; and Abu Hanifah and Ahmad ibn Hanbal as school founders."
+  },
+  {
+   "t": "p",
+   "x": "**Others named in reports, as given by the authors above, include:** Abu Talib and Harb (narrators from Ahmad), Abu al-Jarud, Yahya ibn Ma'in, al-Daraqutni, Ibn Hajar, al-Zuhri, Abu Hurayrah, Ibn Sirin, Ibrahim al-Nakha'i, al-Hasan al-Basri, al-Sha'bi, al-Hakam, Hammad (ibn Abi Sulayman), Ata', Tawus, Abu Qilabah, Nafi', Iyas ibn Mu'awiya, Yahya ibn Abi Kathir, al-Thawri, al-Awza'i, Ibn Abi Layla, Ishaq, Abu Thawr, Abu Yusuf, Zufar, Muhammad (al-Shaybani, by the usual reading), Ashhab, Abu Sulayman (usually taken to be Dawud al-Zahiri), Ibn al-Mundhir, Abu Bakr, Abu al-Khattab, Abu Hafs al-Ukbari and \"al-Qadi\"."
+  },
+  {
+   "t": "p",
+   "x": "**Hadith collections used:** al-Muwatta, Sunan Ibn Majah, Mishkat al-Masabih, Bulugh al-Maram, Sunan al-Nasa'i, al-Kafi, al-Sunan al-Kubra of al-Bayhaqi, and Sunan al-Daraqutni (through the Dorar Encyclopedia of Hadith)."
+  },
+  {
+   "t": "p",
+   "x": "**Institutions:** AAOIFI, IFSB, Bank Negara Malaysia, Central Bank of the UAE, Saudi Central Bank."
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Part 8. Glossary",
+   "id": "crs-53"
+  },
+  {
+   "t": "table",
+   "h": [
+    "Word",
+    "Plain meaning"
+   ],
+   "r": [
+    [
+     "'Aqd al-amanah",
+     "\"Contract of trust\": a contract in which the holder of the money is not liable for loss unless at fault"
+    ],
+    [
+     "AH",
+     "A year of the Islamic lunar calendar, counted from the Prophet's emigration to Medina in 622 CE"
+    ],
+    [
+     "Al-azhar",
+     "\"The more apparent\": in Shafi'i books, the stronger of two opinions of al-Shafi'i, where the other is also strong (al-Nawawi, *Rawdat al-Talibin* 1:6)"
+    ],
+    [
+     "Al-darb fi al-ard",
+     "\"Striking out across the land\": travelling for trade; the source of the word mudarabah"
+    ],
+    [
+     "Amanah",
+     "Trust"
+    ],
+    [
+     "Amin",
+     "Trustee: one who holds another's property in trust"
+    ],
+    [
+     "'Amil",
+     "\"Worker\": another name for the manager"
+    ],
+    [
+     "'Ammat al-'ulama'",
+     "\"The general body of scholars\": the majority view, as a writer reports it"
+    ],
+    [
+     "Arkan",
+     "\"Pillars\": the parts without which a contract does not exist"
+    ],
+    [
+     "Caliph",
+     "A leader of the Muslim community after the Prophet"
+    ],
+    [
+     "Companions",
+     "The people who knew the Prophet and followed him"
+    ],
+    [
+     "Da'if",
+     "Weak: a grading of a hadith report"
+    ],
+    [
+     "Dirham / dinar",
+     "A silver coin / a gold coin: the cash of the classical books"
+    ],
+    [
+     "Displaced commercial risk",
+     "The pressure on a bank to pay depositors more than their assets earned"
+    ],
+    [
+     "Fiqh",
+     "Islamic law as worked out by the jurists"
+    ],
+    [
+     "Hadith",
+     "A report of what the Prophet Muhammad said, did or approved"
+    ],
+    [
+     "Hibah",
+     "A gift"
+    ],
+    [
+     "HSA",
+     "Higher Shari'ah Authority: the Shari'ah authority of the Central Bank of the UAE"
+    ],
+    [
+     "Imam",
+     "In the Shia branch, one of the leaders from the Prophet's family whose reports carry authority. Among Sunnis, also a title of respect for a leading scholar, as in \"Imam Ahmad\""
+    ],
+    [
+     "Imami",
+     "Another name for the Ja'fari (Shia) school, which follows the Imams"
+    ],
+    [
+     "ISSC",
+     "Internal Shari'ah Supervision Committee: a UAE bank's own Shari'ah committee"
+    ],
+    [
+     "IRR",
+     "Investment risk reserve"
+    ],
+    [
+     "Jariri",
+     "The school of al-Tabari (Ibn Jarir), which did not last"
+    ],
+    [
+     "Letter of credit (L/C)",
+     "A bank's undertaking to pay a supplier on behalf of its customer"
+    ],
+    [
+     "Madhhab",
+     "A school of law"
+    ],
+    [
+     "Mu'amalah",
+     "\"Dealing\": a word AAOIFI accepts for making a mudarabah"
+    ],
+    [
+     "Mudarabah",
+     "One side gives money, the other works; profit shared, money loss on the money-giver"
+    ],
+    [
+     "Mudarib",
+     "The manager in a mudarabah"
+    ],
+    [
+     "Mudarib yudarib",
+     "The manager places the funds with another manager"
+    ],
+    [
+     "Mukhalafat al-shurut",
+     "Breach of the agreed terms"
+    ],
+    [
+     "Muqaradah, qirad",
+     "Other names for mudarabah"
+    ],
+    [
+     "Muqarid",
+     "The one who takes money as qirad: the manager"
+    ],
+    [
+     "Murabahah",
+     "A cost-plus sale"
+    ],
+    [
+     "Musharakah",
+     "A partnership in which every partner puts in money"
+    ],
+    [
+     "Mutlaqah / muqayyadah",
+     "Unrestricted / restricted mudarabah"
+    ],
+    [
+     "Nafaqah",
+     "The manager's living or travel expenses"
+    ],
+    [
+     "PER",
+     "Profit equalisation reserve"
+    ],
+    [
+     "PSR",
+     "Profit-sharing ratio"
+    ],
+    [
+     "Qiyas",
+     "Analogy: reasoning from a known case to a new one"
+    ],
+    [
+     "Quraysh",
+     "The Prophet's tribe in Mecca"
+    ],
+    [
+     "Rabb al-mal",
+     "The investor (\"owner of the money\")"
+    ],
+    [
+     "Riba",
+     "\"Increase\". In a loan, any increase over the amount lent, fixed or variable. Forbidden"
+    ],
+    [
+     "Sahih",
+     "Sound: a grading of a hadith report"
+    ],
+    [
+     "SAC",
+     "Shariah Advisory Council of Bank Negara Malaysia; a bank's Shariah committee advises on how its rulings apply (BNM SG PD 2019, 10.2)"
+    ],
+    [
+     "Shari'ah",
+     "Islamic law as a whole"
+    ],
+    [
+     "Shia",
+     "One of the two main branches of Islam; its main school of law is the Ja'fari"
+    ],
+    [
+     "Shirkah",
+     "Sharing; partnership"
+    ],
+    [
+     "Sukuk",
+     "Islamic investment certificates"
+    ],
+    [
+     "Sunnah",
+     "The Prophet's example, known through hadith"
+    ],
+    [
+     "Sunni",
+     "One of the two main branches of Islam; its four schools are the Hanafi, Maliki, Shafi'i and Hanbali"
+    ],
+    [
+     "Ta'addi",
+     "Misconduct"
+    ],
+    [
+     "Tabarru'",
+     "A donation; the basis of a third-party guarantee"
+    ],
+    [
+     "Takmilah",
+     "\"Completion\": a later scholar's continuation of an unfinished book"
+    ],
+    [
+     "Al-tandid al-haqiqi / al-hukmi",
+     "Actual liquidation (assets sold) / constructive liquidation (assets valued)"
+    ],
+    [
+     "Taqsir",
+     "Negligence"
+    ],
+    [
+     "'Urud",
+     "Trade goods; non-cash assets"
+    ],
+    [
+     "Wa'd",
+     "A one-sided promise. AAOIFI: keeping a promise is a religious duty, but it binds in law only when there is a real need, such as when the promisor causes the promisee to incur a liability (SS 49, 3/4); a benevolent promise, such as a promise of a gift, binds in law only if it is conditional on the promisee doing something that makes him incur a liability (SS 49, 3/6). Bank Negara Malaysia's policy document covers binding promises only (BNM PD Wa'd 2017, 2.1); it treats wa'd as \"not a contract\" but binding on the promisor from the date it is made, and binding when attached to a condition, time, price, conduct or event (9.1-9.3)"
+    ],
+    [
+     "Wakil",
+     "Agent"
+    ],
+    [
+     "Zahiri",
+     "\"Literalist\": a school, which did not last, that kept to the plain wording of the texts"
+    ],
+    [
+     "Zahir al-madhhab",
+     "\"The apparent position of the school\": its main, best-known position"
+    ]
+   ]
+  },
+  {
+   "t": "hr"
+  },
+  {
+   "t": "h",
+   "l": 1,
+   "x": "Sources",
+   "id": "crs-54"
+  },
+  {
+   "t": "p",
+   "x": "**Books and articles**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "Muhammad Taqi Usmani, *An Introduction to Islamic Finance*, PDF copy with no publisher's imprint; foreword signed Karachi, 29 June 1998 (pages as printed on the page footers; other printings may differ by a page).",
+    "Malik ibn Anas, *al-Muwatta* (transmission of Yahya ibn Yahya), Book of Qirad, nos. 1450-1465, in English translation.",
+    "Sahnun, *al-Mudawwana al-Kubra*, from Ibn al-Qasim from Malik, Book of Qirad, vol. 3, p. 634.",
+    "Al-Sarakhsi, *al-Mabsut*, Matba'at al-Sa'adah, Cairo; vol. 22, pp. 17-18 and 62.",
+    "Al-Kasani, *Bada'i' al-Sana'i' fi Tartib al-Shara'i'*, first edition 1327-1328 AH; vol. 6, pp. 79-82 and 99; p. 83 as quoted in *Fiqh al-Mu'amalat*; pp. 54, 60, 63 and 109 as cited by Usmani.",
+    "Ibn Qudamah, *al-Mughni*, Maktabat al-Qahirah, 1388-1389 AH; vol. 5, pp. 12-13, 19, 39 and 50. Also vol. 5, p. 190, in the edition quoted by *Fiqh al-Mu'amalat*; 5:125 and 5:168 as cited by Usmani.",
+    "*Fiqh al-Mu'amalat* (a compilation of classical texts by several authors, al-Maktabah al-Shamilah).",
+    "Al-Nawawi, *Minhaj al-Talibin*, Book 19 (Qirad), in E. C. Howard's English translation, about p. 210.",
+    "Fahd ibn Abd al-Rahman ibn Abdullah al-Dahmash (الدهمش), \"al-Mudarabah: dirasah muqaranah li-l-shurut al-mufsidah li-l-'aqd wa-tatbiqatuha al-qada'iyyah\" (Mudarabah: a comparative study of the conditions that invalidate the contract and their application in the courts), *Majallat al-Dirasat al-'Arabiyyah*, Faculty of Dar al-'Ulum, Minya University, vol. 51, no. 1 (January 2025), pp. 247-276, DOI 10.21608/DRAM.2025.344096.2079 (abstract).",
+    "Mustafa ibn Hamid ibn Sumayt, *Mukhtasar Tuhfat al-Muhtaj bi-Sharh al-Minhaj*, Markaz al-Nur, first edition 1429 AH / 2008; vol. 2, pp. 381, 386-387 and 389 (with the *Minhaj* text).",
+    "Ghanim ibn Muhammad al-Baghdadi, *Majma' al-Damanat*, Dar al-Kitab al-Islami, p. 304.",
+    "Al-Nawawi, *Rawdat al-Talibin*, vol. 1, p. 6 (his key to terms).",
+    "*Al-Majmu' Sharh al-Muhadhdhab*, vol. 14 (second completion), p. 362.",
+    "Ibn Hazm, *al-Muhalla bi-l-Athar*, vol. 7, pp. 96-97, issues 1367-1371.",
+    "Muhammad ibn Abdullah Al Husayn, *Kitab al-Zawa'id 'ala Zad al-Mustaqni'*, Book of Sales, chapter on partnership, pp. 465 (notes 1-2) and 467 (notes 1-2).",
+    "Ibn al-Qayyim, *I'lam al-Muwaqqi'in* 3:262, as cited by al-Zawa'id and by the Dorar Encyclopedia of Fiqh.",
+    "Al-Kulayni, *al-Kafi*, vol. 5, chapter \"Liability for Profit Sharing, Its Profit and Expenses (Al-Mudarabah)\", nos. 884-892, in English translation.",
+    "Al-Tabari, *Jami' al-Bayan*, on Qur'an 73:20.",
+    "Al-Bayhaqi, *al-Sunan al-Kubra*, Dar al-Kutub al-'Ilmiyya edition, vol. 6, p. 184, nos. 11611-11612.",
+    "Al-Daraqutni, *Sunan*: his verdict on the al-'Abbas report as given in the Dorar Encyclopedia of Hadith (dorar.net).",
+    "Dorar Encyclopedia of Fiqh (dorar.net), \"al-Mudarabah bi-l-dayn\" (mudarabah with a debt).",
+    "Hadith: Sunan Ibn Majah 2289; Mishkat al-Masabih 2815; Bulugh al-Maram 1043; Sunan al-Nasa'i 3967.",
+    "Mahmoud A. El-Gamal, \"A Simple Fiqh-and-Economics Rationale for Mutualization in Islamic Financial Intermediation\", in S. Nazim Ali (ed.), *Integrating Islamic Finance into the Mainstream: Regulation, Standardization and Transparency*, Islamic Finance Project, Harvard Law School ILSP, Cambridge, Mass., 2007, pp. 211-219.",
+    "Mahmoud A. El-Gamal, \"Limits and Dangers of Shari'a Arbitrage\" (undated course copy)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": "**Standards and regulators**"
+  },
+  {
+   "t": "ul",
+   "i": [
+    "AAOIFI Shari'ah Standard 13, Mudarabah (issued 2002; current text adopted 2015).",
+    "AAOIFI Shari'ah Standard 17, Investment Sukuk (issued 8 May 2003).",
+    "AAOIFI Shari'ah Standard 40, Distribution of Profit in Mudarabah-Based Investment Accounts (2009).",
+    "AAOIFI Shari'ah Standard 49, Unilateral and Bilateral Promise (issued 4 January 2013).",
+    "AAOIFI Financial Accounting Standards 3, Mudaraba Financing (effective 1 January 1998; superseded by FAS 51); 45, Quasi-Equity (Including Investment Accounts) (effective 1 January 2026); 51, Participatory Ventures (effective 1 January 2027).",
+    "AAOIFI, \"Adoption of AAOIFI Standards\" (web page).",
+    "IFSB-1 Guiding Principles of Risk Management (2005); IFSB-2 Capital Adequacy Standard (2005); IFSB-23 Revised Capital Adequacy Standard (2021); IFSB-30 Revised Guiding Principles on Corporate Governance (2023); IFSB GN-3 Guidance Note on the Practice of Smoothing (2010). IFSB GN-4 (2011) is named as cited in IFSB-23.",
+    "Bank Negara Malaysia, Policy Document on Mudarabah, BNM/RH/STD 028-8, issued 20 April 2015.",
+    "Bank Negara Malaysia, Policy Document on Wa'd, issued 2 February 2017.",
+    "Bank Negara Malaysia, Policy Document on Shariah Governance, BNM/RH/PD 028-100, issued 20 September 2019.",
+    "Central Bank of the UAE, Standard re. Shari'ah Governance for Islamic Financial Institutions, issued 21 April 2020.",
+    "Saudi Central Bank, Shariah Governance Framework for Local Banks Operating in Saudi Arabia, February 2020."
+   ]
+  }
+ ]
+}
